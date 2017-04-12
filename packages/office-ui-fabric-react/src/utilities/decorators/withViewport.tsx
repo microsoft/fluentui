@@ -72,7 +72,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       this._updateViewport();
     }
 
-    private _updateViewport(withForceUpdate?: boolean) {
+    private _updateViewport = (withForceUpdate?: boolean) => {
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
       let scrollElement = findScrollableParent(viewportElement);
@@ -94,7 +94,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
             width: clientRect.width,
             height: scrollRect.height
           }
-        }, updateComponent);
+        }, this._updateViewport);
       } else {
         updateComponent();
       }
