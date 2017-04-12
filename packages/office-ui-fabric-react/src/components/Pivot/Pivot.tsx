@@ -142,7 +142,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         ) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
-        aria-label={ link.ariaLabel }
+        ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }>
         { linkContent }
