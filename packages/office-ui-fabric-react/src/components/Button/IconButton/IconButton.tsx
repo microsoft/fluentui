@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent, customizable } from '@uifabric/utilities';
+import { BaseComponent, customizable, nullRender } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import styles = require('./IconButton.scss');
 
@@ -25,8 +25,8 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         classNames={ IconButtonClassNames }
-        onRenderText={ this._onRenderNull }
-        onRenderDescription={ this._onRenderNull }
+        onRenderText={ nullRender }
+        onRenderDescription={ nullRender }
         { ...this.props } />
     );
   }

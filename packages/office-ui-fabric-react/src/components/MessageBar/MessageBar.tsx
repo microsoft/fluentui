@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   DelayedRender,
   css,
   getId
@@ -13,7 +14,7 @@ export interface IMessageBarState {
   showContent?: boolean;
 }
 
-export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
+export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
 
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,

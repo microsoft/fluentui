@@ -2,13 +2,13 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
-import { warnDeprecations, warnMutuallyExclusive, IStringMap } from './warn';
+import { warnDeprecations, warnMutuallyExclusive, ISettingsMap } from './warn';
 
-export interface IBaseProps<P> extends React.Props<P> {
+export interface IBaseProps {
   componentRef?: any;
 }
 
-export class BaseComponent<P, S> extends React.Component<P, S> {
+export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
@@ -35,19 +35,14 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   /**
    * BaseComponent constructor
    * @param {P} props The props for the component.
-   * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
+   * @param {Object} context The context for the component.
    * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
    */
-  constructor(props?: P, deprecationMap?: IStringMap) {
-    super(props);
+  constructor(props?: P, context?: any) {
+    super(props, context);
 
     this.props = props;
     this._shouldUpdateComponentRef = true;
-
-    // We should remove the map parameter in a major bump.
-    if (deprecationMap) {
-      this._warnDeprecations(deprecationMap);
-    }
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
@@ -62,7 +57,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   }
 
   /** When the component will receive props, make sure the componentRef is updated. */
-  public componentWillReceiveProps(newProps?: any, newContext?: any) {
+  public componentWillReceiveProps(newProps?: P, newContext?: any) {
     this._updateComponentRef(this.props, newProps);
   }
 
@@ -164,7 +159,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   /**
    * Updates the componentRef (by calling it with "this" when necessary.)
    */
-  protected _updateComponentRef(currentProps: IBaseProps<P>, newProps: IBaseProps<P> = {}) {
+  protected _updateComponentRef(currentProps: IBaseProps, newProps: IBaseProps = {}) {
     if (this._shouldUpdateComponentRef &&
       ((!currentProps && newProps.componentRef) ||
         (currentProps && currentProps.componentRef !== newProps.componentRef))) {
@@ -182,12 +177,12 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * Warns when a deprecated props are being used.
    *
    * @protected
-   * @param {IStringMap} deprecationMap The map of deprecations, where key is the prop name and the value is
+   * @param {ISettingsMap<P>} deprecationMap The map of deprecations, where key is the prop name and the value is
    * either null or a replacement prop name.
    *
    * @memberOf BaseComponent
    */
-  protected _warnDeprecations(deprecationMap: IStringMap) {
+  protected _warnDeprecations(deprecationMap: ISettingsMap<P>) {
     warnDeprecations(this.className, this.props, deprecationMap);
   }
 
@@ -195,20 +190,12 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * Warns when props which are mutually exclusive with each other are both used.
    *
    * @protected
-   * @param {IStringMap} mutuallyExclusiveMap The map of mutually exclusive props.
+   * @param {ISettingsMap<P>} mutuallyExclusiveMap The map of mutually exclusive props.
    *
    * @memberOf BaseComponent
    */
-  protected _warnMutuallyExclusive(mutuallyExclusiveMap: IStringMap) {
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>) {
     warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
-  }
-
-  /**
-   * Standard method for rendering null. Useful to wire up onRender methods to a function ref that
-   * never changes.
-   */
-  protected _onRenderNull(): JSX.Element | null {
-    return null;
   }
 }
 
@@ -255,3 +242,5 @@ BaseComponent.onError = (errorMessage) => {
   console.error(errorMessage);
   throw errorMessage;
 };
+
+export function nullRender() { return null; }

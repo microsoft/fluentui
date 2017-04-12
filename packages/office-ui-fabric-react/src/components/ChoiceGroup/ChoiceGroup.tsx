@@ -30,8 +30,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     super(props);
 
     this._warnDeprecations({ 'onChanged': 'onChange' });
+
     this._warnMutuallyExclusive({
-      'defaultSelectedKey': 'selectedKey'
+      'selectedKey': 'defaultSelectedKey'
     });
 
     this.state = {

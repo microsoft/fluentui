@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, customizable } from '@uifabric/utilities';
+import { BaseComponent, customizable, nullRender } from '@uifabric/utilities';
 import { BaseButton } from '../BaseButton';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 
@@ -27,7 +27,7 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         classNames={ CLASS_NAMES }
-        onRenderDescription={ this._onRenderNull }
+        onRenderDescription={ nullRender }
         { ...this.props }
       />
     );

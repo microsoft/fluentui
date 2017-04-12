@@ -15,7 +15,16 @@ export enum ContextualMenuItemType {
   Header = 2
 }
 
+export interface IContextualMenu {
+
+}
+
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
+  /**
+   * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IContextualMenu) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -149,6 +158,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * @default false
    */
   directionalHintFixed?: boolean;
+
+  /**
+   * Callback for when the contextualmenu has been opened.
+   */
+  onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
 
 }
 

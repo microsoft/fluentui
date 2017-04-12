@@ -123,6 +123,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
+          onKeyUp={ this._onDropdownKeyUp }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
@@ -142,7 +143,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onRenderTitle(selectedOption, this._onRenderTitle)
             ) }
           </span>
-          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -264,7 +265,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='option'
+        role='menu'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         aria-label={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
@@ -336,6 +337,27 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.end:
         this.setSelectedIndex(this.props.options.length - 1);
+        break;
+
+      case KeyCodes.space:
+        // event handled in _onDropdownKeyUp
+        break;
+
+      default:
+        return;
+    }
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
+  @autobind
+  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLElement>) {
+    switch (ev.which) {
+      case KeyCodes.space:
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
         break;
 
       default:

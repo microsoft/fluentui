@@ -8,8 +8,8 @@ import {
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
 
-const GroupedListBasicExampleCode = require('!raw-loader!./examples/GroupedList.Basic.Example.tsx') as string;
-const GroupedListCustomExampleCode = require('!raw-loader!./examples/GroupedList.Custom.Example.tsx') as string;
+const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
 
 export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -30,7 +30,7 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/GroupedList/GroupedList.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/GroupedList.Props.ts')
             ] }
           />
         }

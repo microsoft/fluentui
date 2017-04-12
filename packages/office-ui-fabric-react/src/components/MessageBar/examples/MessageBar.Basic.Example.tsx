@@ -10,13 +10,13 @@ import './MessageBar.Basic.Example.scss';
 export const MessageBarBasicExample = () => (
   <div className='ms-BasicMessageBarsExample'>
     <Label>Info/Default MessageBar</Label>
-    <MessageBar>Info - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</MessageBar>
+    <MessageBar>Info - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
 
     <Label>Error MessageBar - only dismiss</Label>
     <MessageBar
       messageBarType={ MessageBarType.error }
       onDismiss={ () => { console.log('test'); } }>
-      Error - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</MessageBar>
+      Error - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
     <p>
       Add a close box when the user can safely dismiss the message. They’ll want to do this to reclaim space or if they feel too disrupted.
           </p>
