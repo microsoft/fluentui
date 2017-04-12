@@ -7,13 +7,11 @@ import {
 } from '@uifabric/example-app-base';
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
-import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 
-const DialogBasicExampleCode = require('!raw-loader!./examples/Dialog.Basic.Example.tsx') as string;
-const DialogLargeHeaderExampleCode = require('!raw-loader!./examples/Dialog.LargeHeader.Example.tsx') as string;
-const DialogCloseExampleCode = require('!raw-loader!./examples/Dialog.Close.Example.tsx') as string;
-const DialogBlockingExampleCode = require('!raw-loader!./examples/Dialog.Blocking.Example.tsx') as string;
+const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
+const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
+const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -32,12 +30,6 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
               </p>
               <DialogLargeHeaderExample />
             </ExampleCard>
-            <ExampleCard title='Dialog Close' code={ DialogCloseExampleCode }>
-              <p>
-                Use a Dialog with an explicit close button when the user is able to close the Dialog without providing the necessary information that it asks for. This is the most common type of dialog; it is generally used for user initiated actions that they change their mind about, or other non-critical information.
-              </p>
-              <DialogCloseExample />
-            </ExampleCard>
             <ExampleCard title='Dialog Blocking' code={ DialogBlockingExampleCode }>
               <p>
                 A blocking Dialog disables all other actions and commands on the page behind it. They should be used very sparingly, only when it is critical that the user makes a choice or provides information before they can proceed. Blocking Dialogs are generally used for irreversible or potentially destructive tasks.
@@ -49,7 +41,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dialog/Dialog.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/Dialog.Props.ts')
             ] }
           />
         }

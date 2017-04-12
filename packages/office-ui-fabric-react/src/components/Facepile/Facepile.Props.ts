@@ -7,7 +7,17 @@ import {
   PersonaSize
 } from '../Persona/index';
 
+export interface IFacepile {
+
+}
+
 export interface IFacepileProps extends React.Props<Facepile> {
+  /**
+   * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IFacepile) => void;
+
   /**
    * Array of IPersonaProps that define each Persona. Note that the size
    * is fixed at PersonaSize.extraSmall regardless of what is specified.
@@ -19,6 +29,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /** Size to display the personas */
   personaSize?: PersonaSize;
+
+  /** ARIA label for persona list */
+  ariaDescription?: string;
 
   /** Show add person button */
   showAddButton?: boolean;

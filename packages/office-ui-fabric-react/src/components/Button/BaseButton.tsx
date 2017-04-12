@@ -42,8 +42,8 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     super(props);
 
     this._warnDeprecations({
-      'rootProps': null,
-      'icon': 'iconName'
+      rootProps: null,
+      icon: 'iconName'
     });
 
     this._labelId = getId();

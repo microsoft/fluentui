@@ -9,6 +9,12 @@ export interface IFocusTrapZone {
 
 export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
   /**
+   * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IFocusTrapZone) => void;
+
+  /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
    * @default The element.target that triggered the FTZ.
    */
@@ -31,14 +37,14 @@ export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
    */
   ignoreExternalFocusing?: boolean;
 
-   /**
-   * Indicates whether focus trap zone should force focus inside the focus trap zone
-   * @default true
-   */
+  /**
+  * Indicates whether focus trap zone should force focus inside the focus trap zone
+  * @default true
+  */
   forceFocusInsideTrap?: boolean;
 
-   /**
-   * Indicates the selector for first focusable item
-   */
+  /**
+  * Indicates the selector for first focusable item
+  */
   firstFocusableSelector?: string;
 }

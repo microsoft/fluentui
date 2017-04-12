@@ -17,12 +17,6 @@ export interface IToggleState {
 
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
-  public static initialProps = {
-    label: '',
-    onText: 'On',
-    offText: 'Off'
-  };
-
   private _id: string;
   private _toggleButton: HTMLButtonElement;
 
@@ -61,16 +55,19 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     const toggleNativeProps = getNativeProps(this.props, buttonProperties);
     return (
       <div className={
-        css(styles.root, 'ms-Toggle', className, {
-          'is-checked': isChecked,
-          'is-enabled': !disabled,
-          'is-disabled': disabled,
-          [styles.isChecked]: isChecked,
-          [styles.isEnabled]: !disabled,
-          [styles.isDisabled]: disabled,
-
-        })
-      }>
+        css(
+          styles.root,
+          'ms-Toggle',
+          className,
+          {
+            'is-checked': isChecked,
+            'is-enabled': !disabled,
+            'is-disabled': disabled,
+            [styles.isChecked]: isChecked,
+            [styles.isEnabled]: !disabled,
+            [styles.isDisabled]: disabled,
+          }
+        ) }>
         <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
           { label && (
             <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
