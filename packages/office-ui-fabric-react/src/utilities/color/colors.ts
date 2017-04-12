@@ -172,7 +172,7 @@ export function getColorFromString(color: string): IColor {
   };
 }
 
-export function getColorFromRGBA(rgba: { a: number, b: number, g: number, r: number }): IColor {
+export function getColorFromRGBA(rgba: { r: number, g: number, b: number, a: number }): IColor {
   let { a, b, g, r } = rgba;
   let { h, s, v } = rgb2hsv(r, g, b);
 
