@@ -15,10 +15,12 @@ export interface IWithViewportState {
 }
 
 const RESIZE_DELAY = 500;
+const MAX_RESIZE_ATTEMPTS = 3;
 
 export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
   return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
+    private _resizeAttempts: number;
 
     public refs: {
       [key: string]: React.ReactInstance;
@@ -26,6 +28,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
     constructor() {
       super();
+      this._resizeAttempts = 0;
 
       this.state = {
         viewport: {
@@ -72,6 +75,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       this._updateViewport();
     }
 
+    /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
@@ -88,7 +92,8 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         clientRect.width !== viewport.width ||
         scrollRect.height !== viewport.height);
 
-      if (isSizeChanged) {
+      if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS) {
+        this._resizeAttempts++;
         this.setState({
           viewport: {
             width: clientRect.width,
@@ -96,6 +101,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
           }
         }, this._updateViewport);
       } else {
+        this._resizeAttempts = 0;
         updateComponent();
       }
     }
