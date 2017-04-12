@@ -134,7 +134,7 @@ export const AppDefinition: IAppDefinition = {
           getComponent: cb => cb(require<any>('../components/OverflowSet/OverflowSetPage').OverflowSetPage),
           key: 'OverflowSet',
           name: 'OverflowSet',
-          url: '#/examples/overflowSet'
+          url: '#/examples/overflowset'
         },
         {
           getComponent: cb => cb(require<any>('../components/Overlay/OverlayPage').OverlayPage),
@@ -185,6 +185,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/rating'
         },
         {
+          getComponent: cb => cb(require<any>('../components/ResizeGroup/ResizeGroupPage').ResizeGroupPage),
+          key: 'ResizeGroup',
+          name: 'ResizeGroup',
+          url: '#/examples/resizegroup'
+        },
+        {
           getComponent: cb => cb(require<any>('../components/SearchBox/SearchBoxPage').SearchBoxPage),
           key: 'SearchBox',
           name: 'SearchBox',
@@ -218,7 +224,7 @@ export const AppDefinition: IAppDefinition = {
           getComponent: cb => cb(require<any>('../components/Tooltip/TooltipPage').TooltipPage),
           key: 'Tooltip',
           name: 'Tooltip',
-          url: '#/examples/Tooltip'
+          url: '#/examples/tooltip'
         }
       ],
       name: 'Basic components'

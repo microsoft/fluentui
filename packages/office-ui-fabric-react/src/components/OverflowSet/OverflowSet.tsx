@@ -15,13 +15,12 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
     super(props);
   }
 
-
   public render() {
     let { items, overflowItems } = this.props;
     return (
       <div className={ css('ms-OverflowSet', styles.root) } >
         { items && this._onRenderItems(items) }
-        { overflowItems.length > 0 && this._onRenderOverflowButton(overflowItems) }
+        { overflowItems && this._onRenderOverflowButton(overflowItems) }
       </div>
     );
   }

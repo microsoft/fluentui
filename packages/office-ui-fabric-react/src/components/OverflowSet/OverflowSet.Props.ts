@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
 import { OverflowSet } from './OverflowSet';
-import { IContextualMenuProps, IContextualMenuItem } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface IOverflowSetProps extends React.Props<OverflowSet> {
   items?: any[];
