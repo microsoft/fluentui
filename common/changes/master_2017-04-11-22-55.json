@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix CSS issue in ChoiceGroup in IE11",
+      "type": "patch"
+    }
+  ],
+  "email": "yubojia@microsoft.com"
+}

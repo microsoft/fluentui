@@ -10,6 +10,11 @@ $spacingAroundItemButton: 2px;
   clear: both;
 }
 
+.itemContainer
+{
+  display:flex;
+}
+
 .members {
   display: flex;
   flex-direction: row;
@@ -40,12 +45,17 @@ button.itemButton {
   padding: 0;
   cursor: pointer;
   border: none;
+  &::-moz-focus-inner {
+    padding: 0px;
+    border: 0px;
+  }
 }
 
 button.addButton {
   font-size: $ms-font-size-m;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
+  @include margin-right($spacingAroundItemButton * 2);
 
   &:hover, &:focus {
     background-color: $ms-color-themeDark;
@@ -64,10 +74,16 @@ button.overflowButton {
   font-size: $ms-font-size-m;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
+  @include margin-left($spacingAroundItemButton * 2);
 }
 
 button.descriptiveOverflowButton {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
+  @include margin-left($spacingAroundItemButton * 2);
+}
+
+.screenReaderOnly {
+  @include ms-u-screenReaderOnly;
 }

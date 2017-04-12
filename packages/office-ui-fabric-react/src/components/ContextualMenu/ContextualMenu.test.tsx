@@ -12,6 +12,7 @@ let { expect } = chai;
 
 import { ContextualMenu } from './ContextualMenu';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
+import { Layer } from '../Layer/Layer';
 
 describe('ContextualMenu', () => {
 
@@ -300,5 +301,56 @@ describe('ContextualMenu', () => {
 
     let focusedItem = document.querySelector('.testkey1').firstChild;
     expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
+  });
+
+  it('ContextualMenu menuOpened callback is called only when menu is available', () => {
+    let layerMounted = false;
+    let menuMounted = false;
+    let menuMountedFirst = false;
+    let layerMountedFirst = false;
+
+    // Alter the Layer's prototype so that we can confirm that it mounts before the contextualmenu mounts.
+    /* tslint:disable:no-function-expression */
+    Layer.prototype.componentDidMount = function (componentDidMount) {
+      return function () {
+        if (menuMounted) {
+          menuMountedFirst = true;
+        }
+        layerMounted = true;
+        return componentDidMount.call(this);
+      };
+    }(Layer.prototype.componentDidMount);
+    /* tslint:enable:no-function-expression */
+
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        className: 'testkey1'
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2'
+      },
+    ];
+    ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+      <div>
+        <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
+        <ContextualMenu
+          target='#target'
+          items={ items }
+          onMenuOpened={ () => {
+            if (layerMounted) {
+              layerMountedFirst = true;
+            }
+            menuMounted = true;
+          } }
+        >
+        </ContextualMenu>
+      </div>
+    );
+    expect(menuMounted).to.be.equal(true, 'Menu opened callback was not properly called');
+    expect(layerMountedFirst).to.be.equal(true, 'Menu Mounted First');
+    expect(menuMountedFirst).to.be.equal(false, 'Layer Mounted first');
   });
 });
