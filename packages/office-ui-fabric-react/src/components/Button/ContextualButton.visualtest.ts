@@ -13,7 +13,7 @@ casper.
   }).then(function () {
     this.mouse.down('#ContextualButton');
     phantomcss.screenshot('#ContextualButton', 'ContextualButton_pressed');
-    phantomcss.screenshot('#ContextualButtonMenu', 'ContextualButtonMenu_pressed');
+    phantomcss.screenshot('.ContextualButtonMenu', 'ContextualButtonMenu_pressed');
   }).
   then(function () {
     phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_not_pressed');
