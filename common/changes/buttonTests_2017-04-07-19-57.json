@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Regression Tests: Button and checkbox",
+      "comment": "Regression Tests: breadcrumb tests",
       "type": "patch"
     },
     {
