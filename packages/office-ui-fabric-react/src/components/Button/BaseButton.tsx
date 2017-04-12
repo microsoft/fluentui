@@ -90,8 +90,8 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         className: css(
           styles.root,
           this.props.className,
-          this.classNames.base,
-          this.classNames.variant,
+          this.props.useOnlyHashedClassNames ? '' : this.classNames.base,
+          this.props.useOnlyHashedClassNames ? '' : this.classNames.variant,
           this.classNames.root,
           {
             'disabled': disabled,
@@ -132,7 +132,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     return React.createElement(
       tag,
       buttonProps,
-      React.createElement('div', { className: css(this.classNames.base + '-flexContainer', styles.flexContainer, this.classNames.flexContainer) },
+      React.createElement('div', { className: css(`${this.composeCssForNonHashedProperties('-flexContainer')}`, styles.flexContainer, this.classNames.flexContainer) },
         this.onRenderIcon(),
         this.onRenderLabel(),
         this.onRenderDescription(),
@@ -147,7 +147,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     const { icon } = this.props;
 
     return icon && (
-      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
+      <span className={ css(`${this.composeCssForNonHashedProperties('-icon')}`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
       </span>
     );
@@ -162,7 +162,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     }
 
     return text && (
-      <span className={ css(`${this.classNames.base}-label`, this.classNames.label) } id={ this._labelId } >
+      <span className={ css(`${this.composeCssForNonHashedProperties('-label')}`, this.classNames.label) } id={ this._labelId } >
         { text }
       </span>
     );
@@ -187,7 +187,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     // In other cases it will not be displayed.
     return description ? (
       <span
-        className={ css(`${this.classNames.base}-description`, this.classNames.description) }
+        className={ css(`${this.composeCssForNonHashedProperties('-description')}`, this.classNames.description) }
         id={ this._descriptionId }
       >
         { description }
@@ -207,6 +207,15 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     ) : (
         null
       );
+  }
+
+  private composeCssForNonHashedProperties(appendToBase: string) {
+    if (this.props.useOnlyHashedClassNames) {
+      return "";
+    }
+    else {
+      return `${this.classNames.base}${appendToBase}`;
+    }
   }
 
   @autobind
