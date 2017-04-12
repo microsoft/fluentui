@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix issue #1274",
+      "type": "patch"
+    }
+  ],
+  "email": "johannao@microsoft.com"
+}
