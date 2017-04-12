@@ -58,6 +58,7 @@ const styles = {
       },
 
       ':focus': {
+        color: defaultPalette.themePrimary,
         opacity: 1,
         background: defaultPalette.themeLighterAlt
       },

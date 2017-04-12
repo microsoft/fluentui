@@ -23,6 +23,7 @@ export interface IFontPallete {
   xxLarge: IFont;
   superLarge: IFont;
 }
+/*
 
 export interface ITheme {
 
@@ -47,4 +48,4 @@ export function createTheme(colors: IColorPalette, fonts: IFontPallete): ITheme 
 
 export function lighter(color: string) {
 
-}
+}*/
