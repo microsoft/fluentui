@@ -20,11 +20,11 @@ const MAX_RESIZE_ATTEMPTS = 3;
 export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
   return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
-    private _resizeAttempts: number;
-
     public refs: {
       [key: string]: React.ReactInstance;
     };
+
+    private _resizeAttempts: number;
 
     constructor() {
       super();
