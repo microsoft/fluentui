@@ -15,6 +15,7 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
+import { compareDates } from '../../utilities/dateMath/DateMath';
 import styles = require('./DatePicker.scss');
 
 export interface IDatePickerState {
@@ -134,11 +135,23 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, isRequired, strings, value } = nextProps;
     const errorMessage = (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null;
 
-    this.setState({
-      selectedDate: value || new Date(),
-      formattedDate: (formatDate && value) ? formatDate(value) : '',
-      errorMessage: errorMessage
-    });
+    if (errorMessage != null) {
+      this.setState({
+        errorMessage: errorMessage
+      });
+    }
+    else {
+      // Check if the date value changed from old props value, i.e., if indeed a new date is being
+      // passed in and only then update selectedDate
+      let oldValue = this.props.value;
+      if (!compareDates(oldValue, value)) {
+        this.setState({
+          selectedDate: value || new Date(),
+          formattedDate: (formatDate && value) ? formatDate(value) : '',
+          errorMessage: errorMessage
+        });
+      }
+    }
   }
 
   public render() {
