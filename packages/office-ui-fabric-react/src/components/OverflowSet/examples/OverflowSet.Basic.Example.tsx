@@ -9,61 +9,6 @@ import {
 } from '../index';
 import { ResizeGroup } from '../../ResizeGroup';
 
-/*
-const instructions = [
-  { key: 'A', action: Actions.reduceToIcon},
-  { key: 'B', action: Actions.appendToOverflow, transform: (itemProps) => : ItemProps},
-  [
-    {},
-    {}
-  ]
-];
-
-
-updateOverflowState(prevState, props) => {
-if (!prevState) {}
-  return {
-    instructionsIndex: 0,
-    items: [],
-    overflowItems: []
-  };
-}
-
-
-  let items = prevState.items.concat([]);
-  let overflowItems = prevState.overflowItems.concat([]);
-  let inst = instructions[prevState.index];
-  if (inst) {
-  applyInstruction(items, overflowItems, inst);
- }
-  for (let i = 0; i < items.length; i++) {
-    if (items[i].key === inst.key) {
-      overflowItems.concat(items.splice(i, 1));
-      break;
-    }
-  }
-  return {
-    index: index + 1,
-    items,
-    overflowItems
-  };
-}
-
-<VisualResizer
-  onReduceProps={ lastReducedProps, props => {
-    state.items // [ overflowSetProps1, overflowSetProps2, etc  ]
-  }}
-  onRender={ props => (
-    <div>
-      { props.items.map(item => (
-        <OverflowSet items={item.items} overflowItems={items.overflowItems} />
-      )) }
-    </div>
-  ) }
-/>
-
-
-*/
 export class OverflowSetBasicExample extends BaseComponent<any, any> {
 
   public render() {
