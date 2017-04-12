@@ -3,6 +3,7 @@ import {
   BaseComponent,
   autobind,
   buttonProperties,
+  anchorProperties,
   css,
   divProperties,
   getId,
@@ -189,6 +190,26 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               <i className={ css('ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown', styles.itemChevronDown) } />
             ) : (null) }
           </button>;
+        } else if (item.href) {
+          return <a
+            { ...getNativeProps(item, anchorProperties) }
+            id={ this._id + item.key }
+            className={ className }
+            href={ item.href }
+            data-command-key={ index }
+            aria-haspopup={ hasSubmenuItems(item) }
+            role='menuitem'
+            aria-label={ item.ariaLabel || item.name }
+          >
+            { (hasIcon) ? this._renderIcon(item) : (null) }
+            { (!!item.name) && (
+              <span
+                className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+              >
+                { item.name }
+              </span>
+            ) }
+          </a>;
         } else {
           return <div
             { ...getNativeProps(item, divProperties) }

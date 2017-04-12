@@ -8,7 +8,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .root {
   display: inline-block;
-  min-width: 100%;
+  vertical-align: top;
   height: $rowHeight;
   line-height: $rowHeight;
   white-space: nowrap;

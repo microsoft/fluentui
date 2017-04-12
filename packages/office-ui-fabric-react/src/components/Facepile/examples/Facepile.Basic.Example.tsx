@@ -50,7 +50,8 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
         return {
           imageShouldFadeIn: this.state.imagesFadeIn
         };
-      }
+      },
+      ariaDescription: 'To move through the items use left and right arrow keys.'
     };
 
     return (
@@ -68,7 +69,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               prevState.numberOfFaces = value;
               return prevState;
             }) }
-            />
+          />
         </div>
         <Checkbox
           label='Fade In'
@@ -79,7 +80,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               return prevState;
             });
           } }
-          />
+        />
         <Dropdown
           label='Persona Size:'
           selectedKey={ this.state.personaSize }
@@ -93,7 +94,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             prevState.personaSize = value.key as PersonaSize;
             return prevState;
           }) }
-          />
+        />
         <Dropdown
           label='Additional Data:'
           selectedKey={ this.state.extraDataType }
