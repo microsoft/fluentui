@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: Fix positioning of icon",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
