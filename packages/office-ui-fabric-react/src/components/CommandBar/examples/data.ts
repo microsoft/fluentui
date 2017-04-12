@@ -26,7 +26,7 @@ export const items = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    onClick: () => { return; },
+    href: 'https://mytenenat.sharepoint.com/teams/IT/BPU/',
     ['data-automation-id']: 'uploadButton'
   },
   {
