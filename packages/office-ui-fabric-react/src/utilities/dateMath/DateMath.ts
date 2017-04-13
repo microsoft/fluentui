@@ -87,13 +87,13 @@ export function setMonth(date: Date, month: number): Date {
 export function compareDates(date1: Date, date2: Date): boolean {
   if (date1 == null && date2 == null) {
     return true;
-  }
-  if (date1 == null || date2 == null) {
+  } else if (date1 == null || date2 == null) {
     return false;
+  } else {
+    return (date1.getFullYear() === date2.getFullYear()
+      && date1.getMonth() === date2.getMonth()
+      && date1.getDate() === date2.getDate());
   }
-  return (date1.getFullYear() === date2.getFullYear()
-    && date1.getMonth() === date2.getMonth()
-    && date1.getDate() === date2.getDate());
 }
 
 /**

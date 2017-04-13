@@ -135,22 +135,21 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, isRequired, strings, value } = nextProps;
     const errorMessage = (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null;
 
-    if (errorMessage != null) {
+    // Set error message
+    this.setState({
+      errorMessage: errorMessage
+    });
+
+    // Issue# 1274: Check if the date value changed from old props value, i.e., if indeed a new date is being
+    // passed in or if the formatting function was modified. We only update the selected date if either of these
+    // had a legit change. Note tha the bug will still repro when only the formatDate was passed in props and this
+    // is the result of the onSelectDate callback, but this should be a rare scenario.
+    let oldValue = this.props.value;
+    if (!compareDates(oldValue, value) || this.props.formatDate !== formatDate) {
       this.setState({
-        errorMessage: errorMessage
+        selectedDate: value || new Date(),
+        formattedDate: (formatDate && value) ? formatDate(value) : '',
       });
-    }
-    else {
-      // Check if the date value changed from old props value, i.e., if indeed a new date is being
-      // passed in and only then update selectedDate
-      let oldValue = this.props.value;
-      if (!compareDates(oldValue, value)) {
-        this.setState({
-          selectedDate: value || new Date(),
-          formattedDate: (formatDate && value) ? formatDate(value) : '',
-          errorMessage: errorMessage
-        });
-      }
     }
   }
 
@@ -369,7 +368,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         } else {
           this.setState({
             selectedDate: date,
-            formattedDate: formatDate && date ? formatDate(date) : '',
             errorMessage: ''
           });
         }
