@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding support for IContextualMenuItem onRender in CommadBar",
+      "type": "patch"
+    }
+  ],
+  "email": "tayoun@microsoft.com"
+}
