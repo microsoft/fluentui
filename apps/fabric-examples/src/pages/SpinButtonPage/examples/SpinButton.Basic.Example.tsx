@@ -6,7 +6,23 @@ import './SpinButton.Basic.Example.scss';
 
 export class SpinButtonBasicExample extends React.Component<any, any> {
 
+  private hasSuffix(string: string, suffix: string): Boolean {
+    var subString = string.substr(string.length - suffix.length);
+    return subString == suffix;
+  }
+
+  private removeSuffix(string: string, suffix: string): string {
+    if (!this.hasSuffix(string, suffix)) {
+      return string;
+    }
+
+    return string.substr(0, string.length - suffix.length);
+  }
+
   public render() {
+
+    var suffix = " cm";
+
     return (
       <div className='ms-BasicSpinButtonsExample'>
 
@@ -19,20 +35,23 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
 
         < SpinButton
           label='SpinButton with custom implementation'
-          defaultValue={ '7' }
+          defaultValue={ '7' + suffix }
           onBlur={ (value: string, state: ISpinButtonState, props: ISpinButtonProps) => {
+            value = this.removeSuffix(value, suffix);
             if (isNaN(+value)) {
-              return '0'
+              return '0' + suffix
             }
 
             const newValue = Math.min(100, Math.max(0, +value));
-            return String(newValue);
+            return String(newValue) + suffix;
           } }
           onIncrement={ (value: string) => {
-            return String(+value + 2);
+            value = this.removeSuffix(value, suffix);
+            return String(+value + 2) + suffix;
           } }
           onDecrement={ (value: string) => {
-            return String(+value - 2);
+            value = this.removeSuffix(value, suffix);
+            return String(+value - 2) + suffix;
           } }
         />
 
