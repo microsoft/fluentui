@@ -9,7 +9,7 @@ export default class PrimaryButtonVPage extends React.Component<any, any> {
         <PrimaryButton id='PrimaryButton' icon='Add' text='Primary Button' />
       </div >
       <div>
-        <PrimaryButton id='PrimaryButtonDisabled' icon='Add' text='Primary Button' />
+        <PrimaryButton id='PrimaryButtonDisabled' disabled={ true } icon='Add' text='Primary Button' />
       </div >
     </div>;
   }

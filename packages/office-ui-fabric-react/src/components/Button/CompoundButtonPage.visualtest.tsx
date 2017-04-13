@@ -13,6 +13,7 @@ export default class CompoundButtonVPage extends React.Component<any, any> {
       </div>
       <div>
         <CompoundButton id='CompoundButtonDisabled'
+          disabled={ true }
           description='You can create a new account here.'
           text='Compound Button' />
       </div>
