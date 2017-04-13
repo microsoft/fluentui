@@ -1,6 +1,32 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 08 Apr 2017 03:18:28 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Apr 2017 16:04:37 GMT and should not be manually modified.
+
+## 2.16.0
+Wed, 12 Apr 2017 16:04:37 GMT
+
+### Minor changes
+
+- Improved keyboard and screen reader support for the Facepile control.  Added aria-describedby to FocusZone control.
+- Dropdown: Add ability to open and close via space bar.
+
+### Patches
+
+- Details List: Fixes clipped buttons inside of list cells
+- Dropdown: Prevent the chevron icon from being read by screen readers.
+- CommandBar: Support hrefs in command bar item
+- DetailsList: no longer renders a horizontal scrollbar if a vertical scrollbar appears.
+- Facepile: Fixed firefox bug where explicit sizes were needed on persona buttons
+- MessageBar: Adds borders in HighContrast mode
+- Fix CSS issue in ChoiceGroup in IE11
+- People Picker: Fix issue in IE11 where long names were not properly truncated
+- PeoplePicker: Have the suggestions list follow the cursor instead of always being aligned left to input box
+- TextField: Fix positioning of icon
+- Toggle: Adding min width to inner container.
+- Dialog: Add close button to non-blocking variants
+- Pivot: Fix ariaLabel prop for PivotItem
+- Pivot: Add div native props to PivotItem
+- CommandBar: Remove aria-disabled="true" for disabled menu items
 
 ## 2.15.0
 Sat, 08 Apr 2017 03:18:28 GMT

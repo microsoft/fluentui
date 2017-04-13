@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot: Fix ariaLabel prop for PivotItem",
+      "comment": "DatePicker: Restore focus when exiting picker.",
       "type": "patch"
     }
   ],
-  "email": "v-edwliu@microsoft.com"
+  "email": "clewolff@microsoft.com"
 }

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Support hrefs in command bar item",
+      "comment": " Tag picker: Fix for margin in overflow",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "micahgodbolt@gmail.com"
+  "email": "r33najain@gmail.com"
 }

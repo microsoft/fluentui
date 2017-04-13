@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Improved keyboard and screen reader support for the Facepile control.  Added aria-describedby to FocusZone control.",
-      "type": "minor"
+      "comment": "PeoplePicker: Textfield cursor fix in edge",
+      "type": "patch"
     },
     {
       "comment": "",
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "v-mattli@microsoft.com"
+  "email": "r33najain@gmail.com"
 }
