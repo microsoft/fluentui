@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  TextField,
   IconButton,
   Label
 } from '../../../lib/';
@@ -21,75 +20,97 @@ export interface IStepperState {
   /**
    * the value of the stepper
    */
-  value?: number;
+  value?: string;
 
   /**
    * Are we spinning? Used in case we are spinning
    * and the text field gets focus (we should stop spinning)
    */
   spinning?: boolean;
-
-  /**
-   * the index into the unit options array that corresponds
-   * to the current unit that is being used in the textField
-   */
-  currentUnitIndex?: number;
 }
 
 export class Stepper extends BaseComponent<IStepperProps, IStepperState> implements IStepper {
-  private _textField: TextField;
-  private _stepperId: string;
+  private _input: HTMLInputElement;
+  private _inputId: string;
   private _labelId: string;
+  private _lastValidValue: string;
 
-  private _onGetErrorMessage?: (value: string, state: IStepperState, props: IStepperProps) => string;
+  private _onBlur?: (value: string, state: IStepperState, props: IStepperProps) => string;
+  private _onIncrement?: (value: string) => string;
+  private _onDecrement?: (value: string) => string;
+  private _defaultOnBlur = (value: string, state: IStepperState, props: IStepperProps) => {
+    if (isNaN(+value)) {
+      return this._lastValidValue;
+    }
+    const newValue = Math.min(this.props.max, Math.max(this.props.min, +value));
+    return String(newValue);
+  }
+  private _defaultOnIncrement = (value: string) => {
+    let newValue = Math.min(+value + this.props.step, this.props.max);
+    return String(newValue);
+  };
+  private _defaultOnDecrement = (value: string) => {
+    let newValue = Math.max(+value - this.props.step, this.props.min);
+    return String(newValue);
+  };
+
   public static defaultProps: IStepperProps = {
     step: 1,
     min: 0,
     max: 100,
     disabled: false,
-    defaultValue: 0
+    defaultValue: '0'
   };
 
   private _currentStepFunctionHandle: number;
-  private _stepDelay = 50;
+  private _stepDelay = 100;
 
   private _formattedValidUnitOptions: string[] = [];
 
   constructor(props?: IStepperProps) {
     super(props);
 
-    let value = props.value || props.defaultValue || props.min;
+    let value = props.value || props.defaultValue || String(props.min);
+    this._lastValidValue = value;
+
     this.state = {
       value: value,
       spinning: false,
-      currentUnitIndex: -1
     };
 
     this._labelId = getId('Label');
-    this._stepperId = getId('Stepper');
+    this._inputId = getId('input');
 
-    if (props.onGetErrorMessage) {
-      this._onGetErrorMessage = props.onGetErrorMessage;
-      this._onGetErrorMessage = this._onGetErrorMessage.bind(this);
+    if (props.onBlur) {
+      this._onBlur = props.onBlur;
+    } else {
+      this._onBlur = this._defaultOnBlur;
+    }
+    this._onBlur = this._onBlur.bind(this);
+
+    if (props.onIncrement) {
+      this._onIncrement = props.onIncrement;
+      this._onIncrement = this._onIncrement.bind(this);
+    } else {
+      this._onIncrement = this._defaultOnIncrement;
+    }
+
+    if (props.onDecrement) {
+      this._onDecrement = props.onDecrement;
+      this._onDecrement = this._onDecrement.bind(this);
+    } else {
+      this._onDecrement = this._defaultOnDecrement;
     }
 
     // bind this (for this class) to all the methods
-    this._getErrorMessage = this._getErrorMessage.bind(this);
-    this._parseNumIfValidSuffix = this._parseNumIfValidSuffix.bind(this);
+    this._blur = this._blur.bind(this);
     this._increment = this._increment.bind(this);
     this._decrement = this._decrement.bind(this);
     this._stop = this._stop.bind(this);
     this.focus = this.focus.bind(this);
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this._handleKeyUp = this._handleKeyUp.bind(this);
-    this._getCurrentUnit = this._getCurrentUnit.bind(this);
-    this._normalizeUnit = this._normalizeUnit.bind(this);
-    this._formatUnitOptions = this._formatUnitOptions.bind(this);
-    this._updateValueByStep = this._updateValueByStep.bind(this);
-
-    // Format all the unit options passed in to
-    // simplify the work we have to do when rendering the full value
-    this._formatUnitOptions();
+    this._onInputChange = this._onInputChange.bind(this);
   }
 
   /**
@@ -97,10 +118,10 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
   */
   public componentWillReceiveProps(newProps: IStepperProps): void {
     if (newProps.value !== undefined) {
-      let value = Math.max(newProps.min, Math.min(newProps.max, newProps.value));
+      let value = Math.max(newProps.min, Math.min(newProps.max, +newProps.value));
 
       this.setState({
-        value: value
+        value: String(value)
       });
     }
   }
@@ -109,8 +130,6 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
     const {
       className,
       disabled,
-      min,
-      max,
       label
     } = this.props;
 
@@ -120,20 +139,21 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
 
     return (
       <div className='stepperContainer' >
-        { label && <Label id={ this._labelId } htmlFor={ this._stepperId }>{ label }</Label> }
-        <TextField
-          value={ String(value).concat(this._getCurrentUnit()) }
-          resizable={ false }
-          validateOnFocusOut={ true }
-          id={ this._stepperId }
-          className='textField'
+        aria-valuemin={ this.props.min }
+        { label && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label }</Label> }
+        <input
+          value={ value }
+          id={ this._inputId }
+          onChange={ this._onChange }
+          onInput={ this._onInputChange }
+          className='spinButton-input'
           role='spinbutton'
           aria-labelledby={ label && this._labelId }
+          aria-valuenow={ value }
           aria-valuemin={ String(this.props.min) }
           aria-valuemax={ String(this.props.max) }
-          aria-valuenow={ String(value) }
-          onGetErrorMessage={ this._getErrorMessage }
-          ref={ this._resolveRef('_textField') }
+          onBlur={ this._blur }
+          ref={ this._resolveRef('_input') }
           onFocus={ this.focus }
           onKeyDown={ this._handleKeyDown }
           onKeyUp={ this._handleKeyUp }
@@ -168,72 +188,26 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
     ) as React.ReactElement<{}>;
   }
 
+  private _onChange() {
+    /**
+     * A noop input change handler.
+     * https://github.com/facebook/react/issues/7027.
+     * Using the native onInput handler fixes the issue but onChange
+     * still need to be wired to avoid React console errors
+     * TODO: Check if issue is resolved when React 16 is available.
+     */
+  }
+
   /**
-   * OnFocus select the contents of the textField
+   * OnFocus select the contents of the input
    */
   public focus() {
     if (this.state.spinning) {
       this._stop();
     }
 
-    this._textField.focus();
-    this._textField.select();
-  }
-
-  /**
-   * Format the unit options passed in so we do not have
-   * to think about it when rendering the unit with the value
-   */
-  private _formatUnitOptions() {
-    if (this.props.validUnitOptions == null || this.props.validUnitOptions.length == 0) {
-      return;
-    }
-
-    this.props.validUnitOptions.forEach(element => {
-      this._formattedValidUnitOptions = this._formattedValidUnitOptions.concat(this._normalizeUnit(element));
-    });
-  }
-
-  /**
-   * Normalize the given unit (e.g. if it is only alpha characters
-   * and does not start with a space, add a space otherwise
-   * do not alter the value)
-   * @param unitValue - the unit to normalize
-   * @returns the normalized unit
-   */
-  private _normalizeUnit(unitValue: string): string {
-
-    if (unitValue == null || unitValue.length == 0) {
-      return '';
-    }
-
-    let formattedUnit: string = unitValue;
-
-    // if our unitValue only contains alpha chars and does not
-    // already start with a space, add one
-    if (formattedUnit.match('^([a-zA-Z]+)$') && formattedUnit.indexOf(' ') != 0) {
-      formattedUnit = String(' ').concat(formattedUnit);
-    }
-
-    return formattedUnit;
-  }
-
-  /**
-   * Returns the currently formatted unit (based off of state)
-   */
-  private _getCurrentUnit(): string {
-    const currentUnitIndex = this.state.currentUnitIndex;
-
-    if (this._formattedValidUnitOptions == null ||
-      this._formattedValidUnitOptions.length == 0 ||
-      currentUnitIndex >= this._formattedValidUnitOptions.length) {
-      return '';
-    }
-    else if (currentUnitIndex <= -1) {
-      return this._formattedValidUnitOptions[0];
-    }
-
-    return this._formattedValidUnitOptions[currentUnitIndex];
+    this._input.focus();
+    this._input.select();
   }
 
   /**
@@ -242,148 +216,23 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
    * @param newValue - the pending value to check if it is valid
    * @returns an error message to display to the user, empty string if no error
    */
-  private _getErrorMessage(newValue: string): string {
-    let errorMessage: string = '';
-
-    if (this._onGetErrorMessage) {
-      errorMessage = this._onGetErrorMessage(newValue, this.state, this.props);
-
-      if (errorMessage == '' && Number(newValue) != this.state.value) {
-        this.setState({ value: Number(newValue) });
-      }
-
-      return errorMessage;
+  private _blur(event: React.FocusEvent<HTMLInputElement>) {
+    const element: HTMLInputElement = event.target as HTMLInputElement;
+    const value: string = element.value;
+    if (this.state.value) {
+      var newValue = this._onBlur(value, this.state, this.props);
+      this._lastValidValue = newValue;
+      this.setState({ value: newValue });
     }
-
-    const {
-      value,
-      currentUnitIndex,
-    } = this.state;
-
-    let valueToSet: number = null;
-    let unitIndexToSet: number = null;
-
-    // Attempt to parse the number from the new value,
-    // checking against the valid unit options. It returns
-    // a tuple of [ <parsedNumber>, <correspondingMatchedUnit> ]
-    let parsedNumberInfo: number[] = this._parseNumIfValidSuffix(newValue);
-
-    // Did we get back a well formatted response from the parse?
-    if (parsedNumberInfo != null && parsedNumberInfo.length == 2) {
-      let parsedNumberValue: number = parsedNumberInfo[0];
-      let parsedNumberUnitIndex: number = parsedNumberInfo[1];
-
-      // We have a perspective number value, make sure it is valid
-      // before going any further
-      if (parsedNumberValue != null &&
-        (parsedNumberValue >= this.props.min && parsedNumberValue <= this.props.max)) {
-        valueToSet = parsedNumberValue;
-      }
-
-      // We have a perspective index into the unit options array, make sure
-      // it is valid before going any further
-      if (parsedNumberUnitIndex != null && parsedNumberUnitIndex < this._formattedValidUnitOptions.length) {
-        unitIndexToSet = parsedNumberUnitIndex;
-      }
-    }
-
-    // At this point, if parsing the new value was successful,
-    // the value and unit index to set should not be null
-    if (valueToSet == null || unitIndexToSet == null) {
-      errorMessage = `${newValue} is not a valid value`;
-    }
-
-    // If the value to set is null, fall back
-    // to a known valid value
-    if (valueToSet == null) {
-      if (value == null) {
-        valueToSet = this.props.min;
-      }
-      else {
-        valueToSet = value;
-      }
-    }
-
-    // If the unit index is null, fall back
-    // to a known valid unit index
-    if (unitIndexToSet == null) {
-      if (currentUnitIndex == null) {
-        unitIndexToSet = -1;
-      }
-      else {
-        unitIndexToSet = currentUnitIndex;
-      }
-    }
-
-    let stateToSet: any = {};
-
-    if (value != valueToSet) {
-      assign(stateToSet, { value: valueToSet });
-    }
-
-    if (currentUnitIndex != unitIndexToSet) {
-      assign(stateToSet, { currentUnitIndex: unitIndexToSet });
-    }
-
-    if (stateToSet != {}) {
-      this.setState({ ...stateToSet });
-    }
-
-    return errorMessage;
   }
 
-  /**
-   * Attempt to parse the number and units that
-   * the user entered
-   * @param value - the value to process
-   * @returns a number array of the format:
-   * null if we fail to parse the value, or [<parsedNumber>, <correspondingUnitIndex>]
-   */
-  private _parseNumIfValidSuffix(value: string): number[] {
-    if (value == null) {
-      return null;
-    }
+  private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+    const element: HTMLInputElement = event.target as HTMLInputElement;
+    const value: string = element.value;
 
-    let valToConvert = value.trim();
-    if (valToConvert.length == 0) {
-      return null;
-    }
-
-    // Check to see if the value is alreay just a number,
-    // if so, convert it and return (keeping the current unit)
-    if (!isNaN(Number(valToConvert))) {
-      return [Number(valToConvert), this.state.currentUnitIndex];
-    }
-
-    // if we got a value that is not a number, we better have
-    // some valid unit options, otherwise we know this is invalid and we are done
-    if (this.props.validUnitOptions == null || this.props.validUnitOptions.length == 0) {
-      return null
-    }
-
-    let index = -1;
-    let optionIndex = 0;
-
-    // loop over the valid unit options to see if we've got a match
-    // at the end of the string (after the being trimmed)
-    do {
-      index = valToConvert.indexOf(this.props.validUnitOptions[optionIndex]);
-    } while (index === -1 && ++optionIndex < this.props.validUnitOptions.length);
-
-    // Did we find a valid unit match? If not, return null
-    if (index === -1 || index + this.props.validUnitOptions[optionIndex].length != valToConvert.length) {
-      return null;
-    }
-
-    // If we mad it here we found a matching unit, now
-    // parse the number from the value
-    let parsedNumbers: string = valToConvert.substring(0, index);
-    let numberValue: number = Number(parsedNumbers);
-
-    // Is what we parsed a valid number?
-    numberValue = isNaN(numberValue) ? null : numberValue;
-
-    return [numberValue, optionIndex];
+    this.setState({
+      value: value,
+    });
   }
 
   /**
@@ -392,8 +241,10 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
    * True by default and useful if we get here from a mousedown event
    * on one of the buttons. False if this fired from a keydown event
    */
-  private _increment(shouldSpin: boolean = true) {
-    this._updateValueByStep(shouldSpin, true /* increase */);
+  _increment(shouldSpin: boolean = true) {
+    var newValue = this._onIncrement(this.state.value);
+    this._lastValidValue = newValue;
+    this.setState({ value: newValue });
   }
 
   /**
@@ -402,50 +253,10 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
    * True by default and useful if we get here from a mousedown event
    * on one of the buttons. False if this fired from a keydown event
    */
-  private _decrement(shouldSpin: boolean = true) {
-    this._updateValueByStep(shouldSpin, false /* increase */);
-  }
-
-  /**
-   * Update (increment or decrement) the current value by the step value (from props)
-   * @param shouldSpin - When finished updating, should we spin up another update?
-   * (for example, if responding to mousedown should be true so that the value will spin
-   * (since only one mousedown fires); but if responding to a keydown this should be false
-   * (since keydowns continue to fire as long as the key is depressed))
-   * @param increase - Are we increasing the value?
-   */
-  private _updateValueByStep(shouldSpin: boolean, increase: boolean) {
-    if (this.props.disabled) {
-      this._stop();
-      return;
-    }
-
-    let direction: number = increase ? 1 : -1;
-    let updatedValue: number = this.state.value + (direction * this.props.step);
-    let isnewValueWithinRange: boolean = updatedValue <= this.props.max && updatedValue >= this.props.min;
-
-    // Only update the value if it is valid
-    if (isnewValueWithinRange) {
-      let stateToSet: any = {};
-
-      assign(stateToSet, { value: updatedValue });
-
-      if (this.state.spinning != shouldSpin) {
-        assign(stateToSet, { spinning: shouldSpin })
-      }
-
-      if (stateToSet != {}) {
-        this.setState({ ...stateToSet });
-      }
-
-      // spin up the next update if should spin is true
-      if (shouldSpin) {
-        this._currentStepFunctionHandle = window.setTimeout(() => { this._updateValueByStep(shouldSpin, increase); }, this._stepDelay);
-        return;
-      }
-    }
-
-    this._stop();
+  _decrement(shouldSpin: boolean = true) {
+    var newValue = this._onDecrement(this.state.value);
+    this._lastValidValue = newValue;
+    this.setState({ value: newValue });
   }
 
   /**
@@ -484,7 +295,6 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
       event.currentTarget.blur();
       this.focus();
     }
-
   }
 
   /**

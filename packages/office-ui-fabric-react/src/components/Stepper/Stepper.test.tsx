@@ -28,7 +28,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -42,13 +42,14 @@ describe('Stepper', () => {
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];
-    expect(inputDOM.value).to.equal(String(exampleDefaultValue));
+
+    expect(inputDOM.value).to.equal(exampleDefaultValue);
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
     expect(inputDOM.getAttribute('aria-labelledby')).to.equals(labelDOM.id);
 
-    // Assert on the label element.
+    // // Assert on the label element.
     expect(labelDOM.textContent).to.equal(exampleLabelValue);
     expect(labelDOM.htmlFor).to.equal(inputDOM.id);
   });
@@ -57,7 +58,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -99,7 +100,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -141,7 +142,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -176,7 +177,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -211,7 +212,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -247,7 +248,7 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -283,8 +284,8 @@ describe('Stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 21;
+    const exampleDefaultValue: string = '12';
+    const exampleNewValue: string = '21';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -297,21 +298,20 @@ describe('Stepper', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(inputDOM.value).to.equal(String(exampleNewValue));
+    expect(inputDOM.value).to.equal(exampleNewValue);
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
-
   });
 
   it('should reset the value of the stepper with invalid manual entry', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
+    const exampleDefaultValue: string = '12';
     const exampleNewValue: string = 'garbage';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -328,19 +328,18 @@ describe('Stepper', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(inputDOM.value).to.equal(String(exampleDefaultValue));
+    expect(inputDOM.value).to.equal(exampleDefaultValue);
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
-
   });
 
-  it('should revert existing value when input value is higher than the max of the stepper', () => {
+  it('should revert to max value when input value is higher than the max of the stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 23;
+    const exampleDefaultValue: string = '12';
+    const exampleNewValue: string = '23';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -353,21 +352,21 @@ describe('Stepper', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(exampleNewValue));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(inputDOM.value).to.equal(String(exampleDefaultValue));
+    expect(inputDOM.value).to.equal(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleMaxValue));
   });
 
   it('should revert existing value when input value is lower than the min of the stepper', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 0;
+    const exampleDefaultValue: string = '12';
+    const exampleNewValue: string = '0';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <Stepper
@@ -383,116 +382,23 @@ describe('Stepper', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(inputDOM.value).to.equal(String(exampleDefaultValue));
+    expect(inputDOM.value).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
-
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleMinValue));
   });
 
-  it('should show value with unit on the stepper', () => {
-    const exampleLabelValue: string = 'Stepper';
-    const exampleMinValue: number = 2;
-    const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 13;
-    const exampleValidUnitOptions: string[] = ['"'];
-
-    const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
-        label={ exampleLabelValue }
-        min={ exampleMinValue }
-        max={ exampleMaxValue }
-        defaultValue={ exampleDefaultValue }
-        validUnitOptions={ exampleValidUnitOptions }
-      />
-    );
-
-    // Assert on the input element.
-    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(inputDOM.value).to.equal(String(exampleNewValue) + exampleValidUnitOptions[0]);
-    expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
-    expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
-
-  });
-
-  it('should show new value with unit update on the stepper', () => {
-    const exampleLabelValue: string = 'Stepper';
-    const exampleMinValue: number = 2;
-    const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 13;
-    const exampleValidUnitOptions: string[] = ['"', 'pt'];
-
-    const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
-        label={ exampleLabelValue }
-        min={ exampleMinValue }
-        max={ exampleMaxValue }
-        defaultValue={ exampleDefaultValue }
-        validUnitOptions={ exampleValidUnitOptions }
-      />
-    );
-
-    // Assert on the input element.
-    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue) + exampleValidUnitOptions[1]));
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(inputDOM.value).to.equal(String(exampleNewValue) + ' ' + exampleValidUnitOptions[1]);
-    expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
-    expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
-
-  });
-
-  it('should revert existing value and unit when input unit is invalid the stepper', () => {
-    const exampleLabelValue: string = 'Stepper';
-    const exampleMinValue: number = 2;
-    const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 13;
-    const exampleValidUnitOptions: string[] = ['"', 'pt'];
-    const exampleNewInvalidUnit: string = 'invalidValue';
-
-    const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
-        label={ exampleLabelValue }
-        min={ exampleMinValue }
-        max={ exampleMaxValue }
-        defaultValue={ exampleDefaultValue }
-        validUnitOptions={ exampleValidUnitOptions }
-      />
-    );
-
-    // Assert on the input element.
-    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue) + ' ' + exampleNewInvalidUnit));
-    ReactTestUtils.Simulate.blur(inputDOM);
-
-    expect(inputDOM.value).to.equal(String(exampleDefaultValue) + exampleValidUnitOptions[0]);
-    expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
-    expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
-
-  });
-
-  it('should use onErrorMessage passed to the stepper (with valid input)', () => {
+  it('should use onBlur passed to the stepper (with valid input)', () => {
     const errorMessage: string = 'The value is invalid';
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 21;
+    const exampleDefaultValue: string = '12';
+    const exampleNewValue: string = '21';
 
     function validator(newValue: string, state: IStepperState, props: IStepperProps): string {
-      let numberValue: number = Number(newValue);
-
-      return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? '' : errorMessage;
+      let numberValue: number = +newValue;
+      return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? newValue : errorMessage;
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -501,7 +407,7 @@ describe('Stepper', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
-        onGetErrorMessage={ validator }
+        onBlur={ validator }
       />
     );
 
@@ -514,27 +420,20 @@ describe('Stepper', () => {
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
-
   });
 
-  it('should use onErrorMessage passed to the stepper (with invalid input)', () => {
+  it('should use onBlur passed to the stepper (with invalid input)', () => {
     const errorMessage: string = 'The value is invalid';
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 12;
-    const exampleNewValue: number = 100;
+    const exampleDefaultValue: string = '12';
+    const exampleNewValue: string = '100';
 
     function validator(newValue: string, state: IStepperState, props: IStepperProps): string {
       let numberValue: number = Number(newValue);
 
-      return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? '' : errorMessage;
-    }
-
-    function assertErrorMessage(renderedDOM: HTMLElement, expectedErrorMessage: string): void {
-      const errorMessageDOM: HTMLElement =
-        renderedDOM.querySelector('[data-automation-id=error-message]') as HTMLElement;
-      expect(errorMessageDOM.textContent).to.equal(expectedErrorMessage);
+      return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? newValue : errorMessage;
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -543,7 +442,7 @@ describe('Stepper', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
-        onGetErrorMessage={ validator }
+        onBlur={ validator }
       />
     );
 
@@ -552,19 +451,17 @@ describe('Stepper', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleNewValue)));
     ReactTestUtils.Simulate.blur(inputDOM);
 
-    expect(inputDOM.value).to.equal(String(exampleNewValue));
+    expect(inputDOM.value).to.equal(String(errorMessage));
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
-    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
-    assertErrorMessage(renderedDOM, errorMessage);
-
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(errorMessage));
   });
 
   it('should stop spinning if text field is focused while actively spinning', () => {
     const exampleLabelValue: string = 'Stepper';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: number = 2;
+    const exampleDefaultValue: string = '12';
 
     function delay(millisecond: number): Promise<void> {
       return new Promise<void>((resolve) => setTimeout(resolve, millisecond));

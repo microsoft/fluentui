@@ -12,15 +12,20 @@ export class StepperBasicExample extends React.Component<any, any> {
 
         <Stepper
           label='Basic Stepper:'
-          defaultValue={ 3 }
         />
 
         <Stepper
           label='Stepper with unit:'
-          defaultValue={ 7 }
-          min={ 5 }
-          max={ 10 }
-          validUnitOptions={ ['"', 'in', 'cm', 'pt', 'px'] }
+          defaultValue={ '7' }
+          onBlur={ (value: string, state: IStepperState, props: IStepperProps) => {
+            return '2';
+          } }
+          onIncrement={ (value: string) => {
+            return String(+value + 1);
+          } }
+          onDecrement={ (value: string) => {
+            return String(+value - 1);
+          } }
         />
 
       </div>

@@ -8,13 +8,13 @@ export interface IStepperProps {
    * This value is mutually exclusive to value. Use one or the other.
    * @default 0
    */
-  defaultValue?: number;
+  defaultValue?: string;
 
   /**
    * The initial value of the Stepper. Use this if you intend to pass in a new value as a result of onChange events.
    * This value is mutually exclusive to defaultValue. Use one or the other.
    */
-  value?: number;
+  value?: string;
 
   /**
    * The min value of the Stepper.
@@ -55,12 +55,6 @@ export interface IStepperProps {
   className?: string;
 
   /**
-   * Acceptable units for spinner (e.g. suffix for the textFeild value), defaults to '' if nothing given here,
-   * otherwise [0] is used by default.
-   */
-  validUnitOptions?: string[];
-
-  /**
    * Label for the spinner.
    */
   label?: string;
@@ -74,7 +68,11 @@ export interface IStepperProps {
    *     show a red border and show an error message below the text field.
    *
    */
-  onGetErrorMessage?: (value: string, state: IStepperState, props: IStepperProps) => string;
+  onBlur?: (value: string, state: IStepperState, props: IStepperProps) => string;
+
+  onIncrement?: (value: string) => string;
+
+  onDecrement?: (value: string) => string;
 }
 
 export interface IStepper {

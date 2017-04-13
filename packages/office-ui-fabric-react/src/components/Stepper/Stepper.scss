@@ -1,3 +1,6 @@
+@import '../../common/common';
+@import '../Label/LabelMixins.scss';
+
 :global {
 
 .arrowBox, .textField,
@@ -9,6 +12,7 @@
 .stepperContainer {
   width: 100px;
   height: 32px;
+  min-width: 100px;
 }
 
   .arrowBox {
@@ -21,15 +25,55 @@
     padding: 0px;
   }
 
-  .textField {
+  .spinButton-input {
+    @include ms-u-normalize;
+    @include ms-baseFont;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+    border-radius: 0;
+    font-weight: $ms-font-weight-regular;
+    font-size: $ms-font-size-m;
+    color: $ms-color-neutralPrimary;
+    height: 32px;
+    @include padding(0, 12px, 0, 12px);
+    outline: 0;
+    text-overflow: ellipsis;
     display: block;
     float: left;
-    height: 32px;
-    width: 70px;
+    width: 70%;
     border-right-width: 0px;
     overflow: hidden;
     cursor: text;
     user-select: text;
+
+    &:hover {
+      border-color: $ms-color-neutralSecondaryAlt;
+    }
+
+    &:focus {
+      border-color: $ms-color-themePrimary;
+    }
+
+    &:hover,
+    &:focus {
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+    }
+
+    &[disabled] {
+      background-color: $ms-color-neutralLighter;
+      border-color: $ms-color-neutralLighter;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    @include input-placeholder {
+      color: $ms-color-neutralSecondary;
+    }
   }
 
   .upButton, .downButton {
