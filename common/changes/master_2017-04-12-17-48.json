@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix issue #1274",
+      "comment": "DatePicker: Persist selected date across re-renders",
       "type": "patch"
     }
   ],
