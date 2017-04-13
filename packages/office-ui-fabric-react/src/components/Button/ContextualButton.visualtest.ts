@@ -12,6 +12,7 @@ casper.
     phantomcss.screenshot('#ContextualButton', 'ContextualButton_hovered');
   }).then(function () {
     this.mouse.down('#ContextualButton');
+    casper.wait(2000);
     phantomcss.screenshot('#ContextualButton', 'ContextualButton_pressed');
     phantomcss.screenshot('.ContextualButtonMenu', 'ContextualButtonMenu_pressed');
   }).

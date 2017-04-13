@@ -4,10 +4,10 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 export default class CheckboxVPage extends React.Component<any, any> {
   public render() {
-    return <div >
+    return <div style={ { backgroundColor: 'white' } } >
       <Checkbox className='Checkbox' label='Check Box'
         defaultChecked={ true } />
-      <Checkbox className='CheckboxDisbaled' label='Check Box Disabled'
+      <Checkbox className='CheckboxDisabled' label='Check Box Disabled'
         defaultChecked={ true }
         disabled={ true } />
     </div>;
