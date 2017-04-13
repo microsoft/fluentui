@@ -22,17 +22,17 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
   return (
     <button
       type='button'
-      className={ css('ms-DetailsRow-check', styles.check) }
+      className={ css('ms-DetailsRow-check', styles.check, {
+        [styles.checkDisabled]: !props.canSelect,
+        'ms-DetailsRow-check--isDisabled': !props.canSelect
+      }) }
       role='button'
       aria-pressed={ selected }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
       aria-label={ props.ariaLabel }
     >
-      { props.canSelect ?
-        <Check checked={ selected } /> :
-        <div className={ css('ms-DetailsRow-checkSpacer', styles.checkSpacer) } />
-      }
+      <Check checked={ selected } />
     </button>
   );
 };
