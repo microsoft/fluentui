@@ -7,7 +7,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   OverflowSet
 } from '../index';
-import { ResizeGroup } from '../../ResizeGroup';
 
 export class OverflowSetBasicExample extends BaseComponent<any, any> {
 
