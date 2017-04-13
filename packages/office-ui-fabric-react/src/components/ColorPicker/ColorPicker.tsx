@@ -148,7 +148,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
 
   @autobind
   private _onHexChanged() {
-    this._updateColor(getColorFromString("#" + this.hexText.value));
+    this._updateColor(getColorFromString('#' + this.hexText.value));
   }
 
   @autobind
