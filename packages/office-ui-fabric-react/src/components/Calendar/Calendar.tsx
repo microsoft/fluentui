@@ -89,6 +89,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   navigatedDate={ navigatedDate }
                   onSelectDate={ this._onSelectDate }
                   onNavigateDate={ this._onNavigateDate }
+                  onDismiss={ this.props.onDismiss }
                   firstDayOfWeek={ firstDayOfWeek }
                   dateRangeType={ dateRangeType }
                   autoNavigateOnSelection={ autoNavigateOnSelection }
@@ -158,6 +159,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
       this._onGotoToday();
+    } else if (ev.which === KeyCodes.tab && !ev.shiftKey) {
+      if (this.props.onDismiss) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        this.props.onDismiss();
+      }
     }
   };
 

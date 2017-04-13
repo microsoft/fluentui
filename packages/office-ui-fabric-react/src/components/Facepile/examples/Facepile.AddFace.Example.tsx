@@ -24,7 +24,11 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
     let facepileProps: IFacepileProps = {
       personas: facepilePersonas.slice(0, numberOfFaces),
       maxDisplayablePersonas: 5,
-      overflowButtonProps: {},
+      overflowButtonProps: {
+        ariaLabel: 'More users',
+        onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
+          alert('overflow icon clicked')
+      },
       overflowButtonType: OverflowButtonType.descriptive,
       showAddButton: true,
       addButtonProps: {
@@ -32,7 +36,8 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
         onClick: (ev: React.MouseEvent<HTMLButtonElement>) => this.setState({
           numberOfFaces: this.state.numberOfFaces + 1
         })
-      }
+      },
+      ariaDescription: 'To move through the items use left and right arrow keys.'
     };
 
     return (
