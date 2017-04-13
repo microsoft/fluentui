@@ -19,6 +19,24 @@ export interface IContextualMenu {
 
 }
 
+export enum ContextualMenuColorScheme {
+  /**
+   * Icon color: themePrimary,
+   * Highlighted menu item background color: neutralLighter,
+   * Expanded menu item background color: neutralQuaternaryAlt,
+   * Header text color: themePrimary
+   */
+  Default = 0,
+
+  /**
+   * Icon color: #a6a6a6,
+   * Highlighted menu item background color: themeDark,
+   * Expanded menu item background color: themeDarker,
+   * Header text color: #a6a6a6
+   */
+  Themed = 1,
+}
+
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
@@ -38,6 +56,16 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * @deprecated at version 0.72.1 and will no longer exist after 1.0 use target instead
    */
   targetElement?: HTMLElement;
+
+  /**
+   * The color scheme determines the following colors:
+   * - the color of a header menu item
+   * - the background color of a menu item when it is hovered
+   * - the colors of a menu item's text
+   * - the colors of a menu item's icon
+   * @default ContextualMenuColorScheme.Neutral
+   */
+  colorScheme?: ContextualMenuColorScheme;
 
   /**
    * How the element should be positioned

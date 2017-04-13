@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  ContextualMenuItemType,
+  ContextualMenuColorScheme
+} from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -21,7 +26,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-import styles = require('./ContextualMenu.scss');
+import * as styles from './ContextualMenu.scss';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -86,6 +91,8 @@ export function getSubmenuItems(item: IContextualMenuItem) {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
+const ContextualMenuThemedAltColor = '#a6a6a6';
+
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
@@ -96,11 +103,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16,
     arrowDirection: FocusZoneDirection.vertical,
+    colorScheme: ContextualMenuColorScheme.Default,
   };
 
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
+  private _hasInitialFocusEventHappend: boolean;
   private _enterTimerId: number;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
@@ -115,6 +124,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     this._isFocusingPreviousElement = false;
+    this._hasInitialFocusEventHappend = false;
     this._enterTimerId = 0;
   }
 
@@ -229,7 +239,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               </FocusZone>
             ) : (null) }
             { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-              <ContextualMenu { ...submenuProps } />
+              <ContextualMenu { ...submenuProps } colorScheme={ this.props.colorScheme } />
             ) : (null) }
           </div>
         </Callout>
@@ -237,6 +247,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       return null;
     }
+  }
+
+  private _headerStyles() {
+    return this.props.colorScheme === ContextualMenuColorScheme.Default ? styles.headerDefault : styles.headerThemed;
+  }
+
+  private _linkStyles() {
+    return this.props.colorScheme === ContextualMenuColorScheme.Default ? styles.linkDefault : styles.linkThemed;
   }
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
@@ -296,8 +314,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
-      <div className={ css('ms-ContextualMenu-header', styles.header) } style={ item.style }>
-        { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
+      <div className={ css('ms-ContextualMenu-header', this._headerStyles()) } style={ item.style }>
+        { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons, true) }
       </div>);
   }
 
@@ -309,11 +327,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           href={ item.href }
           className={ css(
             'ms-ContextualMenu-link',
-            styles.link,
+            this._linkStyles(),
             (item.isDisabled || item.disabled) && 'is-disabled') }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
-          { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
+          { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons, false) }
         </a>
       </div>);
   }
@@ -333,14 +351,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     let itemButtonProperties = {
-      className: css('ms-ContextualMenu-link', styles.link, {
+      className: css('ms-ContextualMenu-link', this._linkStyles(), {
         ['is-expanded ' + styles.isExpanded]: (expandedMenuItemKey === item.key)
       }),
       onClick: this._onItemClick.bind(this, item),
       onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
-      onMouseLeave: this._onMouseLeave,
+      onMouseLeave: this._onMouseLeave.bind(this, item),
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+      onFocus: (ev: any) => this._onItemFocus(item, ev),
+      onBlur: (ev: any) => this._onItemBlur(item, ev),
       disabled: item.isDisabled || item.disabled,
       href: item.href,
       title: item.title,
@@ -353,20 +373,24 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return React.createElement(
       'button',
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
-      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons, false));
   }
 
-  private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+  private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean, isHeader: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
+    const iconColor = this.props.colorScheme === ContextualMenuColorScheme.Themed
+      ? this._iconColorForThemedItem(item, false)
+      : (null);
     return (
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
           <Icon
             iconName={ isItemChecked ? 'CheckMark' : 'CustomIcon' }
             className={ css('ms-ContextualMenu-icon', styles.icon) }
-            onClick={ this._onItemClick.bind(this, item) } />
+            onClick={ this._onItemClick.bind(this, item) }
+            style={ { color: iconColor } } />
         ) : (null) }
-        { (hasIcons) ? (
+        { (hasIcons && !isHeader) ? (
           this._renderIcon(item)
         ) : (null) }
         <span className={ css('ms-ContextualMenu-itemText', styles.itemText) }>{ item.name }</span>
@@ -374,7 +398,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           <Icon
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
             { ...item.submenuIconProps }
-            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, item.submenuIconProps ? item.submenuIconProps.className : '') } />
+            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, item.submenuIconProps ? item.submenuIconProps.className : '') }
+            style={ { color: iconColor } } />
         ) : (null) }
       </div>
     );
@@ -388,10 +413,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       className: item.icon ? 'ms-Icon--' + item.icon : ''
     };
     // Use the default icon color for the known icon names
-    let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-ContextualMenu-iconColor ' + styles.iconColor);
+    let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-ContextualMenu-iconColor ' + styles.iconColor)
     let iconClassName = css('ms-ContextualMenu-icon', styles.icon, iconColorClassName, iconProps.className);
 
-    return <Icon { ...iconProps } className={ iconClassName } />;
+    // If the current color scheme is Themed, then use the fixed icon color.
+    if (this.props.colorScheme === ContextualMenuColorScheme.Themed) {
+      return <Icon { ...iconProps } className={ iconClassName } style={ { color: this._iconColorForThemedItem(item, false) } } />;
+    } else {
+      return <Icon { ...iconProps } className={ iconClassName } />;
+    }
   }
 
   @autobind
@@ -409,9 +439,45 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  private _iconColorForThemedItem(item: any, isHighlighted: boolean) {
+    const isMenuItemExpanded: boolean = this.state.expandedMenuItemKey === item.key;
+    const iconStyle = item.iconProps !== undefined ? item.iconProps.style : undefined;
+
+    // Themed color scheme requires the menu item's icon color to become white on focus
+    // Otherwise, use the color specified by the client or the fixed color defined by Themed color scheme
+    if (isMenuItemExpanded || isHighlighted) {
+      return 'white';
+    } else if (iconStyle !== undefined && iconStyle.color !== undefined) {
+      return iconStyle.color;
+    } else {
+      return ContextualMenuThemedAltColor;
+    }
+  }
+
+  private _updateIconColorForMenuItemIfNeeded(menuItem: any, ev: React.SyntheticEvent<HTMLElement>, isHighlighted: boolean) {
+    const iconElement = ev.currentTarget.getElementsByTagName('i')[0];
+    if (this.props.colorScheme === ContextualMenuColorScheme.Themed && iconElement !== undefined) {
+      iconElement.style.color = this._iconColorForThemedItem(menuItem, isHighlighted);
+    }
+  }
+
+  private _onItemFocus(item: any, ev: React.FocusEvent<HTMLElement>) {
+    // We automatically focus on the first menu item when we open a context menu,
+    // but the initial focus is not supposed to be visible, so we need to avoid
+    // changing the color in that case.
+    if (this._hasInitialFocusEventHappend) {
+      this._updateIconColorForMenuItemIfNeeded(item, ev, true);
+    } else {
+      this._hasInitialFocusEventHappend = true;
+    }
+  }
+
+  private _onItemBlur(item: any, ev: React.FocusEvent<HTMLElement>) {
+    this._updateIconColorForMenuItemIfNeeded(item, ev, false);
+  }
+
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
-
     if (item.key !== this.state.expandedMenuItemKey) {
       if (hasSubmenuItems(item)) {
         this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
@@ -419,11 +485,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
       }
     }
+    this._updateIconColorForMenuItemIfNeeded(item, ev, true);
   }
 
   @autobind
-  private _onMouseLeave(ev: React.MouseEvent<HTMLElement>) {
+  private _onMouseLeave(item: any, ev: React.MouseEvent<HTMLElement>) {
     this._async.clearTimeout(this._enterTimerId);
+    this._updateIconColorForMenuItemIfNeeded(item, ev, false);
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
