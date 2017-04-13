@@ -26,7 +26,7 @@ export class OverflowSetPage extends React.Component<any, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/OverflowSet/OverflowSet.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/OverflowSet/OverflowSet.Props.ts')
             ] }
           />
         }
