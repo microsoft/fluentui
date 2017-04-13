@@ -85,9 +85,15 @@ export function setMonth(date: Date, month: number): Date {
  * @return {boolean} True if the two dates represent the same date (regardless of time-of-day), false otherwise.
  */
 export function compareDates(date1: Date, date2: Date): boolean {
-  return (date1.getFullYear() === date2.getFullYear()
-    && date1.getMonth() === date2.getMonth()
-    && date1.getDate() === date2.getDate());
+  if (date1 == null && date2 == null) {
+    return true;
+  } else if (date1 == null || date2 == null) {
+    return false;
+  } else {
+    return (date1.getFullYear() === date2.getFullYear()
+      && date1.getMonth() === date2.getMonth()
+      && date1.getDate() === date2.getDate());
+  }
 }
 
 /**
