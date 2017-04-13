@@ -86,7 +86,6 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
     } else {
       this._onBlur = this._defaultOnBlur;
     }
-    this._onBlur = this._onBlur.bind(this);
 
     if (props.onIncrement) {
       this._onIncrement = props.onIncrement;
@@ -139,7 +138,8 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
 
     return (
       <div className='stepperContainer' >
-        aria-valuemin={ this.props.min }
+        aria-valuemin={ String(this.props.min) }
+        aria-valuemax={ String(this.props.max) }
         { label && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label }</Label> }
         <input
           value={ value }
