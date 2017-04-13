@@ -11,20 +11,28 @@ export class StepperBasicExample extends React.Component<any, any> {
       <div className='ms-BasicSteppersExample'>
 
         <Stepper
-          label='Basic Stepper:'
+          label={ 'Basic Stepper:' }
+          min={ 0 }
+          max={ 100 }
+          step={ 1 }
         />
 
-        <Stepper
-          label='Stepper with unit:'
+        < Stepper
+          label='Stepper with custom implementation'
           defaultValue={ '7' }
           onBlur={ (value: string, state: IStepperState, props: IStepperProps) => {
-            return '2';
+            if (isNaN(+value)) {
+              return '0'
+            }
+
+            const newValue = Math.min(100, Math.max(0, +value));
+            return String(newValue);
           } }
           onIncrement={ (value: string) => {
-            return String(+value + 1);
+            return String(+value + 2);
           } }
           onDecrement={ (value: string) => {
-            return String(+value - 1);
+            return String(+value - 2);
           } }
         />
 
