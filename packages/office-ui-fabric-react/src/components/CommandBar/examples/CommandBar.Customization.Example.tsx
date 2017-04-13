@@ -29,17 +29,16 @@ export class CommandBarCustomizationExample extends React.Component<any, SplitDr
                 name: 'Add',
                 onRender: this._renderSplitButtonMenuItem,
                 className: 'ms-CommandBarItem',
-                //items: {
                 subMenuProps: {
                   items: [
                     {
-                      key: 'emailMessage1',
+                      key: 'emailMessage',
                       name: 'Email message',
                       icon: 'Mail',
                       ['data-automation-id']: 'newEmailButton'
                     },
                     {
-                      key: 'calendarEvent1',
+                      key: 'calendarEvent',
                       name: 'Calendar event',
                       icon: 'Calendar',
                       ['data-automation-id']: 'newCalendarButton'

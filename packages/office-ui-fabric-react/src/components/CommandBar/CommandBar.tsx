@@ -158,7 +158,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     if (item.onRender) {
       return <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
-        { [item.onRender(item)] }
+        { item.onRender(item) }
       </div>;
     }
 
