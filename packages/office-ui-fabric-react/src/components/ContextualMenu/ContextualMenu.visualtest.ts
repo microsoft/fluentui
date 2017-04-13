@@ -4,17 +4,15 @@ declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 /* tslint:disable:no-function-expression */
 casper.
-  start(baseUrl + 'button').
+  start(baseUrl + 'contextualMenu').
   then(function () {
-    phantomcss.screenshot('#DefaultButton', 'Button_not_pressed');
+    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_not_pressed');
   }).then(function () {
-    this.mouse.move('#DefaultButton');
-    phantomcss.screenshot('#DefaultButton', 'Button_Hovered');
+    this.mouse.move('#ContextualMenu');
+    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_hovered');
   }).then(function () {
-    this.mouse.down('#DefaultButton');
-    phantomcss.screenshot('#DefaultButton', 'Button_pressed');
-  }).then(function () {
-    phantomcss.screenshot('#IconButton', 'Icon_Button');
+    this.mouse.down('#ContextualMenu');
+    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_pressed');
   });
 casper.run(function () { casper.test.done(); });
 /* tslint:enable:no-function-expression */
