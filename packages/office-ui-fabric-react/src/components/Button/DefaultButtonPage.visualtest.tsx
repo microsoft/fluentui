@@ -9,12 +9,12 @@ export default class DefaultButtonVPage extends React.Component<any, any> {
     return <div>
       <div><label> Default Button:   </label>
         <DefaultButton id='DefaultButton' icon='Add' text='Default Button' /></div>
-      <div><label> Default Button image:   </label>
-        <div><label> Default Button Disabled:   </label>
-          <DefaultButton id='DefaultButtonDisabled' disabled={ true } icon='Add' text='Default Button' /></div>
-        <div style={ { backgroundColor: 'white' } }>
-          <IconButton id={ 'IconButton' } icon={ iconName } />
-        </div>
-      </div>;
+
+      <div><label> Default Button Disabled:   </label>
+        <DefaultButton id='DefaultButtonDisabled' disabled={ true } icon='Add' text='Default Button' /></div>
+      <div style={ { backgroundColor: 'white' } }>
+        <IconButton id={ 'IconButton' } icon={ iconName } />
+      </div>
+    </div>;
   }
 }
