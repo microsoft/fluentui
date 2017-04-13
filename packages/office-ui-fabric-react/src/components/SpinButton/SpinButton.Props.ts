@@ -1,35 +1,35 @@
 import * as React from 'react';
-import { IStepperState } from './Stepper';
+import { ISpinButtonState } from './SpinButton';
 
-export interface IStepperProps {
+export interface ISpinButtonProps {
 
   /**
-   * The initial value of the Stepper. Use this if you intend for the Stepper to be an uncontrolled component.
+   * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.
    * This value is mutually exclusive to value. Use one or the other.
    * @default 0
    */
   defaultValue?: string;
 
   /**
-   * The initial value of the Stepper. Use this if you intend to pass in a new value as a result of onChange events.
+   * The initial value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
    * This value is mutually exclusive to defaultValue. Use one or the other.
    */
   value?: string;
 
   /**
-   * The min value of the Stepper.
+   * The min value of the SpinButton.
    * @default 0
    */
   min?: number;
 
   /**
-   * The max value of the Stepper.
+   * The max value of the SpinButton.
    * @default 10
    */
   max?: number;
 
   /**
-   * The diffrrence between the two adjacent values of the Stepper.
+   * The diffrrence between the two adjacent values of the SpinButton.
    * @default 1
    */
   step?: number;
@@ -40,17 +40,17 @@ export interface IStepperProps {
   onChange?: (value: number) => void;
 
   /**
-   * A description of the Stepper for the benefit of screen readers.
+   * A description of the SpinButton for the benefit of screen readers.
    */
   ariaLabel?: string;
 
   /**
-   * Whether or not the Stepper is disabled.
+   * Whether or not the SpinButton is disabled.
    */
   disabled?: boolean;
 
   /**
-  * Optional className for Stepper.
+  * Optional className for SpinButton.
   */
   className?: string;
 
@@ -68,13 +68,13 @@ export interface IStepperProps {
    *     show a red border and show an error message below the text field.
    *
    */
-  onBlur?: (value: string, state: IStepperState, props: IStepperProps) => string;
+  onBlur?: (value: string, state: ISpinButtonState, props: ISpinButtonProps) => string;
 
   onIncrement?: (value: string) => string;
 
   onDecrement?: (value: string) => string;
 }
 
-export interface IStepper {
+export interface ISpinButton {
   value?: number
 }

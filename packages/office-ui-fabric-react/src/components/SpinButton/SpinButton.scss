@@ -4,12 +4,12 @@
 :global {
 
 .arrowBox, .textField,
-.upButton, .downButton, .stepperContainer {
+.upButton, .downButton, .spinButtonContainer {
   outline: none;
   font-size: 12px;
 }
 
-.stepperContainer {
+.spinButtonContainer {
   width: 100px;
   height: 32px;
   min-width: 100px;

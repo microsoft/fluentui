@@ -1,1 +1,1 @@
-export * from './components/Stepper/index';
+export * from './components/SpinButton/index';

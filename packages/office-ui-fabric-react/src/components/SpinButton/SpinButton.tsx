@@ -11,14 +11,14 @@ import {
   assign
 } from '../../Utilities';
 import {
-  IStepper,
-  IStepperProps
-} from './Stepper.Props';
-import './Stepper.scss';
+  ISpinButton,
+  ISpinButtonProps
+} from './SpinButton.Props';
+import './SpinButton.scss';
 
-export interface IStepperState {
+export interface ISpinButtonState {
   /**
-   * the value of the stepper
+   * the value of the spin button
    */
   value?: string;
 
@@ -29,16 +29,16 @@ export interface IStepperState {
   spinning?: boolean;
 }
 
-export class Stepper extends BaseComponent<IStepperProps, IStepperState> implements IStepper {
+export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   private _input: HTMLInputElement;
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
 
-  private _onBlur?: (value: string, state: IStepperState, props: IStepperProps) => string;
+  private _onBlur?: (value: string, state: ISpinButtonState, props: ISpinButtonProps) => string;
   private _onIncrement?: (value: string) => string;
   private _onDecrement?: (value: string) => string;
-  private _defaultOnBlur = (value: string, state: IStepperState, props: IStepperProps) => {
+  private _defaultOnBlur = (value: string, state: ISpinButtonState, props: ISpinButtonProps) => {
     if (isNaN(+value)) {
       return this._lastValidValue;
     }
@@ -54,7 +54,7 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
     return String(newValue);
   };
 
-  public static defaultProps: IStepperProps = {
+  public static defaultProps: ISpinButtonProps = {
     step: 1,
     min: 0,
     max: 100,
@@ -67,7 +67,7 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
 
   private _formattedValidUnitOptions: string[] = [];
 
-  constructor(props?: IStepperProps) {
+  constructor(props?: ISpinButtonProps) {
     super(props);
 
     let value = props.value || props.defaultValue || String(props.min);
@@ -115,7 +115,7 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
   /**
   * Invoked when a component is receiving new props. This method is not called for the initial render.
   */
-  public componentWillReceiveProps(newProps: IStepperProps): void {
+  public componentWillReceiveProps(newProps: ISpinButtonProps): void {
     if (newProps.value !== undefined) {
       let value = Math.max(newProps.min, Math.min(newProps.max, +newProps.value));
 
@@ -137,7 +137,7 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
     } = this.state;
 
     return (
-      <div className='stepperContainer' >
+      <div className='spinButtonContainer' >
         aria-valuemin={ String(this.props.min) }
         aria-valuemax={ String(this.props.max) }
         { label && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label }</Label> }

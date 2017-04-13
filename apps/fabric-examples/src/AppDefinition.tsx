@@ -220,11 +220,11 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/StepperPage/StepperPage').StepperPage)),
-          key: 'Stepper',
-          name: 'Stepper',
+          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/SpinButtonPage/SpinButtonPage').SpinButtonPage)),
+          key: 'SpinButton',
+          name: 'SpinButton',
           status: ExampleStatus.beta,
-          url: '#/examples/stepper'
+          url: '#/examples/SpinButton'
         },
         {
           getComponent: cb => require.ensure([], () => cb(require<any>('./pages/TeachingBubblePage/TeachingBubblePage').TeachingBubblePage)),

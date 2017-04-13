@@ -1,26 +1,26 @@
 import * as React from 'react';
-import { Stepper, IStepperState, IStepperProps } from 'office-ui-fabric-react/lib/Stepper';
+import { SpinButton, ISpinButtonState, ISpinButtonProps } from 'office-ui-fabric-react/lib/SpinButton';
 import { Label, assign } from 'office-ui-fabric-react/lib';
 //import { assign } from 'office-ui-fabric-react/lib/Utilities';
-import './Stepper.Basic.Example.scss';
+import './SpinButton.Basic.Example.scss';
 
-export class StepperBasicExample extends React.Component<any, any> {
+export class SpinButtonBasicExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <div className='ms-BasicSteppersExample'>
+      <div className='ms-BasicSpinButtonsExample'>
 
-        <Stepper
-          label={ 'Basic Stepper:' }
+        <SpinButton
+          label={ 'Basic SpinButton:' }
           min={ 0 }
           max={ 100 }
           step={ 1 }
         />
 
-        < Stepper
-          label='Stepper with custom implementation'
+        < SpinButton
+          label='SpinButton with custom implementation'
           defaultValue={ '7' }
-          onBlur={ (value: string, state: IStepperState, props: IStepperProps) => {
+          onBlur={ (value: string, state: ISpinButtonState, props: ISpinButtonProps) => {
             if (isNaN(+value)) {
               return '0'
             }

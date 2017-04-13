@@ -3,15 +3,15 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import {
-  Stepper,
-  IStepperState
-} from './Stepper';
-import { IStepperProps } from './Stepper.Props';
+  SpinButton,
+  ISpinButtonState
+} from './SpinButton';
+import { ISpinButtonProps } from './SpinButton.Props';
 import { KeyCodes } from '../../Utilities';
 
 const expect: Chai.ExpectStatic = chai.expect;
 
-describe('Stepper', () => {
+describe('SpinButton', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
     const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
@@ -25,13 +25,13 @@ describe('Stepper', () => {
   }
 
   it('should render a spinner with the default value on the input element', () => {
-    const exampleLabelValue: string = 'Stepper';
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -54,14 +54,14 @@ describe('Stepper', () => {
     expect(labelDOM.htmlFor).to.equal(inputDOM.id);
   });
 
-  it('should increment the value in the stepper via the up button', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should increment the value in the spin button via the up button', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -96,14 +96,14 @@ describe('Stepper', () => {
 
   });
 
-  it('should decrement the value in the stepper by the down button', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should decrement the value in the spin button by the down button', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -138,14 +138,14 @@ describe('Stepper', () => {
 
   });
 
-  it('should increment the value in the stepper by the up arrow', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should increment the value in the spin button by the up arrow', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -173,14 +173,14 @@ describe('Stepper', () => {
 
   });
 
-  it('should decrement the value in the stepper by the down arrow', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should decrement the value in the spin button by the down arrow', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -208,14 +208,14 @@ describe('Stepper', () => {
 
   });
 
-  it('should increment the value in the stepper by a step value of 2', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should increment the value in the spin button by a step value of 2', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -244,14 +244,14 @@ describe('Stepper', () => {
 
   });
 
-  it('should decrement the value in the stepper by a step value of 2', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should decrement the value in the spin button by a step value of 2', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -280,15 +280,15 @@ describe('Stepper', () => {
 
   });
 
-  it('should set the value of the stepper by manual entry', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should set the value of the spin button by manual entry', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '21';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -307,15 +307,15 @@ describe('Stepper', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
   });
 
-  it('should reset the value of the stepper with invalid manual entry', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should reset the value of the spin button with invalid manual entry', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = 'garbage';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -334,15 +334,15 @@ describe('Stepper', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
   });
 
-  it('should revert to max value when input value is higher than the max of the stepper', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should revert to max value when input value is higher than the max of the spin button', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '23';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -361,15 +361,15 @@ describe('Stepper', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleMaxValue));
   });
 
-  it('should revert existing value when input value is lower than the min of the stepper', () => {
-    const exampleLabelValue: string = 'Stepper';
+  it('should revert existing value when input value is lower than the min of the spin button', () => {
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '0';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -388,21 +388,21 @@ describe('Stepper', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleMinValue));
   });
 
-  it('should use onBlur passed to the stepper (with valid input)', () => {
+  it('should use onBlur passed to the spin button (with valid input)', () => {
     const errorMessage: string = 'The value is invalid';
-    const exampleLabelValue: string = 'Stepper';
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '21';
 
-    function validator(newValue: string, state: IStepperState, props: IStepperProps): string {
+    function validator(newValue: string, state: ISpinButtonState, props: ISpinButtonProps): string {
       let numberValue: number = +newValue;
       return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? newValue : errorMessage;
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -422,22 +422,22 @@ describe('Stepper', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
   });
 
-  it('should use onBlur passed to the stepper (with invalid input)', () => {
+  it('should use onBlur passed to the spin button (with invalid input)', () => {
     const errorMessage: string = 'The value is invalid';
-    const exampleLabelValue: string = 'Stepper';
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '100';
 
-    function validator(newValue: string, state: IStepperState, props: IStepperProps): string {
+    function validator(newValue: string, state: ISpinButtonState, props: ISpinButtonProps): string {
       let numberValue: number = Number(newValue);
 
       return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? newValue : errorMessage;
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
@@ -458,7 +458,7 @@ describe('Stepper', () => {
   });
 
   it('should stop spinning if text field is focused while actively spinning', () => {
-    const exampleLabelValue: string = 'Stepper';
+    const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
@@ -468,7 +468,7 @@ describe('Stepper', () => {
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <Stepper
+      <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
