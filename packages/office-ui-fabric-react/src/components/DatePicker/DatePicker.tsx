@@ -330,6 +330,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _calendarDismissed() {
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
+
+    if (this.refs.textField) {
+      this.refs.textField.focus();
+    }
   }
 
   @autobind

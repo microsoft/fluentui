@@ -100,7 +100,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       onChange={ this._onChange }
       onKeyDown={ this._onKeyDown }
       onClick={ this._onClick }
-      />;
+    />;
   }
 
   public focus() {
@@ -110,6 +110,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   public clear() {
     this._autoFillEnabled = true;
     this._updateValue('');
+    this._inputElement.setSelectionRange(0, 0);
   }
 
   @autobind

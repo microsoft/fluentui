@@ -18,7 +18,9 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   user-select: none;
 
   &.rootIsSelectAllHidden {
-    @include padding-left(36px);
+    .cell.cellIsCheck {
+      visibility: hidden;
+    }
   }
 }
 
