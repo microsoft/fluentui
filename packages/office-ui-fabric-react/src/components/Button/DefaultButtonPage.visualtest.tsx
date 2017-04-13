@@ -9,7 +9,6 @@ export default class DefaultButtonVPage extends React.Component<any, any> {
     return <div>
       <div><label> Default Button:   </label>
         <DefaultButton id='DefaultButton' icon='Add' text='Default Button' /></div>
-
       <div><label> Default Button Disabled:   </label>
         <DefaultButton id='DefaultButtonDisabled' disabled={ true } icon='Add' text='Default Button' /></div>
       <div style={ { backgroundColor: 'white' } }>
