@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Add ability to open and close via space bar.",
-      "type": "minor"
+      "comment": "DatePicker: Restore focus when exiting picker.",
+      "type": "patch"
     }
   ],
   "email": "clewolff@microsoft.com"

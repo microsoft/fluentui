@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
+  autobind,
   css,
   getId,
   getRTL,
@@ -41,6 +42,7 @@ export interface ICalendarDayProps {
   navigatedDate: Date;
   onSelectDate: (date: Date, selectedDateRangeArray?: Date[]) => void;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+  onDismiss?: () => void;
   firstDayOfWeek: DayOfWeek;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
@@ -93,7 +95,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <span
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
+              onKeyDown={ this._onPrevMonthKeyDown }
               aria-controls={ monthAndYearId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
@@ -226,6 +228,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   private _onSelectPrevMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
+  }
+
+  @autobind
+  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    if (ev.which === KeyCodes.tab && ev.shiftKey) {
+      if (this.props.onDismiss) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.props.onDismiss();
+      }
+    } else {
+      this._onKeyDown(this._onSelectPrevMonth, ev);
+    }
   }
 
   private _getWeeks(navigatedDate: Date, selectedDate: Date): IDayInfo[][] {

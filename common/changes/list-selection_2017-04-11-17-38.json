@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix alignment issues for unselectable items in DetailsList",
+      "type": "patch"
+    }
+  ],
+  "email": "tmichon@microsoft.com"
+}
