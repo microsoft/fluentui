@@ -111,7 +111,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({
       selection: this._selection,
-      pixelsForDrag: props.pixelsForDrag
+      minimumPixelsForDrag: props.minimumPixelsForDrag
     }) : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
