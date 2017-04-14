@@ -7,15 +7,20 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "postinstall": "rush install && rush link",
-    "test": "rush build --production",
-    "start": "gulp --gulpfile apps/fabric-examples/gulpfile.js serve",
-    "build": "rush build --production --clean",
-    "change": "rush change"
+    "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install",
+    "_rushLink": "node node_modules/@microsoft/rush/bin/rush link",
+    "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build --verbose",
+    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react",
+    "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
+    "postinstall": "npm run _rushInstall && npm run _rushLink && npm run _rushBuildToFabric",
+    "test": "npm run _rushBuild",
+    "start": "cd packages && cd office-ui-fabric-react && npm start",
+    "build": "npm run _rushRebuild",
+    "change": "node node_modules/@microsoft/rush/bin/rush change"
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "^1.5.1",
+    "@microsoft/rush": "^2.3.1",
     "github": "^7.0.0",
     "gulp": "^3.9.1",
     "yargs": "^6.5.0"

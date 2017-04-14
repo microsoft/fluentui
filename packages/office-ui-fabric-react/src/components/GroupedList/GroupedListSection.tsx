@@ -12,6 +12,7 @@ import {
 
 import {
   BaseComponent,
+  IRenderFunction,
   autobind
 } from '../../Utilities';
 
@@ -32,7 +33,7 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles from './GroupedList.scss';
+import styles = require('./GroupedList.scss');
 import { IDisposable } from '@uifabric/utilities';
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
@@ -86,10 +87,10 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   viewport?: IViewport;
 
   /** Override for rendering the group header. */
-  onRenderGroupHeader?: (props?: IGroupDividerProps, defaultRender?: (props?: IGroupDividerProps) => JSX.Element) => JSX.Element;
+  onRenderGroupHeader?: IRenderFunction<IGroupDividerProps>;
 
   /** Override for rendering the group footer. */
-  onRenderGroupFooter?: (props?: IGroupDividerProps, defaultRender?: (props?: IGroupDividerProps) => JSX.Element) => JSX.Element;
+  onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
 }
 
 export interface IGroupedListSectionState {
@@ -300,7 +301,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderCell,
       selection,
       selectionMode,
-      viewport
+      viewport,
+      onRenderGroupHeader,
+      onRenderGroupFooter
     } = this.props;
 
     return (!subGroup || subGroup.count > 0) ? (
@@ -322,6 +325,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         selection={ selection }
         selectionMode={ selectionMode }
         viewport={ viewport }
+        onRenderGroupHeader={ onRenderGroupHeader }
+        onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;
   }

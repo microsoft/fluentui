@@ -12,7 +12,7 @@ import { Button, ButtonType } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import styles from './Dialog.scss';
+import styles = require('./Dialog.scss');
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -129,13 +129,15 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                 forceFocusInsideTrap={ forceFocusInsideTrap }
                 firstFocusableSelector={ firstFocusableSelector }>
                 <div className={ css('ms-Dialog-header', styles.header) }>
-                  <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' }>{ title }</p>
+                  <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
                   <div className={ css('ms-Dialog-topButton', styles.topButton) }>
                     { this.props.topButtonsProps.map((props) => (
                       <Button {...props} />
                     )) }
                     <Button
-                      className={ css('ms-Dialog-button ms-Dialog-button--close', styles.button, styles.isClose) }
+                      className={ css('ms-Dialog-button ms-Dialog-button--close',
+                        styles.button,
+                        { [styles.isClose]: isBlocking || type === DialogType.largeHeader }) }
                       buttonType={ ButtonType.icon }
                       icon='Cancel'
                       ariaLabel={ closeButtonAriaLabel }

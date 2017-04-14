@@ -16,7 +16,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import styles from './Dropdown.scss';
+import styles = require('./Dropdown.scss');
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -49,7 +49,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    super(props, {
+    super(props);
+
+    this._warnDeprecations({
       'isDisabled': 'disabled'
     });
 
@@ -103,9 +105,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
 
     return (
-      <div ref='root'>
+      <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
@@ -117,6 +119,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
+          onKeyUp={ this._onDropdownKeyUp }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
@@ -136,7 +139,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onRenderTitle(selectedOption, this._onRenderTitle)
             ) }
           </span>
-          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -258,7 +261,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='option'
+        role='menu'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         aria-label={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
@@ -330,6 +333,27 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.end:
         this.setSelectedIndex(this.props.options.length - 1);
+        break;
+
+      case KeyCodes.space:
+        // event handled in _onDropdownKeyUp
+        break;
+
+      default:
+        return;
+    }
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
+  @autobind
+  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLElement>) {
+    switch (ev.which) {
+      case KeyCodes.space:
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
         break;
 
       default:

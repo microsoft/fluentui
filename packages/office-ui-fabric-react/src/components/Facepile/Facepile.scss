@@ -1,7 +1,8 @@
 @import '../../common/common';
 
+$spacingAroundItemButton: 2px;
+
 .root {
-  position: relative;
   width: auto;
 }
 
@@ -9,14 +10,28 @@
   clear: both;
 }
 
+.itemContainer
+{
+  display:flex;
+}
+
+.members {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: -1 * $spacingAroundItemButton;
+
+  > * {
+    flex: 0 0 auto;
+    margin: $spacingAroundItemButton;
+  }
+}
+
 .itemButton {
   @include focus-outline();
-  position: relative;
   text-align: center;
-  @include float(left);
   padding: 0;
-  @include margin-right(4px);
-  margin-bottom: 4px;
   border-radius: 50%;
   vertical-align: top;
   :global(.ms-Persona-details) {
@@ -30,12 +45,17 @@ button.itemButton {
   padding: 0;
   cursor: pointer;
   border: none;
+  &::-moz-focus-inner {
+    padding: 0px;
+    border: 0px;
+  }
 }
 
 button.addButton {
   font-size: $ms-font-size-m;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
+  @include margin-right($spacingAroundItemButton * 2);
 
   &:hover, &:focus {
     background-color: $ms-color-themeDark;
@@ -54,10 +74,16 @@ button.overflowButton {
   font-size: $ms-font-size-m;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
+  @include margin-left($spacingAroundItemButton * 2);
 }
 
 button.descriptiveOverflowButton {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
+  @include margin-left($spacingAroundItemButton * 2);
+}
+
+.screenReaderOnly {
+  @include ms-u-screenReaderOnly;
 }

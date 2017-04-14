@@ -1,9 +1,19 @@
 import * as React from 'react';
 
+export interface IRating {
+
+}
+
 /**
  * Rating component props.
  */
 export interface IRatingProps extends React.HTMLProps<HTMLElement> {
+  /**
+   * Optional callback to access the IRating interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IRating) => void;
+
   /**
    * Selected rating, has to be an integer between min and max
    */

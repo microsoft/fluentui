@@ -15,11 +15,16 @@
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   margin-bottom: 8px;
+  position: relative; /* Needed to position icon */
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;
   }
+}
+
+.screenReaderOnly {
+  @include ms-u-screenReaderOnly;
 }
 
 //= State: A disabled textfield
@@ -52,6 +57,19 @@
   border-color: $ms-color-themePrimary;
 }
 
+.errorIcon {
+  vertical-align: middle;
+  font-size: $ms-font-size-m;
+  @include margin-right(5px);
+}
+
+.icon {
+  position: absolute;
+  bottom: 8px;
+  @include right(8px);
+  top: auto;
+}
+
 .field {
   @include ms-u-normalize;
   @include ms-baseFont;
@@ -61,10 +79,14 @@
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
-  @include padding(0, 12px, 0, 12px);
+  @include padding(0, 12px, 1px, 12px);
   width: 100%;
   outline: 0;
   text-overflow: ellipsis;
+
+  &.hasIcon {
+    @include padding-right(24px);
+  }
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -198,6 +220,10 @@
   height: auto;
   padding-top: 6px;
   overflow: auto;
+
+  &.hasIcon {
+    @include padding-right(40px);
+  }
 }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
@@ -214,20 +240,6 @@
   @include ms-borderColor-redDark;
 }
 
-// What is this doing here?
-/*
-.ms-u-screenReaderOnly {
-  position: absolute;
-  text-indent: -9999px;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  border: 0;
-}
-*/
-
 .root.rootIsUnderlined {
 
   :global(.ms-Label) {
@@ -241,6 +253,10 @@
 }
 
 .root.rootIsMultiline {
+
+  .icon {
+    @include right(24px);
+  }
 
   .field.fieldIsUnresizable {
     resize: none;

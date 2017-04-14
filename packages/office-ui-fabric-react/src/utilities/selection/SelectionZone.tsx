@@ -3,6 +3,7 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
+  elementContains,
   findScrollableParent,
   getParent,
   getDocument,
@@ -64,7 +65,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
-  private _shouldIgnoreFocus: boolean;
+  private _shouldHandleFocus: boolean;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
@@ -83,10 +84,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
+
         onDoubleClick={ this._onDoubleClick }
         onContextMenu={ this._onContextMenu }
         { ...{
-          onMouseDownCapture: this.ignoreNextFocus,
+          onMouseDownCapture: this._onMouseDownCapture,
           onFocusCapture: this._onFocus
         } }
       >
@@ -103,7 +105,14 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   public ignoreNextFocus() {
-    this._shouldIgnoreFocus = true;
+    this._shouldHandleFocus = false;
+  }
+
+  @autobind
+  private _onMouseDownCapture(ev) {
+    if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
+      this.ignoreNextFocus();
+    }
   }
 
   /**
@@ -117,24 +126,23 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
-    if (this._shouldIgnoreFocus || selectionMode === SelectionMode.none) {
-      this._shouldIgnoreFocus = false;
-      return;
-    }
+    if (this._shouldHandleFocus && selectionMode !== SelectionMode.none) {
+      let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+      let itemRoot = this._findItemRoot(target);
 
-    let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-    let itemRoot = this._findItemRoot(target);
+      if (!isToggle && itemRoot) {
+        let index = this._getItemIndex(itemRoot);
 
-    if (!isToggle && itemRoot) {
-      let index = this._getItemIndex(itemRoot);
-
-      if (isToggleModifierPressed) {
-        // set anchor only.
-        selection.setIndexSelected(index, selection.isIndexSelected(index), true);
-      } else {
-        this._onItemSurfaceClick(ev, index);
+        if (isToggleModifierPressed) {
+          // set anchor only.
+          selection.setIndexSelected(index, selection.isIndexSelected(index), true);
+        } else {
+          this._onItemSurfaceClick(ev, index);
+        }
       }
     }
+
+    this._shouldHandleFocus = false;
   }
 
   @autobind
@@ -279,6 +287,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
+      // A key was pressed while an item in this zone was focused.
+      this._shouldHandleFocus = true;
       return;
     }
 
@@ -312,14 +322,21 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (target === itemRoot) {
           if (ev.which === KeyCodes.enter) {
             this._onInvokeClick(ev, index);
+            ev.preventDefault();
+            return;
           } else if (ev.which === KeyCodes.space) {
             this._onToggleClick(ev, index);
+            ev.preventDefault();
+            return;
           }
           break;
         }
 
         target = getParent(target);
       }
+
+      // A key was pressed while an item in this zone was focused.
+      this._shouldHandleFocus = true;
     }
   }
 

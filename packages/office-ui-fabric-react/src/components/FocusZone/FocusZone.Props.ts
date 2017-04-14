@@ -26,6 +26,12 @@ export interface IFocusZone {
  */
 export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone> {
   /**
+   * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IFocusZone) => void;
+
+  /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
    */
   className?: string;
@@ -64,6 +70,11 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone
    * Sets the aria-labelledby attribute.
    */
   ariaLabelledBy?: string;
+
+  /**
+   * Sets the aria-describedby attribute.
+   */
+  ariaDescribedBy?: string;
 
   /**
    * Callback for when one of immediate children elements gets active by getting focused

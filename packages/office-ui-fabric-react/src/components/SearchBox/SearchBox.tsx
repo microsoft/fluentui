@@ -9,8 +9,9 @@ import {
   getDocument,
   KeyCodes
 } from '../../Utilities';
-import './SearchBox.scss';
-import styles from './SearchBox.scss';
+
+import { Icon } from '../../Icon';
+import styles = require('./SearchBox.scss');
 
 export interface ISearchBoxState {
   value?: string;
@@ -28,11 +29,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   public constructor(props: ISearchBoxProps) {
     super(props);
-
-    // Handle deprecated prop
-    if (this.props.onChanged) {
-      this.props.onChange = this.props.onChanged;
-    }
 
     this.state = {
       value: props.value || '',
@@ -61,7 +57,11 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
-        <i className={ css('ms-SearchBox-icon', 'ms-Icon', 'ms-Icon--Search', styles.icon) }></i>
+        <div
+          className={ css('ms-SearchBox-iconContainer', styles.iconContainer) }
+        >
+          <Icon className={ css('ms-SearchBox-icon', styles.icon) } iconName='Search' />
+        </div>
         <input
           id={ id }
           className={ css('ms-SearchBox-field', styles.field) }
@@ -75,7 +75,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
           onClick={ this._onClearClick }
         >
-          <i className={ css('ms-Icon', 'ms-Icon--Clear') } />
+          <Icon iconName='Clear' />
         </div>
       </div>
     );
@@ -135,7 +135,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onInputChange(ev: React.KeyboardEvent<HTMLInputElement>) {
+  private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       value: this._inputElement.value
     });
@@ -152,7 +152,12 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange } = this.props;
+    let { onChange, onChanged } = this.props;
+
+    // Call @deprecated method.
+    if (onChanged) {
+      onChanged(newValue);
+    }
 
     if (onChange) {
       onChange(newValue);

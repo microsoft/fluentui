@@ -1,6 +1,273 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Mar 2017 03:15:10 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Apr 2017 03:06:28 GMT and should not be manually modified.
+
+## 2.17.0
+Fri, 14 Apr 2017 03:06:28 GMT
+
+### Minor changes
+
+- ColorPicker: Update the entire control whenever any part is updated
+
+### Patches
+
+- DatePicker: Restore focus when exiting picker.
+- Regression Tests: Button and checkbox
+- CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler
+- DatePicker: Fix for long lables and Calendar icon
+- PeoplePicker: Textfield cursor fix in edge
+- Fix alignment issues for unselectable items in DetailsList
+- DatePicker: Persist selected date across re-renders
+- FocusZone: filtered out keypresses in input fields from triggering actions
+-  Tag picker: Fix for margin in overflow
+
+## 2.16.0
+Wed, 12 Apr 2017 16:04:37 GMT
+
+### Minor changes
+
+- Improved keyboard and screen reader support for the Facepile control.  Added aria-describedby to FocusZone control.
+- Dropdown: Add ability to open and close via space bar.
+
+### Patches
+
+- Details List: Fixes clipped buttons inside of list cells
+- Dropdown: Prevent the chevron icon from being read by screen readers.
+- CommandBar: Support hrefs in command bar item
+- DetailsList: no longer renders a horizontal scrollbar if a vertical scrollbar appears.
+- Facepile: Fixed firefox bug where explicit sizes were needed on persona buttons
+- MessageBar: Adds borders in HighContrast mode
+- Fix CSS issue in ChoiceGroup in IE11
+- People Picker: Fix issue in IE11 where long names were not properly truncated
+- PeoplePicker: Have the suggestions list follow the cursor instead of always being aligned left to input box
+- TextField: Fix positioning of icon
+- Toggle: Adding min width to inner container.
+- Dialog: Add close button to non-blocking variants
+- Pivot: Fix ariaLabel prop for PivotItem
+- Pivot: Add div native props to PivotItem
+- CommandBar: Remove aria-disabled="true" for disabled menu items
+
+## 2.15.0
+Sat, 08 Apr 2017 03:18:28 GMT
+
+### Minor changes
+
+- ContextualMenu: adding in onMenuOpened callback
+
+## 2.14.1
+Fri, 07 Apr 2017 03:14:49 GMT
+
+### Patches
+
+- VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html
+
+## 2.14.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Adding in visual regression testing
+
+### Patches
+
+- MessageBar: Multiple message bars will have proper margins to seperate them
+- Panel: Fixed selector bug that broke extraLarge panel
+- TagPicker: Fix for long tags.
+
+## 2.13.0
+Wed, 05 Apr 2017 03:50:41 GMT
+
+### Minor changes
+
+- ProgressIndicator: support for aria-valuetext
+
+### Patches
+
+- BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`.
+- GroupedList: Allow header/footer customization of nested groups
+
+## 2.12.0
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Minor changes
+
+- Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
+
+## 2.11.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`.
+
+## 2.10.6
+Tue, 04 Apr 2017 03:12:41 GMT
+
+### Patches
+
+- Removing TypeScript files from being binplaced within the lib folder.
+- ToolTip: fix for long tips
+
+## 2.10.5
+Sat, 01 Apr 2017 03:12:59 GMT
+
+### Patches
+
+- Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components
+
+## 2.10.4
+Thu, 30 Mar 2017 21:04:29 GMT
+
+### Patches
+
+- Overlay: disabling body scroll on show to prevent scrolling under the overlay.
+- DocumentCard: Personas rendered within look correct.
+
+## 2.10.3
+Wed, 29 Mar 2017 19:43:19 GMT
+
+### Patches
+
+- DocumentCard: Persona import was not AMD friendly.
+
+## 2.10.2
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- FocusZone: Adding support for default browser behavior when pressing alt + a key.
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
+- PeoplePicker: Adding changes for multiple selection onChange 
+
+## 2.10.1
+Wed, 29 Mar 2017 15:10:15 GMT
+
+### Patches
+
+- ChoiceGroup: Update styles
+
+## 2.10.0
+Wed, 29 Mar 2017 03:18:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options.
+- Persona: Added a 28px size
+
+### Patches
+
+- DocumentCardActivity: Changes made to fix the default color to Persona
+
+## 2.9.0
+Tue, 28 Mar 2017 16:11:18 GMT
+
+### Minor changes
+
+- DetailsList & List: Use getKey as items render key
+
+## 2.8.0
+Tue, 28 Mar 2017 03:05:36 GMT
+
+### Minor changes
+
+- DetailsList: Implement Drag Drop support
+
+### Patches
+
+- Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.
+- TextField: Fix examples and comments
+
+## 2.7.1
+Fri, 24 Mar 2017 20:25:07 GMT
+
+### Patches
+
+- Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit.
+
+## 2.7.0
+Fri, 24 Mar 2017 04:26:48 GMT
+
+### Minor changes
+
+- ContextualMenu: onItemClick prop added
+
+### Patches
+
+- CommandBar: Fixes ugly focus border when clicked (Chrome/Mac)
+- Callout: preventDismissOnScroll prop added and set to default false
+- Contextual Menu: Made change to allow arrow keys to loop over item
+- Panel: Title text updated with correct lineheight and removed overflow styles
+
+## 2.6.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Button: Updated props to include contextualProps so that contextual menu could be passed to button
+- Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.
+
+### Patches
+
+- TextField: Accessibility fixes for error message
+- TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip
+- Popup: It now passes triggering KeyboardEvent to onDismiss handler
+
+## 2.5.4
+Wed, 22 Mar 2017 03:18:05 GMT
+
+### Patches
+
+- ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow.
+- Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css
+- ContextualMenu: Remove role='menuitem' for child element for LI in ContextualMenu
+
+## 2.5.3
+Tue, 21 Mar 2017 03:20:12 GMT
+
+### Patches
+
+- Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group.
+- Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
+
+## 2.5.1
+Fri, 17 Mar 2017 03:05:52 GMT
+
+### Patches
+
+- ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin
+- List: Add aria list role
+
+## 2.5.0
+Thu, 16 Mar 2017 03:05:54 GMT
+
+### Minor changes
+
+- DocumentCard: Add aria role and keyboard handling
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+
+### Patches
+
+- FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action
+- DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like "inherit".
+- TextField: Fix for multiple onChanged calls
+
+## 2.4.0
+Wed, 15 Mar 2017 03:06:37 GMT
+
+### Minor changes
+
+- DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.
 
 ## 2.3.0
 Tue, 14 Mar 2017 03:15:10 GMT

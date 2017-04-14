@@ -4,13 +4,20 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from '@uifabric/utilities/lib/resources';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
 
-setBaseUrl('./dist/');
+let isProduction = process.argv.indexOf('--production') > -1;
+
+if (!isProduction) {
+  setBaseUrl('./dist/');
+} else {
+  setBaseUrl('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/');
+}
 
 let rootElement;
 let currentBreakpoint;
@@ -65,11 +72,13 @@ function _onLoad() {
   _getBreakpoint();
 
   ReactDOM.render(
-    <Router onNewRouteLoaded={ _routerDidMount }>
-      <Route component={ App }>
-        { _getAppRoutes() }
-      </Route>
-    </Router>,
+    <Fabric>
+      <Router onNewRouteLoaded={ _routerDidMount }>
+        <Route component={ App }>
+          { _getAppRoutes() }
+        </Route>
+      </Router>
+    </Fabric>,
     rootElement);
 }
 
@@ -82,7 +91,13 @@ function _getAppRoutes() {
 
     if (page.pages) {
       page.pages.forEach((childPage, childPageIndex) => {
-        routes.push(<Route key={ childPageIndex } path={ childPage.url } getComponent={ childPage.getComponent } />);
+        routes.push(
+          <Route
+            key={ childPageIndex }
+            path={ childPage.url }
+            component={ childPage.component }
+            getComponent={ childPage.getComponent }
+          />);
 
         // Third level of nav
         // @todo: This is the same logic as above, and could be placed in function

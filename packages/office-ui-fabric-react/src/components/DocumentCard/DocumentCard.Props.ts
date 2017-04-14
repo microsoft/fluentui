@@ -9,7 +9,17 @@ import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 
+export interface IDocumentCard {
+
+}
+
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
+  /**
+   * Optional callback to access the IDocumentCard interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDocumentCard) => void;
+
   /**
   * The type of DocumentCard to display.
   * @default DocumentCardType.normal
@@ -17,9 +27,9 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   type?: DocumentCardType;
 
   /**
-   * Function to call when the card is clicked.
+   * Function to call when the card is clicked or keyboard Enter/Space is pushed.
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,

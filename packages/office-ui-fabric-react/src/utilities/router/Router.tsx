@@ -46,9 +46,9 @@ export class Router extends BaseComponent<IRouterProps, {}> {
         if (getComponent) {
           let asynchronouslyResolved = false;
 
-          component = getComponent.component;
-
-          if (!component) {
+          if (getComponent.component) {
+            component = getComponent.component;
+          } else {
             getComponent((resolved) => {
               component = getComponent.component = resolved;
 

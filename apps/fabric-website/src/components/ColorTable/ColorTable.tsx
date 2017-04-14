@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import styles from './ColorTable.module.scss';
+import styles = require('./ColorTable.module.scss');
 
 export interface IColorTableProps {
   /**
@@ -18,7 +18,7 @@ export class ColorTable extends React.Component<IColorTableProps, IColorTableSta
 
     return (
       <table className={ styles.table }>
-        <thead className='ms-u-screenReaderOnly'>
+        <thead className={ styles.screenReaderOnly }>
           <tr>
             <th>Name</th>
             <th>Value</th>
