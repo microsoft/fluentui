@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Regression Tests: Label Tests and className fix",
+      "type": "patch"
+    }
+  ],
+  "email": "r33najain@gmail.com"
+}
