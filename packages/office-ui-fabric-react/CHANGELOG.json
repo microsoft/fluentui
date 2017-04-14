@@ -2,6 +2,72 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.17.0",
+      "tag": "office-ui-fabric-react_v2.17.0",
+      "date": "Fri, 14 Apr 2017 03:06:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "184015d5ca9f07540d095f82ad6bbeb037bc1840",
+            "comment": "DatePicker: Restore focus when exiting picker."
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "0577c6e2ff0da1f25f83a0243c31eceed0eb0809",
+            "comment": "Regression Tests: Button and checkbox"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "453ab215119f7d78d7f22fa2c7b552320c99163b",
+            "comment": "CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler"
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "ca70f1a80e04dcd68b547580fd693d4ca07ca2b3",
+            "comment": "DatePicker: Fix for long lables and Calendar icon"
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "87295e2106a713c240b3e896d982a64b0ca1251a",
+            "comment": "PeoplePicker: Textfield cursor fix in edge"
+          },
+          {
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "625efd4f2aa0a6a89eee17ade5d653f6d317cd15",
+            "comment": "Fix alignment issues for unselectable items in DetailsList"
+          },
+          {
+            "author": "Johanna Hawkins (ORTIZ) <johannao@microsoft.com>",
+            "commit": "3200ca5e8a8e036e0944f32454dd6f8a15356530",
+            "comment": "DatePicker: Persist selected date across re-renders"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "3fcbd2b65bde6876128de3898b88025411862dac",
+            "comment": "FocusZone: filtered out keypresses in input fields from triggering actions"
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "924e68cfa45d39e70c9df0dfd7fff5f8a927846b",
+            "comment": " Tag picker: Fix for margin in overflow"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "5659a13c50bf7868ba65a86103505d01e889248f",
+            "comment": "ColorPicker: Update the entire control whenever any part is updated"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.6.0 <2.0.0` to `>=1.6.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.16.0",
       "tag": "office-ui-fabric-react_v2.16.0",
       "date": "Wed, 12 Apr 2017 16:04:37 GMT",
