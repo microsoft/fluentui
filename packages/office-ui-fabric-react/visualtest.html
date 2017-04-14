@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
   <div>
     <div><a href="http://localhost:43210/visualtest.html?#/defaultButton"> Default Button</a></div>
     <div><a href="http://localhost:43210/visualtest.html?#/primaryButton"> Primary Button</a></div>
@@ -24,23 +23,24 @@
     <div><a href="http://localhost:43210/visualtest.html?#/contextualButton"> Contextual Button</a></div>
     <div><a href="http://localhost:43210/visualtest.html?#/checkBox"> Checkbox</a></div>
     <div><a href="http://localhost:43210/visualtest.html?#/choiceGroup"> Choice Group</a></div>
+    <div><a href="http://localhost:43210/visualtest.html?#/facepile"> Facepile</a>
 
-    <div id="content"></div>
-    <script type="text/javascript">
-      function loadScript(n) {
-        for (var i = 0; i < n.length; i++) {
-          var s = document.createElement('script');
-          s.src = n[i];
-          s.async = false;
-          document.body.appendChild(s);
+      <div id="content"></div>
+      <script type="text/javascript">
+        function loadScript(n) {
+          for (var i = 0; i < n.length; i++) {
+            var s = document.createElement('script');
+            s.src = n[i];
+            s.async = false;
+            document.body.appendChild(s);
+          }
         }
-      }
-      loadScript([
-        '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.js',
-        '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.js',
-        'dist/fabric-test.js']
-      );
-    </script>
+        loadScript([
+          '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.js',
+          '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.js',
+          'dist/fabric-test.js']
+        );
+      </script>
 
 </body>
 

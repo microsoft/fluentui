@@ -48,6 +48,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       overflowButtonType,
       ariaDescription,
       personas,
+      className,
       showAddButton
     } = this.props;
     let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
@@ -59,7 +60,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     }
 
     return (
-      <div className={ css('ms-Facepile', styles.root) }>
+      <div className={ css('ms-Facepile', styles.root, className) }>
         <div
           className={ css('ms-Facepile-itemContainer', styles.itemContainer) }
         >
