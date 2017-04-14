@@ -162,7 +162,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   shouldApplyApplicationRole?: boolean;
 
   /** The minimum mouse move distance to treat it as drag event */
-  distanceSquaredForDrag?: number;
+  pixelsForDrag?: number;
 }
 
 export interface IColumn {

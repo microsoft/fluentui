@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Made the minimum drag distance on the details list configurable",
+      "type": "minor"
+    }
+  ],
+  "email": "ottost@microsoft.com"
+}
