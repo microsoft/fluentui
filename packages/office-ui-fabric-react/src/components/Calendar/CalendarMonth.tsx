@@ -49,7 +49,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
               tabIndex={ 0 }
-              aria-label={ 'Previous year' }>
+              aria-label={ strings.previousYearLabel }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span>
             <span
@@ -57,7 +57,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
               tabIndex={ 0 }
-              aria-label={ 'Next year' }>
+              aria-label={ strings.nextYearLabel }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span>
           </div>

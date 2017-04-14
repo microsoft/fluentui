@@ -108,4 +108,24 @@ export interface ICalendarStrings {
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
+
+  /**
+   * String to render for the ARIA label for the previous month button
+   */
+  previousMonthLabel: string;
+
+  /**
+   * String to render for the ARIA label for the next month button
+   */
+  nextMonthLabel: string;
+
+  /**
+   * String to render for the ARIA label for the previous year button
+   */
+  previousYearLabel: string;
+
+  /**
+   * String to render for the ARIA label for the next year button
+   */
+  nextYearLabel: string;
 }

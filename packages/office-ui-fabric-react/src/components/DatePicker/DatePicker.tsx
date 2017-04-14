@@ -77,7 +77,15 @@ const DEFAULT_STRINGS = {
     'S'
   ],
 
-  goToToday: 'Go to today'
+  goToToday: 'Go to today',
+
+  previousMonthLabel: 'Previous month',
+
+  nextMonthLabel: 'Next month',
+
+  previousYearLabel: 'Previous year',
+
+  nextYearLabel: 'Next Year'
 };
 
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
