@@ -58,9 +58,9 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
         <div
-          className={ css('ms-SearchBox-icon', styles.icon) }
+          className={ css('ms-SearchBox-iconContainer', styles.iconContainer) }
         >
-          <Icon iconName='Search' />
+          <Icon className={ css('ms-SearchBox-icon', styles.icon) } iconName='Search' />
         </div>
         <input
           id={ id }

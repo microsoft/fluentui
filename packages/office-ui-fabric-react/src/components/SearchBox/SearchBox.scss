@@ -21,7 +21,7 @@
   height: 32px;
 }
 
-.icon {
+.iconContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,10 +32,11 @@
   text-align: center;
   transition: width $ms-duration1;
   color: $ms-color-themePrimary;
-  & > * {
-    opacity: 1;
-    transition: opacity $ms-duration1 0s;
-  }
+}
+
+.icon {
+  opacity: 1;
+  transition: opacity $ms-duration1 0s;
 }
 
 // Input Field
@@ -53,6 +54,7 @@
   text-overflow: ellipsis;
   // This padding forces the text placement to round up.
   padding-bottom: .5px;
+  // This removes the IE specific clear button in the input since we implimented our own
   &::-ms-clear {
     display: none;
   }
@@ -78,7 +80,7 @@
   .label {
     color: $ms-color-black;
 
-    .icon {
+    .iconContainer {
       color:$ms-color-themeDarker;
     }
   }
@@ -88,21 +90,21 @@
 .rootIsActive {
   border-color: $ms-color-themeDarker;
 
-  .icon {
+  .iconContainer {
     width: 4px;
     transition: width $ms-duration1;
-     & > * {
-      opacity: 0;
-      opacity: 0 0s $ms-duration1;
-    }
   }
+  .icon {
+    opacity: 0;
+    opacity: 0 0s $ms-duration1;
+   }
 }
 
  // State: Disabled searchbox
 .rootIsDisabled {
   border-color: $ms-color-neutralLighter;
 
-  .icon {
+  .iconContainer {
     color: $ms-color-neutralTertiaryAlt;
   }
 
