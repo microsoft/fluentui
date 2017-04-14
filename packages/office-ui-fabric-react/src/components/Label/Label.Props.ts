@@ -18,4 +18,9 @@ export interface ILabelProps extends React.HTMLProps<HTMLLabelElement> {
    * @defaultvalue false
    */
   required?: boolean;
+
+  /**
+  * Optional class for label.
+  */
+  className?: string;
 }
