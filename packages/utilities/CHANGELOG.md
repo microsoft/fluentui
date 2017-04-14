@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 06 Apr 2017 03:12:13 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Apr 2017 03:06:28 GMT and should not be manually modified.
+
+## 1.7.0
+Fri, 14 Apr 2017 03:06:28 GMT
+
+### Minor changes
+
+- overflow: Utilities for detecting overflow in elements
 
 ## 1.6.0
 Thu, 06 Apr 2017 03:12:13 GMT
