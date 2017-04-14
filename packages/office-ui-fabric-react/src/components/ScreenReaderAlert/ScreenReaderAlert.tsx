@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 import { IScreenReaderAlertProps, defaultScreenReaderAlertProps, ReadingMode } from './ScreenReaderAlert.Props';
-import styles from './ScreenReaderAlert.scss';
+import styles = require('./ScreenReaderAlert.scss');
 
 export interface IScreenReaderAlertState {
   alertText: string;

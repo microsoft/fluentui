@@ -10,9 +10,9 @@ import { ScreenReaderAlertBasicExample } from './examples/ScreenReaderAlert.Basi
 import { ScreenReaderAlertRepeatExample } from './examples/ScreenReaderAlert.Repeat.Example';
 import { ScreenReaderAlertSpinnerExample } from './examples/ScreenReaderAlert.Spinner.Example';
 
-const ScreenReaderAlertBasicExampleCode = require('./examples/ScreenReaderAlert.Basic.Example.tsx');
-const ScreenReaderAlertRepeatExampleCode = require('./examples/ScreenReaderAlert.Repeat.Example.tsx');
-const ScreenReaderAlertSpinnerExampleCode = require('./examples/ScreenReaderAlert.Spinner.Example.tsx');
+const ScreenReaderAlertBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Basic.Example.tsx');
+const ScreenReaderAlertRepeatExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Repeat.Example.tsx');
+const ScreenReaderAlertSpinnerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Spinner.Example.tsx');
 
 export class ScreenReaderAlertPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -38,7 +38,7 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/ScreenReaderAlert/ScreenReaderAlert.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/ScreenReaderAlert.Props.ts')
             ] }
           />
         }
