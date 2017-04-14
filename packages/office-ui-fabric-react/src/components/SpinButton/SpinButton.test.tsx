@@ -71,7 +71,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const buttonDOM: Element = renderedDOM.getElementsByClassName('upButton')[0];
+    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
 
     expect(buttonDOM.tagName).to.equal('BUTTON');
 
@@ -113,7 +113,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const buttonDOM: Element = renderedDOM.getElementsByClassName('downButton')[0];
+    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-DownButton')[0];
 
     expect(buttonDOM.tagName).to.equal('BUTTON');
 
@@ -396,9 +396,9 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '21';
 
-    function validator(newValue: string, state: ISpinButtonState, props: ISpinButtonProps): string {
+    function validator(newValue: string): string {
       let numberValue: number = +newValue;
-      return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? newValue : errorMessage;
+      return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -430,10 +430,10 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '100';
 
-    function validator(newValue: string, state: ISpinButtonState, props: ISpinButtonProps): string {
+    function validator(newValue: string): string {
       let numberValue: number = Number(newValue);
 
-      return (!isNaN(numberValue) && numberValue >= props.min && numberValue <= props.max) ? newValue : errorMessage;
+      return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -478,7 +478,7 @@ describe('SpinButton', () => {
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-    const buttonDOM: Element = renderedDOM.getElementsByClassName('upButton')[0];
+    const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
 
     expect(buttonDOM.tagName).to.equal('BUTTON');
 

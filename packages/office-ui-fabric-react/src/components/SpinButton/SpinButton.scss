@@ -3,29 +3,66 @@
 
 :global {
 
-.arrowBox, .textField,
-.upButton, .downButton, .spinButtonContainer {
+.ms-ArrowBox, .ms-SpinButton-Input,
+.ms-UpButton, .ms-DownButton, .ms-SpinButtonContainer {
   outline: none;
   font-size: 12px;
 }
 
-.spinButtonContainer {
-  width: 100px;
-  height: 32px;
-  min-width: 100px;
+.ms-Label {
+  pointer-events: none;
 }
 
-  .arrowBox {
+.ms-SpinButtonContainer {
+  width: 100px;
+  min-width: 100px;
+  overflow: hidden;
+}
+
+  .ms-ArrowBox {
     display: block;
     float: left;
     height: 30px;
-    border: 1px solid #e1e1e1;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
     border-left-width: 0px;
     cursor: default;
     padding: 0px;
   }
 
-  .spinButton-input {
+  .ms-SpinButtonWrapper:hover .ms-ArrowBox, .ms-SpinButtonWrapper:hover .ms-SpinButton-Input {
+    border-color: $ms-color-neutralSecondaryAlt;
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackSelected;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteSelected;
+    }
+  }
+
+  .ms-SpinButtonWrapper {
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .ms-SpinButton-Input:focus + .ms-ArrowBox {
+    border-color: $ms-color-themePrimary;
+  }
+
+  .ms-SpinButton-Input:disabled + .ms-ArrowBox {
+    background-color: $ms-color-neutralLighter;
+    border-color: $ms-color-neutralLighter;
+    pointer-events: none;
+    opacity: 0.3;
+    cursor: default;
+  }
+
+
+    .ms-SpinButtonWrapper:hover .ms-SpinButton-Input:focus {
+      border-color: $ms-color-themePrimary;
+    }
+
+  .ms-SpinButton-Input {
     @include ms-u-normalize;
     @include ms-baseFont;
     border: 1px solid $ms-color-neutralTertiaryAlt;
@@ -45,16 +82,12 @@
     cursor: text;
     user-select: text;
 
-    &:hover {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
+    // &:hover {
+    //   border-color: $ms-color-neutralSecondaryAlt;
+    // }
 
     &:focus {
       border-color: $ms-color-themePrimary;
-    }
-
-    &:hover,
-    &:focus {
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackSelected;
       }
@@ -68,6 +101,7 @@
       background-color: $ms-color-neutralLighter;
       border-color: $ms-color-neutralLighter;
       pointer-events: none;
+      opacity: 0.3;
       cursor: default;
     }
 
@@ -76,18 +110,26 @@
     }
   }
 
-  .upButton, .downButton {
+  .ms-SpinButtonWrapper .ms-UpButton, .ms-SpinButtonWrapper .ms-DownButton {
     display: block;
-    height: 16px;
+    height: 15px;
     width: 26px;
     //border: 1px solid transparent;
     padding-top: 0px;
     background-color: transparent;
     text-align: center;
     cursor: default;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+    }
+
+    &:active {
+      background-color: $ms-color-themePrimary;
+    }
   }
 
-    .upButton span, .downButton span {
+    .ms-UpButton span, .ms-DownButton span {
     line-height: 6px !important;
     font-size: 14px;
     padding-top: 4px;

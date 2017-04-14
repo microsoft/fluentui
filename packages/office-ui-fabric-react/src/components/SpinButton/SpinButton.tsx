@@ -35,10 +35,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _labelId: string;
   private _lastValidValue: string;
 
-  private _onBlur?: (value: string, state: ISpinButtonState, props: ISpinButtonProps) => string;
+  private _onBlur?: (value: string) => string;
   private _onIncrement?: (value: string) => string;
   private _onDecrement?: (value: string) => string;
-  private _defaultOnBlur = (value: string, state: ISpinButtonState, props: ISpinButtonProps) => {
+  private _defaultOnBlur = (value: string) => {
     if (isNaN(+value)) {
       return this._lastValidValue;
     }
@@ -103,8 +103,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     // bind this (for this class) to all the methods
     this._blur = this._blur.bind(this);
-    this._increment = this._increment.bind(this);
-    this._decrement = this._decrement.bind(this);
+    this._updateValue = this._updateValue.bind(this);
     this._stop = this._stop.bind(this);
     this.focus = this.focus.bind(this);
     this._handleKeyDown = this._handleKeyDown.bind(this);
@@ -137,53 +136,53 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.state;
 
     return (
-      <div className='spinButtonContainer' >
-        aria-valuemin={ String(this.props.min) }
-        aria-valuemax={ String(this.props.max) }
+      <div className='ms-SpinButtonContainer' >
         { label && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label }</Label> }
-        <input
-          value={ value }
-          id={ this._inputId }
-          onChange={ this._onChange }
-          onInput={ this._onInputChange }
-          className='spinButton-input'
-          role='spinbutton'
-          aria-labelledby={ label && this._labelId }
-          aria-valuenow={ value }
-          aria-valuemin={ String(this.props.min) }
-          aria-valuemax={ String(this.props.max) }
-          onBlur={ this._blur }
-          ref={ this._resolveRef('_input') }
-          onFocus={ this.focus }
-          onKeyDown={ this._handleKeyDown }
-          onKeyUp={ this._handleKeyUp }
-        />
-        <span className='arrowBox'>
-          <IconButton
-            className='upButton'
-            disabled={ disabled }
-            icon='CaretUpSolid8'
-            title='Increase'
-            aria-hidden='true'
-            onMouseDown={ () => { this._increment() } }
-            onMouseLeave={ this._stop }
-            onMouseUp={ this._stop }
-            onBlur={ this._stop }
-            tabIndex={ -1 }
+        <div className='ms-SpinButtonWrapper'>
+          <input
+            value={ value }
+            id={ this._inputId }
+            onChange={ this._onChange }
+            onInput={ this._onInputChange }
+            className='ms-SpinButton-Input'
+            role='spinbutton'
+            aria-labelledby={ label && this._labelId }
+            aria-valuenow={ value }
+            aria-valuemin={ this.props.min && String(this.props.min) }
+            aria-valuemax={ this.props.max && String(this.props.max) }
+            onBlur={ this._blur }
+            ref={ this._resolveRef('_input') }
+            onFocus={ this.focus }
+            onKeyDown={ this._handleKeyDown }
+            onKeyUp={ this._handleKeyUp }
           />
-          <IconButton
-            className='downButton'
-            disabled={ disabled }
-            icon='CaretDownSolid8'
-            title='Decrease'
-            aria-hidden='true'
-            onMouseDown={ () => { this._decrement() } }
-            onMouseLeave={ this._stop }
-            onMouseUp={ this._stop }
-            onBlur={ this._stop }
-            tabIndex={ -1 }
-          />
-        </span >
+          <span className='ms-ArrowBox'>
+            <IconButton
+              className='ms-UpButton'
+              disabled={ disabled }
+              icon='CaretUpSolid8'
+              title='Increase'
+              aria-hidden='true'
+              onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement) } }
+              onMouseLeave={ this._stop }
+              onMouseUp={ this._stop }
+              onBlur={ this._stop }
+              tabIndex={ -1 }
+            />
+            <IconButton
+              className='ms-DownButton'
+              disabled={ disabled }
+              icon='CaretDownSolid8'
+              title='Decrease'
+              aria-hidden='true'
+              onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement) } }
+              onMouseLeave={ this._stop }
+              onMouseUp={ this._stop }
+              onBlur={ this._stop }
+              tabIndex={ -1 }
+            />
+          </span >
+        </div>
       </ div >
     ) as React.ReactElement<{}>;
   }
@@ -220,7 +219,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
-      var newValue = this._onBlur(value, this.state, this.props);
+      var newValue = this._onBlur(value);
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
     }
@@ -235,28 +234,18 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     });
   }
 
-  /**
-   * Used to increment the current value by the provided step count
-   * @param shouldSpin - Should we continue to increment?
-   * True by default and useful if we get here from a mousedown event
-   * on one of the buttons. False if this fired from a keydown event
-   */
-  _increment(shouldSpin: boolean = true) {
-    var newValue = this._onIncrement(this.state.value);
+  private _updateValue(shouldSpin: boolean, stepFunction: (string) => string) {
+    var newValue = stepFunction(this.state.value);
     this._lastValidValue = newValue;
     this.setState({ value: newValue });
-  }
 
-  /**
-   * Used to decrement the current value by the provided step count
-   * @param shouldSpin - Should we continue to decrement?
-   * True by default and useful if we get here from a mousedown event
-   * on one of the buttons. False if this fired from a keydown event
-   */
-  _decrement(shouldSpin: boolean = true) {
-    var newValue = this._onDecrement(this.state.value);
-    this._lastValidValue = newValue;
-    this.setState({ value: newValue });
+    if (this.state.spining != shouldSpin) {
+      this.setState({ spinning: shouldSpin });
+    }
+
+    if (shouldSpin) {
+      this._currentStepFunctionHandle = window.setTimeout(() => { this._updateValue(shouldSpin, stepFunction); }, this._stepDelay)
+    }
   }
 
   /**

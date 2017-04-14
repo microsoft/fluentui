@@ -68,7 +68,7 @@ export interface ISpinButtonProps {
    *     show a red border and show an error message below the text field.
    *
    */
-  onBlur?: (value: string, state: ISpinButtonState, props: ISpinButtonProps) => string;
+  onBlur?: (value: string) => string;
 
   onIncrement?: (value: string) => string;
 

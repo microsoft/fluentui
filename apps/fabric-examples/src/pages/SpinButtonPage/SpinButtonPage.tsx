@@ -6,8 +6,10 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
+import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
 
 const SpinButtonBasicExampleCode = require('./examples/SpinButton.Basic.Example.tsx') as string;
+const SpinButtonStatefulExampleCode = require('./examples/SpinButton.Stateful.Example.tsx') as string;
 
 export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -16,11 +18,18 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         title='SpinButton'
         componentName='SpinButtonExample'
         exampleCards={
-          <ExampleCard
-            title='Various SpinButton Types'
-            code={ SpinButtonBasicExampleCode }>
-            <SpinButtonBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard
+              title={ 'Basic SpinButton' }
+              code={ SpinButtonBasicExampleCode }>
+              <SpinButtonBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title={ 'Stateful SpinButton' }
+              code={ SpinButtonBasicExampleCode }>
+              <SpinButtonStatefulExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
