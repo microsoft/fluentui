@@ -14,7 +14,7 @@
 }
 
 .ms-SpinButtonContainer {
-  width: 100px;
+  width: 100%;
   min-width: 100px;
   overflow: hidden;
 }
@@ -43,6 +43,7 @@
   .ms-SpinButtonWrapper {
     overflow: hidden;
     display: inline-block;
+    width: 100%;
   }
 
   .ms-SpinButton-Input:focus + .ms-ArrowBox {

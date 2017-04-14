@@ -128,7 +128,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const {
       className,
       disabled,
-      label
+      label,
+      width: spinbuttonWidth
     } = this.props;
 
     const {
@@ -136,9 +137,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.state;
 
     return (
-      <div className='ms-SpinButtonContainer' >
+      <div className='ms-SpinButtonContainer' style={ spinbuttonWidth && { width: spinbuttonWidth } }>
         { label && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label }</Label> }
-        <div className='ms-SpinButtonWrapper'>
+        < div className='ms-SpinButtonWrapper' >
           <input
             value={ value }
             id={ this._inputId }
@@ -182,7 +183,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
           </span >
-        </div>
+        </div >
       </ div >
     ) as React.ReactElement<{}>;
   }

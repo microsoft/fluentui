@@ -17,6 +17,11 @@ export interface ISpinButtonProps {
   value?: string;
 
   /**
+   * The width of the SpinButton (including the optional label). Defaults to 100%.
+   */
+  width?: string;
+
+  /**
    * The min value of the SpinButton.
    * @default 0
    */
@@ -70,8 +75,14 @@ export interface ISpinButtonProps {
    */
   onBlur?: (value: string) => string;
 
+  /**
+   * TODO
+   */
   onIncrement?: (value: string) => string;
 
+  /**
+   * TODO
+   */
   onDecrement?: (value: string) => string;
 }
 
