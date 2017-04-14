@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ColorPicker: Update the entire control whenever any part is updated",
+      "type": "minor"
+    }
+  ],
+  "email": "phkuo@microsoft.com"
+}
