@@ -16,7 +16,7 @@ import {
   updateA,
   updateH,
   updateSV
-} from '../../utilities/color/Colors';
+} from '../../utilities/color/colors';
 import styles = require('./ColorPicker.scss');
 
 export interface IColorPickerState {
