@@ -21,18 +21,6 @@ export default class FacepileVPage extends React.Component<any, any> {
             data: '$1,000'
           }] } />
       </div>
-      <div>
-        <label> Baseline image:</label>
-        <img max-width='300px' max-height='300px' src='./images/baseline/Facepile_hovered_1.png' />
-      </div>
-      <div>
-        <label> Baseline image Not pressed:</label>
-        <img max-width='300px' max-height='300px' src='./images/baseline/Facepile_not_pressed_0.png' />
-      </div>
-      <div>
-        <label> Baseline image pressed:</label>
-        <img max-width='300px' max-height='300px' src='./images/baseline/Facepile_pressed_2.png' />
-      </div>
     </div>;
   }
 }
