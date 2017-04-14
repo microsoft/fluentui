@@ -239,7 +239,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = newValue;
     this.setState({ value: newValue });
 
-    if (this.state.spining != shouldSpin) {
+    if (this.state.spinning != shouldSpin) {
       this.setState({ spinning: shouldSpin });
     }
 
@@ -274,10 +274,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
 
     if (event.which === KeyCodes.up) {
-      this._increment(false /* shouldSpin */);
+      this._updateValue(false /* shouldSpin */, this._onIncrement);
     }
     else if (event.which === KeyCodes.down) {
-      this._decrement(false /* shouldSpin */);
+      this._updateValue(false /* shouldSpin */, this._onDecrement);
     }
 
     else if (event.which === KeyCodes.enter) {
