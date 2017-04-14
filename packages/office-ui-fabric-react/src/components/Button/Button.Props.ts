@@ -1,15 +1,23 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IRenderFunction } from '../../Utilities';
+import { IContextualMenuProps } from '../../ContextualMenu';
 
 export interface IButton {
   /**
    * Focuses the button.
    */
-  focus();
+  focus: () => void;
 }
 
 export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+  /**
+   * Optional callback to access the IButton interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IButton) => void;
+
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -45,14 +53,32 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
 
   /**
    * The button icon shown in command or hero type.
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use IconButton instead.
    */
   icon?: string;
 
   /**
+   * The button icon shown to the right of the text
+   */
+  menuIconName?: string | null;
+
+  /**
+  * Custom render function for button menu icon
+  */
+  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
+
+  /**
+  * Props for button menu
+  */
+  menuProps?: IContextualMenuProps;
+
+  /**
+  * Custom render function for button menu
+  */
+  onRenderMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
    * Description of the action this button takes.
    * Only used for compound buttons
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use CompoundButton instead
    */
   description?: string;
 

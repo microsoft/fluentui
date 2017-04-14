@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   css,
   getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
-import styles from './Nav.scss';
+import styles = require('./Nav.scss');
 
 import {
   INav,
@@ -30,7 +31,7 @@ export interface INavState {
   selectedKey?: string;
 }
 
-export class Nav extends React.Component<INavProps, INavState> implements INav {
+export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null,
@@ -188,7 +189,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             <i
               className={ css(
                 'ms-Nav-chevron ms-Icon ms-Icon--ChevronDown',
-                styles.chevronIcon
+                styles.chevronIcon,
+                isGroupExpanded && styles.chevronIsExpanded
               ) }
             />
             { group.name }

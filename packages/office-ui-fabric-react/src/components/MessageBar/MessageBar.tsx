@@ -1,18 +1,20 @@
 import * as React from 'react';
 import {
+  BaseComponent,
+  DelayedRender,
   css,
   getId
 } from '../../Utilities';
 import { Button, ButtonType } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-import styles from './MessageBar.scss';
+import styles = require('./MessageBar.scss');
 
 export interface IMessageBarState {
   labelId?: string;
   showContent?: boolean;
 }
 
-export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
+export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
 
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
@@ -29,7 +31,6 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'
   };
-  private _mountTimeout: number;
 
   constructor(props: IMessageBarProps) {
     super(props);
@@ -44,21 +45,6 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     let { isMultiline } = this.props;
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
-  }
-
-  public componentDidMount() {
-    /**
-     * Live regions need an update to announce content.
-     */
-    this._mountTimeout = setTimeout(() => {
-      this.setState({ showContent: true });
-    }, 10);
-  }
-
-  public componentWillUnmount() {
-    if (this._mountTimeout) {
-      clearTimeout(this._mountTimeout);
-    }
   }
 
   private _getActionsDiv(): JSX.Element {
@@ -120,11 +106,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         <div className={ css('ms-MessageBar-content', styles.content) }>
           { this._getIconSpan() }
           <div className={ css('ms-MessageBar-actionables', styles.actionables) }>
-            <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
-              <span className={ this._getInnerTextClassName() }>
-                { this.state.showContent && this.props.children }
-              </span>
-            </div>
+            { this._renderInnerText() }
             { this._getActionsDiv() }
             { this._getDismissDiv() }
           </div>
@@ -135,23 +117,29 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _renderSingleLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
     return (
-      <div className={ this._getClassName() + ' ms-MessageBar-singleline ' + styles.singleline }
-        role='status'
-        aria-live={ this._getAnnouncementPriority() }>
+      <div className={ this._getClassName() + ' ms-MessageBar-singleline ' + styles.singleline }>
         <div className={ css('ms-MessageBar-content', styles.content) }>
           { this._getIconSpan() }
           <div className={ css('ms-MessageBar-actionables', styles.actionables) }>
-            <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
-              <span className={ this._getInnerTextClassName() }>
-                { this.state.showContent && this.props.children }
-              </span>
-            </div>
+            { this._renderInnerText() }
           </div>
           { this._getActionsDiv() }
           <div className={ css('ms-MessageBar-dismissalOneline', styles.dismissalOneline) }>
             { this._getDismissDiv() }
           </div>
         </div>
+      </div >
+    );
+  }
+
+  private _renderInnerText(): JSX.Element {
+    return (
+      <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
+        <span className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }>
+          <DelayedRender>
+            <span>{ this.props.children }</span>
+          </DelayedRender>
+        </span>
       </div>
     );
   }

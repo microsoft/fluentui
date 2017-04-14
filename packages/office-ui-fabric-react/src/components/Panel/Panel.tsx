@@ -15,7 +15,7 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import styles from './Panel.scss';
+import styles = require('./Panel.scss');
 
 export interface IPanelState {
   isFooterSticky?: boolean;
@@ -108,6 +108,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       isLightDismiss,
       layerProps,
       type,
+      customWidth,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
@@ -118,6 +119,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
+    const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
 
     if (!isOpen) {
       return null;
@@ -158,6 +160,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 ['ms-Panel--lg ' + styles.rootIsLarge]: type === PanelType.large || type === PanelType.largeFixed,
                 ['ms-Panel--fixed ' + styles.rootIsFixed]: type === PanelType.largeFixed,
                 ['ms-Panel--xl ' + styles.rootIsXLarge]: type === PanelType.extraLarge,
+                ['ms-Panel--custom ' + styles.rootIsCustom]: type === PanelType.custom,
                 ['ms-Panel--hasCloseButton ' + styles.rootHasCloseButton]: hasCloseButton
               })
             }
@@ -174,6 +177,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                   [SLIDE_RIGHT_OUT_40]: isAnimatingClose && isOnRightSide
                 }
               ) }
+              style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               isClickableOutsideFocusTrap={ isLightDismiss }
               ignoreExternalFocusing={ ignoreExternalFocusing }
@@ -263,12 +267,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   private _updateFooterPosition() {
     let _content = this._content;
-    let height = _content.clientHeight;
-    let innerHeight = _content.scrollHeight;
+    if (_content) {
+      let height = _content.clientHeight;
+      let innerHeight = _content.scrollHeight;
 
-    this.setState({
-      isFooterSticky: height < innerHeight ? true : false
-    });
+      this.setState({
+        isFooterSticky: height < innerHeight ? true : false
+      });
+    }
   }
 
   private _onPanelClick() {

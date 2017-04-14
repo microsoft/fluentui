@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenuPage } from 'fabric-examples/lib/pages/ContextualMenuPage/ContextualMenuPage';
+import { ContextualMenuPage } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenuPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

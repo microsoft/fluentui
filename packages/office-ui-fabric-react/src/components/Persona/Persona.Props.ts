@@ -2,7 +2,17 @@ import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 
+export interface IPersona {
+
+}
+
 export interface IPersonaProps extends React.HTMLProps<Persona> {
+  /**
+   * Optional callback to access the IPersona interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPersona) => void;
+
   /**
    * Primary text to display, usually the name of the person.
    */
@@ -107,7 +117,8 @@ export enum PersonaSize {
   small = 3,
   regular = 4,
   large = 5,
-  extraLarge = 6
+  extraLarge = 6,
+  size28 = 7
 }
 
 export enum PersonaPresence {

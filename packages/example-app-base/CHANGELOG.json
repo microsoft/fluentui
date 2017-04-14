@@ -2,6 +2,115 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "1.3.6",
+      "tag": "@uifabric/example-app-base_v1.3.6",
+      "date": "Tue, 04 Apr 2017 20:08:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1af068041caf672c0dbac66d8226dad4d21b1dd7",
+            "comment": "Updating fabric dependencies to use ranges."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.5",
+      "tag": "@uifabric/example-app-base_v1.3.5",
+      "date": "Tue, 04 Apr 2017 15:18:51 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `1.4.0` to `1.5.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.4",
+      "tag": "@uifabric/example-app-base_v1.3.4",
+      "date": "Wed, 29 Mar 2017 18:15:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fc7cd7df4a12ca6a7f6f4f64a984a971b324262d",
+            "comment": "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.3",
+      "tag": "@uifabric/example-app-base_v1.3.3",
+      "date": "Tue, 28 Mar 2017 03:05:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a2830ed3708407da8d66e4ec9a47bd1af338e8e",
+            "comment": "Tweaked some of the style imports."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.2",
+      "tag": "@uifabric/example-app-base_v1.3.2",
+      "date": "Fri, 24 Mar 2017 20:25:07 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `2.7.0` to `2.7.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=2.7.0 <3.0.0` to `>=2.7.1 <3.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.1",
+      "tag": "@uifabric/example-app-base_v1.3.1",
+      "date": "Fri, 24 Mar 2017 04:26:48 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `2.6.0` to `2.7.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=2.6.0 <3.0.0` to `>=2.7.0 <3.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.0",
+      "tag": "@uifabric/example-app-base_v1.3.0",
+      "date": "Thu, 23 Mar 2017 03:13:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
+            "commit": "7fa3b9649c1b46e136c8781eda79149577699f1d",
+            "comment": "Modified existing calendar examples to include examples of the new props for date range selection, auto month navigation and hiding the today link."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `*` to `1.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `2.5.4` to `2.6.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=2.5.4 <3.0.0` to `>=2.6.0 <3.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.1",
       "tag": "@uifabric/example-app-base_v1.2.1",
       "date": "Wed, 22 Mar 2017 03:18:05 GMT",

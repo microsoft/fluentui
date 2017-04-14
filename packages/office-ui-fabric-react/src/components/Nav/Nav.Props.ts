@@ -12,6 +12,12 @@ export interface INav {
 
 export interface INavProps {
   /**
+   * Optional callback to access the INav interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: INav) => void;
+
+  /**
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[];

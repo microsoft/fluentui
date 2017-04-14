@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBoxPage } from 'fabric-examples/lib/pages/SearchBoxPage/SearchBoxPage';
+import { SearchBoxPage } from 'office-ui-fabric-react/lib/components/SearchBox/SearchBoxPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

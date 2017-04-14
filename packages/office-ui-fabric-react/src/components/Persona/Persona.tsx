@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   autobind,
   css,
   divProperties,
@@ -20,7 +21,7 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import styles from './Persona.scss';
+import styles = require('./Persona.scss');
 
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
@@ -47,7 +48,7 @@ export interface IPersonaState {
   isImageLoaded?: boolean;
 }
 
-export class Persona extends React.Component<IPersonaProps, IPersonaState> {
+export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,

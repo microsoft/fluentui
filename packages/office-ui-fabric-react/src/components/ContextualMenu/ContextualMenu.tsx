@@ -21,7 +21,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-import styles from './ContextualMenu.scss';
+import styles = require('./ContextualMenu.scss');
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -144,6 +144,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    if (this.props.onMenuOpened) {
+      this.props.onMenuOpened(this.props);
+    }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -213,6 +216,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
                 role='menu'
+                isCircularNavigation={ true }
               >
                 <ul
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
@@ -428,7 +432,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemClick(item: any, ev: MouseEvent) {
+  private _onItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     let items = getSubmenuItems(item);
 
     if (!items || !items.length) { // This is an item without a menu. Click it.
@@ -445,15 +449,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     ev.preventDefault();
   }
 
-  private _onAnchorClick(item: IContextualMenuItem, ev: MouseEvent) {
+  private _onAnchorClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     this._executeItemClick(item, ev);
     ev.stopPropagation();
   }
 
-  private _executeItemClick(item: any, ev: MouseEvent) {
+  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     if (item.onClick) {
       item.onClick(ev, item);
+    } else if (this.props.onItemClick) {
+      this.props.onItemClick(ev, item);
     }
+
     this.dismiss(ev, true);
   }
 

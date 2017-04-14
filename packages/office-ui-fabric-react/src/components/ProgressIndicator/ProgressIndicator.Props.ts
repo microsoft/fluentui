@@ -1,4 +1,13 @@
+export interface IProgressIndicator {
+
+}
+
 export interface IProgressIndicatorProps {
+  /**
+   * Optional callback to access the IProgressIndicator interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IProgressIndicator) => void;
 
   /**
    * Class name to apply to the root in addition to ms-ProgressIndicator.
@@ -19,6 +28,11 @@ export interface IProgressIndicatorProps {
    * Percentage of the operation's completeness.
    */
   percentComplete?: number;
+
+  /**
+   * Text alternative of the progress status, used by screen readers for reading the value of the progress.
+   */
+  ariaValueText?: string;
 
   /**
    * @deprecated

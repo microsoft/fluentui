@@ -10,7 +10,7 @@ import {
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
 
-import styles from './Image.scss';
+import styles = require('./Image.scss');
 
 export interface IImageState {
   loadState?: ImageLoadState;

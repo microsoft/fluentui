@@ -16,7 +16,7 @@ import {
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import styles from './Callout.scss';
+import styles = require('./Callout.scss');
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
@@ -32,6 +32,7 @@ export interface ICalloutState {
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
+    preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 16,
@@ -48,7 +49,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _target: HTMLElement | MouseEvent;
 
   constructor(props: ICalloutProps) {
-    super(props, { 'beakStyle': 'beakWidth' });
+    super(props);
+
+    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
 
     this._didSetInitialFocus = false;
     this.state = {
@@ -152,7 +155,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -161,7 +164,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   protected _dismissOnScroll(ev: Event) {
-    if (this.state.positions) {
+    const { preventDismissOnScroll } = this.props;
+    if (this.state.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }

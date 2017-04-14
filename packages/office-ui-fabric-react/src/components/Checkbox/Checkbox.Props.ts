@@ -8,13 +8,19 @@ export interface ICheckbox {
   checked: boolean;
 
   /** Sets focus to the checkbox. */
-  focus(): void;
+  focus: () => void;
 }
 
 /**
  * Checkbox properties.
  */
 export interface ICheckboxProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
+  /**
+   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ICheckbox) => void;
+
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
    */

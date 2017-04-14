@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  DayOfWeek,
-  ICalendar,
-  ICalendarProps
-} from './Calendar.Props';
+import { ICalendar, ICalendarProps } from './Calendar.Props';
+import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
 import {
@@ -12,11 +9,12 @@ import {
   BaseComponent,
   KeyCodes
 } from '../../Utilities';
-import styles from './Calendar.scss';
+import styles = require('./Calendar.scss');
 
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */
   navigatedDate?: Date;
+
   /** The currently selected date in the calendar */
   selectedDate?: Date;
 }
@@ -28,6 +26,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     isMonthPickerVisible: true,
     value: null,
     firstDayOfWeek: DayOfWeek.Sunday,
+    dateRangeType: DateRangeType.Day,
+    autoNavigateOnSelection: false,
+    showGoToToday: true,
     strings: null
   };
 
@@ -42,9 +43,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   constructor(props: ICalendarProps) {
     super();
 
-    let currentDate = props.value && !isNaN(props.value.getTime()) ?
-      props.value
-      : new Date();
+    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : new Date();
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate
@@ -70,7 +69,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings, isMonthPickerVisible } = this.props;
+    let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, autoNavigateOnSelection, showGoToToday } = this.props;
     let { selectedDate, navigatedDate } = this.state;
 
     return (
@@ -90,20 +89,25 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   navigatedDate={ navigatedDate }
                   onSelectDate={ this._onSelectDate }
                   onNavigateDate={ this._onNavigateDate }
+                  onDismiss={ this.props.onDismiss }
                   firstDayOfWeek={ firstDayOfWeek }
+                  dateRangeType={ dateRangeType }
+                  autoNavigateOnSelection={ autoNavigateOnSelection }
                   strings={ strings }
                   ref='dayPicker' />
-                <CalendarMonth
+
+                { isMonthPickerVisible && <CalendarMonth
                   navigatedDate={ navigatedDate }
                   strings={ strings }
-                  onNavigateDate={ this._onNavigateDate } />
-                <span
+                  onNavigateDate={ this._onNavigateDate } /> }
+
+                { showGoToToday && <span
                   className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                   onClick={ this._onGotoToday }
                   onKeyDown={ this._onGotoTodayKeyDown }
                   tabIndex={ 0 }>
                   { strings.goToToday }
-                </span>
+                </span> }
               </div>
             </div>
           </div>
@@ -132,7 +136,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   @autobind
-  private _onSelectDate(date: Date) {
+  private _onSelectDate(date: Date, selectedDateRangeArray: Date[]) {
     let { onSelectDate } = this.props;
 
     this.setState({
@@ -140,7 +144,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     });
 
     if (onSelectDate) {
-      onSelectDate(date);
+      onSelectDate(date, selectedDateRangeArray);
     }
   };
 
@@ -155,6 +159,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
       this._onGotoToday();
+    } else if (ev.which === KeyCodes.tab && !ev.shiftKey) {
+      if (this.props.onDismiss) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        this.props.onDismiss();
+      }
     }
   };
 

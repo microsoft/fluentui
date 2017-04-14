@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   KeyCodes,
   css,
   getId,
@@ -12,7 +13,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
-import styles from './Pivot.scss';
+import styles = require('./Pivot.scss');
 
 /**
  *  Usage:
@@ -36,7 +37,7 @@ export interface IPivotState {
   selectedTabId: string;
 }
 
-export class Pivot extends React.Component<IPivotProps, IPivotState> {
+export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;
@@ -141,7 +142,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         ) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
-        aria-label={ link.ariaLabel }
+        ariaLabel={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }>
         { linkContent }
