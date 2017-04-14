@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Apr 2017 16:04:37 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Apr 2017 03:06:28 GMT and should not be manually modified.
+
+## 2.17.0
+Fri, 14 Apr 2017 03:06:28 GMT
+
+### Minor changes
+
+- ColorPicker: Update the entire control whenever any part is updated
+
+### Patches
+
+- DatePicker: Restore focus when exiting picker.
+- Regression Tests: Button and checkbox
+- CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler
+- DatePicker: Fix for long lables and Calendar icon
+- PeoplePicker: Textfield cursor fix in edge
+- Fix alignment issues for unselectable items in DetailsList
+- DatePicker: Persist selected date across re-renders
+- FocusZone: filtered out keypresses in input fields from triggering actions
+-  Tag picker: Fix for margin in overflow
 
 ## 2.16.0
 Wed, 12 Apr 2017 16:04:37 GMT

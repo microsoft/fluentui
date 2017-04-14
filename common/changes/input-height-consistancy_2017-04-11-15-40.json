@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Fix for long lables and Calendar icon",
+      "comment": "SearchBox: Updated layout to use flexbox, follow spec more closely in padding and height",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "r33najain@gmail.com"
+  "email": "micahgodbolt@gmail.com"
 }
