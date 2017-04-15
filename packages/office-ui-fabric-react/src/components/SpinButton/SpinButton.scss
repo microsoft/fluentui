@@ -15,7 +15,7 @@
 
 .ms-SpinButtonContainer {
   width: 100%;
-  min-width: 100px;
+  min-width: 90px;
   overflow: hidden;
 }
 
@@ -43,6 +43,9 @@
   .ms-SpinButtonWrapper {
     overflow: hidden;
     display: inline-block;
+  }
+
+  .ms-SpinButtonWrapper.topBottom {
     width: 100%;
   }
 
@@ -57,7 +60,6 @@
     opacity: 0.3;
     cursor: default;
   }
-
 
     .ms-SpinButtonWrapper:hover .ms-SpinButton-Input:focus {
       border-color: $ms-color-themePrimary;
@@ -78,6 +80,7 @@
     display: block;
     float: left;
     width: 70%;
+    min-width: 63px;
     border-right-width: 0px;
     overflow: hidden;
     cursor: text;

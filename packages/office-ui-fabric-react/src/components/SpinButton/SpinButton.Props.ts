@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ISpinButtonState } from './SpinButton';
+import { RectangleEdge } from '../../utilities/positioning'
 
 export interface ISpinButtonProps {
 
@@ -17,7 +18,8 @@ export interface ISpinButtonProps {
   value?: string;
 
   /**
-   * The width of the SpinButton (including the optional label). Defaults to 100%.
+   * The width of the SpinButton (including the optional label).
+   * @default 100%
    */
   width?: string;
 
@@ -60,9 +62,16 @@ export interface ISpinButtonProps {
   className?: string;
 
   /**
-   * Label for the spinner.
+   * Descriptive label for the SpinButton.
    */
-  label?: string;
+  label: string;
+
+  /**
+   * @default: Left
+   */
+  labelDirection?: RectangleEdge;
+
+  labelGapSpace?: number;
 
   /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
