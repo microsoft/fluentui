@@ -28,3 +28,30 @@ $selectedActiveBackgroundColor: $ms-color-neutralTertiaryAlt;
 $selectedActiveForegroundColor: $ms-color-neutralPrimary;
 
 $dividerColor: $ms-color-neutralLight;
+
+// *** New semantic slots
+// todo: convert to theme tokens
+
+/*** BASIC ***/
+$bodyBackgroundColor: $ms-color-white;
+$bodyTextColor: $ms-color-neutralPrimary;
+
+$bodyTextSoftColor: $ms-color-neutralSecondary; // descriptions, metadata, etc
+
+$disabledBackgroundColor: $ms-color-neutralLighter;
+$disabledForegroundColor: gray;
+$disabledForegroundSoftColor: $ms-color-neutralTertiary;
+
+$focusBorderColor: $ms-color-black;
+
+$errorForegroundColor: $ms-color-redDark;
+
+/*** INPUTS ***/
+$inputBackgroundColor: $ms-color-white;
+$inputForegroundColor: $ms-color-neutralPrimary;
+
+$inputBorderColor: $ms-color-neutralTertiaryAlt;
+$inputBorderHoverColor: $ms-color-neutralSecondaryAlt;
+$inputBorderFocusColor: $ms-color-themePrimary;
+
+$inputPlaceholderColor: $ms-color-neutralTertiary;
