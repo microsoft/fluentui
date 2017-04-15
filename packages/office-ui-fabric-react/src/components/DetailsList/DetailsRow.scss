@@ -82,6 +82,10 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   opacity: 0;
 }
 
+.checkDisabled {
+  visibility: hidden;
+}
+
 .root:hover .check,
 .rootIsSelected .check,
 .rootIsCheckVisible .check {

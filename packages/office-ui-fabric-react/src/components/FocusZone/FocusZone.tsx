@@ -332,7 +332,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
     do {
-      if (target.tagName === 'BUTTON' || target.tagName === 'A') {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
         return false;
       }
 
