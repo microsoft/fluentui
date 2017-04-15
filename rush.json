@@ -5,9 +5,6 @@
   "commonFolder": "common",
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 999,
-  "pinnedVersions": {
-    "webpack": "2.2.1"
-  },
   "projects": [
     {
       "packageName": "office-ui-fabric-react",

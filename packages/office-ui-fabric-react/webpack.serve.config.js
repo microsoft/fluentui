@@ -7,7 +7,6 @@ module.exports = {
   entry: './src/demo/index.tsx',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'demo-app.js',
   },
 

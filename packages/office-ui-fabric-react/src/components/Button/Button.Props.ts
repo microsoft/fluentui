@@ -73,15 +73,17 @@ export interface IButtonProps extends React.HTMLProps<any> {
    */
   iconProps?: IIconProps;
 
-  /**
-   * The button icon shown to the right of the text
-   */
-  menuIconName?: IconName | string | null;
 
   /**
-   * Props for button menu
+   * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
+   * how the default icon looks.
    */
   menuProps?: IContextualMenuProps;
+
+  /**
+   * The props for the icon shown when providing a menu dropdown.
+   */
+  menuIconProps?: IIconProps;
 
   /**
    * Custom render function for the icon
@@ -141,10 +143,17 @@ export interface IButtonProps extends React.HTMLProps<any> {
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 
   /**
- * @deprecated
- * Use iconName.
- */
+   * Deprecated on 4/15/2017, use iconName.
+   * @deprecated
+   */
   icon?: string;
+
+  /**
+   * Deprecated on 4/15/2017, use menuIconProps.
+   * @deprecated
+   */
+  menuIconName?: IconName | string | null;
+
 }
 
 export enum ElementType {

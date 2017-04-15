@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "^2.3.1",
+    "@microsoft/rush": "2.5.0",
     "github": "^7.0.0",
     "gulp": "^3.9.1",
     "yargs": "^6.5.0"

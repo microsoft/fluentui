@@ -38,12 +38,13 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _descriptionId: string;
   private _ariaDescriptionId: string;
 
-  constructor(props: IButtonProps, rootClassName: string, deprecationMap: any) {
+  constructor(props: IButtonProps, rootClassName: string) {
     super(props);
 
     this._warnDeprecations({
       rootProps: null,
-      icon: 'iconProps'
+      icon: 'iconProps',
+      menuIconName: 'menuIconProps'
     });
 
     this._labelId = getId();
@@ -226,14 +227,23 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   @autobind
-  private _onRenderMenuIcon(props: IButtonProps): JSX.Element {
-    const {
-      classNames,
-      menuIconName = 'ChevronDown'
-    } = props;
+  private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
+    let {classNames, menuIconProps, menuIconName } = this.props;
+
+    if (menuIconProps === undefined) {
+      menuIconProps = {
+        iconName: menuIconName === undefined ? 'ChevronDown' : menuIconName
+      };
+    }
 
     return (
-      <Icon className={ css(`${classNames.base}-icon`, classNames.menuIcon) } iconName={ menuIconName as IconName } />
+      menuIconProps ?
+        <Icon
+          { ...menuIconProps }
+          className={ css(`${classNames.base}-icon`, classNames.menuIcon, menuIconProps.className) }
+        />
+        :
+        null
     );
   }
 
