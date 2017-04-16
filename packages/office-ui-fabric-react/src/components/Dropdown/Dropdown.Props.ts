@@ -91,8 +91,8 @@ export interface IDropdownProps extends React.Props<Dropdown> {
 
   // @todo: Update version numbers for depriate and removal
   /**
+   * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 
@@ -118,8 +118,8 @@ export interface IDropdownOption {
   selected?: boolean;
 
   /**
+   * Deprecated at v.65.1, use 'selected' instead.
    * @deprecated
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
    */
   isSelected?: boolean;
 }
