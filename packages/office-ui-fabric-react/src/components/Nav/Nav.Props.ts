@@ -64,15 +64,13 @@ export interface INavProps {
   expandButtonAriaLabel?: string;
 
   /**
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * (Optional) The accessibility text for the expanded state
+   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
    * @deprecated
    **/
   expandedStateText?: string;
 
   /**
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * (Optional) The accessibility text for the collapsed state text
+   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
    * @deprecated
    **/
   collapsedStateText?: string;
@@ -132,15 +130,13 @@ export interface INavLink {
   iconClassName?: string;
 
   /**
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * The name of the item to be used in logging engagement data
+   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
    * @deprecated
    */
   engagementName?: string;
 
   /**
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * The alt text for the item
+   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
    * @deprecated
    */
   altText?: string;

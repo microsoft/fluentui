@@ -114,7 +114,7 @@ export interface IGroup {
   level?: number;
 
   /**
-   * This is no longer supported. Selection state will be controled by the selection store only. Will be removed in 1.0.0.
+   * Deprecated at 1.0.0, selection state will be controled by the selection store only.
    * @deprecated
    */
   isSelected?: boolean;

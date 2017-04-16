@@ -29,7 +29,7 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
   onSearch?: (newValue: any) => void;
 
   /**
-   * Deprecated at v0.52.2, to be removed at >= v1.0.0. Use 'onChange' instead.
+   * Deprecated at v0.52.2, use 'onChange' instead.
    * @deprecated
    */
   onChanged?: (newValue: any) => void;

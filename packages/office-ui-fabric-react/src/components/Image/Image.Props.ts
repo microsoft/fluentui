@@ -38,9 +38,8 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   imageFit?: ImageFit;
 
   /**
-   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
-   * difference src.
+   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead and
+   * rerender the Image with a difference src.
    * @deprecated
    */
   errorSrc?: string;
@@ -103,9 +102,8 @@ export enum ImageLoadState {
   error = 2,
 
   /**
-   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
-   * difference src.
+   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead
+   * and rerender the Image with a difference src.
    * @deprecated
    */
   errorLoaded = 3

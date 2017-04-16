@@ -58,7 +58,7 @@ export enum SpinnerSize {
 }
 
 /**
- * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
+ * Deprecated at v2.0.0, use 'SpinnerSize' instead.
  * @deprecated
  */
 export enum SpinnerType {

@@ -128,8 +128,8 @@ export interface IButtonProps extends React.HTMLProps<any> {
 
   /**
    * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
-   * @deprecated
    * @defaultvalue ButtonType.default
+   * @deprecated
    */
 
   buttonType?: ButtonType;

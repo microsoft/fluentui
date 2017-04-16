@@ -1,5 +1,5 @@
 /**
- * TODO remove deprecated value at >= 2.0.0
+ * Deprecated at 2.0.0. Use SpinnerSize instead.
  * @deprecated
  */
 export enum SpinnerType {

@@ -9,7 +9,7 @@ export interface ICheckProps extends React.Props<Check> {
    */
   checked?: boolean;
   /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
+   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'checked' instead.
    * @deprecated
    */
   isChecked?: boolean;
