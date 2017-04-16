@@ -67,8 +67,8 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showGoToToday?: boolean;
 
   /**
-   * @deprecated
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
+   * @deprecated
    *
    */
   shouldFocusOnMount?: boolean;

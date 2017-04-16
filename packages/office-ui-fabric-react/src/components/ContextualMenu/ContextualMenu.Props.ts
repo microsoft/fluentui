@@ -203,8 +203,8 @@ export interface IContextualMenuItem {
   disabled?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'disabled' instead.
+   * @deprecated
    */
   isDisabled?: boolean;
 
@@ -226,8 +226,8 @@ export interface IContextualMenuItem {
   checked?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
+   * @deprecated
    */
   isChecked?: boolean;
 
@@ -247,8 +247,8 @@ export interface IContextualMenuItem {
   href?: string;
 
   /**
-   * @deprecated
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
+   * @deprecated
    */
   items?: IContextualMenuItem[];
 

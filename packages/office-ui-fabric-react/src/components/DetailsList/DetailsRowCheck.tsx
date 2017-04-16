@@ -8,8 +8,8 @@ import styles = require('./DetailsRow.scss');
 export interface IDetailsRowCheckProps {
   selected?: boolean;
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   * @deprecated
    */
   isSelected?: boolean;
   anySelected: boolean;

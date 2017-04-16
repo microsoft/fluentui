@@ -114,8 +114,8 @@ export interface IGroup {
   level?: number;
 
   /**
-   * @deprecated
    * This is no longer supported. Selection state will be controled by the selection store only. Will be removed in 1.0.0.
+   * @deprecated
    */
   isSelected?: boolean;
 
@@ -199,8 +199,8 @@ export interface IGroupDividerProps {
   selected?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   * @deprecated
    */
   isSelected?: boolean;
 

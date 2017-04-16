@@ -11,8 +11,8 @@ import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 
 /**
- * @deprecated
  * This class is deprecated. Use the individual *Button components instead.
+ * @deprecated
  */
 export class Button extends BaseComponent<IButtonProps, {}> {
   /**

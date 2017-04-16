@@ -90,9 +90,9 @@ export interface IDocumentCardPreviewImage {
   previewImageSrc?: string;
 
   /**
-   * @deprecated
    * Deprecated at v1.3.6, to be removed at >= v2.0.0.
    * Path to the image to display if the preview image won't load.
+   * @deprecated
    */
   errorImageSrc?: string;
 

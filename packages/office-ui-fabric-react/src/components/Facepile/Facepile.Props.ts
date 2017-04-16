@@ -40,9 +40,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
   addButtonProps?: IButtonProps;
 
   /**
-   * @deprecated
    * Deprecated at v0.70, to be removed at >= v1.0.0. User overflowButtonProps instead;
    * Button properties for the chevron button
+   * @deprecated
    */
   chevronButtonProps?: IButtonProps;
 
