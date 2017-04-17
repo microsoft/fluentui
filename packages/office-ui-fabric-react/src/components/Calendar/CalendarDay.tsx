@@ -198,7 +198,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
