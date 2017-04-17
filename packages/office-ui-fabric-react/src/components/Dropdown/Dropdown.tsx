@@ -245,9 +245,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render items
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
-    if (item.text === '-') {
-      item.itemType = DropdownMenuItemType.Divider;
-    }
     switch (item.itemType) {
       case DropdownMenuItemType.Divider:
         return this._renderSeparator(item);
