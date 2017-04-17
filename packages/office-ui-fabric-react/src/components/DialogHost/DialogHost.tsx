@@ -81,6 +81,7 @@ export class DialogHost extends BaseComponent<IDialogHostProps, IDialogState> {
       subtitleAriaId,
     } = this.props;
     let { id, isOpen, isAnimatingOpen, isAnimatingClose } = this.state;
+
     // @TODO - the discussion on whether the DialogHost contain a property for rendering itself is still being discussed
     if (!isOpen) {
       return null;

@@ -8,9 +8,7 @@ export interface IDialog {
 
 }
 
-export interface IDialogHostProps extends React.Props<DialogHost>, IDialogHostInheritableProps { }
-
-export interface IDialogHostInheritableProps extends IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IDialogHostProps extends React.Props<DialogHost>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

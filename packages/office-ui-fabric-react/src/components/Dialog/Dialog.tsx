@@ -6,7 +6,7 @@ import {
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IDialogProps, DialogType } from './Dialog.Props';
-import { DialogHost } from '../DialogHost/DialogHost'; // TODO: Reference index file
+import { DialogHost } from '../../DialogHost';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Button, ButtonType } from '../../Button';
@@ -14,8 +14,6 @@ import { DialogFooter } from './DialogFooter';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import styles = require('./Dialog.scss');
-
-// @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
 export interface IDialogState {
   id?: string;
