@@ -101,7 +101,7 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
           groups={ groupBy(items, 'color') }
           columns={ _columns }
         />
-      </Fabric >
+      </Fabric>
     );
   }
 
