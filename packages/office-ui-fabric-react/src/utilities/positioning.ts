@@ -24,9 +24,9 @@ export interface IPositionProps {
 
   target?: HTMLElement | MouseEvent;
 
-  /** The element that the callout should be positioned based on.
-   * @deprecated use target instead.
-  */
+  /** Deprecated at v1.0.0, use 'target' instead.
+   * @deprecated
+   */
   targetElement?: HTMLElement;
 
   /** how the element should be positioned */
@@ -44,22 +44,22 @@ export interface IPositionProps {
   bounds?: IRectangle;
 
   /**
-   * The event that created the contextualmenu.
-   * @deprecated use target with event passed in.
+   * Deprecated at v1.0.0, use 'target' with event passed in.
+   * @deprecated
    * @default null
    */
   creationEvent?: MouseEvent;
 
   /**
-   * If true use a point rather than rectangle to position the callout.
-   * For example it can be used to position based on a click.
-   * @deprecated use target with event passed in
+   * Deprecated at v1.0.0, use 'target' with event passed in.
+   * @deprecated
    */
   useTargetPoint?: boolean;
 
-  /** Point used to position
-   * @deprecated use target with event passed in
-  */
+  /**
+   * Deprecated at v1.0.0, use 'target' with event passed in.
+   * @deprecated
+   */
   targetPoint?: IPoint;
 
   /** If true then the beak is visible. If false it will not be shown. */

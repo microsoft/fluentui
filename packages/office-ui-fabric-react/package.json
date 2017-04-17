@@ -53,8 +53,6 @@
     "source-map-loader": "0.1.5",
     "style-loader": "^0.13.2",
     "ts-loader": "^2.0.1",
-    "tslint": "^3.15.1",
-    "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "^2.2.2",
     "vinyl-ftp": "0.4.5",
     "webpack": "^2.2.1",
