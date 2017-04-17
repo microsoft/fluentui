@@ -8,7 +8,6 @@ import {
   Selection
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { createListItems } from '@uifabric/example-app-base';
 
 let _items = [];
 
