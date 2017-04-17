@@ -51,7 +51,7 @@ export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabr
 
   public render() {
     const { isFocusVisible } = this.state;
-    const rootClass = css('ms-Fabric ms-fontSize-m', this.props.className, {
+    const rootClass = css('ms-Fabric', this.props.className, {
       'is-focusVisible': isFocusVisible
     });
 
