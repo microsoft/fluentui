@@ -4,7 +4,7 @@ import { BaseComponent, nullRender } from '@uifabric/utilities';
 import { IButtonProps } from '../Button.Props';
 import styles = require('./IconButton.scss');
 
-export const CLASS_NAMES: IButtonClassNames = {
+const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--icon',
   icon: styles.icon,

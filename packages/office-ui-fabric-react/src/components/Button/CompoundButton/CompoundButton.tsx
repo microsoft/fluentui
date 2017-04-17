@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.Props';
 
 import styles = require('./CompoundButton.scss');
 
-export const CLASS_NAMES: IButtonClassNames = {
+const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--compound',
   description: styles.description,
