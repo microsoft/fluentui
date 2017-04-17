@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
+import { BaseButton } from './BaseButton';
+import { Button } from './Button';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
 
@@ -10,7 +12,7 @@ export interface IButton {
   focus: () => void;
 }
 
-export interface IButtonProps extends React.HTMLProps<any> {
+export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
