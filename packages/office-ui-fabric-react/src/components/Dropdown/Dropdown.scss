@@ -236,3 +236,8 @@ $DropDown-item-height: 36px;
 
   @include highContrastListItemState;
 }
+
+.divider {
+  height: 1px;
+  background-color: $dividerColor;
+}

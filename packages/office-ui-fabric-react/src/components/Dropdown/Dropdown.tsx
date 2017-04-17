@@ -242,9 +242,24 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  // Render Items
-  @autobind
+  // Render
   private _onRenderItem(item: IDropdownOption): JSX.Element {
+    return item.text === '-' ? this._renderSeparator(item) : this._renderOption(item);
+  }
+
+  private _renderSeparator(item: IDropdownOption): JSX.Element {
+    let { index, key } = item;
+    if (index > 0) {
+      return <div
+        role='separator'
+        key={ key }
+        className={ css('ms-Dropdown-divider', styles.divider) } />;
+    }
+    return null;
+  }
+
+  @autobind
+  private _renderOption(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     return (
