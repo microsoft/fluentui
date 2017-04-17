@@ -3,12 +3,13 @@ import { Dialog } from './Dialog';
 import { IButtonProps } from '../Button/Button.Props';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
+import { IDialogHostInheritableProps } from '../DialogHost/DialogHost.Props'; // TODO: Reference index file
 
 export interface IDialog {
 
 }
 
-export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps, IDialogHostInheritableProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

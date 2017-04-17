@@ -34,21 +34,13 @@ $Dialog-default-max-width: 340px;
 }
 
 // State: The dialog is open
-.root.isOpen {
+.isOpen {
   display: flex;
 }
 
 // The actual dialog element
 .main {
-  @include drop-shadow();
-  background-color: $ms-color-white;
-  box-sizing: border-box;
   width: $Dialog-default-min-width;
-  position: relative;
-  @include text-align(left);
-  outline: 3px solid transparent;
-  max-height: 100%;
-  overflow-y: auto;
 }
 
 // Close button, hidden by default
@@ -142,7 +134,7 @@ $Dialog-default-max-width: 340px;
 
 //= Modifier: Dialog with close button
 //
-.root.isClose:not(.isLargeHeader) {
+.isClose:not(.isLargeHeader) {
   // Show the close button
   .button.isClose {
     display: block;
@@ -151,7 +143,7 @@ $Dialog-default-max-width: 340px;
 
 //= Modifier: Multiline button dialog
 //
-.root.isMultiline {
+.isMultiline {
   .title {
     font-size: $ms-font-size-xxl;
   }
@@ -163,7 +155,7 @@ $Dialog-default-max-width: 340px;
 
 //= Modifier: Large header dialog
 //
-.root.isLargeHeader {
+.isLargeHeader {
   .header {
     background-color: $Dialog-lgHeader-backgroundColor;
   }
