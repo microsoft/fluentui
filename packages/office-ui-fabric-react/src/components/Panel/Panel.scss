@@ -194,7 +194,9 @@ $CommandBarHeight: 40px;
 
 // The  button in the top right (x)
 .closeButton {
-  @include ms-button-reset();
+  background: none;
+  border: 0;
+  cursor: pointer;
   position: absolute;
   @include ms-right(8px);
   top: 0;

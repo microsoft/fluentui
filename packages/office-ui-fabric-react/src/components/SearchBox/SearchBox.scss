@@ -30,18 +30,18 @@
   font-size: 16px;
   width: 32px;
   text-align: center;
-  transition: width $ms-duration1;
+  transition: width $ms-animation-duration-1;
   color: $ms-color-themePrimary;
 }
 
 .icon {
   opacity: 1;
-  transition: opacity $ms-duration1 0s;
+  transition: opacity $ms-animation-duration-1 0s;
 }
 
 // Input Field
 .field {
-  @include ms-u-normalize;
+  @include ms-normalize;
   border: none;
   outline: transparent 1px solid;
   font-weight: inherit;
@@ -96,7 +96,7 @@
   }
   .icon {
     opacity: 0;
-    opacity: 0 0s $ms-duration1;
+    opacity: 0 0s $ms-animation-duration-1;
    }
 }
 

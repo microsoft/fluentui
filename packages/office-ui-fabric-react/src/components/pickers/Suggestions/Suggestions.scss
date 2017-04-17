@@ -28,7 +28,9 @@
 }
 
 .searchMoreButton {
-  @include ms-button-reset();
+  background: none;
+  border: 0;
+  cursor: pointer;
   height: auto;
   text-align: center;
   margin: 0;

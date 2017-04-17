@@ -377,9 +377,9 @@
       "resolved": "https://registry.npmjs.org/after/-/after-0.8.2.tgz"
     },
     "ajv": {
-      "version": "4.11.6",
+      "version": "4.11.7",
       "from": "ajv@>=4.9.1 <5.0.0",
-      "resolved": "https://registry.npmjs.org/ajv/-/ajv-4.11.6.tgz"
+      "resolved": "https://registry.npmjs.org/ajv/-/ajv-4.11.7.tgz"
     },
     "ajv-keywords": {
       "version": "1.5.1",
@@ -462,9 +462,9 @@
       "resolved": "https://registry.npmjs.org/arr-diff/-/arr-diff-2.0.0.tgz"
     },
     "arr-flatten": {
-      "version": "1.0.2",
+      "version": "1.0.3",
       "from": "arr-flatten@>=1.0.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/arr-flatten/-/arr-flatten-1.0.2.tgz"
+      "resolved": "https://registry.npmjs.org/arr-flatten/-/arr-flatten-1.0.3.tgz"
     },
     "array-differ": {
       "version": "1.0.0",
@@ -4907,9 +4907,9 @@
       "resolved": "https://registry.npmjs.org/obuf/-/obuf-1.1.1.tgz"
     },
     "office-ui-fabric-core": {
-      "version": "5.1.0",
-      "from": "office-ui-fabric-core@>=5.0.0 <6.0.0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-5.1.0.tgz"
+      "version": "7.0.0",
+      "from": "office-ui-fabric-core@7.0.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-7.0.0.tgz"
     },
     "office-ui-fabric-react": {
       "version": "2.17.0",
@@ -5040,9 +5040,9 @@
       "resolved": "https://registry.npmjs.org/osenv/-/osenv-0.1.4.tgz"
     },
     "package-json": {
-      "version": "4.0.0",
+      "version": "4.0.1",
       "from": "package-json@>=4.0.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/package-json/-/package-json-4.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/package-json/-/package-json-4.0.1.tgz"
     },
     "pako": {
       "version": "0.2.9",
@@ -5568,9 +5568,9 @@
       "resolved": "https://registry.npmjs.org/qs/-/qs-6.4.0.tgz"
     },
     "query-string": {
-      "version": "4.3.2",
+      "version": "4.3.3",
       "from": "query-string@>=4.1.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/query-string/-/query-string-4.3.2.tgz"
+      "resolved": "https://registry.npmjs.org/query-string/-/query-string-4.3.3.tgz"
     },
     "querystring": {
       "version": "0.2.0",

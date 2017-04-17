@@ -226,7 +226,7 @@
 .errorMessage {
   @include ms-font-s;
   @include ms-fontColor-redDark;
-  @include ms-reset-margins;
+  margin: 0;
   padding-top: 5px;
 }
 

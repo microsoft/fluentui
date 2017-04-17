@@ -34,7 +34,6 @@ $Calendar-dayPicker-margin: 10px;
 
 // When the picker opens, reveal the content.
 .picker.pickerIsOpened .holder {
-  @include ms-slideDownIn10;
   @include ms-borderBox;
   display: block;
 }
