@@ -12,7 +12,7 @@ casper.start(baseUrl + 'breadcrumb').
 
   }).then(function () {
     this.mouse.down('.ms-Breadcrumb-listItem');
-    phantomcss.screenshot('.Breadcrumb', 'Breadcrumb_pressed');
+    phantomcss.screenshot('.ms-Breadcrumb-listItem', 'Breadcrumb_pressed');
 
   });
 casper.run(function () { casper.test.done(); });
