@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.Props';
 
 import styles = require('./DefaultButton.scss');
 
-export const DefaultButtonClassNames: IButtonClassNames = {
+export const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--default',
   icon: styles.icon,
@@ -25,7 +25,7 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   public render() {
     return (
       <BaseButton
-        classNames={ DefaultButtonClassNames }
+        classNames={ CLASS_NAMES }
         onRenderDescription={ nullRender }
         { ...this.props } />
     );

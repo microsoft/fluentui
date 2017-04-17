@@ -25,7 +25,7 @@ export class Button extends BaseComponent<IButtonProps, {}> {
 
     warn(
       `The Button component has been deprecated. Use specific variants instead. ` +
-      `(PrimaryButton, DefaultButton, IconButton, CommandButton, etc.`
+      `(PrimaryButton, DefaultButton, IconButton, CommandButton, etc.)`
     );
   }
 

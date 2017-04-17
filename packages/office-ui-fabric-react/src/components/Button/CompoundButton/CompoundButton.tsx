@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.Props';
 
 import styles = require('./CompoundButton.scss');
 
-export const CompoundButtonClassNames: IButtonClassNames = {
+export const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--compound',
   description: styles.description,
@@ -26,7 +26,7 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   public render() {
     return (
       <BaseButton
-        classNames={ CompoundButtonClassNames }
+        classNames={ CLASS_NAMES }
         { ...this.props }
       />
     );
