@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Add dividers to component",
+      "comment": "Dropdown: Add dividers and headers to component",
       "type": "minor"
     }
   ],
