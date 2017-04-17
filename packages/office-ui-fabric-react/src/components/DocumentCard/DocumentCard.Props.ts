@@ -9,7 +9,17 @@ import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
 import { IButtonProps } from '../../Button';
 
+export interface IDocumentCard {
+
+}
+
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
+  /**
+   * Optional callback to access the IDocumentCard interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDocumentCard) => void;
+
   /**
   * The type of DocumentCard to display.
   * @default DocumentCardType.normal
@@ -80,9 +90,8 @@ export interface IDocumentCardPreviewImage {
   previewImageSrc?: string;
 
   /**
-   * @deprecated
    * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * Path to the image to display if the preview image won't load.
+   * @deprecated
    */
   errorImageSrc?: string;
 

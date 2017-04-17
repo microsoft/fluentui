@@ -1,6 +1,116 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 01 Apr 2017 03:12:59 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Apr 2017 03:06:28 GMT and should not be manually modified.
+
+## 2.17.0
+Fri, 14 Apr 2017 03:06:28 GMT
+
+### Minor changes
+
+- ColorPicker: Update the entire control whenever any part is updated
+
+### Patches
+
+- DatePicker: Restore focus when exiting picker.
+- Regression Tests: Button and checkbox
+- CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler
+- DatePicker: Fix for long lables and Calendar icon
+- PeoplePicker: Textfield cursor fix in edge
+- Fix alignment issues for unselectable items in DetailsList
+- DatePicker: Persist selected date across re-renders
+- FocusZone: filtered out keypresses in input fields from triggering actions
+-  Tag picker: Fix for margin in overflow
+
+## 2.16.0
+Wed, 12 Apr 2017 16:04:37 GMT
+
+### Minor changes
+
+- Improved keyboard and screen reader support for the Facepile control.  Added aria-describedby to FocusZone control.
+- Dropdown: Add ability to open and close via space bar.
+
+### Patches
+
+- Details List: Fixes clipped buttons inside of list cells
+- Dropdown: Prevent the chevron icon from being read by screen readers.
+- CommandBar: Support hrefs in command bar item
+- DetailsList: no longer renders a horizontal scrollbar if a vertical scrollbar appears.
+- Facepile: Fixed firefox bug where explicit sizes were needed on persona buttons
+- MessageBar: Adds borders in HighContrast mode
+- Fix CSS issue in ChoiceGroup in IE11
+- People Picker: Fix issue in IE11 where long names were not properly truncated
+- PeoplePicker: Have the suggestions list follow the cursor instead of always being aligned left to input box
+- TextField: Fix positioning of icon
+- Toggle: Adding min width to inner container.
+- Dialog: Add close button to non-blocking variants
+- Pivot: Fix ariaLabel prop for PivotItem
+- Pivot: Add div native props to PivotItem
+- CommandBar: Remove aria-disabled="true" for disabled menu items
+
+## 2.15.0
+Sat, 08 Apr 2017 03:18:28 GMT
+
+### Minor changes
+
+- ContextualMenu: adding in onMenuOpened callback
+
+## 2.14.1
+Fri, 07 Apr 2017 03:14:49 GMT
+
+### Patches
+
+- VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html
+
+## 2.14.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Adding in visual regression testing
+
+### Patches
+
+- MessageBar: Multiple message bars will have proper margins to seperate them
+- Panel: Fixed selector bug that broke extraLarge panel
+- TagPicker: Fix for long tags.
+
+## 2.13.0
+Wed, 05 Apr 2017 03:50:41 GMT
+
+### Minor changes
+
+- ProgressIndicator: support for aria-valuetext
+
+### Patches
+
+- BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`.
+- GroupedList: Allow header/footer customization of nested groups
+
+## 2.12.0
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Minor changes
+
+- Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
+
+## 2.11.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`.
+
+## 2.10.6
+Tue, 04 Apr 2017 03:12:41 GMT
+
+### Patches
+
+- Removing TypeScript files from being binplaced within the lib folder.
+- ToolTip: fix for long tips
 
 ## 2.10.5
 Sat, 01 Apr 2017 03:12:59 GMT

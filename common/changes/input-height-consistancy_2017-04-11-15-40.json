@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removing TypeScript files from being binplaced within the lib folder.",
+      "comment": "SearchBox: Updated layout to use flexbox, follow spec more closely in padding and height",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "dzearing@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }

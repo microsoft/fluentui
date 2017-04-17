@@ -1,6 +1,15 @@
 import * as React from 'react';
 
+export interface IMessageBar {
+
+}
+
 export interface IMessageBarProps extends React.HTMLProps<HTMLElement> {
+  /**
+   * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IMessageBar) => void;
 
   /**
    * The type of MessageBar to render.
@@ -32,9 +41,9 @@ export interface IMessageBarProps extends React.HTMLProps<HTMLElement> {
    */
   isMultiline?: boolean;
 
-   /**
-   * Aria label on dismiss button if onDismiss is defined.
-   */
+  /**
+  * Aria label on dismiss button if onDismiss is defined.
+  */
   dismissButtonAriaLabel?: string;
 }
 
@@ -52,8 +61,8 @@ export enum MessageBarType {
   /** Warning styled MessageBar */
   warning = 5,
   /**
-   * @deprecated
    * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
+   * @deprecated
    */
   remove = 6
 }

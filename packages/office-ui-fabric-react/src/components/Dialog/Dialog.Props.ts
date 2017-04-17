@@ -4,7 +4,17 @@ import { IButtonProps } from '../Button/Button.Props';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
+export interface IDialog {
+
+}
+
 export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {
+  /**
+   * Optional callback to access the IDialog interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDialog) => void;
+
   /**
   * Whether the dialog is displayed.
   * @default false
@@ -70,8 +80,8 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   onLayerDidMount?: () => void;
 
   /**
+   * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
    * @deprecated
-   * Use onLayerDidMount instead. Deprecated at 0.81.2, to be removed at 1.0.0.
    */
   onLayerMounted?: () => void;
 

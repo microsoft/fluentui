@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
-import { css } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import styles = require('./DetailsRow.scss');
 
 export interface IDetailsRowFieldsProps {
@@ -14,7 +14,7 @@ export interface IDetailsRowFieldsState {
   cellContent: React.ReactNode[];
 }
 
-export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
+export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
   constructor(props: IDetailsRowFieldsProps) {
     super();
 

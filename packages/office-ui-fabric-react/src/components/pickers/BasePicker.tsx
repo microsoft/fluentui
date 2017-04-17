@@ -64,7 +64,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.items;
   }
 
-  public componentWillReceiveProps(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
+  public componentWillUpdate(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
@@ -77,6 +77,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   public focus() {
     this.focusZone.focus();
   }
+
   @autobind
   public dismissSuggestions() {
     this.setState({ suggestionsVisible: false });
@@ -104,26 +105,29 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           'ms-BasePicker',
           className ? className : '') }
         onKeyDown={ this.onKeyDown }>
-        <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-          <FocusZone
-            ref={ this._resolveRef('focusZone') }
-            className={ css('ms-BasePicker-text', styles.pickerText) }>
-            { this.renderItems() }
-            <BaseAutoFill
-              { ...inputProps }
-              className={ css('ms-BasePicker-input', styles.pickerInput) }
-              ref={ this._resolveRef('input') }
-              onFocus={ this.onInputFocus }
-              onInputValueChange={ this.onInputChange }
-              aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
-              aria-owns='suggestion-list'
-              aria-expanded='true'
-              aria-haspopup='true'
-              autoCapitalize='off'
-              autoComplete='off'
-              role='combobox' />
-          </FocusZone>
-        </SelectionZone>
+        <FocusZone
+          ref={ this._resolveRef('focusZone') }
+          direction={ FocusZoneDirection.horizontal }>
+          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
+              { this.renderItems() }
+              <BaseAutoFill
+                { ...inputProps }
+                className={ css('ms-BasePicker-input', styles.pickerInput) }
+                ref={ this._resolveRef('input') }
+                onFocus={ this.onInputFocus }
+                onInputValueChange={ this.onInputChange }
+                suggestedDisplayValue={ suggestedDisplayValue }
+                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+                aria-owns='suggestion-list'
+                aria-expanded='true'
+                aria-haspopup='true'
+                autoCapitalize='off'
+                autoComplete='off'
+                role='combobox' />
+            </div>
+          </SelectionZone>
+        </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
@@ -135,7 +139,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       <Callout
         isBeakVisible={ false }
         gapSpace={ 0 }
-        targetElement={ this.root }
+        targetElement={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
         <FocusZone
@@ -446,7 +450,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected addItem(item: T) {
     let newItems: T[] = this.state.items.concat([item]);
-    this.selection.setItems(newItems);
     this.setState({ items: newItems }, () => this.onChange());
   }
 
@@ -457,8 +460,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     if (index >= 0) {
       let newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-
-      this.selection.setItems(newItems);
       this.setState({ items: newItems }, () => this.onChange());
     }
   }
@@ -469,8 +470,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let newItems: T[] = items.filter(item => itemsToRemove.indexOf(item) === -1);
     let firstItemToRemove = this.selection.getSelection()[0];
     let index: number = items.indexOf(firstItemToRemove);
-
-    this.selection.setItems(newItems);
 
     this.setState({ items: newItems }, () => {
       this.resetFocus(index);

@@ -6,7 +6,7 @@
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
-  margin: 2px;
+  margin: 1px;
   cursor: default;
   user-select: none;
   max-width: 100%;
@@ -35,6 +35,10 @@
   .itemContent {
     flex: 0 1 auto;
     min-width: 0px;
+
+    /** CSS below is needed for IE 11 to properly truncate long persona names in the picker **/
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .removeButton {
@@ -47,6 +51,8 @@
       background: $ms-color-neutralTertiaryAlt;
       color: $ms-color-neutralDark;
     }
+    flex-basis: 32px;
+    height: 100%;
   }
 
   .personaDetails {

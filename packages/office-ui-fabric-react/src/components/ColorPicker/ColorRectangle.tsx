@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   assign,
   autobind,
   css
@@ -11,7 +11,7 @@ import {
   MAX_COLOR_VALUE,
   getFullColorString,
   hsv2hex
-} from './colors';
+} from '../../utilities/color/colors';
 import styles = require('./ColorPicker.scss');
 
 export interface IColorRectangleProps {
@@ -28,7 +28,7 @@ export interface IColorPickerState {
   fullColorString?: string;
 }
 
-export class ColorRectangle extends React.Component<IColorRectangleProps, IColorPickerState> {
+export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPickerState> {
   public static defaultProps = {
     minSize: 220
   };
@@ -38,14 +38,10 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     root: HTMLElement;
   };
 
-  private _events: EventGroup;
-
   constructor(props: IColorRectangleProps) {
     super(props);
 
     let { color } = this.props;
-
-    this._events = new EventGroup(this);
 
     this.state = {
       isAdjusting: false,

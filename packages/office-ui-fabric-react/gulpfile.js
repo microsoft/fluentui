@@ -2,11 +2,14 @@
 
 let build = require('@microsoft/web-library-build');
 let serial = build.serial;
+let parallel = build.parallel;
 let buildConfig = build.getConfig();
 let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
 let fs = require('fs');
 let path = require('path');
+let del = require('del');
+let gulpConnect = require('gulp-connect');
 
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isNuke = process.argv.indexOf('nuke') >= 0;
@@ -15,6 +18,27 @@ let {
   distFolder,
   packageFolder = ''
 } = buildConfig;
+
+let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
+  return del(['visualtests/results/*png']).then(() => done());
+});
+
+let visualTest = build.subTask('visualtest', (gulp, options, done) => {
+  gulpConnect.server({
+    port: 43210,
+    livereload: false,
+    directoryListing: false
+  });
+  if (!options.args['debug']) {
+    let casperJs = require('gulp-phantomcss');
+    gulp.src(['lib/**/*.visualtest.js'])
+      .pipe(casperJs(
+        {
+          screenshots: 'visualtests/baseline',
+          comparisonResultRoot: 'visualtests/results'
+        })).on('end', done);
+  }
+});
 
 // Configure custom lint overrides.
 let rules = Object.assign(
@@ -68,6 +92,8 @@ build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 build.task('sass', build.sass);
+
+build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
 
 // initialize tasks.
 build.initialize(gulp);

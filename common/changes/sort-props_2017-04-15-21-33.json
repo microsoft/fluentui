@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "PropertiesTable: properties are now sorted correctly.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}

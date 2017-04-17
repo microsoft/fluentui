@@ -1,11 +1,20 @@
 import * as React from 'react';
 import { Spinner } from './Spinner';
 
+export interface ISpinner {
+
+}
+
 export interface ISpinnerProps extends React.Props<Spinner> {
+  /**
+   * Optional callback to access the ISpinner interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ISpinner) => void;
 
   /**
-   * @deprecated
    * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
+   * @deprecated
    */
   type?: SpinnerType;
 
@@ -49,8 +58,8 @@ export enum SpinnerSize {
 }
 
 /**
+ * Deprecated at v2.0.0, use 'SpinnerSize' instead.
  * @deprecated
- * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
  */
 export enum SpinnerType {
   /**
