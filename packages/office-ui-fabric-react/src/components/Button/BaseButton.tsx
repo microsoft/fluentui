@@ -7,7 +7,6 @@ import {
   autobind,
   buttonProperties,
   css,
-  customizable,
   getId,
   getNativeProps
 } from '../../Utilities';
@@ -17,14 +16,40 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import styles = require('./BaseButton.scss');
 
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+  isDisabled?: string;
+  isEnabled?: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  menuIcon?: string;
+  label?: string;
+  root?: string;
+}
+
+/**
+ * These props are not in the Props file as they are undocumented props only specific to BaseButton.
+ *
+ * @export
+ * @interface IBaseButtonProps
+ * @extends {IButtonProps}
+ */
+export interface IBaseButtonProps extends IButtonProps {
+  /**
+   *  Custom class names for individual elements within the button DOM.
+   */
+  classNames?: IButtonClassNames;
+}
+
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-@customizable('BaseButton')
-export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
-  public static defaultProps: IButtonProps = {
+  public static defaultProps: IBaseButtonProps = {
     classNames: {
       base: 'ms-Button',
       variant: '',

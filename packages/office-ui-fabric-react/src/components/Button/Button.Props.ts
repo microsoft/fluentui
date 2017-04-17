@@ -10,19 +10,6 @@ export interface IButton {
   focus: () => void;
 }
 
-export interface IButtonClassNames {
-  base?: string;
-  variant?: string;
-  isDisabled?: string;
-  isEnabled?: string;
-  description?: string;
-  flexContainer?: string;
-  icon?: string;
-  menuIcon?: string;
-  label?: string;
-  root?: string;
-}
-
 export interface IButtonProps extends React.HTMLProps<any> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
@@ -45,11 +32,6 @@ export interface IButtonProps extends React.HTMLProps<any> {
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
-
-  /**
-   *  Custom class names for individual elements within the button DOM.
-   */
-  classNames?: IButtonClassNames;
 
   /**
    * The aria label of the button for the benefit of screen readers.
