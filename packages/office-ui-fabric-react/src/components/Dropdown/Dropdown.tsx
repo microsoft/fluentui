@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -245,7 +245,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render items
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
-    return item.text === '-' ? this._renderSeparator(item) : this._renderOption(item);
+    if (item.text === '-') {
+      item.itemType = DropdownMenuItemType.Divider;
+    }
+    switch (item.itemType) {
+      case DropdownMenuItemType.Divider:
+        return this._renderSeparator(item);
+      case DropdownMenuItemType.Header:
+        return this._renderHeader(item);
+      default:
+        return this._renderOption(item);
+    }
   }
 
   // Render separator
@@ -258,6 +268,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         className={ css('ms-Dropdown-divider', styles.divider) } />;
     }
     return null;
+  }
+
+  private _renderHeader(item: IDropdownOption): JSX.Element {
+    let { onRenderOption = this._onRenderOption } = this.props;
+    return (
+      <div className={ css('ms-Dropdown-header', styles.header) }>
+        { onRenderOption(item, this._onRenderOption) }
+      </div>);
   }
 
   // Render menu item
