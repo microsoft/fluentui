@@ -6,6 +6,7 @@ import {
 } from '../../Utilities';
 import { IOverflowSetProps } from './OverflowSet.Props';
 import { IconButton } from '../../Button';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 const styles: any = require('./OverflowSet.scss');
 
@@ -18,10 +19,12 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
   public render() {
     let { items, overflowItems } = this.props;
     return (
-      <div className={ css('ms-OverflowSet', styles.root) } >
-        { items && this._onRenderItems(items) }
-        { overflowItems && this._onRenderOverflowButton(overflowItems) }
-      </div>
+      <FocusZone direction={ FocusZoneDirection.horizontal } role='menubar' >
+        <div className={ css('ms-OverflowSet', styles.root) } >
+          { items && this._onRenderItems(items) }
+          { overflowItems && this._onRenderOverflowButton(overflowItems) }
+        </div>
+      </FocusZone>
     );
   }
 
