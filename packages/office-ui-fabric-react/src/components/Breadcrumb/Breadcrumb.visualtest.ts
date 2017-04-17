@@ -17,5 +17,3 @@ casper.start(baseUrl + 'breadcrumb').
   });
 casper.run(function () { casper.test.done(); });
 /* tslint:enable:no-function-expression */
-
-
