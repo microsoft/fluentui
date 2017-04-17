@@ -62,7 +62,7 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
         overflowItems={ [
           {
             key: 'newItem',
-            name: 'New',
+            name: 'Add',
             icon: 'Add',
             ariaLabel: 'New. Use left and right arrow keys to navigate',
             onClick: () => { return; },
@@ -82,15 +82,28 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
             },
           },
           {
-            key: 'upload',
-            name: 'Upload',
-            icon: 'Upload',
-            onClick: () => { return; },
+            key: 'move',
+            name: 'Move to...',
+            icon: 'MoveToFolder',
+            onClick: () => { return; }
           },
           {
-            key: 'share',
-            name: 'Share',
-            icon: 'Share',
+            key: 'copy',
+            name: 'Copy to...',
+            icon: 'Copy',
+            onClick: () => { return; }
+          },
+          {
+            key: 'rename',
+            name: 'Rename...',
+            icon: 'Edit',
+            onClick: () => { return; }
+          },
+          {
+            key: 'disabled',
+            name: 'Disabled...',
+            icon: 'Cancel',
+            disabled: true,
             onClick: () => { return; }
           }
         ]

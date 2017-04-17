@@ -30,10 +30,11 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
   @autobind
   private _onRenderOverflowButton(items) {
-    let { overflowIcon = 'More' } = this.props;
+    let { iconProps } = this.props;
+    iconProps.iconName = iconProps.iconName ? iconProps.iconName : 'More';
     return (
       <IconButton
-        icon={ overflowIcon }
+        icon={ iconProps.iconName }
         menuIconName='none'
         menuProps={ {
           items: items
