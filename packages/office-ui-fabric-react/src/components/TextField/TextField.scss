@@ -14,6 +14,7 @@
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   margin-bottom: 8px;
+  position: relative; /* Needed to position icon */
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
@@ -61,6 +62,13 @@
   @include ms-margin-right(5px);
 }
 
+.icon {
+  position: absolute;
+  bottom: 8px;
+  @include right(8px);
+  top: auto;
+}
+
 .field {
   @include ms-normalize;
   border: 1px solid $ms-color-neutralTertiaryAlt;
@@ -69,10 +77,14 @@
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
-  @include padding(0, 12px, 0, 12px);
+  @include padding(0, 12px, 1px, 12px);
   width: 100%;
   outline: 0;
   text-overflow: ellipsis;
+
+  &.hasIcon {
+    @include padding-right(24px);
+  }
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -204,6 +216,10 @@
   height: auto;
   padding-top: 6px;
   overflow: auto;
+
+  &.hasIcon {
+    @include padding-right(40px);
+  }
 }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
@@ -233,6 +249,10 @@
 }
 
 .root.rootIsMultiline {
+
+  .icon {
+    @include right(24px);
+  }
 
   .field.fieldIsUnresizable {
     resize: none;

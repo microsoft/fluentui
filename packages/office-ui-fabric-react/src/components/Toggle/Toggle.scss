@@ -117,6 +117,7 @@
 
 .innerContainer {
   display: inline-block;
+  min-width: 45px;
 }
 
 :global(.ms-Fabric.is-focusVisible) .root.isEnabled .button:focus + .background .focus {

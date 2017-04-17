@@ -20,7 +20,7 @@ let {
 } = buildConfig;
 
 let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
-  return del(['failures/*png', 'results/*png']).then(() => done());
+  return del(['visualtests/results/*png']).then(() => done());
 });
 
 let visualTest = build.subTask('visualtest', (gulp, options, done) => {
