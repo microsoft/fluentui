@@ -83,18 +83,17 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   description?: string;
 
   /**
-   * The type of button to render.
+   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
    * @defaultvalue ButtonType.default
    * @deprecated
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
    */
 
   buttonType?: ButtonType;
 
   /**
-   * @deprecated
    * Deprecated at v0.56.2, to be removed at >= v1.0.0. Just pass in button props instead;
    * they will be mixed into the button/anchor element rendered by the component.
+   * @deprecated
    */
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 }

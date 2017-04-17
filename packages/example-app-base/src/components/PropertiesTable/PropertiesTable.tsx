@@ -87,9 +87,14 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     super(props);
 
     let properties = (props.properties as any[])
-      .map((prop, index) => assign({ key: index }, prop))
-      .sort((a, b) => (a.name > b.name) ? -1 : 1)
-      .sort((a, b) => (a.interfacePropertyType < b.interfacePropertyType) ? -1 : 1);
+      .sort((a, b) => (
+        a.interfacePropertyType < b.interfacePropertyType ? -1 :
+          a.interfacePropertyType > b.interfacePropertyType ? 1 :
+            a.name < b.name ? -1 :
+              a.name > b.name ? 1 :
+                0
+      ))
+      .map((prop, index) => assign({}, prop, { key: index }));
 
     let groups = null;
 

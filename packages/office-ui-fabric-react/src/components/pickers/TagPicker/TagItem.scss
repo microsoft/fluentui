@@ -4,8 +4,9 @@
   @include focus-border();
   flex-shrink: 1;
   background: $ms-color-neutralLighter;
-  height: 32px;
-  line-height: 32px;
+  margin: 1px;
+  height: 26px;
+  line-height: 26px;
   cursor: default;
   user-select: none;
   display: flex;
