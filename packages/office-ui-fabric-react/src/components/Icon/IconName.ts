@@ -1,6 +1,6 @@
 // Please keep alphabetized
 export type IconName =
-  // This icon is not in the font.
+  // These icons are not in the font.
   'CustomIcon' |
   'None' |
 
