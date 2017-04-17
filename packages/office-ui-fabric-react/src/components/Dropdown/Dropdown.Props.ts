@@ -2,6 +2,12 @@ import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 
+export enum DropdownMenuItemType {
+  Normal = 0,
+  Divider = 1,
+  Header = 2
+}
+
 export interface IDropdown {
 
 }
@@ -108,6 +114,11 @@ export interface IDropdownOption {
    * Text to render for this option
    */
   text: string;
+
+  /**
+   * Text to render for this option
+   */
+  itemType?: DropdownMenuItemType;
 
   /**
    * Index for this option

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -242,9 +242,42 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  // Render Items
+  // Render items
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
+    switch (item.itemType) {
+      case DropdownMenuItemType.Divider:
+        return this._renderSeparator(item);
+      case DropdownMenuItemType.Header:
+        return this._renderHeader(item);
+      default:
+        return this._renderOption(item);
+    }
+  }
+
+  // Render separator
+  private _renderSeparator(item: IDropdownOption): JSX.Element {
+    let { index, key } = item;
+    if (index > 0) {
+      return <div
+        role='separator'
+        key={ key }
+        className={ css('ms-Dropdown-divider', styles.divider) } />;
+    }
+    return null;
+  }
+
+  private _renderHeader(item: IDropdownOption): JSX.Element {
+    let { onRenderOption = this._onRenderOption } = this.props;
+    return (
+      <div className={ css('ms-Dropdown-header', styles.header) }>
+        { onRenderOption(item, this._onRenderOption) }
+      </div>);
+  }
+
+  // Render menu item
+  @autobind
+  private _renderOption(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     return (
