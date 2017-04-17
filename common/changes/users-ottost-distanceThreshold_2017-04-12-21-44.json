@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Made the minimum drag distance on the details list configurable",
+      "comment": "DetailsList: added `minimumPixelsForDrag` setting to allow the user to override the minimum drag distance before starting a drag operation."
       "type": "minor"
     }
   ],
