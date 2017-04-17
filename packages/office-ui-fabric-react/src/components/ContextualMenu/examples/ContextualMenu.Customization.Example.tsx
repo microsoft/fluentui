@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
@@ -24,7 +24,11 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   public render() {
     return (
       <div>
-        <Button onClick={ this._onClick } className='ContextualMenuButton3'> Click for ContextualMenu </Button>
+        <DefaultButton
+          onClick={ this._onClick }
+          className='ContextualMenuButton3'
+          text='Click for ContextualMenu'
+        />
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
             target='.ContextualMenuButton3'
@@ -217,11 +221,13 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   }
 
   private _renderCharmMenuItem(item: any) {
-    return <Button
-      buttonType={ ButtonType.icon }
-      icon={ item.name }
-      className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
-      data-is-focusable={ true } />;
+    return (
+      <IconButton
+        iconProps={ { iconName: item.name } }
+        className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
+        data-is-focusable={ true }
+      />
+    );
   }
 
   private _renderCategoriesList(item: any) {

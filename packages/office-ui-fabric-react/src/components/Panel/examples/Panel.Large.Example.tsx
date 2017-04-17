@@ -1,23 +1,25 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelLargeExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = {
-      showPanel: false
-    };
+    this.state = { showPanel: false };
   }
 
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <DefaultButton
+          description='Opens the Sample Panel'
+          onClick={ () => this.setState({ showPanel: true }) }
+          text='Open Panel'
+        />
         <Panel
           isOpen={ this.state.showPanel }
-          onDismiss={ this._closePanel.bind(this) }
+          onDismiss={ () => this.setState({ showPanel: false }) }
           type={ PanelType.large }
           headerText='Large Panel'
         >
@@ -25,12 +27,5 @@ export class PanelLargeExample extends React.Component<any, any> {
         </Panel>
       </div>
     );
-  }
-
-  private _showPanel() {
-    this.setState({ showPanel: true });
-  }
-  private _closePanel() {
-    this.setState({ showPanel: false });
   }
 }
