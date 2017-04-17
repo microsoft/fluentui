@@ -127,6 +127,10 @@ export class InterfaceParserHelper extends BaseParser {
             let isOptional = identifierName[identifierName.length - 1] === '?';
             let propType = isDeprecated ? InterfacePropertyType.deprecated : (isOptional ? InterfacePropertyType.optional : InterfacePropertyType.required);
 
+            if (isOptional) {
+              identifierName = identifierName.substr(0, identifierName.length - 1);
+            }
+
             this._state = ParseState.default;
             returnResult.push(<IInterfaceProperty>{
               description: comment,
