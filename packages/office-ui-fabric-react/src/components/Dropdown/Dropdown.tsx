@@ -242,11 +242,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  // Render
+  // Render items
+  @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     return item.text === '-' ? this._renderSeparator(item) : this._renderOption(item);
   }
 
+  // Render separator
   private _renderSeparator(item: IDropdownOption): JSX.Element {
     let { index, key } = item;
     if (index > 0) {
@@ -258,6 +260,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return null;
   }
 
+  // Render menu item
   @autobind
   private _renderOption(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
