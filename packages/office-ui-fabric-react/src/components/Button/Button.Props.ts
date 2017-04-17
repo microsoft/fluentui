@@ -73,7 +73,6 @@ export interface IButtonProps extends React.HTMLProps<any> {
    */
   iconProps?: IIconProps;
 
-
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
    * how the default icon looks.

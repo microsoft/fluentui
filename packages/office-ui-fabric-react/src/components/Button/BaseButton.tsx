@@ -11,7 +11,7 @@ import {
   getId,
   getNativeProps
 } from '../../Utilities';
-import { Icon, IIconProps, IconName } from '../../Icon';
+import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
@@ -228,7 +228,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let {classNames, menuIconProps, menuIconName } = this.props;
+    let { classNames, menuIconProps, menuIconName } = this.props;
 
     if (menuIconProps === undefined) {
       menuIconProps = {
