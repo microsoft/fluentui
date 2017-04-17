@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.7.0",
+      "tag": "@uifabric/utilities_v1.7.0",
+      "date": "Fri, 14 Apr 2017 03:06:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "265217a4f00cf04a437a61c6ad4033fb52b1b525",
+            "comment": "overflow: Utilities for detecting overflow in elements"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.0",
       "tag": "@uifabric/utilities_v1.6.0",
       "date": "Thu, 06 Apr 2017 03:12:13 GMT",
