@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import {
   Calendar,
@@ -85,9 +85,10 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
     return (
       <div>
         <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn }>
-          <Button onClick={ this._onClick } >
-            { this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
-          </Button>
+          <DefaultButton
+            onClick={ this._onClick }
+            text={ this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
+          />
         </div>
         { this.state.showCalendar && (
           <Callout

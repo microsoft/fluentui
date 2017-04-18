@@ -1,24 +1,25 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelNonModalExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = {
-      showPanel: false
-    };
+    this.state = { showPanel: false };
   }
 
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <DefaultButton
+          text='Open panel'
+          onClick={ () => this.setState({ showPanel: true }) }
+        />
         <Panel
           isBlocking={ false }
           isOpen={ this.state.showPanel }
-          onDismiss={ this._closePanel.bind(this) }
+          onDismiss={ () => this.setState({ showPanel: false }) }
           type={ PanelType.medium }
           headerText='Non-Modal Panel'
           closeButtonAriaLabel='Close'
@@ -27,12 +28,5 @@ export class PanelNonModalExample extends React.Component<any, any> {
         </Panel>
       </div>
     );
-  }
-
-  private _showPanel() {
-    this.setState({ showPanel: true });
-  }
-  private _closePanel() {
-    this.setState({ showPanel: false });
   }
 }

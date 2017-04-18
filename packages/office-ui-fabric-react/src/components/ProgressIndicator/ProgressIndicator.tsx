@@ -25,7 +25,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
     super(props);
 
     this._warnDeprecations({
-      'title': 'label'
+      title: 'label'
     });
 
   }

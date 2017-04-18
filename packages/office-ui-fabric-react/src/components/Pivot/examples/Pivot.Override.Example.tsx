@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   Pivot,
   PivotItem
@@ -31,9 +31,9 @@ export class PivotOverrideExample extends React.Component<any, any> {
             <Label>Pivot #3</Label>
           </PivotItem>
         </Pivot>
-        <Button onClick={ this._handleClick }>
+        <DefaultButton onClick={ this._handleClick }>
           Select next item
-        </Button>
+        </DefaultButton>
       </div>
     );
   }
