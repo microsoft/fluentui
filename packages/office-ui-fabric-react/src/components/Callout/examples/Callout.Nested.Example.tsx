@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
@@ -29,7 +29,10 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onDismiss } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+          <DefaultButton
+            onClick={ this._onDismiss }
+            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
+          />
         </div>
         { isCalloutVisible ? (
           <div>

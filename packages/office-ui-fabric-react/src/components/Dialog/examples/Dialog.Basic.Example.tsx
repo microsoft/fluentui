@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import './Dialog.Basic.Example.scss';
 
@@ -16,7 +16,11 @@ export class DialogBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Dialog' onClick={ this._showDialog.bind(this) }>Open Dialog</Button>
+        <DefaultButton
+          description='Opens the Sample Dialog'
+          onClick={ this._showDialog.bind(this) }
+          text='Open Dialog'
+        />
         <Dialog
           isOpen={ this.state.showDialog }
           type={ DialogType.normal }
@@ -47,8 +51,8 @@ export class DialogBasicExample extends React.Component<any, any> {
           />
           { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
-            <Button buttonType={ ButtonType.primary } onClick={ this._closeDialog.bind(this) }>Save</Button>
-            <Button onClick={ this._closeDialog.bind(this) }>Cancel</Button>
+            <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />
+            <DefaultButton onClick={ this._closeDialog.bind(this) } text='Cancel' />
           </DialogFooter>
         </Dialog>
       </div>

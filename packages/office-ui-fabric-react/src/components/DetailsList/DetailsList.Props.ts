@@ -160,6 +160,12 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
   shouldApplyApplicationRole?: boolean;
+
+  /** 
+   * The minimum mouse move distance to interpret the action as drag event.
+   * @defaultValue 5
+   */
+  minimumPixelsForDrag?: number;
 }
 
 export interface IColumn {
