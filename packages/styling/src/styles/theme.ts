@@ -1,4 +1,4 @@
-import { assign } from '@uifabric/utilities';
+import * as assign from 'object-assign';
 import { IFonts, fonts } from './fonts';
 import { IColors, defaultPalette } from './colors';
 
@@ -21,8 +21,4 @@ export function setTheme(theme: ITheme): void {
     colors: assign({}, _theme.colors, theme.colors),
     fonts: assign({}, _theme.fonts, theme.fonts)
   };
-}
-
-export function addThemeChange(callback: (newTheme: ITheme) => void): void {
-
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CSSProperties } from 'glamor';
-import { icons } from '../styles/icons';
+import * as icons from '../styles/icons';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { getStyles } from './IconTile.styles';
 

@@ -1,15 +1,16 @@
 const path = require('path');
-const WebpackNotifierPlugin = require('webpack-notifier');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const DefinePlugin = require('webpack').DefinePlugin;
 
-const PACKAGE_NAME = require('./package.json').name;
+const BUNDLE_NAME = 'fabric.styling';
 
 module.exports = {
-  entry: './src/index.demo.tsx',
+  entry: './src/index.ts',
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'demo.js',
+    filename: BUNDLE_NAME + '.js',
   },
 
   externals: {
@@ -43,9 +44,20 @@ module.exports = {
   },
 
   plugins: [
-    new WebpackNotifierPlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new UglifyJSPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: BUNDLE_NAME + '.stats.html',
+      openAnalyzer: false,
+      generateStatsFile: true
     })
   ]
 }

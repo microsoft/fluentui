@@ -1,6 +1,5 @@
 import { css, CSSProperties } from 'glamor';
-import { fonts, iconFont } from '../styles/fonts';
-import { defaultPalette } from '../styles/colors';
+import { fonts } from '../styles/fonts';
 
 export function getStyles(): CSSProperties {
   return {

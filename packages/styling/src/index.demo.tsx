@@ -1,7 +1,23 @@
 import * as React from 'react';
 import * as Glamor from 'glamor';
 import './utilities/glamorPlugins';
-Glamor['speedy'](false);
+
+// Force glamor speedy mode.
+Glamor['speedy'](true);
+
+import { setTheme } from './styles/theme';
+
+// Example of setting theming overrides!
+setTheme({
+  colors: { themePrimary: 'red' },
+  fonts: {
+    mediumPlus: {
+      fontFamily: '"Courier New"',
+      fontSize: '14px'
+    }
+  }
+});
+
 
 import { examplesOf, createApp } from '@uifabric/example-app-base';
 import { ColorPage } from './examples/ColorPage';

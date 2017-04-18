@@ -3,10 +3,30 @@ import { BaseComponent } from '@uifabric/utilities';
 import { classNames } from '../classNames/index';
 import { Page, PageHeader } from './components';
 import { AnimationTile } from './AnimationTile';
+import { css, CSSProperties } from 'glamor';
+
+function getStyles(): CSSProperties {
+  return {
+    grid: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'stretch',
+      margin: '-8px'
+    },
+    tile: {
+      flexGrow: 1,
+      minWidth: '200px',
+      maxWidth: '400px',
+      padding: '8px'
+    }
+  };
+}
 
 export class AnimationPage extends BaseComponent<{}, {}> {
 
   public render(): JSX.Element {
+    const styles: CSSProperties = getStyles();
+
     return (
       <Page>
         <PageHeader text='Animations' />
@@ -39,7 +59,13 @@ export class AnimationPage extends BaseComponent<{}, {}> {
         </code>
 
         <PageHeader text='Animations' />
-        { Object.keys(classNames.animations).map((name: string) => <AnimationTile name={ name } />) }
+        <div { ...css(styles.grid) }>
+          { Object.keys(classNames.animations).map((name: string) => (
+            <div { ...css(styles.tile) } key={ name }>
+              <AnimationTile name={ name } />
+            </div>
+          )) }
+        </div>
       </Page>
     );
   }

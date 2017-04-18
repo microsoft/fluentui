@@ -24,17 +24,17 @@ const superSize: string = '42px';
 const megaSize: string = '72px';
 
 export interface IFonts {
-  tiny: CSSProperties;
-  xSmall: CSSProperties;
-  small: CSSProperties;
-  smallPlus: CSSProperties;
-  medium: CSSProperties;
-  mediumPlus: CSSProperties;
-  large: CSSProperties;
-  xLarge: CSSProperties;
-  xxLarge: CSSProperties;
-  superLarge: CSSProperties;
-  mega: CSSProperties;
+  tiny?: CSSProperties;
+  xSmall?: CSSProperties;
+  small?: CSSProperties;
+  smallPlus?: CSSProperties;
+  medium?: CSSProperties;
+  mediumPlus?: CSSProperties;
+  large?: CSSProperties;
+  xLarge?: CSSProperties;
+  xxLarge?: CSSProperties;
+  superLarge?: CSSProperties;
+  mega?: CSSProperties;
 }
 
 export const fonts: IFonts = {

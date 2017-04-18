@@ -30,6 +30,7 @@
     "tslint": "^3.15.1",
     "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "^2.2.1",
+    "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-server": "^2.4.1",

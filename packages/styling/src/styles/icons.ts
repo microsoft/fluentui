@@ -188,7 +188,7 @@ export interface IIcons {
   dateTime: string;
   dateTimeMirrored: string;
   decreaseIndentLegacy: string;
-  delete: string;
+  trash: string;
   delveAnalytics: string;
   delveAnalyticsLogo: string;
   delveLogo: string;
@@ -448,7 +448,7 @@ export interface IIcons {
   org: string;
   outOfOffice: string;
   outlookLogo: string;
-  package: string;
+  container: string;
   page: string;
   pageAdd: string;
   pageCheckedOut: string;
@@ -621,7 +621,7 @@ export interface IIcons {
   sunny: string;
   superscript: string;
   swayLogo: string;
-  switch: string;
+  switcher: string;
   switcherStartEnd: string;
   sync: string;
   syncFolder: string;
@@ -708,712 +708,711 @@ export interface IIcons {
   zoomOut: string;
 }
 
-export const icons: IIcons = {
-  aadLogo: '\uED68',
-  accept: '\uE8FB',
-  accessLogo: '\uED69',
-  accounts: '\uE910',
-  add: '\uE710',
-  addEvent: '\uEEB5',
-  addFavorite: '\uF0C8',
-  addFavoriteFill: '\uF0C9',
-  addFriend: '\uE8FA',
-  addGroup: '\uEE3D',
-  addOnlineMeeting: '\uED8E',
-  addPhone: '\uED96',
-  addTo: '\uECC8',
-  admin: '\uE7EF',
-  adminALogo: '\uED6A',
-  adminCLogo: '\uED6B',
-  adminDLogo: '\uED6C',
-  adminELogo: '\uED6D',
-  adminLLogo: '\uED6E',
-  adminMLogo: '\uED6F',
-  adminOLogo: '\uED70',
-  adminPLogo: '\uED71',
-  adminSLogo: '\uED72',
-  adminYLogo: '\uED73',
-  airTickets: '\uEF7A',
-  airplane: '\uE709',
-  alarmClock: '\uE919',
-  album: '\uE7AB',
-  albumRemove: '\uEC62',
-  alchemyLogo: '\uED74',
-  alignCenter: '\uE8E3',
-  alignLeft: '\uE8E4',
-  alignRight: '\uE8E2',
-  androidLogo: '\uEF8B',
-  annotation: '\uE924',
-  appForOfficeLogo: '\uEEC7',
-  appIconDefault: '\uECAA',
-  arrivals: '\uEB34',
-  arrowDownRight8: '\uEED5',
-  arrowDownRightMirrored8: '\uEEF0',
-  arrowUpRight8: '\uEED4',
-  arrowUpRightMirrored8: '\uEEEF',
-  articles: '\uEAC1',
-  ascending: '\uEDC0',
-  assetLibrary: '\uEEB6',
-  asterisk: '\uEA38',
-  atpLogo: '\uEF85',
-  attach: '\uE723',
-  australianRules: '\uEE70',
-  autoEnhanceOff: '\uE78E',
-  autoEnhanceOn: '\uE78D',
-  autoRacing: '\uEB24',
-  awayStatus: '\uEE6A',
-  azureLogo: '\uEB6A',
-  back: '\uE72B',
-  backToWindow: '\uE73F',
-  badge: '\uEC1B',
-  balloons: '\uED7E',
-  barChart4: '\uEAE7',
-  barChartHorizontal: '\uE9EB',
-  baseball: '\uEB20',
-  bidiLtr: '\uE9AA',
-  bidiRtl: '\uE9AB',
-  bingLogo: '\uEB6B',
-  blockContact: '\uE8F8',
-  blocked2: '\uECE4',
-  blocked: '\uE733',
-  blowingSnow: '\uE9C9',
-  boards: '\uEF68',
-  bold: '\uE8DD',
-  bookingsLogo: '\uEDC7',
-  bookmarks: '\uE8A4',
-  bookmarksMirrored: '\uEA41',
-  boxLogo: '\uED75',
-  branchFork: '\uF173',
-  breadcrumb: '\uEF8C',
-  brightness: '\uE706',
-  broom: '\uEA99',
-  bufferTimeAfter: '\uF0D0',
-  bufferTimeBefore: '\uF0CF',
-  bufferTimeBoth: '\uF0D1',
-  bulletedList: '\uE8FD',
-  bulletedListMirrored: '\uEA42',
-  busSolid: '\uEB47',
-  cafe: '\uEC32',
-  cake: '\uECA4',
-  calculatorAddition: '\uE948',
-  calculatorSubtract: '\uE949',
-  calendar: '\uE787',
-  calendarAgenda: '\uEE9A',
-  calendarDay: '\uE8BF',
-  calendarMirrored: '\uED28',
-  calendarReply: '\uE8F5',
-  calendarWeek: '\uE8C0',
-  calendarWorkWeek: '\uEF51',
-  caloriesAdd: '\uF172',
-  camera: '\uE722',
-  cancel: '\uE711',
-  car: '\uE804',
-  caretBottomLeftSolid8: '\uF121',
-  caretBottomRightSolid8: '\uF122',
-  caretDown8: '\uEDD8',
-  caretDownSolid8: '\uEDDC',
-  caretHollow: '\uE817',
-  caretHollowMirrored: '\uEA45',
-  caretLeft8: '\uEDD5',
-  caretLeftSolid8: '\uEDD9',
-  caretRight8: '\uEDD6',
-  caretRightSolid8: '\uEDDA',
-  caretSolid: '\uE818',
-  caretSolidMirrored: '\uEA46',
-  caretTopLeftSolid8: '\uEF54',
-  caretTopRightSolid8: '\uEF55',
-  caretUp8: '\uEDD7',
-  caretUpSolid8: '\uEDDB',
-  cat: '\uED7F',
-  cellPhone: '\uE8EA',
-  certificate: '\uEB95',
-  chart: '\uE999',
-  chat: '\uE901',
-  chatInviteFriend: '\uECFE',
-  checkList: '\uE9D5',
-  checkMark: '\uE73E',
-  checkbox: '\uE739',
-  checkboxComposite: '\uE73A',
-  checkboxIndeterminate: '\uE73C',
-  chevronDown: '\uE70D',
-  chevronDownMed: '\uE972',
-  chevronDownSmall: '\uE96E',
-  chevronLeft: '\uE76B',
-  chevronLeftMed: '\uE973',
-  chevronLeftSmall: '\uE96F',
-  chevronRight: '\uE76C',
-  chevronRightMed: '\uE974',
-  chevronRightSmall: '\uE970',
-  chevronUp: '\uE70E',
-  chevronUpMed: '\uE971',
-  chevronUpSmall: '\uE96D',
-  chromeBack: '\uE830',
-  chromeBackMirrored: '\uEA47',
-  chromeClose: '\uE8BB',
-  chromeMinimize: '\uE921',
-  circleFill: '\uEA3B',
-  circleHalfFull: '\uED9E',
-  circlePlus: '\uEAEE',
-  circleRing: '\uEA3A',
-  classNotebookLogo: '\uEDC8',
-  classroomLogo: '\uEF75',
-  clear: '\uE894',
-  clearFilter: '\uEF8F',
-  clearFormatting: '\uEDDD',
-  clearNight: '\uE9C2',
-  clock: '\uE917',
-  closePane: '\uE89F',
-  closePaneMirrored: '\uEA49',
-  closedCaption: '\uEF84',
-  cloudAdd: '\uECA9',
-  cloudDownload: '\uEBD3',
-  cloudUpload: '\uEC8E',
-  cloudWeather: '\uE9BE',
-  cloudy: '\uE9BF',
-  cocktails: '\uEA9D',
-  code: '\uE943',
-  coffee: '\uEAEF',
-  collabsDbLogo: '\uEDC9',
-  collapseMenu: '\uEF66',
-  collegeFootball: '\uEB26',
-  collegeHoops: '\uEB25',
-  color: '\uE790',
-  combine: '\uEDBB',
-  compassNw: '\uE942',
-  completed: '\uE930',
-  completedSolid: '\uEC61',
-  contact: '\uE77B',
-  contactCard: '\uEEBD',
-  contactInfo: '\uE779',
-  contrast: '\uE7A1',
-  copy: '\uE8C8',
-  cotton: '\uEAF3',
-  cricket: '\uEB1E',
-  css: '\uEBEF',
-  customList: '\uEEBE',
-  customListMirrored: '\uEEBF',
-  cycling: '\uEAC7',
-  dataConnectionLibrary: '\uEEB7',
-  dateTime2: '\uEA17',
-  dateTime: '\uEC92',
-  dateTimeMirrored: '\uEE93',
-  decreaseIndentLegacy: '\uE290',
-  delete: '\uE74D',
-  delveAnalytics: '\uEEEE',
-  delveAnalyticsLogo: '\uEDCA',
-  delveLogo: '\uED76',
-  descending: '\uEDC1',
-  design: '\uEB3C',
-  developerTools: '\uEC7A',
-  devices3: '\uEA6C',
-  devices4: '\uEB66',
-  dialpad: '\uE75F',
-  dictionary: '\uE82D',
-  dietPlanNotebook: '\uEAC8',
-  disableUpdates: '\uE8D8',
-  dislike: '\uE8E0',
-  docLibrary: '\uEEB8',
-  dockLeft: '\uE90C',
-  dockLeftMirrored: '\uEA4C',
-  dockRight: '\uE90D',
-  docsLogo: '\uEDCB',
-  document: '\uE8A5',
-  documentReply: '\uEF57',
-  documentSearch: '\uEF6C',
-  documentSet: '\uEED6',
-  documentation: '\uEC17',
-  door: '\uEB75',
-  doubleBookmark: '\uEB8F',
-  doubleChevronDown12: '\uEE97',
-  doubleChevronDown: '\uEE04',
-  doubleChevronLeft12: '\uEE98',
-  doubleChevronLeft: '\uEDBE',
-  doubleChevronLeftMed: '\uE991',
-  doubleChevronLeftMedMirrored: '\uEA4D',
-  doubleChevronRight12: '\uEE99',
-  doubleChevronRight: '\uEDBF',
-  doubleChevronUp12: '\uEE96',
-  doubleChevronUp: '\uEDBD',
-  down: '\uE74B',
-  download: '\uE896',
-  drm: '\uECA8',
-  drop: '\uEB42',
-  dropboxLogo: '\uED77',
-  dropdown: '\uEDC5',
-  duststorm: '\uE9CD',
-  dynamicSmbLogo: '\uEDCD',
-  dynamics365Logo: '\uEDCC',
-  eatDrink: '\uE807',
-  edgeLogo: '\uEC60',
-  edit: '\uE70F',
-  editMail: '\uEF61',
-  editMirrored: '\uEB7E',
-  editNote: '\uED9D',
-  editPhoto: '\uEF77',
-  editStyle: '\uEF60',
-  embed: '\uECCE',
-  emi: '\uE731',
-  emoji2: '\uE76E',
-  emoji: '\uE899',
-  emojiDisappointed: '\uEA88',
-  emojiNeutral: '\uEA87',
-  emptyRecycleBin: '\uEF88',
-  equalizer: '\uE9E9',
-  eraseTool: '\uE75C',
-  error: '\uE783',
-  errorBadge: '\uEA39',
-  event: '\uECA3',
-  eventInfo: '\uED8B',
-  excelDocument: '\uEF73',
-  excelLogo: '\uEC28',
-  exchangeLogo: '\uED78',
-  expandMenu: '\uEF67',
-  fabricAssetLibrary: '\uF09C',
-  fabricDataConnectionLibrary: '\uF09D',
-  fabricDocLibrary: '\uF09E',
-  fabricFolder: '\uF0A9',
-  fabricFolderFill: '\uF0AA',
-  fabricFolderSearch: '\uF0A4',
-  fabricFormLibrary: '\uF09F',
-  fabricFormLibraryMirrored: '\uF0A0',
-  fabricMovetoFolder: '\uF0A5',
-  fabricNewFolder: '\uF0AB',
-  fabricOpenFolderHorizontal: '\uF0A8',
-  fabricPictureLibrary: '\uF0AC',
-  fabricPublicFolder: '\uF0A3',
-  fabricReportLibrary: '\uF0A1',
-  fabricReportLibraryMirrored: '\uF0A2',
-  fabricSyncFolder: '\uF0A7',
-  fabricUnsyncFolder: '\uF0A6',
-  facebookLogo: '\uECB3',
-  family: '\uEBDA',
-  fangBody: '\uECEB',
-  favoriteList: '\uE728',
-  favoriteStar: '\uE734',
-  favoriteStarFill: '\uE735',
-  fax: '\uEF5C',
-  ferry: '\uE7E3',
-  ferrySolid: '\uEB48',
-  filter: '\uE71C',
-  filters: '\uE795',
-  financial: '\uE7BB',
-  fingerprint: '\uE928',
-  flag: '\uE7C1',
-  flickDown: '\uE935',
-  flickLeft: '\uE937',
-  flickRight: '\uE938',
-  flickUp: '\uE936',
-  flow: '\uEF90',
-  fog: '\uE9CB',
-  folder: '\uE8B7',
-  folderFill: '\uE8D5',
-  folderHorizontal: '\uF12B',
-  folderOpen: '\uE838',
-  folderSearch: '\uEF65',
-  font: '\uE8D2',
-  fontColor: '\uE8D3',
-  fontDecrease: '\uE8E7',
-  fontIncrease: '\uE8E8',
-  fontSize: '\uE8E9',
-  formLibrary: '\uEEB9',
-  formLibraryMirrored: '\uEEBA',
-  forward: '\uE72A',
-  forwardEvent: '\uED8C',
-  freezing: '\uE9EF',
-  frigid: '\uE9CA',
-  fullCircleMask: '\uE91F',
-  fullScreen: '\uE740',
-  generate: '\uE9DA',
-  giftCard: '\uEB8E',
-  giftbox: '\uEC1F',
-  glasses: '\uEA16',
-  glimmer: '\uECF4',
-  globalNavButton: '\uE700',
-  globe: '\uE774',
-  globeFavorite: '\uEF53',
-  golf: '\uEB1F',
-  googleDriveLogo: '\uEE0B',
-  gotoToday: '\uE8D1',
-  gripperTool: '\uE75E',
-  group: '\uE902',
-  groupedAscending: '\uEE67',
-  groupedDescending: '\uEE66',
-  groupedList: '\uEF74',
-  hailDay: '\uEA00',
-  hailNight: '\uEA13',
-  handwriting: '\uE929',
-  header1: '\uEA19',
-  header2: '\uEF36',
-  header3: '\uEF37',
-  header4: '\uEF38',
-  headset: '\uE95B',
-  health: '\uE95E',
-  heart: '\uEB51',
-  heartFill: '\uEB52',
-  help: '\uE897',
-  helpMirrored: '\uEA51',
-  hide2: '\uEF89',
-  hide: '\uED1A',
-  history: '\uE81C',
-  home: '\uE80F',
-  homeSolid: '\uEA8A',
-  hospital: '\uE91D',
-  hotel: '\uE824',
-  iOsAppStoreLogo: '\uEF8A',
-  important: '\uE8C9',
-  inboxCheck: '\uEF64',
-  incidentTriangle: '\uE814',
-  increaseIndentLegacy: '\uE291',
-  info2: '\uEA1F',
-  info: '\uE946',
-  insertTextBox: '\uEC7D',
-  internetSharing: '\uE704',
-  issueTracking: '\uEEC0',
-  issueTrackingMirrored: '\uEEC1',
-  italic: '\uE8DB',
-  joinOnlineMeeting: '\uED8F',
-  js: '\uEBF0',
-  label: '\uE932',
-  landscapeOrientation: '\uEF6B',
-  laptopSelected: '\uEC76',
-  largeGrid: '\uEECB',
-  library: '\uE8F1',
-  lifesaver: '\uEF62',
-  lifesaverLock: '\uEF63',
-  light: '\uE793',
-  lightbulb: '\uEA80',
-  lightningBolt: '\uE945',
-  like: '\uE8E1',
-  link: '\uE71B',
-  list: '\uEA37',
-  listMirrored: '\uEA55',
-  location: '\uE81D',
-  locationCircle: '\uE80E',
-  locationDot: '\uE827',
-  locationFill: '\uE920',
-  lock: '\uE72E',
-  lowerBrightness: '\uEC8A',
-  lyncLogo: '\uED79',
-  mail: '\uE715',
-  mailAlert: '\uED80',
-  mailCheck: '\uED81',
-  mailFill: '\uE8A8',
-  mailForward: '\uE89C',
-  mailForwardMirrored: '\uEA56',
-  mailLowImportance: '\uED82',
-  mailPause: '\uED83',
-  mailRepeat: '\uED84',
-  mailReply: '\uE8CA',
-  mailReplyAll: '\uE8C2',
-  mailReplyAllMirrored: '\uEA58',
-  mailReplyMirrored: '\uEA57',
-  mapDirections: '\uE816',
-  mapPin: '\uE707',
-  market: '\uEAFC',
-  marketDown: '\uEF42',
-  megaphone: '\uE789',
-  memo: '\uE77C',
-  merge: '\uE7D5',
-  message: '\uE8BD',
-  messageFill: '\uEC70',
-  microphone: '\uE720',
-  microsoftStaffhubLogo: '\uF130',
-  miniLink: '\uE732',
-  mobileSelected: '\uEC75',
-  money: '\uEAFD',
-  more: '\uE712',
-  moreSports: '\uEB22',
-  move: '\uE7C2',
-  moveToFolder: '\uE8DE',
-  msnLogo: '\uEB6C',
-  multiSelect: '\uE762',
-  multiSelectMirrored: '\uEA98',
-  musicInCollection: '\uE940',
-  musicInCollectionFill: '\uEA36',
-  musicNote: '\uEC4F',
-  nav2DMapView: '\uE800',
-  newFolder: '\uE8F4',
-  news: '\uE900',
-  noteForward: '\uED99',
-  notePinned: '\uED9A',
-  noteReply: '\uED98',
-  numberField: '\uEDC4',
-  numberedList: '\uEA1C',
-  officeAssistantLogo: '\uEDCE',
-  officeFormLogo: '\uEF86',
-  officeLogo: '\uEB6E',
-  officeStoreLogo: '\uEDCF',
-  officeVideoLogo: '\uED7A',
-  offlineOneDriveParachute: '\uEEC8',
-  offlineOneDriveParachuteDisabled: '\uEEC9',
-  oneDrive: '\uE941',
-  oneDriveAdd: '\uEF32',
-  oneNoteEduLogo: '\uEDD0',
-  oneNoteLogo: '\uEC0D',
-  openFile: '\uE8E5',
-  openFolderHorizontal: '\uED25',
-  openInNewWindow: '\uE8A7',
-  openPane: '\uE8A0',
-  openPaneMirrored: '\uEA5B',
-  org: '\uECA6',
-  outOfOffice: '\uED34',
-  outlookLogo: '\uEB6D',
-  package: '\uE7B8',
-  page: '\uE7C3',
-  pageAdd: '\uEA1A',
-  pageCheckedOut: '\uF02C',
-  pageCheckedin: '\uF104',
-  pageLeft: '\uE760',
-  pageRight: '\uE761',
-  pageSolid: '\uE729',
-  panoIndicator: '\uE7B0',
-  paratureLogo: '\uED7B',
-  partlyCloudyDay: '\uE9C0',
-  partlyCloudyNight: '\uE9C1',
-  partyLeader: '\uECA7',
-  pause: '\uE769',
-  paymentCard: '\uE8C7',
-  pc1: '\uE977',
-  pdf: '\uEA90',
-  pencilReply: '\uEF7B',
-  people: '\uE716',
-  peopleAdd: '\uEA15',
-  peopleAlert: '\uED93',
-  peopleBlock: '\uED91',
-  peoplePause: '\uED94',
-  peopleRepeat: '\uED92',
-  permissions: '\uE8D7',
-  phone: '\uE717',
-  photo2: '\uEB9F',
-  photo2Add: '\uECAB',
-  photo2Remove: '\uECAC',
-  photoCollection: '\uE7AA',
-  picture: '\uE8B9',
-  pictureLibrary: '\uEEC2',
-  pieDouble: '\uEB04',
-  pill: '\uEACB',
-  pin: '\uE718',
-  pinned: '\uE840',
-  pinnedFill: '\uE842',
-  planner: '\uEDD1',
-  play: '\uE768',
-  playerSettings: '\uEF58',
-  poi: '\uECAF',
-  postUpdate: '\uE8F3',
-  powerApps2Logo: '\uF092',
-  powerApps: '\uEDD2',
-  powerAppsLogo: '\uF091',
-  powerBiLogo: '\uEA1E',
-  powerPointDocument: '\uEF72',
-  powerPointLogo: '\uEC2A',
-  precipitation: '\uE9CF',
-  presenceChickletVideo: '\uE979',
-  preview: '\uE8FF',
-  previewLink: '\uE8A1',
-  print: '\uE749',
-  printfaxPrinterFile: '\uE956',
-  proFootball: '\uEB27',
-  proHockey: '\uEB28',
-  product: '\uECDC',
-  projectLogo: '\uEDD4',
-  protectedDocument: '\uE8A6',
-  publicCalendar: '\uEF6D',
-  publicContactCard: '\uEF6E',
-  publicEmail: '\uEF6F',
-  publicFolder: '\uEF70',
-  puzzle: '\uEA86',
-  questionnaire: '\uEE19',
-  questionnaireMirrored: '\uEE4B',
-  quickNote: '\uE70B',
-  radioBtnOn: '\uECCB',
-  radioBullet: '\uE915',
-  rain: '\uE9C4',
-  rainShowersDay: '\uE9C3',
-  rainShowersNight: '\uEA0F',
-  rainSnow: '\uE9C7',
-  read: '\uE8C3',
-  readingMode: '\uE736',
-  receiptCheck: '\uEF5B',
-  receiptForward: '\uEF59',
-  receiptReply: '\uEF5A',
-  recent: '\uE823',
-  recurringEvent: '\uEF5D',
-  recurringTask: '\uEDB2',
-  recycleBin: '\uEF87',
-  redEye: '\uE7B3',
-  redo: '\uE7A6',
-  refresh: '\uE72C',
-  reminderGroup: '\uEBF8',
-  remove: '\uE738',
-  removeEvent: '\uED8A',
-  removeFilter: '\uEB08',
-  removeLink: '\uED90',
-  removeOccurrence: '\uED9B',
-  rename: '\uE8AC',
-  reopenPages: '\uED50',
-  repair: '\uE90F',
-  reply: '\uE97A',
-  replyAll: '\uEE0A',
-  replyAllAlt: '\uEF5F',
-  replyAllMirrored: '\uEE36',
-  replyAlt: '\uEF5E',
-  replyMirrored: '\uEE35',
-  reportLibrary: '\uEEBB',
-  reportLibraryMirrored: '\uEEBC',
-  returnToSession: '\uED24',
-  revToggleKey: '\uE845',
-  ribbon: '\uE9D1',
-  rightDoubleQuote: '\uE9B1',
-  ringer: '\uEA8F',
-  room: '\uED9F',
-  rotate: '\uE7AD',
-  rugby: '\uEB2D',
-  running: '\uEADA',
-  sad: '\uE757',
-  save: '\uE74E',
-  saveAs: '\uE792',
-  search: '\uE721',
-  section: '\uEC0C',
-  sections: '\uEF76',
-  securityGroup: '\uED85',
-  send: '\uE724',
-  sendMirrored: '\uEA63',
-  setAction: '\uF071',
-  settings: '\uE713',
-  share: '\uE72D',
-  shareiOs: '\uEF79',
-  sharepointLogo: '\uED18',
-  shield: '\uEA18',
-  shop: '\uE719',
-  shoppingCart: '\uE7BF',
-  showResults: '\uE8BC',
-  showResultsMirrored: '\uEA65',
-  sidePanel: '\uEF52',
-  singleBookmark: '\uEDFF',
-  sipMove: '\uE759',
-  skypeCheck: '\uEF80',
-  skypeCircleCheck: '\uEF7D',
-  skypeCircleClock: '\uEF7E',
-  skypeCircleMinus: '\uEF7F',
-  skypeClock: '\uEF81',
-  skypeLogo: '\uEB6F',
-  skypeMessage: '\uEF83',
-  skypeMinus: '\uEF82',
-  sliderThumb: '\uEC13',
-  snow: '\uEB46',
-  snowShowerDay: '\uE9FD',
-  snowShowerNight: '\uEA11',
-  soccer: '\uEB21',
-  socialListeningLogo: '\uED7C',
-  sort: '\uE8CB',
-  sortDown: '\uEE69',
-  sortLines: '\uE9D0',
-  sortUp: '\uEE68',
-  speakers: '\uE7F5',
-  speedHigh: '\uEC4A',
-  split: '\uEDBC',
-  squalls: '\uE9CC',
-  stackIndicator: '\uE7FF',
-  starburst: '\uEF78',
-  statusErrorFull: '\uEB90',
-  statusTriangle: '\uEA82',
-  stockDown: '\uEB0F',
-  stockUp: '\uEB11',
-  stopwatch: '\uE916',
-  storeLogo: '\uEA96',
-  storeLogoMed: '\uEA04',
-  strikethrough: '\uEDE0',
-  subscribe: '\uEDA1',
-  subscript: '\uEDDF',
-  suitcase: '\uEDD3',
-  sunAdd: '\uEF69',
-  sunQuestionMark: '\uEF6A',
-  sunny: '\uE9BD',
-  superscript: '\uEDDE',
-  swayLogo: '\uED29',
-  switch: '\uE8AB',
-  switcherStartEnd: '\uE810',
-  sync: '\uE895',
-  syncFolder: '\uE8F7',
-  syncToPc: '\uEE6E',
-  system: '\uE770',
-  tab: '\uE7E9',
-  table: '\uED86',
-  tablet: '\uE70A',
-  tabletSelected: '\uEC74',
-  tag: '\uE8EC',
-  taskManager: '\uEDB7',
-  taskManagerMirrored: '\uEDB8',
-  teamwork: '\uEA12',
-  temporaryUser: '\uEE58',
-  tennis: '\uEB33',
-  textBox: '\uEDC2',
-  textField: '\uEDC3',
-  thumbnailView: '\uE7B6',
-  thumbnailViewMirrored: '\uEA67',
-  thunderstorms: '\uE9C6',
-  ticket: '\uEB54',
-  tiles2: '\uEF7C',
-  tiles: '\uECA5',
-  timeline: '\uED9C',
-  timer: '\uE91E',
-  toggleBorder: '\uEC12',
-  toggleFilled: '\uEC11',
-  toggleThumb: '\uEC14',
-  touch: '\uE815',
-  touchPointer: '\uE7C9',
-  train: '\uE7C0',
-  trainSolid: '\uEB4D',
-  transferCall: '\uED95',
-  triangleDown12: '\uEED1',
-  triangleLeft12: '\uEED2',
-  triangleRight12: '\uEED3',
-  triangleSolidDown12: '\uEECD',
-  triangleSolidLeft12: '\uEECE',
-  triangleSolidRight12: '\uEECF',
-  triangleSolidUp12: '\uEECC',
-  triangleUp12: '\uEED0',
-  trophy: '\uED3F',
-  turnRight: '\uE7DB',
-  tvMonitor: '\uE7F4',
-  tvMonitorSelected: '\uEC77',
-  underline: '\uE8DC',
-  undo: '\uE7A7',
-  unfavorite: '\uE8D9',
-  unknownCall: '\uED97',
-  unlock: '\uE785',
-  unpin: '\uE77A',
-  unsubscribe: '\uEDA0',
-  unsyncFolder: '\uE8F6',
-  up: '\uE74A',
-  upload: '\uE898',
-  video: '\uE714',
-  videoSolid: '\uEA0C',
-  view: '\uE890',
-  viewAll2: '\uEF56',
-  viewAll: '\uE8A9',
-  visioLogo: '\uED7D',
-  voicemailForward: '\uED87',
-  voicemailReply: '\uED88',
-  volume0: '\uE992',
-  volume1: '\uE993',
-  volume2: '\uE994',
-  volume3: '\uE995',
-  volumeDisabled: '\uEA85',
-  waffle: '\uED89',
-  warning: '\uE7BA',
-  website: '\uEB41',
-  weights: '\uEADB',
-  windDirection: '\uEBE6',
-  windowsLogo: '\uE782',
-  wipePhone: '\uED8D',
-  wordDocument: '\uEF71',
-  wordLogo: '\uEC29',
-  work: '\uE821',
-  workFlow: '\uEA01',
-  worldClock: '\uE918',
-  yammerLogo: '\uED19',
-  zoom: '\uE71E',
-  zoomIn: '\uE8A3',
-  zoomOut: '\uE71F'
-};
+export const aadLogo: string = '\uED68';
+export const accept: string = '\uE8FB';
+export const accessLogo: string = '\uED69';
+export const accounts: string = '\uE910';
+export const add: string = '\uE710';
+export const addEvent: string = '\uEEB5';
+export const addFavorite: string = '\uF0C8';
+export const addFavoriteFill: string = '\uF0C9';
+export const addFriend: string = '\uE8FA';
+export const addGroup: string = '\uEE3D';
+export const addOnlineMeeting: string = '\uED8E';
+export const addPhone: string = '\uED96';
+export const addTo: string = '\uECC8';
+export const admin: string = '\uE7EF';
+export const adminALogo: string = '\uED6A';
+export const adminCLogo: string = '\uED6B';
+export const adminDLogo: string = '\uED6C';
+export const adminELogo: string = '\uED6D';
+export const adminLLogo: string = '\uED6E';
+export const adminMLogo: string = '\uED6F';
+export const adminOLogo: string = '\uED70';
+export const adminPLogo: string = '\uED71';
+export const adminSLogo: string = '\uED72';
+export const adminYLogo: string = '\uED73';
+export const airTickets: string = '\uEF7A';
+export const airplane: string = '\uE709';
+export const alarmClock: string = '\uE919';
+export const album: string = '\uE7AB';
+export const albumRemove: string = '\uEC62';
+export const alchemyLogo: string = '\uED74';
+export const alignCenter: string = '\uE8E3';
+export const alignLeft: string = '\uE8E4';
+export const alignRight: string = '\uE8E2';
+export const androidLogo: string = '\uEF8B';
+export const annotation: string = '\uE924';
+export const appForOfficeLogo: string = '\uEEC7';
+export const appIconDefault: string = '\uECAA';
+export const arrivals: string = '\uEB34';
+export const arrowDownRight8: string = '\uEED5';
+export const arrowDownRightMirrored8: string = '\uEEF0';
+export const arrowUpRight8: string = '\uEED4';
+export const arrowUpRightMirrored8: string = '\uEEEF';
+export const articles: string = '\uEAC1';
+export const ascending: string = '\uEDC0';
+export const assetLibrary: string = '\uEEB6';
+export const asterisk: string = '\uEA38';
+export const atpLogo: string = '\uEF85';
+export const attach: string = '\uE723';
+export const australianRules: string = '\uEE70';
+export const autoEnhanceOff: string = '\uE78E';
+export const autoEnhanceOn: string = '\uE78D';
+export const autoRacing: string = '\uEB24';
+export const awayStatus: string = '\uEE6A';
+export const azureLogo: string = '\uEB6A';
+export const back: string = '\uE72B';
+export const backToWindow: string = '\uE73F';
+export const badge: string = '\uEC1B';
+export const balloons: string = '\uED7E';
+export const barChart4: string = '\uEAE7';
+export const barChartHorizontal: string = '\uE9EB';
+export const baseball: string = '\uEB20';
+export const bidiLtr: string = '\uE9AA';
+export const bidiRtl: string = '\uE9AB';
+export const bingLogo: string = '\uEB6B';
+export const blockContact: string = '\uE8F8';
+export const blocked2: string = '\uECE4';
+export const blocked: string = '\uE733';
+export const blowingSnow: string = '\uE9C9';
+export const boards: string = '\uEF68';
+export const bold: string = '\uE8DD';
+export const bookingsLogo: string = '\uEDC7';
+export const bookmarks: string = '\uE8A4';
+export const bookmarksMirrored: string = '\uEA41';
+export const boxLogo: string = '\uED75';
+export const branchFork: string = '\uF173';
+export const breadcrumb: string = '\uEF8C';
+export const brightness: string = '\uE706';
+export const broom: string = '\uEA99';
+export const bufferTimeAfter: string = '\uF0D0';
+export const bufferTimeBefore: string = '\uF0CF';
+export const bufferTimeBoth: string = '\uF0D1';
+export const bulletedList: string = '\uE8FD';
+export const bulletedListMirrored: string = '\uEA42';
+export const busSolid: string = '\uEB47';
+export const cafe: string = '\uEC32';
+export const cake: string = '\uECA4';
+export const calculatorAddition: string = '\uE948';
+export const calculatorSubtract: string = '\uE949';
+export const calendar: string = '\uE787';
+export const calendarAgenda: string = '\uEE9A';
+export const calendarDay: string = '\uE8BF';
+export const calendarMirrored: string = '\uED28';
+export const calendarReply: string = '\uE8F5';
+export const calendarWeek: string = '\uE8C0';
+export const calendarWorkWeek: string = '\uEF51';
+export const caloriesAdd: string = '\uF172';
+export const camera: string = '\uE722';
+export const cancel: string = '\uE711';
+export const car: string = '\uE804';
+export const caretBottomLeftSolid8: string = '\uF121';
+export const caretBottomRightSolid8: string = '\uF122';
+export const caretDown8: string = '\uEDD8';
+export const caretDownSolid8: string = '\uEDDC';
+export const caretHollow: string = '\uE817';
+export const caretHollowMirrored: string = '\uEA45';
+export const caretLeft8: string = '\uEDD5';
+export const caretLeftSolid8: string = '\uEDD9';
+export const caretRight8: string = '\uEDD6';
+export const caretRightSolid8: string = '\uEDDA';
+export const caretSolid: string = '\uE818';
+export const caretSolidMirrored: string = '\uEA46';
+export const caretTopLeftSolid8: string = '\uEF54';
+export const caretTopRightSolid8: string = '\uEF55';
+export const caretUp8: string = '\uEDD7';
+export const caretUpSolid8: string = '\uEDDB';
+export const cat: string = '\uED7F';
+export const cellPhone: string = '\uE8EA';
+export const certificate: string = '\uEB95';
+export const chart: string = '\uE999';
+export const chat: string = '\uE901';
+export const chatInviteFriend: string = '\uECFE';
+export const checkList: string = '\uE9D5';
+export const checkMark: string = '\uE73E';
+export const checkbox: string = '\uE739';
+export const checkboxComposite: string = '\uE73A';
+export const checkboxIndeterminate: string = '\uE73C';
+export const chevronDown: string = '\uE70D';
+export const chevronDownMed: string = '\uE972';
+export const chevronDownSmall: string = '\uE96E';
+export const chevronLeft: string = '\uE76B';
+export const chevronLeftMed: string = '\uE973';
+export const chevronLeftSmall: string = '\uE96F';
+export const chevronRight: string = '\uE76C';
+export const chevronRightMed: string = '\uE974';
+export const chevronRightSmall: string = '\uE970';
+export const chevronUp: string = '\uE70E';
+export const chevronUpMed: string = '\uE971';
+export const chevronUpSmall: string = '\uE96D';
+export const chromeBack: string = '\uE830';
+export const chromeBackMirrored: string = '\uEA47';
+export const chromeClose: string = '\uE8BB';
+export const chromeMinimize: string = '\uE921';
+export const circleFill: string = '\uEA3B';
+export const circleHalfFull: string = '\uED9E';
+export const circlePlus: string = '\uEAEE';
+export const circleRing: string = '\uEA3A';
+export const classNotebookLogo: string = '\uEDC8';
+export const classroomLogo: string = '\uEF75';
+export const clear: string = '\uE894';
+export const clearFilter: string = '\uEF8F';
+export const clearFormatting: string = '\uEDDD';
+export const clearNight: string = '\uE9C2';
+export const clock: string = '\uE917';
+export const closePane: string = '\uE89F';
+export const closePaneMirrored: string = '\uEA49';
+export const closedCaption: string = '\uEF84';
+export const cloudAdd: string = '\uECA9';
+export const cloudDownload: string = '\uEBD3';
+export const cloudUpload: string = '\uEC8E';
+export const cloudWeather: string = '\uE9BE';
+export const cloudy: string = '\uE9BF';
+export const cocktails: string = '\uEA9D';
+export const code: string = '\uE943';
+export const coffee: string = '\uEAEF';
+export const collabsDbLogo: string = '\uEDC9';
+export const collapseMenu: string = '\uEF66';
+export const collegeFootball: string = '\uEB26';
+export const collegeHoops: string = '\uEB25';
+export const color: string = '\uE790';
+export const combine: string = '\uEDBB';
+export const compassNw: string = '\uE942';
+export const completed: string = '\uE930';
+export const completedSolid: string = '\uEC61';
+export const contact: string = '\uE77B';
+export const contactCard: string = '\uEEBD';
+export const contactInfo: string = '\uE779';
+export const container: string = '\uE7B8';
+export const contrast: string = '\uE7A1';
+export const copy: string = '\uE8C8';
+export const cotton: string = '\uEAF3';
+export const cricket: string = '\uEB1E';
+export const css: string = '\uEBEF';
+export const customList: string = '\uEEBE';
+export const customListMirrored: string = '\uEEBF';
+export const cycling: string = '\uEAC7';
+export const dataConnectionLibrary: string = '\uEEB7';
+export const dateTime2: string = '\uEA17';
+export const dateTime: string = '\uEC92';
+export const dateTimeMirrored: string = '\uEE93';
+export const decreaseIndentLegacy: string = '\uE290';
+export const delveAnalytics: string = '\uEEEE';
+export const delveAnalyticsLogo: string = '\uEDCA';
+export const delveLogo: string = '\uED76';
+export const descending: string = '\uEDC1';
+export const design: string = '\uEB3C';
+export const developerTools: string = '\uEC7A';
+export const devices3: string = '\uEA6C';
+export const devices4: string = '\uEB66';
+export const dialpad: string = '\uE75F';
+export const dictionary: string = '\uE82D';
+export const dietPlanNotebook: string = '\uEAC8';
+export const disableUpdates: string = '\uE8D8';
+export const dislike: string = '\uE8E0';
+export const docLibrary: string = '\uEEB8';
+export const dockLeft: string = '\uE90C';
+export const dockLeftMirrored: string = '\uEA4C';
+export const dockRight: string = '\uE90D';
+export const docsLogo: string = '\uEDCB';
+export const document: string = '\uE8A5';
+export const documentReply: string = '\uEF57';
+export const documentSearch: string = '\uEF6C';
+export const documentSet: string = '\uEED6';
+export const documentation: string = '\uEC17';
+export const door: string = '\uEB75';
+export const doubleBookmark: string = '\uEB8F';
+export const doubleChevronDown12: string = '\uEE97';
+export const doubleChevronDown: string = '\uEE04';
+export const doubleChevronLeft12: string = '\uEE98';
+export const doubleChevronLeft: string = '\uEDBE';
+export const doubleChevronLeftMed: string = '\uE991';
+export const doubleChevronLeftMedMirrored: string = '\uEA4D';
+export const doubleChevronRight12: string = '\uEE99';
+export const doubleChevronRight: string = '\uEDBF';
+export const doubleChevronUp12: string = '\uEE96';
+export const doubleChevronUp: string = '\uEDBD';
+export const down: string = '\uE74B';
+export const download: string = '\uE896';
+export const drm: string = '\uECA8';
+export const drop: string = '\uEB42';
+export const dropboxLogo: string = '\uED77';
+export const dropdown: string = '\uEDC5';
+export const duststorm: string = '\uE9CD';
+export const dynamicSmbLogo: string = '\uEDCD';
+export const dynamics365Logo: string = '\uEDCC';
+export const eatDrink: string = '\uE807';
+export const edgeLogo: string = '\uEC60';
+export const edit: string = '\uE70F';
+export const editMail: string = '\uEF61';
+export const editMirrored: string = '\uEB7E';
+export const editNote: string = '\uED9D';
+export const editPhoto: string = '\uEF77';
+export const editStyle: string = '\uEF60';
+export const embed: string = '\uECCE';
+export const emi: string = '\uE731';
+export const emoji2: string = '\uE76E';
+export const emoji: string = '\uE899';
+export const emojiDisappointed: string = '\uEA88';
+export const emojiNeutral: string = '\uEA87';
+export const emptyRecycleBin: string = '\uEF88';
+export const equalizer: string = '\uE9E9';
+export const eraseTool: string = '\uE75C';
+export const error: string = '\uE783';
+export const errorBadge: string = '\uEA39';
+export const event: string = '\uECA3';
+export const eventInfo: string = '\uED8B';
+export const excelDocument: string = '\uEF73';
+export const excelLogo: string = '\uEC28';
+export const exchangeLogo: string = '\uED78';
+export const expandMenu: string = '\uEF67';
+export const fabricAssetLibrary: string = '\uF09C';
+export const fabricDataConnectionLibrary: string = '\uF09D';
+export const fabricDocLibrary: string = '\uF09E';
+export const fabricFolder: string = '\uF0A9';
+export const fabricFolderFill: string = '\uF0AA';
+export const fabricFolderSearch: string = '\uF0A4';
+export const fabricFormLibrary: string = '\uF09F';
+export const fabricFormLibraryMirrored: string = '\uF0A0';
+export const fabricMovetoFolder: string = '\uF0A5';
+export const fabricNewFolder: string = '\uF0AB';
+export const fabricOpenFolderHorizontal: string = '\uF0A8';
+export const fabricPictureLibrary: string = '\uF0AC';
+export const fabricPublicFolder: string = '\uF0A3';
+export const fabricReportLibrary: string = '\uF0A1';
+export const fabricReportLibraryMirrored: string = '\uF0A2';
+export const fabricSyncFolder: string = '\uF0A7';
+export const fabricUnsyncFolder: string = '\uF0A6';
+export const facebookLogo: string = '\uECB3';
+export const family: string = '\uEBDA';
+export const fangBody: string = '\uECEB';
+export const favoriteList: string = '\uE728';
+export const favoriteStar: string = '\uE734';
+export const favoriteStarFill: string = '\uE735';
+export const fax: string = '\uEF5C';
+export const ferry: string = '\uE7E3';
+export const ferrySolid: string = '\uEB48';
+export const filter: string = '\uE71C';
+export const filters: string = '\uE795';
+export const financial: string = '\uE7BB';
+export const fingerprint: string = '\uE928';
+export const flag: string = '\uE7C1';
+export const flickDown: string = '\uE935';
+export const flickLeft: string = '\uE937';
+export const flickRight: string = '\uE938';
+export const flickUp: string = '\uE936';
+export const flow: string = '\uEF90';
+export const fog: string = '\uE9CB';
+export const folder: string = '\uE8B7';
+export const folderFill: string = '\uE8D5';
+export const folderHorizontal: string = '\uF12B';
+export const folderOpen: string = '\uE838';
+export const folderSearch: string = '\uEF65';
+export const font: string = '\uE8D2';
+export const fontColor: string = '\uE8D3';
+export const fontDecrease: string = '\uE8E7';
+export const fontIncrease: string = '\uE8E8';
+export const fontSize: string = '\uE8E9';
+export const formLibrary: string = '\uEEB9';
+export const formLibraryMirrored: string = '\uEEBA';
+export const forward: string = '\uE72A';
+export const forwardEvent: string = '\uED8C';
+export const freezing: string = '\uE9EF';
+export const frigid: string = '\uE9CA';
+export const fullCircleMask: string = '\uE91F';
+export const fullScreen: string = '\uE740';
+export const generate: string = '\uE9DA';
+export const giftCard: string = '\uEB8E';
+export const giftbox: string = '\uEC1F';
+export const glasses: string = '\uEA16';
+export const glimmer: string = '\uECF4';
+export const globalNavButton: string = '\uE700';
+export const globe: string = '\uE774';
+export const globeFavorite: string = '\uEF53';
+export const golf: string = '\uEB1F';
+export const googleDriveLogo: string = '\uEE0B';
+export const gotoToday: string = '\uE8D1';
+export const gripperTool: string = '\uE75E';
+export const group: string = '\uE902';
+export const groupedAscending: string = '\uEE67';
+export const groupedDescending: string = '\uEE66';
+export const groupedList: string = '\uEF74';
+export const hailDay: string = '\uEA00';
+export const hailNight: string = '\uEA13';
+export const handwriting: string = '\uE929';
+export const header1: string = '\uEA19';
+export const header2: string = '\uEF36';
+export const header3: string = '\uEF37';
+export const header4: string = '\uEF38';
+export const headset: string = '\uE95B';
+export const health: string = '\uE95E';
+export const heart: string = '\uEB51';
+export const heartFill: string = '\uEB52';
+export const help: string = '\uE897';
+export const helpMirrored: string = '\uEA51';
+export const hide2: string = '\uEF89';
+export const hide: string = '\uED1A';
+export const history: string = '\uE81C';
+export const home: string = '\uE80F';
+export const homeSolid: string = '\uEA8A';
+export const hospital: string = '\uE91D';
+export const hotel: string = '\uE824';
+export const iOsAppStoreLogo: string = '\uEF8A';
+export const important: string = '\uE8C9';
+export const inboxCheck: string = '\uEF64';
+export const incidentTriangle: string = '\uE814';
+export const increaseIndentLegacy: string = '\uE291';
+export const info2: string = '\uEA1F';
+export const info: string = '\uE946';
+export const insertTextBox: string = '\uEC7D';
+export const internetSharing: string = '\uE704';
+export const issueTracking: string = '\uEEC0';
+export const issueTrackingMirrored: string = '\uEEC1';
+export const italic: string = '\uE8DB';
+export const joinOnlineMeeting: string = '\uED8F';
+export const js: string = '\uEBF0';
+export const label: string = '\uE932';
+export const landscapeOrientation: string = '\uEF6B';
+export const laptopSelected: string = '\uEC76';
+export const largeGrid: string = '\uEECB';
+export const library: string = '\uE8F1';
+export const lifesaver: string = '\uEF62';
+export const lifesaverLock: string = '\uEF63';
+export const light: string = '\uE793';
+export const lightbulb: string = '\uEA80';
+export const lightningBolt: string = '\uE945';
+export const like: string = '\uE8E1';
+export const link: string = '\uE71B';
+export const list: string = '\uEA37';
+export const listMirrored: string = '\uEA55';
+export const location: string = '\uE81D';
+export const locationCircle: string = '\uE80E';
+export const locationDot: string = '\uE827';
+export const locationFill: string = '\uE920';
+export const lock: string = '\uE72E';
+export const lowerBrightness: string = '\uEC8A';
+export const lyncLogo: string = '\uED79';
+export const mail: string = '\uE715';
+export const mailAlert: string = '\uED80';
+export const mailCheck: string = '\uED81';
+export const mailFill: string = '\uE8A8';
+export const mailForward: string = '\uE89C';
+export const mailForwardMirrored: string = '\uEA56';
+export const mailLowImportance: string = '\uED82';
+export const mailPause: string = '\uED83';
+export const mailRepeat: string = '\uED84';
+export const mailReply: string = '\uE8CA';
+export const mailReplyAll: string = '\uE8C2';
+export const mailReplyAllMirrored: string = '\uEA58';
+export const mailReplyMirrored: string = '\uEA57';
+export const mapDirections: string = '\uE816';
+export const mapPin: string = '\uE707';
+export const market: string = '\uEAFC';
+export const marketDown: string = '\uEF42';
+export const megaphone: string = '\uE789';
+export const memo: string = '\uE77C';
+export const merge: string = '\uE7D5';
+export const message: string = '\uE8BD';
+export const messageFill: string = '\uEC70';
+export const microphone: string = '\uE720';
+export const microsoftStaffhubLogo: string = '\uF130';
+export const miniLink: string = '\uE732';
+export const mobileSelected: string = '\uEC75';
+export const money: string = '\uEAFD';
+export const more: string = '\uE712';
+export const moreSports: string = '\uEB22';
+export const move: string = '\uE7C2';
+export const moveToFolder: string = '\uE8DE';
+export const msnLogo: string = '\uEB6C';
+export const multiSelect: string = '\uE762';
+export const multiSelectMirrored: string = '\uEA98';
+export const musicInCollection: string = '\uE940';
+export const musicInCollectionFill: string = '\uEA36';
+export const musicNote: string = '\uEC4F';
+export const nav2DMapView: string = '\uE800';
+export const newFolder: string = '\uE8F4';
+export const news: string = '\uE900';
+export const noteForward: string = '\uED99';
+export const notePinned: string = '\uED9A';
+export const noteReply: string = '\uED98';
+export const numberField: string = '\uEDC4';
+export const numberedList: string = '\uEA1C';
+export const officeAssistantLogo: string = '\uEDCE';
+export const officeFormLogo: string = '\uEF86';
+export const officeLogo: string = '\uEB6E';
+export const officeStoreLogo: string = '\uEDCF';
+export const officeVideoLogo: string = '\uED7A';
+export const offlineOneDriveParachute: string = '\uEEC8';
+export const offlineOneDriveParachuteDisabled: string = '\uEEC9';
+export const oneDrive: string = '\uE941';
+export const oneDriveAdd: string = '\uEF32';
+export const oneNoteEduLogo: string = '\uEDD0';
+export const oneNoteLogo: string = '\uEC0D';
+export const openFile: string = '\uE8E5';
+export const openFolderHorizontal: string = '\uED25';
+export const openInNewWindow: string = '\uE8A7';
+export const openPane: string = '\uE8A0';
+export const openPaneMirrored: string = '\uEA5B';
+export const org: string = '\uECA6';
+export const outOfOffice: string = '\uED34';
+export const outlookLogo: string = '\uEB6D';
+export const page: string = '\uE7C3';
+export const pageAdd: string = '\uEA1A';
+export const pageCheckedOut: string = '\uF02C';
+export const pageCheckedin: string = '\uF104';
+export const pageLeft: string = '\uE760';
+export const pageRight: string = '\uE761';
+export const pageSolid: string = '\uE729';
+export const panoIndicator: string = '\uE7B0';
+export const paratureLogo: string = '\uED7B';
+export const partlyCloudyDay: string = '\uE9C0';
+export const partlyCloudyNight: string = '\uE9C1';
+export const partyLeader: string = '\uECA7';
+export const pause: string = '\uE769';
+export const paymentCard: string = '\uE8C7';
+export const pc1: string = '\uE977';
+export const pdf: string = '\uEA90';
+export const pencilReply: string = '\uEF7B';
+export const people: string = '\uE716';
+export const peopleAdd: string = '\uEA15';
+export const peopleAlert: string = '\uED93';
+export const peopleBlock: string = '\uED91';
+export const peoplePause: string = '\uED94';
+export const peopleRepeat: string = '\uED92';
+export const permissions: string = '\uE8D7';
+export const phone: string = '\uE717';
+export const photo2: string = '\uEB9F';
+export const photo2Add: string = '\uECAB';
+export const photo2Remove: string = '\uECAC';
+export const photoCollection: string = '\uE7AA';
+export const picture: string = '\uE8B9';
+export const pictureLibrary: string = '\uEEC2';
+export const pieDouble: string = '\uEB04';
+export const pill: string = '\uEACB';
+export const pin: string = '\uE718';
+export const pinned: string = '\uE840';
+export const pinnedFill: string = '\uE842';
+export const planner: string = '\uEDD1';
+export const play: string = '\uE768';
+export const playerSettings: string = '\uEF58';
+export const poi: string = '\uECAF';
+export const postUpdate: string = '\uE8F3';
+export const powerApps2Logo: string = '\uF092';
+export const powerApps: string = '\uEDD2';
+export const powerAppsLogo: string = '\uF091';
+export const powerBiLogo: string = '\uEA1E';
+export const powerPointDocument: string = '\uEF72';
+export const powerPointLogo: string = '\uEC2A';
+export const precipitation: string = '\uE9CF';
+export const presenceChickletVideo: string = '\uE979';
+export const preview: string = '\uE8FF';
+export const previewLink: string = '\uE8A1';
+export const print: string = '\uE749';
+export const printfaxPrinterFile: string = '\uE956';
+export const proFootball: string = '\uEB27';
+export const proHockey: string = '\uEB28';
+export const product: string = '\uECDC';
+export const projectLogo: string = '\uEDD4';
+export const protectedDocument: string = '\uE8A6';
+export const publicCalendar: string = '\uEF6D';
+export const publicContactCard: string = '\uEF6E';
+export const publicEmail: string = '\uEF6F';
+export const publicFolder: string = '\uEF70';
+export const puzzle: string = '\uEA86';
+export const questionnaire: string = '\uEE19';
+export const questionnaireMirrored: string = '\uEE4B';
+export const quickNote: string = '\uE70B';
+export const radioBtnOn: string = '\uECCB';
+export const radioBullet: string = '\uE915';
+export const rain: string = '\uE9C4';
+export const rainShowersDay: string = '\uE9C3';
+export const rainShowersNight: string = '\uEA0F';
+export const rainSnow: string = '\uE9C7';
+export const read: string = '\uE8C3';
+export const readingMode: string = '\uE736';
+export const receiptCheck: string = '\uEF5B';
+export const receiptForward: string = '\uEF59';
+export const receiptReply: string = '\uEF5A';
+export const recent: string = '\uE823';
+export const recurringEvent: string = '\uEF5D';
+export const recurringTask: string = '\uEDB2';
+export const recycleBin: string = '\uEF87';
+export const redEye: string = '\uE7B3';
+export const redo: string = '\uE7A6';
+export const refresh: string = '\uE72C';
+export const reminderGroup: string = '\uEBF8';
+export const remove: string = '\uE738';
+export const removeEvent: string = '\uED8A';
+export const removeFilter: string = '\uEB08';
+export const removeLink: string = '\uED90';
+export const removeOccurrence: string = '\uED9B';
+export const rename: string = '\uE8AC';
+export const reopenPages: string = '\uED50';
+export const repair: string = '\uE90F';
+export const reply: string = '\uE97A';
+export const replyAll: string = '\uEE0A';
+export const replyAllAlt: string = '\uEF5F';
+export const replyAllMirrored: string = '\uEE36';
+export const replyAlt: string = '\uEF5E';
+export const replyMirrored: string = '\uEE35';
+export const reportLibrary: string = '\uEEBB';
+export const reportLibraryMirrored: string = '\uEEBC';
+export const returnToSession: string = '\uED24';
+export const revToggleKey: string = '\uE845';
+export const ribbon: string = '\uE9D1';
+export const rightDoubleQuote: string = '\uE9B1';
+export const ringer: string = '\uEA8F';
+export const room: string = '\uED9F';
+export const rotate: string = '\uE7AD';
+export const rugby: string = '\uEB2D';
+export const running: string = '\uEADA';
+export const sad: string = '\uE757';
+export const save: string = '\uE74E';
+export const saveAs: string = '\uE792';
+export const search: string = '\uE721';
+export const section: string = '\uEC0C';
+export const sections: string = '\uEF76';
+export const securityGroup: string = '\uED85';
+export const send: string = '\uE724';
+export const sendMirrored: string = '\uEA63';
+export const setAction: string = '\uF071';
+export const settings: string = '\uE713';
+export const share: string = '\uE72D';
+export const shareiOs: string = '\uEF79';
+export const sharepointLogo: string = '\uED18';
+export const shield: string = '\uEA18';
+export const shop: string = '\uE719';
+export const shoppingCart: string = '\uE7BF';
+export const showResults: string = '\uE8BC';
+export const showResultsMirrored: string = '\uEA65';
+export const sidePanel: string = '\uEF52';
+export const singleBookmark: string = '\uEDFF';
+export const sipMove: string = '\uE759';
+export const skypeCheck: string = '\uEF80';
+export const skypeCircleCheck: string = '\uEF7D';
+export const skypeCircleClock: string = '\uEF7E';
+export const skypeCircleMinus: string = '\uEF7F';
+export const skypeClock: string = '\uEF81';
+export const skypeLogo: string = '\uEB6F';
+export const skypeMessage: string = '\uEF83';
+export const skypeMinus: string = '\uEF82';
+export const sliderThumb: string = '\uEC13';
+export const snow: string = '\uEB46';
+export const snowShowerDay: string = '\uE9FD';
+export const snowShowerNight: string = '\uEA11';
+export const soccer: string = '\uEB21';
+export const socialListeningLogo: string = '\uED7C';
+export const sort: string = '\uE8CB';
+export const sortDown: string = '\uEE69';
+export const sortLines: string = '\uE9D0';
+export const sortUp: string = '\uEE68';
+export const speakers: string = '\uE7F5';
+export const speedHigh: string = '\uEC4A';
+export const split: string = '\uEDBC';
+export const squalls: string = '\uE9CC';
+export const stackIndicator: string = '\uE7FF';
+export const starburst: string = '\uEF78';
+export const statusErrorFull: string = '\uEB90';
+export const statusTriangle: string = '\uEA82';
+export const stockDown: string = '\uEB0F';
+export const stockUp: string = '\uEB11';
+export const stopwatch: string = '\uE916';
+export const storeLogo: string = '\uEA96';
+export const storeLogoMed: string = '\uEA04';
+export const strikethrough: string = '\uEDE0';
+export const subscribe: string = '\uEDA1';
+export const subscript: string = '\uEDDF';
+export const suitcase: string = '\uEDD3';
+export const sunAdd: string = '\uEF69';
+export const sunQuestionMark: string = '\uEF6A';
+export const sunny: string = '\uE9BD';
+export const superscript: string = '\uEDDE';
+export const swayLogo: string = '\uED29';
+export const switcher: string = '\uE8AB';
+export const switcherStartEnd: string = '\uE810';
+export const sync: string = '\uE895';
+export const syncFolder: string = '\uE8F7';
+export const syncToPc: string = '\uEE6E';
+export const system: string = '\uE770';
+export const tab: string = '\uE7E9';
+export const table: string = '\uED86';
+export const tablet: string = '\uE70A';
+export const tabletSelected: string = '\uEC74';
+export const tag: string = '\uE8EC';
+export const taskManager: string = '\uEDB7';
+export const taskManagerMirrored: string = '\uEDB8';
+export const teamwork: string = '\uEA12';
+export const temporaryUser: string = '\uEE58';
+export const tennis: string = '\uEB33';
+export const textBox: string = '\uEDC2';
+export const textField: string = '\uEDC3';
+export const thumbnailView: string = '\uE7B6';
+export const thumbnailViewMirrored: string = '\uEA67';
+export const thunderstorms: string = '\uE9C6';
+export const ticket: string = '\uEB54';
+export const tiles2: string = '\uEF7C';
+export const tiles: string = '\uECA5';
+export const timeline: string = '\uED9C';
+export const timer: string = '\uE91E';
+export const toggleBorder: string = '\uEC12';
+export const toggleFilled: string = '\uEC11';
+export const toggleThumb: string = '\uEC14';
+export const touch: string = '\uE815';
+export const touchPointer: string = '\uE7C9';
+export const train: string = '\uE7C0';
+export const trainSolid: string = '\uEB4D';
+export const transferCall: string = '\uED95';
+export const trash: string = '\uE74D';
+export const triangleDown12: string = '\uEED1';
+export const triangleLeft12: string = '\uEED2';
+export const triangleRight12: string = '\uEED3';
+export const triangleSolidDown12: string = '\uEECD';
+export const triangleSolidLeft12: string = '\uEECE';
+export const triangleSolidRight12: string = '\uEECF';
+export const triangleSolidUp12: string = '\uEECC';
+export const triangleUp12: string = '\uEED0';
+export const trophy: string = '\uED3F';
+export const turnRight: string = '\uE7DB';
+export const tvMonitor: string = '\uE7F4';
+export const tvMonitorSelected: string = '\uEC77';
+export const underline: string = '\uE8DC';
+export const undo: string = '\uE7A7';
+export const unfavorite: string = '\uE8D9';
+export const unknownCall: string = '\uED97';
+export const unlock: string = '\uE785';
+export const unpin: string = '\uE77A';
+export const unsubscribe: string = '\uEDA0';
+export const unsyncFolder: string = '\uE8F6';
+export const up: string = '\uE74A';
+export const upload: string = '\uE898';
+export const video: string = '\uE714';
+export const videoSolid: string = '\uEA0C';
+export const view: string = '\uE890';
+export const viewAll2: string = '\uEF56';
+export const viewAll: string = '\uE8A9';
+export const visioLogo: string = '\uED7D';
+export const voicemailForward: string = '\uED87';
+export const voicemailReply: string = '\uED88';
+export const volume0: string = '\uE992';
+export const volume1: string = '\uE993';
+export const volume2: string = '\uE994';
+export const volume3: string = '\uE995';
+export const volumeDisabled: string = '\uEA85';
+export const waffle: string = '\uED89';
+export const warning: string = '\uE7BA';
+export const website: string = '\uEB41';
+export const weights: string = '\uEADB';
+export const windDirection: string = '\uEBE6';
+export const windowsLogo: string = '\uE782';
+export const wipePhone: string = '\uED8D';
+export const wordDocument: string = '\uEF71';
+export const wordLogo: string = '\uEC29';
+export const work: string = '\uE821';
+export const workFlow: string = '\uEA01';
+export const worldClock: string = '\uE918';
+export const yammerLogo: string = '\uED19';
+export const zoom: string = '\uE71E';
+export const zoomIn: string = '\uE8A3';
+export const zoomOut: string = '\uE71F';
+

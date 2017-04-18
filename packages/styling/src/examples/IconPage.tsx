@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { CSSProperties } from 'glamor';
-import { icons } from '../styles/icons';
+import * as icons from '../styles/icons';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Page, PageHeader } from './components';

@@ -2,64 +2,66 @@ import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { css, CSSProperties } from 'glamor';
 import { classNames } from '../classNames/index';
-import { defaultPalette } from '../styles/colors';
-import { fonts } from '../styles/fonts';
+import { getTheme, ITheme } from '../styles/index';
 
-const styles: CSSProperties = {
-  root: {
-    marginBottom: '20px'
-  },
-  title: {
-    ...fonts.medium,
-    marginBottom: '8px'
-  },
-  container: {
-    position: 'relative',
-    maxWidth: '400px',
-    height: '100px',
-    border: '1px solid black',
-    backgroundImage:
-    'url("data:image/svg+xml;base64,' + 'PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc' +
-    '+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwx' +
-    'IGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J' +
-    '2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg==")',
-    backgroundRepeat: 'repeat',
-  },
-  animationBox: {
-    position: 'absolute',
+function getStyles(theme?: ITheme): CSSProperties {
+  return {
+    root: {
+      marginBottom: '20px'
+    },
+    title: {
+      ...theme.fonts.medium,
+      marginBottom: '8px'
+    },
+    container: {
+      overflow: 'hidden',
+      position: 'relative',
+      maxWidth: '400px',
+      height: '100px',
+      border: '1px solid black',
+      backgroundImage:
+      'url("data:image/svg+xml;base64,' + 'PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc' +
+      '+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwx' +
+      'IGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J' +
+      '2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg==")',
+      backgroundRepeat: 'repeat',
+    },
+    animationBox: {
+      position: 'absolute',
 
-    background: defaultPalette.themePrimary,
-    width: '25%',
-    height: '100%'
-  },
-  isLeft: {
-    left: 0,
-    top: 0,
-    width: '25%',
-    height: '100%'
-  },
-  isRight: {
-    right: 0,
-    top: 0,
-    width: '25%',
-    height: '100%'
-  },
-  isTop: {
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '50%'
-  },
-  isBottom: {
-    left: 0,
-    bottom: 0,
-    width: '100%',
-    height: '50%'
-  },
-  isIn: {
-    opacity: 0
-  }
-};
+      background: theme.colors.themePrimary,
+      width: '25%',
+      height: '100%'
+    },
+    isLeft: {
+      left: 0,
+      top: 0,
+      width: '25%',
+      height: '100%'
+    },
+    isRight: {
+      right: 0,
+      top: 0,
+      width: '25%',
+      height: '100%'
+    },
+    isTop: {
+      left: 0,
+      top: 0,
+      width: '100%',
+      height: '50%'
+    },
+    isBottom: {
+      left: 0,
+      bottom: 0,
+      width: '100%',
+      height: '50%'
+    },
+    isIn: {
+      opacity: 0
+    }
+  };
+}
 
 export interface IAnimationTileProps {
   name: string;
@@ -79,6 +81,7 @@ export class AnimationTile extends BaseComponent<IAnimationTileProps, IAnimation
   }
 
   public render(): JSX.Element {
+    const styles: CSSProperties = getStyles(getTheme());
     const name: string = this.props.name;
     const isIn: boolean = name.indexOf('In') >= 0;
     let positioningStyle: CSSProperties;
