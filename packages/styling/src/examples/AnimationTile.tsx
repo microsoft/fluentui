@@ -85,9 +85,9 @@ export class AnimationTile extends BaseComponent<IAnimationTileProps, IAnimation
     const isInStyle: CSSProperties = isIn ? styles.isIn : null;
 
     if (name.indexOf('Left') >= 0) {
-      positioningStyle = styles.isRight;
+      positioningStyle = isIn ? styles.isRight : styles.isLeft;
     } else if (name.indexOf('Right') >= 0) {
-      positioningStyle = styles.isLeft;
+      positioningStyle = isIn ? styles.isLeft : styles.isRight;
     } else if (name.indexOf('Up') >= 0) {
       positioningStyle = isIn ? styles.isBottom : styles.isTop;
     } else {

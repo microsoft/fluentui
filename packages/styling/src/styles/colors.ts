@@ -1,9 +1,55 @@
-/* themed tokens */
-
-export function generatePalette(themeColor: string) {
+export interface IColors {
+  themeDarker?: string;
+  themeDark?: string;
+  themeDarkAlt?: string;
+  themePrimary?: string;
+  themeSecondary?: string;
+  themeTertiary?: string;
+  themeLight?: string;
+  themeLighter?: string;
+  themeLighterAlt?: string;
+  black?: string;
+  blackTranslucent40?: string;
+  neutralDark?: string;
+  neutralPrimary?: string;
+  neutralPrimaryAlt?: string;
+  neutralSecondary?: string;
+  neutralSecondaryAlt?: string;
+  neutralTertiary?: string;
+  neutralTertiaryAlt?: string;
+  neutralQuaternary?: string;
+  neutralQuaternaryAlt?: string;
+  neutralLight?: string;
+  neutralLighter?: string;
+  neutralLighterAlt?: string;
+  white?: string;
+  whiteTranslucent40?: string;
+  yellow?: string;
+  yellowLight?: string;
+  orange?: string;
+  orangeLight?: string;
+  orangeLighter?: string;
+  redDark?: string;
+  red?: string;
+  magentaDark?: string;
+  magenta?: string;
+  magentaLight?: string;
+  purpleDark?: string;
+  purple?: string;
+  purpleLight?: string;
+  blueDark?: string;
+  blueMid?: string;
+  blue?: string;
+  blueLight?: string;
+  tealDark?: string;
+  teal?: string;
+  tealLight?: string;
+  greenDark?: string;
+  green?: string;
+  greenLight?: string;
 }
 
-export const defaultPalette = {
+export const defaultPalette: IColors = {
   themeDarker: '#004578',
   themeDark: '#005a9e',
   themeDarkAlt: '#106ebe',
@@ -30,11 +76,11 @@ export const defaultPalette = {
   neutralLighterAlt: '#f8f8f8',
   white: '#ffffff',
   whiteTranslucent40: 'rgba(255,255,255,.4)',
-
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',
-  orangeLight: '#ff8c00',
+  orangeLight: '#ea4300',
+  orangeLighter: '#ff8c00',
   redDark: '#a80000',
   red: '#e81123',
   magentaDark: '#5c005c',
@@ -52,26 +98,7 @@ export const defaultPalette = {
   tealLight: '#00b294',
   greenDark: '#004b1c',
   green: '#107c10',
-  greenLight: '#bad80a',
-  error: '#a80000',
-  errorText: '#333333',
-  errorBackground: '#fde7e9',
-  success: '#107c10',
-  successText: '#333333',
-  successBackground: '#dff6dd',
-  alert: '#d83b01',
-  alertText: '#333333',
-  alertBackground: '#deecf9',
-  warning: '#767676',
-  warningText: '#333333',
-  warningBackground: '#fff4ce',
-  severeWarning: '#d83b01',
-  severeWarningText: '#333333',
-  severeWarningBackground: '#fed9cc',
-  info: '#767676',
-  infoText: '#333333',
-  infoBackground: '#f4f4f4',
-  orangeLighter: '#ea4300'
+  greenLight: '#bad80a'
 };
 
 export interface ISwatch {

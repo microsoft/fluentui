@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { css, CSSProperties } from 'glamor';
-import { defaultPalette } from '../styles/colors';
+import { getTheme } from '../styles/theme';
 import { fonts } from '../styles/fonts';
 import { cssColor, rgb2hsv } from '../utilities/colors';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
@@ -36,8 +36,9 @@ export class ColorPage extends BaseComponent<{}, {}> {
     this.state = { details: null };
   }
   public render(): JSX.Element {
-    const items = Object.keys(defaultPalette).map(colorName => {
-      const colorValue = defaultPalette[colorName];
+    const { colors } = getTheme();
+    const items = Object.keys(colors).map(colorName => {
+      const colorValue = colors[colorName];
       const rgb = cssColor(colorValue);
       const hsv = rgb ? rgb2hsv(rgb.r, rgb.g, rgb.b) : null;
 
