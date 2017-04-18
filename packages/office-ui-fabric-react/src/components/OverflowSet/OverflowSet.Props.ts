@@ -4,8 +4,20 @@ import { IContextualMenuItem } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
 
 export interface IOverflowSetProps extends React.Props<OverflowSet> {
+
+  /**
+   * An array of items to be rendered by your onRenderItem function in the primary content area
+  */
   items?: any[];
+
+  /**
+   * An array of items to be passed to overflow contextual menu
+  */
   overflowItems?: IContextualMenuItem[];
+
+  /**
+   * Icon props used to override overflow icon.
+  */
   iconProps?: IIconProps;
 
   /**
@@ -14,5 +26,3 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   */
   onRenderItem?: (item?: any, index?: number) => React.ReactNode;
 }
-
-
