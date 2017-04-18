@@ -1,35 +1,8 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { css, CSSProperties } from 'glamor';
 import { classNames } from '../classNames/index';
-import { defaultPalette } from '../styles/colors';
-import { fonts } from '../styles/fonts';
 import { Page, PageHeader } from './components';
-
-const styles: CSSProperties = {
-  container: {
-    position: 'relative',
-    background: 'green',
-    height: '100px'
-  },
-  leftThing: {
-    position: 'absolute',
-    left: '10px',
-    padding: '0 0 0 10px',
-    width: '100px',
-    height: '100px',
-    background: 'red',
-    border: '20px'
-  },
-  rightThing: {
-    ...fonts.xLarge,
-    right: '10px',
-    position: 'absolute',
-    width: '100px',
-    height: '100px',
-    background: 'orange'
-  }
-};
+import { AnimationTile } from './AnimationTile';
 
 export class AnimationPage extends BaseComponent<{}, {}> {
 
@@ -66,104 +39,8 @@ export class AnimationPage extends BaseComponent<{}, {}> {
         </code>
 
         <PageHeader text='Animations' />
-        { Object.keys(classNames.animations).map(className => <AnimationExample name={ className } />) }
+        { Object.keys(classNames.animations).map((name: string) => <AnimationTile name={ name } />) }
       </Page>
     );
   }
-}
-
-const anExStyles = {
-  root: {
-    marginBottom: '20px'
-  },
-  title: {
-    ...fonts.medium,
-    marginBottom: '8px'
-  },
-  container: {
-    position: 'relative',
-    maxWidth: '400px',
-    height: '100px',
-    border: '1px solid black',
-    backgroundImage: 'url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+CiAgPHJlY3Qgd2lkdGg9JzEwJyBoZWlnaHQ9JzEwJyBmaWxsPSd3aGl0ZScvPgogIDxwYXRoIGQ9J00tMSwxIGwyLC0yCiAgICAgICAgICAgTTAsMTAgbDEwLC0xMAogICAgICAgICAgIE05LDExIGwyLC0yJyBzdHJva2U9J2JsYWNrJyBzdHJva2Utd2lkdGg9JzEnLz4KPC9zdmc+Cg==")',
-    backgroundRepeat: 'repeat',
-  },
-  animationBox: {
-    position: 'absolute',
-
-    background: defaultPalette.themePrimary,
-    width: '25%',
-    height: '100%'
-  },
-  isLeft: {
-    left: 0,
-    top: 0,
-    width: '25%',
-    height: '100%'
-  },
-  isRight: {
-    right: 0,
-    top: 0,
-    width: '25%',
-    height: '100%'
-  },
-  isTop: {
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '50%'
-  },
-  isBottom: {
-    left: 0,
-    bottom: 0,
-    width: '100%',
-    height: '50%'
-  },
-  isIn: {
-    opacity: 0
-  }
-};
-
-class AnimationExample extends React.Component<any, any> {
-  constructor() {
-    super();
-    this.state = {
-      isAnimating: false
-    };
-  }
-
-  public render() {
-    let name: string = this.props.name;
-    let isIn = name.indexOf('In') >= 0;
-    let positioningStyle;
-    let isInStyle = isIn ? anExStyles.isIn : null;
-
-    if (name.indexOf('Left') >= 0) {
-      positioningStyle = anExStyles.isRight;
-    } else if (name.indexOf('Right') >= 0) {
-      positioningStyle = anExStyles.isLeft;
-    } else if (name.indexOf('Up') >= 0) {
-      positioningStyle = isIn ? anExStyles.isBottom : anExStyles.isTop;
-    } else {
-      positioningStyle = isIn ? anExStyles.isTop : anExStyles.isBottom;
-    }
-
-    return (
-      <div { ...css(anExStyles.root) } onClick={ this._onClick }>
-        <div { ...css(anExStyles.title) }>{ this.props.name }</div>
-        <div { ...css(anExStyles.container) }>
-          <div
-            { ...css(anExStyles.animationBox, positioningStyle, isInStyle) }
-            className={ this.state.isAnimating && classNames.animations[this.props.name] } />
-        </div>
-      </div>
-    );
-  }
-
-  private _onClick = () => {
-    this.setState({ isAnimating: true });
-    setTimeout(() => {
-      this.setState({ isAnimating: false });
-    }, 2000);
-  };
 }
