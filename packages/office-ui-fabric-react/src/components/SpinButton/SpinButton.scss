@@ -22,11 +22,12 @@
   .ms-ArrowBox {
     display: block;
     float: left;
-    height: 30px;
+    height: 100%;
     border: 1px solid $ms-color-neutralTertiaryAlt;
     border-left-width: 0px;
     cursor: default;
     padding: 0px;
+    box-sizing: border-box;
   }
 
   .ms-SpinButtonWrapper:hover .ms-ArrowBox, .ms-SpinButtonWrapper:hover .ms-SpinButton-Input {
@@ -43,6 +44,7 @@
   .ms-SpinButtonWrapper {
     overflow: hidden;
     display: inline-block;
+    height: 32px;
   }
 
   .ms-SpinButtonWrapper.topBottom {
@@ -73,7 +75,7 @@
     font-weight: $ms-font-weight-regular;
     font-size: $ms-font-size-m;
     color: $ms-color-neutralPrimary;
-    height: 32px;
+    height: 100%;
     @include padding(0, 12px, 0, 12px);
     outline: 0;
     text-overflow: ellipsis;
