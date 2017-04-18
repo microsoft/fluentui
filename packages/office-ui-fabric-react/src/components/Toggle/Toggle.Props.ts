@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Toggle } from './Toggle';
 
 export interface IToggle {
-
+  focus: () => void;
 }
 
 /**

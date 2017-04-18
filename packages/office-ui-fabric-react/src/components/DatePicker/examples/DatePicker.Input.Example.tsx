@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -95,7 +95,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           value={ value }
           onSelectDate={ date => this.setState({ value: date }) }
         />
-        <Button onClick={ () => this.setState({ value: null }) }>Clear</Button>
+        <DefaultButton onClick={ () => this.setState({ value: null }) } text='Clear' />
       </div>
     );
   }
