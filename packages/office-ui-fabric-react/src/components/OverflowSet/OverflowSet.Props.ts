@@ -14,5 +14,3 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   */
   onRenderItem?: (item?: any, index?: number) => React.ReactNode;
 }
-
-
