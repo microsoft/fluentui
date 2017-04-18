@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DatePicker: Add option to not automatically open on focus.",
+      "type": "minor"
+    }
+  ],
+  "email": "clewolff@microsoft.com"
+}
