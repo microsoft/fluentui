@@ -110,7 +110,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
 
     required = true;
-    errorMessage = "This dropdown requires a selection";
+    errorMessage = 'This dropdown requires a selection';
 
     return (
       <div ref='root' className={ css('ms-Dropdown-container') }>
