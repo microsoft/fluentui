@@ -81,11 +81,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
+    let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true'>
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
             <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
             <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
           </div>
