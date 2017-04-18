@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './NumberTextField.scss';
 
@@ -36,9 +36,9 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
           onGetErrorMessage={ this._validateNumber }
         />
         <div className='NumberTextField-restoreButton'>
-          <Button onClick={ this._restore }>
+          <DefaultButton onClick={ this._restore }>
             Restore
-          </Button>
+          </DefaultButton>
         </div>
       </div>
     );
