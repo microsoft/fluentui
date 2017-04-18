@@ -27,3 +27,8 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   */
   onRenderItem?: IRenderFunction<any>;
 }
+
+export interface IOverflowItemProps {
+  key: string;
+  onRender?: IRenderFunction<any>;
+}
