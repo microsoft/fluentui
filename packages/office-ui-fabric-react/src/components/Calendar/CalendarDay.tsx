@@ -80,12 +80,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public render() {
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
-    let monthAndYearId = getId('DatePickerDay-monthAndYear');
+    let dayPickerId = getId('DatePickerDay-dayPicker');
 
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
+      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div id={ monthAndYearId } aria-live='polite' aria-relevant='text' aria-atomic='true'>
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true'>
             <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
             <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
           </div>
@@ -96,7 +96,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onPrevMonthKeyDown }
-              aria-controls={ monthAndYearId }
+              aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
@@ -106,7 +106,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
-              aria-controls={ monthAndYearId }
+              aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
