@@ -110,6 +110,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       disabled = isDisabled;
     }
 
+    required = true;
+    errorMessage = "This dropdown requires a selection";
+
     return (
       <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
@@ -153,11 +156,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) }
         {
           errorMessage &&
-          <MessageBar
-            messageBarType={ MessageBarType.error }
-            onDismiss={ () => { console.log('test'); } }>
+          <div
+            className={ css(styles.errorMessage) }>
             { errorMessage }
-          </MessageBar>
+          </div>
         }
       </div>
     );
