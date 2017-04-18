@@ -179,6 +179,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/rating'
         },
         {
+          getComponent: cb => cb(require<any>('../components/ResizeGroup/ResizeGroupPage').ResizeGroupPage),
+          key: 'ResizeGroup',
+          name: 'ResizeGroup',
+          url: '#/examples/resizegroup'
+        },
+        {
           getComponent: cb => cb(require<any>('../components/SearchBox/SearchBoxPage').SearchBoxPage),
           key: 'SearchBox',
           name: 'SearchBox',
