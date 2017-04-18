@@ -25,7 +25,7 @@ export class ModalBasicExample extends React.Component<any, any> {
           isOpen={ this.state.showModal }
           onDismiss={ this._closeModal.bind(this) }
           isBlocking={ false }
-          containerClassName='ms-modalMainOverride'
+          containerClassName='ms-modalExample-container'
         >
           <div className='ms-modalExample-header'>
             <span>Lorem Ipsum</span>
