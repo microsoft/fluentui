@@ -77,7 +77,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           disabled={ false }
           className={ css('ms-MessageBar-dismissal', styles.dismissal) }
           onClick={ this.props.onDismiss }
-          iconName='Cancel'
+          iconProps={ { iconName: 'Cancel' } }
           ariaLabel={ this.props.dismissButtonAriaLabel }
         />
       );

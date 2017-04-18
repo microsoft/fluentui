@@ -20,6 +20,7 @@ export * from './hoist';
 export * from './initials';
 export * from './math';
 export * from './object';
+export * from './overflow';
 export * from './properties';
 export * from './resources';
 export * from './rtl';

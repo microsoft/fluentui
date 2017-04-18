@@ -7,24 +7,49 @@ import {
   autobind,
   buttonProperties,
   css,
-  customizable,
   getId,
   getNativeProps
 } from '../../Utilities';
-import { Icon, IconName } from '../../Icon';
+import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import styles = require('./BaseButton.scss');
 
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+  isDisabled?: string;
+  isEnabled?: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  menuIcon?: string;
+  label?: string;
+  root?: string;
+}
+
+/**
+ * These props are not in the Props file as they are undocumented props only specific to BaseButton.
+ *
+ * @export
+ * @interface IBaseButtonProps
+ * @extends {IButtonProps}
+ */
+export interface IBaseButtonProps extends IButtonProps {
+  /**
+   *  Custom class names for individual elements within the button DOM.
+   */
+  classNames?: IButtonClassNames;
+}
+
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-@customizable('BaseButton')
-export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
-  public static defaultProps: IButtonProps = {
+  public static defaultProps: IBaseButtonProps = {
     classNames: {
       base: 'ms-Button',
       variant: '',
@@ -38,12 +63,13 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _descriptionId: string;
   private _ariaDescriptionId: string;
 
-  constructor(props: IButtonProps, rootClassName: string, deprecationMap: any) {
+  constructor(props: IButtonProps, rootClassName: string) {
     super(props);
 
     this._warnDeprecations({
-      'rootProps': null,
-      'icon': 'iconName'
+      rootProps: null,
+      icon: 'iconProps',
+      menuIconName: 'menuIconProps'
     });
 
     this._labelId = getId();
@@ -152,14 +178,16 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { classNames, icon, iconName } = this.props;
+    let { classNames, icon, iconProps } = this.props;
 
-    if (icon !== undefined) {
-      iconName = icon as IconName;
+    if (icon || iconProps) {
+      iconProps = iconProps || {
+        iconName: icon
+      } as IIconProps;
     }
 
-    return iconName && (
-      <Icon iconName={ iconName as IconName } className={ css(`${classNames.base}-icon`, classNames.icon) } />
+    return iconProps && (
+      <Icon { ...iconProps } className={ css(`${classNames.base}-icon`, classNames.icon, iconProps.className) } />
     );
   }
 
@@ -224,14 +252,23 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   @autobind
-  private _onRenderMenuIcon(props: IButtonProps): JSX.Element {
-    const {
-      classNames,
-      menuIconName = 'ChevronDown'
-    } = props;
+  private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
+    let { classNames, menuIconProps, menuIconName } = this.props;
+
+    if (menuIconProps === undefined) {
+      menuIconProps = {
+        iconName: menuIconName === undefined ? 'ChevronDown' : menuIconName
+      };
+    }
 
     return (
-      <Icon className={ css(`${classNames.base}-icon`, classNames.menuIcon) } iconName={ menuIconName as IconName } />
+      menuIconProps ?
+        <Icon
+          { ...menuIconProps }
+          className={ css(`${classNames.base}-icon`, classNames.menuIcon, menuIconProps.className) }
+        />
+        :
+        null
     );
   }
 

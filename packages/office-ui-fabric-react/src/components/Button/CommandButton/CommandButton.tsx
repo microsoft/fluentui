@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { BaseButton } from '../BaseButton';
-import { BaseComponent, customizable, nullRender } from '@uifabric/utilities';
-import { IButtonProps, IButtonClassNames } from '../Button.Props';
+import { BaseButton, IButtonClassNames } from '../BaseButton';
+import { BaseComponent, nullRender } from '@uifabric/utilities';
+import { IButtonProps } from '../Button.Props';
 import styles = require('./CommandButton.scss');
 
-export const CommandButtonClassNames: IButtonClassNames = {
+const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--command',
   icon: styles.icon,
@@ -16,7 +16,6 @@ export const CommandButtonClassNames: IButtonClassNames = {
   flexContainer: styles.flexContainer
 };
 
-@customizable('CommandButton')
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
   /**
@@ -27,7 +26,7 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
   public render() {
     return (
       <BaseButton
-        classNames={ CommandButtonClassNames }
+        classNames={ CLASS_NAMES }
         onRenderDescription={ nullRender }
         { ...this.props } />
     );

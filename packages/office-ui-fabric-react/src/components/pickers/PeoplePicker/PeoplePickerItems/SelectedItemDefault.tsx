@@ -25,12 +25,12 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.extraExtraSmall }
         />
       </div>
       <IconButton
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
-        iconName={ 'Cancel' }
+        iconProps={ { iconName: 'Cancel' } }
         className={ css('ms-PickerItem-content', styles.removeButton, styles.itemContent) }
         data-is-focusable={ false }
       />

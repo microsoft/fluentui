@@ -223,7 +223,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   private _renderCharmMenuItem(item: any) {
     return (
       <IconButton
-        iconName={ item.name }
+        iconProps={ { iconName: item.name } }
         className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
         data-is-focusable={ true }
       />

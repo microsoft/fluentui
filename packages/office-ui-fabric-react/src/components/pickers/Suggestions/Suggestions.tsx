@@ -91,7 +91,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           <CommandButton
             componentRef={ this._resolveRef('_searchForMoreButton') }
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
-            iconName={ 'Search' }
+            iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults.bind(this) }
           >
             { searchForMoreText }

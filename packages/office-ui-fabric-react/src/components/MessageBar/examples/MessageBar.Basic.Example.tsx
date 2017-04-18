@@ -31,11 +31,24 @@ export const MessageBarBasicExample = () => (
     <Label>SevereWarning MessageBar - multiline (default)</Label>
     <MessageBar
       messageBarType={ MessageBarType.severeWarning }
-      actions={ <div><DefaultButton>Yes</DefaultButton><DefaultButton>No</DefaultButton></div> }>SevereWarning - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</MessageBar>
+      actions={
+        <div>
+          <DefaultButton>Yes</DefaultButton>
+          <DefaultButton>No</DefaultButton>
+        </div>
+      }>
+      <span>SevereWarning - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</span>
+      <Link href='www.bing.com'>Visit our website</Link>
+    </MessageBar>
 
     <Label>Success MessageBar - single line, long text with buttons</Label>
     <MessageBar
-      actions={ <div><DefaultButton>Yes</DefaultButton><DefaultButton>No</DefaultButton></div> }
+      actions={
+        <div>
+          <DefaultButton>Yes</DefaultButton>
+          <DefaultButton>No</DefaultButton>
+        </div>
+      }
       messageBarType={ MessageBarType.success }
       isMultiline={ false }>
       Success - Lorem ipsum dolor sit amet <Link href='www.bing.com'>Visit our website</Link>
@@ -46,7 +59,12 @@ export const MessageBarBasicExample = () => (
       onDismiss={ () => { console.log('test'); } }
       messageBarType={ MessageBarType.warning }
       ariaLabel='Aria help text here'
-      actions={ <div><DefaultButton>Yes</DefaultButton><DefaultButton>No</DefaultButton></div> }>
+      actions={
+        <div>
+          <DefaultButton>Yes</DefaultButton>
+          <DefaultButton>No</DefaultButton>
+        </div>
+      }>
       Warning - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href='www.bing.com'>Visit our website</Link>
     </MessageBar>
   </div>

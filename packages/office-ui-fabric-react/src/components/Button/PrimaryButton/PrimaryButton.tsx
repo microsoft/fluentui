@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, customizable, nullRender } from '@uifabric/utilities';
-import { BaseButton } from '../BaseButton';
-import { IButtonProps, IButtonClassNames } from '../Button.Props';
+import { BaseComponent, nullRender } from '@uifabric/utilities';
+import { BaseButton, IButtonClassNames } from '../BaseButton';
+import { IButtonProps } from '../Button.Props';
 
 import styles = require('./PrimaryButton.scss');
 
@@ -16,7 +16,6 @@ const CLASS_NAMES: IButtonClassNames = {
   root: styles.root
 };
 
-@customizable('PrimaryButton')
 export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
