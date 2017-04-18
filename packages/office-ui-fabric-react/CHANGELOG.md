@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Apr 2017 03:09:12 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Apr 2017 15:17:13 GMT and should not be manually modified.
+
+## 2.19.0
+Tue, 18 Apr 2017 15:17:13 GMT
+
+### Minor changes
+
+- DatePicker: Add option to not automatically open on focus.
 
 ## 2.18.0
 Tue, 18 Apr 2017 03:09:12 GMT
