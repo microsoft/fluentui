@@ -7,19 +7,19 @@ import {
   css,
   divProperties,
   getNativeProps,
-  assign
+  assign,
+  hasOverflow
 } from '../../Utilities';
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
-import styles = require('./Tooltip.scss');
+import styles = require('./TooltipHost.scss');
 
 export interface ITooltipHostState {
   isTooltipVisible?: boolean;
 }
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
-
   public static defaultProps = {
     delay: TooltipDelay.medium
   };
@@ -32,14 +32,15 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     super(props);
 
     this.state = {
-      isTooltipVisible: false,
+      isTooltipVisible: false
     };
   }
 
   // Render
   public render() {
-    let { calloutProps, content, children, directionalHint, delay } = this.props;
-    let { isTooltipVisible } = this.state;
+    const { calloutProps, content, children, directionalHint, delay } = this.props;
+    const { isTooltipVisible } = this.state;
+
     return (
       <div
         className={ css('ms-TooltipHost', styles.host) }
@@ -54,7 +55,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
           <Tooltip
             delay={ delay }
             content={ content }
-            targetElement={ this._tooltipHost }
+            targetElement={ this._getTargetElement() }
             directionalHint={ directionalHint }
             calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
             { ...getNativeProps(this.props, divProperties) }
@@ -65,9 +66,28 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     );
   }
 
+  private _getTargetElement(): HTMLElement {
+    const { onlyShowIfOverflow } = this.props;
+
+    if (onlyShowIfOverflow) {
+      return this._tooltipHost.parentElement;
+    }
+
+    return this._tooltipHost;
+  }
+
   // Show Tooltip
   @autobind
   private _onTooltipMouseEnter(ev: any) {
+    const { onlyShowIfOverflow } = this.props;
+
+    if (onlyShowIfOverflow) {
+      const overflowElement = this._tooltipHost.parentElement;
+      if (overflowElement && !hasOverflow(overflowElement)) {
+        return;
+      }
+    }
+
     this.setState({
       isTooltipVisible: true
     });

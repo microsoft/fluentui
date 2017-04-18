@@ -39,4 +39,11 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * Only show if there is overflow. If set, the tooltip hosts observes its immediate parent element,
+   * and only shows the tooltip if this element has overflow. It also uses the parent as target element
+   * for the tooltip.
+   */
+  onlyShowIfOverflow?: boolean;
 }
