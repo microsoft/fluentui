@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: header now stretches correctly, group headers stretch correctly, column width calculations respect newProps rather than current props.",
+      "comment": "Regression Test: Contextual Menu ",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "dzearing@microsoft.com"
+  "email": "r33najain@gmail.com"
 }
