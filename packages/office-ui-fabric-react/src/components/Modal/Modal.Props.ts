@@ -3,7 +3,7 @@ import { Modal } from './Modal';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
-export interface IDialog {
+export interface IModal {
 
 }
 
@@ -12,7 +12,7 @@ export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeStat
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IDialog) => void;
+  componentRef?: (component: IModal) => void;
 
   /**
   * Whether the dialog is displayed.
