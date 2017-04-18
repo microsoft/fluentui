@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   css,
   autobind
-} from '@uifabric/utilities';
+} from 'office-ui-fabric-react/lib/Utilities';
 import {
   FocusZone,
-  FocusZoneDirection,
-  Button,
-  TextField,
-  List
-} from 'office-ui-fabric-react/lib/index';
+  FocusZoneDirection
+} from 'office-ui-fabric-react/lib/FocusZone';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { List } from 'office-ui-fabric-react/lib/List';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './List.Scrolling.Example.scss';
 
 export interface IListScrollingExampleProps {
@@ -41,10 +41,10 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <div>
-          <Button onClick={ () => this._scrollRelative(-10) }>-10</Button>
-          <Button onClick={ () => this._scrollRelative(-1) }>-1</Button>
-          <Button onClick={ () => this._scrollRelative(1) }>+1</Button>
-          <Button onClick={ () => this._scrollRelative(10) }>+10</Button>
+          <DefaultButton onClick={ () => this._scrollRelative(-10) }>-10</DefaultButton>
+          <DefaultButton onClick={ () => this._scrollRelative(-1) }>-1</DefaultButton>
+          <DefaultButton onClick={ () => this._scrollRelative(1) }>+1</DefaultButton>
+          <DefaultButton onClick={ () => this._scrollRelative(10) }>+10</DefaultButton>
         </div>
 
         <div>
@@ -77,7 +77,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
                 </div>
               </div>
             ) }
-            />
+          />
         </div>
       </FocusZone>
     );

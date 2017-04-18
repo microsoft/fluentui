@@ -3,11 +3,11 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
 import './FocusTrapZone.Box.Example.scss';
 
 export interface IBoxExampleExampleState {
@@ -15,10 +15,8 @@ export interface IBoxExampleExampleState {
 }
 
 export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivElement>, IBoxExampleExampleState> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    toggle: HTMLElement;
-  };
+  private _toggle: IToggle;
+
   constructor(props) {
     super(props);
 
@@ -29,9 +27,14 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
 
   public render() {
     let { isChecked } = this.state;
+
     return (
       <div>
-        <Button description='Focuses inside the FocusTrapZone' onClick={ this._onButtonClickHandler.bind(this) }>Go to Trap Zone</Button>
+        <DefaultButton
+          description='Focuses inside the FocusTrapZone'
+          onClick={ this._onButtonClickHandler.bind(this) }
+          text='Go to Trap Zone'
+        />
 
         { (() => {
           if (isChecked) {
@@ -60,7 +63,7 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
         <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
-          ref='toggle'
+          componentRef={ toggle => this._toggle = toggle }
           checked={ isChecked }
           onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
           label='Focus Trap Zone'
@@ -69,7 +72,11 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
         { (() => {
           if (isChecked) {
             return (
-              <Button description='Exit Focus Trap Zone' onClick={ this._onExitButtonClickHandler.bind(this) }>Exit Focus Trap Zone</Button>
+              <DefaultButton
+                description='Exit Focus Trap Zone'
+                onClick={ this._onExitButtonClickHandler.bind(this) }
+                text='Exit Focus Trap Zone'
+              />
             );
           }
         })() }
@@ -92,12 +99,6 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
   private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
     this.setState({
       isChecked: isChecked
-    }, () => {
-      let toggle = ReactDOM.findDOMNode(this.refs.toggle) as HTMLElement;
-
-      if (toggle) {
-        toggle.focus();
-      }
-    });
+    }, () => this._toggle.focus());
   }
 }
