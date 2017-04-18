@@ -23,9 +23,6 @@ export class OverflowSetPage extends React.Component<any, any> {
             </p>
           </div>
         }
-        bestPractices={
-          <div></div>
-        }
         exampleCards={
           <LayerHost>
             <ExampleCard title='OverflowSet' code={ OverflowSetBasicExampleCode }>

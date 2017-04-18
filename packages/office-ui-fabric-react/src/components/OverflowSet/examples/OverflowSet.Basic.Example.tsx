@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   OverflowSet
@@ -18,9 +18,9 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
             key: 'search',
             'onRender': () => {
               return (
-                <SearchBox
-                  onChange={ (newValue) => console.log('SearchBox onChange fired: ' + newValue) }
-                  onSearch={ (newValue) => console.log('SearchBox onSearch fired: ' + newValue) }
+                <PrimaryButton
+                  iconProps={ { iconName: 'Add' } }
+                  text='Add'
                 />
               );
             }
@@ -108,12 +108,12 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
           }
         ]
         }
-        onRenderItem={ (item, i) => {
+        onRenderItem={ (item) => {
           return (
             <DefaultButton
-              icon={ item.icon }
+              iconProps={ { iconName: item.icon } }
               menuProps={ item.subMenuProps }
-              text={ item.small ? null : item.name }
+              text={ item.name }
             >  </DefaultButton>
           );
         } }

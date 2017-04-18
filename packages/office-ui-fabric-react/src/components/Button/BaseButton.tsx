@@ -262,7 +262,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return (
-      menuIconProps ?
+      menuIconProps && menuIconProps.iconName ?
         <Icon
           { ...menuIconProps }
           className={ css(`${classNames.base}-icon`, classNames.menuIcon, menuIconProps.className) }

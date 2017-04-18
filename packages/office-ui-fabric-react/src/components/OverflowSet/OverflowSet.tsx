@@ -24,12 +24,13 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
   @autobind
   private _onRenderOverflowButton(items) {
-    let { iconProps } = this.props;
+    let { iconProps = {} } = this.props;
     iconProps.iconName = iconProps.iconName ? iconProps.iconName : 'More';
     return (
       <IconButton
-        icon={ iconProps.iconName }
-        menuIconName='none'
+        className={ css(styles.overflowIcon) }
+        iconProps={ iconProps }
+        menuIconProps={ { iconName: null } }
         menuProps={ {
           items: items
         } }
@@ -45,8 +46,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
       return (
         <div
           className={ css('ms-OverflowSet-item', styles.item) }
-          key={ key }
-          ref={ key } >
+          key={ key } >
           { onRender ? onRender(item, i) : item }
         </div>
       );
