@@ -110,6 +110,9 @@ $DropDown-item-height: 36px;
       border-color: $ms-color-contrastWhiteDisabled;
       color: $ms-color-contrastWhiteDisabled;
     }
+    &.error {
+        border-color: $ms-color-error;
+    }
   }
 
   .caretDown {
@@ -149,6 +152,9 @@ $DropDown-item-height: 36px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  &.error {
+        border-color: $ms-color-error;
+    }
 }
 
 .panel {
@@ -168,9 +174,10 @@ $DropDown-item-height: 36px;
 }
 
 .errorMessage{
-  @include ms-bgColor-error;
-  color: $ms-color-errorText;
-  padding: 16px;
+    color: $ms-color-error;
+  &::before {
+    content: '* ';
+  }
 }
 
 .items {

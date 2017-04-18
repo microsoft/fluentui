@@ -3,7 +3,6 @@ import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdow
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
-import { MessageBar, MessageBarType } from '../../MessageBar';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -141,7 +140,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         >
           <span
             id={ id + '-option' }
-            className={ css('ms-Dropdown-title', styles.title) }
+            className={ css(
+              'ms-Dropdown-title', styles.title,
+              (errorMessage.length > 0 ? styles.error : null))
+            }
             key={ selectedIndex }
             aria-atomic={ true }
           >
