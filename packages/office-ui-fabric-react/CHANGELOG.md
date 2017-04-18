@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Apr 2017 03:06:28 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Apr 2017 03:09:12 GMT and should not be manually modified.
+
+## 2.18.0
+Tue, 18 Apr 2017 03:09:12 GMT
+
+### Minor changes
+
+- Button: `icon` deprecated in favor of `iconProps`. `menuIconName` deprecated in favor of `menuIconProps`. All Buttons now modeled as HOCs around BaseButton, as apposed to subclassing which is a less ideal way of modeling buttons.
+- DetailsList: added `minimumPixelsForDrag` setting to allow the user to override the minimum drag distance before starting a drag operation.
+- Dropdown: Add dividers and headers to component
+
+### Patches
+
+- DetailsList: header now stretches correctly, group headers stretch correctly, column width calculations respect newProps rather than current props.
+- SearchBox: Updated layout to use flexbox, follow spec more closely in padding and height
+- SelectionZone: Spacebar and Enter key presses within selectionzone button/a/input will work properly
 
 ## 2.17.0
 Fri, 14 Apr 2017 03:06:28 GMT

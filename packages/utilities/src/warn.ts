@@ -1,4 +1,4 @@
-let _warningCallback: (message: string) => void = _warn;
+let _warningCallback: (message: string) => void = warn;
 
 export type ISettingsMap<T> = {
   [P in keyof T]: string;
@@ -45,6 +45,12 @@ export function warnMutuallyExclusive<P>(
   }
 }
 
+export function warn(message: string): void {
+  if (console && console.warn) {
+    console.warn(message);
+  }
+}
+
 /**
  * Configures the warning callback. Passing in undefined will reset it to use the default
  * console.warn function.
@@ -53,11 +59,5 @@ export function warnMutuallyExclusive<P>(
  * @param {(message) => void} warningCallback
  */
 export function setWarningCallback(warningCallback: (message: string) => void): void {
-  _warningCallback = warningCallback === undefined ? _warn : warningCallback;
-}
-
-function _warn(message: string): void {
-  if (console && console.warn) {
-    console.warn(message);
-  }
+  _warningCallback = warningCallback === undefined ? warn : warningCallback;
 }

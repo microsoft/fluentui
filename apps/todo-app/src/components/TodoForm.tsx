@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ITodoFormProps, ITodoFormState } from '../types/index';
 import styles = require('./Todo.module.scss');
@@ -39,14 +39,13 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
           onBeforeChange={ this._onBeforeTextFieldChange }
           autoComplete='off'
           errorMessage={ this.state.errorMessage }
-          />
-        <Button
+        />
+        <PrimaryButton
           className={ styles.addButton }
-          buttonType={ ButtonType.primary }
           type='submit'
-          >
+        >
           { strings.addButton }
-        </Button>
+        </PrimaryButton>
       </form>
     );
   }
