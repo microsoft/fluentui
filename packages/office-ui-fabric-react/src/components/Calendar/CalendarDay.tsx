@@ -85,7 +85,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div id={ monthAndYearId } aria-live='assertive' aria-relevant='text' aria-atomic='true'>
+          <div id={ monthAndYearId } aria-live='polite' aria-relevant='text' aria-atomic='true'>
             <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
             <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
           </div>
