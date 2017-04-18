@@ -16,16 +16,16 @@ $input-border-color: $inputBorderColor;
 $input-border-disabled-color: $disabledBackgroundColor;
 $input-border-hover-color: $inputBorderHoverColor;
 $input-border-focus-color: $inputBorderFocusColor;
-$input-border-error-color: $errorForegroundColor;
+$input-border-error-color: $errorTextColor;
 
-$input-foreground-color: $inputForegroundColor;
-$input-foreground-disabled-color: $disabledForegroundColor;
+$input-foreground-color: $inputTextColor;
+$input-foreground-disabled-color: $disabledTextColor;
 
 $input-placeholder-color: $inputPlaceholderColor;
-$input-placeholder-disabled-color: $disabledForegroundSoftColor;
+$input-placeholder-disabled-color: $disabledSubtextColor;
 
-$input-description-color: $bodyTextSoftColor;
-$input-error-color: $errorForegroundColor;
+$input-description-color: $bodySubtextColor;
+$input-error-color: $errorTextColor;
 
 // the box containing the label and input field
 .root {
@@ -104,7 +104,7 @@ $input-error-color: $errorForegroundColor;
   .field {
       @include input-placeholder {
       //color: $ms-color-neutralTertiary;
-      color: green; //ms-color
+      color: $input-placeholder-disabled-color;
     }
   }
 }

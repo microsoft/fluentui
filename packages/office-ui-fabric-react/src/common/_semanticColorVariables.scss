@@ -36,19 +36,20 @@ $dividerColor: $ms-color-neutralLight;
 $bodyBackgroundColor: $ms-color-white;
 $bodyTextColor: $ms-color-neutralPrimary;
 
-$bodyTextSoftColor: $ms-color-neutralSecondary; // descriptions, metadata, etc
+$bodySubtextColor: $ms-color-neutralSecondary; // descriptions, metadata, etc
 
 $disabledBackgroundColor: $ms-color-neutralLighter;
-$disabledForegroundColor: gray;
-$disabledForegroundSoftColor: $ms-color-neutralTertiary;
+$disabledTextColor: gray; // todo
+$disabledSubtextColor: $ms-color-neutralTertiary;
 
 $focusBorderColor: $ms-color-black;
 
-$errorForegroundColor: $ms-color-redDark;
+// $errorBackgroundColor: todo
+$errorTextColor: $ms-color-redDark;
 
 /*** INPUTS ***/
 $inputBackgroundColor: $ms-color-white;
-$inputForegroundColor: $ms-color-neutralPrimary;
+$inputTextColor: $ms-color-neutralPrimary;
 
 $inputBorderColor: $ms-color-neutralTertiaryAlt;
 $inputBorderHoverColor: $ms-color-neutralSecondaryAlt;
