@@ -8,7 +8,7 @@ import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
-import { Button, ButtonType } from '../../Button';
+import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -132,12 +132,15 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                   <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
                   <div className={ css('ms-Dialog-topButton', styles.topButton) }>
                     { this.props.topButtonsProps.map((props) => (
-                      <Button {...props} />
+                      <IconButton {...props} />
                     )) }
-                    <Button
-                      className={ css('ms-Dialog-button ms-Dialog-button--close', styles.button, styles.isClose) }
-                      buttonType={ ButtonType.icon }
-                      icon='Cancel'
+                    <IconButton
+                      className={ css(
+                        'ms-Dialog-button ms-Dialog-button--close',
+                        styles.button,
+                        { [styles.isClose]: isBlocking || type === DialogType.largeHeader }
+                      ) }
+                      iconProps={ { iconName: 'Cancel' } }
                       ariaLabel={ closeButtonAriaLabel }
                       onClick={ onDismiss }
                     />

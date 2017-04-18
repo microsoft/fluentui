@@ -4,7 +4,6 @@ export const items = [
     name: 'New',
     icon: 'Add',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
-    onClick: () => { return; },
     ['data-automation-id']: 'newItemMenu',
     subMenuProps: {
       items: [
@@ -26,7 +25,7 @@ export const items = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    onClick: () => { return; },
+    href: 'https://mytenenat.sharepoint.com/teams/IT/BPU/',
     ['data-automation-id']: 'uploadButton'
   },
   {

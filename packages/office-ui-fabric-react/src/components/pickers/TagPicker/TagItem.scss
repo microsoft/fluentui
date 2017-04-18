@@ -2,15 +2,18 @@
 
 .root {
   @include focus-border();
-  flex-shrink: 0;
+  flex-shrink: 1;
   background: $ms-color-neutralLighter;
-  height: 32px;
-  line-height: 32px;
+  margin: 1px;
+  height: 26px;
+  line-height: 26px;
   cursor: default;
   user-select: none;
   display: flex;
   flex-wrap: nowrap;
+  min-width: 100px;
   max-width: 100%;
+
   &:hover {
     background: $ms-color-neutralLight;
   }
