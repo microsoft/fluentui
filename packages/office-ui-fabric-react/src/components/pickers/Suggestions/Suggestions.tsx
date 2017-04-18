@@ -97,7 +97,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             { searchForMoreText }
           </CommandButton>
         ) }
-        }
       </div>
     );
   }

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "fix nit for Suggestion.tsx",
+      "type": "patch"
+    }
+  ],
+  "email": "ysliu@microsoft.com"
+}
