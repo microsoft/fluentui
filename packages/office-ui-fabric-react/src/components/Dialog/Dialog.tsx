@@ -4,15 +4,11 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IDialogProps, DialogType } from './Dialog.Props';
-import { DialogHost } from '../../DialogHost';
-import { Overlay } from '../../Overlay';
-import { Layer } from '../../Layer';
+import { Modal } from '../../Modal';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
-import { Popup } from '../Popup/index';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import styles = require('./Dialog.scss');
 
 export interface IDialogState {
@@ -51,14 +47,15 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       isBlocking,
       isClickableOutsideFocusTrap,
       isDarkOverlay,
+      isOpen,
       onDismiss,
+      onDismissed,
       onLayerDidMount,
       onLayerMounted,
       responsiveMode,
       subText,
       title,
       type,
-      isOpen,
     } = this.props;
     let { id } = this.state;
 
@@ -75,7 +72,9 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     }
 
     return (
-      <DialogHost
+      <Modal
+        className={ dialogClassName }
+        containerClassName={ containerClassName }
         elementToFocusOnDismiss={ elementToFocusOnDismiss }
         firstFocusableSelector={ firstFocusableSelector }
         forceFocusInsideTrap={ forceFocusInsideTrap }
@@ -83,16 +82,14 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         isBlocking={ isBlocking }
         isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap }
         isDarkOverlay={ isDarkOverlay }
+        isOpen={ isOpen }
         onDismiss={ onDismiss }
+        onDismissed={ onDismissed }
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
-        className={ dialogClassName }
-        isOpen={ isOpen }
-        titleAriaId={ title && id + '-title' }
         subtitleAriaId={ subText && id + '-subText' }
-        containerClassName={ containerClassName }
+        titleAriaId={ title && id + '-title' }
       >
-
 
         <div className={ css('ms-Dialog-header', styles.header) }>
           <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
@@ -120,7 +117,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
           { groupings.footers }
         </div>
 
-      </DialogHost>
+      </Modal>
     );
   }
 

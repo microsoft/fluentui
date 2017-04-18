@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DialogHost } from './DialogHost';
-import { IButtonProps } from '../Button/Button.Props';
+import { Modal } from './Modal';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
@@ -8,7 +7,7 @@ export interface IDialog {
 
 }
 
-export interface IDialogHostProps extends React.Props<DialogHost>, IWithResponsiveModeState, IAccessiblePopupProps {
+export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -28,12 +27,12 @@ export interface IDialogHostProps extends React.Props<DialogHost>, IWithResponsi
   isDarkOverlay?: boolean;
 
   /**
-  * A callback function for when the DialogHost is dismissed light dismiss, before the animation completes.
+  * A callback function for when the Modal is dismissed light dismiss, before the animation completes.
   */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
-   * A callback function which is called after the DialogHost is dismissed and the animation is complete.
+   * A callback function which is called after the Modal is dismissed and the animation is complete.
    */
   onDismissed?: () => any;
 
@@ -54,17 +53,17 @@ export interface IDialogHostProps extends React.Props<DialogHost>, IWithResponsi
   containerClassName?: string;
 
   /**
-   * A callback function for when the DialogHost content is mounted on the overlay layer
+   * A callback function for when the Modal content is mounted on the overlay layer
    */
   onLayerDidMount?: () => void;
 
   /**
-   * ARIA id for the title of the DialogHost, if any
+   * ARIA id for the title of the Modal, if any
    */
   titleAriaId?: string;
 
   /**
-   * ARIA id for the subtitle of the DialogHost, if any
+   * ARIA id for the subtitle of the Modal, if any
    */
   subtitleAriaId?: string;
 }
