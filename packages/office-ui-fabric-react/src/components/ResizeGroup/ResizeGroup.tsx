@@ -16,7 +16,7 @@ export interface IOverFlowItemState {
   [index: number]: any;
 }
 
-export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
+export class ResizeGroup<T> extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
 
   private _root: HTMLElement;
   private _measured: HTMLElement;

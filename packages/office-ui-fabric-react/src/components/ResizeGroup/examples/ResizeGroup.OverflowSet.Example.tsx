@@ -4,9 +4,24 @@ import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ResizeGroup } from '../../ResizeGroup';
+import { ResizeGroup, IResizeGroupProps } from '../../ResizeGroup';
 
 import { items } from './items';
+
+export interface myResizeGroupProps extends IResizeGroupProps {
+  items: myResizeGroupItems[];
+}
+
+export interface myResizeGroupItems {
+  name: string;
+  icon: string;
+  ariaLabel: string;
+  onClick: () => {};
+}
+
+export class myResizeGroup extends ResizeGroup<myResizeGroupProps> {
+
+}
 
 export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
 
