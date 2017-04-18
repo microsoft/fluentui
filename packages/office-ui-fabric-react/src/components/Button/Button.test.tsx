@@ -4,15 +4,15 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { Button } from './Button';
+import { DefaultButton } from './DefaultButton/DefaultButton';
 
 let { expect } = chai;
 
-describe('Button', () => {
+describe('DefaultButton', () => {
 
   it('can render without an onClick.', () => {
     const button = ReactTestUtils.renderIntoDocument<any>(
-      <Button>Hello</Button>
+      <DefaultButton>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     console.log(renderedDOM.tagName);
@@ -23,7 +23,7 @@ describe('Button', () => {
     let onClick = () => null;
 
     const button = ReactTestUtils.renderIntoDocument<any>(
-      <Button onClick={ onClick }>Hello</Button>
+      <DefaultButton onClick={ onClick }>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     console.log(renderedDOM.tagName);
@@ -32,7 +32,7 @@ describe('Button', () => {
 
   it('can render with an href', () => {
     const button = ReactTestUtils.renderIntoDocument<any>(
-      <Button href='http://www.microsoft.com' target='_blank'>Hello</Button>
+      <DefaultButton href='http://www.microsoft.com' target='_blank'>Hello</DefaultButton>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     console.log(renderedDOM.tagName);

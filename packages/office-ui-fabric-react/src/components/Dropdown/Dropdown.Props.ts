@@ -95,7 +95,6 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    */
   required?: boolean;
 
-  // @todo: Update version numbers for depriate and removal
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated

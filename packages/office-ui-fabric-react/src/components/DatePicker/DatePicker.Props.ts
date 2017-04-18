@@ -47,6 +47,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   allowTextInput?: boolean;
 
   /**
+   * Whether the DatePicker should open automatically when the control is focused
+   * @defaultvalue false
+   */
+  disableAutoFocus?: boolean;
+
+  /**
    * Placeholder text for the DatePicker
    */
   placeholder?: string;

@@ -55,6 +55,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       'isDisabled': 'disabled'
     });
 
+    this._warnMutuallyExclusive({
+      'defaultSelectedKey': 'selectedKey'
+    });
+
     this._id = props.id || getId('Dropdown');
 
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
