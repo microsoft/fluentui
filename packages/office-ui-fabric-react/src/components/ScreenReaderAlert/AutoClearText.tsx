@@ -34,15 +34,21 @@ export default class AutoClearText extends React.Component<IAutoClearTextProps, 
   }
 
   public componentWillReceiveProps(nextProps: IAutoClearTextProps): void {
-    if (this._clearTextTimeout) {
-      // Clear the timeout of removing text to avoid the new text being removed.
-      window.clearTimeout(this._clearTextTimeout);
-      this._clearTextTimeout = undefined;
-    }
+    if (this.props.text !== nextProps.text) {
+      if (this._clearTextByTimeout) {
+        // Clear the timeout of removing text to avoid the new text being removed.
+        window.clearTimeout(this._clearTextTimeout);
+        this._clearTextTimeout = undefined;
+      }
 
-    this.setState({
-      text: nextProps.text
-    });
+      this.setState({
+        text: nextProps.text
+      });
+    }
+  }
+
+  public componentDidMount(): void {
+    this._clearTextByTimeout();
   }
 
   public componentDidUpdate(): void {
@@ -52,11 +58,13 @@ export default class AutoClearText extends React.Component<IAutoClearTextProps, 
   public render(): JSX.Element {
     const { text, ...htmlAttributes } = this.props;
 
-    return (
-      <p { ...htmlAttributes }>
-        { this.state.text }
-      </p>
-    );
+    return this.state.text
+      ? (
+        <p { ...htmlAttributes }>
+          { this.state.text }
+        </p>
+      )
+      : null;
   }
 
   // Set a timeout to remove the text to avoid the text persisting in the DOM which can be confusing.

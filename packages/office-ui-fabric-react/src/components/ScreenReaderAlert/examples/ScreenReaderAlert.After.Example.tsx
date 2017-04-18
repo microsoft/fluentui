@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
 import { ScreenReaderAlert } from 'office-ui-fabric-react/lib/ScreenReaderAlert';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 const alertMessage: string = `This message should be read after the content of button B.`;
@@ -10,7 +12,7 @@ export interface IScreenReaderAlertAfterExampleState {
 }
 
 export class ScreenReaderAlertAfterExample extends React.Component<any, IScreenReaderAlertAfterExampleState> {
-  private _lateFocusedButton: Button;
+  private _lateFocusedButton: HTMLButtonElement;
 
   constructor(props: any) {
     super(props);
@@ -29,15 +31,14 @@ export class ScreenReaderAlertAfterExample extends React.Component<any, IScreenR
           indicator={ this.state.screenReaderIndicator }
           text={ alertMessage }
         />
-        <Button
-          onClick={ this._onButtonClicked }
-          buttonType={ ButtonType.primary }
+        <PrimaryButton onClick={ this._onButtonClicked }>
+          { 'Button A: Trigger to move focus to button B and read message' }
+        </PrimaryButton>
+        <DefaultButton
+          ref={ (instance) => this._lateFocusedButton = ReactDOM.findDOMNode(instance) as HTMLButtonElement }
         >
-          { 'Button A: Move focus to button B and read message' }
-        </Button>
-        <Button ref={ (instance) => this._lateFocusedButton = instance }>
-          { 'Button B: Get focused when first button is clicked' }
-        </Button>
+          { 'Button B: Get focused when first button is triggered' }
+        </DefaultButton>
         <p>Message: <strong>{ alertMessage }</strong></p>
       </div>
     );
