@@ -6,7 +6,12 @@
 
 import * as React from 'react';
 
-import { IScreenReaderAlertProps, defaultScreenReaderAlertProps, ReadingMode } from './ScreenReaderAlert.Props';
+import {
+  IScreenReaderAlertProps,
+  defaultScreenReaderAlertProps,
+  ReadingMode,
+  ARIA__LIVE_MAPPING
+} from './ScreenReaderAlert.Props';
 import styles = require('./ScreenReaderAlert.scss');
 
 export interface IScreenReaderAlertState {
@@ -103,10 +108,10 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     return (
       <div className={ styles.screenReaderAlert } key={ this._renderIndex++ }>
         {
-          this.props.readingMode !== ReadingMode.DoNotRead && this.state.alertText && (
+          this.state.alertText && (
             <p
               role={ this._role }
-              aria-live={ this._ariaLive }
+              aria-live={ ARIA__LIVE_MAPPING[this.props.readingMode] }
               aria-atomic={ true }>
               { this.state.alertText }
             </p>
@@ -118,19 +123,6 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
 
   private get _role(): string {
     return this.props.readingMode === ReadingMode.ReadImmediately ? 'alert' : undefined;
-  }
-
-  private get _ariaLive(): string {
-    switch (this.props.readingMode) {
-      case ReadingMode.DoNotRead:
-        return 'off';
-      case ReadingMode.ReadAfterOtherContent:
-        return 'polite';
-      case ReadingMode.ReadImmediately:
-        return 'assertive';
-      default:
-        return undefined;
-    }
   }
 
   private _getTextFromProps(root: React.ReactChild | React.ReactChild[]): string {
