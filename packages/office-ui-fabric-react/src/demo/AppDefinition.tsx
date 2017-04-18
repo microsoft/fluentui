@@ -279,7 +279,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/marqueeselection'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('../components/ScreenReaderAlert/ScreenReaderAlertPage').ScreenReaderAlertPage)),
+          getComponent: cb => cb(require<any>('../components/ScreenReaderAlert/ScreenReaderAlertPage').ScreenReaderAlertPage),
           key: 'ScreenReaderAlert',
           name: 'ScreenReaderAlert',
           url: '#/examples/screenreaderalert'

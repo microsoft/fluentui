@@ -9,10 +9,12 @@ import {
 import { ScreenReaderAlertBasicExample } from './examples/ScreenReaderAlert.Basic.Example';
 import { ScreenReaderAlertRepeatExample } from './examples/ScreenReaderAlert.Repeat.Example';
 import { ScreenReaderAlertSpinnerExample } from './examples/ScreenReaderAlert.Spinner.Example';
+import { ScreenReaderAlertAfterExample } from './examples/ScreenReaderAlert.After.Example';
 
 const ScreenReaderAlertBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Basic.Example.tsx');
 const ScreenReaderAlertRepeatExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Repeat.Example.tsx');
 const ScreenReaderAlertSpinnerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Spinner.Example.tsx');
+const ScreenReaderAlertAfterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.After.Example.tsx');
 
 export class ScreenReaderAlertPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -24,14 +26,29 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
         componentName='ScreenReaderAlertExample'
         exampleCards={
           <div>
-            <ExampleCard title='ScreenReaderAlert basic' code={ ScreenReaderAlertBasicExampleCode as string }>
+            <ExampleCard
+              title='ScreenReaderAlert basic'
+              code={ ScreenReaderAlertBasicExampleCode as string }
+            >
               <ScreenReaderAlertBasicExample />
             </ExampleCard>
-            <ExampleCard title='ScreenReaderAlert repeat same message' code={ ScreenReaderAlertRepeatExampleCode as string }>
+            <ExampleCard
+              title='ScreenReaderAlert repeat same message'
+              code={ ScreenReaderAlertRepeatExampleCode as string }
+            >
               <ScreenReaderAlertRepeatExample />
             </ExampleCard>
-            <ExampleCard title='ScreenReaderAlert with Spinner' code={ ScreenReaderAlertSpinnerExampleCode as string }>
+            <ExampleCard
+              title='ScreenReaderAlert with Spinner'
+              code={ ScreenReaderAlertSpinnerExampleCode as string }
+            >
               <ScreenReaderAlertSpinnerExample />
+            </ExampleCard>
+            <ExampleCard
+              title='ScreenReaderAlert polite mode'
+              code={ ScreenReaderAlertAfterExampleCode as string }
+            >
+              <ScreenReaderAlertAfterExample />
             </ExampleCard>
           </div>
         }
