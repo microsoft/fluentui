@@ -21,12 +21,11 @@ describe('ScreenReaderAlert', () => {
         try {
           const component: JSX.Element = (
             <ScreenReaderAlert
+              text={ renderOptions.message }
               readingMode={ renderOptions.readingMode }
               indicator={ renderOptions.indicator }
               ref={ (instance) => resolve(ReactDOM.findDOMNode(instance)) }
-            >
-              { renderOptions.message }
-            </ScreenReaderAlert>
+            />
           );
 
           const container: HTMLElement = renderOptions.container || document.createElement('div');
@@ -38,17 +37,6 @@ describe('ScreenReaderAlert', () => {
         expect(threwException).to.be.false;
       });
     };
-
-  it('should not render the live region when reading mode is DoNotRead', (done) => {
-    renderComponent({
-      message: 'alert-message-do-not-read',
-      readingMode: ReadingMode.DoNotRead
-    }).then((renderedDOM: Element) => {
-      expect(renderedDOM.querySelector('p')).to.be.null;
-      expect(renderedDOM.textContent).to.be.empty;
-      done();
-    });
-  });
 
   it('should assign proper live region attributes when reading mode is ReadAfterOtherContent', (done) => {
     renderComponent({

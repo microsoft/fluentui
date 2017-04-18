@@ -18,9 +18,14 @@ export enum ReadingMode {
 export const ARIA__LIVE_MAPPING = {
   [ReadingMode.ReadAfterOtherContent]: 'polite',
   [ReadingMode.ReadImmediately]: 'assertive'
-}
+};
 
 export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
+  /**
+   * The text for this component to read.
+   */
+  text: string;
+
   /**
    * Use readingMode to specify whether to read the alert, or read before/after normal screen reader content.
    *
@@ -39,6 +44,7 @@ export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
 }
 
 export const defaultScreenReaderAlertProps: IScreenReaderAlertProps = {
+  text: '',
   readingMode: ReadingMode.ReadAfterOtherContent,
   indicator: undefined
 };

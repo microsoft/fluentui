@@ -35,9 +35,7 @@ export class ScreenReaderAlertBasicExample extends React.Component<any, IScreenR
       <div>
         {
           this.state.shouldRead && (
-            <ScreenReaderAlert>
-              { currentMessage }
-            </ScreenReaderAlert>
+            <ScreenReaderAlert text={ currentMessage } />
           )
         }
         <Toggle

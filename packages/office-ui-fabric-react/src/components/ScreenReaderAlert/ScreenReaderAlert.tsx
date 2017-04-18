@@ -23,7 +23,7 @@ export interface IScreenReaderAlertState {
  *
  * More than 1000ms is critical for NVDA to read the text properly.
  */
-const clearTextTime: number = 1000;
+const CLEAR_TEXT_TIME: number = 1000;
 
 /**
  * This is a screen reader alert component for developers to easily add screen reader feature to their web site.
@@ -37,10 +37,7 @@ const clearTextTime: number = 1000;
  * 4. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
  *
  * @example
- * <ScreenReaderAlert>
- *   { yourFirstAlertText }
- *   { yourSecondAlertText }
- * </ScreenReaderAlert>
+ * <ScreenReaderAlert text={ text }>
  */
 export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, IScreenReaderAlertState> {
   // The default props will automatically be applied to this component.
@@ -71,7 +68,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     super(props);
 
     this.state = {
-      alertText: this._getTextFromProps(React.Children.toArray(props.children))
+      alertText: this.props.text
     };
   }
 
@@ -83,7 +80,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     }
 
     this.setState({
-      alertText: this._getTextFromProps(React.Children.toArray(nextProps.children))
+      alertText: nextProps.text
     });
   }
 
@@ -124,18 +121,6 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
   private get _role(): string {
     return this.props.readingMode === ReadingMode.ReadImmediately ? 'alert' : undefined;
   }
-
-  private _getTextFromProps(root: React.ReactChild | React.ReactChild[]): string {
-    let text: string = '';
-    if (typeof root === 'string' || typeof root === 'number') {
-      text += root;
-    } else if (Array.isArray(root)) {
-      root.forEach((child: React.ReactChild) => text += this._getTextFromProps(child));
-    }
-
-    return text;
-  }
-
   private _updateValidString(): void {
     this._previousValidString = this.state.alertText || this._previousValidString;
   }
@@ -149,7 +134,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
           alertText: ''
         });
         this._clearTextTimeout = undefined;
-      }, clearTextTime);
+      }, CLEAR_TEXT_TIME);
     }
   }
 }

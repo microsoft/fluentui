@@ -26,9 +26,10 @@ export class ScreenReaderAlertRepeatExample extends React.Component<any, IScreen
   public render() {
     return (
       <div>
-        <ScreenReaderAlert indicator={ this.state.screenReaderIndicator }>
-          { alertMessage }
-        </ScreenReaderAlert>
+        <ScreenReaderAlert
+          indicator={ this.state.screenReaderIndicator }
+          text={ alertMessage }
+        />
         <Toggle
           defaultChecked={ true }
           onChanged={ this._onToggleChanged }

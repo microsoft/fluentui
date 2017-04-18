@@ -31,9 +31,7 @@ export class ScreenReaderAlertSpinnerExample extends React.Component<any, IScree
 
     return (
       <div>
-        <ScreenReaderAlert >
-          { currentMessage }
-        </ScreenReaderAlert>
+        <ScreenReaderAlert text={ currentMessage } />
         <Button
           onClick={ this._onButtonClicked }
           buttonType={ ButtonType.primary }
