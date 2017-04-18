@@ -17,31 +17,31 @@ const fadeOut: string = keyframes({
   to: { opacity: 0 }
 });
 
-const slideRightIn10: string = _createSlideInX('-10px');
-const slideRightIn20: string = _createSlideInX('-20px');
-const slideRightIn40: string = _createSlideInX('-40px');
-const slideRightIn400: string = _createSlideInX('-400px');
-const slideLeftIn10: string = _createSlideInX('10px');
-const slideLeftIn20: string = _createSlideInX('20px');
-const slideLeftIn40: string = _createSlideInX('40px');
-const slideLeftIn400: string = _createSlideInX('400px');
-const slideUpIn10: string = _createSlideInY('10px');
-const slideUpIn20: string = _createSlideInY('20px');
-const slideDownIn10: string = _createSlideInY('-10px');
-const slideDownIn20: string = _createSlideInY('-20px');
+const slideRightIn10: string = _createSlideInX(-10);
+const slideRightIn20: string = _createSlideInX(-20);
+const slideRightIn40: string = _createSlideInX(-40);
+const slideRightIn400: string = _createSlideInX(-400);
+const slideLeftIn10: string = _createSlideInX(10);
+const slideLeftIn20: string = _createSlideInX(20);
+const slideLeftIn40: string = _createSlideInX(40);
+const slideLeftIn400: string = _createSlideInX(400);
+const slideUpIn10: string = _createSlideInY(10);
+const slideUpIn20: string = _createSlideInY(20);
+const slideDownIn10: string = _createSlideInY(-10);
+const slideDownIn20: string = _createSlideInY(-20);
 
-const slideRightOut10: string = _createSlideOutX('-10px');
-const slideRightOut20: string = _createSlideOutX('-20px');
-const slideRightOut40: string = _createSlideOutX('-40px');
-const slideRightOut400: string = _createSlideOutX('-400px');
-const slideLeftOut10: string = _createSlideOutX('10px');
-const slideLeftOut20: string = _createSlideOutX('20px');
-const slideLeftOut40: string = _createSlideOutX('40px');
-const slideLeftOut400: string = _createSlideOutX('400px');
-const slideUpOut10: string = _createSlideOutY('10px');
-const slideUpOut20: string = _createSlideOutY('20px');
-const slideDownOut10: string = _createSlideOutY('-10px');
-const slideDownOut20: string = _createSlideOutY('-20px');
+const slideRightOut10: string = _createSlideOutX(-10);
+const slideRightOut20: string = _createSlideOutX(-20);
+const slideRightOut40: string = _createSlideOutX(-40);
+const slideRightOut400: string = _createSlideOutX(-400);
+const slideLeftOut10: string = _createSlideOutX(10);
+const slideLeftOut20: string = _createSlideOutX(20);
+const slideLeftOut40: string = _createSlideOutX(40);
+const slideLeftOut400: string = _createSlideOutX(400);
+const slideUpOut10: string = _createSlideOutY(-10);
+const slideUpOut20: string = _createSlideOutY(-20);
+const slideDownOut10: string = _createSlideOutY(10);
+const slideDownOut20: string = _createSlideOutY(20);
 
 const scaleUp100: string = keyframes({
   from: { transform: 'scale3d(.98,.98,1)' },
@@ -69,11 +69,52 @@ const rotate90: string = keyframes({
 });
 
 const rotateN90: string = keyframes({
-  from: { transform: 'rotateZ(90deg)' },
-  to: { transform: 'rotateZ(0deg)' }
+  from: { transform: 'rotateZ(0deg)' },
+  to: { transform: 'rotateZ(-90deg)' }
 });
 
-export const animations = {
+export interface IAnimations {
+  slideRightIn10: CSSProperties;
+  slideRightIn20: CSSProperties;
+  slideRightIn40: CSSProperties;
+  slideRightIn400: CSSProperties;
+  slideLeftIn10: CSSProperties;
+  slideLeftIn20: CSSProperties;
+  slideLeftIn40: CSSProperties;
+  slideLeftIn400: CSSProperties;
+  slideUpIn10: CSSProperties;
+  slideUpIn20: CSSProperties;
+  slideDownIn10: CSSProperties;
+  slideDownIn20: CSSProperties;
+  slideRightOut10: CSSProperties;
+  slideRightOut20: CSSProperties;
+  slideRightOut40: CSSProperties;
+  slideRightOut400: CSSProperties;
+  slideLeftOut10: CSSProperties;
+  slideLeftOut20: CSSProperties;
+  slideLeftOut40: CSSProperties;
+  slideLeftOut400: CSSProperties;
+  slideUpOut10: CSSProperties;
+  slideUpOut20: CSSProperties;
+  slideDownOut10: CSSProperties;
+  slideDownOut20: CSSProperties;
+  scaleUpIn100: CSSProperties;
+  scaleDownIn100: CSSProperties;
+  scaleUpOut103: CSSProperties;
+  scaleDownOut98: CSSProperties;
+  fadeIn100: CSSProperties;
+  fadeIn200: CSSProperties;
+  fadeIn400: CSSProperties;
+  fadeIn500: CSSProperties;
+  fadeOut100: CSSProperties;
+  fadeOut200: CSSProperties;
+  fadeOut400: CSSProperties;
+  fadeOut500: CSSProperties;
+  rotate90deg: CSSProperties;
+  rotateN90deg: CSSProperties;
+}
+
+export const animations: IAnimations = {
   slideRightIn10: _createAnimation(`${fadeIn},${slideRightIn10}`, duration3, ease1),
   slideRightIn20: _createAnimation(`${fadeIn},${slideRightIn20}`, duration3, ease1),
   slideRightIn40: _createAnimation(`${fadeIn},${slideRightIn40}`, duration3, ease1),
@@ -87,22 +128,21 @@ export const animations = {
   slideDownIn10: _createAnimation(`${fadeIn},${slideDownIn10}`, duration3, ease1),
   slideDownIn20: _createAnimation(`${fadeIn},${slideDownIn20}`, duration3, ease1),
 
-  slideRightOut10: _createAnimation(`${fadeIn},${slideRightOut10}`, duration3, ease1),
-  slideRightOut20: _createAnimation(`${fadeIn},${slideRightOut20}`, duration3, ease1),
-  slideRightOut40: _createAnimation(`${fadeIn},${slideRightOut40}`, duration3, ease1),
-  slideRightOut400: _createAnimation(`${fadeIn},${slideRightOut400}`, duration3, ease1),
-  slideLeftOut10: _createAnimation(`${fadeIn},${slideLeftOut10}`, duration3, ease1),
-  slideLeftOut20: _createAnimation(`${fadeIn},${slideLeftOut20}`, duration3, ease1),
-  slideLeftOut40: _createAnimation(`${fadeIn},${slideLeftOut40}`, duration3, ease1),
-  slideLeftOut400: _createAnimation(`${fadeIn},${slideLeftOut400}`, duration3, ease1),
-  slideUpOut10: _createAnimation(`${fadeIn},${slideUpOut10}`, duration3, ease1),
-  slideUpOut20: _createAnimation(`${fadeIn},${slideUpOut20}`, duration3, ease1),
-  slideDownOut10: _createAnimation(`${fadeIn},${slideDownOut10}`, duration3, ease1),
-  slideDownOut20: _createAnimation(`${fadeIn},${slideDownOut20}`, duration3, ease1),
+  slideRightOut10: _createAnimation(`${fadeOut},${slideRightOut10}`, duration3, ease1),
+  slideRightOut20: _createAnimation(`${fadeOut},${slideRightOut20}`, duration3, ease1),
+  slideRightOut40: _createAnimation(`${fadeOut},${slideRightOut40}`, duration3, ease1),
+  slideRightOut400: _createAnimation(`${fadeOut},${slideRightOut400}`, duration3, ease1),
+  slideLeftOut10: _createAnimation(`${fadeOut},${slideLeftOut10}`, duration3, ease1),
+  slideLeftOut20: _createAnimation(`${fadeOut},${slideLeftOut20}`, duration3, ease1),
+  slideLeftOut40: _createAnimation(`${fadeOut},${slideLeftOut40}`, duration3, ease1),
+  slideLeftOut400: _createAnimation(`${fadeOut},${slideLeftOut400}`, duration3, ease1),
+  slideUpOut10: _createAnimation(`${fadeOut},${slideUpOut10}`, duration3, ease1),
+  slideUpOut20: _createAnimation(`${fadeOut},${slideUpOut20}`, duration3, ease1),
+  slideDownOut10: _createAnimation(`${fadeOut},${slideDownOut10}`, duration3, ease1),
+  slideDownOut20: _createAnimation(`${fadeOut},${slideDownOut20}`, duration3, ease1),
 
   scaleUpIn100: _createAnimation(`${fadeIn},${scaleUp100}`, duration3, ease1),
   scaleDownIn100: _createAnimation(`${fadeIn},${scaleDown100}`, duration3, ease1),
-
   scaleUpOut103: _createAnimation(`${fadeOut},${scaleUp103}`, duration1, ease2),
   scaleDownOut98: _createAnimation(`${fadeOut},${scaleDown98}`, duration1, ease2),
 
@@ -111,14 +151,10 @@ export const animations = {
   fadeIn400: _createAnimation(fadeIn, duration3, ease2),
   fadeIn500: _createAnimation(fadeIn, duration4, ease2),
 
-  /**
-   * Useful for fading out in 100ms.
-   */
   fadeOut100: _createAnimation(fadeOut, duration1, ease2),
   fadeOut200: _createAnimation(fadeOut, duration2, ease2),
   fadeOut400: _createAnimation(fadeOut, duration3, ease2),
   fadeOut500: _createAnimation(fadeOut, duration4, ease2),
-
   rotate90deg: _createAnimation(rotate90, '0.1s', ease2),
   rotateN90deg: _createAnimation(rotateN90, '0.1s', ease2)
 
@@ -138,30 +174,30 @@ function _createAnimation(
   };
 }
 
-function _createSlideInX(fromX: string): string {
+function _createSlideInX(fromX: number): string {
   return keyframes({
-    from: { transform: `translate3d(${fromX},0,0)` },
+    from: { transform: `translate3d(${fromX}px,0,0)` },
     to: { transform: `translate3d(0,0,0)` }
   });
 }
 
-function _createSlideInY(fromY: string): string {
+function _createSlideInY(fromY: number): string {
   return keyframes({
-    from: { transform: `translate3d(0,${fromY},0)` },
+    from: { transform: `translate3d(0,${fromY}px,0)` },
     to: { transform: `translate3d(0,0,0)` }
   });
 }
 
-function _createSlideOutX(toX: string): string {
+function _createSlideOutX(toX: number): string {
   return keyframes({
     from: { transform: `translate3d(0,0,0)` },
-    to: { transform: `translate3d(${toX},0,0)` }
+    to: { transform: `translate3d(${toX}px,0,0)` }
   });
 }
 
-function _createSlideOutY(toY: string): string {
+function _createSlideOutY(toY: number): string {
   return keyframes({
-    to: { transform: `translate3d(0,0,0)` },
-    from: { transform: `translate3d(0,${toY},0)` }
+    from: { transform: `translate3d(0,0,0)` },
+    to: { transform: `translate3d(0,${toY}px,0)` }
   });
 }

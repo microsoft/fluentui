@@ -51,7 +51,7 @@ export const fonts: IFonts = {
   mega: _createFont(megaSize, lightWeight)
 };
 
-export const iconFont = {
+export const iconFont: CSSProperties = {
   fontFamily: '"FabricMDL2Icons"',
   fontWeight: regularWeight,
   fontStyle: 'normal'

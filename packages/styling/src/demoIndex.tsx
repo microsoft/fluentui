@@ -1,6 +1,6 @@
 import * as React from 'react';
-
 import * as Glamor from 'glamor';
+import './utilities/glamorPlugins';
 
 Glamor['speedy'](false);
 
@@ -24,5 +24,4 @@ createApp([
     .add('Animations', () => (
       <AnimationPage />
     ))
-
 ], false);

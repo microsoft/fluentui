@@ -6,12 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
   <title>Styling Examples</title>
+  <link rel="stylesheet" href="//unpkg.com/office-ui-fabric-react/dist/css/fabric.min.css"></link>
 
 </head>
 
 <body>
   <div id="content"></div>
   <script type="text/javascript">
+    if (window.Storage !== undefined) {
+      if (localStorage.getItem('isRTL') === '1') {
+        document.documentElement.setAttribute('dir', 'rtl');
+      }
+    }
+
     var isProduction = (
       document.location.search.indexOf('?min=0') === -1 && (
         document.location.search.indexOf('?min=1') > -1 ||

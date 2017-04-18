@@ -1,19 +1,13 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { css } from 'glamor';
+import { css, CSSProperties } from 'glamor';
 import { defaultPalette } from '../styles/colors';
 import { fonts } from '../styles/fonts';
 import { cssColor, rgb2hsv } from '../utilities/colors';
-import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { Page, PageHeader } from './components';
 
-const styles = {
-  root: {
-    padding: '20px'
-  },
-  header: {
-    ...fonts.xLarge,
-    paddingBottom: '20px'
-  },
+const styles: CSSProperties = {
   swatch: {
     display: 'inline-block',
     verticalAlign: 'middle',
@@ -31,18 +25,21 @@ const styles = {
   }
 };
 
-export class ColorPage extends BaseComponent<{}, { details?: any }> {
+export interface IColorItem {
+  colorValue: string;
+}
+
+export class ColorPage extends BaseComponent<{}, {}> {
   constructor() {
     super();
 
     this.state = { details: null };
   }
   public render(): JSX.Element {
-    let { details } = this.state;
-    let items = Object.keys(defaultPalette).map(colorName => {
-      let colorValue = defaultPalette[colorName];
-      let rgb = cssColor(colorValue);
-      let hsv = rgb ? rgb2hsv(rgb.r, rgb.g, rgb.b) : null;
+    const items = Object.keys(defaultPalette).map(colorName => {
+      const colorValue = defaultPalette[colorName];
+      const rgb = cssColor(colorValue);
+      const hsv = rgb ? rgb2hsv(rgb.r, rgb.g, rgb.b) : null;
 
       return {
         colorValue,
@@ -53,11 +50,11 @@ export class ColorPage extends BaseComponent<{}, { details?: any }> {
     });
 
     return (
-      <div { ...css(styles.root) }>
-        <div { ...css(styles.header) }>Colors</div>
+      <Page>
+        <PageHeader text='Colors' />
         <DetailsList
           items={ items }
-          onRenderItemColumn={ (item, index, column) => (
+          onRenderItemColumn={ (item: IColorItem, index: number, column: IColumn): JSX.Element => (
             <div
               { ...css(styles.cell) }
             >
@@ -72,7 +69,7 @@ export class ColorPage extends BaseComponent<{}, { details?: any }> {
             </div>
           ) }
         />
-      </div>
+      </Page>
     );
   }
 }
