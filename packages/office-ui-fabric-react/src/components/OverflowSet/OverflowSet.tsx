@@ -12,18 +12,12 @@ const styles: any = require('./OverflowSet.scss');
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
-  constructor(props: IOverflowSetProps) {
-    super(props);
-  }
-
   public render() {
     let { items, overflowItems } = this.props;
     return (
-      <FocusZone direction={ FocusZoneDirection.horizontal } role='menubar' >
-        <div className={ css('ms-OverflowSet', styles.root) } >
-          { items && this._onRenderItems(items) }
-          { overflowItems && this._onRenderOverflowButton(overflowItems) }
-        </div>
+      <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
+        { items && this._onRenderItems(items) }
+        { overflowItems.length && this._onRenderOverflowButton(overflowItems) }
       </FocusZone>
     );
   }
