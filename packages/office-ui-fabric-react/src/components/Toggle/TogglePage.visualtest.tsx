@@ -15,27 +15,13 @@ export default class ToggleVPage extends React.Component<any, any> {
       </div>
       <div>
         <Toggle
-          id='ToggleEnabledUnchecked'
-          defaultChecked={ false }
-          label='Enabled and unchecked'
-          onText='On'
-          offText='Off' /></div>
-      <div>
-        <Toggle
           id='ToggleDisabledChecked'
           defaultChecked={ true }
           disabled={ true }
           label='Disabled and checked'
           onText='On'
-          offText='Off' /></div>
-      <div>
-        <Toggle
-          id='ToggleDisabledUnchecked'
-          defaultChecked={ false }
-          disabled={ true }
-          label='Disabled and unchecked'
-          onText='On'
-          offText='Off' /></div>
+          offText='Off' />
+      </div>
     </div>;
   }
 }

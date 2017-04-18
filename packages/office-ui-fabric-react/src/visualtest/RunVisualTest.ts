@@ -1,0 +1,66 @@
+
+import { Casper, IPhantomCSS } from './PhantomCssInterface';
+import { baseUrl } from '../common/VisualTest';
+declare var phantomcss: IPhantomCSS;
+
+import { Enum } from "typescript-string-enums";
+
+const fileExtn = Enum({
+  DEFAULT: "_default",
+  HOVERED: "_hovered",
+  DOWN: "_pressed",
+  CLICK: "_clicked"
+
+});
+
+export const idType = Enum({
+  CLASSNAME: ".",
+  ID: '#'
+});
+
+export class RunVisualTest {
+  private casps: Casper;
+  private id: string;
+  private fileName: string;
+  private phanta: IPhantomCSS;
+
+  constructor(casper, id, idExtn) {
+    this.casps = casper;
+    this.phanta = phantomcss;
+    this.fileName = id;
+    this.id = idExtn + id;
+
+  }
+
+  public endTest() {
+    this.casps.run(function () { this.casps.test.done(); });
+  }
+
+  public defaultScreenshot() {
+    let self = this;
+    this.casps.then(function () {
+      self.phanta.screenshot(self.id, self.fileName + fileExtn.DEFAULT);
+    });
+  }
+  public mouseMoveScreenshot() {
+    let self = this;
+    this.casps.then(function () {
+      this.mouse.move(self.id);
+      self.phanta.screenshot(self.id, self.fileName + fileExtn.HOVERED);
+    });
+  }
+  public mouseDownScreenshot() {
+    let self = this;
+    this.casps.then(function () {
+      this.mouse.down(self.id);
+      self.phanta.screenshot(self.id, self.fileName + fileExtn.DOWN);
+    });
+  }
+  public mouseClickedScreenshot() {
+    let self = this;
+    this.casps.then(function () {
+      this.click(self.id);
+      self.phanta.screenshot(self.id, self.fileName + fileExtn.CLICK);
+    });
+  }
+}

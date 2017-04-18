@@ -1,12 +1,12 @@
-
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
-import { baseUrl } from '../../common/VisualTest';
-import { RunVisualTest } from '../../visualtest/RunVisualTest';
-import { idType } from '../../visualtest/RunVisualTest';
+import { Casper, IPhantomCSS } from './PhantomCssInterface';
+import { baseUrl } from '../common/VisualTest';
+import { RunVisualTest } from './RunVisualTest';
+import { idType } from './RunVisualTest';
 
 declare var casper: Casper;
 
 
+var componentIds = ["ToggleEnabledChecked", "ToggleDisabledChecked"];
 
 
 var togTest = new RunVisualTest(casper, "ToggleEnabledChecked", idType.ID);
