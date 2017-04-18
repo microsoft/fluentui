@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ContextualMenu, IContextualMenuItem, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuMultiselectExampleState {
@@ -30,7 +30,10 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
 
     return (
       <div>
-        <Button onClick={ this._onClick } id='ContextualMenuButton2'> Click for ContextualMenu </Button>
+        <DefaultButton
+          onClick={ this._onClick } id='ContextualMenuButton2'
+          text='Click for ContextualMenu'
+        />
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
             target='#ContextualMenuButton2'

@@ -246,8 +246,8 @@ export interface IContextualMenuItem {
   href?: string;
 
   /**
-   * @deprecated
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
+   * @deprecated
    */
   items?: IContextualMenuItem[];
 

@@ -64,5 +64,5 @@ export enum MessageBarType {
    * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
    * @deprecated
    */
-  remove = 6
+  remove = 90000
 }
