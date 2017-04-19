@@ -11,7 +11,12 @@
       },
       "parameters": {},
       "deprecatedMessage": [],
-      "summary": [],
+      "summary": [
+        {
+          "kind": "textDocElement",
+          "value": "Gets the theme object."
+        }
+      ],
       "remarks": [],
       "isBeta": false
     },
@@ -21,7 +26,12 @@
       "implements": "",
       "typeParameters": [],
       "deprecatedMessage": [],
-      "summary": [],
+      "summary": [
+        {
+          "kind": "textDocElement",
+          "value": "All Fabric standard animations, exposed as json objects referencing predefined keyframes. These objects can be mixed in with other class definitions."
+        }
+      ],
       "remarks": [],
       "isBeta": false,
       "members": {
@@ -554,7 +564,12 @@
       },
       "parameters": {},
       "deprecatedMessage": [],
-      "summary": [],
+      "summary": [
+        {
+          "kind": "textDocElement",
+          "value": "Mixes the given theme settings into the current theme object."
+        }
+      ],
       "remarks": [],
       "isBeta": false
     }

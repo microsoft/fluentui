@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { classNames } from '../classNames/index';
 import { Page, PageHeader } from './components';
 import { AnimationTile } from './AnimationTile';
+import { classNames } from '@uifabric/styling';
 import { css, CSSProperties } from 'glamor';
 
 function getStyles(): CSSProperties {

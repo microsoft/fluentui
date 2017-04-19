@@ -1,11 +1,11 @@
 import { css, CSSProperties } from 'glamor';
-import { fonts, iconFont } from '../styles/fonts';
-import { defaultPalette } from '../styles/colors';
+import { styles } from '@uifabric/styling';
 
 export function getStyles(): CSSProperties {
+
   return {
     iconTile: css(
-      fonts.small,
+      styles.fonts.small,
       {
         flexShrink: 0,
         display: 'flex',
@@ -27,25 +27,25 @@ export function getStyles(): CSSProperties {
           top: 0,
           right: 0,
           bottom: 0,
-          border: '1px solid ' + defaultPalette.themePrimary
+          border: '1px solid ' + styles.colors.themePrimary
         },
 
         ':focus': {
-          color: defaultPalette.themePrimary,
+          color: styles.colors.themePrimary,
           opacity: 1,
-          background: defaultPalette.themeLighterAlt
+          background: styles.colors.themeLighterAlt
         },
         ':hover': {
           opacity: 1,
-          background: defaultPalette.themeLighterAlt
+          background: styles.colors.themeLighterAlt
         },
         ':focus:hover': {
-          background: defaultPalette.themeLight
+          background: styles.colors.themeLight
         }
       }),
 
     icon: css(
-      iconFont,
+      styles.fonts.icon,
       {
         fontSize: '36px',
         paddingBottom: '8px'

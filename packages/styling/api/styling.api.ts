@@ -1,6 +1,5 @@
 export function getTheme(): ITheme;
 
-// (undocumented)
 interface IAnimations {
   // (undocumented)
   fadeIn100: CSSProperties;

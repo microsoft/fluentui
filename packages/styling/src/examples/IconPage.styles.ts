@@ -1,5 +1,5 @@
 import { css, CSSProperties } from 'glamor';
-import { fonts } from '../styles/fonts';
+import { styles } from '@uifabric/styling';
 
 export function getStyles(): CSSProperties {
   return {
@@ -11,7 +11,7 @@ export function getStyles(): CSSProperties {
     }),
 
     cell: css(
-      fonts.medium,
+      styles.fonts.medium,
       { margin: '0 4px' }
     ),
 

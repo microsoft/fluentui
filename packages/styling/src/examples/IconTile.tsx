@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CSSProperties } from 'glamor';
-import * as icons from '../styles/icons';
+import { styles as fabricStyles } from '@uifabric/styling';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { getStyles } from './IconTile.styles';
 
@@ -14,7 +14,7 @@ export function IconTile(props: IIconTileProps): JSX.Element {
 
   return (
     <div { ...styles.iconTile } { ...divProps }>
-      <i { ...styles.icon }>{ icons[iconName] }</i>
+      <i { ...styles.icon }>{ fabricStyles.iconCodes[iconName] }</i>
       <div>{ iconName }</div>
     </div>
   );

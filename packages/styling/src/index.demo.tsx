@@ -6,7 +6,7 @@ import './utilities/glamorPlugins';
 // tslint:disable-next-line:no-string-literal
 Glamor['speedy'](false);
 
-import { setTheme } from './styles/theme';
+import { setTheme } from '@uifabric/styling';
 
 // Example of setting theming overrides!
 /*

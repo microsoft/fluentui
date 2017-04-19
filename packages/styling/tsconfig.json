@@ -14,10 +14,10 @@
       "mocha",
       "webpack-env"
     ],
-    "outDir": "./lib",
+    "outDir": "../lib",
     "paths": {
-      "office-ui-fabric-react/lib/*": [
-        "./src/*"
+      "@uifabric/styling": [
+        "./src"
       ]
     }
   },
@@ -25,6 +25,8 @@
     "node_modules",
     "dist",
     "lib",
-    "lib-amd"
+    "lib-amd",
+    "api",
+    "temp"
   ]
 }

@@ -1,4 +1,9 @@
-export interface IColors {
+import { getTheme } from '../utilities/theme';
+
+/**
+ * UI Fabric color palette.
+ */
+export interface IColorStyles {
   themeDarker?: string;
   themeDark?: string;
   themeDarkAlt?: string;
@@ -49,7 +54,7 @@ export interface IColors {
   greenLight?: string;
 }
 
-export const defaultPalette: IColors = {
+export const defaultColorStyles: IColorStyles = {
   themeDarker: '#004578',
   themeDark: '#005a9e',
   themeDarkAlt: '#106ebe',
@@ -59,7 +64,6 @@ export const defaultPalette: IColors = {
   themeLight: '#c7e0f4',
   themeLighter: '#deecf9',
   themeLighterAlt: '#eff6fc',
-
   black: '#000000',
   blackTranslucent40: 'rgba(0,0,0,.4)',
   neutralDark: '#212121',
@@ -100,3 +104,22 @@ export const defaultPalette: IColors = {
   green: '#107c10',
   greenLight: '#bad80a'
 };
+
+export const colorStyles: IColorStyles = {};
+
+for (const colorName in defaultColorStyles) {
+  if (defaultColorStyles.hasOwnProperty(colorName)) {
+    _defineColorGetter(colorStyles, colorName);
+  }
+}
+
+/**
+ * Defines a getter for the given class configuration.
+ */
+function _defineColorGetter(obj: IColorStyles, colorName: string): void {
+  Object.defineProperty(obj, colorName, {
+    get: (): string => getTheme().colors[colorName],
+    enumerable: true,
+    configurable: true
+  });
+}

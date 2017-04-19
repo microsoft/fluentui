@@ -3,27 +3,30 @@ import { fontFace, CSSProperties } from 'glamor';
 const FONT_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean';
 const ICON_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
 
-const systemBase: string = '"Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif';
-const familyBase: string = '"Segoe UI WestEuropean", ' + systemBase;
+const SYSTEM_BASE: string = '"Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif';
+const FAMILY_BASE: string = '"Segoe UI WestEuropean", ' + SYSTEM_BASE;
 
-const lightWeight: number = 100;
-const semilightWeight: number = 300;
-const regularWeight: number = 400;
-const semiboldWeight: number = 600;
+const LIGHT_WEIGHT: number = 100;
+const SEMILIGHT_WEIGHT: number = 300;
+const REGULAR_WEIGHT: number = 400;
+const SEMIBOLD_WEIGHT: number = 600;
 
-const miniSize: string = '10px';
-const xSmallSize: string = '11px';
-const smallSize: string = '12px';
-const smallPlusSize: string = '13px';
-const mediumSize: string = '14px';
-const mediumPlusSize: string = '15px';
-const largeSize: string = '17px';
-const xLargeSize: string = '21px';
-const xxLargeSize: string = '28px';
-const superSize: string = '42px';
-const megaSize: string = '72px';
+const MINI_SIZE: string = '10px';
+const X_SMALL_SIZE: string = '11px';
+const SMALL_SIZE: string = '12px';
+const SMALL_PLUS_SIZE: string = '13px';
+const MEDIUM_SIZE: string = '14px';
+const MEDIUM_PLUS_SIZE: string = '15px';
+const LARGE_SIZE: string = '17px';
+const X_LARGE_SIZE: string = '21px';
+const XX_LARGE_SIZE: string = '28px';
+const SUPER_SIZE: string = '42px';
+const MEGA_SIZE: string = '72px';
 
-export interface IFonts {
+/**
+ * UI Fabric font set.
+ */
+export interface IFontStyles {
   tiny?: CSSProperties;
   xSmall?: CSSProperties;
   small?: CSSProperties;
@@ -35,31 +38,31 @@ export interface IFonts {
   xxLarge?: CSSProperties;
   superLarge?: CSSProperties;
   mega?: CSSProperties;
+  icon?: CSSProperties;
 }
 
-export const fonts: IFonts = {
-  tiny: _createFont(miniSize, semiboldWeight),
-  xSmall: _createFont(xSmallSize, regularWeight),
-  small: _createFont(smallSize, regularWeight),
-  smallPlus: _createFont(smallPlusSize, regularWeight),
-  medium: _createFont(mediumSize, regularWeight),
-  mediumPlus: _createFont(mediumPlusSize, regularWeight),
-  large: _createFont(largeSize, semilightWeight),
-  xLarge: _createFont(xLargeSize, lightWeight),
-  xxLarge: _createFont(xxLargeSize, lightWeight),
-  superLarge: _createFont(superSize, lightWeight),
-  mega: _createFont(megaSize, lightWeight)
-};
-
-export const iconFont: CSSProperties = {
-  fontFamily: '"FabricMDL2Icons"',
-  fontWeight: regularWeight,
-  fontStyle: 'normal'
+export const defaultFontStyles: IFontStyles = {
+  tiny: _createFont(MINI_SIZE, SEMIBOLD_WEIGHT),
+  xSmall: _createFont(X_SMALL_SIZE, REGULAR_WEIGHT),
+  small: _createFont(SMALL_SIZE, REGULAR_WEIGHT),
+  smallPlus: _createFont(SMALL_PLUS_SIZE, REGULAR_WEIGHT),
+  medium: _createFont(MEDIUM_SIZE, REGULAR_WEIGHT),
+  mediumPlus: _createFont(MEDIUM_PLUS_SIZE, REGULAR_WEIGHT),
+  large: _createFont(LARGE_SIZE, SEMILIGHT_WEIGHT),
+  xLarge: _createFont(X_LARGE_SIZE, LIGHT_WEIGHT),
+  xxLarge: _createFont(XX_LARGE_SIZE, LIGHT_WEIGHT),
+  superLarge: _createFont(SUPER_SIZE, LIGHT_WEIGHT),
+  mega: _createFont(MEGA_SIZE, LIGHT_WEIGHT),
+  icon: {
+    fontFamily: '"FabricMDL2Icons"',
+    fontWeight: REGULAR_WEIGHT,
+    fontStyle: 'normal'
+  }
 };
 
 function _createFont(size: string, weight: number): CSSProperties {
   return {
-    fontFamily: familyBase,
+    fontFamily: FAMILY_BASE,
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
     fontWeight: weight
@@ -100,7 +103,7 @@ function _registerFontFace(
     'Segoe UI Light',
     FONT_BASE_URL,
     'segoeui-light',
-    lightWeight
+    LIGHT_WEIGHT
   );
 
   _registerFontFace(
@@ -116,7 +119,7 @@ function _registerFontFace(
     'Segoe UI',
     FONT_BASE_URL,
     'segoeui-regular',
-    regularWeight
+    REGULAR_WEIGHT
   );
 
   _registerFontFace(
@@ -124,7 +127,7 @@ function _registerFontFace(
     'Segoe UI Semibold',
     FONT_BASE_URL,
     'segoeui-semibold',
-    semiboldWeight
+    SEMIBOLD_WEIGHT
   );
 });
 
@@ -134,5 +137,5 @@ _registerFontFace(
   'FabricMDL2Icons',
   ICON_BASE_URL,
   'fabricmdl2icons',
-  regularWeight
+  REGULAR_WEIGHT
 );

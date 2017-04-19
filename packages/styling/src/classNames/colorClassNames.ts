@@ -1,8 +1,6 @@
-import { getTheme, ITheme } from '../styles/theme';
-
-import { css } from 'glamor';
-
-const theme: ITheme = getTheme();
+import { getTheme } from '../utilities/theme';
+import { css, CSSProperties } from 'glamor';
+import { defaultColorStyles } from '../styles/colorStyles';
 
 export interface IColorClassNames {
   themeDarker?: string;
@@ -295,51 +293,46 @@ export interface IColorClassNames {
   greenLightBorderHover?: string;
 }
 
-export const colors: IColorClassNames = {};
+export const colorClassNames: IColorClassNames = {};
 
-for (const colorName in theme.colors) {
-  if (theme.colors.hasOwnProperty(colorName)) {
+for (const colorName in defaultColorStyles) {
+  if (defaultColorStyles.hasOwnProperty(colorName)) {
     // Foreground color
-    Object.defineProperty(colors, colorName, {
-      get: (): string => css({ color: theme.colors[colorName] }).toString(),
-      enumerable: true,
-      configurable: true
-    });
+    _defineGetter(colorClassNames, colorName, '', false, 'color');
 
     // Hover color
-    Object.defineProperty(colors, colorName + 'Hover', {
-      get: (): string => css({ ':hover': { color: theme.colors[colorName] } }).toString(),
-      enumerable: true,
-      configurable: true
-    });
+    _defineGetter(colorClassNames, colorName, 'Hover', true, 'color');
 
     // Background color
-    Object.defineProperty(colors, colorName + 'Background', {
-      get: (): string => css({ background: theme.colors[colorName] }).toString(),
-      enumerable: true,
-      configurable: true
-    });
+    _defineGetter(colorClassNames, colorName, 'Background', false, 'background');
 
     // Background hover
-    Object.defineProperty(colors, colorName + 'BackgroundHover', {
-      get: (): string => css({ ':hover': { background: theme.colors[colorName] } }).toString(),
-      enumerable: true,
-      configurable: true
-    });
+    _defineGetter(colorClassNames, colorName, 'BackgroundHover', true, 'background');
 
     // Border color
-    Object.defineProperty(colors, colorName + 'Border', {
-      get: (): string => css({ borderColor: theme.colors[colorName] }).toString(),
-      enumerable: true,
-      configurable: true
-    });
+    _defineGetter(colorClassNames, colorName, 'Border', false, 'borderColor');
 
     // Border hover color
-    Object.defineProperty(colors, colorName + 'BorderHover', {
-      get: (): string => css({ ':hover': { borderColor: theme.colors[colorName] } }).toString(),
-      enumerable: true,
-      configurable: true
-    });
-
+    _defineGetter(colorClassNames, colorName, 'BorderHover', true, 'borderColor');
   }
+}
+
+/**
+ * Defines a getter for the given class configuration.
+ */
+function _defineGetter(
+  obj: IColorClassNames,
+  colorName: string,
+  suffix: string,
+  isHover: boolean,
+  cssProperty: string
+): void {
+  Object.defineProperty(obj, colorName + suffix, {
+    get: (): string => {
+      const style: CSSProperties = { [cssProperty]: getTheme().colors[colorName] };
+      return css(isHover ? { ':hover': style } : style).toString();
+    },
+    enumerable: true,
+    configurable: true
+  });
 }

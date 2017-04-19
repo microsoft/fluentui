@@ -1,20 +1,18 @@
-import { animations, IAnimationClassNames } from './animations';
-import { fonts, IFontClassNames } from './fonts';
-import { iconFont, icons, IIconClassNames } from './icons';
-import { colors, IColorClassNames } from './colors';
+import { animationClassNames, IAnimationClassNames } from './animationClassNames';
+import { fontClassNames, IFontClassNames } from './fontClassNames';
+import { iconClassNames, IIconClassNames } from './iconClassNames';
+import { colorClassNames, IColorClassNames } from './colorClassNames';
 
 export interface IClassNames {
   animations: IAnimationClassNames;
   fonts: IFontClassNames;
-  iconFont: string;
   icons: IIconClassNames;
   colors: IColorClassNames;
 }
 
 export const classNames: IClassNames = {
-  animations,
-  fonts,
-  iconFont,
-  icons,
-  colors
+  animations: animationClassNames,
+  fonts: fontClassNames,
+  icons: iconClassNames,
+  colors: colorClassNames
 };

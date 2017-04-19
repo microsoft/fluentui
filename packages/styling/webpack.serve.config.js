@@ -19,6 +19,7 @@ module.exports = {
 
   resolve: {
     alias: {
+      '@uifabric/styling': path.join(__dirname, 'src')
     },
     extensions: ['.js', '.ts', '.tsx']
   },

@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
+import { getTheme, ITheme, classNames } from '@uifabric/styling';
 import { css, CSSProperties } from 'glamor';
-import { classNames } from '../classNames/index';
-import { getTheme, ITheme } from '../styles/index';
 
 function getStyles(theme?: ITheme): CSSProperties {
   return {

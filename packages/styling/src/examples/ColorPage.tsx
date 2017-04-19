@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { css, CSSProperties } from 'glamor';
-import { getTheme, ITheme } from '../styles/theme';
+import { getTheme, ITheme, classNames } from '@uifabric/styling';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Page, PageHeader } from './components';
-import { classNames } from '../classNames/index';
 
 const { colors, fonts }: ITheme = getTheme();
 

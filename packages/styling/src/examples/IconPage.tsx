@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { CSSProperties } from 'glamor';
-import * as icons from '../styles/icons';
+import { styles as fabricStyles } from '@uifabric/styling';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Page, PageHeader } from './components';
@@ -17,7 +17,7 @@ export class IconPage extends BaseComponent<{}, IIconPageState> {
     super();
 
     this.state = {
-      iconNames: Object.keys(icons)
+      iconNames: Object.keys(fabricStyles.iconCodes)
     };
   }
 
@@ -40,7 +40,7 @@ export class IconPage extends BaseComponent<{}, IIconPageState> {
   }
 
   private _onSearchChange = (value: string): void => {
-    let iconNames: string[] = Object.keys(icons);
+    let iconNames: string[] = Object.keys(fabricStyles.iconCodes);
 
     value = value.toLocaleLowerCase();
 

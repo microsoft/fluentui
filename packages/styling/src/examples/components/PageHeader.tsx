@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fonts } from '../../styles/fonts';
+import { fontStyles } from '../../styles/fontStyles';
 import { css, CSSProperties } from 'glamor';
 
 export interface IPageHeaderProps {
@@ -8,7 +8,7 @@ export interface IPageHeaderProps {
 
 const styles: CSSProperties = {
   header: {
-    ...fonts.xLarge,
+    ...fontStyles.xLarge,
     paddingBottom: '20px'
   }
 };
