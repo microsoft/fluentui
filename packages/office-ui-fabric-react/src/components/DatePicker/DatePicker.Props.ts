@@ -125,4 +125,24 @@ export interface IDatePickerStrings {
    * Error message to render for TextField if input date string parsing fails.
    */
   invalidInputErrorMessage?: string;
+
+  /**
+   * Aria-label for the "previous month" button.
+   */
+  prevMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next month" button.
+   */
+  nextMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "previous year" button.
+   */
+  prevYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year" button.
+   */
+  nextYearAriaLabel?: string;
 }

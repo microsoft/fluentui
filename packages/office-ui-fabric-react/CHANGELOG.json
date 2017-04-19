@@ -2,6 +2,51 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.20.1",
+      "tag": "office-ui-fabric-react_v2.20.1",
+      "date": "Wed, 19 Apr 2017 15:36:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4d2ef75edb41b60f6d88bbf901e229ce2b04b3cd",
+            "comment": "References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.20.0",
+      "tag": "office-ui-fabric-react_v2.20.0",
+      "date": "Wed, 19 Apr 2017 03:17:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "172ce2b6f9d45bc27557edcd60f5d0454c57938f",
+            "comment": "DatePicker: Improve screen-reader accessibility."
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "151b6f755b61e022822ce8791b75392d634d8334",
+            "comment": "Regression Test: Contextual Menu "
+          },
+          {
+            "author": "Yusong Liu <lysnku@gmail.com>",
+            "commit": "5f935e0a8d2652e2166e39266aaff87c7ec891e9",
+            "comment": "fix nit for Suggestion.tsx"
+          }
+        ],
+        "minor": [
+          {
+            "author": "REDMOND\\miclo <miclo@microsoft.com>",
+            "commit": "eec55b92622113be356952337b4795127a9c5239",
+            "comment": "Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.19.0",
       "tag": "office-ui-fabric-react_v2.19.0",
       "date": "Tue, 18 Apr 2017 15:17:13 GMT",
