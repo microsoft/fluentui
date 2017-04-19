@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-component",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,8 +21,8 @@
     "@types/react-addons-test-utils": "^0.14.17",
     "@types/react-dom": "^0.14.23",
     "@types/webpack-env": "^1.13.0",
-    "@uifabric/example-app-base": "1.3.7",
-    "@uifabric/utilities": "1.7.0",
+    "@uifabric/example-app-base": "1.3.8",
+    "@uifabric/utilities": "1.8.0",
     "autoprefixer": "^6.7.6",
     "chai": "^3.5.0",
     "css-loader": "^0.26.2",
