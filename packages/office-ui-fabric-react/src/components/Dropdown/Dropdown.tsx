@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from 'react-dom';
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -293,7 +293,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
               nonSeparatorIndex.push(options[startIndex].index);
             }
-
             startIndex -= 1;
             continue;
           } else {
