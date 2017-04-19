@@ -13,7 +13,7 @@ import {
   ISpinButtonProps
 } from './SpinButton.Props';
 import './SpinButton.scss';
-import { RectangleEdge } from '../../utilities/positioning'
+import { Position } from '../../utilities/positioning'
 
 export interface ISpinButtonState {
   /**
@@ -59,7 +59,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     max: 100,
     disabled: false,
     defaultValue: '0',
-    labelDirection: RectangleEdge.left,
+    labelPosition: Position.start,
     label: null
   };
 
@@ -132,7 +132,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       disabled,
       label,
       width: spinbuttonWidth,
-      labelDirection
+      labelPosition
     } = this.props;
 
     const {
@@ -141,13 +141,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     return (
       <div className='ms-SpinButtonContainer' style={ spinbuttonWidth && { width: spinbuttonWidth } }>
-        { (label && labelDirection != RectangleEdge.bottom) &&
+        { (label && labelPosition != Position.bottom) &&
           < Label
             id={ this._labelId }
             style={ this._labelDirectionHelper() }
             htmlFor={ this._inputId }>{ label }
           </Label> }
-        < div className={ 'ms-SpinButtonWrapper' + ((this.props.labelDirection == RectangleEdge.top || this.props.labelDirection == RectangleEdge.bottom) ? ' topBottom' : '') }>
+        < div className={ 'ms-SpinButtonWrapper' + ((this.props.labelPosition == Position.top || this.props.labelPosition == Position.bottom) ? ' topBottom' : '') }>
           <input
             value={ value }
             id={ this._inputId }
@@ -192,7 +192,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span >
         </div >
-        { (label && labelDirection == RectangleEdge.bottom) && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label } </Label> }
+        { (label && labelPosition == Position.bottom) && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label } </Label> }
       </ div >
     ) as React.ReactElement<{}>;
   }
@@ -200,11 +200,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _labelDirectionHelper(): any {
     let direction: any = {};
 
-    switch (this.props.labelDirection) {
-      case RectangleEdge.left:
+    switch (this.props.labelPosition) {
+      case Position.start:
         direction = { float: 'left' };
         break;
-      case RectangleEdge.right:
+      case Position.end:
         direction = { float: 'right' };
         break;
       default:

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISpinButtonState } from './SpinButton';
-import { RectangleEdge } from '../../utilities/positioning'
+import { Position } from '../../utilities/positioning'
 
 export interface ISpinButtonProps {
 
@@ -69,7 +69,7 @@ export interface ISpinButtonProps {
   /**
    * @default: Left
    */
-  labelDirection?: RectangleEdge;
+  labelPosition?: Position;
 
   labelGapSpace?: number;
 
