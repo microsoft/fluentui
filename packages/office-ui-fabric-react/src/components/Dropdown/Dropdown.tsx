@@ -19,6 +19,8 @@ import {
 } from '../../Utilities';
 import styles = require('./Dropdown.scss');
 
+const OPTION: string = 'option';
+
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
 
@@ -36,8 +38,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public static defaultProps = {
     options: []
   };
-
-  private static Option: string = 'option';
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -262,7 +262,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _calculateMaxHeight() {
-    let { pageSize } = this.props;
+    let { pageSize, options } = this.props;
     let maxHeight = 0;
     if (pageSize) {
       let { selectedIndex } = this.state;
@@ -270,8 +270,41 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         selectedIndex = 0;
       }
 
-      for (let i = selectedIndex; i < pageSize + selectedIndex; i++) {
-        let item = this.refs[Dropdown.Option + i] as CommandButton;
+      let nonSeparatorIndex: number[] = [];
+      let startIndex = selectedIndex;
+      let lookdown = true
+      let lookup = true
+      while (nonSeparatorIndex.length < pageSize && (lookdown || lookup)) {
+        if (lookdown) {
+          if (options[startIndex]) {
+            if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
+              nonSeparatorIndex.push(options[startIndex].index);
+            }
+            startIndex += 1;
+            continue;
+          } else {
+            lookdown = false;
+            startIndex = selectedIndex - 1;
+          }
+        }
+
+        if (lookup) {
+          if (options[startIndex]) {
+            if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
+              nonSeparatorIndex.push(options[startIndex].index);
+            }
+
+            startIndex -= 1;
+            continue;
+          } else {
+            lookup = false;
+            break;
+          }
+        }
+      }
+
+      for (let i = 0; i < nonSeparatorIndex.length; i++) {
+        let item = this.refs[OPTION + i] as Element;
         if (item) {
           let itemDOM = ReactDOM.findDOMNode(item);
           if (itemDOM) {
@@ -291,6 +324,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { index, key } = item;
     if (index > 0) {
       return <div
+        ref={ OPTION + item.index }
         role='separator'
         key={ key }
         className={ css('ms-Dropdown-divider', styles.divider) } />;
@@ -301,7 +335,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _renderHeader(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     return (
-      <div className={ css('ms-Dropdown-header', styles.header) }>
+      <div
+        className={ css('ms-Dropdown-header', styles.header) }
+        ref={ OPTION + item.index }>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -314,7 +350,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <CommandButton
         id={ id + '-list' + item.index }
-        ref={ Dropdown.Option + item.index }
+        ref={ OPTION + item.index }
         key={ item.key }
         data-index={ item.index }
         data-is-focusable={ true }
