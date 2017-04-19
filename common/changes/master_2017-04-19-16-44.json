@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Adding warn utilities for console logging warnings on misuse.",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
