@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updating the default gapSpace for CallOut and Tooltip to be zero rather than 16",
+      "comment": "Callout/Tooltip: Updated default gapSpace from 16 to 0",
       "type": "patch"
     }
   ],
