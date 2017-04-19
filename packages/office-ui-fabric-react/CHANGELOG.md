@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Apr 2017 03:17:40 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Apr 2017 15:36:48 GMT and should not be manually modified.
+
+## 2.20.1
+Wed, 19 Apr 2017 15:36:48 GMT
+
+### Patches
+
+- References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import.
 
 ## 2.20.0
 Wed, 19 Apr 2017 03:17:40 GMT
