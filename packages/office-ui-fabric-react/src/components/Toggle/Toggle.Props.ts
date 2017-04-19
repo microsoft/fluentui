@@ -26,7 +26,7 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle>
   onText?: string;
 
   /**
-   * Test display when toggle is OFF.
+   * Text to display when toggle is OFF.
    */
   offText?: string;
 
