@@ -10,7 +10,7 @@ import {
   IScreenReaderAlertProps,
   defaultScreenReaderAlertProps,
   ReadingMode,
-  ARIA__LIVE_MAPPING
+  ARIA_LIVE_MAPPING
 } from './ScreenReaderAlert.Props';
 import AutoClearText from './AutoClearText';
 import styles = require('./ScreenReaderAlert.scss');
@@ -50,7 +50,7 @@ export class ScreenReaderAlert extends React.PureComponent<IScreenReaderAlertPro
           this.props.text && (
             <AutoClearText
               role={ this._role }
-              aria-live={ ARIA__LIVE_MAPPING[this.props.readingMode] }
+              aria-live={ ARIA_LIVE_MAPPING[this.props.readingMode] }
               aria-atomic={ true }
               text={ this.props.text }
             />

@@ -15,7 +15,7 @@ export enum ReadingMode {
   ReadImmediately = 2
 }
 
-export const ARIA__LIVE_MAPPING = {
+export const ARIA_LIVE_MAPPING = {
   [ReadingMode.ReadAfterOtherContent]: 'polite',
   [ReadingMode.ReadImmediately]: 'assertive'
 };
@@ -34,11 +34,9 @@ export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
   readingMode?: ReadingMode;
 
   /**
-   * Use indicator to specifically tell screen reader this text should be read even when text is not changed.
-   * Especially in case of re-reading the same text or the text that is possibly the same with the old one.
-   *
-   * Change the indicator to read the text no matter the text is changed or not.
-   * Keep indicator the same value or simply not use it to read ONLY when the text is changed.
+   * In cases where you need the screen-reader to re-read the same comment again, you should pass in an incremented
+   * indicator value. For example, if an error had been read out,and the error occurs again due to some user input,
+   * you can increment the indicator number to have the message be re-read.
    */
   indicator?: number;
 }
