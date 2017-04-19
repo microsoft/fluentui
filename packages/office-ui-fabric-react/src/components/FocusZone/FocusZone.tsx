@@ -10,10 +10,12 @@ import {
   KeyCodes,
   autobind,
   css,
+  divProperties,
   elementContains,
   getDocument,
   getId,
   getNextElement,
+  getNativeProps,
   getParent,
   getPreviousElement,
   getRTL,
@@ -56,6 +58,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   constructor(props) {
     super(props);
 
+    this._warnDeprecations({ 'rootProps': null });
+
     this._id = getId('FocusZone');
     _allInstances[this._id] = this;
 
@@ -89,6 +93,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this.props.defaultActiveElement) {
       this._activeElement = getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
+      this.focus();
     }
   }
 
@@ -97,19 +102,22 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public render() {
-    let { rootProps, ariaLabelledBy, className } = this.props;
+    let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
+    let divProps = getNativeProps(this.props, divProperties);
 
     return (
       <div
+        { ...divProps }
         { ...rootProps }
         className={ css('ms-FocusZone', className) }
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
         { ...{ onMouseDownCapture: this._onMouseDown } }
-        >
+      >
         { this.props.children }
       </div>
     );
@@ -237,6 +245,14 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return;
     }
 
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+
+      if (ev.isDefaultPrevented()) {
+        return;
+      }
+    }
+
     if (
       isInnerZoneKeystroke &&
       this._isImmediateDescendantOfZone(ev.target as HTMLElement) &&
@@ -248,8 +264,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (!innerZone || !innerZone.focus()) {
         return;
       }
+    } else if (ev.altKey) {
+      return;
     } else {
       switch (ev.which) {
+        case KeyCodes.space:
+          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+            break;
+          }
+          return;
+
         case KeyCodes.left:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
             break;

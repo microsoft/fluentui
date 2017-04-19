@@ -2,7 +2,17 @@ import * as React from 'react';
 import { ISelection } from '../../utilities/selection/interfaces';
 import { MarqueeSelection } from './MarqueeSelection';
 
+export interface IMarqueeSelection {
+
+}
+
 export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
+  /**
+   * Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IMarqueeSelection) => void;
+
   /**
    * The selection object to interact with when updating selection changes.
    */

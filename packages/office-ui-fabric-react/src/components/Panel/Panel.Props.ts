@@ -1,7 +1,18 @@
 import * as React from 'react';
 import { Panel } from './Panel';
+import { IRenderFunction } from '../../Utilities';
+import { ILayerProps } from '../../Layer';
 
+export interface IPanel {
+
+}
 export interface IPanelProps extends React.Props<Panel> {
+  /**
+   * Optional callback to access the IPanel interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPanel) => void;
+
   /**
   * Whether the panel is displayed.
   * @default false
@@ -54,6 +65,11 @@ export interface IPanelProps extends React.Props<Panel> {
   type?: PanelType;
 
   /**
+  * Custom panel width, used only when type is set to PanelType.custom.
+  */
+  customWidth?: string;
+
+  /**
    * Aria label on close button
    */
   closeButtonAriaLabel?: string;
@@ -85,6 +101,36 @@ export interface IPanelProps extends React.Props<Panel> {
   * Indicates the selector for first focusable item
   */
   firstFocusableSelector?: string;
+
+  /**
+   * Optional props to pass to the Layer component hosting the panel.
+   */
+  layerProps?: ILayerProps;
+
+  /**
+   * Optional custom renderer navigation region. Replaces current close button.
+   */
+  onRenderNavigation?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for header region. Replaces current title
+   */
+  onRenderHeader?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for body region. Replaces any children passed into the component.
+   */
+  onRenderBody?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for footer region. Replaces sticky footer.
+   */
+  onRenderFooter?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Custom renderer for content in the sticky footer
+   */
+  onRenderFooterContent?: IRenderFunction<IPanelProps>;
 }
 
 export enum PanelType {
@@ -160,5 +206,15 @@ export enum PanelType {
    * XXLarge: 176px fixed left margin, 40px Left/Right padding
    * XXXLarge: 176px fixed left margin, 40px Left/Right padding
    */
-  extraLarge = 6
+  extraLarge = 6,
+
+  /**
+   * Renders the panel in 'custom' mode using customWidth, anchored to the far side (right in LTR mode).
+   * Small: <adapts to smallFluid>
+   * Medium: <adapts to smallFixedFar>
+   * Large: 48px fixed left margin, 32px Left/Right padding
+   * XLarge: 644px width, 32px Left/Right padding
+   * XXLarge: 643px width, 40px Left/Right padding
+   */
+  custom = 7
 }

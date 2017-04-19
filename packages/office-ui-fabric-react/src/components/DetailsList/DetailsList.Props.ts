@@ -9,6 +9,7 @@ import {
   IDragDropEvents,
   IDragDropContext,
 } from './../../utilities/dragdrop/index';
+import { IconName } from '../../Icon';
 import {
   IGroup,
   IGroupRenderProps
@@ -26,6 +27,12 @@ export interface IDetailsList {
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList> {
+  /**
+   * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDetailsList) => void;
+
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
 
@@ -98,6 +105,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
 
+  /** Callback fired on column resize */
+  onColumnResize?: (column?: IColumn, newWidth?: number) => void;
+
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 
@@ -136,7 +146,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
-  /** Optional callback to get the item key that will be used in the selection. */
+  /** Optional callback to get the item key, to be used in the selection and on render. */
   getKey?: (item: any, index?: number) => string;
 
   /** A text summary of the table set via aria-label. */
@@ -203,7 +213,12 @@ export interface IColumn {
   columnActionsMode?: ColumnActionsMode;
 
   /**
-   * Icon name to show in addition to the text.
+   * Optional iconName to use for the column header.
+   */
+  iconName?: IconName;
+
+  /**
+   * Class name to add to the Icon component.
    */
   iconClassName?: string;
 

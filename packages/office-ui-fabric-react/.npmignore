@@ -7,6 +7,10 @@
 .gitignore
 .vscode
 coverage
+temp
+images
+results
+*.build.log
 dist/*.stats.html
 dist/demo*.*
 gulpfile.js
@@ -14,9 +18,12 @@ index.html
 jsconfig.json
 karma.config.js
 node_modules
-src
+src/**/*
+!src/**/*.Props.ts
+!src/**/*.Example.tsx
 tsconfig.json
 tsd.json
 tslint.json
 typings
 webpack.config.js
+fabric-test*

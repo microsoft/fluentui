@@ -5,7 +5,7 @@ import {
   getId
 } from '../../Utilities';
 import { IRatingProps, RatingSize } from './Rating.Props';
-import './Rating.scss';
+import styles = require('./Rating.scss');
 
 export interface IRatingState {
   rating: number;
@@ -48,9 +48,9 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     }
 
     return <div className={ css('ms-Rating', this.props.className, {
-      'ms-Rating--large': this.props.size === RatingSize.Large
+      ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large
     }) } role='application'>
-      <div className={ 'ms-Rating-container' } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
+      <div className={ css('ms-Rating-container', styles.container) } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
         { stars }
       </div>
     </div>;
@@ -59,13 +59,13 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   private _renderStar(rating: number): JSX.Element {
     const inputId = `${this._id}-${rating}`;
 
-    return <div className={ css('ms-Rating-star', {
-      'is-selected': rating <= this.state.rating,
-      'is-inFocus': rating === this.state.focusedRating,
-      'is-disabled': this.props.disabled
+    return <div className={ css('ms-Rating-star', styles.star, {
+      ['is-selected ' + styles.starIsSelected]: rating <= this.state.rating,
+      ['is-inFocus ' + styles.starIsInFocus]: rating === this.state.focusedRating,
+      ['is-disabled ' + styles.starIsDisabled]: this.props.disabled
     }) } key={ rating }>
       <input
-        className='ms-Rating-input'
+        className={ css('ms-Rating-input', styles.input) }
         type='radio'
         name={ this._id }
         id={ inputId }
@@ -76,8 +76,8 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         onChange={ this._onChange.bind(this, rating) }
         onFocus={ this._onFocus.bind(this, rating) }
         onBlur={ this._onBlur.bind(this, rating) }
-        />
-      <label className='ms-Rating-label' htmlFor={ inputId }>
+      />
+      <label className={ css('ms-Rating-label', styles.label) } htmlFor={ inputId }>
         { this._getLabel(rating) }
         { this._getIcon() }
       </label>
@@ -110,7 +110,14 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   private _getLabel(rating: number): JSX.Element {
     const text = this.props.ariaLabelIcon || 'Star';
 
-    return <span id={ `${this._labelId}-${rating}` } className='ms-Rating-labelText'>{ `${rating} ${text}` }</span>;
+    return (
+      <span
+        id={ `${this._labelId}-${rating}` }
+        className={ css('ms-Rating-labelText', styles.labelText) }
+      >
+        { `${rating} ${text}` }
+      </span>
+    );
   }
 
   private _getIcon(): JSX.Element {

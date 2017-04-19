@@ -6,7 +6,7 @@ import {
   css,
   getRTL
 } from '../../Utilities';
-import { FocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
@@ -15,7 +15,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
-import './BasePicker.scss';
+import styles = require('./BasePicker.scss');
 
 export interface IBasePickerState {
   items?: any;
@@ -58,7 +58,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.items;
   }
 
-  public componentWillReceiveProps(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
+  public componentWillUpdate(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
@@ -71,6 +71,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   public focus() {
     this.focusZone.focus();
   }
+
   @autobind
   public dismissSuggestions() {
     this.setState({ suggestionsVisible: false });
@@ -94,27 +95,33 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return (
       <div
         ref={ this._resolveRef('root') }
-        className={ css('ms-BasePicker', className ? className : '') }
+        className={ css(
+          'ms-BasePicker',
+          className ? className : '') }
         onKeyDown={ this.onKeyDown }>
-        <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-          <FocusZone ref={ this._resolveRef('focusZone') } className='ms-BasePicker-text'>
-            { this.renderItems() }
-            <BaseAutoFill
-              { ...inputProps }
-              className='ms-BasePicker-input'
-              ref={ this._resolveRef('input') }
-              onFocus={ this.onInputFocus }
-              onInputValueChange={ this.onInputChange }
-              suggestedDisplayValue={ suggestedDisplayValue }
-              aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
-              aria-owns='suggestion-list'
-              aria-expanded='true'
-              aria-haspopup='true'
-              autoCapitalize='off'
-              autoComplete='off'
-              role='combobox' />
-          </FocusZone>
-        </SelectionZone>
+        <FocusZone
+          ref={ this._resolveRef('focusZone') }
+          direction={ FocusZoneDirection.horizontal }>
+          <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
+              { this.renderItems() }
+              <BaseAutoFill
+                { ...inputProps }
+                className={ css('ms-BasePicker-input', styles.pickerInput) }
+                ref={ this._resolveRef('input') }
+                onFocus={ this.onInputFocus }
+                onInputValueChange={ this.onInputChange }
+                suggestedDisplayValue={ suggestedDisplayValue }
+                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+                aria-owns='suggestion-list'
+                aria-expanded='true'
+                aria-haspopup='true'
+                autoCapitalize='off'
+                autoComplete='off'
+                role='combobox' />
+            </div>
+          </SelectionZone>
+        </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
@@ -126,7 +133,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       <Callout
         isBeakVisible={ false }
         gapSpace={ 0 }
-        targetElement={ this.root }
+        targetElement={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
         <TypedSuggestion
@@ -275,7 +282,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (!ev.shiftKey && value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -346,7 +353,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected addItem(item: T) {
     let newItems: T[] = this.state.items.concat([item]);
-    this.selection.setItems(newItems);
     this.setState({ items: newItems }, () => this.onChange());
   }
 
@@ -357,8 +363,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     if (index >= 0) {
       let newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-
-      this.selection.setItems(newItems);
       this.setState({ items: newItems }, () => this.onChange());
     }
   }
@@ -370,9 +374,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let firstItemToRemove = this.selection.getSelection()[0];
     let index: number = items.indexOf(firstItemToRemove);
 
-    this.selection.setItems(newItems);
-
-    this.setState({ items: newItems }, () => this.resetFocus(index));
+    this.setState({ items: newItems }, () => {
+      this.resetFocus(index);
+      this.onChange();
+    });
   }
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
@@ -411,10 +416,10 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           onKeyDown={ this.onKeyDown }>
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
-            <div className='ms-BasePicker-text'>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               <BaseAutoFill
                 { ...inputProps }
-                className='ms-BasePicker-input'
+                className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
                 onInputValueChange={ this.onInputChange }

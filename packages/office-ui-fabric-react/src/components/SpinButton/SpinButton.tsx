@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  IconButton,
-  Label
-} from '../../../lib/';
+import { IconButton } from '../../Button';
+import { Label } from '../../Label';
 import {
   BaseComponent,
   css,

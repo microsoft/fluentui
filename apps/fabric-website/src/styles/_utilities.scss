@@ -1,4 +1,6 @@
 // Text alignment
-.u-center {
-  text-align: center;
+:global {
+  .u-center {
+    text-align: center;
+  }
 }

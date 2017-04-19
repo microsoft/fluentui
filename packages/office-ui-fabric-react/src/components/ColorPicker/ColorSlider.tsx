@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   autobind,
   css
 } from '../../Utilities';
+import styles = require('./ColorPicker.scss');
 
 export interface IColorSliderProps {
   minValue?: number;
@@ -23,7 +24,7 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
-export class ColorSlider extends React.Component<IColorSliderProps, IColorSliderState> {
+export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,
     maxValue: 100,
@@ -36,24 +37,16 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     root: HTMLElement;
   };
 
-  private _events: EventGroup;
-
   constructor(props: IColorSliderProps) {
     super(props);
 
     let { initialValue } = this.props;
-
-    this._events = new EventGroup(this);
 
     this.state = {
       isAdjusting: false,
       origin: null,
       currentValue: initialValue
     };
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public render() {
@@ -65,12 +58,12 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     return (
       <div
         ref='root'
-        className={ css('ms-ColorPicker-slider', className, {
+        className={ css('ms-ColorPicker-slider', styles.slider, className, {
           'is-adjusting': isAdjusting
         }) }
         onMouseDown={ this._onMouseDown }>
-        <div className='ms-ColorPicker-sliderOverlay' style={ overlayStyle } />
-        <div className='ms-ColorPicker-thumb is-slider' style={ { left: currentPercentage + '%' } } />
+        <div className={ css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay) } style={ overlayStyle } />
+        <div className={ css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider) } style={ { left: currentPercentage + '%' } } />
       </div>
     );
   }

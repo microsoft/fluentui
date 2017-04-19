@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StoreSet } from './StoreSet';
+import { BaseComponent } from '../Utilities';
 
 export interface IStoreHostProps extends React.Props<StoreHost> {
   stores?: StoreSet;
@@ -9,7 +10,7 @@ export interface IStoreHostContext {
   stores?: StoreSet;
 }
 
-export class StoreHost extends React.Component<IStoreHostProps, {}> {
+export class StoreHost extends BaseComponent<IStoreHostProps, {}> {
   public static contextTypes = {
     stores: React.PropTypes.object
   };

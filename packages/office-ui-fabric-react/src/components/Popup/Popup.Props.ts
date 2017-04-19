@@ -3,7 +3,17 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Popup } from './Popup';
 
+export interface IPopup {
+
+}
+
 export interface IPopupProps extends React.HTMLProps<Popup> {
+  /**
+   * Optional callback to access the IPopup interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPopup) => void;
+
   /**
    * Aria role for popup
    */
@@ -14,16 +24,16 @@ export interface IPopupProps extends React.HTMLProps<Popup> {
    */
   ariaLabelledBy?: string;
 
- /**
-   * Defines the element id referencing the element containing the description for the popup.
-   */
+  /**
+    * Defines the element id referencing the element containing the description for the popup.
+    */
   ariaDescribedBy?: string;
 
- /**
-  * A callback function for when the popup is dismissed from the close button or light dismiss. If provided, will
-  * handle escape keypresses and call this. The event will be stopped/canceled.
-  */
-  onDismiss?: (ev?: React.MouseEvent<HTMLElement>) => any;
+  /**
+   * A callback function for when the popup is dismissed from the close button or light dismiss. If provided, will
+   * handle escape keypresses and call this. The event will be stopped/canceled.
+   */
+  onDismiss?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => any;
 
   /**
    *  Optional class name for the root popup div.

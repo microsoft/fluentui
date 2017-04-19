@@ -14,9 +14,10 @@ describe('TextField', () => {
     return renderedDOM as HTMLElement;
   }
 
-  function mockEvent(targetValue: string = ''): React.SyntheticEvent<HTMLElement> {
+  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
     const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: React.SyntheticEvent<HTMLElement> = { target } as React.SyntheticEvent<HTMLElement>;
+    const event: ReactTestUtils.SyntheticEventData = { target };
+
     return event;
   }
 
@@ -32,7 +33,7 @@ describe('TextField', () => {
       <TextField
         label={ exampleLabel }
         value={ exampleValue }
-        />
+      />
     );
 
     // Assert on the input element.
@@ -60,7 +61,7 @@ describe('TextField', () => {
       <TextField
         label='text-field-label'
         value='whatever value'
-        />
+      />
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -105,7 +106,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ validator }
-          />
+        />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -125,7 +126,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ validator }
-          />
+        />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -141,10 +142,10 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ () => errorMessage }
-          />
+        />
       );
 
-      assertErrorMessage(renderedDOM, errorMessage);
+      return delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
@@ -153,11 +154,11 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ () => Promise.resolve(errorMessage) }
-          />
+        />
       );
 
       // The Promise based validation need to assert with async pattern.
-      return delay(1).then(() => assertErrorMessage(renderedDOM, errorMessage));
+      return delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
     });
 
     it('should not render error message when onGetErrorMessage return an empty string', () => {
@@ -166,10 +167,10 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ () => '' }
-          />
+        />
       );
 
-      assertErrorMessage(renderedDOM, /* exist */ false);
+      delay(20).then(() => assertErrorMessage(renderedDOM, /* exist */ false));
     });
 
     it('should not render error message when no value is provided', () => {
@@ -179,10 +180,10 @@ describe('TextField', () => {
         <TextField
           label='text-field-label'
           onGetErrorMessage={ (value: string) => actualValue = value }
-          />
+        />
       );
 
-      assertErrorMessage(renderedDOM, /* exist */ false);
+      delay(20).then(() => assertErrorMessage(renderedDOM,  /* exist */ false));
       expect(actualValue).to.equal('');
     });
 
@@ -195,16 +196,16 @@ describe('TextField', () => {
         <TextField
           value='initial value'
           onGetErrorMessage={ validator }
-          />
+        />
       );
 
-      assertErrorMessage(renderedDOM, errorMessage);
+      delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
 
       ReactDOM.render(
         <TextField
           value=''
           onGetErrorMessage={ validator }
-          />,
+        />,
         renderedDOM.parentElement
       );
 
@@ -223,7 +224,7 @@ describe('TextField', () => {
           value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusIn
-          />
+        />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -246,7 +247,7 @@ describe('TextField', () => {
           value='initial value'
           onGetErrorMessage={ validatorSpy }
           validateOnFocusOut
-          />
+        />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -271,7 +272,7 @@ describe('TextField', () => {
           onGetErrorMessage={ validatorSpy }
           validateOnFocusOut
           validateOnFocusIn
-          />
+        />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -284,13 +285,30 @@ describe('TextField', () => {
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(validationCallCount).to.equal(3);
     });
+
+    it('should not trigger validation on component mount', () => {
+      let validationCallCount = 0;
+      let validatorSpy = value => {
+        validationCallCount++;
+        return '';
+      };
+
+      renderIntoDocument(
+        <TextField
+          value='initial value'
+          onGetErrorMessage={ validatorSpy }
+          validateOnLoad={ false }
+        />
+      );
+      expect(validationCallCount).to.equal(0);
+    });
   });
 
   it('can render a default value', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
         defaultValue='initial value'
-        />
+      />
     );
 
     expect(renderedDOM.querySelector('input').value).equals('initial value');
@@ -301,9 +319,33 @@ describe('TextField', () => {
       <TextField
         defaultValue='initial value'
         multiline={ true }
-        />
+      />
     );
 
     expect(renderedDOM.querySelector('textarea').value).equals('initial value');
+  });
+
+  it('should call onChanged handler for input change', () => {
+    let callCount = 0;
+    let onChangedSpy = value => { callCount++; };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue='initial value'
+        onChanged={ onChangedSpy }
+        onGetErrorMessage={ value => value.length > 0 ? '' : 'error' }
+      />
+    );
+
+    expect(callCount).to.equal(0);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent('value change'));
+    expect(callCount).to.equal(1);
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
+    expect(callCount).to.equal(2);
   });
 });

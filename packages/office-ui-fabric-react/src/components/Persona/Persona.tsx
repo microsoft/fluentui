@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   autobind,
   css,
   divProperties,
   getInitials,
   getNativeProps,
-  getRTL
+  getRTL,
+  IRenderFunction
 } from '../../Utilities';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
 import {
@@ -19,7 +21,7 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import './Persona.scss';
+import styles = require('./Persona.scss');
 
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
@@ -28,7 +30,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightPink,
   PersonaInitialsColor.green,
   PersonaInitialsColor.darkGreen,
-  PersonaInitialsColor.lightPink,
+  PersonaInitialsColor.pink,
   PersonaInitialsColor.magenta,
   PersonaInitialsColor.purple,
   PersonaInitialsColor.black,
@@ -46,7 +48,7 @@ export interface IPersonaState {
   isImageLoaded?: boolean;
 }
 
-export class Persona extends React.Component<IPersonaProps, IPersonaState> {
+export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,
@@ -66,7 +68,6 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       className,
       size,
       imageUrl,
-      imageInitials,
       initialsColor,
       presence,
       primaryText,
@@ -74,12 +75,15 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       tertiaryText,
       optionalText,
       hidePersonaDetails,
-      imageShouldFadeIn
+      imageShouldFadeIn,
+      onRenderInitials = this._onRenderInitials,
+      onRenderPrimaryText,
+      onRenderSecondaryText,
+      onRenderTertiaryText,
+      onRenderOptionalText,
+      imageShouldStartVisible
     } = this.props;
 
-    let isRTL = getRTL();
-
-    imageInitials = imageInitials || getInitials(primaryText, isRTL);
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
     let presenceElement = null;
@@ -100,45 +104,92 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
           userPresence = '';
       }
       if (userPresence) {
-        let iconClass = `ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`;
+        let iconClass = css(`ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`, styles.presenceIcon);
         statusIcon = <i className={ iconClass }></i>;
       }
-      presenceElement = <div className='ms-Persona-presence'>{ statusIcon }</div>;
+      presenceElement = <div className={ css('ms-Persona-presence', styles.presence) }>{ statusIcon }</div>;
     }
 
     let divProps = getNativeProps(this.props, divProperties);
-    let personaDetails = <div className='ms-Persona-details'>
-      <div className='ms-Persona-primaryText'>{ primaryText }</div>
-      { secondaryText ? (
-        <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
-      ) : (null) }
-      <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
-      <div className='ms-Persona-optionalText'>{ optionalText }</div>
+    let personaDetails = <div className={ css('ms-Persona-details', styles.details) }>
+      { this._renderElement(
+        this.props.primaryText,
+        css('ms-Persona-primaryText', styles.primaryText),
+        onRenderPrimaryText) }
+      { this._renderElement(
+        this.props.secondaryText,
+        css('ms-Persona-secondaryText', styles.secondaryText),
+        onRenderSecondaryText) }
+      { this._renderElement(
+        this.props.tertiaryText,
+        css('ms-Persona-tertiaryText', styles.tertiaryText),
+        onRenderTertiaryText) }
+      { this._renderElement(
+        this.props.optionalText,
+        css('ms-Persona-optionalText', styles.optionalText),
+        onRenderOptionalText) }
       { this.props.children }
     </div>;
 
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
-        >
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
+      >
         { size !== PersonaSize.tiny && (
-          <div className='ms-Persona-imageArea'>
+          <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
             {
               !this.state.isImageLoaded &&
-              (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
+              (
+                <div
+                  className={ css(
+                    'ms-Persona-initials',
+                    styles.initials,
+                    PERSONA_INITIALS_COLOR[initialsColor]
+                  ) }
+                  aria-hidden='true'
+                >
+                  { onRenderInitials(this.props, this._onRenderInitials) }
+                </div>
+              )
             }
             <Image
-              className='ms-Persona-image'
+              className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
               src={ imageUrl }
               shouldFadeIn={ imageShouldFadeIn }
+              shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange } />
           </div>
         ) }
         { presenceElement }
         { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
       </div>
+    );
+  }
+
+  @autobind
+  private _renderElement(text: string, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
+    return (
+      <div className={ className }>
+        { render ? render(this.props) : text }
+      </div>
+    );
+  }
+
+  @autobind
+  private _onRenderInitials(props: IPersonaProps): JSX.Element {
+    let {
+      imageInitials,
+      primaryText
+    } = props;
+
+    let isRTL = getRTL();
+
+    imageInitials = imageInitials || getInitials(primaryText, isRTL);
+
+    return (
+      <span>{ imageInitials }</span>
     );
   }
 

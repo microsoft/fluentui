@@ -8,9 +8,9 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import './Slider.scss';
 import { ISliderProps, ISlider } from './Slider.Props';
 import { Label } from '../../Label';
+import styles = require('./Slider.scss');
 
 export interface ISliderState {
   value?: number;
@@ -43,6 +43,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   constructor(props?: ISliderProps) {
     super(props);
+
+    this._warnMutuallyExclusive({
+      'value': 'defaultValue'
+    });
 
     this._id = getId('Slider');
 
@@ -89,17 +93,17 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     return (
       <div
-        className={ css('ms-Slider', className, {
-          'ms-Slider-enabled': !disabled,
-          'ms-Slider-disabled': disabled
+        className={ css('ms-Slider', styles.root, className, {
+          ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
+          ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled
         }) }
         ref='root'>
         { label && (
-          <Label { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
+          <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
             { label }
           </Label>
         ) }
-        <div className='ms-Slider-container'>
+        <div className={ css('ms-Slider-container', styles.container) }>
           <button
             aria-valuenow={ value }
             aria-valuemin={ min }
@@ -108,9 +112,9 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             { ...onTouchStartProp }
             { ...onKeyDownProp }
             { ...buttonProps }
-            className={ css('ms-Slider-slideBox', buttonProps.className, {
+            className={ css('ms-Slider-slideBox', styles.slideBox, buttonProps.className, {
               'ms-Slider-showValue': showValue,
-              'ms-Slider-showTransitions': (renderedValue === value)
+              ['ms-Slider-showTransitions ' + styles.showTransitions]: (renderedValue === value)
             }) }
             id={ this._id }
             disabled={ disabled }
@@ -119,21 +123,21 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
           >
             <div
               ref='sliderLine'
-              className='ms-Slider-line'
+              className={ css('ms-Slider-line', styles.line) }
             >
               <span
                 ref='thumb'
-                className='ms-Slider-thumb'
+                className={ css('ms-Slider-thumb', styles.thumb) }
                 { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
                 style={ getRTL() ?
                   { 'right': thumbOffsetPercent + '%' } :
                   { 'left': thumbOffsetPercent + '%' } }
               />
-              <span className='ms-Slider-active' style={ { 'width': thumbOffsetPercent + '%' } }></span>
-              <span className='ms-Slider-inactive' style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
+              <span className={ css('ms-Slider-active', styles.activeSection) } style={ { 'width': thumbOffsetPercent + '%' } }></span>
+              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
             </div>
           </button>
-          { showValue && <label className='ms-Label ms-Slider-value'>{ value }</label> }
+          { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
         </div>
       </div>
     ) as React.ReactElement<{}>;

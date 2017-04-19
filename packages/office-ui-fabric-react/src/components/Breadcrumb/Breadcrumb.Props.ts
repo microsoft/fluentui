@@ -2,8 +2,18 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Breadcrumb } from './Breadcrumb';
+import { IRenderFunction } from '../../Utilities';
+
+export interface IBreadcrumb {
+
+}
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
+  /**
+   * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IBreadcrumb) => void;
 
   /**
    * Collection of breadcrumbs to render
@@ -20,6 +30,9 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * If not specified, all breadcrumbs will be rendered.
    */
   maxDisplayedItems?: number;
+
+  /** Method to call when trying to render an item. */
+  onRenderItem?: IRenderFunction<IBreadcrumbItem>;
 }
 
 export interface IBreadcrumbItem {

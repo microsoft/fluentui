@@ -11,6 +11,8 @@ Are you willing to submit a PR to fix? (Yes, No)
 
 Requested priority: (Blocking, High, Normal, Low) 
 
+Products/sites affected: (if applicable)
+
 #### Describe the issue:
 
 <!-- fill this out -->

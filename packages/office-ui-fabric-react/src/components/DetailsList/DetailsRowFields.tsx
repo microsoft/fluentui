@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
-import { css } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
+import styles = require('./DetailsRow.scss');
 
 export interface IDetailsRowFieldsProps {
   item: any;
@@ -13,7 +14,7 @@ export interface IDetailsRowFieldsState {
   cellContent: React.ReactNode[];
 }
 
-export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
+export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDetailsRowFieldsState> {
   constructor(props: IDetailsRowFieldsProps) {
     super();
 
@@ -29,13 +30,14 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, ID
     let { cellContent } = this.state;
 
     return (
-      <div className='ms-DetailsRow-fields' data-automationid='DetailsRowFields'>
+      <div className={ css('ms-DetailsRow-fields', styles.fields) } data-automationid='DetailsRowFields'>
         { columns.map((column, columnIndex) => (
           <div
             key={ columnIndex }
             role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
-            className={ css('ms-DetailsRow-cell', column.className, {
-              'is-multiline': column.isMultiline
+            className={ css('ms-DetailsRow-cell', styles.cell, column.className, {
+              'is-multiline': column.isMultiline,
+              [styles.isMultiline]: column.isMultiline
             }) }
             style={ { width: column.calculatedWidth } }
             data-automationid='DetailsRowCell'

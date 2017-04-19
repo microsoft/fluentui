@@ -4,14 +4,21 @@ import * as React from 'react';
 import {
   BaseComponent,
   autobind,
+  css,
   divProperties,
-  getNativeProps
+  getNativeProps,
+  assign
 } from '../../Utilities';
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
+import styles = require('./Tooltip.scss');
 
-export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
+export interface ITooltipHostState {
+  isTooltipVisible?: boolean;
+}
+
+export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
 
   public static defaultProps = {
     delay: TooltipDelay.medium
@@ -31,11 +38,11 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
   // Render
   public render() {
-    let { content, children, directionalHint, delay } = this.props;
+    let { calloutProps, content, children, directionalHint, delay } = this.props;
     let { isTooltipVisible } = this.state;
     return (
       <div
-        className='ms-TooltipHost'
+        className={ css('ms-TooltipHost', styles.host) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
@@ -43,17 +50,17 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
         onMouseLeave={ this._onTooltipMouseLeave }
       >
         { children }
-        { isTooltipVisible ? (
+        { isTooltipVisible && (
           <Tooltip
             delay={ delay }
             content={ content }
             targetElement={ this._tooltipHost }
             directionalHint={ directionalHint }
-            calloutProps={ { onDismiss: this._onTooltipCallOutDismiss } }
+            calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
             { ...getNativeProps(this.props, divProperties) }
           >
           </Tooltip>
-        ) : (null) }
+        ) }
       </div>
     );
   }

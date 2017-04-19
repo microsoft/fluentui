@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   assign,
-  autobind
+  autobind,
+  css
 } from '../../Utilities';
 import {
   IColor,
@@ -11,6 +12,7 @@ import {
   getFullColorString,
   hsv2hex
 } from './colors';
+import styles = require('./ColorPicker.scss');
 
 export interface IColorRectangleProps {
   color: IColor;
@@ -26,7 +28,7 @@ export interface IColorPickerState {
   fullColorString?: string;
 }
 
-export class ColorRectangle extends React.Component<IColorRectangleProps, IColorPickerState> {
+export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPickerState> {
   public static defaultProps = {
     minSize: 220
   };
@@ -36,14 +38,10 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     root: HTMLElement;
   };
 
-  private _events: EventGroup;
-
   constructor(props: IColorRectangleProps) {
     super(props);
 
     let { color } = this.props;
-
-    this._events = new EventGroup(this);
 
     this.state = {
       isAdjusting: false,
@@ -71,10 +69,10 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     let { color, fullColorString } = this.state;
 
     return (
-      <div ref='root' className='ms-ColorPicker-colorRect' style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
-        <div className='ms-ColorPicker-light' />
-        <div className='ms-ColorPicker-dark' />
-        <div className='ms-ColorPicker-thumb' style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } } />
+      <div ref='root' className={ css('ms-ColorPicker-colorRect', styles.colorRect) } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
+        <div className={ css('ms-ColorPicker-light', styles.light) } />
+        <div className={ css('ms-ColorPicker-dark', styles.dark) } />
+        <div className={ css('ms-ColorPicker-thumb', styles.thumb) } style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } } />
       </div>
     );
   }

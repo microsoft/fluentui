@@ -1,11 +1,22 @@
+import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 
+export interface IDropdown {
+
+}
+
 export interface IDropdownProps extends React.Props<Dropdown> {
+  /**
+   * Optional callback to access the IDropdown interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDropdown) => void;
+
   /**
    * Descriptive label for the Dropdown
    */
-  label: string;
+  label?: string;
 
   /**
   * Aria Label for the Dropdown for screen reader users.
@@ -72,6 +83,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    * Whether or not the Dropdown is disabled.
    */
   disabled?: boolean;
+
+  /**
+   * Whether or not the Dropdown is required.
+   */
+  required?: boolean;
 
   // @todo: Update version numbers for depriate and removal
   /**

@@ -1,6 +1,17 @@
 import * as React from 'react';
+import { Layer } from './Layer';
 
-export interface ILayerProps extends React.HTMLProps<HTMLDivElement> {
+export interface ILayer {
+
+}
+
+export interface ILayerProps extends React.HTMLProps<HTMLDivElement | Layer> {
+  /**
+   * Optional callback to access the ILayer interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ILayer) => void;
+
   /** Callback for when the layer is mounted. */
   onLayerMounted?: () => void;
 
