@@ -13,6 +13,7 @@ $button-iconButtonSize: $button-core-default-height;
 
 .root {
   @include button-core-root-styles;
+  border-width: 0;
 
   background-color: transparent;
   padding: 0 4px;

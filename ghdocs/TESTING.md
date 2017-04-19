@@ -8,10 +8,12 @@ Our tests are built with [Mocha](https://mochajs.org/), [Chai](http://chaijs.com
 To run tests:
 
 1. In command prompt navigate to the appropriate package, for example git/office-ui-fabric-react/packages/office-ui-fabric-react
-2. gulp test to run all of the tests
-  * To run only one test add --match <Testname>
-  * To debug your test add --debug
-    * You will need to open the localhost url found in your command prompt in your browser. Then click "debug"
+2. Run `gulp test` to run all of the tests
+  * To run only one test add `--match <Testname>`. Example: `gulp test --match Button`
+  * To debug your test add `--debug`. Example: `gulp test --debug`.
+    1. After running this, you will need to open the localhost url found in your command prompt.
+    2. A page will open with a "Debug" button. Pressing that will open a page that loads the tests.
+    3. Press f12 in the new page. Tests will be in a tests.js bundle, and you'll need to find your code in there.
 
 ## Examples
 

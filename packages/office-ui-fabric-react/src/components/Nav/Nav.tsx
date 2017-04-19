@@ -117,7 +117,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           [styles.linkIsOnExpanded]: this._hasExpandButton
         }) }
         href={ link.url }
-        icon={ link.icon }
+        iconProps={ { iconName: link.icon } }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
         { link.name }

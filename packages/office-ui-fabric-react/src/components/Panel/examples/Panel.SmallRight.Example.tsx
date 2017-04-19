@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
@@ -15,7 +15,11 @@ export class PanelSmallRightExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._onShowPanel }>Open Panel</Button>
+        <DefaultButton
+          description='Opens the Sample Panel'
+          onClick={ this._onShowPanel }
+          text='Open Panel'
+        />
         <Panel
           isOpen={ this.state.showPanel }
           type={ PanelType.smallFixedFar }
