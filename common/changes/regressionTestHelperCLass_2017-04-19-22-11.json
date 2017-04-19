@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Regression Test: helper class",
+      "type": "patch"
+    }
+  ],
+  "email": "r33najain@gmail.com"
+}
