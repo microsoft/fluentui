@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from "react-dom";
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -26,6 +27,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
+  calculatedHeight?: number;
 }
 
 @withResponsiveMode
@@ -189,7 +191,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode
     } = this.props;
-
+    let { calculatedHeight } = this.state;
     let isSmall = responsiveMode <= ResponsiveMode.medium;
 
     return (
@@ -214,7 +216,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
+          <div style={ { width: this._dropDown.clientWidth - 2, maxHeight: calculatedHeight === 0 ? undefined : calculatedHeight } }>
             { onRenderList(props, this._onRenderList) }
           </div>
         </Callout>
@@ -256,6 +258,31 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return this._renderHeader(item);
       default:
         return this._renderOption(item);
+    }
+  }
+
+  private _calculateMaxHeight() {
+    let { pageSize } = this.props;
+    let maxHeight = 0;
+    if (pageSize) {
+      let { selectedIndex } = this.state;
+      if (-1 === selectedIndex) {
+        selectedIndex = 0;
+      }
+
+      for (let i = selectedIndex; i < pageSize + selectedIndex; i++) {
+        let item = this.refs[Dropdown.Option + i] as CommandButton;
+        if (item) {
+          let itemDOM = ReactDOM.findDOMNode(item);
+          if (itemDOM) {
+            maxHeight += itemDOM.clientHeight;
+          }
+        }
+      }
+
+      if (maxHeight !== this.state.calculatedHeight) {
+        this.setState({ calculatedHeight: maxHeight });
+      }
     }
   }
 
@@ -314,6 +341,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onPositioned() {
     this._focusZone.focus();
+    this._calculateMaxHeight();
   }
 
   private _onItemClick(index) {
