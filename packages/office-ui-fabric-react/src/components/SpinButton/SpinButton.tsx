@@ -34,10 +34,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _labelId: string;
   private _lastValidValue: string;
 
-  private _onBlur?: (value: string) => string;
+  private _onValidate?: (value: string) => string;
   private _onIncrement?: (value: string) => string;
   private _onDecrement?: (value: string) => string;
-  private _defaultOnBlur = (value: string) => {
+  private _defaultOnValidate = (value: string) => {
     if (isNaN(+value)) {
       return this._lastValidValue;
     }
@@ -82,11 +82,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._inputId = getId('input');
 
     if (props.defaultValue) {
-      this._onBlur = this._defaultOnBlur;
+      this._onValidate = this._defaultOnValidate;
       this._onIncrement = this._defaultOnIncrement;
       this._onDecrement = this._defaultOnDecrement;
     } else {
-      this._onBlur = props.onBlur;
+      this._onValidate = props.onValidate;
       this._onIncrement = props.onIncrement;
       this._onIncrement = this._onIncrement.bind(this);
       this._onDecrement = props.onDecrement;
@@ -94,7 +94,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
 
     // bind this (for this class) to all the methods
-    this._blur = this._blur.bind(this);
+    this._validate = this._validate.bind(this);
     this._updateValue = this._updateValue.bind(this);
     this._stop = this._stop.bind(this);
     this.focus = this.focus.bind(this);
@@ -150,7 +150,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             aria-valuenow={ value }
             aria-valuemin={ this.props.min && String(this.props.min) }
             aria-valuemax={ this.props.max && String(this.props.max) }
-            onBlur={ this._blur }
+            onBlur={ this._validate }
             ref={ this._resolveRef('_input') }
             onFocus={ this.focus }
             onKeyDown={ this._handleKeyDown }
@@ -229,15 +229,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   /**
    * This is used when validating text entry
-   * in the text field (not when changed via the buttons)
+   * in the input (not when changed via the buttons)
    * @param newValue - the pending value to check if it is valid
    * @returns an error message to display to the user, empty string if no error
    */
-  private _blur(event: React.FocusEvent<HTMLInputElement>) {
+  private _validate(event: React.FocusEvent<HTMLInputElement>) {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
-      var newValue = this._onBlur(value);
+      var newValue = this._onValidate(value);
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
     }

@@ -74,15 +74,10 @@ export interface ISpinButtonProps {
   labelGapSpace?: number;
 
   /**
-   * The method is used to get the validation error message and determine whether the input value is valid or not.
-   *
-   *   When it returns string:
-   *   - If valid, it returns empty string.
-   *   - If invalid, it returns the error message string and the text field will
-   *     show a red border and show an error message below the text field.
+   * The method is triggered when the value inside the SpinButton should be validated.
    *
    */
-  onBlur?: (value: string) => string;
+  onValidate?: (value: string) => string;
 
   /**
    * TODO

@@ -25,7 +25,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
         width={ '120px' }
         label='SpinButton with custom implementation:'
         value={ '7' + suffix }
-        onBlur={ (value: string) => {
+        onValidate={ (value: string) => {
           value = this.removeSuffix(value, suffix);
           if (isNaN(+value)) {
             return '0' + suffix
