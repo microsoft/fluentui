@@ -14,7 +14,7 @@ const styles: CSSProperties = {
 
 export class Page extends React.PureComponent<IPageProps, {}> {
   public render(): JSX.Element {
-    let { children }: IPageProps = this.props;
+    const { children }: IPageProps = this.props;
 
     return (
       <div { ...css(styles.root) }>{ children }</div>

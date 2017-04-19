@@ -1415,4 +1415,3 @@ export const yammerLogo: string = '\uED19';
 export const zoom: string = '\uE71E';
 export const zoomIn: string = '\uE8A3';
 export const zoomOut: string = '\uE71F';
-

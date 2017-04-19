@@ -10,12 +10,11 @@ export interface IIconClassNames extends IClassNames<iconStyles.IIcons> { }
 // tslint:disable-next-line:no-any
 export const icons: IIconClassNames = {};
 
+// tslint:disable-next-line:forin
 for (const iconName in iconStyles) {
-  if (iconStyles.hasOwnProperty(iconName)) {
-    Object.defineProperty(icons, iconName, {
-      get: () => before({ content: `"${iconStyles[iconName]}"` }).toString(),
-      enumerable: true,
-      configurable: true
-    });
-  }
+  Object.defineProperty(icons, iconName, {
+    get: (): string => before({ content: `"${iconStyles[iconName]}"` }).toString(),
+    enumerable: true,
+    configurable: true
+  });
 }

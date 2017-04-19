@@ -12,10 +12,22 @@ let _theme: ITheme = {
   fonts
 };
 
+/**
+ * Gets the theme object.
+ *
+ * @export
+ * @returns {ITheme}
+ */
 export function getTheme(): ITheme {
   return _theme;
 }
 
+/**
+ * Mixes the given theme settings into the current theme object.
+ *
+ * @export
+ * @param {ITheme} theme Partial theme overrides.
+ */
 export function setTheme(theme: ITheme): void {
   _theme = {
     colors: assign({}, _theme.colors, theme.colors),

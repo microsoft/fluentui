@@ -8,11 +8,13 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "importHelpers": true,
     "types": [
       "chai",
       "mocha",
       "webpack-env"
     ],
+    "outDir": "./lib",
     "paths": {
       "office-ui-fabric-react/lib/*": [
         "./src/*"

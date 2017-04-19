@@ -29,7 +29,7 @@ export class FontPage extends BaseComponent<{}, {}> {
         <PageHeader text='Fonts' />
         <table>
           <tbody>
-            { Object.keys(theme.fonts).map(fontName => (
+            { Object.keys(theme.fonts).map((fontName: string) => (
               <tr { ...css(styles.row) } key={ fontName }>
                 <td {...css(styles.cell) }>{ `${fontName}` }</td>
                 <td { ...css(styles.cell) }>{ `${theme.fonts[fontName].fontSize}` }</td>
@@ -42,4 +42,3 @@ export class FontPage extends BaseComponent<{}, {}> {
     );
   }
 }
-

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { css, CSSProperties } from 'glamor';
-import { getTheme } from '../styles/theme';
+import { getTheme, ITheme } from '../styles/theme';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Page, PageHeader } from './components';
 import { classNames } from '../classNames/index';
 
-const { colors, fonts } = getTheme();
+const { colors, fonts }: ITheme = getTheme();
 
 const styles: CSSProperties = {
   swatch: {
@@ -29,7 +29,7 @@ const styles: CSSProperties = {
   }
 };
 
-const COLUMNS = [
+const COLUMNS: IColumn[] = [
   {
     key: 'name',
     name: 'Name',
@@ -68,10 +68,10 @@ export class ColorPage extends BaseComponent<{}, {}> {
   public render(): JSX.Element {
     const items: IColorItem[] = [];
 
-    Object.keys(colors).forEach(colorName => {
-      const colorValue = colors[colorName];
+    Object.keys(colors).forEach((colorName: string) => {
+      const colorValue: string = colors[colorName];
 
-      ['', 'Hover', 'Background', 'BackgroundHover'].forEach(suffix => {
+      ['', 'Hover', 'Background', 'BackgroundHover'].forEach((suffix: string) => {
         items.push({
           key: 'item' + items.length,
           name: colorName + suffix,

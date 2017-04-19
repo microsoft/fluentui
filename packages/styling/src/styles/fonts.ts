@@ -93,12 +93,46 @@ function _registerFontFace(
   'Hebrew',
   'Vietnamese',
   'WestEuropean'
-].forEach(language => {
-  _registerFontFace(`'Segoe UI${language ? ' ' + language : ''}'`, 'Segoe UI Light', FONT_BASE_URL, 'segoeui-light', lightWeight);
-  _registerFontFace(`'Segoe UI${language ? ' ' + language : ''}'`, 'Segoe UI Semilight', FONT_BASE_URL, 'segoeui-semilight', 200);
-  _registerFontFace(`'Segoe UI${language ? ' ' + language : ''}'`, 'Segoe UI', FONT_BASE_URL, 'segoeui-regular', regularWeight);
-  _registerFontFace(`'Segoe UI${language ? ' ' + language : ''}'`, 'Segoe UI Semibold', FONT_BASE_URL, 'segoeui-semibold', semiboldWeight);
+].forEach((language: string) => {
+
+  _registerFontFace(
+    `'Segoe UI${language ? ' ' + language : ''}'`,
+    'Segoe UI Light',
+    FONT_BASE_URL,
+    'segoeui-light',
+    lightWeight
+  );
+
+  _registerFontFace(
+    `'Segoe UI${language ? ' ' + language : ''}'`,
+    'Segoe UI Semilight',
+    FONT_BASE_URL,
+    'segoeui-semilight',
+    200
+  );
+
+  _registerFontFace(
+    `'Segoe UI${language ? ' ' + language : ''}'`,
+    'Segoe UI',
+    FONT_BASE_URL,
+    'segoeui-regular',
+    regularWeight
+  );
+
+  _registerFontFace(
+    `'Segoe UI${language ? ' ' + language : ''}'`,
+    'Segoe UI Semibold',
+    FONT_BASE_URL,
+    'segoeui-semibold',
+    semiboldWeight
+  );
 });
 
 // Icon font
-_registerFontFace('FabricMDL2Icons', 'FabricMDL2Icons', ICON_BASE_URL, 'fabricmdl2icons', regularWeight);
+_registerFontFace(
+  'FabricMDL2Icons',
+  'FabricMDL2Icons',
+  ICON_BASE_URL,
+  'fabricmdl2icons',
+  regularWeight
+);

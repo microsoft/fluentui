@@ -5,8 +5,8 @@ import * as icons from '../styles/icons';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Page, PageHeader } from './components';
-import { getStyles } from './IconPage.styles';
 import { IconTile } from './IconTile';
+import { getStyles } from './IconPage.styles';
 
 export interface IIconPageState {
   iconNames: string[];

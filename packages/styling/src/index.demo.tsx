@@ -3,11 +3,13 @@ import * as Glamor from 'glamor';
 import './utilities/glamorPlugins';
 
 // Force glamor speedy mode.
-Glamor['speedy'](true);
+// tslint:disable-next-line:no-string-literal
+Glamor['speedy'](false);
 
 import { setTheme } from './styles/theme';
 
 // Example of setting theming overrides!
+/*
 setTheme({
   colors: { themePrimary: 'red' },
   fonts: {
@@ -17,7 +19,7 @@ setTheme({
     }
   }
 });
-
+*/
 
 import { examplesOf, createApp } from '@uifabric/example-app-base';
 import { ColorPage } from './examples/ColorPage';

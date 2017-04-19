@@ -1,12 +1,13 @@
 {
   "name": "@uifabric/styling",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "index.js",
   "scripts": {
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
   "devDependencies": {
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/mocha": "^2.2.39",
@@ -27,6 +28,7 @@
     "react-dom": "^15.4.2",
     "source-map-loader": "0.1.5",
     "ts-loader": "^2.0.1",
+    "tslib": "^1.6.0",
     "tslint": "^3.15.1",
     "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "^2.2.1",

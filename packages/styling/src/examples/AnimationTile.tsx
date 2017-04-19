@@ -114,5 +114,6 @@ export class AnimationTile extends BaseComponent<IAnimationTileProps, IAnimation
     this._async.setTimeout(() => {
       this.setState({ isAnimating: false });
     }, 2000);
-  };
+  }
+
 }
