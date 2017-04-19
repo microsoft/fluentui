@@ -58,7 +58,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     min: 0,
     max: 100,
     disabled: false,
-    defaultValue: '0',
     labelPosition: Position.start,
     label: null
   };
@@ -82,24 +81,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._labelId = getId('Label');
     this._inputId = getId('input');
 
-    if (props.onBlur) {
-      this._onBlur = props.onBlur;
-    } else {
+    if (props.defaultValue) {
       this._onBlur = this._defaultOnBlur;
-    }
-
-    if (props.onIncrement) {
+      this._onIncrement = this._defaultOnIncrement;
+      this._onDecrement = this._defaultOnDecrement;
+    } else {
+      this._onBlur = props.onBlur;
       this._onIncrement = props.onIncrement;
       this._onIncrement = this._onIncrement.bind(this);
-    } else {
-      this._onIncrement = this._defaultOnIncrement;
-    }
-
-    if (props.onDecrement) {
       this._onDecrement = props.onDecrement;
       this._onDecrement = this._onDecrement.bind(this);
-    } else {
-      this._onDecrement = this._defaultOnDecrement;
     }
 
     // bind this (for this class) to all the methods
