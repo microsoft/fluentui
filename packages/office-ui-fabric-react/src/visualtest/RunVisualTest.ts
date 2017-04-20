@@ -21,7 +21,7 @@ export class RunVisualTest {
   private secondLayer?: RunVisualTest;
   private componentExtnid;
   private fileName: string;
-
+  private eventFunctions;
   constructor(props: IRunVisualTest) {
 
     this.casps = casper;
@@ -33,7 +33,7 @@ export class RunVisualTest {
     this.secondLayer = props.secondLayer;
     this.fileName = props.componentId;
     this.componentExtnid = props.componentIdType + props.componentId;
-
+    this.eventFunctions = props.eventFunctions;
   }
 
   /* tslint:disable:no-function-expression */

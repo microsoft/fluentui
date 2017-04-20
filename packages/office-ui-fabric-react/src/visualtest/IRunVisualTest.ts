@@ -9,5 +9,6 @@ export interface IRunVisualTest {
   eventType: EventLayer;
   eventList: ScreenEvent[];
   secondLayer?: RunVisualTest;
+  eventFunctions?;
 
 }
