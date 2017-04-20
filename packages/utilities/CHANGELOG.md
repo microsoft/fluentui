@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 14 Apr 2017 03:06:28 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Apr 2017 16:54:26 GMT and should not be manually modified.
+
+## 1.8.0
+Wed, 19 Apr 2017 16:54:26 GMT
+
+### Minor changes
+
+- Adding warn utilities for console logging warnings on misuse.
 
 ## 1.7.0
 Fri, 14 Apr 2017 03:06:28 GMT

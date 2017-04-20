@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { VisualTestState } from './VisualTestState';
 import { Route, Router } from './utilities/router/index';
-import { setBaseUrl } from '@uifabric/utilities/lib/resources';
+import { setBaseUrl } from './Utilities';
 
 setBaseUrl('./dist/');
 

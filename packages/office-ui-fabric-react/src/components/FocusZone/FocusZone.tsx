@@ -58,7 +58,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   constructor(props) {
     super(props);
 
-    this._warnDeprecations({ 'rootProps': null });
+    this._warnDeprecations({ rootProps: null });
 
     this._id = getId('FocusZone');
     _allInstances[this._id] = this;
