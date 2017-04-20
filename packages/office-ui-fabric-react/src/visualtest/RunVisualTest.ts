@@ -61,6 +61,13 @@ export class RunVisualTest {
     this.casps.run(function () { this.casps.test.done(); });
   }
 
+
+  public defaultScreenshotfn(casps, phanta, componentExtnid, fileName) {
+    casps.then(function () {
+      phanta.screenshot(componentExtnid, fileName);
+    });
+  }
+
   public defaultScreenshot() {
     let self = this;
     this.casps.then(function () {
