@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Toggle: Improve screen-reader accessibility.",
+      "type": "minor"
+    }
+  ],
+  "email": "clewolff@microsoft.com"
+}
