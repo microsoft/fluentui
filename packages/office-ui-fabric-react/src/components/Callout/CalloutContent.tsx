@@ -35,7 +35,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
-    gapSpace: 16,
+    gapSpace: 0,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 

@@ -47,9 +47,9 @@ export class GettingStartedPage extends React.Component<any, any> {
           <Highlight className='typescript'>{
             `import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<div><Button>I am a button.</Button></div>);
+const MyPage = () => (<div><DefaultButton>I am a button.</DefaultButton></div>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);`
           }</Highlight>

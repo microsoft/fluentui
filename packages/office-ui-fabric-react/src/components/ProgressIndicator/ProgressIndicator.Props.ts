@@ -30,8 +30,13 @@ export interface IProgressIndicatorProps {
   percentComplete?: number;
 
   /**
-   * @deprecated
+   * Text alternative of the progress status, used by screen readers for reading the value of the progress.
+   */
+  ariaValueText?: string;
+
+  /**
    * Deprecated at v0.43.0, to be removed at >= v0.53.0. Use 'label' instead.
+   * @deprecated
    */
   title?: string;
 }

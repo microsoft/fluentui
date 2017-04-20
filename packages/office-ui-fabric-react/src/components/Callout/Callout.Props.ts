@@ -33,7 +33,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * The gap between the Callout and the target
-   * @default 16
+   * @default 0
    */
   gapSpace?: number;
 
@@ -127,14 +127,14 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   setInitialFocus?: boolean;
 
   /**
-    * @deprecated
     * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    * @deprecated
     */
   beakStyle?: string;
 
   /**
-   * @deprecated
    * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
+   * @deprecated
    */
   targetElement?: HTMLElement;
 }

@@ -287,6 +287,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
+      // A key was pressed while an item in this zone was focused.
+      this._shouldHandleFocus = true;
       return;
     }
 
@@ -317,6 +319,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           // For toggle elements, assuming they are rendered as buttons, they will generate a click event,
           // so we can no-op for any keydowns in this case.
           break;
+        } else if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
+          return false;
         } else if (target === itemRoot) {
           if (ev.which === KeyCodes.enter) {
             this._onInvokeClick(ev, index);

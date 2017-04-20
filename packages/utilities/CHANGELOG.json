@@ -2,6 +2,48 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.8.0",
+      "tag": "@uifabric/utilities_v1.8.0",
+      "date": "Wed, 19 Apr 2017 16:54:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4143ba1741ec10bb4c34554138c4f0dd8d38c6f4",
+            "comment": "Adding warn utilities for console logging warnings on misuse."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.7.0",
+      "tag": "@uifabric/utilities_v1.7.0",
+      "date": "Fri, 14 Apr 2017 03:06:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "265217a4f00cf04a437a61c6ad4033fb52b1b525",
+            "comment": "overflow: Utilities for detecting overflow in elements"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.6.0",
+      "tag": "@uifabric/utilities_v1.6.0",
+      "date": "Thu, 06 Apr 2017 03:12:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4dbc3c49540ef973de0b262185e0815accbc85b8",
+            "comment": "Updating typings in warn.ts."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.0",
       "tag": "@uifabric/utilities_v1.5.0",
       "date": "Tue, 04 Apr 2017 15:18:51 GMT",

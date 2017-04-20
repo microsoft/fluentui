@@ -13,6 +13,7 @@ import {
 import {
   BaseComponent,
   IRenderFunction,
+  IDisposable,
   autobind
 } from '../../Utilities';
 
@@ -34,7 +35,6 @@ import {
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import styles = require('./GroupedList.scss');
-import { IDisposable } from '@uifabric/utilities';
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
   /** Map of callback functions related to drag and drop functionality. */
@@ -301,7 +301,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderCell,
       selection,
       selectionMode,
-      viewport
+      viewport,
+      onRenderGroupHeader,
+      onRenderGroupFooter
     } = this.props;
 
     return (!subGroup || subGroup.count > 0) ? (
@@ -323,6 +325,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         selection={ selection }
         selectionMode={ selectionMode }
         viewport={ viewport }
+        onRenderGroupHeader={ onRenderGroupHeader }
+        onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;
   }

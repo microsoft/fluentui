@@ -35,7 +35,7 @@
 // Insert a calendar icon over the date field.
 .eventWithLabel {
   @include ms-DatePicker-event();
-  top: 35px;
+  bottom:5px;
 }
 
 .eventWithoutLabel {

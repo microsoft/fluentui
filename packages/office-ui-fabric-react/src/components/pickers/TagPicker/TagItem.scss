@@ -2,17 +2,17 @@
 
 .root {
   @include focus-border();
-
-  flex-shrink: 0;
-  vertical-align: top;
+  flex-shrink: 1;
   background: $ms-color-neutralLighter;
   margin: 1px;
-  height: 32px;
-  line-height: 32px;
-  vertical-align: top;
-  white-space: nowrap;
+  height: 26px;
+  line-height: 26px;
   cursor: default;
   user-select: none;
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 100px;
+  max-width: 100%;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -30,22 +30,24 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  display: inline-block;
   min-width: 100px;
   margin: 0 8px;
 }
 
 .tagItemClose {
   cursor: pointer;
-
   color: $ms-color-neutralSecondary;
-
   font-size: $ms-font-size-s;
   display: inline-block;
   text-align: center;
   vertical-align: top;
   width: 30px;
   height: 100%;
+  flex-shrink: 0;
 }
 
+.tagItemTextOverflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60vw;
+}
