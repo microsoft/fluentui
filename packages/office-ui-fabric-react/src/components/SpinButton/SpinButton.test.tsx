@@ -407,7 +407,7 @@ describe('SpinButton', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
-        onBlur={ validator }
+        onValidate={ validator }
       />
     );
 
@@ -442,7 +442,7 @@ describe('SpinButton', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
-        onBlur={ validator }
+        onValidate={ validator }
       />
     );
 
