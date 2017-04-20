@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Apr 2017 15:17:13 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Apr 2017 16:54:26 GMT and should not be manually modified.
+
+## 2.20.2
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 2.20.1
+Wed, 19 Apr 2017 15:36:48 GMT
+
+### Patches
+
+- References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import.
+
+## 2.20.0
+Wed, 19 Apr 2017 03:17:40 GMT
+
+### Minor changes
+
+- Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome
+
+### Patches
+
+- DatePicker: Improve screen-reader accessibility.
+- Regression Test: Contextual Menu 
+- fix nit for Suggestion.tsx
 
 ## 2.19.0
 Tue, 18 Apr 2017 15:17:13 GMT

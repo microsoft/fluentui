@@ -49,9 +49,10 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public render() {
-    let { label, onText, offText, className, disabled } = this.props;
+    let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
+    const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, buttonProperties);
     return (
       <div className={
@@ -82,6 +83,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
               className={ css(styles.button, 'ms-Toggle-button') }
               disabled={ disabled }
               aria-pressed={ isChecked }
+              aria-label={ ariaLabel }
               onClick={ this._onClick }
             />
             <div className={ css(styles.background, 'ms-Toggle-background') }>
