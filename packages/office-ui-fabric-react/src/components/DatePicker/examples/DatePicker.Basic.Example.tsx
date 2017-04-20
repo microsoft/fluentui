@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { DatePicker, DayOfWeek } from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 
-const DayPickerStrings = {
+const DayPickerStrings: IDatePickerStrings = {
   months: [
     'January',
     'February',
@@ -54,14 +54,10 @@ const DayPickerStrings = {
   ],
 
   goToToday: 'Go to today',
-
-  previousMonthLabel: 'Previous month',
-
-  nextMonthLabel: 'Next month',
-
-  previousYearLabel: 'Previous year',
-
-  nextYearLabel: 'Next Year'
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year'
 };
 
 export interface IDatePickerBasicExampleState {

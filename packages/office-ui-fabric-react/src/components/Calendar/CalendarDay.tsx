@@ -80,12 +80,16 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public render() {
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let dayPickerId = getId('DatePickerDay-dayPicker');
+    let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
+      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-          <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          </div>
         </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
@@ -93,16 +97,20 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onPrevMonthKeyDown }
-              tabIndex={ 0 }
-              aria-label={ strings.previousMonthLabel }>
+              aria-controls={ dayPickerId }
+              aria-label={ strings.nextMonthAriaLabel }
+              role='button'
+              tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
-              tabIndex={ 0 }
-              aria-label={ strings.nextMonthLabel }>
+              aria-controls={ dayPickerId }
+              aria-label={ strings.nextMonthAriaLabel }
+              role='button'
+              tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span >
           </div >
@@ -114,6 +122,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             role='grid'
             aria-readonly='true'
             aria-multiselectable='false'
+            aria-labelledby={ monthAndYearId }
             aria-activedescendant={ activeDescendantId }
           >
             <thead>
@@ -190,7 +199,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }

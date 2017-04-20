@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
-import { DatePicker, DayOfWeek } from 'office-ui-fabric-react/lib/DatePicker';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 
-const DayPickerStrings = {
+const DayPickerStrings: IDatePickerStrings = {
   months: [
     'January',
     'February',
@@ -54,6 +54,10 @@ const DayPickerStrings = {
   ],
 
   goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
 
   isRequiredErrorMessage: 'Start date is required.',
 
@@ -99,7 +103,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           value={ value }
           onSelectDate={ date => this.setState({ value: date }) }
         />
-        <Button onClick={ () => this.setState({ value: null }) }>Clear</Button>
+        <DefaultButton onClick={ () => this.setState({ value: null }) } text='Clear' />
       </div>
     );
   }

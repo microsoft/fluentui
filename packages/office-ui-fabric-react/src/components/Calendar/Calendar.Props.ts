@@ -67,9 +67,8 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showGoToToday?: boolean;
 
   /**
-   * @deprecated
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
-   *
+   * @deprecated
    */
   shouldFocusOnMount?: boolean;
 
@@ -110,22 +109,22 @@ export interface ICalendarStrings {
   goToToday: string;
 
   /**
-   * String to render for the ARIA label for the previous month button
+   * Aria-label for the "previous month" button.
    */
-  previousMonthLabel: string;
+  prevMonthAriaLabel?: string;
 
   /**
-   * String to render for the ARIA label for the next month button
+   * Aria-label for the "next month" button.
    */
-  nextMonthLabel: string;
+  nextMonthAriaLabel?: string;
 
   /**
-   * String to render for the ARIA label for the previous year button
+   * Aria-label for the "previous year" button.
    */
-  previousYearLabel: string;
+  prevYearAriaLabel?: string;
 
   /**
-   * String to render for the ARIA label for the next year button
+   * Aria-label for the "next year" button.
    */
-  nextYearLabel: string;
+  nextYearAriaLabel?: string;
 }
