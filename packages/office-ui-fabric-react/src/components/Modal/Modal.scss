@@ -7,6 +7,8 @@
 // --------------------------------------------------
 // Modal styles
 
+:export { duration: $ms-duration2 }
+
 .root {
   @include ms-baseFont;
   background-color: transparent;

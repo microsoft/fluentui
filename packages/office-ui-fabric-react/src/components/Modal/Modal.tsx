@@ -63,7 +63,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
 
     // Closing the dialog
     if (!newProps.isOpen && this.state.isOpen) {
-      this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, 300);
+      this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, parseFloat(styles.duration) * 1000);
       this.setState({
         isVisible: false
       });
