@@ -7,7 +7,6 @@
 // --------------------------------------------------
 // Modal styles
 
-
 .root {
   @include ms-baseFont;
   background-color: transparent;
@@ -32,13 +31,10 @@
   }
 }
 
-
 .rootIsVisible {
   opacity: 1;
   pointer-events: auto;
 }
-
-
 
 // The actual dialog element
 .main {
@@ -51,4 +47,3 @@
   max-height: 100%;
   overflow-y: auto;
 }
-
