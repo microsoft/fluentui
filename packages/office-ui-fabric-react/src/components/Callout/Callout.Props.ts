@@ -33,7 +33,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * The gap between the Callout and the target
-   * @default 16
+   * @default 0
    */
   gapSpace?: number;
 
