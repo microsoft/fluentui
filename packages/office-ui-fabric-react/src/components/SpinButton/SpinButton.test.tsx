@@ -2,11 +2,7 @@ import 'es6-promise';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import {
-  SpinButton,
-  ISpinButtonState
-} from './SpinButton';
-import { ISpinButtonProps } from './SpinButton.Props';
+import { SpinButton } from './SpinButton';
 import { KeyCodes } from '../../Utilities';
 
 const expect: Chai.ExpectStatic = chai.expect;

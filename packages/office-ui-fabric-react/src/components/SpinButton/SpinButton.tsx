@@ -3,17 +3,15 @@ import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import {
   BaseComponent,
-  css,
   getId,
-  KeyCodes,
-  assign
+  KeyCodes
 } from '../../Utilities';
 import {
   ISpinButton,
   ISpinButtonProps
 } from './SpinButton.Props';
 import './SpinButton.scss';
-import { Position } from '../../utilities/positioning'
+import { Position } from '../../utilities/positioning';
 
 export interface ISpinButtonState {
   /**
@@ -29,29 +27,6 @@ export interface ISpinButtonState {
 }
 
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-  private _input: HTMLInputElement;
-  private _inputId: string;
-  private _labelId: string;
-  private _lastValidValue: string;
-
-  private _onValidate?: (value: string) => string;
-  private _onIncrement?: (value: string) => string;
-  private _onDecrement?: (value: string) => string;
-  private _defaultOnValidate = (value: string) => {
-    if (isNaN(+value)) {
-      return this._lastValidValue;
-    }
-    const newValue = Math.min(this.props.max, Math.max(this.props.min, +value));
-    return String(newValue);
-  }
-  private _defaultOnIncrement = (value: string) => {
-    let newValue = Math.min(+value + this.props.step, this.props.max);
-    return String(newValue);
-  };
-  private _defaultOnDecrement = (value: string) => {
-    let newValue = Math.max(+value - this.props.step, this.props.min);
-    return String(newValue);
-  };
 
   public static defaultProps: ISpinButtonProps = {
     step: 1,
@@ -62,9 +37,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     label: null
   };
 
+  private _input: HTMLInputElement;
+  private _inputId: string;
+  private _labelId: string;
+  private _lastValidValue: string;
+
+  private _onValidate?: (value: string) => string;
+  private _onIncrement?: (value: string) => string;
+  private _onDecrement?: (value: string) => string;
+
   private _currentStepFunctionHandle: number;
   private _stepDelay = 100;
-
   private _formattedValidUnitOptions: string[] = [];
 
   constructor(props?: ISpinButtonProps) {
@@ -132,13 +115,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     return (
       <div className='ms-SpinButtonContainer' style={ spinbuttonWidth && { width: spinbuttonWidth } }>
-        { (label && labelPosition != Position.bottom) &&
+        { (label && labelPosition !== Position.bottom) &&
           < Label
             id={ this._labelId }
             style={ this._labelDirectionHelper() }
             htmlFor={ this._inputId }>{ label }
           </Label> }
-        < div className={ 'ms-SpinButtonWrapper' + ((this.props.labelPosition == Position.top || this.props.labelPosition == Position.bottom) ? ' topBottom' : '') }>
+        < div className={ 'ms-SpinButtonWrapper' + ((this.props.labelPosition === Position.top || this.props.labelPosition === Position.bottom) ? ' topBottom' : '') }>
           <input
             value={ value }
             id={ this._inputId }
@@ -163,7 +146,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               icon='CaretUpSolid8'
               title='Increase'
               aria-hidden='true'
-              onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement) } }
+              onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement); } }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               onBlur={ this._stop }
@@ -175,7 +158,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               icon='CaretDownSolid8'
               title='Decrease'
               aria-hidden='true'
-              onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement) } }
+              onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement); } }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
               onBlur={ this._stop }
@@ -183,9 +166,37 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span >
         </div >
-        { (label && labelPosition == Position.bottom) && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label } </Label> }
+        { (label && labelPosition === Position.bottom) && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label } </Label> }
       </ div >
     ) as React.ReactElement<{}>;
+  }
+
+  /**
+   * OnFocus select the contents of the input
+   */
+  public focus() {
+    if (this.state.spinning) {
+      this._stop();
+    }
+
+    this._input.focus();
+    this._input.select();
+  }
+
+  private _defaultOnValidate = (value: string) => {
+    if (isNaN(+value)) {
+      return this._lastValidValue;
+    }
+    const newValue = Math.min(this.props.max, Math.max(this.props.min, +value));
+    return String(newValue);
+  }
+  private _defaultOnIncrement = (value: string) => {
+    let newValue = Math.min(+value + this.props.step, this.props.max);
+    return String(newValue);
+  }
+  private _defaultOnDecrement = (value: string) => {
+    let newValue = Math.max(+value - this.props.step, this.props.min);
+    return String(newValue);
   }
 
   private _labelDirectionHelper(): any {
@@ -216,18 +227,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   /**
-   * OnFocus select the contents of the input
-   */
-  public focus() {
-    if (this.state.spinning) {
-      this._stop();
-    }
-
-    this._input.focus();
-    this._input.select();
-  }
-
-  /**
    * This is used when validating text entry
    * in the input (not when changed via the buttons)
    * @param newValue - the pending value to check if it is valid
@@ -237,7 +236,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
-      var newValue = this._onValidate(value);
+      const newValue = this._onValidate(value);
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
     }
@@ -253,16 +252,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   private _updateValue(shouldSpin: boolean, stepFunction: (string) => string) {
-    var newValue = stepFunction(this.state.value);
+    const newValue = stepFunction(this.state.value);
     this._lastValidValue = newValue;
     this.setState({ value: newValue });
 
-    if (this.state.spinning != shouldSpin) {
+    if (this.state.spinning !== shouldSpin) {
       this.setState({ spinning: shouldSpin });
     }
 
     if (shouldSpin) {
-      this._currentStepFunctionHandle = window.setTimeout(() => { this._updateValue(shouldSpin, stepFunction); }, this._stepDelay)
+      this._currentStepFunctionHandle = window.setTimeout(() => { this._updateValue(shouldSpin, stepFunction); }, this._stepDelay);
     }
   }
 
@@ -270,9 +269,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Stop spinning (clear any currently pending update and set spinning to false)
    */
   private _stop() {
-    if (this._currentStepFunctionHandle != null) {
+    if (this._currentStepFunctionHandle !== null) {
       window.clearTimeout(this._currentStepFunctionHandle);
-      this._currentStepFunctionHandle == 0;
+      this._currentStepFunctionHandle = 0;
     }
 
     if (this.state.spinning) {
@@ -293,12 +292,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     if (event.which === KeyCodes.up) {
       this._updateValue(false /* shouldSpin */, this._onIncrement);
-    }
-    else if (event.which === KeyCodes.down) {
+    } else if (event.which === KeyCodes.down) {
       this._updateValue(false /* shouldSpin */, this._onDecrement);
-    }
-
-    else if (event.which === KeyCodes.enter) {
+    } else if (event.which === KeyCodes.enter) {
       event.currentTarget.blur();
       this.focus();
     }

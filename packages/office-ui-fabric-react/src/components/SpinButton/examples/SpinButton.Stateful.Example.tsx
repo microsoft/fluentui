@@ -3,22 +3,8 @@ import { SpinButton, ISpinButtonState, ISpinButtonProps } from 'office-ui-fabric
 
 export class SpinButtonStatefulExample extends React.Component<any, any> {
 
-  private hasSuffix(string: string, suffix: string): Boolean {
-    var subString = string.substr(string.length - suffix.length);
-    return subString == suffix;
-  }
-
-  private removeSuffix(string: string, suffix: string): string {
-    if (!this.hasSuffix(string, suffix)) {
-      return string;
-    }
-
-    return string.substr(0, string.length - suffix.length);
-  }
-
   public render() {
-
-    var suffix = " cm";
+    let suffix = ' cm';
 
     return (
       < SpinButton
@@ -28,7 +14,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
         onValidate={ (value: string) => {
           value = this.removeSuffix(value, suffix);
           if (isNaN(+value)) {
-            return '0' + suffix
+            return '0' + suffix;
           }
 
           return String(value) + suffix;
@@ -43,5 +29,18 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
         } }
       />
     );
+  }
+
+  private hasSuffix(string: string, suffix: string): Boolean {
+    let subString = string.substr(string.length - suffix.length);
+    return subString === suffix;
+  }
+
+  private removeSuffix(string: string, suffix: string): string {
+    if (!this.hasSuffix(string, suffix)) {
+      return string;
+    }
+
+    return string.substr(0, string.length - suffix.length);
   }
 }
