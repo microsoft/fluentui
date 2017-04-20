@@ -47,12 +47,12 @@ $focusBorderColor: $ms-color-black;
 // $errorBackgroundColor: todo
 $errorTextColor: $ms-color-redDark;
 
-/*** INPUTS ***/
-$inputBackgroundColor: $ms-color-white;
-$inputTextColor: $ms-color-neutralPrimary;
+/*** Text fields ***/
+$fieldBackgroundColor: $ms-color-white;
+$fieldTextColor: $ms-color-neutralPrimary;
 
-$inputBorderColor: $ms-color-neutralTertiaryAlt;
-$inputBorderHoverColor: $ms-color-neutralSecondaryAlt;
-$inputBorderFocusColor: $ms-color-themePrimary;
+$fieldBorderColor: $ms-color-neutralTertiaryAlt;
+$fieldBorderHoverColor: $ms-color-neutralSecondaryAlt;
+$fieldBorderFocusColor: $ms-color-themePrimary;
 
-$inputPlaceholderColor: $ms-color-neutralTertiary;
+$fieldPlaceholderColor: $ms-color-neutralTertiary;
