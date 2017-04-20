@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelLargeFixedExample extends React.Component<any, any> {
@@ -14,7 +14,11 @@ export class PanelLargeFixedExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <DefaultButton
+          description='Opens the Sample Panel'
+          onClick={ this._showPanel.bind(this) }
+          text='Open Panel'
+        />
         <Panel
           isOpen={ this.state.showPanel }
           onDismiss={ this._closePanel.bind(this) }
