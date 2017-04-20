@@ -24,5 +24,8 @@
     "github": "^7.0.0",
     "gulp": "^3.9.1",
     "yargs": "^6.5.0"
+  },
+  "dependencies": {
+    "typescript-string-enums": "^0.3.2"
   }
 }
