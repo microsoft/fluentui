@@ -21,7 +21,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
     calloutProps: {
       isBeakVisible: true,
       beakWidth: 16,
-      gapSpace: 8,
+      gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false
     }
