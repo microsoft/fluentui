@@ -2,35 +2,37 @@
 import { Casper, IPhantomCSS } from './PhantomCssInterface';
 import { baseUrl } from '../common/VisualTest';
 import { Enum } from "typescript-string-enums";
+import { IRunVisualTest } from './IRunVisualTest';
 export const enum EventLayer { SINGLE = 0, DOUBLE = 1, };
 export const IdType = Enum({ CLASSNAME: ".", ID: '#' });
 export const enum ScreenEvent { DEFAULT = 0, HOVERED = 1, DOWN = 2, CLICK = 3, DOUBLECLICK = 4 };
+export const FileExtn = Enum({ DEFAULT: "_default", HOVERED: "_hovered", DOWN: '_pressed', CLICK: '_clicked' });
 
-const fileExtn = Enum({ DEFAULT: "_default", HOVERED: "_hovered", DOWN: "_pressed", CLICK: "_clicked" });
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 export class RunVisualTest {
+  private phanta: IPhantomCSS;
+  private casps: Casper;
   private componentId: string;
   private componentIdType;
   private eventType: EventLayer;
-  private eventList: [ScreenEvent];
-  private secondLayer: RunVisualTest;
+  private eventList: ScreenEvent[];
+  private secondLayer?: RunVisualTest;
   private componentExtnid;
-  private casps: Casper;
   private fileName: string;
-  private phanta: IPhantomCSS;
 
-  constructor(componentId, componentIdType, eventType, eventList, secondLayer) {
+  constructor(props: IRunVisualTest) {
+
     this.casps = casper;
     this.phanta = phantomcss;
-    this.componentId = componentId;
-    this.componentIdType = componentIdType;
-    this.eventType = eventType;
-    this.eventList = eventList;
-    this.secondLayer = secondLayer;
-    this.fileName = componentId;
-    this.componentExtnid = componentIdType + componentId;
+    this.componentId = props.componentId;
+    this.componentIdType = props.componentIdType;
+    this.eventType = props.eventType;
+    this.eventList = props.eventList;
+    this.secondLayer = props.secondLayer;
+    this.fileName = props.componentId;
+    this.componentExtnid = props.componentIdType + props.componentId;
 
   }
 
@@ -39,13 +41,11 @@ export class RunVisualTest {
     let self = this;
 
     switch (self.eventType) {
-
       case EventLayer.SINGLE:
         self.listEventScreenshot();
         break;
       case EventLayer.DOUBLE:
         self.runEvent(self.eventList[0]);
-        let temp1: RunVisualTest;
         casper.then(function () {
           let temp1: RunVisualTest;
           temp1 = self.secondLayer;
@@ -64,7 +64,7 @@ export class RunVisualTest {
   public defaultScreenshot() {
     let self = this;
     this.casps.then(function () {
-      self.phanta.screenshot(self.componentExtnid, self.fileName + fileExtn.DEFAULT);
+      self.phanta.screenshot(self.componentExtnid, self.fileName + FileExtn.DEFAULT);
     });
   }
 
@@ -72,7 +72,7 @@ export class RunVisualTest {
     let self = this;
     this.casps.then(function () {
       this.mouse.move(self.componentExtnid);
-      self.phanta.screenshot(self.componentExtnid, self.fileName + fileExtn.HOVERED);
+      self.phanta.screenshot(self.componentExtnid, self.fileName + FileExtn.HOVERED);
     });
   }
 
@@ -80,7 +80,7 @@ export class RunVisualTest {
     let self = this;
     this.casps.then(function () {
       this.mouse.down(self.componentExtnid);
-      self.phanta.screenshot(self.componentExtnid, self.fileName + fileExtn.DOWN);
+      self.phanta.screenshot(self.componentExtnid, self.fileName + FileExtn.DOWN);
     });
   }
 
@@ -88,7 +88,7 @@ export class RunVisualTest {
     let self = this;
     this.casps.then(function () {
       this.click(self.componentExtnid);
-      self.phanta.screenshot(self.componentExtnid, self.fileName + fileExtn.CLICK);
+      self.phanta.screenshot(self.componentExtnid, self.fileName + FileExtn.CLICK);
       this.click(self.componentExtnid);
     });
   }
@@ -97,7 +97,7 @@ export class RunVisualTest {
     let self = this;
     this.casps.then(function () {
       this.click(self.componentExtnid);
-      self.phanta.screenshot(self.componentExtnid, self.fileName + fileExtn.CLICK);
+      self.phanta.screenshot(self.componentExtnid, self.fileName + FileExtn.CLICK);
 
     });
   }
@@ -111,35 +111,23 @@ export class RunVisualTest {
   }
 
   public runEvent(event) {
-    let self = this;
     switch (event) {
       case ScreenEvent.DOUBLECLICK:
-        self.mouseDoubleClickedScreenshot();
+        this.mouseDoubleClickedScreenshot();
         break;
       case ScreenEvent.CLICK:
-        self.mouseClickedScreenshot();
+        this.mouseClickedScreenshot();
         break;
       case ScreenEvent.DEFAULT:
-        self.defaultScreenshot();
+        this.defaultScreenshot();
         break;
       case ScreenEvent.DOWN:
-        self.mouseDownScreenshot();
+        this.mouseDownScreenshot();
         break;
       case ScreenEvent.HOVERED:
-        self.mouseMoveScreenshot();
+        this.mouseMoveScreenshot();
         break;
     }
   }
 }
 
-
-export interface IRunVisualTest {
-  componentId: string;
-  componentIdType;
-  eventType: EventLayer;
-  eventList: [ScreenEvent];
-  componentExtnid;
-  casps: Casper;
-  fileName: string;
-  phanta: IPhantomCSS;
-}

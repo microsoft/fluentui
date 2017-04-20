@@ -6,15 +6,21 @@ import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest'
 declare var casper: Casper;
 
 let componentIds = [];
-let eventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
-let component = new RunVisualTest('CommandButton', IdType.ID, EventLayer.SINGLE, eventList, null);
-componentIds.push(component);
+let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
 
-eventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
-component = new RunVisualTest('CommandButtonDisabled', IdType.ID, EventLayer.SINGLE, eventList, null);
-componentIds.push(component);
+componentIds.push(new RunVisualTest({
+  componentId: 'CommandButton',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
 
-
+componentIds.push(new RunVisualTest({
+  componentId: 'CommandButtonDisabled',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
 
 // /* tslint:disable:no-function-expression */
 casper.
