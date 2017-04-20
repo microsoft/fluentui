@@ -109,9 +109,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       disabled = isDisabled;
     }
 
-    required = true;
-    errorMessage = 'This dropdown requires a selection';
-
     return (
       <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
@@ -142,7 +139,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             id={ id + '-option' }
             className={ css(
               'ms-Dropdown-title', styles.title,
-              (errorMessage.length > 0 ? styles.error : null))
+              (errorMessage.length > 0 ? styles.titleIsError : null))
             }
             key={ selectedIndex }
             aria-atomic={ true }
