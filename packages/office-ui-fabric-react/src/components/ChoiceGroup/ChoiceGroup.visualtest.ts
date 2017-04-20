@@ -1,35 +1,42 @@
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-declare var phantomcss: IPhantomCSS;
+import { RunVisualTest } from '../../visualtest/RunVisualTest';
+import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds = [];
+let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+
+componentIds.push(new RunVisualTest({
+  componentId: 'ChoiceGroup',
+  componentIdType: IdType.CLASSNAME,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+componentIds.push(new RunVisualTest({
+  componentId: 'ChoiceGroupDisabled',
+  componentIdType: IdType.CLASSNAME,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+componentIds.push(new RunVisualTest({
+  componentId: 'ChoiceGroupIcon',
+  componentIdType: IdType.CLASSNAME,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+// /* tslint:disable:no-function-expression */
 casper.
   start(baseUrl + 'choiceGroup').
   then(function () {
-    phantomcss.screenshot('.ChoiceGroup', 'ChoiceGroup_not_pressed');
-  }).then(function () {
-    this.mouse.move('.ChoiceGroup');
-    phantomcss.screenshot('.ChoiceGroup', 'ChoiceGroup_hovered');
-  }).then(function () {
-    this.mouse.down('.ChoiceGroup');
-    phantomcss.screenshot('.ChoiceGroup', 'ChoiceGroup_pressed');
-  }).
-  then(function () {
-    phantomcss.screenshot('.ChoiceGroupIcon', 'ChoiceGroupIcon_not_pressed');
-  }).then(function () {
-    this.mouse.move('.ChoiceGroupIcon');
-    phantomcss.screenshot('.ChoiceGroupIcon', 'ChoiceGroupIcon_hovered');
-  }).then(function () {
-    this.mouse.down('.ChoiceGroupIcon');
-    phantomcss.screenshot('.ChoiceGroupIcon', 'ChoiceGroupIcon_pressed');
-  }).then(function () {
-    phantomcss.screenshot('.ChoiceGroupDisabled', 'ChoiceGroupDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('.ChoiceGroupDisabled');
-    phantomcss.screenshot('.ChoiceGroupDisabled', 'ChoiceGroupDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('.ChoiceGroupDisabled');
-    phantomcss.screenshot('.ChoiceGroupDisabled', 'ChoiceGroupDisabled_pressed');
+    componentIds.map(function (test) {
+      test.runCasper();
+    });
   });
+
 casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+// /* tslint:enable:no-function-expression */

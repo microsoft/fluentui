@@ -1,26 +1,35 @@
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-declare var phantomcss: IPhantomCSS;
+import { RunVisualTest } from '../../visualtest/RunVisualTest';
+import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds = [];
+let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+
+componentIds.push(new RunVisualTest({
+  componentId: 'CommandButton',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+componentIds.push(new RunVisualTest({
+  componentId: 'CommandButtonDisabled',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+// /* tslint:disable:no-function-expression */
 casper.
   start(baseUrl + 'commandButton').
   then(function () {
-    phantomcss.screenshot('#CommandButton', 'CommandButton_not_pressed');
-  }).then(function () {
-    this.mouse.move('#CommandButton');
-    phantomcss.screenshot('#CommandButton', 'CommandButton_hovered');
-  }).then(function () {
-    this.mouse.down('#CommandButton');
-    phantomcss.screenshot('#CommandButton', 'CommandButton_pressed');
-  }).then(function () {
-    phantomcss.screenshot('#CommandButtonDisabled', 'CommandButtonDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('#CommandButtonDisabled');
-    phantomcss.screenshot('#CommandButtonDisabled', 'CommandButtonDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('#CommandButtonDisabled');
-    phantomcss.screenshot('#CommandButtonDisabled', 'CommandButtonDisabled_pressed');
+    componentIds.map(function (test) {
+      test.runCasper();
+    });
   });
+
 casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+// /* tslint:enable:no-function-expression */

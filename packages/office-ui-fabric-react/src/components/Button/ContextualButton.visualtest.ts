@@ -1,29 +1,52 @@
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-declare var phantomcss: IPhantomCSS;
+import { RunVisualTest } from '../../visualtest/RunVisualTest';
+import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds = [];
+let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+componentIds.push(new RunVisualTest({
+  componentId: 'ContextualButton',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+componentIds.push(new RunVisualTest({
+  componentId: 'ContextualButtonDisabled',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList
+}));
+
+let pngEventList2 = [ScreenEvent.DEFAULT];
+let childComponent = new RunVisualTest({
+  componentId: 'ms-ContextualMenu-list',
+  componentIdType: IdType.CLASSNAME,
+  eventType: EventLayer.SINGLE,
+  eventList: pngEventList2
+});
+
+let pngEventList3 = [ScreenEvent.CLICK];
+componentIds.push(new RunVisualTest({
+  componentId: 'ContextualButton',
+  componentIdType: IdType.ID,
+  eventType: EventLayer.DOUBLE,
+  eventList: pngEventList3,
+  secondLayer: childComponent,
+}));
+
+// /* tslint:disable:no-function-expression */
 casper.
   start(baseUrl + 'contextualButton').
   then(function () {
-    phantomcss.screenshot('#ContextualButton', 'ContextualButton_not_pressed');
-  }).then(function () {
-    this.mouse.move('#ContextualButton');
-    phantomcss.screenshot('#ContextualButton', 'ContextualButton_hovered');
-  }).then(function () {
-    this.mouse.down('#ContextualButton');
-    casper.wait(2000);
-    phantomcss.screenshot('#ContextualButton', 'ContextualButton_pressed');
-    phantomcss.screenshot('.ContextualButtonMenu', 'ContextualButtonMenu_pressed');
-  }).
-  then(function () {
-    phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('#ContextualButtonDisabled');
-    phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('#ContextualButtonDisabled');
-    phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_pressed');
+    componentIds.map(function (test) {
+      test.runCasper();
+    });
   });
+
 casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+// /* tslint:enable:no-function-expression */
+
