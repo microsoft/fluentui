@@ -1,35 +1,44 @@
-// import { Casper } from '../../visualtest/PhantomCssInterface';
-// import { baseUrl } from '../../common/VisualTest';
-// import { RunVisualTest } from '../../visualtest/RunVisualTest';
-// import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { baseUrl } from '../../common/VisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
-// declare var casper: Casper;
+declare var phantomcss: IPhantomCSS;
+declare var casper: Casper;
 
-// let componentIds = [];
-// let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+let componentIds: IRunVisualTest[] = [];
 
-// componentIds.push(new RunVisualTest({
-//   componentId: 'PrimaryButton',
-//   componentIdType: IdType.ID,
-//   eventType: EventLayer.SINGLE,
-//   eventList: pngEventList
-// }));
+let commands: ((params: IRunVisualTest) => void)[] = [];
 
-// componentIds.push(new RunVisualTest({
-//   componentId: 'PrimaryButtonDisabled',
-//   componentIdType: IdType.ID,
-//   eventType: EventLayer.SINGLE,
-//   eventList: pngEventList
-// }));
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
 
-// // /* tslint:disable:no-function-expression */
-// casper.
-//   start(baseUrl + 'primaryButton').
-//   then(function () {
-//     componentIds.map(function (test) {
-//       test.runCasper();
-//     });
-//   });
+componentIds.push({
+  componentExtnid: '#' + 'PrimaryButton',
+  fileName: 'primaryButton',
+  command: commands
+});
+componentIds.push({
+  componentExtnid: '#' + 'PrimaryButtonDisabled',
+  fileName: 'primaryButtonDisabled',
+  command: commands
+});
 
-// casper.run(function () { casper.test.done(); });
-// // /* tslint:enable:no-function-expression */
+
+function testRunner() {
+  componentIds.forEach(element => {
+    element.command.forEach(command => {
+      command(element);
+    })
+  });
+}
+
+casper.
+  start(baseUrl + 'primaryButton').
+  then(function () {
+    testRunner();
+  });
+
+casper.run(function () { casper.test.done(); });

@@ -1,32 +1,12 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { RunVisualTest } from '../../visualtest/RunVisualTest';
 import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds: RunVisualTest[] = [];
-
-let component = new RunVisualTest({
-  componentExtnid: '.' + 'ChoiceGroup',
-  fileName: 'choiceGroup'
-});
-
-let disabledComponent = new RunVisualTest({
-  componentExtnid: '.' + 'ChoiceGroupDisabled',
-  fileName: 'choiceGroupDisabled'
-});
-
-let iconComponent = new RunVisualTest({
-  componentExtnid: '.' + 'ChoiceGroupIcon',
-  fileName: 'choiceGroupIcon'
-});
-
-componentIds.push(component);
-componentIds.push(disabledComponent);
-componentIds.push(iconComponent);
+let componentIds: IRunVisualTest[] = [];
 
 let commands: ((params: IRunVisualTest) => void)[] = [];
 
@@ -35,9 +15,28 @@ commands.push(mouseMoveScreenshot);
 commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
+componentIds.push({
+  componentExtnid: '.' + 'ChoiceGroup',
+  fileName: 'choiceGroup',
+  command: commands
+});
+
+componentIds.push({
+  componentExtnid: '.' + 'ChoiceGroupDisabled',
+  fileName: 'choiceGroupDisabled',
+  command: commands
+});
+
+componentIds.push({
+  componentExtnid: '.' + 'ChoiceGroupIcon',
+  fileName: 'choiceGroupIcon',
+  command: commands
+});
+
+
 function testRunner() {
   componentIds.forEach(element => {
-    commands.forEach(command => {
+    element.command.forEach(command => {
       command(element);
     })
   });

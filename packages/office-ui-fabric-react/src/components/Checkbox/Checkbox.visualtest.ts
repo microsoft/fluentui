@@ -1,27 +1,10 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { RunVisualTest } from '../../visualtest/RunVisualTest';
 import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-
-let componentIds: RunVisualTest[] = [];
-
-let component = new RunVisualTest({
-  componentExtnid: '.' + 'Checkbox',
-  fileName: 'checkbox'
-});
-
-let disabledComponent = new RunVisualTest({
-  componentExtnid: '.' + 'CheckboxDisabled',
-  fileName: 'checkboxDisabled'
-});
-
-componentIds.push(component);
-componentIds.push(disabledComponent);
-
 let commands: ((params: IRunVisualTest) => void)[] = [];
 
 commands.push(defaultScreenshot);
@@ -29,9 +12,24 @@ commands.push(mouseMoveScreenshot);
 commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
+let componentIds: IRunVisualTest[] = [];
+
+componentIds.push({
+  componentExtnid: '.' + 'Checkbox',
+  fileName: 'checkbox',
+  command: commands
+});
+componentIds.push({
+  componentExtnid: '.' + 'CheckboxDisabled',
+  fileName: 'checkboxDisabled',
+  command: commands
+});
+
+
+
 function testRunner() {
   componentIds.forEach(element => {
-    commands.forEach(command => {
+    element.command.forEach(command => {
       command(element);
     })
   });

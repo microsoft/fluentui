@@ -1,39 +1,49 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { RunVisualTest } from '../../visualtest/RunVisualTest';
-import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, mouseSingleClickScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds: RunVisualTest[] = [];
-
-let button = new RunVisualTest({
-  componentExtnid: '#' + 'ContextualButton',
-  fileName: 'contextualButton'
-});
-
-let disabledButton = new RunVisualTest({
-  componentExtnid: '#' + 'ContextualButtonDisabled',
-  fileName: 'contextualButtonDisabled'
-});
-
-componentIds.push(button);
-componentIds.push(disabledButton);
-
 let commands: ((params: IRunVisualTest) => void)[] = [];
-
 commands.push(defaultScreenshot);
 commands.push(mouseMoveScreenshot);
 commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
+
+let componentIds: IRunVisualTest[] = [];
+
+componentIds.push({
+  componentExtnid: '#' + 'ContextualButton',
+  fileName: 'contextualButton',
+  command: commands
+});
+
+componentIds.push({
+  componentExtnid: '#' + 'ContextualButtonDisabled',
+  fileName: 'contextualButtonDisabled',
+  command: commands
+});
+
+
+componentIds.push({
+  componentExtnid: '#' + 'ContextualButton',
+  fileName: 'contextualButton',
+  command: [mouseSingleClickScreenshot],
+  childParam: {
+    componentExtnid: '.' + 'ms-ContextualMenu-list',
+    fileName: 'contextualButtonMenu',
+    command: commands
+  }
+});
+
 function testRunner() {
   componentIds.forEach(element => {
-    commands.forEach(command => {
-      command(element);
-    })
+    element.command.forEach(commandList => {
+      commandList(element);
+    });
   });
 }
 

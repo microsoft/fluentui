@@ -1,28 +1,31 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { RunVisualTest } from '../../visualtest/RunVisualTest';
 import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds: RunVisualTest[] = [];
-
-let button = new RunVisualTest({
-  componentExtnid: '#' + 'CommandButton',
-  fileName: 'commandButton'
-});
-
-let disabledButton = new RunVisualTest({
-  componentExtnid: '#' + 'CommandButtonDisabled',
-  fileName: 'commandButtonDisabled'
-});
-
-componentIds.push(button);
-componentIds.push(disabledButton);
-
+let componentIds: IRunVisualTest[] = [];
 let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+componentIds.push({
+  componentExtnid: '#' + 'CommandButton',
+  fileName: 'commandButton',
+  command: commands
+});
+
+componentIds.push({
+  componentExtnid: '#' + 'CommandButtonDisabled',
+  fileName: 'commandButtonDisabled',
+  command: commands
+});
+
 
 commands.push(defaultScreenshot);
 commands.push(mouseMoveScreenshot);
@@ -31,7 +34,7 @@ commands.push(mouseClickScreenshot);
 
 function testRunner() {
   componentIds.forEach(element => {
-    commands.forEach(command => {
+    element.command.forEach(command => {
       command(element);
     })
   });
