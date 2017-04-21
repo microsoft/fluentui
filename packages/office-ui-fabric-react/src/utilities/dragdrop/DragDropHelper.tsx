@@ -16,10 +16,12 @@ const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.butt
 
 export interface IDragDropHelperParams {
   selection: ISelection;
+  minimumPixelsForDrag?: number;
 }
 
 export class DragDropHelper implements IDragDropHelper {
   private _dragEnterCounts: { [key: string]: number };
+  private readonly _distanceSquaredForDrag: number;
   private _isDragging: boolean;
   private _dragData: {
     eventTarget: EventTarget;
@@ -44,6 +46,8 @@ export class DragDropHelper implements IDragDropHelper {
     this._dragEnterCounts = {};
     this._activeTargets = {};
     this._lastId = 0;
+    this._distanceSquaredForDrag = typeof params.minimumPixelsForDrag === 'number' ?
+      params.minimumPixelsForDrag * params.minimumPixelsForDrag : DISTANCE_FOR_DRAG_SQUARED;
 
     this._events = new EventGroup(this);
     // clear drag data when mouse up, use capture event to ensure it will be run
@@ -306,7 +310,7 @@ export class DragDropHelper implements IDragDropHelper {
       if (this._isDraggable(target)) {
         let xDiff = this._dragData.clientX - event.clientX;
         let yDiff = this._dragData.clientY - event.clientY;
-        if (xDiff * xDiff + yDiff * yDiff >= DISTANCE_FOR_DRAG_SQUARED) {
+        if (xDiff * xDiff + yDiff * yDiff >= this._distanceSquaredForDrag) {
           if (this._dragData.dragTarget) {
             this._isDragging = true;
             if (options.onDragStart) {

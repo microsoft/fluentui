@@ -80,8 +80,8 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   onLayerDidMount?: () => void;
 
   /**
+   * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
    * @deprecated
-   * Use onLayerDidMount instead. Deprecated at 0.81.2, to be removed at 1.0.0.
    */
   onLayerMounted?: () => void;
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -55,7 +55,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             max={ 30 }
             label='Gap Space'
             min={ 0 }
-            defaultValue={ 16 }
+            defaultValue={ 0 }
             onChange={ this._onGapSlider } />
           { isBeakVisible &&
             (<Slider
@@ -71,7 +71,10 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             onChanged={ this._onDirectionalChanged } />
         </div>
         <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+          <DefaultButton
+            onClick={ this._onShowMenuClicked }
+            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
+          />
         </div>
         { isCalloutVisible ? (
           <Callout
