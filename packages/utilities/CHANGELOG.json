@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.8.4",
+      "tag": "@uifabric/utilities_v1.8.4",
+      "date": "Fri, 21 Apr 2017 06:23:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d7352294b40e5643400d889b1d78c2ea9aefedd9",
+            "comment": "Updating setRTL to write isRTL to local storage. This allows the setting to persist across sessions."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.0",
       "tag": "@uifabric/utilities_v1.8.0",
       "date": "Wed, 19 Apr 2017 16:54:26 GMT",

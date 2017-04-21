@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "@types/react-addons-test-utils": "^0.14.17",
     "@types/react-dom": "^0.14.23",
     "@types/webpack-env": "^1.13.0",
-    "@uifabric/example-app-base": ">=1.3.4 <2.0.0",
+    "@uifabric/example-app-base": ">=1.3.10 <2.0.0",
     "chai": "^3.5.0",
     "enzyme": "^2.7.0",
     "es6-promise": "3.2.1",
@@ -41,7 +41,7 @@
     "webpack-split-by-path": "0.0.10"
   },
   "dependencies": {
-    "@uifabric/utilities": ">=1.4.0 <2.0.0",
+    "@uifabric/utilities": ">=1.8.3 <2.0.0",
     "glamor": "^2.20.24",
     "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0",
     "rtl-css-js": "^1.1.0"
