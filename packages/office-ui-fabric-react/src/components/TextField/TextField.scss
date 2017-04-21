@@ -103,7 +103,6 @@ $field-error-color: $errorTextColor;
 
   .field {
       @include input-placeholder {
-      //color: $ms-color-neutralTertiary;
       color: $field-placeholder-disabled-color;
     }
   }
