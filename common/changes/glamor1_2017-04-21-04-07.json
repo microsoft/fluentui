@@ -6,9 +6,9 @@
       "type": "none"
     },
     {
-      "comment": "",
+      "comment": "Updating setRTL to write isRTL to local storage. This allows the setting to persist across sessions.",
       "packageName": "@uifabric/utilities",
-      "type": "none"
+      "type": "patch"
     },
     {
       "packageName": "@uifabric/styling",

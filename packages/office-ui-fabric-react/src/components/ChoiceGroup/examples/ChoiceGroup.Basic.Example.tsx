@@ -22,7 +22,6 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
     return (
       <ChoiceGroup
         defaultSelectedKey='B'
-        selectedKey='C'
         options={ [
           {
             key: 'A',
