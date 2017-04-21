@@ -96,7 +96,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     let { id, isOpen, isVisible } = this.state;
 
     const modalClassName = css('ms-Dialog', styles.root, this.props.className, {
-      ['is-open ']: isOpen,
+      ['is-open']: isOpen,
       [styles.rootIsVisible]: isVisible,
     });
 
