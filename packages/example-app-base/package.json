@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "1.3.8",
+  "version": "1.3.9",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
