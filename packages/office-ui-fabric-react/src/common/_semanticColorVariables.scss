@@ -35,12 +35,11 @@ $dividerColor: $ms-color-neutralLight;
 /*** BASIC ***/
 $bodyBackgroundColor: $ms-color-white;
 $bodyTextColor: $ms-color-neutralPrimary;
-
-$bodySubtextColor: $ms-color-neutralSecondary; // descriptions, metadata, etc
+$bodySubtextColor: $ms-color-neutralSecondary;
 
 $disabledBackgroundColor: $ms-color-neutralLighter;
-$disabledTextColor: gray; // todo
-$disabledSubtextColor: $ms-color-neutralTertiary;
+$disabledTextColor: $ms-color-neutralTertiary;
+$disabledSubtextColor: $ms-color-neutralTertiaryAlt;
 
 $focusBorderColor: $ms-color-black;
 
