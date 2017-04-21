@@ -69,7 +69,12 @@ export interface ISpinButtonProps {
    */
   labelPosition?: Position;
 
+  /**
+   * @default: 10
+   */
   labelGapSpace?: number;
+
+  icon?: string;
 
   /**
    * The method is triggered when the value inside the SpinButton should be validated.

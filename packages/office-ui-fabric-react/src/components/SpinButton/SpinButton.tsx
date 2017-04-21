@@ -34,6 +34,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     max: 100,
     disabled: false,
     labelPosition: Position.start,
+    labelGapSpace: 10,
     label: null
   };
 
@@ -166,7 +167,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span >
         </div >
-        { (label && labelPosition === Position.bottom) && <Label id={ this._labelId } htmlFor={ this._inputId }>{ label } </Label> }
+        { (label && labelPosition === Position.bottom) &&
+          <Label
+            id={ this._labelId }
+            style={ this._labelDirectionHelper() }
+            htmlFor={ this._inputId }>{ label }
+          </Label> }
       </ div >
     ) as React.ReactElement<{}>;
   }
@@ -200,20 +206,23 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   private _labelDirectionHelper(): any {
-    let direction: any = {};
+    let style: any = {};
 
     switch (this.props.labelPosition) {
       case Position.start:
-        direction = { float: 'left' };
+        style = { float: 'left', margin: '0px ' + this.props.labelGapSpace + 'px 0px 0px' };
         break;
       case Position.end:
-        direction = { float: 'right' };
+        style = { float: 'right', margin: '0px 0px 0px ' + this.props.labelGapSpace + 'px' };
         break;
-      default:
+      case Position.top:
+        style = { margin: '0px 0px ' + this.props.labelGapSpace + 'px 0px' };
         break;
+      case Position.bottom:
+        style = { margin: this.props.labelGapSpace + 'px 0px 0px 0px' };
     }
 
-    return direction;
+    return style;
   }
 
   private _onChange() {
