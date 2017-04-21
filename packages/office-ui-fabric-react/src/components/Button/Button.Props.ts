@@ -125,13 +125,13 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 
   /**
-   * Deprecated on 4/15/2017, use iconName.
+   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } } .
    * @deprecated
    */
   icon?: string;
 
   /**
-   * Deprecated on 4/15/2017, use menuIconProps.
+   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } } .
    * @deprecated
    */
   menuIconName?: IconName | string | null;

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Modal: Updated animation to use local transition and removed Fabric Core dependency",
+      "type": "patch"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
