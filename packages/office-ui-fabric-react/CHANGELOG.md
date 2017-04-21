@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Apr 2017 03:17:40 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2017 06:23:54 GMT and should not be manually modified.
+
+## 2.21.0
+Fri, 21 Apr 2017 06:23:54 GMT
+
+### Minor changes
+
+- Toggle: Improve screen-reader accessibility.
+
+### Patches
+
+- Calendar: Add ARIA labels to day and month buttons
+- Callout/Tooltip: Updated default gapSpace from 16 to 0
+- DocumentCard: Change persona size from extraExtraSmall to extraSmall and update compact layout title font size to m-plus according to new design.
+
+## 2.20.2
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 2.20.1
+Wed, 19 Apr 2017 15:36:48 GMT
+
+### Patches
+
+- References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import.
 
 ## 2.20.0
 Wed, 19 Apr 2017 03:17:40 GMT
