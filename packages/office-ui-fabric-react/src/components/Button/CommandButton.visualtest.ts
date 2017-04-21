@@ -33,8 +33,8 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 function testRunner() {
-  componentIds.forEach(element => {
-    element.command.forEach(command => {
+  componentIds.forEach(function (element) {
+    element.command.forEach(function (command) {
       command(element);
     })
   });

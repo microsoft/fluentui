@@ -35,8 +35,8 @@ componentIds.push({
 
 
 function testRunner() {
-  componentIds.forEach(element => {
-    element.command.forEach(command => {
+  componentIds.forEach(function (element) {
+    element.command.forEach(function (command) {
       command(element);
     })
   });

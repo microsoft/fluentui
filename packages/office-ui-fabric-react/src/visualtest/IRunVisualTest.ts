@@ -4,5 +4,4 @@ export interface IRunVisualTest {
   fileName: string;
   command: ((params: IRunVisualTest) => void)[];
   childParam?: IRunVisualTest;
-
 }

@@ -40,9 +40,9 @@ componentIds.push({
 });
 
 function testRunner() {
-  componentIds.forEach(element => {
-    element.command.forEach(commandList => {
-      commandList(element);
+  componentIds.forEach(function (element) {
+    element.command.forEach(function (command) {
+      command(element);
     });
   });
 }
