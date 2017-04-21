@@ -425,11 +425,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
       }
-      this._async.setTimeout(() => {
-        performance.mark('before focus');
-        row.focus();
-        performance.mark('after focus');
-      }, 0);
+      this._async.setTimeout(() => row.focus(), 0);
 
       delete this._initialFocusedIndex;
     }
