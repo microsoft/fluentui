@@ -20,7 +20,6 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
 
   private _id: string;
   private _labelId: string;
-  private _ratingIconClassName: string;
 
   constructor(props: IRatingProps) {
     super(props);
@@ -32,7 +31,6 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
 
     this._id = getId('Rating');
     this._labelId = getId('RatingLabel');
-    this._ratingIconClassName = props.icon || 'ms-Icon--FavoriteStarFill';
   }
 
   public componentWillReceiveProps(nextProps: IRatingProps) {
@@ -41,8 +39,6 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         rating: this._getClampedRating(nextProps.rating)
       } as IRatingState);
     }
-
-    this._ratingIconClassName = nextProps.icon || 'ms-Icon--FavoriteStarFill';
   }
 
   public render() {
@@ -147,11 +143,11 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
           <i className={ css('ms-Rating-star', styles.star,
             'is-selected ' + styles.starIsSelected,
             'ms-Rating-partialStar', styles.partialStar, 'ms-Icon',
-            this._ratingIconClassName) }
+            this.props.icon || 'ms-Icon--FavoriteStarFill') }
             style={ { width: starSize * 100 + '%' } } />
         </span>);
     } else {
-      return <i className={ css('ms-Icon', this._ratingIconClassName) } />;
+      return <i className={ css('ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } />;
     }
   }
 

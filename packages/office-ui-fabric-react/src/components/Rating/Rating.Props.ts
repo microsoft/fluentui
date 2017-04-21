@@ -56,8 +56,8 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
   ariaLabelId?: string;
 
   /**
-   * Optional setting to represent rating control as aggregate rating control.
-   * If set, rating control will be readonly rating control with partial star support
+   * Optional setting to represent aggregate rating values on rating control.
+   * If set, rating control will be readonly rating control with partial star support.
    * Also if set, this overrides the disabled prop
    */
   aggregate?: boolean;
