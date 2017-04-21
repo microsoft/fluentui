@@ -64,29 +64,21 @@
 }
 
 .icon {
-  position: absolute;
-  bottom: 8px;
-  @include right(8px);
-  top: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
 }
 
-.field {
+.fieldGroup {
   @include ms-u-normalize;
   @include ms-baseFont;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
-  border-radius: 0;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-m;
-  color: $ms-color-neutralPrimary;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
   height: 32px;
-  @include padding(0, 12px, 1px, 12px);
-  width: 100%;
-  outline: 0;
-  text-overflow: ellipsis;
-
-  &.hasIcon {
-    @include padding-right(24px);
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -95,7 +87,6 @@
   &:focus {
     border-color: $ms-color-themePrimary;
   }
-
   &:hover,
   &:focus {
     @media screen and (-ms-high-contrast: active) {
@@ -106,10 +97,35 @@
       border-color: $ms-color-contrastWhiteSelected;
     }
   }
-
-  &[disabled] {
+  .rootIsDisabled > & {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.fieldAddon {
+  background: #F4F4F4;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  line-height: 1;
+}
+
+.field {
+  border-radius: 0;
+  border: none;
+  color: $ms-color-neutralPrimary;
+  @include padding(0, 12px, 0, 12px);
+  width: 100%;
+  outline: 0;
+  text-overflow: ellipsis;
+
+  &[disabled] {
+    background-color: transparent;
+    border-color: transparent;
     pointer-events: none;
     cursor: default;
   }
@@ -209,20 +225,25 @@
 
 //== Modifier: Multiline textfield
 //
-.root.rootIsMultiline .field {
-  @include ms-baseFont;
-  color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
-  line-height: 17px;
-  min-height: 60px;
-  height: auto;
-  padding-top: 6px;
-  overflow: auto;
+.root.rootIsMultiline {
+  .fieldGroup {
+    min-height: 60px;
+    height: auto;
+  }
+  .field {
+    @include ms-baseFont;
+    color: $ms-color-neutralPrimary;
+    font-family: $ms-font-family-base;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    line-height: 17px;
 
-  &.hasIcon {
-    @include padding-right(40px);
+    padding-top: 6px;
+    overflow: auto;
+
+    &.hasIcon {
+      @include padding-right(40px);
+    }
   }
 }
 
@@ -255,7 +276,9 @@
 .root.rootIsMultiline {
 
   .icon {
-    @include right(24px);
+    @include padding-right(24px);
+    padding-bottom: 8px;
+    align-items: flex-end;
   }
 
   .field.fieldIsUnresizable {

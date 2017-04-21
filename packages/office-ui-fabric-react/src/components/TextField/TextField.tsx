@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ITextField, ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
+import { Icon } from '../../Icon';
 import {
   DelayedRender,
   BaseComponent,
@@ -126,7 +127,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       label,
       multiline,
       required,
-      underlined
+      underlined,
+      addonString,
+      onRenderAddon = this._onRenderAddon
     } = this.props;
     let { isFocused } = this.state;
     const errorMessage: string = this._errorMessage;
@@ -143,8 +146,15 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        { iconClass && <i className={ css(iconClass, styles.icon) }></i> }
-        { multiline ? this._renderTextArea() : this._renderInput() }
+        <div className={ css(styles.fieldGroup) }>
+          { (addonString !== undefined || this.props.onRenderAddon) && (
+            <div className={ css(styles.fieldAddon) }>
+              { onRenderAddon(this.props, this._onRenderAddon) }
+            </div>
+          ) }
+          { multiline ? this._renderTextArea() : this._renderInput() }
+          { iconClass && <i className={ css(iconClass, styles.icon) }></i> }
+        </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
@@ -222,6 +232,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     if (this.props.validateOnFocusOut) {
       this._validate(this.state.value);
     }
+  }
+
+  private _onRenderAddon(props): JSX.Element {
+    let { addonString } = props;
+    return (
+      <span style={ { paddingBottom: '2px' } }>{ addonString }</span>
+    );
   }
 
   private _getTextElementClassName(): string {
