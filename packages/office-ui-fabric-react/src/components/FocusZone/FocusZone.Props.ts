@@ -83,9 +83,8 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /**
-   * Root props to mix into the root element.
+   * Deprecated at v1.12.1. DIV props provided to the FocusZone will be mixed into the root element.
    * @deprecated
-   * Deprecated at v1.12.1, to be removed at >= v2.0.0. Use specific button component instead
    */
   rootProps?: React.HTMLProps<HTMLDivElement>;
 

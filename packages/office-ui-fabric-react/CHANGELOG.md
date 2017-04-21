@@ -1,6 +1,72 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Apr 2017 16:04:37 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Apr 2017 16:54:26 GMT and should not be manually modified.
+
+## 2.20.2
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 2.20.1
+Wed, 19 Apr 2017 15:36:48 GMT
+
+### Patches
+
+- References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import.
+
+## 2.20.0
+Wed, 19 Apr 2017 03:17:40 GMT
+
+### Minor changes
+
+- Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome
+
+### Patches
+
+- DatePicker: Improve screen-reader accessibility.
+- Regression Test: Contextual Menu 
+- fix nit for Suggestion.tsx
+
+## 2.19.0
+Tue, 18 Apr 2017 15:17:13 GMT
+
+### Minor changes
+
+- DatePicker: Add option to not automatically open on focus.
+
+## 2.18.0
+Tue, 18 Apr 2017 03:09:12 GMT
+
+### Minor changes
+
+- Button: `icon` deprecated in favor of `iconProps`. `menuIconName` deprecated in favor of `menuIconProps`. All Buttons now modeled as HOCs around BaseButton, as apposed to subclassing which is a less ideal way of modeling buttons.
+- DetailsList: added `minimumPixelsForDrag` setting to allow the user to override the minimum drag distance before starting a drag operation.
+- Dropdown: Add dividers and headers to component
+
+### Patches
+
+- DetailsList: header now stretches correctly, group headers stretch correctly, column width calculations respect newProps rather than current props.
+- SearchBox: Updated layout to use flexbox, follow spec more closely in padding and height
+- SelectionZone: Spacebar and Enter key presses within selectionzone button/a/input will work properly
+
+## 2.17.0
+Fri, 14 Apr 2017 03:06:28 GMT
+
+### Minor changes
+
+- ColorPicker: Update the entire control whenever any part is updated
+
+### Patches
+
+- DatePicker: Restore focus when exiting picker.
+- Regression Tests: Button and checkbox
+- CommandBar: Render items with submenus as interactive buttons, even if they don't have an onClick handler
+- DatePicker: Fix for long lables and Calendar icon
+- PeoplePicker: Textfield cursor fix in edge
+- Fix alignment issues for unselectable items in DetailsList
+- DatePicker: Persist selected date across re-renders
+- FocusZone: filtered out keypresses in input fields from triggering actions
+-  Tag picker: Fix for margin in overflow
 
 ## 2.16.0
 Wed, 12 Apr 2017 16:04:37 GMT

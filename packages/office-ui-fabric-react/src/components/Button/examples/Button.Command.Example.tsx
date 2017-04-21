@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   CommandButton,
+  IButtonProps
 } from 'office-ui-fabric-react/lib/Button';
 import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
-import { IButtonProps } from './IButtonProps';
 
 export class ButtonCommandExample extends React.Component<IButtonProps, any> {
   public constructor() {
@@ -20,7 +20,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
         <Label>Command button</Label>
         <CommandButton
           data-automation-id='test'
-          icon='AddFriend'
+          iconProps={ { iconName: 'AddFriend' } }
           disabled={ disabled }
         >
           Create account

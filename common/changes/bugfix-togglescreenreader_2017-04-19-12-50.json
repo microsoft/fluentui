@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Restore focus when exiting picker.",
-      "type": "patch"
+      "comment": "Toggle: Improve screen-reader accessibility.",
+      "type": "minor"
     }
   ],
   "email": "clewolff@microsoft.com"
