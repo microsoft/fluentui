@@ -179,8 +179,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const canSelect = selection.canSelectItem(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
 
-    performance.mark(`DetailsRow render ${item.name}`);
-
     return (
       <div
         ref='root'
