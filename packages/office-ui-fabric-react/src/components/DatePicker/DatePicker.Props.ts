@@ -2,7 +2,17 @@ import * as React from 'react';
 import { DatePicker } from './DatePicker';
 import { DayOfWeek } from '../../Calendar';
 
+export interface IDatePicker {
+
+}
+
 export interface IDatePickerProps extends React.Props<DatePicker> {
+  /**
+   * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDatePicker) => void;
+
   /**
    * Callback issued when a date is selected
    */
@@ -35,6 +45,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * @defaultvalue false
    */
   allowTextInput?: boolean;
+
+  /**
+   * Whether the DatePicker should open automatically when the control is focused
+   * @defaultvalue false
+   */
+  disableAutoFocus?: boolean;
 
   /**
    * Placeholder text for the DatePicker
@@ -109,4 +125,24 @@ export interface IDatePickerStrings {
    * Error message to render for TextField if input date string parsing fails.
    */
   invalidInputErrorMessage?: string;
+
+  /**
+   * Aria-label for the "previous month" button.
+   */
+  prevMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next month" button.
+   */
+  nextMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "previous year" button.
+   */
+  prevYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year" button.
+   */
+  nextYearAriaLabel?: string;
 }

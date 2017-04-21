@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  EventGroup,
   KeyCodes,
   assign,
   autobind,
@@ -31,7 +30,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-const styles: any = require('./DetailsList.scss');
+import styles = require('./DetailsList.scss');
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -110,7 +109,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
-    this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
+    this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({
+      selection: this._selection,
+      minimumPixelsForDrag: props.minimumPixelsForDrag
+    }) : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
@@ -300,6 +302,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                     <List
+                      role={ null }
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
@@ -422,7 +425,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
       }
-      this._async.setTimeout(() => row.focus(), 0);
+      this._async.setTimeout(() => {
+        performance.mark('before focus');
+        row.focus();
+        performance.mark('after focus');
+      }, 0);
 
       delete this._initialFocusedIndex;
     }
@@ -504,7 +511,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       adjustedColumns = this._getFixedColumns(newColumns);
     } else {
-      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth);
+      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
     }
 
     // Preserve adjusted column calculated widths.
@@ -530,16 +537,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Builds a set of columns to fix within the viewport width. */
-  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number) {
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps) {
     let {
       selectionMode,
       groups
-    } = this.props;
+    } = props;
     let outerPadding = DEFAULT_INNER_PADDING;
     let rowCheckWidth = (selectionMode !== SelectionMode.none) ? CHECKBOX_WIDTH : 0;
     let groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
     let totalWidth = 0; // offset because we have one less inner padding.
-    let availableWidth = viewportWidth - outerPadding - rowCheckWidth - groupExpandWidth;
+    let availableWidth = viewportWidth - (outerPadding + rowCheckWidth + groupExpandWidth);
     let adjustedColumns: IColumn[] = newColumns.map((column, i) => {
       let newColumn = assign(
         {},

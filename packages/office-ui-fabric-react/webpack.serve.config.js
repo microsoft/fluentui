@@ -7,7 +7,6 @@ module.exports = {
   entry: './src/demo/index.tsx',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'demo-app.js',
   },
 
@@ -18,6 +17,7 @@ module.exports = {
 
   resolve: {
     alias: {
+      'office-ui-fabric-react/src': path.join(__dirname, 'src'),
       'office-ui-fabric-react/lib': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
@@ -28,7 +28,8 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    inline: true
+    inline: true,
+    port: 4321
   },
 
   module: {
@@ -48,7 +49,8 @@ module.exports = {
         use: [
           {
             loader: "load-themed-styles-loader", // creates style nodes from JS strings
-          }, {
+          },
+          {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
               modules: true,

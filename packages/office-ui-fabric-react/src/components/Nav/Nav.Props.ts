@@ -12,6 +12,12 @@ export interface INav {
 
 export interface INavProps {
   /**
+   * Optional callback to access the INav interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: INav) => void;
+
+  /**
    * A collection of link groups to display in the navigation bar
    */
   groups: INavLinkGroup[];
@@ -58,16 +64,14 @@ export interface INavProps {
   expandButtonAriaLabel?: string;
 
   /**
+   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
    * @deprecated
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * (Optional) The accessibility text for the expanded state
    **/
   expandedStateText?: string;
 
   /**
+   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
    * @deprecated
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * (Optional) The accessibility text for the collapsed state text
    **/
   collapsedStateText?: string;
 }
@@ -126,16 +130,14 @@ export interface INavLink {
   iconClassName?: string;
 
   /**
+   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
    * @deprecated
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * The name of the item to be used in logging engagement data
    */
   engagementName?: string;
 
   /**
+   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
    * @deprecated
-   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
-   * The alt text for the item
    */
   altText?: string;
 

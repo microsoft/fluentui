@@ -1,19 +1,20 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   DelayedRender,
   css,
   getId
 } from '../../Utilities';
-import { Button, ButtonType } from '../../Button';
+import { IconButton } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-const styles: any = require('./MessageBar.scss');
+import styles = require('./MessageBar.scss');
 
 export interface IMessageBarState {
   labelId?: string;
   showContent?: boolean;
 }
 
-export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
+export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
 
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
@@ -71,14 +72,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _getDismissDiv(): JSX.Element {
     if (this.props.onDismiss != null) {
-      return <Button
-        disabled={ false }
-        className={ css('ms-MessageBar-dismissal', styles.dismissal) }
-        buttonType={ ButtonType.icon }
-        onClick={ this.props.onDismiss }
-        icon='Cancel'
-        ariaLabel={ this.props.dismissButtonAriaLabel }
-      />;
+      return (
+        <IconButton
+          disabled={ false }
+          className={ css('ms-MessageBar-dismissal', styles.dismissal) }
+          onClick={ this.props.onDismiss }
+          iconProps={ { iconName: 'Cancel' } }
+          ariaLabel={ this.props.dismissButtonAriaLabel }
+        />
+      );
     }
     return null;
   }

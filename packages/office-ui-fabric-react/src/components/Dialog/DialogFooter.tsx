@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
-const styles: any = require('./Dialog.scss');
+import { BaseComponent, css } from '../../Utilities';
+import styles = require('./Dialog.scss');
 
-export class DialogFooter extends React.Component<any, any> {
+export class DialogFooter extends BaseComponent<any, any> {
   public render() {
     return (
       <div className={ css('ms-Dialog-actions', styles.actions) }>

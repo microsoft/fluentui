@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
 
+export interface IChoiceGroup {
+
+}
+
 export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
+  /**
+   * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IChoiceGroup) => void;
+
   /**
    * The options for the choice group.
    */
@@ -29,8 +39,8 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInp
   label?: string;
 
   /**
-   * @deprecated
    * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
+   * @deprecated
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 }
@@ -67,16 +77,16 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * @deprecated
    * Deprectated at 2.9.0 and will be removed after August 2017. Use 'selectedKey' or
    * 'defaultSelectedKey' on the ChoiceGroup instead.
+   * @deprecated
    * @defaultvalue false
    */
   checked?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
+   * @deprecated
    */
   isChecked?: boolean;
 
@@ -87,8 +97,8 @@ export interface IChoiceGroupOption {
 
   // @todo: Update version numbers for depriate and removal
   /**
-   * @deprecated
    * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
+   * @deprecated
    */
   isDisabled?: boolean;
 }

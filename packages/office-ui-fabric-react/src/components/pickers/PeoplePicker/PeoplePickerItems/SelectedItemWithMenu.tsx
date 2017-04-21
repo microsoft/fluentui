@@ -1,19 +1,19 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { css } from '../../../../Utilities';
+import { BaseComponent, css } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
-const styles: any = require('./PickerItemsDefault.scss');
+import styles = require('./PickerItemsDefault.scss');
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
+export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
   public refs: {
     [key: string]: any,
     ellipsisRef: HTMLElement
@@ -42,13 +42,13 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
           </div>
           <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
-              icon={ 'More' }
+              iconProps={ { iconName: 'More' } }
               onClick={ this.onContextualMenu }
             />
           </div>
           <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
-              icon={ 'Cancel' }
+              iconProps={ { iconName: 'Cancel' } }
               onClick={ onRemoveItem }
             />
           </div>

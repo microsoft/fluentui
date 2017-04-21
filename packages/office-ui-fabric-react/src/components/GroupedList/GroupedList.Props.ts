@@ -32,6 +32,12 @@ export interface IGroupedList {
 }
 
 export interface IGroupedListProps extends React.Props<GroupedList> {
+  /**
+   * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IGroupedList) => void;
+
   /** Optional class name to add to the root element. */
   className?: string;
 
@@ -108,8 +114,8 @@ export interface IGroup {
   level?: number;
 
   /**
+   * Deprecated at 1.0.0, selection state will be controled by the selection store only.
    * @deprecated
-   * This is no longer supported. Selection state will be controled by the selection store only. Will be removed in 1.0.0.
    */
   isSelected?: boolean;
 
@@ -193,8 +199,8 @@ export interface IGroupDividerProps {
   selected?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   * @deprecated
    */
   isSelected?: boolean;
 

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   css,
   getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
-const styles: any = require('./Nav.scss');
+import styles = require('./Nav.scss');
 
 import {
   INav,
@@ -30,7 +31,7 @@ export interface INavState {
   selectedKey?: string;
 }
 
-export class Nav extends React.Component<INavProps, INavState> implements INav {
+export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null,
@@ -116,7 +117,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           [styles.linkIsOnExpanded]: this._hasExpandButton
         }) }
         href={ link.url }
-        icon={ link.icon }
+        iconProps={ { iconName: link.icon } }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
         { link.name }

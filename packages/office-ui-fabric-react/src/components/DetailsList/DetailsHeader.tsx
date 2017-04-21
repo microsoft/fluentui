@@ -12,7 +12,7 @@ import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-const styles: any = require('./DetailsHeader.scss');
+import styles = require('./DetailsHeader.scss');
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -116,8 +116,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
-            { (selectAllVisibility === SelectAllVisibility.visible) ? (
+          { (selectAllVisibility !== SelectAllVisibility.none) ? (
+            <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
               <button
                 type='button'
                 className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.cellIsCheck) }
@@ -127,8 +127,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               >
                 <Check checked={ isAllSelected } />
               </button>
-            ) : null }
-          </div>
+            </div>
+          ) : null }
           { groupNestingDepth > 0 ? (
             <button
               type='button'

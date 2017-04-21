@@ -56,7 +56,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _isInnerZone: boolean;
 
   constructor(props) {
-    super(props, { 'rootProps': null });
+    super(props);
+
+    this._warnDeprecations({ rootProps: null });
 
     this._id = getId('FocusZone');
     _allInstances[this._id] = this;
@@ -100,7 +102,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public render() {
-    let { rootProps, ariaLabelledBy, className } = this.props;
+    let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     let divProps = getNativeProps(this.props, divProperties);
 
     return (
@@ -111,6 +113,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
         { ...{ onMouseDownCapture: this._onMouseDown } }
@@ -261,6 +264,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (!innerZone || !innerZone.focus()) {
         return;
       }
+    } else if (ev.altKey) {
+      return;
     } else {
       switch (ev.which) {
         case KeyCodes.space:
@@ -327,7 +332,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
     do {
-      if (target.tagName === 'BUTTON' || target.tagName === 'A') {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
         return false;
       }
 

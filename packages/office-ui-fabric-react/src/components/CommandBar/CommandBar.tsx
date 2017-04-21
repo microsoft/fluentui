@@ -1,8 +1,9 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   autobind,
   buttonProperties,
+  anchorProperties,
   css,
   divProperties,
   getId,
@@ -17,7 +18,7 @@ import {
   IconName,
   IIconProps
 } from '../../Icon';
-const styles: any = require('./CommandBar.scss');
+import styles = require('./CommandBar.scss');
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
@@ -32,7 +33,7 @@ export interface ICommandBarState {
   renderedFarItems?: IContextualMenuItem[];
 }
 
-export class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> implements ICommandBar {
+export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState> implements ICommandBar {
   public static defaultProps = {
     items: [],
     overflowItems: [],
@@ -51,7 +52,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   private _id: string;
   private _overflowWidth: number;
   private _commandItemWidths: { [key: string]: number };
-  private _events: EventGroup;
 
   constructor(props: ICommandBarProps) {
     super(props);
@@ -59,7 +59,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this.state = this._getStateFromProps(props);
 
     this._id = getId('CommandBar');
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
@@ -67,10 +66,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this._updateRenderedItems();
 
     this._events.on(window, 'resize', this._updateRenderedItems);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(nextProps: ICommandBarProps) {
@@ -163,8 +158,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     const itemKey = item.key || String(index);
+    const isLink = item.onClick || hasSubmenuItems(item);
     const className = css(
-      item.onClick ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
+      isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
       (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded)
     );
@@ -172,7 +168,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
     return <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ itemKey }>
       { (() => {
-        if (item.onClick || hasSubmenuItems(item)) {
+        if (isLink) {
           return <button
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
@@ -182,7 +178,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel || item.name }
-            aria-disabled={ item.disabled }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -196,6 +191,26 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
               <i className={ css('ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown', styles.itemChevronDown) } />
             ) : (null) }
           </button>;
+        } else if (item.href) {
+          return <a
+            { ...getNativeProps(item, anchorProperties) }
+            id={ this._id + item.key }
+            className={ className }
+            href={ item.href }
+            data-command-key={ index }
+            aria-haspopup={ hasSubmenuItems(item) }
+            role='menuitem'
+            aria-label={ item.ariaLabel || item.name }
+          >
+            { (hasIcon) ? this._renderIcon(item) : (null) }
+            { (!!item.name) && (
+              <span
+                className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+              >
+                { item.name }
+              </span>
+            ) }
+          </a>;
         } else {
           return <div
             { ...getNativeProps(item, divProperties) }

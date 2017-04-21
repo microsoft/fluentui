@@ -3,12 +3,12 @@ import {
   BaseComponent,
   css
 } from '../../../Utilities';
-import { CommandButton } from '../../../Button';
+import { CommandButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-const styles: any = require('./Suggestions.scss');
+import styles = require('./Suggestions.scss');
 
-export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
+export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {
     let {
       suggestionModel,
@@ -36,7 +36,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
-  protected _searchForMoreButton: CommandButton;
+  protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
@@ -87,15 +87,16 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults()) :
           this._renderSuggestions()
         }
-        { searchForMoreText && moreSuggestionsAvailable ?
-          (<CommandButton
-            onClick={ this._getMoreResults.bind(this) }
+        { searchForMoreText && moreSuggestionsAvailable && (
+          <CommandButton
+            componentRef={ this._resolveRef('_searchForMoreButton') }
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
-            icon={ 'Search' }
-            ref={ this._resolveRef('_searchForMoreButton') } >
+            iconProps={ { iconName: 'Search' } }
+            onClick={ this._getMoreResults.bind(this) }
+          >
             { searchForMoreText }
-          </CommandButton>) : (null)
-        }
+          </CommandButton>
+        ) }
       </div>
     );
   }

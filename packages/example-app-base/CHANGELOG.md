@@ -1,6 +1,42 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 28 Mar 2017 03:05:36 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2017 06:23:54 GMT and should not be manually modified.
+
+## 1.3.10
+Fri, 21 Apr 2017 06:23:54 GMT
+
+*Changes not tracked*
+
+## 1.3.8
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 1.3.7
+Tue, 18 Apr 2017 03:09:12 GMT
+
+### Patches
+
+- PropertiesTable: properties are now sorted correctly.
+
+## 1.3.6
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
+
+## 1.3.5
+Tue, 04 Apr 2017 15:18:51 GMT
+
+*Changes not tracked*
+
+## 1.3.4
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
 
 ## 1.3.3
 Tue, 28 Mar 2017 03:05:36 GMT

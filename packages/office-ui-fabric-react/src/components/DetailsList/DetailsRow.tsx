@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
+  IDisposable,
   assign,
   css,
   shallowCompare
@@ -17,8 +18,7 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-const styles: any = require('./DetailsRow.scss');
-import { IDisposable } from '@uifabric/utilities';
+import styles = require('./DetailsRow.scss');
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -58,14 +58,13 @@ export interface IDetailsRowState {
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
-export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowState> {
+export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement,
     cellMeasurer: HTMLElement
   };
 
-  private _events: EventGroup;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
@@ -83,7 +82,6 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
 
     this._hasSetFocus = false;
 
-    this._events = new EventGroup(this);
     this._droppingClassNames = '';
     this._updateDroppingState = this._updateDroppingState.bind(this);
   }
@@ -141,8 +139,6 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
   public componentWillUnmount() {
     let { item, onWillUnmount } = this.props;
 
-    this._events.dispose();
-
     // Only call the onWillUnmount callback if we have an item.
     if (onWillUnmount && item) {
       onWillUnmount(this);
@@ -183,6 +179,8 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     const canSelect = selection.canSelectItem(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
 
+    performance.mark(`DetailsRow render ${item.name}`);
+
     return (
       <div
         ref='root'
@@ -197,7 +195,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
-        draggable= { isDraggable }
+        draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }

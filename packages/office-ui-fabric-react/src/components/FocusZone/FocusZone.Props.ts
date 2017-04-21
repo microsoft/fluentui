@@ -26,6 +26,12 @@ export interface IFocusZone {
  */
 export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone> {
   /**
+   * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IFocusZone) => void;
+
+  /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
    */
   className?: string;
@@ -66,15 +72,19 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone
   ariaLabelledBy?: string;
 
   /**
+   * Sets the aria-describedby attribute.
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * Callback for when one of immediate children elements gets active by getting focused
    * or by having one of its respective children elements focused.
    */
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /**
-   * Root props to mix into the root element.
+   * Deprecated at v1.12.1. DIV props provided to the FocusZone will be mixed into the root element.
    * @deprecated
-   * Deprecated at v1.12.1, to be removed at >= v2.0.0. Use specific button component instead
    */
   rootProps?: React.HTMLProps<HTMLDivElement>;
 

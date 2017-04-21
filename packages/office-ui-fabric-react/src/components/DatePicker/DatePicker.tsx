@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  IDatePickerProps
+  IDatePickerProps,
+  IDatePickerStrings
 } from './DatePicker.Props';
 import {
   Calendar,
@@ -15,7 +16,8 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
-const styles: any = require('./DatePicker.scss');
+import { compareDates } from '../../utilities/dateMath/DateMath';
+import styles = require('./DatePicker.scss');
 
 export interface IDatePickerState {
   /** The currently focused date in the drop down, but not necessarily selected */
@@ -26,7 +28,7 @@ export interface IDatePickerState {
   errorMessage?: string;
 }
 
-const DEFAULT_STRINGS = {
+const DEFAULT_STRINGS: IDatePickerStrings = {
   months: [
     'January',
     'February',
@@ -77,7 +79,11 @@ const DEFAULT_STRINGS = {
     'S'
   ],
 
-  goToToday: 'Go to today'
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year'
 };
 
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
@@ -134,11 +140,22 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, isRequired, strings, value } = nextProps;
     const errorMessage = (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null;
 
+    // Set error message
     this.setState({
-      selectedDate: value || new Date(),
-      formattedDate: (formatDate && value) ? formatDate(value) : '',
       errorMessage: errorMessage
     });
+
+    // Issue# 1274: Check if the date value changed from old props value, i.e., if indeed a new date is being
+    // passed in or if the formatting function was modified. We only update the selected date if either of these
+    // had a legit change. Note tha the bug will still repro when only the formatDate was passed in props and this
+    // is the result of the onSelectDate callback, but this should be a rare scenario.
+    let oldValue = this.props.value;
+    if (!compareDates(oldValue, value) || this.props.formatDate !== formatDate) {
+      this.setState({
+        selectedDate: value || new Date(),
+        formattedDate: (formatDate && value) ? formatDate(value) : '',
+      });
+    }
   }
 
   public render() {
@@ -219,6 +236,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {
+    if (this.props.disableAutoFocus) {
+      return;
+    }
+
     if (!this.props.allowTextInput) {
       if (!this._preventFocusOpeningPicker) {
         this._showDatePickerPopup();
@@ -318,6 +339,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _calendarDismissed() {
     this._preventFocusOpeningPicker = true;
     this._dismissDatePickerPopup();
+
+    if (this.refs.textField) {
+      this.refs.textField.focus();
+    }
   }
 
   @autobind
@@ -356,7 +381,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         } else {
           this.setState({
             selectedDate: date,
-            formattedDate: formatDate && date ? formatDate(date) : '',
             errorMessage: ''
           });
         }

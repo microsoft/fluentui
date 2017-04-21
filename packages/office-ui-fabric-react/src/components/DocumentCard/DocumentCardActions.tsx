@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
-import { Button, ButtonType } from '../../Button';
-const styles: any = require('./DocumentCard.scss');
+import { IconButton } from '../../Button';
+import styles = require('./DocumentCard.scss');
 
-export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
+export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
   public render() {
     let { actions, views } = this.props;
 
@@ -12,10 +12,9 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
       <div className={ css('ms-DocumentCardActions', styles.actions) }>
 
         { actions && actions.map((action, index) => {
-          action.buttonType = ButtonType.icon;
           return (
             <div className={ css('ms-DocumentCardActions-action', styles.action) } key={ index }>
-              <Button { ...action } />
+              <IconButton { ...action } />
             </div>
           );
         }) }

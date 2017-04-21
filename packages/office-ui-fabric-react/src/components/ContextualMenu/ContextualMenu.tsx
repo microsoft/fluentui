@@ -21,7 +21,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-const styles: any = require('./ContextualMenu.scss');
+import styles = require('./ContextualMenu.scss');
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -144,6 +144,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    if (this.props.onMenuOpened) {
+      this.props.onMenuOpened(this.props);
+    }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.

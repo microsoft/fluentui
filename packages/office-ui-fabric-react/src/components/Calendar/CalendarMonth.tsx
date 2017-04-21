@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   KeyCodes,
   css,
   getRTL
@@ -7,7 +8,7 @@ import {
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
-const styles: any = require('./Calendar.scss');
+import styles = require('./Calendar.scss');
 
 export interface ICalendarMonthProps {
   navigatedDate: Date;
@@ -15,7 +16,7 @@ export interface ICalendarMonthProps {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 }
 
-export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
+export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {
@@ -47,6 +48,8 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
+              aria-label={ strings.prevYearAriaLabel }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span>
@@ -54,6 +57,8 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
+              aria-label={ strings.nextYearAriaLabel }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span>
@@ -68,6 +73,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
                   className={ css('ms-DatePicker-monthOption', styles.monthOption) }
                   key={ index }
                   onClick={ this._selectMonthCallbacks[index] }
+                  aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                   data-is-focusable={ true }
                 >
                   { month }

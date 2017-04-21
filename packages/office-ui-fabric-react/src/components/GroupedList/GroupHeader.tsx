@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   autobind,
   css
 } from '../../Utilities';
@@ -10,14 +11,14 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-const styles: any = require('./GroupHeader.scss');
+import styles = require('./GroupHeader.scss');
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
   isLoadingVisible: boolean;
 }
 
-export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeaderState> {
+export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderState> {
   constructor(props: IGroupDividerProps) {
     super(props);
 

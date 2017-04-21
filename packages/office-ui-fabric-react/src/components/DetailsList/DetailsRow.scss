@@ -53,6 +53,10 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  & > button {
+    max-width: 100%;
+  }
 }
 
 .isMultiline {
@@ -76,6 +80,10 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   background: none;
   border: none;
   opacity: 0;
+}
+
+.checkDisabled {
+  visibility: hidden;
 }
 
 .root:hover .check,

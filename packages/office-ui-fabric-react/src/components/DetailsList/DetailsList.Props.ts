@@ -27,6 +27,12 @@ export interface IDetailsList {
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList> {
+  /**
+   * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDetailsList) => void;
+
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
 
@@ -154,6 +160,12 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
   shouldApplyApplicationRole?: boolean;
+
+  /** 
+   * The minimum mouse move distance to interpret the action as drag event.
+   * @defaultValue 5
+   */
+  minimumPixelsForDrag?: number;
 }
 
 export interface IColumn {

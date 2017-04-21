@@ -10,7 +10,7 @@ import {
   inputProperties,
   textAreaProperties
 } from '../../Utilities';
-const styles: any = require('./TextField.scss');
+import styles = require('./TextField.scss');
 
 export interface ITextFieldState {
   value?: string;
@@ -56,6 +56,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   public constructor(props: ITextFieldProps) {
     super(props);
+
+    this._warnMutuallyExclusive({
+      'value': 'defaultValue'
+    });
 
     this._id = getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
@@ -139,7 +143,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        { iconClass && <i className={ iconClass }></i> }
+        { iconClass && <i className={ css(iconClass, styles.icon) }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
@@ -231,7 +235,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
 
     return css(textFieldClassName, this.props.inputClassName, {
-      ['ms-TextField-invalid ' + styles.invalid]: !!errorMessage
+      ['ms-TextField-invalid ' + styles.invalid]: !!errorMessage,
+      [styles.hasIcon]: !!this.props.iconClass,
     });
   }
 

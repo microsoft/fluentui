@@ -1,6 +1,16 @@
 import * as React from 'react';
 
+export interface IImage {
+
+}
+
 export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
+  /**
+   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IImage) => void;
+
   /**
    * If true, fades the image in when loaded.
    * @defaultvalue false;
@@ -28,10 +38,9 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   imageFit?: ImageFit;
 
   /**
+   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead and
+   * rerender the Image with a difference src.
    * @deprecated
-   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
-   * difference src.
    */
   errorSrc?: string;
 
@@ -93,10 +102,9 @@ export enum ImageLoadState {
   error = 2,
 
   /**
+   * Deprecated at v1.3.6, to replace the src in case of errors, use onLoadingStateChange instead
+   * and rerender the Image with a difference src.
    * @deprecated
-   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
-   * difference src.
    */
   errorLoaded = 3
 }

@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DocumentCardActivity } from 'office-ui-fabric-react/lib/DocumentCard';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
-const styles: any = require('./Todo.module.scss');
+import styles = require('./Todo.module.scss');
 import strings from './../strings';
 
 /**
- * TodoItem component using fabric-react component <FocusZone> <Checkbox> <Button> <DocumentCardActivity>.
+ * TodoItem component using fabric-react component <FocusZone> <Checkbox> <IconButton> <DocumentCardActivity>.
  *
  * Link of FocusZone: https://fabricreact.azurewebsites.net/fabric-react/master/#examples/focuszone
  * Link of Checkbox: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/checkbox
@@ -49,22 +49,21 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
         className={ className }
         aria-label={ this._ariaLabel }
         data-is-focusable={ true }
-        >
+      >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className={ css(styles.itemTaskRow, 'ms-Grid-row') }>
             <Checkbox
               label={ this.props.item.title }
               onChange={ this._onCheckboxChange }
               checked={ this.props.item.isComplete === true }
-              />
-            <Button
+            />
+            <IconButton
               className={ styles.deleteButton }
-              buttonType={ ButtonType.icon }
-              icon='x'
+              iconProps={ { iconName: 'x' } }
               onClick={ this._onDelete }
               title={ strings.deleteItemTitle }
               ariaLabel={ strings.deleteItemAriaLabel }
-              />
+            />
           </div>
         </FocusZone>
       </div>

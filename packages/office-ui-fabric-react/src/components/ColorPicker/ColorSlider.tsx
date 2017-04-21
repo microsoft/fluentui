@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   autobind,
   css
 } from '../../Utilities';
-const styles: any = require('./ColorPicker.scss');
+import styles = require('./ColorPicker.scss');
 
 export interface IColorSliderProps {
   minValue?: number;
   maxValue?: number;
-  initialValue?: number;
+  value?: number;
   thumbColor?: string;
   overlayStyle?: any;
   onChanged?: (newValue: number) => void;
@@ -24,12 +24,12 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
-export class ColorSlider extends React.Component<IColorSliderProps, IColorSliderState> {
+export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,
     maxValue: 100,
     thumbColor: 'inherit',
-    initialValue: 0
+    value: 0
   };
 
   public refs: {
@@ -37,24 +37,22 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     root: HTMLElement;
   };
 
-  private _events: EventGroup;
-
   constructor(props: IColorSliderProps) {
     super(props);
 
-    let { initialValue } = this.props;
-
-    this._events = new EventGroup(this);
+    let { value } = this.props;
 
     this.state = {
       isAdjusting: false,
       origin: null,
-      currentValue: initialValue
+      currentValue: value
     };
   }
 
-  public componentWillUnmount() {
-    this._events.dispose();
+  public componentWillReceiveProps(newProps: IColorSliderProps) {
+    if (newProps && newProps.value) {
+      this.setState({ currentValue: newProps.value });
+    }
   }
 
   public render() {

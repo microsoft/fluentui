@@ -10,7 +10,7 @@ import {
 import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-const styles: any = require('./Tooltip.scss');
+import styles = require('./Tooltip.scss');
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -21,7 +21,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
     calloutProps: {
       isBeakVisible: true,
       beakWidth: 16,
-      gapSpace: 8,
+      gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false
     }
