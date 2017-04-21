@@ -34,6 +34,11 @@ export function setRTL(isRTL: boolean) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
+  // tslint:disable-next-line:no-string-literal
+  if (window['localStorage']) {
+    localStorage.setItem('isRTL', isRTL ? '1' : '0');
+  }
+
   _isRTL = isRTL;
 }
 
