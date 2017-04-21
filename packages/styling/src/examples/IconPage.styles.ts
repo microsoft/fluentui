@@ -1,7 +1,7 @@
 import { css, CSSProperties } from 'glamor';
-import { styles } from '@uifabric/styling';
+import { getTheme, ITheme } from '@uifabric/styling';
 
-export function getStyles(): CSSProperties {
+export function getStyles(theme: ITheme = getTheme()): CSSProperties {
   return {
 
     row: css({
@@ -11,7 +11,7 @@ export function getStyles(): CSSProperties {
     }),
 
     cell: css(
-      styles.fonts.medium,
+      theme.fonts.medium,
       { margin: '0 4px' }
     ),
 

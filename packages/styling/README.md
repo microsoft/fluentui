@@ -11,8 +11,7 @@ Within an npm project, you should install the package and save it as a dependenc
 npm install --save @uifabric/styling
 ```
 
-This will add the styling package which gives you access to the Fabric core style classes through
-javascript.
+This will add the styling package which gives you access to the Fabric Core style classes through JavaScript.
 
 # Using Fabric core classes
 
@@ -22,31 +21,32 @@ Example of returning markup that is `themePrimary` colored using the `medium` fo
 
 ```tsx
 import {
-  classNames
+  colorClassNames,
+  fontClassNames
 } from '@uifabric/styling';
 
 function renderHtml() {
   return (
     `<div class="${ [
-      classNames.colors.themePrimary,
-      classNames.fonts.medium
+      colorClassNames.themePrimary,
+      fontClassNamed.medium
       ].join(' ') }">Hello world!</div>`
   );
 }
 ```
 
-There are a number of classes available under the `colors`, `fonts`, `animations`, and `icons` namespaces within the `classNames` export. See the [available classes](#availableClasses) below.
+There are a number of classes available under `colorClassNames`, `fontClassNames`, `animationClassNames`, and `iconClassNames` exports. See the [available classes](#availableClasses) below.
 
 Using animations works the same way:
 
 ```tsx
 import {
-  classNames
+  animationClassNames
 } from '@uifabric/styling';
 
 function renderHtml() {
   return (
-    `<div class="${ classNames.animations.fadeIn }">Hello world!</div>`
+    `<div class="${ animationClassNames.fadeIn }">Hello world!</div>`
   );
 }
 ```
@@ -87,7 +87,7 @@ function renderHtml() {
 ```
 
 
-# Overring the theme colors
+# Overriding the theme colors
 
 The default palette of colors matches the default Fabric core styling conventions. However, it is possible to override the color slots to match your product requirements:
 

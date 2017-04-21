@@ -6,11 +6,11 @@ import './utilities/glamorPlugins';
 // tslint:disable-next-line:no-string-literal
 Glamor['speedy'](false);
 
-import { setTheme } from '@uifabric/styling';
+import { loadTheme } from '@uifabric/styling';
 
 // Example of setting theming overrides!
 /*
-setTheme({
+loadTheme({
   colors: { themePrimary: 'red' },
   fonts: {
     mediumPlus: {
@@ -20,7 +20,6 @@ setTheme({
   }
 });
 */
-
 import { examplesOf, createApp } from '@uifabric/example-app-base';
 import { ColorPage } from './examples/ColorPage';
 import { FontPage } from './examples/FontPage';

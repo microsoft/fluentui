@@ -1,6 +1,5 @@
 import { defaultFontStyles, IFontStyles } from './defaultFontStyles';
 import { getTheme } from '../utilities/theme';
-import { CSSProperties } from 'glamor';
 
 export { IFontStyles } from './defaultFontStyles';
 
@@ -22,4 +21,3 @@ function _defineFontGetter(obj: IFontStyles, fontName: string): void {
     configurable: true
   });
 }
-

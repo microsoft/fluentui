@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fontStyles } from '../../styles/fontStyles';
+import { fontStyles } from '@uifabric/styling';
 import { css, CSSProperties } from 'glamor';
 
 export interface IPageHeaderProps {

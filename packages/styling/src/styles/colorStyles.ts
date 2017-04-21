@@ -28,7 +28,6 @@ export interface IColorStyles {
   neutralLighter?: string;
   neutralLighterAlt?: string;
   white?: string;
-  whiteTranslucent40?: string;
   yellow?: string;
   yellowLight?: string;
   orange?: string;
@@ -79,7 +78,6 @@ export const defaultColorStyles: IColorStyles = {
   neutralLighter: '#f4f4f4',
   neutralLighterAlt: '#f8f8f8',
   white: '#ffffff',
-  whiteTranslucent40: 'rgba(255,255,255,.4)',
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',

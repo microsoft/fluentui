@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styles as fabricStyles } from '@uifabric/styling';
+import { fontStyles } from '@uifabric/styling';
 import { css, CSSProperties } from 'glamor';
 
 export interface IPageProps extends React.Props<Page> {
@@ -7,7 +7,7 @@ export interface IPageProps extends React.Props<Page> {
 
 const styles: CSSProperties = {
   root: {
-    ...fabricStyles.fonts.medium,
+    ...fontStyles.medium,
     padding: '20px'
   }
 };

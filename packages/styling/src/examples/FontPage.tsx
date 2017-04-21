@@ -3,20 +3,7 @@ import { BaseComponent } from '@uifabric/utilities';
 import { css, CSSProperties } from 'glamor';
 import { Page, PageHeader } from './components';
 import { getTheme, ITheme } from '@uifabric/styling';
-
-function getStyles(theme: ITheme): CSSProperties {
-  return {
-    row: {
-      paddingBottom: '10px',
-      borderBottom: '1px solid ' + theme.colors.themeLighterAlt,
-      userSelect: 'none'
-    },
-    cell: {
-      ...theme.fonts.small,
-      paddingRight: '20px'
-    }
-  };
-}
+import { getStyles } from './FontPage.styles';
 
 export class FontPage extends BaseComponent<{}, {}> {
 

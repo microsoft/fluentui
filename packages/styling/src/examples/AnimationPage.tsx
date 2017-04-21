@@ -2,25 +2,9 @@ import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { Page, PageHeader } from './components';
 import { AnimationTile } from './AnimationTile';
-import { classNames } from '@uifabric/styling';
-import { css, CSSProperties } from 'glamor';
-
-function getStyles(): CSSProperties {
-  return {
-    grid: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'stretch',
-      margin: '-8px'
-    },
-    tile: {
-      flexGrow: 1,
-      minWidth: '200px',
-      maxWidth: '400px',
-      padding: '8px'
-    }
-  };
-}
+import { animationClassNames } from '@uifabric/styling';
+import { getStyles } from './AnimationPage.styles';
+import { CSSProperties } from 'glamor';
 
 export class AnimationPage extends BaseComponent<{}, {}> {
 
@@ -59,9 +43,9 @@ export class AnimationPage extends BaseComponent<{}, {}> {
         </code>
 
         <PageHeader text='Animations' />
-        <div { ...css(styles.grid) }>
-          { Object.keys(classNames.animations).map((name: string) => (
-            <div { ...css(styles.tile) } key={ name }>
+        <div { ...styles.grid }>
+          { Object.keys(animationClassNames).map((name: string) => (
+            <div { ...styles.tile } key={ name }>
               <AnimationTile name={ name } />
             </div>
           )) }

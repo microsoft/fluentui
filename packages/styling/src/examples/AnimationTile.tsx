@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { getTheme, ITheme, classNames } from '@uifabric/styling';
+import { getTheme, ITheme, animationClassNames } from '@uifabric/styling';
 import { css, CSSProperties } from 'glamor';
 
 function getStyles(theme?: ITheme): CSSProperties {
@@ -102,7 +102,7 @@ export class AnimationTile extends BaseComponent<IAnimationTileProps, IAnimation
         <div { ...css(styles.container) }>
           <div
             { ...css(styles.animationBox, positioningStyle, isInStyle) }
-            className={ this.state.isAnimating && classNames.animations[this.props.name] } />
+            className={ this.state.isAnimating && animationClassNames[this.props.name] } />
         </div>
       </div>
     );

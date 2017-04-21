@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { css, CSSProperties } from 'glamor';
-import { getTheme, ITheme, classNames } from '@uifabric/styling';
+import { getTheme, ITheme, colorClassNames } from '@uifabric/styling';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Page, PageHeader } from './components';
 
@@ -98,7 +98,7 @@ export class ColorPage extends BaseComponent<{}, {}> {
                 column.key === 'example' ? (
                   <div
                     { ...css(styles.example) }
-                    className={ classNames.colors[item.name] }
+                    className={ colorClassNames[item.name] }
                   >
                     The quick brown fox jumps over the lazy dog.
                   </div>

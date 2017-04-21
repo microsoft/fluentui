@@ -23,6 +23,7 @@ export interface ISwatchSet {
   backgroundHover: ISwatch;
   backgroundPressed: ISwatch;
   backgroundSelected: ISwatch;
+  backgroundSelectedHover: ISwatch;
   backgroundSelectionHighlight: ISwatch;
 
   // Foreground color.

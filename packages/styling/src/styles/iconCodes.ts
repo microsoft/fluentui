@@ -1417,4 +1417,3 @@ export const iconCodes: IIconCodes = {
   zoomIn: '\uE8A3',
   zoomOut: '\uE71F'
 };
-

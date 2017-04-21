@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { CSSProperties } from 'glamor';
-import { styles as fabricStyles } from '@uifabric/styling';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { getStyles } from './IconTile.styles';
+import { iconCodes } from '@uifabric/styling';
+import { IIconTileStyles, getStyles } from './IconTile.styles';
 
 export interface IIconTileProps extends React.HTMLProps<HTMLDivElement> {
   iconName: string;
@@ -10,11 +9,11 @@ export interface IIconTileProps extends React.HTMLProps<HTMLDivElement> {
 
 export function IconTile(props: IIconTileProps): JSX.Element {
   const { iconName, ...divProps }: IIconTileProps = props;
-  const styles: CSSProperties = getStyles();
+  const styles: IIconTileStyles = getStyles();
 
   return (
-    <div { ...styles.iconTile } { ...divProps }>
-      <i { ...styles.icon }>{ fabricStyles.iconCodes[iconName] }</i>
+    <div className={ styles.iconTile.toString() } { ...divProps }>
+      <i className={ styles.icon.toString() }>{ iconCodes[iconName] }</i>
       <div>{ iconName }</div>
     </div>
   );

@@ -1,11 +1,19 @@
-import { css, CSSProperties } from 'glamor';
-import { styles } from '@uifabric/styling';
+import {
+  StyleAttribute,
+  ITheme,
+  css,
+  getTheme
+} from '@uifabric/styling';
 
-export function getStyles(): CSSProperties {
+export interface IIconTileStyles {
+  iconTile: StyleAttribute;
+  icon: StyleAttribute;
+}
 
+export function getStyles(theme: ITheme = getTheme()): IIconTileStyles {
   return {
     iconTile: css(
-      styles.fonts.small,
+      theme.fonts.small,
       {
         flexShrink: 0,
         display: 'flex',
@@ -27,25 +35,25 @@ export function getStyles(): CSSProperties {
           top: 0,
           right: 0,
           bottom: 0,
-          border: '1px solid ' + styles.colors.themePrimary
+          border: '1px solid ' + theme.colors.themePrimary,
         },
 
         ':focus': {
-          color: styles.colors.themePrimary,
+          color: theme.colors.themePrimary,
           opacity: 1,
-          background: styles.colors.themeLighterAlt
+          background: theme.colors.themeLighterAlt
         },
         ':hover': {
           opacity: 1,
-          background: styles.colors.themeLighterAlt
+          background: theme.colors.themeLighterAlt
         },
         ':focus:hover': {
-          background: styles.colors.themeLight
+          background: theme.colors.themeLight
         }
       }),
 
     icon: css(
-      styles.fonts.icon,
+      theme.fonts.icon,
       {
         fontSize: '36px',
         paddingBottom: '8px'
