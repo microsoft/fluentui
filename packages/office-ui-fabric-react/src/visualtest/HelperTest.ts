@@ -1,49 +1,41 @@
-import { Casper } from './PhantomCssInterface';
+
+import { Casper, IPhantomCSS } from './PhantomCssInterface';
 import { baseUrl } from '../common/VisualTest';
 import { RunVisualTest } from './RunVisualTest';
-import { IdType, ScreenEvent, EventLayer } from './RunVisualTest';
+import { defaultScreenshot, mouseMoveScreenshot } from './RunVisualTest';
+import { IRunVisualTest } from './IRunVisualTest';
 
-
+declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds = [];
-let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+let componentIds: RunVisualTest[] = [];
 
-let comp = new RunVisualTest({
-  componentId: 'DefaultButton',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
+
+let comp1 = new RunVisualTest({
+  componentExtnid: '#CommandButton',
+  fileName: 'commandButton'
 });
 
-let functionList = [comp.defaultScreenshotfn];
+componentIds.push(comp1);
 
 
+let commands: ((params: IRunVisualTest) => void)[] = [];
 
-componentIds.push(new RunVisualTest({
-  componentId: 'DefaultButton',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
 
+function testRunner() {
+  componentIds.forEach(element => {
+    commands.forEach(command => {
+      command(element);
+    })
+  });
+}
 
-componentIds.push(new RunVisualTest({
-  componentId: 'DefaultButtonDisabled',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
-
-// /* tslint:disable:no-function-expression */
 casper.
-  start(baseUrl + 'defaultButton').
+  start(baseUrl + 'commandButton').
   then(function () {
-    console.log("in step");
-    for (let i = 0; i < functionList.length; i++) {
-      functionList[i]();
-    }
+    testRunner();
   });
 
 casper.run(function () { casper.test.done(); });
-// /* tslint:enable:no-function-expression */

@@ -1,42 +1,52 @@
-import { Casper } from '../../visualtest/PhantomCssInterface';
+import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import { RunVisualTest } from '../../visualtest/RunVisualTest';
-import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
+declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds = [];
-let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+let componentIds: RunVisualTest[] = [];
 
-componentIds.push(new RunVisualTest({
-  componentId: 'ChoiceGroup',
-  componentIdType: IdType.CLASSNAME,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+let component = new RunVisualTest({
+  componentExtnid: '.' + 'ChoiceGroup',
+  fileName: 'choiceGroup'
+});
 
-componentIds.push(new RunVisualTest({
-  componentId: 'ChoiceGroupDisabled',
-  componentIdType: IdType.CLASSNAME,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+let disabledComponent = new RunVisualTest({
+  componentExtnid: '.' + 'ChoiceGroupDisabled',
+  fileName: 'choiceGroupDisabled'
+});
 
-componentIds.push(new RunVisualTest({
-  componentId: 'ChoiceGroupIcon',
-  componentIdType: IdType.CLASSNAME,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+let iconComponent = new RunVisualTest({
+  componentExtnid: '.' + 'ChoiceGroupIcon',
+  fileName: 'choiceGroupIcon'
+});
 
-// /* tslint:disable:no-function-expression */
+componentIds.push(component);
+componentIds.push(disabledComponent);
+componentIds.push(iconComponent);
+
+let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+function testRunner() {
+  componentIds.forEach(element => {
+    commands.forEach(command => {
+      command(element);
+    })
+  });
+}
+
 casper.
   start(baseUrl + 'choiceGroup').
   then(function () {
-    componentIds.map(function (test) {
-      test.runCasper();
-    });
+    testRunner();
   });
 
 casper.run(function () { casper.test.done(); });
-// /* tslint:enable:no-function-expression */

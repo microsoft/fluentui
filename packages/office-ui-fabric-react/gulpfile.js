@@ -31,7 +31,7 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
   });
   if (!options.args['debug']) {
     let casperJs = require('gulp-phantomcss');
-    gulp.src(['lib/**/*.visualtest.js', 'lib/**/HelperTest.js'])
+    gulp.src(['lib/**/*.visualtest.js'])
       .pipe(casperJs(
         {
           screenshots: 'visualtests/baseline',

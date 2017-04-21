@@ -1,37 +1,46 @@
-import { Casper } from '../../visualtest/PhantomCssInterface';
+import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import { RunVisualTest } from '../../visualtest/RunVisualTest';
-import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
-
+declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds = [];
-let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
+let componentIds: RunVisualTest[] = [];
 
-componentIds.push(new RunVisualTest({
-  componentId: 'DefaultButton',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+let button = new RunVisualTest({
+  componentExtnid: '#' + 'DefaultButton',
+  fileName: 'defaultButton'
+});
 
+let disabledButton = new RunVisualTest({
+  componentExtnid: '#' + 'DefaultButtonDisabled',
+  fileName: 'defaultButtonDisabled'
+});
 
-componentIds.push(new RunVisualTest({
-  componentId: 'DefaultButtonDisabled',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+componentIds.push(button);
+componentIds.push(disabledButton);
 
-// /* tslint:disable:no-function-expression */
+let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+function testRunner() {
+  componentIds.forEach(element => {
+    commands.forEach(command => {
+      command(element);
+    })
+  });
+}
+
 casper.
   start(baseUrl + 'defaultButton').
   then(function () {
-    componentIds.map(function (test) {
-      test.runCasper();
-    });
+    testRunner();
   });
 
 casper.run(function () { casper.test.done(); });
-// /* tslint:enable:no-function-expression */

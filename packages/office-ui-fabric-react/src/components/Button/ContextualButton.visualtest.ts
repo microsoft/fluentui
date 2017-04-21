@@ -1,52 +1,46 @@
-import { Casper } from '../../visualtest/PhantomCssInterface';
+import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import { RunVisualTest } from '../../visualtest/RunVisualTest';
-import { IdType, ScreenEvent, EventLayer } from '../../visualtest/RunVisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
+declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
-let componentIds = [];
-let pngEventList = [ScreenEvent.DEFAULT, ScreenEvent.DOWN, ScreenEvent.HOVERED, ScreenEvent.DOUBLECLICK];
-componentIds.push(new RunVisualTest({
-  componentId: 'ContextualButton',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
+let componentIds: RunVisualTest[] = [];
 
-componentIds.push(new RunVisualTest({
-  componentId: 'ContextualButtonDisabled',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList
-}));
-
-let pngEventList2 = [ScreenEvent.DEFAULT];
-let childComponent = new RunVisualTest({
-  componentId: 'ms-ContextualMenu-list',
-  componentIdType: IdType.CLASSNAME,
-  eventType: EventLayer.SINGLE,
-  eventList: pngEventList2
+let button = new RunVisualTest({
+  componentExtnid: '#' + 'ContextualButton',
+  fileName: 'contextualButton'
 });
 
-let pngEventList3 = [ScreenEvent.CLICK];
-componentIds.push(new RunVisualTest({
-  componentId: 'ContextualButton',
-  componentIdType: IdType.ID,
-  eventType: EventLayer.DOUBLE,
-  eventList: pngEventList3,
-  secondLayer: childComponent,
-}));
+let disabledButton = new RunVisualTest({
+  componentExtnid: '#' + 'ContextualButtonDisabled',
+  fileName: 'contextualButtonDisabled'
+});
 
-// /* tslint:disable:no-function-expression */
+componentIds.push(button);
+componentIds.push(disabledButton);
+
+let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+function testRunner() {
+  componentIds.forEach(element => {
+    commands.forEach(command => {
+      command(element);
+    })
+  });
+}
+
 casper.
   start(baseUrl + 'contextualButton').
   then(function () {
-    componentIds.map(function (test) {
-      test.runCasper();
-    });
+    testRunner();
   });
 
 casper.run(function () { casper.test.done(); });
-// /* tslint:enable:no-function-expression */
-
