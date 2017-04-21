@@ -16,8 +16,8 @@ import styles = require('./Modal.scss');
 
 export interface IDialogState {
   isOpen?: boolean;
-  isAnimatingOpen?: boolean;
-  isAnimatingClose?: boolean;
+  isVisible?: boolean;
+  isVisibleClose?: boolean;
   id?: string;
 }
 
@@ -32,34 +32,48 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     containerClassName: '',
   };
 
+  private _onModalCloseTimer: number;
+
   constructor(props: IModalProps) {
     super(props);
-
-    this._onDialogRef = this._onDialogRef.bind(this);
-
     this.state = {
       id: getId('Modal'),
       isOpen: props.isOpen,
-      isAnimatingOpen: props.isOpen,
-      isAnimatingClose: false
+      isVisible: props.isOpen,
     };
   }
 
   public componentWillReceiveProps(newProps: IModalProps) {
+    clearTimeout(this._onModalCloseTimer);
+
     // Opening the dialog
-    if (newProps.isOpen && !this.state.isOpen) {
-      this.setState({
-        isOpen: true,
-        isAnimatingOpen: true,
-        isAnimatingClose: false
-      });
+    if (newProps.isOpen) {
+      if (!this.state.isOpen) {
+        // First Open
+        this.setState({
+          isOpen: true
+        });
+      } else {
+        // Reopen during closing
+        this.setState({
+          isVisible: true
+        });
+      }
     }
 
     // Closing the dialog
     if (!newProps.isOpen && this.state.isOpen) {
+      this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, parseFloat(styles.duration) * 1000);
       this.setState({
-        isAnimatingOpen: false,
-        isAnimatingClose: true
+        isVisible: false
+      });
+    }
+  }
+
+  public componentDidUpdate(prevState: IDialogState, prevProps: IModalProps) {
+    if (!prevProps.isOpen && !prevState.isVisible) {
+      this.setState({
+        isVisible: true
       });
     }
   }
@@ -79,19 +93,16 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
       titleAriaId,
       subtitleAriaId,
     } = this.props;
-    let { id, isOpen, isAnimatingOpen, isAnimatingClose } = this.state;
+    let { id, isOpen, isVisible } = this.state;
 
-    // @TODO - the discussion on whether the Modal contain a property for rendering itself is still being discussed
+    const modalClassName = css('ms-Dialog', styles.root, this.props.className, {
+      ['is-open']: isOpen,
+      [styles.rootIsVisible]: isVisible,
+    });
+
     if (!isOpen) {
       return null;
     }
-
-    let subTextContent;
-    const modalClassName = css('ms-Dialog', styles.root, this.props.className, {
-      ['is-open ' + styles.isOpen]: isOpen,
-      'ms-u-fadeIn200': isAnimatingOpen,
-      'ms-u-fadeOut200': isAnimatingClose
-    });
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode >= ResponsiveMode.small) {
@@ -103,9 +114,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
             ariaDescribedBy={ subtitleAriaId }
             onDismiss={ onDismiss }
           >
-            <div
-              className={ modalClassName }
-              ref={ this._onDialogRef }>
+            <div className={ modalClassName }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
               <FocusTrapZone
                 className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
@@ -123,36 +132,15 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     }
   }
 
-  private _onDialogRef(ref: HTMLDivElement) {
-    if (ref) {
-      this._events.on(ref, 'animationend', this._onAnimationEnd);
-    } else {
-      this._events.off();
-    }
-  }
-
   // Watch for completed animations and set the state
-  private _onAnimationEnd(ev: AnimationEvent) {
+  private _onModalClose() {
+    this.setState({
+      isOpen: false
+    });
 
-    // The dialog has just opened (faded in)
-    if (ev.animationName.indexOf('fadeIn') > -1) {
-      this.setState({
-        isOpen: true,
-        isAnimatingOpen: false
-      });
-    }
-
-    // The dialog has just closed (faded out)
-    if (ev.animationName.indexOf('fadeOut') > -1) {
-      this.setState({
-        isOpen: false,
-        isAnimatingClose: false
-      });
-
-      // Call the onDismiss callback
-      if (this.props.onDismissed) {
-        this.props.onDismissed();
-      }
+    // Call the onDismiss callback
+    if (this.props.onDismissed) {
+      this.props.onDismissed();
     }
   }
 }
