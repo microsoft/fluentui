@@ -25,15 +25,13 @@ describe('Dialog', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Dialog isOpen={ true } onDismissed={ handleDismissed } />, div);
     ReactDOM.render(<Dialog isOpen={ false } onDismissed={ handleDismissed } />, div);
-    const event = document.createEvent('CustomEvent'); // AnimationEvent is not supported by PhantomJS
-    event.initCustomEvent('animationend', true, true, {});
-    (event as any).animationName = 'fadeOut';
 
-    const dialog = document.querySelector('.ms-Dialog');
-    expect(dialog).not.to.be.null;
+    setTimeout(() => {
+      const dialog = document.querySelector('.ms-Dialog');
+      expect(dialog).to.be.null;
 
-    dialog.dispatchEvent(event);
+      expect(dismissedCalled).to.be.true;
+    }, 400);
 
-    expect(dismissedCalled).to.be.true;
   });
 });
