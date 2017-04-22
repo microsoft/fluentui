@@ -8,7 +8,8 @@ import {
   getId,
   BaseComponent
 } from '../../Utilities';
-import styles = require('./ChoiceGroup.scss');
+import * as stylesImport from './ChoiceGroup.scss';
+const styles: any = stylesImport;
 
 export interface IChoiceGroupState {
   keyChecked: string | number;
