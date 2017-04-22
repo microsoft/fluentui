@@ -1,18 +1,37 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
+
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds: IRunVisualTest[] = [];
+let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+componentIds.push({
+  componentExtnid: '#' + 'ContextualMenu',
+  fileName: 'contextualMenu',
+  command: commands
+});
+
+function testRunner() {
+  componentIds.forEach(element => {
+    element.command.forEach(command => {
+      command(element);
+    });
+  });
+}
+
 casper.
   start(baseUrl + 'contextualMenu').
-  then(function () {
-    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_not_pressed');
-  }).then(function () {
-    this.mouse.move('#ContextualMenu');
-    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_hovered');
-  }).then(function () {
-    this.mouse.down('#ContextualMenu');
-    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_pressed');
+  then(() => {
+    testRunner();
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

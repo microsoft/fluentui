@@ -25,20 +25,18 @@ componentIds.push({
   command: commands
 });
 
-
-
 function testRunner() {
-  componentIds.forEach(function (element) {
-    element.command.forEach(function (command) {
+  componentIds.forEach(element => {
+    element.command.forEach(command => {
       command(element);
-    })
+    });
   });
 }
 
 casper.
   start(baseUrl + 'checkbox').
-  then(function () {
+  then(() => {
     testRunner();
   });
 
-casper.run(function () { casper.test.done(); });
+casper.run(() => { casper.test.done(); });

@@ -12,7 +12,6 @@ commands.push(mouseMoveScreenshot);
 commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
-
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
@@ -27,7 +26,6 @@ componentIds.push({
   command: commands
 });
 
-
 componentIds.push({
   componentExtnid: '#' + 'ContextualButton',
   fileName: 'contextualButton',
@@ -40,8 +38,8 @@ componentIds.push({
 });
 
 function testRunner() {
-  componentIds.forEach(function (element) {
-    element.command.forEach(function (command) {
+  componentIds.forEach(element => {
+    element.command.forEach(command => {
       command(element);
     });
   });
@@ -49,8 +47,8 @@ function testRunner() {
 
 casper.
   start(baseUrl + 'contextualButton').
-  then(function () {
+  then(() => {
     testRunner();
   });
 
-casper.run(function () { casper.test.done(); });
+casper.run(() => { casper.test.done(); });
