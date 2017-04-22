@@ -16,6 +16,7 @@ export * from './DatePicker';
 export * from './DetailsList';
 export * from './Dialog';
 export * from './DocumentCard';
+export * from './DocumentTitleBar';
 export * from './Dropdown';
 export * from './Fabric';
 export * from './Facepile';
