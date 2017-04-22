@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
-export class SpinButtonBasicExample extends React.Component<any, any> {
+export class SpinButtonBasicWithIconExample extends React.Component<any, any> {
   public render() {
     return (
       <SpinButton
         defaultValue='0'
         width='250px'
+        icon='IncreaseIndentLegacy'
         label={ 'Basic SpinButton:' }
         min={ 0 }
         max={ 100 }

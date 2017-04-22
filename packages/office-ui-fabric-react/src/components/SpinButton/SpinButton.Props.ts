@@ -74,23 +74,35 @@ export interface ISpinButtonProps {
    */
   labelGapSpace?: number;
 
+  /**
+   * Icon that goes along with the label for the whole splitButton
+   */
   icon?: string;
 
   /**
-   * The method is triggered when the value inside the SpinButton should be validated.
-   *
+   * This callback is triggered when the value inside the SpinButton should be validated.
    */
   onValidate?: (value: string) => string;
 
   /**
-   * TODO
+   * This callback is triggered when the increment button or if the user presses up arrow with focus on the input of the spinButton
    */
   onIncrement?: (value: string) => string;
 
   /**
-   * TODO
+   * This callback is triggered when the decrement button or if the user presses down arrow with focus on the input of the spinButton
    */
   onDecrement?: (value: string) => string;
+
+  /**
+   * Icon for the increment button of the spinButton
+   */
+  incrementButtonIcon?: string;
+
+  /**
+   * Icon for the decrement button of the spinButton
+   */
+  decrementButtonIcon?: string;
 }
 
 export interface ISpinButton {

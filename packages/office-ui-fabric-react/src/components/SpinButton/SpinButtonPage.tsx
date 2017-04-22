@@ -6,10 +6,16 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
+import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
 import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
+import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
+import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 
 const SpinButtonBasicExampleCode = require('./examples/SpinButton.Basic.Example.tsx') as string;
+const SpinButtonBasicDisabledExampleCode = require('./examples/SpinButton.BasicDisabled.Example.tsx') as string;
 const SpinButtonStatefulExampleCode = require('./examples/SpinButton.Stateful.Example.tsx') as string;
+const SpinButtonBasicWithIconExampleCode = require('./examples/SpinButton.BasicWithIcon.Example.tsx') as string;
+const SpinButtonBasicWithEndPositionExampleCode = require('./examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
 
 export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -25,9 +31,24 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
               <SpinButtonBasicExample />
             </ExampleCard>
             <ExampleCard
+              title={ 'Basic Disabled SpinButton' }
+              code={ SpinButtonBasicDisabledExampleCode }>
+              <SpinButtonBasicDisabledExample />
+            </ExampleCard>
+            <ExampleCard
               title={ 'Stateful SpinButton' }
               code={ SpinButtonBasicExampleCode }>
               <SpinButtonStatefulExample />
+            </ExampleCard>
+            <ExampleCard
+              title={ 'Basic SpinButton With Icon' }
+              code={ SpinButtonBasicWithIconExampleCode }>
+              <SpinButtonBasicWithIconExample />
+            </ExampleCard>
+            <ExampleCard
+              title={ 'Basic SpinButton With Icon and Positioned at the End' }
+              code={ SpinButtonBasicWithEndPositionExampleCode }>
+              <SpinButtonBasicWithEndPositionExample />
             </ExampleCard>
           </div>
         }

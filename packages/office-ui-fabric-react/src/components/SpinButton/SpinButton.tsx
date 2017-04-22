@@ -35,7 +35,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     disabled: false,
     labelPosition: Position.start,
     labelGapSpace: 10,
-    label: null
+    label: null,
+    incrementButtonIcon: 'CaretUpSolid8',
+    decrementButtonIcon: 'CaretDownSolid8'
   };
 
   private _input: HTMLInputElement;
@@ -106,8 +108,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       className,
       disabled,
       label,
+      min,
+      max,
       width: spinbuttonWidth,
-      labelPosition
+      labelPosition,
+      icon,
+      incrementButtonIcon,
+      decrementButtonIcon
     } = this.props;
 
     const {
@@ -116,13 +123,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     return (
       <div className='ms-SpinButtonContainer' style={ spinbuttonWidth && { width: spinbuttonWidth } }>
-        { (label && labelPosition !== Position.bottom) &&
-          < Label
-            id={ this._labelId }
-            style={ this._labelDirectionHelper() }
-            htmlFor={ this._inputId }>{ label }
-          </Label> }
-        < div className={ 'ms-SpinButtonWrapper' + ((this.props.labelPosition === Position.top || this.props.labelPosition === Position.bottom) ? ' topBottom' : '') }>
+        { labelPosition !== Position.bottom && <div className='ms-labelWrapper' style={ this._labelDirectionHelper() }>
+          { icon && <i className={ "ms-SpinButtonIcon ms-Icon ms-Icon--" + icon } aria-hidden="true"></i> }
+          { label &&
+            < Label
+              id={ this._labelId }
+              //style={ this._labelDirectionHelper() }
+              htmlFor={ this._inputId }>{ label }
+            </Label> }
+        </div> }
+        <div className={ 'ms-SpinButtonWrapper' + ((labelPosition === Position.top || labelPosition === Position.bottom) ? ' topBottom' : '') }>
           <input
             value={ value }
             id={ this._inputId }
@@ -132,19 +142,21 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
             aria-valuenow={ value }
-            aria-valuemin={ this.props.min && String(this.props.min) }
-            aria-valuemax={ this.props.max && String(this.props.max) }
+            aria-valuemin={ min && String(min) }
+            aria-valuemax={ max && String(max) }
             onBlur={ this._validate }
             ref={ this._resolveRef('_input') }
             onFocus={ this.focus }
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
+            readOnly={ disabled }
+            aria-disabled={ disabled }
           />
           <span className='ms-ArrowBox'>
             <IconButton
               className='ms-UpButton'
               disabled={ disabled }
-              icon='CaretUpSolid8'
+              icon={ incrementButtonIcon }
               title='Increase'
               aria-hidden='true'
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement); } }
@@ -156,7 +168,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <IconButton
               className='ms-DownButton'
               disabled={ disabled }
-              icon='CaretDownSolid8'
+              icon={ decrementButtonIcon }
               title='Decrease'
               aria-hidden='true'
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement); } }
@@ -167,12 +179,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span >
         </div >
-        { (label && labelPosition === Position.bottom) &&
-          <Label
-            id={ this._labelId }
-            style={ this._labelDirectionHelper() }
-            htmlFor={ this._inputId }>{ label }
-          </Label> }
+        { labelPosition === Position.bottom && <div className='ms-labelWrapper' style={ this._labelDirectionHelper() }>
+          { icon && <i className={ "ms-SpinButtonIcon ms-Icon ms-Icon--" + icon } aria-hidden="true"></i> }
+          { label &&
+            <Label
+              id={ this._labelId }
+              //style={ this._labelDirectionHelper() }
+              htmlFor={ this._inputId }>{ label }
+            </Label> }
+        </div> }
       </ div >
     ) as React.ReactElement<{}>;
   }
@@ -210,16 +225,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     switch (this.props.labelPosition) {
       case Position.start:
-        style = { float: 'left', margin: '0px ' + this.props.labelGapSpace + 'px 0px 0px' };
+        style = { float: 'left', marginRight: this.props.labelGapSpace + 'px' };
         break;
       case Position.end:
-        style = { float: 'right', margin: '0px 0px 0px ' + this.props.labelGapSpace + 'px' };
+        style = { float: 'right', marginLeft: this.props.labelGapSpace + 'px' };
         break;
       case Position.top:
-        style = { margin: '0px 0px ' + this.props.labelGapSpace + 'px 0px' };
+        style = { marginBottom: this.props.labelGapSpace + 'px' };
         break;
       case Position.bottom:
-        style = { margin: this.props.labelGapSpace + 'px 0px 0px 0px' };
+        style = { marginTop: this.props.labelGapSpace + 'px' };
     }
 
     return style;
@@ -296,6 +311,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     if (this.props.disabled) {
       this._stop();
+
+      // eat the up and down arrow keys to keep the page from scrolling
+      if (event.which === KeyCodes.up || event.which === KeyCodes.down) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
       return;
     }
 

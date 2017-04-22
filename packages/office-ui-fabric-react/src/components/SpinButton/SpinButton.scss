@@ -41,10 +41,20 @@
     }
   }
 
+  .ms-labelWrapper {
+    display: inline-flex;
+  }
+
+  .ms-SpinButtonIcon {
+    padding: 5px;
+    font-size: 20px;
+  }
+
   .ms-SpinButtonWrapper {
     overflow: hidden;
-    display: inline-block;
+    display: flex;
     height: 32px;
+    min-width: 90px;
   }
 
   .ms-SpinButtonWrapper.topBottom {
@@ -81,16 +91,12 @@
     text-overflow: ellipsis;
     display: block;
     float: left;
-    width: 70%;
+    width: calc(100% - 27px);
     min-width: 63px;
     border-right-width: 0px;
     overflow: hidden;
     cursor: text;
     user-select: text;
-
-    // &:hover {
-    //   border-color: $ms-color-neutralSecondaryAlt;
-    // }
 
     &:focus {
       border-color: $ms-color-themePrimary;
@@ -120,11 +126,11 @@
     display: block;
     height: 15px;
     width: 26px;
-    //border: 1px solid transparent;
     padding-top: 0px;
     background-color: transparent;
     text-align: center;
     cursor: default;
+    font-size: 14px;
 
     &:hover {
       background-color: $ms-color-neutralLight;
@@ -132,14 +138,13 @@
 
     &:active {
       background-color: $ms-color-themePrimary;
+      color: $ms-color-white;
     }
   }
 
-    .ms-UpButton span, .ms-DownButton span {
-    line-height: 6px !important;
-    font-size: 14px;
-    padding-top: 4px;
-    margin: 0px;
+  .ms-SpinButtonWrapper .ms-UpButton.active, .ms-SpinButtonWrapper .ms-DownButton.active {
+      background-color: $ms-color-themePrimary;
+      color: $ms-color-white;
   }
 
 }
