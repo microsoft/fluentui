@@ -5,11 +5,11 @@ import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
 import styles = require('./CommandBar.Example.scss');
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems, DirectionalHint } from '../../ContextualMenu';
 
-export interface SplitDropDownButtonState {
+export interface ISplitDropDownButtonState {
   isContextMenuShown: boolean
 }
 
-export class CommandBarCustomizationExample extends React.Component<any, SplitDropDownButtonState> {
+export class CommandBarCustomizationExample extends React.Component<any, ISplitDropDownButtonState> {
   constructor(props) {
     super(props);
     this.state = { isContextMenuShown: false }
@@ -114,7 +114,7 @@ export class CommandBarCustomizationExample extends React.Component<any, SplitDr
             isBeakVisible={ true }
             className={ css('ms-CommandBar-menuHost') }
             items={ item.subMenuProps.items }
-            targetElement={ this.container }
+            target={ this.container }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             onDismiss={ this.toggleDropDownMenuShown } />
         }
