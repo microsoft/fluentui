@@ -48,6 +48,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
+              aria-label={ strings.prevYearAriaLabel }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span>
@@ -55,6 +57,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
+              aria-label={ strings.nextYearAriaLabel }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span>
@@ -69,6 +73,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   className={ css('ms-DatePicker-monthOption', styles.monthOption) }
                   key={ index }
                   onClick={ this._selectMonthCallbacks[index] }
+                  aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                   data-is-focusable={ true }
                 >
                   { month }

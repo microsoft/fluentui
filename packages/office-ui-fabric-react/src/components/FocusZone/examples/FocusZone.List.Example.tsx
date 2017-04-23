@@ -4,7 +4,7 @@ import {
   createArray,
   getRTLSafeKeyCode
 } from 'office-ui-fabric-react/lib/Utilities';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
@@ -35,7 +35,7 @@ const COLUMNS: IColumn[] = [
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
-    onRender: item => <Button>{ item.url }</Button>
+    onRender: item => <DefaultButton>{ item.url }</DefaultButton>
   }
 ];
 

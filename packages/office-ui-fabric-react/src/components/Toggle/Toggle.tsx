@@ -7,7 +7,7 @@ import {
   buttonProperties,
   getNativeProps
 } from '../../Utilities';
-import { IToggleProps } from './Toggle.Props';
+import { IToggleProps, IToggle } from './Toggle.Props';
 import { Label } from '../../Label';
 import styles = require('./Toggle.scss');
 
@@ -15,13 +15,7 @@ export interface IToggleState {
   isChecked: boolean;
 }
 
-export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
-
-  public static initialProps = {
-    label: '',
-    onText: 'On',
-    offText: 'Off'
-  };
+export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
   private _toggleButton: HTMLButtonElement;
@@ -30,7 +24,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
     super();
 
     this._warnMutuallyExclusive({
-      'checked': 'defaultChecked'
+      checked: 'defaultChecked'
     });
 
     this.state = {
@@ -55,22 +49,26 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
   }
 
   public render() {
-    let { label, onText, offText, className, disabled } = this.props;
+    let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
+    const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, buttonProperties);
     return (
       <div className={
-        css(styles.root, 'ms-Toggle', className, {
-          'is-checked': isChecked,
-          'is-enabled': !disabled,
-          'is-disabled': disabled,
-          [styles.isChecked]: isChecked,
-          [styles.isEnabled]: !disabled,
-          [styles.isDisabled]: disabled,
-
-        })
-      }>
+        css(
+          styles.root,
+          'ms-Toggle',
+          className,
+          {
+            'is-checked': isChecked,
+            'is-enabled': !disabled,
+            'is-disabled': disabled,
+            [styles.isChecked]: isChecked,
+            [styles.isEnabled]: !disabled,
+            [styles.isDisabled]: disabled,
+          }
+        ) }>
         <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
           { label && (
             <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
@@ -85,6 +83,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
               className={ css(styles.button, 'ms-Toggle-button') }
               disabled={ disabled }
               aria-pressed={ isChecked }
+              aria-label={ ariaLabel }
               onClick={ this._onClick }
             />
             <div className={ css(styles.background, 'ms-Toggle-background') }>

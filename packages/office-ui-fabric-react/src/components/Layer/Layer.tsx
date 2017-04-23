@@ -35,7 +35,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
     super(props);
 
     this._warnDeprecations({
-      'onLayerMounted': 'onLayerDidMount'
+      onLayerMounted: 'onLayerDidMount'
     });
 
     if (this.props.hostId) {

@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {
+  IButtonProps,
   PrimaryButton
 } from 'office-ui-fabric-react/lib/Button';
 import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
-
-import { IButtonProps } from './IButtonProps';
 
 export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
   public constructor() {
