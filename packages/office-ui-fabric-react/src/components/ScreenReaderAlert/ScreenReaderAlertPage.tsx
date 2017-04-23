@@ -7,11 +7,13 @@ import {
 } from '@uifabric/example-app-base';
 
 import { ScreenReaderAlertBasicExample } from './examples/ScreenReaderAlert.Basic.Example';
+import { ScreenReaderAlertScenarioExample } from './examples/ScreenReaderAlert.Scenario.Example';
 import { ScreenReaderAlertRepeatExample } from './examples/ScreenReaderAlert.Repeat.Example';
 import { ScreenReaderAlertSpinnerExample } from './examples/ScreenReaderAlert.Spinner.Example';
 import { ScreenReaderAlertAfterExample } from './examples/ScreenReaderAlert.After.Example';
 
 const ScreenReaderAlertBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Basic.Example.tsx');
+const ScreenReaderAlertScenarioExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Scenario.Example.tsx');
 const ScreenReaderAlertRepeatExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Repeat.Example.tsx');
 const ScreenReaderAlertSpinnerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.Spinner.Example.tsx');
 const ScreenReaderAlertAfterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScreenReaderAlert/examples/ScreenReaderAlert.After.Example.tsx');
@@ -31,6 +33,12 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
               code={ ScreenReaderAlertBasicExampleCode as string }
             >
               <ScreenReaderAlertBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='ScreenReaderAlert scenario with user interaction'
+              code={ ScreenReaderAlertScenarioExampleCode as string }
+            >
+              <ScreenReaderAlertScenarioExample />
             </ExampleCard>
             <ExampleCard
               title='ScreenReaderAlert repeat same message'
