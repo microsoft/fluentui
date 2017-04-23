@@ -2,6 +2,119 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.21.0",
+      "tag": "office-ui-fabric-react_v2.21.0",
+      "date": "Fri, 21 Apr 2017 06:23:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "bf60dbcb133d0895b787a4bc0e18e5ab3bb9015e",
+            "comment": "Toggle: Improve screen-reader accessibility."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "486c15d8b6c6179c7039efab47237cc7b21a7aa0",
+            "comment": "Calendar: Add ARIA labels to day and month buttons"
+          },
+          {
+            "author": "NAVNEET GUPTA <navneetg@outlook.com>",
+            "commit": "8efb6e489abc934bd44d815adae665ee79da9c46",
+            "comment": "Callout/Tooltip: Updated default gapSpace from 16 to 0"
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "d1e1971cb41dee63534e453c440083ef9b34ecdf",
+            "comment": "DocumentCard: Change persona size from extraExtraSmall to extraSmall and update compact layout title font size to m-plus according to new design."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.8.0 <2.0.0` to `>=1.8.3 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.8` to `1.3.10`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.20.2",
+      "tag": "office-ui-fabric-react_v2.20.2",
+      "date": "Wed, 19 Apr 2017 16:54:26 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.6.0 <2.0.0` to `>=1.8.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.7` to `1.3.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.20.1",
+      "tag": "office-ui-fabric-react_v2.20.1",
+      "date": "Wed, 19 Apr 2017 15:36:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4d2ef75edb41b60f6d88bbf901e229ce2b04b3cd",
+            "comment": "References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.20.0",
+      "tag": "office-ui-fabric-react_v2.20.0",
+      "date": "Wed, 19 Apr 2017 03:17:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "172ce2b6f9d45bc27557edcd60f5d0454c57938f",
+            "comment": "DatePicker: Improve screen-reader accessibility."
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "151b6f755b61e022822ce8791b75392d634d8334",
+            "comment": "Regression Test: Contextual Menu "
+          },
+          {
+            "author": "Yusong Liu <lysnku@gmail.com>",
+            "commit": "5f935e0a8d2652e2166e39266aaff87c7ec891e9",
+            "comment": "fix nit for Suggestion.tsx"
+          }
+        ],
+        "minor": [
+          {
+            "author": "REDMOND\\miclo <miclo@microsoft.com>",
+            "commit": "eec55b92622113be356952337b4795127a9c5239",
+            "comment": "Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.19.0",
+      "tag": "office-ui-fabric-react_v2.19.0",
+      "date": "Tue, 18 Apr 2017 15:17:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "b4c3c696c7a4836258ad6eea67d88a9c44350a59",
+            "comment": "DatePicker: Add option to not automatically open on focus."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.18.0",
       "tag": "office-ui-fabric-react_v2.18.0",
       "date": "Tue, 18 Apr 2017 03:09:12 GMT",

@@ -131,6 +131,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/messagebar'
         },
         {
+          getComponent: cb => cb(require<any>('../components/Modal/ModalPage').ModalPage),
+          key: 'Modal',
+          name: 'Modal',
+          url: '#/examples/modal'
+        },
+        {
           getComponent: cb => cb(require<any>('../components/Overlay/OverlayPage').OverlayPage),
           key: 'Overlay',
           name: 'Overlay',

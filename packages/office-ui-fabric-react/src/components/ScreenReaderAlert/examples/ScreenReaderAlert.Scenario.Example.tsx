@@ -92,7 +92,7 @@ export class ScreenReaderAlertScenarioExample extends React.Component<void, IScr
         items: newItems,
         alertMessage: `Item ${prevState.items[index].name} at position ${index + 1} is removed from the view`,
         alertIndicator: prevState.alertIndicator + 1
-      }
+      };
     });
   }
 }
