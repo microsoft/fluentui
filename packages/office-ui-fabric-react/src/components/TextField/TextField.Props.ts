@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../utilities';
+import { IRenderFunction } from '../../Utilities';
 
 export interface ITextField {
   /** Gets the current value of the input. */
