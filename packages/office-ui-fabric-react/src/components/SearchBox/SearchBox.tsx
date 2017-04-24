@@ -140,17 +140,13 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     const value = this._inputElement.value;
-
     if (value === this._latestValue) {
       return;
     }
-
     this._latestValue = value;
 
-    this.setState({
-      value: this._inputElement.value
-    });
-    this._callOnChange(this._inputElement.value);
+    this.setState({ value });
+    this._callOnChange(value);
   }
 
   private _handleDocumentFocus(ev: FocusEvent) {
