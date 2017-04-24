@@ -15,31 +15,31 @@ commands.push(mouseClickScreenshot);
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  componentExtnid: '#' + 'ContextualButton',
+  selector: '#' + 'ContextualButton',
   fileName: 'contextualButton',
-  command: commands
+  commands: commands
 });
 
 componentIds.push({
-  componentExtnid: '#' + 'ContextualButtonDisabled',
+  selector: '#' + 'ContextualButtonDisabled',
   fileName: 'contextualButtonDisabled',
-  command: commands
+  commands: commands
 });
 
 componentIds.push({
-  componentExtnid: '#' + 'ContextualButton',
+  selector: '#' + 'ContextualButton',
   fileName: 'contextualButton',
-  command: [mouseSingleClickScreenshot],
-  childParam: {
-    componentExtnid: '.' + 'ms-ContextualMenu-list',
+  commands: [mouseSingleClickScreenshot],
+  childParams: {
+    selector: '.' + 'ms-ContextualMenu-list',
     fileName: 'contextualButtonMenu',
-    command: commands
+    commands: commands
   }
 });
 
 function testRunner() {
   componentIds.forEach(element => {
-    element.command.forEach(command => {
+    element.commands.forEach(command => {
       command(element);
     });
   });

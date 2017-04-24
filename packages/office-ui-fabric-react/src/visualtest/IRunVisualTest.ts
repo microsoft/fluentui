@@ -1,7 +1,7 @@
 
 export interface IRunVisualTest {
-  componentExtnid: string;
+  selector: string;
   fileName: string;
-  command: ((params: IRunVisualTest) => void)[];
-  childParam?: IRunVisualTest;
+  commands: ((params: IRunVisualTest) => void)[];
+  childParams?: IRunVisualTest;
 }

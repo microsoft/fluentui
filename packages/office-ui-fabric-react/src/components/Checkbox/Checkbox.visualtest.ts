@@ -15,19 +15,19 @@ commands.push(mouseClickScreenshot);
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  componentExtnid: '.' + 'Checkbox',
+  selector: '.' + 'Checkbox',
   fileName: 'checkbox',
-  command: commands
+  commands: commands
 });
 componentIds.push({
-  componentExtnid: '.' + 'CheckboxDisabled',
+  selector: '.' + 'CheckboxDisabled',
   fileName: 'checkboxDisabled',
-  command: commands
+  commands: commands
 });
 
 function testRunner() {
   componentIds.forEach(element => {
-    element.command.forEach(command => {
+    element.commands.forEach(command => {
       command(element);
     });
   });

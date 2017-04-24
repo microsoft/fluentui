@@ -15,14 +15,14 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  componentExtnid: '#' + 'ContextualMenu',
+  selector: '#' + 'ContextualMenu',
   fileName: 'contextualMenu',
-  command: commands
+  commands: commands
 });
 
 function testRunner() {
   componentIds.forEach(element => {
-    element.command.forEach(command => {
+    element.commands.forEach(command => {
       command(element);
     });
   });

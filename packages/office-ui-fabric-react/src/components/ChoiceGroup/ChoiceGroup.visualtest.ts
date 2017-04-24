@@ -16,26 +16,26 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  componentExtnid: '.' + 'ChoiceGroup',
+  selector: '.' + 'ChoiceGroup',
   fileName: 'choiceGroup',
-  command: commands
+  commands: commands
 });
 
 componentIds.push({
-  componentExtnid: '.' + 'ChoiceGroupDisabled',
+  selector: '.' + 'ChoiceGroupDisabled',
   fileName: 'choiceGroupDisabled',
-  command: commands
+  commands: commands
 });
 
 componentIds.push({
-  componentExtnid: '.' + 'ChoiceGroupIcon',
+  selector: '.' + 'ChoiceGroupIcon',
   fileName: 'choiceGroupIcon',
-  command: commands
+  commands: commands
 });
 
 function testRunner() {
   componentIds.forEach(element => {
-    element.command.forEach(command => {
+    element.commands.forEach(command => {
       command(element);
     });
   });

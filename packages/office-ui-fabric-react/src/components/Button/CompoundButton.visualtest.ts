@@ -15,19 +15,19 @@ commands.push(mouseClickScreenshot);
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  componentExtnid: '#' + 'CompoundButton',
+  selector: '#' + 'CompoundButton',
   fileName: 'compoundButton',
-  command: commands
+  commands: commands
 });
 componentIds.push({
-  componentExtnid: '#' + 'CompoundButtonDisabled',
+  selector: '#' + 'CompoundButtonDisabled',
   fileName: 'compoundButtonDisabled',
-  command: commands
+  commands: commands
 });
 
 function testRunner() {
   componentIds.forEach(element => {
-    element.command.forEach(command => {
+    element.commands.forEach(command => {
       command(element);
     });
   });

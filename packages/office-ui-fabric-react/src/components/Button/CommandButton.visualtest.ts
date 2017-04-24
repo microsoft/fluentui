@@ -15,20 +15,20 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  componentExtnid: '#' + 'CommandButton',
+  selector: '#' + 'CommandButton',
   fileName: 'commandButton',
-  command: commands
+  commands: commands
 });
 
 componentIds.push({
-  componentExtnid: '#' + 'CommandButtonDisabled',
+  selector: '#' + 'CommandButtonDisabled',
   fileName: 'commandButtonDisabled',
-  command: commands
+  commands: commands
 });
 
 function testRunner() {
   componentIds.forEach(element => {
-    element.command.forEach(command => {
+    element.commands.forEach(command => {
       command(element);
     });
   });
