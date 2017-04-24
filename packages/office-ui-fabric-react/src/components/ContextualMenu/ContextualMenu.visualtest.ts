@@ -1,6 +1,9 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import {
+  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
+  mouseClickScreenshot, testRunner
+} from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
@@ -20,18 +23,10 @@ componentIds.push({
   commands: commands
 });
 
-function testRunner() {
-  componentIds.forEach(element => {
-    element.commands.forEach(command => {
-      command(element);
-    });
-  });
-}
-
 casper.
   start(baseUrl + 'contextualMenu').
   then(() => {
-    testRunner();
+    testRunner(componentIds);
   });
 
 casper.run(() => { casper.test.done(); });

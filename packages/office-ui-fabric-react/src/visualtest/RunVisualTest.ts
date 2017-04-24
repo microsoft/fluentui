@@ -61,3 +61,10 @@ export function mouseSingleClickScreenshot(params: IRunVisualTest) {
     });
   }
 }
+export function testRunner(componentIds: IRunVisualTest[]) {
+  componentIds.forEach(element => {
+    element.commands.forEach(command => {
+      command(element);
+    });
+  });
+}
