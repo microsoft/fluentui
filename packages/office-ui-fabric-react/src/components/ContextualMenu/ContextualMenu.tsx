@@ -297,7 +297,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
       <div className={ css('ms-ContextualMenu-header', styles.header) } style={ item.style }>
-        { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
+        { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons, true) }
       </div>);
   }
 
@@ -313,7 +313,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             (item.isDisabled || item.disabled) && 'is-disabled') }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
-          { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
+          { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons, false) }
         </a>
       </div>);
   }
@@ -353,10 +353,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return React.createElement(
       'button',
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
-      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons, false));
   }
 
-  private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+  private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean, isHeader: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
     return (
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
@@ -366,7 +366,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             className={ css('ms-ContextualMenu-icon', styles.icon) }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
-        { (hasIcons) ? (
+        { (hasIcons && !isHeader) ? (
           this._renderIcon(item)
         ) : (null) }
         <span className={ css('ms-ContextualMenu-itemText', styles.itemText) }>{ item.name }</span>

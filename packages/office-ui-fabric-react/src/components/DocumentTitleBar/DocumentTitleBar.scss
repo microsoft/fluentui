@@ -1,0 +1,54 @@
+@import '../../common/common';
+
+:global {
+  .ms-DocumentTitleBar-button {
+    background-color: $ms-color-themeDark;
+    color: white;
+    display: inline-block;
+    font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    vertical-align: middle;
+    border-radius: 3px;
+    border: 0px;
+    cursor: default;
+
+    &:hover {
+      background-color: $ms-color-themeDarkAlt;
+      cursor: pointer;
+    }
+  }
+
+  .isHighlighted {
+    background-color: $ms-color-themeDarkAlt;
+  }
+
+  .ms-DocumentTitleBar-button .ms-Icon {
+    color: rgba(255, 255, 255, .4);
+    padding-left: 10px;
+    display: inline;
+    vertical-align: middle;
+    font-size: 11px;
+  }
+
+  .ms-DocumentTitleBar-button .statusText {
+    user-select: none;
+    color: rgba(255, 255, 255, .4);
+    font-size: 13px;
+  }
+
+  .ms-DocumentTitleBar-renameDiv {
+    background-color: $ms-color-themeDark;
+    display: inline-block;
+    border-radius: 3px;
+  }
+
+  .ms-DocumentTitleBar-renameDiv .textField {
+    font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    vertical-align: middle;
+    background-color: rgba(0, 0, 0, .4);
+    color: white;
+    border: 0px;
+    text-align: center;
+  }
+}
