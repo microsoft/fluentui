@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Icon } from 'office-ui-fabric-react/lib/Icon'
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export class TextFieldBasicExample extends React.Component<any, any> {
@@ -8,14 +8,14 @@ export class TextFieldBasicExample extends React.Component<any, any> {
     return (
       <div>
         <TextField
-          addonString="https://dev.office.com/"
+          addonString='https://dev.office.com/'
           label='Default TextField' onChanged={ this._onChanged } />
         <TextField label='Disabled TextField' disabled={ true } />
         <TextField
           onRenderAddon={ () => {
             return (
               <Icon iconName='Add' />
-            )
+            );
           } }
           label='Required TextField' required={ true } />
         <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />

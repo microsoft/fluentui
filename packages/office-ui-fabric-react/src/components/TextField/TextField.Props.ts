@@ -62,14 +62,13 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    */
   description?: string;
 
-
   /**
   * String for addon.
   */
   addonString?: string;
 
   /**
-  * Custom render function for Addon
+  * Custom render function for addon
   */
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
