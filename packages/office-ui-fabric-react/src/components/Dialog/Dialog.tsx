@@ -9,7 +9,8 @@ import { Modal } from '../../Modal';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import styles = require('./Dialog.scss');
+import * as stylesImport from './Dialog.scss';
+const styles: any = stylesImport;
 
 export interface IDialogState {
   id?: string;

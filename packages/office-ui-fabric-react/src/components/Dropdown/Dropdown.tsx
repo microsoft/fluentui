@@ -17,7 +17,8 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import styles = require('./Dropdown.scss');
+import * as stylesImport from './Dropdown.scss';
+const styles: any = stylesImport;
 
 const OPTION: string = 'option';
 

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
 import { IconButton } from '../../Button';
-import styles = require('./DocumentCard.scss');
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {
   public render() {
