@@ -1,0 +1,25 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Fix for overflow",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/styling",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": ""
+}
