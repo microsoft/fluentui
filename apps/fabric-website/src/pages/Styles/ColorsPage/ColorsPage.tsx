@@ -2,7 +2,8 @@ import * as React from 'react';
 import { ColorTable } from '../../../components/ColorTable/ColorTable';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import styles = require('./ColorsPage.module.scss');
+import * as stylesImport from './ColorsPage.module.scss';
+const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 import { baseURL } from '../../../appConfig';
 

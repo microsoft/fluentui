@@ -5,7 +5,8 @@ import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
 import { shallow } from 'enzyme';
 import * as chai from 'chai';
-import styles = require('./Persona.scss');
+import * as stylesImport from './Persona.scss';
+const styles: any = stylesImport;
 
 const { expect } = chai;
 

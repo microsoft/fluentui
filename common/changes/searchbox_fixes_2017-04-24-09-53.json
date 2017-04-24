@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix nit for Suggestion.tsx",
+      "comment": "Searchbox: IE11 keystroke miss, overflow fix",
       "type": "patch"
     }
   ],
-  "email": "ysliu@microsoft.com"
+  "email": "manishda@microsoft.com"
 }

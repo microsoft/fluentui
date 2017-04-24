@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { ISpinnerProps, SpinnerType, SpinnerSize } from './Spinner.Props';
-import styles = require('./Spinner.scss');
+import * as stylesImport from './Spinner.scss';
+const styles: any = stylesImport;
 
 export class Spinner extends BaseComponent<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
