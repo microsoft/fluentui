@@ -15,7 +15,8 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
-import styles = require('./BasePicker.scss');
+import * as stylesImport from './BasePicker.scss';
+const styles: any = stylesImport;
 
 export interface IBasePickerState {
   items?: any;
