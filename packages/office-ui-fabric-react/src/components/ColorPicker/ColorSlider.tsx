@@ -4,7 +4,8 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import styles = require('./ColorPicker.scss');
+import * as stylesImport from './ColorPicker.scss';
+const styles: any = stylesImport;
 
 export interface IColorSliderProps {
   minValue?: number;

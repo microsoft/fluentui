@@ -7,7 +7,8 @@ import {
 } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-import styles = require('./MessageBar.scss');
+import * as stylesImport from './MessageBar.scss';
+const styles: any = stylesImport;
 
 export interface IMessageBarState {
   labelId?: string;

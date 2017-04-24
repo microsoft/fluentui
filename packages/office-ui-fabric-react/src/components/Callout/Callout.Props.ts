@@ -44,6 +44,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   beakWidth?: number;
 
   /**
+   * The background color of the Callout in hex format ie. #ffffff.
+   * @default $ms-color-white
+   */
+  backgroundColor?: string;
+
+  /**
    * The bounding rectangle for which  the contextual menu can appear in.
    */
   bounds?: IRectangle;

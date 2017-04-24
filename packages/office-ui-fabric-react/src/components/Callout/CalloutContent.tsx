@@ -16,7 +16,8 @@ import {
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import styles = require('./Callout.scss');
+import * as stylesImport from './Callout.scss';
+const styles: any = stylesImport;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
@@ -98,7 +99,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       isBeakVisible,
       beakStyle,
       children,
-      beakWidth } = this.props;
+      beakWidth,
+      backgroundColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -112,7 +114,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       top: positions && positions.beakPosition ? positions.beakPosition.top : BEAK_ORIGIN_POSITION.top,
       left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
-      width: beakStyleWidth
+      width: beakStyleWidth,
+      backgroundColor: backgroundColor,
     };
 
     let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
@@ -145,7 +148,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             className={ css('ms-Callout-main', styles.main) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight } }>
+            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
             { children }
           </Popup>
         </div>
