@@ -24,6 +24,16 @@ export interface ISpinButtonState {
    * and the text field gets focus (we should stop spinning)
    */
   spinning?: boolean;
+
+  /**
+   * keyboard spin direction, used to style the up or down button
+   * as active when up/down arrow is pressed
+   *
+   * -1 == spinning down
+   * 0 == not spinning
+   * 1 == spinning up
+   */
+  keyboardSpinDirection?: number;
 }
 
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
@@ -62,6 +72,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this.state = {
       value: value,
       spinning: false,
+      keyboardSpinDirection: 0
     };
 
     this._labelId = getId('Label');
@@ -118,7 +129,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.props;
 
     const {
-      value
+      value,
+      keyboardSpinDirection
     } = this.state;
 
     return (
@@ -128,7 +140,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           { label &&
             < Label
               id={ this._labelId }
-              //style={ this._labelDirectionHelper() }
               htmlFor={ this._inputId }>{ label }
             </Label> }
         </div> }
@@ -154,7 +165,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className='ms-ArrowBox'>
             <IconButton
-              className='ms-UpButton'
+              className={ 'ms-UpButton' + (keyboardSpinDirection === 1 ? ' active' : '') }
               disabled={ disabled }
               icon={ incrementButtonIcon }
               title='Increase'
@@ -162,11 +173,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement); } }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
-              onBlur={ this._stop }
               tabIndex={ -1 }
             />
             <IconButton
-              className='ms-DownButton'
+              className={ 'ms-DownButton' + (keyboardSpinDirection === -1 ? ' active' : '') }
               disabled={ disabled }
               icon={ decrementButtonIcon }
               title='Decrease'
@@ -174,7 +184,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement); } }
               onMouseLeave={ this._stop }
               onMouseUp={ this._stop }
-              onBlur={ this._stop }
               tabIndex={ -1 }
             />
           </span >
@@ -184,7 +193,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           { label &&
             <Label
               id={ this._labelId }
-              //style={ this._labelDirectionHelper() }
               htmlFor={ this._inputId }>{ label }
             </Label> }
         </div> }
@@ -196,7 +204,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * OnFocus select the contents of the input
    */
   public focus() {
-    if (this.state.spinning) {
+    if (this.state.spinning || this.state.keyboardSpinDirection !== 0) {
       this._stop();
     }
 
@@ -204,6 +212,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._input.select();
   }
 
+  /**
+   * Validate function to use if one is not passed in
+   */
   private _defaultOnValidate = (value: string) => {
     if (isNaN(+value)) {
       return this._lastValidValue;
@@ -211,15 +222,26 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const newValue = Math.min(this.props.max, Math.max(this.props.min, +value));
     return String(newValue);
   }
+
+  /**
+   * Increment function to use if one is not passed in
+   */
   private _defaultOnIncrement = (value: string) => {
     let newValue = Math.min(+value + this.props.step, this.props.max);
     return String(newValue);
   }
+
+  /**
+   * Increment function to use if one is not passed in
+   */
   private _defaultOnDecrement = (value: string) => {
     let newValue = Math.max(+value - this.props.step, this.props.min);
     return String(newValue);
   }
 
+  /**
+   * Set the label direction with the gap on the correct side
+   */
   private _labelDirectionHelper(): any {
     let style: any = {};
 
@@ -253,8 +275,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * This is used when validating text entry
    * in the input (not when changed via the buttons)
-   * @param newValue - the pending value to check if it is valid
-   * @returns an error message to display to the user, empty string if no error
+   * @param event - the event that fired
    */
   private _validate(event: React.FocusEvent<HTMLInputElement>) {
     const element: HTMLInputElement = event.target as HTMLInputElement;
@@ -266,6 +287,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   }
 
+  /**
+   * The method is needed to ensure we are updating the actual input value.
+   * without this our value will never change (and validation will not have the correct number)
+   * @param event - the event that was fired
+   */
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
@@ -275,6 +301,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     });
   }
 
+  /**
+   * Update the value with the given stepFunction
+   * @param shouldSpin - should we fire off another updateValue when we are done here? This should be true
+   * when spinning in response to a mouseDown
+   * @param stepFunction - function to use to step by
+   */
   private _updateValue(shouldSpin: boolean, stepFunction: (string) => string) {
     const newValue = stepFunction(this.state.value);
     this._lastValidValue = newValue;
@@ -298,8 +330,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._currentStepFunctionHandle = 0;
     }
 
-    if (this.state.spinning) {
-      this.setState({ spinning: false });
+    if (this.state.spinning || this.state.keyboardSpinDirection !== 0) {
+      this.setState({ spinning: false, keyboardSpinDirection: 0 /* notSpinning */ });
     }
   }
 
@@ -321,13 +353,27 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       return;
     }
 
+    let spinDirection = 0;
+
     if (event.which === KeyCodes.up) {
+
+      // spinning up
+      spinDirection = 1;
       this._updateValue(false /* shouldSpin */, this._onIncrement);
     } else if (event.which === KeyCodes.down) {
+
+      // spinning down
+      spinDirection = -1;
       this._updateValue(false /* shouldSpin */, this._onDecrement);
     } else if (event.which === KeyCodes.enter) {
       event.currentTarget.blur();
       this.focus();
+    }
+
+    // style the increment/decrement button to look active
+    // when the corresponding up/down arrow keys trigger a step
+    if (this.state.keyboardSpinDirection !== spinDirection) {
+      this.setState({ keyboardSpinDirection: spinDirection });
     }
   }
 
@@ -337,6 +383,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param event stop spinning if we
    */
   private _handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
+
     if (this.props.disabled) {
       this._stop();
       return;
