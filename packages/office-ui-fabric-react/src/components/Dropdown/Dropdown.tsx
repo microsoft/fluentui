@@ -309,7 +309,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render content of item (i.e. text/icon inside of button)
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
-    return <span>{ item.text }</span>;
+    return <span className={ css('ms-Dropdown-span', styles.span) }>{ item.text }</span>;
   }
 
   @autobind
