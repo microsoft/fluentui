@@ -114,6 +114,7 @@
   width: 100%;
   box-sizing: border-box;
   &:before {
+    pointer-events: none;
     position: absolute;
     content: ' ';
     right: 0;
