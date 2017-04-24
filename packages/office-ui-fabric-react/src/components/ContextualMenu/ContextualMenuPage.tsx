@@ -10,14 +10,12 @@ import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Check
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
-import { ContextualMenuColorSchemeExample } from './examples/ContextualMenu.ColorScheme.Example';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
 const ContextualMenuDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Directional.Example.tsx') as string;
 const ContextualMenuCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
 const ContextualMenuHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Header.Example.tsx') as string;
-const ContextualMenuColorSchemeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.ColorScheme.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -41,9 +39,6 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             </ExampleCard>
             <ExampleCard title='ContextualMenu header example' code={ ContextualMenuHeaderExampleCode }>
               <ContextualMenuHeaderExample />
-            </ExampleCard>
-            <ExampleCard title='ContextualMenu color scheme example' code={ ContextualMenuColorSchemeExampleCode }>
-              <ContextualMenuColorSchemeExample />
             </ExampleCard>
           </div>
         }
