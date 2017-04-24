@@ -89,12 +89,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/documentcard'
         },
         {
-          getComponent: cb => cb(require<any>('../components/DocumentTitleBar/DocumentTitleBarPage').DocumentTitleBarPage),
-          key: 'DocumentTitleBar',
-          name: 'DocumentTitleBar',
-          url: '#/examples/documenttitlebar'
-        },
-        {
           getComponent: cb => cb(require<any>('../components/Dropdown/DropdownPage').DropdownPage),
           key: 'Dropdown',
           name: 'Dropdown',
