@@ -140,7 +140,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             id={ id + '-option' }
             className={ css(
               'ms-Dropdown-title', styles.title,
-              (errorMessage.length > 0 ? styles.titleIsError : null))
+              (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
             key={ selectedIndex }
             aria-atomic={ true }
