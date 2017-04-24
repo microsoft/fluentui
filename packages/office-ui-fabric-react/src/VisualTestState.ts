@@ -16,4 +16,3 @@ export const VisualTestState: IVisualTestState = {
     './DocumentCard/DocumentCardPage.visualtest'
   ]
 };
-
