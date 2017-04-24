@@ -17,9 +17,8 @@ componentIds.push({
 componentIds.push({
   selector: '.' + 'ms-Breadcrumb-listItem',
   fileName: 'breadcrumb',
-  commands: [mouseMoveScreenshot,mouseDownScreenshot, mouseClickScreenshot]
+  commands: [mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });
-
 
 casper.
   start(baseUrl + 'breadcrumb').
