@@ -108,11 +108,6 @@
   flex-direction: column;
   margin-bottom: 60px;
 
-  // Place the second flavor at the top
-  &:nth-of-type(2) {
-    order: -1;
-  }
-
   img {
     margin-bottom: 12px;
   }
@@ -162,11 +157,16 @@
     margin-bottom: 0;
     width: 30%; // Ensure that the 4th one wraps
 
-    // Lift out the second flavor
-    &:nth-of-type(2) {
-      order: 0; // Restore default order
+    // Lift out the first flavor
+    &:nth-of-type(1) {
       position: relative;
       top: -96px;
+      margin: 0 30%; // Pushes other items into their own row
+    }
+
+    // Move the Angular flavor to the last column
+    &:nth-of-type(3) {
+      order: 4;
     }
   }
 }

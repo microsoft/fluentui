@@ -3,7 +3,8 @@ import { BaseComponent, nullRender } from '../../../Utilities';
 import { BaseButton, IButtonClassNames } from '../BaseButton';
 import { IButtonProps } from '../Button.Props';
 
-import styles = require('./PrimaryButton.scss');
+import * as stylesImport from './PrimaryButton.scss';
+const styles: any = stylesImport;
 
 const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',
