@@ -16,7 +16,8 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import styles = require('./Dropdown.scss');
+import * as stylesImport from './Dropdown.scss';
+const styles: any = stylesImport;
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {

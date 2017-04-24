@@ -11,7 +11,8 @@ import {
 } from '../../Utilities';
 
 import { Icon } from '../../Icon';
-import styles = require('./SearchBox.scss');
+import * as stylesImport from './SearchBox.scss';
+const styles: any = stylesImport;
 
 export interface ISearchBoxState {
   value?: string;
