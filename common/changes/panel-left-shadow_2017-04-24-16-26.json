@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Panel: Fixed drop shadow for left side panel",
+      "type": "patch"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
