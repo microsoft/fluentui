@@ -27,6 +27,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   private _rootElement: HTMLElement;
   private _inputElement: HTMLInputElement;
+  private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -40,6 +41,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   public componentWillReceiveProps(newProps: ISearchBoxProps) {
     if (newProps.value !== undefined) {
+      this._latestValue = newProps.value;
       this.setState({
         value: newProps.value
       });
@@ -68,6 +70,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           className={ css('ms-SearchBox-field', styles.field) }
           placeholder={ labelText }
           onChange={ this._onInputChange }
+          onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
           ref={ this._resolveRef('_inputElement') }
@@ -137,10 +140,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      value: this._inputElement.value
-    });
-    this._callOnChange(this._inputElement.value);
+    const value = this._inputElement.value;
+    if (value === this._latestValue) {
+      return;
+    }
+    this._latestValue = value;
+
+    this.setState({ value });
+    this._callOnChange(value);
   }
 
   private _handleDocumentFocus(ev: FocusEvent) {
