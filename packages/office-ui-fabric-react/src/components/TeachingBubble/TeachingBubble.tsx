@@ -6,7 +6,8 @@ import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps } from './TeachingBubble.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import styles = require('./TeachingBubble.scss');
+import * as stylesImport from './TeachingBubble.scss';
+const styles: any = stylesImport;
 
 export interface ITeachingBubbleState {
   isTeachingBubbleVisible?: boolean;

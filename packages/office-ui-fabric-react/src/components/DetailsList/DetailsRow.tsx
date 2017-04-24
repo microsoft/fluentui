@@ -18,7 +18,8 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles = require('./DetailsRow.scss');
+import * as stylesImport from './DetailsRow.scss';
+const styles: any = stylesImport;
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
