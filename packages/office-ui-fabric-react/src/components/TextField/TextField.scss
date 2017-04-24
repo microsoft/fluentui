@@ -64,9 +64,10 @@
 }
 
 .icon {
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
+  position: absolute;
+  bottom: 8px;
+  @include right(8px);
+  top: auto;
 }
 
 .fieldGroup {
@@ -79,7 +80,7 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-
+  position: relative;
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
   }
@@ -123,6 +124,10 @@
   outline: 0;
   text-overflow: ellipsis;
 
+  &.hasIcon {
+    @include padding-right(24px);
+  }
+
   &[disabled] {
     background-color: transparent;
     border-color: transparent;
@@ -149,7 +154,7 @@
 //
 .root.rootIsUnderlined {
   border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
-  display: table;
+  display: flex;
   width: 100%;
 
   &:hover {
@@ -172,23 +177,15 @@
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
     @include margin-right(8px);
-    display: table-cell;
-    vertical-align: top;
     @include padding-left(12px);
-    padding-top: 9px;
+    line-height: 22px; // 32px minus 5px padding top/bottom
     height: 32px;
-    width: 1%;
-    white-space: nowrap;
   }
 
-  .field {
+  .fieldGroup {
+    flex: 1 1 0;
     border: 0;
-    @include float(left);
-    display: table-cell;
     @include text-align(left);
-    padding-top: 8px;
-    padding-bottom: 3px;
-
     &:active,
     &:focus,
     &:hover {
@@ -229,6 +226,7 @@
   .fieldGroup {
     min-height: 60px;
     height: auto;
+    display: flex;
   }
   .field {
     @include ms-baseFont;
@@ -237,10 +235,10 @@
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;
     line-height: 17px;
-
+    flex-grow: 1;
     padding-top: 6px;
     overflow: auto;
-
+    width: 100%;
     &.hasIcon {
       @include padding-right(40px);
     }
