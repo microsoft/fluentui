@@ -8,13 +8,13 @@ export class TextFieldBasicExample extends React.Component<any, any> {
     return (
       <div>
         <TextField
-          addonString='https://dev.office.com/'
+          addonString='https://'
           label='Default TextField' onChanged={ this._onChanged } />
         <TextField label='Disabled TextField' disabled={ true } />
         <TextField
           onRenderAddon={ () => {
             return (
-              <Icon iconName='Add' />
+              <Icon iconName='MessageFill' />
             );
           } }
           label='Required TextField' required={ true } />
