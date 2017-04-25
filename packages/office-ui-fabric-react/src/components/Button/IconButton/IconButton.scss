@@ -31,7 +31,7 @@ $button-iconButtonSize: $button-core-default-height;
 
 .isEnabled {
 
-  &:hover {
+  &:hover, &.isOpened {
     color: $ms-color-themeDarker;
   }
 

@@ -2,11 +2,10 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   OverflowSet
-} from '../index';
+} from 'office-ui-fabric-react/lib/OverflowSet';
 
 export class OverflowSetBasicExample extends BaseComponent<any, any> {
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseButton } from './BaseButton';
+import { BaseButton, IButtonClassNames } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
@@ -34,6 +34,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
+
+  /**
+   * If provided, additional class name to provide on the root element.
+   */
+  classNames?: IButtonClassNames;
 
   /**
    * The aria label of the button for the benefit of screen readers.

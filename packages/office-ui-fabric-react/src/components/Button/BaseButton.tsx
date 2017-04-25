@@ -22,6 +22,7 @@ export interface IButtonClassNames {
   variant?: string;
   isDisabled?: string;
   isEnabled?: string;
+  isOpened?: string;
   description?: string;
   flexContainer?: string;
   icon?: string;
@@ -30,32 +31,20 @@ export interface IButtonClassNames {
   root?: string;
 }
 
-/**
- * These props are not in the Props file as they are undocumented props only specific to BaseButton.
- *
- * @export
- * @interface IBaseButtonProps
- * @extends {IButtonProps}
- */
-export interface IBaseButtonProps extends IButtonProps {
-  /**
-   *  Custom class names for individual elements within the button DOM.
-   */
-  classNames?: IButtonClassNames;
-}
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
 
-  public static defaultProps: IBaseButtonProps = {
+  public static defaultProps: IButtonProps = {
     classNames: {
       base: 'ms-Button',
       variant: '',
       isEnabled: '',
-      isDisabled: ''
+      isDisabled: '',
+      isOpened: '',
     }
   };
 
@@ -119,7 +108,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           {
             'disabled': disabled,
             [classNames.isDisabled]: disabled,
-            [classNames.isEnabled]: !disabled
+            [classNames.isEnabled]: !disabled,
+            [classNames.isOpened]: this.state.menuProps !== null
           }),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,

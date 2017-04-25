@@ -4,8 +4,9 @@ import {
   autobind,
   BaseComponent
 } from '../../Utilities';
+import { IButtonProps } from '../../Button';
 import { IOverflowSetProps } from './OverflowSet.Props';
-import { IconButton } from '../../Button';
+import { DefaultButton } from '../../Button';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
 const styles: any = require('./OverflowSet.scss');
@@ -13,41 +14,44 @@ const styles: any = require('./OverflowSet.scss');
 export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
   public render() {
-    let { items, overflowItems } = this.props;
+    let {
+      items,
+      overflowItems,
+      onRenderOverflowButton = this._onRenderOverflowButton,
+    } = this.props;
+
+    const buttonProps: IButtonProps = {
+      iconProps: { iconName: 'More' },
+      menuProps: { items: overflowItems }
+    }
+
     return (
       <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
         { items && this._onRenderItems(items) }
-        { overflowItems.length && this._onRenderOverflowButton(overflowItems) }
+        { overflowItems.length && onRenderOverflowButton(buttonProps, this._onRenderOverflowButton) }
       </FocusZone>
     );
   }
 
   @autobind
-  private _onRenderOverflowButton(items) {
-    let { iconProps = {} } = this.props;
-    iconProps.iconName = iconProps.iconName ? iconProps.iconName : 'More';
+  private _onRenderOverflowButton(props: IButtonProps): JSX.Element {
     return (
-      <IconButton
+      <DefaultButton
         className={ css(styles.overflowIcon) }
-        iconProps={ iconProps }
-        menuIconProps={ { iconName: null } }
-        menuProps={ {
-          items: items
-        } }
+        iconProps={ props.iconProps }
+        menuIconProps={ null }
+        menuProps={ props.menuProps }
       />
     );
   }
 
   @autobind
-  private _onRenderItems(items) {
+  private _onRenderItems(items: any[]): JSX.Element[] {
     return items.map((item, i) => {
-      let key = item.key ? item.key : i;
       let onRender = item.onRender ? item.onRender : this.props.onRenderItem;
       return (
-        <div
-          className={ css('ms-OverflowSet-item', styles.item) }
-          key={ key } >
-          { onRender ? onRender(item, i) : item }
+        <div className={ css('ms-OverflowSet-item', styles.item) }>
+          { onRender(item) }
         </div>
       );
     });

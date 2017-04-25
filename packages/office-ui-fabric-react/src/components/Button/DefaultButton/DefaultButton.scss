@@ -31,7 +31,7 @@
 
 .isEnabled {
 
-  &:hover {
+  &:hover, &.isOpened {
     background-color: $ms-color-neutralLight;
     color: $ms-color-black;
   }

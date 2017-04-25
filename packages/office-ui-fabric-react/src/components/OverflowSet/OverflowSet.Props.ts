@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IButtonProps } from '../../Button';
 import { OverflowSet } from './OverflowSet';
 import { IContextualMenuItem } from '../../ContextualMenu';
 import { IIconProps } from '../../Icon';
@@ -17,18 +18,13 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   overflowItems?: IContextualMenuItem[];
 
   /**
-   * Icon props used to override overflow icon.
-  */
-  iconProps?: IIconProps;
-
-  /**
    * Method to call when trying to render an item.
    * If item contains an onRender, that function will be used instead.
   */
   onRenderItem?: IRenderFunction<any>;
-}
 
-export interface IOverflowItemProps {
-  key: string;
-  onRender?: IRenderFunction<any>;
+  /**
+   * Optional custom renderer for overflow button and contextual menu.
+  */
+  onRenderOverflowButton?: IRenderFunction<IButtonProps>;
 }

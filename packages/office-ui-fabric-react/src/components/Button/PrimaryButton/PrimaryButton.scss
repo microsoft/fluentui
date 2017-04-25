@@ -32,7 +32,7 @@
 
 .isEnabled {
 
-  &:hover {
+  &:hover, &.isOpened {
     background-color: $ms-color-themeDark;
   }
 
