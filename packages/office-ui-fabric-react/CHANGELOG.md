@@ -1,6 +1,60 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Apr 2017 15:17:13 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Apr 2017 10:19:34 GMT and should not be manually modified.
+
+## 2.22.0
+Tue, 25 Apr 2017 10:19:34 GMT
+
+### Minor changes
+
+- Callout: Allow Callout to specify background color.
+
+### Patches
+
+- Drop Down: Adds required -- class/style + error message state
+- MessageBar: Fixed links not working in message bars
+- Modal: Updated animation to use local transition and removed Fabric Core dependency
+- Panel: Fixed drop shadow for left side panel
+- Searchbox: IE11 keystroke miss, overflow fix
+- DetailsList: when initial focus needs to be set to a row, we do so asynchronously, after page layout is completed, which reduces observed cost of the focus call from 30ms to 3ms. This should improve glass rendering performance.
+
+## 2.21.0
+Fri, 21 Apr 2017 06:23:54 GMT
+
+### Minor changes
+
+- Toggle: Improve screen-reader accessibility.
+
+### Patches
+
+- Calendar: Add ARIA labels to day and month buttons
+- Callout/Tooltip: Updated default gapSpace from 16 to 0
+- DocumentCard: Change persona size from extraExtraSmall to extraSmall and update compact layout title font size to m-plus according to new design.
+
+## 2.20.2
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 2.20.1
+Wed, 19 Apr 2017 15:36:48 GMT
+
+### Patches
+
+- References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import.
+
+## 2.20.0
+Wed, 19 Apr 2017 03:17:40 GMT
+
+### Minor changes
+
+- Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome
+
+### Patches
+
+- DatePicker: Improve screen-reader accessibility.
+- Regression Test: Contextual Menu 
+- fix nit for Suggestion.tsx
 
 ## 2.19.0
 Tue, 18 Apr 2017 15:17:13 GMT
