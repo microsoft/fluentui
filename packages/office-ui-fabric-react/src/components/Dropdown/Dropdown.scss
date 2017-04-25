@@ -256,11 +256,11 @@ $DropDown-item-height: 36px;
   background-color: $dividerColor;
 }
 
-.span{
+.optionText{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  min-width: 100px;
+  min-width: 0px;
   max-width: 100%;
   word-break: break-all;
   margin: 1px;
