@@ -25,7 +25,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       : null;
 
     return (
-      <FocusZone ref='focusZone' direction={ FocusZoneDirection.vertical } role='menubar' >
+      <FocusZone direction={ FocusZoneDirection.vertical } role='menu' >
         <nav className={ styles.nav } role='navigation'>
           { links }
         </nav>
