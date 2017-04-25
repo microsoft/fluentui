@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Fix for overflow",
+      "comment": "Dropdown: now correctly shows ellipsis when text overflows",
       "type": "patch"
     },
     {
