@@ -16,18 +16,25 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  selector: '#' + 'DefaultButton',
-  fileName: 'dialogButton',
-  commands: [mouseClickScreenshot],
-  childParams: {
-    selector: '.' + 'Dialog',
-    fileName: 'dialog',
-    commands: commands
-  }
+  selector: '.' + 'ChoiceGroup',
+  fileName: 'choiceGroup',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '.' + 'ChoiceGroupDisabled',
+  fileName: 'choiceGroupDisabled',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '.' + 'ChoiceGroupIcon',
+  fileName: 'choiceGroupIcon',
+  commands: commands
 });
 
 casper.
-  start(baseUrl + 'dialog').
+  start(baseUrl + 'choiceGroup').
   then(() => {
     testRunner(componentIds);
   });

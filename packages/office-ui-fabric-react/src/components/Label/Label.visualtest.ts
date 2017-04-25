@@ -16,18 +16,24 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  selector: '#' + 'DefaultButton',
-  fileName: 'dialogButton',
-  commands: [mouseClickScreenshot],
-  childParams: {
-    selector: '.' + 'Dialog',
-    fileName: 'dialog',
-    commands: commands
-  }
+  selector: '.' + 'Label',
+  fileName: 'label',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '.' + 'DisabledLabel',
+  fileName: 'disabledLabel',
+  commands: commands
+});
+componentIds.push({
+  selector: '.' + 'RequiredLabel',
+  fileName: 'requiredLabel',
+  commands: commands
 });
 
 casper.
-  start(baseUrl + 'dialog').
+  start(baseUrl + 'label').
   then(() => {
     testRunner(componentIds);
   });
