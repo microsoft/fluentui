@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Apr 2017 06:23:54 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Apr 2017 10:19:34 GMT and should not be manually modified.
+
+## 2.22.0
+Tue, 25 Apr 2017 10:19:34 GMT
+
+### Minor changes
+
+- Callout: Allow Callout to specify background color.
+
+### Patches
+
+- Drop Down: Adds required -- class/style + error message state
+- MessageBar: Fixed links not working in message bars
+- Modal: Updated animation to use local transition and removed Fabric Core dependency
+- Panel: Fixed drop shadow for left side panel
+- Searchbox: IE11 keystroke miss, overflow fix
+- DetailsList: when initial focus needs to be set to a row, we do so asynchronously, after page layout is completed, which reduces observed cost of the focus call from 30ms to 3ms. This should improve glass rendering performance.
 
 ## 2.21.0
 Fri, 21 Apr 2017 06:23:54 GMT
