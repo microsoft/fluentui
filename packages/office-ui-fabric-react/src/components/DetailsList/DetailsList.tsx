@@ -30,7 +30,8 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import styles = require('./DetailsList.scss');
+import * as stylesImport from './DetailsList.scss';
+const styles: any = stylesImport;
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -425,7 +426,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
       }
-      row.focus();
+      this._async.setTimeout(() => row.focus(), 0);
 
       delete this._initialFocusedIndex;
     }
