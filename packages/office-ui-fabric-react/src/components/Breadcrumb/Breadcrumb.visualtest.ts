@@ -7,7 +7,6 @@ declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
-let commands: ((params: IRunVisualTest) => void)[] = [];
 
 componentIds.push({
   selector: '.' + 'Breadcrumb',
@@ -15,7 +14,7 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '.' + 'ms-Breadcrumb-listItem',
+  selector: '.' + 'ms-Breadcrumb-item',
   fileName: 'breadcrumb',
   commands: [mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });

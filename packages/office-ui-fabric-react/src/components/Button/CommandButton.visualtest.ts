@@ -26,7 +26,7 @@ componentIds.push({
 componentIds.push({
   selector: '#' + 'CommandButtonDisabled',
   fileName: 'commandButtonDisabled',
-  commands: commands
+  commands: [defaultScreenshot]
 });
 
 casper.

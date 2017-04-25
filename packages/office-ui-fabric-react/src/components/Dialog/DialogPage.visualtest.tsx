@@ -2,19 +2,26 @@ import * as React from 'react';
 import { Dialog } from './Dialog';
 import { DialogType } from './Dialog.Props';
 import { DialogFooter } from './DialogFooter';
-import { PrimaryButton } from '../Button/PrimaryButton/PrimaryButton';
-import { DefaultButton } from '../Button/DefaultButton/DefaultButton';
+import { Button } from './../Button/index';
 
-export class DialogVPage extends React.Component<any, any> {
-
+export default class CommandButtonVPage extends React.Component<any, any> {
   public render() {
-    return (
-      <div>
-        done
-        <div><label> Default Button:   </label>
-          <DefaultButton id='DefaultButton' text='Default Button' /></div>
-      </div>
-    );
-  }
+    return <div>
 
+      <Dialog
+        isOpen={ true }
+        className='Dialog'
+        title='All emails together'
+        subText='Your Inbox has changed.'
+        isBlocking={ false }>
+        <DialogFooter>
+          <Button >Save</Button>
+          <Button >Cancel</Button>
+        </DialogFooter>
+      </Dialog>
+    </div>;
+  }
 }
+
+
+

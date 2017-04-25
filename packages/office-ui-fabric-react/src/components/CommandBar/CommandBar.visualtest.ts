@@ -1,6 +1,9 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
+import {
+  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
+  mouseClickScreenshot, mouseSingleClickScreenshot, testRunner
+} from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
@@ -16,25 +19,24 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  selector: '.' + 'ChoiceGroup',
-  fileName: 'choiceGroup',
-  commands: commands
+  selector: '.' + 'CommandBar',
+  fileName: 'commandBar',
+  commands: [defaultScreenshot, mouseMoveScreenshot]
 });
 
 componentIds.push({
-  selector: '.' + 'ChoiceGroupDisabled',
-  fileName: 'choiceGroupDisabled',
-  commands: commands
-});
-
-componentIds.push({
-  selector: '.' + 'ChoiceGroupIcon',
-  fileName: 'choiceGroupIcon',
-  commands: commands
+  selector: '.' + 'ms-CommandBarItem-link',
+  fileName: 'commandBar',
+  commands: [mouseSingleClickScreenshot],
+  childParams: {
+    selector: '.' + 'ms-ContextualMenu-list',
+    fileName: 'commandBarItem',
+    commands: [defaultScreenshot],
+  }
 });
 
 casper.
-  start(baseUrl + 'choiceGroup').
+  start(baseUrl + 'commandBar').
   then(() => {
     testRunner(componentIds);
   });

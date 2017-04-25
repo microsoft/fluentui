@@ -23,7 +23,7 @@ componentIds.push({
 componentIds.push({
   selector: '#' + 'ContextualButtonDisabled',
   fileName: 'contextualButtonDisabled',
-  commands: commands
+  commands: [defaultScreenshot]
 });
 
 componentIds.push({
@@ -33,7 +33,7 @@ componentIds.push({
   childParams: {
     selector: '.' + 'ms-ContextualMenu-list',
     fileName: 'contextualButtonMenu',
-    commands: commands
+    commands: [defaultScreenshot]
   }
 });
 

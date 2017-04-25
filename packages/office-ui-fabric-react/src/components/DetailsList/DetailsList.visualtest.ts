@@ -1,13 +1,15 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
+import {
+  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
+  mouseClickScreenshot, testRunner
+} from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
-
 let commands: ((params: IRunVisualTest) => void)[] = [];
 
 commands.push(defaultScreenshot);
@@ -16,13 +18,13 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  selector: '.' + 'ms-Dialog-main',
-  fileName: 'dialog',
+  selector: '.' + 'DetailsList',
+  fileName: 'detailsList',
   commands: commands
 });
 
 casper.
-  start(baseUrl + 'dialog').
+  start(baseUrl + 'detailsList').
   then(() => {
     testRunner(componentIds);
   });

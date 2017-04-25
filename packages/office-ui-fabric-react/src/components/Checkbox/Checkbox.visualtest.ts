@@ -22,7 +22,7 @@ componentIds.push({
 componentIds.push({
   selector: '.' + 'CheckboxDisabled',
   fileName: 'checkboxDisabled',
-  commands: commands
+  commands: [defaultScreenshot]
 });
 
 function testRunner() {

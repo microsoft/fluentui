@@ -12,7 +12,9 @@ export const VisualTestState: IVisualTestState = {
     './Button/PrimaryButtonPage.visualtest',
     './Checkbox/CheckboxPage.visualtest',
     './ChoiceGroup/ChoiceGroupPage.visualtest',
+    './CommandBar/CommandBarPage.visualtest',
     './ContextualMenu/ContextualMenuPage.visualtest',
+    './DetailsList/DetailsListPage.visualtest',
     './DocumentCard/DocumentCardPage.visualtest',
     './Dialog/DialogPage.visualtest',
     './Label/LabelPage.visualtest'

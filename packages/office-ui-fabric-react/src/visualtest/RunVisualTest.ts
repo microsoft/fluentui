@@ -53,7 +53,6 @@ export function mouseClickScreenshot(params: IRunVisualTest) {
 export function mouseSingleClickScreenshot(params: IRunVisualTest) {
   casper.then(function () {
     this.click(params.selector);
-    phantomcss.screenshot(params.selector, params.fileName + '_mouseSingleClick');
   });
   if (params.childParams) {
     params.childParams.commands.forEach(commandList => {
