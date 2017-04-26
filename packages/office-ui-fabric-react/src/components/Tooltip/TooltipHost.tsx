@@ -16,6 +16,7 @@ import { TooltipDelay } from './Tooltip.Props';
 
 import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
+import { getId } from '@uifabric/utilities';
 
 export interface ITooltipHostState {
   isTooltipVisible?: boolean;
@@ -42,7 +43,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   public render() {
     const { calloutProps, content, children, directionalHint, delay } = this.props;
     const { isTooltipVisible } = this.state;
-
+    const tooltipId = getId('tooltip');
     return (
       <div
         className={ css('ms-TooltipHost', styles.host) }
@@ -51,11 +52,12 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
         onMouseEnter={ this._onTooltipMouseEnter }
         onMouseLeave={ this._onTooltipMouseLeave }
-        aria-describedby={ content }
+        aria-describedby={ tooltipId }
       >
         { children }
         { isTooltipVisible && (
           <Tooltip
+            id={ tooltipId }
             delay={ delay }
             content={ content }
             targetElement={ this._getTargetElement() }
