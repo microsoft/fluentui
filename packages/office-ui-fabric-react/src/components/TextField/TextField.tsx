@@ -235,7 +235,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _onRenderAddon(props): JSX.Element {
+  private _onRenderAddon(props: ITextFieldProps): JSX.Element {
     let { addonString } = props;
     return (
       <span style={ { paddingBottom: '1px' } }>{ addonString }</span>
