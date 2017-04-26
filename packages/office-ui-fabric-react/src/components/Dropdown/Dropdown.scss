@@ -268,3 +268,13 @@ $DropDown-item-height: 36px;
   height: 1px;
   background-color: $dividerColor;
 }
+
+.optionText{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  max-width: 100%;
+  word-break: break-all;
+  margin: 1px;
+}
