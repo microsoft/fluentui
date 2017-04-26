@@ -2,10 +2,13 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import {
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
+
+import './OverflowSet.Example.scss';
 
 export class OverflowSetBasicExample extends BaseComponent<any, any> {
 
@@ -17,9 +20,8 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
             key: 'search',
             'onRender': () => {
               return (
-                <PrimaryButton
-                  iconProps={ { iconName: 'Add' } }
-                  text='Add'
+                <SearchBox
+                  labelText="Search"
                 />
               );
             }
