@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Apr 2017 10:19:34 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Apr 2017 10:19:05 GMT and should not be manually modified.
+
+## 2.22.1
+Wed, 26 Apr 2017 10:19:05 GMT
+
+### Patches
+
+- Dropdown: now correctly shows ellipsis when text overflows
 
 ## 2.22.0
 Tue, 25 Apr 2017 10:19:34 GMT
