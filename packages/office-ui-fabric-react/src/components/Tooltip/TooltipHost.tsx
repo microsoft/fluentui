@@ -92,18 +92,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     const { overflowMode } = this.props;
 
     if (overflowMode !== undefined) {
-
-      let overflowElement: HTMLElement;
-      switch (overflowMode) {
-        case TooltipOverflowMode.Parent:
-          overflowElement = this._tooltipHost.parentElement;
-          break;
-
-        case TooltipOverflowMode.Self:
-          overflowElement = this._tooltipHost;
-          break;
-      }
-
+      const overflowElement = this._getTargetElement();
       if (overflowElement && !hasOverflow(overflowElement)) {
         return;
       }
