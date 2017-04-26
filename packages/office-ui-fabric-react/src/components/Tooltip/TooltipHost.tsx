@@ -14,7 +14,7 @@ import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
 
-import * as stylesImport from './Tooltip.scss';
+import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
 
 export interface ITooltipHostState {
