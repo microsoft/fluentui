@@ -31,7 +31,6 @@ export interface IButtonClassNames {
   root?: string;
 }
 
-
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }

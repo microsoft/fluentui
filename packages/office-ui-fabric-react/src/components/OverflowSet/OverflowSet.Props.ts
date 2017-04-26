@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
 import { OverflowSet } from './OverflowSet';
 import { IContextualMenuItem } from '../../ContextualMenu';
-import { IIconProps } from '../../Icon';
 import { IRenderFunction } from '../../Utilities';
 
 export interface IOverflowSetProps extends React.Props<OverflowSet> {
