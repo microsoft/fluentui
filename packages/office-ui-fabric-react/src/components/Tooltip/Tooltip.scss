@@ -21,5 +21,6 @@
   margin: 0;
   font-size: $ms-font-size-s;
   color: $ms-color-neutralPrimary;
-  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
