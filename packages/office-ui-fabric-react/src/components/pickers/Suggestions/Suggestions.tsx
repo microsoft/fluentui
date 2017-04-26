@@ -6,7 +6,8 @@ import {
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-import styles = require('./Suggestions.scss');
+import * as stylesImport from './Suggestions.scss';
+const styles: any = stylesImport;
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {

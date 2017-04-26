@@ -22,7 +22,8 @@ import {
   isInDateRangeArray
 } from '../../utilities/dateMath/DateMath';
 
-import styles = require('./Calendar.scss');
+import * as stylesImport from './Calendar.scss';
+const styles: any = stylesImport;
 
 const DAYS_IN_WEEK = 7;
 
@@ -158,6 +159,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
+                        aria-label={ day.originalDate.toLocaleDateString ? day.originalDate.toLocaleDateString() : day.originalDate.getDate() }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }

@@ -1,6 +1,11 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 19 Apr 2017 16:54:26 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Apr 2017 06:23:54 GMT and should not be manually modified.
+
+## 1.3.10
+Fri, 21 Apr 2017 06:23:54 GMT
+
+*Changes not tracked*
 
 ## 1.3.8
 Wed, 19 Apr 2017 16:54:26 GMT

@@ -3,7 +3,8 @@ import {
   PersonaPresence,
   PersonaSize
 } from './Persona.Props';
-import styles = require('./Persona.scss');
+import * as stylesImport from './Persona.scss';
+const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {
   [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,

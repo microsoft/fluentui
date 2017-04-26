@@ -110,6 +110,9 @@ $DropDown-item-height: 36px;
       border-color: $ms-color-contrastWhiteDisabled;
       color: $ms-color-contrastWhiteDisabled;
     }
+    &.titleIsError {
+        border-color: $ms-color-error;
+    }
   }
 
   .caretDown {
@@ -149,6 +152,9 @@ $DropDown-item-height: 36px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  &.titleIsError {
+        border-color: $ms-color-error;
+    }
 }
 
 .panel {
@@ -165,6 +171,13 @@ $DropDown-item-height: 36px;
 .callout {
   box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
   border: 1px solid $ms-color-neutralLight;
+}
+
+.errorMessage{
+    color: $ms-color-error;
+  &::before {
+    content: '* ';
+  }
 }
 
 .items {
@@ -254,4 +267,14 @@ $DropDown-item-height: 36px;
 .divider {
   height: 1px;
   background-color: $dividerColor;
+}
+
+.optionText{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  max-width: 100%;
+  word-break: break-all;
+  margin: 1px;
 }
