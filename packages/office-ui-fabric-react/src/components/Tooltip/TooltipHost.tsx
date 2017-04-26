@@ -10,7 +10,7 @@ import {
   assign,
   hasOverflow
 } from '../../Utilities';
-import { ITooltipHostProps } from './TooltipHost.Props';
+import { ITooltipHostProps, TooltipOverflowMode } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
 import styles = require('./TooltipHost.scss');
@@ -67,10 +67,18 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private _getTargetElement(): HTMLElement {
-    const { onlyShowIfOverflow } = this.props;
+    const { overflowMode } = this.props;
 
-    if (onlyShowIfOverflow) {
-      return this._tooltipHost.parentElement;
+    // Select target element based on overflow mode. For parent mode, you want to position the tooltip relative
+    // to the parent element, otherwise it might look off.
+    if (overflowMode !== undefined) {
+      switch (overflowMode) {
+        case TooltipOverflowMode.Parent:
+          return this._tooltipHost.parentElement;
+
+        case TooltipOverflowMode.Self:
+          return this._tooltipHost;
+      }
     }
 
     return this._tooltipHost;
@@ -79,10 +87,21 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   // Show Tooltip
   @autobind
   private _onTooltipMouseEnter(ev: any) {
-    const { onlyShowIfOverflow } = this.props;
+    const { overflowMode } = this.props;
 
-    if (onlyShowIfOverflow) {
-      const overflowElement = this._tooltipHost.parentElement;
+    if (overflowMode !== undefined) {
+
+      let overflowElement: HTMLElement;
+      switch (overflowMode) {
+        case TooltipOverflowMode.Parent:
+          overflowElement = this._tooltipHost.parentElement;
+          break;
+
+        case TooltipOverflowMode.Self:
+          overflowElement = this._tooltipHost;
+          break;
+      }
+
       if (overflowElement && !hasOverflow(overflowElement)) {
         return;
       }

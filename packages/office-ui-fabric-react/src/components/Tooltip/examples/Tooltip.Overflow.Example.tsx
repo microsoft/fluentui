@@ -4,7 +4,8 @@ import * as React from 'react';
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import {
-  TooltipHost
+  TooltipHost,
+  TooltipOverflowMode
 } from 'office-ui-fabric-react/lib/Tooltip';
 
 export class TooltipOverflowExample extends BaseComponent<any, any> {
@@ -31,7 +32,7 @@ export class TooltipOverflowExample extends BaseComponent<any, any> {
             width: this.state.overflow && '200px',
             border: '1px solid black'
           } }>
-            <TooltipHost content='This is the tooltip' id='myID' onlyShowIfOverflow={ true }>
+            <TooltipHost content='This is the tooltip' id='myID' overflowMode={ TooltipOverflowMode.Parent }>
               <span aria-describedby='myID'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat lectus ut magna sodales, sit amet accumsan arcu accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
             </TooltipHost>
           </div>
