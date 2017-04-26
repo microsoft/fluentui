@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -60,6 +61,16 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * The textfield input description
    */
   description?: string;
+
+  /**
+  * String for addon.
+  */
+  addonString?: string;
+
+  /**
+  * Custom render function for addon
+  */
+  onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
   /**
    * CSS class for the icon.
