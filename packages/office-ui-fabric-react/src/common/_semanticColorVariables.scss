@@ -55,3 +55,16 @@ $fieldBorderHoverColor: $ms-color-neutralSecondaryAlt;
 $fieldBorderFocusColor: $ms-color-themePrimary;
 
 $fieldPlaceholderColor: $ms-color-neutralTertiary;
+
+/*** State controls ***/
+$controlBackgroundColor: $ms-color-white;
+$controlBackgroundSelectedColor: $ms-color-themePrimary;
+$controlBackgroundSelectedHoverColor: $ms-color-themeSecondary;
+
+// $controlForegroundColor: $ms-color-neutralPrimary; unused
+$controlForegroundSelectedColor: $ms-color-white;
+
+$controlBorderUnselectedColor: $ms-color-neutralSecondaryAlt;
+$controlBorderUnselectedHoverColor: $ms-color-black;
+// $controlBorderSelectedColor: unused
+$controlBorderSelectedHoverColor: $ms-color-themePrimary;
