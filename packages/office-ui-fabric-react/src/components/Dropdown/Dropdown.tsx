@@ -254,7 +254,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         className={ css('ms-Dropdown-items', styles.items) }
         aria-labelledby={ id + '-label' }
         onKeyDown={ this._onZoneKeyDown }
-        role="listbox"
+        role='listbox'
       >
         { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
