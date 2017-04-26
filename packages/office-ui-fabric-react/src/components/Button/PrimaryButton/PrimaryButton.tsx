@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, nullRender } from '@uifabric/utilities';
+import { BaseComponent, nullRender } from '../../../Utilities';
 import { BaseButton, IButtonClassNames } from '../BaseButton';
 import { IButtonProps } from '../Button.Props';
 
