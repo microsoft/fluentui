@@ -1,14 +1,15 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import {
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
 
-import './OverflowSet.Example.scss';
+import * as stylesImport from './OverflowSet.Example.scss';
+const styles: any = stylesImport;
 
 export class OverflowSetBasicExample extends BaseComponent<any, any> {
 
@@ -21,7 +22,7 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
             'onRender': () => {
               return (
                 <SearchBox
-                  labelText="Search"
+                  labelText='Search'
                 />
               );
             }
@@ -109,6 +110,17 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
           }
         ]
         }
+        onRenderOverflowButton={ (overflowItems) => {
+          return (
+            <DefaultButton
+              classNames={ { isEnabled: styles.isEnabled, isOpened: styles.isOpened } }
+              className={ css(styles.overflowButton) }
+              iconProps={ { iconName: 'More' } }
+              menuIconProps={ null }
+              menuProps={ { items: overflowItems } }
+            />
+          );
+        } }
         onRenderItem={ (item) => {
           return (
             <DefaultButton

@@ -4,12 +4,11 @@ import {
   autobind,
   BaseComponent
 } from '../../Utilities';
-import { IButtonProps } from '../../Button';
 import { IOverflowSetProps } from './OverflowSet.Props';
-import { DefaultButton } from '../../Button';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
-const styles: any = require('./OverflowSet.scss');
+import * as stylesImport from './OverflowSet.scss';
+const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
@@ -17,31 +16,14 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
     let {
       items,
       overflowItems,
-      onRenderOverflowButton = this._onRenderOverflowButton,
+      onRenderOverflowButton
     } = this.props;
-
-    const buttonProps: IButtonProps = {
-      iconProps: { iconName: 'More' },
-      menuProps: { items: overflowItems }
-    }
 
     return (
       <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
         { items && this._onRenderItems(items) }
-        { overflowItems.length && onRenderOverflowButton(buttonProps, this._onRenderOverflowButton) }
+        { overflowItems.length && onRenderOverflowButton(overflowItems) }
       </FocusZone>
-    );
-  }
-
-  @autobind
-  private _onRenderOverflowButton(props: IButtonProps): JSX.Element {
-    return (
-      <DefaultButton
-        className={ css(styles.overflowIcon) }
-        iconProps={ props.iconProps }
-        menuIconProps={ null }
-        menuProps={ props.menuProps }
-      />
     );
   }
 
