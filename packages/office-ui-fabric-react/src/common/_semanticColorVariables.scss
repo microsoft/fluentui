@@ -61,7 +61,8 @@ $controlBackgroundColor: $ms-color-white;
 $controlBackgroundSelectedColor: $ms-color-themePrimary;
 $controlBackgroundSelectedHoverColor: $ms-color-themeSecondary;
 
-// $controlForegroundColor: $ms-color-neutralPrimary; unused
+$controlForegroundColor: $ms-color-neutralPrimary;
+$controlForegroundHoverColor: $ms-color-black;
 $controlForegroundSelectedColor: $ms-color-white;
 
 $controlBorderUnselectedColor: $ms-color-neutralSecondaryAlt;
