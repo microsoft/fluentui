@@ -70,24 +70,17 @@
   top: auto;
 }
 
-.field {
+.fieldGroup {
   @include ms-u-normalize;
   @include ms-baseFont;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
-  border-radius: 0;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-m;
-  color: $ms-color-neutralPrimary;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
   height: 32px;
-  @include padding(0, 12px, 1px, 12px);
-  width: 100%;
-  outline: 0;
-  text-overflow: ellipsis;
-
-  &.hasIcon {
-    @include padding-right(24px);
-  }
-
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
   }
@@ -95,7 +88,6 @@
   &:focus {
     border-color: $ms-color-themePrimary;
   }
-
   &:hover,
   &:focus {
     @media screen and (-ms-high-contrast: active) {
@@ -106,10 +98,39 @@
       border-color: $ms-color-contrastWhiteSelected;
     }
   }
-
-  &[disabled] {
+  .rootIsDisabled > & {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.fieldAddon {
+  background: $ms-color-neutralLighter;
+  color: $ms-color-neutralSecondary;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  line-height: 1;
+}
+
+.field {
+  border-radius: 0;
+  border: none;
+  color: $ms-color-neutralPrimary;
+  @include padding(0, 12px, 0, 12px);
+  width: 100%;
+  outline: 0;
+  text-overflow: ellipsis;
+
+  &.hasIcon {
+    @include padding-right(24px);
+  }
+
+  &[disabled] {
+    background-color: transparent;
+    border-color: transparent;
     pointer-events: none;
     cursor: default;
   }
@@ -133,7 +154,7 @@
 //
 .root.rootIsUnderlined {
   border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
-  display: table;
+  display: flex;
   width: 100%;
 
   &:hover {
@@ -156,23 +177,15 @@
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
     @include margin-right(8px);
-    display: table-cell;
-    vertical-align: top;
     @include padding-left(12px);
-    padding-top: 9px;
+    line-height: 22px; // 32px minus 5px padding top/bottom
     height: 32px;
-    width: 1%;
-    white-space: nowrap;
   }
 
-  .field {
+  .fieldGroup {
+    flex: 1 1 0;
     border: 0;
-    @include float(left);
-    display: table-cell;
     @include text-align(left);
-    padding-top: 8px;
-    padding-bottom: 3px;
-
     &:active,
     &:focus,
     &:hover {
@@ -209,20 +222,26 @@
 
 //== Modifier: Multiline textfield
 //
-.root.rootIsMultiline .field {
-  @include ms-baseFont;
-  color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
-  line-height: 17px;
-  min-height: 60px;
-  height: auto;
-  padding-top: 6px;
-  overflow: auto;
-
-  &.hasIcon {
-    @include padding-right(40px);
+.root.rootIsMultiline {
+  .fieldGroup {
+    min-height: 60px;
+    height: auto;
+    display: flex;
+  }
+  .field {
+    @include ms-baseFont;
+    color: $ms-color-neutralPrimary;
+    font-family: $ms-font-family-base;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+    line-height: 17px;
+    flex-grow: 1;
+    padding-top: 6px;
+    overflow: auto;
+    width: 100%;
+    &.hasIcon {
+      @include padding-right(40px);
+    }
   }
 }
 
@@ -255,7 +274,9 @@
 .root.rootIsMultiline {
 
   .icon {
-    @include right(24px);
+    @include padding-right(24px);
+    padding-bottom: 8px;
+    align-items: flex-end;
   }
 
   .field.fieldIsUnresizable {
