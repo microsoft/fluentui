@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { BlogItem } from './BlogItem';
-import styles = require('./BlogPage.module.scss');
+import * as stylesImport from './BlogPage.module.scss';
+const styles: any = stylesImport;
 
 const blogData = require('json!../../data/blog-posts.json');
 

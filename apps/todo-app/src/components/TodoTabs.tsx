@@ -11,7 +11,8 @@ import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 
-import styles = require('./Todo.module.scss');
+import * as stylesImport from './Todo.module.scss';
+const styles: any = stylesImport;
 import strings from './../strings';
 
 /**
@@ -61,12 +62,12 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
         <FocusZone
           direction={ FocusZoneDirection.vertical }
           isInnerZoneKeystroke={ ev => ev.which === KeyCodes.right }
-          >
+        >
           <List
             className={ styles.todoList }
             items={ tasks }
             onRenderCell={ this._onRenderTodoItem }
-            />
+          />
         </FocusZone>
       </PivotItem>
     );
@@ -79,7 +80,7 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
         item={ item }
         onToggleComplete={ this.props.onToggleComplete }
         onDeleteItem={ this.props.onDeleteItem }
-        />
+      />
     );
   }
 }
