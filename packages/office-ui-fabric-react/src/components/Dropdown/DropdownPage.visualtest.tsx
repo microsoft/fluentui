@@ -16,7 +16,7 @@ export class DropdownVPage extends React.Component<any, any> {
       <div style={ { width: '600px' } }>
         <Dropdown
           label='Basic uncontrolled :'
-          id='Dropdown'
+          className='Dropdown'
           ariaLabel='Basic dropdown'
           options={
             [
@@ -30,7 +30,7 @@ export class DropdownVPage extends React.Component<any, any> {
         />
         <Dropdown
           label='Disabled uncontrolled with defaultSelectedKey:'
-          id='DropdownDisabled'
+          className='DropdownDisabled'
           defaultSelectedKey='D'
           options={
             [
