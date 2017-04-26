@@ -101,6 +101,10 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    */
   isDisabled?: boolean;
 
+  /**
+   * Descriptive label for the Dropdown Error Message
+   */
+  errorMessage?: string;
 }
 
 export interface IDropdownOption {
