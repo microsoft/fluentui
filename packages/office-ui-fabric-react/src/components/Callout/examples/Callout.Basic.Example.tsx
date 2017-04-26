@@ -36,6 +36,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
         { isCalloutVisible && (
           <Callout
             className='ms-CalloutExample-callout'
+            role={ 'alertdialog' }
             gapSpace={ 0 }
             targetElement={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }

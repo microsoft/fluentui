@@ -37,6 +37,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
         { isCalloutVisible ? (
           <div>
             <Callout
+              role={ 'dialog' }
               className='ms-CalloutExample-callout'
               gapSpace={ 0 }
               targetElement={ this._menuButtonElement }
