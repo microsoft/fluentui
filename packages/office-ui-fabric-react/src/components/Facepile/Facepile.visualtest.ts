@@ -12,14 +12,13 @@ declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'DetailsList',
-  fileName: 'detailsList',
+  selector: '.' + 'Facepile',
+  fileName: 'facepile',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
-
 });
 
 casper.
-  start(baseUrl + 'detailsList').
+  start(baseUrl + 'facepile').
   then(() => {
     testRunner(componentIds);
   });

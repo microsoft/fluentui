@@ -14,7 +14,7 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '.' + 'ms-Breadcrumb-item',
+  selector: '.' + 'ms-Breadcrumb-listItem',
   fileName: 'breadcrumb',
   commands: [mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });

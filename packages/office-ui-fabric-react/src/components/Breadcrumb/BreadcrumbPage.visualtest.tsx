@@ -5,7 +5,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 export default class BreadcrumbVPage extends React.Component<any, any> {
   public render() {
-    return <div>
+    return <div style={ { width: '300px' } }>
       <Breadcrumb
         className='Breadcrumb'
         items={ [

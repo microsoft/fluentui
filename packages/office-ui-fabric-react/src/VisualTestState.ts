@@ -18,6 +18,7 @@ export const VisualTestState: IVisualTestState = {
     './Dropdown/DropdownPage.visualtest',
     './Label/LabelPage.visualtest',
     './DocumentCard/DocumentCardPage.visualtest',
-    './Dialog/DialogPage.visualtest'
+    './Dialog/DialogPage.visualtest',
+    './Facepile/FacepilePage.visualtest'
   ]
 };

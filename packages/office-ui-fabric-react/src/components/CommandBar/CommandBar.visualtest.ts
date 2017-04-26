@@ -11,13 +11,6 @@ declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
 
-let commands: ((params: IRunVisualTest) => void)[] = [];
-
-commands.push(defaultScreenshot);
-commands.push(mouseMoveScreenshot);
-commands.push(mouseDownScreenshot);
-commands.push(mouseClickScreenshot);
-
 componentIds.push({
   selector: '.' + 'CommandBar',
   fileName: 'commandBar',
