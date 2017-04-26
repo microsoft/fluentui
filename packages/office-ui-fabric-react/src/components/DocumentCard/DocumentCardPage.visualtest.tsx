@@ -8,7 +8,6 @@ export default class DocumentCardVPage extends React.Component<any, any> {
       previewImages: [
         {
           name: 'DocumentCard',
-          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
           width: 318,

@@ -8,28 +8,21 @@ declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
 
-let commands: ((params: IRunVisualTest) => void)[] = [];
-
-commands.push(defaultScreenshot);
-commands.push(mouseMoveScreenshot);
-commands.push(mouseDownScreenshot);
-commands.push(mouseClickScreenshot);
-
 componentIds.push({
   selector: '.' + 'Label',
   fileName: 'label',
-  commands: commands
+  commands: [defaultScreenshot]
 });
 
 componentIds.push({
   selector: '.' + 'DisabledLabel',
   fileName: 'disabledLabel',
-  commands: commands
+  commands: [defaultScreenshot]
 });
 componentIds.push({
   selector: '.' + 'RequiredLabel',
   fileName: 'requiredLabel',
-  commands: commands
+  commands: [defaultScreenshot]
 });
 
 casper.

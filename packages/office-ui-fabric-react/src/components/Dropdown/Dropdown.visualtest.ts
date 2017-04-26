@@ -12,13 +12,18 @@ declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'DocumentCard',
-  fileName: 'documentCard',
+  selector: '#' + 'Dropdown',
+  fileName: 'dropdown',
+  commands: [defaultScreenshot, mouseMoveScreenshot]
+});
+componentIds.push({
+  selector: '#' + 'DropdownDisabled',
+  fileName: 'dropdownDisabled',
   commands: [defaultScreenshot, mouseMoveScreenshot]
 });
 
 casper.
-  start(baseUrl + 'documentCard').
+  start(baseUrl + 'dropdown').
   then(() => {
     testRunner(componentIds);
   });

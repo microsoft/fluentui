@@ -5,20 +5,15 @@ import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-let commands: ((params: IRunVisualTest) => void)[] = [];
-
-commands.push(defaultScreenshot);
-commands.push(mouseMoveScreenshot);
-commands.push(mouseDownScreenshot);
-commands.push(mouseClickScreenshot);
 
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
   selector: '.' + 'Checkbox',
   fileName: 'checkbox',
-  commands: commands
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseMoveScreenshot]
 });
+
 componentIds.push({
   selector: '.' + 'CheckboxDisabled',
   fileName: 'checkboxDisabled',
