@@ -152,6 +152,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
+    if (link.isHidden) {
+      return null;
+    }
     return (
       <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem) }>
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }

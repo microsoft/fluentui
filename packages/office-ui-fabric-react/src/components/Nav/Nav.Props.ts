@@ -152,6 +152,11 @@ export interface INavLink {
   isExpanded?: boolean;
 
   /**
+   * Whether or not the link is hidden from navigation
+   */
+  isHidden?: boolean;
+
+  /**
    * Aria label for nav link
    */
   ariaLabel?: string;
