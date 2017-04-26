@@ -8,11 +8,13 @@ import {
 } from '@uifabric/example-app-base';
 import { TooltipBottomExample } from './examples/Tooltip.Bottom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
+import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 
 import './TooltipPage.scss';
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipBottomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Bottom.Example.tsx') as string;
+const TooltipOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Overflow.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<any, any> {
   public render() {
@@ -28,6 +30,10 @@ export class TooltipPage extends React.Component<any, any> {
 
             <ExampleCard title='Tooltip Bottom Direction. No delay' code={ TooltipBottomExampleCode }>
               <TooltipBottomExample />
+            </ExampleCard>
+
+            <ExampleCard title='Tooltip only on overflow' code={ TooltipOverflowExampleCode }>
+              <TooltipOverflowExample />
             </ExampleCard>
           </LayerHost>
         }
