@@ -16,12 +16,12 @@ componentIds.push({
 
 componentIds.push({
   selector: '.' + 'LabelDisabled',
-  fileName: 'disabledLabel',
+  fileName: 'labelDisabled',
   commands: [defaultScreenshot]
 });
 componentIds.push({
   selector: '.' + 'LabelRequired',
-  fileName: 'requiredLabel',
+  fileName: 'labelRequired',
   commands: [defaultScreenshot]
 });
 

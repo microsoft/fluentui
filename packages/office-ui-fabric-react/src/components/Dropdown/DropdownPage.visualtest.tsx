@@ -12,36 +12,36 @@ export class DropdownVPage extends React.Component<any, any> {
   public render() {
     let { selectedItem } = this.state;
     return (
-      <div style={ { width: '600px' } }>
-        <Dropdown
-          label='Basic uncontrolled :'
-          className='Dropdown'
-          ariaLabel='Basic dropdown'
-          options={
-            [
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' }
-            ]
-          }
-        />
-        <Dropdown
-          label='Disabled uncontrolled with defaultSelectedKey:'
-          className='DropdownDisabled'
-          defaultSelectedKey='D'
-          options={
-            [
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-            ]
-          }
-          disabled={ true }
-        />
-      </div>
+      <div>
+        <div>
+          <Dropdown
+            className='Dropdown'
+            options={
+              [
+                { key: 'A', text: 'Option a' },
+                { key: 'B', text: 'Option b' },
+                { key: 'C', text: 'Option c' },
+                { key: 'D', text: 'Option d' },
+                { key: 'E', text: 'Option e' }
+              ]
+            }
+          /></div>
+        <div>
+          <Dropdown
+            label='Disabled uncontrolled with defaultSelectedKey:'
+            className='DropdownDisabled'
+            defaultSelectedKey='D'
+            options={
+              [
+                { key: 'A', text: 'Option a' },
+                { key: 'B', text: 'Option b' },
+                { key: 'C', text: 'Option c' },
+                { key: 'D', text: 'Option d' },
+              ]
+            }
+            disabled={ true }
+          />
+        </div></div>
     );
   }
 }
