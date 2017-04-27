@@ -8,6 +8,10 @@
   }
 }
 
+.overflowLinks {
+  @include margin-right(10px);
+}
+
 .overflowButton {
   min-width: 0;
   padding: 0 4px;

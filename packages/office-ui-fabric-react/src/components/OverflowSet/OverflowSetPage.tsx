@@ -6,8 +6,10 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
+import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 
+const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
 const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
 
 export class OverflowSetPage extends React.Component<any, any> {
@@ -26,8 +28,11 @@ export class OverflowSetPage extends React.Component<any, any> {
         }
         exampleCards={
           <LayerHost>
-            <ExampleCard title='OverflowSet' code={ OverflowSetBasicExampleCode }>
+            <ExampleCard title='OverflowSet Basic Example' code={ OverflowSetBasicExampleCode }>
               <OverflowSetBasicExample />
+            </ExampleCard>
+            <ExampleCard title='OverflowSet Custom Example' code={ OverflowSetCustomExampleCode }>
+              <OverflowSetCustomExample />
             </ExampleCard>
           </LayerHost>
         }

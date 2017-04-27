@@ -2,8 +2,8 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -18,116 +18,51 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
       <OverflowSet
         items={ [
           {
-            key: 'search',
-            'onRender': () => {
-              return (
-                <SearchBox
-                  labelText='Search'
-                />
-              );
-            }
-          },
-          {
-            key: 'newItem',
-            name: 'New',
-            icon: 'Add',
+            key: 'item1',
+            name: 'Link 1',
             ariaLabel: 'New. Use left and right arrow keys to navigate',
             onClick: () => { return; },
-            subMenuProps: {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail',
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ],
-            },
           },
           {
-            key: 'upload',
-            name: 'Upload',
-            icon: 'Upload',
+            key: 'item2',
+            name: 'Link 2',
             onClick: () => { return; },
           },
           {
-            key: 'share',
-            name: 'Share',
-            icon: 'Share',
+            key: 'item3',
+            name: 'Link 3',
             onClick: () => { return; }
           }
         ] }
         overflowItems={ [
           {
-            key: 'newItem',
-            name: 'Add',
-            icon: 'Add',
-            ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: () => { return; },
-            subMenuProps: {
-              items: [
-                {
-                  key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail',
-                },
-                {
-                  key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ],
-            },
-          },
-          {
-            key: 'move',
-            name: 'Move to...',
-            icon: 'MoveToFolder',
+            key: 'item4',
+            name: 'Overflow Link 1',
             onClick: () => { return; }
           },
           {
-            key: 'copy',
-            name: 'Copy to...',
-            icon: 'Copy',
-            onClick: () => { return; }
-          },
-          {
-            key: 'rename',
-            name: 'Rename...',
-            icon: 'Edit',
-            onClick: () => { return; }
-          },
-          {
-            key: 'disabled',
-            name: 'Disabled...',
-            icon: 'Cancel',
-            disabled: true,
+            key: 'item5',
+            name: 'Overflow Link 2',
             onClick: () => { return; }
           }
         ]
         }
-        onRenderOverflowButton={ (props) => {
+        onRenderOverflowButton={ (buttonProps) => {
           return (
-            <DefaultButton
-              classNames={ { isEnabled: styles.isEnabled, isOpened: styles.isOpened } }
+            <IconButton
               className={ css(styles.overflowButton) }
               iconProps={ { iconName: 'More' } }
               menuIconProps={ null }
-              menuProps={ { items: props.menuProps.items } }
+              menuProps={ buttonProps.menuProps }
             />
           );
         } }
         onRenderItem={ (item) => {
           return (
-            <DefaultButton
-              iconProps={ { iconName: item.icon } }
-              menuProps={ item.subMenuProps }
-              text={ item.name }
-            >  </DefaultButton>
+            <Link
+              className={ css(styles.overflowLinks) }
+              onClick={ item.onClick }
+            >{ item.name }</Link>
           );
         } }
       />
