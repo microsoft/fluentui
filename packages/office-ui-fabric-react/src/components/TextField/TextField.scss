@@ -41,11 +41,8 @@ $field-error-color: $errorTextColor;
 
 //= State: default
 .fieldGroup {
-  @include ms-u-normalize;
-  @include ms-baseFont;
   border: 1px solid $field-border-color;
   background: $field-background-color;
-  border-radius: 0;
   height: 32px;
   display: flex;
   flex-direction: row;
@@ -103,9 +100,11 @@ $field-error-color: $errorTextColor;
 }
 
 .field {
+  @include ms-u-normalize;
+  @include ms-baseFont;
   border-radius: 0;
   border: none;
-  color: $ms-color-neutralPrimary;
+  color: $field-text-color;
   @include padding(0, 12px, 0, 12px);
   width: 100%;
   outline: 0;
@@ -195,7 +194,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.rootIsDisabled {
-    //border-bottom-color: $input-border-disabled-color;
+    //border-bottom-color: $field-border-disabled-color; todo
 
     :global(.ms-Label) {
       @include ms-Label-is-disabled;
@@ -230,11 +229,6 @@ $field-error-color: $errorTextColor;
     display: flex;
   }
   .field {
-    @include ms-baseFont;
-    color: $ms-color-neutralPrimary;
-    font-family: $ms-font-family-base;
-    font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
     line-height: 17px;
     flex-grow: 1;
     padding-top: 6px;
