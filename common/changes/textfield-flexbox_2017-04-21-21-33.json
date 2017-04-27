@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Toggle: Improve screen-reader accessibility.",
+      "comment": "TextField: Convert to flexbox, support addons",
       "type": "minor"
     }
   ],
-  "email": "clewolff@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
