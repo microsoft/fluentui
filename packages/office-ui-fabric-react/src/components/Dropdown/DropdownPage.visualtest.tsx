@@ -2,15 +2,7 @@ import * as React from 'react';
 import { Dropdown } from './Dropdown';
 
 export class DropdownVPage extends React.Component<any, any> {
-  constructor() {
-    super();
-    this.state = {
-      selectedItem: null
-    };
-  }
-
   public render() {
-    let { selectedItem } = this.state;
     return (
       <div>
         <div>
