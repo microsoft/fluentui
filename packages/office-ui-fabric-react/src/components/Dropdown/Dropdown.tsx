@@ -98,6 +98,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isDisabled,
       ariaLabel,
       required,
+      errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -120,7 +121,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -136,7 +138,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         >
           <span
             id={ id + '-option' }
-            className={ css('ms-Dropdown-title', styles.title) }
+            className={ css(
+              'ms-Dropdown-title', styles.title,
+              (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
+            }
             key={ selectedIndex }
             aria-atomic={ true }
           >
@@ -149,6 +154,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }
+        {
+          errorMessage &&
+          <div
+            className={ css(styles.errorMessage) }>
+            { errorMessage }
+          </div>
+        }
       </div>
     );
   }
@@ -309,7 +321,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render content of item (i.e. text/icon inside of button)
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
-    return <span>{ item.text }</span>;
+    return <span className={ css('ms-Dropdown-optionText', styles.optionText) }>{ item.text }</span>;
   }
 
   @autobind

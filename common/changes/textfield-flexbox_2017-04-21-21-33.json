@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: Fixed drop shadow for left side panel",
-      "type": "patch"
+      "comment": "TextField: Convert to flexbox, support addons",
+      "type": "minor"
     }
   ],
   "email": "micahgodbolt@gmail.com"
