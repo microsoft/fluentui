@@ -26,7 +26,7 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         { ...this.props }
-        classNames={ assign(CLASS_NAMES, this.props.classNames) }
+        classNames={ assign({} ,CLASS_NAMES, this.props.classNames) }
         onRenderText={ nullRender }
         onRenderDescription={ nullRender }
       />
