@@ -16,7 +16,7 @@ componentIds.push({
 
 componentIds.push({
   selector: '#' + 'DefaultButtonDisabled',
-  fileName: 'ButtonDefaultDisabled',
+  fileName: 'buttonDefaultDisabled',
   commands: [defaultScreenshot]
 });
 componentIds.push({
