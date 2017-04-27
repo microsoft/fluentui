@@ -97,7 +97,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
     let buttonStyle: React.CSSProperties = {
       margin: '0 10px 0 0'
-    }
+    };
 
     let dateRangeString: string = null;
     if (this.state.selectedDateRange != null) {
@@ -129,8 +129,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
         </Calendar>
         { this.props.showNavigateButtons &&
           <div>
-            <Button style={ buttonStyle } onClick={ this._goPrevious } text="Previous" />
-            <Button style={ buttonStyle } onClick={ this._goNext } text="Next" />
+            <Button style={ buttonStyle } onClick={ this._goPrevious } text='Previous' />
+            <Button style={ buttonStyle } onClick={ this._goNext } text='Next' />
           </div>
         }
       </div>
@@ -147,7 +147,16 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this.setState((prevState: ICalendarInlineExampleState) => {
       let selectedDate = prevState.selectedDate || new Date();
       let dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
-      let newSelectedDate = addDays(dateRangeArray[0], -dateRangeArray.length);
+
+      let subtractFrom = dateRangeArray[0];
+      let daysToSubtract = dateRangeArray.length;
+
+      if (this.props.dateRangeType == DateRangeType.Month) {
+        subtractFrom = new Date(subtractFrom.getFullYear(), subtractFrom.getMonth(), 1);
+        daysToSubtract = 1;
+      }
+
+      let newSelectedDate = addDays(subtractFrom, -daysToSubtract);
       return prevState.selectedDate = newSelectedDate;
     });
   }
