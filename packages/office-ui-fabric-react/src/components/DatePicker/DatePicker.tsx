@@ -164,8 +164,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
+      // role='application' is used to work around undesirable behavior in JAWS.
+      // Without role='application', when pressing enter to open the date picker popup,
+      // JAWS swallows the first enter key press and nothing happens.
       <div className={ css('ms-DatePicker', styles.root) } ref='root'>
-        <div ref={ (c): HTMLElement => this._datepicker = c }>
+        <div ref={ (c): HTMLElement => this._datepicker = c } role='application'>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
