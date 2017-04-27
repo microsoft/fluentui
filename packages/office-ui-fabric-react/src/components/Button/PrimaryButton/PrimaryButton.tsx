@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, nullRender, assign } from '../../../Utilities';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { IButtonProps } from '../Button.Props';
+import { BaseButton } from '../BaseButton';
+import { IButtonProps, IButtonClassNames } from '../Button.Props';
 
 import * as stylesImport from './PrimaryButton.scss';
 const styles: any = stylesImport;
@@ -28,7 +28,7 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         { ...this.props }
-        classNames={ assign({} ,CLASS_NAMES, this.props.classNames) }
+        classNames={ assign({}, CLASS_NAMES, this.props.classNames) }
         onRenderDescription={ nullRender }
       />
     );

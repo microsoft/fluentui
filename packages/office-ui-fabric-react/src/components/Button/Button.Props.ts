@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from './BaseButton';
+import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
@@ -158,4 +158,18 @@ export enum ButtonType {
   command = 4,
   icon = 5,
   default = 6
+}
+
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+  isDisabled?: string;
+  isEnabled?: string;
+  isOpened?: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  menuIcon?: string;
+  label?: string;
+  root?: string;
 }

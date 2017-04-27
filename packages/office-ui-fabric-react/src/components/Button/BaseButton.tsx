@@ -13,23 +13,9 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.Props';
+import { IButtonProps, IButton, IButtonClassNames } from './Button.Props';
 import * as stylesImport from './BaseButton.scss';
 const styles: any = stylesImport;
-
-export interface IButtonClassNames {
-  base?: string;
-  variant?: string;
-  isDisabled?: string;
-  isEnabled?: string;
-  isOpened?: string;
-  description?: string;
-  flexContainer?: string;
-  icon?: string;
-  menuIcon?: string;
-  label?: string;
-  root?: string;
-}
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
