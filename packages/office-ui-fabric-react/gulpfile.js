@@ -30,10 +30,8 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
     directoryListing: false
   });
   if (!options.args['debug']) {
-    let matchFile = options.args['match'] || '';
-
     let casperJs = require('gulp-phantomcss');
-    gulp.src(['lib/**/*' + matchFile + '.visualtest.js'])
+    gulp.src(['lib/**/*.visualtest.js'])
       .pipe(casperJs(
         {
           screenshots: 'visualtests/baseline',
