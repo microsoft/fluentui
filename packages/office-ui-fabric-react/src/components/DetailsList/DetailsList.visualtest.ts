@@ -6,15 +6,15 @@ import {
 } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
-declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'DetailsList',
+  selector: '.' + 'ms-DetailsRow',
+  imageSelector: '.' + 'DetailsList',
   fileName: 'detailsList',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+  commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
 
 });
 

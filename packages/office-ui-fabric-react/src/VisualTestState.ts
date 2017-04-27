@@ -15,7 +15,6 @@ export const VisualTestState: IVisualTestState = {
     './DocumentCard/DocumentCardPage.visualtest',
     './Dialog/DialogPage.visualtest',
     './Facepile/FacepilePage.visualtest',
-    './Dropdown/DropdownPage.visualtest',
     './Toggle/TogglePage.visualtest',
     './Tooltip/TooltipPage.visualtest'
   ]

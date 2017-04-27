@@ -12,17 +12,20 @@ declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'CommandBar',
+  selector: '.' + 'ms-CommandBarItem-link',
+  imageSelector: '.' + 'CommandBar',
   fileName: 'commandBar',
   commands: [defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });
 
 componentIds.push({
   selector: '.' + 'ms-CommandBarItem-link',
+  imageSelector: '.' + 'CommandBar',
   fileName: 'commandBarItem',
   commands: [mouseSingleClickScreenshot],
   childParams: {
     selector: '.' + 'ms-ContextualMenu-list',
+    imageSelector: '.' + 'ms-ContextualMenu-Callout',
     fileName: 'commandBarItem',
     commands: [defaultScreenshot],
   }

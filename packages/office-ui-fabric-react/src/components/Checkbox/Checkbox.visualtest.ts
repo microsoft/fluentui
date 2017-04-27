@@ -3,14 +3,14 @@ import { baseUrl } from '../../common/VisualTest';
 import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
-declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'Checkbox',
+  selector: '.' + 'ms-Checkbox-input',
   fileName: 'checkbox',
+  imageSelector: '.' + 'Checkbox',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]
 });
 

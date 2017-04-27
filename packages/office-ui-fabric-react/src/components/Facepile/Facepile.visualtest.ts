@@ -14,7 +14,7 @@ let componentIds: IRunVisualTest[] = [];
 componentIds.push({
   selector: '.' + 'Facepile',
   fileName: 'facepile',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+  commands: [defaultScreenshot]
 });
 
 casper.

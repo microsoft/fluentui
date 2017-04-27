@@ -5,76 +5,67 @@ import {
   mouseClickScreenshot, testRunner, mouseSingleClickScreenshot
 } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
-
-declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
   selector: '#' + 'DefaultButton',
-  fileName: 'defaultButton',
+  fileName: 'buttonDefault',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
 
 componentIds.push({
   selector: '#' + 'DefaultButtonDisabled',
-  fileName: 'defaultButtonDisabled',
+  fileName: 'ButtonDefaultDisabled',
   commands: [defaultScreenshot]
 });
 componentIds.push({
   selector: '#' + 'PrimaryButton',
-  fileName: 'primaryButton',
+  fileName: 'buttonPrimary',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 
 });
 componentIds.push({
   selector: '#' + 'PrimaryButtonDisabled',
-  fileName: 'primaryButtonDisabled',
+  fileName: 'buttonPrimaryDisabled',
   commands: [defaultScreenshot]
 });
 
 componentIds.push({
   selector: '#' + 'CommandButton',
-  fileName: 'commandButton',
+  fileName: 'buttonCommand',
   commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
 });
 
 componentIds.push({
   selector: '#' + 'CommandButtonDisabled',
-  fileName: 'commandButtonDisabled',
+  fileName: 'buttonCommandDisabled',
   commands: [defaultScreenshot]
 });
 
 componentIds.push({
   selector: '#' + 'CompoundButton',
-  fileName: 'compoundButton',
+  fileName: 'buttonCompound',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
 componentIds.push({
   selector: '#' + 'CompoundButtonDisabled',
-  fileName: 'compoundButtonDisabled',
+  fileName: 'buttonCompoundDisabled',
   commands: [defaultScreenshot]
 });
 componentIds.push({
   selector: '#' + 'ContextualButton',
-  fileName: 'contextualButton',
+  fileName: 'buttonContextual',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
 
 componentIds.push({
-  selector: '#' + 'ContextualButtonDisabled',
-  fileName: 'contextualButtonDisabled',
-  commands: [defaultScreenshot]
-});
-
-componentIds.push({
   selector: '#' + 'ContextualButton',
-  fileName: 'contextualButton',
+  fileName: 'buttonContextual',
   commands: [mouseSingleClickScreenshot],
   childParams: {
     selector: '.' + 'ms-ContextualMenu-list',
-    fileName: 'contextualButtonMenu',
+    fileName: 'buttonContextualMenu',
     commands: [defaultScreenshot]
   }
 });

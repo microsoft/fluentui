@@ -6,15 +6,15 @@ import {
 } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
-declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '#' + 'ContextualMenu',
+  selector: '.' + 'ms-ContextualMenu-itemText',
+  imageSelector: '#' + 'ContextualMenu',
   fileName: 'contextualMenu',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+  commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
 
 });
 
