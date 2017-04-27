@@ -110,14 +110,14 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
           }
         ]
         }
-        onRenderOverflowButton={ (overflowItems) => {
+        onRenderOverflowButton={ (props) => {
           return (
             <DefaultButton
               classNames={ { isEnabled: styles.isEnabled, isOpened: styles.isOpened } }
               className={ css(styles.overflowButton) }
               iconProps={ { iconName: 'More' } }
               menuIconProps={ null }
-              menuProps={ { items: overflowItems } }
+              menuProps={ { items: props.menuProps.items } }
             />
           );
         } }

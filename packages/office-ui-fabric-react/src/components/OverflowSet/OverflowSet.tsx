@@ -4,6 +4,7 @@ import {
   autobind,
   BaseComponent
 } from '../../Utilities';
+import { IButtonProps } from '../../Button';
 import { IOverflowSetProps } from './OverflowSet.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
@@ -19,10 +20,14 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
       onRenderOverflowButton
     } = this.props;
 
+    const overflowButtonProps: IButtonProps = {
+      menuProps: { items: overflowItems }
+    }
+
     return (
       <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
         { items && this._onRenderItems(items) }
-        { overflowItems.length && onRenderOverflowButton(overflowItems) }
+        { overflowItems.length && onRenderOverflowButton(overflowButtonProps) }
       </FocusZone>
     );
   }
