@@ -1,6 +1,6 @@
 #### Pull request checklist
 
-- [ ] Addresses an existing issue: #0000
+- [ ] Addresses an existing issue: Fixes #0000
 - [ ] Include a change request file if publishing <!-- see notes below -->
 - [ ] New feature, bugfix, or enhancement
   - [ ] Includes tests

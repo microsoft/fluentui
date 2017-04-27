@@ -1,6 +1,42 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Apr 2017 06:23:54 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Apr 2017 10:18:03 GMT and should not be manually modified.
+
+## 2.23.0
+Thu, 27 Apr 2017 10:18:03 GMT
+
+### Minor changes
+
+- TooltipHost: Allow showing tooltip only if there's overflow
+- TextField: Convert to flexbox, support addons
+
+### Patches
+
+- Don't break intra-word in tooltips UNLESS required for overflow by using CSS overflow-wrap property. Fixes #1627.
+- PeoplePicker: Adding vertical-align to the member list version of the people picker.
+
+## 2.22.1
+Wed, 26 Apr 2017 10:19:05 GMT
+
+### Patches
+
+- Dropdown: now correctly shows ellipsis when text overflows
+
+## 2.22.0
+Tue, 25 Apr 2017 10:19:34 GMT
+
+### Minor changes
+
+- Callout: Allow Callout to specify background color.
+
+### Patches
+
+- Drop Down: Adds required -- class/style + error message state
+- MessageBar: Fixed links not working in message bars
+- Modal: Updated animation to use local transition and removed Fabric Core dependency
+- Panel: Fixed drop shadow for left side panel
+- Searchbox: IE11 keystroke miss, overflow fix
+- DetailsList: when initial focus needs to be set to a row, we do so asynchronously, after page layout is completed, which reduces observed cost of the focus call from 30ms to 3ms. This should improve glass rendering performance.
 
 ## 2.21.0
 Fri, 21 Apr 2017 06:23:54 GMT

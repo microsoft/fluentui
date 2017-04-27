@@ -17,7 +17,8 @@ import {
   css
 } from '../../Utilities';
 import { compareDates } from '../../utilities/dateMath/DateMath';
-import styles = require('./DatePicker.scss');
+import * as stylesImport from './DatePicker.scss';
+const styles: any = stylesImport;
 
 export interface IDatePickerState {
   /** The currently focused date in the drop down, but not necessarily selected */
