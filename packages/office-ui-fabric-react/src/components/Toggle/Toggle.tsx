@@ -51,11 +51,11 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public render() {
-    //This control is using an input element for more universal accessibility support.
-    //Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
-    //However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.
-    //In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
-    //more semantically correct.
+    // This control is using an input element for more universal accessibility support.
+    // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
+    // However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.
+    // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
+    // more semantically correct.
 
     let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
@@ -83,6 +83,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
           ) }
           <div className={ css(styles.slider, 'ms-Toggle-slider') }>
             <input
+              key='invisibleToggle'
               ref={ (c): HTMLInputElement => this._toggleInput = c }
               type='checkbox'
               id={ this._id }
@@ -135,8 +136,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.enter:
-        //Also support toggling via the enter key.
-        //While toggling via the space bar is technically correct for a checkbox, this control looks more like a button to sighted users.
+        // Also support toggling via the enter key.
+        // While toggling via the space bar is technically correct for a checkbox, this control looks more like a button to sighted users.
         this._onClick();
 
         break;
