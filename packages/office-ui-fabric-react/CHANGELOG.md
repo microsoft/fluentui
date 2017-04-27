@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Apr 2017 10:19:05 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Apr 2017 10:18:03 GMT and should not be manually modified.
+
+## 2.23.0
+Thu, 27 Apr 2017 10:18:03 GMT
+
+### Minor changes
+
+- TooltipHost: Allow showing tooltip only if there's overflow
+- TextField: Convert to flexbox, support addons
+
+### Patches
+
+- Don't break intra-word in tooltips UNLESS required for overflow by using CSS overflow-wrap property. Fixes #1627.
+- PeoplePicker: Adding vertical-align to the member list version of the people picker.
 
 ## 2.22.1
 Wed, 26 Apr 2017 10:19:05 GMT

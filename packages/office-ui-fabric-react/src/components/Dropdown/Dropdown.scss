@@ -198,6 +198,7 @@ $DropDown-item-height: 36px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: left;
 
   @media screen and (-ms-high-contrast: active) {
@@ -275,6 +276,7 @@ $DropDown-item-height: 36px;
   text-overflow: ellipsis;
   min-width: 0px;
   max-width: 100%;
-  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   margin: 1px;
 }
