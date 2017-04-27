@@ -99,7 +99,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
             width: clientRect.width,
             height: scrollRect.height
           }
-        }, this._updateViewport);
+        }, () => { this._updateViewport(withForceUpdate); });
       } else {
         this._resizeAttempts = 0;
         updateComponent();
