@@ -11,7 +11,7 @@ let componentIds: IRunVisualTest[] = [];
 componentIds.push({
   selector: '.' + 'Checkbox',
   fileName: 'checkbox',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseMoveScreenshot]
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]
 });
 
 componentIds.push({

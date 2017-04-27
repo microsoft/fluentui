@@ -14,12 +14,12 @@ let componentIds: IRunVisualTest[] = [];
 componentIds.push({
   selector: '.' + 'CommandBar',
   fileName: 'commandBar',
-  commands: [defaultScreenshot, mouseMoveScreenshot]
+  commands: [defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });
 
 componentIds.push({
   selector: '.' + 'ms-CommandBarItem-link',
-  fileName: 'commandBar',
+  fileName: 'commandBarItem',
   commands: [mouseSingleClickScreenshot],
   childParams: {
     selector: '.' + 'ms-ContextualMenu-list',

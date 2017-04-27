@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Dropdown } from './Dropdown';
-import { DropdownMenuItemType } from './Dropdown.Props';
 
 export class DropdownVPage extends React.Component<any, any> {
   constructor() {

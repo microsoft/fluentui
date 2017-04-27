@@ -18,7 +18,7 @@ componentIds.push({
 componentIds.push({
   selector: '.' + 'ChoiceGroupDisabled',
   fileName: 'choiceGroupDisabled',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+  commands: [defaultScreenshot]
 
 });
 

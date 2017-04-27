@@ -59,7 +59,6 @@ export interface IFacepileProps extends React.Props<Facepile> {
   className?: string;
 }
 
-
 export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.

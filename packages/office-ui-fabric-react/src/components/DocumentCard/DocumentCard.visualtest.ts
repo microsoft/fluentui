@@ -1,8 +1,7 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import {
-  defaultScreenshot, mouseMoveScreenshot,
-  mouseDownScreenshot, mouseClickScreenshot, testRunner
+  defaultScreenshot, mouseMoveScreenshot, testRunner
 } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
-import { DialogType } from './Dialog.Props';
 import { DialogFooter } from './DialogFooter';
 import { Button } from './../Button/index';
 
-export default class CommandButtonVPage extends React.Component<any, any> {
+export default class DialogVPage extends React.Component<any, any> {
   public render() {
     return <div>
-
       <Dialog
         isOpen={ true }
         className='Dialog'
@@ -22,6 +20,3 @@ export default class CommandButtonVPage extends React.Component<any, any> {
     </div>;
   }
 }
-
-
-
