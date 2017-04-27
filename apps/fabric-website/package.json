@@ -1,6 +1,6 @@
 {
   "name": "fabric-website",
-  "version": "4.5.18",
+  "version": "4.5.19",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
