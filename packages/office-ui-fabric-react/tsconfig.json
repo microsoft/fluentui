@@ -16,6 +16,9 @@
     "paths": {
       "office-ui-fabric-react/lib/*": [
         "./src/*"
+      ],
+      "@uifabric/utilities": [
+        "USE_THE_REEXPORT"
       ]
     }
   },
