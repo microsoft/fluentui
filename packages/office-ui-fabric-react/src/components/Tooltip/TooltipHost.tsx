@@ -7,6 +7,7 @@ import {
   css,
   divProperties,
   getNativeProps,
+  getId,
   assign,
   hasOverflow
 } from '../../Utilities';
@@ -16,7 +17,6 @@ import { TooltipDelay } from './Tooltip.Props';
 
 import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
-import { getId } from '@uifabric/utilities';
 
 export interface ITooltipHostState {
   isTooltipVisible?: boolean;
