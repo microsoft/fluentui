@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Apr 2017 10:09:16 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Apr 2017 18:00:56 GMT and should not be manually modified.
+
+## 2.23.2
+Fri, 28 Apr 2017 18:00:56 GMT
+
+### Patches
+
+- TooltipHost: Fixing AMD import to pull getId from the Utilities AMD-friendly top-level import.
 
 ## 2.23.1
 Fri, 28 Apr 2017 10:09:16 GMT
