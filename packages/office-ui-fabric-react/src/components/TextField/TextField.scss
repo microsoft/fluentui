@@ -116,6 +116,8 @@
 }
 
 .field {
+  @include ms-u-normalize;
+  @include ms-baseFont;
   border-radius: 0;
   border: none;
   color: $ms-color-neutralPrimary;
