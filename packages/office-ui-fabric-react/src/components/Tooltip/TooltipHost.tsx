@@ -7,6 +7,7 @@ import {
   css,
   divProperties,
   getNativeProps,
+  getId,
   assign,
   hasOverflow
 } from '../../Utilities';
@@ -40,9 +41,9 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   // Render
   public render() {
-    const { calloutProps, content, children, directionalHint, delay } = this.props;
+    const { calloutProps, content, children, directionalHint, delay, id } = this.props;
     const { isTooltipVisible } = this.state;
-
+    const tooltipId = id || getId('tooltip');
     return (
       <div
         className={ css('ms-TooltipHost', styles.host) }
@@ -51,10 +52,12 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
         onMouseEnter={ this._onTooltipMouseEnter }
         onMouseLeave={ this._onTooltipMouseLeave }
+        aria-describedby={ isTooltipVisible ? tooltipId : undefined }
       >
         { children }
         { isTooltipVisible && (
           <Tooltip
+            id={ tooltipId }
             delay={ delay }
             content={ content }
             targetElement={ this._getTargetElement() }
