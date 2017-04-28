@@ -13,7 +13,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton, IButtonClassNames } from './Button.Props';
+import { IButtonProps, IButton } from './Button.Props';
 import * as stylesImport from './BaseButton.scss';
 const styles: any = stylesImport;
 

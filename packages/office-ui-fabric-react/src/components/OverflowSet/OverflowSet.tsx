@@ -22,7 +22,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
     const overflowButtonProps: IButtonProps = {
       menuProps: { items: overflowItems }
-    }
+    };
 
     return (
       <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
