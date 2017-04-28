@@ -15,6 +15,7 @@ export interface IWithViewportState {
 }
 
 const RESIZE_DELAY = 500;
+
 const MAX_RESIZE_ATTEMPTS = 3;
 
 export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
