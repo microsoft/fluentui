@@ -35,8 +35,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
   @autobind
   private _onRenderItems(items: any[]): JSX.Element[] {
     return items.map((item, i) => {
+      let key = item.key ? item.key : i;
       return (
-        <div key={ i } className={ css('ms-OverflowSet-item', styles.item) }>
+        <div key={ key } className={ css('ms-OverflowSet-item', styles.item) }>
           { this.props.onRenderItem(item) }
         </div>
       );
