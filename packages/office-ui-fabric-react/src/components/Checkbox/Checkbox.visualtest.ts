@@ -1,6 +1,6 @@
 import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var casper: Casper;
@@ -20,18 +20,10 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 
-function testRunner() {
-  componentIds.forEach(element => {
-    element.commands.forEach(command => {
-      command(element);
-    });
-  });
-}
-
 casper.
   start(baseUrl + 'checkbox').
   then(() => {
-    testRunner();
+    testRunner(componentIds);
   });
 
 casper.run(() => { casper.test.done(); });
