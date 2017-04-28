@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 27 Apr 2017 10:18:03 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Apr 2017 10:09:16 GMT and should not be manually modified.
+
+## 2.23.1
+Fri, 28 Apr 2017 10:09:16 GMT
+
+### Patches
+
+- Dropdown: Fix an issue with screenreaders not reading menu items.
+- Add aria-describedby to tooltiphost component
 
 ## 2.23.0
 Thu, 27 Apr 2017 10:18:03 GMT
