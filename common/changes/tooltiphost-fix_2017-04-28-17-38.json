@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Tooltiphost: Fixing AMD import to pull getId from the Utilities AMD-friendly top-level import.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
