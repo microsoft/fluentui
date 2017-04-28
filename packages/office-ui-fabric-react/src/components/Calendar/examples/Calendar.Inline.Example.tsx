@@ -151,7 +151,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       let subtractFrom = dateRangeArray[0];
       let daysToSubtract = dateRangeArray.length;
 
-      if (this.props.dateRangeType == DateRangeType.Month) {
+      if (this.props.dateRangeType === DateRangeType.Month) {
         subtractFrom = new Date(subtractFrom.getFullYear(), subtractFrom.getMonth(), 1);
         daysToSubtract = 1;
       }
