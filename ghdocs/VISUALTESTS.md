@@ -75,8 +75,6 @@ casper.run(() => { casper.test.done(); });
 ```typescript
 './Checkbox/CheckboxPage.visualtest',
 ```
-
-
 ## Viewing Tests
 To see your test results navigate to the visualtests folder in packages/office-ui-fabric-react. In the base folder you can see current screenshots. In the Results you can see the results of the tests that were run, including failures and the diff screenshot (screenshot being compared to base).
 
