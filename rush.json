@@ -46,6 +46,11 @@
       "packageName": "fabric-website",
       "projectFolder": "apps/fabric-website",
       "shouldPublish": false
+    },
+    {
+      "packageName": "test-bundle-button",
+      "projectFolder": "apps/test-bundle-button",
+      "shouldPublish": false
     }
   ]
 }
