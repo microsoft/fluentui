@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "This fixes an issue with updating items by a KnockoutObservable that is used by the React Details list. The first time the item is updated via KO, the item in the details list is not updated. Subsequent updates work just fine. I've tracked down the issue to the _updateViewPort method. When a forceUpdate() is called, it won't actually force the udpate if it needs to set the viewport because ti doesn't pass through the withForceUpdate param. Fixed it so that it respects the parameter even after updating the view port height/width.",
+      "type": "patch"
+    }
+  ],
+  "email": "jostrick@microsoft.com"
+}
