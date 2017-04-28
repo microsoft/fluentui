@@ -13,7 +13,8 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
-import styles = require('./Pivot.scss');
+import * as stylesImport from './Pivot.scss';
+const styles: any = stylesImport;
 
 /**
  *  Usage:

@@ -7,6 +7,7 @@
 // --------------------------------------------------
 // Modal styles
 
+:export { duration: $ms-duration2 }
 
 .root {
   @include ms-baseFont;
@@ -14,10 +15,12 @@
   position: fixed;
   height: 100%;
   width:  100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: none; // Hidden by default
-
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $ms-duration2;
   :global(.ms-Button.ms-Button--compound) {
     display: block;
     @include margin-left(0);
@@ -30,9 +33,9 @@
   }
 }
 
-// State: The dialog is open
-.root.isOpen {
-  display: flex;
+.rootIsVisible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 // The actual dialog element

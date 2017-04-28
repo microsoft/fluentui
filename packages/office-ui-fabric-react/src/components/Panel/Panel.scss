@@ -92,6 +92,7 @@ $CommandBarHeight: 40px;
     @include right(auto);
     @include left(0);
     width: $Panel-width-xs;
+    @include drop-shadow(30px, 0px, 30px, -30px, .2);
   }
 }
 

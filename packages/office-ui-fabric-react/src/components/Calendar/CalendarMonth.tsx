@@ -8,7 +8,8 @@ import {
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
-import styles = require('./Calendar.scss');
+import * as stylesImport from './Calendar.scss';
+const styles: any = stylesImport;
 
 export interface ICalendarMonthProps {
   navigatedDate: Date;
@@ -73,6 +74,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   className={ css('ms-DatePicker-monthOption', styles.monthOption) }
                   key={ index }
                   onClick={ this._selectMonthCallbacks[index] }
+                  aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                   data-is-focusable={ true }
                 >
                   { month }

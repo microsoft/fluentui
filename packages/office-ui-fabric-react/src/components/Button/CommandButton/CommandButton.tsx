@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent, nullRender } from '@uifabric/utilities';
+import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
-import styles = require('./CommandButton.scss');
+import * as stylesImport from './CommandButton.scss';
+const styles: any = stylesImport;
 
 const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',

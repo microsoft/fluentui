@@ -10,7 +10,8 @@ import {
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
 
-import styles = require('./Image.scss');
+import * as stylesImport from './Image.scss';
+const styles: any = stylesImport;
 
 export interface IImageState {
   loadState?: ImageLoadState;
@@ -77,7 +78,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame } = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);

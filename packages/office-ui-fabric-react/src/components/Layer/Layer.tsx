@@ -6,7 +6,8 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { ILayerProps } from './Layer.Props';
 import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utilities';
-import styles = require('./Layer.scss');
+import * as stylesImport from './Layer.scss';
+const styles: any = stylesImport;
 
 let _layersByHostId: { [hostId: string]: Layer[] } = {};
 
