@@ -194,7 +194,7 @@ $field-error-color: $errorTextColor;
   }
 
   &.rootIsDisabled {
-    //border-bottom-color: $field-border-disabled-color; todo
+    border-bottom-color: $field-border-disabled-color;
 
     :global(.ms-Label) {
       @include ms-Label-is-disabled;
