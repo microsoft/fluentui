@@ -45,7 +45,6 @@ export function mouseDownScreenshot(params: IRunVisualTest) {
   }
 }
 export function mouseClickScreenshot(params: IRunVisualTest) {
-
   params.imageSelector = params.imageSelector || params.selector;
 
   casper.then(function () {

@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Regression Tests",
-      "type": "none"
+      "type": "patch"
     },
     {
       "comment": "",
