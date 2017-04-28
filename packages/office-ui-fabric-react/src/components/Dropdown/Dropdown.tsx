@@ -135,6 +135,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
+          aria-owns={ id + '-list' }
         >
           <span
             id={ id + '-option' }
@@ -253,6 +254,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         className={ css('ms-Dropdown-items', styles.items) }
         aria-labelledby={ id + '-label' }
         onKeyDown={ this._onZoneKeyDown }
+        role='listbox'
       >
         { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
@@ -311,9 +313,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='menu'
+        role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-        aria-label={ item.text }
+        ariaLabel={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
     );
   }
