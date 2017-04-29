@@ -6,6 +6,11 @@ interface IGlamorRulePair {
   selector: string;
   style: Glamor.CSSProperties;
 }
+
+// force speedy.
+// tslint:disable-next-line:no-string-literal
+Glamor['speedy'](true);
+
 // tslint:disable-next-line:no-string-literal
 Glamor['plugins'].add(
   ({ selector, style }: IGlamorRulePair): IGlamorRulePair => (

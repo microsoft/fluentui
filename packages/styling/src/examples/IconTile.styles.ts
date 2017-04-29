@@ -1,13 +1,13 @@
 import {
-  StyleAttribute,
   ITheme,
   css,
-  getTheme
+  getTheme,
+  IStyleType
 } from '@uifabric/styling';
 
 export interface IIconTileStyles {
-  iconTile: StyleAttribute;
-  icon: StyleAttribute;
+  iconTile: IStyleType;
+  icon: IStyleType;
 }
 
 export function getStyles(theme: ITheme = getTheme()): IIconTileStyles {

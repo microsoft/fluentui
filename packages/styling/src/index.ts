@@ -6,10 +6,11 @@ export * from './utilities/index';
 // export * from 'glamor';
 export {
   CSSProperties,
+  Rule,
   StyleAttribute,
-  css,
   before,
   after,
+  parent,
   insertGlobal,
   fontFace
 } from 'glamor';

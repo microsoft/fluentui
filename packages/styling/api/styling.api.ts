@@ -2,7 +2,8 @@ export function after(props: CSSProperties): StyleAttribute;
 
 export function before(props: CSSProperties): StyleAttribute;
 
-export function css(...rules: Array<Rule>): StyleAttribute;
+// (undocumented)
+export function css(...args: ICssInput[]): IStyleType;
 
 // (undocumented)
 interface CSSProperties {
@@ -773,6 +774,12 @@ interface IColorStyles {
   yellow?: string;
   // (undocumented)
   yellowLight?: string;
+}
+
+// (undocumented)
+interface ICssMapping {
+  // (undocumented)
+  [ className: string ]: boolean;
 }
 
 // (undocumented)
@@ -2240,13 +2247,15 @@ interface ITheme {
 
 export function loadTheme(theme: ITheme): void;
 
+export function parent(selector: string, props: CSSProperties): StyleAttribute;
+
 // (undocumented)
 interface StyleAttribute {
   // (undocumented)
   [ attributeName: string ]: '';
 }
 
-// WARNING: css has incomplete type information
+// WARNING: Unsupported export: Rule
 // WARNING: Unsupported export: animationClassNames
 // WARNING: Unsupported export: fontClassNames
 // WARNING: Unsupported export: iconClassNames
@@ -2255,4 +2264,6 @@ interface StyleAttribute {
 // WARNING: Unsupported export: fontStyles
 // WARNING: Unsupported export: colorStyles
 // WARNING: Unsupported export: iconCodes
+// WARNING: Unsupported export: ICssInput
+// WARNING: Unsupported export: IStyleType
 // (No packageDescription for this package)

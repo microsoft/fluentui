@@ -12,8 +12,8 @@ export function IconTile(props: IIconTileProps): JSX.Element {
   const styles: IIconTileStyles = getStyles();
 
   return (
-    <div className={ styles.iconTile.toString() } { ...divProps }>
-      <i className={ styles.icon.toString() }>{ iconCodes[iconName] }</i>
+    <div className={ styles.iconTile as string } { ...divProps }>
+      <i className={ styles.icon as string }>{ iconCodes[iconName] }</i>
       <div>{ iconName }</div>
     </div>
   );
