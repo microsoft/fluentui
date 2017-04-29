@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
+import { BaseButton } from '../BaseButton';
 import { BaseComponent, nullRender } from '../../../Utilities';
-import { IButtonProps } from '../Button.Props';
+import { IButtonProps, IButtonClassNames } from '../Button.Props';
 
 import * as stylesImport from './DefaultButton.scss';
 const styles: any = stylesImport;
@@ -11,8 +11,8 @@ export const CLASS_NAMES: IButtonClassNames = {
   variant: 'ms-Button--default',
   icon: styles.icon,
   menuIcon: styles.icon,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
+  rootDisabled: styles.isDisabled,
+  rootEnabled: styles.isEnabled,
   label: styles.label,
   root: styles.root
 };
@@ -26,9 +26,10 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   public render() {
     return (
       <BaseButton
+        { ...this.props }
         classNames={ CLASS_NAMES }
         onRenderDescription={ nullRender }
-        { ...this.props } />
+      />
     );
   }
 }

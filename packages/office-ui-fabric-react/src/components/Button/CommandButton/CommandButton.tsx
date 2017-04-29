@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
+import { BaseButton } from '../BaseButton';
 import { BaseComponent, nullRender } from '../../../Utilities';
-import { IButtonProps } from '../Button.Props';
+import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import * as stylesImport from './CommandButton.scss';
 const styles: any = stylesImport;
 
@@ -10,8 +10,8 @@ const CLASS_NAMES: IButtonClassNames = {
   variant: 'ms-Button--command',
   icon: styles.icon,
   menuIcon: styles.icon,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
+  rootDisabled: styles.isDisabled,
+  rootEnabled: styles.isEnabled,
   label: styles.label,
   root: styles.root,
   flexContainer: styles.flexContainer

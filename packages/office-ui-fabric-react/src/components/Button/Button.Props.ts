@@ -12,6 +12,34 @@ export interface IButton {
   focus: () => void;
 }
 
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+
+  root?: string;
+  rootEnabled?: string;
+  rootDisabled?: string;
+
+  flexContainer?: string;
+
+  icon?: string;
+  iconEnabled?: string;
+  iconDisabled?: string;
+
+  label?: string;
+  labelEnabled?: string;
+  labelDisabled?: string;
+
+  menuIcon?: string;
+  menuIconEnabled?: string;
+  menuIconDisabled?: string;
+
+  description?: string;
+  descriptionEnabled?: string;
+  descriptionDisabled?: string;
+
+  screenReaderText?: string;
+}
 export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
@@ -29,6 +57,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * Whether the button is disabled
    */
   disabled?: boolean;
+
+  /**
+   *  Custom class names for individual elements within the button DOM.
+   */
+  classNames?: IButtonClassNames;
 
   /**
    * If provided, additional class name to provide on the root element.

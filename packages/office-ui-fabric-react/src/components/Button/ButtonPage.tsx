@@ -81,10 +81,10 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         }
         overview={
           <div>
-            <p>Buttons are best used to enable a user to commit a change or complete steps in a task. They are typically found inside forms, dialogs, panels or pages. An example of their usage is confirming the deletion of a file in a confirmation dialog.</p>
+            {/*<p>Buttons are best used to enable a user to commit a change or complete steps in a task. They are typically found inside forms, dialogs, panels or pages. An example of their usage is confirming the deletion of a file in a confirmation dialog.</p>
             <p>When considering their place in a layout, contemplate the order in which a user will flow through the UI. As an example, in a form, the individual will need to read and interact with the form fields before submiting the form. Therefore, as a general rule, the button should be placed at the bottom of the UI container (a dialog, panel, or page) which holds the related UI elements.</p>
             <p>While buttons can technically be used to navigate a user to another part of the experience, this is not recommended unless that navigation is part of an action or their flow.</p>
-            <p>Note that both iconProps and menuIconProps take <Link href='#/examples/icon'>IIconProps</Link> to specify name and type.</p>
+            <p>Note that both iconProps and menuIconProps take <Link href='#/examples/icon'>IIconProps</Link> to specify name and type.</p>*/}
           </div>
         }
         related={
@@ -95,7 +95,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         }
         dos={
           <div>
-            <ul>
+            {/*<ul>
               <li>Make sure the label conveys a clear purpose of the button to the user.</li>
               <li>Button labels must describe the action the button will perform and should include a verb. Use concise, specific, self-explanatory labels, usually a single word.</li>
               <li>Buttons should always include a noun if there is any room for interpretation about what the verb operates on.</li>
@@ -107,18 +107,18 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               <li>"Submit", "OK", and "Apply" buttons should always be styled as primary buttons. When "Reset" or "Cancel" buttons appear alongside one of the above, they should be styled as secondary buttons.</li>
               <li>Default buttons should always perform safe operations. For example, a default button should never delete.</li>
               <li>Use task buttons to cause actions that complete a task or cause a transitional task. Do not use buttons to toggle other UX in the same context. For example, a button may be used to open an interface area but should not be used to open an additional set of components in the same interface.</li>
-            </ul>
+            </ul>*/}
           </div>
         }
         donts={
           <div>
-            <ul>
+            {/*<ul>
               <li>Don't use generic labels like "Ok," especially in the case of an error; errors are never "Ok."</li>
               <li>Don’t place the default focus on a button that destroys data. Instead, place the default focus on the button that performs the "safe act" and retains the content (i.e. "Save") or cancels the action (i.e. "Cancel").</li>
               <li>Don’t use a button to navigate to another place, use a link instead. The exception is in a wizard where "Back" and "Next" buttons may be used.</li>
               <li>Don’t put too much text in a button - try to keep the length of your text to a minimum.</li>
               <li>Don't put anything other than text in a button.</li>
-            </ul>
+            </ul>*/}
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }>

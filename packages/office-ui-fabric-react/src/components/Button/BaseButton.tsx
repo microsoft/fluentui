@@ -6,57 +6,24 @@ import {
   assign,
   autobind,
   buttonProperties,
-  css,
   getId,
   getNativeProps
 } from '../../Utilities';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.Props';
-import * as stylesImport from './BaseButton.scss';
-const styles: any = stylesImport;
-
-export interface IButtonClassNames {
-  base?: string;
-  variant?: string;
-  isDisabled?: string;
-  isEnabled?: string;
-  description?: string;
-  flexContainer?: string;
-  icon?: string;
-  menuIcon?: string;
-  label?: string;
-  root?: string;
-}
-
-/**
- * These props are not in the Props file as they are undocumented props only specific to BaseButton.
- *
- * @export
- * @interface IBaseButtonProps
- * @extends {IButtonProps}
- */
-export interface IBaseButtonProps extends IButtonProps {
-  /**
-   *  Custom class names for individual elements within the button DOM.
-   */
-  classNames?: IButtonClassNames;
-}
+import { IButtonProps, IButton, IButtonClassNames } from './Button.Props';
+import { css } from '@uifabric/styling';
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
 
-  public static defaultProps: IBaseButtonProps = {
-    classNames: {
-      base: 'ms-Button',
-      variant: '',
-      isEnabled: '',
-      isDisabled: ''
-    }
+  public static defaultProps = {
+    classNames: {},
+    styles: {}
   };
 
   private _buttonElement: HTMLButtonElement;
@@ -111,22 +78,22 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       nativeProps,
       {
         className: css(
-          styles.root,
-          this.props.className,
-          classNames.base,
-          classNames.variant,
           classNames.root,
-          {
-            'disabled': disabled,
-            [classNames.isDisabled]: disabled,
-            [classNames.isEnabled]: !disabled
-          }),
+          disabled ? classNames.rootDisabled : classNames.rootEnabled,
+
+          this.props.className, // legacy: root class name
+          classNames.base, // legacy: base class name
+          classNames.variant, // legacy: variant of the base
+          disabled && 'disabled' // (legacy)
+        ),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled
+        'aria-disabled': disabled,
+        tabIndex: disabled ? -1 : undefined,
+        'data-is-focusable': disabled ? false : true
       }
     );
 
@@ -159,7 +126,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
-    const className = css(classNames.base + '-flexContainer', styles.flexContainer, classNames.flexContainer);
+
+    const className = css(classNames.base + '-flexContainer', classNames.flexContainer);
 
     return React.createElement(
       tag,
@@ -179,7 +147,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { classNames, icon, iconProps } = this.props;
+    let { classNames, icon, iconProps, disabled } = this.props;
 
     if (icon || iconProps) {
       iconProps = iconProps || {
@@ -188,13 +156,19 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return iconProps && (
-      <Icon { ...iconProps } className={ css(`${classNames.base}-icon`, classNames.icon, iconProps.className) } />
+      <Icon { ...iconProps } className={
+        css(
+          `${classNames.base}-icon`,
+          classNames.icon,
+          disabled ? classNames.iconDisabled : classNames.iconEnabled,
+          iconProps.className
+        ) } />
     );
   }
 
   @autobind
   private _onRenderText() {
-    let { classNames, children, text } = this.props;
+    let { classNames, children, text, disabled } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -202,7 +176,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return text && (
-      <span className={ css(`${classNames.base}-label`, classNames.label) } id={ this._labelId } >
+      <span
+        className={
+          css(
+            `${classNames.base}-label`,
+            classNames.label,
+            disabled ? classNames.labelDisabled : classNames.labelEnabled
+          ) }
+        id={ this._labelId }
+      >
         { text }
       </span>
     );
@@ -223,13 +205,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderDescription() {
-    const { classNames, description } = this.props;
+    const { classNames, description, disabled } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
       <span
-        className={ css(`${classNames.base}-description`, classNames.description) }
+        className={
+          css(
+            `${classNames.base}-description`,
+            classNames.description,
+            disabled ? classNames.descriptionDisabled : classNames.descriptionEnabled
+          ) }
         id={ this._descriptionId }
       >
         { description }
@@ -241,12 +228,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderAriaDescription() {
-    const { ariaDescription } = this.props;
+    const { ariaDescription, classNames } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ classNames.screenReaderText } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
@@ -254,7 +241,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let { classNames, menuIconProps, menuIconName } = this.props;
+    let { classNames, disabled, menuIconProps, menuIconName } = this.props;
 
     if (menuIconProps === undefined) {
       menuIconProps = {
@@ -266,7 +253,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={ css(`${classNames.base}-icon`, classNames.menuIcon, menuIconProps.className) }
+          className={
+            css(
+              `${classNames.base}-icon`,
+              classNames.menuIcon,
+              disabled ? classNames.menuIconDisabled : classNames.menuIconEnabled,
+              menuIconProps.className
+            ) }
         />
         :
         null
