@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Toggle: Make toggle control more universally accessible across screen readers.",
+      "type": "patch"
+    }
+  ],
+  "email": "chscribn@microsoft.com"
+} 

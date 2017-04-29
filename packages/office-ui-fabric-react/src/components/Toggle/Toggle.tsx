@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  KeyCodes,
   autobind,
   css,
   getId,
-  buttonProperties,
+  inputProperties,
   getNativeProps
 } from '../../Utilities';
 import { IToggleProps, IToggle } from './Toggle.Props';
@@ -19,7 +20,7 @@ export interface IToggleState {
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
-  private _toggleButton: HTMLButtonElement;
+  private _toggleInput: HTMLInputElement;
 
   constructor(props: IToggleProps) {
     super();
@@ -50,11 +51,17 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public render() {
+    // This control is using an input element for more universal accessibility support.
+    // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
+    // However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.
+    // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
+    // more semantically correct.
+
     let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
-    const toggleNativeProps = getNativeProps(this.props, buttonProperties);
+    const toggleNativeProps = getNativeProps(this.props, inputProperties);
     return (
       <div className={
         css(
@@ -75,17 +82,19 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
           ) }
           <div className={ css(styles.slider, 'ms-Toggle-slider') }>
-            <button
-              ref={ (c): HTMLButtonElement => this._toggleButton = c }
-              type='button'
+            <input
+              key='invisibleToggle'
+              ref={ (c): HTMLInputElement => this._toggleInput = c }
+              type='checkbox'
               id={ this._id }
               { ...toggleNativeProps }
+              className={ styles.invisibleToggle }
               name={ this._id }
-              className={ css(styles.button, 'ms-Toggle-button') }
               disabled={ disabled }
-              aria-pressed={ isChecked }
+              checked={ isChecked }
               aria-label={ ariaLabel }
               onClick={ this._onClick }
+              onKeyDown={ this._onInputKeyDown }
             />
             <div className={ css(styles.background, 'ms-Toggle-background') }>
               <div className={ css(styles.focus, 'ms-Toggle-focus') } />
@@ -101,8 +110,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   }
 
   public focus() {
-    if (this._toggleButton) {
-      this._toggleButton.focus();
+    if (this._toggleInput) {
+      this._toggleInput.focus();
     }
   }
 
@@ -120,6 +129,18 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
 
     if (onChanged) {
       onChanged(!isChecked);
+    }
+  }
+
+  @autobind
+  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    switch (ev.which) {
+      case KeyCodes.enter:
+        // Also support toggling via the enter key.
+        // While toggling via the space bar is technically correct for a checkbox, this control looks more like a button to sighted users.
+        this._onClick();
+
+        break;
     }
   }
 }
