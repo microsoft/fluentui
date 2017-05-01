@@ -12,16 +12,16 @@ import {
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames: IButtonClassNames = {},
+  customClassNames?: IButtonClassNames,
 ): IButtonClassNames {
   let { colors } = theme;
-  let defaultButtonStyles = getDefaultButtonStyles(
+  let defaultButtonStyles: IButtonClassNames = getDefaultButtonStyles(
     theme,
     customClassNames,
     '0px',
     theme.colors.white
   );
-  let primaryButtonStyles = {
+  let primaryButtonStyles: IButtonClassNames = {
     root: css(
       {
         backgroundColor: colors.themePrimary,

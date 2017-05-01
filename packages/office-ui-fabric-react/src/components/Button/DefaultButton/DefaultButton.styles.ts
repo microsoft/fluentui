@@ -16,20 +16,14 @@ const DEFAULT_PADDING = '0 16px';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames: IButtonClassNames = {},
+  customClassNames?: IButtonClassNames,
   focusInset: string = '0',
   focusColor: string = theme.colors.neutralSecondary,
 ): IButtonClassNames {
-  let baseButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
-
-  let defaultButtonStyles = {
-    base: 'ms-Button',
-    variant: 'ms-Button--default',
-
+  let baseButtonStyles: IButtonClassNames = getBaseButtonStyles(theme, focusInset, focusColor);
+  let defaultButtonStyles: IButtonClassNames = {
     root: css(
       {
-        fontWeight: 'bold', // theme.fontWeights.semibold,
-
         backgroundColor: theme.colors.neutralLighter,
         color: theme.colors.neutralPrimary,
 
@@ -38,6 +32,10 @@ export function getStyles(
 
       } as React.CSSProperties
     ),
+
+    label: css({
+      fontWeight: 'bold' // theme.fontWeights.semibold,
+    }),
 
     rootEnabled: css(
       {

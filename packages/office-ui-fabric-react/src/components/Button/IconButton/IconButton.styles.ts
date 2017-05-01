@@ -15,10 +15,10 @@ const DEFAULT_PADDING = '0 4px';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames: IButtonClassNames = {}
+  customClassNames?: IButtonClassNames
 ): IButtonClassNames {
-  let baseButtonStyles = getBaseButtonStyles(theme);
-  let iconButtonStyles = {
+  let baseButtonStyles: IButtonClassNames = getBaseButtonStyles(theme);
+  let iconButtonStyles: IButtonClassNames = {
     root: css(
       {
         backgroundColor: 'transparent',

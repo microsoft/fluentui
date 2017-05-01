@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 function start(): void {
   const div: HTMLElement = document.createElement('div');
 
   document.body.appendChild(div);
   ReactDOM.render((
-    <Toggle
-      label='hi'
+    <DefaultButton
+      text='hi'
     />
   ), div);
 }

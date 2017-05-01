@@ -15,10 +15,10 @@ const DEFAULT_PADDING = '0 16px';
 
 export function getCompoundButtonStyles(
   theme: ITheme = getTheme(),
-  customClassNames: IButtonClassNames = {}
+  customClassNames?: IButtonClassNames
 ): IButtonClassNames {
-  let defaultButtonStyles = getDefaultButtonStyles(theme, customClassNames);
-  let compoundButtonStyles = {
+  let defaultButtonStyles: IButtonClassNames = getDefaultButtonStyles(theme, customClassNames);
+  let compoundButtonStyles: IButtonClassNames = {
     root: css(
       {
         maxWidth: '280px',

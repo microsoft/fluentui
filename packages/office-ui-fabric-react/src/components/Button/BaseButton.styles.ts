@@ -1,10 +1,15 @@
 import { IButtonClassNames } from './Button.Props';
-import { ITheme, css, parent, getFocusRule } from '@uifabric/styling';
+import { ITheme, css, getFocusRule } from '@uifabric/styling';
 
 const noOutline = {
   outline: 0
 };
 
+/**
+ * Gets the base button styles. Note: because it is a base class to be used with the `mergeRules`
+ * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
+ * mixing class names together.
+ */
 export function getStyles(
   theme: ITheme,
   focusInset?: string,
@@ -43,7 +48,6 @@ export function getStyles(
       color: theme.colors.neutralTertiary,
       cursor: 'default',
       pointerEvents: 'none',
-
       ':hover': noOutline,
       ':focus': noOutline
     }),
