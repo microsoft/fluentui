@@ -319,7 +319,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           // For toggle elements, assuming they are rendered as buttons, they will generate a click event,
           // so we can no-op for any keydowns in this case.
           break;
-        } else if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
+        } else if ((ev.which === KeyCodes.enter || ev.which === KeyCodes.space) &&
+          (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT')) {
           return false;
         } else if (target === itemRoot) {
           if (ev.which === KeyCodes.enter) {
