@@ -9,6 +9,7 @@ import {
   IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { TestImages } from '../../../common/TestImages';
 
 export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
@@ -18,8 +19,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         {
           name: '2016 Conference Presentation',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -28,8 +29,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewTwo,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -38,8 +39,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         {
           name: 'Spec Sheet for design',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview3.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewThree,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -48,8 +49,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         {
           name: 'Contoso Marketing Presentation',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -58,8 +59,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         {
           name: 'Notes from Ignite conference',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewTwo,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -68,8 +69,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         {
           name: 'FY17 Cost Projections',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview3.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewThree,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -90,9 +91,9 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           activity='Created Feb 23, 2016'
           people={
             [
-              { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' },
+              { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
               { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
-              { name: 'Greta Lundberg', profileImageSrc: 'images/persona-female.png' }
+              { name: 'Greta Lundberg', profileImageSrc: TestImages.personaFemale }
             ]
           }
         />

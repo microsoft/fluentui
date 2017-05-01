@@ -23,6 +23,7 @@ import {
   IPickerItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
 import './Picker.CustomResult.Example.scss';
+import { TestImages } from '../../../common/TestImages';
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -45,8 +46,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -85,9 +86,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -99,8 +100,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -139,9 +140,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -153,8 +154,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewTwo,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -193,9 +194,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -207,8 +208,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview3.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewThree,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -247,9 +248,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
