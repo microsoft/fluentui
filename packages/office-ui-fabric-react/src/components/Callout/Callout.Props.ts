@@ -33,7 +33,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * The gap between the Callout and the target
-   * @default 16
+   * @default 0
    */
   gapSpace?: number;
 
@@ -42,6 +42,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default 16
    */
   beakWidth?: number;
+
+  /**
+   * The background color of the Callout in hex format ie. #ffffff.
+   * @default $ms-color-white
+   */
+  backgroundColor?: string;
 
   /**
    * The bounding rectangle for which  the contextual menu can appear in.

@@ -4,7 +4,8 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 
 const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
-import styles = require('./GetStartedPage.module.scss');
+import * as stylesImport from './GetStartedPage.module.scss';
+const styles: any = stylesImport;
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {

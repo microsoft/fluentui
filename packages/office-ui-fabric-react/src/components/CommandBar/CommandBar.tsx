@@ -18,7 +18,8 @@ import {
   IconName,
   IIconProps
 } from '../../Icon';
-import styles = require('./CommandBar.scss');
+import * as stylesImport from './CommandBar.scss';
+const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;

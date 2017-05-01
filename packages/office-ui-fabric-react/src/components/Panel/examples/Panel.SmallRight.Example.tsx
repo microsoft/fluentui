@@ -25,6 +25,7 @@ export class PanelSmallRightExample extends React.Component<any, any> {
           type={ PanelType.smallFixedFar }
           onDismiss={ this._onClosePanel }
           headerText='Panel - Small, right-aligned, fixed, with footer'
+          closeButtonAriaLabel='Close'
           onRenderFooterContent={ () => {
             return (
               <div>

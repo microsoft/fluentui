@@ -55,7 +55,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             max={ 30 }
             label='Gap Space'
             min={ 0 }
-            defaultValue={ 16 }
+            defaultValue={ 0 }
             onChange={ this._onGapSlider } />
           { isBeakVisible &&
             (<Slider
