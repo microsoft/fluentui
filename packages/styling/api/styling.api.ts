@@ -2249,6 +2249,8 @@ export function loadTheme(theme: ITheme): void;
 
 export function parent(selector: string, props: CSSProperties): StyleAttribute;
 
+export function select(selector: string, props: CSSProperties): StyleAttribute;
+
 // (undocumented)
 interface StyleAttribute {
   // (undocumented)

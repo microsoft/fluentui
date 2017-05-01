@@ -2,20 +2,8 @@ import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-import * as stylesImport from './CommandButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--command',
-  icon: styles.icon,
-  menuIcon: styles.icon,
-  rootDisabled: styles.isDisabled,
-  rootEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root,
-  flexContainer: styles.flexContainer
-};
+import { getStyles } from './CommandButton.styles';
+import { getTheme } from '@uifabric/styling';
 
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
@@ -25,9 +13,11 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    let { classNames } = this.props;
+
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
+        classNames={ getStyles(getTheme(), classNames) }
         onRenderDescription={ nullRender }
         { ...this.props } />
     );

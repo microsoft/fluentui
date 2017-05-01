@@ -2,18 +2,8 @@ import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-import * as stylesImport from './IconButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--icon',
-  icon: styles.icon,
-  menuIcon: styles.icon,
-  rootDisabled: styles.isDisabled,
-  rootEnabled: styles.isEnabled,
-  root: styles.root
-};
+import { getStyles } from './IconButton.styles';
+import { getTheme } from '@uifabric/styling';
 
 export class IconButton extends BaseComponent<IButtonProps, {}> {
   /**
@@ -22,9 +12,11 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    let { classNames } = this.props;
+
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
+        classNames={ getStyles(getTheme(), classNames) }
         onRenderText={ nullRender }
         onRenderDescription={ nullRender }
         { ...this.props } />

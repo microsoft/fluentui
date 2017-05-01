@@ -1,20 +1,19 @@
 import { IButtonClassNames } from '../Button.Props';
 import { ITheme, getTheme, css, CSSProperties } from '@uifabric/styling';
 import {
-  getStyles as getBaseButtonStyles,
-  DEFAULT_BUTTON_MINWIDTH,
-  DEFAULT_BUTTON_HEIGHT,
-  DEFAULT_BUTTON_PADDING
-} from '../BaseButton.styles';
+  getStyles as getDefaultButtonStyles
+} from '../DefaultButton/DefaultButton.styles';
 
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  userClassNames: IButtonClassNames = {}
+  userClassNames: IButtonClassNames = {},
 ): IButtonClassNames {
-  let defaultButtonStyles = getBaseButtonStyles(
+  let { colors } = theme;
+  let defaultButtonStyles = getDefaultButtonStyles(
     theme,
-    '1px',
+    userClassNames,
+    '0px',
     theme.colors.white
   );
 
@@ -27,16 +26,9 @@ export function getStyles(
 
     root: css(
       defaultButtonStyles.root,
-      theme.fonts.medium,
       {
-        fontWeight: 'bold', // theme.fontWeights.semibold,
-
-        backgroundColor: theme.colors.themePrimary,
-        color: theme.colors.white,
-
-        minWidth: DEFAULT_BUTTON_MINWIDTH,
-        height: DEFAULT_BUTTON_HEIGHT,
-
+        backgroundColor: colors.themePrimary,
+        color: colors.white,
       } as React.CSSProperties,
       userClassNames.root
     ),
@@ -45,15 +37,15 @@ export function getStyles(
       defaultButtonStyles.rootEnabled,
       {
         ':hover': {
-          backgroundColor: theme.colors.themeDark
+          backgroundColor: colors.themeDark,
+          color: colors.white
         } as React.CSSProperties,
         ':active': {
-          backgroundColor: theme.colors.themePrimary,
-          color: theme.colors.white
+          backgroundColor: colors.themePrimary,
+          color: colors.white
         } as React.CSSProperties
       },
       userClassNames.rootEnabled
     )
-
   };
 }

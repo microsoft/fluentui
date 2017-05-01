@@ -4,7 +4,7 @@ import { ITheme, css, parent } from '@uifabric/styling';
 export function getFocusStyle(
   theme: ITheme,
   inset: string = '0',
-  color: string = theme.colors.neutralTertiaryAlt,
+  color: string = theme.colors.neutralSecondary,
   position: string = 'absolute'): React.CSSProperties {
   return css(
     {
@@ -25,29 +25,38 @@ export function getFocusStyle(
   );
 }
 
-export const DEFAULT_BUTTON_HEIGHT = '32px';
-export const DEFAULT_BUTTON_MINWIDTH = '80px';
-export const DEFAULT_BUTTON_PADDING = '0 16px';
-
 const noOutline = {
   outline: 0
 };
 
-export function getStyles(theme: ITheme, inset?: string, focusColor?: string): IButtonClassNames {
+export function getStyles(
+  theme: ITheme,
+  focusInset?: string,
+  focusColor?: string): IButtonClassNames {
+
+  const iconStyle = css({
+    margin: '0 4px',
+    height: '16px',
+    lineHeight: '16px',
+    textAlign: 'center',
+    verticalAlign: 'middle'
+  });
+
   return {
 
     root: css(
-      getFocusStyle(theme, inset, focusColor),
+      getFocusStyle(theme, focusInset, focusColor),
       {
+        // this transparent border converts to the correct colors in HC mode
+        boxSizing: 'border-box',
+        border: '1px solid transparent',
         userSelect: 'none',
         display: 'inline-block',
-        border: 'none',
         textDecoration: 'none',
         textAlign: 'center',
         cursor: 'pointer',
         verticalAlign: 'top',
-
-        padding: DEFAULT_BUTTON_PADDING
+        padding: '0 16px'
       }
     ),
 
@@ -69,13 +78,9 @@ export function getStyles(theme: ITheme, inset?: string, focusColor?: string): I
       alignItems: 'center'
     }),
 
-    icon: css({
-      margin: '0 4px',
-      height: '16px',
-      lineHeight: '16px',
-      textAlign: 'center',
-      verticalAlign: 'middle'
-    }),
+    icon: iconStyle,
+
+    menuIcon: iconStyle,
 
     label: css({
       margin: '0 4px',

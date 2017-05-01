@@ -13,7 +13,6 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
 
   public render() {
     const { classNames } = this.props;
-    const styles = getStyles();
 
     return (
       <BaseButton

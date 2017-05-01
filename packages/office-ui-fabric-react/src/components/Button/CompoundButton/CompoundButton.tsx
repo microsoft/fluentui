@@ -2,21 +2,8 @@ import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent } from '../../../Utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-
-import * as stylesImport from './CompoundButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--compound',
-  description: styles.description,
-  flexContainer: styles.flexContainer,
-  icon: null,
-  rootDisabled: styles.isDisabled,
-  rootEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root
-};
+import { getTheme } from '@uifabric/styling';
+import { getCompoundButtonStyles } from './CompoundButton.styles';
 
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
@@ -25,9 +12,10 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    let { classNames } = this.props;
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
+        classNames={ getCompoundButtonStyles(getTheme(), classNames) }
         { ...this.props }
       />
     );

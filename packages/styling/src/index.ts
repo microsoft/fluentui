@@ -11,6 +11,7 @@ export {
   before,
   after,
   parent,
+  select,
   insertGlobal,
   fontFace
 } from 'glamor';
