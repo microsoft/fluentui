@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Apr 2017 18:00:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 May 2017 10:18:36 GMT and should not be manually modified.
+
+## 2.23.3
+Mon, 01 May 2017 10:18:36 GMT
+
+### Patches
+
+- Toggle: Make toggle control more universally accessible across screen readers.
 
 ## 2.23.2
 Fri, 28 Apr 2017 18:00:56 GMT
