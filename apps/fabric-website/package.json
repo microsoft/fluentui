@@ -39,7 +39,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-highlight": "0.8.0",
-    "source-map-loader": "0.1.5",
+    "source-map-loader": "^0.2.1",
     "typescript": "^2.2.2",
     "vinyl-ftp": "0.4.5",
     "webpack-bundle-analyzer": "^2.2.1"

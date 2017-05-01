@@ -7176,9 +7176,9 @@
       "optional": true
     },
     "source-map-loader": {
-      "version": "0.1.5",
-      "from": "source-map-loader@0.1.5",
-      "resolved": "https://registry.npmjs.org/source-map-loader/-/source-map-loader-0.1.5.tgz",
+      "version": "0.2.1",
+      "from": "source-map-loader@>=0.2.1 <0.3.0",
+      "resolved": "https://registry.npmjs.org/source-map-loader/-/source-map-loader-0.2.1.tgz",
       "dependencies": {
         "async": {
           "version": "0.9.2",

@@ -36,7 +36,7 @@
     "react-dom": "^15.4.2",
     "react-highlight": "0.8.0",
     "sass-loader": "^6.0.3",
-    "source-map-loader": "0.1.5",
+    "source-map-loader": "^0.2.1",
     "style-loader": "^0.13.2",
     "ts-loader": "^2.0.1",
     "typescript": "^2.2.2",
