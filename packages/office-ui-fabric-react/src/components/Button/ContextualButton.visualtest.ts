@@ -1,29 +1,46 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, mouseSingleClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
+
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let commands: ((params: IRunVisualTest) => void)[] = [];
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+let componentIds: IRunVisualTest[] = [];
+
+componentIds.push({
+  selector: '#' + 'ContextualButton',
+  fileName: 'contextualButton',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '#' + 'ContextualButtonDisabled',
+  fileName: 'contextualButtonDisabled',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '#' + 'ContextualButton',
+  fileName: 'contextualButton',
+  commands: [mouseSingleClickScreenshot],
+  childParams: {
+    selector: '.' + 'ms-ContextualMenu-list',
+    fileName: 'contextualButtonMenu',
+    commands: commands
+  }
+});
+
 casper.
   start(baseUrl + 'contextualButton').
-  then(function () {
-    phantomcss.screenshot('#ContextualButton', 'ContextualButton_not_pressed');
-  }).then(function () {
-    this.mouse.move('#ContextualButton');
-    phantomcss.screenshot('#ContextualButton', 'ContextualButton_hovered');
-  }).then(function () {
-    this.mouse.down('#ContextualButton');
-    casper.wait(2000);
-    phantomcss.screenshot('#ContextualButton', 'ContextualButton_pressed');
-    phantomcss.screenshot('.ContextualButtonMenu', 'ContextualButtonMenu_pressed');
-  }).
-  then(function () {
-    phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('#ContextualButtonDisabled');
-    phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('#ContextualButtonDisabled');
-    phantomcss.screenshot('#ContextualButtonDisabled', 'ContextualButtonDisabled_pressed');
+  then(() => {
+    testRunner(componentIds);
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

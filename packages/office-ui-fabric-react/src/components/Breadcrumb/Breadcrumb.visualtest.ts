@@ -6,27 +6,22 @@ import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
+let componentIds: IRunVisualTest[] = [];
 let commands: ((params: IRunVisualTest) => void)[] = [];
 
-commands.push(defaultScreenshot);
-commands.push(mouseMoveScreenshot);
-commands.push(mouseDownScreenshot);
-commands.push(mouseClickScreenshot);
-let componentIds: IRunVisualTest[] = [];
-
 componentIds.push({
-  selector: '#' + 'CompoundButton',
-  fileName: 'compoundButton',
-  commands: commands
+  selector: '.' + 'Breadcrumb',
+  fileName: 'breadcrumb',
+  commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'CompoundButtonDisabled',
-  fileName: 'compoundButtonDisabled',
-  commands: commands
+  selector: '.' + 'ms-Breadcrumb-listItem',
+  fileName: 'breadcrumb',
+  commands: [mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });
 
 casper.
-  start(baseUrl + 'compoundButton').
+  start(baseUrl + 'breadcrumb').
   then(() => {
     testRunner(componentIds);
   });

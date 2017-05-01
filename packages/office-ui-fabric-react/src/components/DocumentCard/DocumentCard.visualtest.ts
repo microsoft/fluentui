@@ -1,8 +1,8 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import {
-  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
-  mouseClickScreenshot, testRunner
+  defaultScreenshot, mouseMoveScreenshot,
+  mouseDownScreenshot, mouseClickScreenshot, testRunner
 } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
@@ -10,7 +10,6 @@ declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 
 let componentIds: IRunVisualTest[] = [];
-
 let commands: ((params: IRunVisualTest) => void)[] = [];
 
 commands.push(defaultScreenshot);
@@ -19,18 +18,13 @@ commands.push(mouseDownScreenshot);
 commands.push(mouseClickScreenshot);
 
 componentIds.push({
-  selector: '#' + 'DefaultButton',
-  fileName: 'defaultButton',
-  commands: commands
-});
-componentIds.push({
-  selector: '#' + 'DefaultButtonDisabled',
-  fileName: 'defaultButtonDisabled',
+  selector: '.' + 'DocumentCard',
+  fileName: 'documentCard',
   commands: commands
 });
 
 casper.
-  start(baseUrl + 'defaultButton').
+  start(baseUrl + 'documentCard').
   then(() => {
     testRunner(componentIds);
   });

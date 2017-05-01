@@ -1,35 +1,42 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
+
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds: IRunVisualTest[] = [];
+
+let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+componentIds.push({
+  selector: '.' + 'ChoiceGroup',
+  fileName: 'choiceGroup',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '.' + 'ChoiceGroupDisabled',
+  fileName: 'choiceGroupDisabled',
+  commands: commands
+});
+
+componentIds.push({
+  selector: '.' + 'ChoiceGroupIcon',
+  fileName: 'choiceGroupIcon',
+  commands: commands
+});
+
 casper.
   start(baseUrl + 'choiceGroup').
-  then(function () {
-    phantomcss.screenshot('.ChoiceGroup', 'ChoiceGroup_not_pressed');
-  }).then(function () {
-    this.mouse.move('.ChoiceGroup');
-    phantomcss.screenshot('.ChoiceGroup', 'ChoiceGroup_hovered');
-  }).then(function () {
-    this.mouse.down('.ChoiceGroup');
-    phantomcss.screenshot('.ChoiceGroup', 'ChoiceGroup_pressed');
-  }).
-  then(function () {
-    phantomcss.screenshot('.ChoiceGroupIcon', 'ChoiceGroupIcon_not_pressed');
-  }).then(function () {
-    this.mouse.move('.ChoiceGroupIcon');
-    phantomcss.screenshot('.ChoiceGroupIcon', 'ChoiceGroupIcon_hovered');
-  }).then(function () {
-    this.mouse.down('.ChoiceGroupIcon');
-    phantomcss.screenshot('.ChoiceGroupIcon', 'ChoiceGroupIcon_pressed');
-  }).then(function () {
-    phantomcss.screenshot('.ChoiceGroupDisabled', 'ChoiceGroupDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('.ChoiceGroupDisabled');
-    phantomcss.screenshot('.ChoiceGroupDisabled', 'ChoiceGroupDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('.ChoiceGroupDisabled');
-    phantomcss.screenshot('.ChoiceGroupDisabled', 'ChoiceGroupDisabled_pressed');
+  then(() => {
+    testRunner(componentIds);
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

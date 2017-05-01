@@ -1,26 +1,38 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
+import {
+  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
+  mouseClickScreenshot, testRunner
+} from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
+
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds: IRunVisualTest[] = [];
+
+let commands: ((params: IRunVisualTest) => void)[] = [];
+
+commands.push(defaultScreenshot);
+commands.push(mouseMoveScreenshot);
+commands.push(mouseDownScreenshot);
+commands.push(mouseClickScreenshot);
+
+componentIds.push({
+  selector: '#' + 'PrimaryButton',
+  fileName: 'primaryButton',
+  commands: commands
+});
+componentIds.push({
+  selector: '#' + 'PrimaryButtonDisabled',
+  fileName: 'primaryButtonDisabled',
+  commands: commands
+});
+
 casper.
   start(baseUrl + 'primaryButton').
-  then(function () {
-    phantomcss.screenshot('#PrimaryButton', 'PrimaryButton_not_pressed');
-  }).then(function () {
-    this.mouse.move('#PrimaryButton');
-    phantomcss.screenshot('#PrimaryButton', 'PrimaryButton_hovered');
-  }).then(function () {
-    this.mouse.down('#PrimaryButton');
-    phantomcss.screenshot('#PrimaryButton', 'PrimaryButton_pressed');
-  }).then(function () {
-    phantomcss.screenshot('#PrimaryButtonDisabled', 'PrimaryButtonDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('#PrimaryButtonDisabled');
-    phantomcss.screenshot('#PrimaryButtonDisabled', 'PrimaryButtonDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('#PrimaryButtonDisabled');
-    phantomcss.screenshot('#PrimaryButtonDisabled', 'PrimaryButtonDisabled_pressed');
+  then(() => {
+    testRunner(componentIds);
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

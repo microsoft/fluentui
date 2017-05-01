@@ -4,6 +4,7 @@ export interface IVisualTestState {
 
 export const VisualTestState: IVisualTestState = {
   componentPath: [
+    './Breadcrumb/BreadcrumbPage.visualtest',
     './Button/CommandButtonPage.visualtest',
     './Button/CompoundButtonPage.visualtest',
     './Button/ContextualButtonPage.visualtest',
@@ -11,7 +12,7 @@ export const VisualTestState: IVisualTestState = {
     './Button/PrimaryButtonPage.visualtest',
     './Checkbox/CheckboxPage.visualtest',
     './ChoiceGroup/ChoiceGroupPage.visualtest',
-    './ContextualMenu/ContextualMenuPage.visualtest'
-
+    './ContextualMenu/ContextualMenuPage.visualtest',
+    './DocumentCard/DocumentCardPage.visualtest'
   ]
 };
