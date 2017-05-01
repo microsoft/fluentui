@@ -1,21 +1,27 @@
 /* tslint:disable */
 import * as React from 'react';
-import styles = require('./Icon.scss')
 /* tslint:enable */
+
 import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
-  css,
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
+import { css, iconClassNames } from '@uifabric/styling';
+import { getStyles } from './Icon.styles';
 
-export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
-  let customIcon = props.iconName === 'None';
-  let iconClassName = props.iconName ? ('ms-Icon--' + props.iconName) : '';
+export function Icon(props: IIconProps): JSX.Element {
+  let { className, classNames, iconName } = props;
+  let styles = getStyles(classNames);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
-    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', styles.imageContainer, props.className);
+    let containerClassName = css(
+      'ms-Icon',
+      'ms-Icon-imageContainer',
+      styles.imageContainer,
+      className
+    );
 
     return (
       <div className={ containerClassName } >
@@ -23,8 +29,13 @@ export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
       </div>
     );
   } else {
-    let className = css('ms-Icon', customIcon ? '' : iconClassName, props.className);
+    let iconMemberName = iconName ? iconName.charAt(0).toLowerCase() + iconName.substr(1) : '';
 
-    return <i { ...getNativeProps(props, htmlElementProperties) } className={ className } />;
+    return (
+      <i
+        { ...getNativeProps(props, htmlElementProperties) }
+        className={ css('ms-Icon', iconClassNames[iconMemberName], props.className) }
+      />
+    );
   }
-};
+}

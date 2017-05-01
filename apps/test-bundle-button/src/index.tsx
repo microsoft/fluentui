@@ -8,7 +8,15 @@ function start(): void {
   document.body.appendChild(div);
   ReactDOM.render((
     <DefaultButton
+      iconProps={ { iconName: 'Snow' } }
       text='hi'
+      menuProps={ {
+        items: [
+          { key: 'a', name: 'Item a' },
+          { key: 'c', name: 'Item b' },
+          { key: 'b', name: 'Item c' },
+        ]
+      } }
     />
   ), div);
 }

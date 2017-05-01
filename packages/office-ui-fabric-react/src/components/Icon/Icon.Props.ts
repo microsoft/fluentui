@@ -28,6 +28,10 @@ export enum IconType {
   Image = 100001
 }
 
+export interface IIconClassNames {
+  imageContainer?: string;
+}
+
 export interface IIconProps extends React.HTMLProps<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
@@ -36,6 +40,11 @@ export interface IIconProps extends React.HTMLProps<HTMLElement> {
    * @memberOf IIconProps
    */
   iconName?: IconName | string | null;
+
+  /**
+   * Optional class names for the elements within the Icon.
+   */
+  classNames?: IIconClassNames;
 
   /**
    * The type of icon to render (image or icon font).
