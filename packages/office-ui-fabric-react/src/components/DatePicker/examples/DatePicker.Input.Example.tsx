@@ -61,7 +61,15 @@ const DayPickerStrings: IDatePickerStrings = {
 
   isRequiredErrorMessage: 'Start date is required.',
 
-  invalidInputErrorMessage: 'Invalid date format.'
+  invalidInputErrorMessage: 'Invalid date format.',
+
+  previousMonthLabel: 'Previous month',
+
+  nextMonthLabel: 'Next month',
+
+  previousYearLabel: 'Previous year',
+
+  nextYearLabel: 'Next Year'
 };
 
 export interface IDatePickerInputExampleState {

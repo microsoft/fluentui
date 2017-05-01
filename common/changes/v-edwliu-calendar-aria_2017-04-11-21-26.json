@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Calendar: Add ARIA label for previous/next month/year buttons",
+      "type": "patch"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
