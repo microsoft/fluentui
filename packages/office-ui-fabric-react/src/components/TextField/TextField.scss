@@ -85,11 +85,11 @@
     border-color: $ms-color-neutralSecondaryAlt;
   }
 
-  &:focus {
+  &.fieldGroupIsFocused {
     border-color: $ms-color-themePrimary;
   }
   &:hover,
-  &:focus {
+  &.fieldGroupIsFocused {
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
     }
@@ -123,9 +123,13 @@
   color: $ms-color-neutralPrimary;
   @include padding(0, 12px, 0, 12px);
   width: 100%;
-  outline: 0;
   text-overflow: ellipsis;
-
+  outline: 0;
+  &:active,
+  &:focus,
+  &:hover {
+      outline: 0;
+    }
   &.hasIcon {
     @include padding-right(24px);
   }
@@ -171,11 +175,6 @@
     }
   }
 
-  &:active,
-  &:focus {
-    border-color: $ms-color-themePrimary;
-  }
-
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
     @include margin-right(8px);
@@ -188,11 +187,6 @@
     flex: 1 1 0;
     border: 0;
     @include text-align(left);
-    &:active,
-    &:focus,
-    &:hover {
-      outline: 0;
-    }
   }
 
   &.rootIsDisabled {
