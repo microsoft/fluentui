@@ -17,6 +17,7 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         { ...this.props }
+        variantClassName='ms-Button--primary'
         onRenderDescription={ nullRender }
         classNames={ getStyles(getTheme(), classNames) }
       />

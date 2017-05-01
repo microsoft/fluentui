@@ -15,8 +15,9 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
     let { classNames } = this.props;
     return (
       <BaseButton
-        classNames={ getCompoundButtonStyles(getTheme(), classNames) }
         { ...this.props }
+        variantClassName='ms-Button--compound'
+        classNames={ getCompoundButtonStyles(getTheme(), classNames) }
       />
     );
   }

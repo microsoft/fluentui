@@ -3,7 +3,8 @@ import {
   CSSProperties,
   ITheme,
   css,
-  getTheme
+  getTheme,
+  mergeRules
 } from '@uifabric/styling';
 import {
   getStyles as getBaseButtonStyles
@@ -15,21 +16,17 @@ const DEFAULT_PADDING = '0 16px';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  userClassNames: IButtonClassNames = {},
+  customClassNames: IButtonClassNames = {},
   focusInset: string = '0',
   focusColor: string = theme.colors.neutralSecondary,
 ): IButtonClassNames {
-  let defaultButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
+  let baseButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
 
-  return {
-    ...defaultButtonStyles,
-    ...userClassNames,
-
+  let defaultButtonStyles = {
     base: 'ms-Button',
     variant: 'ms-Button--default',
 
     root: css(
-      defaultButtonStyles.root,
       theme.fonts.medium,
       {
         fontWeight: 'bold', // theme.fontWeights.semibold,
@@ -40,12 +37,10 @@ export function getStyles(
         minWidth: DEFAULT_BUTTON_MINWIDTH,
         height: DEFAULT_BUTTON_HEIGHT,
 
-      } as React.CSSProperties,
-      userClassNames.root
+      } as React.CSSProperties
     ),
 
     rootEnabled: css(
-      defaultButtonStyles.rootEnabled,
       {
         ':hover': {
           backgroundColor: theme.colors.neutralLight,
@@ -55,9 +50,9 @@ export function getStyles(
           backgroundColor: theme.colors.themePrimary,
           color: theme.colors.white
         } as React.CSSProperties
-      },
-      userClassNames.rootEnabled
+      }
     )
-
   };
+
+  return mergeRules(baseButtonStyles, defaultButtonStyles, customClassNames);
 }

@@ -17,9 +17,11 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
+        { ...this.props }
+        variantClassName='ms-Button--command'
         classNames={ getStyles(getTheme(), classNames) }
         onRenderDescription={ nullRender }
-        { ...this.props } />
+      />
     );
   }
 }

@@ -1,39 +1,35 @@
 import { IButtonClassNames } from '../Button.Props';
-import { ITheme, getTheme, css, CSSProperties } from '@uifabric/styling';
+import {
+  CSSProperties,
+  ITheme,
+  css,
+  getTheme,
+  mergeRules
+} from '@uifabric/styling';
 import {
   getStyles as getDefaultButtonStyles
 } from '../DefaultButton/DefaultButton.styles';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  userClassNames: IButtonClassNames = {},
+  customClassNames: IButtonClassNames = {},
 ): IButtonClassNames {
   let { colors } = theme;
   let defaultButtonStyles = getDefaultButtonStyles(
     theme,
-    userClassNames,
+    customClassNames,
     '0px',
     theme.colors.white
   );
-
-  return {
-    ...defaultButtonStyles,
-    ...userClassNames,
-
-    base: 'ms-Button',
-    variant: 'ms-Button--primary',
-
+  let primaryButtonStyles = {
     root: css(
-      defaultButtonStyles.root,
       {
         backgroundColor: colors.themePrimary,
         color: colors.white,
-      } as React.CSSProperties,
-      userClassNames.root
+      } as React.CSSProperties
     ),
 
     rootEnabled: css(
-      defaultButtonStyles.rootEnabled,
       {
         ':hover': {
           backgroundColor: colors.themeDark,
@@ -43,8 +39,9 @@ export function getStyles(
           backgroundColor: colors.themePrimary,
           color: colors.white
         } as React.CSSProperties
-      },
-      userClassNames.rootEnabled
+      }
     )
   };
+
+  return mergeRules(defaultButtonStyles, primaryButtonStyles, customClassNames);
 }

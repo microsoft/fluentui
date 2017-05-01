@@ -2,7 +2,8 @@ import { IButtonClassNames } from '../Button.Props';
 import {
   ITheme,
   css,
-  getTheme
+  getTheme,
+  mergeRules
 } from '@uifabric/styling';
 import {
   getStyles as getDefaultButtonStyles
@@ -14,30 +15,20 @@ const DEFAULT_PADDING = '0 16px';
 
 export function getCompoundButtonStyles(
   theme: ITheme = getTheme(),
-  userClassNames: IButtonClassNames = {}
+  customClassNames: IButtonClassNames = {}
 ): IButtonClassNames {
-  let defaultButtonStyles = getDefaultButtonStyles(theme, userClassNames);
-
-  return {
-    ...defaultButtonStyles,
-    ...userClassNames,
-
-    base: 'ms-Button',
-    variant: 'ms-Button--compound',
-
+  let defaultButtonStyles = getDefaultButtonStyles(theme, customClassNames);
+  let compoundButtonStyles = {
     root: css(
-      defaultButtonStyles.root,
       {
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
         padding: '20px'
-      },
-      userClassNames.root
+      }
     ),
 
     rootEnabled: css(
-      defaultButtonStyles.rootEnabled,
       {
         ':hover .ms-Button-description': {
           color: theme.colors.neutralDark
@@ -45,40 +36,36 @@ export function getCompoundButtonStyles(
         ':active .ms-Button-description': {
           color: 'inherit'
         }
-      },
-      userClassNames.rootEnabled
+      }
     ),
 
     flexContainer: css(
-      defaultButtonStyles.flexContainer,
       {
         flexDirection: 'column',
         alignItems: 'flex-start',
         minWidth: '100%',
         margin: ''
-      },
-      userClassNames.flexContainer),
+      }
+    ),
 
     label: css(
-      defaultButtonStyles.label,
       {
         margin: '0 0 5px',
-        lineHeight: '100%'
-      },
-      userClassNames),
-
-    description: css(
-      theme.fonts.small,
-      {
-        color: theme.colors.neutralSecondary,
         lineHeight: '100%'
       }
     ),
 
-    descriptionDisabled: css({
-      color: 'inherit'
+    description: css(
+      theme.fonts.small,
+      {
+        lineHeight: '100%'
+      }),
+
+    descriptionEnabled: css({
+      color: theme.colors.neutralSecondary,
     })
 
   };
 
+  return mergeRules(defaultButtonStyles, compoundButtonStyles, customClassNames);
 }

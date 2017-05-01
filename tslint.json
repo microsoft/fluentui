@@ -21,6 +21,7 @@
     "trailing-comma": [
       false
     ],
+    "prefer-const": false,
     "whitespace": [
       false
     ],

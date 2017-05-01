@@ -16,10 +16,12 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
 
     return (
       <BaseButton
+        { ...this.props }
+        variantClassName='ms-Button--icon'
         classNames={ getStyles(getTheme(), classNames) }
         onRenderText={ nullRender }
         onRenderDescription={ nullRender }
-        { ...this.props } />
+      />
     );
   }
 }

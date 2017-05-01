@@ -14,6 +14,12 @@ interface CSSProperties {
 
 export function fontFace(font: FontProperties): string;
 
+// (undocumented)
+export function getFocusRule(theme: ITheme,
+  inset: string = '0',
+  color: string = theme.colors.neutralSecondary,
+  position: string = 'absolute'): StyleAttribute;
+
 export function getTheme(): ITheme;
 
 // (undocumented)
@@ -2246,6 +2252,9 @@ interface ITheme {
 }
 
 export function loadTheme(theme: ITheme): void;
+
+// (undocumented)
+export function mergeRules(...args: Object[]): Object;
 
 export function parent(selector: string, props: CSSProperties): StyleAttribute;
 

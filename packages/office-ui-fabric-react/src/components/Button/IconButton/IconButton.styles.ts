@@ -3,6 +3,7 @@ import {
   CSSProperties,
   ITheme,
   css,
+  mergeRules,
   getTheme
 } from '@uifabric/styling';
 import {
@@ -14,19 +15,11 @@ const DEFAULT_PADDING = '0 4px';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  userClassNames: IButtonClassNames = {}
+  customClassNames: IButtonClassNames = {}
 ): IButtonClassNames {
-  let defaultButtonStyles = getBaseButtonStyles(theme);
-
-  return {
-    ...defaultButtonStyles,
-    ...userClassNames,
-
-    base: 'ms-Button',
-    variant: 'ms-Button--icon',
-
+  let baseButtonStyles = getBaseButtonStyles(theme);
+  let iconButtonStyles = {
     root: css(
-      defaultButtonStyles.root,
       theme.fonts.medium,
       {
         backgroundColor: 'transparent',
@@ -34,12 +27,10 @@ export function getStyles(
         padding: '0 4px',
         width: '32px',
         height: '32px'
-      } as React.CSSProperties,
-      userClassNames.root
+      } as React.CSSProperties
     ),
 
     rootEnabled: css(
-      defaultButtonStyles.rootEnabled,
       {
         ':hover': {
           color: theme.colors.themeDarker
@@ -47,12 +38,10 @@ export function getStyles(
         ':active': {
           color: theme.colors.themePrimary
         } as React.CSSProperties
-      },
-      userClassNames.rootEnabled
+      }
     ),
 
     rootDisabled: css(
-      defaultButtonStyles.rootDisabled,
       {
         backgroundColor: 'transparent',
         '@media screen and (-ms-high-contrast: active)': {
@@ -61,10 +50,9 @@ export function getStyles(
         '@media screen and (-ms-high-contrast: black-on-white)': {
           color: theme.colors.blueMid
         }
-      },
-      userClassNames.rootDisabled
+      }
     )
-
   };
 
+  return mergeRules(baseButtonStyles, iconButtonStyles, customClassNames);
 }

@@ -13,9 +13,6 @@ export interface IButton {
 }
 
 export interface IButtonClassNames {
-  base?: string;
-  variant?: string;
-
   root?: string;
   rootEnabled?: string;
   rootDisabled?: string;

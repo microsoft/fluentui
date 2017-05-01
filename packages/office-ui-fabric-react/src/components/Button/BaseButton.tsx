@@ -15,13 +15,19 @@ import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import { css } from '@uifabric/styling';
 
+export interface IBaseButtonProps extends IButtonProps {
+  baseClassName?: string;
+  variantClassName?: string;
+}
+
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   public static defaultProps = {
+    baseClassName: 'ms-Button',
     classNames: {},
     styles: {}
   };
@@ -31,7 +37,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _descriptionId: string;
   private _ariaDescriptionId: string;
 
-  constructor(props: IButtonProps, rootClassName: string) {
+  constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
 
     this._warnDeprecations({
@@ -49,7 +55,17 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   public render(): JSX.Element {
-    const { description, ariaLabel, ariaDescription, href, disabled, classNames } = this.props;
+    const {
+      ariaDescription,
+      ariaLabel,
+      baseClassName,
+      className,
+      classNames,
+      description,
+      disabled,
+      href,
+      variantClassName
+         } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
@@ -81,9 +97,9 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
           classNames.root,
           disabled ? classNames.rootDisabled : classNames.rootEnabled,
 
-          this.props.className, // legacy: root class name
-          classNames.base, // legacy: base class name
-          classNames.variant, // legacy: variant of the base
+          className, // legacy: root class name
+          baseClassName, // legacy: base class name
+          variantClassName, // legacy: variant of the base
           disabled && 'disabled' // (legacy)
         ),
         ref: this._resolveRef('_buttonElement'),
@@ -115,6 +131,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     let props = this.props;
     let {
+      baseClassName,
       classNames,
       menuIconName,
       menuProps,
@@ -127,7 +144,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const className = css(classNames.base + '-flexContainer', classNames.flexContainer);
+    const className = css(baseClassName + '-flexContainer', classNames.flexContainer);
 
     return React.createElement(
       tag,
@@ -147,7 +164,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { classNames, icon, iconProps, disabled } = this.props;
+    let { baseClassName, classNames, icon, iconProps, disabled } = this.props;
 
     if (icon || iconProps) {
       iconProps = iconProps || {
@@ -158,7 +175,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     return iconProps && (
       <Icon { ...iconProps } className={
         css(
-          `${classNames.base}-icon`,
+          `${baseClassName}-icon`,
           classNames.icon,
           disabled ? classNames.iconDisabled : classNames.iconEnabled,
           iconProps.className
@@ -168,7 +185,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderText() {
-    let { classNames, children, text, disabled } = this.props;
+    let { baseClassName, classNames, children, text, disabled } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -179,7 +196,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       <span
         className={
           css(
-            `${classNames.base}-label`,
+            `${baseClassName}-label`,
             classNames.label,
             disabled ? classNames.labelDisabled : classNames.labelEnabled
           ) }
@@ -205,7 +222,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderDescription() {
-    const { classNames, description, disabled } = this.props;
+    const { baseClassName, classNames, description, disabled } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
@@ -213,7 +230,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       <span
         className={
           css(
-            `${classNames.base}-description`,
+            `${baseClassName}-description`,
             classNames.description,
             disabled ? classNames.descriptionDisabled : classNames.descriptionEnabled
           ) }
@@ -241,7 +258,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let { classNames, disabled, menuIconProps, menuIconName } = this.props;
+    let { baseClassName, classNames, disabled, menuIconProps, menuIconName } = this.props;
 
     if (menuIconProps === undefined) {
       menuIconProps = {
@@ -255,7 +272,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
           { ...menuIconProps }
           className={
             css(
-              `${classNames.base}-icon`,
+              `${baseClassName}-icon`,
               classNames.menuIcon,
               disabled ? classNames.menuIconDisabled : classNames.menuIconEnabled,
               menuIconProps.className

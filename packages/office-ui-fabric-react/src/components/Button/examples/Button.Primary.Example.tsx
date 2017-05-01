@@ -81,9 +81,11 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
 
         <PrimaryButton
           data-automation-id='test'
+          className='new-root'
           classNames={ {
             root: css({
               height: '100px',
+              width: '100%',
               display: 'block'
             }),
             rootEnabled: css({
@@ -91,7 +93,10 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
               ':hover': {
                 background: 'darkRed'
               }
-            })
+            }),
+            iconEnabled: css({
+              fontSize: '100px'
+            }).toString()
           } }
           iconProps={ { iconName: 'Snow' } }
           menuProps={ menuProps }

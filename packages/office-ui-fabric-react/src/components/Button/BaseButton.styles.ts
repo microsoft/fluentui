@@ -1,29 +1,5 @@
 import { IButtonClassNames } from './Button.Props';
-import { ITheme, css, parent } from '@uifabric/styling';
-
-export function getFocusStyle(
-  theme: ITheme,
-  inset: string = '0',
-  color: string = theme.colors.neutralSecondary,
-  position: string = 'absolute'): React.CSSProperties {
-  return css(
-    {
-      outline: 'transparent',
-      position: 'relative',
-    },
-    parent('.ms-Fabric.is-focusVisible', {
-      ':focus:after': {
-        content: '""',
-        position,
-        left: inset,
-        top: inset,
-        bottom: inset,
-        right: inset,
-        border: '1px solid ' + color
-      }
-    })
-  );
-}
+import { ITheme, css, parent, getFocusRule } from '@uifabric/styling';
 
 const noOutline = {
   outline: 0
@@ -43,9 +19,8 @@ export function getStyles(
   });
 
   return {
-
     root: css(
-      getFocusStyle(theme, focusInset, focusColor),
+      getFocusRule(theme, focusInset, focusColor),
       {
         // this transparent border converts to the correct colors in HC mode
         boxSizing: 'border-box',
@@ -59,6 +34,8 @@ export function getStyles(
         padding: '0 16px'
       }
     ),
+
+    rootEnabled: undefined,
 
     rootDisabled: css({
       backgroundColor: theme.colors.neutralLighter,
@@ -79,13 +56,24 @@ export function getStyles(
     }),
 
     icon: iconStyle,
+    iconEnabled: undefined,
+    iconDisabled: undefined,
 
     menuIcon: iconStyle,
+    menuIconEnabled: undefined,
+    menuIconDisabled: undefined,
 
     label: css({
       margin: '0 4px',
       lineHeight: '100%'
     }),
+
+    labelEnabled: undefined,
+    labelDisabled: undefined,
+
+    description: undefined,
+    descriptionEnabled: undefined,
+    descriptionDisabled: undefined,
 
     screenReaderText: css({
       position: 'absolute',
