@@ -1,0 +1,184 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Toggle styles
+
+@mixin highContrast-bgColor($active-color, $bw-color) {
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $active-color;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $bw-color;
+  }
+}
+
+// Toggle
+.root {
+  @include ms-baseFont;
+  @include ms-font-m;
+  @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
+
+  position: relative;
+  display: block;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+// Interactive overrides
+.isEnabled {
+
+  .invisibleToggle {
+    cursor: pointer;
+  }
+
+  .background {
+    border: 1px solid $ms-color-neutralSecondaryAlt;
+  }
+
+  .thumb {
+    @include highContrast-bgColor($ms-color-white, $ms-color-black);
+  }
+
+  .slider:hover {
+    .background {
+      border: 1px solid $ms-color-black;
+    }
+
+    .thumb {
+      background: $ms-color-black;
+    }
+  }
+
+  &.isChecked {
+    .background {
+      background: $ms-color-themePrimary;
+      border: 1px solid $ms-color-themePrimary;
+      @include highContrast-bgColor($ms-color-white, $ms-color-black);
+    }
+
+    .thumb {
+      background: $ms-color-white;
+      @include left(28px);
+      @include highContrast-bgColor($ms-color-black, $ms-color-white);
+    }
+
+    .slider:hover {
+      .background {
+        border: 1px solid $ms-color-themePrimary;
+        background: $ms-color-themeSecondary;
+      }
+      .thumb {
+        background: $ms-color-white;
+      }
+    }
+  }
+
+}
+
+// Disabled overrides
+.isDisabled {
+  .thumb {
+    background: $ms-color-neutralTertiaryAlt;
+    @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+  }
+
+  .background {
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
+  &.isChecked {
+    .background {
+      background: $ms-color-neutralTertiaryAlt;
+      border: 1px solid transparent;
+      @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+    }
+
+    .thumb {
+      background: $ms-color-neutralLight;
+      @include left(28px);
+      @include highContrast-bgColor($ms-color-black, $ms-color-white);
+    }
+  }
+}
+
+
+.innerContainer {
+  display: inline-block;
+  min-width: 45px;
+}
+
+:global(.ms-Fabric.is-focusVisible) .root.isEnabled .invisibleToggle:focus + .background .focus {
+  border: 1px solid $focusedBorderColor;
+}
+
+.invisibleToggle {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.slider {
+  position: relative;
+  min-height: 20px;
+}
+
+.background {
+  display: inline-block;
+  position: absolute;
+  width: 44px;
+  height: 20px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  pointer-events: none;
+}
+
+.thumb {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  top: 4px;
+  @include left(4px);
+  background: $ms-color-neutralSecondary;
+  transition: all 0.1s ease;
+}
+
+.stateText {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 20px;
+  @include margin-left(54px);
+  padding: 0;
+}
+
+.focus {
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  box-sizing: border-box;
+  outline: transparent;
+}

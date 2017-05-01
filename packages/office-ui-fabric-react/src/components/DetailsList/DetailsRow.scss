@@ -1,0 +1,104 @@
+@import '../../common/common';
+
+$rowHeight: 36px;
+$rowVerticalPadding: 10px;
+$selectedColor: $ms-color-neutralQuaternary;
+$selectedHoverColor: $ms-color-neutralQuaternaryAlt;
+$unselectedHoverColor: $ms-color-neutralLighter;
+
+.root {
+  @include focus-border();
+
+  display: inline-block;
+  min-width: 100%;
+  min-height: $rowHeight;
+  margin: 1px 0;
+  vertical-align: top;
+  white-space: nowrap;
+  padding: 0;
+  box-sizing: border-box;
+
+  background: none;
+  border: none;
+  @include text-align(left);
+  vertical-align: top;
+  line-height: $rowHeight - ($rowVerticalPadding * 2);
+
+  &:hover {
+    background: $unselectedHoverColor;
+  }
+}
+
+.rootIsSelected {
+  background: $selectedColor;
+
+  &:hover {
+    background: $selectedHoverColor;
+  }
+}
+
+.rootIsContentUnselectable {
+  user-select: none;
+  cursor: default;
+}
+
+.cell {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  padding: $rowVerticalPadding 0;
+  margin: 0 8px;
+  min-height: $rowHeight;
+  vertical-align: top;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  & > button {
+    max-width: 100%;
+  }
+}
+
+.isMultiline {
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: clip;
+}
+
+.fields {
+  display: inline-block;
+}
+
+.check {
+  @include focus-border();
+
+  display: inline-block;
+  cursor: default;
+  padding: 6px;
+  box-sizing: border-box;
+  vertical-align: top;
+  background: none;
+  border: none;
+  opacity: 0;
+}
+
+.checkDisabled {
+  visibility: hidden;
+}
+
+.root:hover .check,
+.rootIsSelected .check,
+.rootIsCheckVisible .check {
+  opacity: 1;
+}
+
+.cellMeasurer .cell {
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.checkSpacer {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}

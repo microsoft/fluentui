@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "types": [
+      "chai",
+      "mocha",
+      "node",
+      "webpack-env"
+    ],
+    "paths": {
+      "office-ui-fabric-react/lib/*": [
+        "node_modules/office-ui-fabric-react/lib/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "lib",
+    "lib-amd"
+  ]
+}

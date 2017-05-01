@@ -1,0 +1,153 @@
+@import '../../common/common';
+
+$iconForegroundColor: $ms-color-neutralSecondary;
+$actionableHeaderForegroundColor: $ms-color-neutralSecondary;
+$dropdownChevronForegroundColor: $ms-color-neutralTertiary;
+$rowHeight: 36px;
+$resizerColor: $ms-color-neutralTertiaryAlt;
+
+.root {
+  display: inline-block;
+  min-width: 100%;
+  vertical-align: top;
+  height: $rowHeight;
+  line-height: $rowHeight;
+  white-space: nowrap;
+  padding-bottom: 1px;
+  border-bottom: 1px solid $dividerColor;
+  cursor: default;
+  user-select: none;
+
+  &.rootIsSelectAllHidden {
+    .cell.cellIsCheck {
+      visibility: hidden;
+    }
+  }
+}
+
+.cell.cellIsCheck :global(.ms-Check-background) {
+  opacity: 0;
+}
+
+.cell.cellIsCheck:hover :global(.ms-Check-background),
+.root.rootIsAllSelected :global(.ms-Check-background) {
+  opacity: 1;
+}
+
+.cellWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.cell {
+  @include ms-font-s;
+  background: transparent;
+  color: $disabledForegroundColor;
+  @include focus-border();
+  font-weight: $ms-font-weight-regular;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 8px;
+  border: none;
+  line-height: inherit;
+  margin: 0;
+  @include text-align(left);
+  height: $rowHeight;
+  vertical-align: top;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @include text-align(left);
+
+  &.cellIsCheck {
+    position: relative;
+    padding: 6px;
+    margin: 0;
+  }
+
+  &.cellIsActionable {
+    color: $actionableHeaderForegroundColor;
+
+    &:hover {
+      color: $ms-color-neutralPrimary;
+      background: $unselectedHoverBackgroundColor;
+    }
+
+    &:active {
+      background: $unselectedActiveBackgroundColor;
+    }
+  }
+
+  &.cellIsSizer {
+    position: absolute;
+    width: 16px;
+
+    @include margin-left(-10px);
+    cursor: ew-resize;
+    bottom: 0;
+    top: 0;
+    height: inherit;
+    background: transparent;
+  }
+
+  &.cellIsEmpty {
+    text-overflow: clip;
+  }
+}
+
+.cell.cellIsSizer:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: $resizerColor;
+  opacity: 0;
+}
+
+.cell.cellIsSizer:hover:after,
+.cell.cellIsSizer.cellIsResizing:after {
+  opacity: 1;
+  transition: opacity .3s linear;
+}
+
+.collapseButton {
+  text-align: center;
+  transform: rotate(-180deg);
+  transform-origin: 50% 50%;
+  transition: transform .1s linear;
+  width: 20px;
+  outline: 0;
+
+  &.collapseButtonIsCollapsed {
+    transform: rotate(0deg);
+  }
+}
+
+.cell .nearIcon {
+  color: $iconForegroundColor;
+  opacity: 1;
+  @include padding-right(4px);
+}
+
+.cell .filterChevron {
+  color: $dropdownChevronForegroundColor;
+  @include padding-left(4px);
+  vertical-align: middle;
+}
+
+.sizingOverlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  cursor: ew-resize;
+  background: rgba(255, 255, 255, 0);
+}
+
+.cell .collapseButton {
+  @include padding-right(0);
+}

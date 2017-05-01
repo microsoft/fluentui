@@ -1,13 +1,32 @@
 {
-  "extends": [ "./node_modules/gulp-core-build-typescript/lib/defaultTslint.json" ],
+  "extends": [
+    "./common/node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json"
+  ],
   "rules": {
-    "max-line-length": [false, 140],
-    "no-any": false,
+    "max-line-length": [
+      true,
+      140
+    ],
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "array-destructuring"
+    ],
     "no-null-keyword": false,
-    "variable-name": false,
-    "typedef": false,
     "export-name": false,
-    "trailing-comma": false,
-    "no-internal-module": false
+    "trailing-comma": [
+      false
+    ],
+    "whitespace": [
+      false
+    ],
+    "no-trailing-whitespace": false,
+    "no-switch-case-fall-through": false
   }
 }

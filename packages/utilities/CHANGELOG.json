@@ -1,0 +1,187 @@
+{
+  "name": "@uifabric/utilities",
+  "entries": [
+    {
+      "version": "1.8.4",
+      "tag": "@uifabric/utilities_v1.8.4",
+      "date": "Fri, 21 Apr 2017 06:23:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d7352294b40e5643400d889b1d78c2ea9aefedd9",
+            "comment": "Updating setRTL to write isRTL to local storage. This allows the setting to persist across sessions."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.8.0",
+      "tag": "@uifabric/utilities_v1.8.0",
+      "date": "Wed, 19 Apr 2017 16:54:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4143ba1741ec10bb4c34554138c4f0dd8d38c6f4",
+            "comment": "Adding warn utilities for console logging warnings on misuse."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.7.0",
+      "tag": "@uifabric/utilities_v1.7.0",
+      "date": "Fri, 14 Apr 2017 03:06:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "265217a4f00cf04a437a61c6ad4033fb52b1b525",
+            "comment": "overflow: Utilities for detecting overflow in elements"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.6.0",
+      "tag": "@uifabric/utilities_v1.6.0",
+      "date": "Thu, 06 Apr 2017 03:12:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4dbc3c49540ef973de0b262185e0815accbc85b8",
+            "comment": "Updating typings in warn.ts."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.0",
+      "tag": "@uifabric/utilities_v1.5.0",
+      "date": "Tue, 04 Apr 2017 15:18:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "086833bf4ae9f8672c83a2d5e85e07eaf22138ed",
+            "comment": "BaseComponent: added support for resolving `componentRef` automatically. Also added `_warnDeprecations` and `_warnMutualExclusion` helpers for warning on misuse."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.4.0",
+      "tag": "@uifabric/utilities_v1.4.0",
+      "date": "Thu, 30 Mar 2017 21:04:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "99589edbaff0a68e9c3c6097a3b7be8d058d7c18",
+            "comment": "Adding `setBodyScroll` method to enable/disable body scrolling. Useful for Overlay scenarios where you would want to disable the scrolling behind the overlay."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.0",
+      "tag": "@uifabric/utilities_v1.3.0",
+      "date": "Thu, 23 Mar 2017 03:13:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
+            "commit": "7fa3b9649c1b46e136c8781eda79149577699f1d",
+            "comment": "Adding some utility functions to handle date range calculations and determining if a date falls within a date range."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.0",
+      "tag": "@uifabric/utilities_v1.2.0",
+      "date": "Fri, 10 Mar 2017 20:41:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "eca0148b5e6e69cae5eea5e121cf0d5be45b3339",
+            "comment": "Adjusting React peer dependency to i"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.1.0",
+      "tag": "@uifabric/utilities_v1.1.0",
+      "date": "Wed, 01 Mar 2017 20:31:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2e5f13d7ad7c31a228b0382e741df6a159fdd8f7",
+            "comment": "Utilities: adding getInitials utility."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.3",
+      "tag": "@uifabric/utilities_v1.0.3",
+      "date": "Mon, 13 Feb 2017 08:15:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e5168866a9ca21698b95593d908eabe575e0cdbe",
+            "comment": "Updating package.json dependencies to exclude typings packages."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.2",
+      "tag": "@uifabric/utilities_v1.0.2",
+      "date": "Fri, 27 Jan 2017 04:09:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "2b3336fffbab0dc1802049a2c7aaae5c5875da01",
+            "comment": "autobind: Does not re-bind every time a decorated method is accessed anymore."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.1",
+      "tag": "@uifabric/utilities_v1.0.1",
+      "date": "Wed, 25 Jan 2017 04:11:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d6cf8a3bcc1e2468d32d3feab458e0361c959b0b",
+            "comment": "rtl utility should read rtl attribute on first read."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.0",
+      "tag": "@uifabric/utilities_v1.0.0",
+      "date": "Mon, 16 Jan 2017 21:57:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "24d41e3383bb3cfe3ee8a557665e6d5976c40f8d",
+            "comment": "Introducing a new package to contain all baseline utilities that are commonly used amongst Fabric components."
+          }
+        ]
+      }
+    }
+  ]
+}

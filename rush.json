@@ -1,0 +1,51 @@
+{
+  "npmVersion": "3.10.9",
+  "rushMinimumVersion": "2.5.0",
+  "nodeSupportedVersionRange": ">=6.9.0 <8.0.0",
+  "commonFolder": "common",
+  "projectFolderMinDepth": 1,
+  "projectFolderMaxDepth": 999,
+  "projects": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "projectFolder": "packages/office-ui-fabric-react",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "projectFolder": "packages/utilities",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "projectFolder": "packages/example-app-base",
+      "shouldPublish": true,
+      "cyclicDependencyProjects": [
+        "office-ui-fabric-react"
+      ]
+    },
+    {
+      "packageName": "@uifabric/styling",
+      "projectFolder": "packages/styling",
+      "shouldPublish": true,
+      "cyclicDependencyProjects": [
+        "office-ui-fabric-react"
+      ]
+    },
+    {
+      "packageName": "@uifabric/example-component",
+      "projectFolder": "packages/example-component",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "todo-app",
+      "projectFolder": "apps/todo-app",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "fabric-website",
+      "projectFolder": "apps/fabric-website",
+      "shouldPublish": false
+    }
+  ]
+}

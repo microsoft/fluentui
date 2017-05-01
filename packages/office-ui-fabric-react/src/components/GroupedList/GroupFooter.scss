@@ -1,0 +1,12 @@
+@import '../../common/common';
+
+.root {
+  position: relative;
+  padding: 10px 84px;
+  cursor: pointer;
+
+  :global(.ms-Link) {
+    @include ms-baseFont;
+    font-size: $ms-font-size-s;
+  }
+}
