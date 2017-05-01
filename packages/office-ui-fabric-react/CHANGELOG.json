@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.23.3",
+      "tag": "office-ui-fabric-react_v2.23.3",
+      "date": "Mon, 01 May 2017 10:18:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chris Scribner <chscribn@microsoft.com>",
+            "commit": "e22b00a7a70954bc0f5dc61e63ac8988f7ecd8fc",
+            "comment": "Toggle: Make toggle control more universally accessible across screen readers."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.23.2",
       "tag": "office-ui-fabric-react_v2.23.2",
       "date": "Fri, 28 Apr 2017 18:00:56 GMT",
