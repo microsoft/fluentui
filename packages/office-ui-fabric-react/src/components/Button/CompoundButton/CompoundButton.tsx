@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseButton } from '../BaseButton';
-import { BaseComponent, assign } from '../../../Utilities';
-import { IButtonProps, IButtonClassNames } from '../Button.Props';
+import { BaseButton, IButtonClassNames } from '../BaseButton';
+import { BaseComponent } from '../../../Utilities';
+import { IButtonProps } from '../Button.Props';
 
 import * as stylesImport from './CompoundButton.scss';
 const styles: any = stylesImport;
@@ -27,8 +27,8 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   public render() {
     return (
       <BaseButton
+        classNames={ CLASS_NAMES }
         { ...this.props }
-        classNames={ assign({}, CLASS_NAMES, this.props.classNames) }
       />
     );
   }

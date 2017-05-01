@@ -36,11 +36,6 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   className?: string;
 
   /**
-   * If provided, additional class name to provide on the root element.
-   */
-  classNames?: IButtonClassNames;
-
-  /**
    * The aria label of the button for the benefit of screen readers.
    */
   ariaLabel?: string;
@@ -158,18 +153,4 @@ export enum ButtonType {
   command = 4,
   icon = 5,
   default = 6
-}
-
-export interface IButtonClassNames {
-  base?: string;
-  variant?: string;
-  isDisabled?: string;
-  isEnabled?: string;
-  isOpened?: string;
-  description?: string;
-  flexContainer?: string;
-  icon?: string;
-  menuIcon?: string;
-  label?: string;
-  root?: string;
 }

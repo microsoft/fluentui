@@ -17,19 +17,45 @@ import { IButtonProps, IButton } from './Button.Props';
 import * as stylesImport from './BaseButton.scss';
 const styles: any = stylesImport;
 
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+  isDisabled?: string;
+  isEnabled?: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  menuIcon?: string;
+  label?: string;
+  root?: string;
+}
+
+/**
+ * These props are not in the Props file as they are undocumented props only specific to BaseButton.
+ *
+ * @export
+ * @interface IBaseButtonProps
+ * @extends {IButtonProps}
+ */
+export interface IBaseButtonProps extends IButtonProps {
+  /**
+   *  Custom class names for individual elements within the button DOM.
+   */
+  classNames?: IButtonClassNames;
+}
+
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
-  public static defaultProps: IButtonProps = {
+  public static defaultProps: IBaseButtonProps = {
     classNames: {
       base: 'ms-Button',
       variant: '',
       isEnabled: '',
-      isDisabled: '',
-      isOpened: '',
+      isDisabled: ''
     }
   };
 
@@ -93,8 +119,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
           {
             'disabled': disabled,
             [classNames.isDisabled]: disabled,
-            [classNames.isEnabled]: !disabled,
-            [classNames.isOpened]: this.state.menuProps !== null
+            [classNames.isEnabled]: !disabled
           }),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
@@ -238,7 +263,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     }
 
     return (
-      menuIconProps && menuIconProps.iconName ?
+      menuIconProps ?
         <Icon
           { ...menuIconProps }
           className={ css(`${classNames.base}-icon`, classNames.menuIcon, menuIconProps.className) }
