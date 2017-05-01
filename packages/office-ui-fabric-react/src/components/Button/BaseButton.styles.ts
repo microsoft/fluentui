@@ -21,6 +21,7 @@ export function getStyles(
   return {
     root: css(
       getFocusRule(theme, focusInset, focusColor),
+      theme.fonts.medium,
       {
         // this transparent border converts to the correct colors in HC mode
         boxSizing: 'border-box',

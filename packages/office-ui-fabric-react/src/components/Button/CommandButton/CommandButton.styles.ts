@@ -20,7 +20,6 @@ export function getStyles(
   let baseButtonStyles = getBaseButtonStyles(theme);
   let commandButtonStyles = {
     root: css(
-      theme.fonts.medium,
       {
         borderWidth: '0',
         backgroundColor: 'transparent',

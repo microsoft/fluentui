@@ -27,7 +27,6 @@ export function getStyles(
     variant: 'ms-Button--default',
 
     root: css(
-      theme.fonts.medium,
       {
         fontWeight: 'bold', // theme.fontWeights.semibold,
 

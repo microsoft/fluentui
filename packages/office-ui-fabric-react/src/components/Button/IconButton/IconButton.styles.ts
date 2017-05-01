@@ -20,7 +20,6 @@ export function getStyles(
   let baseButtonStyles = getBaseButtonStyles(theme);
   let iconButtonStyles = {
     root: css(
-      theme.fonts.medium,
       {
         backgroundColor: 'transparent',
         color: theme.colors.neutralSecondary,
