@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added some aria properties onto components of details list",
+      "type": "patch"
+    }
+  ],
+  "email": "peterdunlop2519@gmail.com"
+}
