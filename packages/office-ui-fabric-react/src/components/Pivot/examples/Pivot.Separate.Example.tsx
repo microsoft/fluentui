@@ -12,7 +12,7 @@ export class PivotSeparateExample extends React.Component<any, any> {
       <div>
         <div
           aria-labelledby={ this._getTabId(this.state.selectedKey) }
-          role="tabitem"
+          role='tabitem'
           style={ {
             float: 'left',
             width: 100,
