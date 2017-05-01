@@ -12,7 +12,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton, IButtonClassNames } from './Button.Props';
+import { IButtonProps, IButton } from './Button.Props';
 import { css } from '@uifabric/styling';
 
 export interface IBaseButtonState {

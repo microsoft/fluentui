@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent } from '../../../Utilities';
-import { IButtonProps, IButtonClassNames } from '../Button.Props';
+import { IButtonProps } from '../Button.Props';
 import { getTheme } from '@uifabric/styling';
 import { getCompoundButtonStyles } from './CompoundButton.styles';
 

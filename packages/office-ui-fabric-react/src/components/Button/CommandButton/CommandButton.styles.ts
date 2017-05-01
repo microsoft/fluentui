@@ -29,10 +29,11 @@ export function getStyles(
       defaultButtonStyles.root,
       theme.fonts.medium,
       {
+        borderWidth: '0',
         backgroundColor: 'transparent',
-        color: theme.colors.neutralPrimary,
         padding: DEFAULT_PADDING,
         height: DEFAULT_BUTTON_HEIGHT,
+        color: theme.colors.neutralPrimary,
 
       } as React.CSSProperties,
       userClassNames.root

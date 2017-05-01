@@ -1,9 +1,7 @@
 import { IButtonClassNames } from '../Button.Props';
 import {
-  CSSProperties,
   ITheme,
   css,
-  select,
   getTheme
 } from '@uifabric/styling';
 import {

@@ -4,7 +4,6 @@ import {
   getStyles as getDefaultButtonStyles
 } from '../DefaultButton/DefaultButton.styles';
 
-
 export function getStyles(
   theme: ITheme = getTheme(),
   userClassNames: IButtonClassNames = {},
