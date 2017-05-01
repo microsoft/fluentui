@@ -5,7 +5,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export class PivotSeparateExample extends React.Component<any, any> {
-  state = { selectedKey: 'rectangleRed' };
+  private state = { selectedKey: 'rectangleRed' };
 
   public render() {
     return (
