@@ -1,10 +1,10 @@
 'use strict';
 
-let build = require('@microsoft/web-library-build');
+let build = require('@microsoft/sp-build-web');
 let gulp = require('gulp');
 
 // Configure TypeScript 2.0.
-build.typescript.setConfig({ typescript: require('typescript') });
+build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // Configure custom lint overrides.
 let rules = Object.assign(
@@ -19,7 +19,7 @@ build.sass.isEnabled = () => false;
 build.karma.isEnabled = () => false;
 build.text.isEnabled = () => false;
 build.preCopy.isEnabled = () => false;
-build.webpack.isEnabled = () => false;
+// build.webpack.isEnabled = () => false;
 
 // Until typings work.
 //build.apiExtractor.isEnabled = () => false;
