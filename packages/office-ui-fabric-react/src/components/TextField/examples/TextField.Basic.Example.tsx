@@ -14,6 +14,7 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         <TextField label='Required TextField' required={ true } />
         <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />
         <TextField label='TextField with an icon' iconClass='ms-Icon--Calendar ms-Icon' />
+        <TextField label='Textfield with an addon' addonString='https://' />
         <TextField label='Multiline TextField' multiline rows={ 4 } iconClass='ms-Icon--Calendar ms-Icon' />
         <TextField label='Multiline TextField Unresizable' multiline resizable={ false } />
         <TextField label='Multiline TextField with auto adjust height' multiline autoAdjustHeight />

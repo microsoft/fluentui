@@ -69,3 +69,17 @@ $controlBorderUnselectedColor: $ms-color-neutralSecondaryAlt;
 $controlBorderUnselectedHoverColor: $ms-color-black;
 // $controlBorderSelectedColor: unused
 $controlBorderSelectedHoverColor: $ms-color-themePrimary;
+
+/*** Menus ***/
+$menuBackgroundColor: $ms-color-white;
+$menuBackgroundHoverColor: $ms-color-neutralLighter;
+$menuBackgroundSelectedColor: $ms-color-neutralQuaternaryAlt;
+
+$menuTextColor: $ms-color-neutralPrimary;
+$menuTextSelectedColor: $ms-color-black;
+
+$menuIconColor: $ms-color-themePrimary;
+
+$menuHeaderColor: $ms-color-themePrimary;
+
+$menuDividerColor: $ms-color-neutralLight;

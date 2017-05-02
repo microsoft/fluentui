@@ -87,7 +87,13 @@ function _getAppRoutes() {
 
   // Create a route for each top level page, and all of its sub pages
   AppState.pages.forEach((page, pageIndex) => {
-    routes.push(<Route key={ pageIndex } path={ page.url } getComponent={ page.getComponent } />);
+    routes.push(
+      <Route
+        key={ pageIndex }
+        path={ page.url }
+        component={ page.component }
+        getComponent={ page.getComponent }
+      />);
 
     if (page.pages) {
       page.pages.forEach((childPage, childPageIndex) => {
@@ -104,7 +110,14 @@ function _getAppRoutes() {
         //        to allow for unlimited levels of nav.
         if (childPage.pages) {
           childPage.pages.forEach((grandchildPage, grandchildPageIndex) => {
-            routes.push(<Route key={ grandchildPageIndex } path={ grandchildPage.url } getComponent={ grandchildPage.getComponent } />);
+            routes.push(
+              <Route
+                key={ grandchildPageIndex }
+                path={ grandchildPage.url }
+                component={ grandchildPage.component }
+                getComponent={ grandchildPage.getComponent }
+              />
+            );
           });
         }
       });
@@ -134,3 +147,12 @@ if (isReady) {
 }
 
 window.onunload = _onUnload;
+function addCSSToHeader(fileName) {
+  let headEl = document.head;
+  let linkEl = document.createElement('link');
+  linkEl.type = 'text/css'
+  linkEl.rel = 'stylesheet'
+  linkEl.href = fileName
+  headEl.appendChild(linkEl)
+}
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/5.1.0/css/fabric.min.css')
