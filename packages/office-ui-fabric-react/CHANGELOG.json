@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.24.0",
+      "tag": "office-ui-fabric-react_v2.24.0",
+      "date": "Tue, 02 May 2017 10:09:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
+            "commit": "2795f45cb4a077d7c1ced207e97a71b65b57e316",
+            "comment": "Panel: Updating the close button's height, container, margin, and size slightly."
+          },
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "dd35c66e5a73aa46d0a79ca29af8a1f97228f6a7",
+            "comment": "List: correctly measure pages when using display: none."
+          },
+          {
+            "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
+            "commit": "1b65c5b828bfb321c8f9414a364faaf1da7d7de0",
+            "comment": "Calendar: Support auto-navigation to next/previous month when selected date changes via props"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f3a8a8b32f6e1b2b1b24b575a5ca24ab264612a3",
+            "comment": "Shifting the ContextMenu over to semantic slots for colors."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "22eaa9265c24c42602f6f9ed9a2eaf1594b22990",
+            "comment": "Callout: support for aria role, label and description"
+          },
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "88def2ff0a37dafeb7bd1aa10a661d2ee002839d",
+            "comment": "Pivot: Allow rendering PivotItem headers without content."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.8.3 <2.0.0` to `>=1.8.4 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.23.3",
       "tag": "office-ui-fabric-react_v2.23.3",
       "date": "Mon, 01 May 2017 10:18:36 GMT",

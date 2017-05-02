@@ -41,7 +41,7 @@
     "webpack-split-by-path": "2.0.0"
   },
   "dependencies": {
-    "@uifabric/utilities": ">=1.8.3 <2.0.0",
+    "@uifabric/utilities": ">=1.8.4 <2.0.0",
     "glamor": "^2.20.24",
     "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0",
     "rtl-css-js": "^1.1.0"
