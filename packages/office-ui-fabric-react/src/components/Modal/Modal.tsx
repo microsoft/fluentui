@@ -71,7 +71,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     }
   }
 
-  public componentDidUpdate(prevState: IDialogState, prevProps: IModalProps) {
+  public componentDidUpdate(prevProps: IModalProps, prevState: IDialogState) {
     if (!prevProps.isOpen && !prevState.isVisible) {
       this.setState({
         isVisible: true
