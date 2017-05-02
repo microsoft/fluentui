@@ -107,7 +107,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               { this.renderItems() }
               <BaseAutoFill
-                { ...inputProps as React.HTMLProps<HTMLInputElement> }
+                { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }

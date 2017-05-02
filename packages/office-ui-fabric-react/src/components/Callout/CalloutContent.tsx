@@ -95,6 +95,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       return null;
     }
     let {
+      role,
+      ariaDescribedBy,
+      ariaLabelledBy,
       className,
       target,
       targetElement,
@@ -150,6 +153,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           { beakVisible &&
             (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
           <Popup
+            role={ role }
+            ariaDescribedBy={ ariaDescribedBy }
+            ariaLabelledBy={ ariaLabelledBy }
             className={ css('ms-Callout-main', styles.main) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
@@ -159,6 +165,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         </div>
       </div>
     );
+
     return content;
   }
 

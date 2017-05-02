@@ -23,7 +23,7 @@ $Panel-width-lg: 940px;
 $Panel-margin-md: 48px;
 $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
-$CommandBarHeight: 40px;
+$CommandBarHeight: 44px;
 
 .root {
   pointer-events: none;
@@ -184,18 +184,18 @@ $CommandBarHeight: 40px;
   }
 }
 
-// The  button in the top right (x)
+// The button in the top right (x)
 .closeButton {
   @include button-reset();
   position: absolute;
-  @include right(8px);
+  @include right(4px);
   top: 0;
   height: $CommandBarHeight;
   width: $CommandBarHeight;
   line-height: $CommandBarHeight;
   padding: 0;
   color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-m;
+  font-size: $ms-icon-size-l;
 
   &:hover {
     color: $ms-color-neutralPrimary;

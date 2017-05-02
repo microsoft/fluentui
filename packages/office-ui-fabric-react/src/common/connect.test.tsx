@@ -107,7 +107,7 @@ describe('connect', () => {
       );
     } catch (e) { threwException = true; }
 
-    expect(threwException).to.be.true;
+    expect(threwException).equals(true);
   });
 
   it('can throw in an environment that does not contain the required store', () => {
@@ -129,7 +129,7 @@ describe('connect', () => {
       );
     } catch (e) { threwException = true; }
 
-    expect(threwException).to.be.true;
+    expect(threwException).equals(true);
   });
 
   it('renders a connected component 1 time when multiple stores fire changes', (done) => {

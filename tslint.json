@@ -16,19 +16,19 @@
       "variable-declaration",
       "member-variable-declaration"
     ],
+    "prefer-const": false,
+    "quotemark": [
+      "single"
+    ],
     "no-null-keyword": false,
     "export-name": false,
     "trailing-comma": [
       false
     ],
-    "prefer-const": false,
     "whitespace": [
       false
     ],
     "no-trailing-whitespace": false,
-    "no-switch-case-fall-through": false,
-    "quotemark": [
-      "single"
-    ]
+    "no-switch-case-fall-through": false
   }
 }
