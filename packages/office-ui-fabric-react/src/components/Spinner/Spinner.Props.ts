@@ -25,14 +25,21 @@ export interface ISpinnerProps extends React.Props<Spinner> {
   size?: SpinnerSize;
 
   /**
-  * The label to show next to the Spinner.
-  */
+   * The label to show next to the Spinner. Label updates will be announced to the screen readers
+   * set ariaLive to control announcement priority
+   */
   label?: string;
 
   /**
    * Additional CSS class(es) to apply to the Spinner.
    */
   className?: string;
+
+  /**
+   * politeness setting for label update announcement
+   * @default polite
+   */
+  ariaLive?: string;
 }
 
 export enum SpinnerSize {
