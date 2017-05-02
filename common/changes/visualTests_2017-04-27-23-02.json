@@ -2,23 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Regression Tests",
-      "type": "patch"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/utilities",
-      "type": "none"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/styling",
-      "type": "none"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/example-app-base",
-      "type": "none"
+      "comment": "Facepile: Added `className` prop.",
+      "type": "minor"
     }
   ],
   "email": "r33najain@gmail.com"
