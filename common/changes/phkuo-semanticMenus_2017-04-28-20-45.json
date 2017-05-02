@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Shifting the ContextMenu over to semantic slots for colors.",
+      "type": "patch"
+    }
+  ],
+  "email": "phkuo@microsoft.com"
+}

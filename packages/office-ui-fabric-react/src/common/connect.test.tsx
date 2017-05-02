@@ -95,7 +95,7 @@ describe('connect', () => {
     let Connected = connect(
       TestComponent,
       [hello],
-      () => { /* empty */ }
+      () => ({ /* empty */ })
     );
     let threwException = false;
 
@@ -107,7 +107,7 @@ describe('connect', () => {
       );
     } catch (e) { threwException = true; }
 
-    expect(threwException).to.be.true;
+    expect(threwException).equals(true);
   });
 
   it('can throw in an environment that does not contain the required store', () => {
@@ -115,7 +115,7 @@ describe('connect', () => {
     let Connected = connect(
       TestComponent,
       [hello],
-      () => { /* empty */ }
+      () => ({ /* empty */ })
     );
     let threwException = false;
 
@@ -129,7 +129,7 @@ describe('connect', () => {
       );
     } catch (e) { threwException = true; }
 
-    expect(threwException).to.be.true;
+    expect(threwException).equals(true);
   });
 
   it('renders a connected component 1 time when multiple stores fire changes', (done) => {
