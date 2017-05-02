@@ -9,6 +9,7 @@ import {
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
 import { Link } from '../../Link';
+import { Icon } from '../../Icon';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -84,14 +85,19 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
                   role='button'
                   aria-haspopup='true'
                   aria-owns={ isOverflowOpen ? overflowMenuId : null } />
-                <i className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron, getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                <Icon
+                  className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron) }
+                  iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+                />
               </li>
             ) : (null) }
             { renderedItems.map(
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) } ref={ item.key || String(index) }>
                   { onRenderItem(item, this._defaultRenderItem) }
-                  <i className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron, getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                  <Icon
+                    className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron) }
+                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
                 </li>
               )) }
           </ul>

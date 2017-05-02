@@ -23,9 +23,10 @@
     "typescript": "^2.2.2",
     "highlight.js": "^9.9.0",
     "office-ui-fabric-core": ">=5.0.0 <6.0.0",
-    "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0"
+    "office-ui-fabric-react": ">=2.11.0 <3.0.0"
   },
   "rushDependencies": {
-    "@uifabric/utilities": "1.8.4"
+    "@uifabric/styling": ">=0.0.2 <1.0.0",
+    "@uifabric/utilities": ">=1.8.4 <2.0.0"
   }
 }

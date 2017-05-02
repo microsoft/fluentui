@@ -20,6 +20,7 @@ import {
 import { IViewport } from '../../utilities/decorators/withViewport';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
+import { animationClassNames } from '@uifabric/styling';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -185,11 +186,16 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         ref='root'
         role='row'
         aria-label={ ariaLabel }
-        className={ css('ms-DetailsRow ms-u-fadeIn400', styles.root, droppingClassName, {
-          ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
-          ['is-selected ' + styles.rootIsSelected]: isSelected,
-          ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always
-        }) }
+        className={ css(
+          'ms-DetailsRow',
+          animationClassNames.fadeIn400,
+          styles.root,
+          droppingClassName,
+          {
+            ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
+            ['is-selected ' + styles.rootIsSelected]: isSelected,
+            ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always
+          }) }
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }

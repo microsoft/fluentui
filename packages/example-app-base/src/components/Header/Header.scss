@@ -11,6 +11,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
     overflow: hidden;
     white-space: no-wrap;
     user-select: none;
+    color: white;
   }
 
   @media (max-width: $ms-screen-lg-max) {
@@ -44,7 +45,6 @@ $Header-fabricWebsiteHeaderColor: #272630;
     position: relative;
     text-decoration: none;
     background: none;
-    color: white;
     border: none;
     padding: 0;
     padding: 0px 10px;
