@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "fix the nit in CalendarDay.tsx",
+      "comment": "Calendar: Fix ariaLabel for previous month button",
       "type": "patch"
     },
     {
