@@ -16,8 +16,8 @@ let rules = Object.assign(
 );
 build.tslint.setConfig({ lintConfig: { rules } });
 
-/* Configure TypeScript 2.0. */
-build.typescript.setConfig({ typescript: require('typescript') });
+// Configure TypeScript.
+build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 /** Disable webpack. */
 build.webpack.isEnabled = () => false;
