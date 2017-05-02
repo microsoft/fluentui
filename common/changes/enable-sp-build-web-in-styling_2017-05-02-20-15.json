@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Enabling sp-build-web in @officeui/styling",
+      "type": "minor"
+    }
+  ],
+  "email": "srdeshpa@microsoft.com"
+}
