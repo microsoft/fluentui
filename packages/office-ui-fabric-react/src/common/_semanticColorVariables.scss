@@ -38,8 +38,8 @@ $bodyTextColor: $ms-color-neutralPrimary;
 $bodySubtextColor: $ms-color-neutralSecondary;
 
 $disabledBackgroundColor: $ms-color-neutralLighter;
-$disabledTextColor: $ms-color-neutralTertiary;
-$disabledSubtextColor: $ms-color-neutralTertiaryAlt;
+$disabledTextColor: $ms-color-neutralTertiaryAlt;
+$disabledSubtextColor: $ms-color-neutralQuaternary;
 
 $focusBorderColor: $ms-color-black;
 
@@ -83,3 +83,11 @@ $menuIconColor: $ms-color-themePrimary;
 $menuHeaderColor: $ms-color-themePrimary;
 
 $menuDividerColor: $ms-color-neutralLight;
+
+/*** Lists ***/
+$listBackgroundColor: transparent;
+$listTextColor: $ms-color-neutralPrimary;
+
+$listItemHoverColor: $ms-color-neutralLighter;
+$listItemSelectedColor: $ms-color-neutralQuaternary;
+$listItemSelectedHoverColor: $ms-color-neutralQuaternaryAlt;
