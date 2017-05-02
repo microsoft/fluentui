@@ -33,7 +33,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * The gap between the Callout and the target
-   * @default 16
+   * @default 0
    */
   gapSpace?: number;
 
@@ -42,6 +42,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default 16
    */
   beakWidth?: number;
+
+  /**
+   * The background color of the Callout in hex format ie. #ffffff.
+   * @default $ms-color-white
+   */
+  backgroundColor?: string;
 
   /**
    * The bounding rectangle for which  the contextual menu can appear in.
@@ -77,6 +83,21 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default false
    */
   coverTarget?: boolean;
+
+  /**
+   * Aria role assigned to the callout (Eg. dialog, alertdialog).
+   */
+  role?: string;
+
+  /**
+   *  Defines the element id referencing the element containing label text for callout.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the callout.
+   */
+  ariaDescribedBy?: string;
 
   /**
    * CSS class to apply to the callout.
@@ -121,14 +142,14 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   setInitialFocus?: boolean;
 
   /**
-    * @deprecated
     * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    * @deprecated
     */
   beakStyle?: string;
 
   /**
-   * @deprecated
    * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
+   * @deprecated
    */
   targetElement?: HTMLElement;
 }

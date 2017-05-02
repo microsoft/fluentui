@@ -66,7 +66,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
       let { responsiveMode } = this.state;
 
       return (
-        <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props } />
+        <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props as any } />
       );
     }
 

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
+  autobind,
   css,
   getId,
   getRTL,
@@ -21,7 +22,8 @@ import {
   isInDateRangeArray
 } from '../../utilities/dateMath/DateMath';
 
-import styles = require('./Calendar.scss');
+import * as stylesImport from './Calendar.scss';
+const styles: any = stylesImport;
 
 const DAYS_IN_WEEK = 7;
 
@@ -41,6 +43,7 @@ export interface ICalendarDayProps {
   navigatedDate: Date;
   onSelectDate: (date: Date, selectedDateRangeArray?: Date[]) => void;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+  onDismiss?: () => void;
   firstDayOfWeek: DayOfWeek;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
@@ -78,19 +81,26 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public render() {
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let dayPickerId = getId('DatePickerDay-dayPicker');
+    let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
+      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-          <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          </div>
         </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
+              onKeyDown={ this._onPrevMonthKeyDown }
+              aria-controls={ dayPickerId }
+              aria-label={ strings.prevMonthAriaLabel }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span >
@@ -98,6 +108,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
+              aria-controls={ dayPickerId }
+              aria-label={ strings.nextMonthAriaLabel }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span >
@@ -110,6 +123,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             role='grid'
             aria-readonly='true'
             aria-multiselectable='false'
+            aria-labelledby={ monthAndYearId }
             aria-activedescendant={ activeDescendantId }
           >
             <thead>
@@ -145,6 +159,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
+                        aria-label={ day.originalDate.toLocaleDateString ? day.originalDate.toLocaleDateString() : day.originalDate.getDate() }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
@@ -186,7 +201,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
@@ -216,6 +231,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   private _onSelectPrevMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
+  }
+
+  @autobind
+  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    if (ev.which === KeyCodes.tab && ev.shiftKey) {
+      if (this.props.onDismiss) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        this.props.onDismiss();
+      }
+    } else {
+      this._onKeyDown(this._onSelectPrevMonth, ev);
+    }
   }
 
   private _getWeeks(navigatedDate: Date, selectedDate: Date): IDayInfo[][] {

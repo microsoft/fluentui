@@ -7,7 +7,6 @@ module.exports = {
   entry: './src/demo/index.tsx',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'demo-app.js',
   },
 
@@ -29,27 +28,31 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    inline: true
+    inline: true,
+    port: 4321
   },
 
   module: {
     loaders: [
       {
-        test: /\.tsx?$/,
+        test: [/\.tsx?$/],
         loader: 'ts-loader',
         exclude: [
-          /node_modules/
+          /node_modules/,
+          /\.scss.ts$/
         ]
       },
       {
         test: /\.scss$/,
+        enforce: 'pre',
         exclude: [
           /node_modules/
         ],
         use: [
           {
             loader: "load-themed-styles-loader", // creates style nodes from JS strings
-          }, {
+          },
+          {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
               modules: true,
@@ -60,6 +63,7 @@ module.exports = {
           },
           {
             loader: 'postcss-loader',
+
             options: {
               plugins: function () {
                 return [

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./ColorTable.module.scss');
+import * as stylesImport from './ColorTable.module.scss';
+const styles: any = stylesImport;
 
 export interface IColorTableProps {
   /**

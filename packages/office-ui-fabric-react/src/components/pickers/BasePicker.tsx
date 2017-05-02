@@ -15,7 +15,8 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
-import styles = require('./BasePicker.scss');
+import * as stylesImport from './BasePicker.scss';
+const styles: any = stylesImport;
 
 export interface IBasePickerState {
   items?: any;
@@ -106,7 +107,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               { this.renderItems() }
               <BaseAutoFill
-                { ...inputProps }
+                { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
@@ -144,7 +145,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           onGetMoreResults={ this.onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
-          { ...this.props.pickerSuggestionsProps }
+          { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
     ) : (null);
@@ -418,7 +419,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               <BaseAutoFill
-                { ...inputProps }
+                { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }

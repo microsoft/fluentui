@@ -11,8 +11,9 @@ import {
   MAX_COLOR_VALUE,
   getFullColorString,
   hsv2hex
-} from './colors';
-import styles = require('./ColorPicker.scss');
+} from '../../utilities/color/colors';
+import * as stylesImport from './ColorPicker.scss';
+const styles: any = stylesImport;
 
 export interface IColorRectangleProps {
   color: IColor;

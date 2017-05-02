@@ -3,13 +3,14 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
-import styles = require('./DetailsRow.scss');
+import * as stylesImport from './DetailsRow.scss';
+const styles: any = stylesImport;
 
 export interface IDetailsRowCheckProps {
   selected?: boolean;
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   * @deprecated
    */
   isSelected?: boolean;
   anySelected: boolean;
@@ -22,17 +23,17 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
   return (
     <button
       type='button'
-      className={ css('ms-DetailsRow-check', styles.check) }
+      className={ css('ms-DetailsRow-check', styles.check, {
+        [styles.checkDisabled]: !props.canSelect,
+        'ms-DetailsRow-check--isDisabled': !props.canSelect
+      }) }
       role='button'
       aria-pressed={ selected }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
       aria-label={ props.ariaLabel }
     >
-      { props.canSelect ?
-        <Check checked={ selected } /> :
-        <div className={ css('ms-DetailsRow-checkSpacer', styles.checkSpacer) } />
-      }
+      <Check checked={ selected } />
     </button>
   );
 };
