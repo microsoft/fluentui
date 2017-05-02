@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Modal: Fixed bug where props and state were passed in reversed order",
+      "type": "patch"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
