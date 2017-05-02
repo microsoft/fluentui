@@ -385,8 +385,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // Only present to allow continued use of item.icon which is deprecated.
 
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: 'CustomIcon',
-      className: item.icon ? 'ms-Icon--' + item.icon : ''
+      iconName: item.icon
     };
     // Use the default icon color for the known icon names
     let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-ContextualMenu-iconColor ' + styles.iconColor);

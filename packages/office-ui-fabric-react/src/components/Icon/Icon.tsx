@@ -12,7 +12,7 @@ import { css, iconClassNames } from '@uifabric/styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
-  let { className, classNames, iconName } = props;
+  let { ariaLabel, className, classNames, iconName } = props;
   let styles = getStyles(classNames);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
@@ -33,6 +33,11 @@ export function Icon(props: IIconProps): JSX.Element {
 
     return (
       <i
+        aria-label={ ariaLabel }
+        { ...(ariaLabel ? {} : {
+          role: 'presentation',
+          'aria-hidden': true
+        }) }
         { ...getNativeProps(props, htmlElementProperties) }
         className={ css('ms-Icon', iconClassNames[iconMemberName], props.className) }
       />

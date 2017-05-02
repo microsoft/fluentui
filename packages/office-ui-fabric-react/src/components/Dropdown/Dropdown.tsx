@@ -5,6 +5,7 @@ import { Callout } from '../../Callout';
 import { Label } from '../../Label';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
+import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
@@ -150,7 +151,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onRenderTitle(selectedOption, this._onRenderTitle)
             ) }
           </span>
-          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
+          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='chevronDown' />
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)

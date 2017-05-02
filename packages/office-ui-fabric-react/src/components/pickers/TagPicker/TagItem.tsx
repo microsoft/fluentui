@@ -2,6 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import { css } from '../../../Utilities';
+import { Icon } from '../../../Icon';
 import { IPickerItemProps } from '../PickerItem.Props';
 import { ITag } from './TagPicker';
 import * as stylesImport from './TagItem.scss';

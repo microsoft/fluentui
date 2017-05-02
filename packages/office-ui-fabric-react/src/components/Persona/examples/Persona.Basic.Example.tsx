@@ -5,7 +5,7 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-
+import { Label } from 'office-ui-fabric-react/lib/Label';
 const examplePersona = {
   imageUrl: './images/persona-female.png',
   imageInitials: 'AL',
@@ -34,6 +34,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
             checked={ renderPersonaDetails }
             onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); } } />
         </div>
+
         <Persona
           { ...examplePersona }
           size={ PersonaSize.tiny }

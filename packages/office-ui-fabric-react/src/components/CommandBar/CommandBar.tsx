@@ -93,14 +93,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           <div className={ css(
             'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper',
             styles.searchIconWrapper, styles.searchIconSearchWrapper) }>
-            <i className={ css('ms-Icon ms-Icon--Search') }></i>
+            <Icon iconName='search' />
           </div>
           <div className={ css(
             'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper ms-font-s',
             styles.searchIconWrapper,
             styles.searchIconClearWrapper
           ) }>
-            <i className={ css('ms-Icon ms-Icon--Cancel') }></i>
+            <Icon iconName='cancel' />
           </div>
         </div>
       );
@@ -127,7 +127,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                   aria-haspopup={ true }
                   data-automation-id='commandBarOverflow'
                 >
-                  <i className={ css('ms-CommandBarItem-overflow ms-Icon ms-Icon--More', styles.itemOverflow) } />
+                  <Icon className={ css('ms-CommandBarItem-overflow', styles.itemOverflow) } iconName='more' />
                 </button>
               </div>
             ] : []) }
@@ -189,7 +189,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               </span>
             ) }
             { hasSubmenuItems(item) ? (
-              <i className={ css('ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown', styles.itemChevronDown) } />
+              <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='chevronDown' />
             ) : (null) }
           </button>;
         } else if (item.href) {

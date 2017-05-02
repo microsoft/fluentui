@@ -47,6 +47,11 @@ export interface IIconProps extends React.HTMLProps<HTMLElement> {
   classNames?: IIconClassNames;
 
   /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  ariaLabel?: string;
+
+  /**
    * The type of icon to render (image or icon font).
    *
    * @type {IconType}
