@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TooltipHost: Add host className",
+      "type": "patch"
+    }
+  ],
+  "email": "hross@hross.net"
+}
