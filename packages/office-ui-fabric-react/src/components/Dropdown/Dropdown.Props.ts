@@ -25,7 +25,7 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   label?: string;
 
   /**
-   * Descriptive label for the Dropdown
+   * Input placeholder text. Displayed until option is selected.
    */
   placeHolder?: string;
 
