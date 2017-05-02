@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Panel: Updating the close button's height, container, margin, and size slightly.",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}

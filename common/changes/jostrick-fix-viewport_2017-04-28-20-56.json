@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "withViewport: Preserving the `forceUpdate` parameter when asynchronously re-resolving the viewport size.",
+      "type": "patch"
+    }
+  ],
+  "email": "jostrick@microsoft.com"
+}
