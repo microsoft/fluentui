@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 May 2017 10:09:08 GMT and should not be manually modified.
+This log was last generated on Tue, 02 May 2017 18:32:23 GMT and should not be manually modified.
+
+## 2.24.1
+Tue, 02 May 2017 18:32:23 GMT
+
+### Patches
+
+- TooltipHost: Add host className
+- Modal: Fixed bug where props and state were passed in reversed order
+- Calendar: Fix ariaLabel for previous month button
 
 ## 2.24.0
 Tue, 02 May 2017 10:09:08 GMT
