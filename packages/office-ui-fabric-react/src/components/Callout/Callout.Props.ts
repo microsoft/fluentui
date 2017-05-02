@@ -85,6 +85,21 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   coverTarget?: boolean;
 
   /**
+   * Aria role assigned to the callout (Eg. dialog, alertdialog).
+   */
+  role?: string;
+
+  /**
+   *  Defines the element id referencing the element containing label text for callout.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the callout.
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * CSS class to apply to the callout.
    * @default null
    */

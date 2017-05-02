@@ -22,7 +22,7 @@
     "@types/es6-promise": "^0.0.32",
     "@types/mocha": "^2.2.39",
     "@types/webpack-env": "^1.13.0",
-    "mocha": "~2.5.3",
+    "mocha": "~3.3.0",
     "office-ui-fabric-react": ">=2.11.0 <3.0.0",
     "raw-loader": "^0.5.1",
     "react": "^15.4.2",
