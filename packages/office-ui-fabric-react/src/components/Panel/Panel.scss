@@ -26,7 +26,6 @@ $Panel-margin-xl: 176px;
 $CommandBarHeight: 40px;
 
 .root {
-  display: none;
   pointer-events: none;
 
   position: absolute;
@@ -38,7 +37,6 @@ $CommandBarHeight: 40px;
 
   // Overlay used within panel
   .overlay {
-    display: none;
     pointer-events: none;
     opacity: 1;
     cursor: pointer;
@@ -55,8 +53,6 @@ $CommandBarHeight: 40px;
   width: 100%;
   bottom: 0;
   top: 0;
-
-  display: none;
 
   overflow-x: hidden;
   overflow-y: auto;
@@ -174,17 +170,12 @@ $CommandBarHeight: 40px;
 //== State: When the panel is open.
 //
 .root.rootIsOpen {
-  display: block;
-
   .main {
-    opacity: 1;
     pointer-events: auto;
-    display: block;
   }
 
   .overlay {
     cursor: pointer;
-    display: block;
     pointer-events: auto;
 
     @media screen and (-ms-high-contrast: active) {
