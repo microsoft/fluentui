@@ -6,6 +6,7 @@ import {
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Basic.Example.scss';
 
@@ -54,10 +55,10 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
                 <div className='ms-ListBasicExample-itemIndex'>{ `Item ${index}` }</div>
                 <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
               </div>
-              <i className={ css('ms-ListBasicExample-chevron ms-Icon', {
-                'ms-Icon--chevronRight': !getRTL(),
-                'ms-Icon--chevronLeft': getRTL()
-              }) } />
+              <Icon
+                className='ms-ListBasicExample-chevron'
+                iconName={ getRTL() ? 'chevronLeft' : 'chevronRight' }
+              />
             </div>
           ) }
         />
