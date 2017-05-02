@@ -99,7 +99,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onPrevMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.nextMonthAriaLabel }
+              aria-label={ strings.prevMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
