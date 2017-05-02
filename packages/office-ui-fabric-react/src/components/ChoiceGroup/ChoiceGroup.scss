@@ -19,8 +19,8 @@ $radioButton-border-hover-color: $controlBorderUnselectedHoverColor;
 $radioButton-border-selected-color: $radioButton-dot-color;
 $radioButton-border-selected-hover-color: $controlBackgroundSelectedHoverColor;
 
-$radioButton-text-disabled-color: $disabledSubtextColor;
-$radioButton-background-unselected-disabled-color: $disabledSubtextColor;
+$radioButton-text-disabled-color: $disabledTextColor;
+$radioButton-background-unselected-disabled-color: $disabledTextColor;
 $radioButton-dot-disabled-color: $radioButton-background-unselected-disabled-color;
 $radioButton-border-disabled-color: $radioButton-background-unselected-disabled-color;
 
