@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Calendar: Support auto-navigation to next/previous month when selected date changes via props",
+      "type": "patch"
+    }
+  ],
+  "email": "johannao@microsoft.com"
+}
