@@ -53,9 +53,10 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
+  
   /**
- * Optional class for facepile.
- */
+   * Optional class for Facepile root element.
+   */
   className?: string;
 }
 
