@@ -3,7 +3,7 @@ import { BaseDecorator } from './BaseDecorator';
 
 export function withContainsFocus<P extends { containsFocus?: boolean }, S>(ComposedComponent: (new (props: P, ...args: any[]) => (React.Component<P, S>))): any {
 
-  return class WithContainsFocusComponent extends BaseDecorator<P & { containsFocus? }, { containsFocus?: boolean }> {
+  return class WithContainsFocusComponent extends BaseDecorator<P & { containsFocus?}, { containsFocus?: boolean }> {
     public refs: {
       [key: string]: React.ReactInstance,
     };
@@ -31,7 +31,7 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
 
       return (
         <div ref='root' onFocus={ this._handleFocus.bind(this) } onBlur={ this._handleBlur.bind(this) }>
-          <ComposedComponent ref={ this._updateComposedComponentRef } containsFocus={ containsFocus } {...this.props} />
+          <ComposedComponent ref={ this._updateComposedComponentRef } containsFocus={ containsFocus } { ...this.props as any } />
         </div>
       );
     }
