@@ -11,15 +11,15 @@ declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'ms-ContextualMenu-itemText',
-  imageSelector: '#' + 'ContextualMenu',
-  fileName: 'contextualMenu',
+  selector: '.' + 'ms-DetailsRow',
+  imageSelector: '.' + 'DetailsList',
+  fileName: 'detailsList',
   commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
 
 });
 
 casper.
-  start(baseUrl + 'contextualMenu').
+  start(baseUrl + 'detailsList').
   then(() => {
     testRunner(componentIds);
   });
