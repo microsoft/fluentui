@@ -21,10 +21,8 @@ let AppDefinition = require('office-ui-fabric-react/lib/demo/AppDefinition').App
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {
-    debugger;
     let links = AppDefinition.examplePages[i].links;
     for (let j = 0; j < links.length; j++) {
-      debugger;
       let { key, component } = links[j];
 
       testRender(key, component);
