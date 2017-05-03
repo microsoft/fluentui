@@ -10,7 +10,7 @@ export default class CommandButtonVPage extends React.Component<any, any> {
         <DefaultButton
           id='ContextualButton'
           disabled={ false }
-          icon='Add'
+          iconProps={ { iconName: 'Add' } }
           text='New'
           menuProps={ {
             className: 'ContextualButtonMenu',
@@ -35,7 +35,7 @@ export default class CommandButtonVPage extends React.Component<any, any> {
       <div>
         <DefaultButton
           id='ContextualButtonDisabled'
-          icon='Add'
+          iconProps={ { iconName: 'Add' } }
           text='New'
           disabled={ true }
         />
