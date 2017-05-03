@@ -1,18 +1,27 @@
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { Casper} from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-declare var phantomcss: IPhantomCSS;
+import {
+  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
+  mouseClickScreenshot, testRunner
+} from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
+
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds: IRunVisualTest[] = [];
+
+componentIds.push({
+  selector: '.' + 'ms-ContextualMenu-itemText',
+  imageSelector: '#' + 'ContextualMenu',
+  fileName: 'contextualMenu',
+  commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
+
+});
+
 casper.
   start(baseUrl + 'contextualMenu').
-  then(function () {
-    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_not_pressed');
-  }).then(function () {
-    this.mouse.move('#ContextualMenu');
-    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_hovered');
-  }).then(function () {
-    this.mouse.down('#ContextualMenu');
-    phantomcss.screenshot('#ContextualMenu', 'ContextualMenu_pressed');
+  then(() => {
+    testRunner(componentIds);
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

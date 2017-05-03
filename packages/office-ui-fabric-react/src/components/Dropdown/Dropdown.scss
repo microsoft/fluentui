@@ -56,6 +56,9 @@ $DropDown-item-height: 36px;
         color: $ms-color-contrastWhiteSelected;
       }
     }
+    .titleIsPlaceHolder {
+      color: $ms-color-neutralTertiary;
+    }
   }
 
   &:hover,
@@ -155,6 +158,9 @@ $DropDown-item-height: 36px;
   &.titleIsError {
         border-color: $ms-color-error;
     }
+  &.titleIsPlaceHolder {
+    color: $ms-color-neutralTertiary;
+  }
 }
 
 .panel {

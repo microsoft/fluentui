@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field",
+      "type": "minor"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
+

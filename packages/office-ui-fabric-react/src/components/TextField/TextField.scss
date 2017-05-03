@@ -53,7 +53,7 @@ $field-error-color: $errorTextColor;
     border-color: $field-border-hover-color;
   }
 
-  &:focus {
+  &.fieldGroupIsFocused {
     border-color: $field-border-focus-color;
   }
 
@@ -65,7 +65,7 @@ $field-error-color: $errorTextColor;
   }
 
   &:hover,
-  &:focus {
+  &.fieldGroupIsFocused {
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
     }
@@ -107,9 +107,13 @@ $field-error-color: $errorTextColor;
   color: $field-text-color;
   @include padding(0, 12px, 0, 12px);
   width: 100%;
-  outline: 0;
   text-overflow: ellipsis;
-
+  outline: 0;
+  &:active,
+  &:focus,
+  &:hover {
+      outline: 0;
+    }
   &.hasIcon {
     @include padding-right(24px);
   }

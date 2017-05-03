@@ -77,9 +77,18 @@ $menuBackgroundSelectedColor: $ms-color-neutralQuaternaryAlt;
 
 $menuTextColor: $ms-color-neutralPrimary;
 $menuTextSelectedColor: $ms-color-black;
+$menuTextDisabledColor: $ms-color-neutralTertiaryAlt;
 
 $menuIconColor: $ms-color-themePrimary;
 
 $menuHeaderColor: $ms-color-themePrimary;
 
 $menuDividerColor: $ms-color-neutralLight;
+
+/*** Lists ***/
+$listBackgroundColor: transparent;
+$listTextColor: $ms-color-neutralPrimary;
+
+$listItemHoverColor: $ms-color-neutralLighter;
+$listItemSelectedColor: $ms-color-neutralQuaternary;
+$listItemSelectedHoverColor: $ms-color-neutralQuaternaryAlt;
