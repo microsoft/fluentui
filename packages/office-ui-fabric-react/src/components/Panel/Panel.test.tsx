@@ -19,7 +19,7 @@ describe('Panel', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it('fires the correct events when closing', function (done) {
+  it('fires the correct events when closing', (done) => {
     let dismissedCalled = false;
     let dismissCalled = false;
     let panel: Panel = ReactDOM.render(
