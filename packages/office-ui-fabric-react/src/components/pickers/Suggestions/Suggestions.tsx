@@ -115,8 +115,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             onClick={ this._getMoreResults.bind(this) }
           >
             { searchForMoreText }
-          </CommandButton>) : (null)
-        }
+          </CommandButton>
+        ) }
         { isSearching ?
           (<Spinner
             className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
