@@ -53,4 +53,9 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * It also uses the parent as target element for the tooltip.
    */
   overflowMode?: TooltipOverflowMode;
+
+  /**
+   * Optional class name to apply to tooltip host.
+   */
+  hostClassName?: string;
 }

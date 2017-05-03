@@ -6,8 +6,8 @@ let serial = build.serial;
 build.tslint.isEnabled = () => false;
 build.karma.isEnabled = () => false;
 
-/* Configure TypeScript 2.0. */
-build.typescript.setConfig({ typescript: require('typescript') });
+// Configure TypeScript.
+build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // Use css modules.
 build.sass.setConfig({
