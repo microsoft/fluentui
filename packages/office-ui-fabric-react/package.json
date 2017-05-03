@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "2.24.1",
+  "version": "2.24.2",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -58,7 +58,7 @@
     "source-map-loader": "0.2.1",
     "style-loader": "^0.17.0",
     "ts-loader": "^2.0.1",
-    "typescript": "^2.2.2",
+    "typescript": "2.2.2",
     "vinyl-ftp": "0.6.0",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",
