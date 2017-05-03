@@ -119,7 +119,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
-                role='combobox' />
+                role='combobox'
+                disabled={ this.disabled } />
             </div>
           </SelectionZone>
         </FocusZone>
