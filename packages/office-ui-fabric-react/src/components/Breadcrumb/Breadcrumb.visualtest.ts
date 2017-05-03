@@ -4,24 +4,24 @@ import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClick
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 
 declare var casper: Casper;
-
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'ms-Checkbox-input',
-  fileName: 'checkbox',
-  imageSelector: '.' + 'Checkbox',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]
-});
+  selector: '.' + 'Breadcrumb',
+  fileName: 'breadcrumb',
+  imageSelector: '.' + 'Breadcrumb',
 
-componentIds.push({
-  selector: '.' + 'CheckboxDisabled',
-  fileName: 'checkboxDisabled',
   commands: [defaultScreenshot]
+});
+componentIds.push({
+  selector: '.' + 'ms-Breadcrumb-listItem',
+  fileName: 'breadcrumb',
+  imageSelector: '.' + 'Breadcrumb',
+  commands: [mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot]
 });
 
 casper.
-  start(baseUrl + 'checkbox').
+  start(baseUrl + 'breadcrumb').
   then(() => {
     testRunner(componentIds);
   });
