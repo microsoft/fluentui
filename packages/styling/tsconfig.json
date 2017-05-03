@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "noImplicitAny": true,
     "types": [
       "chai",
       "mocha",
