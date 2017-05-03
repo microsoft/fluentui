@@ -24,30 +24,19 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
     let itemProps = assign({}, suggestionModel.item, { onClick: onClick });
     return (
-      <div
-        className={ styles.suggestionsItemContainer }
+      <CommandButton
+        onClick={ onClick }
+        className={ css(
+          'ms-Suggestions-item',
+          styles.suggestionsItem,
+          {
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+          },
+          className
+        ) }
       >
-<<<<<<< HEAD
-        <div
-          data-is-focusable={ true }
-          id={ id }
-          ref="personaButton"
-          className={ css(
-            'ms-Suggestions-item',
-            styles.suggestionsItem,
-            {
-              ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
-            },
-            className
-          ) }
-        >
-          { RenderSuggestion(itemProps) }
-        </div>
-      </div>
-=======
         <RenderSuggestion { ...suggestionModel.item as any } />
       </CommandButton>
->>>>>>> 20fa5efe21f0be39f604fb3a7bdb12c83fdcbe53
     );
   }
 }
