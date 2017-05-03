@@ -20,7 +20,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "source-map-loader": "^0.2.1",
-    "typescript": "^2.2.2",
+    "typescript": "2.2.2",
     "highlight.js": "^9.9.0",
     "office-ui-fabric-core": ">=5.0.0 <6.0.0",
     "office-ui-fabric-react": ">=2.11.0 <3.0.0"

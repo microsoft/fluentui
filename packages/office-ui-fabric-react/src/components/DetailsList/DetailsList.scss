@@ -1,8 +1,13 @@
 @import '../../common/common';
 
+$detailsList-background-color: $listBackgroundColor;
+$detailsList-text-color: $listTextColor;
+
 .root {
   position: relative;
   font-size: $ms-font-size-s;
+  background: $detailsList-background-color;
+  color: $detailsList-text-color;
 }
 
 .focusZone {

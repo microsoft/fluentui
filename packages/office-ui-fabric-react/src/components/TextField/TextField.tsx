@@ -147,7 +147,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup) }>
+        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused) }>
           { (addonString !== undefined || this.props.onRenderAddon) && (
             <div className={ css(styles.fieldAddon) }>
               { onRenderAddon(this.props, this._onRenderAddon) }

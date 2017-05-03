@@ -5,14 +5,7 @@
     "@microsoft/api-extractor": {
       "version": "2.0.5",
       "from": "@microsoft/api-extractor@>=2.0.5 <3.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-2.0.5.tgz",
-      "dependencies": {
-        "typescript": {
-          "version": "2.2.2",
-          "from": "typescript@>=2.2.2 <2.3.0",
-          "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.2.2.tgz"
-        }
-      }
+      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-2.0.5.tgz"
     },
     "@microsoft/gulp-core-build": {
       "version": "2.5.0",
@@ -166,11 +159,6 @@
           "version": "4.15.0",
           "from": "lodash@>=4.15.0 <4.16.0",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.15.0.tgz"
-        },
-        "typescript": {
-          "version": "2.2.2",
-          "from": "typescript@>=2.2.2 <2.3.0",
-          "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.2.2.tgz"
         }
       }
     },
@@ -7014,9 +7002,9 @@
       "resolved": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
     },
     "typescript": {
-      "version": "2.3.2",
-      "from": "typescript@>=2.2.2 <3.0.0",
-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.3.2.tgz"
+      "version": "2.2.2",
+      "from": "typescript@2.2.2",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.2.2.tgz"
     },
     "ua-parser-js": {
       "version": "0.7.12",
