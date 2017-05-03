@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 May 2017 18:32:23 GMT and should not be manually modified.
+This log was last generated on Wed, 03 May 2017 10:17:38 GMT and should not be manually modified.
+
+## 2.24.2
+Wed, 03 May 2017 10:17:38 GMT
+
+### Patches
+
+- DetailsList: convert colors over to use semantic slots
+- TextField: Fixed bugs in textfield font family and focus borders
 
 ## 2.24.1
 Tue, 02 May 2017 18:32:23 GMT
