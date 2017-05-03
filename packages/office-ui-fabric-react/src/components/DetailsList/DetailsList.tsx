@@ -247,7 +247,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         data-is-scrollable='false'
         aria-label={ ariaLabel }
         { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
-        <div role='grid' aria-label={ ariaLabelForGrid } aria-rowcount={ items.length } aria-colcount={ adjustedColumns.length }>
+        <div role='grid' aria-label={ ariaLabelForGrid } aria-rowcount={ items ? items.length : 0 } aria-colcount={ adjustedColumns.length }>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
