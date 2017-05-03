@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -16,8 +17,9 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import * as stylesImport from './Dropdown.scss';
-const styles: any = stylesImport;
+import styles = require('./Dropdown.scss');
+
+const OPTION: string = 'option';
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -27,6 +29,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
+  calculatedHeight?: number;
 }
 
 @withResponsiveMode
@@ -35,8 +38,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public static defaultProps = {
     options: []
   };
-
-  private static Option: string = 'option';
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -98,7 +99,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isDisabled,
       ariaLabel,
       required,
-      errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -121,8 +121,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled,
-            'is-required ': required,
+            ['is-disabled ' + styles.rootIsDisabled]: disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -139,10 +138,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         >
           <span
             id={ id + '-option' }
-            className={ css(
-              'ms-Dropdown-title', styles.title,
-              (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
-            }
+            className={ css('ms-Dropdown-title', styles.title) }
             key={ selectedIndex }
             aria-atomic={ true }
           >
@@ -155,13 +151,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }
-        {
-          errorMessage &&
-          <div
-            className={ css(styles.errorMessage) }>
-            { errorMessage }
-          </div>
-        }
       </div>
     );
   }
@@ -203,7 +192,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode
     } = this.props;
-
+    const { calculatedHeight } = this.state;
     let isSmall = responsiveMode <= ResponsiveMode.medium;
 
     return (
@@ -228,7 +217,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
+          <div style={ { width: this._dropDown.clientWidth - 2, maxHeight: calculatedHeight === 0 ? undefined : calculatedHeight } }>
             { onRenderList(props, this._onRenderList) }
           </div>
         </Callout>
@@ -274,11 +263,69 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
+  private _calculateMaxHeight() {
+    let { pageSize, options } = this.props;
+    let maxHeight = 0;
+    if (pageSize) {
+      let { selectedIndex } = this.state;
+      if (-1 === selectedIndex) {
+        selectedIndex = 0;
+      }
+
+      let nonSeparatorIndex: number[] = [];
+      let startIndex = selectedIndex;
+      let lookdown = true;
+      let lookup = true;
+      while (nonSeparatorIndex.length < pageSize && (lookdown || lookup)) {
+        if (lookdown) {
+          if (options[startIndex]) {
+            if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
+              nonSeparatorIndex.push(options[startIndex].index);
+            }
+            startIndex += 1;
+            continue;
+          } else {
+            lookdown = false;
+            startIndex = selectedIndex - 1;
+          }
+        }
+
+        if (lookup) {
+          if (options[startIndex]) {
+            if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
+              nonSeparatorIndex.push(options[startIndex].index);
+            }
+            startIndex -= 1;
+            continue;
+          } else {
+            lookup = false;
+            break;
+          }
+        }
+      }
+
+      for (let i = 0; i < nonSeparatorIndex.length; i++) {
+        let item = this.refs[OPTION + i] as Element;
+        if (item) {
+          let itemDOM = ReactDOM.findDOMNode(item);
+          if (itemDOM) {
+            maxHeight += itemDOM.clientHeight;
+          }
+        }
+      }
+
+      if (maxHeight !== this.state.calculatedHeight) {
+        this.setState({ calculatedHeight: maxHeight });
+      }
+    }
+  }
+
   // Render separator
   private _renderSeparator(item: IDropdownOption): JSX.Element {
     let { index, key } = item;
     if (index > 0) {
       return <div
+        ref={ OPTION + item.index }
         role='separator'
         key={ key }
         className={ css('ms-Dropdown-divider', styles.divider) } />;
@@ -289,7 +336,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _renderHeader(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     return (
-      <div className={ css('ms-Dropdown-header', styles.header) }>
+      <div
+        className={ css('ms-Dropdown-header', styles.header) }
+        ref={ OPTION + item.index }>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -302,7 +351,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <CommandButton
         id={ id + '-list' + item.index }
-        ref={ Dropdown.Option + item.index }
+        ref={ OPTION + item.index }
         key={ item.key }
         data-index={ item.index }
         data-is-focusable={ true }
@@ -329,6 +378,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onPositioned() {
     this._focusZone.focus();
+    this._calculateMaxHeight();
   }
 
   private _onItemClick(index) {
