@@ -192,6 +192,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       }, () => {
         this._async.setTimeout(this._onTransitionComplete, 200);
       });
+
+      if (this.props.onDismiss) {
+        this.props.onDismiss();
+      }
     }
   }
 
