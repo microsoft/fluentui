@@ -123,7 +123,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       backgroundColor: backgroundColor,
     };
 
-
     let directionalClassName = (positions && positions.directionalClassName)
       ? animationClassNames[positions.directionalClassName]
       : '';
@@ -131,7 +130,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let contentMaxHeight: number = this._getMaxHeight();
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
     let content = (
-      <div ref={ this._resolveRef('_hostElement') } className={ css('ms-Callout-container', styles.container) }>
+      <div
+        ref={ this._resolveRef('_hostElement') }
+        className={ css('ms-Callout-container', styles.container) }
+      >
         <div
           className={
             css(

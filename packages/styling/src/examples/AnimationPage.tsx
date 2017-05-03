@@ -43,9 +43,9 @@ export class AnimationPage extends BaseComponent<{}, {}> {
         </code>
 
         <PageHeader text='Animations' />
-        <div { ...styles.grid }>
+        <div className={ styles.grid }>
           { Object.keys(animationClassNames).map((name: string) => (
-            <div { ...styles.tile } key={ name }>
+            <div className={ styles.tile } key={ name }>
               <AnimationTile name={ name } />
             </div>
           )) }
