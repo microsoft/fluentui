@@ -206,7 +206,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (!props.placeHolder) {
       return null;
     }
-    return <span>{ props.placeHolder }</span>
+    return <span>{ props.placeHolder }</span>;
   }
 
   // Render Callout or Panel container and pass in list

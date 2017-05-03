@@ -18,7 +18,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
       <div className='ms-DropdownBasicExample'>
 
         <Dropdown
-          placeHolder="Select an Option"
+          placeHolder='Select an Option'
           label='Basic uncontrolled example:'
           id='Basicdrop1'
           ariaLabel='Basic dropdown example'
