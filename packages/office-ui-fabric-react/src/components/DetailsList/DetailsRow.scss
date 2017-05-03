@@ -2,9 +2,11 @@
 
 $rowHeight: 36px;
 $rowVerticalPadding: 10px;
-$selectedColor: $ms-color-neutralQuaternary;
-$selectedHoverColor: $ms-color-neutralQuaternaryAlt;
-$unselectedHoverColor: $ms-color-neutralLighter;
+
+// component slots
+$detailsList-item-hover-color: $listItemHoverColor;
+$detailsList-item-selected-color: $listItemSelectedColor;
+$detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 
 .root {
   @include focus-border();
@@ -25,15 +27,15 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
 
   &:hover {
-    background: $unselectedHoverColor;
+    background: $detailsList-item-hover-color;
   }
 }
 
 .rootIsSelected {
-  background: $selectedColor;
+  background: $detailsList-item-selected-color;
 
   &:hover {
-    background: $selectedHoverColor;
+    background: $detailsList-item-selected-hover-color;
   }
 }
 

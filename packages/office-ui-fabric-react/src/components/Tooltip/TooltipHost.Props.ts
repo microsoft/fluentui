@@ -8,6 +8,14 @@ export interface ITooltipHost {
 
 }
 
+export enum TooltipOverflowMode {
+  /** Only show tooltip if parent DOM element is overflowing */
+  Parent,
+
+  /** Only show tooltip if tooltip host's content is overflowing */
+  Self
+}
+
 /**
  * Tooltip component props.
  */
@@ -39,4 +47,15 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.
+   * It also uses the parent as target element for the tooltip.
+   */
+  overflowMode?: TooltipOverflowMode;
+
+  /**
+   * Optional class name to apply to tooltip host.
+   */
+  hostClassName?: string;
 }

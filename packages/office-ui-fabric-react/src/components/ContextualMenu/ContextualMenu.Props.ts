@@ -246,8 +246,8 @@ export interface IContextualMenuItem {
   href?: string;
 
   /**
-   * @deprecated
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
+   * @deprecated
    */
   items?: IContextualMenuItem[];
 
@@ -283,7 +283,9 @@ export interface IContextualMenuItem {
   title?: string;
 
   /**
-   * Method to custom render this menu item
+   * Method to custom render this menu item.
+   * For keyboard accessibility, the top-level rendered item should be a focusable element
+   * (like an anchor or a button) or have the `data-is-focusable` property set to true.
    * @defaultvalue undefined
    */
   onRender?: (item: any) => React.ReactNode;

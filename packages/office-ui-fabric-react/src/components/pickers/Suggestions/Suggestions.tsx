@@ -4,11 +4,12 @@ import {
   css,
   assign
 } from '../../../Utilities';
-import { CommandButton } from '../../../Button';
+import { CommandButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-import styles = require('./Suggestions.scss');
+import * as stylesImport from './Suggestions.scss';
+const styles: any = stylesImport;
 
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {
@@ -26,6 +27,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       <div
         className={ styles.suggestionsItemContainer }
       >
+<<<<<<< HEAD
         <div
           data-is-focusable={ true }
           id={ id }
@@ -42,6 +44,10 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           { RenderSuggestion(itemProps) }
         </div>
       </div>
+=======
+        <RenderSuggestion { ...suggestionModel.item as any } />
+      </CommandButton>
+>>>>>>> 20fa5efe21f0be39f604fb3a7bdb12c83fdcbe53
     );
   }
 }
@@ -51,7 +57,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
-  protected _searchForMoreButton: CommandButton;
+  protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
@@ -112,12 +118,13 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults()) :
           this._renderSuggestions()
         }
-        { searchForMoreText && moreSuggestionsAvailable ?
-          (<CommandButton
-            onClick={ this._getMoreResults.bind(this) }
+        { searchForMoreText && moreSuggestionsAvailable && (
+          <CommandButton
+            componentRef={ this._resolveRef('_searchForMoreButton') }
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
-            icon={ 'Search' }
-            ref={ this._resolveRef('_searchForMoreButton') } >
+            iconProps={ { iconName: 'Search' } }
+            onClick={ this._getMoreResults.bind(this) }
+          >
             { searchForMoreText }
           </CommandButton>) : (null)
         }

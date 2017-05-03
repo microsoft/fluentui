@@ -19,6 +19,7 @@ import {
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mostRecentlyUsed } from './PeoplePickerExampleData';
 import './PeoplePicker.Types.Example.scss';
+import { Promise } from 'es6-promise';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;

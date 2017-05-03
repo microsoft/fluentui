@@ -4,7 +4,8 @@ import * as React from 'react';
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
 import { IconButton } from '../../../../Button';
-import styles = require('../PeoplePicker.scss');
+import * as stylesImport from '../PeoplePicker.scss';
+const styles: any = stylesImport;
 
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
   return (

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  IDatePickerProps
+  IDatePickerProps,
+  IDatePickerStrings
 } from './DatePicker.Props';
 import {
   Calendar,
@@ -16,7 +17,8 @@ import {
   css
 } from '../../Utilities';
 import { compareDates } from '../../utilities/dateMath/DateMath';
-import styles = require('./DatePicker.scss');
+import * as stylesImport from './DatePicker.scss';
+const styles: any = stylesImport;
 
 export interface IDatePickerState {
   /** The currently focused date in the drop down, but not necessarily selected */
@@ -27,7 +29,7 @@ export interface IDatePickerState {
   errorMessage?: string;
 }
 
-const DEFAULT_STRINGS = {
+const DEFAULT_STRINGS: IDatePickerStrings = {
   months: [
     'January',
     'February',
@@ -78,7 +80,11 @@ const DEFAULT_STRINGS = {
     'S'
   ],
 
-  goToToday: 'Go to today'
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year'
 };
 
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
@@ -231,6 +237,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {
+    if (this.props.disableAutoFocus) {
+      return;
+    }
+
     if (!this.props.allowTextInput) {
       if (!this._preventFocusOpeningPicker) {
         this._showDatePickerPopup();

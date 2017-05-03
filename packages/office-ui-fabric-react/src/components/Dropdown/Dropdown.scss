@@ -56,6 +56,9 @@ $DropDown-item-height: 36px;
         color: $ms-color-contrastWhiteSelected;
       }
     }
+    .titleIsPlaceHolder {
+      color: $ms-color-neutralTertiary;
+    }
   }
 
   &:hover,
@@ -110,6 +113,9 @@ $DropDown-item-height: 36px;
       border-color: $ms-color-contrastWhiteDisabled;
       color: $ms-color-contrastWhiteDisabled;
     }
+    &.titleIsError {
+        border-color: $ms-color-error;
+    }
   }
 
   .caretDown {
@@ -149,6 +155,12 @@ $DropDown-item-height: 36px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  &.titleIsError {
+        border-color: $ms-color-error;
+    }
+  &.titleIsPlaceHolder {
+    color: $ms-color-neutralTertiary;
+  }
 }
 
 .panel {
@@ -165,6 +177,13 @@ $DropDown-item-height: 36px;
 .callout {
   box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
   border: 1px solid $ms-color-neutralLight;
+}
+
+.errorMessage{
+    color: $ms-color-error;
+  &::before {
+    content: '* ';
+  }
 }
 
 .items {
@@ -185,6 +204,7 @@ $DropDown-item-height: 36px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: left;
 
   @media screen and (-ms-high-contrast: active) {
@@ -235,4 +255,34 @@ $DropDown-item-height: 36px;
   @include focus-border();
 
   @include highContrastListItemState;
+}
+
+.header {
+  @include ms-font-m;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-themePrimary;
+  background: none;
+  border: none;
+  height: $DropDown-item-height;
+  line-height: $DropDown-item-height;
+  cursor: default;
+  padding: 0px 16px;
+  user-select: none;
+  @include text-align(left);
+}
+
+.divider {
+  height: 1px;
+  background-color: $dividerColor;
+}
+
+.optionText{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 1px;
 }

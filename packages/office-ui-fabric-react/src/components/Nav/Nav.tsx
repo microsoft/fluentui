@@ -6,7 +6,8 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
-import styles = require('./Nav.scss');
+import * as stylesImport from './Nav.scss';
+const styles: any = stylesImport;
 
 import {
   INav,
@@ -117,7 +118,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           [styles.linkIsOnExpanded]: this._hasExpandButton
         }) }
         href={ link.url }
-        icon={ link.icon }
+        iconProps={ { iconName: link.icon } }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
         { link.name }

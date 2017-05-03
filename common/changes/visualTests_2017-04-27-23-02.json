@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Facepile: Added `className` prop.",
+      "type": "minor"
+    }
+  ],
+  "email": "r33najain@gmail.com"
+}
