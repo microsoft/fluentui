@@ -445,6 +445,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         this.setState({ isOpen: false });
         break;
 
+      case KeyCodes.tab:
+        this.setState({ isOpen: false });
+        return;
+
       default:
         return;
     }

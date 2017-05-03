@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Removes label from native properties",
+      "type": "patch"
+    }
+  ],
+  "email": "cschlechty@gmail.com"
+}

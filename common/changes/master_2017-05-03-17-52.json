@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Tab should close dropdown and tab to next item in tab order",
+      "type": "patch"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
