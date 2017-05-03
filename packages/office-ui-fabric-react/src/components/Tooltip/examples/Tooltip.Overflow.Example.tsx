@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   TooltipHost,
   TooltipOverflowMode
@@ -20,7 +20,7 @@ export class TooltipOverflowExample extends BaseComponent<any, any> {
   public render() {
     return (
       <div>
-        <Button onClick={ () => this.setState({ overflow: !this.state.overflow }) }>Toggle showing overflow</Button>
+        <DefaultButton onClick={ () => this.setState({ overflow: !this.state.overflow }) }>Toggle showing overflow</DefaultButton>
 
         <div style={ {
           marginTop: '40px'
