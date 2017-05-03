@@ -8,7 +8,7 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
       <div style={ { backgroundColor: 'white' } }>
         <ChoiceGroup label='Choice Group'
           className='ChoiceGroup'
-          defaultSelectedKey='bar'
+          defaultSelectedKey='pie'
           options={
             [{
               key: 'bar',
@@ -17,14 +17,13 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
             }, {
               key: 'pie',
               text: 'Pie chart'
-            }
-            ]
+            }]
           } />
-      </div>
+      </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
         <ChoiceGroup label='Choice Group Icon'
           className='ChoiceGroupIcon'
-          defaultSelectedKey='day'
+          defaultSelectedKey='week'
           options={
             [{
               key: 'day',
@@ -37,11 +36,11 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
               text: 'Week'
             }]
           } />
-      </div>
+      </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
         <ChoiceGroup label='Choice Group Disabled'
           className='ChoiceGroupDisabled'
-          defaultSelectedKey='bar'
+          defaultSelectedKey='pie'
           disabled={ true }
           options={
             [{
@@ -51,10 +50,9 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
             }, {
               key: 'pie',
               text: 'Pie chart'
-            }
-            ]
+            }]
           } />
-      </div>
+      </div>&nbsp;
     </div>;
   }
 }
