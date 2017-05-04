@@ -22,10 +22,27 @@
       "outDir": null
     },
     {
-      "name": "Attach",
+      "name": "Run ssr tests",
       "type": "node",
-      "request": "attach",
-      "port": 5858
-    }
+      "request": "launch",
+      "program": "${workspaceRoot}/apps/ssr-tests/node_modules/mocha/bin/_mocha",
+      "stopOnEntry": true,
+      "args": [
+        "--debug",
+        "dist/test-bundle.js"
+      ],
+      "cwd": "${workspaceRoot}/apps/ssr-tests",
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "externalConsole": false,
+      "sourceMaps": false,
+      "outDir": null
+    },
   ]
 }
