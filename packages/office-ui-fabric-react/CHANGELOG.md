@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 May 2017 10:17:38 GMT and should not be manually modified.
+This log was last generated on Thu, 04 May 2017 10:08:59 GMT and should not be manually modified.
+
+## 2.25.0
+Thu, 04 May 2017 10:08:59 GMT
+
+### Minor changes
+
+- Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field
+- Facepile: Added `className` prop.
+
+### Patches
+
+- Dropdown: Tab should close dropdown and tab to next item in tab order
+- OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout
+- ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility.
+- DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements.
+- Moved aria label from ul to menu div
 
 ## 2.24.2
 Wed, 03 May 2017 10:17:38 GMT
