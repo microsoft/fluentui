@@ -22,10 +22,12 @@
 
 .activeSection {
   background: $ms-color-neutralSecondary;
+  @include highContrastAdjust();
 }
 
 .inactiveSection {
   background: $ms-color-neutralTertiaryAlt;
+  @include highContrastAdjust();
 }
 
 .showTransitions {
