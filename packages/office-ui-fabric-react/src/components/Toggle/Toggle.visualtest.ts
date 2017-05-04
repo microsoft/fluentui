@@ -1,4 +1,4 @@
-import { Casper} from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import { defaultScreenshot, testRunner, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
@@ -6,7 +6,7 @@ declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'ms-Toggle-button',
+  selector: '.' + 'ms-Toggle',
   fileName: 'toggle',
   imageSelector: '.' + 'Toggle',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]

@@ -17,7 +17,6 @@ export default class PivotVPage extends React.Component<any, any> {
           <Label>Pivot #3</Label>
         </PivotItem>
       </Pivot></div>&nbsp;
-
     </div>;
   }
 }

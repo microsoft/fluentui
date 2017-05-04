@@ -1,4 +1,4 @@
-import { Casper} from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
 import {
   defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
