@@ -30,6 +30,8 @@ export function getStyles(theme: ITheme = getTheme()): IColorPageStyles {
       }),
 
     swatchText: mergeStyles({
+      display: 'inline-block',
+      verticalAlign: 'middle',
     }),
 
     example: mergeStyles(theme.fonts.mediumPlus)

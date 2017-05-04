@@ -4,8 +4,7 @@ import {
   DefaultPalette,
   ColorClassNames,
   ITheme,
-  getTheme,
-  mergeStyles
+  getTheme
 } from '@uifabric/styling';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Page } from '../Page/Page';
