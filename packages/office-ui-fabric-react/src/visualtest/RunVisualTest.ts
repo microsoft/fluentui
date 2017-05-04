@@ -7,8 +7,10 @@ declare var casper: Casper;
 export function defaultScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(() => {
-    phantomcss.screenshot(params.imageSelector, params.fileName + '_default');
+  casper.waitForSelector(params.imageSelector, function () {
+    casper.then(() => {
+      phantomcss.screenshot(params.imageSelector, params.fileName + '_default');
+    })
   });
   if (params.childParams) {
     params.childParams.commands.forEach(commandList => {
@@ -20,7 +22,8 @@ export function defaultScreenshot(params: IRunVisualTest) {
 export function mouseMoveScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
+  let self = this;
+  casper.waitForSelector(params.imageSelector, function () {
     this.mouse.move(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseMove');
   });
@@ -34,7 +37,7 @@ export function mouseMoveScreenshot(params: IRunVisualTest) {
 export function mouseDownScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
+  casper.waitForSelector(params.imageSelector, function () {
     this.mouse.down(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseDown');
   });
@@ -47,12 +50,14 @@ export function mouseDownScreenshot(params: IRunVisualTest) {
 export function mouseClickScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
-    this.click(params.selector);
-    phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseClick');
-  });
-  casper.then(function () {
-    this.click(params.selector);
+  casper.waitForSelector(params.imageSelector, function () {
+    casper.then(function () {
+      this.click(params.selector);
+      phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseClick');
+    });
+    casper.then(function () {
+      this.click(params.selector);
+    });
   });
   if (params.childParams) {
     params.childParams.commands.forEach(commandList => {
@@ -64,13 +69,16 @@ export function mouseClickScreenshot(params: IRunVisualTest) {
 export function mouseSingleClickScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
-    this.click(params.selector);
+  casper.waitForSelector(params.imageSelector, function () {
+    casper.then(function () {
+      this.click(params.selector);
+    });
   });
   if (params.childParams) {
     params.childParams.commands.forEach(commandList => {
       commandList(params.childParams);
     });
+
   }
 }
 export function testRunner(componentIds: IRunVisualTest[]) {
