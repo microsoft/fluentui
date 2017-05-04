@@ -3,7 +3,7 @@
 let build = require('@microsoft/sp-build-web');
 let gulp = require('gulp');
 
-// Configure TypeScript 2.0.
+// Configure TypeScript
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // Configure custom lint overrides.
