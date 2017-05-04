@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  height: 50px;
+
+  p, button {
+    box-sizing: border-box;
+    margin: 0;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    flex: none;
+  }
+}

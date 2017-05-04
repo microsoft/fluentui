@@ -291,6 +291,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/marqueeselection'
         },
         {
+          getComponent: cb => cb(require<any>('../components/ScreenReaderAlert/ScreenReaderAlertPage').ScreenReaderAlertPage),
+          key: 'ScreenReaderAlert',
+          name: 'ScreenReaderAlert',
+          url: '#/examples/screenreaderalert'
+        },
+        {
           getComponent: cb => cb(require<any>('../utilities/selection/SelectionPage').SelectionPage),
           key: 'Selection',
           name: 'Selection',
