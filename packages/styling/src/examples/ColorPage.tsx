@@ -53,6 +53,7 @@ const COLUMNS: IColumn[] = [
 ];
 
 export interface IColorItem {
+  [index: string]: string;
   key: string;
   colorValue: string;
   name: string;

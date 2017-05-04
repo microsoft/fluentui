@@ -27,6 +27,7 @@ const MEGA_SIZE: string = '72px';
  * UI Fabric font set.
  */
 export interface IFontStyles {
+  [index: string]: CSSProperties;
   tiny?: CSSProperties;
   xSmall?: CSSProperties;
   small?: CSSProperties;

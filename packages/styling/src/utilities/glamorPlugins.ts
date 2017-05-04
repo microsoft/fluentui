@@ -10,8 +10,8 @@ interface IGlamorRulePair {
 // force speedy.
 // Glamor['speedy'](true);
 
-// tslint:disable-next-line:no-string-literal
-Glamor['plugins'].add(
+// tslint:disable-next-line:no-string-literal no-any
+(<any>Glamor)['plugins'].add(
   ({ selector, style }: IGlamorRulePair): IGlamorRulePair => (
     {
       selector,

@@ -1,4 +1,5 @@
 export interface IIconCodes {
+  [index: string]: string;
   aadLogo: string;
   accept: string;
   accessLogo: string;

@@ -1,4 +1,3 @@
-import * as assign from 'object-assign';
 import { defaultFontStyles } from '../styles/defaultFontStyles';
 import { IFontStyles } from '../styles/fontStyles';
 import { IColorStyles, defaultColorStyles } from '../styles/colorStyles';
@@ -24,6 +23,6 @@ export function getTheme(): ITheme {
  * Mixes the given theme settings into the current theme object.
  */
 export function loadTheme(theme: ITheme): void {
-  _theme.colors = assign({}, _theme.colors, theme.colors);
-  _theme.fonts = assign({}, _theme.fonts, theme.fonts);
+  _theme.colors =  {..._theme.colors, ...theme.colors};
+  _theme.fonts = {..._theme.fonts, ...theme.fonts};
 }

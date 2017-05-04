@@ -16,7 +16,8 @@ for (const fontName in defaultFontStyles) {
  */
 function _defineFontGetter(obj: IFontStyles, fontName: string): void {
   Object.defineProperty(obj, fontName, {
-    get: (): string => getTheme().fonts[fontName],
+    // tslint:disable-next-line:no-any
+    get: (): string => (<any>getTheme().fonts)[fontName],
     enumerable: true,
     configurable: true
   });

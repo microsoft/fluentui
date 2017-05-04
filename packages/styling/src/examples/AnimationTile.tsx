@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { getTheme, ITheme, animationClassNames } from '@uifabric/styling';
+import { getTheme, ITheme, animationClassNames, IAnimationClassNames } from '@uifabric/styling';
 import { css, CSSProperties } from 'glamor';
 
 function getStyles(theme?: ITheme): CSSProperties {
@@ -63,7 +63,7 @@ function getStyles(theme?: ITheme): CSSProperties {
 }
 
 export interface IAnimationTileProps {
-  name: string;
+  name: keyof IAnimationClassNames;
 }
 
 export interface IAnimationTileState {

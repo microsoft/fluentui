@@ -3,8 +3,8 @@ import * as Glamor from 'glamor';
 import './utilities/glamorPlugins';
 
 // Force glamor speedy mode.
-// tslint:disable-next-line:no-string-literal
-Glamor['speedy'](false);
+// tslint:disable-next-line:no-string-literal no-any
+(Glamor as any)['speedy'](false);
 
 import { loadTheme } from '@uifabric/styling';
 

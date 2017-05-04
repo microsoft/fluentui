@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { Page, PageHeader } from './components';
 import { AnimationTile } from './AnimationTile';
-import { animationClassNames } from '@uifabric/styling';
+import { animationClassNames, IAnimationClassNames } from '@uifabric/styling';
 import { getStyles } from './AnimationPage.styles';
 import { CSSProperties } from 'glamor';
 
@@ -44,7 +44,7 @@ export class AnimationPage extends BaseComponent<{}, {}> {
 
         <PageHeader text='Animations' />
         <div className={ styles.grid }>
-          { Object.keys(animationClassNames).map((name: string) => (
+          { Object.keys(animationClassNames).map((name: keyof IAnimationClassNames) => (
             <div className={ styles.tile } key={ name }>
               <AnimationTile name={ name } />
             </div>

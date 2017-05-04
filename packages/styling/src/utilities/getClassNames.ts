@@ -8,7 +8,8 @@ export function getClassNames<T>(styles: T): IClassNames<T> {
   return Object
     .keys(styles)
     .reduce((classNames: IClassNames<T>, className: string) => {
-      classNames[className] = css(styles[className]).toString();
+      // tslint:disable-next-line:no-any
+      classNames[className] = css((<any>styles)[className]).toString();
       return classNames;
     }, {});
 }
