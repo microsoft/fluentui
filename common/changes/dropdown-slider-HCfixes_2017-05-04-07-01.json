@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "High contrast fixes for dropdown and slider",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
