@@ -9,12 +9,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "typeRoots" : ["./typings", "./node_modules"],
     "types": [
       "chai",
       "mocha",
-      "webpack-env",
-      "rtl-css-js"
+      "webpack-env"
     ],
     "outDir": "../lib",
     "paths": {
