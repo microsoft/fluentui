@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixed Persona size28 height of initials",
+      "type": "patch"
+    }
+  ],
+  "email": "lydutk@microsoft.com"
+}
