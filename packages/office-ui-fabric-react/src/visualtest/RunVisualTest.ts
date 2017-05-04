@@ -55,11 +55,11 @@ export function mouseClickScreenshot(params: IRunVisualTest) {
 
   casper.waitForSelector(params.imageSelector, () => {
     casper.wait(1000);
-    casper.then(function () {
+    casper.then(() => {
       casper.click(params.selector);
       phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseClick');
     });
-    casper.then(function () {
+    casper.then(() => {
       casper.click(params.selector);
     });
   });
