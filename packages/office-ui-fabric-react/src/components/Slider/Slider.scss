@@ -10,24 +10,39 @@
 }
 
 .line {
+  display: flex;
   position: relative;
   width: 100%;
 }
 
 .line span {
   height: 4px;
-  @include float(left);
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .activeSection {
   background: $ms-color-neutralSecondary;
-  @include highContrastAdjust();
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $ms-color-black;
+  }
 }
 
 .inactiveSection {
   background: $ms-color-neutralTertiaryAlt;
-  @include highContrastAdjust();
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
+  }
 }
 
 .showTransitions {
@@ -89,15 +104,39 @@
 
     .thumb {
       border: 2px solid $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
     }
+
     .activeSection {
       background-color: $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
     }
 
     .inactiveSection {
       background-color: $ms-color-themeLight;
-    }
 
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+    }
   }
 
   .slideBox:active {
@@ -113,7 +152,29 @@
 .rootIsDisabled {
   .thumb {
     border-color: $ms-color-neutralTertiaryAlt;
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteDisabled;
+    }
   }
+
+  .activeSection,
+  .inactiveSection {
+    @media screen and (-ms-high-contrast: active) {
+      background-color: $ms-color-contrastBlackDisabled;
+      border-color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-contrastWhiteDisabled;
+      border-color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
   .activeSection {
     background: $ms-color-neutralTertiaryAlt;
   }
