@@ -3,8 +3,8 @@
 let build = require('@microsoft/web-library-build');
 let gulp = require('gulp');
 
-// Configure TypeScript 2.0.
-build.typescript.setConfig({ typescript: require('typescript') });
+// Configure TypeScript.
+build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // Configure custom lint overrides.
 let rules = Object.assign(

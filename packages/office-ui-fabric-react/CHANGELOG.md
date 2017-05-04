@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 01 May 2017 10:18:36 GMT and should not be manually modified.
+This log was last generated on Wed, 03 May 2017 10:17:38 GMT and should not be manually modified.
+
+## 2.24.2
+Wed, 03 May 2017 10:17:38 GMT
+
+### Patches
+
+- DetailsList: convert colors over to use semantic slots
+- TextField: Fixed bugs in textfield font family and focus borders
+
+## 2.24.1
+Tue, 02 May 2017 18:32:23 GMT
+
+### Patches
+
+- TooltipHost: Add host className
+- Modal: Fixed bug where props and state were passed in reversed order
+- Calendar: Fix ariaLabel for previous month button
+
+## 2.24.0
+Tue, 02 May 2017 10:09:08 GMT
+
+### Minor changes
+
+- Callout: support for aria role, label and description
+- Pivot: Allow rendering PivotItem headers without content.
+
+### Patches
+
+- Panel: Updating the close button's height, container, margin, and size slightly.
+- List: correctly measure pages when using display: none.
+- Calendar: Support auto-navigation to next/previous month when selected date changes via props
+- Shifting the ContextMenu over to semantic slots for colors.
 
 ## 2.23.3
 Mon, 01 May 2017 10:18:36 GMT
