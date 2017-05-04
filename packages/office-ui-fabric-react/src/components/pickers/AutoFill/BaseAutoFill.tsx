@@ -100,7 +100,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       onChange={ this._onChange }
       onKeyDown={ this._onKeyDown }
       onClick={ this._onClick }
-      disabled={ this.props.disabled }
     />;
   }
 
