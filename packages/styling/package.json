@@ -32,7 +32,7 @@
     "tslib": "^1.6.0",
     "tslint": "^5.1.0",
     "tslint-microsoft-contrib": "^4.0.1",
-    "typescript": "^2.2.1",
+    "typescript": "2.2.2",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",
@@ -41,7 +41,7 @@
     "webpack-split-by-path": "2.0.0"
   },
   "dependencies": {
-    "@uifabric/utilities": ">=1.8.4 <2.0.0",
+    "@uifabric/utilities": ">=1.8.5 <2.0.0",
     "glamor": "^2.20.24",
     "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0",
     "rtl-css-js": "^1.1.0"
