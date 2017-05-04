@@ -143,6 +143,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/overlay'
         },
         {
+          getComponent: cb => cb(require<any>('../components/OverflowSet/OverflowSetPage').OverflowSetPage),
+          key: 'OverflowSet',
+          name: 'OverflowSet',
+          url: '#/examples/overflowset'
+        },
+        {
           getComponent: cb => cb(require<any>('../components/Panel/PanelPage').PanelPage),
           key: 'Panel',
           name: 'Panel',
