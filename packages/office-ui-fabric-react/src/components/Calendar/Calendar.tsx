@@ -46,7 +46,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   constructor(props: ICalendarProps) {
     super();
 
-    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : props.today;
+    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate
@@ -56,7 +56,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public componentWillReceiveProps(nextProps: ICalendarProps) {
-    let { autoNavigateOnSelection, value, today } = nextProps;
+    let { autoNavigateOnSelection, value, today = new Date() } = nextProps;
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
     // if selected date is updated via props, we may need to modify the navigated date
@@ -68,7 +68,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     this.setState({
-      selectedDate: value || (today || new Date())
+      selectedDate: value || today
     });
   }
 
