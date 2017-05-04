@@ -90,7 +90,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { suggestedDisplayValue } = this.state;
     let {
       className,
-      inputProps
+      inputProps,
+      disabled
     } = this.props;
 
     return (
@@ -120,7 +121,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
-                disabled={ this.disabled } />
+                disabled={ disabled }
+              />
             </div>
           </SelectionZone>
         </FocusZone>
@@ -408,7 +410,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     let { suggestedDisplayValue } = this.state;
     let {
       className,
-      inputProps
+      inputProps,
+      disabled
     } = this.props;
 
     return (
@@ -433,6 +436,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
+                disabled={ disabled }
               />
             </div>
           </SelectionZone>

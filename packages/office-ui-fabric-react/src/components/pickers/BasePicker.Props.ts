@@ -52,7 +52,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Flag for disabling the picker.
    */
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
