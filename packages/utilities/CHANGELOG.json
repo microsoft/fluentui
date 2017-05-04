@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.8.6",
+      "tag": "@uifabric/utilities_v1.8.6",
+      "date": "Thu, 04 May 2017 10:08:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Chris Schlechty <cschlechty@users.noreply.github.com>",
+            "commit": "ed291760d1d204bb22856c97d07af0eb7853e420",
+            "comment": "Removes label from native properties"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.5",
       "tag": "@uifabric/utilities_v1.8.5",
       "date": "Tue, 02 May 2017 10:09:08 GMT",
