@@ -3,6 +3,7 @@ import { css, CSSProperties } from 'glamor';
 import { defaultColorStyles } from '../styles/colorStyles';
 
 export interface IColorClassNames {
+  [index: string]: string;
   themeDarker?: string;
   themeDarkerHover?: string;
   themeDarkerBackground?: string;

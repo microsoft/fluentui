@@ -108,6 +108,8 @@ interface IAnimationStyles {
 // (undocumented)
 interface IColorClassNames {
   // (undocumented)
+  [ index: string ]: string;
+  // (undocumented)
   black?: string;
   // (undocumented)
   blackBackground?: string;
@@ -687,6 +689,8 @@ interface IColorClassNames {
 
 interface IColorStyles {
   // (undocumented)
+  [ index: string ]: string;
+  // (undocumented)
   black?: string;
   // (undocumented)
   blackTranslucent40?: string;
@@ -794,6 +798,8 @@ interface IFontClassNames extends IClassNames<IFontStyles> {
 
 interface IFontStyles {
   // (undocumented)
+  [ index: string ]: CSSProperties;
+  // (undocumented)
   icon?: CSSProperties;
   // (undocumented)
   large?: CSSProperties;
@@ -825,6 +831,8 @@ interface IIconClassNames extends IClassNames<IIconCodes> {
 
 // (undocumented)
 interface IIconCodes {
+  // (undocumented)
+  [ index: string ]: string;
   // (undocumented)
   aadLogo: string;
   // (undocumented)
@@ -2254,7 +2262,7 @@ interface ITheme {
 export function loadTheme(theme: ITheme): void;
 
 // (undocumented)
-export function mergeRules(...args: Object[]): Object;
+export function mergeRules(...args: {[index: string]: Object}[]): Object;
 
 export function parent(selector: string, props: CSSProperties): StyleAttribute;
 

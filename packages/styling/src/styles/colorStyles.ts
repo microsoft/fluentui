@@ -4,6 +4,7 @@ import { getTheme } from '../utilities/theme';
  * UI Fabric color palette.
  */
 export interface IColorStyles {
+  [index: string]: string;
   themeDarker?: string;
   themeDark?: string;
   themeDarkAlt?: string;
