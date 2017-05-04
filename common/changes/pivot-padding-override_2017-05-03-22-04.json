@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout",
+      "comment": "Pivot: increased specificty to fix button styles overriding pivo",
       "type": "patch"
     }
   ],
