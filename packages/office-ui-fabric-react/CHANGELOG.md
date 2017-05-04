@@ -1,6 +1,89 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Apr 2017 10:19:05 GMT and should not be manually modified.
+This log was last generated on Thu, 04 May 2017 10:08:59 GMT and should not be manually modified.
+
+## 2.25.0
+Thu, 04 May 2017 10:08:59 GMT
+
+### Minor changes
+
+- Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field
+- Facepile: Added `className` prop.
+
+### Patches
+
+- Dropdown: Tab should close dropdown and tab to next item in tab order
+- OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout
+- ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility.
+- DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements.
+- Moved aria label from ul to menu div
+
+## 2.24.2
+Wed, 03 May 2017 10:17:38 GMT
+
+### Patches
+
+- DetailsList: convert colors over to use semantic slots
+- TextField: Fixed bugs in textfield font family and focus borders
+
+## 2.24.1
+Tue, 02 May 2017 18:32:23 GMT
+
+### Patches
+
+- TooltipHost: Add host className
+- Modal: Fixed bug where props and state were passed in reversed order
+- Calendar: Fix ariaLabel for previous month button
+
+## 2.24.0
+Tue, 02 May 2017 10:09:08 GMT
+
+### Minor changes
+
+- Callout: support for aria role, label and description
+- Pivot: Allow rendering PivotItem headers without content.
+
+### Patches
+
+- Panel: Updating the close button's height, container, margin, and size slightly.
+- List: correctly measure pages when using display: none.
+- Calendar: Support auto-navigation to next/previous month when selected date changes via props
+- Shifting the ContextMenu over to semantic slots for colors.
+
+## 2.23.3
+Mon, 01 May 2017 10:18:36 GMT
+
+### Patches
+
+- Toggle: Make toggle control more universally accessible across screen readers.
+
+## 2.23.2
+Fri, 28 Apr 2017 18:00:56 GMT
+
+### Patches
+
+- TooltipHost: Fixing AMD import to pull getId from the Utilities AMD-friendly top-level import.
+
+## 2.23.1
+Fri, 28 Apr 2017 10:09:16 GMT
+
+### Patches
+
+- Dropdown: Fix an issue with screenreaders not reading menu items.
+- Add aria-describedby to tooltiphost component
+
+## 2.23.0
+Thu, 27 Apr 2017 10:18:03 GMT
+
+### Minor changes
+
+- TooltipHost: Allow showing tooltip only if there's overflow
+- TextField: Convert to flexbox, support addons
+
+### Patches
+
+- Don't break intra-word in tooltips UNLESS required for overflow by using CSS overflow-wrap property. Fixes #1627.
+- PeoplePicker: Adding vertical-align to the member list version of the people picker.
 
 ## 2.22.1
 Wed, 26 Apr 2017 10:19:05 GMT
