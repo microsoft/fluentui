@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed Persona size28 height of initials",
+      "comment": "Persona: Fixed clipping issue when using size28",
       "type": "patch"
     }
   ],
