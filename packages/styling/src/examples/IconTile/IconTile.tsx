@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { iconCodes } from '@uifabric/styling';
+import { IconCodes } from '@uifabric/styling';
 import { IIconTileStyles, getStyles } from './IconTile.styles';
 
 export interface IIconTileProps extends React.HTMLProps<HTMLDivElement> {
@@ -13,7 +13,7 @@ export function IconTile(props: IIconTileProps): JSX.Element {
 
   return (
     <div className={ styles.iconTile as string } { ...divProps }>
-      <i className={ styles.icon as string }>{ iconCodes[iconName] }</i>
+      <i className={ styles.icon as string }>{ IconCodes[iconName] }</i>
       <div>{ iconName }</div>
     </div>
   );

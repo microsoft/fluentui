@@ -1,11 +1,4 @@
 import * as React from 'react';
-import * as Glamor from 'glamor';
-import './utilities/glamorPlugins';
-
-// Force glamor speedy mode.
-// tslint:disable-next-line:no-string-literal
-Glamor['speedy'](false);
-
 import { loadTheme } from '@uifabric/styling';
 
 // Example of setting theming overrides!
@@ -20,11 +13,12 @@ loadTheme({
   }
 });
 */
+
 import { examplesOf, createApp } from '@uifabric/example-app-base';
-import { ColorPage } from './examples/ColorPage';
-import { FontPage } from './examples/FontPage';
-import { IconPage } from './examples/IconPage';
-import { AnimationPage } from './examples/AnimationPage';
+import { ColorPage } from './examples/ColorPage/ColorPage';
+import { FontPage } from './examples/FontPage/FontPage';
+import { IconPage } from './examples/IconPage/IconPage';
+import { AnimationPage } from './examples/AnimationPage/AnimationPage';
 
 createApp([
   examplesOf('Styling')

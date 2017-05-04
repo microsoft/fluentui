@@ -1,18 +1,19 @@
 import {
+  AnimationStyles,
+  IStyle,
   ITheme,
-  css,
   getTheme,
-  IStyleType
+  mergeStyles
 } from '@uifabric/styling';
 
 export interface IIconTileStyles {
-  iconTile: IStyleType;
-  icon: IStyleType;
+  iconTile: IStyle;
+  icon: IStyle;
 }
 
 export function getStyles(theme: ITheme = getTheme()): IIconTileStyles {
   return {
-    iconTile: css(
+    iconTile: mergeStyles(
       theme.fonts.small,
       {
         flexShrink: 0,
@@ -35,24 +36,25 @@ export function getStyles(theme: ITheme = getTheme()): IIconTileStyles {
           top: 0,
           right: 0,
           bottom: 0,
-          border: '1px solid ' + theme.colors.themePrimary,
+          border: '1px solid ' + theme.palette.themePrimary,
         },
 
         ':focus': {
-          color: theme.colors.themePrimary,
+          ...AnimationStyles.fadeIn500,
+          color: theme.palette.themePrimary,
           opacity: 1,
-          background: theme.colors.themeLighterAlt
+          background: theme.palette.themeLighterAlt
         },
         ':hover': {
           opacity: 1,
-          background: theme.colors.themeLighterAlt
+          background: theme.palette.themeLighterAlt
         },
         ':focus:hover': {
-          background: theme.colors.themeLight
+          background: theme.palette.themeLight
         }
       }),
 
-    icon: css(
+    icon: mergeStyles(
       theme.fonts.icon,
       {
         fontSize: '36px',

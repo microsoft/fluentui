@@ -1,3 +1,15 @@
-export * from './theme';
-export * from './css';
-export * from './mergeRules';
+export {
+  ITheme,
+  getTheme,
+  loadTheme
+} from './theme';
+export {
+  mergeStyles
+} from './mergeStyles';
+export {
+  mergeStyleSets
+} from './mergeStyleSets';
+export {
+  IClassNames,
+  getClassNames
+} from './getClassNames';

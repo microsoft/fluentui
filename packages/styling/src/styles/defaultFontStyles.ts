@@ -1,4 +1,5 @@
-import { fontFace, CSSProperties } from 'glamor';
+import { IFontStyles, IRawStyle } from '../interfaces/index';
+import { fontFace } from '../glamor';
 
 const FONT_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean';
 const ICON_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
@@ -23,25 +24,7 @@ const XX_LARGE_SIZE: string = '28px';
 const SUPER_SIZE: string = '42px';
 const MEGA_SIZE: string = '72px';
 
-/**
- * UI Fabric font set.
- */
-export interface IFontStyles {
-  tiny?: CSSProperties;
-  xSmall?: CSSProperties;
-  small?: CSSProperties;
-  smallPlus?: CSSProperties;
-  medium?: CSSProperties;
-  mediumPlus?: CSSProperties;
-  large?: CSSProperties;
-  xLarge?: CSSProperties;
-  xxLarge?: CSSProperties;
-  superLarge?: CSSProperties;
-  mega?: CSSProperties;
-  icon?: CSSProperties;
-}
-
-export const defaultFontStyles: IFontStyles = {
+export const DefaultFontStyles: IFontStyles = {
   tiny: _createFont(MINI_SIZE, SEMIBOLD_WEIGHT),
   xSmall: _createFont(X_SMALL_SIZE, REGULAR_WEIGHT),
   small: _createFont(SMALL_SIZE, REGULAR_WEIGHT),
@@ -55,12 +38,12 @@ export const defaultFontStyles: IFontStyles = {
   mega: _createFont(MEGA_SIZE, LIGHT_WEIGHT),
   icon: {
     fontFamily: '"FabricMDL2Icons"',
-    fontWeight: REGULAR_WEIGHT,
+    fontWeight: 400,
     fontStyle: 'normal'
   }
 };
 
-function _createFont(size: string, weight: number): CSSProperties {
+function _createFont(size: string, weight: number): IRawStyle {
   return {
     fontFamily: FAMILY_BASE,
     WebkitFontSmoothing: 'antialiased',

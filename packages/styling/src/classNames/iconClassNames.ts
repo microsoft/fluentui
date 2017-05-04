@@ -1,17 +1,23 @@
-import { iconCodes, IIconCodes } from '../styles/iconCodes';
-import { fontStyles } from '../styles/fontStyles';
-import { IClassNames } from '../utilities/getClassNames';
-import { css, before } from 'glamor';
+import { IconCodes, DefaultFontStyles } from '../styles/index';
+import {
+  IClassNames,
+  mergeStyles
+} from '../utilities/index';
+import {
+  before
+} from '../glamor';
 
-export interface IIconClassNames extends IClassNames<IIconCodes> { }
+export interface IIconClassNames extends IClassNames<typeof IconCodes> { }
 
-// tslint:disable-next-line:no-any
-export const iconClassNames: IIconClassNames = {};
+export const IconClassNames: IIconClassNames = {};
 
 // tslint:disable-next-line:forin
-for (const iconName in iconCodes) {
-  Object.defineProperty(iconClassNames, iconName, {
-    get: (): string => css(fontStyles.icon, before({ content: `"${iconCodes[iconName]}"` })).toString(),
+for (const iconName in IconCodes) {
+  Object.defineProperty(IconClassNames, iconName, {
+    get: (): string => mergeStyles(
+      DefaultFontStyles.icon,
+      before({ content: `"${IconCodes[iconName]}"` })
+    ).toString(),
     enumerable: true,
     configurable: true
   });

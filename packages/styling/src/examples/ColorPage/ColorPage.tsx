@@ -1,32 +1,16 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { css, CSSProperties } from 'glamor';
-import { getTheme, ITheme, colorClassNames } from '@uifabric/styling';
+import {
+  DefaultPalette,
+  ColorClassNames,
+  ITheme,
+  getTheme,
+  mergeStyles
+} from '@uifabric/styling';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { Page, PageHeader } from './components';
-
-const { colors, fonts }: ITheme = getTheme();
-
-const styles: CSSProperties = {
-  swatch: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    width: 20,
-    height: 20,
-    borderRadius: '50%',
-    marginRight: '8px'
-  },
-  cell: {
-    ...fonts.small,
-    display: 'inline-block',
-    vertikcalAlign: 'middle',
-  },
-  swatchText: {
-  },
-  example: {
-    ...fonts.mediumPlus
-  }
-};
+import { Page } from '../Page/Page';
+import { PageHeader } from '../PageHeader/PageHeader';
+import { IColorPageStyles, getStyles } from './ColorPage.styles';
 
 const COLUMNS: IColumn[] = [
   {
@@ -66,9 +50,11 @@ export class ColorPage extends BaseComponent<{}, {}> {
   }
   public render(): JSX.Element {
     const items: IColorItem[] = [];
+    const theme: ITheme = getTheme();
+    const styles: IColorPageStyles = getStyles();
 
-    Object.keys(colors).forEach((colorName: string) => {
-      const colorValue: string = colors[colorName];
+    Object.keys(DefaultPalette).forEach((colorName: string) => {
+      const colorValue: string = theme.palette[colorName];
 
       ['', 'Hover', 'Background', 'BackgroundHover'].forEach((suffix: string) => {
         items.push({
@@ -86,20 +72,15 @@ export class ColorPage extends BaseComponent<{}, {}> {
           items={ items }
           columns={ COLUMNS }
           onRenderItemColumn={ (item: IColorItem, index: number, column: IColumn): JSX.Element => (
-            <div
-              { ...css(styles.cell) }
-            >
+            <div className={ styles.cell as string }>
               { column.fieldName === 'colorValue' ? (
                 <div>
-                  <div { ...css(styles.swatch) } style={ { background: item.colorValue } } />
-                  <div { ...css(styles.cell, styles.swatchText) }>{ item.colorValue }</div>
+                  <div className={ styles.swatch as string } style={ { background: item.colorValue } } />
+                  <div className={ styles.swatchText as string }>{ item.colorValue }</div>
                 </div>
               ) :
                 column.key === 'example' ? (
-                  <div
-                    { ...css(styles.example) }
-                    className={ colorClassNames[item.name] }
-                  >
+                  <div className={ ColorClassNames[item.name] as string }>
                     The quick brown fox jumps over the lazy dog.
                   </div>
                 ) : (

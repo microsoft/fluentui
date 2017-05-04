@@ -1,6 +1,6 @@
-import { getTheme } from '../utilities/theme';
-import { css, CSSProperties } from 'glamor';
-import { defaultColorStyles } from '../styles/colorStyles';
+import { getTheme, mergeStyles } from '../utilities/index';
+import { IRawStyle } from '../interfaces/index';
+import { DefaultPalette } from '../styles/DefaultPalette';
 
 export interface IColorClassNames {
   themeDarker?: string;
@@ -293,27 +293,27 @@ export interface IColorClassNames {
   greenLightBorderHover?: string;
 }
 
-export const colorClassNames: IColorClassNames = {};
+export const ColorClassNames: IColorClassNames = {};
 
-for (const colorName in defaultColorStyles) {
-  if (defaultColorStyles.hasOwnProperty(colorName)) {
+for (const colorName in DefaultPalette) {
+  if (DefaultPalette.hasOwnProperty(colorName)) {
     // Foreground color
-    _defineGetter(colorClassNames, colorName, '', false, 'color');
+    _defineGetter(ColorClassNames, colorName, '', false, 'color');
 
     // Hover color
-    _defineGetter(colorClassNames, colorName, 'Hover', true, 'color');
+    _defineGetter(ColorClassNames, colorName, 'Hover', true, 'color');
 
     // Background color
-    _defineGetter(colorClassNames, colorName, 'Background', false, 'background');
+    _defineGetter(ColorClassNames, colorName, 'Background', false, 'background');
 
     // Background hover
-    _defineGetter(colorClassNames, colorName, 'BackgroundHover', true, 'background');
+    _defineGetter(ColorClassNames, colorName, 'BackgroundHover', true, 'background');
 
     // Border color
-    _defineGetter(colorClassNames, colorName, 'Border', false, 'borderColor');
+    _defineGetter(ColorClassNames, colorName, 'Border', false, 'borderColor');
 
     // Border hover color
-    _defineGetter(colorClassNames, colorName, 'BorderHover', true, 'borderColor');
+    _defineGetter(ColorClassNames, colorName, 'BorderHover', true, 'borderColor');
   }
 }
 
@@ -329,8 +329,9 @@ function _defineGetter(
 ): void {
   Object.defineProperty(obj, colorName + suffix, {
     get: (): string => {
-      const style: CSSProperties = { [cssProperty]: getTheme().colors[colorName] };
-      return css(isHover ? { ':hover': style } : style).toString();
+      const style: IRawStyle = { [cssProperty]: getTheme().palette[colorName] };
+
+      return mergeStyles(isHover ? { ':hover': style } : style).toString();
     },
     enumerable: true,
     configurable: true

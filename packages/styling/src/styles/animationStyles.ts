@@ -1,4 +1,6 @@
-import { keyframes, CSSProperties } from 'glamor';
+import { IAnimationStyles } from '../interfaces/index';
+import { IRawStyle } from '../interfaces/index';
+import { keyframes } from '../glamor';
 
 /* Register the keyframes */
 
@@ -79,52 +81,7 @@ const ROTATE_N90: string = keyframes({
  * All Fabric standard animations, exposed as json objects referencing predefined
  * keyframes. These objects can be mixed in with other class definitions.
  */
-export interface IAnimationStyles {
-  slideRightIn10: CSSProperties;
-  slideRightIn20: CSSProperties;
-  slideRightIn40: CSSProperties;
-  slideRightIn400: CSSProperties;
-  slideLeftIn10: CSSProperties;
-  slideLeftIn20: CSSProperties;
-  slideLeftIn40: CSSProperties;
-  slideLeftIn400: CSSProperties;
-  slideUpIn10: CSSProperties;
-  slideUpIn20: CSSProperties;
-  slideDownIn10: CSSProperties;
-  slideDownIn20: CSSProperties;
-  slideRightOut10: CSSProperties;
-  slideRightOut20: CSSProperties;
-  slideRightOut40: CSSProperties;
-  slideRightOut400: CSSProperties;
-  slideLeftOut10: CSSProperties;
-  slideLeftOut20: CSSProperties;
-  slideLeftOut40: CSSProperties;
-  slideLeftOut400: CSSProperties;
-  slideUpOut10: CSSProperties;
-  slideUpOut20: CSSProperties;
-  slideDownOut10: CSSProperties;
-  slideDownOut20: CSSProperties;
-  scaleUpIn100: CSSProperties;
-  scaleDownIn100: CSSProperties;
-  scaleUpOut103: CSSProperties;
-  scaleDownOut98: CSSProperties;
-  fadeIn100: CSSProperties;
-  fadeIn200: CSSProperties;
-  fadeIn400: CSSProperties;
-  fadeIn500: CSSProperties;
-  fadeOut100: CSSProperties;
-  fadeOut200: CSSProperties;
-  fadeOut400: CSSProperties;
-  fadeOut500: CSSProperties;
-  rotate90deg: CSSProperties;
-  rotateN90deg: CSSProperties;
-}
-
-/**
- * All Fabric standard animations, exposed as json objects referencing predefined
- * keyframes. These objects can be mixed in with other class definitions.
- */
-export const animationStyles: IAnimationStyles = {
+export const AnimationStyles: IAnimationStyles = {
   slideRightIn10: _createAnimation(`${FADE_IN},${SLIDE_RIGHT_IN10}`, DURATION_3, EASING_FUNCTION_1),
   slideRightIn20: _createAnimation(`${FADE_IN},${SLIDE_RIGHT_IN20}`, DURATION_3, EASING_FUNCTION_1),
   slideRightIn40: _createAnimation(`${FADE_IN},${SLIDE_RIGHT_IN40}`, DURATION_3, EASING_FUNCTION_1),
@@ -175,7 +132,7 @@ function _createAnimation(
   animationName: string,
   animationDuration: string,
   animationTimingFunction: string
-): CSSProperties {
+): IRawStyle {
   return {
     animationName,
     animationDuration,

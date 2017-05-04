@@ -1,5 +1,5 @@
-export { animationStyles, IAnimationStyles } from './animationStyles';
-export { fontStyles, IFontStyles } from './fontStyles';
-export { colorStyles, IColorStyles } from './colorStyles';
-export { iconCodes, IIconCodes } from './iconCodes';
+export { AnimationStyles } from './AnimationStyles';
+export { DefaultPalette } from './DefaultPalette';
+export { DefaultFontStyles } from './DefaultFontStyles';
+export { IconCodes } from './IconCodes';
 export { getFocusRule } from './getFocusRule';

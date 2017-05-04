@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
-import { Page, PageHeader } from './components';
-import { AnimationTile } from './AnimationTile';
-import { animationClassNames } from '@uifabric/styling';
-import { getStyles } from './AnimationPage.styles';
-import { CSSProperties } from 'glamor';
+import { Page } from '../Page/Page';
+import { PageHeader } from '../PageHeader/PageHeader';
+import { AnimationTile } from '../AnimationTile/AnimationTile';
+import { AnimationClassNames } from '@uifabric/styling';
+import { IAnimationPageStyles, getStyles } from './AnimationPage.styles';
 
 export class AnimationPage extends BaseComponent<{}, {}> {
 
   public render(): JSX.Element {
-    const styles: CSSProperties = getStyles();
+    const styles: IAnimationPageStyles = getStyles();
 
     return (
       <Page>
@@ -43,9 +43,9 @@ export class AnimationPage extends BaseComponent<{}, {}> {
         </code>
 
         <PageHeader text='Animations' />
-        <div className={ styles.grid }>
-          { Object.keys(animationClassNames).map((name: string) => (
-            <div className={ styles.tile } key={ name }>
+        <div className={ styles.grid as string }>
+          { Object.keys(AnimationClassNames).map((name: string) => (
+            <div className={ styles.tile as string } key={ name }>
               <AnimationTile name={ name } />
             </div>
           )) }

@@ -1,15 +1,15 @@
-import { css } from '../utilities/css';
+import { mergeStyles } from '../utilities/index';
+import { IStyle } from '../interfaces/index';
 import { ITheme } from '../utilities/theme';
-import { StyleAttribute, parent } from 'glamor';
+import { parent } from '../glamor';
 
 export function getFocusRule(
   theme: ITheme,
   inset: string = '0',
-  color: string = theme.colors.neutralSecondary,
+  color: string = theme.palette.neutralSecondary,
   position: string = 'absolute'
-): StyleAttribute {
-
-  return css(
+): IStyle {
+  return mergeStyles(
     {
       outline: 'transparent',
       position: 'relative',
@@ -25,6 +25,5 @@ export function getFocusRule(
         border: '1px solid ' + color
       }
     })
-  ) as StyleAttribute;
-
+  );
 }

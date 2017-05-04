@@ -1,5 +1,6 @@
-import { getClassNames, IClassNames } from '../utilities/getClassNames';
-import { animationStyles, IAnimationStyles } from '../styles/animationStyles';
+import { getClassNames, IClassNames } from '../utilities/index';
+import { AnimationStyles } from '../styles/index';
+import { IAnimationStyles } from '../interfaces/index';
 
 export interface IAnimationClassNames extends IClassNames<IAnimationStyles> { }
-export const animationClassNames: IAnimationClassNames = getClassNames(animationStyles);
+export const AnimationClassNames: IAnimationClassNames = getClassNames(AnimationStyles);

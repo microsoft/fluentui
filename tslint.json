@@ -29,6 +29,13 @@
       false
     ],
     "no-trailing-whitespace": false,
-    "no-switch-case-fall-through": false
+    "no-switch-case-fall-through": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ]
   }
 }
