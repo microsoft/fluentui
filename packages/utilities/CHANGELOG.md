@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 02 May 2017 10:09:08 GMT and should not be manually modified.
+This log was last generated on Thu, 04 May 2017 10:08:59 GMT and should not be manually modified.
+
+## 1.8.6
+Thu, 04 May 2017 10:08:59 GMT
+
+### Patches
+
+- Removes label from native properties
 
 ## 1.8.5
 Tue, 02 May 2017 10:09:08 GMT
