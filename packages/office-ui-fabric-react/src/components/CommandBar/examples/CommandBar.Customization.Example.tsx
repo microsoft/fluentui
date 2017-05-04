@@ -3,19 +3,19 @@ import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
 import styles = require('./CommandBar.Example.scss');
-import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems, DirectionalHint } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../ContextualMenu';
 
 export interface ISplitDropDownButtonState {
-  isContextMenuShown: boolean
+  isContextMenuShown: boolean;
 }
 
 export class CommandBarCustomizationExample extends React.Component<any, ISplitDropDownButtonState> {
+  private container: HTMLElement;
+
   constructor(props) {
     super(props);
-    this.state = { isContextMenuShown: false }
+    this.state = { isContextMenuShown: false };
   }
-
-  private container: HTMLElement;
 
   public render() {
     return (
@@ -89,13 +89,12 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
       <div>
         <div className={ containerClasName } ref={ ref => this.container = ref }>
           <Button
-            key="mainButton"
+            key='mainButton'
             buttonType={ ButtonType.normal }
-            onClick={ () => { } }
             className={ mainBtnClassName }
             data-is-focusable={ true }>
             <span className={ leftIconClassNames } />
-            <span className={ leftTextClassNames }>{ "New" }</span>
+            <span className={ leftTextClassNames }>{ 'New' }</span>
           </Button>
           <span className={ styles.splitter }>|</span>
           <Button
