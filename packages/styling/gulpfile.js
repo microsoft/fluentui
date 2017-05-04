@@ -19,10 +19,9 @@ build.sass.isEnabled = () => false;
 build.karma.isEnabled = () => false;
 build.text.isEnabled = () => false;
 build.preCopy.isEnabled = () => false;
-// build.webpack.isEnabled = () => false;
 
 // Until typings work.
-//build.apiExtractor.isEnabled = () => false;
+build.apiExtractor.isEnabled = () => false;
 
 // initialize tasks.
 build.initialize(gulp);
