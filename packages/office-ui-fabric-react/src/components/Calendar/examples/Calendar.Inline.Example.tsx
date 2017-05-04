@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import {
   Calendar,
@@ -129,8 +129,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
         </Calendar>
         { this.props.showNavigateButtons &&
           <div>
-            <Button style={ buttonStyle } onClick={ this._goPrevious } text='Previous' />
-            <Button style={ buttonStyle } onClick={ this._goNext } text='Next' />
+            <DefaultButton style={ buttonStyle } onClick={ this._goPrevious } text='Previous' />
+            <DefaultButton style={ buttonStyle } onClick={ this._goNext } text='Next' />
           </div>
         }
       </div>
