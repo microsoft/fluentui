@@ -387,7 +387,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-.choiceFieldIsInFocus {
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
 
   @media screen and (-ms-high-contrast: active) {
@@ -398,9 +398,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-.choiceFieldIsInFocus{
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus{
   &.choiceFieldIsImage, &.choiceFieldIsIcon {
-    @include focus-border(2px, $ms-color-neutralPrimary, 1px, false);
+    @include focus-border(0, $ms-color-neutralPrimary, 1px, false);
 
     @media screen and (-ms-high-contrast: active) {
       @include focus-border(1px, $ms-color-white, 2px, false);
