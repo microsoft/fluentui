@@ -29,7 +29,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   };
 
   public render() {
-    let {
+    const {
       targetElement,
       content,
       calloutProps,
@@ -61,6 +61,6 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
       <p className={ css('ms-Tooltip-subText', styles.subText) }>
         { props.content }
       </p>
-    )
+    );
   }
 }

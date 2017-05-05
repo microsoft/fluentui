@@ -24,7 +24,7 @@ export class TooltipCustomExample extends BaseComponent<any, any> {
                   <li>2. Two</li>
                 </ul>
               </div>
-            )
+            );
           }
         } }
         delay={ TooltipDelay.zero }
