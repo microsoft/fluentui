@@ -232,9 +232,9 @@
       }
     },
     "@microsoft/load-themed-styles": {
-      "version": "1.3.0",
+      "version": "1.4.0",
       "from": "@microsoft/load-themed-styles@>=1.2.2 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.3.0.tgz"
+      "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.4.0.tgz"
     },
     "@microsoft/web-library-build": {
       "version": "3.0.1",
@@ -378,7 +378,7 @@
     },
     "@uifabric/example-app-base": {
       "version": "1.3.11",
-      "from": "@uifabric/example-app-base@>=1.3.10 <2.0.0",
+      "from": "@uifabric/example-app-base@>=1.3.11 <2.0.0",
       "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-1.3.11.tgz"
     },
     "@uifabric/utilities": {
@@ -2307,7 +2307,7 @@
     },
     "gauge": {
       "version": "2.7.4",
-      "from": "gauge@>=2.7.1 <2.8.0",
+      "from": "gauge@>=2.7.3 <2.8.0",
       "resolved": "https://registry.npmjs.org/gauge/-/gauge-2.7.4.tgz"
     },
     "gaze": {
@@ -4934,9 +4934,9 @@
       "resolved": "https://registry.npmjs.org/npm-run-path/-/npm-run-path-1.0.0.tgz"
     },
     "npmlog": {
-      "version": "4.0.2",
+      "version": "4.1.0",
       "from": "npmlog@>=4.0.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/npmlog/-/npmlog-4.0.2.tgz"
+      "resolved": "https://registry.npmjs.org/npmlog/-/npmlog-4.1.0.tgz"
     },
     "nth-check": {
       "version": "1.0.1",
@@ -5014,15 +5014,9 @@
       "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-5.1.0.tgz"
     },
     "office-ui-fabric-react": {
-<<<<<<< HEAD
       "version": "2.25.1",
       "from": "office-ui-fabric-react@>=2.11.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-2.25.1.tgz"
-=======
-      "version": "2.24.2",
-      "from": "office-ui-fabric-react@>=2.11.0-0 <3.0.0-0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-2.24.2.tgz"
->>>>>>> 1f4c653d6c682caa85f2809d6e1da4163c3a6700
     },
     "on-finished": {
       "version": "2.3.0",
@@ -6106,9 +6100,9 @@
           "resolved": "https://registry.npmjs.org/watchpack/-/watchpack-1.3.1.tgz"
         },
         "webpack": {
-          "version": "2.4.1",
+          "version": "2.5.0",
           "from": "webpack@>=2.4.1 <3.0.0",
-          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.4.1.tgz"
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.5.0.tgz"
         },
         "yargs": {
           "version": "6.6.0",
@@ -6275,9 +6269,9 @@
           "resolved": "https://registry.npmjs.org/watchpack/-/watchpack-1.3.1.tgz"
         },
         "webpack": {
-          "version": "2.4.1",
+          "version": "2.5.0",
           "from": "webpack@>=2.4.1 <3.0.0",
-          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.4.1.tgz"
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.5.0.tgz"
         },
         "yargs": {
           "version": "6.6.0",
@@ -6389,9 +6383,9 @@
           "resolved": "https://registry.npmjs.org/watchpack/-/watchpack-1.3.1.tgz"
         },
         "webpack": {
-          "version": "2.4.1",
+          "version": "2.5.0",
           "from": "webpack@>=2.4.1 <3.0.0",
-          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.4.1.tgz"
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.5.0.tgz"
         },
         "yargs": {
           "version": "6.6.0",
@@ -6505,22 +6499,7 @@
         "tslint": {
           "version": "5.2.0",
           "from": "tslint@>=5.1.0 <6.0.0",
-<<<<<<< HEAD
           "resolved": "https://registry.npmjs.org/tslint/-/tslint-5.2.0.tgz"
-        }
-      }
-    },
-    "rush-test-bundle-button": {
-      "version": "0.0.0",
-      "from": "temp_modules/rush-test-bundle-button",
-      "resolved": "file:temp_modules/rush-test-bundle-button",
-      "dependencies": {
-        "@types/react-dom": {
-          "version": "0.14.23",
-          "from": "@types/react-dom@>=0.14.23 <0.15.0",
-          "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.23.tgz"
-=======
-          "resolved": "https://registry.npmjs.org/tslint/-/tslint-5.1.0.tgz"
         },
         "url": {
           "version": "0.11.0",
@@ -6540,9 +6519,9 @@
           "resolved": "https://registry.npmjs.org/watchpack/-/watchpack-1.3.1.tgz"
         },
         "webpack": {
-          "version": "2.4.1",
+          "version": "2.5.0",
           "from": "webpack@>=2.4.1 <3.0.0",
-          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.4.1.tgz"
+          "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.5.0.tgz"
         },
         "yargs": {
           "version": "6.6.0",
@@ -6553,7 +6532,18 @@
           "version": "4.2.1",
           "from": "yargs-parser@>=4.2.0 <5.0.0",
           "resolved": "https://registry.npmjs.org/yargs-parser/-/yargs-parser-4.2.1.tgz"
->>>>>>> 1f4c653d6c682caa85f2809d6e1da4163c3a6700
+        }
+      }
+    },
+    "rush-test-bundle-button": {
+      "version": "0.0.0",
+      "from": "temp_modules/rush-test-bundle-button",
+      "resolved": "file:temp_modules/rush-test-bundle-button",
+      "dependencies": {
+        "@types/react-dom": {
+          "version": "0.14.23",
+          "from": "@types/react-dom@>=0.14.23 <0.15.0",
+          "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.23.tgz"
         }
       }
     },
@@ -7513,14 +7503,6 @@
       "from": "uglifyjs-webpack-plugin@>=0.4.3 <0.5.0",
       "resolved": "https://registry.npmjs.org/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-0.4.3.tgz",
       "dependencies": {
-<<<<<<< HEAD
-        "source-list-map": {
-          "version": "1.1.2",
-          "from": "source-list-map@>=1.1.1 <2.0.0",
-          "resolved": "https://registry.npmjs.org/source-list-map/-/source-list-map-1.1.2.tgz"
-        },
-=======
->>>>>>> 1f4c653d6c682caa85f2809d6e1da4163c3a6700
         "source-map": {
           "version": "0.5.6",
           "from": "source-map@>=0.5.6 <0.6.0",
@@ -8032,9 +8014,9 @@
       "resolved": "https://registry.npmjs.org/webpack-sources/-/webpack-sources-0.2.3.tgz",
       "dependencies": {
         "source-list-map": {
-          "version": "1.1.1",
+          "version": "1.1.2",
           "from": "source-list-map@>=1.1.1 <2.0.0",
-          "resolved": "https://registry.npmjs.org/source-list-map/-/source-list-map-1.1.1.tgz"
+          "resolved": "https://registry.npmjs.org/source-list-map/-/source-list-map-1.1.2.tgz"
         },
         "source-map": {
           "version": "0.5.6",
