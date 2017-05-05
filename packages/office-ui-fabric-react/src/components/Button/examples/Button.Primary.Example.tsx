@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { css } from '@uifabric/styling';
+import { mergeStyles } from '@uifabric/styling';
 import { IContextualMenuProps } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
@@ -82,19 +82,19 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
         <PrimaryButton
           data-automation-id='test'
           className='new-root'
-          classNames={ {
-            root: css({
+          styles={ {
+            root: mergeStyles({
               height: '100px',
               width: '100%',
               display: 'block'
             }),
-            rootEnabled: css({
+            rootEnabled: mergeStyles({
               background: 'red',
               ':hover': {
                 background: 'darkRed'
               }
             }),
-            iconEnabled: css({
+            iconEnabled: mergeStyles({
               fontSize: '100px'
             }).toString()
           } }

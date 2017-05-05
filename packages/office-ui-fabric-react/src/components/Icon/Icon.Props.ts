@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IconName } from './IconName';
 import { IImageProps } from '../Image/Image.Props';
+import { IStyle } from '@uifabric/styling';
 
 // Please keep alphabetized
 export enum IconType {
@@ -28,8 +29,9 @@ export enum IconType {
   Image = 100001
 }
 
-export interface IIconClassNames {
-  imageContainer?: string;
+export interface IIconStyles {
+
+  imageContainer?: IStyle;
 }
 
 export interface IIconProps extends React.HTMLProps<HTMLElement> {
@@ -42,9 +44,9 @@ export interface IIconProps extends React.HTMLProps<HTMLElement> {
   iconName?: IconName | string | null;
 
   /**
-   * Optional class names for the elements within the Icon.
+   * Optional styling for the elements within the Icon.
    */
-  classNames?: IIconClassNames;
+  styles?: IIconStyles;
 
   /**
    * The aria label of the button for the benefit of screen readers.

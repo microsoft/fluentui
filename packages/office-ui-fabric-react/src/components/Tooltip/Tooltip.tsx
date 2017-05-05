@@ -12,7 +12,7 @@ import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './Tooltip.scss';
 const styles: any = stylesImport;
-import { animationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '@uifabric/styling';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -34,7 +34,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
     return (
       <Callout
-        className={ css('ms-Tooltip ' + animationClassNames.fadeIn200, styles.root, {
+        className={ css('ms-Tooltip ' + AnimationClassNames.fadeIn200, styles.root, {
           [styles.hasMediumDelay]: delay === TooltipDelay.medium
         }) }
         targetElement={ targetElement }

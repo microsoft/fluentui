@@ -9,7 +9,7 @@ import {
   imageProperties
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
-import { animationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '@uifabric/styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;
 
@@ -112,7 +112,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
               loaded && 'is-loaded ' + styles.imageIsLoaded,
               shouldFadeIn && 'is-fadeIn',
               loadState === ImageLoadState.error && 'is-error',
-              loaded && shouldFadeIn && animationClassNames.fadeIn400,
+              loaded && shouldFadeIn && AnimationClassNames.fadeIn400,
               {
                 ['ms-Image-image--scaleWidth ' + styles.imageIsScaleWidth]: (imageFit === undefined && !!width && !height),
                 ['ms-Image-image--scaleHeight ' + styles.imageIsScaleHeight]: (imageFit === undefined && !width && !!height),

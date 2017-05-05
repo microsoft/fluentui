@@ -6,6 +6,7 @@ import {
   assign,
   autobind,
   buttonProperties,
+  css,
   getId,
   getNativeProps
 } from '../../Utilities';
@@ -13,7 +14,6 @@ import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
-import { css } from '@uifabric/styling';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -60,7 +60,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaLabel,
       baseClassName,
       className,
-      classNames,
+      styles,
       description,
       disabled,
       href,
@@ -94,8 +94,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       nativeProps,
       {
         className: css(
-          classNames.root,
-          disabled ? classNames.rootDisabled : classNames.rootEnabled,
+          styles.root,
+          disabled ? styles.rootDisabled : styles.rootEnabled,
 
           className, // legacy: root class name
           baseClassName, // legacy: base class name
@@ -132,7 +132,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let props = this.props;
     let {
       baseClassName,
-      classNames,
+      styles,
       menuIconName,
       menuProps,
       onRenderIcon = this._onRenderIcon,
@@ -144,7 +144,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const className = css(baseClassName + '-flexContainer', classNames.flexContainer);
+    const className = css(baseClassName + '-flexContainer', styles.flexContainer);
 
     return React.createElement(
       tag,
@@ -164,7 +164,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { baseClassName, classNames, icon, iconProps, disabled } = this.props;
+    let { baseClassName, styles, icon, iconProps, disabled } = this.props;
 
     if (icon || iconProps) {
       iconProps = iconProps || {
@@ -176,8 +176,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <Icon { ...iconProps } className={
         css(
           `${baseClassName}-icon`,
-          classNames.icon,
-          disabled ? classNames.iconDisabled : classNames.iconEnabled,
+          styles.icon,
+          disabled ? styles.iconDisabled : styles.iconEnabled,
           iconProps.className
         ) } />
     );
@@ -185,7 +185,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderText() {
-    let { baseClassName, classNames, children, text, disabled } = this.props;
+    let { baseClassName, styles, children, text, disabled } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -197,8 +197,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={
           css(
             `${baseClassName}-label`,
-            classNames.label,
-            disabled ? classNames.labelDisabled : classNames.labelEnabled
+            styles.label,
+            disabled ? styles.labelDisabled : styles.labelEnabled
           ) }
         id={ this._labelId }
       >
@@ -222,7 +222,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderDescription() {
-    const { baseClassName, classNames, description, disabled } = this.props;
+    const { baseClassName, styles, description, disabled } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
@@ -231,8 +231,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={
           css(
             `${baseClassName}-description`,
-            classNames.description,
-            disabled ? classNames.descriptionDisabled : classNames.descriptionEnabled
+            styles.description,
+            disabled ? styles.descriptionDisabled : styles.descriptionEnabled
           ) }
         id={ this._descriptionId }
       >
@@ -245,12 +245,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderAriaDescription() {
-    const { ariaDescription, classNames } = this.props;
+    const { ariaDescription, styles } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ classNames.screenReaderText } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ styles.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
@@ -258,7 +258,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let { baseClassName, classNames, disabled, menuIconProps, menuIconName } = this.props;
+    let { baseClassName, styles, disabled, menuIconProps, menuIconName } = this.props;
 
     if (menuIconProps === undefined) {
       menuIconProps = {
@@ -273,8 +273,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           className={
             css(
               `${baseClassName}-icon`,
-              classNames.menuIcon,
-              disabled ? classNames.menuIconDisabled : classNames.menuIconEnabled,
+              styles.menuIcon,
+              disabled ? styles.menuIconDisabled : styles.menuIconEnabled,
               menuIconProps.className
             ) }
         />

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BaseComponent, nullRender } from '../../../Utilities';
-import { getTheme } from '@uifabric/styling';
 import { BaseButton } from '../BaseButton';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './PrimaryButton.styles';
@@ -12,14 +11,14 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    const { classNames } = this.props;
+    const { styles } = this.props;
 
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--primary'
         onRenderDescription={ nullRender }
-        classNames={ getStyles(getTheme(), classNames) }
+        styles={ getStyles(undefined, styles) }
       />
     );
   }

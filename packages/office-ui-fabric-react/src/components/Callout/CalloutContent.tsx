@@ -17,7 +17,7 @@ import {
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
-import { animationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '@uifabric/styling';
 
 const styles: any = stylesImport;
 
@@ -124,7 +124,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     };
 
     let directionalClassName = (positions && positions.directionalClassName)
-      ? animationClassNames[positions.directionalClassName]
+      ? AnimationClassNames[positions.directionalClassName]
       : '';
 
     let contentMaxHeight: number = this._getMaxHeight();

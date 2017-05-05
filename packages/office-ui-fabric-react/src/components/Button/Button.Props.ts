@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
+import { IStyle } from '@uifabric/styling';
 
 export interface IButton {
   /**
@@ -12,30 +13,30 @@ export interface IButton {
   focus: () => void;
 }
 
-export interface IButtonClassNames {
-  root?: string;
-  rootEnabled?: string;
-  rootDisabled?: string;
+export interface IButtonStyles {
+  root?: IStyle;
+  rootEnabled?: IStyle;
+  rootDisabled?: IStyle;
 
-  flexContainer?: string;
+  flexContainer?: IStyle;
 
-  icon?: string;
-  iconEnabled?: string;
-  iconDisabled?: string;
+  icon?: IStyle;
+  iconEnabled?: IStyle;
+  iconDisabled?: IStyle;
 
-  label?: string;
-  labelEnabled?: string;
-  labelDisabled?: string;
+  label?: IStyle;
+  labelEnabled?: IStyle;
+  labelDisabled?: IStyle;
 
-  menuIcon?: string;
-  menuIconEnabled?: string;
-  menuIconDisabled?: string;
+  menuIcon?: IStyle;
+  menuIconEnabled?: IStyle;
+  menuIconDisabled?: IStyle;
 
-  description?: string;
-  descriptionEnabled?: string;
-  descriptionDisabled?: string;
+  description?: IStyle;
+  descriptionEnabled?: IStyle;
+  descriptionDisabled?: IStyle;
 
-  screenReaderText?: string;
+  screenReaderText?: IStyle;
 }
 export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
   /**
@@ -56,9 +57,9 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   disabled?: boolean;
 
   /**
-   *  Custom class names for individual elements within the button DOM.
+   *  Custom styling for individual elements within the button DOM.
    */
-  classNames?: IButtonClassNames;
+  styles?: IButtonStyles;
 
   /**
    * If provided, additional class name to provide on the root element.

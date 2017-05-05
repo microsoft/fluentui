@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
     "clean": "gulp clean",

@@ -1,8 +1,8 @@
-export function after(props: CSSProperties): StyleAttribute;
+export function after(style: IRawStyle): IProcessedStyle;
 
-export function before(props: CSSProperties): StyleAttribute;
+export function before(style: IRawStyle): IProcessedStyle;
 
-export function fontFace(font: FontProperties): string;
+export function fontFace(font: Glamor.FontProperties): string;
 
 // (undocumented)
 export function getClassNames < T >(styles: T): IClassNames<T>;
@@ -713,7 +713,7 @@ interface IFontStyles {
 interface IIconClassNames extends IClassNames<typeof IconCodes> {
 }
 
-export function insertGlobal(selector: string, style: CSSProperties): void;
+export function insertGlobal(selector: string, style: IRawStyle): void;
 
 interface IPalette {
   // (undocumented)
@@ -823,12 +823,6 @@ interface IRawStyle {
 }
 
 // (undocumented)
-interface IStyleSet {
-  // (undocumented)
-  [ key: string ]: IStyle;
-}
-
-// (undocumented)
 interface ITheme {
   // (undocumented)
   fonts?: IFontStyles;
@@ -836,7 +830,7 @@ interface ITheme {
   palette?: IPalette;
 }
 
-export function keyframes(name: string, timeline: TimeLine): string;
+export function keyframes(timeline: Glamor.TimeLine): string;
 
 export function loadTheme(theme: ITheme): void;
 
@@ -844,11 +838,9 @@ export function loadTheme(theme: ITheme): void;
 export function mergeStyles(...args: (IStyle | IRawStyle)[]): IStyle;
 
 // (undocumented)
-export function mergeStyleSets < T extends IStyleSet >(...args: T[]): T;
+export function mergeStyleSets < T >(...args: T[]): T;
 
-export function parent(selector: string, props: CSSProperties): StyleAttribute;
-
-export function select(selector: string, props: CSSProperties): StyleAttribute;
+export function parent(selector: string, style: IRawStyle): IProcessedStyle;
 
 // WARNING: Unsupported export: AnimationClassNames
 // WARNING: Unsupported export: FontClassNames

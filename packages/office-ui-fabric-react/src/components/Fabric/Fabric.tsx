@@ -4,7 +4,7 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
-import { fontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '@uifabric/styling';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -52,7 +52,7 @@ export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabr
 
   public render() {
     const { isFocusVisible } = this.state;
-    const rootClass = css('ms-Fabric', fontClassNames.medium, this.props.className, {
+    const rootClass = css('ms-Fabric', FontClassNames.medium, this.props.className, {
       'is-focusVisible': isFocusVisible
     });
 

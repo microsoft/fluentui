@@ -3,7 +3,6 @@ import { BaseButton } from '../BaseButton';
 import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './CommandButton.styles';
-import { getTheme } from '@uifabric/styling';
 
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
@@ -13,13 +12,13 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    let { classNames } = this.props;
+    let { styles } = this.props;
 
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--command'
-        classNames={ getStyles(getTheme(), classNames) }
+        styles={ getStyles(undefined, styles) }
         onRenderDescription={ nullRender }
       />
     );

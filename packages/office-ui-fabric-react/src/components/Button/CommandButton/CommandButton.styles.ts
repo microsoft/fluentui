@@ -1,10 +1,9 @@
-import { IButtonClassNames } from '../Button.Props';
+import { IButtonStyles } from '../Button.Props';
 import {
-  CSSProperties,
   ITheme,
-  css,
+  mergeStyles,
   getTheme,
-  mergeRules
+  mergeStyleSets
 } from '@uifabric/styling';
 import {
   getStyles as getBaseButtonStyles
@@ -15,44 +14,50 @@ const DEFAULT_PADDING = '0 4px';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames?: IButtonClassNames
-): IButtonClassNames {
-  let baseButtonStyles: IButtonClassNames = getBaseButtonStyles(theme);
-  let commandButtonStyles: IButtonClassNames = {
-    root: css(
+  customStyles?: IButtonStyles
+): IButtonStyles {
+  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  let commandButtonStyles: IButtonStyles = {
+    root: mergeStyles(
       {
         borderWidth: '0',
-        backgroundColor: 'transparent',
         padding: DEFAULT_PADDING,
         height: DEFAULT_BUTTON_HEIGHT,
-        color: theme.colors.neutralPrimary,
 
-      } as React.CSSProperties
+      }
     ),
 
-    flexContainer: css(
+    flexContainer: mergeStyles(
       {
         justifyContent: 'flex-start'
       }
     ),
 
-    rootEnabled: css(
+    rootEnabled: mergeStyles(
       {
+        color: theme.palette.neutralPrimary,
+        backgroundColor: 'transparent',
+
         ':hover': {
-          color: theme.colors.themeDarker
-        } as React.CSSProperties,
+          color: theme.palette.themeDarker
+        },
         ':active': {
-          color: theme.colors.themePrimary
-        } as React.CSSProperties
+          color: theme.palette.themePrimary
+        }
       }
     ),
 
-    iconEnabled: css(
+    rootDisabled: mergeStyles({
+      color: theme.palette.neutralTertiary,
+      backgroundColor: 'transparent'
+    }),
+
+    iconEnabled: mergeStyles(
       {
-        color: theme.colors.themePrimary
+        color: theme.palette.themePrimary
       }
     )
   };
 
-  return mergeRules(baseButtonStyles, commandButtonStyles, customClassNames);
+  return mergeStyleSets(baseButtonStyles, commandButtonStyles, customStyles);
 }

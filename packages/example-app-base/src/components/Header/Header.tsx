@@ -9,7 +9,7 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './Header.scss';
-import { fontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '@uifabric/styling';
 
 export interface IHeaderProps {
   title: string;
@@ -62,7 +62,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
               <Icon iconName='GlobalNavButton' />
             </button>
           ) }
-          <div className={ 'Header-title ' + fontClassNames.large }>
+          <div className={ 'Header-title ' + FontClassNames.large }>
             <Icon iconName='Org' />
             { title }
           </div>

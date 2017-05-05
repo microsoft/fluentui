@@ -1,5 +1,5 @@
-import { IButtonClassNames } from './Button.Props';
-import { ITheme, css, getFocusRule } from '@uifabric/styling';
+import { IButtonStyles } from './Button.Props';
+import { ITheme, mergeStyles, getFocusRule } from '@uifabric/styling';
 
 const noOutline = {
   outline: 0
@@ -13,9 +13,9 @@ const noOutline = {
 export function getStyles(
   theme: ITheme,
   focusInset?: string,
-  focusColor?: string): IButtonClassNames {
+  focusColor?: string): IButtonStyles {
 
-  const iconStyle = css({
+  const iconStyle = mergeStyles({
     margin: '0 4px',
     height: '16px',
     lineHeight: '16px',
@@ -24,7 +24,7 @@ export function getStyles(
   });
 
   return {
-    root: css(
+    root: mergeStyles(
       getFocusRule(theme, focusInset, focusColor),
       theme.fonts.medium,
       {
@@ -43,16 +43,16 @@ export function getStyles(
 
     rootEnabled: undefined,
 
-    rootDisabled: css({
-      backgroundColor: theme.colors.neutralLighter,
-      color: theme.colors.neutralTertiary,
+    rootDisabled: mergeStyles({
+      backgroundColor: theme.palette.neutralLighter,
+      color: theme.palette.neutralTertiary,
       cursor: 'default',
       pointerEvents: 'none',
       ':hover': noOutline,
       ':focus': noOutline
     }),
 
-    flexContainer: css({
+    flexContainer: mergeStyles({
       display: 'flex',
       height: '100%',
       flexWrap: 'nowrap',
@@ -68,7 +68,7 @@ export function getStyles(
     menuIconEnabled: undefined,
     menuIconDisabled: undefined,
 
-    label: css({
+    label: mergeStyles({
       margin: '0 4px',
       lineHeight: '100%'
     }),
@@ -80,7 +80,7 @@ export function getStyles(
     descriptionEnabled: undefined,
     descriptionDisabled: undefined,
 
-    screenReaderText: css({
+    screenReaderText: mergeStyles({
       position: 'absolute',
       width: '1px',
       height: '1px',

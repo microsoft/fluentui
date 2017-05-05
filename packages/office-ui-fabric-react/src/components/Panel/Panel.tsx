@@ -15,7 +15,7 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import { animationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '@uifabric/styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
 
@@ -104,8 +104,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         <Overlay
           className={ css(
             styles.overlay,
-            isOpen && isAnimating && animationClassNames.fadeIn200,
-            !isOpen && isAnimating && animationClassNames.fadeOut200
+            isOpen && isAnimating && AnimationClassNames.fadeIn200,
+            !isOpen && isAnimating && AnimationClassNames.fadeOut200
           ) }
           isDarkThemed={ false }
           onClick={ isLightDismiss ? this._onPanelClick : null }
@@ -145,10 +145,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 css(
                   'ms-Panel-main',
                   styles.main,
-                  isOpen && isAnimating && !isOnRightSide && animationClassNames.slideRightIn40,
-                  isOpen && isAnimating && isOnRightSide && animationClassNames.slideLeftIn40,
-                  !isOpen && isAnimating && !isOnRightSide && animationClassNames.slideLeftOut40,
-                  !isOpen && isAnimating && isOnRightSide && animationClassNames.slideRightOut40,
+                  isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
+                  isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
+                  !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
+                  !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
                 ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }

@@ -3,7 +3,6 @@ import { BaseButton } from '../BaseButton';
 import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './DefaultButton.styles';
-import { getTheme } from '@uifabric/styling';
 
 export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   /**
@@ -12,13 +11,13 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    const { classNames } = this.props;
+    const { styles } = this.props;
 
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--default'
-        classNames={ getStyles(getTheme(), classNames) }
+        styles={ getStyles(undefined, styles) }
         onRenderDescription={ nullRender }
       />
     );

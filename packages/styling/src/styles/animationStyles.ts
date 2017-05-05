@@ -1,6 +1,6 @@
 import { IAnimationStyles } from '../interfaces/index';
 import { IRawStyle } from '../interfaces/index';
-import { keyframes } from '../glamor';
+import { keyframes } from '../glamorExports';
 
 /* Register the keyframes */
 

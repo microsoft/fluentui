@@ -1,7 +1,7 @@
 import { mergeStyles } from '../utilities/index';
 import { IStyle } from '../interfaces/index';
 import { ITheme } from '../utilities/theme';
-import { parent } from '../glamor';
+import { parent } from '../glamorExports';
 
 export function getFocusRule(
   theme: ITheme,

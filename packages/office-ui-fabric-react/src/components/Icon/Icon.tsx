@@ -5,15 +5,21 @@ import * as React from 'react';
 import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
+  css,
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { css, iconClassNames } from '@uifabric/styling';
+import { IconClassNames } from '@uifabric/styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
-  let { ariaLabel, className, classNames, iconName } = props;
-  let styles = getStyles(classNames);
+  let {
+    ariaLabel,
+    className,
+    styles: customStyles,
+    iconName
+   } = props;
+  let styles = getStyles(undefined, customStyles);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
@@ -39,7 +45,7 @@ export function Icon(props: IIconProps): JSX.Element {
           'aria-hidden': true
         }) }
         { ...getNativeProps(props, htmlElementProperties) }
-        className={ css('ms-Icon', iconClassNames[iconMemberName], props.className) }
+        className={ css('ms-Icon', IconClassNames[iconMemberName], props.className) }
       />
     );
   }

@@ -5,7 +5,7 @@ import {
 } from '../utilities/index';
 import {
   before
-} from '../glamor';
+} from '../glamorExports';
 
 export interface IIconClassNames extends IClassNames<typeof IconCodes> { }
 

@@ -1,7 +1,6 @@
-import { IStyleSet } from '../interfaces/index';
 import { mergeStyles } from './mergeStyles';
 
-export function mergeStyleSets<T extends IStyleSet>(...args: T[]): T {
+export function mergeStyleSets<T>(...args: T[]): T {
   let mergedRules: T = {} as T;
   let ruleToMerge: Object = args[0];
 

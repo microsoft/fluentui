@@ -1,5 +1,5 @@
 import { IFontStyles, IRawStyle } from '../interfaces/index';
-import { fontFace } from '../glamor';
+import { fontFace } from '../glamorExports';
 
 const FONT_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean';
 const ICON_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/icons';

@@ -1,9 +1,9 @@
-import { IButtonClassNames } from '../Button.Props';
+import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  css,
+  mergeStyles,
   getTheme,
-  mergeRules
+  mergeStyleSets
 } from '@uifabric/styling';
 import {
   getStyles as getDefaultButtonStyles
@@ -13,13 +13,16 @@ const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
-export function getCompoundButtonStyles(
+export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames?: IButtonClassNames
-): IButtonClassNames {
-  let defaultButtonStyles: IButtonClassNames = getDefaultButtonStyles(theme, customClassNames);
-  let compoundButtonStyles: IButtonClassNames = {
-    root: css(
+  customStyles?: IButtonStyles
+): IButtonStyles {
+  let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
+    theme,
+    customStyles
+  );
+  let compoundButtonStyles: IButtonStyles = {
+    root: mergeStyles(
       {
         maxWidth: '280px',
         minHeight: '72px',
@@ -28,10 +31,10 @@ export function getCompoundButtonStyles(
       }
     ),
 
-    rootEnabled: css(
+    rootEnabled: mergeStyles(
       {
         ':hover .ms-Button-description': {
-          color: theme.colors.neutralDark
+          color: theme.palette.neutralDark
         },
         ':active .ms-Button-description': {
           color: 'inherit'
@@ -39,7 +42,7 @@ export function getCompoundButtonStyles(
       }
     ),
 
-    flexContainer: css(
+    flexContainer: mergeStyles(
       {
         flexDirection: 'column',
         alignItems: 'flex-start',
@@ -48,24 +51,24 @@ export function getCompoundButtonStyles(
       }
     ),
 
-    label: css(
+    label: mergeStyles(
       {
         margin: '0 0 5px',
         lineHeight: '100%'
       }
     ),
 
-    description: css(
+    description: mergeStyles(
       theme.fonts.small,
       {
         lineHeight: '100%'
       }),
 
-    descriptionEnabled: css({
-      color: theme.colors.neutralSecondary,
+    descriptionEnabled: mergeStyles({
+      color: theme.palette.neutralSecondary,
     })
 
   };
 
-  return mergeRules(defaultButtonStyles, compoundButtonStyles, customClassNames);
+  return mergeStyleSets(defaultButtonStyles, compoundButtonStyles, customStyles);
 }

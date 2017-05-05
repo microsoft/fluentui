@@ -1,10 +1,9 @@
-import { IButtonClassNames } from '../Button.Props';
+import { IButtonStyles } from '../Button.Props';
 import {
-  CSSProperties,
   ITheme,
-  css,
   getTheme,
-  mergeRules
+  mergeStyles,
+  mergeStyleSets
 } from '@uifabric/styling';
 import {
   getStyles as getDefaultButtonStyles
@@ -12,36 +11,32 @@ import {
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames?: IButtonClassNames,
-): IButtonClassNames {
-  let { colors } = theme;
-  let defaultButtonStyles: IButtonClassNames = getDefaultButtonStyles(
+  customStyles?: IButtonStyles,
+): IButtonStyles {
+  let { palette } = theme;
+  let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
     theme,
-    customClassNames,
+    customStyles,
     '0px',
-    theme.colors.white
+    theme.palette.white
   );
-  let primaryButtonStyles: IButtonClassNames = {
-    root: css(
+  let primaryButtonStyles: IButtonStyles = {
+    rootEnabled: mergeStyles(
       {
-        backgroundColor: colors.themePrimary,
-        color: colors.white,
-      } as React.CSSProperties
-    ),
+        backgroundColor: palette.themePrimary,
+        color: palette.white,
 
-    rootEnabled: css(
-      {
         ':hover': {
-          backgroundColor: colors.themeDark,
-          color: colors.white
-        } as React.CSSProperties,
+          backgroundColor: palette.themeDark,
+          color: palette.white
+        },
         ':active': {
-          backgroundColor: colors.themePrimary,
-          color: colors.white
-        } as React.CSSProperties
+          backgroundColor: palette.themePrimary,
+          color: palette.white
+        }
       }
     )
   };
 
-  return mergeRules(defaultButtonStyles, primaryButtonStyles, customClassNames);
+  return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, customStyles);
 }

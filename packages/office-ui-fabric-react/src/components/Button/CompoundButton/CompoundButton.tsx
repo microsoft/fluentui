@@ -2,8 +2,7 @@ import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
-import { getTheme } from '@uifabric/styling';
-import { getCompoundButtonStyles } from './CompoundButton.styles';
+import { getStyles } from './CompoundButton.styles';
 
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
@@ -12,12 +11,12 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    let { classNames } = this.props;
+    let { styles } = this.props;
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--compound'
-        classNames={ getCompoundButtonStyles(getTheme(), classNames) }
+        styles={ getStyles(undefined, styles) }
       />
     );
   }

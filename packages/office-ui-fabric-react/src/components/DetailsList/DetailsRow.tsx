@@ -20,7 +20,7 @@ import {
 import { IViewport } from '../../utilities/decorators/withViewport';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
-import { animationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '@uifabric/styling';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -188,7 +188,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         aria-label={ ariaLabel }
         className={ css(
           'ms-DetailsRow',
-          animationClassNames.fadeIn400,
+          AnimationClassNames.fadeIn400,
           styles.root,
           droppingClassName,
           {

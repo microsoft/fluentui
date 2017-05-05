@@ -1,10 +1,9 @@
-import { IButtonClassNames } from '../Button.Props';
+import { IButtonStyles } from '../Button.Props';
 import {
-  CSSProperties,
   ITheme,
-  css,
+  mergeStyles,
   getTheme,
-  mergeRules
+  mergeStyleSets
 } from '@uifabric/styling';
 import {
   getStyles as getBaseButtonStyles
@@ -16,40 +15,40 @@ const DEFAULT_PADDING = '0 16px';
 
 export function getStyles(
   theme: ITheme = getTheme(),
-  customClassNames?: IButtonClassNames,
+  customStyles?: IButtonStyles,
   focusInset: string = '0',
-  focusColor: string = theme.colors.neutralSecondary,
-): IButtonClassNames {
-  let baseButtonStyles: IButtonClassNames = getBaseButtonStyles(theme, focusInset, focusColor);
-  let defaultButtonStyles: IButtonClassNames = {
-    root: css(
+  focusColor: string = theme.palette.neutralSecondary,
+): IButtonStyles {
+  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
+  let defaultButtonStyles: IButtonStyles = {
+    root: mergeStyles(
       {
-        backgroundColor: theme.colors.neutralLighter,
-        color: theme.colors.neutralPrimary,
-
         minWidth: DEFAULT_BUTTON_MINWIDTH,
         height: DEFAULT_BUTTON_HEIGHT,
 
-      } as React.CSSProperties
+      }
     ),
 
-    label: css({
+    label: mergeStyles({
       fontWeight: 'bold' // theme.fontWeights.semibold,
     }),
 
-    rootEnabled: css(
+    rootEnabled: mergeStyles(
       {
+        backgroundColor: theme.palette.neutralLighter,
+        color: theme.palette.neutralPrimary,
+
         ':hover': {
-          backgroundColor: theme.colors.neutralLight,
-          color: theme.colors.black
-        } as React.CSSProperties,
+          backgroundColor: theme.palette.neutralLight,
+          color: theme.palette.black
+        },
         ':active': {
-          backgroundColor: theme.colors.themePrimary,
-          color: theme.colors.white
-        } as React.CSSProperties
+          backgroundColor: theme.palette.themePrimary,
+          color: theme.palette.white
+        }
       }
     )
   };
 
-  return mergeRules(baseButtonStyles, defaultButtonStyles, customClassNames);
+  return mergeStyleSets(baseButtonStyles, defaultButtonStyles, customStyles);
 }

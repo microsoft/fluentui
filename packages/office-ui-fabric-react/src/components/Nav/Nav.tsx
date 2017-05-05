@@ -9,7 +9,7 @@ import { CommandButton } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
-import { animationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '@uifabric/styling';
 import {
   INav,
   INavProps,
@@ -78,7 +78,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             'ms-Nav',
             styles.root,
             className,
-            isOnTop && css('is-onTop', styles.rootIsOnTop, animationClassNames.slideRightIn40)
+            isOnTop && css('is-onTop', styles.rootIsOnTop, AnimationClassNames.slideRightIn40)
           ) }>
           { groupElements }
         </nav>
@@ -209,7 +209,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             { group.name }
           </button> : null)
         }
-        <div className={ css('ms-Nav-groupContent', animationClassNames.slideDownIn20, styles.groupContent) }>
+        <div className={ css('ms-Nav-groupContent', AnimationClassNames.slideDownIn20, styles.groupContent) }>
           { this._renderLinks(group.links, 0 /* nestingLevel */) }
         </div>
       </div>

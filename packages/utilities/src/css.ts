@@ -3,7 +3,11 @@ export interface ICssMapping {
   [className: string]: boolean;
 }
 
-export type ICssInput = string | ICssMapping | null | undefined | boolean;
+export interface IStyle {
+  toString?: () => string;
+}
+
+export type ICssInput = string | IStyle | ICssMapping | null | undefined | boolean;
 
 export function css(...args: ICssInput[]) {
   let classes = [];
@@ -12,6 +16,8 @@ export function css(...args: ICssInput[]) {
     if (arg) {
       if (typeof arg === 'string') {
         classes.push(arg);
+      } else if (arg.hasOwnProperty('toString')) {
+        classes.push(arg.toString());
       } else {
         for (let key in arg as any) {
           if (arg[key]) {
