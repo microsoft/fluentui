@@ -3,6 +3,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
+import { ICalloutProps } from '../../Callout';
 import {
   IPoint,
   IRectangle
@@ -163,6 +164,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * Callback for when the contextualmenu has been opened.
    */
   onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
+
+  /**
+   * Pass in custom callout props
+   */
+  calloutProps?: ICalloutProps;
 
 }
 
