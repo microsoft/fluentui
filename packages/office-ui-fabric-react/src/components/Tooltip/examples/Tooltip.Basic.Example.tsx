@@ -12,7 +12,7 @@ export class TooltipBasicExample extends BaseComponent<any, any> {
   public render() {
     return (
       <div>
-        <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 25 } }>
+        <TooltipHost content='This is the tooltip' id='myID' calloutProps={ { gapSpace: 0 } }>
           <DefaultButton aria-describedby='myID'>Hover Over Me</DefaultButton>
         </TooltipHost>
       </div>
