@@ -7,7 +7,7 @@ let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
   selector: '.' + 'TeachingBubble',
-  imageSelector: '.' + 'ms-TeachingBubble-bodycontent',
+  imageSelector: '.' + 'ms-TeachingBubble-content',
   fileName: 'teachingBubble',
   commands: [mouseClickScreenshot]
 });

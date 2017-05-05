@@ -6,7 +6,7 @@ declare var casper: Casper;
 
 export function defaultScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
-
+  casper.wait(1000);
   casper.then(() => {
     phantomcss.screenshot(params.imageSelector, params.fileName + '_default');
   });
@@ -20,8 +20,9 @@ export function defaultScreenshot(params: IRunVisualTest) {
 export function mouseMoveScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
-    this.mouse.move(params.selector);
+  casper.then(() => {
+    casper.wait(1000);
+    casper.mouse.move(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseMove');
   });
   if (params.childParams) {
@@ -34,8 +35,9 @@ export function mouseMoveScreenshot(params: IRunVisualTest) {
 export function mouseDownScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
-    this.mouse.down(params.selector);
+  casper.then(() => {
+    casper.wait(1000);
+    casper.mouse.down(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseDown');
   });
   if (params.childParams) {
@@ -47,12 +49,13 @@ export function mouseDownScreenshot(params: IRunVisualTest) {
 export function mouseClickScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
-    this.click(params.selector);
+  casper.then(() => {
+    casper.wait(1000);
+    casper.click(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseClick');
   });
-  casper.then(function () {
-    this.click(params.selector);
+  casper.then(() => {
+    casper.click(params.selector);
   });
   if (params.childParams) {
     params.childParams.commands.forEach(commandList => {
@@ -64,8 +67,9 @@ export function mouseClickScreenshot(params: IRunVisualTest) {
 export function mouseSingleClickScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
-  casper.then(function () {
-    this.click(params.selector);
+  casper.then(() => {
+    casper.wait(1000);
+    casper.click(params.selector);
   });
   if (params.childParams) {
     params.childParams.commands.forEach(commandList => {

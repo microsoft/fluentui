@@ -34,7 +34,6 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
 
     let casperJs = require('gulp-phantomcss');
     return gulp.src(['lib/**/*' + matchFile + '.visualtest.js'])
-      .pipe(casperJs({
       .pipe(casperJs(
         {
           screenshots: 'visualtests/baseline',
