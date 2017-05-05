@@ -132,7 +132,6 @@ export const baseElementProperties = [
   'keyParams',
   'keyType',
   'kind',
-  'label',
   'lang',
   'list',
   'loop',
