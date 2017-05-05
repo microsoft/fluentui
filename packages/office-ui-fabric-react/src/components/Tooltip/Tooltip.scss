@@ -20,10 +20,10 @@
 .content {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralPrimary;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .subText {
   margin: 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
