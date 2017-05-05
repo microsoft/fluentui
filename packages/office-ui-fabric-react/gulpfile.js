@@ -37,7 +37,8 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
       .pipe(casperJs(
         {
           screenshots: 'visualtests/baseline',
-          comparisonResultRoot: 'visualtests/results'
+          comparisonResultRoot: 'visualtests/results',
+          breakOnError: true
         })).on('end', done);
   }
 });
@@ -95,7 +96,7 @@ build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 build.task('sass', build.sass);
 
-build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
-
+//build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
+build.task('visualtest', serial(visualTestClean, visualTest));
 // initialize tasks.
 build.initialize(gulp);
