@@ -35,6 +35,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     resizable: true,
     autoAdjustHeight: false,
     underlined: false,
+    readOnly: false,
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
     onNotifyValidationResult: () => { /* noop */ },
