@@ -131,6 +131,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
+          aria-readonly={ true }
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
@@ -142,14 +143,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             id={ id + '-option' }
             className={ css(
               'ms-Dropdown-title', styles.title,
+              !selectedOption && styles.titleIsPlaceHolder,
               (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
             }
             key={ selectedIndex }
             aria-atomic={ true }
           >
-            { selectedOption && (
-              onRenderTitle(selectedOption, this._onRenderTitle)
-            ) }
+            { // If option is selected render title, otherwise render the placeholder text
+              selectedOption ? (
+                onRenderTitle(selectedOption, this._onRenderTitle)
+              ) :
+                this._onRenderPlaceHolder(this.props)
+            }
           </span>
           <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='chevronDown' />
         </div>
@@ -195,6 +200,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderTitle(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
+  }
+
+  // Render placeHolder text in dropdown input
+  @autobind
+  private _onRenderPlaceHolder(props): JSX.Element {
+    if (!props.placeHolder) {
+      return null;
+    }
+    return <span>{ props.placeHolder }</span>;
   }
 
   // Render Callout or Panel container and pass in list
@@ -432,6 +446,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.escape:
         this.setState({ isOpen: false });
         break;
+
+      case KeyCodes.tab:
+        this.setState({ isOpen: false });
+        return;
 
       default:
         return;

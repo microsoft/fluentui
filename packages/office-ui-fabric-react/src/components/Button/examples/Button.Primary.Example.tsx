@@ -85,8 +85,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
           styles={ {
             root: mergeStyles({
               height: '100px',
-              width: '100%',
-              display: 'block'
+              float: 'right'
             }),
             rootEnabled: mergeStyles({
               background: 'red',
@@ -96,7 +95,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
             }),
             iconEnabled: mergeStyles({
               fontSize: '100px'
-            }).toString()
+            })
           } }
           iconProps={ { iconName: 'Snow' } }
           menuProps={ menuProps }
