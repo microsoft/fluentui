@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 May 2017 10:08:59 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+
+## 2.25.1
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- CommandBar: Support customized onRender for command bar item
+- High contrast fixes for dropdown and slider
+- Toggle: removing an unnecessary React warning when passing in defaultChecked value.
+- Persona: Fixed clipping issue when using size28
+- Pivot: increased specificty to fix button styles overriding pivo
 
 ## 2.25.0
 Thu, 04 May 2017 10:08:59 GMT

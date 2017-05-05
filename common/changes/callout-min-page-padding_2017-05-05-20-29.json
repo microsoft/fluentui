@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot: increased specificty to fix button styles overriding pivo",
-      "type": "patch"
+      "comment": "Callout: Add minPagePadding. Dropdown: Expose calloutProps",
+      "type": "minor"
     }
   ],
   "email": "micahgodbolt@gmail.com"

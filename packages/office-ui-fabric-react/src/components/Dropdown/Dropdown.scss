@@ -29,6 +29,8 @@ $DropDown-item-height: 36px;
     border-color: $ms-color-contrastWhiteSelected;
     color: $ms-color-white;
   }
+
+  @include highContrastAdjust();
 }
 
 .root {
@@ -135,10 +137,11 @@ $DropDown-item-height: 36px;
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
   position: absolute;
-  top: 0px;
+  top: 1px; // border
   @include right(12px);
   pointer-events: none;
-  line-height: $DropDown-height;
+  height: $DropDown-height;
+  line-height: $DropDown-height - 2px; // height minus the border
 }
 
 // Style the new, replacement component
@@ -276,7 +279,7 @@ $DropDown-item-height: 36px;
   background-color: $dividerColor;
 }
 
-.optionText{
+.optionText {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
