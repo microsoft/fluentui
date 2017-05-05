@@ -47,6 +47,7 @@ export interface ICalendarDayProps {
   firstDayOfWeek: DayOfWeek;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
+  today?: Date;
 }
 
 export interface ICalendarDayState {
@@ -63,9 +64,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public constructor(props: ICalendarDayProps) {
     super(props);
 
+    const { navigatedDate, selectedDate, today } = props;
+
     this.state = {
       activeDescendantId: getId('DatePickerDay-active'),
-      weeks: this._getWeeks(props.navigatedDate, props.selectedDate, props.dateRangeType, props.firstDayOfWeek)
+      weeks: this._getWeeks(props.navigatedDate, props.selectedDate, props.dateRangeType, props.firstDayOfWeek, today)
     };
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
@@ -73,8 +76,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   public componentWillReceiveProps(nextProps: ICalendarDayProps) {
+    const { navigatedDate, selectedDate, today } = nextProps;
+
     this.setState({
-      weeks: this._getWeeks(nextProps.navigatedDate, nextProps.selectedDate, nextProps.dateRangeType, nextProps.firstDayOfWeek)
+      weeks: this._getWeeks(nextProps.navigatedDate, nextProps.selectedDate, nextProps.dateRangeType, nextProps.firstDayOfWeek, today)
     });
   }
 
@@ -246,9 +251,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _getWeeks(navigatedDate: Date, selectedDate: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek): IDayInfo[][] {
+  private _getWeeks(navigatedDate: Date, selectedDate: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, todayDate: Date): IDayInfo[][] {
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    let today = new Date();
+    let today = todayDate || new Date();
     let weeks = [];
     let week;
 

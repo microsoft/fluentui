@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Day picker: Ensure we use values from nextProps when props are updated when generating weeks",
+      "type": "patch"
+    }
+  ],
+  "email": "johannao@microsoft.com"
+}
