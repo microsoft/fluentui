@@ -7572,6 +7572,11 @@
           "from": "tslint@>=5.1.0 <6.0.0",
           "resolved": "https://registry.npmjs.org/tslint/-/tslint-5.2.0.tgz"
         },
+        "tslint-microsoft-contrib": {
+          "version": "4.0.0",
+          "from": "tslint-microsoft-contrib@4.0.0",
+          "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-4.0.0.tgz"
+        },
         "url": {
           "version": "0.11.0",
           "from": "url@>=0.11.0 <0.12.0",
