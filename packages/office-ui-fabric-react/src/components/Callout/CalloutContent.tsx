@@ -264,13 +264,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       let currentBounds = this.props.bounds;
 
       if (!currentBounds) {
+        let spacing = this.props.directionalHintFixed ? 0 : SPACE_FROM_EDGE;
         currentBounds = {
-          top: 0 + SPACE_FROM_EDGE,
-          left: 0 + SPACE_FROM_EDGE,
-          right: this._targetWindow.innerWidth - SPACE_FROM_EDGE,
-          bottom: this._targetWindow.innerHeight - SPACE_FROM_EDGE,
-          width: this._targetWindow.innerWidth - SPACE_FROM_EDGE * 2,
-          height: this._targetWindow.innerHeight - SPACE_FROM_EDGE * 2
+          top: 0 + spacing,
+          left: 0 + spacing,
+          right: this._targetWindow.innerWidth - spacing,
+          bottom: this._targetWindow.innerHeight - spacing,
+          width: this._targetWindow.innerWidth - spacing * 2,
+          height: this._targetWindow.innerHeight - spacing * 2
         };
       }
       this._bounds = currentBounds;
