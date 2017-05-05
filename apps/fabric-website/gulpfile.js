@@ -29,8 +29,8 @@ build.tslint.setConfig({
 // TODO: remove this! There are a number of lint errors to fix.
 build.tslint.isEnabled = () => false;
 
-/* Configure TypeScript 2.0. */
-build.typescript.setConfig({ typescript: require('typescript') });
+// Configure TypeScript.
+build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 

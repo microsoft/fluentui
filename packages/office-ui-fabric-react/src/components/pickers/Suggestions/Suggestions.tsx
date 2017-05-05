@@ -29,7 +29,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           className
         ) }
       >
-        <RenderSuggestion { ...suggestionModel.item } />
+        <RenderSuggestion { ...suggestionModel.item as any } />
       </CommandButton>
     );
   }
