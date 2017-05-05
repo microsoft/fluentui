@@ -43,4 +43,10 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
   * CSS class to apply to the SearchBox.
   */
   className?: string;
+
+  /**
+   * The aria label of the SearchBox for the benefit of screen readers.
+   * @defaultvalue labelText
+   */
+  ariaLabel?: string;
 }

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 04 May 2017 10:08:59 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+
+## 1.8.7
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- getRTL: fixing an issue to ensure it is once again SSR friendly.
 
 ## 1.8.6
 Thu, 04 May 2017 10:08:59 GMT

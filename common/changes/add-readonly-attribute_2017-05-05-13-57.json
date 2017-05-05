@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Add aria readonly attribute",
+      "type": "patch"
+    }
+  ],
+  "email": "hross@hross.net"
+}
