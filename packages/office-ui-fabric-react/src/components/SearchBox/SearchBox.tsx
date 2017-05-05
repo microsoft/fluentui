@@ -73,6 +73,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
+          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
           ref={ this._resolveRef('_inputElement') }
         />
         <div

@@ -1,5 +1,5 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument } from './dom';
+import { getDocument, getWindow } from './dom';
 
 // Default to undefined so that we initialize on first read.
 let _isRTL: boolean;
@@ -29,13 +29,13 @@ export function getRTL(): boolean {
  */
 export function setRTL(isRTL: boolean) {
   let doc = getDocument();
-
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
+  let win = getWindow();
   // tslint:disable-next-line:no-string-literal
-  if (window['localStorage']) {
+  if (win && win['localStorage']) {
     localStorage.setItem('isRTL', isRTL ? '1' : '0');
   }
 
