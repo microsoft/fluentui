@@ -38,6 +38,7 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
         {
           screenshots: 'visualtests/baseline',
           comparisonResultRoot: 'visualtests/results',
+          viewPort: [1024, 800],
           breakOnError: true
         })).on('end', done);
   }
