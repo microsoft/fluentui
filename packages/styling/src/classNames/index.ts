@@ -1,16 +1,12 @@
 export {
-  AnimationClassNames,
-  IAnimationClassNames
+  AnimationClassNames
 } from './AnimationClassNames';
 export {
-  FontClassNames,
-  IFontClassNames
+  FontClassNames
 } from './FontClassNames';
 export {
-  IconClassNames,
-  IIconClassNames
+  IconClassNames
 } from './IconClassNames';
 export {
-  ColorClassNames,
-  IColorClassNames
+  ColorClassNames
 } from './ColorClassNames';

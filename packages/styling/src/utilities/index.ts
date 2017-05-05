@@ -10,6 +10,5 @@ export {
   mergeStyleSets
 } from './mergeStyleSets';
 export {
-  IClassNames,
-  getClassNames
-} from './getClassNames';
+  buildClassMap
+} from './buildClassMap';

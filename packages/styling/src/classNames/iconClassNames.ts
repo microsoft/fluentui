@@ -1,6 +1,5 @@
 import { IconCodes, DefaultFontStyles } from '../styles/index';
 import {
-  IClassNames,
   mergeStyles
 } from '../utilities/index';
 import {
@@ -10,12 +9,7 @@ import {
 /**
  * All class names for all Fabric icons.
  */
-export interface IIconClassNames extends IClassNames<typeof IconCodes> { }
-
-/**
- * All class names for all Fabric icons.
- */
-export const IconClassNames: IIconClassNames = {};
+export const IconClassNames: {[key in keyof typeof IconCodes]?: string } = {};
 
 // tslint:disable-next-line:forin
 for (const iconName in IconCodes) {

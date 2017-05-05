@@ -1,5 +1,5 @@
 import { IButtonStyles } from './Button.Props';
-import { ITheme, mergeStyles, getFocusRule } from '@uifabric/styling';
+import { ITheme, mergeStyles, getFocusStyle } from '@uifabric/styling';
 
 const noOutline = {
   outline: 0
@@ -25,7 +25,7 @@ export function getStyles(
 
   return {
     root: mergeStyles(
-      getFocusRule(theme, focusInset, focusColor),
+      getFocusStyle(theme, focusInset, focusColor),
       theme.fonts.medium,
       {
         // this transparent border converts to the correct colors in HC mode
