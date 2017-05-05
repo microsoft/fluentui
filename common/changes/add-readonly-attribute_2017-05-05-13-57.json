@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "High contrast fixes for dropdown and slider",
+      "comment": "Dropdown: Add aria readonly attribute",
       "type": "patch"
     }
   ],
-  "email": "manishda@microsoft.com"
+  "email": "hross@hross.net"
 }

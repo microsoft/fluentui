@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.8.7",
+      "tag": "@uifabric/utilities_v1.8.7",
+      "date": "Fri, 05 May 2017 10:18:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "29d815a96a85b1019cf1cb6862eec4ce720f203a",
+            "comment": "getRTL: fixing an issue to ensure it is once again SSR friendly."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.6",
       "tag": "@uifabric/utilities_v1.8.6",
       "date": "Thu, 04 May 2017 10:08:59 GMT",

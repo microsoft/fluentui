@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Calendar: make today value configurable to support different timezone",
+      "type": "minor"
+    }
+  ],
+  "email": "hykwon@microsoft.com"
+}
