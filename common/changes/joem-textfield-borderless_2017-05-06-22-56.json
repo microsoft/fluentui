@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adds borderless option for TextField component.",
+      "type": "minor"
+    }
+  ],
+  "email": "martellaj@live.com"
+}
