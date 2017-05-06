@@ -5820,7 +5820,7 @@
     },
     "nan": {
       "version": "2.6.2",
-      "from": "nan@>=2.3.2 <3.0.0",
+      "from": "nan@>=2.3.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.6.2.tgz"
     },
     "native-promise-only": {
@@ -7060,13 +7060,13 @@
     },
     "rush-example-app-base": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-example-app-base",
-      "resolved": "file:temp_modules\\rush-example-app-base"
+      "from": "temp_modules/rush-example-app-base",
+      "resolved": "file:temp_modules/rush-example-app-base"
     },
     "rush-example-component": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-example-component",
-      "resolved": "file:temp_modules\\rush-example-component",
+      "from": "temp_modules/rush-example-component",
+      "resolved": "file:temp_modules/rush-example-component",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7189,13 +7189,13 @@
     },
     "rush-fabric-website": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-fabric-website",
-      "resolved": "file:temp_modules\\rush-fabric-website"
+      "from": "temp_modules/rush-fabric-website",
+      "resolved": "file:temp_modules/rush-fabric-website"
     },
     "rush-office-ui-fabric-react": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-office-ui-fabric-react",
-      "resolved": "file:temp_modules\\rush-office-ui-fabric-react",
+      "from": "temp_modules/rush-office-ui-fabric-react",
+      "resolved": "file:temp_modules/rush-office-ui-fabric-react",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7358,8 +7358,8 @@
     },
     "rush-ssr-tests": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-ssr-tests",
-      "resolved": "file:temp_modules\\rush-ssr-tests",
+      "from": "temp_modules/rush-ssr-tests",
+      "resolved": "file:temp_modules/rush-ssr-tests",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7472,8 +7472,8 @@
     },
     "rush-styling": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-styling",
-      "resolved": "file:temp_modules\\rush-styling",
+      "from": "temp_modules/rush-styling",
+      "resolved": "file:temp_modules/rush-styling",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7500,27 +7500,10 @@
           "from": "crypto-browserify@>=3.11.0 <4.0.0",
           "resolved": "https://registry.npmjs.org/crypto-browserify/-/crypto-browserify-3.11.0.tgz"
         },
-        "diff": {
-          "version": "3.2.0",
-          "from": "diff@>=3.2.0 <4.0.0",
-          "resolved": "https://registry.npmjs.org/diff/-/diff-3.2.0.tgz"
-        },
         "enhanced-resolve": {
           "version": "3.1.0",
           "from": "enhanced-resolve@>=3.0.0 <4.0.0",
           "resolved": "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-3.1.0.tgz"
-        },
-        "findup-sync": {
-          "version": "0.3.0",
-          "from": "findup-sync@>=0.3.0 <0.4.0",
-          "resolved": "https://registry.npmjs.org/findup-sync/-/findup-sync-0.3.0.tgz",
-          "dependencies": {
-            "glob": {
-              "version": "5.0.15",
-              "from": "glob@>=5.0.0 <5.1.0",
-              "resolved": "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz"
-            }
-          }
         },
         "https-browserify": {
           "version": "0.0.1",
@@ -7567,16 +7550,6 @@
           "from": "timers-browserify@>=2.0.2 <3.0.0",
           "resolved": "https://registry.npmjs.org/timers-browserify/-/timers-browserify-2.0.2.tgz"
         },
-        "tslint": {
-          "version": "5.2.0",
-          "from": "tslint@>=5.1.0 <6.0.0",
-          "resolved": "https://registry.npmjs.org/tslint/-/tslint-5.2.0.tgz"
-        },
-        "tslint-microsoft-contrib": {
-          "version": "4.0.0",
-          "from": "tslint-microsoft-contrib@4.0.0",
-          "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-4.0.0.tgz"
-        },
         "url": {
           "version": "0.11.0",
           "from": "url@>=0.11.0 <0.12.0",
@@ -7613,13 +7586,13 @@
     },
     "rush-todo-app": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-todo-app",
-      "resolved": "file:temp_modules\\rush-todo-app"
+      "from": "temp_modules/rush-todo-app",
+      "resolved": "file:temp_modules/rush-todo-app"
     },
     "rush-utilities": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-utilities",
-      "resolved": "file:temp_modules\\rush-utilities"
+      "from": "temp_modules/rush-utilities",
+      "resolved": "file:temp_modules/rush-utilities"
     },
     "rx-lite": {
       "version": "3.1.2",
