@@ -155,6 +155,11 @@
   font-size: $ms-font-size-xs;
 }
 
+.root.rootIsBorderless {
+  .fieldGroup {
+    border: 0px;
+  }
+}
 
 //== Modifier: Single line (default), underlined
 //
