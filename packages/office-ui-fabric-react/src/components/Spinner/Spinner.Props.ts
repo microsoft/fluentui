@@ -26,7 +26,7 @@ export interface ISpinnerProps extends React.Props<Spinner> {
 
   /**
    * The label to show next to the Spinner. Label updates will be announced to the screen readers.
-   * Use ariaLive to control announcement priority.
+   * Use ariaLive to control politeness level.
    */
   label?: string;
 
@@ -39,7 +39,7 @@ export interface ISpinnerProps extends React.Props<Spinner> {
    * Politeness setting for label update announcement.
    * @default polite
    */
-  ariaLive?: string;
+  ariaLive?: 'assertive' | 'polite' | 'off';
 }
 
 export enum SpinnerSize {
