@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Callout: Add minPagePadding. Dropdown: Expose calloutProps",
+      "type": "minor"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}

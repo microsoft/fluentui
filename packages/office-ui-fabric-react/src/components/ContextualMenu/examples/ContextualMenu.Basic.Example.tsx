@@ -184,7 +184,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
   }
 
   private _onClick(event: React.MouseEvent<any>) {
-    this.setState({ target: event.target, isContextMenuVisible: true });
+    this.setState({ target: event.currentTarget, isContextMenuVisible: true });
   }
 
   private _onDismiss(event: any) {
