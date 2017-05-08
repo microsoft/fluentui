@@ -1,5 +1,5 @@
 import * as React from 'react';
-export interface IPickerItemProps<T> extends React.Props<any> {
+export interface IPickerItemProps<T> extends React.HTMLProps<any> {
   item: T;
   index: number;
   selected?: boolean;
