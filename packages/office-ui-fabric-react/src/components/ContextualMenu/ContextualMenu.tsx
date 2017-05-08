@@ -183,7 +183,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       target,
       bounds,
       directionalHintFixed,
-      shouldFocusOnMount } = this.props;
+      shouldFocusOnMount,
+      calloutProps } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -194,6 +195,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     if (items && items.length > 0) {
       return (
         <Callout
+          {...calloutProps}
           target={ target }
           targetElement={ targetElement }
           targetPoint={ targetPoint }
@@ -217,7 +219,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
                 role='menu'
-                aria-label={ ariaLabel } 
+                aria-label={ ariaLabel }
                 isCircularNavigation={ true }
               >
                 <ul
