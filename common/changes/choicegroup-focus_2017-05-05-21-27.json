@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Add aria readonly attribute",
+      "comment": "ChoiceGroup: Fixed broken focus border",
       "type": "patch"
     }
   ],
-  "email": "hross@hross.net"
+  "email": "micahgodbolt@gmail.com"
 }

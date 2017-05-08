@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Callout: Add minPagePadding. Dropdown: Expose calloutProps",
+      "comment": "Tooltip: Added custom content render function and exposed tooltip props to",
       "type": "minor"
     }
   ],
