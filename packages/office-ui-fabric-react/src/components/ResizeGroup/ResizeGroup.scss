@@ -2,12 +2,10 @@
 
 .root {
   display: block;
+  position: relative;
 }
 
 .measured {
-  flex-direction: horizontal;
-  flex-wrap: nowrap;
-  display: flex;
   position: absolute;
   visibility: hidden;
 }
