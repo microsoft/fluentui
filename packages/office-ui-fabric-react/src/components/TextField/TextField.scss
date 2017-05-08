@@ -155,6 +155,9 @@
   font-size: $ms-font-size-xs;
 }
 
+.rootIsBorderless .fieldGroup {
+  border-color: transparent;
+}
 
 //== Modifier: Single line (default), underlined
 //
