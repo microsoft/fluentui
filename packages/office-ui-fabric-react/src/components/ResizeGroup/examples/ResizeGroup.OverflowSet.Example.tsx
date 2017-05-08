@@ -8,7 +8,6 @@ import { OverflowSet } from '../../OverflowSet';
 
 import { data } from './data';
 
-
 export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
 
   public render() {
