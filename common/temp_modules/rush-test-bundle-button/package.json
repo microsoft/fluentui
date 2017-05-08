@@ -14,9 +14,7 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0"
-  },
-  "rushDependencies": {
+    "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "office-ui-fabric-react": ">=2.23.0 <13.0.0"
   }
 }

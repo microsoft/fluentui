@@ -34,7 +34,7 @@
     "webpack-notifier": "^1.5.0",
     "webpack-split-by-path": "2.0.0",
     "glamor": "^2.20.24",
-    "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0",
+    "office-ui-fabric-react": "styling",
     "rtl-css-js": "^1.1.0"
   },
   "rushDependencies": {
