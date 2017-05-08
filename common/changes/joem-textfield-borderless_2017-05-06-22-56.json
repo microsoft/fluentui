@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: `borderless` flag added to render a borderless TextField.",
+      "comment": "TextField: `borderless` flag added for supressing the border style.",
       "type": "minor"
     }
   ],
