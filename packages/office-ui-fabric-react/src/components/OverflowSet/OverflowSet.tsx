@@ -27,7 +27,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
     return (
       <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
         { items && this._onRenderItems(items) }
-        { overflowItems.length && onRenderOverflowButton(overflowButtonProps) }
+        { overflowItems && onRenderOverflowButton(overflowButtonProps) }
       </FocusZone>
     );
   }

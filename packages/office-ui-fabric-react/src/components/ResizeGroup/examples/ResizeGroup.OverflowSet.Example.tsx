@@ -2,43 +2,48 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ResizeGroup, IResizeGroupProps } from '../../ResizeGroup';
+import { ResizeGroup } from '../../ResizeGroup';
+import { OverflowSet } from '../../OverflowSet';
 
-import { items } from './items';
+import { data } from './data';
 
-export interface myResizeGroupProps extends IResizeGroupProps {
-  items: myResizeGroupItems[];
-}
-
-export interface myResizeGroupItems {
-  name: string;
-  icon: string;
-  ariaLabel: string;
-  onClick: () => {};
-}
-
-export class myResizeGroup extends ResizeGroup<myResizeGroupProps> {
-
-}
 
 export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
 
   public render() {
     return (
       <ResizeGroup
-        items={ items }
-        onReduceItems={ (currentItems, props) => {
-          let overflow = currentItems[0].overflow.concat(currentItems[0].primary.slice(-1));
-          let primary = currentItems[0].primary.slice(0, -1);
+        data={ data }
+        onReduceData={ (currentdata) => {
+          let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
+          let primary = currentdata.primary.slice(0, -1);
 
-          return [{ primary, overflow }];
+          return { primary, overflow };
         } }
-        onRenderItems={ (items) => {
+        onRenderData={ (data) => {
           return (
-            <DefaultButton
-              text='items.text' />
+            <OverflowSet
+              items={ data.primary }
+              overflowItems={ data.overflow.length ? data.overflow : null }
+              onRenderItem={ (item) => {
+                return (
+                  <DefaultButton
+                    text={ item.name }
+                    icon={ item.icon }
+                    onClick={ item.onClick }
+                  />
+                );
+              } }
+              onRenderOverflowButton={ (props) => {
+                return (
+                  <DefaultButton
+                    menuProps={ props.menuProps }
+                  />
+                );
+              }
+              }
+            />
           );
         } }
       />

@@ -7,16 +7,12 @@ import { IResizeGroupProps } from './ResizeGroup.Props';
 import styles = require('./ResizeGroup.scss');
 
 export interface IResizeGroupState {
-  renderedItems?: any[];
-  measuredItems: any[];
+  renderedData?: any;
+  measuredData: any;
   shouldMeasure?: boolean;
 }
 
-export interface IOverFlowItemState {
-  [index: number]: any;
-}
-
-export class ResizeGroup<T> extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
+export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
 
   private _root: HTMLElement;
   private _measured: HTMLElement;
@@ -25,8 +21,8 @@ export class ResizeGroup<T> extends BaseComponent<IResizeGroupProps, IResizeGrou
     super(props);
     this.state = {
       shouldMeasure: true,
-      renderedItems: [],
-      measuredItems: this.props.items.concat([]),
+      renderedData: null,
+      measuredData: { ...this.props.data },
     };
   }
 
@@ -36,17 +32,17 @@ export class ResizeGroup<T> extends BaseComponent<IResizeGroupProps, IResizeGrou
   }
 
   public render() {
-    let { onRenderItems, onReduceItems, items } = this.props;
-    let { shouldMeasure, renderedItems, measuredItems } = this.state;
+    let { onRenderData, onReduceData, data } = this.props;
+    let { shouldMeasure, renderedData, measuredData } = this.state;
     return (
       <div ref={ this._resolveRef('_root') }>
         { shouldMeasure && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
-            { onRenderItems(measuredItems) }
+            { onRenderData(measuredData) }
           </div>
         ) }
 
-        { renderedItems.length > 0 && onRenderItems(renderedItems) }
+        { renderedData && onRenderData(renderedData) }
       </div>
 
     );
@@ -61,27 +57,27 @@ export class ResizeGroup<T> extends BaseComponent<IResizeGroupProps, IResizeGrou
   }
 
   private _measureItems() {
-    let { items, onReduceItems } = this.props;
+    let { data, onReduceData } = this.props;
     let {
       shouldMeasure,
-      renderedItems,
-      measuredItems,
+      renderedData,
+      measuredData,
     } = this.state;
 
-    if (shouldMeasure && items && items.length > 0) {
+    if (shouldMeasure && data) {
       let container = this._root.getBoundingClientRect();
       let measured = this._measured.getBoundingClientRect();
       if ((measured.width > container.width)) {
         this.setState((prevState, props) => {
           return {
-            measuredItems: onReduceItems(prevState.measuredItems, props),
+            measuredData: onReduceData(prevState.measuredData),
           };
         });
       } else {
         this.setState((prevState, props) => {
           return {
-            renderedItems: measuredItems,
-            measuredItems: this.props.items.concat([]),
+            renderedData: prevState.measuredData,
+            measuredData: { ...this.props.data },
             shouldMeasure: false
           };
         });
