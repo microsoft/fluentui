@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed an issue where submenu items wouldn't update properly when new props were passed own",
+      "comment": "ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own",
       "type": "patch"
     },
     {
