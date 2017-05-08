@@ -56,4 +56,9 @@ export interface IBreadcrumbItem {
    * Url to navigate to when this breadcrumb is clicked.
    */
   href?: string;
+
+  /**
+   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
+   */
+  isCurrentItem?: boolean;
 }
