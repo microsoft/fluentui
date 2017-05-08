@@ -55,6 +55,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   bounds?: IRectangle;
 
   /**
+   * The minimum distance the callout will be away from the edge of the screen.
+   *  @default 8
+   */
+  minPagePadding?: number;
+
+  /**
    * If true use a point rather than rectangle to position the Callout.
    * For example it can be used to position based on a click.
    */
