@@ -250,9 +250,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
-    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek } = propsToUse;
+    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    let today = propsToUse.today || new Date();
+    let todaysDate = today || new Date();
     let weeks = [];
     let week;
 
