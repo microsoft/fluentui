@@ -55,7 +55,7 @@ export class ColorPage extends BaseComponent<{}, {}> {
     Object.keys(DefaultPalette).forEach((colorName: string) => {
       const colorValue: string = theme.palette[colorName];
 
-      ['', 'Hover', 'Background', 'BackgroundHover'].forEach((suffix: string) => {
+      ['', 'Hover', 'Background', 'BackgroundHover', 'Border', 'BorderHover'].forEach((suffix: string) => {
         items.push({
           key: 'item' + items.length,
           name: colorName + suffix,
@@ -79,16 +79,23 @@ export class ColorPage extends BaseComponent<{}, {}> {
                 </div>
               ) :
                 column.key === 'example' ? (
-                  <div className={ ColorClassNames[item.name] as string }>
+                  <div
+                    className={
+                      ColorClassNames[item.name] +
+                      ' ' +
+                      (item.name.indexOf('Border') >= 0 ? styles.cellWithBorder : '')
+                    }
+                  >
                     The quick brown fox jumps over the lazy dog.
                   </div>
                 ) : (
                     <div>{ item[column.fieldName] }</div>
                   ) }
             </div>
-          ) }
+          )
+          }
         />
-      </Page>
+      </Page >
     );
   }
 }
