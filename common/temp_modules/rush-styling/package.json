@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "@microsoft/sp-build-web": "~1.0.0",
+    "@microsoft/sp-module-interfaces": "~1.0.0",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/mocha": "^2.2.39",
@@ -18,14 +20,13 @@
     "gulp": "~3.9.1",
     "mocha": "^3.2.0",
     "mocha-loader": "^1.1.1",
+    "office-ui-fabric-react": ">=2.27.0 <3.0.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "source-map-loader": "^0.2.1",
     "ts-loader": "^2.0.1",
     "tslib": "^1.6.0",
-    "tslint": "^5.1.0",
-    "tslint-microsoft-contrib": "^4.0.1",
     "typescript": "2.2.2",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.4.1",
@@ -34,7 +35,6 @@
     "webpack-notifier": "^1.5.0",
     "webpack-split-by-path": "2.0.0",
     "glamor": "^2.20.24",
-    "office-ui-fabric-react": "styling",
     "rtl-css-js": "^1.1.0"
   },
   "rushDependencies": {

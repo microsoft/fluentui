@@ -24,7 +24,6 @@ const styles: any = stylesImport;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
-const SPACE_FROM_EDGE: number = 8;
 
 export interface ICalloutState {
   positions?: IPositionInfo;
@@ -39,6 +38,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 0,
+    minPagePadding: 8,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
@@ -272,12 +272,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
       if (!currentBounds) {
         currentBounds = {
-          top: 0 + SPACE_FROM_EDGE,
-          left: 0 + SPACE_FROM_EDGE,
-          right: this._targetWindow.innerWidth - SPACE_FROM_EDGE,
-          bottom: this._targetWindow.innerHeight - SPACE_FROM_EDGE,
-          width: this._targetWindow.innerWidth - SPACE_FROM_EDGE * 2,
-          height: this._targetWindow.innerHeight - SPACE_FROM_EDGE * 2
+          top: 0 + this.props.minPagePadding,
+          left: 0 + this.props.minPagePadding,
+          right: this._targetWindow.innerWidth - this.props.minPagePadding,
+          bottom: this._targetWindow.innerHeight - this.props.minPagePadding,
+          width: this._targetWindow.innerWidth - this.props.minPagePadding * 2,
+          height: this._targetWindow.innerHeight - this.props.minPagePadding * 2
         };
       }
       this._bounds = currentBounds;
