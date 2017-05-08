@@ -11,8 +11,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
     super();
     this.state = {
       isContextMenuVisible: false,
-      showCallout: false,
-      menuLoaded: false
+      showCallout: false
     };
     this._onClick = this._onClick.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
@@ -38,8 +37,6 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                     iconName: 'Add'
                   },
                   subMenuProps: {
-                    onMenuOpened: () => setTimeout(() => this.setState({ menuLoaded: true }), 1000),
-                    id: this.state.menuLoaded ? 'opened' : 'notOpened',
                     items: [
                       {
                         key: 'emailMessage',
@@ -50,11 +47,6 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                         key: 'calendarEvent',
                         name: 'Calendar event',
                         title: 'Create a calendar event',
-                      },
-                      this.state.menuLoaded && {
-                        key: 'a',
-                        name: 'a',
-                        title: 'Create an email'
                       }
                     ],
                   },
