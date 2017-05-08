@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Tooltip: Added custom content render function and exposed tooltip props to",
+      "type": "minor"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}

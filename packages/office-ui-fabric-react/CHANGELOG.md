@@ -1,6 +1,78 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 01 May 2017 10:18:36 GMT and should not be manually modified.
+This log was last generated on Mon, 08 May 2017 10:19:18 GMT and should not be manually modified.
+
+## 2.26.0
+Mon, 08 May 2017 10:19:18 GMT
+
+### Minor changes
+
+- Callout: Add minPagePadding. Dropdown: Expose calloutProps
+- SearchBox: added the ariaLabel optional property
+- Calendar: make today value configurable to support different timezone
+
+### Patches
+
+- Dropdown: Add aria readonly attribute
+
+## 2.25.1
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- CommandBar: Support customized onRender for command bar item
+- High contrast fixes for dropdown and slider
+- Toggle: removing an unnecessary React warning when passing in defaultChecked value.
+- Persona: Fixed clipping issue when using size28
+- Pivot: increased specificty to fix button styles overriding pivo
+
+## 2.25.0
+Thu, 04 May 2017 10:08:59 GMT
+
+### Minor changes
+
+- Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field
+- Facepile: Added `className` prop.
+
+### Patches
+
+- Dropdown: Tab should close dropdown and tab to next item in tab order
+- OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout
+- ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility.
+- DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements.
+- Moved aria label from ul to menu div
+
+## 2.24.2
+Wed, 03 May 2017 10:17:38 GMT
+
+### Patches
+
+- DetailsList: convert colors over to use semantic slots
+- TextField: Fixed bugs in textfield font family and focus borders
+
+## 2.24.1
+Tue, 02 May 2017 18:32:23 GMT
+
+### Patches
+
+- TooltipHost: Add host className
+- Modal: Fixed bug where props and state were passed in reversed order
+- Calendar: Fix ariaLabel for previous month button
+
+## 2.24.0
+Tue, 02 May 2017 10:09:08 GMT
+
+### Minor changes
+
+- Callout: support for aria role, label and description
+- Pivot: Allow rendering PivotItem headers without content.
+
+### Patches
+
+- Panel: Updating the close button's height, container, margin, and size slightly.
+- List: correctly measure pages when using display: none.
+- Calendar: Support auto-navigation to next/previous month when selected date changes via props
+- Shifting the ContextMenu over to semantic slots for colors.
 
 ## 2.23.3
 Mon, 01 May 2017 10:18:36 GMT
