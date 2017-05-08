@@ -191,7 +191,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/rating'
         },
         {
-          component: require<any>('../components/SearchBox/ResizeGroupPage').ResizeGroupPage,
+          component: require<any>('../components/ResizeGroup/ResizeGroupPage').ResizeGroupPage,
           key: 'ResizeGroup',
           name: 'ResizeGroup',
           url: '#/examples/resizegroup'
