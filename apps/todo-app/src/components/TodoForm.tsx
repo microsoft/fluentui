@@ -3,15 +3,16 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ITodoFormProps, ITodoFormState } from '../types/index';
-import styles = require('./Todo.module.scss');
+import * as stylesImport from './Todo.module.scss';
+const styles: any = stylesImport;
 import strings from './../strings';
 
 /**
- * The form component used for adding new item to the list.
+ * The form component used for adding new item to the list. It uses fabric-react components
+ * TextField and PrimaryButton.
  *
- * It uses fabric-react component <TextField> <Button>
- * Link of TextField: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/textfield
- * Link of Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
+ * TextField: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/textfield
+ * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormState> {
   private _textField: TextField;

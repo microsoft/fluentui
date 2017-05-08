@@ -57,14 +57,15 @@ npm install --save office-ui-fabric-react
 
 This will add the fabric-react project as a dependency in your package.json file, and will drop the project under node_modules/office-ui-fabric-react.
 
-The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method:
+The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.
 
 ```js
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<div><Button>I am a button.</Button></div>);
+const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fabric>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```

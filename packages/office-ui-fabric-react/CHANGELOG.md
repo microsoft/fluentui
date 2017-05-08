@@ -1,6 +1,174 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Apr 2017 15:17:13 GMT and should not be manually modified.
+This log was last generated on Mon, 08 May 2017 10:19:18 GMT and should not be manually modified.
+
+## 2.26.0
+Mon, 08 May 2017 10:19:18 GMT
+
+### Minor changes
+
+- Callout: Add minPagePadding. Dropdown: Expose calloutProps
+- SearchBox: added the ariaLabel optional property
+- Calendar: make today value configurable to support different timezone
+
+### Patches
+
+- Dropdown: Add aria readonly attribute
+
+## 2.25.1
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- CommandBar: Support customized onRender for command bar item
+- High contrast fixes for dropdown and slider
+- Toggle: removing an unnecessary React warning when passing in defaultChecked value.
+- Persona: Fixed clipping issue when using size28
+- Pivot: increased specificty to fix button styles overriding pivo
+
+## 2.25.0
+Thu, 04 May 2017 10:08:59 GMT
+
+### Minor changes
+
+- Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field
+- Facepile: Added `className` prop.
+
+### Patches
+
+- Dropdown: Tab should close dropdown and tab to next item in tab order
+- OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout
+- ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility.
+- DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements.
+- Moved aria label from ul to menu div
+
+## 2.24.2
+Wed, 03 May 2017 10:17:38 GMT
+
+### Patches
+
+- DetailsList: convert colors over to use semantic slots
+- TextField: Fixed bugs in textfield font family and focus borders
+
+## 2.24.1
+Tue, 02 May 2017 18:32:23 GMT
+
+### Patches
+
+- TooltipHost: Add host className
+- Modal: Fixed bug where props and state were passed in reversed order
+- Calendar: Fix ariaLabel for previous month button
+
+## 2.24.0
+Tue, 02 May 2017 10:09:08 GMT
+
+### Minor changes
+
+- Callout: support for aria role, label and description
+- Pivot: Allow rendering PivotItem headers without content.
+
+### Patches
+
+- Panel: Updating the close button's height, container, margin, and size slightly.
+- List: correctly measure pages when using display: none.
+- Calendar: Support auto-navigation to next/previous month when selected date changes via props
+- Shifting the ContextMenu over to semantic slots for colors.
+
+## 2.23.3
+Mon, 01 May 2017 10:18:36 GMT
+
+### Patches
+
+- Toggle: Make toggle control more universally accessible across screen readers.
+
+## 2.23.2
+Fri, 28 Apr 2017 18:00:56 GMT
+
+### Patches
+
+- TooltipHost: Fixing AMD import to pull getId from the Utilities AMD-friendly top-level import.
+
+## 2.23.1
+Fri, 28 Apr 2017 10:09:16 GMT
+
+### Patches
+
+- Dropdown: Fix an issue with screenreaders not reading menu items.
+- Add aria-describedby to tooltiphost component
+
+## 2.23.0
+Thu, 27 Apr 2017 10:18:03 GMT
+
+### Minor changes
+
+- TooltipHost: Allow showing tooltip only if there's overflow
+- TextField: Convert to flexbox, support addons
+
+### Patches
+
+- Don't break intra-word in tooltips UNLESS required for overflow by using CSS overflow-wrap property. Fixes #1627.
+- PeoplePicker: Adding vertical-align to the member list version of the people picker.
+
+## 2.22.1
+Wed, 26 Apr 2017 10:19:05 GMT
+
+### Patches
+
+- Dropdown: now correctly shows ellipsis when text overflows
+
+## 2.22.0
+Tue, 25 Apr 2017 10:19:34 GMT
+
+### Minor changes
+
+- Callout: Allow Callout to specify background color.
+
+### Patches
+
+- Drop Down: Adds required -- class/style + error message state
+- MessageBar: Fixed links not working in message bars
+- Modal: Updated animation to use local transition and removed Fabric Core dependency
+- Panel: Fixed drop shadow for left side panel
+- Searchbox: IE11 keystroke miss, overflow fix
+- DetailsList: when initial focus needs to be set to a row, we do so asynchronously, after page layout is completed, which reduces observed cost of the focus call from 30ms to 3ms. This should improve glass rendering performance.
+
+## 2.21.0
+Fri, 21 Apr 2017 06:23:54 GMT
+
+### Minor changes
+
+- Toggle: Improve screen-reader accessibility.
+
+### Patches
+
+- Calendar: Add ARIA labels to day and month buttons
+- Callout/Tooltip: Updated default gapSpace from 16 to 0
+- DocumentCard: Change persona size from extraExtraSmall to extraSmall and update compact layout title font size to m-plus according to new design.
+
+## 2.20.2
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 2.20.1
+Wed, 19 Apr 2017 15:36:48 GMT
+
+### Patches
+
+- References to @uifabric/utilities have been updated to refer to the root Utilities.ts export, which is more AMD friendly than the package import.
+
+## 2.20.0
+Wed, 19 Apr 2017 03:17:40 GMT
+
+### Minor changes
+
+- Added new Modal control, for hosting content in a Dialog-style modal popup without any inner chrome
+
+### Patches
+
+- DatePicker: Improve screen-reader accessibility.
+- Regression Test: Contextual Menu 
+- fix nit for Suggestion.tsx
 
 ## 2.19.0
 Tue, 18 Apr 2017 15:17:13 GMT

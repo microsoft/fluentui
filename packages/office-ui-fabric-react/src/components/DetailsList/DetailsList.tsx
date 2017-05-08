@@ -30,7 +30,8 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import styles = require('./DetailsList.scss');
+import * as stylesImport from './DetailsList.scss';
+const styles: any = stylesImport;
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -246,7 +247,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         data-is-scrollable='false'
         aria-label={ ariaLabel }
         { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
-        <div role='grid' aria-label={ ariaLabelForGrid }>
+        <div role='grid' aria-label={ ariaLabelForGrid } aria-rowcount={ items ? items.length : 0 } aria-colcount={ adjustedColumns ? adjustedColumns.length : 0 }>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
@@ -425,7 +426,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
       }
-      row.focus();
+      this._async.setTimeout(() => row.focus(), 0);
 
       delete this._initialFocusedIndex;
     }

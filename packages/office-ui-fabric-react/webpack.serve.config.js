@@ -35,14 +35,16 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.tsx?$/,
+        test: [/\.tsx?$/],
         loader: 'ts-loader',
         exclude: [
-          /node_modules/
+          /node_modules/,
+          /\.scss.ts$/
         ]
       },
       {
         test: /\.scss$/,
+        enforce: 'pre',
         exclude: [
           /node_modules/
         ],
@@ -61,6 +63,7 @@ module.exports = {
           },
           {
             loader: 'postcss-loader',
+
             options: {
               plugins: function () {
                 return [

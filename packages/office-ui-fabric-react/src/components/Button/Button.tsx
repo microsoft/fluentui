@@ -2,14 +2,13 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { BaseComponent } from '../../Utilities';
+import { BaseComponent, warn } from '../../Utilities';
 import { ButtonType, IButtonProps } from './Button.Props';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { CommandButton } from './CommandButton/CommandButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
-import { warn } from '@uifabric/utilities';
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated

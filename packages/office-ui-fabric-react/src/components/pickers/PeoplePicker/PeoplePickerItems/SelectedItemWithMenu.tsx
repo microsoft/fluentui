@@ -7,7 +7,8 @@ import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
-import styles = require('./PickerItemsDefault.scss');
+import * as stylesImport from './PickerItemsDefault.scss';
+const styles: any = stylesImport;
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
@@ -36,7 +37,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
         <FocusZone className={ css('ms-PickerPersona-container', styles.personaContainer) } >
           <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <Persona
-              { ...item }
+              { ...item as any }
               presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
           </div>

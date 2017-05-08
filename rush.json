@@ -25,13 +25,27 @@
       ]
     },
     {
+      "packageName": "@uifabric/styling",
+      "projectFolder": "packages/styling",
+      "shouldPublish": true,
+      "cyclicDependencyProjects": [
+        "office-ui-fabric-react"
+      ]
+    },
+    {
       "packageName": "@uifabric/example-component",
       "projectFolder": "packages/example-component",
       "shouldPublish": false
     },
     {
+      "packageName": "ssr-tests",
+      "projectFolder": "apps/ssr-tests",
+      "shouldPublish": false
+    },
+    {
       "packageName": "todo-app",
-      "projectFolder": "apps/todo-app"
+      "projectFolder": "apps/todo-app",
+      "shouldPublish": false
     },
     {
       "packageName": "fabric-website",

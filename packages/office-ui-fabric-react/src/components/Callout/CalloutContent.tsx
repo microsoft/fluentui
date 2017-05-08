@@ -16,12 +16,12 @@ import {
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import styles = require('./Callout.scss');
+import * as stylesImport from './Callout.scss';
+const styles: any = stylesImport;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
-const SPACE_FROM_EDGE: number = 8;
 
 export interface ICalloutState {
   positions?: IPositionInfo;
@@ -35,7 +35,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
-    gapSpace: 16,
+    gapSpace: 0,
+    minPagePadding: 8,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
@@ -92,13 +93,17 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       return null;
     }
     let {
+      role,
+      ariaDescribedBy,
+      ariaLabelledBy,
       className,
       target,
       targetElement,
       isBeakVisible,
       beakStyle,
       children,
-      beakWidth } = this.props;
+      beakWidth,
+      backgroundColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -112,7 +117,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       top: positions && positions.beakPosition ? positions.beakPosition.top : BEAK_ORIGIN_POSITION.top,
       left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
-      width: beakStyleWidth
+      width: beakStyleWidth,
+      backgroundColor: backgroundColor,
     };
 
     let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
@@ -142,15 +148,19 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           { beakVisible &&
             (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
           <Popup
+            role={ role }
+            ariaDescribedBy={ ariaDescribedBy }
+            ariaLabelledBy={ ariaLabelledBy }
             className={ css('ms-Callout-main', styles.main) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight } }>
+            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
             { children }
           </Popup>
         </div>
       </div>
     );
+
     return content;
   }
 
@@ -255,12 +265,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
       if (!currentBounds) {
         currentBounds = {
-          top: 0 + SPACE_FROM_EDGE,
-          left: 0 + SPACE_FROM_EDGE,
-          right: this._targetWindow.innerWidth - SPACE_FROM_EDGE,
-          bottom: this._targetWindow.innerHeight - SPACE_FROM_EDGE,
-          width: this._targetWindow.innerWidth - SPACE_FROM_EDGE * 2,
-          height: this._targetWindow.innerHeight - SPACE_FROM_EDGE * 2
+          top: 0 + this.props.minPagePadding,
+          left: 0 + this.props.minPagePadding,
+          right: this._targetWindow.innerWidth - this.props.minPagePadding,
+          bottom: this._targetWindow.innerHeight - this.props.minPagePadding,
+          width: this._targetWindow.innerWidth - this.props.minPagePadding * 2,
+          height: this._targetWindow.innerHeight - this.props.minPagePadding * 2
         };
       }
       this._bounds = currentBounds;

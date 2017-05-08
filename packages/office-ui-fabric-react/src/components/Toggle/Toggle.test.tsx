@@ -35,7 +35,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let button = renderedDOM.querySelector('.ms-Toggle-button');
+    let button = renderedDOM.querySelector('input');
 
     ReactTestUtils.Simulate.click(button);
     expect(isToggledValue).to.equal(true);
@@ -50,7 +50,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let button = renderedDOM.querySelector('.ms-Toggle-button');
+    let button = renderedDOM.querySelector('input');
 
     ReactTestUtils.Simulate.click(button);
 

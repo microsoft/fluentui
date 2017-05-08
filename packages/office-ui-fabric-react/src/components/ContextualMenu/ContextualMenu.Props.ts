@@ -3,6 +3,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
+import { ICalloutProps } from '../../Callout';
 import {
   IPoint,
   IRectangle
@@ -164,6 +165,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
 
+  /**
+   * Pass in custom callout props
+   */
+  calloutProps?: ICalloutProps;
+
 }
 
 export interface IContextualMenuItem {
@@ -283,7 +289,9 @@ export interface IContextualMenuItem {
   title?: string;
 
   /**
-   * Method to custom render this menu item
+   * Method to custom render this menu item.
+   * For keyboard accessibility, the top-level rendered item should be a focusable element
+   * (like an anchor or a button) or have the `data-is-focusable` property set to true.
    * @defaultvalue undefined
    */
   onRender?: (item: any) => React.ReactNode;
