@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 May 2017 10:19:18 GMT and should not be manually modified.
+This log was last generated on Mon, 08 May 2017 21:31:57 GMT and should not be manually modified.
+
+## 2.27.0
+Mon, 08 May 2017 21:31:57 GMT
+
+### Minor changes
+
+- TextField: `borderless` flag added for suppressing the border style.
+- Tooltip: Added custom content render function and exposed tooltip props to
+
+### Patches
+
+- ChoiceGroup: Fixed broken focus border
 
 ## 2.26.0
 Mon, 08 May 2017 10:19:18 GMT
