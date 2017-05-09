@@ -181,6 +181,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       ariaLabelForSelectAllCheckbox,
       className,
       checkboxVisibility,
+      compact,
       constrainMode,
       dragDropEvents,
       groups,
@@ -241,7 +242,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         ref='root'
         className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
-          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained
+          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained,
+          'ms-DetailsList--Compact': compact
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -331,6 +333,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
+      compact,
       dragDropEvents,
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
@@ -359,6 +362,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return onRenderRow({
       item: item,
       itemIndex: index,
+      compact: compact,
       columns: columns,
       groupNestingDepth: nestingDepth,
       selectionMode: selectionMode,

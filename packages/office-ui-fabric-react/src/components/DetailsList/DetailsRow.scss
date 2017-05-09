@@ -1,6 +1,7 @@
 @import '../../common/common';
 
-$rowHeight: 36px;
+$rowHeight: 42px;
+$compactRowHeight: 32px;
 $rowVerticalPadding: 10px;
 
 // component slots
@@ -28,6 +29,11 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 
   &:hover {
     background: $detailsList-item-hover-color;
+  }
+
+  &.compact {
+    min-height: $compactRowHeight;
+    line-height: $compactRowHeight - ($rowVerticalPadding * 2);
   }
 }
 
@@ -58,6 +64,10 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 
   & > button {
     max-width: 100%;
+  }
+
+  &.compact {
+    min-height: $compactRowHeight;
   }
 }
 
