@@ -278,7 +278,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           date: date.getDate(),
           originalDate: originalDate,
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: compareDates(today, date),
+          isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate)
         };
