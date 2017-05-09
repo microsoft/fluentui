@@ -8,7 +8,6 @@ import {
 import {
   memoize
 } from '@uifabric/utilities';
-
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';

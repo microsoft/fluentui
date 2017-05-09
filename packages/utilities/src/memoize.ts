@@ -6,7 +6,20 @@ declare class WeakMap {
   public has(key: any);
 }
 
-const emptyObject = {};
+const _emptyObject = {};
+const _dictionary = {};
+
+function _normalizeArg(val: any) {
+  if (!val) {
+    return _emptyObject;
+  } else if (typeof val === 'object') {
+    return val;
+  } else if (!_dictionary[val]) {
+    _dictionary[val] = {};
+  }
+
+  return _dictionary[val];
+}
 
 export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T): T {
   let cache: any;
@@ -28,9 +41,10 @@ export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T)
       let currentCache: any = cache;
 
       for (let i = 0; i < args.length - 1; i++) {
-        let arg = args[i];
+        let arg = _normalizeArg(args[i]);
+
         if (!arg) {
-          arg = emptyObject;
+          arg = _emptyObject;
         }
         if (cache.has(arg)) {
           currentCache = cache.get(arg);
@@ -40,11 +54,7 @@ export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T)
         }
       }
 
-      let lastArg = args[args.length - 1];
-
-      if (!lastArg) {
-        lastArg = emptyObject;
-      }
+      let lastArg = _normalizeArg(args[args.length - 1]);
 
       if (currentCache.has(lastArg)) {
         retVal = currentCache.get(lastArg);

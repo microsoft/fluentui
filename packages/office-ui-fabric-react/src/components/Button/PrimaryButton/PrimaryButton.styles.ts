@@ -30,10 +30,12 @@ export function getStyles(
           backgroundColor: palette.themeDark,
           color: palette.white
         },
+
         ':active': {
           backgroundColor: palette.themePrimary,
           color: palette.white
         }
+
       }
     )
   };

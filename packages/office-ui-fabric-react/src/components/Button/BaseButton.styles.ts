@@ -1,5 +1,6 @@
 import { IButtonStyles } from './Button.Props';
 import { ITheme, mergeStyles, getFocusStyle } from '@uifabric/styling';
+import { memoize } from '@uifabric/utilities';
 
 const noOutline = {
   outline: 0
@@ -10,10 +11,10 @@ const noOutline = {
  * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
  * mixing class names together.
  */
-export function getStyles(
+export const getStyles = memoize((
   theme: ITheme,
   focusInset?: string,
-  focusColor?: string): IButtonStyles {
+  focusColor?: string): IButtonStyles => {
 
   const iconStyle = mergeStyles({
     margin: '0 4px',
@@ -91,4 +92,4 @@ export function getStyles(
       border: 0
     })
   };
-}
+});

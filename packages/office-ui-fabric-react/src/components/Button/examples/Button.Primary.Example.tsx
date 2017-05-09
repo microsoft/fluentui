@@ -85,7 +85,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
           styles={ {
             root: mergeStyles({
               height: '100px',
-              float: 'right'
+              float: 'right',
             }),
             rootEnabled: mergeStyles({
               background: 'red',

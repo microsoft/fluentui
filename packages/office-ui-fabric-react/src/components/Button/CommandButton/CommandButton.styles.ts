@@ -8,14 +8,15 @@ import {
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
+import { memoize } from '@uifabric/utilities';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
 
-export function getStyles(
+export const getStyles = memoize((
   theme: ITheme = getTheme(),
   customStyles?: IButtonStyles
-): IButtonStyles {
+): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
     root: mergeStyles(
@@ -60,4 +61,4 @@ export function getStyles(
   };
 
   return mergeStyleSets(baseButtonStyles, commandButtonStyles, customStyles);
-}
+});
