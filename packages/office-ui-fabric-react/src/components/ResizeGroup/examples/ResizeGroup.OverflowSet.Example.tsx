@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup, IResizeGroup } from '../../ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
@@ -13,7 +13,7 @@ import { data } from './data';
 
 export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
 
-  private _ResizeGroup = ResizeGroup;
+  private _resizeGroup: HTMLDivElement;
 
   constructor(props) {
     super(props);
@@ -27,6 +27,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
     return (
       <div className={ this.state.short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
+
+          ref={ this._resolveRef('_resizeGroup') }
           data={ data }
           onReduceData={ (currentdata) => {
             let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
@@ -61,7 +63,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
           } }
         />
         <DefaultButton text='resize' onClick={ () => this._addClass() } />
-        <DefaultButton text='remeasure' onClick={ this._ResizeGroup.measure } />
+        <DefaultButton text='remeasure' onClick={ this._resizeGroup.measure() } />
       </div>
     );
   };

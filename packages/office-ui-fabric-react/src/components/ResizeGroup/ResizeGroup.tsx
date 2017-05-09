@@ -31,9 +31,8 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this._events.on(window, 'resize', this._onResize);
   }
 
-  public measure(): void {
-    console.log('resized');
-    this._onResize;
+  public measure = () => {
+    this._onResize();
   }
 
   public render() {

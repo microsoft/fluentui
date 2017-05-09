@@ -3,7 +3,7 @@ import { ResizeGroup } from './ResizeGroup';
 
 
 export interface IResizeGroup {
-
+  measure?: () => void;
 }
 
 export interface IResizeGroupProps extends React.HTMLProps<ResizeGroup | HTMLElement> {
