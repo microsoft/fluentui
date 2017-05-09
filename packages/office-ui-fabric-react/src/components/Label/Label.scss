@@ -16,7 +16,8 @@
   box-sizing: border-box;
   display: block;
   padding: 5px 0;
-  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .isRequired {

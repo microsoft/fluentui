@@ -32,7 +32,7 @@
 // Interactive overrides
 .isEnabled {
 
-  .button {
+  .invisibleToggle {
     cursor: pointer;
   }
 
@@ -120,11 +120,11 @@
   min-width: 45px;
 }
 
-:global(.ms-Fabric.is-focusVisible) .root.isEnabled .button:focus + .background .focus {
+:global(.ms-Fabric.is-focusVisible) .root.isEnabled .invisibleToggle:focus + .background .focus {
   border: 1px solid $focusedBorderColor;
 }
 
-.button {
+.invisibleToggle {
   position: absolute;
   opacity: 0;
   left: 0;

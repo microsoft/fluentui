@@ -23,7 +23,7 @@ $Panel-width-lg: 940px;
 $Panel-margin-md: 48px;
 $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
-$CommandBarHeight: 40px;
+$CommandBarHeight: 44px;
 
 .root {
   display: none;
@@ -92,6 +92,7 @@ $CommandBarHeight: 40px;
     @include ms-right(auto);
     @include ms-left(0);
     width: $Panel-width-xs;
+    @include ms-drop-shadow(30px, 0px, 30px, -30px, .2);
   }
 }
 
@@ -165,7 +166,7 @@ $CommandBarHeight: 40px;
 .root.rootIsCustom {
   .main {
     @media (min-width: $ms-screen-min-xl) {
-      @include left(auto);
+      @include ms-left(auto);
     }
   }
 }
@@ -192,20 +193,20 @@ $CommandBarHeight: 40px;
   }
 }
 
-// The  button in the top right (x)
+// The button in the top right (x)
 .closeButton {
   background: none;
   border: 0;
   cursor: pointer;
   position: absolute;
-  @include ms-right(8px);
+  @include ms-right(4px);
   top: 0;
   height: $CommandBarHeight;
   width: $CommandBarHeight;
   line-height: $CommandBarHeight;
   padding: 0;
   color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-m;
+  font-size: $ms-icon-size-l;
 
   &:hover {
     color: $ms-color-neutralPrimary;

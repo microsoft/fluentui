@@ -98,6 +98,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isDisabled,
       ariaLabel,
       required,
+      errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -120,7 +121,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -128,27 +130,43 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
+          aria-readonly={ true }
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
+          aria-owns={ id + '-list' }
         >
           <span
             id={ id + '-option' }
-            className={ css('ms-Dropdown-title', styles.title) }
+            className={ css(
+              'ms-Dropdown-title', styles.title,
+              !selectedOption && styles.titleIsPlaceHolder,
+              (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
+            }
             key={ selectedIndex }
             aria-atomic={ true }
           >
-            { selectedOption && (
-              onRenderTitle(selectedOption, this._onRenderTitle)
-            ) }
+            { // If option is selected render title, otherwise render the placeholder text
+              selectedOption ? (
+                onRenderTitle(selectedOption, this._onRenderTitle)
+              ) :
+                this._onRenderPlaceHolder(this.props)
+            }
           </span>
           <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }
+        {
+          errorMessage &&
+          <div
+            className={ css(styles.errorMessage) }>
+            { errorMessage }
+          </div>
+        }
       </div>
     );
   }
@@ -181,6 +199,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderTitle(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
+  }
+
+  // Render placeHolder text in dropdown input
+  @autobind
+  private _onRenderPlaceHolder(props): JSX.Element {
+    if (!props.placeHolder) {
+      return null;
+    }
+    return <span>{ props.placeHolder }</span>;
   }
 
   // Render Callout or Panel container and pass in list
@@ -241,6 +268,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         className={ css('ms-Dropdown-items', styles.items) }
         aria-labelledby={ id + '-label' }
         onKeyDown={ this._onZoneKeyDown }
+        role='listbox'
       >
         { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
@@ -299,9 +327,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='menu'
+        role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-        aria-label={ item.text }
+        ariaLabel={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
     );
   }
@@ -309,7 +337,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render content of item (i.e. text/icon inside of button)
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
-    return <span>{ item.text }</span>;
+    return <span className={ css('ms-Dropdown-optionText', styles.optionText) }>{ item.text }</span>;
   }
 
   @autobind
@@ -417,6 +445,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.escape:
         this.setState({ isOpen: false });
         break;
+
+      case KeyCodes.tab:
+        this.setState({ isOpen: false });
+        return;
 
       default:
         return;

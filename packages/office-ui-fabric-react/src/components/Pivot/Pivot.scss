@@ -24,7 +24,8 @@
   white-space: nowrap;
 }
 
-.link {
+// specificity boost to override button styles. remove when we move to glamor.
+.root .link {
   color: $ms-color-neutralPrimary;
   display: inline-block;
   font-size: $ms-font-size-m;

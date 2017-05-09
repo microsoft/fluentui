@@ -25,6 +25,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   label?: string;
 
   /**
+   * Input placeholder text. Displayed until option is selected.
+   */
+  placeHolder?: string;
+
+  /**
   * Aria Label for the Dropdown for screen reader users.
   */
   ariaLabel?: string;
@@ -59,6 +64,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    * Callback issues when the selected option changes
    */
   onChanged?: (option: IDropdownOption, index?: number) => void;
+
+  /**
+   * Optional custom renderer for placeholder text
+   */
+  onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
 
   /**
    * Optional custom renderer for selected option displayed in input
@@ -101,6 +111,10 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    */
   isDisabled?: boolean;
 
+  /**
+   * Descriptive label for the Dropdown Error Message
+   */
+  errorMessage?: string;
 }
 
 export interface IDropdownOption {

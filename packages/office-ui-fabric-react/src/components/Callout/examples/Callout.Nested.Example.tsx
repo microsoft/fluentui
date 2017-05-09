@@ -37,6 +37,8 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
         { isCalloutVisible ? (
           <div>
             <Callout
+              role={ 'alertdialog' }
+              ariaLabelledBy={ 'callout-label-2' }
               className='ms-CalloutExample-callout'
               gapSpace={ 0 }
               targetElement={ this._menuButtonElement }
@@ -44,7 +46,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               setInitialFocus={ true }
             >
               <div className='ms-CalloutExample-header'>
-                <p className='ms-CalloutExample-title'>
+                <p className='ms-CalloutExample-title' id={ 'callout-label-2' }>
                   Callout title here
                 </p>
               </div>
