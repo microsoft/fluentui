@@ -515,7 +515,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _findItemByKey(key: string): IContextualMenuItem | null {
     let { items } = this.props;
-    for (let i = 0; i < this.props.items.length; i++) {
+    for (let i = 0; i < items.length; i++) {
       let item = items[i];
       if (item.key && item.key === key) {
         return item;
