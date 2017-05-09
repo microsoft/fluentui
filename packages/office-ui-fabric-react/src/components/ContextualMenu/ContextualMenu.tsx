@@ -186,6 +186,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
+    const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
@@ -226,9 +227,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 </ul>
               </FocusZone>
             ) : (null) }
-            { this.state.expandedMenuItemKey ? ( // If a submenu properities exists, the submenu will be rendered.
-              <ContextualMenu { ...this._getSubmenuProps() } />
-            ) : (null) }
+            { submenuProps && <ContextualMenu { ...submenuProps } /> }
           </div>
         </Callout>
       );
@@ -486,27 +485,33 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _getSubmenuProps() {
-    let { submenuTarget, expandedMenuItemKey } = this.state;
-    let item = this._findItemByKey(expandedMenuItemKey);
-    let submenuProps = {
-      items: getSubmenuItems(item),
-      target: submenuTarget,
-      onDismiss: this._onSubMenuDismiss,
-      isSubMenu: true,
-      id: this.state.subMenuId,
-      shouldFocusOnMount: true,
-      directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-      className: this.props.className,
-      gapSpace: 0
-    };
+    const { submenuTarget, expandedMenuItemKey } = this.state;
+    const item = this._findItemByKey(expandedMenuItemKey);
+    let submenuProps = null;
 
-    if (item.subMenuProps) {
-      assign(submenuProps, item.subMenuProps);
+    if (item) {
+      submenuProps = {
+        items: getSubmenuItems(item),
+        target: submenuTarget,
+        onDismiss: this._onSubMenuDismiss,
+        isSubMenu: true,
+        id: this.state.subMenuId,
+        shouldFocusOnMount: true,
+        directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        className: this.props.className,
+        gapSpace: 0
+      };
+
+      if (item.subMenuProps) {
+        assign(submenuProps, item.subMenuProps);
+      }
     }
+
     return submenuProps;
+
   }
 
-  private _findItemByKey(key: string): IContextualMenuItem {
+  private _findItemByKey(key: string): IContextualMenuItem | null {
     let { items } = this.props;
     for (let i = 0; i < this.props.items.length; i++) {
       let item = items[i];
