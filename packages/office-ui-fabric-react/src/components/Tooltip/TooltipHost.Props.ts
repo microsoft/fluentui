@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TooltipHost } from './TooltipHost';
-import { TooltipDelay } from './Tooltip.Props';
+import { TooltipDelay, ITooltipProps } from './Tooltip.Props';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -30,6 +30,11 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * Additional properties to pass through for Callout, reference detail properties in ICalloutProps
    */
   calloutProps?: ICalloutProps;
+
+  /**
+   * Additional properties to pass through for Tooltip, reference detail properties in ITooltipProps
+   */
+  tooltipProps?: ITooltipProps;
 
   /**
    * Length of delay

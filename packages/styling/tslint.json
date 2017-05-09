@@ -2,5 +2,17 @@
   "extends": [
     "../../tslint.json"
   ],
-  "rules": {}
+  "rules": {
+    "max-line-length": [
+      false,
+      140
+    ],
+    "no-any": false,
+    "variable-name": false,
+    "no-internal-module": false,
+    "prefer-const": false,
+    "typedef": [
+      false
+    ]
+  }
 }
