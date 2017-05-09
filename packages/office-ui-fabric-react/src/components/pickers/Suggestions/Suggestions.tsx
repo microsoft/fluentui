@@ -18,11 +18,11 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      removeItem,
+      onRemoveItem,
       id
     } = this.props;
+    let itemProps = assign({}, suggestionModel.item, { onRemoveItem });
 
-    let itemProps = assign({}, suggestionModel.item, { onClick: onClick });
     return (
       <CommandButton
         onClick={ onClick }
@@ -35,13 +35,14 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           className
         ) }
       >
-        <RenderSuggestion { ...suggestionModel.item as any } />
+        {/*<RenderSuggestion  { ...itemProps  } />*/ }
+        { RenderSuggestion(suggestionModel.item, this.props) }
       </CommandButton>
     );
   }
 }
 
-
+// { ...suggestionModel.item as any }
 //<RenderSuggestion { ...suggestionModel.item } />
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
@@ -172,9 +173,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
               id={ 'sug-item' + index }
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion }
-              onClick={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionClick(ev, suggestion.item, index) }
+              onClick={ (ev: React.MouseEvent<HTMLElement>) => { debugger; this.props.onSuggestionClick(ev, suggestion.item, index) } }
               className={ suggestionsItemClassName }
-              removeItem={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionRemove(ev, suggestion.item, index) }
+              onRemoveItem={ (ev: React.MouseEvent<HTMLElement>) => {
+                debugger;
+                this.props.onSuggestionRemove(ev, suggestion.item, index);
+                ev.stopPropagation();
+              }
+              }
             />
           </div>) }
       </div>);

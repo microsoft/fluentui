@@ -35,7 +35,6 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading'
 };
 
-
 // searchingText: (suggestionProps: ISuggestionsProps) => `Searching for ${suggestionProps.i}`
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
@@ -43,7 +42,7 @@ const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
   resultsMaximumNumber: 10,
   resultsFooterFull: 'Top 10 results',
   resultsFooter: 'No additional results'
-}
+};
 
 const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limitedSearchAdditionalProps, suggestionProps);
 
@@ -215,7 +214,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
                 presence={ personaProps.presence !== undefined ? personaProps.presence : 0 }
                 size={ PersonaSize.size28 }
               />
-              <button onClick={ (ev) => { ev.preventDefault(); ev.stopPropagation(); console.log(this); this._onRemoveSuggestion(personaProps) } }> click me </button>
+              <button onClick={ (ev) => { ev.preventDefault(); ev.stopPropagation(); console.log(this); this._onRemoveSuggestion(personaProps); } }> click me </button>
             </div>
           ) }
       />
@@ -224,7 +223,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   @autobind
   private _onRemoveSuggestion(item: IPersonaProps): void {
-    console.log('hello', item);
     let { peopleList, mostRecentlyUsed } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
     let indexMostRecentlyUsed: number = mostRecentlyUsed.indexOf(item);
@@ -259,7 +257,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
     let { mostRecentlyUsed } = this.state;
-    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas)
+    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
     return this._filterPromise(mostRecentlyUsed);
   }
 

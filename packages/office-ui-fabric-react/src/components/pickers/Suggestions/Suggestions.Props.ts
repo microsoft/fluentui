@@ -6,7 +6,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion: (props: any) => JSX.Element;
+  onRenderSuggestion: (props: any, suggestionItemProps: any) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked
    */
@@ -88,9 +88,13 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
 export interface ISuggestionItemProps<T> {
   suggestionModel: ISuggestionModel<T>;
-  RenderSuggestion: (item: any) => JSX.Element;
+  RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
-  removeItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  onRemoveItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   id?: string;
+}
+
+export interface ISuggestionItemProps<T> {
+
 }

@@ -7,6 +7,9 @@ import { IconButton } from '../../../../Button';
 import * as stylesImport from '../PeoplePicker.scss';
 const styles: any = stylesImport;
 
+
+
+
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
   return (
     <div className='ms-PeoplePicker-personaContent'>
@@ -33,7 +36,11 @@ export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (per
   );
 };
 
-export const SuggestionItemRemove: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
+export const SuggestionItemRemove: (persona: IPersonaProps, suggestionProps: any) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps: any) => {
+  debugger;
+  console.log(personaProps, suggestionItemProps);
+  let { onRemoveItem } = suggestionItemProps;
+  console.log(onRemoveItem);
   return (
     <div className='ms-PeoplePicker-personaContent'>
       <Persona
@@ -45,7 +52,9 @@ export const SuggestionItemRemove: (persona: IPersonaProps) => JSX.Element = (pe
       <IconButton
         icon='Cancel'
         title='Remove'
-        ariaLabel='Remove' />
+        ariaLabel='Remove'
+        onClick={ onRemoveItem }
+      />
     </div>
   );
 };

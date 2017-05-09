@@ -107,9 +107,8 @@ export interface IBasePickerSuggestionsProps {
    */
   searchingText?: string;
 
-
-
   resultsFooterFull?: string;
+
   resultsFooter?: string;
 
   resultsMaximumNumber?: number;

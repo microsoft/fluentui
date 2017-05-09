@@ -4,8 +4,7 @@ import {
   KeyCodes,
   autobind,
   css,
-  getRTL,
-  getRTLSafeKeyCode
+  getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -346,7 +345,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
     this.setState({
       suggestionsVisible: true
-    })
+    });
   }
 
   @autobind
@@ -425,7 +424,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           this.setState({ isSearching: false });
         } else if (suggestionsPromiseLike.then) {
           suggestionsPromiseLike.then((newSuggestions: T[]) => {
-            this.updateSuggestions(newSuggestions)
+            this.updateSuggestions(newSuggestions);
             this.setState({ isSearching: false },
               () => {
                 console.log(this.state.isSearching);

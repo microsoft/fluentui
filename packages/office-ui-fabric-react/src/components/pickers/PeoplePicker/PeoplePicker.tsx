@@ -23,8 +23,8 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
  */
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
-    onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props) => <SuggestionItemRemove { ...props } />
+    onRenderItem: (props, itemProps) => <SelectedItemDefault {...props} {...itemProps} />,
+    onRenderSuggestionsItem: (props, itemProps) => SuggestionItemRemove({ ...props }, { ...itemProps })
   };
 }
 
