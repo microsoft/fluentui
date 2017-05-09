@@ -6,3 +6,8 @@ before_script:
 script:
   - npm run build
   - npm run cibuild
+cache:
+  directories:
+    - node_modules
+    - common/node_modules
+

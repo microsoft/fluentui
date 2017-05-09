@@ -84,6 +84,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Localized strings to use in the DatePicker
    */
   strings?: IDatePickerStrings;
+
+  /**
+   * Determines if DatePicker has a border.
+   * @defaultvalue false
+   */
+  borderless?: boolean;
 }
 
 export interface IDatePickerStrings {

@@ -2,6 +2,82 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.27.1",
+      "tag": "office-ui-fabric-react_v2.27.1",
+      "date": "Tue, 09 May 2017 10:09:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Johanna Hawkins (ORTIZ) <johannao@microsoft.com>",
+            "commit": "6063694b7e32babeff39317af561285b6d220ed4",
+            "comment": "Day picker: Ensure we use values from nextProps when props are updated when generating weeks"
+          },
+          {
+            "author": "Johanna Hawkins (ORTIZ) <johannao@microsoft.com>",
+            "commit": "f187f479e9773d38888d9e345ffd965e06de1a9f",
+            "comment": "DatePicker: Use todaysDate instead of today in _getWeeks"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.27.0",
+      "tag": "office-ui-fabric-react_v2.27.0",
+      "date": "Mon, 08 May 2017 21:31:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "09f53d2fd75259c1f7000ff2978bf96d3b582bc1",
+            "comment": "ChoiceGroup: Fixed broken focus border"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "5186db85d26f2055870f75f8cc15b00129c97e04",
+            "comment": "TextField: `borderless` flag added for suppressing the border style."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "1a7eaf178e161175d8a66a5a1d06c024b6223100",
+            "comment": "Tooltip: Added custom content render function and exposed tooltip props to"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.26.0",
+      "tag": "office-ui-fabric-react_v2.26.0",
+      "date": "Mon, 08 May 2017 10:19:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ross Brodbeck <hross@users.noreply.github.com>",
+            "commit": "905f7483aa990a1c7f29acd1180200a8bc403a37",
+            "comment": "Dropdown: Add aria readonly attribute"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "b3b21ac2211e87e58d4364fb8793387db0c30314",
+            "comment": "Callout: Add minPagePadding. Dropdown: Expose calloutProps"
+          },
+          {
+            "author": "Jakob Werner <jaxxx_w@yahoo.com>",
+            "commit": "030db5cd6bd94033649b898fdce94ec434bffd5e",
+            "comment": "SearchBox: added the ariaLabel optional property"
+          },
+          {
+            "author": "Hyung Kwon <dolguji@hotmail.com>",
+            "commit": "62f8cebb4930764c4097d34a38d8d3a3d396f365",
+            "comment": "Calendar: make today value configurable to support different timezone"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.25.1",
       "tag": "office-ui-fabric-react_v2.25.1",
       "date": "Fri, 05 May 2017 10:18:19 GMT",

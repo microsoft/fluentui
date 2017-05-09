@@ -64,11 +64,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public constructor(props: ICalendarDayProps) {
     super(props);
 
-    const { navigatedDate, selectedDate, today } = props;
-
     this.state = {
       activeDescendantId: getId('DatePickerDay-active'),
-      weeks: this._getWeeks(navigatedDate, selectedDate, today)
+      weeks: this._getWeeks(props)
     };
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
@@ -79,7 +77,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     const { navigatedDate, selectedDate, today } = nextProps;
 
     this.setState({
-      weeks: this._getWeeks(navigatedDate, selectedDate, today)
+      weeks: this._getWeeks(nextProps)
     });
   }
 
@@ -251,10 +249,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _getWeeks(navigatedDate: Date, selectedDate: Date, todayDate: Date): IDayInfo[][] {
-    let { firstDayOfWeek, dateRangeType } = this.props;
+  private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
+    let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
-    let today = todayDate || new Date();
+    let todaysDate = today || new Date();
     let weeks = [];
     let week;
 
@@ -280,7 +278,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           date: date.getDate(),
           originalDate: originalDate,
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: compareDates(today, date),
+          isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate)
         };
