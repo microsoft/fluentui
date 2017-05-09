@@ -53,6 +53,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   underlined?: boolean;
 
   /**
+   * Whether or not the textfield is borderless.
+   * @default false
+   */
+  borderless?: boolean;
+
+  /**
    * Label for the textfield.
    */
   label?: string;
