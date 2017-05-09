@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Use todaysDate instead of today in _getWeeks",
+      "comment": "ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own",
       "type": "patch"
     },
     {
@@ -21,5 +21,5 @@
       "type": "none"
     }
   ],
-  "email": "johannao@microsoft.com"
+  "email": "joschect@microsoft.com"
 }
