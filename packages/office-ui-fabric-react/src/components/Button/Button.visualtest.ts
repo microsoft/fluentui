@@ -59,7 +59,6 @@ componentIds.push({
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
 
-
 componentIds.push({
   selector: '#' + 'ContextualButton',
   imageSelector: '.' + 'ms-ContextualMenu-list',

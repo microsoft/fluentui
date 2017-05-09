@@ -16,7 +16,6 @@ export const VisualTestState: IVisualTestState = {
     './Dialog/DialogPage.visualtest',
     './Facepile/FacepilePage.visualtest',
     './Label/LabelPage.visualtest',
-    './Link/LinkPage.visualtest',
     './MessageBar/MessageBarPage.visualtest',
     './Modal/ModalPage.visualtest',
     './Persona/PersonaPage.visualtest',

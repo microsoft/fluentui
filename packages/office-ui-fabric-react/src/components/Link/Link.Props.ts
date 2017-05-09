@@ -19,8 +19,4 @@ export interface ILinkProps extends React.HTMLProps<HTMLAnchorElement | HTMLButt
    * Whether the link is disabled
    */
   disabled?: boolean;
-  /**
-  * Optional class for link.
-  */
-  className?: string;
 }
