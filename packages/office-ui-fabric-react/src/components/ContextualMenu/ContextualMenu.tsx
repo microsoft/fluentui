@@ -23,13 +23,12 @@ import {
 } from '../../Icon';
 import * as stylesImport from './ContextualMenu.scss';
 const styles: any = stylesImport;
-
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: HTMLElement;
-  submenuProps?: IContextualMenuProps;
+  submenuTarget?: HTMLElement;
   positions?: any;
   slideDirectionalClassName?: string;
   subMenuId?: string;
@@ -186,10 +185,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       shouldFocusOnMount,
       calloutProps } = this.props;
 
-    let { submenuProps } = this.state;
-
     let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
+    const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
@@ -231,9 +229,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 </ul>
               </FocusZone>
             ) : (null) }
-            { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-              <ContextualMenu { ...submenuProps } />
-            ) : (null) }
+            { submenuProps && <ContextualMenu { ...submenuProps } /> }
           </div>
         </Callout>
       );
@@ -478,13 +474,26 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
     if (this.state.expandedMenuItemKey !== item.key) {
 
-      if (this.state.submenuProps) {
+      if (this.state.expandedMenuItemKey) {
         this._onSubMenuDismiss();
       }
 
-      let submenuProps = {
+      this.setState({
+        expandedMenuItemKey: item.key,
+        submenuTarget: target
+      });
+    }
+  }
+
+  private _getSubmenuProps() {
+    const { submenuTarget, expandedMenuItemKey } = this.state;
+    const item = this._findItemByKey(expandedMenuItemKey);
+    let submenuProps = null;
+
+    if (item) {
+      submenuProps = {
         items: getSubmenuItems(item),
-        target: target,
+        target: submenuTarget,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
         id: this.state.subMenuId,
@@ -497,11 +506,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       if (item.subMenuProps) {
         assign(submenuProps, item.subMenuProps);
       }
+    }
 
-      this.setState({
-        expandedMenuItemKey: item.key,
-        submenuProps: submenuProps,
-      });
+    return submenuProps;
+
+  }
+
+  private _findItemByKey(key: string): IContextualMenuItem | null {
+    let { items } = this.props;
+    for (const item of items) {
+      if (item.key && item.key === key) {
+        return item;
+      }
     }
   }
 
@@ -513,7 +529,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       this.setState({
         dismissedMenuItemKey: this.state.expandedMenuItemKey,
         expandedMenuItemKey: null,
-        submenuProps: null
+        submenuTarget: null
       });
     }
   }
