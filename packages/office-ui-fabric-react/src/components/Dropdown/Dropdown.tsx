@@ -130,6 +130,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
+          aria-readonly={ true }
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
@@ -444,6 +445,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.escape:
         this.setState({ isOpen: false });
         break;
+
+      case KeyCodes.tab:
+        this.setState({ isOpen: false });
+        return;
 
       default:
         return;

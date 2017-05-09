@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.1.0",
+      "tag": "@uifabric/styling_v0.1.0",
+      "date": "Mon, 08 May 2017 21:31:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Srikanth Deshpande <srideshpande@users.noreply.github.com>",
+            "commit": "a03d36bb13c70579f5f3f17653bef8bce5ebd603",
+            "comment": "Change the build rig in @uifabric/styling to one that enables the creation of a bundle safe for consumption by SharePoint partners. This should have no effect on the output of the modules."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.2",
       "tag": "@uifabric/styling_v0.0.2",
       "date": "Fri, 21 Apr 2017 06:23:54 GMT",
