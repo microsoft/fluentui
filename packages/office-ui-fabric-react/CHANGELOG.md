@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 May 2017 21:31:57 GMT and should not be manually modified.
+This log was last generated on Tue, 09 May 2017 10:09:56 GMT and should not be manually modified.
+
+## 2.27.1
+Tue, 09 May 2017 10:09:56 GMT
+
+### Patches
+
+- Day picker: Ensure we use values from nextProps when props are updated when generating weeks
+- DatePicker: Use todaysDate instead of today in _getWeeks
 
 ## 2.27.0
 Mon, 08 May 2017 21:31:57 GMT
