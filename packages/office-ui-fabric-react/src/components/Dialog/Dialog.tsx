@@ -63,7 +63,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     let subTextContent;
     const dialogClassName = css(this.props.className, {
       ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
-      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close
+      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
     });
     const containerClassName = css(this.props.containerClassName, styles.main);
     let groupings = this._groupChildren();
