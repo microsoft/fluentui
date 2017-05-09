@@ -49,8 +49,6 @@ export default class ButtonVPage extends React.Component<any, any> {
           icon='Add'
           text='New'
           menuProps={ {
-            className: 'ContextualButtonMenu',
-            id: 'ContextualButtonMenu',
             items: [
               {
                 key: 'emailMessage',

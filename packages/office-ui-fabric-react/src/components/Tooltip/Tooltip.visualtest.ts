@@ -1,6 +1,6 @@
 import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { testRunner, mouseMoveScreenshot } from '../../visualtest/RunVisualTest';
+import { testRunner, mouseClickScreenshot } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
@@ -8,8 +8,8 @@ let componentIds: IRunVisualTest[] = [];
 componentIds.push({
   selector: '#' + 'TooltipButton',
   fileName: 'tooltip',
-  imageSelector: '.' + 'ms-Layer',
-  commands: [mouseMoveScreenshot]
+  imageSelector: '#' + 'Tooltip',
+  commands: [mouseClickScreenshot]
 });
 
 casper.
