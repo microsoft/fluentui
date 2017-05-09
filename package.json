@@ -16,8 +16,6 @@
     "test": "npm run _rushBuild",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
-    "_visualTest": "cd packages && cd office-ui-fabric-react && gulp visualtest --production",
-    "cibuild": "npm run _visualTest",
     "change": "node node_modules/@microsoft/rush/bin/rush change"
   },
   "license": "MIT",
