@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add dropdown component prop: pageSize to indicate max display count",
+      "comment": "Dropdown: Add ability to set custom props on the Dropdown's Callout",
       "type": "minor"
     },
     {

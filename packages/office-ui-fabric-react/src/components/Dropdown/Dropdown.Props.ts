@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
+import { ICalloutProps } from '../../Callout';
 
 export enum DropdownMenuItemType {
   Normal = 0,
@@ -106,9 +107,9 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   required?: boolean;
 
   /**
-   * Max item per page
+   * Custom properties for Dropdown's Callout used to render options.
    */
-  pageSize?: number;
+  calloutProps?: ICalloutProps;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.
