@@ -162,7 +162,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   public render() {
     const {
       columns,
-      compact,
       dragDropEvents,
       item,
       itemIndex,
@@ -190,8 +189,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         className={ css('ms-DetailsRow ms-u-fadeIn400', styles.root, droppingClassName, {
           ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
           ['is-selected ' + styles.rootIsSelected]: isSelected,
-          ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always,
-          [styles.compact]: compact
+          ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
@@ -219,7 +217,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
           { item && (
             <DetailsRowFields
-              compact={ compact }
               columns={ columns }
               item={ item }
               itemIndex={ itemIndex }
@@ -232,7 +229,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
               ref='cellMeasurer'
             >
               <DetailsRowFields
-                compact={ compact }
                 columns={ [columnMeasureInfo.column] }
                 item={ item }
                 itemIndex={ itemIndex }

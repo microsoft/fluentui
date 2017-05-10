@@ -9,6 +9,21 @@ $detailsList-item-hover-color: $listItemHoverColor;
 $detailsList-item-selected-color: $listItemSelectedColor;
 $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 
+:global(.ms-DetailsList--Compact) {
+  .root {
+    min-height: $compactRowHeight;
+    line-height: $compactRowHeight - ($rowVerticalPadding * 2);
+  }
+
+  .cell {
+    min-height: $compactRowHeight;
+  }
+
+  .check {
+    padding: 8px;
+  }
+}
+
 .root {
   @include focus-border();
 
@@ -29,11 +44,6 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 
   &:hover {
     background: $detailsList-item-hover-color;
-  }
-
-  &.compact {
-    min-height: $compactRowHeight;
-    line-height: $compactRowHeight - ($rowVerticalPadding * 2);
   }
 }
 
@@ -65,10 +75,6 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   & > button {
     max-width: 100%;
   }
-
-  &.compact {
-    min-height: $compactRowHeight;
-  }
 }
 
 .isMultiline {
@@ -84,9 +90,10 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 .check {
   @include focus-border();
 
+  @include margin-left(4px);
   display: inline-block;
   cursor: default;
-  padding: 6px;
+  padding: 13px 8px;
   box-sizing: border-box;
   vertical-align: top;
   background: none;

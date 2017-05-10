@@ -30,6 +30,9 @@ const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-reac
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
+import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
+const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
+
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
@@ -38,6 +41,9 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         componentName='DetailsListExample'
         exampleCards={
           <div>
+            <ExampleCard title='Document DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
+              <DetailsListDocumentsExample />
+            </ExampleCard>
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
             </ExampleCard>
