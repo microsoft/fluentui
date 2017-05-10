@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add dropdown component prop: pageSize to indicate max display count",
+      "comment": "Add new prop to limit the height of dropdown options",
       "type": "minor"
     },
     {

@@ -106,9 +106,9 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   required?: boolean;
 
   /**
-   * Max item per page
+   * Max height of dropdown options.
    */
-  pageSize?: number;
+  maxHeight?: number;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.
