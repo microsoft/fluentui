@@ -1,4 +1,4 @@
-import 'es6-promise';
+import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
@@ -39,7 +39,6 @@ describe('TextField', () => {
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     expect(inputDOM.value).to.equal(exampleValue);
-    expect(inputDOM.getAttribute('label')).to.equal(exampleLabel);
 
     // Assert on the label element.
     const labelDOM: HTMLLabelElement = renderedDOM.getElementsByTagName('label')[0];

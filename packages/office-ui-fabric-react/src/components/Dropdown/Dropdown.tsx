@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
@@ -17,9 +16,8 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import styles = require('./Dropdown.scss');
-
-const OPTION: string = 'option';
+import * as stylesImport from './Dropdown.scss';
+const styles: any = stylesImport;
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -29,7 +27,6 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
-  calculatedHeight?: number;
 }
 
 @withResponsiveMode
@@ -38,6 +35,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public static defaultProps = {
     options: []
   };
+
+  private static Option: string = 'option';
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -99,6 +98,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isDisabled,
       ariaLabel,
       required,
+      errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -121,7 +121,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -129,27 +130,43 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
+          aria-readonly={ true }
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
+          aria-owns={ id + '-list' }
         >
           <span
             id={ id + '-option' }
-            className={ css('ms-Dropdown-title', styles.title) }
+            className={ css(
+              'ms-Dropdown-title', styles.title,
+              !selectedOption && styles.titleIsPlaceHolder,
+              (errorMessage && errorMessage.length > 0 ? styles.titleIsError : null))
+            }
             key={ selectedIndex }
             aria-atomic={ true }
           >
-            { selectedOption && (
-              onRenderTitle(selectedOption, this._onRenderTitle)
-            ) }
+            { // If option is selected render title, otherwise render the placeholder text
+              selectedOption ? (
+                onRenderTitle(selectedOption, this._onRenderTitle)
+              ) :
+                this._onRenderPlaceHolder(this.props)
+            }
           </span>
           <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }
+        {
+          errorMessage &&
+          <div
+            className={ css(styles.errorMessage) }>
+            { errorMessage }
+          </div>
+        }
       </div>
     );
   }
@@ -184,6 +201,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return <span>{ item.text }</span>;
   }
 
+  // Render placeHolder text in dropdown input
+  @autobind
+  private _onRenderPlaceHolder(props): JSX.Element {
+    if (!props.placeHolder) {
+      return null;
+    }
+    return <span>{ props.placeHolder }</span>;
+  }
+
   // Render Callout or Panel container and pass in list
   @autobind
   private _onRenderContainer(props: IDropdownProps): JSX.Element {
@@ -191,7 +217,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode
     } = this.props;
-    const { calculatedHeight } = this.state;
+
     let isSmall = responsiveMode <= ResponsiveMode.medium;
 
     return (
@@ -216,7 +242,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2, maxHeight: calculatedHeight === 0 ? undefined : calculatedHeight } }>
+          <div style={ { width: this._dropDown.clientWidth - 2 } }>
             { onRenderList(props, this._onRenderList) }
           </div>
         </Callout>
@@ -242,6 +268,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         className={ css('ms-Dropdown-items', styles.items) }
         aria-labelledby={ id + '-label' }
         onKeyDown={ this._onZoneKeyDown }
+        role='listbox'
       >
         { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
@@ -261,69 +288,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
-  private _calculateMaxHeight() {
-    let { pageSize, options } = this.props;
-    let maxHeight = 0;
-    if (pageSize) {
-      let { selectedIndex } = this.state;
-      if (-1 === selectedIndex) {
-        selectedIndex = 0;
-      }
-
-      let nonSeparatorIndex: number[] = [];
-      let startIndex = selectedIndex;
-      let lookdown = true;
-      let lookup = true;
-      while (nonSeparatorIndex.length < pageSize && (lookdown || lookup)) {
-        if (lookdown) {
-          if (options[startIndex]) {
-            if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
-              nonSeparatorIndex.push(options[startIndex].index);
-            }
-            startIndex += 1;
-            continue;
-          } else {
-            lookdown = false;
-            startIndex = selectedIndex - 1;
-          }
-        }
-
-        if (lookup) {
-          if (options[startIndex]) {
-            if (options[startIndex].itemType !== DropdownMenuItemType.Divider) {
-              nonSeparatorIndex.push(options[startIndex].index);
-            }
-            startIndex -= 1;
-            continue;
-          } else {
-            lookup = false;
-            break;
-          }
-        }
-      }
-
-      for (let i = 0; i < nonSeparatorIndex.length; i++) {
-        let item = this.refs[OPTION + i] as Element;
-        if (item) {
-          let itemDOM = ReactDOM.findDOMNode(item);
-          if (itemDOM) {
-            maxHeight += itemDOM.clientHeight;
-          }
-        }
-      }
-
-      if (maxHeight !== this.state.calculatedHeight) {
-        this.setState({ calculatedHeight: maxHeight });
-      }
-    }
-  }
-
   // Render separator
   private _renderSeparator(item: IDropdownOption): JSX.Element {
     let { index, key } = item;
     if (index > 0) {
       return <div
-        ref={ OPTION + item.index }
         role='separator'
         key={ key }
         className={ css('ms-Dropdown-divider', styles.divider) } />;
@@ -334,9 +303,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _renderHeader(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     return (
-      <div
-        className={ css('ms-Dropdown-header', styles.header) }
-        ref={ OPTION + item.index }>
+      <div className={ css('ms-Dropdown-header', styles.header) }>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -349,7 +316,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <CommandButton
         id={ id + '-list' + item.index }
-        ref={ OPTION + item.index }
+        ref={ Dropdown.Option + item.index }
         key={ item.key }
         data-index={ item.index }
         data-is-focusable={ true }
@@ -360,9 +327,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='menu'
+        role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-        aria-label={ item.text }
+        ariaLabel={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
     );
   }
@@ -370,13 +337,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Render content of item (i.e. text/icon inside of button)
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
-    return <span>{ item.text }</span>;
+    return <span className={ css('ms-Dropdown-optionText', styles.optionText) }>{ item.text }</span>;
   }
 
   @autobind
   private _onPositioned() {
     this._focusZone.focus();
-    this._calculateMaxHeight();
   }
 
   private _onItemClick(index) {
@@ -479,6 +445,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.escape:
         this.setState({ isOpen: false });
         break;
+
+      case KeyCodes.tab:
+        this.setState({ isOpen: false });
+        return;
 
       default:
         return;
