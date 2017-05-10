@@ -6,9 +6,7 @@ before_script:
 script:
   - npm run build
   - npm run cibuild
-after_success:
-  - ./push.sh
-  github_token: $GITHUB_TOKEN
+github_token: $GITHUB_TOKEN
 cache:
   directories:
     - node_modules
