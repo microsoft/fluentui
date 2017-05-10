@@ -9,14 +9,15 @@
   font-size: 12px;
 }
 
-.ms-Label {
+.ms-SpinButtonLabel {
   pointer-events: none;
+  padding: 2px 0px;
 }
 
 .ms-SpinButtonContainer {
   width: 100%;
-  min-width: 90px;
-  overflow: hidden;
+  min-width: 86px;
+  padding: 2px;
 }
 
   .ms-ArrowBox {
@@ -32,6 +33,8 @@
 
   .ms-SpinButtonWrapper:hover .ms-ArrowBox, .ms-SpinButtonWrapper:hover .ms-SpinButton-Input {
     border-color: $ms-color-neutralSecondaryAlt;
+    outline: 2px dashed transparent;
+
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
     }
@@ -46,15 +49,14 @@
   }
 
   .ms-SpinButtonIcon {
-    padding: 5px;
+    padding: 2px 5px 5px 5px;
     font-size: 20px;
   }
 
   .ms-SpinButtonWrapper {
-    overflow: hidden;
     display: flex;
-    height: 32px;
-    min-width: 90px;
+    height: 26px;
+    min-width: 86px;
   }
 
   .ms-SpinButtonWrapper.topBottom {
@@ -62,15 +64,31 @@
   }
 
   .ms-SpinButton-Input:focus + .ms-ArrowBox {
-    border-color: $ms-color-themePrimary;
+      border-color: $ms-color-themePrimary;
+      outline: 2px dashed transparent;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
   }
 
-  .ms-SpinButton-Input:disabled + .ms-ArrowBox {
+  .ms-SpinButton-Input.disabled + .ms-ArrowBox {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
     pointer-events: none;
-    opacity: 0.3;
     cursor: default;
+
+    @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+    }
   }
 
     .ms-SpinButtonWrapper:hover .ms-SpinButton-Input:focus {
@@ -86,13 +104,13 @@
     font-size: $ms-font-size-m;
     color: $ms-color-neutralPrimary;
     height: 100%;
-    @include padding(0, 12px, 0, 12px);
+    @include padding(3px, 3px, 4px, 4px);
     outline: 0;
     text-overflow: ellipsis;
     display: block;
     float: left;
-    width: calc(100% - 27px);
-    min-width: 63px;
+    width: calc(100% - 14px);
+    min-width: 72px;
     border-right-width: 0px;
     overflow: hidden;
     cursor: text;
@@ -100,6 +118,8 @@
 
     &:focus {
       border-color: $ms-color-themePrimary;
+      outline: 2px dashed transparent;
+
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackSelected;
       }
@@ -109,12 +129,9 @@
       }
     }
 
-    &[disabled] {
-      background-color: $ms-color-neutralLighter;
-      border-color: $ms-color-neutralLighter;
-      pointer-events: none;
-      opacity: 0.3;
-      cursor: default;
+    &::selection {
+      background-color: $ms-color-themePrimary;
+      color: $ms-color-white;
     }
 
     @include input-placeholder {
@@ -122,15 +139,37 @@
     }
   }
 
+  .ms-SpinButtonWrapper:hover .ms-SpinButton-Input.disabled,
+   .ms-SpinButton-Input.disabled {
+      background-color: $ms-color-neutralLighter;
+      border-color: $ms-color-neutralLighter;
+      pointer-events: none;
+      cursor: default;
+      color: $ms-color-neutralTertiaryAlt;
+
+    @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
+  .ms-SpinButton-Input:hover + .ms-ArrowBox .ms-UpButton, .ms-SpinButton-Input:hover + .ms-ArrowBox .ms-DownButton {
+      background-color: $ms-color-neutralLighter;
+  }
+
   .ms-SpinButtonWrapper .ms-UpButton, .ms-SpinButtonWrapper .ms-DownButton {
     display: block;
-    height: 15px;
-    width: 26px;
-    padding-top: 0px;
+    height: 12px;
+    width: 12px;
+    padding: 0px;
     background-color: transparent;
     text-align: center;
     cursor: default;
-    font-size: 14px;
+    font-size: 6px;
+    color: $ms-color-neutralPrimary;
 
     &:hover {
       background-color: $ms-color-neutralLight;
@@ -139,12 +178,40 @@
     &:active {
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
+    }
+  }
+
+  .ms-UpButton:disabled, .ms-DownButton:disabled {
+    opacity: 0;
+
+    @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
     }
   }
 
   .ms-SpinButtonWrapper .ms-UpButton.active, .ms-SpinButtonWrapper .ms-DownButton.active {
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
   }
 
 }

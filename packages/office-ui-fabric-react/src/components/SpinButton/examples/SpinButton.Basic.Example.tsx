@@ -6,7 +6,7 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
     return (
       <SpinButton
         defaultValue='0'
-        width='250px'
+        width='203px'
         label={ 'Basic SpinButton:' }
         min={ 0 }
         max={ 100 }
