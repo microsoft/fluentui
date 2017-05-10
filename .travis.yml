@@ -5,6 +5,7 @@ before_script:
   - npm install -g gulp
 script:
   - npm run build
+  - npm run cibuild
 cache:
   directories:
     - node_modules

@@ -96,7 +96,7 @@ build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 build.task('sass', build.sass);
 
-build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
-//build.task('visualtest', serial(visualTestClean, visualTest));
+//build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
+build.task('visualtest', serial(visualTestClean, visualTest));
 // initialize tasks.
 build.initialize(gulp);

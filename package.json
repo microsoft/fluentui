@@ -13,6 +13,8 @@
     "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
     "postinstall": "npm run _rushInstall && npm run _rushLink && npm run _rushBuildToFabric",
+    "_visualTest": "cd packages && cd office-ui-fabric-react && gulp visualtest --production",
+    "cibuild": "npm run _visualTest",
     "test": "npm run _rushBuild",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
