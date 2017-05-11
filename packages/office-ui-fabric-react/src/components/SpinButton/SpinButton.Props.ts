@@ -82,11 +82,12 @@ export interface ISpinButtonProps {
 
   /**
    * This callback is triggered when the value inside the SpinButton should be validated.
+   * @return {string} The new value after validation
    */
   onValidate?: (value: string) => string;
 
   /**
-   * This callback is triggered when the increment button or if the user presses up arrow with focus on the input of the spinButton
+   * This callback is triggered when the increment button is pressed or if the user presses up arrow with focus on the input of the spinButton
    */
   onIncrement?: (value: string) => string;
 
