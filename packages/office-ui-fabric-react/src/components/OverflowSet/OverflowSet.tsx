@@ -4,7 +4,6 @@ import {
   autobind,
   BaseComponent
 } from '../../Utilities';
-import { IButtonProps } from '../../Button';
 import { IOverflowSetProps } from './OverflowSet.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 

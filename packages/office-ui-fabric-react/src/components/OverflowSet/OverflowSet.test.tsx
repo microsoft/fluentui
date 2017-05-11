@@ -19,5 +19,5 @@ describe('Overflow Set', () => {
     const wrapper = shallow(<OverflowSet onRenderItem={ onRenderItem } onRenderOverflowButton={ onRenderOverflowButton } overflowItems={ [] } />);
 
     expect(onRenderOverflowButton.called).to.equal(false);
-  })
+  });
 });

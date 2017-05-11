@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
-import { IContextualMenuItem } from '../../ContextualMenu';
-import { IButtonProps } from '../../Button';
 import { IRenderFunction } from '../../Utilities';
 import { IObjectWithKey } from '../../Selection';
 
