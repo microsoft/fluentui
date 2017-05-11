@@ -10,10 +10,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node node_modules/webpack/bin/webpack",
+    "build": "node node_modules/webpack/bin/webpack --config webpack.config.js & echo",
     "clean": "",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "test": "node node_modules/webpack/bin/webpack"
+    "test": "node node_modules/webpack/bin/webpack  --config webpack.config.js & echo"
   },
   "devDependencies": {
     "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",

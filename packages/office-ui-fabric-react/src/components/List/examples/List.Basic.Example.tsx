@@ -51,9 +51,9 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
                 imageFit={ ImageFit.cover }
               />
               <div className='ms-ListBasicExample-itemContent'>
-                <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
+                <div className='ms-ListBasicExample-itemName'>{ item.name }</div>
                 <div className='ms-ListBasicExample-itemIndex'>{ `Item ${index}` }</div>
-                <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
+                <div className='ms-ListBasicExample-itemDesc'>{ item.description }</div>
               </div>
               <Icon
                 className='ms-ListBasicExample-chevron'

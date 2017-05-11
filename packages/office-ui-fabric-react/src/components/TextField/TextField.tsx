@@ -60,6 +60,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   public constructor(props: ITextFieldProps) {
     super(props);
 
+    this._warnDeprecations({
+      'iconClass': 'iconProps'
+    });
+
     this._warnMutuallyExclusive({
       'value': 'defaultValue'
     });
@@ -126,6 +130,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       description,
       disabled,
       iconClass,
+      iconProps,
       label,
       multiline,
       required,
@@ -157,7 +162,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
             </div>
           ) }
           { multiline ? this._renderTextArea() : this._renderInput() }
-          { iconClass && <i className={ css(iconClass, styles.icon) }></i> }
+          { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
@@ -168,7 +173,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                   <p
                     className={ css('ms-TextField-errorMessage ' + AnimationClassNames.slideDownIn20, styles.errorMessage) }
                     data-automation-id='error-message'>
-                    <i className={ css('ms-Icon ms-Icon--Error', styles.errorIcon) } aria-hidden='true'></i>
+                    <Icon iconName='error' className={ styles.errorIcon } />
                     { errorMessage }
                   </p>
                 </DelayedRender>

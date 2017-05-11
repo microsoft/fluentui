@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
+import { IIconProps } from '../../Icon';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -79,9 +80,9 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * CSS class for the icon.
+   * Optional icon props for an icon.
    */
-  iconClass?: string;
+  iconProps?: IIconProps;
 
   /**
    * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
@@ -174,4 +175,11 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * @default true
    */
   validateOnLoad?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated; use iconProps instead.
+   */
+  iconClass?: string;
+
 }

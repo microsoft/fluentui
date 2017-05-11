@@ -18,6 +18,7 @@ import {
   IconName,
   IIconProps
 } from '../../Icon';
+import { FontClassNames } from '@uifabric/styling';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
@@ -96,7 +97,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             <Icon iconName='search' />
           </div>
           <div className={ css(
-            'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper ms-font-s',
+            'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper',
+            FontClassNames.small,
             styles.searchIconWrapper,
             styles.searchIconClearWrapper
           ) }>
@@ -227,7 +229,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             aria-haspopup={ hasSubmenuItems(item) }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
-            <span className={ css('ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular', styles.itemCommandText) } aria-hidden='true' role='presentation'>{ item.name }</span>
+            <span className={ css(
+              'ms-CommandBarItem-commandText', styles.itemCommandText) } aria-hidden='true' role='presentation'>{ item.name }</span>
           </div>;
         }
       })() }

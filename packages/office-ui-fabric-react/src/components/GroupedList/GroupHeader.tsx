@@ -101,7 +101,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             />
           </button>
 
-          <div className={ css('ms-GroupHeader-title ms-font-xl', styles.title) }>
+          <div className={ css('ms-GroupHeader-title', styles.title) }>
             <span>{ group.name }</span>
             {
               // hasMoreData flag is set when grouping is throttle by SPO server which in turn resorts to regular
