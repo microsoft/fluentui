@@ -30,4 +30,23 @@
   .DetailsListExample-customHeaderLink {
     margin: 0 8px;
   }
+
+  .DetailsListExample-header--FileIcon {
+    .DetailsListExample-Header-FileTypeIcon {
+      font-size: 16px;
+    }
+  }
+
+  .DetailsListExample-cell--FileIcon {
+    line-height: 0;
+    overflow: visible;
+  }
+
+  .DetailsListExample-documentIconImage {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    height: 16px;
+    width: 16px;
+  }
 }

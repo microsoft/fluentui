@@ -104,6 +104,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
+    let style: any = {
+      paddingLeft: '24px'
+    }
     return (
       <div
         role='row'
