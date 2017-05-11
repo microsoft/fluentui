@@ -102,6 +102,7 @@ $field-error-color: $errorTextColor;
 .field {
   @include ms-u-normalize;
   @include ms-baseFont;
+  font-size: $ms-font-size-m;
   border-radius: 0;
   border: none;
   color: $field-text-color;
