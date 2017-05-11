@@ -5,7 +5,8 @@ import {
   BaseComponent,
   css,
   getId,
-  KeyCodes
+  KeyCodes,
+  autobind
 } from '../../Utilities';
 import {
   ISpinButton,
@@ -86,15 +87,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._onDecrement = this._onDecrement.bind(this);
     }
 
-    // bind this (for this class) to all the methods
-    this._validate = this._validate.bind(this);
-    this._updateValue = this._updateValue.bind(this);
-    this._stop = this._stop.bind(this);
     this.focus = this.focus.bind(this);
-    this._handleKeyDown = this._handleKeyDown.bind(this);
-    this._handleKeyUp = this._handleKeyUp.bind(this);
-    this._onInputChange = this._onInputChange.bind(this);
-    this._labelDirectionHelper = this._labelDirectionHelper.bind(this);
   }
 
   /**
@@ -241,6 +234,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Set the label direction with the gap on the correct side
    */
+  @autobind
   private _labelDirectionHelper(): any {
     let style: any = {};
 
@@ -276,6 +270,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * in the input (not when changed via the buttons)
    * @param event - the event that fired
    */
+  @autobind
   private _validate(event: React.FocusEvent<HTMLInputElement>) {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
@@ -291,6 +286,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * without this our value will never change (and validation will not have the correct number)
    * @param event - the event that was fired
    */
+  @autobind
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
@@ -306,6 +302,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * when spinning in response to a mouseDown
    * @param stepFunction - function to use to step by
    */
+  @autobind
   private _updateValue(shouldSpin: boolean, stepFunction: (string) => string) {
     const newValue = stepFunction(this.state.value);
     this._lastValidValue = newValue;
@@ -323,6 +320,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Stop spinning (clear any currently pending update and set spinning to false)
    */
+  @autobind
   private _stop() {
     if (this._currentStepFunctionHandle !== null) {
       window.clearTimeout(this._currentStepFunctionHandle);
@@ -340,6 +338,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * the value when up or down arrow are depressed
    * @param event - the keyboardEvent that was fired
    */
+  @autobind
   private _handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     if (this.props.disabled) {
       this._stop();
@@ -386,6 +385,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * if the up or down arrow fired this event
    * @param event stop spinning if we
    */
+  @autobind
   private _handleKeyUp(event: React.KeyboardEvent<HTMLElement>) {
 
     if (this.props.disabled) {
