@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Lay some groundwork for converting to semantic slots, starting with input text fields.",
+      "type": "patch"
+    }
+  ],
+  "email": "phkuo@microsoft.com"
+}
