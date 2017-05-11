@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add dropdown component prop: pageSize to indicate max display count",
+      "type": "minor"
+    }
+  ],
+  "email": "timto@microsoft.com"
+}
