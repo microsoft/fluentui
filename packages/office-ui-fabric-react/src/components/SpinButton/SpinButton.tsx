@@ -189,7 +189,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           }
         </div> }
       </ div >
-    ) as React.ReactElement<{}>;
+    );
   }
 
   /**
