@@ -7,7 +7,7 @@ script:
   - npm run build
   - npm run cibuild
 after_script:
-  ./travis/push.sh
+  ./push.sh
 deploy:
   provider: pages
   skip_cleanup: true
