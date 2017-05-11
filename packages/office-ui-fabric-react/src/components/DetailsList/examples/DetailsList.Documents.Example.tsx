@@ -1,7 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField'
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';;
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -46,6 +47,7 @@ export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
   items: IDocument[];
   selectionDetails: string;
+  isCompactMode: boolean;
 }
 
 export interface IDocument {
@@ -63,17 +65,17 @@ export interface IDocument {
 export class DetailsListDocumentsExample extends React.Component<any, IDetailsListDocumentsExampleState> {
   private _selection: Selection;
 
-  constructor() {
-    super();
+  constructor(props: any) {
+    super(props);
 
     //  Populate with items for demos.
     if (_items.length === 0) {
       for (let i = 0; i < 100; i++) {
+        const randomDate = this._randomDate(new Date(2012, 0, 1), new Date());
+        const randomFileSize = this._randomFileSize();
+        const randomFileType = this._randomFileIcon();
         let fileName: string = lorem(2).replace(/\W/g, '');
         let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, "");
-        let randomDate = this._randomDate(new Date(2012, 0, 1), new Date());
-        let randomFileSize = this._randomFileSize();
-        let randomFileType = this._randomFileIcon();
         fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
         userName = userName.split(' ').map((name: string) => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
         _items.push({
@@ -115,12 +117,13 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         fieldName: 'name',
         minWidth: 220,
         maxWidth: 440,
+        isRowHeader: true,
         isResizable: true,
         isSorted: true,
         isSortedDescending: false,
         onColumnClick: this._onColumnClick,
-        data: 'string'
-
+        data: 'string',
+        isPadded: true
       },
       {
         key: 'column3',
@@ -138,7 +141,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
               { item.dateModified }
             </span>
           );
-        }
+        },
+        isPadded: true
       },
       {
         key: 'column4',
@@ -156,7 +160,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
               { item.modifiedBy }
             </span>
           );
-        }
+        },
+        isPadded: true
       },
       {
         key: 'column5',
@@ -185,15 +190,23 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     this.state = {
       items: _items,
       columns: _columns,
-      selectionDetails: this._getSelectionDetails()
+      selectionDetails: this._getSelectionDetails(),
+      isCompactMode: false
     };
   }
 
   public render() {
-    let { items, selectionDetails, columns } = this.state;
+    let { columns, isCompactMode, items, selectionDetails } = this.state;
 
     return (
       <div>
+        <Toggle
+          label='Enable Compact Mode'
+          checked={ isCompactMode }
+          onChanged={ isCompactMode => this.setState({ isCompactMode }) }
+          onText='Compact'
+          offText='Normal'
+        />
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
@@ -202,6 +215,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
+            compact={ isCompactMode }
             columns={ columns }
             setKey='set'
             layoutMode={ DetailsListLayoutMode.justified }
@@ -209,6 +223,9 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onActiveItemChanged={ (item: any, idx: number) => {
+              console.log('changed', item, idx);
+            } }
           />
         </MarqueeSelection>
       </div>

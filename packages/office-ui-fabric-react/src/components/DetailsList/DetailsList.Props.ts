@@ -295,6 +295,11 @@ export interface IColumn {
    * An optional class name to stick on the column cell within each header.
    */
   headerClassName?: string;
+
+  /**
+   * If set, will add LTR margin-right to column and cells.
+   */
+  isPadded?: boolean;
 }
 
 /**

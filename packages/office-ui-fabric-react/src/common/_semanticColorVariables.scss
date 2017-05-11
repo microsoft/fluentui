@@ -89,6 +89,17 @@ $menuDividerColor: $ms-color-neutralLight;
 $listBackgroundColor: transparent;
 $listTextColor: $ms-color-neutralPrimary;
 
-$listItemHoverColor: $ms-color-neutralLighter;
-$listItemSelectedColor: $ms-color-neutralQuaternary;
-$listItemSelectedHoverColor: $ms-color-neutralQuaternaryAlt;
+$listItemDefaultColor: $ms-color-neutralPrimary;
+$listItemDefaultMetaColor: #767676;
+
+$listItemHoverColor: $ms-color-neutralPrimary;
+$listItemHoverBackgroundColor: $ms-color-neutralLighter;
+
+$listItemSelectedColor: $ms-color-neutralDark;
+$listItemSelectedBackgroundColor: $ms-color-neutralLight;
+
+$listItemSelectedHoverColor: $ms-color-black;
+$listItemSelectedHoverBackgroundColor: $ms-color-neutralQuaternaryAlt;
+
+$listItemFocusedHeaderColor: $ms-color-black;
+$listItemFocusedBackgroundColor: #dadada;

@@ -243,7 +243,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
           ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained,
-          'ms-DetailsList--Compact': compact
+          'ms-DetailsList--Compact': compact,
+          [styles.rootCompact]: compact
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'

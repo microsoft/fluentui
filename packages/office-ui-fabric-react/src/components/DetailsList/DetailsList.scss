@@ -29,3 +29,9 @@ $detailsList-text-color: $listTextColor;
   min-height: 38px;
   word-break: break-word;
 }
+
+.rootCompact {
+  :global(.ms-List-cell) {
+    min-height: 32px;
+  }
+}

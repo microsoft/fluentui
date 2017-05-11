@@ -40,6 +40,8 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             aria-colindex={ columnIndex }
             className={ css('ms-DetailsRow-cell', styles.cell, column.className, {
               'is-multiline': column.isMultiline,
+              [styles.isRowHeader]: column.isRowHeader,
+              [styles.isPadded]: column.isPadded,
               [styles.isMultiline]: column.isMultiline,
               [styles.compact]: compact
             }) }
