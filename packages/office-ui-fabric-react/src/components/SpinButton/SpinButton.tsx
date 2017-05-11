@@ -94,8 +94,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   * Invoked when a component is receiving new props. This method is not called for the initial render.
   */
   public componentWillReceiveProps(newProps: ISpinButtonProps): void {
-    if (newProps.value !== undefined) {
-      let value = Math.max(newProps.min, Math.min(newProps.max, +newProps.value));
+    if (newProps.value) {
+      let value = Math.max(newProps.min, Math.min(newProps.max, Number(newProps.value)));
 
       this.setState({
         value: String(value)
@@ -208,10 +208,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Validate function to use if one is not passed in
    */
   private _defaultOnValidate = (value: string) => {
-    if (isNaN(+value)) {
+    if (isNaN(Number(value))) {
       return this._lastValidValue;
     }
-    const newValue = Math.min(this.props.max, Math.max(this.props.min, +value));
+    const newValue = Math.min(this.props.max, Math.max(this.props.min, Number(value)));
     return String(newValue);
   }
 
@@ -219,7 +219,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnIncrement = (value: string) => {
-    let newValue = Math.min(+value + this.props.step, this.props.max);
+    let newValue = Math.min(Number(value) + this.props.step, this.props.max);
     return String(newValue);
   }
 
@@ -227,7 +227,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnDecrement = (value: string) => {
-    let newValue = Math.max(+value - this.props.step, this.props.min);
+    let newValue = Math.max(Number(value) - this.props.step, this.props.min);
     return String(newValue);
   }
 
