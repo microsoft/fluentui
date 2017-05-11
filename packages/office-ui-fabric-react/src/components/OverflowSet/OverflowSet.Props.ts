@@ -15,7 +15,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**
    * An array of items to be passed to overflow contextual menu
   */
-  overflowItems?: IContextualMenuItem[];
+  overflowItems?: any[];
 
   /**
    * Method to call when trying to render an item.
