@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 09 May 2017 10:09:56 GMT and should not be manually modified.
+This log was last generated on Thu, 11 May 2017 10:20:16 GMT and should not be manually modified.
+
+## 2.27.2
+Thu, 11 May 2017 10:20:16 GMT
+
+### Patches
+
+- Button: Add button example
+- ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own
+- Lay some groundwork for converting to semantic slots, starting with input text fields.
 
 ## 2.27.1
 Tue, 09 May 2017 10:09:56 GMT
