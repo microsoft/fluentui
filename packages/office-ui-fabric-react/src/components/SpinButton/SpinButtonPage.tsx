@@ -55,7 +55,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/SpinButton/SpinButton.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/SpinButton/SpinButton.Props.ts')
             ] }
           />
         }
