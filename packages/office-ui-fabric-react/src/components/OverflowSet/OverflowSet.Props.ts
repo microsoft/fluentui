@@ -23,7 +23,8 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   onRenderItem: IRenderFunction<any>;
 
   /**
-   * Rendering method for overflow button and contextual menu.
+   * Rendering method for overflow button and contextual menu. The argument to the function is
+   * the overflowItems passed in as props to this function.
   */
-  onRenderOverflowButton: IRenderFunction<IButtonProps>;
+  onRenderOverflowButton: IRenderFunction<any[]>;
 }

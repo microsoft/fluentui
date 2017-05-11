@@ -20,14 +20,10 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
       onRenderOverflowButton
     } = this.props;
 
-    const overflowButtonProps: IButtonProps = {
-      menuProps: { items: overflowItems }
-    };
-
     return (
       <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
         { items && this._onRenderItems(items) }
-        { overflowItems && overflowItems.length > 0 && onRenderOverflowButton(overflowButtonProps) }
+        { overflowItems && overflowItems.length > 0 && onRenderOverflowButton(overflowItems) }
       </FocusZone>
     );
   }
