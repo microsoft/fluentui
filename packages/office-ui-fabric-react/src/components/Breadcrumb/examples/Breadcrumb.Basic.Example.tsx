@@ -5,13 +5,15 @@ import {
   Breadcrumb, IBreadcrumbItem
 } from 'office-ui-fabric-react/lib/Breadcrumb';
 
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import {
+  autobind
+} from '../../../Utilities';
+
 import { Link } from 'office-ui-fabric-react/lib/Link';
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
   constructor() {
     super();
-    this._onBreadcrumbItemClicked = this._onBreadcrumbItemClicked.bind(this);
   }
 
   public render() {
@@ -41,6 +43,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     );
   }
 
+  @autobind
   private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
