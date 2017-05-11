@@ -14,6 +14,7 @@ import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
+import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 import { Link } from '../../Link';
@@ -26,6 +27,7 @@ const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
+const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   constructor() {
@@ -66,6 +68,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
               <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Button Swap with Focus State' code={ ButtonSwapExampleCode }>
+              <ButtonSwapExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
           </div>
         }
