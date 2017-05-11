@@ -278,7 +278,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return (
       <ContextualMenu
         className={ css('ms-BaseButton-menuHost') }
-        isBeakVisible={ true }
+        isBeakVisible={ typeof menuProps.isBeakVisible === 'undefined' ? true : menuProps.isBeakVisible }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         items={ menuProps.items }
         target={ this._buttonElement }
