@@ -1,4 +1,5 @@
 import { Position } from '../../utilities/positioning';
+import { IIconProps } from '../../Icon';
 
 export interface ISpinButtonProps {
 
@@ -34,7 +35,7 @@ export interface ISpinButtonProps {
   max?: number;
 
   /**
-   * The diffrrence between the two adjacent values of the SpinButton.
+   * The difference between the two adjacent values of the SpinButton.
    * @default 1
    */
   step?: number;
@@ -75,9 +76,9 @@ export interface ISpinButtonProps {
   labelGapSpace?: number;
 
   /**
-   * Icon that goes along with the label for the whole splitButton
+   * Icon that goes along with the label for the whole SpinButton
    */
-  icon?: string;
+  iconProps?: IIconProps;
 
   /**
    * This callback is triggered when the value inside the SpinButton should be validated.

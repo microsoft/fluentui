@@ -8,7 +8,7 @@ export class SpinButtonBasicWithEndPositionExample extends React.Component<any, 
       <SpinButton
         defaultValue='0'
         width='233px'
-        icon='Light'
+        iconProps={ { iconName: 'Light' } }
         label={ 'Basic SpinButton' }
         labelPosition={ Position.end }
         min={ 0 }
