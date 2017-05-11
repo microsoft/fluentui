@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 May 2017 10:20:16 GMT and should not be manually modified.
+This log was last generated on Thu, 11 May 2017 17:07:55 GMT and should not be manually modified.
+
+## 2.27.3
+Thu, 11 May 2017 17:07:55 GMT
+
+### Patches
+
+- TextField: font size of textfield reverted to 14px.
 
 ## 2.27.2
 Thu, 11 May 2017 10:20:16 GMT
