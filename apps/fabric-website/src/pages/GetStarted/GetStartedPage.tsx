@@ -4,7 +4,8 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 
 const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
-import styles = require('./GetStartedPage.module.scss');
+import * as stylesImport from './GetStartedPage.module.scss';
+const styles: any = stylesImport;
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {
@@ -122,14 +123,15 @@ export class GetStartedPage extends React.Component<any, any> {
               </CodeBlock>
             </li>
             <li>
-              <p>With office-ui-fabric-react as a dependency in your package.json file, you can now start using components and styling. To reference a component, import it and use it in your render method:</p>
+              <p>The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.</p>
               <CodeBlock language='javascript' isLightTheme={ true }>
                 {
                   `import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<div><Button>I am a button.</Button></div>);
+const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fabric>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);`
                 }

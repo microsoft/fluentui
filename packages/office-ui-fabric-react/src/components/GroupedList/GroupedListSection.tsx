@@ -13,6 +13,7 @@ import {
 import {
   BaseComponent,
   IRenderFunction,
+  IDisposable,
   autobind
 } from '../../Utilities';
 
@@ -33,8 +34,8 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles = require('./GroupedList.scss');
-import { IDisposable } from '@uifabric/utilities';
+import * as stylesImport from './GroupedList.scss';
+const styles: any = stylesImport;
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
   /** Map of callback functions related to drag and drop functionality. */

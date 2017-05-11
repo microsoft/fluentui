@@ -10,7 +10,8 @@ import {
 import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import styles = require('./Tooltip.scss');
+import * as stylesImport from './Tooltip.scss';
+const styles: any = stylesImport;
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -21,14 +22,22 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
     calloutProps: {
       isBeakVisible: true,
       beakWidth: 16,
-      gapSpace: 8,
+      gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false
     }
   };
 
   public render() {
-    let { targetElement, content, calloutProps, directionalHint, delay, id } = this.props;
+    const {
+      targetElement,
+      content,
+      calloutProps,
+      directionalHint,
+      delay,
+      id,
+      onRenderContent = this._onRenderContent
+    } = this.props;
 
     return (
       <Callout
@@ -40,12 +49,18 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
       >
-        <div className={ css('ms-Tooltip-content') }>
-          <p className={ css('ms-Tooltip-subText', styles.subText) } id={ id } role='tooltip'>
-            { content }
-          </p>
+        <div className={ css('ms-Tooltip-content', styles.content) } id={ id } role='tooltip'>
+          { onRenderContent(this.props, this._onRenderContent) }
         </div>
       </Callout >
+    );
+  }
+
+  private _onRenderContent(props: ITooltipProps): JSX.Element {
+    return (
+      <p className={ css('ms-Tooltip-subText', styles.subText) }>
+        { props.content }
+      </p>
     );
   }
 }

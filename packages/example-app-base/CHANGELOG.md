@@ -1,6 +1,30 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 04 Apr 2017 20:08:53 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+
+## 1.3.11
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- Removing references to deprecated things.
+
+## 1.3.10
+Fri, 21 Apr 2017 06:23:54 GMT
+
+*Changes not tracked*
+
+## 1.3.8
+Wed, 19 Apr 2017 16:54:26 GMT
+
+*Changes not tracked*
+
+## 1.3.7
+Tue, 18 Apr 2017 03:09:12 GMT
+
+### Patches
+
+- PropertiesTable: properties are now sorted correctly.
 
 ## 1.3.6
 Tue, 04 Apr 2017 20:08:53 GMT

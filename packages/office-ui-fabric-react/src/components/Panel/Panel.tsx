@@ -15,7 +15,8 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-import styles = require('./Panel.scss');
+import * as stylesImport from './Panel.scss';
+const styles: any = stylesImport;
 
 export interface IPanelState {
   isFooterSticky?: boolean;
@@ -219,8 +220,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       <IconButton
         className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
         onClick={ this._onPanelClick }
-        aria-label={ closeButtonAriaLabel }
-        data-is-visible={ true } icon='Cancel'
+        ariaLabel={ closeButtonAriaLabel }
+        data-is-visible={ true }
+        iconProps={ { iconName: 'Cancel' } }
       />
     );
   }

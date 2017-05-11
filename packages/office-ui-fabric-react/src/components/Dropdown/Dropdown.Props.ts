@@ -2,6 +2,12 @@ import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 
+export enum DropdownMenuItemType {
+  Normal = 0,
+  Divider = 1,
+  Header = 2
+}
+
 export interface IDropdown {
 
 }
@@ -17,6 +23,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    * Descriptive label for the Dropdown
    */
   label?: string;
+
+  /**
+   * Input placeholder text. Displayed until option is selected.
+   */
+  placeHolder?: string;
 
   /**
   * Aria Label for the Dropdown for screen reader users.
@@ -55,6 +66,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
+   * Optional custom renderer for placeholder text
+   */
+  onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
+
+  /**
    * Optional custom renderer for selected option displayed in input
    */
   onRenderTitle?: IRenderFunction<IDropdownOption>;
@@ -89,13 +105,16 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    */
   required?: boolean;
 
-  // @todo: Update version numbers for depriate and removal
   /**
+   * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 
+  /**
+   * Descriptive label for the Dropdown Error Message
+   */
+  errorMessage?: string;
 }
 
 export interface IDropdownOption {
@@ -110,6 +129,11 @@ export interface IDropdownOption {
   text: string;
 
   /**
+   * Text to render for this option
+   */
+  itemType?: DropdownMenuItemType;
+
+  /**
    * Index for this option
    */
   index?: number;
@@ -118,8 +142,8 @@ export interface IDropdownOption {
   selected?: boolean;
 
   /**
+   * Deprecated at v.65.1, use 'selected' instead.
    * @deprecated
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
    */
   isSelected?: boolean;
 }

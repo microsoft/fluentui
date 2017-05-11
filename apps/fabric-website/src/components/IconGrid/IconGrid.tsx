@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import styles = require('./IconGrid.module.scss');
+import * as stylesImport from './IconGrid.module.scss';
+const styles: any = stylesImport;
 
 export interface IIconGridProps {
   /**

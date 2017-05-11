@@ -9,8 +9,10 @@ import {
   getDocument,
   KeyCodes
 } from '../../Utilities';
-import './SearchBox.scss';
-import styles = require('./SearchBox.scss');
+
+import { Icon } from '../../Icon';
+import * as stylesImport from './SearchBox.scss';
+const styles: any = stylesImport;
 
 export interface ISearchBoxState {
   value?: string;
@@ -25,6 +27,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   private _rootElement: HTMLElement;
   private _inputElement: HTMLInputElement;
+  private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -38,6 +41,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   public componentWillReceiveProps(newProps: ISearchBoxProps) {
     if (newProps.value !== undefined) {
+      this._latestValue = newProps.value;
       this.setState({
         value: newProps.value
       });
@@ -56,21 +60,27 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
-        <i className={ css('ms-SearchBox-icon', 'ms-Icon', 'ms-Icon--Search', styles.icon) }></i>
+        <div
+          className={ css('ms-SearchBox-iconContainer', styles.iconContainer) }
+        >
+          <Icon className={ css('ms-SearchBox-icon', styles.icon) } iconName='Search' />
+        </div>
         <input
           id={ id }
           className={ css('ms-SearchBox-field', styles.field) }
           placeholder={ labelText }
           onChange={ this._onInputChange }
+          onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
+          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
           ref={ this._resolveRef('_inputElement') }
         />
         <div
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
           onClick={ this._onClearClick }
         >
-          <i className={ css('ms-Icon', 'ms-Icon--Clear') } />
+          <Icon iconName='Clear' />
         </div>
       </div>
     );
@@ -131,10 +141,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({
-      value: this._inputElement.value
-    });
-    this._callOnChange(this._inputElement.value);
+    const value = this._inputElement.value;
+    if (value === this._latestValue) {
+      return;
+    }
+    this._latestValue = value;
+
+    this.setState({ value });
+    this._callOnChange(value);
   }
 
   private _handleDocumentFocus(ev: FocusEvent) {

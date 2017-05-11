@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  IDisposable,
   assign,
   css,
   shallowCompare
@@ -17,8 +18,8 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles = require('./DetailsRow.scss');
-import { IDisposable } from '@uifabric/utilities';
+import * as stylesImport from './DetailsRow.scss';
+const styles: any = stylesImport;
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -192,6 +193,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
+        aria-rowindex={ itemIndex }
         data-is-draggable={ isDraggable }
         draggable={ isDraggable }
         data-automationid='DetailsRow'

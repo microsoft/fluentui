@@ -35,8 +35,8 @@ export interface IProgressIndicatorProps {
   ariaValueText?: string;
 
   /**
-   * @deprecated
    * Deprecated at v0.43.0, to be removed at >= v0.53.0. Use 'label' instead.
+   * @deprecated
    */
   title?: string;
 }

@@ -58,7 +58,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   constructor(props) {
     super(props);
 
-    this._warnDeprecations({ 'rootProps': null });
+    this._warnDeprecations({ rootProps: null });
 
     this._id = getId('FocusZone');
     _allInstances[this._id] = this;
@@ -332,7 +332,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
     do {
-      if (target.tagName === 'BUTTON' || target.tagName === 'A') {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
         return false;
       }
 

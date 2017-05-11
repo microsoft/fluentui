@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import './ExampleCard.scss';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Highlight } from '../Highlight/Highlight';
 
 export interface IExampleCardProps {
@@ -41,10 +41,13 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <div className='ExampleCard-toggleButtons ms-font-l'>
             { code ? (
-              <Button buttonType={ ButtonType.icon } icon='Embed'
-                onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
+              <CommandButton
+                iconProps={ { iconName: 'Embed' } }
+                onClick={ this._onToggleCodeClick }
+                className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }
+              >
                 { isCodeVisible ? 'Hide code' : 'Show code' }
-              </Button>
+              </CommandButton>
             ) : (null) }
           </div>
         </div>

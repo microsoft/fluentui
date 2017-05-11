@@ -35,6 +35,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isMonthPickerVisible?: boolean;
 
   /**
+    * Value of today. If null, current time in client machine will be used.
+    */
+  today?: Date;
+
+  /**
    * Default value of the Calendar, if any
    */
   value?: Date;
@@ -67,9 +72,8 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showGoToToday?: boolean;
 
   /**
-   * @deprecated
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
-   *
+   * @deprecated
    */
   shouldFocusOnMount?: boolean;
 
@@ -108,4 +112,24 @@ export interface ICalendarStrings {
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
+
+  /**
+   * Aria-label for the "previous month" button.
+   */
+  prevMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next month" button.
+   */
+  nextMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "previous year" button.
+   */
+  prevYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year" button.
+   */
+  nextYearAriaLabel?: string;
 }

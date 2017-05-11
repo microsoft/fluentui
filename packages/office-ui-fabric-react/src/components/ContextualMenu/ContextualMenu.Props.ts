@@ -3,6 +3,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
+import { ICalloutProps } from '../../Callout';
 import {
   IPoint,
   IRectangle
@@ -34,8 +35,8 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   target?: HTMLElement | string | MouseEvent;
 
   /**
-   * The element that the ContextualMenu should be positioned based on.'
-   * @deprecated at version 0.72.1 and will no longer exist after 1.0 use target instead
+   * Deprecated at version 0.72.1 and will no longer exist after 1.0 use 'target' instead.
+   * @deprecated
    */
   targetElement?: HTMLElement;
 
@@ -164,6 +165,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
 
+  /**
+   * Pass in custom callout props
+   */
+  calloutProps?: ICalloutProps;
+
 }
 
 export interface IContextualMenuItem {
@@ -190,9 +196,8 @@ export interface IContextualMenuItem {
   submenuIconProps?: IIconProps;
 
   /**
-   * Icon to display next to the menu item
-   * @deprecated at .69 and will no longer exist after 1.0 use IconProps instead.
-   * If you need to change icon colors you will need to switch entirely to iconProps.
+   * Deprecated at v0.69.0 and will no longer exist after 1.0 use IconProps instead.
+   * @deprecated
    */
   icon?: string;
 
@@ -203,8 +208,8 @@ export interface IContextualMenuItem {
   disabled?: boolean;
 
   /**
+   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'disabled' instead.
    * @deprecated
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 
@@ -226,8 +231,8 @@ export interface IContextualMenuItem {
   checked?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
+   * @deprecated
    */
   isChecked?: boolean;
 
@@ -247,8 +252,8 @@ export interface IContextualMenuItem {
   href?: string;
 
   /**
-   * @deprecated
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
+   * @deprecated
    */
   items?: IContextualMenuItem[];
 
@@ -284,7 +289,9 @@ export interface IContextualMenuItem {
   title?: string;
 
   /**
-   * Method to custom render this menu item
+   * Method to custom render this menu item.
+   * For keyboard accessibility, the top-level rendered item should be a focusable element
+   * (like an anchor or a button) or have the `data-is-focusable` property set to true.
    * @defaultvalue undefined
    */
   onRender?: (item: any) => React.ReactNode;

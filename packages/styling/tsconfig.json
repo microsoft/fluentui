@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "types": [
+      "chai",
+      "mocha",
+      "webpack-env"
+    ],
+    "paths": {
+      "@uifabric/styling": [
+        "./src"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "lib",
+    "lib-amd",
+    "api",
+    "temp"
+  ]
+}

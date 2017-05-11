@@ -15,7 +15,7 @@ describe('Toggle', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Toggle
         label='Label'
-        />
+      />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let labelElement = renderedDOM.querySelector('.ms-Toggle-label');
@@ -32,10 +32,10 @@ describe('Toggle', () => {
       <Toggle
         label='Label'
         onChanged={ callback }
-        />
+      />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let button = renderedDOM.querySelector('.ms-Toggle-button');
+    let button = renderedDOM.querySelector('input');
 
     ReactTestUtils.Simulate.click(button);
     expect(isToggledValue).to.equal(true);
@@ -47,10 +47,10 @@ describe('Toggle', () => {
       <Toggle
         label='Label'
         checked={ false }
-        />
+      />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let button = renderedDOM.querySelector('.ms-Toggle-button');
+    let button = renderedDOM.querySelector('input');
 
     ReactTestUtils.Simulate.click(button);
 
@@ -61,7 +61,7 @@ describe('Toggle', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Toggle
         checked={ false }
-        />
+      />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let label = renderedDOM.querySelector('label');

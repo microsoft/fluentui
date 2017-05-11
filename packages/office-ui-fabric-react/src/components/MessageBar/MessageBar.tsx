@@ -5,9 +5,10 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { Button, ButtonType } from '../../Button';
+import { IconButton } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-import styles = require('./MessageBar.scss');
+import * as stylesImport from './MessageBar.scss';
+const styles: any = stylesImport;
 
 export interface IMessageBarState {
   labelId?: string;
@@ -72,14 +73,15 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _getDismissDiv(): JSX.Element {
     if (this.props.onDismiss != null) {
-      return <Button
-        disabled={ false }
-        className={ css('ms-MessageBar-dismissal', styles.dismissal) }
-        buttonType={ ButtonType.icon }
-        onClick={ this.props.onDismiss }
-        icon='Cancel'
-        ariaLabel={ this.props.dismissButtonAriaLabel }
-      />;
+      return (
+        <IconButton
+          disabled={ false }
+          className={ css('ms-MessageBar-dismissal', styles.dismissal) }
+          onClick={ this.props.onDismiss }
+          iconProps={ { iconName: 'Cancel' } }
+          ariaLabel={ this.props.dismissButtonAriaLabel }
+        />
+      );
     }
     return null;
   }

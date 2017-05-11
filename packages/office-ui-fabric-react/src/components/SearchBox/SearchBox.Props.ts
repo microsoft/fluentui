@@ -29,8 +29,8 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
   onSearch?: (newValue: any) => void;
 
   /**
+   * Deprecated at v0.52.2, use 'onChange' instead.
    * @deprecated
-   * Deprecated at v0.52.2, to be removed at >= v1.0.0. Use 'onChange' instead.
    */
   onChanged?: (newValue: any) => void;
 
@@ -43,4 +43,10 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
   * CSS class to apply to the SearchBox.
   */
   className?: string;
+
+  /**
+   * The aria label of the SearchBox for the benefit of screen readers.
+   * @defaultvalue labelText
+   */
+  ariaLabel?: string;
 }

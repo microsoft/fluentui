@@ -20,7 +20,7 @@ let {
 } = buildConfig;
 
 let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
-  return del(['failures/*png', 'results/*png']).then(() => done());
+  return del(['visualtests/results/*png']).then(() => done());
 });
 
 let visualTest = build.subTask('visualtest', (gulp, options, done) => {
@@ -30,8 +30,10 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
     directoryListing: false
   });
   if (!options.args['debug']) {
+    let matchFile = options.args['match'] || '';
+
     let casperJs = require('gulp-phantomcss');
-    gulp.src(['lib/**/*.visualtest.js'])
+    gulp.src(['lib/**/*' + matchFile + '.visualtest.js'])
       .pipe(casperJs(
         {
           screenshots: 'visualtests/baseline',
@@ -49,9 +51,9 @@ let rules = Object.assign(
 );
 build.tslint.setConfig({ lintConfig: { rules } });
 
-// Configure TypeScript 2.0.
-build.typescript.setConfig({ typescript: require('typescript') });
-
+// Configure TypeScript.
+// build.typescript.setConfig({ typescript: require('typescript') });
+build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 // Use css modules.
 build.sass.setConfig({
   useCSSModules: true,

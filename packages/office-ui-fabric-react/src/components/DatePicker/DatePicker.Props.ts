@@ -47,6 +47,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   allowTextInput?: boolean;
 
   /**
+   * Whether the DatePicker should open automatically when the control is focused
+   * @defaultvalue false
+   */
+  disableAutoFocus?: boolean;
+
+  /**
    * Placeholder text for the DatePicker
    */
   placeholder?: string;
@@ -78,6 +84,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Localized strings to use in the DatePicker
    */
   strings?: IDatePickerStrings;
+
+  /**
+   * Determines if DatePicker has a border.
+   * @defaultvalue false
+   */
+  borderless?: boolean;
 }
 
 export interface IDatePickerStrings {
@@ -119,4 +131,24 @@ export interface IDatePickerStrings {
    * Error message to render for TextField if input date string parsing fails.
    */
   invalidInputErrorMessage?: string;
+
+  /**
+   * Aria-label for the "previous month" button.
+   */
+  prevMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next month" button.
+   */
+  nextMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "previous year" button.
+   */
+  prevYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year" button.
+   */
+  nextYearAriaLabel?: string;
 }

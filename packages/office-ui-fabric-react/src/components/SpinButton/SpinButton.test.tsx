@@ -1,4 +1,4 @@
-import 'es6-promise';
+import { Promise } from 'es6-promise';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
@@ -459,8 +459,8 @@ describe('SpinButton', () => {
     const exampleMaxValue: number = 22;
     const exampleDefaultValue: string = '12';
 
-    function delay(millisecond: number): Promise<void> {
-      return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
+    function delay(millisecond: number): Promise<string> {
+      return new Promise<string>((resolve) => setTimeout(resolve, millisecond));
     }
 
     const renderedDOM: HTMLElement = renderIntoDocument(

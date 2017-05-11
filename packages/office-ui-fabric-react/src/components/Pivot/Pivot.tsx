@@ -13,7 +13,8 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
-import styles = require('./Pivot.scss');
+import * as stylesImport from './Pivot.scss';
+const styles: any = stylesImport;
 
 /**
  *  Usage:
@@ -26,7 +27,7 @@ import styles = require('./Pivot.scss');
  *       <Label>Pivot #2</Label>
  *     </PivotItem>
  *     <PivotItem linkText="Bas">
- *     <Label>Pivot #3</Label>
+ *       <Label>Pivot #3</Label>
  *     </PivotItem>
  *   </Pivot>
  */
@@ -169,6 +170,10 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
    * Renders the current Pivot Item
    */
   private _renderPivotItem() {
+    if (this.props.headersOnly) {
+      return null;
+    }
+
     const itemKey: string = this.state.selectedKey;
     const index = this._keyToIndexMapping[itemKey];
     let { selectedTabId } = this.state;
@@ -205,11 +210,22 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
           onRenderItemLink: pivotItem.props.onRenderItemLink
         });
         this._keyToIndexMapping[itemKey] = index;
-        this._keyToTabIds[itemKey] = this._pivotId + `-Tab${index}`;
+        this._keyToTabIds[itemKey] = this.getTabId(itemKey, index);
       }
     });
 
     return links;
+  }
+
+  /**
+   * Generates the Id for the tab button.
+   */
+  private getTabId(itemKey: string, index: number): string {
+    if (this.props.getTabId) {
+      return this.props.getTabId(itemKey, index);
+    }
+
+    return this._pivotId + `-Tab${index}`;
   }
 
   /**

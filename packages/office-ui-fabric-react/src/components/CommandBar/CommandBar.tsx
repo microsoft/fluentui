@@ -18,7 +18,8 @@ import {
   IconName,
   IIconProps
 } from '../../Icon';
-import styles = require('./CommandBar.scss');
+import * as stylesImport from './CommandBar.scss';
+const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
@@ -157,9 +158,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
+    if (item.onRender) {
+      return <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ item.key } ref={ item.key }>
+        { item.onRender(item) }
+      </div>;
+    }
+
     const itemKey = item.key || String(index);
+    const isLink = item.onClick || hasSubmenuItems(item);
     const className = css(
-      item.onClick ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
+      isLink ? ('ms-CommandBarItem-link ' + styles.itemLink) : ('ms-CommandBarItem-text ' + styles.itemText),
       !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
       (expandedMenuItemKey === item.key) && ('is-expanded ' + styles.itemLinkIsExpanded)
     );
@@ -167,7 +175,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
     return <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ itemKey }>
       { (() => {
-        if (item.onClick || hasSubmenuItems(item)) {
+        if (isLink) {
           return <button
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }

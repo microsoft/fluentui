@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
-import styles = require('./Check.scss');
+import * as stylesImport from './Check.scss';
+const styles: any = stylesImport;
 
 export interface ICheckProps extends React.Props<Check> {
   /**
@@ -9,8 +10,8 @@ export interface ICheckProps extends React.Props<Check> {
    */
   checked?: boolean;
   /**
+   * Deprecated at v0.65.1 and will be removed by v 1.0. Use 'checked' instead.
    * @deprecated
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
    */
   isChecked?: boolean;
 }

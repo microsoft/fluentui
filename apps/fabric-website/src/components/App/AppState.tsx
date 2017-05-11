@@ -225,6 +225,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/MessageBarComponentPage').MessageBarComponentPage))
         },
         {
+          title: 'Modal',
+          url: '#/components/modal',
+          component: () => <LoadingComponent title='Modal' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ModalComponentPage').ModalComponentPage))
+        },
+        {
           title: 'Nav',
           url: '#/components/nav',
           component: () => <LoadingComponent title='Nav' />,

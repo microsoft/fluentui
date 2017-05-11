@@ -1,20 +1,79 @@
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-declare var phantomcss: IPhantomCSS;
+import {
+  defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot,
+  mouseClickScreenshot, testRunner, mouseSingleClickScreenshot
+} from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+let componentIds: IRunVisualTest[] = [];
+
+componentIds.push({
+  selector: '#' + 'DefaultButton',
+  fileName: 'buttonDefault',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+});
+
+componentIds.push({
+  selector: '#' + 'DefaultButtonDisabled',
+  fileName: 'buttonDefaultDisabled',
+  commands: [defaultScreenshot]
+});
+componentIds.push({
+  selector: '#' + 'PrimaryButton',
+  fileName: 'buttonPrimary',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+
+});
+componentIds.push({
+  selector: '#' + 'PrimaryButtonDisabled',
+  fileName: 'buttonPrimaryDisabled',
+  commands: [defaultScreenshot]
+});
+
+componentIds.push({
+  selector: '#' + 'CommandButton',
+  fileName: 'buttonCommand',
+  commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
+});
+
+componentIds.push({
+  selector: '#' + 'CommandButtonDisabled',
+  fileName: 'buttonCommandDisabled',
+  commands: [defaultScreenshot]
+});
+
+componentIds.push({
+  selector: '#' + 'CompoundButton',
+  fileName: 'buttonCompound',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+});
+componentIds.push({
+  selector: '#' + 'CompoundButtonDisabled',
+  fileName: 'buttonCompoundDisabled',
+  commands: [defaultScreenshot]
+});
+componentIds.push({
+  selector: '#' + 'ContextualButton',
+  fileName: 'buttonContextual',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+});
+
+componentIds.push({
+  selector: '#' + 'ContextualButton',
+  fileName: 'buttonContextual',
+  commands: [mouseSingleClickScreenshot],
+  childParams: {
+    selector: '.' + 'ms-ContextualMenu-list',
+    fileName: 'buttonContextualMenu',
+    commands: [defaultScreenshot]
+  }
+});
+
 casper.
   start(baseUrl + 'button').
-  then(function () {
-    phantomcss.screenshot('#DefaultButton', 'Button_not_pressed');
-  }).then(function () {
-    this.mouse.move('#DefaultButton');
-    phantomcss.screenshot('#DefaultButton', 'Button_Hovered');
-  }).then(function () {
-    this.mouse.down('#DefaultButton');
-    phantomcss.screenshot('#DefaultButton', 'Button_pressed');
-  }).then(function () {
-    phantomcss.screenshot('#IconButton', 'Icon_Button');
+  then(() => {
+    testRunner(componentIds);
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

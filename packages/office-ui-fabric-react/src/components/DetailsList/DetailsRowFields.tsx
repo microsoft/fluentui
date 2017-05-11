@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
 import { BaseComponent, css } from '../../Utilities';
-import styles = require('./DetailsRow.scss');
+import * as stylesImport from './DetailsRow.scss';
+const styles: any = stylesImport;
 
 export interface IDetailsRowFieldsProps {
   item: any;
@@ -35,6 +36,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
           <div
             key={ columnIndex }
             role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
+            aria-colindex={ columnIndex }
             className={ css('ms-DetailsRow-cell', styles.cell, column.className, {
               'is-multiline': column.isMultiline,
               [styles.isMultiline]: column.isMultiline

@@ -5,7 +5,8 @@ import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
 import { IconButton } from '../../../../Button';
-import styles = require('./PickerItemsDefault.scss');
+import * as stylesImport from './PickerItemsDefault.scss';
+const styles: any = stylesImport;
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
   let {
@@ -25,16 +26,15 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.extraExtraSmall }
         />
       </div>
       <IconButton
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
-        icon={ 'Cancel' }
+        iconProps={ { iconName: 'Cancel' } }
         className={ css('ms-PickerItem-content', styles.removeButton, styles.itemContent) }
         data-is-focusable={ false }
-      >
-      </IconButton>
+      />
     </div >
   );
 };

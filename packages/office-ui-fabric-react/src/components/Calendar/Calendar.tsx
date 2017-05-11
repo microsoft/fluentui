@@ -3,13 +3,15 @@ import { ICalendar, ICalendarProps } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
+import { compareDates } from '../../utilities/dateMath/DateMath';
 import {
   autobind,
   css,
   BaseComponent,
   KeyCodes
 } from '../../Utilities';
-import styles = require('./Calendar.scss');
+import * as stylesImport from './Calendar.scss';
+const styles: any = stylesImport;
 
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */
@@ -25,6 +27,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     onDismiss: null,
     isMonthPickerVisible: true,
     value: null,
+    today: new Date(),
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     autoNavigateOnSelection: false,
@@ -43,7 +46,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   constructor(props: ICalendarProps) {
     super();
 
-    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : new Date();
+    let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate
@@ -53,10 +56,19 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   public componentWillReceiveProps(nextProps: ICalendarProps) {
-    let { value } = nextProps;
+    let { autoNavigateOnSelection, value, today = new Date() } = nextProps;
+
+    // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
+    // if selected date is updated via props, we may need to modify the navigated date
+    let overrideNavigatedDate = (autoNavigateOnSelection && !compareDates(value, this.props.value));
+    if (overrideNavigatedDate) {
+      this.setState({
+        navigatedDate: value
+      });
+    }
 
     this.setState({
-      selectedDate: value || new Date()
+      selectedDate: value || today
     });
   }
 
@@ -87,8 +99,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                 <CalendarDay
                   selectedDate={ selectedDate }
                   navigatedDate={ navigatedDate }
+                  today={ this.props.today }
                   onSelectDate={ this._onSelectDate }
                   onNavigateDate={ this._onNavigateDate }
+                  onDismiss={ this.props.onDismiss }
                   firstDayOfWeek={ firstDayOfWeek }
                   dateRangeType={ dateRangeType }
                   autoNavigateOnSelection={ autoNavigateOnSelection }
@@ -149,7 +163,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onGotoToday() {
-    this._navigateDay(new Date());
+    this._navigateDay(this.props.today);
     this._focusOnUpdate = true;
   };
 
@@ -158,6 +172,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
       this._onGotoToday();
+    } else if (ev.which === KeyCodes.tab && !ev.shiftKey) {
+      if (this.props.onDismiss) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        this.props.onDismiss();
+      }
     }
   };
 

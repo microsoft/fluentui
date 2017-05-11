@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { AnimationCell } from './AnimationCell/AnimationCell';
-import styles = require('./Table.module.scss');
+import * as stylesImport from './Table.module.scss';
+const styles: any = stylesImport;
 
 export interface ITableProps {
   content: any;
@@ -65,7 +66,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
                   this._renderCell(cell, cellIndex)
                 ))
               }
-              { this.props.isAnimation && <td className={ styles.animCell }><AnimationCell data={ row }/></td> }
+              { this.props.isAnimation && <td className={ styles.animCell }><AnimationCell data={ row } /></td> }
             </tr>
           )) }
         </tbody>
@@ -79,8 +80,8 @@ export class Table extends React.Component<ITableProps, ITableState> {
     return (
       <div>
         { content.data.map((row, rowIndex) => (
-          <table className={ `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}
-                 key={ rowIndex }>
+          <table className={ `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '') }
+            key={ rowIndex }>
             <tbody>
               {
                 row.map((cell, cellIndex) => (
@@ -93,7 +94,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
               { this.props.isAnimation &&
                 <tr>
                   <td>Animation</td>
-                  <td><AnimationCell data={ row }/></td>
+                  <td><AnimationCell data={ row } /></td>
                 </tr>
               }
             </tbody>
