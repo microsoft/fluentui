@@ -21,12 +21,6 @@ export interface ISpinButtonState {
   value?: string;
 
   /**
-   * Are we spinning? Used in case we are spinning
-   * and the text field gets focus (we should stop spinning)
-   */
-  spinning?: boolean;
-
-  /**
    * keyboard spin direction, used to style the up or down button
    * as active when up/down arrow is pressed
    *
@@ -55,6 +49,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
+  private _spinning: boolean
 
   private _onValidate?: (value: string) => string;
   private _onIncrement?: (value: string) => string;
@@ -72,12 +67,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     this.state = {
       value: value,
-      spinning: false,
       keyboardSpinDirection: 0
     };
 
     this._labelId = getId('Label');
     this._inputId = getId('input');
+    this._spinning = false;
 
     if (props.defaultValue) {
       this._onValidate = this._defaultOnValidate;
@@ -208,7 +203,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * OnFocus select the contents of the input
    */
   public focus() {
-    if (this.state.spinning || this.state.keyboardSpinDirection !== 0) {
+    if (this._spinning || this.state.keyboardSpinDirection !== 0) {
       this._stop();
     }
 
@@ -316,8 +311,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = newValue;
     this.setState({ value: newValue });
 
-    if (this.state.spinning !== shouldSpin) {
-      this.setState({ spinning: shouldSpin });
+    if (this._spinning !== shouldSpin) {
+      this._spinning = shouldSpin;
     }
 
     if (shouldSpin) {
@@ -334,8 +329,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._currentStepFunctionHandle = 0;
     }
 
-    if (this.state.spinning || this.state.keyboardSpinDirection !== 0) {
-      this.setState({ spinning: false, keyboardSpinDirection: 0 /* notSpinning */ });
+    if (this._spinning || this.state.keyboardSpinDirection !== 0) {
+      this._spinning = false;
+      this.setState({ keyboardSpinDirection: 0 /* notSpinning */ });
     }
   }
 
