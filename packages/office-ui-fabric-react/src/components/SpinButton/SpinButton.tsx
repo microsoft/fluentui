@@ -136,7 +136,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     return (
       <div className='ms-SpinButtonContainer' style={ spinbuttonWidth && { width: spinbuttonWidth } }>
         { labelPosition !== Position.bottom && <div className='ms-labelWrapper' style={ this._labelDirectionHelper() }>
-          { icon && <i className={ css("ms-SpinButtonIcon", "ms-Icon", ("ms-Icon--" + icon)) } aria-hidden="true"></i> }
+          { icon && <i className={ css('ms-SpinButtonIcon', 'ms-Icon', ('ms-Icon--' + icon)) } aria-hidden='true'></i> }
           { label &&
             < Label
               id={ this._labelId }
@@ -191,13 +191,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           </span >
         </div >
         { labelPosition === Position.bottom && <div className='ms-labelWrapper' style={ this._labelDirectionHelper() }>
-          { icon && <i className={ css("ms-SpinButtonIcon", "ms-Icon", ("ms-Icon--" + icon)) } aria-hidden="true"></i> }
+          { icon && <i className={ css('ms-SpinButtonIcon', 'ms-Icon', ('ms-Icon--' + icon)) } aria-hidden='true'></i> }
           { label &&
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
               className='ms-SpinButtonLabel'>{ label }
-            </Label> }
+            </Label>
+          }
         </div> }
       </ div >
     ) as React.ReactElement<{}>;
