@@ -8,21 +8,27 @@ $isPaddedMargin: 24px;
 
 
 // component slots
-$detailsList-item-defaultHeader-color: $listItemDefaultColor;
-$detailsList-item-defaultMeta-color: $listItemDefaultMetaColor;
+$detailsList-item-default-header-color: $listItemDefaultColor;
+$detailsList-item-default-meta-color: $listItemDefaultMetaColor;
+$detailsList-item-default-background-color: $listItemBackgroundColor;
 
 $detailsList-item-hover-color: $listItemHoverColor;
+$detailsList-item-hover-meta-color: $listItemHoverMetaColor;
 $detailsList-item-hover-color-background: $listItemHoverBackgroundColor;
 
 $detailsList-item-selected-color: $listItemSelectedColor;
+$detailsList-item-selected-meta-color: $listItemSelectedMetaColor;
 $detailsList-item-selected-background-color: $listItemSelectedBackgroundColor;
 
 $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
+$detailsList-item-selected-hover-meta-color: $listItemSelectedHoverMetaColor;
 $detailsList-item-selected-hover-background-color: $listItemSelectedHoverBackgroundColor;
 
 $detailsList-item-focus-background-color: $listItemFocusedBackgroundColor;
 $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
 
+
+// Compact mode rules
 :global(.ms-DetailsList--Compact) {
   .root {
     min-height: $compactRowHeight;
@@ -39,10 +45,14 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
   }
 }
 
+// Default state
 .root {
   @include focus-border(0, $ms-color-neutralSecondary);
 
-  color: $detailsList-item-defaultMeta-color;
+  border-top: 1px solid $ms-color-neutralLighter;
+  border-bottom: 1px solid $ms-color-neutralLighter;
+  background: $detailsList-item-default-background-color;
+  color: $detailsList-item-default-meta-color;
   display: inline-block;
   min-width: 100%;
   min-height: $rowHeight;
@@ -51,38 +61,47 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
   padding: 0;
   box-sizing: border-box;
 
-  background: none;
-  border: none;
   @include text-align(left);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
   margin-top: -1px;
-  border-top: 1px solid $ms-color-neutralLighter;
-  border-bottom: 1px solid $ms-color-neutralLighter;
 
+  // Default State hover
   &:hover {
     background: $detailsList-item-hover-color-background;
+    color: $detailsList-item-hover-meta-color;
   }
 }
 
+// Selected State
 .rootIsSelected {
   @include focus-border(0, $ms-color-themePrimary);
 
-  color: $detailsList-item-selected-color;
+  color: $detailsList-item-selected-meta-color;
+  z-index: $ms-zIndex-middle;
   background: $detailsList-item-selected-background-color;
 
   margin-top: -1px;
   border-top: 1px solid $ms-color-white;
   border-bottom: 1px solid $ms-color-white;
 
+  // Selected State Header cell
+  .cell {
+    &.isRowHeader {
+      color: $detailsList-item-selected-color;
+    }
+  }
+
+  // Selected State hover
   &:hover {
-    color: $detailsList-item-selected-hover-color;
     background: $detailsList-item-selected-hover-background-color;
 
+    // Selected State hover Header cell
     .cell {
+      color: $detailsList-item-selected-hover-meta-color;
+
       &.isRowHeader {
         color: $detailsList-item-selected-hover-color;
-        // color: purple;
       }
     }
   }
@@ -103,16 +122,7 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
   cursor: default;
 }
 
-.root:hover {
-  .cell {
-    color: $ms-color-neutralSecondary;
-
-    &.isRowHeader {
-      color: $detailsList-item-hover-color;
-    }
-  }
-}
-
+// Default cell state
 .cell {
   display: inline-block;
   position: relative;
@@ -129,8 +139,9 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
     max-width: 100%;
   }
 
+  // Default header cell state
   &.isRowHeader {
-    color: $detailsList-item-defaultHeader-color;
+    color: $detailsList-item-default-header-color;
     font-size: $ms-font-size-m;
   }
 
