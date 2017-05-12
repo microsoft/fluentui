@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { OverflowSet } from './OverflowSet';
 import * as sinon from 'sinon';
 
-describe('Overflow Set', () => {
+describe('OverflowSet', () => {
   it('does not render overflow when there are no overflow items', () => {
     const onRenderItem = sinon.spy();
     const onRenderOverflowButton = sinon.spy();
