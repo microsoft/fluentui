@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
-import { IContextualMenuItem } from '../../ContextualMenu';
-import { IButtonProps } from '../../Button';
 import { IRenderFunction } from '../../Utilities';
 import { IObjectWithKey } from '../../Selection';
 
@@ -15,7 +13,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**
    * An array of items to be passed to overflow contextual menu
   */
-  overflowItems?: IContextualMenuItem[];
+  overflowItems?: any[];
 
   /**
    * Method to call when trying to render an item.
@@ -23,7 +21,8 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   onRenderItem: IRenderFunction<any>;
 
   /**
-   * Rendering method for overflow button and contextual menu.
+   * Rendering method for overflow button and contextual menu. The argument to the function is
+   * the overflowItems passed in as props to this function.
   */
-  onRenderOverflowButton: IRenderFunction<IButtonProps>;
+  onRenderOverflowButton: IRenderFunction<any[]>;
 }

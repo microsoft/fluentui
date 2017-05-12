@@ -97,7 +97,7 @@ export class AnimationTile extends BaseComponent<IAnimationTileProps, IAnimation
     }
 
     return (
-      <div { ...css(styles.root) } onClick={ this._onClick }>
+      <div { ...css(styles.root) } role='button' onClick={ this._onClick }>
         <div { ...css(styles.title) }>{ this.props.name }</div>
         <div { ...css(styles.container) }>
           <div

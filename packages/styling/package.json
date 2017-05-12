@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "@microsoft/sp-build-web": "~1.0.0",
+    "@microsoft/sp-module-interfaces": "~1.0.0",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/mocha": "^2.2.39",
@@ -30,8 +32,6 @@
     "source-map-loader": "0.2.1",
     "ts-loader": "^2.0.1",
     "tslib": "^1.6.0",
-    "tslint": "^5.1.0",
-    "tslint-microsoft-contrib": "^4.0.1",
     "typescript": "2.2.2",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.4.1",
