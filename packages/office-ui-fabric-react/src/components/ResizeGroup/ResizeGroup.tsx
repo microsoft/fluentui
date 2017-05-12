@@ -14,6 +14,10 @@ export interface IResizeGroupState {
 
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> implements IResizeGroup {
 
+  public static defaultProps = {
+    data: {}
+  };
+
   private _root: HTMLElement;
   private _measured: HTMLElement;
 
@@ -36,8 +40,13 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public render() {
-    let { onRenderData, onReduceData, data } = this.props;
+    const { onRenderData, onReduceData, data } = this.props;
     let { shouldMeasure, renderedData, measuredData } = this.state;
+
+    if (Object.keys(data).length === 0) {
+      return null;
+    }
+
     return (
       <div ref={ this._resolveRef('_root') }>
         { shouldMeasure && (
@@ -61,14 +70,14 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _measureItems() {
-    let { data, onReduceData } = this.props;
+    const { data, onReduceData } = this.props;
     let {
       shouldMeasure,
       renderedData,
       measuredData,
     } = this.state;
 
-    if (shouldMeasure && data) {
+    if (shouldMeasure && Object.keys(data).length !== 0) {
       let container = this._root.getBoundingClientRect();
       let measured = this._measured.getBoundingClientRect();
       if ((measured.width > container.width)) {
