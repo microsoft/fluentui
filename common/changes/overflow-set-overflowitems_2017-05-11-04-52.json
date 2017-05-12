@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix some bugs in the overflow set API that prevent it from working when there are no overflow items",
+      "comment": "OverflowSet: Fixed issue that prevented it from working when there are no overflow items.",
       "type": "minor"
     },
     {
