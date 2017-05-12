@@ -55,7 +55,7 @@ describe('ResizeGroup', () => {
       onRenderData={ onRenderData }
     />, div);
 
-    // onRenderData should get called to measure and to render for each component, for a total of 4.
+    // onRenderData should get called to measure and to render when props are updated.
     expect(onRenderData.callCount).to.equal(4);
 
   });
