@@ -242,7 +242,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
+          <div style={ { width: this._dropDown.clientWidth - 2, maxHeight: props.maxHeight } }>
             { onRenderList(props, this._onRenderList) }
           </div>
         </Callout>
