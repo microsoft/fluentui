@@ -1,7 +1,7 @@
 @import '../../common/common';
 
 $iconForegroundColor: $ms-color-neutralSecondary;
-$actionableHeaderForegroundColor: $ms-color-neutralSecondary;
+$headerForegroundColor: $ms-color-neutralPrimary;
 $dropdownChevronForegroundColor: $ms-color-neutralTertiary;
 $rowHeight: 32px;
 $resizerColor: $ms-color-neutralTertiaryAlt;
@@ -48,7 +48,7 @@ $isPaddedMargin: 24px;
 .cell {
   @include ms-font-s;
   background: transparent;
-  color: $disabledForegroundColor;
+  color: $headerForegroundColor;
   @include focus-border();
   font-weight: $ms-font-weight-regular;
   position: relative;
@@ -74,7 +74,6 @@ $isPaddedMargin: 24px;
   }
 
   &.cellIsActionable {
-    color: $actionableHeaderForegroundColor;
 
     &:hover {
       color: $ms-color-neutralPrimary;

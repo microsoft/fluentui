@@ -152,7 +152,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           { columns.map((column, columnIndex) => (
             <div
               key={ column.key }
-              className={ css('ms-DetailsHeader-cellWrapper test', styles.cellWrapper, {
+              className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper, {
                 [styles.cellWrapperPadded]: column.isPadded
               }) }
               role='columnheader'
