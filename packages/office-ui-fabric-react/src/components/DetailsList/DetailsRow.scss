@@ -56,6 +56,8 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
   @include text-align(left);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
+  margin-top: -1px;
+  border-top: 1px solid $ms-color-neutralLighter;
   border-bottom: 1px solid $ms-color-neutralLighter;
 
   &:hover {
@@ -68,6 +70,10 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
 
   color: $detailsList-item-selected-color;
   background: $detailsList-item-selected-background-color;
+
+  margin-top: -1px;
+  border-top: 1px solid $ms-color-white;
+  border-bottom: 1px solid $ms-color-white;
 
   &:hover {
     color: $detailsList-item-selected-hover-color;
