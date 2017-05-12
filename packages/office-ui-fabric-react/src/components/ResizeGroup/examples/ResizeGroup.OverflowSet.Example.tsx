@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ResizeGroup, IResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
+import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
 
 import * as stylesImport from './ResizeGroup.Example.scss';
@@ -27,7 +27,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
     return (
       <div className={ this.state.short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
-          ref={ this._resolveResizeGroup }
+          ref={ this._resolveRef('_resizeGroup') }
           data={ data }
           onReduceData={ (currentdata) => {
             let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
@@ -49,10 +49,10 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
                     />
                   );
                 } }
-                onRenderOverflowButton={ (props) => {
+                onRenderOverflowButton={ (overflowItems) => {
                   return (
                     <DefaultButton
-                      menuProps={ props.menuProps }
+                      menuProps={ { items: overflowItems } }
                     />
                   );
                 }
@@ -73,8 +73,4 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
     });
   }
 
-  @autobind
-  private _resolveResizeGroup(resizeGroup: ResizeGroup) {
-    this._resizeGroup = resizeGroup;
-  }
 }
