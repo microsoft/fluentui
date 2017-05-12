@@ -181,7 +181,7 @@ export interface IContextualMenuItem {
   /**
    * Text description for the menu item to display
    */
-  name: string;
+  name?: string;
 
   itemType?: ContextualMenuItemType;
 
