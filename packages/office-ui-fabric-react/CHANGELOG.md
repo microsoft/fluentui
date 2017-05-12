@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 May 2017 17:07:55 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2017 10:19:14 GMT and should not be manually modified.
+
+## 2.28.0
+Fri, 12 May 2017 10:19:14 GMT
+
+### Minor changes
+
+- OverflowSet: Fixed issue that prevented it from working when there are no overflow items.
 
 ## 2.27.3
 Thu, 11 May 2017 17:07:55 GMT
