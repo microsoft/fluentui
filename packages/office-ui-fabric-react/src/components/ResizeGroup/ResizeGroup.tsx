@@ -30,6 +30,14 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     };
   }
 
+  public componentWillReceiveProps(nextProps) {
+    this.setState({
+      shouldMeasure: true,
+      renderedData: null,
+      measuredData: { ...nextProps.data }
+    });
+  }
+
   public componentDidMount() {
     this._measureItems();
     this._events.on(window, 'resize', this._onResize);
@@ -44,7 +52,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     }
 
     return (
-      <div ref={ this._resolveRef('_root') }>
+      <div className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
         { shouldMeasure && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             { onRenderData(measuredData) }
