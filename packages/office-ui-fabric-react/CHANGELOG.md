@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 09 May 2017 10:09:56 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2017 10:19:14 GMT and should not be manually modified.
+
+## 2.28.0
+Fri, 12 May 2017 10:19:14 GMT
+
+### Minor changes
+
+- OverflowSet: Fixed issue that prevented it from working when there are no overflow items.
+
+## 2.27.3
+Thu, 11 May 2017 17:07:55 GMT
+
+### Patches
+
+- TextField: font size of textfield reverted to 14px.
+
+## 2.27.2
+Thu, 11 May 2017 10:20:16 GMT
+
+### Patches
+
+- Button: Add button example
+- ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own
+- Lay some groundwork for converting to semantic slots, starting with input text fields.
 
 ## 2.27.1
 Tue, 09 May 2017 10:09:56 GMT

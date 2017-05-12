@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
@@ -68,7 +68,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_1',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'rename',
@@ -85,7 +85,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_2',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'share',
@@ -157,7 +157,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_3',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider,
                 },
                 {
                   key: 'Bing',
