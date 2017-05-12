@@ -20,3 +20,31 @@
     min-height: 40px;
   }
 }
+
+.peoplePickerPersonaContent {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.closeButton {
+  padding: 0;
+  height: 28px;
+  width: 28px;
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+  }
+}
+
+.closeButtonSmall {
+  padding: 0;
+  height: 24px;
+  width: 24px;
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+  }
+}

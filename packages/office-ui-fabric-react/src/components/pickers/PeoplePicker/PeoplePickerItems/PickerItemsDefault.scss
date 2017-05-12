@@ -46,13 +46,12 @@
     flex: 0 0 auto;
     width: 30px;
     height: 30px;
+    flex-basis: 32px;
 
     &:hover {
       background: $ms-color-neutralTertiaryAlt;
       color: $ms-color-neutralDark;
     }
-    flex-basis: 32px;
-    height: 100%;
   }
 
   .personaDetails {

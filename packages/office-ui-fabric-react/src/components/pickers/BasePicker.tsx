@@ -142,26 +142,20 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         targetElement={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
-        <FocusZone
-          defaultActiveElement={ '#sug-item0' }
-          isCircularNavigation={ true }
-          direction={ FocusZoneDirection.vertical }
-        >
-          <TypedSuggestion
-            onRenderSuggestion={ this.props.onRenderSuggestionsItem }
-            onSuggestionClick={ this.onSuggestionClick }
-            onSuggestionRemove={ this.onSuggestionRemove }
-            suggestions={ this.suggestionStore.getSuggestions() }
-            ref={ this._resolveRef('suggestionElement') }
-            onGetMoreResults={ this.onGetMoreResults }
-            moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
-            isLoading={ this.state.suggestionsLoading }
-            isSearching={ this.state.isSearching }
-            isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
-            isResultsFooterVisible={ this.state.isResultsFooterVisible }
-            { ...this.props.pickerSuggestionsProps as any }
-          />
-        </FocusZone>
+        <TypedSuggestion
+          onRenderSuggestion={ this.props.onRenderSuggestionsItem }
+          onSuggestionClick={ this.onSuggestionClick }
+          onSuggestionRemove={ this.onSuggestionRemove }
+          suggestions={ this.suggestionStore.getSuggestions() }
+          ref={ this._resolveRef('suggestionElement') }
+          onGetMoreResults={ this.onGetMoreResults }
+          moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
+          isLoading={ this.state.suggestionsLoading }
+          isSearching={ this.state.isSearching }
+          isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
+          isResultsFooterVisible={ this.state.isResultsFooterVisible }
+          { ...this.props.pickerSuggestionsProps as any }
+        />
       </Callout>
     ) : (null);
   }
@@ -363,7 +357,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();

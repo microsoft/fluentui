@@ -10,39 +10,10 @@ const styles: any = stylesImport;
 
 
 
-export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
-  return (
-    <div className='ms-PeoplePicker-personaContent'>
-      <Persona
-        { ...personaProps }
-        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-        size={ PersonaSize.size28 }
-        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
-      />
-    </div>
-  );
-};
-
-export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
-  return (
-    <div className='ms-PeoplePicker-personaContent'>
-      <Persona
-        { ...personaProps }
-        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-        size={ PersonaSize.extraSmall }
-        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
-      />
-    </div>
-  );
-};
-
-export const SuggestionItemRemove: (persona: IPersonaProps, suggestionProps: any) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps: any) => {
-  debugger;
-  console.log(personaProps, suggestionItemProps);
+export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps: any) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps: any) => {
   let { onRemoveItem } = suggestionItemProps;
-  console.log(onRemoveItem);
   return (
-    <div className='ms-PeoplePicker-personaContent'>
+    <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
       <Persona
         { ...personaProps }
         presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
@@ -50,10 +21,32 @@ export const SuggestionItemRemove: (persona: IPersonaProps, suggestionProps: any
         className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
       />
       <IconButton
-        icon='Cancel'
+        iconProps={ { iconName: 'Cancel' } }
         title='Remove'
         ariaLabel='Remove'
         onClick={ onRemoveItem }
+        className={ css('ms-PeoplePicker-closeButton', styles.closeButton) }
+      />
+    </div>
+  );
+};
+
+export const SuggestionItemSmall: (persona: IPersonaProps, suggestionProps: any) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps: any) => {
+  let { onRemoveItem } = suggestionItemProps;
+  return (
+    <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
+      <Persona
+        { ...personaProps }
+        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
+        size={ PersonaSize.extraExtraSmall }
+        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
+      />
+      <IconButton
+        iconProps={ { iconName: 'Cancel' } }
+        title='Remove'
+        ariaLabel='Remove'
+        onClick={ onRemoveItem }
+        className={ css('ms-PeoplePicker-closeButtonSmall', styles.closeButtonSmall) }
       />
     </div>
   );

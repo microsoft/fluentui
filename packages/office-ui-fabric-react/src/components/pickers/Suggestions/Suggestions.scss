@@ -4,67 +4,27 @@
   min-width: 260px;
 }
 
-.suggestionsItemContainer {
-  position: relative;
-  @include focus-border();
-
-  &:hover {
-    .suggestionsItem {
-      &:not(.suggestionsItemIsSuggested) {
-        // border: 1px solid blue;
-        background: $ms-color-neutralLighter;
-      }
-    }
-
-    .suggestionsRemoveButton {
-      display: inline-block;
-
-      &:hover {
-        // border: 2px solid red;
-        background: $ms-color-neutralTertiaryAlt;
-      }
-    }
-  }
-
-  &:focus {
-    border: 1px solid purple;
-    .suggestionsItem {
-      &:not(.suggestionsItemIsSuggested) {
-        // border: 1px solid blue;
-        background: $ms-color-neutralLight;
-      }
-    }
-
-    .suggestionsRemoveButton {
-      display: inline-block;
-
-      &:hover {
-        // border: 2px solid red;
-        background: $ms-color-neutralTertiaryAlt;
-      }
-    }
-  }
-}
-
 .suggestionsItem {
   box-sizing: border-box;
   width: 100%;
   height: auto;
 
   @include text-align(left);
-  @include padding(4px, 50px, 6px, 20px);
+  padding: 4px 20px 4px;
 
   display: block;
-  // border: none;
+  border: none;
   background: $ms-color-white;
   position: relative;
 
+  &:hover {
+    background: $ms-color-neutralLight;
+  }
+
   &.suggestionsItemIsSuggested {
-    // border: 1px solid green;
     background: $ms-color-neutralLight;
 
     &:hover {
-      // border: 1px solid springgreen;
       background: $ms-color-neutralTertiaryAlt;
     }
   }
