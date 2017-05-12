@@ -35,10 +35,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this._events.on(window, 'resize', this._onResize);
   }
 
-  public measure = () => {
-    this._onResize();
-  }
-
   public render() {
     const { onRenderData, onReduceData, data } = this.props;
     let { shouldMeasure, renderedData, measuredData } = this.state;
@@ -61,12 +57,16 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     );
   }
 
+  public measure() {
+    this.setState({ shouldMeasure: true });
+  }
+
   public componentDidUpdate(prevProps: IResizeGroupProps) {
     this._measureItems();
   }
 
-  protected _onResize() {
-    this.setState({ shouldMeasure: true });
+  private _onResize() {
+    this.measure();
   }
 
   private _measureItems() {
