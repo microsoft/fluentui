@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Date picker: Reduce min-width for the holder component",
+      "type": "patch"
+    }
+  ],
+  "email": "johannao@microsoft.com"
+}
