@@ -77,7 +77,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       measuredData,
     } = this.state;
 
-    if (shouldMeasure && Object.keys(data).length !== 0) {
+    if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
       let container = this._root.getBoundingClientRect();
       let measured = this._measured.getBoundingClientRect();
       if ((measured.width > container.width)) {
