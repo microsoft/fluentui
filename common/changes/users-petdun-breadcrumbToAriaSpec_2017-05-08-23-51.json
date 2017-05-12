@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb component now follows aria guidelines for roles and structure\"",
-      "type": "minor"
+      "comment": "Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb\"",
+      "type": "patch"
     },
     {
       "comment": "",

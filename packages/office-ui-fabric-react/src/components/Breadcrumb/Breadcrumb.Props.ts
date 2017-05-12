@@ -33,6 +33,11 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
 
   /** Method to call when trying to render an item. */
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+
+  /**
+   * Aria label to place on the navigation landmark for breadcrumb
+   */
+  navigationLandmarkAriaLabel?: string;
 }
 
 export interface IBreadcrumbItem {

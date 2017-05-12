@@ -20,7 +20,8 @@ export class BreadcrumbAccessibleExample extends React.Component<any, any> {
             { text: 'Main Page', 'key': 'p1', onClick: this._onBreadcrumbItemClicked },
             { text: 'Second Page', 'key': 'p2', onClick: this._onBreadcrumbItemClicked },
             { text: 'Current Page', 'key': 'p3', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
-          ] }/>
+          ] }
+          navigationLandmarkAriaLabel={'Website breadcrumb'}/>
       </div>
     );
   }
