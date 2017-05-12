@@ -44,7 +44,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
                   return (
                     <DefaultButton
                       text={ item.name }
-                      icon={ item.icon }
+                      iconProps={ { iconName: item.icon } }
                       onClick={ item.onClick }
                     />
                   );
