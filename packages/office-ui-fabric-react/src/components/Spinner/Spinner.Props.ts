@@ -40,6 +40,11 @@ export interface ISpinnerProps extends React.Props<Spinner> {
    * @default polite
    */
   ariaLive?: 'assertive' | 'polite' | 'off';
+
+  /**
+   * Alternative status label for screen reader
+   */
+  ariaLabel?: string;
 }
 
 export enum SpinnerSize {

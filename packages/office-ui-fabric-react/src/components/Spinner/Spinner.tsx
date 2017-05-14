@@ -11,7 +11,8 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
   };
 
   public render() {
-    let { type, size, label, className, ariaLive } = this.props; // TODO remove deprecated type property at >= 2.0.0
+    let { type, size, label, className, ariaLive, ariaLabel } = this.props; // TODO remove deprecated type property at >= 2.0.0
+    const statusMessage = ariaLabel || label;
 
     return (
       <div className={ css('ms-Spinner', styles.root, className) }>
@@ -27,10 +28,13 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
         }>
         </div>
         {
-          label &&
+          label && <div className={ css('ms-Spinner-label', styles.label) }>{ label }</div>
+        }
+        {
+          statusMessage &&
           <div role='status' aria-live={ this.props.ariaLive }>
             <DelayedRender>
-              <div className={ css('ms-Spinner-label', styles.label) }>{ label }</div>
+              <div className={ styles.screenReaderText }>{ statusMessage }</div>
             </DelayedRender>
           </div>
         }

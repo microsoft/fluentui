@@ -53,6 +53,10 @@ $borderSize: 1.5px;
       margin-top: 10px;
       text-align: center;
   }
+
+  .screenReaderText {
+    @include visually-hidden();
+  }
 }
 
 @media screen and (-ms-high-contrast: active) {
