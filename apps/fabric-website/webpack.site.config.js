@@ -43,7 +43,7 @@ function createConfig(isProduction, publicPath) {
       path: path.join(__dirname, '/dist'),
       publicPath: publicPath,
       filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `fabric-site-${version}-${minFileNamePart}[name].js`
+      chunkFilename: `fabric-site-${version}-[name]${minFileNamePart}.js`
     },
 
     devServer: {
