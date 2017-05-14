@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
+import { ICalloutProps } from '../../Callout';
 
 export enum DropdownMenuItemType {
   Normal = 0,
@@ -23,6 +24,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    * Descriptive label for the Dropdown
    */
   label?: string;
+
+  /**
+   * Input placeholder text. Displayed until option is selected.
+   */
+  placeHolder?: string;
 
   /**
   * Aria Label for the Dropdown for screen reader users.
@@ -61,6 +67,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
+   * Optional custom renderer for placeholder text
+   */
+  onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
+
+  /**
    * Optional custom renderer for selected option displayed in input
    */
   onRenderTitle?: IRenderFunction<IDropdownOption>;
@@ -94,6 +105,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    * Whether or not the Dropdown is required.
    */
   required?: boolean;
+
+  /**
+   * Custom properties for Dropdown's Callout used to render options.
+   */
+  calloutProps?: ICalloutProps;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.

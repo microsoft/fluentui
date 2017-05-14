@@ -38,6 +38,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "ssr-tests",
+      "projectFolder": "apps/ssr-tests",
+      "shouldPublish": false
+    },
+    {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
       "shouldPublish": false

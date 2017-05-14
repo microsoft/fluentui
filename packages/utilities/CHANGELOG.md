@@ -1,6 +1,27 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 21 Apr 2017 06:23:54 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+
+## 1.8.7
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- getRTL: fixing an issue to ensure it is once again SSR friendly.
+
+## 1.8.6
+Thu, 04 May 2017 10:08:59 GMT
+
+### Patches
+
+- Removes label from native properties
+
+## 1.8.5
+Tue, 02 May 2017 10:09:08 GMT
+
+### Patches
+
+- withViewport: Preserving the `forceUpdate` parameter when asynchronously re-resolving the viewport size.
 
 ## 1.8.4
 Fri, 21 Apr 2017 06:23:54 GMT
