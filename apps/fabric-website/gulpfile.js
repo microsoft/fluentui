@@ -11,20 +11,20 @@ let isNuke = process.argv.indexOf('nuke') >= 0;
 
 // Use css modules and use export =
 build.sass.setConfig({
-  useCSSModules: true,
-  moduleExportName: ''
+    useCSSModules: true,
+    moduleExportName: ''
 });
 
 // Configure custom lint overrides.
 let rules = Object.assign(
-  {},
-  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
-  require('./tslint.json').rules
+    {},
+    require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
+    require('../../tslint.json').rules,
+    require('./tslint.json').rules
 );
 build.tslint.setConfig({
-  lintConfig: { rules },
-  sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
+    lintConfig: { rules },
+    sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
 });
 // TODO: remove this! There are a number of lint errors to fix.
 build.tslint.isEnabled = () => false;
@@ -35,15 +35,13 @@ build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 
 build.postCopy.setConfig({
-  copyTo: {
-    [distFolder]: [
-      'src/**/*.png',
-      'node_modules/office-ui-fabric-core/dist/css/**/*'
-    ]
-  }
+    copyTo: {
+        [distFolder]: [
+            'src/**/*.png',
+            'node_modules/office-ui-fabric-core/dist/css/**/*'
+        ]
+    }
 });
-
-build.karma.isEnabled = () => false;
 
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
@@ -53,7 +51,7 @@ build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 
 // Use Karma Tests - Disable during develoment if prefered
-build.karma.isEnabled = () => true;
+build.karma.isEnabled = () => false;
 
 // initialize tasks.
 build.initialize(gulp);

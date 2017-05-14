@@ -4,6 +4,8 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
+import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 let { expect } = chai;
 
