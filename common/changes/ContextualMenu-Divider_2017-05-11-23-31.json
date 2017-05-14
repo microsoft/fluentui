@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Add aria readonly attribute",
+      "comment": "Make name prop optional on ContextualMenu",
       "type": "patch"
     }
   ],
-  "email": "hross@hross.net"
+  "email": "chrisgo@microsoft.com"
 }

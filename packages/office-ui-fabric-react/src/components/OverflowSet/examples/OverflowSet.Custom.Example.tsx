@@ -110,13 +110,13 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
           }
         ]
         }
-        onRenderOverflowButton={ (buttonProps) => {
+        onRenderOverflowButton={ (overflowItems) => {
           return (
             <DefaultButton
               className={ css(styles.overflowButton) }
               iconProps={ { iconName: 'More' } }
               menuIconProps={ null }
-              menuProps={ buttonProps.menuProps }
+              menuProps={ { items: overflowItems } }
             />
           );
         } }

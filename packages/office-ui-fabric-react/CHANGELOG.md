@@ -1,6 +1,62 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+This log was last generated on Fri, 12 May 2017 10:19:14 GMT and should not be manually modified.
+
+## 2.28.0
+Fri, 12 May 2017 10:19:14 GMT
+
+### Minor changes
+
+- OverflowSet: Fixed issue that prevented it from working when there are no overflow items.
+
+## 2.27.3
+Thu, 11 May 2017 17:07:55 GMT
+
+### Patches
+
+- TextField: font size of textfield reverted to 14px.
+
+## 2.27.2
+Thu, 11 May 2017 10:20:16 GMT
+
+### Patches
+
+- Button: Add button example
+- ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own
+- Lay some groundwork for converting to semantic slots, starting with input text fields.
+
+## 2.27.1
+Tue, 09 May 2017 10:09:56 GMT
+
+### Patches
+
+- Day picker: Ensure we use values from nextProps when props are updated when generating weeks
+- DatePicker: Use todaysDate instead of today in _getWeeks
+
+## 2.27.0
+Mon, 08 May 2017 21:31:57 GMT
+
+### Minor changes
+
+- TextField: `borderless` flag added for suppressing the border style.
+- Tooltip: Added custom content render function and exposed tooltip props to
+
+### Patches
+
+- ChoiceGroup: Fixed broken focus border
+
+## 2.26.0
+Mon, 08 May 2017 10:19:18 GMT
+
+### Minor changes
+
+- Callout: Add minPagePadding. Dropdown: Expose calloutProps
+- SearchBox: added the ariaLabel optional property
+- Calendar: make today value configurable to support different timezone
+
+### Patches
+
+- Dropdown: Add aria readonly attribute
 
 ## 2.25.1
 Fri, 05 May 2017 10:18:19 GMT
