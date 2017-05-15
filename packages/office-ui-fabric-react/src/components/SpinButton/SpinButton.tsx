@@ -15,6 +15,12 @@ import {
 import './SpinButton.scss';
 import { Position } from '../../utilities/positioning';
 
+export enum KeyboardSpinDirection {
+  down = -1,
+  notSpinning = 0,
+  up = 1
+}
+
 export interface ISpinButtonState {
   /**
    * the value of the spin button
@@ -24,12 +30,8 @@ export interface ISpinButtonState {
   /**
    * keyboard spin direction, used to style the up or down button
    * as active when up/down arrow is pressed
-   *
-   * -1 == spinning down
-   * 0 == not spinning
-   * 1 == spinning up
    */
-  keyboardSpinDirection?: number;
+  keyboardSpinDirection?: KeyboardSpinDirection;
 }
 
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
@@ -68,7 +70,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     this.state = {
       value: value,
-      keyboardSpinDirection: 0
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
 
     this._labelId = getId('Label');
@@ -155,7 +157,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className='ms-ArrowBox'>
             <IconButton
-              className={ css('ms-UpButton', (keyboardSpinDirection === 1 ? 'active' : '')) }
+              className={ css('ms-UpButton', (keyboardSpinDirection === KeyboardSpinDirection.up ? 'active' : '')) }
               disabled={ disabled }
               icon={ incrementButtonIcon.iconName }
               title='Increase'
@@ -166,7 +168,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              className={ css('ms-DownButton', (keyboardSpinDirection === -1 ? 'active' : '')) }
+              className={ css('ms-DownButton', (keyboardSpinDirection === KeyboardSpinDirection.down ? 'active' : '')) }
               disabled={ disabled }
               icon={ decrementButtonIcon.iconName }
               title='Decrease'
@@ -196,7 +198,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * OnFocus select the contents of the input
    */
   public focus() {
-    if (this._spinning || this.state.keyboardSpinDirection !== 0) {
+    if (this._spinning || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
 
@@ -327,9 +329,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._currentStepFunctionHandle = 0;
     }
 
-    if (this._spinning || this.state.keyboardSpinDirection !== 0) {
+    if (this._spinning || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._spinning = false;
-      this.setState({ keyboardSpinDirection: 0 /* notSpinning */ });
+      this.setState({ keyboardSpinDirection: KeyboardSpinDirection.notSpinning });
     }
   }
 
@@ -352,17 +354,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       return;
     }
 
-    let spinDirection = 0;
+    let spinDirection = KeyboardSpinDirection.notSpinning;
 
     if (event.which === KeyCodes.up) {
 
-      // spinning up
-      spinDirection = 1;
+      spinDirection = KeyboardSpinDirection.up;
       this._updateValue(false /* shouldSpin */, this._onIncrement);
     } else if (event.which === KeyCodes.down) {
 
-      // spinning down
-      spinDirection = -1;
+      spinDirection = KeyboardSpinDirection.down;
       this._updateValue(false /* shouldSpin */, this._onDecrement);
     } else if (event.which === KeyCodes.enter) {
       event.currentTarget.blur();
