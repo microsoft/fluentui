@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: now respects the isBeakVisible property on the menu props",
+      "comment": "Make name prop optional on ContextualMenu",
       "type": "patch"
     }
   ],
