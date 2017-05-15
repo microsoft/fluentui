@@ -43,12 +43,4 @@ $button-iconButtonSize: $button-core-default-height;
 .isDisabled {
   @include button-core-disabled;
   background-color: transparent;
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-yellowLight;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-blueMid;
-  }
 }
