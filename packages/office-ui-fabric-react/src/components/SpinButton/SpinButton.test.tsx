@@ -384,7 +384,7 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleMinValue));
   });
 
-  it('should use onBlur passed to the spin button (with valid input)', () => {
+  it('should use validator passed to the spin button (with valid input)', () => {
     const errorMessage: string = 'The value is invalid';
     const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
