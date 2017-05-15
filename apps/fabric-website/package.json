@@ -1,5 +1,5 @@
 {
-  "name": "fabric-website",
+  "name": "@uifabric/fabric-website",
   "version": "4.5.20",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",

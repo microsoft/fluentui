@@ -48,9 +48,9 @@
       "shouldPublish": false
     },
     {
-      "packageName": "fabric-website",
+      "packageName": "@uifabric/fabric-website",
       "projectFolder": "apps/fabric-website",
-      "shouldPublish": true
+      "shouldPublish": false
     }
   ]
 }
