@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { TextField } from 'office-ui-fabric-react/lib/TextField'
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';;
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -16,31 +16,30 @@ import { lorem } from '@uifabric/example-app-base';
 
 let _items: IDocument[] = [];
 
-
 const fileIcons: { name: string; }[] = [
-  { "name": "accdb" },
-  { "name": "csv" },
-  { "name": "docx" },
-  { "name": "dotx" },
-  { "name": "mpp" },
-  { "name": "mpt" },
-  { "name": "odp" },
-  { "name": "ods" },
-  { "name": "odt" },
-  { "name": "one" },
-  { "name": "onepkg" },
-  { "name": "onetoc" },
-  { "name": "potx" },
-  { "name": "ppsx" },
-  { "name": "pptx" },
-  { "name": "pub" },
-  { "name": "vsdx" },
-  { "name": "vssx" },
-  { "name": "vstx" },
-  { "name": "xls" },
-  { "name": "xlsx" },
-  { "name": "xltx" },
-  { "name": "xsn" }
+  { 'name': 'accdb' },
+  { 'name': 'csv' },
+  { 'name': 'docx' },
+  { 'name': 'dotx' },
+  { 'name': 'mpp' },
+  { 'name': 'mpt' },
+  { 'name': 'odp' },
+  { 'name': 'ods' },
+  { 'name': 'odt' },
+  { 'name': 'one' },
+  { 'name': 'onepkg' },
+  { 'name': 'onetoc' },
+  { 'name': 'potx' },
+  { 'name': 'ppsx' },
+  { 'name': 'pptx' },
+  { 'name': 'pub' },
+  { 'name': 'vsdx' },
+  { 'name': 'vssx' },
+  { 'name': 'vstx' },
+  { 'name': 'xls' },
+  { 'name': 'xlsx' },
+  { 'name': 'xltx' },
+  { 'name': 'xsn' }
 ];
 
 export interface IDetailsListDocumentsExampleState {
@@ -75,7 +74,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         const randomFileSize = this._randomFileSize();
         const randomFileType = this._randomFileIcon();
         let fileName: string = lorem(2).replace(/\W/g, '');
-        let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, "");
+        let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
         fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
         userName = userName.split(' ').map((name: string) => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
         _items.push({
@@ -203,7 +202,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <Toggle
           label='Enable Compact Mode'
           checked={ isCompactMode }
-          onChanged={ isCompactMode => this.setState({ isCompactMode }) }
+          onChanged={ checked => this.setState({ isCompactMode: checked }) }
           onText='Compact'
           offText='Normal'
         />
@@ -223,9 +222,6 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
-            onActiveItemChanged={ (item: any, idx: number) => {
-              console.log('changed', item, idx);
-            } }
           />
         </MarqueeSelection>
       </div>
@@ -237,7 +233,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     const dateData = {
       value: date.valueOf(),
       dateFormatted: date.toLocaleDateString()
-    }
+    };
     return dateData;
   }
 
@@ -278,13 +274,13 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     let currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
       return column.key === currCol.key;
     })[0];
-    newColumns.forEach((column: IColumn) => {
-      if (column === currColumn) {
+    newColumns.forEach((newCol: IColumn) => {
+      if (newCol === currColumn) {
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
         currColumn.isSorted = true;
       } else {
-        column.isSorted = false;
-        column.isSortedDescending = true;
+        newCol.isSorted = false;
+        newCol.isSortedDescending = true;
       }
     });
     newItems = this._sortItems(newItems, currColumn.fieldName, currColumn.isSortedDescending);
@@ -298,14 +294,22 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   private _sortItems(items: IDocument[], sortBy: string, descending = false): IDocument[] {
     if (descending) {
       return items.sort((a: IDocument, b: IDocument) => {
-        if (a[sortBy] < b[sortBy]) return 1;
-        if (a[sortBy] > b[sortBy]) return -1;
+        if (a[sortBy] < b[sortBy]) {
+          return 1;
+        }
+        if (a[sortBy] > b[sortBy]) {
+          return -1;
+        }
         return 0;
       });
     } else {
       return items.sort((a: IDocument, b: IDocument) => {
-        if (a[sortBy] < b[sortBy]) return -1;
-        if (a[sortBy] > b[sortBy]) return 1;
+        if (a[sortBy] < b[sortBy]) {
+          return -1;
+        }
+        if (a[sortBy] > b[sortBy]) {
+          return 1;
+        }
         return 0;
       });
     }

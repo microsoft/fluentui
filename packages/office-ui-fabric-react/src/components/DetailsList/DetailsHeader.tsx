@@ -106,7 +106,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     let style: any = {
       paddingLeft: '24px'
-    }
+    };
     return (
       <div
         role='row'
