@@ -1,10 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-<<<<<<< HEAD
-  "version": "4.0.0-styling3",
-=======
-  "version": "2.29.0",
->>>>>>> cbd255f93b764ebd864d0068d7b5c8017d63e3ff
+  "version": "4.0.0-styling4",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -72,8 +68,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
-    "@uifabric/utilities": "4.0.0-styling3",
-    "@uifabric/styling": "4.0.0-styling3"
+    "@uifabric/utilities": "4.0.0-styling4",
+    "@uifabric/styling": "4.0.0-styling4"
   },
   "peerDependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
