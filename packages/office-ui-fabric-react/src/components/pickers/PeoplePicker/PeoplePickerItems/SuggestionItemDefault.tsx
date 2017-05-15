@@ -3,23 +3,25 @@ import * as React from 'react';
 /* tslint:enable */
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-import { IconButton } from '../../../../Button';
+import { CommandButton, IconButton } from '../../../../Button';
 import * as stylesImport from '../PeoplePicker.scss';
 const styles: any = stylesImport;
 
-
-
-
 export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps: any) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps: any) => {
-  let { onRemoveItem } = suggestionItemProps;
+  let { onRemoveItem, onClick } = suggestionItemProps;
   return (
     <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
-      <Persona
-        { ...personaProps }
-        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-        size={ PersonaSize.size28 }
-        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
-      />
+      <CommandButton
+        onClick={ onClick }
+        className={ css('ms-PeoplePicker-personaButton', styles.personaButton) }
+      >
+        <Persona
+          { ...personaProps }
+          presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
+          size={ PersonaSize.size28 }
+          className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
+        />
+      </CommandButton>
       <IconButton
         iconProps={ { iconName: 'Cancel' } }
         title='Remove'
@@ -32,15 +34,20 @@ export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps: any
 };
 
 export const SuggestionItemSmall: (persona: IPersonaProps, suggestionProps: any) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps: any) => {
-  let { onRemoveItem } = suggestionItemProps;
+  let { onRemoveItem, onClick } = suggestionItemProps;
   return (
     <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
-      <Persona
-        { ...personaProps }
-        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-        size={ PersonaSize.extraExtraSmall }
-        className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
-      />
+      <CommandButton
+        onClick={ onClick }
+        className={ css('ms-PeoplePicker-personaButtonSmall', styles.personaButtonSmall) }
+      >
+        <Persona
+          { ...personaProps }
+          presence={ PersonaPresence.none }
+          size={ PersonaSize.extraExtraSmall }
+          className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
+        />
+      </CommandButton>
       <IconButton
         iconProps={ { iconName: 'Cancel' } }
         title='Remove'

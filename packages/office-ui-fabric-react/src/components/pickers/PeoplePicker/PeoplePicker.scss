@@ -25,12 +25,26 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
+}
+
+.personaButton {
+  height: 36px;
+  width: 100%;
+  padding: 4px 8px;
+}
+
+.personaButtonSmall {
+  height: 32px;
+  width: 100%;
+  padding: 4px 8px;
 }
 
 .closeButton {
-  padding: 0;
+  padding: 0 4px;
   height: 28px;
   width: 28px;
+  margin: 4px;
 
   &:hover {
     background: $ms-color-neutralTertiaryAlt;
@@ -42,6 +56,7 @@
   padding: 0;
   height: 24px;
   width: 24px;
+  margin: 4px;
 
   &:hover {
     background: $ms-color-neutralTertiaryAlt;

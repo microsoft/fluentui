@@ -7,14 +7,6 @@
 .suggestionsItem {
   box-sizing: border-box;
   width: 100%;
-  height: auto;
-
-  @include text-align(left);
-  padding: 4px 20px 4px;
-
-  display: block;
-  border: none;
-  background: $ms-color-white;
   position: relative;
 
   &:hover {
@@ -62,8 +54,7 @@
 .suggestionsTitle {
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  @include text-align(left);
-  @include padding-left(24px);
+  text-align: center;
   text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
@@ -98,21 +89,5 @@
     display: inline-block;
     @include margin(0px, 10px, 0, 16px);
     vertical-align: middle;
-  }
-}
-
-.suggestionsRemoveButton {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  width: 50px;
-
-  &:hover {
-    // border: 1px solid orange;
-    color: $ms-color-neutralDark;
-    background: $ms-color-neutralLighter;
   }
 }

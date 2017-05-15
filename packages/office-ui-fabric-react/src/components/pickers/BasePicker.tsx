@@ -97,7 +97,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       className,
       inputProps
     } = this.props;
-
     return (
       <div
         ref={ this._resolveRef('root') }
@@ -326,20 +325,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    if (this.input.value === '') {
+    if (this.input.value === '' && this.props.onInputFocus) {
       this.onEmptyInputFocus();
       this.setState({
         isMostRecentlyUsedVisible: true,
-        moreSuggestionsAvailable: false
+        moreSuggestionsAvailable: false,
+        suggestionsVisible: true
       });
-    } else {
+    } else if (this.input.value) {
       this.setState({
-        isMostRecentlyUsedVisible: false
+        isMostRecentlyUsedVisible: false,
+        suggestionsVisible: true
       });
     }
-    this.setState({
-      suggestionsVisible: true
-    });
   }
 
   @autobind

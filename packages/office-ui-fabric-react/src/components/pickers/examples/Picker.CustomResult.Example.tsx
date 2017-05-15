@@ -22,6 +22,7 @@ import {
   BaseAutoFill,
   IPickerItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
+import { CommandButton } from '../../../Button';
 import './Picker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {
@@ -263,16 +264,21 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return (<div> { documentProps.documentTitleProps.title } </div>);
 };
 
-export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+export const SuggestedBigItem: (documentProps: any, itemProps: any) => JSX.Element = (documentProps: any, itemProps: any) => {
   let {
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
+  let {
+    onClick
+  } = itemProps;
   return (
-    <Persona
-      imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
-      primaryText={ documentTitleProps.title }
-      size={ PersonaSize.small } />
+    <CommandButton onClick={ itemProps.onClick }>
+      <Persona
+        imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
+        primaryText={ documentTitleProps.title }
+        size={ PersonaSize.small } />
+    </CommandButton>
   );
 };
 

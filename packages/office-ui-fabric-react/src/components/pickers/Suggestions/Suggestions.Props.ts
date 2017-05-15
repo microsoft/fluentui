@@ -94,7 +94,3 @@ export interface ISuggestionItemProps<T> {
   className?: string;
   id?: string;
 }
-
-export interface ISuggestionItemProps<T> {
-
-}

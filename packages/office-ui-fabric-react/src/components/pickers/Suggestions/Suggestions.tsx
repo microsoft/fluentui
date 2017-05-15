@@ -23,21 +23,18 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
     } = this.props;
     let itemProps = assign({}, suggestionModel.item, { onRemoveItem });
     return (
-      <div>
-        <CommandButton
-          onClick={ onClick }
-          className={ css(
-            'ms-Suggestions-item',
-            styles.suggestionsItem,
-            {
-              ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
-            },
-            className
-          ) }
-        >
-          {/*<RenderSuggestion  { ...itemProps  } />*/ }
-          { RenderSuggestion(suggestionModel.item, this.props) }
-        </CommandButton>
+      <div
+        className={ css(
+          'ms-Suggestions-item',
+          styles.suggestionsItem,
+          {
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+          },
+          className
+        ) }
+      >
+        {/*<RenderSuggestion  { ...itemProps  } />*/ }
+        { RenderSuggestion(suggestionModel.item, this.props) }
       </div>
     );
   }

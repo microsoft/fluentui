@@ -13,7 +13,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  onRenderSuggestionsItem?: (props: T) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: T) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
