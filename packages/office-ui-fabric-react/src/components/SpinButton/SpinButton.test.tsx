@@ -392,18 +392,16 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '21';
 
-    function validator(newValue: string): string {
-      let numberValue: number = +newValue;
-      return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
-    }
-
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
-        onValidate={ validator }
+        onValidate={ (newValue: string): string => {
+          let numberValue: number = +newValue;
+          return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
+        } }
       />
     );
 
@@ -418,7 +416,7 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
   });
 
-  it('should use onBlur passed to the spin button (with invalid input)', () => {
+  it('should use validator passed to the spin button (with invalid input)', () => {
     const errorMessage: string = 'The value is invalid';
     const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
@@ -426,19 +424,16 @@ describe('SpinButton', () => {
     const exampleDefaultValue: string = '12';
     const exampleNewValue: string = '100';
 
-    function validator(newValue: string): string {
-      let numberValue: number = Number(newValue);
-
-      return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
-    }
-
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton
         label={ exampleLabelValue }
         min={ exampleMinValue }
         max={ exampleMaxValue }
-        defaultValue={ exampleDefaultValue }
-        onValidate={ validator }
+        value={ exampleDefaultValue }
+        onValidate={ (newValue: string): string => {
+          let numberValue: number = Number(newValue);
+          return (!isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue) ? newValue : errorMessage;
+        } }
       />
     );
 

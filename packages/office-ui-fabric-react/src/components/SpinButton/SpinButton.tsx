@@ -84,9 +84,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } else {
       this._onValidate = props.onValidate;
       this._onIncrement = props.onIncrement;
-      this._onIncrement = this._onIncrement.bind(this);
       this._onDecrement = props.onDecrement;
-      this._onDecrement = this._onDecrement.bind(this);
     }
 
     this.focus = this.focus.bind(this);
@@ -159,7 +157,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <IconButton
               className={ css('ms-UpButton', (keyboardSpinDirection === KeyboardSpinDirection.up ? 'active' : '')) }
               disabled={ disabled }
-              icon={ incrementButtonIcon.iconName }
+              iconProps={ incrementButtonIcon }
               title='Increase'
               aria-hidden='true'
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement); } }
@@ -170,7 +168,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <IconButton
               className={ css('ms-DownButton', (keyboardSpinDirection === KeyboardSpinDirection.down ? 'active' : '')) }
               disabled={ disabled }
-              icon={ decrementButtonIcon.iconName }
+              iconProps={ decrementButtonIcon }
               title='Decrease'
               aria-hidden='true'
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement); } }
