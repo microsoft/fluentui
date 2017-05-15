@@ -31,8 +31,6 @@ $checkBoxHeight: 16px;
     .check {
       opacity: 1;
       color: $ms-color-white;
-      font-weight: 900;
-      font-size: $ms-font-size-s;
     }
   }
 
@@ -48,8 +46,10 @@ $checkBoxHeight: 16px;
   top: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
-  color: $ms-color-neutralTertiaryAlt;
+  color: $ms-color-neutralSecondary;
   opacity: 0;
+  font-size: 8px;
+  font-weight: 900;
 }
 
 .background {
@@ -64,7 +64,7 @@ $checkBoxHeight: 16px;
 
   &:after {
     content: '\EA3A';
-    color: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralSecondary;
   }
 
   &:before,

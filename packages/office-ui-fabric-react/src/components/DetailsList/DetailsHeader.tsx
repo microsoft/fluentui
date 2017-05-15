@@ -178,6 +178,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
               >
+                { column.name }
 
                 { column.isFiltered && (
                   <Icon className={ styles.nearIcon } iconName='Filter' />
@@ -194,8 +195,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 { column.iconClassName && (
                   <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
                 ) }
-
-                { column.name }
 
                 { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
                   <Icon

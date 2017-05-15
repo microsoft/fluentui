@@ -26,6 +26,7 @@ $detailsList-item-selected-hover-background-color: $listItemSelectedHoverBackgro
 
 $detailsList-item-focus-background-color: $listItemFocusedBackgroundColor;
 $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
+$detailsList-item-focus-meta-color: $listItemFocusedMetaColor;
 
 
 // Compact mode rules
@@ -33,6 +34,7 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
   .root {
     min-height: $compactRowHeight;
     line-height: $compactRowHeight - ($compactRowVerticalPadding * 2);
+    border: 0;
   }
 
   .cell {
@@ -106,10 +108,14 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
     }
   }
 
+  // Focus state
   &:focus {
     background: $detailsList-item-focus-background-color;
 
     .cell {
+      color: $detailsList-item-focus-meta-color;
+
+      // Row header cell
       &.isRowHeader {
         color: $detailsList-item-focus-header-color;
       }
@@ -183,6 +189,7 @@ $detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
 }
 
 .root:hover .check,
+.root:focus .check,
 .rootIsSelected .check,
 .rootIsCheckVisible .check {
   opacity: 1;
