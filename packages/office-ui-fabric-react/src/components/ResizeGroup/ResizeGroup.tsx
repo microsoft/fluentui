@@ -7,8 +7,20 @@ import { IResizeGroupProps, IResizeGroup } from './ResizeGroup.Props';
 import styles = require('./ResizeGroup.scss');
 
 export interface IResizeGroupState {
-  renderedData?: any;
+
+  /**
+   * Current set of data being measured to determine fit
+  */
   measuredData: any;
+
+  /**
+   * Final data used to render proper sized component
+  */
+  renderedData?: any;
+
+  /**
+   * A flag to determine if a new measurement should be made upon state change
+  */
   shouldMeasure?: boolean;
 }
 
@@ -63,7 +75,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
         { renderedData && onRenderData(renderedData) }
       </div>
-
     );
   }
 
@@ -81,9 +92,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _measureItems() {
     const { data, onReduceData } = this.props;
-    const {
-      shouldMeasure
-    } = this.state;
+    const { shouldMeasure } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
       const container = this._root.getBoundingClientRect();
