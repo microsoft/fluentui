@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
 import styles = require('./CommandBar.Example.scss');
@@ -88,22 +88,16 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
     return (
       <div>
         <div className={ containerClasName } ref={ ref => this.container = ref }>
-          <DefaultButton
-            key='mainButton'
+          <CommandButton
             className={ mainBtnClassName }
-            data-is-focusable={ true }>
-            <span className={ leftIconClassNames } />
-            <span className={ leftTextClassNames }>{ 'New' }</span>
-          </DefaultButton>
+            iconProps={ { iconName: 'add' } }
+            text='New' />
           <span className={ styles.splitter }>|</span>
-          <DefaultButton
+          <CommandButton
             key='dropDownButton'
+            iconProps={ { iconName: 'chevronDown' } }
             onClick={ this.onClickChevron }
-            className={ dropDownButtonClass }>
-            <span
-              className={ dropDownIconClassNames }
-              data-is-focusable={ true } />
-          </DefaultButton>
+            className={ dropDownButtonClass } />
         </div>
         {
           this.state && this.state.isContextMenuShown &&
