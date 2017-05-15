@@ -42,15 +42,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     labelPosition: Position.start,
     labelGapSpace: 10,
     label: null,
-    incrementButtonIcon: 'ChevronUpSmall',
-    decrementButtonIcon: 'ChevronDownSmall'
+    incrementButtonIcon: { iconName: 'ChevronUpSmall' },
+    decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
   private _input: HTMLInputElement;
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
-  private _spinning: boolean
+  private _spinning: boolean;
 
   private _onValidate?: (value: string) => string;
   private _onIncrement?: (value: string) => string;
@@ -157,7 +157,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <IconButton
               className={ css('ms-UpButton', (keyboardSpinDirection === 1 ? 'active' : '')) }
               disabled={ disabled }
-              icon={ incrementButtonIcon }
+              icon={ incrementButtonIcon.iconName }
               title='Increase'
               aria-hidden='true'
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onIncrement); } }
@@ -168,7 +168,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <IconButton
               className={ css('ms-DownButton', (keyboardSpinDirection === -1 ? 'active' : '')) }
               disabled={ disabled }
-              icon={ decrementButtonIcon }
+              icon={ decrementButtonIcon.iconName }
               title='Decrease'
               aria-hidden='true'
               onMouseDown={ () => { this._updateValue(true /* shouldSpin */, this._onDecrement); } }

@@ -99,12 +99,12 @@ export interface ISpinButtonProps {
   /**
    * Icon for the increment button of the spinButton
    */
-  incrementButtonIcon?: string;
+  incrementButtonIcon?: IIconProps;
 
   /**
    * Icon for the decrement button of the spinButton
    */
-  decrementButtonIcon?: string;
+  decrementButtonIcon?: IIconProps;
 }
 
 export interface ISpinButton {
