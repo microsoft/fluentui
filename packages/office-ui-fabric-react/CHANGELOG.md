@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 May 2017 17:07:55 GMT and should not be manually modified.
+This log was last generated on Mon, 15 May 2017 10:19:13 GMT and should not be manually modified.
+
+## 2.29.0
+Mon, 15 May 2017 10:19:13 GMT
+
+### Minor changes
+
+- Dropdown: Add ability to set custom props on the Dropdown's Callout
+
+### Patches
+
+- Make name prop optional on ContextualMenu
+- Date picker: Reduce min-width for the holder component
+
+## 2.28.0
+Fri, 12 May 2017 10:19:14 GMT
+
+### Minor changes
+
+- OverflowSet: Fixed issue that prevented it from working when there are no overflow items.
 
 ## 2.27.3
 Thu, 11 May 2017 17:07:55 GMT

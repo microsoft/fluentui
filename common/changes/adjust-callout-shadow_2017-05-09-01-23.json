@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adjust styling on menu drop shadows.",
+      "type": "patch"
+    }
+  ],
+  "email": "eliblock@microsoft.com"
+}
