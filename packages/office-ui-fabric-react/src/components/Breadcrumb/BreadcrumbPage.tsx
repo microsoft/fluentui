@@ -7,14 +7,9 @@ import {
 } from '@uifabric/example-app-base';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-import { BreadcrumbAccessibleExample } from './examples/Breadcrumb.Accessible.Example';
 
 const BreadcrumbBasicExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
-) as string;
-
-const AccessibleBreadcrumbExampleCode = require(
-  '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Accessible.Example.tsx'
 ) as string;
 
 export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
@@ -29,11 +24,6 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
               title='Simple breadcrumb'
               code={ BreadcrumbBasicExampleCode }>
               <BreadcrumbBasicExample />
-            </ExampleCard>
-            <ExampleCard
-              title='ARIA accessible breadcrumb'
-              code={ AccessibleBreadcrumbExampleCode }>
-              <BreadcrumbAccessibleExample />
             </ExampleCard>
           </div>
         }
