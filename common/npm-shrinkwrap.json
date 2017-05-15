@@ -47,22 +47,22 @@
         "commander": {
           "version": "2.3.0",
           "from": "commander@2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/commander/-/commander-2.3.0.tgz"
+          "resolved": "https://registry.npmjs.org/commander/-/commander-2.3.0.tgz"
         },
         "debug": {
           "version": "2.2.0",
           "from": "debug@2.2.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "escape-string-regexp": {
           "version": "1.0.2",
           "from": "escape-string-regexp@1.0.2",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/escape-string-regexp/-/escape-string-regexp-1.0.2.tgz"
+          "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-1.0.2.tgz"
         },
         "glob": {
           "version": "3.2.11",
           "from": "glob@3.2.11",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/glob/-/glob-3.2.11.tgz"
+          "resolved": "https://registry.npmjs.org/glob/-/glob-3.2.11.tgz"
         },
         "interpret": {
           "version": "0.6.6",
@@ -87,7 +87,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "source-map": {
           "version": "0.5.6",
@@ -97,7 +97,7 @@
         "supports-color": {
           "version": "1.2.0",
           "from": "supports-color@1.2.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/supports-color/-/supports-color-1.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-1.2.0.tgz"
         },
         "uglify-js": {
           "version": "2.7.5",
@@ -126,7 +126,7 @@
         "window-size": {
           "version": "0.1.0",
           "from": "window-size@0.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/window-size/-/window-size-0.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
         },
         "wordwrap": {
           "version": "0.0.2",
@@ -143,7 +143,7 @@
     "@microsoft/gulp-core-build-sass": {
       "version": "3.1.2",
       "from": "@microsoft/gulp-core-build-sass@>=3.1.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/@microsoft/gulp-core-build-sass/upstream/gulp-core-build-sass-3.1.2.tgz"
+      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-sass/-/gulp-core-build-sass-3.1.2.tgz"
     },
     "@microsoft/gulp-core-build-serve": {
       "version": "2.1.2",
@@ -239,7 +239,7 @@
         "window-size": {
           "version": "0.1.0",
           "from": "window-size@0.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/window-size/-/window-size-0.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
         },
         "wordwrap": {
           "version": "0.0.2",
@@ -384,7 +384,7 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "es6-promise": {
           "version": "3.1.2",
@@ -434,7 +434,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "range-parser": {
           "version": "1.0.3",
@@ -508,7 +508,7 @@
         "window-size": {
           "version": "0.1.0",
           "from": "window-size@0.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/window-size/-/window-size-0.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
         },
         "wordwrap": {
           "version": "0.0.2",
@@ -930,12 +930,12 @@
     "@uifabric/example-app-base": {
       "version": "1.3.11",
       "from": "@uifabric/example-app-base@>=1.3.11 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/@uifabric/example-app-base/upstream/example-app-base-1.3.11.tgz"
+      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-1.3.11.tgz"
     },
     "@uifabric/utilities": {
       "version": "1.8.7",
       "from": "@uifabric/utilities@>=1.8.7 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/@uifabric/utilities/upstream/utilities-1.8.7.tgz"
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-1.8.7.tgz"
     },
     "abbrev": {
       "version": "1.0.9",
@@ -997,7 +997,7 @@
     "ansi-align": {
       "version": "2.0.0",
       "from": "ansi-align@>=2.0.0 <3.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ansi-align/upstream/ansi-align-2.0.0.tgz",
+      "resolved": "https://registry.npmjs.org/ansi-align/-/ansi-align-2.0.0.tgz",
       "dependencies": {
         "is-fullwidth-code-point": {
           "version": "2.0.0",
@@ -1034,7 +1034,7 @@
     "ansicolors": {
       "version": "0.2.1",
       "from": "ansicolors@>=0.2.1 <0.3.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ansicolors/-/ansicolors-0.2.1.tgz"
+      "resolved": "https://registry.npmjs.org/ansicolors/-/ansicolors-0.2.1.tgz"
     },
     "anymatch": {
       "version": "1.3.0",
@@ -1430,12 +1430,12 @@
     "boxen": {
       "version": "1.1.0",
       "from": "boxen@>=1.0.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/boxen/upstream/boxen-1.1.0.tgz",
+      "resolved": "https://registry.npmjs.org/boxen/-/boxen-1.1.0.tgz",
       "dependencies": {
         "camelcase": {
           "version": "4.1.0",
           "from": "camelcase@>=4.0.0 <5.0.0",
-          "resolved": "http://registry.npmjs.org/camelcase/-/camelcase-4.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-4.1.0.tgz"
         },
         "is-fullwidth-code-point": {
           "version": "2.0.0",
@@ -1452,7 +1452,7 @@
     "brace-expansion": {
       "version": "1.1.7",
       "from": "brace-expansion@>=1.1.7 <2.0.0",
-      "resolved": "http://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.7.tgz"
+      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.7.tgz"
     },
     "braces": {
       "version": "1.8.5",
@@ -1559,7 +1559,7 @@
     "bytes": {
       "version": "2.4.0",
       "from": "bytes@2.4.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/bytes/-/bytes-2.4.0.tgz"
+      "resolved": "https://registry.npmjs.org/bytes/-/bytes-2.4.0.tgz"
     },
     "cache-swap": {
       "version": "0.3.0",
@@ -1604,7 +1604,7 @@
     "cardinal": {
       "version": "1.0.0",
       "from": "cardinal@>=1.0.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cardinal/-/cardinal-1.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/cardinal/-/cardinal-1.0.0.tgz"
     },
     "caseless": {
       "version": "0.12.0",
@@ -1676,24 +1676,24 @@
     "cli-cursor": {
       "version": "1.0.2",
       "from": "cli-cursor@>=1.0.1 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cli-cursor/-/cli-cursor-1.0.2.tgz"
+      "resolved": "https://registry.npmjs.org/cli-cursor/-/cli-cursor-1.0.2.tgz"
     },
     "cli-table": {
       "version": "0.3.1",
       "from": "cli-table@>=0.3.1 <0.4.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cli-table/-/cli-table-0.3.1.tgz",
+      "resolved": "https://registry.npmjs.org/cli-table/-/cli-table-0.3.1.tgz",
       "dependencies": {
         "colors": {
           "version": "1.0.3",
           "from": "colors@1.0.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/colors/-/colors-1.0.3.tgz"
+          "resolved": "https://registry.npmjs.org/colors/-/colors-1.0.3.tgz"
         }
       }
     },
     "cli-usage": {
       "version": "0.1.4",
       "from": "cli-usage@>=0.1.1 <0.2.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cli-usage/-/cli-usage-0.1.4.tgz"
+      "resolved": "https://registry.npmjs.org/cli-usage/-/cli-usage-0.1.4.tgz"
     },
     "cli-width": {
       "version": "1.1.1",
@@ -1835,22 +1835,22 @@
         "bytes": {
           "version": "2.1.0",
           "from": "bytes@2.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/bytes/-/bytes-2.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/bytes/-/bytes-2.1.0.tgz"
         },
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "negotiator": {
           "version": "0.5.3",
           "from": "negotiator@0.5.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/negotiator/-/negotiator-0.5.3.tgz"
+          "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.5.3.tgz"
         },
         "vary": {
           "version": "1.0.1",
@@ -1884,7 +1884,7 @@
     "configstore": {
       "version": "3.1.0",
       "from": "configstore@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/configstore/upstream/configstore-3.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/configstore/-/configstore-3.1.0.tgz"
     },
     "connect": {
       "version": "3.6.1",
@@ -1916,7 +1916,7 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "http-errors": {
           "version": "1.3.1",
@@ -1926,7 +1926,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         }
       }
     },
@@ -1973,7 +1973,7 @@
         "cookie": {
           "version": "0.1.3",
           "from": "cookie@0.1.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cookie/-/cookie-0.1.3.tgz"
+          "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.1.3.tgz"
         }
       }
     },
@@ -2184,7 +2184,7 @@
         "cookie": {
           "version": "0.1.3",
           "from": "cookie@0.1.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cookie/-/cookie-0.1.3.tgz"
+          "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.1.3.tgz"
         },
         "http-errors": {
           "version": "1.3.1",
@@ -2302,7 +2302,7 @@
     "defined": {
       "version": "1.0.0",
       "from": "defined@>=1.0.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/defined/upstream/defined-1.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/defined/-/defined-1.0.0.tgz"
     },
     "del": {
       "version": "2.2.2",
@@ -2322,7 +2322,7 @@
     "depd": {
       "version": "1.1.0",
       "from": "depd@>=1.1.0 <1.2.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/depd/-/depd-1.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/depd/-/depd-1.1.0.tgz"
     },
     "deprecated": {
       "version": "0.0.1",
@@ -2476,7 +2476,7 @@
     "ejs": {
       "version": "2.5.6",
       "from": "ejs@>=2.5.6 <3.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ejs/-/ejs-2.5.6.tgz"
+      "resolved": "https://registry.npmjs.org/ejs/-/ejs-2.5.6.tgz"
     },
     "electron-to-chromium": {
       "version": "1.3.10",
@@ -2584,7 +2584,7 @@
     "enzyme": {
       "version": "2.7.0",
       "from": "enzyme@2.7.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/enzyme/-/enzyme-2.7.0.tgz"
+      "resolved": "https://registry.npmjs.org/enzyme/-/enzyme-2.7.0.tgz"
     },
     "errno": {
       "version": "0.1.4",
@@ -2649,7 +2649,7 @@
     "escape-html": {
       "version": "1.0.3",
       "from": "escape-html@>=1.0.3 <1.1.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/escape-html/-/escape-html-1.0.3.tgz"
+      "resolved": "https://registry.npmjs.org/escape-html/-/escape-html-1.0.3.tgz"
     },
     "escape-string-regexp": {
       "version": "1.0.5",
@@ -2714,7 +2714,7 @@
     "exit-hook": {
       "version": "1.1.1",
       "from": "exit-hook@>=1.0.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/exit-hook/-/exit-hook-1.1.1.tgz"
+      "resolved": "https://registry.npmjs.org/exit-hook/-/exit-hook-1.1.1.tgz"
     },
     "expand-braces": {
       "version": "0.1.2",
@@ -2766,22 +2766,22 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "finalhandler": {
           "version": "0.5.1",
           "from": "finalhandler@0.5.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/finalhandler/-/finalhandler-0.5.1.tgz"
+          "resolved": "https://registry.npmjs.org/finalhandler/-/finalhandler-0.5.1.tgz"
         },
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "qs": {
           "version": "6.2.0",
           "from": "qs@6.2.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/qs/-/qs-6.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/qs/-/qs-6.2.0.tgz"
         }
       }
     },
@@ -2793,12 +2793,12 @@
         "cookie": {
           "version": "0.1.3",
           "from": "cookie@0.1.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cookie/-/cookie-0.1.3.tgz"
+          "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.1.3.tgz"
         },
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "depd": {
           "version": "1.0.1",
@@ -2808,7 +2808,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "uid-safe": {
           "version": "2.0.0",
@@ -2845,12 +2845,12 @@
         "minimist": {
           "version": "0.0.8",
           "from": "minimist@0.0.8",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/minimist/-/minimist-0.0.8.tgz"
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
         },
         "mkdirp": {
           "version": "0.5.0",
           "from": "mkdirp@0.5.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/mkdirp/-/mkdirp-0.5.0.tgz"
+          "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz"
         }
       }
     },
@@ -2892,7 +2892,7 @@
     "figures": {
       "version": "1.7.0",
       "from": "figures@>=1.3.5 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/figures/-/figures-1.7.0.tgz"
+      "resolved": "https://registry.npmjs.org/figures/-/figures-1.7.0.tgz"
     },
     "file-loader": {
       "version": "0.8.5",
@@ -3467,7 +3467,7 @@
         "bytes": {
           "version": "2.1.0",
           "from": "bytes@2.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/bytes/-/bytes-2.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/bytes/-/bytes-2.1.0.tgz"
         },
         "connect": {
           "version": "2.30.2",
@@ -3477,12 +3477,12 @@
         "cookie": {
           "version": "0.1.3",
           "from": "cookie@0.1.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/cookie/-/cookie-0.1.3.tgz"
+          "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.1.3.tgz"
         },
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "depd": {
           "version": "1.0.1",
@@ -3492,7 +3492,7 @@
         "escape-html": {
           "version": "1.0.2",
           "from": "escape-html@1.0.2",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/escape-html/-/escape-html-1.0.2.tgz"
+          "resolved": "https://registry.npmjs.org/escape-html/-/escape-html-1.0.2.tgz"
         },
         "event-stream": {
           "version": "3.3.4",
@@ -3512,7 +3512,7 @@
         "iconv-lite": {
           "version": "0.4.11",
           "from": "iconv-lite@0.4.11",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/iconv-lite/-/iconv-lite-0.4.11.tgz"
+          "resolved": "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.11.tgz"
         },
         "map-stream": {
           "version": "0.1.0",
@@ -3527,7 +3527,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "qs": {
           "version": "4.0.0",
@@ -3786,7 +3786,7 @@
         "gulp-util": {
           "version": "3.0.7",
           "from": "gulp-util@3.0.7",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/gulp-util/-/gulp-util-3.0.7.tgz"
+          "resolved": "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.7.tgz"
         },
         "har-validator": {
           "version": "2.0.6",
@@ -4023,7 +4023,7 @@
     "gzip-size": {
       "version": "3.0.0",
       "from": "gzip-size@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/gzip-size/-/gzip-size-3.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/gzip-size/-/gzip-size-3.0.0.tgz"
     },
     "handle-thing": {
       "version": "1.2.5",
@@ -4577,7 +4577,7 @@
     "isexe": {
       "version": "2.0.0",
       "from": "isexe@>=2.0.0 <3.0.0",
-      "resolved": "http://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
     },
     "isobject": {
       "version": "2.1.0",
@@ -4882,7 +4882,7 @@
     "latest-version": {
       "version": "3.1.0",
       "from": "latest-version@>=3.0.0 <4.0.0",
-      "resolved": "http://registry.npmjs.org/latest-version/-/latest-version-3.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/latest-version/-/latest-version-3.1.0.tgz"
     },
     "lazy-cache": {
       "version": "1.0.4",
@@ -4959,17 +4959,17 @@
     "lodash._arraycopy": {
       "version": "3.0.0",
       "from": "lodash._arraycopy@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash._arraycopy/-/lodash._arraycopy-3.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/lodash._arraycopy/-/lodash._arraycopy-3.0.0.tgz"
     },
     "lodash._arrayeach": {
       "version": "3.0.0",
       "from": "lodash._arrayeach@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash._arrayeach/-/lodash._arrayeach-3.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/lodash._arrayeach/-/lodash._arrayeach-3.0.0.tgz"
     },
     "lodash._baseassign": {
       "version": "3.2.0",
       "from": "lodash._baseassign@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz"
+      "resolved": "https://registry.npmjs.org/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz"
     },
     "lodash._baseclone": {
       "version": "4.5.7",
@@ -4989,7 +4989,7 @@
     "lodash._basefor": {
       "version": "3.0.3",
       "from": "lodash._basefor@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash._basefor/-/lodash._basefor-3.0.3.tgz"
+      "resolved": "https://registry.npmjs.org/lodash._basefor/-/lodash._basefor-3.0.3.tgz"
     },
     "lodash._basetostring": {
       "version": "3.0.1",
@@ -5004,7 +5004,7 @@
     "lodash._bindcallback": {
       "version": "3.0.1",
       "from": "lodash._bindcallback@>=3.0.0 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/lodash._bindcallback/-/lodash._bindcallback-3.0.1.tgz"
     },
     "lodash._createcompounder": {
       "version": "3.0.0",
@@ -5375,7 +5375,7 @@
     "make-dir": {
       "version": "1.0.0",
       "from": "make-dir@>=1.0.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/make-dir/upstream/make-dir-1.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/make-dir/-/make-dir-1.0.0.tgz"
     },
     "map-cache": {
       "version": "0.2.2",
@@ -5395,12 +5395,12 @@
     "marked": {
       "version": "0.3.6",
       "from": "marked@>=0.3.6 <0.4.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/marked/-/marked-0.3.6.tgz"
+      "resolved": "https://registry.npmjs.org/marked/-/marked-0.3.6.tgz"
     },
     "marked-terminal": {
       "version": "1.7.0",
       "from": "marked-terminal@>=1.6.2 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/marked-terminal/-/marked-terminal-1.7.0.tgz"
+      "resolved": "https://registry.npmjs.org/marked-terminal/-/marked-terminal-1.7.0.tgz"
     },
     "math-expression-evaluator": {
       "version": "1.2.17",
@@ -5524,7 +5524,7 @@
         "minimist": {
           "version": "0.0.8",
           "from": "minimist@0.0.8",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/minimist/-/minimist-0.0.8.tgz"
+          "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
         }
       }
     },
@@ -5602,7 +5602,7 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "depd": {
           "version": "1.0.1",
@@ -5612,7 +5612,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         }
       }
     },
@@ -5686,7 +5686,7 @@
     "node-emoji": {
       "version": "1.5.1",
       "from": "node-emoji@>=1.4.1 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/node-emoji/-/node-emoji-1.5.1.tgz"
+      "resolved": "https://registry.npmjs.org/node-emoji/-/node-emoji-1.5.1.tgz"
     },
     "node-fetch": {
       "version": "1.6.3",
@@ -5785,7 +5785,7 @@
     "normalize-path": {
       "version": "2.1.1",
       "from": "normalize-path@>=2.0.1 <3.0.0",
-      "resolved": "http://registry.npmjs.org/normalize-path/-/normalize-path-2.1.1.tgz"
+      "resolved": "https://registry.npmjs.org/normalize-path/-/normalize-path-2.1.1.tgz"
     },
     "normalize-range": {
       "version": "0.1.2",
@@ -5905,7 +5905,7 @@
     "onetime": {
       "version": "1.1.0",
       "from": "onetime@>=1.0.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/onetime/-/onetime-1.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/onetime/-/onetime-1.1.0.tgz"
     },
     "open": {
       "version": "0.0.5",
@@ -5915,7 +5915,7 @@
     "opener": {
       "version": "1.4.3",
       "from": "opener@>=1.4.3 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/opener/-/opener-1.4.3.tgz"
+      "resolved": "https://registry.npmjs.org/opener/-/opener-1.4.3.tgz"
     },
     "opn": {
       "version": "4.0.2",
@@ -6558,7 +6558,7 @@
     "q": {
       "version": "1.5.0",
       "from": "q@>=1.1.2 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/q/upstream/q-1.5.0.tgz"
+      "resolved": "https://registry.npmjs.org/q/-/q-1.5.0.tgz"
     },
     "qs": {
       "version": "6.4.0",
@@ -6625,22 +6625,22 @@
     "rc": {
       "version": "1.2.1",
       "from": "rc@>=1.1.6 <2.0.0",
-      "resolved": "http://registry.npmjs.org/rc/-/rc-1.2.1.tgz"
+      "resolved": "https://registry.npmjs.org/rc/-/rc-1.2.1.tgz"
     },
     "react": {
       "version": "15.4.2",
       "from": "react@15.4.2",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/react/upstream/react-15.4.2.tgz"
+      "resolved": "https://registry.npmjs.org/react/-/react-15.4.2.tgz"
     },
     "react-addons-test-utils": {
       "version": "15.4.2",
       "from": "react-addons-test-utils@15.4.2",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/react-addons-test-utils/upstream/react-addons-test-utils-15.4.2.tgz"
+      "resolved": "https://registry.npmjs.org/react-addons-test-utils/-/react-addons-test-utils-15.4.2.tgz"
     },
     "react-dom": {
       "version": "15.4.2",
       "from": "react-dom@15.4.2",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/react-dom/upstream/react-dom-15.4.2.tgz"
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.4.2.tgz"
     },
     "react-highlight": {
       "version": "0.9.0",
@@ -6680,12 +6680,12 @@
     "readline2": {
       "version": "1.0.1",
       "from": "readline2@>=1.0.1 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/readline2/-/readline2-1.0.1.tgz",
+      "resolved": "https://registry.npmjs.org/readline2/-/readline2-1.0.1.tgz",
       "dependencies": {
         "mute-stream": {
           "version": "0.0.5",
           "from": "mute-stream@0.0.5",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/mute-stream/-/mute-stream-0.0.5.tgz"
+          "resolved": "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.5.tgz"
         }
       }
     },
@@ -6719,12 +6719,12 @@
     "redeyed": {
       "version": "1.0.1",
       "from": "redeyed@>=1.0.0 <1.1.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/redeyed/-/redeyed-1.0.1.tgz",
+      "resolved": "https://registry.npmjs.org/redeyed/-/redeyed-1.0.1.tgz",
       "dependencies": {
         "esprima": {
           "version": "3.0.0",
           "from": "esprima@>=3.0.0 <3.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/esprima/-/esprima-3.0.0.tgz"
+          "resolved": "https://registry.npmjs.org/esprima/-/esprima-3.0.0.tgz"
         }
       }
     },
@@ -6786,7 +6786,7 @@
     "remove-trailing-separator": {
       "version": "1.0.1",
       "from": "remove-trailing-separator@>=1.0.1 <2.0.0",
-      "resolved": "http://registry.npmjs.org/remove-trailing-separator/-/remove-trailing-separator-1.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/remove-trailing-separator/-/remove-trailing-separator-1.0.1.tgz"
     },
     "repeat-element": {
       "version": "1.1.2",
@@ -6873,7 +6873,7 @@
     "restore-cursor": {
       "version": "1.0.1",
       "from": "restore-cursor@>=1.0.1 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/restore-cursor/-/restore-cursor-1.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/restore-cursor/-/restore-cursor-1.0.1.tgz"
     },
     "right-align": {
       "version": "0.1.3",
@@ -6903,7 +6903,7 @@
     "run-async": {
       "version": "0.1.0",
       "from": "run-async@>=0.1.0 <0.2.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/run-async/-/run-async-0.1.0.tgz"
+      "resolved": "https://registry.npmjs.org/run-async/-/run-async-0.1.0.tgz"
     },
     "rush-example-app-base": {
       "version": "0.0.0",
@@ -7456,7 +7456,7 @@
     "rx-lite": {
       "version": "3.1.2",
       "from": "rx-lite@>=3.1.2 <4.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/rx-lite/-/rx-lite-3.1.2.tgz"
+      "resolved": "https://registry.npmjs.org/rx-lite/-/rx-lite-3.1.2.tgz"
     },
     "safe-buffer": {
       "version": "5.0.1",
@@ -7552,12 +7552,12 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz",
           "dependencies": {
             "ms": {
               "version": "0.7.1",
               "from": "ms@0.7.1",
-              "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+              "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
             }
           }
         },
@@ -7574,7 +7574,7 @@
         "setprototypeof": {
           "version": "1.0.2",
           "from": "setprototypeof@1.0.2",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/setprototypeof/-/setprototypeof-1.0.2.tgz"
+          "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.0.2.tgz"
         }
       }
     },
@@ -7601,7 +7601,7 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "http-errors": {
           "version": "1.3.1",
@@ -7611,12 +7611,12 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "negotiator": {
           "version": "0.5.3",
           "from": "negotiator@0.5.3",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/negotiator/-/negotiator-0.5.3.tgz"
+          "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.5.3.tgz"
         }
       }
     },
@@ -7727,7 +7727,7 @@
         "object-assign": {
           "version": "4.1.0",
           "from": "object-assign@4.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/object-assign/-/object-assign-4.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.0.tgz"
         }
       }
     },
@@ -7768,7 +7768,7 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@2.2.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "isarray": {
           "version": "0.0.1",
@@ -7778,7 +7778,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         }
       }
     },
@@ -7966,7 +7966,7 @@
     "string_decoder": {
       "version": "1.0.0",
       "from": "string_decoder@>=1.0.0 <1.1.0",
-      "resolved": "http://registry.npmjs.org/string_decoder/-/string_decoder-1.0.0.tgz"
+      "resolved": "https://registry.npmjs.org/string_decoder/-/string_decoder-1.0.0.tgz"
     },
     "string-hash": {
       "version": "1.1.3",
@@ -7981,7 +7981,7 @@
     "string.prototype.codepointat": {
       "version": "0.2.0",
       "from": "string.prototype.codepointat@>=0.2.0 <0.3.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/string.prototype.codepointat/-/string.prototype.codepointat-0.2.0.tgz"
+      "resolved": "https://registry.npmjs.org/string.prototype.codepointat/-/string.prototype.codepointat-0.2.0.tgz"
     },
     "stringify-object": {
       "version": "3.2.0",
@@ -8169,7 +8169,7 @@
         "debug": {
           "version": "2.2.0",
           "from": "debug@>=2.2.0 <2.3.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/debug/-/debug-2.2.0.tgz"
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz"
         },
         "http-errors": {
           "version": "1.3.1",
@@ -8184,7 +8184,7 @@
         "ms": {
           "version": "0.7.1",
           "from": "ms@0.7.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/ms/-/ms-0.7.1.tgz"
+          "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
         },
         "qs": {
           "version": "5.1.0",
@@ -8410,7 +8410,7 @@
     "type-is": {
       "version": "1.6.15",
       "from": "type-is@>=1.6.14 <1.7.0",
-      "resolved": "http://registry.npmjs.org/type-is/-/type-is-1.6.15.tgz"
+      "resolved": "https://registry.npmjs.org/type-is/-/type-is-1.6.15.tgz"
     },
     "typedarray": {
       "version": "0.0.6",
@@ -8450,7 +8450,7 @@
         "window-size": {
           "version": "0.1.0",
           "from": "window-size@0.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/window-size/-/window-size-0.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
         },
         "wordwrap": {
           "version": "0.0.2",
@@ -8605,7 +8605,7 @@
         "inherits": {
           "version": "2.0.1",
           "from": "inherits@2.0.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/inherits/-/inherits-2.0.1.tgz"
+          "resolved": "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz"
         }
       }
     },
@@ -8647,7 +8647,7 @@
     "vary": {
       "version": "1.1.1",
       "from": "vary@>=1.1.0 <1.2.0",
-      "resolved": "http://registry.npmjs.org/vary/-/vary-1.1.1.tgz"
+      "resolved": "https://registry.npmjs.org/vary/-/vary-1.1.1.tgz"
     },
     "vendors": {
       "version": "1.0.1",
@@ -8904,17 +8904,17 @@
         "etag": {
           "version": "1.8.0",
           "from": "etag@>=1.8.0 <1.9.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/etag/upstream/etag-1.8.0.tgz"
+          "resolved": "https://registry.npmjs.org/etag/-/etag-1.8.0.tgz"
         },
         "express": {
           "version": "4.15.2",
           "from": "express@>=4.15.2 <5.0.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/express/upstream/express-4.15.2.tgz"
+          "resolved": "https://registry.npmjs.org/express/-/express-4.15.2.tgz"
         },
         "fresh": {
           "version": "0.5.0",
           "from": "fresh@0.5.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/fresh/-/fresh-0.5.0.tgz"
+          "resolved": "https://registry.npmjs.org/fresh/-/fresh-0.5.0.tgz"
         },
         "mime": {
           "version": "1.3.4",
@@ -8924,12 +8924,12 @@
         "send": {
           "version": "0.15.1",
           "from": "send@0.15.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/send/-/send-0.15.1.tgz"
+          "resolved": "https://registry.npmjs.org/send/-/send-0.15.1.tgz"
         },
         "serve-static": {
           "version": "1.12.1",
           "from": "serve-static@1.12.1",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/serve-static/-/serve-static-1.12.1.tgz"
+          "resolved": "https://registry.npmjs.org/serve-static/-/serve-static-1.12.1.tgz"
         },
         "ultron": {
           "version": "1.1.0",
@@ -8995,22 +8995,22 @@
     "webpack-notifier": {
       "version": "1.5.0",
       "from": "webpack-notifier@>=1.5.0 <2.0.0",
-      "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/webpack-notifier/-/webpack-notifier-1.5.0.tgz",
+      "resolved": "https://registry.npmjs.org/webpack-notifier/-/webpack-notifier-1.5.0.tgz",
       "dependencies": {
         "lodash._baseclone": {
           "version": "3.3.0",
           "from": "lodash._baseclone@>=3.0.0 <4.0.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash._baseclone/-/lodash._baseclone-3.3.0.tgz"
+          "resolved": "https://registry.npmjs.org/lodash._baseclone/-/lodash._baseclone-3.3.0.tgz"
         },
         "lodash.clonedeep": {
           "version": "3.0.2",
           "from": "lodash.clonedeep@>=3.0.0 <4.0.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/lodash.clonedeep/-/lodash.clonedeep-3.0.2.tgz"
+          "resolved": "https://registry.npmjs.org/lodash.clonedeep/-/lodash.clonedeep-3.0.2.tgz"
         },
         "node-notifier": {
           "version": "4.6.1",
           "from": "node-notifier@>=4.1.0 <5.0.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/node-notifier/-/node-notifier-4.6.1.tgz"
+          "resolved": "https://registry.npmjs.org/node-notifier/-/node-notifier-4.6.1.tgz"
         }
       }
     },
@@ -9158,7 +9158,7 @@
         "window-size": {
           "version": "0.1.0",
           "from": "window-size@0.1.0",
-          "resolved": "https://office.pkgs.visualstudio.com/_packaging/ISS/npm/registry/window-size/-/window-size-0.1.0.tgz"
+          "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.0.tgz"
         },
         "wordwrap": {
           "version": "0.0.2",
@@ -9222,7 +9222,7 @@
     "which": {
       "version": "1.2.14",
       "from": "which@>=1.2.12 <2.0.0",
-      "resolved": "http://registry.npmjs.org/which/-/which-1.2.14.tgz"
+      "resolved": "https://registry.npmjs.org/which/-/which-1.2.14.tgz"
     },
     "which-module": {
       "version": "1.0.0",
