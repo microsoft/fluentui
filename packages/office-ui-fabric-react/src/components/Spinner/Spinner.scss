@@ -54,8 +54,8 @@ $borderSize: 1.5px;
       text-align: center;
   }
 
-  .screenReaderText {
-    @include visually-hidden();
+  .screenReaderOnly {
+    @include ms-u-screenReaderOnly;
   }
 }
 

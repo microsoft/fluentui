@@ -34,7 +34,7 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
           statusMessage &&
           <div role='status' aria-live={ this.props.ariaLive }>
             <DelayedRender>
-              <div className={ styles.screenReaderText }>{ statusMessage }</div>
+              <div className={ styles.screenReaderOnly }>{ statusMessage }</div>
             </DelayedRender>
           </div>
         }

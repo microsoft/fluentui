@@ -4,14 +4,3 @@
 @import './focusBorder';
 @import './semanticColorVariables';
 
-@mixin visually-hidden {
-    clip: rect(0 0 0 0);
-    height: 1px;
-    width: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    overflow: hidden;
-    position: absolute;
-}
-
