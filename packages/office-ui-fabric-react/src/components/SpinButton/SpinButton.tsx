@@ -136,7 +136,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <input
             value={ value }
             id={ this._inputId }
-            onChange={ this._onChange }
             onInput={ this._onInputChange }
             className={ css('ms-SpinButton-Input', (disabled ? ' disabled' : '')) }
             type='text'

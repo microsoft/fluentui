@@ -41,11 +41,6 @@ export interface ISpinButtonProps {
   step?: number;
 
   /**
-   * Callback when the value has been changed.
-   */
-  onChange?: (value: number) => void;
-
-  /**
    * A description of the SpinButton for the benefit of screen readers.
    */
   ariaLabel?: string;
