@@ -49,6 +49,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default undefined
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
+  /**
+   * Flag for disabling the picker.
+   */
+  disabled: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
