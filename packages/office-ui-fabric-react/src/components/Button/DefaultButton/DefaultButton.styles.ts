@@ -4,10 +4,10 @@ import {
   mergeStyles,
   getTheme,
   mergeStyleSets
-} from '@uifabric/styling';
+} from '../../../Styling';
 import {
   memoize
-} from '@uifabric/utilities';
+} from '../../../Utilities';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';

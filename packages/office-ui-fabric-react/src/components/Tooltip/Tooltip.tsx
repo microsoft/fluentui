@@ -12,7 +12,7 @@ import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './Tooltip.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../Styling';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 

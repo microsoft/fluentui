@@ -4,11 +4,11 @@ import {
   mergeStyles,
   getTheme,
   mergeStyleSets
-} from '@uifabric/styling';
+} from '../../../Styling';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
-import { memoize } from '@uifabric/utilities';
+import { memoize } from '../../../Utilities';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';

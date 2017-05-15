@@ -17,7 +17,7 @@ import {
   updateH,
   updateSV
 } from '../../utilities/color/colors';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 

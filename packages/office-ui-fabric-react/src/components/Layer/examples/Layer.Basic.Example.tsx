@@ -3,7 +3,7 @@ import './Layer.Example.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../../Styling';
 
 export class LayerContentExample extends BaseComponent<any, any> {
   public static contextTypes = {

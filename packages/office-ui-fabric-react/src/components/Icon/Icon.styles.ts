@@ -2,7 +2,7 @@ import {
   mergeStyles,
   mergeStyleSets,
   ITheme
-} from '@uifabric/styling';
+} from '../../Styling';
 import { IIconStyles } from './Icon.Props';
 
 export function getStyles(

@@ -17,7 +17,7 @@ import {
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../Styling';
 
 const styles: any = stylesImport;
 

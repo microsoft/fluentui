@@ -9,7 +9,7 @@ import {
   imageProperties
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;
 

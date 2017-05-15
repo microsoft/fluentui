@@ -7,7 +7,7 @@ import {
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../../Styling';
 import './GroupedList.Custom.Example.scss';
 
 let _items: any[];

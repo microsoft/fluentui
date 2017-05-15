@@ -3,7 +3,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Layer.Example.scss';
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../../Styling';
 
 export class LayerHostedExample extends React.Component<any, any> {
   constructor() {

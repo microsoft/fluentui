@@ -18,7 +18,7 @@ import {
   IconName,
   IIconProps
 } from '../../Icon';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 

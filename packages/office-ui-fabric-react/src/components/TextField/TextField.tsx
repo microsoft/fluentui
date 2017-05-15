@@ -13,7 +13,7 @@ import {
 } from '../../Utilities';
 import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
   value?: string;
 

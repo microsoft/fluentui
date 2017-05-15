@@ -20,7 +20,7 @@ import {
 import { IViewport } from '../../utilities/decorators/withViewport';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../Styling';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;

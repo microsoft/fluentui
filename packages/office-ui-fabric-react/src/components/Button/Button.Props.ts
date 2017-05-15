@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '../../Styling';
 
 export interface IButton {
   /**

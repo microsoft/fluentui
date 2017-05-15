@@ -6,7 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 

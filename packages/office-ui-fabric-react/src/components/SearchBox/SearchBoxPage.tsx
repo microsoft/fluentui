@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;

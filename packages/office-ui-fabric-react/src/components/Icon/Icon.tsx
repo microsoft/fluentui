@@ -9,7 +9,7 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { IconClassNames } from '@uifabric/styling';
+import { IconClassNames } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {

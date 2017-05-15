@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconName } from './IconName';
 import { IImageProps } from '../Image/Image.Props';
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from '../../Styling';
 
 // Please keep alphabetized
 export enum IconType {

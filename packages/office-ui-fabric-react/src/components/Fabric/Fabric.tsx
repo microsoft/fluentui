@@ -4,7 +4,7 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,

@@ -4,7 +4,7 @@ import {
   mergeStyles,
   mergeStyleSets,
   getTheme
-} from '@uifabric/styling';
+} from '../../../Styling';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';

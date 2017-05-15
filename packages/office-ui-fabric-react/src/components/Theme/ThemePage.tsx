@@ -6,7 +6,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 import './ThemePage.scss';
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 

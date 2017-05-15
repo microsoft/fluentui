@@ -1,6 +1,6 @@
 import { IButtonStyles } from './Button.Props';
-import { ITheme, mergeStyles, getFocusStyle } from '@uifabric/styling';
-import { memoize } from '@uifabric/utilities';
+import { ITheme, mergeStyles, getFocusStyle } from '../../Styling';
+import { memoize } from '../../Utilities';
 
 const noOutline = {
   outline: 0

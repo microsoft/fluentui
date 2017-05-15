@@ -9,7 +9,7 @@ import { CommandButton } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames } from '@uifabric/styling';
+import { AnimationClassNames } from '../../Styling';
 import {
   INav,
   INavProps,

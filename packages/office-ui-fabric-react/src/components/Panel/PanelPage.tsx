@@ -15,7 +15,7 @@ import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from '../../Styling';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
