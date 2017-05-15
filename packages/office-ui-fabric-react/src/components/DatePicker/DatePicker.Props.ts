@@ -30,6 +30,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   isRequired?: boolean;
 
   /**
+   * Disabled state of the DatePicker.
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
    * Aria Label for TextField of the DatePicker for screen reader users.
    */
   ariaLabel?: string;
