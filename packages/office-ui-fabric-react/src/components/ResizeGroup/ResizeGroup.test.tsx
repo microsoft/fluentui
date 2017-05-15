@@ -24,6 +24,7 @@ describe('ResizeGroup', () => {
 
     expect(onRenderData.called).to.equal(false);
   });
+
   it('does not render ResizeGroup when empty data is passed', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();

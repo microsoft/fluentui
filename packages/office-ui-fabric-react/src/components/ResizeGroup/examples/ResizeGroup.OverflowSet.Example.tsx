@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';

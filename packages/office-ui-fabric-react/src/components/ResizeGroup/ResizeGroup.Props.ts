@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ResizeGroup } from './ResizeGroup';
 
 export interface IResizeGroup {
+  /**
+   * Triggers a measuring of the resize group.
+   */
   measure?: () => void;
 }
 

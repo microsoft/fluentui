@@ -30,7 +30,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     };
   }
 
-  public componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
     if (this.props.data !== nextProps.data) {
       this.setState({
         shouldMeasure: true,
@@ -47,7 +47,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public render() {
     const { onRenderData, onReduceData, data } = this.props;
-    let { shouldMeasure, renderedData, measuredData } = this.state;
+    const { shouldMeasure, renderedData, measuredData } = this.state;
 
     if (Object.keys(data).length === 0) {
       return null;
@@ -81,15 +81,13 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _measureItems() {
     const { data, onReduceData } = this.props;
-    let {
-      shouldMeasure,
-      renderedData,
-      measuredData,
+    const {
+      shouldMeasure
     } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
-      let container = this._root.getBoundingClientRect();
-      let measured = this._measured.getBoundingClientRect();
+      const container = this._root.getBoundingClientRect();
+      const measured = this._measured.getBoundingClientRect();
       if ((measured.width > container.width)) {
         this.setState((prevState, props) => {
           return {
