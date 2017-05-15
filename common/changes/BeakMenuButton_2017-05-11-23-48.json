@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Basebutton now respects the isBeakVisible property on the menu props",
+      "comment": "BaseButton: now respects the isBeakVisible property on the menu props",
       "type": "patch"
     }
   ],
