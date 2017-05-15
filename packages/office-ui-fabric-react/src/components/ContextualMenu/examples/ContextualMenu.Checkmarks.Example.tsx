@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, IContextualMenuItem, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
@@ -65,7 +65,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                 },
                 {
                   key: 'divider_1',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
 
                 {

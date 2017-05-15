@@ -1,6 +1,10 @@
 {
   "name": "office-ui-fabric-react",
+<<<<<<< HEAD
   "version": "4.0.0-styling3",
+=======
+  "version": "2.29.0",
+>>>>>>> cbd255f93b764ebd864d0068d7b5c8017d63e3ff
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",

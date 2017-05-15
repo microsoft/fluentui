@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
@@ -62,7 +62,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 },
                 {
                   key: 'divider_1',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'charm',
@@ -200,7 +200,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                       },
                       {
                         key: 'divider_1',
-                        name: '-',
+                        itemType: ContextualMenuItemType.Divider
                       },
                       {
                         key: 'clear',

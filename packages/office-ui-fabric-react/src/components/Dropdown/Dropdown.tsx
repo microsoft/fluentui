@@ -216,7 +216,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _onRenderContainer(props: IDropdownProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
-      responsiveMode
+      responsiveMode,
+      calloutProps
     } = this.props;
 
     let isSmall = responsiveMode <= ResponsiveMode.medium;
@@ -235,11 +236,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         :
         <Callout
           isBeakVisible={ false }
-          className={ css('ms-Dropdown-callout', styles.callout) }
           gapSpace={ 0 }
           doNotLayer={ false }
-          targetElement={ this._dropDown }
           directionalHint={ DirectionalHint.bottomLeftEdge }
+          { ...calloutProps }
+          className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
+          targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
         >

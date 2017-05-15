@@ -34,9 +34,8 @@ module.exports = function (config) {
       module: {
         loaders: [
           {
-            test: /sinon\.js$/,
-            loader: 'imports?define=>false',
-            enforce: 'pre'
+            test: /sinon\/pkg\/sinon/,
+            loader: "imports?define=>false,require=>false"
           },
           debugRun ? {} : {
             test: /\.js/,
