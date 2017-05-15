@@ -27,7 +27,7 @@ export function getFocusStyle(
     parent('.ms-Fabric.is-focusVisible', {
       ':focus:after': {
         content: '""',
-        position,
+        position: 'absolute',
         left: inset,
         top: inset,
         bottom: inset,

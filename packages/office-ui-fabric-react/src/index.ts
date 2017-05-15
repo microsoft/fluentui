@@ -41,6 +41,7 @@ export * from './Rating';
 export * from './SearchBox';
 export * from './Slider';
 export * from './Spinner';
+export * from './Styling';
 export * from './TeachingBubble';
 export * from './TextField';
 export * from './Toggle';

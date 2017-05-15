@@ -1,13 +1,13 @@
 
-export interface ICssMapping {
+export interface IDictionary {
   [className: string]: boolean;
 }
 
-export interface IStyle {
+export interface ISerializableObject {
   toString?: () => string;
 }
 
-export type ICssInput = string | IStyle | ICssMapping | null | undefined | boolean;
+export type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
 
 export function css(...args: ICssInput[]) {
   let classes = [];
