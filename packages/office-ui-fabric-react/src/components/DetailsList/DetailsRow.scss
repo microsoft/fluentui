@@ -87,8 +87,8 @@ $detailsList-item-focus-meta-color: $listItemFocusedMetaColor;
   border-top: 1px solid $ms-color-white;
   border-bottom: 1px solid $ms-color-white;
 
-  // Selected State Header cell
   .cell {
+    // Selected State Header cell
     &.isRowHeader {
       color: $detailsList-item-selected-color;
     }
@@ -98,10 +98,11 @@ $detailsList-item-focus-meta-color: $listItemFocusedMetaColor;
   &:hover {
     background: $detailsList-item-selected-hover-background-color;
 
-    // Selected State hover Header cell
+    // Selected State hover meta cell
     .cell {
       color: $detailsList-item-selected-hover-meta-color;
 
+      // Selected State hover Header cell
       &.isRowHeader {
         color: $detailsList-item-selected-hover-color;
       }
@@ -112,6 +113,7 @@ $detailsList-item-focus-meta-color: $listItemFocusedMetaColor;
   &:focus {
     background: $detailsList-item-focus-background-color;
 
+    // Selected State hover meta cell
     .cell {
       color: $detailsList-item-focus-meta-color;
 

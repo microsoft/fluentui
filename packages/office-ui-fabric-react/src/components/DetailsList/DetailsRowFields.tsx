@@ -28,7 +28,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
   }
 
   public render() {
-    let { columns, compact } = this.props;
+    let { columns } = this.props;
     let { cellContent } = this.state;
 
     return (
@@ -42,8 +42,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               'is-multiline': column.isMultiline,
               [styles.isRowHeader]: column.isRowHeader,
               [styles.isPadded]: column.isPadded,
-              [styles.isMultiline]: column.isMultiline,
-              [styles.compact]: compact
+              [styles.isMultiline]: column.isMultiline
             }) }
             style={ { width: column.calculatedWidth } }
             data-automationid='DetailsRowCell'

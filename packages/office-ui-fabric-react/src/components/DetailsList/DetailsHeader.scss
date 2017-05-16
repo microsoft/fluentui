@@ -11,6 +11,7 @@ $isPaddedMargin: 24px;
 
 .root {
   display: inline-block;
+  position: relative;
   min-width: 100%;
   vertical-align: top;
   height: $rowHeight;
@@ -20,6 +21,7 @@ $isPaddedMargin: 24px;
   border-bottom: 1px solid $dividerColor;
   cursor: default;
   user-select: none;
+  z-index: $ms-zIndex-front;
 
   &.rootIsSelectAllHidden {
     .cell.cellIsCheck {

@@ -69,7 +69,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
 
     //  Populate with items for demos.
     if (_items.length === 0) {
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 500; i++) {
         const randomDate = this._randomDate(new Date(2012, 0, 1), new Date());
         const randomFileSize = this._randomFileSize();
         const randomFileType = this._randomFileIcon();
