@@ -133,7 +133,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // Override onClick if contextualMenuItems passed in. Eventually allow _onToggleMenu to
     // be assigned to split button click if onClick already has a value
     if (this.props.menuProps) {
-      assign(buttonProps, { 'onClick': this._onToggleMenu });
+      assign(
+        buttonProps,
+        {
+          'onClick': this._onToggleMenu,
+          'aria-expanded': this.state.menuProps ? true : false
+        }
+      );
     }
 
     return this._onRenderContent(tag, buttonProps);
