@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 16 May 2017 21:47:38 GMT and should not be manually modified.
+This log was last generated on Tue, 16 May 2017 22:39:55 GMT and should not be manually modified.
+
+## 2.30.1
+Tue, 16 May 2017 22:39:55 GMT
+
+### Patches
+
+- Change pickeritemprops to correctly extend htmlattributes
+- List: Add scrollToIndex to public interface
 
 ## 2.30.0
 Tue, 16 May 2017 21:47:38 GMT
