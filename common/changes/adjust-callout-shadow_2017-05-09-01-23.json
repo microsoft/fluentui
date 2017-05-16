@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make name prop optional on ContextualMenu",
+      "comment": "Adjust styling on menu drop shadows.",
       "type": "patch"
     }
   ],
-  "email": "chrisgo@microsoft.com"
+  "email": "eliblock@microsoft.com"
 }
