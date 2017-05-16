@@ -72,7 +72,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
           ) }
-
+`
           { options.map((option) => (
             <div
               key={ option.key }
