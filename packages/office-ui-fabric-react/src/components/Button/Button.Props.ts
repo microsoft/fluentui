@@ -31,6 +31,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   disabled?: boolean;
 
   /**
+   * Whether the button is toggled
+   */
+  toggled?: boolean;
+
+  /**
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
