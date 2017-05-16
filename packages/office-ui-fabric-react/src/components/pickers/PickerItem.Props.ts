@@ -1,5 +1,5 @@
 import * as React from 'react';
-export interface IPickerItemProps<T> extends React.HTMLProps<any> {
+export interface IPickerItemProps<T> extends React.HTMLAttributes<HTMLElement> {
   item: T;
   index: number;
   selected?: boolean;
@@ -9,4 +9,5 @@ export interface IPickerItemProps<T> extends React.HTMLProps<any> {
    * This allows the base picker to keep track of changes in the items.
    */
   onItemChange?: (item: T, index: number) => void;
+  key?: string | number;
 }
