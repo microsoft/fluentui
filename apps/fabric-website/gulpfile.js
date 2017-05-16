@@ -43,14 +43,15 @@ build.postCopy.setConfig({
   }
 });
 
-build.karma.isEnabled = () => false;
-
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
+
+// Use Karma Tests - Disable during develoment if prefered, turned off for now
+build.karma.isEnabled = () => false;
 
 // initialize tasks.
 build.initialize(gulp);
