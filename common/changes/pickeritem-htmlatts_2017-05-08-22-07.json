@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Adds ability to disable pickers",
+      "comment": "Change pickeritemprops to correctly extend htmlattributes",
       "type": "patch"
     },
     {
@@ -21,5 +21,5 @@
       "type": "none"
     }
   ],
-  "email": "v-algemb@microsoft.com"
+  "email": "joschect@microsoft.com"
 }
