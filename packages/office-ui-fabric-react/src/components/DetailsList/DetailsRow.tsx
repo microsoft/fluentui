@@ -4,7 +4,9 @@ import {
   IDisposable,
   assign,
   css,
-  shallowCompare
+  shallowCompare,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
@@ -183,6 +185,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     return (
       <div
+        {...getNativeProps(this.props, divProperties)}
         ref='root'
         role='row'
         aria-label={ ariaLabel }
