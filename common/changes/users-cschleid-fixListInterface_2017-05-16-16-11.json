@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "List: Add scrollToIndex to public interface",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
