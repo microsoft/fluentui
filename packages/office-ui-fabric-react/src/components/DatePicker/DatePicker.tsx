@@ -108,7 +108,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
     isMonthPickerVisible: true,
-    strings: DEFAULT_STRINGS
+    strings: DEFAULT_STRINGS,
+    borderless: false
   };
 
   public refs: {
@@ -160,8 +161,18 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public render() {
-    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
-    let { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
+    const {
+      firstDayOfWeek,
+      strings,
+      label,
+      isRequired,
+      disabled,
+      ariaLabel,
+      placeholder,
+      allowTextInput,
+      borderless
+    } = this.props;
+    const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
       <div className={ css('ms-DatePicker', styles.root) } ref='root'>
@@ -171,6 +182,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
             required={ isRequired }
+            disabled={ disabled }
             onKeyDown={ this._onTextFieldKeyDown }
             onFocus={ this._onTextFieldFocus }
             onBlur={ this._onTextFieldBlur }
@@ -179,6 +191,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             errorMessage={ errorMessage }
             label={ label }
             placeholder={ placeholder }
+            borderless={ borderless }
             iconClass={ css(
               'ms-Icon ms-Icon--Calendar',
               label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',

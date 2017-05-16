@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Facepile: Added `className` prop.",
+      "comment": "DatePicker: adding a disabled property support.",
       "type": "minor"
     }
   ],
-  "email": "r33najain@gmail.com"
+  "email": "ihor3000@gmail.com"
 }

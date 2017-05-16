@@ -4,11 +4,13 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let configResources = require('@microsoft/web-library-build').karma.resources;
+let build = require('@microsoft/web-library-build');
+let buildConfig = build.getConfig();
+let configResources = build.karma.resources;
 let bindPolyfillPath = configResources.bindPolyfillPath;
 let debugRun = (process.argv.indexOf('--debug') > -1);
 
-module.exports = function(config) {
+module.exports = function (config) {
   let karmaConfig = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -20,32 +22,37 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [bindPolyfillPath].concat(['lib/common/tests.js']),
-
+    files: [bindPolyfillPath].concat([path.join(buildConfig.libFolder, 'common/tests.js')]),
 
     // list of files to exclude
     exclude: [],
 
-
     // webpack config for bundling tests.
     webpack: {
+      devtool: 'inline-source-map',
       module: {
         loaders: [
           {
-            test: /sinon\.js$/,
-            loader: 'imports?define=>false'
+            test: /sinon\/pkg\/sinon/,
+            loader: "imports?define=>false,require=>false"
+          },
+          debugRun ? {} : {
+            test: /\.js/,
+            exclude: /(test|node_modules|bower_components)/,
+            loader: configResources.istanbulInstrumenterLoaderPath,
+            enforce: 'post'
           }
         ],
-        postLoaders: debugRun ? null : [{
-          test: /\.js/,
-          exclude: /(test|node_modules|bower_components)/,
-          loader: configResources.istanbulInstrumenterLoaderPath
-        }]
+      },
+      externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
       },
       resolve: {
-        modulesDirectories: [
-          '',
-          'lib',
+        modules: [
+          buildConfig.libFolder,
           'node_modules'
         ]
       }
@@ -58,7 +65,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'lib/**/*.js': ['webpack']
+      [path.join(buildConfig.libFolder, '/**/*.js')]: ['webpack']
     },
 
     plugins: configResources.plugins.concat([
