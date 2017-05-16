@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.30.0",
+      "tag": "office-ui-fabric-react_v2.30.0",
+      "date": "Tue, 16 May 2017 21:47:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alek Gembinski <v-algemb@microsoft.com>",
+            "commit": "e00fb08bc93e133d9ba1687d21a32a99bf547412",
+            "comment": "Pickers: Adds ability to disable pickers"
+          },
+          {
+            "author": "Eli Block <eliblock@microsoft.com>",
+            "commit": "3678839163cf3d8673c2cddede1d80a2a6692df5",
+            "comment": "Adjust styling on menu drop shadows."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ba359d0b68fadaa10a6b32cfbd5a55c8062f91d4",
+            "comment": "Button: Added aria-expanded if props.menuProps. Changes from false to true when opened"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "61710c7638db877b85c099d24a5c84346d8d747e",
+            "comment": "Button: default type to 'button'"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Igor Machuzhak <ihor3000@gmail.com>",
+            "commit": "a7302840780ace99eb464ef21f8be60c68c47e22",
+            "comment": "DatePicker: adding a disabled property support."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.29.0",
       "tag": "office-ui-fabric-react_v2.29.0",
       "date": "Mon, 15 May 2017 10:19:13 GMT",
