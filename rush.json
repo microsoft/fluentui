@@ -49,9 +49,9 @@
       "shouldPublish": false
     },
     {
-      "packageName": "fabric-website",
+      "packageName": "@uifabric/fabric-website",
       "projectFolder": "apps/fabric-website",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "test-bundle-button",
