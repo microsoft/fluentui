@@ -56,24 +56,6 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
   @autobind
   private _renderSplitButtonMenuItem(item: IContextualMenuItem) {
     let darkerBG = this.state.isContextMenuShown && styles.darkerBG;
-    let leftIconClassNames = css(
-      styles.icon,
-      styles.themeDarkAltColor,
-      'ms-Icon ms-Icon--Add',
-      darkerBG);
-    let dropDownIconClassNames = css(
-      styles.icon,
-      'ms-Icon ms-Icon--ChevronDown',
-      darkerBG);
-    let leftTextClassNames = css(
-      styles.leftText,
-      'ms-CommandBarItem-commandText',
-      darkerBG);
-
-    let containerClasName = css(
-      styles.customButtonContainer,
-      darkerBG
-    );
 
     let dropDownButtonClass = css(
       styles.button,
@@ -87,28 +69,23 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
 
     return (
       <div>
-        <div className={ containerClasName } ref={ ref => this.container = ref }>
+        <div className={ css(
+          styles.customButtonContainer,
+          darkerBG
+        ) } ref={ ref => this.container = ref }>
           <CommandButton
             className={ mainBtnClassName }
             iconProps={ { iconName: 'add' } }
             text='New' />
           <span className={ styles.splitter }>|</span>
           <CommandButton
-            key='dropDownButton'
-            iconProps={ { iconName: 'chevronDown' } }
             onClick={ this.onClickChevron }
-            className={ dropDownButtonClass } />
+            className={ dropDownButtonClass }
+            menuProps={ {
+              className: css('ms-CommandBar-menuHost'),
+              items: item.subMenuProps.items
+            } } />
         </div>
-        {
-          this.state && this.state.isContextMenuShown &&
-          <ContextualMenu
-            isBeakVisible={ true }
-            className={ css('ms-CommandBar-menuHost') }
-            items={ item.subMenuProps.items }
-            target={ this.container }
-            directionalHint={ DirectionalHint.bottomAutoEdge }
-            onDismiss={ this.toggleDropDownMenuShown } />
-        }
       </div >
     );
   }

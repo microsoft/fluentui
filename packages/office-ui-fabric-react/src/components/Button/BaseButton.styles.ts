@@ -1,5 +1,5 @@
 import { IButtonStyles } from './Button.Props';
-import { ITheme, mergeStyles, getFocusStyle } from '../../Styling';
+import { ITheme, mergeStyles, getFocusStyle, FontSizes } from '../../Styling';
 import { memoize } from '../../Utilities';
 
 const noOutline = {
@@ -61,12 +61,21 @@ export const getStyles = memoize((
       alignItems: 'center'
     }),
 
-    icon: iconStyle,
+    icon: mergeStyles(iconStyle, {
+      fontSize: FontSizes.icon
+    }),
+
     iconEnabled: undefined,
     iconDisabled: undefined,
 
-    menuIcon: iconStyle,
-    menuIconEnabled: undefined,
+    menuIcon: mergeStyles(iconStyle, {
+      fontSize: FontSizes.small,
+    }),
+
+    menuIconEnabled: mergeStyles({
+      color: theme.palette.neutralSecondary
+    }),
+
     menuIconDisabled: undefined,
 
     label: mergeStyles({
