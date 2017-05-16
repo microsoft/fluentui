@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 May 2017 10:19:13 GMT and should not be manually modified.
+This log was last generated on Tue, 16 May 2017 21:47:38 GMT and should not be manually modified.
+
+## 2.30.0
+Tue, 16 May 2017 21:47:38 GMT
+
+### Minor changes
+
+- DatePicker: adding a disabled property support.
+
+### Patches
+
+- Pickers: Adds ability to disable pickers
+- Adjust styling on menu drop shadows.
+- Button: Added aria-expanded if props.menuProps. Changes from false to true when opened
+- Button: default type to 'button'
 
 ## 2.29.0
 Mon, 15 May 2017 10:19:13 GMT
