@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: default type to 'button'",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
