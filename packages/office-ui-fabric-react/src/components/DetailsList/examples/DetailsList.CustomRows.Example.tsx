@@ -27,7 +27,13 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
 
   @autobind
   private _onRenderRow(props) {
-    return <DetailsRow { ...props } onRenderCheck={ this._onRenderCheck } />;
+    return (
+      <DetailsRow
+        { ...props}
+        onRenderCheck={ this._onRenderCheck }
+        aria-busy={ false } 
+      />
+    );
   }
 
   @autobind
