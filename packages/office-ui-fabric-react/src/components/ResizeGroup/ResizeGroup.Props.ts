@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { ResizeGroup } from './ResizeGroup';
 
+export interface IResizeGroup {
+
+}
+
 export interface IResizeGroupProps extends React.HTMLProps<ResizeGroup | HTMLElement> {
+
+  /**
+   * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IResizeGroup) => void;
 
   /**
    * Data to be passed to the onRenderData function
