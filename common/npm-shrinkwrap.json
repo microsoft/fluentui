@@ -9,7 +9,7 @@
     },
     "@microsoft/gulp-core-build": {
       "version": "2.5.0",
-      "from": "@microsoft/gulp-core-build@>=2.4.3 <3.0.0",
+      "from": "@microsoft/gulp-core-build@>=2.5.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build/-/gulp-core-build-2.5.0.tgz",
       "dependencies": {
         "@types/chai": {
@@ -146,13 +146,13 @@
       "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-sass/-/gulp-core-build-sass-3.1.2.tgz"
     },
     "@microsoft/gulp-core-build-serve": {
-      "version": "2.1.2",
-      "from": "@microsoft/gulp-core-build-serve@>=2.1.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-serve/-/gulp-core-build-serve-2.1.2.tgz"
+      "version": "2.1.3",
+      "from": "@microsoft/gulp-core-build-serve@>=2.1.2 <3.0.0",
+      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-serve/-/gulp-core-build-serve-2.1.3.tgz"
     },
     "@microsoft/gulp-core-build-typescript": {
       "version": "3.1.1",
-      "from": "@microsoft/gulp-core-build-typescript@>=3.0.3 <4.0.0",
+      "from": "@microsoft/gulp-core-build-typescript@>=3.1.1 <4.0.0",
       "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-typescript/-/gulp-core-build-typescript-3.1.1.tgz",
       "dependencies": {
         "diff": {
@@ -186,7 +186,7 @@
     },
     "@microsoft/gulp-core-build-webpack": {
       "version": "1.1.6",
-      "from": "@microsoft/gulp-core-build-webpack@>=1.1.3 <2.0.0",
+      "from": "@microsoft/gulp-core-build-webpack@>=1.1.5 <2.0.0",
       "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-webpack/-/gulp-core-build-webpack-1.1.6.tgz",
       "dependencies": {
         "camelcase": {
@@ -678,9 +678,9 @@
       "resolved": "https://registry.npmjs.org/@microsoft/stream-collator/-/stream-collator-1.0.2.tgz"
     },
     "@microsoft/web-library-build": {
-      "version": "3.0.1",
+      "version": "3.0.2",
       "from": "@microsoft/web-library-build@>=3.0.0-0 <4.0.0-0",
-      "resolved": "https://registry.npmjs.org/@microsoft/web-library-build/-/web-library-build-3.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/@microsoft/web-library-build/-/web-library-build-3.0.2.tgz"
     },
     "@types/assertion-error": {
       "version": "1.0.30",

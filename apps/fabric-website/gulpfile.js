@@ -50,7 +50,7 @@ build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 
-// Use Karma Tests - Disable during develoment if prefered
+// Use Karma Tests - Disable during develoment if prefered, turned off for now
 build.karma.isEnabled = () => false;
 
 // initialize tasks.
