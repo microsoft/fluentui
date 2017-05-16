@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Adding comment",
+      "type": "patch"
+    }
+  ],
+  "email": "miljo@microsoft.com"
+}

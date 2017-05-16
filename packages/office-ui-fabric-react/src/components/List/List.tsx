@@ -518,22 +518,24 @@ export class List extends BaseComponent<IListProps, IListState> {
     if (pageElement && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       let newClientRect = _measurePageRect(pageElement);
 
-      hasChangedHeight = page.height !== newClientRect.height;
+      if (newClientRect.height || newClientRect.width) {
+        hasChangedHeight = page.height !== newClientRect.height;
 
-      // console.warn(' *** expensive page measure', page.startIndex, page.height, newClientRect.height);
+        // console.warn(' *** expensive page measure', page.startIndex, page.height, newClientRect.height);
 
-      page.height = newClientRect.height;
+        page.height = newClientRect.height;
 
-      this._cachedPageHeights[page.startIndex] = {
-        height: newClientRect.height,
-        measureVersion: this._measureVersion
-      };
+        this._cachedPageHeights[page.startIndex] = {
+          height: newClientRect.height,
+          measureVersion: this._measureVersion
+        };
 
-      this._estimatedPageHeight = Math.round(
-        ((this._estimatedPageHeight * this._totalEstimates) + newClientRect.height) /
-        (this._totalEstimates + 1));
+        this._estimatedPageHeight = Math.round(
+          ((this._estimatedPageHeight * this._totalEstimates) + newClientRect.height) /
+          (this._totalEstimates + 1));
 
-      this._totalEstimates++;
+        this._totalEstimates++;
+      }
     }
 
     return hasChangedHeight;

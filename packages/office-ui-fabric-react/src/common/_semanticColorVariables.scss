@@ -28,3 +28,67 @@ $selectedActiveBackgroundColor: $ms-color-neutralTertiaryAlt;
 $selectedActiveForegroundColor: $ms-color-neutralPrimary;
 
 $dividerColor: $ms-color-neutralLight;
+
+// *** New semantic slots
+// todo: convert to theme tokens
+
+/*** BASIC ***/
+$bodyBackgroundColor: $ms-color-white;
+$bodyTextColor: $ms-color-neutralPrimary;
+$bodySubtextColor: $ms-color-neutralSecondary;
+
+$disabledBackgroundColor: $ms-color-neutralLighter;
+$disabledTextColor: $ms-color-neutralTertiaryAlt;
+$disabledSubtextColor: $ms-color-neutralQuaternary;
+
+$focusBorderColor: $ms-color-black;
+
+// $errorBackgroundColor: todo
+$errorTextColor: $ms-color-redDark;
+
+/*** Text fields ***/
+$fieldBackgroundColor: $ms-color-white;
+$fieldTextColor: $ms-color-neutralPrimary;
+
+$fieldBorderColor: $ms-color-neutralTertiaryAlt;
+$fieldBorderHoverColor: $ms-color-neutralSecondaryAlt;
+$fieldBorderFocusColor: $ms-color-themePrimary;
+
+$fieldPlaceholderColor: $ms-color-neutralTertiary;
+
+/*** State controls ***/
+$controlBackgroundColor: $ms-color-white;
+$controlBackgroundSelectedColor: $ms-color-themePrimary;
+$controlBackgroundSelectedHoverColor: $ms-color-themeSecondary;
+
+$controlForegroundColor: $ms-color-neutralPrimary;
+$controlForegroundHoverColor: $ms-color-black;
+$controlForegroundSelectedColor: $ms-color-white;
+
+$controlBorderUnselectedColor: $ms-color-neutralSecondaryAlt;
+$controlBorderUnselectedHoverColor: $ms-color-black;
+// $controlBorderSelectedColor: unused
+$controlBorderSelectedHoverColor: $ms-color-themePrimary;
+
+/*** Menus ***/
+$menuBackgroundColor: $ms-color-white;
+$menuBackgroundHoverColor: $ms-color-neutralLighter;
+$menuBackgroundSelectedColor: $ms-color-neutralQuaternaryAlt;
+
+$menuTextColor: $ms-color-neutralPrimary;
+$menuTextSelectedColor: $ms-color-black;
+$menuTextDisabledColor: $ms-color-neutralTertiaryAlt;
+
+$menuIconColor: $ms-color-themePrimary;
+
+$menuHeaderColor: $ms-color-themePrimary;
+
+$menuDividerColor: $ms-color-neutralLight;
+
+/*** Lists ***/
+$listBackgroundColor: transparent;
+$listTextColor: $ms-color-neutralPrimary;
+
+$listItemHoverColor: $ms-color-neutralLighter;
+$listItemSelectedColor: $ms-color-neutralQuaternary;
+$listItemSelectedHoverColor: $ms-color-neutralQuaternaryAlt;

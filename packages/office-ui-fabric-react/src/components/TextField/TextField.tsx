@@ -35,6 +35,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     resizable: true,
     autoAdjustHeight: false,
     underlined: false,
+    borderless: false,
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
     onNotifyValidationResult: () => { /* noop */ },
@@ -129,6 +130,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       multiline,
       required,
       underlined,
+      borderless,
       addonString,
       onRenderAddon = this._onRenderAddon
     } = this.props;
@@ -141,13 +143,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       ['is-disabled ' + styles.rootIsDisabled]: disabled,
       ['is-active ' + styles.rootIsActive]: isFocused,
       ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
-      ['ms-TextField--underlined ' + styles.rootIsUnderlined]: underlined
+      ['ms-TextField--underlined ' + styles.rootIsUnderlined]: underlined,
+      ['ms-TextField--borderless ' + styles.rootIsBorderless]: borderless
     });
 
     return (
       <div className={ textFieldClassName }>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup) }>
+        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused) }>
           { (addonString !== undefined || this.props.onRenderAddon) && (
             <div className={ css(styles.fieldAddon) }>
               { onRenderAddon(this.props, this._onRenderAddon) }
