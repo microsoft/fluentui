@@ -86,7 +86,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       parentElement = getParent(parentElement);
     }
 
-    this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+    if (!this._isInnerZone) {
+      this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+    }
 
     // Assign initial tab indexes so that we can set initial focus as appropriate.
     this._updateTabIndexes();
@@ -107,6 +109,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     return (
       <div
+        role='presentation'
         { ...divProps }
         { ...rootProps }
         className={ css('ms-FocusZone', className) }
@@ -127,8 +130,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Sets focus to the first tabbable item in the zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  public focus(): boolean {
-    if (this._activeElement && elementContains(this.refs.root, this._activeElement)) {
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    if (!forceIntoFirstElement && this.refs.root.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' && this._isInnerZone) {
+      // The parent focus zone should take responsibility for focusing this element.
+      return true;
+    } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)) {
       this._activeElement.focus();
       return true;
     } else {
@@ -153,11 +159,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (element) {
-      if (this._activeElement) {
-        this._activeElement.tabIndex = -1;
-      }
+      const previousActiveElement = this._activeElement;
 
       this._activeElement = element;
+
+      if (previousActiveElement) {
+        if (isElementFocusZone(previousActiveElement)) {
+          this._updateTabIndexes(previousActiveElement);
+        }
+
+        previousActiveElement.tabIndex = -1;
+      }
 
       if (element) {
         if (!this._focusAlignment) {
@@ -225,11 +237,14 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     while (path.length) {
       target = path.pop();
 
-      if (isElementFocusZone(target)) {
-        break;
-      } else if (target && isElementTabbable(target)) {
+      if (target && isElementTabbable(target)) {
         target.tabIndex = 0;
         this._setFocusAlignment(target, true, true);
+      }
+
+      if (isElementFocusZone(target)) {
+        // Stop here since the focus zone will take care of its own children.
+        break;
       }
     }
   }
@@ -245,6 +260,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return;
     }
 
+    if (document.activeElement === this.refs.root && this._isInnerZone) {
+      // If this element has focus, it is being controlled by a parent.
+      // Ignore the keystroke.
+      return;
+    }
+
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
 
@@ -255,13 +276,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (
       isInnerZoneKeystroke &&
-      this._isImmediateDescendantOfZone(ev.target as HTMLElement) &&
-      isInnerZoneKeystroke(ev)) {
+      isInnerZoneKeystroke(ev) &&
+      this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
 
       // Try to focus
       let innerZone = this._getFirstInnerZone();
 
-      if (!innerZone || !innerZone.focus()) {
+      if (!innerZone || !innerZone.focus(true)) {
         return;
       }
     } else if (ev.altKey) {
@@ -331,6 +352,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Walk up the dom try to find a focusable element.
    */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
+    if (target === this.refs.root) {
+      return false;
+    }
+
     do {
       if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
         return false;
@@ -356,6 +381,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   private _getFirstInnerZone(rootElement?: HTMLElement): FocusZone {
     rootElement = rootElement || this._activeElement || this.refs.root;
+
+    if (isElementFocusZone(rootElement)) {
+      return _allInstances[rootElement.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
+    }
 
     let child: HTMLElement = rootElement.firstElementChild as HTMLElement;
 
@@ -579,17 +608,21 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _isImmediateDescendantOfZone(element?: HTMLElement): boolean {
+    return this._getOwnerZone(element) === this.refs.root;
+  }
+
+  private _getOwnerZone(element?: HTMLElement): HTMLElement {
     let parentElement = getParent(element);
 
     while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
-        return false;
+        return parentElement;
       }
 
       parentElement = getParent(parentElement);
     }
 
-    return true;
+    return this.refs.root;
   }
 
   private _updateTabIndexes(element?: HTMLElement) {
@@ -610,6 +643,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         if (child.getAttribute && child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'false') {
           child.setAttribute(TABINDEX, '-1');
         }
+
         if (isElementTabbable(child)) {
           if (this.props.disabled) {
             child.setAttribute(TABINDEX, '-1');
@@ -625,11 +659,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           // Disgusting IE hack. Sad face.
           child.setAttribute('focusable', 'false');
         }
-
-        this._updateTabIndexes(child);
+      } else if (child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') {
+        if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
+          this._activeElement = child;
+          if (child.getAttribute(TABINDEX) !== '0') {
+            child.setAttribute(TABINDEX, '0');
+          }
+        } else if (child.getAttribute(TABINDEX) !== '-1') {
+          child.setAttribute(TABINDEX, '-1');
+        }
       }
-    }
 
+      this._updateTabIndexes(child);
+    }
   }
 
   private _isElementInput(element: HTMLElement): boolean {

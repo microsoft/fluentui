@@ -55,7 +55,7 @@ export function getPreviousElement(
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check its children.
-  if (traverseChildren && (includeElementsInFocusZones || !isElementFocusZone(currentElement)) && isCurrentElementVisible) {
+  if (traverseChildren && isCurrentElementVisible && (includeElementsInFocusZones || !isElementFocusZone(currentElement))) {
     const childMatch = getPreviousElement(
       rootElement,
       currentElement.lastElementChild as HTMLElement,
@@ -206,7 +206,7 @@ export function isElementTabbable(element: HTMLElement): boolean {
 }
 
 export function isElementFocusZone(element?: HTMLElement): boolean {
-  return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+  return element && element.getAttribute && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
 }
 
 export function doesElementContainFocus(element: HTMLElement) {
