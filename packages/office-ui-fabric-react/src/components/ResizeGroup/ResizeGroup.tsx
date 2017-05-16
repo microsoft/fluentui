@@ -24,7 +24,7 @@ export interface IResizeGroupState {
   shouldMeasure?: boolean;
 }
 
-export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState>{
+export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
 
   public static defaultProps = {
     data: {}
