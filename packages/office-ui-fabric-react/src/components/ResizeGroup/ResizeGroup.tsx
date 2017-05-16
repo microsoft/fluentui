@@ -3,7 +3,7 @@ import {
   css,
   BaseComponent
 } from '../../Utilities';
-import { IResizeGroupProps, IResizeGroup } from './ResizeGroup.Props';
+import { IResizeGroupProps } from './ResizeGroup.Props';
 import styles = require('./ResizeGroup.scss');
 
 export interface IResizeGroupState {
@@ -24,7 +24,7 @@ export interface IResizeGroupState {
   shouldMeasure?: boolean;
 }
 
-export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> implements IResizeGroup {
+export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState>{
 
   public static defaultProps = {
     data: {}
@@ -78,16 +78,12 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     );
   }
 
-  public measure() {
-    this.setState({ shouldMeasure: true });
-  }
-
   public componentDidUpdate(prevProps: IResizeGroupProps) {
     this._measureItems();
   }
 
   private _onResize() {
-    this.measure();
+    this.setState({ shouldMeasure: true });
   }
 
   private _measureItems() {

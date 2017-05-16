@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
@@ -11,8 +11,6 @@ import { data } from './data';
 
 export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
 
-  private _resizeGroup: ResizeGroup;
-
   constructor(props) {
     super(props);
     this.state = {
@@ -21,21 +19,13 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
   }
 
   public render() {
-
     return (
       <div className={ this.state.short ? styles.resizeIsShort : 'notResized' }>
-        <div className={ styles.buttonGroup }>
-          <PrimaryButton text='Resize to 400px' onClick={ () => this._addClass() } />
-          <PrimaryButton text='Trigger Remeasure' onClick={ () => this._resizeGroup.measure() } />
-        </div>
-
         <ResizeGroup
-          ref={ this._resolveRef('_resizeGroup') }
           data={ data }
           onReduceData={ (currentdata) => {
             let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
             let primary = currentdata.primary.slice(0, -1);
-
             return { primary, overflow };
           } }
           onRenderData={ (data) => {
@@ -58,21 +48,12 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
                       menuProps={ { items: overflowItems } }
                     />
                   );
-                }
-                }
+                } }
               />
             );
           } }
         />
-
       </div>
     );
   };
-
-  private _addClass = () => {
-    this.setState({
-      short: true
-    });
-  }
-
 }
