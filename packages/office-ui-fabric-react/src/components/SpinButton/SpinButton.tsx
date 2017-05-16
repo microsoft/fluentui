@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
+import { Icon } from '../../Icon';
 import {
   BaseComponent,
   css,
@@ -12,8 +13,9 @@ import {
   ISpinButton,
   ISpinButtonProps
 } from './SpinButton.Props';
-import './SpinButton.scss';
 import { Position } from '../../utilities/positioning';
+import * as stylesImport from './SpinButton.scss';
+const styles: any = stylesImport;
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -122,23 +124,24 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.state;
 
     return (
-      <div className='ms-SpinButtonContainer' style={ spinbuttonWidth && { width: spinbuttonWidth } }>
-        { labelPosition !== Position.bottom && <div className='ms-labelWrapper' style={ this._labelDirectionHelper() }>
-          { iconProps && <i className={ css('ms-SpinButtonIcon', 'ms-Icon', ('ms-Icon--' + iconProps.iconName)) } aria-hidden='true'></i> }
+      <div className={ styles.SpinButtonContainer } style={ spinbuttonWidth && { width: spinbuttonWidth } }>
+        { labelPosition !== Position.bottom && <div className={ styles.labelWrapper } style={ this._labelDirectionHelper() }>
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
             < Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className='ms-SpinButtonLabel'>{ label }
-            </Label> }
+              className={ styles.SpinButtonLabel } > { label }
+            </Label>
+          }
         </div> }
-        <div className={ css('ms-SpinButtonWrapper', ((labelPosition === Position.top || labelPosition === Position.bottom) ? 'topBottom' : '')) }>
-          <input
+        <div className={ css(styles.SpinButtonWrapper, ((labelPosition === Position.top || labelPosition === Position.bottom) ? styles.topBottom : '')) }>
+          < input
             value={ value }
             id={ this._inputId }
             onChange={ this._onChange }
             onInput={ this._onInputChange }
-            className={ css('ms-SpinButton-Input', (disabled ? ' disabled' : '')) }
+            className={ css(styles.Input, (disabled ? styles.disabled : '')) }
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
@@ -153,9 +156,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             readOnly={ disabled }
             aria-disabled={ disabled }
           />
-          <span className='ms-ArrowBox'>
+          <span className={ styles.ArrowBox }>
             <IconButton
-              className={ css('ms-UpButton', (keyboardSpinDirection === KeyboardSpinDirection.up ? 'active' : '')) }
+              className={ css(styles.UpButton, (keyboardSpinDirection === KeyboardSpinDirection.up ? styles.active : '')) }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               title='Increase'
@@ -166,7 +169,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              className={ css('ms-DownButton', (keyboardSpinDirection === KeyboardSpinDirection.down ? 'active' : '')) }
+              className={ css(styles.DownButton, (keyboardSpinDirection === KeyboardSpinDirection.down ? styles.active : '')) }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               title='Decrease'
@@ -178,16 +181,17 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span >
         </div >
-        { labelPosition === Position.bottom && <div className='ms-labelWrapper' style={ this._labelDirectionHelper() }>
-          { iconProps && <i className={ css('ms-SpinButtonIcon', 'ms-Icon', ('ms-Icon--' + iconProps.iconName)) } aria-hidden='true'></i> }
+        { labelPosition === Position.bottom && <div className={ styles.labelWrapper } style={ this._labelDirectionHelper() }>
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className='ms-SpinButtonLabel'>{ label }
+              className={ styles.SpinButtonLabel }> { label }
             </Label>
           }
-        </div> }
+        </div>
+        }
       </ div >
     );
   }

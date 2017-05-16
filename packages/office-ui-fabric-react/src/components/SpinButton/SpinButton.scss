@@ -1,26 +1,24 @@
 @import '../../common/common';
 @import '../Label/LabelMixins.scss';
 
-:global {
-
-.ms-ArrowBox, .ms-SpinButton-Input,
-.ms-UpButton, .ms-DownButton, .ms-SpinButtonContainer {
+.ArrowBox, .Input,
+.UpButton, .DownButton, .SpinButtonContainer {
   outline: none;
   font-size: 12px;
 }
 
-.ms-SpinButtonLabel {
+.SpinButtonLabel {
   pointer-events: none;
   padding: 2px 0px;
 }
 
-.ms-SpinButtonContainer {
+.SpinButtonContainer {
   width: 100%;
   min-width: 86px;
   padding: 2px;
 }
 
-  .ms-ArrowBox {
+  .ArrowBox {
     display: block;
     float: left;
     height: 100%;
@@ -31,7 +29,7 @@
     box-sizing: border-box;
   }
 
-  .ms-SpinButtonWrapper:hover .ms-ArrowBox, .ms-SpinButtonWrapper:hover .ms-SpinButton-Input {
+  .SpinButtonWrapper:hover .ArrowBox, .SpinButtonWrapper:hover .Input {
     border-color: $ms-color-neutralSecondaryAlt;
     outline: 2px dashed transparent;
 
@@ -44,26 +42,26 @@
     }
   }
 
-  .ms-labelWrapper {
+  .labelWrapper {
     display: inline-flex;
   }
 
-  .ms-SpinButtonIcon {
-    padding: 2px 5px 5px 5px;
+  .SpinButtonIcon {
+    padding: 2px 5px;
     font-size: 20px;
   }
 
-  .ms-SpinButtonWrapper {
+  .SpinButtonWrapper {
     display: flex;
     height: 26px;
     min-width: 86px;
   }
 
-  .ms-SpinButtonWrapper.topBottom {
+  .SpinButtonWrapper.topBottom {
     width: 100%;
   }
 
-  .ms-SpinButton-Input:focus + .ms-ArrowBox {
+  .Input:focus + .ArrowBox {
       border-color: $ms-color-themePrimary;
       outline: 2px dashed transparent;
 
@@ -76,7 +74,7 @@
       }
   }
 
-  .ms-SpinButton-Input.disabled + .ms-ArrowBox {
+  .Input.disabled + .ArrowBox {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
     pointer-events: none;
@@ -91,11 +89,11 @@
     }
   }
 
-    .ms-SpinButtonWrapper:hover .ms-SpinButton-Input:focus {
+    .SpinButtonWrapper:hover .Input:focus {
       border-color: $ms-color-themePrimary;
     }
 
-  .ms-SpinButton-Input {
+  .Input {
     @include ms-u-normalize;
     @include ms-baseFont;
     border: 1px solid $ms-color-neutralTertiaryAlt;
@@ -139,8 +137,8 @@
     }
   }
 
-  .ms-SpinButtonWrapper:hover .ms-SpinButton-Input.disabled,
-   .ms-SpinButton-Input.disabled {
+  .SpinButtonWrapper:hover .Input.disabled,
+   .Input.disabled {
       background-color: $ms-color-neutralLighter;
       border-color: $ms-color-neutralLighter;
       pointer-events: none;
@@ -156,11 +154,11 @@
     }
   }
 
-  .ms-SpinButton-Input:hover + .ms-ArrowBox .ms-UpButton, .ms-SpinButton-Input:hover + .ms-ArrowBox .ms-DownButton {
+  .Input:hover .UpButton, .Input:hover .DownButton {
       background-color: $ms-color-neutralLighter;
   }
 
-  .ms-SpinButtonWrapper .ms-UpButton, .ms-SpinButtonWrapper .ms-DownButton {
+  .SpinButtonWrapper .UpButton, .SpinButtonWrapper .DownButton {
     display: block;
     height: 12px;
     width: 12px;
@@ -189,7 +187,7 @@
     }
   }
 
-  .ms-UpButton:disabled, .ms-DownButton:disabled {
+  .UpButton:disabled, .DownButton:disabled {
     opacity: 0;
 
     @media screen and (-ms-high-contrast: active) {
@@ -201,7 +199,7 @@
     }
   }
 
-  .ms-SpinButtonWrapper .ms-UpButton.active, .ms-SpinButtonWrapper .ms-DownButton.active {
+  .SpinButtonWrapper .UpButton.active, .SpinButtonWrapper .DownButton.active {
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
 
@@ -213,5 +211,3 @@
         background-color: $ms-color-contrastWhiteSelected;
       }
   }
-
-}
