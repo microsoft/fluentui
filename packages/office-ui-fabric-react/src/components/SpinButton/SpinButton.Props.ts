@@ -87,7 +87,7 @@ export interface ISpinButtonProps {
   onIncrement?: (value: string) => string;
 
   /**
-   * This callback is triggered when the decrement button or if the user presses down arrow with focus on the input of the spinButton
+   * This callback is triggered when the decrement button is pressed or if the user presses down arrow with focus on the input of the spinButton
    */
   onDecrement?: (value: string) => string;
 
