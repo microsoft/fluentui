@@ -72,9 +72,7 @@ export const getStyles = memoize((
       fontSize: FontSizes.small,
     }),
 
-    menuIconEnabled: mergeStyles({
-      color: theme.palette.neutralSecondary
-    }),
+    menuIconEnabled: undefined,
 
     menuIconDisabled: undefined,
 

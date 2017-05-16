@@ -57,7 +57,11 @@ export const getStyles = memoize((
       {
         color: theme.palette.themePrimary
       }
-    )
+    ),
+
+    menuIconEnabled: mergeStyles({
+      color: theme.palette.neutralSecondary
+    })
   };
 
   return mergeStyleSets(baseButtonStyles, commandButtonStyles, customStyles);
