@@ -58,6 +58,12 @@
   &::-ms-clear {
     display: none;
   }
+  @media screen and (-ms-high-contrast: active) {
+    outline: 1px solid $ms-color-white;
+  }
+  @media screen and (-ms-high-contrast: black-on-white) {
+    outline: 1px solid $ms-color-black;
+  }
 }
 
 .clearButton {
