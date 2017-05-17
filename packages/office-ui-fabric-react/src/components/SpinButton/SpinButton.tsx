@@ -323,7 +323,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
 
     if (shouldSpin) {
-      this._currentStepFunctionHandle = window.setTimeout(() => { this._updateValue(shouldSpin, stepFunction); }, this._stepDelay);
+      this._currentStepFunctionHandle = this._async.setTimeout(() => { this._updateValue(shouldSpin, stepFunction); }, this._stepDelay);
     }
   }
 
@@ -333,7 +333,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   @autobind
   private _stop() {
     if (this._currentStepFunctionHandle !== null) {
-      window.clearTimeout(this._currentStepFunctionHandle);
+      this._async.clearTimeout(this._currentStepFunctionHandle);
       this._currentStepFunctionHandle = 0;
     }
 
