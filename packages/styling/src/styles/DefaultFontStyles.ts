@@ -5,7 +5,7 @@ const FONT_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets/
 const ICON_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
 
 const SYSTEM_BASE = '"Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif';
-const FAMILY_BASE: string = '"Segoe UI WestEuropean", ' + SYSTEM_BASE;
+const FAMILY_BASE = '"Segoe UI WestEuropean", ' + SYSTEM_BASE;
 
 export namespace FontSizes {
   export const mini = '10px';
