@@ -16,6 +16,7 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
 import {
   IBasePickerProps,
   BasePickerListBelow,
@@ -27,6 +28,7 @@ import './Picker.CustomResult.Example.scss';
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
   contextualMenuTarget?: HTMLElement;
+  isPickerDisabled?: boolean;
 }
 
 export interface IFullDocumentCardProps {
@@ -306,24 +308,37 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   constructor() {
     super();
     this._onFilterChanged = this._onFilterChanged.bind(this);
+    this.state = {
+      isPickerDisabled: false
+    };
   }
 
   public render() {
     return (
-      <DocumentPicker
-        onRenderSuggestionsItem={ SuggestedBigItem }
-        onResolveSuggestions={ this._onFilterChanged }
-        onRenderItem={ SelectedDocumentItem }
-        getTextFromItem={ (props: any) => props.documentTitleProps.title }
-        pickerSuggestionsProps={
-          {
-            suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found',
-            suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
+      <div>
+        <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
+        <DocumentPicker
+          onRenderSuggestionsItem={ SuggestedBigItem }
+          onResolveSuggestions={ this._onFilterChanged }
+          onRenderItem={ SelectedDocumentItem }
+          getTextFromItem={ (props: any) => props.documentTitleProps.title }
+          pickerSuggestionsProps={
+            {
+              suggestionsHeaderText: 'Suggested Documents',
+              noResultsFoundText: 'No Documents Found',
+              suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
+            }
           }
-        }
-      />
+          disabled={ this.state.isPickerDisabled }
+        />
+      </div>
     );
+  }
+
+  private _onDisabledButtonClick(): void {
+    this.setState({
+      isPickerDisabled: !this.state.isPickerDisabled
+    });
   }
 
   private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {

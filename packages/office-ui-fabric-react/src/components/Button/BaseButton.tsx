@@ -87,7 +87,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
-      assign({}, this.props.rootProps, this.props),
+      assign(
+        renderAsAnchor ? {} : { type: 'button' },
+        this.props.rootProps,
+        this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
         'disabled' // Let disabled buttons be focused and styled as disabled.
@@ -133,7 +136,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // Override onClick if contextualMenuItems passed in. Eventually allow _onToggleMenu to
     // be assigned to split button click if onClick already has a value
     if (this.props.menuProps) {
-      assign(buttonProps, { 'onClick': this._onToggleMenu });
+      assign(
+        buttonProps,
+        {
+          'onClick': this._onToggleMenu,
+          'aria-expanded': this.state.menuProps ? true : false
+        }
+      );
     }
 
     return this._onRenderContent(tag, buttonProps);
