@@ -95,7 +95,7 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  * @returns {boolean}
  */
 export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean {
-  let isContained: boolean = false;
+  let isContained = false;
 
   if (parent && child) {
     if (allowVirtualParents) {
