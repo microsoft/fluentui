@@ -56,9 +56,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _lastValidValue: string;
   private _spinning: boolean;
 
-  private _onValidate?: (value: string) => string;
-  private _onIncrement?: (value: string) => string;
-  private _onDecrement?: (value: string) => string;
+  private _onValidate?: (value: string) => string | void;
+  private _onIncrement?: (value: string) => string | void;
+  private _onDecrement?: (value: string) => string | void;
 
   private _currentStepFunctionHandle: number;
   private _stepDelay = 100;
@@ -96,13 +96,15 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   * Invoked when a component is receiving new props. This method is not called for the initial render.
   */
   public componentWillReceiveProps(newProps: ISpinButtonProps): void {
-    if (newProps.value) {
-      let value = Math.max(newProps.min, Math.min(newProps.max, Number(newProps.value)));
-
-      this.setState({
-        value: String(value)
-      });
+    this._lastValidValue = this.state.value;
+    let value: string = newProps.value ? newProps.value : String(newProps.min);
+    if (newProps.defaultValue) {
+      value = String(Math.max(newProps.min, Math.min(newProps.max, Number(newProps.defaultValue))));
     }
+
+    this.setState({
+      value: value
+    });
   }
 
   public render() {
@@ -280,8 +282,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const value: string = element.value;
     if (this.state.value) {
       const newValue = this._onValidate(value);
-      this._lastValidValue = newValue;
-      this.setState({ value: newValue });
+      if (newValue) {
+        this._lastValidValue = newValue;
+        this.setState({ value: newValue });
+      }
     }
   }
 
@@ -307,10 +311,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param stepFunction - function to use to step by
    */
   @autobind
-  private _updateValue(shouldSpin: boolean, stepFunction: (string) => string) {
+  private _updateValue(shouldSpin: boolean, stepFunction: (string) => string | void) {
     const newValue = stepFunction(this.state.value);
-    this._lastValidValue = newValue;
-    this.setState({ value: newValue });
+    if (newValue) {
+      this._lastValidValue = newValue;
+      this.setState({ value: newValue });
+    }
 
     if (this._spinning !== shouldSpin) {
       this._spinning = shouldSpin;

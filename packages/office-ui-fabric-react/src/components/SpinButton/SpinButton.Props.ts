@@ -77,19 +77,21 @@ export interface ISpinButtonProps {
 
   /**
    * This callback is triggered when the value inside the SpinButton should be validated.
-   * @return {string} The new value after validation
+   * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
-  onValidate?: (value: string) => string;
+  onValidate?: (value: string) => string | void;
 
   /**
    * This callback is triggered when the increment button is pressed or if the user presses up arrow with focus on the input of the spinButton
+   * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
-  onIncrement?: (value: string) => string;
+  onIncrement?: (value: string) => string | void;
 
   /**
    * This callback is triggered when the decrement button is pressed or if the user presses down arrow with focus on the input of the spinButton
+   * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
-  onDecrement?: (value: string) => string;
+  onDecrement?: (value: string) => string | void;
 
   /**
    * Icon for the increment button of the spinButton
