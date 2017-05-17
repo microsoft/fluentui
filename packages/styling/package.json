@@ -10,9 +10,9 @@
     "build": "gulp"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@microsoft/sp-build-web": "~1.0.0",
     "@microsoft/sp-module-interfaces": "~1.0.0",
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/mocha": "^2.2.39",

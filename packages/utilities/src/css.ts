@@ -16,7 +16,7 @@ export function css(...args: ICssInput[]) {
     if (arg) {
       if (typeof arg === 'string') {
         classes.push(arg);
-      } else if (arg.hasOwnProperty('toString')) {
+      } else if ((arg.hasOwnProperty('toString') && typeof (arg.toString) === 'function')) {
         classes.push(arg.toString());
       } else {
         for (let key in arg as any) {

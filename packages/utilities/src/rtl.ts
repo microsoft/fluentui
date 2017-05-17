@@ -21,7 +21,7 @@ export function getRTL(): boolean {
       }
     }
     if (_isRTL === undefined && doc) {
-      _isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
     }
 
     if (_isRTL !== undefined) {
