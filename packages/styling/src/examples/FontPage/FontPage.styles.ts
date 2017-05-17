@@ -10,7 +10,7 @@ export interface IFontPageRules {
   cell: IStyle;
 }
 
-export function getStyles(theme: ITheme = getTheme): IFontPageRules {
+export function getStyles(theme: ITheme = getTheme()): IFontPageRules {
   return {
     row: mergeStyles({
       paddingBottom: '10px',

@@ -3,13 +3,16 @@
 let build = require('@microsoft/sp-build-web');
 let gulp = require('gulp');
 
+// initialize tasks.
+build.initialize(gulp);
+
 // Configure TypeScript
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // Configure custom lint overrides.
 let rules = Object.assign(
   {},
-  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
+  require('@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
   require('../../tslint.json').rules,
   require('./tslint.json').rules
 );
@@ -24,5 +27,3 @@ build.preCopy.isEnabled = () => false;
 // Until typings work.
 build.apiExtractor.isEnabled = () => false;
 
-// initialize tasks.
-build.initialize(gulp);
