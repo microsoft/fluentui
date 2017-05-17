@@ -420,4 +420,173 @@ describe('FocusZone', () => {
     assert(lastFocusedElement === buttonA, 'pressing down did not focus a');
   });
 
+  it('skips subzone elements until manually entered', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone
+          direction={ FocusZoneDirection.horizontal }
+          isInnerZoneKeystroke={ (e: React.KeyboardEvent<HTMLElement>) => e.which === KeyCodes.enter }>
+          <button className='a'>a</button>
+          <div
+            className='b'
+            data-is-focusable={ true }
+            data-is-sub-focuszone={ true }>
+            <button className='bsub'>bsub</button>
+          </div>
+          <button className='c'>c</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const divB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+
+    const buttonB = focusZone.querySelector('.bsub') as HTMLElement;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(divB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 5,
+        bottom: 15,
+        left: 25,
+        right: 35
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    assert(lastFocusedElement === divB, 'pressing right did not focus divB');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    assert(lastFocusedElement === buttonC, 'pressing right did not skip to buttonC');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+
+    ReactTestUtils.Simulate.keyDown(divB, { which: KeyCodes.enter });
+    assert(lastFocusedElement === buttonB, 'pressing enter did not jump in to buttonB');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    assert(lastFocusedElement === buttonC, 'pressing enter did not move to buttonC');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+  });
+
+  it('skips child focusZone elements until manually entered', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone
+          direction={ FocusZoneDirection.horizontal }
+          isInnerZoneKeystroke={ (e: React.KeyboardEvent<HTMLElement>) => e.which === KeyCodes.enter }>
+          <button className='a'>a</button>
+          <FocusZone
+            direction={ FocusZoneDirection.horizontal }
+            className='b'
+            data-is-focusable={ true }>
+            <button className='bsub'>bsub</button>
+          </FocusZone>
+          <button className='c'>c</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const divB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+
+    const buttonB = focusZone.querySelector('.bsub') as HTMLElement;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(divB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 5,
+        bottom: 15,
+        left: 25,
+        right: 35
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 40,
+        right: 60
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    assert(lastFocusedElement === divB, 'pressing right did not focus divB');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    assert(lastFocusedElement === buttonC, 'pressing right did not skip to buttonC');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+
+    ReactTestUtils.Simulate.keyDown(divB, { which: KeyCodes.enter });
+    assert(lastFocusedElement === buttonB, 'pressing enter did not jump in to buttonB');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.right });
+    assert(lastFocusedElement === buttonC, 'pressing enter did not move to buttonC');
+
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
+    assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+  });
 });
