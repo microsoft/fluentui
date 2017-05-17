@@ -35,18 +35,18 @@ function renderHtml() {
 }
 ```
 
-There are a number of classes available under `colorClassNames`, `fontClassNames`, `animationClassNames`, and `iconClassNames` exports. See the [available classes](#availableClasses) below.
+There are a number of classes available under `colorClassNames`, `fontClassNames`, `AnimationClassNames`, and `iconClassNames` exports. See the [available classes](#availableClasses) below.
 
 Using animations works the same way:
 
 ```tsx
 import {
-  animationClassNames
+  AnimationClassNames
 } from '@uifabric/styling';
 
 function renderHtml() {
   return (
-    `<div class="${ animationClassNames.fadeIn }">Hello world!</div>`
+    `<div class="${ AnimationClassNames.fadeIn }">Hello world!</div>`
   );
 }
 ```

@@ -13,12 +13,16 @@
       "parameter",
       "arrow-parameter",
       "property-declaration",
-      "variable-declaration",
       "member-variable-declaration"
     ],
+    "no-unused-imports": true,
     "prefer-const": false,
     "quotemark": [
       "single"
+    ],
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
     ],
     "no-null-keyword": false,
     "export-name": false,
@@ -29,6 +33,13 @@
       false
     ],
     "no-trailing-whitespace": false,
-    "no-switch-case-fall-through": false
+    "no-switch-case-fall-through": false,
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case",
+      "ban-keywords"
+    ]
   }
 }
