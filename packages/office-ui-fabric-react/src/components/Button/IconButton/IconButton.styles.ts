@@ -20,7 +20,6 @@ export function getStyles(
   let iconButtonStyles: IButtonStyles = {
     root: mergeStyles(
       {
-        backgroundColor: 'transparent',
         padding: '0 4px',
         width: '32px',
         height: '32px'
@@ -29,6 +28,8 @@ export function getStyles(
 
     rootEnabled: mergeStyles(
       {
+        backgroundColor: 'transparent',
+
         ':hover': {
           color: theme.palette.themeDarker
         },
@@ -40,14 +41,7 @@ export function getStyles(
 
     rootDisabled: mergeStyles(
       {
-        color: theme.palette.neutralTertiary,
-        backgroundColor: 'transparent',
-        '@media screen and (-ms-high-contrast: active)': {
-          color: theme.palette.yellowLight
-        },
-        '@media screen and (-ms-high-contrast: black-on-white)': {
-          color: theme.palette.blueMid
-        }
+        color: theme.palette.neutralTertiary
       }
     )
   };

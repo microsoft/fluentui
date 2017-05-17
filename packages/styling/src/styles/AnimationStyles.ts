@@ -4,12 +4,12 @@ import { keyframes } from '../glamorExports';
 
 /* Register the keyframes */
 
-const EASING_FUNCTION_1: string = 'cubic-bezier(.1,.9,.2,1)';
-const EASING_FUNCTION_2: string = 'cubic-bezier(.1,.25,.75,.9)';
-const DURATION_1: string = '0.167s';
-const DURATION_2: string = '0.267s';
-const DURATION_3: string = '0.367s';
-const DURATION_4: string = '0.467s';
+const EASING_FUNCTION_1 = 'cubic-bezier(.1,.9,.2,1)';
+const EASING_FUNCTION_2 = 'cubic-bezier(.1,.25,.75,.9)';
+const DURATION_1 = '0.167s';
+const DURATION_2 = '0.267s';
+const DURATION_3 = '0.367s';
+const DURATION_4 = '0.467s';
 
 const FADE_IN: string = keyframes({
   from: { opacity: 0 },

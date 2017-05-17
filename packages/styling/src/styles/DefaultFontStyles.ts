@@ -1,33 +1,33 @@
 import { IFontStyles, IRawStyle } from '../interfaces/index';
 import { fontFace } from '../glamorExports';
 
-const FONT_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean';
-const ICON_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
+const FONT_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean';
+const ICON_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
 
-const SYSTEM_BASE: string = '"Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif';
+const SYSTEM_BASE = '"Segoe UI", -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif';
 const FAMILY_BASE: string = '"Segoe UI WestEuropean", ' + SYSTEM_BASE;
 
 export namespace FontSizes {
-  export const mini: string = '10px';
-  export const xSmall: string = '11px';
-  export const small: string = '12px';
-  export const smallPlus: string = '13px';
-  export const medium: string = '14px';
-  export const mediumPlus: string = '15px';
-  export const icon: string = '16px';
-  export const large: string = '17px';
-  export const xLarge: string = '21px';
-  export const xxLarge: string = '28px';
-  export const superLarge: string = '42px';
-  export const mega: string = '72px';
+  export const mini = '10px';
+  export const xSmall = '11px';
+  export const small = '12px';
+  export const smallPlus = '13px';
+  export const medium = '14px';
+  export const mediumPlus = '15px';
+  export const icon = '16px';
+  export const large = '17px';
+  export const xLarge = '21px';
+  export const xxLarge = '28px';
+  export const superLarge = '42px';
+  export const mega = '72px';
 }
 
 export namespace FontWeights {
-  export const light: number = 100;
-  export const semilight: number = 300;
-  export const regular: number = 400;
-  export const semibold: number = 600;
-  export const bold: number = 700;
+  export const light = 100;
+  export const semilight = 300;
+  export const regular = 400;
+  export const semibold = 600;
+  export const bold = 700;
 }
 
 export const DefaultFontStyles: IFontStyles = {

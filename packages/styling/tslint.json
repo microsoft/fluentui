@@ -2,5 +2,7 @@
   "extends": [
     "../../tslint.json"
   ],
-  "rules": {}
+  "rules": {
+    "no-require-imports": true
+  }
 }

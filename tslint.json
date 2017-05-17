@@ -13,12 +13,16 @@
       "parameter",
       "arrow-parameter",
       "property-declaration",
-      "variable-declaration",
       "member-variable-declaration"
     ],
+    "no-unused-imports": true,
     "prefer-const": false,
     "quotemark": [
       "single"
+    ],
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
     ],
     "no-null-keyword": false,
     "export-name": false,
