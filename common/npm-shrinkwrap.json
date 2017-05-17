@@ -1361,7 +1361,7 @@
     "bindings": {
       "version": "1.2.1",
       "from": "bindings@>=1.2.1 <1.3.0",
-      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz"
+      "resolved": "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/bindings/-/bindings-1.2.1.tgz"
     },
     "bl": {
       "version": "1.0.3",
@@ -5660,7 +5660,7 @@
     },
     "nan": {
       "version": "2.6.2",
-      "from": "nan@>=2.3.0 <3.0.0",
+      "from": "nan@>=2.3.2 <3.0.0",
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.6.2.tgz"
     },
     "native-promise-only": {
@@ -6912,13 +6912,13 @@
     },
     "rush-example-app-base": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-example-app-base",
-      "resolved": "file:temp_modules/rush-example-app-base"
+      "from": "temp_modules\\rush-example-app-base",
+      "resolved": "file:temp_modules\\rush-example-app-base"
     },
     "rush-example-component": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-example-component",
-      "resolved": "file:temp_modules/rush-example-component",
+      "from": "temp_modules\\rush-example-component",
+      "resolved": "file:temp_modules\\rush-example-component",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7041,13 +7041,13 @@
     },
     "rush-fabric-website": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-fabric-website",
-      "resolved": "file:temp_modules/rush-fabric-website"
+      "from": "temp_modules\\rush-fabric-website",
+      "resolved": "file:temp_modules\\rush-fabric-website"
     },
     "rush-office-ui-fabric-react": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-office-ui-fabric-react",
-      "resolved": "file:temp_modules/rush-office-ui-fabric-react",
+      "from": "temp_modules\\rush-office-ui-fabric-react",
+      "resolved": "file:temp_modules\\rush-office-ui-fabric-react",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7210,8 +7210,8 @@
     },
     "rush-ssr-tests": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-ssr-tests",
-      "resolved": "file:temp_modules/rush-ssr-tests",
+      "from": "temp_modules\\rush-ssr-tests",
+      "resolved": "file:temp_modules\\rush-ssr-tests",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7324,8 +7324,8 @@
     },
     "rush-styling": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-styling",
-      "resolved": "file:temp_modules/rush-styling",
+      "from": "temp_modules\\rush-styling",
+      "resolved": "file:temp_modules\\rush-styling",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7438,13 +7438,13 @@
     },
     "rush-todo-app": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-todo-app",
-      "resolved": "file:temp_modules/rush-todo-app"
+      "from": "temp_modules\\rush-todo-app",
+      "resolved": "file:temp_modules\\rush-todo-app"
     },
     "rush-utilities": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-utilities",
-      "resolved": "file:temp_modules/rush-utilities"
+      "from": "temp_modules\\rush-utilities",
+      "resolved": "file:temp_modules\\rush-utilities"
     },
     "rx-lite": {
       "version": "3.1.2",
