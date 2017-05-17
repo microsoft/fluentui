@@ -2,7 +2,8 @@
   "name": "@uifabric/styling",
   "version": "0.1.0",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
     "clean": "gulp clean",
@@ -26,10 +27,11 @@
     "gulp": "~3.9.1",
     "mocha": "^3.2.0",
     "mocha-loader": "^1.1.1",
+    "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
-    "source-map-loader": "0.2.1",
+    "source-map-loader": "^0.2.1",
     "ts-loader": "^2.0.1",
     "tslib": "^1.6.0",
     "typescript": "2.2.2",
@@ -43,7 +45,6 @@
   "dependencies": {
     "@uifabric/utilities": ">=1.8.7 <2.0.0",
     "glamor": "^2.20.24",
-    "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0",
     "rtl-css-js": "^1.1.0"
   }
 }
