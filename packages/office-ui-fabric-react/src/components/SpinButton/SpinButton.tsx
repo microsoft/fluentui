@@ -54,7 +54,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
-  private _spinning: boolean;
+  private _spinningByMouse: boolean;
 
   private _onValidate?: (value: string) => string | void;
   private _onIncrement?: (value: string) => string | void;
@@ -77,7 +77,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     this._labelId = getId('Label');
     this._inputId = getId('input');
-    this._spinning = false;
+    this._spinningByMouse = false;
 
     if (props.defaultValue) {
       this._onValidate = this._defaultOnValidate;
@@ -202,7 +202,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * OnFocus select the contents of the input
    */
   public focus() {
-    if (this._spinning || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
+    if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
 
@@ -318,8 +318,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this.setState({ value: newValue });
     }
 
-    if (this._spinning !== shouldSpin) {
-      this._spinning = shouldSpin;
+    if (this._spinningByMouse !== shouldSpin) {
+      this._spinningByMouse = shouldSpin;
     }
 
     if (shouldSpin) {
@@ -337,8 +337,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._currentStepFunctionHandle = 0;
     }
 
-    if (this._spinning || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
-      this._spinning = false;
+    if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
+      this._spinningByMouse = false;
       this.setState({ keyboardSpinDirection: KeyboardSpinDirection.notSpinning });
     }
   }
