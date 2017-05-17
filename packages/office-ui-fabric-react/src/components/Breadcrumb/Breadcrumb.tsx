@@ -66,15 +66,15 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   public render() {
-    let { className, navigationLandmarkAriaLabel } = this.props;
+    let { className, ariaLabel } = this.props;
     let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
     let overflowMenuId = this._id + '-overflow';
 
     let { onRenderItem = this._onRenderItem } = this.props;
 
     return (
-      <div className={ css('ms-Breadcrumb', className, styles.root) } ref='renderingArea'>
-        <FocusZone direction={ FocusZoneDirection.horizontal } role='navigation' aria-label={navigationLandmarkAriaLabel}>
+      <div className={ css('ms-Breadcrumb', className, styles.root) } ref='renderingArea' role='navigation' aria-label={ariaLabel}>
+        <FocusZone direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length ? (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
