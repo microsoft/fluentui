@@ -45,7 +45,7 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleDefaultValue));
     expect(inputDOM.getAttribute('aria-labelledby')).to.equals(labelDOM.id);
 
-    // // Assert on the label element.
+    // Assert on the label element.
     expect(labelDOM.textContent).to.equal(exampleLabelValue);
     expect(labelDOM.htmlFor).to.equal(inputDOM.id);
   });

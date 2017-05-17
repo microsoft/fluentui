@@ -160,7 +160,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className={ styles.ArrowBox }>
             <IconButton
-              className={ css(styles.UpButton, (keyboardSpinDirection === KeyboardSpinDirection.up ? styles.active : '')) }
+              className={ css('ms-UpButton', styles.UpButton, (keyboardSpinDirection === KeyboardSpinDirection.up ? styles.active : '')) }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               title='Increase'
@@ -171,7 +171,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              className={ css(styles.DownButton, (keyboardSpinDirection === KeyboardSpinDirection.down ? styles.active : '')) }
+              className={ css('ms-DownButton', styles.DownButton, (keyboardSpinDirection === KeyboardSpinDirection.down ? styles.active : '')) }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               title='Decrease'
