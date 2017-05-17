@@ -133,7 +133,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             < Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ styles.SpinButtonLabel } > { label }
+              className={ styles.SpinButtonLabel }>{ label }
             </Label>
           }
         </div> }
@@ -189,7 +189,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ styles.SpinButtonLabel }> { label }
+              className={ styles.SpinButtonLabel }>{ label }
             </Label>
           }
         </div>
