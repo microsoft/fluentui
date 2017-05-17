@@ -7,26 +7,31 @@ $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
 
 
-// component slots
-$detailsList-item-default-header-color: $listItemDefaultColor;
-$detailsList-item-default-meta-color: $listItemDefaultMetaColor;
-$detailsList-item-default-background-color: $listItemBackgroundColor;
+/* DetailsList Colors */
+// Default
+$detailsList-item-default-header-color: $ms-color-neutralPrimary;
+$detailsList-item-default-meta-color: #767676;
+$detailsList-item-default-background-color: $ms-color-white;
 
-$detailsList-item-hover-color: $listItemHoverColor;
-$detailsList-item-hover-meta-color: $listItemHoverMetaColor;
-$detailsList-item-hover-color-background: $listItemHoverBackgroundColor;
+// Hover
+$detailsList-item-hover-color: $ms-color-neutralPrimary;
+$detailsList-item-hover-meta-color: $ms-color-neutralSecondary;
+$detailsList-item-hover-color-background: $ms-color-neutralLighter;
 
-$detailsList-item-selected-color: $listItemSelectedColor;
-$detailsList-item-selected-meta-color: $listItemSelectedMetaColor;
-$detailsList-item-selected-background-color: $listItemSelectedBackgroundColor;
+// Selected
+$detailsList-item-selected-color: $ms-color-neutralDark;
+$detailsList-item-selected-meta-color: $ms-color-neutralPrimary;
+$detailsList-item-selected-background-color: $ms-color-neutralLight;
 
-$detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
-$detailsList-item-selected-hover-meta-color: $listItemSelectedHoverMetaColor;
-$detailsList-item-selected-hover-background-color: $listItemSelectedHoverBackgroundColor;
+// Selected Hover
+$detailsList-item-selected-hover-color: $ms-color-black;
+$detailsList-item-selected-hover-meta-color: $ms-color-neutralDark;
+$detailsList-item-selected-hover-background-color: $ms-color-neutralQuaternaryAlt;
 
-$detailsList-item-focus-background-color: $listItemFocusedBackgroundColor;
-$detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
-$detailsList-item-focus-meta-color: $listItemFocusedMetaColor;
+// Focus
+$detailsList-item-focus-header-color: $ms-color-black;
+$detailsList-item-focus-background-color: #DADADA;
+$detailsList-item-focus-meta-color: $ms-color-neutralDark;
 
 
 // Compact mode rules
