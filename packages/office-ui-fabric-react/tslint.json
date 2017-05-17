@@ -13,6 +13,9 @@
     "prefer-const": false,
     "typedef": [
       false
+    ],
+    "no-inferrable-types": [
+      false
     ]
   }
 }
