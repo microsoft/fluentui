@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Added a new script for creating Pull requests through the vso API",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "miljo@microsoft.com"
+}
