@@ -1,5 +1,3 @@
-import 'es6-weak-map/implement';
-
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;
