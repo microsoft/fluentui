@@ -10,7 +10,7 @@ $isPaddedMargin: 24px;
 /* DetailsList Colors */
 // Default
 $detailsList-item-default-header-color: $ms-color-neutralPrimary;
-$detailsList-item-default-meta-color: #767676;
+$detailsList-item-default-meta-color: $ms-color-neutralSecondaryAlt;
 $detailsList-item-default-background-color: $ms-color-white;
 
 // Hover
@@ -30,7 +30,7 @@ $detailsList-item-selected-hover-background-color: $ms-color-neutralQuaternaryAl
 
 // Focus
 $detailsList-item-focus-header-color: $ms-color-black;
-$detailsList-item-focus-background-color: #DADADA;
+$detailsList-item-focus-background-color: $ms-color-neutralQuaternaryAlt;
 $detailsList-item-focus-meta-color: $ms-color-neutralDark;
 
 
