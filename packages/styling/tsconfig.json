@@ -15,7 +15,6 @@
     ],
     "types": [
       "chai",
-      "core-js",
       "mocha",
       "webpack-env"
     ],
