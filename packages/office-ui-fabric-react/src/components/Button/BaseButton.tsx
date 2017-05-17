@@ -286,10 +286,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     return (
       <ContextualMenu
-        className={ css('ms-BaseButton-menuHost') }
         isBeakVisible={ true }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        items={ menuProps.items }
+        {...menuProps}
+        className={ css('ms-BaseButton-menuhost', menuProps.className) }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
