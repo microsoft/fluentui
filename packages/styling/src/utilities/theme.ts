@@ -9,8 +9,8 @@ import {
 } from '../styles/index';
 
 export interface ITheme {
-  palette?: IPalette;
-  fonts?: IFontStyles;
+  palette: IPalette;
+  fonts: IFontStyles;
 }
 
 const _theme: ITheme = {
