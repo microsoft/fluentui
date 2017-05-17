@@ -9,7 +9,7 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './Header.scss';
-import { FontClassNames } from '@uifabric/styling';
+import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IHeaderProps {
   title: string;

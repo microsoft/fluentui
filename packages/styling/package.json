@@ -31,7 +31,7 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
-    "source-map-loader": "^0.2.1",
+    "source-map-loader": "0.2.1",
     "ts-loader": "^2.0.1",
     "tslib": "^1.6.0",
     "typescript": "2.2.2",

@@ -55,7 +55,7 @@
     "resemblejs": "~2.2.3",
     "sass-loader": "^6.0.3",
     "sinon": "^2.1.0",
-    "source-map-loader": "^0.2.1",
+    "source-map-loader": "0.2.1",
     "style-loader": "^0.17.0",
     "ts-loader": "^2.0.1",
     "typescript": "2.2.2",
