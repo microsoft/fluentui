@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Various casing changes for exported members. Added `mergeStyles` helper for merging style sets. Moving content around in the project.",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
