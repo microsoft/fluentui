@@ -20,6 +20,7 @@ import {
   getPreviousElement,
   getRTL,
   isElementFocusZone,
+  isElementFocusSubZone,
   isElementTabbable
 } from '../../Utilities';
 
@@ -282,7 +283,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       // Try to focus
       let innerZone = this._getFirstInnerZone();
 
-      if (!innerZone || !innerZone.focus(true)) {
+      if (innerZone) {
+        if (!innerZone.focus(true)) {
+          return;
+        }
+      } else if (isElementFocusSubZone(ev.target as HTMLElement)) {
+        if (!this.focusElement(getNextElement(ev.target as HTMLElement, (ev.target as HTMLElement).firstChild as HTMLElement, true))) {
+          return;
+        }
+      } else {
         return;
       }
     } else if (ev.altKey) {
