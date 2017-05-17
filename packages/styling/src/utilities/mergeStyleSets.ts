@@ -7,7 +7,7 @@ export function mergeStyleSets<T>(...args: T[]): T {
   for (let prop in ruleToMerge) {
     if (ruleToMerge.hasOwnProperty(prop)) {
       let allArgs: Object[] = [];
-      for (let i: number = 0; i < args.length; i++) {
+      for (let i = 0; i < args.length; i++) {
         let currentArg: Object = args[i];
 
         if (currentArg && currentArg[prop]) {
