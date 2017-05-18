@@ -27,20 +27,13 @@ const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-reac
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
-export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
-    return (
-      <ComponentPage
-        title='DetailsList'
-        componentName='DetailsListExample'
-        exampleCards={
-          <div>
+
+/*
+
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
             </ExampleCard>
-            <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
-              <DetailsListGroupedExample />
-            </ExampleCard>
+
             <ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
               <DetailsListCustomColumnsExample />
             </ExampleCard>
@@ -55,6 +48,20 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
             <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
               <DetailsListDragDropExample />
+            </ExampleCard>
+*/
+
+export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
+  public render() {
+    return (
+      <ComponentPage
+        title='DetailsList'
+        componentName='DetailsListExample'
+        exampleCards={
+          <div>
+
+            <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
+              <DetailsListGroupedExample />
             </ExampleCard>
           </div>
         }

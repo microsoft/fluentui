@@ -65,7 +65,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
-  private _shouldHandleFocus: boolean;
+  private _shouldHandleFocus: boolean = true;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
@@ -105,6 +105,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   public ignoreNextFocus() {
+    console.log("ignorenextfocus");
     this._shouldHandleFocus = false;
   }
 
@@ -122,9 +123,13 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   private _onFocus(ev: React.FocusEvent<HTMLElement>) {
+    console.log(this.props.selection.getItems());
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
+
+    console.log("item", target);
+    console.log(this._shouldHandleFocus);
 
     if (this._shouldHandleFocus && selectionMode !== SelectionMode.none) {
       let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
@@ -139,6 +144,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else {
           this._onItemSurfaceClick(ev, index);
         }
+      } else {
+        selection.setAllSelected(false);
       }
     }
 
@@ -273,6 +280,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    //console.log("fssssssssss");
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -288,6 +296,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
       // A key was pressed while an item in this zone was focused.
+      //console.log("foffofofo");
       this._shouldHandleFocus = true;
       return;
     }
@@ -337,10 +346,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
         target = getParent(target);
       }
-
+      //console.log("qqqqqqqqq");
       // A key was pressed while an item in this zone was focused.
-      this._shouldHandleFocus = true;
     }
+    this._shouldHandleFocus = true;
   }
 
   private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {

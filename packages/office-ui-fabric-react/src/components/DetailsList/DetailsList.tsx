@@ -217,6 +217,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
+
+    if (this._initialFocusedIndex) {
+      selection.setIndexSelected(this._initialFocusedIndex, true, false);
+    }
+
     if (selectionMode === SelectionMode.single) {
       selectAllVisibility = SelectAllVisibility.hidden;
     }
@@ -326,6 +331,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   @autobind
   protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
+
+
     return <DetailsRow { ...props } />;
   }
 
