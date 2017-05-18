@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -39,7 +38,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
 
     // Populate with items for demos.
     if (_items.length === 0) {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 200; i++) {
         _items.push({
           key: i,
           name: 'Item ' + i,
@@ -58,11 +57,6 @@ export class DetailsListBasicExample extends React.Component<any, any> {
     };
   }
 
-  private onClick = (e) => {
-    this.setState({ items: _items.slice(1), selectionDetails: this._getSelectionDetails() });
-    return true;
-  }
-
   public render() {
     let { items, selectionDetails } = this.state;
 
@@ -73,12 +67,8 @@ export class DetailsListBasicExample extends React.Component<any, any> {
           label='Filter by name:'
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items, selectionDetails: this._getSelectionDetails() }) }
         />
-        <PrimaryButton onClick={ this.onClick } > abc</PrimaryButton>
-
-
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
-            initialFocusedIndex={ 1 }
             items={ items }
             columns={ _columns }
             setKey='set'

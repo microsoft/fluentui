@@ -280,7 +280,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    //console.log("fssssssssss");
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -296,7 +295,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
       // A key was pressed while an item in this zone was focused.
-      //console.log("foffofofo");
       this._shouldHandleFocus = true;
       return;
     }
@@ -346,7 +344,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
         target = getParent(target);
       }
-      //console.log("qqqqqqqqq");
       // A key was pressed while an item in this zone was focused.
     }
     this._shouldHandleFocus = true;

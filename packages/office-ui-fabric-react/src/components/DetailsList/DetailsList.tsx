@@ -331,8 +331,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   @autobind
   protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
-
-
     return <DetailsRow { ...props } />;
   }
 
