@@ -115,6 +115,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onNavigateDate={ this._onNavigateDate } /> }
 
                 { showGoToToday && <span
+                  role='button'
                   className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                   onClick={ this._onGotoToday }
                   onKeyDown={ this._onGotoTodayKeyDown }

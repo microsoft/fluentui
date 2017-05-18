@@ -109,7 +109,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     isRequired: false,
     isMonthPickerVisible: true,
     strings: DEFAULT_STRINGS,
-    borderless: false
+    borderless: false,
+    pickerAriaLabel: 'Calender',
   };
 
   public refs: {
@@ -168,6 +169,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       isRequired,
       disabled,
       ariaLabel,
+      pickerAriaLabel,
       placeholder,
       allowTextInput,
       borderless
@@ -181,6 +183,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             className={ styles.textField }
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
+            aria-expanded={ isDatePickerShown }
             required={ isRequired }
             disabled={ disabled }
             onKeyDown={ this._onTextFieldKeyDown }
@@ -203,6 +206,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         </div>
         { isDatePickerShown && (
           <Callout
+            role='dialog'
+            ariaLabel={ pickerAriaLabel }
             isBeakVisible={ false }
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
