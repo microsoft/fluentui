@@ -65,7 +65,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
-  private _shouldHandleFocus: boolean = true;
+  private _shouldHandleFocus: boolean;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
