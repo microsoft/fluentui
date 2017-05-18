@@ -1361,7 +1361,7 @@
     "bindings": {
       "version": "1.2.1",
       "from": "bindings@>=1.2.1 <1.3.0",
-      "resolved": "https://onedrive.pkgs.visualstudio.com/_packaging/odsp-npm/npm/registry/bindings/-/bindings-1.2.1.tgz"
+      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.2.1.tgz"
     },
     "bl": {
       "version": "1.0.3",
