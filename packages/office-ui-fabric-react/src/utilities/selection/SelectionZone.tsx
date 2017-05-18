@@ -339,8 +339,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
         target = getParent(target);
       }
-      // A key was pressed while an item in this zone was focused.
     }
+
+    // A key was pressed while an item in this zone was focused.
     this._shouldHandleFocus = true;
   }
 
