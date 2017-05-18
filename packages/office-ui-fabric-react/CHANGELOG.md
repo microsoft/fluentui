@@ -1,6 +1,40 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 12 May 2017 10:19:14 GMT and should not be manually modified.
+This log was last generated on Tue, 16 May 2017 22:39:55 GMT and should not be manually modified.
+
+## 2.30.1
+Tue, 16 May 2017 22:39:55 GMT
+
+### Patches
+
+- Change pickeritemprops to correctly extend htmlattributes
+- List: Add scrollToIndex to public interface
+
+## 2.30.0
+Tue, 16 May 2017 21:47:38 GMT
+
+### Minor changes
+
+- DatePicker: adding a disabled property support.
+
+### Patches
+
+- Pickers: Adds ability to disable pickers
+- Adjust styling on menu drop shadows.
+- Button: Added aria-expanded if props.menuProps. Changes from false to true when opened
+- Button: default type to 'button'
+
+## 2.29.0
+Mon, 15 May 2017 10:19:13 GMT
+
+### Minor changes
+
+- Dropdown: Add ability to set custom props on the Dropdown's Callout
+
+### Patches
+
+- Make name prop optional on ContextualMenu
+- Date picker: Reduce min-width for the holder component
 
 ## 2.28.0
 Fri, 12 May 2017 10:19:14 GMT
