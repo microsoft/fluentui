@@ -17,6 +17,7 @@
     "chai": "^3.5.0",
     "enzyme": "^2.7.0",
     "es6-promise": "4.1.0",
+    "es6-weak-map": "^2.0.2",
     "gulp": "~3.9.1",
     "mocha": "^3.2.0",
     "mocha-loader": "^1.1.1",
