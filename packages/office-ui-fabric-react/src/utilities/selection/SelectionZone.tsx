@@ -105,7 +105,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   public ignoreNextFocus() {
-    console.log("ignorenextfocus");
     this._shouldHandleFocus = false;
   }
 
@@ -123,13 +122,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   private _onFocus(ev: React.FocusEvent<HTMLElement>) {
-    console.log(this.props.selection.getItems());
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
-
-    console.log("item", target);
-    console.log(this._shouldHandleFocus);
 
     if (this._shouldHandleFocus && selectionMode !== SelectionMode.none) {
       let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);

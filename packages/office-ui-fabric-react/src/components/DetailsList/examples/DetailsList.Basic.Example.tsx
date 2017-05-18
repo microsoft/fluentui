@@ -65,7 +65,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items, selectionDetails: this._getSelectionDetails() }) }
+          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
         />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
