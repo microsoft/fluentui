@@ -27,3 +27,4 @@ export * from './rtl';
 export * from './scroll';
 export * from './string';
 export * from './warn';
+export * from './memoize';

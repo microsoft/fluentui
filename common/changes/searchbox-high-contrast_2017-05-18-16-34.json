@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Searchbox: Updated border styles to better support high contrast mode",
+      "type": "patch"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}

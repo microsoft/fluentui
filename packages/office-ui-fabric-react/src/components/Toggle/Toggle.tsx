@@ -45,7 +45,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   public componentWillReceiveProps(newProps: IToggleProps) {
     if (newProps.checked !== undefined) {
       this.setState({
-        isChecked: newProps.checked
+        isChecked: !!newProps.checked // convert null to false
       });
     }
   }
