@@ -24,8 +24,8 @@ export function getLastFocusable(
 
 /**
  * Attempts to focus the first focusable element that is a child or child's child of the rootElement.
- * @return True if focus was set, false if it was not.
- * @param {HTMLElement} rootElement - element to start the search for a focusable child.
+ * @param rootElement - Element to start the search for a focusable child.
+ * @returns True if focus was set, false if it was not.
  */
 export function focusFirstChild(
   rootElement: HTMLElement): boolean {
