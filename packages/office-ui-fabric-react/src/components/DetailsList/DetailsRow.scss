@@ -85,7 +85,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   @include focus-border(0, $ms-color-themePrimary);
 
   color: $detailsList-item-selected-meta-text-color;
-  z-index: $ms-zIndex-middle;
+  z-index: 1;
   background: $detailsList-item-selected-background-color;
 
   border-top: 1px solid $ms-color-white;
