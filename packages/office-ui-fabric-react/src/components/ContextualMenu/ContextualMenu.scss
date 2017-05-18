@@ -36,7 +36,6 @@ $ContextualMenu-text-disabled: $menuTextDisabledColor;
 .item {
   @include ms-font-m;
   color: $ContextualMenu-text-color;
-  height: $ContextualMenu-itemHeight;
   position: relative;
   box-sizing: border-box;
 }
