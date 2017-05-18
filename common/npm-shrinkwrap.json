@@ -927,6 +927,11 @@
       "from": "@types/z-schema@3.16.31",
       "resolved": "https://registry.npmjs.org/@types/z-schema/-/z-schema-3.16.31.tgz"
     },
+    "@uifabric/example-app-base": {
+      "version": "1.3.11",
+      "from": "@uifabric/example-app-base@>=1.3.11 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-1.3.11.tgz"
+    },
     "@uifabric/utilities": {
       "version": "1.8.7",
       "from": "@uifabric/utilities@>=1.8.7 <2.0.0",
@@ -7433,6 +7438,18 @@
           "version": "4.2.1",
           "from": "yargs-parser@>=4.2.0 <5.0.0",
           "resolved": "https://registry.npmjs.org/yargs-parser/-/yargs-parser-4.2.1.tgz"
+        }
+      }
+    },
+    "rush-test-bundle-button": {
+      "version": "0.0.0",
+      "from": "temp_modules/rush-test-bundle-button",
+      "resolved": "file:temp_modules/rush-test-bundle-button",
+      "dependencies": {
+        "@types/react-dom": {
+          "version": "0.14.23",
+          "from": "@types/react-dom@>=0.14.23 <0.15.0",
+          "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.23.tgz"
         }
       }
     },
