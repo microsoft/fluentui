@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding the ability for buttons to be toggled",
+      "type": "minor"
+    }
+  ],
+  "email": "jspurlin@microsoft.com"
+}

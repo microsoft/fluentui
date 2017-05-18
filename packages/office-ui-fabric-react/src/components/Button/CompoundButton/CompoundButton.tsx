@@ -14,6 +14,7 @@ const CLASS_NAMES: IButtonClassNames = {
   icon: null,
   isDisabled: styles.isDisabled,
   isEnabled: styles.isEnabled,
+  isToggled: styles.isToggled,
   label: styles.label,
   root: styles.root
 };
