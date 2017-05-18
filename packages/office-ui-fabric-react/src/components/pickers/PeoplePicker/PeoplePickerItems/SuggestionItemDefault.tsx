@@ -18,7 +18,7 @@ export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps: any
         <Persona
           { ...personaProps }
           presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
-          size={ PersonaSize.size28 }
+          size={ PersonaSize.extraExtraSmall }
           className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
         />
       </CommandButton>

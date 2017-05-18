@@ -197,26 +197,17 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   public _renderLimitedSearch() {
+    let limitedSearchSuggestionProps = suggestionProps;
+    limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
-        onInputFocus={ this._returnMostRecentlyUsed }
+        onInputFocus={ this._returnMostRecentlyUsedWithLimit }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
         onRemoveSuggestion={ this._onRemoveSuggestion }
-        onRenderSuggestionsItem={ (personaProps: IPersonaProps) =>
-          (
-            <div className='ms-PeoplePicker-personaContent'>
-              <Persona
-                { ...personaProps }
-                presence={ personaProps.presence !== undefined ? personaProps.presence : 0 }
-                size={ PersonaSize.size28 }
-              />
-              <button onClick={ (ev) => { ev.preventDefault(); ev.stopPropagation(); console.log(this); this._onRemoveSuggestion(personaProps); } }> click me </button>
-            </div>
-          ) }
       />
     );
   }
@@ -258,6 +249,14 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
     let { mostRecentlyUsed } = this.state;
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
+    return this._filterPromise(mostRecentlyUsed);
+  }
+
+  @autobind
+  private _returnMostRecentlyUsedWithLimit(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+    let { mostRecentlyUsed } = this.state;
+    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas);
+    mostRecentlyUsed = mostRecentlyUsed.splice(0, 3);
     return this._filterPromise(mostRecentlyUsed);
   }
 
