@@ -61,6 +61,7 @@ componentIds.push({
 
 componentIds.push({
   selector: '#' + 'ContextualButton',
+  imageSelector: '.' + 'ms-ContextualMenu-list',
   fileName: 'buttonContextual',
   commands: [mouseSingleClickScreenshot],
   childParams: {
@@ -69,7 +70,6 @@ componentIds.push({
     commands: [defaultScreenshot]
   }
 });
-
 casper.
   start(baseUrl + 'button').
   then(() => {

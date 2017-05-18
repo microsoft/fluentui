@@ -63,4 +63,9 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * Optional class name to apply to tooltip host.
    */
   hostClassName?: string;
+
+  /**
+    * Optional id for tooltiphost.
+    */
+  id?: string;
 }

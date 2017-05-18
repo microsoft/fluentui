@@ -5,6 +5,16 @@ before_script:
   - npm install -g gulp
 script:
   - npm run build
+  - npm run cibuild
+after_script:
+  ./push.sh
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: 2c0717708deb750de8220692d17eba4d6aa5f0bb # Set in travis-ci.org dashboard
+  target_branch: origin
+  on:
+    branch: master
 cache:
   directories:
     - node_modules

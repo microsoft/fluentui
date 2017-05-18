@@ -6,14 +6,19 @@ declare var casper: Casper;
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'ms-Toggle',
-  fileName: 'toggle',
-  imageSelector: '.' + 'Toggle',
+  selector: '.' + 'TextField',
+  fileName: 'textField',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]
+});
+
+componentIds.push({
+  selector: '.' + 'TextFieldIcon',
+  fileName: 'textFieldIcon',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]
 });
 
 casper.
-  start(baseUrl + 'toggle').
+  start(baseUrl + 'textField').
   then(() => {
     testRunner(componentIds);
   });

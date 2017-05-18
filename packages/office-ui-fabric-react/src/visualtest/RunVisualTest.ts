@@ -8,6 +8,7 @@ export function defaultScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
   casper.then(() => {
+    casper.wait(1000);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_default');
   });
   if (params.childParams) {
@@ -21,6 +22,7 @@ export function mouseMoveScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
   casper.then(function () {
+    casper.wait(1000);
     this.mouse.move(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseMove');
   });
@@ -35,6 +37,7 @@ export function mouseDownScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
   casper.then(function () {
+    casper.wait(1000);
     this.mouse.down(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseDown');
   });
@@ -48,6 +51,7 @@ export function mouseClickScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
   casper.then(function () {
+    casper.wait(1000);
     this.click(params.selector);
     phantomcss.screenshot(params.imageSelector, params.fileName + '_mouseClick');
   });
@@ -65,6 +69,7 @@ export function mouseSingleClickScreenshot(params: IRunVisualTest) {
   params.imageSelector = params.imageSelector || params.selector;
 
   casper.then(function () {
+    casper.wait(1000);
     this.click(params.selector);
   });
   if (params.childParams) {

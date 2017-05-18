@@ -1,19 +1,19 @@
 import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
+import { mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
 import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
 declare var casper: Casper;
-
 let componentIds: IRunVisualTest[] = [];
 
 componentIds.push({
-  selector: '.' + 'ms-Dialog-main',
-  fileName: 'dialog',
-  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
+  selector: '.' + 'TeachingBubble',
+  imageSelector: '.' + 'ms-TeachingBubble-content',
+  fileName: 'teachingBubble',
+  commands: [mouseClickScreenshot]
 });
 
 casper.
-  start(baseUrl + 'dialog').
+  start(baseUrl + 'teachingBubble').
   then(() => {
     testRunner(componentIds);
   });

@@ -22,7 +22,6 @@ componentIds.push({
   commands: [mouseSingleClickScreenshot],
   childParams: {
     selector: '.' + 'ms-ContextualMenu-list',
-    imageSelector: '.' + 'ms-ContextualMenu-Callout',
     fileName: 'commandBarItem',
     commands: [defaultScreenshot],
   }

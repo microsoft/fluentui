@@ -7,7 +7,7 @@ export default class TooltipVPage extends React.Component<any, any> {
   public render() {
     return <div >
       <TooltipHost content='This is the tooltip' id='Tooltip' calloutProps={ { gapSpace: 25 } }>
-        <DefaultButton id='TooltipButton' aria-describedby='myID'>Hover Over Me</DefaultButton>
+        <DefaultButton id='TooltipButton'>Hover Over Me</DefaultButton>
       </TooltipHost>
     </div>;
   }
