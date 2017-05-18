@@ -1,5 +1,6 @@
 'use strict';
 
+// Polyfills
 require('es6-weak-map/implement');
 
 /**

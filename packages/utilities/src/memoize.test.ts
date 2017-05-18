@@ -1,3 +1,6 @@
+// Polyfills
+import 'es6-weak-map/implement';
+
 import { memoize } from './memoize';
 
 let { expect } = chai;
