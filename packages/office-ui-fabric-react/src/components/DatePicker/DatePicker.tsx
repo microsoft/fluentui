@@ -161,8 +161,18 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public render() {
-    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput, borderless } = this.props;
-    let { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
+    const {
+      firstDayOfWeek,
+      strings,
+      label,
+      isRequired,
+      disabled,
+      ariaLabel,
+      placeholder,
+      allowTextInput,
+      borderless
+    } = this.props;
+    const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
       <div className={ css('ms-DatePicker', styles.root) } ref='root'>
@@ -172,6 +182,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
             required={ isRequired }
+            disabled={ disabled }
             onKeyDown={ this._onTextFieldKeyDown }
             onFocus={ this._onTextFieldFocus }
             onBlur={ this._onTextFieldBlur }

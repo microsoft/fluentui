@@ -90,7 +90,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { suggestedDisplayValue } = this.state;
     let {
       className,
-      inputProps
+      inputProps,
+      disabled
     } = this.props;
 
     return (
@@ -119,7 +120,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
-                role='combobox' />
+                role='combobox'
+                disabled={ disabled }
+              />
             </div>
           </SelectionZone>
         </FocusZone>
@@ -407,7 +410,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     let { suggestedDisplayValue } = this.state;
     let {
       className,
-      inputProps
+      inputProps,
+      disabled
     } = this.props;
 
     return (
@@ -432,6 +436,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
+                disabled={ disabled }
               />
             </div>
           </SelectionZone>
