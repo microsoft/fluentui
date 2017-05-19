@@ -6,12 +6,6 @@ import { ResizeGroup } from './ResizeGroup';
 import * as sinon from 'sinon';
 
 describe('ResizeGroup', () => {
-  afterEach(() => {
-    [].forEach.call(document.querySelectorAll('body > div'), div => div.parentNode.removeChild(div));
-
-    expect(document.querySelector('.ms-ResizeGroup')).to.be.null;
-  });
-
   it('does not render ResizeGroup when no data is passed', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
