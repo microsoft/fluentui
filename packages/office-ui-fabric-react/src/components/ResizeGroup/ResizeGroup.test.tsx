@@ -2,42 +2,46 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { shallow, mount, ReactWrapper } from 'enzyme';
 import { expect } from 'chai';
-import { ResizeGroup } from './ResizeGroup';
+import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
+import { IResizeGroupProps } from './ResizeGroup.Props';
 const styles: any = stylesImport;
 
 function getShallowWrapperWithMocks(data = { a: 1 }) {
   const onReduceDataMock = sinon.spy();
   const onRenderDataMock = sinon.spy();
 
-  let wrapper = mount(<ResizeGroup
+  let wrapper = mount<ResizeGroup, IResizeGroupState>(<ResizeGroup
     data={ data }
     onReduceData={ onReduceDataMock }
     onRenderData={ onRenderDataMock }
   />);
 
+  let rootGetClientRectMock = sinon.stub();
+  let measuredGetClientRectMock = sinon.stub();
+  rootGetClientRectMock.returns({ width: 0 });
+  measuredGetClientRectMock.returns({ width: 0 });
+
+  let originalComponentDidUpdate = wrapper.instance()['componentDidUpdate'];
+  wrapper.instance()['componentDidUpdate'] = function (prevProps: IResizeGroupProps) {
+    let measured = wrapper.find('.' + styles.measured);
+    if (measured.length > 0) {
+      measured.getDOMNode().getBoundingClientRect = measuredGetClientRectMock;
+    }
+
+    wrapper.getDOMNode().getBoundingClientRect = rootGetClientRectMock;
+
+    originalComponentDidUpdate.call(this, prevProps);
+  }
+
   return {
     wrapper,
     onReduceDataMock,
     onRenderDataMock,
-  };
-}
-
-function getClientRectMocks(wrapper: ReactWrapper<any, any>) {
-  let measured = wrapper.find('.' + styles.measured);
-  expect(measured).to.have.length(1);
-
-  let rootGetClientRectMock = sinon.spy();
-  wrapper.getDOMNode().getBoundingClientRect = rootGetClientRectMock;
-
-  let measuredGetClientRectMock = sinon.spy();
-  measured.getDOMNode().getBoundingClientRect = measuredGetClientRectMock;
-
-  return {
     rootGetClientRectMock,
     measuredGetClientRectMock
-  }
+  };
 }
 
 describe('ResizeGroup', () => {
@@ -86,5 +90,16 @@ describe('ResizeGroup', () => {
 
     // onRenderData should get called to measure and to render when props are updated.
     expect(onRenderData.callCount).to.equal(4);
+  });
+
+  it('will call onReduceData when contents do not fit', () => {
+    let { wrapper, onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getShallowWrapperWithMocks();
+
+    onReduceDataMock.reset();
+    rootGetClientRectMock.returns({ width: 50 });
+    measuredGetClientRectMock.returns({ width: 75 })
+
+    wrapper.setState({ shouldMeasure: true });
+    expect(onReduceDataMock.callCount).to.equal(1);
   });
 });
