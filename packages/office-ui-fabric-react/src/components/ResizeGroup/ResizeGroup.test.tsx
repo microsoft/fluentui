@@ -43,8 +43,6 @@ describe('ResizeGroup', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
 
-    const div = document.createElement('div');
-
     let wrapper = mount(<ResizeGroup
       data={ { a: 1 } }
       onReduceData={ onReduceData }
