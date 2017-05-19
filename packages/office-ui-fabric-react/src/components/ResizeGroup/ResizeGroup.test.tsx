@@ -97,9 +97,29 @@ describe('ResizeGroup', () => {
 
     onReduceDataMock.reset();
     rootGetClientRectMock.returns({ width: 50 });
-    measuredGetClientRectMock.returns({ width: 75 })
+    measuredGetClientRectMock.onCall(0).returns({ width: 75 })
+    measuredGetClientRectMock.onCall(1).returns({ width: 40 })
 
     wrapper.setState({ shouldMeasure: true });
+
     expect(onReduceDataMock.callCount).to.equal(1);
+  });
+
+  it('will measure after a window resize', () => {
+    let { onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getShallowWrapperWithMocks();
+
+    onReduceDataMock.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.returns({ width: 100 })
+
+    window.dispatchEvent(new Event("resize"));
+
+    expect(rootGetClientRectMock.callCount).to.equal(1);
+    expect(measuredGetClientRectMock.callCount).to.equal(1);
+
+    // Don't call onReduceData
+    expect(onReduceDataMock.callCount).to.equal(0);
   });
 });
