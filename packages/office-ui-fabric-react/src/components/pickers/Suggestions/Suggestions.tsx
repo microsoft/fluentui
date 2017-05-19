@@ -19,6 +19,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       onClick,
       className,
       onRemoveItem,
+      showRemoveButton,
       id
     } = this.props;
     let itemProps = assign({}, suggestionModel.item, { onRemoveItem });
@@ -33,8 +34,21 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           className
         ) }
       >
-        {/*<RenderSuggestion  { ...itemProps  } />*/ }
-        { RenderSuggestion(suggestionModel.item, this.props) }
+        <CommandButton
+          onClick={ onClick }
+          className={ css('ms-Suggestions-itemButton', styles.itemButton) }
+        >
+          { RenderSuggestion(suggestionModel.item, this.props) }
+        </CommandButton>
+        { this.props.showRemoveButton ? (
+          <IconButton
+            iconProps={ { iconName: 'Cancel' } }
+            title='Remove'
+            ariaLabel='Remove'
+            onClick={ onRemoveItem }
+            className={ css('ms-Suggestions-closeButton', styles.closeButton) }
+          />) : (null)
+        }
       </div>
     );
   }
@@ -76,7 +90,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
-      isResultsFooterVisible
+      isResultsFooterVisible,
+      showRemoveButtons,
     } = this.props;
 
     let noResults: () => JSX.Element = () => {
@@ -150,7 +165,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       suggestions,
       onRenderSuggestion,
       suggestionsItemClassName,
-      resultsMaximumNumber } = this.props;
+      resultsMaximumNumber,
+      showRemoveButtons } = this.props;
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
@@ -173,6 +189,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
               RenderSuggestion={ onRenderSuggestion }
               onClick={ (ev: React.MouseEvent<HTMLElement>) => { this.props.onSuggestionClick(ev, suggestion.item, index) } }
               className={ suggestionsItemClassName }
+              showRemoveButton={ showRemoveButtons }
               onRemoveItem={ (ev: React.MouseEvent<HTMLElement>) => {
                 this.props.onSuggestionRemove(ev, suggestion.item, index);
                 ev.stopPropagation();

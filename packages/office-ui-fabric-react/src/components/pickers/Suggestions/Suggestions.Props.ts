@@ -84,6 +84,8 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   resultsFooterFull?: string;
 
   resultsFooter?: string;
+
+  showRemoveButtons: boolean;
 }
 
 export interface ISuggestionItemProps<T> {
@@ -93,4 +95,5 @@ export interface ISuggestionItemProps<T> {
   onRemoveItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   id?: string;
+  showRemoveButton?: boolean;
 }

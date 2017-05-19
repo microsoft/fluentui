@@ -32,7 +32,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
   mostRecentlyUsedHeaderText: 'Suggested Contacts',
   noResultsFoundText: 'No results found',
-  loadingText: 'Loading'
+  loadingText: 'Loading',
+  showRemoveButtons: true
 };
 
 // searchingText: (suggestionProps: ISuggestionsProps) => `Searching for ${suggestionProps.i}`

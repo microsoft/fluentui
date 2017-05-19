@@ -343,7 +343,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let value = this.input.value;
-    console.log(ev.which);
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
@@ -365,6 +364,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.backspace:
         this.onBackspace(ev);
+        break;
+
+      case KeyCodes.del:
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+          if (this.props.onRemoveSuggestion) {
+            this.props.onRemoveSuggestion(this.suggestionStore.currentSuggestion.item);
+          }
+          this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
+          this.forceUpdate();
+        }
         break;
 
       case KeyCodes.up:

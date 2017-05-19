@@ -27,38 +27,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.personaButton {
-  height: 42px;
-  width: 100%;
-  padding: 9px 12px;
-}
-
-.personaButtonSmall {
-  height: 32px;
-  width: 100%;
-  padding: 4px 8px;
-}
-
-.closeButton {
-  padding: 0 4px;
-  height: 42px;
-  width: 32px;
-
-  &:hover {
-    background: $ms-color-neutralTertiaryAlt;
-    color: $ms-color-neutralDark;
-  }
-}
-
-.closeButtonSmall {
-  padding: 0;
-  height: 24px;
-  width: 24px;
-  margin: 4px;
-
-  &:hover {
-    background: $ms-color-neutralTertiaryAlt;
-    color: $ms-color-neutralDark;
-  }
-}

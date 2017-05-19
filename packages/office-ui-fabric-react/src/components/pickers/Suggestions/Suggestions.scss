@@ -5,6 +5,8 @@
 }
 
 .suggestionsItem {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
   position: relative;
@@ -89,5 +91,22 @@
     display: inline-block;
     @include margin(0px, 10px, 0, 16px);
     vertical-align: middle;
+  }
+}
+
+.itemButton {
+  height: 100%;
+  width: 100%;
+  padding: 9px 12px;
+}
+
+.closeButton {
+  padding: 0 4px;
+  height: 42px;
+  width: 32px;
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
   }
 }

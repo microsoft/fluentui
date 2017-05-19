@@ -59,7 +59,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback for when a persona is removed from the suggestion list
    */
-  onRemoveSuggestion?: (index: number) => void;
+  onRemoveSuggestion?: (item: any) => void;
 
   searchingText?: ((props: { input: string }) => string) | string;
 
@@ -112,4 +112,6 @@ export interface IBasePickerSuggestionsProps {
   resultsFooter?: string;
 
   resultsMaximumNumber?: number;
+
+  showRemoveButtons?: boolean;
 }

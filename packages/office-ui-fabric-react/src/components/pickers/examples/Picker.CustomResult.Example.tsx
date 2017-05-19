@@ -273,15 +273,10 @@ export const SuggestedBigItem: (documentProps: any, itemProps: any) => JSX.Eleme
     onClick
   } = itemProps;
   return (
-    <CommandButton
-      onClick={ itemProps.onClick }
-      className="ms-DocumentPicker-button"
-    >
-      <Persona
-        imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
-        primaryText={ documentTitleProps.title }
-        size={ PersonaSize.small } />
-    </CommandButton>
+    <Persona
+      imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
+      primaryText={ documentTitleProps.title }
+      size={ PersonaSize.small } />
   );
 };
 
