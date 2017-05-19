@@ -32,6 +32,16 @@
 
 .isEnabled {
 
+  &.isToggled {
+    background-color: $ms-color-themeDark;
+    color: $ms-color-white;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+      color: $ms-color-black;
+    }
+  }
+
   &:hover {
     background-color: $ms-color-themeDark;
   }

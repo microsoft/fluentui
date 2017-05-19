@@ -22,6 +22,7 @@ export interface IButtonClassNames {
   variant?: string;
   isDisabled?: string;
   isEnabled?: string;
+  isToggled?: string;
   description?: string;
   flexContainer?: string;
   icon?: string;
@@ -55,7 +56,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       base: 'ms-Button',
       variant: '',
       isEnabled: '',
-      isDisabled: ''
+      isDisabled: '',
+      isToggled: ''
     }
   };
 
@@ -82,7 +84,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public render(): JSX.Element {
-    const { description, ariaLabel, ariaDescription, href, disabled, classNames } = this.props;
+    const { description, ariaLabel, ariaDescription, href, disabled, toggled, classNames } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
@@ -122,14 +124,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           {
             'disabled': disabled,
             [classNames.isDisabled]: disabled,
-            [classNames.isEnabled]: !disabled
+            [classNames.isEnabled]: !disabled,
+            [classNames.isToggled]: toggled
           }),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled
+        'aria-disabled': disabled,
+        'aria-pressed': toggled
       }
     );
 
