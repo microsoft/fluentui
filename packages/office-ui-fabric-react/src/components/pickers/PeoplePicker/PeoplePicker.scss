@@ -29,9 +29,9 @@
 }
 
 .personaButton {
-  height: 36px;
+  height: 42px;
   width: 100%;
-  padding: 4px 8px;
+  padding: 9px 12px;
 }
 
 .personaButtonSmall {
@@ -42,9 +42,8 @@
 
 .closeButton {
   padding: 0 4px;
-  height: 28px;
-  width: 28px;
-  margin: 4px;
+  height: 42px;
+  width: 32px;
 
   &:hover {
     background: $ms-color-neutralTertiaryAlt;

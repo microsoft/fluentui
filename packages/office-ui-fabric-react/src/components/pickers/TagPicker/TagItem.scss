@@ -46,6 +46,10 @@
   flex-shrink: 0;
 }
 
+.tagItemButton {
+  width: 100%;
+}
+
 .tagItemTextOverflow {
     overflow: hidden;
     text-overflow: ellipsis;
