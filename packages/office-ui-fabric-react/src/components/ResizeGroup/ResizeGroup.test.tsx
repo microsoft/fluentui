@@ -1,9 +1,44 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import { expect } from 'chai';
 import { ResizeGroup } from './ResizeGroup';
 import * as sinon from 'sinon';
+import * as stylesImport from './ResizeGroup.scss';
+const styles: any = stylesImport;
+
+function getShallowWrapperWithMocks(data = { a: 1 }) {
+  const onReduceDataMock = sinon.spy();
+  const onRenderDataMock = sinon.spy();
+
+  let wrapper = mount(<ResizeGroup
+    data={ data }
+    onReduceData={ onReduceDataMock }
+    onRenderData={ onRenderDataMock }
+  />);
+
+  return {
+    wrapper,
+    onReduceDataMock,
+    onRenderDataMock,
+  };
+}
+
+function getClientRectMocks(wrapper: ReactWrapper<any, any>) {
+  let measured = wrapper.find('.' + styles.measured);
+  expect(measured).to.have.length(1);
+
+  let rootGetClientRectMock = sinon.spy();
+  wrapper.getDOMNode().getBoundingClientRect = rootGetClientRectMock;
+
+  let measuredGetClientRectMock = sinon.spy();
+  measured.getDOMNode().getBoundingClientRect = measuredGetClientRectMock;
+
+  return {
+    rootGetClientRectMock,
+    measuredGetClientRectMock
+  }
+}
 
 describe('ResizeGroup', () => {
   it('does not render ResizeGroup when no data is passed', () => {
