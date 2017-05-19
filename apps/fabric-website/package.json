@@ -34,6 +34,7 @@
     "gutil": "1.6.4",
     "highlight.js": "9.11.0",
     "mocha": "~3.3.0",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "orchestrator": "^0.3.7",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
