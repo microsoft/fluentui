@@ -8,8 +8,8 @@ import * as stylesImport from './ResizeGroup.scss';
 import { IResizeGroupProps } from './ResizeGroup.Props';
 const styles: any = stylesImport;
 
-function getShallowWrapperWithMocks(data = { a: 1 }) {
-  const onReduceDataMock = sinon.spy();
+function getShallowWrapperWithMocks(data: any = { a: 1 }, onReduceData?: (any) => any) {
+  const onReduceDataMock = sinon.spy(onReduceData);
   const onRenderDataMock = sinon.spy();
 
   let wrapper = mount<ResizeGroup, IResizeGroupState>(<ResizeGroup
@@ -97,8 +97,8 @@ describe('ResizeGroup', () => {
 
     onReduceDataMock.reset();
     rootGetClientRectMock.returns({ width: 50 });
-    measuredGetClientRectMock.onCall(0).returns({ width: 75 })
-    measuredGetClientRectMock.onCall(1).returns({ width: 40 })
+    measuredGetClientRectMock.onFirstCall().returns({ width: 75 })
+    measuredGetClientRectMock.onSecondCall().returns({ width: 40 })
 
     wrapper.setState({ shouldMeasure: true });
 
@@ -121,5 +121,27 @@ describe('ResizeGroup', () => {
 
     // Don't call onReduceData
     expect(onReduceDataMock.callCount).to.equal(0);
+  });
+
+  it('will continue to shrink until it fits', () => {
+    let data = { scalingIndex: 7 };
+    let { wrapper,
+      onReduceDataMock,
+      rootGetClientRectMock,
+      measuredGetClientRectMock } = getShallowWrapperWithMocks(data, (data) => { return { scalingIndex: data.scalingIndex - 1 } });
+
+    onReduceDataMock.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+    rootGetClientRectMock.returns({ width: 50 });
+    measuredGetClientRectMock.onFirstCall().returns({ width: 100 });
+    measuredGetClientRectMock.onSecondCall().returns({ width: 80 });
+    measuredGetClientRectMock.onThirdCall().returns({ width: 40 })
+
+    wrapper.setState({ shouldMeasure: true });
+
+    expect(onReduceDataMock.callCount).to.equal(2);
+    expect(onReduceDataMock.getCall(0).args[0]).to.deep.equal(data);
+    expect(onReduceDataMock.getCall(1).args[0]).to.deep.equal({ scalingIndex: 6 });
   });
 });
