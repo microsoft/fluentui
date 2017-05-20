@@ -131,7 +131,7 @@ describe('ResizeGroup', () => {
     expect(onReduceDataMock.callCount).to.equal(0);
   });
 
-  it('will continue to shrink until it fits', () => {
+  it('will continue to shrink until everything fits', () => {
     let data = { scalingIndex: 7 };
 
     let { wrapper,
