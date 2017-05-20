@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toggle } from './Toggle';
+import { IStyle } from '../../Styling';
 
 export interface IToggle {
   focus: () => void;
@@ -59,4 +60,18 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle>
    * onchange callback.
    */
   onChanged?: (checked: boolean) => void;
+}
+
+export interface IToggleStyles {
+  root?: IStyle;
+
+  toggle?: IStyle;
+  toggleOn?: IStyle;
+  toggleDisabled?: IStyle;
+  toggleOnDisabled?: IStyle;
+
+  thumb?: IStyle;
+  thumbOn?: IStyle;
+  thumbDisabled?: IStyle;
+  thumbOnDisabled?: IStyle;
 }

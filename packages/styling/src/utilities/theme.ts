@@ -1,7 +1,8 @@
 import * as assign from 'object-assign';
 import {
   IPalette,
-  IFontStyles
+  IFontStyles,
+  ISemanticColors
 } from '../interfaces/index';
 import {
   DefaultPalette,
@@ -11,10 +12,12 @@ import {
 export interface ITheme {
   palette: IPalette;
   fonts: IFontStyles;
+  semanticColors: ISemanticColors;
 }
 
 const _theme: ITheme = {
   palette: DefaultPalette,
+  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
   fonts: DefaultFontStyles
 };
 
@@ -30,5 +33,30 @@ export function getTheme(): ITheme {
  */
 export function loadTheme(theme: ITheme): void {
   _theme.palette = assign({}, _theme.palette, theme.palette);
+  _theme.semanticColors = assign({}, _makeSemanticColorsFromPalette(_theme.palette), theme.semanticColors);
   _theme.fonts = assign({}, _theme.fonts, theme.fonts);
+}
+
+// Generates all the semantic slot colors based on the palette.
+// (because right now our theming is still driven by the default Fabric palette)
+function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
+  return {
+    bodyBackground: p.white,
+    bodyText: p.neutralPrimary,
+    bodySubtext: p.neutralSecondary,
+
+    disabledBackground: p.neutralLighter,
+    disabledText: p.neutralTertiaryAlt,
+    disabledSubtext: p.neutralQuaternary,
+
+    focusBorder: p.black,
+
+    //errorBackground: todo,
+    errorText: p.redDark,
+
+    inputBorder: p.neutralTertiary,
+    inputBorderHover: p.neutralPrimary,
+    inputBackgroundSelected: p.themePrimary,
+    inputBackgroundSelectedHover: p.themeDarkAlt
+  };
 }

@@ -13,6 +13,8 @@ import { Label } from '../../Label';
 import * as stylesImport from './Toggle.scss';
 const styles: any = stylesImport;
 
+import { getStyles } from './Toggle.styles';
+
 export interface IToggleState {
   isChecked: boolean;
 }
@@ -57,6 +59,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
+    let gStyles = getStyles(undefined);
+
     let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
@@ -75,7 +79,8 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             [styles.isChecked]: isChecked,
             [styles.isEnabled]: !disabled,
             [styles.isDisabled]: disabled,
-          }
+          },
+          gStyles.root
         ) }>
         <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
           { label && (
@@ -97,9 +102,23 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
               onClick={ this._onClick }
               onKeyDown={ this._onInputKeyDown }
             />
-            <div className={ css(styles.background, 'ms-Toggle-background') }>
+            <div className={ css(
+              styles.background,
+              'ms-Toggle-background',
+              gStyles.toggle,
+              isChecked && gStyles.toggleOn,
+              disabled && !isChecked && gStyles.toggleDisabled,
+              disabled && isChecked && gStyles.toggleOnDisabled
+            ) }>
               <div className={ css(styles.focus, 'ms-Toggle-focus') } />
-              <div className={ css(styles.thumb, 'ms-Toggle-thumb') } />
+              <div className={ css(
+                styles.thumb,
+                'ms-Toggle-thumb',
+                gStyles.thumb,
+                isChecked && gStyles.thumbOn,
+                disabled && !isChecked && gStyles.thumbDisabled,
+                disabled && isChecked && gStyles.thumbOnDisabled)
+              } />
             </div>
             { stateText && (
               <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
