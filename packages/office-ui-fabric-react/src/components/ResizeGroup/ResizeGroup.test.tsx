@@ -18,7 +18,7 @@ function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   };
 }
 
-function getShallowWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onReduceData?: (data: ITestScalingData) => ITestScalingData) {
+function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onReduceData?: (data: ITestScalingData) => ITestScalingData) {
   const onReduceDataMock = sinon.spy(onReduceData);
   const onRenderDataMock = sinon.spy();
 
@@ -100,7 +100,7 @@ describe('ResizeGroup', () => {
   });
 
   it('will call onReduceData when contents do not fit', () => {
-    let { wrapper, onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getShallowWrapperWithMocks();
+    let { wrapper, onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
 
     onReduceDataMock.reset();
     rootGetClientRectMock.returns({ width: 50 });
@@ -113,7 +113,7 @@ describe('ResizeGroup', () => {
   });
 
   it('will measure after a window resize', () => {
-    let { onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getShallowWrapperWithMocks();
+    let { onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
 
     onReduceDataMock.reset();
     rootGetClientRectMock.reset();
@@ -136,7 +136,7 @@ describe('ResizeGroup', () => {
     let { wrapper,
       onReduceDataMock,
       rootGetClientRectMock,
-      measuredGetClientRectMock } = getShallowWrapperWithMocks(data, onReduceScalingData);
+      measuredGetClientRectMock } = getWrapperWithMocks(data, onReduceScalingData);
 
     onReduceDataMock.reset();
     measuredGetClientRectMock.reset();
@@ -159,7 +159,7 @@ describe('ResizeGroup', () => {
   });
 
   it('renders no more than twice when everything fits', () => {
-    let { wrapper, rootGetClientRectMock, measuredGetClientRectMock } = getShallowWrapperWithMocks();
+    let { wrapper, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
 
     rootGetClientRectMock.returns({ width: 100 });
     measuredGetClientRectMock.returns({ width: 75 });
@@ -176,7 +176,7 @@ describe('ResizeGroup', () => {
 
   it('starts from the beginning when resizing', () => {
     let data = { scalingIndex: 10 };
-    let { wrapper, onRenderDataMock } = getShallowWrapperWithMocks(data);
+    let { wrapper, onRenderDataMock } = getWrapperWithMocks(data);
 
     wrapper.setState({
       renderedData: { scalingIndex: 5 },
