@@ -33,6 +33,9 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onRed
   rootGetClientRectMock.returns({ width: 0 });
   measuredGetClientRectMock.returns({ width: 0 });
 
+  // Since measurement happens inside OnComponentDidUpdate, we need to make sure
+  // that our mocks are attached to the DOM nodes before that code runs so that
+  // we can return fake measurements in our tests.
   runPriorToComponentDidUpdate(wrapper, () => {
     let measured = wrapper.find('.' + styles.measured);
     if (measured.length > 0) {
