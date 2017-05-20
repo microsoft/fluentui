@@ -170,7 +170,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onGotoTodayKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       ev.preventDefault();
       this._onGotoToday();
     } else if (ev.which === KeyCodes.tab && !ev.shiftKey) {

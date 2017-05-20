@@ -123,7 +123,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         <FocusZone>
           <table
             className={ css('ms-DatePicker-table', styles.table) }
-            role='grid'
+            role='application'
             aria-readonly='true'
             aria-multiselectable='false'
             aria-labelledby={ monthAndYearId }
@@ -144,7 +144,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody>
               { weeks.map((week, weekIndex) =>
-                <tr key={ weekIndex }>
+                <tr role='presentation' key={ weekIndex }>
                   { week.map((day, dayIndex) =>
                     <td role='presentation' key={ day.key }>
                       <div
@@ -157,7 +157,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
                           }) }
-                        role='gridcell'
+                        role='link'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
