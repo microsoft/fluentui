@@ -30,7 +30,7 @@ export enum IconType {
 }
 
 export interface IIconStyles {
-
+  root?: IStyle;
   imageContainer?: IStyle;
 }
 
