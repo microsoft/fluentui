@@ -6,7 +6,7 @@ import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
 import { IResizeGroupProps } from './ResizeGroup.Props';
-import { runPriorToComponentDidUpdate } from '../../utilities/test';
+import { runPriorToComponentDidUpdate, getRenderSpy } from '../../utilities/test';
 const styles: any = stylesImport;
 
 interface ITestScalingData {
@@ -152,5 +152,21 @@ describe('ResizeGroup', () => {
     expect(onReduceDataMock.callCount).to.equal(2);
     expect(onReduceDataMock.getCall(0).args[0]).to.deep.equal(data);
     expect(onReduceDataMock.getCall(1).args[0]).to.deep.equal({ scalingIndex: 6 });
+  });
+
+  it('renders no more than twice when everything fits', () => {
+    let { wrapper, rootGetClientRectMock, measuredGetClientRectMock } = getShallowWrapperWithMocks();
+
+    rootGetClientRectMock.returns({ width: 100 });
+    measuredGetClientRectMock.returns({ width: 75 });
+
+    let onRenderSpy = getRenderSpy(wrapper);
+
+    wrapper.setState({ shouldMeasure: true });
+
+    // There are 2 renders. The first does a measure and a layout.
+    // Ideally, this can be optimized so that there is only 1 render, but this
+    // test makes sure it doesn't get worse than this.
+    expect(onRenderSpy.callCount).to.equal(2);
   });
 });
