@@ -1,0 +1,8 @@
+{
+  "name": "rush-office-ui-fabric-react-tslint",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@microsoft/gulp-core-build-typescript": "^2.4.4"
+  }
+}
