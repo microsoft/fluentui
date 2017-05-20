@@ -1,0 +1,30 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add unit tests to ResizeGroup",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/styling",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/fabric-website",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "chrisgo@microsoft.com"
+}
