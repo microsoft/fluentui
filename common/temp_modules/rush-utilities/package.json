@@ -14,6 +14,7 @@
     "@types/webpack-env": "^1.13.0",
     "enzyme": "^2.7.0",
     "es6-promise": "4.1.0",
+    "es6-weak-map": "^2.0.2",
     "gulp": "~3.9.1",
     "mocha": "~3.3.0",
     "react": "^15.4.2",
@@ -21,5 +22,8 @@
     "react-dom": "^15.4.2",
     "source-map-loader": "^0.2.1",
     "typescript": "2.2.2"
+  },
+  "rushDependencies": {
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0"
   }
 }

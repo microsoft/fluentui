@@ -1,6 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 16 May 2017 22:39:55 GMT and should not be manually modified.
+This log was last generated on Fri, 19 May 2017 10:20:22 GMT and should not be manually modified.
+
+## 2.31.0
+Fri, 19 May 2017 10:20:22 GMT
+
+### Minor changes
+
+- Adding the ability for buttons to be toggled
+
+### Patches
+
+- Searchbox: Updated border styles to better support high contrast mode
+- Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb"
+
+## 2.30.2
+Thu, 18 May 2017 10:09:58 GMT
+
+### Patches
+
+- Adds outlines to SearchBox in HC modes
+- BaseButton: now respects the isBeakVisible property on the menu props
+- Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems
 
 ## 2.30.1
 Tue, 16 May 2017 22:39:55 GMT
