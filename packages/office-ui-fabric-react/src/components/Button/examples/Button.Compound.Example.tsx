@@ -11,7 +11,7 @@ export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { disabled } = this.props;
+    let { disabled, toggled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
@@ -19,6 +19,7 @@ export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
         <CompoundButton
           description='You can create a new account here.'
           disabled={ disabled }
+          toggled={ toggled }
         >
           Create account
         </CompoundButton>

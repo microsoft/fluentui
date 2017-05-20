@@ -42,8 +42,6 @@ export const getStyles = memoize((
       }
     ),
 
-    rootEnabled: undefined,
-
     rootDisabled: mergeStyles({
       backgroundColor: theme.palette.neutralLighter,
       color: theme.palette.neutralTertiary,
@@ -52,6 +50,8 @@ export const getStyles = memoize((
       ':hover': noOutline,
       ':focus': noOutline
     }),
+
+    rootToggled: undefined,
 
     flexContainer: mergeStyles({
       display: 'flex',
@@ -65,14 +65,14 @@ export const getStyles = memoize((
       fontSize: FontSizes.icon
     }),
 
-    iconEnabled: undefined,
+    iconToggled: undefined,
     iconDisabled: undefined,
 
     menuIcon: mergeStyles(iconStyle, {
       fontSize: FontSizes.small,
     }),
 
-    menuIconEnabled: undefined,
+    menuIconToggled: undefined,
 
     menuIconDisabled: undefined,
 
@@ -81,11 +81,11 @@ export const getStyles = memoize((
       lineHeight: '100%'
     }),
 
-    labelEnabled: undefined,
+    labelToggled: undefined,
     labelDisabled: undefined,
 
     description: undefined,
-    descriptionEnabled: undefined,
+    descriptionToggled: undefined,
     descriptionDisabled: undefined,
 
     screenReaderText: mergeStyles({

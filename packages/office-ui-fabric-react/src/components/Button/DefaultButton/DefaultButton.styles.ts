@@ -28,16 +28,6 @@ export const getStyles = memoize((
       {
         minWidth: DEFAULT_BUTTON_MINWIDTH,
         height: DEFAULT_BUTTON_HEIGHT,
-
-      }
-    ),
-
-    label: mergeStyles({
-      fontWeight: 'bold' // theme.fontWeights.semibold,
-    }),
-
-    rootEnabled: mergeStyles(
-      {
         backgroundColor: theme.palette.neutralLighter,
         color: theme.palette.neutralPrimary,
 
@@ -50,7 +40,17 @@ export const getStyles = memoize((
           color: theme.palette.white
         }
       }
-    )
+    ),
+
+    rootToggled: mergeStyles({
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white
+    }),
+
+    label: mergeStyles({
+      fontWeight: 'bold' // theme.fontWeights.semibold,
+    })
+
   };
 
   return mergeStyleSets(baseButtonStyles, defaultButtonStyles, customStyles);

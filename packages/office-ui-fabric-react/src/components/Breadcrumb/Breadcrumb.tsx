@@ -68,16 +68,21 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   public render() {
-    let { className } = this.props;
+    let { className, ariaLabel } = this.props;
     let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
     let overflowMenuId = this._id + '-overflow';
 
     let { onRenderItem = this._onRenderItem } = this.props;
 
     return (
-      <div className={ css('ms-Breadcrumb', className, styles.root) } ref='renderingArea'>
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
-          <ul className={ css('ms-Breadcrumb-list', styles.list) }>
+      <div
+        className={ css('ms-Breadcrumb', className, styles.root) }
+        ref='renderingArea'
+        role='navigation'
+        aria-label={ ariaLabel }
+      >
+        <FocusZone direction={ FocusZoneDirection.horizontal } >
+          <ol className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length ? (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <IconButton
@@ -103,7 +108,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
                     iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
                 </li>
               )) }
-          </ul>
+          </ol>
         </FocusZone>
         { isOverflowOpen ? (
           <ContextualMenu
@@ -137,6 +142,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
         <Link
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
+          aria-current={ item.isCurrentItem ? 'page' : null }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }>
           { item.text }
         </Link>

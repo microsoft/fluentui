@@ -15,29 +15,30 @@ export interface IButton {
 
 export interface IButtonStyles {
   root?: IStyle;
-  rootEnabled?: IStyle;
   rootDisabled?: IStyle;
+  rootToggled?: IStyle;
 
   flexContainer?: IStyle;
 
   icon?: IStyle;
-  iconEnabled?: IStyle;
   iconDisabled?: IStyle;
+  iconToggled?: IStyle;
 
   label?: IStyle;
-  labelEnabled?: IStyle;
   labelDisabled?: IStyle;
+  labelToggled?: IStyle;
 
   menuIcon?: IStyle;
-  menuIconEnabled?: IStyle;
   menuIconDisabled?: IStyle;
+  menuIconToggled?: IStyle;
 
   description?: IStyle;
-  descriptionEnabled?: IStyle;
   descriptionDisabled?: IStyle;
+  descriptionToggled?: IStyle;
 
   screenReaderText?: IStyle;
 }
+
 export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
@@ -57,9 +58,14 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   disabled?: boolean;
 
   /**
-   *  Custom styling for individual elements within the button DOM.
+   * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
+
+  /**
+   * Whether the button is toggled
+   */
+  toggled?: boolean;
 
   /**
    * If provided, additional class name to provide on the root element.

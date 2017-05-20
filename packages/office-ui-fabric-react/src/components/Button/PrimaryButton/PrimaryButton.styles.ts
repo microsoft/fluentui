@@ -18,10 +18,10 @@ export function getStyles(
     theme,
     customStyles,
     '0px',
-    theme.palette.white
+    palette.white
   );
   let primaryButtonStyles: IButtonStyles = {
-    rootEnabled: mergeStyles(
+    root: mergeStyles(
       {
         backgroundColor: palette.themePrimary,
         color: palette.white,
@@ -37,7 +37,17 @@ export function getStyles(
         }
 
       }
-    )
+    ),
+
+    rootToggled: mergeStyles({
+      backgroundColor: palette.themeDark,
+      color: palette.white,
+
+      ':hover': {
+        backgroundColor: theme.palette.neutralLight,
+        color: theme.palette.black
+      }
+    })
   };
 
   return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, customStyles);

@@ -27,15 +27,12 @@ export function getStyles(
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
-        padding: '20px'
-      }
-    ),
+        padding: '20px',
 
-    rootEnabled: mergeStyles(
-      {
         ':hover .ms-Button-description': {
           color: theme.palette.neutralDark
         },
+
         ':active .ms-Button-description': {
           color: 'inherit'
         }
@@ -61,11 +58,13 @@ export function getStyles(
     description: mergeStyles(
       theme.fonts.small,
       {
+        color: theme.palette.neutralSecondary,
         lineHeight: '100%'
-      }),
+      }
+    ),
 
-    descriptionEnabled: mergeStyles({
-      color: theme.palette.neutralSecondary,
+    descriptionToggled: mergeStyles({
+      color: 'inherit'
     })
 
   };

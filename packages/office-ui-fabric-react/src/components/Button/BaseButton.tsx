@@ -6,10 +6,10 @@ import {
   assign,
   autobind,
   buttonProperties,
-  css,
   getId,
   getNativeProps
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -60,10 +60,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaLabel,
       baseClassName,
       className,
-      styles,
       description,
       disabled,
       href,
+      styles,
+      toggled,
       variantClassName
          } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -96,10 +97,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const buttonProps = assign(
       nativeProps,
       {
-        className: css(
+        className: mergeStyles(
           styles.root,
-          disabled ? styles.rootDisabled : styles.rootEnabled,
-
+          disabled && styles.rootDisabled,
+          !disabled && toggled && styles.rootToggled,
           className, // legacy: root class name
           baseClassName, // legacy: base class name
           variantClassName, // legacy: variant of the base
@@ -111,8 +112,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
         'aria-disabled': disabled,
-        tabIndex: disabled ? -1 : undefined,
-        'data-is-focusable': disabled ? false : true
+        'data-is-focusable': disabled ? false : true,
+        'aria-pressed': toggled
       }
     );
 
@@ -153,7 +154,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const className = css(baseClassName + '-flexContainer', styles.flexContainer);
+    const className = mergeStyles(baseClassName + '-flexContainer', styles.flexContainer);
 
     return React.createElement(
       tag,
@@ -173,7 +174,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { baseClassName, styles, icon, iconProps, disabled } = this.props;
+    let {
+      baseClassName,
+      disabled,
+      icon,
+      iconProps,
+      styles,
+      toggled
+       } = this.props;
 
     if (icon || iconProps) {
       iconProps = iconProps || {
@@ -183,18 +191,26 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return iconProps && (
       <Icon { ...iconProps } className={
-        css(
+        mergeStyles(
           `${baseClassName}-icon`,
           styles.icon,
-          disabled ? styles.iconDisabled : styles.iconEnabled,
+          disabled && styles.iconDisabled,
+          !disabled && toggled && styles.iconToggled,
           iconProps.className
-        ) } />
+        ) as string } />
     );
   }
 
   @autobind
   private _onRenderText() {
-    let { baseClassName, styles, children, text, disabled } = this.props;
+    let {
+      baseClassName,
+      children,
+      disabled,
+      styles,
+      text,
+      toggled
+        } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -204,11 +220,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return text && (
       <span
         className={
-          css(
+          mergeStyles(
             `${baseClassName}-label`,
             styles.label,
-            disabled ? styles.labelDisabled : styles.labelEnabled
-          ) }
+            disabled && styles.labelDisabled,
+            !disabled && toggled && styles.labelToggled
+          ) as string }
         id={ this._labelId }
       >
         { text }
@@ -231,18 +248,25 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderDescription() {
-    const { baseClassName, styles, description, disabled } = this.props;
+    const {
+      baseClassName,
+      description,
+      disabled,
+      styles,
+      toggled
+    } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
       <span
         className={
-          css(
+          mergeStyles(
             `${baseClassName}-description`,
             styles.description,
-            disabled ? styles.descriptionDisabled : styles.descriptionEnabled
-          ) }
+            disabled && styles.descriptionDisabled,
+            !disabled && toggled && styles.descriptionToggled
+          ) as string }
         id={ this._descriptionId }
       >
         { description }
@@ -267,7 +291,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let { baseClassName, styles, disabled, menuIconProps, menuIconName } = this.props;
+    let {
+      baseClassName,
+      disabled,
+      menuIconName,
+      menuIconProps,
+      styles,
+      toggled
+       } = this.props;
 
     if (menuIconProps === undefined) {
       menuIconProps = {
@@ -280,12 +311,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         <Icon
           { ...menuIconProps }
           className={
-            css(
+            mergeStyles(
               `${baseClassName}-icon`,
               styles.menuIcon,
-              disabled ? styles.menuIconDisabled : styles.menuIconEnabled,
+              disabled && styles.menuIconDisabled,
+              !disabled && toggled && styles.menuIconToggled,
               menuIconProps.className
-            ) }
+            ) as string }
         />
         :
         null
@@ -299,7 +331,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         isBeakVisible={ true }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
-        className={ css('ms-BaseButton-menuhost', menuProps.className) }
+        className={ mergeStyles('ms-BaseButton-menuhost', menuProps.className) as string }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }

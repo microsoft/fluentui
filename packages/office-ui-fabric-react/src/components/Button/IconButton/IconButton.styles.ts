@@ -22,12 +22,7 @@ export function getStyles(
       {
         padding: '0 4px',
         width: '32px',
-        height: '32px'
-      }
-    ),
-
-    rootEnabled: mergeStyles(
-      {
+        height: '32px',
         backgroundColor: 'transparent',
 
         ':hover': {
@@ -38,6 +33,15 @@ export function getStyles(
         }
       }
     ),
+
+    rootToggled: mergeStyles({
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+
+      ':hover': {
+        backgroundColor: theme.palette.neutralLight
+      }
+
+    }),
 
     rootDisabled: mergeStyles(
       {

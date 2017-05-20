@@ -928,9 +928,15 @@
       "resolved": "https://registry.npmjs.org/@types/z-schema/-/z-schema-3.16.31.tgz"
     },
     "@uifabric/example-app-base": {
+<<<<<<< HEAD
       "version": "1.3.12",
       "from": "@uifabric/example-app-base@>=1.3.12 <2.0.0",
       "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-1.3.12.tgz"
+=======
+      "version": "1.3.11",
+      "from": "@uifabric/example-app-base@>=1.3.11 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-1.3.11.tgz"
+>>>>>>> 1ae9f34c4ead072ab2d74a1d032b7dc6f4e18251
     },
     "@uifabric/utilities": {
       "version": "1.9.0",

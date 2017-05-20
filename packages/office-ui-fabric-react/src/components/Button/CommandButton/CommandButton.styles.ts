@@ -24,18 +24,6 @@ export const getStyles = memoize((
         borderWidth: '0',
         padding: DEFAULT_PADDING,
         height: DEFAULT_BUTTON_HEIGHT,
-
-      }
-    ),
-
-    flexContainer: mergeStyles(
-      {
-        justifyContent: 'flex-start'
-      }
-    ),
-
-    rootEnabled: mergeStyles(
-      {
         color: theme.palette.neutralPrimary,
         backgroundColor: 'transparent',
 
@@ -53,15 +41,30 @@ export const getStyles = memoize((
       backgroundColor: 'transparent'
     }),
 
-    iconEnabled: mergeStyles(
-      {
-        color: theme.palette.themePrimary
-      }
-    ),
+    rootToggled: mergeStyles({
+      backgroundColor: theme.palette.neutralTertiaryAlt,
 
-    menuIconEnabled: mergeStyles({
+      ':hover': {
+        backgroundColor: theme.palette.neutralLight
+      }
+    }),
+
+    flexContainer: mergeStyles({
+      justifyContent: 'flex-start'
+    }),
+
+    icon: mergeStyles({
+      color: theme.palette.themePrimary
+    }),
+
+    iconDisabled: mergeStyles({
+      color: 'inherit'
+    }),
+
+    menuIcon: mergeStyles({
       color: theme.palette.neutralSecondary
     })
+
   };
 
   return mergeStyleSets(baseButtonStyles, commandButtonStyles, customStyles);
