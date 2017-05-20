@@ -51,7 +51,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
 
     focusBorder: p.black,
 
-    //errorBackground: todo,
+    // errorBackground: todo,
     errorText: p.redDark,
 
     inputBorder: p.neutralTertiary,
