@@ -6,6 +6,7 @@ import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
 import { IResizeGroupProps } from './ResizeGroup.Props';
+import { runPriorToComponentDidUpdate } from '../../utilities/test';
 const styles: any = stylesImport;
 
 interface ITestScalingData {
@@ -33,17 +34,14 @@ function getShallowWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }
   rootGetClientRectMock.returns({ width: 0 });
   measuredGetClientRectMock.returns({ width: 0 });
 
-  let originalComponentDidUpdate = wrapper.instance()['componentDidUpdate'];
-  wrapper.instance()['componentDidUpdate'] = function (prevProps: IResizeGroupProps) {
+  runPriorToComponentDidUpdate(wrapper, () => {
     let measured = wrapper.find('.' + styles.measured);
     if (measured.length > 0) {
       measured.getDOMNode().getBoundingClientRect = measuredGetClientRectMock;
     }
 
     wrapper.getDOMNode().getBoundingClientRect = rootGetClientRectMock;
-
-    originalComponentDidUpdate.call(this, prevProps);
-  }
+  });
 
   return {
     wrapper,
