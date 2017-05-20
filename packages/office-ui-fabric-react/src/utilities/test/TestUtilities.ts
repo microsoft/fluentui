@@ -7,11 +7,13 @@ import * as sinon from 'sinon';
  * @param fn The function to run prior to onComponentDidUpdate
  */
 export function runPriorToComponentDidUpdate(wrapper: ReactWrapper<any, any>, fn: () => void) {
+  // tslint:disable-next-line:no-string-literal
   const originalComponentDidUpdate = wrapper.instance()['componentDidUpdate'];
+  // tslint:disable-next-line:no-string-literal
   wrapper.instance()['componentDidUpdate'] = function (prevProps: any) {
     fn();
     originalComponentDidUpdate.call(this, prevProps);
-  }
+  };
 }
 
 /**
