@@ -121,7 +121,7 @@ describe('ResizeGroup', () => {
     rootGetClientRectMock.returns({ width: 200 });
     measuredGetClientRectMock.returns({ width: 100 });
 
-    window.dispatchEvent(new Event("resize"));
+    window.dispatchEvent(new Event('resize'));
 
     expect(rootGetClientRectMock.callCount).to.equal(1);
     expect(measuredGetClientRectMock.callCount).to.equal(1);
