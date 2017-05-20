@@ -10,13 +10,13 @@ import { runPriorToComponentDidUpdate, getRenderSpy } from '../../utilities/test
 const styles: any = stylesImport;
 
 interface ITestScalingData {
-  scalingIndex: number
+  scalingIndex: number;
 }
 
 function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   return {
     scalingIndex: data.scalingIndex - 1
-  }
+  };
 }
 
 function getShallowWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onReduceData?: (data: ITestScalingData) => ITestScalingData) {
@@ -105,8 +105,8 @@ describe('ResizeGroup', () => {
 
     onReduceDataMock.reset();
     rootGetClientRectMock.returns({ width: 50 });
-    measuredGetClientRectMock.onFirstCall().returns({ width: 75 })
-    measuredGetClientRectMock.onSecondCall().returns({ width: 40 })
+    measuredGetClientRectMock.onFirstCall().returns({ width: 75 });
+    measuredGetClientRectMock.onSecondCall().returns({ width: 40 });
 
     wrapper.setState({ shouldMeasure: true });
 
@@ -120,7 +120,7 @@ describe('ResizeGroup', () => {
     rootGetClientRectMock.reset();
     measuredGetClientRectMock.reset();
     rootGetClientRectMock.returns({ width: 200 });
-    measuredGetClientRectMock.returns({ width: 100 })
+    measuredGetClientRectMock.returns({ width: 100 });
 
     window.dispatchEvent(new Event("resize"));
 
@@ -145,7 +145,7 @@ describe('ResizeGroup', () => {
     rootGetClientRectMock.returns({ width: 50 });
     measuredGetClientRectMock.onFirstCall().returns({ width: 100 });
     measuredGetClientRectMock.onSecondCall().returns({ width: 80 });
-    measuredGetClientRectMock.onThirdCall().returns({ width: 40 })
+    measuredGetClientRectMock.onThirdCall().returns({ width: 40 });
 
     wrapper.setState({ shouldMeasure: true });
 
@@ -164,9 +164,31 @@ describe('ResizeGroup', () => {
 
     wrapper.setState({ shouldMeasure: true });
 
-    // There are 2 renders. The first does a measure and a layout.
+    // There are 2 renders. The first does a measure and a layout, the second removes the measured.
     // Ideally, this can be optimized so that there is only 1 render, but this
     // test makes sure it doesn't get worse than this.
     expect(onRenderSpy.callCount).to.equal(2);
+  });
+
+  it('starts from the beginning when resizing', () => {
+    let data = { scalingIndex: 10 };
+    let { wrapper, onRenderDataMock } = getShallowWrapperWithMocks();
+
+    wrapper.setState({
+      renderedData: { scalingIndex: 5 },
+      shouldMeasure: false
+    });
+
+    onRenderDataMock.reset();
+    wrapper.setState({
+      shouldMeasure: true
+    });
+
+    expect(onRenderDataMock.getCall(0).args[0]).to.deep.equal(data);
+    expect(wrapper.state()).to.deep.equal({
+      renderedData: data,
+      measuredData: data,
+      shouldMeasure: false
+    });
   });
 });
