@@ -126,7 +126,7 @@ describe('ResizeGroup', () => {
     expect(rootGetClientRectMock.callCount).to.equal(1);
     expect(measuredGetClientRectMock.callCount).to.equal(1);
 
-    // Don't call onReduceData
+    // Don't call onReduceData since everything fits
     expect(onReduceDataMock.callCount).to.equal(0);
   });
 
