@@ -151,6 +151,11 @@ describe('ResizeGroup', () => {
     expect(onReduceDataMock.callCount).to.equal(2);
     expect(onReduceDataMock.getCall(0).args[0]).to.deep.equal(data);
     expect(onReduceDataMock.getCall(1).args[0]).to.deep.equal({ scalingIndex: 6 });
+    expect(wrapper.state()).to.deep.equal({
+      measuredData: data,
+      renderedData: { scalingIndex: 5 },
+      shouldMeasure: false
+    });
   });
 
   it('renders no more than twice when everything fits', () => {
