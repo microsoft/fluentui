@@ -26,6 +26,7 @@
     "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0"
   },
   "rushDependencies": {
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "@uifabric/styling": ">=0.0.1 <2.0.0"
   }
 }

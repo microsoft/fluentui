@@ -7,11 +7,7 @@
     "@types/react": "^15.0.16",
     "@types/react-dom": "^0.14.23",
     "@types/webpack-env": "^1.13.0",
-<<<<<<< HEAD
-    "source-map-loader": "0.2.1",
-=======
     "source-map-loader": "^0.2.1",
->>>>>>> 1ae9f34c4ead072ab2d74a1d032b7dc6f4e18251
     "ts-loader": "^2.0.1",
     "typescript": "^2.2.2",
     "webpack": "^2.2.1",
@@ -21,6 +17,6 @@
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0"
   },
   "rushDependencies": {
-    "office-ui-fabric-react": ">=2.23.0 <13.0.0"
+    "office-ui-fabric-react": ">=2.31.0 <3.0.0"
   }
 }

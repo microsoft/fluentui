@@ -22,5 +22,8 @@
     "react-dom": "^15.4.2",
     "source-map-loader": "0.2.1",
     "typescript": "2.2.2"
+  },
+  "rushDependencies": {
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0"
   }
 }
