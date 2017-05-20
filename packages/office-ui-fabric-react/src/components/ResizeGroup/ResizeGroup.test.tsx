@@ -1,11 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { shallow, mount, ReactWrapper } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
-import { IResizeGroupProps } from './ResizeGroup.Props';
 import { runPriorToComponentDidUpdate, getRenderSpy } from '../../utilities/test';
 const styles: any = stylesImport;
 
@@ -172,7 +171,7 @@ describe('ResizeGroup', () => {
 
   it('starts from the beginning when resizing', () => {
     let data = { scalingIndex: 10 };
-    let { wrapper, onRenderDataMock } = getShallowWrapperWithMocks();
+    let { wrapper, onRenderDataMock } = getShallowWrapperWithMocks(data);
 
     wrapper.setState({
       renderedData: { scalingIndex: 5 },
@@ -184,7 +183,12 @@ describe('ResizeGroup', () => {
       shouldMeasure: true
     });
 
-    expect(onRenderDataMock.getCall(0).args[0]).to.deep.equal(data);
+    // This is a scenario where too many renders take place,
+    // but the important thing here is that the last onRender data
+    // starts from the beginning to make sure we are making maximal
+    // use of the screen real estate.
+    expect(onRenderDataMock.callCount).to.equal(3);
+    expect(onRenderDataMock.getCall(2).args[0]).to.deep.equal(data);
     expect(wrapper.state()).to.deep.equal({
       renderedData: data,
       measuredData: data,
