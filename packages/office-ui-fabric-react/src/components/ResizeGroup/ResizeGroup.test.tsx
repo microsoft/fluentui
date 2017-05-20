@@ -8,7 +8,17 @@ import * as stylesImport from './ResizeGroup.scss';
 import { IResizeGroupProps } from './ResizeGroup.Props';
 const styles: any = stylesImport;
 
-function getShallowWrapperWithMocks(data: any = { a: 1 }, onReduceData?: (any) => any) {
+interface ITestScalingData {
+  scalingIndex: number
+}
+
+function onReduceScalingData(data: ITestScalingData): ITestScalingData {
+  return {
+    scalingIndex: data.scalingIndex - 1
+  }
+}
+
+function getShallowWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onReduceData?: (data: ITestScalingData) => ITestScalingData) {
   const onReduceDataMock = sinon.spy(onReduceData);
   const onRenderDataMock = sinon.spy();
 
@@ -125,14 +135,15 @@ describe('ResizeGroup', () => {
 
   it('will continue to shrink until it fits', () => {
     let data = { scalingIndex: 7 };
+
     let { wrapper,
       onReduceDataMock,
       rootGetClientRectMock,
-      measuredGetClientRectMock } = getShallowWrapperWithMocks(data, (data) => { return { scalingIndex: data.scalingIndex - 1 } });
+      measuredGetClientRectMock } = getShallowWrapperWithMocks(data, onReduceScalingData);
 
     onReduceDataMock.reset();
-    rootGetClientRectMock.reset();
     measuredGetClientRectMock.reset();
+    rootGetClientRectMock.reset();
     rootGetClientRectMock.returns({ width: 50 });
     measuredGetClientRectMock.onFirstCall().returns({ width: 100 });
     measuredGetClientRectMock.onSecondCall().returns({ width: 80 });
