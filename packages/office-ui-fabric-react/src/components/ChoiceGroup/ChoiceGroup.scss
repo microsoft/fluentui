@@ -110,10 +110,14 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 // The choiceField field
+.fieldWrapper {
+   margin-top: 8px;
+}
+
 .field {
   display: inline-block;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 0;
   position: relative;
   vertical-align: top;
   user-select: none;

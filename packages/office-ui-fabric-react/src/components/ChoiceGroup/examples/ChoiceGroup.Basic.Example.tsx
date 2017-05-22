@@ -26,7 +26,12 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           options={ [
             {
               key: 'A',
-              text: 'Option A'
+              text: 'Option A',
+              onRenderField: (props, render) => {
+                return (
+                  <div style={ { display: 'flex' } }>{ render(props) } <span> (Customized)</span></div>
+                )
+              }
             },
             {
               key: 'B',

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IChoiceGroup {
 
@@ -57,6 +58,11 @@ export interface IChoiceGroupOption {
   text: string;
 
   /**
+   * Optional override of option render
+   */
+  onRenderField?: IRenderFunction<IChoiceGroupField>;
+
+  /**
    * The Icon component props for choice field
    */
   iconProps?: IIconProps;
@@ -101,4 +107,22 @@ export interface IChoiceGroupOption {
    * @deprecated
    */
   isDisabled?: boolean;
+}
+
+export interface IChoiceGroupField extends IChoiceGroupOption {
+  /**
+   * Boolean to allow onRenderOption access to state
+   */
+  checked?: boolean;
+
+  /**
+   * Pass ID through to render function
+   */
+  id?: boolean;
+
+  /**
+   * Pass Label ID through to render function
+   */
+  labelId?: boolean;
+
 }
