@@ -11,8 +11,8 @@ import {
 } from '../../Utilities';
 
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
-
-import { CommandButton } from '../../Button';
+import { SearchBox } from '../../SearchBox';
+import { IconButton, DefaultButton } from '../../Button';
 import { OverflowSet } from '../../OverflowSet';
 import { ResizeGroup } from '../../ResizeGroup';
 
@@ -37,7 +37,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText, className, items, overflowItems, farItems } = this.props;
+    const {
+      isSearchBoxVisible,
+      searchPlaceholderText,
+      searchBoxProps,
+      className,
+      items,
+      overflowItems,
+      farItems
+    } = this.props;
 
     const data = {
       primary: items,
@@ -55,13 +63,19 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
         onRenderData={ (data) => {
           return (
             <div className={ css('ms-CommandBar', styles.root) }>
+              { isSearchBoxVisible &&
+                <SearchBox
+                  {...searchBoxProps }
+                  className={ css(styles.search, searchBoxProps.className) }
+                  labelText={ searchPlaceholderText || 'Search' } />
+              }
               <OverflowSet
                 className={ css(styles.primarySet) }
                 items={ data.primary }
                 overflowItems={ data.overflow.length ? data.overflow : null }
                 onRenderItem={ (item) => {
                   return (
-                    <CommandButton
+                    <DefaultButton
                       text={ item.name }
                       iconProps={ { iconName: item.icon } }
                       onClick={ item.onClick }
@@ -71,9 +85,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 } }
                 onRenderOverflowButton={ (overflowItems) => {
                   return (
-                    <CommandButton
+                    <IconButton
                       className={ css(styles.overflowButton) }
                       menuProps={ { items: overflowItems } }
+                      menuIconProps={ { iconName: 'More' } }
                     />
                   );
                 } }
@@ -83,7 +98,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 items={ data.farItems }
                 onRenderItem={ (item) => {
                   return (
-                    <CommandButton
+                    <DefaultButton
                       text={ item.name }
                       iconProps={ { iconName: item.icon } }
                       onClick={ item.onClick }

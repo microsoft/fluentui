@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu/index';
+import { ISearchBoxProps } from '../../SearchBox';
 
 export interface ICommandBar {
   /**
@@ -25,6 +26,11 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
    * Placeholder text to display in the search box
    */
   searchPlaceholderText?: string;
+
+  /**
+   * Props to be passed into SearchBox
+   */
+  searchBoxProps?: ISearchBoxProps;
 
   /**
    * Items to render

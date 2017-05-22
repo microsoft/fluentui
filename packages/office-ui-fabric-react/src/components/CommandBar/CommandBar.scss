@@ -11,10 +11,15 @@
   .overflowButton {
     padding-left: 0;
     padding-right: 0;
-    min-width: 0;
+    min-width: 44px;
+  }
+  .search {
+    margin: 0;
+    width: 208px;
   }
 }
 
 .primarySet {
   flex-grow: 1;
 }
+
