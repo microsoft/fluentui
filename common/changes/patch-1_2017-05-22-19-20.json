@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb\"",
+      "comment": "FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element.",
       "type": "patch"
     },
     {
@@ -17,9 +17,14 @@
     },
     {
       "comment": "",
+      "packageName": "@uifabric/fabric-website",
+      "type": "none"
+    },
+    {
+      "comment": "",
       "packageName": "@uifabric/example-app-base",
       "type": "none"
     }
   ],
-  "email": "peterdunlop2519@gmail.com"
+  "email": "prannayb@microsoft.com"
 }
