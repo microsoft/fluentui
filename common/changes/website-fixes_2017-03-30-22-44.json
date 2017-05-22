@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding a constant for all the test images and replacing the hard coded  example paths",
+      "type": "patch"
+    }
+  ],
+  "email": "miljo@microsoft.com"
+}
