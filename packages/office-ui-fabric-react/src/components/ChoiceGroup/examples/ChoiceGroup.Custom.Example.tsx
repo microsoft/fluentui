@@ -47,7 +47,7 @@ export class ChoiceGroupCustomExample extends React.Component<any, any> {
             {
               key: 'C',
               text: 'Option C',
-              disabled: false
+              disabled: true
             },
             {
               key: 'D',

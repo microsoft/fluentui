@@ -79,7 +79,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
             let optionProps = {
               checked: option.key === keyChecked,
-              disabled: option.disabled || this.props.disabled,
+              disabled: option.disabled || option.isDisabled || this.props.disabled,
               id: this._id,
               labelId: this._labelId
             };
@@ -101,7 +101,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   type='radio'
                   name={ this.props.name || this._id }
                   disabled={ option.isDisabled || option.disabled || this.props.disabled }
-                  checked={ option.checked }
+                  checked={ option.key === keyChecked }
                   required={ required }
                   onChange={ this._onChange.bind(this, option) }
                   onFocus={ this._onFocus.bind(this, option) }
