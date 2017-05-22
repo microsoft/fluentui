@@ -347,4 +347,24 @@ describe('TextField', () => {
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).to.equal(2);
   });
+
+  it('should select a range of text', () => {
+    let textField: TextField;
+    const initialValue = 'initial value';
+
+    const onSelect = () => {
+      const selectedText = window.getSelection().toString();
+      expect(selectedText).to.equal(initialValue);
+    };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        ref={ (t) => textField = t }
+        defaultValue={ initialValue }
+        onSelect={ onSelect }
+      />
+    );
+
+    textField.setSelectionRange(0, initialValue.length);
+  });
 });

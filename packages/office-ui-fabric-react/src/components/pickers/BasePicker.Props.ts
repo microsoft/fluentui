@@ -43,12 +43,16 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
-
   /**
    * AutoFill input native props
    * @default undefined
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
+  /**
+   * Flag for disabling the picker.
+   * @default false
+   */
+  disabled?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
