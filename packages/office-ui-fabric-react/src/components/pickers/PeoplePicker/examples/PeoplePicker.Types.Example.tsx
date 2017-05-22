@@ -36,13 +36,12 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   showRemoveButtons: true
 };
 
-// searchingText: (suggestionProps: ISuggestionsProps) => `Searching for ${suggestionProps.i}`
-
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
-  searchForMoreText: 'Search directory',
+  searchForMoreText: 'Load all Results',
   resultsMaximumNumber: 10,
   resultsFooterFull: 'Top 10 results',
-  resultsFooter: 'No additional results'
+  resultsFooter: 'No additional results',
+  searchingText: 'Searching...'
 };
 
 const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limitedSearchAdditionalProps, suggestionProps);
@@ -184,7 +183,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   public _renderPreselectedItemsPicker() {
     return (
-      <NormalPeoplePicker
+      <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
@@ -198,10 +197,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   public _renderLimitedSearch() {
-    let limitedSearchSuggestionProps = suggestionProps;
-    limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
     return (
-      <NormalPeoplePicker
+      <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
         onInputFocus={ this._returnMostRecentlyUsedWithLimit }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
@@ -221,13 +218,11 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
     if (indexPeopleList >= 0) {
       let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
-
       this.setState({ peopleList: newPeople });
     }
 
     if (indexMostRecentlyUsed >= 0) {
       let newSuggestedPeople: IPersonaProps[] = mostRecentlyUsed.slice(0, indexMostRecentlyUsed).concat(mostRecentlyUsed.slice(indexMostRecentlyUsed + 1));
-
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
@@ -239,7 +234,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-
       return this._filterPromise(filteredPersonas);
     } else {
       return [];

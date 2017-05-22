@@ -20,7 +20,9 @@ import {
   IBasePickerProps,
   BasePickerListBelow,
   BaseAutoFill,
-  IPickerItemProps
+  IPickerItemProps,
+  ISuggestionsProps,
+  ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
 import { CommandButton } from '../../../Button';
 import './Picker.CustomResult.Example.scss';
@@ -264,7 +266,7 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return (<div> { documentProps.documentTitleProps.title } </div>);
 };
 
-export const SuggestedBigItem: (documentProps: any, itemProps: any) => JSX.Element = (documentProps: any, itemProps: any) => {
+export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
   let {
     documentPreviewProps,
     documentTitleProps

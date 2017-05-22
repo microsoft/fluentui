@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
+import { IPersonaProps } from '../Persona/Persona.Props';
 import { IRenderFunction } from '../../Utilities';
 
 // Type T is the type of the item that is displayed
@@ -47,22 +48,19 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
-
   /**
    * AutoFill input native props
    * @default undefined
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
-
-  onRemove?: (item?: T) => void;
-
   /**
    * A callback for when a persona is removed from the suggestion list
    */
-  onRemoveSuggestion?: (item: any) => void;
-
+  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  /**
+   * The text to display while searching for more results in a limited sugesstions list
+   */
   searchingText?: ((props: { input: string }) => string) | string;
-
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -103,15 +101,23 @@ export interface IBasePickerSuggestionsProps {
    */
   loadingText?: string;
   /**
-   * The text to display while the results are loading.
+   * The text to display while searching for more results in a limited sugesstions list.
    */
   searchingText?: string;
-
+  /**
+   * Optional text shown at the end of the suggestions list when the list when there are more items than then number specified by resultsMaximumNumber.
+   */
   resultsFooterFull?: string;
-
+  /**
+   * Optional text shown at the end of the suggestions list when all relevant items are currently visible.
+   */
   resultsFooter?: string;
-
+  /**
+   * Maximum number of suggestions to show in the full suggestion list.
+   */
   resultsMaximumNumber?: number;
-
+  /**
+   * Indicates whether to show a button with each suggestion to remove that suggestion.
+   */
   showRemoveButtons?: boolean;
 }

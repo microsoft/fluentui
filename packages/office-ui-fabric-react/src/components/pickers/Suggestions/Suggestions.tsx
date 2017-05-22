@@ -54,9 +54,6 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
   }
 }
 
-// { ...suggestionModel.item as any }
-//<RenderSuggestion { ...suggestionModel.item } />
-
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   protected _searchForMoreButton: IButton;

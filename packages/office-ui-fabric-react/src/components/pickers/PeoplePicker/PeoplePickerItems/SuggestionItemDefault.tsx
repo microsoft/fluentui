@@ -27,8 +27,7 @@ export const SuggestionItemSmall: (persona: IPersonaProps, suggestionProps: any)
     <div className={ css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent) }>
       <Persona
         { ...personaProps }
-        secondaryText={ '' }
-        presence={ PersonaPresence.none }
+        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
         size={ PersonaSize.extraExtraSmall }
         className={ css('ms-PeoplePicker-Persona', styles.peoplePickerPersona) }
       />

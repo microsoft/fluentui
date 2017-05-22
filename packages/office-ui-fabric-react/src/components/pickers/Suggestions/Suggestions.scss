@@ -6,7 +6,7 @@
 
 .suggestionsItem {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   box-sizing: border-box;
   width: 100%;
   position: relative;
@@ -21,13 +21,20 @@
     &:hover {
       background: $ms-color-neutralTertiaryAlt;
     }
+
+    .closeButton {
+      &:hover {
+        background: $ms-color-neutralTertiary;
+        color: $ms-color-black;
+      }
+    }
   }
 }
 
 .searchMoreButton {
   @include button-reset();
   margin: 0;
-  @include padding-left(20px);
+  @include padding-left(8px);
   position: relative;
   border-top: 1px solid $ms-color-neutralLight;
   height: 40px;
@@ -54,9 +61,9 @@
 }
 
 .suggestionsTitle {
+  padding: 0 12px;
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  text-align: center;
   text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
@@ -78,7 +85,7 @@
 
 .suggestionsSpinner {
   margin: 5px 0;
-  @include padding-left(24px);
+  @include padding-left(14px);
   @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
@@ -102,7 +109,7 @@
 
 .closeButton {
   padding: 0 4px;
-  height: 42px;
+  height: auto;
   width: 32px;
 
   &:hover {

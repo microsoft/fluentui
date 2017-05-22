@@ -2,14 +2,14 @@
 
 .personaContainer {
   @include focus-border();
-  @include border-radius(15px, 15px, 15px, 15px);
+  border-radius: 15px;
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
   margin: 1px;
   cursor: default;
   user-select: none;
-  max-width: 100%;
+  max-width: 180px;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -42,11 +42,11 @@
   }
 
   .removeButton {
-    @include border-radius(15px, 15px, 15px, 15px);
+    border-radius: 15px;
     flex: 0 0 auto;
-    width: 30px;
-    height: 30px;
-    flex-basis: 32px;
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
 
     &:hover {
       background: $ms-color-neutralTertiaryAlt;

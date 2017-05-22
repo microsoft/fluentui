@@ -15,6 +15,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
+import { IPersonaProps } from '../Persona/Persona.Props';
 import * as stylesImport from './BasePicker.scss';
 const styles: any = stylesImport;
 
@@ -213,10 +214,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.setState({
         suggestionsLoading: true
       });
-      // Why do we set a timer delay here?  Shouldn't we set the suggestionsLoading to true ASAP?
-      if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => console.log('test'), 500);
-      }
 
       // Clear suggestions
       this.suggestionStore.updateSuggestions([], false);
@@ -251,7 +248,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (Array.isArray(suggestionsArray)) {
       this.resolveNewValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      // Why do we set a timer delay here?  Shouldn't we set the suggestionsLoading to true ASAP?
       if (!this.loadingTimer) {
         this.loadingTimer = this._async.setTimeout(() => this.setState({
           suggestionsLoading: true
@@ -314,7 +310,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
+  protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) {
     if (this.props.onRemoveSuggestion) {
       this.props.onRemoveSuggestion(item);
     }
@@ -410,11 +406,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onGetMoreResults() {
-    console.log(this.state.isSearching);
     this.setState({
       isSearching: true
     }, () => {
-      console.log(this.state.isSearching);
       if (this.props.onGetMoreResults) {
         let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
         let suggestionsArray: T[] = suggestions as T[];
@@ -426,10 +420,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         } else if (suggestionsPromiseLike.then) {
           suggestionsPromiseLike.then((newSuggestions: T[]) => {
             this.updateSuggestions(newSuggestions);
-            this.setState({ isSearching: false },
-              () => {
-                console.log(this.state.isSearching);
-              });
+            this.setState({ isSearching: false });
           });
         }
       }

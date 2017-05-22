@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
 import { IRenderFunction } from '../../../Utilities';
+import { IPersonaProps } from '../../Persona/Persona.Props';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion: (props: any, suggestionItemProps: any) => JSX.Element;
+  onRenderSuggestion: (props: T, suggestionItemProps: any) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked
    */
@@ -69,22 +70,36 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   loadingText?: string;
   /**
-   * The text to display while searching for more results
+   * The text to display while searching for more results in a limited sugesstions list.
    */
   searchingText?: string;
-
+  /**
+   * Indicates if a short list of recent suggestions should be shown.
+   */
   isMostRecentlyUsedVisible?: boolean;
-
-  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
-
+  /**
+   * Function to fire when one of the optional remove buttons on a suggestion is clicked.
+   */
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
+  /**
+   * Indicates if the text in resultsFooter or resultsFooterFull should be shown at the end of the suggestion list.
+   */
   isResultsFooterVisible?: boolean;
-
+  /**
+   * Maximum number of suggestions to show in the full suggestion list.
+   */
   resultsMaximumNumber?: number;
-
+  /**
+   * Optional text shown at the end of the suggestions list when the list when there are more items than then number specified by resultsMaximumNumber.
+   */
   resultsFooterFull?: string;
-
+  /**
+   * Optional text shown at the end of the suggestions list when all relevant items are currently visible.
+   */
   resultsFooter?: string;
-
+  /**
+   * Indicates whether to show a button with each suggestion to remove that suggestion.
+   */
   showRemoveButtons: boolean;
 }
 
