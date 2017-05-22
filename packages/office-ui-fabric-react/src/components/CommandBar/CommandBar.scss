@@ -16,6 +16,19 @@
   .search {
     margin: 0;
     width: 208px;
+    background: $ms-color-white;
+    border-color: transparent;
+    border-right-color: $ms-color-neutralLight;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      background: $ms-color-neutralLight;
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      right: 10px;
+    }
   }
 }
 

@@ -1,13 +1,8 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
-  buttonProperties,
-  anchorProperties,
   css,
-  divProperties,
   getId,
-  getNativeProps
 } from '../../Utilities';
 
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
@@ -18,9 +13,6 @@ import { ResizeGroup } from '../../ResizeGroup';
 
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
-
-
-
 
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
   public static defaultProps = {
@@ -47,14 +39,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       farItems
     } = this.props;
 
-    const data = {
+    const commandBardata = {
       primary: items,
       overflow: overflowItems || [],
       farItems: farItems || []
-    }
+    };
+
     return (
       <ResizeGroup
-        data={ data }
+        data={ commandBardata }
         onReduceData={ (currentdata) => {
           let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
           let primary = currentdata.primary.slice(0, -1);
@@ -83,11 +76,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                     />
                   );
                 } }
-                onRenderOverflowButton={ (overflowItems) => {
+                onRenderOverflowButton={ (renderedItems) => {
                   return (
                     <IconButton
                       className={ css(styles.overflowButton) }
-                      menuProps={ { items: overflowItems } }
+                      menuProps={ { items: renderedItems } }
                       menuIconProps={ { iconName: 'More' } }
                     />
                   );
@@ -105,7 +98,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                     />
                   );
                 } }
-                onRenderOverflowButton={ (overflowItems) => {
+                onRenderOverflowButton={ (renderedItems) => {
                   return (
                     null
                   );
