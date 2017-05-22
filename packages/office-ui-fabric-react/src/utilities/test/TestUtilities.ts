@@ -9,6 +9,11 @@ import * as sinon from 'sinon';
 export function runPriorToComponentDidUpdate(wrapper: ReactWrapper<any, any>, fn: () => void) {
   // tslint:disable-next-line:no-string-literal
   const originalComponentDidUpdate = wrapper.instance()['componentDidUpdate'];
+
+  if (typeof originalComponentDidUpdate !== 'function') {
+    throw new Error('Tried to override componentDidUpdate on a ReactWrapper that does not have that function');
+  }
+
   // tslint:disable-next-line:no-string-literal
   wrapper.instance()['componentDidUpdate'] = function (prevProps: any) {
     fn();
