@@ -6,8 +6,6 @@ import {
 } from '../../Utilities';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Modal } from '../../Modal';
-import { IconButton } from '../../Button';
-import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';
 const styles: any = stylesImport;
@@ -58,6 +56,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       subText,
       title,
       type,
+      contentClassName,
+      topButtonsProps
     } = this.props;
     let { id } = this.state;
 
@@ -88,11 +88,12 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       >
 
         <DialogContent
-          id={ this.state.id }
           onDismiss={ onDismiss }
           showCloseButton={ !isBlocking && type !== DialogType.largeHeader }
           title={ title }
           subText={ subText }
+          className={ contentClassName }
+          topButtonsProps={ topButtonsProps }
         >
           { this.props.children }
         </DialogContent>

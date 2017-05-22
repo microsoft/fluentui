@@ -13,7 +13,7 @@ export interface IDialogContentProps extends React.Props<DialogContent>, IWithRe
   /**
   * Show an 'x' close button in the upper-right corner
   */
-  showCloseButton?: boolean,
+  showCloseButton?: boolean;
 
   /**
    * Other top buttons that will show up next to the close button
@@ -39,8 +39,6 @@ export interface IDialogContentProps extends React.Props<DialogContent>, IWithRe
   * The title text to display at the top of the dialog.
   */
   title?: string;
-
-  id?: string;
 }
 
 export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {

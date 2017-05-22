@@ -4,8 +4,7 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { IDialogContentProps, DialogType } from './Dialog.Props';
-import { Modal } from '../../Modal';
+import { IDialogContentProps } from './Dialog.Props';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -29,7 +28,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
     super(props);
 
     this.state = {
-      id: props.id || getId('Dialog'),
+      id: getId('Dialog'),
     };
   }
 
@@ -39,12 +38,12 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
       closeButtonAriaLabel,
       onDismiss,
       subText,
-      title,
-      id
+      title
     } = this.props;
-    let subTextContent;
+    let { id } = this.state;
 
     let groupings = this._groupChildren();
+    let subTextContent;
     if (subText) {
       subTextContent = <p className={ css('ms-Dialog-subText', styles.subText) } id={ id + '-subText' }>{ subText }</p>;
     }
