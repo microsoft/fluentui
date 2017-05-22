@@ -94,8 +94,6 @@ describe('ResizeGroup', () => {
 
     wrapper.setProps({
       data: { a: 2 },
-      onReduceData: onReduceData,
-      onRenderData: onRenderData
     });
 
     // onRenderData should get called to measure and to render when props are updated.
