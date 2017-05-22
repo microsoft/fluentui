@@ -225,6 +225,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include padding-left(0px);
   @include ms-bgColor-neutralLighter;
 
+  .fieldWrapper {
+    margin-top: 0;
+  }
   .fieldIsImage, .fieldIsIcon {
     $radioButtonSpacing: 3px;
     $radioButtonInnerSize: 5px;

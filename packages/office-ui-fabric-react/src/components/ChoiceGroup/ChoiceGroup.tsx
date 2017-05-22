@@ -82,7 +82,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               disabled: option.disabled || this.props.disabled,
               id: this._id,
               labelId: this._labelId
-            }
+            };
 
             return (
               <div
