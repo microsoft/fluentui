@@ -22,6 +22,7 @@ export interface IButtonClassNames {
   variant?: string;
   isDisabled?: string;
   isEnabled?: string;
+  isToggled?: string;
   description?: string;
   flexContainer?: string;
   icon?: string;
@@ -55,7 +56,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       base: 'ms-Button',
       variant: '',
       isEnabled: '',
-      isDisabled: ''
+      isDisabled: '',
+      isToggled: ''
     }
   };
 
@@ -82,12 +84,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public render(): JSX.Element {
-    const { description, ariaLabel, ariaDescription, href, disabled, classNames } = this.props;
+    const { description, ariaLabel, ariaDescription, href, disabled, toggled, classNames } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
-      assign({}, this.props.rootProps, this.props),
+      assign(
+        renderAsAnchor ? {} : { type: 'button' },
+        this.props.rootProps,
+        this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
         'disabled' // Let disabled buttons be focused and styled as disabled.
@@ -119,21 +124,29 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           {
             'disabled': disabled,
             [classNames.isDisabled]: disabled,
-            [classNames.isEnabled]: !disabled
+            [classNames.isEnabled]: !disabled,
+            [classNames.isToggled]: toggled
           }),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled
+        'aria-disabled': disabled,
+        'aria-pressed': toggled
       }
     );
 
     // Override onClick if contextualMenuItems passed in. Eventually allow _onToggleMenu to
     // be assigned to split button click if onClick already has a value
     if (this.props.menuProps) {
-      assign(buttonProps, { 'onClick': this._onToggleMenu });
+      assign(
+        buttonProps,
+        {
+          'onClick': this._onToggleMenu,
+          'aria-expanded': this.state.menuProps ? true : false
+        }
+      );
     }
 
     return this._onRenderContent(tag, buttonProps);
@@ -277,10 +290,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     return (
       <ContextualMenu
-        className={ css('ms-BaseButton-menuHost') }
         isBeakVisible={ true }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        items={ menuProps.items }
+        {...menuProps}
+        className={ css('ms-BaseButton-menuhost', menuProps.className) }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }

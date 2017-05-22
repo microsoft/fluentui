@@ -15,9 +15,14 @@
         "src"
       ]
     },
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "types": [
-      "webpack-env",
-      "mocha"
+      "chai",
+      "mocha",
+      "webpack-env"
     ]
   },
   "include": [

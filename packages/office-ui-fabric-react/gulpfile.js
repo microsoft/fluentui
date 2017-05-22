@@ -46,7 +46,7 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
 let rules = Object.assign(
   {},
   require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
 build.tslint.setConfig({ lintConfig: { rules } });

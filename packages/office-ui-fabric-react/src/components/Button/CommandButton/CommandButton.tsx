@@ -12,6 +12,7 @@ const CLASS_NAMES: IButtonClassNames = {
   menuIcon: styles.icon,
   isDisabled: styles.isDisabled,
   isEnabled: styles.isEnabled,
+  isToggled: styles.isToggled,
   label: styles.label,
   root: styles.root,
   flexContainer: styles.flexContainer

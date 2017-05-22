@@ -1,6 +1,84 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 09 May 2017 10:09:56 GMT and should not be manually modified.
+This log was last generated on Fri, 19 May 2017 10:20:22 GMT and should not be manually modified.
+
+## 2.31.0
+Fri, 19 May 2017 10:20:22 GMT
+
+### Minor changes
+
+- Adding the ability for buttons to be toggled
+
+### Patches
+
+- Searchbox: Updated border styles to better support high contrast mode
+- Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb"
+
+## 2.30.2
+Thu, 18 May 2017 10:09:58 GMT
+
+### Patches
+
+- Adds outlines to SearchBox in HC modes
+- BaseButton: now respects the isBeakVisible property on the menu props
+- Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems
+
+## 2.30.1
+Tue, 16 May 2017 22:39:55 GMT
+
+### Patches
+
+- Change pickeritemprops to correctly extend htmlattributes
+- List: Add scrollToIndex to public interface
+
+## 2.30.0
+Tue, 16 May 2017 21:47:38 GMT
+
+### Minor changes
+
+- DatePicker: adding a disabled property support.
+
+### Patches
+
+- Pickers: Adds ability to disable pickers
+- Adjust styling on menu drop shadows.
+- Button: Added aria-expanded if props.menuProps. Changes from false to true when opened
+- Button: default type to 'button'
+
+## 2.29.0
+Mon, 15 May 2017 10:19:13 GMT
+
+### Minor changes
+
+- Dropdown: Add ability to set custom props on the Dropdown's Callout
+
+### Patches
+
+- Make name prop optional on ContextualMenu
+- Date picker: Reduce min-width for the holder component
+
+## 2.28.0
+Fri, 12 May 2017 10:19:14 GMT
+
+### Minor changes
+
+- OverflowSet: Fixed issue that prevented it from working when there are no overflow items.
+
+## 2.27.3
+Thu, 11 May 2017 17:07:55 GMT
+
+### Patches
+
+- TextField: font size of textfield reverted to 14px.
+
+## 2.27.2
+Thu, 11 May 2017 10:20:16 GMT
+
+### Patches
+
+- Button: Add button example
+- ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own
+- Lay some groundwork for converting to semantic slots, starting with input text fields.
 
 ## 2.27.1
 Tue, 09 May 2017 10:09:56 GMT
