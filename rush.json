@@ -28,7 +28,8 @@
       "projectFolder": "packages/styling",
       "shouldPublish": true,
       "cyclicDependencyProjects": [
-        "office-ui-fabric-react"
+        "office-ui-fabric-react",
+        "@uifabric/example-app-base"
       ]
     },
     {
@@ -50,6 +51,16 @@
       "packageName": "@uifabric/fabric-website",
       "projectFolder": "apps/fabric-website",
       "shouldPublish": true
+    },
+    {
+      "packageName": "test-bundle-button",
+      "projectFolder": "apps/test-bundle-button",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "office-ui-fabric-react-tslint",
+      "projectFolder": "packages/office-ui-fabric-react-tslint",
+      "shouldPublish": false
     }
   ]
 }
