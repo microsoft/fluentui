@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
-import { runPriorToComponentDidUpdate, getRenderSpy } from '../../utilities/test';
+import { runPriorToComponentDidUpdate, setRenderSpy } from '../../utilities/test';
 const styles: any = stylesImport;
 
 interface ITestScalingData {
@@ -167,7 +167,7 @@ describe('ResizeGroup', () => {
     rootGetClientRectMock.returns({ width: 100 });
     measuredGetClientRectMock.returns({ width: 75 });
 
-    let onRenderSpy = getRenderSpy(wrapper);
+    let onRenderSpy = setRenderSpy(wrapper);
 
     wrapper.setState({ shouldMeasure: true });
 
