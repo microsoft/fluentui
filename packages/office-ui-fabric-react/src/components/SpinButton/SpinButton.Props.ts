@@ -17,12 +17,6 @@ export interface ISpinButtonProps {
   value?: string;
 
   /**
-   * The width of the SpinButton (including the optional label).
-   * @default 100%
-   */
-  width?: string;
-
-  /**
    * The min value of the SpinButton.
    * @default 0
    */
@@ -105,5 +99,5 @@ export interface ISpinButtonProps {
 }
 
 export interface ISpinButton {
-  value?: number;
+  value?: string;
 }

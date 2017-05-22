@@ -6,27 +6,28 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
     let suffix = ' cm';
 
     return (
-      < SpinButton
-        width={ '120px' }
-        label='SpinButton with custom implementation:'
-        value={ '7' + suffix }
-        onValidate={ (value: string) => {
-          value = this.removeSuffix(value, suffix);
-          if (isNaN(+value)) {
-            return '0' + suffix;
-          }
+      <div style={ { width: '203px' } }>
+        <SpinButton
+          label='SpinButton with custom implementation:'
+          value={ '7' + suffix }
+          onValidate={ (value: string) => {
+            value = this.removeSuffix(value, suffix);
+            if (isNaN(+value)) {
+              return '0' + suffix;
+            }
 
-          return String(value) + suffix;
-        } }
-        onIncrement={ (value: string) => {
-          value = this.removeSuffix(value, suffix);
-          return String(+value + 2) + suffix;
-        } }
-        onDecrement={ (value: string) => {
-          value = this.removeSuffix(value, suffix);
-          return String(+value - 2) + suffix;
-        } }
-      />
+            return String(value) + suffix;
+          } }
+          onIncrement={ (value: string) => {
+            value = this.removeSuffix(value, suffix);
+            return String(+value + 2) + suffix;
+          } }
+          onDecrement={ (value: string) => {
+            value = this.removeSuffix(value, suffix);
+            return String(+value - 2) + suffix;
+          } }
+        />
+      </div>
     );
   }
 

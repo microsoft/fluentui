@@ -113,7 +113,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       label,
       min,
       max,
-      width: spinbuttonWidth,
       labelPosition,
       iconProps,
       incrementButtonIcon,
@@ -126,11 +125,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.state;
 
     return (
-      <div className={ styles.SpinButtonContainer } style={ spinbuttonWidth && { width: spinbuttonWidth } }>
+      <div className={ styles.SpinButtonContainer }>
         { labelPosition !== Position.bottom && <div className={ styles.labelWrapper } style={ this._labelDirectionHelper() }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
-            < Label
+            <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
               className={ styles.SpinButtonLabel }>{ label }
@@ -138,7 +137,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           }
         </div> }
         <div className={ css(styles.SpinButtonWrapper, ((labelPosition === Position.top || labelPosition === Position.bottom) ? styles.topBottom : '')) }>
-          < input
+          <input
             value={ value }
             id={ this._inputId }
             onChange={ this._onChange }
@@ -181,8 +180,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               onMouseUp={ this._stop }
               tabIndex={ -1 }
             />
-          </span >
-        </div >
+          </span>
+        </div>
         { labelPosition === Position.bottom && <div className={ styles.labelWrapper } style={ this._labelDirectionHelper() }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
@@ -194,7 +193,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           }
         </div>
         }
-      </ div >
+      </div>
     );
   }
 
