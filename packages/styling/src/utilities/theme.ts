@@ -37,8 +37,8 @@ export function loadTheme(theme: ITheme): void {
   _theme.fonts = assign({}, _theme.fonts, theme.fonts);
 }
 
-// Generates all the semantic slot colors based on the palette.
-// (because right now our theming is still driven by the default Fabric palette)
+// Generates all the semantic slot colors based on the Fabric palette.
+// We'll use these as fallbacks for semantic slots that the passed in theme did not define.
 function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
   return {
     bodyBackground: p.white,

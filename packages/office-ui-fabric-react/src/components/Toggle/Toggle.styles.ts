@@ -10,34 +10,23 @@ import { memoize } from '../../Utilities';
 export const getStyles = memoize((
   theme: ITheme = getTheme()): IToggleStyles => {
 
-  /*root?: IStyle,
+  let { semanticColors } = theme;
 
-  toggle?: IStyle,
-  toggleOn?: IStyle,
-  toggleDisabled?: IStyle,
+  let toggleBackgroundOffColor = semanticColors.bodyBackground;
+  let toggleBackgroundOnColor = semanticColors.inputBackgroundSelected;
+  let toggleBackgroundOnHoverColor = semanticColors.inputBackgroundSelectedHover;
+  let toggleBackgroundOnDisabledColor = semanticColors.disabledText;
 
-  thumb?: IStyle,
-  thumbOn?: IStyle,
-  thumbDisabled?: IStyle
-  */
+  let thumbOffColor = semanticColors.inputBorderHover;
+  let thumbOnColor = semanticColors.bodyBackground;
+  let thumbOffDisabledColor = semanticColors.disabledText;
+  let thumbOnDisabledColor = semanticColors.disabledBackground;
 
-  let sc = theme.semanticColors;
+  let toggleBorderOffColor = semanticColors.inputBorder;
+  let toggleBorderOffHoverColor = semanticColors.inputBorderHover;
+  let toggleBorderOffDisabledColor = semanticColors.disabledText;
 
-  let toggleBackgroundOffColor = sc.bodyBackground;
-  let toggleBackgroundOnColor = sc.inputBackgroundSelected;
-  let toggleBackgroundOnHoverColor = sc.inputBackgroundSelectedHover;
-  let toggleBackgroundOnDisabledColor = sc.disabledText;
-
-  let thumbOffColor = sc.inputBorderHover;
-  let thumbOnColor = sc.bodyBackground;
-  let thumbOffDisabledColor = sc.disabledText;
-  let thumbOnDisabledColor = sc.disabledBackground;
-
-  let toggleBorderOffColor = sc.inputBorder;
-  let toggleBorderOffHoverColor = sc.inputBorderHover;
-  let toggleBorderOffDisabledColor = sc.disabledText;
-
-  let toggleFocusBorderColor = sc.focusBorder;
+  let toggleFocusBorderColor = semanticColors.focusBorder;
 
   return {
     root: mergeStyles({
