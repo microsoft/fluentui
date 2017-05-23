@@ -9,12 +9,15 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "types": [
       "chai",
       "mocha",
       "webpack-env"
     ],
-    "outDir": "../lib",
     "paths": {
       "@uifabric/styling": [
         "./src"

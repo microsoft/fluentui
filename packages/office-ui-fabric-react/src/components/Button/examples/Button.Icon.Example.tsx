@@ -8,13 +8,14 @@ export class ButtonIconExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { disabled } = this.props;
+    let { disabled, toggled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Icon button</Label>
         <IconButton
           disabled={ disabled }
+          toggled={ toggled }
           iconProps={ { iconName: 'Emoji2' } }
           title='Emoji'
           ariaLabel='Emoji' />

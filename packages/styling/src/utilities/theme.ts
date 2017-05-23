@@ -1,16 +1,21 @@
 import * as assign from 'object-assign';
-import { defaultFontStyles } from '../styles/defaultFontStyles';
-import { IFontStyles } from '../styles/fontStyles';
-import { IColorStyles, defaultColorStyles } from '../styles/colorStyles';
+import {
+  IPalette,
+  IFontStyles
+} from '../interfaces/index';
+import {
+  DefaultPalette,
+  DefaultFontStyles
+} from '../styles/index';
 
 export interface ITheme {
-  colors?: IColorStyles;
-  fonts?: IFontStyles;
+  palette: IPalette;
+  fonts: IFontStyles;
 }
 
 const _theme: ITheme = {
-  colors: defaultColorStyles,
-  fonts: defaultFontStyles
+  palette: DefaultPalette,
+  fonts: DefaultFontStyles
 };
 
 /**
@@ -24,6 +29,6 @@ export function getTheme(): ITheme {
  * Mixes the given theme settings into the current theme object.
  */
 export function loadTheme(theme: ITheme): void {
-  _theme.colors = assign({}, _theme.colors, theme.colors);
+  _theme.palette = assign({}, _theme.palette, theme.palette);
   _theme.fonts = assign({}, _theme.fonts, theme.fonts);
 }

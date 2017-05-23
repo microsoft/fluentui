@@ -19,7 +19,7 @@ $ContextualMenu-header-color: $menuHeaderColor;
 
 $ContextualMenu-divider-color: $menuDividerColor;
 
-$ContextualMenu-text-disabled: $disabledTextColor;
+$ContextualMenu-text-disabled: $menuTextDisabledColor;
 
 .root {
   background-color: $ContextualMenu-background-color;
@@ -36,7 +36,6 @@ $ContextualMenu-text-disabled: $disabledTextColor;
 .item {
   @include ms-font-m;
   color: $ContextualMenu-text-color;
-  height: $ContextualMenu-itemHeight;
   position: relative;
   box-sizing: border-box;
 }

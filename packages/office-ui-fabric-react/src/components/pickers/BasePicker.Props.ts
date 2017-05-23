@@ -61,6 +61,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The text to display while searching for more results in a limited sugesstions list
    */
   searchingText?: ((props: { input: string }) => string) | string;
+  /**
+   * Flag for disabling the picker.
+   * @default false
+   */
+  disabled?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {

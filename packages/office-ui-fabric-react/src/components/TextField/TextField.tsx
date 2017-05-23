@@ -35,6 +35,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     resizable: true,
     autoAdjustHeight: false,
     underlined: false,
+    borderless: false,
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
     onNotifyValidationResult: () => { /* noop */ },
@@ -129,6 +130,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       multiline,
       required,
       underlined,
+      borderless,
       addonString,
       onRenderAddon = this._onRenderAddon
     } = this.props;
@@ -141,7 +143,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       ['is-disabled ' + styles.rootIsDisabled]: disabled,
       ['is-active ' + styles.rootIsActive]: isFocused,
       ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
-      ['ms-TextField--underlined ' + styles.rootIsUnderlined]: underlined
+      ['ms-TextField--underlined ' + styles.rootIsUnderlined]: underlined,
+      ['ms-TextField--borderless ' + styles.rootIsBorderless]: borderless
     });
 
     return (
@@ -210,6 +213,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   public setSelectionEnd(value: number) {
     if (this._textElement) {
       this._textElement.selectionEnd = value;
+    }
+  }
+
+  /**
+   * Sets the start and end positions of a selection in a text field.
+   * @param start Index of the start of the selection.
+   * @param end Index of the end of the selection.
+   */
+  public setSelectionRange(start: number, end: number) {
+    if (this._textElement) {
+      this._textElement.setSelectionRange(start, end);
     }
   }
 

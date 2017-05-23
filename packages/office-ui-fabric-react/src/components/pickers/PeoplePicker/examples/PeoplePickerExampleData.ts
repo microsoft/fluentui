@@ -1,9 +1,12 @@
 import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import { TestImages } from '../../../../common/TestImages';
 
 export const people: IPersonaProps[] = [
   {
     key: 0,
-    imageUrl: './images/persona-female.png',
+
+    imageUrl: TestImages.personaFemale,
+    imageInitials: 'PV',
     primaryText: 'Annie Lindqvist',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
@@ -12,7 +15,9 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 1,
-    imageUrl: './images/persona-male.png',
+
+    imageUrl: TestImages.personaMale,
+    imageInitials: 'AR',
     primaryText: 'Aaron Reid',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
@@ -21,7 +26,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 2,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
     primaryText: 'Alex Lundberg',
     secondaryText: 'Software Developer',
@@ -31,7 +36,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 3,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
     primaryText: 'Roko Kolar',
     secondaryText: 'Financial Analyst',
@@ -41,7 +46,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 4,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'CB',
     primaryText: 'Christian Bergqvist',
     secondaryText: 'Sr. Designer',
@@ -51,7 +56,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 5,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valentina Lovric',
     secondaryText: 'Design Developer',
@@ -61,7 +66,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 6,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharett',
     secondaryText: 'UX Designer',
@@ -71,7 +76,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 7,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'PV',
     primaryText: 'Anny Lindqvist',
     secondaryText: 'Designer',
@@ -81,7 +86,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 8,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'AR',
     primaryText: 'Aron Reid',
     secondaryText: 'Designer',
@@ -91,7 +96,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 9,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
     primaryText: 'Alix Lundberg',
     secondaryText: 'Software Developer',
@@ -101,7 +106,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 10,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
     primaryText: 'Roko Kular',
     secondaryText: 'Financial Analyst',
@@ -112,7 +117,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 11,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'CB',
     primaryText: 'Christian Bergqvest',
     secondaryText: 'Sr. Designer',
@@ -122,7 +127,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 12,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valintina Lovric',
     secondaryText: 'Design Developer',
@@ -132,7 +137,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 13,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharet',
     secondaryText: 'UX Designer',
@@ -142,7 +147,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 14,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Anny Lindqvest',
     secondaryText: 'SDE',
@@ -152,7 +157,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 15,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Alix Lunberg',
     secondaryText: 'SE',
@@ -162,7 +167,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 16,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Annie Lindqvest',
     secondaryText: 'SDET',
@@ -172,7 +177,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 17,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Alixander Lundberg',
     secondaryText: 'Senior Manager of SDET',
@@ -182,7 +187,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 18,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Anny Lundqvist',
     secondaryText: 'Junior Manager of Software',
@@ -192,7 +197,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 13,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Shorett',
     secondaryText: 'UX Designer',
@@ -202,7 +207,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 12,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valentina Lovrics',
     secondaryText: 'Design Developer',
@@ -212,7 +217,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 13,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharet',
     secondaryText: 'UX Designer',
@@ -222,7 +227,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 12,
-    imageUrl: './images/persona-female.png',
+    imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valentina Lovrecs',
     secondaryText: 'Design Developer',
@@ -232,7 +237,7 @@ export const people: IPersonaProps[] = [
   },
   {
     key: 13,
-    imageUrl: './images/persona-male.png',
+    imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharitt',
     secondaryText: 'UX Designer',

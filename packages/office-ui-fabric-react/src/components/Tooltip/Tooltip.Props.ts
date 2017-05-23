@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { ICalloutProps } from '../../Callout';
+import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface ITooltip {
@@ -26,6 +27,11 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
    *  String to be passed to the tooltip
    */
   content?: string;
+
+  /**
+   *  Render function to populate content area
+   */
+  onRenderContent?: IRenderFunction<ITooltipProps>;
 
   /**
    * Length of delay. Can be set to zero if you do not want a delay.

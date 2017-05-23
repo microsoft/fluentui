@@ -14,6 +14,7 @@ import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
+import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 import { Link } from '../../Link';
@@ -26,12 +27,14 @@ const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
+const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   constructor() {
     super();
     this.state = {
-      areButtonsDisabled: false
+      areButtonsDisabled: false,
+      areButtonsToggled: false
     };
   }
 
@@ -43,29 +46,36 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         exampleCards={
           <div>
             <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
+            <Checkbox label='Toggle buttons' checked={ this.state.areButtonsToggled } onChange={ this._onToggledChanged.bind(this) } />
             <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
+              <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
+            </ExampleCard>
+            <ExampleCard title='Default NonToggle-able Button' code={ ButtonDefaultExampleCode }>
               <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
-              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
-              <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Command Button' code={ ButtonCommandExampleCode }>
-              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
-              <ButtonIconExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonIconExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Contextual Menu Button' code={ ButtonContextualMenuExampleCode }>
-              <ButtonContextualMenuExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonContextualMenuExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
-              <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
-              <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
+            </ExampleCard>
+            <ExampleCard title='Button Swap with Focus State' code={ ButtonSwapExampleCode }>
+              <ButtonSwapExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
           </div>
         }
@@ -129,6 +139,12 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
   private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, disabled: boolean) {
     this.setState({
       areButtonsDisabled: disabled
+    });
+  }
+
+  private _onToggledChanged(ev: React.MouseEvent<HTMLElement>, toggled: boolean) {
+    this.setState({
+      areButtonsToggled: toggled
     });
   }
 }
