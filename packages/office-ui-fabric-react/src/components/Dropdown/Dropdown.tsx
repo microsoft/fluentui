@@ -355,6 +355,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         ariaLabel={ item.text }
+        title={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
     );
   }
