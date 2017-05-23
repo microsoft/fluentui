@@ -181,6 +181,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       arrowDirection,
       target,
       bounds,
+      width,
       directionalHintFixed,
       shouldFocusOnMount,
       calloutProps } = this.props;
