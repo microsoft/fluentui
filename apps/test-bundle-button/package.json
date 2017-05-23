@@ -1,0 +1,34 @@
+{
+  "name": "test-bundle-button",
+  "version": "0.0.1",
+  "description": "Testing the button for bundling.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "node node_modules/webpack/bin/webpack --config webpack.config.js && echo Done",
+    "clean": "",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
+  },
+  "devDependencies": {
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "@types/react": "^15.0.16",
+    "@types/react-dom": "^0.14.23",
+    "@types/webpack-env": "^1.13.0",
+    "source-map-loader": "^0.2.1",
+    "ts-loader": "^2.0.1",
+    "typescript": "^2.2.2",
+    "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  },
+  "dependencies": {
+    "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
+    "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
+    "office-ui-fabric-react": ">=2.32.0 <3.0.0"
+  }
+}

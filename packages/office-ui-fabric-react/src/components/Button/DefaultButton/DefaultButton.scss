@@ -31,6 +31,11 @@
 
 .isEnabled {
 
+  &.isToggled {
+    background-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+  }
+
   &:hover {
     background-color: $ms-color-neutralLight;
     color: $ms-color-black;
@@ -45,4 +50,3 @@
 .isDisabled {
   @include button-core-disabled;
 }
-

@@ -27,9 +27,22 @@ $button-iconButtonSize: $button-core-default-height;
 
 .icon {
   @include button-core-icon-styles;
+  color: $ms-color-black;
 }
 
 .isEnabled {
+
+  &.isToggled {
+    background-color: $ms-color-neutralTertiaryAlt;
+
+    &.icon {
+      color: $ms-color-black;
+    }
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+    }
+  }
 
   &:hover {
     color: $ms-color-themeDarker;
