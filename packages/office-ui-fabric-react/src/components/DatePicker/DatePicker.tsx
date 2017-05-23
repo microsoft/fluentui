@@ -246,7 +246,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (onSelectDate) {
       onSelectDate(date);
     }
-  };
+  }
 
   @autobind
   private _onCalloutPositioned() {
@@ -266,12 +266,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         this._preventFocusOpeningPicker = false;
       }
     }
-  };
+  }
 
   @autobind
   private _onTextFieldBlur(ev: React.FocusEvent<HTMLElement>) {
     this._validateTextInput();
-  };
+  }
 
   @autobind
   private _onTextFieldChanged(newValue: string) {
@@ -313,7 +313,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       default:
         break;
     }
-  };
+  }
 
   @autobind
   private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
