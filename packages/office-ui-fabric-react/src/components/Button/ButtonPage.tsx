@@ -54,28 +54,28 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
-              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
-              <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Command Button' code={ ButtonCommandExampleCode }>
-              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
-              <ButtonIconExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonIconExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Contextual Menu Button' code={ ButtonContextualMenuExampleCode }>
-              <ButtonContextualMenuExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonContextualMenuExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
-              <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
-              <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
             <ExampleCard title='Button Swap with Focus State' code={ ButtonSwapExampleCode }>
-              <ButtonSwapExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } /> />
+              <ButtonSwapExample disabled={ this.state.areButtonsDisabled } toggled={ this.state.areButtonsToggled } />
             </ExampleCard>
           </div>
         }
