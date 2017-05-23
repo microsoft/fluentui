@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 May 2017 10:20:22 GMT and should not be manually modified.
+This log was last generated on Tue, 23 May 2017 10:16:04 GMT and should not be manually modified.
+
+## 2.32.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog
+
+### Patches
+
+- FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element.
+- Adding a constant for all the test images and replacing the hard coded  example paths
 
 ## 2.31.0
 Fri, 19 May 2017 10:20:22 GMT
