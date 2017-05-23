@@ -190,10 +190,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
-    let contextMenuWidth;
-    if (useTargetWidth && this._target as HTMLElement) {
-        contextMenuWidth = (this._target as HTMLElement).offsetWidth;
+    let contextMenuStyle;
+    let targetAsHtmlElement = this._target as HTMLElement;
+    if (useTargetWidth && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
+        let contextMenuWidth = targetAsHtmlElement.offsetWidth;
+        contextMenuStyle = {
+            width: contextMenuWidth
+        };
     }
+
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
@@ -215,7 +220,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
-          <div style={ { width: contextMenuWidth || 'auto'} } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
+          <div style={contextMenuStyle} ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
