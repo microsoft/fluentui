@@ -60,7 +60,7 @@ export interface IChoiceGroupOption {
   /**
    * Optional override of option render
    */
-  onRenderField?: IRenderFunction<IChoiceGroupField>;
+  onRenderField?: IRenderFunction<IChoiceGroupOption>;
 
   /**
    * The Icon component props for choice field
@@ -83,46 +83,23 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * Deprectated at 2.9.0 and will be removed after August 2017. Use 'selectedKey' or
-   * 'defaultSelectedKey' on the ChoiceGroup instead.
-   * @deprecated
-   * @defaultvalue false
-   */
-  checked?: boolean;
-
-  /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   * @deprecated
-   */
-  isChecked?: boolean;
-
-  /**
    * Whether or not the option is disabled.
    */
   disabled?: boolean;
 
-  // @todo: Update version numbers for depriate and removal
   /**
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
-   * @deprecated
-   */
-  isDisabled?: boolean;
-}
-
-export interface IChoiceGroupField extends IChoiceGroupOption {
-  /**
-   * Boolean to allow onRenderOption access to state
+   * This value is maintained by the component and is accessible during onRenderField
    */
   checked?: boolean;
 
   /**
-   * Pass ID through to render function
+   * This value is maintained by the component and is accessible during onRenderField
    */
-  id?: boolean;
+  id?: string;
 
   /**
-   * Pass Label ID through to render function
+   * This value is maintained by the component and is accessible during onRenderField
    */
-  labelId?: boolean;
+  labelId?: string;
 
 }

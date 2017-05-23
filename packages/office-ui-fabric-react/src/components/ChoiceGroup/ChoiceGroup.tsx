@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image } from '../../Image';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupField } from './ChoiceGroup.Props';
+import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
   assign,
   css,
@@ -74,15 +74,16 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
           ) }
 
-          { options.map((option: IChoiceGroupField) => {
+          { options.map((option: IChoiceGroupOption) => {
             let { onRenderField = this._onRenderField } = option;
 
-            let optionProps = {
+            // Merge internal props into option
+            assign(option, {
               checked: option.key === keyChecked,
-              disabled: option.disabled || option.isDisabled || this.props.disabled,
-              id: this._id,
-              labelId: this._labelId
-            };
+              disabled: option.disabled || this.props.disabled,
+              id: `${this._id}-${option.key}`,
+              labelId: `${this._labelId}-${option.key}`
+            });
 
             return (
               <div
@@ -96,21 +97,19 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <input
                   ref={ (c): HTMLInputElement => this._inputElement = c }
-                  id={ `${this._id}-${option.key}` }
+                  id={ option.id }
                   className={ css('ms-ChoiceField-input', styles.input) }
                   type='radio'
                   name={ this.props.name || this._id }
-                  disabled={ option.isDisabled || option.disabled || this.props.disabled }
+                  disabled={ option.disabled || this.props.disabled }
                   checked={ option.key === keyChecked }
                   required={ required }
                   onChange={ this._onChange.bind(this, option) }
                   onFocus={ this._onFocus.bind(this, option) }
                   onBlur={ this._onBlur.bind(this, option) }
-                  aria-labelledby={ `${this._labelId}-${option.key}` }
+                  aria-labelledby={ option.id }
                 />
-                <div className={ css(styles.fieldWrapper) } >
-                  { onRenderField(assign(option, optionProps), this._onRenderField) }
-                </div>
+                { onRenderField(option, this._onRenderField) }
               </div>
             );
           }) }
@@ -139,17 +138,16 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     });
   }
 
-  private _onRenderField(option: IChoiceGroupField) {
-    let isDisabled = option.isDisabled || option.disabled;
+  private _onRenderField(option: IChoiceGroupOption) {
 
     return (
       <label
-        htmlFor={ option.id + '-' + option.key }
+        htmlFor={ option.id }
         className={ css('ms-ChoiceField-field', styles.field, {
           ['ms-ChoiceField-field--image ' + styles.fieldIsImage]: !!option.imageSrc,
           ['ms-ChoiceField--icon ' + styles.fieldIsIcon]: !!option.iconProps,
           ['is-checked ' + styles.fieldIsChecked]: option.checked,
-          ['is-disabled ' + styles.fieldIsDisabled]: isDisabled
+          ['is-disabled ' + styles.fieldIsDisabled]: option.disabled
         }) }
       >
         {
@@ -197,10 +195,10 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           option.imageSrc || option.iconProps
             ? (
               <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
-                <span id={ `${option.labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+                <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
               </div>
             ) : (
-              <span id={ `${option.labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+              <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
             )
         }
       </label>
@@ -235,7 +233,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     }
 
     const optionsChecked = props.options.filter((option: IChoiceGroupOption) => {
-      return option.isChecked || option.checked;
+      return option.checked;
     });
 
     if (optionsChecked.length === 0) {
