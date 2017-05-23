@@ -10,6 +10,7 @@
 .root {
   @include ms-baseFont;
   @include ms-bgColor-info;
+  min-height: 32px;
   color: $ms-color-infoText;
   width: 100%;
   box-sizing: border-box;
@@ -106,10 +107,13 @@
   }
 }
 
-// Shared
+// Add space between adjacent MessageBars.
+.root + .root {
+  margin-top: 6px;
+}
 
+// Shared
 .content {
-  padding: 16px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -133,17 +137,8 @@
   }
 }
 
-.actionables {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
-}
-
-.actionables > .dismissal {
-  right: 0;
-  top: 0;
-  position: absolute !important; // Needed because we're using focus-border mixin
+.dismissal, .actions {
+  padding: 16px 0px;
 }
 
 .actions, .actionsOneline {
@@ -153,51 +148,45 @@
   align-items: center;
 }
 
-.actionsOneline {
-  position: relative;
-}
-
-.dismissal {
-  @include focus-border();
-  min-width: 0;
-}
-.dismissalOneline .dismissal {
-  @include margin-right(-8px);
-}
-
-// Add space between adjacent MessageBars.
-.root + .root {
-  margin-top: 6px;
-}
-
 .innerTextPadding {
-  @include padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
-
   span, .innerText > span {
     @include padding-right(4px); // Add padding between text and hyperlink.
   }
 }
 
-// When we can have multiple lines in the message bar.
-.multiline > .content > .actionables {
-  flex-direction: column;
+.dismissal {
+  @include focus-border();
+  min-width: 0;
+  position: absolute;
+  top: 0;
+  @include right(0);
 }
 
-// When we should have only a single line of text in the message bar.
 .singleline {
+  height: 32px;
+
+  .dismissalOneline {
+    min-width: 16px;
+    min-height: 16px;
+    @include padding(8px, 8px, 0px, 12px);
+
+    .innterTextPadding {
+      @include padding-right(48px);
+    }
+  }
   .content {
-    .icon{
-      align-items: center;
+    align-items: center;
+    padding: 8px 0px;
+    .icon {
+      padding: 0px 8px;
     }
 
-    .actionables > .text {
-      justify-content: center;
+    .text {
       align-items: center;
 
       .innerText,
       .innerTextPadding {
         max-height: 1.3em;
-        line-height: 1.3em;
         overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -205,12 +194,59 @@
     }
   }
 
-  .content > .actionables {
-    flex-direction: row;
+  .actionsOneline {
+    position: relative;
+  }
+
+  // Override one line values when we have buttons / actionable items
+  &.actionableOneline {
+    height: 48px;
+
+    .dismissalOneline {
+      @include padding-right(16px);
+    }
+    .content {
+      .icon {
+        padding: 0px 16px;
+      }
+    }
+
+    .actionsOneline {
+      padding: 0px 8px;
+    }
   }
 }
 
-// Because of an odd behaviour in other CSS, ms-MessageBar--remove causes children's icons to use 8px, and not inherit.
-.root :global(.ms-Icon--Cancel) {
-  font-size: 14px;
+.multiline {
+  flex-direction: column;
+
+  &.actionableMultiline {
+    &.dismissalMultiline {
+      .innerTextPadding {
+        @include padding-right(48px);
+      }
+    }
+  }
+
+  .content {
+      padding-top: 16px;
+      flex-direction: row;
+      @include padding-left(16px);
+
+    .icon {
+      @include padding-right(8px);
+    }
+
+    .innerText {
+      line-height: 16px; // Each line should add 16px to the height
+    }
+  }
+
+  .actions {
+    @include padding-right(16px);
+  }
+
+  .dismissal {
+    margin: 0px 16px;
+  }
 }
