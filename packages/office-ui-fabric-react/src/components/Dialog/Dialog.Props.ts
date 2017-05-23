@@ -1,11 +1,44 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
+import { DialogContent } from './DialogContent';
 import { IButtonProps } from '../Button/Button.Props';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
 export interface IDialog {
 
+}
+
+export interface IDialogContentProps extends React.Props<DialogContent>, IWithResponsiveModeState, IAccessiblePopupProps {
+  /**
+  * Show an 'x' close button in the upper-right corner
+  */
+  showCloseButton?: boolean;
+
+  /**
+   * Other top buttons that will show up next to the close button
+   */
+  topButtonsProps?: IButtonProps[];
+
+  /**
+  * Optional override class name
+  */
+  className?: string;
+
+  /**
+  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
+  */
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+
+  /**
+  * The subtext to display in the dialog.
+  */
+  subText?: string;
+
+  /**
+  * The title text to display at the top of the dialog.
+  */
+  title?: string;
 }
 
 export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {
