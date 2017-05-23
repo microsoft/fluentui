@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added title attribute to dropdown items",
+      "comment": "Dropdown: Added title attribute for individual options.",
       "type": "patch"
     }
   ],
