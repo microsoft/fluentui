@@ -5,7 +5,7 @@ import './DetailsListExample.scss';
 
 export class DetailsListNavigatingFocusExample extends React.Component<any, any> {
   public state = {
-    items: generateItems(""),
+    items: generateItems(''),
     initialFocusedIndex: undefined,
   };
 
