@@ -210,7 +210,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
-          <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
+          <div style={ { width: width ? width : 'auto'} } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
