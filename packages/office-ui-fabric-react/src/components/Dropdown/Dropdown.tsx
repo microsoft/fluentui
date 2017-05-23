@@ -391,6 +391,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let preventScroll = true;
+    let newIndex: number;
+
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -409,7 +411,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        const newIndex = this._moveIndex(this.state.selectedIndex - 1);
+        newIndex = this._moveIndex(this.state.selectedIndex - 1);
         this.setSelectedIndex(newIndex);
         preventScroll = newIndex !== this.state.selectedIndex;
         break;
@@ -418,7 +420,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
-          const newIndex = this._moveIndex(this.state.selectedIndex + 1);
+          newIndex = this._moveIndex(this.state.selectedIndex + 1);
           this.setSelectedIndex(newIndex);
           preventScroll = newIndex !== this.state.selectedIndex;
         }
