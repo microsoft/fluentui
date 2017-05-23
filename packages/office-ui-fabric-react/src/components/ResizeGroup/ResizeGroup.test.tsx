@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
-import { runPriorToComponentDidUpdate, setRenderSpy } from '../../utilities/test';
+import { injectWrapperMethod, setRenderSpy } from '@uifabric/utilities/lib/test/';
 const styles: any = stylesImport;
 
 interface ITestScalingData {
@@ -33,10 +33,10 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onRed
   rootGetClientRectMock.returns({ width: 0 });
   measuredGetClientRectMock.returns({ width: 0 });
 
-  // Since measurement happens inside OnComponentDidUpdate, we need to make sure
+  // Since measurement happens inside componentDidUpdate, we need to make sure
   // that our mocks are attached to the DOM nodes before that code runs so that
   // we can return fake measurements in our tests.
-  runPriorToComponentDidUpdate(wrapper, () => {
+  injectWrapperMethod(wrapper, 'componentDidUpdate', () => {
     let measured = wrapper.find('.' + styles.measured);
     if (measured.length > 0) {
       measured.getDOMNode().getBoundingClientRect = measuredGetClientRectMock;
