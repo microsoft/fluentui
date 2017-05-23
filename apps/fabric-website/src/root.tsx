@@ -82,47 +82,26 @@ function _onLoad() {
     rootElement);
 }
 
-function _getAppRoutes() {
+function _createRoutes(pages): any[] {
   let routes = [];
-
-  // Create a route for each top level page, and all of its sub pages
-  AppState.pages.forEach((page, pageIndex) => {
-    routes.push(
-      <Route
-        key={ pageIndex }
-        path={ page.url }
-        component={ page.component }
-        getComponent={ page.getComponent }
-      />);
-
+  let pageRoutes = [];
+  pages.forEach((page, pageIndex) => {
+    routes.push(<Route
+      key={ pageIndex }
+      path={ page.url }
+      component={ page.component }
+      getComponent={ page.getComponent }
+    />);
     if (page.pages) {
-      page.pages.forEach((childPage, childPageIndex) => {
-        routes.push(
-          <Route
-            key={ childPageIndex }
-            path={ childPage.url }
-            component={ childPage.component }
-            getComponent={ childPage.getComponent }
-          />);
-
-        // Third level of nav
-        // @todo: This is the same logic as above, and could be placed in function
-        //        to allow for unlimited levels of nav.
-        if (childPage.pages) {
-          childPage.pages.forEach((grandchildPage, grandchildPageIndex) => {
-            routes.push(
-              <Route
-                key={ grandchildPageIndex }
-                path={ grandchildPage.url }
-                component={ grandchildPage.component }
-                getComponent={ grandchildPage.getComponent }
-              />
-            );
-          });
-        }
-      });
+      routes = routes.concat(_createRoutes(page.pages));
     }
   });
+  return routes;
+}
+
+function _getAppRoutes() {
+  let routes = [];
+  routes = _createRoutes(AppState.pages);
 
   // Add the default route
   routes.push(

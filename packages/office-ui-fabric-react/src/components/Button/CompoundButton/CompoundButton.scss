@@ -50,6 +50,24 @@
 
 .isEnabled {
 
+  &.isToggled {
+    background-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+
+    .label,
+    .description {
+      color: inherit;
+    }
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+      .label,
+      .description {
+        color: $ms-color-neutralDark;
+      }
+    }
+  }
+
   &:hover {
     background-color: $ms-color-neutralLight;
 

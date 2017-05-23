@@ -5,9 +5,10 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { TestImages } from '../../../common/TestImages';
 
 const examplePersona = {
-  imageUrl: './images/persona-female.png',
+  imageUrl: TestImages.personaFemale,
   imageInitials: 'AL',
   primaryText: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',

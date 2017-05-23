@@ -10,7 +10,7 @@ import {
   divProperties,
   getNativeProps
 } from '../../Utilities';
-import { IListProps, IPage } from './List.Props';
+import { IList, IListProps, IPage } from './List.Props';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -61,7 +61,7 @@ const _measureScrollRect = _measurePageRect;
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
  * number, which we associate with cached measurements and use to determine if a remeasure should occur.
  */
-export class List extends BaseComponent<IListProps, IListState> {
+export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
     onRenderCell: (item, index, containsFocus) => (<div>{ (item && item.name) || '' }</div>),
@@ -148,16 +148,6 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._scrollingToIndex = -1;
   }
 
-  /**
-   * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
-   * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
-   *
-   * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
-   * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
-   *
-   * @param index Index of item to scroll to
-   * @param measureItem Optional callback to measure the height of an individual item
-   */
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
     const { startIndex } = this.props;
     const renderCount = this._getRenderCount();

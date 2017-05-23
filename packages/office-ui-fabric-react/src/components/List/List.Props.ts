@@ -3,7 +3,17 @@ import { IRectangle } from '../../Utilities';
 import { List } from './List';
 
 export interface IList {
-
+  /**
+   * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
+   * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
+   *
+   * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
+   * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
+   *
+   * @param index Index of item to scroll to
+   * @param measureItem Optional callback to measure the height of an individual item
+   */
+  scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void;
 }
 
 export interface IListProps extends React.HTMLProps<List | HTMLDivElement> {

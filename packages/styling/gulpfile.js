@@ -1,16 +1,20 @@
 'use strict';
 
-let build = require('@microsoft/web-library-build');
+let build = require('@microsoft/sp-build-web');
 let gulp = require('gulp');
 
-// Configure TypeScript.
+// initialize tasks.
+build.initialize(gulp);
+
+// Configure TypeScript
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
 // Configure custom lint overrides.
 let rules = Object.assign(
   {},
-  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules
+  require('@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
+  require('./tslint.json').rules
 );
 build.tslint.setConfig({ lintConfig: { rules } });
 
@@ -19,10 +23,7 @@ build.sass.isEnabled = () => false;
 build.karma.isEnabled = () => false;
 build.text.isEnabled = () => false;
 build.preCopy.isEnabled = () => false;
-build.webpack.isEnabled = () => false;
 
 // Until typings work.
-//build.apiExtractor.isEnabled = () => false;
+build.apiExtractor.isEnabled = () => false;
 
-// initialize tasks.
-build.initialize(gulp);

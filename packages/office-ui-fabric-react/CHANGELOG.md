@@ -1,6 +1,156 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 May 2017 10:17:38 GMT and should not be manually modified.
+This log was last generated on Tue, 23 May 2017 10:16:04 GMT and should not be manually modified.
+
+## 2.32.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog
+
+### Patches
+
+- FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element.
+- Adding a constant for all the test images and replacing the hard coded  example paths
+
+## 2.31.0
+Fri, 19 May 2017 10:20:22 GMT
+
+### Minor changes
+
+- Adding the ability for buttons to be toggled
+
+### Patches
+
+- Searchbox: Updated border styles to better support high contrast mode
+- Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb"
+
+## 2.30.2
+Thu, 18 May 2017 10:09:58 GMT
+
+### Patches
+
+- Adds outlines to SearchBox in HC modes
+- BaseButton: now respects the isBeakVisible property on the menu props
+- Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems
+
+## 2.30.1
+Tue, 16 May 2017 22:39:55 GMT
+
+### Patches
+
+- Change pickeritemprops to correctly extend htmlattributes
+- List: Add scrollToIndex to public interface
+
+## 2.30.0
+Tue, 16 May 2017 21:47:38 GMT
+
+### Minor changes
+
+- DatePicker: adding a disabled property support.
+
+### Patches
+
+- Pickers: Adds ability to disable pickers
+- Adjust styling on menu drop shadows.
+- Button: Added aria-expanded if props.menuProps. Changes from false to true when opened
+- Button: default type to 'button'
+
+## 2.29.0
+Mon, 15 May 2017 10:19:13 GMT
+
+### Minor changes
+
+- Dropdown: Add ability to set custom props on the Dropdown's Callout
+
+### Patches
+
+- Make name prop optional on ContextualMenu
+- Date picker: Reduce min-width for the holder component
+
+## 2.28.0
+Fri, 12 May 2017 10:19:14 GMT
+
+### Minor changes
+
+- OverflowSet: Fixed issue that prevented it from working when there are no overflow items.
+
+## 2.27.3
+Thu, 11 May 2017 17:07:55 GMT
+
+### Patches
+
+- TextField: font size of textfield reverted to 14px.
+
+## 2.27.2
+Thu, 11 May 2017 10:20:16 GMT
+
+### Patches
+
+- Button: Add button example
+- ContextualMenu: Fixed an issue where submenu items wouldn't update properly when new props were passed own
+- Lay some groundwork for converting to semantic slots, starting with input text fields.
+
+## 2.27.1
+Tue, 09 May 2017 10:09:56 GMT
+
+### Patches
+
+- Day picker: Ensure we use values from nextProps when props are updated when generating weeks
+- DatePicker: Use todaysDate instead of today in _getWeeks
+
+## 2.27.0
+Mon, 08 May 2017 21:31:57 GMT
+
+### Minor changes
+
+- TextField: `borderless` flag added for suppressing the border style.
+- Tooltip: Added custom content render function and exposed tooltip props to
+
+### Patches
+
+- ChoiceGroup: Fixed broken focus border
+
+## 2.26.0
+Mon, 08 May 2017 10:19:18 GMT
+
+### Minor changes
+
+- Callout: Add minPagePadding. Dropdown: Expose calloutProps
+- SearchBox: added the ariaLabel optional property
+- Calendar: make today value configurable to support different timezone
+
+### Patches
+
+- Dropdown: Add aria readonly attribute
+
+## 2.25.1
+Fri, 05 May 2017 10:18:19 GMT
+
+### Patches
+
+- CommandBar: Support customized onRender for command bar item
+- High contrast fixes for dropdown and slider
+- Toggle: removing an unnecessary React warning when passing in defaultChecked value.
+- Persona: Fixed clipping issue when using size28
+- Pivot: increased specificty to fix button styles overriding pivo
+
+## 2.25.0
+Thu, 04 May 2017 10:08:59 GMT
+
+### Minor changes
+
+- Dropdown: New placeHolder text feature allows dropdown to act more like a traditional input field
+- Facepile: Added `className` prop.
+
+### Patches
+
+- Dropdown: Tab should close dropdown and tab to next item in tab order
+- OverflowSet: New Overflow Set componet to create sets of elements with overflow showing in callout
+- ContextMenu: fix a potential bug. All foreground colors need to be slots in the same category because the category has its own background color, in order to insure accessibility.
+- DetailsList: Added aria properties `aria-colindex`, `aria-rowindex`, `aria-colcount` and `aria-rowcount` to appropriate sub elements.
+- Moved aria label from ul to menu div
 
 ## 2.24.2
 Wed, 03 May 2017 10:17:38 GMT

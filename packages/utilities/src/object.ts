@@ -31,8 +31,8 @@ export function shallowCompare(a, b) {
  * objects as arguments and they will be merged sequentially into the target. Note that this will
  * shallow merge; it will not create new cloned values for target members.
  *
- * @params target {Object} Target object to merge following object arguments into.
- * @params args {Object} One or more objects that will be mixed into the target in the order they are provided.
+ * @param target - Target object to merge following object arguments into.
+ * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
 export function assign(target: any, ...args): any {
@@ -45,9 +45,9 @@ export function assign(target: any, ...args): any {
  * or "properties that start with data-". Note that this will shallow merge; it will not create new cloned
  * values for target members.
  *
- * @params filteredAssign {Function} A callback function that tests if the property should be assigned.
- * @params target {Object} Target object to merge following object arguments into.
- * @params args {Object} One or more objects that will be mixed into the target in the order they are provided.
+ * @param isAllowed - Callback to determine if the given propName is allowed in the result.
+ * @param target - Target object to merge following object arguments into.
+ * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
 export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args) {

@@ -1,5 +1,5 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument } from './dom';
+import { getDocument, getWindow } from './dom';
 
 // Default to undefined so that we initialize on first read.
 let _isRTL: boolean;
@@ -10,9 +10,22 @@ let _isRTL: boolean;
 export function getRTL(): boolean {
   if (_isRTL === undefined) {
     let doc = getDocument();
+    let win = getWindow();
 
-    if (doc) {
-      _isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    // tslint:disable-next-line:no-string-literal
+    if (win && win['localStorage']) {
+      let savedRTL = localStorage.getItem('isRTL');
+
+      if (savedRTL !== null) {
+        _isRTL = savedRTL === '1';
+      }
+    }
+    if (_isRTL === undefined && doc) {
+      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
+    }
+
+    if (_isRTL !== undefined) {
+      setRTL(_isRTL);
     } else {
       throw new Error(
         'getRTL was called in a server environment without setRTL being called first. ' +
@@ -29,13 +42,13 @@ export function getRTL(): boolean {
  */
 export function setRTL(isRTL: boolean) {
   let doc = getDocument();
-
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
+  let win = getWindow();
   // tslint:disable-next-line:no-string-literal
-  if (window['localStorage']) {
+  if (win && win['localStorage']) {
     localStorage.setItem('isRTL', isRTL ? '1' : '0');
   }
 

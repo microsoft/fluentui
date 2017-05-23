@@ -45,7 +45,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
   public componentWillReceiveProps(newProps: IToggleProps) {
     if (newProps.checked !== undefined) {
       this.setState({
-        isChecked: newProps.checked
+        isChecked: !!newProps.checked // convert null to false
       });
     }
   }
@@ -61,7 +61,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
-    const toggleNativeProps = getNativeProps(this.props, inputProperties);
+    const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     return (
       <div className={
         css(
@@ -87,6 +87,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
               ref={ (c): HTMLInputElement => this._toggleInput = c }
               type='checkbox'
               id={ this._id }
+              onChange={ () => { /* no-op */ } }
               { ...toggleNativeProps }
               className={ styles.invisibleToggle }
               name={ this._id }

@@ -35,6 +35,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isMonthPickerVisible?: boolean;
 
   /**
+    * Value of today. If null, current time in client machine will be used.
+    */
+  today?: Date;
+
+  /**
    * Default value of the Calendar, if any
    */
   value?: Date;

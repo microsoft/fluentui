@@ -8,6 +8,10 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "types": [
       "chai",
       "mocha",
