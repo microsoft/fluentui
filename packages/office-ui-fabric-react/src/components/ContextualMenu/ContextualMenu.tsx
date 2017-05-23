@@ -190,6 +190,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
+    /**
+     * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
+     */
     let contextMenuStyle;
     let targetAsHtmlElement = this._target as HTMLElement;
     if (useTargetWidth && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
@@ -198,7 +201,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             width: contextMenuWidth
         };
     }
-
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
