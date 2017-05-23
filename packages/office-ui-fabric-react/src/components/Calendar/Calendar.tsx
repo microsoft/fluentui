@@ -85,7 +85,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { selectedDate, navigatedDate } = this.state;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref='root'>
+      <div className={ css(rootClass, styles.root) } ref='root' role='application'>
         <div className={ css(
           'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
           styles.picker,
