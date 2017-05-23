@@ -1,7 +1,7 @@
 let _warningCallback: (message: string) => void = warn;
 
 export type ISettingsMap<T> = {
-  [P in keyof T]: string;
+  [P in keyof T]?: string;
 };
 
 /**
