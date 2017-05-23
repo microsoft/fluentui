@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroup: Support custom option labels",
+      "type": "minor"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
