@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added title attribute to dropdown items",
+      "type": "patch"
+    }
+  ],
+  "email": "rickyp@microsoft.com"
+}
