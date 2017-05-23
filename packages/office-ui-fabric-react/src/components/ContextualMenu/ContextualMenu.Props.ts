@@ -59,12 +59,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   beakWidth?: number;
 
   /**
-   * The width of the context menu
+   * If true the context menu will render as the same width as the target element
+   * @default false
    */
-  width?: number;
+  useTargetWidth?: boolean;
 
   /**
-   * The bounding rectangle for which  the contextual menu can appear in.
+   * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
 
