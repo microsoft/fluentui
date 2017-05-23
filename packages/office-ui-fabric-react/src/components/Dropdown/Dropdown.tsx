@@ -195,6 +195,34 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
+  private _moveIndexStuff(directionStep: number, ev: React.KeyboardEvent<HTMLElement>) {
+    let { options } = this.props;
+    let currentIndex = this.state.selectedIndex + directionStep;
+
+    currentIndex = Math.max(0, Math.min(options.length - 1, currentIndex));
+    // Iterate to the next selectable thing.
+    while (currentIndex >= 0 && currentIndex <= options.length &&
+      (options[currentIndex].itemType === DropdownMenuItemType.Header
+        || options[currentIndex].itemType === DropdownMenuItemType.Divider)) {
+      if (this.state.selectedIndex === -1) {
+        directionStep = 1;
+      }
+      currentIndex += directionStep;
+    }
+
+    // If thing is different than state and selectable...
+    if (currentIndex !== this.state.selectedIndex
+      && currentIndex >= 0
+      && currentIndex < options.length
+      && (options[currentIndex].itemType !== DropdownMenuItemType.Header
+        || options[currentIndex].itemType !== DropdownMenuItemType.Divider)) {
+
+      this.setSelectedIndex(currentIndex);
+      ev.stopPropagation();
+      ev.preventDefault();
+    }
+  }
+
   // Find next valid dropdown option
   private _moveIndex(index: number): number {
     let { selectedIndex } = this.state;
@@ -204,12 +232,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (options[index].itemType === DropdownMenuItemType.Header ||
       options[index].itemType === DropdownMenuItemType.Divider) {
       // If index is at beginning or end, keep selectedIndex if selectedIndex is set.
-      if (selectedIndex !== -1 && (index === 0 || index === options.length)) {
-        return selectedIndex;
-      } else {
+      //(selectedIndex !== -1 && (index === 0 || index === options.length))
+      if (selectedIndex === -1 || (index !== 0 || index !== options.length)) {
         // Decrease index if index is decreasing, otherwise increase
         index < selectedIndex ? index-- : index++;
         return this._moveIndex(index);
+      } else {
+        return selectedIndex;
       }
     } else {
       return index;
@@ -411,27 +440,29 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        newIndex = this._moveIndex(this.state.selectedIndex - 1);
-        this.setSelectedIndex(newIndex);
-        preventScroll = newIndex !== this.state.selectedIndex;
+        this._moveIndexStuff(-1, ev);
+        preventScroll = false;
         break;
 
       case KeyCodes.down:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
-          newIndex = this._moveIndex(this.state.selectedIndex + 1);
-          this.setSelectedIndex(newIndex);
-          preventScroll = newIndex !== this.state.selectedIndex;
+          this._moveIndexStuff(1, ev);
+          preventScroll = false;
         }
         break;
 
       case KeyCodes.home:
-        this.setSelectedIndex(0);
+        newIndex = this._moveIndex(0);
+        console.log('newindex home', newIndex);
+        this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.end:
-        this.setSelectedIndex(this.props.options.length - 1);
+        newIndex = this._moveIndex(this.props.options.length - 1);
+        console.log('newindex end', newIndex);
+        this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.space:
