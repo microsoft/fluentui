@@ -19,7 +19,7 @@ import {
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 
-// Internal only props iterface to support mixing in responsive mode
+// Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
 
 }
@@ -195,6 +195,27 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
+  // Find next valid dropdown option
+  private _moveIndex(index: number): number {
+    let { selectedIndex } = this.state;
+    let { options } = this.props;
+
+    index = Math.max(0, Math.min(options.length - 1, index));
+    if (options[index].itemType === DropdownMenuItemType.Header ||
+      options[index].itemType === DropdownMenuItemType.Divider) {
+      // If index is at beginning or end, keep selectedIndex if selectedIndex is set.
+      if (selectedIndex !== -1 && (index === 0 || index === options.length)) {
+        return selectedIndex;
+      } else {
+        // Decrease index if index is decreasing, otherwise increase
+        index < selectedIndex ? index-- : index++;
+        return this._moveIndex(index);
+      }
+    } else {
+      return index;
+    }
+  }
+
   // Render text in dropdown input
   @autobind
   private _onRenderTitle(item: IDropdownOption): JSX.Element {
@@ -304,8 +325,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _renderHeader(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
+    let { key } = item;
     return (
-      <div className={ css('ms-Dropdown-header', styles.header) }>
+      <div key={ key }
+        className={ css('ms-Dropdown-header', styles.header) }>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -366,6 +389,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let preventScroll = true;
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -384,14 +408,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        this.setSelectedIndex(this.state.selectedIndex - 1);
+        const newIndex = this._moveIndex(this.state.selectedIndex - 1);
+        this.setSelectedIndex(newIndex);
+        preventScroll = newIndex !== this.state.selectedIndex;
         break;
 
       case KeyCodes.down:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
-          this.setSelectedIndex(this.state.selectedIndex + 1);
+          const newIndex = this._moveIndex(this.state.selectedIndex + 1);
+          this.setSelectedIndex(newIndex);
+          preventScroll = newIndex !== this.state.selectedIndex;
         }
         break;
 
@@ -411,8 +439,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
     }
 
-    ev.stopPropagation();
-    ev.preventDefault();
+    if (preventScroll) {
+      ev.stopPropagation();
+      ev.preventDefault();
+    }
   }
 
   @autobind
