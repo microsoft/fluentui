@@ -69,7 +69,7 @@ describe('Pickers', () => {
       let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
       expect(suggestions).to.exist;
-      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-item');
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
       expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
@@ -103,7 +103,7 @@ describe('Pickers', () => {
       let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
       expect(suggestions).to.exist;
-      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-item');
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
       expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
