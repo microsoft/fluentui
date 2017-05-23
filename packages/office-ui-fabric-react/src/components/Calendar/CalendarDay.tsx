@@ -123,7 +123,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         <FocusZone>
           <table
             className={ css('ms-DatePicker-table', styles.table) }
-            // role='application'
             aria-readonly='true'
             aria-multiselectable='false'
             aria-labelledby={ monthAndYearId }
