@@ -24,7 +24,6 @@ import {
   ISuggestionsProps,
   ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
-import { CommandButton } from '../../../Button';
 import './Picker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {

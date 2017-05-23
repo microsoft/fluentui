@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable */
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-import { CommandButton, IconButton } from '../../../../Button';
 import * as stylesImport from '../PeoplePicker.scss';
 const styles: any = stylesImport;
 

@@ -6,7 +6,6 @@ import { IBasePickerProps } from '../BasePicker.Props';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from '../../../Persona';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
-import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {

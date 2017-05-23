@@ -6,7 +6,6 @@ import {
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
-import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import * as stylesImport from './Suggestions.scss';
 const styles: any = stylesImport;
@@ -184,7 +183,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
               id={ 'sug-item' + index }
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion }
-              onClick={ (ev: React.MouseEvent<HTMLElement>) => { this.props.onSuggestionClick(ev, suggestion.item, index) } }
+              onClick={ (ev: React.MouseEvent<HTMLElement>) => { this.props.onSuggestionClick(ev, suggestion.item, index); } }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
               onRemoveItem={ (ev: React.MouseEvent<HTMLElement>) => {
