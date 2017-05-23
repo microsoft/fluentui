@@ -11,16 +11,17 @@ let { expect } = chai;
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
 import { Persona, PersonaSize } from '../Persona';
+import { TestImages } from '../../common/TestImages';
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
     {
-      imageUrl: './images/persona-female.png',
+      imageUrl: TestImages.personaFemale,
       personaName: 'Annie Lindqvist',
       data: '50%'
     },
     {
-      imageUrl: './images/persona-male.png',
+      imageUrl: TestImages.personaFemale,
       personaName: 'Aaron Reid',
       data: '$1,000'
     },
