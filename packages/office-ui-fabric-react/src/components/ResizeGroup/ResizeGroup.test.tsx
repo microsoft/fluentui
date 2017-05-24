@@ -201,4 +201,22 @@ describe('ResizeGroup', () => {
       shouldMeasure: false
     });
   });
+
+  it('renders no more than twice when things do not fit and onReduceData does not change the data', () => {
+    let { wrapper, rootGetClientRectMock, measuredGetClientRectMock, onReduceDataMock } = getWrapperWithMocks();
+
+    rootGetClientRectMock.returns({ width: 50 });
+    measuredGetClientRectMock.returns({ width: 75 });
+
+    let onRenderSpy = setRenderSpy(wrapper);
+    onReduceDataMock.reset();
+
+    wrapper.setState({ shouldMeasure: true });
+
+    // There are 2 renders. The first does a measure and a layout, the second removes the measured.
+    // Ideally, this can be optimized so that there is only 1 render, but this
+    // test makes sure it doesn't get worse than this.
+    expect(onRenderSpy.callCount).to.equal(2);
+    expect(onReduceDataMock.callCount).to.equal(2);
+  });
 });
