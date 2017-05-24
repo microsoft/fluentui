@@ -48,9 +48,6 @@ export const getStyles = memoize((
       width: '100%',
       ':disabled': {
         cursor: 'default'
-      },
-      ':focus + .ms-Toggle-background': {
-        // todo
       }
     }),
     stateText: mergeStyles({

@@ -18,6 +18,7 @@ import { Label } from '../../Label';
 import * as assign from 'object-assign';
 import {
   mergeStyles,
+  mergeStyleSets,
   IStyle
 } from '../../Styling';
 
@@ -46,13 +47,13 @@ const _getClassNames = memoize((
     return {
       root: mergeStyles(styles.root,
         enabled && !checked && {
-          '.is-enabled .ms-Toggle-control:hover': {
+          ' .ms-Toggle-control:hover': {
             ' .ms-Toggle-background': styles.toggleHover,
             ' .ms-Toggle-thumb': styles.thumbHover
           }
         },
         enabled && checked && {
-          '.is-enabled.is-checked .ms-Toggle-control:hover': {
+          ' .ms-Toggle-control:hover': {
             ' .ms-Toggle-background': styles.toggleOnHover,
             ' .ms-Toggle-thumb': styles.thumbOnHover
           }
@@ -125,7 +126,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     let styles = _getClassNames(
-      mergeStyles(getStyles(undefined), customStyles),
+      mergeStyleSets(getStyles(undefined), customStyles),
       !disabled,
       isChecked);
 
@@ -163,10 +164,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             onKeyDown={ this._onInputKeyDown }
           />
           <div className={ css('ms-Toggle-background', styles.toggle) }>
-            <div className={ css(
-              'ms-Toggle-thumb',
-              styles.thumb)
-            } />
+            <div className={ css('ms-Toggle-thumb', styles.thumb) } />
           </div>
           { stateText && (
             <Label className={ css('ms-Toggle-stateText', styles.stateText) }>{ stateText }</Label>
