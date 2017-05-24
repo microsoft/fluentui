@@ -20,19 +20,19 @@ function onReduceScalingData(data: ITestScalingData): ITestScalingData {
 
 function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 },
   onReduceData: (data: ITestScalingData) => ITestScalingData = onReduceScalingData) {
-  const onReduceDataMock = sinon.spy(onReduceData);
-  const onRenderDataMock = sinon.spy();
+  const onReduceDataSpy = sinon.spy(onReduceData);
+  const onRenderDataSpy = sinon.spy();
 
   let wrapper = mount<ResizeGroup, IResizeGroupState>(<ResizeGroup
     data={ data }
-    onReduceData={ onReduceDataMock }
-    onRenderData={ onRenderDataMock }
+    onReduceData={ onReduceDataSpy }
+    onRenderData={ onRenderDataSpy }
   />);
 
   return {
     wrapper,
-    onReduceDataMock,
-    onRenderDataMock,
+    onReduceDataSpy,
+    onRenderDataSpy,
     ...getMeasurementMocks(wrapper)
   };
 }
@@ -108,22 +108,22 @@ describe('ResizeGroup', () => {
   });
 
   it('will call onReduceData when contents do not fit', () => {
-    let { wrapper, onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
+    let { wrapper, onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
 
-    onReduceDataMock.reset();
+    onReduceDataSpy.reset();
     rootGetClientRectMock.returns({ width: 50 });
     measuredGetClientRectMock.onFirstCall().returns({ width: 75 });
     measuredGetClientRectMock.onSecondCall().returns({ width: 40 });
 
     wrapper.setState({ shouldMeasure: true });
 
-    expect(onReduceDataMock.callCount).to.equal(1);
+    expect(onReduceDataSpy.callCount).to.equal(1);
   });
 
   it('will measure after a window resize', () => {
-    let { onReduceDataMock, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
+    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
 
-    onReduceDataMock.reset();
+    onReduceDataSpy.reset();
     rootGetClientRectMock.reset();
     measuredGetClientRectMock.reset();
     rootGetClientRectMock.returns({ width: 200 });
@@ -135,18 +135,18 @@ describe('ResizeGroup', () => {
     expect(measuredGetClientRectMock.callCount).to.equal(1);
 
     // Don't call onReduceData since everything fits
-    expect(onReduceDataMock.callCount).to.equal(0);
+    expect(onReduceDataSpy.callCount).to.equal(0);
   });
 
   it('will continue to shrink until everything fits', () => {
     let data = { scalingIndex: 7 };
 
     let { wrapper,
-      onReduceDataMock,
+      onReduceDataSpy,
       rootGetClientRectMock,
       measuredGetClientRectMock } = getWrapperWithMocks(data, onReduceScalingData);
 
-    onReduceDataMock.reset();
+    onReduceDataSpy.reset();
     measuredGetClientRectMock.reset();
     rootGetClientRectMock.reset();
     rootGetClientRectMock.returns({ width: 50 });
@@ -156,9 +156,9 @@ describe('ResizeGroup', () => {
 
     wrapper.setState({ shouldMeasure: true });
 
-    expect(onReduceDataMock.callCount).to.equal(2);
-    expect(onReduceDataMock.getCall(0).args[0]).to.deep.equal(data);
-    expect(onReduceDataMock.getCall(1).args[0]).to.deep.equal({ scalingIndex: 6 });
+    expect(onReduceDataSpy.callCount).to.equal(2);
+    expect(onReduceDataSpy.getCall(0).args[0]).to.deep.equal(data);
+    expect(onReduceDataSpy.getCall(1).args[0]).to.deep.equal({ scalingIndex: 6 });
     expect(wrapper.state()).to.deep.equal({
       measuredData: data,
       renderedData: { scalingIndex: 5 },
@@ -184,14 +184,14 @@ describe('ResizeGroup', () => {
 
   it('starts from the beginning when resizing', () => {
     let data = { scalingIndex: 10 };
-    let { wrapper, onRenderDataMock } = getWrapperWithMocks(data);
+    let { wrapper, onRenderDataSpy } = getWrapperWithMocks(data);
 
     wrapper.setState({
       renderedData: { scalingIndex: 5 },
       shouldMeasure: false
     });
 
-    onRenderDataMock.reset();
+    onRenderDataSpy.reset();
     wrapper.setState({
       shouldMeasure: true
     });
@@ -200,8 +200,8 @@ describe('ResizeGroup', () => {
     // but the important thing here is that the last onRender data
     // starts from the beginning to make sure we are making maximal
     // use of the screen real estate.
-    expect(onRenderDataMock.callCount).to.equal(3);
-    expect(onRenderDataMock.getCall(2).args[0]).to.deep.equal(data);
+    expect(onRenderDataSpy.callCount).to.equal(3);
+    expect(onRenderDataSpy.getCall(2).args[0]).to.deep.equal(data);
     expect(wrapper.state()).to.deep.equal({
       renderedData: data,
       measuredData: data,
