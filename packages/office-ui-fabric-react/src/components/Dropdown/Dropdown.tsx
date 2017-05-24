@@ -196,7 +196,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Find next valid dropdown option
-  private _moveIndex(index: number, selectedIndex: number, ev: React.KeyboardEvent<HTMLElement>): number {
+  private _moveIndex(index: number, selectedIndex: number): number {
     let { options } = this.props;
     // Return selectedIndex if nothing has changed
     if (selectedIndex === index) {
@@ -205,16 +205,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     if (index < 0) {
       // If index < 0, return first valid option
-      return this._moveIndex(0, selectedIndex, ev);
+      return this._moveIndex(0, selectedIndex);
     } else if (index >= options.length) {
       // If index > last option index, return last valid option
-      return this._moveIndex(options.length - 1, selectedIndex, ev);
+      return this._moveIndex(options.length - 1, selectedIndex);
     } else {
       // If current index is valid, return index, otherwise, move index by 1
       if (options[index].itemType === DropdownMenuItemType.Header ||
         options[index].itemType === DropdownMenuItemType.Divider) {
         index < selectedIndex && index > 0 ? index-- : index++;
-        return this._moveIndex(index, selectedIndex, ev);
+        return this._moveIndex(index, selectedIndex);
       } else {
         return index;
       }
@@ -417,7 +417,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        newIndex = this._moveIndex(selectedIndex - 1, selectedIndex, ev);
+        newIndex = this._moveIndex(selectedIndex - 1, selectedIndex);
         preventScroll = newIndex !== selectedIndex;
         this.setSelectedIndex(newIndex);
         break;
@@ -426,20 +426,20 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
-          newIndex = this._moveIndex(selectedIndex + 1, selectedIndex, ev);
+          newIndex = this._moveIndex(selectedIndex + 1, selectedIndex);
           preventScroll = newIndex !== selectedIndex;
           this.setSelectedIndex(newIndex);
         }
         break;
 
       case KeyCodes.home:
-        newIndex = this._moveIndex(0, selectedIndex, ev);
+        newIndex = this._moveIndex(0, selectedIndex);
         preventScroll = newIndex !== selectedIndex;
         this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.end:
-        newIndex = this._moveIndex(this.props.options.length - 1, selectedIndex, ev);
+        newIndex = this._moveIndex(this.props.options.length - 1, selectedIndex);
         preventScroll = newIndex !== selectedIndex;
         this.setSelectedIndex(newIndex);
         break;
