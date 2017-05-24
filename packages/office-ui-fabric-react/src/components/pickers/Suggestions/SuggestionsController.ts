@@ -12,13 +12,13 @@ export class SuggestionsController<T> {
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[], setSelected: boolean) {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
-      if (setSelected) {
-        this.suggestions[0].selected = true;
-        this.currentSuggestion = this.suggestions[0];
+      if (selectedIndex !== undefined) {
+        this.suggestions[selectedIndex].selected = true;
+        this.currentSuggestion = this.suggestions[selectedIndex];
       }
     } else {
       this.suggestions = [];

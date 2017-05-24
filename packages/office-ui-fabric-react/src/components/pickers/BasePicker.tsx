@@ -203,7 +203,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected updateSuggestions(suggestions: any[]) {
-    this.suggestionStore.updateSuggestions(suggestions, true);
+    this.suggestionStore.updateSuggestions(suggestions, 0);
     this.forceUpdate();
   }
 
@@ -227,7 +227,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (updatedValue !== undefined) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else {
-        this.suggestionStore.updateSuggestions(suggestionsArray, false);
+        this.suggestionStore.updateSuggestions(suggestionsArray);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
@@ -237,7 +237,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
 
       // Clear suggestions
-      this.suggestionStore.updateSuggestions([], false);
+      this.suggestionStore.updateSuggestions([]);
 
       if (updatedValue !== undefined) {
         this.setState({
@@ -256,7 +256,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           if (updatedValue !== undefined) {
             this.resolveNewValue(updatedValue, newSuggestions);
           } else {
-            this.suggestionStore.updateSuggestions(newSuggestions, false);
+            this.suggestionStore.updateSuggestions(newSuggestions);
             this.setState({
               suggestionsLoading: false
             });
@@ -271,7 +271,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]) {
-    this.suggestionStore.updateSuggestions(suggestions, true);
+    this.suggestionStore.updateSuggestions(suggestions, 0);
     let itemValue: string = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
