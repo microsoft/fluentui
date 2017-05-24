@@ -23,7 +23,7 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props, itemProps) => SuggestionItemNormal({ ...props }, { ...itemProps })
+    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemNormal({ ...props }, { ...itemProps })
   };
 }
 
@@ -33,7 +33,7 @@ export class NormalPeoplePicker extends BasePeoplePicker {
 export class CompactPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props, itemProps) => SuggestionItemSmall({ ...props }, { ...itemProps })
+    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemSmall({ ...props }, { ...itemProps })
   };
 }
 
@@ -43,6 +43,6 @@ export class CompactPeoplePicker extends BasePeoplePicker {
 export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props, itemProps) => SuggestionItemNormal({ ...props }, { ...itemProps })
+    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemNormal({ ...props }, { ...itemProps })
   };
 }
