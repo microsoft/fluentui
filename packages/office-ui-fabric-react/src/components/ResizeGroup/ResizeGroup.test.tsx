@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, ReactWrapper } from 'enzyme';
 import { expect } from 'chai';
 import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
@@ -18,7 +18,8 @@ function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   };
 }
 
-function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onReduceData?: (data: ITestScalingData) => ITestScalingData) {
+function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 },
+  onReduceData: (data: ITestScalingData) => ITestScalingData = onReduceScalingData) {
   const onReduceDataMock = sinon.spy(onReduceData);
   const onRenderDataMock = sinon.spy();
 
@@ -28,6 +29,15 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onRed
     onRenderData={ onRenderDataMock }
   />);
 
+  return {
+    wrapper,
+    onReduceDataMock,
+    onRenderDataMock,
+    ...getMeasurementMocks(wrapper)
+  };
+}
+
+function getMeasurementMocks(wrapper: ReactWrapper<ResizeGroup, IResizeGroupState>) {
   let rootGetClientRectMock = sinon.stub();
   let measuredGetClientRectMock = sinon.stub();
   rootGetClientRectMock.returns({ width: 0 });
@@ -46,9 +56,6 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 }, onRed
   });
 
   return {
-    wrapper,
-    onReduceDataMock,
-    onRenderDataMock,
     rootGetClientRectMock,
     measuredGetClientRectMock
   };
@@ -202,21 +209,40 @@ describe('ResizeGroup', () => {
     });
   });
 
-  it('renders no more than twice when things do not fit and onReduceData does not change the data', () => {
-    let { wrapper, rootGetClientRectMock, measuredGetClientRectMock, onReduceDataMock } = getWrapperWithMocks();
+  it('does not call onReduceData again when it returns undefined', () => {
+    let mockData = { data: 'foo' };
+    let onReduceDataStub = sinon.stub();
+    onReduceDataStub.returns({});
+    const onRenderDataMock = sinon.spy();
+
+    let wrapper = mount<ResizeGroup, IResizeGroupState>(<ResizeGroup
+      data={ mockData }
+      onReduceData={ onReduceDataStub }
+      onRenderData={ onRenderDataMock }
+    />);
+
+    let { rootGetClientRectMock, measuredGetClientRectMock } = getMeasurementMocks(wrapper);
 
     rootGetClientRectMock.returns({ width: 50 });
     measuredGetClientRectMock.returns({ width: 75 });
 
     let onRenderSpy = setRenderSpy(wrapper);
-    onReduceDataMock.reset();
+    // This test will always return that the measured contents don't fit in the root
+    // The first onReduceData call returns some data, the second returns undefined.
+    // There should not be additional calls to onReduceData after undefined is returned.
+    onReduceDataStub.reset();
+    onReduceDataStub.onFirstCall().returns(mockData);
+    onReduceDataStub.onSecondCall().returns(undefined);
 
-    wrapper.setState({ shouldMeasure: true });
+    wrapper.setState({
+      shouldMeasure: true
+    });
 
-    // There are 2 renders. The first does a measure and a layout, the second removes the measured.
-    // Ideally, this can be optimized so that there is only 1 render, but this
-    // test makes sure it doesn't get worse than this.
-    expect(onRenderSpy.callCount).to.equal(2);
-    expect(onReduceDataMock.callCount).to.equal(2);
+    // We'll render 3 times after attaching the render spy.
+    // 1. Initial render from setting shouldMeasure
+    // 2. Second render after reducing the data
+    // 3. Third render to remove the measuring div after onReduce returns undefined
+    expect(onRenderSpy.callCount).to.equal(3);
+    expect(onReduceDataStub.callCount).to.equal(2);
   });
 });
