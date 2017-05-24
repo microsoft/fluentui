@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DatePicker: Fix for accessibility issues",
+      "type": "minor"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
