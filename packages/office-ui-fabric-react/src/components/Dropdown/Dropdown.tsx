@@ -197,12 +197,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Find next valid dropdown option
   private _moveIndex(index: number, selectedIndex: number): number {
-    let { options } = this.props;
     // Return selectedIndex if nothing has changed
     if (selectedIndex === index) {
       return selectedIndex;
     }
 
+    const { options } = this.props;
     if (index < 0) {
       // If index < 0, return first valid option
       return this._moveIndex(0, selectedIndex);
