@@ -175,7 +175,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root) } ref='root'>
+      <div className={ css('ms-DatePicker', styles.root, this.props.className) } ref='root'>
         <div ref={ (c): HTMLElement => this._datepicker = c }>
           <TextField
             className={ styles.textField }
