@@ -72,7 +72,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   }
 
   private _getDismissDiv(): JSX.Element {
-    if (this.props.onDismiss != null) {
+    if (this.props.onDismiss) {
       return (
         <IconButton
           disabled={ false }
@@ -87,7 +87,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   }
 
   private _getDismissalOneLine(): JSX.Element {
-    if (this.props.onDismiss != null) {
+    if (this.props.onDismiss) {
       return (
         <div className={ css('ms-MessageBar-dismissalOneline', styles.dismissalOneline) }>
           { this._getDismissDiv() }
