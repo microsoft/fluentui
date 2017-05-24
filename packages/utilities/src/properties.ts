@@ -219,8 +219,8 @@ export const imageProperties = divProperties;
  * non-native props should be applied second. This will prevent getNativeProps from overriding your custom props.
  * For example, if props passed to getNativeProps has an onClick function and getNativeProps is added to
  * the component after an onClick function is added, then the getNativeProps onClick will override it.
- * @param props The unfiltered input props
- * @param allowedPropsNames The array of allowed propnames.
+ * @param props - The unfiltered input props
+ * @param allowedPropsNames-  The array of allowed propnames.
  * @returns The filtered props
  */
 export function getNativeProps<T>(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T {

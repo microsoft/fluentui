@@ -2,6 +2,34 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.10.0",
+      "tag": "@uifabric/utilities_v1.10.0",
+      "date": "Tue, 23 May 2017 10:16:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "40f7131f031ed5b4b7bcf0cc6b3ace39e5f5dde4",
+            "comment": "warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.9.0",
+      "tag": "@uifabric/utilities_v1.9.0",
+      "date": "Thu, 18 May 2017 10:09:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a0783284d6ad0eca368a4a10a16ffd30e4af16c5",
+            "comment": "Adding memoize utility. Updating css to handle serializable objects. Updating rtl helper to respect a localStorage setting."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.7",
       "tag": "@uifabric/utilities_v1.8.7",
       "date": "Fri, 05 May 2017 10:18:19 GMT",

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+This log was last generated on Tue, 23 May 2017 10:16:04 GMT and should not be manually modified.
+
+## 1.10.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params.
+
+## 1.9.0
+Thu, 18 May 2017 10:09:58 GMT
+
+### Minor changes
+
+- Adding memoize utility. Updating css to handle serializable objects. Updating rtl helper to respect a localStorage setting.
 
 ## 1.8.7
 Fri, 05 May 2017 10:18:19 GMT

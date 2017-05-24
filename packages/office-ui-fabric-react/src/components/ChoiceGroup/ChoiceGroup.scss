@@ -43,14 +43,17 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 .choiceField {
+  display: flex;
+  align-items: center;
   box-sizing: border-box;
   color: $radioButton-text-color;
   font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
-  min-height: 36px;
+  min-height: 26px;
   border: none;
   position: relative;
+  margin-top: 8px;
   @include padding-left(8px);
 
   :global(.ms-Label) {
@@ -77,6 +80,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   height: $ms-choiceField-field-size;
   font-weight: normal;
   position: absolute;
+  top: -1px;
   box-sizing: border-box;
   transition-property: border-color;
   transition-duration: $ms-choiceField-transition-duration;
@@ -91,9 +95,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   height: 0;
   border-radius: 50%;
   position: absolute;
-  top: $ms-choiceField-field-size / 2;
   @include left($ms-choiceField-field-size / 2);
-  bottom: 0;
   @include right(0);
   transition-property: top, left, right, width, height;
   transition-duration: $ms-choiceField-transition-duration-inner;
@@ -109,11 +111,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-// The choiceField field
 .field {
   display: inline-block;
   cursor: pointer;
-  margin-top: 8px;
+  margin-top: 0;
   position: relative;
   vertical-align: top;
   user-select: none;
@@ -146,7 +147,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     &::after { // the dot
       background-color: $radioButton-dot-color;
-      top: 5px;
+      top: 4px;
       @include left(5px);
       width: 10px;
       height: 10px;

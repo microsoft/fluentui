@@ -19,10 +19,6 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
    * Controls whether the componentRef prop will be resolved by this component instance. If you are
    * implementing a passthrough (higher-order component), you would set this to false and pass through
    * the props to the inner component, allowing it to resolve the componentRef.
-   *
-   * @protected
-   * @type {boolean}
-   * @memberOf BaseComponent
    */
   protected _shouldUpdateComponentRef: boolean;
 
@@ -34,9 +30,8 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
 
   /**
    * BaseComponent constructor
-   * @param {P} props The props for the component.
-   * @param {Object} context The context for the component.
-   * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
+   * @param props - The props for the component.
+   * @param context - The context for the component.
    */
   constructor(props?: P, context?: any) {
     super(props, context);
@@ -56,17 +51,23 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
     ]);
   }
 
-  /** When the component will receive props, make sure the componentRef is updated. */
+  /**
+   * When the component will receive props, make sure the componentRef is updated.
+   */
   public componentWillReceiveProps(newProps?: P, newContext?: any) {
     this._updateComponentRef(this.props, newProps);
   }
 
-  /** When the component has mounted, update the componentRef. */
+  /**
+   * When the component has mounted, update the componentRef.
+   */
   public componentDidMount() {
     this._updateComponentRef(undefined, this.props);
   }
 
-  /** If we have disposables, dispose them automatically on unmount. */
+  /**
+   * If we have disposables, dispose them automatically on unmount.
+   */
   public componentWillUnmount() {
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
@@ -80,7 +81,9 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
     }
   }
 
-  /** Gets the object's class name. */
+  /**
+   * Gets the object's class name.
+   */
   public get className() {
     if (!this.__className) {
       let funcNameRegex = /function (.{1,})\(/;
@@ -92,7 +95,9 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
     return this.__className;
   }
 
-  /** Allows subclasses to push things to this._disposables to be auto disposed. */
+  /**
+   * Allows subclasses to push things to this._disposables to be auto disposed.
+   */
   protected get _disposables(): IDisposable[] {
     if (!this.__disposables) {
       this.__disposables = [];
@@ -132,18 +137,10 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
 
   /**
    * Helper to return a memoized ref resolver function.
-   * @params refName Name of the member to assign the ref to.
-   *
-   * @examples
-   * class Foo extends BaseComponent<...> {
-   *   private _root: HTMLElement;
-   *
-   *   public render() {
-   *     return <div ref={ this._resolveRef('_root') } />
-   *   }
-   * }
+   * @param refName - Name of the member to assign the ref to.
+   * @returns A function instance keyed from the given refname.
    */
-  protected _resolveRef(refName: string) {
+  protected _resolveRef(refName: string): (ref: any) => any {
     if (!this.__resolves) {
       this.__resolves = {};
     }
@@ -176,11 +173,8 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   /**
    * Warns when a deprecated props are being used.
    *
-   * @protected
-   * @param {ISettingsMap<P>} deprecationMap The map of deprecations, where key is the prop name and the value is
+   * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
    * either null or a replacement prop name.
-   *
-   * @memberOf BaseComponent
    */
   protected _warnDeprecations(deprecationMap: ISettingsMap<P>) {
     warnDeprecations(this.className, this.props, deprecationMap);
@@ -189,10 +183,7 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   /**
    * Warns when props which are mutually exclusive with each other are both used.
    *
-   * @protected
-   * @param {ISettingsMap<P>} mutuallyExclusiveMap The map of mutually exclusive props.
-   *
-   * @memberOf BaseComponent
+   * @param mutuallyExclusiveMap - The map of mutually exclusive props.
    */
   protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>) {
     warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);

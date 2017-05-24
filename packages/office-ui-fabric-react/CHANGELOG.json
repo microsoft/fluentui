@@ -2,6 +2,179 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.32.0",
+      "tag": "office-ui-fabric-react_v2.32.0",
+      "date": "Tue, 23 May 2017 10:16:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "moyali <moyali@microsoft.com>",
+            "commit": "e71c3915f7dcb7ea37e332c06ee1461c7ca1387a",
+            "comment": "Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Prannay Budhraja <prannayb@gmail.com>",
+            "commit": "9e593d1f7a24987d68dda4a5f0c992837e8e47c0",
+            "comment": "FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element."
+          },
+          {
+            "author": "John Miller <rubixws@gmail.com>",
+            "commit": "1f70fb531a63ba1a2f35e629d6b167bf2489e0e2",
+            "comment": "Adding a constant for all the test images and replacing the hard coded  example paths"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.9.0 <2.0.0` to `>=1.10.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.12` to `1.3.13`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.31.0",
+      "tag": "office-ui-fabric-react_v2.31.0",
+      "date": "Fri, 19 May 2017 10:20:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "6da1d74623a2e645dbdf81d8d4defa6c364df078",
+            "comment": "Adding the ability for buttons to be toggled"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "090c526b56514e9ea1b53a73bec23cdd2489ac9a",
+            "comment": "Searchbox: Updated border styles to better support high contrast mode"
+          },
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "30c5299c56f4c44cfc3cd16ff66c36b31a31b78b",
+            "comment": "Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb\""
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.30.2",
+      "tag": "office-ui-fabric-react_v2.30.2",
+      "date": "Thu, 18 May 2017 10:09:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alek Gembinski <v-algemb@microsoft.com>",
+            "commit": "1165e06a6c8100a006610e2642c408c0563a7d3e",
+            "comment": "Adds outlines to SearchBox in HC modes"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "89a8664956339a897d055f9a165f9f8dcdcc63f8",
+            "comment": "BaseButton: now respects the isBeakVisible property on the menu props"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "049f7c1288015ec9b45f75d9ef47c75a6fe8b371",
+            "comment": "Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.8.7 <2.0.0` to `>=1.9.0 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.11` to `1.3.12`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.30.1",
+      "tag": "office-ui-fabric-react_v2.30.1",
+      "date": "Tue, 16 May 2017 22:39:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "6c19f8c7cceb40188fac7a8a823fe50c1647c2cd",
+            "comment": "Change pickeritemprops to correctly extend htmlattributes"
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "dde1059f481c2d0763ed45a0bb158ab9c7cb9fd0",
+            "comment": "List: Add scrollToIndex to public interface"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.30.0",
+      "tag": "office-ui-fabric-react_v2.30.0",
+      "date": "Tue, 16 May 2017 21:47:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alek Gembinski <v-algemb@microsoft.com>",
+            "commit": "e00fb08bc93e133d9ba1687d21a32a99bf547412",
+            "comment": "Pickers: Adds ability to disable pickers"
+          },
+          {
+            "author": "Eli Block <eliblock@microsoft.com>",
+            "commit": "3678839163cf3d8673c2cddede1d80a2a6692df5",
+            "comment": "Adjust styling on menu drop shadows."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ba359d0b68fadaa10a6b32cfbd5a55c8062f91d4",
+            "comment": "Button: Added aria-expanded if props.menuProps. Changes from false to true when opened"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "61710c7638db877b85c099d24a5c84346d8d747e",
+            "comment": "Button: default type to 'button'"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Igor Machuzhak <ihor3000@gmail.com>",
+            "commit": "a7302840780ace99eb464ef21f8be60c68c47e22",
+            "comment": "DatePicker: adding a disabled property support."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.29.0",
+      "tag": "office-ui-fabric-react_v2.29.0",
+      "date": "Mon, 15 May 2017 10:19:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "ef9386c90d261d4ff36d087883566c32b97a9893",
+            "comment": "Make name prop optional on ContextualMenu"
+          },
+          {
+            "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
+            "commit": "8fb218e5c2cb05074527b3fe21ac4af32efc21c5",
+            "comment": "Date picker: Reduce min-width for the holder component"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "4dbd183a8c50aa94c0bf3a2b92e6360257d6dc86",
+            "comment": "Dropdown: Add ability to set custom props on the Dropdown's Callout"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.28.0",
       "tag": "office-ui-fabric-react_v2.28.0",
       "date": "Fri, 12 May 2017 10:19:14 GMT",

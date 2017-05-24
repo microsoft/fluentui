@@ -216,6 +216,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
+  /**
+   * Sets the start and end positions of a selection in a text field.
+   * @param start Index of the start of the selection.
+   * @param end Index of the end of the selection.
+   */
+  public setSelectionRange(start: number, end: number) {
+    if (this._textElement) {
+      this._textElement.setSelectionRange(start, end);
+    }
+  }
+
   private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
