@@ -58,7 +58,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public render() {
-    const { onRenderData, onReduceData, data } = this.props;
+    const { onRenderData, data } = this.props;
     const { shouldMeasure, renderedData, measuredData } = this.state;
 
     if (Object.keys(data).length === 0) {
