@@ -318,7 +318,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.props.onRemoveSuggestion(item);
     }
     this.suggestionStore.removeSuggestion(index);
-    this.setState({ suggestionsVisible: true });
   }
 
   @autobind
@@ -426,6 +425,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             this.setState({ isSearching: false });
           });
         }
+      } else {
+        this.setState({ isSearching: false });
       }
       this.input.focus();
       this.setState({

@@ -32,7 +32,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       <IconButton
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
         iconProps={ { iconName: 'Cancel' } }
-        className={ css('ms-PickerItem-content', styles.removeButton, styles.itemContent) }
+        className={ css('ms-PickerItem-removeButton', styles.removeButton) }
         data-is-focusable={ false }
       />
     </div >

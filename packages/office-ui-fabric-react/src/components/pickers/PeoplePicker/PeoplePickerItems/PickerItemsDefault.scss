@@ -22,8 +22,15 @@
   &.personaContainerIsSelected {
     background: $ms-color-blue;
 
-    .removeButton {
+    // Setting global values here to override persona's normal behavior specifically in this selected variation
+    :global(.ms-Persona-primaryText) {
       color: $ms-color-white;
+    }
+
+    .removeButton {
+      :global(.ms-Button-icon) {
+        color: $ms-color-white;
+      }
 
       &:hover {
         color: $ms-color-white;

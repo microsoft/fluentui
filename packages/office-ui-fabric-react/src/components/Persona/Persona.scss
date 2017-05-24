@@ -62,14 +62,6 @@ $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
 
-:global(.ms-PickerPersona-container.is-selected) {
-  .root {
-    .primaryText {
-      color: $ms-color-white;
-    }
-  }
-}
-
 .root {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -373,7 +365,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
-    border: 2px solid #ffffff;
+    border: 2px solid $ms-color-white;
     @include left(16px);
   }
 
@@ -422,7 +414,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
-    border: 2px solid #ffffff;
+    border: 2px solid $ms-color-white;
     @include left(20px);
   }
 
@@ -724,7 +716,7 @@ $ms-Persona-presenceSizeXl: 28px;
       background-color: $ms-color-presence-busy-average;
       transform: rotate(-45deg);
       position: absolute;
-      // top: 5px;
+      // Using 40% as the top position of the cross bar element causes it to render in the correct position, even on very small persona sizes.
       top: 40%;
       @include left(0);
     }
