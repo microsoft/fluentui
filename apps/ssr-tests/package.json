@@ -11,8 +11,9 @@
   "scripts": {
     "_webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js",
     "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
-    "build": "npm run _webpack",
-    "test": "npm run _webpack && npm run _mocha",
+    "build": "node ../../common/temp/npm-local/node_modules/npm/bin/npm-cli.js run _webpack",
+    "test": "node ../../common/temp/npm-local/node_modules/npm/bin/npm-cli.js run _webpackMocha",
+    "_webpackMocha": "node ../../common/temp/npm-local/node_modules/npm/bin/npm-cli.js run _webpack && node ../../common/temp/npm-local/node_modules/npm/bin/npm-cli.js run _mocha",
     "clean": "",
     "start": ""
   },
