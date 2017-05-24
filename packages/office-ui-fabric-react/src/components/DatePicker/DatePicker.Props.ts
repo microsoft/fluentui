@@ -98,7 +98,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   borderless?: boolean;
   
   /**
-   * Classname for datepicker
+   * Optional Classname for datepicker root element .
    */
   className?: string;
 }
