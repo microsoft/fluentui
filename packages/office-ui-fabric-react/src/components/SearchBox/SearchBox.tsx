@@ -5,8 +5,6 @@ import {
   autobind,
   css,
   getId,
-  elementContains,
-  getDocument,
   KeyCodes
 } from '../../Utilities';
 
