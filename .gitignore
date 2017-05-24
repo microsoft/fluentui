@@ -104,12 +104,4 @@ package-deps.json
 **/office-ui-fabric-react/visualtests/results/*.png
 **/office-ui-fabric-react/failures/*.png
 
-common/npm-local
-common/npmx-link.json
-common/last-install.*
-common/npmx-recycler
-
-common/rush-link.json
-common/last-install.*
-common/rush-recycler
-commont/temp/**
+common/temp/**
