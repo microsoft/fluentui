@@ -165,14 +165,12 @@
 .singleline {
   height: 32px;
 
-  .dismissalOneline {
+  .ms-MessageBar-dismissalOneline {
     min-width: 16px;
     min-height: 16px;
-    @include padding(8px, 8px, 0px, 12px);
-
-    .innterTextPadding {
-      @include padding-right(48px);
-    }
+    // We want padding between the outside of the dismiss button to be 8px
+    // and the padding between the dismiss button and the text to be 12px
+    @include padding(8px, 8px, 8px, 12px);
   }
   .content {
     align-items: center;
@@ -202,7 +200,7 @@
   &.actionableOneline {
     height: 48px;
 
-    .dismissalOneline {
+    .ms-MessageBar-dismissalOneline {
       @include padding-right(16px);
     }
     .content {

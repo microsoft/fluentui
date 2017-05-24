@@ -12,9 +12,10 @@ export const MessageBarBasicExample = () => (
     <Label>Info/Default MessageBar</Label>
     <MessageBar>Info - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
 
-    <Label>Error MessageBar - only dismiss</Label>
+    <Label>Error MessageBar - only dismiss single line</Label>
     <MessageBar
       messageBarType={ MessageBarType.error }
+      isMultiline={ false }
       onDismiss={ () => { console.log('test'); } }>
       Error - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
 
