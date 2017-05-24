@@ -64,6 +64,11 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle>
    * onchange callback.
    */
   onChanged?: (checked: boolean) => void;
+
+  /**
+   * Custom styles for this component
+   */
+  customStyles?: IToggleStyles;
 }
 
 export interface IToggleStyles {
