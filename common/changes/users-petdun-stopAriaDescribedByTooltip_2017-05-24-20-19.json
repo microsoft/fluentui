@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TooltipHist: Added option to turn off aria-describedby for certain accessibility scenarios",
+      "comment": "TooltipHost: Added option to turn off aria-describedby for certain accessibility scenarios",
       "type": "minor"
     },
     {
