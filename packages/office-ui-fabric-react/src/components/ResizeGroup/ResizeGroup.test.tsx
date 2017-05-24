@@ -244,5 +244,6 @@ describe('ResizeGroup', () => {
     // 3. Third render to remove the measuring div after onReduce returns undefined
     expect(onRenderSpy.callCount).to.equal(3);
     expect(onReduceDataStub.callCount).to.equal(2);
+    expect(wrapper.state().shouldMeasure).to.equal(false);
   });
 });
