@@ -209,47 +209,26 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onEmptyInputFocus() {
     let suggestions: T[] | PromiseLike<T[]> = this.props.onInputFocus(this.state.items);
-    let suggestionsArray: T[] = suggestions as T[];
-    let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
-    if (Array.isArray(suggestionsArray)) {
-      this.suggestionStore.updateSuggestions(suggestionsArray, false);
-    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      this.setState({
-        suggestionsLoading: true
-      });
-
-      // Clear suggestions
-      this.suggestionStore.updateSuggestions([], false);
-
-      this.setState({
-        suggestionsVisible: this.input.inputElement === document.activeElement
-      });
-      // Ensure that the promise will only use the callback if it was the most recent one.
-      let promise: PromiseLike<T[]> = this.currentPromise = suggestionsPromiseLike;
-      promise.then((newSuggestions: T[]) => {
-        if (promise === this.currentPromise) {
-          this.suggestionStore.updateSuggestions(newSuggestions, false);
-          this.setState({
-            suggestionsLoading: false
-          });
-          if (this.loadingTimer) {
-            this._async.clearTimeout(this.loadingTimer);
-            this.loadingTimer = undefined;
-          }
-        }
-      });
-    }
+    this.updateSuggestionsList(suggestions);
   }
 
   protected updateValue(updatedValue: string) {
     let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
+    this.updateSuggestionsList(suggestions, updatedValue);
+  }
+
+  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
     let suggestionsArray: T[] = suggestions as T[];
     let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
-      this.resolveNewValue(updatedValue, suggestionsArray);
+      if (updatedValue !== undefined) {
+        this.resolveNewValue(updatedValue, suggestionsArray);
+      } else {
+        this.suggestionStore.updateSuggestions(suggestionsArray, false);
+      }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
         this.loadingTimer = this._async.setTimeout(() => this.setState({
@@ -260,14 +239,28 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       // Clear suggestions
       this.suggestionStore.updateSuggestions([], false);
 
-      this.setState({
-        suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
-      });
+      if (updatedValue !== undefined) {
+        this.setState({
+          suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+        });
+      } else {
+        this.setState({
+          suggestionsVisible: this.input.inputElement === document.activeElement
+        });
+      }
+
       // Ensure that the promise will only use the callback if it was the most recent one.
       let promise: PromiseLike<T[]> = this.currentPromise = suggestionsPromiseLike;
       promise.then((newSuggestions: T[]) => {
         if (promise === this.currentPromise) {
-          this.resolveNewValue(updatedValue, newSuggestions);
+          if (updatedValue !== undefined) {
+            this.resolveNewValue(updatedValue, newSuggestions);
+          } else {
+            this.suggestionStore.updateSuggestions(newSuggestions, false);
+            this.setState({
+              suggestionsLoading: false
+            });
+          }
           if (this.loadingTimer) {
             this._async.clearTimeout(this.loadingTimer);
             this.loadingTimer = undefined;
