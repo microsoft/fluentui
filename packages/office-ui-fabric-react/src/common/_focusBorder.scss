@@ -23,12 +23,12 @@
   }
 }
 
-@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1px, $onFocus: true) {
+@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1px, $onFocus: true, $position: relative) {
   @include focus-clear();
 
   & {
     // It is MUST because the pseudo-element is absolute position.
-    position: relative;
+    position: $position;
   }
 
   @include focus($onFocus) {
