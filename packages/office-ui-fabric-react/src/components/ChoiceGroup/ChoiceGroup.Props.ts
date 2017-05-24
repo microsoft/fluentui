@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IChoiceGroup {
 
@@ -57,6 +58,11 @@ export interface IChoiceGroupOption {
   text: string;
 
   /**
+   * Optional override of option render
+   */
+  onRenderField?: IRenderFunction<IChoiceGroupOption>;
+
+  /**
    * The Icon component props for choice field
    */
   iconProps?: IIconProps;
@@ -77,28 +83,23 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * Deprectated at 2.9.0 and will be removed after August 2017. Use 'selectedKey' or
-   * 'defaultSelectedKey' on the ChoiceGroup instead.
-   * @deprecated
-   * @defaultvalue false
-   */
-  checked?: boolean;
-
-  /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   * @deprecated
-   */
-  isChecked?: boolean;
-
-  /**
    * Whether or not the option is disabled.
    */
   disabled?: boolean;
 
-  // @todo: Update version numbers for depriate and removal
   /**
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
-   * @deprecated
+   * This value is maintained by the component and is accessible during onRenderField
    */
-  isDisabled?: boolean;
+  checked?: boolean;
+
+  /**
+   * This value is maintained by the component and is accessible during onRenderField
+   */
+  id?: string;
+
+  /**
+   * This value is maintained by the component and is accessible during onRenderField
+   */
+  labelId?: string;
+
 }
