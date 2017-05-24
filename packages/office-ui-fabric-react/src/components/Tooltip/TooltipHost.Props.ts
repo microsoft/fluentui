@@ -63,4 +63,10 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * Optional class name to apply to tooltip host.
    */
   hostClassName?: string;
+
+  /**
+   * Whether this host should NOT add the aria-describedby attribute to the element being tooltipped, default is false. Set to true to get
+   * a visual only tooltip, like for example if you wanted to add a tooltip for text ellipsised via css
+   */
+  stopAriaDescribedBy?: boolean;
 }
