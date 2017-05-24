@@ -1,0 +1,30 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added a prop to TooltipHost that allows you to turn off aria-describedby for certain accessibility scenarios",
+      "type": "minor"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/styling",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/fabric-website",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "peterdunlop2519@gmail.com"
+}
