@@ -27,4 +27,5 @@ export interface ISemanticColors {
   inputBorderHover?: string;
   inputBackgroundSelected?: string;
   inputBackgroundSelectedHover?: string;
+  inputForegroundSelected?: string;
 }

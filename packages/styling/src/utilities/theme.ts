@@ -57,6 +57,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
     inputBorder: p.neutralTertiary,
     inputBorderHover: p.neutralPrimary,
     inputBackgroundSelected: p.themePrimary,
-    inputBackgroundSelectedHover: p.themeDarkAlt
+    inputBackgroundSelectedHover: p.themeDarkAlt,
+    inputForegroundSelected: p.white
   };
 }

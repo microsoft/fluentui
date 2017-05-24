@@ -64,14 +64,29 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle>
 
 export interface IToggleStyles {
   root?: IStyle;
+  /* The text before the actual toggle switch */
+  label?: IStyle;
 
+  /* Holds the toggle switch and the On/Off text next to it */
+  control?: IStyle;
+  invisibleToggle?: IStyle;
+  /* The text indicating the on/off state of the control */
+  stateText?: IStyle;
+  focusOutline?: IStyle;
+
+  /* The rounded container, modify font-size on toggle to set the size of the control */
   toggle?: IStyle;
+  toggleHover?: IStyle; // todo bug: cannot take a class name, it will do nothing
   toggleOn?: IStyle;
+  toggleOnHover?: IStyle; // todo bug: cannot take a class name, it will do nothing
   toggleDisabled?: IStyle;
   toggleOnDisabled?: IStyle;
 
+  /* The dot in the middle */
   thumb?: IStyle;
+  thumbHover?: IStyle; // todo bug: cannot take a class name, it will do nothing
   thumbOn?: IStyle;
+  thumbOnHover?: IStyle; // todo bug: cannot take a class name, it will do nothing
   thumbDisabled?: IStyle;
   thumbOnDisabled?: IStyle;
 }

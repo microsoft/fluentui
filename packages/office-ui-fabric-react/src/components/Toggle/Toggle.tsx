@@ -8,10 +8,14 @@ import {
   inputProperties,
   getNativeProps
 } from '../../Utilities';
-import { IToggleProps, IToggle } from './Toggle.Props';
+import {
+  IToggleProps,
+  IToggle,
+  IToggleStyles
+} from './Toggle.Props';
 import { Label } from '../../Label';
-import * as stylesImport from './Toggle.scss';
-const styles: any = stylesImport;
+import * as assign from 'object-assign';
+import { mergeStyles } from '../../Styling';
 
 import { getStyles } from './Toggle.styles';
 
@@ -52,6 +56,21 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     }
   }
 
+  private _fixStyles(styles: IToggleStyles) {
+    return assign({}, styles, {
+      root: mergeStyles(styles.root, {
+        '.is-enabled .ms-Toggle-control:hover': {
+          ' .ms-Toggle-background': styles.toggleHover,
+          ' .ms-Toggle-thumb': styles.thumbHover
+        },
+        '.is-enabled.is-checked .ms-Toggle-control:hover': {
+          ' .ms-Toggle-background': styles.toggleOnHover,
+          ' .ms-Toggle-thumb': styles.thumbOnHover
+        }
+      })
+    });
+  }
+
   public render() {
     // This control is using an input element for more universal accessibility support.
     // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
@@ -59,7 +78,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    let gStyles = getStyles(undefined);
+    let styles = this._fixStyles(getStyles(undefined));
 
     let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
@@ -69,61 +88,56 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     return (
       <div className={
         css(
-          styles.root,
           'ms-Toggle',
           className,
           {
             'is-checked': isChecked,
             'is-enabled': !disabled,
-            'is-disabled': disabled,
-            [styles.isChecked]: isChecked,
-            [styles.isEnabled]: !disabled,
-            [styles.isDisabled]: disabled,
+            'is-disabled': disabled
           },
-          gStyles.root
+          styles.root
         ) }>
-        <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
-          { label && (
-            <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
-          ) }
-          <div className={ css(styles.slider, 'ms-Toggle-slider') }>
-            <input
-              key='invisibleToggle'
-              ref={ (c): HTMLInputElement => this._toggleInput = c }
-              type='checkbox'
-              id={ this._id }
-              onChange={ () => { /* no-op */ } }
-              { ...toggleNativeProps }
-              className={ styles.invisibleToggle }
-              name={ this._id }
-              disabled={ disabled }
-              checked={ isChecked }
-              aria-label={ ariaLabel }
-              onClick={ this._onClick }
-              onKeyDown={ this._onInputKeyDown }
-            />
+
+        { label && (
+          <Label htmlFor={ this._id } className={ css('ms-Toggle-label', styles.label) }>{ label }</Label>
+        ) }
+
+        <div className={ css(
+          'ms-Toggle-control',
+          styles.control) }>
+          <input
+            key='invisibleToggle'
+            ref={ (c): HTMLInputElement => this._toggleInput = c }
+            type='checkbox'
+            id={ this._id }
+            onChange={ () => { /* no-op */ } }
+            { ...toggleNativeProps }
+            className={ css(styles.invisibleToggle) }
+            name={ this._id }
+            disabled={ disabled }
+            checked={ isChecked }
+            aria-label={ ariaLabel }
+            onClick={ this._onClick }
+            onKeyDown={ this._onInputKeyDown }
+          />
+          <div className={ css(
+            'ms-Toggle-background',
+            styles.toggle,
+            isChecked && styles.toggleOn,
+            disabled && !isChecked && styles.toggleDisabled,
+            disabled && isChecked && styles.toggleOnDisabled
+          ) }>
             <div className={ css(
-              styles.background,
-              'ms-Toggle-background',
-              gStyles.toggle,
-              isChecked && gStyles.toggleOn,
-              disabled && !isChecked && gStyles.toggleDisabled,
-              disabled && isChecked && gStyles.toggleOnDisabled
-            ) }>
-              <div className={ css(styles.focus, 'ms-Toggle-focus') } />
-              <div className={ css(
-                styles.thumb,
-                'ms-Toggle-thumb',
-                gStyles.thumb,
-                isChecked && gStyles.thumbOn,
-                disabled && !isChecked && gStyles.thumbDisabled,
-                disabled && isChecked && gStyles.thumbOnDisabled)
-              } />
-            </div>
-            { stateText && (
-              <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
-            ) }
+              'ms-Toggle-thumb',
+              styles.thumb,
+              isChecked && styles.thumbOn,
+              disabled && !isChecked && styles.thumbDisabled,
+              disabled && isChecked && styles.thumbOnDisabled)
+            } />
           </div>
+          { stateText && (
+            <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
+          ) }
         </div>
       </div>
     );
@@ -157,7 +171,6 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     switch (ev.which) {
       case KeyCodes.enter:
         // Also support toggling via the enter key.
-        // While toggling via the space bar is technically correct for a checkbox, this control looks more like a button to sighted users.
         this._onClick();
 
         break;
