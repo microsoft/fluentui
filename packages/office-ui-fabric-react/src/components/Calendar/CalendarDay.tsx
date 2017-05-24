@@ -156,8 +156,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
                           }) }
-                        role='link'
-                        href='#'
+                        role='button'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
