@@ -6,7 +6,8 @@ import {
   css,
   getId,
   inputProperties,
-  getNativeProps
+  getNativeProps,
+  memoize
 } from '../../Utilities';
 import {
   IToggleProps,
@@ -15,12 +16,26 @@ import {
 } from './Toggle.Props';
 import { Label } from '../../Label';
 import * as assign from 'object-assign';
-import { mergeStyles } from '../../Styling';
+import {
+  mergeStyles,
+  IStyle
+} from '../../Styling';
 
 import { getStyles } from './Toggle.styles';
 
 export interface IToggleState {
   isChecked: boolean;
+}
+
+interface IToggleClassNames {
+  root: IStyle;
+  label: IStyle;
+  control: IStyle;
+  invisibleToggle: IStyle;
+  stateText: IStyle;
+
+  toggle: IStyle;
+  thumb: IStyle;
 }
 
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
@@ -56,20 +71,45 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     }
   }
 
-  private _fixStyles(styles: IToggleStyles) {
-    return assign({}, styles, {
-      root: mergeStyles(styles.root, {
-        '.is-enabled .ms-Toggle-control:hover': {
-          ' .ms-Toggle-background': styles.toggleHover,
-          ' .ms-Toggle-thumb': styles.thumbHover
-        },
-        '.is-enabled.is-checked .ms-Toggle-control:hover': {
-          ' .ms-Toggle-background': styles.toggleOnHover,
-          ' .ms-Toggle-thumb': styles.thumbOnHover
-        }
-      })
-    });
-  }
+  private _getClassNames = memoize((
+    (styles: IToggleStyles,
+      enabled: boolean,
+      checked: boolean
+    ): IToggleClassNames => {
+      return {
+        root: mergeStyles(styles.root,
+          enabled && !checked && {
+            '.is-enabled .ms-Toggle-control:hover': {
+              ' .ms-Toggle-background': styles.toggleHover,
+              ' .ms-Toggle-thumb': styles.thumbHover
+            }
+          },
+          enabled && checked && {
+            '.is-enabled.is-checked .ms-Toggle-control:hover': {
+              ' .ms-Toggle-background': styles.toggleOnHover,
+              ' .ms-Toggle-thumb': styles.thumbOnHover
+            }
+          }),
+        label: styles.label,
+        control: styles.control,
+        invisibleToggle: mergeStyles(styles.invisibleToggle,
+          { ':focus + .ms-Toggle-background': styles.focus }
+        ),
+        stateText: styles.stateText,
+        toggle: mergeStyles(styles.toggleBase,
+          enabled && !checked && styles.toggle,
+          enabled && checked && styles.toggleOn,
+          !enabled && !checked && styles.toggleDisabled,
+          !enabled && checked && styles.toggleOnDisabled
+        ),
+        thumb: mergeStyles(styles.thumbBase,
+          enabled && !checked && styles.thumb,
+          enabled && checked && styles.thumbOn,
+          !enabled && !checked && styles.thumbDisabled,
+          !enabled && checked && styles.thumbOnDisabled
+        )
+      }
+    }));
 
   public render() {
     // This control is using an input element for more universal accessibility support.
@@ -78,13 +118,13 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    let styles = this._fixStyles(getStyles(undefined));
-
     let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
+    let styles = this._getClassNames(getStyles(undefined), !disabled, isChecked);
+
     return (
       <div className={
         css(
@@ -102,9 +142,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
           <Label htmlFor={ this._id } className={ css('ms-Toggle-label', styles.label) }>{ label }</Label>
         ) }
 
-        <div className={ css(
-          'ms-Toggle-control',
-          styles.control) }>
+        <div className={ css('ms-Toggle-control', styles.control) }>
           <input
             key='invisibleToggle'
             ref={ (c): HTMLInputElement => this._toggleInput = c }
@@ -120,23 +158,14 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             onClick={ this._onClick }
             onKeyDown={ this._onInputKeyDown }
           />
-          <div className={ css(
-            'ms-Toggle-background',
-            styles.toggle,
-            isChecked && styles.toggleOn,
-            disabled && !isChecked && styles.toggleDisabled,
-            disabled && isChecked && styles.toggleOnDisabled
-          ) }>
+          <div className={ css('ms-Toggle-background', styles.toggle) }>
             <div className={ css(
               'ms-Toggle-thumb',
-              styles.thumb,
-              isChecked && styles.thumbOn,
-              disabled && !isChecked && styles.thumbDisabled,
-              disabled && isChecked && styles.thumbOnDisabled)
+              styles.thumb)
             } />
           </div>
           { stateText && (
-            <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
+            <Label className={ css('ms-Toggle-stateText', styles.stateText) }>{ stateText }</Label>
           ) }
         </div>
       </div>

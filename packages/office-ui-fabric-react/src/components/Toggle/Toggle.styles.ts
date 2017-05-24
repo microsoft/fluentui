@@ -30,15 +30,7 @@ export const getStyles = memoize((
 
   return {
     root: mergeStyles({
-      marginBottom: '8px',
-      /*
-            '.is-enabled:hover': {
-              '.is-checked'
-              ' .ms-Toggle-background': {
-
-              }
-
-            }*/
+      marginBottom: '8px'
     }),
 
     control: mergeStyles({
@@ -58,7 +50,7 @@ export const getStyles = memoize((
         cursor: 'default'
       },
       ':focus + .ms-Toggle-background': {
-        outline: '1px solid ' + toggleFocusBorderColor
+        // todo
       }
     }),
     stateText: mergeStyles({
@@ -67,14 +59,11 @@ export const getStyles = memoize((
         margin: '0 10px'
       }
     }),
-    focusOutline: mergeStyles({
-
+    focus: mergeStyles({
+      outline: '1px solid ' + toggleFocusBorderColor
     }),
 
-    toggle: mergeStyles({
-      background: toggleBackgroundOffColor,
-      border: '1px solid ' + toggleBorderOffColor,
-
+    toggleBase: mergeStyles({
       fontSize: '20px',
       lineHeight: '1em',
       boxSizing: 'border-box',
@@ -83,7 +72,13 @@ export const getStyles = memoize((
       height: '1em',
       borderRadius: '1em',
       transition: 'all 0.1s ease',
-      pointerEvents: 'none'
+      pointerEvents: 'none',
+      borderWidth: '1px',
+      borderStyle: 'solid'
+    }),
+    toggle: mergeStyles({
+      background: toggleBackgroundOffColor,
+      borderColor: toggleBorderOffColor,
     }),
     toggleHover: mergeStyles({
       borderColor: toggleBorderOffHoverColor
@@ -100,36 +95,39 @@ export const getStyles = memoize((
       borderColor: toggleBorderOffDisabledColor
     }),
     toggleOnDisabled: mergeStyles({
-      backgroundColor: toggleBackgroundOnDisabledColor
+      backgroundColor: toggleBackgroundOnDisabledColor,
+      borderColor: 'transparent'
     }),
 
-    thumb: mergeStyles({
-      backgroundColor: 'red',//thumbOffColor,
-
+    thumbBase: mergeStyles({
       width: '.5em',
       height: '.5em',
       borderRadius: '.5em',
       position: 'absolute',
       top: '.2em',
-      left: '.2em',
       transition: 'all 0.1s ease'
+    }),
+    thumb: mergeStyles({
+      backgroundColor: thumbOffColor,
+      left: '.2em',
     }),
     thumbHover: mergeStyles({
       // unstyled
     }),
     thumbOn: mergeStyles({
       backgroundColor: thumbOnColor,
-
       left: '1.4em'
     }),
     thumbOnHover: mergeStyles({
       // unstyled
     }),
     thumbDisabled: mergeStyles({
-      backgroundColor: 'green'//thumbOffDisabledColor
+      backgroundColor: thumbOffDisabledColor,
+      left: '.2em',
     }),
     thumbOnDisabled: mergeStyles({
-      backgroundColor: thumbOnDisabledColor
+      backgroundColor: thumbOnDisabledColor,
+      left: '1.4em'
     })
   };
 });
