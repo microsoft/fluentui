@@ -39,8 +39,6 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
   searchForMoreText: 'Load all Results',
   resultsMaximumNumber: 10,
-  resultsFooterFull: 'Top 10 results',
-  resultsFooter: 'No additional results',
   searchingText: 'Searching...'
 };
 
@@ -197,6 +195,9 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   public _renderLimitedSearch() {
+    limitedSearchSuggestionProps.resultsFooter = this._renderFooterText;
+    limitedSearchSuggestionProps.resultsFooterFull = this._renderFooterFullText;
+
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
@@ -208,6 +209,16 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onRemoveSuggestion={ this._onRemoveSuggestion }
       />
     );
+  }
+
+  @autobind
+  private _renderFooterText(): JSX.Element {
+    return <div>No additional results</div>;
+  }
+
+  @autobind
+  private _renderFooterFullText(): JSX.Element {
+    return <div>Top 10 results</div>;
   }
 
   @autobind

@@ -110,13 +110,13 @@ export interface IBasePickerSuggestionsProps {
    */
   searchingText?: string;
   /**
-   * Optional text shown at the end of the suggestions list when the list when there are more items than then number specified by resultsMaximumNumber.
+   * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
    */
-  resultsFooterFull?: string;
+  resultsFooterFull?: (props) => JSX.Element;
   /**
-   * Optional text shown at the end of the suggestions list when all relevant items are currently visible.
+   * A renderer that adds an element at the end of the suggestions list when there are fewer than resultsMaximumNumber.
    */
-  resultsFooter?: string;
+  resultsFooter?: (props) => JSX.Element;
   /**
    * Maximum number of suggestions to show in the full suggestion list.
    */
