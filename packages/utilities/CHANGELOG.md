@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 23 May 2017 10:16:04 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2017 23:52:09 GMT and should not be manually modified.
+
+## 1.10.1
+Wed, 24 May 2017 23:52:09 GMT
+
+### Patches
+
+- Add utlities for unit tests that need to override or spy on React lifecycle methods
 
 ## 1.10.0
 Tue, 23 May 2017 10:16:04 GMT
