@@ -16,8 +16,9 @@
   },
   "devDependencies": {
     "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
-    "@types/react": "^15.0.16",
-    "@types/react-dom": "^0.14.23",
+    "@types/react": "^15.0.25",
+    "@types/react-addons-test-utils": "^0.14.18",
+    "@types/react-dom": "^15.5.0",
     "@types/webpack-env": "^1.13.0",
     "source-map-loader": "^0.2.1",
     "ts-loader": "^2.0.1",
@@ -29,6 +30,6 @@
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=2.32.0 <3.0.0"
+    "office-ui-fabric-react": ">=2.33.0 <3.0.0"
   }
 }

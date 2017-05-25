@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: Support custom option labels",
+      "comment": "DatePicker: Fix for accessibility issues",
       "type": "minor"
     }
   ],
-  "email": "micahgodbolt@gmail.com"
+  "email": "manishda@microsoft.com"
 }

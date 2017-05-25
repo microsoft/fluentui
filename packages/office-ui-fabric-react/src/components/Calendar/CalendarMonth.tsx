@@ -69,18 +69,18 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
-            { strings.shortMonths.map((month, index) => {
-              return (
-                <span
-                  className={ css('ms-DatePicker-monthOption', styles.monthOption) }
-                  key={ index }
-                  onClick={ this._selectMonthCallbacks[index] }
-                  aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
-                  data-is-focusable={ true }
-                >
-                  { month }
-                </span>);
-            }) }
+            { strings.shortMonths.map((month, index) =>
+              <span
+                role='button'
+                className={ css('ms-DatePicker-monthOption', styles.monthOption) }
+                key={ index }
+                onClick={ this._selectMonthCallbacks[index] }
+                aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
+                data-is-focusable={ true }
+              >
+                { month }
+              </span>
+            ) }
           </div>
         </FocusZone>
       </div>
@@ -88,7 +88,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
