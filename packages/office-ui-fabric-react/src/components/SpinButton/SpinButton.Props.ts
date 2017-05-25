@@ -11,7 +11,7 @@ export interface ISpinButtonProps {
   defaultValue?: string;
 
   /**
-   * The initial value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
+   * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
    * This value is mutually exclusive to defaultValue. Use one or the other.
    */
   value?: string;
@@ -99,5 +99,9 @@ export interface ISpinButtonProps {
 }
 
 export interface ISpinButton {
+  /**
+   * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
+   * This value is mutually exclusive to defaultValue. Use one or the other.
+   */
   value?: string;
 }
