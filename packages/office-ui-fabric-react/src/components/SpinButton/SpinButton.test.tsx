@@ -416,7 +416,7 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
   });
 
-  it('should use validator passed to the spin button (with invalid input)', () => {
+  it('should use validator passed to the spin button', () => {
     const errorMessage: string = 'The value is invalid';
     const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
@@ -446,6 +446,66 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
     expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(errorMessage));
+  });
+
+  it('should have correct value after increment and using defaultValue', () => {
+    const exampleLabelValue: string = 'SpinButton';
+    const exampleMinValue: number = 2;
+    const exampleMaxValue: number = 22;
+    const exampleDefaultValue: string = '12';
+    const exampleStepValue: number = 2;
+    const exampleNewValue: string = String(Number(exampleDefaultValue) + exampleStepValue);
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label={ exampleLabelValue }
+        min={ exampleMinValue }
+        max={ exampleMaxValue }
+        defaultValue={ exampleDefaultValue }
+        step={ exampleStepValue }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-UpButton')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.mouseDown(upButtonDOM);
+    ReactTestUtils.Simulate.mouseUp(upButtonDOM);
+
+    expect(inputDOM.value).to.equal(String(exampleNewValue));
+    expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
+    expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
+  });
+
+  it('should have correct value after decrement and using defaultValue', () => {
+    const exampleLabelValue: string = 'SpinButton';
+    const exampleMinValue: number = 2;
+    const exampleMaxValue: number = 22;
+    const exampleDefaultValue: string = '12';
+    const exampleStepValue: number = 2;
+    const exampleNewValue: string = String(Number(exampleDefaultValue) - exampleStepValue);
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label={ exampleLabelValue }
+        min={ exampleMinValue }
+        max={ exampleMaxValue }
+        defaultValue={ exampleDefaultValue }
+        step={ exampleStepValue } m
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    const downButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-DownButton')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.mouseDown(downButtonDOM);
+    ReactTestUtils.Simulate.mouseUp(downButtonDOM);
+
+    expect(inputDOM.value).to.equal(String(exampleNewValue));
+    expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
+    expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
   });
 
   it('should stop spinning if text field is focused while actively spinning', () => {
