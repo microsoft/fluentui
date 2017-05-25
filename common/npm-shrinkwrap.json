@@ -8,9 +8,9 @@
       "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-2.0.6.tgz"
     },
     "@microsoft/gulp-core-build": {
-      "version": "2.5.1",
+      "version": "2.5.3",
       "from": "@microsoft/gulp-core-build@>=2.5.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build/-/gulp-core-build-2.5.1.tgz",
+      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build/-/gulp-core-build-2.5.3.tgz",
       "dependencies": {
         "@types/chai": {
           "version": "3.4.34",
@@ -838,13 +838,13 @@
       "resolved": "https://registry.npmjs.org/@types/q/-/q-0.0.32.tgz"
     },
     "@types/react": {
-      "version": "15.0.24",
-      "from": "@types/react@>=15.0.16 <16.0.0",
-      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.24.tgz"
+      "version": "15.0.25",
+      "from": "@types/react@>=15.0.25 <16.0.0",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.25.tgz"
     },
     "@types/react-addons-test-utils": {
       "version": "0.14.18",
-      "from": "@types/react-addons-test-utils@>=0.14.17 <0.15.0",
+      "from": "@types/react-addons-test-utils@>=0.14.18 <0.15.0",
       "resolved": "https://registry.npmjs.org/@types/react-addons-test-utils/-/react-addons-test-utils-0.14.18.tgz"
     },
     "@types/react-dom": {
@@ -963,9 +963,9 @@
       "resolved": "https://registry.npmjs.org/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz",
       "dependencies": {
         "acorn": {
-          "version": "4.0.11",
+          "version": "4.0.13",
           "from": "acorn@>=4.0.3 <5.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.11.tgz"
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz"
         }
       }
     },
@@ -2337,15 +2337,20 @@
       "from": "detect-file@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npmjs.org/detect-file/-/detect-file-0.1.0.tgz"
     },
+    "detect-node": {
+      "version": "2.0.3",
+      "from": "detect-node@>=2.0.3 <3.0.0",
+      "resolved": "https://registry.npmjs.org/detect-node/-/detect-node-2.0.3.tgz"
+    },
     "detective": {
       "version": "4.5.0",
       "from": "detective@>=4.3.1 <5.0.0",
       "resolved": "https://registry.npmjs.org/detective/-/detective-4.5.0.tgz",
       "dependencies": {
         "acorn": {
-          "version": "4.0.11",
+          "version": "4.0.13",
           "from": "acorn@>=4.0.3 <5.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.11.tgz"
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz"
         }
       }
     },
@@ -5661,7 +5666,7 @@
     },
     "nan": {
       "version": "2.6.2",
-      "from": "nan@>=2.3.2 <3.0.0",
+      "from": "nan@>=2.3.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.6.2.tgz"
     },
     "native-promise-only": {
@@ -6981,13 +6986,13 @@
     },
     "rush-example-app-base": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-example-app-base",
-      "resolved": "file:temp_modules\\rush-example-app-base"
+      "from": "temp_modules/rush-example-app-base",
+      "resolved": "file:temp_modules/rush-example-app-base"
     },
     "rush-example-component": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-example-component",
-      "resolved": "file:temp_modules\\rush-example-component",
+      "from": "temp_modules/rush-example-component",
+      "resolved": "file:temp_modules/rush-example-component",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7110,13 +7115,13 @@
     },
     "rush-fabric-website": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-fabric-website",
-      "resolved": "file:temp_modules\\rush-fabric-website"
+      "from": "temp_modules/rush-fabric-website",
+      "resolved": "file:temp_modules/rush-fabric-website"
     },
     "rush-office-ui-fabric-react": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-office-ui-fabric-react",
-      "resolved": "file:temp_modules\\rush-office-ui-fabric-react",
+      "from": "temp_modules/rush-office-ui-fabric-react",
+      "resolved": "file:temp_modules/rush-office-ui-fabric-react",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7279,8 +7284,8 @@
     },
     "rush-office-ui-fabric-react-tslint": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-office-ui-fabric-react-tslint",
-      "resolved": "file:temp_modules\\rush-office-ui-fabric-react-tslint",
+      "from": "temp_modules/rush-office-ui-fabric-react-tslint",
+      "resolved": "file:temp_modules/rush-office-ui-fabric-react-tslint",
       "dependencies": {
         "@microsoft/api-extractor": {
           "version": "1.1.19",
@@ -7306,8 +7311,8 @@
     },
     "rush-ssr-tests": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-ssr-tests",
-      "resolved": "file:temp_modules\\rush-ssr-tests",
+      "from": "temp_modules/rush-ssr-tests",
+      "resolved": "file:temp_modules/rush-ssr-tests",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7420,8 +7425,8 @@
     },
     "rush-styling": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-styling",
-      "resolved": "file:temp_modules\\rush-styling",
+      "from": "temp_modules/rush-styling",
+      "resolved": "file:temp_modules/rush-styling",
       "dependencies": {
         "acorn": {
           "version": "5.0.3",
@@ -7534,25 +7539,18 @@
     },
     "rush-test-bundle-button": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-test-bundle-button",
-      "resolved": "file:temp_modules\\rush-test-bundle-button",
-      "dependencies": {
-        "@types/react-dom": {
-          "version": "0.14.23",
-          "from": "@types/react-dom@>=0.14.23 <0.15.0",
-          "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.23.tgz"
-        }
-      }
+      "from": "temp_modules/rush-test-bundle-button",
+      "resolved": "file:temp_modules/rush-test-bundle-button"
     },
     "rush-todo-app": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-todo-app",
-      "resolved": "file:temp_modules\\rush-todo-app"
+      "from": "temp_modules/rush-todo-app",
+      "resolved": "file:temp_modules/rush-todo-app"
     },
     "rush-utilities": {
       "version": "0.0.0",
-      "from": "temp_modules\\rush-utilities",
-      "resolved": "file:temp_modules\\rush-utilities",
+      "from": "temp_modules/rush-utilities",
+      "resolved": "file:temp_modules/rush-utilities",
       "dependencies": {
         "diff": {
           "version": "3.2.0",
@@ -8035,9 +8033,9 @@
       }
     },
     "spdy-transport": {
-      "version": "2.0.19",
+      "version": "2.0.20",
       "from": "spdy-transport@>=2.0.18 <3.0.0",
-      "resolved": "https://registry.npmjs.org/spdy-transport/-/spdy-transport-2.0.19.tgz",
+      "resolved": "https://registry.npmjs.org/spdy-transport/-/spdy-transport-2.0.20.tgz",
       "dependencies": {
         "debug": {
           "version": "2.6.8",
@@ -8967,9 +8965,9 @@
       "resolved": "https://registry.npmjs.org/webpack/-/webpack-2.2.1.tgz",
       "dependencies": {
         "acorn": {
-          "version": "4.0.11",
+          "version": "4.0.13",
           "from": "acorn@>=4.0.4 <5.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.11.tgz"
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.13.tgz"
         },
         "async": {
           "version": "2.4.1",

@@ -5,8 +5,6 @@ import {
   autobind,
   css,
   getId,
-  elementContains,
-  getDocument,
   KeyCodes
 } from '../../Utilities';
 
@@ -113,7 +111,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
       hasFocus: true
     });
 
-    this._events.on(getDocument().body, 'focus', this._handleDocumentFocus, true);
+    this._events.on(this._rootElement, 'blur', this._onBlur, true);
   }
 
   @autobind
@@ -140,6 +138,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
+  private _onBlur(ev: React.ChangeEvent<HTMLInputElement>) {
+    this._events.off(this._rootElement, 'blur');
+    this.setState({
+      hasFocus: false
+    });
+  }
+
+  @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     const value = this._inputElement.value;
     if (value === this._latestValue) {
@@ -149,15 +155,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
     this.setState({ value });
     this._callOnChange(value);
-  }
-
-  private _handleDocumentFocus(ev: FocusEvent) {
-    if (!elementContains(this._rootElement, ev.target as HTMLElement)) {
-      this._events.off(getDocument().body, 'focus');
-      this.setState({
-        hasFocus: false
-      });
-    }
   }
 
   private _callOnChange(newValue: string): void {
