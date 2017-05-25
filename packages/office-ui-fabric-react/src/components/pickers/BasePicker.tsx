@@ -65,7 +65,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.items;
   }
 
-  public componentWillUpdate(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
+  public componentWillUpdate(newProps: P, newState: IBasePickerState) {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
