@@ -16,6 +16,13 @@ export interface ITextField {
 
   /** Sets the selection end of the text field to a specified value */
   setSelectionEnd: (value: number) => void;
+
+  /**
+   * Sets the start and end positions of a selection in a text field.
+   * @param start Index of the start of the selection.
+   * @param end Index of the end of the selection.
+   */
+  setSelectionRange: (start: number, end: number) => void;
 }
 
 /**

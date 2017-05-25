@@ -80,9 +80,9 @@ export class Async {
 
   /**
    * SetTimeout override, which will auto cancel the timeout during dispose.
-   * @param callback Callback to execute.
-   * @param duration Duration in milliseconds.
-   * @return The setTimeout id.
+   * @param callback - Callback to execute.
+   * @param duration - Duration in milliseconds.
+   * @returns The setTimeout id.
    */
   public setTimeout(callback: () => void, duration: number): number {
 
@@ -119,9 +119,9 @@ export class Async {
 
   /**
    * Clears the timeout.
-   * @param id Id to cancel.
+   * @param id - Id to cancel.
    */
-  public clearTimeout(id: number) {
+  public clearTimeout(id: number): void {
 
     if (this._timeoutIds && this._timeoutIds[id]) {
       /* tslint:disable:ban-native-functions */
@@ -133,8 +133,8 @@ export class Async {
 
   /**
    * SetImmediate override, which will auto cancel the immediate during dispose.
-   * @param callback Callback to execute.
-   * @return The setTimeout id.
+   * @param callback - Callback to execute.
+   * @returns The setTimeout id.
    */
   public setImmediate(callback: () => void): number {
 
@@ -169,7 +169,7 @@ export class Async {
 
   /**
    * Clears the immediate.
-   * @param id Id to cancel.
+   * @param id - Id to cancel.
    */
   public clearImmediate(id: number) {
 
@@ -183,9 +183,9 @@ export class Async {
 
   /**
    * SetInterval override, which will auto cancel the timeout during dispose.
-   * @param callback Callback to execute.
-   * @param duration Duration in milliseconds.
-   * @return The setTimeout id.
+   * @param callback - Callback to execute.
+   * @param duration - Duration in milliseconds.
+   * @returns The setTimeout id.
    */
   public setInterval(callback: () => void, duration: number): number {
     let intervalId = 0;
@@ -216,7 +216,7 @@ export class Async {
 
   /**
    * Clears the interval.
-   * @param id Id to cancel.
+   * @param id - Id to cancel.
    */
   public clearInterval(id: number) {
     if (this._intervalIds && this._intervalIds[id]) {
@@ -236,12 +236,10 @@ export class Async {
    * Note: If leading and trailing options are true func will be called on the trailing edge of
    * the timeout only if the the throttled function is invoked more than once during the wait timeout.
    *
-   * @param func The function to throttle.
-   * @param wait The number of milliseconds to throttle executions to. Defaults to 0.
-   * @param options The options object.
-   * @param options.leading Specify execution on the leading edge of the timeout.
-   * @param options.trailing Specify execution on the trailing edge of the timeout.
-   * @return The new throttled function.
+   * @param func - The function to throttle.
+   * @param wait - The number of milliseconds to throttle executions to. Defaults to 0.
+   * @param options - The options object.
+   * @returns The new throttled function.
    */
   public throttle<T extends Function>(func: T, wait?: number, options?: {
     leading?: boolean;
@@ -304,13 +302,10 @@ export class Async {
    * the timeout only if the the debounced function is invoked more than once during the wait
    * timeout.
    *
-   * @param func The function to debounce.
-   * @param wait The number of milliseconds to delay.
-   * @param options The options object.
-   * @param options.leading Specify execution on the leading edge of the timeout.
-   * @param options.maxWait The maximum time func is allowed to be delayed before it's called.
-   * @param options.trailing Specify execution on the trailing edge of the timeout.
-   * @return The new debounced function.
+   * @param func - The function to debounce.
+   * @param wait - The number of milliseconds to delay.
+   * @param options - The options object.
+   * @returns The new debounced function.
    */
   public debounce<T extends Function>(func: T, wait?: number, options?: {
     leading?: boolean;

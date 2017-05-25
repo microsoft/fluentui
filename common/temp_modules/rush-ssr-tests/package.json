@@ -19,6 +19,6 @@
     "es6-promise": "^4.1.0"
   },
   "rushDependencies": {
-    "office-ui-fabric-react": ">=2.30.1 <3.0.0"
+    "office-ui-fabric-react": ">=2.32.0 <3.0.0"
   }
 }
