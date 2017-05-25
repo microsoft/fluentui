@@ -107,11 +107,6 @@
   }
 }
 
-// Add space between adjacent MessageBars.
-.root + .root {
-  margin-top: 6px;
-}
-
 // Shared
 .content {
   display: flex;
@@ -141,37 +136,15 @@
   padding: 16px 0px;
 }
 
-.actions, .actionsOneline {
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
 .innerTextPadding {
   span, .innerText > span {
     @include padding-right(4px); // Add padding between text and hyperlink.
   }
 }
 
-.dismissal {
-  @include focus-border();
-  min-width: 0;
-  position: absolute;
-  top: 0;
-  @include right(0);
-}
-
+// Single line specific attributes
 .singleline {
   height: 32px;
-
-  .ms-MessageBar-dismissalOneline {
-    min-width: 16px;
-    min-height: 16px;
-    // We want padding between the outside of the dismiss button to be 8px
-    // and the padding between the dismiss button and the text to be 12px
-    @include padding(8px, 8px, 8px, 12px);
-  }
   .content {
     align-items: center;
     padding: 8px 0px;
@@ -191,41 +164,47 @@
       }
     }
   }
+}
 
-  .actionsOneline {
-    position: relative;
-  }
+.actions, .actionsOneline {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row-reverse;
+  align-items: center;
+}
 
-  // Override one line values when we have buttons / actionable items
-  &.actionableOneline {
-    height: 48px;
+.dismissal {
+  @include focus-border();
+  min-width: 0;
+  position: absolute;
+  top: 0;
+  @include right(0);
+}
 
-    .ms-MessageBar-dismissalOneline {
-      @include padding-right(16px);
-    }
-    .content {
-      .icon {
-        padding: 0px 16px;
-      }
-    }
+.ms-MessageBar-dismissalOneline {
+  min-width: 16px;
+  min-height: 16px;
+  // We want padding between the outside of the dismiss button to be 8px
+  // and the padding between the dismiss button and the text to be 12px
+  @include padding(8px, 8px, 8px, 12px);
+}
 
-    .actionsOneline {
-      padding: 0px 8px;
+.actionsOneline {
+  position: relative;
+  padding: 0px 8px;
+}
+
+.actionableOneline {
+  height: 48px;
+  .content {
+    .icon {
+      padding: 0px 16px;
     }
   }
 }
 
+// Multi line specific attributes
 .multiline {
-  flex-direction: column;
-
-  &.actionableMultiline {
-    &.dismissalMultiline {
-      .innerTextPadding {
-        @include padding-right(48px);
-      }
-    }
-  }
-
   .content {
       padding-top: 16px;
       flex-direction: row;
@@ -246,5 +225,19 @@
 
   .dismissal {
     margin: 0px 16px;
+  }
+}
+
+.ms-MessageBar-dismissalOneline {
+  @include padding-right(16px);
+}
+
+.multiline {
+  flex-direction: column;
+}
+
+.actionableMultiline.dismissalMultiline {
+  .innerTextPadding {
+    @include padding-right(48px);
   }
 }
