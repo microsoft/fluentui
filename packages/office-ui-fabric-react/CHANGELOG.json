@@ -2,6 +2,71 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.34.0",
+      "tag": "office-ui-fabric-react_v2.34.0",
+      "date": "Thu, 25 May 2017 10:22:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "6e3128dc62ea0bda625896939405d1fbc4d2d640",
+            "comment": "DatePicker: Fix for accessibility issues"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.33.0",
+      "tag": "office-ui-fabric-react_v2.33.0",
+      "date": "Wed, 24 May 2017 23:52:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "14426398ce6c2241ba0ee27b869283d1f7cd02b5",
+            "comment": "ChoiceGroup: Support custom option labels"
+          },
+          {
+            "author": "SayaliS <sayalis@microsoft.com>",
+            "commit": "7f0384f5070942f876f50d19dd3ac11c7bc14664",
+            "comment": "ContextMenu: added `useTargetWidth` property to match the width of the anchor element when true the context menu will apply target element's width to it"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "e3ec718f6e6f9794dcd90651a64021f62655b0c0",
+            "comment": "Spinner: support for status announcement"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "352ed68433ce19f2bfd99a4512fc2e98984d7d16",
+            "comment": "Fixes bug where ResizeGroup gets stuck in an infinite render loop when subsequent calls to onReduceData does nothing."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "1020ec60dd7d0461fc945a2b2a87c6cbb0e07db9",
+            "comment": "Add unit tests to ResizeGroup"
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "ebc3d673685896357b556bddcd352b607e929a78",
+            "comment": "Dropdown: Added title attribute for individual options."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2c49eca4b9842b22dbbda47817edd571206fd2a9",
+            "comment": "SearchBox: Fixed onBlur not removing focus"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.10.0 <2.0.0` to `>=1.10.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.32.0",
       "tag": "office-ui-fabric-react_v2.32.0",
       "date": "Tue, 23 May 2017 10:16:04 GMT",
