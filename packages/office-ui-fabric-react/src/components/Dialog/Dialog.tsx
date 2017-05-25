@@ -57,7 +57,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       title,
       type,
       contentClassName,
-      topButtonsProps
+      topButtonsProps,
+      closeButtonAriaLabel
     } = this.props;
     let { id } = this.state;
 
@@ -94,6 +95,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
           subText={ subText }
           className={ contentClassName }
           topButtonsProps={ topButtonsProps }
+          closeButtonAriaLabel={ closeButtonAriaLabel }
         >
           { this.props.children }
         </DialogContent>

@@ -39,6 +39,12 @@ export interface IDialogContentProps extends React.Props<DialogContent>, IWithRe
   * The title text to display at the top of the dialog.
   */
   title?: string;
+
+  /**
+   * Label to be passed to to aria-label of close button
+   * @default Close
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {
@@ -122,6 +128,13 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * Other top buttons that will show up next to the close button
    */
   topButtonsProps?: IButtonProps[];
+
+  /**
+   * Label to be passed to to aria-label of close button
+   * @default Close
+   */
+  closeButtonAriaLabel?: string;
+
 }
 
 export enum DialogType {

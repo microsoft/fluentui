@@ -35,7 +35,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
   public render() {
     let {
       showCloseButton,
-      closeButtonAriaLabel,
+      closeButtonAriaLabel = 'Close',
       onDismiss,
       subText,
       title
