@@ -4,6 +4,7 @@ import {
   mergeStyleSets,
   getTheme
 } from '../../../Styling';
+import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
@@ -11,10 +12,10 @@ import {
 const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_PADDING = '0 4px';
 
-export function getStyles(
+export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
   customStyles?: IButtonStyles
-): IButtonStyles {
+): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let iconButtonStyles: IButtonStyles = {
     root: {
@@ -46,4 +47,4 @@ export function getStyles(
   };
 
   return mergeStyleSets(baseButtonStyles, iconButtonStyles, customStyles);
-}
+});

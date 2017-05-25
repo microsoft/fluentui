@@ -5,11 +5,11 @@ import {
   getTheme
 } from '../../Styling';
 import {
-  memoize
+  memoizeFunction
 } from '../../Utilities';
 import { IIconStyles } from './Icon.Props';
 
-export const getStyles = memoize((
+export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
   customStyles: IIconStyles = undefined
 ): IIconStyles => {
