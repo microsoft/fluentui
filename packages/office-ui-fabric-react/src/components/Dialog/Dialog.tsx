@@ -6,11 +6,11 @@ import {
 } from '../../Utilities';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Modal } from '../../Modal';
-import { IconButton } from '../../Button';
-import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';
 const styles: any = stylesImport;
+
+import { DialogContent } from './DialogContent';
 
 export interface IDialogState {
   id?: string;
@@ -40,7 +40,6 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public render() {
     let {
-      closeButtonAriaLabel,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -57,20 +56,16 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       subText,
       title,
       type,
+      contentClassName,
+      topButtonsProps
     } = this.props;
     let { id } = this.state;
 
-    let subTextContent;
     const dialogClassName = css(this.props.className, {
       ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
       ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
     });
     const containerClassName = css(this.props.containerClassName, styles.main);
-    let groupings = this._groupChildren();
-
-    if (subText) {
-      subTextContent = <p className={ css('ms-Dialog-subText', styles.subText) } id={ id + '-subText' }>{ subText }</p>;
-    }
 
     return (
       <Modal
@@ -92,54 +87,18 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         titleAriaId={ title && id + '-title' }
       >
 
-        <div className={ css('ms-Dialog-header', styles.header) }>
-          <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
-          <div className={ css('ms-Dialog-topButton', styles.topButton) }>
-            { this.props.topButtonsProps.map((props) => (
-              <IconButton {...props} />
-            )) }
-            <IconButton
-              className={ css(
-                'ms-Dialog-button ms-Dialog-button--close',
-                styles.button,
-                { [styles.isClose]: isBlocking || type === DialogType.largeHeader }
-              ) }
-              iconProps={ { iconName: 'Cancel' } }
-              ariaLabel={ closeButtonAriaLabel }
-              onClick={ onDismiss }
-            />
-          </div>
-        </div>
-        <div className={ css('ms-Dialog-inner', styles.inner) }>
-          <div className={ css('ms-Dialog-content', styles.content, this.props.contentClassName) }>
-            { subTextContent }
-            { groupings.contents }
-          </div>
-          { groupings.footers }
-        </div>
+        <DialogContent
+          onDismiss={ onDismiss }
+          showCloseButton={ !isBlocking && type !== DialogType.largeHeader }
+          title={ title }
+          subText={ subText }
+          className={ contentClassName }
+          topButtonsProps={ topButtonsProps }
+        >
+          { this.props.children }
+        </DialogContent>
 
       </Modal>
     );
-  }
-
-  // @TODO - typing the footers as an array of DialogFooter is difficult because
-  // casing "child as DialogFooter" causes a problem because
-  // "Neither type 'ReactElement<any>' nor type 'DialogFooter' is assignable to the other."
-  private _groupChildren(): { footers: any[]; contents: any[]; } {
-
-    let groupings: { footers: any[]; contents: any[]; } = {
-      footers: [],
-      contents: []
-    };
-
-    React.Children.map(this.props.children, child => {
-      if (typeof child === 'object' && child !== null && child.type === DialogFooter) {
-        groupings.footers.push(child);
-      } else {
-        groupings.contents.push(child);
-      }
-    });
-
-    return groupings;
   }
 }

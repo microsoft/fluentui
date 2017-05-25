@@ -16,15 +16,21 @@ export function mergeStyles(...args: (IStyle | IRawStyle)[]): IStyle {
   const classes: string[] = [];
   const rules: Rule[] = [];
 
-  for (const arg of args) {
-    if (arg) {
-      if (typeof arg === 'string') {
-        classes.push(arg);
-      } else {
-        rules.push(arg as Rule);
+  function _parseArgs(theArgs: (IStyle | IRawStyle)[]): void {
+    for (const arg of theArgs) {
+      if (arg) {
+        if (typeof arg === 'string') {
+          classes.push(arg);
+        } else if (Array.isArray(arg)) {
+          _parseArgs(arg);
+        } else {
+          rules.push(arg as Rule);
+        }
       }
     }
   }
+
+  _parseArgs(args);
 
   const rulesObject: IStyle = rules.length ? css(...rules) : null;
 

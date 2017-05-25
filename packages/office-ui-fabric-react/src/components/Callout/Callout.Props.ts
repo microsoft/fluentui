@@ -96,6 +96,11 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   role?: string;
 
   /**
+   * Accessible label text for callout.
+   */
+  ariaLabel?: string;
+
+  /**
    *  Defines the element id referencing the element containing label text for callout.
    */
   ariaLabelledBy?: string;

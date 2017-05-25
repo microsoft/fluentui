@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyles,
   getTheme,
   mergeStyleSets
 } from '../../../Styling';
@@ -22,51 +21,45 @@ export function getStyles(
     customStyles
   );
   let compoundButtonStyles: IButtonStyles = {
-    root: mergeStyles(
-      {
-        maxWidth: '280px',
-        minHeight: '72px',
-        height: 'auto',
-        padding: '20px'
-      }
-    ),
+    root: {
+      maxWidth: '280px',
+      minHeight: '72px',
+      height: 'auto',
+      padding: '20px',
 
-    rootEnabled: mergeStyles(
-      {
-        ':hover .ms-Button-description': {
-          color: theme.palette.neutralDark
-        },
-        ':active .ms-Button-description': {
-          color: 'inherit'
-        }
-      }
-    ),
+      ':hover .ms-Button-description': {
+        color: theme.palette.neutralDark
+      },
 
-    flexContainer: mergeStyles(
-      {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        minWidth: '100%',
-        margin: ''
+      ':active .ms-Button-description': {
+        color: 'inherit'
       }
-    ),
+    },
 
-    label: mergeStyles(
-      {
-        margin: '0 0 5px',
-        lineHeight: '100%'
-      }
-    ),
+    flexContainer:
+    {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      minWidth: '100%',
+      margin: ''
+    },
 
-    description: mergeStyles(
+    label: {
+      margin: '0 0 5px',
+      lineHeight: '100%'
+    },
+
+    description: [
       theme.fonts.small,
       {
+        color: theme.palette.neutralSecondary,
         lineHeight: '100%'
-      }),
+      }
+    ],
 
-    descriptionEnabled: mergeStyles({
-      color: theme.palette.neutralSecondary,
-    })
+    descriptionToggled: {
+      color: 'inherit'
+    }
 
   };
 

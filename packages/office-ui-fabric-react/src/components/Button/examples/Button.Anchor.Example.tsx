@@ -13,7 +13,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { disabled } = this.props;
+    let { disabled, toggled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
@@ -21,6 +21,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
+          toggled={ toggled }
           href='http://bing.com'
           target='_blank'
           title='Let us bing!'>

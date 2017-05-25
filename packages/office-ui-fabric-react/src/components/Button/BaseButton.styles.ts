@@ -11,10 +11,11 @@ const noOutline = {
  * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
  * mixing class names together.
  */
-export const getStyles = memoize((
+export const getStyles = ((
   theme: ITheme,
-  focusInset?: string,
-  focusColor?: string): IButtonStyles => {
+  focusInset: string = '0',
+  focusColor: string = theme.palette.neutralTertiary
+): IButtonStyles => {
 
   const iconStyle = mergeStyles({
     margin: '0 4px',
@@ -25,7 +26,7 @@ export const getStyles = memoize((
   });
 
   return {
-    root: mergeStyles(
+    root: [
       getFocusStyle(theme, focusInset, focusColor),
       theme.fonts.medium,
       {
@@ -40,9 +41,7 @@ export const getStyles = memoize((
         verticalAlign: 'top',
         padding: '0 16px'
       }
-    ),
-
-    rootEnabled: undefined,
+    ],
 
     rootDisabled: mergeStyles({
       backgroundColor: theme.palette.neutralLighter,
@@ -52,6 +51,8 @@ export const getStyles = memoize((
       ':hover': noOutline,
       ':focus': noOutline
     }),
+
+    rootToggled: undefined,
 
     flexContainer: mergeStyles({
       display: 'flex',
@@ -65,14 +66,14 @@ export const getStyles = memoize((
       fontSize: FontSizes.icon
     }),
 
-    iconEnabled: undefined,
+    iconToggled: undefined,
     iconDisabled: undefined,
 
     menuIcon: mergeStyles(iconStyle, {
       fontSize: FontSizes.small,
     }),
 
-    menuIconEnabled: undefined,
+    menuIconToggled: undefined,
 
     menuIconDisabled: undefined,
 
@@ -81,11 +82,11 @@ export const getStyles = memoize((
       lineHeight: '100%'
     }),
 
-    labelEnabled: undefined,
+    labelToggled: undefined,
     labelDisabled: undefined,
 
     description: undefined,
-    descriptionEnabled: undefined,
+    descriptionToggled: undefined,
     descriptionDisabled: undefined,
 
     screenReaderText: mergeStyles({

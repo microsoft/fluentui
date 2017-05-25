@@ -25,13 +25,19 @@ export function Icon(props: IIconProps): JSX.Element {
     let containerClassName = css(
       'ms-Icon',
       'ms-Icon-imageContainer',
+      styles.root,
       styles.imageContainer,
       className
     );
 
     return (
-      <div className={ containerClassName } >
-        <Image { ...props.imageProps as any } />
+      <div className={
+        css(
+          containerClassName,
+          styles.root
+        ) }
+      >
+        l  <Image { ...props.imageProps as any } />
       </div>
     );
   } else {
@@ -45,7 +51,13 @@ export function Icon(props: IIconProps): JSX.Element {
           'aria-hidden': true
         }) }
         { ...getNativeProps(props, htmlElementProperties) }
-        className={ css('ms-Icon', IconClassNames[iconMemberName], props.className) }
+        className={
+          css(
+            'ms-Icon',
+            IconClassNames[iconMemberName],
+            styles.root,
+            props.className
+          ) }
       />
     );
   }

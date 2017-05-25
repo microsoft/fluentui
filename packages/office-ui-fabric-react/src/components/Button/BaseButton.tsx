@@ -6,14 +6,15 @@ import {
   assign,
   autobind,
   buttonProperties,
-  css,
   getId,
-  getNativeProps
+  getNativeProps,
+  memoize
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton } from './Button.Props';
+import { IButtonProps, IButton, IButtonStyles } from './Button.Props';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -24,6 +25,16 @@ export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
+interface IButtonClassNames {
+  root?: string;
+  flexContainer?: string;
+  icon?: string;
+  label?: string;
+  menuIcon?: string;
+  description?: string;
+  screenReaderText?: string;
+}
+
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   public static defaultProps = {
@@ -32,10 +43,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     styles: {}
   };
 
-  private _buttonElement: HTMLButtonElement;
+  private _buttonElement: HTMLElement;
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
+  private _classNames: IButtonClassNames;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -58,14 +70,25 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       ariaDescription,
       ariaLabel,
-      baseClassName,
       className,
-      styles,
       description,
       disabled,
       href,
+      iconProps,
+      styles,
+      toggled,
       variantClassName
          } = this.props;
+
+    this._classNames = _getClassNames(
+      styles,
+      className,
+      variantClassName,
+      iconProps && iconProps.className,
+      disabled,
+      toggled
+    );
+
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
@@ -78,7 +101,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       [
         'disabled' // Let disabled buttons be focused and styled as disabled.
       ]);
-
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
     let ariaDescribedBy;
@@ -96,23 +118,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const buttonProps = assign(
       nativeProps,
       {
-        className: css(
-          styles.root,
-          disabled ? styles.rootDisabled : styles.rootEnabled,
-
-          className, // legacy: root class name
-          baseClassName, // legacy: base class name
-          variantClassName, // legacy: variant of the base
-          disabled && 'disabled' // (legacy)
-        ),
+        className: this._classNames.root,
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
         'aria-disabled': disabled,
-        tabIndex: disabled ? -1 : undefined,
-        'data-is-focusable': disabled ? false : true
+        'data-is-focusable': disabled ? false : true,
+        'aria-pressed': toggled
       }
     );
 
@@ -153,7 +167,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const className = css(baseClassName + '-flexContainer', styles.flexContainer);
+    const className = mergeStyles(baseClassName + '-flexContainer', styles.flexContainer);
 
     return React.createElement(
       tag,
@@ -173,7 +187,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { baseClassName, styles, icon, iconProps, disabled } = this.props;
+    let {
+      baseClassName,
+      disabled,
+      icon,
+      iconProps,
+      styles,
+      toggled
+       } = this.props;
 
     if (icon || iconProps) {
       iconProps = iconProps || {
@@ -182,19 +203,19 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return iconProps && (
-      <Icon { ...iconProps } className={
-        css(
-          `${baseClassName}-icon`,
-          styles.icon,
-          disabled ? styles.iconDisabled : styles.iconEnabled,
-          iconProps.className
-        ) } />
+      <Icon { ...iconProps } className={ this._classNames.icon } />
     );
   }
 
   @autobind
   private _onRenderText() {
-    let { baseClassName, styles, children, text, disabled } = this.props;
+    let {
+    children,
+      disabled,
+      styles,
+      text,
+      toggled
+        } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -203,12 +224,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return text && (
       <span
-        className={
-          css(
-            `${baseClassName}-label`,
-            styles.label,
-            disabled ? styles.labelDisabled : styles.labelEnabled
-          ) }
+        className={ this._classNames.label }
         id={ this._labelId }
       >
         { text }
@@ -230,21 +246,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
-  private _onRenderDescription() {
-    const { baseClassName, styles, description, disabled } = this.props;
+  private _onRenderDescription(props: IButtonProps) {
+    const {
+    description,
+      disabled,
+      toggled
+    } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
-      <span
-        className={
-          css(
-            `${baseClassName}-description`,
-            styles.description,
-            disabled ? styles.descriptionDisabled : styles.descriptionEnabled
-          ) }
-        id={ this._descriptionId }
-      >
+      <span className={ this._classNames.description } id={ this._descriptionId }>
         { description }
       </span>
     ) : (
@@ -254,7 +266,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderAriaDescription() {
-    const { ariaDescription, styles } = this.props;
+    const {
+     ariaDescription, styles } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
@@ -267,7 +280,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
-    let { baseClassName, styles, disabled, menuIconProps, menuIconName } = this.props;
+    let {
+      baseClassName,
+      disabled,
+      menuIconName,
+      menuIconProps,
+      styles,
+      toggled
+       } = this.props;
 
     if (menuIconProps === undefined) {
       menuIconProps = {
@@ -280,12 +300,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         <Icon
           { ...menuIconProps }
           className={
-            css(
+            mergeStyles(
               `${baseClassName}-icon`,
               styles.menuIcon,
-              disabled ? styles.menuIconDisabled : styles.menuIconEnabled,
+              disabled && styles.menuIconDisabled,
+              !disabled && toggled && styles.menuIconToggled,
               menuIconProps.className
-            ) }
+            ) as string }
         />
         :
         null
@@ -299,7 +320,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         isBeakVisible={ true }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
-        className={ css('ms-BaseButton-menuhost', menuProps.className) }
+        className={ mergeStyles('ms-BaseButton-menuhost', menuProps.className) as string }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
@@ -308,7 +329,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
-  private _onToggleMenu() {
+  private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
 
@@ -316,3 +337,67 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
 }
+
+const _getClassNames = memoize((
+  styles: IButtonStyles,
+  className: string,
+  variantClassName: string,
+  iconClassName: string,
+  disabled: boolean,
+  toggled: boolean
+): IButtonClassNames => ({
+  root: mergeStyles(
+    className,
+    'ms-Button',
+    variantClassName,
+    styles.root,
+    toggled && [
+      'toggled',
+      styles.rootToggled
+    ],
+    disabled && [
+      'disabled',
+      styles.rootDisabled
+    ],
+
+  ) as string,
+
+  flexContainer: mergeStyles(
+    'ms-Button-flexContainer',
+    styles.flexContainer
+  ) as string,
+
+  icon: mergeStyles(
+    'ms-Button-icon',
+    iconClassName,
+    styles.icon,
+    toggled && styles.iconToggled,
+    disabled && styles.iconDisabled,
+  ) as string,
+
+  label: mergeStyles(
+    'ms-Button-label',
+    styles.label,
+    toggled && styles.labelToggled,
+    disabled && styles.labelDisabled,
+  ) as string,
+
+  menuIcon: mergeStyles(
+    'ms-Button-menuIcon',
+    styles.menuIcon,
+    toggled && styles.menuIconToggled,
+    disabled && styles.menuIconDisabled
+  ) as string,
+
+  description: mergeStyles(
+    'ms-Button-description',
+    styles.description,
+    toggled && styles.descriptionToggled,
+    disabled && styles.descriptionDisabled
+  ) as string,
+
+  screenReaderText: mergeStyles(
+    'ms-Button-screenReaderText',
+    styles.screenReaderText
+  ) as string
+}));

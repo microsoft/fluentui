@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyles,
   getTheme,
   mergeStyleSets
 } from '../../../Styling';
@@ -15,53 +14,54 @@ const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoize((
   theme: ITheme = getTheme(),
-  customStyles?: IButtonStyles
+  customStyles: IButtonStyles = undefined
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
-    root: mergeStyles(
-      {
-        borderWidth: '0',
-        padding: DEFAULT_PADDING,
-        height: DEFAULT_BUTTON_HEIGHT,
+    root: {
+      borderWidth: '0',
+      padding: DEFAULT_PADDING,
+      height: DEFAULT_BUTTON_HEIGHT,
+      color: theme.palette.neutralPrimary,
+      backgroundColor: 'transparent',
 
-      }
-    ),
-
-    flexContainer: mergeStyles(
-      {
-        justifyContent: 'flex-start'
-      }
-    ),
-
-    rootEnabled: mergeStyles(
-      {
-        color: theme.palette.neutralPrimary,
-        backgroundColor: 'transparent',
-
-        ':hover': {
-          color: theme.palette.themeDarker
-        },
-        ':active': {
-          color: theme.palette.themePrimary
-        }
-      }
-    ),
-
-    rootDisabled: mergeStyles({
-      color: theme.palette.neutralTertiary,
-      backgroundColor: 'transparent'
-    }),
-
-    iconEnabled: mergeStyles(
-      {
+      ':hover': {
+        color: theme.palette.themeDarker
+      },
+      ':active': {
         color: theme.palette.themePrimary
       }
-    ),
+    },
 
-    menuIconEnabled: mergeStyles({
+    rootDisabled: {
+      color: theme.palette.neutralTertiary,
+      backgroundColor: 'transparent'
+    },
+
+    rootToggled: {
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+
+      ':hover': {
+        backgroundColor: theme.palette.neutralLight
+      }
+    },
+
+    flexContainer: {
+      justifyContent: 'flex-start'
+    },
+
+    icon: {
+      color: theme.palette.themePrimary
+    },
+
+    iconDisabled: {
+      color: 'inherit'
+    },
+
+    menuIcon: {
       color: theme.palette.neutralSecondary
-    })
+    }
+
   };
 
   return mergeStyleSets(baseButtonStyles, commandButtonStyles, customStyles);

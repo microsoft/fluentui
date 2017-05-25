@@ -13,7 +13,7 @@ build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 let rules = Object.assign(
   {},
   require('@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
 build.tslint.setConfig({ lintConfig: { rules } });

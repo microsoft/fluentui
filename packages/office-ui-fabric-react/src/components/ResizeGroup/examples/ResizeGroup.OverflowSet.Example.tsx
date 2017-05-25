@@ -24,6 +24,10 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
         <ResizeGroup
           data={ data }
           onReduceData={ (currentdata) => {
+            if (currentdata.primary.length === 0) {
+              return undefined;
+            }
+
             let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
             let primary = currentdata.primary.slice(0, -1);
             return { primary, overflow };
@@ -55,5 +59,5 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, any> {
         />
       </div>
     );
-  };
+  }
 }
