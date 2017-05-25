@@ -109,7 +109,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     isRequired: false,
     isMonthPickerVisible: true,
     strings: DEFAULT_STRINGS,
-    borderless: false
+    borderless: false,
+    pickerAriaLabel: 'Calender',
   };
 
   public refs: {
@@ -168,19 +169,22 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       isRequired,
       disabled,
       ariaLabel,
+      pickerAriaLabel,
       placeholder,
       allowTextInput,
-      borderless
+      borderless,
+      className
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root) } ref='root'>
+      <div className={ css('ms-DatePicker', styles.root, className) } ref='root'>
         <div ref={ (c): HTMLElement => this._datepicker = c }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
+            aria-expanded={ isDatePickerShown }
             required={ isRequired }
             disabled={ disabled }
             onKeyDown={ this._onTextFieldKeyDown }
@@ -203,6 +207,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         </div>
         { isDatePickerShown && (
           <Callout
+            role='dialog'
+            ariaLabel={ pickerAriaLabel }
             isBeakVisible={ false }
             className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
@@ -241,7 +247,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (onSelectDate) {
       onSelectDate(date);
     }
-  };
+  }
 
   @autobind
   private _onCalloutPositioned() {
@@ -261,12 +267,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         this._preventFocusOpeningPicker = false;
       }
     }
-  };
+  }
 
   @autobind
   private _onTextFieldBlur(ev: React.FocusEvent<HTMLElement>) {
     this._validateTextInput();
-  };
+  }
 
   @autobind
   private _onTextFieldChanged(newValue: string) {
@@ -308,7 +314,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       default:
         break;
     }
-  };
+  }
 
   @autobind
   private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {

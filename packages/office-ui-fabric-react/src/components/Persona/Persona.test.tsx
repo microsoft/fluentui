@@ -51,7 +51,7 @@ describe('Persona', () => {
       wrapper = shallow(<Persona primaryText='David (The man) Goff' />);
       result = wrapper.find('.' + styles.initials);
       expect(result).to.have.length(1);
-      expect(result.text()).to.equal('D');
+      expect(result.text()).to.equal('DG');
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {

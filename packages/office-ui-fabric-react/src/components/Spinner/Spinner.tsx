@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent, css, DelayedRender } from '../../Utilities';
 import { ISpinnerProps, SpinnerType, SpinnerSize } from './Spinner.Props';
 import * as stylesImport from './Spinner.scss';
 const styles: any = stylesImport;
 
 export class Spinner extends BaseComponent<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
-    size: SpinnerSize.medium
+    size: SpinnerSize.medium,
+    ariaLive: 'polite'
   };
 
   public render() {
-    let { type, size, label, className } = this.props; // TODO remove deprecated type property at >= 2.0.0
+    let { type, size, label, className, ariaLive, ariaLabel } = this.props; // TODO remove deprecated type property at >= 2.0.0
+    const statusMessage = ariaLabel || label;
 
     return (
       <div className={ css('ms-Spinner', styles.root, className) }>
@@ -25,10 +27,18 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
           })
         }>
         </div>
-        { label && (
-          <div className={ css('ms-Spinner-label', styles.label) }>{ label }</div>
-        ) }
-      </div >
+        {
+          label && <div className={ css('ms-Spinner-label', styles.label) }>{ label }</div>
+        }
+        {
+          statusMessage &&
+          <div role='status' aria-live={ this.props.ariaLive }>
+            <DelayedRender>
+              <div className={ styles.screenReaderOnly }>{ statusMessage }</div>
+            </DelayedRender>
+          </div>
+        }
+      </div>
     );
   }
 }

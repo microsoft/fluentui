@@ -1,6 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 May 2017 10:20:22 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2017 10:22:10 GMT and should not be manually modified.
+
+## 2.34.0
+Thu, 25 May 2017 10:22:10 GMT
+
+### Minor changes
+
+- DatePicker: Fix for accessibility issues
+
+## 2.33.0
+Wed, 24 May 2017 23:52:09 GMT
+
+### Minor changes
+
+- ChoiceGroup: Support custom option labels
+- ContextMenu: added `useTargetWidth` property to match the width of the anchor element when true the context menu will apply target element's width to it
+- Spinner: support for status announcement
+
+### Patches
+
+- Fixes bug where ResizeGroup gets stuck in an infinite render loop when subsequent calls to onReduceData does nothing.
+- Add unit tests to ResizeGroup
+- Dropdown: Added title attribute for individual options.
+- SearchBox: Fixed onBlur not removing focus
+
+## 2.32.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog
+
+### Patches
+
+- FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element.
+- Adding a constant for all the test images and replacing the hard coded  example paths
 
 ## 2.31.0
 Fri, 19 May 2017 10:20:22 GMT

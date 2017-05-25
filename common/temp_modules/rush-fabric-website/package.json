@@ -39,8 +39,8 @@
   },
   "rushDependencies": {
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
-    "@uifabric/example-app-base": "1.3.12",
-    "office-ui-fabric-react": ">=2.31.0 <3.0.0",
-    "@uifabric/utilities": ">=1.9.0 <2.0.0"
+    "@uifabric/example-app-base": "1.3.13",
+    "office-ui-fabric-react": ">=2.32.0 <3.0.0",
+    "@uifabric/utilities": ">=1.10.0 <2.0.0"
   }
 }

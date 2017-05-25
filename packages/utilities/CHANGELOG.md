@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 18 May 2017 10:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 24 May 2017 23:52:09 GMT and should not be manually modified.
+
+## 1.10.1
+Wed, 24 May 2017 23:52:09 GMT
+
+### Patches
+
+- Add utlities for unit tests that need to override or spy on React lifecycle methods
+
+## 1.10.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params.
 
 ## 1.9.0
 Thu, 18 May 2017 10:09:58 GMT

@@ -2,6 +2,34 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.10.1",
+      "tag": "@uifabric/utilities_v1.10.1",
+      "date": "Wed, 24 May 2017 23:52:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "1020ec60dd7d0461fc945a2b2a87c6cbb0e07db9",
+            "comment": "Add utlities for unit tests that need to override or spy on React lifecycle methods"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.0",
+      "tag": "@uifabric/utilities_v1.10.0",
+      "date": "Tue, 23 May 2017 10:16:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "40f7131f031ed5b4b7bcf0cc6b3ace39e5f5dde4",
+            "comment": "warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.9.0",
       "tag": "@uifabric/utilities_v1.9.0",
       "date": "Thu, 18 May 2017 10:09:58 GMT",
