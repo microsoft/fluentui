@@ -24,7 +24,9 @@ export interface IResizeGroupProps extends React.HTMLProps<ResizeGroup | HTMLEle
   onRenderData: (data: any) => JSX.Element;
 
   /**
-   * Function to be performed on the data in order to make it fit into the given space
+   * Function to be performed on the data in order to make it fit into the given space.
+   * If there are no more scaling steps to apply, it should return undefined to prevent
+   * an infinite render loop.
   */
   onReduceData: (prevData: any) => any;
 }

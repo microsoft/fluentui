@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.10.1",
+      "tag": "@uifabric/utilities_v1.10.1",
+      "date": "Wed, 24 May 2017 23:52:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "1020ec60dd7d0461fc945a2b2a87c6cbb0e07db9",
+            "comment": "Add utlities for unit tests that need to override or spy on React lifecycle methods"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.10.0",
       "tag": "@uifabric/utilities_v1.10.0",
       "date": "Tue, 23 May 2017 10:16:04 GMT",
