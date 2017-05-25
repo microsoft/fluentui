@@ -208,7 +208,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onEmptyInputFocus() {
-    let suggestions: T[] | PromiseLike<T[]> = this.props.onInputFocus(this.state.items);
+    let suggestions: T[] | PromiseLike<T[]> = this.props.onEmptyInputFocus(this.state.items);
     this.updateSuggestionsList(suggestions);
   }
 
@@ -316,7 +316,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    if (this.input.value === '' && this.props.onInputFocus) {
+    if (this.input.value === '' && this.props.onEmptyInputFocus) {
       this.onEmptyInputFocus();
       this.setState({
         isMostRecentlyUsedVisible: true,

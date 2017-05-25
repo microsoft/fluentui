@@ -23,7 +23,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback for what should happen when a user clicks the input.
    */
-  onInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */

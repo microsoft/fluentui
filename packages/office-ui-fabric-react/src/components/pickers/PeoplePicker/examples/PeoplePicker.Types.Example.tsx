@@ -142,7 +142,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
-        onInputFocus={ this._returnMostRecentlyUsed }
+        onEmptyInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
@@ -156,7 +156,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
-        onInputFocus={ this._returnMostRecentlyUsed }
+        onEmptyInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
@@ -170,7 +170,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
-        onInputFocus={ this._returnMostRecentlyUsed }
+        onEmptyInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
@@ -183,7 +183,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
-        onInputFocus={ this._returnMostRecentlyUsed }
+        onEmptyInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         defaultSelectedItems={ people.splice(0, 3) }
@@ -201,7 +201,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
-        onInputFocus={ this._returnMostRecentlyUsedWithLimit }
+        onEmptyInputFocus={ this._returnMostRecentlyUsedWithLimit }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
