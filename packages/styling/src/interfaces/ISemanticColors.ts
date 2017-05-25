@@ -24,8 +24,8 @@ export interface ISemanticColors {
 
   // Input controls slots (text fields, checkboxes, radios...)
   inputBorder?: string;
-  inputBorderHover?: string;
+  inputBorderHovered?: string;
   inputBackgroundSelected?: string;
-  inputBackgroundSelectedHover?: string;
+  inputBackgroundSelectedHovered?: string;
   inputForegroundSelected?: string;
 }

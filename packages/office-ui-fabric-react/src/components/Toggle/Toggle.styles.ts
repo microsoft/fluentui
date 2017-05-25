@@ -14,30 +14,30 @@ export const getStyles = memoize((
 
   let toggleBackgroundOffColor = semanticColors.bodyBackground;
   let toggleBackgroundOnColor = semanticColors.inputBackgroundSelected;
-  let toggleBackgroundOnHoverColor = semanticColors.inputBackgroundSelectedHover;
+  let toggleBackgroundOnHoveredColor = semanticColors.inputBackgroundSelectedHovered;
   let toggleBackgroundOnDisabledColor = semanticColors.disabledText;
 
-  let thumbOffColor = semanticColors.inputBorderHover;
+  let thumbOffColor = semanticColors.inputBorderHovered;
   let thumbOnColor = semanticColors.inputForegroundSelected;
   let thumbOffDisabledColor = semanticColors.disabledText;
   let thumbOnDisabledColor = semanticColors.disabledBackground;
 
   let toggleBorderOffColor = semanticColors.inputBorder;
-  let toggleBorderOffHoverColor = semanticColors.inputBorderHover;
+  let toggleBorderOffHoveredColor = semanticColors.inputBorderHovered;
   let toggleBorderOffDisabledColor = semanticColors.disabledText;
 
   let toggleFocusBorderColor = semanticColors.focusBorder;
 
   return {
-    root: mergeStyles({
+    root: {
       marginBottom: '8px'
-    }),
+    },
 
-    control: mergeStyles({
+    control: {
       display: 'inline-flex',
       position: 'relative',
-    }),
-    invisibleToggle: mergeStyles({
+    },
+    invisibleToggle: {
       opacity: '0',
       cursor: 'pointer',
       margin: '0',
@@ -49,18 +49,18 @@ export const getStyles = memoize((
       ':disabled': {
         cursor: 'default'
       }
-    }),
-    stateText: mergeStyles({
+    },
+    stateText: {
       '.ms-Toggle-stateText': { // increase specificity, todo: cleanup
         padding: '0', // overwrite default Label padding
         margin: '0 10px'
       }
-    }),
-    focus: mergeStyles({
+    },
+    focus: {
       outline: '1px solid ' + toggleFocusBorderColor
-    }),
+    },
 
-    toggleBase: mergeStyles({
+    toggle: {
       fontSize: '20px',
       lineHeight: '1em',
       boxSizing: 'border-box',
@@ -72,59 +72,59 @@ export const getStyles = memoize((
       pointerEvents: 'none',
       borderWidth: '1px',
       borderStyle: 'solid'
-    }),
-    toggle: mergeStyles({
+    },
+    toggleDefault: {
       background: toggleBackgroundOffColor,
       borderColor: toggleBorderOffColor,
-    }),
-    toggleHover: mergeStyles({
-      borderColor: toggleBorderOffHoverColor
-    }),
-    toggleOn: mergeStyles({
+    },
+    toggleHovered: {
+      borderColor: toggleBorderOffHoveredColor
+    },
+    toggleOn: {
       background: toggleBackgroundOnColor,
       borderColor: 'transparent',
-    }),
-    toggleOnHover: mergeStyles({
-      backgroundColor: toggleBackgroundOnHoverColor,
+    },
+    toggleOnHovered: {
+      backgroundColor: toggleBackgroundOnHoveredColor,
       borderColor: 'transparent'
-    }),
-    toggleDisabled: mergeStyles({
+    },
+    toggleDisabled: {
       borderColor: toggleBorderOffDisabledColor
-    }),
-    toggleOnDisabled: mergeStyles({
+    },
+    toggleOnDisabled: {
       backgroundColor: toggleBackgroundOnDisabledColor,
       borderColor: 'transparent'
-    }),
+    },
 
-    thumbBase: mergeStyles({
+    thumb: {
       width: '.5em',
       height: '.5em',
       borderRadius: '.5em',
       position: 'absolute',
       top: '.2em',
       transition: 'all 0.1s ease'
-    }),
-    thumb: mergeStyles({
+    },
+    thumbDefault: {
       backgroundColor: thumbOffColor,
       left: '.2em',
-    }),
-    thumbHover: mergeStyles({
+    },
+    thumbHovered: {
       // unstyled
-    }),
-    thumbOn: mergeStyles({
+    },
+    thumbOn: {
       backgroundColor: thumbOnColor,
       left: '1.4em'
-    }),
-    thumbOnHover: mergeStyles({
+    },
+    thumbOnHovered: {
       // unstyled
-    }),
-    thumbDisabled: mergeStyles({
+    },
+    thumbDisabled: {
       backgroundColor: thumbOffDisabledColor,
       left: '.2em',
-    }),
-    thumbOnDisabled: mergeStyles({
+    },
+    thumbOnDisabled: {
       backgroundColor: thumbOnDisabledColor,
       left: '1.4em'
-    })
+    }
   };
 });

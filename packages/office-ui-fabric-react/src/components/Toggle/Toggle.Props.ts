@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Toggle } from './Toggle';
-import {
-  IStyle,
-  IRawStyle,
-  IProcessedStyle
-} from '../../Styling';
+import { IStyle } from '../../Styling';
 
 export interface IToggle {
   focus: () => void;
@@ -81,23 +77,23 @@ export interface IToggleStyles {
   invisibleToggle?: IStyle;
   /* The text indicating the on/off state of the control */
   stateText?: IStyle;
-  focus?: IRawStyle | IProcessedStyle;
+  focus?: IStyle;
 
   /* The rounded container, modify font-size on toggle to set the size of the control */
-  toggleBase?: IStyle;
   toggle?: IStyle;
-  toggleHover?: IRawStyle | IProcessedStyle;
+  toggleDefault?: IStyle;
+  toggleHovered?: IStyle;
   toggleOn?: IStyle;
-  toggleOnHover?: IRawStyle | IProcessedStyle;
+  toggleOnHovered?: IStyle;
   toggleDisabled?: IStyle;
   toggleOnDisabled?: IStyle;
 
   /* The dot in the middle */
-  thumbBase?: IStyle;
   thumb?: IStyle;
-  thumbHover?: IRawStyle | IProcessedStyle;
+  thumbDefault?: IStyle;
+  thumbHovered?: IStyle;
   thumbOn?: IStyle;
-  thumbOnHover?: IRawStyle | IProcessedStyle;
+  thumbOnHovered?: IStyle;
   thumbDisabled?: IStyle;
   thumbOnDisabled?: IStyle;
 }

@@ -45,33 +45,33 @@ const _getClassNames = memoize((
     checked: boolean
   ): IToggleClassNames => {
     return {
-      root: mergeStyles(styles.root,
+      root: mergeStyles(styles.root),
+      label: mergeStyles(styles.label),
+      control: mergeStyles(styles.control,
         enabled && !checked && {
-          ' .ms-Toggle-control:hover': {
-            ' .ms-Toggle-background': styles.toggleHover,
-            ' .ms-Toggle-thumb': styles.thumbHover
+          ':hover': {
+            ' .ms-Toggle-background': styles.toggleHovered,
+            ' .ms-Toggle-thumb': styles.thumbHovered
           }
         },
         enabled && checked && {
-          ' .ms-Toggle-control:hover': {
-            ' .ms-Toggle-background': styles.toggleOnHover,
-            ' .ms-Toggle-thumb': styles.thumbOnHover
+          ':hover': {
+            ' .ms-Toggle-background': styles.toggleOnHovered,
+            ' .ms-Toggle-thumb': styles.thumbOnHovered
           }
         }),
-      label: styles.label,
-      control: styles.control,
       invisibleToggle: mergeStyles(styles.invisibleToggle,
         { ':focus + .ms-Toggle-background': styles.focus }
       ),
-      stateText: styles.stateText,
-      toggle: mergeStyles(styles.toggleBase,
-        enabled && !checked && styles.toggle,
+      stateText: mergeStyles(styles.stateText),
+      toggle: mergeStyles(styles.toggle,
+        enabled && !checked && styles.toggleDefault,
         enabled && checked && styles.toggleOn,
         !enabled && !checked && styles.toggleDisabled,
         !enabled && checked && styles.toggleOnDisabled
       ),
-      thumb: mergeStyles(styles.thumbBase,
-        enabled && !checked && styles.thumb,
+      thumb: mergeStyles(styles.thumb,
+        enabled && !checked && styles.thumbDefault,
         enabled && checked && styles.thumbOn,
         !enabled && !checked && styles.thumbDisabled,
         !enabled && checked && styles.thumbOnDisabled
