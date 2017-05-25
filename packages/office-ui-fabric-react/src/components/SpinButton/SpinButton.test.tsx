@@ -492,7 +492,7 @@ describe('SpinButton', () => {
         min={ exampleMinValue }
         max={ exampleMaxValue }
         defaultValue={ exampleDefaultValue }
-        step={ exampleStepValue } m
+        step={ exampleStepValue }
       />
     );
 
