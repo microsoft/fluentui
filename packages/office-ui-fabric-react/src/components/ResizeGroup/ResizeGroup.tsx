@@ -56,7 +56,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public componentDidMount() {
     this._measureItems();
-    this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY));
+    this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
   public render() {
