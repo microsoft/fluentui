@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Debounce window resize events inside of ResizeGroup",
+      "type": "patch"
+    }
+  ],
+  "email": "chrisgo@microsoft.com"
+}
