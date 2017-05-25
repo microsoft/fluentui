@@ -30,6 +30,6 @@
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
-    "office-ui-fabric-react": ">=2.33.0 <3.0.0"
+    "office-ui-fabric-react": ">=2.34.0 <3.0.0"
   }
 }

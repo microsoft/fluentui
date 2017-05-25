@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 May 2017 23:52:09 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2017 10:22:10 GMT and should not be manually modified.
+
+## 2.34.0
+Thu, 25 May 2017 10:22:10 GMT
+
+### Minor changes
+
+- DatePicker: Fix for accessibility issues
 
 ## 2.33.0
 Wed, 24 May 2017 23:52:09 GMT
