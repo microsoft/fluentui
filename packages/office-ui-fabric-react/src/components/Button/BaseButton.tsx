@@ -80,7 +80,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName
          } = this.props;
 
-    this._classNames = _getClassNames(
+    this._classNames = this._getClassNames(
       styles,
       className,
       variantClassName,
@@ -336,68 +336,70 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
+  @memoize
+  private _getClassNames(
+    styles: IButtonStyles,
+    className: string,
+    variantClassName: string,
+    iconClassName: string,
+    disabled: boolean,
+    toggled: boolean
+    ): IButtonClassNames {
+    return {
+      root: mergeStyles(
+        className,
+        'ms-Button',
+        variantClassName,
+        styles.root,
+        toggled && [
+          'toggled',
+          styles.rootToggled
+        ],
+        disabled && [
+          'disabled',
+          styles.rootDisabled
+        ],
+
+      ) as string,
+
+      flexContainer: mergeStyles(
+        'ms-Button-flexContainer',
+        styles.flexContainer
+      ) as string,
+
+      icon: mergeStyles(
+        'ms-Button-icon',
+        iconClassName,
+        styles.icon,
+        toggled && styles.iconToggled,
+        disabled && styles.iconDisabled,
+      ) as string,
+
+      label: mergeStyles(
+        'ms-Button-label',
+        styles.label,
+        toggled && styles.labelToggled,
+        disabled && styles.labelDisabled,
+      ) as string,
+
+      menuIcon: mergeStyles(
+        'ms-Button-menuIcon',
+        styles.menuIcon,
+        toggled && styles.menuIconToggled,
+        disabled && styles.menuIconDisabled
+      ) as string,
+
+      description: mergeStyles(
+        'ms-Button-description',
+        styles.description,
+        toggled && styles.descriptionToggled,
+        disabled && styles.descriptionDisabled
+      ) as string,
+
+      screenReaderText: mergeStyles(
+        'ms-Button-screenReaderText',
+        styles.screenReaderText
+      ) as string
+    };
+  }
 }
-
-const _getClassNames = memoize((
-  styles: IButtonStyles,
-  className: string,
-  variantClassName: string,
-  iconClassName: string,
-  disabled: boolean,
-  toggled: boolean
-): IButtonClassNames => ({
-  root: mergeStyles(
-    className,
-    'ms-Button',
-    variantClassName,
-    styles.root,
-    toggled && [
-      'toggled',
-      styles.rootToggled
-    ],
-    disabled && [
-      'disabled',
-      styles.rootDisabled
-    ],
-
-  ) as string,
-
-  flexContainer: mergeStyles(
-    'ms-Button-flexContainer',
-    styles.flexContainer
-  ) as string,
-
-  icon: mergeStyles(
-    'ms-Button-icon',
-    iconClassName,
-    styles.icon,
-    toggled && styles.iconToggled,
-    disabled && styles.iconDisabled,
-  ) as string,
-
-  label: mergeStyles(
-    'ms-Button-label',
-    styles.label,
-    toggled && styles.labelToggled,
-    disabled && styles.labelDisabled,
-  ) as string,
-
-  menuIcon: mergeStyles(
-    'ms-Button-menuIcon',
-    styles.menuIcon,
-    toggled && styles.menuIconToggled,
-    disabled && styles.menuIconDisabled
-  ) as string,
-
-  description: mergeStyles(
-    'ms-Button-description',
-    styles.description,
-    toggled && styles.descriptionToggled,
-    disabled && styles.descriptionDisabled
-  ) as string,
-
-  screenReaderText: mergeStyles(
-    'ms-Button-screenReaderText',
-    styles.screenReaderText
-  ) as string
-}));

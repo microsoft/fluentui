@@ -1,22 +1,22 @@
 // Polyfills
 import 'es6-weak-map/implement';
 
-import { memoize } from './memoize';
+import { memoizeFunction } from './memoize';
 
 let { expect } = chai;
 
-describe('memoize', () => {
+describe('memoizeFunction', () => {
   it('can return a cached result with a no args function', () => {
     let _timesCalled = 0;
-    let memoizedTimesCalled = memoize(() => ++_timesCalled);
+    let memoizeFunctiondTimesCalled = memoizeFunction(() => ++_timesCalled);
 
-    expect(memoizedTimesCalled()).equals(1);
-    expect(memoizedTimesCalled()).equals(1);
+    expect(memoizeFunctiondTimesCalled()).equals(1);
+    expect(memoizeFunctiondTimesCalled()).equals(1);
   });
 
   it('can return a cached result with a 2 arg function', () => {
     let _timesCalled = 0;
-    let combine = memoize((obj1, obj2) => (obj1.val + obj2.val + ++_timesCalled));
+    let combine = memoizeFunction((obj1, obj2) => (obj1.val + obj2.val + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -30,7 +30,7 @@ describe('memoize', () => {
 
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
-    let combine = memoize((obj1, obj2) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
+    let combine = memoizeFunction((obj1, obj2) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -42,7 +42,7 @@ describe('memoize', () => {
 
   it('works if you pass less arguments on subsequent calls', () => {
     let count = 0;
-    let func = memoize((
+    let func = memoizeFunction((
       a: string = '',
       b: string = ''
     ) => a + b + count++);
@@ -57,7 +57,7 @@ describe('memoize', () => {
 
   it('works if you pass more arguments on subsequent calls', () => {
     let count = 0;
-    let func = memoize((
+    let func = memoizeFunction((
       a: string = '',
       b: string = ''
     ) => a + b + count++);
@@ -72,7 +72,7 @@ describe('memoize', () => {
 
   it('resets after resetCount limit is reached.', () => {
     let count = 0;
-    let func = memoize((
+    let func = memoizeFunction((
       a: string
     ) => a + count++, 1);
 

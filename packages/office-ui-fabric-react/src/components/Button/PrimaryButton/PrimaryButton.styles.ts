@@ -4,14 +4,15 @@ import {
   getTheme,
   mergeStyleSets
 } from '../../../Styling';
+import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getDefaultButtonStyles
 } from '../DefaultButton/DefaultButton.styles';
 
-export function getStyles(
+export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IButtonStyles
-): IButtonStyles {
+  customStyles?: IButtonStyles
+): IButtonStyles => {
   let { palette } = theme;
   let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
     theme,
@@ -47,4 +48,4 @@ export function getStyles(
   };
 
   return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, customStyles);
-}
+});

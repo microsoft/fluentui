@@ -4,9 +4,7 @@ import {
   getTheme,
   mergeStyleSets
 } from '../../../Styling';
-import {
-  memoize
-} from '../../../Utilities';
+import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
@@ -15,11 +13,11 @@ const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
-export const getStyles = ((
+export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IButtonStyles = undefined,
-  focusInset: string = '0',
-  focusColor: string = theme.palette.neutralSecondary
+  customStyles?: IButtonStyles,
+  focusInset?: string,
+  focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
   let defaultButtonStyles: IButtonStyles = {

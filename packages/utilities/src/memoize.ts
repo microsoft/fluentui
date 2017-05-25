@@ -7,26 +7,27 @@ declare class WeakMap {
 const _emptyObject = { empty: true };
 const _dictionary = {};
 
-function _normalizeArg(val: any) {
-  if (!val) {
-    return _emptyObject;
-  } else if (typeof val === 'object') {
-    return val;
-  } else if (!_dictionary[val]) {
-    _dictionary[val] = { val };
-  }
-
-  return _dictionary[val];
-}
-
 interface IMemoizeNode {
   map: WeakMap;
   value?: any;
 }
 
-function _createNode(): IMemoizeNode {
+/*
+ *
+ */
+export function memoize<T extends Function>(
+  target: any,
+  key: string,
+  descriptor: TypedPropertyDescriptor<T>) {
+
+  let fn = memoizeFunction(descriptor.value.bind(target));
+  fn.displayName = key;
+
   return {
-    map: new WeakMap()
+    configurable: true,
+    get() {
+      return fn;
+    }
   };
 }
 
@@ -43,7 +44,7 @@ function _createNode(): IMemoizeNode {
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.
  */
-export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
   cb: T,
   maxCacheSize: number = 100
 ): T {
@@ -80,4 +81,22 @@ export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
 
     return currentNode.value;
   } as any;
+}
+
+function _normalizeArg(val: any) {
+  if (!val) {
+    return _emptyObject;
+  } else if (typeof val === 'object') {
+    return val;
+  } else if (!_dictionary[val]) {
+    _dictionary[val] = { val };
+  }
+
+  return _dictionary[val];
+}
+
+function _createNode(): IMemoizeNode {
+  return {
+    map: new WeakMap()
+  };
 }

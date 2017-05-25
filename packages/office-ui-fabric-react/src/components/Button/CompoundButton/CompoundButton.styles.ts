@@ -4,6 +4,7 @@ import {
   getTheme,
   mergeStyleSets
 } from '../../../Styling';
+import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getDefaultButtonStyles
 } from '../DefaultButton/DefaultButton.styles';
@@ -12,10 +13,10 @@ const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
-export function getStyles(
+export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
   customStyles?: IButtonStyles
-): IButtonStyles {
+): IButtonStyles => {
   let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
     theme,
     customStyles
@@ -59,9 +60,13 @@ export function getStyles(
 
     descriptionToggled: {
       color: 'inherit'
+    },
+
+    descriptionDisabled: {
+      color: 'inherit'
     }
 
   };
 
   return mergeStyleSets(defaultButtonStyles, compoundButtonStyles, customStyles);
-}
+});

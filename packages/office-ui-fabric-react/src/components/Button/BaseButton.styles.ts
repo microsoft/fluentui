@@ -1,9 +1,22 @@
 import { IButtonStyles } from './Button.Props';
-import { ITheme, mergeStyles, getFocusStyle, FontSizes } from '../../Styling';
-import { memoize } from '../../Utilities';
+import { memoizeFunction } from '../../Utilities';
+import {
+  ITheme,
+  getFocusStyle,
+  FontSizes
+} from '../../Styling';
 
 const noOutline = {
   outline: 0
+};
+
+const iconStyle = {
+  fontSize: FontSizes.icon,
+  margin: '0 4px',
+  height: '16px',
+  lineHeight: '16px',
+  textAlign: 'center',
+  verticalAlign: 'middle'
 };
 
 /**
@@ -11,19 +24,11 @@ const noOutline = {
  * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
  * mixing class names together.
  */
-export const getStyles = ((
+export const getStyles = memoizeFunction((
   theme: ITheme,
   focusInset: string = '0',
-  focusColor: string = theme.palette.neutralTertiary
+  focusColor: string = theme.palette.neutralSecondary
 ): IButtonStyles => {
-
-  const iconStyle = mergeStyles({
-    margin: '0 4px',
-    height: '16px',
-    lineHeight: '16px',
-    textAlign: 'center',
-    verticalAlign: 'middle'
-  });
 
   return {
     root: [
@@ -43,45 +48,42 @@ export const getStyles = ((
       }
     ],
 
-    rootDisabled: mergeStyles({
+    rootDisabled: {
       backgroundColor: theme.palette.neutralLighter,
       color: theme.palette.neutralTertiary,
       cursor: 'default',
       pointerEvents: 'none',
       ':hover': noOutline,
       ':focus': noOutline
-    }),
+    },
 
     rootToggled: undefined,
 
-    flexContainer: mergeStyles({
+    flexContainer: {
       display: 'flex',
       height: '100%',
       flexWrap: 'nowrap',
       justifyContent: 'center',
       alignItems: 'center'
-    }),
+    },
 
-    icon: mergeStyles(iconStyle, {
-      fontSize: FontSizes.icon
-    }),
-
+    icon: iconStyle,
     iconToggled: undefined,
     iconDisabled: undefined,
 
-    menuIcon: mergeStyles(iconStyle, {
-      fontSize: FontSizes.small,
-    }),
-
+    menuIcon: [
+      iconStyle,
+      {
+        fontSize: FontSizes.small
+      }
+    ],
     menuIconToggled: undefined,
-
     menuIconDisabled: undefined,
 
-    label: mergeStyles({
+    label: {
       margin: '0 4px',
       lineHeight: '100%'
-    }),
-
+    },
     labelToggled: undefined,
     labelDisabled: undefined,
 
@@ -89,7 +91,7 @@ export const getStyles = ((
     descriptionToggled: undefined,
     descriptionDisabled: undefined,
 
-    screenReaderText: mergeStyles({
+    screenReaderText: {
       position: 'absolute',
       width: '1px',
       height: '1px',
@@ -98,6 +100,6 @@ export const getStyles = ((
       overflow: 'hidden',
       clip: 'rect(0,0,0,0)',
       border: 0
-    })
+    }
   };
 });

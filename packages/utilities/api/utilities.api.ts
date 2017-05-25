@@ -311,7 +311,7 @@ enum KeyCodes {
   up = 38
 }
 
-export function memoize < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T,
+export function memoizeFunction < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T,
   maxCacheSize: number = 100): T;
 
 export function nullRender(): JSX.Element | null;
@@ -378,4 +378,5 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: disableBodyScroll has incomplete type information
 // WARNING: enableBodyScroll has incomplete type information
 // WARNING: Unsupported export: ISettingsMap
+// WARNING: memoize has incomplete type information
 // (No packageDescription for this package)
