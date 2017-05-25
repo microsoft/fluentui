@@ -1,4 +1,12 @@
-export { animationClassNames, IAnimationClassNames } from './animationClassNames';
-export { fontClassNames, IFontClassNames } from './fontClassNames';
-export { iconClassNames, IIconClassNames } from './iconClassNames';
-export { colorClassNames, IColorClassNames } from './colorClassNames';
+export {
+  AnimationClassNames
+} from './AnimationClassNames';
+export {
+  FontClassNames
+} from './FontClassNames';
+export {
+  IconClassNames
+} from './IconClassNames';
+export {
+  ColorClassNames
+} from './ColorClassNames';

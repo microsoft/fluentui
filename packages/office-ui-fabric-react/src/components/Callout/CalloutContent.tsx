@@ -94,6 +94,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
     let {
       role,
+      ariaLabel,
       ariaDescribedBy,
       ariaLabelledBy,
       className,
@@ -149,6 +150,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
           <Popup
             role={ role }
+            ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
             className={ css('ms-Callout-main', styles.main) }

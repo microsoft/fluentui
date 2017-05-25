@@ -35,6 +35,15 @@ $button-commandButtonHeight: 40px;
 
 .isEnabled {
 
+  &.isToggled {
+    background-color: $ms-color-neutralTertiaryAlt;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+      color: $ms-color-themeDarker;
+    }
+  }
+
   &:hover {
     color: $ms-color-themeDarker;
   }

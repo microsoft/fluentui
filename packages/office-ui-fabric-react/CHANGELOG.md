@@ -1,6 +1,84 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 May 2017 10:19:13 GMT and should not be manually modified.
+This log was last generated on Thu, 25 May 2017 10:22:10 GMT and should not be manually modified.
+
+## 2.34.0
+Thu, 25 May 2017 10:22:10 GMT
+
+### Minor changes
+
+- DatePicker: Fix for accessibility issues
+
+## 2.33.0
+Wed, 24 May 2017 23:52:09 GMT
+
+### Minor changes
+
+- ChoiceGroup: Support custom option labels
+- ContextMenu: added `useTargetWidth` property to match the width of the anchor element when true the context menu will apply target element's width to it
+- Spinner: support for status announcement
+
+### Patches
+
+- Fixes bug where ResizeGroup gets stuck in an infinite render loop when subsequent calls to onReduceData does nothing.
+- Add unit tests to ResizeGroup
+- Dropdown: Added title attribute for individual options.
+- SearchBox: Fixed onBlur not removing focus
+
+## 2.32.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog
+
+### Patches
+
+- FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element.
+- Adding a constant for all the test images and replacing the hard coded  example paths
+
+## 2.31.0
+Fri, 19 May 2017 10:20:22 GMT
+
+### Minor changes
+
+- Adding the ability for buttons to be toggled
+
+### Patches
+
+- Searchbox: Updated border styles to better support high contrast mode
+- Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb"
+
+## 2.30.2
+Thu, 18 May 2017 10:09:58 GMT
+
+### Patches
+
+- Adds outlines to SearchBox in HC modes
+- BaseButton: now respects the isBeakVisible property on the menu props
+- Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems
+
+## 2.30.1
+Tue, 16 May 2017 22:39:55 GMT
+
+### Patches
+
+- Change pickeritemprops to correctly extend htmlattributes
+- List: Add scrollToIndex to public interface
+
+## 2.30.0
+Tue, 16 May 2017 21:47:38 GMT
+
+### Minor changes
+
+- DatePicker: adding a disabled property support.
+
+### Patches
+
+- Pickers: Adds ability to disable pickers
+- Adjust styling on menu drop shadows.
+- Button: Added aria-expanded if props.menuProps. Changes from false to true when opened
+- Button: default type to 'button'
 
 ## 2.29.0
 Mon, 15 May 2017 10:19:13 GMT
