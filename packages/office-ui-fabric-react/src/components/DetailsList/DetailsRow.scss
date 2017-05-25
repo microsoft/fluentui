@@ -1,41 +1,127 @@
 @import '../../common/common';
 
-$rowHeight: 36px;
-$rowVerticalPadding: 10px;
+$rowHeight: 42px;
+$compactRowHeight: 32px;
+$rowVerticalPadding: 8px;
+$compactRowVerticalPadding: 6px;
+$isPaddedMargin: 24px;
+
 
 // component slots
+$detailsList-item-default-header-color: $listItemDefaultColor;
+$detailsList-item-default-meta-color: $listItemDefaultMetaColor;
+$detailsList-item-default-background-color: $listItemBackgroundColor;
+
 $detailsList-item-hover-color: $listItemHoverColor;
+$detailsList-item-hover-meta-color: $listItemHoverMetaColor;
+$detailsList-item-hover-color-background: $listItemHoverBackgroundColor;
+
 $detailsList-item-selected-color: $listItemSelectedColor;
+$detailsList-item-selected-meta-color: $listItemSelectedMetaColor;
+$detailsList-item-selected-background-color: $listItemSelectedBackgroundColor;
+
 $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
+$detailsList-item-selected-hover-meta-color: $listItemSelectedHoverMetaColor;
+$detailsList-item-selected-hover-background-color: $listItemSelectedHoverBackgroundColor;
 
+$detailsList-item-focus-background-color: $listItemFocusedBackgroundColor;
+$detailsList-item-focus-header-color: $listItemFocusedHeaderColor;
+$detailsList-item-focus-meta-color: $listItemFocusedMetaColor;
+
+
+// Compact mode rules
+:global(.ms-DetailsList--Compact) {
+  .root {
+    min-height: $compactRowHeight;
+    line-height: $compactRowHeight - ($compactRowVerticalPadding * 2);
+    border: 0;
+  }
+
+  .cell {
+    min-height: $compactRowHeight;
+    padding: $compactRowVerticalPadding 0;
+  }
+
+  .check {
+    padding: 8px;
+  }
+}
+
+// Default state
 .root {
-  @include focus-border();
+  @include focus-border(0, $ms-color-neutralSecondary);
 
+  border-top: 1px solid $ms-color-neutralLighter;
+  border-bottom: 1px solid $ms-color-neutralLighter;
+  background: $detailsList-item-default-background-color;
+  color: $detailsList-item-default-meta-color;
   display: inline-block;
   min-width: 100%;
   min-height: $rowHeight;
-  margin: 1px 0;
   vertical-align: top;
   white-space: nowrap;
   padding: 0;
   box-sizing: border-box;
 
-  background: none;
-  border: none;
   @include text-align(left);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
+  margin-top: -1px;
 
+  // Default State hover
   &:hover {
-    background: $detailsList-item-hover-color;
+    background: $detailsList-item-hover-color-background;
+    color: $detailsList-item-hover-meta-color;
   }
 }
 
+// Selected State
 .rootIsSelected {
-  background: $detailsList-item-selected-color;
+  @include focus-border(0, $ms-color-themePrimary);
 
+  color: $detailsList-item-selected-meta-color;
+  z-index: $ms-zIndex-middle;
+  background: $detailsList-item-selected-background-color;
+
+  margin-top: -1px;
+  border-top: 1px solid $ms-color-white;
+  border-bottom: 1px solid $ms-color-white;
+
+  .cell {
+    // Selected State Header cell
+    &.isRowHeader {
+      color: $detailsList-item-selected-color;
+    }
+  }
+
+  // Selected State hover
   &:hover {
-    background: $detailsList-item-selected-hover-color;
+    background: $detailsList-item-selected-hover-background-color;
+
+    // Selected State hover meta cell
+    .cell {
+      color: $detailsList-item-selected-hover-meta-color;
+
+      // Selected State hover Header cell
+      &.isRowHeader {
+        color: $detailsList-item-selected-hover-color;
+      }
+    }
+  }
+
+  // Focus state
+  &:focus {
+    background: $detailsList-item-focus-background-color;
+
+    // Selected State hover meta cell
+    .cell {
+      color: $detailsList-item-focus-meta-color;
+
+      // Row header cell
+      &.isRowHeader {
+        color: $detailsList-item-focus-header-color;
+      }
+    }
   }
 }
 
@@ -44,6 +130,7 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   cursor: default;
 }
 
+// Default cell state
 .cell {
   display: inline-block;
   position: relative;
@@ -59,6 +146,20 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   & > button {
     max-width: 100%;
   }
+
+  // Default header cell state
+  &.isRowHeader {
+    color: $detailsList-item-default-header-color;
+    font-size: $ms-font-size-m;
+  }
+
+  [data-is-focusable=true] {
+    @include focus-border(0, $ms-color-neutralSecondary);
+  }
+}
+
+.isPadded {
+  @include margin-right($isPaddedMargin);
 }
 
 .isMultiline {
@@ -74,9 +175,10 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 .check {
   @include focus-border();
 
+  @include margin-left(4px);
   display: inline-block;
   cursor: default;
-  padding: 6px;
+  padding: 13px 8px;
   box-sizing: border-box;
   vertical-align: top;
   background: none;
@@ -89,6 +191,7 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 }
 
 .root:hover .check,
+.root:focus .check,
 .rootIsSelected .check,
 .rootIsCheckVisible .check {
   opacity: 1;

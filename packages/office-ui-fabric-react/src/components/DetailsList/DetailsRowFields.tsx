@@ -8,6 +8,7 @@ export interface IDetailsRowFieldsProps {
   item: any;
   itemIndex: number;
   columns: IColumn[];
+  compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 }
 
@@ -39,6 +40,8 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             aria-colindex={ columnIndex }
             className={ css('ms-DetailsRow-cell', styles.cell, column.className, {
               'is-multiline': column.isMultiline,
+              [styles.isRowHeader]: column.isRowHeader,
+              [styles.isPadded]: column.isPadded,
               [styles.isMultiline]: column.isMultiline
             }) }
             style={ { width: column.calculatedWidth } }

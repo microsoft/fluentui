@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: Add compact mode to component, fix styling and Check component sizing",
+      "type": "minor"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/styling",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Remove $disabledForegroundColor from semanticColorVariables",
+      "type": "patch"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}

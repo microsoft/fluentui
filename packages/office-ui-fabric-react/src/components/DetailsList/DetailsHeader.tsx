@@ -149,7 +149,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           { columns.map((column, columnIndex) => (
             <div
               key={ column.key }
-              className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) }
+              className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper, {
+                [styles.cellWrapperPadded]: column.isPadded
+              }) }
               role='columnheader'
               aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
             >
@@ -173,6 +175,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
               >
+                { column.name }
 
                 { column.isFiltered && (
                   <Icon className={ styles.nearIcon } iconName='Filter' />
@@ -189,8 +192,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 { column.iconClassName && (
                   <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
                 ) }
-
-                { column.name }
 
                 { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
                   <Icon
@@ -223,8 +224,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               onMouseUp={ this._onSizerMouseUp }
             />
           </Layer>
-        ) }
-      </div>
+        )
+        }
+      </div >
     );
   }
 

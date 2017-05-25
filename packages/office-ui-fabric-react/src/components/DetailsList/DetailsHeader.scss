@@ -1,13 +1,17 @@
 @import '../../common/common';
 
 $iconForegroundColor: $ms-color-neutralSecondary;
-$actionableHeaderForegroundColor: $ms-color-neutralSecondary;
+$headerForegroundColor: $ms-color-neutralPrimary;
+$headerBackgroundColor: $ms-color-white;
 $dropdownChevronForegroundColor: $ms-color-neutralTertiary;
-$rowHeight: 36px;
+$rowHeight: 32px;
 $resizerColor: $ms-color-neutralTertiaryAlt;
+$cellPadding: 8px;
+$isPaddedMargin: 24px;
 
 .root {
   display: inline-block;
+  position: relative;
   min-width: 100%;
   vertical-align: top;
   height: $rowHeight;
@@ -17,6 +21,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   border-bottom: 1px solid $dividerColor;
   cursor: default;
   user-select: none;
+  z-index: $ms-zIndex-front;
 
   &.rootIsSelectAllHidden {
     .cell.cellIsCheck {
@@ -39,16 +44,19 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   position: relative;
 }
 
+.cellWrapperPadded {
+  @include margin-right($isPaddedMargin - $cellPadding);
+}
+
 .cell {
   @include ms-font-s;
-  background: transparent;
-  color: $disabledForegroundColor;
+  background: $headerBackgroundColor;
+  color: $headerForegroundColor;
   @include focus-border();
-  font-weight: $ms-font-weight-regular;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 8px;
+  padding: 0 $cellPadding;
   border: none;
   line-height: inherit;
   margin: 0;
@@ -61,13 +69,13 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   @include text-align(left);
 
   &.cellIsCheck {
+    @include margin-left(4px);
     position: relative;
-    padding: 6px;
+    padding: 6px 8px;
     margin: 0;
   }
 
   &.cellIsActionable {
-    color: $actionableHeaderForegroundColor;
 
     &:hover {
       color: $ms-color-neutralPrimary;
@@ -83,7 +91,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
     position: absolute;
     width: 16px;
 
-    @include margin-left(-10px);
+    @include margin-left(10px);
     cursor: ew-resize;
     bottom: 0;
     top: 0;
@@ -129,7 +137,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 .cell .nearIcon {
   color: $iconForegroundColor;
   opacity: 1;
-  @include padding-right(4px);
+  @include padding-left(8px);
 }
 
 .cell .filterChevron {

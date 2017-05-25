@@ -161,11 +161,14 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
   shouldApplyApplicationRole?: boolean;
 
-  /** 
+  /**
    * The minimum mouse move distance to interpret the action as drag event.
    * @defaultValue 5
    */
   minimumPixelsForDrag?: number;
+
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
 }
 
 export interface IColumn {
@@ -292,6 +295,11 @@ export interface IColumn {
    * An optional class name to stick on the column cell within each header.
    */
   headerClassName?: string;
+
+  /**
+   * If set, will add LTR margin-right to column and cells.
+   */
+  isPadded?: boolean;
 }
 
 /**
