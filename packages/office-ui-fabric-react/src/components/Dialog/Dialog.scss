@@ -23,8 +23,6 @@ $Dialog-default-max-width: 340px;
 
 // Close button, hidden by default
 .button.isClose {
-  display: none;
-
   :global(.ms-Icon.ms-Icon--Cancel) {
     color: $ms-color-neutralSecondary;
     font-size: 16px;
@@ -107,15 +105,6 @@ $Dialog-default-max-width: 340px;
   // Reset spacing for first button
   .action {
     margin: 0px 4px;
-  }
-}
-
-//= Modifier: Dialog with close button
-//
-.isClose:not(.isLargeHeader) {
-  // Show the close button
-  .button.isClose {
-    display: block;
   }
 }
 

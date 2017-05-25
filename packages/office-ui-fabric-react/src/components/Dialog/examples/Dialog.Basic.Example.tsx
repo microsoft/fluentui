@@ -22,13 +22,17 @@ export class DialogBasicExample extends React.Component<any, any> {
           text='Open Dialog'
         />
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
-          onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
-          containerClassName='ms-dialogMainOverride'
+          contentProps={ {
+            type: DialogType.normal,
+            onDismiss: this._closeDialog.bind(this),
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            isOpen: this.state.showDialog,
+            isBlocking: false,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
           <ChoiceGroup
             options={ [

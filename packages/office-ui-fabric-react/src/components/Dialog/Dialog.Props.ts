@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { IModalProps } from '../../Modal';
 import { Dialog } from './Dialog';
-import { DialogContent } from './DialogContent';
+import { DialogType, IDialogContentProps } from './DialogContent.Props';
 import { IButtonProps } from '../Button/Button.Props';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
@@ -9,139 +10,98 @@ export interface IDialog {
 
 }
 
-export interface IDialogContentProps extends React.Props<DialogContent>, IWithResponsiveModeState, IAccessiblePopupProps {
-  /**
-  * Show an 'x' close button in the upper-right corner
-  */
-  showCloseButton?: boolean;
-
-  /**
-   * Other top buttons that will show up next to the close button
-   */
-  topButtonsProps?: IButtonProps[];
-
-  /**
-  * Optional override class name
-  */
-  className?: string;
-
-  /**
-  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
-  */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
-
-  /**
-  * The subtext to display in the dialog.
-  */
-  subText?: string;
-
-  /**
-  * The title text to display at the top of the dialog.
-  */
-  title?: string;
-
-  /**
-   * Label to be passed to to aria-label of close button
-   * @default Close
-   */
-  closeButtonAriaLabel?: string;
-}
-
 export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {
+
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IDialog) => void;
 
+  contentProps?: IDialogContentProps;
+
+  modalProps?: IModalProps;
+
   /**
   * Whether the dialog is displayed.
   * @default false
+  * @deprecated Pass through via dialogModalProps instead
   */
   isOpen?: boolean;
 
   /**
-  * The type of Dialog to display.
-  * @default DialogType.normal
-  */
-  type?: DialogType;
-
-  /**
   * Whether the overlay is dark themed.
   * @default true
+  * @deprecated Pass through via dialogModalProps instead
   */
   isDarkOverlay?: boolean;
 
   /**
-  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
-  */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
-
-  /**
    * A callback function which is called after the Dialog is dismissed and the animation is complete.
+   * @deprecated Pass through via dialogModalProps instead
    */
   onDismissed?: () => any;
 
   /**
-  * The title text to display at the top of the dialog.
-  */
-  title?: string;
-
-  /**
-  * The subtext to display in the dialog.
-  */
-  subText?: string;
-
-  /**
   * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
   * @default false
+  * @deprecated Pass through via dialogModalProps instead
   */
   isBlocking?: boolean;
 
   /**
    * Optional class name to be added to the root class
+   * @deprecated Pass through via dialogModalProps instead
    */
   className?: string;
 
   /**
   * Optional override for container class
+  * @deprecated Pass through via dialogModalProps instead
   */
   containerClassName?: string;
 
   /**
-  * Optional override content class
-  */
-  contentClassName?: string;
-
-  /**
    * A callback function for when the Dialog content is mounted on the overlay layer
+   * @deprecated Pass through via dialogModalProps instead
    */
   onLayerDidMount?: () => void;
 
   /**
-   * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
-   * @deprecated
-   */
-  onLayerMounted?: () => void;
+  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
+  * @deprecated Pass through via dialogContentProps instead
+  */
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+
+  /**
+  * The type of Dialog to display.
+  * @default DialogType.normal
+  * @deprecated Pass through via dialogContentProps instead
+  */
+  type?: DialogType;
+
+  /**
+  * The title text to display at the top of the dialog.
+  * @deprecated Pass through via dialogContentProps instead
+  */
+  title?: string;
+
+  /**
+  * The subtext to display in the dialog.
+  * @deprecated Pass through via dialogContentProps instead
+  */
+  subText?: string;
+
+  /**
+  * Optional override content class
+  * @deprecated Pass through via dialogContentProps instead as className
+  */
+  contentClassName?: string;
 
   /**
    * Other top buttons that will show up next to the close button
+   * @deprecated Pass through via dialogContentProps instead
    */
   topButtonsProps?: IButtonProps[];
 
-  /**
-   * Label to be passed to to aria-label of close button
-   * @default Close
-   */
-  closeButtonAriaLabel?: string;
-
-}
-
-export enum DialogType {
-  /** Standard dialog */
-  normal = 0,
-  /** Dialog with large header banner */
-  largeHeader = 1,
-  /** Dialog with an 'x' close button in the upper-right corner */
-  close = 2
 }

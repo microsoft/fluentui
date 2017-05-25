@@ -21,12 +21,17 @@ export class DialogBlockingExample extends React.Component<any, any> {
           text='Open Dialog'
         />
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
-          onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ true }
+          contentProps={ {
+            type: DialogType.normal,
+            onDismiss: this._closeDialog.bind(this),
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            isOpen: this.state.showDialog,
+            isBlocking: true,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
           <ChoiceGroup
             options={ [

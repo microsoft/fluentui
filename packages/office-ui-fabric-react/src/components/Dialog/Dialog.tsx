@@ -4,7 +4,8 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { IDialogProps, DialogType } from './Dialog.Props';
+import { IDialogProps } from './Dialog.Props';
+import { DialogType } from './DialogContent.Props';
 import { Modal } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';
@@ -51,26 +52,21 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       onDismiss,
       onDismissed,
       onLayerDidMount,
-      onLayerMounted,
       responsiveMode,
       subText,
       title,
       type,
       contentClassName,
       topButtonsProps,
-      closeButtonAriaLabel
+      contentProps,
+      modalProps
     } = this.props;
     let { id } = this.state;
 
-    const dialogClassName = css(this.props.className, {
-      ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
-      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
-    });
     const containerClassName = css(this.props.containerClassName, styles.main);
 
     return (
       <Modal
-        className={ dialogClassName }
         containerClassName={ containerClassName }
         elementToFocusOnDismiss={ elementToFocusOnDismiss }
         firstFocusableSelector={ firstFocusableSelector }
@@ -80,22 +76,24 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap }
         isDarkOverlay={ isDarkOverlay }
         isOpen={ isOpen }
-        onDismiss={ onDismiss }
         onDismissed={ onDismissed }
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
+        { ...modalProps }
+        onDismiss={ onDismiss } // pull from contentProps.onDismiss once onDismiss is deprecated
         subtitleAriaId={ subText && id + '-subText' }
         titleAriaId={ title && id + '-title' }
       >
 
         <DialogContent
           onDismiss={ onDismiss }
-          showCloseButton={ !isBlocking && type !== DialogType.largeHeader }
+          showCloseButton={ !isBlocking }
           title={ title }
           subText={ subText }
           className={ contentClassName }
           topButtonsProps={ topButtonsProps }
-          closeButtonAriaLabel={ closeButtonAriaLabel }
+          type={ type }
+          {...contentProps}
         >
           { this.props.children }
         </DialogContent>
