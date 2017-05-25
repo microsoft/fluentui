@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DatePicker: Fix an issue with JAWS users needing to hit enter twice to open the date picker.",
+      "type": "patch"
+    }
+  ],
+  "email": "chscribn@microsoft.com"
+}
