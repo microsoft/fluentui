@@ -311,8 +311,10 @@ enum KeyCodes {
   up = 38
 }
 
-// (undocumented)
-export function memoize < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T): T;
+export function memoize < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T,
+  maxCacheSize: number = 100): T;
+
+export function nullRender(): JSX.Element | null;
 
 // (undocumented)
 class Rectangle {
@@ -345,7 +347,6 @@ export function warnMutuallyExclusive < P >(componentName: string,
   props: P,
   exclusiveMap: ISettingsMap<P>): void;
 
-// WARNING: nullRender has incomplete type information
 // WARNING: createArray has incomplete type information
 // WARNING: autobind has incomplete type information
 // WARNING: Unsupported export: ICssInput

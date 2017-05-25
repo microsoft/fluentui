@@ -40,16 +40,49 @@ describe('memoize', () => {
     expect(combine(false, 0)).equals('4');
   });
 
-  it('throws if you pass different count of arguments', () => {
-    let func = memoize((a?: string, b?: string) => true);
+  it('works if you pass less arguments on subsequent calls', () => {
+    let count = 0;
+    let func = memoize((
+      a: string = '',
+      b: string = ''
+    ) => a + b + count++);
 
-    expect(func('hi')).equals(true);
+    expect(func('hi', 'world')).equals('hiworld0');
+    expect(func('hi', 'world')).equals('hiworld0');
+    expect(func('hi')).equals('hi1');
+    expect(func('hi')).equals('hi1');
+    expect(func()).equals('2');
+    expect(func()).equals('2');
+  });
 
-    let threw = false;
-    try {
-      func('hi', 'world');
-    } catch (e) { threw = true; }
+  it('works if you pass more arguments on subsequent calls', () => {
+    let count = 0;
+    let func = memoize((
+      a: string = '',
+      b: string = ''
+    ) => a + b + count++);
 
-    expect(threw).equals(true);
+    expect(func()).equals('0');
+    expect(func()).equals('0');
+    expect(func('hi')).equals('hi1');
+    expect(func('hi')).equals('hi1');
+    expect(func('hi', 'world')).equals('hiworld2');
+    expect(func('hi', 'world')).equals('hiworld2');
+  });
+
+  it('resets after resetCount limit is reached.', () => {
+    let count = 0;
+    let func = memoize((
+      a: string
+    ) => a + count++, 1);
+
+    expect(func('a')).equals('a0');
+    expect(func('a')).equals('a0');
+    expect(func('b')).equals('b1');
+    expect(func('b')).equals('b2');
+    expect(func('b')).equals('b2');
+    expect(func('a')).equals('a3');
+    expect(func('a')).equals('a4');
+    expect(func('a')).equals('a4');
   });
 });

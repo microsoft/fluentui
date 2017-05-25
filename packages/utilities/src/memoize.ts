@@ -19,59 +19,65 @@ function _normalizeArg(val: any) {
   return _dictionary[val];
 }
 
-export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T): T {
-  let cache: any;
-  let argCount = -1;
+interface IMemoizeNode {
+  map: WeakMap;
+  value?: any;
+}
+
+function _createNode(): IMemoizeNode {
+  return {
+    map: new WeakMap()
+  };
+}
+
+/**
+ * Memoizes a function; when you pass in the same parameters multiple times, it returns a cached result.
+ * Be careful when passing in objects, you need to pass in the same INSTANCE for caching to work. Otherwise
+ * it will grow the cache unnecessarily.
+ *
+ * By default, the cache will reset after 100 permutations, to avoid abuse cases where the function is
+ * unintendedly called with unique objects. Without a reset, the cache could grow infinitely, so we safeguard
+ * by resetting. To override this behavior, pass a value of 0 to the maxCacheSize parameter.
+ *
+ * @param cb - The function to memoize.
+ * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
+ * @returns A memoized version of the function.
+ */
+export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
+  cb: T,
+  maxCacheSize: number = 100
+): T {
+
+  let rootNode: any;
+  let cacheSize = 0;
 
   // tslint:disable-next-line:no-function-expression
   return function memoizedFunction(...args: any[]): RET_TYPE {
-    let retVal: RET_TYPE;
+    let currentNode: any = rootNode;
 
-    if (argCount === -1) {
-      argCount = args.length;
+    if (rootNode === undefined || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
+      rootNode = _createNode();
+      cacheSize = 0;
     }
 
-    if (argCount !== args.length) {
-      throw Error('memoize argument count must remain the same; avoid optional parameters.');
+    currentNode = rootNode;
+
+    // Traverse the tree until we find the match.
+    for (let i = 0; i < args.length; i++) {
+      let arg = _normalizeArg(args[i]);
+
+      if (!currentNode.map.has(arg)) {
+        currentNode.map.set(arg, _createNode());
+      }
+
+      currentNode = currentNode.map.get(arg);
     }
 
-    if (args.length === 0) {
-      if (cache === undefined) {
-        cache = cb(...args);
-      }
-      retVal = cache;
-    } else {
-      if (!cache) {
-        cache = new WeakMap();
-        argCount = args.length;
-      }
-
-      let currentCache: any = cache;
-
-      for (let i = 0; i < args.length - 1; i++) {
-        let arg = _normalizeArg(args[i]);
-
-        if (!arg) {
-          arg = _emptyObject;
-        }
-        if (!currentCache.has(arg)) {
-          currentCache.set(arg, new WeakMap());
-        }
-
-        currentCache = currentCache.get(arg);
-      }
-
-      let lastArg = _normalizeArg(args[args.length - 1]);
-
-      if (currentCache.has(lastArg)) {
-        retVal = currentCache.get(lastArg);
-      } else {
-        let value = cb(...args);
-        currentCache.set(lastArg, value);
-        retVal = value;
-      }
+    if (!currentNode.hasOwnProperty('value')) {
+      currentNode.value = cb(...args);
+      cacheSize++;
     }
 
-    return retVal;
+    return currentNode.value;
   } as any;
 }
