@@ -15,7 +15,6 @@ import {
   IToggleStyles
 } from './Toggle.Props';
 import { Label } from '../../Label';
-import * as assign from 'object-assign';
 import {
   mergeStyles,
   mergeStyleSets,
@@ -29,24 +28,30 @@ export interface IToggleState {
 }
 
 interface IToggleClassNames {
-  root: IStyle;
-  label: IStyle;
-  control: IStyle;
-  invisibleToggle: IStyle;
-  stateText: IStyle;
+  root: string;
+  label: string;
+  control: string;
+  invisibleToggle: string;
+  stateText: string;
 
-  toggle: IStyle;
-  thumb: IStyle;
+  toggle: string;
+  thumb: string;
 }
 
-const _getClassNames = memoize((
-  (styles: IToggleStyles,
+export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
+
+  private _id: string;
+  private _toggleInput: HTMLInputElement;
+
+  @memoize
+  private _getClassNames(
+    styles: IToggleStyles,
     enabled: boolean,
     checked: boolean
-  ): IToggleClassNames => {
+    ): IToggleClassNames {
     return {
-      root: mergeStyles(styles.root),
-      label: mergeStyles(styles.label),
+      root: mergeStyles(styles.root) as string,
+      label: mergeStyles(styles.label) as string,
       control: mergeStyles(styles.control,
         enabled && !checked && {
           ':hover': {
@@ -59,31 +64,25 @@ const _getClassNames = memoize((
             ' .ms-Toggle-background': styles.toggleOnHovered,
             ' .ms-Toggle-thumb': styles.thumbOnHovered
           }
-        }),
+        }) as string,
       invisibleToggle: mergeStyles(styles.invisibleToggle,
         { ':focus + .ms-Toggle-background': styles.focus }
-      ),
-      stateText: mergeStyles(styles.stateText),
+      ) as string,
+      stateText: mergeStyles(styles.stateText) as string,
       toggle: mergeStyles(styles.toggle,
         enabled && !checked && styles.toggleDefault,
         enabled && checked && styles.toggleOn,
         !enabled && !checked && styles.toggleDisabled,
         !enabled && checked && styles.toggleOnDisabled
-      ),
+      ) as string,
       thumb: mergeStyles(styles.thumb,
         enabled && !checked && styles.thumbDefault,
         enabled && checked && styles.thumbOn,
         !enabled && !checked && styles.thumbDisabled,
         !enabled && checked && styles.thumbOnDisabled
-      )
+      ) as string
     }
-  })
-);
-
-export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
-
-  private _id: string;
-  private _toggleInput: HTMLInputElement;
+  };
 
   constructor(props: IToggleProps) {
     super();
@@ -125,7 +124,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     let stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
-    let styles = _getClassNames(
+    let styles = this._getClassNames(
       mergeStyleSets(getStyles(undefined), customStyles),
       !disabled,
       isChecked);
