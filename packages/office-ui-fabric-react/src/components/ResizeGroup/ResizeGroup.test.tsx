@@ -120,22 +120,56 @@ describe('ResizeGroup', () => {
     expect(onReduceDataSpy.callCount).to.equal(1);
   });
 
-  it('will measure after a window resize', () => {
-    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
+  it('will measure after a window resize that grows the container', () => {
+    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks();
+
+    // Initial render with measurements
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.returns({ width: 100 });
+    wrapper.setState({ shouldMeasure: true });
 
     onReduceDataSpy.reset();
     rootGetClientRectMock.reset();
     measuredGetClientRectMock.reset();
-    rootGetClientRectMock.returns({ width: 200 });
+
+    rootGetClientRectMock.returns({ width: 250 });
     measuredGetClientRectMock.returns({ width: 100 });
 
+    let renderSpy = setRenderSpy(wrapper);
+    window.dispatchEvent(new Event('resize'));
+
+    expect(rootGetClientRectMock.callCount).to.equal(2);
+    expect(measuredGetClientRectMock.callCount).to.equal(1);
+
+    // Don't call onReduceData because everything fits.
+    expect(onReduceDataSpy.callCount).to.equal(0);
+    expect(renderSpy.callCount).to.equal(2);
+  });
+
+  it('does not render after a window resize that shrinks the container and everything still fits', () => {
+    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks();
+
+    // Initial render with measurements
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.returns({ width: 100 });
+    wrapper.setState({ shouldMeasure: true });
+
+    onReduceDataSpy.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+
+    rootGetClientRectMock.returns({ width: 150 });
+    measuredGetClientRectMock.returns({ width: 100 });
+
+    let renderSpy = setRenderSpy(wrapper);
     window.dispatchEvent(new Event('resize'));
 
     expect(rootGetClientRectMock.callCount).to.equal(1);
-    expect(measuredGetClientRectMock.callCount).to.equal(1);
+    expect(measuredGetClientRectMock.callCount).to.equal(0);
 
-    // Don't call onReduceData since everything fits
+    // Don't call onReduceData or render because everything already fits.
     expect(onReduceDataSpy.callCount).to.equal(0);
+    expect(renderSpy.callCount).to.equal(0);
   });
 
   it('will continue to shrink until everything fits', () => {
