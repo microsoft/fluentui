@@ -90,6 +90,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _onResize() {
+    // If we have some cached measurements, let's see if we can skip rendering
     if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
       let containerWidth = this._root.getBoundingClientRect().width;
 
