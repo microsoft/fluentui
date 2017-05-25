@@ -59,15 +59,13 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       contentClassName,
       topButtonsProps,
       contentProps,
-      modalProps
+      modalProps,
+      containerClassName
     } = this.props;
     let { id } = this.state;
 
-    const containerClassName = css(this.props.containerClassName, styles.main);
-
     return (
       <Modal
-        containerClassName={ containerClassName }
         elementToFocusOnDismiss={ elementToFocusOnDismiss }
         firstFocusableSelector={ firstFocusableSelector }
         forceFocusInsideTrap={ forceFocusInsideTrap }
@@ -80,17 +78,18 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
         { ...modalProps }
-        onDismiss={ onDismiss } // pull from contentProps.onDismiss once onDismiss is deprecated
+        containerClassName={ css(containerClassName, styles.main, modalProps.containerClassName) }
+        onDismiss={ modalProps.onDismiss || onDismiss }
         subtitleAriaId={ subText && id + '-subText' }
         titleAriaId={ title && id + '-title' }
       >
 
         <DialogContent
-          onDismiss={ onDismiss }
+          className={ contentClassName }
+          onDismiss={ contentProps.onDismiss || onDismiss }
           showCloseButton={ !isBlocking }
           title={ title }
           subText={ subText }
-          className={ contentClassName }
           topButtonsProps={ topButtonsProps }
           type={ type }
           {...contentProps}

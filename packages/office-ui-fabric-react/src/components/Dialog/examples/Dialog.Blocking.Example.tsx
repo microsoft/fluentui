@@ -23,7 +23,6 @@ export class DialogBlockingExample extends React.Component<any, any> {
         <Dialog
           contentProps={ {
             type: DialogType.normal,
-            onDismiss: this._closeDialog.bind(this),
             title: 'All emails together',
             subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           } }
@@ -32,6 +31,7 @@ export class DialogBlockingExample extends React.Component<any, any> {
             isBlocking: true,
             containerClassName: 'ms-dialogMainOverride'
           } }
+          onDismiss={ this._closeDialog.bind(this) }
         >
           <ChoiceGroup
             options={ [

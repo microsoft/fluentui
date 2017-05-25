@@ -18,9 +18,20 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    */
   componentRef?: (component: IDialog) => void;
 
+  /**
+  * Props to be passed through to Dialog Content
+  */
   contentProps?: IDialogContentProps;
 
+  /**
+  * Props to be passed through to Modal
+  */
   modalProps?: IModalProps;
+
+  /**
+  * A callback function for when the Dialog is dismissed from the close button or light dismiss. Can also be specified separately in content and modal.
+  */
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
   * Whether the dialog is displayed.
@@ -66,12 +77,6 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * @deprecated Pass through via dialogModalProps instead
    */
   onLayerDidMount?: () => void;
-
-  /**
-  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
-  * @deprecated Pass through via dialogContentProps instead
-  */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
   * The type of Dialog to display.
