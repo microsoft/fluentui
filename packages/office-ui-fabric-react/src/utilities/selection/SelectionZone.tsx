@@ -139,8 +139,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else {
           this._onItemSurfaceClick(ev, index);
         }
-      } else {
-        selection.setAllSelected(false);
       }
     }
 
