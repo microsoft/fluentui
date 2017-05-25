@@ -2,7 +2,7 @@
 
 $rowHeight: 42px;
 $compactRowHeight: 32px;
-$rowVerticalPadding: 8px;
+$rowVerticalPadding: 11px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
 
@@ -67,6 +67,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   white-space: nowrap;
   padding: 0;
   box-sizing: border-box;
+  transition: line-height, min-height;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
 
   @include text-align(left);
   vertical-align: top;

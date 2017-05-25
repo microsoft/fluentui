@@ -39,13 +39,19 @@
 
   .DetailsListExample-cell--FileIcon {
     overflow: visible;
+    text-align: center;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
   }
 
   .DetailsListExample-documentIconImage {
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    height: 16px;
-    width: 16px;
+      vertical-align: middle;
+      max-height: 16px;
+      max-width: 16px;
   }
 }

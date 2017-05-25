@@ -190,7 +190,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 ) }
 
                 { column.iconClassName && (
-                  <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                  <Icon className={ column.iconClassName } iconName={ column.iconName } />
                 ) }
 
                 { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
