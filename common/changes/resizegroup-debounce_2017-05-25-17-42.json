@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Debounce window resize events inside of ResizeGroup",
+      "comment": "ResizeGroup: Debounce window resize events to improve performance",
       "type": "patch"
     }
   ],
