@@ -19,7 +19,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public shouldComponentUpdate(nextProps: {}, nextState: {}): boolean {
+  public shouldComponentUpdate(nextProps?: {}, nextState?: {}): boolean {
     this._createNullRef();
 
     return true;

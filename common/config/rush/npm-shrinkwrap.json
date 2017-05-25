@@ -1430,11 +1430,6 @@
       "from": "projects\\test-bundle-button",
       "resolved": "file:projects\\test-bundle-button",
       "dependencies": {
-        "@types/react-dom": {
-          "version": "0.14.23",
-          "from": "@types/react-dom@>=0.14.23 <0.15.0",
-          "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.23.tgz"
-        },
         "async": {
           "version": "0.9.2",
           "from": "async@>=0.9.0 <0.10.0",
@@ -1713,12 +1708,12 @@
     },
     "@types/react": {
       "version": "15.0.25",
-      "from": "@types/react@>=15.0.16 <16.0.0",
+      "from": "@types/react@>=15.0.25 <16.0.0",
       "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.25.tgz"
     },
     "@types/react-addons-test-utils": {
       "version": "0.14.18",
-      "from": "@types/react-addons-test-utils@>=0.14.17 <0.15.0",
+      "from": "@types/react-addons-test-utils@>=0.14.18 <0.15.0",
       "resolved": "https://registry.npmjs.org/@types/react-addons-test-utils/-/react-addons-test-utils-0.14.18.tgz"
     },
     "@types/react-dom": {
