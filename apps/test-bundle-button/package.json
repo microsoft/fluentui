@@ -10,7 +10,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node node_modules/webpack/bin/webpack --config webpack.config.js && echo Done",
+    "build": "node node_modules/webpack/bin/webpack --config webpack.config.js",
+    "done": "echo Done",
     "clean": "",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
