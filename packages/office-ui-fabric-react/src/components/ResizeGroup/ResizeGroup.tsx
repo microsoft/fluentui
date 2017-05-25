@@ -58,7 +58,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public render() {
-    const { onRenderData, onReduceData, data } = this.props;
+    const { onRenderData, data } = this.props;
     const { shouldMeasure, renderedData, measuredData } = this.state;
 
     if (Object.keys(data).length === 0) {
@@ -94,11 +94,21 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       const container = this._root.getBoundingClientRect();
       const measured = this._measured.getBoundingClientRect();
       if ((measured.width > container.width)) {
-        this.setState((prevState, props) => {
-          return {
-            measuredData: onReduceData(prevState.measuredData),
-          };
-        });
+        let nextMeasuredData = onReduceData(this.state.measuredData);
+
+        // We don't want to get stuck in an infinite render loop when there are no more
+        // scaling steps, so implementations of onReduceData should return undefined when
+        // there are no more scaling states to apply.
+        if (nextMeasuredData !== undefined) {
+          this.setState({
+            measuredData: nextMeasuredData,
+          });
+        } else {
+          this.setState({
+            shouldMeasure: false
+          });
+        }
+
       } else {
         this.setState((prevState, props) => {
           return {

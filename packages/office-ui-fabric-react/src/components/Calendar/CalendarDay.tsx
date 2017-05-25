@@ -123,7 +123,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         <FocusZone>
           <table
             className={ css('ms-DatePicker-table', styles.table) }
-            role='grid'
             aria-readonly='true'
             aria-multiselectable='false'
             aria-labelledby={ monthAndYearId }
@@ -137,7 +136,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                  >
+                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
                     { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
@@ -146,7 +145,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               { weeks.map((week, weekIndex) =>
                 <tr key={ weekIndex }>
                   { week.map((day, dayIndex) =>
-                    <td role='presentation' key={ day.key }>
+                    <td key={ day.key }>
                       <div
                         className={ css(
                           'ms-DatePicker-day',
@@ -157,17 +156,18 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
                           }) }
-                        role='gridcell'
+                        role='button'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
-                        aria-label={ day.originalDate.toLocaleDateString ? day.originalDate.toLocaleDateString() : day.originalDate.getDate() }
+                        aria-label={ day.originalDate.toLocaleString ?
+                          day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
-                        { day.date }
+                        <span aria-hidden='true'>{ day.date }</span>
                       </div>
                     </td>
                   ) }
