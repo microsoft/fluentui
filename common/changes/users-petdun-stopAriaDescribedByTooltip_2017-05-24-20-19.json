@@ -1,14 +1,9 @@
 {
   "changes": [
     {
+      "comment": "TooltipHost: Changed to not set aria-describedby if overflow mode has been specified",
       "packageName": "office-ui-fabric-react",
-<<<<<<< HEAD
-      "comment": "Changed TooltipHost to not set aria-describedby if overflow mode has been specified",
       "type": "patch"
-=======
-      "comment": "TooltipHost: Added option to turn off aria-describedby for certain accessibility scenarios",
-      "type": "minor"
->>>>>>> 4067f871ea095525fed01f99a3b78af6de3449d5
     },
     {
       "comment": "",
