@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyles,
   mergeStyleSets,
   getTheme
 } from '../../../Styling';
@@ -18,36 +17,32 @@ export function getStyles(
 ): IButtonStyles {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let iconButtonStyles: IButtonStyles = {
-    root: mergeStyles(
-      {
-        padding: '0 4px',
-        width: '32px',
-        height: '32px',
-        backgroundColor: 'transparent',
+    root: {
+      padding: '0 4px',
+      width: '32px',
+      height: '32px',
+      backgroundColor: 'transparent',
 
-        ':hover': {
-          color: theme.palette.themeDarker
-        },
-        ':active': {
-          color: theme.palette.themePrimary
-        }
+      ':hover': {
+        color: theme.palette.themeDarker
+      },
+      ':active': {
+        color: theme.palette.themePrimary
       }
-    ),
+    },
 
-    rootToggled: mergeStyles({
+    rootToggled: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
 
       ':hover': {
         backgroundColor: theme.palette.neutralLight
       }
 
-    }),
+    },
 
-    rootDisabled: mergeStyles(
-      {
-        color: theme.palette.neutralTertiary
-      }
-    )
+    rootDisabled: {
+      color: theme.palette.neutralTertiary
+    }
   };
 
   return mergeStyleSets(baseButtonStyles, iconButtonStyles, customStyles);

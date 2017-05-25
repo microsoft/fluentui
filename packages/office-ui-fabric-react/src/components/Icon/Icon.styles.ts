@@ -1,7 +1,8 @@
 import {
   mergeStyles,
   mergeStyleSets,
-  ITheme
+  ITheme,
+  getTheme
 } from '../../Styling';
 import {
   memoize
@@ -9,8 +10,8 @@ import {
 import { IIconStyles } from './Icon.Props';
 
 export const getStyles = memoize((
-  theme?: ITheme,
-  customStyles?: IIconStyles
+  theme: ITheme = getTheme(),
+  customStyles: IIconStyles = undefined
 ): IIconStyles => {
   let iconStyles = {
 

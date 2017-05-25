@@ -11,10 +11,11 @@ const noOutline = {
  * helper, it should have values for all class names in the interface. This let `mergeRules` optimize
  * mixing class names together.
  */
-export const getStyles = memoize((
+export const getStyles = ((
   theme: ITheme,
-  focusInset?: string,
-  focusColor?: string): IButtonStyles => {
+  focusInset: string = '0',
+  focusColor: string = theme.palette.neutralTertiary
+): IButtonStyles => {
 
   const iconStyle = mergeStyles({
     margin: '0 4px',
@@ -25,7 +26,7 @@ export const getStyles = memoize((
   });
 
   return {
-    root: mergeStyles(
+    root: [
       getFocusStyle(theme, focusInset, focusColor),
       theme.fonts.medium,
       {
@@ -40,7 +41,7 @@ export const getStyles = memoize((
         verticalAlign: 'top',
         padding: '0 16px'
       }
-    ),
+    ],
 
     rootDisabled: mergeStyles({
       backgroundColor: theme.palette.neutralLighter,

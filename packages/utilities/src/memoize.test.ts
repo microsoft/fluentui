@@ -40,4 +40,16 @@ describe('memoize', () => {
     expect(combine(false, 0)).equals('4');
   });
 
+  it('throws if you pass different count of arguments', () => {
+    let func = memoize((a?: string, b?: string) => true);
+
+    expect(func('hi')).equals(true);
+
+    let threw = false;
+    try {
+      func('hi', 'world');
+    } catch (e) { threw = true; }
+
+    expect(threw).equals(true);
+  });
 });

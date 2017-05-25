@@ -17,7 +17,6 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
           data-automation-id='test'
           disabled={ disabled }
           toggled={ toggled }
-          href='http://asdf'
           text='Create account'
           onClick={ () => alert('Clicked') }
         />

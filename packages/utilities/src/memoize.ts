@@ -4,7 +4,7 @@ declare class WeakMap {
   public has(key: any);
 }
 
-const _emptyObject = {};
+const _emptyObject = { empty: true };
 const _dictionary = {};
 
 function _normalizeArg(val: any) {
@@ -13,7 +13,7 @@ function _normalizeArg(val: any) {
   } else if (typeof val === 'object') {
     return val;
   } else if (!_dictionary[val]) {
-    _dictionary[val] = {};
+    _dictionary[val] = { val };
   }
 
   return _dictionary[val];
@@ -21,10 +21,19 @@ function _normalizeArg(val: any) {
 
 export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T): T {
   let cache: any;
+  let argCount = -1;
 
   // tslint:disable-next-line:no-function-expression
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let retVal: RET_TYPE;
+
+    if (argCount === -1) {
+      argCount = args.length;
+    }
+
+    if (argCount !== args.length) {
+      throw Error('memoize argument count must remain the same; avoid optional parameters.');
+    }
 
     if (args.length === 0) {
       if (cache === undefined) {
@@ -34,6 +43,7 @@ export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T)
     } else {
       if (!cache) {
         cache = new WeakMap();
+        argCount = args.length;
       }
 
       let currentCache: any = cache;
@@ -44,12 +54,11 @@ export function memoize<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T)
         if (!arg) {
           arg = _emptyObject;
         }
-        if (cache.has(arg)) {
-          currentCache = cache.get(arg);
-        } else {
-          currentCache = new WeakMap();
-          cache.set(arg, currentCache);
+        if (!currentCache.has(arg)) {
+          currentCache.set(arg, new WeakMap());
         }
+
+        currentCache = currentCache.get(arg);
       }
 
       let lastArg = _normalizeArg(args[args.length - 1]);

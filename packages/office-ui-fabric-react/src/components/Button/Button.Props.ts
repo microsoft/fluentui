@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
-import { IStyle } from '../../Styling';
+import { IRawStyle, IStyle } from '../../Styling';
 
 export interface IButton {
   /**
@@ -14,28 +14,89 @@ export interface IButton {
 }
 
 export interface IButtonStyles {
+  /**
+   * Style for the root element in the default enabled, non-toggled state.
+   */
   root?: IStyle;
-  rootDisabled?: IStyle;
+
+  /**
+   * Style override for the root element in a toggled state, layered on top of the root style.
+   */
   rootToggled?: IStyle;
 
+  /**
+   * Style override for the root element in a disabled state, layered on top of the root style.
+   */
+  rootDisabled?: IStyle;
+
+  /**
+   * Style for the flexbox container within the root element.
+   */
   flexContainer?: IStyle;
 
+  /**
+   * Style for the icon on the near side of the label.
+   */
   icon?: IStyle;
+
+  /**
+   * Style override for the icon when the button is disabled.
+   */
   iconDisabled?: IStyle;
+
+  /**
+   * Style override for the icon when the button is toggled.
+   */
   iconToggled?: IStyle;
 
+  /**
+   * Style for the text content of the button.
+   */
   label?: IStyle;
+
+  /**
+   * Style override for the text content when the button is disabled.
+   */
   labelDisabled?: IStyle;
+
+  /**
+   * Style override for the text content when the button is toggled.
+   */
   labelToggled?: IStyle;
 
+  /**
+   * Style for the menu chevron.
+   */
   menuIcon?: IStyle;
+
+  /**
+   * Style override for the menu chevron when the button is disabled.
+   */
   menuIconDisabled?: IStyle;
+
+  /**
+   * Style override for the menu chevron when the button is toggled.
+   */
   menuIconToggled?: IStyle;
 
+  /**
+   * Style for the description text if applicable (for compound buttons.)
+   */
   description?: IStyle;
+
+  /**
+   * Style override for the description text when the button is disabled.
+   */
   descriptionDisabled?: IStyle;
+
+  /**
+   * Style override for the description text when the button is toggled.
+   */
   descriptionToggled?: IStyle;
 
+  /**
+   * Style for the screen reader text.
+   */
   screenReaderText?: IStyle;
 }
 

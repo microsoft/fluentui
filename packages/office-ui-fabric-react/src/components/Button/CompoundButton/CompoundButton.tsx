@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent } from '../../../Utilities';
+import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './CompoundButton.styles';
 
@@ -17,6 +17,7 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
         { ...this.props }
         variantClassName='ms-Button--compound'
         styles={ getStyles(undefined, styles) }
+        onRenderIcon={ nullRender }
       />
     );
   }

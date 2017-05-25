@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyles,
   getTheme,
   mergeStyleSets
 } from '../../../Styling';
@@ -15,55 +14,53 @@ const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoize((
   theme: ITheme = getTheme(),
-  customStyles?: IButtonStyles
+  customStyles: IButtonStyles = undefined
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
-    root: mergeStyles(
-      {
-        borderWidth: '0',
-        padding: DEFAULT_PADDING,
-        height: DEFAULT_BUTTON_HEIGHT,
-        color: theme.palette.neutralPrimary,
-        backgroundColor: 'transparent',
+    root: {
+      borderWidth: '0',
+      padding: DEFAULT_PADDING,
+      height: DEFAULT_BUTTON_HEIGHT,
+      color: theme.palette.neutralPrimary,
+      backgroundColor: 'transparent',
 
-        ':hover': {
-          color: theme.palette.themeDarker
-        },
-        ':active': {
-          color: theme.palette.themePrimary
-        }
+      ':hover': {
+        color: theme.palette.themeDarker
+      },
+      ':active': {
+        color: theme.palette.themePrimary
       }
-    ),
+    },
 
-    rootDisabled: mergeStyles({
+    rootDisabled: {
       color: theme.palette.neutralTertiary,
       backgroundColor: 'transparent'
-    }),
+    },
 
-    rootToggled: mergeStyles({
+    rootToggled: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
 
       ':hover': {
         backgroundColor: theme.palette.neutralLight
       }
-    }),
+    },
 
-    flexContainer: mergeStyles({
+    flexContainer: {
       justifyContent: 'flex-start'
-    }),
+    },
 
-    icon: mergeStyles({
+    icon: {
       color: theme.palette.themePrimary
-    }),
+    },
 
-    iconDisabled: mergeStyles({
+    iconDisabled: {
       color: 'inherit'
-    }),
+    },
 
-    menuIcon: mergeStyles({
+    menuIcon: {
       color: theme.palette.neutralSecondary
-    })
+    }
 
   };
 
