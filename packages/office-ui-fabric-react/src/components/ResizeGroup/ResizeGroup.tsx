@@ -101,19 +101,21 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
         // If the contents still fit within the container, don't trigger a remeasure.
         if (this._lastKnownMeasuredWidth <= containerWidth) {
           this._lastKnownRootWidth = containerWidth;
-        } else {
-          // If the container shrank and the contents don't fit, we can trigger a measurement
-          // pass starting from the current value of rendered data.
-          this.setState({
-            shouldMeasure: true,
-            measuredData: this.state.renderedData
-          });
+          return;
         }
+
+        // If the container shrank and the contents don't fit, we can trigger a measurement
+        // pass starting from the current value of rendered data.
+        this.setState({
+          shouldMeasure: true,
+          measuredData: this.state.renderedData
+        });
+
+        return;
       }
-    } else {
-      // If we get here, we don't have any optimizations and should just trigger a new measurement pass.
-      this.setState({ shouldMeasure: true });
     }
+
+    this.setState({ shouldMeasure: true });
   }
 
   private _measureItems() {
