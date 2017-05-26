@@ -96,10 +96,21 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
       let containerWidth = this._root.getBoundingClientRect().width;
 
-      // If the container didn't grow and the component still fits, don't trigger a remeasure.
-      // If the container grew, we want to trigger a remeasure since we might be able to fit more content.
-      if (containerWidth <= this._lastKnownRootWidth && this._lastKnownMeasuredWidth <= containerWidth) {
-        this._lastKnownRootWidth = containerWidth;
+      // If the container shrank as a result of this resize, we can do an optimized rerender.
+      if (containerWidth <= this._lastKnownRootWidth) {
+        // If the contents still fit within the container, don't trigger a remeasure.
+        if (this._lastKnownMeasuredWidth <= containerWidth) {
+          this._lastKnownRootWidth = containerWidth;
+          return;
+        }
+
+        // If the container shrank and the contents don't fit, we can trigger a measurement
+        // pass starting from the current value of rendered data.
+        this.setState({
+          shouldMeasure: true,
+          measuredData: this.state.renderedData
+        });
+
         return;
       }
     }
