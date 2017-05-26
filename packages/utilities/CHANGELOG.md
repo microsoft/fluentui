@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 24 May 2017 23:52:09 GMT and should not be manually modified.
+This log was last generated on Fri, 26 May 2017 10:21:03 GMT and should not be manually modified.
+
+## 1.10.2
+Fri, 26 May 2017 10:21:03 GMT
+
+### Patches
+
+- Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. 
 
 ## 1.10.1
 Wed, 24 May 2017 23:52:09 GMT
