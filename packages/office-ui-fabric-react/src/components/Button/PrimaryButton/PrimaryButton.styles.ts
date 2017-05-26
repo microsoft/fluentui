@@ -23,17 +23,17 @@ export const getStyles = memoizeFunction((
   let primaryButtonStyles: IButtonStyles = {
     root: {
       backgroundColor: palette.themePrimary,
-      color: palette.white,
+      color: palette.white
+    },
 
-      ':hover': {
-        backgroundColor: palette.themeDark,
-        color: palette.white
-      },
+    rootHovered: {
+      backgroundColor: palette.themeDark,
+      color: palette.white
+    },
 
-      ':active': {
-        backgroundColor: palette.themePrimary,
-        color: palette.white
-      }
+    rootPressed: {
+      backgroundColor: palette.themePrimary,
+      color: palette.white
     },
 
     rootToggled: {

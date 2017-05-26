@@ -22,14 +22,15 @@ export const getStyles = memoizeFunction((
       padding: '0 4px',
       width: '32px',
       height: '32px',
-      backgroundColor: 'transparent',
+      backgroundColor: 'transparent'
+    },
 
-      ':hover': {
-        color: theme.palette.themeDarker
-      },
-      ':active': {
-        color: theme.palette.themePrimary
-      }
+    rootHovered: {
+      color: theme.palette.themeDarker
+    },
+
+    rootPressed: {
+      color: theme.palette.themePrimary
     },
 
     rootToggled: {

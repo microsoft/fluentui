@@ -25,16 +25,17 @@ export const getStyles = memoizeFunction((
       minWidth: DEFAULT_BUTTON_MINWIDTH,
       height: DEFAULT_BUTTON_HEIGHT,
       backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralPrimary,
+      color: theme.palette.neutralPrimary
+    },
 
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight,
-        color: theme.palette.black
-      },
-      ':active': {
-        backgroundColor: theme.palette.themePrimary,
-        color: theme.palette.white
-      }
+    rootHovered: {
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.black
+    },
+
+    rootPressed: {
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white
     },
 
     rootToggled: {
