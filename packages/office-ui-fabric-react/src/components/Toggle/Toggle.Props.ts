@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toggle } from './Toggle';
+import { IStyle } from '../../Styling';
 
 export interface IToggle {
   focus: () => void;
@@ -59,4 +60,40 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle>
    * onchange callback.
    */
   onChanged?: (checked: boolean) => void;
+
+  /**
+   * Custom styles for this component
+   */
+  customStyles?: IToggleStyles;
+}
+
+export interface IToggleStyles {
+  root?: IStyle;
+  /* The text before the actual toggle switch */
+  label?: IStyle;
+
+  /* Holds the toggle switch and the On/Off text next to it */
+  control?: IStyle;
+  invisibleToggle?: IStyle;
+  /* The text indicating the on/off state of the control */
+  stateText?: IStyle;
+  focus?: IStyle;
+
+  /* The rounded container, modify font-size on toggle to set the size of the control */
+  toggle?: IStyle;
+  toggleDefault?: IStyle;
+  toggleHovered?: IStyle;
+  toggleOn?: IStyle;
+  toggleOnHovered?: IStyle;
+  toggleDisabled?: IStyle;
+  toggleOnDisabled?: IStyle;
+
+  /* The dot in the middle */
+  thumb?: IStyle;
+  thumbDefault?: IStyle;
+  thumbHovered?: IStyle;
+  thumbOn?: IStyle;
+  thumbOnHovered?: IStyle;
+  thumbDisabled?: IStyle;
+  thumbOnDisabled?: IStyle;
 }
