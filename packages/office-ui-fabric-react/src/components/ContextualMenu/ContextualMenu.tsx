@@ -196,10 +196,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let contextMenuStyle;
     let targetAsHtmlElement = this._target as HTMLElement;
     if (useTargetWidth && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
-        let contextMenuWidth = targetAsHtmlElement.offsetWidth;
-        contextMenuStyle = {
-            width: contextMenuWidth
-        };
+      let contextMenuWidth = targetAsHtmlElement.offsetWidth;
+      contextMenuStyle = {
+        width: contextMenuWidth
+      };
     }
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
@@ -222,7 +222,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
-          <div style={contextMenuStyle} ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
+          <div style={ contextMenuStyle } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
@@ -278,7 +278,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderListItem(content: React.ReactNode, key: string | number, className?: string, title?: string) {
     return <li
-      role='menuitem'
+      role='presentation'
       title={ title }
       key={ key }
       className={ css('ms-ContextualMenu-item', styles.item, className) }>
@@ -323,6 +323,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             'ms-ContextualMenu-link',
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
+          role='menuitem'
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
@@ -359,6 +360,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-label': ariaLabel,
       'aria-haspopup': hasSubmenuItems(item) ? true : null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
+      role: 'menuitem',
       style: item.style,
     };
 
