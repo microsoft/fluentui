@@ -17,8 +17,7 @@ import {
 import { Label } from '../../Label';
 import {
   mergeStyles,
-  mergeStyleSets,
-  IStyle
+  mergeStyleSets
 } from '../../Styling';
 
 import { getStyles } from './Toggle.styles';
@@ -42,47 +41,6 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
 
   private _id: string;
   private _toggleInput: HTMLInputElement;
-
-  @memoize
-  private _getClassNames(
-    styles: IToggleStyles,
-    enabled: boolean,
-    checked: boolean
-    ): IToggleClassNames {
-    return {
-      root: mergeStyles(styles.root) as string,
-      label: mergeStyles(styles.label) as string,
-      control: mergeStyles(styles.control,
-        enabled && !checked && {
-          ':hover': {
-            ' .ms-Toggle-background': styles.toggleHovered,
-            ' .ms-Toggle-thumb': styles.thumbHovered
-          }
-        },
-        enabled && checked && {
-          ':hover': {
-            ' .ms-Toggle-background': styles.toggleOnHovered,
-            ' .ms-Toggle-thumb': styles.thumbOnHovered
-          }
-        }) as string,
-      invisibleToggle: mergeStyles(styles.invisibleToggle,
-        { ':focus + .ms-Toggle-background': styles.focus }
-      ) as string,
-      stateText: mergeStyles(styles.stateText) as string,
-      toggle: mergeStyles(styles.toggle,
-        enabled && !checked && styles.toggleDefault,
-        enabled && checked && styles.toggleOn,
-        !enabled && !checked && styles.toggleDisabled,
-        !enabled && checked && styles.toggleOnDisabled
-      ) as string,
-      thumb: mergeStyles(styles.thumb,
-        enabled && !checked && styles.thumbDefault,
-        enabled && checked && styles.thumbOn,
-        !enabled && !checked && styles.thumbDisabled,
-        !enabled && checked && styles.thumbOnDisabled
-      ) as string
-    }
-  };
 
   constructor(props: IToggleProps) {
     super();
@@ -206,4 +164,46 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         break;
     }
   }
+
+  @memoize
+  private _getClassNames(
+    styles: IToggleStyles,
+    enabled: boolean,
+    checked: boolean
+    ): IToggleClassNames {
+    return {
+      root: mergeStyles(styles.root) as string,
+      label: mergeStyles(styles.label) as string,
+      control: mergeStyles(styles.control,
+        enabled && !checked && {
+          ':hover': {
+            ' .ms-Toggle-background': styles.toggleHovered,
+            ' .ms-Toggle-thumb': styles.thumbHovered
+          }
+        },
+        enabled && checked && {
+          ':hover': {
+            ' .ms-Toggle-background': styles.toggleOnHovered,
+            ' .ms-Toggle-thumb': styles.thumbOnHovered
+          }
+        }) as string,
+      invisibleToggle: mergeStyles(styles.invisibleToggle,
+        { ':focus + .ms-Toggle-background': styles.focus }
+      ) as string,
+      stateText: mergeStyles(styles.stateText) as string,
+      toggle: mergeStyles(styles.toggle,
+        enabled && !checked && styles.toggleDefault,
+        enabled && checked && styles.toggleOn,
+        !enabled && !checked && styles.toggleDisabled,
+        !enabled && checked && styles.toggleOnDisabled
+      ) as string,
+      thumb: mergeStyles(styles.thumb,
+        enabled && !checked && styles.thumbDefault,
+        enabled && checked && styles.thumbOn,
+        !enabled && !checked && styles.thumbDisabled,
+        !enabled && checked && styles.thumbOnDisabled
+      ) as string
+    };
+  };
+
 }
