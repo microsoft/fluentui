@@ -78,6 +78,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
         { ...modalProps }
+        className={ css('ms-Dialog', modalProps.className) }
         containerClassName={ css(containerClassName, styles.main, modalProps.containerClassName) }
         onDismiss={ modalProps.onDismiss || onDismiss }
         subtitleAriaId={ subText && id + '-subText' }
