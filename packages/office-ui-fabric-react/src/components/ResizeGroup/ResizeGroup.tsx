@@ -6,6 +6,8 @@ import {
 import { IResizeGroupProps } from './ResizeGroup.Props';
 import styles = require('./ResizeGroup.scss');
 
+const RESIZE_DELAY = 16;
+
 export interface IResizeGroupState {
 
   /**
@@ -54,7 +56,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public componentDidMount() {
     this._measureItems();
-    this._events.on(window, 'resize', this._onResize);
+    this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
   public render() {
