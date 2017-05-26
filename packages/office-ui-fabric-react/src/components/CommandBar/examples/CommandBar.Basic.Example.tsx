@@ -20,12 +20,14 @@ export class CommandBarBasicExample extends React.Component<any, any> {
 
     let filteredItems = items.map(item => assign({}, item, {
       name: namesVisible ? item.name : '',
-      icon: iconsVisible ? item.icon : ''
+      icon: iconsVisible ? item.icon : '',
+      tooltip: namesVisible ? '' : item.name
     }));
 
     let filteredFarItems = farItems.map(item => assign({}, item, {
       name: namesVisible ? item.name : '',
-      icon: iconsVisible ? item.icon : ''
+      icon: iconsVisible ? item.icon : '',
+      tooltip: namesVisible ? '' : item.name
     }));
 
     return (

@@ -189,6 +189,12 @@ export interface IContextualMenuItem {
    */
   name?: string;
 
+  /**
+   * Description to display on a tooltip
+   * Only for CommandBar, ignored in ContextualMenu
+   */
+  tooltip?: string;
+
   itemType?: ContextualMenuItemType;
 
   /**
