@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.10.2",
+      "tag": "@uifabric/utilities_v1.10.2",
+      "date": "Fri, 26 May 2017 10:21:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "a564ac9adcc0b2fdbcdf00ac97b797e81ab4ebbe",
+            "comment": "Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. "
+          }
+        ]
+      }
+    },
+    {
       "version": "1.10.1",
       "tag": "@uifabric/utilities_v1.10.1",
       "date": "Wed, 24 May 2017 23:52:09 GMT",
