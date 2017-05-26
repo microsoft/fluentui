@@ -1,0 +1,30 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "CommandBar: support tooltip on items",
+      "type": "minor"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/styling",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/fabric-website",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "v-panu@microsoft.com"
+}
