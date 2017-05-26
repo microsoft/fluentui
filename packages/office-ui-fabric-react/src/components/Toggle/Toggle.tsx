@@ -3,7 +3,6 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  css,
   getId,
   inputProperties,
   getNativeProps,
@@ -29,18 +28,16 @@ export interface IToggleState {
 interface IToggleClassNames {
   root: string;
   label: string;
-  control: string;
-  invisibleToggle: string;
-  stateText: string;
-
-  toggle: string;
+  container: string;
+  pill: string;
   thumb: string;
+  text: string;
 }
 
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
-  private _toggleInput: HTMLInputElement;
+  private _toggleButton: HTMLButtonElement;
 
   constructor(props: IToggleProps) {
     super();
@@ -77,69 +74,66 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
     // more semantically correct.
 
-    let { label, onAriaLabel, offAriaLabel, onText, offText, className, disabled, customStyles } = this.props;
+    let {
+      className,
+      styles: customStyles,
+      disabled,
+      label,
+      offAriaLabel,
+      offText,
+      onAriaLabel,
+      onText
+      } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
-    let styles = this._getClassNames(
-      mergeStyleSets(getStyles(undefined), customStyles),
-      !disabled,
-      isChecked);
+    const classNames = this._getClassNames(
+      getStyles(undefined, customStyles),
+      className,
+      disabled,
+      isChecked
+    );
 
     return (
-      <div className={
-        css(
-          'ms-Toggle',
-          className,
-          {
-            'is-checked': isChecked,
-            'is-enabled': !disabled,
-            'is-disabled': disabled
-          },
-          styles.root
-        ) }>
+      <div className={ classNames.root }>
 
         { label && (
-          <Label htmlFor={ this._id } className={ css('ms-Toggle-label', styles.label) }>{ label }</Label>
+          <Label htmlFor={ this._id } className={ classNames.label }>{ label }</Label>
         ) }
 
-        <div className={ css('ms-Toggle-control', styles.control) }>
-          <input
-            key='invisibleToggle'
-            ref={ (c): HTMLInputElement => this._toggleInput = c }
-            type='checkbox'
+        <div className={ classNames.container } >
+          <button
+            { ...toggleNativeProps }
+            className={ classNames.pill }
+            ref={ (c): HTMLButtonElement => this._toggleButton = c }
+            aria-disabled={ disabled }
+            aria-pressed={ isChecked }
             id={ this._id }
             onChange={ () => { /* no-op */ } }
-            { ...toggleNativeProps }
-            className={ css(styles.invisibleToggle) }
-            name={ this._id }
             disabled={ disabled }
-            checked={ isChecked }
-            aria-label={ ariaLabel }
+            data-is-focusable={ true }
             onClick={ this._onClick }
-            onKeyDown={ this._onInputKeyDown }
-          />
-          <div className={ css('ms-Toggle-background', styles.toggle) }>
-            <div className={ css('ms-Toggle-thumb', styles.thumb) } />
-          </div>
+          >
+            <div className={ classNames.thumb } />
+          </button>
           { stateText && (
-            <Label className={ css('ms-Toggle-stateText', styles.stateText) }>{ stateText }</Label>
+            <Label className={ classNames.text }>{ stateText }</Label>
           ) }
         </div>
-      </div>
+      </div >
     );
   }
 
   public focus() {
-    if (this._toggleInput) {
-      this._toggleInput.focus();
+    if (this._toggleButton) {
+      this._toggleButton.focus();
     }
   }
 
   @autobind
-  private _onClick() {
-    let { checked, onChanged } = this.props;
+  private _onClick(ev: React.MouseEvent<HTMLElement>) {
+    let { checked, onChanged, onClick } = this.props;
     let { isChecked } = this.state;
 
     // Only update the state if the user hasn't provided it.
@@ -152,57 +146,77 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     if (onChanged) {
       onChanged(!isChecked);
     }
-  }
 
-  @autobind
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
-      case KeyCodes.enter:
-        // Also support toggling via the enter key.
-        this._onClick();
-
-        break;
+    if (onClick) {
+      onClick(ev);
     }
   }
 
   @memoize
   private _getClassNames(
     styles: IToggleStyles,
-    enabled: boolean,
-    checked: boolean
+    className: string,
+    disabled: boolean,
+    isChecked: boolean
     ): IToggleClassNames {
+
     return {
-      root: mergeStyles(styles.root) as string,
-      label: mergeStyles(styles.label) as string,
-      control: mergeStyles(styles.control,
-        enabled && !checked && {
-          ':hover': {
-            ' .ms-Toggle-background': styles.toggleHovered,
-            ' .ms-Toggle-thumb': styles.thumbHovered
-          }
-        },
-        enabled && checked && {
-          ':hover': {
-            ' .ms-Toggle-background': styles.toggleOnHovered,
-            ' .ms-Toggle-thumb': styles.thumbOnHovered
-          }
-        }) as string,
-      invisibleToggle: mergeStyles(styles.invisibleToggle,
-        { ':focus + .ms-Toggle-background': styles.focus }
+      root: mergeStyles(
+        'ms-Toggle',
+        isChecked && 'is-checked',
+        !disabled && 'is-enabled',
+        disabled && 'is-disabled',
+        className,
+        styles.root
       ) as string,
-      stateText: mergeStyles(styles.stateText) as string,
-      toggle: mergeStyles(styles.toggle,
-        enabled && !checked && styles.toggleDefault,
-        enabled && checked && styles.toggleOn,
-        !enabled && !checked && styles.toggleDisabled,
-        !enabled && checked && styles.toggleOnDisabled
+
+      label: mergeStyles(
+        'ms-Toggle-label',
+        styles.label
       ) as string,
-      thumb: mergeStyles(styles.thumb,
-        enabled && !checked && styles.thumbDefault,
-        enabled && checked && styles.thumbOn,
-        !enabled && !checked && styles.thumbDisabled,
-        !enabled && checked && styles.thumbOnDisabled
-      ) as string
+
+      container: mergeStyles(
+        'ms-Toggle-innerContainer',
+        styles.container
+      ) as string,
+
+      pill: mergeStyles(
+        'ms-Toggle-background',
+        styles.pill,
+        !disabled && [
+          !isChecked && {
+            ':hover': styles.pillHovered,
+            ':hover .ms-Toggle-thumb': styles.thumbHovered
+          },
+          isChecked && [
+            styles.pillChecked,
+            {
+              ':hover': styles.pillCheckedHovered,
+              ':hover .ms-Toggle-thumb': styles.thumbCheckedHovered
+            }
+          ]
+        ],
+        disabled && [
+          !isChecked && styles.pillDisabled,
+          isChecked && styles.pillCheckedDisabled,
+        ]
+      ) as string,
+
+      thumb: mergeStyles(
+        'ms-Toggle-thumb',
+        styles.thumb,
+        !disabled && isChecked && styles.thumbChecked,
+        disabled && [
+          !isChecked && styles.thumbDisabled,
+          isChecked && styles.thumbCheckedDisabled
+        ]
+      ) as string,
+
+      text: mergeStyles(
+        'ms-Toggle-stateText',
+        styles.text
+      ) as string,
+
     };
   };
 

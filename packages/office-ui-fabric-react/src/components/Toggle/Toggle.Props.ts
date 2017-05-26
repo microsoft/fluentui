@@ -9,7 +9,7 @@ export interface IToggle {
 /**
  * Toggle component props.
  */
-export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle> {
+export interface IToggleProps extends React.HTMLProps<HTMLElement | Toggle> {
   /**
    * Optional callback to access the IToggle interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -64,36 +64,87 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle>
   /**
    * Custom styles for this component
    */
-  customStyles?: IToggleStyles;
+  styles?: IToggleStyles;
 }
 
 export interface IToggleStyles {
+  /**
+   * Style for the root element in the default enabled/unchecked state.
+   */
   root?: IStyle;
-  /* The text before the actual toggle switch */
+
+  /*
+   * Style for the text before the actual toggle switch.
+   */
   label?: IStyle;
 
-  /* Holds the toggle switch and the On/Off text next to it */
-  control?: IStyle;
-  invisibleToggle?: IStyle;
-  /* The text indicating the on/off state of the control */
-  stateText?: IStyle;
-  focus?: IStyle;
+  /**
+   * Style for the container wrapping switch and the state (on/off) text.
+   */
+  container?: IStyle;
 
-  /* The rounded container, modify font-size on toggle to set the size of the control */
-  toggle?: IStyle;
-  toggleDefault?: IStyle;
-  toggleHovered?: IStyle;
-  toggleOn?: IStyle;
-  toggleOnHovered?: IStyle;
-  toggleDisabled?: IStyle;
-  toggleOnDisabled?: IStyle;
+  /**
+   * Style for the toggle "pill" element, which is inside of the container and contains the thumb.
+   */
+  pill?: IStyle;
 
-  /* The dot in the middle */
+  /**
+   * Style override for the pill element when enabled/checked.
+   */
+  pillChecked?: IStyle;
+
+  /**
+   * Style override for the pill element when enabled/unchecked/hovered.
+   */
+  pillHovered?: IStyle;
+
+  /**
+   * Style override for the pill element when enabled/checked/hovered.
+   */
+  pillCheckedHovered?: IStyle;
+
+  /**
+   * Style override for the pill element when disabled/unchecked.
+   */
+  pillDisabled?: IStyle;
+
+  /**
+   * Style override for the pill element when disabled/checked.
+   */
+  pillCheckedDisabled?: IStyle;
+
+  /**
+   * Style for the thumb element inside of the pill, in the normal unchecked enabled state.
+   */
   thumb?: IStyle;
-  thumbDefault?: IStyle;
+
+  /**
+   * Style override for the thumb when enabled/unchecked/hovered.
+   */
   thumbHovered?: IStyle;
-  thumbOn?: IStyle;
-  thumbOnHovered?: IStyle;
+
+  /**
+   * Style override for the thumb when enabled/checked.
+   */
+  thumbChecked?: IStyle;
+
+  /**
+   * Style override for the thumb when enabled/checked/hovered.
+   */
+  thumbCheckedHovered?: IStyle;
+
+  /**
+   * Style override for the thumb when disabled/unchecked.
+   */
   thumbDisabled?: IStyle;
-  thumbOnDisabled?: IStyle;
+
+  /**
+   * Style override for the thumb when disabled/checked.
+   */
+  thumbCheckedDisabled?: IStyle;
+
+  /**
+   * Style for the text indicating the on/off state of the control.
+   */
+  text?: IStyle;
 }

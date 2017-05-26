@@ -1,7 +1,7 @@
 // Polyfills
 import 'es6-weak-map/implement';
 
-import { memoizeFunction } from './memoize';
+import { memoize, memoizeFunction } from './memoize';
 
 let { expect } = chai;
 
@@ -85,4 +85,27 @@ describe('memoizeFunction', () => {
     expect(func('a')).equals('a4');
     expect(func('a')).equals('a4');
   });
+
+});
+
+describe('memoize', () => {
+  it('can work on multiple instances of a class', () => {
+    let _count = 0;
+
+    class Foo {
+
+      @memoize
+      public bar(val: string) {
+        return val + _count++;
+      }
+    }
+
+    let f = new Foo();
+
+    expect(f.bar('hi')).equals('hi0');
+    expect(f.bar('hi')).equals('hi0');
+    expect(f.bar('bye')).equals('bye1');
+    expect(f.bar('bye')).equals('bye1');
+  });
+
 });

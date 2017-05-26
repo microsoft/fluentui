@@ -2,6 +2,7 @@
   "name": "office-ui-fabric-react-repo",
   "version": "1.0.0",
   "description": "Reusable React components for building experiences for Office 365.",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"

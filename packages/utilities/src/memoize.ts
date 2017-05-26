@@ -12,16 +12,14 @@ interface IMemoizeNode {
   value?: any;
 }
 
-/*
- *
- */
 export function memoize<T extends Function>(
   target: any,
   key: string,
   descriptor: TypedPropertyDescriptor<T>) {
 
-  let fn = memoizeFunction(descriptor.value.bind(target));
-  fn.displayName = key;
+  // We bind to "null" to prevent people from inadvertently pulling values from "this",
+  // rather than passing them in as input values which can be memoized.
+  let fn = memoizeFunction(descriptor.value.bind(null));
 
   return {
     configurable: true,

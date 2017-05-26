@@ -1,96 +1,80 @@
 import { IToggleStyles } from './Toggle.Props';
 import {
   ITheme,
-  getTheme
+  getTheme,
+  mergeStyleSets,
+  getFocusStyle
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme()): IToggleStyles => {
+  theme: ITheme = getTheme(),
+  customStyles: IToggleStyles
+): IToggleStyles => {
+  const { semanticColors } = theme;
+  const pillUncheckedBackground = semanticColors.bodyBackground;
+  const pillCheckedBackground = semanticColors.inputBackgroundSelected;
+  const pillCheckedHoveredBackground = semanticColors.inputBackgroundSelectedHovered;
+  const pillCheckedDisabledBackground = semanticColors.disabledText;
+  const thumbBackground = semanticColors.inputBorderHovered;
+  const thumbCheckedBackground = semanticColors.inputForegroundSelected;
+  const thumbDisabledBackground = semanticColors.disabledText;
+  const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
+  const pillBorderColor = semanticColors.inputBorder;
+  const pillBorderHoveredColor = semanticColors.inputBorderHovered;
+  const pillBorderDisabledColor = semanticColors.disabledText;
+  const toggleFocusBorderColor = semanticColors.focusBorder;
 
-  let { semanticColors } = theme;
-
-  let toggleBackgroundOffColor = semanticColors.bodyBackground;
-  let toggleBackgroundOnColor = semanticColors.inputBackgroundSelected;
-  let toggleBackgroundOnHoveredColor = semanticColors.inputBackgroundSelectedHovered;
-  let toggleBackgroundOnDisabledColor = semanticColors.disabledText;
-
-  let thumbOffColor = semanticColors.inputBorderHovered;
-  let thumbOnColor = semanticColors.inputForegroundSelected;
-  let thumbOffDisabledColor = semanticColors.disabledText;
-  let thumbOnDisabledColor = semanticColors.disabledBackground;
-
-  let toggleBorderOffColor = semanticColors.inputBorder;
-  let toggleBorderOffHoveredColor = semanticColors.inputBorderHovered;
-  let toggleBorderOffDisabledColor = semanticColors.disabledText;
-
-  let toggleFocusBorderColor = semanticColors.focusBorder;
-
-  return {
+  const styles: IToggleStyles = {
     root: {
       marginBottom: '8px'
     },
 
-    control: {
-      display: 'inline-flex',
-      position: 'relative',
-    },
-    invisibleToggle: {
-      opacity: '0',
-      cursor: 'pointer',
-      margin: '0',
-      position: 'absolute',
-      left: '0',
-      top: '0',
-      height: '100%',
-      width: '100%',
-      ':disabled': {
-        cursor: 'default'
+    container: [
+      {
+        display: 'inline-flex',
+        position: 'relative',
       }
-    },
-    stateText: {
-      '.ms-Toggle-stateText': { // increase specificity, todo: cleanup
-        padding: '0', // overwrite default Label padding
-        margin: '0 10px'
+    ],
+
+    pill: [
+      getFocusStyle(theme, '-1px'),
+      {
+        fontSize: '20px',
+        lineHeight: '1em',
+        boxSizing: 'border-box',
+        position: 'relative',
+        width: '2.2em',
+        height: '1em',
+        borderRadius: '1em',
+        transition: 'all 0.1s ease',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        background: pillUncheckedBackground,
+        borderColor: pillBorderColor,
       }
-    },
-    focus: {
-      outline: '1px solid ' + toggleFocusBorderColor
+    ],
+
+    pillHovered: {
+      borderColor: pillBorderHoveredColor
     },
 
-    toggle: {
-      fontSize: '20px',
-      lineHeight: '1em',
-      boxSizing: 'border-box',
-      position: 'relative',
-      width: '2.2em',
-      height: '1em',
-      borderRadius: '1em',
-      transition: 'all 0.1s ease',
-      pointerEvents: 'none',
-      borderWidth: '1px',
-      borderStyle: 'solid'
-    },
-    toggleDefault: {
-      background: toggleBackgroundOffColor,
-      borderColor: toggleBorderOffColor,
-    },
-    toggleHovered: {
-      borderColor: toggleBorderOffHoveredColor
-    },
-    toggleOn: {
-      background: toggleBackgroundOnColor,
+    pillChecked: {
+      background: pillCheckedBackground,
       borderColor: 'transparent',
     },
-    toggleOnHovered: {
-      backgroundColor: toggleBackgroundOnHoveredColor,
+
+    pillCheckedHovered: {
+      backgroundColor: pillCheckedHoveredBackground,
       borderColor: 'transparent'
     },
-    toggleDisabled: {
-      borderColor: toggleBorderOffDisabledColor
+
+    pillDisabled: {
+      borderColor: pillBorderDisabledColor
     },
-    toggleOnDisabled: {
-      backgroundColor: toggleBackgroundOnDisabledColor,
+
+    pillCheckedDisabled: {
+      backgroundColor: pillCheckedDisabledBackground,
       borderColor: 'transparent'
     },
 
@@ -100,29 +84,37 @@ export const getStyles = memoizeFunction((
       borderRadius: '.5em',
       position: 'absolute',
       top: '.2em',
-      transition: 'all 0.1s ease'
+      transition: 'all 0.1s ease',
+      backgroundColor: thumbBackground,
+      left: '.2em'
     },
-    thumbDefault: {
-      backgroundColor: thumbOffColor,
-      left: '.2em',
-    },
-    thumbHovered: {
-      // unstyled
-    },
-    thumbOn: {
-      backgroundColor: thumbOnColor,
+
+    thumbChecked: {
+      backgroundColor: thumbCheckedBackground,
       left: '1.4em'
     },
-    thumbOnHovered: {
-      // unstyled
-    },
+
     thumbDisabled: {
-      backgroundColor: thumbOffDisabledColor,
+      backgroundColor: thumbDisabledBackground,
       left: '.2em',
     },
-    thumbOnDisabled: {
-      backgroundColor: thumbOnDisabledColor,
+
+    thumbCheckedDisabled: {
+      backgroundColor: thumbCheckedDisabledBackground,
       left: '1.4em'
+    },
+
+    text: {
+      // Workaround; until Label is converted and we can pass in custom styles, we need to make this
+      // more specific. Once Label is converted, we should be able to just pull in the customized styling.
+      '.ms-Toggle-stateText': {
+        padding: '0',
+        margin: '0 10px',
+        userSelect: 'none'
+      }
     }
+
   };
+
+  return mergeStyleSets(styles, customStyles);
 });
