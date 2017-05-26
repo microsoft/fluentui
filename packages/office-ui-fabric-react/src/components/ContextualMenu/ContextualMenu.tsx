@@ -227,13 +227,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
                 direction={ arrowDirection }
-                ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
-                role='menu'
-                aria-label={ ariaLabel }
                 isCircularNavigation={ true }
               >
                 <ul
+                  role='menu'
+                  aria-label={ ariaLabel }
+                  aria-labelledBy={ labelElementId }
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
                   onKeyDown={ this._onKeyDown }>
                   { items.map((item, index) => (
