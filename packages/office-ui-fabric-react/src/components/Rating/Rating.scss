@@ -20,7 +20,7 @@ $Rating-largeIconSize: 20px;
   display: inline-block;
 
   &:hover {
-    .star:not(.starIsDisabled) {
+    .star:not(.starIsDisabled):not(.starIsAggregate):not(.partialStar) {
       color: $Rating-selectedColor;
 
       &.star:hover {
@@ -50,6 +50,23 @@ $Rating-largeIconSize: 20px;
 
       .label {
         cursor: default;
+      }
+    }
+
+    &.starIsAggregate {
+      .label {
+        cursor: default;
+      }
+
+      .partialStarContainer {
+        position:relative;
+      }
+
+      .partialStar {
+        overflow: hidden;
+        position:absolute;
+        left:0px;
+        top: 0px;
       }
     }
 
