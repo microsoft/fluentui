@@ -21,7 +21,8 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
   public static defaultProps: IDialogContentProps = {
     showCloseButton: false,
     className: '',
-    topButtonsProps: []
+    topButtonsProps: [],
+    closeButtonAriaLabel: 'Close'
   };
 
   constructor(props: IDialogContentProps) {
@@ -35,7 +36,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
   public render() {
     let {
       showCloseButton,
-      closeButtonAriaLabel = 'Close',
+      closeButtonAriaLabel,
       onDismiss,
       subText,
       title,

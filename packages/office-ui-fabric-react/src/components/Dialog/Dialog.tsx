@@ -28,7 +28,9 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     className: '',
     containerClassName: '',
     contentClassName: '',
-    topButtonsProps: []
+    topButtonsProps: [],
+    modalProps: {},
+    contentProps: {}
   };
 
   constructor(props: IDialogProps) {
