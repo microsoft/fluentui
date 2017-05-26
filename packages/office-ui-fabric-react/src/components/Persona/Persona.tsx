@@ -135,7 +135,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence], this.props.showSecondaryText ? styles.showSecondaryText : '') }
       >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>

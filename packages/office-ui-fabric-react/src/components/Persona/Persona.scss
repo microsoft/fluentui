@@ -382,6 +382,18 @@ $ms-Persona-presenceSizeXl: 28px;
   .secondaryText {
     display: none;
   }
+
+  &.showSecondaryText {
+    height: 30px;
+
+    .primaryText,
+    .secondaryText {
+      display: block;
+      padding: 0;
+      line-height: 1;
+      overflow: visible;
+    }
+  }
 }
 
 
@@ -431,6 +443,16 @@ $ms-Persona-presenceSizeXl: 28px;
   .secondaryText {
     display: none;
   }
+
+  &.showSecondaryText {
+    .primaryText,
+    .secondaryText {
+      display: block;
+      padding: 0;
+      line-height: 1;
+      overflow: visible;
+    }
+  }
 }
 
 
@@ -470,6 +492,16 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .secondaryText {
     display: none;
+  }
+
+  &.showSecondaryText {
+    .primaryText,
+    .secondaryText {
+      display: block;
+      padding: 0;
+      line-height: 1;
+      overflow: visible;
+    }
   }
 }
 
