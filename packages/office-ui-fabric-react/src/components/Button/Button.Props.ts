@@ -30,6 +30,16 @@ export interface IButtonStyles {
   rootDisabled?: IStyle;
 
   /**
+   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   */
+  rootHovered?: IStyle;
+
+  /**
+   * Style override applied to the root on pressed in the default, enabled, non-toggled state.
+   */
+  rootPressed?: IStyle;
+
+  /**
    * Style for the flexbox container within the root element.
    */
   flexContainer?: IStyle;
@@ -83,6 +93,16 @@ export interface IButtonStyles {
    * Style for the description text if applicable (for compound buttons.)
    */
   description?: IStyle;
+
+  /**
+   * Style override for the description text when the button is hovered.
+   */
+  descriptionHovered?: IStyle;
+
+  /**
+   * Style for the description text when the button is pressed.
+   */
+  descriptionPressed?: IStyle;
 
   /**
    * Style override for the description text when the button is disabled.

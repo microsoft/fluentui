@@ -26,19 +26,10 @@ export const getStyles = memoizeFunction((
       maxWidth: '280px',
       minHeight: '72px',
       height: 'auto',
-      padding: '20px',
-
-      ':hover .ms-Button-description': {
-        color: theme.palette.neutralDark
-      },
-
-      ':active .ms-Button-description': {
-        color: 'inherit'
-      }
+      padding: '20px'
     },
 
-    flexContainer:
-    {
+    flexContainer: {
       flexDirection: 'column',
       alignItems: 'flex-start',
       minWidth: '100%',
@@ -57,6 +48,14 @@ export const getStyles = memoizeFunction((
         lineHeight: '100%'
       }
     ],
+
+    descriptionHovered: {
+      color: theme.palette.neutralDark
+    },
+
+    descriptionPressed: {
+      color: 'inherit'
+    },
 
     descriptionToggled: {
       color: 'inherit'

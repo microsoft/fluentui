@@ -359,7 +359,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           'disabled',
           styles.rootDisabled
         ],
-
+        !disabled && {
+          ':hover': styles.rootHovered,
+          ':hover .ms-Button-description': styles.descriptionHovered,
+          ':active': styles.rootPressed,
+          ':active .ms-Button-description': styles.descriptionPressed
+        }
       ) as string,
 
       flexContainer: mergeStyles(
