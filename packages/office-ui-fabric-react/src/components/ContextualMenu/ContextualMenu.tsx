@@ -233,7 +233,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 <ul
                   role='menu'
                   aria-label={ ariaLabel }
-                  aria-labelledBy={ labelElementId }
+                  aria-labelledby={ labelElementId }
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
                   onKeyDown={ this._onKeyDown }>
                   { items.map((item, index) => (
