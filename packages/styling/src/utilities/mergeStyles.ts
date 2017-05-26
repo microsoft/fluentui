@@ -1,11 +1,11 @@
 import { css, Rule } from 'glamor';
-import { IStyle, IRawStyle } from '../interfaces/index';
+import { IStyle } from '../interfaces/index';
 
-export function mergeStyles(...args: (IStyle | IRawStyle)[]): IStyle {
+export function mergeStyles(...args: (IStyle | string)[]): IStyle {
   const classes: string[] = [];
   const rules: Rule[] = [];
 
-  function _parseArgs(theArgs: (IStyle | IRawStyle)[]): void {
+  function _parseArgs(theArgs: (IStyle | string)[]): void {
     for (const arg of theArgs) {
       if (arg) {
         if (typeof arg === 'string') {
