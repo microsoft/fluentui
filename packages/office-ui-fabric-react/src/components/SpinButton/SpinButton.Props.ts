@@ -40,6 +40,11 @@ export interface ISpinButtonProps {
   ariaLabel?: string;
 
   /**
+   * A title for the SpinButton used for a more descriptive name that's also visible on its tooltip.
+   */
+  title?: string;
+
+  /**
    * Whether or not the SpinButton is disabled.
    */
   disabled?: boolean;
