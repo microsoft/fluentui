@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ResizeGroup: Reduce the number of render calls when reducing the width.",
+      "type": "patch"
+    }
+  ],
+  "email": "chrisgo@microsoft.com"
+}
