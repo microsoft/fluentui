@@ -1,7 +1,15 @@
 import { ExampleComponent } from './ExampleComponent';
 import { IRenderFunction } from '@uifabric/utilities';
 
+export interface IExampleComponent { }
+
 export interface IExampleComponentProps extends React.HTMLProps<HTMLDivElement | ExampleComponent> {
+
+  /**
+   * Use componentRef instead of ref to access the component's interface.
+   */
+  componentRef?: IExampleComponent;
+
   /**
    * Optional icon name using fabric icons.
    *
