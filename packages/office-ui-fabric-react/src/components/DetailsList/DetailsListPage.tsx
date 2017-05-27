@@ -27,6 +27,9 @@ const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-reac
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
+import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
+const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
+
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
@@ -55,6 +58,9 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
             <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
               <DetailsListDragDropExample />
+            </ExampleCard>
+            <ExampleCard title='Navigating to new content preserving keyboard focus with initialFocusedIndex' isOptIn={ true } code={ DetailsListNavigatingFocusExampleCode }>
+              <DetailsListNavigatingFocusExample />
             </ExampleCard>
           </div>
         }

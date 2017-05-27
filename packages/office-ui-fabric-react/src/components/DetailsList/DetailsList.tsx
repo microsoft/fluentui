@@ -124,6 +124,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentDidUpdate(prevProps: any, prevState: any) {
+    if (this._initialFocusedIndex !== undefined) {
+      const row = this._activeRows[this._initialFocusedIndex];
+      if (row) {
+        this._setFocusToRowIfPending(row);
+      }
+    }
+
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
     }
@@ -421,7 +428,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     this._activeRows[index] = row; // this is used for column auto resize
 
-    // Set focus to the row if it should receive focus.
+    this._setFocusToRowIfPending(row);
+
+    if (onRowDidMount) {
+      onRowDidMount(row.props.item, index);
+    }
+  }
+
+  private _setFocusToRowIfPending(row: DetailsRow) {
+    let index = row.props.itemIndex;
     if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
@@ -429,10 +444,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this._async.setTimeout(() => row.focus(), 0);
 
       delete this._initialFocusedIndex;
-    }
-
-    if (onRowDidMount) {
-      onRowDidMount(row.props.item, index);
     }
   }
 
