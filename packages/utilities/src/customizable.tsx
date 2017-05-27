@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 export function customizable<P>(componentName?: string) {
   return function customizableFactory<P, S>(
@@ -6,7 +7,7 @@ export function customizable<P>(componentName?: string) {
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static contextTypes = {
-        injectedProps: React.PropTypes.object
+        injectedProps: PropTypes.object
       };
 
       public render() {
