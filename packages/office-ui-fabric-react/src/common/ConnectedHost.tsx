@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { ISubscribable } from './ISubscribable';
 import { BaseComponent, autobind, assign, shallowCompare } from '../Utilities';
 import { IStoreKey } from './storeKey';
@@ -20,7 +21,7 @@ export interface IConnectedHostState {
 
 export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnectedHostState> {
   public static contextTypes = {
-    stores: React.PropTypes.object
+    stores: PropTypes.object
   };
 
   public context: {

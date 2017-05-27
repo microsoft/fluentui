@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { BaseComponent } from './BaseComponent';
 import { assign } from './object';
 
@@ -26,7 +27,7 @@ export interface ICustomizerState {
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   public static contextTypes = {
-    injectedProps: React.PropTypes.object
+    injectedProps: PropTypes.object
   };
 
   public static childContextTypes = Customizer.contextTypes;
