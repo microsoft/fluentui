@@ -57,7 +57,7 @@ export const getStyles = memoizeFunction((
       color: 'inherit'
     },
 
-    descriptionToggled: {
+    descriptionChecked: {
       color: 'inherit'
     },
 

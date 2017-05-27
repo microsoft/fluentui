@@ -89,5 +89,6 @@ export const getStyles = memoizeFunction((
       clip: 'rect(0,0,0,0)',
       border: 0
     }
+
   };
 });

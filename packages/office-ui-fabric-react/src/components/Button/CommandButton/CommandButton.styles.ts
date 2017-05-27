@@ -39,7 +39,7 @@ export const getStyles = memoizeFunction((
       backgroundColor: 'transparent'
     },
 
-    rootToggled: {
+    rootChecked: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
 
       ':hover': {

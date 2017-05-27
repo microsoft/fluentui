@@ -33,7 +33,7 @@ export const getStyles = memoizeFunction((
       color: theme.palette.themePrimary
     },
 
-    rootToggled: {
+    rootChecked: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
 
       ':hover': {

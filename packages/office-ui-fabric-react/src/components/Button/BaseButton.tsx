@@ -55,7 +55,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._warnDeprecations({
       rootProps: null,
       icon: 'iconProps',
-      menuIconName: 'menuIconProps'
+      menuIconName: 'menuIconProps',
+      toggled: 'checked'
     });
 
     this._labelId = getId();
@@ -76,7 +77,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       href,
       iconProps,
       styles,
-      toggled,
+      checked,
       variantClassName
          } = this.props;
 
@@ -86,7 +87,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       iconProps && iconProps.className,
       disabled,
-      toggled
+      checked
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -126,7 +127,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-describedby': ariaDescribedBy,
         'aria-disabled': disabled,
         'data-is-focusable': disabled ? false : true,
-        'aria-pressed': toggled
+        'aria-pressed': checked
       }
     );
 
@@ -193,7 +194,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       icon,
       iconProps,
       styles,
-      toggled
+      checked
        } = this.props;
 
     if (icon || iconProps) {
@@ -213,9 +214,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     children,
       disabled,
       styles,
-      text,
-      toggled
-        } = this.props;
+      text
+            } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -248,9 +248,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderDescription(props: IButtonProps) {
     const {
-    description,
-      disabled,
-      toggled
+    description
     } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -267,7 +265,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderAriaDescription() {
     const {
-     ariaDescription, styles } = this.props;
+     ariaDescription,
+      styles
+     } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
@@ -282,11 +282,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
     let {
       baseClassName,
+      checked,
       disabled,
       menuIconName,
       menuIconProps,
-      styles,
-      toggled
+      styles
        } = this.props;
 
     if (menuIconProps === undefined) {
@@ -304,7 +304,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
               `${baseClassName}-icon`,
               styles.menuIcon,
               disabled && styles.menuIconDisabled,
-              !disabled && toggled && styles.menuIconToggled,
+              !disabled && checked && styles.menuIconChecked,
               menuIconProps.className
             ) as string }
         />
@@ -343,7 +343,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     variantClassName: string,
     iconClassName: string,
     disabled: boolean,
-    toggled: boolean
+    checked: boolean
     ): IButtonClassNames {
     return {
       root: mergeStyles(
@@ -351,12 +351,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'ms-Button',
         variantClassName,
         styles.root,
-        toggled && [
-          'toggled',
-          styles.rootToggled
+        checked && [
+          'is-checked',
+          styles.rootChecked
         ],
         disabled && [
-          'disabled',
+          'is-disabled',
           styles.rootDisabled
         ],
         !disabled && {
@@ -376,28 +376,28 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'ms-Button-icon',
         iconClassName,
         styles.icon,
-        toggled && styles.iconToggled,
+        checked && styles.iconChecked,
         disabled && styles.iconDisabled,
       ) as string,
 
       label: mergeStyles(
         'ms-Button-label',
         styles.label,
-        toggled && styles.labelToggled,
+        checked && styles.labelChecked,
         disabled && styles.labelDisabled,
       ) as string,
 
       menuIcon: mergeStyles(
         'ms-Button-menuIcon',
         styles.menuIcon,
-        toggled && styles.menuIconToggled,
+        checked && styles.menuIconChecked,
         disabled && styles.menuIconDisabled
       ) as string,
 
       description: mergeStyles(
         'ms-Button-description',
         styles.description,
-        toggled && styles.descriptionToggled,
+        checked && styles.descriptionChecked,
         disabled && styles.descriptionDisabled
       ) as string,
 

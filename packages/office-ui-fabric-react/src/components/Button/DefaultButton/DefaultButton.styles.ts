@@ -38,7 +38,7 @@ export const getStyles = memoizeFunction((
       color: theme.palette.white
     },
 
-    rootToggled: {
+    rootChecked: {
       backgroundColor: theme.palette.themePrimary,
       color: theme.palette.white
     },
