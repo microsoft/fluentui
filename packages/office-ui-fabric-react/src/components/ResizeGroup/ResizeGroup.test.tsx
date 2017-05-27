@@ -89,7 +89,7 @@ describe('ResizeGroup', () => {
     expect(onRenderData.called).to.equal(false);
   });
 
-  it('will remeasure if props are updated', () => {
+  it('remeasures if props are updated', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
 
@@ -107,7 +107,7 @@ describe('ResizeGroup', () => {
     expect(onRenderData.callCount).to.equal(4);
   });
 
-  it('will call onReduceData when contents do not fit', () => {
+  it('calls onReduceData when contents do not fit', () => {
     let { wrapper, onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
 
     onReduceDataSpy.reset();
@@ -120,25 +120,89 @@ describe('ResizeGroup', () => {
     expect(onReduceDataSpy.callCount).to.equal(1);
   });
 
-  it('will measure after a window resize', () => {
-    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks();
+  it('measures after a window resize that grows the container', () => {
+    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks();
+
+    // Initial render with measurements
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.returns({ width: 100 });
+    wrapper.setState({ shouldMeasure: true });
 
     onReduceDataSpy.reset();
     rootGetClientRectMock.reset();
     measuredGetClientRectMock.reset();
-    rootGetClientRectMock.returns({ width: 200 });
+
+    rootGetClientRectMock.returns({ width: 250 });
     measuredGetClientRectMock.returns({ width: 100 });
 
+    let renderSpy = setRenderSpy(wrapper);
+    window.dispatchEvent(new Event('resize'));
+
+    expect(rootGetClientRectMock.callCount).to.equal(2);
+    expect(measuredGetClientRectMock.callCount).to.equal(1);
+
+    // Don't call onReduceData because everything fits.
+    expect(onReduceDataSpy.callCount).to.equal(0);
+    expect(renderSpy.callCount).to.equal(2);
+  });
+
+  it('does not render after a window resize that shrinks the container and everything still fits', () => {
+    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks();
+
+    // Initial render with measurements
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.returns({ width: 100 });
+    wrapper.setState({ shouldMeasure: true });
+
+    onReduceDataSpy.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+
+    rootGetClientRectMock.returns({ width: 150 });
+    measuredGetClientRectMock.returns({ width: 100 });
+
+    let renderSpy = setRenderSpy(wrapper);
     window.dispatchEvent(new Event('resize'));
 
     expect(rootGetClientRectMock.callCount).to.equal(1);
-    expect(measuredGetClientRectMock.callCount).to.equal(1);
+    expect(measuredGetClientRectMock.callCount).to.equal(0);
 
-    // Don't call onReduceData since everything fits
+    // Don't call onReduceData or render because everything already fits.
     expect(onReduceDataSpy.callCount).to.equal(0);
+    expect(renderSpy.callCount).to.equal(0);
   });
 
-  it('will continue to shrink until everything fits', () => {
+  it('does render after a window resize that shrinks the container and things do not fit', () => {
+    let { onReduceDataSpy, rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks();
+
+    // Initial render with measurements
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.returns({ width: 100 });
+    wrapper.setState({ shouldMeasure: true });
+
+    onReduceDataSpy.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+
+    // Simulate a resize where the contents don't fit after a resize, but they fit
+    // after calling onReduceData once.
+    rootGetClientRectMock.returns({ width: 50 });
+    measuredGetClientRectMock.onFirstCall().returns({ width: 100 });
+    measuredGetClientRectMock.onSecondCall().returns({ width: 40 });
+
+    let renderSpy = setRenderSpy(wrapper);
+    window.dispatchEvent(new Event('resize'));
+
+    expect(onReduceDataSpy.callCount).to.equal(1);
+
+    // Renders:
+    // 1. Measures the contents and determines it does not fit
+    // 2. Measures reduced contents and determines it does fit
+    // 3. Removes the measured div and updates the rendered view
+    expect(renderSpy.callCount).to.equal(3);
+  });
+
+  it('continues to shrink until everything fits', () => {
     let data = { scalingIndex: 7 };
 
     let { wrapper,

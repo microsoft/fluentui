@@ -80,7 +80,7 @@
       bottom: 0;
       content: '';
       height: 6px;
-      @include left(0);
+      @include ms-left(0);
       position: absolute;
       width: 80%;
     }
@@ -92,7 +92,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .angle {
     margin-top: 0; // Move back down to ensure room for in-page nav
     min-height: 120px;
@@ -107,7 +107,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .reachOut {
     margin-bottom: 80px;
   }

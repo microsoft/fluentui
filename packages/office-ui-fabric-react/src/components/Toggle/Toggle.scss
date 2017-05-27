@@ -41,9 +41,7 @@ $toggle-focusBorder-color: $focusBorderColor;
 
 // Toggle
 .root {
-  @include ms-baseFont;
-  @include ms-u-normalize;
-
+  @include ms-normalize;
   position: relative;
   display: block;
   margin-bottom: 8px;
@@ -86,7 +84,7 @@ $toggle-focusBorder-color: $focusBorderColor;
 
     .thumb {
       background: $toggle-thumb-on-color;
-      @include left(28px);
+      @include ms-left(28px);
       @include highContrast-bgColor($ms-color-black, $ms-color-white);
     }
 
@@ -135,7 +133,7 @@ $toggle-focusBorder-color: $focusBorderColor;
 
     .thumb {
       background: $toggle-thumb-on-disabled-color;
-      @include left(28px);
+      @include ms-left(28px);
       @include highContrast-bgColor($ms-color-black, $ms-color-white);
     }
   }
@@ -186,7 +184,7 @@ $toggle-focusBorder-color: $focusBorderColor;
   height: 10px;
   border-radius: 10px;
   top: 4px;
-  @include left(4px);
+  @include ms-left(4px);
   transition: all 0.1s ease;
 }
 

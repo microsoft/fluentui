@@ -31,7 +31,7 @@
 
   .headerIsSmall & {
     @include ms-font-m;
-    @include margin-right(10px);
+    @include ms-margin-right(10px);
     font-weight: $ms-font-weight-semibold;
   }
 }
@@ -49,7 +49,7 @@
 
 .root .closeButton {
   position: absolute;
-  @include right(0);
+  @include ms-right(0);
   top: 0;
   color: $ms-color-white;
   font-size: $ms-icon-size-s;

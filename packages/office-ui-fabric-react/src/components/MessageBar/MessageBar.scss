@@ -8,7 +8,6 @@
 // MessageBar Styles
 
 .root {
-  @include ms-baseFont;
   @include ms-bgColor-info;
   min-height: 32px;
   color: $ms-color-infoText;
@@ -18,7 +17,7 @@
   position: relative;
 
   .icon {
-    @include padding-right(8px);
+    @include ms-padding-right(8px);
     color: $ms-color-info;
   }
 
@@ -28,7 +27,7 @@
   }
 
   :global(.ms-Button) {
-    @include margin-left(6px);
+    @include ms-margin-left(6px);
   }
 }
 
@@ -138,7 +137,7 @@
 
 .innerTextPadding {
   span, .innerText > span {
-    @include padding-right(4px); // Add padding between text and hyperlink.
+    @include ms-padding-right(4px); // Add padding between text and hyperlink.
   }
 }
 
@@ -178,7 +177,7 @@
   min-width: 0;
   position: absolute;
   top: 0;
-  @include right(0);
+  @include ms-margin-right(0);
 }
 
 .dismissalOneline {
@@ -186,7 +185,7 @@
   min-height: 16px;
   // We want padding between the outside of the dismiss button to be 8px
   // and the padding between the dismiss button and the text to be 12px
-  @include padding(8px, 8px, 8px, 12px);
+  @include ms-padding(8px, 8px, 8px, 12px);
 }
 
 .actionsOneline {
@@ -208,10 +207,10 @@
   .content {
       padding-top: 16px;
       flex-direction: row;
-      @include padding-left(16px);
+      @include ms-padding-left(16px);
 
     .icon {
-      @include padding-right(8px);
+      @include ms-padding-right(8px);
     }
 
     .innerText {
@@ -220,7 +219,7 @@
   }
 
   .actions {
-    @include padding-right(16px);
+    @include ms-padding-right(16px);
   }
 
   .dismissal {
@@ -229,7 +228,7 @@
 }
 
 .dismissalOneline {
-  @include padding-right(16px);
+  @include ms-padding-right(16px);
 }
 
 .multiline {
@@ -238,6 +237,6 @@
 
 .actionableMultiline.dismissalMultiline {
   .innerTextPadding {
-    @include padding-right(48px);
+    @include ms-padding-right(48px);
   }
 }

@@ -12,11 +12,11 @@
   line-height: 20px;
   pointer-events: none;
   position: absolute;
-  @include right(9px);
+  @include ms-right(9px);
 }
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   margin-bottom: 17px;
 }
 
