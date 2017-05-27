@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: $ms-screen-xl-min) {
+  @media screen and (min-width: $ms-screen-min-xl) {
     flex-direction: row; // Horizontal layout on extra large screens
   }
 
@@ -17,7 +17,7 @@
   a:visited {
     color: $ms-color-white;
     border-bottom: 1px solid rgba(255,255,255,0.5);
-    transition: border-color $ms-duration2 $ms-ease1;
+    transition: border-color $ms-animation-duration-2 $ms-animation-ease-1;
   }
 
   a:hover {
@@ -33,7 +33,7 @@
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: $ms-screen-md-min) and (max-width: $ms-screen-lg-max) {
+  @media screen and (min-width: $ms-screen-min-md) and (max-width: $ms-screen-max-lg) {
     flex-direction: row;
   }
 
@@ -41,11 +41,11 @@
     align-self: center;
     max-width: 200px;
 
-    @media screen and (min-width: $ms-screen-xl-min) {
+    @media screen and (min-width: $ms-screen-min-xl) {
       margin-bottom: 20px;
     }
 
-    @media screen and (min-width: $ms-screen-md-min) and (max-width: $ms-screen-lg-max) {
+    @media screen and (min-width: $ms-screen-min-md) and (max-width: $ms-screen-max-lg) {
       margin-right: 28px;
     }
   }
@@ -71,7 +71,7 @@
   text-align: center;
   width: 40px;
 
-  @media screen and (min-width: $ms-screen-xl-min) {
+  @media screen and (min-width: $ms-screen-min-xl) {
     margin: 0 20px 0 4px; // Give it some space in the horizontal layout
   }
 }
@@ -85,7 +85,7 @@
   width: 100%;
 
   // Horizontal layout on large screens
-  @media screen and (min-width: $ms-screen-lg-min) {
+  @media screen and (min-width: $ms-screen-min-lg) {
     flex-direction: row;
     margin-top: 40px;
   }
@@ -112,7 +112,7 @@
   }
 
   // Horizontal layout
-  @media screen and (min-width: $ms-screen-lg-min) {
+  @media screen and (min-width: $ms-screen-min-lg) {
     flex-direction: column;
     margin: 0 0 0 16px;
 
@@ -143,7 +143,7 @@
   flex-shrink: 0;
   padding: 20px;
 
-  @media screen and (min-width: $ms-screen-lg-min) {
+  @media screen and (min-width: $ms-screen-min-lg) {
     width: 100%;
   }
 }
