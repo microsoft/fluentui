@@ -19,13 +19,13 @@
     "es6-weak-map": "^2.0.2",
     "gulp": "~3.9.1",
     "mocha": "~3.3.0",
-    "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "sinon": "^2.1.0",
     "source-map-loader": "^0.2.1",
-    "typescript": "2.2.2"
+    "typescript": "2.2.2",
+    "prop-types": "^15.5.10"
   },
   "rushDependencies": {
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0"

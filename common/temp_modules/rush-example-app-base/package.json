@@ -22,7 +22,7 @@
     "source-map-loader": "0.2.1",
     "typescript": "2.2.2",
     "highlight.js": "^9.9.0",
-    "office-ui-fabric-core": "7.0.0",
+    "office-ui-fabric-core": ">=7.0.0 <8.0.0",
     "office-ui-fabric-react": ">=2.11.0-0 <3.0.0-0"
   },
   "rushDependencies": {
