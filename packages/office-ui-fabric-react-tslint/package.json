@@ -5,7 +5,7 @@
   "main": "tslint.json",
   "scripts": {
     "clean": "",
-    "build": ""
+    "build": "node -v"
   },
   "devDependencies": {
     "@microsoft/gulp-core-build-typescript": "^2.4.4"

@@ -9,7 +9,7 @@ import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IToggleStyles
+  customStyles?: IToggleStyles
 ): IToggleStyles => {
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;

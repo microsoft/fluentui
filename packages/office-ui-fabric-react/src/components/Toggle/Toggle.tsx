@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  KeyCodes,
   autobind,
   getId,
   inputProperties,
@@ -15,8 +14,7 @@ import {
 } from './Toggle.Props';
 import { Label } from '../../Label';
 import {
-  mergeStyles,
-  mergeStyleSets
+  mergeStyles
 } from '../../Styling';
 
 import { getStyles } from './Toggle.styles';
