@@ -157,7 +157,14 @@
     "@microsoft/gulp-core-build-typescript": {
       "version": "2.4.4",
       "from": "@microsoft/gulp-core-build-typescript@>=2.4.4 <3.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-typescript/-/gulp-core-build-typescript-2.4.4.tgz"
+      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-typescript/-/gulp-core-build-typescript-2.4.4.tgz",
+      "dependencies": {
+        "typescript": {
+          "version": "2.1.6",
+          "from": "typescript@>=2.1.4 <2.2.0",
+          "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.1.6.tgz"
+        }
+      }
     },
     "@microsoft/gulp-core-build-webpack": {
       "version": "1.1.6",
@@ -1473,11 +1480,6 @@
           "version": "0.2.1",
           "from": "source-map-loader@>=0.2.1 <0.3.0",
           "resolved": "https://registry.npmjs.org/source-map-loader/-/source-map-loader-0.2.1.tgz"
-        },
-        "typescript": {
-          "version": "2.3.3",
-          "from": "typescript@>=2.2.2 <3.0.0",
-          "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.3.3.tgz"
         }
       }
     },
@@ -9744,9 +9746,9 @@
       "resolved": "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
     },
     "typescript": {
-      "version": "2.1.6",
-      "from": "typescript@>=2.1.4 <2.2.0",
-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.1.6.tgz"
+      "version": "2.3.3",
+      "from": "typescript@2.3.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.3.3.tgz"
     },
     "ua-parser-js": {
       "version": "0.7.12",
