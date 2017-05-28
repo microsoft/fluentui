@@ -26,19 +26,7 @@ export interface IPanelState {
   id?: string;
 }
 
-<<<<<<< HEAD
 export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
-=======
-// Animation class constants.
-const FADE_IN_200 = 'ms-fadeIn200';
-const FADE_OUT_200 = 'ms-fadeOut200';
-const SLIDE_LEFT_IN_40 = 'ms-slideLeftIn40';
-const SLIDE_LEFT_OUT_40 = 'ms-slideLeftOut40';
-const SLIDE_RIGHT_IN_40 = 'ms-slideRightIn40';
-const SLIDE_RIGHT_OUT_40 = 'ms-slideRightOut40';
-
-export class Panel extends BaseComponent<IPanelProps, IPanelState> {
->>>>>>> 052d7dfe81f52bff4eb262999e0993821bb19556
 
   public static defaultProps: IPanelProps = {
     isOpen: false,
