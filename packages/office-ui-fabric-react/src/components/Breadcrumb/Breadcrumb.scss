@@ -15,7 +15,6 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 $Breadcrumb-chevron-sm: 8px;
 
 .root {
-  @include ms-baseFont;
   margin: 23px 0 1px;
 }
 
@@ -107,7 +106,7 @@ $Breadcrumb-chevron-sm: 8px;
   outline: transparent;
 }
 
-@media screen and (max-width: $ms-screen-md-max) {
+@media screen and (max-width: $ms-screen-max-md) {
   // margin: 11px 0 1px;
 
   .listItem .itemLink {
@@ -124,7 +123,7 @@ $Breadcrumb-chevron-sm: 8px;
   }
 }
 
-@media screen and (max-width: $ms-screen-sm-max) {
+@media screen and (max-width: $ms-screen-max-sm) {
   .listItem .itemLink {
     font-size: $ms-font-size-m;
     max-width: $Breadcrumb-itemMaxWidth-sm;

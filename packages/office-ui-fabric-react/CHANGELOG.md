@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 25 May 2017 10:22:10 GMT and should not be manually modified.
+This log was last generated on Sat, 27 May 2017 01:47:19 GMT and should not be manually modified.
+
+## 2.34.2
+Sat, 27 May 2017 01:47:19 GMT
+
+### Patches
+
+- ContextualMenu: prevent Narrator to announce items twice.
+
+## 2.34.1
+Fri, 26 May 2017 10:21:03 GMT
+
+### Patches
+
+- Persona: Updated test to match new logic for calculating initials.
+- ResizeGroup: Debounce window resize events to improve performance
 
 ## 2.34.0
 Thu, 25 May 2017 10:22:10 GMT

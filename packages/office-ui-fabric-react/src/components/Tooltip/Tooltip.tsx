@@ -42,9 +42,13 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
     return (
       <Callout
-        className={ css('ms-Tooltip ' + AnimationClassNames.fadeIn200, styles.root, {
-          [styles.hasMediumDelay]: delay === TooltipDelay.medium
-        }) }
+        className={ css(
+          'ms-Tooltip',
+          AnimationClassNames.fadeIn200,
+          styles.root, {
+            [styles.hasMediumDelay]: delay === TooltipDelay.medium
+          }
+        ) }
         targetElement={ targetElement }
         directionalHint={ directionalHint }
         {...calloutProps}

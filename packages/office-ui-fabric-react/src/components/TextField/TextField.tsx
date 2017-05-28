@@ -171,7 +171,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
               <div aria-live='assertive'>
                 <DelayedRender>
                   <p
-                    className={ css('ms-TextField-errorMessage ' + AnimationClassNames.slideDownIn20, styles.errorMessage) }
+                    className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
                     data-automation-id='error-message'>
                     <Icon iconName='error' className={ styles.errorIcon } />
                     { errorMessage }

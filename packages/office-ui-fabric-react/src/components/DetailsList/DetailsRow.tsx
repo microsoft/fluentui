@@ -185,7 +185,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     return (
       <div
-        {...getNativeProps(this.props, divProperties)}
+        {...getNativeProps(this.props, divProperties) }
         ref='root'
         role='row'
         aria-label={ ariaLabel }

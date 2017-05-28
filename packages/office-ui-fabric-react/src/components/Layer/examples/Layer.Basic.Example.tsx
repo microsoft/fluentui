@@ -1,4 +1,5 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
+import * as PropTypes from 'prop-types';
 import './Layer.Example.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -7,7 +8,7 @@ import { AnimationClassNames } from '../../../Styling';
 
 export class LayerContentExample extends BaseComponent<any, any> {
   public static contextTypes = {
-    message: React.PropTypes.string
+    message: PropTypes.string
   };
 
   public context: {
@@ -38,7 +39,7 @@ export class LayerContentExample extends BaseComponent<any, any> {
 export class LayerBasicExample extends BaseComponent<any, any> {
 
   public static childContextTypes = {
-    message: React.PropTypes.string
+    message: PropTypes.string
   };
 
   constructor() {

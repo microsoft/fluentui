@@ -135,7 +135,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .cell .filterChevron {
   color: $dropdownChevronForegroundColor;
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
   vertical-align: middle;
 }
 
