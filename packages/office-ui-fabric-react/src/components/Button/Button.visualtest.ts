@@ -19,8 +19,8 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'DefaultButtonToggled',
-  fileName: 'buttonDefaultToggled',
+  selector: '#' + 'DefaultButtonChecked',
+  fileName: 'buttonDefaultChecked',
   commands: [defaultScreenshot]
 });
 
@@ -36,8 +36,8 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'PrimaryButtonToggled',
-  fileName: 'buttonPrimaryToggled',
+  selector: '#' + 'PrimaryButtonChecked',
+  fileName: 'buttonPrimaryChecked',
   commands: [defaultScreenshot]
 });
 
@@ -52,8 +52,8 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'CommandButtonToggled',
-  fileName: 'buttonCommandToggled',
+  selector: '#' + 'CommandButtonChecked',
+  fileName: 'buttonCommandChecked',
   commands: [defaultScreenshot]
 });
 
@@ -68,8 +68,8 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'CompoundButtonToggled',
-  fileName: 'buttonCompoundToggled',
+  selector: '#' + 'CompoundButtonChecked',
+  fileName: 'buttonCompoundChecked',
   commands: [defaultScreenshot]
 });
 
@@ -89,8 +89,8 @@ componentIds.push({
   }
 });
 componentIds.push({
-  selector: '#' + 'ContextualButtonToggled',
-  fileName: 'buttonContextualToggled',
+  selector: '#' + 'ContextualButtonChecked',
+  fileName: 'buttonContextualChecked',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
 

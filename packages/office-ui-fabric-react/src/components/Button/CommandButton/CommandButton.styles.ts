@@ -23,14 +23,15 @@ export const getStyles = memoizeFunction((
       padding: DEFAULT_PADDING,
       height: DEFAULT_BUTTON_HEIGHT,
       color: theme.palette.neutralPrimary,
-      backgroundColor: 'transparent',
+      backgroundColor: 'transparent'
+    },
 
-      ':hover': {
-        color: theme.palette.themeDarker
-      },
-      ':active': {
-        color: theme.palette.themePrimary
-      }
+    rootHovered: {
+      color: theme.palette.themeDarker
+    },
+
+    rootPressed: {
+      color: theme.palette.themePrimary
     },
 
     rootDisabled: {
@@ -38,7 +39,7 @@ export const getStyles = memoizeFunction((
       backgroundColor: 'transparent'
     },
 
-    rootToggled: {
+    rootChecked: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
 
       ':hover': {

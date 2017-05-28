@@ -157,7 +157,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   @autobind
-  private _onOverflowClicked(ev) {
+  private _onOverflowClicked(ev: React.MouseEvent<HTMLButtonElement>) {
     this.setState({
       'isOverflowOpen': !this.state.isOverflowOpen,
       'overflowAnchor': ev.currentTarget as HTMLElement
@@ -165,7 +165,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   @autobind
-  private _onOverflowDismissed(ev: MouseEvent) {
+  private _onOverflowDismissed(ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       'isOverflowOpen': false,
       'overflowAnchor': null

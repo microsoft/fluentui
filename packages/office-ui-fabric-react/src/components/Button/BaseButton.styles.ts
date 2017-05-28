@@ -57,8 +57,6 @@ export const getStyles = memoizeFunction((
       ':focus': noOutline
     },
 
-    rootToggled: undefined,
-
     flexContainer: {
       display: 'flex',
       height: '100%',
@@ -68,8 +66,6 @@ export const getStyles = memoizeFunction((
     },
 
     icon: iconStyle,
-    iconToggled: undefined,
-    iconDisabled: undefined,
 
     menuIcon: [
       iconStyle,
@@ -77,19 +73,11 @@ export const getStyles = memoizeFunction((
         fontSize: FontSizes.small
       }
     ],
-    menuIconToggled: undefined,
-    menuIconDisabled: undefined,
 
     label: {
       margin: '0 4px',
       lineHeight: '100%'
     },
-    labelToggled: undefined,
-    labelDisabled: undefined,
-
-    description: undefined,
-    descriptionToggled: undefined,
-    descriptionDisabled: undefined,
 
     screenReaderText: {
       position: 'absolute',
@@ -101,5 +89,6 @@ export const getStyles = memoizeFunction((
       clip: 'rect(0,0,0,0)',
       border: 0
     }
+
   };
 });
