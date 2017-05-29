@@ -15,6 +15,7 @@ import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
+import { FontClassNames } from '../../Styling';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
@@ -80,7 +81,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
               Panels are modal UI overlays that provide contextual app information. They often request some kind of creation or management action from the user. Panels are paired with the Overlay component, also known as a Light Dismiss. The Overlay blocks interactions with the app view until dismissed either through clicking or tapping on the Overlay or by selecting a close or completion action within the Panel.
             </p>
 
-            <h2 className='ms-font-xl'>Examples of experiences that use Panels</h2>
+            <h2 className={ FontClassNames.xLarge }>Examples of experiences that use Panels</h2>
 
             <ul>
               <li>Member or group list creation or management</li>

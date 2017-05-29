@@ -1,0 +1,30 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "The styling package is now a dependency of fabric-react, which brings in the initial steps towards offering consumers a much better way to customize components to meet their requirements. The Button components and Toggle components have so far been converted to use the styling utilities. We will be ellaborating more on this as we refine our patterns towards customization and refine the documentation.",
+      "type": "major"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "memoize/memoizeFunction: memoize converted to a decorator, memoizeFunction is now for memoizing functions.",
+      "type": "major"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute.",
+      "type": "major"
+    },
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Major updates to mergeStyles and other various utilities. Updating fonts to follow latest fabric-core language fallbacks.",
+      "type": "minor"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "All references to fabric-core removed.",
+      "type": "major"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}

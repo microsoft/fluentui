@@ -196,11 +196,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             label={ label }
             placeholder={ placeholder }
             borderless={ borderless }
-            iconClass={ css(
-              'ms-Icon ms-Icon--Calendar',
-              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
-              label ? styles.eventWithLabel : styles.eventWithoutLabel
-            ) }
+            iconProps={ {
+              iconName: 'calendar',
+              className: css(
+                label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
+                label ? styles.eventWithLabel : styles.eventWithoutLabel
+              )
+            } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
             ref='textField' />

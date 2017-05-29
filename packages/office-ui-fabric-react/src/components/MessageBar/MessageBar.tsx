@@ -6,6 +6,7 @@ import {
   getId
 } from '../../Utilities';
 import { IconButton } from '../../Button';
+import { Icon } from '../../Icon';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
 import * as stylesImport from './MessageBar.scss';
 const styles: any = stylesImport;
@@ -89,7 +90,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   private _getIconSpan(): JSX.Element {
     return (
       <div className={ css('ms-MessageBar-icon', styles.icon) }>
-        <i className={ `ms-Icon ms-Icon--${this.ICON_MAP[this.props.messageBarType]}` }></i>
+        <Icon iconName={ this.ICON_MAP[this.props.messageBarType] } />
       </div>
     );
   }
