@@ -12,10 +12,12 @@
     "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build --verbose",
     "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
+    "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose",
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
     "test": "npm run _rushBuild",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
+    "buildfast": "node run scripts/selective-build.js",
     "change": "node node_modules/@microsoft/rush/bin/rush change",
     "generate": "node node_modules/@microsoft/rush/bin/rush generate"
   },
