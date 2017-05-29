@@ -111,7 +111,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
                 'is-fadeIn': shouldFadeIn,
                 'is-notLoaded': !loaded,
                 ['is-loaded ' + styles.imageIsLoaded]: loaded,
-                'ms-u-fadeIn400': loaded && shouldFadeIn,
+                'ms-fadeIn400': loaded && shouldFadeIn,
                 'is-error': loadState === ImageLoadState.error,
                 ['ms-Image-image--scaleWidth ' + styles.imageIsScaleWidth]: (imageFit === undefined && !!width && !height),
                 ['ms-Image-image--scaleHeight ' + styles.imageIsScaleHeight]: (imageFit === undefined && !width && !!height),

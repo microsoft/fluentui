@@ -188,7 +188,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         ref='root'
         role='row'
         aria-label={ ariaLabel }
-        className={ css('ms-DetailsRow ms-u-fadeIn400', styles.root, droppingClassName, {
+        className={ css('ms-DetailsRow ms-fadeIn400', styles.root, droppingClassName, {
           ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
           ['is-selected ' + styles.rootIsSelected]: isSelected,
           ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always

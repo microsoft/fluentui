@@ -55,7 +55,7 @@ $borderSize: 1.5px;
   }
 
   .screenReaderOnly {
-    @include ms-u-screenReaderOnly;
+    @include ms-screenReaderOnly;
   }
 }
 

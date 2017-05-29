@@ -104,6 +104,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _requiredWindowsBehind: number;
 
   private _measureVersion: number;
+  private _scrollHeight: number;
+  private _scrollTop: number;
 
   constructor(props: IListProps) {
     super(props);
@@ -148,6 +150,16 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._scrollingToIndex = -1;
   }
 
+  /**
+   * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
+   * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
+   *
+   * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
+   * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
+   *
+   * @param index Index of item to scroll to
+   * @param measureItem Optional callback to measure the height of an individual item
+   */
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
     const { startIndex } = this.props;
     const renderCount = this._getRenderCount();
@@ -472,10 +484,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       let page = newPages[i];
 
       if (page.items) {
-        // Only evaluate page height if the page contains less items than total.
-        if (page.items.length < renderCount) {
-          heightChanged = this._measurePage(page) || heightChanged;
-        }
+        heightChanged = this._measurePage(page) || heightChanged;
 
         if (!renderedIndexes[page.startIndex]) {
           this._onPageAdded(page);
@@ -506,7 +515,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
 
     if (pageElement && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
-      let newClientRect = _measurePageRect(pageElement);
+      let newClientRect = {
+        width: pageElement.clientWidth,
+        height: pageElement.clientHeight
+      };
 
       if (newClientRect.height || newClientRect.width) {
         hasChangedHeight = page.height !== newClientRect.height;
@@ -690,15 +702,32 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { pages } = this.state;
     const renderCount = this._getRenderCount(props);
     let surfaceRect = this._surfaceRect;
+    let scrollHeight = this._scrollElement && this._scrollElement.scrollHeight;
+    let scrollTop = this._scrollElement ? this._scrollElement.scrollTop : 0;
 
     // WARNING: EXPENSIVE CALL! We need to know the surface top relative to the window.
+    // This needs to be called to recalculate when new pages should be loaded.
+    // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
     if (
       forceUpdate ||
       !pages ||
       !this._surfaceRect ||
-      (pages.length > 0 && pages[0].items && pages[0].items.length < renderCount)) {
+      !scrollHeight ||
+      scrollHeight !== this._scrollHeight ||
+      Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3) {
       surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
+      this._scrollTop = scrollTop;
     }
+
+    // If the scroll height has changed, something in the container likely resized and
+    // we should redo the page heights incase their content resized.
+    if (forceUpdate ||
+      !scrollHeight ||
+      scrollHeight !== this._scrollHeight) {
+      this._measureVersion++;
+    }
+
+    this._scrollHeight = scrollHeight;
 
     // If the surface is above the container top or below the container bottom, or if this is not the first
     // render return empty rect.

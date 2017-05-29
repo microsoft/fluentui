@@ -8,7 +8,6 @@
 // MessageBar Styles
 
 .root {
-  @include ms-baseFont;
   @include ms-bgColor-info;
   color: $ms-color-infoText;
   width: 100%;
@@ -162,7 +161,7 @@
   min-width: 0;
 }
 .dismissalOneline .dismissal {
-  @include margin-right(-8px);
+  @include ms-margin-right(-8px);
 }
 
 // Add space between adjacent MessageBars.

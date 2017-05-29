@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: prevent Narrator to announce items twice.",
+      "comment": "DetailsList: initialFocusedIndex is considered on already mounted rows ",
       "type": "patch"
     },
     {
