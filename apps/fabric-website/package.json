@@ -25,7 +25,7 @@
     "@types/react-addons-test-utils": "^0.14.17",
     "@types/react-dom": "^15.5.0",
     "@types/webpack-env": "^1.13.0",
-    "es6-promise": "4.1.0",
+    "es6-promise": "^4.1.0",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
     "gulp-debug": "3.1.0",
