@@ -16,7 +16,8 @@
     "test": "npm run _rushBuild",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
-    "change": "node node_modules/@microsoft/rush/bin/rush change"
+    "change": "node node_modules/@microsoft/rush/bin/rush change",
+    "generate": "node node_modules/@microsoft/rush/bin/rush generate"
   },
   "license": "MIT",
   "devDependencies": {
