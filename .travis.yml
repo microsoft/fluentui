@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - 'node'
 before_script:
+  - if [[ `npm -v` != 5* ]]; then npm i -g npm@5; fi
   - npm install -g gulp
 script:
   - npm run build
