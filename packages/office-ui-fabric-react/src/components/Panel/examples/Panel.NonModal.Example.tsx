@@ -24,7 +24,7 @@ export class PanelNonModalExample extends React.Component<any, any> {
           headerText='Non-Modal Panel'
           closeButtonAriaLabel='Close'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );

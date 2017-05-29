@@ -17,6 +17,7 @@ import {
   updateH,
   updateSV
 } from '../../utilities/color/colors';
+import { FontClassNames } from '../../Styling';
 import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -71,7 +72,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             />) }
           <table className='ms-ColorPicker-table' cellPadding='0' cellSpacing='0'>
             <thead>
-              <tr className='ms-font-s'>
+              <tr className={ FontClassNames.small }>
                 <td>Hex</td>
                 <td>Red</td>
                 <td>Green</td>

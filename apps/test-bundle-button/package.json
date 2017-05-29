@@ -4,6 +4,7 @@
   "description": "Testing the button for bundling.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"

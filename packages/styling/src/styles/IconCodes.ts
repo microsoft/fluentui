@@ -682,7 +682,7 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uE942'.
    */
-  compassNw: '\uE942',
+  compassNW: '\uE942',
   /**
    * Icon code with the value '\uE930'.
    */
