@@ -104,6 +104,8 @@ export function getId(prefix?: string): string;
 
 export function getInitials(displayName: string, isRtl: boolean): string;
 
+export function getLanguage(): string;
+
 // (undocumented)
 export function getLastFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
@@ -358,6 +360,7 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: getDocument has incomplete type information
 // WARNING: doesElementContainFocus has incomplete type information
 // WARNING: hoistMethods has incomplete type information
+// WARNING: setLanguage has incomplete type information
 // WARNING: shallowCompare has incomplete type information
 // WARNING: assign has incomplete type information
 // WARNING: filteredAssign has incomplete type information
@@ -372,7 +375,6 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: Unsupported export: imageProperties
 // WARNING: getResourceUrl has incomplete type information
 // WARNING: setBaseUrl has incomplete type information
-// WARNING: getLanguage has incomplete type information
 // WARNING: setRTL has incomplete type information
 // WARNING: Unsupported export: DATA_IS_SCROLLABLE_ATTRIBUTE
 // WARNING: disableBodyScroll has incomplete type information

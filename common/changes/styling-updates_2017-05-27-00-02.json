@@ -11,14 +11,19 @@
       "type": "major"
     },
     {
+      "packageName": "@uifabric/utilities",
+      "comment": "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute.",
+      "type": "major"
+    },
+    {
       "packageName": "@uifabric/styling",
-      "comment": "Major updates to mergeStyles and other various utilities.",
+      "comment": "Major updates to mergeStyles and other various utilities. Updating fonts to follow latest fabric-core language fallbacks.",
       "type": "minor"
     },
     {
       "packageName": "@uifabric/example-app-base",
       "comment": "All references to fabric-core removed.",
-      "type": "patch"
+      "type": "major"
     }
   ],
   "email": "dzearing@microsoft.com"
