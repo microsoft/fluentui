@@ -44,6 +44,6 @@
     "@uifabric/utilities": ">=3.0.0 <4.0.0",
     "highlight.js": "^9.9.0",
     "office-ui-fabric-core": ">=7.0.0 <8.0.0",
-    "office-ui-fabric-react": ">=3.0.0 <4.0.0"
+    "office-ui-fabric-react": ">=2.0.0 <3.0.0"
   }
 }
