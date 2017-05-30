@@ -298,7 +298,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderNormalItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
-      return [item.onRender(item)];
+      return [item.onRender(item, index, hasCheckmarks, hasIcons)];
     }
     if (item.href) {
       return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);

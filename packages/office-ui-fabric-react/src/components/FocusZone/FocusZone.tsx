@@ -97,6 +97,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
+  public componentDidUpdate(prevProps: IFocusZoneProps, prevState: {}) {
+    this._updateTabIndexes();
+    if (this._activeElement) {
+      this.focus();
+    }
+  }
+
   public componentWillUnmount() {
     delete _allInstances[this._id];
   }
