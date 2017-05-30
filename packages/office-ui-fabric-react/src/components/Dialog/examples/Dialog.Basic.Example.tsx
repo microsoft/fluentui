@@ -9,7 +9,7 @@ export class DialogBasicExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      showDialog: false
+      hideDialog: true
     };
   }
 
@@ -22,17 +22,17 @@ export class DialogBasicExample extends React.Component<any, any> {
           text='Open Dialog'
         />
         <Dialog
-          contentProps={ {
+          hidden={ this.state.hideDialog }
+          onDismiss={ this._closeDialog.bind(this) }
+          dialogContentProps={ {
             type: DialogType.normal,
             title: 'All emails together',
             subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           } }
           modalProps={ {
-            isOpen: this.state.showDialog,
             isBlocking: false,
             containerClassName: 'ms-dialogMainOverride'
           } }
-          onDismiss={ this._closeDialog.bind(this) }
         >
           <ChoiceGroup
             options={ [
@@ -64,11 +64,11 @@ export class DialogBasicExample extends React.Component<any, any> {
   }
 
   private _showDialog() {
-    this.setState({ showDialog: true });
+    this.setState({ hideDialog: false });
   }
 
   private _closeDialog() {
-    this.setState({ showDialog: false });
+    this.setState({ hideDialog: true });
   }
 
   private _onChoiceChanged() {

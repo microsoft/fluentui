@@ -21,6 +21,13 @@ export interface IDialogState {
 export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public static defaultProps: IDialogProps = {
+    hidden: false,
+    modalProps: {
+      isDarkOverlay: true,
+      isBlocking: false
+    },
+    dialogContentProps: {},
+    // deprecated props
     isOpen: false,
     type: DialogType.normal,
     isDarkOverlay: true,
@@ -29,8 +36,6 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     containerClassName: '',
     contentClassName: '',
     topButtonsProps: [],
-    modalProps: {},
-    contentProps: {}
   };
 
   constructor(props: IDialogProps) {
@@ -60,9 +65,10 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       type,
       contentClassName,
       topButtonsProps,
-      contentProps,
+      dialogContentProps,
       modalProps,
-      containerClassName
+      containerClassName,
+      hidden
     } = this.props;
     let { id } = this.state;
 
@@ -75,7 +81,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         isBlocking={ isBlocking }
         isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap }
         isDarkOverlay={ isDarkOverlay }
-        isOpen={ isOpen }
+        isOpen={ isOpen ? isOpen : !hidden }
         onDismissed={ onDismissed }
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
@@ -89,13 +95,13 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
         <DialogContent
           className={ contentClassName }
-          onDismiss={ contentProps.onDismiss || onDismiss }
+          onDismiss={ dialogContentProps.onDismiss || onDismiss }
           showCloseButton={ !isBlocking }
           title={ title }
           subText={ subText }
           topButtonsProps={ topButtonsProps }
           type={ type }
-          {...contentProps}
+          {...dialogContentProps}
         >
           { this.props.children }
         </DialogContent>
