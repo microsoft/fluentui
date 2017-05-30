@@ -34,6 +34,8 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _root: HTMLElement;
   private _measured: HTMLElement;
+  private _lastKnownRootWidth: number | undefined = undefined;
+  private _lastKnownMeasuredWidth: number | undefined = undefined;
 
   constructor(props: IResizeGroupProps) {
     super(props);
@@ -57,6 +59,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   public componentDidMount() {
     this._measureItems();
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
+  }
+
+  public componentWillUnmount() {
+    this._lastKnownRootWidth = undefined;
+    this._lastKnownMeasuredWidth = undefined;
   }
 
   public render() {
@@ -85,6 +92,18 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _onResize() {
+    // If we have some cached measurements, let's see if we can skip rendering
+    if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
+      let containerWidth = this._root.getBoundingClientRect().width;
+
+      // If the container didn't grow and the component still fits, don't trigger a remeasure.
+      // If the container grew, we want to trigger a remeasure since we might be able to fit more content.
+      if (containerWidth <= this._lastKnownRootWidth && this._lastKnownMeasuredWidth <= containerWidth) {
+        this._lastKnownRootWidth = containerWidth;
+        return;
+      }
+    }
+
     this.setState({ shouldMeasure: true });
   }
 
@@ -93,9 +112,9 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     const { shouldMeasure } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
-      const container = this._root.getBoundingClientRect();
-      const measured = this._measured.getBoundingClientRect();
-      if ((measured.width > container.width)) {
+      const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
+      const measuredWidth = this._lastKnownMeasuredWidth = this._measured.getBoundingClientRect().width;
+      if ((measuredWidth > containerWidth)) {
         let nextMeasuredData = onReduceData(this.state.measuredData);
 
         // We don't want to get stuck in an infinite render loop when there are no more

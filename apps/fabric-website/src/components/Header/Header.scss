@@ -40,7 +40,7 @@
 
   @media (min-width: $od-Header-bannerWidth) {
     .od-Header-logo {
-      @include padding-left(8px);
+      @include ms-padding-left(8px);
     }
   }
 
@@ -52,7 +52,7 @@
     height: $od-Header-searchHeight;
     display: none;
 
-    @media screen and (min-width: $ms-screen-xxl-min) {
+    @media screen and (min-width: $ms-screen-min-xxl) {
       display: block;
     }
   }

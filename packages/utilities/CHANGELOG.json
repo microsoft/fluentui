@@ -2,6 +2,32 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@uifabric/utilities_v4.0.0",
+      "date": "Tue, 30 May 2017 03:27:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ryo Miyake <ryo.studiom@gmail.com>",
+            "commit": "83b0787a17884867a2ad336d3dad9e713da8f04e",
+            "comment": "Introduce prop-types instead of React.PropTypes"
+          }
+        ],
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "memoize/memoizeFunction: memoize converted to a decorator, memoizeFunction is now for memoizing functions."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.10.2",
       "tag": "@uifabric/utilities_v1.10.2",
       "date": "Fri, 26 May 2017 10:21:03 GMT",

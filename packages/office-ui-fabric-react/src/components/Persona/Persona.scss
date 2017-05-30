@@ -63,8 +63,7 @@ $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
 
 .root {
-  @include ms-baseFont;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
@@ -169,10 +168,10 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .image {
-  @include margin-right(10px);
+  @include ms-margin-right(10px);
   position: absolute;
   top: 0;
-  @include left(0);
+  @include ms-left(0);
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -190,7 +189,7 @@ $ms-Persona-presenceSizeXl: 28px;
   width: $ms-Persona-presenceSizeMd;
   border-radius: 50%;
   top: auto;
-  @include left(34px);
+  @include ms-left(34px);
   bottom: -1px;
   border: 2px solid $ms-color-white;
   text-align: center;
@@ -239,7 +238,7 @@ $ms-Persona-presenceSizeXl: 28px;
 .tertiaryText,
 .optionalText,
 .textContent {
-  @include noWrap();
+  @include ms-no-wrap();
 }
 
 .primaryText {
@@ -285,9 +284,9 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    @include right(auto);
+    @include ms-right(auto);
     top: 10px;
-    @include left(0);
+    @include ms-left(0);
     border: 0;
 
     @media screen and (-ms-high-contrast: active) {
@@ -301,7 +300,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .details {
-    @include padding-left(20px);
+    @include ms-padding-left(20px);
   }
 
   .primaryText {
@@ -359,7 +358,7 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 4px solid #ffffff;
-    @include left(16px);
+    @include ms-left(16px);
   }
 
   .presenceIcon {
@@ -407,7 +406,7 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 4px solid #ffffff;
-    @include left(16px);
+    @include ms-left(16px);
   }
 
   .presenceIcon {
@@ -452,7 +451,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    @include left(19px);
+    @include ms-left(19px);
   }
 
   .primaryText {
@@ -492,7 +491,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    @include left(27px);
+    @include ms-left(27px);
   }
 
   .primaryText {
@@ -532,7 +531,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .presence {
-    @include left(49px);
+    @include ms-left(49px);
     height: $ms-Persona-presenceSizeLg;
     width: $ms-Persona-presenceSizeLg;
     border-width: 3px;
@@ -582,7 +581,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXl;
     width: $ms-Persona-presenceSizeXl;
-    @include left(71px);
+    @include ms-left(71px);
     border-width: 4px;
   }
 
@@ -679,7 +678,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .presenceIcon {
     position: relative;
-    @include left(1px);
+    @include ms-left(1px);
   }
 }
 
@@ -696,7 +695,7 @@ $ms-Persona-presenceSizeXl: 28px;
       height: 100%;
       position: absolute;
       top: 0;
-      @include left(0);
+      @include ms-left(0);
       box-shadow: 0 0 0 2px $ms-color-presence-busy-average inset;
       border-radius: 50%;
     }
@@ -709,7 +708,7 @@ $ms-Persona-presenceSizeXl: 28px;
       transform: rotate(-45deg);
       position: absolute;
       top: 5px;
-      @include left(0);
+      @include ms-left(0);
     }
 
 
