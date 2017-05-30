@@ -2,6 +2,84 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "office-ui-fabric-react_v4.0.0",
+      "date": "Tue, 30 May 2017 03:27:20 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "da0f88a8690c867e2bbcf19c533ba57487acc4ed",
+            "comment": "Updated dependency to Fabric Core 7"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "The styling package is now a dependency of fabric-react, which brings in the initial steps towards offering consumers a much better way to customize components to meet their requirements. The Button components and Toggle components have so far been converted to use the styling utilities. We will be ellaborating more on this as we refine our patterns towards customization and refine the documentation."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "cfffab19f72102f075b55422bbf3448f840deb9e",
+            "comment": "DetailsList: initialFocusedIndex is considered on already mounted rows "
+          },
+          {
+            "author": "Aaron Zhou <aaronyzhou88@gmail.com>",
+            "commit": "8424c7680a618013d5cb4d320e7f6ed798cb317b",
+            "comment": "SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList."
+          },
+          {
+            "author": "Ryo Miyake <ryo.studiom@gmail.com>",
+            "commit": "83b0787a17884867a2ad336d3dad9e713da8f04e",
+            "comment": "Introduce prop-types instead of React.PropTypes"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "63b34daf51bc7185585c29c81bc34abd1ae64edb",
+            "comment": "List: improved measure logic and fix nested list scroll problem"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "f812b804e890fd7762e0c09226fb28f9e5036717",
+            "comment": "ResizeGroup: Reduce the number of render calls when reducing the width."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "89660364911f368866f1cc5186673e89b15e661e",
+            "comment": "Exposes setSelectionRange function to TextField component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=3.0.0 <4.0.0` to `>=4.0.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.0.1 <2.0.0` to `>=0.3.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.14` to `2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.34.2",
+      "tag": "office-ui-fabric-react_v2.34.2",
+      "date": "Sat, 27 May 2017 01:47:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "e6b653bc329e80ebc5e046055e4cb00553a465ae",
+            "comment": "ContextualMenu: prevent Narrator to announce items twice."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.34.1",
       "tag": "office-ui-fabric-react_v2.34.1",
       "date": "Fri, 26 May 2017 10:21:03 GMT",

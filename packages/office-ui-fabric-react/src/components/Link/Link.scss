@@ -2,7 +2,6 @@
 
 // Element: ms-Link root component
 .root {
-  @include ms-baseFont;
   color: $ms-color-themePrimary;
   margin: 0;
   overflow: inherit;

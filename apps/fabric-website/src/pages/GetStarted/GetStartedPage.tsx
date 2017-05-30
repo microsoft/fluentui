@@ -40,17 +40,17 @@ export class GetStartedPage extends React.Component<any, any> {
           <h2>Use our design language in your own experience</h2>
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
-              <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
+              <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
                 <div className={ styles.title }>Styles</div>
                 <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
-              <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
+              <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
                 <div className={ styles.title }>Icons</div>
                 <div className={ styles.description }>Fabric includes Office&rsquo;s official product icons. Fabric also provides a suite of product and document symbols, so you can use the same metaphors we use.</div>
               </div>
-              <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
+              <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg' } alt='Illustration of Components' />
                 <div className={ styles.title }>Components</div>
                 <div className={ styles.description }>Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands, containers, and content.</div>

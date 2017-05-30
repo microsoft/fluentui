@@ -11,7 +11,7 @@
   "data": [
     [
       {
-        "value": "ms-u-hiddenSm"
+        "value": "hiddenSm"
       },
       {
         "value": ""
@@ -39,7 +39,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenMd"
+        "value": "hiddenMd"
       },
       {
         "value": "",
@@ -67,7 +67,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenMdDown"
+        "value": "hiddenMdDown"
       },
       {
         "value": ""
@@ -94,7 +94,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenMdUp"
+        "value": "hiddenMdUp"
       },
       {
         "value": "",
@@ -118,7 +118,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenLg"
+        "value": "hiddenLg"
       },
       {
         "value": "",
@@ -146,7 +146,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenLgDown"
+        "value": "hiddenLgDown"
       },
       {
         "value": ""
@@ -172,7 +172,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenLgUp"
+        "value": "hiddenLgUp"
       },
       {
         "value": "",
@@ -197,7 +197,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXl"
+        "value": "hiddenXl"
       },
       {
         "value": "",
@@ -225,7 +225,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXlDown"
+        "value": "hiddenXlDown"
       },
       {
         "value": ""
@@ -250,7 +250,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXlUp"
+        "value": "hiddenXlUp"
       },
       {
         "value": "",
@@ -276,7 +276,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXxl"
+        "value": "hiddenXxl"
       },
       {
         "value": "",
@@ -304,7 +304,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXxlDown"
+        "value": "hiddenXxlDown"
       },
       {
         "value": ""
@@ -328,7 +328,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXxlUp"
+        "value": "hiddenXxlUp"
       },
       {
         "value": "",
@@ -355,7 +355,7 @@
     ],
     [
       {
-        "value": "ms-u-hiddenXxxl"
+        "value": "hiddenXxxl"
       },
       {
         "value": "",

@@ -92,7 +92,7 @@ describe('connect', () => {
 
   it('can throw when requiring a store in an environment without any stores hosted', () => {
     let hello = storeKey<IHelloStore>('hello');
-    let Connected = connect(
+    let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       [hello],
       () => ({ /* empty */ })
@@ -112,7 +112,7 @@ describe('connect', () => {
 
   it('can throw in an environment that does not contain the required store', () => {
     let hello = storeKey<IHelloStore>('hello');
-    let Connected = connect(
+    let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       [hello],
       () => ({ /* empty */ })

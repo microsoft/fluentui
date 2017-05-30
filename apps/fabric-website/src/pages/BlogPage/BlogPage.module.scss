@@ -11,7 +11,7 @@
   min-height: 80px; // Enough height to fit angle
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .angle {
     margin-top: 0; // Move back down to ensure room for in-page nav
     min-height: 120px;

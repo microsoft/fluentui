@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
+import { Icon } from '../../Icon';
 import * as stylesImport from './Check.scss';
 const styles: any = stylesImport;
 
@@ -14,6 +15,8 @@ export interface ICheckProps extends React.Props<Check> {
    * @deprecated
    */
   isChecked?: boolean;
+
+  alwaysShowCheck?: boolean;
 }
 
 export class Check extends BaseComponent<ICheckProps, {}> {
@@ -34,12 +37,20 @@ export class Check extends BaseComponent<ICheckProps, {}> {
       <div className={ css(
         'ms-Check',
         styles.root,
-        {
-          ['is-checked ' + styles.rootIsChecked]: isChecked
-        }) }>
-        <div className={ css('ms-Icon ms-Check-background', styles.background) }>
-        </div>
-        <i className={ css('ms-Check-check ms-Icon ms-Icon--CheckMark', styles.check) }></i>
+        isChecked && ('is-checked ' + styles.rootIsChecked)
+      ) }>
+        <Icon
+          className={ css('ms-Check-background', styles.background) }
+          iconName='fullCircleMask'
+        />
+        <Icon
+          className={ css('ms-Check-circle', styles.circle) }
+          iconName='circleRing'
+        />
+        <Icon
+          className={ css('ms-Check-check', styles.check) }
+          iconName='checkMark'
+        />
       </div>
     );
   }

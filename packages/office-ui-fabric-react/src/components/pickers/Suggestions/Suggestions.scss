@@ -32,13 +32,15 @@
 }
 
 .searchMoreButton {
-  @include button-reset();
+  background: none;
+  border: 0;
+  cursor: pointer;
   margin: 0;
-  @include padding-left(8px);
+  @include ms-padding-left(8px);
   position: relative;
   border-top: 1px solid $ms-color-neutralLight;
   height: 40px;
-  @include text-align(left);
+  @include ms-text-align(left);
   width: 100%;
   &:hover {
       background-color: $ms-color-neutralLight;

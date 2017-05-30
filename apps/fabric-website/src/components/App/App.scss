@@ -33,7 +33,7 @@
       font-weight: $ms-font-weight-regular;
       height: $App-mobileNavBarHeight;
       line-height: $App-mobileNavBarHeight;
-      @include margin-right(12px);
+      @include ms-margin-right(12px);
       padding: 0;
 
       &:focus {
@@ -52,12 +52,12 @@
   .App-nav {
     -webkit-overflow-scrolling: touch; // Improves scrolling performance
     bottom: 0;
-    @include left(-$Nav-width);
+    @include ms-left(-$Nav-width);
     overflow-y: auto;
     position: fixed;
     top: $Header-height + $App-mobileNavBarHeight;
-    transition: $ms-duration2 $ms-ease1;
-    @include transition-property(left);
+    transition: $ms-animation-duration-2 $ms-animation-ease-1;
+    @include ms-transition-property(left);
     width: $Nav-width;
   }
 
@@ -69,7 +69,7 @@
     margin-top: $App-mobileNavBarHeight; // Move it down below the mobile nav bar
     overflow: hidden;
     position: relative;
-    transition: all $ms-duration2 $ms-ease1;
+    transition: all $ms-animation-duration-2 $ms-animation-ease-1;
 
     @include high-contrast {
       border-right: 1px solid $ms-color-white;
@@ -91,7 +91,7 @@
   }
 
   // When the nav is open (smaller screens only) push the content over and prevent app from scrolling
-  @media screen and (max-width: $ms-screen-lg-max) {
+  @media screen and (max-width: $ms-screen-max-lg) {
     .App.is-navOpen {
       bottom: 0;
       left: 0;
@@ -101,7 +101,7 @@
       top: 0;
 
       .App-mobileNavBar {
-        @include padding-left(36px); // Align to menu items
+        @include ms-padding-left(36px); // Align to menu items
       }
 
       .App-mobileNavOverlay {
@@ -109,25 +109,25 @@
         bottom: 0;
         display: block;
         position: absolute;
-        @include left($Nav-width);
-        @include right(0);
+        @include ms-left($Nav-width);
+        @include ms-right(0);
         top: 0;
         z-index: 1;
       }
 
       .App-nav {
-        @include left(0);
+        @include ms-left(0);
       }
 
       .App-content {
-        @include left($Nav-width);
+        @include ms-left($Nav-width);
         opacity: 0.5; // Dim the content
       }
     }
   }
 
   // Show the nav at all times, to the left of the content
-  @media screen and (min-width: $ms-screen-xl-min) {
+  @media screen and (min-width: $ms-screen-min-xl) {
     .App-wrapper {
       flex-direction: row;
     }
@@ -137,7 +137,7 @@
     }
 
     .App-nav {
-      @include left(auto);
+      @include ms-left(auto);
       top: auto; // Mobile nav bar is no longer there
       position: relative;
       overflow-y: visible
@@ -152,11 +152,11 @@
     // Reset values for the nav and content if opened on larger screens
     .App.is-navOpen {
       .App-nav {
-        @include left(auto);
+        @include ms-left(auto);
       }
 
       .App-content {
-        @include left(auto);
+        @include ms-left(auto);
       }
     }
   }

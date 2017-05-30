@@ -13,6 +13,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
+import { Icon } from '../../Icon';
 import * as stylesImport from './Pivot.scss';
 const styles: any = stylesImport;
 
@@ -158,7 +159,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     return <span className={ css('ms-Pivot-link-content') }>
       { itemIcon !== undefined && (
         <span className={ css('ms-Pivot-icon', styles.icon) }>
-          <i className={ `ms-Icon ms-Icon--${itemIcon}` }></i>
+          <Icon iconName={ itemIcon } />
         </span>
       ) }
       { linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }

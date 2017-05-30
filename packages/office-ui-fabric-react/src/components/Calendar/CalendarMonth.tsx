@@ -8,6 +8,7 @@ import {
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
+import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -52,7 +53,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.prevYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
+              <Icon iconName={ getRTL() ? 'chevronRight' : 'chevronLeft' } />
             </span>
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
@@ -61,7 +62,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.nextYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
+              <Icon iconName={ getRTL() ? 'chevronLeft' : 'chevronRight' } />
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
