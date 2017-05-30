@@ -172,12 +172,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       pickerAriaLabel,
       placeholder,
       allowTextInput,
-      borderless
+      borderless,
+      className
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ css('ms-DatePicker', styles.root) } ref='root'>
+      <div className={ css('ms-DatePicker', styles.root, className) } ref='root'>
         <div ref={ (c): HTMLElement => this._datepicker = c }>
           <TextField
             className={ styles.textField }
@@ -195,11 +196,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             label={ label }
             placeholder={ placeholder }
             borderless={ borderless }
-            iconClass={ css(
-              'ms-Icon ms-Icon--Calendar',
-              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
-              label ? styles.eventWithLabel : styles.eventWithoutLabel
-            ) }
+            iconProps={ {
+              iconName: 'calendar',
+              className: css(
+                label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
+                label ? styles.eventWithLabel : styles.eventWithoutLabel
+              )
+            } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
             ref='textField' />

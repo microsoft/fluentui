@@ -94,7 +94,7 @@ export class App extends React.Component<IAppProps, any> {
 
         { (responsiveMode <= ResponsiveMode.large) ? (
           <Panel
-            className='ms-App-navPanel ms-font-m'
+            className='ms-App-navPanel'
             isOpen={ isMenuVisible }
             isLightDismiss={ true }
             type={ PanelType.smallFixedNear }

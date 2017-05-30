@@ -21,7 +21,7 @@
 
   .ms-App-nav {
     position: absolute;
-    @include left(0);
+    @include ms-left(0);
     width: 300px;
     top: 50px;
     bottom: 0;
@@ -35,8 +35,8 @@
 
   .ms-App-content {
     position: absolute;
-    @include left(300px);
-    @include right(0);
+    @include ms-left(300px);
+    @include ms-right(0);
     top: 50px;
     bottom: 0;
     overflow-x: auto;
@@ -52,7 +52,7 @@
   .ms-App--small .ms-App-content,
   .ms-App--medium .ms-App-content,
   .ms-App--large .ms-App-content {
-    @include left(0);
+    @include ms-left(0);
     padding: 5px;
   }
 
@@ -83,7 +83,7 @@
     vertical-align: middle;
     transform: translateY(-50%);
     position: absolute;
-    @include right(20px);
+    @include ms-right(20px);
     top: 50%;
     padding: 2px 6px;
     border-radius: 2px;

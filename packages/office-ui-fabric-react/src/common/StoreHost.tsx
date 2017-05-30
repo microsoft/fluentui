@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { StoreSet } from './StoreSet';
 import { BaseComponent } from '../Utilities';
 
@@ -12,11 +13,11 @@ export interface IStoreHostContext {
 
 export class StoreHost extends BaseComponent<IStoreHostProps, {}> {
   public static contextTypes = {
-    stores: React.PropTypes.object
+    stores: PropTypes.object
   };
 
   public static childContextTypes = {
-    stores: React.PropTypes.object
+    stores: PropTypes.object
   };
 
   public context: IStoreHostContext;

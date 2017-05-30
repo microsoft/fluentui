@@ -2,6 +2,42 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.5.27",
+      "tag": "@uifabric/fabric-website_v4.5.27",
+      "date": "Tue, 30 May 2017 03:27:20 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.14` to `2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=3.0.0 <4.0.0` to `>=4.0.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=3.0.0 <4.0.0` to `>=4.0.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.26",
+      "tag": "@uifabric/fabric-website_v4.5.26",
+      "date": "Fri, 26 May 2017 10:21:03 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.13` to `1.3.14`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=2.34.0 <3.0.0` to `>=2.34.1 <3.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.10.0 <2.0.0` to `>=1.10.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.25",
       "tag": "@uifabric/fabric-website_v4.5.25",
       "date": "Tue, 23 May 2017 10:16:04 GMT",

@@ -42,7 +42,7 @@
     border: 0;
     color: transparent;
     position: absolute;
-    @include right(0);
+    @include ms-right(0);
     top: 0;
     height: $od-Header-searchHeight - 4px;
     width: $od-Header-searchHeight;

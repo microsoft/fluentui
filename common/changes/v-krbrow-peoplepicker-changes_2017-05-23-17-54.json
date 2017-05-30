@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PeoplePicker: Updated to match OWA people picker and Fabric toolkit spec",
+      "type": "minor"
+    }
+  ],
+  "email": "v-krbrow@microsoft.com"
+}
