@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 May 2017 03:27:20 GMT and should not be manually modified.
+This log was last generated on Tue, 30 May 2017 20:23:45 GMT and should not be manually modified.
+
+## 4.1.0
+Tue, 30 May 2017 20:23:45 GMT
+
+### Minor changes
+
+- PeoplePicker: Updated to match OWA people picker and Fabric toolkit spec
 
 ## 4.0.0
 Tue, 30 May 2017 03:27:20 GMT
