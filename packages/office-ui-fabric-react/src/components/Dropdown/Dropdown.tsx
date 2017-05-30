@@ -197,7 +197,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Find next valid dropdown option
-  private _moveIndex(index: number, selectedIndex: number): number {
+  private _moveIndex(stepValue: number, index: number, selectedIndex: number): number {
     // Return selectedIndex if nothing has changed
     if (selectedIndex === index) {
       return selectedIndex;
@@ -206,19 +206,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { options } = this.props;
     if (index < 0) {
       // If index < 0, return first valid option
-      return this._moveIndex(0, selectedIndex);
+      return this._moveIndex(stepValue, 0, selectedIndex);
     } else if (index >= options.length) {
       // If index > last option index, return last valid option
-      return this._moveIndex(options.length - 1, selectedIndex);
+      return this._moveIndex(stepValue, options.length - 1, selectedIndex);
     } else {
-      // If current index is valid, return index, otherwise, move index by 1
-      if (options[index].itemType === DropdownMenuItemType.Header ||
-        options[index].itemType === DropdownMenuItemType.Divider) {
-        index < selectedIndex && index > 0 ? index-- : index++;
-        return this._moveIndex(index, selectedIndex);
-      } else {
-        return index;
+      // If current index is a header or divider, increment by step
+      while (options[index].itemType === DropdownMenuItemType.Header
+        || options[index].itemType === DropdownMenuItemType.Divider) {
+        // If index + stepValue is out of bounds, reverse step direction
+        if (index + stepValue < 0 || index + stepValue >= options.length) {
+          stepValue *= -1;
+        }
+        index = index + stepValue;
       }
+      return index;
     }
   }
 
@@ -418,7 +420,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        newIndex = this._moveIndex(selectedIndex - 1, selectedIndex);
+        newIndex = this._moveIndex(-1, selectedIndex - 1, selectedIndex);
         preventScroll = newIndex !== selectedIndex;
         this.setSelectedIndex(newIndex);
         break;
@@ -427,20 +429,20 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
-          newIndex = this._moveIndex(selectedIndex + 1, selectedIndex);
+          newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
           preventScroll = newIndex !== selectedIndex;
           this.setSelectedIndex(newIndex);
         }
         break;
 
       case KeyCodes.home:
-        newIndex = this._moveIndex(0, selectedIndex);
+        newIndex = this._moveIndex(1, 0, selectedIndex);
         preventScroll = newIndex !== selectedIndex;
         this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.end:
-        newIndex = this._moveIndex(this.props.options.length - 1, selectedIndex);
+        newIndex = this._moveIndex(-1, this.props.options.length - 1, selectedIndex);
         preventScroll = newIndex !== selectedIndex;
         this.setSelectedIndex(newIndex);
         break;
