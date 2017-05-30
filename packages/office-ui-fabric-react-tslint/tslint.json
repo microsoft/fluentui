@@ -15,7 +15,9 @@
       "property-declaration",
       "member-variable-declaration"
     ],
-    "no-unused-imports": true,
+    "no-unused-imports": [
+      true
+    ],
     "prefer-const": false,
     "quotemark": [
       "single"

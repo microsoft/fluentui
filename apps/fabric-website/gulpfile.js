@@ -29,6 +29,8 @@ build.tslint.setConfig({
 // TODO: remove this! There are a number of lint errors to fix.
 build.tslint.isEnabled = () => false;
 
+build.webpack.isEnabled = () => isProduction;
+
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 

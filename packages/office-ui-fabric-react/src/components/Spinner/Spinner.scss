@@ -48,10 +48,14 @@ $borderSize: 1.5px;
       height: 28px;
     }
   }
-  > .label {
+  .label {
       color: $ms-color-themePrimary;
       margin-top: 10px;
       text-align: center;
+  }
+
+  .screenReaderOnly {
+    @include ms-screenReaderOnly;
   }
 }
 

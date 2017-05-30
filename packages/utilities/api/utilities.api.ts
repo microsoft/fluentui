@@ -104,6 +104,8 @@ export function getId(prefix?: string): string;
 
 export function getInitials(displayName: string, isRtl: boolean): string;
 
+export function getLanguage(): string;
+
 // (undocumented)
 export function getLastFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
@@ -311,8 +313,10 @@ enum KeyCodes {
   up = 38
 }
 
-// (undocumented)
-export function memoize < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T): T;
+export function memoizeFunction < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T,
+  maxCacheSize: number = 100): T;
+
+export function nullRender(): JSX.Element | null;
 
 // (undocumented)
 class Rectangle {
@@ -345,7 +349,6 @@ export function warnMutuallyExclusive < P >(componentName: string,
   props: P,
   exclusiveMap: ISettingsMap<P>): void;
 
-// WARNING: nullRender has incomplete type information
 // WARNING: createArray has incomplete type information
 // WARNING: autobind has incomplete type information
 // WARNING: Unsupported export: ICssInput
@@ -357,6 +360,7 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: getDocument has incomplete type information
 // WARNING: doesElementContainFocus has incomplete type information
 // WARNING: hoistMethods has incomplete type information
+// WARNING: setLanguage has incomplete type information
 // WARNING: shallowCompare has incomplete type information
 // WARNING: assign has incomplete type information
 // WARNING: filteredAssign has incomplete type information
@@ -371,10 +375,10 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: Unsupported export: imageProperties
 // WARNING: getResourceUrl has incomplete type information
 // WARNING: setBaseUrl has incomplete type information
-// WARNING: getLanguage has incomplete type information
 // WARNING: setRTL has incomplete type information
 // WARNING: Unsupported export: DATA_IS_SCROLLABLE_ATTRIBUTE
 // WARNING: disableBodyScroll has incomplete type information
 // WARNING: enableBodyScroll has incomplete type information
 // WARNING: Unsupported export: ISettingsMap
+// WARNING: memoize has incomplete type information
 // (No packageDescription for this package)

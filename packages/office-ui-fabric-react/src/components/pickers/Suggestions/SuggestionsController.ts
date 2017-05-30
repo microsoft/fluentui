@@ -12,12 +12,14 @@ export class SuggestionsController<T> {
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[]) {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
-      this.suggestions[0].selected = true;
-      this.currentSuggestion = this.suggestions[0];
+      if (selectedIndex !== undefined) {
+        this.suggestions[selectedIndex].selected = true;
+        this.currentSuggestion = this.suggestions[selectedIndex];
+      }
     } else {
       this.suggestions = [];
       this.currentIndex = -1;
@@ -73,6 +75,10 @@ export class SuggestionsController<T> {
 
   public hasSelectedSuggestion(): boolean {
     return this.currentSuggestion ? true : false;
+  }
+
+  public removeSuggestion(index: number) {
+    this.suggestions.splice(index, 1);
   }
 
   private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {

@@ -9,7 +9,7 @@ import {
   imageProperties
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
-
+import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;
 
@@ -107,15 +107,16 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
               'ms-Image-image',
               styles.image,
               CoverStyleMap[coverStyle],
-              (imageFit !== undefined) && ImageFitMap[imageFit], {
-                'is-fadeIn': shouldFadeIn,
-                'is-notLoaded': !loaded,
-                ['is-loaded ' + styles.imageIsLoaded]: loaded,
-                'ms-u-fadeIn400': loaded && shouldFadeIn,
-                'is-error': loadState === ImageLoadState.error,
+              (imageFit !== undefined) && ImageFitMap[imageFit],
+              !loaded && 'is-notLoaded',
+              loaded && 'is-loaded ' + styles.imageIsLoaded,
+              shouldFadeIn && 'is-fadeIn',
+              loadState === ImageLoadState.error && 'is-error',
+              loaded && shouldFadeIn && AnimationClassNames.fadeIn400,
+              {
                 ['ms-Image-image--scaleWidth ' + styles.imageIsScaleWidth]: (imageFit === undefined && !!width && !height),
                 ['ms-Image-image--scaleHeight ' + styles.imageIsScaleHeight]: (imageFit === undefined && !width && !!height),
-                ['ms-Image-image--scaleWidthHeight ' + styles.imageIsScaleWidthHeight]: (imageFit === undefined && !!width && !!height),
+                ['ms-Image-image--scaleWidthHeight ' + styles.imageIsScaleWidthHeight]: (imageFit === undefined && !!width && !!height)
               }) }
           ref={ this._resolveRef('_imageElement') }
           src={ src }

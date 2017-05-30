@@ -5,6 +5,7 @@
 
 let path = require('path');
 let build = require('@microsoft/web-library-build');
+let webpack = require('webpack');
 let buildConfig = build.getConfig();
 let configResources = build.karma.resources;
 let bindPolyfillPath = configResources.bindPolyfillPath;
@@ -56,7 +57,12 @@ module.exports = function (config) {
           buildConfig.libFolder,
           'node_modules'
         ]
-      }
+      },
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production')
+        })
+      ]
     },
 
     webpackMiddleware: {

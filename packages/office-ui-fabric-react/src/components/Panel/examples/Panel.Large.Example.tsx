@@ -23,7 +23,7 @@ export class PanelLargeExample extends React.Component<any, any> {
           type={ PanelType.large }
           headerText='Large Panel'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );

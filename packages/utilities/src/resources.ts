@@ -9,8 +9,3 @@ export function getResourceUrl(url) {
 export function setBaseUrl(baseUrl) {
   _baseUrl = baseUrl;
 }
-
-/** Gets the current runtime language. */
-export function getLanguage() {
-  return 'en-us';
-}
