@@ -15,67 +15,51 @@ $checkBoxHeight: 24px;
   height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
-  @include user-select(none);
-
-  &.rootIsChecked {
-    .background {
-      &:before {
-        color: $ms-color-themePrimary;
-      }
-
-      &:after {
-        color: $ms-color-white;
-      }
-    }
-
-    .check {
-      opacity: 1;
-      color: $ms-color-white;
-      font-weight: 900;
-      font-size: $ms-font-size-s;
-    }
-  }
-
-  &:hover {
-    .check {
-      opacity: 1;
-    }
-  }
+  @include ms-user-select(none);
 }
 
+.root:hover,
+.root:focus,
+.rootIsChecked {
+  opacity: 1;
+}
+
+.background,
+.circle,
 .check {
+  position: absolute;
+  height: $checkBoxHeight;
+  width: $checkBoxHeight;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
-  color: $ms-color-neutralTertiaryAlt;
-  opacity: 0;
+  font-size: $checkBoxHeight;
 }
 
 .background {
-  position: relative;
-  height: $checkBoxHeight;
-  width: $checkBoxHeight;
-
-  &:before {
-    content: '\E91F';
-    color: $ms-color-white;
-  }
-
-  &:after {
-    content: '\EA3A';
-    color: $ms-color-neutralTertiaryAlt;
-  }
-
-  &:before,
-  &:after {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: $checkBoxHeight;
-    height: $checkBoxHeight;
-    width: $checkBoxHeight;
-    position: absolute;
-  }
+  color: $ms-color-white;
 }
 
+.rootIsChecked .background {
+  color: $ms-color-themePrimary;
+}
+
+.circle {
+  color: $ms-color-neutralTertiaryAlt;
+}
+
+.rootIsChecked .circle {
+  color: $ms-color-white;
+}
+
+.check {
+  width: auto;
+  height: auto;
+  color: $ms-color-neutralTertiaryAlt;
+  font-size: 12px;
+}
+
+.rootIsChecked .check {
+  color: $ms-color-white;
+  font-weight: 900;
+}

@@ -9,6 +9,8 @@ import {
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
 import { Link } from '../../Link';
+import { Icon } from '../../Icon';
+import { IconButton } from '../../Button';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -66,35 +68,47 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   public render() {
-    let { className } = this.props;
+    let { className, ariaLabel } = this.props;
     let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
     let overflowMenuId = this._id + '-overflow';
 
     let { onRenderItem = this._onRenderItem } = this.props;
 
     return (
-      <div className={ css('ms-Breadcrumb', className, styles.root) } ref='renderingArea'>
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
-          <ul className={ css('ms-Breadcrumb-list', styles.list) }>
+      <div
+        className={ css('ms-Breadcrumb', className, styles.root) }
+        ref='renderingArea'
+        role='navigation'
+        aria-label={ ariaLabel }
+      >
+        <FocusZone direction={ FocusZoneDirection.horizontal } >
+          <ol className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length ? (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-                <div className={ css('ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More', styles.overflowButton) }
+                <IconButton
+                  className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
+                  iconProps={ { iconName: 'more' } }
                   onClick={ this._onOverflowClicked }
-                  data-is-focusable={ true }
                   role='button'
                   aria-haspopup='true'
-                  aria-owns={ isOverflowOpen ? overflowMenuId : null } />
-                <i className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron, getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                  aria-owns={ isOverflowOpen ? overflowMenuId : null }
+                />
+                <Icon
+                  className={ css('ms-Breadcrumb-chevron', styles.chevron) }
+                  iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+                />
               </li>
             ) : (null) }
             { renderedItems.map(
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) } ref={ item.key || String(index) }>
                   { onRenderItem(item, this._defaultRenderItem) }
-                  <i className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron, getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                  <Icon
+                    className={ css('ms-Breadcrumb-chevron', styles.chevron) }
+                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
                 </li>
               )) }
-          </ul>
+          </ol>
         </FocusZone>
         { isOverflowOpen ? (
           <ContextualMenu
@@ -128,6 +142,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
         <Link
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
+          aria-current={ item.isCurrentItem ? 'page' : null }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }>
           { item.text }
         </Link>
@@ -142,7 +157,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   @autobind
-  private _onOverflowClicked(ev: React.MouseEvent<HTMLElement>) {
+  private _onOverflowClicked(ev: React.MouseEvent<HTMLButtonElement>) {
     this.setState({
       'isOverflowOpen': !this.state.isOverflowOpen,
       'overflowAnchor': ev.currentTarget as HTMLElement
@@ -150,7 +165,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   @autobind
-  private _onOverflowDismissed(ev: MouseEvent) {
+  private _onOverflowDismissed(ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       'isOverflowOpen': false,
       'overflowAnchor': null

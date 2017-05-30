@@ -19,7 +19,7 @@ build.sass.setConfig({
 let rules = Object.assign(
   {},
   require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
 build.tslint.setConfig({
@@ -28,6 +28,8 @@ build.tslint.setConfig({
 });
 // TODO: remove this! There are a number of lint errors to fix.
 build.tslint.isEnabled = () => false;
+
+build.webpack.isEnabled = () => isProduction;
 
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));

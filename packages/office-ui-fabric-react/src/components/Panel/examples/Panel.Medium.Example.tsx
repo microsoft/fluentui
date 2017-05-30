@@ -23,7 +23,7 @@ export class PanelMediumExample extends React.Component<any, any> {
           type={ PanelType.medium }
           headerText='Medium Panel'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );

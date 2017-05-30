@@ -13,7 +13,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
   }
 
   public render() {
-    let { disabled } = this.props;
+    let { disabled, checked } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
@@ -22,6 +22,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
           data-automation-id='test'
           iconProps={ { iconName: 'AddFriend' } }
           disabled={ disabled }
+          checked={ checked }
         >
           Create account
         </CommandButton>

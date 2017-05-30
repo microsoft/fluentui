@@ -7,13 +7,12 @@ $groupList-ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
   font-size: $ms-font-size-s;
 
   BUTTON {
-    font-family: inherit;
     background-color: transparent;
   }
 }
 
 .group {
-  transition: background-color $ms-duration2 $groupList-ease-in-out-sine;
+  transition: background-color $ms-animation-duration-2 $groupList-ease-in-out-sine;
 }
 
 .groupIsDropping {

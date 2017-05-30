@@ -13,12 +13,17 @@ componentIds.push({
   fileName: 'buttonDefault',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
-
 componentIds.push({
   selector: '#' + 'DefaultButtonDisabled',
   fileName: 'buttonDefaultDisabled',
   commands: [defaultScreenshot]
 });
+componentIds.push({
+  selector: '#' + 'DefaultButtonChecked',
+  fileName: 'buttonDefaultChecked',
+  commands: [defaultScreenshot]
+});
+
 componentIds.push({
   selector: '#' + 'PrimaryButton',
   fileName: 'buttonPrimary',
@@ -30,16 +35,25 @@ componentIds.push({
   fileName: 'buttonPrimaryDisabled',
   commands: [defaultScreenshot]
 });
+componentIds.push({
+  selector: '#' + 'PrimaryButtonChecked',
+  fileName: 'buttonPrimaryChecked',
+  commands: [defaultScreenshot]
+});
 
 componentIds.push({
   selector: '#' + 'CommandButton',
   fileName: 'buttonCommand',
   commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
 });
-
 componentIds.push({
   selector: '#' + 'CommandButtonDisabled',
   fileName: 'buttonCommandDisabled',
+  commands: [defaultScreenshot]
+});
+componentIds.push({
+  selector: '#' + 'CommandButtonChecked',
+  fileName: 'buttonCommandChecked',
   commands: [defaultScreenshot]
 });
 
@@ -54,11 +68,16 @@ componentIds.push({
   commands: [defaultScreenshot]
 });
 componentIds.push({
+  selector: '#' + 'CompoundButtonChecked',
+  fileName: 'buttonCompoundChecked',
+  commands: [defaultScreenshot]
+});
+
+componentIds.push({
   selector: '#' + 'ContextualButton',
   fileName: 'buttonContextual',
   commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
-
 componentIds.push({
   selector: '#' + 'ContextualButton',
   fileName: 'buttonContextual',
@@ -68,6 +87,11 @@ componentIds.push({
     fileName: 'buttonContextualMenu',
     commands: [defaultScreenshot]
   }
+});
+componentIds.push({
+  selector: '#' + 'ContextualButtonChecked',
+  fileName: 'buttonContextualChecked',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseDownScreenshot, mouseMoveScreenshot]
 });
 
 casper.

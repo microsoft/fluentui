@@ -59,14 +59,14 @@ $fieldPlaceholderColor: $ms-color-neutralTertiary;
 /*** State controls ***/
 $controlBackgroundColor: $ms-color-white;
 $controlBackgroundSelectedColor: $ms-color-themePrimary;
-$controlBackgroundSelectedHoverColor: $ms-color-themeSecondary;
+$controlBackgroundSelectedHoverColor: $ms-color-themeDarkAlt;
 
 $controlForegroundColor: $ms-color-neutralPrimary;
 $controlForegroundHoverColor: $ms-color-black;
 $controlForegroundSelectedColor: $ms-color-white;
 
-$controlBorderUnselectedColor: $ms-color-neutralSecondaryAlt;
-$controlBorderUnselectedHoverColor: $ms-color-black;
+$controlBorderUnselectedColor: $ms-color-neutralTertiary;
+$controlBorderUnselectedHoverColor: $ms-color-neutralPrimary;
 // $controlBorderSelectedColor: unused
 $controlBorderSelectedHoverColor: $ms-color-themePrimary;
 

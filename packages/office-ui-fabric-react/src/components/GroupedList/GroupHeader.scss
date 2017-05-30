@@ -51,6 +51,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 
 .title {
+  @include ms-font-xl;
   padding: 14px 6px;
   display: inline-block;
   cursor: pointer;
@@ -79,7 +80,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   opacity: 0;
   padding: 0px 16px;
   vertical-align: middle;
-  transition: visibility $ms-duration3, opacity $ms-duration3;
+  transition: visibility $ms-animation-duration-3, opacity $ms-animation-duration-3;
 
   &.loadingIsVisible {
     visibility: visible;
@@ -91,10 +92,10 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   display: inline-block;
   position: relative;
   top: -16px;
-  @include left(-26px);
+  @include ms-left(-26px);
   font-size: $ms-icon-size-l;
   color: $ms-color-neutralSecondaryAlt;
-  transition: transform $ms-duration2 $groupHeader-ease-in-back, opacity $ms-duration4 $groupHeader-ease-out-sine;
+  transition: transform $ms-animation-duration-2 $groupHeader-ease-in-back, opacity $ms-animation-duration-4 $groupHeader-ease-out-sine;
   opacity: 0;
   transform: rotate(0.2deg) scale(0.65); // rotation prevents jittery motion in IE
   transform-origin: 10px 10px;
@@ -107,8 +108,8 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 :global(.ms-GroupedList-group.is-dropping) {
 
   > .root .dropIcon {
-      transition: transform $ms-duration4 $groupHeader-ease-out-circ, opacity $ms-duration1 $groupHeader-ease-out-sine;
-      transition-delay: $ms-duration3;
+      transition: transform $ms-animation-duration-4 $groupHeader-ease-out-circ, opacity $ms-animation-duration-1 $groupHeader-ease-out-sine;
+      transition-delay: $ms-animation-duration-3;
       opacity: 1;
       transform: rotate(0.2deg) scale(1); // rotation prevents jittery motion in IE
     }

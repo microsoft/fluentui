@@ -60,7 +60,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .sideCommands {
   position: absolute;
-  @include right(0px);
+  @include ms-right(0px);
   @include text-align(right);
   @include padding-right(20px);
 }
@@ -281,14 +281,14 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 .searchIconSearchWrapper,
 .searchIconArrowWrapper {
   top: 0;
-  @include padding-left(17px);
+  @include ms-padding-left(17px);
   @include padding-right(8px);
 }
 
 .searchIconClearWrapper {
   display: none;
   top: 1px;
-  @include right(0px);
+  @include ms-right(0px);
   z-index: $ms-zIndex-front;
 }
 
@@ -308,7 +308,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .searchInput,
 .searchInput::-webkit-input-placeholder {
-  @include ms-baseFont;
   font-size: $ms-font-size-m;
 }
 

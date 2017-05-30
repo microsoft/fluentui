@@ -20,6 +20,9 @@ import {
   BaseButton
 } from '../../Button';
 import {
+  Icon
+} from '../../Icon';
+import {
   Persona,
   PersonaSize
 } from '../../Persona';
@@ -192,7 +195,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => (
-          <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true' />
+          <Icon iconName={ icon } />
         ) }
       />
     </BaseButton>;
@@ -208,7 +211,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => (
-          <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true' />
+          <Icon iconName='addFriend' />
         ) }
       />
     </BaseButton>;
