@@ -7,6 +7,12 @@ export interface IDialogContent {
 }
 
 export interface IDialogContentProps extends React.Props<DialogContent> {
+   /**
+   * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDialogContent) => void;
+  
   /**
   * Show an 'x' close button in the upper-right corner
   */
