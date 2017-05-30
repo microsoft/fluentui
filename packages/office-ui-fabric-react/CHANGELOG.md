@@ -1,6 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 27 May 2017 01:47:19 GMT and should not be manually modified.
+This log was last generated on Tue, 30 May 2017 03:27:20 GMT and should not be manually modified.
+
+## 4.0.0
+Tue, 30 May 2017 03:27:20 GMT
+
+### Breaking changes
+
+- Updated dependency to Fabric Core 7
+- The styling package is now a dependency of fabric-react, which brings in the initial steps towards offering consumers a much better way to customize components to meet their requirements. The Button components and Toggle components have so far been converted to use the styling utilities. We will be ellaborating more on this as we refine our patterns towards customization and refine the documentation.
+
+### Minor changes
+
+- Exposes setSelectionRange function to TextField component.
+
+### Patches
+
+- DetailsList: initialFocusedIndex is considered on already mounted rows 
+- SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList.
+- Introduce prop-types instead of React.PropTypes
+- List: improved measure logic and fix nested list scroll problem
+- ResizeGroup: Reduce the number of render calls when reducing the width.
 
 ## 2.34.2
 Sat, 27 May 2017 01:47:19 GMT
