@@ -22,7 +22,7 @@
     "@types/react-addons-test-utils": "^0.14.17",
     "@types/react-dom": "^0.14.23",
     "@types/webpack-env": "^1.13.0",
-    "es6-promise": ">=3.2.1 <4.0.0",
+    "es6-promise": "^4.1.0",
     "immutability-helper": "^2.0.0",
     "office-ui-fabric-core": ">=7.0.0 <8.0.0",
     "office-ui-fabric-react": ">=1.5.5 <2.0.0",

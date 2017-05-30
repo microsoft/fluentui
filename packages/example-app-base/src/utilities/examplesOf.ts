@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-imports */
 
-import { getId } from '@uifabric/utilities';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IExample {
   key: string;

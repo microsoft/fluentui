@@ -4,6 +4,7 @@ import './Layer.Example.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
+import { AnimationClassNames } from '../../../Styling';
 
 export class LayerContentExample extends BaseComponent<any, any> {
   public static contextTypes = {
@@ -27,7 +28,7 @@ export class LayerContentExample extends BaseComponent<any, any> {
 
   public render() {
     return (
-      <div className='LayerExample-content ms-scaleUpIn100'>
+      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 }>
         <div className='LayerExample-textContent'>{ this.context.message }</div>
         <div>{ this.state.time }</div>
       </div>

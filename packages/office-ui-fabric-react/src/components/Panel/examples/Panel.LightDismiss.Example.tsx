@@ -23,7 +23,7 @@ export class PanelLightDismissExample extends React.Component<any, any> {
           headerText='Light Dismiss Panel'
           onDismiss={ () => this.setState({ showPanel: false }) }
         >
-          <span className='ms-font-m'>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
+          <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
         </Panel>
       </div>
     );

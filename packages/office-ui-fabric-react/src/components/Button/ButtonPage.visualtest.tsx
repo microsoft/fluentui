@@ -16,14 +16,14 @@ export default class ButtonVPage extends React.Component<any, any> {
         <DefaultButton id='DefaultButtonDisabled' disabled={ true } icon='Add' text='Default Button' />
       </div>&nbsp;
       <div>
-        <label> Default Button Toggled:   </label>
-        <DefaultButton id='DefaultButtonToggled' icon='Add' toggled={ true } text='Default Button' />
+        <label> Default Button Checked:   </label>
+        <DefaultButton id='DefaultButtonChecked' icon='Add' checked={ true } text='Default Button' />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
         <IconButton id={ 'IconButton' } iconProps={ { iconName } } />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <IconButton id={ 'IconButtonToggled' } toggled={ true } iconProps={ { iconName } } />
+        <IconButton id={ 'IconButtonChecked' } checked={ true } iconProps={ { iconName } } />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
         <CommandButton id='CommandButton'
@@ -36,8 +36,8 @@ export default class ButtonVPage extends React.Component<any, any> {
           text='Command Button' />
       </div >&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButtonToggled'
-          toggled={ true }
+        <CommandButton id='CommandButtonChecked'
+          checked={ true }
           icon='AddFriend'
           text='Command Button' />
       </div>&nbsp;
@@ -53,8 +53,8 @@ export default class ButtonVPage extends React.Component<any, any> {
           text='Compound Button' />
       </div>&nbsp;
       <div>
-        <CompoundButton id='CompoundButtonToggled'
-          toggled={ true }
+        <CompoundButton id='CompoundButtonChecked'
+          checked={ true }
           description='You can create a new account here.'
           text='Compound Button' />
       </div>&nbsp;
@@ -65,7 +65,7 @@ export default class ButtonVPage extends React.Component<any, any> {
         <PrimaryButton id='PrimaryButtonDisabled' disabled={ true } icon='Add' text='Primary Button' />
       </div >&nbsp;
       <div>
-        <PrimaryButton id='PrimaryButtonToggled' toggled={ true } icon='Add' text='Primary Button' />
+        <PrimaryButton id='PrimaryButtonToggled' checked={ true } icon='Add' text='Primary Button' />
       </div >&nbsp;
 
       <div>
@@ -95,7 +95,7 @@ export default class ButtonVPage extends React.Component<any, any> {
         </DefaultButton>
         <DefaultButton
           id='ContextualButtonToggled'
-          toggled={ true }
+          checked={ true }
           icon='Add'
           text='New'
           menuProps={ {

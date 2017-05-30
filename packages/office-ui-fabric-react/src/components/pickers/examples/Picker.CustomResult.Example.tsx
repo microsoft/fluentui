@@ -21,7 +21,9 @@ import {
   IBasePickerProps,
   BasePickerListBelow,
   BaseAutoFill,
-  IPickerItemProps
+  IPickerItemProps,
+  ISuggestionsProps,
+  ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
 import './Picker.CustomResult.Example.scss';
 import { TestImages } from '../../../common/TestImages';
@@ -266,11 +268,14 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return (<div> { documentProps.documentTitleProps.title } </div>);
 };
 
-export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
   let {
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
+  let {
+    onClick
+  } = itemProps;
   return (
     <Persona
       imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }

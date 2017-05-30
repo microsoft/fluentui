@@ -23,7 +23,7 @@ export class PanelSmallFluidExample extends React.Component<any, any> {
           onDismiss={ () => this.setState({ showPanel: false }) }
           headerText='Panel - Small, right-aligned, fixed'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );

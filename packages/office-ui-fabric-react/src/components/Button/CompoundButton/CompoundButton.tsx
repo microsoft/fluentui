@@ -1,23 +1,8 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent } from '../../../Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
-
-import * as stylesImport from './CompoundButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--compound',
-  description: styles.description,
-  flexContainer: styles.flexContainer,
-  icon: null,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  isToggled: styles.isToggled,
-  label: styles.label,
-  root: styles.root
-};
+import { getStyles } from './CompoundButton.styles';
 
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
@@ -26,10 +11,13 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    let { styles } = this.props;
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
         { ...this.props }
+        variantClassName='ms-Button--compound'
+        styles={ getStyles(undefined, styles) }
+        onRenderIcon={ nullRender }
       />
     );
   }

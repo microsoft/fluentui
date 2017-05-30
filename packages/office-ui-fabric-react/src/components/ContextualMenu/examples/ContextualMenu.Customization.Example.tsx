@@ -240,7 +240,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
                   style={ { backgroundColor: category.color } } />
-                <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>
+                <span className='ms-ContextualMenu-itemText'>
                   { category.name }
                 </span>
               </div>

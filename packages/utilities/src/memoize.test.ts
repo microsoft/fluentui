@@ -1,21 +1,22 @@
+// Polyfills
 import 'es6-weak-map/implement';
 
-import { memoize } from './memoize';
+import { memoize, memoizeFunction } from './memoize';
 
 let { expect } = chai;
 
-describe('memoize', () => {
+describe('memoizeFunction', () => {
   it('can return a cached result with a no args function', () => {
     let _timesCalled = 0;
-    let memoizedTimesCalled = memoize(() => ++_timesCalled);
+    let memoizeFunctiondTimesCalled = memoizeFunction(() => ++_timesCalled);
 
-    expect(memoizedTimesCalled()).equals(1);
-    expect(memoizedTimesCalled()).equals(1);
+    expect(memoizeFunctiondTimesCalled()).equals(1);
+    expect(memoizeFunctiondTimesCalled()).equals(1);
   });
 
   it('can return a cached result with a 2 arg function', () => {
     let _timesCalled = 0;
-    let combine = memoize((obj1, obj2) => (obj1.val + obj2.val + ++_timesCalled));
+    let combine = memoizeFunction((obj1, obj2) => (obj1.val + obj2.val + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -29,7 +30,7 @@ describe('memoize', () => {
 
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
-    let combine = memoize((obj1, obj2) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
+    let combine = memoizeFunction((obj1, obj2) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -37,6 +38,74 @@ describe('memoize', () => {
     expect(combine(objA, undefined)).equals('a2');
     expect(combine(null, objB)).equals('b3');
     expect(combine(false, 0)).equals('4');
+  });
+
+  it('works if you pass less arguments on subsequent calls', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string = '',
+      b: string = ''
+    ) => a + b + count++);
+
+    expect(func('hi', 'world')).equals('hiworld0');
+    expect(func('hi', 'world')).equals('hiworld0');
+    expect(func('hi')).equals('hi1');
+    expect(func('hi')).equals('hi1');
+    expect(func()).equals('2');
+    expect(func()).equals('2');
+  });
+
+  it('works if you pass more arguments on subsequent calls', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string = '',
+      b: string = ''
+    ) => a + b + count++);
+
+    expect(func()).equals('0');
+    expect(func()).equals('0');
+    expect(func('hi')).equals('hi1');
+    expect(func('hi')).equals('hi1');
+    expect(func('hi', 'world')).equals('hiworld2');
+    expect(func('hi', 'world')).equals('hiworld2');
+  });
+
+  it('resets after resetCount limit is reached.', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string
+    ) => a + count++, 1);
+
+    expect(func('a')).equals('a0');
+    expect(func('a')).equals('a0');
+    expect(func('b')).equals('b1');
+    expect(func('b')).equals('b2');
+    expect(func('b')).equals('b2');
+    expect(func('a')).equals('a3');
+    expect(func('a')).equals('a4');
+    expect(func('a')).equals('a4');
+  });
+
+});
+
+describe('memoize', () => {
+  it('can work on multiple instances of a class', () => {
+    let _count = 0;
+
+    class Foo {
+
+      @memoize
+      public bar(val: string) {
+        return val + _count++;
+      }
+    }
+
+    let f = new Foo();
+
+    expect(f.bar('hi')).equals('hi0');
+    expect(f.bar('hi')).equals('hi0');
+    expect(f.bar('bye')).equals('bye1');
+    expect(f.bar('bye')).equals('bye1');
   });
 
 });

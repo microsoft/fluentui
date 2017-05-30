@@ -51,6 +51,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 
 .title {
+  @include ms-font-xl;
   padding: 14px 6px;
   display: inline-block;
   cursor: pointer;
