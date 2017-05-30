@@ -1,12 +1,13 @@
 import { IFontStyles, IRawStyle } from '../interfaces/index';
 import { fontFace } from '../glamorExports';
 import {
-  getLanguage
+  getLanguage,
+  getWindow
 } from '@uifabric/utilities/lib/index';
+import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
-const DefaultFontUrl = 'https://static2.sharepointonline.com/files/fabric/assets/fonts';
-const DefaultIconUrl = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
+const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
 const FontFamilyFallbacks = `-apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
@@ -128,9 +129,9 @@ function _getFontFamily(): string {
 function _createFont(size: string, weight: number): IRawStyle {
   return {
     fontFamily: _getFontFamily(),
-    '-moz-osx-font-smoothing': 'grayscale',
-    '-ms-high-contrast-adjust': 'none',
-    '-webkit-font-smoothing': 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+    MsHighContrastAdjust: 'none',
+    WebkitFontSmoothing: 'antialiased',
     fontSize: size,
     fontWeight: weight
   };
@@ -154,11 +155,12 @@ function _registerFontFace(
 }
 
 function _registerFontFaceSet(
+  baseUrl: string,
   fontFamily: string,
   cdnFolder: string,
   cdnFontName: string = 'segoeui'
 ): void {
-  const urlBase = `${DefaultFontUrl}/${cdnFolder}/${cdnFontName}`;
+  const urlBase = `${baseUrl}/${cdnFolder}/${cdnFontName}`;
 
   _registerFontFace(fontFamily, urlBase + '-light', FontWeights.light);
   _registerFontFace(fontFamily, urlBase + '-semilight', FontWeights.semilight);
@@ -167,26 +169,49 @@ function _registerFontFaceSet(
 }
 
 function _registerDefaultFontFaces(): void {
-  // Produce @font-face definitions for all supported web fonts.
-  _registerFontFaceSet(FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
-  _registerFontFaceSet(FontNameArabic, 'segoeui-arabic');
-  _registerFontFaceSet(FontNameCyrillic, 'segoeui-cyrillic');
-  _registerFontFaceSet(FontNameEastEuropean, 'segoeui-easteuropean');
-  _registerFontFaceSet(FontNameGreek, 'segoeui-greek');
-  _registerFontFaceSet(FontNameHebrew, 'segoeui-hebrew');
-  _registerFontFaceSet(FontNameVietnamese, 'segoeui-vietnamese');
-  _registerFontFaceSet(FontNameWestEuropean, 'segoeui-westeuropean');
-  _registerFontFaceSet(FontFamilySelawik, 'selawik', 'selawik');
+  const baseUrl = _getFontBaseUrl();
 
-  // Leelawadee UI (Thai) does not have a 'light' weight, so we override
-  // the font-face generated above to use the 'semilight' weight instead.
-  _registerFontFace('Leelawadee UI Web', `${DefaultFontUrl}/leelawadeeui-thai/leelawadeeui-semilight`, FontWeights.light);
+  if (baseUrl) {
+    const fontUrl = `${baseUrl}/fonts`;
+    const iconUrl = `${baseUrl}/icons`;
 
-  // Leelawadee UI (Thai) does not have a 'semibold' weight, so we override
-  // the font-face generated above to use the 'bold' weight instead.
-  _registerFontFace('Leelawadee UI Web', `${DefaultFontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
+    // Produce @font-face definitions for all supported web fonts.
+    _registerFontFaceSet(fontUrl, FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
+    _registerFontFaceSet(fontUrl, FontNameArabic, 'segoeui-arabic');
+    _registerFontFaceSet(fontUrl, FontNameCyrillic, 'segoeui-cyrillic');
+    _registerFontFaceSet(fontUrl, FontNameEastEuropean, 'segoeui-easteuropean');
+    _registerFontFaceSet(fontUrl, FontNameGreek, 'segoeui-greek');
+    _registerFontFaceSet(fontUrl, FontNameHebrew, 'segoeui-hebrew');
+    _registerFontFaceSet(fontUrl, FontNameVietnamese, 'segoeui-vietnamese');
+    _registerFontFaceSet(fontUrl, FontNameWestEuropean, 'segoeui-westeuropean');
+    _registerFontFaceSet(fontUrl, FontFamilySelawik, 'selawik', 'selawik');
 
-  _registerFontFace('FabricMDL2Icons', DefaultIconUrl + '/fabricmdl2icons', FontWeights.regular);
+    // Leelawadee UI (Thai) does not have a 'light' weight, so we override
+    // the font-face generated above to use the 'semilight' weight instead.
+    _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-semilight`, FontWeights.light);
+
+    // Leelawadee UI (Thai) does not have a 'semibold' weight, so we override
+    // the font-face generated above to use the 'bold' weight instead.
+    _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
+
+    // Register icon urls.
+    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
+  }
 }
 
+/**
+ * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
+ */
+function _getFontBaseUrl(): string {
+  let win = getWindow();
+
+  // tslint:disable-next-line:no-string-literal
+  let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
+
+  return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
+}
+
+/**
+ * Register the font faces.
+ */
 _registerDefaultFontFaces();
