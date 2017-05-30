@@ -72,9 +72,16 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-sizeMd;
   display: flex;
   align-items: center;
+  overflow: hidden;
 
   .contextualHost {
     display: none;
+  }
+
+  &:hover {
+    .primaryText {
+      color: $ms-color-neutralDark;
+    }
   }
 }
 
@@ -357,7 +364,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
-    border: 4px solid #ffffff;
+    border: 2px solid $ms-color-white;
     @include ms-left(16px);
   }
 
@@ -374,6 +381,18 @@ $ms-Persona-presenceSizeXl: 28px;
   .secondaryText {
     display: none;
   }
+
+  &.showSecondaryText {
+    height: 30px;
+
+    .primaryText,
+    .secondaryText {
+      display: block;
+      padding: 0;
+      line-height: 1;
+      overflow: visible;
+    }
+  }
 }
 
 
@@ -383,6 +402,7 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-size28;
   line-height: $ms-Persona-size28;
   min-width: $ms-Persona-size28;
+  overflow: hidden;
 
   .imageArea,
   .image {
@@ -405,8 +425,8 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
-    border: 4px solid #ffffff;
-    @include ms-left(16px);
+    border: 2px solid $ms-color-white;
+    @include ms-left(20px);
   }
 
   .presenceIcon {
@@ -421,6 +441,16 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .secondaryText {
     display: none;
+  }
+
+  &.showSecondaryText {
+    .primaryText,
+    .secondaryText {
+      display: block;
+      padding: 0;
+      line-height: 1;
+      overflow: visible;
+    }
   }
 }
 
@@ -461,6 +491,16 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .secondaryText {
     display: none;
+  }
+
+  &.showSecondaryText {
+    .primaryText,
+    .secondaryText {
+      display: block;
+      padding: 0;
+      line-height: 1;
+      overflow: visible;
+    }
   }
 }
 
@@ -707,7 +747,8 @@ $ms-Persona-presenceSizeXl: 28px;
       background-color: $ms-color-presence-busy-average;
       transform: rotate(-45deg);
       position: absolute;
-      top: 5px;
+      // Using 40% as the top position of the cross bar element causes it to render in the correct position, even on very small persona sizes.
+      top: 40%;
       @include ms-left(0);
     }
 

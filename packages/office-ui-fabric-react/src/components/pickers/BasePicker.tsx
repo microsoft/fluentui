@@ -15,6 +15,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
+import { IPersonaProps } from '../Persona/Persona.Props';
 import * as stylesImport from './BasePicker.scss';
 const styles: any = stylesImport;
 
@@ -22,8 +23,11 @@ export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
+  isSearching?: boolean;
+  isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
+  isResultsFooterVisible?: boolean;
 }
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> {
@@ -51,7 +55,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.state = {
       items: items,
       suggestedDisplayValue: '',
-      moreSuggestionsAvailable: false
+      isMostRecentlyUsedVisible: false,
+      moreSuggestionsAvailable: false,
+      isSearching: false
     };
   }
 
@@ -93,7 +99,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       inputProps,
       disabled
     } = this.props;
-
     return (
       <div
         ref={ this._resolveRef('root') }
@@ -143,11 +148,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
+          onSuggestionRemove={ this.onSuggestionRemove }
           suggestions={ this.suggestionStore.getSuggestions() }
           ref={ this._resolveRef('suggestionElement') }
           onGetMoreResults={ this.onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
+          isSearching={ this.state.isSearching }
+          isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
+          isResultsFooterVisible={ this.state.isResultsFooterVisible }
           { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
@@ -194,19 +203,32 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected updateSuggestions(suggestions: any[]) {
-    this.suggestionStore.updateSuggestions(suggestions);
+    this.suggestionStore.updateSuggestions(suggestions, 0);
     this.forceUpdate();
+  }
+
+  protected onEmptyInputFocus() {
+    let suggestions: T[] | PromiseLike<T[]> = this.props.onEmptyInputFocus(this.state.items);
+    this.updateSuggestionsList(suggestions);
   }
 
   protected updateValue(updatedValue: string) {
     let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
+    this.updateSuggestionsList(suggestions, updatedValue);
+  }
+
+  protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
     let suggestionsArray: T[] = suggestions as T[];
     let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
-      this.resolveNewValue(updatedValue, suggestionsArray);
+      if (updatedValue !== undefined) {
+        this.resolveNewValue(updatedValue, suggestionsArray);
+      } else {
+        this.suggestionStore.updateSuggestions(suggestionsArray);
+      }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
         this.loadingTimer = this._async.setTimeout(() => this.setState({
@@ -214,14 +236,31 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         }), 500);
       }
 
-      this.setState({
-        suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
-      });
+      // Clear suggestions
+      this.suggestionStore.updateSuggestions([]);
+
+      if (updatedValue !== undefined) {
+        this.setState({
+          suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+        });
+      } else {
+        this.setState({
+          suggestionsVisible: this.input.inputElement === document.activeElement
+        });
+      }
+
       // Ensure that the promise will only use the callback if it was the most recent one.
       let promise: PromiseLike<T[]> = this.currentPromise = suggestionsPromiseLike;
       promise.then((newSuggestions: T[]) => {
         if (promise === this.currentPromise) {
-          this.resolveNewValue(updatedValue, newSuggestions);
+          if (updatedValue !== undefined) {
+            this.resolveNewValue(updatedValue, newSuggestions);
+          } else {
+            this.suggestionStore.updateSuggestions(newSuggestions);
+            this.setState({
+              suggestionsLoading: false
+            });
+          }
           if (this.loadingTimer) {
             this._async.clearTimeout(this.loadingTimer);
             this.loadingTimer = undefined;
@@ -232,7 +271,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]) {
-    this.suggestionStore.updateSuggestions(suggestions);
+    this.suggestionStore.updateSuggestions(suggestions, 0);
     let itemValue: string = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
@@ -255,7 +294,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputChange(value: string) {
     this.updateValue(value);
-    this.setState({ moreSuggestionsAvailable: true });
+    this.setState({
+      moreSuggestionsAvailable: true,
+      isMostRecentlyUsedVisible: false
+    });
   }
 
   @autobind
@@ -264,17 +306,34 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
+  protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) {
+    if (this.props.onRemoveSuggestion) {
+      this.props.onRemoveSuggestion(item);
+    }
+    this.suggestionStore.removeSuggestion(index);
+  }
+
+  @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    if (this.input.value) {
-      this.setState({ suggestionsVisible: true });
+    if (this.input.value === '' && this.props.onEmptyInputFocus) {
+      this.onEmptyInputFocus();
+      this.setState({
+        isMostRecentlyUsedVisible: true,
+        moreSuggestionsAvailable: false,
+        suggestionsVisible: true
+      });
+    } else if (this.input.value) {
+      this.setState({
+        isMostRecentlyUsedVisible: false,
+        suggestionsVisible: true
+      });
     }
   }
 
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let value = this.input.value;
-
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
@@ -286,7 +345,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (!ev.shiftKey && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -296,6 +355,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.backspace:
         this.onBackspace(ev);
+        break;
+
+      case KeyCodes.del:
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+          if (this.props.onRemoveSuggestion) {
+            this.props.onRemoveSuggestion(this.suggestionStore.currentSuggestion.item);
+          }
+          this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
+          this.forceUpdate();
+        }
         break;
 
       case KeyCodes.up:
@@ -332,19 +401,32 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onGetMoreResults() {
-    if (this.props.onGetMoreResults) {
-      let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
-      let suggestionsArray: T[] = suggestions as T[];
-      let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
+    this.setState({
+      isSearching: true
+    }, () => {
+      if (this.props.onGetMoreResults) {
+        let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
+        let suggestionsArray: T[] = suggestions as T[];
+        let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
-      if (Array.isArray(suggestionsArray)) {
-        this.updateSuggestions(suggestionsArray);
-      } else if (suggestionsPromiseLike.then) {
-        suggestionsPromiseLike.then((newSuggestions: T[]) => this.updateSuggestions(newSuggestions));
+        if (Array.isArray(suggestionsArray)) {
+          this.updateSuggestions(suggestionsArray);
+          this.setState({ isSearching: false });
+        } else if (suggestionsPromiseLike.then) {
+          suggestionsPromiseLike.then((newSuggestions: T[]) => {
+            this.updateSuggestions(newSuggestions);
+            this.setState({ isSearching: false });
+          });
+        }
+      } else {
+        this.setState({ isSearching: false });
       }
-    }
-    this.input.focus();
-    this.setState({ moreSuggestionsAvailable: false });
+      this.input.focus();
+      this.setState({
+        moreSuggestionsAvailable: false,
+        isResultsFooterVisible: true
+      });
+    });
   }
 
   @autobind
