@@ -76,7 +76,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(_items, true, this._onColumnClick, ''),
+      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
       contextualMenuProps: null,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -450,9 +450,20 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
 
   @autobind
   private _onColumnClick(ev: React.MouseEvent<HTMLElement>, column: IColumn) {
+    if (column.columnActionsMode !== ColumnActionsMode.disabled) {
+      this.setState({
+        contextualMenuProps: this._getContextualMenuProps(ev, column)
+      });
+    }
+  }
+
+  @autobind
+  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
+    if (column.columnActionsMode !== ColumnActionsMode.disabled) {
     this.setState({
       contextualMenuProps: this._getContextualMenuProps(ev, column)
     });
+  }
   }
 
   @autobind
@@ -469,7 +480,14 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     this.setState({
       items: sortedItems,
       groups: null,
-      columns: this._buildColumns(sortedItems, true, this._onColumnClick, key, isSortedDescending),
+      columns: this._buildColumns(
+        sortedItems,
+        true,
+        this._onColumnClick,
+        key,
+        isSortedDescending,
+        undefined,
+        this._onColumnContextMenu),
       isSortedDescending: isSortedDescending,
       sortedColumnKey: key
     });
@@ -578,7 +596,8 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
     sortedColumnKey?: string,
     isSortedDescending?: boolean,
-    groupedColumnKey?: string) {
+    groupedColumnKey?: string,
+    onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any) {
     let columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
