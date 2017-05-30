@@ -22,10 +22,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public static defaultProps: IDialogProps = {
     hidden: false,
-    modalProps: {
-      isDarkOverlay: true,
-      isBlocking: false
-    },
+    modalProps: {},
     dialogContentProps: {},
     // deprecated props
     isOpen: false,
