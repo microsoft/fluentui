@@ -9,6 +9,7 @@ import {
   getRTL,
   IRenderFunction
 } from '../../Utilities';
+import { Icon } from '../../Icon';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
 import {
   IPersonaProps,
@@ -105,8 +106,9 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
           userPresence = '';
       }
       if (userPresence) {
-        let iconClass = css(`ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`, styles.presenceIcon);
-        statusIcon = <i className={ iconClass }></i>;
+        statusIcon = (
+          <Icon className={ css('ms-Persona-presenceIcon', styles.presenceIcon) } iconName={ userPresence } />
+        );
       }
       presenceElement = <div className={ css('ms-Persona-presence', styles.presence) }>{ statusIcon }</div>;
     }
@@ -135,7 +137,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence], this.props.showSecondaryText ? styles.showSecondaryText : '') }
       >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>

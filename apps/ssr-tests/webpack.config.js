@@ -1,5 +1,6 @@
 let path = require('path');
 let nodeExternals = require('webpack-node-externals');
+let webpack = require('webpack');
 
 module.exports = {
   entry: './test/test.js',
@@ -41,5 +42,8 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
   ]
 }

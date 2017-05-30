@@ -20,6 +20,11 @@ export interface IPopupProps extends React.HTMLProps<Popup> {
   role?: string;
 
   /**
+   * Accessible label text for the popup.
+   */
+  ariaLabel?: string;
+
+  /**
    *  Defines the element id referencing the element containing label text for popup.
    */
   ariaLabelledBy?: string;

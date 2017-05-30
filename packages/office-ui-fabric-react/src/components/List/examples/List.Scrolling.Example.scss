@@ -10,8 +10,8 @@
     &-itemCell {
       .ms-ListScrollingExample-itemContent {
         @include ms-font-m;
-        @include ms-u-normalize;
-        @include ms-u-clearfix;
+        @include ms-normalize;
+        @include ms-clearfix;
         position: relative;
         display: block;
 

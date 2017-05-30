@@ -48,11 +48,11 @@ export class ColorsPage extends React.Component<any, any> {
 
         <div className='ms-Grid ms-Grid--wide'>
           <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-sm12 ms-u-xl6'>
+            <div className='ms-Grid-col ms-sm12 ms-xl6'>
               <h3>Theme colors</h3>
               <ColorTable content={ themeColorsData } />
             </div>
-            <div className='ms-Grid-col ms-u-sm12 ms-u-xl6'>
+            <div className='ms-Grid-col ms-sm12 ms-xl6'>
               <h3>Neutral colors</h3>
               <ColorTable content={ neutralColorsData } />
             </div>
@@ -63,7 +63,7 @@ export class ColorsPage extends React.Component<any, any> {
         <div className='ms-Grid ms-Grid--wide'>
           <div className='ms-Grid-row'>
             { accentColorsData.map((group, groupIndex) => (
-              <div className='ms-Grid-col ms-u-sm12 ms-u-xl4 ms-u-xxl3'
+              <div className='ms-Grid-col ms-sm12 ms-xl4 ms-xxl3'
                 key={ groupIndex }>
                 <div className={ styles.accentGroup }>
                   <h4>{ group.name }</h4>

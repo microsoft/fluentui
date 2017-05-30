@@ -49,7 +49,7 @@ $dontColor: #A61E22;
     flex-direction: column;
     justify-content: space-between;
 
-    @media(min-width: $ms-screen-xl-min) {
+    @media(min-width: $ms-screen-min-xl) {
       flex-direction: row;
     }
   }
@@ -67,7 +67,7 @@ $dontColor: #A61E22;
     }
 
     ul {
-      @include padding-left(18px);
+      @include ms-padding-left(18px);
     }
 
     li {
@@ -107,7 +107,7 @@ $dontColor: #A61E22;
 
   .ComponentPage-navLink {
     display: inline-block;
-    @include margin-right(40px);
+    @include ms-margin-right(40px);
   }
 
   .ComponentPage-navLink .ms-Link {
@@ -147,7 +147,7 @@ $dontColor: #A61E22;
     }
 
     ul {
-      @include padding-left(18px);
+      @include ms-padding-left(18px);
     }
 
     li {
@@ -156,7 +156,7 @@ $dontColor: #A61E22;
     }
 
     &:first-child {
-      @include margin-right(120px);
+      @include ms-margin-right(120px);
     }
   }
 
@@ -164,7 +164,7 @@ $dontColor: #A61E22;
     background-color: #e74856;
   }
 
-  @media screen and (min-width: $ms-screen-lg-min) {
+  @media screen and (min-width: $ms-screen-min-lg) {
     .ComponentPage-doSection {
       margin-bottom: -10px; // Trim last list item
       width: calc(50% - 60px);

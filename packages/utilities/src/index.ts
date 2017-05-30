@@ -18,6 +18,7 @@ export * from './dom';
 export * from './focus';
 export * from './hoist';
 export * from './initials';
+export * from './language';
 export * from './math';
 export * from './object';
 export * from './overflow';

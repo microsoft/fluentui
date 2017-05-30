@@ -6,9 +6,10 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
+import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
-
+import { AnimationClassNames } from '../../Styling';
 import {
   INav,
   INavProps,
@@ -73,10 +74,12 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'
-          className={ css('ms-Nav', styles.root, className, {
-            'is-onTop ms-u-slideRightIn40': isOnTop,
-            [styles.rootIsOnTop]: isOnTop
-          }) }>
+          className={ css(
+            'ms-Nav',
+            styles.root,
+            className,
+            isOnTop && css('is-onTop', styles.rootIsOnTop, AnimationClassNames.slideRightIn40)
+          ) }>
           { groupElements }
         </nav>
       </FocusZone>
@@ -104,7 +107,12 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         title={ link.title || link.name }
         target={ link.target }
       >
-        { link.iconClassName && <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName, styles.iconLink) }></i> }
+        { link.iconClassName && (
+          <Icon
+            className={ css(link.iconClassName, styles.iconLink) }
+            iconName='iconLink'
+          />
+        ) }
         { this.props.onRenderLink(link) }
       </a>
     );
@@ -143,7 +151,10 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             aria-label={ this.props.expandButtonAriaLabel }
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
           >
-            <i className={ css('ms-Nav-chevron ms-Icon ms-Icon--ChevronDown', styles.chevronIcon) }></i>
+            <Icon
+              className={ css('ms-Nav-chevron', styles.chevronIcon, link.isExpanded) }
+              iconName='chevronDown'
+            />
           </button> : null
         ) }
         { !!link.onClick ? this._renderButtonLink(link, linkIndex) : this._renderAnchorLink(link, linkIndex, nestingLevel) }
@@ -187,17 +198,18 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonIsGroup, styles.groupHeaderFontSize) }
             onClick={ this._onGroupHeaderClicked.bind(this, group.name) }
           >
-            <i
+            <Icon
               className={ css(
-                'ms-Nav-chevron ms-Icon ms-Icon--ChevronDown',
+                'ms-Nav-chevron',
                 styles.chevronIcon,
                 isGroupExpanded && styles.chevronIsExpanded
               ) }
+              iconName='chevronDown'
             />
             { group.name }
           </button> : null)
         }
-        <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20', styles.groupContent) }>
+        <div className={ css('ms-Nav-groupContent', AnimationClassNames.slideDownIn20, styles.groupContent) }>
           { this._renderLinks(group.links, 0 /* nestingLevel */) }
         </div>
       </div>

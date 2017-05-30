@@ -9,7 +9,7 @@
 
 .root {
   @include ms-font-m;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   display: flex;
   flex-direction: row;
@@ -36,18 +36,18 @@
   font-size: 16px;
   width: 32px;
   text-align: center;
-  transition: width $ms-duration1;
+  transition: width $ms-animation-duration-1;
   color: $ms-color-themePrimary;
 }
 
 .icon {
   opacity: 1;
-  transition: opacity $ms-duration1 0s;
+  transition: opacity $ms-animation-duration-1 0s;
 }
 
 // Input Field
 .field {
-  @include ms-u-normalize;
+  @include ms-normalize;
   border: none;
   outline: none;
   font-weight: inherit;
@@ -55,7 +55,7 @@
   font-size: inherit;
   color: $ms-color-black;
   background-color: transparent;
-  flex: 1 1 0;
+  flex: 1 1 0px;
   overflow: hidden;
   text-overflow: ellipsis;
   // This padding forces the text placement to round up.
@@ -95,11 +95,11 @@
 
   .iconContainer {
     width: 4px;
-    transition: width $ms-duration1;
+    transition: width $ms-animation-duration-1;
   }
   .icon {
     opacity: 0;
-    opacity: 0 0s $ms-duration1;
+    opacity: 0 0s $ms-animation-duration-1;
    }
 }
 

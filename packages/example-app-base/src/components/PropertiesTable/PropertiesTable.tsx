@@ -8,6 +8,7 @@ import {
   IEnumProperty,
   InterfacePropertyType
 } from '../../utilities/parser/index';
+import { FontClassNames } from '@uifabric/styling/lib/index';
 
 export interface IPropertiesTableProps {
   title?: string;
@@ -115,7 +116,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
 
     return (
       <div className='PropertiesTable'>
-        <h2 className='ms-font-xl'>{ title }</h2>
+        <h2 className={ FontClassNames.xLarge }>{ title }</h2>
         { (properties && properties.length) ? (
           <DetailsList
             selectionMode={ SelectionMode.none }

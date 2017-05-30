@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
+import { IStyle } from '../../Styling';
 
 export interface IButton {
   /**
@@ -31,9 +32,14 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   disabled?: boolean;
 
   /**
-   * Whether the button is toggled
+   * Custom styling for individual elements within the button DOM.
    */
-  toggled?: boolean;
+  styles?: IButtonStyles;
+
+  /**
+   * Whether the button is checked
+   */
+  checked?: boolean;
 
   /**
    * If provided, additional class name to provide on the root element.
@@ -130,17 +136,22 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 
   /**
-   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } } .
+   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
    * @deprecated
    */
   icon?: string;
 
   /**
-   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } } .
+   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } }.
    * @deprecated
    */
   menuIconName?: IconName | string | null;
 
+  /**
+   * Deprecated on 5/26/2016, use checked.
+   * @deprecated
+   */
+  toggled?: boolean;
 }
 
 export enum ElementType {
@@ -158,4 +169,111 @@ export enum ButtonType {
   command = 4,
   icon = 5,
   default = 6
+}
+
+export interface IButtonStyles {
+  /**
+   * Style for the root element in the default enabled, non-toggled state.
+   */
+  root?: IStyle;
+
+  /**
+   * Style override for the root element in a checked state, layered on top of the root style.
+   */
+  rootChecked?: IStyle;
+
+  /**
+   * Style override for the root element in a disabled state, layered on top of the root style.
+   */
+  rootDisabled?: IStyle;
+
+  /**
+   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   */
+  rootHovered?: IStyle;
+
+  /**
+   * Style override applied to the root on pressed in the default, enabled, non-toggled state.
+   */
+  rootPressed?: IStyle;
+
+  /**
+   * Style for the flexbox container within the root element.
+   */
+  flexContainer?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label.
+   */
+  icon?: IStyle;
+
+  /**
+   * Style override for the icon when the button is disabled.
+   */
+  iconDisabled?: IStyle;
+
+  /**
+   * Style override for the icon when the button is checked.
+   */
+  iconChecked?: IStyle;
+
+  /**
+   * Style for the text content of the button.
+   */
+  label?: IStyle;
+
+  /**
+   * Style override for the text content when the button is disabled.
+   */
+  labelDisabled?: IStyle;
+
+  /**
+   * Style override for the text content when the button is checked.
+   */
+  labelChecked?: IStyle;
+
+  /**
+   * Style for the menu chevron.
+   */
+  menuIcon?: IStyle;
+
+  /**
+   * Style override for the menu chevron when the button is disabled.
+   */
+  menuIconDisabled?: IStyle;
+
+  /**
+   * Style override for the menu chevron when the button is checked.
+   */
+  menuIconChecked?: IStyle;
+
+  /**
+   * Style for the description text if applicable (for compound buttons.)
+   */
+  description?: IStyle;
+
+  /**
+   * Style override for the description text when the button is hovered.
+   */
+  descriptionHovered?: IStyle;
+
+  /**
+   * Style for the description text when the button is pressed.
+   */
+  descriptionPressed?: IStyle;
+
+  /**
+   * Style override for the description text when the button is disabled.
+   */
+  descriptionDisabled?: IStyle;
+
+  /**
+   * Style override for the description text when the button is checked.
+   */
+  descriptionChecked?: IStyle;
+
+  /**
+   * Style for the screen reader text.
+   */
+  screenReaderText?: IStyle;
 }

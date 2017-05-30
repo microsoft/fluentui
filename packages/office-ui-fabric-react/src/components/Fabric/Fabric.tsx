@@ -1,9 +1,12 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  KeyCodes,
-  css
+  KeyCodes
 } from '../../Utilities';
+import {
+  mergeStyles
+} from '../../Styling';
+import { getStyles } from './Fabric.styles';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -51,9 +54,14 @@ export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabr
 
   public render() {
     const { isFocusVisible } = this.state;
-    const rootClass = css('ms-Fabric ms-font-m', this.props.className, {
-      'is-focusVisible': isFocusVisible
-    });
+    const styles = getStyles();
+
+    const rootClass = mergeStyles(
+      'ms-Fabric',
+      styles.root,
+      this.props.className,
+      isFocusVisible && 'is-focusVisible'
+    ) as string;
 
     return (
       <div { ...this.props } className={ rootClass } ref='root' />

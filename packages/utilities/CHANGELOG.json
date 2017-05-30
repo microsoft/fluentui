@@ -2,6 +2,74 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@uifabric/utilities_v4.0.0",
+      "date": "Tue, 30 May 2017 03:27:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ryo Miyake <ryo.studiom@gmail.com>",
+            "commit": "83b0787a17884867a2ad336d3dad9e713da8f04e",
+            "comment": "Introduce prop-types instead of React.PropTypes"
+          }
+        ],
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "memoize/memoizeFunction: memoize converted to a decorator, memoizeFunction is now for memoizing functions."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.2",
+      "tag": "@uifabric/utilities_v1.10.2",
+      "date": "Fri, 26 May 2017 10:21:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "a564ac9adcc0b2fdbcdf00ac97b797e81ab4ebbe",
+            "comment": "Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. "
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.1",
+      "tag": "@uifabric/utilities_v1.10.1",
+      "date": "Wed, 24 May 2017 23:52:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "1020ec60dd7d0461fc945a2b2a87c6cbb0e07db9",
+            "comment": "Add utlities for unit tests that need to override or spy on React lifecycle methods"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.0",
+      "tag": "@uifabric/utilities_v1.10.0",
+      "date": "Tue, 23 May 2017 10:16:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "40f7131f031ed5b4b7bcf0cc6b3ace39e5f5dde4",
+            "comment": "warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.9.0",
       "tag": "@uifabric/utilities_v1.9.0",
       "date": "Thu, 18 May 2017 10:09:58 GMT",
