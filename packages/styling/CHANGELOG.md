@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 30 May 2017 03:27:20 GMT and should not be manually modified.
+This log was last generated on Tue, 30 May 2017 20:23:45 GMT and should not be manually modified.
+
+## 0.4.0
+Tue, 30 May 2017 20:23:45 GMT
+
+### Minor changes
+
+- Adding support for specifying `window.FabricConfig.fontBaseUrl` in order to customize where the font resources are pulled from. Leaving it blank will avoid fontface definitions from being registered.
 
 ## 0.3.0
 Tue, 30 May 2017 03:27:20 GMT
