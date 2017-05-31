@@ -351,4 +351,22 @@ describe('ResizeGroup', () => {
     expect(onReduceDataStub.callCount).to.equal(2);
     expect(wrapper.state().shouldMeasure).to.equal(false);
   });
+
+  it('initially renders content even if it does not fit', () => {
+    let data = { scalingIndex: 5 };
+
+    // Simulate an onReduce data that has no more scaling operations
+    let onReduceData = (_) => undefined;
+
+    let { rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks(data, onReduceData);
+
+    // Make sure the content never fits
+    rootGetClientRectMock.returns({ width: 27 });
+    measuredGetClientRectMock.returns({ width: 52 });
+
+    // Reset the internal rendered state of the component
+    wrapper.setState({ renderedData: null });
+
+    expect(wrapper.state().renderedData).to.deep.equal(data);
+  });
 });
