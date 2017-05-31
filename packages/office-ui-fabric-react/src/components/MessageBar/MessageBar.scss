@@ -153,6 +153,7 @@
 
     .text {
       align-items: center;
+      flex: 1 1 auto;
 
       .innerText,
       .innerTextPadding {
@@ -175,10 +176,11 @@
 
 .dismissal {
   @include focus-border();
+  @include right(0);
+  max-height: 16px;
   min-width: 0;
   position: absolute;
   top: 0;
-  @include right(0);
 }
 
 .dismissalOneline {

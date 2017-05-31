@@ -86,10 +86,10 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     return null;
   }
 
-  private _getDismissalOneLine(): JSX.Element {
+  private _getDismissOneLine(): JSX.Element {
     if (this.props.onDismiss) {
       return (
-        <div className={ css('ms-MessageBar-dismissalOneline', styles.dismissalOneline) }>
+        <div className={ css('ms-MessageBar-dismissOneline', styles.dismissOneline) }>
           { this._getDismissDiv() }
         </div>
       );
@@ -139,16 +139,16 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
         css(this._getClassName(),
           'ms-MessageBar-singleline',
           styles.singleline,
-          this.props.onDismiss && styles.dismissalOneline,
+          this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.dismissalOneline,
           this.props.actions && styles.actionableOneline
         )
       } >
         <div className={ css(styles.content, 'ms-MessageBar-content') }>
           { this._getIconSpan() }
           { this._renderInnerText() }
+          { this._getDismissOneLine() }
         </div>
         { this._getActionsDiv() }
-        { this._getDismissalOneLine() }
       </div >
     );
   }
