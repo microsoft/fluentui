@@ -202,6 +202,74 @@ describe('ResizeGroup', () => {
     expect(renderSpy.callCount).to.equal(3);
   });
 
+  it('starts scaling from the initial data when the container grows', () => {
+    let data = { scalingIndex: 10 };
+
+    let { wrapper,
+      onReduceDataSpy,
+      rootGetClientRectMock,
+      measuredGetClientRectMock } = getWrapperWithMocks(data, onReduceScalingData);
+
+    // Simulate a few scale down calls.
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.onFirstCall().returns({ width: 300 });
+    measuredGetClientRectMock.onSecondCall().returns({ width: 250 });
+    measuredGetClientRectMock.onThirdCall().returns({ width: 150 });
+    wrapper.setState({ shouldMeasure: true });
+
+    expect(wrapper.state().renderedData.scalingIndex).to.equal(8);
+
+    onReduceDataSpy.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+
+    // Simulate a resize where the container grows
+    rootGetClientRectMock.returns({ width: 300 });
+    measuredGetClientRectMock.returns({ width: 150 });
+
+    window.dispatchEvent(new Event('resize'));
+
+    // The contents fit, so there should be no call to onReduceData
+    expect(onReduceDataSpy.callCount).to.equal(0);
+
+    // The internal state should match that of the initial data
+    expect(wrapper.state().renderedData.scalingIndex).to.equal(10);
+  });
+
+  it('continues scaling from the last rendered data when the container shrinks', () => {
+    let data = { scalingIndex: 10 };
+
+    let { wrapper,
+      onReduceDataSpy,
+      rootGetClientRectMock,
+      measuredGetClientRectMock } = getWrapperWithMocks(data, onReduceScalingData);
+
+    // Simulate a few scale down calls.
+    rootGetClientRectMock.returns({ width: 200 });
+    measuredGetClientRectMock.onFirstCall().returns({ width: 300 });
+    measuredGetClientRectMock.onSecondCall().returns({ width: 250 });
+    measuredGetClientRectMock.onThirdCall().returns({ width: 150 });
+    wrapper.setState({ shouldMeasure: true });
+
+    expect(wrapper.state().renderedData.scalingIndex).to.equal(8);
+
+    onReduceDataSpy.reset();
+    rootGetClientRectMock.reset();
+    measuredGetClientRectMock.reset();
+
+    // Simulate a resize where the container shrinks and the contents don't fit
+    // The contents will then fit after a call to onReduceData
+    rootGetClientRectMock.returns({ width: 100 });
+    measuredGetClientRectMock.onFirstCall().returns({ width: 150 });
+    measuredGetClientRectMock.onSecondCall().returns({ width: 50 });
+
+    window.dispatchEvent(new Event('resize'));
+
+    expect(onReduceDataSpy.callCount).to.equal(1);
+    expect(onReduceDataSpy.getCall(0).args[0]).to.deep.equal({ scalingIndex: 8 });
+    expect(wrapper.state().renderedData.scalingIndex).to.equal(7);
+  });
+
   it('continues to shrink until everything fits', () => {
     let data = { scalingIndex: 7 };
 
@@ -244,33 +312,6 @@ describe('ResizeGroup', () => {
     // Ideally, this can be optimized so that there is only 1 render, but this
     // test makes sure it doesn't get worse than this.
     expect(onRenderSpy.callCount).to.equal(2);
-  });
-
-  it('starts from the beginning when resizing', () => {
-    let data = { scalingIndex: 10 };
-    let { wrapper, onRenderDataSpy } = getWrapperWithMocks(data);
-
-    wrapper.setState({
-      renderedData: { scalingIndex: 5 },
-      shouldMeasure: false
-    });
-
-    onRenderDataSpy.reset();
-    wrapper.setState({
-      shouldMeasure: true
-    });
-
-    // This is a scenario where too many renders take place,
-    // but the important thing here is that the last onRender data
-    // starts from the beginning to make sure we are making maximal
-    // use of the screen real estate.
-    expect(onRenderDataSpy.callCount).to.equal(3);
-    expect(onRenderDataSpy.getCall(2).args[0]).to.deep.equal(data);
-    expect(wrapper.state()).to.deep.equal({
-      renderedData: data,
-      measuredData: data,
-      shouldMeasure: false
-    });
   });
 
   it('does not call onReduceData again when it returns undefined', () => {
