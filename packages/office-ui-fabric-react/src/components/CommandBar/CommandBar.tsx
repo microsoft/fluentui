@@ -7,7 +7,7 @@ import {
 
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { SearchBox } from '../../SearchBox';
-import { IconButton, DefaultButton } from '../../Button';
+import { CommandButton } from '../../Button';
 import { OverflowSet } from '../../OverflowSet';
 import { ResizeGroup } from '../../ResizeGroup';
 
@@ -68,7 +68,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 overflowItems={ data.overflow.length ? data.overflow : null }
                 onRenderItem={ (item) => {
                   return (
-                    <DefaultButton
+                    <CommandButton
                       text={ item.name }
                       iconProps={ { iconName: item.icon } }
                       onClick={ item.onClick }
@@ -78,7 +78,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 } }
                 onRenderOverflowButton={ (renderedItems) => {
                   return (
-                    <IconButton
+                    <CommandButton
                       className={ css(styles.overflowButton) }
                       menuProps={ { items: renderedItems } }
                       menuIconProps={ { iconName: 'More' } }
@@ -91,7 +91,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 items={ data.farItems }
                 onRenderItem={ (item) => {
                   return (
-                    <DefaultButton
+                    <CommandButton
                       text={ item.name }
                       iconProps={ { iconName: item.icon } }
                       onClick={ item.onClick }

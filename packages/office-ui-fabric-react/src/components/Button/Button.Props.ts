@@ -198,6 +198,11 @@ export interface IButtonStyles {
   rootPressed?: IStyle;
 
   /**
+   * Style override for the root element in a checked state and hovered, layered on top of the root style.
+   */
+  rootCheckedHovered?: IStyle;
+
+  /**
    * Style for the flexbox container within the root element.
    */
   flexContainer?: IStyle;

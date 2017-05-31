@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  IButtonProps,
-  PrimaryButton
+  ActionButton,
+  IButtonProps
 } from 'office-ui-fabric-react/lib/Button';
 import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
 
-export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
+export class ButtonActionExample extends React.Component<IButtonProps, any> {
   public constructor() {
     super();
   }
@@ -17,16 +17,15 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <PrimaryButton
+        <ActionButton
           data-automation-id='test'
+          iconProps={ { iconName: 'AddFriend' } }
           disabled={ disabled }
           checked={ checked }
-          href='http://bing.com'
-          target='_blank'
-          title='Let us bing!'>
-          Bing
-        </PrimaryButton>
-      </div >
+        >
+          Create account
+        </ActionButton>
+      </div>
     );
   }
 }

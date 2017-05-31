@@ -9,58 +9,66 @@ import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
 
-const DEFAULT_BUTTON_HEIGHT = '40px';
-const DEFAULT_PADDING = '0 4px';
+const COMMAND_BUTTON_HEIGHT = '40px';
+const COMMAND_BUTTON_MINWIDTH = '80px';
+const COMMAND_PADDING = '0 8px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles?: IButtonStyles
+  customStyles?: IButtonStyles,
+  focusInset?: string,
+  focusColor?: string
 ): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
   let commandButtonStyles: IButtonStyles = {
     root: {
-      borderWidth: '0',
-      padding: DEFAULT_PADDING,
-      height: DEFAULT_BUTTON_HEIGHT,
+      minWidth: COMMAND_BUTTON_MINWIDTH,
+      height: COMMAND_BUTTON_HEIGHT,
+      backgroundColor: theme.palette.neutralLighter,
       color: theme.palette.neutralPrimary,
-      backgroundColor: 'transparent'
+      padding: COMMAND_PADDING,
+      ':focus': {
+        backgroundColor: theme.palette.neutralLight,
+        color: theme.palette.neutralDark
+      }
     },
 
     rootHovered: {
-      color: theme.palette.themeDarker
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.neutralDark,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootPressed: {
-      color: theme.palette.themePrimary
-    },
-
-    rootDisabled: {
-      color: theme.palette.neutralTertiary,
-      backgroundColor: 'transparent'
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootChecked: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
-
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDarker
       }
     },
 
-    flexContainer: {
-      justifyContent: 'flex-start'
+    rootCheckedHovered: {
+      backgroundColor: theme.palette.neutralTertiary,
+      color: theme.palette.black,
+    },
+
+
+    label: {
+      fontWeight: 'bold' // theme.fontWeights.semibold,
     },
 
     icon: {
       color: theme.palette.themePrimary
-    },
-
-    iconDisabled: {
-      color: 'inherit'
-    },
-
-    menuIcon: {
-      color: theme.palette.neutralSecondary
     }
 
   };

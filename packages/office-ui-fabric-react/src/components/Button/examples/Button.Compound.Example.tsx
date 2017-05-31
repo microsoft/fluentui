@@ -15,7 +15,6 @@ export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Compound button</Label>
         <CompoundButton
           description='You can create a new account here.'
           disabled={ disabled }

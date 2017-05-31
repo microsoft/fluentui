@@ -42,18 +42,18 @@ componentIds.push({
 });
 
 componentIds.push({
-  selector: '#' + 'CommandButton',
-  fileName: 'buttonCommand',
+  selector: '#' + 'ActionButton',
+  fileName: 'buttonAction',
   commands: [defaultScreenshot, mouseDownScreenshot, mouseMoveScreenshot, mouseClickScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'CommandButtonDisabled',
-  fileName: 'buttonCommandDisabled',
+  selector: '#' + 'ActionButtonDisabled',
+  fileName: 'buttonActionDisabled',
   commands: [defaultScreenshot]
 });
 componentIds.push({
-  selector: '#' + 'CommandButtonChecked',
-  fileName: 'buttonCommandChecked',
+  selector: '#' + 'ActionButtonChecked',
+  fileName: 'buttonActionChecked',
   commands: [defaultScreenshot]
 });
 

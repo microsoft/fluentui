@@ -6,7 +6,7 @@ import {
   getId,
   autobind
 } from '../../Utilities';
-import { CommandButton } from '../../Button';
+import { ActionButton } from '../../Button';
 import { IPivotProps } from './Pivot.Props';
 import { IPivotItemProps } from './PivotItem.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -132,7 +132,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     }
 
     return (
-      <CommandButton
+      <ActionButton
         id={ tabId }
         key={ itemKey }
         className={ css(
@@ -148,7 +148,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }>
         { linkContent }
-      </CommandButton>
+      </ActionButton>
     );
   }
 

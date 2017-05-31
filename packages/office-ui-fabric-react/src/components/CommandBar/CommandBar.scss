@@ -20,6 +20,7 @@
     border-color: transparent;
     border-right-color: $ms-color-neutralLight;
     position: relative;
+    height: auto;
     &:after {
       content: "";
       position: absolute;
