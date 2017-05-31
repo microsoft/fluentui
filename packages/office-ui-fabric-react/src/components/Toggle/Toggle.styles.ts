@@ -27,7 +27,6 @@ export const getStyles = memoizeFunction((
 
   const styles: IToggleStyles = {
     root: {
-      marginBottom: '8px'
     },
 
     container: [

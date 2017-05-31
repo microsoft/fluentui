@@ -18,6 +18,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
       <div className='ms-DropdownBasicExample'>
 
         <Dropdown
+          className="ms-Dropdown-example"
           placeHolder='Select an Option'
           label='Basic uncontrolled example:'
           id='Basicdrop1'
@@ -42,6 +43,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         />
 
         <Dropdown
+          className="ms-Dropdown-example"
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
           options={
@@ -59,6 +61,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         />
 
         <Dropdown
+          className="ms-Dropdown-example"
           label='Controlled example:'
           selectedKey={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
