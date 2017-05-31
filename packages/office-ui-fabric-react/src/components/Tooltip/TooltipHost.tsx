@@ -61,7 +61,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
         onMouseEnter={ this._onTooltipMouseEnter }
         onMouseLeave={ this._onTooltipMouseLeave }
-        aria-describedby={ isTooltipVisible ? tooltipId : undefined }
+        aria-describedby={ (isTooltipVisible && !this._isOverflowmode()) ? tooltipId : undefined }
       >
         { children }
         { isTooltipVisible && (
@@ -130,5 +130,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     this.setState({
       isTooltipVisible: false
     });
+  }
+
+  private _isOverflowmode(): boolean {
+    const {
+      overflowMode
+    } = this.props;
+
+    return overflowMode.valueOf() === TooltipOverflowMode.Parent.valueOf() ||
+      overflowMode.valueOf() === TooltipOverflowMode.Parent.valueOf()
   }
 }
