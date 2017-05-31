@@ -148,6 +148,7 @@
     align-items: center;
     padding: 8px 0px;
     .icon {
+      font-family: 'FabricMDL2Icons';
       padding: 0px 8px;
     }
 
@@ -217,6 +218,7 @@
 
     .icon {
       @include padding-right(8px);
+      font-family: 'FabricMDL2Icons';
     }
 
     .innerText {
