@@ -103,7 +103,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
 
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
-  onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
+  onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /** Callback fired on column resize */
   onColumnResize?: (column?: IColumn, newWidth?: number) => void;
@@ -143,6 +143,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** The aria-label attribute to stamp out on select all checkbox for the list */
   ariaLabelForSelectAllCheckbox?: string;
 
+  /**
+   * An ARIA label for the name of the selection column, for localization.
+   */
+  ariaLabelForSelectionColumn?: string;
+
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
@@ -161,7 +166,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
   shouldApplyApplicationRole?: boolean;
 
-  /** 
+  /**
    * The minimum mouse move distance to interpret the action as drag event.
    * @defaultValue 5
    */
@@ -222,6 +227,12 @@ export interface IColumn {
    * Optional iconName to use for the column header.
    */
   iconName?: IconName;
+
+  /**
+   * Whether or not only the icon is used in the column header.
+   * Set this to true so the column name and dropdown chevron are not displayed.
+   */
+  isIconOnly?: boolean;
 
   /**
    * Class name to add to the Icon component.
