@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Reduce render time when reducing the width of the container.",
+      "comment": "ResizeGroup: Make sure that it renders contents when there are no more scaling steps and it doesn't fit",
       "type": "patch"
     }
   ],
