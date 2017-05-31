@@ -139,6 +139,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           onItemContextMenu={ this._onItemContextMenu }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+          ariaLabelForSelectionColumn='Toggle selection'
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;
@@ -460,10 +461,10 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   @autobind
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
-    this.setState({
-      contextualMenuProps: this._getContextualMenuProps(ev, column)
-    });
-  }
+      this.setState({
+        contextualMenuProps: this._getContextualMenuProps(ev, column)
+      });
+    }
   }
 
   @autobind
@@ -601,7 +602,12 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     let columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
-      if (column.key === 'description') {
+      column.onColumnContextMenu = onColumnContextMenu;
+      column.ariaLabel = `Operations for ${column.name}`;
+      if (column.key === 'thumbnail') {
+        column.iconName = 'Picture';
+        column.isIconOnly = true;
+      } else if (column.key === 'description') {
         column.isMultiline = true;
         column.minWidth = 200;
       } else if (column.key === 'name') {
