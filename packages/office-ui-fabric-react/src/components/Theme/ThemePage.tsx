@@ -6,8 +6,8 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { FontClassNames } from '../../Styling';
 import './ThemePage.scss';
-
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
 export class ThemePage extends React.Component<any, any> {
@@ -38,7 +38,7 @@ export class ThemePage extends React.Component<any, any> {
 
     return (
       <div className='Themes'>
-        <h1 className='ms-font-xxl'>Themes</h1>
+        <h1 className={ FontClassNames.xxLarge }>Themes</h1>
         <p>The entire color pallete of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
         <p>To override the themes, you need to call <span className='code'>loadTheme()</span> with the appropriate set of overrides:</p>
 
@@ -46,7 +46,7 @@ export class ThemePage extends React.Component<any, any> {
           { ThemeCodeExample }
         </Highlight>
 
-        <h1 className='ms-font-xl'>Define a theme</h1>
+        <h1 className={ FontClassNames.xLarge }>Define a theme</h1>
         <div>
           <DetailsList
             ref='list'

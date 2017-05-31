@@ -181,6 +181,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       arrowDirection,
       target,
       bounds,
+      useTargetWidth,
       directionalHintFixed,
       shouldFocusOnMount,
       calloutProps } = this.props;
@@ -188,6 +189,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
+
+    /**
+     * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
+     */
+    let contextMenuStyle;
+    let targetAsHtmlElement = this._target as HTMLElement;
+    if (useTargetWidth && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
+      let contextMenuWidth = targetAsHtmlElement.offsetWidth;
+      contextMenuStyle = {
+        width: contextMenuWidth
+      };
+    }
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
@@ -209,18 +222,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
-          <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
+          <div style={ contextMenuStyle } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
                 direction={ arrowDirection }
-                ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
-                role='menu'
-                aria-label={ ariaLabel }
                 isCircularNavigation={ true }
               >
                 <ul
+                  role='menu'
+                  aria-label={ ariaLabel }
+                  aria-labelledby={ labelElementId }
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
                   onKeyDown={ this._onKeyDown }>
                   { items.map((item, index) => (
@@ -265,7 +278,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderListItem(content: React.ReactNode, key: string | number, className?: string, title?: string) {
     return <li
-      role='menuitem'
+      role='presentation'
       title={ title }
       key={ key }
       className={ css('ms-ContextualMenu-item', styles.item, className) }>
@@ -310,6 +323,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             'ms-ContextualMenu-link',
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
+          role='menuitem'
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
@@ -346,6 +360,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-label': ariaLabel,
       'aria-haspopup': hasSubmenuItems(item) ? true : null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
+      role: 'menuitem',
       style: item.style,
     };
 
@@ -383,8 +398,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // Only present to allow continued use of item.icon which is deprecated.
 
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: 'CustomIcon',
-      className: item.icon ? 'ms-Icon--' + item.icon : ''
+      iconName: item.icon
     };
     // Use the default icon color for the known icon names
     let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-ContextualMenu-iconColor ' + styles.iconColor);

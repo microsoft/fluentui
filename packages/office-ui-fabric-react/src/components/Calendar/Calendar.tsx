@@ -85,7 +85,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { selectedDate, navigatedDate } = this.state;
 
     return (
-      <div className={ css(rootClass, styles.root) } ref='root'>
+      <div className={ css(rootClass, styles.root) } ref='root' role='application'>
         <div className={ css(
           'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
           styles.picker,
@@ -93,7 +93,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.pickerIsFocused,
           isMonthPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible)
         ) } >
-          <div className={ css('ms-DatePicker-holder', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
+          <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
               <div className={ css('ms-DatePicker-wrap', styles.wrap) }>
                 <CalendarDay
@@ -114,13 +114,16 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings }
                   onNavigateDate={ this._onNavigateDate } /> }
 
-                { showGoToToday && <span
-                  className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
-                  onClick={ this._onGotoToday }
-                  onKeyDown={ this._onGotoTodayKeyDown }
-                  tabIndex={ 0 }>
-                  { strings.goToToday }
-                </span> }
+                { showGoToToday &&
+                  <span
+                    role='button'
+                    className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
+                    onClick={ this._onGotoToday }
+                    onKeyDown={ this._onGotoTodayKeyDown }
+                    tabIndex={ 0 }>
+                    { strings.goToToday }
+                  </span>
+                }
               </div>
             </div>
           </div>
@@ -159,17 +162,17 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (onSelectDate) {
       onSelectDate(date, selectedDateRangeArray);
     }
-  };
+  }
 
   @autobind
   private _onGotoToday() {
     this._navigateDay(this.props.today);
     this._focusOnUpdate = true;
-  };
+  }
 
   @autobind
   private _onGotoTodayKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       ev.preventDefault();
       this._onGotoToday();
     } else if (ev.which === KeyCodes.tab && !ev.shiftKey) {
@@ -179,7 +182,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
         this.props.onDismiss();
       }
     }
-  };
+  }
 
   @autobind
   private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent<HTMLElement>) {

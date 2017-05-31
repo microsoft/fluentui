@@ -234,4 +234,7 @@ BaseComponent.onError = (errorMessage) => {
   throw errorMessage;
 };
 
-export function nullRender() { return null; }
+/**
+ * Simple constant function for returning null, used to render empty templates in JSX.
+ */
+export function nullRender(): JSX.Element | null { return null; }

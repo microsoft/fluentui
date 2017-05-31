@@ -4,37 +4,29 @@ import * as React from 'react';
 
 import {
   BaseComponent,
+  autobind,
   css,
   getId,
-  getRTL,
-  autobind
+  getRTL
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanelProps, PanelType } from './Panel.Props';
+import { IPanel, IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
+import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Panel.scss';
 const styles: any = stylesImport;
 
 export interface IPanelState {
   isFooterSticky?: boolean;
   isOpen?: boolean;
-  isAnimatingOpen?: boolean;
-  isAnimatingClose?: boolean;
+  isAnimating?: boolean;
   id?: string;
 }
 
-// Animation class constants.
-const FADE_IN_200 = 'ms-u-fadeIn200';
-const FADE_OUT_200 = 'ms-u-fadeOut200';
-const SLIDE_LEFT_IN_40 = 'ms-u-slideLeftIn40';
-const SLIDE_LEFT_OUT_40 = 'ms-u-slideLeftOut40';
-const SLIDE_RIGHT_IN_40 = 'ms-u-slideRightIn40';
-const SLIDE_RIGHT_OUT_40 = 'ms-u-slideRightOut40';
-
-export class Panel extends BaseComponent<IPanelProps, IPanelState> {
+export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
 
   public static defaultProps: IPanelProps = {
     isOpen: false,
@@ -48,49 +40,29 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   constructor(props: IPanelProps) {
     super(props);
 
-    this._onPanelClick = this._onPanelClick.bind(this);
-    this._onPanelRef = this._onPanelRef.bind(this);
-
     this.state = {
       isFooterSticky: false,
-      isOpen: !!props.isOpen,
-      isAnimatingOpen: props.isOpen,
-      isAnimatingClose: false,
+      isOpen: false,
+      isAnimating: false,
       id: getId('Panel')
     };
   }
 
   public componentDidMount() {
     this._events.on(window, 'resize', this._updateFooterPosition);
-    if (this.state.isOpen) {
-      this._async.setTimeout(() => {
-        this.setState({
-          isAnimatingOpen: false
-        });
-      }, 2000);
+
+    if (this.props.isOpen) {
+      this.open();
     }
   }
 
   public componentWillReceiveProps(newProps: IPanelProps) {
     if (newProps.isOpen !== this.state.isOpen) {
-      this.setState({
-        isOpen: true,
-        isAnimatingOpen: newProps.isOpen ? true : false,
-        isAnimatingClose: newProps.isOpen ? false : true
-      });
-
-    }
-  }
-
-  public componentDidUpdate(prevProps, prevState) {
-    if (prevState.isOpen === false) {
-      this._updateFooterPosition();
-    }
-    if (
-      prevState.isAnimatingClose === false &&
-      this.state.isAnimatingClose === true &&
-      this.props.onDismiss) {
-      this.props.onDismiss();
+      if (newProps.isOpen) {
+        this.open();
+      } else {
+        this.dismiss();
+      }
     }
   }
 
@@ -115,14 +87,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    let { isOpen, isAnimatingOpen, isAnimatingClose, id, isFooterSticky } = this.state;
+    let { isOpen, isAnimating, id, isFooterSticky } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
 
-    if (!isOpen) {
+    if (!isOpen && !isAnimating) {
       return null;
     }
 
@@ -132,10 +104,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         <Overlay
           className={ css(
             styles.overlay,
-            {
-              [FADE_IN_200]: isAnimatingOpen,
-              [FADE_OUT_200]: isAnimatingClose
-            }) }
+            isOpen && isAnimating && AnimationClassNames.fadeIn200,
+            !isOpen && isAnimating && AnimationClassNames.fadeOut200
+          ) }
           isDarkThemed={ false }
           onClick={ isLightDismiss ? this._onPanelClick : null }
         />
@@ -147,37 +118,38 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         <Popup
           role='dialog'
           ariaLabelledBy={ headerText && headerTextId }
-          onDismiss={ this.props.onDismiss }>
+          onDismiss={ this.dismiss }>
           <div
-            ref={ this._onPanelRef }
             className={
-              css('ms-Panel', styles.root, className, {
+              css(
+                'ms-Panel',
+                styles.root,
+                className,
                 // because the RTL animations are not being used, we need to set a class
-                ['is-open ' + styles.rootIsOpen]: isOpen,
-                ['ms-Panel--smFluid ' + styles.rootIsSmallFluid]: type === PanelType.smallFluid,
-                ['ms-Panel--smLeft ' + styles.rootIsSmallLeft]: type === PanelType.smallFixedNear,
-                ['ms-Panel--sm ' + styles.rootIsSmall]: type === PanelType.smallFixedFar,
-                ['ms-Panel--md ' + styles.rootIsMedium]: type === PanelType.medium,
-                ['ms-Panel--lg ' + styles.rootIsLarge]: type === PanelType.large || type === PanelType.largeFixed,
-                ['ms-Panel--fixed ' + styles.rootIsFixed]: type === PanelType.largeFixed,
-                ['ms-Panel--xl ' + styles.rootIsXLarge]: type === PanelType.extraLarge,
-                ['ms-Panel--custom ' + styles.rootIsCustom]: type === PanelType.custom,
-                ['ms-Panel--hasCloseButton ' + styles.rootHasCloseButton]: hasCloseButton
-              })
+                isOpen && ('is-open ' + styles.rootIsOpen),
+                type === PanelType.smallFluid && ('ms-Panel--smFluid ' + styles.rootIsSmallFluid),
+                type === PanelType.smallFixedNear && ('ms-Panel--smLeft ' + styles.rootIsSmallLeft),
+                type === PanelType.smallFixedFar && ('ms-Panel--sm ' + styles.rootIsSmall),
+                type === PanelType.medium && ('ms-Panel--md ' + styles.rootIsMedium),
+                type === PanelType.large || type === PanelType.largeFixed && ('ms-Panel--lg ' + styles.rootIsLarge),
+                type === PanelType.largeFixed && ('ms-Panel--fixed ' + styles.rootIsFixed),
+                type === PanelType.extraLarge && ('ms-Panel--xl ' + styles.rootIsXLarge),
+                type === PanelType.custom && ('ms-Panel--custom ' + styles.rootIsCustom),
+                hasCloseButton && ('ms-Panel--hasCloseButton ' + styles.rootHasCloseButton)
+              )
             }
           >
             { overlay }
             <FocusTrapZone
-              className={ css(
-                'ms-Panel-main',
-                styles.main,
-                {
-                  [SLIDE_RIGHT_IN_40]: isAnimatingOpen && !isOnRightSide,
-                  [SLIDE_LEFT_IN_40]: isAnimatingOpen && isOnRightSide,
-                  [SLIDE_LEFT_OUT_40]: isAnimatingClose && !isOnRightSide,
-                  [SLIDE_RIGHT_OUT_40]: isAnimatingClose && isOnRightSide
-                }
-              ) }
+              className={
+                css(
+                  'ms-Panel-main',
+                  styles.main,
+                  isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
+                  isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
+                  !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
+                  !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
+                ) }
               style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               isClickableOutsideFocusTrap={ isLightDismiss }
@@ -200,12 +172,30 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     );
   }
 
+  public open() {
+    if (!this.state.isOpen) {
+      this.setState({
+        isOpen: true,
+        isAnimating: true
+      }, () => {
+        this._async.setTimeout(this._onTransitionComplete, 200);
+      });
+    }
+  }
+
+  @autobind
   public dismiss() {
     if (this.state.isOpen) {
       this.setState({
-        isAnimatingOpen: false,
-        isAnimatingClose: true
+        isOpen: false,
+        isAnimating: true
+      }, () => {
+        this._async.setTimeout(this._onTransitionComplete, 200);
       });
+
+      if (this.props.onDismiss) {
+        this.props.onDismiss();
+      }
     }
   }
 
@@ -279,34 +269,19 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     }
   }
 
+  @autobind
   private _onPanelClick() {
     this.dismiss();
   }
 
-  private _onPanelRef(ref: HTMLDivElement) {
-    if (ref) {
-      this._events.on(ref, 'animationend', this._onAnimationEnd);
-    } else {
-      this._events.off();
-    }
-  }
+  @autobind
+  private _onTransitionComplete() {
+    this.setState({
+      isAnimating: false
+    });
 
-  private _onAnimationEnd(ev: AnimationEvent) {
-    if (ev.animationName.indexOf('In') > -1) {
-      this.setState({
-        isOpen: true,
-        isAnimatingOpen: false
-      });
-    }
-    if (ev.animationName.indexOf('Out') > -1) {
-      this.setState({
-        isOpen: false,
-        isAnimatingClose: false
-      });
-
-      if (this.props.onDismissed) {
-        this.props.onDismissed();
-      }
+    if (!this.state.isOpen && this.props.onDismissed) {
+      this.props.onDismissed();
     }
   }
 }

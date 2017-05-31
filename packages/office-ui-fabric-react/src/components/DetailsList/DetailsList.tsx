@@ -1,36 +1,39 @@
 import * as React from 'react';
+import * as stylesImport from './DetailsList.scss';
+
 import {
   BaseComponent,
   KeyCodes,
   assign,
   autobind,
   css,
-  getRTLSafeKeyCode
+  getRTLSafeKeyCode,
 } from '../../Utilities';
 import {
-  IDetailsListProps,
+  CheckboxVisibility,
   ColumnActionsMode,
   ConstrainMode,
   DetailsListLayoutMode,
   IColumn,
   IDetailsList,
-  CheckboxVisibility
+  IDetailsListProps,
 } from '../DetailsList/DetailsList.Props';
 import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { GroupedList } from '../../GroupedList';
-import { List } from '../../List';
-import { withViewport } from '../../utilities/decorators/withViewport';
 import {
   IObjectWithKey,
   ISelection,
   Selection,
   SelectionMode,
-  SelectionZone
+  SelectionZone,
 } from '../../utilities/selection/index';
+
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import * as stylesImport from './DetailsList.scss';
+import { GroupedList } from '../../GroupedList';
+import { List } from '../../List';
+import { withViewport } from '../../utilities/decorators/withViewport';
+
 const styles: any = stylesImport;
 
 export interface IDetailsListState {
@@ -124,6 +127,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   public componentDidUpdate(prevProps: any, prevState: any) {
+    if (this._initialFocusedIndex !== undefined) {
+      const row = this._activeRows[this._initialFocusedIndex];
+      if (row) {
+        this._setFocusToRowIfPending(row);
+      }
+    }
+
     if (this.props.onDidUpdate) {
       this.props.onDidUpdate(this);
     }
@@ -421,7 +431,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     this._activeRows[index] = row; // this is used for column auto resize
 
-    // Set focus to the row if it should receive focus.
+    this._setFocusToRowIfPending(row);
+
+    if (onRowDidMount) {
+      onRowDidMount(row.props.item, index);
+    }
+  }
+
+  private _setFocusToRowIfPending(row: DetailsRow) {
+    let index = row.props.itemIndex;
     if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
@@ -429,10 +447,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       this._async.setTimeout(() => row.focus(), 0);
 
       delete this._initialFocusedIndex;
-    }
-
-    if (onRowDidMount) {
-      onRowDidMount(row.props.item, index);
     }
   }
 
@@ -537,10 +551,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps) {
     let {
       selectionMode,
+      checkboxVisibility,
       groups
     } = props;
     let outerPadding = DEFAULT_INNER_PADDING;
-    let rowCheckWidth = (selectionMode !== SelectionMode.none) ? CHECKBOX_WIDTH : 0;
+    let rowCheckWidth = (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) ? CHECKBOX_WIDTH : 0;
     let groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
     let totalWidth = 0; // offset because we have one less inner padding.
     let availableWidth = viewportWidth - (outerPadding + rowCheckWidth + groupExpandWidth);

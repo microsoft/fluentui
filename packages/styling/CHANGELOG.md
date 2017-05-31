@@ -1,6 +1,27 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 18 May 2017 10:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2017 01:58:23 GMT and should not be manually modified.
+
+## 0.4.1
+Wed, 31 May 2017 01:58:23 GMT
+
+### Patches
+
+- Icon classes: adjusting how they are registered so that we merge raw styles together to form the icon classes.
+
+## 0.4.0
+Tue, 30 May 2017 20:23:45 GMT
+
+### Minor changes
+
+- Adding support for specifying `window.FabricConfig.fontBaseUrl` in order to customize where the font resources are pulled from. Leaving it blank will avoid fontface definitions from being registered.
+
+## 0.3.0
+Tue, 30 May 2017 03:27:20 GMT
+
+### Minor changes
+
+- Major updates to mergeStyles and other various utilities. Updating fonts to follow latest fabric-core language fallbacks.
 
 ## 0.2.0
 Thu, 18 May 2017 10:09:58 GMT

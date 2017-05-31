@@ -1,37 +1,46 @@
 @import '../../../common/common';
 
 .root {
-  min-width: 180px;
+  min-width: 260px;
 }
 
 .suggestionsItem {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
   width: 100%;
-  height: auto;
-  
-  @include text-align(left);
-  padding: 4px 20px 6px;
-
-  display: block;
-  border: none;
-  background: $ms-color-white;
+  position: relative;
 
   &:hover {
     background: $ms-color-neutralLight;
   }
 
   &.suggestionsItemIsSuggested {
-    background: $ms-color-neutralQuaternary;
+    background: $ms-color-neutralLight;
+
     &:hover {
-      background: $ms-color-neutralQuaternaryAlt;
+      background: $ms-color-neutralTertiaryAlt;
+    }
+
+    .closeButton {
+      &:hover {
+        background: $ms-color-neutralTertiary;
+        color: $ms-color-black;
+      }
     }
   }
 }
 
 .searchMoreButton {
-  @include button-reset();
-  height: auto;
-  text-align: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
   margin: 0;
+  @include ms-padding-left(8px);
+  position: relative;
+  border-top: 1px solid $ms-color-neutralLight;
+  height: 40px;
+  @include ms-text-align(left);
   width: 100%;
   &:hover {
       background-color: $ms-color-neutralLight;
@@ -42,12 +51,21 @@
   &:active {
       background-color: $ms-color-themeLight;
   }
+
+  :global(.ms-Button-icon) {
+    font-size: 16px;
+    width: 25px;
+  }
+
+  :global(.ms-Button-label) {
+    @include margin(0, 4px, 0, 9px);
+  }
 }
 
 .suggestionsTitle {
+  padding: 0 12px;
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  text-align: center;
   text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
@@ -68,8 +86,9 @@
 }
 
 .suggestionsSpinner {
-  margin: 5px;
-  text-align: center;
+  margin: 5px 0;
+  @include padding-left(14px);
+  @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
 
@@ -79,7 +98,24 @@
   }
   :global(.ms-Spinner-label) {
     display: inline-block;
-    margin: 0px 10px;
+    @include margin(0px, 10px, 0, 16px);
     vertical-align: middle;
+  }
+}
+
+.itemButton {
+  height: 100%;
+  width: 100%;
+  padding: 7px 12px;
+}
+
+.closeButton {
+  padding: 0 4px;
+  height: auto;
+  width: 32px;
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
   }
 }

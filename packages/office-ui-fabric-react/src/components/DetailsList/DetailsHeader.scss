@@ -25,12 +25,13 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
-.cell.cellIsCheck :global(.ms-Check-background) {
+.cell.cellIsCheck :global(.ms-Check-circle) {
   opacity: 0;
 }
 
-.cell.cellIsCheck:hover :global(.ms-Check-background),
-.root.rootIsAllSelected :global(.ms-Check-background) {
+.cell.cellIsCheck:hover :global(.ms-Check-circle),
+.cell.cellIsCheck:focus :global(.ms-Check-circle),
+.root.rootIsAllSelected :global(.ms-Check-circle) {
   opacity: 1;
 }
 
@@ -134,7 +135,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .cell .filterChevron {
   color: $dropdownChevronForegroundColor;
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
   vertical-align: middle;
 }
 

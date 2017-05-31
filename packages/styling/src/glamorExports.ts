@@ -1,24 +1,32 @@
 import * as Glamor from 'glamor';
 import rtlify from 'rtl-css-js';
 import { IRawStyle, IProcessedStyle } from './interfaces/index';
-import { getRTL } from '@uifabric/utilities';
+import { getRTL } from '@uifabric/utilities/lib/index';
 
 interface IGlamorRulePair {
   selector: string;
   style: Glamor.CSSProperties;
 }
 
-// force speedy.
-// Glamor['speedy'](true);
+function _initializeGlamor(): void {
+  // force speedy.
+  // tslint:disable-next-line:no-string-literal
+  if (!Glamor['styleSheet'] || !Glamor['styleSheet'].isSpeedy) {
+    // tslint:disable-next-line:no-string-literal
+    Glamor['speedy'](true);
+  }
 
-// tslint:disable-next-line:no-string-literal
-Glamor['plugins'].add(
-  ({ selector, style }: IGlamorRulePair): IGlamorRulePair => (
-    {
-      selector,
-      style: getRTL() ? rtlify(style) : style
-    }
-  ));
+  // tslint:disable-next-line:no-string-literal
+  Glamor['plugins'].add(
+    ({ selector, style }: IGlamorRulePair): IGlamorRulePair => (
+      {
+        selector,
+        style: getRTL() ? rtlify(style) : style
+      }
+    ));
+}
+
+_initializeGlamor();
 
 /**
  * Defines a :before pseudo-selector scoped style object for the given raw style.
