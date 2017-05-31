@@ -121,6 +121,16 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     }
   }
 
+  private _setStateToDoneMeasuring() {
+    this.setState((prevState, props) => {
+      return {
+        renderedData: prevState.measuredData,
+        measuredData: { ...this.props.data },
+        shouldMeasure: false
+      };
+    });
+  }
+
   private _measureItems() {
     const { data, onReduceData } = this.props;
     const { shouldMeasure } = this.state;
@@ -139,19 +149,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
             measuredData: nextMeasuredData,
           });
         } else {
-          this.setState({
-            shouldMeasure: false
-          });
+          this._setStateToDoneMeasuring();
         }
 
       } else {
-        this.setState((prevState, props) => {
-          return {
-            renderedData: prevState.measuredData,
-            measuredData: { ...this.props.data },
-            shouldMeasure: false
-          };
-        });
+        this._setStateToDoneMeasuring();
       }
     }
   }
