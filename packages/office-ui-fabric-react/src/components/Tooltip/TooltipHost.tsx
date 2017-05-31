@@ -49,6 +49,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       directionalHint,
       delay,
       id,
+      setAriaDescribedBy = true,
       hostClassName
     } = this.props;
     const { isTooltipVisible } = this.state;
@@ -61,22 +62,23 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
         onMouseEnter={ this._onTooltipMouseEnter }
         onMouseLeave={ this._onTooltipMouseLeave }
-        aria-describedby={ isTooltipVisible ? tooltipId : undefined }
+        aria-describedby={ setAriaDescribedBy && isTooltipVisible && content ? tooltipId : undefined }
       >
         { children }
-        { isTooltipVisible && (
-          <Tooltip
-            { ...tooltipProps }
-            id={ tooltipId }
-            delay={ delay }
-            content={ content }
-            targetElement={ this._getTargetElement() }
-            directionalHint={ directionalHint }
-            calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
-            { ...getNativeProps(this.props, divProperties) }
-          >
-          </Tooltip>
-        ) }
+        { isTooltipVisible &&
+          content ? (
+            <Tooltip
+              { ...tooltipProps }
+              id={ tooltipId }
+              delay={ delay }
+              content={ content }
+              targetElement={ this._getTargetElement() }
+              directionalHint={ directionalHint }
+              calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
+              { ...getNativeProps(this.props, divProperties) }
+            >
+            </Tooltip>
+          ) : undefined }
       </div>
     );
   }

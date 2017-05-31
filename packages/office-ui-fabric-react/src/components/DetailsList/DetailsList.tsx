@@ -1,5 +1,7 @@
+
 import * as React from 'react';
 import * as stylesImport from './DetailsList.scss';
+import * as ReactDOM from 'react-dom';
 
 import {
   BaseComponent,
@@ -189,6 +191,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let {
       ariaLabelForListHeader,
       ariaLabelForSelectAllCheckbox,
+      ariaLabelForSelectionColumn,
       className,
       checkboxVisibility,
       constrainMode,
@@ -257,7 +260,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         data-is-scrollable='false'
         aria-label={ ariaLabel }
         { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
-        <div role='grid' aria-label={ ariaLabelForGrid } aria-rowcount={ items ? items.length : 0 } aria-colcount={ adjustedColumns ? adjustedColumns.length : 0 }>
+        <div role='grid'
+          aria-label={ ariaLabelForGrid }
+          aria-rowcount={ (isHeaderVisible ? 1 : 0) + (items ? items.length : 0) }
+          aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
+          aria-readonly='true'>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
@@ -276,6 +283,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                 onToggleCollapseAll={ this._onToggleCollapse }
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
+                ariaLabelForSelectionColumn={ ariaLabelForSelectionColumn }
                 selectAllVisibility={ selectAllVisibility }
               />
             ) }
@@ -285,7 +293,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ref='focusZone'
               className={ styles.focusZone }
               direction={ FocusZoneDirection.vertical }
-              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              isInnerZoneKeystroke={ isRightArrow }
               onActiveElementChanged={ this._onActiveRowChanged }
             >
               <SelectionZone
@@ -313,7 +321,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                   />
                 ) : (
                     <List
-                      role={ null }
+                      role='presentation'
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
@@ -444,7 +452,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
       }
-      this._async.setTimeout(() => row.focus(), 0);
+      this._async.setTimeout(() => {
+        row.focus();
+      }, 0);
 
       delete this._initialFocusedIndex;
     }
@@ -699,7 +709,7 @@ export function buildColumns(
           isRowHeader: false,
           columnActionsMode: ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
-          onColumnClick,
+          onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName
         });
 
@@ -709,4 +719,8 @@ export function buildColumns(
   }
 
   return columns;
+}
+
+function isRightArrow(event: React.KeyboardEvent<HTMLElement>) {
+  return event.which === getRTLSafeKeyCode(KeyCodes.right);
 }

@@ -100,6 +100,8 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
           items={ items }
           groups={ groupBy(items, 'color') }
           columns={ _columns }
+          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+          ariaLabelForSelectionColumn='Toggle selection'
         />
       </Fabric>
     );
