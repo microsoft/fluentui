@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 30 May 2017 20:23:45 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2017 01:58:23 GMT and should not be manually modified.
+
+## 0.4.1
+Wed, 31 May 2017 01:58:23 GMT
+
+### Patches
+
+- Icon classes: adjusting how they are registered so that we merge raw styles together to form the icon classes.
 
 ## 0.4.0
 Tue, 30 May 2017 20:23:45 GMT

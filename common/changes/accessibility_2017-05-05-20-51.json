@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Update DetailsList to support screen readers with cleaner keyboarding flow",
+      "type": "minor"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Update Focus handling to suport immediately-nested focus zones",
+      "type": "patch"
+    }
+  ],
+  "email": "tmichon@microsoft.com"
+}

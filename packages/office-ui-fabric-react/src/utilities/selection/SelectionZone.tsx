@@ -84,6 +84,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
+        role='presentation'
 
         onDoubleClick={ this._onDoubleClick }
         onContextMenu={ this._onContextMenu }

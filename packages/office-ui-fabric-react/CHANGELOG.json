@@ -2,6 +2,33 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.1.1",
+      "tag": "office-ui-fabric-react_v4.1.1",
+      "date": "Wed, 31 May 2017 01:58:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ee2ea2da473875f48afc28b4270bc658eaa49f92",
+            "comment": "BasePicker: Removing extraneous unnecessary required non-typesafe prop that isn't being used."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "b6634efe0d29aaeed26332375b05eba16d9d53a5",
+            "comment": "ResizeGroup: Reduce render time when reducing the width of the container."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.0 <1.0.0` to `>=0.4.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.0.1` to `2.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.1.0",
       "tag": "office-ui-fabric-react_v4.1.0",
       "date": "Tue, 30 May 2017 20:23:45 GMT",
