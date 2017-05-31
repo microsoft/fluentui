@@ -11,6 +11,7 @@ export interface ISemanticColors {
   bodyBackground?: string;
   bodyText?: string;
   bodySubtext?: string;
+  bodyDivider?: string;
 
   disabledBackground?: string;
   disabledText?: string;
@@ -28,4 +29,18 @@ export interface ISemanticColors {
   inputBackgroundSelected?: string;
   inputBackgroundSelectedHovered?: string;
   inputForegroundSelected?: string;
+  inputFocusBorderAlt?: string;
+
+  // Menus, popups, etc
+  menuItemBackgroundHovered?: string;
+  menuItemBackgroundChecked?: string;
+  menuIcon?: string;
+  menuHeader?: string;
+
+  // Lists
+  listBackground?: string;
+  listTextColor?: string;
+  listItemBackgroundHovered?: string;
+  listItemBackgroundChecked?: string;
+  listItemBackgroundCheckedHovered?: string;
 }

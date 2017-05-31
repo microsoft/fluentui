@@ -44,6 +44,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
     bodySubtext: p.neutralSecondary,
+    bodyDivider: p.neutralLight,
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiaryAlt,
@@ -58,6 +59,18 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
     inputBorderHovered: p.neutralPrimary,
     inputBackgroundSelected: p.themePrimary,
     inputBackgroundSelectedHovered: p.themeDarkAlt,
-    inputForegroundSelected: p.white
+    inputForegroundSelected: p.white,
+    inputFocusBorderAlt: p.themePrimary,
+
+    menuItemBackgroundHovered: p.neutralLighter,
+    menuItemBackgroundChecked: p.neutralQuaternaryAlt,
+    menuIcon: p.themePrimary,
+    menuHeader: p.themePrimary,
+
+    listBackground: p.white,
+    listTextColor: p.neutralPrimary,
+    listItemBackgroundHovered: p.neutralLighter,
+    listItemBackgroundChecked: p.neutralQuaternary,
+    listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
 }
