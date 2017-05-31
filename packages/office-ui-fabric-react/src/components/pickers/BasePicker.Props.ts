@@ -66,6 +66,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default false
    */
   disabled?: boolean;
+
+
+  selectedItems?: T[];
 }
 
 export interface IBasePickerSuggestionsProps {
