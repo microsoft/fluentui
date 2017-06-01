@@ -57,7 +57,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   public componentWillUnmount() {
     let { ignoreExternalFocusing, elementToFocusOnDismiss } = this.props;
 
-    this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement
+    this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
 
     this._events.dispose();
     if (this._isInFocusStack || this._isInClickStack) {
