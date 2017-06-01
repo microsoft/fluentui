@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Label Component: Adds a little bit more padding to Labels (5px -> 8px)",
+      "type": "minor"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}
