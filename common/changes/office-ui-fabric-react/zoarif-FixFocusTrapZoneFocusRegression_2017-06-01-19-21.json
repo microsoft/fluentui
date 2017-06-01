@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing focus trap zone previously focused element regression",
+      "comment": "Fixing an issue where restoring focus was not working due to a regression",
       "type": "minor"
     }
   ],
