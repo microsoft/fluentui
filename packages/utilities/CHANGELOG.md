@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 30 May 2017 03:27:20 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jun 2017 16:34:03 GMT and should not be manually modified.
+
+## 4.0.1
+Thu, 01 Jun 2017 16:34:03 GMT
+
+### Patches
+
+- getDocument/getWindow: now checks for doc/win undefined before accessing, making them ssr happy.
+- Update Focus handling to suport immediately-nested focus zones
 
 ## 4.0.0
 Tue, 30 May 2017 03:27:20 GMT
