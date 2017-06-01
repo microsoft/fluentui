@@ -112,7 +112,7 @@ export function setSSR(isEnabled) {
 
 /** Helper to get the window object. */
 export function getWindow(rootElement?: HTMLElement) {
-  if (_isSSR) {
+  if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
     return (
@@ -129,7 +129,7 @@ export function getWindow(rootElement?: HTMLElement) {
  * Helper to get the document object.
  */
 export function getDocument(rootElement?: HTMLElement) {
-  if (_isSSR) {
+  if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {
     return rootElement && rootElement.ownerDocument ? rootElement.ownerDocument : document;
