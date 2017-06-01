@@ -55,12 +55,15 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     }
   }
 
-  public componentWillUnmount() {
-    let { ignoreExternalFocusing, elementToFocusOnDismiss } = this.props;
-
-    if (elementToFocusOnDismiss) {
+  public componentWillReceiveProps(nextProps: IFocusTrapZoneProps) {
+    let { elementToFocusOnDismiss } = nextProps;
+    if (elementToFocusOnDismiss && this._previouslyFocusedElement !== elementToFocusOnDismiss) {
       this._previouslyFocusedElement = elementToFocusOnDismiss;
     }
+  }
+
+  public componentWillUnmount() {
+    let { ignoreExternalFocusing } = this.props;
 
     this._events.dispose();
     if (this._isInFocusStack || this._isInClickStack) {
