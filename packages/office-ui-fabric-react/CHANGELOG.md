@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 31 May 2017 01:58:23 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Jun 2017 16:34:03 GMT and should not be manually modified.
+
+## 4.2.0
+Thu, 01 Jun 2017 16:34:03 GMT
+
+### Minor changes
+
+- Update DetailsList to support screen readers with cleaner keyboarding flow
+- Styling: Add support for overriding the styles on the checked hovered, checked pressed, and checked disabled states
+- Update elementToFocusOnDismiss on unmount in focus trap zone
+
+### Patches
+
+- DetailsList: Last column measured correctly when `checkboxVisibility` set to `hidden`.
+- Fix css for MessageBar, and support single line message bar styling
+- Panel: fix regression in large Panel size
+- ResizeGroup: Make sure that it renders contents when there are no more scaling steps and it doesn't fit
 
 ## 4.1.1
 Wed, 31 May 2017 01:58:23 GMT
