@@ -62,7 +62,6 @@ export const getStyles = memoizeFunction((
       color: theme.palette.black,
     },
 
-
     label: {
       fontWeight: 'bold' // theme.fontWeights.semibold,
     },

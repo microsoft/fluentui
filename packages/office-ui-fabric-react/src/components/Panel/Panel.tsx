@@ -131,7 +131,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
                 type === PanelType.smallFixedNear && ('ms-Panel--smLeft ' + styles.rootIsSmallLeft),
                 type === PanelType.smallFixedFar && ('ms-Panel--sm ' + styles.rootIsSmall),
                 type === PanelType.medium && ('ms-Panel--md ' + styles.rootIsMedium),
-                type === PanelType.large || type === PanelType.largeFixed && ('ms-Panel--lg ' + styles.rootIsLarge),
+                (type === PanelType.large || type === PanelType.largeFixed) && ('ms-Panel--lg ' + styles.rootIsLarge),
                 type === PanelType.largeFixed && ('ms-Panel--fixed ' + styles.rootIsFixed),
                 type === PanelType.extraLarge && ('ms-Panel--xl ' + styles.rootIsXLarge),
                 type === PanelType.custom && ('ms-Panel--custom ' + styles.rootIsCustom),

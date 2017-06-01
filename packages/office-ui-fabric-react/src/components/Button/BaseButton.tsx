@@ -87,7 +87,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       iconProps && iconProps.className,
       disabled,
-      checked || this.state.menuProps !== null
+      checked
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -332,6 +332,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
+
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
@@ -352,21 +353,25 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         styles.root,
         checked && [
           'is-checked',
-          styles.rootChecked,
-          { ':hover': styles.rootCheckedHovered }
+          styles.rootChecked
         ],
         disabled && [
           'is-disabled',
           styles.rootDisabled
         ],
-        !disabled && [
-          !checked && {
-            ':hover': styles.rootHovered,
-            ':hover .ms-Button-description': styles.descriptionHovered,
-            ':active': styles.rootPressed,
-            ':active .ms-Button-description': styles.descriptionPressed
-          }
-        ]
+        !disabled && {
+          ':hover': styles.rootHovered,
+          ':hover .ms-Button-description': styles.descriptionHovered,
+          ':active': styles.rootPressed,
+          ':active .ms-Button-description': styles.descriptionPressed
+        },
+        disabled && checked && [
+          styles.rootCheckedDisabled
+        ],
+        !disabled && checked && {
+          ':hover': styles.rootCheckedHovered,
+          ':active': styles.rootCheckedPressed
+        }
       ) as string,
 
       flexContainer: mergeStyles(
