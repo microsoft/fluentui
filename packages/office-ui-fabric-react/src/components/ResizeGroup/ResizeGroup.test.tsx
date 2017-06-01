@@ -6,6 +6,7 @@ import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
 import * as stylesImport from './ResizeGroup.scss';
 import { injectWrapperMethod, setRenderSpy } from '@uifabric/utilities/lib/test/';
+import { IResizeGroupProps } from './ResizeGroup.Props';
 const styles: any = stylesImport;
 
 interface ITestScalingData {
@@ -23,7 +24,7 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 },
   const onReduceDataSpy = sinon.spy(onReduceData);
   const onRenderDataSpy = sinon.spy();
 
-  let wrapper = mount<ResizeGroup, IResizeGroupState>(<ResizeGroup
+  let wrapper = mount<IResizeGroupProps, IResizeGroupState>(<ResizeGroup
     data={ data }
     onReduceData={ onReduceDataSpy }
     onRenderData={ onRenderDataSpy }
@@ -37,7 +38,7 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 },
   };
 }
 
-function getMeasurementMocks(wrapper: ReactWrapper<ResizeGroup, IResizeGroupState>) {
+function getMeasurementMocks(wrapper: ReactWrapper<IResizeGroupProps, IResizeGroupState>) {
   let rootGetClientRectMock = sinon.stub();
   let measuredGetClientRectMock = sinon.stub();
   rootGetClientRectMock.returns({ width: 0 });
@@ -65,7 +66,7 @@ describe('ResizeGroup', () => {
   it('does not render ResizeGroup when no data is passed', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
-    const wrapper = shallow(
+    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
       <ResizeGroup
         onReduceData={ onReduceData }
         onRenderData={ onRenderData }
@@ -78,7 +79,7 @@ describe('ResizeGroup', () => {
   it('does not render ResizeGroup when empty data is passed', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
-    const wrapper = shallow(
+    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
       <ResizeGroup
         data={ {} }
         onReduceData={ onReduceData }
@@ -87,6 +88,27 @@ describe('ResizeGroup', () => {
     );
 
     expect(onRenderData.called).to.equal(false);
+  });
+
+  it('renders the result of onRenderData', () => {
+    const initialData = { content: 5 };
+    const renderedDataId = 'onRenderDataId';
+    const onRenderData = (data) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
+
+    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
+      <ResizeGroup
+        data={ initialData }
+        onReduceData={ onReduceScalingData }
+        onRenderData={ onRenderData }
+      />
+    );
+
+    expect(wrapper.containsMatchingElement(onRenderData(initialData))).to.be.true;
+
+    // Updating the renderedData state should also render new data
+    const nextData = { content: 5 };
+    wrapper.setState({ renderedData: nextData });
+    expect(wrapper.containsMatchingElement(onRenderData(nextData)));
   });
 
   it('remeasures if props are updated', () => {
@@ -320,7 +342,7 @@ describe('ResizeGroup', () => {
     onReduceDataStub.returns({});
     const onRenderDataMock = sinon.spy();
 
-    let wrapper = mount<ResizeGroup, IResizeGroupState>(<ResizeGroup
+    let wrapper = mount<IResizeGroupProps, IResizeGroupState>(<ResizeGroup
       data={ mockData }
       onReduceData={ onReduceDataStub }
       onRenderData={ onRenderDataMock }
@@ -350,5 +372,26 @@ describe('ResizeGroup', () => {
     expect(onRenderSpy.callCount).to.equal(3);
     expect(onReduceDataStub.callCount).to.equal(2);
     expect(wrapper.state().shouldMeasure).to.equal(false);
+  });
+
+  it('initially renders content even if it does not fit', () => {
+    let data = { scalingIndex: 5 };
+
+    // Simulate an onReduce data that has no more scaling operations
+    let onReduceData = (_) => undefined;
+
+    let { rootGetClientRectMock, measuredGetClientRectMock, wrapper } = getWrapperWithMocks(data, onReduceData);
+
+    // Make sure the content never fits
+    rootGetClientRectMock.returns({ width: 27 });
+    measuredGetClientRectMock.returns({ width: 52 });
+
+    // Reset the internal rendered state of the component
+    wrapper.setState({
+      shouldMeasure: true,
+      renderedData: null
+    });
+
+    expect(wrapper.state().renderedData).to.deep.equal(data);
   });
 });
