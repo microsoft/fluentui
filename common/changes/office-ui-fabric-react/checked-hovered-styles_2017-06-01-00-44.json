@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Styling: Add support for overriding the styles on the checked hovered, checked pressed, and checked disabled states",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
