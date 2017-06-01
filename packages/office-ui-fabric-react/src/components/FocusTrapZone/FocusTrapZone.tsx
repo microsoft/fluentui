@@ -39,8 +39,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount() {
-    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
+    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss } = this.props;
 
+    this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
     if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
       this.focus();
     }
@@ -57,7 +58,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   public componentWillUnmount() {
     let { ignoreExternalFocusing, elementToFocusOnDismiss } = this.props;
 
-    this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
+    if (elementToFocusOnDismiss) {
+      this._previouslyFocusedElement = elementToFocusOnDismiss;
+    }
 
     this._events.dispose();
     if (this._isInFocusStack || this._isInClickStack) {
