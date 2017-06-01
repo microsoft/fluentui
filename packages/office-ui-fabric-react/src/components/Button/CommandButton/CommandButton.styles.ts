@@ -10,8 +10,8 @@ import {
 } from '../BaseButton.styles';
 
 const COMMAND_BUTTON_HEIGHT = '40px';
-const COMMAND_BUTTON_MINWIDTH = '80px';
-const COMMAND_PADDING = '0 8px';
+const COMMAND_BUTTON_MINWIDTH = '40px';
+const COMMAND_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
@@ -63,7 +63,7 @@ export const getStyles = memoizeFunction((
     },
 
     label: {
-      fontWeight: 'bold' // theme.fontWeights.semibold,
+      fontWeight: 'normal' // theme.fontWeights.semibold,
     },
 
     icon: {

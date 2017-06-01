@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IContextualMenuItem } from '../ContextualMenu/index';
+import { IContextualMenuItem } from '../ContextualMenu';
+import { IButtonProps } from '../Button';
 import { ISearchBoxProps } from '../../SearchBox';
 
 export interface ICommandBar {
@@ -35,12 +36,12 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Items to render
    */
-  items: IContextualMenuItem[];
+  items: ICommandBarItemProps[];
 
   /**
    * Default items to have in the overflow menu
    */
-  overflowItems?: IContextualMenuItem[];
+  overflowItems?: ICommandBarItemProps[];
 
   /**
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button
@@ -50,11 +51,19 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Items to render on the right side (or left, in RTL).
    */
-  farItems?: IContextualMenuItem[];
+  farItems?: ICommandBarItemProps[];
 
   /**
    * Additional css class to apply to the command bar
    * @defaultvalue undefined
    */
   className?: string;
+}
+
+export interface ICommandBarItemProps extends IContextualMenuItem {
+  /**
+   * Remove text when button is not in the overflow
+   * @defaultvalue false
+   */
+  iconOnly?: boolean;
 }

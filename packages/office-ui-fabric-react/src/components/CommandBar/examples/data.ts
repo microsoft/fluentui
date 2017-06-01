@@ -25,13 +25,14 @@ export const items = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    href: 'https://mytenenat.sharepoint.com/teams/IT/BPU/',
+    href: 'https://dev.office.com/fabric',
     ['data-automation-id']: 'uploadButton'
   },
   {
     key: 'share',
     name: 'Share',
     icon: 'Share',
+    disabled: true,
     onClick: () => { return; }
   },
   {
@@ -180,12 +181,14 @@ export const farItems = [
     key: 'tile',
     name: 'Grid view',
     icon: 'Tiles',
+    iconOnly: true,
     onClick: () => { return; }
   },
   {
     key: 'info',
     name: 'Info',
     icon: 'Info',
+    iconOnly: true,
     onClick: () => { return; }
   }
 ];

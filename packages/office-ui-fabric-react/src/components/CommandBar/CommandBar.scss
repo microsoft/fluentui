@@ -8,10 +8,8 @@
   background-color: $ms-color-neutralLighter;
   white-space: nowrap;
   user-select: none;
-  .overflowButton {
-    padding-left: 0;
-    padding-right: 0;
-    min-width: 44px;
+  .commandButton {
+    margin: 0 4px;
   }
   .search {
     margin: 0;
@@ -34,6 +32,11 @@
 }
 
 .primarySet {
+  @include margin-left(16px);
   flex-grow: 1;
+}
+
+.secondarySet {
+  @include margin-right(16px);
 }
 
