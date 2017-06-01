@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Expose aria label prop in dropdown option.",
+      "comment": "Dropdown: Expose aria label prop for the dropdown options.",
       "type": "minor"
     }
   ],
