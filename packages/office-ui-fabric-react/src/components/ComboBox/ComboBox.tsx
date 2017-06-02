@@ -48,10 +48,10 @@ export interface IComboBoxState {
 }
 
 enum SearchDirection {
-    backward = -1,
-    none = 0,
-    forward = 1
-  }
+  backward = -1,
+  none = 0,
+  forward = 1
+}
 
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
@@ -231,7 +231,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             aria-autocomplete={ (!disabled && autoComplete) }
             role='combobox'
             aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
-            readOnly={ disabled }
+            readOnly={ disabled || !allowFreeform }
             aria-labelledby={ (label && (id + '-label')) }
             aria-label={ ((ariaLabel && !label) && ariaLabel) }
             aria-describedby={ (id + '-option') }
@@ -312,7 +312,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // Since we are allowing freeform, if there is currently a nonempty pending value, use that
       // otherwise use the index determined above (falling back to '' if we did not get a valid index)
       return currentPendingValue !== '' ? currentPendingValue :
-            (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : '');
+        (this._indexWithinBounds(currentOptions, index) ? currentOptions[index].text : '');
     } else {
 
       // If we are not allowing freeform and have a
@@ -494,7 +494,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // Should we continue looking for an index to select?
       if (searchDirection !== SearchDirection.none &&
         ((newIndex !== 0 && searchDirection < SearchDirection.none) ||
-        (newIndex !== currentOptions.length - 1 && searchDirection > SearchDirection.none))) {
+          (newIndex !== currentOptions.length - 1 && searchDirection > SearchDirection.none))) {
         newIndex = this._getNextSelectableIndex(newIndex, searchDirection);
       } else {
         // If we cannot perform a useful search just return the index we were given
@@ -537,7 +537,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // if we have a new selected index,
       // clear all of the pending info
-        this._clearPendingInfo();
+      this._clearPendingInfo();
     }
   }
 
@@ -632,8 +632,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // where the total lenght is equal to pending option length; update the state
         if (currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
           (pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
-          this._comboBox.isValueSelected &&
-          currentPendingValue.length + (this._comboBox.selectionEnd - this._comboBox.selectionStart) === pendingOptionText.length)) {
+            this._comboBox.isValueSelected &&
+            currentPendingValue.length + (this._comboBox.selectionEnd - this._comboBox.selectionStart) === pendingOptionText.length)) {
           this._setSelectedIndex(currentPendingValueValidIndex);
           this._clearPendingInfo();
           return;
@@ -801,7 +801,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       selectedIndex
     } = this.state;
     return ((currentPendingValueValidIndex >= 0 || currentPendingValue !== '') ?
-            currentPendingValueValidIndex === index : selectedIndex === index);
+      currentPendingValueValidIndex === index : selectedIndex === index);
   }
 
   /**
@@ -956,6 +956,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     if (disabled) {
       this._handleKeyboardEventWhenDisabled(ev);
+      ev.stopPropagation();
+      ev.preventDefault();
       return;
     }
 
@@ -978,7 +980,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       case KeyCodes.escape:
       case KeyCodes.tab:
         // reset the selected index
-          this._resetSelectedIndex();
+        this._resetSelectedIndex();
 
         // Close the menu if opened
         if (isOpen) {
@@ -1036,6 +1038,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
 
       default:
+        // If we are not allowing freeform and
+        // allowing autoComplete, handle the input
+        // since we have marked the input as readonly
+        if (!allowFreeform && autoComplete) {
+          this._onInputChange(String.fromCharCode(ev.which));
+        }
         return;
     }
 
@@ -1103,11 +1111,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
- /**
-  * Click handler for the button of the comboBox
-  * and the input when not allowing freeform. This
-  * toggles the expand/collapse state of the comboBox (if enbled)
-  */
+  /**
+   * Click handler for the button of the comboBox
+   * and the input when not allowing freeform. This
+   * toggles the expand/collapse state of the comboBox (if enbled)
+   */
   @autobind
   private _onComboBoxClick() {
     let { disabled } = this.props;

@@ -35,7 +35,7 @@ $ComboBox-item-height: 36px;
 }
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
