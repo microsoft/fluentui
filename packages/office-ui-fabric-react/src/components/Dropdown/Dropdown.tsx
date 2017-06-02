@@ -196,7 +196,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
   }
 
-  // Find next valid dropdown option
+  /**
+   * Finds the next valid Dropdown option
+   * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
+   * @param index Index of where the search should start
+   * @param selectedIndex The selectedIndex Dropdown's state
+   * @returns The next valid dropdown option's index
+   */
   private _moveIndex(stepValue: number, index: number, selectedIndex: number): number {
     // Return selectedIndex if nothing has changed
     if (selectedIndex === index) {
@@ -220,6 +226,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         }
         index = index + stepValue;
       }
+      this.setSelectedIndex(index);
       return index;
     }
   }
@@ -332,8 +339,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _renderHeader(item: IDropdownOption): JSX.Element {
-    let { onRenderOption = this._onRenderOption } = this.props;
-    let { key } = item;
+    const { onRenderOption = this._onRenderOption } = this.props;
+    const { key } = item;
     return (
       <div key={ key }
         className={ css('ms-Dropdown-header', styles.header) }>
@@ -398,9 +405,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let preventScroll = true;
     let newIndex: number;
-    let { selectedIndex } = this.state;
+    const { selectedIndex } = this.state;
 
     switch (ev.which) {
       case KeyCodes.enter:
@@ -421,8 +427,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.up:
         newIndex = this._moveIndex(-1, selectedIndex - 1, selectedIndex);
-        preventScroll = newIndex !== selectedIndex;
-        this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.down:
@@ -430,21 +434,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           this.setState({ isOpen: true });
         } else {
           newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
-          preventScroll = newIndex !== selectedIndex;
-          this.setSelectedIndex(newIndex);
         }
         break;
 
       case KeyCodes.home:
         newIndex = this._moveIndex(1, 0, selectedIndex);
-        preventScroll = newIndex !== selectedIndex;
-        this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.end:
         newIndex = this._moveIndex(-1, this.props.options.length - 1, selectedIndex);
-        preventScroll = newIndex !== selectedIndex;
-        this.setSelectedIndex(newIndex);
         break;
 
       case KeyCodes.space:
@@ -455,7 +453,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
     }
 
-    if (preventScroll) {
+    if (newIndex !== selectedIndex) {
       ev.stopPropagation();
       ev.preventDefault();
     }
