@@ -144,6 +144,11 @@ export interface IDropdownOption {
    */
   index?: number;
 
+  /**
+   * The aria label for the dropdown option. If not present, the `text` will be used.
+   */
+  ariaLabel?: string;
+
   /** If option is selected. */
   selected?: boolean;
 
