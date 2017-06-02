@@ -1,0 +1,56 @@
+import { IDropdownOption, IDropdownProps } from '../../Dropdown';
+import { IIconProps } from '../../Icon';
+
+export interface IComboBox {
+
+}
+
+export interface IComboBoxProps extends IDropdownProps {
+
+  /**
+   * Collection of options for this ComboBox
+   */
+  options?: IComboBoxOption[];
+
+  /**
+   * Callback issues when either:
+   * 1) the selected option changes
+   * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
+   *    (and hence only value would be true, the other parameter would be null in this case)
+   */
+  onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * Callback issued when the options should be resolved, if they have been updated or
+   * if they need to be passed in the first time
+   */
+  onResolveOptions?: () => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
+
+  /**
+   * Whether the ComboBox is free form, meaning that the user input is not bound to provided items. Defaults to false.
+   */
+  allowFreeform?: boolean;
+
+  /**
+   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of items. If
+   * the combo box is expanded, this will also scroll to the suggested item, and give it a selected style. Defaults to false.
+   */
+  autoComplete?: boolean;
+
+  /**
+   * Value to show in the input, does not have to map to a combobox option
+   */
+  value?: string;
+
+  /**
+   * The IconProps to use for the button aspect of the combobox
+   */
+  buttonIconProps?: IIconProps;
+}
+
+export interface IComboBoxOption extends IDropdownOption {
+  /**
+   * Font-family associated with this option.
+   */
+  fontFamily?: string;
+}

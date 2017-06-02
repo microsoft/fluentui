@@ -59,4 +59,9 @@ export interface IBaseAutoFillProps extends React.HTMLProps<HTMLInputElement | B
    */
   enableAutoFillOnKeyPress?: KeyCodes[];
 
+  /**
+   * the default value to be visible
+   */
+  defaultVisibleValue?: string;
+
 }

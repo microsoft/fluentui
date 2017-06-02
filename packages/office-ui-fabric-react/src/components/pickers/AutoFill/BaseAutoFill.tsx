@@ -21,9 +21,9 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     enableAutoFillOnKeyPress: [KeyCodes.down, KeyCodes.up]
   };
 
-  private _inputElement: HTMLInputElement;
-  private _autoFillEnabled: boolean = true;
-  private _value: string;
+  protected _inputElement: HTMLInputElement;
+  protected _autoFillEnabled: boolean = true;
+  protected _value: string;
 
   constructor(props: IBaseAutoFillProps) {
     super(props);
@@ -114,14 +114,14 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  private _onClick() {
+  protected _onClick() {
     if (this._value && this._value !== '' && this._autoFillEnabled) {
       this._autoFillEnabled = false;
     }
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  protected _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.backspace:
         this._autoFillEnabled = false;
@@ -147,7 +147,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement>) {
+  protected _onChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = (ev.target as HTMLInputElement).value;
     if (value && (ev.target as HTMLInputElement).selectionStart === value.length && !this._autoFillEnabled && value.length > this._value.length) {
       this._autoFillEnabled = true;
@@ -155,13 +155,13 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     this._updateValue(value);
   }
 
-  private _notifyInputChange(newValue: string) {
+  protected _notifyInputChange(newValue: string) {
     if (this.props.onInputValueChange) {
       this.props.onInputValueChange(newValue);
     }
   }
 
-  private _updateValue(newValue: string) {
+  protected _updateValue(newValue: string) {
     this._value = newValue;
     let displayValue = newValue;
     if (this.props.suggestedDisplayValue &&
@@ -174,7 +174,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     }, () => this._notifyInputChange(newValue));
   }
 
-  private _doesTextStartWith(text: string, startWith: string) {
+  protected _doesTextStartWith(text: string, startWith: string) {
     if (!text || !startWith) {
       return false;
     }
