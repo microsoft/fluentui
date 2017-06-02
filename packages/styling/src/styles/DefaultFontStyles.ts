@@ -174,6 +174,7 @@ function _registerDefaultFontFaces(): void {
   if (baseUrl) {
     const fontUrl = `${baseUrl}/fonts`;
     const iconUrl = `${baseUrl}/icons`;
+    const iconVersion = '2.30';
 
     // Produce @font-face definitions for all supported web fonts.
     _registerFontFaceSet(fontUrl, FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
@@ -195,7 +196,7 @@ function _registerDefaultFontFaces(): void {
     _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
 
     // Register icon urls.
-    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
+    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons-${iconVersion}`, FontWeights.regular);
   }
 }
 
