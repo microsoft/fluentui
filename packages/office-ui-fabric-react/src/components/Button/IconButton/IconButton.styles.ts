@@ -35,11 +35,10 @@ export const getStyles = memoizeFunction((
 
     rootChecked: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
+    },
 
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight
-      }
-
+    rootCheckedHovered: {
+      backgroundColor: theme.palette.neutralLight
     },
 
     rootDisabled: {

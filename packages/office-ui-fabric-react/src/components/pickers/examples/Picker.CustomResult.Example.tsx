@@ -16,7 +16,7 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   IBasePickerProps,
   BasePickerListBelow,
