@@ -1,4 +1,5 @@
 let path = require('path');
+let webpack = require('webpack');
 let WebpackNotifierPlugin = require('webpack-notifier');
 
 const PACKAGE_NAME = require('./package.json').name;
@@ -81,6 +82,9 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new WebpackNotifierPlugin()
   ]
 }

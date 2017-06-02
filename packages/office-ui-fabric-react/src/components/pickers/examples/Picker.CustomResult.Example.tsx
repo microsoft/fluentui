@@ -16,17 +16,22 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   IBasePickerProps,
   BasePickerListBelow,
   BaseAutoFill,
-  IPickerItemProps
+  IPickerItemProps,
+  ISuggestionsProps,
+  ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
 import './Picker.CustomResult.Example.scss';
+import { TestImages } from '../../../common/TestImages';
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
   contextualMenuTarget?: HTMLElement;
+  isPickerDisabled?: boolean;
 }
 
 export interface IFullDocumentCardProps {
@@ -45,8 +50,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -85,9 +90,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -99,8 +104,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -139,9 +144,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -153,8 +158,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewTwo,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -193,9 +198,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -207,8 +212,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview3.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: TestImages.documentPreviewThree,
+          iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -247,9 +252,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: TestImages.personaFemale }
       ]
     },
     documentTitleProps: {
@@ -263,11 +268,14 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return (<div> { documentProps.documentTitleProps.title } </div>);
 };
 
-export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
   let {
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
+  let {
+    onClick
+  } = itemProps;
   return (
     <Persona
       imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
@@ -306,24 +314,37 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   constructor() {
     super();
     this._onFilterChanged = this._onFilterChanged.bind(this);
+    this.state = {
+      isPickerDisabled: false
+    };
   }
 
   public render() {
     return (
-      <DocumentPicker
-        onRenderSuggestionsItem={ SuggestedBigItem }
-        onResolveSuggestions={ this._onFilterChanged }
-        onRenderItem={ SelectedDocumentItem }
-        getTextFromItem={ (props: any) => props.documentTitleProps.title }
-        pickerSuggestionsProps={
-          {
-            suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found',
-            suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
+      <div>
+        <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
+        <DocumentPicker
+          onRenderSuggestionsItem={ SuggestedBigItem }
+          onResolveSuggestions={ this._onFilterChanged }
+          onRenderItem={ SelectedDocumentItem }
+          getTextFromItem={ (props: any) => props.documentTitleProps.title }
+          pickerSuggestionsProps={
+            {
+              suggestionsHeaderText: 'Suggested Documents',
+              noResultsFoundText: 'No Documents Found',
+              suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
+            }
           }
-        }
-      />
+          disabled={ this.state.isPickerDisabled }
+        />
+      </div>
     );
+  }
+
+  private _onDisabledButtonClick(): void {
+    this.setState({
+      isPickerDisabled: !this.state.isPickerDisabled
+    });
   }
 
   private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {

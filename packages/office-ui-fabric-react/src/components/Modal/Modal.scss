@@ -7,10 +7,9 @@
 // --------------------------------------------------
 // Modal styles
 
-:export { duration: $ms-duration2 }
+:export { duration: $ms-animation-duration-2 }
 
 .root {
-  @include ms-baseFont;
   background-color: transparent;
   position: fixed;
   height: 100%;
@@ -20,10 +19,11 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity $ms-duration2;
+  transition: opacity $ms-animation-duration-2;
+
   :global(.ms-Button.ms-Button--compound) {
     display: block;
-    @include margin-left(0);
+    @include ms-margin-left(0);
   }
 
   :global(.ms-Overlay) {
@@ -40,11 +40,11 @@
 
 // The actual dialog element
 .main {
-  @include drop-shadow();
+  @include ms-drop-shadow();
   background-color: $ms-color-white;
   box-sizing: border-box;
   position: relative;
-  @include text-align(left);
+  @include ms-text-align(left);
   outline: 3px solid transparent;
   max-height: 100%;
   overflow-y: auto;

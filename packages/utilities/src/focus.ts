@@ -5,6 +5,7 @@ import { elementContains, getDocument } from './dom';
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
+const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 
 export function getFirstFocusable(
   rootElement: HTMLElement,
@@ -24,8 +25,8 @@ export function getLastFocusable(
 
 /**
  * Attempts to focus the first focusable element that is a child or child's child of the rootElement.
- * @return True if focus was set, false if it was not.
- * @param {HTMLElement} rootElement - element to start the search for a focusable child.
+ * @param rootElement - Element to start the search for a focusable child.
+ * @returns True if focus was set, false if it was not.
  */
 export function focusFirstChild(
   rootElement: HTMLElement): boolean {
@@ -55,7 +56,8 @@ export function getPreviousElement(
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check its children.
-  if (traverseChildren && (includeElementsInFocusZones || !isElementFocusZone(currentElement)) && isCurrentElementVisible) {
+  if (traverseChildren && isCurrentElementVisible &&
+    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))) {
     const childMatch = getPreviousElement(
       rootElement,
       currentElement.lastElementChild as HTMLElement,
@@ -118,7 +120,8 @@ export function getNextElement(
   }
 
   // Check its children.
-  if (!suppressChildTraversal && isCurrentElementVisible && (includeElementsInFocusZones || !isElementFocusZone(currentElement))) {
+  if (!suppressChildTraversal && isCurrentElementVisible &&
+    (includeElementsInFocusZones || !(isElementFocusZone(currentElement) || isElementFocusSubZone(currentElement)))) {
     const childMatch = getNextElement(
       rootElement,
       currentElement.firstElementChild as HTMLElement,
@@ -206,7 +209,11 @@ export function isElementTabbable(element: HTMLElement): boolean {
 }
 
 export function isElementFocusZone(element?: HTMLElement): boolean {
-  return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+  return element && element.getAttribute && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+}
+
+export function isElementFocusSubZone(element?: HTMLElement): boolean {
+  return element && element.getAttribute && element.getAttribute(FOCUSZONE_SUB_ATTRIBUTE) === 'true';
 }
 
 export function doesElementContainFocus(element: HTMLElement) {

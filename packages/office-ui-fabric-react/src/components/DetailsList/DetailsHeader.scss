@@ -25,20 +25,6 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
-.cell.cellIsCheck :global(.ms-Check-background) {
-  opacity: 0;
-}
-
-.cell.cellIsCheck:hover :global(.ms-Check-background),
-.root.rootIsAllSelected :global(.ms-Check-background) {
-  opacity: 1;
-}
-
-.cellWrapper {
-  display: inline-block;
-  position: relative;
-}
-
 .cell {
   @include ms-font-s;
   background: transparent;
@@ -55,14 +41,13 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   @include text-align(left);
   height: $rowHeight;
   vertical-align: top;
-  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   @include text-align(left);
 
   &.cellIsCheck {
     position: relative;
-    padding: 6px;
+    padding: 0;
     margin: 0;
   }
 
@@ -79,38 +64,47 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
     }
   }
 
-  &.cellIsSizer {
-    position: absolute;
-    width: 16px;
-
-    @include margin-left(-10px);
-    cursor: ew-resize;
-    bottom: 0;
-    top: 0;
-    height: inherit;
-    background: transparent;
-  }
-
   &.cellIsEmpty {
     text-overflow: clip;
   }
 }
 
-.cell.cellIsSizer:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: $resizerColor;
-  opacity: 0;
-}
+.cellSizer {
+  @include focus-clear();
 
-.cell.cellIsSizer:hover:after,
-.cell.cellIsSizer.cellIsResizing:after {
-  opacity: 1;
-  transition: opacity .3s linear;
+  display: inline-block;
+  position: relative;
+  cursor: ew-resize;
+  bottom: 0;
+  top: 0;
+  margin: 0 -8px;
+  overflow: hidden;
+  height: inherit;
+  background: transparent;
+  z-index: 1;
+  width: 16px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $resizerColor;
+    opacity: 0;
+    left: 50%;
+  }
+
+  &:focus:after,
+  &:hover:after,
+  &.cellIsResizing:after {
+    opacity: 1;
+    transition: opacity .3s linear;
+  }
+
+  &.cellIsResizing:after {
+    @include ms-drop-shadow();
+  }
 }
 
 .collapseButton {
@@ -134,8 +128,31 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .cell .filterChevron {
   color: $dropdownChevronForegroundColor;
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
   vertical-align: middle;
+}
+
+.cellTitle {
+  display: block;
+  overflow: hidden;
+  @include focus-border($position: absolute);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 8px;
+}
+
+:global(.ms-TooltipHost).checkTooltip {
+  display: block;
+}
+
+.cellTooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .sizingOverlay {

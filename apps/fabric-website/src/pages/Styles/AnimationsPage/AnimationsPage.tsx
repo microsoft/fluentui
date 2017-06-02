@@ -39,7 +39,7 @@ export class AnimationsPage extends React.Component<any, any> {
         <h2 id='implementation'>Implementation</h2>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-            `<div class="ms-u-slideRightIn10">This content will slide in.</div>`
+            `<div class="ms-slideRightIn10">This content will slide in.</div>`
           }
         </CodeBlock>
 

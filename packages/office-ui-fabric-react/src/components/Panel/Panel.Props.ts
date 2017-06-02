@@ -4,7 +4,15 @@ import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 
 export interface IPanel {
+  /**
+   * Forces the panel to open.
+   */
+  open: () => void;
 
+  /**
+   * Forces the panel to dismiss.
+   */
+  dismiss: () => void;
 }
 export interface IPanelProps extends React.Props<Panel> {
   /**

@@ -108,6 +108,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * Additional CSS class(es) to apply to the Persona
    */
   className?: string;
+
+  /*
+   * If true, show the secondary text line regardless of the size of the persona
+   */
+  showSecondaryText?: boolean;
 }
 
 export enum PersonaSize {

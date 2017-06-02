@@ -29,7 +29,7 @@ $spacingAroundItemButton: 2px;
 }
 
 .itemButton {
-  @include focus-outline();
+  @include focus-border(-1px);
   text-align: center;
   padding: 0;
   border-radius: 50%;
@@ -85,5 +85,5 @@ button.descriptiveOverflowButton {
 }
 
 .screenReaderOnly {
-  @include ms-u-screenReaderOnly;
+  @include ms-screenReaderOnly;
 }

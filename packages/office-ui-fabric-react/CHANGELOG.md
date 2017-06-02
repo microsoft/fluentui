@@ -1,6 +1,158 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 May 2017 10:19:13 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Jun 2017 01:19:36 GMT and should not be manually modified.
+
+## 4.3.0
+Fri, 02 Jun 2017 01:19:35 GMT
+
+### Minor changes
+
+- Dropdown: Expose aria label prop for the dropdown options.
+- Fixing an issue where restoring focus was not working due to a regression
+
+## 4.2.0
+Thu, 01 Jun 2017 16:34:03 GMT
+
+### Minor changes
+
+- Update DetailsList to support screen readers with cleaner keyboarding flow
+- Styling: Add support for overriding the styles on the checked hovered, checked pressed, and checked disabled states
+- Update elementToFocusOnDismiss on unmount in focus trap zone
+
+### Patches
+
+- DetailsList: Last column measured correctly when `checkboxVisibility` set to `hidden`.
+- Fix css for MessageBar, and support single line message bar styling
+- Panel: fix regression in large Panel size
+- ResizeGroup: Make sure that it renders contents when there are no more scaling steps and it doesn't fit
+
+## 4.1.1
+Wed, 31 May 2017 01:58:23 GMT
+
+### Patches
+
+- BasePicker: Removing extraneous unnecessary required non-typesafe prop that isn't being used.
+- ResizeGroup: Reduce render time when reducing the width of the container.
+
+## 4.1.0
+Tue, 30 May 2017 20:23:45 GMT
+
+### Minor changes
+
+- PeoplePicker: Updated to match OWA people picker and Fabric toolkit spec
+
+## 4.0.0
+Tue, 30 May 2017 03:27:20 GMT
+
+### Breaking changes
+
+- Updated dependency to Fabric Core 7
+- The styling package is now a dependency of fabric-react, which brings in the initial steps towards offering consumers a much better way to customize components to meet their requirements. The Button components and Toggle components have so far been converted to use the styling utilities. We will be ellaborating more on this as we refine our patterns towards customization and refine the documentation.
+
+### Minor changes
+
+- Exposes setSelectionRange function to TextField component.
+
+### Patches
+
+- DetailsList: initialFocusedIndex is considered on already mounted rows 
+- SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList.
+- Introduce prop-types instead of React.PropTypes
+- List: improved measure logic and fix nested list scroll problem
+- ResizeGroup: Reduce the number of render calls when reducing the width.
+
+## 2.34.2
+Sat, 27 May 2017 01:47:19 GMT
+
+### Patches
+
+- ContextualMenu: prevent Narrator to announce items twice.
+
+## 2.34.1
+Fri, 26 May 2017 10:21:03 GMT
+
+### Patches
+
+- Persona: Updated test to match new logic for calculating initials.
+- ResizeGroup: Debounce window resize events to improve performance
+
+## 2.34.0
+Thu, 25 May 2017 10:22:10 GMT
+
+### Minor changes
+
+- DatePicker: Fix for accessibility issues
+
+## 2.33.0
+Wed, 24 May 2017 23:52:09 GMT
+
+### Minor changes
+
+- ChoiceGroup: Support custom option labels
+- ContextMenu: added `useTargetWidth` property to match the width of the anchor element when true the context menu will apply target element's width to it
+- Spinner: support for status announcement
+
+### Patches
+
+- Fixes bug where ResizeGroup gets stuck in an infinite render loop when subsequent calls to onReduceData does nothing.
+- Add unit tests to ResizeGroup
+- Dropdown: Added title attribute for individual options.
+- SearchBox: Fixed onBlur not removing focus
+
+## 2.32.0
+Tue, 23 May 2017 10:16:04 GMT
+
+### Minor changes
+
+- Dialog: created a new component (DialogContent) that contains the content of the Modal inside the Dialog
+
+### Patches
+
+- FocusZone: fixing edge case with IE when activeElement is set to an unfocus-able element.
+- Adding a constant for all the test images and replacing the hard coded  example paths
+
+## 2.31.0
+Fri, 19 May 2017 10:20:22 GMT
+
+### Minor changes
+
+- Adding the ability for buttons to be toggled
+
+### Patches
+
+- Searchbox: Updated border styles to better support high contrast mode
+- Breadcrumb component now follows aria guidelines for roles and structure and added example for accessible breadcrumb"
+
+## 2.30.2
+Thu, 18 May 2017 10:09:58 GMT
+
+### Patches
+
+- Adds outlines to SearchBox in HC modes
+- BaseButton: now respects the isBeakVisible property on the menu props
+- Stop setting a height on the menu items inside of a ContextualMenu to better support onRender overrides on MenuItems
+
+## 2.30.1
+Tue, 16 May 2017 22:39:55 GMT
+
+### Patches
+
+- Change pickeritemprops to correctly extend htmlattributes
+- List: Add scrollToIndex to public interface
+
+## 2.30.0
+Tue, 16 May 2017 21:47:38 GMT
+
+### Minor changes
+
+- DatePicker: adding a disabled property support.
+
+### Patches
+
+- Pickers: Adds ability to disable pickers
+- Adjust styling on menu drop shadows.
+- Button: Added aria-expanded if props.menuProps. Changes from false to true when opened
+- Button: default type to 'button'
 
 ## 2.29.0
 Mon, 15 May 2017 10:19:13 GMT

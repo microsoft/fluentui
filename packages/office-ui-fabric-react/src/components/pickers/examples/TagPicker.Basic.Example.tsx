@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {
-  TagPicker
-} from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
 
 let _testTags = [
   'black',
@@ -21,21 +21,37 @@ let _testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-export class TagPickerBasicExample extends React.Component<{}, {}> {
+export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
+  constructor() {
+    super();
+    this.state = {
+      isPickerDisabled: false
+    };
+  }
 
   public render() {
     return (
-      <TagPicker
-        onResolveSuggestions={ this._onFilterChanged.bind(this) }
-        getTextFromItem= {(item: any) => { return item.name; } }
-        pickerSuggestionsProps={
-          {
-            suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+      <div>
+        <Checkbox label='Disable Tag Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
+        <TagPicker ref='tagPicker'
+          onResolveSuggestions={ this._onFilterChanged.bind(this) }
+          getTextFromItem={ (item: any) => { return item.name; } }
+          pickerSuggestionsProps={
+            {
+              suggestionsHeaderText: 'Suggested Tags',
+              noResultsFoundText: 'No Color Tags Found'
+            }
           }
-        }
+          disabled={ this.state.isPickerDisabled }
         />
+      </div>
     );
+  }
+
+  private _onDisabledButtonClick(): void {
+    this.setState({
+      isPickerDisabled: !this.state.isPickerDisabled
+    });
   }
 
   private _onFilterChanged(filterText: string, tagList: { key: string, name: string }[]) {

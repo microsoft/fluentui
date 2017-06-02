@@ -26,6 +26,7 @@
   }
 
   .ms-ListBasicExample-itemName {
+    @include ms-font-xl;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -37,6 +37,12 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
   tooltipProps?: ITooltipProps;
 
   /**
+   * Whether or not to mark the container as described by the tooltip.
+   * If not specified, the caller should mark as element as described by the tooltip id.
+   */
+  setAriaDescribedBy?: boolean;
+
+  /**
    * Length of delay
    * @default medium
    */

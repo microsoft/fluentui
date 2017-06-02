@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
+import { IPersonaProps } from '../Persona/Persona.Props';
 import { IRenderFunction } from '../../Utilities';
 
 // Type T is the type of the item that is displayed
@@ -13,12 +14,16 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  onRenderSuggestionsItem?: (props: T) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps?: T) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+  /**
+   * A callback for what should happen when a user clicks the input.
+   */
+  onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -43,12 +48,24 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The properties that will get passed to the Suggestions component.
    */
   pickerSuggestionsProps?: IBasePickerSuggestionsProps;
-
   /**
    * AutoFill input native props
    * @default undefined
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
+  /**
+   * A callback for when a persona is removed from the suggestion list
+   */
+  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  /**
+   * The text to display while searching for more results in a limited sugesstions list
+   */
+  searchingText?: ((props: { input: string }) => string) | string;
+  /**
+   * Flag for disabling the picker.
+   * @default false
+   */
+  disabled?: boolean;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -60,6 +77,10 @@ export interface IBasePickerSuggestionsProps {
    * The text that should appear at the top of the suggestion box.
    */
   suggestionsHeaderText?: string;
+  /**
+   * The text that should appear at the top of the most recenty used box.
+   */
+  mostRecentlyUsedHeaderText?: string;
   /**
    * the text that should appear when no results are returned.
    */
@@ -84,4 +105,24 @@ export interface IBasePickerSuggestionsProps {
    * The text to display while the results are loading.
    */
   loadingText?: string;
+  /**
+   * The text to display while searching for more results in a limited sugesstions list.
+   */
+  searchingText?: string;
+  /**
+   * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
+   */
+  resultsFooterFull?: () => JSX.Element;
+  /**
+   * A renderer that adds an element at the end of the suggestions list when there are fewer than resultsMaximumNumber.
+   */
+  resultsFooter?: () => JSX.Element;
+  /**
+   * Maximum number of suggestions to show in the full suggestion list.
+   */
+  resultsMaximumNumber?: number;
+  /**
+   * Indicates whether to show a button with each suggestion to remove that suggestion.
+   */
+  showRemoveButtons?: boolean;
 }
