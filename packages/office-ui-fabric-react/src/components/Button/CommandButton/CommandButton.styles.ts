@@ -42,7 +42,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootPressed: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
       color: theme.palette.black,
       icon: {
         color: theme.palette.themeDark
@@ -50,7 +50,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
       color: theme.palette.black,
       icon: {
         color: theme.palette.themeDarker
@@ -58,7 +58,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralTertiary,
+      backgroundColor: theme.palette.neutralQuaternary,
       color: theme.palette.black,
     },
 
@@ -67,7 +67,7 @@ export const getStyles = memoizeFunction((
     },
 
     icon: {
-      color: theme.palette.themePrimary
+      color: theme.palette.themeDarkAlt
     }
 
   };

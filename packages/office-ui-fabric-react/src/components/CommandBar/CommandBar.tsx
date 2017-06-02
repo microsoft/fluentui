@@ -107,6 +107,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     return { primary, overflow, farItems };
   }
 
+  // Render Search
   private _onRenderSearch(props) {
     const { searchBoxProps, searchPlaceholderText } = props;
     return (
@@ -117,6 +118,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     );
   }
 
+  // Render Command Button
   private _onRenderCommandButton(item) {
     if (item.onRender) {
       return item.onRender(item);
@@ -124,6 +126,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     const commandButton = <CommandButton
       { ...item }
+
       className={ css(styles.commandButton, item.className) }
       text={ !item.iconOnly ? item.name : '' }
       iconProps={ { iconName: item.icon } }
