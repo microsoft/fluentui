@@ -68,13 +68,13 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
 
   /**
    * Optional class name to be added to the root class
-   * @deprecated Pass through via modalProps instead
+   * @deprecated Pass through via modalProps.className instead
    */
   className?: string;
 
   /**
   * Optional override for container class
-  * @deprecated Pass through via modalProps instead
+  * @deprecated Pass through via modalProps.className instead
   */
   containerClassName?: string;
 
