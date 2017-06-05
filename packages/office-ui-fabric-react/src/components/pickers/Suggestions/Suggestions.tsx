@@ -176,7 +176,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         role='menu'>
         { suggestions.map((suggestion, index) =>
           <div ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
-            key={ index }
+            key={ suggestion.item['key'] ? suggestion.item['key'] : index }
             id={ 'sug-' + index }
             role='menuitem'>
             <TypedSuggestionsItem
