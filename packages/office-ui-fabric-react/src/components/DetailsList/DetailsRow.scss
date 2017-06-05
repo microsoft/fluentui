@@ -52,11 +52,22 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   }
 }
 
+// Remove border top on first row
+:global(.ms-List-cell:first-child) {
+  .root {
+    border-top: 0;
+
+    // Don't show border-top for first row's pseudo element
+    &:after {
+      display: none;
+    }
+  }
+}
+
 // Default state
 .root {
   @include focus-border(0, $ms-color-neutralSecondary);
 
-  border-top: 1px solid $ms-color-neutralLighter;
   border-bottom: 1px solid $ms-color-neutralLighter;
   background: $detailsList-item-default-background-color;
   color: $detailsList-item-default-meta-text-color;
@@ -74,7 +85,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   @include text-align(left);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
-  margin-top: -1px;
 
   // Default State hover
   &:hover {
@@ -89,8 +99,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
   color: $detailsList-item-selected-meta-text-color;
   background: $detailsList-item-selected-background-color;
-
-  border-top: 1px solid $ms-color-white;
   border-bottom: 1px solid $ms-color-white;
 
   .cell {
@@ -98,6 +106,18 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     &.isRowHeader {
       color: $detailsList-item-selected-text-color;
     }
+  }
+
+  &:after {
+    position: absolute;
+    display: block;
+    top: -1px;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    border-top: 1px solid $ms-color-white;
   }
 
   // Selected State hover
