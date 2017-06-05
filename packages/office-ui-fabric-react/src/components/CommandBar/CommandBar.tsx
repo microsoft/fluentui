@@ -133,7 +133,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       menuProps={ item.subMenuProps }
     />;
 
-    if (item.iconOnly) {
+    if (item.iconOnly && item.name !== undefined) {
       return (
         <TooltipHost content={ item.name } >
           { commandButton }
