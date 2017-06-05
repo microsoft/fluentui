@@ -6,10 +6,10 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Checkbox styles
-$ms-checkbox-label-size: 20px;
+$ms-checkbox-label-size: 20px !default;
 $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
-$ms-checkbox-highContrast-iconBoxSize: 16px;
+$ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
 // Default state
 .root {
