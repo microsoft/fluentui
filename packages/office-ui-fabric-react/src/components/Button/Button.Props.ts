@@ -42,6 +42,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   checked?: boolean;
 
   /**
+   * [TODO] Not Yet Implemented
+   */
+  canCheck?: boolean;
+
+  /**
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
@@ -78,6 +83,12 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * The props for the icon shown when providing a menu dropdown.
    */
   menuIconProps?: IIconProps;
+
+  /**
+   * Custom render function for the button when used in list environment
+   * Not implemented in button component itself
+   */
+  onRender?: IRenderFunction<IButtonProps>;
 
   /**
    * Custom render function for the icon

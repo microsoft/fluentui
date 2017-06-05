@@ -188,7 +188,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
-    const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
+    const submenuProps = this.state.expandedMenuItemKey ? this._getMenuProps() : null;
 
     /**
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
@@ -372,6 +372,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
+
+    let menuIconProps = item.menuIconProps ? item.menuIconProps : item.submenuIconProps;
     return (
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
@@ -387,8 +389,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { hasSubmenuItems(item) ? (
           <Icon
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-            { ...item.submenuIconProps }
-            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, item.submenuIconProps ? item.submenuIconProps.className : '') } />
+            { ...menuIconProps }
+            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, menuIconProps ? menuIconProps.className : '') } />
         ) : (null) }
       </div>
     );
@@ -500,13 +502,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _getSubmenuProps() {
+  private _getMenuProps() {
     const { submenuTarget, expandedMenuItemKey } = this.state;
     const item = this._findItemByKey(expandedMenuItemKey);
-    let submenuProps = null;
+    let menuProps = null;
 
     if (item) {
-      submenuProps = {
+      menuProps = {
         items: getSubmenuItems(item),
         target: submenuTarget,
         onDismiss: this._onSubMenuDismiss,
@@ -518,12 +520,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         gapSpace: 0
       };
 
-      if (item.subMenuProps) {
-        assign(submenuProps, item.subMenuProps);
+      // Remove when subMenuProps is removed
+      if (item.menuProps) {
+        assign(menuProps, item.subMenuProps);
+      }
+
+      if (item.menuProps) {
+        assign(menuProps, item.menuProps);
       }
     }
 
-    return submenuProps;
+    return menuProps;
 
   }
 
