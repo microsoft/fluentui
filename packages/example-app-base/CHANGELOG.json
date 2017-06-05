@@ -2,6 +2,45 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "2.0.4",
+      "tag": "@uifabric/example-app-base_v2.0.4",
+      "date": "Fri, 02 Jun 2017 01:19:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.2 <1.0.0` to `>=0.4.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.3",
+      "tag": "@uifabric/example-app-base_v2.0.3",
+      "date": "Thu, 01 Jun 2017 16:34:03 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.1 <1.0.0` to `>=0.4.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.0 <5.0.0` to `>=4.0.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.2",
+      "tag": "@uifabric/example-app-base_v2.0.2",
+      "date": "Wed, 31 May 2017 01:58:23 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.0 <1.0.0` to `>=0.4.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.1",
       "tag": "@uifabric/example-app-base_v2.0.1",
       "date": "Tue, 30 May 2017 20:23:45 GMT",

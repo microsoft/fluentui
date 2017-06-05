@@ -2,6 +2,117 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.3.0",
+      "tag": "office-ui-fabric-react_v4.3.0",
+      "date": "Fri, 02 Jun 2017 01:19:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "9e146152b2fe14bd117a6601f3a5a0528942aa87",
+            "comment": "Dropdown: Expose aria label prop for the dropdown options."
+          },
+          {
+            "author": "zoarif <zoarif@microsoft.com>",
+            "commit": "dcecdfb37d4fbe87a3755ed42320ce81bddcade8",
+            "comment": "Fixing an issue where restoring focus was not working due to a regression"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.2 <1.0.0` to `>=0.4.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.0.3` to `2.0.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.0",
+      "tag": "office-ui-fabric-react_v4.2.0",
+      "date": "Thu, 01 Jun 2017 16:34:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "90ef0576bb0f68a3a157176937b9ad5cc1797730",
+            "comment": "Update DetailsList to support screen readers with cleaner keyboarding flow"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "62299239afdb7a082c9abd7c984d5f587b998abb",
+            "comment": "Styling: Add support for overriding the styles on the checked hovered, checked pressed, and checked disabled states"
+          },
+          {
+            "author": "zoarif <zoarif@microsoft.com>",
+            "commit": "7acff7237b6eaaa5106b73559496d2cb779baace",
+            "comment": "Update elementToFocusOnDismiss on unmount in focus trap zone"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b61038339aa141659bba37a86b3127c2a389b92a",
+            "comment": "DetailsList: Last column measured correctly when `checkboxVisibility` set to `hidden`."
+          },
+          {
+            "author": "Justin Warner <warner.73@wright.edu>",
+            "commit": "f4e40fcbd0bb3e1cfdd494076a55a16a815bed16",
+            "comment": "Fix css for MessageBar, and support single line message bar styling"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "ddab4eb3a90a6063efb745345348520f1972cbc5",
+            "comment": "Panel: fix regression in large Panel size"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "c6b411ecbac8c9c678c551565021a37978a82356",
+            "comment": "ResizeGroup: Make sure that it renders contents when there are no more scaling steps and it doesn't fit"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.0 <5.0.0` to `>=4.0.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.1 <1.0.0` to `>=0.4.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.0.2` to `2.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.1",
+      "tag": "office-ui-fabric-react_v4.1.1",
+      "date": "Wed, 31 May 2017 01:58:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ee2ea2da473875f48afc28b4270bc658eaa49f92",
+            "comment": "BasePicker: Removing extraneous unnecessary required non-typesafe prop that isn't being used."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "b6634efe0d29aaeed26332375b05eba16d9d53a5",
+            "comment": "ResizeGroup: Reduce render time when reducing the width of the container."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.0 <1.0.0` to `>=0.4.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.0.1` to `2.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.1.0",
       "tag": "office-ui-fabric-react_v4.1.0",
       "date": "Tue, 30 May 2017 20:23:45 GMT",

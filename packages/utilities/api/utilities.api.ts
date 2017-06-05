@@ -255,6 +255,9 @@ interface IRenderFunction<P> {
 }
 
 // (undocumented)
+export function isElementFocusSubZone(element?: HTMLElement): boolean;
+
+// (undocumented)
 export function isElementFocusZone(element?: HTMLElement): boolean;
 
 // (undocumented)

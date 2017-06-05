@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Reduce render time when reducing the width of the container.",
+      "comment": "DragDropHelper: Fix to show ghost element when dragging on Firefox",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chrisgo@microsoft.com"
+  "email": "aazhou@microsoft.com"
 }

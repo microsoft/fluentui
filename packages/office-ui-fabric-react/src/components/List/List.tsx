@@ -303,7 +303,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     return (
       <div ref='root' { ...divProps } role={ role } className={ css('ms-List', className) } >
-        <div ref='surface' className='ms-List-surface'>
+        <div ref='surface' className='ms-List-surface' role='presentation'>
           { pageElements }
         </div>
       </div>
@@ -316,7 +316,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let pageStyle = this._getPageStyle(page);
 
     // only assign list item role if no role is assigned
-    role = (role === undefined) ? 'listitem' : null;
+    role = (role === undefined) ? 'listitem' : 'presentation';
 
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
@@ -338,7 +338,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     }
 
     return (
-      <div className='ms-List-page' key={ page.key } ref={ page.key } style={ pageStyle }>
+      <div className='ms-List-page' key={ page.key } ref={ page.key } style={ pageStyle } role='presentation'>
         { cells }
       </div>
     );

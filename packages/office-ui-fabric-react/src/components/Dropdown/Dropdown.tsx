@@ -332,7 +332,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         onClick={ () => this._onItemClick(item.index) }
         role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-        ariaLabel={ item.text }
+        ariaLabel={ item.ariaLabel || item.text }
         title={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
     );
