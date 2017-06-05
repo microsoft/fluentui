@@ -383,5 +383,6 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: disableBodyScroll has incomplete type information
 // WARNING: enableBodyScroll has incomplete type information
 // WARNING: Unsupported export: ISettingsMap
+// WARNING: setMemoizeWeakMap has incomplete type information
 // WARNING: memoize has incomplete type information
 // (No packageDescription for this package)
