@@ -5,6 +5,7 @@ import {
   css,
   getId
 } from '../../Utilities';
+import { Icon } from '../../Icon';
 import {
   ICheckbox,
   ICheckboxProps
@@ -22,13 +23,19 @@ export interface ICheckboxState {
 
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
+    boxSide: 'start'
   };
 
-  private _id: string;
   private _checkBox: HTMLInputElement;
+  private _id: string;
 
-  constructor(props: ICheckboxProps) {
-    super(props);
+  /**
+   * Initialize a new instance of the TopHeaderV2
+   * @param props Props for the component
+   * @param context Context or initial state for the base component.
+   */
+  constructor(props: ICheckboxProps, context?: any) {
+    super(props, context);
 
     this._warnMutuallyExclusive({
       'checked': 'defaultChecked'
@@ -41,7 +48,17 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     };
   }
 
-  public render() {
+  /**
+   * Name of the component
+   */
+  public name(): string {
+    return 'Checkbox';
+  }
+
+  /**
+   * Render the Checkbox based on passed props
+   */
+  public render(): JSX.Element {
     const {
       checked,
       className,
@@ -49,23 +66,22 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       disabled,
       inputProps,
       label,
-      name
-    } = this.props;
+      name,
+      boxSide
+        } = this.props;
 
     const { isFocused } = this.state;
     const isChecked = checked === undefined ? this.state.isChecked : checked;
 
+    let rootClassName = css('ms-Checkbox', className, styles.root, {
+      ['reversed ' + styles.reversed]: boxSide !== 'start',
+      ['is-checked ' + styles.isChecked]: isChecked,
+      ['is-disabled ' + styles.isDisabled]: disabled,
+      ['is-inFocus ' + styles.isInFocus]: isFocused
+    });
+
     return (
-      <div
-        className={ css(
-          'ms-Checkbox',
-          styles.root,
-          className,
-          {
-            'is-inFocus': isFocused,
-            [styles.rootIsInFocus]: isFocused
-          }) }
-      >
+      <div className={ rootClassName } >
         <input
           { ...inputProps }
           { ...(checked !== undefined && { checked }) }
@@ -76,24 +92,20 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           name={ name || this._id }
           className={ css('ms-Checkbox-input', styles.input) }
           type='checkbox'
-          onChange={ this._onChange }
-          onFocus={ this._onFocus }
-          onBlur={ this._onBlur }
+          onChange={ this._onChange.bind(this) }
+          onFocus={ this._onFocus.bind(this) }
+          onBlur={ this._onBlur.bind(this) }
           aria-checked={ isChecked }
         />
-        { this.props.children }
-        <label htmlFor={ this._id }
-          className={ css('ms-Checkbox-label', styles.label, {
-            ['is-checked ' + styles.labelIsChecked]: isChecked,
-            ['is-disabled ' + styles.labelIsDisabled]: disabled,
-            [styles.labelIsInFocus]: isFocused
-          })
-          }
-        >
-          { label && <span className={ styles.textLabel }>{ label }</span> }
+        <label className={ css('ms-Checkbox-label', styles.label) } htmlFor={ this._id }>
+          <span className={ css('box', styles.box) }>
+            <span className={ css('checkbox', styles.checkbox) }>
+              <Icon iconName='CheckMark' className={ styles.checkmark } />
+            </span>
+          </span>
+          { label && <span className={ css('text', styles.text) }>{ label }</span> }
         </label>
-      </div>
-    );
+      </div >);
   }
 
   public get checked(): boolean {

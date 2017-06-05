@@ -6,220 +6,242 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Checkbox styles
-
 $ms-checkbox-label-size: 20px;
 $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 $ms-checkbox-highContrast-iconBoxSize: 16px;
 
-@mixin highContrast-border($active-color, $bw-color, $size: 2px) {
-  @media screen and (-ms-high-contrast: active) {
-    border: $size solid $active-color;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: $size solid $bw-color;
-  }
-}
-
-@mixin highContrast-color($active-color, $bw-color) {
-  @media screen and (-ms-high-contrast: active) {
-    color: $active-color;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $bw-color;
-  }
-}
-
+// Default state
 .root {
-  box-sizing: border-box;
-  color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
-  min-height: 36px;
-  position: relative;
-}
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
 
-.textLabel {
-  font-size: $ms-font-size-m;
-  @include padding(0, 0, 0, 26px);
-  display: inline-block;
-  font-size: $ms-font-size-m;
-}
-
-// The hidden input
-.input {
-  position: absolute;
-  opacity: 0;
-  top: 8px
-}
-
-// The checkbox square container
-.label::before {
-  content: '';
-  display: inline-block;
-  border: 1px solid $ms-color-neutralTertiary;
-  width: $ms-checkbox-label-size;
-  height: $ms-checkbox-label-size;
-  font-weight: normal;
-  position: absolute;
-  box-sizing: border-box;
-  transition-property: background, border, border-color;
-  transition-duration: $ms-checkbox-transition-duration;
-  transition-timing-function: $ms-checkbox-transition-timing;
-}
-
-// The check mark icon
-.label::after {
-  @include ms-Icon--CheckMark;
-  font-family: 'FabricMDL2Icons';
-  display: none;
-  position: absolute;
-  font-weight: 900;
-  background-color: transparent;
-  font-size: $ms-font-size-s-plus;
-  top: 0;
-  color: $ms-color-white;
-  line-height: $ms-checkbox-label-size;
-  width: $ms-checkbox-label-size;
-  text-align: center;
-}
-
-// The checkbox label
-.label {
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 8px;
-  position: relative;
-  vertical-align: top;
-  user-select: none;
-  min-width: $ms-checkbox-label-size;
-  min-height: $ms-checkbox-label-size;
-  line-height: $ms-checkbox-label-size;
-
-  &:hover {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
+    > .input {
+        position: absolute;
+        margin: 0px;
+        height: 0px;
+        width: 0px;
+        visibility: hidden;
+        opacity: 0;
     }
 
-    .textLabel {
-      color: $ms-color-black;
-    }
-  }
+    > .label {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 0 -4px;
+        cursor: pointer;
 
-  &:focus {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
+        > * {
+            margin: 0 4px;
+        }
 
-    &.labelIsDisabled::before {
-      border-color: $ms-color-neutralTertiaryAlt;
-    }
+        > .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 $ms-checkbox-label-size;
+            height: $ms-checkbox-label-size;
 
-    &.labelIsChecked::before {
-      border-color: $ms-color-themeDarkAlt;
-    }
-  }
+            > .checkbox {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: $ms-checkbox-label-size;
+                width: $ms-checkbox-label-size;
+                border: 1px solid black;
+                box-sizing: border-box;
+                transition-property: background, border, border-color;
+                transition-duration: $ms-checkbox-transition-duration;
+                transition-timing-function: $ms-checkbox-transition-timing;
+                /* incase the icon is bigger than the box */
+                overflow: hidden;
 
-  &:active {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
+                @include ms-borderColor-neutralTertiary;
+                @media screen and (-ms-high-contrast: active) {
+                  border-color: $ms-color-contrastWhiteDisabled;
+                }
 
-    .textLabel {
-      color: $ms-color-black;
-    }
-  }
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  border-color: $ms-color-contrastBlackDisabled;
+                }
 
-  //== State: A checkbox is checked
-  //
-  &.labelIsChecked {
-    &::before {
-      border: 10px solid $ms-color-themePrimary;
-      background-color: $ms-color-themePrimary;
+                > .checkmark {
+                    opacity: 0;
+                    flex: 0 0 auto;
+                    @include ms-fontColor-white;
+                }
+            }
+        }
 
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: black-on-white) {
-        display: none;
-      }
-    }
-
-    &::after {
-      display: block;
-
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: black-on-white) {
-        height: $ms-checkbox-highContrast-iconBoxSize;
-        width: $ms-checkbox-highContrast-iconBoxSize;
-        line-height: $ms-checkbox-highContrast-iconBoxSize;
-      }
-
-      @include highContrast-border($ms-color-white, $ms-color-black);
+        > .text {
+            flex: 1 0 auto;
+        }
     }
 
     &:hover,
+    &:active,
     &:focus {
-      &::before {
-        border-color: $ms-color-themeDarkAlt;
-      }
+        > .label {
+            > .box > .checkbox {
+                @include ms-borderColor-neutralSecondaryAlt;
+                @media screen and (-ms-high-contrast: active) {
+                  border-color: $ms-color-contrastWhiteDisabled;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  border-color: $ms-color-contrastBlackDisabled;
+                }
+            }
+            > .text {
+                @include ms-fontColor-black;
+                @media screen and (-ms-high-contrast: active) {
+                  color: $ms-color-contrastWhiteDisabled;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  color: $ms-color-contrastBlackDisabled;
+                }
+            }
+        }
     }
-  }
-
-  //== State: A disabled checkbox
-  //
-  &.labelIsDisabled {
-    cursor: default;
-
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
+    &.reversed {
+        > .label {
+            flex-direction: row-reverse;
+        }
     }
-
-    &::before {
-      background-color: $ms-color-neutralTertiaryAlt;
-      border-color: $ms-color-neutralTertiaryAlt;
-      color: $ms-color-neutralTertiaryAlt;
-    }
-
-    &::after {
-      @include highContrast-border($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
-      @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
-    }
-
-    .textLabel {
-      color: $ms-color-neutralTertiary;
-
-      @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
-    }
-  }
-
-    //== State: A checkbox in focus
-  //
-  &.labelIsInFocus {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
-
-    &.labelIsDisabled::before {
-      border-color: $ms-color-neutralTertiaryAlt;
-    }
-
-    &.labelIsChecked::before {
-      border-color: $ms-color-themeDarkAlt;
-    }
-  }
 }
 
-:global(.ms-Fabric.is-focusVisible) .rootIsInFocus {
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0;
-    right: 0;
-    border: 1px solid $focusedBorderColor;
-    @include highContrast-border($ms-color-white, $ms-color-black, 1px);
-  }
+// Checked state
+.root.isChecked {
+    > .label {
+        > .box {
+            > .checkbox {
+                @include ms-borderColor-themePrimary;
+                @include ms-bgColor-themePrimary;
+                border-width: 0px;
+                > .checkmark {
+                    opacity: 1;
+                }
+
+                @media screen and (-ms-high-contrast: active) {
+                  height: $ms-checkbox-highContrast-iconBoxSize;
+                  width: $ms-checkbox-highContrast-iconBoxSize;
+                  border-width: 1px;
+                  border-color: $ms-color-contrastWhiteDisabled;
+                  background-color: transparent;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  height: $ms-checkbox-highContrast-iconBoxSize;
+                  width: $ms-checkbox-highContrast-iconBoxSize;
+                  border-width: 1px;
+                  border-color: $ms-color-contrastBlackDisabled;
+                  background-color: transparent;
+                }
+            }
+        }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        > .label {
+            > .box > .checkbox {
+                @include ms-borderColor-themeDarkAlt;
+                @include ms-bgColor-themeDarkAlt;
+
+                @media screen and (-ms-high-contrast: active) {
+                  border-color: $ms-color-contrastWhiteDisabled;
+                  background-color: transparent;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  border-color: $ms-color-contrastBlackDisabled;
+                  background-color: transparent;
+                }
+            }
+            > .text {
+                @include ms-fontColor-black;
+
+                @media screen and (-ms-high-contrast: active) {
+                  color: $ms-color-contrastWhiteDisabled;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  color: $ms-color-contrastBlackDisabled;
+                }
+            }
+        }
+    }
+}
+
+// Disabled state
+.root.isDisabled {
+    > .label {
+        > .box > .checkbox {
+            @include ms-borderColor-neutralTertiaryAlt;
+            @include ms-bgColor-neutralTertiaryAlt;
+
+            @media screen and (-ms-high-contrast: active) {
+              border-color: $ms-color-contrastBlackDisabled;
+              background-color: transparent;
+              > .checkmark {
+                color: $ms-color-contrastBlackDisabled;
+              }
+            }
+
+            @media screen and (-ms-high-contrast: black-on-white) {
+              > .checkmark {
+                color: $ms-color-contrastWhiteDisabled;
+              }
+              background-color: transparent;
+              border-color: $ms-color-contrastWhiteDisabled;
+            }
+        }
+        > .text{
+            @include ms-fontColor-neutralTertiary;
+
+            @media screen and (-ms-high-contrast: active) {
+              color: $ms-color-contrastBlackDisabled;
+            }
+
+            @media screen and (-ms-high-contrast: black-on-white) {
+              color: $ms-color-contrastWhiteDisabled;
+            }
+        }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+        > .label {
+            > .box > .checkbox {
+                @include ms-borderColor-neutralTertiaryAlt;
+                @include ms-bgColor-neutralTertiaryAlt;
+
+                @media screen and (-ms-high-contrast: active) {
+                  border-color: $ms-color-contrastBlackDisabled;
+                  background-color: transparent;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  background-color: transparent;
+                  border-color: $ms-color-contrastWhiteDisabled;
+                }
+            }
+            > .text {
+                @include ms-fontColor-neutralTertiary;
+
+                @media screen and (-ms-high-contrast: active) {
+                  color: $ms-color-contrastBlackDisabled;
+                }
+
+                @media screen and (-ms-high-contrast: black-on-white) {
+                  color: $ms-color-contrastWhiteDisabled;
+                }
+            }
+        }
+    }
 }

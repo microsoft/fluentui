@@ -60,4 +60,9 @@ export interface ICheckboxProps extends React.HTMLProps<HTMLElement | HTMLInputE
    * precedence over the later.
    */
   inputProps?: React.HTMLProps<HTMLElement | HTMLInputElement>;
+
+  /**
+   * Default start. Allows you to change the position of the checkbox to the right side of the label
+   */
+  boxSide?: 'start' | 'end';
 }
