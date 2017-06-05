@@ -5,7 +5,7 @@ import {
   getId,
 } from '../../Utilities';
 
-import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
+import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
 import { SearchBox } from '../../SearchBox';
 import { CommandButton } from '../../Button';
 import { OverflowSet } from '../../OverflowSet';
@@ -19,7 +19,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   public static defaultProps = {
     items: [],
     overflowItems: [],
-    farItems: []
+    farItems: [],
+    searchPlaceholderText: 'Search'
   };
 
   private _id: string;
@@ -39,6 +40,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       overflowItems,
       farItems,
       elipisisAriaLabel,
+      onRenderItems = this._onRenderItems,
+      onRenderOverflowItems
     } = this.props;
 
     const commandBardata = {
@@ -65,13 +68,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 className={ css(styles.primarySet) }
                 items={ data.primary }
                 overflowItems={ data.overflow.length ? data.overflow : null }
-                onRenderItem={ this._onRenderCommandButton }
-                onRenderOverflowButton={ (renderedItems) => {
+                onRenderItem={ onRenderItems }
+                onRenderOverflowButton={ (renderedOverflowItems) => {
                   return (
                     <CommandButton
                       ariaLabel={ elipisisAriaLabel }
                       className={ css(styles.overflowButton) }
-                      menuProps={ { items: renderedItems } }
+                      menuProps={ { items: renderedOverflowItems } }
                       menuIconProps={ { iconName: 'More' } }
                     />
                   );
@@ -82,7 +85,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
               <OverflowSet
                 className={ css(styles.secondarySet) }
                 items={ data.farItems }
-                onRenderItem={ this._onRenderCommandButton }
+                onRenderItem={ onRenderItems }
                 onRenderOverflowButton={ (renderedItems) => {
                   return (
                     null
@@ -114,14 +117,17 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       <SearchBox
         {...searchBoxProps }
         className={ css(styles.search, searchBoxProps.className) }
-        labelText={ searchPlaceholderText || 'Search' } />
+        labelText={ searchPlaceholderText } />
     );
   }
 
   // Render Command Button
-  private _onRenderCommandButton(item) {
-    if (item.onRender) {
-      return item.onRender(item);
+  private _onRenderItems(item) {
+
+    const onRender = item.onRenderItem ? item.onRenderItem : item.onRender;
+
+    if (onRender) {
+      return onRender(item);
     }
 
     const commandButton = <CommandButton

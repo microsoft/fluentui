@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu';
 import { IButtonProps } from '../Button';
 import { ISearchBoxProps } from '../../SearchBox';
+import { IRenderFunction } from '../../Utilities';
 
 export interface ICommandBar {
   /**
@@ -39,6 +40,11 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   items: ICommandBarItemProps[];
 
   /**
+ * Items to render on the right side (or left, in RTL).
+ */
+  farItems?: ICommandBarItemProps[];
+
+  /**
    * Default items to have in the overflow menu
    */
   overflowItems?: ICommandBarItemProps[];
@@ -48,10 +54,9 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
    */
   elipisisAriaLabel?: string;
 
-  /**
-   * Items to render on the right side (or left, in RTL).
-   */
-  farItems?: ICommandBarItemProps[];
+  onRenderItems?: (item: ICommandBarItemProps) => JSX.Element;
+
+  onRenderOverflowItems?: (item: ICommandBarItemProps) => JSX.Element;
 
   /**
    * Additional css class to apply to the command bar
@@ -66,4 +71,9 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    * @defaultvalue false
    */
   iconOnly?: boolean;
+
+  onRenderItem?: IRenderFunction<IContextualMenuItem>;
+
+  onRenderOverflowItem?: IRenderFunction<IContextualMenuItem>;
+
 }
