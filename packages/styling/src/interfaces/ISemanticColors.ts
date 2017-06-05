@@ -1,8 +1,7 @@
 /**
+ *
  * The collection of semantic slots for colors used in themes.
- *
- *
- *
+
 Naming Convention 
 The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format: 
 [category name][element name][checked state][hovered/pressed/disabled state]  
@@ -29,71 +28,120 @@ Any kind of popup menus uses this category. 
 Lists 
 Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
 and have a large and complex interaction surface.
-This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout. 
+This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
+
 */
 export interface ISemanticColors {
-  /**
-   * ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette()
-   */
+  /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette() */
 
-  /** default color for backgrounds */
+  /**
+   * The default color for backgrounds.
+   */
   bodyBackground?: string;
-  /** default color for text */
+  /**
+   * The default color for text.
+   */
   bodyText?: string;
-  /** de-emphasized text; e.g. metadata, captions, placeholder text */
+  /**
+   * De-emphasized text; e.g. metadata, captions, placeholder text.
+   */
   bodySubtext?: string;
-  /** divider lines; e.g. lines that separate sections in a menu, an <HR> element */
+  /**
+   * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
+   */
   bodyDivider?: string;
 
-  /** default color for backgrounds of disabled controls; e.g. disabled text field */
+  /**
+   * The default color for backgrounds of disabled controls; e.g. disabled text field.
+   */
   disabledBackground?: string;
-  /** default color for disabled text, e.g. user input inside a disabled text field */
+  /**
+   * The default color for disabled text; e.g. user input inside a disabled text field.
+   */
   disabledText?: string;
-  /** disabled de-emphasized text; e.g. placeholder text inside disabled input field */
+  /**
+   * Disabled de-emphasized text; e.g. placeholder text inside disabled input field.
+   */
   disabledSubtext?: string;
 
-  /** color of outline around focused controls that don't already have a border */
+  /**
+   * The color of the outline around focused controls that don't already have a border; e.g. menu items
+   */
   focusBorder?: string;
 
   // Invariants - slots that rarely change color theme-to-theme because the color has meaning
-  /** background for errors, if necessary */
+  /**
+   * The background for errors, if necessary, or highlighting the section of the page where the error is present.
+   */
   errorBackground?: string;
-  /** default color of error text */
+  /**
+   * The default color of error text.
+   */
   errorText?: string;
 
   // Input controls slots (text fields, checkboxes, radios...)
-  /** border of an input control in its resting, unchecked state; e.g. box of an unchecked checkbox */
+  /**
+   * The border of an input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
+   */
   inputBorder?: string;
-  /** hovered border of an input control */
+  /**
+   * The border color of a hovered input control.
+   */
   inputBorderHovered?: string;
-  /** background of a checked control; e.g. checked radio button's dot, checked toggle's background */
+  /**
+   * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.
+   */
   inputBackgroundChecked?: string;
-  /** e.g. checked checkbox's background color on hover */
+  /**
+   * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
+   */
   inputBackgroundCheckedHovered?: string;
-  /** e.g. checked checkbox's checkmark color, checked toggle's thumb color, radio button's background color around the dot */
+  /**
+   * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color, radio button's background color around the dot.
+   */
   inputForegroundChecked?: string;
-  /** alternate focus border color for elements that already have a border; e.g. text field borders on focus */
+  /**
+   * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
+   */
   inputFocusBorderAlt?: string;
 
   // Menus, popups, etc
-  /** hovered background of a menu item */
+  /**
+   * The background of a hovered menu item.
+   */
   menuItemBackgroundHovered?: string;
-  /** background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item */
+  /**
+   * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
+   */
   menuItemBackgroundChecked?: string;
-  /** default colors of icons in menus */
+  /**
+   * The default colors of icons in menus.
+   */
   menuIcon?: string;
-  /** headers in menus that denote title of a section */
+  /**
+   * The headers in menus that denote title of a section.
+   */
   menuHeader?: string;
 
   // Lists
-  /** background color for the entire list */
+  /**
+   * The background color for the entire list.
+   */
   listBackground?: string;
-  /** default text color for list item titles and text in column fields */
+  /**
+   * The default text color for list item titles and text in column fields.
+   */
   listTextColor?: string;
-  /** background color of a hovered list item */
+  /**
+   * The background color of a hovered list item.
+   */
   listItemBackgroundHovered?: string;
-  /** background color of a checked list item */
+  /**
+   * The background color of a checked list item.
+   */
   listItemBackgroundChecked?: string;
-  /** background color of a checked and hovered list item */
+  /**
+   * The background color of a checked and hovered list item.
+   */
   listItemBackgroundCheckedHovered?: string;
 }
