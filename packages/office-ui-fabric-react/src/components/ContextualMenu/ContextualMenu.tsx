@@ -83,13 +83,14 @@ export function hasSubmenuItems(item: IContextualMenuItem) {
 }
 
 export function getSubmenuItems(item: IContextualMenuItem) {
-  return item.subMenuProps ? item.subMenuProps.items : item.items;
+  if (!item.menuProps && !item.subMenuProps) { return undefined; }
+
+  return item.menuProps ? item.menuProps.items : item.subMenuProps.items;
 }
 
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
-    items: [],
     shouldFocusOnMount: true,
     isBeakVisible: false,
     gapSpace: 0,

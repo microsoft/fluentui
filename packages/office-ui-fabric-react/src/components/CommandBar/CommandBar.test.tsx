@@ -21,18 +21,20 @@ describe('CommandBar', () => {
     }
   });
 
-  it('opens a menu with deprecated IContextualMenuItem.items property', () => {
+  it('opens a menu with deprecated IContextualMenuItem.subMenuProps property', () => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
-        items: [
-          {
-            name: 'SubmenuText 1',
-            key: 'SubmenuKey1',
-            className: 'SubMenuClass'
-          }
-        ]
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
       },
     ];
 

@@ -180,18 +180,20 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.SubMenuClass')).to.exist;
   });
 
-  it('still works with deprecated IContextualMenuItem.items property', () => {
+  it('still works with deprecated IContextualMenuItem.subMenuProps property', () => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
         key: 'TestKey1',
-        items: [
-          {
-            name: 'SubmenuText 1',
-            key: 'SubmenuKey1',
-            className: 'SubMenuClass'
-          }
-        ]
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
       },
     ];
 
