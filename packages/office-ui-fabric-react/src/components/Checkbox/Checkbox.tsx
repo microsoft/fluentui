@@ -81,7 +81,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     });
 
     return (
-      <div className={ rootClassName } >
+      <div className={ rootClassName } style={ this.props.style } >
         <input
           { ...inputProps }
           { ...(checked !== undefined && { checked }) }
