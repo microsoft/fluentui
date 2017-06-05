@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "add more semantic color slots",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
