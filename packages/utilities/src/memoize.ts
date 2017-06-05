@@ -14,7 +14,7 @@ interface IMemoizeNode {
 }
 
 /** Test utility for providing a custom weakmap. */
-export function setMemoizeWeakMap(weakMap) {
+export function setMemoizeWeakMap(weakMap: any): void {
   _weakMap = weakMap;
 }
 

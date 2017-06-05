@@ -338,6 +338,8 @@ class Rectangle {
   readonly width: number;
 }
 
+export function setMemoizeWeakMap(weakMap: any): void;
+
 export function setWarningCallback(warningCallback: (message: string) => void): void;
 
 export function unhoistMethods(source: any, methodNames: string[]): void;
@@ -383,6 +385,5 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: disableBodyScroll has incomplete type information
 // WARNING: enableBodyScroll has incomplete type information
 // WARNING: Unsupported export: ISettingsMap
-// WARNING: setMemoizeWeakMap has incomplete type information
 // WARNING: memoize has incomplete type information
 // (No packageDescription for this package)
