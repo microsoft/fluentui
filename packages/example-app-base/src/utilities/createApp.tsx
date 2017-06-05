@@ -2,14 +2,14 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
-import { App, IAppDefinition } from '../components/App/App';
+import { App, IAppDefinition, IAppLink } from '../components/App/App';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 import { ExampleGroup, IExample } from './examplesOf';
 
-export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: boolean) {
+export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: boolean, appTitle?: string, headerLinks?: IAppLink[]) {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
@@ -28,13 +28,23 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
         />
       )));
 
+    let appDefinition = _getDefinition(groups);
+
+    if (appTitle) {
+      appDefinition.appTitle = appTitle;
+    }
+
+    if (headerLinks) {
+      appDefinition.headerLinks = headerLinks;
+    }
+
     ReactDOM.render(
       <Fabric>
         <Router>
           <Route key='minimal' path='?minimal' component={ (props) => <div { ...props } /> }>
             { routes }
           </Route>
-          <Route key={ 'app' } component={ (props) => <App appDefinition={ _getDefinition(groups) } { ...props } /> }>
+          <Route key={ 'app' } component={ (props) => <App appDefinition={ appDefinition } { ...props } /> }>
             { routes }
           </Route>
         </Router>
