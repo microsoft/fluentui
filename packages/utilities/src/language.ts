@@ -1,4 +1,3 @@
-import { KeyCodes } from './KeyCodes';
 import { getDocument, getWindow } from './dom';
 
 // Default to undefined so that we initialize on first read.

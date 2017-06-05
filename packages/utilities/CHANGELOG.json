@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.0.1",
+      "tag": "@uifabric/utilities_v4.0.1",
+      "date": "Thu, 01 Jun 2017 16:34:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "262f85869f3c6b60fc403ab720e95f6687f8e0e0",
+            "comment": "getDocument/getWindow: now checks for doc/win undefined before accessing, making them ssr happy."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "90ef0576bb0f68a3a157176937b9ad5cc1797730",
+            "comment": "Update Focus handling to suport immediately-nested focus zones"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.0",
       "tag": "@uifabric/utilities_v4.0.0",
       "date": "Tue, 30 May 2017 03:27:20 GMT",

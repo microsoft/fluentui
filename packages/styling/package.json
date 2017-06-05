@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -45,7 +45,7 @@
     "webpack-split-by-path": "2.0.0"
   },
   "dependencies": {
-    "@uifabric/utilities": ">=4.0.0 <5.0.0",
+    "@uifabric/utilities": ">=4.0.1 <5.0.0",
     "glamor": "^2.20.24",
     "rtl-css-js": "^1.1.0"
   }

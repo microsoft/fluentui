@@ -39,11 +39,11 @@ export const getStyles = memoizeFunction((
     rootChecked: {
       backgroundColor: palette.themeDark,
       color: palette.white,
+    },
 
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight,
-        color: theme.palette.black
-      }
+    rootCheckedHovered: {
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.black
     }
   };
 

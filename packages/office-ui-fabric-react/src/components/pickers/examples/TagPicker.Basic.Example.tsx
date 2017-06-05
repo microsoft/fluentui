@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
-import { Checkbox } from 'office-ui-fabric-react/lib/components/Checkbox';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
 
 let _testTags = [

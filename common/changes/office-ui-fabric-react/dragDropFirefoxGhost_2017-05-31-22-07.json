@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Last column measured correctly when `checkboxVisibility` set to `hidden`.",
+      "comment": "DragDropHelper: Fix to show ghost element when dragging on Firefox",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@hotmail.com"
+  "email": "aazhou@microsoft.com"
 }
