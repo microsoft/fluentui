@@ -237,8 +237,6 @@ $ms-Persona-presenceSizeXl: 28px;
   min-width: 0;
   width: 100%;
   @include text-align(left);
-
-  //testing flexbox
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -308,6 +306,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
+    line-height: $ms-Persona-sizeTiny;
   }
 
   .secondaryText {
@@ -368,6 +367,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
+    line-height: $ms-Persona-sizeXxs;
   }
 
   .secondaryText {
@@ -426,6 +426,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
+    line-height: $ms-Persona-size28;
   }
 
   .secondaryText {
@@ -475,6 +476,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
+    line-height: $ms-Persona-sizeXs;
   }
 
   .secondaryText {
