@@ -7,6 +7,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "noEmitOnError": true,
+    "importHelpers": true,
     "moduleResolution": "node",
     "types": [
       "chai",
