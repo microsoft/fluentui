@@ -2231,9 +2231,9 @@
       "integrity": "sha1-tTTnxzTE+B7F++isoq0kNUuWLGw="
     },
     "caniuse-db": {
-      "version": "1.0.30000677",
-      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000677.tgz",
-      "integrity": "sha1-E/Qh1ArhQ0cCEDxJTSxNcW4qj8s="
+      "version": "1.0.30000679",
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000679.tgz",
+      "integrity": "sha1-3XvhLxZXfl1q5tuIDG1hnnfco2U="
     },
     "capture-stack-trace": {
       "version": "1.0.0",
@@ -2885,9 +2885,9 @@
       "integrity": "sha1-J0Pjq7XD/CRi5SfcpEXgTp9N7hc="
     },
     "deasync": {
-      "version": "0.1.9",
-      "resolved": "https://registry.npmjs.org/deasync/-/deasync-0.1.9.tgz",
-      "integrity": "sha1-9Y3Un6YxEMdL6oQFqQqCi+JtOiQ="
+      "version": "0.1.10",
+      "resolved": "https://registry.npmjs.org/deasync/-/deasync-0.1.10.tgz",
+      "integrity": "sha1-TkpoNvvgR3vV+Qgwi9KpZVfV1/4="
     },
     "debug": {
       "version": "2.6.7",

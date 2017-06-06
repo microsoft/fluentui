@@ -28,8 +28,11 @@ describe('Toggle', () => {
     let callback = (isToggled) => {
       isToggledValue = isToggled;
     };
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    let component;
+
+    ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Toggle
+        componentRef={ ref => component = ref }
         label='Label'
         onChanged={ callback }
       />
@@ -43,8 +46,11 @@ describe('Toggle', () => {
   });
 
   it(`doesn't update the state if the user provides checked`, () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    let component;
+
+    ReactTestUtils.renderIntoDocument(
       <Toggle
+        componentRef={ ref => component = ref }
         label='Label'
         checked={ false }
       />
@@ -66,6 +72,7 @@ describe('Toggle', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let label = renderedDOM.querySelector('label');
 
+    // tslint:disable-next-line:no-unused-expression
     expect(label).is.null;
   });
 
