@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Jun 2017 01:19:36 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 00:50:06 GMT and should not be manually modified.
+
+## 2.1.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Add the ability to optionally pass in the app title and header links for createApp
 
 ## 2.0.4
 Fri, 02 Jun 2017 01:19:36 GMT
