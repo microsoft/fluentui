@@ -40,11 +40,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       overflowItems,
       farItems,
       elipisisAriaLabel,
-      onRenderItems = this._onRenderItems,
-      onRenderOverflowItems
+      onRenderItems = this._onRenderItems
     } = this.props;
 
-    const commandBardata = {
+    let commandBardata = {
       primary: items,
       overflow: overflowItems || [],
       farItems: farItems || []
@@ -123,7 +122,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   // Render Command Button
   private _onRenderItems(item) {
-
     const onRender = item.onRenderItem ? item.onRenderItem : item.onRender;
 
     if (onRender) {
@@ -148,6 +146,5 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     }
 
     return commandButton;
-
   }
 }

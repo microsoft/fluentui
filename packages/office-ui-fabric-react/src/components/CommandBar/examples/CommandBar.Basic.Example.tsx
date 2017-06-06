@@ -55,9 +55,6 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           elipisisAriaLabel='More options'
           items={ filteredItems }
           farItems={ filteredFarItems }
-          onRenderItems={
-            (item) => <div>{ item.name }</div>
-          }
           searchBoxProps={ {
             onChange: (newValue) => console.log('SearchBox onChange fired: ' + newValue),
             onSearch: (newValue) => console.log('SearchBox onSearch fired: ' + newValue)

@@ -54,9 +54,10 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
    */
   elipisisAriaLabel?: string;
 
+  /**
+   * Custom render function for all non contextual menu items.
+   */
   onRenderItems?: (item: ICommandBarItemProps) => JSX.Element;
-
-  onRenderOverflowItems?: (item: ICommandBarItemProps) => JSX.Element;
 
   /**
    * Additional css class to apply to the command bar
@@ -72,8 +73,14 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
    */
   iconOnly?: boolean;
 
+  /**
+   * Custom render function for individual item when on main bar. Overriden by, but still accessible within onRenderItems.
+   */
   onRenderItem?: IRenderFunction<IContextualMenuItem>;
 
+  /**
+   * Custom render function for item when in contextual menu.
+   */
   onRenderOverflowItem?: IRenderFunction<IContextualMenuItem>;
 
 }

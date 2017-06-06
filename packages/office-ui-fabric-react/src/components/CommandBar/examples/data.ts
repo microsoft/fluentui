@@ -4,7 +4,7 @@ export const items = [
     name: 'New',
     icon: 'Add',
     onRenderItem: () => { return 'hello'; },
-    onRender: () => { return 'in the menu'; },
+    onRenderOverflowItem: () => { return 'in the menu'; },
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
     subMenuProps: {
