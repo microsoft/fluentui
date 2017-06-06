@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Add the ability to optionally pass in the app title and header links for createApp",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "chrisgo@microsoft.com"
+}
