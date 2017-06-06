@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BaseComponent, customizable, nullRender } from '../../../Utilities';
-import { getTheme } from '../../../Styling';
 import { BaseButton } from '../BaseButton';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './PrimaryButton.styles';

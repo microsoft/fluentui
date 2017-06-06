@@ -6,7 +6,6 @@ import {
   assign,
   autobind,
   buttonProperties,
-  customizable,
   getId,
   getNativeProps,
   memoize
