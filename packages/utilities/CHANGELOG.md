@@ -1,6 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 01 Jun 2017 16:34:03 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 00:50:06 GMT and should not be manually modified.
+
+## 4.1.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize.
+
+### Patches
+
+- memoize: returns the callback in scenarios where WeakMap isn't available.
 
 ## 4.0.1
 Thu, 01 Jun 2017 16:34:03 GMT
