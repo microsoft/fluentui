@@ -216,16 +216,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       index = 0;
     }
     // Set starting index to last option index if greater than options.length
-    else if (index >= options.length) {
+    if (index >= options.length) {
       index = options.length - 1;
     }
     // If current index is a header or divider, increment by step
     while (options[index].itemType === DropdownMenuItemType.Header
       || options[index].itemType === DropdownMenuItemType.Divider) {
 
-      // If stepCounter exceeds length of options, then break out of search
+      // If stepCounter exceeds length of options, then return selectedIndex (-1)
       if (stepCounter >= options.length) {
-        break;
+        return selectedIndex;
       }
       // If index + stepValue is out of bounds, reverse step direction
       if (index + stepValue < 0 || index + stepValue >= options.length) {
@@ -235,13 +235,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       stepCounter++;
     }
 
-    // Return selectedIndex if step counter, then return selectedIndex (-1)
-    if (stepCounter >= options.length) {
-      return selectedIndex;
-    } else {
-      this.setSelectedIndex(index);
-      return index;
-    }
+    this.setSelectedIndex(index);
+    return index;
   }
 
   // Render text in dropdown input

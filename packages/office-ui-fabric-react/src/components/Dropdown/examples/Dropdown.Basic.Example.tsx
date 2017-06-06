@@ -25,18 +25,18 @@ export class DropdownBasicExample extends React.Component<any, any> {
           options={
             [
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' },
+              { key: 'A', text: 'Option a', itemType: DropdownMenuItemType.Header },
+              { key: 'B', text: 'Option b', itemType: DropdownMenuItemType.Header },
+              { key: 'C', text: 'Option c', itemType: DropdownMenuItemType.Header },
+              { key: 'D', text: 'Option d', itemType: DropdownMenuItemType.Header },
+              { key: 'E', text: 'Option e', itemType: DropdownMenuItemType.Header },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-              { key: 'H', text: 'Option h' },
-              { key: 'I', text: 'Option i' },
-              { key: 'J', text: 'Option j' },
+              { key: 'F', text: 'Option f', itemType: DropdownMenuItemType.Header },
+              { key: 'G', text: 'Option g', itemType: DropdownMenuItemType.Header },
+              { key: 'H', text: 'Option h', itemType: DropdownMenuItemType.Header },
+              { key: 'I', text: 'Option i', itemType: DropdownMenuItemType.Header },
+              { key: 'J', text: 'Option j', itemType: DropdownMenuItemType.Header },
             ]
           }
         />
