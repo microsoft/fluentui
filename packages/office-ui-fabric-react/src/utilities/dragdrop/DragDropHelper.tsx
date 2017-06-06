@@ -72,6 +72,7 @@ export class DragDropHelper implements IDragDropHelper {
       eventName: string;
     }[] = [];
 
+    let onDragStart: (event: DragEvent) => void;
     let onDragLeave: (event: DragEvent) => void;
     let onDragEnter: (event: DragEvent) => void;
     let onDragEnd: (event: DragEvent) => void;
@@ -176,6 +177,12 @@ export class DragDropHelper implements IDragDropHelper {
         onMouseDown = this._onMouseDown.bind(this, dragDropTarget);
         onDragEnd = this._onDragEnd.bind(this, dragDropTarget);
 
+        // We need to add in data so that on Firefox we show the ghost element when dragging
+        onDragStart = (event: DragEvent) => {
+          event.dataTransfer.setData('id', root.id);
+        };
+
+        events.on(root, 'dragstart', onDragStart);
         events.on(root, 'mousedown', onMouseDown);
         events.on(root, 'dragend', onDragEnd);
       }
@@ -201,6 +208,7 @@ export class DragDropHelper implements IDragDropHelper {
             }
 
             if (isDraggable) {
+              events.off(root, 'dragstart', onDragStart);
               events.off(root, 'mousedown', onMouseDown);
               events.off(root, 'dragend', onDragEnd);
             }

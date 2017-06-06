@@ -11,16 +11,17 @@ let { expect } = chai;
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
 import { Persona, PersonaSize } from '../Persona';
+import { TestImages } from '../../common/TestImages';
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
     {
-      imageUrl: './images/persona-female.png',
+      imageUrl: TestImages.personaFemale,
       personaName: 'Annie Lindqvist',
       data: '50%'
     },
     {
-      imageUrl: './images/persona-male.png',
+      imageUrl: TestImages.personaFemale,
       personaName: 'Aaron Reid',
       data: '$1,000'
     },
@@ -46,7 +47,7 @@ describe('Facepile', () => {
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
 
-      let addButton = facepile.querySelectorAll('.ms-Icon--AddFriend');
+      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton');
       expect(addButton).to.have.length(1, 'Add button should render');
       let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(1, 'Only one button should be rendered');
@@ -60,7 +61,7 @@ describe('Facepile', () => {
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let overflowButton = facepile.querySelectorAll('.ms-Icon--ChevronDown');
+      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
       let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(1, 'Only one button should be rendered');
@@ -74,7 +75,7 @@ describe('Facepile', () => {
           overflowButtonType={ OverflowButtonType.more }
         />);
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let overflowButton = facepile.querySelectorAll('.ms-Icon--More');
+      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
       let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(1, 'Only one button should be rendered');

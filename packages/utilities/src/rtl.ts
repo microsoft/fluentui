@@ -10,9 +10,22 @@ let _isRTL: boolean;
 export function getRTL(): boolean {
   if (_isRTL === undefined) {
     let doc = getDocument();
+    let win = getWindow();
 
-    if (doc) {
-      _isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    // tslint:disable-next-line:no-string-literal
+    if (win && win['localStorage']) {
+      let savedRTL = localStorage.getItem('isRTL');
+
+      if (savedRTL !== null) {
+        _isRTL = savedRTL === '1';
+      }
+    }
+    if (_isRTL === undefined && doc) {
+      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
+    }
+
+    if (_isRTL !== undefined) {
+      setRTL(_isRTL, true);
     } else {
       throw new Error(
         'getRTL was called in a server environment without setRTL being called first. ' +
@@ -27,7 +40,7 @@ export function getRTL(): boolean {
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
  */
-export function setRTL(isRTL: boolean) {
+export function setRTL(isRTL: boolean, avoidPersisting = false) {
   let doc = getDocument();
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
@@ -35,7 +48,7 @@ export function setRTL(isRTL: boolean) {
 
   let win = getWindow();
   // tslint:disable-next-line:no-string-literal
-  if (win && win['localStorage']) {
+  if (win && win['localStorage'] && !avoidPersisting) {
     localStorage.setItem('isRTL', isRTL ? '1' : '0');
   }
 

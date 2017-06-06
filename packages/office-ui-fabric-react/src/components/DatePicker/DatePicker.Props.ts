@@ -41,6 +41,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   ariaLabel?: string;
 
   /**
+   * Aria label for date picker popup for screen reader users.
+   * @defaultvalue Calendar
+   */
+  pickerAriaLabel?: string;
+
+  /**
    * Whether the month picker is shown beside the day picker or hidden.
    * @defaultvalue true
    */
@@ -96,6 +102,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * @defaultvalue false
    */
   borderless?: boolean;
+  
+  /**
+   * Optional Classname for datepicker root element .
+   */
+  className?: string;
 }
 
 export interface IDatePickerStrings {

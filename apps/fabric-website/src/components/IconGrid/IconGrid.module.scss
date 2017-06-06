@@ -20,7 +20,7 @@
       color: $ms-color-neutralPrimary;
       font-size: $ms-font-size-xs;
       opacity: 0;
-      transition: opacity $ms-duration2 $ms-ease1;
+      transition: opacity $ms-animation-duration-2 $ms-animation-ease-1;
     }
 
     &:hover {

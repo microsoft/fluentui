@@ -158,11 +158,12 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
 // Default cell state
 .cell {
+  @include focus-border();
+
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  padding: $rowVerticalPadding 0;
-  margin: 0 8px;
+  padding: $rowVerticalPadding 8px;
   min-height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
@@ -186,6 +187,11 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
 .isPadded {
   @include margin-right($isPaddedMargin);
+
+  &.checkCell {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .isMultiline {
@@ -198,38 +204,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   display: inline-block;
 }
 
-.check {
-  @include focus-border();
-
-  @include margin-left(4px);
-  display: inline-block;
-  cursor: default;
-  padding: 13px 8px;
-  box-sizing: border-box;
-  vertical-align: top;
-  background: none;
-  border: none;
-  opacity: 0;
-}
-
-.checkDisabled {
-  visibility: hidden;
-}
-
-.root:hover .check,
-.root:focus .check,
-.rootIsSelected .check,
-.rootIsCheckVisible .check {
-  opacity: 1;
-}
-
 .cellMeasurer .cell {
   overflow: visible;
   white-space: nowrap;
-}
-
-.checkSpacer {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
 }

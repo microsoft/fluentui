@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { BaseComponent } from './BaseComponent';
 import { assign } from './object';
 
@@ -23,14 +24,10 @@ export interface ICustomizerState {
  *
  * Props are provided via the settings prop, which should be a json map where the key is
  * the name of the customizable component, and the value is are the props to pass in.
- *
- * @export
- * @class Customizer
- * @extends {BaseComponent<ICustomizerProps, ICustomizerState>}
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   public static contextTypes = {
-    injectedProps: React.PropTypes.object
+    injectedProps: PropTypes.object
   };
 
   public static childContextTypes = Customizer.contextTypes;

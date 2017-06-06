@@ -22,6 +22,8 @@ import {
 import { IViewport } from '../../utilities/decorators/withViewport';
 import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
+import { AnimationClassNames } from '../../Styling';
+import * as checkStyles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -87,7 +89,9 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     this._hasSetFocus = false;
 
     this._droppingClassNames = '';
+
     this._updateDroppingState = this._updateDroppingState.bind(this);
+    this._onToggleSelection = this._onToggleSelection.bind(this);
   }
 
   public componentDidMount() {
@@ -182,18 +186,26 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
     const canSelect = selection.canSelectItem(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
+    const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
 
     return (
-      <div
-        {...getNativeProps(this.props, divProperties)}
+      <FocusZone
+        {...getNativeProps(this.props, divProperties) }
+        direction={ FocusZoneDirection.horizontal }
         ref='root'
         role='row'
         aria-label={ ariaLabel }
-        className={ css('ms-DetailsRow ms-u-fadeIn400', styles.root, droppingClassName, {
-          ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
-          ['is-selected ' + styles.rootIsSelected]: isSelected,
-          ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always
-        }) }
+        className={ css(
+          'ms-DetailsRow',
+          AnimationClassNames.fadeIn400,
+          styles.root,
+          checkStyles.owner,
+          droppingClassName,
+          {
+            [`is-contentUnselectable ${styles.rootIsContentUnselectable}`]: isContentUnselectable,
+            [`is-selected ${checkStyles.isSelected} ${styles.rootIsSelected}`]: isSelected,
+            [`is-check-visible ${checkStyles.isVisible}`]: checkboxVisibility === CheckboxVisibility.always
+          }) }
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
@@ -204,42 +216,47 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
       >
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
-          { (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) && (
-            <span role='gridcell'>
-              { onRenderCheck({
-                isSelected,
-                anySelected,
-                ariaLabel: checkButtonAriaLabel,
-                canSelect
-              }) }
-            </span>
-          ) }
+        { showCheckbox && (
+          <div
+            role='gridcell'
+            aria-colindex={ 0 }
+            className={ css('ms-DetailsRow-cell', 'ms-DetailsRow-cellCheck', checkStyles.owner, styles.cell, styles.checkCell) }
+          >
+            { onRenderCheck({
+              isSelected,
+              anySelected,
+              title: checkButtonAriaLabel,
+              canSelect
+            }) }
+          </div>
+        ) }
 
-          { GroupSpacer({ count: groupNestingDepth }) }
+        { GroupSpacer({ count: groupNestingDepth }) }
 
-          { item && (
+        { item && (
+          <DetailsRowFields
+            columns={ columns }
+            item={ item }
+            itemIndex={ itemIndex }
+            columnStartIndex={ showCheckbox ? 1 : 0 }
+            onRenderItemColumn={ onRenderItemColumn } />
+        ) }
+
+        { columnMeasureInfo && (
+          <span
+            role='presentation'
+            className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
+            ref='cellMeasurer'
+          >
             <DetailsRowFields
-              columns={ columns }
+              columns={ [columnMeasureInfo.column] }
               item={ item }
               itemIndex={ itemIndex }
+              columnStartIndex={ (showCheckbox ? 1 : 0) + columns.length }
               onRenderItemColumn={ onRenderItemColumn } />
-          ) }
-
-          { columnMeasureInfo && (
-            <span
-              className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
-              ref='cellMeasurer'
-            >
-              <DetailsRowFields
-                columns={ [columnMeasureInfo.column] }
-                item={ item }
-                itemIndex={ itemIndex }
-                onRenderItemColumn={ onRenderItemColumn } />
-            </span>
-          ) }
-        </FocusZone>
-      </div>
+          </span>
+        ) }
+      </FocusZone>
     );
   }
 
@@ -266,11 +283,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     });
   }
 
-  public focus() {
-    if (this.refs && this.refs.root) {
-      this.refs.root.tabIndex = 0;
+  public focus(): boolean {
+    if (this.refs.root) {
       this.refs.root.focus();
+      return true;
     }
+
+    return false;
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
@@ -294,6 +313,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         selectionState: selectionState
       });
     }
+  }
+
+  private _onToggleSelection() {
+    const { selection } = this.props;
+
+    selection.toggleIndexSelected(this.props.itemIndex);
   }
 
   private _getRowDragDropOptions(): IDragDropOptions {

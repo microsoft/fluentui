@@ -9,7 +9,7 @@
 
   a, a:visited {
     color: $ms-color-white;
-    transition: color $ms-duration2 $ms-ease1;
+    transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
 
   img {
@@ -72,7 +72,7 @@
   width: 50%;
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .features {
     flex-direction: row;
 
@@ -83,7 +83,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   .header p,
   .features {
     max-width: 53%;
@@ -98,7 +98,7 @@
     position: absolute;
     top: -40px;
     height: 340px;
-    @include right(120px);
+    @include ms-right(120px);
     z-index: 500;
   }
 }

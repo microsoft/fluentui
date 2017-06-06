@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
+import { IIconProps } from '../../Icon';
 
 export interface ITextField {
   /** Gets the current value of the input. */
@@ -16,6 +17,13 @@ export interface ITextField {
 
   /** Sets the selection end of the text field to a specified value */
   setSelectionEnd: (value: number) => void;
+
+  /**
+   * Sets the start and end positions of a selection in a text field.
+   * @param start Index of the start of the selection.
+   * @param end Index of the end of the selection.
+   */
+  setSelectionRange: (start: number, end: number) => void;
 }
 
 /**
@@ -79,9 +87,9 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * CSS class for the icon.
+   * Optional icon props for an icon.
    */
-  iconClass?: string;
+  iconProps?: IIconProps;
 
   /**
    * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
@@ -174,4 +182,11 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * @default true
    */
   validateOnLoad?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated; use iconProps instead.
+   */
+  iconClass?: string;
+
 }
