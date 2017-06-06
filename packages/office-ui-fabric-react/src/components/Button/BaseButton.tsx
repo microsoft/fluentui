@@ -194,13 +194,19 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       icon,
       iconProps,
       styles,
-      checked
+      checked,
+      canCheck
        } = this.props;
 
     if (icon || iconProps) {
       iconProps = iconProps || {
         iconName: icon
       } as IIconProps;
+    }
+
+    if (canCheck && iconProps && !checked) {
+      // render hidden icon to take up the space required to render an icon until the button is checked
+      return <Icon { ...iconProps } className={ this._classNames.icon } style={ { visibility: 'hidden' } } />;
     }
 
     return iconProps && (

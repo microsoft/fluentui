@@ -42,7 +42,8 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   checked?: boolean;
 
   /**
-   * [TODO] Not Yet Implemented
+   * When true, and an icon is passed in, the icon will be hidden until button is checked.
+   * @default false
    */
   canCheck?: boolean;
 
@@ -83,6 +84,12 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * The props for the icon shown when providing a menu dropdown.
    */
   menuIconProps?: IIconProps;
+
+  /**
+   * Custom data that could be used during onRender
+   * Not implemented in button component itself
+   */
+  data?: any;
 
   /**
    * Custom render function for the button when used in list environment
