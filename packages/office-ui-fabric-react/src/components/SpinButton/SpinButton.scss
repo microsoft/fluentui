@@ -94,8 +94,7 @@
     }
 
   .Input {
-    @include ms-u-normalize;
-    @include ms-baseFont;
+    @include ms-normalize;
     border: 1px solid $ms-color-neutralTertiaryAlt;
     border-radius: 0;
     font-weight: $ms-font-weight-regular;
@@ -130,10 +129,6 @@
     &::selection {
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
-    }
-
-    @include input-placeholder {
-      color: $ms-color-neutralSecondary;
     }
   }
 

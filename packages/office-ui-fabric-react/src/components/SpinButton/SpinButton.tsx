@@ -63,6 +63,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _currentStepFunctionHandle: number;
   private _stepDelay = 100;
   private _formattedValidUnitOptions: string[] = [];
+  private _arrowButtonStyle: React.CSSProperties = {
+    icon: {
+      fontSize: '6px',
+    }
+  };
 
   constructor(props: ISpinButtonProps) {
     super(props);
@@ -171,6 +176,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <span className={ styles.ArrowBox }>
             <IconButton
               className={ css('ms-UpButton', styles.UpButton, (keyboardSpinDirection === KeyboardSpinDirection.up ? styles.active : '')) }
+              styles={ this._arrowButtonStyle }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               aria-hidden='true'
@@ -181,6 +187,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
             <IconButton
               className={ css('ms-DownButton', styles.DownButton, (keyboardSpinDirection === KeyboardSpinDirection.down ? styles.active : '')) }
+              styles={ this._arrowButtonStyle }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               aria-hidden='true'
