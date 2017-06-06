@@ -132,7 +132,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
                   width: $ms-checkbox-highContrast-iconBoxSize;
                   border-width: 1px;
                   border-color: $ms-color-contrastWhiteDisabled;
-                  background-color: transparent;
+                  background-color: $ms-color-contrastWhiteDisabled;
                 }
 
                 @media screen and (-ms-high-contrast: black-on-white) {
@@ -140,7 +140,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
                   width: $ms-checkbox-highContrast-iconBoxSize;
                   border-width: 1px;
                   border-color: $ms-color-contrastBlackDisabled;
-                  background-color: transparent;
+                  background-color: $ms-color-contrastBlackDisabled;
                 }
             }
         }
@@ -155,12 +155,12 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
                 @media screen and (-ms-high-contrast: active) {
                   border-color: $ms-color-contrastWhiteDisabled;
-                  background-color: transparent;
+                  background-color: $ms-color-contrastWhiteDisabled;
                 }
 
                 @media screen and (-ms-high-contrast: black-on-white) {
                   border-color: $ms-color-contrastBlackDisabled;
-                  background-color: transparent;
+                  background-color: $ms-color-contrastBlackDisabled;
                 }
             }
             > .text {
@@ -187,7 +187,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
             @media screen and (-ms-high-contrast: active) {
               border-color: $ms-color-contrastBlackDisabled;
-              background-color: transparent;
+              background-color: $ms-color-contrastBlackDisabled;
               > .checkmark {
                 color: $ms-color-contrastBlackDisabled;
               }
@@ -197,7 +197,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
               > .checkmark {
                 color: $ms-color-contrastWhiteDisabled;
               }
-              background-color: transparent;
+              background-color: $ms-color-contrastWhiteDisabled;
               border-color: $ms-color-contrastWhiteDisabled;
             }
         }
@@ -223,11 +223,11 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
                 @media screen and (-ms-high-contrast: active) {
                   border-color: $ms-color-contrastBlackDisabled;
-                  background-color: transparent;
+                  background-color: $ms-color-contrastBlackDisabled;
                 }
 
                 @media screen and (-ms-high-contrast: black-on-white) {
-                  background-color: transparent;
+                  background-color: $ms-color-contrastWhiteDisabled;
                   border-color: $ms-color-contrastWhiteDisabled;
                 }
             }
