@@ -52,7 +52,7 @@ export function setRTL(isRTL: boolean, avoidPersisting = false) {
     try {
       localStorage.setItem('isRTL', isRTL ? '1' : '0');
     } catch (e) {
-      /*  swallow the exception, because safari private mode does not have local storage
+      /*  swallow the exception, because safari private mode does not have local storage */
     }
   }
 
