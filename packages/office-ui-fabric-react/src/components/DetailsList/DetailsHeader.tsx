@@ -213,6 +213,19 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                     onClick={ this._onColumnClick.bind(this, column) }
                   >
+                    <span
+                      aria-label={ column.isIconOnly ? column.name : undefined }
+                      className={ css('ms-DetailsHeader-cellName', styles.cellName, {
+                        [styles.iconOnlyHeader]: column.isIconOnly
+                      }) }
+                    >
+                      { (column.iconName || column.iconClassName) && (
+                        <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                      ) }
+
+                      { !column.isIconOnly ? column.name : undefined }
+                    </span>
+
                     { column.isFiltered && (
                       <Icon className={ styles.nearIcon } iconName='Filter' />
                     ) }
@@ -224,17 +237,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     { column.isGrouped && (
                       <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
                     ) }
-
-                    <span
-                      aria-label={ column.isIconOnly ? column.name : undefined }
-                      className={ css('ms-DetailsHeader-cellName', styles.cellName) }
-                    >
-                      { (column.iconName || column.iconClassName) && (
-                        <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
-                      ) }
-
-                      { !column.isIconOnly ? column.name : undefined }
-                    </span>
 
                     { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
                       <Icon

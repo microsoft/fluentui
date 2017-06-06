@@ -3,6 +3,7 @@
 $rowHeight: 42px;
 $compactRowHeight: 32px;
 $rowVerticalPadding: 11px;
+$rowHorizontalPadding: 8px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
 
@@ -44,11 +45,11 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 
   .cell {
     min-height: $compactRowHeight;
-    padding: $compactRowVerticalPadding 0;
+    padding: $compactRowVerticalPadding $rowHorizontalPadding;
   }
 
   .check {
-    padding: 8px;
+    padding: $rowHorizontalPadding;
   }
 }
 
@@ -163,7 +164,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  padding: $rowVerticalPadding 8px;
+  padding: $rowVerticalPadding $rowHorizontalPadding;
   min-height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
@@ -186,7 +187,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 }
 
 .isPadded {
-  @include margin-right($isPaddedMargin);
+  @include margin-right($isPaddedMargin - $rowHorizontalPadding);
 
   &.checkCell {
     padding: 0;

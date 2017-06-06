@@ -95,7 +95,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     const _columns: IColumn[] = [
       {
         key: 'column1',
-        name: '',
+        name: 'File Type',
         headerClassName: 'DetailsListExample-header--FileIcon',
         className: 'DetailsListExample-cell--FileIcon',
         iconClassName: 'DetailsListExample-Header-FileTypeIcon',

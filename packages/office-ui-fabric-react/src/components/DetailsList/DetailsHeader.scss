@@ -29,6 +29,10 @@ $isPaddedMargin: 24px;
   }
 }
 
+.cellWrapperPadded {
+  @include margin-right($isPaddedMargin - $cellPadding);
+}
+
 .cell {
   @include ms-font-s;
   background: $headerBackgroundColor;
@@ -123,7 +127,13 @@ $isPaddedMargin: 24px;
   }
 }
 
-.cell .nearIcon {
+.iconOnlyHeader {
+  .nearIcon {
+    @include padding-left(0);
+  }
+}
+
+.nearIcon {
   color: $iconForegroundColor;
   opacity: 1;
   @include padding-left(8px);
