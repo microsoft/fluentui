@@ -208,24 +208,37 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (selectedIndex === index) {
       return selectedIndex;
     }
-
     const { options } = this.props;
+    let stepCounter = 0;
+
+    // Set starting index to 0 if index is < 0
     if (index < 0) {
-      // If index < 0, return first valid option
-      return this._moveIndex(stepValue, 0, selectedIndex);
-    } else if (index >= options.length) {
-      // If index > last option index, return last valid option
-      return this._moveIndex(stepValue, options.length - 1, selectedIndex);
-    } else {
-      // If current index is a header or divider, increment by step
-      while (options[index].itemType === DropdownMenuItemType.Header
-        || options[index].itemType === DropdownMenuItemType.Divider) {
-        // If index + stepValue is out of bounds, reverse step direction
-        if (index + stepValue < 0 || index + stepValue >= options.length) {
-          stepValue *= -1;
-        }
-        index = index + stepValue;
+      index = 0;
+    }
+    // Set starting index to last option index if greater than options.length
+    else if (index >= options.length) {
+      index = options.length - 1;
+    }
+    // If current index is a header or divider, increment by step
+    while (options[index].itemType === DropdownMenuItemType.Header
+      || options[index].itemType === DropdownMenuItemType.Divider) {
+
+      // If stepCounter exceeds length of options, then break out of search
+      if (stepCounter >= options.length) {
+        break;
       }
+      // If index + stepValue is out of bounds, reverse step direction
+      if (index + stepValue < 0 || index + stepValue >= options.length) {
+        stepValue *= -1;
+      }
+      index = index + stepValue;
+      stepCounter++;
+    }
+
+    // Return selectedIndex if step counter, then return selectedIndex (-1)
+    if (stepCounter >= options.length) {
+      return selectedIndex;
+    } else {
       this.setSelectedIndex(index);
       return index;
     }
