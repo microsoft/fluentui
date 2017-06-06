@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -14,7 +13,7 @@ const COMMAND_BUTTON_MINWIDTH = '40px';
 const COMMAND_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
+  theme: ITheme,
   customStyles?: IButtonStyles,
   focusInset?: string,
   focusColor?: string

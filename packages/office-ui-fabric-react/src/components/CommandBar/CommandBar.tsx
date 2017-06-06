@@ -3,6 +3,8 @@ import {
   BaseComponent,
   css,
   getId,
+  autobind,
+  assign
 } from '../../Utilities';
 
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
@@ -14,6 +16,13 @@ import { TooltipHost } from '../../Tooltip';
 
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
+
+// Internal data structure for passing command bar data around
+interface ICommandBarData {
+  primary: ICommandBarItemProps[];
+  overflow: ICommandBarItemProps[];
+  farItems: ICommandBarItemProps[];
+}
 
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
   public static defaultProps = {
@@ -33,27 +42,26 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   public render() {
     const {
       isSearchBoxVisible,
-      searchPlaceholderText,
-      searchBoxProps,
       className,
       items,
       overflowItems,
       farItems,
       elipisisAriaLabel,
+      buttonStyles,
       onRenderItems = this._onRenderItems
     } = this.props;
 
-    let commandBardata = {
+    let commandBardata: ICommandBarData = {
       primary: items,
-      overflow: overflowItems || [],
-      farItems: farItems || []
+      overflow: overflowItems,
+      farItems: farItems
     };
 
     return (
       <ResizeGroup
         data={ commandBardata }
         onReduceData={ this._onReduceData }
-        onRenderData={ (data) => {
+        onRenderData={ (data: ICommandBarData) => {
           return (
             <div className={ css('ms-CommandBar', styles.root) }>
 
@@ -68,9 +76,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 items={ data.primary }
                 overflowItems={ data.overflow.length ? data.overflow : null }
                 onRenderItem={ onRenderItems }
-                onRenderOverflowButton={ (renderedOverflowItems) => {
+                onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
                   return (
                     <CommandButton
+                      styles={ buttonStyles }
                       ariaLabel={ elipisisAriaLabel }
                       className={ css(styles.overflowButton) }
                       menuProps={ { items: renderedOverflowItems } }
@@ -85,11 +94,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 className={ css(styles.secondarySet) }
                 items={ data.farItems }
                 onRenderItem={ onRenderItems }
-                onRenderOverflowButton={ (renderedItems) => {
-                  return (
-                    null
-                  );
-                } }
+                onRenderOverflowButton={ () => null }
               />
             </div>
           );
@@ -102,14 +107,19 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     // this.refs.focusZone.focus();
   }
 
-  private _onReduceData(currentdata) {
-    let overflow = currentdata.overflow.concat(currentdata.primary.slice(-1));
-    let primary = currentdata.primary.slice(0, -1);
-    let farItems = currentdata.farItems;
-    return { primary, overflow, farItems };
+  @autobind
+  private _onReduceData(currentdata: ICommandBarData) {
+    let movedItem = currentdata.primary[currentdata.primary.length - 1];
+    movedItem.renderedInOverflow = true;
+
+    return {
+      primary: currentdata.primary.slice(0, -1),
+      overflow: currentdata.overflow.concat(movedItem),
+      farItems: currentdata.farItems
+    };
   }
 
-  // Render Search
+  @autobind
   private _onRenderSearch(props) {
     const { searchBoxProps, searchPlaceholderText } = props;
     return (
@@ -120,17 +130,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     );
   }
 
-  // Render Command Button
+  @autobind
   private _onRenderItems(item) {
-    const onRender = item.onRenderItem ? item.onRenderItem : item.onRender;
 
-    if (onRender) {
-      return onRender(item);
+    if (item.onRender) {
+      return item.onRender(item);
     }
 
     const commandButton = <CommandButton
       { ...item }
-
+      styles={ assign({}, item.buttonStyles, this.props.buttonStyles) }
       className={ css(styles.commandButton, item.className) }
       text={ !item.iconOnly ? item.name : '' }
       iconProps={ { iconName: item.icon } }

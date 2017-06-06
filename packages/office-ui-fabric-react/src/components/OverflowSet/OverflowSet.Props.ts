@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
-import { IObjectWithKey } from '../../Selection';
 
 export interface IOverflowSetProps extends React.HTMLAttributes<OverflowSet> {
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu';
-import { IButtonProps } from '../Button';
+import { IButtonStyles } from '../Button';
 import { ISearchBoxProps } from '../../SearchBox';
 import { IRenderFunction } from '../../Utilities';
 
@@ -55,6 +55,11 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   elipisisAriaLabel?: string;
 
   /**
+   * Custom styles to be mixed into individual button styles
+   */
+  buttonStyles?: IButtonStyles;
+
+  /**
    * Custom render function for all non contextual menu items.
    */
   onRenderItems?: (item: ICommandBarItemProps) => JSX.Element;
@@ -67,6 +72,7 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export interface ICommandBarItemProps extends IContextualMenuItem {
+
   /**
    * Remove text when button is not in the overflow
    * @defaultvalue false
@@ -74,13 +80,14 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   iconOnly?: boolean;
 
   /**
-   * Custom render function for individual item when on main bar. Overriden by, but still accessible within onRenderItems.
+   * Custom styles for individual button. Value set as parent buttonStyles by default if present
    */
-  onRenderItem?: IRenderFunction<IContextualMenuItem>;
+  buttonStyles?: IButtonStyles;
 
   /**
-   * Custom render function for item when in contextual menu.
+   * Context under which the item is being rendered
+   * This value is controlled by the component and useful for adjusting onRender function
    */
-  onRenderOverflowItem?: IRenderFunction<IContextualMenuItem>;
+  renderedInOverflow?: boolean;
 
 }

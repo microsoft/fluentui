@@ -3,8 +3,6 @@ export const items = [
     key: 'newItem',
     name: 'New',
     icon: 'Add',
-    onRenderItem: () => { return 'hello'; },
-    onRenderOverflowItem: () => { return 'in the menu'; },
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     ['data-automation-id']: 'newItemMenu',
     subMenuProps: {
@@ -34,7 +32,6 @@ export const items = [
     key: 'share',
     name: 'Share',
     icon: 'Share',
-    disabled: true,
     onClick: () => { return; }
   },
   {
