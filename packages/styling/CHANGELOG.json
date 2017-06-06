@@ -2,6 +2,62 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.6.1",
+      "tag": "@uifabric/styling_v0.6.1",
+      "date": "Tue, 06 Jun 2017 07:41:47 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.6.0",
+      "tag": "@uifabric/styling_v0.6.0",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1a785e3c7ab9adc1578ce528dffabcd186d3ccfc",
+            "comment": "createTheme: adding to exports"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "652aaea46284e84a403060c3936af239e92c9af0",
+            "comment": "add more semantic color slots"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.0 <5.0.0` to `>=4.1.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/styling_v0.5.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Styling: loadTheme now updates both legacy theme as well as current global theming. All theme objects provided by customizable will get updated correctly."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.1 <5.0.0` to `>=4.1.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.3",
       "tag": "@uifabric/styling_v0.4.3",
       "date": "Fri, 02 Jun 2017 01:19:36 GMT",
