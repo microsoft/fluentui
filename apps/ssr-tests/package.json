@@ -34,6 +34,7 @@
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "es6-promise": "^4.1.0"
+    "es6-promise": "^4.1.0",
+    "tslib": "^1.6.0"
   }
 }
