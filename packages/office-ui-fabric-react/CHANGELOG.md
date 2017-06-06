@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Jun 2017 00:50:06 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 06:06:46 GMT and should not be manually modified.
+
+## 4.3.2
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Patches
+
+- Adding tslib dependency to reduce redundant code.
 
 ## 4.3.1
 Tue, 06 Jun 2017 00:50:06 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.1.1",
+      "tag": "@uifabric/utilities_v4.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.1.0",
       "tag": "@uifabric/utilities_v4.1.0",
       "date": "Tue, 06 Jun 2017 00:50:06 GMT",
