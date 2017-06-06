@@ -1,14 +1,13 @@
 import { IToggleStyles } from './Toggle.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets,
   getFocusStyle
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
+  theme: ITheme,
   customStyles?: IToggleStyles
 ): IToggleStyles => {
   const { semanticColors } = theme;
