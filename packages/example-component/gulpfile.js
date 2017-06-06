@@ -11,7 +11,10 @@ let rules = Object.assign(
   require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
-build.tslint.setConfig({ lintConfig: { rules } });
+build.tslint.setConfig({
+  lintConfig: { rules },
+  displayAsWarning: false
+});
 
 // Use css modules.
 build.sass.setConfig({
