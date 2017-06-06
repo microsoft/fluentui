@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 02 Jun 2017 01:19:36 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 00:50:06 GMT and should not be manually modified.
+
+## 0.5.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Styling: loadTheme now updates both legacy theme as well as current global theming. All theme objects provided by customizable will get updated correctly.
 
 ## 0.4.3
 Fri, 02 Jun 2017 01:19:36 GMT

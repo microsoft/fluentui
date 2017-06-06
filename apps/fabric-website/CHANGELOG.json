@@ -2,6 +2,24 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.5.32",
+      "tag": "@uifabric/fabric-website_v4.5.32",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.0.4` to `2.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.3.0 <5.0.0` to `>=4.3.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.1 <5.0.0` to `>=4.1.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.31",
       "tag": "@uifabric/fabric-website_v4.5.31",
       "date": "Fri, 02 Jun 2017 01:19:36 GMT",

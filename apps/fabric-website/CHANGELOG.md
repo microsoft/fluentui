@@ -1,6 +1,11 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 02 Jun 2017 01:19:36 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 00:50:06 GMT and should not be manually modified.
+
+## 4.5.32
+Tue, 06 Jun 2017 00:50:06 GMT
+
+*Changes not tracked*
 
 ## 4.5.31
 Fri, 02 Jun 2017 01:19:36 GMT
