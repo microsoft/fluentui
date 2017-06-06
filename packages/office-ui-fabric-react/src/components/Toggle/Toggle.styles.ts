@@ -1,23 +1,22 @@
 import { IToggleStyles } from './Toggle.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets,
   getFocusStyle
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
+  theme: ITheme,
   customStyles?: IToggleStyles
 ): IToggleStyles => {
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;
-  const pillCheckedBackground = semanticColors.inputBackgroundSelected;
-  const pillCheckedHoveredBackground = semanticColors.inputBackgroundSelectedHovered;
+  const pillCheckedBackground = semanticColors.inputBackgroundChecked;
+  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
   const pillCheckedDisabledBackground = semanticColors.disabledText;
   const thumbBackground = semanticColors.inputBorderHovered;
-  const thumbCheckedBackground = semanticColors.inputForegroundSelected;
+  const thumbCheckedBackground = semanticColors.inputForegroundChecked;
   const thumbDisabledBackground = semanticColors.disabledText;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
   const pillBorderColor = semanticColors.inputBorder;

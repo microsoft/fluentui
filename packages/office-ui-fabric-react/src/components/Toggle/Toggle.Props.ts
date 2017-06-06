@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toggle } from './Toggle';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IToggle {
   focus: () => void;
@@ -60,6 +60,11 @@ export interface IToggleProps extends React.HTMLProps<HTMLElement | Toggle> {
    * onchange callback.
    */
   onChanged?: (checked: boolean) => void;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Custom styles for this component
