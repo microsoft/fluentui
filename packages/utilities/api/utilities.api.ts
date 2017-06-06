@@ -50,12 +50,18 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 
 // WARNING: contextTypes has incomplete type information
 // WARNING: childContextTypes has incomplete type information
+// WARNING: setDefault has incomplete type information
+// WARNING: getDefault has incomplete type information
 // WARNING: __constructor has incomplete type information
 // WARNING: componentWillReceiveProps has incomplete type information
 // WARNING: render has incomplete type information
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   // (undocumented)
+  public static addChangeListener(onChanged: IChangeListener): void;
+  // (undocumented)
   public getChildContext(): any;
+  // (undocumented)
+  public static removeChangeListener(onChanged: IChangeListener): void;
 }
 
 // WARNING: defaultProps has incomplete type information
@@ -150,6 +156,12 @@ export function hasVerticalOverflow(element: HTMLElement): boolean;
 interface IBaseProps {
   // (undocumented)
   componentRef?: any;
+}
+
+// (undocumented)
+interface IChangeListener {
+  // (undocumented)
+  (propName?: string): void;
 }
 
 // (undocumented)
