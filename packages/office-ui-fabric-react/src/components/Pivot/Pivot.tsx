@@ -249,7 +249,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
    */
   private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>) {
     ev.preventDefault();
-    if (ev.which === KeyCodes.enter) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       this._updateSelectedItem(itemKey);
     }
   }
