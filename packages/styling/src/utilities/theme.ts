@@ -1,4 +1,3 @@
-import * as assign from 'object-assign';
 import {
   IPalette,
   IFontStyles,
@@ -8,18 +7,21 @@ import {
   DefaultPalette,
   DefaultFontStyles
 } from '../styles/index';
-
+import { Customizer } from '@uifabric/utilities/lib/index';
 export interface ITheme {
-  palette: IPalette;
-  fonts: IFontStyles;
-  semanticColors: ISemanticColors;
+  palette?: IPalette;
+  fonts?: IFontStyles;
+  semanticColors?: ISemanticColors;
 }
+import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
-const _theme: ITheme = {
+let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
   fonts: DefaultFontStyles
 };
+
+Customizer.setDefault('theme', _theme);
 
 /**
  * Gets the theme object.
@@ -29,12 +31,37 @@ export function getTheme(): ITheme {
 }
 
 /**
- * Mixes the given theme settings into the current theme object.
+ * Loads the default global theme definition.
  */
 export function loadTheme(theme: ITheme): void {
-  _theme.palette = assign({}, _theme.palette, theme.palette);
-  _theme.semanticColors = assign({}, _makeSemanticColorsFromPalette(_theme.palette), theme.semanticColors);
-  _theme.fonts = assign({}, _theme.fonts, theme.fonts);
+  _theme = createTheme(theme);
+
+  // Load the legacy theme from the palette.
+  legacyLoadTheme(_theme.palette as {});
+
+  Customizer.setDefault('theme', _theme);
+}
+
+/**
+ * Creates a custom theme definition which can be used with the Customizer.
+ */
+export function createTheme(theme: ITheme): ITheme {
+  let newPalette = {
+    ..._theme.palette,
+    ...theme.palette
+  };
+
+  return {
+    palette: newPalette,
+    fonts: {
+      ..._theme.fonts,
+      ...theme.fonts
+    },
+    semanticColors: {
+      ..._makeSemanticColorsFromPalette(newPalette),
+      ...theme.semanticColors
+    }
+  } as ITheme;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.

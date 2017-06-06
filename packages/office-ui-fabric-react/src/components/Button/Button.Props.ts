@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
   /**
@@ -35,6 +35,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Whether the button is checked
