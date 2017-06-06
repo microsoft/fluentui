@@ -28,8 +28,8 @@ let _changeListeners: IChangeListener[] = [];
  * 1. render svg icons instead of the icon font within all buttons
  * 2. inject a custom theme object into a component
  *
- * Props are provided via the settings prop, which should be a json map where the key is
- * the name of the customizable component, and the value is are the props to pass in.
+ * Props are provided via the settings prop, which should be a json map which contains 1 or more
+ * name/value pairs representing injectable props.
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   public static contextTypes = {
@@ -38,19 +38,31 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
 
   public static childContextTypes = Customizer.contextTypes;
 
-  public static setDefault(name, value): void {
+  /**
+   * Sets a default value for the given field.
+   */
+  public static setDefault(name: string, value: any): void {
     _defaultValues[name] = value;
     Customizer._change(name);
   }
 
-  public static getDefault(fieldName) {
+  /**
+   * Gets the current default value for a given field.
+   */
+  public static getDefault(fieldName: string): any {
     return _defaultValues[fieldName];
   }
 
+  /**
+   * Adds a change listener for when customizable defaults change.
+   */
   public static addChangeListener(onChanged: IChangeListener): void {
     _changeListeners.push(onChanged);
   }
 
+  /**
+   * Removes a change listener that was added.
+   */
   public static removeChangeListener(onChanged: IChangeListener): void {
     let index = _changeListeners.indexOf(onChanged);
 
@@ -76,7 +88,6 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
   }
 
   public componentWillReceiveProps(newProps, newContext) {
-
     this.setState(this._getInjectedProps(newProps, newContext));
   }
 
