@@ -1,6 +1,11 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 06 Jun 2017 06:06:46 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+
+## 0.6.1
+Tue, 06 Jun 2017 07:41:47 GMT
+
+*Changes not tracked*
 
 ## 0.6.0
 Tue, 06 Jun 2017 06:06:46 GMT

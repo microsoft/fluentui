@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Jun 2017 06:06:46 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+
+## 4.4.0
+Tue, 06 Jun 2017 07:41:47 GMT
+
+### Minor changes
+
+- Toggle: theme now injectable through Customizer.
 
 ## 4.3.2
 Tue, 06 Jun 2017 06:06:46 GMT

@@ -2,6 +2,18 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "2.1.2",
+      "tag": "@uifabric/example-app-base_v2.1.2",
+      "date": "Tue, 06 Jun 2017 07:41:47 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.6.0 <1.0.0` to `>=0.6.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.1",
       "tag": "@uifabric/example-app-base_v2.1.1",
       "date": "Tue, 06 Jun 2017 06:06:46 GMT",
