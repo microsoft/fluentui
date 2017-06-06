@@ -49,7 +49,11 @@ export function setRTL(isRTL: boolean, avoidPersisting = false) {
   let win = getWindow();
   // tslint:disable-next-line:no-string-literal
   if (win && win['localStorage'] && !avoidPersisting) {
-    localStorage.setItem('isRTL', isRTL ? '1' : '0');
+    try {
+      localStorage.setItem('isRTL', isRTL ? '1' : '0');
+    } catch (e) {
+      /*  swallow the exception, because safari private mode does not have local storage
+    }
   }
 
   _isRTL = isRTL;
