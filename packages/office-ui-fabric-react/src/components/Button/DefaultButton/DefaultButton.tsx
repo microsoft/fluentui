@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent, nullRender } from '../../../Utilities';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './DefaultButton.styles';
 
+@customizable(['theme'])
 export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -11,13 +12,13 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    const { styles } = this.props;
+    const { styles, theme } = this.props;
 
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--default'
-        styles={ getStyles(undefined, styles) }
+        styles={ getStyles(theme, styles) }
         onRenderDescription={ nullRender }
       />
     );
