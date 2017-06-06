@@ -1,6 +1,54 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 30 May 2017 03:27:20 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+
+## 0.6.1
+Tue, 06 Jun 2017 07:41:47 GMT
+
+*Changes not tracked*
+
+## 0.6.0
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Minor changes
+
+- createTheme: adding to exports
+- add more semantic color slots
+
+### Patches
+
+- Adding tslib dependency to reduce re
+
+## 0.5.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Styling: loadTheme now updates both legacy theme as well as current global theming. All theme objects provided by customizable will get updated correctly.
+
+## 0.4.3
+Fri, 02 Jun 2017 01:19:36 GMT
+
+*Changes not tracked*
+
+## 0.4.2
+Thu, 01 Jun 2017 16:34:03 GMT
+
+*Changes not tracked*
+
+## 0.4.1
+Wed, 31 May 2017 01:58:23 GMT
+
+### Patches
+
+- Icon classes: adjusting how they are registered so that we merge raw styles together to form the icon classes.
+
+## 0.4.0
+Tue, 30 May 2017 20:23:45 GMT
+
+### Minor changes
+
+- Adding support for specifying `window.FabricConfig.fontBaseUrl` in order to customize where the font resources are pulled from. Leaving it blank will avoid fontface definitions from being registered.
 
 ## 0.3.0
 Tue, 30 May 2017 03:27:20 GMT

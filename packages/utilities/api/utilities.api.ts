@@ -54,8 +54,12 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 // WARNING: componentWillReceiveProps has incomplete type information
 // WARNING: render has incomplete type information
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
+  public static addChangeListener(onChanged: IChangeListener): void;
   // (undocumented)
   public getChildContext(): any;
+  public static getDefault(fieldName: string): any;
+  public static removeChangeListener(onChanged: IChangeListener): void;
+  public static setDefault(name: string, value: any): void;
 }
 
 // WARNING: defaultProps has incomplete type information
@@ -150,6 +154,12 @@ export function hasVerticalOverflow(element: HTMLElement): boolean;
 interface IBaseProps {
   // (undocumented)
   componentRef?: any;
+}
+
+// (undocumented)
+interface IChangeListener {
+  // (undocumented)
+  (propName?: string): void;
 }
 
 // (undocumented)
@@ -255,6 +265,9 @@ interface IRenderFunction<P> {
 }
 
 // (undocumented)
+export function isElementFocusSubZone(element?: HTMLElement): boolean;
+
+// (undocumented)
 export function isElementFocusZone(element?: HTMLElement): boolean;
 
 // (undocumented)
@@ -334,6 +347,8 @@ class Rectangle {
   public top: number;
   readonly width: number;
 }
+
+export function setMemoizeWeakMap(weakMap: any): void;
 
 export function setWarningCallback(warningCallback: (message: string) => void): void;
 

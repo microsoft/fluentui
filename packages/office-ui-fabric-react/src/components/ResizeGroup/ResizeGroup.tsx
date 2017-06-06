@@ -92,19 +92,43 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _onResize() {
-    // If we have some cached measurements, let's see if we can skip rendering
+    let shouldMeasure = true;
+    let nextMeasuredData = this.state.measuredData;
+
     if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
+      // If we have some cached measurements, let's see if we can skip rendering
       let containerWidth = this._root.getBoundingClientRect().width;
 
-      // If the container didn't grow and the component still fits, don't trigger a remeasure.
-      // If the container grew, we want to trigger a remeasure since we might be able to fit more content.
-      if (containerWidth <= this._lastKnownRootWidth && this._lastKnownMeasuredWidth <= containerWidth) {
-        this._lastKnownRootWidth = containerWidth;
-        return;
+      if (containerWidth <= this._lastKnownRootWidth) {
+        // If the container shrank as a result of this resize, we can do an optimized rerender.
+        if (this._lastKnownMeasuredWidth <= containerWidth) {
+          // If the contents still fit within the container, don't trigger a remeasure.
+          this._lastKnownRootWidth = containerWidth;
+          shouldMeasure = false;
+        } else {
+          // If the container shrank and the contents don't fit, we can trigger a measurement
+          // pass starting from the current value of rendered data.
+          nextMeasuredData = this.state.renderedData;
+        }
       }
     }
 
-    this.setState({ shouldMeasure: true });
+    if (shouldMeasure) {
+      this.setState({
+        shouldMeasure: true,
+        measuredData: nextMeasuredData
+      });
+    }
+  }
+
+  private _setStateToDoneMeasuring() {
+    this.setState((prevState, props) => {
+      return {
+        renderedData: prevState.measuredData,
+        measuredData: { ...this.props.data },
+        shouldMeasure: false
+      };
+    });
   }
 
   private _measureItems() {
@@ -125,19 +149,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
             measuredData: nextMeasuredData,
           });
         } else {
-          this.setState({
-            shouldMeasure: false
-          });
+          this._setStateToDoneMeasuring();
         }
 
       } else {
-        this.setState((prevState, props) => {
-          return {
-            renderedData: prevState.measuredData,
-            measuredData: { ...this.props.data },
-            shouldMeasure: false
-          };
-        });
+        this._setStateToDoneMeasuring();
       }
     }
   }

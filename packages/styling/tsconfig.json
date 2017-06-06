@@ -7,8 +7,8 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
+    "moduleResolution": "node",
     "lib": [
       "es2017",
       "dom"

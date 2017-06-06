@@ -364,6 +364,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           ':hover .ms-Button-description': styles.descriptionHovered,
           ':active': styles.rootPressed,
           ':active .ms-Button-description': styles.descriptionPressed
+        },
+        disabled && checked && [
+          styles.rootCheckedDisabled
+        ],
+        !disabled && checked && {
+          ':hover': styles.rootCheckedHovered,
+          ':active': styles.rootCheckedPressed
         }
       ) as string,
 

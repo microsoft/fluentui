@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
   /**
@@ -35,6 +35,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Whether the button is checked
@@ -196,6 +201,21 @@ export interface IButtonStyles {
    * Style override applied to the root on pressed in the default, enabled, non-toggled state.
    */
   rootPressed?: IStyle;
+
+  /**
+   * Style override applied to the root on hover in a checked, enabled state
+   */
+  rootCheckedHovered?: IStyle;
+
+  /**
+   * Style override applied to the root on pressed in a checked, enabled state
+   */
+  rootCheckedPressed?: IStyle;
+
+  /**
+  * Style override applied to the root on hover in a checked, disabled state
+  */
+  rootCheckedDisabled?: IStyle;
 
   /**
    * Style for the flexbox container within the root element.

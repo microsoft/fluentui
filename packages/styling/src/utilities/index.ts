@@ -1,7 +1,8 @@
 export {
   ITheme,
   getTheme,
-  loadTheme
+  loadTheme,
+  createTheme
 } from './theme';
 export {
   mergeStyles
