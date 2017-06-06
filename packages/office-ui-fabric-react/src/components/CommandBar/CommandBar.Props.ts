@@ -3,6 +3,7 @@ import { IContextualMenuItem } from '../ContextualMenu';
 import { IButtonStyles } from '../Button';
 import { ISearchBoxProps } from '../../SearchBox';
 import { IRenderFunction } from '../../Utilities';
+import { IIconProps } from '../../Icon';
 
 export interface ICommandBar {
   /**
@@ -53,6 +54,11 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button
    */
   elipisisAriaLabel?: string;
+
+  /**
+  * Text to be read by screen readers if there are overflow items and focus is on elipsis button
+  */
+  elipisisIconProps?: IIconProps;
 
   /**
    * Custom styles to be mixed into individual button styles

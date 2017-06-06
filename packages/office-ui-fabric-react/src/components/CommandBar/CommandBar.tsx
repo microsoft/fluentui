@@ -6,7 +6,6 @@ import {
   autobind,
   assign
 } from '../../Utilities';
-
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
 import { SearchBox } from '../../SearchBox';
 import { CommandButton } from '../../Button';
@@ -17,19 +16,19 @@ import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
-// Internal data structure for passing command bar data around
 interface ICommandBarData {
-  primary: ICommandBarItemProps[];
-  overflow: ICommandBarItemProps[];
+  primaryItems: ICommandBarItemProps[];
+  overflowItems: ICommandBarItemProps[];
   farItems: ICommandBarItemProps[];
 }
 
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
-  public static defaultProps = {
+  public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: [],
     farItems: [],
-    searchPlaceholderText: 'Search'
+    searchPlaceholderText: 'Search',
+    elipisisIconProps: { iconName: 'More' }
   };
 
   private _id: string;
@@ -47,14 +46,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       overflowItems,
       farItems,
       elipisisAriaLabel,
+      elipisisIconProps,
       buttonStyles,
       onRenderItems = this._onRenderItems
     } = this.props;
 
     let commandBardata: ICommandBarData = {
-      primary: items,
-      overflow: overflowItems,
-      farItems: farItems
+      primaryItems: items,
+      overflowItems,
+      farItems
     };
 
     return (
@@ -73,8 +73,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
               {/*Primary Items*/ }
               <OverflowSet
                 className={ css(styles.primarySet) }
-                items={ data.primary }
-                overflowItems={ data.overflow.length ? data.overflow : null }
+                items={ data.primaryItems }
+                overflowItems={ data.overflowItems.length ? data.overflowItems : null }
                 onRenderItem={ onRenderItems }
                 onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
                   return (
@@ -83,7 +83,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                       ariaLabel={ elipisisAriaLabel }
                       className={ css(styles.overflowButton) }
                       menuProps={ { items: renderedOverflowItems } }
-                      menuIconProps={ { iconName: 'More' } }
+                      menuIconProps={ elipisisIconProps }
                     />
                   );
                 } }
@@ -108,15 +108,20 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onReduceData(currentdata: ICommandBarData) {
-    let movedItem = currentdata.primary[currentdata.primary.length - 1];
-    movedItem.renderedInOverflow = true;
+  private _onReduceData(data: ICommandBarData): ICommandBarData {
+    let { primaryItems, overflowItems, farItems } = data;
+    let movedItem = primaryItems[primaryItems.length - 1];
 
-    return {
-      primary: currentdata.primary.slice(0, -1),
-      overflow: currentdata.overflow.concat(movedItem),
-      farItems: currentdata.farItems
-    };
+    if (movedItem !== undefined) {
+      movedItem.renderedInOverflow = true;
+      return {
+        primaryItems: primaryItems.slice(0, -1),
+        overflowItems: overflowItems.concat(movedItem),
+        farItems: farItems
+      };
+    }
+
+    return undefined;
   }
 
   @autobind
@@ -137,23 +142,21 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       return item.onRender(item);
     }
 
-    const commandButton = <CommandButton
-      { ...item }
-      styles={ assign({}, item.buttonStyles, this.props.buttonStyles) }
-      className={ css(styles.commandButton, item.className) }
-      text={ !item.iconOnly ? item.name : '' }
-      iconProps={ { iconName: item.icon } }
-      menuProps={ item.subMenuProps }
-    />;
+    const commandButtonProps = assign({}, item, {
+      styles: assign({}, item.buttonStyles, this.props.buttonStyles),
+      className: css(styles.commandButton, item.className),
+      text: !item.iconOnly ? item.name : '',
+      menuProps: item.subMenuProps,
+    });
 
     if (item.iconOnly && item.name !== undefined) {
       return (
         <TooltipHost content={ item.name } >
-          { commandButton }
+          <CommandButton {...commandButtonProps } />
         </TooltipHost>
       );
     }
 
-    return commandButton;
+    return <CommandButton {...commandButtonProps } />;
   }
 }
