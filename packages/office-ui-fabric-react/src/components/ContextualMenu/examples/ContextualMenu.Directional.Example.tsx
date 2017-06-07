@@ -125,7 +125,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
                 },
                 {
                   key: '-',
-                  itemType: ContextualMenuItemType.Divider
+                  menuItemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'share',

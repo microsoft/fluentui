@@ -68,7 +68,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_1',
-                  itemType: ContextualMenuItemType.Divider
+                  menuItemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'rename',
@@ -85,7 +85,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_2',
-                  itemType: ContextualMenuItemType.Divider
+                  menuItemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'share',
@@ -157,7 +157,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_3',
-                  itemType: ContextualMenuItemType.Divider,
+                  menuItemType: ContextualMenuItemType.Divider,
                 },
                 {
                   key: 'Bing',

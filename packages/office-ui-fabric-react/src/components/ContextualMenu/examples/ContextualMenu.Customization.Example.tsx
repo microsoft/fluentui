@@ -62,7 +62,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 },
                 {
                   key: 'divider_1',
-                  itemType: ContextualMenuItemType.Divider
+                  menuItemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'charm',
@@ -200,7 +200,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                       },
                       {
                         key: 'divider_1',
-                        itemType: ContextualMenuItemType.Divider
+                        menuItemType: ContextualMenuItemType.Divider
                       },
                       {
                         key: 'clear',

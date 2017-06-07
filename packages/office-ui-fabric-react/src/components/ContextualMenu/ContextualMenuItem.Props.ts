@@ -2,12 +2,6 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from './ContextualMenu.Props';
 
-export enum ContextualMenuItemType {
-  Normal = 0,
-  Divider = 1,
-  Header = 2
-}
-
 export interface IContextualMenuItem {
   /**
    * Unique id to identify the item
@@ -19,6 +13,15 @@ export interface IContextualMenuItem {
    */
   name?: string;
 
+  /**
+   * Type of item in the menu. Includes normal, divider or header.
+   */
+  menuItemType?: ContextualMenuItemType;
+
+  /**
+   * Deprecated due to conflict with HTML property. Use menuItemType instead
+   * @deprecated
+   */
   itemType?: ContextualMenuItemType;
 
   /**
@@ -32,8 +35,8 @@ export interface IContextualMenuItem {
   menuIconProps?: IIconProps;
 
   /**
-   * Props that go to the IconComponent used for the chevron.
-   * @deprecated use menuIconProps
+   * Use menuIconProps instead
+   * @deprecated
    */
   submenuIconProps?: IIconProps;
 
@@ -148,4 +151,10 @@ export interface IContextualMenuItem {
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
+}
+
+export enum ContextualMenuItemType {
+  Normal = 0,
+  Divider = 1,
+  Header = 2
 }

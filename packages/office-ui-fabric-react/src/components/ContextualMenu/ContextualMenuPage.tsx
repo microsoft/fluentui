@@ -47,6 +47,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             sources={ [
               require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts'),
               require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.Props.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenuItem.Props.ts'),
             ] }
           />
         }

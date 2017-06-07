@@ -65,7 +65,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                 },
                 {
                   key: 'divider_1',
-                  itemType: ContextualMenuItemType.Divider
+                  menuItemType: ContextualMenuItemType.Divider
                 },
 
                 {

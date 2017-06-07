@@ -30,7 +30,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
               [
                 {
                   key: 'Actions',
-                  itemType: 2,
+                  menuItemType: 2,
                   name: 'Actions'
                 },
                 {
@@ -79,7 +79,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                 },
                 {
                   key: 'navigation',
-                  itemType: 2,
+                  menuItemType: 2,
                   name: 'Navigation'
                 },
                 {

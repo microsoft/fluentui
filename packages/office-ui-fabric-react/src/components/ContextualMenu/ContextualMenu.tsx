@@ -254,12 +254,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
+    let itemType = item.itemType ? item.itemType : item.menuItemType;
 
     if (item.name === '-') {
-      item.itemType = ContextualMenuItemType.Divider;
+      itemType = ContextualMenuItemType.Divider;
     }
 
-    switch (item.itemType) {
+    switch (itemType) {
       case ContextualMenuItemType.Divider:
         renderedItems.push(this._renderSeparator(index, item.className));
         break;
