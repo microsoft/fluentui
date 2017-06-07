@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
+import { loadTheme, FontClassNames, ITheme, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { FontClassNames } from '../../Styling';
 import './ThemePage.scss';
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
@@ -116,17 +115,17 @@ export class ThemePage extends React.Component<any, any> {
   private _onColorChanged(index: number, newColor: string) {
     let { colors } = this.state;
     let color = colors[index];
-    let theme: ITheme = {};
+    let palette: Partial<IPalette> = {};
 
     color.value = newColor;
 
     for (let i = 0; i < colors.length; i++) {
       let themeColor = colors[i];
 
-      theme[themeColor.key] = themeColor.value;
+      palette[themeColor.key] = themeColor.value;
     }
 
-    loadTheme(theme);
+    loadTheme({ palette });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
     this.refs.list.forceUpdate();

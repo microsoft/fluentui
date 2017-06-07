@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -10,7 +9,7 @@ import {
 } from '../DefaultButton/DefaultButton.styles';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
+  theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
   let { palette } = theme;
@@ -39,11 +38,11 @@ export const getStyles = memoizeFunction((
     rootChecked: {
       backgroundColor: palette.themeDark,
       color: palette.white,
+    },
 
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight,
-        color: theme.palette.black
-      }
+    rootCheckedHovered: {
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.black
     }
   };
 

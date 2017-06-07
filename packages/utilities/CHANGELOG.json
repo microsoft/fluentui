@@ -2,6 +2,60 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.1.1",
+      "tag": "@uifabric/utilities_v4.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.0",
+      "tag": "@uifabric/utilities_v4.1.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cb407443e257121037ba57a6bc302f87e03eec9c",
+            "comment": "memoize: returns the callback in scenarios where WeakMap isn't available."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.1",
+      "tag": "@uifabric/utilities_v4.0.1",
+      "date": "Thu, 01 Jun 2017 16:34:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "262f85869f3c6b60fc403ab720e95f6687f8e0e0",
+            "comment": "getDocument/getWindow: now checks for doc/win undefined before accessing, making them ssr happy."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "90ef0576bb0f68a3a157176937b9ad5cc1797730",
+            "comment": "Update Focus handling to suport immediately-nested focus zones"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.0",
       "tag": "@uifabric/utilities_v4.0.0",
       "date": "Tue, 30 May 2017 03:27:20 GMT",

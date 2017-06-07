@@ -2,6 +2,113 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "2.1.2",
+      "tag": "@uifabric/example-app-base_v2.1.2",
+      "date": "Tue, 06 Jun 2017 07:41:47 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.6.0 <1.0.0` to `>=0.6.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.1",
+      "tag": "@uifabric/example-app-base_v2.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.5.0 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.0 <5.0.0` to `>=4.1.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.0",
+      "tag": "@uifabric/example-app-base_v2.1.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "90b3bd39868d4576bfadb0a339370934a6d42d3a",
+            "comment": "Add the ability to optionally pass in the app title and header links for createApp"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.3 <1.0.0` to `>=0.5.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.1 <5.0.0` to `>=4.1.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.4",
+      "tag": "@uifabric/example-app-base_v2.0.4",
+      "date": "Fri, 02 Jun 2017 01:19:36 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.2 <1.0.0` to `>=0.4.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.3",
+      "tag": "@uifabric/example-app-base_v2.0.3",
+      "date": "Thu, 01 Jun 2017 16:34:03 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.1 <1.0.0` to `>=0.4.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.0 <5.0.0` to `>=4.0.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.2",
+      "tag": "@uifabric/example-app-base_v2.0.2",
+      "date": "Wed, 31 May 2017 01:58:23 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.0 <1.0.0` to `>=0.4.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.1",
+      "tag": "@uifabric/example-app-base_v2.0.1",
+      "date": "Tue, 30 May 2017 20:23:45 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.3.0 <1.0.0` to `>=0.4.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.0",
       "tag": "@uifabric/example-app-base_v2.0.0",
       "date": "Tue, 30 May 2017 03:27:20 GMT",

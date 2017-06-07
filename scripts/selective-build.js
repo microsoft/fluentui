@@ -101,7 +101,7 @@ if (changedPackages) {
     /* Build specifics. */
     console.log('Building specific packages with detected changes.');
     changedPackages.forEach(packageName => {
-      const buildCommand = `${rushLocation} build --from ${packageName} --to ${packageName} ${defaultRushParams}`;
+      const buildCommand = `node ${rushLocation} build --from ${packageName} --to ${packageName} ${defaultRushParams}`;
       console.log(`Running: ${buildCommand}`);
       child_process.execSync(buildCommand, { stdio: [0, 1, 2] });
     });
