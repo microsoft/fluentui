@@ -115,17 +115,17 @@ export class ThemePage extends React.Component<any, any> {
   private _onColorChanged(index: number, newColor: string) {
     let { colors } = this.state;
     let color = colors[index];
-    let theme: Partial<IPalette> = {};
+    let palette: Partial<IPalette> = {};
 
     color.value = newColor;
 
     for (let i = 0; i < colors.length; i++) {
       let themeColor = colors[i];
 
-      theme[themeColor.key] = themeColor.value;
+      palette[themeColor.key] = themeColor.value;
     }
 
-    loadTheme({ palette: theme });
+    loadTheme({ palette });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
     this.refs.list.forceUpdate();
