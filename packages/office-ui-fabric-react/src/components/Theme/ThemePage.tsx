@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme, FontClassNames, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { loadTheme, FontClassNames, ITheme, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -115,7 +115,7 @@ export class ThemePage extends React.Component<any, any> {
   private _onColorChanged(index: number, newColor: string) {
     let { colors } = this.state;
     let color = colors[index];
-    let theme: ITheme = {};
+    let theme: Partial<IPalette> = {};
 
     color.value = newColor;
 
