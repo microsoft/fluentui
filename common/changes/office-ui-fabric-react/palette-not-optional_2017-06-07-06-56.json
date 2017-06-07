@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DragDropHelper: Fix to show ghost element when dragging on Firefox",
+      "comment": "ITheme: Make palette a required prop",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "aazhou@microsoft.com"
+  "email": "chrisgo@microsoft.com"
 }
