@@ -51,6 +51,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
+    props.options.forEach((option) => {
+      if (!option.itemType) {
+        option.itemType = DropdownMenuItemType.Normal;
+      }
+    });
     super(props);
 
     this._warnDeprecations({
@@ -197,7 +202,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   /**
-   * Finds the next valid Dropdown option
+   * Finds the next valid Dropdown option and sets the selected index to it.
    * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
    * @param index Index of where the search should start
    * @param selectedIndex The selectedIndex Dropdown's state
@@ -220,9 +225,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       index = options.length - 1;
     }
     // If current index is a header or divider, increment by step
-    while (options[index].itemType === DropdownMenuItemType.Header
-      || options[index].itemType === DropdownMenuItemType.Divider) {
-
+    while (options[index].itemType !== DropdownMenuItemType.Normal) {
       // If stepCounter exceeds length of options, then return selectedIndex (-1)
       if (stepCounter >= options.length) {
         return selectedIndex;
