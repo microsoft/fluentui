@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme, FontClassNames, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { loadTheme, FontClassNames, ITheme, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -115,17 +115,17 @@ export class ThemePage extends React.Component<any, any> {
   private _onColorChanged(index: number, newColor: string) {
     let { colors } = this.state;
     let color = colors[index];
-    let theme: ITheme = {};
+    let palette: Partial<IPalette> = {};
 
     color.value = newColor;
 
     for (let i = 0; i < colors.length; i++) {
       let themeColor = colors[i];
 
-      theme[themeColor.key] = themeColor.value;
+      palette[themeColor.key] = themeColor.value;
     }
 
-    loadTheme({ palette: theme });
+    loadTheme({ palette });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
     this.refs.list.forceUpdate();
