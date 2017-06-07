@@ -209,12 +209,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
    * @returns The next valid dropdown option's index
    */
   private _moveIndex(stepValue: number, index: number, selectedIndex: number): number {
-    // Return selectedIndex if nothing has changed
-    if (selectedIndex === index) {
+    const { options } = this.props;
+    // Return selectedIndex if nothing has changed or options is empty
+    if (selectedIndex === index || options.length === 0) {
       return selectedIndex;
     }
-    const { options } = this.props;
-    let stepCounter = 0;
 
     // Set starting index to 0 if index is < 0
     if (index < 0) {
@@ -224,6 +223,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (index >= options.length) {
       index = options.length - 1;
     }
+    let stepCounter = 0;
     // If current index is a header or divider, increment by step
     while (options[index].itemType !== DropdownMenuItemType.Normal) {
       // If stepCounter exceeds length of options, then return selectedIndex (-1)
