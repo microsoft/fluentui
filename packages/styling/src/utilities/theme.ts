@@ -9,8 +9,8 @@ import {
 } from '../styles/index';
 import { Customizer } from '@uifabric/utilities/lib/index';
 export interface ITheme {
-  palette?: IPalette;
-  fonts?: IFontStyles;
+  palette: IPalette;
+  fonts: IFontStyles;
   semanticColors?: ISemanticColors;
 }
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
@@ -33,7 +33,7 @@ export function getTheme(): ITheme {
 /**
  * Loads the default global theme definition.
  */
-export function loadTheme(theme: ITheme): void {
+export function loadTheme(theme: Partial<ITheme>): void {
   _theme = createTheme(theme);
 
   // Load the legacy theme from the palette.
@@ -45,7 +45,7 @@ export function loadTheme(theme: ITheme): void {
 /**
  * Creates a custom theme definition which can be used with the Customizer.
  */
-export function createTheme(theme: ITheme): ITheme {
+export function createTheme(theme: Partial<ITheme>): ITheme {
   let newPalette = {
     ..._theme.palette,
     ...theme.palette
