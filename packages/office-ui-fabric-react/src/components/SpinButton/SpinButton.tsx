@@ -44,7 +44,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     max: 100,
     disabled: false,
     labelPosition: Position.start,
-    labelGapSpace: 10,
     label: null,
     incrementButtonIcon: { iconName: 'ChevronUpSmall' },
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
@@ -138,7 +137,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     return (
       <div className={ styles.SpinButtonContainer }>
-        { labelPosition !== Position.bottom && <div className={ styles.labelWrapper } style={ this._getLabelDirectionStyle() }>
+        { labelPosition !== Position.bottom && <div className={ css(styles.labelWrapper, this._getClassNameForLabelPosition(labelPosition)) }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
             <Label
@@ -198,7 +197,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span>
         </div>
-        { labelPosition === Position.bottom && <div className={ styles.labelWrapper } style={ this._getLabelDirectionStyle() }>
+        { labelPosition === Position.bottom && <div className={ css(styles.labelWrapper, this._getClassNameForLabelPosition(labelPosition)) }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
             <Label
@@ -253,27 +252,26 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   /**
-   * Set the label direction with the gap on the correct side
+   * Returns the class name corresponding to the label position
    */
-  @autobind
-  private _getLabelDirectionStyle(): any {
-    let style: any = {};
+  private _getClassNameForLabelPosition(labelPosition: Position): string {
+    let className: string = '';
 
-    switch (this.props.labelPosition) {
+    switch (labelPosition) {
       case Position.start:
-        style = { float: 'left', marginRight: this.props.labelGapSpace + 'px' };
+        className = styles.start;
         break;
       case Position.end:
-        style = { float: 'right', marginLeft: this.props.labelGapSpace + 'px' };
+        className = styles.end;
         break;
       case Position.top:
-        style = { marginBottom: this.props.labelGapSpace + 'px' };
+        className = styles.top;
         break;
       case Position.bottom:
-        style = { marginTop: this.props.labelGapSpace + 'px' };
+        className = styles.bottom;
     }
 
-    return style;
+    return className;
   }
 
   private _onChange() {

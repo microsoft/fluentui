@@ -65,11 +65,6 @@ export interface ISpinButtonProps {
   labelPosition?: Position;
 
   /**
-   * @default: 10
-   */
-  labelGapSpace?: number;
-
-  /**
    * Icon that goes along with the label for the whole SpinButton
    */
   iconProps?: IIconProps;
