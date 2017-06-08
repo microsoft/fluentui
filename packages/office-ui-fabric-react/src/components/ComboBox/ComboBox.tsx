@@ -1090,7 +1090,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       default:
 
         // are we processing a function key? if so bail out
-        if (ev.which < 112 /* F1 */ || ev.which > 123 /* F12 */) {
+        if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;
         }
 
