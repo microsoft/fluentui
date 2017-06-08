@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes TextField layout (for IE).",
+      "comment": "TextField: improves layout for IE.",
       "type": "patch"
     }
   ],
