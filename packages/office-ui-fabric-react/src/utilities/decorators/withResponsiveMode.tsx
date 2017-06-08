@@ -75,8 +75,12 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
       let win = getWindow();
 
       if (typeof win !== 'undefined') {
-        while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
-          responsiveMode++;
+        try {
+          while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
+            responsiveMode++;
+          }
+        } catch (e) {
+          responsiveMode = undefined;
         }
       } else {
         if (_defaultMode !== undefined) {
