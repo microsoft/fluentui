@@ -178,23 +178,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._events.off(this._comboBoxWrapper);
   }
 
-  @autobind
-  private _onAutoFillComponentWillReceiveProps(nextProps: IBaseAutoFillProps): string {
-    if (this._comboBox === null || this._comboBox === undefined) {
-      return null;
-    }
-
-    if (nextProps.defaultVisibleValue && nextProps.defaultVisibleValue !== '' && (nextProps.defaultVisibleValue !== nextProps.defaultVisibleValue || this._comboBox.value !== nextProps.defaultVisibleValue)) {
-      return nextProps.defaultVisibleValue;
-    }
-
-    return this._comboBox.value;
-  }
-
-  private _onAutoFillComponentDidUpdate(props: IBaseAutoFillProps): boolean {
-    return props.defaultVisibleValue === props.suggestedDisplayValue
-  }
-
   // Primary Render
   public render() {
     let id = this._id;
@@ -295,6 +278,36 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this._comboBox) {
       this._comboBox.focus();
     }
+  }
+
+  /**
+   * componentWillReceiveProps handler for the auto fill component
+   * Checks/updates the iput value to set, if needed
+   * @param {IBaseAutoFillProps} nextProps - the props that got passed in to the auto fill's componentWillReceiveProps
+   * @returns {string} - the updated value to set, if needed
+   */
+  @autobind
+  private _onAutoFillComponentWillReceiveProps(nextProps: IBaseAutoFillProps): string {
+    if (this._comboBox === null || this._comboBox === undefined) {
+      return null;
+    }
+
+    if (nextProps.defaultVisibleValue && nextProps.defaultVisibleValue !== '' && (nextProps.defaultVisibleValue !== nextProps.defaultVisibleValue || this._comboBox.value !== nextProps.defaultVisibleValue)) {
+      return nextProps.defaultVisibleValue;
+    }
+
+    return this._comboBox.value;
+  }
+
+  /**
+   * componentDidUpdate handler for the auto fill component
+   *
+   * @param { IBaseAutoFillProps } props - the current props in the auto fill's componentDidUpdate
+   * @returns {boolean} - should the full value of the input be selected?
+   * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
+   */
+  private _onAutoFillComponentDidUpdate(props: IBaseAutoFillProps): boolean {
+    return props.defaultVisibleValue === props.suggestedDisplayValue;
   }
 
   /**

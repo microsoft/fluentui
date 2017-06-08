@@ -68,7 +68,7 @@ export interface IBaseAutoFillProps extends React.HTMLProps<HTMLInputElement | B
    * Handler for checking the next props in componentWillReceiveProps
    * and updating the value if needed
    *
-   * @param {IBaseAutoFillProps} nextProps - the props that got passed in to the parent componentWillReceiveProps
+   * @param {IBaseAutoFillProps} nextProps - the props that got passed in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
   onComponentWillReceiveProps?: (nextProps: IBaseAutoFillProps) => string;
@@ -76,7 +76,7 @@ export interface IBaseAutoFillProps extends React.HTMLProps<HTMLInputElement | B
   /**
    * Handler for componentDidUpdate
    *
-   * @param { IBaseAutoFillProps } props - the props that got passed in to the parent componentWillReceiveProps
+   * @param { IBaseAutoFillProps } props - the current props in the auto fill's componentDidUpdate
    * @returns {boolean} - should the full value of the input be selected?
    */
   onComponentDidUpdate?: (props: IBaseAutoFillProps) => boolean;
