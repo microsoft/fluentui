@@ -209,6 +209,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
+          component: require<any>('../components/SpinButton/SpinButtonPage').SpinButtonPage,
+          key: 'SpinButton',
+          name: 'SpinButton',
+          url: '#/examples/spinbutton'
+        },
+        {
           component: require<any>('../components/Spinner/SpinnerPage').SpinnerPage,
           key: 'Spinner',
           name: 'Spinner',
