@@ -19,7 +19,6 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
     align-items: center;
 
     > .input {
-        position: absolute;
         margin: 0px;
         height: 0px;
         width: 0px;
@@ -29,8 +28,6 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
     > .label {
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
         align-items: center;
         margin: 0 -4px;
         cursor: pointer;
