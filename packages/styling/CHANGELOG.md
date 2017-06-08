@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2017 00:18:05 GMT and should not be manually modified.
+
+## 0.7.0
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Minor changes
+
+- ITheme: Make palette a required prop
 
 ## 0.6.1
 Tue, 06 Jun 2017 07:41:47 GMT

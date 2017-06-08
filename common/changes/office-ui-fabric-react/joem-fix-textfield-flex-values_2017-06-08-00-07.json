@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ITheme: Make palette a required prop",
+      "comment": "TextField: improves layout for IE.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chrisgo@microsoft.com"
+  "email": "joem@microsoft.com"
 }
