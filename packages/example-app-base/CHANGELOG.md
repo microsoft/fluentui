@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2017 00:18:05 GMT and should not be manually modified.
+
+## 3.0.0
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Breaking changes
+
+- Bumping fabric dependency in example-app-base
 
 ## 2.1.2
 Tue, 06 Jun 2017 07:41:47 GMT
