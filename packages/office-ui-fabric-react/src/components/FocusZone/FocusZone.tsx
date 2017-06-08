@@ -636,7 +636,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _updateTabIndexes(element?: HTMLElement) {
-
     if (!element) {
       element = this.refs.root;
       if (this._activeElement && !elementContains(element, this._activeElement)) {
