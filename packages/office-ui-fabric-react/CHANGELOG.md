@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2017 10:20:07 GMT and should not be manually modified.
+
+## 4.4.2
+Thu, 08 Jun 2017 10:20:07 GMT
+
+### Patches
+
+- TextField: improves layout for IE.
+
+## 4.4.1
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Patches
+
+- ITheme: Make palette a required prop
 
 ## 4.4.0
 Tue, 06 Jun 2017 07:41:47 GMT
