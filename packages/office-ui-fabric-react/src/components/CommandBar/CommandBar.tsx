@@ -16,10 +16,11 @@ import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
-interface ICommandBarData {
+export interface ICommandBarData {
   primaryItems: ICommandBarItemProps[];
   overflowItems: ICommandBarItemProps[];
   farItems: ICommandBarItemProps[];
+  onReduceData: (data: ICommandBarData) => ICommandBarData;
 }
 
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
@@ -48,19 +49,21 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       elipisisAriaLabel,
       elipisisIconProps,
       buttonStyles,
-      onRenderItems = this._onRenderItems
+      onRenderItems = this._onRenderItems,
+      onReduceData = this._onReduceData
     } = this.props;
 
     let commandBardata: ICommandBarData = {
       primaryItems: items,
       overflowItems,
-      farItems
+      farItems,
+      onReduceData: this._onReduceData
     };
 
     return (
       <ResizeGroup
         data={ commandBardata }
-        onReduceData={ this._onReduceData }
+        onReduceData={ onReduceData }
         onRenderData={ (data: ICommandBarData) => {
           return (
             <div className={ css('ms-CommandBar', styles.root) }>
@@ -109,7 +112,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData {
-    let { primaryItems, overflowItems, farItems } = data;
+    let { primaryItems, overflowItems, farItems, onReduceData } = data;
     let movedItem = primaryItems[primaryItems.length - 1];
 
     if (movedItem !== undefined) {
@@ -117,7 +120,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       return {
         primaryItems: primaryItems.slice(0, -1),
         overflowItems: overflowItems.concat(movedItem),
-        farItems: farItems
+        farItems: farItems,
+        onReduceData
       };
     }
 

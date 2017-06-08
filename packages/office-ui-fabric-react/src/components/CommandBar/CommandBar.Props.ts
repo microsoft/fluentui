@@ -4,6 +4,7 @@ import { IButtonStyles } from '../Button';
 import { ISearchBoxProps } from '../../SearchBox';
 import { IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
+import { ICommandBarData } from './CommandBar';
 
 export interface ICommandBar {
   /**
@@ -69,6 +70,11 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
    * Custom render function for all non contextual menu items.
    */
   onRenderItems?: (item: ICommandBarItemProps) => JSX.Element;
+
+  /**
+   * Custom function to reduce data if items do not fit in given space. Return `undefined` if no more steps can be taken to avoid infinate loop.
+   */
+  onReduceData?: (data: ICommandBarData) => ICommandBarData;
 
   /**
    * Additional css class to apply to the command bar
