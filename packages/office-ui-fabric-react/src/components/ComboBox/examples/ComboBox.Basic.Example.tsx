@@ -103,18 +103,32 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           disabled={ true }
         />
 
-        <ComboBox
-          selectedKey={ selectedOptionKey && selectedOptionKey }
-          label='Basic controlled example:'
-          id='Basicdrop5'
-          ariaLabel='Basic ComboBox example'
-          allowFreeform={ true }
-          autoComplete={ true }
-          options={ options }
-          onChanged={ this._onChanged }
-          onResolveOptions={ this._getOptions }
-          value={ value && value }
-        />
+        { value ?
+          <ComboBox
+            label='Basic controlled example:'
+            id='Basicdrop5'
+            ariaLabel='Basic ComboBox example'
+            allowFreeform={ true }
+            autoComplete={ true }
+            options={ options }
+            onChanged={ this._onChanged }
+            onResolveOptions={ this._getOptions }
+            value={ value && value }
+          />
+          :
+          <ComboBox
+            selectedKey={ selectedOptionKey && selectedOptionKey }
+            label='Basic controlled example:'
+            id='Basicdrop5'
+            ariaLabel='Basic ComboBox example'
+            allowFreeform={ true }
+            autoComplete={ true }
+            options={ options }
+            onChanged={ this._onChanged }
+            onResolveOptions={ this._getOptions }
+          />
+        }
+
       </div>
 
     );
