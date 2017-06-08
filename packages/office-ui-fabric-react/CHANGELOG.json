@@ -2,6 +2,137 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.4.2",
+      "tag": "office-ui-fabric-react_v4.4.2",
+      "date": "Thu, 08 Jun 2017 10:20:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "9cb6385ba93dd03550d1aec608cd43b32e7d3385",
+            "comment": "TextField: improves layout for IE."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.0 <1.0.0` to `>=0.7.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.1",
+      "tag": "office-ui-fabric-react_v4.4.1",
+      "date": "Thu, 08 Jun 2017 00:18:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "58ebffae702a799225c3c09d94175bffd85b2986",
+            "comment": "ITheme: Make palette a required prop"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.1 <5.0.0` to `>=4.1.2 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.6.1 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.1.2` to `3.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.0",
+      "tag": "office-ui-fabric-react_v4.4.0",
+      "date": "Tue, 06 Jun 2017 07:41:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "72be6cc47ebd962cfe24d932415d0f3d41883469",
+            "comment": "Toggle: theme now injectable through Customizer."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.6.0 <1.0.0` to `>=0.6.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.1.1` to `2.1.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.2",
+      "tag": "office-ui-fabric-react_v4.3.2",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce redundant code."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.0 <5.0.0` to `>=4.1.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.5.0 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.1.0` to `2.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.1",
+      "tag": "office-ui-fabric-react_v4.3.1",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aaron Zhou <aaronyzhou88@gmail.com>",
+            "commit": "ccf58fdb6d2448d60a9e0baf7057f8f2e57a4b29",
+            "comment": "DragDropHelper: Fix to show ghost element when dragging on Firefox"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Buttons: allowing theme to be provided via Customizer."
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "091ff0060056eaaf8c88fb6b27526379cbfa5ea3",
+            "comment": "DragDropHelper: Fix TSLint warnings"
+          },
+          {
+            "author": "Aaron Zhou <aaronyzhou88@gmail.com>",
+            "commit": "dfa4a3ef86bd908dfa4a6ecfa603d692466a2ee0",
+            "comment": "TextField: Show red border when invalid"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.1 <5.0.0` to `>=4.1.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.3 <1.0.0` to `>=0.5.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `2.0.4` to `2.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.3.0",
       "tag": "office-ui-fabric-react_v4.3.0",
       "date": "Fri, 02 Jun 2017 01:19:35 GMT",

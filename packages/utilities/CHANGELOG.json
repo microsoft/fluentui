@@ -2,6 +2,55 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.1.2",
+      "tag": "@uifabric/utilities_v4.1.2",
+      "date": "Thu, 08 Jun 2017 00:18:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "soorajpurandare <soorajashutosh@gmail.com>",
+            "commit": "f382123efa18802b5f86f4be669c5b34847872d4",
+            "comment": "Adding a try-catch around setting RTL in local storage for the browser"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.1",
+      "tag": "@uifabric/utilities_v4.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.0",
+      "tag": "@uifabric/utilities_v4.1.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cb407443e257121037ba57a6bc302f87e03eec9c",
+            "comment": "memoize: returns the callback in scenarios where WeakMap isn't available."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.1",
       "tag": "@uifabric/utilities_v4.0.1",
       "date": "Thu, 01 Jun 2017 16:34:03 GMT",
