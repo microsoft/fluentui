@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -17,6 +17,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
+import { SelectableOptionMenuItemType } from '../../Utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 
@@ -282,9 +283,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     switch (item.itemType) {
-      case DropdownMenuItemType.Divider:
+      case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
-      case DropdownMenuItemType.Header:
+      case SelectableOptionMenuItemType.Header:
         return this._renderHeader(item);
       default:
         return this._renderOption(item);

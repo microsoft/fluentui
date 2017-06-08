@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { mount, shallow } from 'enzyme';
-
+import { KeyCodes } from '../../Utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
@@ -41,7 +41,7 @@ describe('ComboBox', () => {
         label='testgroup'
         options={ DEFAULT_OPTIONS }
       />);
-      comboBoxRoot = wrapper.find('.ms-ComboBox');
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
 
     expect(comboBoxRoot.find('.is-disabled').length).equals(1, `should be disabled`);
     expect(comboBoxRoot.find('[data-is-interactable=false]').length).equals(1, 'data-is-focusable="false"');
@@ -133,7 +133,6 @@ describe('ComboBox', () => {
     }
   });
 
-// Text cases for AutoComplete: True, AllowFreeform: True
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
     let comboBoxRoot;
     let inputElement;
@@ -144,11 +143,11 @@ describe('ComboBox', () => {
           defaultSelectedKey='1'
           options={ DEFAULT_OPTIONS2 }
           autoComplete={ true }
-          allowFreeform ={ true }
+          allowFreeform={ true }
         />);
       comboBoxRoot = wrapper.find('.ms-ComboBox');
       inputElement = comboBoxRoot.find('input');
-      inputElement.simulate('change', { target: {value: 'f'} });
+      inputElement.simulate('change', { target: { value: 'f' } });
     }
     finally {
       inputElement = comboBoxRoot.find('input');
@@ -166,11 +165,11 @@ describe('ComboBox', () => {
           defaultSelectedKey='1'
           options={ DEFAULT_OPTIONS2 }
           autoComplete={ true }
-          allowFreeform ={ false }
+          allowFreeform={ false }
         />);
       comboBoxRoot = wrapper.find('.ms-ComboBox');
       inputElement = comboBoxRoot.find('input');
-      inputElement.simulate('change', { target: {value: 'f'} });
+      inputElement.simulate('change', { target: { value: 'f' } });
     }
     finally {
       inputElement = comboBoxRoot.find('input');
@@ -188,11 +187,11 @@ describe('ComboBox', () => {
           defaultSelectedKey='1'
           options={ DEFAULT_OPTIONS2 }
           autoComplete={ false }
-          allowFreeform ={ true }
+          allowFreeform={ true }
         />);
       comboBoxRoot = wrapper.find('.ms-ComboBox');
       inputElement = comboBoxRoot.find('input');
-      inputElement.simulate('change', { target: {value: 'f'} });
+      inputElement.simulate('change', { target: { value: 'f' } });
     }
     finally {
       inputElement = comboBoxRoot.find('input');
@@ -210,11 +209,11 @@ describe('ComboBox', () => {
           defaultSelectedKey='1'
           options={ DEFAULT_OPTIONS2 }
           autoComplete={ false }
-          allowFreeform ={ false }
+          allowFreeform={ false }
         />);
       comboBoxRoot = wrapper.find('.ms-ComboBox');
       inputElement = comboBoxRoot.find('input');
-      inputElement.simulate('change', { target: {value: 'f'} });
+      inputElement.simulate('keydown', { which: 'f' });
     }
     finally {
       inputElement = comboBoxRoot.find('input');
@@ -222,4 +221,105 @@ describe('ComboBox', () => {
     }
   });
 
+  it('Can change selected option with keyboard', () => {
+    let comboBoxRoot;
+    let inputElement;
+    try {
+      let wrapper = mount(
+        <ComboBox
+          label='testgroup'
+          defaultSelectedKey='1'
+          options={ DEFAULT_OPTIONS2 }
+        />);
+      comboBoxRoot = wrapper.find('.ms-ComboBox');
+      inputElement = comboBoxRoot.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.down });
+    }
+    finally {
+      inputElement = comboBoxRoot.find('input');
+      expect(inputElement.props().value).equals('Foo');
+    }
+  });
+
+  it('Cannot insert text while disabled', () => {
+    let comboBoxRoot;
+    let inputElement;
+    try {
+      let wrapper = mount(
+        <ComboBox
+          label='testgroup'
+          defaultSelectedKey='1'
+          options={ DEFAULT_OPTIONS2 }
+          disabled={ true }
+        />);
+      comboBoxRoot = wrapper.find('.ms-ComboBox');
+      inputElement = comboBoxRoot.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.a });
+    }
+    finally {
+      inputElement = comboBoxRoot.find('input');
+      expect(inputElement.props().value).equals('One');
+    }
+  });
+
+  it('Cannot change selected option with keyboard while disabled', () => {
+    let comboBoxRoot;
+    let inputElement;
+    try {
+      let wrapper = mount(
+        <ComboBox
+          label='testgroup'
+          defaultSelectedKey='1'
+          options={ DEFAULT_OPTIONS2 }
+          disabled={ true }
+        />);
+      comboBoxRoot = wrapper.find('.ms-ComboBox');
+      inputElement = comboBoxRoot.find('input');
+      inputElement.simulate('keydown', { which: KeyCodes.down });
+    }
+    finally {
+      inputElement = comboBoxRoot.find('input');
+      expect(inputElement.props().value).equals('One');
+    }
+  });
+
+  it('Cannot expand the menu when clicking on the input while disabled', () => {
+    let comboBoxRoot;
+    let inputElement;
+    try {
+      let wrapper = mount(
+        <ComboBox
+          label='testgroup'
+          defaultSelectedKey='1'
+          options={ DEFAULT_OPTIONS2 }
+          disabled={ true }
+        />);
+      comboBoxRoot = wrapper.find('.ms-ComboBox');
+      inputElement = comboBoxRoot.find('input');
+      inputElement.simulate('click');
+    }
+    finally {
+      expect(comboBoxRoot.find('.is-opened').length).equals(0, `shouldn't be opened`);
+    }
+  });
+
+  it('Cannot expand the menu when clicking on the button while disabled', () => {
+    let comboBoxRoot;
+    let buttonElement;
+    try {
+      let wrapper = mount(
+        <ComboBox
+          label='testgroup'
+          defaultSelectedKey='1'
+          options={ DEFAULT_OPTIONS2 }
+          disabled={ true }
+        />);
+      comboBoxRoot = wrapper.find('.ms-ComboBox');
+      buttonElement = comboBoxRoot.find('button');
+      buttonElement.simulate('click');
+    }
+    finally {
+      expect(comboBoxRoot.find('.is-opened').length).equals(0, `shouldn't be opened`);
+    }
+  });
 });

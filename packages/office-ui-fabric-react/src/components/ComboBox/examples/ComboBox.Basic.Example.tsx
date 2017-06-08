@@ -1,27 +1,27 @@
 import * as React from 'react';
 import { ComboBox, IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
-import { DropdownMenuItemType } from '../../Dropdown';
 import {
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
+import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/Utilities/selectableOption/SelectableOption.Props';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
-    private _testOptions =
-            [ { key: 'Header', text: 'Theme Fonts', itemType: DropdownMenuItemType.Header },
-              { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
-              { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
-              { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
-              { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'Header1', text: 'Other Options', itemType: DropdownMenuItemType.Header },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-              { key: 'H', text: 'Option h' },
-              { key: 'I', text: 'Option i' },
-              { key: 'J', text: 'Option j' },
-            ];
+  private _testOptions =
+  [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
+  { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
+  { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
+  { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+  { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'D', text: 'Option d' },
+  { key: 'E', text: 'Option e' },
+  { key: 'F', text: 'Option f' },
+  { key: 'G', text: 'Option g' },
+  { key: 'H', text: 'Option h' },
+  { key: 'I', text: 'Option i' },
+  { key: 'J', text: 'Option j' },
+  ];
 
   constructor() {
     super();
@@ -121,7 +121,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _getOptions(): IComboBoxOption[] {
+  private _getOptions(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
 
     if (this.state.options.length > 0) {
       return this.state.options;
@@ -129,13 +129,13 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
     let newOptions =
       [
-        { key: 'Header', text: 'Theme Fonts', itemType: DropdownMenuItemType.Header },
+        { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
         { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
         { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
         { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
         { key: 'C1', text: 'Calibri', fontFamily: 'Calibri, Calibri_MSFontService, sans-serif' },
-        { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-        { key: 'Header1', text: 'Other Options', itemType: DropdownMenuItemType.Header },
+        { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+        { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
         { key: 'D', text: 'Option d' },
         { key: 'E', text: 'Option e' },
         { key: 'F', text: 'Option f' },

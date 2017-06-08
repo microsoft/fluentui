@@ -3,8 +3,6 @@ export * from './Suggestions/Suggestions.Props';
 export * from './Suggestions/SuggestionsController';
 export * from './AutoFill/BaseAutoFill';
 export * from './AutoFill/BaseAutoFill.Props';
-export * from './AutoFill/DynamicAutoFill/DynamicAutoFill';
-export * from './AutoFill/DynamicAutoFill/DynamicAutoFill.Props';
 export * from './BasePicker';
 export * from './BasePicker.Props';
 export * from './PickerItem.Props';

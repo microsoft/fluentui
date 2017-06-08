@@ -1,11 +1,8 @@
-import { IDropdownOption, IDropdownProps } from '../../Dropdown';
 import { IIconProps } from '../../Icon';
+import { ISelectableOption } from '../../Utilities/selectableOption/SelectableOption.Props';
+import { ISelectableDroppableTextProps } from '../../Utilities/selectableOption/SelectableDroppableText.Props';
 
-export interface IComboBox {
-
-}
-
-export interface IComboBoxProps extends IDropdownProps {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxProps> {
 
   /**
    * Collection of options for this ComboBox
@@ -24,7 +21,7 @@ export interface IComboBoxProps extends IDropdownProps {
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
-  onResolveOptions?: () => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
+  onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided items. Defaults to false.
@@ -48,7 +45,7 @@ export interface IComboBoxProps extends IDropdownProps {
   buttonIconProps?: IIconProps;
 }
 
-export interface IComboBoxOption extends IDropdownOption {
+export interface IComboBoxOption extends ISelectableOption {
   /**
    * Font-family associated with this option.
    */

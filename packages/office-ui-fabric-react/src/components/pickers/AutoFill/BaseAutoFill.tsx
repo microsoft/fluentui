@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.Props';
 import {
+  assign,
   BaseComponent,
   KeyCodes,
   autobind,
@@ -29,7 +30,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     super(props);
     this._value = '';
     this.state = {
-      displayValue: ''
+      displayValue: props.defaultVisibleValue === null ? '' : props.defaultVisibleValue
     };
   }
 
@@ -67,6 +68,13 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
+    if (this.props.onComponentWillReceiveProps) {
+      let newValue: string = this.props.onComponentWillReceiveProps(assign({}, nextProps));
+
+      if (newValue !== null) {
+        this._value = newValue;
+      }
+    }
     if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue, this._value)) {
       this.setState({ displayValue: nextProps.suggestedDisplayValue });
     }
@@ -77,11 +85,21 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     let { suggestedDisplayValue } = this.props;
     let differenceIndex = 0;
     if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
-      while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
-        differenceIndex++;
+      let shouldSelectFullRange = false;
+
+      if (this.props.onComponentDidUpdate) {
+        shouldSelectFullRange = this.props.onComponentDidUpdate(assign({}, this.props));
       }
-      if (differenceIndex > 0) {
-        this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+
+      if (shouldSelectFullRange) {
+        this._inputElement.setSelectionRange(0, this.props.suggestedDisplayValue.length, SELECTION_BACKWARD);
+      } else {
+        while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
+          differenceIndex++;
+        }
+        if (differenceIndex > 0) {
+          this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+        }
       }
     }
   }
@@ -99,7 +117,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       autoComplete={ 'off' }
       onChange={ this._onChange }
       onKeyDown={ this._onKeyDown }
-      onClick={ this._onClick }
+      onClick={ this.props.onClick ? this.props.onClick : this._onClick }
     />;
   }
 
@@ -114,14 +132,18 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  protected _onClick() {
+  private _onClick() {
     if (this._value && this._value !== '' && this._autoFillEnabled) {
       this._autoFillEnabled = false;
     }
   }
 
   @autobind
-  protected _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement | BaseAutoFill>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+    }
+
     switch (ev.which) {
       case KeyCodes.backspace:
         this._autoFillEnabled = false;
@@ -147,7 +169,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  protected _onChange(ev: React.FormEvent<HTMLElement>) {
+  private _onChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = (ev.target as HTMLInputElement).value;
     if (value && (ev.target as HTMLInputElement).selectionStart === value.length && !this._autoFillEnabled && value.length > this._value.length) {
       this._autoFillEnabled = true;
@@ -155,13 +177,13 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     this._updateValue(value);
   }
 
-  protected _notifyInputChange(newValue: string) {
+  private _notifyInputChange(newValue: string) {
     if (this.props.onInputValueChange) {
       this.props.onInputValueChange(newValue);
     }
   }
 
-  protected _updateValue(newValue: string) {
+  private _updateValue(newValue: string) {
     this._value = newValue;
     let displayValue = newValue;
     if (this.props.suggestedDisplayValue &&
@@ -174,7 +196,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     }, () => this._notifyInputChange(newValue));
   }
 
-  protected _doesTextStartWith(text: string, startWith: string) {
+  private _doesTextStartWith(text: string, startWith: string) {
     if (!text || !startWith) {
       return false;
     }
