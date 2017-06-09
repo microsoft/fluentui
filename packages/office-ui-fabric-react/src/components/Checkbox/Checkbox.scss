@@ -136,7 +136,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   //
   &.labelIsChecked {
     &::before {
-      border: 10px solid $ms-color-themePrimary;
+      border: 1px solid $ms-color-themePrimary;
       background-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: black-on-white) {
