@@ -15,7 +15,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
     let { selectedItem } = this.state;
 
     return (
-      <div className='ms-DropdownExample'>
+      <div className='dropdownExample'>
 
         <Dropdown
           placeHolder='Select an Option'

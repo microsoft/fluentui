@@ -1,5 +1,11 @@
 :global {
-  .ms-DropdownExample {
+  .dropdownExample {
     max-width: 300px;
+  }
+  .dropdownExample-option {
+    display: flex;
+  }
+  .dropdownExample-placeholder {
+    display: flex;
   }
 }

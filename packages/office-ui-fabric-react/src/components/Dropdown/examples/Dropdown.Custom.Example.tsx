@@ -16,7 +16,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
     let { selectedItem } = this.state;
 
     return (
-      <div className='ms-DropdownExample'>
+      <div className='dropdownExample'>
 
         <Dropdown
           placeHolder='Select an Option'
@@ -52,10 +52,10 @@ export class DropdownCustomExample extends React.Component<any, any> {
 
   private _onRenderOption = (option: IDropdownOption): JSX.Element => {
     return (
-      <div>
+      <div className='dropdownExample-option'>
         { option.data && option.data.icon &&
           <Icon
-            style={ { marginRight: '5px' } }
+            style={ { marginRight: '8px' } }
             iconName={ option.data.icon }
             aria-hidden="true"
             title={ option.data.icon }
@@ -68,14 +68,14 @@ export class DropdownCustomExample extends React.Component<any, any> {
 
   private _onRenderPlaceHolder = (props: IDropdownProps): JSX.Element => {
     return (
-      <span>
+      <div className='dropdownExample-placeholder'>
         <Icon
-          style={ { marginRight: '5px' } }
+          style={ { marginRight: '8px' } }
           iconName={ 'MessageFill' }
           aria-hidden="true"
         />
         <span>{ props.placeHolder }</span>
-      </span>
+      </div>
     );
   }
 
