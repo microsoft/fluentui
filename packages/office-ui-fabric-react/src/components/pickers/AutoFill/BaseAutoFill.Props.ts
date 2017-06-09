@@ -40,7 +40,7 @@ export interface IBaseAutoFill {
   clear(): void;
 }
 
-export interface IBaseAutoFillProps extends React.HTMLProps<HTMLInputElement | BaseAutoFill> {
+export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElement | BaseAutoFill> {
   /**
    * The suggested autofill value that will display.
    */

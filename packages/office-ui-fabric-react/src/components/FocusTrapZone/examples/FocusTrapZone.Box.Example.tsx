@@ -14,7 +14,7 @@ export interface IBoxExampleExampleState {
   isChecked: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivElement>, IBoxExampleExampleState> {
+export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
   private _toggle: IToggle;
 
   constructor(props) {
