@@ -123,4 +123,13 @@ describe('isElementTabbable', () => {
     expect(isElementTabbable(button)).is.false;
   });
 
+  it('returns false when tabindex=-1', () => {
+    let button = document.createElement('button');
+
+    button.setAttribute('tabindex', '-1');
+
+    expect(isElementTabbable(button)).is.false;
+
+  });
+
 });
