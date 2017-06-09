@@ -12,7 +12,7 @@ $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 $ms-checkbox-highContrast-iconBoxSize: 16px;
 
-@mixin highContrast-border($active-color, $bw-color, $size: 2px) {
+@mixin highContrast-border($active-color: null, $bw-color: null, $size: 2px) {
   @media screen and (-ms-high-contrast: active) {
     border: $size solid $active-color;
   }
@@ -153,13 +153,16 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
         line-height: $ms-checkbox-highContrast-iconBoxSize;
       }
 
-      @include highContrast-border($ms-color-white, $ms-color-black);
+      @include highContrast-border();
     }
 
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-themeDarkAlt;
+    &:not(.labelIsDisabled) {
+      &:hover,
+      &:focus {
+        &::before {
+          border-color: $ms-color-themeDarkAlt;
+          background-color: $ms-color-themeDarkAlt;
+        }
       }
     }
   }
@@ -168,13 +171,6 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   //
   &.labelIsDisabled {
     cursor: default;
-
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
-    }
 
     &::before {
       background-color: $ms-color-neutralTertiaryAlt;
