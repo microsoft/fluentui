@@ -31,7 +31,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
               { key: 'A', text: 'Option a', data: { icon: 'Memo' } },
               { key: 'B', text: 'Option b', data: { icon: 'Print' } },
-              { key: "C", text: 'Option c', data: { icon: 'ShoppingCart' } },
+              { key: 'C', text: 'Option c', data: { icon: 'ShoppingCart' } },
               { key: 'D', text: 'Option d', data: { icon: 'Train' } },
               { key: 'E', text: 'Option e', data: { icon: 'Repair' } },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
@@ -57,7 +57,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
           <Icon
             style={ { marginRight: '8px' } }
             iconName={ option.data.icon }
-            aria-hidden="true"
+            aria-hidden='true'
             title={ option.data.icon }
           />
         }
@@ -72,7 +72,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
         <Icon
           style={ { marginRight: '8px' } }
           iconName={ 'MessageFill' }
-          aria-hidden="true"
+          aria-hidden='true'
         />
         <span>{ props.placeHolder }</span>
       </div>
