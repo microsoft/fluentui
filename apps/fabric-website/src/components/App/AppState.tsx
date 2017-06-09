@@ -310,6 +310,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SpinnerComponentPage').SpinnerComponentPage))
         },
         {
+          title: 'SpinButton',
+          url: '#/components/spinbutton',
+          component: () => <LoadingComponent title='SpinButton' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
+        },
+        {
           title: 'TextField',
           url: '#/components/textfield',
           component: () => <LoadingComponent title='TextField' />,
