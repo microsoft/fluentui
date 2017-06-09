@@ -210,11 +210,6 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _optionsContainsKey(key: string): boolean {
-    return false;
-  }
-
-  @autobind
   private _onChanged(option: ISelectableOption, index: number, value: string) {
     if (option != null) {
       this.setState({

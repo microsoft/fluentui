@@ -10,7 +10,6 @@ import {
 import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
 import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
 import {
-  assign,
   autobind,
   BaseComponent,
   css,
@@ -93,7 +92,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _lastReadOnlyAutoCompleteChangeTimeoutId: number;
 
   // Promise used when resolving the comboBox options
-  private currentPromise: PromiseLike<ISelectableOption[]>;
+  private _currentPromise: PromiseLike<ISelectableOption[]>;
+
+  //The current visible value sent to the auto fill on render
+  private _currentVisibleValue;
 
   constructor(props?: IComboBoxProps) {
     super(props);
@@ -174,6 +176,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentWillUnmount() {
+    super.componentWillUnmount();
+
     // remove the eventHanlder that was added in componentDidMount
     this._events.off(this._comboBoxWrapper);
   }
@@ -184,7 +188,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       className,
       label,
-      options,
       disabled,
       ariaLabel,
       required,
@@ -194,13 +197,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       autoComplete,
       buttonIconProps
     } = this.props;
-    let { isOpen, selectedIndex, focused, suggestedDisplayValue, currentOptions } = this.state;
-    let selectedOption = currentOptions[selectedIndex];
+    let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
+    this._currentVisibleValue = this._getVisibleValue();
 
     return (
       <div ref='root' className={ css('ms-ComboBox-container') }>
         { label && (
-          <Label className={ css('ms-ComboBox-label') } id={ id + '-label' } ref={ this._resolveRef('_comboBoxLabel') } required={ required } htmlFor={ id }>{ label }</Label>
+          <Label id={ id + '-label' } required={ required } htmlFor={ id }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }
@@ -242,10 +245,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             aria-disabled={ disabled }
             aria-owns={ (id + '-list') }
             spellCheck={ false }
-            defaultVisibleValue={ this._getVisibleValue() }
+            defaultVisibleValue={ this._currentVisibleValue }
             suggestedDisplayValue={ suggestedDisplayValue }
-            onComponentWillReceiveProps={ this._onAutoFillComponentWillReceiveProps }
-            onComponentDidUpdate={ this._onAutoFillComponentDidUpdate } />
+            updateValueInWillReceiceProps={ this._onUpdateValueInAutoFillWillReceiceProps }
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
           <IconButton
             className={ css('ms-ComboBox-Button', styles.caretDown) }
             role='presentation'
@@ -257,7 +260,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </div>
 
         { isOpen && (
-          onRenderContainer(assign({}, this.props), this._onRenderContainer)
+          onRenderContainer({ ...this.props }, this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -283,17 +286,18 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentWillReceiveProps handler for the auto fill component
    * Checks/updates the iput value to set, if needed
-   * @param {IBaseAutoFillProps} nextProps - the props that got passed in to the auto fill's componentWillReceiveProps
+   * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   *  in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
   @autobind
-  private _onAutoFillComponentWillReceiveProps(nextProps: IBaseAutoFillProps): string {
+  private _onUpdateValueInAutoFillWillReceiceProps(): string {
     if (this._comboBox === null || this._comboBox === undefined) {
       return null;
     }
 
-    if (nextProps.defaultVisibleValue && nextProps.defaultVisibleValue !== '' && (nextProps.defaultVisibleValue !== nextProps.defaultVisibleValue || this._comboBox.value !== nextProps.defaultVisibleValue)) {
-      return nextProps.defaultVisibleValue;
+    if (this._currentVisibleValue && this._currentVisibleValue !== '' && this._comboBox.value !== this._currentVisibleValue) {
+      return this._currentVisibleValue;
     }
 
     return this._comboBox.value;
@@ -302,12 +306,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   /**
    * componentDidUpdate handler for the auto fill component
    *
-   * @param { IBaseAutoFillProps } props - the current props in the auto fill's componentDidUpdate
+   * @param { string } defaultVisibleValue - the current defaultVisibleValue in the auto fill's componentDidUpdate
+   * @param { string } suggestedDisplayValue - the current suggestedDisplayValue in the auto fill's componentDidUpdate
    * @returns {boolean} - should the full value of the input be selected?
    * True if the defaultVisibleValue equals the suggestedDisplayValue, false otherwise
    */
-  private _onAutoFillComponentDidUpdate(props: IBaseAutoFillProps): boolean {
-    return props.defaultVisibleValue === props.suggestedDisplayValue;
+  @autobind
+  private _onShouldSelectFullInputValueInAutoFillComponentDidUpdate(): boolean {
+    return this._currentVisibleValue === this.state.suggestedDisplayValue;
   }
 
   /**
@@ -503,7 +509,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // If we get here, either autoComplete is on or we did not find a match with autoComplete on.
-    // Remeber we are not allowing freeform, so at this point, if we have a pending valid value index
+    // Remember we are not allowing freeform, so at this point, if we have a pending valid value index
     // use that; otherwise use the selectedIndex
     let index = currentPendingValueValidIndex >= 0 ? currentPendingValueValidIndex : selectedIndex;
 
@@ -608,7 +614,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.onResolveOptions) {
 
       // get the options
-      let newOptions: ISelectableOption[] | PromiseLike<ISelectableOption[]> = this.props.onResolveOptions(assign({}, this.props));
+      let newOptions: ISelectableOption[] | PromiseLike<ISelectableOption[]> =
+        this.props.onResolveOptions({ ...this.state.currentOptions });
 
       // the options are either goingto be an array or a promise
       // let newOptionsArray: IComboBoxOption[] = newOptions as IComboBoxOption[];
@@ -624,9 +631,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
-        let promise: PromiseLike<ISelectableOption[]> = this.currentPromise = newOptions;
+        let promise: PromiseLike<ISelectableOption[]> = this._currentPromise = newOptions;
         promise.then((newOptionsFromPromise: ISelectableOption[]) => {
-          if (promise === this.currentPromise) {
+          if (promise === this._currentPromise) {
             this.setState({
               currentOptions: newOptionsFromPromise
             });
@@ -728,7 +735,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={ false }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBox.inputElement.clientWidth - 2 } }>
-          { onRenderList(assign({}, this.props), this._onRenderList) }
+          { onRenderList({ ...this.props }, this._onRenderList) }
         </div>
       </Callout>
     );

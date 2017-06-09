@@ -22,9 +22,9 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     enableAutoFillOnKeyPress: [KeyCodes.down, KeyCodes.up]
   };
 
-  protected _inputElement: HTMLInputElement;
-  protected _autoFillEnabled: boolean = true;
-  protected _value: string;
+  private _inputElement: HTMLInputElement;
+  private _autoFillEnabled: boolean = true;
+  private _value: string;
 
   constructor(props: IBaseAutoFillProps) {
     super(props);
@@ -68,8 +68,8 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
-    if (this.props.onComponentWillReceiveProps) {
-      let newValue: string = this.props.onComponentWillReceiveProps(assign({}, nextProps));
+    if (this.props.updateValueInWillReceiceProps) {
+      let newValue: string = this.props.updateValueInWillReceiceProps();
 
       if (newValue !== null) {
         this._value = newValue;
@@ -82,17 +82,22 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
 
   public componentDidUpdate() {
     let value = this._value;
-    let { suggestedDisplayValue } = this.props;
+    let {
+      defaultVisibleValue,
+      suggestedDisplayValue,
+      shouldSelectFullInputValueInComponentDidUpdate
+    } = this.props;
     let differenceIndex = 0;
+
     if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       let shouldSelectFullRange = false;
 
-      if (this.props.onComponentDidUpdate) {
-        shouldSelectFullRange = this.props.onComponentDidUpdate(assign({}, this.props));
+      if (shouldSelectFullInputValueInComponentDidUpdate) {
+        shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
       if (shouldSelectFullRange) {
-        this._inputElement.setSelectionRange(0, this.props.suggestedDisplayValue.length, SELECTION_BACKWARD);
+        this._inputElement.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
           differenceIndex++;
@@ -139,7 +144,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement | BaseAutoFill>) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
     if (this.props.onKeyDown) {
       this.props.onKeyDown(ev);
     }

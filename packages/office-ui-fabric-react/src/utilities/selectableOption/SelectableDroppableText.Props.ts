@@ -5,23 +5,23 @@ import { ISelectableOption } from '../../Utilities/selectableOption/SelectableOp
 
 export interface ISelectableDroppableTextProps<T> extends React.Props<T> {
   /**
-  * Optional callback to access the IDropdown interface. Use this instead of ref for accessing
+  * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
   * the public methods and properties of the component.
   */
   componentRef?: (component: T) => void;
 
   /**
-   * Descriptive label for the Dropdown
+   * Descriptive label for the ISelectableDroppableText
    */
   label?: string;
 
   /**
-  * Aria Label for the Dropdown for screen reader users.
+  * Aria Label for the ISelectableDroppableText for screen reader users.
   */
   ariaLabel?: string;
 
   /**
-  * Id of the drop down
+  * Id of the ISelectableDroppableText
   */
   id?: string;
 
@@ -42,7 +42,7 @@ export interface ISelectableDroppableTextProps<T> extends React.Props<T> {
   selectedKey?: string | number;
 
   /**
-   * Collection of options for this Dropdown
+   * Collection of options for this ISelectableDroppableText
    */
   options?: ISelectableOption[];
 
@@ -52,42 +52,42 @@ export interface ISelectableDroppableTextProps<T> extends React.Props<T> {
   onChanged?: (option: ISelectableOption, index?: number) => void;
 
   /**
-    * Optional custom renderer for the dropdown container
+    * Optional custom renderer for the ISelectableDroppableText container
     */
   onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<T>>;
 
   /**
-    * Optional custom renderer for the dropdown list
+    * Optional custom renderer for the ISelectableDroppableText list
     */
   onRenderList?: IRenderFunction<ISelectableDroppableTextProps<T>>;
 
   /**
-   * Optional custom renderer for the dropdown options
+   * Optional custom renderer for the ISelectableDroppableText options
    */
   onRenderItem?: IRenderFunction<ISelectableOption>;
 
   /**
-   * Optional custom renderer for the dropdown option content
+   * Optional custom renderer for the ISelectableDroppableText option content
    */
   onRenderOption?: IRenderFunction<ISelectableOption>;
 
   /**
-   * Whether or not the Dropdown is disabled.
+   * Whether or not the ISelectableDroppableText is disabled.
    */
   disabled?: boolean;
 
   /**
-   * Whether or not the Dropdown is required.
+   * Whether or not the ISelectableDroppableText is required.
    */
   required?: boolean;
 
   /**
-   * Custom properties for Dropdown's Callout used to render options.
+   * Custom properties for ISelectableDroppableText's Callout used to render options.
    */
   calloutProps?: ICalloutProps;
 
   /**
-   * Descriptive label for the Dropdown Error Message
+   * Descriptive label for the ISelectableDroppableText Error Message
    */
   errorMessage?: string;
 }
