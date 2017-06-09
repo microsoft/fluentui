@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "ITheme: Make palette a required prop",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chrisgo@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }
