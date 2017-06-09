@@ -11,7 +11,7 @@ export interface ITooltip {
 /**
  * Tooltip component props.
  */
-export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip> {
+export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Tooltip> {
   /**
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
