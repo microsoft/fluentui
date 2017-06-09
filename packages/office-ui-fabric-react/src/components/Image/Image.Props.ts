@@ -4,7 +4,7 @@ export interface IImage {
 
 }
 
-export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
+export interface IImageProps extends React.HTMLAttributes<HTMLImageElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

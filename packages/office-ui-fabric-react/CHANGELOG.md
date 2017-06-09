@@ -1,6 +1,52 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 01 Jun 2017 16:34:03 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2017 10:20:07 GMT and should not be manually modified.
+
+## 4.4.2
+Thu, 08 Jun 2017 10:20:07 GMT
+
+### Patches
+
+- TextField: improves layout for IE.
+
+## 4.4.1
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Patches
+
+- ITheme: Make palette a required prop
+
+## 4.4.0
+Tue, 06 Jun 2017 07:41:47 GMT
+
+### Minor changes
+
+- Toggle: theme now injectable through Customizer.
+
+## 4.3.2
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Patches
+
+- Adding tslib dependency to reduce redundant code.
+
+## 4.3.1
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Patches
+
+- DragDropHelper: Fix to show ghost element when dragging on Firefox
+- Buttons: allowing theme to be provided via Customizer.
+- DragDropHelper: Fix TSLint warnings
+- TextField: Show red border when invalid
+
+## 4.3.0
+Fri, 02 Jun 2017 01:19:35 GMT
+
+### Minor changes
+
+- Dropdown: Expose aria label prop for the dropdown options.
+- Fixing an issue where restoring focus was not working due to a regression
 
 ## 4.2.0
 Thu, 01 Jun 2017 16:34:03 GMT

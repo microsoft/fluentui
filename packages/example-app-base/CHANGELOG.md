@@ -1,6 +1,37 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 01 Jun 2017 16:34:03 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Jun 2017 00:18:05 GMT and should not be manually modified.
+
+## 3.0.0
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Breaking changes
+
+- Bumping fabric dependency in example-app-base
+
+## 2.1.2
+Tue, 06 Jun 2017 07:41:47 GMT
+
+*Changes not tracked*
+
+## 2.1.1
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Patches
+
+- Adding tslib dependency to reduce re
+
+## 2.1.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Add the ability to optionally pass in the app title and header links for createApp
+
+## 2.0.4
+Fri, 02 Jun 2017 01:19:36 GMT
+
+*Changes not tracked*
 
 ## 2.0.3
 Thu, 01 Jun 2017 16:34:03 GMT
