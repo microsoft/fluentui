@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxProps, IComboBoxOption } from './ComboBox.Props';
+import { IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -18,7 +18,7 @@ import {
   getId,
   KeyCodes
 } from '../../Utilities';
-import { SelectableOptionMenuItemType } from '../../Utilities/selectableOption/SelectableOption.Props';
+import { ISelectableOption, SelectableOptionMenuItemType } from '../../Utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './ComboBox.scss';
 const styles: any = stylesImport;
 
@@ -37,7 +37,7 @@ export interface IComboBoxState {
   suggestedDisplayValue?: string;
 
   // The options currently available for the callout
-  currentOptions?: IComboBoxOption[];
+  currentOptions?: ISelectableOption[];
 
   // when taking input, this will store the index the
   // that the options input matches (-1 if no input or match)
@@ -93,7 +93,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _lastReadOnlyAutoCompleteChangeTimeoutId: number;
 
   // Promise used when resolving the comboBox options
-  private currentPromise: PromiseLike<IComboBoxOption[]>;
+  private currentPromise: PromiseLike<ISelectableOption[]>;
 
   constructor(props?: IComboBoxProps) {
     super(props);
@@ -379,7 +379,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to check
    * @returns {boolean} - true if the index is valid for the given options, false otherwise
    */
-  private _indexWithinBounds(options: IComboBoxOption[], index: number): boolean {
+  private _indexWithinBounds(options: ISelectableOption[], index: number): boolean {
     return index >= 0 && index < options.length;
   }
 
@@ -529,7 +529,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     newIndex = Math.max(0, Math.min(currentOptions.length - 1, newIndex));
 
-    let option: IComboBoxOption = currentOptions[newIndex];
+    let option: ISelectableOption = currentOptions[newIndex];
 
     // attempt to skip headers and dividers
     if ((option.itemType === SelectableOptionMenuItemType.Header ||
@@ -567,7 +567,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // Are we at a new index? If so, update the state, otherwise
     // there is nothing to do
     if (index !== selectedIndex) {
-      let option: IComboBoxOption = currentOptions[index];
+      let option: ISelectableOption = currentOptions[index];
 
       // Set the selected option
       this.setState({
@@ -608,7 +608,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.onResolveOptions) {
 
       // get the options
-      let newOptions: IComboBoxOption[] | PromiseLike<IComboBoxOption[]> = this.props.onResolveOptions(assign({}, this.props));
+      let newOptions: ISelectableOption[] | PromiseLike<ISelectableOption[]> = this.props.onResolveOptions(assign({}, this.props));
 
       // the options are either goingto be an array or a promise
       // let newOptionsArray: IComboBoxOption[] = newOptions as IComboBoxOption[];
@@ -624,8 +624,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
         // Ensure that the promise will only use the callback if it was the most recent one
         // and update the state when the promise returns
-        let promise: PromiseLike<IComboBoxOption[]> = this.currentPromise = newOptions;
-        promise.then((newOptionsFromPromise: IComboBoxOption[]) => {
+        let promise: PromiseLike<ISelectableOption[]> = this.currentPromise = newOptions;
+        promise.then((newOptionsFromPromise: ISelectableOption[]) => {
           if (promise === this.currentPromise) {
             this.setState({
               currentOptions: newOptionsFromPromise
@@ -683,21 +683,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      // If we did not find an exact match
-      // update the state with the pending value
-      let newFontFamily: string = '';
-      if (currentPendingValue.indexOf(' ') > -1) {
-        newFontFamily = '"' + currentPendingValue + '"';
-      } else {
-        newFontFamily = currentPendingValue;
-      }
-
-      // add a default fallback font
-      newFontFamily += ',"Segoe UI",Tahoma,Sans-Serif;';
-
       // Create a new option
-      let newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue, fontFamily: newFontFamily };
-      let newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+      let newOption: ISelectableOption = { key: currentPendingValue, text: currentPendingValue };
+      let newOptions: ISelectableOption[] = [...currentOptions, newOption];
       let newSelectedIndex: number = this._getSelectedIndex(newOptions, currentPendingValue);
 
       this.setState({
@@ -770,7 +758,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render items
   @autobind
-  private _onRenderItem(item: IComboBoxOption): JSX.Element {
+  private _onRenderItem(item: ISelectableOption): JSX.Element {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -782,7 +770,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   // Render separator
-  private _renderSeparator(item: IComboBoxOption): JSX.Element {
+  private _renderSeparator(item: ISelectableOption): JSX.Element {
     let { index, key } = item;
     if (index > 0) {
       return <div
@@ -793,7 +781,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return null;
   }
 
-  private _renderHeader(item: IComboBoxOption): JSX.Element {
+  private _renderHeader(item: ISelectableOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     return (
       <div key={ item.key } className={ css('ms-ComboBox-header', styles.header) } role='header'>
@@ -803,7 +791,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render menu item
   @autobind
-  private _renderOption(item: IComboBoxOption): JSX.Element {
+  private _renderOption(item: ISelectableOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
@@ -867,8 +855,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render content of item
   @autobind
-  private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    return <span className={ css('ms-ComboBox-optionText', styles.optionText) } style={ { fontFamily: item.fontFamily } }>{ item.text }</span>;
+  private _onRenderOption(item: ISelectableOption): JSX.Element {
+    return <span className={ css('ms-ComboBox-optionText', styles.optionText) }>{ item.text }</span>;
   }
 
   /**
@@ -904,7 +892,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param selectedKey - the known selected key to find
    * @returns {number} - the index of the selected option, -1 if not found
    */
-  private _getSelectedIndex(options: IComboBoxOption[], selectedKey: string | number): number {
+  private _getSelectedIndex(options: ISelectableOption[], selectedKey: string | number): number {
     return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
   }
 

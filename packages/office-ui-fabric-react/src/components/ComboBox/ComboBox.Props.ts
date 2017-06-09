@@ -7,7 +7,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxP
   /**
    * Collection of options for this ComboBox
    */
-  options?: IComboBoxOption[];
+  options?: ISelectableOption[];
 
   /**
    * Callback issues when either:
@@ -15,13 +15,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxP
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
-  onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+  onChanged?: (option?: ISelectableOption, index?: number, value?: string) => void;
 
   /**
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
-  onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
+  onResolveOptions?: (options: ISelectableOption[]) => ISelectableOption[] | PromiseLike<ISelectableOption[]>;
 
   /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided items. Defaults to false.
@@ -43,11 +43,4 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxP
    * The IconProps to use for the button aspect of the combobox
    */
   buttonIconProps?: IIconProps;
-}
-
-export interface IComboBoxOption extends ISelectableOption {
-  /**
-   * Font-family associated with this option.
-   */
-  fontFamily?: string;
 }

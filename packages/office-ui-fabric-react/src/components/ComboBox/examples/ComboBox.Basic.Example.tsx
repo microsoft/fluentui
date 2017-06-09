@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { ComboBox, IComboBoxOption } from 'office-ui-fabric-react/lib/ComboBox';
+import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
 import {
+  assign,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/Utilities/selectableOption/SelectableOption.Props';
+import { ISelectableOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/Utilities/selectableOption/SelectableOption.Props';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
   [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'A', text: 'Arial Black', fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif' },
-  { key: 'B', text: 'Time New Roman', fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif' },
-  { key: 'C', text: 'Comic Sans MS', fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy' },
+  { key: 'A', text: 'Arial Black' },
+  { key: 'B', text: 'Time New Roman' },
+  { key: 'C', text: 'Comic Sans MS' },
   { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
   { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
   { key: 'D', text: 'Option d' },
@@ -22,6 +23,13 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   { key: 'I', text: 'Option i' },
   { key: 'J', text: 'Option j' },
   ];
+
+  private _fontMapping: { [key: string]: string } = {
+    ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
+    ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
+    ['Comic Sans MS']: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy',
+    ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif'
+  }
 
   constructor() {
     super();
@@ -46,6 +54,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           allowFreeform={ true }
           autoComplete={ true }
           options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
         />
 
         <ComboBox
@@ -56,6 +65,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           allowFreeform={ true }
           autoComplete={ false }
           options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
         />
 
         <ComboBox
@@ -66,6 +76,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           allowFreeform={ false }
           autoComplete={ true }
           options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
         />
 
         <ComboBox
@@ -76,6 +87,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           allowFreeform={ false }
           autoComplete={ false }
           options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
         />
 
         <ComboBox
@@ -84,6 +96,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           ariaLabel='Basic ComboBox example'
           errorMessage='Error! Here is some text!'
           options={ this._testOptions }
+          onRenderOption={ this._onRenderFontOption }
         />
 
         <ComboBox
@@ -114,6 +127,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
             value={ value && value }
+            onRenderOption={ this._onRenderFontOption }
           />
           :
           <ComboBox
@@ -126,6 +140,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             options={ options }
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
+            onRenderOption={ this._onRenderFontOption }
           />
         }
 
@@ -134,8 +149,35 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     );
   }
 
+  // Render content of item
   @autobind
-  private _getOptions(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
+  private _onRenderFontOption(item: ISelectableOption): JSX.Element {
+
+    if (item.itemType === SelectableOptionMenuItemType.Header ||
+      item.itemType === SelectableOptionMenuItemType.Divider) {
+      return <span className={ 'ms-ComboBox-optionText' }>{ item.text }</span>;
+    }
+
+    let fontFamily = this._fontMapping[item.text];
+
+    if (fontFamily === null || fontFamily === undefined) {
+      let newFontFamily: string = item.text;
+      if (newFontFamily.indexOf(' ') > -1) {
+        newFontFamily = '"' + newFontFamily + '"';
+      }
+
+      // add a default fallback font
+      newFontFamily += ',"Segoe UI",Tahoma,Sans-Serif';
+
+      this._fontMapping = assign({}, this._fontMapping, { [fontFamily]: newFontFamily });
+      fontFamily = newFontFamily;
+    }
+
+    return <span className={ 'ms-ComboBox-optionText' } style={ { fontFamily: fontFamily && fontFamily } }>{ item.text }</span>;
+  }
+
+  @autobind
+  private _getOptions(currentOptions: ISelectableOption[]): ISelectableOption[] {
 
     if (this.state.options.length > 0) {
       return this.state.options;
@@ -173,7 +215,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onChanged(option: IComboBoxOption, index: number, value: string) {
+  private _onChanged(option: ISelectableOption, index: number, value: string) {
     if (option != null) {
       this.setState({
         selectedOptionKey: option.key,
@@ -185,25 +227,13 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         value: null
       });
     } else if (value !== null) {
-      if (!this._optionsContainsKey(value)) {
-        let newFontFamily: string = '';
-        if (value.indexOf(' ') > -1) {
-          newFontFamily = '"' + value + '"';
-        } else {
-          newFontFamily = value;
-        }
+      let newOption: ISelectableOption = { key: value, text: value };
 
-        // add a default fallback font
-        newFontFamily += ',"Segoe UI",Tahoma,Sans-Serif;';
-
-        let newOption: IComboBoxOption = { key: value, text: value, fontFamily: newFontFamily };
-
-        this.setState({
-          options: [...this.state.options, newOption],
-          selectedOptionKey: newOption.key,
-          value: null
-        });
-      }
+      this.setState({
+        options: [...this.state.options, newOption],
+        selectedOptionKey: newOption.key,
+        value: null
+      });
     }
   }
 }

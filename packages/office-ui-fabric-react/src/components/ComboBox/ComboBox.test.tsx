@@ -4,19 +4,19 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { mount, shallow } from 'enzyme';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
-import { IComboBoxOption } from './ComboBox.Props';
+import { ISelectableOption } from 'office-ui-fabric-react/lib/Utilities/selectableOption/SelectableOption.Props';
 
-const DEFAULT_OPTIONS: IComboBoxOption[] = [
+const DEFAULT_OPTIONS: ISelectableOption[] = [
   { key: '1', text: '1' },
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
 
-const DEFAULT_OPTIONS2: IComboBoxOption[] = [
+const DEFAULT_OPTIONS2: ISelectableOption[] = [
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' }
