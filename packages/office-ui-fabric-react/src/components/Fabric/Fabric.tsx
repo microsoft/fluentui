@@ -33,7 +33,7 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
   document.documentElement.setAttribute('dir', 'ltr');
 }
 
-export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabricState> {
+export class Fabric extends BaseComponent<React.HTMLAttributes<HTMLDivElement>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;

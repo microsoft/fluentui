@@ -6,7 +6,7 @@ export interface IPersona {
 
 }
 
-export interface IPersonaProps extends React.HTMLProps<Persona> {
+export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   /**
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
