@@ -10,7 +10,7 @@ class Foo extends React.Component<{ field: string; }, {}> {
   public name: any;
 
   public render() {
-    return <div>{ this.props[this.props.field] }</div>;
+    return <div>{ (this.props as any)[this.props.field] }</div>;
   }
 }
 
