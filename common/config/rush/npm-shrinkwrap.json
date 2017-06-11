@@ -7375,9 +7375,9 @@
       "integrity": "sha1-EEEktsYCxnlogaBCVB0220OlJk4="
     },
     "office-ui-fabric-core": {
-      "version": "7.1.0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-7.1.0.tgz",
-      "integrity": "sha1-IKhrQW4f8WSvetiqzoMoUVigPiM="
+      "version": "7.1.1",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-7.1.1.tgz",
+      "integrity": "sha1-hm7CYioSwEE7X2gTbvy5f66o8WY="
     },
     "office-ui-fabric-react": {
       "version": "4.4.2",
