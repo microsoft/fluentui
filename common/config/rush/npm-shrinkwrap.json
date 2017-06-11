@@ -1415,6 +1415,11 @@
       "resolved": "https://registry.npmjs.org/@types/es6-promise/-/es6-promise-0.0.32.tgz",
       "integrity": "sha1-O89E+x5Cnz33YYjIxth0Rjujcf0="
     },
+    "@types/es6-weak-map": {
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/@types/es6-weak-map/-/es6-weak-map-1.2.0.tgz",
+      "integrity": "sha1-2fb4WDaaiLvGnvQCOAgfLWu8hhQ="
+    },
     "@types/express": {
       "version": "4.0.35",
       "resolved": "https://registry.npmjs.org/@types/express/-/express-4.0.35.tgz",
