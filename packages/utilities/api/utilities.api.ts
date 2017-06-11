@@ -74,7 +74,7 @@ class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderS
   constructor(props: IDelayedRenderProps);
 }
 
-export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean;
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean;
 
 // WARNING: raise has incomplete type information
 // WARNING: stopPropagation has incomplete type information
@@ -105,7 +105,7 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
 // (undocumented)
 export function getFirstFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 export function getId(prefix?: string): string;
 
@@ -116,27 +116,27 @@ export function getLanguage(): string;
 // (undocumented)
 export function getLastFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 export function getNativeProps < T >(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 export function getNextElement(rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
-export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement;
+export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null;
 
 export function getPreviousElement(rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
-export function getRect(element: HTMLElement | Window): IRectangle;
+export function getRect(element: HTMLElement | Window): IRectangle | undefined;
 
 export function getRTL(): boolean;
 
@@ -145,7 +145,7 @@ export function getRTLSafeKeyCode(key: number): number;
 export function getScrollbarWidth(): number;
 
 // (undocumented)
-export function getVirtualParent(child: HTMLElement): HTMLElement;
+export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
@@ -212,11 +212,11 @@ interface IEventRecord {
   // (undocumented)
   callback: (args?: any) => void;
   // (undocumented)
-  elementCallback: (...args: any[]) => void;
+  elementCallback?: (...args: any[]) => void;
   // (undocumented)
   eventName: string;
   // (undocumented)
-  objectCallback: (args?: any) => void;
+  objectCallback?: (args?: any) => void;
   // (undocumented)
   parent: any;
   // (undocumented)
@@ -279,7 +279,7 @@ export function isElementFocusZone(element?: HTMLElement): boolean;
 export function isElementTabbable(element: HTMLElement): boolean;
 
 // (undocumented)
-export function isElementVisible(element: HTMLElement): boolean;
+export function isElementVisible(element: HTMLElement | undefined): boolean;
 
 // (undocumented)
 interface ISerializableObject {
