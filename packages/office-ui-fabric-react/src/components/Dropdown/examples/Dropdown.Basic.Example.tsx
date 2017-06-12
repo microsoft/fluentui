@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import './Dropdown.Basic.Example.scss';
-import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/Utilities/SelectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export class DropdownBasicExample extends React.Component<any, any> {
   constructor() {

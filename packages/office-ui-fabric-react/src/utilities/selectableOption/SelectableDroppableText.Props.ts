@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
-import { ISelectableOption } from '../../Utilities/SelectableOption/SelectableOption.Props';
+import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
 export interface ISelectableDroppableTextProps<T> extends React.Props<T> {
   /**
