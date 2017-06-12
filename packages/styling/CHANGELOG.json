@@ -2,6 +2,120 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.7.3",
+      "tag": "@uifabric/styling_v0.7.3",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.1.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.2",
+      "tag": "@uifabric/styling_v0.7.2",
+      "date": "Fri, 09 Jun 2017 10:10:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bc7c1ebc6b552d523728c2cb9a4f4127df38a11c",
+            "comment": "Update the version of rtl-css-js used to get latest bug fixes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.1",
+      "tag": "@uifabric/styling_v0.7.1",
+      "date": "Thu, 08 Jun 2017 10:20:07 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.7.0",
+      "tag": "@uifabric/styling_v0.7.0",
+      "date": "Thu, 08 Jun 2017 00:18:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "58ebffae702a799225c3c09d94175bffd85b2986",
+            "comment": "ITheme: Make palette a required prop"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.1 <5.0.0` to `>=4.1.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.6.1",
+      "tag": "@uifabric/styling_v0.6.1",
+      "date": "Tue, 06 Jun 2017 07:41:47 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.6.0",
+      "tag": "@uifabric/styling_v0.6.0",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1a785e3c7ab9adc1578ce528dffabcd186d3ccfc",
+            "comment": "createTheme: adding to exports"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "652aaea46284e84a403060c3936af239e92c9af0",
+            "comment": "add more semantic color slots"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.0 <5.0.0` to `>=4.1.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/styling_v0.5.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Styling: loadTheme now updates both legacy theme as well as current global theming. All theme objects provided by customizable will get updated correctly."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.1 <5.0.0` to `>=4.1.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.3",
       "tag": "@uifabric/styling_v0.4.3",
       "date": "Fri, 02 Jun 2017 01:19:36 GMT",

@@ -155,7 +155,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <div className={ textFieldClassName }>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused) }>
+        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
           { (addonString !== undefined || this.props.onRenderAddon) && (
             <div className={ css(styles.fieldAddon) }>
               { onRenderAddon(this.props, this._onRenderAddon) }
@@ -272,7 +272,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
 
     return css(textFieldClassName, this.props.inputClassName, {
-      ['ms-TextField-invalid ' + styles.invalid]: !!errorMessage,
       [styles.hasIcon]: !!this.props.iconClass,
     });
   }
@@ -286,7 +285,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return errorMessage;
   }
 
-  private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+  private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
@@ -307,8 +306,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLProps<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input

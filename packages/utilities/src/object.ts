@@ -9,7 +9,7 @@ if (_global[CURRENT_ID_PROPERTY] === undefined) {
   _global[CURRENT_ID_PROPERTY] = 0;
 }
 
-function checkProperties(a, b) {
+function checkProperties(a: any, b: any) {
   for (let propName in a) {
     if (a.hasOwnProperty(propName)) {
       if (!b.hasOwnProperty(propName) || (b[propName] !== a[propName])) {
@@ -22,7 +22,7 @@ function checkProperties(a, b) {
 }
 
 // Compare a to b and b to a
-export function shallowCompare(a, b) {
+export function shallowCompare(a: any, b: any) {
   return checkProperties(a, b) && checkProperties(b, a);
 }
 
@@ -35,7 +35,7 @@ export function shallowCompare(a, b) {
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
-export function assign(target: any, ...args): any {
+export function assign(target: any, ...args: any[]): any {
   return filteredAssign.apply(this, [null, target].concat(args));
 }
 
@@ -50,7 +50,7 @@ export function assign(target: any, ...args): any {
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
-export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args) {
+export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]) {
   target = target || {};
 
   for (let sourceObject of args) {

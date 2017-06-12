@@ -106,7 +106,7 @@ let _isSSR = false;
 /**
  * Helper to set ssr mode to simulate no window object returned from getWindow helper.
  */
-export function setSSR(isEnabled) {
+export function setSSR(isEnabled: boolean) {
   _isSSR = isEnabled;
 }
 

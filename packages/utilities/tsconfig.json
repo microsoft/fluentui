@@ -10,6 +10,8 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "importHelpers": true,
+    "noImplicitAny": true,
     "moduleResolution": "node",
     "types": [
       "chai",
