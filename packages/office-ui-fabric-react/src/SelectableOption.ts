@@ -1,1 +1,1 @@
-export * from './utilities/SelectableOption/index';
+export * from './utilities/selectableOption/index';
