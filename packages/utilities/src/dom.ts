@@ -84,7 +84,7 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
       isContained = false;
 
       while (child) {
-        let nextParent = getParent(child);
+        let nextParent: HTMLElement | null = getParent(child);
 
         if (nextParent === parent) {
           isContained = true;
@@ -139,7 +139,7 @@ export function getDocument(rootElement?: HTMLElement) {
 /**
  * Helper to get bounding client rect, works with window.
  */
-export function getRect(element: HTMLElement | Window): IRectangle | undefined {
+export function getRect(element: HTMLElement | Window | null): IRectangle | undefined {
   let rect: IRectangle | undefined;
 
   if (element) {

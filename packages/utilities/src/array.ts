@@ -15,7 +15,9 @@ export function createArray(size: number, getItem?: (index?: number) => any) {
   let array = [];
 
   for (let i = 0; i < size; i++) {
-    array.push(getItem(i));
+    if (getItem) {
+      array.push(getItem(i));
+    }
   }
 
   return array;

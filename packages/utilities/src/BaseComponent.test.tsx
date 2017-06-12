@@ -47,7 +47,7 @@ class TestComponent extends BaseComponent<{}, {}> {
   }
 
   private _createNullRef() {
-    let foo: (() => void) | null = null;
+    let foo: any = null;
 
     // Calling a null
     foo();

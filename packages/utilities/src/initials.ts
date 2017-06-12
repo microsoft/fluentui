@@ -50,7 +50,7 @@ function cleanupDisplayName(displayName: string): string {
 }
 
 /** Get (up to 2 characters) initials based on display name of the persona. */
-export function getInitials(displayName: string, isRtl: boolean): string {
+export function getInitials(displayName: string | undefined | null, isRtl: boolean): string {
   if (displayName == null) {
     return '';
   }

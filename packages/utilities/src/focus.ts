@@ -159,7 +159,7 @@ export function getNextElement(
   return null;
 }
 
-export function isElementVisible(element: HTMLElement | undefined): boolean {
+export function isElementVisible(element: HTMLElement | undefined | null): boolean {
   // If the element is not valid, return false.
   if (!element || !element.getAttribute) {
     return false;
