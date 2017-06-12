@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "4.5.35",
+  "version": "4.5.36",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -47,7 +47,7 @@
     "webpack-bundle-analyzer": "^2.2.1"
   },
   "dependencies": {
-    "@uifabric/example-app-base": "3.0.0",
+    "@uifabric/example-app-base": "3.0.1",
     "@uifabric/utilities": ">=4.1.2 <5.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",

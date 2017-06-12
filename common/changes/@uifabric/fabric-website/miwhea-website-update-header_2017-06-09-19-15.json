@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Enable no implicit any in utilities package",
+      "comment": "Fix issues with dev.office.com header",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "miwhea@microsoft.com"
 }
