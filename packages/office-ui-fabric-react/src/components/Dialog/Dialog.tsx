@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  getId
+  getId,
+  autobind
 } from '../../Utilities';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Modal } from '../../Modal';
@@ -57,7 +58,10 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       title,
       type,
       contentClassName,
-      topButtonsProps
+      topButtonsProps,
+      ariaLabelledById,
+      ariaDescribedById
+
     } = this.props;
     let { id } = this.state;
 
@@ -83,8 +87,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         onDismissed={ onDismissed }
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
-        subtitleAriaId={ subText && id + '-subText' }
-        titleAriaId={ title && id + '-title' }
+        subtitleAriaId={ this._getAriaLabelId(ariaDescribedById, subText, id + 'subText') }
+        titleAriaId={ this._getAriaLabelId(ariaLabelledById, title, id + 'title') }
       >
 
         <DialogContent
@@ -100,5 +104,14 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
       </Modal>
     );
+  }
+
+  @autobind
+  private _getAriaLabelId(ariaId: string, text: string, alternativeId: string): string {
+    if (ariaId) {
+      return ariaId;
+    } else if (text) {
+      return alternativeId;
+    }
   }
 }
