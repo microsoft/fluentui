@@ -94,7 +94,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Promise used when resolving the comboBox options
   private _currentPromise: PromiseLike<ISelectableOption[]>;
 
-  //The current visible value sent to the auto fill on render
+  // The current visible value sent to the auto fill on render
   private _currentVisibleValue;
 
   constructor(props?: IComboBoxProps) {

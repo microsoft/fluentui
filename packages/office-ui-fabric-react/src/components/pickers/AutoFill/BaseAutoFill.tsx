@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.Props';
 import {
-  assign,
   BaseComponent,
   KeyCodes,
   autobind,

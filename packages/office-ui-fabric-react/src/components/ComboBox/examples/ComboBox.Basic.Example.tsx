@@ -29,7 +29,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
     ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
     ['Comic Sans MS']: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy',
     ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif'
-  }
+  };
 
   constructor() {
     super();
