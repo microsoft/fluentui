@@ -85,6 +85,12 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   onLayerDidMount?: () => void;
 
   /**
+ * Deprecated at 0.81.2, use 'onLayerDidMount' instead.
+ * @deprecated
+ */
+  onLayerMounted?: () => void;
+
+  /**
   * The type of Dialog to display.
   * @default DialogType.normal
   * @deprecated Pass through via dialogContentProps instead
