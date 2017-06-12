@@ -80,7 +80,8 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
             responsiveMode++;
           }
         } catch (e) {
-          responsiveMode = undefined;
+          // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
+          responsiveMode = ResponsiveMode.large;
         }
       } else {
         if (_defaultMode !== undefined) {
