@@ -24,7 +24,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
     delay: 0
   };
 
-  private _timeoutId;
+  private _timeoutId: number | undefined;
 
   constructor(props: IDelayedRenderProps) {
     super(props);
