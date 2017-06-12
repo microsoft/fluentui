@@ -7,7 +7,7 @@ import {
   Layer
 } from './Layer';
 
-export class LayerHost extends BaseComponent<React.HTMLProps<HTMLElement>, {}> {
+export class LayerHost extends BaseComponent<React.HTMLAttributes<HTMLElement>, {}> {
 
   public shouldComponentUpdate() {
     return false;

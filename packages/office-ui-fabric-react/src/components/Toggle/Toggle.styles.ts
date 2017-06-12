@@ -51,6 +51,7 @@ export const getStyles = memoizeFunction((
         borderStyle: 'solid',
         background: pillUncheckedBackground,
         borderColor: pillBorderColor,
+        cursor: 'pointer',
       }
     ],
 

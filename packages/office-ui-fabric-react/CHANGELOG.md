@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+
+## 4.5.0
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Minor changes
+
+- Component properties now extend React.HTMLAttributes, rather than React.HTMLProps
+
+### Patches
+
+- Updating minified bundle to exclude debug warnings.
+- Enable no implicit any in utilities package
+- Toggle: add 'cursor: pointer'
+
+## 4.4.2
+Thu, 08 Jun 2017 10:20:07 GMT
+
+### Patches
+
+- TextField: improves layout for IE.
+
+## 4.4.1
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Patches
+
+- ITheme: Make palette a required prop
 
 ## 4.4.0
 Tue, 06 Jun 2017 07:41:47 GMT

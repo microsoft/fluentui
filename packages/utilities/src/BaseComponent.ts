@@ -146,7 +146,7 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
     }
     if (!this.__resolves[refName]) {
       this.__resolves[refName] = (ref) => {
-        return this[refName] = ref;
+        return (this as any)[refName] = ref;
       };
     }
 
@@ -202,11 +202,11 @@ function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNam
 }
 
 function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: string) {
-  let classMethod = obj[methodName];
-  let prototypeMethod = prototype[methodName];
+  let classMethod = (obj as any)[methodName];
+  let prototypeMethod = (prototype as any)[methodName];
 
   if (classMethod || prototypeMethod) {
-    obj[methodName] = function () {
+    (obj as any)[methodName] = function () {
       let retVal;
 
       try {

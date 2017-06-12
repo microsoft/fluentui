@@ -20,7 +20,7 @@ export function css(...args: ICssInput[]) {
         classes.push(arg.toString());
       } else {
         for (let key in arg as any) {
-          if (arg[key]) {
+          if ((arg as any)[key]) {
             classes.push(key);
           }
         }
