@@ -21,7 +21,7 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
   /**
    * Optional props to mix into the root DIV element.
    */
-  rootProps?: React.HTMLProps<HTMLDivElement>;
+  rootProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Optional callback that is called, when the mouse down event occurs, in order to determine

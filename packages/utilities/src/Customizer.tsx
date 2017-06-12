@@ -77,7 +77,7 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
     }
   }
 
-  constructor(props, context) {
+  constructor(props: any, context: any) {
     super(props);
 
     this.state = this._getInjectedProps(props, context);
@@ -87,7 +87,7 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
     return this.state;
   }
 
-  public componentWillReceiveProps(newProps, newContext) {
+  public componentWillReceiveProps(newProps: any, newContext: any) {
     this.setState(this._getInjectedProps(newProps, newContext));
   }
 

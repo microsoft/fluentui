@@ -35,7 +35,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     window.clearTimeout(this._animationTimeoutId);
   }
 
-  public render(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+  public render(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const className: string = css(
       styles.todoItem,
       this.props.item.isComplete === true ? styles.isCompleted : '',
