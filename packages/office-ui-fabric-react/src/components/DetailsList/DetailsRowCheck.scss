@@ -22,7 +22,7 @@ button.check {
 }
 
 .owner {
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
 
   &.isSelected,
   &.isVisible,

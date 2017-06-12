@@ -83,7 +83,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   transition-duration: 0.5s;
   transition-timing-function: ease;
 
-  @include text-align(left);
+  @include ms-text-align(left);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
 
@@ -187,7 +187,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 }
 
 .isPadded {
-  @include margin-right($isPaddedMargin - $rowHorizontalPadding);
+  @include ms-margin-right($isPaddedMargin - $rowHorizontalPadding);
 
   &.checkCell {
     padding: 0;

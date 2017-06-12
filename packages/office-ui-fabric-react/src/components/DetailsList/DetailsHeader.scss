@@ -30,7 +30,7 @@ $isPaddedMargin: 24px;
 }
 
 .cellWrapperPadded {
-  @include margin-right($isPaddedMargin - $cellPadding);
+  @include ms-margin-right($isPaddedMargin - $cellPadding);
 }
 
 .cell {
@@ -45,15 +45,15 @@ $isPaddedMargin: 24px;
   border: none;
   line-height: inherit;
   margin: 0;
-  @include text-align(left);
+  @include ms-text-align(left);
   height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @include text-align(left);
+  @include ms-text-align(left);
 
   &.cellIsCheck {
-    @include margin-left(4px);
+    @include ms-margin-left(4px);
     position: relative;
     padding: 6px 8px;
     margin: 0;
@@ -129,14 +129,14 @@ $isPaddedMargin: 24px;
 
 .iconOnlyHeader {
   .nearIcon {
-    @include padding-left(0);
+    @include ms-padding-left(0);
   }
 }
 
 .nearIcon {
   color: $iconForegroundColor;
   opacity: 1;
-  @include padding-left(8px);
+  @include ms-padding-left(8px);
 }
 
 .cell .filterChevron {
@@ -179,5 +179,5 @@ $isPaddedMargin: 24px;
 }
 
 .cell .collapseButton {
-  @include padding-right(0);
+  @include ms-padding-right(0);
 }
