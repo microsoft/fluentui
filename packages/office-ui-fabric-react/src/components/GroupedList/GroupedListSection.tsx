@@ -191,7 +191,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       <div
         ref='root'
         className={ css('ms-GroupedList-group', styles.group, this._getDroppingClassName()) }
-        role="group"
+        role='group'
       >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
