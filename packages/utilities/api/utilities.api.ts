@@ -93,7 +93,7 @@ class EventGroup {
 // (undocumented)
 export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number;
 
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement;
+export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
 
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
@@ -109,9 +109,9 @@ export function getFirstFocusable(rootElement: HTMLElement,
 
 export function getId(prefix?: string): string;
 
-export function getInitials(displayName: string, isRtl: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean): string;
 
-export function getLanguage(): string;
+export function getLanguage(): string | null;
 
 // (undocumented)
 export function getLastFocusable(rootElement: HTMLElement,
@@ -136,7 +136,7 @@ export function getPreviousElement(rootElement: HTMLElement,
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean): HTMLElement | null;
 
-export function getRect(element: HTMLElement | Window): IRectangle | undefined;
+export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
 export function getRTL(): boolean;
 
@@ -279,7 +279,7 @@ export function isElementFocusZone(element?: HTMLElement): boolean;
 export function isElementTabbable(element: HTMLElement): boolean;
 
 // (undocumented)
-export function isElementVisible(element: HTMLElement | undefined): boolean;
+export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // (undocumented)
 interface ISerializableObject {
@@ -355,7 +355,7 @@ class Rectangle {
 
 export function setMemoizeWeakMap(weakMap: any): void;
 
-export function setWarningCallback(warningCallback: (message: string) => void): void;
+export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
