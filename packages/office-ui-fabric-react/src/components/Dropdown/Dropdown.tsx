@@ -17,7 +17,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import { SelectableOptionMenuItemType } from '../../Utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from '../../Utilities/SelectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 

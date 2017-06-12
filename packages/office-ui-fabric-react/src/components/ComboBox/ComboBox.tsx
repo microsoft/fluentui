@@ -17,7 +17,7 @@ import {
   getId,
   KeyCodes
 } from '../../Utilities';
-import { ISelectableOption, SelectableOptionMenuItemType } from '../../Utilities/selectableOption/SelectableOption.Props';
+import { ISelectableOption, SelectableOptionMenuItemType } from '../../Utilities/SelectableOption/SelectableOption.Props';
 import * as stylesImport from './ComboBox.scss';
 const styles: any = stylesImport;
 

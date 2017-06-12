@@ -40,6 +40,7 @@ export * from './Pivot';
 export * from './ProgressIndicator';
 export * from './Rating';
 export * from './SearchBox';
+export * from './SelectableOption';
 export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
