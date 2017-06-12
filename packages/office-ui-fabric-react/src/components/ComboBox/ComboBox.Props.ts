@@ -1,6 +1,6 @@
 import { IIconProps } from '../../Icon';
-import { ISelectableOption } from '../../Utilities/SelectableOption/SelectableOption.Props';
-import { ISelectableDroppableTextProps } from '../../Utilities/SelectableOption/SelectableDroppableText.Props';
+import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
+import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxProps> {
 
