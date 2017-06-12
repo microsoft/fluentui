@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/fabric-website",
-      "type": "none"
+      "comment": "Fix issues with dev.office.com header",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "miclo@microsoft.com"
+  "email": "miwhea@microsoft.com"
 }

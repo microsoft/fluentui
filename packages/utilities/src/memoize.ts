@@ -1,11 +1,11 @@
 declare class WeakMap {
   public get(key: any): any;
   public set(key: any, value: any): void;
-  public has(key: any);
+  public has(key: any): boolean;
 }
 
 const _emptyObject = { empty: true };
-const _dictionary = {};
+const _dictionary: any = {};
 let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
 
 interface IMemoizeNode {
