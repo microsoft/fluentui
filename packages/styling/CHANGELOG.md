@@ -9,6 +9,13 @@ Mon, 12 Jun 2017 01:47:18 GMT
 
 - Enable no implicit any in utilities package
 
+## 0.7.2
+ Fri, 09 Jun 2017 10:10:47 GMT
+
+ ### Patches
+
+ - Update the version of rtl-css-js used to get latest bug fixes
+
 ## 0.7.1
 Thu, 08 Jun 2017 10:20:07 GMT
 
