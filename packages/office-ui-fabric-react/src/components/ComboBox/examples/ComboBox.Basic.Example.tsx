@@ -5,7 +5,7 @@ import {
   assign,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ISelectableOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/Utilities/SelectableOption/SelectableOption.Props';
+import { ISelectableOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
