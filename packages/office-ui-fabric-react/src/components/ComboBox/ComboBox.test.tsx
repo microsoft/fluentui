@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { mount, shallow } from 'enzyme';
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes } from 'office-ui-fabric-react/lib/utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
