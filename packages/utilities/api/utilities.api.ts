@@ -1,3 +1,5 @@
+export function assign(target: any, ...args: any[]): any;
+
 // WARNING: dispose has incomplete type information
 // WARNING: clearImmediate has incomplete type information
 // WARNING: clearInterval has incomplete type information
@@ -50,10 +52,11 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 
 // WARNING: contextTypes has incomplete type information
 // WARNING: childContextTypes has incomplete type information
-// WARNING: __constructor has incomplete type information
 // WARNING: componentWillReceiveProps has incomplete type information
 // WARNING: render has incomplete type information
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
+  // (undocumented)
+  constructor(props: any, context: any);
   public static addChangeListener(onChanged: IChangeListener): void;
   // (undocumented)
   public getChildContext(): any;
@@ -149,6 +152,8 @@ export function hasHorizontalOverflow(element: HTMLElement): boolean;
 export function hasOverflow(element: HTMLElement): boolean;
 
 export function hasVerticalOverflow(element: HTMLElement): boolean;
+
+export function hoistMethods(destination: any, source: any, exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS): string[];
 
 // (undocumented)
 interface IBaseProps {
@@ -374,10 +379,8 @@ export function warnMutuallyExclusive < P >(componentName: string,
 // WARNING: getWindow has incomplete type information
 // WARNING: getDocument has incomplete type information
 // WARNING: doesElementContainFocus has incomplete type information
-// WARNING: hoistMethods has incomplete type information
 // WARNING: setLanguage has incomplete type information
 // WARNING: shallowCompare has incomplete type information
-// WARNING: assign has incomplete type information
 // WARNING: filteredAssign has incomplete type information
 // WARNING: Unsupported export: baseElementEvents
 // WARNING: Unsupported export: baseElementProperties

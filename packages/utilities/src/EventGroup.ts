@@ -33,7 +33,7 @@ export interface IDeclaredEventsByName {
  */
 export class EventGroup {
   private static _uniqueId = 0;
-  private _parent;
+  private _parent: any;
   private _eventRecords: IEventRecord[];
   private _id = EventGroup._uniqueId++;
   private _isDisposed: boolean;
@@ -56,10 +56,10 @@ export class EventGroup {
         let ev = document.createEvent('HTMLEvents');
 
         ev.initEvent(eventName, bubbleEvent, true);
-        ev['args'] = eventArgs;
+        (ev as any)['args'] = eventArgs;
         retVal = target.dispatchEvent(ev);
-      } else if (document['createEventObject']) { // IE8
-        let evObj = document['createEventObject'](eventArgs);
+      } else if ((document as any)['createEventObject']) { // IE8
+        let evObj = (document as any)['createEventObject'](eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }

@@ -16,7 +16,7 @@ export interface IList {
   scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void;
 }
 
-export interface IListProps extends React.HTMLProps<List | HTMLDivElement> {
+export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
   /**
    * Optional callback to access the IList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
