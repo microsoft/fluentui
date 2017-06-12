@@ -34,7 +34,7 @@ export interface IIconStyles {
   imageContainer?: IStyle;
 }
 
-export interface IIconProps extends React.HTMLProps<HTMLElement> {
+export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
    *
