@@ -1,0 +1,50 @@
+import * as React from 'react';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import {
+  ExampleCard,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
+import { HoverCardCustomExample } from './examples/HoverCard.Custom.Example';
+import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
+
+import './HoverCardPage.scss';
+
+const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
+const HoverCardCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Custom.Example.tsx') as string;
+
+export class HoverCardPage extends React.Component<any, any> {
+  public render() {
+    return (
+      <ComponentPage
+        title='HoverCard'
+        componentName='HoverCardExample'
+        exampleCards={
+          <LayerHost>
+            <ExampleCard title='HoverCard' code={ HoverCardBasicExampleCode }>
+              <HoverCardBasicExample />
+            </ExampleCard>
+
+            <ExampleCard title='Custom HoverCard' code={ HoverCardCustomExampleCode }>
+              <HoverCardCustomExample />
+            </ExampleCard>
+          </LayerHost>
+        }
+        propertiesTables={
+          <PropertiesTableSet
+            sources={ [
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.Props.ts')
+            ] }
+          />
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/HoverCard'>HoverCards</Link>
+            <span> supplement content associated with a specific UI component.</span>
+          </div>
+        }
+      />
+    );
+  }
+}
