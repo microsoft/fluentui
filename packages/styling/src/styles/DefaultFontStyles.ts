@@ -130,7 +130,6 @@ function _createFont(size: string, weight: number): IRawStyle {
   return {
     fontFamily: _getFontFamily(),
     MozOsxFontSmoothing: 'grayscale',
-    MsHighContrastAdjust: 'none',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
     fontWeight: weight
