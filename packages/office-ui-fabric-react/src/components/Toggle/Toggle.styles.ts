@@ -84,7 +84,7 @@ export const getStyles = memoizeFunction((
       top: '.2em',
       transition: 'all 0.1s ease',
       borderColor: thumbBackground,
-      borderWidth: '.28em',
+      borderWidth: '.27em',
       borderStyle: 'solid',
       left: '.2em'
     },
