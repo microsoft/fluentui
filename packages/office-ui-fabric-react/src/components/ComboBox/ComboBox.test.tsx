@@ -4,11 +4,11 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { mount, shallow } from 'enzyme';
-import { KeyCodes } from '../../utilities';
+import { KeyCodes } from '../../Utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
+import { ISelectableOption } from '../../Utilities/selectableOption/SelectableOption.Props';
 
 const DEFAULT_OPTIONS: ISelectableOption[] = [
   { key: '1', text: '1' },
