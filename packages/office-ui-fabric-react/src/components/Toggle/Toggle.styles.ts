@@ -79,13 +79,13 @@ export const getStyles = memoizeFunction((
     },
 
     thumb: {
-      width: '.5em',
-      height: '.5em',
       borderRadius: '.5em',
       position: 'absolute',
       top: '.2em',
       transition: 'all 0.1s ease',
-      backgroundColor: thumbBackground,
+      borderColor: thumbBackground,
+      borderWidth: '.28em',
+      borderStyle: 'solid',
       left: '.2em'
     },
 
