@@ -11,13 +11,11 @@ export function findIndex(array: any[], cb: (item: any, index?: number) => boole
   return index;
 }
 
-export function createArray(size: number, getItem?: (index?: number) => any) {
+export function createArray(size: number, getItem: (index?: number) => any) {
   let array = [];
 
   for (let i = 0; i < size; i++) {
-    if (getItem) {
-      array.push(getItem(i));
-    }
+    array.push(getItem(i));
   }
 
   return array;
