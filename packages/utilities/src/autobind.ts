@@ -30,7 +30,7 @@ export function autobind<T extends Function>(target: any, key: string, descripto
       return fnBound;
     },
 
-    set(newValue) {
+    set(newValue: any) {
       Object.defineProperty(this, key, {
         configurable: true,
         writable: true,

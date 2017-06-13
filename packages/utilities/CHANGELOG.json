@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.2.0",
+      "tag": "@uifabric/utilities_v4.2.0",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.1.2",
       "tag": "@uifabric/utilities_v4.1.2",
       "date": "Thu, 08 Jun 2017 00:18:05 GMT",

@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.7.3",
+      "tag": "@uifabric/styling_v0.7.3",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.1.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.2",
       "tag": "@uifabric/styling_v0.7.2",
       "date": "Fri, 09 Jun 2017 10:10:47 GMT",

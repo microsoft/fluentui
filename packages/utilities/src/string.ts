@@ -11,20 +11,20 @@ const FORMAT_REGEX = /\{\d+\}/g;
  * Example "I love {0} every {1}".format("CXP") will result in a Debug Exception.
  */
 export function format(s: string, ...values: any[]): string {
-    'use strict';
+  'use strict';
 
-    let args = values;
-    // Callback match function
-    function replace_func(match: string) {
-        // looks up in the args
-        let replacement = args[match.replace(FORMAT_ARGS_REGEX, '')];
+  let args = values;
+  // Callback match function
+  function replace_func(match: string) {
+    // looks up in the args
+    let replacement = args[match.replace(FORMAT_ARGS_REGEX, '') as any];
 
-        // catches undefined in nondebug and null in debug and nondebug
-        if (replacement === null || replacement === undefined) {
-            replacement = '';
-        }
-
-        return replacement;
+    // catches undefined in nondebug and null in debug and nondebug
+    if (replacement === null || replacement === undefined) {
+      replacement = '';
     }
-    return (s.replace(FORMAT_REGEX, replace_func));
+
+    return replacement;
+  }
+  return (s.replace(FORMAT_REGEX, replace_func));
 }

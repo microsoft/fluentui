@@ -1,27 +1,39 @@
 {
   "exploreLinks": {
-    "firstMenuColumn":  [
+    "firstMenuColumn": [
       {
         "label": "Why Office?",
-        "href": "http://dev.office.com/opportunity"
+        "href": "https://dev.office.com/opportunity"
       },
       {
         "label": "Office UI Fabric",
-        "href": "http://dev.office.com/fabric"
+        "href": "https://dev.office.com/fabric"
       },
       {
         "label": "Microsoft Graph",
-        "href": "http://graph.microsoft.io/"
+        "href": "https://developer.microsoft.com/graph"
       },
       {
         "label": "Better with Office",
-        "href": "http://betterwith.office.com/"
+        "href": "https://betterwith.office.com/"
+      },
+      {
+        "label": "Go To Market",
+        "href": "https://dev.office.com/go-to-market"
+      },
+      {
+        "label": "Industry Verticals",
+        "href": "https://dev.office.com/industry-verticals"
+      },
+      {
+        "label": "Business Platform",
+        "href": "https://businessplatform.microsoft.com/"
       }
     ],
     "secondMenuColumn": [
       {
         "label": "Word",
-        "href": "http://dev.office.com/word",
+        "href": "https://dev.office.com/word",
         "icon": {
           "iconClass": "word",
           "bgColor": "blue"
@@ -29,7 +41,7 @@
       },
       {
         "label": "Excel",
-        "href": "http://dev.office.com/excel",
+        "href": "https://dev.office.com/excel",
         "icon": {
           "iconClass": "excel",
           "bgColor": "green"
@@ -37,7 +49,7 @@
       },
       {
         "label": "PowerPoint",
-        "href": "http://dev.office.com/powerpoint",
+        "href": "https://dev.office.com/powerpoint",
         "icon": {
           "iconClass": "powerpoint",
           "bgColor": "orangeLight"
@@ -45,7 +57,7 @@
       },
       {
         "label": "Outlook",
-        "href": "http://dev.outlook.com/",
+        "href": "https://dev.outlook.com/",
         "icon": {
           "iconClass": "outlook",
           "bgColor": "blue"
@@ -53,7 +65,7 @@
       },
       {
         "label": "OneDrive",
-        "href": "http://dev.onedrive.com/",
+        "href": "https://dev.onedrive.com/",
         "icon": {
           "iconClass": "onedrive",
           "bgColor": "blue"
@@ -61,7 +73,7 @@
       },
       {
         "label": "OneNote",
-        "href": "http://dev.onenote.com/",
+        "href": "https://dev.onenote.com/",
         "icon": {
           "iconClass": "onenote",
           "bgColor": "magenta"
@@ -69,7 +81,7 @@
       },
       {
         "label": "SharePoint",
-        "href": "https://msdn.microsoft.com/en-us/library/office/dn833469.aspx",
+        "href": "https://dev.office.com/sharepoint",
         "icon": {
           "iconClass": "sharepoint",
           "bgColor": "blueLight"
@@ -77,7 +89,7 @@
       },
       {
         "label": "Skype",
-        "href": "http://dev.office.com/skype",
+        "href": "https://dev.office.com/skype",
         "icon": {
           "iconClass": "skype",
           "bgColor": "blueLight"
@@ -85,7 +97,7 @@
       },
       {
         "label": "Access",
-        "href": "https://msdn.microsoft.com/en-us/library/office/dn605890.aspx",
+        "href": "https://msdn.microsoft.com/en-us/library/office/fp179695.aspx",
         "icon": {
           "iconClass": "access",
           "bgColor": "redDark"
@@ -93,7 +105,7 @@
       },
       {
         "label": "Project",
-        "href": "https://msdn.microsoft.com/en-us/library/office/ms512767.aspx",
+        "href": "https://dev.office.com/project",
         "icon": {
           "iconClass": "project",
           "bgColor": "teal"
@@ -101,7 +113,7 @@
       },
       {
         "label": "Yammer",
-        "href": "http://dev.yammer.com/",
+        "href": "https://dev.yammer.com/",
         "icon": {
           "iconClass": "yammer",
           "bgColor": "blue"
@@ -112,28 +124,28 @@
         "href": "https://dev.office.com/microsoft-teams",
         "icon": {
           "iconClass": "microsoftTeams",
-          "bgColor": ""
+          "bgColor": "blue"
         }
       }
     ],
     "thirdMenuColumn": [
       {
         "label": "Android",
-        "href": "http://dev.office.com/android",
+        "href": "https://dev.office.com/android",
         "icon": {
           "iconClass": "android"
         }
       },
       {
         "label": "ASP .NET",
-        "href": "http://dev.office.com/asp-dot-net",
+        "href": "https://dev.office.com/asp-dot-net",
         "icon": {
           "iconClass": "aspnet"
         }
       },
       {
         "label": "iOS",
-        "href": "http://dev.office.com/ios",
+        "href": "https://dev.office.com/ios",
         "icon": {
           "iconClass": "ios",
           "bgColor": ""
@@ -141,35 +153,35 @@
       },
       {
         "label": "JavaScript",
-        "href": "http://dev.office.com/js",
+        "href": "https://dev.office.com/js",
         "icon": {
           "iconClass": "javascript"
         }
       },
       {
         "label": "Node.js",
-        "href": "http://dev.office.com/node",
+        "href": "https://dev.office.com/node",
         "icon": {
           "iconClass": "node"
         }
       },
       {
         "label": "PHP (coming soon)",
-        "href": "https://graph.microsoft.io/getting-started",
+        "href": "https://developer.microsoft.com/graph/quick-start",
         "icon": {
           "iconClass": "php"
         }
       },
       {
         "label": "Python (coming soon)",
-        "href": "https://graph.microsoft.io/getting-started",
+        "href": "https://developer.microsoft.com/graph/quick-start",
         "icon": {
           "iconClass": "python"
         }
       },
       {
         "label": "Ruby (coming soon)",
-        "href": "https://graph.microsoft.io/getting-started",
+        "href": "https://developer.microsoft.com/graph/quick-start",
         "icon": {
           "iconClass": "ruby"
         }
