@@ -41,6 +41,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public render() {
     let {
+      ariaDescribedById,
+      ariaLabelledById,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -58,10 +60,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       title,
       type,
       contentClassName,
-      topButtonsProps,
-      ariaLabelledById,
-      ariaDescribedById
-
+      topButtonsProps
     } = this.props;
     let { id } = this.state;
 
