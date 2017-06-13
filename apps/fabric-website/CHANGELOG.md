@@ -1,6 +1,18 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+
+## 4.5.36
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Patches
+
+- Enable no implicit any in utilities package
+
+## 4.5.35
+Thu, 08 Jun 2017 00:18:05 GMT
+
+*Changes not tracked*
 
 ## 4.5.34
 Tue, 06 Jun 2017 07:41:47 GMT

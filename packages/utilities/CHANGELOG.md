@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 06 Jun 2017 06:06:46 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+
+## 4.2.0
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Minor changes
+
+- Enable no implicit any in utilities package
+
+## 4.1.2
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Patches
+
+- Adding a try-catch around setting RTL in local storage for the browser
 
 ## 4.1.1
 Tue, 06 Jun 2017 06:06:46 GMT
