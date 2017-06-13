@@ -91,21 +91,21 @@ export const getStyles = memoizeFunction((
 
     thumbChecked: {
       borderColor: thumbCheckedBackground,
-      borderWidth: '.28em',
+      borderWidth: '.27em',
       borderStyle: 'solid',
       left: '1.4em'
     },
 
     thumbDisabled: {
       borderColor: thumbDisabledBackground,
-      borderWidth: '.28em',
+      borderWidth: '.27em',
       borderStyle: 'solid',
       left: '.2em',
     },
 
     thumbCheckedDisabled: {
       borderColor: thumbCheckedDisabledBackground,
-      borderWidth: '.28em',
+      borderWidth: '.27em',
       borderStyle: 'solid',
       left: '1.4em'
     },
