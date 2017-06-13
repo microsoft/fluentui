@@ -8,7 +8,7 @@ import { KeyCodes } from '../../Utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
-import { ISelectableOption } from '../../Utilities/selectableOption/SelectableOption.Props';
+import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
 const DEFAULT_OPTIONS: ISelectableOption[] = [
   { key: '1', text: '1' },
