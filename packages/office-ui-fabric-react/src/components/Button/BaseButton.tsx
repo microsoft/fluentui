@@ -138,7 +138,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         buttonProps,
         {
           'onClick': this._onToggleMenu,
-          'aria-expanded': this.state.menuProps ? true : false
+          'aria-expanded': this.state.menuProps ? true : false,
+          'aria-haspopup': true
         }
       );
     }
