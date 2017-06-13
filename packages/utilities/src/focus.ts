@@ -10,7 +10,7 @@ const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
 
   return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
 }
@@ -18,7 +18,7 @@ export function getFirstFocusable(
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
 
   return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
 }
@@ -30,7 +30,7 @@ export function getLastFocusable(
  */
 export function focusFirstChild(
   rootElement: HTMLElement): boolean {
-  let element: HTMLElement = getNextElement(rootElement, rootElement, true, false, false, true);
+  let element: HTMLElement | null = getNextElement(rootElement, rootElement, true, false, false, true);
 
   if (element) {
     element.focus();
@@ -42,11 +42,11 @@ export function focusFirstChild(
 /** Traverse to find the previous element. */
 export function getPreviousElement(
   rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
 
   if (!currentElement ||
     currentElement === rootElement) {
@@ -100,11 +100,11 @@ export function getPreviousElement(
 /** Traverse to find the next focusable element. */
 export function getNextElement(
   rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement | null {
 
   if (
     !currentElement ||
@@ -159,7 +159,7 @@ export function getNextElement(
   return null;
 }
 
-export function isElementVisible(element: HTMLElement): boolean {
+export function isElementVisible(element: HTMLElement | undefined | null): boolean {
   // If the element is not valid, return false.
   if (!element || !element.getAttribute) {
     return false;
@@ -189,10 +189,13 @@ export function isElementTabbable(element: HTMLElement): boolean {
   let tabIndex = -1;
 
   if (element && element.getAttribute) {
-    tabIndex = parseInt(element.getAttribute('tabIndex'), 10);
+    let tabIndexAttributeValue = element.getAttribute('tabIndex');
+    if (tabIndexAttributeValue) {
+      tabIndex = parseInt(tabIndexAttributeValue, 10);
+    }
   }
 
-  let isFocusableAttribute: string = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
+  let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
 
   return (
     !!element && isFocusableAttribute !== 'false' &&
@@ -209,15 +212,16 @@ export function isElementTabbable(element: HTMLElement): boolean {
 }
 
 export function isElementFocusZone(element?: HTMLElement): boolean {
-  return element && element.getAttribute && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+  return !!(element && element.getAttribute && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE));
 }
 
 export function isElementFocusSubZone(element?: HTMLElement): boolean {
-  return element && element.getAttribute && element.getAttribute(FOCUSZONE_SUB_ATTRIBUTE) === 'true';
+  return !!(element && element.getAttribute && element.getAttribute(FOCUSZONE_SUB_ATTRIBUTE) === 'true');
 }
 
 export function doesElementContainFocus(element: HTMLElement) {
-  let currentActiveElement: HTMLElement = getDocument(element).activeElement as HTMLElement;
+  let document = getDocument(element);
+  let currentActiveElement: HTMLElement | undefined = document && document.activeElement as HTMLElement;
   if (currentActiveElement && elementContains(element, currentActiveElement)) {
     return true;
   }

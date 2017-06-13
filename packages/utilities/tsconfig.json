@@ -12,6 +12,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "noImplicitAny": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "types": [
       "chai",
