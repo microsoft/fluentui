@@ -61,6 +61,11 @@ export interface IActivityItemStyles {
    * Styles applied to the names mentioned in the activity item.
    */
   nameText?: IStyle;
+
+  /**
+   * Styles applied to the timestamp at the end of each activity item.
+   */
+  timeStamp?: IStyle;
 }
 
 export enum IActivityType {
