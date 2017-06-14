@@ -131,13 +131,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
-          aria-readonly={ true }
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
-          aria-owns={ id + '-list' }
+          aria-owns={ isOpen ? id + '-list' : null }
         >
           <span
             id={ id + '-option' }
@@ -148,6 +147,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             }
             key={ selectedIndex }
             aria-atomic={ true }
+            role='textbox'
+            aria-readonly='true'
           >
             { // If option is selected render title, otherwise render the placeholder text
               selectedOption ? (
