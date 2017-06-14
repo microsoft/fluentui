@@ -199,11 +199,11 @@ export function isElementTabbable(element: HTMLElement): boolean {
 
   return (
     !!element && isFocusableAttribute !== 'false' &&
+    tabIndex >= 0 || !tabIndex &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON') ||
       (element.tagName === 'INPUT') ||
       (element.tagName === 'TEXTAREA') ||
-      (tabIndex >= 0) ||
       (element.getAttribute && (
         isFocusableAttribute === 'true' ||
         element.getAttribute('role') === 'button'
