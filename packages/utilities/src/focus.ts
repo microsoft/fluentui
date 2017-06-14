@@ -202,7 +202,6 @@ export function isElementTabbable(element: HTMLElement): boolean {
   return (
     !!element &&
     isFocusableAttribute !== 'false' &&
-    tabIndex !== -1 &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON') ||
       (element.tagName === 'INPUT') ||
