@@ -37,7 +37,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
       return (
         <div {...wrapperDivProps}>
           { this.props.onRenderItem(item) }
-        </div >
+        </div>
       );
     });
   }
