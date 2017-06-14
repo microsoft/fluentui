@@ -446,6 +446,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           const targetRect = element.getBoundingClientRect();
           const elementDistance = getDistanceFromCenter(activeRect, targetRect);
 
+          if (elementDistance === -1 && candidateDistance === -1) {
+            candidateElement = element;
+            break;
+          }
+
           if (elementDistance > -1 && (candidateDistance === -1 || elementDistance < candidateDistance)) {
             candidateDistance = elementDistance;
             candidateElement = element;
@@ -490,6 +495,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectBottom = Math.floor(activeRect.bottom);
 
+      if (targetRectTop < activeRectBottom) {
+        return 999999999;
+      }
+
       if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
         (targetRectTop === targetTop)) {
         targetTop = targetRectTop;
@@ -523,6 +532,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectTop = Math.floor(activeRect.top);
 
+      if (targetRectBottom > activeRectTop) {
+        return 999999999;
+      }
+
       if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
         (targetRectTop === targetTop)) {
         targetTop = targetRectTop;
@@ -543,20 +556,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusLeft(): boolean {
-    let targetTop = -1;
     const topAlignment = this._focusAlignment.top;
 
     if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
-      if ((
-        targetTop === -1 &&
+      if (
+        targetRect.bottom > activeRect.top &&
         targetRect.right <= activeRect.right &&
-        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
-        (targetRect.top === targetTop)) {
+        this.props.direction !== FocusZoneDirection.vertical
+      ) {
 
-        targetTop = targetRect.top;
-        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = activeRect.right - targetRect.right;
       }
 
       return distance;
@@ -569,20 +580,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusRight(): boolean {
-    let targetTop = -1;
     const topAlignment = this._focusAlignment.top;
 
     if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
-      if ((
-        targetTop === -1 &&
+      if (
+        targetRect.top < activeRect.bottom &&
         targetRect.left >= activeRect.left &&
-        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
-        (targetRect.top === targetTop)) {
+        this.props.direction !== FocusZoneDirection.vertical
+      ) {
 
-        targetTop = targetRect.top;
-        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = targetRect.left - activeRect.left;
       }
 
       return distance;
