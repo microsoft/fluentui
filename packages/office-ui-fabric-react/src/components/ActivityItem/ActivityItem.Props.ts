@@ -43,14 +43,14 @@ export interface IActivityItemStyles {
   root?: IStyle;
 
   /**
-   * Styles applied to the container of the persona image or activity type icon.
-   */
-  personaContainer?: IStyle;
-
-  /**
    * Styles applied to the main container of the activity's description.
    */
   activityContent?: IStyle;
+
+  /**
+   * Styles applied to the persona of the user that did this activity.
+   */
+  activityPersona?: IStyle;
 
   /**
    * Styles applied to the text of comments.
@@ -58,9 +58,19 @@ export interface IActivityItemStyles {
   commentText?: IStyle;
 
   /**
+   * Styles applied to personas when multiple users are involved in a single activity.
+   */
+  multiPersona?: IStyle;
+
+  /**
    * Styles applied to the names mentioned in the activity item.
    */
   nameText?: IStyle;
+
+  /**
+   * Styles applied to the container of the persona image or activity type icon.
+   */
+  personaContainer?: IStyle;
 
   /**
    * Styles applied to the timestamp at the end of each activity item.

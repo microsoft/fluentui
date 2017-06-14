@@ -5,8 +5,10 @@ import { ActivityItem } from '../ActivityItem';
 import './ActivityItemExample.scss';
 import { TestImages } from '../../../common/TestImages';
 import { activityItemExamples } from './ActivityItemExampleData';
+import { IActivityItemProps } from '../ActivityItem.Props';
 
-export class ActivityItemExample extends React.Component<any, any> {
+
+export class ActivityItemExample extends React.Component<React.Props<ActivityItemExample>, {}> {
   public render() {
     let activityExampleList = [];
     activityItemExamples.forEach((item) => {

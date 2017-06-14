@@ -28,13 +28,22 @@ export const getStyles = memoizeFunction((
       }
     ],
 
-    personaContainer: {
-      width: DEFAULT_PERSONA_SIZE,
-      height: DEFAULT_PERSONA_SIZE
-    },
-
     activityContent: {
       padding: '0 12px'
+    },
+
+    personaContainer: {
+      width: DEFAULT_PERSONA_SIZE,
+      height: DEFAULT_PERSONA_SIZE,
+    },
+
+    activityPersona: {
+      display: 'block'
+    },
+
+    multiPersona: {
+      width: '16px',
+      height: '16px'
     },
 
     commentText: {
