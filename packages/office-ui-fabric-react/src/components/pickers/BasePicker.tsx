@@ -108,7 +108,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         onKeyDown={ this.onKeyDown }>
         <FocusZone
           ref={ this._resolveRef('focusZone') }
-          isCircularNavigation={ true }
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
