@@ -106,7 +106,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       required,
       errorMessage,
       onRenderTitle = this._onRenderTitle,
-      onRenderContainer = this._onRenderContainer
+      onRenderContainer = this._onRenderContainer,
+      onRenderPlaceHolder = this._onRenderPlaceHolder
     } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
@@ -159,7 +160,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               selectedOption ? (
                 onRenderTitle(selectedOption, this._onRenderTitle)
               ) :
-                this._onRenderPlaceHolder(this.props)
+                onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
           <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='chevronDown' />
