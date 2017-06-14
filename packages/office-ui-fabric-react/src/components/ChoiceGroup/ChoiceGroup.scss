@@ -95,18 +95,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   position: absolute;
   @include ms-left($ms-choiceField-field-size / 2);
   @include ms-right(0);
-  transition-property: top, left, right, width, height;
+  transition-property: border-width;
   transition-duration: $ms-choiceField-transition-duration-inner;
   transition-timing-function: $ms-choiceField-transition-timing;
   box-sizing: border-box;
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-contrastBlackDisabled;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-contrastWhiteDisabled;
-  }
 }
 
 .field {
@@ -144,18 +136,18 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
 
     &::after { // the dot
-      background-color: $radioButton-dot-color;
+      border: 5px solid $radioButton-dot-color;
       top: 4px;
       @include ms-left(5px);
       width: 10px;
       height: 10px;
 
       @media screen and (-ms-high-contrast: active) {
-        background-color: $ms-color-contrastBlackSelected;
+        border-color: $ms-color-contrastBlackSelected;
       }
 
       @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: $ms-color-contrastWhiteSelected;
+        border-color: $ms-color-contrastWhiteSelected;
       }
     }
 

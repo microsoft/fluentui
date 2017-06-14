@@ -136,7 +136,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   //
   &.labelIsChecked {
     &::before {
-      border: 10px solid $ms-color-themePrimary;
+      border: 1px solid $ms-color-themePrimary;
       background-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active), (-ms-high-contrast: black-on-white) {
@@ -156,10 +156,13 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
       @include highContrast-border($ms-color-white, $ms-color-black);
     }
 
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-themeDarkAlt;
+    &:not(.labelIsDisabled) {
+      &:hover,
+      &:focus {
+        &::before {
+          border-color: $ms-color-themeDarkAlt;
+          background-color: $ms-color-themeDarkAlt;
+        }
       }
     }
   }
@@ -168,13 +171,6 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   //
   &.labelIsDisabled {
     cursor: default;
-
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
-    }
 
     &::before {
       background-color: $ms-color-neutralTertiaryAlt;

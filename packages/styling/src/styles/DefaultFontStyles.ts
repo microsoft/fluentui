@@ -10,7 +10,7 @@ import { IFabricConfig } from '../interfaces/IFabricConfig';
 const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
-const FontFamilyFallbacks = `-apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
+const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
 
 // Font face names to be registered.
 const FontNameArabic = 'Segoe UI Web (Arabic)';
@@ -130,7 +130,6 @@ function _createFont(size: string, weight: number): IRawStyle {
   return {
     fontFamily: _getFontFamily(),
     MozOsxFontSmoothing: 'grayscale',
-    MsHighContrastAdjust: 'none',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
     fontWeight: weight
@@ -174,6 +173,7 @@ function _registerDefaultFontFaces(): void {
   if (baseUrl) {
     const fontUrl = `${baseUrl}/fonts`;
     const iconUrl = `${baseUrl}/icons`;
+    const iconVersion = '2.30';
 
     // Produce @font-face definitions for all supported web fonts.
     _registerFontFaceSet(fontUrl, FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
@@ -195,7 +195,7 @@ function _registerDefaultFontFaces(): void {
     _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
 
     // Register icon urls.
-    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
+    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons-${iconVersion}`, FontWeights.regular);
   }
 }
 

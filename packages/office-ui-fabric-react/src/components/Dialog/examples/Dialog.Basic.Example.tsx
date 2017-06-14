@@ -21,6 +21,8 @@ export class DialogBasicExample extends React.Component<any, any> {
           onClick={ this._showDialog.bind(this) }
           text='Open Dialog'
         />
+        <label id='myLabel' className='screenReaderOnly'>All emails together Your Inbox has changed.
+          No longer does it include favorites, it is a singular destination for your emails.</label>
         <Dialog
           isOpen={ this.state.showDialog }
           type={ DialogType.normal }
@@ -29,6 +31,8 @@ export class DialogBasicExample extends React.Component<any, any> {
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           isBlocking={ false }
           containerClassName='ms-dialogMainOverride'
+          ariaLabelledById='myLabel'
+          ariaDescribedById=''
         >
           <ChoiceGroup
             options={ [
