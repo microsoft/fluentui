@@ -7,10 +7,10 @@ import {
   DefaultPalette,
   DefaultFontStyles
 } from '../styles/index';
-import { Customizer } from '@uifabric/utilities/lib/index';
+import { Customizer, getWindow } from '@uifabric/utilities/lib/index';
 export interface ITheme {
-  palette?: IPalette;
-  fonts?: IFontStyles;
+  palette: IPalette;
+  fonts: IFontStyles;
   semanticColors?: ISemanticColors;
 }
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
@@ -20,6 +20,14 @@ let _theme: ITheme = {
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
   fonts: DefaultFontStyles
 };
+
+let win = getWindow();
+
+// tslint:disable:no-string-literal
+if (win && win['FabricConfig'] && win['FabricConfig'].theme) {
+  _theme = createTheme(win['FabricConfig'].theme);
+}
+// tslint:enable:no-string-literal
 
 Customizer.setDefault('theme', _theme);
 
@@ -33,7 +41,7 @@ export function getTheme(): ITheme {
 /**
  * Loads the default global theme definition.
  */
-export function loadTheme(theme: ITheme): void {
+export function loadTheme(theme: Partial<ITheme>): void {
   _theme = createTheme(theme);
 
   // Load the legacy theme from the palette.
@@ -45,11 +53,8 @@ export function loadTheme(theme: ITheme): void {
 /**
  * Creates a custom theme definition which can be used with the Customizer.
  */
-export function createTheme(theme: ITheme): ITheme {
-  let newPalette = {
-    ..._theme.palette,
-    ...theme.palette
-  };
+export function createTheme(theme: Partial<ITheme>): ITheme {
+  let newPalette = { ..._theme.palette, ...theme.palette };
 
   return {
     palette: newPalette,
@@ -57,10 +62,7 @@ export function createTheme(theme: ITheme): ITheme {
       ..._theme.fonts,
       ...theme.fonts
     },
-    semanticColors: {
-      ..._makeSemanticColorsFromPalette(newPalette),
-      ...theme.semanticColors
-    }
+    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
   } as ITheme;
 }
 
