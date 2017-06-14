@@ -200,7 +200,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderNavigation(props): JSX.Element {
+  private _onRenderNavigation(props: IPanelProps): JSX.Element {
     let {
       closeButtonAriaLabel,
       hasCloseButton
@@ -218,16 +218,17 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderHeader(props): JSX.Element {
+  private _onRenderHeader(props: IPanelProps): JSX.Element {
     let {
       headerText,
-      headerTextId,
       headerClassName = '',
     } = props;
+
+    let { id } = this.state;
     return (
       headerText &&
       <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId } role='heading'>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ id + '-headerText' } role='heading'>
           { headerText }
         </p>
       </div>
@@ -235,7 +236,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderBody(props): JSX.Element {
+  private _onRenderBody(props: IPanelProps): JSX.Element {
     return (
       <div className={ css('ms-Panel-content', styles.content) } ref={ this._resolveRef('_content') }>
         { props.children }
@@ -244,7 +245,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderFooter(props): JSX.Element {
+  private _onRenderFooter(props: IPanelProps): JSX.Element {
     let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
     return (
