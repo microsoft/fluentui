@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Don't use the index as the key for overflow set",
+      "comment": "OverflowSet: Don't use the index as the key",
       "type": "patch"
     }
   ],
