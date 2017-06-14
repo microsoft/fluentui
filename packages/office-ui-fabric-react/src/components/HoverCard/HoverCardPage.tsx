@@ -6,13 +6,11 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { HoverCardCustomExample } from './examples/HoverCard.Custom.Example';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 
 import './HoverCardPage.scss';
 
 const HoverCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Basic.Example.tsx') as string;
-const HoverCardCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/HoverCard/examples/HoverCard.Custom.Example.tsx') as string;
 
 export class HoverCardPage extends React.Component<any, any> {
   public render() {
@@ -24,10 +22,6 @@ export class HoverCardPage extends React.Component<any, any> {
           <LayerHost>
             <ExampleCard title='HoverCard' code={ HoverCardBasicExampleCode }>
               <HoverCardBasicExample />
-            </ExampleCard>
-
-            <ExampleCard title='Custom HoverCard' code={ HoverCardCustomExampleCode }>
-              <HoverCardCustomExample />
             </ExampleCard>
           </LayerHost>
         }

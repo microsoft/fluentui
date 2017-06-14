@@ -17,6 +17,7 @@ export class HoverCardBasicExample extends BaseComponent<any, any> {
         </HoverCardHost>
         <HoverCardHost content='This is the HoverCard' id='myID2' calloutProps={ { gapSpace: 0 } }>
           <DefaultButton aria-describedby='myID2'>Hover Over Me</DefaultButton>
+          <DefaultButton aria-describedby='myID2'>Hover Over Me</DefaultButton>
         </HoverCardHost>
       </div>
     );

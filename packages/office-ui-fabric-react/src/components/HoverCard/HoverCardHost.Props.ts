@@ -3,6 +3,7 @@ import { HoverCardHost } from './HoverCardHost';
 import { HoverCardDelay, IHoverCardProps } from './HoverCard.Props';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { IStyle } from '../../Styling';
 
 export interface IHoverCardHost {
 
@@ -52,7 +53,14 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
   directionalHint?: DirectionalHint;
 
   /**
-   * Optional class name to apply to tooltip host.
+   * Custom styles for this component
    */
-  hostClassName?: string;
+  styles?: IHoverCardHostStyles;
+}
+
+export interface IHoverCardHostStyles {
+  /**
+   * Style for the host element in the default enabled, non-toggled state.
+   */
+  host?: IStyle;
 }

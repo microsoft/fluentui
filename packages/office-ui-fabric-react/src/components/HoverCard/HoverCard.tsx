@@ -5,28 +5,25 @@ import {
   BaseComponent,
   css,
   getNativeProps,
-  divProperties
+  divProperties,
+  memoize
 } from '../../Utilities';
-import { IHoverCardProps, HoverCardDelay } from './HoverCard.Props';
+import { IHoverCardProps, HoverCardDelay, IHoverCardStyles } from './HoverCard.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import * as stylesImport from './HoverCard.scss';
-const styles: any = stylesImport;
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../Styling';
+
+import { getStyles } from './HoverCard.styles';
 
 export class HoverCard extends BaseComponent<IHoverCardProps, any> {
 
   // Specify default props values
   public static defaultProps = {
-    directionalHint: DirectionalHint.topCenter,
-    delay: HoverCardDelay.medium,
-    calloutProps: {
-      isBeakVisible: false,
-      gapSpace: 0,
-      setInitialFocus: true,
-      doNotLayer: false
-    }
+    directionalHint: DirectionalHint.bottomAutoEdge,
+    delay: HoverCardDelay.medium
   };
+
+  private _styles: IHoverCardStyles;
 
   public render() {
     const {
@@ -36,34 +33,33 @@ export class HoverCard extends BaseComponent<IHoverCardProps, any> {
       directionalHint,
       delay,
       id,
-      onRenderContent = this._onRenderContent
+      styles: customStyles
     } = this.props;
+    this._styles = getStyles(customStyles);
 
     return (
       <Callout
         className={ css(
           'ms-HoverCard',
           AnimationClassNames.fadeIn200,
-          styles.root, {
-            [styles.hasMediumDelay]: delay === HoverCardDelay.medium
-          }
+          this._styles.root
         ) }
         targetElement={ targetElement }
         directionalHint={ directionalHint }
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
       >
-        <div className={ css('ms-HoverCard-content', styles.content) } id={ id } role='tooltip'>
-          { onRenderContent(this.props, this._onRenderContent) }
+        <div className={ css('ms-HoverCard-card', this._styles.card) } id={ id }>
+          { this._onRenderContent() }
         </div>
       </Callout >
     );
   }
 
-  private _onRenderContent(props: IHoverCardProps): JSX.Element {
+  private _onRenderContent(): JSX.Element {
     return (
-      <p className={ css('ms-HoverCard-subText', styles.subText) }>
-        { props.content }
+      <p className={ css('ms-HoverCard-subText', this._styles.content) }>
+        { this.props.content }
       </p>
     );
   }

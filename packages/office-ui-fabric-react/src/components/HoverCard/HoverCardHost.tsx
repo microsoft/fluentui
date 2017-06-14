@@ -8,17 +8,24 @@ import {
   divProperties,
   getNativeProps,
   getId,
-  assign
+  assign,
+  memoize
 } from '../../Utilities';
-import { IHoverCardHostProps } from './HoverCardHost.Props';
+import {
+  mergeStyles
+} from '../../Styling';
+import { IHoverCardHostProps, IHoverCardHostStyles } from './HoverCardHost.Props';
 import { HoverCard } from './HoverCard';
 import { HoverCardDelay } from './HoverCard.Props';
 
-import * as stylesImport from './HoverCardHost.scss';
-const styles: any = stylesImport;
+import { getStyles } from './HoverCardHost.styles';
 
 export interface IHoverCardHostState {
   isHoverCardVisible?: boolean;
+}
+
+interface IHoverCardClassNames {
+  host: string;
 }
 
 export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCardHostState> {
@@ -49,13 +56,16 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
       delay,
       id,
       setAriaDescribedBy = true,
-      hostClassName
+      styles: customStyles
     } = this.props;
     const { isHoverCardVisible } = this.state;
     const hoverCardId = id || getId('hoverCard');
+    const classNames: IHoverCardClassNames = this._getClassNames(
+      getStyles(customStyles)
+    );
     return (
       <div
-        className={ css('ms-HoverCardHost', styles.host, hostClassName) }
+        className={ classNames.host }
         ref={ this._resolveRef('_hoverCardHost') }
         { ...{ onFocusCapture: this._onHoverCardMouseEnter } }
         { ...{ onBlurCapture: this._onHoverCardMouseLeave } }
@@ -73,7 +83,7 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
               content={ content }
               targetElement={ this._getTargetElement() }
               directionalHint={ directionalHint }
-              calloutProps={ assign(calloutProps, { onDismiss: this._onHoverCardCallOutDismiss }) }
+              calloutProps={ assign(calloutProps, { onDismiss: this._onHoverCardCallOutDismiss, isBeakVisible: false }) }
               { ...getNativeProps(this.props, divProperties) }
             >
             </HoverCard>
@@ -97,9 +107,9 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
   // Hide HoverCard
   @autobind
   private _onHoverCardMouseLeave(ev: any) {
-    this.setState({
-      isHoverCardVisible: false
-    });
+    // this.setState({
+    //   isHoverCardVisible: false
+    // });
   }
 
   // Hide HoverCard
@@ -109,4 +119,15 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
       isHoverCardVisible: false
     });
   }
+
+  @memoize
+  private _getClassNames(
+    styles: IHoverCardHostStyles
+    ): IHoverCardClassNames {
+    return {
+      host: mergeStyles(
+        styles.host
+      ) as string
+    };
+  };
 }

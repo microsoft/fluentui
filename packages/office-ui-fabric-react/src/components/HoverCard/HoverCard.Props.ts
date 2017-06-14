@@ -3,6 +3,7 @@ import { HoverCard } from './HoverCard';
 import { ICalloutProps } from '../../Callout';
 import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { IStyle } from '../../Styling';
 
 export interface IHoverCard {
 
@@ -49,9 +50,31 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * Custom styles for this component
+   */
+  styles?: IHoverCardStyles;
 }
 
 export enum HoverCardDelay {
   zero = 0,
   medium = 1
+}
+
+export interface IHoverCardStyles {
+  /**
+   * Style for the root element in the default enabled, non-toggled state.
+   */
+  root?: IStyle;
+
+  /**
+   * Style for the main card element.
+   */
+  card?: IStyle;
+
+  /**
+   * Style for the content element in the default enabled, non-toggled state.
+   */
+  content?: IStyle;
 }
