@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add aria-haspopup to buttons with menuProps",
+      "comment": "Buttons: Added `aria-haspopup` to buttons with menuProps.",
       "type": "patch"
     }
   ],
