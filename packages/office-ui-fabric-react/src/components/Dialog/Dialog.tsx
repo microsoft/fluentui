@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  autobind,
   BaseComponent,
   css,
   getId
@@ -40,6 +41,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public render() {
     let {
+      ariaDescribedById,
+      ariaLabelledById,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -83,8 +86,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         onDismissed={ onDismissed }
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
-        subtitleAriaId={ subText && id + '-subText' }
-        titleAriaId={ title && id + '-title' }
+        subtitleAriaId={ this._getAriaLabelId(ariaDescribedById, subText, id + '-subText') }
+        titleAriaId={ this._getAriaLabelId(ariaLabelledById, title, id + '-title') }
       >
 
         <DialogContent
@@ -100,5 +103,10 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
       </Modal>
     );
+  }
+
+  @autobind
+  private _getAriaLabelId(ariaId: string, text: string, alternativeId: string): string {
+    return ariaId || text && alternativeId;
   }
 }
