@@ -17,7 +17,7 @@ export interface IOverflowSetProps extends React.HTMLAttributes<OverflowSet> {
   /**
    * Method to call when trying to render an item.
   */
-  onRenderItem: IRenderFunction<IOverflowSetItemProps>;
+  onRenderItem: (item: IOverflowSetItemProps) => any;
 
   /**
    * Rendering method for overflow button and contextual menu. The argument to the function is

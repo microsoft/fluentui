@@ -49,6 +49,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _ariaDescriptionId: string;
   private _classNames: IButtonClassNames;
 
+  public componentDidMount() {
+    this.setState({
+      menuProps: this.props.menuOpen ? this.props.menuProps : null
+    });
+  }
+
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
 
@@ -58,7 +64,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName: 'menuIconProps',
       toggled: 'checked'
     });
-
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
@@ -137,7 +142,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       assign(
         buttonProps,
         {
-          'onClick': this._onToggleMenu,
+          'onMouseUp': this._onToggleMenu,
           'aria-expanded': this.state.menuProps ? true : false
         }
       );
@@ -330,9 +335,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onToggleMenu(): void {
-    const { menuProps } = this.props;
+    const { menuProps, onMenuToggled = () => null } = this.props;
     let currentMenuProps = this.state.menuProps;
-
+    onMenuToggled(currentMenuProps ? null : this.props);
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 

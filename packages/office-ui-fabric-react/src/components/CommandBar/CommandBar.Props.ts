@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu';
 import { IButtonStyles } from '../Button';
 import { ISearchBoxProps } from '../../SearchBox';
-import { IRenderFunction } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 import { ICommandBarData } from './CommandBar';
 
