@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[Accessibility] [DropDown] Fix aria-required-children",
+      "comment": "Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened.",
       "type": "patch"
     }
   ],
