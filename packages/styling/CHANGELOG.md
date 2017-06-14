@@ -1,6 +1,19 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 13 Jun 2017 10:13:21 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+
+## 0.8.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions.
+- Updates to version 2.30 of the icon font
+
+### Patches
+
+- Remove high contrast adjust from common styles
+- Enable strictNullChecks in utilities package
 
 ## 0.7.4
 Tue, 13 Jun 2017 10:13:21 GMT
