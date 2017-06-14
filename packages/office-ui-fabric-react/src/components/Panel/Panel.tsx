@@ -26,6 +26,8 @@ export interface IPanelState {
   id?: string;
 }
 
+const HEADER_TEXT_ID_SUFFIX = '-headertext';
+
 export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
 
   public static defaultProps: IPanelProps = {
@@ -91,7 +93,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
-    const headerTextId = id + '-headerText';
+    const headerTextId = id + HEADER_TEXT_ID_SUFFIX;
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
 
     if (!isOpen && !isAnimating) {
@@ -201,7 +203,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   @autobind
   private _onRenderNavigation(props: IPanelProps): JSX.Element {
-    let {
+    const {
       closeButtonAriaLabel,
       hasCloseButton
     } = props;
@@ -219,16 +221,16 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   @autobind
   private _onRenderHeader(props: IPanelProps): JSX.Element {
-    let {
+    const {
       headerText,
       headerClassName = '',
     } = props;
 
-    let { id } = this.state;
+    const { id } = this.state;
     return (
       headerText &&
       <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ id + '-headerText' } role='heading'>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ id + HEADER_TEXT_ID_SUFFIX } role='heading'>
           { headerText }
         </p>
       </div>
