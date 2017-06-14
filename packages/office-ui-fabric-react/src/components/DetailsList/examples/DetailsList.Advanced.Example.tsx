@@ -245,13 +245,13 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         key: 'addRow',
         name: 'Insert row',
         icon: 'Add',
-        onClick: this._onAddRow
+        onMenuClick: this._onAddRow
       },
       {
         key: 'deleteRow',
         name: 'Delete row',
         icon: 'Delete',
-        onClick: this._onDeleteRow
+        onMenuClick: this._onDeleteRow
       },
       {
         key: 'configure',
@@ -264,21 +264,21 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
               name: 'Allow column resizing',
               canCheck: true,
               checked: canResizeColumns,
-              onClick: this._onToggleResizing
+              onMenuClick: this._onToggleResizing
             },
             {
               key: 'headerVisible',
               name: 'Is header visible',
               canCheck: true,
               checked: isHeaderVisible,
-              onClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
+              onMenuClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
             },
             {
               key: 'lazyload',
               name: 'Simulate async loading',
               canCheck: true,
               checked: isLazyLoaded,
-              onClick: this._onToggleLazyLoad
+              onMenuClick: this._onToggleLazyLoad
             },
             {
               key: 'dash',
@@ -294,21 +294,21 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Always',
                     canCheck: true,
                     isChecked: checkboxVisibility === CheckboxVisibility.always,
-                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.always })
+                    onMenuClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.always })
                   },
                   {
                     key: 'checkboxVisibility.onHover',
                     name: 'On hover',
                     canCheck: true,
                     isChecked: checkboxVisibility === CheckboxVisibility.onHover,
-                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.onHover })
+                    onMenuClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.onHover })
                   },
                   {
                     key: 'checkboxVisibility.hidden',
                     name: 'Hidden',
                     canCheck: true,
                     isChecked: checkboxVisibility === CheckboxVisibility.hidden,
-                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
+                    onMenuClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
                   },
                 ]
               }
@@ -323,7 +323,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Fixed columns',
                     canCheck: true,
                     checked: layoutMode === LayoutMode.fixedColumns,
-                    onClick: this._onLayoutChanged,
+                    onMenuClick: this._onLayoutChanged,
                     data: LayoutMode.fixedColumns
                   },
                   {
@@ -331,7 +331,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Justified columns',
                     canCheck: true,
                     checked: layoutMode === LayoutMode.justified,
-                    onClick: this._onLayoutChanged,
+                    onMenuClick: this._onLayoutChanged,
                     data: LayoutMode.justified
                   }
                 ]
@@ -347,7 +347,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'None',
                     canCheck: true,
                     checked: selectionMode === SelectionMode.none,
-                    onClick: this._onSelectionChanged,
+                    onMenuClick: this._onSelectionChanged,
                     data: SelectionMode.none
 
                   },
@@ -356,7 +356,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Single select',
                     canCheck: true,
                     checked: selectionMode === SelectionMode.single,
-                    onClick: this._onSelectionChanged,
+                    onMenuClick: this._onSelectionChanged,
                     data: SelectionMode.single
                   },
                   {
@@ -364,7 +364,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Multi select',
                     canCheck: true,
                     checked: selectionMode === SelectionMode.multiple,
-                    onClick: this._onSelectionChanged,
+                    onMenuClick: this._onSelectionChanged,
                     data: SelectionMode.multiple
                   },
                 ]
@@ -380,7 +380,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Unconstrained',
                     canCheck: true,
                     checked: constrainMode === ConstrainMode.unconstrained,
-                    onClick: this._onConstrainModeChanged,
+                    onMenuClick: this._onConstrainModeChanged,
                     data: ConstrainMode.unconstrained
                   },
                   {
@@ -388,7 +388,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                     name: 'Horizontal constrained',
                     canCheck: true,
                     checked: constrainMode === ConstrainMode.horizontalConstrained,
-                    onClick: this._onConstrainModeChanged,
+                    onMenuClick: this._onConstrainModeChanged,
                     data: ConstrainMode.horizontalConstrained
                   }
                 ]
@@ -408,7 +408,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         icon: 'SortUp',
         canCheck: true,
         checked: column.isSorted && !column.isSortedDescending,
-        onClick: () => this._onSortColumn(column.key, false)
+        onMenuClick: () => this._onSortColumn(column.key, false)
       },
       {
         key: 'zToA',
@@ -416,7 +416,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         icon: 'SortDown',
         canCheck: true,
         checked: column.isSorted && column.isSortedDescending,
-        onClick: () => this._onSortColumn(column.key, true)
+        onMenuClick: () => this._onSortColumn(column.key, true)
       }
     ];
     if (isGroupable(column.key)) {
@@ -426,7 +426,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         icon: 'GroupedDescending',
         canCheck: true,
         checked: column.isGrouped,
-        onClick: () => this._onGroupByColumn(column)
+        onMenuClick: () => this._onGroupByColumn(column)
       });
     }
     return {

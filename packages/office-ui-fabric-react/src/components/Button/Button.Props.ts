@@ -47,7 +47,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   checked?: boolean;
 
   /**
-   * When true, and an icon is passed in, the icon will be hidden until button is checked.
+   * Render hint that the button can be checked. Not currently implimented.
    * @default false
    */
   canCheck?: boolean;
@@ -75,6 +75,12 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   text?: string;
 
   /**
+  * Use Text Instead
+  * @deprecated
+  */
+  name?: string;
+
+  /**
    * The props for the icon shown in the button.
    */
   iconProps?: IIconProps;
@@ -89,6 +95,26 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * The props for the icon shown when providing a menu dropdown.
    */
   menuIconProps?: IIconProps;
+
+  /**
+ * Type of item in the menu. Includes normal, divider or header.
+ */
+  menuItemType?: ContextualMenuItemType;
+
+  /**
+   * A function to be executed onMouseDown. This is executed before an onClick event and can
+   * be used to interrupt native on click events as well. The click event should still handle
+   * the commands. This should only be used in special cases when react and non-react are mixed.
+   * Different signature from onMouseDown requires a unique function name
+   *
+   */
+  onMenuMouseDown?: (item: IButtonProps, event: any) => void;
+
+  /**
+   * Callback issued when the menu item is invoked
+   * Different signature from onClick requires a unique function name
+   */
+  onMenuClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IButtonProps) => void;
 
   /**
    * Custom data that could be used during onRender
@@ -175,6 +201,17 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * @deprecated
    */
   toggled?: boolean;
+
+  /**
+   * Any additional properties to use when custom rendering menu items.
+   */
+  [propertyName: string]: any;
+}
+
+export enum ContextualMenuItemType {
+  Normal = 0,
+  Divider = 1,
+  Header = 2
 }
 
 export enum ElementType {

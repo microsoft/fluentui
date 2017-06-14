@@ -214,7 +214,7 @@ describe('ContextualMenu', () => {
       {
         name: 'TestText 1',
         key: 'TestKey1',
-        itemType: ContextualMenuItemType.Header
+        menuItemType: ContextualMenuItemType.Header
       },
       {
         name: 'TestText 2',
@@ -223,7 +223,7 @@ describe('ContextualMenu', () => {
       {
         name: 'TestText 3',
         key: 'TestKey3',
-        itemType: ContextualMenuItemType.Header
+        menuItemType: ContextualMenuItemType.Header
       }
     ];
 

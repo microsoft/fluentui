@@ -3,13 +3,15 @@ import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { ICalloutProps } from '../../Callout';
+import { IButtonProps } from '../../Button';
 import {
   IPoint,
   IRectangle
 } from '../../Utilities';
 import { IContextualMenuItem } from './ContextualMenuItem.Props';
 
-export { ContextualMenuItemType, IContextualMenuItem } from './ContextualMenuItem.Props';
+export { IContextualMenuItem } from './ContextualMenuItem.Props';
+export {  ContextualMenuItemType } from '../../Button';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IContextualMenu {
@@ -94,7 +96,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * Collection of menu items.
    * @default []
    */
-  items: IContextualMenuItem[];
+  items: IButtonProps[];
 
   /**
    * Aria Labelled by labelElementId
@@ -118,7 +120,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * Click handler which is invoked if onClick is not passed for individual contextual
    * menu item
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IButtonProps) => void;
 
   /**
    * CSS class to apply to the context menu.

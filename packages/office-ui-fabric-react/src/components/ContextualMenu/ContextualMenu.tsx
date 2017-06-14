@@ -351,11 +351,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       className: css('ms-ContextualMenu-link', styles.link, {
         ['is-expanded ' + styles.isExpanded]: (expandedMenuItemKey === item.key)
       }),
-      onClick: this._onItemClick.bind(this, item),
+      onMenuClick: this._onItemClick.bind(this, item),
       onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
       onMouseLeave: this._onMouseLeave,
-      onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+      onMenuMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       disabled: item.isDisabled || item.disabled,
       href: item.href,
       title: item.title,
@@ -444,8 +444,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
-    if (item.onMouseDown) {
-      item.onMouseDown(item, ev);
+    if (item.onMenuMouseDown) {
+      item.onMenuMouseDown(item, ev);
     }
   }
 
@@ -472,8 +472,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
-    if (item.onClick) {
-      item.onClick(ev, item);
+    if (item.onMenuClick) {
+      item.onMenuClick(ev, item);
     } else if (this.props.onItemClick) {
       this.props.onItemClick(ev, item);
     }
