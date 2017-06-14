@@ -66,9 +66,9 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   buttonStyles?: IButtonStyles;
 
   /**
-   * Custom render function for all non contextual menu items.
+   * Custom render function for all non contextual menu buttons.
    */
-  onRenderItems?: (item: ICommandBarItemProps) => JSX.Element;
+  onRenderButton?: (item: ICommandBarItemProps) => JSX.Element;
 
   /**
    * Custom function to reduce data if items do not fit in given space. Return `undefined` if no more steps can be taken to avoid infinate loop.

@@ -56,8 +56,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       elipisisAriaLabel,
       elipisisIconProps,
       buttonStyles,
-      onRenderItems = this._onRenderItems,
-      onReduceData = this._onReduceData
+      onRenderButton = this._onRenderButton,
+      onReduceData = this._onReduceData,
     } = this.props;
 
     let { expandedMenuItem } = this.state;
@@ -87,19 +87,19 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 className={ css(styles.primarySet) }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : null }
-                onRenderItem={ onRenderItems }
+                onRenderItem={ this._onRenderButton }
                 onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
                   return (
-                    <CommandButton
-                      uniqueId='overflowButton'
-                      styles={ buttonStyles }
-                      ariaLabel={ elipisisAriaLabel }
-                      className={ css(styles.overflowButton) }
-                      menuProps={ { items: renderedOverflowItems } }
-                      menuIconProps={ elipisisIconProps }
-                      onMenuToggled={ this._onMenuToggled }
-                      menuOpen={ this.state.expandedMenuItem === 'overflowButton' }
-                    />
+                    this._onRenderButton({
+                      uniqueId: 'overflowButton',
+                      styles: { buttonStyles },
+                      ariaLabel: elipisisAriaLabel,
+                      className: css(styles.overflowButton),
+                      menuProps: { items: renderedOverflowItems },
+                      menuIconProps: elipisisIconProps,
+                      onMenuToggled: this._onMenuToggled,
+                      menuOpen: this.state.expandedMenuItem === 'overflowButton'
+                    })
                   );
                 } }
               />
@@ -108,7 +108,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               <OverflowSet
                 className={ css(styles.secondarySet) }
                 items={ data.farItems }
-                onRenderItem={ onRenderItems }
+                onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ () => null }
               />
             </div>
@@ -180,11 +180,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     if (item.iconOnly && item.name !== undefined) {
       return (
         <TooltipHost content={ item.name } >
-          <CommandButton {...commandButtonProps } />
+          { this._onRenderButton(commandButtonProps) }
         </TooltipHost>
       );
     }
 
-    return <CommandButton {...commandButtonProps } />;
+    return this._onRenderButton(commandButtonProps);
+  }
+
+  @autobind
+  private _onRenderButton(item) {
+    return <CommandButton {...item} >{ item.name }</CommandButton>;
   }
 }
