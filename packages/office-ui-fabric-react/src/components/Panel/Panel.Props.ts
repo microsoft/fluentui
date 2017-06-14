@@ -123,7 +123,7 @@ export interface IPanelProps extends React.Props<Panel> {
   /**
    * Optional custom renderer for header region. Replaces current title
    */
-  onRenderHeader?: IRenderFunction<IPanelProps>;
+  onRenderHeader?: IRenderFunction<IPanelHeaderProps>;
 
   /**
    * Optional custom renderer for body region. Replaces any children passed into the component.
@@ -225,4 +225,10 @@ export enum PanelType {
    * XXLarge: 643px width, 40px Left/Right padding
    */
   custom = 7
+}
+
+export interface IPanelHeaderProps {
+  headerClassName?: string;
+  headerText?: string;
+  headerTextId: string;
 }
