@@ -121,4 +121,16 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    */
   topButtonsProps?: IButtonProps[];
 
+  /**
+  * Optional id for aria-LabelledBy
+  * @deprecated Pass through via modalProps.titleAriaId instead
+  */
+  ariaLabelledById?: string;
+
+  /**
+  * Optional id for aria-DescribedBy
+  * @deprecated Pass through via modalProps.subtitleAriaId instead
+  */
+  ariaDescribedById?: string;
+
 }

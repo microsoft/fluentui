@@ -21,6 +21,8 @@ export class DialogBasicExample extends React.Component<any, any> {
           onClick={ this._showDialog.bind(this) }
           text='Open Dialog'
         />
+        <label id='myLabel' className='screenReaderOnly'>All emails together Your Inbox has changed.
+          No longer does it include favorites, it is a singular destination for your emails.</label>
         <Dialog
           hidden={ this.state.hideDialog }
           onDismiss={ this._closeDialog.bind(this) }
@@ -30,6 +32,8 @@ export class DialogBasicExample extends React.Component<any, any> {
             subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           } }
           modalProps={ {
+            titleAriaId: 'myLabel',
+            subtitleAriaId: '',
             isBlocking: false,
             containerClassName: 'ms-dialogMainOverride'
           } }
