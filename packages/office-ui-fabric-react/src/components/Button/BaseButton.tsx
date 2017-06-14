@@ -126,7 +126,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
         'aria-disabled': disabled,
-        'data-is-focusable': disabled ? false : true,
+        'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
     );
