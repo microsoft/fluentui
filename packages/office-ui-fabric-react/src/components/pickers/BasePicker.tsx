@@ -355,7 +355,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.backspace:
-      case KeyCodes.del:
         this.onBackspace(ev);
         break;
 
