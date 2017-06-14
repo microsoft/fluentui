@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
-import { IContextualMenuProps } from '../../ContextualMenu';
+import { IContextualMenuProps, ContextualMenuItemType } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 
@@ -206,12 +206,6 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
-}
-
-export enum ContextualMenuItemType {
-  Normal = 0,
-  Divider = 1,
-  Header = 2
 }
 
 export enum ElementType {

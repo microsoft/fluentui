@@ -10,8 +10,7 @@ import {
 } from '../../Utilities';
 import { IContextualMenuItem } from './ContextualMenuItem.Props';
 
-export { IContextualMenuItem } from './ContextualMenuItem.Props';
-export {  ContextualMenuItemType } from '../../Button';
+export { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenuItem.Props';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IContextualMenu {
