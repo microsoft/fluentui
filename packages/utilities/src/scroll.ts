@@ -52,8 +52,8 @@ export function getScrollbarWidth(): number {
  * Traverses up the DOM for the element with the data-is-scrollable=true attribute, or returns
  * document.body.
  */
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement {
-  let el = startingElement;
+export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null {
+  let el: HTMLElement | null = startingElement;
 
   // First do a quick scan for the scrollable attribute.
   while (el && el !== document.body) {

@@ -122,6 +122,16 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * Other top buttons that will show up next to the close button
    */
   topButtonsProps?: IButtonProps[];
+
+  /**
+  * Optional id for aria-LabelledBy
+  */
+  ariaLabelledById?: string;
+
+  /**
+  * Optional id for aria-DescribedBy
+  */
+  ariaDescribedById?: string;
 }
 
 export enum DialogType {
