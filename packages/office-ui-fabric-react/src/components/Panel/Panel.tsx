@@ -26,7 +26,7 @@ export interface IPanelState {
   id?: string;
 }
 
-const HEADER_TEXT_ID_SUFFIX = '-headertext';
+const HEADER_TEXT_ID_SUFFIX = '-headerText';
 
 export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
 
