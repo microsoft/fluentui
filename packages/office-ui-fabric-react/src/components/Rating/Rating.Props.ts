@@ -7,7 +7,7 @@ export interface IRating {
 /**
  * Rating component props.
  */
-export interface IRatingProps extends React.HTMLProps<HTMLElement> {
+export interface IRatingProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IRating interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

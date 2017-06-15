@@ -138,7 +138,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * they will be mixed into the button/anchor element rendered by the component.
    * @deprecated
    */
-  rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
+  rootProps?: React.HTMLAttributes<HTMLButtonElement> | React.HTMLAttributes<HTMLAnchorElement>;
 
   /**
    * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.

@@ -1,0 +1,226 @@
+@import '../../common/common';
+@import '../Label/LabelMixins.scss';
+
+.ArrowBox, .Input,
+.UpButton, .DownButton, .SpinButtonContainer {
+  outline: none;
+  font-size: 12px;
+}
+
+.SpinButtonLabel {
+  pointer-events: none;
+  padding: 2px 0px;
+}
+
+.SpinButtonContainer {
+  width: 100%;
+  min-width: 86px;
+  padding: 2px;
+}
+
+  .ArrowBox {
+    display: block;
+    float: left;
+    height: 100%;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+    border-left-width: 0px;
+    cursor: default;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  .SpinButtonWrapper:hover .ArrowBox, .SpinButtonWrapper:hover .Input {
+    border-color: $ms-color-neutralSecondaryAlt;
+    outline: 2px dashed transparent;
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackSelected;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteSelected;
+    }
+  }
+
+  .labelWrapper {
+    display: inline-flex;
+
+    &.start {
+       float: left;
+       margin-right: 10px;
+    }
+
+    &.end {
+      float: right;
+      margin-left: 10px;
+    }
+
+    &.top {
+      margin-bottom: 10px;
+    }
+
+    &.bottom {
+      margin-top: 10px;
+    }
+  }
+
+  .SpinButtonIcon {
+    padding: 2px 5px;
+    font-size: 20px;
+  }
+
+  .SpinButtonWrapper {
+    display: flex;
+    height: 26px;
+    min-width: 86px;
+  }
+
+  .SpinButtonWrapper.topBottom {
+    width: 100%;
+  }
+
+  .Input:focus + .ArrowBox {
+      border-color: $ms-color-themePrimary;
+      outline: 2px dashed transparent;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+  }
+
+  .Input.disabled + .ArrowBox {
+    background-color: $ms-color-neutralLighter;
+    border-color: $ms-color-neutralLighter;
+    pointer-events: none;
+    cursor: default;
+
+    @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
+    .SpinButtonWrapper:hover .Input:focus {
+      border-color: $ms-color-themePrimary;
+    }
+
+  .Input {
+    @include ms-normalize;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+    border-radius: 0;
+    font-weight: $ms-font-weight-regular;
+    font-size: $ms-font-size-m;
+    color: $ms-color-neutralPrimary;
+    height: 100%;
+    @include padding(3px, 3px, 4px, 4px);
+    outline: 0;
+    text-overflow: ellipsis;
+    display: block;
+    float: left;
+    width: calc(100% - 14px);
+    min-width: 72px;
+    border-right-width: 0px;
+    overflow: hidden;
+    cursor: text;
+    user-select: text;
+
+    &:focus {
+      border-color: $ms-color-themePrimary;
+      outline: 2px dashed transparent;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+    }
+
+    &::selection {
+      background-color: $ms-color-themePrimary;
+      color: $ms-color-white;
+    }
+  }
+
+  .SpinButtonWrapper:hover .Input.disabled,
+   .Input.disabled {
+      background-color: $ms-color-neutralLighter;
+      border-color: $ms-color-neutralLighter;
+      pointer-events: none;
+      cursor: default;
+      color: $ms-color-neutralTertiaryAlt;
+
+    @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
+  .Input:hover .UpButton, .Input:hover .DownButton {
+      background-color: $ms-color-neutralLighter;
+  }
+
+  .SpinButtonWrapper .UpButton, .SpinButtonWrapper .DownButton {
+    display: block;
+    height: 50%;
+    width: 12px;
+    padding: 0px;
+    background-color: transparent;
+    text-align: center;
+    cursor: default;
+    font-size: 6px;
+    color: $ms-color-neutralPrimary;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+    }
+
+    &:active {
+      background-color: $ms-color-themePrimary;
+      color: $ms-color-white;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
+    }
+  }
+
+  .UpButton:disabled, .DownButton:disabled {
+    opacity: 0;
+
+    @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
+  .SpinButtonWrapper .UpButton.active, .SpinButtonWrapper .DownButton.active {
+      background-color: $ms-color-themePrimary;
+      color: $ms-color-white;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
+  }

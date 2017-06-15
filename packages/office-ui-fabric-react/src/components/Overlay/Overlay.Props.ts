@@ -4,7 +4,7 @@ export interface IOverlay {
 
 }
 
-export interface IOverlayProps extends React.HTMLProps<HTMLElement> {
+export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IOverlay interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

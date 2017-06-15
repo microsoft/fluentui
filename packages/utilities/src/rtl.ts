@@ -2,7 +2,7 @@ import { KeyCodes } from './KeyCodes';
 import { getDocument, getWindow } from './dom';
 
 // Default to undefined so that we initialize on first read.
-let _isRTL: boolean;
+let _isRTL: boolean | undefined;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
@@ -40,7 +40,7 @@ export function getRTL(): boolean {
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
  */
-export function setRTL(isRTL: boolean, avoidPersisting = false) {
+export function setRTL(isRTL: boolean | undefined, avoidPersisting = false) {
   let doc = getDocument();
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
@@ -49,7 +49,11 @@ export function setRTL(isRTL: boolean, avoidPersisting = false) {
   let win = getWindow();
   // tslint:disable-next-line:no-string-literal
   if (win && win['localStorage'] && !avoidPersisting) {
-    localStorage.setItem('isRTL', isRTL ? '1' : '0');
+    try {
+      localStorage.setItem('isRTL', isRTL ? '1' : '0');
+    } catch (e) {
+      /*  swallow the exception, because safari private mode does not have local storage */
+    }
   }
 
   _isRTL = isRTL;
