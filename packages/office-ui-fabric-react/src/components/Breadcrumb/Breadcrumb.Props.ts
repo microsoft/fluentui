@@ -38,6 +38,12 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * Aria label to place on the navigation landmark for breadcrumb
    */
   ariaLabel?: string;
+
+  /**
+   * If set to false, don't collapse overflow items based on container width.
+   * @default true
+   */
+  autoCollapseOverflowItems?: boolean;
 }
 
 export interface IBreadcrumbItem {

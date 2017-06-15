@@ -40,10 +40,12 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
 
   private _breadcrumbItemWidths: { [key: string]: number };
   private _id: string;
+  private _watchingResize: boolean;
 
   constructor(props: IBreadcrumbProps) {
     super(props);
 
+    this._watchingResize = false;
     this._id = getId('Breadcrumb');
     this.state = this._getStateFromProps(props);
   }
@@ -51,8 +53,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   public componentDidMount() {
     this._updateItemMeasurements();
     this._updateRenderedItems();
-
-    this._events.on(window, 'resize', this._updateRenderedItems);
+    this._setResizeListener();
   }
 
   public componentWillReceiveProps(nextProps: IBreadcrumbProps) {
@@ -61,7 +62,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   public componentDidUpdate(prevProps: IBreadcrumbProps, prevStates: IBreadcrumbState) {
-    if (!this._breadcrumbItemWidths) {
+    this._setResizeListener();
+    if (!this._breadcrumbItemWidths && this.props.autoCollapseOverflowItems !== false) {
       this._updateItemMeasurements();
       this._updateRenderedItems();
     }
@@ -130,6 +132,15 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     );
   }
 
+  private _setResizeListener() {
+    if (this.props.autoCollapseOverflowItems !== false && !this._watchingResize) {
+      this._events.on(window, 'resize', this._updateRenderedItems);
+      this._watchingResize = true;
+    } else if (this.props.autoCollapseOverflowItems === false && this._watchingResize) {
+      this._events.off(window, 'resize', this._updateRenderedItems);
+    }
+  }
+
   @autobind
   private _onRenderItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
     return this._defaultRenderItem(item);
@@ -183,6 +194,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   private _updateItemMeasurements() {
+    if (this.props.autoCollapseOverflowItems === false) {
+      return;
+    }
+
     let { items } = this.props;
 
     if (!this._breadcrumbItemWidths) {
@@ -202,37 +217,40 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
 
   private _updateRenderedItems() {
     let { items, maxDisplayedItems } = this.props;
+
     let renderingArea = this.refs.renderingArea;
-    let renderedItems = [];
-    let renderedOverflowItems = [].concat(items);
-    let consumedWidth = 0;
-
-    let style = window.getComputedStyle(renderingArea);
-    let availableWidth = renderingArea.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10);
-
-    availableWidth -= OVERFLOW_WIDTH;
-
-    let i;
+    let renderedOverflowItems = [...items];
     let minIndex = Math.max(0, renderedOverflowItems.length - maxDisplayedItems);
+    let renderedItems: IBreadcrumbItem[];
 
-    for (i = renderedOverflowItems.length - 1; i >= minIndex; i--) {
-      let item = renderedOverflowItems[i];
-      let itemWidth = this._breadcrumbItemWidths[item.key];
+    if (this.props.autoCollapseOverflowItems === false) {
+      // Ignore horizontal space computations.
+      renderedItems = renderedOverflowItems.splice(minIndex);
+    } else {
+      // Compute horizontal space available
+      let consumedWidth = 0;
+      let style = window.getComputedStyle(renderingArea);
+      let availableWidth = renderingArea.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10);
+      availableWidth -= OVERFLOW_WIDTH;
 
-      if ((consumedWidth + itemWidth) >= availableWidth) {
-        break;
-      } else {
-        consumedWidth += itemWidth;
+      let i;
+      for (i = renderedOverflowItems.length - 1; i >= minIndex; i--) {
+        let item = renderedOverflowItems[i];
+        let itemWidth = this._breadcrumbItemWidths[item.key];
+
+        if ((consumedWidth + itemWidth) >= availableWidth) {
+          break;
+        } else {
+          consumedWidth += itemWidth;
+        }
       }
+      renderedItems = renderedOverflowItems.splice(i + 1);
     }
-
-    renderedItems = renderedOverflowItems.splice(i + 1);
-
     this.setState({
       isOverflowOpen: this.state.isOverflowOpen,
       overflowAnchor: this.state.overflowAnchor,
-      renderedItems: renderedItems,
-      renderedOverflowItems: renderedOverflowItems,
+      renderedItems,
+      renderedOverflowItems
     });
   }
 
