@@ -38,6 +38,7 @@ export * from './Persona';
 export * from './Pivot';
 export * from './ProgressIndicator';
 export * from './Rating';
+export * from './ScrollablePane';
 export * from './SearchBox';
 export * from './Slider';
 export * from './SpinButton';
