@@ -16,7 +16,7 @@ import {
 } from '../../Styling';
 import { IHoverCardHostProps, IHoverCardHostStyles } from './HoverCardHost.Props';
 import { HoverCard } from './HoverCard';
-import { HoverCardDelay, IHoverCard } from './HoverCard.Props';
+import { IHoverCard } from './HoverCard.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 import { getStyles } from './HoverCardHost.styles';
@@ -27,12 +27,15 @@ export interface IHoverCardHostState {
 
 export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCardHostState> {
   public static defaultProps = {
-    delay: HoverCardDelay.medium
+    cardOpenDelay: 500,
+    cardDismissDelay: 100
   };
 
   // The wrapping div that gets the hover events
   private _hoverCardHost: HTMLElement;
   private _hoverCard: IHoverCard;
+  private _dismissTimerId: number;
+  private _openTimerId: number;
 
   private _styles: IHoverCardHostStyles;
 
@@ -50,7 +53,6 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
     const {
       hoverCardProps,
       children,
-      delay,
       id,
       setAriaDescribedBy = true,
       styles: customStyles
@@ -64,10 +66,10 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
       <div
         className={ css(this._styles.host) }
         ref={ this._resolveRef('_hoverCardHost') }
-        { ...{ onFocusCapture: this._onHoverCardMouseEnter } }
-        { ...{ onBlurCapture: this._onHoverCardMouseLeave } }
-        onMouseEnter={ this._onHoverCardMouseEnter }
-        onMouseLeave={ this._onHoverCardMouseLeave }
+        { ...{ onFocusCapture: this._cardOpen } }
+        { ...{ onBlurCapture: this._cardDismiss } }
+        onMouseEnter={ this._cardOpen }
+        onMouseLeave={ this._cardDismiss }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
         { children }
@@ -77,7 +79,8 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
             { ...hoverCardProps }
             id={ hoverCardId }
             targetElement={ this._getTargetElement() }
-            calloutProps={ assign(hoverCardProps.calloutProps, { onDismiss: this._onHoverCardCallOutDismiss, isBeakVisible: false, directionalHint: DirectionalHint.bottomLeftEdge }) }
+            onEnter={ this._cardOpen }
+            onDismiss={ this._cardDismiss }
             { ...getNativeProps(this.props, divProperties) }
           />
         }
@@ -91,27 +94,25 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
 
   // Show HoverCard
   @autobind
-  private _onHoverCardMouseEnter(ev: any) {
-    this.setState({
-      isHoverCardVisible: true
-    });
+  private _cardOpen(ev: any) {
+    this._async.clearTimeout(this._dismissTimerId);
+
+    this._openTimerId = this._async.setTimeout(() => {
+      this.setState({
+        isHoverCardVisible: true
+      });
+    }, this.props.cardOpenDelay);
   }
 
   // Hide HoverCard
   @autobind
-  private _onHoverCardMouseLeave(ev: any) {
-    if (!this._hoverCard.isExpanded) {
+  private _cardDismiss(ev) {
+    this._async.clearTimeout(this._openTimerId);
+
+    this._dismissTimerId = this._async.setTimeout(() => {
       this.setState({
         isHoverCardVisible: false
       });
-    }
-  }
-
-  // Hide HoverCard
-  @autobind
-  private _onHoverCardCallOutDismiss() {
-    this.setState({
-      isHoverCardVisible: false
-    });
+    }, this.props.cardDismissDelay);
   }
 }

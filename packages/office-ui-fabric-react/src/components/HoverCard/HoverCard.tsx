@@ -9,7 +9,7 @@ import {
   memoize,
   autobind
 } from '../../Utilities';
-import { IHoverCardProps, HoverCardDelay, IHoverCardStyles } from './HoverCard.Props';
+import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
@@ -26,8 +26,11 @@ export interface IHoverCardState {
 }
 
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
+  public static defaultProps = {
+    expandedCardOpenDelay: 1500
+  };
+
   private _styles: IHoverCardStyles;
-  private _mountTimerId: number;
   private _callout: ICallout;
 
   constructor(props: IHoverCardProps) {
@@ -36,22 +39,23 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     this.state = {
       view: HoverCardView.condensed
     };
-    this._mountTimerId = 0;
   }
 
   public componentWillMount() {
-    this._mountTimerId = this._async.setTimeout(this._setExpanded, 1000)
+    this._async.setTimeout(() => {
+      this.setState({
+        view: HoverCardView.expanded
+      })
+    }, this.props.expandedCardOpenDelay);
   }
 
   public componentWillUnmount() {
-    this._mountTimerId = 0;
     this._async.dispose();
   }
 
   public render() {
     const {
       targetElement,
-      calloutProps,
       id,
       styles: customStyles,
       onRenderCompactContent,
@@ -67,11 +71,19 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           this._styles.root
         ) }
         targetElement={ targetElement }
-        {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
+        isBeakVisible={ false }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
       >
-        { this._onRenderCompactContent() }
-        { this.isExpanded && this._onRenderExpandedContent() }
+        <div
+          { ...{ onFocusCapture: this.props.onEnter } }
+          { ...{ onBlurCapture: this.props.onDismiss } }
+          onMouseEnter={ this.props.onEnter }
+          onMouseLeave={ this.props.onDismiss }
+        >
+          { this._onRenderCompactContent() }
+          { this.isExpanded && this._onRenderExpandedContent() }
+        </div>
       </Callout >
     );
   }
@@ -96,12 +108,5 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { this.props.onRenderExpandedContent(this.props.item) }
       </div>
     );
-  }
-
-  @autobind
-  private _setExpanded() {
-    this.setState({
-      view: HoverCardView.expanded
-    });
   }
 }

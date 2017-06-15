@@ -20,11 +20,6 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   componentRef?: (component: IHoverCard) => void;
 
   /**
-   * Properties to pass through for Callout, reference detail properties in ICalloutProps
-   */
-  calloutProps: ICalloutProps;
-
-  /**
    *  Item to be returned with onRender functions
    */
   item?: any;
@@ -45,14 +40,24 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   targetElement?: HTMLElement;
 
   /**
+   * Callback when the HoverCard tries to open
+   */
+  onEnter?: (ev?: any) => void;
+
+  /**
+   * Callback when the HoverCard tries to close
+   */
+  onDismiss?: (ev?: any) => void;
+
+  /**
+   * Length of expanded card delay
+   */
+  expandedCardOpenDelay?: number;
+
+  /**
    * Custom styles for this component
    */
   styles?: IHoverCardStyles;
-}
-
-export enum HoverCardDelay {
-  zero = 0,
-  medium = 1
 }
 
 export interface IHoverCardStyles {

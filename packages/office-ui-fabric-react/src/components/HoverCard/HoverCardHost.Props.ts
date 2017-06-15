@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { HoverCardHost } from './HoverCardHost';
-import { HoverCardDelay, IHoverCardProps } from './HoverCard.Props';
+import { IHoverCardProps } from './HoverCard.Props';
 import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle } from '../../Styling';
@@ -31,10 +31,14 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
   setAriaDescribedBy?: boolean;
 
   /**
-   * Length of delay
-   * @default medium
+   * Length of compact card delay
    */
-  delay?: HoverCardDelay;
+  cardOpenDelay?: number;
+
+  /**
+   * Length of card dismiss delay. A min number is necessary for pointer to hop between target and card
+   */
+  cardDismissDelay?: number;
 
   /**
    * Indicator of how the tooltip should be anchored to its targetElement.

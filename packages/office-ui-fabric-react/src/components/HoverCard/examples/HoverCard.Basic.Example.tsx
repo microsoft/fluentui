@@ -47,9 +47,6 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   @autobind
   private _onRenderItemColumn(item, index, column) {
     const hoverCardProps: IHoverCardProps = {
-      calloutProps: {
-        gapSpace: 0
-      },
       onRenderCompactContent: this._onRenderCompactContent,
       onRenderExpandedContent: this._onRenderExpandedContent,
       item: item
