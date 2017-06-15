@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.7.0",
+      "tag": "office-ui-fabric-react_v4.7.0",
+      "date": "Thu, 15 Jun 2017 10:09:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5d0adb20f07383a60fb9fa14bd6cde8887b0f5db",
+            "comment": "Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "2278009d39d643168f0f27508a1d01ddbb4fdb69",
+            "comment": "Toggle: High contrast fix for Firefox"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.0 <1.0.0` to `>=0.8.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.6.0",
       "tag": "office-ui-fabric-react_v4.6.0",
       "date": "Wed, 14 Jun 2017 06:02:15 GMT",
