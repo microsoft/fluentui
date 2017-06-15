@@ -123,7 +123,7 @@ export interface IPanelProps extends React.Props<Panel> {
   /**
    * Optional custom renderer for header region. Replaces current title
    */
-  onRenderHeader?: IRenderFunction<IPanelHeaderProps>;
+  onRenderHeader?: IRenderFunction<IPanelProps>;
 
   /**
    * Optional custom renderer for body region. Replaces any children passed into the component.
@@ -139,6 +139,11 @@ export interface IPanelProps extends React.Props<Panel> {
    * Custom renderer for content in the sticky footer
    */
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Internal ID passed to render functions.
+   */
+  componentId?: string;
 }
 
 export enum PanelType {
@@ -225,10 +230,4 @@ export enum PanelType {
    * XXLarge: 643px width, 40px Left/Right padding
    */
   custom = 7
-}
-
-export interface IPanelHeaderProps {
-  headerClassName?: string;
-  headerText?: string;
-  headerTextId: string;
 }

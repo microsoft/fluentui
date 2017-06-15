@@ -7,10 +7,11 @@ import {
   autobind,
   css,
   getId,
-  getRTL
+  getRTL,
+  assign
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IPanel, IPanelProps, PanelType, IPanelHeaderProps } from './Panel.Props';
+import { IPanel, IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
@@ -94,6 +95,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
+    const renderProps: IPanelProps = assign({}, this.props, { componentId: headerTextId });
 
     if (!isOpen && !isAnimating) {
       return null;
@@ -159,12 +161,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
               firstFocusableSelector={ firstFocusableSelector }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
-                { onRenderNavigation(this.props, this._onRenderNavigation) }
+                { onRenderNavigation(renderProps, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                { onRenderHeader({ headerClassName, headerText, headerTextId }, this._onRenderHeader) }
-                { onRenderBody(this.props, this._onRenderBody) }
-                { onRenderFooter(this.props, this._onRenderFooter) }
+                { onRenderHeader(renderProps, this._onRenderHeader) }
+                { onRenderBody(renderProps, this._onRenderBody) }
+                { onRenderFooter(renderProps, this._onRenderFooter) }
               </div>
             </FocusTrapZone>
           </div>
@@ -219,10 +221,10 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderHeader(props: IPanelHeaderProps): JSX.Element {
+  private _onRenderHeader(props: IPanelProps): JSX.Element {
     const {
       headerText,
-      headerTextId,
+      componentId,
       headerClassName = '',
     } = props;
 
@@ -230,7 +232,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return (
       headerText &&
       <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId } role='heading'>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ componentId } role='heading'>
           { headerText }
         </p>
       </div>
