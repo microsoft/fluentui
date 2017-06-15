@@ -95,7 +95,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
-    const renderProps: IPanelProps = assign({}, this.props, { componentId: headerTextId });
+    const renderProps: IPanelProps = assign({}, this.props, { componentId: id });
 
     if (!isOpen && !isAnimating) {
       return null;
@@ -232,7 +232,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     return (
       headerText &&
       <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ componentId } role='heading'>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ componentId + '-headerText' } role='heading'>
           { headerText }
         </p>
       </div>
