@@ -3,12 +3,10 @@ import {
   BaseComponent,
   autobind,
   css,
-  getId,
   getRTL,
   assign
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IContextualMenuItem } from '../../ContextualMenu';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
