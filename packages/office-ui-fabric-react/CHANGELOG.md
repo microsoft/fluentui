@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+
+## 4.6.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Dropdown: Fixed onRenderPlaceholder and update docs
+- Adding Aria label props for Dialog
+
+### Patches
+
+- Buttons: Added `aria-haspopup` to buttons with menuProps.
+- FocusZone: bidirectional movement now wraps on lines.
+- Bumping fabric-core dependency to have Segoe UI be part of the font fallback.
+- FocusZone should reset active element if it is not tabbable.
+- Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened.
+- Enable strictNullChecks in utilities package
+- PeoplePicker: fixing styling, focus, and extra rerendering issues.
+- Dropdown: Fix keyboard focus on Header/Separator items
+
+## 4.5.1
+Tue, 13 Jun 2017 10:13:21 GMT
+
+### Patches
+
+- High contrast fixes for Pivot, Choicegroup and Checkbox
+- withResponsiveMode: Adding error handling around the case where window.innerWidth throws an exception.
 
 ## 4.5.0
 Mon, 12 Jun 2017 01:47:18 GMT
