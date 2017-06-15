@@ -32,7 +32,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
     return items.map((item, i) => {
       let key = item.key ? item.key : i;
       return (
-        <div key={ key } className={ css('ms-OverflowSet-item', styles.item) }>
+        <div key={ key + '-overflow' } className={ css('ms-OverflowSet-item', styles.item) }>
           { this.props.onRenderItem(item) }
         </div>
       );

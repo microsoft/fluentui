@@ -52,11 +52,6 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   checked?: boolean;
 
   /**
-   * Whether the button menu is open
-   */
-  menuOpen?: boolean;
-
-  /**
    * Callback function to be called when menu is toggled
    */
   onMenuToggled?: (IButtonProps) => void;

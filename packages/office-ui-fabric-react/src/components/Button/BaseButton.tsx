@@ -49,12 +49,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _ariaDescriptionId: string;
   private _classNames: IButtonClassNames;
 
-  public componentDidMount() {
-    this.setState({
-      menuProps: this.props.menuOpen ? this.props.menuProps : null
-    });
-  }
-
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
 
@@ -142,7 +136,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       assign(
         buttonProps,
         {
-          'onMouseUp': this._onToggleMenu,
+          'onClick': this._onToggleMenu,
           'aria-expanded': this.state.menuProps ? true : false,
           'aria-haspopup': true
         }
