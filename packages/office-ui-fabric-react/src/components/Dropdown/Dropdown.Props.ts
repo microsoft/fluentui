@@ -153,6 +153,11 @@ export interface IDropdownOption {
   selected?: boolean;
 
   /**
+   * Data available to custom onRender functions.
+   */
+  data?: any;
+
+  /**
    * Deprecated at v.65.1, use 'selected' instead.
    * @deprecated
    */

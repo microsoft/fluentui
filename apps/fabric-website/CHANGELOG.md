@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+
+## 4.5.38
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Patches
+
+- Bumping fabric-core dependency.
+
+## 4.5.37
+Tue, 13 Jun 2017 10:13:21 GMT
+
+### Patches
+
+- Fix issues with dev.office.com header
 
 ## 4.5.36
 Mon, 12 Jun 2017 01:47:18 GMT
