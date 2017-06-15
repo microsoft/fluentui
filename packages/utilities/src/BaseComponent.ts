@@ -24,7 +24,7 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
 
   private __async: Async;
   private __events: EventGroup;
-  private __disposables: IDisposable[];
+  private __disposables: IDisposable[] | null;
   private __resolves: { [name: string]: (ref: any) => any };
   private __className: string;
 
@@ -36,7 +36,10 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   constructor(props?: P, context?: any) {
     super(props, context);
 
-    this.props = props;
+    if (props) {
+      this.props = props;
+    }
+
     this._shouldUpdateComponentRef = true;
 
     _makeAllSafe(this, BaseComponent.prototype, [
@@ -146,7 +149,7 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
     }
     if (!this.__resolves[refName]) {
       this.__resolves[refName] = (ref) => {
-        return this[refName] = ref;
+        return (this as any)[refName] = ref;
       };
     }
 
@@ -156,7 +159,7 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   /**
    * Updates the componentRef (by calling it with "this" when necessary.)
    */
-  protected _updateComponentRef(currentProps: IBaseProps, newProps: IBaseProps = {}) {
+  protected _updateComponentRef(currentProps: IBaseProps | undefined, newProps: IBaseProps = {}) {
     if (this._shouldUpdateComponentRef &&
       ((!currentProps && newProps.componentRef) ||
         (currentProps && currentProps.componentRef !== newProps.componentRef))) {
@@ -202,11 +205,11 @@ function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNam
 }
 
 function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: string) {
-  let classMethod = obj[methodName];
-  let prototypeMethod = prototype[methodName];
+  let classMethod = (obj as any)[methodName];
+  let prototypeMethod = (prototype as any)[methodName];
 
   if (classMethod || prototypeMethod) {
-    obj[methodName] = function () {
+    (obj as any)[methodName] = function () {
       let retVal;
 
       try {

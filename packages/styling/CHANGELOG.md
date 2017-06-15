@@ -1,6 +1,50 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 06 Jun 2017 07:41:47 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+
+## 0.8.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions.
+- Updates to version 2.30 of the icon font
+
+### Patches
+
+- Remove high contrast adjust from common styles
+- Enable strictNullChecks in utilities package
+
+## 0.7.4
+Tue, 13 Jun 2017 10:13:21 GMT
+
+*Changes not tracked*
+
+## 0.7.3
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Patches
+
+- Enable no implicit any in utilities package
+
+## 0.7.2
+Fri, 09 Jun 2017 10:10:47 GMT
+
+### Patches
+
+- Update the version of rtl-css-js used to get latest bug fixes
+
+## 0.7.1
+Thu, 08 Jun 2017 10:20:07 GMT
+
+*Changes not tracked*
+
+## 0.7.0
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Minor changes
+
+- ITheme: Make palette a required prop
 
 ## 0.6.1
 Tue, 06 Jun 2017 07:41:47 GMT

@@ -5,7 +5,7 @@ export interface IResizeGroup {
 
 }
 
-export interface IResizeGroupProps extends React.HTMLProps<ResizeGroup | HTMLElement> {
+export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HTMLElement> {
 
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing

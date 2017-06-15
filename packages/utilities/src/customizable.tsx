@@ -29,7 +29,7 @@ export function customizable<P>(fields: string[]) {
         let defaultProps = {};
 
         for (let propName of fields) {
-          defaultProps[propName] = (this.context.injectedProps) ?
+          (defaultProps as any)[propName] = (this.context.injectedProps) ?
             this.context.injectedProps[propName] :
             Customizer.getDefault(propName);
         }
