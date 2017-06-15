@@ -6,7 +6,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle } from '../../Styling';
 
 export interface IHoverCard {
-
+  isExpanded: boolean
 }
 
 /**
@@ -22,34 +22,27 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
    */
-  calloutProps?: ICalloutProps;
+  calloutProps: ICalloutProps;
 
   /**
-   *  String to be passed to the tooltip
+   *  Item to be returned with onRender functions
    */
-  content?: string;
+  item?: any;
 
   /**
-   *  Render function to populate content area
+   *  Render function to populate compact content area
    */
-  onRenderContent?: IRenderFunction<IHoverCardProps>;
+  onRenderCompactContent?: IRenderFunction<IHoverCardProps>;
 
   /**
-   * Length of delay. Can be set to zero if you do not want a delay.
-   * @default medium
+   *  Render function to populate expanded content area
    */
-  delay?: HoverCardDelay;
+  onRenderExpandedContent?: IRenderFunction<IHoverCardProps>;
 
   /**
    * Element to anchor the HoverCard to.
    */
   targetElement?: HTMLElement;
-
-  /**
-   * Indicator of how the tooltip should be anchored to its targetElement.
-   * @default DirectionalHint.topCenter
-   */
-  directionalHint?: DirectionalHint;
 
   /**
    * Custom styles for this component
@@ -71,10 +64,10 @@ export interface IHoverCardStyles {
   /**
    * Style for the main card element.
    */
-  card?: IStyle;
+  compactCard?: IStyle;
 
   /**
    * Style for the content element in the default enabled, non-toggled state.
    */
-  content?: IStyle;
+  expandedCard?: IStyle;
 }

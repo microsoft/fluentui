@@ -9,9 +9,7 @@ export const getStyles = memoizeFunction((
 ): IHoverCardHostStyles => {
 
   const styles: IHoverCardHostStyles = {
-    host: {
-      display: 'inline-block'
-    }
+    host: {}
   };
 
   return mergeStyleSets(styles, customStyles);

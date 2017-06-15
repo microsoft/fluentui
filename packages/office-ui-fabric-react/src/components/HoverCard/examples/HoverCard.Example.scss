@@ -1,0 +1,8 @@
+@import '../../../common/common';
+
+:global {
+  .HoverCard-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

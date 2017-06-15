@@ -6,61 +6,102 @@ import {
   css,
   getNativeProps,
   divProperties,
-  memoize
+  memoize,
+  autobind
 } from '../../Utilities';
 import { IHoverCardProps, HoverCardDelay, IHoverCardStyles } from './HoverCard.Props';
-import { Callout } from '../../Callout';
+import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { AnimationClassNames, mergeStyles } from '../../Styling';
 
 import { getStyles } from './HoverCard.styles';
 
-export class HoverCard extends BaseComponent<IHoverCardProps, any> {
+export enum HoverCardView {
+  condensed,
+  expanded
+}
 
-  // Specify default props values
-  public static defaultProps = {
-    directionalHint: DirectionalHint.bottomAutoEdge,
-    delay: HoverCardDelay.medium
-  };
+export interface IHoverCardState {
+  view: HoverCardView
+}
 
+export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   private _styles: IHoverCardStyles;
+  private _mountTimerId: number;
+  private _callout: ICallout;
+
+  constructor(props: IHoverCardProps) {
+    super(props);
+
+    this.state = {
+      view: HoverCardView.condensed
+    };
+    this._mountTimerId = 0;
+  }
+
+  public componentWillMount() {
+    this._mountTimerId = this._async.setTimeout(this._setExpanded, 1000)
+  }
+
+  public componentWillUnmount() {
+    this._mountTimerId = 0;
+    this._async.dispose();
+  }
 
   public render() {
     const {
       targetElement,
-      content,
       calloutProps,
-      directionalHint,
-      delay,
       id,
-      styles: customStyles
+      styles: customStyles,
+      onRenderCompactContent,
+      onRenderExpandedContent
     } = this.props;
     this._styles = getStyles(customStyles);
 
     return (
       <Callout
+        componentRef={ c => this._callout = c }
         className={ css(
-          'ms-HoverCard',
           AnimationClassNames.fadeIn200,
           this._styles.root
         ) }
         targetElement={ targetElement }
-        directionalHint={ directionalHint }
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
       >
-        <div className={ css('ms-HoverCard-card', this._styles.card) } id={ id }>
-          { this._onRenderContent() }
-        </div>
+        { this._onRenderCompactContent() }
+        { this.isExpanded && this._onRenderExpandedContent() }
       </Callout >
     );
   }
 
-  private _onRenderContent(): JSX.Element {
+  public get isExpanded(): boolean {
+    return this.state.view === HoverCardView.expanded;
+  }
+
+  @autobind
+  private _onRenderCompactContent(): JSX.Element {
     return (
-      <p className={ css('ms-HoverCard-subText', this._styles.content) }>
-        { this.props.content }
-      </p>
+      <div className={ css(this._styles.compactCard) }>
+        { this.props.onRenderCompactContent(this.props.item) }
+      </div>
     );
+  }
+
+  @autobind
+  private _onRenderExpandedContent(): JSX.Element {
+    return (
+      <div className={ css(AnimationClassNames.slideDownIn20, this._styles.expandedCard) }>
+        { this.props.onRenderExpandedContent(this.props.item) }
+      </div>
+    );
+  }
+
+  @autobind
+  private _setExpanded() {
+    this.setState({
+      view: HoverCardView.expanded
+    });
   }
 }

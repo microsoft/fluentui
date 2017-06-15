@@ -20,11 +20,6 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
   componentRef?: (component: IHoverCardHost) => void;
 
   /**
-   * Additional properties to pass through for Callout, reference detail properties in ICalloutProps
-   */
-  calloutProps?: ICalloutProps;
-
-  /**
    * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps
    */
   hoverCardProps?: IHoverCardProps;
@@ -40,11 +35,6 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
    * @default medium
    */
   delay?: HoverCardDelay;
-
-  /**
-   * String to be passed to the tooltip
-   */
-  content?: string;
 
   /**
    * Indicator of how the tooltip should be anchored to its targetElement.

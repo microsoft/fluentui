@@ -6,7 +6,7 @@ import * as React from 'react';
 export default class HoverCardVPage extends React.Component<any, any> {
   public render() {
     return <div >
-      <HoverCardHost content='This is the tooltip' id='HoverCard' calloutProps={ { gapSpace: 25 } }>
+      <HoverCardHost content='This is the tooltip' id='HoverCard'>
         <DefaultButton id='HoverCardButton' aria-describedby='myID'>Hover Over Me</DefaultButton>
       </HoverCardHost>
     </div>;
