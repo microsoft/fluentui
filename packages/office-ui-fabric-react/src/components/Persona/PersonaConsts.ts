@@ -14,7 +14,8 @@ export const PERSONA_SIZE = {
   [PersonaSize.regular]: '',
   [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
   [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
-  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28
+  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28,
+  [PersonaSize.size16]: 'ms-Persona--16 ' + styles.rootIs16
 };
 
 export const PERSONA_PRESENCE = {

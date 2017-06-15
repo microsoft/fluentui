@@ -8,7 +8,7 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Indicates what type of activity occurred. A type of custom allows you to pass in your own renderer.
    */
-  activityType: IActivityType;
+  activityType: ActivityType;
 
   /**
    * An array of personas of people that are involved in this activity, only imageUrl and primaryText properties are used. At least one person is required.
@@ -53,6 +53,11 @@ export interface IActivityItemStyles {
   activityPersona?: IStyle;
 
   /**
+   * Styles applied to the icon indicating the type of the activity. Only shown when personas are unavailable.
+   */
+  activityTypeIcon?: IStyle;
+
+  /**
    * Styles applied to the text of comments.
    */
   commentText?: IStyle;
@@ -60,7 +65,12 @@ export interface IActivityItemStyles {
   /**
    * Styles applied to personas when multiple users are involved in a single activity.
    */
-  multiPersona?: IStyle;
+  doublePersona?: IStyle;
+
+  /**
+   * Styles applied to documents, folders, and usernames that are hyperlinks or have other on click actions.
+   */
+  docLink?: IStyle;
 
   /**
    * Styles applied to the names mentioned in the activity item.
@@ -78,18 +88,19 @@ export interface IActivityItemStyles {
   timeStamp?: IStyle;
 }
 
-export enum IActivityType {
-  commented,
-  mentioned,
-  edited,
-  moved,
-  renamed,
-  shared,
-  added,
-  deleted,
-  restored,
-  versioned,
-  custom
+export enum ActivityType {
+  Message,
+  CommentInDocument,
+  Mention,
+  Edit,
+  Move,
+  Rename,
+  Share,
+  Add,
+  Delete,
+  Restore,
+  Version,
+  Custom
 }
 
 export interface IFileActivity {

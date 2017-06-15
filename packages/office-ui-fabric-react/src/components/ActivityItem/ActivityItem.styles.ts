@@ -10,6 +10,7 @@ import {
 import { IActivityItemStyles } from './ActivityItem.Props';
 
 const DEFAULT_PERSONA_SIZE = '32px';
+const DEFAULT_ICON_SIZE = '24px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
@@ -24,35 +25,55 @@ export const getStyles = memoizeFunction((
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
         lineHeight: '17px',
+        boxSizing: 'border-box',
         color: theme.palette.neutralSecondary
       }
     ],
 
     activityContent: {
-      padding: '0 12px'
+      padding: '0 8px'
     },
 
     personaContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      minWidth: DEFAULT_PERSONA_SIZE,
+      width: DEFAULT_PERSONA_SIZE,
+      height: DEFAULT_PERSONA_SIZE
+    },
+
+    activityTypeIcon: {
+      minWidth: DEFAULT_PERSONA_SIZE,
       width: DEFAULT_PERSONA_SIZE,
       height: DEFAULT_PERSONA_SIZE,
+      paddingTop: '3px',
+      fontSize: DEFAULT_ICON_SIZE,
+      lineHeight: DEFAULT_ICON_SIZE
     },
 
     activityPersona: {
       display: 'block'
     },
 
-    multiPersona: {
-      width: '16px',
-      height: '16px'
-    },
-
-    commentText: {
-      color: theme.palette.neutralPrimary,
+    doublePersona: {
+      '&:first-child': {
+        alignSelf: 'flex-end'
+      }
     },
 
     nameText: {
       fontWeight: '600',
       color: theme.palette.neutralPrimary
+    },
+
+    docLink: {
+      fontWeight: '600',
+      color: theme.palette.themePrimary,
+      textDecoration: 'none'
+    },
+
+    commentText: {
+      color: theme.palette.neutralPrimary,
     },
 
     timeStamp: [
