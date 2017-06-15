@@ -2,7 +2,20 @@ import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 
+export interface IComboBox {
+  /**
+ * Sets focus to the input in the comboBox
+ * @returns True if focus could be set, false if no operation was taken.
+ */
+  focus(): boolean;
+}
+
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxProps> {
+  /**
+   * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IComboBox) => void;
 
   /**
    * Collection of options for this ComboBox

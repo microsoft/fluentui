@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
+import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';

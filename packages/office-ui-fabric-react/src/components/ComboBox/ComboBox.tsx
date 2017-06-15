@@ -13,11 +13,14 @@ import {
   autobind,
   BaseComponent,
   css,
+  divProperties,
   findIndex,
   getId,
+  getNativeProps,
   KeyCodes
 } from '../../Utilities';
 import { ISelectableOption, SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import * as stylesImport from './ComboBox.scss';
 const styles: any = stylesImport;
 
@@ -59,7 +62,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     options: [],
     allowFreeform: false,
     autoComplete: true,
-    buttonIconProps: { iconName: 'ChevronDownSmall' }
+    buttonIconProps: { iconName: 'chevronDown' }
   };
 
   public refs: {
@@ -200,8 +203,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
+    let divProps = getNativeProps(this.props, divProperties);
+
     return (
-      <div ref='root' className={ css('ms-ComboBox-container') }>
+      <div {...divProps } ref='root' className={ css('ms-ComboBox-container') }>
         { label && (
           <Label id={ id + '-label' } required={ required } htmlFor={ id }>{ label }</Label>
         ) }
@@ -715,7 +720,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render Callout container and pass in list
   @autobind
-  private _onRenderContainer(props: IComboBoxProps): JSX.Element {
+  private _onRenderContainer(props: ISelectableDroppableTextProps<IComboBoxProps> | IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
       calloutProps
@@ -734,7 +739,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
       >
-        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBox.inputElement.clientWidth - 2 } }>
+        <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
           { onRenderList({ ...this.props }, this._onRenderList) }
         </div>
       </Callout>
@@ -743,7 +748,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render List of items
   @autobind
-  private _onRenderList(props: IComboBoxProps): JSX.Element {
+  private _onRenderList(props: ISelectableDroppableTextProps<IComboBoxProps> | IComboBoxProps): JSX.Element {
     let {
       onRenderItem = this._onRenderItem
     } = this.props;
@@ -1013,17 +1018,44 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // On enter submit the pending value
         this._submitPendingValue();
 
-        // If we are not allowing freeform
-        // or the comboBox is open, flip the open state
-        if (!allowFreeform || isOpen) {
+        // if we are open or
+        // if we are not allowing freeform or
+        // our we have no pending value
+        // and no valid pending index
+        // flip the open state
+        if ((isOpen ||
+          ((!allowFreeform ||
+            this.state.currentPendingValue === undefined ||
+            this.state.currentPendingValue === null ||
+            this.state.currentPendingValue.length <= 0) &&
+            this.state.currentPendingValueValidIndex < 0))) {
           this.setState({
             isOpen: !isOpen
           });
         }
+
+        // Allow TAB to propigate
+        if (ev.which === KeyCodes.tab) {
+          return;
+        }
         break;
 
-      case KeyCodes.escape:
       case KeyCodes.tab:
+        // On enter submit the pending value
+        this._submitPendingValue();
+
+        // If we are not allowing freeform
+        // or the comboBox is open, flip the open state
+        if (isOpen) {
+          this.setState({
+            isOpen: !isOpen
+          });
+        }
+
+        // Allow TAB to propigate
+        return;
+
+      case KeyCodes.escape:
         // reset the selected index
         this._resetSelectedIndex();
 
@@ -1032,11 +1064,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           this.setState({
             isOpen: false
           });
-        }
-
-        // Allow TAB to propigate
-        if (ev.which === KeyCodes.tab) {
-          return;
         }
         break;
 
@@ -1089,6 +1116,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           return;
         }
 
+        // If we get here and we got either and ALT key
+        // or meta key and we are current open, let's close the menu
+        if ((ev.altKey || ev.metaKey) && isOpen) {
+          this.setState({ isOpen: !isOpen });
+        }
+
         // If we are not allowing freeform and
         // allowing autoComplete, handle the input here
         // since we have marked the input as readonly
@@ -1096,6 +1129,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           this._onInputChange(String.fromCharCode(ev.which));
           break;
         }
+
+        // allow the key to propigate by default
         return;
     }
 

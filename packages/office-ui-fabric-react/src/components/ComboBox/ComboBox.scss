@@ -72,9 +72,8 @@ $ComboBox-item-height: 36px;
     }
 
     &.readOnly {
-      .input,
       .caretDown {
-        background-color: $ms-color-neutralLighter;
+        background-color: inherit;
       }
     }
   }
@@ -121,15 +120,6 @@ $ComboBox-item-height: 36px;
   text-overflow: ellipsis;
   padding-left: 12px;
 
-  &:hover {
-    background-color: $ms-color-neutralLight;
-    color: $ms-color-neutralPrimary;
-  }
-
-  &::selection {
-    background-color: $ms-color-neutralSecondaryAlt;
-    color: $ms-color-white;
-  }
 }
 
 .caretDown {
@@ -154,7 +144,6 @@ $ComboBox-item-height: 36px;
 .callout {
   box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
   border: 1px solid $ms-color-neutralLight;
-  max-height: 576px;
 }
 
 .errorMessage{

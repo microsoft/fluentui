@@ -44,7 +44,7 @@ export interface ISelectableDroppableTextProps<T> extends React.Props<T> {
   /**
    * Collection of options for this ISelectableDroppableText
    */
-  options?: ISelectableOption[];
+  options?: any;
 
   /**
    * Callback issues when the selected option changes

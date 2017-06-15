@@ -3,6 +3,8 @@ import { Dropdown } from './Dropdown';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 
+export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+
 export interface IDropdown {
 
 }
