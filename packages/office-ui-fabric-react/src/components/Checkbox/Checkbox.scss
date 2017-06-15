@@ -92,11 +92,11 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
   @include ms-borderColor-neutralTertiary;
   @media screen and (-ms-high-contrast: active) {
-    border-color: $ms-color-contrastWhiteDisabled;
+    border-color: $ms-color-contrastBlackSelected;
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
-    border-color: $ms-color-contrastBlackDisabled;
+    border-color: $ms-color-contrastWhiteSelected;
   }
 }
 
@@ -124,16 +124,16 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
         height: $ms-checkbox-highContrast-iconBoxSize;
         width: $ms-checkbox-highContrast-iconBoxSize;
         border-width: 1px;
-        border-color: $ms-color-contrastWhiteDisabled;
-        background-color: $ms-color-contrastWhiteDisabled;
+        border-color: $ms-color-contrastBlackSelected;
+        background-color: $ms-color-contrastWhiteSelected;
       }
 
       @media screen and (-ms-high-contrast: black-on-white) {
         height: $ms-checkbox-highContrast-iconBoxSize;
         width: $ms-checkbox-highContrast-iconBoxSize;
         border-width: 1px;
-        border-color: $ms-color-contrastBlackDisabled;
-        background-color: $ms-color-contrastBlackDisabled;
+        border-color: $ms-color-contrastBlackSelected;
+        background-color: $ms-color-contrastBlackSelected;
       }
   }
   &:hover,
@@ -177,11 +177,25 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
       border-color: $ms-color-contrastBlackDisabled;
       background-color: $ms-color-contrastBlackDisabled;
       > .checkmark {
+        @media screen and (-ms-high-contrast: active) {
+          color: $ms-color-contrastBlackDisabled;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          color: $ms-color-contrastWhiteDisabled;
+        }
       }
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
       > .checkmark {
+        @media screen and (-ms-high-contrast: active) {
+          color: $ms-color-contrastBlackDisabled;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          color: $ms-color-contrastWhiteDisabled;
+        }
       }
       background-color: $ms-color-contrastWhiteDisabled;
       border-color: $ms-color-contrastWhiteDisabled;
