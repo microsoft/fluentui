@@ -33,7 +33,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     this._createNullRef();
     return null;
   }
@@ -47,7 +47,7 @@ class TestComponent extends BaseComponent<{}, {}> {
   }
 
   private _createNullRef() {
-    let foo: () => void = null;
+    let foo: any = null;
 
     // Calling a null
     foo();
