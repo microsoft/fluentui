@@ -79,28 +79,32 @@ export const getStyles = memoizeFunction((
     },
 
     thumb: {
+      width: '.5em',
+      height: '.5em',
       borderRadius: '.5em',
       position: 'absolute',
       top: '.2em',
       transition: 'all 0.1s ease',
-      borderColor: thumbBackground,
+      backgroundColor: thumbBackground,
+      borderColor: 'transparent',
       borderWidth: '.27em',
       borderStyle: 'solid',
+      boxSizing: 'border-box',
       left: '.2em'
     },
 
     thumbChecked: {
-      borderColor: thumbCheckedBackground,
+      backgroundColor: thumbCheckedBackground,
       left: '1.4em'
     },
 
     thumbDisabled: {
-      borderColor: thumbDisabledBackground,
+      backgroundColor: thumbDisabledBackground,
       left: '.2em',
     },
 
     thumbCheckedDisabled: {
-      borderColor: thumbCheckedDisabledBackground,
+      backgroundColor: thumbCheckedDisabledBackground,
       left: '1.4em'
     },
 
