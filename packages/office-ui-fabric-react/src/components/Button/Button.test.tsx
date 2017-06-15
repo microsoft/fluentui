@@ -39,4 +39,30 @@ describe('DefaultButton', () => {
     expect(renderedDOM.tagName).equals('A', 'A Button with an href renders as an anchor');
   });
 
+  it('Providing onClick and menuProps renders a SplitButton', () => {
+    const button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => alert('Clicked') }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.tagName).equal('DIV', 'A Button with a menuProps and an onClick renders as a SplitButton');
+  });
+
 });

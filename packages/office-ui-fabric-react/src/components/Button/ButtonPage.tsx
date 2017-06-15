@@ -15,6 +15,7 @@ import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
+import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
 import './examples/Button.Basic.Example.scss';
 import { Link } from '../../Link';
 
@@ -27,6 +28,8 @@ const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
 const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
+const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
+const ButtonSplitCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 
 export interface IButtonDemoPageState {
   areButtonsDisabled?: boolean;
@@ -77,6 +80,12 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Button Swap with Focus State' code={ ButtonSwapExampleCode }>
               <ButtonSwapExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+            </ExampleCard>
+            <ExampleCard title='SplitButton' code={ ButtonSplitExampleCode }>
+              <ButtonSplitExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+            </ExampleCard>
+            <ExampleCard title='' code={ ButtonSplitExampleCode }>
+              <ButtonSplitCustomExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
           </div>
         }

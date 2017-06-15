@@ -75,7 +75,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
 
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks.
+   * how the default icon looks. Providing this in addition of onClick will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
 
@@ -293,7 +293,43 @@ export interface IButtonStyles {
   descriptionChecked?: IStyle;
 
   /**
-   * Style for the screen reader text.
+   * Style override for the screen reader text.
    */
   screenReaderText?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element
+   */
+  splitButtonContainer?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element in a disabled state
+   */
+  splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button
+   */
+  splitButtonMenuButton?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a disabled state.
+   */
+  splitButtonMenuButtonDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a checked state
+   */
+  splitButtonMenuButtonChecked?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element
+   */
+  splitButtonMenuIcon?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element in a disabled state
+   */
+  splitButtonMenuIconDisabled?: IStyle;
+
 }
