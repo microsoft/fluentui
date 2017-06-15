@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jun 2017 10:09:15 GMT and should not be manually modified.
+
+## 4.7.0
+Thu, 15 Jun 2017 10:09:15 GMT
+
+### Minor changes
+
+- Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps
+
+### Patches
+
+- Toggle: High contrast fix for Firefox
 
 ## 4.6.0
 Wed, 14 Jun 2017 06:02:15 GMT
