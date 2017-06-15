@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Breadcrumb } from './Breadcrumb';
+import { Breadcrumb, IBreadCrumbData } from './Breadcrumb';
 import { IRenderFunction } from '../../Utilities';
 
 export interface IBreadcrumb {
@@ -33,6 +33,8 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
 
   /** Method to call when trying to render an item. */
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
+
+  onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData;
 
   /**
    * Aria label to place on the navigation landmark for breadcrumb

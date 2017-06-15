@@ -4,15 +4,17 @@ import {
   autobind,
   css,
   getId,
-  getRTL
+  getRTL,
+  assign
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { ResizeGroup } from '../../ResizeGroup';
 
 import * as stylesImport from './Breadcrumb.scss';
 const styles: any = stylesImport;
@@ -20,8 +22,13 @@ const styles: any = stylesImport;
 export interface IBreadcrumbState {
   isOverflowOpen: boolean;
   overflowAnchor?: HTMLElement;
-  renderedItems?: IBreadcrumbItem[];
-  renderedOverflowItems?: IBreadcrumbItem[];
+}
+
+export interface IBreadCrumbData {
+  props: IBreadcrumbProps;
+  overflowMenuId: string;
+  renderedItems: IBreadcrumbItem[];
+  renderedOverflowItems: IBreadcrumbItem[];
 }
 
 const OVERFLOW_KEY = 'overflow';
@@ -38,7 +45,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     renderingArea: HTMLElement;
   };
 
-  private _breadcrumbItemWidths: { [key: string]: number };
   private _id: string;
 
   constructor(props: IBreadcrumbProps) {
@@ -48,31 +54,52 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     this.state = this._getStateFromProps(props);
   }
 
-  public componentDidMount() {
-    this._updateItemMeasurements();
-    this._updateRenderedItems();
+  public render() {
+    let { onReduceData = this._onReduceData } = this.props;
+    let overflowMenuId = this._id + '-overflow';
+    let breadCrumbData: IBreadCrumbData = {
+      props: this.props,
+      overflowMenuId: this._id,
+      renderedItems: this.props.items.slice(0, this.props.maxDisplayedItems),
+      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems + 1)
+    };
 
-    this._events.on(window, 'resize', this._updateRenderedItems);
+    return (
+      <ResizeGroup
+        onRenderData={ this._onRenderBreadcrumb }
+        onReduceData={ onReduceData }
+        data={ breadCrumbData }
+      />
+    );
   }
 
-  public componentWillReceiveProps(nextProps: IBreadcrumbProps) {
-    this.setState(this._getStateFromProps(nextProps));
-    this._breadcrumbItemWidths = null;
-  }
+  @autobind
+  private _onReduceData(data: IBreadCrumbData): IBreadCrumbData {
+    let { renderedItems, renderedOverflowItems } = data;
+    let movedItem = renderedItems[renderedItems.length - 1];
 
-  public componentDidUpdate(prevProps: IBreadcrumbProps, prevStates: IBreadcrumbState) {
-    if (!this._breadcrumbItemWidths) {
-      this._updateItemMeasurements();
-      this._updateRenderedItems();
+    if (movedItem !== undefined) {
+      return assign({}, data, {
+        renderedItems: renderedItems.slice(0, -1),
+        renderedOverflowItems: renderedOverflowItems.concat(movedItem),
+      });
     }
   }
 
-  public render() {
-    let { className, ariaLabel } = this.props;
-    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
-    let overflowMenuId = this._id + '-overflow';
+  @autobind
+  private _onRenderBreadcrumb(data: IBreadCrumbData) {
+    let { className, ariaLabel, items, onRenderItem = this._onRenderItem } = data.props;
+    let { renderedOverflowItems, renderedItems, overflowMenuId } = data;
+    let { isOverflowOpen, overflowAnchor } = this.state;
 
-    let { onRenderItem = this._onRenderItem } = this.props;
+    let contextualItems: IContextualMenuItem[] = renderedOverflowItems.map(
+      (item, index) => ({
+        names: item.text,
+        key: item.key,
+        onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
+        href: item.href
+      })
+    );
 
     return (
       <div
@@ -83,7 +110,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
       >
         <FocusZone direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
-            { renderedOverflowItems && renderedOverflowItems.length ? (
+            { renderedOverflowItems && renderedOverflowItems.length && (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <IconButton
                   className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
@@ -92,13 +119,19 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
                   role='button'
                   aria-haspopup='true'
                   aria-owns={ isOverflowOpen ? overflowMenuId : null }
+                  menuIconProps={ { iconName: null } }
+                  menuProps={ {
+                    items: contextualItems,
+                    id: overflowMenuId,
+                    directionalHint: DirectionalHint.bottomLeftEdge
+                  } }
                 />
                 <Icon
                   className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                   iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
                 />
               </li>
-            ) : (null) }
+            ) }
             { renderedItems.map(
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) } ref={ item.key || String(index) }>
@@ -110,22 +143,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
               )) }
           </ol>
         </FocusZone>
-        { isOverflowOpen ? (
-          <ContextualMenu
-            targetElement={ overflowAnchor }
-            isBeakVisible={ true }
-            items={ renderedOverflowItems.map(
-              (item, index) => ({
-                name: item.text,
-                key: item.key,
-                onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
-                href: item.href
-              })
-            ) }
-            id={ overflowMenuId }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._onOverflowDismissed } />
-        ) : (null) }
       </div>
     );
   }
@@ -182,66 +199,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     });
   }
 
-  private _updateItemMeasurements() {
-    let { items } = this.props;
-
-    if (!this._breadcrumbItemWidths) {
-      this._breadcrumbItemWidths = {};
-    }
-
-    for (let i = 0; i < items.length; i++) {
-      let item = items[i];
-
-      if (!this._breadcrumbItemWidths[item.key]) {
-        let el = this.refs[item.key] as HTMLElement;
-
-        this._breadcrumbItemWidths[item.key] = el.getBoundingClientRect().width;
-      }
-    }
-  }
-
-  private _updateRenderedItems() {
-    let { items, maxDisplayedItems } = this.props;
-    let renderingArea = this.refs.renderingArea;
-    let renderedItems = [];
-    let renderedOverflowItems = [].concat(items);
-    let consumedWidth = 0;
-
-    let style = window.getComputedStyle(renderingArea);
-    let availableWidth = renderingArea.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10);
-
-    availableWidth -= OVERFLOW_WIDTH;
-
-    let i;
-    let minIndex = Math.max(0, renderedOverflowItems.length - maxDisplayedItems);
-
-    for (i = renderedOverflowItems.length - 1; i >= minIndex; i--) {
-      let item = renderedOverflowItems[i];
-      let itemWidth = this._breadcrumbItemWidths[item.key];
-
-      if ((consumedWidth + itemWidth) >= availableWidth) {
-        break;
-      } else {
-        consumedWidth += itemWidth;
-      }
-    }
-
-    renderedItems = renderedOverflowItems.splice(i + 1);
-
-    this.setState({
-      isOverflowOpen: this.state.isOverflowOpen,
-      overflowAnchor: this.state.overflowAnchor,
-      renderedItems: renderedItems,
-      renderedOverflowItems: renderedOverflowItems,
-    });
-  }
-
   private _getStateFromProps(nextProps: IBreadcrumbProps) {
     return {
       isOverflowOpen: false,
-      overflowAnchor: null,
-      renderedItems: nextProps.items || [],
-      renderedOverflowItems: null
+      overflowAnchor: null
     };
   }
 
