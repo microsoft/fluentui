@@ -2,6 +2,128 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.7.0",
+      "tag": "office-ui-fabric-react_v4.7.0",
+      "date": "Thu, 15 Jun 2017 10:09:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5d0adb20f07383a60fb9fa14bd6cde8887b0f5db",
+            "comment": "Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "2278009d39d643168f0f27508a1d01ddbb4fdb69",
+            "comment": "Toggle: High contrast fix for Firefox"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.0 <1.0.0` to `>=0.8.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.0",
+      "tag": "office-ui-fabric-react_v4.6.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "e0dc2ba3f8504d77c0f19567e646608b1094018c",
+            "comment": "Buttons: Added `aria-haspopup` to buttons with menuProps."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74c01f80ee4fb502a45c77ac0ad135148b2146d9",
+            "comment": "FocusZone: bidirectional movement now wraps on lines."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency to have Segoe UI be part of the font fallback."
+          },
+          {
+            "author": "Abhinav Singh Teotia <abhinavsingh.bits@gmail.com>",
+            "commit": "79f1c3c5ed9ae63c1e035c67ad81a31b997bbe78",
+            "comment": "FocusZone should reset active element if it is not tabbable."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "057d6526f255d23b185c4d4618d63939b2ba8290",
+            "comment": "Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "8c64e599a92a969603525640cedb8e0119efd61f",
+            "comment": "PeoplePicker: fixing styling, focus, and extra rerendering issues."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f1437d6fa8f0e833efcdb7d5aa2e7de71ebd1e99",
+            "comment": "Dropdown: Fix keyboard focus on Header/Separator items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "0a53930a167b02ba931e6f5231472da854701bab",
+            "comment": "Dropdown: Fixed onRenderPlaceholder and update docs"
+          },
+          {
+            "author": "zoarif <zoarif@microsoft.com>",
+            "commit": "0c2ecc7bab31a37798ce256a522923e2d1c4e7d3",
+            "comment": "Adding Aria label props for Dialog"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.4 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `3.0.1` to `3.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.1",
+      "tag": "office-ui-fabric-react_v4.5.1",
+      "date": "Tue, 13 Jun 2017 10:13:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "b0fa51097fde734c930c0b03cc43d63ff2704da0",
+            "comment": "High contrast fixes for Pivot, Choicegroup and Checkbox"
+          },
+          {
+            "author": "Aditya <adimittal91@gmail.com>",
+            "commit": "b0ee1f6c9e5f0d9b31c060d92998e0c43af504d4",
+            "comment": "withResponsiveMode: Adding error handling around the case where window.innerWidth throws an exception."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.3 <1.0.0` to `>=0.7.4 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.0",
       "tag": "office-ui-fabric-react_v4.5.0",
       "date": "Mon, 12 Jun 2017 01:47:18 GMT",

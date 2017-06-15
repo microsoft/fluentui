@@ -11,12 +11,12 @@ export function autobind<T extends Function>(target: any, key: string, descripto
     configurable: true,
 
     get() {
-      if (defining || this === fn.prototype || this.hasOwnProperty(key)) {
+      if (defining || (fn && this === fn.prototype) || this.hasOwnProperty(key)) {
         return fn;
       }
 
       // Bind method only once, and update the property to return the bound value from now on
-      let fnBound = fn.bind(this);
+      let fnBound = fn && fn.bind(this);
 
       defining = true;
       Object.defineProperty(this, key, {

@@ -6,10 +6,11 @@
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
-  margin: 1px;
+  margin: 1px 2px;
   cursor: default;
   user-select: none;
-  max-width: 180px;
+  max-width: 300px;
+  vertical-align: middle;
 
   &:hover {
     background: $ms-color-neutralLight;
