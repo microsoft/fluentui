@@ -371,7 +371,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ css(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
-        onTouchEnd={ this._onToggleMenu }
       >
         <span aria-hidden={ true }>
           { this._onRenderContent(tag, buttonProps) }
