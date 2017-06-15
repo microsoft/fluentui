@@ -40,10 +40,6 @@ export class Check extends BaseComponent<ICheckProps, {}> {
         isChecked && ('is-checked ' + styles.rootIsChecked)
       ) }>
         <Icon
-          className={ css('ms-Check-background', styles.background) }
-          iconName='fullCircleMask'
-        />
-        <Icon
           className={ css('ms-Check-circle', styles.circle) }
           iconName='circleRing'
         />
