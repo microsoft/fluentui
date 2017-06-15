@@ -1,0 +1,114 @@
+@import '../../../common/common';
+
+.root {
+  position: relative;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+/*
+  &:hover {
+    border: 4px solid $ms-color-neutralTertiaryAlt;
+    width: 12px;
+    height: 12px;
+  }
+
+  &:active{
+    border: 4px solid #969696;
+  }
+*/
+  @include highContrastAdjust();
+}
+
+:global(.ms-Fabric.is-focusVisible) .item {
+  &:focus,
+  &:focus::after {
+    border: none;
+  }
+}
+
+.item {
+  padding: 0px 2px;
+
+  &.itemIsSelected {
+    &:hover .svg,
+    &:active .svg {
+      box-shadow: 0 0 1px 1px
+    }
+
+    & .svg {
+      &.circle {
+        border-radius: 100%;
+      }
+
+      width: 12px;
+      height: 12px;
+      border: 4px solid $ms-color-neutralTertiaryAlt;
+    }
+  }
+
+   &:focus .svg {
+      box-shadow: 0 0 1px 1px
+   }
+
+  &:hover .svg,
+  &:focus .svg,
+  &:active .svg {
+    border: 4px solid $ms-color-neutralTertiaryAlt;
+    width: 12px;
+    height: 12px;
+  }
+
+  &:hover .svg.circle,
+  &:focus .svg.circle,
+  &:active .svg.circle {
+    border-radius: 100%;
+  }
+
+  &:active .svg {
+    border: 4px solid #969696;
+  }
+}
+
+/*.svg.circle {
+  &:hover,:active {
+    border-radius: 100%;
+  }
+}*/
+
+.colorPickerContianer {
+  clear: both;
+}
+
+.header {
+  font-weight: $ms-font-weight-semibold;
+  background: none;
+  border: none;
+  height: 36px;
+  line-height: 36px;
+  cursor: default;
+  padding: 0px 16px;
+  user-select: none;
+  @include text-align(left);
+}
+
+.divider {
+  display: block;
+  height: 1px;
+  background-color: $menuDividerColor;
+  position: relative;
+}
+
+.menuItem {
+    display: inline-block;
+    width: 24px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
