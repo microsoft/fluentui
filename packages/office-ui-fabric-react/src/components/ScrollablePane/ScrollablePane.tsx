@@ -4,8 +4,9 @@ import * as React from 'react';
 
 import {
   BaseComponent,
-  autobind
-  // css
+  autobind,
+  css,
+  findScrollableParent
   // getId
 } from '../../Utilities';
 import { IScrollablePaneProps } from './ScrollablePane.Props';
@@ -19,8 +20,14 @@ export interface IScrollablePaneState {
 }
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> {
+  private _scrollElement: HTMLElement;
+
+  public refs: {
+    root: HTMLElement
+  };
 
   public static defaultProps: IScrollablePaneProps = {
+    contentAreas: []
   };
 
   constructor(props: IScrollablePaneProps) {
@@ -35,6 +42,21 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
 
   public componentDidMount() {
     console.log('mount');
+    this._checkContentAreaPosition();
+
+    this._scrollElement = findScrollableParent(this.refs.root);
+    console.log(this._scrollElement);
+    if (this._scrollElement) {
+      this._events.on(this._scrollElement, 'scroll', () => {
+        console.log('scrolling');
+      });
+    }
+  }
+
+  private _checkContentAreaPosition() {
+    const { contentAreas } = this.props;
+    debugger;
+    console.log(this.refs.root);
   }
 
   @autobind
@@ -43,9 +65,18 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   }
 
   public render() {
+    const { className, contentAreas } = this.props;
+    console.log(contentAreas);
     return (
-      <div>
-        scrollable pane
+      <div className={ css('ms-ScrollablePane', styles.root, className) }
+        ref='root'>
+        { contentAreas.map((contentArea: JSX.Element, index: number) => {
+          return (
+            <div className={ styles.contentArea } key={ index }>
+              { contentArea }
+            </div>
+          );
+        }) }
       </div>
     );
   }
