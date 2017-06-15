@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.9.0",
+      "tag": "@uifabric/styling_v0.9.0",
+      "date": "Thu, 15 Jun 2017 23:55:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "90e2da953d51ba71c019b0b1db9a7f63bf8f7e48",
+            "comment": "Removed new icons that were added recently"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.8.1",
       "tag": "@uifabric/styling_v0.8.1",
       "date": "Thu, 15 Jun 2017 10:09:15 GMT",
