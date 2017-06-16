@@ -9,13 +9,9 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     this.state = { showPanel: false };
   }
 
-  private _createContentArea() {
-    return <div>{ lorem(200) }</div>
-  }
-
   public render() {
     let contentAreas = [];
-    for (var i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
       contentAreas.push(this._createContentArea());
     }
 
@@ -23,6 +19,12 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
       <div>
         <ScrollablePane contentAreas={ contentAreas } />
       </div>
+    );
+  }
+
+  private _createContentArea() {
+    return (
+      <div>{ lorem(200) }</div>
     );
   }
 }

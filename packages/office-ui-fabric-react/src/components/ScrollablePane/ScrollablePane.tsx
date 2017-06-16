@@ -20,15 +20,15 @@ export interface IScrollablePaneState {
 }
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> {
-  private _scrollElement: HTMLElement;
+  public static defaultProps: IScrollablePaneProps = {
+    contentAreas: []
+  };
 
   public refs: {
     root: HTMLElement
   };
 
-  public static defaultProps: IScrollablePaneProps = {
-    contentAreas: []
-  };
+  private _scrollElement: HTMLElement;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -53,12 +53,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
     }
   }
 
-  private _checkContentAreaPosition() {
-    const { contentAreas } = this.props;
-    debugger;
-    console.log(this.refs.root);
-  }
-
   @autobind
   public componentWillReceiveProps(newProps: IScrollablePaneProps) {
     console.log('receive props');
@@ -79,5 +73,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
         }) }
       </div>
     );
+  }
+
+  private _checkContentAreaPosition() {
+    const { contentAreas } = this.props;
+    console.log(this.refs.root);
   }
 }
