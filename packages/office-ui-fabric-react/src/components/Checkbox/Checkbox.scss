@@ -82,7 +82,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
   justify-content: center;
   height: $ms-checkbox-label-size;
   width: $ms-checkbox-label-size;
-  border: 1px solid black;
+  border: 1px solid transparent;
   box-sizing: border-box;
   transition-property: background, border, border-color;
   transition-duration: $ms-checkbox-transition-duration;
