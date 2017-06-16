@@ -2,6 +2,68 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.9.0",
+      "tag": "@uifabric/styling_v0.9.0",
+      "date": "Thu, 15 Jun 2017 23:55:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "90e2da953d51ba71c019b0b1db9a7f63bf8f7e48",
+            "comment": "Removed new icons that were added recently"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.8.1",
+      "tag": "@uifabric/styling_v0.8.1",
+      "date": "Thu, 15 Jun 2017 10:09:15 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.8.0",
+      "tag": "@uifabric/styling_v0.8.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions."
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "560719e7fc887c52b3ffc96cba08f9115b5c03e7",
+            "comment": "Updates to version 2.30 of the icon font"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "5c591cad8e4de27a353fb11727aeddedb4820da1",
+            "comment": "Remove high contrast adjust from common styles"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.4",
+      "tag": "@uifabric/styling_v0.7.4",
+      "date": "Tue, 13 Jun 2017 10:13:21 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.7.3",
       "tag": "@uifabric/styling_v0.7.3",
       "date": "Mon, 12 Jun 2017 01:47:18 GMT",
