@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove Tooltip by default from DetailsList, allowing optional override",
+      "comment": "DetailsList: Remove Tooltip by defaul, allowing optional override.",
       "type": "minor"
     }
   ],
