@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 16 Jun 2017 19:39:47 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Jun 2017 23:02:08 GMT and should not be manually modified.
+
+## 0.10.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- Enable no-implicit-any in the styling package
 
 ## 0.9.1
 Fri, 16 Jun 2017 19:39:47 GMT

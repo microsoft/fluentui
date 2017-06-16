@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.10.0",
+      "tag": "@uifabric/styling_v0.10.0",
+      "date": "Fri, 16 Jun 2017 23:02:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "31867d887e53378ab7ce057babe1fcac939d2d65",
+            "comment": "Enable no-implicit-any in the styling package"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.9.1",
       "tag": "@uifabric/styling_v0.9.1",
       "date": "Fri, 16 Jun 2017 19:39:47 GMT",
