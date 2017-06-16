@@ -34,7 +34,11 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   /** Method to call when trying to render an item. */
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
 
-  onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData;
+  /**
+   * Method to call when reducing the length of the breadcrumb.
+   * Return undefined to never reduce breadcrumb length
+   */
+  onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
 
   /**
    * Aria label to place on the navigation landmark for breadcrumb

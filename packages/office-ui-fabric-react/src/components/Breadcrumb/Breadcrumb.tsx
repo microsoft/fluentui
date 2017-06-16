@@ -55,15 +55,14 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   @autobind
-  private _onReduceData(data: IBreadCrumbData): IBreadCrumbData {
+  private _onReduceData(data: IBreadCrumbData): IBreadCrumbData | undefined {
     let { renderedItems, renderedOverflowItems } = data;
     let movedItem = renderedItems[renderedItems.length - 1];
+    renderedItems = renderedItems.slice(0, -1);
+    renderedOverflowItems = [...renderedOverflowItems, movedItem];
 
     if (movedItem !== undefined) {
-      return assign({}, data, {
-        renderedItems: renderedItems.slice(0, -1),
-        renderedOverflowItems: renderedOverflowItems.concat(movedItem),
-      });
+      return { ...data, renderedItems, renderedOverflowItems };
     }
   }
 
