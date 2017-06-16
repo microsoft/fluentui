@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Jun 2017 10:09:15 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Jun 2017 23:55:18 GMT and should not be manually modified.
+
+## 4.7.1
+Thu, 15 Jun 2017 23:55:18 GMT
+
+### Patches
+
+- CheckButton: Firefox high contrast fix
 
 ## 4.7.0
 Thu, 15 Jun 2017 10:09:15 GMT
