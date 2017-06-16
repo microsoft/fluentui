@@ -36,6 +36,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   private _measured: HTMLElement;
   private _lastKnownRootWidth: number | undefined = undefined;
   private _lastKnownMeasuredWidth: number | undefined = undefined;
+  private _lastRenderedData: any = undefined;
 
   constructor(props: IResizeGroupProps) {
     super(props);
@@ -89,6 +90,12 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {
     this._measureItems();
+
+    if (this.props.onNewDataRendered && this.state.renderedData !== this._lastRenderedData) {
+      this.props.onNewDataRendered(this.state.renderedData);
+    }
+
+    this._lastRenderedData = this.state.renderedData;
   }
 
   private _onResize() {
