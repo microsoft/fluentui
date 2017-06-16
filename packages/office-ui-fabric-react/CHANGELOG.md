@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Jun 2017 23:55:18 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Jun 2017 19:39:47 GMT and should not be manually modified.
+
+## 4.7.2
+Fri, 16 Jun 2017 19:39:47 GMT
+
+### Patches
+
+- Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility.
+- OverflowSet: Don't use the index as the key
 
 ## 4.7.1
 Thu, 15 Jun 2017 23:55:18 GMT
