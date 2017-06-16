@@ -23,17 +23,20 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 },
   onReduceData: (data: ITestScalingData) => ITestScalingData = onReduceScalingData) {
   const onReduceDataSpy = sinon.spy(onReduceData);
   const onRenderDataSpy = sinon.spy();
+  const onNewDataRenderedSpy = sinon.spy();
 
   let wrapper = mount<IResizeGroupProps, IResizeGroupState>(<ResizeGroup
     data={ data }
     onReduceData={ onReduceDataSpy }
     onRenderData={ onRenderDataSpy }
+    onNewDataRendered={ onNewDataRenderedSpy }
   />);
 
   return {
     wrapper,
     onReduceDataSpy,
     onRenderDataSpy,
+    onNewDataRenderedSpy,
     ...getMeasurementMocks(wrapper)
   };
 }
@@ -114,19 +117,26 @@ describe('ResizeGroup', () => {
   it('remeasures if props are updated', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
+    const onNewDataRendered = sinon.spy();
 
     let wrapper = mount(<ResizeGroup
       data={ { a: 1 } }
       onReduceData={ onReduceData }
       onRenderData={ onRenderData }
+      onNewDataRendered={ onNewDataRendered }
     />);
 
+    let newData = { a: 2 };
     wrapper.setProps({
-      data: { a: 2 },
+      data: newData,
     });
 
     // onRenderData should get called to measure and to render when props are updated.
     expect(onRenderData.callCount).to.equal(4);
+
+    // it should call onNewDataRendered with new properties
+    expect(onNewDataRendered.callCount).to.equal(2);
+    expect(onNewDataRendered.getCall(1).args[0]).to.deep.equal(newData);
   });
 
   it('calls onReduceData when contents do not fit', () => {
@@ -298,7 +308,8 @@ describe('ResizeGroup', () => {
     let { wrapper,
       onReduceDataSpy,
       rootGetClientRectMock,
-      measuredGetClientRectMock } = getWrapperWithMocks(data, onReduceScalingData);
+      measuredGetClientRectMock,
+      onNewDataRenderedSpy } = getWrapperWithMocks(data, onReduceScalingData);
 
     onReduceDataSpy.reset();
     measuredGetClientRectMock.reset();
@@ -318,6 +329,8 @@ describe('ResizeGroup', () => {
       renderedData: { scalingIndex: 5 },
       shouldMeasure: false
     });
+    expect(onNewDataRenderedSpy.callCount).to.equal(2);
+    expect(onNewDataRenderedSpy.getCall(1).args[0]).to.deep.equal({ scalingIndex: 5 });
   });
 
   it('renders no more than twice when everything fits', () => {
@@ -393,5 +406,22 @@ describe('ResizeGroup', () => {
     });
 
     expect(wrapper.state().renderedData).to.deep.equal(data);
+  });
+
+  it('calls onNewDataRendered for the initial render', () => {
+    const initialData = { content: 7 };
+    const onNewDataRendered = sinon.spy();
+
+    const wrapper = mount<IResizeGroupProps, IResizeGroupState>(
+      <ResizeGroup
+        data={ initialData }
+        onReduceData={ onReduceScalingData }
+        onRenderData={ sinon.spy() }
+        onNewDataRendered={ onNewDataRendered }
+      />
+    );
+
+    expect(onNewDataRendered.callCount).to.equal(1);
+    expect(onNewDataRendered.getCall(0).args[0]).to.deep.equal(initialData);
   });
 });
