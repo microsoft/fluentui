@@ -23,6 +23,7 @@ import { getStyles } from './HoverCardHost.styles';
 
 export interface IHoverCardHostState {
   isHoverCardVisible?: boolean;
+  openExpanded?: boolean;
 }
 
 export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCardHostState> {
@@ -44,7 +45,8 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
     super(props);
 
     this.state = {
-      isHoverCardVisible: false
+      isHoverCardVisible: false,
+      openExpanded: false
     };
   }
 
@@ -70,6 +72,7 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
         { ...{ onBlurCapture: this._cardDismiss } }
         onMouseEnter={ this._cardOpen }
         onMouseLeave={ this._cardDismiss }
+        onClick={ this._instantOpenExpanded }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
         { children }
@@ -82,6 +85,7 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
             onEnter={ this._cardOpen }
             onDismiss={ this._cardDismiss }
             { ...getNativeProps(this.props, divProperties) }
+            openExpanded={ this.state.openExpanded }
           />
         }
       </div>
@@ -111,8 +115,18 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
 
     this._dismissTimerId = this._async.setTimeout(() => {
       this.setState({
-        isHoverCardVisible: false
+        isHoverCardVisible: false,
+        openExpanded: false
       });
     }, this.props.cardDismissDelay);
+  }
+
+  // Instant Open the card in Expanded mode
+  @autobind
+  private _instantOpenExpanded(ev) {
+    this.setState({
+      isHoverCardVisible: true,
+      openExpanded: true
+    });
   }
 }

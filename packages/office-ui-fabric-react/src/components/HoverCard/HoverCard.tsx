@@ -16,18 +16,19 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 
 import { getStyles } from './HoverCard.styles';
 
-export enum HoverCardView {
+export enum HoverCardMode {
   condensed,
   expanded
 }
 
 export interface IHoverCardState {
-  view: HoverCardView
+  mode: HoverCardMode
 }
 
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
-    expandedCardOpenDelay: 1500
+    expandedCardOpenDelay: 1000,
+    openExpanded: false
   };
 
   private _styles: IHoverCardStyles;
@@ -37,16 +38,24 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     super(props);
 
     this.state = {
-      view: HoverCardView.condensed
+      mode: props.openExpanded ? HoverCardMode.expanded : HoverCardMode.condensed
     };
   }
 
   public componentWillMount() {
     this._async.setTimeout(() => {
       this.setState({
-        view: HoverCardView.expanded
+        mode: HoverCardMode.expanded
       })
     }, this.props.expandedCardOpenDelay);
+  }
+
+  public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
+    if (newProps.openExpanded != this.props.openExpanded) {
+      this.setState({
+        mode: newProps.openExpanded ? HoverCardMode.expanded : HoverCardMode.condensed
+      });
+    }
   }
 
   public componentWillUnmount() {
@@ -67,7 +76,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       <Callout
         componentRef={ c => this._callout = c }
         className={ css(
-          AnimationClassNames.fadeIn200,
+          AnimationClassNames.scaleUpIn100,
           this._styles.root
         ) }
         targetElement={ targetElement }
@@ -89,7 +98,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   public get isExpanded(): boolean {
-    return this.state.view === HoverCardView.expanded;
+    return this.state.mode === HoverCardMode.expanded;
   }
 
   @autobind
@@ -104,7 +113,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   @autobind
   private _onRenderExpandedContent(): JSX.Element {
     return (
-      <div className={ css(AnimationClassNames.slideDownIn20, this._styles.expandedCard) }>
+      <div className={ css(AnimationClassNames.scaleDownIn100, this._styles.expandedCard) }>
         { this.props.onRenderExpandedContent(this.props.item) }
       </div>
     );

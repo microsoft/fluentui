@@ -51,8 +51,15 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
 
   /**
    * Length of expanded card delay
+   * @default 1000
    */
   expandedCardOpenDelay?: number;
+
+  /**
+   * Use to open the card in expanded format and not wait for the delay
+   * @default false
+   */
+  openExpanded?: boolean;
 
   /**
    * Custom styles for this component
