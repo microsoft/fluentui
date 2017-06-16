@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "moduleResolution": "node",
+    "noImplicitAny": true,
     "lib": [
       "es2017",
       "dom"
