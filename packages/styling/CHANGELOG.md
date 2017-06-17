@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 16 Jun 2017 23:02:08 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Jun 2017 04:36:46 GMT and should not be manually modified.
+
+## 0.10.1
+Sat, 17 Jun 2017 04:36:46 GMT
+
+### Patches
+
+- Fixing amd import that was broken byt the no-implicit-anys fix.
 
 ## 0.10.0
 Fri, 16 Jun 2017 23:02:08 GMT

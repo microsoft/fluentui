@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.10.1",
+      "tag": "@uifabric/styling_v0.10.1",
+      "date": "Sat, 17 Jun 2017 04:36:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ff0d219134776c9b5cff83a7ac9ed7596d8281a2",
+            "comment": "Fixing amd import that was broken byt the no-implicit-anys fix."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.10.0",
       "tag": "@uifabric/styling_v0.10.0",
       "date": "Fri, 16 Jun 2017 23:02:08 GMT",
