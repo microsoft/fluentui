@@ -54,7 +54,7 @@ export function Icon(props: IIconProps): JSX.Element {
         className={
           css(
             'ms-Icon',
-            iconMemberName && ('ms-Icon--' + iconMemberName),
+            iconName && ('ms-Icon--' + iconName),
             iconMemberName && IconClassNames[iconMemberName],
             styles.root,
             props.className
