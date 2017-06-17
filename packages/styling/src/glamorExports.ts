@@ -1,9 +1,7 @@
 import * as Glamor from 'glamor';
+import rtlify from 'rtl-css-js';
 import { IRawStyle, IProcessedStyle } from './interfaces/index';
 import { getRTL } from '@uifabric/utilities/lib/index';
-
-// tslint:disable-next-line:no-any
-let rtlify: any = require('rtl-css-js');
 
 interface IGlamorRulePair {
   selector: string;
