@@ -12,7 +12,16 @@ import { IStyle, IProcessedStyle } from '../interfaces/index';
  * @param {(...(IStyle | string)[])} args
  * @returns {IStyle}
  */
+
+let measurer = window['measurer'] = window['measurer'] || {
+  count: 0,
+  duartion: 0,
+  cssDuration: 0,
+  durations: []
+};
+
 export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | string {
+  const start = performance.now();
   const classes: string[] = [];
   const rules: Rule[] = [];
 
@@ -32,7 +41,18 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
 
   _parseArgs(args);
 
+  measurer.count++;
+
+  const cssstart = performance.now();
   const rulesObject: IStyle = rules.length ? css(...rules) : null;
+  // const rulesObject: IStyle = rules.length ? { toString: () => '' } : null;
+  const cssend = performance.now();
+
+  if (performance.getEntriesByName('EUPL.glass').length === 0) {
+    measurer.duartion += cssend - start;
+    measurer.cssDuration += cssend - cssstart;
+    measurer.durations.push(cssend - start);
+  }
 
   if (classes.length) {
     if (rulesObject) {
