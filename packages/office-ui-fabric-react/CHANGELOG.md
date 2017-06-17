@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Jun 2017 23:02:08 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Jun 2017 06:27:45 GMT and should not be manually modified.
+
+## 4.8.1
+Sat, 17 Jun 2017 06:27:45 GMT
+
+### Patches
+
+- Icon: iconName should pass through to the classname without casing alterations.
 
 ## 4.8.0
 Fri, 16 Jun 2017 23:02:08 GMT
