@@ -21,7 +21,8 @@
     "prefer-const": false,
     "quotemark": [
       true,
-      "single"
+      "single",
+      "jsx-single"
     ],
     "no-inferrable-types": [
       true,
