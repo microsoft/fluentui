@@ -92,11 +92,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
                   role='button'
                   aria-haspopup='true'
                   aria-owns={ isOverflowOpen ? overflowMenuId : null }
-                />
-                <Icon
-                  className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-                  iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-                />
+                />{ Icon({
+                  className: css('ms-Breadcrumb-chevron', styles.chevron),
+                  iconName: getRTL() ? 'ChevronLeft' : 'ChevronRight'
+                }) }
               </li>
             ) : (null) }
             { renderedItems.map(
