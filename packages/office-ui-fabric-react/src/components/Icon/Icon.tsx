@@ -9,7 +9,7 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { IconClassNames } from '../../Styling';
+import { IconCodes } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
@@ -55,11 +55,12 @@ export function Icon(props: IIconProps): JSX.Element {
           css(
             'ms-Icon',
             iconName && ('ms-Icon--' + iconName),
-            iconMemberName && IconClassNames[iconMemberName],
             styles.root,
             props.className
           ) }
-      />
+      >
+        { IconCodes[iconMemberName] }
+      </i>
     );
   }
 }
