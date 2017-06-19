@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Jun 2017 19:39:47 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Jun 2017 17:39:43 GMT and should not be manually modified.
+
+## 4.8.3
+Sat, 17 Jun 2017 17:39:43 GMT
+
+### Patches
+
+- Icon: image icons now have less random "l" characters. Sorry about that!
+
+## 4.8.1
+Sat, 17 Jun 2017 06:27:45 GMT
+
+### Patches
+
+- Icon: iconName should pass through to the classname without casing alterations.
+
+## 4.8.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- DetailsList: Remove Tooltip by defaul, allowing optional override.
+
+### Patches
+
+- Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided.
 
 ## 4.7.2
 Fri, 16 Jun 2017 19:39:47 GMT
