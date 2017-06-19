@@ -7,8 +7,7 @@ import {
   autobind,
   css,
   getId,
-  getRTL,
-  assign
+  getRTL
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, PanelType } from './Panel.Props';
@@ -95,7 +94,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
-    const renderProps: IPanelProps = assign({}, this.props, { componentId: id });
+    const renderProps: IPanelProps = { ...this.props, componentId: id };
 
     if (!isOpen && !isAnimating) {
       return null;
