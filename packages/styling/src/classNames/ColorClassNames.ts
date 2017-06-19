@@ -329,7 +329,8 @@ function _defineGetter(
 ): void {
   Object.defineProperty(obj, colorName + suffix, {
     get: (): string => {
-      const style: IRawStyle = { [cssProperty]: getTheme().palette[colorName] };
+      // tslint:disable-next-line:no-any
+      const style: IRawStyle = { [cssProperty]: (getTheme().palette as any)[colorName] };
 
       return mergeStyles(isHover ? { ':hover': style } : style).toString();
     },
