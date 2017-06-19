@@ -125,8 +125,8 @@ describe('ResizeGroup', () => {
       data: { a: 2 },
     });
 
-    // onRenderData should get called to measure and to render when props are updated.
-    expect(onRenderData.callCount).to.equal(4);
+    // onRenderData should get called for initial render, then to measure and to render when props are updated.
+    expect(onRenderData.callCount).to.equal(5);
   });
 
   it('calls onReduceData when contents do not fit', () => {

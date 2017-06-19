@@ -50,7 +50,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (this.props.data !== nextProps.data) {
       this.setState({
         shouldMeasure: true,
-        renderedData: null,
         measuredData: { ...nextProps.data }
       });
     }

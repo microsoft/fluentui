@@ -21,34 +21,6 @@ describe('CommandBar', () => {
     }
   });
 
-  it('opens a menu with deprecated IContextualMenuItem.items property', () => {
-    const items: IContextualMenuItem[] = [
-      {
-        name: 'TestText 1',
-        key: 'TestKey1',
-        items: [
-          {
-            name: 'SubmenuText 1',
-            key: 'SubmenuKey1',
-            className: 'SubMenuClass'
-          }
-        ]
-      },
-    ];
-
-    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
-      <CommandBar
-        items={ items }
-      />
-    ) as React.Component<CommandBar, {}>;
-    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
-
-    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
-    ReactTestUtils.Simulate.click(menuItem);
-
-    expect(document.querySelector('.SubMenuClass')).to.exist;
-  });
-
   it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
     const items: IContextualMenuItem[] = [
       {
