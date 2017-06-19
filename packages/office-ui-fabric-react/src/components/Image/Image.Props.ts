@@ -54,6 +54,11 @@ export interface IImageProps extends React.HTMLAttributes<HTMLImageElement> {
    * The 'loadState' parameter indicates the current state of the Image.
    */
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
+
+  /**
+   * TODO: lindach: Add comments
+   */
+  coverStyle?: ImageCoverStyle;
 }
 
 /**
@@ -83,6 +88,14 @@ export enum ImageFit {
    * frame will have empty space.
    */
   none = 3
+}
+
+/**
+ * TODO: lindach: Add comments
+ */
+export enum ImageCoverStyle {
+  landscape = 0,
+  portrait = 1
 }
 
 export enum ImageLoadState {
