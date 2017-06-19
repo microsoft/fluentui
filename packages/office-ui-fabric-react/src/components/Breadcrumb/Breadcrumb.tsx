@@ -3,8 +3,7 @@ import {
   BaseComponent,
   autobind,
   css,
-  getRTL,
-  assign
+  getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
