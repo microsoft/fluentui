@@ -90,46 +90,5 @@ export const getStyles = memoizeFunction((
       border: 0
     },
 
-    splitButtonContainer: {
-      position: 'absolute',
-      border: '1px solid transparent',
-      ':hover': {
-        border: '1px solid',
-        borderColor: theme.palette.neutralLight
-      },
-      ':focus': {
-        outline: 'none!important',
-        border: '1px solid',
-        borderColor: theme.palette.neutralDark
-      }
-    },
-
-    splitButtonContainerDisabled: {
-      position: 'absolute',
-    },
-
-    splitButtonMenuButton: {
-      backgroundColor: theme.palette.neutralLighter,
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight
-      }
-    },
-
-    splitButtonMenuButtonDisabled: {
-      backgroundColor: theme.palette.neutralLighter,
-    },
-
-    splitButtonMenuIcon: {
-      color: theme.palette.neutralPrimary
-    },
-
-    splitButtonMenuIconDisabled: {
-      color: theme.palette.neutralTertiary
-    },
-
-    splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themePrimary,
-    },
-
   };
 });
