@@ -16,7 +16,8 @@ for (const iconName in IconCodes) {
         DefaultFontStyles.icon,
         {
           ':before': {
-            content: `"${IconCodes[iconName]}"`
+            // tslint:disable-next-line:no-any
+            content: `"${(IconCodes as any)[iconName]}"`
           }
         },
       ).toString();

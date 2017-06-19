@@ -30,9 +30,16 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
   @autobind
   private _onRenderItems(items: any[]): JSX.Element[] {
     return items.map((item, i) => {
-      let key = item.key ? item.key : i;
+      let wrapperDivProps: React.HTMLProps<HTMLDivElement> = { className: css('ms-OverflowSet-item', styles.item) };
+      if (item.key) {
+        wrapperDivProps.key = item.key;
+      }
       return (
+<<<<<<< HEAD
         <div key={ key + '-overflow' } className={ css('ms-OverflowSet-item', styles.item) }>
+=======
+        <div {...wrapperDivProps}>
+>>>>>>> master
           { this.props.onRenderItem(item) }
         </div>
       );

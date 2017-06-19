@@ -2,6 +2,139 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.8.3",
+      "tag": "office-ui-fabric-react_v4.8.3",
+      "date": "Sat, 17 Jun 2017 17:39:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5b17bfe13dc1826f08c2fb261d53de4e976d0752",
+            "comment": "Icon: image icons now have less random \"l\" characters. Sorry about that!"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.3 <1.0.0` to `>=0.10.4 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.1",
+      "tag": "office-ui-fabric-react_v4.8.1",
+      "date": "Sat, 17 Jun 2017 06:27:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c8bdb73324b8702400e4d4f53bbb182378a49b74",
+            "comment": "Icon: iconName should pass through to the classname without casing alterations."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.1 <1.0.0` to `>=0.10.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.0",
+      "tag": "office-ui-fabric-react_v4.8.0",
+      "date": "Fri, 16 Jun 2017 23:02:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "38244b81d039f7cae9d20671fec9f218f3148685",
+            "comment": "DetailsList: Remove Tooltip by defaul, allowing optional override."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bc5da65c865a2b7209143193eb2009d4fba3a387",
+            "comment": "Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.9.1 <1.0.0` to `>=0.10.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.2",
+      "tag": "office-ui-fabric-react_v4.7.2",
+      "date": "Fri, 16 Jun 2017 19:39:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "16ea1d01cdae0a29f9be83778280b25abd857df5",
+            "comment": "Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "54e9d048eb85e3a60688bfdc1482a9cb43a3662e",
+            "comment": "OverflowSet: Don't use the index as the key"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.9.0 <1.0.0` to `>=0.9.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.1",
+      "tag": "office-ui-fabric-react_v4.7.1",
+      "date": "Thu, 15 Jun 2017 23:55:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "bed10f92f6c43d407e23b44787d879c09e2a37cb",
+            "comment": "CheckButton: Firefox high contrast fix"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.1 <1.0.0` to `>=0.9.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.0",
+      "tag": "office-ui-fabric-react_v4.7.0",
+      "date": "Thu, 15 Jun 2017 10:09:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5d0adb20f07383a60fb9fa14bd6cde8887b0f5db",
+            "comment": "Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "2278009d39d643168f0f27508a1d01ddbb4fdb69",
+            "comment": "Toggle: High contrast fix for Firefox"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.0 <1.0.0` to `>=0.8.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.6.0",
       "tag": "office-ui-fabric-react_v4.6.0",
       "date": "Wed, 14 Jun 2017 06:02:15 GMT",

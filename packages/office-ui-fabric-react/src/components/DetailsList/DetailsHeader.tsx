@@ -6,7 +6,8 @@ import {
   css,
   getRTL,
   getId,
-  KeyCodes
+  KeyCodes,
+  IRenderFunction
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -14,7 +15,7 @@ import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { TooltipHost } from '../../Tooltip';
+import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStyles from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
@@ -34,6 +35,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
+  onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
@@ -118,6 +120,12 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
 
+    const {
+      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
+    } = this.props;
+
+    const ColumnHeaderTooltip = (props: ITooltipHostProps) => onRenderColumnHeaderTooltip(props, this._onRenderColumnHeaderTooltip);
+
     return (
       <FocusZone
         role='row'
@@ -143,7 +151,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             <span
               aria-label={ ariaLabelForSelectionColumn }
             ></span>
-            <TooltipHost
+            <ColumnHeaderTooltip
               hostClassName={ css(styles.checkTooltip) }
               id={ `${this._id}-checkTooltip` }
               setAriaDescribedBy={ false }
@@ -154,7 +162,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 anySelected={ false }
                 canSelect={ true }
               />
-            </TooltipHost>
+            </ColumnHeaderTooltip>
           </div>
         ) : null }
         { groupNestingDepth > 0 ? (
@@ -198,7 +206,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
               >
-                <TooltipHost
+                <ColumnHeaderTooltip
                   hostClassName={ css(styles.cellTooltip) }
                   id={ `${this._id}-${column.key}-tooltip` }
                   setAriaDescribedBy={ false }
@@ -242,7 +250,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       />
                     ) }
                   </span>
-                </TooltipHost>
+                </ColumnHeaderTooltip>
               </div>,
               (column.isResizable) && this._renderColumnSizer(columnIndex)
             ]
@@ -289,6 +297,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
       />
     );
+  }
+
+  @autobind
+  private _onRenderColumnHeaderTooltip(tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>) {
+    return <span className={ tooltipHostProps.hostClassName }>{
+      tooltipHostProps.children
+    }</span>;
   }
 
   /**
