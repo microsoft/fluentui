@@ -10,9 +10,9 @@ export interface IComboBox {
   focus(): boolean;
 }
 
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBoxProps> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   /**
-   * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
+   * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IComboBox) => void;

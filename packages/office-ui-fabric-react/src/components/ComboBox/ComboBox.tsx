@@ -20,7 +20,6 @@ import {
   KeyCodes
 } from '../../Utilities';
 import { ISelectableOption, SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import * as stylesImport from './ComboBox.scss';
 const styles: any = stylesImport;
 
@@ -252,7 +251,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             spellCheck={ false }
             defaultVisibleValue={ this._currentVisibleValue }
             suggestedDisplayValue={ suggestedDisplayValue }
-            updateValueInWillReceiceProps={ this._onUpdateValueInAutoFillWillReceiceProps }
+            updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
           <IconButton
             className={ css('ms-ComboBox-Button', styles.caretDown) }
@@ -296,7 +295,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns {string} - the updated value to set, if needed
    */
   @autobind
-  private _onUpdateValueInAutoFillWillReceiceProps(): string {
+  private _onUpdateValueInAutoFillWillReceiveProps(): string {
     if (this._comboBox === null || this._comboBox === undefined) {
       return null;
     }
@@ -715,7 +714,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render Callout container and pass in list
   @autobind
-  private _onRenderContainer(props: ISelectableDroppableTextProps<IComboBoxProps> | IComboBoxProps): JSX.Element {
+  private _onRenderContainer(props: IComboBoxProps): JSX.Element {
     let {
       onRenderList = this._onRenderList,
       calloutProps
@@ -743,7 +742,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // Render List of items
   @autobind
-  private _onRenderList(props: ISelectableDroppableTextProps<IComboBoxProps> | IComboBoxProps): JSX.Element {
+  private _onRenderList(props: IComboBoxProps): JSX.Element {
     let {
       onRenderItem = this._onRenderItem
     } = this.props;

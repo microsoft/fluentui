@@ -67,8 +67,8 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
-    if (this.props.updateValueInWillReceiceProps) {
-      let newValue: string = this.props.updateValueInWillReceiceProps();
+    if (this.props.updateValueInWillReceiveProps) {
+      let newValue: string = this.props.updateValueInWillReceiveProps();
 
       if (newValue !== null) {
         this._value = newValue;
