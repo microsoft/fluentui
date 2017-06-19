@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.5.38",
+      "tag": "@uifabric/fabric-website_v4.5.38",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `3.0.1` to `3.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.5.0 <5.0.0` to `>=4.5.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.37",
       "tag": "@uifabric/fabric-website_v4.5.37",
       "date": "Tue, 13 Jun 2017 10:13:21 GMT",

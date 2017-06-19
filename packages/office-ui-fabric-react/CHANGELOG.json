@@ -2,6 +2,211 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.8.3",
+      "tag": "office-ui-fabric-react_v4.8.3",
+      "date": "Sat, 17 Jun 2017 17:39:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5b17bfe13dc1826f08c2fb261d53de4e976d0752",
+            "comment": "Icon: image icons now have less random \"l\" characters. Sorry about that!"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.3 <1.0.0` to `>=0.10.4 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.1",
+      "tag": "office-ui-fabric-react_v4.8.1",
+      "date": "Sat, 17 Jun 2017 06:27:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c8bdb73324b8702400e4d4f53bbb182378a49b74",
+            "comment": "Icon: iconName should pass through to the classname without casing alterations."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.1 <1.0.0` to `>=0.10.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.0",
+      "tag": "office-ui-fabric-react_v4.8.0",
+      "date": "Fri, 16 Jun 2017 23:02:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "38244b81d039f7cae9d20671fec9f218f3148685",
+            "comment": "DetailsList: Remove Tooltip by defaul, allowing optional override."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bc5da65c865a2b7209143193eb2009d4fba3a387",
+            "comment": "Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.9.1 <1.0.0` to `>=0.10.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.2",
+      "tag": "office-ui-fabric-react_v4.7.2",
+      "date": "Fri, 16 Jun 2017 19:39:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "16ea1d01cdae0a29f9be83778280b25abd857df5",
+            "comment": "Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "54e9d048eb85e3a60688bfdc1482a9cb43a3662e",
+            "comment": "OverflowSet: Don't use the index as the key"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.9.0 <1.0.0` to `>=0.9.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.1",
+      "tag": "office-ui-fabric-react_v4.7.1",
+      "date": "Thu, 15 Jun 2017 23:55:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "bed10f92f6c43d407e23b44787d879c09e2a37cb",
+            "comment": "CheckButton: Firefox high contrast fix"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.1 <1.0.0` to `>=0.9.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.0",
+      "tag": "office-ui-fabric-react_v4.7.0",
+      "date": "Thu, 15 Jun 2017 10:09:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5d0adb20f07383a60fb9fa14bd6cde8887b0f5db",
+            "comment": "Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "2278009d39d643168f0f27508a1d01ddbb4fdb69",
+            "comment": "Toggle: High contrast fix for Firefox"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.0 <1.0.0` to `>=0.8.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.0",
+      "tag": "office-ui-fabric-react_v4.6.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "e0dc2ba3f8504d77c0f19567e646608b1094018c",
+            "comment": "Buttons: Added `aria-haspopup` to buttons with menuProps."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74c01f80ee4fb502a45c77ac0ad135148b2146d9",
+            "comment": "FocusZone: bidirectional movement now wraps on lines."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency to have Segoe UI be part of the font fallback."
+          },
+          {
+            "author": "Abhinav Singh Teotia <abhinavsingh.bits@gmail.com>",
+            "commit": "79f1c3c5ed9ae63c1e035c67ad81a31b997bbe78",
+            "comment": "FocusZone should reset active element if it is not tabbable."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "057d6526f255d23b185c4d4618d63939b2ba8290",
+            "comment": "Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "8c64e599a92a969603525640cedb8e0119efd61f",
+            "comment": "PeoplePicker: fixing styling, focus, and extra rerendering issues."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f1437d6fa8f0e833efcdb7d5aa2e7de71ebd1e99",
+            "comment": "Dropdown: Fix keyboard focus on Header/Separator items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "0a53930a167b02ba931e6f5231472da854701bab",
+            "comment": "Dropdown: Fixed onRenderPlaceholder and update docs"
+          },
+          {
+            "author": "zoarif <zoarif@microsoft.com>",
+            "commit": "0c2ecc7bab31a37798ce256a522923e2d1c4e7d3",
+            "comment": "Adding Aria label props for Dialog"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.4 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `3.0.1` to `3.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.1",
       "tag": "office-ui-fabric-react_v4.5.1",
       "date": "Tue, 13 Jun 2017 10:13:21 GMT",

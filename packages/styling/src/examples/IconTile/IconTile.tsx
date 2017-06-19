@@ -12,9 +12,11 @@ export function IconTile(props: IIconTileProps): JSX.Element {
   const styles: IIconTileStyles = getStyles();
 
   return (
+    // tslint:disable:no-any
     <div className={ styles.iconTile as string } { ...divProps }>
-      <i className={ IconClassNames[iconName] + ' ' + styles.icon } />
+      <i className={ (IconClassNames as any)[iconName] + ' ' + styles.icon } />
       <div>{ iconName }</div>
     </div>
+    // tslint:enable:no-any
   );
 }

@@ -59,4 +59,27 @@ export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElemen
    */
   enableAutoFillOnKeyPress?: KeyCodes[];
 
+  /**
+   * the default value to be visible
+   */
+  defaultVisibleValue?: string;
+
+  /**
+   * Handler for checking and updating the value if needed
+   *  in componentWillReceiveProps
+   *
+   * @param {IBaseAutoFillProps} defaultVisibleValue - the defaultVisibleValue that got passed
+   *  in to the auto fill's componentWillReceiveProps
+   * @returns {string} - the updated value to set, if needed
+   */
+  updateValueInWillReceiveProps?: () => string;
+
+  /**
+   * Handler for checking if the full value of the input should
+   * be seleced in componentDidUpdate
+   *
+   * @returns {boolean} - should the full value of the input be selected?
+   */
+  shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
+
 }
