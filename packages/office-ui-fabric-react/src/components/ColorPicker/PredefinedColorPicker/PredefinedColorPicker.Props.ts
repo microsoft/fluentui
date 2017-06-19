@@ -38,7 +38,7 @@ export interface IPredefinedColorPickerProps {
    */
   updateButtonIconWithColor?: boolean;
 
-  colorPickerItems: ColorPickerItemProps[];
+  colorPickerItems: IColorPickerItemProps[];
 
   /**
    * Callback issued when the user changes the color
@@ -56,7 +56,7 @@ export interface IPredefinedColorPickerProps {
   onCellFocused?: (color: string) => void;
 }
 
-export interface ColorPickerItemProps {
+export interface IColorPickerItemProps {
 
   /**
    * Arbitrary string associated with this option
@@ -87,7 +87,8 @@ export interface ColorPickerItemProps {
 }
 
 export enum ColorPickerItemType {
-  Normal = 0,
-  Divider = 1,
-  Header = 2
+  Cell = 0,
+  MenuItem = 1,
+  Divider = 2,
+  Header = 3
 }

@@ -6,25 +6,15 @@ import {
   findIndex,
   getId
 } from '../../../Utilities';
-import { IPredefinedColorPickerProps, ColorPickerItemProps, ColorPickerItemType, CellShape } from './PredefinedColorPicker.Props';
-import { TextField } from '../../../TextField';
-import { ColorRectangle } from '../ColorRectangle';
-import { ColorSlider } from '../ColorSlider';
-import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IPredefinedColorPickerProps, IColorPickerItemProps, ColorPickerItemType, CellShape } from './PredefinedColorPicker.Props';
+import { DirectionalHint } from '../../../ContextualMenu';
 import {
-  MAX_COLOR_HUE,
-  IColor,
-  getColorFromString,
-  getColorFromRGBA,
-  updateA,
-  updateH,
-  updateSV
+  getColorFromString
 } from '../../../utilities/color/colors';
 import { DefaultButton, CommandButton } from '../../../Button';
 import { Callout } from '../../../Callout';
-import { Icon, IconType } from '../../../Icon';
+import { Icon } from '../../../Icon';
 import { FocusZone } from '../../../FocusZone';
-import { FontClassNames } from '../../../Styling';
 import * as stylesImport from './PredefinedColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -52,7 +42,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     this.state = {
       selectedIndex: props.selectedKey && this._getSelectedIndex(props.colorPickerItems, props.selectedKey),
       isOpen: false
-    }
+    };
   }
 
   public componentWillReceiveProps(newProps: IPredefinedColorPickerProps) {
@@ -75,7 +65,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     return (renderElement);
   }
 
-  private _getSelectedIndex(options: ColorPickerItemProps[], selectedKey: string | number) {
+  private _getSelectedIndex(options: IColorPickerItemProps[], selectedKey: string | number) {
     return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
   }
 
@@ -129,7 +119,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   }
 
   @autobind
-  private _onRenderItem(item: ColorPickerItemProps) {
+  private _onRenderItem(item: IColorPickerItemProps) {
     switch (item.type) {
       case ColorPickerItemType.Divider:
         return this._renderSeparator(item);
@@ -146,7 +136,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   }
 
   // Render separator
-  private _renderSeparator(item: ColorPickerItemProps): JSX.Element {
+  private _renderSeparator(item: IColorPickerItemProps): JSX.Element {
     let { index, key } = item;
     if (index > 0) {
       return <div
@@ -157,7 +147,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     return null;
   }
 
-  private _renderHeader(item: ColorPickerItemProps): JSX.Element {
+  private _renderHeader(item: IColorPickerItemProps): JSX.Element {
     return (
       <div className={ css('ms-Dropdown-header', styles.header) } key={ item.key }>
         { this._onRenderOption(item) }
@@ -166,7 +156,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
   // Render menu item
   @autobind
-  private _renderOption(item: ColorPickerItemProps): JSX.Element {
+  private _renderOption(item: IColorPickerItemProps): JSX.Element {
     let id = this._id;
     return (
       <CommandButton
@@ -212,11 +202,11 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   private _onClickButton() {
     this.setState({
       isOpen: !this.state.isOpen
-    })
+    });
   }
 
   @autobind
-  private _onRenderOption(item: ColorPickerItemProps): JSX.Element {
+  private _onRenderOption(item: IColorPickerItemProps): JSX.Element {
     if (item.type !== ColorPickerItemType.Normal) {
       return <span className={ css('ms-colorPicker-header', styles.optionText) }>{ item.label }</span>;
     }
