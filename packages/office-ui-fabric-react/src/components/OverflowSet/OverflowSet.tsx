@@ -35,11 +35,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
         wrapperDivProps.key = item.key;
       }
       return (
-<<<<<<< HEAD
-        <div key={ key + '-overflow' } className={ css('ms-OverflowSet-item', styles.item) }>
-=======
         <div {...wrapperDivProps}>
->>>>>>> master
           { this.props.onRenderItem(item) }
         </div>
       );
