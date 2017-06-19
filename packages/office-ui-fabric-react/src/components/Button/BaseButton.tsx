@@ -353,7 +353,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
-  @autobind
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     const {
       styles,
@@ -380,8 +379,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
   }
 
-  @autobind
-  private _onRenderSplitButtonMenuButton(): JSX.Element | null {
+  private _onRenderSplitButtonMenuButton(): JSX.Element {
     let {
         menuIconName,
       menuIconProps,
