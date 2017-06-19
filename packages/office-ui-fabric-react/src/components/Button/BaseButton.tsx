@@ -381,7 +381,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonMenuButton(): JSX.Element {
     let {
-        menuIconName,
+      menuIconName,
       menuIconProps,
       styles,
       disabled
