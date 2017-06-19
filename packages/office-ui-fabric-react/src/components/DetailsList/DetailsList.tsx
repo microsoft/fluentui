@@ -10,6 +10,7 @@ import {
   autobind,
   css,
   getRTLSafeKeyCode,
+  IRenderFunction
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -20,7 +21,7 @@ import {
   IDetailsList,
   IDetailsListProps,
 } from '../DetailsList/DetailsList.Props';
-import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -247,6 +248,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       selectAllVisibility = SelectAllVisibility.none;
     }
 
+    const {
+      onRenderDetailsHeader = this._onRenderDetailsHeader
+    } = this.props;
+
+    const DetailsHeader = (props: IDetailsHeaderProps) => onRenderDetailsHeader(props, this._onRenderDetailsHeader);
+
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
@@ -345,6 +352,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   @autobind
   protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
     return <DetailsRow { ...props } />;
+  }
+
+  @autobind
+  private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+    return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
@@ -677,7 +689,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (index >= 0) {
       onActiveItemChanged(items[index], index, ev);
     }
-  };
+  }
 }
 
 export function buildColumns(

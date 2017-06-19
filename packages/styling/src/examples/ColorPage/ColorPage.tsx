@@ -53,7 +53,8 @@ export class ColorPage extends BaseComponent<{}, {}> {
     const styles: IColorPageStyles = getStyles();
 
     Object.keys(DefaultPalette).forEach((colorName: string) => {
-      const colorValue: string = theme.palette[colorName];
+      // tslint:disable-next-line:no-any
+      const colorValue: string = (theme.palette as any)[colorName];
 
       ['', 'Hover', 'Background', 'BackgroundHover', 'Border', 'BorderHover'].forEach((suffix: string) => {
         items.push({
@@ -81,7 +82,8 @@ export class ColorPage extends BaseComponent<{}, {}> {
                 column.key === 'example' ? (
                   <div
                     className={
-                      ColorClassNames[item.name] +
+                      // tslint:disable-next-line:no-any
+                      (ColorClassNames as any)[item.name] +
                       ' ' +
                       (item.name.indexOf('Border') >= 0 ? styles.cellWithBorder : '')
                     }
@@ -89,7 +91,8 @@ export class ColorPage extends BaseComponent<{}, {}> {
                     The quick brown fox jumps over the lazy dog.
                   </div>
                 ) : (
-                    <div>{ item[column.fieldName] }</div>
+                    // tslint:disable-next-line:no-any
+                    <div>{ (item as any)[column.fieldName] }</div>
                   ) }
             </div>
           )
