@@ -619,12 +619,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.onResolveOptions) {
 
       // get the options
-      let newOptions: ISelectableOption[] | PromiseLike<ISelectableOption[]> =
-        this.props.onResolveOptions({ ...this.state.currentOptions });
-
-      // the options are either goingto be an array or a promise
-      // let newOptionsArray: IComboBoxOption[] = newOptions as IComboBoxOption[];
-      // let newOptionsPromiseLike: PromiseLike<IComboBoxOption[]> = newOptions as PromiseLike<IComboBoxOption[]>;
+      let newOptions = this.props.onResolveOptions({ ...this.state.currentOptions });
 
       // Check to see if the returned value is an array, if it is update the state
       // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
@@ -724,7 +719,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       onRenderList = this._onRenderList,
       calloutProps
-    } = this.props;
+    } = props;
 
     return (
       <Callout
@@ -740,7 +735,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={ false }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
-          { onRenderList({ ...this.props }, this._onRenderList) }
+          { onRenderList({ ...props }, this._onRenderList) }
         </div>
       </Callout>
     );
