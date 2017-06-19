@@ -40,12 +40,12 @@ interface IButtonClassNames {
 
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
-  private get _splitButton(): boolean {
-    return (this.props.menuProps != null && this.props.onClick != null);
+  private get _isSplitButton(): boolean {
+    return (!!this.props.menuProps && !!this.props.onClick)
   }
 
-  private get _expanded(): boolean {
-    return this.state.menuProps !== null;
+  private get _isExpanded(): boolean {
+    return !!this.state.menuProps;
   }
 
   public static defaultProps = {
@@ -127,7 +127,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaDescribedBy = null;
     }
 
-    const tabIndex = (this.props.tabIndex === undefined) ? (this._splitButton ? -1 : 0) : this.props.tabIndex;
+    const tabIndex = (this.props.tabIndex === undefined) ? (this._isSplitButton ? -1 : 0) : this.props.tabIndex;
 
     const buttonProps = assign(
       nativeProps,
@@ -145,7 +145,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
     );
 
-    if (this._splitButton) {
+    if (this._isSplitButton) {
       return (
         this._onRenderSplitButtonContent(tag, buttonProps)
       );
@@ -198,7 +198,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderDescription(props, this._onRenderDescription),
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
-        !this._splitButton && (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        !this._isSplitButton && (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
@@ -364,9 +364,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-labelledby={ buttonProps.ariaLabel }
         aria-disabled={ disabled }
         aria-haspopup={ true }
-        aria-expanded={ this._expanded }
+        aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
-        aria-describedBy={ buttonProps.ariaDescription }
+        aria-describedby={ buttonProps.ariaDescription }
         className={ css(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
@@ -404,6 +404,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         checked={ this.props.checked }
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
+        menuProps={ null }
         iconProps={ menuIconProps } />
     );
   }
