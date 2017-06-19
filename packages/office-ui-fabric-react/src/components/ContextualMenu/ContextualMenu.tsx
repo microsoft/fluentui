@@ -351,11 +351,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       className: css('ms-ContextualMenu-link', styles.link, {
         ['is-expanded ' + styles.isExpanded]: (expandedMenuItemKey === item.key)
       }),
-      onMenuClick: this._onItemClick.bind(this, item),
+      onClick: this._onItemClick.bind(this, item),
       onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
       onMouseLeave: this._onMouseLeave,
-      onMenuMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+      onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       disabled: item.isDisabled || item.disabled,
       href: item.href,
       title: item.title,
