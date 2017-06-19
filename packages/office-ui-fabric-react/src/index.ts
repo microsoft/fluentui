@@ -10,6 +10,7 @@ export * from './Callout';
 export * from './Checkbox';
 export * from './ChoiceGroup';
 export * from './ColorPicker';
+export * from './ComboBox';
 export * from './CommandBar';
 export * from './ContextualMenu';
 export * from './DatePicker';
