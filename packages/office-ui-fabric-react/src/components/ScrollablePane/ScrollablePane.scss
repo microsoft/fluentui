@@ -8,9 +8,56 @@
 
 .root {
   width: 500px;
+  position: relative;
+}
+
+.scrollCopy {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.scrollRegion {
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .contentArea {
   border: 1px solid black;
-  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.stickyContainer {
+  position: relative;
+  max-height: inherit;
+  height: 100%;
+}
+
+.layerHostTop {
+  position: absolute;
+  top: 0;
+}
+
+.layerHostBottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.topSticky {
+  position: absolute;
+  top: 0;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.bottomSticky {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid black;
+  width: 100%;
 }

@@ -54,10 +54,9 @@
 
   .ExampleCard-example {
     -webkit-overflow-scrolling: touch;
-    max-height: 80vh;
+    max-height: 50vh;
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 20px 0;
   }
 
   .ExampleCard-example.is-right-aligned {

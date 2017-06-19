@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import {
@@ -9,14 +10,16 @@ import {
   findScrollableParent
   // getId
 } from '../../Utilities';
-import { IScrollablePaneProps } from './ScrollablePane.Props';
+import { Layer } from '../Layer/Layer';
+import { LayerHost } from '../Layer/LayerHost';
+import { IScrollablePaneProps, IContentArea } from './ScrollablePane.Props';
 import * as stylesImport from './ScrollablePane.scss';
 const styles: any = stylesImport;
 
 export interface IScrollablePaneState {
-  contentAreasAbove: JSX.Element[];
-  contentAreasVisible: JSX.Element[];
-  contentAreasBelow: JSX.Element[];
+  contentAreasAbove: IContentArea[];
+  contentAreasVisible: IContentArea[];
+  contentAreasBelow: IContentArea[];
 }
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> {
@@ -25,14 +28,20 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   };
 
   public refs: {
-    root: HTMLElement
+    root: HTMLElement;
+    stickyContainer: HTMLElement;
+    scrollCopy: HTMLElement;
+    topHeaders: HTMLElement;
+    bottomHeaders: HTMLElement;
   };
 
   private _scrollElement: HTMLElement;
+  private _contentAreas: JSX.Element[];
 
   constructor(props: IScrollablePaneProps) {
     super(props);
 
+    this._contentAreas = [];
     this.state = {
       contentAreasAbove: [],
       contentAreasVisible: [],
@@ -41,15 +50,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   }
 
   public componentDidMount() {
-    console.log('mount');
-    this._checkContentAreaPosition();
-
     this._scrollElement = findScrollableParent(this.refs.root);
-    console.log(this._scrollElement);
+    this._checkContentAreasPosition();
+    this.refs.scrollCopy.style.height = this._scrollElement.clientHeight + 'px';
     if (this._scrollElement) {
-      this._events.on(this._scrollElement, 'scroll', () => {
-        console.log('scrolling');
-      });
+      this._events.on(this._scrollElement, 'scroll', this._checkContentAreasPosition);
     }
   }
 
@@ -59,24 +64,149 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   }
 
   public render() {
+    const { contentAreasAbove, contentAreasBelow } = this.state;
     const { className, contentAreas } = this.props;
-    console.log(contentAreas);
+
+
+    /*<div className={ css('ms-ScrollablePane', styles.root, className) }
+            ref='root'>
+            <LayerHost id='layerhost1'
+              className={ styles.layerHostTop } />
+            <div>
+              { contentAreas.map((contentArea: IContentArea, index: number) => {
+                const elem = (
+                  <div
+                    ref={ index.toString() }
+                    className={ styles.contentArea }
+                    key={ index }>
+                    <div>
+                      { contentArea.header }
+                    </div>
+                    { contentArea.content }
+                  </div>
+                );
+                this._contentAreas.push(elem);
+                return (
+                  elem
+                );
+              }) }
+              <Layer
+                hostId='layerhost1'>
+                <div className={ styles.fixed }>
+                  {
+                    contentAreasAbove.map((contentArea: IContentArea, index: number) => {
+                      return contentArea.header;
+                    })
+                  }
+                </div>
+              </Layer>
+              <Layer
+                hostId='layerhost2'>
+                <div className={ styles.fixed }>
+                  {
+                    contentAreasBelow.map((contentArea: IContentArea, index: number) => {
+                      return contentArea.header;
+                    })
+                  }
+                </div>
+              </Layer>
+            </div>
+            <LayerHost id='layerhost2'
+              className={ styles.layerHostBottom } />
+          </div>*/
     return (
       <div className={ css('ms-ScrollablePane', styles.root, className) }
         ref='root'>
-        { contentAreas.map((contentArea: JSX.Element, index: number) => {
-          return (
-            <div className={ styles.contentArea } key={ index }>
-              { contentArea }
+        <div className={ styles.scrollCopy }
+          ref='scrollCopy'>
+          <div className={ styles.layerHostTop }>
+            <div className={ styles.fixed } ref='topHeaders'>
+              {
+                contentAreasAbove.map((contentArea: IContentArea, index: number) => {
+                  return contentArea.header;
+                })
+              }
             </div>
-          );
-        }) }
+          </div>
+          <div className={ styles.layerHostBottom }>
+            <div className={ styles.fixed } ref='bottomHeaders'>
+              {
+                contentAreasBelow.map((contentArea: IContentArea, index: number) => {
+                  return contentArea.header;
+                })
+              }
+            </div>
+          </div>
+        </div>
+        <div className={ styles.scrollRegion }>
+          { contentAreas.map((contentArea: IContentArea, index: number) => {
+            const elem = (
+              <div
+                ref={ index.toString() }
+                className={ styles.contentArea }
+                key={ index }>
+                <div>
+                  { contentArea.header }
+                </div>
+                { contentArea.content }
+              </div>
+            );
+            this._contentAreas.push(elem);
+            return (
+              elem
+            );
+          }) }
+        </div>
       </div>
     );
   }
 
-  private _checkContentAreaPosition() {
+  /*
+        <div ref='stickyContainer' className={ styles.stickyContainer }>
+          { this._renderTopSticky() }
+          { this._renderBottomSticky() }
+        </div>
+        */
+
+  private _renderTopSticky() {
+    return (
+      <div className={ styles.topSticky }>
+        TOP STICKYS
+      </div>
+    );
+  }
+
+  private _renderBottomSticky() {
+    return (
+      <div className={ styles.bottomSticky }>
+        bottomSticky
+      </div>
+    );
+  }
+
+  private _checkContentAreasPosition() {
     const { contentAreas } = this.props;
-    console.log(this.refs.root);
+    let contentAreasAbove: IContentArea[] = [];
+    let contentAreasVisible: IContentArea[] = [];
+    let contentAreasBelow: IContentArea[] = [];
+    if (this._scrollElement) {
+      const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
+      const topBound = scrollBounds.top + this.refs.topHeaders.clientHeight;
+      contentAreas.forEach((content, idx) => {
+        const currAreaBounds: ClientRect = this.refs[idx].getBoundingClientRect();
+        if (currAreaBounds.top < topBound) {
+          contentAreasAbove.push(content);
+        } else if (currAreaBounds.top >= topBound && currAreaBounds.top <= scrollBounds.bottom) {
+          contentAreasVisible.push(content);
+        } else {
+          contentAreasBelow.push(content);
+        }
+      });
+      this.setState({
+        contentAreasAbove: contentAreasAbove,
+        contentAreasVisible: contentAreasVisible,
+        contentAreasBelow: contentAreasBelow
+      });
+    }
   }
 }

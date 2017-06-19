@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { lorem } from '@uifabric/example-app-base';
+import './ScrollablePane.Example.scss';
 
 export class ScrollablePaneDefaultExample extends React.Component<any, any> {
-
   constructor() {
     super();
     this.state = { showPanel: false };
@@ -12,13 +12,21 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
   public render() {
     let contentAreas = [];
     for (let i = 0; i < 5; i++) {
-      contentAreas.push(this._createContentArea());
+      let newContent = {
+        header: this._createHeader(i),
+        content: this._createContentArea()
+      };
+      contentAreas.push(newContent);
     }
 
     return (
-      <div>
-        <ScrollablePane contentAreas={ contentAreas } />
-      </div>
+      <ScrollablePane contentAreas={ contentAreas } />
+    );
+  }
+
+  private _createHeader(index) {
+    return (
+      <div className="exampleContentHeader">this is a new header for this content area { index }</div>
     );
   }
 
