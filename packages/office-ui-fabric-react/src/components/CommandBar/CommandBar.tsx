@@ -197,7 +197,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               </span>
             ) }
             { hasSubmenuItems(item) ? (
-              <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='chevronDown' />
+              <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
             ) : (null) }
           </button>;
         } else if (item.href) {
