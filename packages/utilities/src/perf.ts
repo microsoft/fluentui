@@ -13,7 +13,7 @@ export interface IPerfSummary {
   [key: string]: IPerfMeasurement;
 }
 
-const now: () => number = () => !!performance && !!performance.now ? performance.now() : Date.now();
+const now: () => number = () => (typeof performance !== 'undefined' && !!performance.now) ? performance.now() : Date.now();
 
 export class FabricPerformance {
   public static summary: IPerfSummary = {};
