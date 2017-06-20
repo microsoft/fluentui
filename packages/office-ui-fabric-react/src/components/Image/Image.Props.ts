@@ -56,7 +56,9 @@ export interface IImageProps extends React.HTMLAttributes<HTMLImageElement> {
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
 
   /**
-   * TODO: lindach: Add comments
+   * Specified the cover style to be used for this image. If not
+   * specified, this will be dynamically calculated based on the
+   * aspect ratio for the image.
    */
   coverStyle?: ImageCoverStyle;
 }
@@ -91,10 +93,17 @@ export enum ImageFit {
 }
 
 /**
- * TODO: lindach: Add comments
+ * The cover style to be used on the image
  */
 export enum ImageCoverStyle {
+  /**
+   * The image will be shown at 100% height of container and the width will be scaled accordingly
+   */
   landscape = 0,
+
+  /**
+   * The image will be shown at 100% width of container and the height will be scaled accordingly
+   */
   portrait = 1
 }
 
