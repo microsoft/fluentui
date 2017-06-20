@@ -17,7 +17,5 @@ createApp([
       <div>Some content for Example 4</div>
     ))
 ],
-  false,
-  'Example App',
-  undefined,
-  () => <div>Example App Home</div>);
+  () => <div>Example App Home</div>,
+  'Example App');
