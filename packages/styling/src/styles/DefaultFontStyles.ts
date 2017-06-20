@@ -118,7 +118,8 @@ function _getFontFamily(): string {
 
   for (let lang in LanguageToFontMap) {
     if (LanguageToFontMap.hasOwnProperty(lang) && lang.indexOf(language) === 0) {
-      fontFamily = LanguageToFontMap[lang];
+      // tslint:disable-next-line:no-any
+      fontFamily = (LanguageToFontMap as any)[lang];
       break;
     }
   }
@@ -173,7 +174,6 @@ function _registerDefaultFontFaces(): void {
   if (baseUrl) {
     const fontUrl = `${baseUrl}/fonts`;
     const iconUrl = `${baseUrl}/icons`;
-    const iconVersion = '2.30';
 
     // Produce @font-face definitions for all supported web fonts.
     _registerFontFaceSet(fontUrl, FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
@@ -195,7 +195,7 @@ function _registerDefaultFontFaces(): void {
     _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
 
     // Register icon urls.
-    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons-${iconVersion}`, FontWeights.regular);
+    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
   }
 }
 
@@ -205,8 +205,8 @@ function _registerDefaultFontFaces(): void {
 function _getFontBaseUrl(): string {
   let win = getWindow();
 
-  // tslint:disable-next-line:no-string-literal
-  let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
+  // tslint:disable-next-line:no-string-literal no-any
+  let fabricConfig: IFabricConfig = win ? (win as any)['FabricConfig'] : undefined;
 
   return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }

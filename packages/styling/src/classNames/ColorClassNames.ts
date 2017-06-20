@@ -1,6 +1,7 @@
-import { getTheme, mergeStyles } from '../utilities/index';
+import { mergeStyles } from '../utilities/index';
 import { IRawStyle } from '../interfaces/index';
 import { DefaultPalette } from '../styles/DefaultPalette';
+import { getTheme } from '../styles/index';
 
 export interface IColorClassNames {
   themeDarker?: string;
@@ -329,7 +330,8 @@ function _defineGetter(
 ): void {
   Object.defineProperty(obj, colorName + suffix, {
     get: (): string => {
-      const style: IRawStyle = { [cssProperty]: getTheme().palette[colorName] };
+      // tslint:disable-next-line:no-any
+      const style: IRawStyle = { [cssProperty]: (getTheme().palette as any)[colorName] };
 
       return mergeStyles(isHover ? { ':hover': style } : style).toString();
     },

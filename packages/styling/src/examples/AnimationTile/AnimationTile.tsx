@@ -42,7 +42,8 @@ export class AnimationTile extends BaseComponent<IAnimationTileProps, IAnimation
     }
 
     let animationClassName: string | null = this.state.isAnimating
-      ? AnimationClassNames[this.props.name]
+      // tslint:disable-next-line:no-any
+      ? (AnimationClassNames as any)[this.props.name]
       : null;
 
     return (
