@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Enable strictNullChecks in utilities package",
-      "type": "patch"
+      "comment": "Consume latest version of createApp ",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",

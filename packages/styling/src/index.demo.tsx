@@ -34,4 +34,4 @@ createApp([
     .add('Animations', () => (
       <AnimationPage />
     ))
-], false);
+]);

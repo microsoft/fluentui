@@ -7,17 +7,20 @@ import { mergeStyles } from './mergeStyles';
  */
 export function mergeStyleSets<T>(...args: T[]): T {
   const mergedRules: T = {} as T;
-  const setStyles = {};
+  // tslint:disable-next-line:no-any
+  const setStyles: any = {};
 
   args.forEach((arg: T) => arg && Object.keys(arg).forEach((key: string) => {
     if (!setStyles[key]) {
       setStyles[key] = [];
     }
-    setStyles[key].push(arg[key]);
+    // tslint:disable-next-line:no-any
+    setStyles[key].push((arg as any)[key]);
   }));
 
   Object.keys(setStyles).forEach((key: string) => {
-    mergedRules[key] = mergeStyles(setStyles[key]);
+    // tslint:disable-next-line:no-any
+    (mergedRules as any)[key] = mergeStyles(setStyles[key]);
   });
 
   return mergedRules;
