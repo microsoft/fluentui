@@ -32,7 +32,15 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
 
   _parseArgs(args);
 
-  const rulesObject: IStyle = rules.length ? css(...rules) : null;
+  let rulesObject: IStyle = null;
+
+  if (rules.length) {
+    // tslint:disable-next-line:no-string-literal
+    performance.mark('css start');
+    rulesObject = css(...rules);
+    // tslint:disable-next-line:no-string-literal
+    performance.mark('css end');
+  }
 
   if (classes.length) {
     if (rulesObject) {
