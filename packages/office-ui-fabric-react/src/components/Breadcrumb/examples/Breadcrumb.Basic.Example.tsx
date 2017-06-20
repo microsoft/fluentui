@@ -28,8 +28,8 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true },
           ] }
-          maxDisplayedItems={ 3 } 
-          ariaLabel={'Website breadcrumb'} />
+          maxDisplayedItems={ 6 }
+          ariaLabel={ 'Website breadcrumb' } />
         <Breadcrumb
           items={ [
             { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
@@ -40,7 +40,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is link 5', 'key': 'l5', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true },
           ] }
           maxDisplayedItems={ 3 }
-          ariaLabel={'Website breadcrumb'} />
+          ariaLabel={ 'Website breadcrumb' } />
       </div>
     );
   }

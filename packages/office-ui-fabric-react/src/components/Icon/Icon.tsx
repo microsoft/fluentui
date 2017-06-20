@@ -37,7 +37,7 @@ export function Icon(props: IIconProps): JSX.Element {
           styles.root
         ) }
       >
-        l  <Image { ...props.imageProps as any } />
+        <Image { ...props.imageProps as any } />
       </div>
     );
   } else {
@@ -54,7 +54,8 @@ export function Icon(props: IIconProps): JSX.Element {
         className={
           css(
             'ms-Icon',
-            IconClassNames[iconMemberName],
+            iconName && ('ms-Icon--' + iconName),
+            iconMemberName && IconClassNames[iconMemberName],
             styles.root,
             props.className
           ) }

@@ -15,7 +15,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
     let { selectedItem } = this.state;
 
     return (
-      <div className='ms-DropdownBasicExample'>
+      <div className='dropdownExample'>
 
         <Dropdown
           placeHolder='Select an Option'
@@ -31,7 +31,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'D', text: 'Option d' },
               { key: 'E', text: 'Option e' },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'Header', text: 'People', itemType: DropdownMenuItemType.Header },
+              { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
               { key: 'F', text: 'Option f' },
               { key: 'G', text: 'Option g' },
               { key: 'H', text: 'Option h' },

@@ -126,7 +126,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
         'aria-disabled': disabled,
-        'data-is-focusable': disabled ? false : true,
+        'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
     );
@@ -138,7 +138,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         buttonProps,
         {
           'onClick': this._onToggleMenu,
-          'aria-expanded': this.state.menuProps ? true : false
+          'aria-expanded': this.state.menuProps ? true : false,
+          'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
+          'aria-haspopup': true
         }
       );
     }
@@ -318,6 +320,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return (
       <ContextualMenu
         isBeakVisible={ true }
+        id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
         className={ mergeStyles('ms-BaseButton-menuhost', menuProps.className) as string }

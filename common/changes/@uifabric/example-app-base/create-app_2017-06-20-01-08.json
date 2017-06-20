@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/example-app-base",
-      "type": "none"
+      "comment": "Add support for adding a default route in createApp. Remove unused hideChrome parameter.",
+      "type": "major"
     }
   ],
   "packageName": "@uifabric/example-app-base",
