@@ -7,7 +7,8 @@ import {
   getNativeProps,
   divProperties,
   memoize,
-  autobind
+  autobind,
+  getRTL
 } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
 import { Callout, ICallout } from '../../Callout';
@@ -82,9 +83,9 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         targetElement={ targetElement }
         { ...getNativeProps(this.props, divProperties) }
         isBeakVisible={ false }
-        directionalHint={ DirectionalHint.bottomLeftEdge }
+        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
-        directionalHintFixedHeight={ 540 }
+        finalHeight={ 540 }
         minPagePadding={ 24 }
       >
         <div

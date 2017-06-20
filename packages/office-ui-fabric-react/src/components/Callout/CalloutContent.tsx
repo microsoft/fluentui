@@ -29,8 +29,8 @@ export interface ICalloutState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
-  topPositionAdjust?: number;
-  maxHeightAdjust?: number;
+  topPositionOffset?: number;
+  heightOffset?: number;
 }
 
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
@@ -52,6 +52,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _maxHeight: number;
   private _positionAttempts: number;
   private _target: HTMLElement | MouseEvent;
+  private _setHeightOffsetTimer: number;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -63,8 +64,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       positions: null,
       slideDirectionalClassName: null,
       calloutElementRect: null,
-      topPositionAdjust: 0,
-      maxHeightAdjust: 0
+      heightOffset: 0
     };
     this._positionAttempts = 0;
   }
@@ -89,6 +89,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this._maxHeight = undefined;
     }
   }
+
   public componentDidMount() {
     this._onComponentDidMount();
   }
@@ -132,7 +133,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? AnimationClassNames[positions.directionalClassName]
       : '';
 
-    let contentMaxHeight: number = this._getMaxHeight() + this.state.maxHeightAdjust;
+    let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset;
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
 
     console.log('render: Callout', positions ? positions.calloutPosition : positions);
@@ -236,7 +237,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     this._updatePosition();
-    this.props.directionalHintFixedHeight && this._recalculatePositionEveryFrame();
+    this.props.finalHeight && this._setHeightOffsetEveryFrame();
   }
 
   private _updatePosition() {
@@ -255,7 +256,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         currentProps.target = this._target;
       }
       let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
-      newPositions.calloutPosition.top -= this.state.topPositionAdjust;
+      //newPositions.calloutPosition.top -= this.state.heightOffset;
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -346,21 +347,39 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
   }
 
-  private _recalculatePositionEveryFrame(): void {
-    this._async.requestAnimationFrame(() => {
-      const cardScrollHeight: number = (this._calloutElement.firstChild as HTMLElement).scrollHeight;
-      const cardCurrHeight: number = (this._calloutElement.firstChild as HTMLElement).offsetHeight;
-      const scrollDiff = cardScrollHeight - cardCurrHeight;
+  private _setHeightOffsetEveryFrame(): void {
+    if (this._calloutElement) {
+      this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
+        const calloutMainElem = this._calloutElement.firstChild as HTMLElement;
+        const cardScrollHeight: number = calloutMainElem.scrollHeight;
+        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-      this.setState({
-        maxHeightAdjust: this.state.maxHeightAdjust + scrollDiff,
-        topPositionAdjust: scrollDiff
+        const isBottomExpanding: boolean = ((): boolean => {
+          switch (this.props.directionalHint) {
+            case (DirectionalHint.bottomAutoEdge):
+            case (DirectionalHint.bottomCenter):
+            case (DirectionalHint.bottomLeftEdge):
+            case (DirectionalHint.bottomRightEdge):
+              return true;
+            default:
+              return false;
+          }
+        })();
+
+        // We can skip rerender in case when it a bottom hint and there is no scroll diff
+        if (!(scrollDiff === 0 && isBottomExpanding)) {
+          this.setState({
+            heightOffset: this.state.heightOffset + scrollDiff
+          });
+        }
+
+        if (calloutMainElem.offsetHeight < this.props.finalHeight) {
+          this._setHeightOffsetEveryFrame();
+        } else {
+          this._async.cancelAnimationFrame(this._setHeightOffsetTimer);
+        }
       });
-
-      // Only keep recalculating until the card reaches its max height (which is when it has expanded)
-      if ((this._calloutElement.firstChild as HTMLElement).offsetHeight < this.props.directionalHintFixedHeight) {
-        this._recalculatePositionEveryFrame();
-      }
-    });
+    }
   }
 }

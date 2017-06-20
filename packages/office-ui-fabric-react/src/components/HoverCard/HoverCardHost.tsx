@@ -34,7 +34,6 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
 
   // The wrapping div that gets the hover events
   private _hoverCardHost: HTMLElement;
-  private _hoverCard: IHoverCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
 
@@ -78,7 +77,6 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
         { children }
         { isHoverCardVisible &&
           <HoverCard
-            componentRef={ h => this._hoverCard = h }
             { ...hoverCardProps }
             id={ hoverCardId }
             targetElement={ this._getTargetElement() }
