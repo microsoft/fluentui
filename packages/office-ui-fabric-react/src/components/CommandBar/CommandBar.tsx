@@ -64,8 +64,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public componentDidMount() {
-    this._updateItemMeasurements();
-    this._updateRenderedItems();
+    // Asynchronously update command bar layout to eliminate forced synchronous reflow
+    var timer = setTimeout(() => {
+      clearTimeout(timer);
+      this._updateItemMeasurements();
+      this._updateRenderedItems();
+    }, 1);
 
     this._events.on(window, 'resize', this._updateRenderedItems);
   }
@@ -77,8 +81,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   public componentDidUpdate(prevProps: ICommandBarProps, prevStates: ICommandBarState) {
     if (!this._commandItemWidths) {
-      this._updateItemMeasurements();
-      this._updateRenderedItems();
+      // Asynchronously update command bar layout to eliminate forced synchronous reflow
+      var timer = setTimeout(() => {
+        clearTimeout(timer);
+        this._updateItemMeasurements();
+        this._updateRenderedItems();
+      }, 1);
     }
   }
 
@@ -111,7 +119,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     return (
       <div className={ css('ms-CommandBar', styles.root, className) } ref='commandBarRegion'>
         { searchBox }
-        <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal } role='menubar' >
+        <FocusZone ref='focusZone' className={ css(styles.container) } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
