@@ -19,10 +19,10 @@ export class FabricPerformance {
   public static summary: IPerfSummary = {};
 
   /**
-   * measure execution time of the given syncronous logic
-   * if the same logic is executed multiple times, each individual measurement will be collected as well the overall numbers 
-   * @param name the name of this measurement
-   * @param func the logic to be measured for execution time
+   * Measures execution time of the given syncronous function. If the same logic is executed multiple times, 
+   * each individual measurement will be collected as well the overall numbers.
+   * @param name - The name of this measurement
+   * @param func - The logic to be measured for execution time
    */
   public static measure(name: string, func: () => void) {
     const start = now();
