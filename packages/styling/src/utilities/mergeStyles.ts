@@ -14,7 +14,6 @@ import { FabricPerformance as perf } from '@uifabric/utilities/lib/performance';
  * @returns {IStyle}
  */
 export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | string {
-  const start = performance.now();
   const classes: string[] = [];
   const rules: Rule[] = [];
 
