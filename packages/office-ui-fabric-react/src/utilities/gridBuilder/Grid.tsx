@@ -3,7 +3,7 @@ import { FocusZone } from '../../FocusZone';
 import { BaseComponent } from '../../Utilities';
 import { IGridProps } from './Grid.Props';
 
-export class IGridState {
+export interface IGridState {
 
 }
 
