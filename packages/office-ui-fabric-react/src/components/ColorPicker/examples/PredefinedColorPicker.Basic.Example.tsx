@@ -17,10 +17,10 @@ export class PredefinedColorPickerBasicExample extends React.Component<any, IBas
         cellShape={ CellShape.circle }
         colorPickerItems={
           [
-            { key: 'a', label: 'green', type: ColorPickerItemType.Normal, color: '#00ff00' },
-            { key: 'b', label: 'orange', type: ColorPickerItemType.Normal, color: '#ffa500' },
-            { key: 'c', label: 'blue', type: ColorPickerItemType.Normal, color: '#0000ff' },
-            { key: 'd', label: 'red', type: ColorPickerItemType.Normal, color: '#ff0000' }
+            { key: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+            { key: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
+            { key: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+            { key: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' }
           ]
         } />
     );

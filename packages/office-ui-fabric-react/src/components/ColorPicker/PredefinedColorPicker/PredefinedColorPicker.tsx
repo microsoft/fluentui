@@ -84,7 +84,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
       selectedIndex >= 0 &&
       selectedIndex < colorPickerItems.length) {
       let colorPickerItem = colorPickerItems[selectedIndex];
-      if (colorPickerItem.type === ColorPickerItemType.Normal &&
+      if (colorPickerItem.type === ColorPickerItemType.Cell &&
         colorPickerItem.color !== null &&
         colorPickerItem.color.length > 0) {
         colorToSet = colorPickerItem.color;
@@ -113,27 +113,45 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         isCircularNavigation={ true }
         className={ styles.colorPickerContainer }
         style={ { width: width && ((width * 32) + 'px') } }>
-        { colorPickerItems.map((item, index) => this._onRenderItem({ ...item, index })) }
+        { this._onRenderItems(colorPickerItems) }
       </FocusZone>
     );
   }
 
   @autobind
-  private _onRenderItem(item: IColorPickerItemProps) {
-    switch (item.type) {
-      case ColorPickerItemType.Divider:
-        return this._renderSeparator(item);
-      case ColorPickerItemType.Header:
-        return this._renderHeader(item);
-      default:
-        return this._renderOption(item);
+  private _onRenderItems(items: IColorPickerItemProps[]) {
+    let {
+      width
+    } = this.props;
+
+    let optionsContainsCells = findIndex(items, (item => (item.type !== null && item.type === ColorPickerItemType.Cell)));
+
+
+
+
+    for (let index = 0; index < items.length; index++) {
+      let item = items[index];
+      switch (item.type) {
+        case ColorPickerItemType.Divider:
+          return this._renderSeparator(item);
+        case ColorPickerItemType.Header:
+          return this._renderHeader(item);
+        default:
+          return this._renderOption(item);
+      }
+
+      // need to loop across items, creating the separators, headers, menuItems as needed
+      // and when you encounter a cell type, call a method to stuff the options into a table
+      // with rows and columnWidth being equal to width
+      // until you either reach the end or a non-cell. Will need to pass back the updated index to start with
+      // for being able to continue building the menu
     }
   }
 
-  @autobind
-  private _onRenderMenuItem(item: any) {
-    return this._onRenderItem(item.data);
-  }
+  // @autobind
+  // private _onRenderMenuItem(item: any) {
+  //   return this._onRenderItem(item.data);
+  // }
 
   // Render separator
   private _renderSeparator(item: IColorPickerItemProps): JSX.Element {
@@ -207,7 +225,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
   @autobind
   private _onRenderOption(item: IColorPickerItemProps): JSX.Element {
-    if (item.type !== ColorPickerItemType.Normal) {
+    if (item.type !== ColorPickerItemType.Cell) {
       return <span className={ css('ms-colorPicker-header', styles.optionText) }>{ item.label }</span>;
     }
 
