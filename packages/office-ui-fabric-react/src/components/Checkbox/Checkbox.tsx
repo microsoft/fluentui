@@ -49,13 +49,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   /**
-   * Name of the component
-   */
-  public name(): string {
-    return 'Checkbox';
-  }
-
-  /**
    * Render the Checkbox based on passed props
    */
   public render(): JSX.Element {
@@ -92,9 +85,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           name={ name || this._id }
           className={ css('ms-Checkbox-input', styles.input) }
           type='checkbox'
-          onChange={ this._onChange.bind(this) }
-          onFocus={ this._onFocus.bind(this) }
-          onBlur={ this._onBlur.bind(this) }
+          onChange={ this._onChange }
+          onFocus={ this._onFocus }
+          onBlur={ this._onBlur }
           aria-checked={ isChecked }
         />
         <label className={ css('ms-Checkbox-label', styles.label) } htmlFor={ this._id }>
@@ -105,7 +98,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           </span>
           { label && <span className={ css('text', styles.text) }>{ label }</span> }
         </label>
-      </div >);
+      </div >
+      );
   }
 
   public get checked(): boolean {
