@@ -16,6 +16,8 @@ export interface ICalendarMonthProps {
   navigatedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+  today?: Date;
+  highlightCurrentMonth: boolean;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -29,6 +31,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 
+    this.isCurrentMonth = this.isCurrentMonth.bind(this);
     this._onSelectNextYear = this._onSelectNextYear.bind(this);
     this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
     this._onSelectMonth = this._onSelectMonth.bind(this);
@@ -36,7 +39,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -72,7 +75,13 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             { strings.shortMonths.map((month, index) =>
               <span
                 role='button'
-                className={ css('ms-DatePicker-monthOption', styles.monthOption) }
+                className={
+                  css('ms-DatePicker-monthOption',
+                    styles.monthOption,
+                    {
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today)
+                    })
+                }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
                 aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
@@ -85,6 +94,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         </FocusZone>
       </div>
     );
+  }
+
+  private isCurrentMonth(month: number, year: number, today: Date) {
+    return today.getFullYear() === year && today.getMonth() === month;
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {

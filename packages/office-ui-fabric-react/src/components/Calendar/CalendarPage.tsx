@@ -36,6 +36,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ true }
                 showGoToToday={ true } showNavigateButtons={ true } />
             </ExampleCard>
+            <ExampleCard title='Inline Calendar with month picker and no day picker' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ false }
+                showGoToToday={ true } highlightCurrentMonth={ true } isDayPickerVisible={ false } />
+            </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample />
             </ExampleCard>
