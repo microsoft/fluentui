@@ -8,8 +8,7 @@ import {
   divProperties
 } from '../../Utilities';
 import {
-  ITheme,
-  mergeStyles
+  ITheme
 } from '../../Styling';
 import { getStyles } from './Fabric.styles';
 
