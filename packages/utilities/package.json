@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "4.1.2",
+  "version": "4.3.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -20,6 +20,7 @@
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/es6-promise": "^0.0.32",
+    "@types/es6-weak-map": "1.2.0",
     "@types/mocha": "^2.2.39",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.25",

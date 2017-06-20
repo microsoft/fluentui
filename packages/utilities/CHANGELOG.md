@@ -1,6 +1,25 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 08 Jun 2017 00:18:05 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+
+## 4.3.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Enable strictNullChecks in utilities package
+
+### Patches
+
+- isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned.
+- Focus Utility should respect tabindex=-1 on tabable elements
+
+## 4.2.0
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Minor changes
+
+- Enable no implicit any in utilities package
 
 ## 4.1.2
 Thu, 08 Jun 2017 00:18:05 GMT

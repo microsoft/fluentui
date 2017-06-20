@@ -3,7 +3,7 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconClassNames } from '@uifabric/styling';
 import { IIconTileStyles, getStyles } from './IconTile.styles';
 
-export interface IIconTileProps extends React.HTMLProps<HTMLDivElement> {
+export interface IIconTileProps extends React.HTMLAttributes<HTMLDivElement> {
   iconName: string;
 }
 

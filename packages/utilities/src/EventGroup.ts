@@ -5,8 +5,8 @@ export interface IEventRecord {
   eventName: string;
   parent: any;
   callback: (args?: any) => void;
-  elementCallback: (...args: any[]) => void;
-  objectCallback: (args?: any) => void;
+  elementCallback?: (...args: any[]) => void;
+  objectCallback?: (args?: any) => void;
   useCapture: boolean;
 }
 
@@ -33,7 +33,7 @@ export interface IDeclaredEventsByName {
  */
 export class EventGroup {
   private static _uniqueId = 0;
-  private _parent;
+  private _parent: any;
   private _eventRecords: IEventRecord[];
   private _id = EventGroup._uniqueId++;
   private _isDisposed: boolean;
@@ -55,11 +55,11 @@ export class EventGroup {
       if (document.createEvent) {
         let ev = document.createEvent('HTMLEvents');
 
-        ev.initEvent(eventName, bubbleEvent, true);
-        ev['args'] = eventArgs;
+        ev.initEvent(eventName, bubbleEvent || false, true);
+        (ev as any)['args'] = eventArgs;
         retVal = target.dispatchEvent(ev);
-      } else if (document['createEventObject']) { // IE8
-        let evObj = document['createEventObject'](eventArgs);
+      } else if ((document as any)['createEventObject']) { // IE8
+        let evObj = (document as any)['createEventObject'](eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }
@@ -68,15 +68,17 @@ export class EventGroup {
         let events = <IEventRecordsByName>target.__events__;
         let eventRecords = events ? events[eventName] : null;
 
-        for (let id in eventRecords) {
-          if (eventRecords.hasOwnProperty(id)) {
-            let eventRecordList = <IEventRecord[]>eventRecords[id];
+        if (eventRecords) {
+          for (let id in eventRecords) {
+            if (eventRecords.hasOwnProperty(id)) {
+              let eventRecordList = <IEventRecord[]>eventRecords[id];
 
-            for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
-              let record = eventRecordList[listIndex];
+              for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
+                let record = eventRecordList[listIndex];
 
-              if (record.objectCallback) {
-                retVal = record.objectCallback.call(record.parent, eventArgs);
+                if (record.objectCallback) {
+                  retVal = record.objectCallback.call(record.parent, eventArgs);
+                }
               }
             }
           }
@@ -156,9 +158,7 @@ export class EventGroup {
         eventName: eventName,
         parent: parent,
         callback: callback,
-        objectCallback: null,
-        elementCallback: null,
-        useCapture: useCapture
+        useCapture: useCapture || false
       };
 
       // Initialize and wire up the record on the target, so that it can call the callback if the event fires.
