@@ -139,6 +139,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         {
           'onClick': this._onToggleMenu,
           'aria-expanded': this.state.menuProps ? true : false,
+          'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
           'aria-haspopup': true
         }
       );
@@ -312,6 +313,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return (
       <ContextualMenu
         isBeakVisible={ true }
+        id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
