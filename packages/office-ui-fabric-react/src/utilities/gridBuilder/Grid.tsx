@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { FocusZone } from '../../FocusZone'; import {
-  BaseComponent
-} from '../../Utilities';
+import { FocusZone } from '../../FocusZone';
+import { BaseComponent } from '../../Utilities';
 import { IGridProps } from './Grid.Props';
 
+export class IGridState {
 
-export class Grid extends BaseComponent<IGridProps, null> {
+}
+
+export class Grid extends BaseComponent<IGridProps, IGridState> {
 
   // used to track the index while
   private _gridIndex;
 
   constructor(props: IGridProps) {
     super(props);
-
     this._gridIndex = 0;
   }
 
