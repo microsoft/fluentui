@@ -8,9 +8,7 @@ import {
 } from '../../../Utilities';
 import { IPredefinedColorPickerProps, IColorPickerItemProps, ColorPickerItemType, CellShape } from './PredefinedColorPicker.Props';
 import { DirectionalHint } from '../../../ContextualMenu';
-import {
-  getColorFromString
-} from '../../../utilities/color/colors';
+import { getColorFromString } from '../../../utilities/color/colors';
 import { DefaultButton, CommandButton } from '../../../Button';
 import { Callout } from '../../../Callout';
 import { Icon } from '../../../Icon';
@@ -125,8 +123,6 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     } = this.props;
 
     let optionsContainsCells = findIndex(items, (item => (item.type !== null && item.type === ColorPickerItemType.Cell)));
-
-
 
 
     for (let index = 0; index < items.length; index++) {
