@@ -92,7 +92,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <IconButton
                   className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
-                  iconProps={ { iconName: 'more' } }
+                  iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
                   menuIconProps={ { iconName: null } }
