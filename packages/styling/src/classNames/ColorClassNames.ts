@@ -1,6 +1,7 @@
-import { getTheme, mergeStyles } from '../utilities/index';
+import { mergeStyles } from '../utilities/index';
 import { IRawStyle } from '../interfaces/index';
 import { DefaultPalette } from '../styles/DefaultPalette';
+import { getTheme } from '../styles/index';
 
 export interface IColorClassNames {
   themeDarker?: string;

@@ -102,7 +102,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
           <div className={ css(
             'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper',
             styles.searchIconWrapper, styles.searchIconSearchWrapper) }>
-            <Icon iconName='search' />
+            { Icon({ iconName: 'Search' }) }
           </div>
           <div className={ css(
             'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper',
@@ -205,7 +205,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               </span>
             ) }
             { hasSubmenuItems(item) ? (
-              <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='chevronDown' />
+              <Icon className={ css('ms-CommandBarItem-chevronDown', styles.itemChevronDown) } iconName='ChevronDown' />
             ) : (null) }
           </button>;
         } else if (item.href) {

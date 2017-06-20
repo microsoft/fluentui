@@ -92,7 +92,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <IconButton
                   className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
-                  iconProps={ { iconName: 'more' } }
+                  iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
                   menuIconProps={ { iconName: null } }
@@ -101,10 +101,10 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                     directionalHint: DirectionalHint.bottomLeftEdge
                   } }
                 />
-                <Icon
-                  className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-                  iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-                />
+                { Icon({
+                  className: css('ms-Breadcrumb-chevron', styles.chevron),
+                  iconName: getRTL() ? 'ChevronLeft' : 'ChevronRight'
+                }) }
               </li>
             ) }
             { renderedItems.map(

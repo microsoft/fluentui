@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: Switch resizing logic to resizeGroup",
-      "type": "minor"
+      "comment": "Panel: Fixed header ID value",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
