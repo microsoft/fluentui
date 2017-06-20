@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 17 Jun 2017 17:39:43 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2017 10:22:47 GMT and should not be manually modified.
+
+## 4.9.0
+Tue, 20 Jun 2017 10:22:47 GMT
+
+### Minor changes
+
+- Breadcrumb: Switch resizing logic to resizeGroup
 
 ## 4.8.3
 Sat, 17 Jun 2017 17:39:43 GMT
