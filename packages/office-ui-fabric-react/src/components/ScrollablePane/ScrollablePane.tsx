@@ -52,7 +52,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   public componentDidMount() {
     this._scrollElement = findScrollableParent(this.refs.root);
     this._checkContentAreasPosition();
-    this.refs.scrollCopy.style.height = this._scrollElement.clientHeight + 'px';
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._checkContentAreasPosition);
     }
@@ -63,60 +62,20 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
     console.log('receive props');
   }
 
+  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
+    console.log('udpate');
+    this.refs.scrollCopy.style.height = this._scrollElement.clientHeight + 'px';
+    this.refs.scrollCopy.style.width = this._scrollElement.clientWidth + 'px';
+  }
+
   public render() {
     const { contentAreasAbove, contentAreasBelow } = this.state;
     const { className, contentAreas } = this.props;
 
-
-    /*<div className={ css('ms-ScrollablePane', styles.root, className) }
-            ref='root'>
-            <LayerHost id='layerhost1'
-              className={ styles.layerHostTop } />
-            <div>
-              { contentAreas.map((contentArea: IContentArea, index: number) => {
-                const elem = (
-                  <div
-                    ref={ index.toString() }
-                    className={ styles.contentArea }
-                    key={ index }>
-                    <div>
-                      { contentArea.header }
-                    </div>
-                    { contentArea.content }
-                  </div>
-                );
-                this._contentAreas.push(elem);
-                return (
-                  elem
-                );
-              }) }
-              <Layer
-                hostId='layerhost1'>
-                <div className={ styles.fixed }>
-                  {
-                    contentAreasAbove.map((contentArea: IContentArea, index: number) => {
-                      return contentArea.header;
-                    })
-                  }
-                </div>
-              </Layer>
-              <Layer
-                hostId='layerhost2'>
-                <div className={ styles.fixed }>
-                  {
-                    contentAreasBelow.map((contentArea: IContentArea, index: number) => {
-                      return contentArea.header;
-                    })
-                  }
-                </div>
-              </Layer>
-            </div>
-            <LayerHost id='layerhost2'
-              className={ styles.layerHostBottom } />
-          </div>*/
     return (
       <div className={ css('ms-ScrollablePane', styles.root, className) }
         ref='root'>
+
         <div className={ styles.scrollCopy }
           ref='scrollCopy'>
           <div className={ styles.layerHostTop }>
@@ -138,6 +97,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
             </div>
           </div>
         </div>
+
         <div className={ styles.scrollRegion }>
           { contentAreas.map((contentArea: IContentArea, index: number) => {
             const elem = (

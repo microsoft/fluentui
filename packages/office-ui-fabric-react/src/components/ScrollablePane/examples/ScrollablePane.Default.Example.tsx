@@ -26,7 +26,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   private _createHeader(index) {
     return (
-      <div className="exampleContentHeader">this is a new header for this content area { index }</div>
+      <div className='exampleContentHeader'>this is a new header for this content area { index }</div>
     );
   }
 
