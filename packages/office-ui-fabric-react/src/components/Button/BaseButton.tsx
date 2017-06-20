@@ -41,7 +41,7 @@ interface IButtonClassNames {
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   private get _isSplitButton(): boolean {
-    return (!!this.props.menuProps && !!this.props.onClick)
+    return (!!this.props.menuProps && !!this.props.onClick);
   }
 
   private get _isExpanded(): boolean {

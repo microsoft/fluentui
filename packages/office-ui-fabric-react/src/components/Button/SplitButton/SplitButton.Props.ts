@@ -1,11 +1,6 @@
-import * as React from 'react';
-import { BaseButton } from '../BaseButton';
 import { Button } from '../Button';
-import { IRenderFunction } from '../../../Utilities';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps, IconName } from '../../Icon';
-import { IStyle, ITheme } from '../../../Styling';
-import { IButtonStyles } from '../Button.Props'
+import { IStyle } from '../../../Styling';
+import { IButtonStyles } from '../Button.Props';
 
 export interface ISplitButtonStyles extends IButtonStyles {
   /**

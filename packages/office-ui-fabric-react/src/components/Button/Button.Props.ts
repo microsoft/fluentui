@@ -5,7 +5,7 @@ import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
-import { ISplitButtonStyles } from './SplitButton/SplitButton.Props'
+import { ISplitButtonStyles } from './SplitButton/SplitButton.Props';
 
 export interface IButton {
   /**
