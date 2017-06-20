@@ -4,9 +4,11 @@ import {
   ISemanticColors
 } from '../interfaces/index';
 import {
-  DefaultPalette,
   DefaultFontStyles
-} from '../styles/index';
+} from './DefaultFontStyles';
+import {
+  DefaultPalette
+} from './DefaultPalette';
 import { Customizer, getWindow } from '@uifabric/utilities/lib/index';
 export interface ITheme {
   palette: IPalette;
