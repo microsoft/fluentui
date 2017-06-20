@@ -1,6 +1,6 @@
 import { mergeStyles } from '../utilities/index';
 import { IProcessedStyle } from '../interfaces/index';
-import { ITheme } from '../utilities/theme';
+import { ITheme } from './theme';
 import { parent } from '../glamorExports';
 
 /**
