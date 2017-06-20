@@ -18,4 +18,6 @@ createApp([
     ))
 ],
   false,
-  'Example App');
+  'Example App',
+  undefined,
+  () => <div>Example App Home</div>);

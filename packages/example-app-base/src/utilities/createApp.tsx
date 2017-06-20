@@ -9,7 +9,7 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 import { ExampleGroup, IExample } from './examplesOf';
 
-export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: boolean, appTitle?: string, headerLinks?: IAppLink[]) {
+export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: boolean, appTitle?: string, headerLinks?: IAppLink[], defaultRouteComponent?: () => JSX.Element) {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
@@ -19,7 +19,7 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
 
     setBaseUrl('./dist/');
 
-    let routes = groups.map((group, groupIndex) => group.examples.map(
+    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group, groupIndex) => group.examples.map(
       (example: IExample, index: number) => (
         <Route
           key={ example.key }
@@ -27,6 +27,12 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
           component={ example.onRender }
         />
       )));
+
+    if (defaultRouteComponent) {
+      routes.push(
+        <Route key='default' component={ defaultRouteComponent } />
+      );
+    }
 
     let appDefinition = _getDefinition(groups);
 
