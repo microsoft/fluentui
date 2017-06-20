@@ -1,6 +1,52 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Jun 2017 10:22:47 GMT and should not be manually modified.
+
+## 0.10.5
+Tue, 20 Jun 2017 10:22:47 GMT
+
+*Changes not tracked*
+
+## 0.10.4
+Sat, 17 Jun 2017 17:39:43 GMT
+
+*Changes not tracked*
+
+## 0.10.2
+Sat, 17 Jun 2017 06:27:45 GMT
+
+*Changes not tracked*
+
+## 0.10.1
+Sat, 17 Jun 2017 04:36:46 GMT
+
+### Patches
+
+- Fixing amd import that was broken byt the no-implicit-anys fix.
+
+## 0.10.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- Enable no-implicit-any in the styling package
+
+## 0.9.1
+Fri, 16 Jun 2017 19:39:47 GMT
+
+*Changes not tracked*
+
+## 0.9.0
+Thu, 15 Jun 2017 23:55:18 GMT
+
+### Minor changes
+
+- Removed new icons that were added recently
+
+## 0.8.1
+Thu, 15 Jun 2017 10:09:15 GMT
+
+*Changes not tracked*
 
 ## 0.8.0
 Wed, 14 Jun 2017 06:02:15 GMT
