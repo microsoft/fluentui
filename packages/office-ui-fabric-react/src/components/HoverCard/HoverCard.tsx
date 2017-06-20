@@ -71,7 +71,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       onRenderExpandedContent
     } = this.props;
     this._styles = getStyles(customStyles);
-
+    console.log('render: HoverCard');
     return (
       <Callout
         componentRef={ c => this._callout = c }
@@ -83,6 +83,9 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { ...getNativeProps(this.props, divProperties) }
         isBeakVisible={ false }
         directionalHint={ DirectionalHint.bottomLeftEdge }
+        directionalHintFixed={ true }
+        directionalHintFixedHeight={ 540 }
+        minPagePadding={ 24 }
       >
         <div
           { ...{ onFocusCapture: this.props.onEnter } }
@@ -91,7 +94,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           onMouseLeave={ this.props.onDismiss }
         >
           { this._onRenderCompactContent() }
-          { this.isExpanded && this._onRenderExpandedContent() }
+          { this._onRenderExpandedContent() }
         </div>
       </Callout >
     );
@@ -113,7 +116,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   @autobind
   private _onRenderExpandedContent(): JSX.Element {
     return (
-      <div className={ css(AnimationClassNames.scaleDownIn100, this._styles.expandedCard) }>
+      <div className={ mergeStyles(this._styles.expandedCard, this.isExpanded && this._styles.expandedCardIsExpanded) as string }>
         { this.props.onRenderExpandedContent(this.props.item) }
       </div>
     );

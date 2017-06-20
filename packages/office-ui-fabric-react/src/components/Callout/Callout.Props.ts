@@ -144,6 +144,11 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   directionalHintFixed?: boolean;
 
   /**
+   * To be used when directionalHintFixed is true, if the content needs specific height.
+   */
+  directionalHintFixedHeight?: number;
+
+  /**
    * If true then the callout will attempt to focus the first focusable element that it contains.
    * If it doesn't find an element, no focus will be set and the method will return false.
    * This means that it's the contents responsibility to either set focus or have

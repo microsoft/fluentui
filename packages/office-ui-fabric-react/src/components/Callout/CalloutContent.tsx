@@ -29,6 +29,8 @@ export interface ICalloutState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
+  topPositionAdjust?: number;
+  maxHeightAdjust?: number;
 }
 
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
@@ -60,7 +62,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this.state = {
       positions: null,
       slideDirectionalClassName: null,
-      calloutElementRect: null
+      calloutElementRect: null,
+      topPositionAdjust: 0,
+      maxHeightAdjust: 0
     };
     this._positionAttempts = 0;
   }
@@ -128,8 +132,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? AnimationClassNames[positions.directionalClassName]
       : '';
 
-    let contentMaxHeight: number = this._getMaxHeight();
+    let contentMaxHeight: number = this._getMaxHeight() + this.state.maxHeightAdjust;
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
+
+    console.log('render: Callout', positions ? positions.calloutPosition : positions);
+
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -229,6 +236,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     this._updatePosition();
+    this.props.directionalHintFixedHeight && this._recalculatePositionEveryFrame();
   }
 
   private _updatePosition() {
@@ -247,6 +255,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         currentProps.target = this._target;
       }
       let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
+      newPositions.calloutPosition.top -= this.state.topPositionAdjust;
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -335,5 +344,23 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     } else {
       this._targetWindow = getWindow();
     }
+  }
+
+  private _recalculatePositionEveryFrame(): void {
+    this._async.requestAnimationFrame(() => {
+      const cardScrollHeight: number = (this._calloutElement.firstChild as HTMLElement).scrollHeight;
+      const cardCurrHeight: number = (this._calloutElement.firstChild as HTMLElement).offsetHeight;
+      const scrollDiff = cardScrollHeight - cardCurrHeight;
+
+      this.setState({
+        maxHeightAdjust: this.state.maxHeightAdjust + scrollDiff,
+        topPositionAdjust: scrollDiff
+      });
+
+      // Only keep recalculating until the card reaches its max height (which is when it has expanded)
+      if ((this._calloutElement.firstChild as HTMLElement).offsetHeight < this.props.directionalHintFixedHeight) {
+        this._recalculatePositionEveryFrame();
+      }
+    });
   }
 }

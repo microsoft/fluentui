@@ -82,4 +82,6 @@ export interface IHoverCardStyles {
    * Style for the content element in the default enabled, non-toggled state.
    */
   expandedCard?: IStyle;
+
+  expandedCardIsExpanded?: IStyle;
 }
