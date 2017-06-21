@@ -53,7 +53,6 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
   margin: 0px;
   height: 0px;
   width: 0px;
-  visibility: hidden;
   opacity: 0;
 }
 
@@ -108,6 +107,17 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
 .text {
   flex: 1 0 auto;
+}
+
+.root.isInFocus {
+  outline: 1px solid $focusedBorderColor;
+  @media screen and (-ms-high-contrast: active) {
+    outline-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    outline-color: $ms-color-black;
+  }
 }
 
 // Checked state
