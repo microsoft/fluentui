@@ -12,6 +12,7 @@ import { IconButton } from '../../Button';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
+import { TooltipHost } from '../../Tooltip';
 
 import * as stylesImport from './Breadcrumb.scss';
 const styles: any = stylesImport;
@@ -88,14 +89,14 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       >
         <FocusZone direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
-            { renderedOverflowItems && renderedOverflowItems.length && (
+            { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <IconButton
                   className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  menuIconProps={ { iconName: null } }
+                  menuIconProps={ null }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
@@ -124,7 +125,11 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
-    return this._defaultRenderItem(item);
+    return (
+      <TooltipHost title={ item.text } >
+        { this._defaultRenderItem(item) }
+      </TooltipHost>
+    );
   }
 
   @autobind
