@@ -3,7 +3,8 @@ import {
   BaseComponent,
   autobind,
   css,
-  getId
+  getId,
+  KeyCodes
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
@@ -90,7 +91,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           onBlur={ this._onBlur }
           aria-checked={ isChecked }
         />
-        <label className={ css('ms-Checkbox-label', styles.label) } htmlFor={ this._id }>
+        <label className={ css('ms-Checkbox-label', styles.label) } htmlFor={ this._id } tabIndex={ 0 } onKeyPress={ this._onLabelKeyDown }>
           <span className={ css('box', styles.box) }>
             <span className={ css('checkbox', styles.checkbox) }>
               <Icon iconName='CheckMark' className={ styles.checkmark } />
@@ -99,7 +100,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           { label && <span className={ css('text', styles.text) }>{ label }</span> }
         </label>
       </div >
-      );
+    );
   }
 
   public get checked(): boolean {
@@ -109,6 +110,25 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   public focus(): void {
     if (this._checkBox) {
       this._checkBox.focus();
+    }
+  }
+
+
+  @autobind
+  private _onLabelKeyDown(ev: React.KeyboardEvent<HTMLLabelElement>): void {
+    if (ev.which === KeyCodes.space) {
+      ev.stopPropagation();
+      ev.preventDefault();
+      const { onChange } = this.props;
+      const isChecked = !this.state.isChecked;
+
+      if (onChange) {
+        onChange(ev, isChecked);
+      }
+
+      if (this.props.checked === undefined) {
+        this.setState({ isChecked: isChecked });
+      }
     }
   }
 
