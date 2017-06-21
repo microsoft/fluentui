@@ -20,7 +20,9 @@
     ],
     "prefer-const": false,
     "quotemark": [
-      "single"
+      true,
+      "single",
+      "jsx-single"
     ],
     "no-inferrable-types": [
       true,

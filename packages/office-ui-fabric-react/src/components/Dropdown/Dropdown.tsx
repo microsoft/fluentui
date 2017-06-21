@@ -17,10 +17,11 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 
-// Internal only props iterface to support mixing in responsive mode
+// Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
 
 }
@@ -51,6 +52,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
+    props.options.forEach((option) => {
+      if (!option.itemType) {
+        option.itemType = DropdownMenuItemType.Normal;
+      }
+    });
     super(props);
 
     this._warnDeprecations({
@@ -101,7 +107,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       required,
       errorMessage,
       onRenderTitle = this._onRenderTitle,
-      onRenderContainer = this._onRenderContainer
+      onRenderContainer = this._onRenderContainer,
+      onRenderPlaceHolder = this._onRenderPlaceHolder
     } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
@@ -131,13 +138,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
-          aria-readonly={ true }
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
-          aria-owns={ id + '-list' }
+          aria-owns={ isOpen ? id + '-list' : null }
         >
           <span
             id={ id + '-option' }
@@ -148,15 +154,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             }
             key={ selectedIndex }
             aria-atomic={ true }
+            role='textbox'
+            aria-readonly='true'
           >
             { // If option is selected render title, otherwise render the placeholder text
               selectedOption ? (
                 onRenderTitle(selectedOption, this._onRenderTitle)
               ) :
-                this._onRenderPlaceHolder(this.props)
+                onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='chevronDown' />
+          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -179,21 +187,64 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options } = this.props;
+    let { onChanged, options, selectedKey } = this.props;
     let { selectedIndex } = this.state;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
     if (index !== selectedIndex) {
-      // Set the selected option.
-      this.setState({
-        selectedIndex: index
-      });
+      if (selectedKey === undefined) {
+        // Set the selected option if this is an uncontrolled component
+        this.setState({
+          selectedIndex: index
+        });
+      }
 
       if (onChanged) {
         onChanged(options[index], index);
       }
     }
+  }
+
+  /**
+   * Finds the next valid Dropdown option and sets the selected index to it.
+   * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
+   * @param index Index of where the search should start
+   * @param selectedIndex The selectedIndex Dropdown's state
+   * @returns The next valid dropdown option's index
+   */
+  private _moveIndex(stepValue: number, index: number, selectedIndex: number): number {
+    const { options } = this.props;
+    // Return selectedIndex if nothing has changed or options is empty
+    if (selectedIndex === index || options.length === 0) {
+      return selectedIndex;
+    }
+
+    // Set starting index to 0 if index is < 0
+    if (index < 0) {
+      index = 0;
+    }
+    // Set starting index to last option index if greater than options.length
+    if (index >= options.length) {
+      index = options.length - 1;
+    }
+    let stepCounter = 0;
+    // If current index is a header or divider, increment by step
+    while (options[index].itemType !== DropdownMenuItemType.Normal) {
+      // If stepCounter exceeds length of options, then return selectedIndex (-1)
+      if (stepCounter >= options.length) {
+        return selectedIndex;
+      }
+      // If index + stepValue is out of bounds, reverse step direction
+      if (index + stepValue < 0 || index + stepValue >= options.length) {
+        stepValue *= -1;
+      }
+      index = index + stepValue;
+      stepCounter++;
+    }
+
+    this.setSelectedIndex(index);
+    return index;
   }
 
   // Render text in dropdown input
@@ -282,9 +333,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     switch (item.itemType) {
-      case DropdownMenuItemType.Divider:
+      case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
-      case DropdownMenuItemType.Header:
+      case SelectableOptionMenuItemType.Header:
         return this._renderHeader(item);
       default:
         return this._renderOption(item);
@@ -304,9 +355,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _renderHeader(item: IDropdownOption): JSX.Element {
-    let { onRenderOption = this._onRenderOption } = this.props;
+    const { onRenderOption = this._onRenderOption } = this.props;
+    const { key } = item;
     return (
-      <div className={ css('ms-Dropdown-header', styles.header) }>
+      <div key={ key }
+        className={ css('ms-Dropdown-header', styles.header) }>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -368,6 +421,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let newIndex: number;
+    const { selectedIndex } = this.state;
+
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -386,23 +442,23 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        this.setSelectedIndex(this.state.selectedIndex - 1);
+        newIndex = this._moveIndex(-1, selectedIndex - 1, selectedIndex);
         break;
 
       case KeyCodes.down:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: true });
         } else {
-          this.setSelectedIndex(this.state.selectedIndex + 1);
+          newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
         }
         break;
 
       case KeyCodes.home:
-        this.setSelectedIndex(0);
+        newIndex = this._moveIndex(1, 0, selectedIndex);
         break;
 
       case KeyCodes.end:
-        this.setSelectedIndex(this.props.options.length - 1);
+        newIndex = this._moveIndex(-1, this.props.options.length - 1, selectedIndex);
         break;
 
       case KeyCodes.space:
@@ -413,8 +469,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
     }
 
-    ev.stopPropagation();
-    ev.preventDefault();
+    if (newIndex !== selectedIndex) {
+      ev.stopPropagation();
+      ev.preventDefault();
+    }
   }
 
   @autobind

@@ -4,10 +4,12 @@ import {
   ISemanticColors
 } from '../interfaces/index';
 import {
-  DefaultPalette,
   DefaultFontStyles
-} from '../styles/index';
-import { Customizer } from '@uifabric/utilities/lib/index';
+} from './DefaultFontStyles';
+import {
+  DefaultPalette
+} from './DefaultPalette';
+import { Customizer, getWindow } from '@uifabric/utilities/lib/index';
 export interface ITheme {
   palette: IPalette;
   fonts: IFontStyles;
@@ -20,6 +22,14 @@ let _theme: ITheme = {
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
   fonts: DefaultFontStyles
 };
+
+let win = getWindow();
+
+// tslint:disable:no-string-literal no-any
+if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
+  _theme = createTheme((win as any)['FabricConfig'].theme);
+}
+// tslint:enable:no-string-literal no-any
 
 Customizer.setDefault('theme', _theme);
 
@@ -46,10 +56,7 @@ export function loadTheme(theme: Partial<ITheme>): void {
  * Creates a custom theme definition which can be used with the Customizer.
  */
 export function createTheme(theme: Partial<ITheme>): ITheme {
-  let newPalette = {
-    ..._theme.palette,
-    ...theme.palette
-  };
+  let newPalette = { ..._theme.palette, ...theme.palette };
 
   return {
     palette: newPalette,
@@ -57,10 +64,7 @@ export function createTheme(theme: Partial<ITheme>): ITheme {
       ..._theme.fonts,
       ...theme.fonts
     },
-    semanticColors: {
-      ..._makeSemanticColorsFromPalette(newPalette),
-      ...theme.semanticColors
-    }
+    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
   } as ITheme;
 }
 

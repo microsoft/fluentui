@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Component properties now extend React.HTMLAttributes, rather than React.HTMLProps",
-      "type": "minor"
+      "comment": "Dropdown: fixed bug that didn't allow operating Dropdown as a controlled component",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

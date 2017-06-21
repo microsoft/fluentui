@@ -8,7 +8,7 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      showDialog: false
+      hideDialog: true
     };
   }
 
@@ -21,12 +21,17 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
           text='Open Dialog'
         />
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.largeHeader }
+          hidden={ this.state.hideDialog }
           onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
+          dialogContentProps={ {
+            type: DialogType.largeHeader,
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            isBlocking: false,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
           <ChoiceGroup
             options={ [
@@ -45,7 +50,7 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
                 disabled: true
               }
             ] }
-            onChanged={ this._onChoiceChanged }
+            onChange={ this._onChoiceChanged }
           />
           <DialogFooter>
             <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />
@@ -57,11 +62,11 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
   }
 
   private _showDialog() {
-    this.setState({ showDialog: true });
+    this.setState({ hideDialog: false });
   }
 
   private _closeDialog() {
-    this.setState({ showDialog: false });
+    this.setState({ hideDialog: true });
   }
 
   private _onChoiceChanged() {

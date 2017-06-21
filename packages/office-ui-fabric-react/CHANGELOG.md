@@ -1,6 +1,112 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Jun 2017 10:20:07 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Jun 2017 00:45:41 GMT and should not be manually modified.
+
+## 4.9.1
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Patches
+
+- Icons: now with less redundant evaluation of styling, which improves render performance.
+- Panel: Fixed header ID value
+
+## 4.9.0
+Tue, 20 Jun 2017 10:22:47 GMT
+
+### Minor changes
+
+- Breadcrumb: Switch resizing logic to resizeGroup
+
+## 4.8.3
+Sat, 17 Jun 2017 17:39:43 GMT
+
+### Patches
+
+- Icon: image icons now have less random "l" characters. Sorry about that!
+
+## 4.8.1
+Sat, 17 Jun 2017 06:27:45 GMT
+
+### Patches
+
+- Icon: iconName should pass through to the classname without casing alterations.
+
+## 4.8.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- DetailsList: Remove Tooltip by defaul, allowing optional override.
+
+### Patches
+
+- Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided.
+
+## 4.7.2
+Fri, 16 Jun 2017 19:39:47 GMT
+
+### Patches
+
+- Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility.
+- OverflowSet: Don't use the index as the key
+
+## 4.7.1
+Thu, 15 Jun 2017 23:55:18 GMT
+
+### Patches
+
+- CheckButton: Firefox high contrast fix
+
+## 4.7.0
+Thu, 15 Jun 2017 10:09:15 GMT
+
+### Minor changes
+
+- Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps
+
+### Patches
+
+- Toggle: High contrast fix for Firefox
+
+## 4.6.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Dropdown: Fixed onRenderPlaceholder and update docs
+- Adding Aria label props for Dialog
+
+### Patches
+
+- Buttons: Added `aria-haspopup` to buttons with menuProps.
+- FocusZone: bidirectional movement now wraps on lines.
+- Bumping fabric-core dependency to have Segoe UI be part of the font fallback.
+- FocusZone should reset active element if it is not tabbable.
+- Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened.
+- Enable strictNullChecks in utilities package
+- PeoplePicker: fixing styling, focus, and extra rerendering issues.
+- Dropdown: Fix keyboard focus on Header/Separator items
+
+## 4.5.1
+Tue, 13 Jun 2017 10:13:21 GMT
+
+### Patches
+
+- High contrast fixes for Pivot, Choicegroup and Checkbox
+- withResponsiveMode: Adding error handling around the case where window.innerWidth throws an exception.
+
+## 4.5.0
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Minor changes
+
+- Component properties now extend React.HTMLAttributes, rather than React.HTMLProps
+
+### Patches
+
+- Updating minified bundle to exclude debug warnings.
+- Enable no implicit any in utilities package
+- Toggle: add 'cursor: pointer'
 
 ## 4.4.2
 Thu, 08 Jun 2017 10:20:07 GMT
