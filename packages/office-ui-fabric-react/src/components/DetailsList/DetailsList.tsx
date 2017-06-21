@@ -21,7 +21,7 @@ import {
   IDetailsList,
   IDetailsListProps,
 } from '../DetailsList/DetailsList.Props';
-import { DetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -70,7 +70,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   // References
   private _root: HTMLElement;
-  private _header: DetailsHeader;
+  private _header: IDetailsHeader;
   private _groupedList: GroupedList;
   private _list: List;
   private _focusZone: FocusZone;
@@ -273,7 +273,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
-                ref={ this._resolveRef('_header') }
+                componentRef={ this._resolveRef('_header') }
                 selectionMode={ selectionMode }
                 layoutMode={ layoutMode }
                 selection={ selection }

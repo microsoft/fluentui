@@ -25,7 +25,12 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
 
+export interface IDetailsHeader {
+  focus(): boolean;
+}
+
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
+  componentRef?: (component: IDetailsHeader) => void;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -67,7 +72,7 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
+export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
     isSelectAllVisible: SelectAllVisibility.visible
   };
