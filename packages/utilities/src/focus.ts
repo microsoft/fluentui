@@ -46,10 +46,11 @@ export function getPreviousElement(
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement | null {
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null {
 
   if (!currentElement ||
-    currentElement === rootElement) {
+    (!allowFocusRoot && currentElement === rootElement)) {
     return null;
   }
 
@@ -64,7 +65,8 @@ export function getPreviousElement(
       true,
       true,
       true,
-      includeElementsInFocusZones);
+      includeElementsInFocusZones,
+      allowFocusRoot);
 
     if (childMatch) {
       return childMatch;
@@ -83,7 +85,8 @@ export function getPreviousElement(
     true,
     true,
     true,
-    includeElementsInFocusZones);
+    includeElementsInFocusZones,
+    allowFocusRoot);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -91,7 +94,8 @@ export function getPreviousElement(
 
   // Check its parent.
   if (!suppressParentTraversal) {
-    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones);
+    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones,
+      allowFocusRoot);
   }
 
   return null;
@@ -104,11 +108,12 @@ export function getNextElement(
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement | null {
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null {
 
   if (
     !currentElement ||
-    (currentElement === rootElement && suppressChildTraversal)) {
+    (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
     return null;
   }
 
@@ -128,7 +133,8 @@ export function getNextElement(
       true,
       true,
       false,
-      includeElementsInFocusZones);
+      includeElementsInFocusZones,
+      allowFocusRoot);
 
     if (childMatch) {
       return childMatch;
@@ -146,14 +152,16 @@ export function getNextElement(
     true,
     true,
     false,
-    includeElementsInFocusZones);
+    includeElementsInFocusZones,
+    allowFocusRoot);
 
   if (siblingMatch) {
     return siblingMatch;
   }
 
   if (!suppressParentTraversal) {
-    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones);
+    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones,
+      allowFocusRoot);
   }
 
   return null;

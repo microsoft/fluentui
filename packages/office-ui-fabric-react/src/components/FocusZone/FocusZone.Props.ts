@@ -94,6 +94,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * @returns True if focus should be set to the given element, false to avoid setting focus.
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
+
+  /** Allow focus to move to root */
+  allowFocusRoot?: boolean;
 }
 
 export enum FocusZoneDirection {

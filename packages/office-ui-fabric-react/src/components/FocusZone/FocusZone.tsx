@@ -135,10 +135,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (!forceIntoFirstElement && this.refs.root.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' && this._isInnerZone) {
       // The parent focus zone should take responsibility for focusing this element.
       return true;
-     } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)
-        && isElementTabbable(this._activeElement)) {
-        this._activeElement.focus();
-        return true;
+    } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)
+      && isElementTabbable(this._activeElement)) {
+      this._activeElement.focus();
+      return true;
     } else {
       const firstChild = this.refs.root.firstChild as HTMLElement;
 
@@ -439,8 +439,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     do {
       element = isForward ?
-        getNextElement(this.refs.root, element) :
-        getPreviousElement(this.refs.root, element);
+        getNextElement(this.refs.root, element, undefined, undefined, undefined, undefined, true) :
+        getPreviousElement(this.refs.root, element, undefined, undefined, undefined, undefined, true);
 
       if (isBidirectional) {
         if (element) {
@@ -652,7 +652,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
-    // If active element changes state to disabled, set it to null. 
+    // If active element changes state to disabled, set it to null.
     // Otherwise, we lose keyboard accessibility to other elements in focus zone.
     if (this._activeElement && !isElementTabbable(this._activeElement)) {
       this._activeElement = null;
