@@ -55,7 +55,7 @@ export class DialogBasicExample extends React.Component<any, any> {
                 disabled: true
               }
             ] }
-            onChanged={ this._onChoiceChanged }
+            onChange={ this._onChoiceChanged }
           />
           { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
