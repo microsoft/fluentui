@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Jun 2017 00:45:41 GMT and should not be manually modified.
+
+## 4.0.0
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Breaking changes
+
+- Add support for adding a default route in createApp. Remove unused hideChrome parameter.
 
 ## 3.0.2
 Wed, 14 Jun 2017 06:02:15 GMT

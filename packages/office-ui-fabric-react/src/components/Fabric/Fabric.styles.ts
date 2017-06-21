@@ -1,11 +1,11 @@
 
 import {
-  memoizeFunction,
+  memoizeFunction
 } from '../../Utilities';
 import {
   ITheme,
   IStyle,
-  getTheme
+  mergeStyles
 } from '../../Styling';
 
 const inheritFont = { fontFamily: 'inherit' };
@@ -15,16 +15,16 @@ export interface IFabricStyles {
 }
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme()
+  theme: ITheme
 ): IFabricStyles => {
   return {
-    root: [
+    root: mergeStyles([
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
         '& button': inheritFont,
         '& input': inheritFont
       }
-    ]
+    ])
   };
 });

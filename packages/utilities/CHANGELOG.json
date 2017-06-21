@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.4.0",
+      "tag": "@uifabric/utilities_v4.4.0",
+      "date": "Wed, 21 Jun 2017 01:52:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "221454482fd48138b0485715170c03c64fa1cef7",
+            "comment": "Add FabricPerformance utility to measure performance"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.3.0",
       "tag": "@uifabric/utilities_v4.3.0",
       "date": "Wed, 14 Jun 2017 06:02:15 GMT",
