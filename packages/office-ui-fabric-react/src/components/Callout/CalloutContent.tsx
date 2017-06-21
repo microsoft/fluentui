@@ -29,7 +29,6 @@ export interface ICalloutState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
-  topPositionOffset?: number;
   heightOffset?: number;
 }
 
@@ -135,9 +134,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
     let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset;
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
-
-    console.log('render: Callout', positions ? positions.calloutPosition : positions);
-
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -256,7 +252,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         currentProps.target = this._target;
       }
       let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
-      //newPositions.calloutPosition.top -= this.state.heightOffset;
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -355,24 +350,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        const isBottomExpanding: boolean = ((): boolean => {
-          switch (this.props.directionalHint) {
-            case (DirectionalHint.bottomAutoEdge):
-            case (DirectionalHint.bottomCenter):
-            case (DirectionalHint.bottomLeftEdge):
-            case (DirectionalHint.bottomRightEdge):
-              return true;
-            default:
-              return false;
-          }
-        })();
-
-        // We can skip rerender in case when it a bottom hint and there is no scroll diff
-        if (!(scrollDiff === 0 && isBottomExpanding)) {
-          this.setState({
-            heightOffset: this.state.heightOffset + scrollDiff
-          });
-        }
+        this.setState({
+          heightOffset: this.state.heightOffset + scrollDiff
+        });
 
         if (calloutMainElem.offsetHeight < this.props.finalHeight) {
           this._setHeightOffsetEveryFrame();

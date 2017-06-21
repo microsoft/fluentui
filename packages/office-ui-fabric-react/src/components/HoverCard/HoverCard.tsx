@@ -29,7 +29,9 @@ export interface IHoverCardState {
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
     expandedCardOpenDelay: 1000,
-    openExpanded: false
+    openExpanded: false,
+    compactCardHeight: 156,
+    expandedCardHeight: 384
   };
 
   private _styles: IHoverCardStyles;
@@ -69,10 +71,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       id,
       styles: customStyles,
       onRenderCompactContent,
-      onRenderExpandedContent
+      onRenderExpandedContent,
+      compactCardHeight,
+      expandedCardHeight
     } = this.props;
     this._styles = getStyles(customStyles);
-    console.log('render: HoverCard');
+
     return (
       <Callout
         componentRef={ c => this._callout = c }
@@ -85,7 +89,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         isBeakVisible={ false }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
-        finalHeight={ 540 }
+        finalHeight={ compactCardHeight + expandedCardHeight }
         minPagePadding={ 24 }
       >
         <div
@@ -108,7 +112,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   @autobind
   private _onRenderCompactContent(): JSX.Element {
     return (
-      <div className={ css(this._styles.compactCard) }>
+      <div className={ mergeStyles(this._styles.compactCard, { height: this.props.compactCardHeight + 'px' }) as string }>
         { this.props.onRenderCompactContent(this.props.item) }
       </div>
     );
@@ -117,7 +121,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   @autobind
   private _onRenderExpandedContent(): JSX.Element {
     return (
-      <div className={ mergeStyles(this._styles.expandedCard, this.isExpanded && this._styles.expandedCardIsExpanded) as string }>
+      <div className={ mergeStyles(this._styles.expandedCard, this.isExpanded && { height: this.props.expandedCardHeight + 'px' }) as string }>
         { this.props.onRenderExpandedContent(this.props.item) }
       </div>
     );

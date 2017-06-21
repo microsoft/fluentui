@@ -35,12 +35,15 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     let { items, columns } = this.state;
 
     return (
-      <DetailsList
-        setKey='hoverSet'
-        items={ items }
-        columns={ columns }
-        onRenderItemColumn={ this._onRenderItemColumn }
-      />
+      <div>
+        <p> Hover over location to see the card </p>
+        <DetailsList
+          setKey='hoverSet'
+          items={ items }
+          columns={ columns }
+          onRenderItemColumn={ this._onRenderItemColumn }
+        />
+      </div>
     );
   }
 
@@ -68,15 +71,22 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   @autobind
   private _onRenderCompactContent(item: any): JSX.Element {
     return (
-      <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
-        { item.location }
-      </a>
+      <div className='hoverCardExample-compactCard'>
+        <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
+          { item.location }
+        </a>
+      </div>
     );
   }
 
   @autobind
   private _onRenderExpandedContent(item: any): JSX.Element {
-    return <div> { item.description } </div>
+    return (
+      <div className='hoverCardExample-expandedCard'>
+        { item.description }
+        { item.description }
+      </div>
+    );
   }
 }
 

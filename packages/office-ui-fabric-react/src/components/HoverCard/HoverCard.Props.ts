@@ -6,7 +6,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle } from '../../Styling';
 
 export interface IHoverCard {
-  isExpanded: boolean
+
 }
 
 /**
@@ -56,6 +56,18 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   expandedCardOpenDelay?: number;
 
   /**
+   * Height of compact card
+   * @default 156
+   */
+  compactCardHeight?: number;
+
+  /**
+   * Height of expanded card
+   * @default 384
+   */
+  expandedCardHeight?: number;
+
+  /**
    * Use to open the card in expanded format and not wait for the delay
    * @default false
    */
@@ -82,6 +94,4 @@ export interface IHoverCardStyles {
    * Style for the content element in the default enabled, non-toggled state.
    */
   expandedCard?: IStyle;
-
-  expandedCardIsExpanded?: IStyle;
 }
