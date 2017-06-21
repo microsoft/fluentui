@@ -30,7 +30,8 @@
 }
 
 .item {
-  padding: 0px 2px;
+  //padding: 0px 2px;
+  padding: 0px;
 
   &.itemIsSelected {
     &:hover .svg,
@@ -101,14 +102,14 @@
   position: relative;
 }
 
-.menuItem {
-    display: inline-block;
-    width: 24px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-}
+// .menuItem {
+//     display: inline-block;
+//     width: 24px;
+//     height: 40px;
+//     line-height: 40px;
+//     text-align: center;
+//     vertical-align: middle;
+//     cursor: pointer;
+// }
 
 

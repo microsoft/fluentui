@@ -24,37 +24,37 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
           cellShape={ CellShape.circle }
           colorPickerItems={
             [
-              { key: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
-              { key: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
-              { key: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
-              { key: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' }
+              { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+              { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
+              { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+              { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' }
             ]
           } />
-        <div style={ { height: '220px' } }>
+        <div style={ { height: '235px', position: 'relative' } }>
           <div>Simple predefiend color picker with multiple sections:</div>
-          <div style={ { border: '1px solid black', position: 'absolute', display: 'block' } } >
+          <div style={ { border: '1px solid black', position: 'absolute' } } >
             <PredefinedColorPicker
               width={ this.width }
               cellShape={ CellShape.circle }
               colorPickerItems={
                 [
-                  { key: '0', label: 'Colors', type: ColorPickerItemType.Header },
-                  { key: 'd1', type: ColorPickerItemType.Divider },
-                  { key: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
-                  { key: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
-                  { key: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
-                  { key: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
-                  { key: 'e', type: ColorPickerItemType.Divider },
-                  { key: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
-                  { key: 'd2', type: ColorPickerItemType.Divider },
-                  { key: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
-                  { key: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
-                  { key: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
-                  { key: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
-                  { key: 'k', label: 'black', type: ColorPickerItemType.Cell, color: 'black' },
-                  { key: 'l', label: 'grey', type: ColorPickerItemType.Cell, color: 'grey' },
-                  { key: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
-                  { key: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
+                  { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
+                  { id: 'd1', type: ColorPickerItemType.Divider },
+                  { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+                  { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
+                  { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+                  { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
+                  { id: 'e', type: ColorPickerItemType.Divider },
+                  { id: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
+                  { id: 'd2', type: ColorPickerItemType.Divider },
+                  { id: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
+                  { id: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
+                  { id: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
+                  { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
+                  { id: 'k', label: 'black', type: ColorPickerItemType.Cell, color: 'black' },
+                  { id: 'l', label: 'grey', type: ColorPickerItemType.Cell, color: 'grey' },
+                  { id: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
+                  { id: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
 
                 ]
               } />
@@ -67,19 +67,21 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
           cellShape={ CellShape.square }
           colorPickerItems={
             [
-              { key: '0', label: 'Colors', type: ColorPickerItemType.Header },
-              { key: 'd1', type: ColorPickerItemType.Divider },
-              { key: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
-              { key: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
-              { key: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
-              { key: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
-              { key: 'e', type: ColorPickerItemType.Divider },
-              { key: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
-              { key: 'd2', type: ColorPickerItemType.Divider },
-              { key: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
-              { key: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
-              { key: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
-              { key: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' }
+              { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
+              { id: 'd1', type: ColorPickerItemType.Divider },
+              { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+              { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
+              { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+              { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
+              { id: 'e', type: ColorPickerItemType.Divider },
+              { id: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
+              { id: 'd2', type: ColorPickerItemType.Divider },
+              { id: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
+              { id: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
+              { id: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
+              { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
+              { id: 'k', type: ColorPickerItemType.Divider },
+              { id: 'l', label: 'Find Colors', type: ColorPickerItemType.MenuItem }
             ]
           } />
         <div>Simple expandable predefiend color picker with multiple sections that updates it's icon color:</div>
@@ -90,23 +92,23 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
           cellShape={ CellShape.circle }
           colorPickerItems={
             [
-              { key: '0', label: 'Colors', type: ColorPickerItemType.Header },
-              { key: 'd1', type: ColorPickerItemType.Divider },
-              { key: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
-              { key: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
-              { key: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
-              { key: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
-              { key: 'e', type: ColorPickerItemType.Divider },
-              { key: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
-              { key: 'd2', type: ColorPickerItemType.Divider },
-              { key: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
-              { key: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
-              { key: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
-              { key: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
-              { key: 'k', label: 'black', type: ColorPickerItemType.Cell, color: 'black' },
-              { key: 'l', label: 'grey', type: ColorPickerItemType.Cell, color: 'grey' },
-              { key: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
-              { key: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
+              { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
+              { id: 'd1', type: ColorPickerItemType.Divider },
+              { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+              { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
+              { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+              { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
+              { id: 'e', type: ColorPickerItemType.Divider },
+              { id: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
+              { id: 'd2', type: ColorPickerItemType.Divider },
+              { id: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
+              { id: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
+              { id: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
+              { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
+              { id: 'k', label: 'black', type: ColorPickerItemType.Cell, color: 'black' },
+              { id: 'l', label: 'grey', type: ColorPickerItemType.Cell, color: 'grey' },
+              { id: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
+              { id: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
 
             ]
           } />

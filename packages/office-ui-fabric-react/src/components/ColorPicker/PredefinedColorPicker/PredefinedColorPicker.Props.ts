@@ -1,3 +1,4 @@
+import { IButtonProps } from '../../../Button';
 import { IIconProps } from '../../../Icon';
 export enum CellShape {
   circle = 0,
@@ -24,7 +25,7 @@ export interface IPredefinedColorPickerProps {
   /**
    * The color cell that is currently selected
    */
-  selectedKey?: string | number;
+  selectedId?: string;
 
   /**
    * Icon props for the color picker. If given the color picker
@@ -59,9 +60,9 @@ export interface IPredefinedColorPickerProps {
 export interface IColorPickerItemProps {
 
   /**
-   * Arbitrary string associated with this option
+   * Arbitrary unique string associated with this option
    */
-  key?: string;
+  id: string;
 
   /**
  * The label for this item.
@@ -73,7 +74,7 @@ export interface IColorPickerItemProps {
   /**
    * The type of item this is
    */
-  type?: ColorPickerItemType;
+  type: ColorPickerItemType;
 
   /**
    * The CSS-compatible string to describe the color
@@ -84,6 +85,12 @@ export interface IColorPickerItemProps {
    * Index for this option
    */
   index?: number;
+
+  /**
+   * The menu item button props. This value is only used if
+   * the type is MenuItem
+   */
+  MenuItemButtonProps?: IButtonProps;
 }
 
 export enum ColorPickerItemType {

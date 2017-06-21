@@ -2,6 +2,8 @@ import * as React from 'react';
 import { FocusZone } from '../../FocusZone';
 import { BaseComponent } from '../../Utilities';
 import { IGridProps } from './Grid.Props';
+// import * as stylesImport from '../../utilities/Grid';
+// const styles: any = stylesImport;
 
 export interface IGridState {
 
@@ -11,6 +13,8 @@ export class Grid extends BaseComponent<IGridProps, IGridState> {
 
   // used to track the index while
   private _gridIndex;
+
+  private _id;
 
   constructor(props: IGridProps) {
     super(props);
@@ -26,65 +30,33 @@ export class Grid extends BaseComponent<IGridProps, IGridState> {
       setSize
     } = this.props;
 
-    return this.buildGrid(items, width, onRenderItem, positionInSet, setSize);
-  }
-
-  /**
-   * Builds a transparent grid representation of the items for
-   * the given width (e.g. number of columns)
-   * @param items - the items to turn into a grid
-   * @param width - the width of the grid (e.g. number of columns)
-   * @param onRenderItem - custom renderer for the individual items
-   * @param positionInSet - the optional position this grid is in the parent set (index in a menu for example)
-   * @param setSize - the optional size of the parent set (size of menu for example)
-   * @returns {JSX.Element} - the grid element or null if another grid is already in the process of being built
-   */
-  private buildGrid(
-    items: any[],
-    width: number,
-    onRenderItem: (item: any, index: number) => JSX.Element,
-    positionInSet: number = -1,
-    setSize: number = -1): JSX.Element {
-
-    // make sure that we are not in the middle of creating another grid
-    // if so, bail out
-    if (this._gridIndex !== 0) {
-      return null;
-    }
-
-    // Create the table/grid
-    let gridElement =
-      React.createElement(
-        'table',
-        {
-          role: 'grid',
-          ariaPosinset: positionInSet,
-          ariaSetsize: setSize
-        },
-        React.createElement(
-          'tbody',
-          this.buildGridContents(items, width, onRenderItem)
-        )
-      );
-
-    // reset the index so we will start at the beginning next time around
+    // reset the index so we will start at the beginning
     this._gridIndex = 0;
 
+    // Create the table/grid
     return (
-      <FocusZone isCircularNavigation={ true }>
-        { gridElement }
-      </FocusZone>
+      <table
+        role={ 'grid' }
+        aria-posinset={ positionInSet }
+        aria-setsize={ setSize }
+        /*className={ styles.table }*/
+        style={ { padding: '2px', outline: 'none' } }>
+        <tbody>
+          { this._buildGridContents() }
+        </tbody>
+      </table>
     );
   }
 
   /**
    * Builds the contents of the grid
-   * @param items - the items to turn into a grid
-   * @param width - the width of the grid (e.g. number of columns)
-   * @param onRenderItem - custom renderer for the individual items
    * @returns {JSX.Element[]} - the array of elements that make up the rows for the grid
    */
-  private buildGridContents(items: any[], width: number, onRenderItem: (item: any, index: number) => JSX.Element): JSX.Element[] {
+  private _buildGridContents(): JSX.Element[] {
+    let {
+      items,
+      width
+    } = this.props;
     let elements: JSX.Element[] = [];
 
     // Walk across the children, creating rows if
@@ -93,7 +65,7 @@ export class Grid extends BaseComponent<IGridProps, IGridState> {
 
     while (this._gridIndex < items.length) {
       if (this._gridIndex % width === 0) {
-        elements.push(this.buildRow(items, width, onRenderItem));
+        elements.push(this._buildRow());
       }
 
       // Make sure we do not get into an infinite loop
@@ -107,28 +79,33 @@ export class Grid extends BaseComponent<IGridProps, IGridState> {
 
   /**
    * Builds a row for the grid
-   * @param items - the items to turn into a grid
-   * @param width - the width of the grid (e.g. number of columns)
-   * @param onRenderItem - custom renderer for the individual items
    * @returns {JSX.Element} - the row element that has at most width cells
    */
-  private buildRow(items: any[], width: number, onRenderItem: (item: any, index: number) => JSX.Element): JSX.Element {
+  private _buildRow(): JSX.Element {
     // build the tr/row contents
-    return React.createElement('tr', { role: 'row' }, this.buildRowContents(items, width, onRenderItem));
+    return (
+      <tr
+        role={ 'row' }
+        key={ this._gridIndex + '-row' }>
+        { this._buildRowContents() }
+      </tr>
+    );
   }
 
   /**
-   * @param items - the items to turn into a grid
-   * @param width - the width of the grid (e.g. number of columns)
-   * @param onRenderItem - custom renderer for the individual items
+   * builds the contents of the row
    * @returns {JSX.Element[]} - the array of elements that make up the cells for a row of the grid
    */
-  private buildRowContents(items: any[], width: number, onRenderItem: (item: any, index: number) => JSX.Element): JSX.Element[] {
+  private _buildRowContents(): JSX.Element[] {
+    let {
+      items,
+      width
+    } = this.props;
     let elements: JSX.Element[] = [];
 
     // Walk across the children building the cells
     while (this._gridIndex < items.length) {
-      elements.push(this.buildCell(items[this._gridIndex], onRenderItem));
+      elements.push(this._buildCell(items[this._gridIndex]));
       this._gridIndex++;
 
       // if we are at a row boundry break
@@ -141,14 +118,24 @@ export class Grid extends BaseComponent<IGridProps, IGridState> {
   }
 
   /**
-   *
-   * @param items - the items to turn into a grid
-   * @param onRenderItem - custom renderer for the individual items
+   * builds a cell
+   * NOTE: Make sure your items have role="gridcell"!
    * @returns {JSX.Element} - the cell elements
    */
-  private buildCell(item: any[], onRenderItem: (item: any, index: number) => JSX.Element): JSX.Element {
+  private _buildCell(item: any): JSX.Element {
+    let {
+      onRenderItem
+    } = this.props;
 
     // build the column/td/item
-    return React.createElement('td', { role: 'presentation' }, onRenderItem(item, this._gridIndex));
+    return (
+      <td
+        role={ 'presentation' }
+        key={ this._gridIndex + '-cell' }
+        /*className={ styles.cell }*/
+        style={ { padding: '0px' } }>
+        { onRenderItem(item, this._gridIndex) }
+      </td>
+    );
   }
 }
