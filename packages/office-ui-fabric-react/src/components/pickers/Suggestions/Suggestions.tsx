@@ -41,7 +41,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
         </CommandButton>
         { this.props.showRemoveButton ? (
           <IconButton
-            iconProps={ { iconName: 'Cancel' } }
+            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
             title='Remove'
             ariaLabel='Remove'
             onClick={ onRemoveItem }
