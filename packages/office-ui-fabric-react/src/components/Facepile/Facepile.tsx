@@ -211,7 +211,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => (
-          <Icon iconName='addFriend' />
+          <Icon iconName='AddFriend' />
         ) }
       />
     </BaseButton>;
