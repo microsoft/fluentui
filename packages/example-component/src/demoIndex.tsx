@@ -24,4 +24,4 @@ createApp([
       <ExampleComponent style={ { background: 'red' } } />
     ))
 
-], false);
+]);

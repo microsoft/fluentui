@@ -41,7 +41,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     let breadCrumbData: IBreadCrumbData = {
       props: this.props,
       renderedItems: this.props.items.slice(0, this.props.maxDisplayedItems),
-      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems + 1)
+      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems)
     };
 
     return (
@@ -88,23 +88,23 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
       >
         <FocusZone direction={ FocusZoneDirection.horizontal } >
           <ol className={ css('ms-Breadcrumb-list', styles.list) }>
-            { renderedOverflowItems && renderedOverflowItems.length && (
+            { renderedOverflowItems && renderedOverflowItems.length !== 0 && (
               <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <IconButton
                   className={ css('ms-Breadcrumb-overflowButton', styles.overflowButton) }
-                  iconProps={ { iconName: 'more' } }
+                  iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  menuIconProps={ { iconName: null } }
+                  menuIconProps={ null }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
                   } }
                 />
-                <Icon
-                  className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-                  iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
-                />
+                { Icon({
+                  className: css('ms-Breadcrumb-chevron', styles.chevron),
+                  iconName: getRTL() ? 'ChevronLeft' : 'ChevronRight'
+                }) }
               </li>
             ) }
             { renderedItems.map(
