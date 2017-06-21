@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Add FabricPerformance utility to measure performance",
+      "comment": "Instrumenting the performance of css registration.",
       "type": "patch"
     }
   ],
