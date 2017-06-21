@@ -1,6 +1,18 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 20 Jun 2017 10:22:47 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Jun 2017 00:45:41 GMT and should not be manually modified.
+
+## 0.11.0
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Minor changes
+
+- Consume latest version of createApp 
+
+### Patches
+
+- General class exports now register on demand, resulting in less unneeded evaluation of classnames.
+- Fixing circular dependency between @uifabric/styling/utilities and @uifabric/styling/styles
 
 ## 0.10.5
 Tue, 20 Jun 2017 10:22:47 GMT
