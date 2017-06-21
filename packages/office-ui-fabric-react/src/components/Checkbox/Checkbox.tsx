@@ -113,7 +113,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     }
   }
 
-
   @autobind
   private _onLabelKeyDown(ev: React.KeyboardEvent<HTMLLabelElement>): void {
     if (ev.which === KeyCodes.space) {
