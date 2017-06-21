@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Jun 2017 10:22:47 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Jun 2017 00:45:41 GMT and should not be manually modified.
+
+## 4.9.1
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Patches
+
+- Icons: now with less redundant evaluation of styling, which improves render performance.
+- Panel: Fixed header ID value
 
 ## 4.9.0
 Tue, 20 Jun 2017 10:22:47 GMT

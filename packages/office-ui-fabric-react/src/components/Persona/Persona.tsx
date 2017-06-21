@@ -10,7 +10,7 @@ import {
   IRenderFunction
 } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { Image, ImageFit, ImageLoadState } from '../../Image';
+import { Image, ImageFit, ImageLoadState, ImageCoverStyle } from '../../Image';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -159,6 +159,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
             <Image
               className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
+              coverStyle={ ImageCoverStyle.portrait }
               src={ imageUrl }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }

@@ -53,7 +53,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.prevYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronRight' : 'chevronLeft' } />
+              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
             </span>
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
@@ -62,7 +62,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.nextYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronLeft' : 'chevronRight' } />
+              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
@@ -96,12 +96,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _onSelectNextYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
-  };
+  }
 
   private _onSelectPrevYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
-  };
+  }
 
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;
