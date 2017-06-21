@@ -17,6 +17,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
   position: relative;
   display: flex;
   align-items: center;
+  border: 1px solid transparent; // Overriden when focused
 
   &:hover,
   &:active,
@@ -110,13 +111,13 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 }
 
 .root.isInFocus {
-  outline: 1px solid $focusedBorderColor;
+  border: 1px solid $focusedBorderColor;
   @media screen and (-ms-high-contrast: active) {
-    outline-color: $ms-color-white;
+    border-color: $ms-color-white;
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
-    outline-color: $ms-color-black;
+    border-color: $ms-color-black;
   }
 }
 
