@@ -16,7 +16,8 @@ export interface IPerfSummary {
 }
 
 const now: () => number = () => (typeof performance !== 'undefined' && !!performance.now) ? performance.now() : Date.now();
-const ResetInterval = 3 * 60 * 1000; // auto reset every 3 minutes
+
+const RESET_INTERVAL = 3 * 60 * 1000; // auto reset every 3 minutes
 
 export class FabricPerformance {
   public static summary: IPerfSummary = {};
@@ -50,12 +51,12 @@ export class FabricPerformance {
   public static reset() {
     FabricPerformance.summary = {};
     FabricPerformance._async.clearTimeout(FabricPerformance._timeoutId);
-    FabricPerformance.setPeriodicalReset();
+    FabricPerformance.setPeriodicReset();
   }
 
-  public static setPeriodicalReset(): void {
-    FabricPerformance._timeoutId = FabricPerformance._async.setTimeout(() => FabricPerformance.reset(), ResetInterval);
+  public static setPeriodicReset(): void {
+    FabricPerformance._timeoutId = FabricPerformance._async.setTimeout(() => FabricPerformance.reset(), RESET_INTERVAL);
   };
 }
 
-FabricPerformance.setPeriodicalReset();
+FabricPerformance.setPeriodicReset();

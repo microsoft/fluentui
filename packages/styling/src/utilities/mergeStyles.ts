@@ -33,12 +33,14 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
 
   _parseArgs(args);
 
-  let rulesObject: IStyle;
+  let rulesObject: IStyle = null;
   
-  FabricPerformance.measure('glamor.css', () => {
-    rulesObject = rules.length ? css(...rules) : null;
-  });
-
+  if (rules.length) {
+    FabricPerformance.measure('glamor.css', () => {
+      rulesObject = css(...rules);
+    });
+  }
+  
   if (classes.length) {
     if (rulesObject) {
       classes.push(rulesObject.toString());
