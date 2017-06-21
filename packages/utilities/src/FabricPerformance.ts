@@ -1,3 +1,5 @@
+import { Async } from './Async';
+
 export interface IPerfData {
   duration: number;
   timeStamp: number;
@@ -14,10 +16,12 @@ export interface IPerfSummary {
 }
 
 const now: () => number = () => (typeof performance !== 'undefined' && !!performance.now) ? performance.now() : Date.now();
+const ResetInterval = 3 * 60 * 1000; // auto reset every 3 minutes
 
 export class FabricPerformance {
   public static summary: IPerfSummary = {};
-
+  private static _async: Async = new Async();
+  private static _timeoutId: number;
   /**
    * Measures execution time of the given syncronous function. If the same logic is executed multiple times, 
    * each individual measurement will be collected as well the overall numbers.
@@ -45,5 +49,13 @@ export class FabricPerformance {
 
   public static reset() {
     FabricPerformance.summary = {};
+    FabricPerformance._async.clearTimeout(FabricPerformance._timeoutId);
+    FabricPerformance.setPeriodicalReset();
   }
+
+  public static setPeriodicalReset(): void {
+    FabricPerformance._timeoutId = FabricPerformance._async.setTimeout(() => FabricPerformance.reset(), ResetInterval);
+  };
 }
+
+FabricPerformance.setPeriodicalReset();
