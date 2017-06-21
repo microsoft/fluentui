@@ -41,7 +41,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     let breadCrumbData: IBreadCrumbData = {
       props: this.props,
       renderedItems: this.props.items.slice(0, this.props.maxDisplayedItems),
-      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems + 1)
+      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems)
     };
 
     return (
