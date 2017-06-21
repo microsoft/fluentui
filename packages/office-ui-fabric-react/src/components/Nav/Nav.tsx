@@ -110,7 +110,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         { link.iconClassName && (
           <Icon
             className={ css(link.iconClassName, styles.iconLink) }
-            iconName='iconLink'
+            iconName='IconLink'
           />
         ) }
         { this.props.onRenderLink(link) }
@@ -153,7 +153,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           >
             <Icon
               className={ css('ms-Nav-chevron', styles.chevronIcon, link.isExpanded) }
-              iconName='chevronDown'
+              iconName='ChevronDown'
             />
           </button> : null
         ) }
@@ -204,7 +204,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
                 styles.chevronIcon,
                 isGroupExpanded && styles.chevronIsExpanded
               ) }
-              iconName='chevronDown'
+              iconName='ChevronDown'
             />
             { group.name }
           </button> : null)
