@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 21 Jun 2017 00:45:41 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Jun 2017 01:52:48 GMT and should not be manually modified.
+
+## 0.11.1
+Wed, 21 Jun 2017 01:52:48 GMT
+
+### Patches
+
+- Instrumenting the performance of css registration.
 
 ## 0.11.0
 Wed, 21 Jun 2017 00:45:41 GMT
