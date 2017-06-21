@@ -62,6 +62,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
   align-items: center;
   margin: 0 -4px;
   cursor: pointer;
+  @include focus-border();
 
   > * {
     margin: 0 4px;
