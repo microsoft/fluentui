@@ -12,7 +12,6 @@ import { IconButton } from '../../Button';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
-import { TooltipHost } from '../../Tooltip';
 
 import * as stylesImport from './Breadcrumb.scss';
 const styles: any = stylesImport;
@@ -125,11 +124,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
-    return (
-      <TooltipHost title={ item.text } >
-        { this._defaultRenderItem(item) }
-      </TooltipHost>
-    );
+    return this._defaultRenderItem(item);
   }
 
   @autobind
