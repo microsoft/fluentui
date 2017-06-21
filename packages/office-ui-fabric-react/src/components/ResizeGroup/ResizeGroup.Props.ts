@@ -33,11 +33,10 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HT
   onReduceData: (prevData: any) => any;
 
   /**
-   * Function to be called when the measuring pass is complete and renderedData is shown on screen.
-   * It is only called when the data used to render does not match that of the last render.
-   * This is not called for renders of data in a hidden div used for measuring.
+   * Function to be called every time data is rendered. It provides the data that was actually rendered.
    * A use case would be adding telemetry when a particular control is shown in an overflow well or
-   * dropped as a result of onReduceData.
+   * dropped as a result of onReduceData or to count the number of renders that an implementation of
+   * onReduceData triggers.
    */
-  onNewDataRendered?: (renderedData: any) => void;
+  dataDidRender?: (renderedData: any) => void;
 }

@@ -23,20 +23,20 @@ function getWrapperWithMocks(data: ITestScalingData = { scalingIndex: 5 },
   onReduceData: (data: ITestScalingData) => ITestScalingData = onReduceScalingData) {
   const onReduceDataSpy = sinon.spy(onReduceData);
   const onRenderDataSpy = sinon.spy();
-  const onNewDataRenderedSpy = sinon.spy();
+  const dataDidRenderSpy = sinon.spy();
 
   let wrapper = mount<IResizeGroupProps, IResizeGroupState>(<ResizeGroup
     data={ data }
     onReduceData={ onReduceDataSpy }
     onRenderData={ onRenderDataSpy }
-    onNewDataRendered={ onNewDataRenderedSpy }
+    dataDidRender={ dataDidRenderSpy }
   />);
 
   return {
     wrapper,
     onReduceDataSpy,
     onRenderDataSpy,
-    onNewDataRenderedSpy,
+    dataDidRenderSpy,
     ...getMeasurementMocks(wrapper)
   };
 }
@@ -117,13 +117,13 @@ describe('ResizeGroup', () => {
   it('remeasures if props are updated', () => {
     const onReduceData = sinon.spy();
     const onRenderData = sinon.spy();
-    const onNewDataRendered = sinon.spy();
+    const dataDidRender = sinon.spy();
 
     let wrapper = mount(<ResizeGroup
       data={ { a: 1 } }
       onReduceData={ onReduceData }
       onRenderData={ onRenderData }
-      onNewDataRendered={ onNewDataRendered }
+      dataDidRender={ dataDidRender }
     />);
 
     let newData = { a: 2 };
@@ -135,8 +135,8 @@ describe('ResizeGroup', () => {
     expect(onRenderData.callCount).to.equal(4);
 
     // it should call onNewDataRendered with new properties
-    expect(onNewDataRendered.callCount).to.equal(2);
-    expect(onNewDataRendered.getCall(1).args[0]).to.deep.equal(newData);
+    expect(dataDidRender.callCount).to.equal(2);
+    expect(dataDidRender.getCall(1).args[0]).to.deep.equal(newData);
   });
 
   it('calls onReduceData when contents do not fit', () => {
@@ -309,8 +309,9 @@ describe('ResizeGroup', () => {
       onReduceDataSpy,
       rootGetClientRectMock,
       measuredGetClientRectMock,
-      onNewDataRenderedSpy } = getWrapperWithMocks(data, onReduceScalingData);
+      dataDidRenderSpy } = getWrapperWithMocks(data, onReduceScalingData);
 
+    dataDidRenderSpy.reset();
     onReduceDataSpy.reset();
     measuredGetClientRectMock.reset();
     rootGetClientRectMock.reset();
@@ -329,8 +330,13 @@ describe('ResizeGroup', () => {
       renderedData: { scalingIndex: 5 },
       shouldMeasure: false
     });
-    expect(onNewDataRenderedSpy.callCount).to.equal(2);
-    expect(onNewDataRenderedSpy.getCall(1).args[0]).to.deep.equal({ scalingIndex: 5 });
+
+    // Each measure triggers a render, but the rendered contents only change after the measurement phase completes.
+    expect(dataDidRenderSpy.callCount).to.equal(4);
+    expect(dataDidRenderSpy.getCall(0).args[0]).to.deep.equal({ scalingIndex: 7 });
+    expect(dataDidRenderSpy.getCall(1).args[0]).to.deep.equal({ scalingIndex: 7 });
+    expect(dataDidRenderSpy.getCall(2).args[0]).to.deep.equal({ scalingIndex: 7 });
+    expect(dataDidRenderSpy.getCall(3).args[0]).to.deep.equal({ scalingIndex: 5 });
   });
 
   it('renders no more than twice when everything fits', () => {
@@ -408,20 +414,20 @@ describe('ResizeGroup', () => {
     expect(wrapper.state().renderedData).to.deep.equal(data);
   });
 
-  it('calls onNewDataRendered for the initial render', () => {
+  it('calls dataDidRender for the initial render', () => {
     const initialData = { content: 7 };
-    const onNewDataRendered = sinon.spy();
+    const dataDidRender = sinon.spy();
 
     const wrapper = mount<IResizeGroupProps, IResizeGroupState>(
       <ResizeGroup
         data={ initialData }
         onReduceData={ onReduceScalingData }
         onRenderData={ sinon.spy() }
-        onNewDataRendered={ onNewDataRendered }
+        dataDidRender={ dataDidRender }
       />
     );
 
-    expect(onNewDataRendered.callCount).to.equal(1);
-    expect(onNewDataRendered.getCall(0).args[0]).to.deep.equal(initialData);
+    expect(dataDidRender.callCount).to.equal(1);
+    expect(dataDidRender.getCall(0).args[0]).to.deep.equal(initialData);
   });
 });
