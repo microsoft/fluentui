@@ -101,9 +101,9 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
         { ...modalProps }
-        isDarkOverlay={ isDarkOverlay ? isDarkOverlay : modalProps.isDarkOverlay }
-        isBlocking={ isBlocking ? isBlocking : modalProps.isBlocking }
-        isOpen={ isOpen ? isOpen : !hidden }
+        isDarkOverlay={ isDarkOverlay !== undefined ? isDarkOverlay : modalProps.isDarkOverlay }
+        isBlocking={ isBlocking !== undefined ? isBlocking : modalProps.isBlocking }
+        isOpen={ isOpen !== undefined ? isOpen : !hidden }
         className={ css('ms-Dialog', className ? className : modalProps.className) }
         containerClassName={ css(styles.main, containerClassName ? containerClassName : modalProps.containerClassName) }
         onDismiss={ onDismiss ? onDismiss : modalProps.onDismiss }
@@ -124,9 +124,9 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
           title={ title }
           subText={ subText }
           {...dialogContentProps}
-          showCloseButton={ isBlocking ? !isBlocking : !modalProps.isBlocking }
+          showCloseButton={ isBlocking !== undefined ? !isBlocking : !modalProps.isBlocking }
           topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps.topButtonsProps }
-          type={ type ? type : dialogContentProps.type }
+          type={ type !== undefined ? type : dialogContentProps.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps.onDismiss }
           className={ css(contentClassName ? contentClassName : dialogContentProps.className) }
         >
