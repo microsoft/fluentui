@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Add FrabricPerformance utility to measure performance",
+      "comment": "Add FabricPerformance utility to measure performance",
       "type": "minor"
     }
   ],
