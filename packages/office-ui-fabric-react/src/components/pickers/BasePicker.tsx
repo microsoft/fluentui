@@ -365,6 +365,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           }
           this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
           this.forceUpdate();
+        } else {
+          this.onBackspace(ev);
         }
         break;
 
