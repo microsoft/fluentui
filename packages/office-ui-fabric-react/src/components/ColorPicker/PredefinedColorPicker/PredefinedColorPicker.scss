@@ -32,6 +32,7 @@
 .item {
   //padding: 0px 2px;
   padding: 0px;
+  overflow: visible;
 
   &.itemIsSelected {
     &:hover .svg,
@@ -79,12 +80,14 @@
   }
 }*/
 
-.colorPickerContianer {
+.colorPickerContainer {
   clear: both;
+  display: inline-block;
 }
 
 .header {
   font-weight: $ms-font-weight-semibold;
+  white-space: nowrap;
   background: none;
   border: none;
   height: 36px;

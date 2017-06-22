@@ -31,7 +31,7 @@ export interface IPredefinedColorPickerProps {
    * Icon props for the color picker. If given the color picker
    * will render inside of a menu
    */
-  colorPickerButtonIconProps?: IIconProps;
+  colorPickerButtonProps?: IButtonProps;
 
   /**
    * Should the icon color be updated to align

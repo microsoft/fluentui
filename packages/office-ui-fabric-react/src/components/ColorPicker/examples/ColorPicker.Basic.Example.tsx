@@ -62,7 +62,7 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
         </div>
         <div>Simple expandable predefiend color picker with multiple sections:</div>
         <PredefinedColorPicker
-          colorPickerButtonIconProps={ { iconName: 'fontColor' } }
+          colorPickerButtonProps={ { iconProps: { iconName: 'color' }, menuIconProps: { iconName: 'add' } } }
           width={ 4 }
           cellShape={ CellShape.square }
           colorPickerItems={
@@ -86,7 +86,7 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
           } />
         <div>Simple expandable predefiend color picker with multiple sections that updates it's icon color:</div>
         <PredefinedColorPicker
-          colorPickerButtonIconProps={ { iconName: 'fontColor' } }
+          colorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
           updateButtonIconWithColor={ true }
           width={ 4 }
           cellShape={ CellShape.circle }

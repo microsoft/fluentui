@@ -60,9 +60,9 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   }
 
   public render() {
-    let { colorPickerButtonIconProps } = this.props;
+    let { colorPickerButtonProps } = this.props;
 
-    let renderElement = colorPickerButtonIconProps !== undefined ? this._buttonToRender() : this._fullColorPickerToRender();
+    let renderElement = colorPickerButtonProps !== undefined ? this._buttonToRender() : this._fullColorPickerToRender();
 
     return (renderElement);
   }
@@ -74,7 +74,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   private _buttonToRender() {
     let { selectedIndex } = this.state;
     let {
-      colorPickerButtonIconProps,
+      colorPickerButtonProps,
       colorPickerItems,
       updateButtonIconWithColor,
       width
@@ -96,7 +96,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     return (
       <div ref={ this._resolveRef('_buttonWrapper') }>
         <DefaultButton
-          iconProps={ colorPickerButtonIconProps }
+          { ...colorPickerButtonProps }
           style={ { color: colorToSet && colorToSet } }
           onClick={ this._onClickButton }
         >
@@ -253,11 +253,11 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         aria-setsize={ setSize && setSize }
         className={ css(
           'ms-Dropdown-item', styles.item, {
-            ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index
+            ['is-selected ' + styles.itemIsSelected]: (item.type === ColorPickerItemType.Cell && this.state.selectedIndex === item.index)
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='gridcell'
+        role={ item.type === ColorPickerItemType.Cell ? 'gridcell' : null }
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }
@@ -340,8 +340,9 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         isBeakVisible={ false }
         gapSpace={ 0 }
         doNotLayer={ false }
+        role={ 'menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        className={ styles.colorPickerContianer }
+        className={ styles.colorPickerContainer }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ true }>
