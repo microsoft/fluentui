@@ -144,7 +144,6 @@ $field-error-color: $errorTextColor;
 }
 
 .errorIcon {
-  vertical-align: middle;
   font-size: $ms-font-size-m;
   @include margin-right(5px);
 }
@@ -254,6 +253,8 @@ $field-error-color: $errorTextColor;
   color: $field-error-color;
   margin: 0;
   padding-top: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .invalid,
