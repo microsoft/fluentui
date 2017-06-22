@@ -44,6 +44,14 @@
     }
   }
 
+  &.validationError {
+    // Setting global values here to override persona's normal behavior in the error version
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-redDark;
+      border-bottom: 2px dotted $ms-color-redDark;
+    }
+  }
+
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;
   }
