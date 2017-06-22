@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   BaseComponent,
   IDisposable,
@@ -191,7 +192,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       <FocusZone
         {...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
-        ref='root'
+        ref={ this._onRootRef }
         role='row'
         aria-label={ ariaLabel }
         className={ css(
@@ -283,8 +284,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(): boolean {
-    if (this.refs.root) {
-      this.refs.root.focus();
+    const {
+      root
+    } = this.refs;
+
+    if (root) {
+      root.focus();
       return true;
     }
 
@@ -318,6 +323,19 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const { selection } = this.props;
 
     selection.toggleIndexSelected(this.props.itemIndex);
+  }
+
+  private _onRootRef(root: FocusZone) {
+    const {
+      refs
+    } = this;
+
+    if (root) {
+      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      refs.root = ReactDOM.findDOMNode(root) as HTMLElement;
+    } else {
+      refs.root = undefined;
+    }
   }
 
   private _getRowDragDropOptions(): IDragDropOptions {
