@@ -144,8 +144,8 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   directionalHintFixed?: boolean;
 
   /**
-   * To be used when expanding the content dynamically, such as when using animations or based upon user interaction.
-   * Specify the final height of the content. Caution:
+   * Specify the final height of the content.
+   * To be used when expanding the content dynamically so that callout can adjust its position.
    */
   finalHeight?: number;
 

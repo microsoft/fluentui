@@ -48,7 +48,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   onDismiss?: (ev?: any) => void;
 
   /**
-   * Length of expanded card delay
+   * Time in ms when expanded card should open
    * @default 1000
    */
   expandedCardOpenDelay?: number;
