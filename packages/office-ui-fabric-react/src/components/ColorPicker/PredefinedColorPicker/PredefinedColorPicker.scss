@@ -8,17 +8,7 @@
   width: 20px;
   height: 20px;
   padding: 4px;
-/*
-  &:hover {
-    border: 4px solid $ms-color-neutralTertiaryAlt;
-    width: 12px;
-    height: 12px;
-  }
 
-  &:active{
-    border: 4px solid #969696;
-  }
-*/
   @include highContrastAdjust();
 }
 
@@ -64,7 +54,6 @@
 }
 
 .cell {
-  //padding: 0px 2px;
   padding: 0px;
   overflow: visible;
 
@@ -108,12 +97,6 @@
   }
 }
 
-/*.svg.circle {
-  &:hover,:active {
-    border-radius: 100%;
-  }
-}*/
-
 .colorPickerContainer {
   clear: both;
   display: inline-block;
@@ -138,15 +121,5 @@
   background-color: $menuDividerColor;
   position: relative;
 }
-
-// .menuItem {
-//     display: inline-block;
-//     width: 24px;
-//     height: 40px;
-//     line-height: 40px;
-//     text-align: center;
-//     vertical-align: middle;
-//     cursor: pointer;
-// }
 
 
