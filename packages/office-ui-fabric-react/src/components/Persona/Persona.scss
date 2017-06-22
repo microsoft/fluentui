@@ -359,15 +359,14 @@ $ms-Persona-presenceSizeXl: 28px;
     border: 2px solid $ms-color-white;
     @include ms-left(14px);
     top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
     display: none;
-
-    &:after,
-    &:before {
-      display: none;
-    }
   }
 
   .primaryText {
@@ -387,7 +386,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       height: 16px;
       line-height: 16px;
-      overflow: visible;
+      overflow-x: hidden;
     }
   }
 }
@@ -424,15 +423,14 @@ $ms-Persona-presenceSizeXl: 28px;
     border: 2px solid $ms-color-white;
     @include ms-left(20px);
     top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
     display: none;
-
-    &:after,
-    &:before {
-      display: none;
-    }
   }
 
 
@@ -453,7 +451,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       line-height: 16px;
       height: 16px;
-      overflow: visible;
+      overflow-x: hidden;
     }
   }
 }
@@ -502,7 +500,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       height: 16px;
       line-height: 16px;
-      overflow: visible;
+      overflow-x: hidden;
     }
   }
 }
