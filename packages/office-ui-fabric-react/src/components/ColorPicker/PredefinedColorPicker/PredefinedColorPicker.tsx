@@ -99,8 +99,8 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
           { ...colorPickerButtonProps }
           style={ { color: colorToSet && colorToSet } }
           onClick={ this._onClickButton }
+          menuIconProps={ !colorPickerButtonProps.menuIconProps ? { iconName: 'chevronDown' } : colorPickerButtonProps.menuIconProps }
         >
-          <Icon iconName={ 'chevronDown' } />
         </DefaultButton>
         { this.state.isOpen && this._onRenderContainer() }
       </div>
