@@ -89,6 +89,12 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {
     this._measureItems();
+
+    if (this.state.renderedData) {
+      if (this.props.dataDidRender) {
+        this.props.dataDidRender(this.state.renderedData);
+      }
+    }
   }
 
   private _onResize() {
