@@ -27,7 +27,8 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   public static defaultProps = {
     cellShape: CellShape.circle,
     updateButtonIconWithColor: false,
-    selectedId: null
+    selectedId: null,
+    disabled: false
   };
 
   private _id: string;
@@ -44,7 +45,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
     this.state = {
       selectedIndex: props.selectedId && this._getSelectedIndex(props.colorPickerItems, props.selectedId),
-      isOpen: false
+      expanded: false
     };
   }
 
@@ -102,7 +103,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
           menuIconProps={ !colorPickerButtonProps.menuIconProps ? { iconName: 'chevronDown' } : colorPickerButtonProps.menuIconProps }
         >
         </DefaultButton>
-        { this.state.isOpen && this._onRenderContainer() }
+        { (!this.props.disabled && this.state.expanded) && this._onRenderContainer() }
       </div>
     );
   }
@@ -205,8 +206,8 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   private _getFirstExecutableItemsPerChunk(): IColorPickerItemProps[] {
     // make sure every item has an index, the filter
     // the results so that you only get the executable items,
-    // finally filter those items down to just the items that start
-    // a chunk
+    // finally filter those items down to just the items that are
+    // either the start of a grid or an menu item
     return (
       this.props.colorPickerItems.map((item, index) => { return { ...item, index }; })
         .filter(item => (item.type === ColorPickerItemType.Cell || item.type === ColorPickerItemType.MenuItem))
@@ -253,22 +254,41 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         data-is-focusable={ true }
         aria-posinset={ !isCell ? (posInSet && posInSet) : null }
         aria-setsize={ !isCell ? (setSize && setSize) : null }
+        aria-disabled={ this.props.disabled || item.disabled }
         className={ css(
           'ms-Dropdown-item',
           (isCell ? styles.cell : styles.item),
           { ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index) },
         ) }
         onClick={ () => this._onItemClick(item.index) }
+        onMouseOver={ () => this._onItemHover(item) }
         role={ isCell ? 'gridcell' : this.props.colorPickerButtonProps ? 'menuitem' : 'button' }
         aria-selected={ isCell ? (this.state.selectedIndex === item.index ? 'true' : 'false') : null }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }
-      > { this._onRenderOption(item) }</CommandButton>
+      >
+        { this._onRenderOption(item) }
+      </CommandButton>
     );
   }
 
   @autobind
+  private _onItemHover(item: IColorPickerItemProps) {
+    if (this.props.disabled || item.disabled) {
+      return;
+    }
+
+    if (this.props.onCellHovered) {
+      this.props.onCellHovered(item.color);
+    }
+  }
+
+  @autobind
   private _onItemClick(index: number) {
+    if (this.props.disabled || this.props.colorPickerItems[index].disabled) {
+      return;
+    }
+
     if (index >= 0 && index < this.props.colorPickerItems.length && index !== this.state.selectedIndex) {
       if (this.props.onColorChanged) {
         this.props.onColorChanged(this.props.colorPickerItems[index].color);
@@ -276,20 +296,24 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
       this.setState({
         selectedIndex: index,
-        isOpen: false
+        expanded: false
       });
     } else if (index === this.state.selectedIndex) {
       this.setState({
         selectedIndex: -1,
-        isOpen: false
+        expanded: false
       });
     }
   }
 
   @autobind
   private _onClickButton() {
+    if (this.props.disabled) {
+      return;
+    }
+
     this.setState({
-      isOpen: !this.state.isOpen
+      expanded: this.props.disabled ? false : !this.state.expanded
     });
   }
 
@@ -331,7 +355,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   @autobind
   private _onDismiss() {
     this.setState({
-      isOpen: false
+      expanded: false
     });
   }
 }
