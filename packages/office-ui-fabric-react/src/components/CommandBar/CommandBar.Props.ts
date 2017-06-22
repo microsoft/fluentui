@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu/index';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 
 export interface ICommandBar {
   /**
@@ -8,7 +9,7 @@ export interface ICommandBar {
   focus(): void;
 }
 
-export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement>, IWithResponsiveModeState {
   /**
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
