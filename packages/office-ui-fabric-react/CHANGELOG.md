@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 21 Jun 2017 00:45:41 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Jun 2017 10:13:03 GMT and should not be manually modified.
+
+## 4.9.2
+Thu, 22 Jun 2017 10:13:03 GMT
+
+### Patches
+
+- Check: reduced size of selection check background by 2px
+- Breadcrumb: Fixed overflow logic and extra icon
+- Dropdown: fixed bug that didn't allow operating Dropdown as a controlled component
+- Fix Persona control DOM reflow by passing ImageCoverStyle to Image control
+- Dialog: Reworked deprecation logic to fix warnings
+- Toggle: No longer triggers form submission
 
 ## 4.9.1
 Wed, 21 Jun 2017 00:45:41 GMT
