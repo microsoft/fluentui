@@ -55,6 +55,11 @@ export interface IPredefinedColorPickerProps {
  * Callback issued when the user focuses a color cell
  */
   onCellFocused?: (color: string) => void;
+
+  /**
+   * Is this color Picker disabled?
+   */
+  disabled?: boolean;
 }
 
 export interface IColorPickerItemProps {
@@ -91,6 +96,17 @@ export interface IColorPickerItemProps {
    * the type is MenuItem
    */
   menuItemButtonProps?: IButtonProps;
+
+  /**
+   * The menu item icon props. This value is only used if
+   * the type is MenuItem
+   */
+  menuItemIconProps?: IIconProps;
+
+  /**
+   * Is this individual item disabled?
+   */
+  disabled?: boolean;
 }
 
 export enum ColorPickerItemType {
