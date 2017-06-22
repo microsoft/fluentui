@@ -210,7 +210,13 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     return (
       this.props.colorPickerItems.map((item, index) => { return { ...item, index }; })
         .filter(item => (item.type === ColorPickerItemType.Cell || item.type === ColorPickerItemType.MenuItem))
-        .filter((item, filteredIndex, items) => { return (filteredIndex === 0 || (item.index - items[filteredIndex - 1].index !== 1)); }));
+        .filter((item, filteredIndex, items) => {
+          return (
+            filteredIndex === 0 ||
+            item.type === ColorPickerItemType.MenuItem ||
+            (item.index - items[filteredIndex - 1].index !== 1)
+          );
+        }));
   }
 
   // Render separator
@@ -245,8 +251,8 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         key={ item.id }
         data-index={ item.index }
         data-is-focusable={ true }
-        aria-posinset={ posInSet && posInSet }
-        aria-setsize={ setSize && setSize }
+        aria-posinset={ !isCell ? (posInSet && posInSet) : null }
+        aria-setsize={ !isCell ? (setSize && setSize) : null }
         className={ css(
           'ms-Dropdown-item',
           (isCell ? styles.cell : styles.item),
@@ -254,7 +260,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         ) }
         onClick={ () => this._onItemClick(item.index) }
         role={ isCell ? 'gridcell' : this.props.colorPickerButtonProps ? 'menuitem' : 'button' }
-        aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
+        aria-selected={ isCell ? (this.state.selectedIndex === item.index ? 'true' : 'false') : null }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }
       > { this._onRenderOption(item) }</CommandButton>
