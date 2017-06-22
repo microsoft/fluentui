@@ -250,8 +250,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       onRenderDetailsHeader = this._onRenderDetailsHeader
     } = this.props;
 
-    const DetailsHeader = (props: IDetailsHeaderProps) => onRenderDetailsHeader(props, this._onRenderDetailsHeader);
-
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
@@ -271,27 +269,25 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly='true'>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
-            { isHeaderVisible && (
-              <DetailsHeader
-                componentRef={ this._resolveRef('_header') }
-                selectionMode={ selectionMode }
-                layoutMode={ layoutMode }
-                selection={ selection }
-                columns={ adjustedColumns }
-                onColumnClick={ onColumnHeaderClick }
-                onColumnContextMenu={ onColumnHeaderContextMenu }
-                onColumnResized={ this._onColumnResized }
-                onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
-                onColumnAutoResized={ this._onColumnAutoResized }
-                groupNestingDepth={ groupNestingDepth }
-                isAllCollapsed={ isCollapsed }
-                onToggleCollapseAll={ this._onToggleCollapse }
-                ariaLabel={ ariaLabelForListHeader }
-                ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-                ariaLabelForSelectionColumn={ ariaLabelForSelectionColumn }
-                selectAllVisibility={ selectAllVisibility }
-              />
-            ) }
+            { isHeaderVisible && onRenderDetailsHeader({
+              componentRef: this._resolveRef('_header'),
+              selectionMode: selectionMode,
+              layoutMode: layoutMode,
+              selection: selection,
+              columns: adjustedColumns,
+              onColumnClick: onColumnHeaderClick,
+              onColumnContextMenu: onColumnHeaderContextMenu,
+              onColumnResized: this._onColumnResized,
+              onColumnIsSizingChanged: this._onColumnIsSizingChanged,
+              onColumnAutoResized: this._onColumnAutoResized,
+              groupNestingDepth: groupNestingDepth,
+              isAllCollapsed: isCollapsed,
+              onToggleCollapseAll: this._onToggleCollapse,
+              ariaLabel: ariaLabelForListHeader,
+              ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
+              ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+              selectAllVisibility: selectAllVisibility
+            }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
