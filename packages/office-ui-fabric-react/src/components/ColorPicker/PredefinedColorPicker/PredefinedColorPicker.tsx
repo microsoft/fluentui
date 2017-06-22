@@ -7,13 +7,13 @@ import {
   getId
 } from '../../../Utilities';
 import { IPredefinedColorPickerProps, IColorPickerItemProps, ColorPickerItemType, CellShape } from './PredefinedColorPicker.Props';
-import { DirectionalHint, ContextualMenu, ContextualMenuItemType, IContextualMenuItem, IContextualMenuProps } from '../../../ContextualMenu';
+import { DirectionalHint } from '../../../ContextualMenu';
 import { getColorFromString } from '../../../utilities/color/colors';
 import { Grid } from '../../../utilities/Grid/Grid';
 import { DefaultButton, CommandButton } from '../../../Button';
 import { Callout } from '../../../Callout';
 import { Icon } from '../../../Icon';
-import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
+import { FocusZone } from '../../../FocusZone';
 import * as stylesImport from './PredefinedColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -102,7 +102,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
           onClick={ this._onClickButton }
           aria-haspopup={ true }
           aria-expanded={ (!this.props.disabled && this.state.expanded) ? true : false }
-          aria-disabled={ this.props.disabled }
+          disabled={ this.props.disabled }
           menuIconProps={ !colorPickerButtonProps.menuIconProps ? { iconName: 'chevronDown' } : colorPickerButtonProps.menuIconProps }
         >
         </DefaultButton>
@@ -125,68 +125,6 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   }
 
   @autobind
-  private _fullColorPickerForMenu() {
-    let { colorPickerItems } = this.props;
-    return (
-      this._onRenderItemsForMenu(colorPickerItems.map((item, index) => { return { ...item, index }; }))
-    );
-  }
-
-  @autobind
-  private _onRenderItemsForMenu(items: IColorPickerItemProps[]): IContextualMenuProps {
-    let {
-      width
-    } = this.props;
-
-    let containsNonCellItem = findIndex(items, (item => item.type !== ColorPickerItemType.Cell)) > -1;
-    let element: IContextualMenuItem[] = [];
-    this._nextIndexAfterChunk = -1;
-    let firstExecutableItemsPerChunk = containsNonCellItem ? this._getFirstExecutableItemsPerChunk() : null;
-    let shouldGetSetInfo = (firstExecutableItemsPerChunk && firstExecutableItemsPerChunk.length > 0);
-    let setSize = shouldGetSetInfo ? firstExecutableItemsPerChunk.length : null;
-
-    let index = 0;
-    while (index < items.length) {
-      let item = items[index];
-      let posInSet = shouldGetSetInfo ? this._getPositionInSet(firstExecutableItemsPerChunk, item) : null;
-      switch (item.type) {
-        case ColorPickerItemType.Divider:
-          element.push({ key: item.id, itemType: ContextualMenuItemType.Divider });
-          break;
-        case ColorPickerItemType.Header:
-          element.push({ key: item.id, name: item.label, itemType: ContextualMenuItemType.Header });
-          break;
-        case ColorPickerItemType.Cell:
-          element.push({
-            key: item.id,
-            itemType: ContextualMenuItemType.Normal,
-            data:
-            this._renderNextChuckOfCellItems(
-              items.slice(index),
-              posInSet,
-              setSize),
-            onRender: (item) => item.data
-          });
-          break;
-        default:
-          element.push({
-            key: item.id,
-            name: item.label,
-            iconProps: item.menuItemIconProps && item.menuItemIconProps,
-            ariaPosInSet: posInSet,
-            disabled: this.props.disabled || item.disabled,
-            itemType: ContextualMenuItemType.Normal
-          });
-      }
-
-      index += this._nextIndexAfterChunk > 0 ? this._nextIndexAfterChunk : 1;
-      this._nextIndexAfterChunk = -1;
-    }
-
-    return { ariaSetSize: setSize, items: element };
-  }
-
-  @autobind
   private _onRenderItems(items: IColorPickerItemProps[]) {
     let {
       width
@@ -197,12 +135,13 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
     this._nextIndexAfterChunk = -1;
     let firstExecutableItemsPerChunk = containsNonCellItem ? this._getFirstExecutableItemsPerChunk() : null;
     let shouldGetSetInfo = (firstExecutableItemsPerChunk && firstExecutableItemsPerChunk.length > 0);
+    let setSize = shouldGetSetInfo ? firstExecutableItemsPerChunk.length : null;
+    let shouldAccountForIcon = (firstExecutableItemsPerChunk && findIndex(firstExecutableItemsPerChunk, (executableItem) => (executableItem.type === ColorPickerItemType.MenuItem && executableItem.menuItemButtonProps)));
 
     let index = 0;
     while (index < items.length) {
       let item = items[index];
       let posInSet = shouldGetSetInfo ? this._getPositionInSet(firstExecutableItemsPerChunk, item) : null;
-      let setSize = shouldGetSetInfo ? firstExecutableItemsPerChunk.length : null;
       switch (item.type) {
         case ColorPickerItemType.Divider:
           element.push(this._renderSeparator(item));
@@ -217,6 +156,21 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
             setSize));
           break;
         default:
+          // does at least one of the menu items have an icon?
+          if (shouldAccountForIcon) {
+            // make sure the width styling is the same by applying a consistent className
+            if (item.menuItemButtonProps) {
+              item.menuItemButtonProps = {
+                ...item.menuItemButtonProps,
+                iconProps: { ...item.menuItemButtonProps.iconProps, className: styles.icon }
+              };
+            }
+            else {
+              // this menu item didn't have an icon so add a "spacer" icon to make the text
+              // content align. This aligns with how ContextualMenu achieves this alignmet
+              item.menuItemButtonProps = { ...item.menuItemButtonProps, iconProps: { iconName: 'customIcon', className: styles.icon } }
+            }
+          }
           element.push(this._renderOption(item, posInSet, setSize));
       }
 
@@ -289,19 +243,23 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   private _renderSeparator(item: IColorPickerItemProps): JSX.Element {
     let { index, id } = item;
     if (index > 0) {
-      return <div
-        role='separator'
-        key={ id }
-        className={ css('ms-Dropdown-divider', styles.divider) } />;
+      return this._renderHeaderOrDivider(item, 'separator', styles.divider);
     }
     return null;
   }
 
   private _renderHeader(item: IColorPickerItemProps): JSX.Element {
-    return (
-      <div className={ css('ms-Dropdown-header', styles.header) } key={ item.id }>
-        { this._onRenderOption(item) }
-      </div>);
+    return this._renderHeaderOrDivider(item, 'heading', styles.header);
+  }
+
+  private _renderHeaderOrDivider(item: IColorPickerItemProps, role: string, className: string): JSX.Element {
+    return <div
+      role={ role }
+      key={ item.id }
+      className={ className }
+    >
+      { item.label && item.label }
+    </div>;
   }
 
   // Render grid cell option
@@ -314,22 +272,24 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         { ...item.menuItemButtonProps }
         id={ id + '-list' + item.index }
         ref={ 'option' + item.index }
-        key={ item.id }
+        key={ id + item.id }
         data-index={ item.index }
         data-is-focusable={ true }
         aria-posinset={ !isCell ? (posInSet && posInSet) : null }
         aria-setsize={ !isCell ? (setSize && setSize) : null }
-        aria-disabled={ this.props.disabled || item.disabled }
+        disabled={ this.props.disabled || item.disabled }
         className={ css(
-          'ms-Dropdown-item',
+          'ms-ColorPicker-item',
           (isCell ? styles.cell : styles.item),
-          { ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index) },
+          {
+            ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index),
+            ['is-disabled ' + styles.disabled]: item.disabled && item.disabled
+          },
         ) }
-        onClick={ () => this._onItemClick(item.index) }
-        onMouseEnter={ () => this._onItemHoverOrFocused(item, this.props.onCellHovered) }
-        onMouseLeave={ () => this._clearColors([this.props.onCellHovered]) }
-        onFocus={ () => this._onItemHoverOrFocused(item, this.props.onCellFocused) }
-        onBlur={ () => this._clearColors([this.props.onCellFocused]) }
+        onClick={ () => this._onItemClick(item) }
+        onMouseEnter={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellHovered) : null }
+        onMouseLeave={ isCell ? () => this._clearColors([this.props.onCellHovered]) : null }
+        onFocus={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellFocused) : null }
         role={ isCell ? 'gridcell' : this.props.colorPickerButtonProps ? 'menuitem' : 'button' }
         aria-selected={ isCell ? (this.state.selectedIndex === item.index ? 'true' : 'false') : null }
         ariaLabel={ item.label && item.label }
@@ -352,14 +312,16 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   }
 
   @autobind
-  private _onItemClick(index: number) {
-    if (this.props.disabled || this.props.colorPickerItems[index].disabled) {
+  private _onItemClick(item: IColorPickerItemProps) {
+    if (this.props.disabled || item.disabled) {
       return;
     }
 
-    if (index >= 0 && index < this.props.colorPickerItems.length && index !== this.state.selectedIndex) {
+    let index = item.index;
+
+    if (index >= 0 && index !== this.state.selectedIndex) {
       if (this.props.onColorChanged) {
-        this.props.onColorChanged(this.props.colorPickerItems[index].color);
+        this.props.onColorChanged(item.color);
       }
 
       this.setState({
@@ -395,7 +357,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   @autobind
   private _onRenderOption(item: IColorPickerItemProps): JSX.Element {
     if (item.type !== ColorPickerItemType.Cell) {
-      return <span className={ css('ms-colorPicker-header', styles.optionText) }>{ item.label }</span>;
+      return <span >{ item.label }</span>;
     }
 
     return (
@@ -412,21 +374,21 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   @autobind
   private _onRenderContainer() {
     return (
-      <ContextualMenu
-        items={ [] }
+      <Callout
         isBeakVisible={ false }
         gapSpace={ 0 }
         doNotLayer={ false }
+        role={ 'menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         className={ styles.colorPickerContainer }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
-        shouldFocusOnMount={ true }
-        arrowDirection={ FocusZoneDirection.bidirectional }
-        {...this._fullColorPickerForMenu() }
-      />
+        setInitialFocus={ true }>
+        { this._fullColorPickerToRender() }
+      </Callout>
     );
   }
+
 
   @autobind
   private _onDismiss() {

@@ -42,33 +42,31 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
           } />
         <div style={ { height: '235px', position: 'relative' } }>
           <div>Simple predefiend color picker with multiple sections:</div>
-          <div style={ { border: '1px solid black', position: 'absolute' } } >
-            <PredefinedColorPicker
-              width={ this.width }
-              cellShape={ CellShape.circle }
-              colorPickerItems={
-                [
-                  { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
-                  { id: 'd1', type: ColorPickerItemType.Divider },
-                  { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
-                  { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
-                  { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
-                  { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
-                  { id: 'e', type: ColorPickerItemType.Divider },
-                  { id: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
-                  { id: 'd2', type: ColorPickerItemType.Divider },
-                  { id: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
-                  { id: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
-                  { id: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
-                  { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
-                  { id: 'k', label: 'black', type: ColorPickerItemType.Cell, color: 'black' },
-                  { id: 'l', label: 'grey', type: ColorPickerItemType.Cell, color: 'grey' },
-                  { id: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
-                  { id: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
+          <PredefinedColorPicker
+            width={ this.width }
+            cellShape={ CellShape.circle }
+            colorPickerItems={
+              [
+                { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
+                { id: 'd1', type: ColorPickerItemType.Divider },
+                { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+                { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500' },
+                { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+                { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000' },
+                { id: 'e', type: ColorPickerItemType.Divider },
+                { id: 'f', label: 'More Colors', type: ColorPickerItemType.Header },
+                { id: 'd2', type: ColorPickerItemType.Divider },
+                { id: 'g', label: 'green', type: ColorPickerItemType.Cell, color: 'green' },
+                { id: 'h', label: 'orange', type: ColorPickerItemType.Cell, color: 'orange' },
+                { id: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
+                { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
+                { id: 'k', label: 'black', type: ColorPickerItemType.Cell, color: 'black' },
+                { id: 'l', label: 'grey', type: ColorPickerItemType.Cell, color: 'grey' },
+                { id: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
+                { id: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
 
-                ]
-              } />
-          </div>
+              ]
+            } />
         </div>
         <div>Simple expandable predefiend color picker with multiple sections:</div>
         <PredefinedColorPicker
@@ -92,7 +90,9 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
               { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
               { id: 'k', type: ColorPickerItemType.Divider },
               { id: 'l', label: 'Find Colors', type: ColorPickerItemType.MenuItem },
-              { id: 'm', label: 'Find More Colors', type: ColorPickerItemType.MenuItem, menuItemIconProps: { iconName: 'glasses' } }
+              { id: 'm', label: 'Find More Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'glasses' } } },
+              { id: 'n', label: '...More Colors...', type: ColorPickerItemType.MenuItem },
+              { id: 'o', label: 'Find Even More Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'redEye' } } }
             ]
           } />
         <div>Simple expandable predefiend color picker with multiple sections that updates it's icon color:</div>
@@ -153,6 +153,39 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
               { id: 'm', label: 'purple', type: ColorPickerItemType.Cell, color: 'purple' },
               { id: 'n', label: 'yellow', type: ColorPickerItemType.Cell, color: 'yellow' }
 
+            ]
+          } />
+        <div>Simple disabled predefiend color picker:</div>
+        <PredefinedColorPicker
+          colorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
+          disabled={ true }
+          width={ 4 }
+          cellShape={ CellShape.square }
+          colorPickerItems={
+            [
+              { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
+              { id: 'd1', type: ColorPickerItemType.Divider },
+              { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+              { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500', disabled: true },
+              { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+              { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000', disabled: true },
+            ]
+          } />
+        <div>Simple expandable predefiend color picker with a few disabled items:</div>
+        <PredefinedColorPicker
+          colorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
+          width={ 4 }
+          cellShape={ CellShape.square }
+          colorPickerItems={
+            [
+              { id: '0', label: 'Colors', type: ColorPickerItemType.Header },
+              { id: 'd1', type: ColorPickerItemType.Divider },
+              { id: 'a', label: 'green', type: ColorPickerItemType.Cell, color: '#00ff00' },
+              { id: 'b', label: 'orange', type: ColorPickerItemType.Cell, color: '#ffa500', disabled: true },
+              { id: 'c', label: 'blue', type: ColorPickerItemType.Cell, color: '#0000ff' },
+              { id: 'd', label: 'red', type: ColorPickerItemType.Cell, color: '#ff0000', disabled: true },
+              { id: 'e', label: 'Find Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'glasses' } }, disabled: true },
+              { id: 'f', label: 'Find More Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'redEye' } } }
             ]
           } />
       </div>

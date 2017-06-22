@@ -8,8 +8,6 @@
   width: 20px;
   height: 20px;
   padding: 4px;
-
-  @include highContrastAdjust();
 }
 
 :global(.ms-Fabric.is-focusVisible) .cell {
@@ -41,7 +39,7 @@
   &:hover:not([disabled]) {
     background: $menuBackgroundHoverColor;
   }
-  &.isDisabled,
+  &.disabled,
   &[disabled] {
     color: $menuTextDisabledColor;
     cursor: default;
@@ -95,14 +93,28 @@
   &:active .svg {
     border: 4px solid #969696;
   }
+
+    &.disabled,
+  &[disabled] {
+    color: $menuTextDisabledColor;
+    cursor: default;
+    pointer-events: none;
+    opacity: .3;
+  }
 }
 
 .colorPickerContainer {
   clear: both;
   display: inline-block;
+  min-width: 180px;
+}
+
+.icon {
+  width: 14px;
 }
 
 .header {
+  color: $menuHeaderColor;
   font-weight: $ms-font-weight-semibold;
   white-space: nowrap;
   background: none;

@@ -98,12 +98,6 @@ export interface IColorPickerItemProps {
   menuItemButtonProps?: IButtonProps;
 
   /**
-   * The menu item icon props. This value is only used if
-   * the type is MenuItem
-   */
-  menuItemIconProps?: IIconProps;
-
-  /**
    * Is this individual item disabled?
    */
   disabled?: boolean;
