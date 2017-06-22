@@ -3,8 +3,7 @@ import { TestImages } from '../../../../common/TestImages';
 
 export const people: (IPersonaProps & { key: string | number })[] = [
   {
-    key: 0,
-
+    key: 1,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'PV',
     primaryText: 'Annie Lindqvist',
@@ -14,7 +13,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 1,
+    key: 2,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AR',
     primaryText: 'Aaron Reid',
@@ -24,7 +23,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 2,
+    key: 3,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
     primaryText: 'Alex Lundberg',
@@ -34,7 +33,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.dnd
   },
   {
-    key: 3,
+    key: 4,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
     primaryText: 'Roko Kolar',
@@ -44,7 +43,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.offline
   },
   {
-    key: 4,
+    key: 5,
     imageUrl: TestImages.personaMale,
     imageInitials: 'CB',
     primaryText: 'Christian Bergqvist',
@@ -54,7 +53,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 5,
+    key: 6,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valentina Lovric',
@@ -64,7 +63,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 6,
+    key: 7,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharett',
@@ -74,7 +73,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.away
   },
   {
-    key: 7,
+    key: 8,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'PV',
     primaryText: 'Anny Lindqvist',
@@ -84,7 +83,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 8,
+    key: 9,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AR',
     primaryText: 'Aron Reid',
@@ -94,7 +93,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.dnd
   },
   {
-    key: 9,
+    key: 10,
     imageUrl: TestImages.personaMale,
     imageInitials: 'AL',
     primaryText: 'Alix Lundberg',
@@ -104,7 +103,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.offline
   },
   {
-    key: 10,
+    key: 11,
     imageUrl: TestImages.personaMale,
     imageInitials: 'RK',
     primaryText: 'Roko Kular',
@@ -115,7 +114,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
 
   },
   {
-    key: 11,
+    key: 12,
     imageUrl: TestImages.personaMale,
     imageInitials: 'CB',
     primaryText: 'Christian Bergqvest',
@@ -125,7 +124,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 12,
+    key: 13,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valintina Lovric',
@@ -135,7 +134,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 13,
+    key: 14,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharet',
@@ -145,7 +144,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.blocked
   },
   {
-    key: 14,
+    key: 15,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Anny Lindqvest',
@@ -155,7 +154,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.blocked
   },
   {
-    key: 15,
+    key: 16,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Alix Lunberg',
@@ -165,7 +164,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.away
   },
   {
-    key: 16,
+    key: 17,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Annie Lindqvest',
@@ -175,7 +174,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 17,
+    key: 18,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Alixander Lundberg',
@@ -185,7 +184,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.offline
   },
   {
-    key: 18,
+    key: 19,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Anny Lundqvist',
@@ -195,7 +194,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.away
   },
   {
-    key: 19,
+    key: 20,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Shorett',
@@ -205,7 +204,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.blocked
   },
   {
-    key: 20,
+    key: 21,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valentina Lovrics',
@@ -215,7 +214,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 21,
+    key: 22,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharet',
@@ -225,7 +224,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 22,
+    key: 23,
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     primaryText: 'Valentina Lovrecs',
@@ -235,7 +234,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.blocked
   },
   {
-    key: 23,
+    key: 24,
     imageUrl: TestImages.personaMale,
     imageInitials: 'MS',
     primaryText: 'Maor Sharitt',
@@ -245,7 +244,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.offline
   },
   {
-    key: 24,
+    key: 25,
     imageUrl: './images/persona-male.png',
     imageInitials: 'MS',
     primaryText: 'Maor Shariett',
@@ -255,7 +254,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 25,
+    key: 26,
     imageUrl: './images/persona-female.png',
     imageInitials: 'AL',
     primaryText: 'Alix Lundburg',
@@ -265,7 +264,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.away
   },
   {
-    key: 26,
+    key: 27,
     imageUrl: './images/persona-female.png',
     imageInitials: 'VL',
     primaryText: 'Valantena Lovric',
@@ -275,7 +274,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 27,
+    key: 28,
     imageUrl: './images/persona-female.png',
     imageInitials: 'VL',
     primaryText: 'Velatine Lourvric',
@@ -285,7 +284,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 28,
+    key: 29,
     imageUrl: './images/persona-female.png',
     imageInitials: 'VL',
     primaryText: 'Valentyna Lovrique',
@@ -295,7 +294,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 29,
+    key: 30,
     imageUrl: './images/persona-female.png',
     imageInitials: 'AL',
     primaryText: 'Annie Lindquest',
@@ -305,7 +304,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.dnd
   },
   {
-    key: 30,
+    key: 31,
     imageUrl: './images/persona-female.png',
     imageInitials: 'AL',
     primaryText: 'Anne Lindquist',
@@ -315,7 +314,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.blocked
   },
   {
-    key: 31,
+    key: 32,
     imageUrl: './images/persona-female.png',
     imageInitials: 'AL',
     primaryText: 'Ann Lindqiest',
@@ -325,7 +324,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 32,
+    key: 33,
     imageUrl: './images/persona-male.png',
     imageInitials: 'AR',
     primaryText: 'Aron Reid',
@@ -335,7 +334,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.away
   },
   {
-    key: 33,
+    key: 34,
     imageUrl: './images/persona-male.png',
     imageInitials: 'AR',
     primaryText: 'Aaron Reed',
@@ -345,7 +344,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.offline
   },
   {
-    key: 34,
+    key: 35,
     imageUrl: './images/persona-female.png',
     imageInitials: 'AL',
     primaryText: 'Alix Lindberg',
@@ -355,7 +354,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 35,
+    key: 36,
     imageUrl: './images/persona-male.png',
     imageInitials: 'AL',
     primaryText: 'Alan Lindberg',
@@ -365,7 +364,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.busy
   },
   {
-    key: 36,
+    key: 37,
     imageUrl: './images/persona-male.png',
     imageInitials: 'MS',
     primaryText: 'Maor Sharit',
@@ -375,7 +374,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.offline
   },
   {
-    key: 37,
+    key: 38,
     imageUrl: './images/persona-male.png',
     imageInitials: 'MS',
     primaryText: 'Maorr Sherit',
@@ -385,7 +384,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.online
   },
   {
-    key: 38,
+    key: 39,
     imageUrl: './images/persona-male.png',
     imageInitials: 'AL',
     primaryText: 'Alex Lindbirg',
@@ -395,7 +394,7 @@ export const people: (IPersonaProps & { key: string | number })[] = [
     presence: PersonaPresence.dnd
   },
   {
-    key: 39,
+    key: 40,
     imageUrl: './images/persona-male.png',
     imageInitials: 'AL',
     primaryText: 'Alex Lindbarg',

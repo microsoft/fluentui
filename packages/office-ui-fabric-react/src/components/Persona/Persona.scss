@@ -332,8 +332,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Extra Small Persona
 //
 .root.rootIsExtraExtraSmall {
-  height: $ms-Persona-sizeXxs;
-  min-width: $ms-Persona-sizeXxs;
+  height: $ms-Persona-sizeXs;
+  min-width: $ms-Persona-sizeXs;
 
   .imageArea,
   .image {
@@ -357,17 +357,22 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(16px);
+    @include ms-left(14px);
+    top: 18px;
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+
+    &:after,
+    &:before {
+      display: none;
+    }
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-sizeXxs;
+    line-height: $ms-Persona-sizeXs;
   }
 
   .secondaryText {
@@ -418,12 +423,18 @@ $ms-Persona-presenceSizeXl: 28px;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
     @include ms-left(20px);
+    top: 18px;
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+
+    &:after,
+    &:before {
+      display: none;
+    }
   }
+
 
   .primaryText {
     font-size: $ms-font-size-m;
