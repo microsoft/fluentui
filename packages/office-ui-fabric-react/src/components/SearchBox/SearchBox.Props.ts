@@ -3,7 +3,7 @@ import { SearchBox } from './SearchBox';
 
 export interface ISearchBox {
   /**
-   * Sets focus inside the search box text.
+   * Sets focus inside the search input box.
    */
   focus(): void;
 }
