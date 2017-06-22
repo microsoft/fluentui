@@ -4,13 +4,14 @@ import * as React from 'react';
 
 import { autobind, BaseComponent, css, getNativeProps, htmlElementProperties, memoize } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles, ActivityType } from './ActivityItem.Props';
+import { ActivityDescription } from './ActivityDescription';
 import { mergeStyles } from '../../Styling';
 import { getStyles } from './ActivityItem.styles';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Image } from '../Image/Image';
 import { Icon } from '../../Icon';
 
-interface IActivityItemClassNames {
+export interface IActivityItemClassNames {
   root?: string;
   activityContent?: string;
   personaContainer?: string;
@@ -50,29 +51,24 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         <div className={ this._classNames.activityContent }>
           <div>
             { this._onRenderNameList(this.props, this.props.people.length) }
-            { this._onRenderActivityDescription(this.props) }
+            <ActivityDescription {...this.props} _classNames={ this._classNames } />
           </div>
-          <div>
-            <span className={ this._classNames.commentText }>
-              { this.props.commentString }
-            </span>
-            <div className={ this._classNames.timeStamp }>
-              { this.props.timeString }
-            </div>
-          </div>
+
+          { this._onRenderCommentText(this.props) }
+          <div className={ this._classNames.timeStamp }>{ this.props.timeString }</div>
         </div>
 
       </div>
     );
   }
 
+  // Render up to four personas if they're available, otherwise show an icon based on what activityType is set.
   @autobind
   private _onRenderPersonas(props: IActivityItemProps): JSX.Element {
+    let personaElement: JSX.Element;
     if (this.props.people[0].imageUrl) {
-      // Render as personas if we have images available
       let personaList = [];
-
-      this.props.people.forEach((person, index) => {
+      this.props.people.filter((person, index) => index < 4).forEach((person, index) => {
         personaList.push(
           <Persona
             key={ person['key'] ? person['key'] : index }
@@ -83,10 +79,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             hidePersonaDetails={ true } />
         );
       });
-
-      return (<div className={ this._classNames.personaContainer }>{ personaList }</div>);
+      personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;
     } else {
-      // Otherwise render the activity type icon
       let iconString = ActivityType[props.activityType];;
       switch (props.activityType) {
         case ActivityType.CommentInDocument:
@@ -102,18 +96,19 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
           iconString = 'Refresh';
           break;
       }
-      return (<div className={ this._classNames.activityTypeIcon }><Icon iconName={ iconString } /></div>);
+      personaElement = <div className={ this._classNames.activityTypeIcon }><Icon iconName={ iconString } /></div>;
     }
+    return personaElement;
   }
 
+  // Render the list of names involved in the activity. Shows up to the first two names before just referring to the number of other names.
   @autobind
   private _onRenderNameList(props: IActivityItemProps, length: number): JSX.Element {
+    let nameListElement: JSX.Element;
     if (length === 1) {
-      return (
-        <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>
-      )
+      nameListElement = <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>;
     } else if (length === 2) {
-      return (
+      nameListElement = (
         <span>
           <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>
           <span> and </span>
@@ -121,7 +116,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         </span>
       )
     } else {
-      return (
+      nameListElement = (
         <span>
           <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>
           <span>, </span>
@@ -131,106 +126,33 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         </span>
       )
     }
+    return nameListElement;
   }
 
+  // Render the comment text and attempt to highlight the mentioned name if one was used.
   @autobind
-  private _onRenderActivityDescription(props: IActivityItemProps): JSX.Element {
-    switch (props.activityType) {
+  private _onRenderCommentText(props: IActivityItemProps): JSX.Element {
+    let commentElement: JSX.Element = <div className={ this._classNames.commentText }>{ props.commentString }</div>
 
-      case ActivityType.Message:
-        return (
-          <span> commented</span>
-        );
+    if (props.mentionedName && props.commentString.indexOf(props.mentionedName) !== -1) {
+      let parsedComment = props.commentString.split(props.mentionedName);
+      let nameElement = props.mentionedHref ?
+        (<a href={ props.mentionedHref } className={ this._classNames.docLink }>{ props.mentionedName }</a>) :
+        (<span className={ this._classNames.nameText }>{ props.mentionedName }</span>);
 
-      case ActivityType.CommentInDocument:
-        return (
-          <span> commented in the document</span>
-        );
-
-      case ActivityType.Mention:
-        return (
-          <span> mentioned you</span>
-        );
-
-      case ActivityType.Edit:
-        if (props.fileActivity && props.fileActivity.fileName) {
-          return (
-            <span> edited {
-              props.fileActivity.fileHref ?
-                (<a className={ this._classNames.docLink } href={ props.fileActivity.fileHref }>{ props.fileActivity.fileName }</a>) :
-                (<span className={ this._classNames.nameText }>{ props.fileActivity.fileName }</span>)
-            }</span>
-          );
-        } else {
-          return (
-            <span> edited a file</span>
-          );
-        }
-
-      case ActivityType.Move:
-        if (props.fileActivity && props.fileActivity.fileName && props.fileActivity.sourceFolderName && props.fileActivity.destinationFolderName) {
-          return (
-            <span> moved {
-              props.fileActivity.fileHref ?
-                (<a className={ this._classNames.docLink } href={ props.fileActivity.fileHref }>{ props.fileActivity.fileName }</a>) :
-                (<span className={ this._classNames.nameText }>{ props.fileActivity.fileName }</span>)
-            } from {
-                props.fileActivity.sourceFolderHref ?
-                  (<a className={ this._classNames.docLink } href={ props.fileActivity.sourceFolderHref }>{ props.fileActivity.sourceFolderName }</a>
-                  ) : (
-                    <span className={ this._classNames.nameText }>{ props.fileActivity.sourceFolderName }</span>)
-              } to {
-                props.fileActivity.destinationFolderHref ?
-                  (<a className={ this._classNames.docLink } href={ props.fileActivity.destinationFolderHref }>{ props.fileActivity.destinationFolderName }</a>) :
-                  (<span className={ this._classNames.nameText }>{ props.fileActivity.destinationFolderName }</span>)
-              }</span>
-          );
-        } else {
-          return (
-            <span> moved a file</span>
-          );
-        }
-
-      case ActivityType.Rename:
-        return (
-          <span> renamed OldFileName.ext to NewFileName.ext</span>
-        );
-
-      case ActivityType.Share:
-        return (
-          <span> shared FileName.ext with Persona</span>
-        );
-
-      case ActivityType.Add:
-        return (
-          <span> added an item FileName.ext in Folder</span>
-        );
-
-      case ActivityType.Delete:
-        return (
-          <span> deleted FileName.ext</span>
-        );
-
-      case ActivityType.Restore:
-        return (
-          <span> restored FileName.ext</span>
-        );
-
-      case ActivityType.Version:
-        return (
-          <span> Version X.0 was created on</span>
-        );
-
-      case ActivityType.Custom:
-        return (
-          <span> custom renderer goes here</span>
-        );
-
-      default:
-        return;
+      commentElement = (
+        <div className={ this._classNames.commentText }>
+          { parsedComment[0] }
+          { nameElement }
+          { parsedComment[1] }
+        </div>
+      );
     }
+
+    return commentElement;
   }
 
+  // Determine the class lists for each className.
   @memoize
   private _getClassNames(styles: IActivityItemStyles, className: string, numberOfPeople: number): IActivityItemClassNames {
     return {
@@ -282,5 +204,4 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       ) as string
     };
   }
-
 }

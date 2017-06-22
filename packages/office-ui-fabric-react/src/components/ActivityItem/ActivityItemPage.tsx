@@ -5,9 +5,13 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { ActivityItemExample } from './examples/Activity.Item.Example';
+import { ActivityItemPersonaExample } from './examples/Activity.Item.Persona.Example';
+import { ActivityItemCommentExample } from './examples/Activity.Item.Comment.Example';
+import { ActivityItemIconExample } from './examples/Activity.Item.Icon.Example';
 
-const ActivityItemExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/Activity.Item.Example.tsx') as string;
+const ActivityItemPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/Activity.Item.Persona.Example.tsx') as string;
+const ActivityItemCommentExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/Activity.Item.Comment.Example.tsx') as string;
+const ActivityItemIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/examples/Activity.Item.Icon.Example.tsx') as string;
 
 export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -17,8 +21,14 @@ export class ActivityItemPage extends React.Component<IComponentDemoPageProps, {
         componentName='ActivityItemExample'
         exampleCards={
           <div>
-            <ExampleCard title='Activity Item' code={ ActivityItemExampleCode }>
-              <ActivityItemExample />
+            <ExampleCard title='Activity Items With Personas' code={ ActivityItemPersonaExampleCode }>
+              <ActivityItemPersonaExample />
+            </ExampleCard>
+            <ExampleCard title='Commenting Activity Items' code={ ActivityItemCommentExampleCode }>
+              <ActivityItemCommentExample />
+            </ExampleCard>
+            <ExampleCard title='File Activity Items' code={ ActivityItemIconExampleCode }>
+              <ActivityItemIconExample />
             </ExampleCard>
           </div>
         }

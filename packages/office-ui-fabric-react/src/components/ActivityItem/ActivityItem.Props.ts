@@ -18,12 +18,32 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Text shown if the activity type is a comment or a mention.
    */
-  commentString?: string | null;
+  commentString?: string;
 
   /**
    * Used to describe what occured if the activity involved a file or folder.
    */
   fileActivity?: IFileActivity;
+
+  /**
+   * The name of the user mentioned. If used with ActivityType set to Mention and a commentString, the mentioned user's name will be highlighted in the commentString.
+   */
+  mentionedName?: string;
+
+  /**
+   * If this is included and the mentionedName is shown, the mentionedName will be a link to this URL.
+   */
+  mentionedHref?: string;
+
+  /**
+   * The name of the user a file was shared with.
+   */
+  sharedWithName?: string;
+
+  /**
+   * The URL that sharedWithName should point to if it is shown.
+   */
+  sharedWithHref?: string;
 
   /**
    * Optional styling for the elements within the Activity Item.
@@ -63,7 +83,7 @@ export interface IActivityItemStyles {
   commentText?: IStyle;
 
   /**
-   * Styles applied to personas when multiple users are involved in a single activity.
+   * Styles applied to personas when two users are involved in a single activity.
    */
   doublePersona?: IStyle;
 
@@ -99,8 +119,7 @@ export enum ActivityType {
   Add,
   Delete,
   Restore,
-  Version,
-  Custom
+  Version
 }
 
 export interface IFileActivity {
@@ -115,27 +134,32 @@ export interface IFileActivity {
   fileHref?: string;
 
   /**
-   * If a Fabric icon name or the url of an icon image is included, the fileName prop will be displayed next to this icon.
+   * New name of a renamed file.
    */
-  fileIcon?: any;
+  newFileName?: string;
 
   /**
-   * Name of the folder a file was moved from.
+   * If shown, newFileName will be displayed as a link to this URL.
+   */
+  newFileHref?: string;
+
+  /**
+   * The name of the folder a file was moved from.
    */
   sourceFolderName?: string;
 
   /**
-   * If this is included, the sourceFolderName property will be displayed as a link to this address.
+   * If this and sourceFolderName included, the sourceFolderName property will be displayed as a link to this address.
    */
   sourceFolderHref?: string;
 
   /**
-   * Name of the folder a file was moved from, or renamed inside of.
+   * The name of the folder a file was moved from, or renamed inside of.
    */
   destinationFolderName?: string;
 
   /**
-   * If this is included, the fileName destinationFolderName will be displayed as a link to this address.
+   * If this and destinationFolderName are included, destinationFolderName will be displayed as a link to this address.
    */
   destinationFolderHref?: string;
 }

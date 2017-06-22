@@ -11,6 +11,7 @@ export class IconBasicExample extends React.Component<any, any> {
         <Icon iconName='CompassNW' className='ms-IconExample' />
         <Icon iconName='Dictionary' className='ms-IconExample' />
         <Icon iconName='TrainSolid' className='ms-IconExample' />
+        <Icon iconName='Delete' className='ms-IconExample' />
       </div>
     );
   }
