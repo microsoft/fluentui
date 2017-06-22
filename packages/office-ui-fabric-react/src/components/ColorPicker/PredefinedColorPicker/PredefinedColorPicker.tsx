@@ -326,10 +326,10 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
           { ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index) },
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        onMouseEnter={ () => this._onItemHover(item) }
-        onMouseLeave={ () => this._onItemLeave(item) }
-        onFocus={ () => this._onItemFocus(item) }
-        onBlur={ () => this._onItemBlur(item) }
+        onMouseEnter={ () => this._onItemHoverOrFocused(item, this.props.onCellHovered) }
+        onMouseLeave={ () => this._clearColors([this.props.onCellHovered]) }
+        onFocus={ () => this._onItemHoverOrFocused(item, this.props.onCellFocused) }
+        onBlur={ () => this._clearColors([this.props.onCellFocused]) }
         role={ isCell ? 'gridcell' : this.props.colorPickerButtonProps ? 'menuitem' : 'button' }
         aria-selected={ isCell ? (this.state.selectedIndex === item.index ? 'true' : 'false') : null }
         ariaLabel={ item.label && item.label }
@@ -341,46 +341,13 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   }
 
   @autobind
-  private _onItemHover(item: IColorPickerItemProps) {
-    if (this.props.disabled || item.disabled) {
+  private _onItemHoverOrFocused(item: IColorPickerItemProps, callback?: (color: string) => void) {
+    if (this.props.disabled || (item && item.disabled)) {
       return;
     }
 
-    if (this.props.onCellHovered) {
-      this.props.onCellHovered(item.color);
-    }
-  }
-
-  @autobind
-  private _onItemLeave(item: IColorPickerItemProps) {
-    if (this.props.disabled || item.disabled) {
-      return;
-    }
-
-    if (this.props.onCellHovered) {
-      this.props.onCellHovered(null);
-    }
-  }
-
-  @autobind
-  private _onItemFocus(item: IColorPickerItemProps) {
-    if (this.props.disabled || item.disabled) {
-      return;
-    }
-
-    if (this.props.onCellFocused) {
-      this.props.onCellFocused(item.color);
-    }
-  }
-
-  @autobind
-  private _onItemBlur(item: IColorPickerItemProps) {
-    if (this.props.disabled || item.disabled) {
-      return;
-    }
-
-    if (this.props.onCellFocused) {
-      this.props.onCellFocused(null);
+    if (callback) {
+      callback(item ? item.color : null);
     }
   }
 
@@ -400,23 +367,18 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         expanded: false
       });
     } else if (index === this.state.selectedIndex) {
-      if (this.props.onColorChanged) {
-        this.props.onColorChanged(null);
-      }
 
-      if (this.props.onCellHovered) {
-        this.props.onCellHovered(null);
-      }
-
-      if (this.props.onCellFocused) {
-        this.props.onCellFocused(null);
-      }
+      this._clearColors([this.props.onColorChanged, this.props.onCellHovered, this.props.onCellFocused]);
 
       this.setState({
         selectedIndex: -1,
         expanded: false
       });
     }
+  }
+
+  private _clearColors(callbacks: ((color: string) => void)[]) {
+    callbacks.forEach((callback) => { callback && callback(null); });
   }
 
   @autobind
@@ -468,13 +430,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
   @autobind
   private _onDismiss() {
-    if (this.props.onCellHovered) {
-      this.props.onCellHovered(null);
-    }
-
-    if (this.props.onCellFocused) {
-      this.props.onCellFocused(null);
-    }
+    this._clearColors([this.props.onCellHovered, this.props.onCellFocused]);
 
     this.setState({
       expanded: false
