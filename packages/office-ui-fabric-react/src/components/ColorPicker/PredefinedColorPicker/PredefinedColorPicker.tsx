@@ -213,12 +213,6 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         .filter((item, filteredIndex, items) => { return (filteredIndex === 0 || (item.index - items[filteredIndex - 1].index !== 1)); }));
   }
 
-
-  // @autobind
-  // private _onRenderMenuItem(item: any) {
-  //   return this._onRenderItem(item.data);
-  // }
-
   // Render separator
   private _renderSeparator(item: IColorPickerItemProps): JSX.Element {
     let { index, id } = item;
@@ -242,8 +236,10 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   @autobind
   private _renderOption(item: IColorPickerItemProps, posInSet: number = null, setSize: number = null): JSX.Element {
     let id = this._id;
+    let isCell = item.type === ColorPickerItemType.Cell;
     return (
       <CommandButton
+        { ...item.menuItemButtonProps }
         id={ id + '-list' + item.index }
         ref={ 'option' + item.index }
         key={ item.id }
@@ -252,43 +248,18 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         aria-posinset={ posInSet && posInSet }
         aria-setsize={ setSize && setSize }
         className={ css(
-          'ms-Dropdown-item', styles.item, {
-            ['is-selected ' + styles.itemIsSelected]: (item.type === ColorPickerItemType.Cell && this.state.selectedIndex === item.index)
-          }
+          'ms-Dropdown-item',
+          (isCell ? styles.cell : styles.item),
+          { ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index) },
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role={ item.type === ColorPickerItemType.Cell ? 'gridcell' : null }
+        role={ isCell ? 'gridcell' : this.props.colorPickerButtonProps ? 'menuitem' : 'button' }
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }
       > { this._onRenderOption(item) }</CommandButton>
     );
   }
-
-  // // Render menu item option
-  // @autobind
-  // private _renderMenuItemOption(item: IColorPickerItemProps): JSX.Element {
-  //   let id = this._id;
-  //   return (
-  //     <CommandButton
-  //       id={ id + '-list' + item.index }
-  //       ref={ 'option' + item.index }
-  //       key={ item.id }
-  //       data-index={ item.index }
-  //       data-is-focusable={ true }
-  //       className={ css(
-  //         'ms-Dropdown-item', styles.item, {
-  //           ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index
-  //         }
-  //       ) }
-  //       onClick={ () => this._onItemClick(item.index) }
-  //       role='option'
-  //       aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-  //       ariaLabel={ item.label && item.label }
-  //       title={ item.label && item.label }
-  //     > { this._onRenderOption(item) }</CommandButton>
-  //   );
-  // }
 
   @autobind
   private _onItemClick(index: number) {

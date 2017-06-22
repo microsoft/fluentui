@@ -22,7 +22,7 @@
   @include highContrastAdjust();
 }
 
-:global(.ms-Fabric.is-focusVisible) .item {
+:global(.ms-Fabric.is-focusVisible) .cell {
   &:focus,
   &:focus::after {
     border: none;
@@ -30,11 +30,46 @@
 }
 
 .item {
+  @include ms-font-m;
+  @include focus-border();
+  @include text-align(left);
+  color: $menuTextColor;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  display: block;
+  cursor: pointer;
+  padding: 0px 6px;
+  display: inline-block;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover:not([disabled]) {
+    background: $menuBackgroundHoverColor;
+  }
+  &.isDisabled,
+  &[disabled] {
+    color: $menuTextDisabledColor;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  :global(.is-focusVisible) &:focus {
+    background: $menuBackgroundHoverColor;
+  }
+}
+
+.cell {
   //padding: 0px 2px;
   padding: 0px;
   overflow: visible;
 
-  &.itemIsSelected {
+  &.cellIsSelected {
     &:hover .svg,
     &:active .svg {
       box-shadow: 0 0 1px 1px

@@ -81,7 +81,8 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
               { id: 'i', label: 'blue', type: ColorPickerItemType.Cell, color: 'blue' },
               { id: 'j', label: 'red', type: ColorPickerItemType.Cell, color: 'red' },
               { id: 'k', type: ColorPickerItemType.Divider },
-              { id: 'l', label: 'Find Colors', type: ColorPickerItemType.MenuItem }
+              { id: 'l', label: 'Find Colors', type: ColorPickerItemType.MenuItem },
+              { id: 'm', label: 'Find More Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'glasses' } } }
             ]
           } />
         <div>Simple expandable predefiend color picker with multiple sections that updates it's icon color:</div>

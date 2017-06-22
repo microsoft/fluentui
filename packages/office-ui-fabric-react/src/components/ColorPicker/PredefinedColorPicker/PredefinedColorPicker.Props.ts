@@ -90,7 +90,7 @@ export interface IColorPickerItemProps {
    * The menu item button props. This value is only used if
    * the type is MenuItem
    */
-  MenuItemButtonProps?: IButtonProps;
+  menuItemButtonProps?: IButtonProps;
 }
 
 export enum ColorPickerItemType {
