@@ -137,6 +137,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       assign(
         buttonProps,
         {
+
           'onClick': this._onToggleMenu,
           'aria-expanded': this.state.menuProps ? true : false,
           'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
@@ -172,6 +173,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     const className = mergeStyles(baseClassName + '-flexContainer', styles.flexContainer);
 
+    let newMenuProps = menuProps;
+
+    if (newMenuProps && this.props.onRenderMenu) {
+      newMenuProps = this._addToggleToDismiss(newMenuProps);
+    }
+
     return React.createElement(
       tag,
       buttonProps,
@@ -184,8 +191,22 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
         (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
-        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
+        this.state.menuProps && onRenderMenu(newMenuProps, this._onRenderMenu)
       ));
+  }
+
+  @autobind
+  private _addToggleToDismiss(menuProps: IContextualMenuProps) {
+    return { ...menuProps, onDismiss: () => { this._onDismissMenu(menuProps) } }
+  }
+
+  @autobind
+  private _onDismissMenu(menuProps) {
+    if (menuProps.onDismiss) {
+      menuProps.onDismiss();
+    }
+
+    this._onToggleMenu();
   }
 
   @autobind

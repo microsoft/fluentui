@@ -7,7 +7,7 @@ import {
   getId
 } from '../../../Utilities';
 import { IPredefinedColorPickerProps, IColorPickerItemProps, ColorPickerItemType, CellShape } from './PredefinedColorPicker.Props';
-import { DirectionalHint } from '../../../ContextualMenu';
+import { DirectionalHint, IContextualMenuItem, IContextualMenuProps } from '../../../ContextualMenu';
 import { getColorFromString } from '../../../utilities/color/colors';
 import { Grid } from '../../../utilities/Grid/Grid';
 import { DefaultButton, CommandButton } from '../../../Button';
@@ -19,7 +19,7 @@ const styles: any = stylesImport;
 
 export interface IPredefinedColorPickerState {
   selectedIndex?: number;
-  isOpen?: boolean;
+  //isOpen?: boolean;
 }
 
 export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerProps, IPredefinedColorPickerState> {
@@ -44,7 +44,7 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
     this.state = {
       selectedIndex: props.selectedId && this._getSelectedIndex(props.colorPickerItems, props.selectedId),
-      isOpen: false
+      //isOpen: false
     };
   }
 
@@ -98,11 +98,21 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         <DefaultButton
           { ...colorPickerButtonProps }
           style={ { color: colorToSet && colorToSet } }
-          onClick={ this._onClickButton }
-        >
-          <Icon iconName={ 'chevronDown' } />
-        </DefaultButton>
-        { this.state.isOpen && this._onRenderContainer() }
+          //onMouseDownCapture={ this._onClickButton }
+          /*menuProps={ this.state.isOpen ? {
+            items:
+            colorPickerItems.map((item): IContextualMenuItem => { return { key: item.id, name: item.label, data: item }; }),
+            onDismiss: this._onDismiss,
+            //onMenuOpened: (IContextualMenuProps) => () => this.setState({ isOpen: true })
+          } : { items: [], onDismiss: this._onDismiss } }*/
+          menuProps={ {
+            items:
+            colorPickerItems.map((item): IContextualMenuItem => { return { key: item.id, name: item.label, data: item }; }),
+            onDismiss: this._onDismiss,
+            //onMenuOpened: (IContextualMenuProps) => () => this.setState({ isOpen: true })
+          } }
+          onRenderMenu={ this._onRenderContainerForMenu }
+        />
       </div>
     );
   }
@@ -116,6 +126,19 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         className={ styles.colorPickerContainer }
       >
         { this._onRenderItems(colorPickerItems.map((item, index) => { return { ...item, index }; })) }
+      </FocusZone>
+    );
+  }
+
+  private _fullColorPickerToRenderForMenu(menuProps: IContextualMenuProps) {
+    let { width } = this.props;
+    let { items } = menuProps;
+    return (
+      <FocusZone
+        isCircularNavigation={ true }
+        className={ styles.colorPickerContainer }
+      >
+        { this._onRenderItems(items.map((item, index) => { return { ...item.data, index }; })) }
       </FocusZone>
     );
   }
@@ -299,22 +322,24 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
       this.setState({
         selectedIndex: index,
-        isOpen: false
+        //isOpen: false
       });
     } else if (index === this.state.selectedIndex) {
       this.setState({
         selectedIndex: -1,
-        isOpen: false
+        //isOpen: false
       });
     }
+
+    //jeremy
   }
 
-  @autobind
-  private _onClickButton() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
+  // @autobind
+  // private _onClickButton() {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen
+  //   });
+  // }
 
   @autobind
   private _onRenderOption(item: IColorPickerItemProps): JSX.Element {
@@ -330,6 +355,33 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
             <rect width='100%' height='100%' />
         }
       </svg>
+    );
+  }
+
+  @autobind
+  private _onRenderContainerForMenu(menuProps: IContextualMenuProps) {
+    if (!menuProps || !menuProps.items || menuProps.items.length === 0) {
+      return null;
+    }
+
+    // this.setState({
+    //   isOpen: true
+    // });
+
+    return (
+      <Callout
+        isBeakVisible={ false }
+        gapSpace={ 0 }
+        doNotLayer={ false }
+        role={ 'menu' }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        className={ styles.colorPickerContainer }
+        targetElement={ this._buttonWrapper }
+        onDismiss={ menuProps.onDismiss }
+        //onPositioned={ /*this._onClickButton*/ () => this.setState({ isOpen: true }) }
+        setInitialFocus={ true }>
+        { this._fullColorPickerToRenderForMenu(menuProps) }
+      </Callout>
     );
   }
 
@@ -353,8 +405,8 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
 
   @autobind
   private _onDismiss() {
-    this.setState({
-      isOpen: false
-    });
+    // this.setState({
+    //   isOpen: false
+    // });
   }
 }
