@@ -367,7 +367,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     do {
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         return false;
       }
 
@@ -700,7 +700,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _isElementInput(element: HTMLElement): boolean {
-    if (element && element.tagName && element.tagName.toLowerCase() === 'input') {
+    if (element && element.tagName && (element.tagName.toLowerCase() === 'input' || element.tagName.toLowerCase() === 'textarea')) {
       return true;
     }
     return false;
