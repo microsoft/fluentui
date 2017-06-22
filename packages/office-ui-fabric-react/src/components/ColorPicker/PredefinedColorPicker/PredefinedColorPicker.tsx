@@ -7,19 +7,19 @@ import {
   getId
 } from '../../../Utilities';
 import { IPredefinedColorPickerProps, IColorPickerItemProps, ColorPickerItemType, CellShape } from './PredefinedColorPicker.Props';
-import { DirectionalHint } from '../../../ContextualMenu';
+import { DirectionalHint, ContextualMenu, ContextualMenuItemType, IContextualMenuItem, IContextualMenuProps } from '../../../ContextualMenu';
 import { getColorFromString } from '../../../utilities/color/colors';
 import { Grid } from '../../../utilities/Grid/Grid';
 import { DefaultButton, CommandButton } from '../../../Button';
 import { Callout } from '../../../Callout';
 import { Icon } from '../../../Icon';
-import { FocusZone } from '../../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
 import * as stylesImport from './PredefinedColorPicker.scss';
 const styles: any = stylesImport;
 
 export interface IPredefinedColorPickerState {
   selectedIndex?: number;
-  isOpen?: boolean;
+  expanded?: boolean;
 }
 
 export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerProps, IPredefinedColorPickerState> {
@@ -119,6 +119,68 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
         { this._onRenderItems(colorPickerItems.map((item, index) => { return { ...item, index }; })) }
       </FocusZone>
     );
+  }
+
+  @autobind
+  private _fullColorPickerForMenu() {
+    let { colorPickerItems } = this.props;
+    return (
+      this._onRenderItemsForMenu(colorPickerItems.map((item, index) => { return { ...item, index }; }))
+    );
+  }
+
+  @autobind
+  private _onRenderItemsForMenu(items: IColorPickerItemProps[]): IContextualMenuProps {
+    let {
+      width
+    } = this.props;
+
+    let containsNonCellItem = findIndex(items, (item => item.type !== ColorPickerItemType.Cell)) > -1;
+    let element: IContextualMenuItem[] = [];
+    this._nextIndexAfterChunk = -1;
+    let firstExecutableItemsPerChunk = containsNonCellItem ? this._getFirstExecutableItemsPerChunk() : null;
+    let shouldGetSetInfo = (firstExecutableItemsPerChunk && firstExecutableItemsPerChunk.length > 0);
+    let setSize = shouldGetSetInfo ? firstExecutableItemsPerChunk.length : null;
+
+    let index = 0;
+    while (index < items.length) {
+      let item = items[index];
+      let posInSet = shouldGetSetInfo ? this._getPositionInSet(firstExecutableItemsPerChunk, item) : null;
+      switch (item.type) {
+        case ColorPickerItemType.Divider:
+          element.push({ key: item.id, itemType: ContextualMenuItemType.Divider });
+          break;
+        case ColorPickerItemType.Header:
+          element.push({ key: item.id, name: item.label, itemType: ContextualMenuItemType.Header });
+          break;
+        case ColorPickerItemType.Cell:
+          element.push({
+            key: item.id,
+            itemType: ContextualMenuItemType.Normal,
+            data:
+            this._renderNextChuckOfCellItems(
+              items.slice(index),
+              posInSet,
+              setSize),
+            onRender: (item) => item.data
+          });
+          break;
+        default:
+          element.push({
+            key: item.id,
+            name: item.label,
+            iconProps: (item.menuItemButtonProps && item.menuItemButtonProps.iconProps) && item.menuItemButtonProps.iconProps,
+            ariaPosInSet: posInSet,
+            disabled: this.props.disabled || item.disabled,
+            itemType: ContextualMenuItemType.Normal
+          });
+      }
+
+      index += this._nextIndexAfterChunk > 0 ? this._nextIndexAfterChunk : 1;
+      this._nextIndexAfterChunk = -1;
+    }
+
+    return { ariaSetSize: setSize, items: element };
   }
 
   @autobind
@@ -337,18 +399,19 @@ export class PredefinedColorPicker extends BaseComponent<IPredefinedColorPickerP
   @autobind
   private _onRenderContainer() {
     return (
-      <Callout
+      <ContextualMenu
+        items={ [] }
         isBeakVisible={ false }
         gapSpace={ 0 }
         doNotLayer={ false }
-        role={ 'menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         className={ styles.colorPickerContainer }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
-        setInitialFocus={ true }>
-        { this._fullColorPickerToRender() }
-      </Callout>
+        shouldFocusOnMount={ true }
+        arrowDirection={ FocusZoneDirection.bidirectional }
+        {...this._fullColorPickerForMenu() }
+      />
     );
   }
 

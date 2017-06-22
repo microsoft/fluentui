@@ -176,6 +176,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   calloutProps?: ICalloutProps;
 
+  /**
+   * the total size of the set
+   */
+  ariaSetSize?: number;
+
 }
 
 export interface IContextualMenuItem {
@@ -308,6 +313,11 @@ export interface IContextualMenuItem {
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
+
+  /**
+   * The position in the set of this menu item
+   */
+  ariaPosInSet?: number;
 
   /**
    * Any additional properties to use when custom rendering menu items.
