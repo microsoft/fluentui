@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { HoverCardHost } from './HoverCardHost';
 import { IHoverCardProps } from './HoverCard.Props';
-import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle } from '../../Styling';
 

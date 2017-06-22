@@ -2,10 +2,12 @@ import { IHoverCardStyles } from './HoverCard.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyleSets,
-  after
+  after,
+  ITheme
 } from '../../Styling';
 
 export const getStyles = memoizeFunction((
+  theme: ITheme,
   customStyles?: IHoverCardStyles
 ): IHoverCardStyles => {
 
@@ -26,7 +28,7 @@ export const getStyles = memoizeFunction((
         left: '0',
         right: '0',
         height: '1px',
-        'background-color': '#f4f4f4'
+        'background-color': theme.palette.neutralLighter
       })
     ],
     expandedCard: [

@@ -233,7 +233,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     this._updatePosition();
-    this.props.finalHeight && this._setHeightOffsetEveryFrame();
+    this._setHeightOffsetEveryFrame();
   }
 
   private _updatePosition() {
@@ -343,7 +343,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   private _setHeightOffsetEveryFrame(): void {
-    if (this._calloutElement) {
+    if (this._calloutElement && this.props.finalHeight) {
       this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
         const calloutMainElem = this._calloutElement.firstChild as HTMLElement;
         const cardScrollHeight: number = calloutMainElem.scrollHeight;

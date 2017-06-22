@@ -28,7 +28,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     this.state = {
       items: _items,
       columns: _buildColumns()
-    }
+    };
   }
 
   public render() {
@@ -53,7 +53,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
       onRenderCompactContent: this._onRenderCompactContent,
       onRenderExpandedContent: this._onRenderExpandedContent,
       item: item
-    }
+    };
 
     if (column.key === 'location') {
       return (
@@ -89,7 +89,6 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
     );
   }
 }
-
 
 function _buildColumns() {
   return buildColumns(_items).filter(column => column.name === 'location' || column.name === 'key');

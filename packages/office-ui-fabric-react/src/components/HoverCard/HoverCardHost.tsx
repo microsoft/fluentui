@@ -7,17 +7,10 @@ import {
   css,
   divProperties,
   getNativeProps,
-  getId,
-  assign,
-  memoize
+  getId
 } from '../../Utilities';
-import {
-  mergeStyles
-} from '../../Styling';
 import { IHoverCardHostProps, IHoverCardHostStyles } from './HoverCardHost.Props';
 import { HoverCard } from './HoverCard';
-import { IHoverCard } from './HoverCard.Props';
-import { DirectionalHint } from '../../common/DirectionalHint';
 
 import { getStyles } from './HoverCardHost.styles';
 

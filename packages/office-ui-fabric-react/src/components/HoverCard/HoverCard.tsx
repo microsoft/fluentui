@@ -6,7 +6,7 @@ import {
   css,
   getNativeProps,
   divProperties,
-  memoize,
+  customizable,
   autobind,
   getRTL
 } from '../../Utilities';
@@ -23,9 +23,10 @@ export enum HoverCardMode {
 }
 
 export interface IHoverCardState {
-  mode: HoverCardMode
+  mode: HoverCardMode;
 }
 
+@customizable(['theme'])
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
     expandedCardOpenDelay: 1000,
@@ -49,12 +50,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     this._async.setTimeout(() => {
       this.setState({
         mode: HoverCardMode.expanded
-      })
+      });
     }, this.props.expandedCardOpenDelay);
   }
 
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
-    if (newProps.openExpanded != this.props.openExpanded) {
+    if (newProps.openExpanded !== this.props.openExpanded) {
       this.setState({
         mode: newProps.openExpanded ? HoverCardMode.expanded : HoverCardMode.condensed
       });
@@ -69,13 +70,14 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     const {
       targetElement,
       id,
+      theme,
       styles: customStyles,
       onRenderCompactContent,
       onRenderExpandedContent,
       compactCardHeight,
       expandedCardHeight
     } = this.props;
-    this._styles = getStyles(customStyles);
+    this._styles = getStyles(theme, customStyles);
 
     return (
       <Callout

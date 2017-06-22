@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { HoverCard } from './HoverCard';
-import { ICalloutProps } from '../../Callout';
 import { IRenderFunction } from '../../Utilities';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IHoverCard {
 
@@ -72,6 +70,11 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
    * @default false
    */
   openExpanded?: boolean;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Custom styles for this component
