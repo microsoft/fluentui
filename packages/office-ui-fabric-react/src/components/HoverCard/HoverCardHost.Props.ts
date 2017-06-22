@@ -24,8 +24,8 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
   hoverCardProps?: IHoverCardProps;
 
   /**
-   * Whether or not to mark the container as described by the tooltip.
-   * If not specified, the caller should mark as element as described by the tooltip id.
+   * Whether or not to mark the container as described by the hover card.
+   * If not specified, the caller should mark as element as described by the hover card id.
    */
   setAriaDescribedBy?: boolean;
 
@@ -40,7 +40,7 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
   cardDismissDelay?: number;
 
   /**
-   * Indicator of how the tooltip should be anchored to its targetElement.
+   * Indicator of how the hover card should be anchored to its targetElement.
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;

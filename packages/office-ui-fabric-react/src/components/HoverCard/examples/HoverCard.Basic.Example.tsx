@@ -36,7 +36,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
     return (
       <div>
-        <p> Hover over location to see the card </p>
+        <p> Hover over location of a row item to see the card </p>
         <DetailsList
           setKey='hoverSet'
           items={ items }

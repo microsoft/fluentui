@@ -35,7 +35,7 @@ export class HoverCardPage extends React.Component<any, any> {
         overview={
           <div>
             <Link target='_blank' href='http://dev.office.com/fabric/components/HoverCard'>HoverCards</Link>
-            <span> supplement content associated with a specific UI component.</span>
+            <span> supplement content associated with a specific data element.</span>
           </div>
         }
       />
