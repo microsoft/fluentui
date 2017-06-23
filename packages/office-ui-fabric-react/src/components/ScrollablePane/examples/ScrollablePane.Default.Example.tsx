@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { StickyHeader } from 'office-ui-fabric-react/lib/StickyHeader';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
@@ -11,16 +12,15 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   public render() {
     let contentAreas = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       let newContent = {
-        header: this._createHeader(i),
-        content: this._createContentArea()
+        content: this._createContentArea(i)
       };
       contentAreas.push(newContent);
     }
 
     return (
-      <ScrollablePane contentAreas={ contentAreas } />
+      <ScrollablePane className='scrollablePaneDefaultExample' contentAreas={ contentAreas } />
     );
   }
 
@@ -30,9 +30,16 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     );
   }
 
-  private _createContentArea() {
+  private _createContentArea(index) {
     return (
-      <div>{ lorem(200) }</div>
+      <div>
+        <StickyHeader>
+          <div className="sticky">
+            THIS IS WRAPPED IN STICKY { index } { lorem(20) }
+          </div>
+        </StickyHeader>
+        { lorem(200) }
+      </div>
     );
   }
 }

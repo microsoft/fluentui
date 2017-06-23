@@ -11,6 +11,5 @@ export interface IScrollablePaneProps extends React.Props<ScrollablePane> {
 }
 
 export interface IContentArea {
-  header: JSX.Element;
   content: JSX.Element;
 }

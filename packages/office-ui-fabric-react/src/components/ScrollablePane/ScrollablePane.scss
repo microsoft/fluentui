@@ -7,13 +7,11 @@
 
 
 .root {
-  // position: relative;
 }
 
 .scrollCopy {
   position: absolute;
   width: 100%;
-  border: 3px solid green;
 }
 
 .scrollRegion {
@@ -34,25 +32,17 @@
 }
 
 .layerHostTop {
+  background: $ms-color-white;
   position: absolute;
   top: 0;
-}
-
-.layerHostBottom {
-  position: absolute;
-  bottom: 0;
-}
-
-.topSticky {
-  position: absolute;
-  top: 0;
-  border: 1px solid black;
+  z-index: 1;
   width: 100%;
 }
 
-.bottomSticky {
+.layerHostBottom {
+  background: $ms-color-white;
   position: absolute;
   bottom: 0;
-  border: 1px solid black;
+  z-index: 1;
   width: 100%;
 }

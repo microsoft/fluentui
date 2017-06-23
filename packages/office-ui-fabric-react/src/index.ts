@@ -43,6 +43,7 @@ export * from './SearchBox';
 export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
+export * from './StickyHeader';
 export * from './Styling';
 export * from './TeachingBubble';
 export * from './TextField';
