@@ -112,7 +112,9 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     }
 
     return (
-      <div ref={ this._resolveRef('_buttonWrapper') }>
+      <div
+        ref={ this._resolveRef('_buttonWrapper') }
+        className={ styles.wrapper }>
         <DefaultButton
           { ...swatchColorPickerButtonProps }
           style={ { color: colorToSet && colorToSet } }

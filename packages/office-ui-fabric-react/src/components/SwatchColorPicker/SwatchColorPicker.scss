@@ -17,6 +17,10 @@
   }
 }
 
+.wrapper {
+  display: inline-block;
+}
+
 .item {
   @include ms-font-m;
   @include focus-border();
