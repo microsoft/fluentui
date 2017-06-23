@@ -3,7 +3,7 @@ import { SwatchColorPickerPage } from 'office-ui-fabric-react/lib/components/Swa
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
-export class ColorPickerComponentPage extends React.Component<any, any> {
+export class SwatchColorPickerComponentPage extends React.Component<any, any> {
   public render() {
     return (
       <div ref='pageElement'>
@@ -14,10 +14,6 @@ export class ColorPickerComponentPage extends React.Component<any, any> {
                 {
                   'text': 'Overview',
                   'location': 'Overview'
-                },
-                {
-                  'text': 'Best Practices',
-                  'location': 'Best Practices'
                 },
                 {
                   'text': 'Variants',

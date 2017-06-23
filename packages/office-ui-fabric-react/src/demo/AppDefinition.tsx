@@ -224,7 +224,7 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../components/SwatchColorPicker/SwatchColorPicker').SwatchColorPickerPage,
           key: 'SwatchColorPicker',
           name: 'SwatchColorPicker',
-          url: '#/examples/SwatchColorPicker'
+          url: '#/examples/swatchcolorpicker'
         },
         {
           component: require<any>('../components/TeachingBubble/TeachingBubblePage').TeachingBubblePage,
