@@ -305,7 +305,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     return (
       <ContextualMenu
-        isBeakVisible={ isScreenSmall ? true : false }
+        isBeakVisible={ isScreenSmall }
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
