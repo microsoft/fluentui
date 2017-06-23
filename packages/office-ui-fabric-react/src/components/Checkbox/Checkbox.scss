@@ -50,27 +50,29 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 }
 
 .input {
-  margin: 0px;
-  height: 0px;
-  width: 0px;
-  visibility: hidden;
+  position: absolute;
   opacity: 0;
 }
 
 .label {
   display: flex;
   align-items: center;
-  margin: 0 -4px;
   cursor: pointer;
-  @include focus-border();
+  position: relative;
+  margin: 0 -4px;
+}
 
-  > * {
+:global(.ms-Fabric.is-focusVisible) .isInFocus .label {
+  outline: transparent;
+  &:after {
     margin: 0 4px;
+    @include after-outline();
   }
 }
 
 .box {
   display: flex;
+  margin: 0 4px;
   align-items: center;
   justify-content: center;
   flex: 0 0 $ms-checkbox-label-size;
@@ -109,6 +111,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px !default;
 
 .text {
   flex: 1 0 auto;
+  margin: 0 4px;
 }
 
 // Checked state
