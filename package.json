@@ -17,7 +17,7 @@
     "test": "npm run _rushBuild",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
-    "buildfast": "node scripts/selective-build.js",
+    "buildfast": "npm run _rushBuild",
     "change": "node node_modules/@microsoft/rush/bin/rush change",
     "generate": "node node_modules/@microsoft/rush/bin/rush generate"
   },
