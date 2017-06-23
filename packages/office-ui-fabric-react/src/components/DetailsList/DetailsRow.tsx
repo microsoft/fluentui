@@ -4,6 +4,7 @@ import {
   BaseComponent,
   IDisposable,
   assign,
+  autobind,
   css,
   shallowCompare,
   getNativeProps,
@@ -67,10 +68,10 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   public refs: {
     [key: string]: React.ReactInstance,
-    root: HTMLElement,
     cellMeasurer: HTMLElement
   };
 
+  private _root: HTMLElement;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
@@ -98,7 +99,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     let { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      this._dragDropSubscription = dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(this._root, this._events, this._getRowDragDropOptions());
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -124,7 +125,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
 
       if (this.props.dragDropHelper) {
-        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root, this._events, this._getRowDragDropOptions());
       }
     }
 
@@ -285,11 +286,11 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
   public focus(): boolean {
     const {
-      root
-    } = this.refs;
+      _root
+    } = this;
 
-    if (root) {
-      root.focus();
+    if (_root) {
+      _root.focus();
       return true;
     }
 
@@ -325,16 +326,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     selection.toggleIndexSelected(this.props.itemIndex);
   }
 
-  private _onRootRef(root: FocusZone) {
-    const {
-      refs
-    } = this;
-
-    if (root) {
+  @autobind
+  private _onRootRef(focusZone: FocusZone) {
+    if (focusZone) {
       // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
-      refs.root = ReactDOM.findDOMNode(root) as HTMLElement;
+      this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;
     } else {
-      refs.root = undefined;
+      this._root = undefined;
     }
   }
 
