@@ -16,7 +16,7 @@ const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
-    let cmdBarParamsTextAndIcons: any = { items: items, overflowItems: overflowItems, farItems: farItems };
+    let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (
       <ComponentPage
@@ -42,7 +42,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
               require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts')
             ] }
           />
-        }
+        {/*}
         overview={
           <div>
             <p>
@@ -81,7 +81,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         }
         related={
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
-        }
+        }*/}
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
