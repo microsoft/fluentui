@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Jun 2017 04:12:23 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Jun 2017 20:02:00 GMT and should not be manually modified.
+
+## 4.10.2
+Fri, 23 Jun 2017 20:02:00 GMT
+
+### Patches
+
+- Icon: Adding `data-icon-name` attribute for debugging identification purposes.
 
 ## 4.10.1
 Fri, 23 Jun 2017 04:12:23 GMT
