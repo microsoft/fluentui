@@ -92,6 +92,7 @@
 
   &:active .svg {
     border: 4px solid #969696;
+    -ms-transform: translate(-1px, -1px);
   }
 
     &.disabled,
