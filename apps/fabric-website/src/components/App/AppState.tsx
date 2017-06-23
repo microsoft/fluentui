@@ -316,6 +316,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
         },
         {
+          title: 'SwatchColorPicker',
+          url: '#/components/swatchcolorpicker',
+          component: () => <LoadingComponent title='SwatchColorPicker' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SwatchColorPickerComponentPage').SwatchColorPickerComponentPage))
+        },
+        {
           title: 'TextField',
           url: '#/components/textfield',
           component: () => <LoadingComponent title='TextField' />,

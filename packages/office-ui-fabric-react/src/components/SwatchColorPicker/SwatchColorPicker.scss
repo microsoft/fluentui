@@ -1,4 +1,4 @@
-@import '../../../common/common';
+@import '../../common/common';
 
 .root {
   position: relative;
@@ -103,7 +103,7 @@
   }
 }
 
-.colorPickerContainer {
+.swatchColorPickerContainer {
   clear: both;
   display: inline-block;
   min-width: 180px;

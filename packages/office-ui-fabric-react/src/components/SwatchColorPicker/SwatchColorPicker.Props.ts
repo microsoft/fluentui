@@ -1,14 +1,14 @@
-import { IButtonProps } from '../../../Button';
+import { IButtonProps } from '../../Button';
 
-export interface IPredefinedColorPickerProps {
+export interface ISwatchColorPickerProps {
 
   /**
-   * the number of columns for the color picker
+   * the number of columns for the swatch color picker
    */
   width: number;
 
   /**
-   * The id for the color picker
+   * The id for the swatch color picker
    */
   id?: string;
 
@@ -23,10 +23,10 @@ export interface IPredefinedColorPickerProps {
   selectedId?: string;
 
   /**
-   * Icon props for the color picker. If given the color picker
+   * Icon props for the swatch color picker. If given the swatch color picker
    * will render inside of a menu
    */
-  colorPickerButtonProps?: IButtonProps;
+  swatchColorPickerButtonProps?: IButtonProps;
 
   /**
    * Should the icon color be updated to align
@@ -34,7 +34,7 @@ export interface IPredefinedColorPickerProps {
    */
   updateButtonIconWithColor?: boolean;
 
-  colorPickerItems: IColorPickerItemProps[];
+  swatchColorPickerItems: ISwatchColorPickerItemProps[];
 
   /**
    * Callback issued when the user changes the color
@@ -52,12 +52,12 @@ export interface IPredefinedColorPickerProps {
   onCellFocused?: (color: string) => void;
 
   /**
-   * Is this color Picker disabled?
+   * Is this swatch color picker disabled?
    */
   disabled?: boolean;
 }
 
-export interface IColorPickerItemProps {
+export interface ISwatchColorPickerItemProps {
 
   /**
    * Arbitrary unique string associated with this option
@@ -74,7 +74,7 @@ export interface IColorPickerItemProps {
   /**
    * The type of item this is
    */
-  type: ColorPickerItemType;
+  type: SwatchColorPickerItemType;
 
   /**
    * The CSS-compatible string to describe the color
@@ -103,7 +103,7 @@ export enum CellShape {
   square = 1
 }
 
-export enum ColorPickerItemType {
+export enum SwatchColorPickerItemType {
   Cell = 0,
   MenuItem = 1,
   Divider = 2,
