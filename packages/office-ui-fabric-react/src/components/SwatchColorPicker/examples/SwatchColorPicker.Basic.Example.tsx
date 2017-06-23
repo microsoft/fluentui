@@ -117,8 +117,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'k', label: 'black', type: SwatchColorPickerItemType.Cell, color: 'black' },
               { id: 'l', label: 'grey', type: SwatchColorPickerItemType.Cell, color: 'grey' },
               { id: 'm', label: 'purple', type: SwatchColorPickerItemType.Cell, color: 'purple' },
-              { id: 'n', label: 'yellow', type: SwatchColorPickerItemType.Cell, color: 'yellow' }
-
+              { id: 'n', label: 'yellow', type: SwatchColorPickerItemType.Cell, color: 'yellow' },
+              { id: 'o', label: 'Find More Colors', type: SwatchColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'glasses' } } }
             ]
           } />
         <div>Simple expandable swatch color picker with multiple sections that updates it's icon color and shows a preview color:</div>
@@ -129,6 +129,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           onCellHovered={ (color) => this.setState({ previewColor: color }) }
           onCellFocused={ (color) => this.setState({ previewColor: color }) }
           onColorChanged={ (newColor) => this.setState({ color: newColor }) }
+          onMenuItemClick={ (item) => item.label && alert(item.label + ' was clicked') }
           width={ 4 }
           cellShape={ CellShape.circle }
           swatchColorPickerItems={
@@ -149,7 +150,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'k', label: 'black', type: SwatchColorPickerItemType.Cell, color: 'black' },
               { id: 'l', label: 'grey', type: SwatchColorPickerItemType.Cell, color: 'grey' },
               { id: 'm', label: 'purple', type: SwatchColorPickerItemType.Cell, color: 'purple' },
-              { id: 'n', label: 'yellow', type: SwatchColorPickerItemType.Cell, color: 'yellow' }
+              { id: 'n', label: 'yellow', type: SwatchColorPickerItemType.Cell, color: 'yellow' },
+              { id: 'o', label: 'Find More Colors', type: SwatchColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'glasses' } } }
 
             ]
           } />

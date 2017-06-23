@@ -42,6 +42,11 @@ export interface ISwatchColorPickerProps {
   onColorChanged?: (color: string) => void;
 
   /**
+ * Callback issued when the user click a menu item
+ */
+  onMenuItemClick?: (item: ISwatchColorPickerItemProps) => void;
+
+  /**
    * Callback issued when the user hovers over a color cell
    */
   onCellHovered?: (color: string) => void;

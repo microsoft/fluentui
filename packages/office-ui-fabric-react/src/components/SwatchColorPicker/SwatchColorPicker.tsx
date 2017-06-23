@@ -118,7 +118,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         <DefaultButton
           { ...swatchColorPickerButtonProps }
           style={ { color: colorToSet && colorToSet } }
-          onClick={ this._onClickButton }
+          onClick={ this._onButtonClick }
           aria-haspopup={ true }
           aria-expanded={ (!this.props.disabled && this.state.expanded) ? true : false }
           disabled={ this.props.disabled }
@@ -384,7 +384,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
             ['is-disabled ' + styles.disabled]: item.disabled && item.disabled
           },
         ) }
-        onClick={ () => this._onItemClick(item) }
+        onClick={ () => isCell ? this._onCellClick(item) : this._onMenuItemClick(item) }
         onMouseEnter={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellHovered) : null }
         onMouseLeave={ isCell ? () => this._clearColors([this.props.onCellHovered]) : null }
         onFocus={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellFocused) : null }
@@ -415,11 +415,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   /**
-   * Handle the click on an item
-   * @param item - The item that the click was fired against
+   * Handle the click on a cell
+   * @param item - The cell that the click was fired against
    */
   @autobind
-  private _onItemClick(item: ISwatchColorPickerItemProps) {
+  private _onCellClick(item: ISwatchColorPickerItemProps) {
     if (this.props.disabled || item.disabled) {
       return;
     }
@@ -451,6 +451,28 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   /**
+   * Handle the click on a menu item
+   * @param item - The menu item that the click was fired against
+   */
+  @autobind
+  private _onMenuItemClick(item: ISwatchColorPickerItemProps) {
+    if (this.props.disabled || item.disabled) {
+      return;
+    }
+
+    if (this.props.onMenuItemClick) {
+      this.props.onMenuItemClick(item);
+    }
+
+    // Make sure to clear any hover/focus colors
+    this._clearColors([this.props.onCellHovered, this.props.onCellFocused]);
+
+    this.setState({
+      expanded: false
+    });
+  }
+
+  /**
    * Clear the colors by calling the given callbacks
    * @param callbacks - The callbacks to handle the clear operation
    */
@@ -463,12 +485,16 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   /**
-   * Handler for the button clicks
+   * onClick Handler for the button
    */
   @autobind
-  private _onClickButton() {
+  private _onButtonClick() {
     if (this.props.disabled) {
       return;
+    }
+
+    if (this.state.expanded) {
+      this._onDismiss();
     }
 
     this.setState({
@@ -486,7 +512,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
     // Menu items just need their label text
     if (item.type !== SwatchColorPickerItemType.Cell) {
-      return <span >{ item.label }</span>;
+      return <span className={ styles.menuItem } >{ item.label }</span>;
     }
 
     // Build an SVG for the cell with the given shape and color properties

@@ -96,6 +96,11 @@
 
   &:active .svg {
     border: 4px solid #969696;
+
+    // This is for a transform issue in IE
+    // where the edge of the SVG becomes hidden
+    // (e.g. the browser is not correctly listening to overflow: visible).
+    // Edge does the right thing and is not altered by this
     -ms-transform: translate(-1px, -1px);
   }
 
@@ -115,7 +120,11 @@
 }
 
 .icon {
-  width: 14px;
+  width: 16px;
+}
+
+.menuItem {
+  margin: 0px 4px;
 }
 
 .header {
