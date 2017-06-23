@@ -48,7 +48,8 @@ export function Icon(props: IIconProps): JSX.Element {
         aria-label={ ariaLabel }
         { ...(ariaLabel ? {} : {
           role: 'presentation',
-          'aria-hidden': true
+          'aria-hidden': true,
+          'data-icon-name': iconName,
         }) }
         { ...getNativeProps(props, htmlElementProperties) }
         className={
