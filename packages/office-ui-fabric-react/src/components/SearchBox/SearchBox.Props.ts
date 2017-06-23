@@ -2,7 +2,10 @@ import * as React from 'react';
 import { SearchBox } from './SearchBox';
 
 export interface ISearchBox {
-
+  /**
+   * Sets focus inside the search input box.
+   */
+  focus(): void;
 }
 
 export interface ISearchBoxProps extends React.Props<SearchBox> {
