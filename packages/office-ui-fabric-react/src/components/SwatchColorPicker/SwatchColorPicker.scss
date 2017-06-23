@@ -58,7 +58,7 @@
   &.cellIsSelected {
     &:hover .svg,
     &:active .svg {
-      box-shadow: 0 0 1px 1px
+      box-shadow: 0 0 0 1px #969696;
     }
 
     & .svg {
@@ -73,7 +73,7 @@
   }
 
    &:focus .svg {
-      box-shadow: 0 0 1px 1px
+      box-shadow: 0 0 0 1px #969696;
    }
 
   &:hover .svg,
