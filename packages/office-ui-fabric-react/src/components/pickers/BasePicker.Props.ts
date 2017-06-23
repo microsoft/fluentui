@@ -58,6 +58,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onRemoveSuggestion?: (item: IPersonaProps) => void;
   /**
+   * A function used to validate if raw text entered into the well can be added into the selected items list
+   */
+  onValidateInput?: (input: string) => validationState;
+  /**
    * The text to display while searching for more results in a limited sugesstions list
    */
   searchingText?: ((props: { input: string }) => string) | string;
@@ -125,4 +129,10 @@ export interface IBasePickerSuggestionsProps {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+}
+
+export enum validationState {
+  valid,
+  warning,
+  invalid
 }

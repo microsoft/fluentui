@@ -81,6 +81,17 @@ export class SuggestionsController<T> {
     this.suggestions.splice(index, 1);
   }
 
+  public createGenericSuggestion(name: string, selectedItemsLength: number, validationState: number) {
+    let personaToConvert = {
+      key: name,
+      primaryText: name,
+      imageInitials: name.slice(0, 1),
+      validationState: validationState
+    };
+    let personaToAdd = this._convertSuggestionsToSuggestionItems([personaToConvert])[0];
+    this.currentSuggestion = personaToAdd;
+  }
+
   private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
     suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));

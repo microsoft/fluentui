@@ -4,6 +4,7 @@ import * as React from 'react';
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
+import { validationState } from '../../BasePicker.Props';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
@@ -17,9 +18,12 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
   } = peoplePickerItemProps;
   return (
     <div
-      className={ css('ms-PickerPersona-container', styles.personaContainer, {
-        ['is-selected ' + styles.personaContainerIsSelected]: selected
-      }) }
+      className={ css(
+        'ms-PickerPersona-container',
+        styles.personaContainer,
+        { ['is-selected ' + styles.personaContainerIsSelected]: selected },
+        { ['is-invalid ' + styles.validationError]: item.validationState === validationState.warning }
+      ) }
       data-is-focusable={ true }
       data-selection-index={ index } >
       <div className={ css('ms-PickerItem-content', styles.itemContent) } >
