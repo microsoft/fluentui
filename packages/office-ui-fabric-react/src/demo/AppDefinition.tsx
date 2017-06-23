@@ -221,7 +221,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
-          component: require<any>('../components/SwatchColorPicker/SwatchColorPicker').SwatchColorPickerPage,
+          component: require<any>('../components/SwatchColorPicker/SwatchColorPickerPage').SwatchColorPickerPage,
           key: 'SwatchColorPicker',
           name: 'SwatchColorPicker',
           url: '#/examples/swatchcolorpicker'
