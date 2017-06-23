@@ -6,6 +6,7 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": [
       "chai",

@@ -13,6 +13,7 @@
     "importHelpers": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": [
       "chai",
