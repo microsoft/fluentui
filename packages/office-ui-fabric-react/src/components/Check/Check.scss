@@ -11,8 +11,8 @@ $checkBoxHeight: 24px;
 
 .root {
   line-height: 1;
-  width: $checkBoxHeight;
-  height: $checkBoxHeight;
+  width: $checkBoxHeight - 2px;
+  height: $checkBoxHeight - 2px;
   vertical-align: top;
   position: relative;
   @include ms-user-select(none);
