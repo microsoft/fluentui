@@ -2,33 +2,32 @@ import * as React from 'react';
 import {
   ColorPicker
 } from 'office-ui-fabric-react/lib/ColorPicker';
-import {
-  PredefinedColorPicker, CellShape, ColorPickerItemType
-} from 'office-ui-fabric-react/lib/ColorPicker';
+// import {
+//   PredefinedColorPicker, CellShape, ColorPickerItemType
+// } from 'office-ui-fabric-react/lib/ColorPicker';
 
 export interface IBasicColorPickerExampleState {
   color: string;
-  previewColor: string;
 }
 
 export class ColorPickerBasicExample extends React.Component<any, IBasicColorPickerExampleState> {
-  private width: number = 4;
+  // private width: number = 4;
 
-  constructor(props: any) {
-    super(props);
+  // constructor(props: any) {
+  //   super(props);
 
-    this.state = {
-      color: null,
-      previewColor: null
-    };
-  }
+  //   this.state = {
+  //     color: null,
+  //     previewColor: null
+  //   };
+  // }
 
   public render() {
 
     return (
       <div>
         <ColorPicker color='#FFFFFF' />
-        <div>Simple predefiend color picker:</div>
+        {/*<div>Simple predefiend color picker:</div>
         <PredefinedColorPicker
           width={ 4 }
           cellShape={ CellShape.circle }
@@ -187,7 +186,7 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
               { id: 'e', label: 'Find Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'glasses' } }, disabled: true },
               { id: 'f', label: 'Find More Colors', type: ColorPickerItemType.MenuItem, menuItemButtonProps: { iconProps: { iconName: 'redEye' } } }
             ]
-          } />
+          } />*/}
       </div>
     );
   }

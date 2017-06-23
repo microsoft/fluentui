@@ -1,9 +1,4 @@
 import { IButtonProps } from '../../../Button';
-import { IIconProps } from '../../../Icon';
-export enum CellShape {
-  circle = 0,
-  square = 1
-}
 
 export interface IPredefinedColorPickerProps {
 
@@ -35,7 +30,7 @@ export interface IPredefinedColorPickerProps {
 
   /**
    * Should the icon color be updated to align
-   * wit the selected color? Default is false
+   * with the selected color? Default is false
    */
   updateButtonIconWithColor?: boolean;
 
@@ -52,8 +47,8 @@ export interface IPredefinedColorPickerProps {
   onCellHovered?: (color: string) => void;
 
   /**
- * Callback issued when the user focuses a color cell
- */
+   * Callback issued when the user focuses a color cell
+   */
   onCellFocused?: (color: string) => void;
 
   /**
@@ -70,10 +65,10 @@ export interface IColorPickerItemProps {
   id: string;
 
   /**
- * The label for this item.
- * Visible text uf this item is a header,
- * Tooltip if is this item is normal
- */
+   * The label for this item.
+   * Visible text uf this item is a header,
+   * tooltip if is this item is normal
+   */
   label?: string;
 
   /**
@@ -101,6 +96,11 @@ export interface IColorPickerItemProps {
    * Is this individual item disabled?
    */
   disabled?: boolean;
+}
+
+export enum CellShape {
+  circle = 0,
+  square = 1
 }
 
 export enum ColorPickerItemType {
