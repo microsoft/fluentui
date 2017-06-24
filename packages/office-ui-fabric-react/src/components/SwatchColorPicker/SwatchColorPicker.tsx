@@ -67,10 +67,16 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   public render() {
     let { swatchColorPickerButtonProps } = this.props;
 
-    // If we got button props, put the swatch color picker behind a button
+    // If we got button props, put the swatch color picker behind a button, otherwise
+    // render all of the items
     let renderElement = swatchColorPickerButtonProps !== undefined ? this._buttonToRender() : this._fullSwatchColorPickerToRender();
 
-    return (renderElement);
+    return (
+      <div
+        ref={ this._resolveRef('_buttonWrapper') }
+        className={ css('ms-swatchColorPickerWrapper', styles.wrapper) }>
+        { renderElement }
+      </div>);
   }
 
   /**
@@ -84,15 +90,17 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   /**
-   * Render the swatch color picker with a button as the collapsed/initial state
+   * Render the swatch color picker with a button in the given (collapased vs expanded state)
+   * @returns {JSX.Element[]} - an array of the elements to render
    */
-  private _buttonToRender() {
-    let { selectedIndex } = this.state;
+  private _buttonToRender(): JSX.Element[] {
+    let { selectedIndex, expanded } = this.state;
     let {
       swatchColorPickerButtonProps,
       swatchColorPickerItems,
       updateButtonIconWithColor,
-      width
+      width,
+      disabled
     } = this.props;
 
     let colorToSet = null;
@@ -111,23 +119,31 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       }
     }
 
-    return (
-      <div
-        ref={ this._resolveRef('_buttonWrapper') }
-        className={ styles.wrapper }>
-        <DefaultButton
-          { ...swatchColorPickerButtonProps }
-          style={ { color: colorToSet && colorToSet } }
-          onClick={ this._onButtonClick }
-          aria-haspopup={ true }
-          aria-expanded={ (!this.props.disabled && this.state.expanded) ? true : false }
-          disabled={ this.props.disabled }
-          menuIconProps={ !swatchColorPickerButtonProps.menuIconProps ? { iconName: 'chevronDown' } : swatchColorPickerButtonProps.menuIconProps }
-        >
-        </DefaultButton>
-        { (!this.props.disabled && this.state.expanded) && this._onRenderContainer() }
-      </div>
-    );
+    let elements: JSX.Element[] = [];
+
+    elements.push(<DefaultButton
+      { ...swatchColorPickerButtonProps }
+      style={ { color: colorToSet && colorToSet } }
+      className={
+        css('ms-swatchColorPickerButton',
+          {
+            'is-expanded': expanded
+          }
+        )
+      }
+      onClick={ this._onButtonClick }
+      aria-haspopup={ true }
+      aria-expanded={ (!this.props.disabled && this.state.expanded) ? true : false }
+      disabled={ this.props.disabled }
+      menuIconProps={ !swatchColorPickerButtonProps.menuIconProps ? { iconName: 'chevronDown' } : swatchColorPickerButtonProps.menuIconProps }
+    />);
+
+    // Add the menu if we are endabled and expanded
+    if (!this.props.disabled && this.state.expanded) {
+      elements.push(this._onRenderContainer());
+    }
+
+    return elements;
   }
 
   /**
@@ -141,7 +157,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     return (
       <FocusZone
         isCircularNavigation={ true }
-        className={ styles.swatchColorPickerContainer }
+        className={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer) }
       >
         { this._onRenderItems(swatchColorPickerItems.map((item, index) => { return { ...item, index }; })) }
       </FocusZone>
@@ -169,11 +185,13 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // a chunk of cells
     this._numOfItemsInChunk = -1;
 
-    // Get all the first executable items per chunk. Note, in this
+    // If we have cell items and we are in a menu, get all the
+    // first executable items per chunk. Note, in this
     // context each menuItem is in its own "chunk", only grouped
     // cells are processed as a chunk. This helps with being able
     // to determine the correct aria-posinset and aria-setsize values
-    let firstExecutableItemsPerChunk = containsNonCellItem ? this._getFirstExecutableItemsPerChunk() : null;
+    let firstExecutableItemsPerChunk = (containsNonCellItem && this.props.swatchColorPickerButtonProps) ?
+      this._getFirstExecutableItemsPerChunk() : null;
 
     // Did we find any executable items? (e.g. should be calculate the set information)
     let shouldGetSetInfo = (firstExecutableItemsPerChunk && firstExecutableItemsPerChunk.length > 0);
@@ -377,7 +395,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         aria-setsize={ !isCell ? (setSize && setSize) : null }
         disabled={ this.props.disabled || item.disabled }
         className={ css(
-          'ms-SwatchColorPicker-item',
           (isCell ? styles.cell : styles.item),
           {
             ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index),
@@ -517,7 +534,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape === CellShape.circle ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
+      <svg className={ css(styles.svg, this.props.cellShape === CellShape.circle ? (styles.circle + ' circle') : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
         {
           (this.props.cellShape === CellShape.circle) ?
             <circle cx='50%' cy='50%' r='50%' /> :
@@ -540,7 +557,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         doNotLayer={ false }
         role={ 'menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        className={ styles.swatchColorPickerContainer }
+        className={ css('ms-swatchColorPickerMenu', styles.swatchColorPickerContainer) }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ true }>
