@@ -161,9 +161,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
 
   @autobind
   public removeStickyHeader(header: StickyHeader) {
+    debugger;
     let stickyAbove = this.state.stickyElemAbove.concat([]);
     const indexOfHeader = stickyAbove.indexOf(header);
-    header.setNotSticky();
+    // header.setNotSticky();
     if (indexOfHeader >= 0) {
       stickyAbove.splice(indexOfHeader, 1);
       this.setState({

@@ -41,6 +41,7 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
 
   private _scrollablePane: ScrollablePane;
   private _scrollPaneElement: HTMLElement;
+  private _stickyDistance: number;
 
   constructor(props: IStickyHeaderProps) {
     super(props);
@@ -92,13 +93,29 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
   private _checkBounds() {
     const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
     const { isSticky } = this.state;
-    if (rootBounds.top < this.context.topBound && !isSticky) {
-      this.context.addStickyHeader(this);
-    } else if (rootBounds.bottom >= this.context.topBound && rootBounds.top <= this.context.bottomBound) {
-      debugger;
+    console.log('scrolltop', this.context.scrollContainer.scrollTop);
+
+    if (this._stickyDistance !== undefined) {
+      if (this.context.scrollContainer.scrollTop < this._stickyDistance) {
+        this.context.removeStickyHeader(this);
+      } else {
+        this.context.addStickyHeader(this);
+      }
+      console.log('compare', this.context.scrollContainer.scrollTop, this._stickyDistance);
     } else {
-      this.context.addStickyFooter(this);
+      if (rootBounds.top < this.context.topBound && !isSticky) {
+        if (this._stickyDistance === undefined) {
+          debugger;
+          this._stickyDistance = this.context.scrollContainer.scrollTop;
+        }
+        this.context.addStickyHeader(this);
+      }
     }
+    // else if (rootBounds.bottom >= this.context.topBound && rootBounds.top <= this.context.bottomBound) {
+    //   debugger;
+    // } else {
+    //   this.context.addStickyFooter(this);
+    // }
 
     // if (rootBounds.top > this.context.topBound - this.refs.root.clientHeight && !!isSticky) {
     //   debugger;

@@ -34,7 +34,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     return (
       <div>
         <StickyHeader>
-          <div className="sticky">
+          <div className='sticky'>
             THIS IS WRAPPED IN STICKY { index } { lorem(20) }
           </div>
         </StickyHeader>
