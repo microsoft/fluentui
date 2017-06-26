@@ -250,10 +250,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   private _asyncMeasure() {
-    this._async.setTimeout(() => {
+    this._async.requestAnimationFrame(() => {
       this._updateItemMeasurements();
       this._updateRenderedItems();
-    }, 1);
+    });
   }
 
   private _updateItemMeasurements() {
