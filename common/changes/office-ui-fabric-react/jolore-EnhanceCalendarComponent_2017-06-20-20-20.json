@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Enhancing the calendar component to allow for turning off the day picker and highlighting the \"today\" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "jolore@microsoft.com"
+}
