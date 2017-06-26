@@ -3,8 +3,7 @@ import {
   BaseComponent,
   autobind,
   css,
-  getId,
-  KeyCodes
+  getId
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import {
