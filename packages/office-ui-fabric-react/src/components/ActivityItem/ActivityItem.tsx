@@ -92,6 +92,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         case ActivityType.Move:
           iconString = 'FabricMovetoFolder';
           break;
+        case ActivityType.Delete:
+          iconString = 'Trash';
+          break;
         case ActivityType.Restore:
           iconString = 'Refresh';
           break;
@@ -106,39 +109,44 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _onRenderNameList(props: IActivityItemProps, length: number): JSX.Element {
     let nameListElement: JSX.Element;
     if (length === 1) {
-      nameListElement = <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>;
+      nameListElement = this._onRenderNameElement(this.props.people[0].primaryText);
     } else if (length === 2) {
       nameListElement = (
         <span>
-          <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>
+          { this._onRenderNameElement(this.props.people[0].primaryText) }
           <span> and </span>
-          <span className={ this._classNames.nameText }>{ this.props.people[1].primaryText }</span>
+          { this._onRenderNameElement(this.props.people[1].primaryText) }
         </span>
       )
     } else {
       nameListElement = (
         <span>
-          <span className={ this._classNames.nameText }>{ this.props.people[0].primaryText }</span>
+          { this._onRenderNameElement(this.props.people[0].primaryText) }
           <span>, </span>
-          <span className={ this._classNames.nameText }>{ this.props.people[1].primaryText }</span>
+          { this._onRenderNameElement(this.props.people[1].primaryText) }
           <span> and </span>
-          <span className={ this._classNames.nameText }>{ this.props.people.length === 3 ? '1 other' : `${this.props.people.length - 2} others` }</span>
+          { this._onRenderNameElement(this.props.people.length === 3 ? '1 other' : `${this.props.people.length - 2} others`) }
         </span>
       )
     }
     return nameListElement;
   }
 
+  // Renders a single name.
+  @autobind
+  private _onRenderNameElement(primaryText: string): JSX.Element {
+    return (<span className={ this._classNames.nameText }>{ primaryText }</span>);
+  }
+
   // Render the comment text and attempt to highlight the mentioned name if one was used.
   @autobind
   private _onRenderCommentText(props: IActivityItemProps): JSX.Element {
-    let commentElement: JSX.Element = <div className={ this._classNames.commentText }>{ props.commentString }</div>
-
+    let commentElement: JSX.Element = <div className={ this._classNames.commentText }>{ props.commentString }</div>;
     if (props.mentionedName && props.commentString.indexOf(props.mentionedName) !== -1) {
       let parsedComment = props.commentString.split(props.mentionedName);
       let nameElement = props.mentionedHref ?
         (<a href={ props.mentionedHref } className={ this._classNames.docLink }>{ props.mentionedName }</a>) :
-        (<span className={ this._classNames.nameText }>{ props.mentionedName }</span>);
+        (this._onRenderNameElement(props.mentionedName))
 
       commentElement = (
         <div className={ this._classNames.commentText }>
@@ -148,7 +156,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         </div>
       );
     }
-
     return commentElement;
   }
 

@@ -79,36 +79,26 @@ export class ActivityDescription extends BaseComponent<(IActivityItemProps & { _
     let secondConnectingElement: JSX.Element;
 
     if (props.fileActivity && props.fileActivity.fileName) {
-      fileNameElement = props.fileActivity.fileHref ?
-        (<a className={ this.props._classNames.docLink } href={ props.fileActivity.fileHref }>{ props.fileActivity.fileName }</a>) :
-        (<span className={ this.props._classNames.nameText }>{ props.fileActivity.fileName }</span>);
+      fileNameElement = this._onRenderFileFolder(props.fileActivity.fileName, props.fileActivity.fileHref);
     }
 
     if (props.fileActivity && props.fileActivity.newFileName) {
-      sharedRenamedElement = props.fileActivity.newFileHref ?
-        (<a className={ this.props._classNames.docLink } href={ props.fileActivity.newFileHref }>{ props.fileActivity.newFileName }</a>) :
-        (<span className={ this.props._classNames.nameText }>{ props.fileActivity.newFileName }</span>);
+      sharedRenamedElement = this._onRenderFileFolder(props.fileActivity.newFileName, props.fileActivity.newFileHref);
       firstConnectingElement = <span> { firstConnectingText } </span>;
     }
 
     if (props.sharedWithName) {
-      sharedRenamedElement = props.sharedWithName ?
-        (<a className={ this.props._classNames.docLink } href={ props.sharedWithHref }>{ props.sharedWithName }</a>) :
-        (<span className={ this.props._classNames.nameText }>{ props.sharedWithName }</span>);
+      sharedRenamedElement = this._onRenderFileFolder(props.sharedWithName, props.sharedWithHref);
       firstConnectingElement = <span> { firstConnectingText } </span>;
     }
 
     if (props.fileActivity && props.fileActivity.sourceFolderName) {
-      sourceFolderElement = props.fileActivity.sourceFolderHref ?
-        (<a className={ this.props._classNames.docLink } href={ props.fileActivity.sourceFolderHref }>{ props.fileActivity.sourceFolderName }</a>) :
-        (<span className={ this.props._classNames.nameText }>{ props.fileActivity.sourceFolderName }</span>);
+      sourceFolderElement = this._onRenderFileFolder(props.fileActivity.sourceFolderName, props.fileActivity.sourceFolderHref);
       firstConnectingElement = <span> { firstConnectingText } </span>;
     }
 
     if (props.fileActivity && props.fileActivity.destinationFolderName) {
-      destinationFolderElement = props.fileActivity.destinationFolderHref ?
-        (<a className={ this.props._classNames.docLink } href={ props.fileActivity.destinationFolderHref }>{ props.fileActivity.destinationFolderName }</a>) :
-        (<span className={ this.props._classNames.nameText }>{ props.fileActivity.destinationFolderName }</span>);
+      destinationFolderElement = this._onRenderFileFolder(props.fileActivity.destinationFolderName, props.fileActivity.destinationFolderHref);
       secondConnectingElement = <span> { secondConnectingText } </span>;
     }
 
@@ -125,4 +115,12 @@ export class ActivityDescription extends BaseComponent<(IActivityItemProps & { _
     );
   }
 
+  // Render files and folders as links if an href exists, otherwise just as plain bold text.
+  private _onRenderFileFolder(name: string, href?: string) {
+    let nameElement = <span className={ this.props._classNames.nameText }>{ name }</span>;
+    if (href) {
+      nameElement = <a className={ this.props._classNames.docLink } href={ href }>{ name }</a>;
+    }
+    return nameElement;
+  }
 }
