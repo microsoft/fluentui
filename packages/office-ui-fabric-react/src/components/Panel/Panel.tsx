@@ -82,6 +82,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       layerProps,
       type,
       customWidth,
+      headerClassName,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
@@ -93,6 +94,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
+    const renderProps: IPanelProps = { ...this.props, componentId: id };
 
     if (!isOpen && !isAnimating) {
       return null;
@@ -158,12 +160,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
               firstFocusableSelector={ firstFocusableSelector }
             >
               <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
-                { onRenderNavigation(this.props, this._onRenderNavigation) }
+                { onRenderNavigation(renderProps, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                { onRenderHeader(this.props, this._onRenderHeader) }
-                { onRenderBody(this.props, this._onRenderBody) }
-                { onRenderFooter(this.props, this._onRenderFooter) }
+                { onRenderHeader(renderProps, this._onRenderHeader) }
+                { onRenderBody(renderProps, this._onRenderBody) }
+                { onRenderFooter(renderProps, this._onRenderFooter) }
               </div>
             </FocusTrapZone>
           </div>
@@ -200,8 +202,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderNavigation(props): JSX.Element {
-    let {
+  private _onRenderNavigation(props: IPanelProps): JSX.Element {
+    const {
       closeButtonAriaLabel,
       hasCloseButton
     } = props;
@@ -218,16 +220,18 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderHeader(props): JSX.Element {
-    let {
+  private _onRenderHeader(props: IPanelProps): JSX.Element {
+    const {
       headerText,
-      headerTextId,
+      componentId,
       headerClassName = '',
     } = props;
+
+    const { id } = this.state;
     return (
       headerText &&
       <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId } role='heading'>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ componentId + '-headerText' } role='heading'>
           { headerText }
         </p>
       </div>
@@ -235,7 +239,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderBody(props): JSX.Element {
+  private _onRenderBody(props: IPanelProps): JSX.Element {
     return (
       <div className={ css('ms-Panel-content', styles.content) } ref={ this._resolveRef('_content') }>
         { props.children }
@@ -244,7 +248,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderFooter(props): JSX.Element {
+  private _onRenderFooter(props: IPanelProps): JSX.Element {
     let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
     return (

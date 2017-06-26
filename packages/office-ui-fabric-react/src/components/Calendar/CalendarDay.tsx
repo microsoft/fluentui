@@ -105,7 +105,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.prevMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronRight' : 'chevronLeft' } />
+              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
@@ -115,7 +115,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronLeft' : 'chevronRight' } />
+              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
             </span >
           </div >
           <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />

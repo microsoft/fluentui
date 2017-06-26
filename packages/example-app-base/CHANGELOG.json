@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@uifabric/example-app-base_v4.0.0",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bff150fa91e87c31d8d433092b007ee604f22d8b",
+            "comment": "Add support for adding a default route in createApp. Remove unused hideChrome parameter."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.5 <1.0.0` to `>=0.11.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.2",
       "tag": "@uifabric/example-app-base_v3.0.2",
       "date": "Wed, 14 Jun 2017 06:02:15 GMT",

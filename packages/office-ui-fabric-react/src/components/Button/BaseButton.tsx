@@ -18,6 +18,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton, IButtonStyles } from './Button.Props';
 import { IconButton } from './IconButton/IconButton';
+import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -26,16 +27,6 @@ export interface IBaseButtonProps extends IButtonProps {
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
-}
-
-interface IButtonClassNames {
-  root?: string;
-  flexContainer?: string;
-  icon?: string;
-  label?: string;
-  menuIcon?: string;
-  description?: string;
-  screenReaderText?: string;
 }
 
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
@@ -92,7 +83,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName
          } = this.props;
 
-    this._classNames = this._getClassNames(
+    this._classNames = getClassNames(
       styles,
       className,
       variantClassName,
@@ -186,14 +177,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const className = mergeStyles(baseClassName + '-flexContainer', styles.flexContainer);
-
     return React.createElement(
       tag,
       buttonProps,
       React.createElement(
         'div',
-        { className },
+        { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
         onRenderText(props, this._onRenderText),
         onRenderDescription(props, this._onRenderDescription),
@@ -222,7 +211,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return iconProps && (
-      <Icon { ...iconProps } className={ this._classNames.icon } />
+      Icon({
+        ...iconProps,
+        className: this._classNames.icon
+      })
     );
   }
 
@@ -303,8 +295,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       disabled,
       menuIconName,
-      menuIconProps,
-      styles
+      menuIconProps
        } = this.props;
 
     if (menuIconProps === undefined) {
@@ -317,14 +308,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={
-            mergeStyles(
-              `${baseClassName}-icon`,
-              styles.menuIcon,
-              disabled && styles.menuIconDisabled,
-              !disabled && checked && styles.menuIconChecked,
-              menuIconProps.className
-            ) as string }
+          className={ this._classNames.icon }
         />
         :
         null
@@ -339,7 +323,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
-        className={ mergeStyles('ms-BaseButton-menuhost', menuProps.className) as string }
+        className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }

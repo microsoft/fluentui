@@ -172,9 +172,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
-                    data-automation-id='error-message'>
-                    <Icon iconName='error' className={ styles.errorIcon } />
-                    { errorMessage }
+                  >
+                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
+                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>
