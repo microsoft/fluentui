@@ -10,7 +10,7 @@ import {
   IRenderFunction
 } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { Image, ImageFit, ImageLoadState, ImageCoverStyle } from '../../Image';
+import { Image, ImageFit, ImageLoadState } from '../../Image';
 import {
   IPersonaProps,
   PersonaInitialsColor,
