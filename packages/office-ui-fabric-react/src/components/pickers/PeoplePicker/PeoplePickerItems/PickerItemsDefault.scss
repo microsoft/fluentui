@@ -50,6 +50,13 @@
       color: $ms-color-redDark;
       border-bottom: 2px dotted $ms-color-redDark;
     }
+
+    &.personaContainerIsSelected {
+      :global(.ms-Persona-primaryText) {
+        color: $ms-color-white;
+        border-bottom: 2px dotted $ms-color-white;
+      }
+    }
   }
 
   @media screen and (-ms-high-contrast: active) {
