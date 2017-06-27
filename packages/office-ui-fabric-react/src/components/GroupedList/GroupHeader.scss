@@ -1,5 +1,11 @@
 @import '../../common/common';
 
+// component slots
+
+$detailsList-item-hover-color: $listItemHoverColor;
+$detailsList-item-selected-color: $listItemSelectedColor;
+$detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
+
 $groupHeader-ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
 $groupHeader-ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
 $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
@@ -10,13 +16,13 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   @include focus-border();
 
   &:hover {
-    background: $ms-color-themeLighterAlt;
+    background: $detailsList-item-hover-color;
   }
   &.rootIsSelected {
-    background: $ms-color-themeLighter;
+    background: $detailsList-item-selected-color;
   }
   &.rootIsSelected:hover {
-    background: $ms-color-themeLight;
+    background: $detailsList-item-selected-hover-color;
   }
 }
 
@@ -27,18 +33,18 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   cursor: default;
   padding: 6px;
   transform: translateY(50%);
-  margin-top: -12px;
+  margin-top: -18px;
   box-sizing: border-box;
   vertical-align: top;
   background: none;
   border: none;
-  font-size: $ms-icon-size-s;
-  top: 4px;
+  font-size: $ms-icon-size-l;
+  top: 0px;
 }
 
 .check {
   opacity: 0;
-  margin-top: -10px;
+  margin-top: -12px;
 
   &:focus {
     opacity: 1;
@@ -52,14 +58,14 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 .title {
   @include ms-font-xl;
-  padding: 14px 6px;
+  padding: 6px 6px 9px 6px;
   display: inline-block;
   cursor: pointer;
   outline: 0;
 }
 
 .expand {
-  width: 36px;
+  width: 32px;
   height: 40px;
   color: $ms-color-neutralSecondary;
 
