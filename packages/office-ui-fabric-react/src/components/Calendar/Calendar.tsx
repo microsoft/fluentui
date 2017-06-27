@@ -26,13 +26,15 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     onSelectDate: null,
     onDismiss: null,
     isMonthPickerVisible: true,
+    isDayPickerVisible: true,
     value: null,
     today: new Date(),
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     autoNavigateOnSelection: false,
     showGoToToday: true,
-    strings: null
+    strings: null,
+    highlightCurrentMonth: false
   };
 
   public refs: {
@@ -81,7 +83,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, autoNavigateOnSelection, showGoToToday } = this.props;
+    let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, isDayPickerVisible, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth } = this.props;
     let { selectedDate, navigatedDate } = this.state;
 
     return (
@@ -91,12 +93,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          isMonthPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible)
+          isMonthPickerVisible && isDayPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
+          isMonthPickerVisible && !isDayPickerVisible && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible)
         ) } >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
               <div className={ css('ms-DatePicker-wrap', styles.wrap) }>
-                <CalendarDay
+                { isDayPickerVisible && <CalendarDay
                   selectedDate={ selectedDate }
                   navigatedDate={ navigatedDate }
                   today={ this.props.today }
@@ -108,11 +111,14 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   autoNavigateOnSelection={ autoNavigateOnSelection }
                   strings={ strings }
                   ref='dayPicker' />
+                }
 
                 { isMonthPickerVisible && <CalendarMonth
                   navigatedDate={ navigatedDate }
                   strings={ strings }
-                  onNavigateDate={ this._onNavigateDate } /> }
+                  onNavigateDate={ this._onNavigateDate }
+                  today={ this.props.today }
+                  highlightCurrentMonth={ highlightCurrentMonth } /> }
 
                 { showGoToToday &&
                   <span
@@ -206,7 +212,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
-    if (this.props.onDismiss() != null) {
+    if (this.props.onDismiss != null) {
       this.props.onDismiss();
     }
   }
