@@ -137,13 +137,15 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     if (isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0) {
         this._selectedIndicies = {};
-        this._events.on(window, 'mousemove', this._onMouseMove);
-        this._events.on(this._scrollableParent, 'scroll', this._onMouseMove);
+        this._events.on(window, 'mousemove', this._onAsyncMouseMove);
+        this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(window, 'click', this._onMouseUp, true);
 
         this._autoScroll = new AutoScroll(this.refs.root);
         this._scrollTop = this._scrollableSurface.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
+
+        this._onMouseMove(ev);
       }
     }
   }
@@ -157,7 +159,20 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     };
   }
 
+  private _onAsyncMouseMove(ev: MouseEvent) {
+    this._async.requestAnimationFrame(() => {
+      this._onMouseMove(ev);
+    });
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
   private _onMouseMove(ev: MouseEvent) {
+    if (!this._autoScroll) {
+      return;
+    }
+
     if (ev.clientX !== undefined) {
       this._lastMouseEvent = ev;
     }
@@ -167,6 +182,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
     if (!this._dragOrigin) {
       this._dragOrigin = currentPoint;
+      console.log(this._dragOrigin);
     }
 
     if (ev.buttons !== undefined && ev.buttons === 0) {
@@ -189,13 +205,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
           height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
         };
 
+        this._evaluateSelection(dragRect, rootRect);
+
         this.setState({ dragRect });
-        this._evaluateSelection(dragRect);
       }
     }
-
-    ev.stopPropagation();
-    ev.preventDefault();
 
     return false;
   }
@@ -250,14 +264,13 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return false;
   }
 
-  private _evaluateSelection(dragRect: IRectangle) {
+  private _evaluateSelection(dragRect: IRectangle, rootRect: IRectangle) {
     // Break early if we don't need to evaluate.
     if (!dragRect) {
       return;
     }
 
     let { selection } = this.props;
-    let rootRect = this._getRootRect();
     let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
 
     if (!this._itemRectCache) {
