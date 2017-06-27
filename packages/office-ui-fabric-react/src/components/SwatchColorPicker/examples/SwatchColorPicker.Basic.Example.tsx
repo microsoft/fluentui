@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   SwatchColorPicker,
-  CellShape,
   SwatchColorPickerItemType
 } from 'office-ui-fabric-react/lib/SwatchColorPicker';
 
@@ -28,8 +27,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
       <div>
         <div>Simple swatch color picker:</div>
         <SwatchColorPicker
-          width={ 4 }
-          cellShape={ CellShape.circle }
+          columnCount={ 4 }
+          cellShape={ 'circle' }
           swatchColorPickerItems={
             [
               { id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00' },
@@ -41,8 +40,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div style={ { height: '235px', position: 'relative' } }>
           <div>Simple swatch color picker with multiple sections:</div>
           <SwatchColorPicker
-            width={ this.width }
-            cellShape={ CellShape.circle }
+            columnCount={ this.width }
+            cellShape={ 'circle' }
             swatchColorPickerItems={
               [
                 { id: '0', label: 'Colors', type: SwatchColorPickerItemType.Header },
@@ -69,8 +68,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div>Simple expandable swatch color picker with multiple sections:</div>
         <SwatchColorPicker
           swatchColorPickerButtonProps={ { iconProps: { iconName: 'color' }, menuIconProps: { iconName: 'add' } } }
-          width={ 4 }
-          cellShape={ CellShape.square }
+          columnCount={ 4 }
+          cellShape={ 'square' }
           swatchColorPickerItems={
             [
               { id: '0', label: 'Colors', type: SwatchColorPickerItemType.Header },
@@ -97,8 +96,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
           updateButtonIconWithColor={ true }
-          width={ 4 }
-          cellShape={ CellShape.circle }
+          columnCount={ 4 }
+          cellShape={ 'circle' }
           swatchColorPickerItems={
             [
               { id: '0', label: 'Colors', type: SwatchColorPickerItemType.Header },
@@ -130,8 +129,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           onCellFocused={ (color) => this.setState({ previewColor: color }) }
           onColorChanged={ (newColor) => this.setState({ color: newColor }) }
           onMenuItemClick={ (item) => item.label && alert(item.label + ' was clicked') }
-          width={ 4 }
-          cellShape={ CellShape.circle }
+          columnCount={ 4 }
+          cellShape={ 'circle' }
           swatchColorPickerItems={
             [
               { id: '0', label: 'Colors', type: SwatchColorPickerItemType.Header },
@@ -159,8 +158,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
           disabled={ true }
-          width={ 4 }
-          cellShape={ CellShape.square }
+          columnCount={ 4 }
+          cellShape={ 'square' }
           swatchColorPickerItems={
             [
               { id: '0', label: 'Colors', type: SwatchColorPickerItemType.Header },
@@ -174,8 +173,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div>Simple expandable swatch color picker with a few disabled items:</div>
         <SwatchColorPicker
           swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
-          width={ 4 }
-          cellShape={ CellShape.square }
+          columnCount={ 4 }
+          cellShape={ 'square' }
           swatchColorPickerItems={
             [
               { id: '0', label: 'Colors', type: SwatchColorPickerItemType.Header },

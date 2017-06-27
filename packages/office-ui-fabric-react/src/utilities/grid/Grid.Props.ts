@@ -6,9 +6,9 @@ export interface IGridProps {
   items: any[];
 
   /**
-   * The width of the grid (e.g. number of columns)
+   * The number of columns
    */
-  width: number;
+  columnCount: number;
 
   /**
    * Custom renderer for the individual items

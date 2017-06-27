@@ -1,136 +1,79 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
+import { BaseComponent, getId } from '../../Utilities';
 import { IGridProps } from './Grid.Props';
 
-export interface IGridState {
-
-}
-
-export class Grid extends BaseComponent<IGridProps, IGridState> {
+export class Grid extends BaseComponent<IGridProps, {}> {
 
   // Used to track the index of item we are on while building grid
   private _gridIndex;
 
   private _id;
 
+  private _items: any[][];
+
   constructor(props: IGridProps) {
     super(props);
-    this._gridIndex = 0;
+    this._items = [];
+    this._id = getId();
   }
 
   public render() {
     let {
       items,
-      width,
+      columnCount,
       onRenderItem,
       positionInSet,
       setSize
     } = this.props;
 
-    // Reset the index so we will start at the beginning
-    this._gridIndex = 0;
+    // Reset the items array so we will start fresh
+    this._items = [];
+
+    items.map((item, index) => {
+
+      // Get the row index to place cells into
+      let rowIndex = Math.floor(index / columnCount);
+
+      // Create a new array at rowIndex if one
+      // does not exist yet
+      if (!this._items[rowIndex]) {
+        this._items[rowIndex] = [];
+      }
+
+      this._items[rowIndex].push(item);
+    });
 
     // Create the table/grid
     return (
       <table
+        id={ this._id }
         role={ 'grid' }
         aria-posinset={ positionInSet }
         aria-setsize={ setSize }
         style={ { padding: '2px', outline: 'none' } }>
         <tbody>
-          { this._buildGridContents() }
+          {
+            this._items.map((rows: any[], rowIndex) => {
+              return (
+                <tr
+                  role={ 'row' }
+                  key={ this._id + '-' + rowIndex + '-row' }>
+                  { rows.map((cell) => {
+                    return (
+                      <td
+                        role={ 'presentation' }
+                        key={ this._id + '-' + cell.index + '-cell' }
+                        style={ { padding: '0px' } }>
+                        { onRenderItem(cell, cell.index) }
+                      </td>
+                    );
+                  }) }
+                </tr>
+              );
+            })
+          }
         </tbody>
       </table>
-    );
-  }
-
-  /**
-   * Builds the contents of the grid
-   * @returns {JSX.Element[]} - The array of elements that make up the rows for the grid
-   */
-  private _buildGridContents(): JSX.Element[] {
-    let {
-      items,
-      width
-    } = this.props;
-    let elements: JSX.Element[] = [];
-
-    // Walk across the children, creating rows if
-    // index % width === zero (e.g. we need to create a new row)
-    let previousIndex = this._gridIndex;
-
-    while (this._gridIndex < items.length) {
-      if (this._gridIndex % width === 0) {
-        elements.push(this._buildRow());
-      }
-
-      // Make sure we do not get into an infinite loop
-      if (this._gridIndex === previousIndex) {
-        break;
-      }
-    }
-
-    return elements;
-  }
-
-  /**
-   * Builds a row for the grid
-   * @returns {JSX.Element} - The row element that has at most width cells
-   */
-  private _buildRow(): JSX.Element {
-    // Build the tr/row contents
-    return (
-      <tr
-        role={ 'row' }
-        key={ this._gridIndex + '-row' }>
-        { this._buildRowContents() }
-      </tr>
-    );
-  }
-
-  /**
-   * Builds the contents of the row
-   * @returns {JSX.Element[]} - The array of elements that make up the cells for a row of the grid
-   */
-  private _buildRowContents(): JSX.Element[] {
-    let {
-      items,
-      width
-    } = this.props;
-    let elements: JSX.Element[] = [];
-
-    // Walk across the children building the cells
-    while (this._gridIndex < items.length) {
-      elements.push(this._buildCell(items[this._gridIndex]));
-      this._gridIndex++;
-
-      // If we are at a row boundry, break
-      if (this._gridIndex % width === 0) {
-        break;
-      }
-    }
-
-    return elements;
-  }
-
-  /**
-   * Builds a cell
-   * NOTE: Make sure your items have role="gridcell"!
-   * @returns {JSX.Element} - the cell elements
-   */
-  private _buildCell(item: any): JSX.Element {
-    let {
-      onRenderItem
-    } = this.props;
-
-    // Build the column/td/item
-    return (
-      <td
-        role={ 'presentation' }
-        key={ this._gridIndex + '-cell' }
-        style={ { padding: '0px' } }>
-        { onRenderItem(item, this._gridIndex) }
-      </td>
     );
   }
 }

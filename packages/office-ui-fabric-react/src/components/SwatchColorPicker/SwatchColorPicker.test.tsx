@@ -41,7 +41,7 @@ describe('SwatchColorPicker', () => {
     const wrapper = mount(
       <SwatchColorPicker
         swatchColorPickerItems={ DEFAULT_OPTIONS }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu');
@@ -56,7 +56,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -69,7 +69,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -92,7 +92,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -141,7 +141,7 @@ describe('SwatchColorPicker', () => {
     const wrapper = mount(
       <SwatchColorPicker
         swatchColorPickerItems={ DEFAULT_OPTIONS }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
@@ -178,7 +178,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
-        width={ 4 }
+        columnCount={ 4 }
         disabled={ true }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
@@ -202,7 +202,7 @@ describe('SwatchColorPicker', () => {
         swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00', disabled: true }] }
         onColorChanged={ (color) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -235,7 +235,7 @@ describe('SwatchColorPicker', () => {
         swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.MenuItem, disabled: true }] }
         onMenuItemClick={ (item) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -263,7 +263,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00', disabled: true }] }
         onColorChanged={ (color) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -279,7 +279,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.MenuItem, disabled: true }] }
         onMenuItemClick={ (item) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
 
@@ -295,7 +295,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00' }] }
         onColorChanged={ (color) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
@@ -315,7 +315,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.MenuItem }] }
         onMenuItemClick={ (item) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
@@ -335,7 +335,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00' }] }
         onCellHovered={ (color) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
@@ -355,7 +355,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00' }] }
         onCellFocused={ (color) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
@@ -376,7 +376,7 @@ describe('SwatchColorPicker', () => {
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00', disabled: true }] }
         onCellFocused={ (color) => eventFireCounter++ }
         onCellHovered={ (color) => eventFireCounter++ }
-        width={ 4 }
+        columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');

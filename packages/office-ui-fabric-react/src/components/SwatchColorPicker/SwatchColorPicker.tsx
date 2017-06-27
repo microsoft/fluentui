@@ -9,8 +9,7 @@ import {
 import {
   ISwatchColorPickerProps,
   ISwatchColorPickerItemProps,
-  SwatchColorPickerItemType,
-  CellShape
+  SwatchColorPickerItemType
 } from './SwatchColorPicker.Props';
 import { DirectionalHint } from '../../ContextualMenu';
 import { getColorFromString } from '../../utilities/color/colors';
@@ -29,7 +28,7 @@ export interface ISwatchColorPickerState {
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> {
 
   public static defaultProps = {
-    cellShape: CellShape.circle,
+    cellShape: 'circle',
     updateButtonIconWithColor: false,
     selectedId: null,
     disabled: false
@@ -93,17 +92,54 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Render the swatch color picker with a button in the given (collapased vs expanded state)
    * @returns {JSX.Element[]} - an array of the elements to render
    */
-  private _buttonToRender(): JSX.Element[] {
+  private _buttonToRender(): JSX.Element {
     let { selectedIndex, expanded } = this.state;
     let {
       swatchColorPickerButtonProps,
-      swatchColorPickerItems,
-      updateButtonIconWithColor,
-      width,
       disabled
     } = this.props;
 
-    let colorToSet = null;
+    let colorToSet = this._getSelectedColorToSet();
+
+    return (
+      <div>
+        <DefaultButton
+          { ...swatchColorPickerButtonProps }
+          style={ { color: colorToSet && colorToSet } }
+          className={
+            css('ms-swatchColorPickerButton',
+              {
+                'is-expanded': expanded
+              }
+            )
+          }
+          onClick={ this._onButtonClick }
+          aria-haspopup={ true }
+          aria-expanded={ !disabled && expanded }
+          disabled={ disabled }
+          menuIconProps={ swatchColorPickerButtonProps.menuIconProps ?
+            swatchColorPickerButtonProps.menuIconProps :
+            { iconName: 'chevronDown' } }
+        />
+        { (!disabled && expanded) &&
+          this._onRenderContainer()
+        }
+      </div>
+    );
+  }
+
+  /**
+   * Gets the color for the selected index
+   * @returns {string} - The color for the selected index,
+   *   or null if: we are not updating the button icon with color,
+   *   there is not a valid selected index, or if we do not have a valid color
+   */
+  private _getSelectedColorToSet(): string {
+    let { selectedIndex } = this.state;
+    let {
+      swatchColorPickerItems,
+      updateButtonIconWithColor
+    } = this.props;
 
     // Do we need to update the button with the selected
     // item's color? If so, attempt to grab the color
@@ -115,35 +151,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       if (swatchColorPickerItem.type === SwatchColorPickerItemType.Cell &&
         swatchColorPickerItem.color !== null &&
         swatchColorPickerItem.color.length > 0) {
-        colorToSet = swatchColorPickerItem.color;
+        return swatchColorPickerItem.color;
       }
     }
 
-    let elements: JSX.Element[] = [];
-
-    elements.push(<DefaultButton
-      { ...swatchColorPickerButtonProps }
-      style={ { color: colorToSet && colorToSet } }
-      className={
-        css('ms-swatchColorPickerButton',
-          {
-            'is-expanded': expanded
-          }
-        )
-      }
-      onClick={ this._onButtonClick }
-      aria-haspopup={ true }
-      aria-expanded={ (!this.props.disabled && this.state.expanded) ? true : false }
-      disabled={ this.props.disabled }
-      menuIconProps={ !swatchColorPickerButtonProps.menuIconProps ? { iconName: 'chevronDown' } : swatchColorPickerButtonProps.menuIconProps }
-    />);
-
-    // Add the menu if we are endabled and expanded
-    if (!this.props.disabled && this.state.expanded) {
-      elements.push(this._onRenderContainer());
-    }
-
-    return elements;
+    return null
   }
 
   /**
@@ -151,9 +163,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * the always visible case as well as the expandable case (when rendered in a menu)
    * @returns {JSX.Element} - The element representing the fully rendered swatch color picker
    */
-  @autobind
   private _fullSwatchColorPickerToRender(): JSX.Element {
-    let { swatchColorPickerItems, width } = this.props;
+    let { swatchColorPickerItems, columnCount } = this.props;
     return (
       <FocusZone
         isCircularNavigation={ true }
@@ -169,20 +180,14 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param items - The swatch color picker items
    * @returns {JSX.Element[]} - An array of all the items in the swatch color picker
    */
-  @autobind
   private _onRenderItems(items: ISwatchColorPickerItemProps[]): JSX.Element[] {
-    let {
-      width
-    } = this.props;
-
-    // Make sure we have a cell that we need to render
-    let containsNonCellItem = findIndex(items, (item => item.type !== SwatchColorPickerItemType.Cell)) > -1;
 
     // This holds all of the element for the items
     let elements: JSX.Element[] = [];
 
-    // This tracks the index to jump to after processing
-    // a chunk of cells
+    // The number of cells that were processed in the previous iteration of loop.
+    // This will be used to increase the index to the item after the last processed
+    // item
     this._numOfItemsInChunk = -1;
 
     // If we have cell items and we are in a menu, get all the
@@ -190,7 +195,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // context each menuItem is in its own "chunk", only grouped
     // cells are processed as a chunk. This helps with being able
     // to determine the correct aria-posinset and aria-setsize values
-    let firstExecutableItemsPerChunk = (containsNonCellItem && this.props.swatchColorPickerButtonProps) ?
+    let firstExecutableItemsPerChunk = this.props.swatchColorPickerButtonProps ?
       this._getFirstExecutableItemsPerChunk() : null;
 
     // Did we find any executable items? (e.g. should be calculate the set information)
@@ -219,7 +224,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
           // exists within (this will process all of the
           // consecutive cells unitl the next non-cell type
           // is incountered (or if we reach the end of the items))
-          elements.push(this._renderNextChuckOfCellItems(
+          elements.push(this._renderNextChunkOfCellItems(
             items.slice(index),
             posInSet,
             setSize));
@@ -261,11 +266,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param setSize - The size of the total set
    * @returns {JSX.Element} - The grid that represents the chunk
    */
-  private _renderNextChuckOfCellItems(
+  private _renderNextChunkOfCellItems(
     items: ISwatchColorPickerItemProps[],
-    posInSet: number = null,
-    setSize: number = null): JSX.Element {
-    let chunkItems = this._getNextChuckOfCellItems(items);
+    posInSet: number | null = null,
+    setSize: number | null = null): JSX.Element {
+    let chunkItems = this._getNextChunkOfCellItems(items);
 
     // Update the number of items in chunk
     this._numOfItemsInChunk = chunkItems.length > 0 ? chunkItems.length : -1;
@@ -274,7 +279,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       <Grid
         key={ this._id + items[0].id + '-grid' }
         items={ chunkItems }
-        width={ this.props.width }
+        columnCount={ this.props.columnCount }
         onRenderItem={ this._renderOption }
         positionInSet={ posInSet }
         setSize={ setSize }
@@ -288,7 +293,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param itemId - The id of item to find the index of
    * @returns {number} - The position in the set
    */
-  private _getPositionInSet(firstExecutableItemsPerChunk: ISwatchColorPickerItemProps[], itemId: string): number {
+  private _getPositionInSet(firstExecutableItemsPerChunk: ISwatchColorPickerItemProps[], itemId: string): number | null {
 
     // Find the index of the given id in the list of first executable items per chunk
     let index = findIndex(firstExecutableItemsPerChunk, (executableItem) => (executableItem.id === itemId));
@@ -303,7 +308,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @returns {ISwatchColorPickerItemProps[]} - the array of consecutive cells starting at index zero
    *   (and continuing to the first non-cell type or the end of the items)
    */
-  private _getNextChuckOfCellItems(items: ISwatchColorPickerItemProps[]): ISwatchColorPickerItemProps[] {
+  private _getNextChunkOfCellItems(items: ISwatchColorPickerItemProps[]): ISwatchColorPickerItemProps[] {
     let nextIndextAfterChunk = findIndex(items, (item => item.type !== SwatchColorPickerItemType.Cell));
 
     // If we didn't find a non-cell item, we need to handle everything that is left
@@ -380,7 +385,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @returns {JSX.Element} - Element representing the item
    */
   @autobind
-  private _renderOption(item: ISwatchColorPickerItemProps, posInSet: number = null, setSize: number = null): JSX.Element {
+  private _renderOption(item: ISwatchColorPickerItemProps, posInSet: number | null = null, setSize: number | null = null): JSX.Element {
     let id = this._id;
     let isCell = item.type === SwatchColorPickerItemType.Cell;
     return (
@@ -420,7 +425,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param item - The item the the event fired against
    * @param handler - The handler to for the event
    */
-  @autobind
   private _onItemHoverOrFocused(item: ISwatchColorPickerItemProps, handler?: (color: string) => void) {
     if (this.props.disabled || (item && item.disabled)) {
       return;
@@ -435,7 +439,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Handle the click on a cell
    * @param item - The cell that the click was fired against
    */
-  @autobind
   private _onCellClick(item: ISwatchColorPickerItemProps) {
     if (this.props.disabled || item.disabled) {
       return;
@@ -471,7 +474,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Handle the click on a menu item
    * @param item - The menu item that the click was fired against
    */
-  @autobind
   private _onMenuItemClick(item: ISwatchColorPickerItemProps) {
     if (this.props.disabled || item.disabled) {
       return;
@@ -524,7 +526,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param item - The item to render
    * @returns {JSX.Element} - Element representing the core of the item
    */
-  @autobind
   private _onRenderOption(item: ISwatchColorPickerItemProps): JSX.Element {
 
     // Menu items just need their label text
@@ -534,9 +535,9 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
     // Build an SVG for the cell with the given shape and color properties
     return (
-      <svg className={ css(styles.svg, this.props.cellShape === CellShape.circle ? (styles.circle + ' circle') : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
+      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape.indexOf('circle') === 0 ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
         {
-          (this.props.cellShape === CellShape.circle) ?
+          this.props.cellShape.indexOf('circle') === 0 ?
             <circle cx='50%' cy='50%' r='50%' /> :
             <rect width='100%' height='100%' />
         }
@@ -548,7 +549,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Render the menu (callout) for when the swatch color picker
    * is behind a button and is expanded
    */
-  @autobind
   private _onRenderContainer() {
     return (
       <Callout

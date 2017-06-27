@@ -5,7 +5,7 @@ export interface ISwatchColorPickerProps {
   /**
    * the number of columns for the swatch color picker
    */
-  width: number;
+  columnCount: number;
 
   /**
    * The id for the swatch color picker
@@ -15,10 +15,10 @@ export interface ISwatchColorPickerProps {
   /**
    * The shape of the color cells, defaults to circle
    */
-  cellShape?: CellShape;
+  cellShape?: 'circle' | 'square';
 
   /**
-   * The color cell that is currently selected
+   * The id of color cell that is currently selected
    */
   selectedId?: string;
 
@@ -34,6 +34,9 @@ export interface ISwatchColorPickerProps {
    */
   updateButtonIconWithColor?: boolean;
 
+  /**
+   * The items to render the contents of the swatch color picker
+   */
   swatchColorPickerItems: ISwatchColorPickerItemProps[];
 
   /**
@@ -71,7 +74,7 @@ export interface ISwatchColorPickerItemProps {
 
   /**
    * The label for this item.
-   * Visible text uf this item is a header,
+   * Visible text if this item is a header,
    * tooltip if is this item is normal
    */
   label?: string;
@@ -101,11 +104,6 @@ export interface ISwatchColorPickerItemProps {
    * Is this individual item disabled?
    */
   disabled?: boolean;
-}
-
-export enum CellShape {
-  circle = 0,
-  square = 1
 }
 
 export enum SwatchColorPickerItemType {
