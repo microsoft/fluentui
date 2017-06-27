@@ -65,7 +65,8 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,
-    presence: PersonaPresence.none
+    presence: PersonaPresence.none,
+    imageAlt: ''
   };
 
   constructor(props: IPersonaProps) {
@@ -81,6 +82,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
       className,
       size,
       imageUrl,
+      imageAlt,
       initialsColor,
       presence,
       primaryText,
@@ -173,6 +175,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
               src={ imageUrl }
               width={ SIZE_TO_PIXELS[size] }
               height={ SIZE_TO_PIXELS[size] }
+              alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange } />
