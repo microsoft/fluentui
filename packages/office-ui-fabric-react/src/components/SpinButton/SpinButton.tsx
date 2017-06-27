@@ -76,7 +76,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       'value': 'defaultValue'
     });
 
-    let value = props.value || props.defaultValue || String(props.min);
+    let value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
 
     this.state = {
@@ -89,14 +89,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._inputId = getId('input');
     this._spinningByMouse = false;
 
-    if (props.defaultValue) {
-      this._onValidate = this._defaultOnValidate;
-      this._onIncrement = this._defaultOnIncrement;
-      this._onDecrement = this._defaultOnDecrement;
-    } else {
+    if (!props.defaultValue && props.value) {
       this._onValidate = props.onValidate;
       this._onIncrement = props.onIncrement;
       this._onDecrement = props.onDecrement;
+    } else {
+      this._onValidate = this._defaultOnValidate;
+      this._onIncrement = this._defaultOnIncrement;
+      this._onDecrement = this._defaultOnDecrement;
     }
 
     this.focus = this.focus.bind(this);
