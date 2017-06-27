@@ -2,6 +2,69 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.0.1",
+      "tag": "@uifabric/example-app-base_v4.0.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.5 <1.0.0` to `>=0.11.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.0",
+      "tag": "@uifabric/example-app-base_v4.0.0",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bff150fa91e87c31d8d433092b007ee604f22d8b",
+            "comment": "Add support for adding a default route in createApp. Remove unused hideChrome parameter."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.5 <1.0.0` to `>=0.11.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "3.0.2",
+      "tag": "@uifabric/example-app-base_v3.0.2",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.4 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.1",
       "tag": "@uifabric/example-app-base_v3.0.1",
       "date": "Mon, 12 Jun 2017 01:47:18 GMT",

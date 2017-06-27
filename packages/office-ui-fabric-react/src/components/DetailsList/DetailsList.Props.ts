@@ -15,7 +15,10 @@ import {
   IGroupRenderProps
 } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
+import { IDetailsHeaderProps } from './DetailsHeader';
 import { IViewport } from '../../utilities/decorators/withViewport';
+
+export { IDetailsHeaderProps };
 
 export interface IDetailsList {
   /**
@@ -130,6 +133,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Callback for what to render when the item is missing. */
   onRenderMissingItem?: (index?: number) => React.ReactNode;
+
+  /**
+   * An override to render the details header.
+   */
+  onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -308,8 +316,8 @@ export interface IColumn {
   headerClassName?: string;
 
   /**
-   * If set, will add LTR margin-right to column and cells.
-   */
+  * If set, will add LTR margin-right to column and cells.
+  */
   isPadded?: boolean;
 }
 

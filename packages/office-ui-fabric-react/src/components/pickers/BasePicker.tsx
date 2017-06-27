@@ -108,7 +108,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         onKeyDown={ this.onKeyDown }>
         <FocusZone
           ref={ this._resolveRef('focusZone') }
-          direction={ FocusZoneDirection.horizontal }>
+          direction={ FocusZoneDirection.bidirectional }
+          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               { this.renderItems() }
@@ -141,7 +142,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.suggestionsVisible ? (
       <Callout
         isBeakVisible={ false }
-        gapSpace={ 0 }
+        gapSpace={ 5 }
         targetElement={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
@@ -169,7 +170,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return items.map((item, index) => onRenderItem({
       item,
       index,
-      key: index + this._getTextFromItem(item),
+      key: item.key ? item.key : index,
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange
@@ -478,6 +479,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
+  @autobind
+  protected _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    // If suggestions are shown let up/down keys control them, otherwise allow them through to control the focusZone.
+    if (this.state.suggestionsVisible) {
+      switch (ev.which) {
+        case KeyCodes.up:
+        case KeyCodes.down:
+          return true;
+      }
+    }
+    return false;
+  }
+
   private _getTextFromItem(item: T, currentValue?: string): string {
     if (this.props.getTextFromItem) {
       return this.props.getTextFromItem(item, currentValue);
@@ -526,6 +540,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         { this.renderSuggestions() }
         <FocusZone ref={ this._resolveRef('focusZone') }
           className='ms-BasePicker-selectedItems'
+          isCircularNavigation={ true }
+          direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke } >
           { this.renderItems() }
         </FocusZone>
@@ -536,14 +552,5 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     // override the existing backspace method to not do anything because the list items appear below.
-  }
-
-  @autobind
-  private _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
-    switch (ev.which) {
-      case KeyCodes.down:
-        return true;
-    }
-    return false;
   }
 }

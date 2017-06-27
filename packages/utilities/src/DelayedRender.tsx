@@ -43,7 +43,9 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
   }
 
   public componentWillUnmount() {
-    clearTimeout(this._timeoutId);
+    if (this._timeoutId) {
+      clearTimeout(this._timeoutId);
+    }
   }
 
   public render() {

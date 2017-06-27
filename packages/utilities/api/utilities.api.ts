@@ -74,7 +74,7 @@ class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderS
   constructor(props: IDelayedRenderProps);
 }
 
-export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean;
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean;
 
 // WARNING: raise has incomplete type information
 // WARNING: stopPropagation has incomplete type information
@@ -90,10 +90,20 @@ class EventGroup {
   public static isObserved(target: any, eventName: string): boolean;
 }
 
+// WARNING: measure has incomplete type information
+// WARNING: reset has incomplete type information
+// (undocumented)
+class FabricPerformance {
+  // (undocumented)
+  public static setPeriodicReset(): void;
+  // (undocumented)
+  public static summary: IPerfSummary;
+}
+
 // (undocumented)
 export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number;
 
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement;
+export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
 
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
@@ -105,38 +115,38 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
 // (undocumented)
 export function getFirstFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 export function getId(prefix?: string): string;
 
-export function getInitials(displayName: string, isRtl: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean): string;
 
-export function getLanguage(): string;
+export function getLanguage(): string | null;
 
 // (undocumented)
 export function getLastFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 export function getNativeProps < T >(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 export function getNextElement(rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
-export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement;
+export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null;
 
 export function getPreviousElement(rootElement: HTMLElement,
-  currentElement: HTMLElement,
+  currentElement: HTMLElement | null,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement;
+  includeElementsInFocusZones?: boolean): HTMLElement | null;
 
-export function getRect(element: HTMLElement | Window): IRectangle;
+export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
 export function getRTL(): boolean;
 
@@ -145,7 +155,7 @@ export function getRTLSafeKeyCode(key: number): number;
 export function getScrollbarWidth(): number;
 
 // (undocumented)
-export function getVirtualParent(child: HTMLElement): HTMLElement;
+export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
@@ -212,11 +222,11 @@ interface IEventRecord {
   // (undocumented)
   callback: (args?: any) => void;
   // (undocumented)
-  elementCallback: (...args: any[]) => void;
+  elementCallback?: (...args: any[]) => void;
   // (undocumented)
   eventName: string;
   // (undocumented)
-  objectCallback: (args?: any) => void;
+  objectCallback?: (args?: any) => void;
   // (undocumented)
   parent: any;
   // (undocumented)
@@ -237,6 +247,30 @@ interface IEventRecordList {
 interface IEventRecordsByName {
   // (undocumented)
   [ eventName: string ]: IEventRecordList;
+}
+
+// (undocumented)
+interface IPerfData {
+  // (undocumented)
+  duration: number;
+  // (undocumented)
+  timeStamp: number;
+}
+
+// (undocumented)
+interface IPerfMeasurement {
+  // (undocumented)
+  all: IPerfData[];
+  // (undocumented)
+  count: number;
+  // (undocumented)
+  totalDuration: number;
+}
+
+// (undocumented)
+interface IPerfSummary {
+  // (undocumented)
+  [ key: string ]: IPerfMeasurement;
 }
 
 // (undocumented)
@@ -279,7 +313,7 @@ export function isElementFocusZone(element?: HTMLElement): boolean;
 export function isElementTabbable(element: HTMLElement): boolean;
 
 // (undocumented)
-export function isElementVisible(element: HTMLElement): boolean;
+export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // (undocumented)
 interface ISerializableObject {
@@ -355,7 +389,7 @@ class Rectangle {
 
 export function setMemoizeWeakMap(weakMap: any): void;
 
-export function setWarningCallback(warningCallback: (message: string) => void): void;
+export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 export function unhoistMethods(source: any, methodNames: string[]): void;
 

@@ -1,6 +1,116 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+
+## 0.11.6
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 0.11.5
+Fri, 23 Jun 2017 20:02:00 GMT
+
+*Changes not tracked*
+
+## 0.11.4
+Fri, 23 Jun 2017 04:12:23 GMT
+
+*Changes not tracked*
+
+## 0.11.3
+Thu, 22 Jun 2017 21:45:08 GMT
+
+*Changes not tracked*
+
+## 0.11.2
+Thu, 22 Jun 2017 10:13:03 GMT
+
+*Changes not tracked*
+
+## 0.11.1
+Wed, 21 Jun 2017 01:52:48 GMT
+
+### Patches
+
+- Instrumenting the performance of css registration.
+
+## 0.11.0
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Minor changes
+
+- Consume latest version of createApp 
+
+### Patches
+
+- General class exports now register on demand, resulting in less unneeded evaluation of classnames.
+- Fixing circular dependency between @uifabric/styling/utilities and @uifabric/styling/styles
+
+## 0.10.5
+Tue, 20 Jun 2017 10:22:47 GMT
+
+*Changes not tracked*
+
+## 0.10.4
+Sat, 17 Jun 2017 17:39:43 GMT
+
+*Changes not tracked*
+
+## 0.10.2
+Sat, 17 Jun 2017 06:27:45 GMT
+
+*Changes not tracked*
+
+## 0.10.1
+Sat, 17 Jun 2017 04:36:46 GMT
+
+### Patches
+
+- Fixing amd import that was broken byt the no-implicit-anys fix.
+
+## 0.10.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- Enable no-implicit-any in the styling package
+
+## 0.9.1
+Fri, 16 Jun 2017 19:39:47 GMT
+
+*Changes not tracked*
+
+## 0.9.0
+Thu, 15 Jun 2017 23:55:18 GMT
+
+### Minor changes
+
+- Removed new icons that were added recently
+
+## 0.8.1
+Thu, 15 Jun 2017 10:09:15 GMT
+
+*Changes not tracked*
+
+## 0.8.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions.
+- Updates to version 2.30 of the icon font
+
+### Patches
+
+- Remove high contrast adjust from common styles
+- Enable strictNullChecks in utilities package
+
+## 0.7.4
+Tue, 13 Jun 2017 10:13:21 GMT
+
+*Changes not tracked*
 
 ## 0.7.3
 Mon, 12 Jun 2017 01:47:18 GMT

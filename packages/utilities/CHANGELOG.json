@@ -2,6 +2,60 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.4.1",
+      "tag": "@uifabric/utilities_v4.4.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.0",
+      "tag": "@uifabric/utilities_v4.4.0",
+      "date": "Wed, 21 Jun 2017 01:52:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "221454482fd48138b0485715170c03c64fa1cef7",
+            "comment": "Add FabricPerformance utility to measure performance"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.0",
+      "tag": "@uifabric/utilities_v4.3.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74c01f80ee4fb502a45c77ac0ad135148b2146d9",
+            "comment": "isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned."
+          },
+          {
+            "author": "Chad Sheets <cjsheets@gmail.com>",
+            "commit": "d4527911db0d3c4bbdc74473e3d7d996c182b444",
+            "comment": "Focus Utility should respect tabindex=-1 on tabable elements"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.2.0",
       "tag": "@uifabric/utilities_v4.2.0",
       "date": "Mon, 12 Jun 2017 01:47:18 GMT",

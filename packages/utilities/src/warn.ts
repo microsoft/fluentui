@@ -43,10 +43,13 @@ export function warnMutuallyExclusive<P>(
   exclusiveMap: ISettingsMap<P>): void {
 
   for (const propName in exclusiveMap) {
-    if (props && propName in props && exclusiveMap[propName] in props) {
-      _warningCallback(
-        `${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`
-      );
+    if (props && propName in props) {
+      let propInExclusiveMapValue = exclusiveMap[propName];
+      if (propInExclusiveMapValue && propInExclusiveMapValue in props) {
+        _warningCallback(
+          `${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`
+        );
+      }
     }
   }
 }
@@ -67,6 +70,6 @@ export function warn(message: string): void {
  *
  * @param warningCallback - Callback to override the generated warnings.
  */
-export function setWarningCallback(warningCallback: (message: string) => void): void {
+export function setWarningCallback(warningCallback?: (message: string) => void): void {
   _warningCallback = warningCallback === undefined ? warn : warningCallback;
 }

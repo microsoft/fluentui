@@ -7,14 +7,13 @@ import {
   autobind,
   buttonProperties,
   getId,
-  getNativeProps,
-  memoize
+  getNativeProps
 } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButton, IButtonStyles } from './Button.Props';
+import { IButtonProps, IButton } from './Button.Props';
+import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -23,16 +22,6 @@ export interface IBaseButtonProps extends IButtonProps {
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
-}
-
-interface IButtonClassNames {
-  root?: string;
-  flexContainer?: string;
-  icon?: string;
-  label?: string;
-  menuIcon?: string;
-  description?: string;
-  screenReaderText?: string;
 }
 
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
@@ -81,7 +70,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName
          } = this.props;
 
-    this._classNames = this._getClassNames(
+    this._classNames = getClassNames(
       styles,
       className,
       variantClassName,
@@ -126,7 +115,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
         'aria-disabled': disabled,
-        'data-is-focusable': disabled ? false : true,
+        'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
     );
@@ -138,7 +127,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         buttonProps,
         {
           'onClick': this._onToggleMenu,
-          'aria-expanded': this.state.menuProps ? true : false
+          'aria-expanded': this.state.menuProps ? true : false,
+          'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
+          'aria-haspopup': true
         }
       );
     }
@@ -168,14 +159,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderMenuIcon = this._onRenderMenuIcon
     } = props;
 
-    const className = mergeStyles(baseClassName + '-flexContainer', styles.flexContainer);
-
     return React.createElement(
       tag,
       buttonProps,
       React.createElement(
         'div',
-        { className },
+        { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
         onRenderText(props, this._onRenderText),
         onRenderDescription(props, this._onRenderDescription),
@@ -204,7 +193,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return iconProps && (
-      <Icon { ...iconProps } className={ this._classNames.icon } />
+      Icon({
+        ...iconProps,
+        className: this._classNames.icon
+      })
     );
   }
 
@@ -285,8 +277,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked,
       disabled,
       menuIconName,
-      menuIconProps,
-      styles
+      menuIconProps
        } = this.props;
 
     if (menuIconProps === undefined) {
@@ -299,14 +290,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={
-            mergeStyles(
-              `${baseClassName}-icon`,
-              styles.menuIcon,
-              disabled && styles.menuIconDisabled,
-              !disabled && checked && styles.menuIconChecked,
-              menuIconProps.className
-            ) as string }
+          className={ this._classNames.icon }
         />
         :
         null
@@ -318,9 +302,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return (
       <ContextualMenu
         isBeakVisible={ true }
+        id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
-        className={ mergeStyles('ms-BaseButton-menuhost', menuProps.className) as string }
+        className={ 'ms-BaseButton-menuhost ' + menuProps.className }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
@@ -334,84 +319,5 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let currentMenuProps = this.state.menuProps;
 
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
-  }
-
-  @memoize
-  private _getClassNames(
-    styles: IButtonStyles,
-    className: string,
-    variantClassName: string,
-    iconClassName: string,
-    disabled: boolean,
-    checked: boolean
-    ): IButtonClassNames {
-    return {
-      root: mergeStyles(
-        className,
-        'ms-Button',
-        variantClassName,
-        styles.root,
-        checked && [
-          'is-checked',
-          styles.rootChecked
-        ],
-        disabled && [
-          'is-disabled',
-          styles.rootDisabled
-        ],
-        !disabled && {
-          ':hover': styles.rootHovered,
-          ':hover .ms-Button-description': styles.descriptionHovered,
-          ':active': styles.rootPressed,
-          ':active .ms-Button-description': styles.descriptionPressed
-        },
-        disabled && checked && [
-          styles.rootCheckedDisabled
-        ],
-        !disabled && checked && {
-          ':hover': styles.rootCheckedHovered,
-          ':active': styles.rootCheckedPressed
-        }
-      ) as string,
-
-      flexContainer: mergeStyles(
-        'ms-Button-flexContainer',
-        styles.flexContainer
-      ) as string,
-
-      icon: mergeStyles(
-        'ms-Button-icon',
-        iconClassName,
-        styles.icon,
-        checked && styles.iconChecked,
-        disabled && styles.iconDisabled,
-      ) as string,
-
-      label: mergeStyles(
-        'ms-Button-label',
-        styles.label,
-        checked && styles.labelChecked,
-        disabled && styles.labelDisabled,
-      ) as string,
-
-      menuIcon: mergeStyles(
-        'ms-Button-menuIcon',
-        styles.menuIcon,
-        checked && styles.menuIconChecked,
-        disabled && styles.menuIconDisabled
-      ) as string,
-
-      description: mergeStyles(
-        'ms-Button-description',
-        styles.description,
-        checked && styles.descriptionChecked,
-        disabled && styles.descriptionDisabled
-      ) as string,
-
-      screenReaderText: mergeStyles(
-        'ms-Button-screenReaderText',
-        styles.screenReaderText
-      ) as string
-    };
   }
 }

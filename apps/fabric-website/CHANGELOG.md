@@ -1,6 +1,32 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+
+## 4.5.40
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.5.39
+Wed, 21 Jun 2017 00:45:41 GMT
+
+*Changes not tracked*
+
+## 4.5.38
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Patches
+
+- Bumping fabric-core dependency.
+
+## 4.5.37
+Tue, 13 Jun 2017 10:13:21 GMT
+
+### Patches
+
+- Fix issues with dev.office.com header
 
 ## 4.5.36
 Mon, 12 Jun 2017 01:47:18 GMT

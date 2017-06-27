@@ -86,6 +86,11 @@ export const getStyles = memoizeFunction((
       top: '.2em',
       transition: 'all 0.1s ease',
       backgroundColor: thumbBackground,
+      /* Border is added to handle high contrast mode for Firefox */
+      borderColor: 'transparent',
+      borderWidth: '.27em',
+      borderStyle: 'solid',
+      boxSizing: 'border-box',
       left: '.2em'
     },
 

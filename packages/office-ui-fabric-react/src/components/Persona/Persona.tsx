@@ -25,6 +25,17 @@ import {
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
+const SIZE_TO_PIXELS = {
+  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.tiny]: 30,
+  [PersonaSize.extraSmall]: 32,
+  [PersonaSize.small]: 40,
+  [PersonaSize.regular]: 48,
+  [PersonaSize.large]: 72,
+  [PersonaSize.extraLarge]: 100
+};
+
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightGreen,
@@ -54,7 +65,8 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,
-    presence: PersonaPresence.none
+    presence: PersonaPresence.none,
+    imageAlt: ''
   };
 
   constructor(props: IPersonaProps) {
@@ -70,6 +82,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
       className,
       size,
       imageUrl,
+      imageAlt,
       initialsColor,
       presence,
       primaryText,
@@ -160,6 +173,9 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
               className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
               src={ imageUrl }
+              width={ SIZE_TO_PIXELS[size] }
+              height={ SIZE_TO_PIXELS[size] }
+              alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange } />

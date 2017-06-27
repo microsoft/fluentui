@@ -120,6 +120,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         maxWidth: 440,
         isRowHeader: true,
         isResizable: true,
+        isFiltered: true,
+        isGrouped: true,
         isSorted: true,
         isSortedDescending: false,
         onColumnClick: this._onColumnClick,

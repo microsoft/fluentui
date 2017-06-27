@@ -9,7 +9,7 @@ const _dictionary: any = {};
 let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
 
 interface IMemoizeNode {
-  map: WeakMap;
+  map: WeakMap | null;
   value?: any;
 }
 
@@ -25,7 +25,7 @@ export function memoize<T extends Function>(
 
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
-  let fn = memoizeFunction(descriptor.value.bind(null));
+  let fn = memoizeFunction(descriptor.value && descriptor.value.bind(null));
 
   return {
     configurable: true,
@@ -108,6 +108,6 @@ function _normalizeArg(val: any) {
 
 function _createNode(): IMemoizeNode {
   return {
-    map: new _weakMap()
+    map: _weakMap ? new _weakMap() : null
   };
 }
