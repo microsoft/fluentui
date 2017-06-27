@@ -35,7 +35,7 @@ export interface ISwatchColorPickerProps {
   setSelectedColorForIcon?: boolean;
 
   /**
-   * The items to render the contents of the swatch color picker
+   * The color options that will be made available to the user
    */
   swatchColorPickerItems: ISwatchColorPickerItemProps[];
 

@@ -21,21 +21,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
     } = this.props;
 
     // Array to store the cells in the correct row index
-    let rowsOfItems: any[][] = [];
-
-    items.map((item, index) => {
-
-      // Get the row index to place cells into
-      let rowIndex = Math.floor(index / columnCount);
-
-      // Create a new array at rowIndex if one
-      // does not exist yet
-      if (!rowsOfItems[rowIndex]) {
-        rowsOfItems[rowIndex] = [];
-      }
-
-      rowsOfItems[rowIndex].push(item);
-    });
+    let rowsOfItems: any[][] = this._toMatrix(items, columnCount);
 
     // Create the table/grid
     return (
@@ -69,5 +55,23 @@ export class Grid extends BaseComponent<IGridProps, {}> {
         </tbody>
       </table>
     );
+  }
+
+  /**
+   * Convert the given array to a matrix with columnCount number
+   * of columns
+   * @param items - The array to convert
+   * @param columnCount - The number of columns for the resulting matrix
+   * @returns {any[][]} - A matrix of items
+   */
+  private _toMatrix<T>(items: T[], columnCount: number): T[][] {
+    return items.reduce((rows, currentValue, index) => {
+      if (index % columnCount === 0) {
+        rows.push([currentValue]);
+      } else {
+        rows[rows.length - 1].push(currentValue);
+      }
+      return rows;
+    }, [] as T[][]);
   }
 }

@@ -30,7 +30,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   public static defaultProps = {
     cellShape: 'circle',
     updateButtonIconWithColor: false,
-    selectedId: null,
     disabled: false
   };
 
@@ -38,13 +37,10 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
   private _buttonWrapper: HTMLDivElement;
 
-  private _numOfItemsInChunk;
-
   constructor(props: ISwatchColorPickerProps) {
     super(props);
 
     this._id = props.id || getId('swatchColorPicker');
-    this._numOfItemsInChunk = -1;
 
     this.state = {
       selectedIndex: props.selectedId && this._getSelectedIndex(props.swatchColorPickerItems, props.selectedId),
@@ -56,7 +52,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let newSelectedIndex = newProps.selectedId && this._getSelectedIndex(newProps.swatchColorPickerItems, newProps.selectedId);
 
     if (newSelectedIndex !== undefined &&
-      newSelectedIndex !== null &&
       newSelectedIndex !== this.state.selectedIndex) {
       this.setState({
         selectedIndex: newSelectedIndex
@@ -189,7 +184,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // The number of cells that were processed in the previous iteration of loop.
     // This will be used to increase the index to the item after the last processed
     // item
-    this._numOfItemsInChunk = -1;
+    let numOfItemsInChunk = -1;
 
     // If we have cell items and we are in a menu, get all the
     // first executable items per chunk. Note, in this
@@ -225,8 +220,14 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
           // exists within (this will process all of the
           // consecutive cells unitl the next non-cell type
           // is incountered (or if we reach the end of the items))
+          let chunkItems = this._getNextChunkOfCellItems(items.slice(index));
+
+          // Update the number of items in chunk
+          numOfItemsInChunk = chunkItems.length > 0 ? chunkItems.length : -1;
+
+          // Add the result to the array
           elements.push(this._renderNextChunkOfCellItems(
-            items.slice(index),
+            chunkItems,
             posInSet,
             setSize));
           break;
@@ -253,8 +254,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
       // Increase the index by the number of items in the just processed chunk,
       // otherwise just increment the index
-      index += this._numOfItemsInChunk > 0 ? this._numOfItemsInChunk : 1;
-      this._numOfItemsInChunk = -1;
+      index += numOfItemsInChunk > 0 ? numOfItemsInChunk : 1;
+      numOfItemsInChunk = -1;
     }
 
     return elements;
@@ -271,15 +272,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     items: ISwatchColorPickerItemProps[],
     posInSet: number | null = null,
     setSize: number | null = null): JSX.Element {
-    let chunkItems = this._getNextChunkOfCellItems(items);
-
-    // Update the number of items in chunk
-    this._numOfItemsInChunk = chunkItems.length > 0 ? chunkItems.length : -1;
 
     return (
       <Grid
         key={ this._id + items[0].id + '-grid' }
-        items={ chunkItems }
+        items={ items }
         columnCount={ this.props.columnCount }
         onRenderItem={ this._renderOption }
         positionInSet={ posInSet }
