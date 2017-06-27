@@ -96,7 +96,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 .dropIcon {
   display: inline-block;
-  position: relative;
+  position: absolute;
   top: -16px;
   @include ms-left(-26px);
   font-size: $ms-icon-size-l;
