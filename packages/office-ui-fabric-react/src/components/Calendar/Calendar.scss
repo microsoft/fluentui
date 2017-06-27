@@ -386,7 +386,6 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-
   // Show the month picker, if enabled
   .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
@@ -486,6 +485,34 @@ $Calendar-dayPicker-margin: 10px;
       }
     }
   }
+
+  // if only the month picker is visible, don't show day picker
+  .pickerOnlyMonthPickerVisible {
+    // Hide the day picking components.
+    .dayPicker,
+    .monthComponents {
+      display: none;
+    }
+
+    // Show the month picking components.
+    .monthPicker {
+      display: block;
+    }
+
+    .holder {
+      width: 296px;
+    }
+
+    .currentYear {
+      height: initial;
+      line-height: initial;
+    }
+
+    .yearComponents {
+      position: relative;
+      top: 0;
+    }
+  }
 }
 
 // On smaller screens the month button toggles to the picking months state.
@@ -529,4 +556,8 @@ $Calendar-dayPicker-margin: 10px;
 
 .navContainer {
   @include float('right')
+}
+
+.monthIsCurrentMonth {
+  background-color: $ms-color-themeLight;
 }

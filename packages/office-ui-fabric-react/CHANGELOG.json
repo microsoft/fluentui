@@ -2,6 +2,72 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.11.0",
+      "tag": "office-ui-fabric-react_v4.11.0",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "rachelcl9 <chuli@microsoft.com>",
+            "commit": "ab0403c92b9c1e6c2c138b8fe5e80684ff853857",
+            "comment": "Commandbar: fix synchronous reflow "
+          },
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "b00a2c9dfa0ac1c3f0f6dcb17cc72b783bede3cf",
+            "comment": "Enhancing the calendar component to allow for turning off the day picker and highlighting the \"today\" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "002cd689e299ae5fb2ee99e16f12c85e74043e95",
+            "comment": "OverflowSet: Fix type definition to be compatible with latest @types/react"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f3203551b08875e9fc6bcf4ff937a1e1d7eda353",
+            "comment": "Persona: Fixing image sizing to cover correctly."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.5 <1.0.0` to `>=0.11.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `4.0.0` to `4.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.10.2",
+      "tag": "office-ui-fabric-react_v4.10.2",
+      "date": "Fri, 23 Jun 2017 20:02:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f8d64a77b12c8bd0b3434a9187fa4b9906995eca",
+            "comment": "Icon: Adding `data-icon-name` attribute for debugging identification purposes."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.4 <1.0.0` to `>=0.11.5 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.10.1",
       "tag": "office-ui-fabric-react_v4.10.1",
       "date": "Fri, 23 Jun 2017 04:12:23 GMT",

@@ -48,10 +48,14 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   user-select: none;
 }
 
+.container {
+  display: flex;
+}
+
 .primaryCommands {
-  position: absolute;
   overflow: hidden;
-  display: inline;
+  display: flex;
+  flex: 1 1 auto;
   vertical-align: top;
   line-height: $CommandBar-height;
   max-width: 100%;
@@ -59,7 +63,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 .sideCommands {
-  position: absolute;
+  display: flex;
+  flex: 0 0 auto;
   @include ms-right(0px);
   @include text-align(right);
   @include padding-right(20px);

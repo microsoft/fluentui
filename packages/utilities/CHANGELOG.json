@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.4.1",
+      "tag": "@uifabric/utilities_v4.4.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.4.0",
       "tag": "@uifabric/utilities_v4.4.0",
       "date": "Wed, 21 Jun 2017 01:52:48 GMT",

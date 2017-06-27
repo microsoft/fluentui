@@ -1,6 +1,18 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 23 Jun 2017 04:12:23 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+
+## 0.11.6
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 0.11.5
+Fri, 23 Jun 2017 20:02:00 GMT
+
+*Changes not tracked*
 
 ## 0.11.4
 Fri, 23 Jun 2017 04:12:23 GMT

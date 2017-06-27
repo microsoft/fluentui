@@ -66,9 +66,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public componentDidMount() {
-    this._updateItemMeasurements();
-    this._updateRenderedItems();
-
+    // Asynchronously update command bar layout to eliminate forced synchronous reflow
+    this._asyncMeasure();
     this._events.on(window, 'resize', this._updateRenderedItems);
   }
 
@@ -79,8 +78,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   public componentDidUpdate(prevProps: ICommandBarProps, prevStates: ICommandBarState) {
     if (!this._commandItemWidths) {
-      this._updateItemMeasurements();
-      this._updateRenderedItems();
+      // Asynchronously update command bar layout to eliminate forced synchronous reflow
+      this._asyncMeasure();
     }
   }
 
@@ -114,7 +113,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     return (
       <div className={ css('ms-CommandBar', styles.root, className) } ref='commandBarRegion'>
         { searchBox }
-        <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal } role='menubar' >
+        <FocusZone ref='focusZone' className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
@@ -153,8 +152,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
           />
-          ) : (null) }
-      </div>
+          ) : (null)
+        }
+      </div >
     );
   }
 
@@ -250,6 +250,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let iconClassName = css('ms-CommandBarItem-icon', styles.itemIcon, iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;
+  }
+
+  private _asyncMeasure() {
+    this._async.requestAnimationFrame(() => {
+      this._updateItemMeasurements();
+      this._updateRenderedItems();
+    });
   }
 
   private _updateItemMeasurements() {
