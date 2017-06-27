@@ -85,7 +85,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
             onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
           />
         </div>)
-    }
+    };
 
     const element = {
       content: <MarqueeSelection selection={ this._selection }>

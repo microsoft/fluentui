@@ -251,31 +251,29 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       selectAllVisibility = SelectAllVisibility.none;
     }
 
-<<<<<<< HEAD
-    const header = (<DetailsHeader
-      ref='header'
-      selectionMode={ selectionMode }
-      layoutMode={ layoutMode }
-      selection={ selection }
-      columns={ adjustedColumns }
-      onColumnClick={ onColumnHeaderClick }
-      onColumnContextMenu={ onColumnHeaderContextMenu }
-      onColumnResized={ this._onColumnResized }
-      onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
-      onColumnAutoResized={ this._onColumnAutoResized }
-      groupNestingDepth={ groupNestingDepth }
-      isAllCollapsed={ isCollapsed }
-      onToggleCollapseAll={ this._onToggleCollapse }
-      ariaLabel={ ariaLabelForListHeader }
-      ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-      ariaLabelForSelectionColumn={ ariaLabelForSelectionColumn }
-      selectAllVisibility={ selectAllVisibility }
-    />);
-=======
     const {
       onRenderDetailsHeader = this._onRenderDetailsHeader
     } = this.props;
->>>>>>> fc124a53f04aa8ef7f7d972d223796cbee64d982
+
+    const header = onRenderDetailsHeader({
+      componentRef: this._resolveRef('_header'),
+      selectionMode: selectionMode,
+      layoutMode: layoutMode,
+      selection: selection,
+      columns: adjustedColumns,
+      onColumnClick: onColumnHeaderClick,
+      onColumnContextMenu: onColumnHeaderContextMenu,
+      onColumnResized: this._onColumnResized,
+      onColumnIsSizingChanged: this._onColumnIsSizingChanged,
+      onColumnAutoResized: this._onColumnAutoResized,
+      groupNestingDepth: groupNestingDepth,
+      isAllCollapsed: isCollapsed,
+      onToggleCollapseAll: this._onToggleCollapse,
+      ariaLabel: ariaLabelForListHeader,
+      ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
+      ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+      selectAllVisibility: selectAllVisibility
+    }, this._onRenderDetailsHeader);
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -296,31 +294,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly='true'>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
-<<<<<<< HEAD
-            { isHeaderVisible && (
-              lockedHeader ? <StickyHeader>{ header }</StickyHeader> : header
+            { isHeaderVisible && (lockedHeader ?
+            <StickyHeader>{header}</StickyHeader> : header
             ) }
-=======
-            { isHeaderVisible && onRenderDetailsHeader({
-              componentRef: this._resolveRef('_header'),
-              selectionMode: selectionMode,
-              layoutMode: layoutMode,
-              selection: selection,
-              columns: adjustedColumns,
-              onColumnClick: onColumnHeaderClick,
-              onColumnContextMenu: onColumnHeaderContextMenu,
-              onColumnResized: this._onColumnResized,
-              onColumnIsSizingChanged: this._onColumnIsSizingChanged,
-              onColumnAutoResized: this._onColumnAutoResized,
-              groupNestingDepth: groupNestingDepth,
-              isAllCollapsed: isCollapsed,
-              onToggleCollapseAll: this._onToggleCollapse,
-              ariaLabel: ariaLabelForListHeader,
-              ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
-              ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-              selectAllVisibility: selectAllVisibility
-            }, this._onRenderDetailsHeader) }
->>>>>>> fc124a53f04aa8ef7f7d972d223796cbee64d982
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
@@ -382,7 +358,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   @autobind
-  private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+  private _onRenderDetailsHeader(detailsHeaderProps: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>, lockedHeader?: boolean) {
     return <DetailsHeader { ...detailsHeaderProps } />;
   }
 
