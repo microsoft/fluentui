@@ -10,7 +10,7 @@ import {
   IRenderFunction
 } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { Image, ImageFit, ImageLoadState, ImageCoverStyle } from '../../Image';
+import { Image, ImageFit, ImageLoadState } from '../../Image';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -24,6 +24,17 @@ import {
 } from './PersonaConsts';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
+
+const SIZE_TO_PIXELS = {
+  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.tiny]: 30,
+  [PersonaSize.extraSmall]: 32,
+  [PersonaSize.small]: 40,
+  [PersonaSize.regular]: 48,
+  [PersonaSize.large]: 72,
+  [PersonaSize.extraLarge]: 100
+};
 
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
@@ -159,8 +170,9 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
             <Image
               className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
-              coverStyle={ ImageCoverStyle.portrait }
               src={ imageUrl }
+              width={ SIZE_TO_PIXELS[size] }
+              height={ SIZE_TO_PIXELS[size] }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange } />
