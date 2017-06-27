@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding image alt to Persona, defaulting to empty string",
+      "comment": "Persona: Adding image alt, defaulting to empty string",
       "type": "minor"
     }
   ],
