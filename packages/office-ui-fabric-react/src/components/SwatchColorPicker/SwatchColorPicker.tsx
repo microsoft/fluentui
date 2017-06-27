@@ -139,12 +139,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let { selectedIndex } = this.state;
     let {
       swatchColorPickerItems,
-      updateButtonIconWithColor
+      setSelectedColorForIcon
     } = this.props;
 
     // Do we need to update the button with the selected
     // item's color? If so, attempt to grab the color
-    if (updateButtonIconWithColor &&
+    if (setSelectedColorForIcon &&
       selectedIndex &&
       selectedIndex >= 0 &&
       selectedIndex < swatchColorPickerItems.length) {
