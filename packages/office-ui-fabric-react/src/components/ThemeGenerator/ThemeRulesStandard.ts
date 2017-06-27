@@ -36,8 +36,9 @@ export enum FabricSlots {
   neutralTertiary, // BaseSlots.foregroundColor, Shade[Shade.Shade3]);
   neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
   neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  neutralPrimaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
   neutralPrimary, // BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
-  neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+  neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
   black, // BaseSlots.foregroundColor, Shade[Shade.Shade8]);
   white, // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
@@ -183,8 +184,8 @@ export function ThemeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].value = getColorFromString('#a6a6a6');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].value = getColorFromString('#767676');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].value = getColorFromString('#666666');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].value = getColorFromString('#212121');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].value = getColorFromString('#090909'); // UNUSED and does not exist in Fabric
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].value = getColorFromString('#3c3c3c');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].value = getColorFromString('#212121');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].value = getColorFromString('#000000');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].isCustomized = true;
@@ -227,8 +228,9 @@ export function ThemeRulesStandardCreator() {
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade[Shade.Shade3]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade4]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade6]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade[Shade.Shade8]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
@@ -328,7 +330,7 @@ export function ThemeRulesStandardCreator() {
   _makeSemanticSlotRule(SemanticColorSlots.controlBorderDisabled, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.controlBorderHover, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.controlUnfilled, BaseSlots.primaryColor, Shade.Shade1);
-  //_makeSemanticSlotRule(SemanticColorSlots.controlUnfilledDefault, BaseSlots.backgroundColor, Shade.Unshaded);
+  _makeSemanticSlotRule(SemanticColorSlots.controlUnfilledDefault, BaseSlots.backgroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.controlFilled, BaseSlots.primaryColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlFilledHover, BaseSlots.primaryColor, Shade.Shade1);
 

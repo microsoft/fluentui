@@ -4,7 +4,8 @@ import './ThemerPage.scss';
 import { loadTheme } from '@microsoft/load-themed-styles';
 import {
   IColor,
-  getContrastRatio
+  getContrastRatio,
+  updateA
 } from 'office-ui-fabric-react/lib/utilities/color/index';
 
 import {
@@ -42,6 +43,22 @@ export class ThemerPage extends React.Component<any, any> {
       colorPickerElement: null,
       colorPickerVisible: false
     };
+  }
+
+  public componentDidUpdate() {
+
+    // todo: cleanup
+    if (window['__imgUrl']) {
+      const outputElem = (document.getElementById('jsonOutput') as HTMLTextAreaElement);
+      let jsonOutput = outputElem.value;
+      let newOutput = JSON.parse(jsonOutput);
+      newOutput.backgroundImageUri = 'url("' + window['__imgUrl'] + '")';
+
+      let tr = this.state.themeRules as IThemeSlotRule[];
+      newOutput.backgroundOverlay = updateA((tr['backgroundColor'] as IThemeSlotRule).value, 50).str;
+
+      outputElem.value = JSON.stringify(newOutput);
+    }
   }
 
   public render() {
@@ -102,6 +119,14 @@ export class ThemerPage extends React.Component<any, any> {
     return (
       <div className='ms-themer'>
 
+        <div style={ { display: 'flex' } }>
+          <div>URL to image:&nbsp;</div>
+          <input type='text' id='imageUrl' />
+          <button onClick={ this._makeThemeFromImg.bind(this) }>Create theme from image</button>
+        </div>
+        <div id='imageDescription'></div>
+        <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
+
         {/* the shared popup color picker for semantic slots */ }
         { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
           <Callout
@@ -122,14 +147,14 @@ export class ThemerPage extends React.Component<any, any> {
         </div>
         <br />
 
-        { this._exampleSection('Basic Slots',
+        {/* this._exampleSection('Basic Slots',
           'Basic theme slots for page background and default text colors.',
-          basicSlots) }
+          basicSlots) */}
         { this._exampleSection('Fabric Palette',
           'The original Fabric palette variables.',
           fabricSlots) }
-        { this._exampleSection('Control Slots',
-          'These slots TODO TODO',
+        {/* this._exampleSection('Input controls',
+          These slots TODO TODO',
           controlSlots,
           [<div>
             <Toggle
@@ -182,8 +207,7 @@ export class ThemerPage extends React.Component<any, any> {
               }] }
             label='Pick one'
             required={ true }
-          />,
-          <ProgressIndicatorBasicExample />]) }
+          />, <ProgressIndicatorBasicExample />]) */}
 
         <h3>todo</h3>
         { [this._semanticSlotWidget(SemanticColorSlots.errorText),
@@ -207,6 +231,66 @@ export class ThemerPage extends React.Component<any, any> {
         { this._outputSection() }
       </div>
     );
+  }
+
+  // todo: cleanup
+  private _makeThemeFromImg() {
+    const imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
+    window['__imgUrl'] = imgUrl;
+    (document.getElementById('imagePreview') as HTMLImageElement).src = imgUrl;
+
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
+    xhr.open('POST', 'https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    alert('add subscription key');
+    xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '');
+    xhr.send('{ "url": "' + imgUrl + '" }');
+  }
+
+  // todo: cleanup
+  private _cognitiveVisionCallback(e: any) {
+    const xhr = e.target;
+    if (xhr.status == 200) {
+      const response = JSON.parse(xhr.response);
+
+      document.getElementById('imageDescription').innerHTML = response.description.captions[0].text;
+
+      // response.color.accentColor
+      // response.color.dominantColorBackground
+      // response.color.dominantColorForeground
+
+      const getHexFromColor = (color: string, isBg: boolean) => {
+        switch (color.toLowerCase()) {
+          case 'black': return '#1f1f1f';
+          case 'blue': return '#0078d7';
+          case 'brown': return '#754d12';
+          case 'gray':
+          case 'grey': return isBg ? '#444' : '#ccc';
+          case 'green': return '#107c10';
+          case 'orange': return '#ff8c00';
+          case 'pink': return '#e3008c';
+          case 'purple': return '#5c2d91';
+          case 'red': return '#e81123';
+          case 'teal': return '#008272';
+          case 'white': return '#fff';
+          case 'yellow': return '#fff100';
+        }
+        alert("Unknown color passed to getHexFromColor(): " + color);
+        return '#fff';
+      }
+
+      let { themeRules } = this.state;
+      console.log(themeRules);
+      ThemeGenerator.setSlot(themeRules['backgroundColor'], getHexFromColor(response.color.dominantColorBackground, true), themeRules, true);
+      ThemeGenerator.setSlot(themeRules['primaryColor'], '#' + response.color.accentColor, themeRules, true);
+      ThemeGenerator.setSlot(themeRules['foregroundColor'], getHexFromColor(response.color.dominantColorForeground, false), themeRules, true);
+
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+
+    } else {
+      alert('' + xhr.status + ' ' + xhr.statusText);
+    }
   }
 
   private _exampleSection(
@@ -239,7 +323,7 @@ export class ThemerPage extends React.Component<any, any> {
   private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
     let { themeRules } = this.state;
 
-    ThemeGenerator.setSlot(slotRule, color, themeRules);
+    ThemeGenerator.setSlot(slotRule, color, themeRules, true, true);
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
   }
 
@@ -323,10 +407,10 @@ export class ThemerPage extends React.Component<any, any> {
     return (
       <div>
         <h2>Output</h2>
-        <textarea readOnly={ true } style={ { height: '300px', width: '300px' } } spellCheck={ false }
+        <textarea id='jsonOutput' readOnly={ true } style={ { height: '300px', width: '300px' } } spellCheck={ false }
           value={ JSON.stringify(ThemeGenerator.getThemeAsJson(this.state.themeRules), void 0, 2) }>
         </textarea>
-        <textarea readOnly={ true } style={ { height: '300px', width: '800px' } } spellCheck={ false }
+        <textarea readOnly={ true } style={ { height: '300px', width: '800px', display: 'none' } } spellCheck={ false }
           value={ ThemeGenerator.getThemeAsSass(this.state.themeRules) }>
         </textarea>
       </div>
@@ -344,7 +428,7 @@ export class ThemerPage extends React.Component<any, any> {
   private _baseColorSlotPicker(baseSlot: BaseSlots) {
     function _onColorChanged(newColor: string) {
       let themeRules = this.state.themeRules;
-      ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, themeRules);
+      ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, themeRules, true);
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }
 

@@ -23,6 +23,15 @@ export class ThemeGenerator {
     isCustomized = false,
     overwriteCustomValue = true
   ) {
+    if (isCustomized) {
+      window['__backgroundColor'] = slotRules['backgroundColor'].value;
+    }
+    if (rule === slotRules['backgroundColor']) {
+      let primaryColor = slotRules['primaryColor'];
+      let foregroundColor = slotRules['foregroundColor'];
+      ThemeGenerator.setSlot(primaryColor, primaryColor.value, slotRules, isCustomized, overwriteCustomValue);
+      ThemeGenerator.setSlot(foregroundColor, foregroundColor.value, slotRules, isCustomized, overwriteCustomValue);
+    }
 
     rule.isCustomized = !rule.inherits || isCustomized; // it's always customized if it doesn't inherit
 

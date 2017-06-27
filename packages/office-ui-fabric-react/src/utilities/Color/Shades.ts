@@ -72,6 +72,16 @@ function _lighten(hsl: { h: number, s: number, l: number }, factor) {
   };
 }
 
+function _initializeIsDark() {
+  const bgColor: IColor = window['__backgroundColor'];
+  if (bgColor) {
+    window['__isDarkTheme'] = Colors.hsv2hsl(bgColor.h, bgColor.s, bgColor.v).l < 50;
+    window['__backgroundColor'] = void 0;
+    console.log('isDarkTheme: ' + Colors.hsv2hsl(bgColor.h, bgColor.s, bgColor.v).l);
+  }
+  return window['__isDarkTheme'] || false;
+}
+
 /* Original getShade() logic:
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
@@ -119,25 +129,30 @@ export function getShade(color: IColor, shade: Shade) {
     return color;
   }
 
+  const isDarkTheme = _initializeIsDark();
+
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
-  tableIndex = LumTintTable.length - 1 - tableIndex; // todo: used for inverted themes
+  let _soften = _lighten;
+  let _strongen = _darken;
+  if (isDarkTheme) {
+    //tableIndex = LumTintTable.length - 1 - tableIndex;
+    _soften = _darken;
+    _strongen = _lighten;
+  }
   if (_isWhite(color)) { // white
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
   } else if (_isBlack(color)) { // black
     hsl = _lighten(hsl, BlackTintTable[tableIndex]);
   } else if (hsl.l / 100 > c_LuminanceHigh) { // light
-    hsl = _darken(hsl, LumShadeTable[tableIndex]);
+    hsl = _strongen(hsl, LumShadeTable[tableIndex]);
   } else if (hsl.l / 100 < c_LuminanceLow) { // dark
-    hsl = _lighten(hsl, LumTintTable[tableIndex]);
+    hsl = _soften(hsl, LumTintTable[tableIndex]);
   } else { // default
-    tableIndex = LumTintTable.length - 1 - tableIndex;
     if (tableIndex < ColorTintTable.length) {
-      //hsl = _lighten(hsl, ColorTintTable[tableIndex]);
-      hsl = _darken(hsl, ColorTintTable[tableIndex]);
+      hsl = _soften(hsl, ColorTintTable[tableIndex]);
     } else {
-      //hsl = _darken(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
-      hsl = _lighten(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
+      hsl = _strongen(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
     }
   }
 
@@ -156,6 +171,8 @@ export function getBackgroundShade(color: IColor, shade: Shade) {
   if (shade === Shade.Unshaded || !isValidShade(shade)) {
     return color;
   }
+
+  _initializeIsDark();
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
