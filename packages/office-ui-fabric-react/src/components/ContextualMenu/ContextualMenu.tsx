@@ -16,6 +16,7 @@ import {
   getDocument,
   getWindow
 } from '../../Utilities';
+import { withResponsiveMode, ResponsiveMode, IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import {
   Icon,
@@ -86,12 +87,12 @@ export function getSubmenuItems(item: IContextualMenuItem) {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
+@withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
     items: [],
     shouldFocusOnMount: true,
-    isBeakVisible: false,
     gapSpace: 0,
     directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16,
@@ -190,6 +191,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
+    isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode <= ResponsiveMode.medium : isBeakVisible;
     /**
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
      */

@@ -14,9 +14,8 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
-import { withResponsiveMode, ResponsiveMode, IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 
-export interface IBaseButtonProps extends IButtonProps, IWithResponsiveModeState {
+export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
   variantClassName?: string;
 }
@@ -25,7 +24,6 @@ export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
-@withResponsiveMode
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   public static defaultProps = {
@@ -301,11 +299,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
-    const isScreenSmall = this.props.responsiveMode <= ResponsiveMode.medium;
-
     return (
       <ContextualMenu
-        isBeakVisible={ isScreenSmall }
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}

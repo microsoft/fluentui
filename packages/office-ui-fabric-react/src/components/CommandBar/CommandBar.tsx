@@ -13,7 +13,6 @@ import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import {
   Icon,
   IconName,
@@ -36,7 +35,6 @@ export interface ICommandBarState {
   renderedFarItems?: IContextualMenuItem[];
 }
 
-@withResponsiveMode
 export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState> implements ICommandBar {
   public static defaultProps = {
     items: [],
@@ -84,9 +82,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText, className, responsiveMode } = this.props;
+    const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
     const { renderedItems, contextualMenuProps, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
-    const isScreenSmall = responsiveMode <= ResponsiveMode.medium;
     let searchBox;
 
     if (isSearchBoxVisible) {
@@ -145,7 +142,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         { (contextualMenuProps) ?
           (<ContextualMenu
             className={ css('ms-CommandBar-menuHost') }
-            isBeakVisible={ isScreenSmall }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             { ...contextualMenuProps }
             targetElement={ contextualMenuTarget }
