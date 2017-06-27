@@ -1,6 +1,115 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Jun 2017 10:09:15 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+
+## 4.11.0
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Minor changes
+
+- Commandbar: fix synchronous reflow 
+- Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
+
+### Patches
+
+- OverflowSet: Fix type definition to be compatible with latest @types/react
+- Persona: Fixing image sizing to cover correctly.
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.10.2
+Fri, 23 Jun 2017 20:02:00 GMT
+
+### Patches
+
+- Icon: Adding `data-icon-name` attribute for debugging identification purposes.
+
+## 4.10.1
+Fri, 23 Jun 2017 04:12:23 GMT
+
+### Patches
+
+- Fix FocusZone stop eating spacebar presses in textarea fields
+- DetailsList: Fixing regression in DetailsRow, and adding check in Image which was causing nullrefs.
+- Route: Make implicit any explicit
+
+## 4.10.0
+Thu, 22 Jun 2017 21:45:08 GMT
+
+### Minor changes
+
+- Expose focus() on ISearchBox
+
+### Patches
+
+- ResizeGroup: Add dataDidRender prop that can be used to know what is actually rendered by a resizeGroup
+- Fix some focus issues in DetailsList
+
+## 4.9.2
+Thu, 22 Jun 2017 10:13:03 GMT
+
+### Patches
+
+- Check: reduced size of selection check background by 2px
+- Breadcrumb: Fixed overflow logic and extra icon
+- Dropdown: fixed bug that didn't allow operating Dropdown as a controlled component
+- Fix Persona control DOM reflow by passing ImageCoverStyle to Image control
+- Dialog: Reworked deprecation logic to fix warnings
+- Toggle: No longer triggers form submission
+
+## 4.9.1
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Patches
+
+- Icons: now with less redundant evaluation of styling, which improves render performance.
+- Panel: Fixed header ID value
+
+## 4.9.0
+Tue, 20 Jun 2017 10:22:47 GMT
+
+### Minor changes
+
+- Breadcrumb: Switch resizing logic to resizeGroup
+
+## 4.8.3
+Sat, 17 Jun 2017 17:39:43 GMT
+
+### Patches
+
+- Icon: image icons now have less random "l" characters. Sorry about that!
+
+## 4.8.1
+Sat, 17 Jun 2017 06:27:45 GMT
+
+### Patches
+
+- Icon: iconName should pass through to the classname without casing alterations.
+
+## 4.8.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- DetailsList: Remove Tooltip by defaul, allowing optional override.
+
+### Patches
+
+- Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided.
+
+## 4.7.2
+Fri, 16 Jun 2017 19:39:47 GMT
+
+### Patches
+
+- Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility.
+- OverflowSet: Don't use the index as the key
+
+## 4.7.1
+Thu, 15 Jun 2017 23:55:18 GMT
+
+### Patches
+
+- CheckButton: Firefox high contrast fix
 
 ## 4.7.0
 Thu, 15 Jun 2017 10:09:15 GMT

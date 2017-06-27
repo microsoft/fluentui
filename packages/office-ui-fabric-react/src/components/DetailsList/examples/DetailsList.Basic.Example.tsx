@@ -5,9 +5,17 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
+  IDetailsHeaderProps,
   Selection,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  IRenderFunction
+} from 'office-ui-fabric-react/lib/Utilities';
+import {
+  TooltipHost,
+  ITooltipHostProps
+} from 'office-ui-fabric-react/lib/Tooltip';
 import {
   ScrollablePane
 } from 'office-ui-fabric-react/lib/ScrollablePane';
@@ -85,8 +93,14 @@ export class DetailsListBasicExample extends React.Component<any, any> {
           items={ items }
           columns={ _columns }
           setKey='set'
-          lockedHeader={ true }
           layoutMode={ DetailsListLayoutMode.fixedColumns }
+          lockedHeader={ true }
+          onRenderDetailsHeader={
+            (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
+              ...detailsHeaderProps,
+              onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
+            })
+          }
           selection={ this._selection }
           selectionPreservedOnEmptyClick={ true }
           ariaLabelForSelectionColumn='Toggle selection'

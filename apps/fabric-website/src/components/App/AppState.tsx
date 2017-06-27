@@ -130,6 +130,13 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ColorPickerComponentPage').ColorPickerComponentPage))
         },
         {
+          title: 'ComboBox',
+          url: '#/components/ComboBox',
+          component: () => <LoadingComponent title='ComboBox' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ComboBoxComponentPage').ComboBoxComponentPage))
+
+        },
+        {
           title: 'CommandBar',
           url: '#/components/commandbar',
           component: () => <LoadingComponent title='CommandBar' />,

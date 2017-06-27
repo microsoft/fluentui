@@ -29,7 +29,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     super(props);
     this._value = '';
     this.state = {
-      displayValue: ''
+      displayValue: props.defaultVisibleValue === null ? '' : props.defaultVisibleValue
     };
   }
 
@@ -67,6 +67,13 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
+    if (this.props.updateValueInWillReceiveProps) {
+      let newValue: string = this.props.updateValueInWillReceiveProps();
+
+      if (newValue !== null) {
+        this._value = newValue;
+      }
+    }
     if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue, this._value)) {
       this.setState({ displayValue: nextProps.suggestedDisplayValue });
     }
@@ -74,14 +81,29 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
 
   public componentDidUpdate() {
     let value = this._value;
-    let { suggestedDisplayValue } = this.props;
+    let {
+      defaultVisibleValue,
+      suggestedDisplayValue,
+      shouldSelectFullInputValueInComponentDidUpdate
+    } = this.props;
     let differenceIndex = 0;
+
     if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
-      while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
-        differenceIndex++;
+      let shouldSelectFullRange = false;
+
+      if (shouldSelectFullInputValueInComponentDidUpdate) {
+        shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
-      if (differenceIndex > 0) {
-        this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+
+      if (shouldSelectFullRange) {
+        this._inputElement.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      } else {
+        while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
+          differenceIndex++;
+        }
+        if (differenceIndex > 0) {
+          this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+        }
       }
     }
   }
@@ -99,7 +121,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       autoComplete={ 'off' }
       onChange={ this._onChange }
       onKeyDown={ this._onKeyDown }
-      onClick={ this._onClick }
+      onClick={ this.props.onClick ? this.props.onClick : this._onClick }
     />;
   }
 
@@ -121,7 +143,11 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+    }
+
     switch (ev.which) {
       case KeyCodes.backspace:
         this._autoFillEnabled = false;

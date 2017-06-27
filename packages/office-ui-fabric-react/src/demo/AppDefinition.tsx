@@ -53,6 +53,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/choicegroup'
         },
         {
+          component: require<any>('../components/ComboBox/ComboBoxPage').ComboBoxPage,
+          key: 'ComboBox',
+          name: 'ComboBox',
+          url: '#/examples/ComboBox'
+        },
+        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',

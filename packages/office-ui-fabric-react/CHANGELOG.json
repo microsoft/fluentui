@@ -2,6 +2,329 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.11.0",
+      "tag": "office-ui-fabric-react_v4.11.0",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "rachelcl9 <chuli@microsoft.com>",
+            "commit": "ab0403c92b9c1e6c2c138b8fe5e80684ff853857",
+            "comment": "Commandbar: fix synchronous reflow "
+          },
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "b00a2c9dfa0ac1c3f0f6dcb17cc72b783bede3cf",
+            "comment": "Enhancing the calendar component to allow for turning off the day picker and highlighting the \"today\" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "002cd689e299ae5fb2ee99e16f12c85e74043e95",
+            "comment": "OverflowSet: Fix type definition to be compatible with latest @types/react"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f3203551b08875e9fc6bcf4ff937a1e1d7eda353",
+            "comment": "Persona: Fixing image sizing to cover correctly."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.5 <1.0.0` to `>=0.11.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `4.0.0` to `4.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.10.2",
+      "tag": "office-ui-fabric-react_v4.10.2",
+      "date": "Fri, 23 Jun 2017 20:02:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f8d64a77b12c8bd0b3434a9187fa4b9906995eca",
+            "comment": "Icon: Adding `data-icon-name` attribute for debugging identification purposes."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.4 <1.0.0` to `>=0.11.5 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.10.1",
+      "tag": "office-ui-fabric-react_v4.10.1",
+      "date": "Fri, 23 Jun 2017 04:12:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Anton Frolov <frolov.anton@gmail.com>",
+            "commit": "60d27e12f5d7ce5245256ee6e46eab416acec470",
+            "comment": "Fix FocusZone stop eating spacebar presses in textarea fields"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cf27c419d98df14d8974764d2e5798fcb6233ec1",
+            "comment": "DetailsList: Fixing regression in DetailsRow, and adding check in Image which was causing nullrefs."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "93aa20fb61842df7f61d78d36eef123208b862fe",
+            "comment": "Route: Make implicit any explicit"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.3 <1.0.0` to `>=0.11.4 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.10.0",
+      "tag": "office-ui-fabric-react_v4.10.0",
+      "date": "Thu, 22 Jun 2017 21:45:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "antonlabunets <alabunets@gmail.com>",
+            "commit": "5054be87e371308937faf86b67eb9eb9de10ae1c",
+            "comment": "Expose focus() on ISearchBox"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "0d7e76729e12cf7983cf6ce25df9da8630ac1f4d",
+            "comment": "ResizeGroup: Add dataDidRender prop that can be used to know what is actually rendered by a resizeGroup"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "6c51b2e12823ec80e3727635b15b0ee83099c382",
+            "comment": "Fix some focus issues in DetailsList"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.2 <1.0.0` to `>=0.11.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.9.2",
+      "tag": "office-ui-fabric-react_v4.9.2",
+      "date": "Thu, 22 Jun 2017 10:13:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "348ea5ded2c29f8c4a091f1e1198c916f748b92c",
+            "comment": "Check: reduced size of selection check background by 2px"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2e9309fd851bb36a249a408a9955ed18fe87a320",
+            "comment": "Breadcrumb: Fixed overflow logic and extra icon"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "d55ef47bc6f05e163d39785b56d9557889c1ce41",
+            "comment": "Dropdown: fixed bug that didn't allow operating Dropdown as a controlled component"
+          },
+          {
+            "author": "lindach167 <lindach@microsoft.com>",
+            "commit": "9c69b33ffaa656ee95543d30c747a50b9bbf109b",
+            "comment": "Fix Persona control DOM reflow by passing ImageCoverStyle to Image control"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "68e504c830f880e0051493c74b83395d36db93b7",
+            "comment": "Dialog: Reworked deprecation logic to fix warnings"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d02c0cea8eadf7459cf5754de5db234330d24572",
+            "comment": "Toggle: No longer triggers form submission"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.1 <1.0.0` to `>=0.11.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.9.1",
+      "tag": "office-ui-fabric-react_v4.9.1",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "135c06a013468eb717fddab4ccabd6d63274fe4b",
+            "comment": "Icons: now with less redundant evaluation of styling, which improves render performance."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "788a876ee11ad747121215edc9886699a24d0cc3",
+            "comment": "Panel: Fixed header ID value"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.5 <1.0.0` to `>=0.11.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `3.0.2` to `4.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.9.0",
+      "tag": "office-ui-fabric-react_v4.9.0",
+      "date": "Tue, 20 Jun 2017 10:22:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "1ca8cda27da8bf1243f2d794a917e8d6154ceade",
+            "comment": "Breadcrumb: Switch resizing logic to resizeGroup"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.4 <1.0.0` to `>=0.10.5 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.3",
+      "tag": "office-ui-fabric-react_v4.8.3",
+      "date": "Sat, 17 Jun 2017 17:39:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5b17bfe13dc1826f08c2fb261d53de4e976d0752",
+            "comment": "Icon: image icons now have less random \"l\" characters. Sorry about that!"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.3 <1.0.0` to `>=0.10.4 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.1",
+      "tag": "office-ui-fabric-react_v4.8.1",
+      "date": "Sat, 17 Jun 2017 06:27:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c8bdb73324b8702400e4d4f53bbb182378a49b74",
+            "comment": "Icon: iconName should pass through to the classname without casing alterations."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.1 <1.0.0` to `>=0.10.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.0",
+      "tag": "office-ui-fabric-react_v4.8.0",
+      "date": "Fri, 16 Jun 2017 23:02:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "38244b81d039f7cae9d20671fec9f218f3148685",
+            "comment": "DetailsList: Remove Tooltip by defaul, allowing optional override."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bc5da65c865a2b7209143193eb2009d4fba3a387",
+            "comment": "Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.9.1 <1.0.0` to `>=0.10.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.2",
+      "tag": "office-ui-fabric-react_v4.7.2",
+      "date": "Fri, 16 Jun 2017 19:39:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "16ea1d01cdae0a29f9be83778280b25abd857df5",
+            "comment": "Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "54e9d048eb85e3a60688bfdc1482a9cb43a3662e",
+            "comment": "OverflowSet: Don't use the index as the key"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.9.0 <1.0.0` to `>=0.9.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.1",
+      "tag": "office-ui-fabric-react_v4.7.1",
+      "date": "Thu, 15 Jun 2017 23:55:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ankit Khokhar <ankitkhokhar@iitrpr.ac.in>",
+            "commit": "bed10f92f6c43d407e23b44787d879c09e2a37cb",
+            "comment": "CheckButton: Firefox high contrast fix"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.8.1 <1.0.0` to `>=0.9.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.0",
       "tag": "office-ui-fabric-react_v4.7.0",
       "date": "Thu, 15 Jun 2017 10:09:15 GMT",
