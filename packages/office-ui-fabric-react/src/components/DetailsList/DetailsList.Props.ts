@@ -171,6 +171,8 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
    * @defaultValue 5
    */
   minimumPixelsForDrag?: number;
+
+  lockedHeader?: boolean;
 }
 
 export interface IColumn {

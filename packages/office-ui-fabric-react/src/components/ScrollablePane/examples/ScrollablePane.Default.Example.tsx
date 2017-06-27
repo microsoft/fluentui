@@ -35,10 +35,13 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
       <div>
         <StickyHeader>
           <div className='sticky'>
-            THIS IS WRAPPED IN STICKY { index } { lorem(20) }
+            THIS IS WRAPPED IN STICKY { index }
           </div>
         </StickyHeader>
-        { lorem(200) }
+        <div className='content'>
+          THIS IS THE CONTEXT AREA FOR scrollable pane default example lorem ipsum blah blha blah
+          THIS IS THE CONTEXT AREA FOR scrollable pane default example lorem ipsum blah blha blah
+          </div>
       </div>
     );
   }

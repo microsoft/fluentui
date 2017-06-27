@@ -29,6 +29,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   };
 
   public static childContextTypes = {
+    subscribe: PropTypes.func,
     addStickyHeader: PropTypes.func,
     removeStickyHeader: PropTypes.func,
     addStickyFooter: PropTypes.func,
@@ -39,6 +40,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
 
   public getChildContext() {
     return {
+      subscribe: this.subscribe,
       addStickyHeader: this.addStickyHeader,
       removeStickyHeader: this.removeStickyHeader,
       addStickyFooter: this.addStickyFooter,
@@ -59,6 +61,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   private _scrollElement: HTMLElement;
   private _topBound: number;
   private _bottomBound: number;
+  private _framePending: boolean;
+  private _subscribers: Function[];
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -70,13 +74,19 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
       stickyElemAbove: [],
       stickyElemBelow: []
     };
+    this._subscribers = [];
+  }
+
+  public componentWillMount() {
+    debugger;
   }
 
   public componentDidMount() {
     this._scrollElement = findScrollableParent(this.refs.root);
     this._checkContentAreasPosition();
     if (this._scrollElement) {
-      this._events.on(this._scrollElement, 'scroll', this._checkContentAreasPosition);
+      // this._events.on(this._scrollElement, 'scroll', this._checkContentAreasPosition);
+      this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
     }
     this._resizeHeaderPane();
     this._events.on(window, 'resize', this._resizeHeaderPane);
@@ -143,8 +153,12 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   }
 
   @autobind
+  public subscribe(handler) {
+    this._subscribers = this._subscribers.concat(handler);
+  }
+
+  @autobind
   public addStickyHeader(header: StickyHeader) {
-    console.log('whatever', header);
     let stickyAbove = this.state.stickyElemAbove.concat([]);
     if (stickyAbove.indexOf(header) < 0) {
       stickyAbove.push(header);
@@ -154,7 +168,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
         const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
         const topBound = scrollBounds.top + this.refs.topHeaders.clientHeight;
         this._topBound = topBound;
-        header.setSticky();
+        header.setSticky(topBound);
       });
     }
   }
@@ -192,6 +206,17 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   private _resizeHeaderPane() {
     this.refs.scrollCopy.style.height = this._scrollElement.clientHeight + 'px';
     this.refs.scrollCopy.style.width = this.refs.root.clientWidth + 'px';
+  }
+
+  private _notifySubscribers() {
+    // debugger;
+
+    const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
+    const topScrollBound = scrollBounds.top;
+    console.log(topScrollBound, this.refs.root.scrollTop, this._scrollElement.scrollTop);
+    this._subscribers.forEach((handle) => {
+      handle(topScrollBound, this._scrollElement.scrollTop, this.refs.topHeaders.clientHeight);
+    });
   }
 
   private _checkContentAreasPosition() {
