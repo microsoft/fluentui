@@ -82,11 +82,12 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
     const distanceFromSticky = rootBounds.top - topScrollBound;
     console.log('distance from top', distanceFromSticky);
-    // console.log('scrolling', rootBounds.top, topBound, 'distance', distanceFromSticky, 'topboundheight', this.context.topBound);
-    // console.log('OOFFSET TOP', this.refs.root.offsetTop, 'scrolldistance', scrollDistance, 'header height', topHeaderHeight, this._headerHeight);
+    console.log('scrolling', rootBounds.top, 'distance', distanceFromSticky, 'topboundheight', this.context.topBound);
+    console.log('OOFFSET TOP', this.refs.root.offsetTop, 'scrolldistance', scrollDistance, 'header height', topHeaderHeight, this._headerHeight);
     const topHeight = this._headerHeight !== null ? this._headerHeight : topHeaderHeight;
     console.log(topHeight);
-    const isSticky = (scrollDistance + topHeight > this.refs.root.offsetTop);
+    // const isSticky = (scrollDistance + topHeight > this.refs.root.offsetTop);
+    const isSticky = (distanceFromSticky <= topHeight);
 
     this.setState({
       distanceFromSticky: distanceFromSticky,

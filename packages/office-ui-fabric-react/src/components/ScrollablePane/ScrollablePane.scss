@@ -21,7 +21,6 @@
 }
 
 .contentArea {
-  border: 1px solid black;
   padding: 10px 0;
 }
 
@@ -35,7 +34,6 @@
   background: $ms-color-white;
   position: absolute;
   top: 0;
-  z-index: 1;
   width: 100%;
 }
 
@@ -43,6 +41,5 @@
   background: $ms-color-white;
   position: absolute;
   bottom: 0;
-  z-index: 1;
   width: 100%;
 }

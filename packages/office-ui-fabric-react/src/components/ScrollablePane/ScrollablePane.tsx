@@ -114,6 +114,19 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
     return (
       <div className={ css('ms-ScrollablePane', styles.root, className) }
         ref='root'>
+        <div className={ styles.scrollRegion }>
+          { contentAreas.map((contentArea: IContentArea, index: number) => {
+            return (
+              <div
+                ref={ index.toString() }
+                className={ styles.contentArea }
+                key={ index }>
+                { contentArea.content }
+              </div>
+            );
+          }) }
+        </div>
+
         <div className={ styles.scrollCopy }
           ref='scrollCopy'>
           <div className={ styles.layerHostTop }>
@@ -136,18 +149,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
           </div>
         </div>
 
-        <div className={ styles.scrollRegion }>
-          { contentAreas.map((contentArea: IContentArea, index: number) => {
-            return (
-              <div
-                ref={ index.toString() }
-                className={ styles.contentArea }
-                key={ index }>
-                { contentArea.content }
-              </div>
-            );
-          }) }
-        </div>
       </div>
     );
   }
@@ -206,6 +207,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   private _resizeHeaderPane() {
     this.refs.scrollCopy.style.height = this._scrollElement.clientHeight + 'px';
     this.refs.scrollCopy.style.width = this.refs.root.clientWidth + 'px';
+    this.refs.scrollCopy.style.top = this._scrollElement.offsetTop + 'px';
   }
 
   private _notifySubscribers() {
