@@ -26,13 +26,13 @@ export interface ISwatchColorPickerProps {
    * Icon props for the swatch color picker. If given the swatch color picker
    * will render inside of a menu
    */
-  swatchColorPickerButtonProps?: IButtonProps;
+  menuButtonProps?: IButtonProps;
 
   /**
    * Should the icon color be updated to align
    * with the selected color? Default is false
    */
-  updateButtonIconWithColor?: boolean;
+  setSelectedColorForIcon?: boolean;
 
   /**
    * The items to render the contents of the swatch color picker

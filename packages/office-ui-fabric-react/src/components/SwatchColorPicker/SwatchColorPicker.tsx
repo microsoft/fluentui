@@ -65,11 +65,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   public render() {
-    let { swatchColorPickerButtonProps } = this.props;
+    let { menuButtonProps } = this.props;
 
     // If we got button props, put the swatch color picker behind a button, otherwise
     // render all of the items
-    let renderElement = swatchColorPickerButtonProps !== undefined ? this._buttonToRender() : this._fullSwatchColorPickerToRender();
+    let renderElement = menuButtonProps !== undefined ? this._buttonToRender() : this._fullSwatchColorPickerToRender();
 
     return (
       <div
@@ -96,7 +96,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   private _buttonToRender(): JSX.Element {
     let { selectedIndex, expanded } = this.state;
     let {
-      swatchColorPickerButtonProps,
+      menuButtonProps,
       disabled
     } = this.props;
 
@@ -105,7 +105,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     return (
       <div>
         <DefaultButton
-          { ...swatchColorPickerButtonProps }
+          { ...menuButtonProps }
           style={ { color: colorToSet && colorToSet } }
           className={
             css('ms-swatchColorPickerButton',
@@ -118,8 +118,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
           aria-haspopup={ true }
           aria-expanded={ !disabled && expanded }
           disabled={ disabled }
-          menuIconProps={ swatchColorPickerButtonProps.menuIconProps ?
-            swatchColorPickerButtonProps.menuIconProps :
+          menuIconProps={ menuButtonProps.menuIconProps ?
+            menuButtonProps.menuIconProps :
             { iconName: 'chevronDown' } }
         />
         { (!disabled && expanded) &&
@@ -135,7 +135,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    *   or null if: we are not updating the button icon with color,
    *   there is not a valid selected index, or if we do not have a valid color
    */
-  private _getSelectedColorToSet(): string {
+  private _getSelectedColorToSet(): string | null {
     let { selectedIndex } = this.state;
     let {
       swatchColorPickerItems,
@@ -156,7 +156,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       }
     }
 
-    return null
+    return null;
   }
 
   /**
@@ -196,7 +196,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // context each menuItem is in its own "chunk", only grouped
     // cells are processed as a chunk. This helps with being able
     // to determine the correct aria-posinset and aria-setsize values
-    let firstExecutableItemsPerChunk = this.props.swatchColorPickerButtonProps ?
+    let firstExecutableItemsPerChunk = this.props.menuButtonProps ?
       this._getFirstExecutableItemsPerChunk() : null;
 
     // Did we find any executable items? (e.g. should be calculate the set information)
@@ -411,7 +411,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         onMouseEnter={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellHovered) : null }
         onMouseLeave={ isCell ? () => this._clearColors([this.props.onCellHovered]) : null }
         onFocus={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellFocused) : null }
-        role={ isCell ? 'gridcell' : this.props.swatchColorPickerButtonProps ? 'menuitem' : 'button' }
+        role={ isCell ? 'gridcell' : this.props.menuButtonProps ? 'menuitem' : 'button' }
         aria-selected={ isCell ? (this.state.selectedIndex === item.index ? 'true' : 'false') : null }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }

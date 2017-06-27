@@ -67,7 +67,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         </div>
         <div>Simple expandable swatch color picker with multiple sections:</div>
         <SwatchColorPicker
-          swatchColorPickerButtonProps={ { iconProps: { iconName: 'color' }, menuIconProps: { iconName: 'add' } } }
+          menuButtonProps={ { iconProps: { iconName: 'color' }, menuIconProps: { iconName: 'add' } } }
           columnCount={ 4 }
           cellShape={ 'square' }
           swatchColorPickerItems={
@@ -94,8 +94,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           } />
         <div>Simple expandable swatch color picker with multiple sections that updates it's icon color:</div>
         <SwatchColorPicker
-          swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
-          updateButtonIconWithColor={ true }
+          menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+          setSelectedColorForIcon={ true }
           columnCount={ 4 }
           cellShape={ 'circle' }
           swatchColorPickerItems={
@@ -123,8 +123,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div>Simple expandable swatch color picker with multiple sections that updates it's icon color and shows a preview color:</div>
         <div style={ { color: this.state.previewColor ? this.state.previewColor : this.state.color ? this.state.color : null, fontSize: '24px' } } >Sample Text</div>
         <SwatchColorPicker
-          swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
-          updateButtonIconWithColor={ true }
+          menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+          setSelectedColorForIcon={ true }
           onCellHovered={ (color) => this.setState({ previewColor: color }) }
           onCellFocused={ (color) => this.setState({ previewColor: color }) }
           onColorChanged={ (newColor) => this.setState({ color: newColor }) }
@@ -156,7 +156,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           } />
         <div>Simple disabled swatch color picker:</div>
         <SwatchColorPicker
-          swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
+          menuButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
           disabled={ true }
           columnCount={ 4 }
           cellShape={ 'square' }
@@ -172,7 +172,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           } />
         <div>Simple expandable swatch color picker with a few disabled items:</div>
         <SwatchColorPicker
-          swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
+          menuButtonProps={ { iconProps: { iconName: 'fontColor' }, menuIconProps: { iconName: 'chevronDown' } } }
           columnCount={ 4 }
           cellShape={ 'square' }
           swatchColorPickerItems={

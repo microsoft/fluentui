@@ -4,16 +4,10 @@ import { IGridProps } from './Grid.Props';
 
 export class Grid extends BaseComponent<IGridProps, {}> {
 
-  // Used to track the index of item we are on while building grid
-  private _gridIndex;
-
   private _id;
-
-  private _items: any[][];
 
   constructor(props: IGridProps) {
     super(props);
-    this._items = [];
     this._id = getId();
   }
 
@@ -26,8 +20,8 @@ export class Grid extends BaseComponent<IGridProps, {}> {
       setSize
     } = this.props;
 
-    // Reset the items array so we will start fresh
-    this._items = [];
+    // Array to store the cells in the correct row index
+    let rowsOfItems: any[][] = [];
 
     items.map((item, index) => {
 
@@ -36,11 +30,11 @@ export class Grid extends BaseComponent<IGridProps, {}> {
 
       // Create a new array at rowIndex if one
       // does not exist yet
-      if (!this._items[rowIndex]) {
-        this._items[rowIndex] = [];
+      if (!rowsOfItems[rowIndex]) {
+        rowsOfItems[rowIndex] = [];
       }
 
-      this._items[rowIndex].push(item);
+      rowsOfItems[rowIndex].push(item);
     });
 
     // Create the table/grid
@@ -53,7 +47,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
         style={ { padding: '2px', outline: 'none' } }>
         <tbody>
           {
-            this._items.map((rows: any[], rowIndex) => {
+            rowsOfItems.map((rows: any[], rowIndex) => {
               return (
                 <tr
                   role={ 'row' }

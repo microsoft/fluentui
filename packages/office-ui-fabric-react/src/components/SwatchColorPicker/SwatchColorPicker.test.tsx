@@ -54,7 +54,7 @@ describe('SwatchColorPicker', () => {
   it('Can render collapsed behind a button', () => {
     const wrapper = shallow(
       <SwatchColorPicker
-        swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+        menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
@@ -67,7 +67,7 @@ describe('SwatchColorPicker', () => {
   it('Can render collapsed behind a button and expand', () => {
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+        menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
@@ -90,7 +90,7 @@ describe('SwatchColorPicker', () => {
   it('Can render the correct options when in a menu', () => {
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+        menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
@@ -176,7 +176,7 @@ describe('SwatchColorPicker', () => {
   it('Cannot expand a disabled collapsed swatch color picker', () => {
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+        menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
         columnCount={ 4 }
         disabled={ true }
@@ -199,7 +199,7 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+        menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.Cell, color: '#00ff00', disabled: true }] }
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
@@ -232,7 +232,7 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
+        menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.MenuItem, disabled: true }] }
         onMenuItemClick={ (item) => eventFireCounter++ }
         columnCount={ 4 }
