@@ -71,7 +71,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
         aria-label={ group.ariaLabel || group.name }
         data-is-focusable={ true } >
 
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
+        <FocusZone className={ styles.focusZone } direction={ FocusZoneDirection.horizontal }>
 
           { isSelectionCheckVisible ? (
             <button

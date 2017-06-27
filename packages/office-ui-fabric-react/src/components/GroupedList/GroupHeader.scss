@@ -1,7 +1,8 @@
 @import '../../common/common';
 
-// component slots
+$rowHeight: 40px;
 
+// component slots
 $detailsList-item-hover-color: $listItemHoverColor;
 $detailsList-item-selected-color: $listItemSelectedColor;
 $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
@@ -26,25 +27,23 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   }
 }
 
+.focusZone {
+  display: flex;
+  align-items: center;
+  height: $rowHeight;
+}
+
 .check,
 .expand {
   @include focus-border();
-  display: inline-block;
   cursor: default;
-  padding: 6px;
-  transform: translateY(50%);
-  margin-top: -18px;
-  box-sizing: border-box;
-  vertical-align: top;
   background: none;
   border: none;
   font-size: $ms-icon-size-l;
-  top: 0px;
 }
 
 .check {
   opacity: 0;
-  margin-top: -12px;
 
   &:focus {
     opacity: 1;
@@ -58,15 +57,13 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 .title {
   @include ms-font-xl;
-  padding: 6px 6px 9px 6px;
-  display: inline-block;
   cursor: pointer;
   outline: 0;
 }
 
 .expand {
-  width: 32px;
-  height: 40px;
+  width: 36px;
+  padding-top: 4px;
   color: $ms-color-neutralSecondary;
 
   :global(.ms-Icon) {
@@ -81,11 +78,8 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 
 .loading {
-  display: inline-block;
   visibility: hidden;
   opacity: 0;
-  padding: 0px 16px;
-  vertical-align: middle;
   transition: visibility $ms-animation-duration-3, opacity $ms-animation-duration-3;
 
   &.loadingIsVisible {
@@ -95,9 +89,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 
 .dropIcon {
-  display: inline-block;
   position: absolute;
-  top: -16px;
   @include ms-left(-26px);
   font-size: $ms-icon-size-l;
   color: $ms-color-neutralSecondaryAlt;
