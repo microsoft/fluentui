@@ -11,7 +11,7 @@
 
 .scrollCopy {
   position: absolute;
-  width: 100%;
+  pointer-events: none;
 }
 
 .scrollRegion {
@@ -21,7 +21,6 @@
 }
 
 .contentArea {
-  padding: 10px 0;
 }
 
 .stickyContainer {
@@ -35,6 +34,7 @@
   position: absolute;
   top: 0;
   width: 100%;
+  pointer-events: auto;
 }
 
 .layerHostBottom {
@@ -42,4 +42,5 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  pointer-events: auto;
 }

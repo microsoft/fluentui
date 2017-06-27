@@ -133,6 +133,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
             <div className={ styles.fixed } ref='topHeaders'>
               {
                 stickyElemAbove.map((stickyElem: StickyHeader, index: number) => {
+                  debugger;
+                  console.log('sticky element', stickyElem);
                   return stickyElem.props.children;
                 })
               }

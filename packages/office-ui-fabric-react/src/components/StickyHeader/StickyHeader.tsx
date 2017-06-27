@@ -106,7 +106,12 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
 
   @autobind
   public componentWillReceiveProps(newProps: IStickyHeaderProps) {
-    // console.log('receive props', this, newProps, this.props);
+    console.log('receive props', this, newProps.children, this.props.children);
+    console.log('current props', this.props.children);
+    if (this.props.children !== newProps.children) {
+      debugger;
+      this.forceUpdate();
+    }
   }
 
   public componentDidUpdate(prevProps: IStickyHeaderProps, prevState: IStickyHeaderState) {

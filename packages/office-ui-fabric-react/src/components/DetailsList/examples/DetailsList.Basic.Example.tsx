@@ -11,6 +11,9 @@ import {
 import {
   ScrollablePane
 } from 'office-ui-fabric-react/lib/ScrollablePane';
+import {
+  StickyHeader
+} from 'office-ui-fabric-react/lib/StickyHeader';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
 let _items = [];
@@ -65,6 +68,17 @@ export class DetailsListBasicExample extends React.Component<any, any> {
 
   public render() {
     let { items, selectionDetails } = this.state;
+    const topHeader = {
+      content: (
+        <div>
+          <StickyHeader><div>{ selectionDetails }</div></StickyHeader>
+          <TextField
+            label='Filter by name:'
+            onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+          />
+        </div>)
+    }
+
     const element = {
       content: <MarqueeSelection selection={ this._selection }>
         <DetailsList
@@ -84,12 +98,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
 
     return (
       <div>
-        <div>{ selectionDetails }</div>
-        <TextField
-          label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
-        />
-        <ScrollablePane contentAreas={ [element] } />
+        <ScrollablePane contentAreas={ [topHeader, element] } />
       </div>
     );
   }
