@@ -182,7 +182,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
     if (!this._dragOrigin) {
       this._dragOrigin = currentPoint;
-      console.log(this._dragOrigin);
     }
 
     if (ev.buttons !== undefined && ev.buttons === 0) {
