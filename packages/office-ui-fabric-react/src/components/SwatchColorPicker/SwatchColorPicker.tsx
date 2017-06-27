@@ -426,13 +426,13 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param item - The item the the event fired against
    * @param handler - The handler to for the event
    */
-  private _onItemHoverOrFocused(item: ISwatchColorPickerItemProps, handler?: (color: string) => void) {
+  private _onItemHoverOrFocused(item: ISwatchColorPickerItemProps, handler?: (id?: string, color?: string) => void) {
     if (this.props.disabled || (item && item.disabled)) {
       return;
     }
 
     if (handler) {
-      handler(item ? item.color : null);
+      item ? handler(item.id, item.color) : handler();
     }
   }
 
@@ -451,7 +451,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // selected, select it
     if (index >= 0 && index !== this.state.selectedIndex) {
       if (this.props.onColorChanged) {
-        this.props.onColorChanged(item.color);
+        this.props.onColorChanged(item.id, item.color);
       }
 
       this.setState({
@@ -496,10 +496,10 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Clear the colors by calling the given callbacks
    * @param callbacks - The callbacks to handle the clear operation
    */
-  private _clearColors(callbacks: ((color: string) => void)[]) {
+  private _clearColors(callbacks: ((id?: string, color?: string) => void)[]) {
     callbacks.forEach((callback) => {
       if (callback) {
-        callback(null);
+        callback();
       }
     });
   }

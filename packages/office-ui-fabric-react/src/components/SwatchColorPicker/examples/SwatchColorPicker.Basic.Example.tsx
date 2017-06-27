@@ -125,9 +125,9 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
           setSelectedColorForIcon={ true }
-          onCellHovered={ (color) => this.setState({ previewColor: color }) }
-          onCellFocused={ (color) => this.setState({ previewColor: color }) }
-          onColorChanged={ (newColor) => this.setState({ color: newColor }) }
+          onCellHovered={ (id, color) => this.setState({ previewColor: color }) }
+          onCellFocused={ (id, color) => this.setState({ previewColor: color }) }
+          onColorChanged={ (id, newColor) => this.setState({ color: newColor }) }
           onMenuItemClick={ (item) => item.label && alert(item.label + ' was clicked') }
           columnCount={ 4 }
           cellShape={ 'circle' }

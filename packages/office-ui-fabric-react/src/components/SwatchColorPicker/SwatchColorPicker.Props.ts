@@ -40,9 +40,11 @@ export interface ISwatchColorPickerProps {
   swatchColorPickerItems: ISwatchColorPickerItemProps[];
 
   /**
-   * Callback issued when the user changes the color
+   * Callback issued when the user changes the color.
+   * Note, if no id or color is given, there is no selected cell
+   * (e.g. the user executed the currently selected cell to unselect it)
    */
-  onColorChanged?: (color: string) => void;
+  onColorChanged?: (id?: string, color?: string) => void;
 
   /**
  * Callback issued when the user click a menu item
@@ -50,14 +52,16 @@ export interface ISwatchColorPickerProps {
   onMenuItemClick?: (item: ISwatchColorPickerItemProps) => void;
 
   /**
-   * Callback issued when the user hovers over a color cell
+   * Callback issued when the user hovers over a color cell.
+   * Note, if no id or color is given, cells are not longer being hovered
    */
-  onCellHovered?: (color: string) => void;
+  onCellHovered?: (id?: string, color?: string) => void;
 
   /**
-   * Callback issued when the user focuses a color cell
+   * Callback issued when the user focuses a color cell.
+   * Note, if no id or color is given, cells are not longer being focused
    */
-  onCellFocused?: (color: string) => void;
+  onCellFocused?: (id?: string, color?: string) => void;
 
   /**
    * Is this swatch color picker disabled?
