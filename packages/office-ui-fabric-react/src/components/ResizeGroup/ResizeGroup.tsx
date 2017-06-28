@@ -48,6 +48,9 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentWillReceiveProps(nextProps: IResizeGroupProps) {
+    // Receiving new props means the parent might rerender and the root width might change
+    this._lastKnownRootWidth = undefined;
+
     if (this.props.data !== nextProps.data) {
       this.setState({
         shouldMeasure: true,
@@ -159,12 +162,23 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     return measuredWidth;
   }
 
+  /**
+   * Gets the width of the root container. Should only be used when it is
+   * safe to reuse the last known root contianer width.
+   */
+  private _getRootWidth(): number {
+    if (this._lastKnownRootWidth !== undefined) {
+      return this._lastKnownRootWidth;
+    }
+    return this._root.getBoundingClientRect().width;
+  }
+
   private _measureItems() {
     const { data, onReduceData } = this.props;
     const { shouldMeasure } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
-      const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
+      const containerWidth = this._lastKnownRootWidth = this._getRootWidth();
       const measuredWidth = this._lastKnownMeasuredWidth = this._getMeasuredWidth();
 
       if (this.state.measuredData.cacheKey) {
