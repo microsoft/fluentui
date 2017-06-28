@@ -15,9 +15,6 @@
 }
 
 .scrollRegion {
-  position: relative;
-  top: 0;
-  left: 0;
 }
 
 .contentArea {
@@ -32,6 +29,7 @@
 .layerHostTop {
   background: $ms-color-white;
   position: absolute;
+  // visibility: hidden;
   top: 0;
   width: 100%;
   pointer-events: auto;
@@ -40,6 +38,7 @@
 .layerHostBottom {
   background: $ms-color-white;
   position: absolute;
+  // visibility: hidden;
   bottom: 0;
   width: 100%;
   pointer-events: auto;

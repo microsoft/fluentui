@@ -10,6 +10,8 @@ import {
 } from '../../Utilities';
 import { ScrollablePane } from '../../ScrollablePane';
 import { IStickyHeaderProps } from './StickyHeader.Props';
+import * as stylesImport from './StickyHeader.scss';
+const styles: any = stylesImport;
 
 export interface IStickyHeaderState {
   isSticky: boolean;
@@ -48,6 +50,7 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
   private _scrollPaneElement: HTMLElement;
   private _stickyDistance: number;
   private _headerHeight: number;
+  private _offsetTop: number;
 
   constructor(props: IStickyHeaderProps) {
     super(props);
@@ -70,8 +73,8 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
 
     this.context.subscribe(this.handleScrollEvent);
 
-    this.refs.placeholder.style.position = 'absolute';
-    this.refs.placeholder.style.top = `${this.refs.placeholder.offsetTop}px`;
+    // this.refs.placeholder.style.position = 'absolute';
+    // this.refs.placeholder.style.top = `${this.refs.placeholder.offsetTop}px`;
   }
 
   public componentWillMount() {
@@ -97,6 +100,7 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     if (isSticky) {
       if (this._headerHeight === null) {
         this._headerHeight = topHeaderHeight;
+        this._offsetTop = this.context.scrollContainer.offsetTop;
       }
       this.context.addStickyHeader(this);
     } else {
@@ -123,12 +127,24 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     const { isSticky, topPosition } = this.state;
     const style = isSticky
       ? {
+        // position: 'fixed',
+        // top: `${this._offsetTop + this._headerHeight}px`,
+        // width: `${this.refs.root.clientWidth}px`,
+        // transform: 'translateZ(0)',
+        // background: this._getBackground(),
+        // zIndex: 1
       } : {};
+
+    const placeholderStyle = isSticky ? {
+      // paddingBottom: `${this.refs.root.clientHeight}px`
+    } : {};
+
+    console.log('offsettop', this._offsetTop);
 
     return (
       <div ref='root'>
-        <div ref='placeholder' />
-        <div style={ style }>
+        <div ref='placeholder' style={ placeholderStyle } />
+        <div className={ styles.root } style={ style }>
           { this.props.children }
         </div>
       </div>
@@ -149,20 +165,30 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     });
   }
 
-  private _checkBounds() {
-    const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
-    const { isSticky } = this.state;
-    // console.log('scrolltop', this.context.scrollContainer.scrollTop);
-
-    // console.log(rootBounds.top, this.context.topBound)
-    if (rootBounds.top < this.context.topBound && !isSticky) {
-      if (this._stickyDistance === undefined) {
-        // debugger;
-        this._stickyDistance = this.context.scrollContainer.scrollTop;
-        console.log(this._stickyDistance);
-      }
-      // this.context.addStickyHeader(this);
+  private _getBackground(): string {
+    debugger;
+    let curr = this.refs.root;
+    while (window.getComputedStyle(curr, null).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)') {
+      curr = curr.parentElement;
     }
+    console.log('background', curr, window.getComputedStyle(curr, null).getPropertyValue('background-color'));
+    return window.getComputedStyle(curr, null).getPropertyValue('background-color');
+  }
+
+  private _checkBounds() {
+    // const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
+    // const { isSticky } = this.state;
+    // // console.log('scrolltop', this.context.scrollContainer.scrollTop);
+
+    // // console.log(rootBounds.top, this.context.topBound)
+    // if (rootBounds.top < this.context.topBound && !isSticky) {
+    //   if (this._stickyDistance === undefined) {
+    //     // debugger;
+    //     this._stickyDistance = this.context.scrollContainer.scrollTop;
+    //     console.log(this._stickyDistance);
+    //   }
+    //   // this.context.addStickyHeader(this);
+    // }
 
     // else if (rootBounds.bottom >= this.context.topBound && rootBounds.top <= this.context.bottomBound) {
     //   debugger;
