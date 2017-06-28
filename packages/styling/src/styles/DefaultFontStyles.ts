@@ -117,7 +117,7 @@ function _getFontFamily(): string {
   let fontFamily = FontFamilyWestEuropean;
 
   for (let lang in LanguageToFontMap) {
-    if (LanguageToFontMap.hasOwnProperty(lang) && lang.indexOf(language) === 0) {
+    if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
       // tslint:disable-next-line:no-any
       fontFamily = (LanguageToFontMap as any)[lang];
       break;

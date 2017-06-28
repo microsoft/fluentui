@@ -13,11 +13,11 @@ import { FabricPerformance } from '@uifabric/utilities/lib/index';
  * @param {(...(IStyle | string)[])} args
  * @returns {IStyle}
  */
-export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | string {
+export function mergeStyles(...args: (IStyle | string | null | undefined)[]): IProcessedStyle | string {
   const classes: string[] = [];
   const rules: Rule[] = [];
 
-  function _parseArgs(theArgs: (IStyle | string)[]): void {
+  function _parseArgs(theArgs: (IStyle | string | null | undefined)[]): void {
     for (const arg of theArgs) {
       if (arg) {
         if (typeof arg === 'string') {
