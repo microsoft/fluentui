@@ -36,6 +36,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   private _measured: HTMLElement;
   private _lastKnownRootWidth: number | undefined = undefined;
   private _lastKnownMeasuredWidth: number | undefined = undefined;
+  private _measurementsCache: { [key: string]: number } = {};
 
   constructor(props: IResizeGroupProps) {
     super(props);
@@ -144,6 +145,10 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
       const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
       const measuredWidth = this._lastKnownMeasuredWidth = this._measured.getBoundingClientRect().width;
+
+      if (this.state.measuredData.cacheKey) {
+        this._measurementsCache[this.state.measuredData.cacheKey] = measuredWidth;
+      }
       if ((measuredWidth > containerWidth)) {
         let nextMeasuredData = onReduceData(this.state.measuredData);
 
