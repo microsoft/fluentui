@@ -72,6 +72,8 @@ export interface ICalendarInlineExampleProps {
   autoNavigateOnSelection: boolean;
   showGoToToday: boolean;
   showNavigateButtons?: boolean;
+  highlightCurrentMonth?: boolean;
+  isDayPickerVisible?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -91,7 +93,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
   public render() {
     let divStyle: React.CSSProperties = {
-      height: '330px',
+      height: '340px',
       width: '400px'
     };
 
@@ -125,6 +127,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           value={ this.state.selectedDate }
           firstDayOfWeek={ DayOfWeek.Sunday }
           strings={ DayPickerStrings }
+          highlightCurrentMonth={ this.props.highlightCurrentMonth }
+          isDayPickerVisible={ this.props.isDayPickerVisible }
         >
         </Calendar>
         { this.props.showNavigateButtons &&

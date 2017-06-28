@@ -8,6 +8,7 @@ import {
   IPoint,
   IRectangle
 } from '../../Utilities';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export enum ContextualMenuItemType {
@@ -20,7 +21,7 @@ export interface IContextualMenu {
 
 }
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu> {
+export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -82,7 +83,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default false
    */
   isBeakVisible?: boolean;
 
