@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2017 10:12:04 GMT and should not be manually modified.
+
+## 4.12.0
+Wed, 28 Jun 2017 10:12:04 GMT
+
+### Minor changes
+
+- Persona: Adding image alt, defaulting to empty string
+
+### Patches
+
+- Fixed focusing first item in DetailsList
+- MarqueeSelection: now with better performance in Edge.
+- Textfield: Fixed layout of underlined textfield with error
 
 ## 4.11.0
 Tue, 27 Jun 2017 01:26:31 GMT
