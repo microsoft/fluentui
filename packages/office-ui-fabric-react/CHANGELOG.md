@@ -1,6 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 22 Jun 2017 21:45:08 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Jun 2017 10:12:04 GMT and should not be manually modified.
+
+## 4.12.0
+Wed, 28 Jun 2017 10:12:04 GMT
+
+### Minor changes
+
+- Persona: Adding image alt, defaulting to empty string
+
+### Patches
+
+- Fixed focusing first item in DetailsList
+- MarqueeSelection: now with better performance in Edge.
+- Textfield: Fixed layout of underlined textfield with error
+
+## 4.11.0
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Minor changes
+
+- Commandbar: fix synchronous reflow 
+- Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
+
+### Patches
+
+- OverflowSet: Fix type definition to be compatible with latest @types/react
+- Persona: Fixing image sizing to cover correctly.
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.10.2
+Fri, 23 Jun 2017 20:02:00 GMT
+
+### Patches
+
+- Icon: Adding `data-icon-name` attribute for debugging identification purposes.
+
+## 4.10.1
+Fri, 23 Jun 2017 04:12:23 GMT
+
+### Patches
+
+- Fix FocusZone stop eating spacebar presses in textarea fields
+- DetailsList: Fixing regression in DetailsRow, and adding check in Image which was causing nullrefs.
+- Route: Make implicit any explicit
 
 ## 4.10.0
 Thu, 22 Jun 2017 21:45:08 GMT

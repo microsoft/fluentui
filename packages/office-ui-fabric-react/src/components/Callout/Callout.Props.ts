@@ -73,7 +73,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default false
+   * @default true
    */
   isBeakVisible?: boolean;
 
