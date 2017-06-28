@@ -448,21 +448,36 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   private _renderOption(item: ISwatchColorPickerItemProps, posInSet?: number, setSize?: number): JSX.Element {
     let id = this._id;
     let isCell = item.type === SwatchColorPickerItemType.Cell;
+    let optionProps;
+
+    if (isCell) {
+      optionProps =
+        { className: styles.cell ,
+         onClick: this._onCellClick ,
+         onHover: this.props.onCellHovered ,
+         onFocus: this.props.onCellFocused ,
+         role: 'gridcell' ,
+         selectedIndex: this.state.selectedIndex }
+      ;
+    } else {
+      optionProps =
+        { posInSet: posInSet && posInSet ,
+         setSize: setSize && setSize ,
+         className: styles.item ,
+         onClick: this._onMenuItemClick ,
+         onFocus: this._clearFocusColorOnMenuItem ,
+         role: this.props.menuButtonProps ? 'menuitem' : 'button' }
+      ;
+    }
+
     return (
       <SwatchColorPickerOption
         item={ item }
         id={ this._id }
         key={ id + item.id }
-        posInSet={ !isCell ? (posInSet && posInSet) : undefined }
-        setSize={ !isCell ? (setSize && setSize) : undefined }
         disabled={ this.props.disabled || item.disabled }
-        className={ isCell ? styles.cell : styles.item }
-        onClick={ isCell ? this._onCellClick : this._onMenuItemClick }
-        onHover={ isCell ? this.props.onCellHovered : undefined }
-        onFocus={ isCell ? this.props.onCellFocused : this._clearFocusColorOnMenuItem }
-        role={ isCell ? 'gridcell' : this.props.menuButtonProps ? 'menuitem' : 'button' }
-        selectedIndex={ isCell ? this.state.selectedIndex : undefined }
         cellShape={ this.props.cellShape }
+        { ...optionProps }
       />
     );
   }
