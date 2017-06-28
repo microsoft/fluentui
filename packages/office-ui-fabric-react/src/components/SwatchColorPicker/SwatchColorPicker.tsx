@@ -339,7 +339,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   /**
    * Render a cell or menu item
    * @param item - The item to render
-   * @param posInSet - Optinal, the position in the set of the item
+   * @param posInSet - Optional, the position in the set of the item
    * @param setSize - Optional, the total set size this item is in
    * @returns {JSX.Element} - Element representing the item
    */
@@ -348,59 +348,29 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let id = this._id;
     let isCell = item.type === SwatchColorPickerItemType.Cell;
     return (
-      <CommandButton
-        { ...item.menuItemButtonProps }
-        id={ id + '-list' + item.index }
-        ref={ 'option' + item.index }
+      <SwatchColorPickerOption
+        item={ item }
+        id={ this._id }
         key={ id + item.id }
-        data-index={ item.index }
-        data-is-focusable={ true }
-        aria-posinset={ !isCell ? (posInSet && posInSet) : null }
-        aria-setsize={ !isCell ? (setSize && setSize) : null }
+        posInSet={ !isCell ? (posInSet && posInSet) : null }
+        setSize={ !isCell ? (setSize && setSize) : null }
         disabled={ this.props.disabled || item.disabled }
-        className={ css(
-          (isCell ? styles.cell : styles.item),
-          {
-            ['is-selected ' + styles.cellIsSelected]: (isCell && this.state.selectedIndex === item.index),
-            ['is-disabled ' + styles.disabled]: item.disabled && item.disabled
-          },
-        ) }
-        onClick={ () => isCell ? this._onCellClick(item) : this._onMenuItemClick(item) }
-        onMouseEnter={ isCell ? () => this._onItemHoverOrFocused(item, this.props.onCellHovered) : null }
-        onMouseLeave={ isCell ? () => this._clearColors([this.props.onCellHovered]) : null }
-        onFocus={ () => isCell ?
-          this._onItemHoverOrFocused(item, this.props.onCellFocused) :
-          this._clearColors([this.props.onCellFocused])
-        }
+        className={ isCell ? styles.cell : styles.item }
+        onClick={ isCell ? this._onCellClick : this._onMenuItemClick }
+        onHover={ isCell ? this.props.onCellHovered : null }
+        onFocus={ isCell ? this.props.onCellFocused : this._clearFocusColorOnMenuItem }
         role={ isCell ? 'gridcell' : this.props.menuButtonProps ? 'menuitem' : 'button' }
-        aria-selected={ isCell ? (this.state.selectedIndex === item.index ? 'true' : 'false') : null }
-        ariaLabel={ item.label && item.label }
-        title={ item.label && item.label }
-      >
-        { this._onRenderOption(item) }
-      </CommandButton>
+        selectedIndex={ isCell ? this.state.selectedIndex : null }
+        cellShape={ this.props.cellShape }
+      />
     );
-  }
-
-  /**
-   * Handle hover/focus events for the given item with the given handler
-   * @param item - The item the the event fired against
-   * @param handler - The handler to for the event
-   */
-  private _onItemHoverOrFocused(item: ISwatchColorPickerItemProps, handler?: (id?: string, color?: string) => void) {
-    if (this.props.disabled || (item && item.disabled)) {
-      return;
-    }
-
-    if (handler) {
-      item ? handler(item.id, item.color) : handler();
-    }
   }
 
   /**
    * Handle the click on a cell
    * @param item - The cell that the click was fired against
    */
+  @autobind
   private _onCellClick(item: ISwatchColorPickerItemProps) {
     if (this.props.disabled || item.disabled) {
       return;
@@ -436,6 +406,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Handle the click on a menu item
    * @param item - The menu item that the click was fired against
    */
+  @autobind
   private _onMenuItemClick(item: ISwatchColorPickerItemProps) {
     if (this.props.disabled || item.disabled) {
       return;
@@ -466,6 +437,16 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   /**
+   * Clear the focus color
+   * @param id - The id of the item
+   * @param color - The color for the item
+   */
+  @autobind
+  private _clearFocusColorOnMenuItem(id?: string, color?: string) {
+    this._clearColors([this.props.onCellFocused]);
+  }
+
+  /**
    * onClick Handler for the button
    */
   @autobind
@@ -481,30 +462,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     this.setState({
       expanded: this.props.disabled ? false : !this.state.expanded
     });
-  }
-
-  /**
-   * Render the core of an cell or menu item
-   * @param item - The item to render
-   * @returns {JSX.Element} - Element representing the core of the item
-   */
-  private _onRenderOption(item: ISwatchColorPickerItemProps): JSX.Element {
-
-    // Menu items just need their label text
-    if (item.type !== SwatchColorPickerItemType.Cell) {
-      return <span className={ styles.menuItem } >{ item.label }</span>;
-    }
-
-    // Build an SVG for the cell with the given shape and color properties
-    return (
-      <svg className={ css(styles.svg, this.props.cellShape, this.props.cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
-        {
-          this.props.cellShape === 'circle' ?
-            <circle cx='50%' cy='50%' r='50%' /> :
-            <rect width='100%' height='100%' />
-        }
-      </svg>
-    );
   }
 
   /**
@@ -622,3 +579,110 @@ class SwatchColorPickerBody extends BaseComponent<ISwatchColorPickerBodyProps, {
     );
   }
 }
+
+interface ISwatchColorPickerOptionProps {
+  item: ISwatchColorPickerItemProps;
+  id: string;
+  posInSet?: number;
+  setSize?: number;
+  disabled?: boolean;
+  selectedIndex?: number;
+  onClick: (item: ISwatchColorPickerItemProps) => void;
+  onHover?: (id?: string, color?: string) => void;
+  onFocus?: (id?: string, color?: string) => void;
+  role?: string;
+  className?: string;
+  cellShape?: string;
+}
+
+const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOptionProps> =
+  (props: ISwatchColorPickerOptionProps) => {
+    let {
+      item,
+      id,
+      posInSet,
+      setSize,
+      className,
+      role,
+      selectedIndex
+    } = props;
+    return (
+      <CommandButton
+        { ...item.menuItemButtonProps }
+        id={ id + '-item' + item.index }
+        data-index={ item.index }
+        data-is-focusable={ true }
+        aria-posinset={ posInSet && posInSet }
+        aria-setsize={ setSize && setSize }
+        disabled={ props.disabled }
+        className={ css(className,
+          {
+            ['is-selected ' + styles.cellIsSelected]: (selectedIndex && selectedIndex === item.index),
+            ['is-disabled ' + styles.disabled]: props.disabled
+          }
+        ) }
+        onClick={ _onClick }
+        onMouseEnter={ _onMouseEnter }
+        onMouseLeave={ _onMouseLeave }
+        onFocus={ _onFocus }
+        role={ role }
+        aria-selected={ selectedIndex && selectedIndex === item.index ? 'true' : 'false' }
+        ariaLabel={ item.label && item.label }
+        title={ item.label && item.label }
+      >
+        { _onRenderOption() }
+      </CommandButton>
+    );
+
+    function _onClick() {
+      if (props.onClick) {
+        props.onClick(props.item);
+      }
+    }
+
+    function _onMouseEnter() {
+      if (props.onHover) {
+        props.onHover(props.item.id, props.item.color);
+      }
+    }
+
+    function _onMouseLeave() {
+      if (props.onHover) {
+        props.onHover();
+      }
+    }
+
+    function _onFocus() {
+      if (props.onFocus) {
+        props.onFocus(props.item.id, props.item.color);
+      }
+    }
+
+
+    /**
+     * Render the core of an cell or menu item
+     * @returns {JSX.Element} - Element representing the core of the item
+     */
+    function _onRenderOption(): JSX.Element {
+      let {
+        item,
+        cellShape
+      } = props;
+
+      // Menu items just need their label text
+      if (item.type !== SwatchColorPickerItemType.Cell) {
+        return <span className={ styles.menuItem } >{ item.label }</span>;
+      }
+
+      // Build an SVG for the cell with the given shape and color properties
+      return (
+        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
+          {
+            cellShape === 'circle' ?
+              <circle cx='50%' cy='50%' r='50%' /> :
+              <rect width='100%' height='100%' />
+          }
+        </svg>
+      );
+    }
+  }
