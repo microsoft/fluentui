@@ -138,6 +138,14 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     });
   }
 
+  private _getCachedMeasurementForData(data: any): number | undefined {
+    if (data && data.cacheKey && this._measurementsCache.hasOwnProperty(data.cacheKey)) {
+      return this._measurementsCache[data.cacheKey];
+    }
+
+    return undefined;
+  }
+
   private _measureItems() {
     const { data, onReduceData } = this.props;
     const { shouldMeasure } = this.state;
