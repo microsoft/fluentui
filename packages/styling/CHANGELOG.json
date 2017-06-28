@@ -2,6 +2,146 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.11.6",
+      "tag": "@uifabric/styling_v0.11.6",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.5",
+      "tag": "@uifabric/styling_v0.11.5",
+      "date": "Fri, 23 Jun 2017 20:02:00 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.4",
+      "tag": "@uifabric/styling_v0.11.4",
+      "date": "Fri, 23 Jun 2017 04:12:23 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.3",
+      "tag": "@uifabric/styling_v0.11.3",
+      "date": "Thu, 22 Jun 2017 21:45:08 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.2",
+      "tag": "@uifabric/styling_v0.11.2",
+      "date": "Thu, 22 Jun 2017 10:13:03 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.1",
+      "tag": "@uifabric/styling_v0.11.1",
+      "date": "Wed, 21 Jun 2017 01:52:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "221454482fd48138b0485715170c03c64fa1cef7",
+            "comment": "Instrumenting the performance of css registration."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.3.0 <5.0.0` to `>=4.4.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@uifabric/styling_v0.11.0",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bff150fa91e87c31d8d433092b007ee604f22d8b",
+            "comment": "Consume latest version of createApp "
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "135c06a013468eb717fddab4ccabd6d63274fe4b",
+            "comment": "General class exports now register on demand, resulting in less unneeded evaluation of classnames."
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "230323c6b7d4972e8b04da6a4beb981b1c15396c",
+            "comment": "Fixing circular dependency between @uifabric/styling/utilities and @uifabric/styling/styles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.5",
+      "tag": "@uifabric/styling_v0.10.5",
+      "date": "Tue, 20 Jun 2017 10:22:47 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.10.4",
+      "tag": "@uifabric/styling_v0.10.4",
+      "date": "Sat, 17 Jun 2017 17:39:43 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.10.2",
+      "tag": "@uifabric/styling_v0.10.2",
+      "date": "Sat, 17 Jun 2017 06:27:45 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.10.1",
+      "tag": "@uifabric/styling_v0.10.1",
+      "date": "Sat, 17 Jun 2017 04:36:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ff0d219134776c9b5cff83a7ac9ed7596d8281a2",
+            "comment": "Fixing amd import that was broken byt the no-implicit-anys fix."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.0",
+      "tag": "@uifabric/styling_v0.10.0",
+      "date": "Fri, 16 Jun 2017 23:02:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "31867d887e53378ab7ce057babe1fcac939d2d65",
+            "comment": "Enable no-implicit-any in the styling package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.1",
+      "tag": "@uifabric/styling_v0.9.1",
+      "date": "Fri, 16 Jun 2017 19:39:47 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.9.0",
       "tag": "@uifabric/styling_v0.9.0",
       "date": "Thu, 15 Jun 2017 23:55:18 GMT",

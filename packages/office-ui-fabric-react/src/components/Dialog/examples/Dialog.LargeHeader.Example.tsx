@@ -50,7 +50,7 @@ export class DialogLargeHeaderExample extends React.Component<any, any> {
                 disabled: true
               }
             ] }
-            onChanged={ this._onChoiceChanged }
+            onChange={ this._onChoiceChanged }
           />
           <DialogFooter>
             <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />

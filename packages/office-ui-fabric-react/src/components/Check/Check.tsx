@@ -39,14 +39,14 @@ export class Check extends BaseComponent<ICheckProps, {}> {
         styles.root,
         isChecked && ('is-checked ' + styles.rootIsChecked)
       ) }>
-        <Icon
-          className={ css('ms-Check-circle', styles.circle) }
-          iconName='circleRing'
-        />
-        <Icon
-          className={ css('ms-Check-check', styles.check) }
-          iconName='checkMark'
-        />
+        { Icon({
+          className: 'ms-Check-circle ' + styles.circle,
+          iconName: 'CircleRing'
+        }) }
+        { Icon({
+          className: 'ms-Check-check ' + styles.check,
+          iconName: 'CheckMark'
+        }) }
       </div>
     );
   }

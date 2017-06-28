@@ -22,12 +22,13 @@ export class FontPage extends BaseComponent<{}, {}> {
           <tbody>
             {
               Object.keys(theme.fonts)
-                .filter((fontName: string) => theme.fonts[fontName].fontSize !== undefined)
+                // tslint:disable:no-any
+                .filter((fontName: string) => (theme.fonts as any)[fontName].fontSize !== undefined)
                 .map((fontName: string) => (
                   <tr className={ styles.row as string } key={ fontName }>
                     <td className={ styles.cell as string }>{ `${fontName}` }</td>
-                    <td className={ styles.cell as string }>{ `${theme.fonts[fontName].fontSize}` }</td>
-                    <td className={ mergeStyles(theme.fonts[fontName]) as string }>
+                    <td className={ styles.cell as string }>{ `${(theme.fonts as any)[fontName].fontSize}` }</td>
+                    <td className={ mergeStyles((theme.fonts as any)[fontName]) as string }>
                       The quick brown fox jumps over the lazy dog
                     </td>
                   </tr>
@@ -38,3 +39,4 @@ export class FontPage extends BaseComponent<{}, {}> {
     );
   }
 }
+// tslint:enable:no-any

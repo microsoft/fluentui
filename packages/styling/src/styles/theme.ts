@@ -4,9 +4,11 @@ import {
   ISemanticColors
 } from '../interfaces/index';
 import {
-  DefaultPalette,
   DefaultFontStyles
-} from '../styles/index';
+} from './DefaultFontStyles';
+import {
+  DefaultPalette
+} from './DefaultPalette';
 import { Customizer, getWindow } from '@uifabric/utilities/lib/index';
 export interface ITheme {
   palette: IPalette;
@@ -23,11 +25,11 @@ let _theme: ITheme = {
 
 let win = getWindow();
 
-// tslint:disable:no-string-literal
-if (win && win['FabricConfig'] && win['FabricConfig'].theme) {
-  _theme = createTheme(win['FabricConfig'].theme);
+// tslint:disable:no-string-literal no-any
+if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
+  _theme = createTheme((win as any)['FabricConfig'].theme);
 }
-// tslint:enable:no-string-literal
+// tslint:enable:no-string-literal no-any
 
 Customizer.setDefault('theme', _theme);
 

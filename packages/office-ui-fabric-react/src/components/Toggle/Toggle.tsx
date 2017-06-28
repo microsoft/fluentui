@@ -108,6 +108,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         <div className={ classNames.container } >
           <button
             { ...toggleNativeProps }
+            type='button'
             className={ classNames.pill }
             ref={ (c): HTMLButtonElement => this._toggleButton = c }
             aria-disabled={ disabled }
@@ -221,6 +222,6 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
       ) as string,
 
     };
-  };
+  }
 
 }

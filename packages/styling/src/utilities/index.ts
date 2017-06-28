@@ -1,10 +1,4 @@
 export {
-  ITheme,
-  getTheme,
-  loadTheme,
-  createTheme
-} from './theme';
-export {
   mergeStyles
 } from './mergeStyles';
 export {

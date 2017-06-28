@@ -17,6 +17,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 
@@ -163,7 +164,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='chevronDown' />
+          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -186,16 +187,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options } = this.props;
+    let { onChanged, options, selectedKey } = this.props;
     let { selectedIndex } = this.state;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
     if (index !== selectedIndex) {
-      // Set the selected option.
-      this.setState({
-        selectedIndex: index
-      });
+      if (selectedKey === undefined) {
+        // Set the selected option if this is an uncontrolled component
+        this.setState({
+          selectedIndex: index
+        });
+      }
 
       if (onChanged) {
         onChanged(options[index], index);
@@ -330,9 +333,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     switch (item.itemType) {
-      case DropdownMenuItemType.Divider:
+      case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
-      case DropdownMenuItemType.Header:
+      case SelectableOptionMenuItemType.Header:
         return this._renderHeader(item);
       default:
         return this._renderOption(item);

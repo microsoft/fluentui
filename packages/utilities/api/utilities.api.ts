@@ -90,6 +90,16 @@ class EventGroup {
   public static isObserved(target: any, eventName: string): boolean;
 }
 
+// WARNING: measure has incomplete type information
+// WARNING: reset has incomplete type information
+// (undocumented)
+class FabricPerformance {
+  // (undocumented)
+  public static setPeriodicReset(): void;
+  // (undocumented)
+  public static summary: IPerfSummary;
+}
+
 // (undocumented)
 export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number;
 
@@ -125,7 +135,8 @@ export function getNextElement(rootElement: HTMLElement,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement | null;
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null;
 
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null;
 
@@ -134,7 +145,8 @@ export function getPreviousElement(rootElement: HTMLElement,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement | null;
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null;
 
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
@@ -237,6 +249,30 @@ interface IEventRecordList {
 interface IEventRecordsByName {
   // (undocumented)
   [ eventName: string ]: IEventRecordList;
+}
+
+// (undocumented)
+interface IPerfData {
+  // (undocumented)
+  duration: number;
+  // (undocumented)
+  timeStamp: number;
+}
+
+// (undocumented)
+interface IPerfMeasurement {
+  // (undocumented)
+  all: IPerfData[];
+  // (undocumented)
+  count: number;
+  // (undocumented)
+  totalDuration: number;
+}
+
+// (undocumented)
+interface IPerfSummary {
+  // (undocumented)
+  [ key: string ]: IPerfMeasurement;
 }
 
 // (undocumented)

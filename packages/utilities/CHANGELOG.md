@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 14 Jun 2017 06:02:15 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+
+## 4.4.1
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.4.0
+Wed, 21 Jun 2017 01:52:48 GMT
+
+### Minor changes
+
+- Add FabricPerformance utility to measure performance
 
 ## 4.3.0
 Wed, 14 Jun 2017 06:02:15 GMT
