@@ -21,18 +21,66 @@ import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
 interface ISwatchColorPickerOptionProps {
+
+  /**
+   * The option that will be made available to the user
+   */
   item: ISwatchColorPickerItemProps;
+
+  /**
+   * Arbitrary unique string associated with this option
+   */
   id: string;
+
+  /**
+   * Optional, the position in the parent set for this item
+   */
   posInSet?: number;
+
+  /**
+   * Optional, the size of the total parent set
+   */
   setSize?: number;
+
+  /**
+   * Optional, if the this option should be diabled
+   */
   disabled?: boolean;
+
+  /**
+   * Optional, the currently selectedIndex in the set of options
+   */
   selectedIndex?: number;
+
+  /**
+   * The on click handler
+   */
   onClick: (item: ISwatchColorPickerItemProps) => void;
+
+  /**
+   * Optional, the onHover handler
+   */
   onHover?: (id?: string, color?: string) => void;
+
+  /**
+   * Optional, the onFocus handler
+   */
   onFocus?: (id?: string, color?: string) => void;
+
+  /**
+   * The accessible role for this option
+   */
   role?: string;
+
+  /**
+   * Optional, className(s) to apply
+   */
   className?: string;
-  cellShape?: string;
+
+  /**
+   * The shape for the option (only used for item type.Cell)
+   */
+  cellShape?: 'circle' | 'square';
 }
 
 const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOptionProps> =
@@ -619,11 +667,35 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 }
 
 interface IMenuButtonProps extends IButtonProps {
+  /**
+   * The CSS-compatible string to describe the color to set
+   * for the button
+   */
   color?: string;
+
+  /**
+   * Is the menuButton expanded?
+   */
   expanded: boolean;
+
+  /**
+   * Is the menuButton disabled>
+   */
   disabled?: boolean;
+
+  /**
+   * OnClick handler
+   */
   onClick: () => void;
+
+  /**
+   * Callback for rendering the expanded container
+   */
   onRenderContainer: () => JSX.Element;
+
+  /**
+   * Optional, ButtonProps for the menuButton
+   */
   menuButtonProps?: IButtonProps;
 }
 

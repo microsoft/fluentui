@@ -23,7 +23,7 @@ export interface ISwatchColorPickerProps {
   selectedId?: string;
 
   /**
-   * Icon props for the swatch color picker. If given the swatch color picker
+   * IButtonProps for the swatch color picker. If given the swatch color picker
    * will render inside of a menu
    */
   menuButtonProps?: IButtonProps;
