@@ -154,15 +154,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <div className={ textFieldClassName }>
-        { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
-          { (addonString !== undefined || this.props.onRenderAddon) && (
-            <div className={ css(styles.fieldAddon) }>
-              { onRenderAddon(this.props, this._onRenderAddon) }
-            </div>
-          ) }
-          { multiline ? this._renderTextArea() : this._renderInput() }
-          { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+        <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
+          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+          <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
+            { (addonString !== undefined || this.props.onRenderAddon) && (
+              <div className={ css(styles.fieldAddon) }>
+                { onRenderAddon(this.props, this._onRenderAddon) }
+              </div>
+            ) }
+            { multiline ? this._renderTextArea() : this._renderInput() }
+            { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+          </div>
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
