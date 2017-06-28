@@ -59,6 +59,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   @include ms-font-xl;
   cursor: pointer;
   outline: 0;
+  padding-left: 6px;
 }
 
 .expand {
