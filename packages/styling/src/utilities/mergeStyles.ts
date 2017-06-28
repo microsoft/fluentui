@@ -33,20 +33,20 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
 
   _parseArgs(args);
 
-  let rulesObject: IStyle = null;
-  
+  let rulesObject: IStyle | null = null;
+
   if (rules.length) {
     FabricPerformance.measure('glamor.css', () => {
       rulesObject = css(...rules);
     });
   }
-  
+
   if (classes.length) {
     if (rulesObject) {
-      classes.push(rulesObject.toString());
+      classes.push((rulesObject as IStyle).toString());
     }
     return classes.join(' ');
   }
 
-  return rulesObject;
+  return rulesObject || {};
 }
