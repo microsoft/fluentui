@@ -20,6 +20,113 @@ import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
+interface ISwatchColorPickerOptionProps {
+  item: ISwatchColorPickerItemProps;
+  id: string;
+  posInSet?: number;
+  setSize?: number;
+  disabled?: boolean;
+  selectedIndex?: number;
+  onClick: (item: ISwatchColorPickerItemProps) => void;
+  onHover?: (id?: string, color?: string) => void;
+  onFocus?: (id?: string, color?: string) => void;
+  role?: string;
+  className?: string;
+  cellShape?: string;
+}
+
+const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOptionProps> =
+  (props: ISwatchColorPickerOptionProps) => {
+    let {
+      item,
+      id,
+      posInSet,
+      setSize,
+      className,
+      role,
+      selectedIndex,
+      disabled,
+      cellShape,
+      onClick,
+      onHover,
+      onFocus
+    } = props;
+    return (
+      <CommandButton
+        { ...item.menuItemButtonProps }
+        id={ id + '-item' + item.index }
+        data-index={ item.index }
+        data-is-focusable={ true }
+        aria-posinset={ posInSet && posInSet }
+        aria-setsize={ setSize && setSize }
+        disabled={ disabled }
+        className={ css(className,
+          {
+            ['is-selected ' + styles.cellIsSelected]: (selectedIndex && selectedIndex === item.index),
+            ['is-disabled ' + styles.disabled]: disabled
+          }
+        ) }
+        onClick={ _onClick }
+        onMouseEnter={ _onMouseEnter }
+        onMouseLeave={ _onMouseLeave }
+        onFocus={ _onFocus }
+        role={ role }
+        aria-selected={ selectedIndex && selectedIndex === item.index ? 'true' : 'false' }
+        ariaLabel={ item.label && item.label }
+        title={ item.label && item.label }
+      >
+        { _onRenderOption() }
+      </CommandButton>
+    );
+
+    function _onClick() {
+      if (onClick && !disabled) {
+        onClick(item);
+      }
+    }
+
+    function _onMouseEnter() {
+      if (onHover && !disabled) {
+        onHover(item.id, item.color);
+      }
+    }
+
+    function _onMouseLeave() {
+      if (onHover && !disabled) {
+        onHover();
+      }
+    }
+
+    function _onFocus() {
+      if (onFocus && !disabled) {
+        onFocus(item.id, item.color);
+      }
+    }
+
+    /**
+     * Render the core of an cell or menu item
+     * @returns {JSX.Element} - Element representing the core of the item
+     */
+    function _onRenderOption(): JSX.Element {
+
+      // Menu items just need their label text
+      if (item.type !== SwatchColorPickerItemType.Cell) {
+        return <span className={ styles.menuItem } >{ item.label }</span>;
+      }
+
+      // Build an SVG for the cell with the given shape and color properties
+      return (
+        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
+          {
+            cellShape === 'circle' ?
+              <circle cx='50%' cy='50%' r='50%' /> :
+              <rect width='100%' height='100%' />
+          }
+        </svg>
+      );
+    }
+  };
+
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
   expanded?: boolean;
@@ -83,7 +190,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       <SwatchColorPickerBody
         { ...this.props }
         onRenderItems={ this._onRenderItems }
-      />
+      />;
 
     return (
       <div
@@ -99,7 +206,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param selectedId - The selected item's id to find
    * @returns {number} - The index of the selected item's id, -1 if there was no match
    */
-  private _getSelectedIndex(items: ISwatchColorPickerItemProps[], selectedId: string): number {
+  private _getSelectedIndex(items: ISwatchColorPickerItemProps[], selectedId: string): number | undefined {
     let selectedIndex = findIndex(items, (item => (item.id === selectedId)));
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
@@ -107,10 +214,10 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   /**
    * Gets the color for the selected index
    * @returns {string} - The color for the selected index,
-   *   or null if: we are not updating the button icon with color,
+   *   or undefined if: we are not updating the button icon with color,
    *   there is not a valid selected index, or if we do not have a valid color
    */
-  private _getSelectedColorToSet(): string | null {
+  private _getSelectedColorToSet(): string | undefined {
     let { selectedIndex } = this.state;
     let {
       swatchColorPickerItems,
@@ -119,16 +226,14 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
     // Do we need to update the button with the selected
     // item's color? If so, attempt to grab the color
-    if (setSelectedColorForIcon && selectedIndex != undefined) {
+    if (setSelectedColorForIcon && selectedIndex !== undefined) {
       let swatchColorPickerItem = swatchColorPickerItems[selectedIndex];
-      if (swatchColorPickerItem.type === SwatchColorPickerItemType.Cell &&
-        swatchColorPickerItem.color !== null &&
-        swatchColorPickerItem.color.length > 0) {
+      if (swatchColorPickerItem.type === SwatchColorPickerItemType.Cell) {
         return swatchColorPickerItem.color;
       }
     }
 
-    return null;
+    return undefined;
   }
 
   /**
@@ -153,12 +258,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // cells are processed as a chunk. This helps with being able
     // to determine the correct aria-posinset and aria-setsize values
     let firstExecutableItemsPerChunk = this.props.menuButtonProps ?
-      this._getFirstExecutableItemsPerChunk() : null;
+      this._getFirstExecutableItemsPerChunk() : undefined;
 
     // Did we find any executable items? (e.g. should be calculate the set information)
     let shouldGetSetInfo = (firstExecutableItemsPerChunk && firstExecutableItemsPerChunk.length > 0);
 
-    let setSize = shouldGetSetInfo ? firstExecutableItemsPerChunk.length : null;
+    let setSize = shouldGetSetInfo ? firstExecutableItemsPerChunk.length : undefined;
 
     // If any menuItem has an icon, all menu items need to be positined correctly so they align
     let shouldAccountForIcon = (firstExecutableItemsPerChunk && findIndex(firstExecutableItemsPerChunk, (executableItem) => (executableItem.type === SwatchColorPickerItemType.MenuItem && executableItem.menuItemButtonProps)));
@@ -167,7 +272,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let index = 0;
     while (index < items.length) {
       let item = items[index];
-      let posInSet = shouldGetSetInfo ? this._getPositionInSet(firstExecutableItemsPerChunk, item.id) : null;
+      let posInSet = shouldGetSetInfo ? this._getPositionInSet(firstExecutableItemsPerChunk, item.id) : undefined;
       switch (item.type) {
         case SwatchColorPickerItemType.Divider:
           elements.push(this._renderSeparator(item));
@@ -225,15 +330,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   /**
    * Renders the next consecutive chunk of cells
    * @param items - The items to process
-   * @param posInSet - The position in the set for this chunk
-   * @param setSize - The size of the total set
+   * @param posInSet - Optional, the position in the set for this chunk
+   * @param setSize - Optional, the size of the total set
    * @returns {JSX.Element} - The grid that represents the chunk
    */
-  private _renderNextChunkOfCellItems(
-    items: ISwatchColorPickerItemProps[],
-    posInSet: number | null = null,
-    setSize: number | null = null): JSX.Element {
-
+  private _renderNextChunkOfCellItems(items: ISwatchColorPickerItemProps[], posInSet?: number, setSize?: number): JSX.Element {
     return (
       <Grid
         key={ this._id + items[0].id + '-grid' }
@@ -252,12 +353,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param itemId - The id of item to find the index of
    * @returns {number} - The position in the set
    */
-  private _getPositionInSet(firstExecutableItemsPerChunk: ISwatchColorPickerItemProps[], itemId: string): number | null {
+  private _getPositionInSet(firstExecutableItemsPerChunk: ISwatchColorPickerItemProps[], itemId: string): number | undefined {
 
     // Find the index of the given id in the list of first executable items per chunk
     let index = findIndex(firstExecutableItemsPerChunk, (executableItem) => (executableItem.id === itemId));
 
-    return index < 0 ? null : index + 1;
+    return index < 0 ? undefined : index + 1;
   }
 
   /**
@@ -344,7 +445,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @returns {JSX.Element} - Element representing the item
    */
   @autobind
-  private _renderOption(item: ISwatchColorPickerItemProps, posInSet: number | null = null, setSize: number | null = null): JSX.Element {
+  private _renderOption(item: ISwatchColorPickerItemProps, posInSet?: number, setSize?: number): JSX.Element {
     let id = this._id;
     let isCell = item.type === SwatchColorPickerItemType.Cell;
     return (
@@ -352,15 +453,15 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         item={ item }
         id={ this._id }
         key={ id + item.id }
-        posInSet={ !isCell ? (posInSet && posInSet) : null }
-        setSize={ !isCell ? (setSize && setSize) : null }
+        posInSet={ !isCell ? (posInSet && posInSet) : undefined }
+        setSize={ !isCell ? (setSize && setSize) : undefined }
         disabled={ this.props.disabled || item.disabled }
         className={ isCell ? styles.cell : styles.item }
         onClick={ isCell ? this._onCellClick : this._onMenuItemClick }
-        onHover={ isCell ? this.props.onCellHovered : null }
+        onHover={ isCell ? this.props.onCellHovered : undefined }
         onFocus={ isCell ? this.props.onCellFocused : this._clearFocusColorOnMenuItem }
         role={ isCell ? 'gridcell' : this.props.menuButtonProps ? 'menuitem' : 'button' }
-        selectedIndex={ isCell ? this.state.selectedIndex : null }
+        selectedIndex={ isCell ? this.state.selectedIndex : undefined }
         cellShape={ this.props.cellShape }
       />
     );
@@ -502,13 +603,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 }
 
-
 interface IMenuButtonProps extends IButtonProps {
   color?: string;
   expanded: boolean;
   disabled?: boolean;
   onClick: () => void;
-  onRenderContainer: () => void;
+  onRenderContainer: () => JSX.Element;
   menuButtonProps?: IButtonProps;
 }
 
@@ -579,110 +679,3 @@ class SwatchColorPickerBody extends BaseComponent<ISwatchColorPickerBodyProps, {
     );
   }
 }
-
-interface ISwatchColorPickerOptionProps {
-  item: ISwatchColorPickerItemProps;
-  id: string;
-  posInSet?: number;
-  setSize?: number;
-  disabled?: boolean;
-  selectedIndex?: number;
-  onClick: (item: ISwatchColorPickerItemProps) => void;
-  onHover?: (id?: string, color?: string) => void;
-  onFocus?: (id?: string, color?: string) => void;
-  role?: string;
-  className?: string;
-  cellShape?: string;
-}
-
-const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOptionProps> =
-  (props: ISwatchColorPickerOptionProps) => {
-    let {
-      item,
-      id,
-      posInSet,
-      setSize,
-      className,
-      role,
-      selectedIndex
-    } = props;
-    return (
-      <CommandButton
-        { ...item.menuItemButtonProps }
-        id={ id + '-item' + item.index }
-        data-index={ item.index }
-        data-is-focusable={ true }
-        aria-posinset={ posInSet && posInSet }
-        aria-setsize={ setSize && setSize }
-        disabled={ props.disabled }
-        className={ css(className,
-          {
-            ['is-selected ' + styles.cellIsSelected]: (selectedIndex && selectedIndex === item.index),
-            ['is-disabled ' + styles.disabled]: props.disabled
-          }
-        ) }
-        onClick={ _onClick }
-        onMouseEnter={ _onMouseEnter }
-        onMouseLeave={ _onMouseLeave }
-        onFocus={ _onFocus }
-        role={ role }
-        aria-selected={ selectedIndex && selectedIndex === item.index ? 'true' : 'false' }
-        ariaLabel={ item.label && item.label }
-        title={ item.label && item.label }
-      >
-        { _onRenderOption() }
-      </CommandButton>
-    );
-
-    function _onClick() {
-      if (props.onClick) {
-        props.onClick(props.item);
-      }
-    }
-
-    function _onMouseEnter() {
-      if (props.onHover) {
-        props.onHover(props.item.id, props.item.color);
-      }
-    }
-
-    function _onMouseLeave() {
-      if (props.onHover) {
-        props.onHover();
-      }
-    }
-
-    function _onFocus() {
-      if (props.onFocus) {
-        props.onFocus(props.item.id, props.item.color);
-      }
-    }
-
-
-    /**
-     * Render the core of an cell or menu item
-     * @returns {JSX.Element} - Element representing the core of the item
-     */
-    function _onRenderOption(): JSX.Element {
-      let {
-        item,
-        cellShape
-      } = props;
-
-      // Menu items just need their label text
-      if (item.type !== SwatchColorPickerItemType.Cell) {
-        return <span className={ styles.menuItem } >{ item.label }</span>;
-      }
-
-      // Build an SVG for the cell with the given shape and color properties
-      return (
-        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
-          {
-            cellShape === 'circle' ?
-              <circle cx='50%' cy='50%' r='50%' /> :
-              <rect width='100%' height='100%' />
-          }
-        </svg>
-      );
-    }
-  }

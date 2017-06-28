@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { KeyCodes } from '../../Utilities';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { ISwatchColorPickerItemProps, SwatchColorPickerItemType } from './SwatchColorPicker.Props';
@@ -52,7 +52,7 @@ describe('SwatchColorPicker', () => {
   });
 
   it('Can render collapsed behind a button', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <SwatchColorPicker
         menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
         swatchColorPickerItems={ DEFAULT_OPTIONS }
