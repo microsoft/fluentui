@@ -16,7 +16,7 @@ import {
   getDocument,
   getWindow
 } from '../../Utilities';
-import { withResponsiveMode, ResponsiveMode, IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
 import {
   Icon,
