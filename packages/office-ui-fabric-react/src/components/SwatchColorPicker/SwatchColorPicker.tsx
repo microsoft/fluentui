@@ -119,7 +119,7 @@ const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOption
         onMouseLeave={ _onMouseLeave }
         onFocus={ _onFocus }
         role={ role }
-        aria-selected={ selectedIndex && selectedIndex === item.index ? 'true' : 'false' }
+        aria-selected={ selectedIndex && (selectedIndex === item.index).toString() }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }
       >
@@ -332,7 +332,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
           // build all the cells in the chunk this cell
           // exists within (this will process all of the
-          // consecutive cells unitl the next non-cell type
+          // consecutive cells until the next non-cell type
           // is incountered (or if we reach the end of the items))
           let chunkItems = this._getNextChunkOfCellItems(items.slice(index));
 
