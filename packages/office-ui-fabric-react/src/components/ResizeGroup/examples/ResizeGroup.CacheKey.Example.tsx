@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
 
-const ITEM_COUNT = 50;
+const ITEM_COUNT = 75;
 
-function generateData(count: number) {
+export interface IOverflowData {
+  primary: IContextualMenuItem[];
+  overflow: IContextualMenuItem[];
+}
+
+function generateData(count: number): IOverflowData {
   let dataItems = [];
   for (let index = 0; index < count; index++) {
     dataItems.push({
@@ -23,7 +29,7 @@ function generateData(count: number) {
 }
 
 export interface IResizeGroupCacheKeyExampleState {
-  data: any;
+  data: IOverflowData;
 }
 
 export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupCacheKeyExampleState> {
@@ -59,6 +65,7 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
                   return (
                     <DefaultButton
                       text={ item.name }
+                      checked={ item.checked }
                     />
                   );
                 } }
@@ -75,10 +82,23 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
         />
         <div style={ { paddingTop: '20px' } }>
           <Checkbox label='Enable caching' />
-          <DefaultButton
-            text='Toggle checked' />
+          <Checkbox label='Buttons checked' onChange={ this.onButtonsCheckedChanged } />
         </div>
       </div>
     );
+  }
+
+  @autobind
+  private onButtonsCheckedChanged(_, checked: boolean) {
+    let newData = {
+      primary: this.state.data.primary.map(item => {
+        return { ...item, checked };
+      }),
+      overflow: this.state.data.overflow
+    };
+
+    this.setState({
+      data: newData
+    });
   }
 }
