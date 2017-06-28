@@ -11,11 +11,6 @@ const RESIZE_DELAY = 16;
 export interface IResizeGroupState {
 
   /**
-   * Current set of data being measured to determine fit
-  */
-  measuredData: any;
-
-  /**
    * Final data used to render proper sized component
   */
   renderedData?: any;
@@ -38,24 +33,26 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   private _lastKnownMeasuredWidth: number | undefined = undefined;
   private _measurementsCache: { [key: string]: number } = {};
 
+  private _measuredData: any;
+
   constructor(props: IResizeGroupProps) {
     super(props);
+    this._measuredData = { ...this.props.data };
     this.state = {
       shouldMeasure: true,
-      renderedData: null,
-      measuredData: { ...this.props.data },
+      renderedData: null
     };
   }
 
   public componentWillReceiveProps(nextProps: IResizeGroupProps) {
     // Receiving new props means the parent might rerender and the root width might change
     this._lastKnownRootWidth = undefined;
+    this._measuredData = { ...nextProps.data };
 
     if (this.props.data !== nextProps.data) {
       this.setState({
         shouldMeasure: true,
-        renderedData: null,
-        measuredData: { ...nextProps.data }
+        renderedData: null
       });
     }
   }
@@ -72,7 +69,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public render() {
     const { onRenderData, data } = this.props;
-    const { shouldMeasure, renderedData, measuredData } = this.state;
+    const { shouldMeasure, renderedData } = this.state;
 
     if (Object.keys(data).length === 0) {
       return null;
@@ -82,7 +79,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       <div className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
         { shouldMeasure && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
-            { onRenderData(measuredData) }
+            { onRenderData(this._measuredData) }
           </div>
         ) }
 
@@ -103,7 +100,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _onResize() {
     let shouldMeasure = true;
-    let nextMeasuredData = this.state.measuredData;
+    let nextMeasuredData = this._measuredData;
 
     if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
       // If we have some cached measurements, let's see if we can skip rendering
@@ -124,9 +121,10 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     }
 
     if (shouldMeasure) {
+      this._lastKnownRootWidth = undefined;
+      this._measuredData = nextMeasuredData;
       this.setState({
-        shouldMeasure: true,
-        measuredData: nextMeasuredData
+        shouldMeasure: true
       });
     }
   }
@@ -134,7 +132,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   private _setStateToDoneMeasuring() {
     this.setState((prevState, props) => {
       return {
-        renderedData: prevState.measuredData,
+        renderedData: this._measuredData,
         measuredData: { ...this.props.data },
         shouldMeasure: false
       };
@@ -150,14 +148,14 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _getMeasuredWidth(): number {
-    let cachedWidth = this._getCachedMeasurementForData(this.state.measuredData);
+    let cachedWidth = this._getCachedMeasurementForData(this._measuredData);
     if (cachedWidth !== undefined) {
       return cachedWidth;
     }
 
     let measuredWidth = this._measured.getBoundingClientRect().width;
-    if (this.state.measuredData.cacheKey) {
-      this._measurementsCache[this.state.measuredData.cacheKey] = measuredWidth;
+    if (this._measuredData.cacheKey) {
+      this._measurementsCache[this._measuredData.cacheKey] = measuredWidth;
     }
     return measuredWidth;
   }
@@ -181,19 +179,18 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       const containerWidth = this._lastKnownRootWidth = this._getRootWidth();
       const measuredWidth = this._lastKnownMeasuredWidth = this._getMeasuredWidth();
 
-      if (this.state.measuredData.cacheKey) {
-        this._measurementsCache[this.state.measuredData.cacheKey] = measuredWidth;
+      if (this._measuredData.cacheKey) {
+        this._measurementsCache[this._measuredData.cacheKey] = measuredWidth;
       }
       if ((measuredWidth > containerWidth)) {
-        let nextMeasuredData = onReduceData(this.state.measuredData);
+        let nextMeasuredData = onReduceData(this._measuredData);
 
         // We don't want to get stuck in an infinite render loop when there are no more
         // scaling steps, so implementations of onReduceData should return undefined when
         // there are no more scaling states to apply.
         if (nextMeasuredData !== undefined) {
-          this.setState({
-            measuredData: nextMeasuredData,
-          });
+          this._measuredData = nextMeasuredData;
+          this.forceUpdate();
         } else {
           this._setStateToDoneMeasuring();
         }
