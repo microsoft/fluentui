@@ -10,7 +10,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import styles from './OverflowSet.scss';
 // const styles: any = stylesImport;
 
-export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
+export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> {
 
   public render() {
     let {

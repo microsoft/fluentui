@@ -301,7 +301,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     return (
       <ContextualMenu
-        isBeakVisible={ true }
         id={ this._labelId + '-menu' }
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
