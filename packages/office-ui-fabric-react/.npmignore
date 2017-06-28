@@ -13,6 +13,7 @@ results
 *.build.log
 dist/*.stats.html
 dist/demo*.*
+dist/css
 gulpfile.js
 index.html
 jsconfig.json
@@ -27,3 +28,4 @@ tslint.json
 typings
 webpack.config.js
 fabric-test*
+visualtests
