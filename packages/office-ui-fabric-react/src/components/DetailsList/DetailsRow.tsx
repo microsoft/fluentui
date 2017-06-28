@@ -218,6 +218,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
+        allowFocusRoot={ true }
       >
         { showCheckbox && (
           <div
