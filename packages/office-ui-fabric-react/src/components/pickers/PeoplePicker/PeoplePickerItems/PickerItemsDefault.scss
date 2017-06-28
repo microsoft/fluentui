@@ -40,7 +40,7 @@
     }
 
     @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-themePrimary;
+      border: 1px solid $ms-color-themePrimary;
     }
   }
 
@@ -52,9 +52,15 @@
     }
 
     &.personaContainerIsSelected {
+      background: $ms-color-redDark;
+
       :global(.ms-Persona-primaryText) {
         color: $ms-color-white;
         border-bottom: 2px dotted $ms-color-white;
+      }
+
+      .removeButton:hover {
+        background: $ms-color-red;
       }
     }
   }
