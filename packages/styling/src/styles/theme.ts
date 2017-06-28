@@ -10,12 +10,18 @@ import {
   DefaultPalette
 } from './DefaultPalette';
 import { Customizer, getWindow } from '@uifabric/utilities/lib/index';
+import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+
 export interface ITheme {
   palette: IPalette;
   fonts: IFontStyles;
-  semanticColors?: ISemanticColors;
+  semanticColors: ISemanticColors;
 }
-import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+export interface IPartialTheme {
+  palette: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+  semanticColors?: Partial<ISemanticColors>;
+}
 
 let _theme: ITheme = {
   palette: DefaultPalette,
@@ -41,21 +47,23 @@ export function getTheme(): ITheme {
 }
 
 /**
- * Loads the default global theme definition.
+ * Applies the theme, while filling in missing slots.
  */
-export function loadTheme(theme: Partial<ITheme>): void {
+export function loadTheme(theme: IPartialTheme): ITheme {
   _theme = createTheme(theme);
 
   // Load the legacy theme from the palette.
   legacyLoadTheme(_theme.palette as {});
 
   Customizer.setDefault('theme', _theme);
+
+  return _theme;
 }
 
 /**
  * Creates a custom theme definition which can be used with the Customizer.
  */
-export function createTheme(theme: Partial<ITheme>): ITheme {
+export function createTheme(theme: IPartialTheme): ITheme {
   let newPalette = { ..._theme.palette, ...theme.palette };
 
   return {
@@ -83,7 +91,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
 
     focusBorder: p.black,
 
-    // errorBackground: todo,
+    errorBackground: "#fde7e9",
     errorText: p.redDark,
 
     inputBorder: p.neutralTertiary,
