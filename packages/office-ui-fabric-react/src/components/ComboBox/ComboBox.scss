@@ -55,6 +55,9 @@ $ComboBox-item-height: 36px;
   text-overflow: ellipsis;
 
 
+  &.wrapper {
+    box-sizing: content-box;
+  }
 
   &:hover,
   &.focused {
