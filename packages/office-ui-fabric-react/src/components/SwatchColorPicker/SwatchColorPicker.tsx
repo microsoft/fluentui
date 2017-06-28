@@ -451,23 +451,23 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let optionProps;
 
     if (isCell) {
-      optionProps =
-        { className: styles.cell ,
-         onClick: this._onCellClick ,
-         onHover: this.props.onCellHovered ,
-         onFocus: this.props.onCellFocused ,
-         role: 'gridcell' ,
-         selectedIndex: this.state.selectedIndex }
-      ;
+      optionProps = {
+        className: styles.cell,
+        onClick: this._onCellClick,
+        onHover: this.props.onCellHovered,
+        onFocus: this.props.onCellFocused,
+        role: 'gridcell',
+        selectedIndex: this.state.selectedIndex
+      };
     } else {
-      optionProps =
-        { posInSet: posInSet && posInSet ,
-         setSize: setSize && setSize ,
-         className: styles.item ,
-         onClick: this._onMenuItemClick ,
-         onFocus: this._clearFocusColorOnMenuItem ,
-         role: this.props.menuButtonProps ? 'menuitem' : 'button' }
-      ;
+      optionProps = {
+        posInSet: posInSet && posInSet,
+        setSize: setSize && setSize,
+        className: styles.item,
+        onClick: this._onMenuItemClick,
+        onFocus: this._clearFocusColorOnMenuItem,
+        role: this.props.menuButtonProps ? 'menuitem' : 'button'
+      };
     }
 
     return (
