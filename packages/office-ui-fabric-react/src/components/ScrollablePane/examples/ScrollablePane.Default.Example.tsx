@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { StickyHeader } from 'office-ui-fabric-react/lib/StickyHeader';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
@@ -37,6 +38,13 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     return (
       <div>
         <StickyHeader>
+          <Toggle
+            defaultChecked={ true }
+            label='Enabled and checked'
+            onAriaLabel='This toggle is checked. Press to uncheck.'
+            offAriaLabel='This toggle is unchecked. Press to check.'
+            onText='On'
+            offText='Off' />
           <div className='sticky'>
             THIS IS WRAPPED IN STICKY { index }
           </div>
