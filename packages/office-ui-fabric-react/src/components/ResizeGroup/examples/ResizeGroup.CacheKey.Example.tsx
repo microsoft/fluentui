@@ -11,6 +11,7 @@ const ITEM_COUNT = 75;
 export interface IOverflowData {
   primary: IContextualMenuItem[];
   overflow: IContextualMenuItem[];
+  cacheKey?: string;
 }
 
 function generateData(count: number): IOverflowData {
@@ -30,6 +31,10 @@ function generateData(count: number): IOverflowData {
 
 export interface IResizeGroupCacheKeyExampleState {
   data: IOverflowData;
+}
+
+function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
+  return primaryControls.reduce((acc, current) => acc + current.key, '');
 }
 
 export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupCacheKeyExampleState> {
@@ -54,7 +59,8 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
 
             let overflow = [...currentdata.primary.slice(-1), ...currentdata.overflow];
             let primary = currentdata.primary.slice(0, -1);
-            return { primary, overflow };
+            let cacheKey = computeCacheKey(primary);
+            return { primary, overflow, cacheKey };
           } }
           onRenderData={ (data) => {
             return (
@@ -81,7 +87,7 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
           } }
         />
         <div style={ { paddingTop: '20px' } }>
-          <Checkbox label='Enable caching' />
+          <Checkbox label='Enable caching' onChange={ this.onCachingEnabledChanged } />
           <Checkbox label='Buttons checked' onChange={ this.onButtonsCheckedChanged } />
         </div>
       </div>
@@ -89,8 +95,19 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
   }
 
   @autobind
+  private onCachingEnabledChanged(_, checked: boolean) {
+    let cacheKey = checked ? computeCacheKey(this.state.data.primary) : undefined;
+    let newData: IOverflowData = { ...this.state.data, cacheKey };
+
+    this.setState({
+      data: newData
+    });
+  }
+
+  @autobind
   private onButtonsCheckedChanged(_, checked: boolean) {
     let newData = {
+      ...this.state.data,
       primary: this.state.data.primary.map(item => {
         return { ...item, checked };
       }),
