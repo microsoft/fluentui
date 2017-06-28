@@ -22,15 +22,25 @@ function generateData(count: number) {
   };
 }
 
-let initialData = generateData(ITEM_COUNT);
+export interface IResizeGroupCacheKeyExampleState {
+  data: any;
+}
 
-export class ResizeGroupCacheKeyExample extends BaseComponent<any, any> {
+export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupCacheKeyExampleState> {
+
+  public constructor(props) {
+    super(props);
+
+    this.state = {
+      data: generateData(ITEM_COUNT)
+    };
+  }
 
   public render() {
     return (
       <div>
         <ResizeGroup
-          data={ initialData }
+          data={ this.state.data }
           onReduceData={ (currentdata) => {
             if (currentdata.primary.length === 0) {
               return undefined;
