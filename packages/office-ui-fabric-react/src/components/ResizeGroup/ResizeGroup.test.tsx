@@ -11,6 +11,7 @@ const styles: any = stylesImport;
 
 interface ITestScalingData {
   scalingIndex: number;
+  cacheKey?: string;
 }
 
 function onReduceScalingData(data: ITestScalingData): ITestScalingData {
@@ -429,5 +430,20 @@ describe('ResizeGroup', () => {
 
     expect(dataDidRender.callCount).to.equal(1);
     expect(dataDidRender.getCall(0).args[0]).to.deep.equal(initialData);
+  });
+
+  it('does not remeasure when receiving new props and the cache key does not change', () => {
+    let initialData = { scalingIndex: 8, cacheKey: 'foo' };
+    let { wrapper, rootGetClientRectMock, measuredGetClientRectMock } = getWrapperWithMocks(initialData);
+
+    wrapper.setProps({
+      data: {
+        scalingIndex: 7,
+        cacheKey: initialData.cacheKey
+      }
+    });
+
+    expect(rootGetClientRectMock.callCount).to.equal(0);
+    expect(measuredGetClientRectMock.callCount).to.equal(0);
   });
 });
