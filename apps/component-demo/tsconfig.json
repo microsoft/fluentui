@@ -8,6 +8,7 @@
     "experimentalDecorators": true,
     "noEmitOnError": true,
     "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": [
       "chai",
