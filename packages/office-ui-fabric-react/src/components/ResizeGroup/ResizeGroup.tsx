@@ -146,13 +146,26 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     return undefined;
   }
 
+  private _getMeasuredWidth(): number {
+    let cachedWidth = this._getCachedMeasurementForData(this.state.measuredData);
+    if (cachedWidth !== undefined) {
+      return cachedWidth;
+    }
+
+    let measuredWidth = this._measured.getBoundingClientRect().width;
+    if (this.state.measuredData.cacheKey) {
+      this._measurementsCache[this.state.measuredData.cacheKey] = measuredWidth;
+    }
+    return measuredWidth;
+  }
+
   private _measureItems() {
     const { data, onReduceData } = this.props;
     const { shouldMeasure } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
       const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
-      const measuredWidth = this._lastKnownMeasuredWidth = this._measured.getBoundingClientRect().width;
+      const measuredWidth = this._lastKnownMeasuredWidth = this._getMeasuredWidth();
 
       if (this.state.measuredData.cacheKey) {
         this._measurementsCache[this.state.measuredData.cacheKey] = measuredWidth;
