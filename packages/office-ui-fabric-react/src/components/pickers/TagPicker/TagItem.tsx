@@ -5,8 +5,8 @@ import { css } from '../../../Utilities';
 import { Icon } from '../../../Icon';
 import { IPickerItemProps } from '../PickerItem.Props';
 import { ITag } from './TagPicker';
-import * as stylesImport from './TagItem.scss';
-const styles: any = stylesImport;
+import styles from './TagItem.scss';
+// const styles: any = stylesImport;
 
 export const TagItem = (props: IPickerItemProps<ITag>) => (
   <div

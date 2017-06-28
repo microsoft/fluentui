@@ -19,8 +19,8 @@ import {
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-import * as stylesImport from './GroupedList.scss';
-const styles: any = stylesImport;
+import styles from './GroupedList.scss';
+// const styles: any = stylesImport;
 
 export interface IGroupedListState {
   lastWidth?: number;

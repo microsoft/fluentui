@@ -8,8 +8,8 @@ import {
 import { BasePicker } from '../BasePicker';
 import { IBasePickerProps } from '../BasePicker.Props';
 import { TagItem } from './TagItem';
-import * as stylesImport from './TagItem.scss';
-const styles: any = stylesImport;
+import styles from './TagItem.scss';
+// const styles: any = stylesImport;
 
 export interface ITag {
   key: string;

@@ -9,8 +9,8 @@ import {
 } from '../../Utilities';
 import { IOverlayProps } from './Overlay.Props';
 
-import * as stylesImport from './Overlay.scss';
-const styles: any = stylesImport;
+import styles from './Overlay.scss';
+// const styles: any = stylesImport;
 
 export class Overlay extends BaseComponent<IOverlayProps, {}> {
 

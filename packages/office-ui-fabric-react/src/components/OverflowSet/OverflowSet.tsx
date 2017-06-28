@@ -7,8 +7,8 @@ import {
 import { IOverflowSetProps } from './OverflowSet.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 
-import * as stylesImport from './OverflowSet.scss';
-const styles: any = stylesImport;
+import styles from './OverflowSet.scss';
+// const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 

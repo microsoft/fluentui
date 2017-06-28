@@ -11,8 +11,8 @@ import {
   inputProperties,
   textAreaProperties
 } from '../../Utilities';
-import * as stylesImport from './TextField.scss';
-const styles: any = stylesImport;
+import styles from './TextField.scss';
+// const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
   value?: string;
@@ -174,7 +174,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
                   >
                     { Icon({ iconName: 'Error', className: styles.errorIcon }) }
-                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
+                    <span className={ styles.errorMessage } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>

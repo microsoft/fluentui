@@ -2,8 +2,8 @@ import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
 import { Persona, PersonaSize } from '../../Persona';
-import * as stylesImport from './DocumentCard.scss';
-const styles: any = stylesImport;
+import styles from './DocumentCard.scss';
+// const styles: any = stylesImport;
 
 export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
   public render() {

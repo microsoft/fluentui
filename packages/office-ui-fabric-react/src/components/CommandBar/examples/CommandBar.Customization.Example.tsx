@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./CommandBar.Example.scss');
+import styles from './CommandBar.Example.scss';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface ISplitDropDownButtonState {

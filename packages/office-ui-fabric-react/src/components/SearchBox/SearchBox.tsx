@@ -9,8 +9,8 @@ import {
 } from '../../Utilities';
 
 import { Icon } from '../../Icon';
-import * as stylesImport from './SearchBox.scss';
-const styles: any = stylesImport;
+import styles from './SearchBox.scss';
+// const styles: any = stylesImport;
 
 export interface ISearchBoxState {
   value?: string;

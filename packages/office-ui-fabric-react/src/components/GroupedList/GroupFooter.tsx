@@ -7,8 +7,8 @@ import {
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
-import * as stylesImport from './GroupFooter.scss';
-const styles: any = stylesImport;
+import styles from './GroupFooter.scss';
+// const styles: any = stylesImport;
 
 export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render() {

@@ -10,8 +10,8 @@ import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import * as stylesImport from './Modal.scss';
-const styles: any = stylesImport;
+import styles from './Modal.scss';
+// const styles: any = stylesImport;
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 

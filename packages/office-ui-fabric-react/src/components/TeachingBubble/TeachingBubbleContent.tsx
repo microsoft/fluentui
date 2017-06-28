@@ -10,8 +10,8 @@ import { ITeachingBubbleProps } from './TeachingBubble.Props';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
-import * as stylesImport from './TeachingBubble.scss';
-const styles: any = stylesImport;
+import styles from './TeachingBubble.scss';
+// const styles: any = stylesImport;
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
 

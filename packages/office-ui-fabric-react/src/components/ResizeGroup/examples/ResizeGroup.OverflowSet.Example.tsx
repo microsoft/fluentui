@@ -4,8 +4,8 @@ import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button'
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
 
-import * as stylesImport from './ResizeGroup.Example.scss';
-const styles: any = stylesImport;
+import styles from './ResizeGroup.Example.scss';
+// const styles: any = stylesImport;
 
 import { data } from './data';
 

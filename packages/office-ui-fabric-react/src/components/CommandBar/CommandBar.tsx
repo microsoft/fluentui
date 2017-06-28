@@ -19,8 +19,8 @@ import {
   IIconProps
 } from '../../Icon';
 import { FontClassNames } from '../../Styling';
-import * as stylesImport from './CommandBar.scss';
-const styles: any = stylesImport;
+import styles from './CommandBar.scss';
+// const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;

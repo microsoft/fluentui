@@ -22,8 +22,8 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import * as stylesImport from './Persona.scss';
-const styles: any = stylesImport;
+import styles from './Persona.scss';
+// const styles: any = stylesImport;
 
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [

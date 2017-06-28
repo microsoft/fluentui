@@ -7,8 +7,8 @@ import {
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
 import { Icon } from '../../Icon';
-import * as stylesImport from './Nav.scss';
-const styles: any = stylesImport;
+import styles from './Nav.scss';
+// const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 import {
   INav,

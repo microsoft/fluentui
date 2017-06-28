@@ -20,8 +20,8 @@ import {
   KeyCodes
 } from '../../Utilities';
 import { ISelectableOption, SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
-import * as stylesImport from './ComboBox.scss';
-const styles: any = stylesImport;
+import styles from './ComboBox.scss';
+// const styles: any = stylesImport;
 
 export interface IComboBoxState {
 

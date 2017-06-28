@@ -14,8 +14,8 @@ import {
   ISpinButtonProps
 } from './SpinButton.Props';
 import { Position } from '../../utilities/positioning';
-import * as stylesImport from './SpinButton.scss';
-const styles: any = stylesImport;
+import styles from './SpinButton.scss';
+// const styles: any = stylesImport;
 
 export enum KeyboardSpinDirection {
   down = -1,

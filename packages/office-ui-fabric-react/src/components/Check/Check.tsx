@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { Icon } from '../../Icon';
-import * as stylesImport from './Check.scss';
-const styles: any = stylesImport;
+import styles from './Check.scss';
+// const styles: any = stylesImport;
 
 export interface ICheckProps extends React.Props<Check> {
   /**

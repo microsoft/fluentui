@@ -4,8 +4,8 @@ import * as React from 'react';
 import {
   css
 } from '../../Utilities';
-import * as stylesImport from './GroupSpacer.scss';
-const styles: any = stylesImport;
+import styles from './GroupSpacer.scss';
+// const styles: any = stylesImport;
 
 export interface IGroupSpacerProps {
   count: number;

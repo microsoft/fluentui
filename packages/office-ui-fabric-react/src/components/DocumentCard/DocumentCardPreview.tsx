@@ -6,8 +6,8 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import * as stylesImport from './DocumentCard.scss';
-const styles: any = stylesImport;
+import styles from './DocumentCard.scss';
+// const styles: any = stylesImport;
 
 const LIST_ITEM_COUNT = 3;
 

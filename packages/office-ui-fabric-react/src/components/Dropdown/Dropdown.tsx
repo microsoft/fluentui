@@ -18,8 +18,8 @@ import {
   getId
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
-import * as stylesImport from './Dropdown.scss';
-const styles: any = stylesImport;
+import styles from './Dropdown.scss';
+// const styles: any = stylesImport;
 
 // Internal only props interface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {

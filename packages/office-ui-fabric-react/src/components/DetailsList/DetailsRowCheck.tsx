@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
-import * as styles from './DetailsRowCheck.scss';
+import styles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
   selected?: boolean;

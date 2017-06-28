@@ -4,7 +4,7 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.Props';
-import styles = require('./ResizeGroup.scss');
+import styles from './ResizeGroup.scss';
 
 const RESIZE_DELAY = 16;
 

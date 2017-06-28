@@ -9,8 +9,8 @@ import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
-import * as stylesImport from './Calendar.scss';
-const styles: any = stylesImport;
+import styles from './Calendar.scss';
+// const styles: any = stylesImport;
 
 export interface ICalendarMonthProps {
   navigatedDate: Date;

@@ -8,8 +8,8 @@ import {
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-import * as stylesImport from './MessageBar.scss';
-const styles: any = stylesImport;
+import styles from './MessageBar.scss';
+// const styles: any = stylesImport;
 
 export interface IMessageBarState {
   labelId?: string;
@@ -90,7 +90,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   private _getDismissOneLine(): JSX.Element {
     if (this.props.onDismiss) {
       return (
-        <div className={ css('ms-MessageBar-dismissOneline', styles.dismissOneline) }>
+        <div className={ css('ms-MessageBar-dismissOneline', styles.dismissalOneline) }>
           { this._getDismissDiv() }
         </div>
       );
