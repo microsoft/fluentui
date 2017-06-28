@@ -13,7 +13,7 @@ import {
 } from './SwatchColorPicker.Props';
 import { DirectionalHint } from '../../ContextualMenu';
 import { getColorFromString } from '../../utilities/color/colors';
-import { Grid } from '../../utilities/Grid/Grid';
+import { Grid } from '../../utilities/grid/Grid';
 import { DefaultButton, CommandButton, IButtonProps } from '../../Button';
 import { Callout } from '../../Callout';
 import { FocusZone } from '../../FocusZone';
