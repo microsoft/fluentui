@@ -4,9 +4,6 @@ import {
   mergeStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_PADDING = '0 4px';
@@ -15,7 +12,6 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: ISplitButtonStyles
 ): ISplitButtonStyles => {
-  let baseButtonStyles: ISplitButtonStyles = getBaseButtonStyles(theme);
   let iconButtonStyles: ISplitButtonStyles = {
     splitButtonContainer: {
       position: 'absolute',
@@ -60,5 +56,5 @@ export const getStyles = memoizeFunction((
     },
   };
 
-  return mergeStyleSets(baseButtonStyles, iconButtonStyles, customStyles);
+  return mergeStyleSets(iconButtonStyles, customStyles);
 });
