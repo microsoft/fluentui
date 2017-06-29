@@ -19,12 +19,12 @@ import { getStyles } from './HoverCard.styles';
 
 export enum HoverCardMode {
   compact,
-  expanding,
   expanded
 }
 
 export interface IHoverCardState {
   mode: HoverCardMode;
+  needsScroll: boolean;
 }
 
 @customizable(['theme'])
@@ -38,27 +38,37 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   private _styles: IHoverCardStyles;
   private _callout: ICallout;
+  private _expandedElem: HTMLDivElement;
 
   constructor(props: IHoverCardProps) {
     super(props);
 
     this.state = {
-      mode: props.openExpanded ? HoverCardMode.expanded : HoverCardMode.compact
+      mode: props.openExpanded ? HoverCardMode.expanded : HoverCardMode.compact,
+      needsScroll: false
     };
   }
 
   public componentWillMount() {
     this._async.setTimeout(() => {
       this.setState({
-        mode: HoverCardMode.expanding
+        mode: HoverCardMode.expanded
       });
     }, this.props.expandedCardOpenDelay);
+  }
+
+  public componentDidMount() {
+    if (this._expandedElem && this._expandedElem.scrollHeight >= this.props.expandedCardHeight) {
+      this.setState({
+        needsScroll: true
+      });
+    }
   }
 
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
     if (newProps.openExpanded !== this.props.openExpanded) {
       this.setState({
-        mode: newProps.openExpanded ? HoverCardMode.expanding : HoverCardMode.compact
+        mode: newProps.openExpanded ? HoverCardMode.expanded : HoverCardMode.compact
       });
     }
   }
@@ -127,19 +137,25 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       <div className={ mergeStyles(
         this._styles.expandedCard,
         this.isExpanded && { height: this.props.expandedCardHeight + 'px' },
-        this.state.mode === HoverCardMode.expanded && this._styles.expandedCardExpanded
+        this.state.needsScroll && { 'overflow-y': 'auto' }
       ) as string }
-        onTransitionEnd={ this._onExpandedContentTransitionEnd }
+        ref={ this._resolveRef('_expandedElem') }
       >
-        { this.props.onRenderExpandedContent(this.props.item) }
+        { this.props.onRenderExpandedContent && this.props.onRenderExpandedContent(this.props.item) }
       </div>
     );
   }
 
   @autobind
-  private _onExpandedContentTransitionEnd(ev) {
-    this.setState({
-      mode: HoverCardMode.expanded
-    });
+  private _checkNeedsScroll(): void {
+    if (this._expandedElem) {
+      this._async.requestAnimationFrame(() => {
+        if (this._expandedElem.scrollHeight >= this.props.expandedCardHeight) {
+          this.setState({
+            needsScroll: true
+          });
+        }
+      });
+    }
   }
 }

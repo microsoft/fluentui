@@ -85,6 +85,8 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
       <div className='hoverCardExample-expandedCard'>
         { item.description }
         { item.description }
+        { item.description }
+        { item.description }
       </div>
     );
   }

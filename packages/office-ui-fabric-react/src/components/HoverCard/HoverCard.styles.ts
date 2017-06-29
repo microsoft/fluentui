@@ -14,7 +14,11 @@ export const getStyles = memoizeFunction((
   const styles: IHoverCardStyles = {
     root: {
       width: '340px',
-      'pointer-events': 'none'
+      'pointer-events': 'none',
+      '.ms-Callout': {
+        'box-shadow': '0 0 20px rgba(0, 0, 0, .2)',
+        border: 'none'
+      }
     },
     compactCard: [
       {
@@ -36,9 +40,6 @@ export const getStyles = memoizeFunction((
       'overflow-y': 'hidden',
       'pointer-events': 'auto',
       transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)'
-    },
-    expandedCardExpanded: {
-      'overflow-y': 'auto',
     }
   };
 

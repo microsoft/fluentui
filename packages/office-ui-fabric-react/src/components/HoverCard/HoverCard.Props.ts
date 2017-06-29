@@ -25,7 +25,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   /**
    *  Render function to populate compact content area
    */
-  onRenderCompactContent?: IRenderFunction<IHoverCardProps>;
+  onRenderCompactContent: IRenderFunction<IHoverCardProps>;
 
   /**
    *  Render function to populate expanded content area
@@ -97,9 +97,4 @@ export interface IHoverCardStyles {
    * Base Style for the expanded card content
    */
   expandedCard?: IStyle;
-
-  /**
-   * Style for the expanded card content when it is done expanding
-   */
-  expandedCardExpanded?: IStyle
 }
