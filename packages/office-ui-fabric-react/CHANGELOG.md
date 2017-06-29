@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 28 Jun 2017 10:12:04 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2017 10:13:16 GMT and should not be manually modified.
+
+## 4.12.1
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Remove beak from CommandBar's and BaseButton's contextual menu
+- -SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning
+- Force resolve picker on blue or delayed response.
+- Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020
+- Persona: Fix orange initials rendered as green
 
 ## 4.12.0
 Wed, 28 Jun 2017 10:12:04 GMT
