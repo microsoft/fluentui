@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove beak from CommandBar's and BaseButton's contextual menu",
+      "comment": "ComboBox: Fix a scrolling issue (#2090)",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "anihan@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }
