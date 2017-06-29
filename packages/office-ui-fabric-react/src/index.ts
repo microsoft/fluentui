@@ -46,6 +46,7 @@ export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
 export * from './Styling';
+export * from './SwatchColorPicker';
 export * from './TeachingBubble';
 export * from './TextField';
 export * from './Toggle';
