@@ -3,10 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { ActivityItem } from '../ActivityItem';
 import './ActivityItemExample.scss';
-import { TestImages } from '../../../common/TestImages';
 import { activityItemCommentExamples } from './ActivityItemExampleData';
-import { IActivityItemProps } from '../ActivityItem.Props';
-
 
 export class ActivityItemCommentExample extends React.Component<React.Props<ActivityItemCommentExample>, {}> {
   public render() {
@@ -16,7 +13,7 @@ export class ActivityItemCommentExample extends React.Component<React.Props<Acti
       activityExampleList.push(
         <ActivityItem {...props} />
       );
-    })
+    });
 
     return (
       <div>

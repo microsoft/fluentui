@@ -7,9 +7,7 @@ import { Icon } from '../../../Icon';
 import { Persona, PersonaSize } from '../../../Persona';
 import './ActivityItemExample.scss';
 import { TestImages } from '../../../common/TestImages';
-import { activityItemPersonaExamples } from './ActivityItemExampleData';
 import { IActivityItemProps, ActivityType } from '../ActivityItem.Props';
-
 
 export class ActivityItemCustomExample extends React.Component<React.Props<ActivityItemCustomExample>, {}> {
   public render() {

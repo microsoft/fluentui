@@ -2,8 +2,8 @@
 import * as React from 'react';
 /* tslint:enable */
 
-import { autobind, BaseComponent, css, htmlElementProperties } from '../../Utilities';
-import { IActivityItemProps, IActivityItemStyles, ActivityType } from './ActivityItem.Props';
+import { autobind, BaseComponent } from '../../Utilities';
+import { IActivityItemProps, ActivityType } from './ActivityItem.Props';
 
 export class ActivityDescription extends BaseComponent<(IActivityItemProps & { _classNames: any }), {}> {
   public render() {

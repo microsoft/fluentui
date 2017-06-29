@@ -2,13 +2,12 @@
 import * as React from 'react';
 /* tslint:enable */
 
-import { autobind, BaseComponent, css, getNativeProps, htmlElementProperties, memoize } from '../../Utilities';
+import { autobind, BaseComponent, memoize } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles, ActivityType } from './ActivityItem.Props';
 import { ActivityDescription } from './ActivityDescription';
 import { mergeStyles } from '../../Styling';
 import { getStyles } from './ActivityItem.styles';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Image } from '../Image/Image';
 import { Icon } from '../../Icon';
 
 export interface IActivityItemClassNames {
@@ -73,6 +72,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         personaList.push(
           <Persona
             {...person}
+            // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
             size={ this.props.people.length > 1 ? PersonaSize.size16 : PersonaSize.extraSmall }
@@ -81,7 +81,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       });
       personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;
     } else {
-      let iconString = ActivityType[props.activityType];;
+      let iconString = ActivityType[props.activityType];
       switch (props.activityType) {
         case ActivityType.CommentInDocument:
           iconString = 'Message';
@@ -117,7 +117,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
           <span> and </span>
           { this._onRenderNameElement(this.props.people[1].primaryText) }
         </span>
-      )
+      );
     } else {
       nameListElement = (
         <span>
@@ -127,7 +127,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
           <span> and </span>
           { this._onRenderNameElement(this.props.people.length === 3 ? '1 other' : `${this.props.people.length - 2} others`) }
         </span>
-      )
+      );
     }
     return nameListElement;
   }
@@ -146,7 +146,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       let parsedComment = props.commentString.split(props.mentionedName);
       let nameElement = props.onMentionedClick ?
         (<a onClick={ (ev) => props.onMentionedClick(ev, props) } className={ this._classNames.docLink }>{ props.mentionedName }</a>) :
-        (this._onRenderNameElement(props.mentionedName))
+        (this._onRenderNameElement(props.mentionedName));
 
       commentElement = (
         <div className={ this._classNames.commentText }>

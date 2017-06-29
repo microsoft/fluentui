@@ -202,7 +202,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
     commentString: 'At the end of this message it mentions @Your Name',
     timeString: '3 days ago'
   }
-]
+];
 
 export const activityItemIconExamples: (IActivityItemProps & { key: string | number })[] = [
   {

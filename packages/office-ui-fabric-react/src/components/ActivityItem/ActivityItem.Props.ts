@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IImageProps } from '../Image/Image.Props';
 import { IStyle } from '../../Styling';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 

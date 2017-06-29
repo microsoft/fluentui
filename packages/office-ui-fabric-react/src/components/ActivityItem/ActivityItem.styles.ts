@@ -1,5 +1,4 @@
 import {
-  mergeStyles,
   mergeStyleSets,
   ITheme,
   getTheme
