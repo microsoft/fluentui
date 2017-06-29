@@ -52,16 +52,30 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
       <div>
         <ResizeGroup
           data={ this.state.data }
-          onReduceData={ (currentdata) => {
-            if (currentdata.primary.length === 0) {
+          onReduceData={ (currentData) => {
+            if (currentData.primary.length === 0) {
               return undefined;
             }
 
-            let overflow = [...currentdata.primary.slice(-1), ...currentdata.overflow];
-            let primary = currentdata.primary.slice(0, -1);
-            let cacheKey = undefined;
+            let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
+            let primary = currentData.primary.slice(0, -1);
 
-            if (currentdata.cacheKey) {
+            let cacheKey = undefined;
+            if (currentData.cacheKey) {
+              cacheKey = computeCacheKey(primary);
+            }
+            return { primary, overflow, cacheKey };
+          } }
+          onGrowData={ (currentData) => {
+            if (currentData.overflow.length === 0) {
+              return undefined;
+            }
+
+            let primary = [...currentData.primary, currentData.overflow[0]];
+            let overflow = currentData.overflow.slice(1);
+
+            let cacheKey = undefined;
+            if (currentData.cacheKey) {
               cacheKey = computeCacheKey(primary);
             }
             return { primary, overflow, cacheKey };
@@ -118,8 +132,9 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
       overflow: this.state.data.overflow
     };
 
-    this.setState({
-      data: newData
-    });
+    window.setTimeout(() =>
+      this.setState({
+        data: newData
+      }), 0);
   }
 }

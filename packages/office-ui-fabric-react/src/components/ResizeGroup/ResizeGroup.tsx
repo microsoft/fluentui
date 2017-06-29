@@ -24,6 +24,15 @@ export interface IResizeGroupState {
    * Data to render in a hidden div for measurement
    */
   dataToMeasure?: any;
+
+  /**
+   * Are we resizing to accomodate having more or less available space?
+   * The 'grow' direction is when the container may have more room than the last render,
+   * such as when a window resize occurs. This means we will try to fit more content in the window.
+   * The 'shrink' direction is when the contents don't fit in the container and we need
+   * to find a transformation of the data that makes everything fit.
+   */
+  resizeDirection?: 'grow' | 'shrink';
 }
 
 const getCachedMeasurementProvider = () => {
@@ -60,47 +69,100 @@ const getCachedContentMeasurer = () => {
     return measuredWidth;
   };
 
+  const _shrinkContentsUntilTheyFit = (data: any,
+    onReduceData: (prevData: any) => any,
+    containerElement: HTMLElement,
+    elementToMeasure: HTMLElement | null): IResizeGroupState => {
+
+    let dataToMeasure = data;
+    let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
+    let containerWidth = containerElement.getBoundingClientRect().width;
+
+    while (measuredWidth > containerWidth) {
+      let nextMeasuredData = onReduceData(dataToMeasure);
+
+      // We don't want to get stuck in an infinite render loop when there are no more
+      // scaling steps, so implementations of onReduceData should return undefined when
+      // there are no more scaling states to apply.
+      if (nextMeasuredData === undefined) {
+        return {
+          renderedData: dataToMeasure
+        };
+      }
+
+      let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(nextMeasuredData);
+
+      // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
+      if (cachedWidth === undefined) {
+        return {
+          dataToMeasure: nextMeasuredData
+        };
+      }
+
+      measuredWidth = cachedWidth;
+      dataToMeasure = nextMeasuredData;
+    }
+
+    return {
+      renderedData: dataToMeasure,
+      dataToMeasure: undefined
+    };
+  };
+
+  const _growDataUntilItDoesNotFit = (data: any,
+    onGrowData: (prevData: any) => any,
+    containerElement: HTMLElement,
+    elementToMeasure: HTMLElement | null): IResizeGroupState => {
+
+    let dataToMeasure = data;
+    let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
+    let containerWidth = containerElement.getBoundingClientRect().width;
+
+    while (measuredWidth < containerWidth) {
+      let nextMeasuredData = onGrowData(dataToMeasure);
+
+      // We don't want to get stuck in an infinite render loop when there are no more
+      // scaling steps, so implementations of onReduceData should return undefined when
+      // there are no more scaling states to apply.
+      if (nextMeasuredData === undefined) {
+        return {
+          renderedData: dataToMeasure
+        };
+      }
+
+      let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(nextMeasuredData);
+
+      // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
+      if (cachedWidth === undefined) {
+        return {
+          dataToMeasure: nextMeasuredData
+        };
+      }
+
+      measuredWidth = cachedWidth;
+      dataToMeasure = nextMeasuredData;
+    }
+
+    return {
+      dataToMeasure,
+      resizeDirection: 'shrink'
+    };
+  };
+
   return {
     getNextResizeGroupState: (data: any,
       onReduceData: (prevData: any) => any,
+      onGrowData: (prevData: any) => any | undefined,
       containerElement: HTMLElement,
-      elementToMeasure: HTMLElement | null): IResizeGroupState => {
+      elementToMeasure: HTMLElement | null,
+      direction: 'grow' | 'shrink'): IResizeGroupState => {
 
-      let dataToMeasure = data;
-      let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
-      let containerWidth = containerElement.getBoundingClientRect().width;
-
-      while (measuredWidth > containerWidth) {
-        let nextMeasuredData = onReduceData(dataToMeasure);
-
-        // We don't want to get stuck in an infinite render loop when there are no more
-        // scaling steps, so implementations of onReduceData should return undefined when
-        // there are no more scaling states to apply.
-        if (nextMeasuredData === undefined) {
-          return {
-            renderedData: dataToMeasure
-          };
-        }
-
-        let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(nextMeasuredData);
-
-        // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
-        if (cachedWidth === undefined) {
-          return {
-            dataToMeasure: nextMeasuredData
-          };
-        }
-
-        measuredWidth = cachedWidth;
-        dataToMeasure = nextMeasuredData;
+      if (direction === 'grow') {
+        return _growDataUntilItDoesNotFit(data, onGrowData, containerElement, elementToMeasure);
+      } else {
+        return _shrinkContentsUntilTheyFit(data, onReduceData, containerElement, elementToMeasure);
       }
-
-      return {
-        renderedData: dataToMeasure,
-        dataToMeasure: undefined
-      };
     }
-
   };
 };
 
@@ -125,6 +187,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this._measuredData = { ...this.props.data };
     this.state = {
       dataToMeasure: this._measuredData,
+      resizeDirection: 'shrink',
       renderedData: null
     };
   }
@@ -136,6 +199,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
     if (this.props.data !== nextProps.data) {
       this.setState({
+        resizeDirection: 'shrink',
         dataToMeasure: { ...nextProps.data }
       });
     }
@@ -144,8 +208,10 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   public componentDidMount() {
     this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
       this.props.onReduceData,
+      this.props.onGrowData,
       this._root,
-      this._measured));
+      this._measured,
+      this.state.resizeDirection));
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
@@ -185,16 +251,40 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (this.state.dataToMeasure) {
       this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
         this.props.onReduceData,
+        this.props.onGrowData,
         this._root,
-        this._measured));
+        this._measured,
+        this.state.resizeDirection));
     }
   }
 
   private _onResize() {
-    this._lastKnownRootWidth = undefined;
-    this._measuredData = { ... this.props.data };
-    this.setState({
-      dataToMeasure: this._measuredData
-    });
+    if (this._root) {
+      let newContainerWidth = this._root.getBoundingClientRect().width;
+
+      let nextState: IResizeGroupState;
+      if (newContainerWidth > this._lastKnownRootWidth) {
+        if (this.props.onGrowData) {
+          nextState = {
+            resizeDirection: 'grow',
+            dataToMeasure: this.state.renderedData
+          };
+        } else {
+          nextState = {
+            resizeDirection: 'shrink',
+            dataToMeasure: this.props.data
+          };
+        }
+      } else {
+        nextState = {
+          resizeDirection: 'shrink',
+          dataToMeasure: this.state.renderedData
+        };
+      }
+
+      this._lastKnownRootWidth = newContainerWidth;
+      this.setState(nextState);
+    }
+
   }
 }
