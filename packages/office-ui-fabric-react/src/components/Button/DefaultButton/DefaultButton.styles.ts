@@ -2,7 +2,8 @@ import { IButtonStyles } from '../Button.Props';
 import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
-  mergeStyleSets
+  mergeStyleSets,
+  FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -48,9 +49,8 @@ export const getStyles = memoizeFunction((
     },
 
     label: {
-      fontWeight: 'bold' // theme.fontWeights.semibold,
+      fontWeight: FontWeights.semibold
     }
-
   };
 
   return mergeStyleSets(baseButtonStyles, defaultButtonStyles, splitButtonStyles, customStyles);

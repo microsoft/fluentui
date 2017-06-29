@@ -75,6 +75,21 @@ describe('DefaultButton', () => {
     });
   });
 
+  describe('with menuIconProps', () => {
+    let button;
+
+    before(() => {
+      const wrapper = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton menuIconProps={ { iconName: 'fontColor' } }>Hello</DefaultButton>
+      ) as DefaultButton;
+      button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+    });
+
+    it('Contains the expected icon via menuIconProps', () => {
+      expect(button.querySelectorAll('[data-icon-name="fontColor"]').length).to.equal(1);
+    });
+  });
+
   it('Providing onClick and menuProps renders a SplitButton', () => {
     const button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
