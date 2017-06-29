@@ -18,8 +18,8 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 import { getStyles } from './HoverCard.styles';
 
 export enum HoverCardMode {
-  compact,
-  expanded
+  compact = 0,
+  expanded = 1
 }
 
 export interface IHoverCardState {
@@ -51,9 +51,11 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   public componentWillMount() {
     this._async.setTimeout(() => {
-      this.setState({
-        mode: HoverCardMode.expanded
-      });
+      if (this.state.mode !== HoverCardMode.expanded) {
+        this.setState({
+          mode: HoverCardMode.expanded
+        });
+      }
     }, this.props.expandedCardOpenDelay);
   }
 
@@ -92,7 +94,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     return (
       <Callout
-        componentRef={ c => this._callout = c }
+        componentRef={ this._resolveRef('_callout') }
         className={ css(
           AnimationClassNames.scaleUpIn100,
           this._styles.root

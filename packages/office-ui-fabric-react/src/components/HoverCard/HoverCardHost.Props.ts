@@ -49,7 +49,7 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
    * If true disables Card dismiss upon mouse leave, so that card sticks around.
    * @default false
    */
-  sticky?: boolean
+  sticky?: boolean;
 
   /**
    * Custom styles for this component
