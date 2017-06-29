@@ -1,7 +1,8 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets
+  mergeStyleSets,
+  FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -43,9 +44,8 @@ export const getStyles = memoizeFunction((
     },
 
     label: {
-      fontWeight: theme.fontWeights.semibold
+      fontWeight: FontWeights.semibold
     }
-
   };
 
   return mergeStyleSets(baseButtonStyles, defaultButtonStyles, customStyles);
