@@ -165,8 +165,8 @@ const getCachedContentMeasurer = () => {
     },
     updateContainerWidth: (newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState => {
       let nextState: IResizeGroupState;
-      if (newWidth > _containerWidth) {
-        if (hasOnGrowData) {
+      if (_containerWidth && newWidth > _containerWidth) {
+        if (hasOnGrowData && renderedData) {
           nextState = {
             resizeDirection: 'grow',
             dataToMeasure: renderedData
@@ -180,11 +180,11 @@ const getCachedContentMeasurer = () => {
       } else {
         nextState = {
           resizeDirection: 'shrink',
-          dataToMeasure: renderedData
+          dataToMeasure: renderedData || fullWidthData
         };
       }
       _containerWidth = newWidth;
-      return nextState;
+      return { ...nextState, measureContainer: false };
     }
   };
 };
@@ -254,17 +254,12 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
           this.props.data,
           this.state.renderedData,
           !!this.props.onGrowData));
-    }
-
-    if (this.state.dataToMeasure) {
-      this.setState({
-        ...this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
-          this.props.onReduceData,
-          this.props.onGrowData,
-          this._measured,
-          this.state.resizeDirection),
-        measureContainer: false
-      });
+    } else if (this.state.dataToMeasure) {
+      this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
+        this.props.onReduceData,
+        this.props.onGrowData,
+        this._measured,
+        this.state.resizeDirection));
     }
   }
 
