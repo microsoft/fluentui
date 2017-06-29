@@ -145,41 +145,57 @@ const getCachedContentMeasurer = () => {
     };
   };
 
-  return {
-    getNextResizeGroupState: (data: any,
-      onReduceData: (prevData: any) => any,
-      onGrowData: (prevData: any) => any | undefined,
-      elementToMeasure: HTMLElement | null,
-      direction: 'grow' | 'shrink'): IResizeGroupState => {
-
-      if (direction === 'grow') {
-        return _growDataUntilItDoesNotFit(data, onGrowData, elementToMeasure);
-      } else {
-        return _shrinkContentsUntilTheyFit(data, onReduceData, elementToMeasure);
-      }
-    },
-    updateContainerWidth: (newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState => {
-      let nextState: IResizeGroupState;
-      if (_containerWidth && newWidth > _containerWidth) {
-        if (hasOnGrowData && renderedData) {
-          nextState = {
-            resizeDirection: 'grow',
-            dataToMeasure: renderedData
-          };
-        } else {
-          nextState = {
-            resizeDirection: 'shrink',
-            dataToMeasure: fullWidthData
-          };
-        }
+  const _updateContainerWidth = (newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState => {
+    let nextState: IResizeGroupState;
+    if (newWidth > _containerWidth) {
+      if (hasOnGrowData) {
+        nextState = {
+          resizeDirection: 'grow',
+          dataToMeasure: renderedData
+        };
       } else {
         nextState = {
           resizeDirection: 'shrink',
-          dataToMeasure: renderedData || fullWidthData
+          dataToMeasure: fullWidthData
         };
       }
-      _containerWidth = newWidth;
-      return { ...nextState, measureContainer: false };
+    } else {
+      nextState = {
+        resizeDirection: 'shrink',
+        dataToMeasure: renderedData
+      };
+    }
+    _containerWidth = newWidth;
+    return { ...nextState, measureContainer: false };
+  };
+
+  return {
+    getNextRezieGroupState: (props: IResizeGroupProps, currentState: IResizeGroupState, elementToMeasure: HTMLElement | null, newContainerWidth?: number): IResizeGroupState | undefined => {
+      // If there is no new container width or data to measure, there is no need for a new state update
+      if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
+        return undefined;
+      }
+
+      if (newContainerWidth) {
+        // If we know what the last container size was and we rendered data at that width, we can do an optimized render
+        if (_containerWidth && currentState.renderedData) {
+          return _updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData);
+        }
+
+        _containerWidth = newContainerWidth;
+      }
+
+      let nextState: IResizeGroupState = {
+        measureContainer: false
+      };
+
+      if (currentState.resizeDirection === 'grow') {
+        nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, elementToMeasure) };
+      } else {
+        nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, elementToMeasure) };
+      }
+
+      return nextState;
     }
   };
 };
@@ -243,18 +259,13 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _afterComponentRendered() {
+    let containerWidth = undefined;
     if (this.state.measureContainer) {
-      this.setState(
-        this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width,
-          this.props.data,
-          this.state.renderedData,
-          !!this.props.onGrowData));
-    } else if (this.state.dataToMeasure) {
-      this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
-        this.props.onReduceData,
-        this.props.onGrowData,
-        this._measured,
-        this.state.resizeDirection));
+      containerWidth = this._root.getBoundingClientRect().width;
+    }
+    let nextState = this._measurementProvider.getNextRezieGroupState(this.props, this.state, this._measured, containerWidth);
+    if (nextState) {
+      this.setState(nextState);
     }
   }
 
