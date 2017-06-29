@@ -123,12 +123,12 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         <DialogContent
           title={ title }
           subText={ subText }
-          {...dialogContentProps}
           showCloseButton={ isBlocking !== undefined ? !isBlocking : !modalProps.isBlocking }
           topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps.topButtonsProps }
           type={ type !== undefined ? type : dialogContentProps.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps.onDismiss }
           className={ css(contentClassName ? contentClassName : dialogContentProps.className) }
+          {...dialogContentProps}
         >
           { this.props.children }
         </DialogContent>
