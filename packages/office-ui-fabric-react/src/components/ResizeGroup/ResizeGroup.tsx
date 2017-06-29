@@ -253,7 +253,8 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     }
 
     if (this.state.measureContainer) {
-      this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width, this.props.data, this.state.renderedData, !!this.props.onGrowData);
+      this.setState(
+        this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width, this.props.data, this.state.renderedData, !!this.props.onGrowData));
     }
 
     if (this.state.dataToMeasure) {
@@ -270,8 +271,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _onResize() {
     if (this._root) {
-      this.setState(this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width, this.props.data, this.state.renderedData, !!this.props.onGrowData));
+      this.setState({ measureContainer: true });
     }
-
   }
 }
