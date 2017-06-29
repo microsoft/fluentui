@@ -175,7 +175,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Pass in custom callout props
    */
   calloutProps?: ICalloutProps;
-
 }
 
 export interface IContextualMenuItem {
