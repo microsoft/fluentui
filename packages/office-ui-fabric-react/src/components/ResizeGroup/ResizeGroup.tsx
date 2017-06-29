@@ -138,6 +138,7 @@ const getCachedContentMeasurer = () => {
       dataToMeasure = nextMeasuredData;
     }
 
+    // Once the loop is done, we should now shrink until the contents fit.
     return {
       dataToMeasure,
       resizeDirection: 'shrink'
