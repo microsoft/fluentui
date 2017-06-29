@@ -101,14 +101,17 @@ export class HoverCardHost extends BaseComponent<IHoverCardHostProps, IHoverCard
 
   // Hide HoverCard
   @autobind
-  private _cardDismiss(ev) {
+  private _cardDismiss(ev: React.MouseEvent<HTMLDivElement> | React.FocusEvent<HTMLDivElement>) {
+    const eventType = ev.type;
     this._async.clearTimeout(this._openTimerId);
 
     this._dismissTimerId = this._async.setTimeout(() => {
-      this.setState({
-        isHoverCardVisible: false,
-        openExpanded: false
-      });
+      if (!(this.props.sticky && eventType === 'mouseleave')) {
+        this.setState({
+          isHoverCardVisible: false,
+          openExpanded: false
+        });
+      }
     }, this.props.cardDismissDelay);
   }
 

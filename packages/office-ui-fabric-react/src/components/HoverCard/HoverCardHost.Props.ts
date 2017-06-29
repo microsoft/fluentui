@@ -46,6 +46,12 @@ export interface IHoverCardHostProps extends React.HTMLAttributes<HTMLDivElement
   directionalHint?: DirectionalHint;
 
   /**
+   * If true disables Card dismiss upon mouse leave, so that card sticks around.
+   * @default false
+   */
+  sticky?: boolean
+
+  /**
    * Custom styles for this component
    */
   styles?: IHoverCardHostStyles;
