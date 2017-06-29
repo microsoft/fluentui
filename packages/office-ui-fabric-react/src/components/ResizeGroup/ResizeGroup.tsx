@@ -78,9 +78,9 @@ const getCachedContentMeasurer = () => {
   const _shrinkContentsUntilTheyFit = (data: any,
     onReduceData: (prevData: any) => any,
     elementToMeasure: HTMLElement | null): IResizeGroupState => {
-
     let dataToMeasure = data;
     let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
+
     while (measuredWidth > _containerWidth) {
       let nextMeasuredData = onReduceData(dataToMeasure);
 
@@ -115,7 +115,6 @@ const getCachedContentMeasurer = () => {
   const _growDataUntilItDoesNotFit = (data: any,
     onGrowData: (prevData: any) => any,
     elementToMeasure: HTMLElement | null): IResizeGroupState => {
-
     let dataToMeasure = data;
     let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
 
@@ -123,7 +122,7 @@ const getCachedContentMeasurer = () => {
       let nextMeasuredData = onGrowData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
-      // scaling steps, so implementations of onReduceData should return undefined when
+      // scaling steps, so implementations of onGrowData should return undefined when
       // there are no more scaling states to apply.
       if (nextMeasuredData === undefined) {
         return {
