@@ -53,7 +53,6 @@ export const items = [
     onClick: () => { return; }
   },
   {
-<<<<<<< HEAD
     key: 'move',
     name: 'Move to...',
     iconProps: {
@@ -78,8 +77,6 @@ export const items = [
     onClick: () => { return; }
   },
   {
-=======
->>>>>>> master
     key: 'disabled',
     name: 'Disabled...',
     iconProps: {
