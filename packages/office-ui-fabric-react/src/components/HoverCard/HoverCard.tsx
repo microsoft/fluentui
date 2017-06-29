@@ -18,7 +18,8 @@ import { AnimationClassNames, mergeStyles } from '../../Styling';
 import { getStyles } from './HoverCard.styles';
 
 export enum HoverCardMode {
-  condensed,
+  compact,
+  expanding,
   expanded
 }
 
@@ -42,14 +43,14 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     super(props);
 
     this.state = {
-      mode: props.openExpanded ? HoverCardMode.expanded : HoverCardMode.condensed
+      mode: props.openExpanded ? HoverCardMode.expanded : HoverCardMode.compact
     };
   }
 
   public componentWillMount() {
     this._async.setTimeout(() => {
       this.setState({
-        mode: HoverCardMode.expanded
+        mode: HoverCardMode.expanding
       });
     }, this.props.expandedCardOpenDelay);
   }
@@ -57,7 +58,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
     if (newProps.openExpanded !== this.props.openExpanded) {
       this.setState({
-        mode: newProps.openExpanded ? HoverCardMode.expanded : HoverCardMode.condensed
+        mode: newProps.openExpanded ? HoverCardMode.expanding : HoverCardMode.compact
       });
     }
   }
@@ -108,7 +109,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   public get isExpanded(): boolean {
-    return this.state.mode === HoverCardMode.expanded;
+    return this.state.mode !== HoverCardMode.compact;
   }
 
   @autobind
@@ -123,9 +124,22 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   @autobind
   private _onRenderExpandedContent(): JSX.Element {
     return (
-      <div className={ mergeStyles(this._styles.expandedCard, this.isExpanded && { height: this.props.expandedCardHeight + 'px' }) as string }>
+      <div className={ mergeStyles(
+        this._styles.expandedCard,
+        this.isExpanded && { height: this.props.expandedCardHeight + 'px' },
+        this.state.mode === HoverCardMode.expanded && this._styles.expandedCardExpanded
+      ) as string }
+        onTransitionEnd={ this._onExpandedContentTransitionEnd }
+      >
         { this.props.onRenderExpandedContent(this.props.item) }
       </div>
     );
+  }
+
+  @autobind
+  private _onExpandedContentTransitionEnd(ev) {
+    this.setState({
+      mode: HoverCardMode.expanded
+    });
   }
 }

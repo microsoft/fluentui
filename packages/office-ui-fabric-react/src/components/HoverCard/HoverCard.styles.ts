@@ -31,14 +31,15 @@ export const getStyles = memoizeFunction((
         'background-color': theme.palette.neutralLighter
       })
     ],
-    expandedCard: [
-      {
-        height: '0',
-        'overflow-y': 'auto',
-        'pointer-events': 'auto',
-        transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)'
-      }
-    ]
+    expandedCard: {
+      height: '0',
+      'overflow-y': 'hidden',
+      'pointer-events': 'auto',
+      transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)'
+    },
+    expandedCardExpanded: {
+      'overflow-y': 'auto',
+    }
   };
 
   return mergeStyleSets(styles, customStyles);

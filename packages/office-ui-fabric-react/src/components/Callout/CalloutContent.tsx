@@ -110,6 +110,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyle,
       children,
       beakWidth,
+      finalHeight,
       backgroundColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
@@ -164,7 +165,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
-            className={ css('ms-Callout-main', styles.main) }
+            className={ css('ms-Callout-main', styles.main, {
+              [styles.overFlowYHidden]: finalHeight
+            }) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
