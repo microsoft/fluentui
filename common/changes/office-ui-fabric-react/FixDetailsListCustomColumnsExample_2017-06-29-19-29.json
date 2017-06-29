@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix some focus issues in DetailsList",
+      "comment": "Add 'event' as first param for onColumnClick handler to match the param order.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "glenchao@outlook.com"
 }

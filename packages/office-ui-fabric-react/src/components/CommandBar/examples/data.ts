@@ -53,6 +53,7 @@ export const items = [
     onClick: () => { return; }
   },
   {
+<<<<<<< HEAD
     key: 'move',
     name: 'Move to...',
     iconProps: {
@@ -77,6 +78,8 @@ export const items = [
     onClick: () => { return; }
   },
   {
+=======
+>>>>>>> master
     key: 'disabled',
     name: 'Disabled...',
     iconProps: {
@@ -101,27 +104,6 @@ export const textOnlyItems = [
   {
     key: 'download',
     name: 'Download',
-    onClick: () => { return; }
-  },
-  {
-    key: 'move',
-    name: 'Move to...',
-    onClick: () => { return; }
-  },
-  {
-    key: 'copy',
-    name: 'Copy to...',
-    onClick: () => { return; }
-  },
-  {
-    key: 'rename',
-    name: 'Rename...',
-    onClick: () => { return; }
-  },
-  {
-    key: 'disabled',
-    name: 'Disabled...',
-    disabled: true,
     onClick: () => { return; }
   }
 ];
@@ -207,8 +189,8 @@ export const overflowItems = [
       iconName: 'Edit'
     },
   }
-
 ];
+
 export const farItems = [
   {
     key: 'sort',
