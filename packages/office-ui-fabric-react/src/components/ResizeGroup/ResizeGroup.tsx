@@ -207,24 +207,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     };
   }
 
-  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
-    this.setState({
-      resizeDirection: 'shrink',
-      dataToMeasure: { ...nextProps.data },
-      measureContainer: true // Receiving new props means the parent might rerender and the root width might change
-    });
-  }
-
-  public componentDidMount() {
-    this._measurementProvider.setInitialContainerWidth(this._root.getBoundingClientRect().width);
-    this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
-      this.props.onReduceData,
-      this.props.onGrowData,
-      this._measured,
-      this.state.resizeDirection));
-    this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
-  }
-
   public render() {
     const { onRenderData, data } = this.props;
     const { dataToMeasure, renderedData } = this.state;
@@ -246,16 +228,35 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     );
   }
 
+  public componentDidMount() {
+    this._afterComponentRendered();
+    this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
+  }
+
+  public componentWillReceiveProps(nextProps: IResizeGroupProps) {
+    this.setState({
+      resizeDirection: 'shrink',
+      dataToMeasure: { ...nextProps.data },
+      measureContainer: true // Receiving new props means the parent might rerender and the root width might change
+    });
+  }
+
   public componentDidUpdate(prevProps: IResizeGroupProps) {
     if (this.state.renderedData) {
       if (this.props.dataDidRender) {
         this.props.dataDidRender(this.state.renderedData);
       }
     }
+    this._afterComponentRendered();
+  }
 
+  private _afterComponentRendered() {
     if (this.state.measureContainer) {
       this.setState(
-        this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width, this.props.data, this.state.renderedData, !!this.props.onGrowData));
+        this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width,
+          this.props.data,
+          this.state.renderedData,
+          !!this.props.onGrowData));
     }
 
     if (this.state.dataToMeasure) {
