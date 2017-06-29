@@ -36,7 +36,7 @@ export interface IResizeGroupState {
   measureContainer?: boolean;
 }
 
-const getCachedMeasurementProvider = () => {
+const getMeasurementCache = () => {
   const measurementsCache: { [key: string]: number } = {};
 
   return {
@@ -56,17 +56,17 @@ const getCachedMeasurementProvider = () => {
 };
 
 const getCachedContentMeasurer = () => {
-  const _cachedMeasurementProvider = getCachedMeasurementProvider();
+  const _measurementCache = getMeasurementCache();
   let _containerWidth: number | undefined;
 
   const _getMeasuredWidth = (measuredData: any, elementToMeasure: HTMLElement | null): number => {
-    let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(measuredData);
+    let cachedWidth = _measurementCache.getCachedMeasurement(measuredData);
     if (cachedWidth !== undefined) {
       return cachedWidth;
     }
 
     let measuredWidth = elementToMeasure.getBoundingClientRect().width;
-    _cachedMeasurementProvider.addMeasurementToCache(measuredData, measuredWidth);
+    _measurementCache.addMeasurementToCache(measuredData, measuredWidth);
     return measuredWidth;
   };
 
@@ -88,7 +88,7 @@ const getCachedContentMeasurer = () => {
         };
       }
 
-      let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(nextMeasuredData);
+      let cachedWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
 
       // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
       if (cachedWidth === undefined) {
@@ -125,7 +125,7 @@ const getCachedContentMeasurer = () => {
         };
       }
 
-      let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(nextMeasuredData);
+      let cachedWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
 
       // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
       if (cachedWidth === undefined) {
