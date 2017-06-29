@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix a scrolling issue with the comboBox (#2090)",
+      "comment": "ComboBox: Fix a scrolling issue (#2090)",
       "type": "patch"
     }
   ],
