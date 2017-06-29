@@ -71,13 +71,11 @@ const getCachedContentMeasurer = () => {
 
   const _shrinkContentsUntilTheyFit = (data: any,
     onReduceData: (prevData: any) => any,
-    containerElement: HTMLElement,
+    containerWidth: number,
     elementToMeasure: HTMLElement | null): IResizeGroupState => {
 
     let dataToMeasure = data;
     let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
-    let containerWidth = containerElement.getBoundingClientRect().width;
-
     while (measuredWidth > containerWidth) {
       let nextMeasuredData = onReduceData(dataToMeasure);
 
@@ -111,12 +109,11 @@ const getCachedContentMeasurer = () => {
 
   const _growDataUntilItDoesNotFit = (data: any,
     onGrowData: (prevData: any) => any,
-    containerElement: HTMLElement,
+    containerWidth: number,
     elementToMeasure: HTMLElement | null): IResizeGroupState => {
 
     let dataToMeasure = data;
     let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
-    let containerWidth = containerElement.getBoundingClientRect().width;
 
     while (measuredWidth < containerWidth) {
       let nextMeasuredData = onGrowData(dataToMeasure);
@@ -153,16 +150,16 @@ const getCachedContentMeasurer = () => {
     getNextResizeGroupState: (data: any,
       onReduceData: (prevData: any) => any,
       onGrowData: (prevData: any) => any | undefined,
-      containerElement: HTMLElement,
+      containerWidth: number,
       elementToMeasure: HTMLElement | null,
       direction: 'grow' | 'shrink'): IResizeGroupState => {
 
       if (direction === 'grow') {
-        return _growDataUntilItDoesNotFit(data, onGrowData, containerElement, elementToMeasure);
+        return _growDataUntilItDoesNotFit(data, onGrowData, containerWidth, elementToMeasure);
       } else {
-        return _shrinkContentsUntilTheyFit(data, onReduceData, containerElement, elementToMeasure);
+        return _shrinkContentsUntilTheyFit(data, onReduceData, containerWidth, elementToMeasure);
       }
-    }
+    },
   };
 };
 
@@ -194,10 +191,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentDidMount() {
+    this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
     this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
       this.props.onReduceData,
       this.props.onGrowData,
-      this._root,
+      this._lastKnownRootWidth,
       this._measured,
       this.state.resizeDirection));
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
@@ -239,7 +237,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
         this.props.onReduceData,
         this.props.onGrowData,
-        this._root,
+        this._lastKnownRootWidth,
         this._measured,
         this.state.resizeDirection));
     }
