@@ -1,3 +1,8 @@
+/**
+ * KeyCode enum.
+ *
+ * @public
+ */
 export enum KeyCodes {
   a = 65,
   backspace = 8,

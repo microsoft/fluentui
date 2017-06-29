@@ -13,11 +13,21 @@ interface IMemoizeNode {
   value?: any;
 }
 
-/** Test utility for providing a custom weakmap. */
+/**
+ * Test utility for providing a custom weakmap.
+ * @internal
+ */
 export function setMemoizeWeakMap(weakMap: any): void {
   _weakMap = weakMap;
 }
 
+/**
+ * memoize decorator. Note that when applied to a method within a class, it is done for
+ * each instance and not one for all instances. Use memoizeFunction to memoize a static
+ * function.
+ *
+ * @public
+ */
 export function memoize<T extends Function>(
   target: any,
   key: string,
@@ -46,6 +56,7 @@ export function memoize<T extends Function>(
  * unintendedly called with unique objects. Without a reset, the cache could grow infinitely, so we safeguard
  * by resetting. To override this behavior, pass a value of 0 to the maxCacheSize parameter.
  *
+ * @public
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.

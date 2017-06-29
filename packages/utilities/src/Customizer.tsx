@@ -2,18 +2,38 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { BaseComponent } from './BaseComponent';
 
-export interface ISettings {
+/**
+ * Customizer settings.
+ *
+ * @public
+ */
+export interface ICustomizerSettings {
   [key: string]: any;
 }
 
+/**
+ * Customizer props.
+ *
+ * @public
+ */
 export interface ICustomizerProps {
-  settings: ISettings;
+  settings: ICustomizerSettings;
 }
 
+/**
+ * Customizer state.
+ *
+ * @internal
+ */
 export interface ICustomizerState {
-  injectedProps?: ISettings;
+  injectedProps?: ICustomizerSettings;
 }
 
+/**
+ * Customizer change listener.
+ *
+ * @internal
+ */
 export interface IChangeListener {
   (propName?: string): void;
 }
@@ -30,6 +50,8 @@ let _changeListeners: IChangeListener[] = [];
  *
  * Props are provided via the settings prop, which should be a json map which contains 1 or more
  * name/value pairs representing injectable props.
+ *
+ * @public
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   public static contextTypes = {
@@ -96,8 +118,8 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
   }
 
   private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState) {
-    let { settings: injectedPropsFromSettings = {} as ISettings } = props;
-    let { injectedProps: injectedPropsFromContext = {} as ISettings } = context;
+    let { settings: injectedPropsFromSettings = {} as ICustomizerSettings } = props;
+    let { injectedProps: injectedPropsFromContext = {} as ICustomizerSettings } = context;
 
     return {
       injectedProps: {

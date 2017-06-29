@@ -9,6 +9,11 @@
 declare function setTimeout(cb: Function, delay: number): number;
 declare function setInterval(cb: Function, delay: number): number;
 
+/**
+ * Collection of async helpers.
+ *
+ * @public
+ */
 export class Async {
   private _timeoutIds: any = null;
   private _immediateIds: any = null;
