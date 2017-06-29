@@ -79,9 +79,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   white-space: nowrap;
   padding: 0;
   box-sizing: border-box;
-  transition: line-height, min-height;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
 
   @include ms-text-align(left);
   vertical-align: top;
