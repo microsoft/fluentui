@@ -163,9 +163,6 @@ const getCachedContentMeasurer = () => {
         return _shrinkContentsUntilTheyFit(data, onReduceData, elementToMeasure);
       }
     },
-    setInitialContainerWidth: (newWidth: number): void => {
-      _containerWidth = newWidth;
-    },
     updateContainerWidth: (newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState => {
       let nextState: IResizeGroupState;
       if (newWidth > _containerWidth) {
