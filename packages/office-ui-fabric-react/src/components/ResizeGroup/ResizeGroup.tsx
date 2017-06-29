@@ -211,7 +211,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       dataToMeasure: { ...this.props.data },
       resizeDirection: 'shrink',
       measureContainer: true,
-      renderedData: null
     };
   }
 
@@ -245,6 +244,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this.setState({
       resizeDirection: 'shrink',
       dataToMeasure: { ...nextProps.data },
+      renderedData: undefined,
       measureContainer: true // Receiving new props means the parent might rerender and the root width might change
     });
   }
