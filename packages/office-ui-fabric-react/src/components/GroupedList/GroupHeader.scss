@@ -61,6 +61,10 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   outline: 0;
 }
 
+.headerCount {
+  padding: 0px 4px;
+}
+
 .expand {
   width: 36px;
   height: $rowHeight;
