@@ -134,4 +134,4 @@ function addCSSToHeader(fileName) {
   linkEl.href = fileName
   headEl.appendChild(linkEl)
 }
-addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/5.1.0/css/fabric.min.css')
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.1.0/css/fabric.min.css')

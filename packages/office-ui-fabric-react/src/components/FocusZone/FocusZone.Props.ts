@@ -24,7 +24,7 @@ export interface IFocusZone {
 /**
  * FocusZone component props.
  */
-export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone> {
+export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
   /**
    * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -86,7 +86,7 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone
    * Deprecated at v1.12.1. DIV props provided to the FocusZone will be mixed into the root element.
    * @deprecated
    */
-  rootProps?: React.HTMLProps<HTMLDivElement>;
+  rootProps?: React.HTMLAttributes<HTMLDivElement>;
 
   /**
    * Callback method for determining if focus should indeed be set on the given element.
@@ -94,6 +94,9 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone
    * @returns True if focus should be set to the given element, false to avoid setting focus.
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
+
+  /** Allow focus to move to root */
+  allowFocusRoot?: boolean;
 }
 
 export enum FocusZoneDirection {

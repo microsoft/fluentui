@@ -24,8 +24,9 @@ let rules = Object.assign(
 );
 build.tslint.setConfig({
   lintConfig: { rules },
-  sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
+  displayAsWarning: false
 });
+
 // TODO: remove this! There are a number of lint errors to fix.
 build.tslint.isEnabled = () => false;
 

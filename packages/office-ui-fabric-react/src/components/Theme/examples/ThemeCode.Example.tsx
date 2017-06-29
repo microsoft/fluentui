@@ -1,5 +1,7 @@
-import { loadTheme } from '@microsoft/load-themed-styles';
+import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 
 loadTheme({
-  'themePrimary': 'red'
+  palette: {
+    'themePrimary': 'red'
+  }
 });

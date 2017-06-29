@@ -1,7 +1,7 @@
 import { ExampleComponent } from './ExampleComponent';
 import { IRenderFunction } from '@uifabric/utilities';
 
-export interface IExampleComponentProps extends React.HTMLProps<HTMLDivElement | ExampleComponent> {
+export interface IExampleComponentProps extends React.HTMLAttributes<HTMLDivElement | ExampleComponent> {
   /**
    * Optional icon name using fabric icons.
    *

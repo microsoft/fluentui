@@ -92,16 +92,15 @@
 
     // Show the underline
     &::before {
-      background-color: $ms-color-themePrimary;
+      box-sizing: border-box;
+      border-bottom: 2px solid $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        background-color: transparent;
-        border-bottom: 2px solid $ms-color-white;
+        border-bottom-color: $ms-color-white;
       }
 
       @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: transparent;
-        border-bottom: 2px solid $ms-color-black;
+        border-bottom-color: $ms-color-black;
       }
     }
   }

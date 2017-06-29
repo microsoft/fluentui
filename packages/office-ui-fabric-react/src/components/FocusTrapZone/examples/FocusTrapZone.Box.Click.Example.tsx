@@ -14,7 +14,7 @@ export interface IBoxNoClickExampleExampleState {
   isToggled: boolean;
 }
 
-export default class BoxNoClickExample extends React.Component<React.HTMLProps<HTMLDivElement>, IBoxNoClickExampleExampleState> {
+export default class BoxNoClickExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxNoClickExampleExampleState> {
   private _toggle: IToggle;
 
   constructor(props) {

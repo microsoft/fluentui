@@ -6,6 +6,8 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "experimentalDecorators": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "jsx": "react",

@@ -2,6 +2,169 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.0.1",
+      "tag": "@uifabric/example-app-base_v4.0.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.5 <1.0.0` to `>=0.11.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.0",
+      "tag": "@uifabric/example-app-base_v4.0.0",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bff150fa91e87c31d8d433092b007ee604f22d8b",
+            "comment": "Add support for adding a default route in createApp. Remove unused hideChrome parameter."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.5 <1.0.0` to `>=0.11.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "3.0.2",
+      "tag": "@uifabric/example-app-base_v3.0.2",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.4 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "3.0.1",
+      "tag": "@uifabric/example-app-base_v3.0.1",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.1.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "3.0.0",
+      "tag": "@uifabric/example-app-base_v3.0.0",
+      "date": "Thu, 08 Jun 2017 00:18:05 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "437a52303c48ddf8bd7418446606586196972795",
+            "comment": "Bumping fabric dependency in example-app-base"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.6.1 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.1 <5.0.0` to `>=4.1.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.2",
+      "tag": "@uifabric/example-app-base_v2.1.2",
+      "date": "Tue, 06 Jun 2017 07:41:47 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.6.0 <1.0.0` to `>=0.6.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.1",
+      "tag": "@uifabric/example-app-base_v2.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.5.0 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.0 <5.0.0` to `>=4.1.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.0",
+      "tag": "@uifabric/example-app-base_v2.1.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "90b3bd39868d4576bfadb0a339370934a6d42d3a",
+            "comment": "Add the ability to optionally pass in the app title and header links for createApp"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.4.3 <1.0.0` to `>=0.5.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.0.1 <5.0.0` to `>=4.1.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.4",
       "tag": "@uifabric/example-app-base_v2.0.4",
       "date": "Fri, 02 Jun 2017 01:19:36 GMT",

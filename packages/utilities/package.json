@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "4.0.1",
+  "version": "4.4.2",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -20,6 +20,7 @@
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/es6-promise": "^0.0.32",
+    "@types/es6-weak-map": "1.2.0",
     "@types/mocha": "^2.2.39",
     "@types/prop-types": "^15.5.1",
     "@types/react": "^15.0.25",
@@ -41,7 +42,8 @@
     "typescript": "2.2.2"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "tslib": "^1.6.0"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",

@@ -5,7 +5,7 @@ import { css } from '../../Utilities';
 import { Check } from '../../Check';
 import * as styles from './DetailsRowCheck.scss';
 
-export interface IDetailsRowCheckProps extends React.HTMLProps<HTMLElement> {
+export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
   selected?: boolean;
   /**
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.

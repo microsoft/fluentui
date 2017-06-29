@@ -13,6 +13,13 @@ export enum RectangleEdge {
   right = 3
 }
 
+export enum Position {
+  top = 0,
+  bottom = 1,
+  start = 2,
+  end = 3
+}
+
 let SLIDE_ANIMATIONS: { [key: number]: string; } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',

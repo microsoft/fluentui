@@ -7,9 +7,13 @@ import {
 } from '@uifabric/example-app-base';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
+import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 
 const BreadcrumbBasicExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
+) as string;
+const BreadcrumbStaticExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx'
 ) as string;
 
 export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
@@ -19,11 +23,18 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         title='Breadcrumb'
         componentName='BreadcrumbExample'
         exampleCards={
-          <ExampleCard
-            title='Simple breadcrumb'
-            code={ BreadcrumbBasicExampleCode }>
-            <BreadcrumbBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard
+              title='Simple breadcrumb'
+              code={ BreadcrumbBasicExampleCode }>
+              <BreadcrumbBasicExample />
+            </ExampleCard>
+            <ExampleCard
+              title='Static width'
+              code={ BreadcrumbStaticExampleCode }>
+              <BreadcrumbStaticExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet

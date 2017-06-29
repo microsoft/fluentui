@@ -13,7 +13,7 @@ import { ISubscribable } from './ISubscribable';
 
 let { expect } = chai;
 
-interface ITestComponentProps extends React.HTMLProps<HTMLDivElement> { }
+interface ITestComponentProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 // Dumb component.
 const TestComponent = (props: ITestComponentProps) => (

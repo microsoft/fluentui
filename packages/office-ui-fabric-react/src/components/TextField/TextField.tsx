@@ -154,15 +154,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <div className={ textFieldClassName }>
-        { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
-          { (addonString !== undefined || this.props.onRenderAddon) && (
-            <div className={ css(styles.fieldAddon) }>
-              { onRenderAddon(this.props, this._onRenderAddon) }
-            </div>
-          ) }
-          { multiline ? this._renderTextArea() : this._renderInput() }
-          { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+        <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
+          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+          <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
+            { (addonString !== undefined || this.props.onRenderAddon) && (
+              <div className={ css(styles.fieldAddon) }>
+                { onRenderAddon(this.props, this._onRenderAddon) }
+              </div>
+            ) }
+            { multiline ? this._renderTextArea() : this._renderInput() }
+            { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+          </div>
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
@@ -172,9 +174,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
-                    data-automation-id='error-message'>
-                    <Icon iconName='error' className={ styles.errorIcon } />
-                    { errorMessage }
+                  >
+                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
+                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>
@@ -285,7 +287,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return errorMessage;
   }
 
-  private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+  private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
@@ -306,8 +308,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLProps<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input

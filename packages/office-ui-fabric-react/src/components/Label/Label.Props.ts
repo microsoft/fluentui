@@ -6,7 +6,7 @@ export interface ILabel {
 
 }
 
-export interface ILabelProps extends React.HTMLProps<HTMLLabelElement> {
+export interface ILabelProps extends React.HTMLAttributes<HTMLLabelElement> {
   /**
    * Optional callback to access the ILabel interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

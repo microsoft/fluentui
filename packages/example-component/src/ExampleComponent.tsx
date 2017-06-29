@@ -42,7 +42,7 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
     const { className, href }: IExampleComponentProps = this.props;
 
     if (!!href) {
-      const anchorProps: React.HTMLProps<HTMLAnchorElement> =
+      const anchorProps: React.HTMLAttributes<HTMLAnchorElement> =
         getNativeProps(this.props, anchorProperties);
 
       return (
@@ -53,7 +53,7 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
         />
       );
     } else {
-      const buttonProps: React.HTMLProps<HTMLButtonElement> =
+      const buttonProps: React.HTMLAttributes<HTMLButtonElement> =
         getNativeProps(this.props, buttonProperties);
 
       return (

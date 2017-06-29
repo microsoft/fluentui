@@ -14,7 +14,7 @@ export interface ICheckbox {
 /**
  * Checkbox properties.
  */
-export interface ICheckboxProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
+export interface ICheckboxProps extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -59,5 +59,5 @@ export interface ICheckboxProps extends React.HTMLProps<HTMLElement | HTMLInputE
    * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
    * precedence over the later.
    */
-  inputProps?: React.HTMLProps<HTMLElement | HTMLInputElement>;
+  inputProps?: React.HTMLAttributes<HTMLElement | HTMLInputElement>;
 }

@@ -6,7 +6,7 @@ export interface IChoiceGroup {
 
 }
 
-export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

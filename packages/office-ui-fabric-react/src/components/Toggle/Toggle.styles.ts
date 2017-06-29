@@ -1,23 +1,22 @@
 import { IToggleStyles } from './Toggle.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets,
   getFocusStyle
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
+  theme: ITheme,
   customStyles?: IToggleStyles
 ): IToggleStyles => {
   const { semanticColors } = theme;
   const pillUncheckedBackground = semanticColors.bodyBackground;
-  const pillCheckedBackground = semanticColors.inputBackgroundSelected;
-  const pillCheckedHoveredBackground = semanticColors.inputBackgroundSelectedHovered;
+  const pillCheckedBackground = semanticColors.inputBackgroundChecked;
+  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
   const pillCheckedDisabledBackground = semanticColors.disabledText;
   const thumbBackground = semanticColors.inputBorderHovered;
-  const thumbCheckedBackground = semanticColors.inputForegroundSelected;
+  const thumbCheckedBackground = semanticColors.inputForegroundChecked;
   const thumbDisabledBackground = semanticColors.disabledText;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
   const pillBorderColor = semanticColors.inputBorder;
@@ -51,6 +50,7 @@ export const getStyles = memoizeFunction((
         borderStyle: 'solid',
         background: pillUncheckedBackground,
         borderColor: pillBorderColor,
+        cursor: 'pointer',
       }
     ],
 
@@ -85,6 +85,11 @@ export const getStyles = memoizeFunction((
       top: '.2em',
       transition: 'all 0.1s ease',
       backgroundColor: thumbBackground,
+      /* Border is added to handle high contrast mode for Firefox */
+      borderColor: 'transparent',
+      borderWidth: '.27em',
+      borderStyle: 'solid',
+      boxSizing: 'border-box',
       left: '.2em'
     },
 

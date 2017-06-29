@@ -1,7 +1,6 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -14,7 +13,7 @@ const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
+  theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
   let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(

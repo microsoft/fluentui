@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
+import { mount } from 'enzyme';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-
+import * as sinon from 'sinon';
 let { expect } = chai;
 
 import { Toggle } from './Toggle';
@@ -28,8 +28,11 @@ describe('Toggle', () => {
     let callback = (isToggled) => {
       isToggledValue = isToggled;
     };
-    let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
+    let component;
+
+    ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Toggle
+        componentRef={ ref => component = ref }
         label='Label'
         onChanged={ callback }
       />
@@ -43,8 +46,11 @@ describe('Toggle', () => {
   });
 
   it(`doesn't update the state if the user provides checked`, () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    let component;
+
+    ReactTestUtils.renderIntoDocument(
       <Toggle
+        componentRef={ ref => component = ref }
         label='Label'
         checked={ false }
       />
@@ -66,7 +72,32 @@ describe('Toggle', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let label = renderedDOM.querySelector('label');
 
+    // tslint:disable-next-line:no-unused-expression
     expect(label).is.null;
+  });
+
+  it(`doesn't trigger onSubmit when placed inside a form`, () => {
+    let component;
+    const onSubmit = sinon.spy();
+
+    const wrapper = mount(
+      <form action='#' onSubmit={ (e) => {
+        onSubmit();
+        e.preventDefault();
+      } }>
+        <Toggle
+          componentRef={ ref => component = ref }
+          label='Label'
+        />
+      </form>
+    );
+    let button: any = wrapper.find('button');
+    // simulate to change toggle state
+    button.simulate('click');
+    // click to force propegation to form wrapper https://github.com/airbnb/enzyme/issues/308#issuecomment-255630011
+    button.get(0).click();
+    expect((component as React.Component<any, any>).state.isChecked).to.equal(true);
+    expect(onSubmit.called).to.equal(false);
   });
 
 });

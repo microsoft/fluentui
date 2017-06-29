@@ -40,7 +40,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     );
   }
 
-  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     let { width, height, imageFit } = previewImage;
 
     let image = (
@@ -66,7 +66,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
   }
 
   @autobind
-  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     let { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing

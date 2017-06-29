@@ -4,7 +4,7 @@ export interface IImage {
 
 }
 
-export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
+export interface IImageProps extends React.HTMLAttributes<HTMLImageElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -54,6 +54,13 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
    * The 'loadState' parameter indicates the current state of the Image.
    */
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
+
+  /**
+   * Specified the cover style to be used for this image. If not
+   * specified, this will be dynamically calculated based on the
+   * aspect ratio for the image.
+   */
+  coverStyle?: ImageCoverStyle;
 }
 
 /**
@@ -83,6 +90,21 @@ export enum ImageFit {
    * frame will have empty space.
    */
   none = 3
+}
+
+/**
+ * The cover style to be used on the image
+ */
+export enum ImageCoverStyle {
+  /**
+   * The image will be shown at 100% height of container and the width will be scaled accordingly
+   */
+  landscape = 0,
+
+  /**
+   * The image will be shown at 100% width of container and the height will be scaled accordingly
+   */
+  portrait = 1
 }
 
 export enum ImageLoadState {

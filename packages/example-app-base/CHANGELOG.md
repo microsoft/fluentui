@@ -1,6 +1,60 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Jun 2017 01:19:36 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+
+## 4.0.1
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.0.0
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Breaking changes
+
+- Add support for adding a default route in createApp. Remove unused hideChrome parameter.
+
+## 3.0.2
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Patches
+
+- Bumping fabric-core dependency.
+
+## 3.0.1
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Patches
+
+- Enable no implicit any in utilities package
+
+## 3.0.0
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Breaking changes
+
+- Bumping fabric dependency in example-app-base
+
+## 2.1.2
+Tue, 06 Jun 2017 07:41:47 GMT
+
+*Changes not tracked*
+
+## 2.1.1
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Patches
+
+- Adding tslib dependency to reduce re
+
+## 2.1.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Add the ability to optionally pass in the app title and header links for createApp
 
 ## 2.0.4
 Fri, 02 Jun 2017 01:19:36 GMT

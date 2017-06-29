@@ -111,7 +111,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
       'ms-MessageBar-innerTextPadding ' + styles.innerTextPadding : 'ms-MessageBar-innerText ' + styles.innerText;
   }
 
-  private _renderMultiLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+  private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
       <div
         className={
@@ -134,7 +134,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     );
   }
 
-  private _renderSingleLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+  private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
       <div className={
         css(this._getClassName(),

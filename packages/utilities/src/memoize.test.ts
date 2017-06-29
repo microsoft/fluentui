@@ -1,11 +1,17 @@
-// Polyfills
-import 'es6-weak-map/implement';
-
-import { memoize, memoizeFunction } from './memoize';
+import { memoize, memoizeFunction, setMemoizeWeakMap } from './memoize';
+import weakMapPolyfill = require('es6-weak-map');
 
 let { expect } = chai;
 
 describe('memoizeFunction', () => {
+  before(() => {
+    setMemoizeWeakMap(weakMapPolyfill);
+  });
+
+  after(() => {
+    setMemoizeWeakMap(undefined);
+  });
+
   it('can return a cached result with a no args function', () => {
     let _timesCalled = 0;
     let memoizeFunctiondTimesCalled = memoizeFunction(() => ++_timesCalled);
@@ -89,6 +95,14 @@ describe('memoizeFunction', () => {
 });
 
 describe('memoize', () => {
+  before(() => {
+    setMemoizeWeakMap(weakMapPolyfill);
+  });
+
+  after(() => {
+    setMemoizeWeakMap(undefined);
+  });
+
   it('can work on multiple instances of a class', () => {
     let _count = 0;
 
@@ -108,4 +122,17 @@ describe('memoize', () => {
     expect(f.bar('bye')).equals('bye1');
   });
 
+});
+
+describe('memoizeFunctionWithoutPolyfill', () => {
+  it('passes through function without polyfill', () => {
+    let count = 0;
+    let func = memoizeFunction((
+      a: string
+    ) => a + count++, 1);
+
+    expect(func('a')).equals('a0');
+    expect(func('a')).equals('a1');
+    expect(func('a')).equals('a2');
+  });
 });

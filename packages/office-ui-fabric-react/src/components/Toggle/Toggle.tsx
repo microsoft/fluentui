@@ -14,6 +14,9 @@ import {
 } from './Toggle.Props';
 import { Label } from '../../Label';
 import {
+  customizable
+} from '../../Utilities';
+import {
   mergeStyles
 } from '../../Styling';
 
@@ -32,6 +35,7 @@ interface IToggleClassNames {
   text: string;
 }
 
+@customizable(['theme'])
 export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
@@ -74,6 +78,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
 
     let {
       className,
+      theme,
       styles: customStyles,
       disabled,
       label,
@@ -87,7 +92,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = this._getClassNames(
-      getStyles(undefined, customStyles),
+      getStyles(theme, customStyles),
       className,
       disabled,
       isChecked
@@ -103,6 +108,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         <div className={ classNames.container } >
           <button
             { ...toggleNativeProps }
+            type='button'
             className={ classNames.pill }
             ref={ (c): HTMLButtonElement => this._toggleButton = c }
             aria-disabled={ disabled }
@@ -216,6 +222,6 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
       ) as string,
 
     };
-  };
+  }
 
 }

@@ -2,6 +2,137 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.4.2",
+      "tag": "@uifabric/utilities_v4.4.2",
+      "date": "Thu, 29 Jun 2017 10:13:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5720ea897345a93668e50c9d5684359e5ecad48b",
+            "comment": "Removing localstorage persistence for rtl helpers."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.1",
+      "tag": "@uifabric/utilities_v4.4.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.0",
+      "tag": "@uifabric/utilities_v4.4.0",
+      "date": "Wed, 21 Jun 2017 01:52:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "221454482fd48138b0485715170c03c64fa1cef7",
+            "comment": "Add FabricPerformance utility to measure performance"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.0",
+      "tag": "@uifabric/utilities_v4.3.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74c01f80ee4fb502a45c77ac0ad135148b2146d9",
+            "comment": "isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned."
+          },
+          {
+            "author": "Chad Sheets <cjsheets@gmail.com>",
+            "commit": "d4527911db0d3c4bbdc74473e3d7d996c182b444",
+            "comment": "Focus Utility should respect tabindex=-1 on tabable elements"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.0",
+      "tag": "@uifabric/utilities_v4.2.0",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.2",
+      "tag": "@uifabric/utilities_v4.1.2",
+      "date": "Thu, 08 Jun 2017 00:18:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "soorajpurandare <soorajashutosh@gmail.com>",
+            "commit": "f382123efa18802b5f86f4be669c5b34847872d4",
+            "comment": "Adding a try-catch around setting RTL in local storage for the browser"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.1",
+      "tag": "@uifabric/utilities_v4.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.0",
+      "tag": "@uifabric/utilities_v4.1.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cb407443e257121037ba57a6bc302f87e03eec9c",
+            "comment": "memoize: returns the callback in scenarios where WeakMap isn't available."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.1",
       "tag": "@uifabric/utilities_v4.0.1",
       "date": "Thu, 01 Jun 2017 16:34:03 GMT",

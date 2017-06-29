@@ -5,7 +5,7 @@ import {
 } from './warn';
 import { expect } from 'chai';
 
-let _lastWarning: string;
+let _lastWarning: string | undefined;
 
 describe('warnDeprecations', () => {
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('warnDeprecations', () => {
   });
 
   it('can warn on a deprecated prop', () => {
-    warnDeprecations('Foo', { foo: 1 }, { 'foo': null });
+    warnDeprecations('Foo', { foo: 1 }, { 'foo': null } as any);
     expect(_lastWarning).equals(`Foo property 'foo' was used but has been deprecated.`);
   });
 

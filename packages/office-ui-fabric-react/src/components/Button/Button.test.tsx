@@ -39,4 +39,48 @@ describe('DefaultButton', () => {
     expect(renderedDOM.tagName).equals('A', 'A Button with an href renders as an anchor');
   });
 
+  describe('with menuProps', () => {
+    let button;
+
+    before(() => {
+      const wrapper = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton menuProps={ { items: [{ key: 'item', name: 'Item' }] } }>Hello</DefaultButton>
+      ) as DefaultButton;
+      button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+    });
+
+    it('contains aria-haspopup=true', () => {
+      expect(button.getAttribute('aria-haspopup')).to.equal('true');
+    });
+  });
+
+  describe('without menuProps', () => {
+    let button;
+
+    before(() => {
+      const wrapper = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton>Hello</DefaultButton>
+      ) as DefaultButton;
+      button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+    });
+
+    it('does not contain aria-haspopup', () => {
+      expect(button.getAttribute('aria-haspopup')).to.equal(null);
+    });
+  });
+
+  describe('with menuIconProps', () => {
+    let button;
+
+    before(() => {
+      const wrapper = ReactTestUtils.renderIntoDocument<any>(
+        <DefaultButton menuIconProps={ { iconName: 'fontColor' } }>Hello</DefaultButton>
+      ) as DefaultButton;
+      button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+    });
+
+    it('Contains the expected icon via menuIconProps', () => {
+      expect(button.querySelectorAll('[data-icon-name="fontColor"]').length).to.equal(1);
+    });
+  });
 });

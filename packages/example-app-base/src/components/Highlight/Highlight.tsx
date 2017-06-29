@@ -5,7 +5,7 @@ import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 hljs.registerLanguage('javascript', javascript);
 
-export class Highlight extends BaseComponent<React.HTMLProps<HTMLDivElement>, {}> {
+export class Highlight extends BaseComponent<React.HTMLAttributes<HTMLDivElement>, {}> {
   private _codeElement: HTMLElement;
 
   public render() {

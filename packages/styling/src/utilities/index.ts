@@ -1,9 +1,4 @@
 export {
-  ITheme,
-  getTheme,
-  loadTheme
-} from './theme';
-export {
   mergeStyles
 } from './mergeStyles';
 export {

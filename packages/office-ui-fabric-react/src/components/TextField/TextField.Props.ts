@@ -29,7 +29,7 @@ export interface ITextField {
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTMLTextAreaElement> {
+export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -151,7 +151,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   deferredValidationTime?: number;
 
   /**
-   * Optional class anme that is added to the container of the component.
+   * Optional class name that is added to the container of the component.
    */
   className?: string;
 

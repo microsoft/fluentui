@@ -8,41 +8,42 @@ let { expect } = chai;
 describe('getNativeProps', () => {
 
   it('can pass through data tags', () => {
-    let result = getNativeProps<React.HTMLProps<HTMLDivElement>>({
+    let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>({
       'data-automation-id': 1
     }, divProperties);
-    expect(result['data-automation-id']).equals(1);
+    expect((result as any)['data-automation-id']).equals(1);
   });
 
   it('can pass through aria tags', () => {
-    let result = getNativeProps<React.HTMLProps<HTMLDivElement>>({
+    let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>({
       'aria-label': 1
     }, divProperties);
-    expect(result['aria-label']).equals(1);
+    expect((result as any)['aria-label']).equals(1);
   });
 
   it('can pass through basic div properties and events', () => {
-    let result = getNativeProps<React.HTMLProps<HTMLDivElement>>({
+    let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>({
       className: 'foo',
       onClick: () => { /* no-op */ },
       onClickCapture: () => { /* no-op */ }
     }, divProperties);
     expect(result.className).equals('foo');
     expect(result.onClick).is.instanceof(Function, 'onClick not function');
-    expect(result['onClickCapture']).is.instanceof(Function, 'onClickCapture not function');  // tslint:disable-line:no-string-literal
+    // tslint:disable-next-line:no-string-literal
+    expect((result as any)['onClickCapture']).is.instanceof(Function, 'onClickCapture not function');
   });
 
   it('can remove unexpected properties', () => {
-    let result = getNativeProps<React.HTMLProps<HTMLDivElement>>({
+    let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>({
       'foobar': 1,
       className: 'hi'
     }, divProperties);
     expect(result.className).equals('hi');
-    expect(result['foobar']).equals(undefined); // tslint:disable-line:no-string-literal
+    expect((result as any)['foobar']).equals(undefined); // tslint:disable-line:no-string-literal
   });
 
   it('can exclude properties', () => {
-    let result = getNativeProps<any>({ a: 1, b: 2}, ['a', 'b'], ['b']);
+    let result = getNativeProps<any>({ a: 1, b: 2 }, ['a', 'b'], ['b']);
 
     expect(result.a).to.exist;
     expect(result.b).to.not.exist;

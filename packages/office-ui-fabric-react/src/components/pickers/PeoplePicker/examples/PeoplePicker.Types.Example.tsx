@@ -45,43 +45,13 @@ const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
 const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limitedSearchAdditionalProps, suggestionProps);
 
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
-  private contextualMenuItems: IContextualMenuItem[] = [
-    {
-      key: 'newItem',
-      icon: 'circlePlus',
-      name: 'New'
-    },
-    {
-      key: 'upload',
-      icon: 'upload',
-      name: 'Upload'
-    },
-    {
-      key: 'divider_1',
-      name: '-',
-    },
-    {
-      key: 'rename',
-      name: 'Rename'
-    },
-    {
-      key: 'properties',
-      name: 'Properties'
-    },
-    {
-      key: 'disabled',
-      name: 'Disabled item',
-      disabled: true
-    }
-  ];
-
   constructor() {
     super();
     let peopleList = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
 
-      assign(target, persona, { menuItems: this.contextualMenuItems });
+      assign(target, persona);
       peopleList.push(target);
     });
 

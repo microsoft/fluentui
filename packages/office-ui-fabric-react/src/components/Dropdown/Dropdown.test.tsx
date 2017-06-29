@@ -6,13 +6,22 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 
 let { expect } = chai;
 
+import {
+  KeyCodes,
+} from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { IDropdownOption } from './Dropdown.Props';
+import { DropdownMenuItemType, IDropdownOption } from './Dropdown.Props';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
+  { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
   { key: '1', text: '1' },
   { key: '2', text: '2' },
-  { key: '3', text: '3' }
+  { key: '3', text: '3' },
+  { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
+  { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
+  { key: '4', text: '4' },
+  { key: '5', text: '5' },
+  { key: '6', text: '6' },
 ];
 
 describe('Dropdown', () => {
@@ -108,7 +117,7 @@ describe('Dropdown', () => {
 
       ReactTestUtils.Simulate.click(dropdownRoot);
 
-      let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="1"]');
+      let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]');
       ReactTestUtils.Simulate.click(secondItemElement);
     }
     finally {
@@ -116,4 +125,76 @@ describe('Dropdown', () => {
     }
   });
 
+  it('Will select the first valid item on keypress', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    expect(titleElement.textContent).equals('1');
+  });
+
+  it('Will select the first valid item on Home keypress', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
+
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    expect(titleElement.textContent).equals('1');
+  });
+
+  it('Will select the last valid item on End keypress', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
+
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    expect(titleElement.textContent).equals('6');
+  });
+
+  it('Will skip over headers and separators on keypress', () => {
+    let container = document.createElement('div');
+    let dropdownRoot;
+    let titleElement;
+
+    document.body.appendChild(container);
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    expect(titleElement.textContent).equals('1');
+
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
+    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    expect(titleElement.textContent).equals('4');
+  });
 });

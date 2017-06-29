@@ -5,7 +5,7 @@ export interface ILayer {
 
 }
 
-export interface ILayerProps extends React.HTMLProps<HTMLDivElement | Layer> {
+export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer> {
   /**
    * Optional callback to access the ILayer interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

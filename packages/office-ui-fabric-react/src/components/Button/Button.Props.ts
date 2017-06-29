@@ -4,7 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
   /**
@@ -35,6 +35,11 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * Custom styling for individual elements within the button DOM.
    */
   styles?: IButtonStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * Whether the button is checked
@@ -133,7 +138,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * they will be mixed into the button/anchor element rendered by the component.
    * @deprecated
    */
-  rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
+  rootProps?: React.HTMLAttributes<HTMLButtonElement> | React.HTMLAttributes<HTMLAnchorElement>;
 
   /**
    * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.

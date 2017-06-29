@@ -1,6 +1,228 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 02 Jun 2017 01:19:36 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2017 10:13:16 GMT and should not be manually modified.
+
+## 4.12.1
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Remove beak from CommandBar's and BaseButton's contextual menu
+- -SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning
+- Force resolve picker on blue or delayed response.
+- Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020
+- Persona: Fix orange initials rendered as green
+
+## 4.12.0
+Wed, 28 Jun 2017 10:12:04 GMT
+
+### Minor changes
+
+- Persona: Adding image alt, defaulting to empty string
+
+### Patches
+
+- Fixed focusing first item in DetailsList
+- MarqueeSelection: now with better performance in Edge.
+- Textfield: Fixed layout of underlined textfield with error
+
+## 4.11.0
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Minor changes
+
+- Commandbar: fix synchronous reflow 
+- Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
+
+### Patches
+
+- OverflowSet: Fix type definition to be compatible with latest @types/react
+- Persona: Fixing image sizing to cover correctly.
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.10.2
+Fri, 23 Jun 2017 20:02:00 GMT
+
+### Patches
+
+- Icon: Adding `data-icon-name` attribute for debugging identification purposes.
+
+## 4.10.1
+Fri, 23 Jun 2017 04:12:23 GMT
+
+### Patches
+
+- Fix FocusZone stop eating spacebar presses in textarea fields
+- DetailsList: Fixing regression in DetailsRow, and adding check in Image which was causing nullrefs.
+- Route: Make implicit any explicit
+
+## 4.10.0
+Thu, 22 Jun 2017 21:45:08 GMT
+
+### Minor changes
+
+- Expose focus() on ISearchBox
+
+### Patches
+
+- ResizeGroup: Add dataDidRender prop that can be used to know what is actually rendered by a resizeGroup
+- Fix some focus issues in DetailsList
+
+## 4.9.2
+Thu, 22 Jun 2017 10:13:03 GMT
+
+### Patches
+
+- Check: reduced size of selection check background by 2px
+- Breadcrumb: Fixed overflow logic and extra icon
+- Dropdown: fixed bug that didn't allow operating Dropdown as a controlled component
+- Fix Persona control DOM reflow by passing ImageCoverStyle to Image control
+- Dialog: Reworked deprecation logic to fix warnings
+- Toggle: No longer triggers form submission
+
+## 4.9.1
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Patches
+
+- Icons: now with less redundant evaluation of styling, which improves render performance.
+- Panel: Fixed header ID value
+
+## 4.9.0
+Tue, 20 Jun 2017 10:22:47 GMT
+
+### Minor changes
+
+- Breadcrumb: Switch resizing logic to resizeGroup
+
+## 4.8.3
+Sat, 17 Jun 2017 17:39:43 GMT
+
+### Patches
+
+- Icon: image icons now have less random "l" characters. Sorry about that!
+
+## 4.8.1
+Sat, 17 Jun 2017 06:27:45 GMT
+
+### Patches
+
+- Icon: iconName should pass through to the classname without casing alterations.
+
+## 4.8.0
+Fri, 16 Jun 2017 23:02:08 GMT
+
+### Minor changes
+
+- DetailsList: Remove Tooltip by defaul, allowing optional override.
+
+### Patches
+
+- Icon: patch to className change to add ms-Icon--* in cases where iconType is not provided.
+
+## 4.7.2
+Fri, 16 Jun 2017 19:39:47 GMT
+
+### Patches
+
+- Icon: adding back ms-Icon--iconName className to avoid breaking backwards compatibility.
+- OverflowSet: Don't use the index as the key
+
+## 4.7.1
+Thu, 15 Jun 2017 23:55:18 GMT
+
+### Patches
+
+- CheckButton: Firefox high contrast fix
+
+## 4.7.0
+Thu, 15 Jun 2017 10:09:15 GMT
+
+### Minor changes
+
+- Dialog: Deprecated old duplicative props and moved them into modalProps and contentProps
+
+### Patches
+
+- Toggle: High contrast fix for Firefox
+
+## 4.6.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Dropdown: Fixed onRenderPlaceholder and update docs
+- Adding Aria label props for Dialog
+
+### Patches
+
+- Buttons: Added `aria-haspopup` to buttons with menuProps.
+- FocusZone: bidirectional movement now wraps on lines.
+- Bumping fabric-core dependency to have Segoe UI be part of the font fallback.
+- FocusZone should reset active element if it is not tabbable.
+- Dropdown: adding aria attribute `aria-readonly=true` and adjusting `aria-owns` to only show in cases where it is opened.
+- Enable strictNullChecks in utilities package
+- PeoplePicker: fixing styling, focus, and extra rerendering issues.
+- Dropdown: Fix keyboard focus on Header/Separator items
+
+## 4.5.1
+Tue, 13 Jun 2017 10:13:21 GMT
+
+### Patches
+
+- High contrast fixes for Pivot, Choicegroup and Checkbox
+- withResponsiveMode: Adding error handling around the case where window.innerWidth throws an exception.
+
+## 4.5.0
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Minor changes
+
+- Component properties now extend React.HTMLAttributes, rather than React.HTMLProps
+
+### Patches
+
+- Updating minified bundle to exclude debug warnings.
+- Enable no implicit any in utilities package
+- Toggle: add 'cursor: pointer'
+
+## 4.4.2
+Thu, 08 Jun 2017 10:20:07 GMT
+
+### Patches
+
+- TextField: improves layout for IE.
+
+## 4.4.1
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Patches
+
+- ITheme: Make palette a required prop
+
+## 4.4.0
+Tue, 06 Jun 2017 07:41:47 GMT
+
+### Minor changes
+
+- Toggle: theme now injectable through Customizer.
+
+## 4.3.2
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Patches
+
+- Adding tslib dependency to reduce redundant code.
+
+## 4.3.1
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Patches
+
+- DragDropHelper: Fix to show ghost element when dragging on Firefox
+- Buttons: allowing theme to be provided via Customizer.
+- DragDropHelper: Fix TSLint warnings
+- TextField: Show red border when invalid
 
 ## 4.3.0
 Fri, 02 Jun 2017 01:19:35 GMT

@@ -7,7 +7,7 @@ export interface IFocusTrapZone {
   focus: () => void;
 }
 
-export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
+export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
