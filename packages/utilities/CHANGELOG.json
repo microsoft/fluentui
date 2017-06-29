@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.4.2",
+      "tag": "@uifabric/utilities_v4.4.2",
+      "date": "Thu, 29 Jun 2017 10:13:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5720ea897345a93668e50c9d5684359e5ecad48b",
+            "comment": "Removing localstorage persistence for rtl helpers."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.4.1",
       "tag": "@uifabric/utilities_v4.4.1",
       "date": "Tue, 27 Jun 2017 01:26:31 GMT",
