@@ -227,6 +227,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
+          component: require<any>('../components/SwatchColorPicker/SwatchColorPickerPage').SwatchColorPickerPage,
+          key: 'SwatchColorPicker',
+          name: 'SwatchColorPicker',
+          url: '#/examples/swatchcolorpicker'
+        },
+        {
           component: require<any>('../components/TeachingBubble/TeachingBubblePage').TeachingBubblePage,
           key: 'TeachingBubble',
           name: 'TeachingBubble',

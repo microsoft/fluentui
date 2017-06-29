@@ -149,6 +149,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       baseClassName,
       styles,
       menuIconName,
+      menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
       onRenderText = this._onRenderText,
@@ -170,7 +171,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderDescription(props, this._onRenderDescription),
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
-        (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2017 10:13:16 GMT and should not be manually modified.
+
+## 4.4.2
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Removing localstorage persistence for rtl helpers.
 
 ## 4.4.1
 Tue, 27 Jun 2017 01:26:31 GMT

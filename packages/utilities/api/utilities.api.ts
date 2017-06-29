@@ -393,6 +393,8 @@ export function setMemoizeWeakMap(weakMap: any): void;
 
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
+export function toMatrix < T >(items: T[], columnCount: number): T[][];
+
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 export function warn(message: string): void;

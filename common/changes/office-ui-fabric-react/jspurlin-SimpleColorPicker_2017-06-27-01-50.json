@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Persona: Fix orange initials rendered as green",
-      "type": "patch"
+      "comment": "Adding a new component: SwatchColorPicker",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "pjsw@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }
