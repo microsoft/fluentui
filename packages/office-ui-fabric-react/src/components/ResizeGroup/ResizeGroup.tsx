@@ -19,6 +19,11 @@ export interface IResizeGroupState {
    * A flag to determine if a new measurement should be made upon state change
   */
   shouldMeasure?: boolean;
+
+  /**
+   * Data to render in a hidden div for measurement
+   */
+  dataToMeasure?: any;
 }
 
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
@@ -39,7 +44,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     super(props);
     this._measuredData = { ...this.props.data };
     this.state = {
-      shouldMeasure: true,
+      dataToMeasure: this._measuredData,
       renderedData: null
     };
   }
@@ -51,8 +56,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
     if (this.props.data !== nextProps.data) {
       this.setState({
-        shouldMeasure: true,
-        renderedData: null
+        dataToMeasure: { ...nextProps.data }
       });
     }
   }
@@ -69,7 +73,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public render() {
     const { onRenderData, data } = this.props;
-    const { shouldMeasure, renderedData } = this.state;
+    const { dataToMeasure, renderedData } = this.state;
 
     if (Object.keys(data).length === 0) {
       return null;
@@ -77,9 +81,9 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
     return (
       <div className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
-        { shouldMeasure && (
+        { dataToMeasure && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
-            { onRenderData(this._measuredData) }
+            { onRenderData(dataToMeasure) }
           </div>
         ) }
 
@@ -89,7 +93,9 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {
-    this._measureItems();
+    if (this._measuredData) {
+      this._measureItems();
+    }
 
     if (this.state.renderedData) {
       if (this.props.dataDidRender) {
@@ -100,7 +106,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _onResize() {
     let shouldMeasure = true;
-    let nextMeasuredData = this._measuredData;
+    let nextMeasuredData = this.props.data;
 
     if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
       // If we have some cached measurements, let's see if we can skip rendering
@@ -127,16 +133,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
         shouldMeasure: true
       });
     }
-  }
-
-  private _setStateToDoneMeasuring() {
-    this.setState((prevState, props) => {
-      return {
-        renderedData: this._measuredData,
-        measuredData: { ...this.props.data },
-        shouldMeasure: false
-      };
-    });
   }
 
   private _getCachedMeasurementForData(data: any): number | undefined {
@@ -173,31 +169,43 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _measureItems() {
     const { data, onReduceData } = this.props;
-    const { shouldMeasure } = this.state;
 
-    if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
-      const containerWidth = this._lastKnownRootWidth = this._getRootWidth();
-      const measuredWidth = this._lastKnownMeasuredWidth = this._getMeasuredWidth();
+    const containerWidth = this._lastKnownRootWidth = this._getRootWidth();
+    let measuredWidth = this._lastKnownMeasuredWidth = this._getMeasuredWidth();
 
-      if (this._measuredData.cacheKey) {
-        this._measurementsCache[this._measuredData.cacheKey] = measuredWidth;
+    while (measuredWidth > containerWidth) {
+      let nextMeasuredData = onReduceData(this._measuredData);
+
+      // We don't want to get stuck in an infinite render loop when there are no more
+      // scaling steps, so implementations of onReduceData should return undefined when
+      // there are no more scaling states to apply.
+      if (nextMeasuredData === undefined) {
+        this.setState({
+          renderedData: this._measuredData
+        });
+        this._measuredData = undefined;
+        return;
       }
-      if ((measuredWidth > containerWidth)) {
-        let nextMeasuredData = onReduceData(this._measuredData);
 
-        // We don't want to get stuck in an infinite render loop when there are no more
-        // scaling steps, so implementations of onReduceData should return undefined when
-        // there are no more scaling states to apply.
-        if (nextMeasuredData !== undefined) {
-          this._measuredData = nextMeasuredData;
-          this.forceUpdate();
-        } else {
-          this._setStateToDoneMeasuring();
-        }
+      this._measuredData = nextMeasuredData;
 
-      } else {
-        this._setStateToDoneMeasuring();
+      let cachedWidth = this._getCachedMeasurementForData(nextMeasuredData);
+
+      // If the measurement isn't in the cache, we need to rerender
+      if (cachedWidth === undefined) {
+        this.setState({
+          dataToMeasure: nextMeasuredData
+        });
+        return;
       }
+
+      measuredWidth = cachedWidth;
     }
+
+    this.setState({
+      renderedData: this._measuredData,
+      dataToMeasure: undefined
+    });
+    this._measuredData = undefined;
   }
 }

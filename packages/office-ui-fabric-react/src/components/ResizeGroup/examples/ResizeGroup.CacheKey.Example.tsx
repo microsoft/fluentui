@@ -59,7 +59,11 @@ export class ResizeGroupCacheKeyExample extends BaseComponent<any, IResizeGroupC
 
             let overflow = [...currentdata.primary.slice(-1), ...currentdata.overflow];
             let primary = currentdata.primary.slice(0, -1);
-            let cacheKey = computeCacheKey(primary);
+            let cacheKey = undefined;
+
+            if (currentdata.cacheKey) {
+              cacheKey = computeCacheKey(primary);
+            }
             return { primary, overflow, cacheKey };
           } }
           onRenderData={ (data) => {
