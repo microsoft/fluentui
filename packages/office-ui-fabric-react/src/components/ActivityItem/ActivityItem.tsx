@@ -46,16 +46,17 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return (
       <div className={ this._classNames.root }>
 
-        { this._onRenderPersonas(this.props) }
+        { this.props.onRenderIcon ? this.props.onRenderIcon(this.props) : this._onRenderIcon(this.props) }
 
         <div className={ this._classNames.activityContent }>
           <div>
-            { this._onRenderNameList(this.props, this.props.people.length) }
+            { this.props.onRenderNameList ? this.props.onRenderNameList(this.props) : this._onRenderNameList(this.props, this.props.people.length) }
             <ActivityDescription {...this.props} _classNames={ this._classNames } />
           </div>
 
-          { this._onRenderCommentText(this.props) }
-          <div className={ this._classNames.timeStamp }>{ this.props.timeString }</div>
+          { this.props.onRenderComment ? this.props.onRenderComment(this.props) : this._onRenderCommentText(this.props) }
+
+          { this.props.onRenderTimeStamp ? this.props.onRenderTimeStamp(this.props) : <div className={ this._classNames.timeStamp }>{ this.props.timeString }</div> }
         </div>
 
       </div>
@@ -64,17 +65,16 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   // Render up to four personas if they're available, otherwise show an icon based on what activityType is set.
   @autobind
-  private _onRenderPersonas(props: IActivityItemProps): JSX.Element {
+  private _onRenderIcon(props: IActivityItemProps): JSX.Element {
     let personaElement: JSX.Element;
-    if (this.props.people[0].imageUrl) {
+    if (this.props.people[0].imageUrl || this.props.people[0].imageInitials) {
       let personaList = [];
       this.props.people.filter((person, index) => index < 4).forEach((person, index) => {
         personaList.push(
           <Persona
+            {...person}
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
-            primaryText={ person.primaryText }
-            imageUrl={ person.imageUrl }
             size={ this.props.people.length > 1 ? PersonaSize.size16 : PersonaSize.extraSmall }
             hidePersonaDetails={ true } />
         );
@@ -144,8 +144,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     let commentElement: JSX.Element = <div className={ this._classNames.commentText }>{ props.commentString }</div>;
     if (props.mentionedName && props.commentString.indexOf(props.mentionedName) !== -1) {
       let parsedComment = props.commentString.split(props.mentionedName);
-      let nameElement = props.mentionedHref ?
-        (<a href={ props.mentionedHref } className={ this._classNames.docLink }>{ props.mentionedName }</a>) :
+      let nameElement = props.onMentionedClick ?
+        (<a onClick={ (ev) => props.onMentionedClick(ev, props) } className={ this._classNames.docLink }>{ props.mentionedName }</a>) :
         (this._onRenderNameElement(props.mentionedName))
 
       commentElement = (

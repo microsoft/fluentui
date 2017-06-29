@@ -69,7 +69,8 @@ export const getStyles = memoizeFunction((
     docLink: {
       fontWeight: '600',
       color: theme.palette.themePrimary,
-      textDecoration: 'none'
+      textDecoration: 'none',
+      cursor: 'pointer'
     },
 
     commentText: {

@@ -3,7 +3,7 @@ import { TestImages } from '../../../common/TestImages';
 
 export const activityItemPersonaExamples: (IActivityItemProps & { key: string | number })[] = [
   {
-    key: 0,
+    key: 1,
     activityType: ActivityType.Message,
     people: [
       {
@@ -14,114 +14,123 @@ export const activityItemPersonaExamples: (IActivityItemProps & { key: string | 
     commentString: 'This is the text of the comment! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet turpis auctor eros laoreet cursus. Cras dictum auctor fringilla. Sed porttitor justo et nisl lacinia sodales.',
     timeString: 'Just now'
   },
-
   {
-    key: 1,
+    key: 2,
     activityType: ActivityType.CommentInDocument,
     people: [
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist',
+        primaryText: 'Annie Lindqvist'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson',
+        primaryText: 'Robert Larsson'
       }
     ],
     timeString: '1 hour ago'
   },
-
   {
-    key: 2,
+    key: 3,
     activityType: ActivityType.Mention,
     people: [
       {
-        imageUrl: TestImages.personaFemale,
         primaryText: 'Annie Lindqvist',
+        imageInitials: 'AL'
       },
       {
-        imageUrl: TestImages.personaMale,
         primaryText: 'Robert Larsson',
+        imageInitials: 'RL'
       },
       {
-        imageUrl: TestImages.personaFemale,
         primaryText: 'Rosie Costa',
+        imageInitials: 'RC'
       }
     ],
     timeString: '8:37am'
   },
-
   {
-    key: 3,
+    key: 4,
     activityType: ActivityType.Edit,
     people: [
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist',
+        primaryText: 'Annie Lindqvist'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson',
+        primaryText: 'Robert Larsson'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Aaron Reid',
+        primaryText: 'Aaron Reid'
       },
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Rosie Costa',
+        primaryText: 'Rosie Costa'
       }
     ],
     fileActivity: {
       fileName: 'DocumentName.docx',
-      fileHref: '#testLink'
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the edited document.')
     },
     timeString: 'Yesterday'
   },
   {
-    key: 4,
+    key: 5,
     activityType: ActivityType.Message,
     people: [
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist',
+        primaryText: 'Annie Lindqvist'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson',
+        primaryText: 'Robert Larsson'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Aaron Reid',
+        primaryText: 'Aaron Reid'
       },
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Rosie Costa',
+        primaryText: 'Rosie Costa'
       },
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist',
+        primaryText: 'Annie Lindqvist'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson',
+        primaryText: 'Robert Larsson'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Aaron Reid',
+        primaryText: 'Aaron Reid'
       },
       {
         imageUrl: TestImages.personaFemale,
-        primaryText: 'Rosie Costa',
+        primaryText: 'Rosie Costa'
       }
     ],
     timeString: '2 days ago'
   },
+  {
+    key: 6,
+    activityType: ActivityType.Message,
+    people: [
+      {
+        primaryText: 'Rosie Costa',
+        imageInitials: 'RC'
+      }
+    ],
+    commentString: 'Persona with initials instead of an image.',
+    timeString: '3 days ago'
+  }
 ];
 
 export const activityItemCommentExamples: (IActivityItemProps & { key: string | number })[] = [
   {
-    key: 0,
+    key: 1,
     activityType: ActivityType.Message,
     people: [
       {
@@ -132,7 +141,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
     timeString: '3 days ago'
   },
   {
-    key: 1,
+    key: 2,
     activityType: ActivityType.Message,
     people: [
       {
@@ -142,12 +151,12 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
     commentString: 'This is a comment on a file.',
     fileActivity: {
       fileName: 'DocumentName.docx',
-      fileHref: '#fileLink',
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on a file name.'),
     },
     timeString: '3 days ago'
   },
   {
-    key: 2,
+    key: 3,
     activityType: ActivityType.CommentInDocument,
     people: [
       {
@@ -157,7 +166,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
     timeString: '3 days ago'
   },
   {
-    key: 3,
+    key: 4,
     activityType: ActivityType.Mention,
     people: [
       {
@@ -165,12 +174,12 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
       }
     ],
     mentionedName: '@Your Name',
-    mentionedHref: '#mentionedNameLink',
+    onMentionedClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked an @mention name'),
     commentString: 'This is an at mention message. @Your Name was mentioned in the middle of it.',
     timeString: '3 days ago'
   },
   {
-    key: 4,
+    key: 5,
     activityType: ActivityType.Mention,
     people: [
       {
@@ -182,7 +191,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
     timeString: '3 days ago'
   },
   {
-    key: 5,
+    key: 6,
     activityType: ActivityType.Mention,
     people: [
       {
@@ -197,7 +206,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
 
 export const activityItemIconExamples: (IActivityItemProps & { key: string | number })[] = [
   {
-    key: 0,
+    key: 1,
     activityType: ActivityType.Edit,
     people: [
       {
@@ -206,12 +215,12 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
     ],
     fileActivity: {
       fileName: 'DocumentName.docx',
-      fileHref: '#fileLink'
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the edited document.')
     },
     timeString: '4 days ago'
   },
   {
-    key: 1,
+    key: 2,
     activityType: ActivityType.Move,
     people: [
       {
@@ -220,16 +229,16 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
     ],
     fileActivity: {
       fileName: 'DocumentName.docx',
-      fileHref: '#fileLink',
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the moved file.'),
       sourceFolderName: 'Source Folder Name',
-      sourceFolderHref: '#sourceFolderLink',
+      onSourceFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the source folder.'),
       destinationFolderName: 'Destination Folder Name',
-      destinationFolderHref: '#destinationFolderLink'
+      onDestinationFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the destination folder.')
     },
     timeString: '4 days ago'
   },
   {
-    key: 2,
+    key: 3,
     activityType: ActivityType.Rename,
     people: [
       {
@@ -238,14 +247,14 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
     ],
     fileActivity: {
       newFileName: 'NewFileName.docx',
-      newFileHref: '#NewDocLink',
+      onNewFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the new file name.'),
       fileName: 'OldFileName.docx',
-      fileHref: '#OldDocLink'
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the old file name.'),
     },
     timeString: ' 4 days ago'
   },
   {
-    key: 3,
+    key: 4,
     activityType: ActivityType.Share,
     people: [
       {
@@ -253,15 +262,15 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       }
     ],
     sharedWithName: 'Annie Lindqvist',
-    sharedWithHref: '#sharedWithThisUserLink',
+    onSharedWithClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the person this was shared with.'),
     fileActivity: {
       fileName: 'SharedDocumentName.docx',
-      fileHref: '#sharedDocLink'
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the shared file.'),
     },
     timeString: '4 days ago'
   },
   {
-    key: 4,
+    key: 5,
     activityType: ActivityType.Add,
     people: [
       {
@@ -270,14 +279,14 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
     ],
     fileActivity: {
       fileName: 'AddedDocument.docx',
-      fileHref: '#addedDocLink',
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the new file.'),
       sourceFolderName: 'Folder Name',
-      sourceFolderHref: '#FolderLink'
+      onSourceFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the folder the file was added to.')
     },
     timeString: '4 days ago'
   },
   {
-    key: 5,
+    key: 6,
     activityType: ActivityType.Delete,
     people: [
       {
@@ -287,12 +296,12 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
     fileActivity: {
       fileName: 'DeletedFile.docx',
       sourceFolderName: 'Source Folder',
-      sourceFolderHref: '#sourceFolderLink',
+      onSourceFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the folder of the deleted file.')
     },
     timeString: '4 days ago'
   },
   {
-    key: 6,
+    key: 7,
     activityType: ActivityType.Restore,
     people: [
       {
@@ -301,12 +310,12 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
     ],
     fileActivity: {
       fileName: 'RestoredFile.docx',
-      fileHref: '#restoredDocLink'
+      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the restored file.'),
     },
     timeString: '4 days ago'
   },
   {
-    key: 7,
+    key: 8,
     activityType: ActivityType.Version,
     people: [
       {

@@ -6,7 +6,7 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 // Please keep alphabetized
 export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Indicates what type of activity occurred. A type of custom allows you to pass in your own renderer.
+   * Indicates what type of activity occurred.
    */
   activityType: ActivityType;
 
@@ -26,14 +26,39 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   fileActivity?: IFileActivity;
 
   /**
-   * The name of the user mentioned. If used with ActivityType set to Mention and a commentString, the mentioned user's name will be highlighted in the commentString.
+   * If this is included and the mentionedName is shown, the mentionedName will use this behavior when clicked.
    */
-  mentionedName?: string;
+  onMentionedClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 
   /**
-   * If this is included and the mentionedName is shown, the mentionedName will be a link to this URL.
+   * A renderer that adds a list of names that executed this activity. If not included, up to two names will be listed and any further names will only be referred to by the number of names.
    */
-  mentionedHref?: string;
+  onRenderNameList?: (props?: IActivityItemProps) => JSX.Element;
+
+  /**
+   * A renderer that adds a comment. If not included, the commentString is displayed as plain text.
+   */
+  onRenderComment?: (props?: IActivityItemProps) => JSX.Element;
+
+  /**
+   * A renderer that adds an element describing what activity took place. If not included, text determined by activityType and fileActivity will be used instead.
+   */
+  onRenderDescription?: (props?: IActivityItemProps) => JSX.Element;
+
+  /**
+   * A renderer that adds an icon to the left of the item. If not included, the icon will be a persona based on the contents of people or an icon based on fileActivity.
+   */
+  onRenderIcon?: (props?: IActivityItemProps) => JSX.Element;
+
+  /**
+   * A renderer adds a time stamp. If not included, timeString is shown as plain text below the activity.
+   */
+  onRenderTimeStamp?: (props?: IActivityItemProps) => JSX.Element;
+
+  /**
+   * The name of the user mentioned. If used with the Mention ActivityType and a commentString, the mentioned user's name will be highlighted in the commentString.
+   */
+  mentionedName?: string;
 
   /**
    * The name of the user a file was shared with.
@@ -41,9 +66,9 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   sharedWithName?: string;
 
   /**
-   * The URL that sharedWithName should point to if it is shown.
+   * A handler for what should happen when sharedWithName is clicked.
    */
-  sharedWithHref?: string;
+  onSharedWithClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 
   /**
    * Optional styling for the elements within the Activity Item.
@@ -109,29 +134,72 @@ export interface IActivityItemStyles {
 }
 
 export enum ActivityType {
-  Message,
-  CommentInDocument,
-  Mention,
-  Edit,
-  Move,
-  Rename,
-  Share,
+  /**
+   * Created a file or added some other element.
+   */
   Add,
+  /**
+   * Added a comment inside a document, comment text may not be available.
+   */
+  CommentInDocument,
+  /**
+   * Deleted or moved a file to the recycle bin.
+   */
   Delete,
+  /**
+   * Edited a file.
+   */
+  Edit,
+  /**
+   * Added a comment or sent a message.
+   */
+  Message,
+  /**
+   * Made a comment that referred to someone with an @mention.
+   */
+  Mention,
+  /**
+   * Moved a file from one location to another.
+   */
+  Move,
+  /**
+   * Renamed a file.
+   */
+  Rename,
+  /**
+   * Restored a file from the recycle bin or to a previous version.
+   */
   Restore,
+  /**
+   * Shared a file with another user.
+   */
+  Share,
+  /**
+   * Changed the version of a file.
+   */
   Version
 }
 
 export interface IFileActivity {
+  /**
+   * The name of the folder a file was moved from, or renamed inside of.
+   */
+  destinationFolderName?: string;
+
+  /**
+   * If this and destinationFolderName are included, destinationFolderName will use this behavior when clicked.
+   */
+  onDestinationFolderClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
+
   /**
    * Name of the file that was acted on.
    */
   fileName?: string;
 
   /**
-   * If this is included, the fileName prop will be displayed as a link to this address.
+   * If this is included, fileName will use this behavior when clicked
    */
-  fileHref?: string;
+  onFileClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 
   /**
    * New name of a renamed file.
@@ -139,9 +207,9 @@ export interface IFileActivity {
   newFileName?: string;
 
   /**
-   * If shown, newFileName will be displayed as a link to this URL.
+   * If this and newFileName are included, newFileName will use this behavior when clicked.
    */
-  newFileHref?: string;
+  onNewFileClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 
   /**
    * The name of the folder a file was moved from.
@@ -149,17 +217,7 @@ export interface IFileActivity {
   sourceFolderName?: string;
 
   /**
-   * If this and sourceFolderName included, the sourceFolderName property will be displayed as a link to this address.
+   * If this and sourceFolderName included, sourceFolderName wil use this behavior when clicked.
    */
-  sourceFolderHref?: string;
-
-  /**
-   * The name of the folder a file was moved from, or renamed inside of.
-   */
-  destinationFolderName?: string;
-
-  /**
-   * If this and destinationFolderName are included, destinationFolderName will be displayed as a link to this address.
-   */
-  destinationFolderHref?: string;
+  onSourceFolderClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 }
