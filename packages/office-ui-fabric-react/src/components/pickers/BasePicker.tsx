@@ -498,7 +498,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   private _onValidateInput() {
     if (this.props.onValidateInput && this.props.onValidateInput(this.input.value) !== validationState.invalid) {
-      this.suggestionStore.createGenericSuggestion(this.input.value, this.state.items.length, this.props.onValidateInput(this.input.value));
+      this.suggestionStore.createGenericSuggestion(this.input.value, this.props.onValidateInput(this.input.value));
       this.completeSuggestion();
     }
   }

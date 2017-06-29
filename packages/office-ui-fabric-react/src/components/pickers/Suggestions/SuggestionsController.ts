@@ -1,3 +1,5 @@
+import { validationState } from '../BasePicker.Props';
+
 export interface ISuggestionModel<T> {
   item: T;
   selected: boolean;
@@ -81,13 +83,18 @@ export class SuggestionsController<T> {
     this.suggestions.splice(index, 1);
   }
 
-  public createGenericSuggestion(name: string, selectedItemsLength: number, validationState: number) {
+  public createGenericSuggestion(name: string, currentValidationState: validationState) {
     let personaToConvert = {
       key: name,
       primaryText: name,
-      imageInitials: name.slice(0, 1),
-      validationState: validationState
+      imageInitials: name.indexOf(' ') > 0 ? (name.split(' ')[0].slice(0, 1) + name.split(' ')[1].slice(0, 1)) : name.slice(0, 1),
+      validationState: currentValidationState
     };
+
+    if (currentValidationState === validationState.warning) {
+      personaToConvert.imageInitials = '!';
+    }
+
     let personaToAdd = this._convertSuggestionsToSuggestionItems([personaToConvert])[0];
     this.currentSuggestion = personaToAdd;
   }

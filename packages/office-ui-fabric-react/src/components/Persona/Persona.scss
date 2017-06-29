@@ -369,6 +369,10 @@ $ms-Persona-presenceSizeXl: 28px;
     display: none;
   }
 
+  .details {
+    padding: 0 8px;
+  }
+
   .primaryText {
     font-size: $ms-font-size-m;
   }
@@ -432,6 +436,9 @@ $ms-Persona-presenceSizeXl: 28px;
     display: none;
   }
 
+  .details {
+    padding: 0 8px;
+  }
 
   .primaryText {
     font-size: $ms-font-size-m;
@@ -481,6 +488,10 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .presence {
     @include ms-left(19px);
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {

@@ -51,6 +51,10 @@
       border-bottom: 2px dotted $ms-color-redDark;
     }
 
+    :global(.ms-Persona-initials) {
+      font-size: 20px;
+    }
+
     &.personaContainerIsSelected {
       background: $ms-color-redDark;
 
