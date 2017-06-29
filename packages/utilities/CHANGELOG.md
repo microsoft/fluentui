@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 29 Jun 2017 10:13:16 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2017 20:48:31 GMT and should not be manually modified.
+
+## 4.5.0
+Thu, 29 Jun 2017 20:48:31 GMT
+
+### Minor changes
+
+- Adding a new Grid utility
 
 ## 4.4.2
 Thu, 29 Jun 2017 10:13:16 GMT
