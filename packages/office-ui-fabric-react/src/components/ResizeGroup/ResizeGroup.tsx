@@ -167,26 +167,15 @@ const getCachedContentMeasurer = () => {
 };
 
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
-
-  public static defaultProps = {
-    data: {}
-  };
-
   private _measurementProvider = getCachedContentMeasurer();
-
   private _root: HTMLElement;
   private _measured: HTMLElement;
   private _lastKnownRootWidth: number | undefined = undefined;
-  private _lastKnownMeasuredWidth: number | undefined = undefined;
-  private _measurementsCache: { [key: string]: number } = {};
-
-  private _measuredData: any;
 
   constructor(props: IResizeGroupProps) {
     super(props);
-    this._measuredData = { ...this.props.data };
     this.state = {
-      dataToMeasure: this._measuredData,
+      dataToMeasure: { ...this.props.data },
       resizeDirection: 'shrink',
       renderedData: null
     };
@@ -195,7 +184,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   public componentWillReceiveProps(nextProps: IResizeGroupProps) {
     // Receiving new props means the parent might rerender and the root width might change
     this._lastKnownRootWidth = undefined;
-    this._measuredData = { ...nextProps.data };
 
     if (this.props.data !== nextProps.data) {
       this.setState({
@@ -217,7 +205,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   public componentWillUnmount() {
     this._lastKnownRootWidth = undefined;
-    this._lastKnownMeasuredWidth = undefined;
   }
 
   public render() {
