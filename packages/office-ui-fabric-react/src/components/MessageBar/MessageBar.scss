@@ -7,6 +7,8 @@
 // --------------------------------------------------
 // MessageBar Styles
 
+$singleLinePadding: 8px 12px;
+
 .root {
   @include ms-bgColor-info;
   min-height: 32px;
@@ -132,7 +134,7 @@
 }
 
 .actions {
-  padding: 12px 0px;
+  padding-top: 12px;
 }
 
 .innerTextPadding {
@@ -211,11 +213,9 @@
 
 // Multi line specific attributes
 .multiline {
+  @include padding(16px, 12px, 12px, 16px);
   .content {
-      padding-top: 16px;
       flex-direction: row;
-      @include padding-left(16px);
-
     .icon {
       @include padding-right(8px);
       font-family: 'FabricMDL2Icons';
@@ -224,10 +224,6 @@
     .innerText {
       line-height: 16px; // Each line should add 16px to the height
     }
-  }
-
-  .actions {
-    @include padding-right(12px);
   }
 
   .dismissal {
