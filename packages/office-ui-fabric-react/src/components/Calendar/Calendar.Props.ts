@@ -35,6 +35,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isMonthPickerVisible?: boolean;
 
   /**
+  * Whether the day picker is shown beside the month picker or hidden.
+  * @defaultvalue true
+  */
+  isDayPickerVisible?: boolean;
+
+  /**
     * Value of today. If null, current time in client machine will be used.
     */
   today?: Date;
@@ -81,6 +87,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
    * Localized strings to use in the Calendar
    */
   strings: ICalendarStrings;
+
+  /**
+  * Whether the month picker should highlight the current month
+  * @defaultvalue false
+  */
+  highlightCurrentMonth?: boolean;
 }
 
 export interface ICalendarStrings {

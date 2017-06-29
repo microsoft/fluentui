@@ -154,9 +154,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       selectedIndex
     } = this.state;
 
-    // If we are open, make sure the currently
+    // If we are newly open, make sure the currently
     // selected option is scrolled into view
-    if (isOpen) {
+    if (!prevState.isOpen && isOpen) {
       this._scrollIntoView();
     }
 

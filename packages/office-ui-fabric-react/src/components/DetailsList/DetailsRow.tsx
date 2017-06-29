@@ -1,8 +1,10 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   BaseComponent,
   IDisposable,
   assign,
+  autobind,
   css,
   shallowCompare,
   getNativeProps,
@@ -12,7 +14,7 @@ import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import {
   IDragDropHelper,
@@ -66,10 +68,11 @@ const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState> {
   public refs: {
     [key: string]: React.ReactInstance,
-    root: HTMLElement,
     cellMeasurer: HTMLElement
   };
 
+  private _root: HTMLElement;
+  private _focusZone: IFocusZone;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
@@ -97,7 +100,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     let { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      this._dragDropSubscription = dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(this._root, this._events, this._getRowDragDropOptions());
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -123,7 +126,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
 
       if (this.props.dragDropHelper) {
-        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root, this._events, this._getRowDragDropOptions());
       }
     }
 
@@ -191,7 +194,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       <FocusZone
         {...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
-        ref='root'
+        ref={ this._onRootRef }
+        componentRef={ this._resolveRef('_focusZone') }
         role='row'
         aria-label={ ariaLabel }
         className={ css(
@@ -214,6 +218,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
+        allowFocusRoot={ true }
       >
         { showCheckbox && (
           <div
@@ -283,12 +288,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(): boolean {
-    if (this.refs.root) {
-      this.refs.root.focus();
-      return true;
-    }
-
-    return false;
+    return !!this._focusZone && this._focusZone.focus();
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
@@ -318,6 +318,16 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const { selection } = this.props;
 
     selection.toggleIndexSelected(this.props.itemIndex);
+  }
+
+  @autobind
+  private _onRootRef(focusZone: FocusZone) {
+    if (focusZone) {
+      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;
+    } else {
+      this._root = undefined;
+    }
   }
 
   private _getRowDragDropOptions(): IDragDropOptions {

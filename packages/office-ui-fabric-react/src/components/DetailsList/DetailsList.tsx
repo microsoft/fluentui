@@ -21,7 +21,7 @@ import {
   IDetailsList,
   IDetailsListProps,
 } from '../DetailsList/DetailsList.Props';
-import { DetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -70,7 +70,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   // References
   private _root: HTMLElement;
-  private _header: DetailsHeader;
+  private _header: IDetailsHeader;
   private _groupedList: GroupedList;
   private _list: List;
   private _focusZone: FocusZone;
@@ -250,8 +250,6 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       onRenderDetailsHeader = this._onRenderDetailsHeader
     } = this.props;
 
-    const DetailsHeader = (props: IDetailsHeaderProps) => onRenderDetailsHeader(props, this._onRenderDetailsHeader);
-
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
@@ -271,27 +269,25 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly='true'>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
-            { isHeaderVisible && (
-              <DetailsHeader
-                ref={ this._resolveRef('_header') }
-                selectionMode={ selectionMode }
-                layoutMode={ layoutMode }
-                selection={ selection }
-                columns={ adjustedColumns }
-                onColumnClick={ onColumnHeaderClick }
-                onColumnContextMenu={ onColumnHeaderContextMenu }
-                onColumnResized={ this._onColumnResized }
-                onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
-                onColumnAutoResized={ this._onColumnAutoResized }
-                groupNestingDepth={ groupNestingDepth }
-                isAllCollapsed={ isCollapsed }
-                onToggleCollapseAll={ this._onToggleCollapse }
-                ariaLabel={ ariaLabelForListHeader }
-                ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-                ariaLabelForSelectionColumn={ ariaLabelForSelectionColumn }
-                selectAllVisibility={ selectAllVisibility }
-              />
-            ) }
+            { isHeaderVisible && onRenderDetailsHeader({
+              componentRef: this._resolveRef('_header'),
+              selectionMode: selectionMode,
+              layoutMode: layoutMode,
+              selection: selection,
+              columns: adjustedColumns,
+              onColumnClick: onColumnHeaderClick,
+              onColumnContextMenu: onColumnHeaderContextMenu,
+              onColumnResized: this._onColumnResized,
+              onColumnIsSizingChanged: this._onColumnIsSizingChanged,
+              onColumnAutoResized: this._onColumnAutoResized,
+              groupNestingDepth: groupNestingDepth,
+              isAllCollapsed: isCollapsed,
+              onToggleCollapseAll: this._onToggleCollapse,
+              ariaLabel: ariaLabelForListHeader,
+              ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
+              ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+              selectAllVisibility: selectAllVisibility
+            }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
