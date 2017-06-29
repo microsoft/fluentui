@@ -26,11 +26,91 @@ export interface IResizeGroupState {
   dataToMeasure?: any;
 }
 
+const getCachedMeasurementProvider = () => {
+  const measurementsCache: { [key: string]: number } = {};
+
+  return {
+    getCachedMeasurement: (data: any): number | undefined => {
+      if (data && data.cacheKey && measurementsCache.hasOwnProperty(data.cacheKey)) {
+        return measurementsCache[data.cacheKey];
+      }
+
+      return undefined;
+    },
+    addMeasurementToCache: (data: any, measurement: number): void => {
+      if (data.cacheKey) {
+        measurementsCache[data.cacheKey] = measurement;
+      }
+    }
+  };
+};
+
+const getCachedContentMeasurer = () => {
+  const _cachedMeasurementProvider = getCachedMeasurementProvider();
+  let _lastKnownContainerWidth: number | undefined;
+
+  const _getMeasuredWidth = (measuredData: any, elementToMeasure: HTMLElement | null): number => {
+    let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(measuredData);
+    if (cachedWidth !== undefined) {
+      return cachedWidth;
+    }
+
+    let measuredWidth = elementToMeasure.getBoundingClientRect().width;
+    _cachedMeasurementProvider.addMeasurementToCache(measuredData, measuredWidth);
+    return measuredWidth;
+  };
+
+  return {
+    getNextResizeGroupState: (data: any,
+      onReduceData: (prevData: any) => any,
+      containerElement: HTMLElement,
+      elementToMeasure: HTMLElement | null): IResizeGroupState => {
+
+      let dataToMeasure = data;
+      let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
+      let containerWidth = containerElement.getBoundingClientRect().width;
+
+      while (measuredWidth > containerWidth) {
+        let nextMeasuredData = onReduceData(dataToMeasure);
+
+        // We don't want to get stuck in an infinite render loop when there are no more
+        // scaling steps, so implementations of onReduceData should return undefined when
+        // there are no more scaling states to apply.
+        if (nextMeasuredData === undefined) {
+          return {
+            renderedData: dataToMeasure
+          };
+        }
+
+        let cachedWidth = _cachedMeasurementProvider.getCachedMeasurement(nextMeasuredData);
+
+        // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
+        if (cachedWidth === undefined) {
+          return {
+            dataToMeasure: nextMeasuredData
+          };
+        }
+
+        measuredWidth = cachedWidth;
+        dataToMeasure = nextMeasuredData;
+      }
+
+      return {
+        renderedData: dataToMeasure,
+        dataToMeasure: undefined
+      };
+    }
+
+  };
+};
+
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
 
   public static defaultProps = {
     data: {}
   };
+
+  private _measurementProvider = getCachedContentMeasurer();
 
   private _root: HTMLElement;
   private _measured: HTMLElement;
@@ -62,7 +142,10 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentDidMount() {
-    this._measureItems();
+    this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
+      this.props.onReduceData,
+      this._root,
+      this._measured));
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
@@ -93,14 +176,17 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {
-    if (this._measuredData) {
-      this._measureItems();
-    }
-
     if (this.state.renderedData) {
       if (this.props.dataDidRender) {
         this.props.dataDidRender(this.state.renderedData);
       }
+    }
+
+    if (this.state.dataToMeasure) {
+      this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
+        this.props.onReduceData,
+        this._root,
+        this._measured));
     }
   }
 
@@ -110,79 +196,5 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this.setState({
       dataToMeasure: this._measuredData
     });
-  }
-
-  private _getCachedMeasurementForData(data: any): number | undefined {
-    if (data && data.cacheKey && this._measurementsCache.hasOwnProperty(data.cacheKey)) {
-      return this._measurementsCache[data.cacheKey];
-    }
-
-    return undefined;
-  }
-
-  private _getMeasuredWidth(measuredData: any): number {
-    let cachedWidth = this._getCachedMeasurementForData(measuredData);
-    if (cachedWidth !== undefined) {
-      return cachedWidth;
-    }
-
-    let measuredWidth = this._measured.getBoundingClientRect().width;
-    if (measuredData.cacheKey) {
-      this._measurementsCache[measuredData.cacheKey] = measuredWidth;
-    }
-    return measuredWidth;
-  }
-
-  /**
-   * Gets the width of the root container. Should only be used when it is
-   * safe to reuse the last known root contianer width.
-   */
-  private _getRootWidth(): number {
-    if (this._lastKnownRootWidth !== undefined) {
-      return this._lastKnownRootWidth;
-    }
-    return this._root.getBoundingClientRect().width;
-  }
-
-  private _measureItems() {
-    const { data, onReduceData } = this.props;
-
-    const containerWidth = this._lastKnownRootWidth = this._getRootWidth();
-    let measuredWidth = this._lastKnownMeasuredWidth = this._getMeasuredWidth(this._measuredData);
-
-    while (measuredWidth > containerWidth) {
-      let nextMeasuredData = onReduceData(this._measuredData);
-
-      // We don't want to get stuck in an infinite render loop when there are no more
-      // scaling steps, so implementations of onReduceData should return undefined when
-      // there are no more scaling states to apply.
-      if (nextMeasuredData === undefined) {
-        this.setState({
-          renderedData: this._measuredData
-        });
-        this._measuredData = undefined;
-        return;
-      }
-
-      this._measuredData = nextMeasuredData;
-
-      let cachedWidth = this._getCachedMeasurementForData(nextMeasuredData);
-
-      // If the measurement isn't in the cache, we need to rerender
-      if (cachedWidth === undefined) {
-        this.setState({
-          dataToMeasure: nextMeasuredData
-        });
-        return;
-      }
-
-      measuredWidth = cachedWidth;
-    }
-
-    this.setState({
-      renderedData: this._measuredData,
-      dataToMeasure: undefined
-    });
-    this._measuredData = undefined;
   }
 }
