@@ -286,7 +286,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ariaLabel: ariaLabelForListHeader,
               ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
               ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-              selectAllVisibility: selectAllVisibility
+              selectAllVisibility: selectAllVisibility,
+              ignoreOverallCollapseButton: groupProps && groupProps.ignoreOverallCollapseButton
             }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>

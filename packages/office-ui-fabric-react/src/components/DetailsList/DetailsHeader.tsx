@@ -42,6 +42,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
+  ignoreOverallCollapseButton?: boolean;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
@@ -172,7 +173,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             }
           </div>
         ) : null }
-        { groupNestingDepth > 0 ? (
+        { groupNestingDepth > 0 && !this.props.ignoreOverallCollapseButton ? (
           <div
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }

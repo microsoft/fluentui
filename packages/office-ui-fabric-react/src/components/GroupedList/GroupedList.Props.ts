@@ -177,6 +177,11 @@ export interface IGroupRenderProps {
    * Override which allows the caller to provider a customer footer.
    */
   onRenderFooter?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Flag to indicate whether to ignore the collapsing icon on header.
+   */
+  ignoreOverallCollapseButton?: boolean;
 }
 
 export interface IGroupDividerProps {
