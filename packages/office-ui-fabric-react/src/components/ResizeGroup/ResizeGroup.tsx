@@ -16,11 +16,6 @@ export interface IResizeGroupState {
   renderedData?: any;
 
   /**
-   * A flag to determine if a new measurement should be made upon state change
-  */
-  shouldMeasure?: boolean;
-
-  /**
    * Data to render in a hidden div for measurement
    */
   dataToMeasure?: any;
