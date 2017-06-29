@@ -163,6 +163,9 @@ const getCachedContentMeasurer = () => {
         return _shrinkContentsUntilTheyFit(data, onReduceData, elementToMeasure);
       }
     },
+    setInitialContainerWidth: (newWidth: number): void => {
+      _containerWidth = newWidth;
+    },
     updateContainerWidth: (newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState => {
       let nextState: IResizeGroupState;
       if (newWidth > _containerWidth) {
@@ -215,7 +218,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentDidMount() {
-    this._measurementProvider.updateContainerWidth(this._root.getBoundingClientRect().width, this.props.data, undefined, !!this.props.onGrowData);
+    this._measurementProvider.setInitialContainerWidth(this._root.getBoundingClientRect().width);
     this.setState(this._measurementProvider.getNextResizeGroupState(this.state.dataToMeasure,
       this.props.onReduceData,
       this.props.onGrowData,
