@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Persona: Adding image alt, defaulting to empty string",
+      "comment": "Adding a new component: SwatchColorPicker",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "pjsw@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }

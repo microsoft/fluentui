@@ -63,6 +63,8 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
           onGetErrorMessage={ this._getErrorMessage }
           validateOnFocusOut
         />
+        <TextField label='Underlined TextField' underlined onGetErrorMessage={ this._getErrorMessage } />
+
         <TextField
           label='TextField that uses the errorMessage property to set an error state.'
           placeholder='This field always has an error.'
