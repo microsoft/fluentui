@@ -105,35 +105,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _onResize() {
-    let shouldMeasure = true;
-    let nextMeasuredData = this.props.data;
-
-    if (this._root && this._lastKnownRootWidth && this._lastKnownMeasuredWidth) {
-      // If we have some cached measurements, let's see if we can skip rendering
-      let containerWidth = this._root.getBoundingClientRect().width;
-
-      if (containerWidth <= this._lastKnownRootWidth) {
-        // If the container shrank as a result of this resize, we can do an optimized rerender.
-        if (this._lastKnownMeasuredWidth <= containerWidth) {
-          // If the contents still fit within the container, don't trigger a remeasure.
-          this._lastKnownRootWidth = containerWidth;
-          shouldMeasure = false;
-        } else {
-          // If the container shrank and the contents don't fit, we can trigger a measurement
-          // pass starting from the current value of rendered data.
-          nextMeasuredData = this.state.renderedData;
-        }
-      }
-    }
-
-    if (shouldMeasure) {
-      this._lastKnownRootWidth = undefined;
-      this._measuredData = nextMeasuredData;
-      this.setState({
-        shouldMeasure: true,
-        dataToMeasure: nextMeasuredData
-      });
-    }
+    this._lastKnownRootWidth = undefined;
+    this._measuredData = { ... this.props.data };
+    this.setState({
+      dataToMeasure: this._measuredData
+    });
   }
 
   private _getCachedMeasurementForData(data: any): number | undefined {
