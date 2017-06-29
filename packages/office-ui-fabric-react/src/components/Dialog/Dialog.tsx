@@ -128,7 +128,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
           type={ type !== undefined ? type : dialogContentProps.type }
           onDismiss={ onDismiss ? onDismiss : dialogContentProps.onDismiss }
           className={ css(contentClassName ? contentClassName : dialogContentProps.className) }
-          {...dialogContentProps}
+          { ...dialogContentProps }
         >
           { this.props.children }
         </DialogContent>
