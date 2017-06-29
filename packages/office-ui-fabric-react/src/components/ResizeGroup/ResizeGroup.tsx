@@ -208,13 +208,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   public componentWillReceiveProps(nextProps: IResizeGroupProps) {
-    if (this.props.data !== nextProps.data) {
-      this.setState({
-        resizeDirection: 'shrink',
-        dataToMeasure: { ...nextProps.data },
-        measureContainer: true // Receiving new props means the parent might rerender and the root width might change
-      });
-    }
+    this.setState({
+      resizeDirection: 'shrink',
+      dataToMeasure: { ...nextProps.data },
+      measureContainer: true // Receiving new props means the parent might rerender and the root width might change
+    });
   }
 
   public componentDidMount() {
