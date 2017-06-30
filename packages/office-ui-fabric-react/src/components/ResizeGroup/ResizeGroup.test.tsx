@@ -273,6 +273,8 @@ describe('ResizeGroup', () => {
         getMeasuredElementWidthStub,
         reducedWidth);
 
+      // Important to note that we do not start scaling from the initial data,
+      // we continue from the last rendered data.
       expect(result).to.deep.equal({
         renderedData: renderedData,
         dataToMeasure: renderedData,
