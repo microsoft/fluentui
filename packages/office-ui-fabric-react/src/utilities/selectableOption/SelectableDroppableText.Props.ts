@@ -3,7 +3,7 @@ import { IRenderFunction } from '../../Utilities';
 import { ICalloutProps } from '../../Callout';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
-export interface ISelectableDroppableTextProps<T> extends React.Props<T> {
+export interface ISelectableDroppableTextProps<T> extends React.HTMLAttributes<HTMLDivElement> {
   /**
   * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
   * the public methods and properties of the component.

@@ -1,5 +1,4 @@
 import { IRenderFunction } from '../../Utilities';
-import { Dropdown } from './Dropdown';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 
@@ -9,7 +8,7 @@ export interface IDropdown {
 
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<Dropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */

@@ -128,7 +128,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('2');
   });
 
-  it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
+  it('Can insert text in uncontrolled case with autoCompleteInput and allowFreeform on', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -136,7 +136,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ true }
+        autoCompleteInput={ true }
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -146,7 +146,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('Foo');
   });
 
-  it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
+  it('Can insert text in uncontrolled case with autoCompleteInput on and allowFreeform off', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -154,7 +154,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ true }
+        autoCompleteInput={ true }
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -164,7 +164,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('Foo');
   });
 
-  it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {
+  it('Can insert text in uncontrolled case with autoCompleteInput off and allowFreeform on', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -172,7 +172,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ false }
+        autoCompleteInput={ false }
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -182,7 +182,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('f');
   });
 
-  it('Can insert text in uncontrolled case with autoComplete and allowFreeform off', () => {
+  it('Can insert text in uncontrolled case with autoCompleteInput and allowFreeform off', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -190,7 +190,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ false }
+        autoCompleteInput={ false }
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');

@@ -52,7 +52,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop1'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ true }
-          autoComplete={ true }
+          autoCompleteInput={ true }
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -63,7 +63,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop2'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ true }
-          autoComplete={ false }
+          autoCompleteInput={ false }
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -74,7 +74,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop3'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ false }
-          autoComplete={ true }
+          autoCompleteInput={ true }
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -85,7 +85,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop4'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ false }
-          autoComplete={ false }
+          autoCompleteInput={ false }
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -122,7 +122,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             id='Basicdrop5'
             ariaLabel='Basic ComboBox example'
             allowFreeform={ true }
-            autoComplete={ true }
+            autoCompleteInput={ true }
             options={ options }
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
@@ -136,7 +136,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             id='Basicdrop5'
             ariaLabel='Basic ComboBox example'
             allowFreeform={ true }
-            autoComplete={ true }
+            autoCompleteInput={ true }
             options={ options }
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
