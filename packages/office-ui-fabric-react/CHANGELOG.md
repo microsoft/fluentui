@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 29 Jun 2017 20:48:31 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jun 2017 10:23:15 GMT and should not be manually modified.
+
+## 4.13.1
+Fri, 30 Jun 2017 10:23:15 GMT
+
+### Patches
+
+- Fixed spacing and vertical position of expand arrow, Added space between title and count, Changed to use flex box, Updated interactive state colors to use proper semantic slots
+- Dialog: allow values in dialogContentProps to override all default values
+- GroupedList: Role of groupedList changed from "grid" to "group"
 
 ## 4.13.0
 Thu, 29 Jun 2017 20:48:31 GMT
