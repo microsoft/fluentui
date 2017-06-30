@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "Dependencies now use path based imports to various utilities to minimize the graph dependency.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
