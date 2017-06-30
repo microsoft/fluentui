@@ -20,6 +20,7 @@
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/es6-promise": "^0.0.32",
+    "@types/highlight.js": "^9.1.9",
     "@types/mocha": "^2.2.39",
     "@types/react": "^15.0.25",
     "@types/react-addons-test-utils": "^0.14.18",
