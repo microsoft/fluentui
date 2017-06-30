@@ -7,12 +7,15 @@ import {
   autobind,
   buttonProperties,
   getId,
-  getNativeProps
+  getNativeProps,
+  KeyCodes,
+  css,
 } from '../../Utilities';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
+import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
@@ -25,6 +28,14 @@ export interface IBaseButtonState {
 }
 
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
+
+  private get _isSplitButton(): boolean {
+    return (!!this.props.menuProps && !!this.props.onClick);
+  }
+
+  private get _isExpanded(): boolean {
+    return !!this.state.menuProps;
+  }
 
   public static defaultProps = {
     baseClassName: 'ms-Button',
@@ -105,12 +116,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaDescribedBy = null;
     }
 
+    const tabIndex = (this.props.tabIndex === undefined) ? (this._isSplitButton ? -1 : 0) : this.props.tabIndex;
+
     const buttonProps = assign(
       nativeProps,
       {
         className: this._classNames.root,
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
+        tabIndex: tabIndex,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
@@ -120,14 +134,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
     );
 
-    // Override onClick if contextualMenuItems passed in. Eventually allow _onToggleMenu to
-    // be assigned to split button click if onClick already has a value
-    if (this.props.menuProps) {
+    if (this._isSplitButton) {
+      return (
+        this._onRenderSplitButtonContent(tag, buttonProps)
+      );
+    } else if (this.props.menuProps) {
       assign(
         buttonProps,
         {
           'onClick': this._onToggleMenu,
-          'aria-expanded': this.state.menuProps ? true : false,
+          'aria-expanded': this._isExpanded,
           'aria-owns': this.state.menuProps ? this._labelId + '-menu' : null,
           'aria-haspopup': true
         }
@@ -171,7 +187,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderDescription(props, this._onRenderDescription),
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
-        (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        !this._isSplitButton && (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
@@ -204,7 +220,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderText() {
     let {
-    children,
+      children,
       disabled,
       styles,
       text
@@ -319,5 +335,79 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let currentMenuProps = this.state.menuProps;
 
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
+  }
+
+  private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+    const {
+      styles,
+      disabled
+    } = this.props;
+
+    return (
+      <div
+        aria-labelledby={ buttonProps.ariaLabel }
+        aria-disabled={ disabled }
+        aria-haspopup={ true }
+        aria-expanded={ this._isExpanded }
+        aria-pressed={ this.props.checked }
+        aria-describedby={ buttonProps.ariaDescription }
+        className={ css(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
+        tabIndex={ 0 }
+        onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
+      >
+        <span aria-hidden={ true }>
+          { this._onRenderContent(tag, buttonProps) }
+          { this._onRenderSplitButtonMenuButton() }
+        </span>
+      </div >
+    );
+  }
+
+  private _onRenderSplitButtonMenuButton(): JSX.Element {
+    let {
+      menuIconName,
+      menuIconProps,
+      styles,
+      disabled
+    } = this.props;
+
+    if (menuIconProps === undefined) {
+      menuIconProps = {
+        iconName: menuIconName === undefined ? 'ChevronDown' : menuIconName
+      };
+    }
+
+    return (
+      <IconButton
+        tabIndex={ -1 }
+        styles={ {
+          root: disabled ? styles.splitButtonMenuButtonDisabled : styles.splitButtonMenuButton,
+          rootChecked: styles.splitButtonMenuButtonChecked,
+          icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon
+        } }
+        checked={ this.props.checked }
+        disabled={ this.props.disabled }
+        onClick={ this._onToggleMenu }
+        menuProps={ null }
+        iconProps={ menuIconProps } />
+    );
+  }
+
+  @autobind
+  private _onSplitButtonKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    switch (ev.which) {
+      case KeyCodes.enter:
+      case KeyCodes.space:
+        this.props.onClick(null);
+        return;
+    }
+
+    if (ev.altKey) {
+      switch (ev.which) {
+        case KeyCodes.down:
+          this._onToggleMenu();
+          return;
+      }
+    }
   }
 }
