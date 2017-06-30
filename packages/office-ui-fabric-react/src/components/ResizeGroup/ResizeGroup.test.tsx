@@ -92,5 +92,37 @@ describe('ResizeGroup', () => {
       });
       expect(measuredElementWidthStub.callCount).to.equal(0);
     });
+
+    it('calls onReduceData multiple times when everything is in the cache', () => {
+      const dataArray = [{ cacheKey: '5' },
+      { cacheKey: '4' },
+      { cacheKey: '3' }];
+
+      let measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataArray[0], 50);
+      measurementCache.addMeasurementToCache(dataArray[1], 40);
+      measurementCache.addMeasurementToCache(dataArray[2], 5);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
+      resizeGroupProps.onReduceData.onSecondCall().returns(dataArray[2]);
+
+      const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
+      const measuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        measuredElementWidthStub,
+        10);
+
+      expect(result).to.deep.equal({
+        renderedData: dataArray[2],
+        measureContainer: false,
+        dataToMeasure: undefined,
+        resizeDirection: undefined
+      });
+      expect(measuredElementWidthStub.callCount).to.equal(0);
+    });
   });
 });
