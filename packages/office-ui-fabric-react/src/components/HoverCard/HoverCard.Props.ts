@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { HoverCard } from './HoverCard';
 import { IExpandingCardProps } from './ExpandingCard.Props';
-import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle } from '../../Styling';
 
 export interface IHoverCard {

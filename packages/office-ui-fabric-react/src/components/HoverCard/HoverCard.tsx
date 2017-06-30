@@ -56,7 +56,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       } else {
         this.setState({
           mode: ExpandingCardMode.compact
-        })
+        });
       }
     }
   }
