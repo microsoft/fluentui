@@ -1,8 +1,20 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
+import { IResizeGroupProps } from './ResizeGroup.Props';
 import * as sinon from 'sinon';
+
+interface ITestScalingData {
+  scalingIndex: number;
+}
+
+function onReduceScalingData(data: ITestScalingData): ITestScalingData {
+  return {
+    scalingIndex: data.scalingIndex - 1
+  };
+}
 
 function getRequiredResizeGroupProps() {
   return {
@@ -12,6 +24,54 @@ function getRequiredResizeGroupProps() {
 }
 
 describe('ResizeGroup', () => {
+  it('does not render ResizeGroup when no data is passed', () => {
+    const onReduceData = sinon.spy();
+    const onRenderData = sinon.spy();
+    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
+      <ResizeGroup
+        onReduceData={ onReduceData }
+        onRenderData={ onRenderData }
+      />
+    );
+
+    expect(onRenderData.called).to.equal(false);
+  });
+
+  it('does not render ResizeGroup when empty data is passed', () => {
+    const onReduceData = sinon.spy();
+    const onRenderData = sinon.spy();
+    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
+      <ResizeGroup
+        data={ {} }
+        onReduceData={ onReduceData }
+        onRenderData={ onRenderData }
+      />
+    );
+
+    expect(onRenderData.called).to.equal(false);
+  });
+
+  it('renders the result of onRenderData', () => {
+    const initialData = { content: 5 };
+    const renderedDataId = 'onRenderDataId';
+    const onRenderData = (data) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
+
+    const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
+      <ResizeGroup
+        data={ initialData }
+        onReduceData={ onReduceScalingData }
+        onRenderData={ onRenderData }
+      />
+    );
+
+    expect(wrapper.containsMatchingElement(onRenderData(initialData))).to.equal(true);
+
+    // Updating the renderedData state should also render new data
+    const nextData = { content: 5 };
+    wrapper.setState({ renderedData: nextData });
+    expect(wrapper.containsMatchingElement(onRenderData(nextData)));
+  });
+
   describe('getNextResizeGroupStateProvider', () => {
     it('does not provide a new state when there is no container width provided or data to measure', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
