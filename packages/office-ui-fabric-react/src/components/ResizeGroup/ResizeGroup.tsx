@@ -27,10 +27,18 @@ export interface IResizeGroupState {
   measureContainer?: boolean;
 }
 
+/**
+ * Returns a simple object is able to store measurements with a given key.
+ */
 export const getMeasurementCache = () => {
   const measurementsCache: { [key: string]: number } = {};
 
   return {
+    /**
+     * Checks if the provided data has a cacheKey. If it has a cacheKey and there is a
+     * corresponding entry in the measurementsCache, then it will return that value.
+     * Returns undefined otherwise.
+     */
     getCachedMeasurement: (data: any): number | undefined => {
       if (data && data.cacheKey && measurementsCache.hasOwnProperty(data.cacheKey)) {
         return measurementsCache[data.cacheKey];
@@ -38,6 +46,10 @@ export const getMeasurementCache = () => {
 
       return undefined;
     },
+    /**
+     * Should be called whenever there is a new measurement associated with a given data object.
+     * If the data has a cacheKey, store that measurement in the measurementsCache.
+     */
     addMeasurementToCache: (data: any, measurement: number): void => {
       if (data.cacheKey) {
         measurementsCache[data.cacheKey] = measurement;
@@ -46,11 +58,21 @@ export const getMeasurementCache = () => {
   };
 };
 
+/**
+ * Returns a function that is able to compute the next state for the ResizeGroup given the current
+ * state and any measurement updates.
+ */
 export const getNextResizeGroupStateProvider = (measurementCache = getMeasurementCache()) => {
   const _measurementCache = measurementCache;
   let _containerWidth: number | undefined;
 
-  const _getMeasuredWidth = (measuredData: any, getElementToMeasureWidth: () => number): number => {
+  /**
+   * Gets the width of the data rendered in a hidden div.
+   * @param measuredData - The data corresponding to the measurement we wish to take.
+   * @param getElementToMeasureWidth - A function that returns the measurement of the rendered data. Only called when the measurement
+   * is not in the cache.
+   */
+  function _getMeasuredWidth(measuredData: any, getElementToMeasureWidth: () => number): number {
     let cachedWidth = _measurementCache.getCachedMeasurement(measuredData);
     if (cachedWidth !== undefined) {
       return cachedWidth;
@@ -59,11 +81,19 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     let measuredWidth = getElementToMeasureWidth();
     _measurementCache.addMeasurementToCache(measuredData, measuredWidth);
     return measuredWidth;
-  };
+  }
 
-  const _shrinkContentsUntilTheyFit = (data: any,
+  /**
+   * Will get the next IResizeGroupState based on the current data while trying to shrink contents
+   * to fit in the container.
+   * @param data - The initial data point to start measuring.
+   * @param onReduceData - Function that transforms the data into something that should render with less width.
+   * @param getElementToMeasureWidth - A function that returns the measurement of the rendered data. Only called when the measurement
+   * is not in the cache.
+   */
+  function _shrinkContentsUntilTheyFit(data: any,
     onReduceData: (prevData: any) => any,
-    getElementToMeasureWidth: () => number): IResizeGroupState => {
+    getElementToMeasureWidth: () => number): IResizeGroupState {
     let dataToMeasure = data;
     let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
 
@@ -96,9 +126,15 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       renderedData: dataToMeasure,
       dataToMeasure: undefined
     };
-  };
+  }
 
-  const _updateContainerWidth = (newWidth: number, fullWidthData: any, renderedData: any): IResizeGroupState => {
+  /**
+   * Handles an update to the container width. Should only be called when we knew the previous container width.
+   * @param newWidth - The new width of the container.
+   * @param fullWidthData - The initial data passed in as a prop to resizeGroup.
+   * @param renderedData - The data that was rendered prior to the container size changing.
+   */
+  function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newWidth > _containerWidth) {
       nextState = {
@@ -111,7 +147,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     }
     _containerWidth = newWidth;
     return { ...nextState, measureContainer: false };
-  };
+  }
 
   return (props: IResizeGroupProps,
     currentState: IResizeGroupState,
