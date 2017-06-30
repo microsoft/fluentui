@@ -12,7 +12,15 @@
     max-width: 300px;
   }
 
+  .stickySmall {
+    .sticky {
+      font-size: 16px;
+    }
+  }
+
   .sticky {
+    transition: font-size 0.25s ease-in-out;
+    font-size: 24px;
     padding: 5px 10px;
     border: 1px solid blue;
   }

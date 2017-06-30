@@ -3,7 +3,7 @@ import { StickyHeader } from './StickyHeader';
 
 export interface IStickyHeaderProps extends React.Props<StickyHeader> {
   /**
-   * Class name to apply to the root in addition to ms-ScrollablePane.
+   * Class name to apply to the sticky element if component is sticky.
   */
-  className?: string;
+  stickyClassName?: string;
 }

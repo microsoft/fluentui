@@ -30,6 +30,7 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
   public refs: {
     root: HTMLElement;
     placeholder: HTMLElement;
+    sticky: HTMLElement;
   };
 
   public context: {
@@ -65,13 +66,14 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     this._offsetTop = offsetTop;
 
     if (isSticky !== this.state.isSticky) {
-      if (isSticky) {
-        this.context.addStickyHeader(this);
-      } else {
-        this.context.removeStickyHeader(this);
-      }
       this.setState({
         isSticky: isSticky
+      }, () => {
+        if (isSticky) {
+          this.context.addStickyHeader(this);
+        } else {
+          this.context.removeStickyHeader(this);
+        }
       });
     }
   }
@@ -84,6 +86,8 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
 
   public render() {
     const { isSticky, topDistance } = this.state;
+    const { stickyClassName } = this.props;
+
     const style = isSticky ?
       {
         top: `${this._offsetTop + topDistance}px`,
@@ -93,14 +97,15 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
 
     const placeholderStyle = isSticky ?
       {
-        paddingBottom: `${this.refs.root.clientHeight}px`
+        paddingBottom: `${this.refs.sticky.clientHeight}px`
       } : {};
 
     return (
       <div ref='root'>
         <div ref='placeholder' style={ placeholderStyle } />
-        <div className={ css({
-          [styles.isSticky]: isSticky
+        <div ref='sticky' className={ css({
+          [styles.isSticky]: isSticky,
+          [stickyClassName]: isSticky
         }) } style={ style }>
           { this.props.children }
         </div>
