@@ -170,7 +170,10 @@ const getCachedContentMeasurer = () => {
   };
 
   return {
-    getNextRezieGroupState: (props: IResizeGroupProps, currentState: IResizeGroupState, elementToMeasure: HTMLElement | null, newContainerWidth?: number): IResizeGroupState | undefined => {
+    getNextRezieGroupState: (props: IResizeGroupProps,
+      currentState: IResizeGroupState,
+      elementToMeasure: HTMLElement | null,
+      newContainerWidth?: number): IResizeGroupState | undefined => {
       // If there is no new container width or data to measure, there is no need for a new state update
       if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
         return undefined;
