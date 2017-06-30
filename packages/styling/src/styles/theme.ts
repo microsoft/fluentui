@@ -1,7 +1,7 @@
 import {
   IPalette,
-  IFontStyles,
-  ISemanticColors
+  ISemanticColors,
+  ITheme
 } from '../interfaces/index';
 import {
   DefaultFontStyles
@@ -9,11 +9,6 @@ import {
 import {
   DefaultPalette
 } from './DefaultPalette';
-export interface ITheme {
-  palette: IPalette;
-  fonts: IFontStyles;
-  semanticColors?: ISemanticColors;
-}
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 let _theme: ITheme = {
@@ -21,6 +16,8 @@ let _theme: ITheme = {
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
   fonts: DefaultFontStyles
 };
+
+export const ThemeSettingName = 'theme';
 
 let win = typeof window !== 'undefined' ? window : undefined;
 
@@ -31,7 +28,7 @@ if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
 // tslint:enable:no-string-literal no-any
 
 // Set the default theme.
-GlobalSettings.setValue('theme', _theme);
+GlobalSettings.setValue(ThemeSettingName, _theme);
 
 /**
  * Gets the theme object.
@@ -49,7 +46,7 @@ export function loadTheme(theme: Partial<ITheme>): void {
   // Load the legacy theme from the palette.
   legacyLoadTheme(_theme.palette as {});
 
-  GlobalSettings.setValue('theme', _theme);
+  GlobalSettings.setValue(ThemeSettingName, _theme);
 }
 
 /**
