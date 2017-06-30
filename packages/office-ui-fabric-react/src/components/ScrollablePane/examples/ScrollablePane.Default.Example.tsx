@@ -13,7 +13,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   public render() {
     let contentAreas = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
       let newContent = {
         content: this._createContentArea(i)
       };
@@ -38,13 +38,6 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     return (
       <div>
         <StickyHeader>
-          <Toggle
-            defaultChecked={ true }
-            label='Enabled and checked'
-            onAriaLabel='This toggle is checked. Press to uncheck.'
-            offAriaLabel='This toggle is unchecked. Press to check.'
-            onText='On'
-            offText='Off' />
           <div className='sticky'>
             THIS IS WRAPPED IN STICKY { index }
           </div>
