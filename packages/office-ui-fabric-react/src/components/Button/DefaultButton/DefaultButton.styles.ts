@@ -46,7 +46,6 @@ export const getStyles = memoizeFunction((
     label: {
       fontWeight: FontWeights.semibold
     }
-
   };
 
   return mergeStyleSets(baseButtonStyles, defaultButtonStyles, customStyles);
