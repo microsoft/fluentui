@@ -141,25 +141,32 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     const { shouldMeasure } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
-      const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
-      const measuredWidth = this._lastKnownMeasuredWidth = this._measured.getBoundingClientRect().width;
-      if ((measuredWidth > containerWidth)) {
-        let nextMeasuredData = onReduceData(this.state.measuredData);
+      this._setStateToDoneMeasuring();
+      this._asyncMeasure(data, onReduceData);
+    }
+  }
 
-        // We don't want to get stuck in an infinite render loop when there are no more
-        // scaling steps, so implementations of onReduceData should return undefined when
-        // there are no more scaling states to apply.
-        if (nextMeasuredData !== undefined) {
-          this.setState({
-            measuredData: nextMeasuredData,
-          });
-        } else {
-          this._setStateToDoneMeasuring();
-        }
+  private _asyncMeasure(data: any, onReduceData: (prevData: any) => any) {
+    //this._async.requestAnimationFrame(() => {
+    const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
+    const measuredWidth = this._lastKnownMeasuredWidth = this._measured.getBoundingClientRect().width;
+    if ((measuredWidth > containerWidth)) {
+      let nextMeasuredData = onReduceData(this.state.measuredData);
 
+      // We don't want to get stuck in an infinite render loop when there are no more
+      // scaling steps, so implementations of onReduceData should return undefined when
+      // there are no more scaling states to apply.
+      if (nextMeasuredData !== undefined) {
+        this.setState({
+          measuredData: nextMeasuredData,
+        });
       } else {
         this._setStateToDoneMeasuring();
       }
+
+    } else {
+      this._setStateToDoneMeasuring();
     }
+    //});
   }
 }

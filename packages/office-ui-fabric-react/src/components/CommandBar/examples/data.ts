@@ -53,30 +53,6 @@ export const items = [
     onClick: () => { return; }
   },
   {
-    key: 'move',
-    name: 'Move to...',
-    iconProps: {
-      iconName: 'MoveToFolder',
-    },
-    onClick: () => { return; }
-  },
-  {
-    key: 'copy',
-    name: 'Copy to...',
-    iconProps: {
-      iconName: 'Copy',
-    },
-    onClick: () => { return; }
-  },
-  {
-    key: 'rename',
-    name: 'Rename...',
-    iconProps: {
-      iconName: 'Edit',
-    },
-    onClick: () => { return; }
-  },
-  {
     key: 'disabled',
     name: 'Disabled...',
     iconProps: {

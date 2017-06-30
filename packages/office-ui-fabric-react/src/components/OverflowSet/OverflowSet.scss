@@ -4,6 +4,12 @@
   position: relative;
   display: flex;
   flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.primaryItems {
+  display: flex;
+  min-width: 0;
 }
 
 .item {
