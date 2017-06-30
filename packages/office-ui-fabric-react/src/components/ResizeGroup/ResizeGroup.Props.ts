@@ -35,13 +35,6 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HT
   onReduceData: (prevData: any) => any;
 
   /**
-   * Function to be performed on the data in order to increase its width. It is called in scenarios where the
-   * container has more room than the previous render and we may be able to fit more content. If there are no more
-   * scaling operations to perform on teh data, it should return undefined to prevent an infinite render loop.
-   */
-  onGrowData?: (prevData: any) => any;
-
-  /**
    * Function to be called every time data is rendered. It provides the data that was actually rendered.
    * A use case would be adding telemetry when a particular control is shown in an overflow well or
    * dropped as a result of onReduceData or to count the number of renders that an implementation of
