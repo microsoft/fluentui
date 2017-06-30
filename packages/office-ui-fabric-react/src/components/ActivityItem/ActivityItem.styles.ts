@@ -9,7 +9,9 @@ import {
 import { IActivityItemStyles } from './ActivityItem.Props';
 
 const DEFAULT_PERSONA_SIZE = '32px';
+const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '24px';
+const COMPACT_ICON_SIZE = '12px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
@@ -28,6 +30,14 @@ export const getStyles = memoizeFunction((
         color: theme.palette.neutralSecondary
       }
     ],
+
+    isCompact: {
+      minWidth: COMPACT_PERSONA_SIZE,
+      width: COMPACT_PERSONA_SIZE,
+      height: COMPACT_PERSONA_SIZE,
+      fontSize: COMPACT_ICON_SIZE,
+      lineHeight: COMPACT_ICON_SIZE
+    },
 
     activityContent: {
       padding: '0 8px'

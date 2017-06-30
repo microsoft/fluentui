@@ -1,6 +1,52 @@
 import { IActivityItemProps, ActivityType } from '../ActivityItem.Props';
 import { TestImages } from '../../../common/TestImages';
 
+export const activityItemCompactExamples: (IActivityItemProps & { key: string | number })[] = [
+  {
+    key: 1,
+    activityType: ActivityType.Message,
+    people: [
+      {
+        imageUrl: TestImages.personaMale,
+        primaryText: 'Robert Larsson'
+      }
+    ],
+    commentString: 'This comment text should be invisible in the compact variant',
+    timeString: 'Just now'
+  },
+  {
+    key: 2,
+    activityType: ActivityType.Mention,
+    people: [
+      {
+        imageInitials: 'AL',
+        primaryText: 'Annie Lindqvist'
+      }
+    ],
+    timeString: 'Just now'
+  },
+  {
+    key: 3,
+    activityType: ActivityType.Message,
+    people: [
+      {
+        primaryText: 'Robert Larsson'
+      }
+    ],
+    timeString: 'Just now'
+  },
+    {
+    key: 4,
+    activityType: ActivityType.Edit,
+    people: [
+      {
+        primaryText: 'Annie Lindqvist'
+      }
+    ],
+    timeString: 'Just now'
+  }
+];
+
 export const activityItemPersonaExamples: (IActivityItemProps & { key: string | number })[] = [
   {
     key: 1,

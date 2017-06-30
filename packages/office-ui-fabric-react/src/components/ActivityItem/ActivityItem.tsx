@@ -23,7 +23,6 @@ export interface IActivityItemClassNames {
 }
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
-
   private _classNames: IActivityItemClassNames;
 
   constructor(props: IActivityItemProps) {
@@ -39,8 +38,16 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     this._classNames = this._getClassNames(
       getStyles(undefined, customStyles),
       this.props.className,
-      this.props.people.length
+      this.props.people.length,
+      this.props.isCompact
     );
+
+    let renderComment: JSX.Element;
+    let renderTimeStamp: JSX.Element;
+    if (!this.props.isCompact) {
+      renderComment = this.props.onRenderComment ? this.props.onRenderComment(this.props) : this._onRenderCommentText(this.props);
+      renderTimeStamp = this.props.onRenderTimeStamp ? this.props.onRenderTimeStamp(this.props) : <div className={ this._classNames.timeStamp }>{ this.props.timeString }</div>;
+    }
 
     return (
       <div className={ this._classNames.root }>
@@ -53,9 +60,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             <ActivityDescription {...this.props} _classNames={ this._classNames } />
           </div>
 
-          { this.props.onRenderComment ? this.props.onRenderComment(this.props) : this._onRenderCommentText(this.props) }
-
-          { this.props.onRenderTimeStamp ? this.props.onRenderTimeStamp(this.props) : <div className={ this._classNames.timeStamp }>{ this.props.timeString }</div> }
+          { renderComment }
+          { renderTimeStamp }
         </div>
 
       </div>
@@ -68,6 +74,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     let personaElement: JSX.Element;
     if (this.props.people[0].imageUrl || this.props.people[0].imageInitials) {
       let personaList = [];
+      let showSize16Personas = (this.props.people.length > 1 || this.props.isCompact);
       this.props.people.filter((person, index) => index < 4).forEach((person, index) => {
         personaList.push(
           <Persona
@@ -75,7 +82,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
-            size={ this.props.people.length > 1 ? PersonaSize.size16 : PersonaSize.extraSmall }
+            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
             hidePersonaDetails={ true } />
         );
       });
@@ -161,27 +168,14 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   // Determine the class lists for each className.
   @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, numberOfPeople: number): IActivityItemClassNames {
+  private _getClassNames(styles: IActivityItemStyles, className: string, numberOfPeople: number, isCompact: boolean): IActivityItemClassNames {
     return {
+
       root: mergeStyles(
         'ms-ActivityItem',
         styles.root,
-        className
-      ) as string,
-
-      activityContent: mergeStyles(
-        'ms-ActivityItem-activityContent',
-        styles.activityContent
-      ) as string,
-
-      personaContainer: mergeStyles(
-        'ms-ActivityItem-personaContainer',
-        styles.personaContainer
-      ) as string,
-
-      activityTypeIcon: mergeStyles(
-        'ms-ActivityItem-activityTypeIcon',
-        styles.activityTypeIcon
+        className//,
+        //isCompact && styles.isCompact
       ) as string,
 
       activityPersona: mergeStyles(
@@ -190,25 +184,23 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         numberOfPeople === 2 && styles.doublePersona
       ) as string,
 
-      nameText: mergeStyles(
-        'ms-ActivityItem-nameText',
-        styles.nameText
+      personaContainer: mergeStyles(
+        'ms-ActivityItem-personaContainer',
+        styles.personaContainer,
+        isCompact && styles.isCompact
       ) as string,
 
-      docLink: mergeStyles(
-        'ms-ActivityItem-docLink',
-        styles.docLink
-      ) as string,
+      activityTypeIcon: mergeStyles(
+        'ms-ActivityItem-activityTypeIcon',
+        styles.activityTypeIcon,
+        isCompact && styles.isCompact
+        ) as string,
 
-      commentText: mergeStyles(
-        'ms-ActivityItem-commentText',
-        styles.commentText
-      ) as string,
-
-      timeStamp: mergeStyles(
-        'ms-ActivityItem-timeStamp',
-        styles.timeStamp
-      ) as string
+      activityContent: mergeStyles('ms-ActivityItem-activityContent', styles.activityContent) as string,
+      nameText: mergeStyles('ms-ActivityItem-nameText', styles.nameText) as string,
+      docLink: mergeStyles('ms-ActivityItem-docLink', styles.docLink) as string,
+      commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText) as string,
+      timeStamp: mergeStyles('ms-ActivityItem-timeStamp',styles.timeStamp) as string
     };
   }
 }

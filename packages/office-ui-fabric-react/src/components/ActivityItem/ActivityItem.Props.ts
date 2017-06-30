@@ -25,6 +25,11 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   fileActivity?: IFileActivity;
 
   /**
+   * Indicated if the compact styling should be used.
+   */
+  isCompact?: boolean;
+
+  /**
    * If this is included and the mentionedName is shown, the mentionedName will use this behavior when clicked.
    */
   onMentionedClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
@@ -115,6 +120,11 @@ export interface IActivityItemStyles {
    * Styles applied to documents, folders, and usernames that are hyperlinks or have other on click actions.
    */
   docLink?: IStyle;
+
+  /**
+   * Styles applied to root in the compact variant.
+   */
+  isCompact?: IStyle;
 
   /**
    * Styles applied to the names mentioned in the activity item.
