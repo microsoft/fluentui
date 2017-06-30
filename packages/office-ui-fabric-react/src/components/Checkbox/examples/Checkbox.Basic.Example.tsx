@@ -29,23 +29,39 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           inputProps={ {
             onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
-          } } />
+          } }
+          style={ { marginTop: 10 } }
+        />
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
-          onChange={ this._onCheckboxChange } />
+          onChange={ this._onCheckboxChange }
+          style={ { marginTop: 10 } }
+        />
 
         <Checkbox
           label='Disabled uncontrolled checkbox with defaultChecked true'
           disabled={ true }
           defaultChecked={ true }
-          onChange={ this._onCheckboxChange } />
+          onChange={ this._onCheckboxChange }
+          style={ { marginTop: 10 } }
+        />
 
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
-          onChange={ (ev, checked) => this.setState({ isChecked: checked }) } />
+          onChange={ (ev, checked) => {
+            this.setState({ isChecked: checked });
+          } }
+          style={ { marginTop: 10 } }
+        />
+
+        <Checkbox
+          label='Checkbox rendered with boxSide "end"'
+          boxSide='end'
+          style={ { marginTop: 10 } }
+        />
       </div>
     );
   }
