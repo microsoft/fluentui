@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Jun 2017 10:23:15 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Jun 2017 19:44:26 GMT and should not be manually modified.
+
+## 4.13.2
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Patches
+
+- Breadcrumb: Use flexbox for layout to better support multiple font sizes
+- MessageBar: Fixed padding regressions with multiline and no actions 
 
 ## 4.13.1
 Fri, 30 Jun 2017 10:23:15 GMT
