@@ -53,10 +53,10 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
     ReactDOM.render(
       <Fabric>
         <Router>
-          <Route key='minimal' path='?minimal' component={ (props) => <div { ...props } /> }>
+          <Route key='minimal' path='?minimal' component={ (props: any) => <div { ...props } /> }>
             { routes }
           </Route>
-          <Route key={ 'app' } component={ (props) => <App appDefinition={ appDefinition } { ...props } /> }>
+          <Route key={ 'app' } component={ (props: any) => <App appDefinition={ appDefinition } { ...props } /> }>
             { routes }
           </Route>
         </Router>

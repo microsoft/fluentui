@@ -143,7 +143,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     return groups;
   }
 
-  private _tryAddGroup(props, typeToCompare: InterfacePropertyType, name: string, index: number, allGroups): number {
+  private _tryAddGroup(props: IInterfaceProperty[], typeToCompare: InterfacePropertyType, name: string, index: number, allGroups: IGroup[]): number {
     let group: IGroup;
 
     while (index < props.length) {
