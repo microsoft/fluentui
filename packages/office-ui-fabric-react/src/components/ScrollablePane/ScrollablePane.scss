@@ -29,7 +29,7 @@
 .layerHostTop {
   background: $ms-color-white;
   position: absolute;
-  // visibility: hidden;
+  visibility: hidden;
   top: 0;
   width: 100%;
   pointer-events: auto;
@@ -38,7 +38,7 @@
 .layerHostBottom {
   background: $ms-color-white;
   position: absolute;
-  // visibility: hidden;
+  visibility: hidden;
   bottom: 0;
   width: 100%;
   pointer-events: auto;

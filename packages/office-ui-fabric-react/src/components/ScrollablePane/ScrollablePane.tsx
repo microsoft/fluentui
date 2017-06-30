@@ -19,8 +19,6 @@ export interface IScrollablePaneState {
   contentAreasAbove: IContentArea[];
   contentAreasVisible: IContentArea[];
   contentAreasBelow: IContentArea[];
-  stickyElemAbove: StickyHeader[];
-  stickyElemBelow: StickyHeader[];
 }
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> {
@@ -61,8 +59,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   private _scrollElement: HTMLElement;
   private _topBound: number;
   private _bottomBound: number;
-  private _framePending: boolean;
-  private _subscribers: Function[];
+  private _subscribers: ((topScrollBound: number, scrollDistance: number, topHeaderHeight: number) => void)[];
+  private _stickyAbove: string[];
+  // private _stickyBelow: string[];
+  private _topHeaderHeight: number;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -70,44 +70,30 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
     this.state = {
       contentAreasAbove: [],
       contentAreasVisible: [],
-      contentAreasBelow: [],
-      stickyElemAbove: [],
-      stickyElemBelow: []
+      contentAreasBelow: []
     };
     this._subscribers = [];
+    this._stickyAbove = [];
+    // this._stickyBelow = [];
+    this._topHeaderHeight = 0;
   }
 
   public componentWillMount() {
-    debugger;
+    // debugger;
   }
 
   public componentDidMount() {
     this._scrollElement = findScrollableParent(this.refs.root);
     this._checkContentAreasPosition();
     if (this._scrollElement) {
-      // this._events.on(this._scrollElement, 'scroll', this._checkContentAreasPosition);
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
     }
-    this._resizeHeaderPane();
-    this._events.on(window, 'resize', this._resizeHeaderPane);
-  }
-
-  @autobind
-  public componentWillReceiveProps(newProps: IScrollablePaneProps) {
-    // console.log('receive props');
-  }
-
-  public componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState) {
-    // console.log('udpate');
-    this._resizeHeaderPane();
   }
 
   public render() {
     const {
       contentAreasAbove,
-      contentAreasBelow,
-      stickyElemAbove,
-      stickyElemBelow
+      contentAreasBelow
     } = this.state;
     const { className, contentAreas } = this.props;
 
@@ -127,30 +113,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
           }) }
         </div>
 
-        <div className={ styles.scrollCopy }
-          ref='scrollCopy'>
-          <div className={ styles.layerHostTop }>
-            <div className={ styles.fixed } ref='topHeaders'>
-              {
-                stickyElemAbove.map((stickyElem: StickyHeader, index: number) => {
-                  debugger;
-                  console.log('sticky element', stickyElem);
-                  return stickyElem.props.children;
-                })
-              }
-            </div>
-          </div>
-          <div className={ styles.layerHostBottom }>
-            <div className={ styles.fixed } ref='bottomHeaders'>
-              {
-                stickyElemBelow.map((stickyElem: StickyHeader, index: number) => {
-                  return stickyElem.props.children;
-                })
-              }
-            </div>
-          </div>
-        </div>
-
       </div>
     );
   }
@@ -161,65 +123,32 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
   }
 
   @autobind
-  public addStickyHeader(header: StickyHeader) {
-    let stickyAbove = this.state.stickyElemAbove.concat([]);
-    if (stickyAbove.indexOf(header) < 0) {
-      stickyAbove.push(header);
-      this.setState({
-        stickyElemAbove: stickyAbove
-      }, () => {
-        const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
-        const topBound = scrollBounds.top + this.refs.topHeaders.clientHeight;
-        this._topBound = topBound;
-        header.setSticky(topBound);
-      });
+  public addStickyHeader(id: string, height: number) {
+    if (this._stickyAbove.indexOf(id) < 0) {
+      this._stickyAbove.push(id);
+      this._topHeaderHeight += height;
     }
   }
 
   @autobind
-  public removeStickyHeader(header: StickyHeader) {
-    debugger;
-    let stickyAbove = this.state.stickyElemAbove.concat([]);
-    const indexOfHeader = stickyAbove.indexOf(header);
-    // header.setNotSticky();
-    if (indexOfHeader >= 0) {
-      stickyAbove.splice(indexOfHeader, 1);
-      this.setState({
-        stickyElemAbove: stickyAbove
-      });
+  public removeStickyHeader(id: string, height: number) {
+    const indexOfHeader = this._stickyAbove.indexOf(id);
+    if (this._stickyAbove.indexOf(id) >= 0) {
+      this._stickyAbove.splice(indexOfHeader, 1);
+      this._topHeaderHeight -= height;
     }
   }
 
   @autobind
   public addStickyFooter(sticky: StickyHeader) {
-    let stickyBelow = this.state.stickyElemBelow.concat([]);
-    if (stickyBelow.indexOf(sticky) < 0) {
-      stickyBelow.unshift(sticky);
-      this.setState({
-        stickyElemBelow: stickyBelow
-      }, () => {
-        const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
-        const topBound = scrollBounds.top + this.refs.topHeaders.clientHeight;
-        this._topBound = topBound;
-        // header.setSticky();
-      });
-    }
-  }
-
-  private _resizeHeaderPane() {
-    this.refs.scrollCopy.style.height = this._scrollElement.clientHeight + 'px';
-    this.refs.scrollCopy.style.width = this.refs.root.clientWidth + 'px';
-    this.refs.scrollCopy.style.top = this._scrollElement.offsetTop + 'px';
   }
 
   private _notifySubscribers() {
-    // debugger;
-
     const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
     const topScrollBound = scrollBounds.top;
     console.log(topScrollBound, this.refs.root.scrollTop, this._scrollElement.scrollTop);
     this._subscribers.forEach((handle) => {
-      handle(topScrollBound, this._scrollElement.scrollTop, this.refs.topHeaders.clientHeight);
+      handle(topScrollBound, this._scrollElement.scrollTop, this._topHeaderHeight);
     });
   }
 
@@ -229,20 +158,20 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, IScrolla
     let contentAreasVisible: IContentArea[] = [];
     let contentAreasBelow: IContentArea[] = [];
     const scrollBounds: ClientRect = this._scrollElement.getBoundingClientRect();
-    const topBound = scrollBounds.top + this.refs.topHeaders.clientHeight;
-    const bottomBound = scrollBounds.bottom - this.refs.bottomHeaders.clientHeight;
-    this._topBound = topBound;
-    this._bottomBound = bottomBound;
-    contentAreas.forEach((content, idx) => {
-      const currAreaBounds: ClientRect = this.refs[idx].getBoundingClientRect();
-      if ((currAreaBounds.top < topBound && idx !== 0) || currAreaBounds.top < scrollBounds.top) {
-        contentAreasAbove.push(content);
-      } else if (currAreaBounds.bottom >= topBound && currAreaBounds.top <= scrollBounds.bottom) {
-        contentAreasVisible.push(content);
-      } else {
-        contentAreasBelow.push(content);
-      }
-    });
+    // const topBound = scrollBounds.top + this.refs.topHeaders.clientHeight;
+    // const bottomBound = scrollBounds.bottom - this.refs.bottomHeaders.clientHeight;
+    // this._topBound = topBound;
+    // this._bottomBound = bottomBound;
+    // contentAreas.forEach((content, idx) => {
+    //   const currAreaBounds: ClientRect = this.refs[idx].getBoundingClientRect();
+    //   if ((currAreaBounds.top < topBound && idx !== 0) || currAreaBounds.top < scrollBounds.top) {
+    //     contentAreasAbove.push(content);
+    //   } else if (currAreaBounds.bottom >= topBound && currAreaBounds.top <= scrollBounds.bottom) {
+    //     contentAreasVisible.push(content);
+    //   } else {
+    //     contentAreasBelow.push(content);
+    //   }
+    // });
     this.setState({
       contentAreasAbove: contentAreasAbove,
       contentAreasVisible: contentAreasVisible,
