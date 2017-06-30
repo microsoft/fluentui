@@ -21,6 +21,10 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
       {
         imageInitials: 'AL',
         primaryText: 'Annie Lindqvist'
+      },
+      {
+        imageUrl: TestImages.personaMale,
+        primaryText: 'Robert Larsson'
       }
     ],
     timeString: 'Just now'
@@ -35,7 +39,7 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
     ],
     timeString: 'Just now'
   },
-    {
+  {
     key: 4,
     activityType: ActivityType.Edit,
     people: [
@@ -44,7 +48,30 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
       }
     ],
     timeString: 'Just now'
-  }
+  },
+  {
+    key: 5,
+    activityType: ActivityType.Mention,
+    people: [
+      {
+        imageInitials: 'AL',
+        primaryText: 'Annie Lindqvist'
+      },
+      {
+        imageUrl: TestImages.personaMale,
+        primaryText: 'Robert Larsson'
+      },
+      {
+        imageInitials: 'RC',
+        primaryText: 'Rosie Costa',
+      },
+      {
+        imageInitials: 'AR',
+        primaryText: 'Aaron Reid'
+      }
+    ],
+    timeString: 'Just now'
+  },
 ];
 
 export const activityItemPersonaExamples: (IActivityItemProps & { key: string | number })[] = [

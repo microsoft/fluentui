@@ -122,9 +122,24 @@ export interface IActivityItemStyles {
   docLink?: IStyle;
 
   /**
-   * Styles applied to root in the compact variant.
+   * Styles applied to personas and icons in the compact variant.
    */
-  isCompact?: IStyle;
+  isCompactIcon?: IStyle;
+
+  /**
+   * Styles applied to main text container in the compact variant.
+   */
+  isCompactContent?: IStyle;
+
+  /**
+   * Styles applied to personas in the compact variant.
+   */
+  isCompactPersona?: IStyle;
+
+  /**
+   * Styles applied to a wrapper around personas in the compact variant.
+   */
+  isCompactPersonaContainer?: IStyle;
 
   /**
    * Styles applied to the names mentioned in the activity item.

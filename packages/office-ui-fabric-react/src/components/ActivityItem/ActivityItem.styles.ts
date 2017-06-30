@@ -11,7 +11,7 @@ import { IActivityItemStyles } from './ActivityItem.Props';
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
 const DEFAULT_ICON_SIZE = '24px';
-const COMPACT_ICON_SIZE = '12px';
+const COMPACT_ICON_SIZE = '13px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
@@ -31,16 +31,15 @@ export const getStyles = memoizeFunction((
       }
     ],
 
-    isCompact: {
-      minWidth: COMPACT_PERSONA_SIZE,
-      width: COMPACT_PERSONA_SIZE,
-      height: COMPACT_PERSONA_SIZE,
-      fontSize: COMPACT_ICON_SIZE,
-      lineHeight: COMPACT_ICON_SIZE
-    },
-
     activityContent: {
       padding: '0 8px'
+    },
+
+    isCompactContent: {
+      padding: '0 4px',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflowX: 'hidden'
     },
 
     personaContainer: {
@@ -51,13 +50,29 @@ export const getStyles = memoizeFunction((
       height: DEFAULT_PERSONA_SIZE
     },
 
+    isCompactPersonaContainer: {
+      display: 'block',
+      height: COMPACT_PERSONA_SIZE,
+      width: 'auto',
+      minWidth: COMPACT_PERSONA_SIZE
+    },
+
     activityTypeIcon: {
       minWidth: DEFAULT_PERSONA_SIZE,
       width: DEFAULT_PERSONA_SIZE,
       height: DEFAULT_PERSONA_SIZE,
       paddingTop: '3px',
       fontSize: DEFAULT_ICON_SIZE,
-      lineHeight: DEFAULT_ICON_SIZE
+      lineHeight: DEFAULT_ICON_SIZE,
+    },
+
+    isCompactIcon: {
+      minWidth: COMPACT_PERSONA_SIZE,
+      width: COMPACT_PERSONA_SIZE,
+      height: COMPACT_PERSONA_SIZE,
+      fontSize: COMPACT_ICON_SIZE,
+      lineHeight: COMPACT_ICON_SIZE,
+      color: theme.palette.themePrimary
     },
 
     activityPersona: {
@@ -68,6 +83,13 @@ export const getStyles = memoizeFunction((
       '&:first-child': {
         alignSelf: 'flex-end'
       }
+    },
+
+    isCompactPersona: {
+      display: 'inline-block',
+      width: '8px',
+      minWidth: '8px',
+      overflow: 'visible'
     },
 
     nameText: {

@@ -11,7 +11,7 @@ export class ActivityItemCompactExample extends React.Component<React.Props<Acti
     activityItemCompactExamples.forEach((item) => {
       let props = item;
       activityExampleList.push(
-        <ActivityItem {...props} isCompact={ true } />
+        <ActivityItem {...props} isCompact={ true } style={ { width: '200px' } } />
       );
     });
 

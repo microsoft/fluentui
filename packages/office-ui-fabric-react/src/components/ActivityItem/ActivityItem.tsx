@@ -24,6 +24,7 @@ export interface IActivityItemClassNames {
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _classNames: IActivityItemClassNames;
+  private _styles: IActivityItemStyles;
 
   constructor(props: IActivityItemProps) {
     super(props);
@@ -35,8 +36,9 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       styles: customStyles
     } = this.props;
 
+    this._styles = getStyles(undefined, customStyles);
     this._classNames = this._getClassNames(
-      getStyles(undefined, customStyles),
+      this._styles,
       this.props.className,
       this.props.people.length,
       this.props.isCompact
@@ -50,18 +52,18 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     }
 
     return (
-      <div className={ this._classNames.root }>
+      <div className={ this._classNames.root } style={ this.props.style } >
 
         { this.props.onRenderIcon ? this.props.onRenderIcon(this.props) : this._onRenderIcon(this.props) }
 
         <div className={ this._classNames.activityContent }>
-          <div>
-            { this.props.onRenderNameList ? this.props.onRenderNameList(this.props) : this._onRenderNameList(this.props, this.props.people.length) }
-            <ActivityDescription {...this.props} _classNames={ this._classNames } />
-          </div>
+          { this.props.onRenderNameList ? this.props.onRenderNameList(this.props) : this._onRenderNameList(this.props, this.props.people.length) }
+          <ActivityDescription {...this.props} _classNames={ this._classNames } />
 
-          { renderComment }
-          { renderTimeStamp }
+          <div>
+            { renderComment }
+            { renderTimeStamp }
+          </div>
         </div>
 
       </div>
@@ -83,12 +85,14 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
             size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
-            hidePersonaDetails={ true } />
+            hidePersonaDetails={ true }
+            style={ this.props.isCompact && { display: 'inline-block', width: '8px', minWidth: '8px', overflow: 'visible' } } />
         );
       });
       personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;
     } else {
       let iconString = ActivityType[props.activityType];
+
       switch (props.activityType) {
         case ActivityType.CommentInDocument:
           iconString = 'Message';
@@ -106,6 +110,11 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
           iconString = 'Refresh';
           break;
       }
+
+      if (props.isCompact && (props.activityType === ActivityType.CommentInDocument || props.activityType === ActivityType.Message)) {
+        iconString = 'MessageFill';
+      }
+
       personaElement = <div className={ this._classNames.activityTypeIcon }><Icon iconName={ iconString } /></div>;
     }
     return personaElement;
@@ -174,33 +183,38 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       root: mergeStyles(
         'ms-ActivityItem',
         styles.root,
-        className//,
-        //isCompact && styles.isCompact
-      ) as string,
-
-      activityPersona: mergeStyles(
-        'ms-ActivityItem-activityPersona',
-        styles.activityPersona,
-        numberOfPeople === 2 && styles.doublePersona
+        className
       ) as string,
 
       personaContainer: mergeStyles(
         'ms-ActivityItem-personaContainer',
         styles.personaContainer,
-        isCompact && styles.isCompact
+        isCompact && styles.isCompactPersonaContainer
+      ) as string,
+
+      activityPersona: mergeStyles(
+        'ms-ActivityItem-activityPersona',
+        styles.activityPersona,
+        isCompact && styles.isCompactPersona,
+        !isCompact && numberOfPeople === 2 && styles.doublePersona
       ) as string,
 
       activityTypeIcon: mergeStyles(
         'ms-ActivityItem-activityTypeIcon',
         styles.activityTypeIcon,
-        isCompact && styles.isCompact
-        ) as string,
+        isCompact && styles.isCompactIcon
+      ) as string,
 
-      activityContent: mergeStyles('ms-ActivityItem-activityContent', styles.activityContent) as string,
+      activityContent: mergeStyles(
+        'ms-ActivityItem-activityContent',
+        styles.activityContent,
+        isCompact && styles.isCompactContent
+      ) as string,
+
       nameText: mergeStyles('ms-ActivityItem-nameText', styles.nameText) as string,
       docLink: mergeStyles('ms-ActivityItem-docLink', styles.docLink) as string,
       commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText) as string,
-      timeStamp: mergeStyles('ms-ActivityItem-timeStamp',styles.timeStamp) as string
+      timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp) as string
     };
   }
 }
