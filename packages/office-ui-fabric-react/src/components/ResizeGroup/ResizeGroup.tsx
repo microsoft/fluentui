@@ -84,25 +84,27 @@ const getCachedContentMeasurer = () => {
       // there are no more scaling states to apply.
       if (nextMeasuredData === undefined) {
         return {
-          renderedData: dataToMeasure
+          renderedData: dataToMeasure,
+          resizeDirection: undefined,
+          dataToMeasure: undefined
         };
       }
 
-      let cachedWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
+      measuredWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
 
       // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
-      if (cachedWidth === undefined) {
+      if (measuredWidth === undefined) {
         return {
           dataToMeasure: nextMeasuredData
         };
       }
 
-      measuredWidth = cachedWidth;
       dataToMeasure = nextMeasuredData;
     }
 
     return {
       renderedData: dataToMeasure,
+      resizeDirection: undefined,
       dataToMeasure: undefined
     };
   };
@@ -121,20 +123,20 @@ const getCachedContentMeasurer = () => {
       // there are no more scaling states to apply.
       if (nextMeasuredData === undefined) {
         return {
-          renderedData: dataToMeasure
+          renderedData: dataToMeasure,
+          resizeDirection: undefined,
+          dataToMeasure: undefined
         };
       }
 
-      let cachedWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
-
+      measuredWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
       // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
-      if (cachedWidth === undefined) {
+      if (measuredWidth === undefined) {
         return {
           dataToMeasure: nextMeasuredData
         };
       }
 
-      measuredWidth = cachedWidth;
       dataToMeasure = nextMeasuredData;
     }
 
