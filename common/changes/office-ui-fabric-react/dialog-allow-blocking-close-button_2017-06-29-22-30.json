@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Fix a scrolling issue (#2090)",
+      "comment": "Dialog: allow values in dialogContentProps to override all default values",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "miclo@microsoft.com"
 }

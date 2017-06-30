@@ -10,7 +10,7 @@
 $Dropdown-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
 $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
-$DropDown-item-height: 36px;
+$DropDown-item-height: 32px;
 
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
@@ -203,7 +203,7 @@ $DropDown-item-height: 36px;
   height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 5px 16px;
+  padding: 4px 16px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
