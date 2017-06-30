@@ -1,4 +1,8 @@
 import { validationState } from '../BasePicker.Props';
+import {
+  getRTL,
+  getInitials
+} from '../../../Utilities';
 
 export interface ISuggestionModel<T> {
   item: T;
@@ -87,12 +91,12 @@ export class SuggestionsController<T> {
     let personaToConvert = {
       key: name,
       primaryText: name,
-      imageInitials: name.indexOf(' ') > 0 ? (name.split(' ')[0].slice(0, 1) + name.split(' ')[1].slice(0, 1)) : name.slice(0, 1),
+      imageInitials: '!',
       validationState: currentValidationState
     };
 
-    if (currentValidationState === validationState.warning) {
-      personaToConvert.imageInitials = '!';
+    if (currentValidationState !== validationState.warning) {
+      personaToConvert.imageInitials = getInitials(name, getRTL());
     }
 
     let personaToAdd = this._convertSuggestionsToSuggestionItems([personaToConvert])[0];
