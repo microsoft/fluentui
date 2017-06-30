@@ -135,7 +135,8 @@ export function getNextElement(rootElement: HTMLElement,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement | null;
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null;
 
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null;
 
@@ -144,7 +145,8 @@ export function getPreviousElement(rootElement: HTMLElement,
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean): HTMLElement | null;
+  includeElementsInFocusZones?: boolean,
+  allowFocusRoot?: boolean): HTMLElement | null;
 
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
@@ -390,6 +392,8 @@ class Rectangle {
 export function setMemoizeWeakMap(weakMap: any): void;
 
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
+
+export function toMatrix < T >(items: T[], columnCount: number): T[][];
 
 export function unhoistMethods(source: any, methodNames: string[]): void;
 

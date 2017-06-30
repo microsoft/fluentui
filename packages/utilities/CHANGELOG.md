@@ -1,6 +1,27 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 21 Jun 2017 01:52:48 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2017 20:48:31 GMT and should not be manually modified.
+
+## 4.5.0
+Thu, 29 Jun 2017 20:48:31 GMT
+
+### Minor changes
+
+- Adding a new Grid utility
+
+## 4.4.2
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Removing localstorage persistence for rtl helpers.
+
+## 4.4.1
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
 
 ## 4.4.0
 Wed, 21 Jun 2017 01:52:48 GMT

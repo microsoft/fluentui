@@ -151,7 +151,7 @@ export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement |
   deferredValidationTime?: number;
 
   /**
-   * Optional class anme that is added to the container of the component.
+   * Optional class name that is added to the container of the component.
    */
   className?: string;
 

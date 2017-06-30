@@ -1,6 +1,58 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Jun 2017 20:02:00 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Jun 2017 20:48:31 GMT and should not be manually modified.
+
+## 4.13.0
+Thu, 29 Jun 2017 20:48:31 GMT
+
+### Minor changes
+
+- Adding a new component: SwatchColorPicker
+
+### Patches
+
+- Button: Revert setting label font-weight to bold
+- Add 'event' as first param for onColumnClick handler to match the param order.
+- ComboBox: Fix a scrolling issue (#2090)
+- Dropdown/ContextualMenu: Adjust height of items to 32px
+
+## 4.12.1
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Remove beak from CommandBar's and BaseButton's contextual menu
+- -SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning
+- Force resolve picker on blue or delayed response.
+- Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020
+- Persona: Fix orange initials rendered as green
+
+## 4.12.0
+Wed, 28 Jun 2017 10:12:04 GMT
+
+### Minor changes
+
+- Persona: Adding image alt, defaulting to empty string
+
+### Patches
+
+- Fixed focusing first item in DetailsList
+- MarqueeSelection: now with better performance in Edge.
+- Textfield: Fixed layout of underlined textfield with error
+
+## 4.11.0
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Minor changes
+
+- Commandbar: fix synchronous reflow 
+- Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
+
+### Patches
+
+- OverflowSet: Fix type definition to be compatible with latest @types/react
+- Persona: Fixing image sizing to cover correctly.
+- Enable forceConsistentCasingInFileNames tsconfig option
 
 ## 4.10.2
 Fri, 23 Jun 2017 20:02:00 GMT
