@@ -2,6 +2,148 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.13.2",
+      "tag": "office-ui-fabric-react_v4.13.2",
+      "date": "Fri, 30 Jun 2017 19:44:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ac69068d153fd9a2ea6f86131bec740e09389a0f",
+            "comment": "Breadcrumb: Use flexbox for layout to better support multiple font sizes"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "8f94339b01f2a1570768172ce399c8edfb5d9a6c",
+            "comment": "MessageBar: Fixed padding regressions with multiline and no actions "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.5.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.10 <1.0.0` to `>=0.12.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.13.1",
+      "tag": "office-ui-fabric-react_v4.13.1",
+      "date": "Fri, 30 Jun 2017 10:23:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "24a19bde23ec4ee1dc68c129e347ed5caa3589fa",
+            "comment": "Fixed spacing and vertical position of expand arrow, Added space between title and count, Changed to use flex box, Updated interactive state colors to use proper semantic slots"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "b8952cc22a3d80c509609d5f08db580420b2e853",
+            "comment": "Dialog: allow values in dialogContentProps to override all default values"
+          },
+          {
+            "author": "aadhars <adhargithub@gmail.com>",
+            "commit": "f477fbac0d81809c9d9335e8c817e53082a1ad30",
+            "comment": "GroupedList: Role of groupedList changed from \"grid\" to \"group\""
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.9 <1.0.0` to `>=0.11.10 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.13.0",
+      "tag": "office-ui-fabric-react_v4.13.0",
+      "date": "Thu, 29 Jun 2017 20:48:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "cc4513adf60d290214512c5e518dd9823a15acda",
+            "comment": "Button: Revert setting label font-weight to bold"
+          },
+          {
+            "author": "Glen Chao <glenchao@outlook.com>",
+            "commit": "e1795515b14b2dc26fce6901bae472ee81be5a27",
+            "comment": "Add 'event' as first param for onColumnClick handler to match the param order."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "b13f997161fa7657464df6d2c89f4100cf5325ec",
+            "comment": "ComboBox: Fix a scrolling issue (#2090)"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "33dc46bdd08c3e6020e74ef8f472435982dc75c0",
+            "comment": "Dropdown/ContextualMenu: Adjust height of items to 32px"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "1df26a8f1b5c02da41f36b1f4f20003ab20671d0",
+            "comment": "Adding a new component: SwatchColorPicker"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.2 <5.0.0` to `>=4.5.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.8 <1.0.0` to `>=0.11.9 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.12.1",
+      "tag": "office-ui-fabric-react_v4.12.1",
+      "date": "Thu, 29 Jun 2017 10:13:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "76601ad312613034f48799b43499de56c0e6863b",
+            "comment": "Remove beak from CommandBar's and BaseButton's contextual menu"
+          },
+          {
+            "author": "Boris Emorine <boris.emorine@gmail.com>",
+            "commit": "31758bdedec783d4f74194713b2e0102529b70dd",
+            "comment": "-SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "1ac5cc109ab14817cf1b968cb899997de4106b56",
+            "comment": "Force resolve picker on blue or delayed response."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "21689eaf74f8513ae51854a7e1dadb90821ae9d8",
+            "comment": "Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020"
+          },
+          {
+            "author": "P.J. Swesey <swese44@gmail.com>",
+            "commit": "b291aa138ed25079eea76244e64384a2cdbafa4f",
+            "comment": "Persona: Fix orange initials rendered as green"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.1 <5.0.0` to `>=4.4.2 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.7 <1.0.0` to `>=0.11.8 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.12.0",
       "tag": "office-ui-fabric-react_v4.12.0",
       "date": "Wed, 28 Jun 2017 10:12:04 GMT",

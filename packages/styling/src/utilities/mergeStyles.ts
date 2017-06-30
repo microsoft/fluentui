@@ -1,6 +1,7 @@
 import { css, Rule } from 'glamor';
 import { IStyle, IProcessedStyle } from '../interfaces/index';
-import { FabricPerformance } from '@uifabric/utilities/lib/index';
+
+import { FabricPerformance } from '@uifabric/utilities/lib/FabricPerformance';
 
 /**
  * Takes a collection of collection of styles, defined in various formats, and compresses them into
