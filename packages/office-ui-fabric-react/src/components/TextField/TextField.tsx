@@ -139,7 +139,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       addonString,
       onRenderAddon = this._onRenderAddon
     } = this.props;
-    let { isFocused } = this.state;//abc
+    let { isFocused } = this.state;
     const errorMessage: string = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
 
