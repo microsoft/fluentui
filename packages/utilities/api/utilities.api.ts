@@ -57,12 +57,8 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   // (undocumented)
   constructor(props: any, context: any);
-  public static addChangeListener(onChanged: IChangeListener): void;
   // (undocumented)
   public getChildContext(): any;
-  public static getDefault(fieldName: string): any;
-  public static removeChangeListener(onChanged: IChangeListener): void;
-  public static setDefault(name: string, value: any): void;
 }
 
 // WARNING: defaultProps has incomplete type information
@@ -171,12 +167,6 @@ export function hoistMethods(destination: any, source: any, exclusions: string[]
 interface IBaseProps {
   // (undocumented)
   componentRef?: any;
-}
-
-// (undocumented)
-interface IChangeListener {
-  // (undocumented)
-  (propName?: string): void;
 }
 
 // (undocumented)
