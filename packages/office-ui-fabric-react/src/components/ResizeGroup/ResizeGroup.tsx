@@ -225,10 +225,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     const { onRenderData, data } = this.props;
     const { dataToMeasure, renderedData } = this.state;
 
-    if (Object.keys(data).length === 0) {
-      return null;
-    }
-
     return (
       <div className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
         { dataToMeasure && (

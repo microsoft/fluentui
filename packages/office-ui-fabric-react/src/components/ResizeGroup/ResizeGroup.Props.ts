@@ -17,7 +17,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HT
    * Initial data to be passed to the onRenderData function. This data should represent what will be passed to the
    * render function when the parent container of the ResizeGroup is at it's maximum supported width.
   */
-  data?: any;
+  data: any;
 
   /**
    * Function to render the data. Called when rendering the contents to the screen and when
