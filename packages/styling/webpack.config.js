@@ -13,11 +13,6 @@ module.exports = {
     filename: BUNDLE_NAME + '.js',
   },
 
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
-  },
-
   resolve: {
     alias: {
       '@uifabric/styling': path.join(__dirname, 'src')
@@ -58,7 +53,8 @@ module.exports = {
       analyzerMode: 'static',
       reportFilename: BUNDLE_NAME + '.stats.html',
       openAnalyzer: false,
-      generateStatsFile: true
+      generateStatsFile: true,
+      statsFilename: BUNDLE_NAME + '.stats.json'
     }),
     new webpack.ProvidePlugin({
       __extends: path.join(__dirname, './src', 'extends.ts')

@@ -1,6 +1,7 @@
 import { css, Rule } from 'glamor';
 import { IStyle, IProcessedStyle } from '../interfaces/index';
-import { FabricPerformance } from '@uifabric/utilities/lib/index';
+
+import { FabricPerformance } from '@uifabric/utilities/lib/FabricPerformance';
 
 /**
  * Takes a collection of collection of styles, defined in various formats, and compresses them into
@@ -34,13 +35,13 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
   _parseArgs(args);
 
   let rulesObject: IStyle = null;
-  
+
   if (rules.length) {
     FabricPerformance.measure('glamor.css', () => {
       rulesObject = css(...rules);
     });
   }
-  
+
   if (classes.length) {
     if (rulesObject) {
       classes.push(rulesObject.toString());
