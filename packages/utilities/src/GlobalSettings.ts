@@ -77,6 +77,8 @@ export class GlobalSettings {
   }
 
   public static addChangeListener(cb: IChangeEventCallback): void {
+    // Note: we use generated ids on the callbacks to create a map of the callbacks, which optimizes removal.
+    // (It's faster to delete a key than it is to look up the index of an object and splice an array.)
     let id = cb.__id__;
 
     if (!id) {
