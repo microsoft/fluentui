@@ -36,7 +36,7 @@ export interface IResizeGroupState {
   measureContainer?: boolean;
 }
 
-const getMeasurementCache = () => {
+export const getMeasurementCache = () => {
   const measurementsCache: { [key: string]: number } = {};
 
   return {
@@ -55,8 +55,8 @@ const getMeasurementCache = () => {
   };
 };
 
-export const getNextResizeGroupStateProvider = () => {
-  const _measurementCache = getMeasurementCache();
+export const getNextResizeGroupStateProvider = (measurementCache = getMeasurementCache()) => {
+  const _measurementCache = measurementCache;
   let _containerWidth: number | undefined;
 
   const _getMeasuredWidth = (measuredData: any, getElementToMeasureWidth: () => number): number => {
@@ -191,6 +191,7 @@ export const getNextResizeGroupStateProvider = () => {
     }
 
     let nextState: IResizeGroupState = {
+      ...currentState,
       measureContainer: false
     };
 
