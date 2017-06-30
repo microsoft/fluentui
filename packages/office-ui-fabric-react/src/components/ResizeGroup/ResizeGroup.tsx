@@ -182,6 +182,7 @@ const getCachedContentMeasurer = () => {
           return _updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData);
         }
 
+        // If we are just setting the container width for the first time, we can't do any optimizations
         _containerWidth = newContainerWidth;
       }
 
