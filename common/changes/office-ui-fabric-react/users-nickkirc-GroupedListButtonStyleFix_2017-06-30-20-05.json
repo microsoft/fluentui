@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly.",
+      "comment": "GroupedList: Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly.",
       "type": "patch"
     }
   ],
