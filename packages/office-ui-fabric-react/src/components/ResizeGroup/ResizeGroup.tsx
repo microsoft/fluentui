@@ -59,22 +59,22 @@ export const getNextResizeGroupStateProvider = () => {
   const _measurementCache = getMeasurementCache();
   let _containerWidth: number | undefined;
 
-  const _getMeasuredWidth = (measuredData: any, elementToMeasure: HTMLElement | null): number => {
+  const _getMeasuredWidth = (measuredData: any, getElementToMeasureWidth: () => number): number => {
     let cachedWidth = _measurementCache.getCachedMeasurement(measuredData);
     if (cachedWidth !== undefined) {
       return cachedWidth;
     }
 
-    let measuredWidth = elementToMeasure.getBoundingClientRect().width;
+    let measuredWidth = getElementToMeasureWidth();
     _measurementCache.addMeasurementToCache(measuredData, measuredWidth);
     return measuredWidth;
   };
 
   const _shrinkContentsUntilTheyFit = (data: any,
     onReduceData: (prevData: any) => any,
-    elementToMeasure: HTMLElement | null): IResizeGroupState => {
+    getElementToMeasureWidth: () => number): IResizeGroupState => {
     let dataToMeasure = data;
-    let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
+    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
 
     while (measuredWidth > _containerWidth) {
       let nextMeasuredData = onReduceData(dataToMeasure);
@@ -111,9 +111,9 @@ export const getNextResizeGroupStateProvider = () => {
 
   const _growDataUntilItDoesNotFit = (data: any,
     onGrowData: (prevData: any) => any,
-    elementToMeasure: HTMLElement | null): IResizeGroupState => {
+    getElementToMeasureWidth: () => number): IResizeGroupState => {
     let dataToMeasure = data;
-    let measuredWidth = _getMeasuredWidth(data, elementToMeasure);
+    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
 
     while (measuredWidth < _containerWidth) {
       let nextMeasuredData = onGrowData(dataToMeasure);
@@ -173,7 +173,7 @@ export const getNextResizeGroupStateProvider = () => {
 
   return (props: IResizeGroupProps,
     currentState: IResizeGroupState,
-    elementToMeasure: HTMLElement | null,
+    getElementToMeasureWidth: () => number,
     newContainerWidth?: number): IResizeGroupState | undefined => {
     // If there is no new container width or data to measure, there is no need for a new state update
     if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
@@ -195,9 +195,9 @@ export const getNextResizeGroupStateProvider = () => {
     };
 
     if (currentState.resizeDirection === 'grow') {
-      nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, elementToMeasure) };
+      nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth) };
     } else {
-      nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, elementToMeasure) };
+      nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureWidth) };
     }
 
     return nextState;
@@ -267,7 +267,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (this.state.measureContainer) {
       containerWidth = this._root.getBoundingClientRect().width;
     }
-    let nextState = this._getNextResizeGroupState(this.props, this.state, this._measured, containerWidth);
+    let nextState = this._getNextResizeGroupState(this.props, this.state, () => this._measured.getBoundingClientRect().width, containerWidth);
     if (nextState) {
       this.setState(nextState);
     }
