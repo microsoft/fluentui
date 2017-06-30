@@ -124,5 +124,32 @@ describe('ResizeGroup', () => {
       });
       expect(measuredElementWidthStub.callCount).to.equal(0);
     });
+
+    it('sets dataToMeasure when the current data is in the cache but the onReduceData is not in the cache', () => {
+      const dataArray = [{ cacheKey: '5' },
+      { cacheKey: '4' }];
+
+      let measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataArray[0], 50);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
+
+      const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
+      const measuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        measuredElementWidthStub,
+        10);
+
+      expect(result).to.deep.equal({
+        dataToMeasure: dataArray[1],
+        measureContainer: false,
+        resizeDirection: 'shrink'
+      });
+      expect(measuredElementWidthStub.callCount).to.equal(0);
+    });
   });
 });
