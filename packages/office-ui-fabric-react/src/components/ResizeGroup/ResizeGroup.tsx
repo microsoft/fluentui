@@ -55,7 +55,7 @@ const getMeasurementCache = () => {
   };
 };
 
-const getCachedContentMeasurer = () => {
+export const getNextResizeGroupStateProvider = () => {
   const _measurementCache = getMeasurementCache();
   let _containerWidth: number | undefined;
 
@@ -171,43 +171,41 @@ const getCachedContentMeasurer = () => {
     return { ...nextState, measureContainer: false };
   };
 
-  return {
-    getNextRezieGroupState: (props: IResizeGroupProps,
-      currentState: IResizeGroupState,
-      elementToMeasure: HTMLElement | null,
-      newContainerWidth?: number): IResizeGroupState | undefined => {
-      // If there is no new container width or data to measure, there is no need for a new state update
-      if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
-        return undefined;
-      }
-
-      if (newContainerWidth) {
-        // If we know what the last container size was and we rendered data at that width, we can do an optimized render
-        if (_containerWidth && currentState.renderedData) {
-          return _updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData);
-        }
-
-        // If we are just setting the container width for the first time, we can't do any optimizations
-        _containerWidth = newContainerWidth;
-      }
-
-      let nextState: IResizeGroupState = {
-        measureContainer: false
-      };
-
-      if (currentState.resizeDirection === 'grow') {
-        nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, elementToMeasure) };
-      } else {
-        nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, elementToMeasure) };
-      }
-
-      return nextState;
+  return (props: IResizeGroupProps,
+    currentState: IResizeGroupState,
+    elementToMeasure: HTMLElement | null,
+    newContainerWidth?: number): IResizeGroupState | undefined => {
+    // If there is no new container width or data to measure, there is no need for a new state update
+    if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
+      return undefined;
     }
+
+    if (newContainerWidth) {
+      // If we know what the last container size was and we rendered data at that width, we can do an optimized render
+      if (_containerWidth && currentState.renderedData) {
+        return _updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData);
+      }
+
+      // If we are just setting the container width for the first time, we can't do any optimizations
+      _containerWidth = newContainerWidth;
+    }
+
+    let nextState: IResizeGroupState = {
+      measureContainer: false
+    };
+
+    if (currentState.resizeDirection === 'grow') {
+      nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, elementToMeasure) };
+    } else {
+      nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, elementToMeasure) };
+    }
+
+    return nextState;
   };
 };
 
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
-  private _measurementProvider = getCachedContentMeasurer();
+  private _getNextResizeGroupState = getNextResizeGroupStateProvider();
   private _root: HTMLElement;
   private _measured: HTMLElement;
 
@@ -269,7 +267,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (this.state.measureContainer) {
       containerWidth = this._root.getBoundingClientRect().width;
     }
-    let nextState = this._measurementProvider.getNextRezieGroupState(this.props, this.state, this._measured, containerWidth);
+    let nextState = this._getNextResizeGroupState(this.props, this.state, this._measured, containerWidth);
     if (nextState) {
       this.setState(nextState);
     }
