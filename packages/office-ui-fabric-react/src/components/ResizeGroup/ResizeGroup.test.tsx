@@ -151,5 +151,147 @@ describe('ResizeGroup', () => {
       });
       expect(measuredElementWidthStub.callCount).to.equal(0);
     });
+
+    it('renders the last measured data if onReduceData returns undefined', () => {
+      const dataToMeasure = { index: 5 };
+      const resizeGroupProps = getRequiredResizeGroupProps();
+
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
+      resizeGroupProps.onReduceData.returns(undefined);
+
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(25);
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        getMeasuredElementWidthStub,
+        10);
+
+      expect(result).to.deep.equal({
+        dataToMeasure: undefined,
+        renderedData: dataToMeasure,
+        resizeDirection: undefined,
+        measureContainer: false
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+    });
+
+    it('renders the last measured data in the cache if onReduceData returns undefined', () => {
+      const dataArray = [{ cacheKey: '5' },
+      { cacheKey: '4' }];
+
+      let measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataArray[0], 50);
+      measurementCache.addMeasurementToCache(dataArray[1], 40);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
+      resizeGroupProps.onReduceData.onSecondCall().returns(undefined);
+
+      const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
+      const measuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        measuredElementWidthStub,
+        10);
+
+      expect(result).to.deep.equal({
+        dataToMeasure: undefined,
+        renderedData: dataArray[1],
+        resizeDirection: undefined,
+        measureContainer: false
+      });
+      expect(measuredElementWidthStub.callCount).to.equal(0);
+    });
+
+    it('does not crash when the container size is set and there is no dataToMeasure', () => {
+      const dataToMeasure = { foo: 'bar' };
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        {},
+        getMeasuredElementWidthStub,
+        50);
+
+      expect(result).to.deep.equal({
+        measureContainer: false,
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+    });
+
+    it('makes sure the contents still fit when the container width decreases', () => {
+      const initialWidth = 50;
+      const reducedWidth = 40;
+      const renderedData = { foo: 'bar' };
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      const resizeGroupState: IResizeGroupState = { renderedData, resizeDirection: 'shrink' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+
+      // Set the initial window width
+      getNextResizeGroupState(resizeGroupProps,
+        {},
+        undefined,
+        initialWidth);
+
+      // Pass in a state that reflects some rendered data
+      let currentState = {
+        renderedData: renderedData
+      };
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        reducedWidth);
+
+      expect(result).to.deep.equal({
+        renderedData: renderedData,
+        dataToMeasure: renderedData,
+        resizeDirection: 'shrink',
+        measureContainer: false
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+    });
+
+    it('starts from the beginning when the container width increases', () => {
+      const initialWidth = 50;
+      const increasedWidth = 60;
+      const renderedData = { foo: 'bar' };
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' } };
+      const resizeGroupState: IResizeGroupState = { renderedData, resizeDirection: 'shrink' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+
+      // Set the initial window width
+      getNextResizeGroupState(resizeGroupProps,
+        {},
+        undefined,
+        initialWidth);
+
+      // Pass in a state that reflects some rendered data
+      let currentState = {
+        renderedData: renderedData
+      };
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        increasedWidth);
+
+      expect(result).to.deep.equal({
+        renderedData: renderedData,
+        dataToMeasure: resizeGroupProps.data,
+        resizeDirection: 'shrink',
+        measureContainer: false
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+    });
   });
 });

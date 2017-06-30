@@ -183,7 +183,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
       if (_containerWidth && currentState.renderedData) {
-        return _updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData);
+        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData) };
       }
 
       // If we are just setting the container width for the first time, we can't do any optimizations
@@ -195,10 +195,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       measureContainer: false
     };
 
-    if (currentState.resizeDirection === 'grow') {
-      nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth) };
-    } else {
-      nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureWidth) };
+    if (currentState.dataToMeasure) {
+      if (currentState.resizeDirection === 'grow') {
+        nextState = { ...nextState, ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth) };
+      } else {
+        nextState = { ...nextState, ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureWidth) };
+      }
     }
 
     return nextState;
@@ -268,7 +270,11 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     if (this.state.measureContainer) {
       containerWidth = this._root.getBoundingClientRect().width;
     }
-    let nextState = this._getNextResizeGroupState(this.props, this.state, () => this._measured.getBoundingClientRect().width, containerWidth);
+    let nextState = this._getNextResizeGroupState(this.props,
+      this.state,
+      () => this._measured.getBoundingClientRect().width,
+      containerWidth);
+
     if (nextState) {
       this.setState(nextState);
     }
