@@ -1,45 +1,7 @@
 @import '../../common/common';
 
-//
-// Office UI Fabric
-// --------------------------------------------------
-// Panel styles
-
-
-.root {
-}
-
-.scrollCopy {
-  position: absolute;
-  pointer-events: none;
-}
-
-.scrollRegion {
-}
-
-.contentArea {
-}
-
 .stickyContainer {
   position: relative;
   max-height: inherit;
   height: 100%;
-}
-
-.layerHostTop {
-  background: $ms-color-white;
-  position: absolute;
-  visibility: hidden;
-  top: 0;
-  width: 100%;
-  pointer-events: auto;
-}
-
-.layerHostBottom {
-  background: $ms-color-white;
-  position: absolute;
-  visibility: hidden;
-  bottom: 0;
-  width: 100%;
-  pointer-events: auto;
 }

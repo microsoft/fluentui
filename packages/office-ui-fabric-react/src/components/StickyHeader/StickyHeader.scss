@@ -1,15 +1,11 @@
 @import '../../common/common';
 
-//
-// Office UI Fabric
-// --------------------------------------------------
-// Panel styles
-
-
-.root {
+.isSticky {
+  position: fixed;
   -webkit-overflow-scrolling: touch;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  z-index: 1;
 }

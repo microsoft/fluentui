@@ -12,18 +12,19 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
   }
 
   public render() {
-    let contentAreas = [];
+    let contentAreas: JSX.Element[] = [];
     for (let i = 0; i < 3; i++) {
-      let newContent = {
-        content: this._createContentArea(i)
-      };
-      contentAreas.push(newContent);
+      contentAreas.push(this._createContentArea(i));
     }
 
     return (
       <div>
         <div>{ lorem(60) }</div>
-        <ScrollablePane className='scrollablePaneDefaultExample' contentAreas={ contentAreas } />
+        <ScrollablePane className='scrollablePaneDefaultExample'>
+          { contentAreas.map((ele) => {
+            return ele;
+          }) }
+        </ScrollablePane>
       </div>
     );
   }
@@ -36,7 +37,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   private _createContentArea(index) {
     return (
-      <div>
+      <div key={ index }>
         <StickyHeader>
           <div className='sticky'>
             THIS IS WRAPPED IN STICKY { index }
