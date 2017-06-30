@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.13.1",
+      "tag": "office-ui-fabric-react_v4.13.1",
+      "date": "Fri, 30 Jun 2017 10:23:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "24a19bde23ec4ee1dc68c129e347ed5caa3589fa",
+            "comment": "Fixed spacing and vertical position of expand arrow, Added space between title and count, Changed to use flex box, Updated interactive state colors to use proper semantic slots"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "b8952cc22a3d80c509609d5f08db580420b2e853",
+            "comment": "Dialog: allow values in dialogContentProps to override all default values"
+          },
+          {
+            "author": "aadhars <adhargithub@gmail.com>",
+            "commit": "f477fbac0d81809c9d9335e8c817e53082a1ad30",
+            "comment": "GroupedList: Role of groupedList changed from \"grid\" to \"group\""
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.9 <1.0.0` to `>=0.11.10 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.13.0",
       "tag": "office-ui-fabric-react_v4.13.0",
       "date": "Thu, 29 Jun 2017 20:48:31 GMT",
