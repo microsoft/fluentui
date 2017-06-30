@@ -3,161 +3,147 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  css,
-  getNativeProps,
-  divProperties,
-  customizable,
   autobind,
-  getRTL
+  css,
+  divProperties,
+  getNativeProps,
+  getId
 } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
-import { Callout, ICallout } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { ExpandingCard } from './ExpandingCard';
+import { ExpandingCardMode } from './ExpandingCard.Props';
 
 import { getStyles } from './HoverCard.styles';
 
-export enum HoverCardMode {
-  compact = 0,
-  expanded = 1
-}
-
 export interface IHoverCardState {
-  mode: HoverCardMode;
-  needsScroll: boolean;
+  isHoverCardVisible: boolean;
+  mode: ExpandingCardMode;
 }
 
-@customizable(['theme'])
 export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
+    cardOpenDelay: 500,
+    cardDismissDelay: 100,
     expandedCardOpenDelay: 1000,
-    openExpanded: false,
-    compactCardHeight: 156,
-    expandedCardHeight: 384
+    instantOpenOnClick: false
   };
 
-  private _styles: IHoverCardStyles;
-  private _callout: ICallout;
-  private _expandedElem: HTMLDivElement;
+  // The wrapping div that gets the hover events
+  private _hoverCard: HTMLElement;
+  private _dismissTimerId: number;
+  private _openTimerId: number;
 
+  private _styles: IHoverCardStyles;
+
+  // Constructor
   constructor(props: IHoverCardProps) {
     super(props);
 
     this.state = {
-      mode: props.openExpanded ? HoverCardMode.expanded : HoverCardMode.compact,
-      needsScroll: false
+      isHoverCardVisible: false,
+      mode: ExpandingCardMode.compact
     };
   }
 
-  public componentWillMount() {
-    this._async.setTimeout(() => {
-      if (this.state.mode !== HoverCardMode.expanded) {
-        this.setState({
-          mode: HoverCardMode.expanded
-        });
-      }
-    }, this.props.expandedCardOpenDelay);
-  }
-
-  public componentDidMount() {
-    if (this._expandedElem && this._expandedElem.scrollHeight >= this.props.expandedCardHeight) {
-      this.setState({
-        needsScroll: true
-      });
-    }
-  }
-
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
-    if (newProps.openExpanded !== this.props.openExpanded) {
-      this.setState({
-        mode: newProps.openExpanded ? HoverCardMode.expanded : HoverCardMode.compact
-      });
+    if (newState.isHoverCardVisible !== this.state.isHoverCardVisible) {
+      if (newState.isHoverCardVisible) {
+        this._async.setTimeout(() => {
+          this.setState({
+            mode: ExpandingCardMode.expanded
+          });
+        }, this.props.expandedCardOpenDelay);
+      } else {
+        this.setState({
+          mode: ExpandingCardMode.compact
+        })
+      }
     }
   }
 
-  public componentWillUnmount() {
-    this._async.dispose();
-  }
-
+  // Render
   public render() {
     const {
-      targetElement,
+      expandingCardProps,
+      children,
       id,
-      theme,
-      styles: customStyles,
-      onRenderCompactContent,
-      onRenderExpandedContent,
-      compactCardHeight,
-      expandedCardHeight
+      instantOpenOnClick,
+      setAriaDescribedBy = true,
+      styles: customStyles
     } = this.props;
-    this._styles = getStyles(theme, customStyles);
+    const { isHoverCardVisible, mode } = this.state;
+    const hoverCardId = id || getId('hoverCard');
+
+    this._styles = getStyles(customStyles);
 
     return (
-      <Callout
-        componentRef={ this._resolveRef('_callout') }
-        className={ css(
-          AnimationClassNames.scaleUpIn100,
-          this._styles.root
-        ) }
-        targetElement={ targetElement }
-        { ...getNativeProps(this.props, divProperties) }
-        isBeakVisible={ false }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
-        directionalHintFixed={ true }
-        finalHeight={ compactCardHeight + expandedCardHeight }
-        minPagePadding={ 24 }
+      <div
+        className={ css(this._styles.host) }
+        ref={ this._resolveRef('_hoverCard') }
+        { ...{ onFocusCapture: this._cardOpen } }
+        { ...{ onBlurCapture: this._cardDismiss } }
+        onMouseEnter={ this._cardOpen }
+        onMouseLeave={ this._cardDismiss }
+        onClick={ instantOpenOnClick && this._instantOpenExpanded }
+        aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
-        <div
-          { ...{ onFocusCapture: this.props.onEnter } }
-          { ...{ onBlurCapture: this.props.onDismiss } }
-          onMouseEnter={ this.props.onEnter }
-          onMouseLeave={ this.props.onDismiss }
-        >
-          { this._onRenderCompactContent() }
-          { this._onRenderExpandedContent() }
-        </div>
-      </Callout >
-    );
-  }
-
-  public get isExpanded(): boolean {
-    return this.state.mode !== HoverCardMode.compact;
-  }
-
-  @autobind
-  private _onRenderCompactContent(): JSX.Element {
-    return (
-      <div className={ mergeStyles(this._styles.compactCard, { height: this.props.compactCardHeight + 'px' }) as string }>
-        { this.props.onRenderCompactContent(this.props.item) }
-      </div>
-    );
-  }
-
-  @autobind
-  private _onRenderExpandedContent(): JSX.Element {
-    return (
-      <div className={ mergeStyles(
-        this._styles.expandedCard,
-        this.isExpanded && { height: this.props.expandedCardHeight + 'px' },
-        this.state.needsScroll && { 'overflow-y': 'auto' }
-      ) as string }
-        ref={ this._resolveRef('_expandedElem') }
-      >
-        { this.props.onRenderExpandedContent && this.props.onRenderExpandedContent(this.props.item) }
-      </div>
-    );
-  }
-
-  @autobind
-  private _checkNeedsScroll(): void {
-    if (this._expandedElem) {
-      this._async.requestAnimationFrame(() => {
-        if (this._expandedElem.scrollHeight >= this.props.expandedCardHeight) {
-          this.setState({
-            needsScroll: true
-          });
+        { children }
+        { isHoverCardVisible &&
+          <ExpandingCard
+            { ...expandingCardProps }
+            id={ hoverCardId }
+            targetElement={ this._getTargetElement() }
+            onEnter={ this._cardOpen }
+            onDismiss={ this._cardDismiss }
+            { ...getNativeProps(this.props, divProperties) }
+            mode={ mode }
+          />
         }
-      });
-    }
+      </div>
+    );
+  }
+
+  private _getTargetElement(): HTMLElement {
+    return this._hoverCard;
+  }
+
+  // Show HoverCard
+  @autobind
+  private _cardOpen(ev: any) {
+    this._async.clearTimeout(this._dismissTimerId);
+
+    this._openTimerId = this._async.setTimeout(() => {
+      if (!this.state.isHoverCardVisible) {
+        this.setState({
+          isHoverCardVisible: true,
+          mode: ExpandingCardMode.compact
+        });
+      }
+    }, this.props.cardOpenDelay);
+  }
+
+  // Hide HoverCard
+  @autobind
+  private _cardDismiss(ev: React.MouseEvent<HTMLDivElement> | React.FocusEvent<HTMLDivElement>) {
+    const eventType = ev.type;
+    this._async.clearTimeout(this._openTimerId);
+
+    this._dismissTimerId = this._async.setTimeout(() => {
+      if (!(this.props.sticky && eventType === 'mouseleave')) {
+        this.setState({
+          isHoverCardVisible: false,
+          mode: ExpandingCardMode.compact
+        });
+      }
+    }, this.props.cardDismissDelay);
+  }
+
+  // Instant Open the card in Expanded mode
+  @autobind
+  private _instantOpenExpanded(ev) {
+    this.setState({
+      isHoverCardVisible: true,
+      mode: ExpandingCardMode.expanded
+    });
   }
 }

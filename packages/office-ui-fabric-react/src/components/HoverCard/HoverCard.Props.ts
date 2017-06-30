@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { HoverCard } from './HoverCard';
-import { IRenderFunction } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
+import { IExpandingCardProps } from './ExpandingCard.Props';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { IStyle } from '../../Styling';
 
 export interface IHoverCard {
 
@@ -12,69 +13,51 @@ export interface IHoverCard {
  */
 export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | HoverCard> {
   /**
-   * Optional callback to access the IHoverCard interface. Use this instead of ref for accessing
+   * Optional callback to access the IHoverCardHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: (component: IHoverCard) => void;
 
   /**
-   *  Item to be returned with onRender functions
+   * Additional properties to pass through for HoverCard, reference detail properties in IHoverCardProps
    */
-  item?: any;
+  expandingCardProps?: IExpandingCardProps;
 
   /**
-   *  Render function to populate compact content area
+   * Whether or not to mark the container as described by the hover card.
+   * If not specified, the caller should mark as element as described by the hover card id.
    */
-  onRenderCompactContent: IRenderFunction<IHoverCardProps>;
+  setAriaDescribedBy?: boolean;
 
   /**
-   *  Render function to populate expanded content area
+   * Length of compact card delay
+   * @default 500
    */
-  onRenderExpandedContent?: IRenderFunction<IHoverCardProps>;
+  cardOpenDelay?: number;
 
   /**
-   * Element to anchor the HoverCard to.
+   * Length of card dismiss delay. A min number is necessary for pointer to hop between target and card
+   * @default 100
    */
-  targetElement?: HTMLElement;
+  cardDismissDelay?: number;
 
   /**
-   * Callback when the HoverCard tries to open
-   */
-  onEnter?: (ev?: any) => void;
-
-  /**
-   * Callback when the HoverCard tries to close
-   */
-  onDismiss?: (ev?: any) => void;
-
-  /**
-   * Time in ms when expanded card should open
+   * Time in ms when expanded card should open after compact card
    * @default 1000
    */
   expandedCardOpenDelay?: number;
 
   /**
-   * Height of compact card
-   * @default 156
-   */
-  compactCardHeight?: number;
-
-  /**
-   * Height of expanded card
-   * @default 384
-   */
-  expandedCardHeight?: number;
-
-  /**
-   * Use to open the card in expanded format and not wait for the delay
+   * If true disables Card dismiss upon mouse leave, so that card sticks around.
    * @default false
    */
-  openExpanded?: boolean;
+  sticky?: boolean;
 
   /**
-   * Theme provided by HOC.
+   * Enables instant open of the full card upon click
+   * @default false
    */
-  theme?: ITheme;
+  instantOpenOnClick?: boolean;
 
   /**
    * Custom styles for this component
@@ -84,17 +67,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
 
 export interface IHoverCardStyles {
   /**
-   * Style for the root element in the default enabled, non-toggled state.
+   * Style for the host element in the default enabled, non-toggled state.
    */
-  root?: IStyle;
-
-  /**
-   * Style for the main card element.
-   */
-  compactCard?: IStyle;
-
-  /**
-   * Base Style for the expanded card content
-   */
-  expandedCard?: IStyle;
+  host?: IStyle;
 }

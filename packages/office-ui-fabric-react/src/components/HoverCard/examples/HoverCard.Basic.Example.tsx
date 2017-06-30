@@ -3,8 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
-  HoverCardHost,
-  IHoverCardProps
+  HoverCard,
+  IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
@@ -49,19 +49,19 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
   @autobind
   private _onRenderItemColumn(item, index, column) {
-    const hoverCardProps: IHoverCardProps = {
-      onRenderCompactContent: this._onRenderCompactContent,
-      onRenderExpandedContent: this._onRenderExpandedContent,
-      item: item
+    const expandingCardProps: IExpandingCardProps = {
+      onRenderCompactCard: this._onRenderCompactCard,
+      onRenderExpandedCard: this._onRenderExpandedCard,
+      renderData: item
     };
 
     if (column.key === 'location') {
       return (
-        <HoverCardHost id='myID1' hoverCardProps={ hoverCardProps }>
+        <HoverCard id='myID1' expandingCardProps={ expandingCardProps } instantOpenOnClick={ true }>
           <div className='HoverCard-item'>
             { item.location }
           </div>
-        </HoverCardHost>
+        </HoverCard>
       );
     }
 
@@ -69,7 +69,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   }
 
   @autobind
-  private _onRenderCompactContent(item: any): JSX.Element {
+  private _onRenderCompactCard(item: any): JSX.Element {
     return (
       <div className='hoverCardExample-compactCard'>
         <a target='_blank' href={ `http://wikipedia.org/wiki/${item.location}` }>
@@ -80,10 +80,9 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   }
 
   @autobind
-  private _onRenderExpandedContent(item: any): JSX.Element {
+  private _onRenderExpandedCard(item: any): JSX.Element {
     return (
       <div className='hoverCardExample-expandedCard'>
-        { item.description }
         { item.description }
         { item.description }
         { item.description }
