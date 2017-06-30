@@ -1,5 +1,12 @@
 @import '../../common/common';
 
+$rowHeight: 40px;
+
+// component slots
+$detailsList-item-hover-color: $listItemHoverColor;
+$detailsList-item-selected-color: $listItemSelectedColor;
+$detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
+
 $groupHeader-ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
 $groupHeader-ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
 $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
@@ -10,35 +17,33 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   @include focus-border();
 
   &:hover {
-    background: $ms-color-themeLighterAlt;
+    background: $detailsList-item-hover-color;
   }
   &.rootIsSelected {
-    background: $ms-color-themeLighter;
+    background: $detailsList-item-selected-color;
   }
   &.rootIsSelected:hover {
-    background: $ms-color-themeLight;
+    background: $detailsList-item-selected-hover-color;
   }
+}
+
+.groupHeaderContainer {
+  display: flex;
+  align-items: center;
+  height: $rowHeight;
 }
 
 .check,
 .expand {
   @include focus-border();
-  display: inline-block;
   cursor: default;
-  padding: 6px;
-  transform: translateY(50%);
-  margin-top: -12px;
-  box-sizing: border-box;
-  vertical-align: top;
   background: none;
   border: none;
-  font-size: $ms-icon-size-s;
-  top: 4px;
+  font-size: $ms-icon-size-l;
 }
 
 .check {
   opacity: 0;
-  margin-top: -10px;
 
   &:focus {
     opacity: 1;
@@ -52,16 +57,19 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 .title {
   @include ms-font-xl;
-  padding: 14px 6px;
-  display: inline-block;
   cursor: pointer;
   outline: 0;
 }
 
+.headerCount {
+  padding: 0px 4px;
+}
+
 .expand {
   width: 36px;
-  height: 40px;
+  height: $rowHeight;
   color: $ms-color-neutralSecondary;
+  padding-top: 4px;
 
   :global(.ms-Icon) {
     transform: rotate(-180deg);
@@ -75,11 +83,8 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 
 .loading {
-  display: inline-block;
   visibility: hidden;
   opacity: 0;
-  padding: 0px 16px;
-  vertical-align: middle;
   transition: visibility $ms-animation-duration-3, opacity $ms-animation-duration-3;
 
   &.loadingIsVisible {
@@ -89,9 +94,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 }
 
 .dropIcon {
-  display: inline-block;
-  position: relative;
-  top: -16px;
+  position: absolute;
   @include ms-left(-26px);
   font-size: $ms-icon-size-l;
   color: $ms-color-neutralSecondaryAlt;

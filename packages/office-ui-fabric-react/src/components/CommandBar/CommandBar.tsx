@@ -142,7 +142,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         { (contextualMenuProps) ?
           (<ContextualMenu
             className={ css('ms-CommandBar-menuHost') }
-            isBeakVisible={ true }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             { ...contextualMenuProps }
             targetElement={ contextualMenuTarget }

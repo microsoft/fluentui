@@ -46,7 +46,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     );
   }
 
-  private _onColumnClick(column) {
+  private _onColumnClick(event, column) {
     let { sortedItems, columns } = this.state;
     let isSortedDescending = column.isSortedDescending;
 
