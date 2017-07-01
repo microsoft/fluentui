@@ -5,6 +5,7 @@ import {
 } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.Props';
 import styles = require('./ResizeGroup.scss');
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const RESIZE_DELAY = 16;
 
@@ -34,6 +35,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _root: HTMLElement;
   private _measured: HTMLElement;
+  private _rendered: HTMLElement;
   private _lastKnownRootWidth: number | undefined = undefined;
   private _lastKnownMeasuredWidth: number | undefined = undefined;
 
@@ -82,6 +84,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
         ) }
 
         { renderedData && onRenderData(renderedData) }
+
       </div>
     );
   }
@@ -141,32 +144,40 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     const { shouldMeasure } = this.state;
 
     if (shouldMeasure && Object.keys(data).length !== 0 && this._root && this._measured) {
-      this._setStateToDoneMeasuring();
-      this._asyncMeasure(data, onReduceData);
+      // Set the shouldMeasure to false to show all the primary items
+      this.setState((prevState, props) => {
+        return {
+          renderedData: this.props.data,
+          shouldMeasure: false,
+        };
+      });
+
+      this._asyncMeasure(data, onReduceData, this._root, this._measured, this.state.measuredData);
     }
   }
 
-  private _asyncMeasure(data: any, onReduceData: (prevData: any) => any) {
-    //this._async.requestAnimationFrame(() => {
-    const containerWidth = this._lastKnownRootWidth = this._root.getBoundingClientRect().width;
-    const measuredWidth = this._lastKnownMeasuredWidth = this._measured.getBoundingClientRect().width;
-    if ((measuredWidth > containerWidth)) {
-      let nextMeasuredData = onReduceData(this.state.measuredData);
+  private _asyncMeasure(data: any, onReduceData: (prevData: any) => any, root: HTMLElement, measured: HTMLElement, measuredData: any) {
+    this._async.requestAnimationFrame(() => {
+      const containerWidth = this._lastKnownRootWidth = root.getBoundingClientRect().width;
+      const measuredWidth = this._lastKnownMeasuredWidth = measured.getBoundingClientRect().width;
 
-      // We don't want to get stuck in an infinite render loop when there are no more
-      // scaling steps, so implementations of onReduceData should return undefined when
-      // there are no more scaling states to apply.
-      if (nextMeasuredData !== undefined) {
-        this.setState({
-          measuredData: nextMeasuredData,
-        });
+      if ((measuredWidth > containerWidth)) {
+        let nextMeasuredData = onReduceData(measuredData);
+
+        // We don't want to get stuck in an infinite render loop when there are no more
+        // scaling steps, so implementations of onReduceData should return undefined when
+        // there are no more scaling states to apply.
+        if (nextMeasuredData !== undefined) {
+          this.setState({
+            measuredData: nextMeasuredData,
+            shouldMeasure: true,
+          });
+        } else {
+          this._setStateToDoneMeasuring();
+        }
       } else {
         this._setStateToDoneMeasuring();
       }
-
-    } else {
-      this._setStateToDoneMeasuring();
-    }
-    //});
+    });
   }
 }
