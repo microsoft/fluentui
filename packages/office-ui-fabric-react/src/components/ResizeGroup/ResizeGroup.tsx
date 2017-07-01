@@ -35,7 +35,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
   private _root: HTMLElement;
   private _measured: HTMLElement;
-  private _rendered: HTMLElement;
   private _lastKnownRootWidth: number | undefined = undefined;
   private _lastKnownMeasuredWidth: number | undefined = undefined;
 
@@ -84,7 +83,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
         ) }
 
         { renderedData && onRenderData(renderedData) }
-
       </div>
     );
   }
