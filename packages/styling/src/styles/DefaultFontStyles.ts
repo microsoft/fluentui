@@ -200,7 +200,7 @@ function _registerDefaultFontFaces(): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win: {} = typeof window !== 'undefined' ? window : undefined;
+  let win = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
