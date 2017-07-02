@@ -3,7 +3,8 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentChecklist
 } from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
 import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
@@ -86,6 +87,15 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
               <li>Don't use a SpinButton for a range of three values or less.</li>
             </ul>
           </div>
+        }
+        componentChecklist={
+          <ComponentChecklist
+            designApproved={ false }
+            highContrastSupport={ false }
+            keyboardAccessibilitySupport={ false }
+            rtlSupport={ false }
+            status={ false }
+          />
         }
         related={
           <a href='https://dev.office.com/fabric-js/Components/SpinButton/SpinButton.html'>Fabric JS</a>

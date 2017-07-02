@@ -20,6 +20,7 @@ export interface IComponentPageProps {
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   className?: string;
+  componentChecklist?: JSX.Element;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -41,7 +42,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       componentName,
       exampleCards,
       overview,
-      className
+      className,
+      componentChecklist
     } = this.props;
 
     return (
@@ -65,8 +67,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             </div>
             { this._getPropertiesTable() }
           </div>
-        </div>
-      </div>
+          <div className='ComponentPage-variantsSection'>
+            { this._getComponentChecklist() }
+          </div>
+        </div >
+      </div >
     );
   }
 
@@ -169,5 +174,18 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         </div>
       );
     }
+  }
+
+  private _getComponentChecklist(): JSX.Element | null {
+    if (this.props.componentChecklist) {
+      return (
+        <div>
+          <h2 className='ComponentPage-subHeading'>Status</h2>
+          { this.props.componentChecklist }
+        </div>
+      );
+    }
+
+    return null;
   }
 }

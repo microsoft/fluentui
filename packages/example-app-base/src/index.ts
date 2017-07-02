@@ -1,4 +1,5 @@
 export * from './components/App/App';
+export * from './components/ComponentChecklist/ComponentChecklist';
 export * from './components/ComponentPage/ComponentPage';
 export * from './components/ComponentPage/ComponentPage';
 export * from './components/ComponentPage/IComponentDemoPageProps';
