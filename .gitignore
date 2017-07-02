@@ -111,3 +111,5 @@ gulp-cache
 
 # NPM debug logs
 npm-debug.log.*
+
+package-lock.json
