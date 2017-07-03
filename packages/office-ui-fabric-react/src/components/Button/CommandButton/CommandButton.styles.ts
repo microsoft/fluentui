@@ -12,59 +12,66 @@ import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
 
-const DEFAULT_BUTTON_HEIGHT = '40px';
-const DEFAULT_PADDING = '0 4px';
+const COMMAND_BUTTON_HEIGHT = '40px';
+const COMMAND_BUTTON_MINWIDTH = '40px';
+const COMMAND_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IButtonStyles
+  customStyles?: IButtonStyles,
+  focusInset?: string,
+  focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
     root: {
-      borderWidth: '0',
-      padding: DEFAULT_PADDING,
-      height: DEFAULT_BUTTON_HEIGHT,
+      minWidth: COMMAND_BUTTON_MINWIDTH,
+      height: COMMAND_BUTTON_HEIGHT,
+      backgroundColor: theme.palette.neutralLighter,
       color: theme.palette.neutralPrimary,
-      backgroundColor: 'transparent'
+      padding: COMMAND_PADDING,
+      ':focus': {
+        backgroundColor: theme.palette.neutralLight,
+        color: theme.palette.neutralDark
+      }
     },
 
     rootHovered: {
-      color: theme.palette.themeDarker
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.neutralDark,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootPressed: {
-      color: theme.palette.themePrimary
-    },
-
-    rootDisabled: {
-      color: theme.palette.neutralTertiary,
-      backgroundColor: 'transparent'
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDarker
+      }
     },
 
     rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight
+      backgroundColor: theme.palette.neutralQuaternary,
+      color: theme.palette.black,
     },
 
-    flexContainer: {
-      justifyContent: 'flex-start'
+    label: {
+      fontWeight: 'normal' // theme.fontWeights.semibold,
     },
 
     icon: {
-      color: theme.palette.themePrimary
-    },
-
-    iconDisabled: {
-      color: 'inherit'
-    },
-
-    menuIcon: {
-      color: theme.palette.neutralSecondary
+      color: theme.palette.themeDarkAlt
     }
 
   };

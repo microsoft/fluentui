@@ -58,7 +58,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName: 'menuIconProps',
       toggled: 'checked'
     });
-
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
@@ -331,9 +330,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onToggleMenu(): void {
-    const { menuProps } = this.props;
+    const { menuProps, onMenuToggled = () => null } = this.props;
     let currentMenuProps = this.state.menuProps;
-
+    onMenuToggled(currentMenuProps ? null : this.props);
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 

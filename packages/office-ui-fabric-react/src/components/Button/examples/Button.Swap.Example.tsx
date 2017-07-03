@@ -62,7 +62,6 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Click to swap button types</Label>
         { button }
       </div>
     );

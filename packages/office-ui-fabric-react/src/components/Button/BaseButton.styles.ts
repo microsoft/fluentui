@@ -54,7 +54,11 @@ export const getStyles = memoizeFunction((
       cursor: 'default',
       pointerEvents: 'none',
       ':hover': noOutline,
-      ':focus': noOutline
+      ':focus': noOutline,
+    },
+
+    iconDisabled: {
+      color: theme.palette.neutralTertiary,
     },
 
     flexContainer: {
