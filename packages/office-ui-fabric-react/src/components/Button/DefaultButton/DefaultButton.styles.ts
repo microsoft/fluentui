@@ -1,12 +1,17 @@
 import { IButtonStyles } from '../Button.Props';
+import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
-  mergeStyleSets
+  mergeStyleSets,
+  FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
+import {
+  getStyles as getSplitButtonStyles
+} from '../SplitButton/SplitButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
@@ -19,6 +24,7 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
+  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
   let defaultButtonStyles: IButtonStyles = {
     root: {
       minWidth: DEFAULT_BUTTON_MINWIDTH,
@@ -43,10 +49,9 @@ export const getStyles = memoizeFunction((
     },
 
     label: {
-      fontWeight: 'bold' // theme.fontWeights.semibold,
+      fontWeight: FontWeights.semibold
     }
-
   };
 
-  return mergeStyleSets(baseButtonStyles, defaultButtonStyles, customStyles);
+  return mergeStyleSets(baseButtonStyles, defaultButtonStyles, splitButtonStyles, customStyles);
 });
