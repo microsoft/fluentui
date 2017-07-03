@@ -17,6 +17,11 @@ import {
 } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
+export enum CollapseAllVisibility {
+  none = 0,
+  visible = 1
+}
+
 export interface IGroupedList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
@@ -181,7 +186,7 @@ export interface IGroupRenderProps {
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
    */
-  ignoreOverallCollapseButton?: boolean;
+  collapseAllVisibility?: CollapseAllVisibility;
 }
 
 export interface IGroupDividerProps {

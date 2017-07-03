@@ -33,7 +33,7 @@ import {
 } from '../../utilities/selection/index';
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { GroupedList } from '../../GroupedList';
+import { GroupedList, CollapseAllVisibility } from '../../GroupedList';
 import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 
@@ -287,7 +287,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
               ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
               selectAllVisibility: selectAllVisibility,
-              ignoreOverallCollapseButton: groupProps && groupProps.ignoreOverallCollapseButton
+              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
             }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
@@ -365,8 +365,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      checkButtonAriaLabel
+      checkButtonAriaLabel,
     } = this.props;
+    let collapseAllVisibility = this.props.groupProps && this.props.groupProps.collapseAllVisibility;
     let selection = this._selection;
     let dragDropHelper = this._dragDropHelper;
     let {
@@ -396,6 +397,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       dragDropHelper: dragDropHelper,
       viewport: viewport,
       checkboxVisibility: checkboxVisibility,
+      collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
       checkButtonAriaLabel: checkButtonAriaLabel
     }, this._onRenderRow);

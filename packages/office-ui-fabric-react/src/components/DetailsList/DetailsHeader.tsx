@@ -14,6 +14,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
+import { CollapseAllVisibility } from '../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStyles from './DetailsRowCheck.scss';
@@ -42,7 +43,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
-  ignoreOverallCollapseButton?: boolean;
+  collapseAllVisibility?: CollapseAllVisibility;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
@@ -173,7 +174,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             }
           </div>
         ) : null }
-        { groupNestingDepth > 0 && !this.props.ignoreOverallCollapseButton ? (
+        { groupNestingDepth > 0 && this.props.collapseAllVisibility == CollapseAllVisibility.visible ? (
           <div
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }

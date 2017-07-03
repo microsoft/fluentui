@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
+import { CollapseAllVisibility } from 'office-ui-fabric-react/lib/GroupedList'
 import './DetailsListExample.scss';
 
 const ITEMS_PER_GROUP = 20;
@@ -16,7 +17,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
   constructor() {
     super();
 
-    _items = _items || createListItems(500);
+    _items = _items || createListItems(100);
     _groups = _groups || createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
   }
 
@@ -48,7 +49,8 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
               <div className='DetailsListExample-customHeader'>
                 <div className='DetailsListExample-customHeaderTitle'>{ `I'm a custom footer for: ${props.group.name}` }</div>
               </div>
-            )
+            ),
+            collapseAllVisibility: CollapseAllVisibility.none
           } }
         />
       </div>
