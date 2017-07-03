@@ -89,7 +89,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         className={ css('ms-GroupedList', styles.root, className) }
         data-automationid='GroupedList'
         data-is-scrollable='false'
-        role='grid'
+        role='presentation'
       >
         { !groups ?
           this._renderGroup(null, 0) : (
