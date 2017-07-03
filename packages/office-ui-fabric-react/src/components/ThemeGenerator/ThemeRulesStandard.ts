@@ -219,18 +219,18 @@ export function ThemeRulesStandardCreator() {
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDark], BaseSlots.primaryColor, Shade[Shade.Shade7]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarker], BaseSlots.primaryColor, Shade[Shade.Shade8]);
 
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade[Shade.Shade1]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade[Shade.Shade2]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighterAlt],    BaseSlots.backgroundColor, Shade[Shade.Shade1]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighter],       BaseSlots.backgroundColor, Shade[Shade.Shade2]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLight],         BaseSlots.backgroundColor, Shade[Shade.Shade3]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternary],    BaseSlots.backgroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt],   BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiary],     BaseSlots.foregroundColor, Shade[Shade.Shade3]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade6]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade[Shade.Shade7]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondary],    BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt],   BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimary],      BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark],         BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade[Shade.Shade8]);
   _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
