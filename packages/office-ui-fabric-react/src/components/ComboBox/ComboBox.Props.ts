@@ -2,11 +2,13 @@ import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 
+export * from '../../utilities/selectableOption/SelectableOption.Props';
+
 export interface IComboBox {
   /**
- * Sets focus to the input in the comboBox
- * @returns True if focus could be set, false if no operation was taken.
- */
+   * Sets focus to the input in the comboBox
+   * @returns True if focus could be set, false if no operation was taken.
+   */
   focus(): boolean;
 }
 
