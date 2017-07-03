@@ -1010,16 +1010,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
     let {
-    disabled,
+      disabled,
       allowFreeform,
       autoComplete
-  } = this.props;
+    } = this.props;
     let {
-    isOpen,
+      isOpen,
       currentPendingValueValidIndex,
       selectedIndex,
       currentOptions
-  } = this.state;
+    } = this.state;
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);

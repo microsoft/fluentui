@@ -23,6 +23,6 @@ function buildTypeScript(outDir, moduleType) {
 
 // Only build AMD and ES6 in production builds.
 if (isProduction) {
-  buildTypeScript('lib-amd', 'amd');
+  // buildTypeScript('lib-amd', 'amd');
   buildTypeScript('lib-es6', 'es6');
 }

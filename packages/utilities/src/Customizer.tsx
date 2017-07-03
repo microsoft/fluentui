@@ -7,7 +7,7 @@ import { BaseComponent } from './BaseComponent';
  *
  * @public
  */
-export interface ICustomizerSettings {
+export interface ISettings {
   [key: string]: any;
 }
 
@@ -17,7 +17,7 @@ export interface ICustomizerSettings {
  * @public
  */
 export interface ICustomizerProps {
-  settings: ICustomizerSettings;
+  settings: ISettings;
 }
 
 /**
@@ -26,7 +26,7 @@ export interface ICustomizerProps {
  * @internal
  */
 export interface ICustomizerState {
-  injectedProps?: ICustomizerSettings;
+  injectedProps?: ISettings;
 }
 
 /**
@@ -67,8 +67,8 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
   }
 
   private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState) {
-    let { settings: injectedPropsFromSettings = {} as ICustomizerSettings } = props;
-    let { injectedProps: injectedPropsFromContext = {} as ICustomizerSettings } = context;
+    let { settings: injectedPropsFromSettings = {} as ISettings } = props;
+    let { injectedProps: injectedPropsFromContext = {} as ISettings } = context;
 
     return {
       injectedProps: {
