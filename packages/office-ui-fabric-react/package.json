@@ -11,11 +11,16 @@
   },
   "license": "MIT",
   "scripts": {
-    "build-extra-module-flavors": "node ../../scripts/build-typescript",
-    "build": "gulp && npm run build-extra-module-flavors",
+    "build:cdnbundle": "webpack --config wepback.lib.config --production",
+    "build:commonjs": "rimraf lib && tsc --outDir lib --module commonjs",
+    "build:amd": "rimraf lib-amd && tsc --outDir lib-amd --module amd",
+    "build:es6": "rimraf lib-es6 && tsc --outDir lib-es6 --module es6",
+    "build:scss-to-ts": "",
+    "build:tslint": "",
+    "build": "gulp && npm run build:es6",
     "clean": "gulp clean",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "test": "gulp"
+    "test": "gulp karma"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
