@@ -49,8 +49,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
               <div className='DetailsListExample-customHeader'>
                 <div className='DetailsListExample-customHeaderTitle'>{ `I'm a custom footer for: ${props.group.name}` }</div>
               </div>
-            ),
-            collapseAllVisibility: CollapseAllVisibility.none
+            )
           } }
         />
       </div>

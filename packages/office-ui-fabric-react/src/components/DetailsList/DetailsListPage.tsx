@@ -30,8 +30,14 @@ const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-rea
 import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
 const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
-
-/*
+export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
+  public render() {
+    return (
+      <ComponentPage
+        title='DetailsList'
+        componentName='DetailsListExample'
+        exampleCards={
+          <div>
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
             </ExampleCard>
@@ -44,16 +50,6 @@ const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fab
             <ExampleCard title='Rendering custom item rows' isOptIn={ true } code={ DetailsListCustomRowsExampleCode }>
               <DetailsListCustomRowsExample />
             </ExampleCard>,
-            */
-
-export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
-    return (
-      <ComponentPage
-        title='DetailsList'
-        componentName='DetailsListExample'
-        exampleCards={
-          <div>
             <ExampleCard title='Rendering custom group headers' isOptIn={ true } code={ DetailsListCustomGroupHeadersExampleCode }>
               <DetailsListCustomGroupHeadersExample />
             </ExampleCard>
