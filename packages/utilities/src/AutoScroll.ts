@@ -41,7 +41,7 @@ export class AutoScroll {
     }
   }
 
-  public dispose() {
+  public dispose(): void {
     this._events.dispose();
     this._stopScroll();
   }

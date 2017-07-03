@@ -22,22 +22,22 @@ $Breadcrumb-chevron-sm: 8px;
   white-space: nowrap;
   padding: 0;
   margin: 0;
+  display: flex;
+  align-items: stretch;
 }
 
 .chevron {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
-  line-height: $ms-font-size-xxl;
 }
 
 .listItem {
   list-style-type: none;
-  vertical-align: top;
   margin: 0;
   padding: 0;
-  display: inline-block;
+  display: flex;
   position: relative;
-
+  align-items: center;
   &:last-of-type {
     .chevron {
       display: none;
@@ -48,28 +48,23 @@ $Breadcrumb-chevron-sm: 8px;
   .itemLink {
     @include ms-font-xl;
     color: $ms-color-neutralPrimary;
-    display: inline-block;
     padding: 0 8px;
     max-width: $Breadcrumb-itemMaxWidth;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    vertical-align: top;
   }
 }
 
 .overflow {
-  display: inline-block;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .overflowButton {
   font-size: $Breadcrumb-overflowButtonSize;
-  display: inline-block;
-  vertical-align: top;
-  height: 28px;
-  line-height: 1;
-
+  height: 100%; // override button height
   &:hover {
     cursor: pointer;
     background-color: $ms-color-neutralLighter;
@@ -115,7 +110,6 @@ $Breadcrumb-chevron-sm: 8px;
 
   .chevron {
     font-size: $ms-font-size-mi;
-    line-height: $ms-font-size-l;
   }
 
   .overflowButton {
@@ -131,7 +125,6 @@ $Breadcrumb-chevron-sm: 8px;
 
   .chevron {
     font-size: $Breadcrumb-chevron-sm;
-    line-height: $ms-font-size-m;
   }
 
   .overflowButton {

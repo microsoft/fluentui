@@ -71,7 +71,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
         aria-label={ group.ariaLabel || group.name }
         data-is-focusable={ true } >
 
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
+        <FocusZone className={ styles.groupHeaderContainer } direction={ FocusZoneDirection.horizontal }>
 
           { isSelectionCheckVisible ? (
             <button
@@ -109,7 +109,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
               // so far. That's the reasons we need to use "+" to show we might have more items than count
               // indicates.
             }
-            <span>({ group.count }{ group.hasMoreData && '+' })</span>
+            <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>
           </div>
 
           <div

@@ -26,10 +26,11 @@ class Async {
     }): T;
 }
 
-// WARNING: dispose has incomplete type information
 // @public
 class AutoScroll {
   constructor(element: HTMLElement);
+  // (undocumented)
+  public dispose(): void;
 }
 
 // WARNING: componentWillReceiveProps has incomplete type information
@@ -57,12 +58,8 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 // @public
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   constructor(props: any, context: any);
-  public static addChangeListener(onChanged: IChangeListener): void;
   // (undocumented)
   public getChildContext(): any;
-  public static getDefault(fieldName: string): any;
-  public static removeChangeListener(onChanged: IChangeListener): void;
-  public static setDefault(name: string, value: any): void;
 }
 
 // WARNING: defaultProps has incomplete type information
@@ -197,13 +194,6 @@ interface IBaseProps {
 interface IBooleanDictionary {
   // (undocumented)
   [ className: string ]: boolean;
-}
-
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
-// @internal
-interface IChangeListener {
-  // (undocumented)
-  (propName?: string): void;
 }
 
 // @public
@@ -423,6 +413,9 @@ export function setMemoizeWeakMap(weakMap: any): void;
 
 // @public
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
+
+// @public
+export function toMatrix < T >(items: T[], columnCount: number): T[][];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
