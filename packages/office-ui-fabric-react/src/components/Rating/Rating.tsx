@@ -6,8 +6,8 @@ import {
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IRatingProps, RatingSize } from './Rating.Props';
-import styles from './Rating.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Rating.scss';
+const styles: any = stylesImport;
 
 export interface IRatingState {
   rating: number;

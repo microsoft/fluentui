@@ -9,8 +9,8 @@ import { IDialogProps } from './Dialog.Props';
 import { DialogType } from './DialogContent.Props';
 import { Modal } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import styles from './Dialog.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Dialog.scss';
+const styles: any = stylesImport;
 
 import { DialogContent } from './DialogContent';
 

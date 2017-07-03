@@ -34,8 +34,8 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles from './GroupedList.scss';
-// const styles: any = stylesImport;
+import stylesImport from './GroupedList.scss';
+const styles: any = stylesImport;
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
   /** Map of callback functions related to drag and drop functionality. */

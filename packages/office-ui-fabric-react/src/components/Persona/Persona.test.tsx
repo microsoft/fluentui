@@ -5,8 +5,8 @@ import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
 import { shallow } from 'enzyme';
 import * as chai from 'chai';
-import styles from './Persona.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Persona.scss';
+const styles: any = stylesImport;
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 

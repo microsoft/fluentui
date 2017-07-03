@@ -10,8 +10,8 @@ import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-import styles from './Checkbox.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Checkbox.scss';
+const styles: any = stylesImport;
 
 export interface ICheckboxState {
   /** Is true when the control has focus. */

@@ -22,8 +22,8 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-import styles from './ContextualMenu.scss';
-// const styles: any = stylesImport;
+import stylesImport from './ContextualMenu.scss';
+const styles: any = stylesImport;
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
   dismissedMenuItemKey?: string;

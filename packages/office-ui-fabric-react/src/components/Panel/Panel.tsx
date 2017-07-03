@@ -16,8 +16,8 @@ import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
 import { AnimationClassNames } from '../../Styling';
-import styles from './Panel.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Panel.scss';
+const styles: any = stylesImport;
 
 export interface IPanelState {
   isFooterSticky?: boolean;

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardLocationProps } from './DocumentCard.Props';
-import styles from './DocumentCard.scss';
-// const styles: any = stylesImport;
+import stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 export class DocumentCardLocation extends BaseComponent<IDocumentCardLocationProps, any> {
   public render() {

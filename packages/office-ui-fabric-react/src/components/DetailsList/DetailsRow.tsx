@@ -22,8 +22,8 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles from './DetailsRow.scss';
-// const styles: any = stylesImport;
+import stylesImport from './DetailsRow.scss';
+const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 import checkStyles from './DetailsRowCheck.scss';
 

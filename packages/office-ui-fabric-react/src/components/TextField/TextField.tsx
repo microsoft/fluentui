@@ -11,8 +11,8 @@ import {
   inputProperties,
   textAreaProperties
 } from '../../Utilities';
-import styles from './TextField.scss';
-// const styles: any = stylesImport;
+import stylesImport from './TextField.scss';
+const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
   value?: string;

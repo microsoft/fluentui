@@ -4,8 +4,8 @@ import {
   BaseComponent
 } from '../../Utilities';
 import { IResizeGroupProps } from './ResizeGroup.Props';
-import styles from './ResizeGroup.scss';
-
+import stylesImport from './ResizeGroup.scss';
+const styles: any = stylesImport;
 const RESIZE_DELAY = 16;
 
 export interface IResizeGroupState {

@@ -22,8 +22,8 @@ import {
   isInDateRangeArray
 } from '../../utilities/dateMath/DateMath';
 
-import styles from './Calendar.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Calendar.scss';
+const styles: any = stylesImport;
 
 const DAYS_IN_WEEK = 7;
 

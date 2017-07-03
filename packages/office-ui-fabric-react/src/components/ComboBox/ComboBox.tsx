@@ -20,8 +20,9 @@ import {
   KeyCodes
 } from '../../Utilities';
 import { ISelectableOption, SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
-import styles from './ComboBox.scss';
-// const styles: any = stylesImport;
+
+import stylesImport from './ComboBox.scss';
+const styles: any = stylesImport;
 
 export interface IComboBoxState {
 
@@ -436,7 +437,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (this.props.autoComplete) {
 
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-      let items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+      let items = currentOptions
+        .map((item, index) => ({ ...item, index }))
+        .filter((option) => (
+          option.itemType !== SelectableOptionMenuItemType.Header &&
+          option.itemType !== SelectableOptionMenuItemType.Divider
+        ))
+        .filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+
       if (items.length > 0) {
         // If the user typed out the complete option text, we don't need any suggested display text anymore
         newSuggestedDisplayValue = items[0].text.toLocaleLowerCase() !== updatedValue ? items[0].text : '';
@@ -447,7 +455,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } else {
 
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
-      let items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase() === updatedValue);
+      let items = currentOptions
+        .map((item, index) => ({ ...item, index }))
+        .filter((option) => (
+          option.itemType !== SelectableOptionMenuItemType.Header &&
+          option.itemType !== SelectableOptionMenuItemType.Divider
+        ))
+        .filter((option) => option.text.toLocaleLowerCase() === updatedValue);
 
       // if we fould a match remember the index
       if (items.length === 1) {
@@ -495,7 +509,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         updatedValue = updatedValue.toLocaleLowerCase();
 
         // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
-        let items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+        let items = currentOptions
+          .map((item, index) => ({ ...item, index }))
+          .filter((option) => (
+            option.itemType !== SelectableOptionMenuItemType.Header &&
+            option.itemType !== SelectableOptionMenuItemType.Divider
+          ))
+          .filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
         // If we found a match, udpdate the state
         if (items.length > 0) {
@@ -789,6 +809,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _renderHeader(item: ISelectableOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
+
     return (
       <div key={ item.key } className={ css('ms-ComboBox-header', styles.header) } role='header'>
         { onRenderOption(item, this._onRenderOption) }
@@ -989,16 +1010,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onInputKeyDown(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
     let {
-      disabled,
+    disabled,
       allowFreeform,
       autoComplete
-    } = this.props;
+  } = this.props;
     let {
-      isOpen,
+    isOpen,
       currentPendingValueValidIndex,
       selectedIndex,
       currentOptions
-    } = this.state;
+  } = this.state;
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);
@@ -1139,10 +1160,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   @autobind
   private _onInputKeyUp(ev: React.KeyboardEvent<HTMLElement | BaseAutoFill>) {
     let {
-      disabled,
+    disabled,
       allowFreeform,
       autoComplete
-    } = this.props;
+  } = this.props;
 
     if (disabled) {
       this._handleInputWhenDisabled(ev);
@@ -1193,7 +1214,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         ev.preventDefault();
       }
     }
-  }
+  };
 
   /**
    * Click handler for the button of the comboBox

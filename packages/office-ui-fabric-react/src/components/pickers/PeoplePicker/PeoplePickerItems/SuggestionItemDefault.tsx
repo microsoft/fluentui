@@ -4,8 +4,8 @@ import * as React from 'react';
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
 import { IBasePickerSuggestionsProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import styles from '../PeoplePicker.scss';
-// const styles: any = stylesImport;
+import stylesImport from '../PeoplePicker.scss';
+const styles: any = stylesImport;
 
 export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (personaProps: IPersonaProps, suggestionItemProps?: ISuggestionItemProps<any>) => {
   let { onRemoveItem, onClick, showRemoveButton } = suggestionItemProps;

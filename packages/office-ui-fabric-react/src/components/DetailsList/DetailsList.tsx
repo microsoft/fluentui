@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import styles from './DetailsList.scss';
+import stylesImport from './DetailsList.scss';
 import * as ReactDOM from 'react-dom';
 
 import {
@@ -37,7 +37,7 @@ import { GroupedList } from '../../GroupedList';
 import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 
-// const styles: any = stylesImport;
+const styles: any = stylesImport;
 
 export interface IDetailsListState {
   lastWidth?: number;

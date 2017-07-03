@@ -10,8 +10,8 @@ import {
 } from '../../Utilities';
 import { ISliderProps, ISlider } from './Slider.Props';
 import { Label } from '../../Label';
-import styles from './Slider.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Slider.scss';
+const styles: any = stylesImport;
 
 export interface ISliderState {
   value?: number;

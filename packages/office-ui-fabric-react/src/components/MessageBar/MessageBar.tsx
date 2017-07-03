@@ -8,8 +8,8 @@ import {
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-import styles from './MessageBar.scss';
-// const styles: any = stylesImport;
+import stylesImport from './MessageBar.scss';
+const styles: any = stylesImport;
 
 export interface IMessageBarState {
   labelId?: string;

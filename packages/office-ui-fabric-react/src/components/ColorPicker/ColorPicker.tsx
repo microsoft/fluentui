@@ -18,8 +18,8 @@ import {
   updateSV
 } from '../../utilities/color/colors';
 import { FontClassNames } from '../../Styling';
-import styles from './ColorPicker.scss';
-// const styles: any = stylesImport;
+import stylesImport from './ColorPicker.scss';
+const styles: any = stylesImport;
 
 export interface IColorPickerState {
   isOpen: boolean;

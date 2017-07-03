@@ -11,8 +11,8 @@ import {
   getRTL
 } from '../../Utilities';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import styles from './MarqueeSelection.scss';
-// const styles: any = stylesImport;
+import stylesImport from './MarqueeSelection.scss';
+const styles: any = stylesImport;
 
 export interface IMarqueeSelectionState {
   dragOrigin?: IPoint;

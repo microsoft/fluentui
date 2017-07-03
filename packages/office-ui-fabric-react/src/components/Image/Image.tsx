@@ -10,8 +10,8 @@ import {
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.Props';
 import { AnimationClassNames } from '../../Styling';
-import styles from './Image.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Image.scss';
+const styles: any = stylesImport;
 
 export interface IImageState {
   loadState?: ImageLoadState;

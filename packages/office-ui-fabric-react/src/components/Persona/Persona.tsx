@@ -22,8 +22,8 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import styles from './Persona.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Persona.scss';
+const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS = {
   [PersonaSize.extraExtraSmall]: 24,

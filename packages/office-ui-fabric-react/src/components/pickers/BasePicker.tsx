@@ -16,8 +16,8 @@ import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
-import styles from './BasePicker.scss';
-// const styles: any = stylesImport;
+import stylesImport from './BasePicker.scss';
+const styles: any = stylesImport;
 
 export interface IBasePickerState {
   items?: any;

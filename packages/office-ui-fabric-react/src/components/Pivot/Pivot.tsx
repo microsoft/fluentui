@@ -14,8 +14,8 @@ import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
 import { Icon } from '../../Icon';
-import styles from './Pivot.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Pivot.scss';
+const styles: any = stylesImport;
 
 /**
  *  Usage:

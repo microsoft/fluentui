@@ -8,8 +8,8 @@ import { IDialogContentProps, DialogType } from './DialogContent.Props';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import styles from './Dialog.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Dialog.scss';
+const styles: any = stylesImport;
 
 export interface IDialogContnetState {
   id?: string;

@@ -10,8 +10,8 @@ import {
 import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import styles from './Tooltip.scss';
-// const styles: any = stylesImport;
+import stylesImport from './Tooltip.scss';
+const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {

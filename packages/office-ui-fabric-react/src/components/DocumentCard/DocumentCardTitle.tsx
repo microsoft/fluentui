@@ -8,8 +8,8 @@ import {
   css
 } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
-import styles from './DocumentCard.scss';
-// const styles: any = stylesImport;
+import stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
