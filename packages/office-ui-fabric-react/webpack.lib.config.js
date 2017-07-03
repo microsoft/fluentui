@@ -1,17 +1,15 @@
-"use strict";
+'use strict';
 
 /** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
-let build = require("@microsoft/web-library-build");
-let webpackTaskResources = build.webpack.resources;
-let webpack = webpackTaskResources.webpack;
-let path = require("path");
-let buildConfig = build.getConfig();
-let BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+let webpack = require('webpack');
+let path = require('path');
+
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
-const BUNDLE_NAME = "office-ui-fabric-react";
-const BUNDLE_TEST = "fabric-test";
-const IS_PRODUCTION = process.argv.indexOf("--production") > -1;
+const BUNDLE_NAME = 'office-ui-fabric-react';
+const BUNDLE_TEST = 'fabric-test';
+const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [createConfig(false)];
@@ -25,33 +23,33 @@ if (IS_PRODUCTION) {
 function createConfig(isProduction) {
   let webpackConfig = {
     entry: {
-      [BUNDLE_TEST]: "./lib/VisualTestRoot.js",
-      [BUNDLE_NAME]: "./lib/index.js"
+      // [BUNDLE_TEST]: './lib/VisualTestRoot.js',
+      [BUNDLE_NAME]: './lib/index.js'
     },
 
     output: {
-      libraryTarget: "var",
-      library: "Fabric",
-      path: path.join(__dirname, buildConfig.distFolder),
-      publicPath: "/dist/",
-      filename: `[name]${isProduction ? ".min" : ""}.js`
+      libraryTarget: 'var',
+      library: 'Fabric',
+      path: path.join(__dirname, 'dist'),
+      publicPath: '/dist/',
+      filename: `[name]${isProduction ? '.min' : ''}.js`
     },
 
-    devtool: "source-map",
+    devtool: 'source-map',
 
     externals: [
       {
-        react: "React"
+        react: 'React'
       },
       {
-        "react-dom": "ReactDOM"
+        'react-dom': 'ReactDOM'
       }
     ],
 
     plugins: [
       new BundleAnalyzerPlugin({
-        analyzerMode: "static",
-        reportFilename: BUNDLE_NAME + ".stats.html",
+        analyzerMode: 'static',
+        reportFilename: BUNDLE_NAME + '.stats.html',
         openAnalyzer: false
       })
     ]
@@ -60,8 +58,8 @@ function createConfig(isProduction) {
   if (isProduction) {
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify("production")
+        'process.env': {
+          NODE_ENV: JSON.stringify('production')
         }
       }),
       new webpack.optimize.ModuleConcatenationPlugin(),
