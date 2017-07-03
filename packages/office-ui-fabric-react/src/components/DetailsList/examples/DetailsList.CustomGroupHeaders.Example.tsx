@@ -17,7 +17,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
   constructor() {
     super();
 
-    _items = _items || createListItems(100);
+    _items = _items || createListItems(500);
     _groups = _groups || createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
   }
 

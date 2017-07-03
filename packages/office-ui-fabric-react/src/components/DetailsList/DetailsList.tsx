@@ -365,7 +365,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      checkButtonAriaLabel,
+      checkButtonAriaLabel
     } = this.props;
     let collapseAllVisibility = this.props.groupProps && this.props.groupProps.collapseAllVisibility;
     let selection = this._selection;
