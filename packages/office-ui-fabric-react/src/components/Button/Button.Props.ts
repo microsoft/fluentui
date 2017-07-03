@@ -5,6 +5,7 @@ import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
+import { ISplitButtonStyles } from './SplitButton/SplitButton.Props';
 
 export interface IButton {
   /**
@@ -39,7 +40,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   /**
    * Custom styling for individual elements within the button DOM.
    */
-  styles?: IButtonStyles;
+  styles?: ISplitButtonStyles;
 
   /**
    * Theme provided by HOC.
@@ -85,7 +86,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
 
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks.
+   * how the default icon looks. Providing this in addition of onClick will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
 
@@ -308,7 +309,8 @@ export interface IButtonStyles {
   descriptionChecked?: IStyle;
 
   /**
-   * Style for the screen reader text.
+   * Style override for the screen reader text.
    */
   screenReaderText?: IStyle;
+
 }

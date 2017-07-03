@@ -1,22 +1,28 @@
 import { IButtonStyles } from '../Button.Props';
+import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
-  getTheme,
   mergeStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getBaseButtonStyles
 } from '../BaseButton.styles';
+import {
+  getStyles as getSplitButtonStyles
+} from '../SplitButton/SplitButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
-  customStyles?: IButtonStyles
+  theme: ITheme,
+  customStyles?: IButtonStyles,
+  focusInset?: string,
+  focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
     root: {
       borderWidth: '0',

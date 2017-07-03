@@ -5,10 +5,16 @@ import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { DefaultButton } from './DefaultButton/DefaultButton';
+import { KeyCodes } from '../../Utilities';
 
 let { expect } = chai;
 
 describe('DefaultButton', () => {
+  function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
+    const component = ReactTestUtils.renderIntoDocument(element);
+    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+    return renderedDOM as HTMLElement;
+  }
 
   it('can render without an onClick.', () => {
     const button = ReactTestUtils.renderIntoDocument<any>(
@@ -83,4 +89,217 @@ describe('DefaultButton', () => {
       expect(button.querySelectorAll('[data-icon-name="fontColor"]').length).to.equal(1);
     });
   });
+
+  it('Providing onClick and menuProps renders a SplitButton', () => {
+    const button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => alert('Clicked') }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.tagName).equal('DIV', 'A Button with a menuProps and an onClick renders as a SplitButton');
+  });
+
+  it('Tapping menu button of SplitButton expands menu', () => {
+    let didClick = false;
+    const button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => alert('Clicked') }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-Button--icon')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuButtonDOM);
+    expect(renderedDOM.getAttribute('aria-expanded')).to.equal('true');
+  });
+
+  it('Clicking SplitButton button triggers action', () => {
+    let didClick = false;
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => { didClick = true; } }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
+    const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-Button--default')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuButtonDOM);
+    expect(didClick).to.equal(true);
+  });
+
+  it('Pressing Enter on SplitButton triggers action', () => {
+    let didClick = false;
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => { didClick = true; } }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
+    ReactTestUtils.Simulate.keyDown(splitButtonDOM,
+      {
+        which: KeyCodes.enter
+      });
+    expect(didClick).to.equal(true);
+  });
+
+  it('Pressing Alt+Down on SplitButton triggers menu', () => {
+    let didClick = false;
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => { didClick = true; } }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
+    ReactTestUtils.Simulate.focus(splitButtonDOM);
+    ReactTestUtils.Simulate.keyDown(splitButtonDOM,
+      {
+        altKey: true,
+        which: KeyCodes.down
+      });
+    expect(renderedDOM.getAttribute('aria-expanded')).to.equal('true');
+  });
+
+  it('A disabled SplitButton does not respond to key presses', () => {
+    let didClick = false;
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <DefaultButton
+        disabled={ true }
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => { didClick = true; } }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
+    ReactTestUtils.Simulate.focus(splitButtonDOM);
+    ReactTestUtils.Simulate.keyDown(splitButtonDOM,
+      {
+        altKey: true,
+        which: KeyCodes.down
+      });
+    expect(renderedDOM.getAttribute('aria-expanded')).to.equal('false');
+  });
+
+  it('A disabled SplitButton does not respond to clicks', () => {
+    let didClick = false;
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <DefaultButton
+        disabled={ true }
+        data-automation-id='test'
+        text='Create account'
+        onClick={ () => { didClick = true; } }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
+    const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-Button--default')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuButtonDOM);
+    expect(didClick).to.equal(false);
+  });
+
 });

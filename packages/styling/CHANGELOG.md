@@ -1,6 +1,18 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 30 Jun 2017 10:23:15 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2017 10:11:52 GMT and should not be manually modified.
+
+## 0.12.1
+Mon, 03 Jul 2017 10:11:52 GMT
+
+*Changes not tracked*
+
+## 0.12.0
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Minor changes
+
+- Dependencies now use path based imports to various utilities to minimize the graph dependency.
 
 ## 0.11.10
 Fri, 30 Jun 2017 10:23:15 GMT
