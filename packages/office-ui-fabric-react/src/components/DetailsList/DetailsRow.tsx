@@ -44,7 +44,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   groupNestingDepth?: number;
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
-  collapseAllVisibility?: CollapseAllVisibility
+  collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
 }
@@ -237,7 +237,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility == CollapseAllVisibility.visible ? 0 : 1) }) }
+        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility === CollapseAllVisibility.visible ? 0 : 1) }) }
 
         { item && (
           <DetailsRowFields

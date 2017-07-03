@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
-import { CollapseAllVisibility } from 'office-ui-fabric-react/lib/GroupedList'
 import './DetailsListExample.scss';
 
 const ITEMS_PER_GROUP = 20;
