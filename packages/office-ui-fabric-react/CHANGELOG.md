@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Jun 2017 10:23:15 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jul 2017 10:11:52 GMT and should not be manually modified.
+
+## 4.14.0
+Mon, 03 Jul 2017 10:11:52 GMT
+
+### Minor changes
+
+- Changed the CSS for the checkbox so that it's easier to customize and center
+
+### Patches
+
+- GroupedList: Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly.
+
+## 4.13.2
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Patches
+
+- Breadcrumb: Use flexbox for layout to better support multiple font sizes
+- MessageBar: Fixed padding regressions with multiline and no actions 
 
 ## 4.13.1
 Fri, 30 Jun 2017 10:23:15 GMT

@@ -2,6 +2,31 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.12.1",
+      "tag": "@uifabric/styling_v0.12.1",
+      "date": "Mon, 03 Jul 2017 10:11:52 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.12.0",
+      "tag": "@uifabric/styling_v0.12.0",
+      "date": "Fri, 30 Jun 2017 19:44:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "20e5559ad325465a6c1bdc3bbb879ce831adc9e9",
+            "comment": "Dependencies now use path based imports to various utilities to minimize the graph dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.5.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.11.10",
       "tag": "@uifabric/styling_v0.11.10",
       "date": "Fri, 30 Jun 2017 10:23:15 GMT",
