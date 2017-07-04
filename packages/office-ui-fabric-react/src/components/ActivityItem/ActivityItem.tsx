@@ -70,14 +70,15 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     );
   }
 
-  // Render up to four personas if they're available, otherwise show an icon based on what activityType is set.
+  // Render up to 4 personas (3 when compact) if they're available, otherwise show an icon based on what activityType is set.
   @autobind
   private _onRenderIcon(props: IActivityItemProps): JSX.Element {
     let personaElement: JSX.Element;
     if (this.props.people[0].imageUrl || this.props.people[0].imageInitials) {
       let personaList = [];
       let showSize16Personas = (this.props.people.length > 1 || this.props.isCompact);
-      this.props.people.filter((person, index) => index < 4).forEach((person, index) => {
+      let personaLimit = this.props.isCompact ? 3 : 4;
+      this.props.people.filter((person, index) => index < personaLimit).forEach((person, index) => {
         personaList.push(
           <Persona
             {...person}
@@ -86,7 +87,14 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             className={ this._classNames.activityPersona }
             size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
             hidePersonaDetails={ true }
-            style={ this.props.isCompact && { display: 'inline-block', width: '8px', minWidth: '8px', overflow: 'visible' } } />
+            style={
+              this.props.isCompact && {
+                display: 'inline-block',
+                width: '8px',
+                minWidth: '8px',
+                overflow: 'visible'
+              }
+            } />
         );
       });
       personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;

@@ -31,17 +31,6 @@ export const getStyles = memoizeFunction((
       }
     ],
 
-    activityContent: {
-      padding: '0 8px'
-    },
-
-    isCompactContent: {
-      padding: '0 4px',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      overflowX: 'hidden'
-    },
-
     personaContainer: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -51,10 +40,13 @@ export const getStyles = memoizeFunction((
     },
 
     isCompactPersonaContainer: {
-      display: 'block',
+      display: 'inline-flex',
+      flexWrap: 'nowrap',
+      flexBasis: 'auto',
       height: COMPACT_PERSONA_SIZE,
       width: 'auto',
-      minWidth: COMPACT_PERSONA_SIZE
+      minWidth: '0',
+      paddingRight: '6px'
     },
 
     activityTypeIcon: {
@@ -90,6 +82,18 @@ export const getStyles = memoizeFunction((
       width: '8px',
       minWidth: '8px',
       overflow: 'visible'
+    },
+
+    activityContent: {
+      padding: '0 8px'
+    },
+
+    isCompactContent: {
+      flex: '1',
+      padding: '0 4px',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflowX: 'hidden'
     },
 
     nameText: {
