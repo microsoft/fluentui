@@ -16,9 +16,10 @@ import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
-import * as checkStyles from './DetailsRowCheck.scss';
+import checkStyles from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import * as stylesImport from './DetailsHeader.scss';
+
+import stylesImport from './DetailsHeader.scss';
 const styles: any = stylesImport;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
@@ -134,7 +135,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         role='row'
         aria-label={ ariaLabel }
         className={ css('ms-DetailsHeader', styles.root, {
-          ['is-allSelected ' + styles.rootIsAllSelected]: isAllSelected,
+          ['is-allSelected']: isAllSelected,
           ['is-selectAllHidden ' + styles.rootIsSelectAllHidden]: selectAllVisibility === SelectAllVisibility.hidden,
           'is-resizingColumn': !!columnResizeDetails && isSizing,
         }) }
@@ -242,7 +243,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
                         <span
                           aria-label={ column.isIconOnly ? column.name : undefined }
-                          className={ css('ms-DetailsHeader-cellName', styles.cellName) }
+                          className='ms-DetailsHeader-cellName'
                         >
                           { (column.iconName || column.iconClassName) && (
                             <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
@@ -301,7 +302,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         className={ css(
           'ms-DetailsHeader-cellSizer',
           styles.cellSizer,
-          columnIndex < columns.length - 1 ? styles.cellSizerStart : styles.cellSizerEnd,
           {
             ['is-resizing ' + styles.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
           }) }
@@ -480,7 +480,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       );
     }
 
-  }
+  };
 
   @autobind
   private _onSizerBlur(ev: React.FocusEvent<HTMLElement>) {
@@ -492,7 +492,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         isSizing: false
       });
     }
-  }
+  };
 
   /**
    * mouse up event handler in the header

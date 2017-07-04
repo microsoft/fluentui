@@ -14,6 +14,8 @@ const MAX_SCROLL_VELOCITY = 15;
  * up/down depending on how close the mouse is to the top/bottom of the container.
  *
  * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
+ *
+ * @public
  */
 export class AutoScroll {
   private _events: EventGroup;
@@ -39,7 +41,7 @@ export class AutoScroll {
     }
   }
 
-  public dispose() {
+  public dispose(): void {
     this._events.dispose();
     this._stopScroll();
   }

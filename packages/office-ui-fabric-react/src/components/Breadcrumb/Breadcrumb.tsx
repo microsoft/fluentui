@@ -13,7 +13,7 @@ import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 
-import * as stylesImport from './Breadcrumb.scss';
+import stylesImport from './Breadcrumb.scss';
 const styles: any = stylesImport;
 
 export interface IBreadCrumbData {

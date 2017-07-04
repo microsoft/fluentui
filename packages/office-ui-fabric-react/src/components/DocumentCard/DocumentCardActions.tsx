@@ -3,7 +3,7 @@ import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import * as stylesImport from './DocumentCard.scss';
+import stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCardActions extends BaseComponent<IDocumentCardActionsProps, any> {

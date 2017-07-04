@@ -17,7 +17,7 @@ import {
   css
 } from '../../Utilities';
 import { compareDates } from '../../utilities/dateMath/DateMath';
-import * as stylesImport from './DatePicker.scss';
+import stylesImport from './DatePicker.scss';
 const styles: any = stylesImport;
 
 export interface IDatePickerState {

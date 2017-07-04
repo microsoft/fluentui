@@ -11,7 +11,7 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import * as stylesImport from './GroupHeader.scss';
+import stylesImport from './GroupHeader.scss';
 const styles: any = stylesImport;
 
 export interface IGroupHeaderState {

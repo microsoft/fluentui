@@ -22,7 +22,7 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import * as stylesImport from './Persona.scss';
+import stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 const SIZE_TO_PIXELS = {

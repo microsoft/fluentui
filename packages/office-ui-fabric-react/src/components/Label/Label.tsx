@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, css, divProperties, getNativeProps } from '../../Utilities';
 import { ILabelProps } from './Label.Props';
-import * as stylesImport from './Label.scss';
+import stylesImport from './Label.scss';
 const styles: any = stylesImport;
 
 export class Label extends BaseComponent<ILabelProps, any> {

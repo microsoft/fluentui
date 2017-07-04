@@ -6,6 +6,11 @@ let _bodyScrollDisabledCount = 0;
 
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
+/**
+ * Disables body scrolling.
+ *
+ * @public
+ */
 export function disableBodyScroll() {
   let doc = getDocument();
 
@@ -16,6 +21,11 @@ export function disableBodyScroll() {
   _bodyScrollDisabledCount++;
 }
 
+/**
+ * Enables body scrolling.
+ *
+ * @public
+ */
 export function enableBodyScroll() {
   if (_bodyScrollDisabledCount > 0) {
     let doc = getDocument();
@@ -28,7 +38,11 @@ export function enableBodyScroll() {
   }
 }
 
-/** Calculates the width of a scrollbar for the browser/os. */
+/**
+ * Calculates the width of a scrollbar for the browser/os.
+ *
+ * @public
+ */
 export function getScrollbarWidth(): number {
   if (_scrollbarWidth === undefined) {
     let scrollDiv: HTMLElement = document.createElement('div');
@@ -51,6 +65,8 @@ export function getScrollbarWidth(): number {
 /**
  * Traverses up the DOM for the element with the data-is-scrollable=true attribute, or returns
  * document.body.
+ *
+ * @public
  */
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null {
   let el: HTMLElement | null = startingElement;

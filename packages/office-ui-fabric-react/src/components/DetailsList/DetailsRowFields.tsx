@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
 import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './DetailsRow.scss';
+import stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
 
 const INNER_PADDING = 16; // Account for padding around the cell.

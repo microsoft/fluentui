@@ -22,7 +22,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-import * as stylesImport from './ContextualMenu.scss';
+import stylesImport from './ContextualMenu.scss';
 const styles: any = stylesImport;
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

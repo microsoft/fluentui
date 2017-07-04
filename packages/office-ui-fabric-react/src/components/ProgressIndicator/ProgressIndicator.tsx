@@ -7,7 +7,7 @@ import {
   css
 } from '../../Utilities';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
-import * as stylesImport from './ProgressIndicator.scss';
+import stylesImport from './ProgressIndicator.scss';
 const styles: any = stylesImport;
 
 // if the percentComplete is near 0, don't animate it.

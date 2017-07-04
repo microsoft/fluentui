@@ -3,7 +3,7 @@ import {
   PersonaPresence,
   PersonaSize
 } from './Persona.Props';
-import * as stylesImport from './Persona.scss';
+import stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {

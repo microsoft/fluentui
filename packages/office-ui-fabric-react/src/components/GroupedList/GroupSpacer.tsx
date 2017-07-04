@@ -4,7 +4,7 @@ import * as React from 'react';
 import {
   css
 } from '../../Utilities';
-import * as stylesImport from './GroupSpacer.scss';
+import stylesImport from './GroupSpacer.scss';
 const styles: any = stylesImport;
 
 export interface IGroupSpacerProps {

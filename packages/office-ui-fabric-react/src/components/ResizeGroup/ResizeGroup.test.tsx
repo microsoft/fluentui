@@ -4,7 +4,7 @@ import { shallow, mount, ReactWrapper } from 'enzyme';
 import { expect } from 'chai';
 import { ResizeGroup, IResizeGroupState } from './ResizeGroup';
 import * as sinon from 'sinon';
-import * as stylesImport from './ResizeGroup.scss';
+import stylesImport from './ResizeGroup.scss';
 import { injectWrapperMethod, setRenderSpy } from '@uifabric/utilities/lib/test/';
 import { IResizeGroupProps } from './ResizeGroup.Props';
 const styles: any = stylesImport;

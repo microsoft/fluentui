@@ -51,7 +51,10 @@ module.exports = {
         ],
         use: [
           {
-            loader: "load-themed-styles-loader", // creates style nodes from JS strings
+            loader: "@microsoft/loader-load-themed-styles",  // creates style nodes from JS strings
+            options: {
+              namedExport: 'default'
+            }
           },
           {
             loader: "css-loader", // translates CSS into CommonJS

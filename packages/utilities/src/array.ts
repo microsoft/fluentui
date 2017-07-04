@@ -1,3 +1,8 @@
+/**
+ * Finds the index of an item in an array.
+ *
+ * @public
+ */
 export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number {
   let index = -1;
 
@@ -11,6 +16,11 @@ export function findIndex(array: any[], cb: (item: any, index?: number) => boole
   return index;
 }
 
+/**
+ * Creates an array of a given size.
+ *
+ * @public
+ */
 export function createArray(size: number, getItem: (index?: number) => any) {
   let array = [];
 
@@ -24,6 +34,8 @@ export function createArray(size: number, getItem: (index?: number) => any) {
 /**
  * Convert the given array to a matrix with columnCount number
  * of columns
+ *
+ * @public
  * @param items - The array to convert
  * @param columnCount - The number of columns for the resulting matrix
  * @returns {any[][]} - A matrix of items

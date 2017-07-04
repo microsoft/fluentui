@@ -10,7 +10,7 @@ import {
   BaseComponent,
   KeyCodes
 } from '../../Utilities';
-import * as stylesImport from './Calendar.scss';
+import stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
 export interface ICalendarState {

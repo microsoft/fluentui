@@ -3,7 +3,7 @@ import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/Choi
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 
-import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
+import stylesImport from './ChoiceGroup.Custom.Example.scss';
 const styles: any = stylesImport;
 
 export class ChoiceGroupCustomExample extends React.Component<any, any> {

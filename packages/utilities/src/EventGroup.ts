@@ -1,5 +1,10 @@
 /* tslint:disable:no-string-literal */
 
+/**
+ * Event record.
+ *
+ * @internal
+ */
 export interface IEventRecord {
   target: any;
   eventName: string;
@@ -10,15 +15,30 @@ export interface IEventRecord {
   useCapture: boolean;
 }
 
+/**
+ * Event record lookup.
+ *
+ * @internal
+ */
 export interface IEventRecordsByName {
   [eventName: string]: IEventRecordList;
 }
 
+/**
+ * Event record list.
+ *
+ * @internal
+ */
 export interface IEventRecordList {
   [id: string]: IEventRecord[] | number;
   count: number;
 }
 
+/**
+ * Events declared by name.
+ *
+ * @internal
+ */
 export interface IDeclaredEventsByName {
   [eventName: string]: boolean;
 }
@@ -30,6 +50,8 @@ export interface IDeclaredEventsByName {
  *  HTMLElement, the event gets raised and is handled by the browser. Otherwise, it gets
  *  handled here in EventGroup, and the handler is called in the context of the parent
  *  (which is passed in in the constructor).
+ *
+ * @public
  */
 export class EventGroup {
   private static _uniqueId = 0;

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import * as stylesImport from './DetailsList.scss';
+import stylesImport from './DetailsList.scss';
 import * as ReactDOM from 'react-dom';
 
 import {

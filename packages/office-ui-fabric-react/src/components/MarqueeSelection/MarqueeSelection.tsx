@@ -11,7 +11,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import * as stylesImport from './MarqueeSelection.scss';
+import stylesImport from './MarqueeSelection.scss';
 const styles: any = stylesImport;
 
 export interface IMarqueeSelectionState {

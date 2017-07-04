@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, css, DelayedRender } from '../../Utilities';
 import { ISpinnerProps, SpinnerType, SpinnerSize } from './Spinner.Props';
-import * as stylesImport from './Spinner.scss';
+import stylesImport from './Spinner.scss';
 const styles: any = stylesImport;
 
 export class Spinner extends BaseComponent<ISpinnerProps, any> {

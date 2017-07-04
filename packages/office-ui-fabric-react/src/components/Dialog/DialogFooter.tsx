@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
-import * as stylesImport from './Dialog.scss';
+import stylesImport from './Dialog.scss';
 const styles: any = stylesImport;
 
 export class DialogFooter extends BaseComponent<any, any> {

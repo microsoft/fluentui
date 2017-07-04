@@ -8,7 +8,7 @@ import {
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
 
-import * as stylesImport from './OverflowSet.Example.scss';
+import stylesImport from './OverflowSet.Example.scss';
 const styles: any = stylesImport;
 
 export class OverflowSetBasicExample extends BaseComponent<any, any> {

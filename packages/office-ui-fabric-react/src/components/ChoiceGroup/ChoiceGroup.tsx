@@ -9,7 +9,7 @@ import {
   getId,
   BaseComponent
 } from '../../Utilities';
-import * as stylesImport from './ChoiceGroup.scss';
+import stylesImport from './ChoiceGroup.scss';
 const styles: any = stylesImport;
 
 export interface IChoiceGroupState {

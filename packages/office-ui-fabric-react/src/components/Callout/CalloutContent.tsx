@@ -16,9 +16,9 @@ import {
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import * as stylesImport from './Callout.scss';
 import { AnimationClassNames } from '../../Styling';
 
+import stylesImport from './Callout.scss';
 const styles: any = stylesImport;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };

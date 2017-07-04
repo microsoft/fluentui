@@ -8,7 +8,7 @@ import {
   css
 } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
-import * as stylesImport from './DocumentCard.scss';
+import stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export interface IDocumentCardTitleState {

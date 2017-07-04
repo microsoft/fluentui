@@ -10,7 +10,7 @@ import {
 import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import * as stylesImport from './Tooltip.scss';
+import stylesImport from './Tooltip.scss';
 const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 

@@ -1,3 +1,8 @@
+/**
+ * Rectangle helpers.
+ *
+ * @public
+ */
 export class Rectangle {
   public top: number;
   public bottom: number;

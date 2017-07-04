@@ -6,7 +6,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import * as stylesImport from './DocumentCard.scss';
+import stylesImport from './DocumentCard.scss';
 const styles: any = stylesImport;
 
 export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
