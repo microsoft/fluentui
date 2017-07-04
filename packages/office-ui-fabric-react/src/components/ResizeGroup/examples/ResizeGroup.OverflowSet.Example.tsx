@@ -68,9 +68,10 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, IResizeGro
   }
 
   public render() {
-    let dataToRender = generateData(this.state.numberOfItems, this.state.cachingEnabled, this.state.buttonsChecked);
+    let { numberOfItems, cachingEnabled, buttonsChecked, short } = this.state;
+    let dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
     return (
-      <div className={ this.state.short ? styles.resizeIsShort : 'notResized' }>
+      <div className={ short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
           data={ dataToRender }
           onReduceData={ (currentData) => {
@@ -82,7 +83,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, IResizeGro
             let primary = currentData.primary.slice(0, -1);
 
             let cacheKey = undefined;
-            if (this.state.cachingEnabled) {
+            if (cachingEnabled) {
               cacheKey = computeCacheKey(primary);
             }
             return { primary, overflow, cacheKey };
@@ -114,12 +115,12 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, IResizeGro
           } }
         />
         <div className={ styles.settingsGroup }>
-          <Checkbox label='Enable caching' onChange={ this.onCachingEnabledChanged } checked={ this.state.cachingEnabled } />
-          <Checkbox label='Buttons checked' onChange={ this.onButtonsCheckedChanged } checked={ this.state.buttonsChecked } />
+          <Checkbox label='Enable caching' onChange={ this.onCachingEnabledChanged } checked={ cachingEnabled } />
+          <Checkbox label='Buttons checked' onChange={ this.onButtonsCheckedChanged } checked={ buttonsChecked } />
           <div className={ styles.itemCountDropdown } >
             <Dropdown
               label='Number of items to render'
-              selectedKey={ this.state.numberOfItems.toString() }
+              selectedKey={ numberOfItems.toString() }
               onChanged={ this.onNumberOfItemsChanged }
               options={
                 [{ key: '20', text: '20' },
