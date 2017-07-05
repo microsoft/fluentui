@@ -5,7 +5,7 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { items, farItems } from './examples/data';
+import { items, overflowItems, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
@@ -16,7 +16,7 @@ const CommandBarCustomizationExampleCode = require('!raw-loader!office-ui-fabric
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
-    let cmdBarParamsTextAndIcons: any = { items: items, farItems: farItems };
+    let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (
       <ComponentPage

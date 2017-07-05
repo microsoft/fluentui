@@ -147,7 +147,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       // .complete, because .complete will also be set to true if the image breaks. However,
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
-      let isLoaded: boolean = src && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
+      let isLoaded: boolean = src && this._imageElement && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
         (this._imageElement.complete && Image._svgRegex.test(src));
 
       if (isLoaded) {

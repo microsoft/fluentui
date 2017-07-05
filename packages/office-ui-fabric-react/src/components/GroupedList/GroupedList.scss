@@ -5,10 +5,6 @@ $groupList-ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 .root {
   position: relative;
   font-size: $ms-font-size-s;
-
-  BUTTON {
-    background-color: transparent;
-  }
 }
 
 .group {
@@ -21,5 +17,5 @@ $groupList-ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 
 /* Set the min height for a row to 38px so even rendering empty cells takes that space. */
 .root :global(.ms-List-cell) {
-  min-height: 38px;
+  min-height: 36px;
 }

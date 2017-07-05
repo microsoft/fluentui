@@ -1,4 +1,5 @@
 import { IButtonStyles } from '../Button.Props';
+import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
   mergeStyleSets
@@ -7,6 +8,9 @@ import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getDefaultButtonStyles
 } from '../DefaultButton/DefaultButton.styles';
+import {
+  getStyles as getSplitButtonStyles
+} from '../SplitButton/SplitButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
@@ -20,6 +24,7 @@ export const getStyles = memoizeFunction((
     theme,
     customStyles
   );
+  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
   let compoundButtonStyles: IButtonStyles = {
     root: {
       maxWidth: '280px',
@@ -66,5 +71,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(defaultButtonStyles, compoundButtonStyles, customStyles);
+  return mergeStyleSets(defaultButtonStyles, compoundButtonStyles, splitButtonStyles, customStyles);
 });
