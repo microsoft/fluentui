@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Changed the CSS for the checkbox so that it's easier to customize and center",
+      "comment": "ResizeGroup: Add support for caching",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "rickyp@microsoft.com"
+  "email": "<christianjordangonzalez@gmail.com>"
 }
