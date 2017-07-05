@@ -1,9 +1,6 @@
 import { IFontStyles, IRawStyle } from '../interfaces/index';
 import { fontFace } from '../glamorExports';
-import {
-  getLanguage,
-  getWindow
-} from '@uifabric/utilities/lib/index';
+import { getLanguage } from '@uifabric/utilities/lib/language';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
@@ -203,10 +200,10 @@ function _registerDefaultFontFaces(): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = getWindow();
+  let win: {} = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable-next-line:no-string-literal no-any
-  let fabricConfig: IFabricConfig = win ? (win as any)['FabricConfig'] : undefined;
+  let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
 
   return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
 }

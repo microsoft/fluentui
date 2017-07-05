@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/utilities",
-      "comment": "Adding a new Grid utility",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "jspurlin@microsoft.com"
+  "email": "<christianjordangonzalez@gmail.com>"
 }

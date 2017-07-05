@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding a new component: SwatchColorPicker",
+      "comment": "ResizeGroup: Add support for caching",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "<christianjordangonzalez@gmail.com>"
 }
