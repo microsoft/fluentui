@@ -237,7 +237,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility === CollapseAllVisibility.visible ? 0 : 1) }) }
+        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
         { item && (
           <DetailsRowFields
