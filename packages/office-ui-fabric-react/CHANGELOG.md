@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 03 Jul 2017 10:11:52 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jul 2017 10:21:53 GMT and should not be manually modified.
+
+## 4.14.1
+Tue, 04 Jul 2017 10:21:53 GMT
+
+### Patches
+
+- Breadcrumb: Fixed maxItems logic to put correct items into overflow
 
 ## 4.14.0
 Mon, 03 Jul 2017 10:11:52 GMT
