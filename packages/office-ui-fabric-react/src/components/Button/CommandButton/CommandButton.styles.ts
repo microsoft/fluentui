@@ -23,7 +23,7 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
+  let baseSplitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
     root: {
       minWidth: COMMAND_BUTTON_MINWIDTH,
@@ -72,9 +72,13 @@ export const getStyles = memoizeFunction((
 
     icon: {
       color: theme.palette.themeDarkAlt
+    },
+
+    menuIcon: {
+      color: theme.palette.neutralSecondary
     }
 
   };
 
-  return mergeStyleSets(baseButtonStyles, commandButtonStyles, splitButtonStyles, customStyles);
+  return mergeStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles);
 });

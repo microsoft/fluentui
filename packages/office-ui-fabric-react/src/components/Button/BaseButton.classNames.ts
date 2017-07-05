@@ -17,6 +17,7 @@ export const getClassNames = memoizeFunction((
   className: string,
   variantClassName: string,
   iconClassName: string,
+  menuIconClassName: string,
   disabled: boolean,
   checked: boolean
 ): IButtonClassNames => {
@@ -71,6 +72,7 @@ export const getClassNames = memoizeFunction((
 
     menuIcon: mergeStyles(
       'ms-Button-menuIcon',
+      menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
       disabled && styles.menuIconDisabled
