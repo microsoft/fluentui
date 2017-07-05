@@ -22,8 +22,6 @@ button.check {
 }
 
 .owner {
-  @include ms-padding-left(4px);
-
   &.isSelected,
   &.isVisible,
   &:hover,

@@ -81,6 +81,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   box-sizing: border-box;
 
   @include ms-text-align(left);
+  @include ms-padding-left(4px);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
 

@@ -21,6 +21,7 @@ $isPaddedMargin: 24px;
   border-bottom: 1px solid $dividerColor;
   cursor: default;
   user-select: none;
+  @include ms-padding-left(4px);
 
   &.rootIsSelectAllHidden {
     .cell.cellIsCheck {
@@ -53,7 +54,6 @@ $isPaddedMargin: 24px;
   @include ms-text-align(left);
 
   &.cellIsCheck {
-    @include ms-margin-left(4px);
     position: relative;
     padding: 6px 8px;
     margin: 0;

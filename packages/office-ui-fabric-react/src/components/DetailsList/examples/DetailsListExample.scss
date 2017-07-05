@@ -43,10 +43,12 @@
     text-align: center;
 
     &:before {
-      content: '';
+      content: '.';
       display: inline-block;
       vertical-align: middle;
       height: 100%;
+      width: 0px;
+      visibility: hidden;
     }
   }
 
