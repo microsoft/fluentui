@@ -4,7 +4,7 @@ import * as React from 'react';
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
-import { validationState } from '../../BasePicker.Props';
+import { ValidationState } from '../../BasePicker.Props';
 import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
@@ -22,7 +22,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         'ms-PickerPersona-container',
         styles.personaContainer,
         { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-        { ['is-invalid ' + styles.validationError]: item.validationState === validationState.warning }
+        { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
       ) }
       data-is-focusable={ true }
       data-selection-index={ index } >

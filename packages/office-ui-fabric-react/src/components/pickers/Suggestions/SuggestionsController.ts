@@ -1,4 +1,4 @@
-import { validationState } from '../BasePicker.Props';
+import { ValidationState } from '../BasePicker.Props';
 import {
   getRTL,
   getInitials
@@ -87,23 +87,12 @@ export class SuggestionsController<T> {
     this.suggestions.splice(index, 1);
   }
 
-  public createGenericSuggestion(name: string, currentValidationState: validationState) {
-    let personaToConvert = {
-      key: name,
-      primaryText: name,
-      imageInitials: '!',
-      validationState: currentValidationState
-    };
-
-    if (currentValidationState !== validationState.warning) {
-      personaToConvert.imageInitials = getInitials(name, getRTL());
-    }
-
-    let personaToAdd = this._convertSuggestionsToSuggestionItems([personaToConvert])[0];
-    this.currentSuggestion = personaToAdd;
+  public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
+    let itemToAdd = this._convertSuggestionsToSuggestionItems([itemToConvert])[0];
+    this.currentSuggestion = itemToAdd;
   }
 
-  private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
+  public _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
     suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));
     return converted;

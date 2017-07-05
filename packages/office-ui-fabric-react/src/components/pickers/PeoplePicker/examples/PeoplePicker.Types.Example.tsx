@@ -15,7 +15,7 @@ import {
   IBasePickerSuggestionsProps,
   ListPeoplePicker,
   NormalPeoplePicker,
-  validationState
+  ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mostRecentlyUsed } from './PeoplePickerExampleData';
@@ -290,11 +290,11 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _validateInput(input: string) {
     if (input.indexOf('@') !== -1) {
-      return validationState.valid;
+      return ValidationState.valid;
     } else if (input.length > 1) {
-      return validationState.warning;
+      return ValidationState.warning;
     } else {
-      return validationState.invalid;
+      return ValidationState.invalid;
     }
   }
 

@@ -3,6 +3,7 @@
 .pickerText {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   box-sizing: border-box;
   border: 1px solid $ms-color-neutralLight;
   min-width: 180px;

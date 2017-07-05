@@ -1,11 +1,13 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
+import { getRTL, getInitials } from '../../../Utilities';
 import { BasePicker, BasePickerListBelow } from '../BasePicker';
-import { IBasePickerProps } from '../BasePicker.Props';
+import { IBasePickerProps, ValidationState } from '../BasePicker.Props';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from '../../../Persona';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
+import { SuggestionsController } from '../Suggestions/SuggestionsController';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
@@ -23,7 +25,8 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemNormal({ ...props }, { ...itemProps })
+    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemNormal({ ...props }, { ...itemProps }),
+    createGenericItem: createGenericItem
   };
 }
 
@@ -33,7 +36,8 @@ export class NormalPeoplePicker extends BasePeoplePicker {
 export class CompactPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemSmall({ ...props }, { ...itemProps })
+    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemSmall({ ...props }, { ...itemProps }),
+    createGenericItem: createGenericItem
   };
 }
 
@@ -43,6 +47,22 @@ export class CompactPeoplePicker extends BasePeoplePicker {
 export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemNormal({ ...props }, { ...itemProps })
+    onRenderSuggestionsItem: (props, itemProps?) => SuggestionItemNormal({ ...props }, { ...itemProps }),
+    createGenericItem: createGenericItem
   };
+}
+
+export function createGenericItem(name: string, currentValidationState: ValidationState) {
+  let personaToConvert = {
+    key: name,
+    primaryText: name,
+    imageInitials: '!',
+    ValidationState: currentValidationState
+  };
+
+  if (currentValidationState !== ValidationState.warning) {
+    personaToConvert.imageInitials = getInitials(name, getRTL());
+  }
+
+  return personaToConvert;
 }
