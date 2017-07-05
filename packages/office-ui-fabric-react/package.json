@@ -19,8 +19,7 @@
     "build:tslint": "",
     "build": "gulp && npm run build:es6",
     "clean": "gulp clean",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "test": "gulp karma"
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
