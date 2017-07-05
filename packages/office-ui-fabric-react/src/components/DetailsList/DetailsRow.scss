@@ -72,7 +72,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   border-bottom: 1px solid $ms-color-neutralLighter;
   background: $detailsList-item-default-background-color;
   color: $detailsList-item-default-meta-text-color;
-  display: inline-block;
+  display: flex;
   min-width: 100%;
   min-height: $rowHeight;
   vertical-align: top;
@@ -199,7 +199,8 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 }
 
 .fields {
-  display: inline-block;
+  display: flex;
+  align-items: stretch;
 }
 
 .cellMeasurer .cell {
