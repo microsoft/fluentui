@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "1. add onBlur event for dropDown 2. rename autoComplete -> autoCompleteInput in ComboBox",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "t-yikche@microsoft.com"
+}
