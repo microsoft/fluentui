@@ -199,20 +199,14 @@ interface IBooleanDictionary {
 // @public
 interface ICustomizerProps {
   // (undocumented)
-  settings: ICustomizerSettings;
-}
-
-// @public
-interface ICustomizerSettings {
-  // (undocumented)
-  [ key: string ]: any;
+  settings: ISettings;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface ICustomizerState {
   // (undocumented)
-  injectedProps?: ICustomizerSettings;
+  injectedProps?: ISettings;
 }
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
@@ -344,6 +338,12 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 interface ISerializableObject {
   // (undocumented)
   toString?: () => string;
+}
+
+// @public
+interface ISettings {
+  // (undocumented)
+  [ key: string ]: any;
 }
 
 // @public
