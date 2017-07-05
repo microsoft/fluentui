@@ -144,8 +144,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           [styles.compositeLinkIsExpanded]: link.isExpanded,
           [styles.compositeLinkIsSelected]: isLinkSelected
         }) }>
-        { (nestingLevel === 0 && link.links && link.links.length > 0 ?
+        { (link.links && link.links.length > 0 ?
           <button
+            style={ { marginLeft: `${14 * nestingLevel}px` } }
             className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
