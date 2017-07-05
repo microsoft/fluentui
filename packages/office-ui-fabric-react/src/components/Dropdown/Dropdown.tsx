@@ -288,13 +288,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         <Callout
           isBeakVisible={ false }
           gapSpace={ 0 }
-          doNotLayer={ false }
+          doNotLayer={ true }
           directionalHint={ DirectionalHint.bottomLeftEdge }
           { ...calloutProps }
           className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
           targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
+          preventDismissOnScroll={ true }
         >
           <div style={ { width: this._dropDown.clientWidth - 2 } }>
             { onRenderList(props, this._onRenderList) }
