@@ -81,6 +81,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName
          } = this.props;
 
+    let { menuProps } = this.state;
+
     this._classNames = getClassNames(
       styles,
       className,
@@ -88,7 +90,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps && iconProps.className,
       menuIconProps && menuIconProps.className,
       disabled,
-      checked
+      checked,
+      menuProps !== null ? true : false
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;

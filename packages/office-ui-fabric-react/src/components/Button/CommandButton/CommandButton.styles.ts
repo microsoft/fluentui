@@ -30,11 +30,7 @@ export const getStyles = memoizeFunction((
       height: COMMAND_BUTTON_HEIGHT,
       backgroundColor: theme.palette.neutralLighter,
       color: theme.palette.neutralPrimary,
-      padding: COMMAND_PADDING,
-      ':focus': {
-        backgroundColor: theme.palette.neutralLight,
-        color: theme.palette.neutralDark
-      }
+      padding: COMMAND_PADDING
     },
 
     rootHovered: {

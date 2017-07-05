@@ -58,7 +58,11 @@ export const getStyles = memoizeFunction((
     },
 
     iconDisabled: {
-      color: theme.palette.neutralTertiary,
+      color: theme.palette.neutralTertiary
+    },
+
+    menuIconDisabled: {
+      color: theme.palette.neutralTertiary
     },
 
     flexContainer: {

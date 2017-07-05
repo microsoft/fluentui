@@ -33,11 +33,22 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
-      color: theme.palette.themeDarker
+      color: theme.palette.themePrimary,
+      icon: {
+        color: theme.palette.themePrimary
+      }
+    },
+
+    iconHovered: {
+      color: theme.palette.themePrimary
     },
 
     rootPressed: {
-      color: theme.palette.themePrimary
+      color: theme.palette.black,
+    },
+
+    iconPressed: {
+      color: theme.palette.themeDarker
     },
 
     rootDisabled: {
@@ -46,11 +57,11 @@ export const getStyles = memoizeFunction((
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
+      color: theme.palette.black,
+    },
 
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight
-      }
+    iconChecked: {
+      color: theme.palette.themeDarker
     },
 
     flexContainer: {
@@ -58,7 +69,7 @@ export const getStyles = memoizeFunction((
     },
 
     icon: {
-      color: theme.palette.themePrimary
+      color: theme.palette.themeDarkAlt
     },
 
     iconDisabled: {
