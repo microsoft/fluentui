@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Fix a scrolling issue (#2090)",
+      "comment": "Toggle: Fixed aria-label that was missing from button",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
