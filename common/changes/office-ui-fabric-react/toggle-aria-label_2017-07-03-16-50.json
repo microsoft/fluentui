@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: Fixed maxItems logic to put correct items into overflow",
+      "comment": "Toggle: Fixed aria-label that was missing from button",
       "type": "patch"
     }
   ],
