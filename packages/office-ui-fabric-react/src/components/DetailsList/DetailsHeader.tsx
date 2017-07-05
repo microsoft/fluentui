@@ -76,7 +76,7 @@ export interface IColumnResizeDetails {
 
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
-    isSelectAllVisible: SelectAllVisibility.visible,
+    selectAllVisibility: SelectAllVisibility.visible,
     collapseAllVisibility: CollapseAllVisibility.visible
   };
 
