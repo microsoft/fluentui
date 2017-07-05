@@ -355,7 +355,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
       >
-        <span aria-hidden={ true }>
+        <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
           { this._onRenderSplitButtonMenuButton() }
         </span>
