@@ -69,13 +69,13 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
     return (
       <Callout
+        { ...getNativeProps(this.props, divProperties) }
         componentRef={ this._resolveRef('_callout') }
         className={ css(
           AnimationClassNames.scaleUpIn100,
           this._styles.root
         ) }
         targetElement={ targetElement }
-        { ...getNativeProps(this.props, divProperties) }
         isBeakVisible={ false }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
@@ -83,10 +83,10 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         minPagePadding={ 24 }
       >
         <div
-          { ...{ onFocusCapture: this.props.onEnter } }
-          { ...{ onBlurCapture: this.props.onDismiss } }
+          onFocusCapture={ this.props.onEnter }
+          onBlurCapture={ this.props.onLeave }
           onMouseEnter={ this.props.onEnter }
-          onMouseLeave={ this.props.onDismiss }
+          onMouseLeave={ this.props.onLeave }
         >
           { this._onRenderCompactCard() }
           { this._onRenderExpandedCard() }

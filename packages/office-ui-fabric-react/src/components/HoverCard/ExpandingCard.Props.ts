@@ -38,14 +38,14 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   targetElement?: HTMLElement;
 
   /**
-   * Callback when the ExpandingCard tries to open
+   * Callback upon focus or mouse enter event
    */
   onEnter?: (ev?: any) => void;
 
   /**
-   * Callback when the ExpandingCard tries to close
+   * Callback upon blur or mouse leave event
    */
-  onDismiss?: (ev?: any) => void;
+  onLeave?: (ev?: any) => void;
 
   /**
    * Height of compact card

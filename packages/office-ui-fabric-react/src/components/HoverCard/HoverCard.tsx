@@ -80,8 +80,8 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       <div
         className={ css(this._styles.host) }
         ref={ this._resolveRef('_hoverCard') }
-        { ...{ onFocusCapture: this._cardOpen } }
-        { ...{ onBlurCapture: this._cardDismiss } }
+        onFocusCapture={ this._cardOpen }
+        onBlurCapture={ this._cardDismiss }
         onMouseEnter={ this._cardOpen }
         onMouseLeave={ this._cardDismiss }
         onClick={ instantOpenOnClick && this._instantOpenExpanded }
@@ -90,13 +90,13 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
-            { ...expandingCardProps }
+            { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             targetElement={ this._getTargetElement() }
             onEnter={ this._cardOpen }
-            onDismiss={ this._cardDismiss }
-            { ...getNativeProps(this.props, divProperties) }
+            onLeave={ this._cardDismiss }
             mode={ mode }
+            { ...expandingCardProps }
           />
         }
       </div>
