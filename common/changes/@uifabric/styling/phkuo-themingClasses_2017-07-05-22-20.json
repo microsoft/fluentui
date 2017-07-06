@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides.",
-      "type": "major"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
