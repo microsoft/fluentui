@@ -57,7 +57,7 @@ export function loadTheme(theme: IPartialTheme): ITheme {
  * Creates a custom theme definition which can be used with the Customizer.
  */
 export function createTheme(theme: IPartialTheme): ITheme {
-  let newPalette = { ..._theme.palette/* todo: replace with default palette */, ...theme.palette };
+  let newPalette = { DefaultPalette, ...theme.palette };
 
   return {
     palette: newPalette,
