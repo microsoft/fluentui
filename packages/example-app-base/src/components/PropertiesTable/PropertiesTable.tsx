@@ -114,20 +114,20 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     let { title } = this.props;
     let { properties, isEnum, groups } = this.state;
 
+    if (properties.length === 0) {
+      return null;
+    }
+
     return (
       <div className='PropertiesTable'>
         <h2 className={ FontClassNames.xLarge }>{ title }</h2>
-        { (properties && properties.length) ? (
-          <DetailsList
-            selectionMode={ SelectionMode.none }
-            layoutMode={ DetailsListLayoutMode.justified }
-            items={ properties }
-            groups={ groups }
-            columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
-          />
-        ) : (
-            <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
-          ) }
+        <DetailsList
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.justified }
+          items={ properties }
+          groups={ groups }
+          columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
+        />
       </div>
     );
   }
