@@ -15,7 +15,7 @@ import { parent } from '../glamorExports';
 export function getFocusStyle(
   theme: ITheme,
   inset: string = '0',
-  color: string = theme.palette.neutralSecondary,
+  color: string | undefined = theme.palette.neutralSecondary,
   position: 'relative' | 'absolute' = 'relative'
 ): IProcessedStyle {
   return mergeStyles(

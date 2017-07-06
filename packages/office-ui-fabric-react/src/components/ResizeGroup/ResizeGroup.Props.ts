@@ -15,9 +15,11 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HT
 
   /**
    * Initial data to be passed to the onRenderData function. This data should represent what will be passed to the
-   * render function when the parent container of the ResizeGroup is at it's maximum supported width.
+   * render function when the parent container of the ResizeGroup is at it's maximum supported width. A cacheKey property
+   * may optionally be included as part of the data. Two data objects with the same cacheKey will be assumed to take up the
+   * same width and will prevent measurements. The type of cacheKey is a string.
   */
-  data?: any;
+  data: any;
 
   /**
    * Function to render the data. Called when rendering the contents to the screen and when
@@ -26,7 +28,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroup | HT
   onRenderData: (data: any) => JSX.Element;
 
   /**
-   * Function to be performed on the data in order to make it fit into the given space.
+   * Function to be performed on the data in order to reduce its width and make it fit into the given space.
    * If there are no more scaling steps to apply, it should return undefined to prevent
    * an infinite render loop.
   */
