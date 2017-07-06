@@ -57,12 +57,12 @@ export function loadTheme(theme: IPartialTheme): ITheme {
  * Creates a custom theme definition which can be used with the Customizer.
  */
 export function createTheme(theme: IPartialTheme): ITheme {
-  let newPalette = { DefaultPalette, ...theme.palette };
+  let newPalette = { ...DefaultPalette, ...theme.palette };
 
   return {
     palette: newPalette,
     fonts: {
-      ..._theme.fonts,
+      ...DefaultFontStyles,
       ...theme.fonts
     },
     semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
