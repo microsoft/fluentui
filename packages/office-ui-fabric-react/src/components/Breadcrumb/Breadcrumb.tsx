@@ -37,11 +37,11 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   public render() {
-    let { onReduceData = this._onReduceData } = this.props;
-    let breadCrumbData: IBreadCrumbData = {
+    const { onReduceData = this._onReduceData, maxDisplayedItems, items } = this.props;
+    const breadCrumbData: IBreadCrumbData = {
       props: this.props,
-      renderedItems: this.props.items.slice(0, this.props.maxDisplayedItems),
-      renderedOverflowItems: this.props.items.slice(this.props.maxDisplayedItems)
+      renderedItems: items.slice(-maxDisplayedItems),
+      renderedOverflowItems: items.slice(0, -maxDisplayedItems)
     };
 
     return (
@@ -56,8 +56,9 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   @autobind
   private _onReduceData(data: IBreadCrumbData): IBreadCrumbData | undefined {
     let { renderedItems, renderedOverflowItems } = data;
-    let movedItem = renderedItems[renderedItems.length - 1];
-    renderedItems = renderedItems.slice(0, -1);
+    let movedItem = renderedItems[0];
+    renderedItems = renderedItems.slice(1);
+
     renderedOverflowItems = [...renderedOverflowItems, movedItem];
 
     if (movedItem !== undefined) {
