@@ -2,6 +2,18 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.12.3",
+      "tag": "@uifabric/styling_v0.12.3",
+      "date": "Thu, 06 Jul 2017 10:11:47 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.2",
       "tag": "@uifabric/styling_v0.12.2",
       "date": "Tue, 04 Jul 2017 10:21:53 GMT",
