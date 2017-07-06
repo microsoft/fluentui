@@ -7,6 +7,7 @@ export interface ITheme {
   fonts: IFontStyles;
   semanticColors: ISemanticColors;
 }
+
 export interface IPartialTheme {
   palette?: Partial<IPalette>;
   fonts?: Partial<IFontStyles>;
