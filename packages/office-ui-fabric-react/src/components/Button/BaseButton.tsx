@@ -30,7 +30,7 @@ export interface IBaseButtonState {
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   private get _isSplitButton(): boolean {
-    return (!!this.props.menuProps && !!this.props.onClick) && this.props.splitButton === true;
+    return (!!this.props.menuProps && !!this.props.onClick) && this.props.split === true;
   }
 
   private get _isExpanded(): boolean {
@@ -41,7 +41,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     baseClassName: 'ms-Button',
     classNames: {},
     styles: {},
-    splitButton: false
+    split: false
   };
 
   private _buttonElement: HTMLElement;

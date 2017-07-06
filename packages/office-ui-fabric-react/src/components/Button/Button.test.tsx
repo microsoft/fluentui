@@ -121,7 +121,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => alert('Clicked') }
         menuProps={ {
           items: [
@@ -149,7 +149,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => alert('Clicked') }
         menuProps={ {
           items: [
@@ -179,7 +179,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -209,7 +209,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -241,7 +241,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -276,7 +276,7 @@ describe('DefaultButton', () => {
         disabled={ true }
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -311,7 +311,7 @@ describe('DefaultButton', () => {
         disabled={ true }
         data-automation-id='test'
         text='Create account'
-        splitButton={ true }
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
