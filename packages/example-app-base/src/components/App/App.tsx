@@ -35,7 +35,7 @@ export interface IAppDefinition {
 
 export interface IAppProps extends React.Props<App> {
   responsiveMode?: ResponsiveMode;
-  appDefinition?: IAppDefinition;
+  appDefinition: IAppDefinition;
 }
 
 export interface IAppState {
@@ -57,8 +57,12 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   public render() {
-    let { responsiveMode, appDefinition } = this.props;
+    let { appDefinition, responsiveMode } = this.props;
     let { isMenuVisible } = this.state;
+
+    if (responsiveMode === undefined) {
+      responsiveMode = ResponsiveMode.large;
+    }
 
     let navPanel = (
       <Nav groups={ appDefinition.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={ (link: INavLink) => ([

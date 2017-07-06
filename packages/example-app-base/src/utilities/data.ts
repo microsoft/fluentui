@@ -30,9 +30,10 @@ export function createListItems(count: number, startIndex = 0): any {
 
 export function createGroups(
   groupCount: number, groupDepth: number, startIndex: number,
-  itemsPerGroup: number, level?: number, key?: string) {
-  key = key ? key + '-' : '';
-  level = level ? level : 0;
+  itemsPerGroup: number, level: number = 0, key: string = '') {
+  if (key !== '') {
+    key = key + '-';
+  }
   let count = Math.pow(itemsPerGroup, groupDepth);
   return Array.apply(null, Array(groupCount)).map((value: any, index: number) => {
     return {

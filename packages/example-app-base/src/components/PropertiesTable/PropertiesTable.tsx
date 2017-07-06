@@ -97,7 +97,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
       ))
       .map((prop, index) => assign({}, prop, { key: index }));
 
-    let groups = null;
+    let groups: IGroup[] | null = null;
 
     if (!props.renderAsEnum) {
       groups = this._getGroups(properties);
@@ -144,7 +144,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
   }
 
   private _tryAddGroup(props: IInterfaceProperty[], typeToCompare: InterfacePropertyType, name: string, index: number, allGroups: IGroup[]): number {
-    let group: IGroup;
+    let group: IGroup | undefined = undefined;
 
     while (index < props.length) {
       let prop = props[index];

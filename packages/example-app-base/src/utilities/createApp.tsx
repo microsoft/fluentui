@@ -16,7 +16,7 @@ import { ExampleGroup, IExample } from './examplesOf';
  * @param appTitle A title for the application that will be displayed in the header.
  * @param headerLinks A set of links to put in the header of the application.
  */
-export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteComponent: () => JSX.Element = () => null, appTitle?: string, headerLinks?: IAppLink[]) {
+export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteComponent: () => (JSX.Element | null) = () => null, appTitle?: string, headerLinks?: IAppLink[]) {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
