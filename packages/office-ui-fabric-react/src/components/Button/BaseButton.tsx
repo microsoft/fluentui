@@ -91,7 +91,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
-    const renderAsAnchor: boolean = !!href;
+    // Anchor tag cannot be disabled hence in disabled state rendering
+    // anchor button as normal button
+    const renderAsAnchor: boolean = !disabled && !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
       assign(
