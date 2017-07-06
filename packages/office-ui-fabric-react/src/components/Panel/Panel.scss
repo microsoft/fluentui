@@ -33,8 +33,13 @@ $CommandBarHeight: 44px;
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  flex-direction: row-reverse;
 
-
+  &:after {
+    content: "";
+    flex-shrink: 999;
+  }
   // Overlay used within panel
   .overlay {
     pointer-events: none;
@@ -47,13 +52,10 @@ $CommandBarHeight: 44px;
 // The panel itself, where the content goes.
 .main {
   background-color: $ms-color-white;
-
-  position: absolute;
-  @include ms-right(0);
-  width: 100%;
-  bottom: 0;
-  top: 0;
-
+  height: 100%;
+  position: relative;
+  flex-basis: $Panel-width-sm;
+  flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -63,32 +65,7 @@ $CommandBarHeight: 44px;
     border-left: 1px solid $ms-color-neutralLight;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
-    width: $Panel-width-sm;
     @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
-    @include ms-left(auto);
-  }
-}
-
-//== Modifier: Small panel (anchored right, fixed width)
-//
-.root.rootIsSmall {
-  .main {
-    width: $Panel-width-xs;
-
-    @media (min-width: $ms-screen-min-md) {
-      width: $Panel-width-sm;
-    }
-  }
-}
-
-//== Modifier: Small panel (anchored left, fixed width)
-//
-.root.rootIsSmallLeft {
-  .main {
-    @include ms-right(auto);
-    @include ms-left(0);
-    width: $Panel-width-xs;
-    @include ms-drop-shadow(30px, 0px, 30px, -30px, .2);
   }
 }
 
@@ -101,61 +78,35 @@ $CommandBarHeight: 44px;
   }
 }
 
-//== Modifier: Medium, Large, Extra Large and Custom panels (anchored right, fluid width)
-//
-.root.rootIsMedium,
-.root.rootIsLarge,
-.root.rootIsXLarge,
-.root.rootIsCustom {
+.rootIsSmallLeft {
+  flex-direction: row;
   .main {
-    @media (min-width: $ms-screen-min-lg) {
-      @include ms-left($Panel-margin-md);
-      width: auto;
-    }
+    max-width: $Panel-width-xs;
+    @include ms-drop-shadow(30px, 0px, 30px, -30px, .2);
   }
 }
 
-//== Modifier: Medium panel (anchored right, fixed width)
-//
-.root.rootIsMedium {
+.rootIsSmall .main {
+  max-width: $Panel-width-sm;
+}
+.rootIsMedium .main {
+  max-width: $Panel-width-md;
+}
+.rootIsLarge {
+  &:after {
+    flex-basis: 50px;
+  }
   .main {
-    @media (min-width: $ms-screen-min-xl) {
-      @include ms-left(auto);
-      width: $Panel-width-md;
-    }
+    max-width: $Panel-width-lg;
   }
 }
 
-//== Modifier: Large panel (anchored right, fluid width)
-//
-.root.rootIsLarge {
-  .main {
-    @media (min-width: $ms-screen-min-xxl) {
-      @include ms-left($Panel-margin-lg);
-    }
+.rootIsXLarge {
+  &:after {
+    flex-basis: 208px;
   }
 }
 
-//== Modifier: Large fixed panel (anchored right, fixed width)
-//
-.root.rootIsLarge.rootIsFixed {
-  .main {
-    @media (min-width: $ms-screen-min-xxl) {
-      @include ms-left(auto);
-      width: $Panel-width-lg;
-    }
-  }
-}
-
-//== Modifier: XLarge panel (anchored right, fluid width)
-//
-.root.rootIsXLarge {
-  .main {
-    @media (min-width: $ms-screen-min-xxl) {
-      @include ms-left($Panel-margin-xl);
-    }
-  }
-}
 
 //== Modifier: Medium panel (anchored right, fixed width)
 //
