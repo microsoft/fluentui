@@ -155,6 +155,18 @@ export function getScrollbarWidth(): number;
 // (undocumented)
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
+// @public
+class GlobalSettings {
+  // (undocumented)
+  public static addChangeListener(cb: IChangeEventCallback): void;
+  // (undocumented)
+  public static getValue < T >(key: string): T;
+  // (undocumented)
+  public static removeChangeListener(cb: IChangeEventCallback): void;
+  // (undocumented)
+  public static setValue < T >(key: string, value: T): void;
+}
+
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
 export function hasOverflow(element: HTMLElement): boolean;
@@ -167,6 +179,24 @@ export function hoistMethods(destination: any, source: any, exclusions: string[]
 interface IBaseProps {
   // (undocumented)
   componentRef?: any;
+}
+
+// @public
+interface IChangeDescription {
+  // (undocumented)
+  key: string;
+  // (undocumented)
+  oldValue: any;
+  // (undocumented)
+  value: any;
+}
+
+// @public
+interface IChangeEventCallback {
+  // (undocumented)
+  ___id__?: string;
+  // (undocumented)
+  (changeDescription?: IChangeDescription): void;
 }
 
 // (undocumented)
