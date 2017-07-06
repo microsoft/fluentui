@@ -14,11 +14,11 @@ import { FabricPerformance } from '@uifabric/utilities/lib/FabricPerformance';
  * @param {(...(IStyle | string)[])} args
  * @returns {IStyle}
  */
-export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | string {
+export function mergeStyles(...args: (IStyle | string | null | undefined)[]): IProcessedStyle | string {
   const classes: string[] = [];
   const rules: Rule[] = [];
 
-  function _parseArgs(theArgs: (IStyle | string)[]): void {
+  function _parseArgs(theArgs: (IStyle | string | null | undefined)[]): void {
     for (const arg of theArgs) {
       if (arg) {
         if (typeof arg === 'string') {
@@ -34,7 +34,7 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
 
   _parseArgs(args);
 
-  let rulesObject: IStyle = null;
+  let rulesObject: IStyle | null = null;
 
   if (rules.length) {
     FabricPerformance.measure('glamor.css', () => {
@@ -44,10 +44,10 @@ export function mergeStyles(...args: (IStyle | string)[]): IProcessedStyle | str
 
   if (classes.length) {
     if (rulesObject) {
-      classes.push(rulesObject.toString());
+      classes.push((rulesObject as IStyle).toString());
     }
     return classes.join(' ');
   }
 
-  return rulesObject;
+  return rulesObject || {};
 }
