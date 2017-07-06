@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "module": "commonjs",
+    "module": "es6",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

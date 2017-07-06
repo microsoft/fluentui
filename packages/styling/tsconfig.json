@@ -31,6 +31,7 @@
     "dist",
     "lib",
     "lib-amd",
+    "lib-es6",
     "api",
     "temp"
   ]

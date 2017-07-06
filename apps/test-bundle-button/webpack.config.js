@@ -1,7 +1,7 @@
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
-const PACKAGE_NAME = require('./package.json').name;
+const PACKAGE_NAME = 'test-bundle-button';
 
 module.exports = {
   entry: './src/index.tsx',
@@ -13,7 +13,8 @@ module.exports = {
 
   externals: {
     'react': 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    'glamor': 'Glamor'
   },
 
   resolve: {
@@ -43,12 +44,14 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
         warnings: false
       }
     }),
+
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: PACKAGE_NAME + '.stats.html',

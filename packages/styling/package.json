@@ -3,8 +3,12 @@
   "version": "0.12.1",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "lib/index.js",
+  "module": "lib-es6/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "build:commonjs": "rimraf lib && tsc --outDir lib --module commonjs",
+    "build:amd": "rimraf lib-amd && tsc --outDir lib-amd --module amd",
+    "build:es6": "rimraf lib-es6 && tsc --outDir lib-es6 --module es6",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
     "clean": "gulp clean",
     "build": "gulp"

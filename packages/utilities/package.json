@@ -3,6 +3,7 @@
   "version": "4.6.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
+  "module": "lib-es6/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
@@ -10,9 +11,11 @@
   },
   "license": "MIT",
   "scripts": {
+    "build:commonjs": "rimraf lib && tsc --outDir lib --module commonjs",
+    "build:amd": "rimraf lib-amd && tsc --outDir lib-amd --module amd",
+    "build:es6": "rimraf lib-es6 && tsc --outDir lib-es6 --module es6",
     "build": "gulp",
     "clean": "gulp clean",
-    "test": "gulp",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "devDependencies": {

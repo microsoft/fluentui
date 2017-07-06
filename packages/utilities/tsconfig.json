@@ -24,6 +24,9 @@
     "node_modules",
     "dist",
     "lib",
-    "lib-amd"
+    "lib-amd",
+    "lib-es6",
+    "api",
+    "temp"
   ]
 }
