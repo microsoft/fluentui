@@ -8,7 +8,7 @@ export interface ITheme {
   semanticColors: ISemanticColors;
 }
 export interface IPartialTheme {
-  palette: Partial<IPalette>;
+  palette?: Partial<IPalette>;
   fonts?: Partial<IFontStyles>;
   semanticColors?: Partial<ISemanticColors>;
 }
