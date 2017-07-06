@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: Allow image/icon labels to trancate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations",
+      "comment": "ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations",
       "type": "minor"
     }
   ],
