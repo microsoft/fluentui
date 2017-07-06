@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Making anchor button as primary button when disabled since anchor tag does not support disabled attribute",
+      "comment": "Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag.",
       "type": "patch"
     }
   ],
