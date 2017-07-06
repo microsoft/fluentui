@@ -135,6 +135,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
+    const isRtl: boolean = getRTL();
+    const paddingBefore: string = `${14 * nestingLevel}px`;
 
     return (
       <div key={ link.key || linkIndex }
@@ -146,7 +148,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         }) }>
         { (link.links && link.links.length > 0 ?
           <button
-            style={ { marginLeft: `${14 * nestingLevel}px` } }
+            style={ { [isRtl ? 'marginRight' : 'marginLeft']: paddingBefore } }
             className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
