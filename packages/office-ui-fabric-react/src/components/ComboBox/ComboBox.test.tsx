@@ -128,7 +128,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('2');
   });
 
-  it('Can insert text in uncontrolled case with autoCompleteInput and allowFreeform on', () => {
+  it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -146,7 +146,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('Foo');
   });
 
-  it('Can insert text in uncontrolled case with autoCompleteInput on and allowFreeform off', () => {
+  it('Can insert text in uncontrolled case with autoComplete on and allowFreeform off', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -164,7 +164,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('Foo');
   });
 
-  it('Can insert text in uncontrolled case with autoCompleteInput off and allowFreeform on', () => {
+  it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
@@ -182,7 +182,7 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('f');
   });
 
-  it('Can insert text in uncontrolled case with autoCompleteInput and allowFreeform off', () => {
+  it('Can insert text in uncontrolled case with autoComplete and allowFreeform off', () => {
     let comboBoxRoot;
     let inputElement;
     let wrapper = mount(
