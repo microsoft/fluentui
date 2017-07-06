@@ -136,7 +136,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoCompleteInput={ true }
+        autoComplete='on'
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -154,7 +154,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoCompleteInput={ true }
+        autoComplete='on'
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -172,7 +172,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoCompleteInput={ false }
+        autoComplete='off'
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -190,7 +190,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoCompleteInput={ false }
+        autoComplete='off'
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');

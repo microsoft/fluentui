@@ -145,7 +145,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
-          onBlur={ this._onBlur }
+          onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
           onClick={ this._onDropdownClick }
@@ -425,7 +425,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLDivElement>) {
+  private _onDropdownBlur(ev: React.FocusEvent<HTMLDivElement>) {
     if (this.state.isOpen) {
       // Do not onBlur when the callout is opened
       return;
@@ -503,7 +503,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLDivElement>) {
     if (this.props.onKeyUp) {
-      this.props.onKeyDown(ev);
+      this.props.onKeyUp(ev);
       if (ev.preventDefault) {
         return;
       }
