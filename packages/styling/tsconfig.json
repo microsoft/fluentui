@@ -10,6 +10,7 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "noImplicitAny": false,
+    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "lib": [
       "es2017",

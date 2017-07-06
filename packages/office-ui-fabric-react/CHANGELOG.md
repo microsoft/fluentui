@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Jun 2017 19:44:26 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+
+## 4.15.0
+Thu, 06 Jul 2017 10:11:47 GMT
+
+### Minor changes
+
+- Add new component: HoverCard
+- ResizeGroup: Add support for caching
+
+### Patches
+
+- Make details row cells use flex box and stretch to total row height.
+- Toggle: Fixed aria-label that was missing from button
+- CommandBar: Remove margin from command bar items
+
+## 4.14.1
+Tue, 04 Jul 2017 10:21:53 GMT
+
+### Patches
+
+- Breadcrumb: Fixed maxItems logic to put correct items into overflow
+
+## 4.14.0
+Mon, 03 Jul 2017 10:11:52 GMT
+
+### Minor changes
+
+- Changed the CSS for the checkbox so that it's easier to customize and center
+
+### Patches
+
+- GroupedList: Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly.
 
 ## 4.13.2
 Fri, 30 Jun 2017 19:44:26 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 30 Jun 2017 19:44:26 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+
+## 4.7.0
+Thu, 06 Jul 2017 10:11:47 GMT
+
+### Minor changes
+
+- Adding export for GlobalSettings object.
 
 ## 4.6.0
 Fri, 30 Jun 2017 19:44:26 GMT
