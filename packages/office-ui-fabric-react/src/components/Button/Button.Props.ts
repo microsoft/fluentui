@@ -76,9 +76,14 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
 
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks. Providing this in addition of onClick will render a SplitButton.
+   * how the default icon looks. Providing this in addition of onClick and setting splitButton to true will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
+
+  /**
+   * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
+   */
+  splitButton?: boolean;
 
   /**
    * The props for the icon shown when providing a menu dropdown.
