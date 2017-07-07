@@ -14,7 +14,7 @@ import { assert } from 'chai';
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement;
 
-  function _onFocus(ev) {
+  function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
   }
 
@@ -596,9 +596,9 @@ describe('FocusZone', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
         <textarea className='t'></textarea>
-        <FocusZone ref={(focus) => { focusZone = focus; }}>
-          <button className='a' ref={(button) => { buttonA = button; }}>a</button>
-          <button className='b' ref={(button) => { buttonB = button; }}>b</button>
+        <FocusZone ref={ (focus) => { focusZone = focus; } }>
+          <button className='a' ref={ (button) => { buttonA = button; } }>a</button>
+          <button className='b' ref={ (button) => { buttonB = button; } }>b</button>
         </FocusZone>
       </div>
     );

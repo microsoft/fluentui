@@ -56,7 +56,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
-  constructor(props) {
+  constructor(props: IFocusZoneProps) {
     super(props);
 
     this._warnDeprecations({ rootProps: null });
