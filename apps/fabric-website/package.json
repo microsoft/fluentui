@@ -53,7 +53,7 @@
     "json-loader": "^0.5.4",
     "load-themed-styles": "^1.1.0",
     "office-ui-fabric-core": ">=7.1.2 <8.0.0",
-    "office-ui-fabric-react": ">=4.14.1 <5.0.0",
+    "office-ui-fabric-react": ">=4.16.0 <5.0.0",
     "tslib": "^1.6.0"
   }
 }

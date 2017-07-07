@@ -1,6 +1,22 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 04 Jul 2017 10:21:53 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jul 2017 10:11:38 GMT and should not be manually modified.
+
+## 0.13.0
+Fri, 07 Jul 2017 10:11:38 GMT
+
+### Minor changes
+
+- Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides.
+
+### Patches
+
+- Enable strict null checks in the styling package
+
+## 0.12.3
+Thu, 06 Jul 2017 10:11:47 GMT
+
+*Changes not tracked*
 
 ## 0.12.2
 Tue, 04 Jul 2017 10:21:53 GMT
