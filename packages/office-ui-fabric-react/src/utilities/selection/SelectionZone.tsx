@@ -110,7 +110,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   @autobind
-  private _onMouseDownCapture(ev) {
+  private _onMouseDownCapture(ev: any) {
     if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
       this.ignoreNextFocus();
     }
