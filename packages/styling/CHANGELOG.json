@@ -2,6 +2,27 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.13.0",
+      "tag": "@uifabric/styling_v0.13.0",
+      "date": "Fri, 07 Jul 2017 10:11:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "8739efafc90df5f7c51da305189b2cdc131c66e0",
+            "comment": "Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "42587fd0ba26b9efade415cc5cc60103fbe2f980",
+            "comment": "Enable strict null checks in the styling package"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.12.3",
       "tag": "@uifabric/styling_v0.12.3",
       "date": "Thu, 06 Jul 2017 10:11:47 GMT",
