@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Grid.Example.scss';
+import { IRectangle } from "../../../../../utilities/lib/IRectangle";
 
 export interface IListGridExampleProps {
   items: any[];
@@ -11,7 +12,7 @@ const ROWS_PER_PAGE = 3;
 const MAX_ROW_HEIGHT = 250;
 
 export class ListGridExample extends React.Component<IListGridExampleProps, any> {
-  private _positions;
+  private _positions: any;
   private _columnCount: number;
   private _columnWidth: number;
   private _rowHeight: number;
@@ -55,7 +56,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
     );
   }
 
-  private _getItemCountForPage(itemIndex: number, surfaceRect) {
+  private _getItemCountForPage(itemIndex: number, surfaceRect: IRectangle) {
     if (itemIndex === 0) {
       this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
@@ -65,7 +66,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
     return this._columnCount * ROWS_PER_PAGE;
   }
 
-  private _getPageHeight(itemIndex: number, surfaceRect) {
+  private _getPageHeight(itemIndex: number, surfaceRect: IRectangle) {
     return this._rowHeight * ROWS_PER_PAGE;
   }
 }
