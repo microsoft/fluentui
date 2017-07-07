@@ -24,7 +24,6 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   border: none;
   @include text-align(left);
   vertical-align: top;
-  line-height: $rowHeight - ($rowVerticalPadding * 2);
 
   &:hover {
     background: $detailsList-item-hover-color;
@@ -50,6 +49,8 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   padding: $rowVerticalPadding 8px;
   min-height: $rowHeight;
   vertical-align: top;
