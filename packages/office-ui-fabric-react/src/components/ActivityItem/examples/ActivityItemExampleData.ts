@@ -42,7 +42,7 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
       React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
       ' commented'
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'MessageFill' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'MessageFill' }); },
     people: [
       {
         primaryText: 'Robert Larsson'
@@ -56,7 +56,7 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
       React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
       ' edited this'
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Edit' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Edit' }); },
     people: [
       {
         primaryText: 'Robert Larsson'
@@ -219,7 +219,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
       ' commented on this'
     ],
     commentElements: ['This is a basic comment.'],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Message' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Message' }); },
     people: [
       {
         primaryText: 'Robert Larsson'
@@ -238,7 +238,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The mentioned name was clicked') }, '@Your Name'),
       ' was mentioned in the middle of it.'
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Accounts' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Accounts' }); },
     people: [
       {
         primaryText: 'Robert Larsson'
@@ -258,7 +258,7 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
       React.createElement('span', { className: 'ms-activityItem-nameText' }, '@Another Name'),
       ' was mentioned in the middle of it.'
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Accounts' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Accounts' }); },
     people: [
       {
         primaryText: 'Robert Larsson'
@@ -281,7 +281,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' edited ',
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The edited document was clicked') }, 'DocumentName.docx')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Edit' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Edit' }); },
     timeString: '4 days ago'
   },
   {
@@ -300,7 +300,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' to ',
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The destination folder was clicked') }, 'Destination Folder')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'FabricMovetoFolder' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'FabricMovetoFolder' }); },
     timeString: '4 days ago'
   },
   {
@@ -317,7 +317,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' to ',
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The new document name was clicked') }, 'NewDocumentTitle.xlsx')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Rename' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Rename' }); },
     timeString: ' 4 days ago'
   },
   {
@@ -334,7 +334,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' with ',
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The share recipient was clicked') }, 'Annie Lindqvist')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Share' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Share' }); },
     timeString: '4 days ago'
   },
   {
@@ -351,7 +351,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' in ',
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The new document folder was clicked') }, 'Folder Name')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Add' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Add' }); },
     timeString: '4 days ago'
   },
   {
@@ -368,7 +368,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' from ',
       React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The folder deleted from was clicked') }, 'Folder Name')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Trash' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Trash' }); },
     timeString: '4 days ago'
   },
   {
@@ -383,7 +383,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       ' restored ',
       React.createElement('span', { className: 'ms-activityItem-linkText', onClick: () => alert('The restored file was clicked') }, 'RestoredDocument.docx')
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Refresh' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Refresh' }); },
     timeString: '4 days ago'
   },
   {
@@ -397,7 +397,7 @@ export const activityItemIconExamples: (IActivityItemProps & { key: string | num
       React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
       ' created Version 2.0 on'
     ],
-    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'FabricMovetoFolder' }) },
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'FabricMovetoFolder' }); },
     timeString: '6/20/17 at 8:41pm'
   }
 ];

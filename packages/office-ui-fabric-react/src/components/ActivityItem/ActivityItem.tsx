@@ -7,7 +7,6 @@ import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
 import { getStyles } from './ActivityItem.styles';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { Icon } from '../../Icon';
 
 export interface IActivityItemClassNames {
   root?: string;
