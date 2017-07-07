@@ -56,7 +56,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._warnConditionallyRequiredProps(
       ['menuProps', 'onClick'],
       'split',
-      this.props.split === true
+      this.props.split
     );
 
     this._warnDeprecations({
