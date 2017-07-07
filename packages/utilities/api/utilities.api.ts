@@ -47,6 +47,7 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   protected readonly _events: EventGroup;
   protected _resolveRef(refName: string): (ref: any) => any;
   protected _shouldUpdateComponentRef: boolean;
+  protected _warnConditionallyRequiredProps(requiredProps: [string], conditionalPropName: string, condition: boolean): void;
   public static onError: ((errorMessage?: string, ex?: any) => void);
 }
 
@@ -388,6 +389,12 @@ export function toMatrix < T >(items: T[], columnCount: number): T[][];
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 export function warn(message: string): void;
+
+export function warnConditionallyRequiredProps < P >(componentName: string,
+  props: P,
+  requiredProps: [string],
+  conditionalPropName: string,
+  condition: boolean): void;
 
 export function warnDeprecations < P >(componentName: string,
   props: P,
