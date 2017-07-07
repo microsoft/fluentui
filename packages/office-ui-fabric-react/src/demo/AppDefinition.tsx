@@ -17,12 +17,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/ActivityItem/ActivityItemPage').ActivityItemPage,
-          key: 'ActivityItem',
-          name: 'ActivityItem',
-          url: '#/examples/activityitem'
-        },
-        {
           component: require<any>('../components/Breadcrumb/BreadcrumbPage').BreadcrumbPage,
           key: 'Breadcrumb',
           name: 'Breadcrumb',
