@@ -4,7 +4,6 @@ import { IPersonaProps } from '../Persona/Persona.Props';
 import { IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 
-
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props

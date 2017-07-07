@@ -7,7 +7,6 @@ import { IBasePickerProps, ValidationState } from '../BasePicker.Props';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from '../../../Persona';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
-import { SuggestionsController } from '../Suggestions/SuggestionsController';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {

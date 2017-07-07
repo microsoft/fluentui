@@ -1,9 +1,3 @@
-import { ValidationState } from '../BasePicker.Props';
-import {
-  getRTL,
-  getInitials
-} from '../../../Utilities';
-
 export interface ISuggestionModel<T> {
   item: T;
   selected: boolean;
