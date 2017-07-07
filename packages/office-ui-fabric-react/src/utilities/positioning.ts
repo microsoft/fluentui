@@ -90,6 +90,7 @@ export interface IPositionInfo {
   calloutPosition: { top: number, left: number };
   beakPosition: { top: number, left: number, display: string };
   directionalClassName: string;
+  rectangleEdge: RectangleEdge;
   submenuDirection: DirectionalHint;
 }
 
@@ -192,6 +193,7 @@ export function getRelativePositions(
     calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
     beakPosition: { top: beakPositioned.top, left: beakPositioned.left, display: 'block' },
     directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
+    rectangleEdge: positionedCallout.targetEdge,
     submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
   };
 }

@@ -325,6 +325,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
+        calloutProps={ { isAttached: true } }
       />
     );
   }

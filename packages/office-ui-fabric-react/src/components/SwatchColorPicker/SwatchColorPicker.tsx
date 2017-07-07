@@ -644,6 +644,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         className={ css('ms-swatchColorPickerMenu', styles.swatchColorPickerContainer) }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
+        isAttached={ true }
         setInitialFocus={ true }>
         <SwatchColorPickerBody
           { ...this.props }

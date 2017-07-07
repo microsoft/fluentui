@@ -732,6 +732,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
+        isAttached={ true }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
           { onRenderList({ ...props }, this._onRenderList) }

@@ -33,6 +33,11 @@ $Callout-smallbeak-slant-width: 16px;
   @media screen and (-ms-high-contrast: black-on-white) {
     border: 1px solid $ms-color-black;
   }
+  &.rootIsAttached {
+    box-shadow: none;
+    border: none;
+    overflow: hidden;
+  }
 }
 
 .container {
@@ -45,6 +50,12 @@ $Callout-smallbeak-slant-width: 16px;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+
+  &.mainIsAttached {
+    margin: 5px;
+    @include ms-drop-shadow(0,0, 5px, 0px);
+    border: 1px solid $ms-color-neutralLight;
+  }
 }
 
 .beak {

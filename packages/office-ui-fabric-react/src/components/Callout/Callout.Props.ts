@@ -78,6 +78,11 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   isBeakVisible?: boolean;
 
   /**
+   * Removes the shadow on one side of the component, according to value of directionalHint
+   */
+  isAttached?: boolean;
+
+  /**
    * If true then the onClose will not not dismiss on scroll
    * @default false
    */

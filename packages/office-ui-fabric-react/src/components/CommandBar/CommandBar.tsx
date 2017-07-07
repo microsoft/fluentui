@@ -147,6 +147,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             targetElement={ contextualMenuTarget }
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
+            calloutProps={ { isAttached: true } }
           />
           ) : (null)
         }

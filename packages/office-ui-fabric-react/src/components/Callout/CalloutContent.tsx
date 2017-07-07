@@ -14,7 +14,7 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, RectangleEdge } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames } from '../../Styling';
@@ -106,7 +106,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyle,
       children,
       beakWidth,
-      backgroundColor } = this.props;
+      backgroundColor,
+      isAttached } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -122,6 +123,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       height: beakStyleWidth,
       width: beakStyleWidth,
       backgroundColor: backgroundColor,
+    };
+
+    let attachedStyle: React.CSSProperties = isAttached && positions && {
+      marginTop: positions.rectangleEdge === RectangleEdge.bottom ? 0 : 5,
+      marginBottom: positions.rectangleEdge === RectangleEdge.top ? 0 : 5,
     };
 
     let directionalClassName = (positions && positions.directionalClassName)
@@ -140,6 +146,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             css(
               'ms-Callout',
               styles.root,
+              isAttached && styles.rootIsAttached,
               className,
               directionalClassName
             ) }
@@ -160,10 +167,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
-            className={ css('ms-Callout-main', styles.main) }
+            className={ css('ms-Callout-main', styles.main, isAttached && styles.mainIsAttached) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
+            style={ Object.assign({ maxHeight: contentMaxHeight, backgroundColor: backgroundColor }, attachedStyle) }>
             { children }
           </Popup>
         </div>
@@ -247,6 +254,16 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         currentProps.target = this._target;
       }
       let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
+      if (this.props.isAttached) {
+        if (newPositions.rectangleEdge === RectangleEdge.top) {
+          //newPositions.calloutPosition.top += 5;
+          newPositions.calloutPosition.left -= 5;
+        }
+        if (newPositions.rectangleEdge === RectangleEdge.bottom) {
+          //newPositions.calloutPosition.top -= 5;
+          newPositions.calloutPosition.left -= 5;
+        }
+      }
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
