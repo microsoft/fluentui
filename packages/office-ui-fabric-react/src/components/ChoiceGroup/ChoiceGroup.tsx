@@ -20,7 +20,7 @@ export interface IChoiceGroupState {
 }
 
 export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
-  public static defaultProps = {
+  public static defaultProps: IChoiceGroupProps = {
     options: []
   };
 

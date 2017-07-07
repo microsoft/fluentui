@@ -26,7 +26,7 @@ describe('DefaultButton', () => {
   });
 
   it('can render with an onClick.', () => {
-    let onClick = () => null;
+    let onClick: () => null = () => null;
 
     const button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton onClick={ onClick }>Hello</DefaultButton>
@@ -46,7 +46,7 @@ describe('DefaultButton', () => {
   });
 
   describe('with menuProps', () => {
-    let button;
+    let button: Element;
 
     before(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
@@ -61,7 +61,7 @@ describe('DefaultButton', () => {
   });
 
   describe('without menuProps', () => {
-    let button;
+    let button: Element;
 
     before(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
@@ -76,7 +76,7 @@ describe('DefaultButton', () => {
   });
 
   describe('with menuIconProps', () => {
-    let button;
+    let button: Element;
 
     before(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
