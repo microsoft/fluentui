@@ -16,7 +16,7 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
       commentElements: [
         React.createElement('span', { className: 'ms-activityItem-customComment' }, 'Hello world!')
       ],
-      people: [
+      iconContents: [
         {
           imageUrl: TestImages.personaFemale,
           primaryText: 'Annie Lindqvist',
@@ -39,7 +39,7 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
     return (
       <div>
         <ActivityItem {...props} onRenderIcon={ this.onRenderIcon } onRenderTimeStamp={ this.onRenderTimeStamp } />
-        <ActivityItem {...props} onRenderNameList={ this.onRenderNameList } onRenderIcon={ this.onRenderPersona } />
+        <ActivityItem {...props} onRenderIcon={ this.onRenderPersona } />
       </div>
     );
   }
@@ -49,11 +49,7 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
   }
 
   public onRenderPersona(props: IActivityItemProps): JSX.Element {
-    return <Persona className={ css('ms-activityItem-customPersona') } {...props.people[0]} size={ PersonaSize.extraSmall } />;
-  }
-
-  public onRenderNameList(props: IActivityItemProps): JSX.Element {
-    return <span>A few people</span>;
+    return <Persona className={ css('ms-activityItem-customPersona') } {...props.iconContents[0]} size={ PersonaSize.extraSmall } />;
   }
 
   public onRenderTimeStamp(props: IActivityItemProps): JSX.Element {

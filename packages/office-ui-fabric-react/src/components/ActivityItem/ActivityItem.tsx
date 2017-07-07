@@ -7,6 +7,7 @@ import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
 import { getStyles } from './ActivityItem.styles';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IActivityItemClassNames {
   root?: string;
@@ -36,7 +37,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     this._classNames = this._getClassNames(
       this._styles,
       this.props.className,
-      this.props.people.length,
+      this.props.iconContents,
       this.props.isCompact
     );
 
@@ -49,30 +50,31 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        { this.props.onRenderIcon ? <div className={ this._classNames.activityTypeIcon }>{ this.props.onRenderIcon(this.props) }</div> : this._onRenderIcon(this.props) }
+        { Array.isArray(this.props.iconContents) ? this._onRenderPersonaArray(this.props) : <div className={ this._classNames.activityTypeIcon }>{ this.props.iconContents }</div> }
 
         <div className={ this._classNames.activityContent }>
-
           { this.props.activityDescription.map((item, index) => <span key={ index }>{ item }</span>) }
 
           <div>
             { this.props.commentElements && !this.props.isCompact && this._onRenderCommentText(this.props) }
             { renderTimeStamp }
           </div>
-
         </div>
+
       </div>
     );
   }
 
+  // If iconContents is an array of persona props, build the persona cluster element.
   @autobind
-  private _onRenderIcon(props: IActivityItemProps): JSX.Element {
+  private _onRenderPersonaArray(props: IActivityItemProps): JSX.Element {
     let personaElement: JSX.Element;
-    if (this.props.people[0].imageUrl || this.props.people[0].imageInitials) {
+    let iconContents = props.iconContents;
+    if (Array.isArray(iconContents) && (iconContents[0].imageUrl || iconContents[0].imageInitials)) {
       let personaList = [];
-      let showSize16Personas = (this.props.people.length > 1 || this.props.isCompact);
-      let personaLimit = this.props.isCompact ? 3 : 4;
-      this.props.people.filter((person, index) => index < personaLimit).forEach((person, index) => {
+      let showSize16Personas = (iconContents.length > 1 || props.isCompact);
+      let personaLimit = props.isCompact ? 3 : 4;
+      iconContents.filter((person, index) => index < personaLimit).forEach((person, index) => {
         personaList.push(
           <Persona
             {...person}
@@ -82,7 +84,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
             hidePersonaDetails={ true }
             style={
-              this.props.isCompact && {
+              props.isCompact && {
                 display: 'inline-block',
                 width: '8px',
                 minWidth: '8px',
@@ -96,6 +98,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return personaElement;
   }
 
+  // Build a single JSX element from the strings/elements in the commentElements array.
   @autobind
   private _onRenderCommentText(props: IActivityItemProps): JSX.Element {
     return (
@@ -105,10 +108,10 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     );
   }
 
+  // Determine what classNames each element needs
   @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, numberOfPeople: number, isCompact: boolean): IActivityItemClassNames {
+  private _getClassNames(styles: IActivityItemStyles, className: string, iconContents: Array<IPersonaProps> | JSX.Element, isCompact: boolean): IActivityItemClassNames {
     return {
-
       root: mergeStyles(
         'ms-ActivityItem',
         styles.root,
@@ -125,7 +128,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         'ms-ActivityItem-activityPersona',
         styles.activityPersona,
         isCompact && styles.isCompactPersona,
-        !isCompact && numberOfPeople === 2 && styles.doublePersona
+        !isCompact && Array.isArray(iconContents) && iconContents.length === 2 && styles.doublePersona
       ) as string,
 
       activityTypeIcon: mergeStyles(

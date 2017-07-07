@@ -20,9 +20,9 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   isCompact?: boolean;
 
   /**
-   * A renderer that adds a list of names that executed this activity. If not included, up to two names will be listed and any further names will only be referred to by the number of names.
+   * Used to render the main icon. Pass in an array of Persona props to automatically render a Persona group, or pass in a JSX element to render your own content, such as an Icon, here.
    */
-  onRenderNameList?: (props?: IActivityItemProps) => JSX.Element;
+  iconContents: Array<IPersonaProps> | JSX.Element;
 
   /**
    * A renderer that adds an icon or persona to the left of the item.
@@ -33,11 +33,6 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
    * A renderer adds a time stamp. If not included, timeString is shown as plain text below the activity.
    */
   onRenderTimeStamp?: (props?: IActivityItemProps) => JSX.Element;
-
-  /**
-   * An array of personas of people that are involved in this activity, only imageUrl and primaryText properties are used.
-   */
-  people?: Array<IPersonaProps>;
 
   /**
    * The name of the user a file was shared with.
