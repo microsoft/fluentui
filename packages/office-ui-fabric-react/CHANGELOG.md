@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jul 2017 10:11:38 GMT and should not be manually modified.
+
+## 4.16.0
+Fri, 07 Jul 2017 10:11:38 GMT
+
+### Minor changes
+
+- GroupedList: Add a new prop to ignore the collapse button on the column name bar when there's custom group header
+
+### Patches
+
+- Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag.
 
 ## 4.15.0
 Thu, 06 Jul 2017 10:11:47 GMT
