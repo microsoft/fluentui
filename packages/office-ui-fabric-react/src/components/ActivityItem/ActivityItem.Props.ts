@@ -25,11 +25,6 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   iconContents: Array<IPersonaProps> | JSX.Element;
 
   /**
-   * A renderer that adds an icon or persona to the left of the item.
-   */
-  onRenderIcon?: (props?: IActivityItemProps) => JSX.Element;
-
-  /**
    * A renderer adds a time stamp. If not included, timeString is shown as plain text below the activity.
    */
   onRenderTimeStamp?: (props?: IActivityItemProps) => JSX.Element;

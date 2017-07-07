@@ -1,7 +1,6 @@
 @import '../../../common/common';
 
 :global {
-
   .ms-ActivityItem {
     margin: 32px 0;
   }
@@ -23,7 +22,7 @@
 
   .ms-activityItem-customComment {
     display: flex;
-    padding: 20px 12px 10px;
+    padding: 4px;
     background: $ms-color-neutralLighter;
   }
 
@@ -44,5 +43,4 @@
     text-decoration: none;
     cursor: pointer;
   }
-
 }

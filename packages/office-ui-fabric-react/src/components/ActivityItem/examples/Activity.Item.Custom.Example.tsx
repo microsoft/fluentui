@@ -14,23 +14,13 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
     let activityExampleList = [];
     let props = {
       commentElements: [
-        React.createElement('span', { className: 'ms-activityItem-customComment' }, 'Hello world!')
+        React.createElement('span', { className: 'ms-activityItem-customComment' }, 'This activity item has every element created by a custom renderer.')
       ],
-      iconContents: [
-        {
-          imageUrl: TestImages.personaFemale,
-          primaryText: 'Annie Lindqvist',
-        },
-        {
-          imageUrl: TestImages.personaMale,
-          primaryText: 'Robert Larsson',
-        }
-      ],
+      iconContents: <Persona className={ css('ms-activityItem-customPersona') } imageInitials={ 'CR' } size={ PersonaSize.extraSmall } />,
       activityDescription: [
-        'Testing',
-        ' a string ',
-        <span className={ css('ms-activityItem-nameText') }> and a Jsx element </span>,
-        ' and another string',
+        'A description made from a string, ',
+        <span className={ css('ms-activityItem-nameText') }>a Jsx element </span>,
+        ' and another string ',
         <span className={ css('ms-activityItem-linkText') } onClick={ this.onCustomClick } > and a clickable Jsx element.</span>,
       ],
       timeString: '11:32am PST 6/27/2017'
@@ -38,22 +28,13 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
 
     return (
       <div>
-        <ActivityItem {...props} onRenderIcon={ this.onRenderIcon } onRenderTimeStamp={ this.onRenderTimeStamp } />
-        <ActivityItem {...props} onRenderIcon={ this.onRenderPersona } />
+        <ActivityItem {...props} onRenderTimeStamp={ this.onRenderTimeStamp } />
       </div>
     );
   }
 
-  public onRenderIcon(props: IActivityItemProps): JSX.Element {
-    return <Icon className={ css('ms-activityItem-customIcon') } iconName={ 'Emoji2' } />;
-  }
-
-  public onRenderPersona(props: IActivityItemProps): JSX.Element {
-    return <Persona className={ css('ms-activityItem-customPersona') } {...props.iconContents[0]} size={ PersonaSize.extraSmall } />;
-  }
-
   public onRenderTimeStamp(props: IActivityItemProps): JSX.Element {
-    return <span>Back in the day</span>;
+    return <div style={ { background: '#333333', color: '#eeeeee', padding: '4px' } }>Custom timestamp</div>;
   }
 
   public onCustomClick(): void {
