@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Grid.Example.scss';
-import { IRectangle } from "../../../../../utilities/lib/IRectangle";
+import { IRectangle } from '../../../Utilities';
 
 export interface IListGridExampleProps {
   items: any[];
