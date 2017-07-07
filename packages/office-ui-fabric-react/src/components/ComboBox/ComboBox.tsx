@@ -57,7 +57,7 @@ enum SearchDirection {
 
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
-  public static defaultProps = {
+  public static defaultProps: IComboBoxProps = {
     options: [],
     allowFreeform: false,
     autoComplete: true,
@@ -97,7 +97,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _currentPromise: PromiseLike<ISelectableOption[]>;
 
   // The current visible value sent to the auto fill on render
-  private _currentVisibleValue;
+  private _currentVisibleValue: string;
 
   constructor(props?: IComboBoxProps) {
     super(props);
@@ -870,7 +870,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index) {
+  private _onItemClick(index: number) {
     this._setSelectedIndex(index);
     this.setState({
       isOpen: false
@@ -936,7 +936,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param currentPendingValueValidIndex - new pending value index to set
    * @param suggestedDisplayValue - new suggest display value to set
    */
-  private _setPendingInfo(currentPendingValue: string, currentPendingValueValidIndex: number, suggestedDisplayValue) {
+  private _setPendingInfo(currentPendingValue: string, currentPendingValueValidIndex: number, suggestedDisplayValue: string) {
     this.setState({
       currentPendingValue: currentPendingValue,
       currentPendingValueValidIndex: currentPendingValueValidIndex,

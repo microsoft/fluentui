@@ -592,7 +592,7 @@ describe('FocusZone', () => {
 
   it('Focus first tabbable element, when active elemet is dynamically disabled', () => {
     let focusZone: FocusZone = null;
-    let buttonA, buttonB = null;
+    let buttonA: any, buttonB = null;
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
         <textarea className='t'></textarea>
