@@ -50,7 +50,7 @@ let _items = [
   }
 ];
 
-function groupBy(items, fieldName) {
+function groupBy(items: any[], fieldName: string) {
   let groups = items.reduce((currentGroups, currentItem, index) => {
     let lastGroup = currentGroups[currentGroups.length - 1];
     let fieldValue = currentItem[fieldName];
