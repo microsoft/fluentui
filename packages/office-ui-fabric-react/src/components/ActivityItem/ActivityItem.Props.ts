@@ -15,29 +15,19 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   commentElements?: Array<string | JSX.Element>;
 
   /**
-   * Indicated if the compact styling should be used.
-   */
-  isCompact?: boolean;
-
-  /**
    * Used to render the main icon. Pass in an array of Persona props to automatically render a Persona group, or pass in a JSX element to render your own content, such as an Icon, here.
    */
   iconContents: Array<IPersonaProps> | JSX.Element;
 
   /**
+   * Indicated if the compact styling should be used.
+   */
+  isCompact?: boolean;
+
+  /**
    * A renderer adds a time stamp. If not included, timeString is shown as plain text below the activity.
    */
   onRenderTimeStamp?: (props?: IActivityItemProps) => JSX.Element;
-
-  /**
-   * The name of the user a file was shared with.
-   */
-  sharedWithName?: string;
-
-  /**
-   * A handler for what should happen when sharedWithName is clicked.
-   */
-  onSharedWithClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 
   /**
    * Optional styling for the elements within the Activity Item.
