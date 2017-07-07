@@ -101,12 +101,7 @@ export const DefaultFontStyles: IFontStyles = {
   xLarge: _createFont(FontSizes.xLarge, FontWeights.light),
   xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light),
   superLarge: _createFont(FontSizes.superLarge, FontWeights.light),
-  mega: _createFont(FontSizes.mega, FontWeights.light),
-  icon: {
-    fontFamily: '"FabricMDL2Icons"',
-    fontWeight: FontWeights.regular,
-    fontStyle: 'normal'
-  }
+  mega: _createFont(FontSizes.mega, FontWeights.light)
 };
 
 function _getFontFamily(): string {
@@ -170,7 +165,6 @@ function _registerDefaultFontFaces(): void {
 
   if (baseUrl) {
     const fontUrl = `${baseUrl}/fonts`;
-    const iconUrl = `${baseUrl}/icons`;
 
     // Produce @font-face definitions for all supported web fonts.
     _registerFontFaceSet(fontUrl, FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
@@ -190,9 +184,6 @@ function _registerDefaultFontFaces(): void {
     // Leelawadee UI (Thai) does not have a 'semibold' weight, so we override
     // the font-face generated above to use the 'bold' weight instead.
     _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
-
-    // Register icon urls.
-    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
   }
 }
 

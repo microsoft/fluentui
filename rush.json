@@ -33,6 +33,11 @@
       ]
     },
     {
+      "packageName": "@uifabric/icons",
+      "projectFolder": "packages/icons",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/example-component",
       "projectFolder": "packages/example-component",
       "shouldPublish": false

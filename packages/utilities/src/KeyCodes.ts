@@ -1,4 +1,4 @@
-export enum KeyCodes {
+export const enum KeyCodes {
   a = 65,
   backspace = 8,
   comma = 188,

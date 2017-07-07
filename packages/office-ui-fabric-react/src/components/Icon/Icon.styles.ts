@@ -1,8 +1,5 @@
 import {
-  mergeStyles,
-  mergeStyleSets,
-  ITheme,
-  getTheme
+  mergeStyleSets
 } from '../../Styling';
 import {
   memoizeFunction
@@ -10,21 +7,16 @@ import {
 import { IIconStyles } from './Icon.Props';
 
 export const getStyles = memoizeFunction((
-  theme: ITheme = getTheme(),
   customStyles: IIconStyles = undefined
 ): IIconStyles => {
   let iconStyles = {
+    root: {
+      display: 'inline-block'
+    },
 
-    root: mergeStyles([
-      theme.fonts.icon,
-      {
-        display: 'inline-block'
-      }
-    ]),
-
-    imageContainer: mergeStyles({
+    imageContainer: {
       overflow: 'hidden'
-    })
+    }
   };
 
   return mergeStyleSets(iconStyles, customStyles);

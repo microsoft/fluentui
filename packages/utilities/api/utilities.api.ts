@@ -7,7 +7,6 @@ export function assign(target: any, ...args: any[]): any;
 // WARNING: _logError has incomplete type information
 // (undocumented)
 class Async {
-  // (undocumented)
   constructor(parent?: any, onError?: (e: any) => void);
   public clearTimeout(id: number): void;
   public debounce < T extends Function >(func: T, wait?: number, options?: {
@@ -28,7 +27,6 @@ class Async {
 
 // WARNING: dispose has incomplete type information
 class AutoScroll {
-  // (undocumented)
   constructor(element: HTMLElement);
 }
 
@@ -55,7 +53,6 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 // WARNING: componentWillReceiveProps has incomplete type information
 // WARNING: render has incomplete type information
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
-  // (undocumented)
   constructor(props: any, context: any);
   // (undocumented)
   public getChildContext(): any;
@@ -66,7 +63,6 @@ class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
 // WARNING: componentWillUnmount has incomplete type information
 // WARNING: render has incomplete type information
 class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
-  // (undocumented)
   constructor(props: IDelayedRenderProps);
 }
 
@@ -160,7 +156,7 @@ class GlobalSettings {
   // (undocumented)
   public static addChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
-  public static getValue < T >(key: string): T;
+  public static getValue < T >(key: string, defaultValue?: T): T;
   // (undocumented)
   public static removeChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
@@ -394,7 +390,6 @@ export function nullRender(): JSX.Element | null;
 
 // (undocumented)
 class Rectangle {
-  // (undocumented)
   constructor(left: number = 0, right: number = 0, top: number = 0, bottom: number = 0);
   // (undocumented)
   public bottom: number;

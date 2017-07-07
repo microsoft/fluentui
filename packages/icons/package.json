@@ -1,0 +1,28 @@
+{
+  "name": "@uifabric/icons",
+  "version": "0.0.1",
+  "description": "Office UI Fabric icon set.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp",
+    "clean": "gulp clean",
+    "test": "gulp",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+  },
+  "devDependencies": {
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "gulp": "~3.9.1",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
+    "typescript": "2.2.2"
+  },
+  "dependencies": {
+    "@uifabric/styling": ">=0.0.1 <= 1.0.0",
+    "tslib": "^1.6.0"
+  }
+}

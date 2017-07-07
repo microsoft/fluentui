@@ -17,7 +17,6 @@ loadTheme({
 import { examplesOf, createApp } from '@uifabric/example-app-base';
 import { ColorPage } from './examples/ColorPage/ColorPage';
 import { FontPage } from './examples/FontPage/FontPage';
-import { IconPage } from './examples/IconPage/IconPage';
 import { AnimationPage } from './examples/AnimationPage/AnimationPage';
 
 createApp([
@@ -27,9 +26,6 @@ createApp([
     ))
     .add('Typography', () => (
       <FontPage />
-    ))
-    .add('Icons', () => (
-      <IconPage />
     ))
     .add('Animations', () => (
       <AnimationPage />

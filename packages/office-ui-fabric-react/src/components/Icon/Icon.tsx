@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-
+import { registerCoreIcons } from '@uifabric/icons/lib/coreIcons';
 import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
@@ -9,8 +9,11 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { IconCodes } from '../../Styling';
+import { getIcon } from '../../Styling';
 import { getStyles } from './Icon.styles';
+
+// Register core icons.
+registerCoreIcons();
 
 export function Icon(props: IIconProps): JSX.Element {
   let {
@@ -19,7 +22,7 @@ export function Icon(props: IIconProps): JSX.Element {
     styles: customStyles,
     iconName
    } = props;
-  let styles = getStyles(undefined, customStyles);
+  let styles = getStyles(customStyles);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
@@ -41,7 +44,10 @@ export function Icon(props: IIconProps): JSX.Element {
       </div>
     );
   } else {
-    let iconMemberName = iconName ? iconName.charAt(0).toLowerCase() + iconName.substr(1) : '';
+    let iconDefinition = getIcon(iconName) || {
+      baseClassName: undefined,
+      code: undefined
+    };
 
     return (
       <i
@@ -54,12 +60,13 @@ export function Icon(props: IIconProps): JSX.Element {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon',
+            'ms-Icon', // dangerous?
+            iconDefinition.baseClassName,
             styles.root,
             props.className
           ) }
       >
-        { IconCodes[iconMemberName] }
+        { iconDefinition.code }
       </i>
     );
   }

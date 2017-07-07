@@ -52,7 +52,11 @@ export interface IChangeEventCallback {
  * @public
  */
 export class GlobalSettings {
-  public static getValue<T>(key: string): T {
+  public static getValue<T>(key: string, defaultValue?: T): T {
+    if (_globalSettings[key] === undefined && defaultValue !== undefined) {
+      GlobalSettings.setValue(key, defaultValue);
+    }
+
     return _globalSettings[key];
   }
 

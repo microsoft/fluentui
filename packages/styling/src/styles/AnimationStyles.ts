@@ -122,6 +122,7 @@ export const AnimationStyles: IAnimationStyles = {
   fadeOut200: _createAnimation(FADE_OUT, DURATION_2, EASING_FUNCTION_2),
   fadeOut400: _createAnimation(FADE_OUT, DURATION_3, EASING_FUNCTION_2),
   fadeOut500: _createAnimation(FADE_OUT, DURATION_4, EASING_FUNCTION_2),
+
   rotate90deg: _createAnimation(ROTATE90, '0.1s', EASING_FUNCTION_2),
   rotateN90deg: _createAnimation(ROTATE_N90, '0.1s', EASING_FUNCTION_2)
 
