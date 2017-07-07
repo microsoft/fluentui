@@ -96,18 +96,6 @@ export const getStyles = memoizeFunction((
       overflowX: 'hidden'
     },
 
-    nameText: {
-      fontWeight: '600',
-      color: theme.palette.neutralPrimary
-    },
-
-    docLink: {
-      fontWeight: '600',
-      color: theme.palette.themePrimary,
-      textDecoration: 'none',
-      cursor: 'pointer'
-    },
-
     commentText: {
       color: theme.palette.neutralPrimary,
     },

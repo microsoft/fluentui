@@ -33,4 +33,16 @@
     color: $ms-color-neutralTertiaryAlt;
   }
 
+  .ms-activityItem-nameText {
+    font-weight: 600;
+    color: $ms-color-neutralPrimary;
+  }
+
+  .ms-activityItem-linkText {
+    font-weight: 600;
+    color: $ms-color-themePrimary;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
 }

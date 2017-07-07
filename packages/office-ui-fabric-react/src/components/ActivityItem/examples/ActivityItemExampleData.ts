@@ -1,37 +1,48 @@
-import { IActivityItemProps, ActivityType } from '../ActivityItem.Props';
+/* tslint:disable-next-line:no-unused-variable */
+import * as React from 'react';
+
+import { IActivityItemProps } from '../ActivityItem.Props';
 import { TestImages } from '../../../common/TestImages';
+import { Icon } from '../../../Icon';
 
 export const activityItemCompactExamples: (IActivityItemProps & { key: string | number })[] = [
   {
     key: 1,
-    activityType: ActivityType.Message,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' commented'
+    ],
     people: [
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       }
     ],
-    commentString: 'This comment text should be invisible in the compact variant',
+    commentElements: ['This comment text should be invisible in the compact variant'],
     timeString: 'Just now'
   },
   {
     key: 2,
-    activityType: ActivityType.Mention,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ' +1 other mentioned you'
+    ],
     people: [
       {
-        imageInitials: 'AL',
-        primaryText: 'Annie Lindqvist'
+        imageInitials: 'AL'
       },
       {
         imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
       }
     ],
     timeString: 'Just now'
   },
   {
     key: 3,
-    activityType: ActivityType.Message,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' commented'
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'MessageFill' }) },
     people: [
       {
         primaryText: 'Robert Larsson'
@@ -41,33 +52,36 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
   },
   {
     key: 4,
-    activityType: ActivityType.Edit,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ' edited this'
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Edit' }) },
     people: [
       {
-        primaryText: 'Annie Lindqvist'
+        primaryText: 'Robert Larsson'
       }
     ],
     timeString: 'Just now'
   },
   {
     key: 5,
-    activityType: ActivityType.Mention,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ' +3 others commented'
+    ],
     people: [
       {
-        imageInitials: 'AL',
-        primaryText: 'Annie Lindqvist'
+        imageInitials: 'AL'
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageInitials: 'RC',
-        primaryText: 'Rosie Costa',
+        imageInitials: 'RC'
       },
       {
-        imageInitials: 'AR',
-        primaryText: 'Aaron Reid'
+        imageInitials: 'AR'
       }
     ],
     timeString: 'Just now'
@@ -77,45 +91,55 @@ export const activityItemCompactExamples: (IActivityItemProps & { key: string | 
 export const activityItemPersonaExamples: (IActivityItemProps & { key: string | number })[] = [
   {
     key: 1,
-    activityType: ActivityType.Message,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' commented on this'
+    ],
     people: [
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       }
     ],
-    commentString: 'This is the text of the comment! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet turpis auctor eros laoreet cursus. Cras dictum auctor fringilla. Sed porttitor justo et nisl lacinia sodales.',
+    commentElements: ['This is the text of the comment! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet turpis auctor eros laoreet cursus. Cras dictum auctor fringilla. Sed porttitor justo et nisl lacinia sodales.'],
     timeString: 'Just now'
   },
   {
     key: 2,
-    activityType: ActivityType.CommentInDocument,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ' and ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' commented in the document'
+    ],
     people: [
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist'
+        imageUrl: TestImages.personaFemale
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       }
     ],
     timeString: '1 hour ago'
   },
   {
     key: 3,
-    activityType: ActivityType.Mention,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ', ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' and ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, '1 other'),
+      ' edited ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The edited document was clicked') }, 'DocumentName.docx')
+    ],
     people: [
       {
-        primaryText: 'Annie Lindqvist',
         imageInitials: 'AL'
       },
       {
-        primaryText: 'Robert Larsson',
         imageInitials: 'RL'
       },
       {
-        primaryText: 'Rosie Costa',
         imageInitials: 'RC'
       }
     ],
@@ -123,156 +147,123 @@ export const activityItemPersonaExamples: (IActivityItemProps & { key: string | 
   },
   {
     key: 4,
-    activityType: ActivityType.Edit,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ', ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' and ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, '2 others'),
+      ' mentioned you'
+    ],
     people: [
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist'
+        imageUrl: TestImages.personaFemale
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Aaron Reid'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Rosie Costa'
+        imageUrl: TestImages.personaFemale
       }
     ],
-    fileActivity: {
-      fileName: 'DocumentName.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the edited document.')
-    },
     timeString: 'Yesterday'
   },
   {
     key: 5,
-    activityType: ActivityType.Message,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ', ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' and ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, '6 others'),
+      ' commented on this'
+    ],
     people: [
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist'
+        imageInitials: 'AL'
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Aaron Reid'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Rosie Costa'
+        imageInitials: 'AL'
       },
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Annie Lindqvist'
+        imageUrl: TestImages.personaFemale
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Robert Larsson'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageUrl: TestImages.personaMale,
-        primaryText: 'Aaron Reid'
+        imageUrl: TestImages.personaMale
       },
       {
-        imageUrl: TestImages.personaFemale,
-        primaryText: 'Rosie Costa'
+        imageUrl: TestImages.personaFemale
       }
     ],
     timeString: '2 days ago'
-  },
-  {
-    key: 6,
-    activityType: ActivityType.Message,
-    people: [
-      {
-        primaryText: 'Rosie Costa',
-        imageInitials: 'RC'
-      }
-    ],
-    commentString: 'Persona with initials instead of an image.',
-    timeString: '3 days ago'
   }
 ];
 
 export const activityItemCommentExamples: (IActivityItemProps & { key: string | number })[] = [
   {
     key: 1,
-    activityType: ActivityType.Message,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' commented on this'
+    ],
+    commentElements: ['This is a basic comment.'],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Message' }) },
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    commentString: 'This is a basic comment.',
     timeString: '3 days ago'
   },
   {
     key: 2,
-    activityType: ActivityType.Message,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Annie Lindqvist'),
+      ' mentioned you'
+    ],
+    commentElements: [
+      'This is an at mention message. ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The mentioned name was clicked') }, '@Your Name'),
+      ' was mentioned in the middle of it.'
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Accounts' }) },
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    commentString: 'This is a comment on a file.',
-    fileActivity: {
-      fileName: 'DocumentName.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on a file name.'),
-    },
     timeString: '3 days ago'
   },
   {
     key: 3,
-    activityType: ActivityType.CommentInDocument,
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' mentioned you'
+    ],
+    commentElements: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, '@Your Name'),
+      ' was mentioned at the start of this message. ',
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, '@Another Name'),
+      ' was mentioned in the middle of it.'
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Accounts' }) },
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    timeString: '3 days ago'
-  },
-  {
-    key: 4,
-    activityType: ActivityType.Mention,
-    people: [
-      {
-        primaryText: 'Robert Larsson'
-      }
-    ],
-    mentionedName: '@Your Name',
-    onMentionedClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked an @mention name'),
-    commentString: 'This is an at mention message. @Your Name was mentioned in the middle of it.',
-    timeString: '3 days ago'
-  },
-  {
-    key: 5,
-    activityType: ActivityType.Mention,
-    people: [
-      {
-        primaryText: 'Robert Larsson'
-      }
-    ],
-    mentionedName: '@Your Name',
-    commentString: '@Your Name is mentioned at the start of this message.',
-    timeString: '3 days ago'
-  },
-  {
-    key: 6,
-    activityType: ActivityType.Mention,
-    people: [
-      {
-        primaryText: 'Robert Larsson'
-      }
-    ],
-    mentionedName: '@Your Name',
-    commentString: 'At the end of this message it mentions @Your Name',
     timeString: '3 days ago'
   }
 ];
@@ -280,121 +271,133 @@ export const activityItemCommentExamples: (IActivityItemProps & { key: string | 
 export const activityItemIconExamples: (IActivityItemProps & { key: string | number })[] = [
   {
     key: 1,
-    activityType: ActivityType.Edit,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    fileActivity: {
-      fileName: 'DocumentName.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the edited document.')
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' edited ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The edited document was clicked') }, 'DocumentName.docx')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Edit' }) },
     timeString: '4 days ago'
   },
   {
     key: 2,
-    activityType: ActivityType.Move,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    fileActivity: {
-      fileName: 'DocumentName.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the moved file.'),
-      sourceFolderName: 'Source Folder Name',
-      onSourceFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the source folder.'),
-      destinationFolderName: 'Destination Folder Name',
-      onDestinationFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the destination folder.')
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' moved ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The moved document was clicked') }, 'AnotherDocument.pptx'),
+      ' from ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The source folder was clicked') }, 'Source Folder'),
+      ' to ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The destination folder was clicked') }, 'Destination Folder')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'FabricMovetoFolder' }) },
     timeString: '4 days ago'
   },
   {
     key: 3,
-    activityType: ActivityType.Rename,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    fileActivity: {
-      newFileName: 'NewFileName.docx',
-      onNewFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the new file name.'),
-      fileName: 'OldFileName.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the old file name.'),
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' renamed ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The old document name was clicked') }, 'OldDocumentTitle.xlsx'),
+      ' to ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The new document name was clicked') }, 'NewDocumentTitle.xlsx')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Rename' }) },
     timeString: ' 4 days ago'
   },
   {
     key: 4,
-    activityType: ActivityType.Share,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    sharedWithName: 'Annie Lindqvist',
-    onSharedWithClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the person this was shared with.'),
-    fileActivity: {
-      fileName: 'SharedDocumentName.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the shared file.'),
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' shared ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The shared document name was clicked') }, 'DocumentName.docx'),
+      ' with ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The share recipient was clicked') }, 'Annie Lindqvist')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Share' }) },
     timeString: '4 days ago'
   },
   {
     key: 5,
-    activityType: ActivityType.Add,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    fileActivity: {
-      fileName: 'AddedDocument.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the new file.'),
-      sourceFolderName: 'Folder Name',
-      onSourceFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the folder the file was added to.')
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' added ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The new document name was clicked') }, 'NewDocument.xlsx'),
+      ' in ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The new document folder was clicked') }, 'Folder Name')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Add' }) },
     timeString: '4 days ago'
   },
   {
     key: 6,
-    activityType: ActivityType.Delete,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    fileActivity: {
-      fileName: 'DeletedFile.docx',
-      sourceFolderName: 'Source Folder',
-      onSourceFolderClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the folder of the deleted file.')
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' deleted ',
+      React.createElement('span', { className: 'ms-activityItem-linkText' }, 'DeletedDocument.pptx'),
+      ' from ',
+      React.createElement('a', { className: 'ms-activityItem-linkText', onClick: () => alert('The folder deleted from was clicked') }, 'Folder Name')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Trash' }) },
     timeString: '4 days ago'
   },
   {
     key: 7,
-    activityType: ActivityType.Restore,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
-    fileActivity: {
-      fileName: 'RestoredFile.docx',
-      onFileClick: (ev: React.MouseEvent<HTMLElement>, props: IActivityItemProps) => alert('You clicked on the restored file.'),
-    },
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' restored ',
+      React.createElement('span', { className: 'ms-activityItem-linkText', onClick: () => alert('The restored file was clicked') }, 'RestoredDocument.docx')
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'Refresh' }) },
     timeString: '4 days ago'
   },
   {
     key: 8,
-    activityType: ActivityType.Version,
     people: [
       {
         primaryText: 'Robert Larsson'
       }
     ],
+    activityDescription: [
+      React.createElement('span', { className: 'ms-activityItem-nameText' }, 'Robert Larsson'),
+      ' created Version 2.0 on'
+    ],
+    onRenderIcon: (props: IActivityItemProps) => { return React.createElement(Icon, { iconName: 'FabricMovetoFolder' }) },
     timeString: '6/20/17 at 8:41pm'
   }
 ];

@@ -5,24 +5,14 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 // Please keep alphabetized
 export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Indicates what type of activity occurred.
+   * Text or elements in this array will be shown in order as the description of the activity that occurred.
    */
-  activityType: ActivityType;
+  activityDescription: Array<string | JSX.Element>;
 
   /**
-   * An array of personas of people that are involved in this activity, only imageUrl and primaryText properties are used. At least one person is required.
+   * Text or elements of a comment that will be shown in order under the activity description.
    */
-  people: Array<IPersonaProps>;
-
-  /**
-   * Text shown if the activity type is a comment or a mention.
-   */
-  commentString?: string;
-
-  /**
-   * Used to describe what occured if the activity involved a file or folder.
-   */
-  fileActivity?: IFileActivity;
+  commentElements?: Array<string | JSX.Element>;
 
   /**
    * Indicated if the compact styling should be used.
@@ -30,27 +20,12 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   isCompact?: boolean;
 
   /**
-   * If this is included and the mentionedName is shown, the mentionedName will use this behavior when clicked.
-   */
-  onMentionedClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
-
-  /**
    * A renderer that adds a list of names that executed this activity. If not included, up to two names will be listed and any further names will only be referred to by the number of names.
    */
   onRenderNameList?: (props?: IActivityItemProps) => JSX.Element;
 
   /**
-   * A renderer that adds a comment. If not included, the commentString is displayed as plain text.
-   */
-  onRenderComment?: (props?: IActivityItemProps) => JSX.Element;
-
-  /**
-   * A renderer that adds an element describing what activity took place. If not included, text determined by activityType and fileActivity will be used instead.
-   */
-  onRenderDescription?: (props?: IActivityItemProps) => JSX.Element;
-
-  /**
-   * A renderer that adds an icon to the left of the item. If not included, the icon will be a persona based on the contents of people or an icon based on fileActivity.
+   * A renderer that adds an icon or persona to the left of the item.
    */
   onRenderIcon?: (props?: IActivityItemProps) => JSX.Element;
 
@@ -60,9 +35,9 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   onRenderTimeStamp?: (props?: IActivityItemProps) => JSX.Element;
 
   /**
-   * The name of the user mentioned. If used with the Mention ActivityType and a commentString, the mentioned user's name will be highlighted in the commentString.
+   * An array of personas of people that are involved in this activity, only imageUrl and primaryText properties are used.
    */
-  mentionedName?: string;
+  people?: Array<IPersonaProps>;
 
   /**
    * The name of the user a file was shared with.
@@ -117,11 +92,6 @@ export interface IActivityItemStyles {
   doublePersona?: IStyle;
 
   /**
-   * Styles applied to documents, folders, and usernames that are hyperlinks or have other on click actions.
-   */
-  docLink?: IStyle;
-
-  /**
    * Styles applied to personas and icons in the compact variant.
    */
   isCompactIcon?: IStyle;
@@ -142,11 +112,6 @@ export interface IActivityItemStyles {
   isCompactPersonaContainer?: IStyle;
 
   /**
-   * Styles applied to the names mentioned in the activity item.
-   */
-  nameText?: IStyle;
-
-  /**
    * Styles applied to the container of the persona image or activity type icon.
    */
   personaContainer?: IStyle;
@@ -155,93 +120,4 @@ export interface IActivityItemStyles {
    * Styles applied to the timestamp at the end of each activity item.
    */
   timeStamp?: IStyle;
-}
-
-export enum ActivityType {
-  /**
-   * Created a file or added some other element.
-   */
-  Add,
-  /**
-   * Added a comment inside a document, comment text may not be available.
-   */
-  CommentInDocument,
-  /**
-   * Deleted or moved a file to the recycle bin.
-   */
-  Delete,
-  /**
-   * Edited a file.
-   */
-  Edit,
-  /**
-   * Added a comment or sent a message.
-   */
-  Message,
-  /**
-   * Made a comment that referred to someone with an @mention.
-   */
-  Mention,
-  /**
-   * Moved a file from one location to another.
-   */
-  Move,
-  /**
-   * Renamed a file.
-   */
-  Rename,
-  /**
-   * Restored a file from the recycle bin or to a previous version.
-   */
-  Restore,
-  /**
-   * Shared a file with another user.
-   */
-  Share,
-  /**
-   * Changed the version of a file.
-   */
-  Version
-}
-
-export interface IFileActivity {
-  /**
-   * The name of the folder a file was moved from, or renamed inside of.
-   */
-  destinationFolderName?: string;
-
-  /**
-   * If this and destinationFolderName are included, destinationFolderName will use this behavior when clicked.
-   */
-  onDestinationFolderClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
-
-  /**
-   * Name of the file that was acted on.
-   */
-  fileName?: string;
-
-  /**
-   * If this is included, fileName will use this behavior when clicked
-   */
-  onFileClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
-
-  /**
-   * New name of a renamed file.
-   */
-  newFileName?: string;
-
-  /**
-   * If this and newFileName are included, newFileName will use this behavior when clicked.
-   */
-  onNewFileClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
-
-  /**
-   * The name of the folder a file was moved from.
-   */
-  sourceFolderName?: string;
-
-  /**
-   * If this and sourceFolderName included, sourceFolderName wil use this behavior when clicked.
-   */
-  onSourceFolderClick?: (ev?: React.MouseEvent<HTMLElement>, props?: IActivityItemProps) => void;
 }

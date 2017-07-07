@@ -7,14 +7,15 @@ import { Icon } from '../../../Icon';
 import { Persona, PersonaSize } from '../../../Persona';
 import './ActivityItemExample.scss';
 import { TestImages } from '../../../common/TestImages';
-import { IActivityItemProps, ActivityType } from '../ActivityItem.Props';
+import { IActivityItemProps } from '../ActivityItem.Props';
 
 export class ActivityItemCustomExample extends React.Component<React.Props<ActivityItemCustomExample>, {}> {
   public render() {
     let activityExampleList = [];
     let props = {
-      activityType: ActivityType.CommentInDocument,
-      commentString: 'Hello world!',
+      commentElements: [
+        React.createElement('span', { className: 'ms-activityItem-customComment' }, 'Hello world!')
+      ],
       people: [
         {
           imageUrl: TestImages.personaFemale,
@@ -25,13 +26,20 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
           primaryText: 'Robert Larsson',
         }
       ],
+      activityDescription: [
+        'Testing',
+        ' a string ',
+        <span className={ css('ms-activityItem-nameText') }> and a Jsx element </span>,
+        ' and another string',
+        <span className={ css('ms-activityItem-linkText') } onClick={ this.onCustomClick } > and a clickable Jsx element.</span>,
+      ],
       timeString: '11:32am PST 6/27/2017'
     };
 
     return (
       <div>
-        <ActivityItem {...props} onRenderDescription={ this.onRenderDescription } onRenderIcon={ this.onRenderIcon } onRenderTimeStamp={ this.onRenderTimeStamp } />
-        <ActivityItem {...props} onRenderNameList={ this.onRenderNameList } onRenderIcon={ this.onRenderPersona } onRenderComment={ this.onRenderComment } />
+        <ActivityItem {...props} onRenderIcon={ this.onRenderIcon } onRenderTimeStamp={ this.onRenderTimeStamp } />
+        <ActivityItem {...props} onRenderNameList={ this.onRenderNameList } onRenderIcon={ this.onRenderPersona } />
       </div>
     );
   }
@@ -44,24 +52,15 @@ export class ActivityItemCustomExample extends React.Component<React.Props<Activ
     return <Persona className={ css('ms-activityItem-customPersona') } {...props.people[0]} size={ PersonaSize.extraSmall } />;
   }
 
-  public onRenderDescription(props: IActivityItemProps): JSX.Element {
-    return <span> did an activity with a custom description</span>;
-  }
-
-  public onRenderComment(props: IActivityItemProps): JSX.Element {
-    return (
-      <div className={ css('ms-activityItem-customComment') }>
-        <Icon className={ css('ms-activityItem-customCommentIcon') } iconName={ 'RightDoubleQuote' } />
-        <div>{ props.commentString }</div>
-      </div>
-    );
-  }
-
   public onRenderNameList(props: IActivityItemProps): JSX.Element {
     return <span>A few people</span>;
   }
 
   public onRenderTimeStamp(props: IActivityItemProps): JSX.Element {
     return <span>Back in the day</span>;
+  }
+
+  public onCustomClick(): void {
+    alert('custom link clicked');
   }
 }
