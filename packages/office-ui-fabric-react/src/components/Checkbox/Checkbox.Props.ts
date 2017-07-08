@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IStyle, ITheme } from '../../Styling';
 
 /**
  * Checkbox class interface.
@@ -66,4 +67,87 @@ export interface ICheckboxProps extends React.HTMLAttributes<HTMLElement | HTMLI
    * @default 'start'
    */
   boxSide?: 'start' | 'end';
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Custom styles for this component
+   */
+  styles?: ICheckboxStyles;
+}
+
+export interface ICheckboxStyles {
+  /**
+   * Style for the root element in the default enabled/unchecked state.
+   */
+  root?: IStyle;
+
+  /**
+   * Style for the text before/after the checkbox input element.
+   */
+  label?: IStyle;
+
+  labelReversed?: IStyle;
+
+  /**
+   *
+   */
+  input?: IStyle;
+  /**
+ *
+ */
+  checkboxHovered?: IStyle;
+
+  /**
+   *
+   */
+  checkboxChecked?: IStyle;
+
+  /**
+   *
+   */
+  checkboxCheckedHovered?: IStyle;
+
+  /**
+   *
+   */
+  checkboxDisabled?: IStyle;
+
+  /**
+   *
+   */
+  checkboxCheckedDisabled?: IStyle;
+
+  /**
+   *
+   */
+  box?: IStyle;
+
+  /**
+   *
+   */
+  checkbox?: IStyle;
+
+  /**
+   *
+   */
+  checkmark?: IStyle;
+
+  /**
+   *
+   */
+  checkmarkChecked?: IStyle;
+
+  /**
+   *
+   */
+  text?: IStyle;
+
+  textHovered?: IStyle;
+
+  textDisabled?: IStyle;
+
 }
