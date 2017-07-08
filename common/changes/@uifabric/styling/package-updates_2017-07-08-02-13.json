@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Updating dev dependencies.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@hotmail.com"
+}

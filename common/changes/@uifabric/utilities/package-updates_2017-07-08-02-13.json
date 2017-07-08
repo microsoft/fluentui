@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Updating library comments.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@hotmail.com"
+}
