@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.7.1",
+      "tag": "@uifabric/utilities_v4.7.1",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating library comments."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.0",
       "tag": "@uifabric/utilities_v4.7.0",
       "date": "Thu, 06 Jul 2017 10:11:47 GMT",

@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Jul 2017 10:11:38 GMT and should not be manually modified.
+This log was last generated on Sat, 08 Jul 2017 03:34:35 GMT and should not be manually modified.
+
+## 4.16.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Fixing an import breaking AMD modules related to GroupedList.
 
 ## 4.16.0
 Fri, 07 Jul 2017 10:11:38 GMT
