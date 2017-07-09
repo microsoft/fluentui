@@ -207,7 +207,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       label: mergeStyles(
         'ms-Checkbox-label',
         styles.label,
-        isReversed && styles.labelReversed
+        isReversed && styles.labelReversed,
+        disabled && styles.labelDisabled
       ) as string,
 
       input: mergeStyles(

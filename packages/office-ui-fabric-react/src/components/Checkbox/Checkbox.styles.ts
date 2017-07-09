@@ -6,7 +6,9 @@ import {
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
-const MS_CHECKBOX_LABEL_SIZE = '20px !default';
+const MS_CHECKBOX_LABEL_SIZE = '20px';
+const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
+const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -38,6 +40,9 @@ export const getStyles = memoizeFunction((
     labelReversed: {
       flexDirection: 'row-reverse'
     },
+    labelDisabled: {
+      cursor: 'default'
+    },
     input: {
       position: 'absolute',
       opacity: '0'
@@ -60,6 +65,9 @@ export const getStyles = memoizeFunction((
       borderStyle: 'solid',
       borderColor: checkboxBorderColor,
       boxSizing: 'border-box',
+      transitionProperty: 'background, border, border-color',
+      transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
+      transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
       /* incase the icon is bigger than the box */
       overflow: 'hidden'

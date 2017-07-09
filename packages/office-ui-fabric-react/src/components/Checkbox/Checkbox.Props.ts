@@ -92,6 +92,8 @@ export interface ICheckboxStyles {
 
   labelReversed?: IStyle;
 
+  labelDisabled?: IStyle;
+
   /**
    *
    */
