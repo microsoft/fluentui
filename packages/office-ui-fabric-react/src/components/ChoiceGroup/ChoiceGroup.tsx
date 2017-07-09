@@ -75,14 +75,18 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           ) }
 
           { options.map((option: IChoiceGroupOption) => {
-            let { onRenderField = this._onRenderField } = option;
+            let {
+              onRenderField = this._onRenderField,
+              onRenderLabel = this._onRenderLabel
+            } = option;
 
             // Merge internal props into option
             assign(option, {
               checked: option.key === keyChecked,
               disabled: option.disabled || this.props.disabled,
               id: `${this._id}-${option.key}`,
-              labelId: `${this._labelId}-${option.key}`
+              labelId: `${this._labelId}-${option.key}`,
+              onRenderLabel
             });
 
             return (
@@ -140,6 +144,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
   private _onRenderField(option: IChoiceGroupOption) {
 
+    let { onRenderLabel } = option;
+
     return (
       <label
         htmlFor={ option.id }
@@ -195,13 +201,17 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           option.imageSrc || option.iconProps
             ? (
               <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
-                <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
+                { onRenderLabel(option) }
               </div>
-            ) : (
-              <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
-            )
+            ) : onRenderLabel(option)
         }
       </label>
+    );
+  }
+
+  private _onRenderLabel(option: IChoiceGroupOption): JSX.Element {
+    return (
+      <span id={ option.labelId } className='ms-Label'>{ option.text }</span>
     );
   }
 

@@ -16,7 +16,7 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { CollapseAllVisibility } from '../GroupedList';
+import { CollapseAllVisibility } from '../../GroupedList';
 import {
   IDragDropHelper,
   IDragDropEvents,

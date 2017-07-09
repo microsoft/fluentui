@@ -1,14 +1,29 @@
+/**
+ * PerfData interface.
+ *
+ * @internal
+ */
 export interface IPerfData {
   duration: number;
   timeStamp: number;
 }
 
+/**
+ * PerfMeasurement interface.
+ *
+ * @internal
+ */
 export interface IPerfMeasurement {
   totalDuration: number;
   count: number;
   all: IPerfData[];
 }
 
+/**
+ * PerfSummary interface.
+ *
+ * @internal
+ */
 export interface IPerfSummary {
   [key: string]: IPerfMeasurement;
 }
@@ -17,6 +32,11 @@ const now: () => number = () => (typeof performance !== 'undefined' && !!perform
 
 const RESET_INTERVAL = 3 * 60 * 1000; // auto reset every 3 minutes
 
+/**
+ * Performance helper class for measuring things.
+ *
+ * @public
+ */
 export class FabricPerformance {
   public static summary: IPerfSummary = {};
   private static _timeoutId: number;
