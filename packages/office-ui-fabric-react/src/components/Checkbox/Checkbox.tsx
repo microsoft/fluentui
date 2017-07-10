@@ -217,12 +217,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       ) as string,
 
       box: mergeStyles(
-        'box',
+        'ms-Checkbox-box',
         styles.box
       ) as string,
 
       checkbox: mergeStyles(
-        'checkbox',
+        'ms-Checkbox-checkbox',
         styles.checkbox,
         !disabled && isChecked && styles.checkboxChecked,
         disabled && [
@@ -237,7 +237,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       ) as string,
 
       text: mergeStyles(
-        'text',
+        'ms-Checkbox-text',
         styles.text,
         disabled && styles.textDisabled
       ) as string,

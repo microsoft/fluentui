@@ -7,6 +7,7 @@ export type ISettingsMap<T> = {
 /**
  * Warns when a deprecated props are being used.
  *
+ * @public
  * @param componentName - The name of the component being used.
  * @param props - The props passed into the component.
  * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
@@ -33,6 +34,7 @@ export function warnDeprecations<P>(
 /**
  * Warns when two props which are mutually exclusive are both being used.
  *
+ * @public
  * @param componentName - The name of the component being used.
  * @param props - The props passed into the component.
  * @param exclusiveMap - A map where the key is a parameter, and the value is the other parameter.
@@ -56,6 +58,8 @@ export function warnMutuallyExclusive<P>(
 
 /**
  * Sends a warning to console, if the api is present.
+ *
+ * @public
  * @param message - Warning message.
  */
 export function warn(message: string): void {
@@ -68,6 +72,7 @@ export function warn(message: string): void {
  * Configures the warning callback. Passing in undefined will reset it to use the default
  * console.warn function.
  *
+ * @public
  * @param warningCallback - Callback to override the generated warnings.
  */
 export function setWarningCallback(warningCallback?: (message: string) => void): void {
