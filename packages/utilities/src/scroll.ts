@@ -4,8 +4,20 @@ import styles from './scroll.scss';
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
 
+/**
+ * Placing this attribute on scrollable divs optimizes detection to know
+ * if the div is scrollable or not (given we can avoid expensive operations
+ * like getComputedStyle.)
+ *
+ * @public
+ */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
+/**
+ * Disables the body scrolling.
+ *
+ * @public
+ */
 export function disableBodyScroll() {
   let doc = getDocument();
 
@@ -16,6 +28,11 @@ export function disableBodyScroll() {
   _bodyScrollDisabledCount++;
 }
 
+/**
+ * Enables the body scrolling.
+ *
+ * @public
+ */
 export function enableBodyScroll() {
   if (_bodyScrollDisabledCount > 0) {
     let doc = getDocument();
@@ -28,7 +45,11 @@ export function enableBodyScroll() {
   }
 }
 
-/** Calculates the width of a scrollbar for the browser/os. */
+/**
+ * Calculates the width of a scrollbar for the browser/os.
+ *
+ * @public
+ */
 export function getScrollbarWidth(): number {
   if (_scrollbarWidth === undefined) {
     let scrollDiv: HTMLElement = document.createElement('div');
@@ -51,9 +72,11 @@ export function getScrollbarWidth(): number {
 /**
  * Traverses up the DOM for the element with the data-is-scrollable=true attribute, or returns
  * document.body.
+ *
+ * @public
  */
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement {
-  let el = startingElement;
+export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null {
+  let el: HTMLElement | null = startingElement;
 
   // First do a quick scan for the scrollable attribute.
   while (el && el !== document.body) {

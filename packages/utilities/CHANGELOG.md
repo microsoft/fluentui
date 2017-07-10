@@ -1,6 +1,67 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 12 Jun 2017 01:47:18 GMT and should not be manually modified.
+This log was last generated on Sat, 08 Jul 2017 03:34:35 GMT and should not be manually modified.
+
+## 4.7.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating library comments.
+
+## 4.7.0
+Thu, 06 Jul 2017 10:11:47 GMT
+
+### Minor changes
+
+- Adding export for GlobalSettings object.
+
+## 4.6.0
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Minor changes
+
+- Customizer `setDefault` method moved to GlobalSettings `setValue` helper. This patches the customization code in 2 ways: 1. Multiple copies of the Customizer on the page will no longer create script errors complaining about missing themes, and 2. React is no longer pulled into the styling graph.
+
+## 4.5.0
+Thu, 29 Jun 2017 20:48:31 GMT
+
+### Minor changes
+
+- Adding a new Grid utility
+
+## 4.4.2
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Removing localstorage persistence for rtl helpers.
+
+## 4.4.1
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.4.0
+Wed, 21 Jun 2017 01:52:48 GMT
+
+### Minor changes
+
+- Add FabricPerformance utility to measure performance
+
+## 4.3.0
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Minor changes
+
+- Enable strictNullChecks in utilities package
+
+### Patches
+
+- isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned.
+- Focus Utility should respect tabindex=-1 on tabable elements
 
 ## 4.2.0
 Mon, 12 Jun 2017 01:47:18 GMT

@@ -67,7 +67,6 @@ $ms-Persona-presenceSizeXl: 28px;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
-  line-height: 1;
   position: relative;
   height: $ms-Persona-sizeMd;
   display: flex;
@@ -238,6 +237,9 @@ $ms-Persona-presenceSizeXl: 28px;
   min-width: 0;
   width: 100%;
   @include text-align(left);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .primaryText,
@@ -252,8 +254,6 @@ $ms-Persona-presenceSizeXl: 28px;
   color: $ms-color-neutralPrimary;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-l;
-  margin-top: -3px;
-  line-height: 1.4;
 }
 
 .secondaryText,
@@ -263,16 +263,10 @@ $ms-Persona-presenceSizeXl: 28px;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
   white-space: nowrap;
-  line-height: 1.3;
-}
-
-.secondaryText {
-  padding-top: 3px;
 }
 
 .tertiaryText,
 .optionalText {
-  padding-top: 5px;
   display: none; // Hidden on default persona
 }
 
@@ -312,7 +306,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 4px;
+    line-height: $ms-Persona-sizeTiny;
   }
 
   .secondaryText {
@@ -339,9 +333,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsExtraExtraSmall {
   height: $ms-Persona-sizeXxs;
-  line-height: $ms-Persona-sizeXxs;
   min-width: $ms-Persona-sizeXxs;
-  margin-right: 4px;
 
   .imageArea,
   .image {
@@ -375,7 +367,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 3px;
+    line-height: $ms-Persona-sizeXxs;
   }
 
   .secondaryText {
@@ -383,14 +375,13 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   &.showSecondaryText {
-    height: 30px;
+    height: 32px;
 
     .primaryText,
     .secondaryText {
       display: block;
-      padding: 0;
-      line-height: 1;
-      overflow: visible;
+      height: 16px;
+      line-height: 16px;
     }
   }
 }
@@ -400,7 +391,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIs28 {
   height: $ms-Persona-size28;
-  line-height: $ms-Persona-size28;
   min-width: $ms-Persona-size28;
   overflow: hidden;
 
@@ -436,7 +426,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 3px;
+    line-height: $ms-Persona-size28;
   }
 
   .secondaryText {
@@ -444,12 +434,13 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   &.showSecondaryText {
+    height: 32px;
+
     .primaryText,
     .secondaryText {
       display: block;
-      padding: 0;
-      line-height: 1;
-      overflow: visible;
+      line-height: 16px;
+      height: 16px;
     }
   }
 }
@@ -459,7 +450,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsExtraSmall {
   height: $ms-Persona-sizeXs;
-  line-height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
 
   .imageArea,
@@ -486,7 +476,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 3px;
+    line-height: $ms-Persona-sizeXs;
   }
 
   .secondaryText {
@@ -497,9 +487,8 @@ $ms-Persona-presenceSizeXl: 28px;
     .primaryText,
     .secondaryText {
       display: block;
-      padding: 0;
-      line-height: 1;
-      overflow: visible;
+      height: 16px;
+      line-height: 16px;
     }
   }
 }
@@ -509,7 +498,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsSmall {
   height: $ms-Persona-sizeSm;
-  line-height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
 
   .imageArea,
@@ -537,11 +525,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .primaryText {
     font-size: $ms-font-size-m;
   }
-
-  .primaryText,
-  .secondaryText {
-    padding-top: 1px;
-  }
 }
 
 
@@ -549,7 +532,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsLarge {
   height: $ms-Persona-sizeLg;
-  line-height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
 
   .imageArea,
@@ -582,12 +564,7 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
   }
 
-  .secondaryText {
-    padding-top: 3px;
-  }
-
   .tertiaryText {
-    padding-top: 5px;
     display: block;
   }
 }
@@ -597,7 +574,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsExtraLarge {
   height: $ms-Persona-sizeXl;
-  line-height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
 
   .imageArea,
@@ -635,16 +611,10 @@ $ms-Persona-presenceSizeXl: 28px;
   .primaryText {
     font-size: $ms-font-size-xl;
     font-weight: $ms-font-weight-semilight;
-    margin-top: 0;
-  }
-
-  .secondaryText {
-    padding-top: 2px;
   }
 
   .tertiaryText,
   .optionalText {
-    padding-top: 5px;
     display: block; // Show tertiary and optional text
   }
 }

@@ -1,22 +1,23 @@
+declare function setTimeout(cb: Function, delay: number): number;
+declare function setInterval(cb: Function, delay: number): number;
+
 /**
  * Bugs often appear in async code when stuff gets disposed, but async operations don't get canceled.
  * This Async helper class solves these issues by tying async code to the lifetime of a disposable object.
  *
  * Usage: Anything class extending from BaseModel can access this helper via this.async. Otherwise create a
  * new instance of the class and remember to call dispose() during your code's dispose handler.
+ *
+ * @public
  */
-
-declare function setTimeout(cb: Function, delay: number): number;
-declare function setInterval(cb: Function, delay: number): number;
-
 export class Async {
   private _timeoutIds: any = null;
   private _immediateIds: any = null;
   private _intervalIds: any = null;
-  private _animationFrameIds: { [id: number]: boolean } = null;
+  private _animationFrameIds: { [id: number]: boolean } | null = null;
   private _isDisposed = false;
   private _parent: any;
-  private _onErrorHandler: (e: any) => void;
+  private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: any;
 
   constructor(parent?: any, onError?: (e: any) => void) {
@@ -256,7 +257,7 @@ export class Async {
     let lastExecuteTime = 0;
     let lastResult: any;
     let lastArgs: any[];
-    let timeoutId: number = null;
+    let timeoutId: number | null = null;
 
     if (options && typeof (options.leading) === 'boolean') {
       leading = options.leading;
@@ -325,7 +326,7 @@ export class Async {
     let lastExecuteTime = (new Date).getTime();
     let lastResult: any;
     let lastArgs: any[];
-    let timeoutId: number = null;
+    let timeoutId: number | null = null;
 
     if (options && typeof (options.leading) === 'boolean') {
       leading = options.leading;
@@ -396,7 +397,10 @@ export class Async {
       let animationFrameCallback = () => {
         try {
           // Now delete the record and call the callback.
-          delete this._animationFrameIds[animationFrameId];
+          if (this._animationFrameIds) {
+            delete this._animationFrameIds[animationFrameId];
+          }
+
           callback.apply(this._parent);
         } catch (e) {
           this._logError(e);

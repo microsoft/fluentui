@@ -1,16 +1,13 @@
 import { IFontStyles, IRawStyle } from '../interfaces/index';
 import { fontFace } from '../glamorExports';
-import {
-  getLanguage,
-  getWindow
-} from '@uifabric/utilities/lib/index';
+import { getLanguage } from '@uifabric/utilities/lib/language';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
 const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
-const FontFamilyFallbacks = `-apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
+const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
 
 // Font face names to be registered.
 const FontNameArabic = 'Segoe UI Web (Arabic)';
@@ -117,8 +114,9 @@ function _getFontFamily(): string {
   let fontFamily = FontFamilyWestEuropean;
 
   for (let lang in LanguageToFontMap) {
-    if (LanguageToFontMap.hasOwnProperty(lang) && lang.indexOf(language) === 0) {
-      fontFamily = LanguageToFontMap[lang];
+    if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
+      // tslint:disable-next-line:no-any
+      fontFamily = (LanguageToFontMap as any)[lang];
       break;
     }
   }
@@ -130,7 +128,6 @@ function _createFont(size: string, weight: number): IRawStyle {
   return {
     fontFamily: _getFontFamily(),
     MozOsxFontSmoothing: 'grayscale',
-    MsHighContrastAdjust: 'none',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
     fontWeight: weight
@@ -203,9 +200,9 @@ function _registerDefaultFontFaces(): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = getWindow();
+  let win = typeof window !== 'undefined' ? window : undefined;
 
-  // tslint:disable-next-line:no-string-literal
+  // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
 
   return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;

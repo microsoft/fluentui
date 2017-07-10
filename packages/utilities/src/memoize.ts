@@ -9,15 +9,26 @@ const _dictionary: any = {};
 let _weakMap = (typeof WeakMap === 'undefined') ? null : WeakMap;
 
 interface IMemoizeNode {
-  map: WeakMap;
+  map: WeakMap | null;
   value?: any;
 }
 
-/** Test utility for providing a custom weakmap. */
+/**
+ *  Test utility for providing a custom weakmap.
+ *
+ * @internal
+ * */
 export function setMemoizeWeakMap(weakMap: any): void {
   _weakMap = weakMap;
 }
 
+/**
+ * Memoize decorator to be used on class methods. Note that the "this" reference
+ * will be inaccessible within a memoized method, given that a cached method's this
+ * would not be instance specific.
+ *
+ * @public
+ */
 export function memoize<T extends Function>(
   target: any,
   key: string,
@@ -25,7 +36,7 @@ export function memoize<T extends Function>(
 
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
-  let fn = memoizeFunction(descriptor.value.bind(null));
+  let fn = memoizeFunction(descriptor.value && descriptor.value.bind(null));
 
   return {
     configurable: true,
@@ -46,6 +57,7 @@ export function memoize<T extends Function>(
  * unintendedly called with unique objects. Without a reset, the cache could grow infinitely, so we safeguard
  * by resetting. To override this behavior, pass a value of 0 to the maxCacheSize parameter.
  *
+ * @public
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @returns A memoized version of the function.
@@ -108,6 +120,6 @@ function _normalizeArg(val: any) {
 
 function _createNode(): IMemoizeNode {
   return {
-    map: new _weakMap()
+    map: _weakMap ? new _weakMap() : null
   };
 }

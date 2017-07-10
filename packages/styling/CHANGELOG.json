@@ -2,6 +2,345 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.13.4",
+      "tag": "@uifabric/styling_v0.13.4",
+      "date": "Mon, 10 Jul 2017 19:18:55 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.3",
+      "tag": "@uifabric/styling_v0.13.3",
+      "date": "Mon, 10 Jul 2017 10:22:21 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.2",
+      "tag": "@uifabric/styling_v0.13.2",
+      "date": "Sat, 08 Jul 2017 05:59:28 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.1",
+      "tag": "@uifabric/styling_v0.13.1",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating dev dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.7.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.0",
+      "tag": "@uifabric/styling_v0.13.0",
+      "date": "Fri, 07 Jul 2017 10:11:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "8739efafc90df5f7c51da305189b2cdc131c66e0",
+            "comment": "Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "42587fd0ba26b9efade415cc5cc60103fbe2f980",
+            "comment": "Enable strict null checks in the styling package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.3",
+      "tag": "@uifabric/styling_v0.12.3",
+      "date": "Thu, 06 Jul 2017 10:11:47 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.12.2",
+      "tag": "@uifabric/styling_v0.12.2",
+      "date": "Tue, 04 Jul 2017 10:21:53 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.12.1",
+      "tag": "@uifabric/styling_v0.12.1",
+      "date": "Mon, 03 Jul 2017 10:11:52 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.12.0",
+      "tag": "@uifabric/styling_v0.12.0",
+      "date": "Fri, 30 Jun 2017 19:44:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "20e5559ad325465a6c1bdc3bbb879ce831adc9e9",
+            "comment": "Dependencies now use path based imports to various utilities to minimize the graph dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.5.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.10",
+      "tag": "@uifabric/styling_v0.11.10",
+      "date": "Fri, 30 Jun 2017 10:23:15 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.9",
+      "tag": "@uifabric/styling_v0.11.9",
+      "date": "Thu, 29 Jun 2017 20:48:31 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.2 <5.0.0` to `>=4.5.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.8",
+      "tag": "@uifabric/styling_v0.11.8",
+      "date": "Thu, 29 Jun 2017 10:13:16 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.1 <5.0.0` to `>=4.4.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.7",
+      "tag": "@uifabric/styling_v0.11.7",
+      "date": "Wed, 28 Jun 2017 10:12:04 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.6",
+      "tag": "@uifabric/styling_v0.11.6",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.5",
+      "tag": "@uifabric/styling_v0.11.5",
+      "date": "Fri, 23 Jun 2017 20:02:00 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.4",
+      "tag": "@uifabric/styling_v0.11.4",
+      "date": "Fri, 23 Jun 2017 04:12:23 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.3",
+      "tag": "@uifabric/styling_v0.11.3",
+      "date": "Thu, 22 Jun 2017 21:45:08 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.2",
+      "tag": "@uifabric/styling_v0.11.2",
+      "date": "Thu, 22 Jun 2017 10:13:03 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.11.1",
+      "tag": "@uifabric/styling_v0.11.1",
+      "date": "Wed, 21 Jun 2017 01:52:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "221454482fd48138b0485715170c03c64fa1cef7",
+            "comment": "Instrumenting the performance of css registration."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.3.0 <5.0.0` to `>=4.4.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.11.0",
+      "tag": "@uifabric/styling_v0.11.0",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bff150fa91e87c31d8d433092b007ee604f22d8b",
+            "comment": "Consume latest version of createApp "
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "135c06a013468eb717fddab4ccabd6d63274fe4b",
+            "comment": "General class exports now register on demand, resulting in less unneeded evaluation of classnames."
+          },
+          {
+            "author": "dmarcey <demarcey@microsoft.com>",
+            "commit": "230323c6b7d4972e8b04da6a4beb981b1c15396c",
+            "comment": "Fixing circular dependency between @uifabric/styling/utilities and @uifabric/styling/styles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.5",
+      "tag": "@uifabric/styling_v0.10.5",
+      "date": "Tue, 20 Jun 2017 10:22:47 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.10.4",
+      "tag": "@uifabric/styling_v0.10.4",
+      "date": "Sat, 17 Jun 2017 17:39:43 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.10.2",
+      "tag": "@uifabric/styling_v0.10.2",
+      "date": "Sat, 17 Jun 2017 06:27:45 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.10.1",
+      "tag": "@uifabric/styling_v0.10.1",
+      "date": "Sat, 17 Jun 2017 04:36:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ff0d219134776c9b5cff83a7ac9ed7596d8281a2",
+            "comment": "Fixing amd import that was broken byt the no-implicit-anys fix."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.10.0",
+      "tag": "@uifabric/styling_v0.10.0",
+      "date": "Fri, 16 Jun 2017 23:02:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "31867d887e53378ab7ce057babe1fcac939d2d65",
+            "comment": "Enable no-implicit-any in the styling package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.9.1",
+      "tag": "@uifabric/styling_v0.9.1",
+      "date": "Fri, 16 Jun 2017 19:39:47 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.9.0",
+      "tag": "@uifabric/styling_v0.9.0",
+      "date": "Thu, 15 Jun 2017 23:55:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "90e2da953d51ba71c019b0b1db9a7f63bf8f7e48",
+            "comment": "Removed new icons that were added recently"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.8.1",
+      "tag": "@uifabric/styling_v0.8.1",
+      "date": "Thu, 15 Jun 2017 10:09:15 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.8.0",
+      "tag": "@uifabric/styling_v0.8.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Updating FabricConfig support to allow themes to be providable at bundle load time without weird race conditions."
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "560719e7fc887c52b3ffc96cba08f9115b5c03e7",
+            "comment": "Updates to version 2.30 of the icon font"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "5c591cad8e4de27a353fb11727aeddedb4820da1",
+            "comment": "Remove high contrast adjust from common styles"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.4",
+      "tag": "@uifabric/styling_v0.7.4",
+      "date": "Tue, 13 Jun 2017 10:13:21 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.7.3",
       "tag": "@uifabric/styling_v0.7.3",
       "date": "Mon, 12 Jun 2017 01:47:18 GMT",

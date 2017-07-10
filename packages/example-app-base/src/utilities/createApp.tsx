@@ -9,7 +9,14 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 import { ExampleGroup, IExample } from './examplesOf';
 
-export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: boolean, appTitle?: string, headerLinks?: IAppLink[]) {
+/**
+ * Creates a <div> on the page and renders a demo app for React components organized into example groups.
+ * @param examples A set of pages, organized into groups, that are used to demo React components.
+ * @param defaultRouteComponent A function that returns the contents that will be displayed on the home page.
+ * @param appTitle A title for the application that will be displayed in the header.
+ * @param headerLinks A set of links to put in the header of the application.
+ */
+export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteComponent: () => JSX.Element = () => null, appTitle?: string, headerLinks?: IAppLink[]) {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
@@ -19,7 +26,7 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
 
     setBaseUrl('./dist/');
 
-    let routes = groups.map((group, groupIndex) => group.examples.map(
+    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group, groupIndex) => group.examples.map(
       (example: IExample, index: number) => (
         <Route
           key={ example.key }
@@ -27,6 +34,11 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
           component={ example.onRender }
         />
       )));
+
+    // Add the default route
+    routes.push(
+      <Route key='default' component={ defaultRouteComponent } />
+    );
 
     let appDefinition = _getDefinition(groups);
 

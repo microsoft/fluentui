@@ -1,0 +1,254 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// ComboBox styles
+
+$ComboBox-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
+$ComboBox-selectedItem-hover-bg: $ms-color-neutralLighter;
+$ComboBox-height: 32px;
+$ComboBox-caretDown-width: 32px;
+$ComboBox-item-height: 36px;
+
+// Mixin for high contrast mode link states
+@mixin highContrastListItemState {
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $ms-color-contrastBlackSelected;
+    border-color: $ms-color-contrastBlackSelected;
+    color: $ms-color-black;
+
+    &:focus {
+      border-color: $ms-color-black;
+    }
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $ms-color-contrastWhiteSelected;
+    border-color: $ms-color-contrastWhiteSelected;
+    color: $ms-color-white;
+  }
+
+  @include highContrastAdjust();
+}
+
+.root {
+  @include ms-normalize;
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
+
+  margin-bottom: 10px;
+  position: relative;
+  outline: 0;
+  user-select: none;
+  background: $ms-color-white;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
+  cursor: text ;
+  display: block;
+  height: $ComboBox-height;
+  line-height: $ComboBox-height - 2px; // height minus the border
+  @include padding(0, $ComboBox-caretDown-width, 0, 0);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  box-sizing: content-box;
+
+  &:hover,
+  &.focused {
+    &.wrapper
+      {
+        border-color: $ms-color-themePrimary;
+
+        @media screen and (-ms-high-contrast: active) {
+          color: $ms-color-contrastBlackSelected;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          color: $ms-color-contrastWhiteSelected;
+        }
+    }
+
+    &.readOnly {
+      .caretDown {
+        background-color: inherit;
+      }
+    }
+  }
+
+  &.wrapperForError {
+      border-color: $ms-color-error;
+  }
+
+  :global(.ms-Label) {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+}
+
+//== State: A disabled ComboBox
+.root.rootIsDisabled {
+  &.wrapper,
+  .input,
+  .caretDown {
+    background-color: $ms-color-neutralLighter;
+    border-color: $ms-color-neutralLighter;
+    color: $ms-color-neutralTertiary;
+    cursor: default;
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackDisabled;
+      color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteDisabled;
+      color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font: inherit;
+  text-overflow: ellipsis;
+  padding-left: 12px;
+
+}
+
+.caretDown {
+  color: $ms-color-neutralDark;
+  font-size: $ms-icon-size-s;
+  position: absolute;
+  height: $ComboBox-height;
+  line-height: $ComboBox-height - 2px; // height minus the border
+  width: $ComboBox-caretDown-width;
+  text-align: center;
+  cursor: default;
+
+  &:hover{
+    background-color: $ms-color-neutralQuaternaryAlt;
+  }
+
+  &:active{
+    background-color: $ms-color-neutralTertiaryAlt;
+  }
+}
+
+.callout {
+  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
+}
+
+.errorMessage{
+    color: $ms-color-error;
+  &::before {
+    content: '* ';
+  }
+}
+
+.items {
+  display: block;
+}
+
+// Container for the ComboBox items, displayed as a panel on small screens.
+.item {
+  background: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: $ComboBox-item-height;
+  line-height: 20px;
+  padding: 5px 16px;
+  position: relative;
+  border: 1px solid transparent;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+
+  @media screen and (-ms-high-contrast: active) {
+    border-color: $ms-color-black;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border-color: $ms-color-white;
+  }
+
+  &:hover {
+    background-color: $ComboBox-selectedItem-hover-bg;
+    color: $ms-color-black;
+
+    @include highContrastListItemState;
+  }
+
+  @include focus-border();
+
+  &:focus {
+    background-color: $ms-color-neutralLighter;
+  }
+
+  &:active {
+    background-color: $ComboBox-selectedItem-hover-bg;
+    color: $ms-color-black;
+  }
+
+  &.itemIsDisabled {
+    background: $ms-color-white;
+    color: $ms-color-neutralTertiary;
+    cursor: default;
+  }
+  :global(.ms-Button-flexContainer) {
+    justify-content: flex-start;
+  }
+}
+
+// A selected ComboBox item
+.item.itemIsSelected {
+  background-color: $ComboBox-selectedItem-bg;
+  color: $ms-color-black;
+
+  &:hover {
+    background-color: $ComboBox-selectedItem-bg;
+  }
+
+  @include focus-border();
+
+  @include highContrastListItemState;
+}
+
+.header {
+  @include ms-font-m;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-themePrimary;
+  background: none;
+  border: none;
+  height: $ComboBox-item-height;
+  line-height: $ComboBox-item-height;
+  cursor: default;
+  padding: 0px 16px;
+  user-select: none;
+  @include text-align(left);
+}
+
+.divider {
+  height: 1px;
+  background-color: $dividerColor;
+}
+
+.optionText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 1px;
+}

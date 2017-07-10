@@ -133,9 +133,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   public focus(forceIntoFirstElement: boolean = false): boolean {
     if (!forceIntoFirstElement && this.refs.root.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' && this._isInnerZone) {
-      // The parent focus zone should take responsibility for focusing this element.
-      return true;
-    } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)) {
+      const ownerZoneElement = this._getOwnerZone(this.refs.root);
+
+      if (ownerZoneElement !== this.refs.root) {
+        const ownerZone = _allInstances[ownerZoneElement.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
+
+        return !!ownerZone && ownerZone.focusElement(this.refs.root);
+      }
+
+      return false;
+    } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)
+      && isElementTabbable(this._activeElement)) {
       this._activeElement.focus();
       return true;
     } else {
@@ -366,7 +374,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     do {
-      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT') {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         return false;
       }
 
@@ -446,6 +454,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           const targetRect = element.getBoundingClientRect();
           const elementDistance = getDistanceFromCenter(activeRect, targetRect);
 
+          if (elementDistance === -1 && candidateDistance === -1) {
+            candidateElement = element;
+            break;
+          }
+
           if (elementDistance > -1 && (candidateDistance === -1 || elementDistance < candidateDistance)) {
             candidateDistance = elementDistance;
             candidateElement = element;
@@ -490,6 +503,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectBottom = Math.floor(activeRect.bottom);
 
+      if (targetRectTop < activeRectBottom) {
+        return 999999999;
+      }
+
       if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
         (targetRectTop === targetTop)) {
         targetTop = targetRectTop;
@@ -523,6 +540,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectTop = Math.floor(activeRect.top);
 
+      if (targetRectBottom > activeRectTop) {
+        return 999999999;
+      }
+
       if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
         (targetRectTop === targetTop)) {
         targetTop = targetRectTop;
@@ -543,20 +564,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusLeft(): boolean {
-    let targetTop = -1;
     const topAlignment = this._focusAlignment.top;
 
     if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
-      if ((
-        targetTop === -1 &&
+      if (
+        targetRect.bottom > activeRect.top &&
         targetRect.right <= activeRect.right &&
-        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
-        (targetRect.top === targetTop)) {
+        this.props.direction !== FocusZoneDirection.vertical
+      ) {
 
-        targetTop = targetRect.top;
-        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = activeRect.right - targetRect.right;
       }
 
       return distance;
@@ -569,20 +588,18 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _moveFocusRight(): boolean {
-    let targetTop = -1;
     const topAlignment = this._focusAlignment.top;
 
     if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
 
-      if ((
-        targetTop === -1 &&
+      if (
+        targetRect.top < activeRect.bottom &&
         targetRect.left >= activeRect.left &&
-        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
-        (targetRect.top === targetTop)) {
+        this.props.direction !== FocusZoneDirection.vertical
+      ) {
 
-        targetTop = targetRect.top;
-        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = targetRect.left - activeRect.left;
       }
 
       return distance;
@@ -642,6 +659,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
+    // If active element changes state to disabled, set it to null.
+    // Otherwise, we lose keyboard accessibility to other elements in focus zone.
+    if (this._activeElement && !isElementTabbable(this._activeElement)) {
+      this._activeElement = null;
+    }
+
     const childNodes = element.children;
 
     for (let childIndex = 0; childNodes && childIndex < childNodes.length; childIndex++) {
@@ -684,7 +707,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _isElementInput(element: HTMLElement): boolean {
-    if (element && element.tagName && element.tagName.toLowerCase() === 'input') {
+    if (element && element.tagName && (element.tagName.toLowerCase() === 'input' || element.tagName.toLowerCase() === 'textarea')) {
       return true;
     }
     return false;

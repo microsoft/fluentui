@@ -2,6 +2,115 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.5.41",
+      "tag": "@uifabric/fabric-website_v4.5.41",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating dev dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.0.1 <5.0.0` to `>=4.0.2 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.7.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.16.0 <5.0.0` to `>=4.16.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.40",
+      "tag": "@uifabric/fabric-website_v4.5.40",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `4.0.0` to `4.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.10.2 <5.0.0` to `>=4.10.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.39",
+      "tag": "@uifabric/fabric-website_v4.5.39",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `3.0.2` to `4.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.9.0 <5.0.0` to `>=4.9.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.38",
+      "tag": "@uifabric/fabric-website_v4.5.38",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `3.0.1` to `3.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.5.0 <5.0.0` to `>=4.5.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.37",
+      "tag": "@uifabric/fabric-website_v4.5.37",
+      "date": "Tue, 13 Jun 2017 10:13:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "363f27b27ad03a72718431e8977c2f3bee15182d",
+            "comment": "Fix issues with dev.office.com header"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.4.2 <5.0.0` to `>=4.5.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.36",
       "tag": "@uifabric/fabric-website_v4.5.36",
       "date": "Mon, 12 Jun 2017 01:47:18 GMT",

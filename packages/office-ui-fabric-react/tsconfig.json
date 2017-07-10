@@ -8,6 +8,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "lib": [
       "es2017",

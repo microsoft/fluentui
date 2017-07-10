@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {
+  autobind,
   BaseComponent,
   css,
   getId
 } from '../../Utilities';
-import { IDialogProps, DialogType } from './Dialog.Props';
+import { IDialogProps } from './Dialog.Props';
+import { DialogType } from './DialogContent.Props';
 import { Modal } from '../../Modal';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import * as stylesImport from './Dialog.scss';
@@ -20,14 +22,18 @@ export interface IDialogState {
 export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public static defaultProps: IDialogProps = {
-    isOpen: false,
-    type: DialogType.normal,
-    isDarkOverlay: true,
-    isBlocking: false,
-    className: '',
-    containerClassName: '',
-    contentClassName: '',
-    topButtonsProps: []
+    modalProps: {
+      isDarkOverlay: true,
+      isBlocking: false,
+      className: '',
+      containerClassName: ''
+    },
+    dialogContentProps: {
+      type: DialogType.normal,
+      className: '',
+      topButtonsProps: [],
+    },
+    hidden: true,
   };
 
   constructor(props: IDialogProps) {
@@ -36,10 +42,28 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     this.state = {
       id: getId('Dialog'),
     };
+
+    this._warnDeprecations({
+      'isOpen': 'hidden',
+      'type': 'dialogContentProps.type',
+      'subText': 'dialogContentProps.subText',
+      'contentClassName': 'dialogContentProps.className',
+      'topButtonsProps': 'dialogContentProps.topButtonsProps',
+      'className': 'modalProps.className',
+      'isDarkOverlay': 'modalProps.isDarkOverlay',
+      'isBlocking': 'modalProps.isBlocking',
+      'containerClassName': 'modalProps.containerClassName',
+      'onDismissed': 'modalProps.onDismissed',
+      'onLayerDidMount': 'modalProps.onLayerDidMount',
+      'ariaDescribedById': 'modalProps.subtitleAriaId',
+      'ariaLabelledById': 'modalProps.titleAriaId'
+    });
   }
 
   public render() {
     let {
+      ariaDescribedById,
+      ariaLabelledById,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -48,6 +72,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       isClickableOutsideFocusTrap,
       isDarkOverlay,
       isOpen,
+      className,
       onDismiss,
       onDismissed,
       onLayerDidMount,
@@ -57,48 +82,63 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       title,
       type,
       contentClassName,
-      topButtonsProps
+      topButtonsProps,
+      dialogContentProps,
+      modalProps,
+      containerClassName,
+      hidden
     } = this.props;
     let { id } = this.state;
 
-    const dialogClassName = css(this.props.className, {
-      ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
-      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
-    });
-    const containerClassName = css(this.props.containerClassName, styles.main);
-
     return (
       <Modal
-        className={ dialogClassName }
-        containerClassName={ containerClassName }
         elementToFocusOnDismiss={ elementToFocusOnDismiss }
         firstFocusableSelector={ firstFocusableSelector }
         forceFocusInsideTrap={ forceFocusInsideTrap }
         ignoreExternalFocusing={ ignoreExternalFocusing }
-        isBlocking={ isBlocking }
         isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap }
-        isDarkOverlay={ isDarkOverlay }
-        isOpen={ isOpen }
-        onDismiss={ onDismiss }
         onDismissed={ onDismissed }
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
-        subtitleAriaId={ subText && id + '-subText' }
-        titleAriaId={ title && id + '-title' }
+        { ...modalProps }
+        isDarkOverlay={ isDarkOverlay !== undefined ? isDarkOverlay : modalProps.isDarkOverlay }
+        isBlocking={ isBlocking !== undefined ? isBlocking : modalProps.isBlocking }
+        isOpen={ isOpen !== undefined ? isOpen : !hidden }
+        className={ css('ms-Dialog', className ? className : modalProps.className) }
+        containerClassName={ css(styles.main, containerClassName ? containerClassName : modalProps.containerClassName) }
+        onDismiss={ onDismiss ? onDismiss : modalProps.onDismiss }
+        subtitleAriaId={
+          this._getAriaLabelId(
+            ariaDescribedById ? ariaDescribedById : modalProps.subtitleAriaId,
+            subText ? subText : modalProps.subtitleAriaId,
+            id + '-subText'
+          )
+        }
+        titleAriaId={
+          this._getAriaLabelId(
+            modalProps.titleAriaId ? modalProps.titleAriaId : ariaLabelledById,
+            title ? title : modalProps.titleAriaId,
+            id + '-title') }
       >
-
         <DialogContent
-          onDismiss={ onDismiss }
-          showCloseButton={ !isBlocking && type !== DialogType.largeHeader }
           title={ title }
           subText={ subText }
-          className={ contentClassName }
-          topButtonsProps={ topButtonsProps }
+          showCloseButton={ isBlocking !== undefined ? !isBlocking : !modalProps.isBlocking }
+          topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps.topButtonsProps }
+          type={ type !== undefined ? type : dialogContentProps.type }
+          onDismiss={ onDismiss ? onDismiss : dialogContentProps.onDismiss }
+          className={ css(contentClassName ? contentClassName : dialogContentProps.className) }
+          { ...dialogContentProps }
         >
           { this.props.children }
         </DialogContent>
 
       </Modal>
     );
+  }
+
+  @autobind
+  private _getAriaLabelId(ariaId: string, text: string, alternativeId: string): string {
+    return ariaId || text && alternativeId;
   }
 }

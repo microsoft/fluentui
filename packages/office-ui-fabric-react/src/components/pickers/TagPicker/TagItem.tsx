@@ -19,7 +19,7 @@ export const TagItem = (props: IPickerItemProps<ITag>) => (
     data-is-focusable={ true }>
     <span className={ css('ms-TagItem-text', styles.tagItemText) }>{ props.children }</span>
     <span className={ css('ms-TagItem-close', styles.tagItemClose) } onClick={ props.onRemoveItem }>
-      <Icon iconName='cancel' />
+      <Icon iconName='Cancel' />
     </span>
   </div>
 );

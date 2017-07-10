@@ -21,7 +21,11 @@ function checkProperties(a: any, b: any) {
   return true;
 }
 
-// Compare a to b and b to a
+/**
+ * Compares a to b and b to a.
+ *
+ * @public
+ */
 export function shallowCompare(a: any, b: any) {
   return checkProperties(a, b) && checkProperties(b, a);
 }
@@ -31,6 +35,7 @@ export function shallowCompare(a: any, b: any) {
  * objects as arguments and they will be merged sequentially into the target. Note that this will
  * shallow merge; it will not create new cloned values for target members.
  *
+ * @public
  * @param target - Target object to merge following object arguments into.
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
@@ -45,6 +50,7 @@ export function assign(target: any, ...args: any[]): any {
  * or "properties that start with data-". Note that this will shallow merge; it will not create new cloned
  * values for target members.
  *
+ * @public
  * @param isAllowed - Callback to determine if the given propName is allowed in the result.
  * @param target - Target object to merge following object arguments into.
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
@@ -67,7 +73,11 @@ export function filteredAssign(isAllowed: (propName: string) => boolean, target:
   return target;
 }
 
-/** Generates a unique id in the global scope (this spans across duplicate copies of the same library.) */
+/**
+ * Generates a unique id in the global scope (this spans across duplicate copies of the same library.)
+ *
+ * @public
+ */
 export function getId(prefix?: string): string {
   let index = _global[CURRENT_ID_PROPERTY]++;
 

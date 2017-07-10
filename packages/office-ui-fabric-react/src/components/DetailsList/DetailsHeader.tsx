@@ -6,15 +6,17 @@ import {
   css,
   getRTL,
   getId,
-  KeyCodes
+  KeyCodes,
+  IRenderFunction
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
+import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { TooltipHost } from '../../Tooltip';
+import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStyles from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import * as stylesImport from './DetailsHeader.scss';
@@ -24,7 +26,12 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
 
+export interface IDetailsHeader {
+  focus(): boolean;
+}
+
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
+  componentRef?: (component: IDetailsHeader) => void;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -34,7 +41,9 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
+  onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
+  collapseAllVisibility?: CollapseAllVisibility;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
@@ -65,9 +74,10 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
+export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
-    isSelectAllVisible: SelectAllVisibility.visible
+    selectAllVisibility: SelectAllVisibility.visible,
+    collapseAllVisibility: CollapseAllVisibility.visible
   };
 
   public refs: {
@@ -118,6 +128,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
 
+    const {
+      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
+    } = this.props;
+
     return (
       <FocusZone
         role='row'
@@ -143,21 +157,25 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             <span
               aria-label={ ariaLabelForSelectionColumn }
             ></span>
-            <TooltipHost
-              hostClassName={ css(styles.checkTooltip) }
-              id={ `${this._id}-checkTooltip` }
-              setAriaDescribedBy={ false }
-              content={ ariaLabelForSelectAllCheckbox }>
-              <DetailsRowCheck
-                aria-describedby={ `${this._id}-checkTooltip` }
-                selected={ isAllSelected }
-                anySelected={ false }
-                canSelect={ true }
-              />
-            </TooltipHost>
+            {
+              onRenderColumnHeaderTooltip({
+                hostClassName: css(styles.checkTooltip),
+                id: `${this._id}-checkTooltip`,
+                setAriaDescribedBy: false,
+                content: ariaLabelForSelectAllCheckbox,
+                children: (
+                  <DetailsRowCheck
+                    aria-describedby={ `${this._id}-checkTooltip` }
+                    selected={ isAllSelected }
+                    anySelected={ false }
+                    canSelect={ true }
+                  />
+                )
+              }, this._onRenderColumnHeaderTooltip)
+            }
           </div>
         ) : null }
-        { groupNestingDepth > 0 ? (
+        { groupNestingDepth > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }
@@ -198,51 +216,55 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
               >
-                <TooltipHost
-                  hostClassName={ css(styles.cellTooltip) }
-                  id={ `${this._id}-${column.key}-tooltip` }
-                  setAriaDescribedBy={ false }
-                  content={ column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '' }
-                >
-                  <span
-                    className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
-                    data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
-                    role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
-                    aria-describedby={ `${this._id}-${column.key}-tooltip` }
-                    onContextMenu={ this._onColumnContextMenu.bind(this, column) }
-                    onClick={ this._onColumnClick.bind(this, column) }
-                  >
-                    { column.isFiltered && (
-                      <Icon className={ styles.nearIcon } iconName='Filter' />
-                    ) }
+                {
+                  onRenderColumnHeaderTooltip({
+                    hostClassName: css(styles.cellTooltip),
+                    id: `${this._id}-${column.key}-tooltip`,
+                    setAriaDescribedBy: false,
+                    content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
+                    children: (
+                      <span
+                        className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
+                        data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
+                        role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
+                        aria-describedby={ `${this._id}-${column.key}-tooltip` }
+                        onContextMenu={ this._onColumnContextMenu.bind(this, column) }
+                        onClick={ this._onColumnClick.bind(this, column) }
+                      >
+                        { column.isFiltered && (
+                          <Icon className={ styles.nearIcon } iconName='Filter' />
+                        ) }
 
-                    { column.isSorted && (
-                      <Icon className={ styles.nearIcon } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
-                    ) }
+                        { column.isSorted && (
+                          <Icon className={ styles.nearIcon } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
+                        ) }
 
-                    { column.isGrouped && (
-                      <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
-                    ) }
+                        { column.isGrouped && (
+                          <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
+                        ) }
 
-                    <span
-                      aria-label={ column.isIconOnly ? column.name : undefined }
-                      className={ css('ms-DetailsHeader-cellName', styles.cellName) }
-                    >
-                      { (column.iconName || column.iconClassName) && (
-                        <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
-                      ) }
+                        <span
+                          aria-label={ column.isIconOnly ? column.name : undefined }
+                          className={ css('ms-DetailsHeader-cellName', styles.cellName) }
+                        >
+                          { (column.iconName || column.iconClassName) && (
+                            <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                          ) }
 
-                      { !column.isIconOnly ? column.name : undefined }
-                    </span>
+                          { !column.isIconOnly ? column.name : undefined }
+                        </span>
 
-                    { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                      <Icon
-                        className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
-                        iconName='ChevronDown'
-                      />
-                    ) }
-                  </span>
-                </TooltipHost>
+                        { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                          <Icon
+                            className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
+                            iconName='ChevronDown'
+                          />
+                        ) }
+                      </span>
+
+                    )
+                  }, this._onRenderColumnHeaderTooltip)
+                }
               </div>,
               (column.isResizable) && this._renderColumnSizer(columnIndex)
             ]
@@ -289,6 +311,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
       />
     );
+  }
+
+  @autobind
+  private _onRenderColumnHeaderTooltip(tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>) {
+    return <span className={ tooltipHostProps.hostClassName }>{
+      tooltipHostProps.children
+    }</span>;
   }
 
   /**
