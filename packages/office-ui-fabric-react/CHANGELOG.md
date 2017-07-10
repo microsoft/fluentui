@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Jul 2017 10:22:21 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jul 2017 19:18:55 GMT and should not be manually modified.
+
+## 4.17.1
+Mon, 10 Jul 2017 19:18:55 GMT
+
+### Patches
+
+- Checkbox: reverting global class names to use ms-Checkbox-* prefixed values.
+- Remove unnecessary line height
+- Removed ARIA disabled from button, as already handled by button HTML attribute
 
 ## 4.17.0
 Mon, 10 Jul 2017 10:22:21 GMT

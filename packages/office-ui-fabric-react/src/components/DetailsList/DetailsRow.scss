@@ -24,7 +24,6 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   border: none;
   @include text-align(left);
   vertical-align: top;
-  line-height: $rowHeight - ($rowVerticalPadding * 2);
 
   &:hover {
     background: $detailsList-item-hover-color;
