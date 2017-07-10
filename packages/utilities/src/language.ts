@@ -5,6 +5,8 @@ let _language: string | null;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
+ *
+ * @public
  */
 export function getLanguage(): string | null {
   if (_language === undefined) {
@@ -34,6 +36,8 @@ export function getLanguage(): string | null {
 
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
+ *
+ * @public
  */
 export function setLanguage(language: string, avoidPersisting = false): void {
   let doc = getDocument();

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make details row cells use flex box and stretch to total row height.",
+      "comment": "Removed ARIA disabled from button, as already handled by button HTML attribute",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "maricha@microsoft.com"
+  "email": "ankhokha@microsoft.com"
 }
