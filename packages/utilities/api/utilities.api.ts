@@ -1,3 +1,4 @@
+// @public
 export function assign(target: any, ...args: any[]): any;
 
 // WARNING: dispose has incomplete type information
@@ -5,9 +6,8 @@ export function assign(target: any, ...args: any[]): any;
 // WARNING: clearInterval has incomplete type information
 // WARNING: cancelAnimationFrame has incomplete type information
 // WARNING: _logError has incomplete type information
-// (undocumented)
+// @public
 class Async {
-  // (undocumented)
   constructor(parent?: any, onError?: (e: any) => void);
   public clearTimeout(id: number): void;
   public debounce < T extends Function >(func: T, wait?: number, options?: {
@@ -27,8 +27,8 @@ class Async {
 }
 
 // WARNING: dispose has incomplete type information
+// @public
 class AutoScroll {
-  // (undocumented)
   constructor(element: HTMLElement);
 }
 
@@ -39,7 +39,7 @@ class AutoScroll {
 // WARNING: _updateComponentRef has incomplete type information
 // WARNING: _warnDeprecations has incomplete type information
 // WARNING: _warnMutuallyExclusive has incomplete type information
-// (undocumented)
+// @public
 class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   constructor(props?: P, context?: any);
   protected readonly _async: Async;
@@ -50,30 +50,30 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   public static onError: ((errorMessage?: string, ex?: any) => void);
 }
 
+// @public
+export function createArray(size: number, getItem?: (index?: number) => any): any[];
+
 // WARNING: contextTypes has incomplete type information
 // WARNING: childContextTypes has incomplete type information
 // WARNING: componentWillReceiveProps has incomplete type information
 // WARNING: render has incomplete type information
+// @public
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
-  // (undocumented)
   constructor(props: any, context: any);
-  public static addChangeListener(onChanged: IChangeListener): void;
   // (undocumented)
   public getChildContext(): any;
-  public static getDefault(fieldName: string): any;
-  public static removeChangeListener(onChanged: IChangeListener): void;
-  public static setDefault(name: string, value: any): void;
 }
 
 // WARNING: defaultProps has incomplete type information
 // WARNING: componentDidMount has incomplete type information
 // WARNING: componentWillUnmount has incomplete type information
 // WARNING: render has incomplete type information
+// @public
 class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
-  // (undocumented)
   constructor(props: IDelayedRenderProps);
 }
 
+// @public
 export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean;
 
 // WARNING: raise has incomplete type information
@@ -83,6 +83,7 @@ export function elementContains(parent: HTMLElement | null, child: HTMLElement |
 // WARNING: on has incomplete type information
 // WARNING: off has incomplete type information
 // WARNING: declare has incomplete type information
+// @public
 class EventGroup {
   public constructor(parent: any);
   public static isDeclared(target: any, eventName: string): boolean;
@@ -92,7 +93,7 @@ class EventGroup {
 
 // WARNING: measure has incomplete type information
 // WARNING: reset has incomplete type information
-// (undocumented)
+// @public
 class FabricPerformance {
   // (undocumented)
   public static setPeriodicReset(): void;
@@ -100,36 +101,44 @@ class FabricPerformance {
   public static summary: IPerfSummary;
 }
 
-// (undocumented)
+// @public
 export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number;
 
+// @public
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
 
+// @public
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
+// @public
 export function format(s: string, ...values: any[]): string;
 
-// (undocumented)
+// @public
 export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
 
-// (undocumented)
+// @public
 export function getFirstFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null;
 
+// @public
 export function getId(prefix?: string): string;
 
+// @public
 export function getInitials(displayName: string | undefined | null, isRtl: boolean): string;
 
+// @public
 export function getLanguage(): string | null;
 
-// (undocumented)
+// @public
 export function getLastFocusable(rootElement: HTMLElement,
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean): HTMLElement | null;
 
+// @public
 export function getNativeProps < T >(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
+// @public
 export function getNextElement(rootElement: HTMLElement,
   currentElement: HTMLElement | null,
   checkNode?: boolean,
@@ -138,8 +147,10 @@ export function getNextElement(rootElement: HTMLElement,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean): HTMLElement | null;
 
+// @public
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null;
 
+// @public
 export function getPreviousElement(rootElement: HTMLElement,
   currentElement: HTMLElement | null,
   checkNode?: boolean,
@@ -148,78 +159,115 @@ export function getPreviousElement(rootElement: HTMLElement,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean): HTMLElement | null;
 
+// @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
+// @public
 export function getRTL(): boolean;
 
+// @public
 export function getRTLSafeKeyCode(key: number): number;
 
+// @public
 export function getScrollbarWidth(): number;
 
-// (undocumented)
+// @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
+// @public
+class GlobalSettings {
+  // (undocumented)
+  public static addChangeListener(cb: IChangeEventCallback): void;
+  // (undocumented)
+  public static getValue < T >(key: string): T;
+  // (undocumented)
+  public static removeChangeListener(cb: IChangeEventCallback): void;
+  // (undocumented)
+  public static setValue < T >(key: string, value: T): void;
+}
+
+// @public
 export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
+// @public
 export function hasOverflow(element: HTMLElement): boolean;
 
+// @public
 export function hasVerticalOverflow(element: HTMLElement): boolean;
 
+// @public
 export function hoistMethods(destination: any, source: any, exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS): string[];
 
-// (undocumented)
+// @public
 interface IBaseProps {
   // (undocumented)
   componentRef?: any;
 }
 
-// (undocumented)
-interface IChangeListener {
+// @public
+interface IChangeDescription {
   // (undocumented)
-  (propName?: string): void;
+  key: string;
+  // (undocumented)
+  oldValue: any;
+  // (undocumented)
+  value: any;
 }
 
-// (undocumented)
+// @public
+interface IChangeEventCallback {
+  // (undocumented)
+  ___id__?: string;
+  // (undocumented)
+  (changeDescription?: IChangeDescription): void;
+}
+
+// @public
 interface ICustomizerProps {
   // (undocumented)
   settings: ISettings;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface ICustomizerState {
   // (undocumented)
   injectedProps?: ISettings;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IDeclaredEventsByName {
   // (undocumented)
   [ eventName: string ]: boolean;
 }
 
-// (undocumented)
+// @public
 interface IDelayedRenderProps extends React.Props<any> {
   delay?: number;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IDelayedRenderState {
   isRendered: boolean;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IDictionary {
   // (undocumented)
   [ className: string ]: boolean;
 }
 
-// (undocumented)
+// @public
 interface IDisposable {
   // (undocumented)
   dispose: () => void;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IEventRecord {
   // (undocumented)
   callback: (args?: any) => void;
@@ -237,7 +285,8 @@ interface IEventRecord {
   useCapture: boolean;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IEventRecordList {
   // (undocumented)
   [ id: string ]: IEventRecord[] | number;
@@ -245,13 +294,15 @@ interface IEventRecordList {
   count: number;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IEventRecordsByName {
   // (undocumented)
   [ eventName: string ]: IEventRecordList;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IPerfData {
   // (undocumented)
   duration: number;
@@ -259,7 +310,8 @@ interface IPerfData {
   timeStamp: number;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IPerfMeasurement {
   // (undocumented)
   all: IPerfData[];
@@ -269,13 +321,14 @@ interface IPerfMeasurement {
   totalDuration: number;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface IPerfSummary {
   // (undocumented)
   [ key: string ]: IPerfMeasurement;
 }
 
-// (undocumented)
+// @public
 interface IPoint {
   // (undocumented)
   x: number;
@@ -283,7 +336,7 @@ interface IPoint {
   y: number;
 }
 
-// (undocumented)
+// @public
 interface IRectangle {
   // (undocumented)
   bottom?: number;
@@ -299,37 +352,39 @@ interface IRectangle {
   width: number;
 }
 
-// (undocumented)
+// @public
 interface IRenderFunction<P> {
   // (undocumented)
   (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
 }
 
-// (undocumented)
+// @public
 export function isElementFocusSubZone(element?: HTMLElement): boolean;
 
-// (undocumented)
+// @public
 export function isElementFocusZone(element?: HTMLElement): boolean;
 
-// (undocumented)
+// @public
 export function isElementTabbable(element: HTMLElement): boolean;
 
-// (undocumented)
+// @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface ISerializableObject {
   // (undocumented)
   toString?: () => string;
 }
 
-// (undocumented)
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 interface ISettings {
   // (undocumented)
   [ key: string ]: any;
 }
 
-// (undocumented)
+// @public
 enum KeyCodes {
   // (undocumented)
   a = 65,
@@ -367,14 +422,15 @@ enum KeyCodes {
   up = 38
 }
 
+// @public
 export function memoizeFunction < T extends (...args: any[]) => RET_TYPE, RET_TYPE >(cb: T,
   maxCacheSize: number = 100): T;
 
+// @public
 export function nullRender(): JSX.Element | null;
 
-// (undocumented)
+// @public
 class Rectangle {
-  // (undocumented)
   constructor(left: number = 0, right: number = 0, top: number = 0, bottom: number = 0);
   // (undocumented)
   public bottom: number;
@@ -389,25 +445,32 @@ class Rectangle {
   readonly width: number;
 }
 
+// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
+// @internal
 export function setMemoizeWeakMap(weakMap: any): void;
 
+// @public
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
+// @public
 export function toMatrix < T >(items: T[], columnCount: number): T[][];
 
+// @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
+// @public
 export function warn(message: string): void;
 
+// @public
 export function warnDeprecations < P >(componentName: string,
   props: P,
   deprecationMap: ISettingsMap<P>): void;
 
+// @public
 export function warnMutuallyExclusive < P >(componentName: string,
   props: P,
   exclusiveMap: ISettingsMap<P>): void;
 
-// WARNING: createArray has incomplete type information
 // WARNING: autobind has incomplete type information
 // WARNING: Unsupported export: ICssInput
 // WARNING: css has incomplete type information

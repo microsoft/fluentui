@@ -1,4 +1,9 @@
-export enum KeyCodes {
+/**
+ * Const enum for keycodes.
+ *
+ * @public
+ */
+export const enum KeyCodes {
   a = 65,
   backspace = 8,
   comma = 188,

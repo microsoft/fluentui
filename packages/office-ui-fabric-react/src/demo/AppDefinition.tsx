@@ -107,6 +107,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/facepile'
         },
         {
+          component: require<any>('../components/HoverCard/HoverCardPage').HoverCardPage,
+          key: 'HoverCard',
+          name: 'HoverCard',
+          url: '#/examples/hovercard'
+        },
+        {
           component: require<any>('../components/Icon/IconPage').IconPage,
           key: 'Icon',
           name: 'Icon',

@@ -46,6 +46,10 @@ $Callout-smallbeak-slant-width: 16px;
   position: relative;
 }
 
+.overFlowYHidden {
+  overflow-y: hidden;
+}
+
 .beak {
   @include calloutBeak;
 }
