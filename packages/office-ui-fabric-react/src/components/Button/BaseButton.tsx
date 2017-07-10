@@ -90,7 +90,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
-    const renderAsAnchor: boolean = !!href;
+    // Anchor tag cannot be disabled hence in disabled state rendering
+    // anchor button as normal button
+    const renderAsAnchor: boolean = !disabled && !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
       assign(
@@ -127,7 +129,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled,
         'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }

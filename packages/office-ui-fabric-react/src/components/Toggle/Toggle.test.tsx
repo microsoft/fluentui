@@ -23,6 +23,19 @@ describe('Toggle', () => {
     expect(labelElement.textContent).to.equal('Label');
   });
 
+  it('renders aria-label', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <Toggle
+        label='Label'
+        offAriaLabel='offLabel'
+      />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let labelElement = renderedDOM.querySelector('button');
+
+    expect(labelElement.getAttribute('aria-label')).to.equal('offLabel');
+  });
+
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;
     let callback = (isToggled) => {

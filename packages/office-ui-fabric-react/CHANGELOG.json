@@ -2,6 +2,158 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.17.0",
+      "tag": "office-ui-fabric-react_v4.17.0",
+      "date": "Mon, 10 Jul 2017 10:22:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ab075c152e4acf2a6458889ba1f093ecff221c06",
+            "comment": "ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.2 <1.0.0` to `>=0.13.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.2",
+      "tag": "office-ui-fabric-react_v4.16.2",
+      "date": "Sat, 08 Jul 2017 05:59:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c9315f27692fdb73fcc159fd097429fe7441d316",
+            "comment": "AMD fix for GroupedList."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.1 <1.0.0` to `>=0.13.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.1",
+      "tag": "office-ui-fabric-react_v4.16.1",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Fixing an import breaking AMD modules related to GroupedList."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.7.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.0 <1.0.0` to `>=0.13.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `4.0.1` to `4.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.16.0",
+      "tag": "office-ui-fabric-react_v4.16.0",
+      "date": "Fri, 07 Jul 2017 10:11:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "aadhars <adhargithub@gmail.com>",
+            "commit": "739afaec20093f1bb14ceb844c859a881cba6dd0",
+            "comment": "Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag."
+          }
+        ],
+        "minor": [
+          {
+            "author": "CmonsterC <CmonsterC@users.noreply.github.com>",
+            "commit": "dae9df0a1345d7ddc4e92c04037bec52ab2cace1",
+            "comment": "GroupedList: Add a new prop to ignore the collapse button on the column name bar when there's custom group header"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.12.3 <1.0.0` to `>=0.13.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.15.0",
+      "tag": "office-ui-fabric-react_v4.15.0",
+      "date": "Thu, 06 Jul 2017 10:11:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "6f272bbaf04d106c990637f78cb38ec84fa00ed7",
+            "comment": "Add new component: HoverCard"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "6ca067c7957ce4b8d7e85f32115dd4b77bb8ac1c",
+            "comment": "ResizeGroup: Add support for caching"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Marena Richardson <marena.richardson@gmail.com>",
+            "commit": "d9683d319f2e66ab294212682bdb4abdbb32107d",
+            "comment": "Make details row cells use flex box and stretch to total row height."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "8555ad54c2b4ec7f0e58ebc6ab0032df7a44002b",
+            "comment": "Toggle: Fixed aria-label that was missing from button"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "44951ccc9715a43f363c79a33ed1c1a4f320d69c",
+            "comment": "CommandBar: Remove margin from command bar items"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.6.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.12.2 <1.0.0` to `>=0.12.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.14.1",
+      "tag": "office-ui-fabric-react_v4.14.1",
+      "date": "Tue, 04 Jul 2017 10:21:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "e28b459f1c5aa6bd33cc210c07f3f98f19083272",
+            "comment": "Breadcrumb: Fixed maxItems logic to put correct items into overflow"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.12.1 <1.0.0` to `>=0.12.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.14.0",
       "tag": "office-ui-fabric-react_v4.14.0",
       "date": "Mon, 03 Jul 2017 10:11:52 GMT",
