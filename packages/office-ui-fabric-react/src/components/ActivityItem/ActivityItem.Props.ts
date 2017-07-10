@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
+import { IRenderFunction } from '../../Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 // Please keep alphabetized
@@ -25,9 +26,9 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   isCompact?: boolean;
 
   /**
-   * A renderer adds a time stamp. If not included, timeString is shown as plain text below the activity.
+   * A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.
    */
-  onRenderTimeStamp?: (props?: IActivityItemProps) => JSX.Element;
+  onRenderTimeStamp?: IRenderFunction<IActivityItemProps>;
 
   /**
    * Optional styling for the elements within the Activity Item.
@@ -37,7 +38,7 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Text shown as a timestamp on this activity. If not included, no timestamp is shown.
    */
-  timeString?: string;
+  timeStamp?: string;
 }
 
 export interface IActivityItemStyles {

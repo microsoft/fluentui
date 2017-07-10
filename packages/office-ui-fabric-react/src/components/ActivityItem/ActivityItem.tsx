@@ -30,7 +30,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   public render() {
     let {
       className,
-      styles: customStyles
+      onRenderTimeStamp = this._onRenderTimeStamp,
+      styles: customStyles,
     } = this.props;
 
     this._styles = getStyles(undefined, customStyles);
@@ -42,10 +43,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     );
 
     let renderComment: JSX.Element;
-    let renderTimeStamp: JSX.Element;
-    if (!this.props.isCompact) {
-      renderTimeStamp = this.props.onRenderTimeStamp ? this.props.onRenderTimeStamp(this.props) : <div className={ this._classNames.timeStamp }>{ this.props.timeString }</div>;
-    }
 
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
@@ -57,7 +54,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
           <div>
             { this.props.commentElements && !this.props.isCompact && this._onRenderCommentText(this.props) }
-            { renderTimeStamp }
+            { onRenderTimeStamp(this.props, this._onRenderTimeStamp) }
           </div>
         </div>
 
@@ -106,6 +103,15 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         { props.commentElements.map((item, index) => <span key={ index }>{ item }</span>) }
       </div>
     );
+  }
+
+  @autobind
+  private _onRenderTimeStamp(props: IActivityItemProps): JSX.Element {
+    if (!props.isCompact) {
+      return (
+        <div className={ this._classNames.timeStamp }>{ props.timeStamp }</div>
+      );
+    }
   }
 
   // Determine what classNames each element needs
