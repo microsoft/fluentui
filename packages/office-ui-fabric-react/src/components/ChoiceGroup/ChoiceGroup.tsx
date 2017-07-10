@@ -162,8 +162,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <Image
                   src={ option.imageSrc }
-                  width={ option.imageSize.width }
-                  height={ option.imageSize.height }
+                  width={ option.imageSize ? option.imageSize.width : null }
+                  height={ option.imageSize ? option.imageSize.height : null }
                 />
               </div>
               <div className={ css(
@@ -175,8 +175,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <Image
                   src={ option.selectedImageSrc }
-                  width={ option.imageSize.width }
-                  height={ option.imageSize.height }
+                  width={ option.imageSize ? option.imageSize.width : null }
+                  height={ option.imageSize ? option.imageSize.height : null }
                 />
               </div>
             </div>
