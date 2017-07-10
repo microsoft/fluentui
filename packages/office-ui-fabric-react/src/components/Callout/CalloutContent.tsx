@@ -30,6 +30,7 @@ export interface ICalloutState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
+  heightOffset?: number;
 }
 
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
@@ -51,6 +52,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _maxHeight: number;
   private _positionAttempts: number;
   private _target: HTMLElement | MouseEvent;
+  private _setHeightOffsetTimer: number;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -61,7 +63,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this.state = {
       positions: null,
       slideDirectionalClassName: null,
-      calloutElementRect: null
+      calloutElementRect: null,
+      heightOffset: 0
     };
     this._positionAttempts = 0;
   }
@@ -86,6 +89,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this._maxHeight = undefined;
     }
   }
+
   public componentDidMount() {
     this._onComponentDidMount();
   }
@@ -107,8 +111,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyle,
       children,
       beakWidth,
-      backgroundColor,
-      linkType } = this.props;
+      finalHeight,
+      linkType,
+      backgroundColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -139,7 +144,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? AnimationClassNames[positions.directionalClassName]
       : '';
 
-    let contentMaxHeight: number = this._getMaxHeight();
+    let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset;
     // Temporary as isBeakVisible is deprecated.
     let beakVisible: boolean = (linkType !== undefined ? linkType === CalloutLinkType.beak : isBeakVisible) && (!!targetElement || !!target);
     let content = (
@@ -173,7 +178,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             ariaLabel={ ariaLabel }
             ariaDescribedBy={ ariaDescribedBy }
             ariaLabelledBy={ ariaLabelledBy }
-            className={ css('ms-Callout-main', styles.main, isAttached && styles.mainIsAttached) }
+            className={ css('ms-Callout-main', styles.main, isAttached && styles.mainIsAttached, {
+              [styles.overFlowYHidden]: finalHeight
+            }) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
             style={ Object.assign({ maxHeight: contentMaxHeight, backgroundColor: backgroundColor }, attachedStyle) }>
@@ -242,6 +249,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     this._updatePosition();
+    this._setHeightOffsetEveryFrame();
   }
 
   private _updatePosition() {
@@ -356,6 +364,27 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       }
     } else {
       this._targetWindow = getWindow();
+    }
+  }
+
+  private _setHeightOffsetEveryFrame(): void {
+    if (this._calloutElement && this.props.finalHeight) {
+      this._setHeightOffsetTimer = this._async.requestAnimationFrame(() => {
+        const calloutMainElem = this._calloutElement.firstChild as HTMLElement;
+        const cardScrollHeight: number = calloutMainElem.scrollHeight;
+        const cardCurrHeight: number = calloutMainElem.offsetHeight;
+        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
+
+        this.setState({
+          heightOffset: this.state.heightOffset + scrollDiff
+        });
+
+        if (calloutMainElem.offsetHeight < this.props.finalHeight) {
+          this._setHeightOffsetEveryFrame();
+        } else {
+          this._async.cancelAnimationFrame(this._setHeightOffsetTimer);
+        }
+      });
     }
   }
 }

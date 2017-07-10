@@ -446,8 +446,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     do {
       element = isForward ?
-        getNextElement(this.refs.root, element, undefined, undefined, undefined, undefined, true) :
-        getPreviousElement(this.refs.root, element, undefined, undefined, undefined, undefined, true);
+        getNextElement(this.refs.root, element) :
+        getPreviousElement(this.refs.root, element);
 
       if (isBidirectional) {
         if (element) {

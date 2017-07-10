@@ -49,7 +49,11 @@ function cleanupDisplayName(displayName: string): string {
   return displayName;
 }
 
-/** Get (up to 2 characters) initials based on display name of the persona. */
+/**
+ * Get (up to 2 characters) initials based on display name of the persona.
+ *
+ * @public
+ */
 export function getInitials(displayName: string | undefined | null, isRtl: boolean): string {
   if (displayName == null) {
     return '';

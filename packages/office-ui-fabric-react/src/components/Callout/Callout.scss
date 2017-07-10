@@ -59,6 +59,10 @@ $Callout-shadow-spread-margin: 5px;
   }
 }
 
+.overFlowYHidden {
+  overflow-y: hidden;
+}
+
 .beak {
   @include calloutBeak;
 }
