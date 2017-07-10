@@ -9,6 +9,10 @@ import { memoizeFunction } from '../../Utilities';
 const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
 const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
+const MS_CHECKBOX_HIGHCONTRAST_ICONBOXSIZE = '16px';
+
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: black-on-white)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -73,7 +77,7 @@ export const getStyles = memoizeFunction((
       overflow: 'hidden'
     },
     checkboxHovered: {
-      borderColor: checkboxHoveredBorderColor
+      borderColor: checkboxHoveredBorderColor,
     },
     checkboxChecked: {
       background: checkboxCheckedBackground,

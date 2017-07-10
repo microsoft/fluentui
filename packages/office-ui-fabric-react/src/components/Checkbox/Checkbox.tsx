@@ -196,10 +196,10 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         styles.root,
         !disabled && [
           !isChecked && {
-            ':hover .checkbox': styles.checkboxHovered
+            ':hover .ms-Checkbox-checkbox': styles.checkboxHovered
           },
           isChecked && {
-            ':hover .checkbox': styles.checkboxCheckedHovered
+            ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered
           },
         ]
       ) as string,
