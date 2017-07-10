@@ -12,6 +12,7 @@ import {
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -147,7 +148,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             targetElement={ contextualMenuTarget }
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
-            calloutProps={ { isAttached: true } }
+            calloutProps={ { linkType: CalloutLinkType.attached } }
           />
           ) : (null)
         }

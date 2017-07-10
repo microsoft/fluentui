@@ -14,6 +14,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
 import { IButtonProps, IButton } from './Button.Props';
 import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
@@ -325,7 +326,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
-        calloutProps={ { isAttached: true } }
+        calloutProps={ { linkType: CalloutLinkType.attached } }
       />
     );
   }

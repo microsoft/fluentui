@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
+import { Callout, CalloutLinkType } from '../../Callout';
 import { Label } from '../../Label';
 import {
   CommandButton,
@@ -732,7 +732,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
-        isAttached={ true }
+        linkType={ CalloutLinkType.attached }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
           { onRenderList({ ...props }, this._onRenderList) }

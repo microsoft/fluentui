@@ -14,7 +14,7 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, RectangleEdge } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight, RectangleEdge, CalloutLinkType } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
 import { AnimationClassNames } from '../../Styling';
@@ -24,6 +24,7 @@ const styles: any = stylesImport;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
+const SHADOW_SPREAD_MARGIN: number = 5; // keep in sync with scss variable
 
 export interface ICalloutState {
   positions?: IPositionInfo;
@@ -107,7 +108,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       children,
       beakWidth,
       backgroundColor,
-      isAttached } = this.props;
+      linkType } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -125,9 +126,13 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       backgroundColor: backgroundColor,
     };
 
+    let isAttached = linkType === CalloutLinkType.attached;
+
     let attachedStyle: React.CSSProperties = isAttached && positions && {
-      marginTop: positions.rectangleEdge === RectangleEdge.bottom ? 0 : 5,
-      marginBottom: positions.rectangleEdge === RectangleEdge.top ? 0 : 5,
+      marginTop: positions.rectangleEdge === RectangleEdge.bottom ? 0 : SHADOW_SPREAD_MARGIN,
+      marginBottom: positions.rectangleEdge === RectangleEdge.top ? 0 : SHADOW_SPREAD_MARGIN,
+      marginLeft: positions.rectangleEdge === RectangleEdge.right ? 0 : SHADOW_SPREAD_MARGIN,
+      marginRight: positions.rectangleEdge === RectangleEdge.left ? 0 : SHADOW_SPREAD_MARGIN
     };
 
     let directionalClassName = (positions && positions.directionalClassName)
@@ -135,7 +140,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       : '';
 
     let contentMaxHeight: number = this._getMaxHeight();
-    let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
+    // Temporary as isBeakVisible is deprecated.
+    let beakVisible: boolean = (linkType !== undefined ? linkType === CalloutLinkType.beak : isBeakVisible) && (!!targetElement || !!target);
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -254,14 +260,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         currentProps.target = this._target;
       }
       let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
-      if (this.props.isAttached) {
-        if (newPositions.rectangleEdge === RectangleEdge.top) {
-          //newPositions.calloutPosition.top += 5;
-          newPositions.calloutPosition.left -= 5;
-        }
-        if (newPositions.rectangleEdge === RectangleEdge.bottom) {
-          //newPositions.calloutPosition.top -= 5;
-          newPositions.calloutPosition.left -= 5;
+      if (this.props.linkType === CalloutLinkType.attached) {
+        if (newPositions.rectangleEdge === RectangleEdge.left) {
+          newPositions.calloutPosition.left += SHADOW_SPREAD_MARGIN;
+        } else {
+          newPositions.calloutPosition.left -= SHADOW_SPREAD_MARGIN;
         }
       }
 
@@ -307,7 +310,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _getMaxHeight(): number {
     if (!this._maxHeight) {
       if (this.props.directionalHintFixed && this._target) {
-        let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
+        let beakWidth = (this.props.linkType !== undefined ? this.props.linkType === CalloutLinkType.beak : this.props.isBeakVisible)
+          ? this.props.beakWidth
+          : 0;
         let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
         this._maxHeight = getMaxHeight(this._target, this.props.directionalHint, beakWidth + gapSpace, this._getBounds());
       } else {

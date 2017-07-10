@@ -9,6 +9,7 @@
 
 $Callout-beak-slant-width: 28px;
 $Callout-smallbeak-slant-width: 16px;
+$Callout-shadow-spread-margin: 5px;
 
 @mixin calloutBeak {
   position: absolute;
@@ -22,7 +23,7 @@ $Callout-smallbeak-slant-width: 16px;
 }
 
 .root {
-  @include ms-drop-shadow(0,0, 5px, 0px);
+  @include ms-drop-shadow(0,0, #{ $Callout-shadow-spread-margin }, 0px);
   position: absolute;
   border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
@@ -52,8 +53,8 @@ $Callout-smallbeak-slant-width: 16px;
   position: relative;
 
   &.mainIsAttached {
-    margin: 5px;
-    @include ms-drop-shadow(0,0, 5px, 0px);
+    margin: $Callout-shadow-spread-margin;
+    @include ms-drop-shadow(0,0, #{ $Callout-shadow-spread-margin }, 0px);
     border: 1px solid $ms-color-neutralLight;
   }
 }
