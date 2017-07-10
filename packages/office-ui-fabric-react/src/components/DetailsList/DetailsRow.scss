@@ -52,13 +52,10 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   }
 }
 
-// Remove border top on first row
 :global(.ms-List-cell:first-child) {
   .root {
-    border-top: 0;
-
     // Don't show border-top for first row's pseudo element
-    &:after {
+    &:before {
       display: none;
     }
   }
@@ -104,7 +101,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     }
   }
 
-  &:after {
+  &:before {
     position: absolute;
     display: block;
     top: -1px;
@@ -182,7 +179,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 }
 
 .isPadded {
-  @include ms-margin-right($isPaddedMargin - $rowHorizontalPadding);
+  @include ms-padding-right($isPaddedMargin + $rowHorizontalPadding);
 
   &.checkCell {
     padding: 0;

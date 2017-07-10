@@ -316,7 +316,7 @@ export interface IColumn {
   headerClassName?: string;
 
   /**
-  * If set, will add LTR margin-right to column and cells.
+  * If set, will add additional LTR padding-right to column and cells.
   */
   isPadded?: boolean;
 }

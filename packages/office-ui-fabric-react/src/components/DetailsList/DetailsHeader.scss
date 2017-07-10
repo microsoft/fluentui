@@ -31,7 +31,7 @@ $isPaddedMargin: 24px;
 }
 
 .cellWrapperPadded {
-  @include ms-margin-right($isPaddedMargin - $cellPadding);
+  @include ms-padding-right($isPaddedMargin + $cellPadding);
 }
 
 .cell {
