@@ -39,7 +39,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 :global(.ms-DetailsList--Compact) {
   .root {
     min-height: $compactRowHeight;
-    line-height: $compactRowHeight - ($compactRowVerticalPadding * 2);
     border: 0;
   }
 
@@ -75,7 +74,6 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   display: flex;
   min-width: 100%;
   min-height: $rowHeight;
-  vertical-align: top;
   white-space: nowrap;
   padding: 0;
   box-sizing: border-box;
