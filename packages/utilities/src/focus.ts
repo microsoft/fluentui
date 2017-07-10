@@ -7,6 +7,11 @@ const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 
+/**
+ * Gets the first focusable element.
+ *
+ * @public
+ */
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
@@ -15,6 +20,11 @@ export function getFirstFocusable(
   return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
 }
 
+/**
+ * Gets the last focusable element.
+ *
+ * @public
+ */
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
@@ -25,6 +35,8 @@ export function getLastFocusable(
 
 /**
  * Attempts to focus the first focusable element that is a child or child's child of the rootElement.
+ *
+ * @public
  * @param rootElement - Element to start the search for a focusable child.
  * @returns True if focus was set, false if it was not.
  */
@@ -39,7 +51,11 @@ export function focusFirstChild(
   return false;
 }
 
-/** Traverse to find the previous element. */
+/**
+ * Traverse to find the previous element.
+ *
+ * @public
+ */
 export function getPreviousElement(
   rootElement: HTMLElement,
   currentElement: HTMLElement | null,
@@ -101,7 +117,11 @@ export function getPreviousElement(
   return null;
 }
 
-/** Traverse to find the next focusable element. */
+/**
+ * Traverse to find the next focusable element.
+ *
+ * @public
+ */
 export function getNextElement(
   rootElement: HTMLElement,
   currentElement: HTMLElement | null,
@@ -167,6 +187,11 @@ export function getNextElement(
   return null;
 }
 
+/**
+ * Determines if an element is visible.
+ *
+ * @public
+ */
 export function isElementVisible(element: HTMLElement | undefined | null): boolean {
   // If the element is not valid, return false.
   if (!element || !element.getAttribute) {
@@ -186,6 +211,11 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
     (element as any).isVisible === true); // used as a workaround for testing.
 }
 
+/**
+ * Determines if an element can receive focus.
+ *
+ * @public
+ */
 export function isElementTabbable(element: HTMLElement): boolean {
 
   // If this element is null or is disabled, it is not considered tabbable.
@@ -220,14 +250,29 @@ export function isElementTabbable(element: HTMLElement): boolean {
     ));
 }
 
+/**
+ * Determines if a given element is a focus zone.
+ *
+ * @public
+ */
 export function isElementFocusZone(element?: HTMLElement): boolean {
   return !!(element && element.getAttribute && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE));
 }
 
+/**
+ * Determines if a given element is a focus sub zone.
+ *
+ * @public
+ */
 export function isElementFocusSubZone(element?: HTMLElement): boolean {
   return !!(element && element.getAttribute && element.getAttribute(FOCUSZONE_SUB_ATTRIBUTE) === 'true');
 }
 
+/**
+ * Determines if an element, or any of its children, contain focus.
+ *
+ * @public
+ */
 export function doesElementContainFocus(element: HTMLElement) {
   let document = getDocument(element);
   let currentActiveElement: HTMLElement | undefined = document && document.activeElement as HTMLElement;
