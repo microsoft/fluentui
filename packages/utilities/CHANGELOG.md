@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+This log was last generated on Sat, 08 Jul 2017 03:34:35 GMT and should not be manually modified.
+
+## 4.7.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating library comments.
 
 ## 4.7.0
 Thu, 06 Jul 2017 10:11:47 GMT

@@ -6,6 +6,8 @@ let _isRTL: boolean | undefined;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
+ *
+ * @public
  */
 export function getRTL(): boolean {
   let isRTL: boolean = _isRTL as boolean;
@@ -23,6 +25,8 @@ export function getRTL(): boolean {
 
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
+ *
+ * @public
  */
 export function setRTL(isRTL: boolean) {
   let doc = getDocument();
@@ -36,6 +40,8 @@ export function setRTL(isRTL: boolean) {
 
 /**
  * Returns the given key, but flips right/left arrows if necessary.
+ *
+ * @public
  */
 export function getRTLSafeKeyCode(key: number): number {
   if (getRTL()) {
