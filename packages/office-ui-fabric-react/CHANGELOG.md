@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 08 Jul 2017 05:59:28 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jul 2017 10:22:21 GMT and should not be manually modified.
+
+## 4.17.0
+Mon, 10 Jul 2017 10:22:21 GMT
+
+### Minor changes
+
+- ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations
 
 ## 4.16.2
 Sat, 08 Jul 2017 05:59:27 GMT
