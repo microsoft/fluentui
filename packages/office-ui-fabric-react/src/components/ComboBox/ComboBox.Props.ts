@@ -2,8 +2,6 @@ import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 
-export { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
-
 export interface IComboBox {
   /**
    * Sets focus to the input in the comboBox
