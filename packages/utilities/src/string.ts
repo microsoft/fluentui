@@ -5,10 +5,13 @@ const FORMAT_ARGS_REGEX = /[\{\}]/g;
 const FORMAT_REGEX = /\{\d+\}/g;
 
 /**
- * String Format is like C# string format.
- * Usage Example: "hello {0}!".format("mike") will return "hello mike!"
- * Calling format on a string with less arguments than specified in the format is invalid
+ * String format method, used for scenarios where at runtime you
+ * need to evaluate a formatted string given a tokenized string. This
+ * usually only is needed in localization scenarios.
+
  * Example "I love {0} every {1}".format("CXP") will result in a Debug Exception.
+ *
+ * @public
  */
 export function format(s: string, ...values: any[]): string {
   'use strict';
