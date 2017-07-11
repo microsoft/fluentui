@@ -168,7 +168,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected renderItems(): JSX.Element[] {
     let { onRenderItem } = this.props;
     let { items } = this.state;
-    return items.map((item, index) => onRenderItem({
+    return items.map((item: any, index: number) => onRenderItem({
       item,
       index,
       key: item.key ? item.key : index,
@@ -479,7 +479,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected removeItems(itemsToRemove: any[]) {
     let { items } = this.state;
-    let newItems: T[] = items.filter(item => itemsToRemove.indexOf(item) === -1);
+    let newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
     let firstItemToRemove = this.selection.getSelection()[0];
     let index: number = items.indexOf(firstItemToRemove);
 

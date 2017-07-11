@@ -31,7 +31,7 @@ export class Router extends BaseComponent<IRouterProps, {}> {
     return path;
   }
 
-  private _resolveRoute(path?: string, children?: React.ReactNode) {
+  private _resolveRoute(path?: string, children?: React.ReactNode): React.DOMElement<{ key: any }, Element> | null {
     path = path || this._getPath();
     children = children || this.props.children;
 
@@ -49,7 +49,7 @@ export class Router extends BaseComponent<IRouterProps, {}> {
           if (getComponent.component) {
             component = getComponent.component;
           } else {
-            getComponent((resolved) => {
+            getComponent((resolved: any) => {
               component = getComponent.component = resolved;
 
               if (asynchronouslyResolved) {
@@ -81,7 +81,7 @@ export class Router extends BaseComponent<IRouterProps, {}> {
 
 }
 
-function _match(currentPath, child): boolean {
+function _match(currentPath: string, child: any): boolean {
   if (child.props) {
     let { path } = child.props;
 

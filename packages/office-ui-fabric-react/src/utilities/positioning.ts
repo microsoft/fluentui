@@ -292,7 +292,7 @@ export module positioningFunctions {
       let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
       for (let direction of outOfBounds) {
-        targetRectangle[RectangleEdge[direction]] = bounds[RectangleEdge[direction]];
+        (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
       }
     }
 
@@ -324,7 +324,7 @@ export module positioningFunctions {
       let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
       for (let direction of outOfBounds) {
-        targetRectangle[RectangleEdge[direction]] = bounds[RectangleEdge[direction]];
+        (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
       }
     }
 
@@ -402,7 +402,7 @@ export module positioningFunctions {
     for (let direction of outOfBounds) {
       callout.calloutRectangle = _alignEdgeToCoordinate(
         callout.calloutRectangle,
-        boundingRectangle[RectangleEdge[direction]],
+        (boundingRectangle as any)[RectangleEdge[direction]],
         direction);
       let adjustedPercent: number = _recalculateMatchingPercents(
         callout.calloutRectangle,
@@ -685,7 +685,7 @@ export module positioningFunctions {
         } else {
           x = point.x;
         }
-        return { x: x, y: rect[RectangleEdge[edge]] };
+        return { x: x, y: (rect as any)[RectangleEdge[edge]] };
       case RectangleEdge.left:
       case RectangleEdge.right:
         let y: number;
@@ -697,7 +697,7 @@ export module positioningFunctions {
         } else {
           y = point.y;
         }
-        return { x: rect[RectangleEdge[edge]], y: y };
+        return { x: (rect as any)[RectangleEdge[edge]], y: y };
     }
   }
 

@@ -140,7 +140,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Instant Open the card in Expanded mode
   @autobind
-  private _instantOpenExpanded(ev) {
+  private _instantOpenExpanded(ev: React.MouseEvent<HTMLDivElement>) {
     this.setState({
       isHoverCardVisible: true,
       mode: ExpandingCardMode.expanded

@@ -120,8 +120,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaDescribedBy = _ariaDescriptionId;
     } else if (description) {
       ariaDescribedBy = _descriptionId;
-    } else if (nativeProps['aria-describedby']) {
-      ariaDescribedBy = nativeProps['aria-describedby'];
+    } else if ((nativeProps as any)['aria-describedby']) {
+      ariaDescribedBy = (nativeProps as any)['aria-describedby'];
     } else {
       ariaDescribedBy = null;
     }
@@ -138,7 +138,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
+        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
     );
