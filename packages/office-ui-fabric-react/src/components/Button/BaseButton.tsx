@@ -30,7 +30,7 @@ export interface IBaseButtonState {
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   private get _isSplitButton(): boolean {
-    return (!!this.props.menuProps && !!this.props.onClick);
+    return (!!this.props.menuProps && !!this.props.onClick) && this.props.split === true;
   }
 
   private get _isExpanded(): boolean {
@@ -40,7 +40,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   public static defaultProps = {
     baseClassName: 'ms-Button',
     classNames: {},
-    styles: {}
+    styles: {},
+    split: false
   };
 
   private _buttonElement: HTMLElement;
@@ -51,6 +52,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
+
+    this._warnConditionallyRequiredProps(
+      ['menuProps', 'onClick'],
+      'split',
+      this.props.split
+    );
 
     this._warnDeprecations({
       rootProps: null,
@@ -130,7 +137,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled,
         'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
@@ -357,7 +363,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
       >
-        <span aria-hidden={ true }>
+        <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
           { this._onRenderSplitButtonMenuButton() }
         </span>

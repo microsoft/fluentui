@@ -1,14 +1,15 @@
+declare function setTimeout(cb: Function, delay: number): number;
+declare function setInterval(cb: Function, delay: number): number;
+
 /**
  * Bugs often appear in async code when stuff gets disposed, but async operations don't get canceled.
  * This Async helper class solves these issues by tying async code to the lifetime of a disposable object.
  *
  * Usage: Anything class extending from BaseModel can access this helper via this.async. Otherwise create a
  * new instance of the class and remember to call dispose() during your code's dispose handler.
+ *
+ * @public
  */
-
-declare function setTimeout(cb: Function, delay: number): number;
-declare function setInterval(cb: Function, delay: number): number;
-
 export class Async {
   private _timeoutIds: any = null;
   private _immediateIds: any = null;
