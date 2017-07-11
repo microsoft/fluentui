@@ -43,16 +43,16 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       this._styles,
       this.props.className,
       this.props.activityPersonas,
-      this.props.isCompact
+      this.props.isCompact,
+      typeof this.props.onRenderIcon !== 'undefined'
     );
 
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        { this.props.onRenderIcon ?
-          <div className={ this._classNames.activityTypeIcon }>{ onRenderIcon(this.props, this._onRenderIcon) }</div> :
-          onRenderIcon(this.props, this._onRenderIcon)
-        }
+        <div className={ this._classNames.activityTypeIcon }>
+          { onRenderIcon(this.props, this._onRenderIcon) }
+        </div>
 
         <div className={ this._classNames.activityContent }>
           { onRenderActivityDescription(this.props, this._onRenderActivityDescription) }
@@ -130,12 +130,13 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   // Determine what classNames each element needs
   @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean): IActivityItemClassNames {
+  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean, onRenderIconExists: boolean): IActivityItemClassNames {
     return {
       root: mergeStyles(
         'ms-ActivityItem',
         styles.root,
-        className
+        className,
+        isCompact && styles.isCompactRoot
       ) as string,
 
       personaContainer: mergeStyles(

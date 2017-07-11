@@ -31,6 +31,10 @@ export const getStyles = memoizeFunction((
       }
     ],
 
+    isCompactRoot: {
+      alignItems: 'center'
+    },
+
     personaContainer: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -50,17 +54,12 @@ export const getStyles = memoizeFunction((
     },
 
     activityTypeIcon: {
-      minWidth: DEFAULT_PERSONA_SIZE,
-      width: DEFAULT_PERSONA_SIZE,
       height: DEFAULT_PERSONA_SIZE,
-      paddingTop: '3px',
       fontSize: DEFAULT_ICON_SIZE,
       lineHeight: DEFAULT_ICON_SIZE,
     },
 
     isCompactIcon: {
-      minWidth: '0',
-      width: 'auto',
       height: COMPACT_PERSONA_SIZE,
       fontSize: COMPACT_ICON_SIZE,
       lineHeight: COMPACT_ICON_SIZE,

@@ -93,6 +93,11 @@ export interface IActivityItemStyles {
   doublePersona?: IStyle;
 
   /**
+   * Styles applied to root in the compact variant.
+   */
+  isCompactRoot?: IStyle;
+
+  /**
    * Styles applied to personas and icons in the compact variant.
    */
   isCompactIcon?: IStyle;
