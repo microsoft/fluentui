@@ -100,7 +100,7 @@ export const getStyles = memoizeFunction((
     },
 
     commentText: {
-      color: theme.palette.neutralPrimary,
+      color: theme.palette.neutralPrimary
     },
 
     timeStamp: [

@@ -43,24 +43,22 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       this._styles,
       this.props.className,
       this.props.activityPersonas,
-      this.props.isCompact,
-      typeof this.props.onRenderIcon !== 'undefined'
+      this.props.isCompact
     );
 
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        <div className={ this._classNames.activityTypeIcon }>
-          { onRenderIcon(this.props, this._onRenderIcon) }
-        </div>
+        { (this.props.onRenderIcon || this.props.activityPersonas) &&
+          <div className={ this._classNames.activityTypeIcon }>
+            { onRenderIcon(this.props, this._onRenderIcon) }
+          </div>
+        }
 
         <div className={ this._classNames.activityContent }>
           { onRenderActivityDescription(this.props, this._onRenderActivityDescription) }
-
-          <div>
-            { onRenderComments(this.props, this._onRenderComments) }
-            { onRenderTimeStamp(this.props, this._onRenderTimeStamp) }
-          </div>
+          { onRenderComments(this.props, this._onRenderComments) }
+          { onRenderTimeStamp(this.props, this._onRenderTimeStamp) }
         </div>
 
       </div>
@@ -130,7 +128,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   // Determine what classNames each element needs
   @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean, onRenderIconExists: boolean): IActivityItemClassNames {
+  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean): IActivityItemClassNames {
     return {
       root: mergeStyles(
         'ms-ActivityItem',
