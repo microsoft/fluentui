@@ -48,6 +48,7 @@
   @include ms-font-s;
   min-width: 0;
   display: flex;
+  flex-grow: 1;
 }
 
 
@@ -132,7 +133,7 @@
 }
 
 .actions {
-  padding: 12px 0px;
+  padding-top: 12px;
 }
 
 .innerTextPadding {
@@ -179,9 +180,7 @@
   @include focus-border();
   @include right(0);
   max-height: 16px;
-  min-width: 0;
-  position: absolute;
-  top: 0;
+  flex-shrink: 0;
 }
 
 .dismissalOneline {
@@ -211,11 +210,9 @@
 
 // Multi line specific attributes
 .multiline {
+  @include padding(16px, 12px, 12px, 16px);
   .content {
-      padding-top: 16px;
       flex-direction: row;
-      @include padding-left(16px);
-
     .icon {
       @include padding-right(8px);
       font-family: 'FabricMDL2Icons';
@@ -226,12 +223,8 @@
     }
   }
 
-  .actions {
-    @include padding-right(12px);
-  }
-
   .dismissal {
-    margin: 0px 12px;
+    margin: 0;
   }
 }
 

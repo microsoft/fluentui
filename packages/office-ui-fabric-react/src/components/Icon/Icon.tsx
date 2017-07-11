@@ -9,7 +9,7 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { IconClassNames } from '../../Styling';
+import { IconCodes } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
@@ -37,7 +37,7 @@ export function Icon(props: IIconProps): JSX.Element {
           styles.root
         ) }
       >
-        l  <Image { ...props.imageProps as any } />
+        <Image { ...props.imageProps as any } />
       </div>
     );
   } else {
@@ -48,17 +48,19 @@ export function Icon(props: IIconProps): JSX.Element {
         aria-label={ ariaLabel }
         { ...(ariaLabel ? {} : {
           role: 'presentation',
-          'aria-hidden': true
+          'aria-hidden': true,
+          'data-icon-name': iconName,
         }) }
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
             'ms-Icon',
-            IconClassNames[iconMemberName],
             styles.root,
             props.className
           ) }
-      />
+      >
+        { (IconCodes as any)[iconMemberName] }
+      </i>
     );
   }
 }

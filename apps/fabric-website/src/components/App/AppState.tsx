@@ -130,6 +130,13 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ColorPickerComponentPage').ColorPickerComponentPage))
         },
         {
+          title: 'ComboBox',
+          url: '#/components/ComboBox',
+          component: () => <LoadingComponent title='ComboBox' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ComboBoxComponentPage').ComboBoxComponentPage))
+
+        },
+        {
           title: 'CommandBar',
           url: '#/components/commandbar',
           component: () => <LoadingComponent title='CommandBar' />,
@@ -307,6 +314,12 @@ export const AppState: IAppState = {
           url: '#/components/spinbutton',
           component: () => <LoadingComponent title='SpinButton' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
+        },
+        {
+          title: 'SwatchColorPicker',
+          url: '#/components/swatchcolorpicker',
+          component: () => <LoadingComponent title='SwatchColorPicker' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SwatchColorPickerComponentPage').SwatchColorPickerComponentPage))
         },
         {
           title: 'TextField',

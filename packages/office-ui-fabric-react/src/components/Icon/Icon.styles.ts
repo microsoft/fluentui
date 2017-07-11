@@ -15,9 +15,12 @@ export const getStyles = memoizeFunction((
 ): IIconStyles => {
   let iconStyles = {
 
-    root: mergeStyles({
-      display: 'inline-block'
-    }),
+    root: mergeStyles([
+      theme.fonts.icon,
+      {
+        display: 'inline-block'
+      }
+    ]),
 
     imageContainer: mergeStyles({
       overflow: 'hidden'

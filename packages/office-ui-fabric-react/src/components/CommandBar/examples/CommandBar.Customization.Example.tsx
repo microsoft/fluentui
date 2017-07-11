@@ -9,10 +9,10 @@ export interface ISplitDropDownButtonState {
   isContextMenuShown: boolean;
 }
 
-export class CommandBarCustomizationExample extends React.Component<any, ISplitDropDownButtonState> {
+export class CommandBarCustomizationExample extends React.Component<{}, ISplitDropDownButtonState> {
   private container: HTMLElement;
 
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
     this.state = { isContextMenuShown: false };
   }
@@ -75,7 +75,7 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
         ) } ref={ ref => this.container = ref }>
           <CommandButton
             className={ mainBtnClassName }
-            iconProps={ { iconName: 'add' } }
+            iconProps={ { iconName: 'Add' } }
             text='New' />
           <span className={ styles.splitter }>|</span>
           <CommandButton
@@ -91,13 +91,13 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
   }
 
   @autobind
-  private onClickChevron(ev) {
+  private onClickChevron(ev: any) {
     ev.stopPropagation();
     this.toggleDropDownMenuShown(ev);
   }
 
   @autobind
-  private toggleDropDownMenuShown(ev) {
+  private toggleDropDownMenuShown(ev: any) {
     this.setState({
       isContextMenuShown: !this.state.isContextMenuShown
     });

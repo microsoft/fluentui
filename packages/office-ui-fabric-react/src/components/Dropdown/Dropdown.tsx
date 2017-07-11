@@ -17,6 +17,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
+import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
 const styles: any = stylesImport;
 
@@ -34,7 +35,7 @@ export interface IDropdownState {
 export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownState> {
 
   public static defaultProps = {
-    options: []
+    options: [] as any[]
   };
 
   private static Option: string = 'option';
@@ -51,7 +52,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    props.options.forEach((option) => {
+    props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
       }
@@ -163,7 +164,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='chevronDown' />
+          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -186,16 +187,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options } = this.props;
+    let { onChanged, options, selectedKey } = this.props;
     let { selectedIndex } = this.state;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
     if (index !== selectedIndex) {
-      // Set the selected option.
-      this.setState({
-        selectedIndex: index
-      });
+      if (selectedKey === undefined) {
+        // Set the selected option if this is an uncontrolled component
+        this.setState({
+          selectedIndex: index
+        });
+      }
 
       if (onChanged) {
         onChanged(options[index], index);
@@ -252,7 +255,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render placeHolder text in dropdown input
   @autobind
-  private _onRenderPlaceHolder(props): JSX.Element {
+  private _onRenderPlaceHolder(props: IDropdownProps): JSX.Element {
     if (!props.placeHolder) {
       return null;
     }
@@ -321,7 +324,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         onKeyDown={ this._onZoneKeyDown }
         role='listbox'
       >
-        { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+        { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
     );
   }
@@ -330,9 +333,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     switch (item.itemType) {
-      case DropdownMenuItemType.Divider:
+      case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
-      case DropdownMenuItemType.Header:
+      case SelectableOptionMenuItemType.Header:
         return this._renderHeader(item);
       default:
         return this._renderOption(item);
@@ -399,7 +402,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
-  private _onItemClick(index) {
+  private _onItemClick(index: number) {
     this.setSelectedIndex(index);
     this.setState({
       isOpen: false

@@ -9,7 +9,7 @@ export class DialogBasicExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      showDialog: false
+      hideDialog: true
     };
   }
 
@@ -24,15 +24,19 @@ export class DialogBasicExample extends React.Component<any, any> {
         <label id='myLabel' className='screenReaderOnly'>All emails together Your Inbox has changed.
           No longer does it include favorites, it is a singular destination for your emails.</label>
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
+          hidden={ this.state.hideDialog }
           onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
-          containerClassName='ms-dialogMainOverride'
-          ariaLabelledById='myLabel'
-          ariaDescribedById=''
+          dialogContentProps={ {
+            type: DialogType.normal,
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            titleAriaId: 'myLabel',
+            subtitleAriaId: '',
+            isBlocking: false,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
           <ChoiceGroup
             options={ [
@@ -51,7 +55,7 @@ export class DialogBasicExample extends React.Component<any, any> {
                 disabled: true
               }
             ] }
-            onChanged={ this._onChoiceChanged }
+            onChange={ this._onChoiceChanged }
           />
           { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
@@ -64,11 +68,11 @@ export class DialogBasicExample extends React.Component<any, any> {
   }
 
   private _showDialog() {
-    this.setState({ showDialog: true });
+    this.setState({ hideDialog: false });
   }
 
   private _closeDialog() {
-    this.setState({ showDialog: false });
+    this.setState({ hideDialog: true });
   }
 
   private _onChoiceChanged() {

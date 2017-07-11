@@ -5,12 +5,20 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
+  IDetailsHeaderProps,
   Selection,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  IRenderFunction
+} from 'office-ui-fabric-react/lib/Utilities';
+import {
+  TooltipHost,
+  ITooltipHostProps
+} from 'office-ui-fabric-react/lib/Tooltip';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
-let _items = [];
+let _items: any[] = [];
 
 let _columns: IColumn[] = [
   {
@@ -76,6 +84,12 @@ export class DetailsListBasicExample extends React.Component<any, any> {
             columns={ _columns }
             setKey='set'
             layoutMode={ DetailsListLayoutMode.fixedColumns }
+            onRenderDetailsHeader={
+              (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
+                ...detailsHeaderProps,
+                onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
+              })
+            }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
             ariaLabelForSelectionColumn='Toggle selection'

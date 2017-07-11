@@ -144,7 +144,6 @@ $field-error-color: $errorTextColor;
 }
 
 .errorIcon {
-  vertical-align: middle;
   font-size: $ms-font-size-m;
   @include margin-right(5px);
 }
@@ -167,11 +166,7 @@ $field-error-color: $errorTextColor;
 
 //== Modifier: Single line (default), underlined
 .root.rootIsUnderlined {
-  border-bottom: 1px solid $field-border-color;
   border-width: 0px;
-  border-bottom-width: 1px;
-  display: flex;
-  width: 100%;
 
   &:hover:not(.rootIsDisabled) {
     border-color: $field-border-hover-color;
@@ -185,6 +180,12 @@ $field-error-color: $errorTextColor;
     }
   }
 
+  .wrapper {
+    display: flex;
+    border-bottom: 1px solid $field-border-color;
+    width: 100%;
+  }
+
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
     @include ms-margin-right(8px);
@@ -196,6 +197,7 @@ $field-error-color: $errorTextColor;
   .fieldGroup {
     flex: 1 1 0px;
     border: 0;
+
     @include ms-text-align(left);
   }
 
@@ -254,6 +256,8 @@ $field-error-color: $errorTextColor;
   color: $field-error-color;
   margin: 0;
   padding-top: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .invalid,

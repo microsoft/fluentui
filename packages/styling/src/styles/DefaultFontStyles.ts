@@ -1,9 +1,6 @@
 import { IFontStyles, IRawStyle } from '../interfaces/index';
 import { fontFace } from '../glamorExports';
-import {
-  getLanguage,
-  getWindow
-} from '@uifabric/utilities/lib/index';
+import { getLanguage } from '@uifabric/utilities/lib/language';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
@@ -117,8 +114,9 @@ function _getFontFamily(): string {
   let fontFamily = FontFamilyWestEuropean;
 
   for (let lang in LanguageToFontMap) {
-    if (LanguageToFontMap.hasOwnProperty(lang) && lang.indexOf(language) === 0) {
-      fontFamily = LanguageToFontMap[lang];
+    if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
+      // tslint:disable-next-line:no-any
+      fontFamily = (LanguageToFontMap as any)[lang];
       break;
     }
   }
@@ -173,7 +171,6 @@ function _registerDefaultFontFaces(): void {
   if (baseUrl) {
     const fontUrl = `${baseUrl}/fonts`;
     const iconUrl = `${baseUrl}/icons`;
-    const iconVersion = '2.30';
 
     // Produce @font-face definitions for all supported web fonts.
     _registerFontFaceSet(fontUrl, FontNameThai, 'leelawadeeui-thai', 'leelawadeeui');
@@ -195,7 +192,7 @@ function _registerDefaultFontFaces(): void {
     _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
 
     // Register icon urls.
-    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons-${iconVersion}`, FontWeights.regular);
+    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
   }
 }
 
@@ -203,9 +200,9 @@ function _registerDefaultFontFaces(): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = getWindow();
+  let win = typeof window !== 'undefined' ? window : undefined;
 
-  // tslint:disable-next-line:no-string-literal
+  // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
 
   return (fabricConfig && fabricConfig.fontBaseUrl !== undefined) ? fabricConfig.fontBaseUrl : DefaultBaseUrl;
