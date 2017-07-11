@@ -25,7 +25,7 @@ const styles: any = stylesImport;
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
-const ISPADDED_WIDTH = 16;
+const ISPADDED_WIDTH = 24;
 
 export interface IDetailsHeader {
   focus(): boolean;

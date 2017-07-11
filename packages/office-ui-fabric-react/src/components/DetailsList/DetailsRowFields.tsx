@@ -5,7 +5,7 @@ import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
 
 const INNER_PADDING = 16; // Account for padding around the cell.
-const ISPADDED_WIDTH = 16;
+const ISPADDED_WIDTH = 24;
 
 export interface IDetailsRowFieldsProps {
   item: any;
