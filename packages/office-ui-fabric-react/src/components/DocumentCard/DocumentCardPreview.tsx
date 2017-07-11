@@ -24,13 +24,6 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     } else if (previewImages.length === 1) {
       // Render a single preview
       preview = this._renderPreviewImage(previewImages[0]);
-
-      // Override the border color if an accent color was provided
-      if (previewImages[0].accentColor) {
-        style = {
-          borderBottomColor: previewImages[0].accentColor
-        };
-      }
     }
 
     return (
