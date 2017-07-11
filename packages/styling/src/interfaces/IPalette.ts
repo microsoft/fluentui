@@ -5,230 +5,230 @@ export interface IPalette {
   /**
    * Color code for themeDarker.
    */
-  themeDarker?: string;
+  themeDarker: string;
 
   /**
    * Color code for themeDark.
    */
-  themeDark?: string;
+  themeDark: string;
 
   /**
    * Color code for themeDarkAlt.
    */
-  themeDarkAlt?: string;
+  themeDarkAlt: string;
 
   /**
    * Color code for themePrimary.
    */
-  themePrimary?: string;
+  themePrimary: string;
 
   /**
    * Color code for themeSecondary.
    */
-  themeSecondary?: string;
+  themeSecondary: string;
 
   /**
    * Color code for themeTertiary.
    */
-  themeTertiary?: string;
+  themeTertiary: string;
 
   /**
    * Color code for themeLight.
    */
-  themeLight?: string;
+  themeLight: string;
 
   /**
    * Color code for themeLighter.
    */
-  themeLighter?: string;
+  themeLighter: string;
 
   /**
    * Color code for themeLighterAlt.
    */
-  themeLighterAlt?: string;
+  themeLighterAlt: string;
 
   /**
    * Color code for black.
    */
-  black?: string;
+  black: string;
 
   /**
    * Color code for blackTranslucent40.
    */
-  blackTranslucent40?: string;
+  blackTranslucent40: string;
 
   /**
    * Color code for neutralDark.
    */
-  neutralDark?: string;
+  neutralDark: string;
 
   /**
    * Color code for neutralPrimary.
    */
-  neutralPrimary?: string;
+  neutralPrimary: string;
 
   /**
    * Color code for neutralPrimaryAlt.
    */
-  neutralPrimaryAlt?: string;
+  neutralPrimaryAlt: string;
 
   /**
    * Color code for neutralSecondary.
    */
-  neutralSecondary?: string;
+  neutralSecondary: string;
 
   /**
    * Color code for neutralTertiary.
    */
-  neutralTertiary?: string;
+  neutralTertiary: string;
 
   /**
    * Color code for neutralTertiaryAlt.
    */
-  neutralTertiaryAlt?: string;
+  neutralTertiaryAlt: string;
 
   /**
    * Color code for neutralQuaternary.
    */
-  neutralQuaternary?: string;
+  neutralQuaternary: string;
 
   /**
    * Color code for neutralQuaternaryAlt.
    */
-  neutralQuaternaryAlt?: string;
+  neutralQuaternaryAlt: string;
 
   /**
    * Color code for neutralLight.
    */
-  neutralLight?: string;
+  neutralLight: string;
 
   /**
    * Color code for neutralLighter.
    */
-  neutralLighter?: string;
+  neutralLighter: string;
 
   /**
    * Color code for neutralLighterAlt.
    */
-  neutralLighterAlt?: string;
+  neutralLighterAlt: string;
 
   /**
    * Color code for white.
    */
-  white?: string;
+  white: string;
 
   /**
    * Color code for yellow.
    */
-  yellow?: string;
+  yellow: string;
 
   /**
    * Color code for yellowLight.
    */
-  yellowLight?: string;
+  yellowLight: string;
 
   /**
    * Color code for orange.
    */
-  orange?: string;
+  orange: string;
 
   /**
    * Color code for orangeLight.
    */
-  orangeLight?: string;
+  orangeLight: string;
 
   /**
    * Color code for orangeLighter.
    */
-  orangeLighter?: string;
+  orangeLighter: string;
 
   /**
    * Color code for redDark.
    */
-  redDark?: string;
+  redDark: string;
 
   /**
    * Color code for red.
    */
-  red?: string;
+  red: string;
 
   /**
    * Color code for magentaDark.
    */
-  magentaDark?: string;
+  magentaDark: string;
 
   /**
    * Color code for magenta.
    */
-  magenta?: string;
+  magenta: string;
 
   /**
    * Color code for magentaLight.
    */
-  magentaLight?: string;
+  magentaLight: string;
 
   /**
    * Color code for purpleDark.
    */
-  purpleDark?: string;
+  purpleDark: string;
 
   /**
    * Color code for purple.
    */
-  purple?: string;
+  purple: string;
 
   /**
    * Color code for purpleLight.
    */
-  purpleLight?: string;
+  purpleLight: string;
 
   /**
    * Color code for blueDark.
    */
-  blueDark?: string;
+  blueDark: string;
 
   /**
    * Color code for blueMid.
    */
-  blueMid?: string;
+  blueMid: string;
 
   /**
    * Color code for blue.
    */
-  blue?: string;
+  blue: string;
 
   /**
    * Color code for blueLight.
    */
-  blueLight?: string;
+  blueLight: string;
 
   /**
    * Color code for tealDark.
    */
-  tealDark?: string;
+  tealDark: string;
 
   /**
    * Color code for teal.
    */
-  teal?: string;
+  teal: string;
 
   /**
    * Color code for tealLight.
    */
-  tealLight?: string;
+  tealLight: string;
 
   /**
    * Color code for greenDark.
    */
-  greenDark?: string;
+  greenDark: string;
 
   /**
    * Color code for green.
    */
-  green?: string;
+  green: string;
 
   /**
    * Color code for greenLight.
    */
-  greenLight?: string;
+  greenLight: string;
 }

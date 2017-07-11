@@ -4,10 +4,20 @@ import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
 import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
 
+/**
+ * BaseProps interface.
+ *
+ * @public
+ */
 export interface IBaseProps {
   componentRef?: any;
 }
 
+/**
+ * BaseComponent class, which provides basic helpers for all components.
+ *
+ * @public
+ */
 export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
@@ -251,5 +261,7 @@ BaseComponent.onError = (errorMessage) => {
 
 /**
  * Simple constant function for returning null, used to render empty templates in JSX.
+ *
+ * @public
  */
 export function nullRender(): JSX.Element | null { return null; }
