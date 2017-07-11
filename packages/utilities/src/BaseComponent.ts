@@ -209,7 +209,7 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
    * @param conditionalPropName - The name of the prop that the condition is based on.
    * @param condition - Whether the condition is met.
    */
-  protected _warnConditionallyRequiredProps(requiredProps: [string], conditionalPropName: string, condition: boolean): void {
+  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void {
     warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
   }
 
