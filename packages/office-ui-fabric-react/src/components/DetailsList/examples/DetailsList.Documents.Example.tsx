@@ -13,6 +13,7 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from '@uifabric/example-app-base';
+import './DetailsListExample.scss';
 
 let _items: IDocument[] = [];
 
@@ -117,7 +118,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         name: 'Name',
         fieldName: 'name',
         minWidth: 210,
-        maxWidth: 340,
+        maxWidth: 350,
         isRowHeader: true,
         isResizable: true,
         isSorted: true,

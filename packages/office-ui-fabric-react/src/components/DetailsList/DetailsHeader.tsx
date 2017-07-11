@@ -235,7 +235,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                       >
                         <span
                           aria-label={ column.isIconOnly ? column.name : undefined }
-                          className={ css('ms-DetailsHeader-cellName', styles.cellName) }
+                          className={ css('ms-DetailsHeader-cellName',
+                            styles.cellName, {
+                              [styles.iconOnlyHeader]: column.isIconOnly
+                            }) }
                         >
                           { (column.iconName || column.iconClassName) && (
                             <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
