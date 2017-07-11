@@ -45,9 +45,6 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
    * Hex color value of the line below the card, which should correspond to the document type.
    * This should only be supplied when using the 'compact' card layout.
-   *
-   * Deprecated at v4.17.1, to be removed at >= v5.0.0.
-   * @deprecated
    */
   accentColor?: string;
 }
@@ -121,9 +118,6 @@ export interface IDocumentCardPreviewImage {
 
   /**
    * Hex color value of the line below the preview, which should correspond to the document type.
-   *
-   * Deprecated at v4.17.1, to be removed at >= v5.0.0.
-   * @deprecated
    */
   accentColor?: string;
 }

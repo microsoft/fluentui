@@ -11,7 +11,8 @@ export default class DocumentCardVPage extends React.Component<any, any> {
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
           width: 318,
-          height: 196
+          height: 196,
+          accentColor: '#ce4b1f'
         }
       ],
     };

@@ -20,7 +20,8 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
+          height: 196,
+          accentColor: '#ce4b1f'
         }
       ],
     };

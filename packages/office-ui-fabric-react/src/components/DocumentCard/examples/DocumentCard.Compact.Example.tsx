@@ -47,7 +47,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
 
     return (
       <div>
-        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
+        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com' accentColor='#ce4b1f'>
           <DocumentCardPreview { ...previewProps } />
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
@@ -64,7 +64,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           </div>
         </DocumentCard>
         <p />
-        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
+        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com' accentColor='#ce4b1f'>
           <DocumentCardPreview previewImages={ [previewProps.previewImages[0]] } />
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
