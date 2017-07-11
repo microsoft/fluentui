@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.0.3",
+      "tag": "@uifabric/example-app-base_v4.0.3",
+      "date": "Tue, 11 Jul 2017 10:14:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "27eddf24f95cee9af7f38aac881899cedd2871bb",
+            "comment": "Website: Stop displaying \"missing properties\" notification if props includes empty interface"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.4 <1.0.0` to `>=0.13.5 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.2",
       "tag": "@uifabric/example-app-base_v4.0.2",
       "date": "Sat, 08 Jul 2017 03:34:35 GMT",
