@@ -387,7 +387,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let splitButtonStyles = getSplitButtonStyles(theme, styles);
 
     return (
-      < BaseButton
+      <BaseButton
         tabIndex={ -1 }
         variantClassName='ms-Button--icon'
         styles={ mergeStyleSets(getIconButtonStyles(this.props.theme, this.props.styles), {
