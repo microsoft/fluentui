@@ -13,7 +13,7 @@ export interface INumberTextFieldState {
 }
 
 export class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
-  constructor(props) {
+  constructor(props: INumberTextFieldProps) {
     super(props);
 
     this._restore = this._restore.bind(this);

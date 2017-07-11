@@ -26,7 +26,7 @@ export class TextFieldBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onChanged(text) {
+  private _onChanged(text: string) {
     console.log(text);
   }
 }

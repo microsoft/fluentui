@@ -80,7 +80,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
-  constructor(props) {
+  constructor(props: IDetailsRowProps) {
     super(props);
 
     this.state = {

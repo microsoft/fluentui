@@ -1,9 +1,9 @@
 import * as React from 'react';
-import * as hljs from 'highlight.js/lib/highlight';
+import { registerLanguage } from 'highlight.js';
 import * as javascript from 'highlight.js/lib/languages/javascript';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
-hljs.registerLanguage('javascript', javascript);
+registerLanguage('javascript', javascript);
 
 export class Highlight extends BaseComponent<React.HTMLAttributes<HTMLDivElement>, {}> {
   private _codeElement: HTMLElement;

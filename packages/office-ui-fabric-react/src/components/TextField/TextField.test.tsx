@@ -213,7 +213,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -236,7 +236,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on blur', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -260,7 +260,7 @@ describe('TextField', () => {
 
     it('should trigger validation on both blur and focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -287,7 +287,7 @@ describe('TextField', () => {
 
     it('should not trigger validation on component mount', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return '';
       };
@@ -326,7 +326,7 @@ describe('TextField', () => {
 
   it('should call onChanged handler for input change', () => {
     let callCount = 0;
-    let onChangedSpy = value => { callCount++; };
+    let onChangedSpy = (value: string) => { callCount++; };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField

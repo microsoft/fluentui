@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -19,7 +19,8 @@
     "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
-    "@types/es6-promise": "^0.0.32",
+    "@types/es6-promise": "0.0.32",
+    "@types/highlight.js": "9.1.9",
     "@types/mocha": "2.2.39",
     "@types/react": "15.0.29",
     "@types/react-addons-test-utils": "0.14.18",
@@ -47,7 +48,7 @@
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0"
   },
   "dependencies": {
-    "@uifabric/styling": ">=0.13.4 <1.0.0",
+    "@uifabric/styling": ">=0.13.5 <1.0.0",
     "@uifabric/utilities": ">=4.7.1 <5.0.0",
     "highlight.js": "^9.9.0",
     "office-ui-fabric-core": ">=7.1.2 <8.0.0",

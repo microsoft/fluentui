@@ -13,7 +13,7 @@ let _layersByHostId: { [hostId: string]: Layer[] } = {};
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
 
-  public static defaultProps = {
+  public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
     onLayerWillUnmount: () => undefined
   };

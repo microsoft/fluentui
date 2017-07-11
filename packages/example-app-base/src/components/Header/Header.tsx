@@ -40,7 +40,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this._onMenuClick = this._onMenuClick.bind(this);
 
     this.state = {
-      contextMenu: null,
+      contextMenu: undefined,
       isRTLEnabled: getRTL()
     };
   }
@@ -48,6 +48,10 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   public render() {
     let { title, sideLinks, responsiveMode } = this.props;
     let { contextMenu } = this.state;
+
+    if (responsiveMode === undefined) {
+      responsiveMode = ResponsiveMode.large;
+    }
 
     // In medium and below scenarios, hide the side links.
     if (responsiveMode <= ResponsiveMode.large) {
@@ -103,7 +107,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     let { contextMenu } = this.state;
 
     this.setState({
-      contextMenu: contextMenu ? null : {
+      contextMenu: contextMenu ? undefined : {
         target: ev.currentTarget as HTMLElement,
         items: this._getOptionMenuItems()
       }
@@ -126,13 +130,13 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
     this.setState({
       isRTLEnabled: !isRTLEnabled,
-      contextMenu: null
+      contextMenu: undefined
     });
   }
 
   private _onDismiss() {
     this.setState({
-      contextMenu: null
+      contextMenu: undefined
     });
   }
 }

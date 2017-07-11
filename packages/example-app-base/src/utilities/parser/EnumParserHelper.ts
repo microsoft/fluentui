@@ -23,11 +23,11 @@ export class EnumParserHelper extends BaseParser {
     super(str);
   }
 
-  public parse(): Array<IEnumProperty> {
-    let bank: Array<string> = [];
+  public parse(): IEnumProperty[] {
+    let bank: string[] = [];
     let comment = '';
     let identifierName = '';
-    let returnResult = [];
+    let returnResult: IEnumProperty[] = [];
     let noClosingSymbolAsterixPrereq = false;
 
     this.eatUntil(/\{/);
