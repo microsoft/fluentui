@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
+import { farItems } from './data';
+import { IContextualMenuItem } from '../../ContextualMenu';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
 import styles = require('./CommandBar.Example.scss');
-import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface ISplitDropDownButtonState {
   isContextMenuShown: boolean;
@@ -21,6 +22,8 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
     return (
       <div>
         <CommandBar
+          primaryCommandsClassName={ styles.primaryCommands }
+          sideCommandsClassName={ styles.sideCommands }
           isSearchBoxVisible={ false }
           items={
             [
@@ -48,6 +51,7 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
               },
             ]
           }
+          farItems={ farItems }
         />
       </div>
     );

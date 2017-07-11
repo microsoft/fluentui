@@ -6,10 +6,12 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
+import { SearchBoxHideSearchIconExample } from './examples/SearchBox.HideSearchIcon.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { FontClassNames } from '../../Styling';
 
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxHideSearchIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.HideSearchIcon.Example.tsx') as string;
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
 
 export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -22,6 +24,9 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           <div>
             <ExampleCard title='SearchBox' code={ SearchBoxSmallExampleCode }>
               <SearchBoxSmallExample />
+            </ExampleCard>
+            <ExampleCard title='SearchBox - With search icon hidden' code={ SearchBoxHideSearchIconExampleCode }>
+              <SearchBoxHideSearchIconExample />
             </ExampleCard>
             <ExampleCard title='SearchBox - No Parent Container' code={ SearchBoxFullSizeExampleCode }>
               <SearchBoxFullSizeExample />

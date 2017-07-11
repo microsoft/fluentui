@@ -47,7 +47,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className } = this.props;
+    let { labelText, className, hideSearchIcon } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
@@ -58,11 +58,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
-        <div
-          className={ css('ms-SearchBox-iconContainer', styles.iconContainer) }
-        >
-          <Icon className={ css('ms-SearchBox-icon', styles.icon) } iconName='Search' />
-        </div>
+        {
+          !hideSearchIcon &&
+          <div
+            className={ css('ms-SearchBox-iconContainer', styles.iconContainer) }
+          >
+            <Icon className={ css('ms-SearchBox-icon', styles.icon) } iconName='Search' />
+          </div>
+        }
         <input
           id={ id }
           className={ css('ms-SearchBox-field', styles.field) }
