@@ -65,7 +65,7 @@ export interface IChoiceGroupOption {
   /**
    * Optional override of option render
    */
-  onRenderLabel?: (IChoiceGroupOption) => JSX.Element;
+  onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
 
   /**
    * The Icon component props for choice field
