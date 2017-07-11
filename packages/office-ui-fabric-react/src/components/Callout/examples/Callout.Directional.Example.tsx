@@ -139,8 +139,8 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   @autobind
   private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, option: IChoiceGroupOption) {
     this.setState({
-      linkType: parseInt(option.key),
-      beakWidth: parseInt(option.key) === CalloutLinkType.beak ? 16 : 0
+      linkType: parseInt(option.key, 10),
+      beakWidth: parseInt(option.key, 10) === CalloutLinkType.beak ? 16 : 0
     });
   }
 
