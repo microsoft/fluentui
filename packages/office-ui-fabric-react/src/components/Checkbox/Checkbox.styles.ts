@@ -40,7 +40,8 @@ export const getStyles = memoizeFunction((
       margin: '0 -4px'
     },
     labelReversed: {
-      flexDirection: 'row-reverse'
+      flexDirection: 'row-reverse',
+      justifyContent: 'flex-end'
     },
     labelDisabled: {
       cursor: 'default'
@@ -99,11 +100,8 @@ export const getStyles = memoizeFunction((
       opacity: '1'
     },
     text: {
-      flex: '1 0 auto',
+      flex: '0 0 auto',
       margin: '0 4px'
-    },
-    textHovered: {
-
     },
     textDisabled: {
       color: checkboxDisabledTextColor   // ms-fontColor-neutralTertiary
