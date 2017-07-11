@@ -88,6 +88,10 @@ export const getStyles = memoizeFunction((
       padding: '0 8px'
     },
 
+    activityText: {
+      display: 'inline'
+    },
+
     isCompactContent: {
       flex: '1',
       padding: '0 4px',

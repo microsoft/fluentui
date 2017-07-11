@@ -6,14 +6,14 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 // Please keep alphabetized
 export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Text or elements in this array will be shown in order as the description of the activity that occurred.
+   * Text describing the activity that occurred and naming the people involved in it.
    */
-  activityDescription: Array<string | JSX.Element>;
+  activityDescriptionText?: string;
 
   /**
-   * Text or elements of a comment that will be shown in order under the activity description.
+   * Text of comments or @mention messages.
    */
-  commentElements?: Array<string | JSX.Element>;
+  commentText?: string;
 
   /**
    * Used to render the main icon. Pass in an array of Persona props to automatically render a Persona group, or pass in a JSX element to render your own content, such as an Icon, here.
@@ -24,6 +24,16 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
    * Indicated if the compact styling should be used.
    */
   isCompact?: boolean;
+
+  /**
+   * A renderer for the description of the current activity.
+   */
+  onRenderActivityDescription?: IRenderFunction<IActivityItemProps>;
+
+  /**
+   * A renderer that adds the text of a comment below the activity description.
+   */
+  onRenderComments?: IRenderFunction<IActivityItemProps>;
 
   /**
    * A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.
@@ -56,6 +66,11 @@ export interface IActivityItemStyles {
    * Styles applied to the persona of the user that did this activity.
    */
   activityPersona?: IStyle;
+
+  /**
+   * Styles applied to the activity's description.
+   */
+  activityText?: IStyle;
 
   /**
    * Styles applied to the icon indicating the type of the activity. Only shown when personas are unavailable.

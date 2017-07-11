@@ -12,6 +12,7 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 export interface IActivityItemClassNames {
   root?: string;
   activityContent?: string;
+  activityText?: string;
   personaContainer?: string;
   activityPersona?: string;
   activityTypeIcon?: string;
@@ -30,6 +31,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   public render() {
     let {
       className,
+      onRenderActivityDescription = this._onRenderActivityDescription,
+      onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
       styles: customStyles,
     } = this.props;
@@ -50,10 +53,10 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         { Array.isArray(this.props.iconContents) ? this._onRenderPersonaArray(this.props) : <div className={ this._classNames.activityTypeIcon }>{ this.props.iconContents }</div> }
 
         <div className={ this._classNames.activityContent }>
-          { this.props.activityDescription.map((item, index) => <span key={ index }>{ item }</span>) }
+          { onRenderActivityDescription(this.props, this._onRenderActivityDescription) }
 
           <div>
-            { this.props.commentElements && !this.props.isCompact && this._onRenderCommentText(this.props) }
+            { onRenderComments(this.props, this._onRenderComments) }
             { onRenderTimeStamp(this.props, this._onRenderTimeStamp) }
           </div>
         </div>
@@ -95,22 +98,24 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return personaElement;
   }
 
-  // Build a single JSX element from the strings/elements in the commentElements array.
   @autobind
-  private _onRenderCommentText(props: IActivityItemProps): JSX.Element {
-    return (
-      <div className={ this._classNames.commentText }>
-        { props.commentElements.map((item, index) => <span key={ index }>{ item }</span>) }
-      </div>
-    );
+  private _onRenderActivityDescription(props: IActivityItemProps): JSX.Element {
+    if (props.activityDescriptionText) {
+      return (<span className={ this._classNames.activityText }>{ props.activityDescriptionText }</span>);
+    }
+  }
+
+  @autobind
+  private _onRenderComments(props: IActivityItemProps): JSX.Element {
+    if (!props.isCompact && props.commentText) {
+      return (<div className={ this._classNames.commentText }>{ props.commentText }</div>);
+    }
   }
 
   @autobind
   private _onRenderTimeStamp(props: IActivityItemProps): JSX.Element {
-    if (!props.isCompact) {
-      return (
-        <div className={ this._classNames.timeStamp }>{ props.timeStamp }</div>
-      );
+    if (!props.isCompact && props.timeStamp) {
+      return (<div className={ this._classNames.timeStamp }>{ props.timeStamp }</div>);
     }
   }
 
@@ -149,6 +154,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         isCompact && styles.isCompactContent
       ) as string,
 
+      activityText: mergeStyles('ms-ActivityItem-activityText', styles.activityText) as string,
       commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText) as string,
       timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp) as string
     };
