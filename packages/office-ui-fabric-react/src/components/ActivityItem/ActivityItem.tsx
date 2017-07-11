@@ -97,7 +97,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   @autobind
   private _onRenderPersonaArray(props: IActivityItemProps): JSX.Element {
     let personaElement: JSX.Element;
-    let activityPersonas = props.activityPersonas;
+    let activityPersonas: Array<IPersonaProps> = props.activityPersonas;
     if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
       let personaList = [];
       let showSize16Personas = (activityPersonas.length > 1 || props.isCompact);
