@@ -31,8 +31,6 @@ export const getStyles = memoizeFunction((
     root: {
       overflow: 'hidden',
       position: 'relative',
-      display: 'flex',
-      alignItems: 'center'
     },
     label: {
       display: 'flex',
