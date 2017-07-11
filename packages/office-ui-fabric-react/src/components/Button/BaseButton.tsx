@@ -15,8 +15,10 @@ import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
-import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
+import { getStyles as getSplitButtonStyles } from './SplitButton/SplitButton.styles';
+import { mergeStyleSets } from '../../Styling';
+import { getStyles as getIconButtonStyles } from './IconButton/IconButton.styles';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -341,8 +343,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     const {
       styles,
-      disabled
+      disabled,
+      theme
     } = this.props;
+
+    let splitButtonStyles = getSplitButtonStyles(theme, styles);
 
     return (
       <div
@@ -352,7 +357,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
-        className={ css(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
+        className={ css(disabled ? splitButtonStyles.splitButtonContainerDisabled : splitButtonStyles.splitButtonContainer) }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
       >
@@ -369,7 +374,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName,
       menuIconProps,
       styles,
-      disabled
+      disabled,
+      theme
     } = this.props;
 
     if (menuIconProps === undefined) {
@@ -378,14 +384,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
+    let splitButtonStyles = getSplitButtonStyles(theme, styles);
+
     return (
-      <IconButton
+      <BaseButton
         tabIndex={ -1 }
-        styles={ {
-          root: disabled ? styles.splitButtonMenuButtonDisabled : styles.splitButtonMenuButton,
-          rootChecked: styles.splitButtonMenuButtonChecked,
-          icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon
-        } }
+        variantClassName='ms-Button--icon'
+        styles={ mergeStyleSets(getIconButtonStyles(this.props.theme, this.props.styles), {
+          root: disabled ? splitButtonStyles.splitButtonMenuButtonDisabled : splitButtonStyles.splitButtonMenuButton,
+          rootChecked: splitButtonStyles.splitButtonMenuButtonChecked,
+          icon: disabled ? splitButtonStyles.splitButtonMenuIconDisabled : splitButtonStyles.splitButtonMenuIcon
+        }) }
         checked={ this.props.checked }
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
