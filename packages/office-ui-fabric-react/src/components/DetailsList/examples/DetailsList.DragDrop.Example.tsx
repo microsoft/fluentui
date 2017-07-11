@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
-import { IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsRowProps, DetailsRow, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import {
   IDragDropHelper,
@@ -76,7 +76,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     };
   }
 
-  private _onRenderItemColumn(item, index, column) {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
     if (column.key === 'name') {
       return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
     }
@@ -84,10 +84,10 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     return item[column.key];
   }
 
-  private _insertBeforeItem(item) {
+  private _insertBeforeItem(item: any) {
     let draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
-    let items: any[] = this.state.items.filter((i) => draggedItems.indexOf(i) === -1);
+    let items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.
