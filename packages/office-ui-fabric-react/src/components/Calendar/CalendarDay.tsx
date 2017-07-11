@@ -253,8 +253,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
-    let weeks = [];
-    let week;
+    let weeks: IDayInfo[][] = [];
 
     // Cycle the date backwards to get to the first day of the week.
     while (date.getDay() !== firstDayOfWeek) {
@@ -267,15 +266,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
 
     for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
-      week = [];
+      let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
         let originalDate = new Date(date.toString());
-        let dayInfo = {
+        let dayInfo: IDayInfo = {
           key: date.toString(),
-          date: date.getDate(),
+          date: date.getDate().toString(),
           originalDate: originalDate,
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
           isToday: compareDates(todaysDate, date),
