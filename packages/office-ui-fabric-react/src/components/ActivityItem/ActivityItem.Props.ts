@@ -11,14 +11,14 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   activityDescriptionText?: string;
 
   /**
+   * If onRenderIcon is not, then the persona props in this array will be used as the icon for the this activity item.
+   */
+  activityPersonas?: Array<IPersonaProps>;
+
+  /**
    * Text of comments or @mention messages.
    */
   commentText?: string;
-
-  /**
-   * Used to render the main icon. Pass in an array of Persona props to automatically render a Persona group, or pass in a JSX element to render your own content, such as an Icon, here.
-   */
-  iconContents: Array<IPersonaProps> | JSX.Element;
 
   /**
    * Indicated if the compact styling should be used.
@@ -34,6 +34,11 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
    * A renderer that adds the text of a comment below the activity description.
    */
   onRenderComments?: IRenderFunction<IActivityItemProps>;
+
+  /**
+   * A renderer to create the icon next to the activity item.
+   */
+  onRenderIcon?: IRenderFunction<IActivityItemProps>;
 
   /**
    * A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.

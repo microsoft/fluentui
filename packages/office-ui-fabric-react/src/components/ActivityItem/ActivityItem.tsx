@@ -31,6 +31,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   public render() {
     let {
       className,
+      onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
@@ -41,16 +42,17 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     this._classNames = this._getClassNames(
       this._styles,
       this.props.className,
-      this.props.iconContents,
+      this.props.activityPersonas,
       this.props.isCompact
     );
-
-    let renderComment: JSX.Element;
 
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        { Array.isArray(this.props.iconContents) ? this._onRenderPersonaArray(this.props) : <div className={ this._classNames.activityTypeIcon }>{ this.props.iconContents }</div> }
+        { this.props.onRenderIcon ?
+          <div className={ this._classNames.activityTypeIcon }>{ onRenderIcon(this.props, this._onRenderIcon) }</div> :
+          onRenderIcon(this.props, this._onRenderIcon)
+        }
 
         <div className={ this._classNames.activityContent }>
           { onRenderActivityDescription(this.props, this._onRenderActivityDescription) }
@@ -65,37 +67,11 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     );
   }
 
-  // If iconContents is an array of persona props, build the persona cluster element.
   @autobind
-  private _onRenderPersonaArray(props: IActivityItemProps): JSX.Element {
-    let personaElement: JSX.Element;
-    let iconContents = props.iconContents;
-    if (Array.isArray(iconContents) && (iconContents[0].imageUrl || iconContents[0].imageInitials)) {
-      let personaList = [];
-      let showSize16Personas = (iconContents.length > 1 || props.isCompact);
-      let personaLimit = props.isCompact ? 3 : 4;
-      iconContents.filter((person, index) => index < personaLimit).forEach((person, index) => {
-        personaList.push(
-          <Persona
-            {...person}
-            // tslint:disable-next-line:no-string-literal
-            key={ person['key'] ? person['key'] : index }
-            className={ this._classNames.activityPersona }
-            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
-            hidePersonaDetails={ true }
-            style={
-              props.isCompact && {
-                display: 'inline-block',
-                width: '8px',
-                minWidth: '8px',
-                overflow: 'visible'
-              }
-            } />
-        );
-      });
-      personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;
+  private _onRenderIcon(props: IActivityItemProps): JSX.Element {
+    if (props.activityPersonas) {
+      return this._onRenderPersonaArray(props);
     }
-    return personaElement;
   }
 
   @autobind
@@ -119,9 +95,42 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     }
   }
 
+  // If activityPersonas is an array of persona props, build the persona cluster element.
+  @autobind
+  private _onRenderPersonaArray(props: IActivityItemProps): JSX.Element {
+    let personaElement: JSX.Element;
+    let activityPersonas = props.activityPersonas;
+    if (activityPersonas[0].imageUrl || activityPersonas[0].imageInitials) {
+      let personaList = [];
+      let showSize16Personas = (activityPersonas.length > 1 || props.isCompact);
+      let personaLimit = props.isCompact ? 3 : 4;
+      activityPersonas.filter((person, index) => index < personaLimit).forEach((person, index) => {
+        personaList.push(
+          <Persona
+            {...person}
+            // tslint:disable-next-line:no-string-literal
+            key={ person['key'] ? person['key'] : index }
+            className={ this._classNames.activityPersona }
+            size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
+            hidePersonaDetails={ true }
+            style={
+              props.isCompact && {
+                display: 'inline-block',
+                width: '8px',
+                minWidth: '8px',
+                overflow: 'visible'
+              }
+            } />
+        );
+      });
+      personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;
+    }
+    return personaElement;
+  }
+
   // Determine what classNames each element needs
   @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, iconContents: Array<IPersonaProps> | JSX.Element, isCompact: boolean): IActivityItemClassNames {
+  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean): IActivityItemClassNames {
     return {
       root: mergeStyles(
         'ms-ActivityItem',
@@ -139,7 +148,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
         'ms-ActivityItem-activityPersona',
         styles.activityPersona,
         isCompact && styles.isCompactPersona,
-        !isCompact && Array.isArray(iconContents) && iconContents.length === 2 && styles.doublePersona
+        !isCompact && activityPersonas && activityPersonas.length === 2 && styles.doublePersona
       ) as string,
 
       activityTypeIcon: mergeStyles(
