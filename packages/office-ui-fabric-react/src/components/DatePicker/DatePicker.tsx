@@ -197,7 +197,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             placeholder={ placeholder }
             borderless={ borderless }
             iconProps={ {
-              iconName: 'calendar',
+              iconName: 'Calendar',
               className: css(
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel

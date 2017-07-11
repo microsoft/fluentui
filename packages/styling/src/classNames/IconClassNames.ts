@@ -10,16 +10,22 @@ export const IconClassNames: {[key in keyof typeof IconCodes]?: string } = {};
 
 // tslint:disable-next-line:forin
 for (const iconName in IconCodes) {
+  let className: string;
+
   Object.defineProperty(IconClassNames, iconName, {
     get: (): string => {
-      let className = mergeStyles(
-        DefaultFontStyles.icon,
-        {
-          ':before': {
-            content: `"${IconCodes[iconName]}"`
+      if (className === undefined) {
+        className = mergeStyles(
+          DefaultFontStyles.icon,
+          {
+            ':before': {
+              // tslint:disable-next-line:no-any
+              content: `"${(IconCodes as any)[iconName]}"`
+            }
           }
-        },
-      ).toString();
+        ).toString();
+      }
+
       return className;
     },
     enumerable: true,

@@ -60,7 +60,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
             />
             <IconButton
               className={ styles.deleteButton }
-              iconProps={ { iconName: 'x' } }
+              iconProps={ { iconName: 'X' } }
               onClick={ this._onDelete }
               title={ strings.deleteItemTitle }
               ariaLabel={ strings.deleteItemAriaLabel }

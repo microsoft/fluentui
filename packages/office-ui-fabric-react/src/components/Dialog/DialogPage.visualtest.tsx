@@ -7,7 +7,7 @@ export default class DialogVPage extends React.Component<any, any> {
   public render() {
     return <div>
       <Dialog
-        isOpen={ true }
+        hidden={ false }
         className='Dialog'
         title='All emails together'
         subText='Your Inbox has changed.'

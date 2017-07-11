@@ -105,7 +105,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         className={ css(
           'ms-BasePicker',
           className ? className : '') }
-        onKeyDown={ this.onKeyDown }>
+        onKeyDown={ this.onKeyDown }
+        onBlur={ this.onBlur } >
         <FocusZone
           ref={ this._resolveRef('focusZone') }
           direction={ FocusZoneDirection.bidirectional }
@@ -167,7 +168,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected renderItems(): JSX.Element[] {
     let { onRenderItem } = this.props;
     let { items } = this.state;
-    return items.map((item, index) => onRenderItem({
+    return items.map((item: any, index: number) => onRenderItem({
       item,
       index,
       key: item.key ? item.key : index,
@@ -284,11 +285,32 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: itemValue,
       suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
     });
+
+    /**
+     * If user exits the input box before suggestions are returned,
+     * select the first result upon promise resolution, if a suggestion
+     * is available.
+     */
+    if (this.suggestionStore.hasSelectedSuggestion() &&
+      this.input.inputElement !== document.activeElement) {
+      this.addItemByIndex(0);
+    }
   }
 
   protected onChange() {
     if (this.props.onChange) {
       this.props.onChange(this.state.items);
+    }
+  }
+
+  /**
+   * Select the first suggestion if one is available when user leaves
+   * the input area.
+   */
+  @autobind
+  protected onBlur() {
+    if (this.suggestionStore.hasSelectedSuggestion()) {
+      this.addItemByIndex(0);
     }
   }
 
@@ -457,7 +479,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected removeItems(itemsToRemove: any[]) {
     let { items } = this.state;
-    let newItems: T[] = items.filter(item => itemsToRemove.indexOf(item) === -1);
+    let newItems: T[] = items.filter((item: any) => itemsToRemove.indexOf(item) === -1);
     let firstItemToRemove = this.selection.getSelection()[0];
     let index: number = items.indexOf(firstItemToRemove);
 
@@ -514,7 +536,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div>
         <div ref={ this._resolveRef('root') }
           className={ css('ms-BasePicker', className ? className : '') }
-          onKeyDown={ this.onKeyDown }>
+          onKeyDown={ this.onKeyDown }
+          onBlur={ this.onBlur } >
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>

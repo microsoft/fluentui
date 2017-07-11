@@ -11,11 +11,17 @@ $checkBoxHeight: 24px;
 
 .root {
   line-height: 1;
-  width: $checkBoxHeight;
-  height: $checkBoxHeight;
+  width: $checkBoxHeight - 2px;
+  height: $checkBoxHeight - 2px;
   vertical-align: top;
   position: relative;
   @include ms-user-select(none);
+  background: $ms-color-white;
+  border-radius: $checkBoxHeight;
+
+  &.rootIsChecked {
+    background: $ms-color-themePrimary;
+  }
 }
 
 .root:hover,
@@ -24,7 +30,6 @@ $checkBoxHeight: 24px;
   opacity: 1;
 }
 
-.background,
 .circle,
 .check {
   position: absolute;
@@ -34,14 +39,6 @@ $checkBoxHeight: 24px;
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: $checkBoxHeight;
-}
-
-.background {
-  color: $ms-color-white;
-}
-
-.rootIsChecked .background {
-  color: $ms-color-themePrimary;
 }
 
 .circle {

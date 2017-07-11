@@ -158,7 +158,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       getGroupItemLimit,
       group,
@@ -191,6 +191,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       <div
         ref='root'
         className={ css('ms-GroupedList-group', styles.group, this._getDroppingClassName()) }
+        role='presentation'
       >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
@@ -288,7 +289,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   @autobind
-  private _renderSubGroup(subGroup, subGroupIndex) {
+  private _renderSubGroup(subGroup: any, subGroupIndex: number) {
     let {
       dragDropEvents,
       dragDropHelper,
@@ -332,7 +333,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     ) : null;
   }
 
-  private _getGroupKey(group, index) {
+  private _getGroupKey(group: any, index: number) {
     return 'group-' + ((group && group.key) ? group.key : String(group.level) + String(index));
   }
 
@@ -348,7 +349,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       context: { data: group, index: groupIndex, isGroup: true },
       canDrag: () => false, // cannot drag groups
       canDrop: dragDropEvents.canDrop,
-      onDragStart: null,
       updateDropState: this._updateDroppingState
     };
     return options;
