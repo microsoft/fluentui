@@ -23,8 +23,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
@@ -33,8 +32,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'Spec Sheet for design',
@@ -43,8 +41,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'Contoso Marketing Presentation',
@@ -53,8 +50,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'Notes from Ignite conference',
@@ -63,8 +59,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         },
         {
           name: 'FY17 Cost Projections',
@@ -73,8 +68,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
+          height: 196
         }
       ],
 
