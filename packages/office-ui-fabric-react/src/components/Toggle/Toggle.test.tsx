@@ -38,7 +38,7 @@ describe('Toggle', () => {
 
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;
-    let callback = (isToggled) => {
+    let callback = (isToggled: boolean) => {
       isToggledValue = isToggled;
     };
     let component;
