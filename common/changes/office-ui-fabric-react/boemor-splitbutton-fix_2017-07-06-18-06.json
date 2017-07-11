@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove unnecessary line height",
+      "comment": "Fix styling issues with SplitButton. Add new split boolean property to Button.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "maricha@microsoft.com"
+  "email": "boemor@microsoft.com"
 }
