@@ -25,7 +25,7 @@ const _indentWithExpandButton: number = 28;
 const _indentNoExpandButton: number = 20;
 
 // global var used in _isLinkSelectedKey
-let _urlResolver;
+let _urlResolver: HTMLAnchorElement | undefined;
 
 export interface INavState {
   isGroupCollapsed?: { [key: string]: boolean };

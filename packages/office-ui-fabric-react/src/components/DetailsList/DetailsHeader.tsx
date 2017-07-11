@@ -14,7 +14,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { CollapseAllVisibility } from '../GroupedList';
+import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStyles from './DetailsRowCheck.scss';
@@ -114,7 +114,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
     let { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
@@ -530,7 +530,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnClick(column, ev) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     let { onColumnClick } = this.props;
 
     if (column.onColumnClick) {

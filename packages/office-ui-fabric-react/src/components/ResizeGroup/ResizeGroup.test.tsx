@@ -28,7 +28,7 @@ describe('ResizeGroup', () => {
   it('renders the result of onRenderData', () => {
     const initialData = { content: 5 };
     const renderedDataId = 'onRenderDataId';
-    const onRenderData = (data) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
+    const onRenderData = (data: any) => <div id={ renderedDataId }> Rendered data: { data.content }</div >;
 
     const wrapper = shallow<IResizeGroupProps, IResizeGroupState>(
       <ResizeGroup

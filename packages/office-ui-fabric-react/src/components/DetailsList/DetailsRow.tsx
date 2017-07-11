@@ -16,7 +16,7 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { CollapseAllVisibility } from '../GroupedList';
+import { CollapseAllVisibility } from '../../GroupedList';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -80,7 +80,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
-  constructor(props) {
+  constructor(props: IDetailsRowProps) {
     super(props);
 
     this.state = {
