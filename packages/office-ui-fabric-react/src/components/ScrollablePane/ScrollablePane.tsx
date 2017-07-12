@@ -59,8 +59,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
       this._events.on(window, 'resize', () => {
         this._notifySubscribers();
-        this._notifyHeaders();
-        this._notifyFooters();
+        this._setDistances(this._stickyAbove, true);
+        this._setDistances(this._stickyBelow, false);
       });
       this._notifySubscribers();
     }
@@ -91,7 +91,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public addStickyHeader(sticky: Sticky) {
     if (this._stickyAbove.indexOf(sticky) < 0) {
       this._stickyAbove.push(sticky);
-      this._notifyHeaders();
+      this._setDistances(this._stickyAbove, true);
     }
   }
 
@@ -110,7 +110,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       this._stickyBelow.sort((a, b) => {
         return b.refs.root.offsetTop - a.refs.root.offsetTop;
       });
-      this._notifyFooters();
+      this._setDistances(this._stickyBelow, false);
     }
   }
 
@@ -122,22 +122,17 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     }
   }
 
-  private _notifyHeaders() {
+  private _setDistances(stickies: Sticky[], headers: boolean) {
     let distance = 0;
-    this._stickyAbove.forEach((sticky) => {
-      sticky.setTopDistance(distance);
+    stickies.forEach((sticky) => {
+      if (headers) {
+        sticky.setTopDistance(distance)
+      } else {
+        sticky.setBottomDistance(distance);
+      }
       distance += sticky.refs.root.clientHeight;
     });
-    this._topHeaderHeight = distance;
-  }
-
-  private _notifyFooters() {
-    let distance = 0;
-    this._stickyBelow.forEach((sticky) => {
-      sticky.setBottomDistance(distance);
-      distance += sticky.refs.root.clientHeight;
-    });
-    this._bottomFooterHeight = distance;
+    headers ? this._topHeaderHeight = distance : this._bottomFooterHeight = distance;
   }
 
   private _notifySubscribers() {
