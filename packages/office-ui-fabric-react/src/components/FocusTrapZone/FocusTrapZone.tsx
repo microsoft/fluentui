@@ -113,7 +113,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
-      _firstFocusableChild.focus();
+      (_firstFocusableChild as any).focus();
     }
   }
 

@@ -12,6 +12,7 @@ import {
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -36,7 +37,7 @@ export interface ICommandBarState {
 }
 
 export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState> implements ICommandBar {
-  public static defaultProps = {
+  public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: [],
     farItems: []
@@ -147,6 +148,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             targetElement={ contextualMenuTarget }
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
+            calloutProps={ { linkType: CalloutLinkType.attached } }
           />
           ) : (null)
         }
@@ -334,7 +336,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     });
   }
 
-  private _onItemClick(ev, item) {
+  private _onItemClick(ev: React.MouseEvent<HTMLButtonElement>, item: IContextualMenuItem) {
     if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
       this._onContextMenuDismiss();
     } else {
@@ -351,7 +353,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   }
 
   @autobind
-  private _onOverflowClick(ev) {
+  private _onOverflowClick(ev: React.MouseEvent<HTMLButtonElement>) {
     if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
       this._onContextMenuDismiss();
     } else {
@@ -384,7 +386,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
   }
 
-  private _getStateFromProps(nextProps: ICommandBarProps) {
+  private _getStateFromProps(nextProps: ICommandBarProps): ICommandBarState {
     return {
       renderedItems: nextProps.items || [],
       renderedOverflowItems: null,

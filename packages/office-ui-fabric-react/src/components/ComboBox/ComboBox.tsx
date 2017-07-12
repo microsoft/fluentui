@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
+import { Callout, CalloutLinkType } from '../../Callout';
 import { Label } from '../../Label';
 import {
   CommandButton,
@@ -57,7 +57,7 @@ enum SearchDirection {
 
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
-  public static defaultProps = {
+  public static defaultProps: IComboBoxProps = {
     options: [],
     allowFreeform: false,
     autoComplete: true,
@@ -97,7 +97,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _currentPromise: PromiseLike<IComboBoxOption[]>;
 
   // The current visible value sent to the auto fill on render
-  private _currentVisibleValue;
+  private _currentVisibleValue: string;
 
   constructor(props?: IComboBoxProps) {
     super(props);
@@ -264,7 +264,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </div>
 
         { isOpen && (
-          onRenderContainer({ ...this.props }, this._onRenderContainer)
+          onRenderContainer({ ...this.props as any }, this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -732,9 +732,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
+        linkType={ CalloutLinkType.attached }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
-          { onRenderList({ ...props }, this._onRenderList) }
+          { onRenderList({ ...props as any }, this._onRenderList) }
         </div>
       </Callout>
     );
@@ -870,7 +871,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * to select the item and also close the menu
    * @param index - the index of the item that was clicked
    */
-  private _onItemClick(index) {
+  private _onItemClick(index: number) {
     this._setSelectedIndex(index);
     this.setState({
       isOpen: false
@@ -936,7 +937,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param currentPendingValueValidIndex - new pending value index to set
    * @param suggestedDisplayValue - new suggest display value to set
    */
-  private _setPendingInfo(currentPendingValue: string, currentPendingValueValidIndex: number, suggestedDisplayValue) {
+  private _setPendingInfo(currentPendingValue: string, currentPendingValueValidIndex: number, suggestedDisplayValue: string) {
     this.setState({
       currentPendingValue: currentPendingValue,
       currentPendingValueValidIndex: currentPendingValueValidIndex,
@@ -1029,7 +1030,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
 
         // Allow TAB to propigate
-        if (ev.which === KeyCodes.tab) {
+        if (ev.which as number === KeyCodes.tab) {
           return;
         }
         break;

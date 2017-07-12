@@ -14,6 +14,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
 import { IButtonProps, IButton } from './Button.Props';
 import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
@@ -119,8 +120,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaDescribedBy = _ariaDescriptionId;
     } else if (description) {
       ariaDescribedBy = _descriptionId;
-    } else if (nativeProps['aria-describedby']) {
-      ariaDescribedBy = nativeProps['aria-describedby'];
+    } else if ((nativeProps as any)['aria-describedby']) {
+      ariaDescribedBy = (nativeProps as any)['aria-describedby'];
     } else {
       ariaDescribedBy = null;
     }
@@ -137,7 +138,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
+        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
     );
@@ -188,7 +189,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       tag,
       buttonProps,
       React.createElement(
-        'div',
+        'div' as any,
         { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
         onRenderText(props, this._onRenderText),
@@ -333,6 +334,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
+        calloutProps={ { linkType: CalloutLinkType.attached } }
       />
     );
   }

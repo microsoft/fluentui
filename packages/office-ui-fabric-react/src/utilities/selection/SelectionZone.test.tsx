@@ -228,7 +228,7 @@ describe('SelectionZone', () => {
   });
 });
 
-function _simulateClick(el, eventData?: ReactTestUtils.SyntheticEventData) {
+function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData) {
   ReactTestUtils.Simulate.mouseDown(el, eventData);
   ReactTestUtils.Simulate.focus(el, eventData);
   ReactTestUtils.Simulate.click(el, eventData);

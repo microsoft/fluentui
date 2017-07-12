@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix styling issues with SplitButton. Add new split boolean property to Button.",
+      "comment": "List: Only draw a single window when receiving new items",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "boemor@microsoft.com"
+  "email": "cschleid@microsoft.com"
 }

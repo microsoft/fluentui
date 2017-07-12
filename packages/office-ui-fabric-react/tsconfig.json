@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
     "moduleResolution": "node",
     "lib": [
       "es2017",

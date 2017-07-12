@@ -8,6 +8,7 @@ const INNER_PADDING = 16; // Account for padding around the cell.
 const ISPADDED_WIDTH = 24;
 
 export interface IDetailsRowFieldsProps {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columnStartIndex: number;
@@ -79,7 +80,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
     };
   }
 
-  private _getCellText(item, column) {
+  private _getCellText(item: any, column: IColumn) {
     let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
 
     if (value === null || value === undefined) {

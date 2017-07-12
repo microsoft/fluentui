@@ -29,7 +29,7 @@ const PAGING_SIZE = 10;
 const PAGING_DELAY = 5000;
 const ITEMS_COUNT = 5000;
 
-let _items;
+let _items: any;
 
 export interface IDetailsListAdvancedExampleState {
   canResizeColumns?: boolean;
@@ -153,7 +153,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     );
   }
 
-  private _onDataMiss(index) {
+  private _onDataMiss(index: number) {
     index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
 
     if (!this._isFetchingItems) {
@@ -476,7 +476,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
 
   @autobind
   private _onSortColumn(key: string, isSortedDescending: boolean) {
-    let sortedItems = _items.slice(0).sort((a, b) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
+    let sortedItems = _items.slice(0).sort((a: any, b: any) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
       items: sortedItems,
@@ -525,7 +525,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   }
 
   private _groupByKey(groups: IGroup[], items: any[], key: string): any[] {
-    let groupedItems = [];
+    let groupedItems: any[] = [];
     if (groups) {
       groups.forEach((group: IGroup) => {
         if (group.children && group.children.length > 0) {

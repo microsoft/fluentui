@@ -27,12 +27,12 @@ export class InterfaceParserHelper extends BaseParser {
     super(str);
   }
 
-  public parse(): Array<IInterfaceProperty> {
-    let bank: Array<string> = [];
+  public parse(): IInterfaceProperty[] {
+    let bank: (string | undefined)[] = [];
     let comment = '';
     let identifierName = '';
     let type = '';
-    let returnResult = [];
+    let returnResult: IInterfaceProperty[] = [];
     let defaultValue = '';
     let isDeprecated = false;
     let deprecatedMessage = '';
