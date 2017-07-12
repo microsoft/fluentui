@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { StickyHeader } from './StickyHeader';
+import { Sticky } from './Sticky';
 
-export interface IStickyHeaderProps extends React.Props<StickyHeader> {
+export interface IStickyProps extends React.Props<Sticky> {
   /**
    * Class name to apply to the sticky element if component is sticky.
   */

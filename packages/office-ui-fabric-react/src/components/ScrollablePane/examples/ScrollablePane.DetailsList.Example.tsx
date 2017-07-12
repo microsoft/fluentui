@@ -20,8 +20,8 @@ import {
   ScrollablePane
 } from 'office-ui-fabric-react/lib/ScrollablePane';
 import {
-  StickyHeader
-} from 'office-ui-fabric-react/lib/StickyHeader';
+  Sticky
+} from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
 let _items: {
@@ -84,14 +84,14 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
     return (
       <div>
         <ScrollablePane>
-          <StickyHeader><div>{ selectionDetails }</div></StickyHeader>
+          <Sticky><div>{ selectionDetails }</div></Sticky>
           <TextField
             label='Filter by name:'
             onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
           />
-          <StickyHeader>
+          <Sticky>
             <h1 style={ { margin: '0px' } }>Item List</h1>
-          </StickyHeader>
+          </Sticky>
           <MarqueeSelection selection={ this._selection }>
             <DetailsList
               items={ items }

@@ -10,21 +10,21 @@ import {
   autobind
 } from '../../Utilities';
 import { ScrollablePane } from '../../ScrollablePane';
-import { IStickyHeaderProps } from './StickyHeader.Props';
-import * as stylesImport from './StickyHeader.scss';
+import { IStickyProps } from './Sticky.Props';
+import * as stylesImport from './Sticky.scss';
 const styles: any = stylesImport;
 
-export interface IStickyHeaderState {
+export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
   topDistance?: number;
   bottomDistance?: number;
 }
 
-export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeaderState> {
+export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public static contextTypes = {
-    addStickyHeader: PropTypes.func,
-    removeStickyHeader: PropTypes.func,
+    addSticky: PropTypes.func,
+    removeSticky: PropTypes.func,
     addStickyFooter: PropTypes.func,
     removeStickyFooter: PropTypes.func,
     subscribe: PropTypes.func
@@ -38,16 +38,16 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
 
   public context: {
     subscribe: (handler: Function) => void;
-    addStickyHeader: (sticky: StickyHeader) => void;
-    removeStickyHeader: (sticky: StickyHeader) => void;
-    addStickyFooter: (sticky: StickyHeader) => void;
-    removeStickyFooter: (sticky: StickyHeader) => void;
+    addSticky: (sticky: Sticky) => void;
+    removeSticky: (sticky: Sticky) => void;
+    addStickyFooter: (sticky: Sticky) => void;
+    removeStickyFooter: (sticky: Sticky) => void;
   };
 
   private _offsetTop: number;
   private _offsetBottom: number;
 
-  constructor(props: IStickyHeaderProps) {
+  constructor(props: IStickyProps) {
     super(props);
     this.state = {
       isStickyTop: false,
@@ -88,9 +88,9 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
         isStickyBottom: setStickyBottom
       }, () => {
         if (setStickyTop) {
-          this.context.addStickyHeader(this);
+          this.context.addSticky(this);
         } else {
-          this.context.removeStickyHeader(this);
+          this.context.removeSticky(this);
         }
         if (setStickyBottom) {
           this.context.addStickyFooter(this);

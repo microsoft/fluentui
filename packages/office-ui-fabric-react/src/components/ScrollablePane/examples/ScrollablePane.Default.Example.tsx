@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { StickyHeader } from 'office-ui-fabric-react/lib/StickyHeader';
+import { Sticky } from 'office-ui-fabric-react/lib/Sticky';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
@@ -42,11 +42,11 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
           BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE
           BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE
         </div>
-        <StickyHeader stickyClassName='stickySmall'>
+        <Sticky stickyClassName='stickySmall'>
           <div className='sticky'>
             THIS IS WRAPPED IN STICKY { index }
           </div>
-        </StickyHeader>
+        </Sticky>
         <div className='content'>
           AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER
           AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER

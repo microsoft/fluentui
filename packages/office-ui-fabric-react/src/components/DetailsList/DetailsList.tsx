@@ -24,8 +24,8 @@ import {
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import {
-  StickyHeader
-} from '../StickyHeader/StickyHeader';
+  Sticky
+} from '../Sticky/Sticky';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   IObjectWithKey,
@@ -297,7 +297,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-readonly='true'>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (lockedHeader ?
-              <StickyHeader>{ header }</StickyHeader> : header
+              <Sticky>{ header }</Sticky> : header
             ) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
