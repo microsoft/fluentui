@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.7.2",
+      "tag": "@uifabric/utilities_v4.7.2",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.1",
       "tag": "@uifabric/utilities_v4.7.1",
       "date": "Sat, 08 Jul 2017 03:34:35 GMT",

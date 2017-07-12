@@ -29,6 +29,7 @@ import { AnimationClassNames } from '../../Styling';
 import * as checkStyles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columns: IColumn[];
@@ -80,7 +81,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
-  constructor(props) {
+  constructor(props: IDetailsRowProps) {
     super(props);
 
     this.state = {

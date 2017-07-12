@@ -48,6 +48,7 @@
   @include ms-font-s;
   min-width: 0;
   display: flex;
+  flex-grow: 1;
 }
 
 
@@ -179,9 +180,7 @@
   @include focus-border();
   @include right(0);
   max-height: 16px;
-  min-width: 0;
-  position: absolute;
-  top: 0;
+  flex-shrink: 0;
 }
 
 .dismissalOneline {
@@ -225,7 +224,7 @@
   }
 
   .dismissal {
-    margin: 0px 12px;
+    margin: 0;
   }
 }
 

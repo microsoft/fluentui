@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
-import { warnDeprecations, warnMutuallyExclusive, ISettingsMap } from './warn';
+import { warnDeprecations, warnMutuallyExclusive, warnConditionallyRequiredProps, ISettingsMap } from './warn';
 
 /**
  * BaseProps interface.
@@ -45,10 +45,6 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
    */
   constructor(props?: P, context?: any) {
     super(props, context);
-
-    if (props) {
-      this.props = props;
-    }
 
     this._shouldUpdateComponentRef = true;
 
@@ -201,6 +197,18 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>) {
     warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
   }
+
+  /**
+   * Warns when props are required if a condition is met.
+   *
+   * @param requiredProps - The name of the props that are required when the condition is met.
+   * @param conditionalPropName - The name of the prop that the condition is based on.
+   * @param condition - Whether the condition is met.
+   */
+  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void {
+    warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
+  }
+
 }
 
 /**

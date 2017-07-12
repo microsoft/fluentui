@@ -16,7 +16,7 @@ import { ExampleGroup, IExample } from './examplesOf';
  * @param appTitle A title for the application that will be displayed in the header.
  * @param headerLinks A set of links to put in the header of the application.
  */
-export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteComponent: () => JSX.Element = () => null, appTitle?: string, headerLinks?: IAppLink[]) {
+export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteComponent: () => (JSX.Element | null) = () => null, appTitle?: string, headerLinks?: IAppLink[]) {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
@@ -53,10 +53,10 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
     ReactDOM.render(
       <Fabric>
         <Router>
-          <Route key='minimal' path='?minimal' component={ (props) => <div { ...props } /> }>
+          <Route key='minimal' path='?minimal' component={ (props: any) => <div { ...props } /> }>
             { routes }
           </Route>
-          <Route key={ 'app' } component={ (props) => <App appDefinition={ appDefinition } { ...props } /> }>
+          <Route key={ 'app' } component={ (props: any) => <App appDefinition={ appDefinition } { ...props } /> }>
             { routes }
           </Route>
         </Router>
