@@ -226,6 +226,8 @@ interface IChangeEventCallback {
 // @public
 interface ICustomizerProps {
   // (undocumented)
+  componentRef?: () => void;
+  // (undocumented)
   settings: ISettings;
 }
 
