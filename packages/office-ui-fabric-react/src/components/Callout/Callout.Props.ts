@@ -73,7 +73,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default false
+   * @default true
    */
   isBeakVisible?: boolean;
 
@@ -142,6 +142,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default false
    */
   directionalHintFixed?: boolean;
+
+  /**
+   * Specify the final height of the content.
+   * To be used when expanding the content dynamically so that callout can adjust its position.
+   */
+  finalHeight?: number;
 
   /**
    * If true then the callout will attempt to focus the first focusable element that it contains.

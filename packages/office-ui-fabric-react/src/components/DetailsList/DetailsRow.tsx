@@ -14,8 +14,9 @@ import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
+import { CollapseAllVisibility } from '../../GroupedList';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -28,6 +29,7 @@ import { AnimationClassNames } from '../../Styling';
 import * as checkStyles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columns: IColumn[];
@@ -43,6 +45,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   groupNestingDepth?: number;
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
+  collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
 }
@@ -72,12 +75,13 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   };
 
   private _root: HTMLElement;
+  private _focusZone: IFocusZone;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
-  constructor(props) {
+  constructor(props: IDetailsRowProps) {
     super(props);
 
     this.state = {
@@ -194,6 +198,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         {...getNativeProps(this.props, divProperties) }
         direction={ FocusZoneDirection.horizontal }
         ref={ this._onRootRef }
+        componentRef={ this._resolveRef('_focusZone') }
         role='row'
         aria-label={ ariaLabel }
         className={ css(
@@ -216,6 +221,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
+        allowFocusRoot={ true }
       >
         { showCheckbox && (
           <div
@@ -232,7 +238,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ count: groupNestingDepth }) }
+        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
         { item && (
           <DetailsRowFields
@@ -285,16 +291,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   }
 
   public focus(): boolean {
-    const {
-      _root
-    } = this;
-
-    if (_root) {
-      _root.focus();
-      return true;
-    }
-
-    return false;
+    return !!this._focusZone && this._focusZone.focus();
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {

@@ -1,6 +1,93 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+
+## 0.13.6
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 0.13.5
+Tue, 11 Jul 2017 10:14:04 GMT
+
+*Changes not tracked*
+
+## 0.13.4
+Mon, 10 Jul 2017 19:18:55 GMT
+
+*Changes not tracked*
+
+## 0.13.3
+Mon, 10 Jul 2017 10:22:21 GMT
+
+*Changes not tracked*
+
+## 0.13.2
+Sat, 08 Jul 2017 05:59:28 GMT
+
+*Changes not tracked*
+
+## 0.13.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating dev dependencies.
+
+## 0.13.0
+Fri, 07 Jul 2017 10:11:38 GMT
+
+### Minor changes
+
+- Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides.
+
+### Patches
+
+- Enable strict null checks in the styling package
+
+## 0.12.3
+Thu, 06 Jul 2017 10:11:47 GMT
+
+*Changes not tracked*
+
+## 0.12.2
+Tue, 04 Jul 2017 10:21:53 GMT
+
+*Changes not tracked*
+
+## 0.12.1
+Mon, 03 Jul 2017 10:11:52 GMT
+
+*Changes not tracked*
+
+## 0.12.0
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Minor changes
+
+- Dependencies now use path based imports to various utilities to minimize the graph dependency.
+
+## 0.11.10
+Fri, 30 Jun 2017 10:23:15 GMT
+
+*Changes not tracked*
+
+## 0.11.9
+Thu, 29 Jun 2017 20:48:31 GMT
+
+*Changes not tracked*
+
+## 0.11.8
+Thu, 29 Jun 2017 10:13:16 GMT
+
+*Changes not tracked*
+
+## 0.11.7
+Wed, 28 Jun 2017 10:12:04 GMT
+
+*Changes not tracked*
 
 ## 0.11.6
 Tue, 27 Jun 2017 01:26:31 GMT

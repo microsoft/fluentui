@@ -508,6 +508,70 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleNewValue));
   });
 
+  it('should use min as defaultvalue if neither value nor defaultValue are passed', () => {
+    const exampleLabelValue: string = 'SpinButton';
+    const exampleMinValue: number = 2;
+    const exampleMaxValue: number = 22;
+    const exampleDefaultValue: string = '12';
+    const exampleStepValue: number = 2;
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label={ exampleLabelValue }
+        min={ exampleMinValue }
+        max={ exampleMaxValue }
+        step={ exampleStepValue }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    expect(inputDOM.value).to.equal(String(exampleMinValue));
+    expect(inputDOM.getAttribute('aria-valuemin')).to.equal(String(exampleMinValue));
+    expect(inputDOM.getAttribute('aria-valuemax')).to.equal(String(exampleMaxValue));
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(exampleMinValue));
+  });
+
+  it('should use 0 as defaultvalue if neither value, defaultValue nor min are passed', () => {
+    const exampleLabelValue: string = 'SpinButton';
+    const exampleDefaultValue: string = '12';
+    const exampleStepValue: number = 2;
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label={ exampleLabelValue }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    expect(inputDOM.value).to.equal(String(0));
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(0));
+  });
+
+  it('should use the default onIncrement function when no value, defaultValue nor onIncrement function is passed', () => {
+    const exampleLabelValue: string = 'SpinButton';
+    const exampleDefaultValue: string = '12';
+    const exampleStepValue: number = 2;
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <SpinButton
+        label={ exampleLabelValue }
+      />
+    );
+
+    // Assert on the input element.
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+    const upButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-UpButton')[0] as HTMLButtonElement;
+    ReactTestUtils.Simulate.mouseDown(upButtonDOM);
+    ReactTestUtils.Simulate.mouseUp(upButtonDOM);
+
+    expect(inputDOM.value).to.equal(String(1));
+    expect(inputDOM.getAttribute('aria-valuenow')).to.equal(String(1));
+  });
+
   it('should stop spinning if text field is focused while actively spinning', () => {
     const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;

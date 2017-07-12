@@ -46,7 +46,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     );
   }
 
-  private _onColumnClick(column) {
+  private _onColumnClick(event: React.MouseEvent<HTMLElement>, column: IColumn) {
     let { sortedItems, columns } = this.state;
     let isSortedDescending = column.isSortedDescending;
 
@@ -95,7 +95,7 @@ function _buildColumns() {
   return columns;
 }
 
-function _renderItemColumn(item, index, column) {
+function _renderItemColumn(item: any, index: number, column: IColumn) {
   let fieldContent = item[column.fieldName];
 
   switch (column.key) {

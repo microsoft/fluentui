@@ -14,7 +14,7 @@ const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 
-let _cachedItems;
+let _cachedItems: any;
 
 export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
   constructor() {

@@ -56,7 +56,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
-  constructor(props) {
+  constructor(props: IFocusZoneProps) {
     super(props);
 
     this._warnDeprecations({ rootProps: null });
@@ -133,12 +133,19 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   public focus(forceIntoFirstElement: boolean = false): boolean {
     if (!forceIntoFirstElement && this.refs.root.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' && this._isInnerZone) {
-      // The parent focus zone should take responsibility for focusing this element.
+      const ownerZoneElement = this._getOwnerZone(this.refs.root);
+
+      if (ownerZoneElement !== this.refs.root) {
+        const ownerZone = _allInstances[ownerZoneElement.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
+
+        return !!ownerZone && ownerZone.focusElement(this.refs.root);
+      }
+
+      return false;
+    } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)
+      && isElementTabbable(this._activeElement)) {
+      this._activeElement.focus();
       return true;
-     } else if (this._activeElement && elementContains(this.refs.root, this._activeElement)
-        && isElementTabbable(this._activeElement)) {
-        this._activeElement.focus();
-        return true;
     } else {
       const firstChild = this.refs.root.firstChild as HTMLElement;
 
@@ -652,7 +659,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
-    // If active element changes state to disabled, set it to null. 
+    // If active element changes state to disabled, set it to null.
     // Otherwise, we lose keyboard accessibility to other elements in focus zone.
     if (this._activeElement && !isElementTabbable(this._activeElement)) {
       this._activeElement = null;

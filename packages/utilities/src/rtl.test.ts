@@ -16,12 +16,4 @@ describe('rtl', () => {
     setSSR(false);
   });
 
-  it('can throw when setting a value on the server without setRTL called', () => {
-    setSSR(true);
-
-    setRTL(undefined);
-    expect(getRTL).throws();
-
-    setSSR(false);
-  });
 });

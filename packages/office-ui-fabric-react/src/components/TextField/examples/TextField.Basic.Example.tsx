@@ -8,7 +8,6 @@ export class TextFieldBasicExample extends React.Component<any, any> {
     return (
       <div>
         <TextField
-          addonString='https://'
           label='Default TextField' onChanged={ this._onChanged } />
         <TextField label='Disabled TextField' disabled={ true } placeholder='Placeholder text' />
         <TextField label='Required TextField' required={ true } />
@@ -27,7 +26,7 @@ export class TextFieldBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onChanged(text) {
+  private _onChanged(text: string) {
     console.log(text);
   }
 }

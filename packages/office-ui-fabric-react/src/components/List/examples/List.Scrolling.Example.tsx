@@ -27,7 +27,7 @@ const numberOfItemsOnPage = 10;
 export class ListScrollingExample extends React.Component<IListScrollingExampleProps, IListScrollingExampleState> {
   private _list: List;
 
-  constructor(props) {
+  constructor(props: IListScrollingExampleProps) {
     super(props);
 
     this.state = {
