@@ -21,12 +21,12 @@ export interface ICalendarMonthProps {
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
-  private _selectMonthCallbacks: (() => void)[];
-
   public refs: {
     [key: string]: React.ReactInstance;
     navigatedMonth: HTMLElement;
   };
+
+  private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {
     super(props);
