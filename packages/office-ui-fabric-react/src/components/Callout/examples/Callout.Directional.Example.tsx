@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint, CalloutLinkType } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
@@ -10,7 +10,7 @@ import './CalloutExample.scss';
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
   directionalHint?: DirectionalHint;
-  isBeakVisible?: boolean;
+  linkType?: CalloutLinkType;
   gapSpace?: number;
   beakWidth?: number;
 }
@@ -39,25 +39,43 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
 
     this.state = {
       isCalloutVisible: false,
-      isBeakVisible: true,
+      linkType: CalloutLinkType.beak,
       directionalHint: DirectionalHint.bottomLeftEdge
     };
   }
 
   public render() {
-    let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
+    let { isCalloutVisible, linkType, directionalHint, gapSpace, beakWidth } = this.state;
     //  ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
-          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
+          <ChoiceGroup
+            label='Link type'
+            selectedKey={ linkType.toString() }
+            options={ [
+              {
+                key: CalloutLinkType.none.toString(),
+                text: 'None'
+              },
+              {
+                key: CalloutLinkType.beak.toString(),
+                text: 'Beak'
+              },
+              {
+                key: CalloutLinkType.attached.toString(),
+                text: 'Attached'
+              }
+            ] }
+            onChange={ this._onShowBeakChange }
+          />
           <Slider
             max={ 30 }
             label='Gap Space'
             min={ 0 }
             defaultValue={ 0 }
             onChange={ this._onGapSlider } />
-          { isBeakVisible &&
+          { linkType === CalloutLinkType.beak &&
             (<Slider
               max={ 50 }
               label='Beak Width'
@@ -81,7 +99,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             className='ms-CalloutExample-callout'
             gapSpace={ gapSpace }
             targetElement={ this._menuButtonElement }
-            isBeakVisible={ isBeakVisible }
+            linkType={ linkType }
             beakWidth={ beakWidth }
             onDismiss={ this._onCalloutDismiss }
             directionalHint={ directionalHint }
@@ -119,10 +137,10 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   }
 
   @autobind
-  private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
+  private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, option: IChoiceGroupOption) {
     this.setState({
-      isBeakVisible: isVisible,
-      beakWidth: 10
+      linkType: parseInt(option.key, 10),
+      beakWidth: parseInt(option.key, 10) === CalloutLinkType.beak ? 16 : 0
     });
   }
 
