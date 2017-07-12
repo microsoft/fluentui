@@ -233,7 +233,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
       checkmark: mergeStyles(
         styles.checkmark,
-        isChecked && styles.checkmarkChecked
+        isChecked && styles.checkmarkChecked,
+        disabled && styles.checkmarkDisabled
       ) as string,
 
       text: mergeStyles(

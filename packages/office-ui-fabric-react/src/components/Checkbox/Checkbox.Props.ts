@@ -143,6 +143,8 @@ export interface ICheckboxStyles {
    */
   checkmarkChecked?: IStyle;
 
+  checkmarkDisabled?: IStyle;
+
   /**
    *
    */

@@ -21,7 +21,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: ICheckboxStyles
 ): ICheckboxStyles => {
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
   const checkmarkFontColor = semanticColors.bodyBackground;
   const checkboxBorderColor = semanticColors.inputBorder;
   const checkboxHoveredBorderColor = semanticColors.inputBorderHovered;
@@ -80,20 +80,60 @@ export const getStyles = memoizeFunction((
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
       /* incase the icon is bigger than the box */
-      overflow: 'hidden'
+      overflow: 'hidden',
+
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: palette.contrastBlackSelected,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderColor: palette.contrastWhiteSelected,
+      },
     },
     checkboxHovered: {
       borderColor: checkboxHoveredBorderColor,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: palette.contrastWhiteDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderColor: palette.contrastBlackDisabled,
+      },
     },
     checkboxChecked: {
       background: checkboxCheckedBackground,
       borderWidth: '0',
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderWidth: '1px',
+        borderColor: palette.contrastWhiteSelected,
+        backgroundColor: palette.contrastWhiteSelected,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderWidth: '1px',
+        borderColor: palette.contrastBlackSelected,
+        backgroundColor: palette.contrastBlackSelected,
+      },
+
     },
     checkboxCheckedHovered: {
-      background: checkboxCheckedHoveredBackground
+      background: checkboxCheckedHoveredBackground,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: palette.contrastWhiteDisabled,
+        backgroundColor: palette.contrastWhiteDisabled
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderColor: palette.contrastBlackDisabled,
+        backgroundColor: palette.contrastBlackDisabled
+      },
     },
     checkboxDisabled: {
-      background: checkboxDisabledBackground
+      background: checkboxDisabledBackground,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: palette.contrastBlackDisabled,
+        backgroundColor: palette.contrastBlackDisabled
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderColor: palette.contrastWhiteDisabled,
+        backgroundColor: palette.contrastWhiteDisabled
+      },
     },
     checkboxCheckedDisabled: {
       background: checkboxDisabledBackground
@@ -106,12 +146,26 @@ export const getStyles = memoizeFunction((
     checkmarkChecked: {
       opacity: '1'
     },
+    checkmarkDisabled: {
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: palette.contrastBlackDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        color: palette.contrastWhiteDisabled,
+      },
+    },
     text: {
       flex: '0 0 auto',
       margin: '0 4px'
     },
     textDisabled: {
-      color: checkboxDisabledTextColor   // ms-fontColor-neutralTertiary
+      color: checkboxDisabledTextColor,   // ms-fontColor-neutralTertiary
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: palette.contrastBlackDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        color: palette.contrastWhiteDisabled,
+      },
     }
   };
 
