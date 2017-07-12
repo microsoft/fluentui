@@ -1,6 +1,24 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Sat, 08 Jul 2017 03:34:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+
+## 4.1.0
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Minor changes
+
+- Fix implicit anys, enable strict null checks
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 4.0.3
+Tue, 11 Jul 2017 10:14:04 GMT
+
+### Patches
+
+- Website: Stop displaying "missing properties" notification if props includes empty interface
 
 ## 4.0.2
 Sat, 08 Jul 2017 03:34:35 GMT

@@ -52,8 +52,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _delayedValidate: (value: string) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
-  private _latestValue;
-  private _latestValidateValue;
+  private _latestValue: string;
+  private _latestValidateValue: string;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLInputElement | HTMLTextAreaElement;
 

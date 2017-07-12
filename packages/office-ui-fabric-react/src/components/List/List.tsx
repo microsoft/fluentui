@@ -64,7 +64,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item, index, containsFocus) => (<div>{ (item && item.name) || '' }</div>),
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => (<div>{ (item && item.name) || '' }</div>),
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
@@ -345,7 +345,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Generate the style object for the page. */
-  private _getPageStyle(page) {
+  private _getPageStyle(page: IPage) {
     let style;
     let { getPageStyle } = this.props;
 
@@ -362,7 +362,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Track the last item index focused so that we ensure we keep it rendered. */
-  private _onFocus(ev) {
+  private _onFocus(ev: any) {
     let target = ev.target as HTMLElement;
 
     while (target !== this.refs.surface) {
@@ -476,7 +476,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       let page = oldPages[i];
 
       if (page.items) {
-        renderedIndexes[page.startIndex] = page;
+        (renderedIndexes as any)[page.startIndex] = page;
       }
     }
 
@@ -486,17 +486,17 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       if (page.items) {
         heightChanged = this._measurePage(page) || heightChanged;
 
-        if (!renderedIndexes[page.startIndex]) {
+        if (!(renderedIndexes as any)[page.startIndex]) {
           this._onPageAdded(page);
         } else {
-          delete renderedIndexes[page.startIndex];
+          delete (renderedIndexes as any)[page.startIndex];
         }
       }
     }
 
     for (let index in renderedIndexes) {
       if (renderedIndexes.hasOwnProperty(index)) {
-        this._onPageRemoved(renderedIndexes[index]);
+        this._onPageRemoved((renderedIndexes as any)[index]);
       }
     }
 
@@ -749,7 +749,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 }
 
-function _expandRect(rect, pagesBefore, pagesAfter): IRectangle {
+function _expandRect(rect: IRectangle, pagesBefore: number, pagesAfter: number): IRectangle {
   const top = rect.top - (pagesBefore * rect.height);
   const height = rect.height + ((pagesBefore + pagesAfter) * rect.height);
 

@@ -1,6 +1,23 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 10 Jul 2017 10:22:21 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+
+## 0.13.6
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 0.13.5
+Tue, 11 Jul 2017 10:14:04 GMT
+
+*Changes not tracked*
+
+## 0.13.4
+Mon, 10 Jul 2017 19:18:55 GMT
+
+*Changes not tracked*
 
 ## 0.13.3
 Mon, 10 Jul 2017 10:22:21 GMT
