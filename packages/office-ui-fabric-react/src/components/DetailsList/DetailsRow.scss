@@ -11,7 +11,7 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 .root {
   @include focus-border();
 
-  display: inline-block;
+  display: flex;
   min-width: 100%;
   min-height: $rowHeight;
   margin: 1px 0;
@@ -24,7 +24,6 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   border: none;
   @include text-align(left);
   vertical-align: top;
-  line-height: $rowHeight - ($rowVerticalPadding * 2);
 
   &:hover {
     background: $detailsList-item-hover-color;
@@ -74,7 +73,8 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 }
 
 .fields {
-  display: inline-block;
+  display: flex;
+  align-items: stretch;
 }
 
 .cellMeasurer .cell {

@@ -107,6 +107,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/facepile'
         },
         {
+          component: require<any>('../components/HoverCard/HoverCardPage').HoverCardPage,
+          key: 'HoverCard',
+          name: 'HoverCard',
+          url: '#/examples/hovercard'
+        },
+        {
           component: require<any>('../components/Icon/IconPage').IconPage,
           key: 'Icon',
           name: 'Icon',
@@ -225,6 +231,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Spinner',
           name: 'Spinner',
           url: '#/examples/spinner'
+        },
+        {
+          component: require<any>('../components/SwatchColorPicker/SwatchColorPickerPage').SwatchColorPickerPage,
+          key: 'SwatchColorPicker',
+          name: 'SwatchColorPicker',
+          url: '#/examples/swatchcolorpicker'
         },
         {
           component: require<any>('../components/TeachingBubble/TeachingBubblePage').TeachingBubblePage,

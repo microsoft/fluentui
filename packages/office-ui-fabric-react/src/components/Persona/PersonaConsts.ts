@@ -39,7 +39,7 @@ export const PERSONA_INITIALS_COLOR = {
   [PersonaInitialsColor.magenta]: 'ms-Persona-initials--magenta ' + styles.initialsIsMagenta,
   [PersonaInitialsColor.purple]: 'ms-Persona-initials--purple ' + styles.initialsIsPurple,
   [PersonaInitialsColor.black]: 'ms-Persona-initials--black ' + styles.initialsIsBlack,
-  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsGreen,
+  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsOrange,
   [PersonaInitialsColor.red]: 'ms-Persona-initials--red ' + styles.initialsIsRed,
   [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed ' + styles.initialsIsDarkRed
 };

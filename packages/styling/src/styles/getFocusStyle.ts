@@ -1,6 +1,5 @@
 import { mergeStyles } from '../utilities/index';
-import { IProcessedStyle } from '../interfaces/index';
-import { ITheme } from './theme';
+import { IProcessedStyle, ITheme } from '../interfaces/index';
 import { parent } from '../glamorExports';
 
 /**
@@ -16,7 +15,7 @@ import { parent } from '../glamorExports';
 export function getFocusStyle(
   theme: ITheme,
   inset: string = '0',
-  color: string = theme.palette.neutralSecondary,
+  color: string | undefined = theme.palette.neutralSecondary,
   position: 'relative' | 'absolute' = 'relative'
 ): IProcessedStyle {
   return mergeStyles(

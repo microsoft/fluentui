@@ -1,6 +1,134 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Jun 2017 01:26:31 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jul 2017 19:18:55 GMT and should not be manually modified.
+
+## 4.17.1
+Mon, 10 Jul 2017 19:18:55 GMT
+
+### Patches
+
+- Checkbox: reverting global class names to use ms-Checkbox-* prefixed values.
+- Remove unnecessary line height
+- Removed ARIA disabled from button, as already handled by button HTML attribute
+
+## 4.17.0
+Mon, 10 Jul 2017 10:22:21 GMT
+
+### Minor changes
+
+- ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations
+
+## 4.16.2
+Sat, 08 Jul 2017 05:59:27 GMT
+
+### Patches
+
+- AMD fix for GroupedList.
+
+## 4.16.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Fixing an import breaking AMD modules related to GroupedList.
+
+## 4.16.0
+Fri, 07 Jul 2017 10:11:38 GMT
+
+### Minor changes
+
+- GroupedList: Add a new prop to ignore the collapse button on the column name bar when there's custom group header
+
+### Patches
+
+- Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag.
+
+## 4.15.0
+Thu, 06 Jul 2017 10:11:47 GMT
+
+### Minor changes
+
+- Add new component: HoverCard
+- ResizeGroup: Add support for caching
+
+### Patches
+
+- Make details row cells use flex box and stretch to total row height.
+- Toggle: Fixed aria-label that was missing from button
+- CommandBar: Remove margin from command bar items
+
+## 4.14.1
+Tue, 04 Jul 2017 10:21:53 GMT
+
+### Patches
+
+- Breadcrumb: Fixed maxItems logic to put correct items into overflow
+
+## 4.14.0
+Mon, 03 Jul 2017 10:11:52 GMT
+
+### Minor changes
+
+- Changed the CSS for the checkbox so that it's easier to customize and center
+
+### Patches
+
+- GroupedList: Fixes a bug causing Toggle and other button elements within a GroupedList to not render correctly.
+
+## 4.13.2
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Patches
+
+- Breadcrumb: Use flexbox for layout to better support multiple font sizes
+- MessageBar: Fixed padding regressions with multiline and no actions 
+
+## 4.13.1
+Fri, 30 Jun 2017 10:23:15 GMT
+
+### Patches
+
+- Fixed spacing and vertical position of expand arrow, Added space between title and count, Changed to use flex box, Updated interactive state colors to use proper semantic slots
+- Dialog: allow values in dialogContentProps to override all default values
+- GroupedList: Role of groupedList changed from "grid" to "group"
+
+## 4.13.0
+Thu, 29 Jun 2017 20:48:31 GMT
+
+### Minor changes
+
+- Adding a new component: SwatchColorPicker
+
+### Patches
+
+- Button: Revert setting label font-weight to bold
+- Add 'event' as first param for onColumnClick handler to match the param order.
+- ComboBox: Fix a scrolling issue (#2090)
+- Dropdown/ContextualMenu: Adjust height of items to 32px
+
+## 4.12.1
+Thu, 29 Jun 2017 10:13:16 GMT
+
+### Patches
+
+- Remove beak from CommandBar's and BaseButton's contextual menu
+- -SpinButton: Fix crash when not providing value nor defaultValue. - SpinButton: Add initial delay of 400ms when holding the up or down arrow before spinning
+- Force resolve picker on blue or delayed response.
+- Fix: Combobox: text move its position in Edge during up/down arrow #2020: https://github.com/OfficeDev/office-ui-fabric-react/issues/2020
+- Persona: Fix orange initials rendered as green
+
+## 4.12.0
+Wed, 28 Jun 2017 10:12:04 GMT
+
+### Minor changes
+
+- Persona: Adding image alt, defaulting to empty string
+
+### Patches
+
+- Fixed focusing first item in DetailsList
+- MarqueeSelection: now with better performance in Edge.
+- Textfield: Fixed layout of underlined textfield with error
 
 ## 4.11.0
 Tue, 27 Jun 2017 01:26:31 GMT

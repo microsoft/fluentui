@@ -6,15 +6,15 @@ import {
 } from '@uifabric/styling';
 
 export interface IAnimationTileStyles {
-  root?: IStyle;
-  title?: IStyle;
-  container?: IStyle;
-  animationBox?: IStyle;
-  isLeft?: IStyle;
-  isRight?: IStyle;
-  isTop?: IStyle;
-  isBottom?: IStyle;
-  isIn?: IStyle;
+  root: IStyle;
+  title: IStyle;
+  container: IStyle;
+  animationBox: IStyle;
+  isLeft: IStyle;
+  isRight: IStyle;
+  isTop: IStyle;
+  isBottom: IStyle;
+  isIn: IStyle;
 }
 
 export function getStyles(theme: ITheme = getTheme()): IAnimationTileStyles {
