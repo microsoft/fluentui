@@ -4,7 +4,7 @@ import { IGridProps } from './Grid.Props';
 
 export class Grid extends BaseComponent<IGridProps, {}> {
 
-  private _id;
+  private _id: string;
 
   constructor(props: IGridProps) {
     super(props);

@@ -2,6 +2,31 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.13.6",
+      "tag": "@uifabric/styling_v0.13.6",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.1 <5.0.0` to `>=4.7.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.5",
+      "tag": "@uifabric/styling_v0.13.5",
+      "date": "Tue, 11 Jul 2017 10:14:04 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.13.4",
       "tag": "@uifabric/styling_v0.13.4",
       "date": "Mon, 10 Jul 2017 19:18:55 GMT",

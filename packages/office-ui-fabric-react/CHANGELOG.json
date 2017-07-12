@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.18.0",
+      "tag": "office-ui-fabric-react_v4.18.0",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Boris Emorine <boris.emorine@gmail.com>",
+            "commit": "ce314d75b908fa19e7e38fdf9c52c8312f9727c0",
+            "comment": "Fix styling issues with SplitButton. Add new split boolean property to Button."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "aa1b5ca49558b625ff73d3c4253fc13f53062365",
+            "comment": "DocumentCard: Deprecate accentColor prop, reduce thickness of divider line"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "c4bb4fb265f4c40620110700b78186311e8b8063",
+            "comment": "Enable noImplicitAny"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d95d6dd57c0c08374620d05b3a24f19f332ee2bc",
+            "comment": "MessageBar: Fixed collapsing text in multiline"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Liaoliang Ye <supersingerman@126.com>",
+            "commit": "5929d059746f0016ab140846652d760af36fdbda",
+            "comment": "Expose APIs of selectableOptions since they're required APIs for ComboBox component"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "722fb269de899788e6a5acf60f5c4f0727aaa0bc",
+            "comment": "Adding ActivityItem component."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.1 <5.0.0` to `>=4.7.2 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.5 <1.0.0` to `>=0.13.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `4.0.3` to `4.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.17.1",
       "tag": "office-ui-fabric-react_v4.17.1",
       "date": "Mon, 10 Jul 2017 19:18:55 GMT",
