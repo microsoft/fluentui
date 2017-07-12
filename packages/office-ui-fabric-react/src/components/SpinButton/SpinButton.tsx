@@ -63,7 +63,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _initialStepDelay = 400;
   private _stepDelay = 75;
   private _formattedValidUnitOptions: string[] = [];
-  private _arrowButtonStyle: React.CSSProperties = {
+  private _arrowButtonStyle = {
     icon: {
       fontSize: '6px',
     }
@@ -226,6 +226,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   /**
+   * Gets the value of the spin button.
+   */
+  public get value(): string {
+    return this.props.value === undefined ? this.state.value : this.props.value;
+  }
+
+  /**
    * Validate function to use if one is not passed in
    */
   private _defaultOnValidate = (value: string) => {
@@ -325,7 +332,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param stepFunction - function to use to step by
    */
   @autobind
-  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string) => string | void) {
+  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
     const newValue = stepFunction(this.state.value);
     if (newValue) {
       this._lastValidValue = newValue;

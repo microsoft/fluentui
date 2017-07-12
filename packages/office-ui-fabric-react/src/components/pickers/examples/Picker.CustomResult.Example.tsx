@@ -27,6 +27,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pickers';
 import './Picker.CustomResult.Example.scss';
 import { TestImages } from '../../../common/TestImages';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -291,8 +292,8 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
     documentActivityProps,
     documentTitleProps
   } = documentProps.item;
-  let actions = [];
-  documentActionsProps.actions.forEach((action) => actions.push(action));
+  let actions: IButtonProps[] = [];
+  documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
   actions.push({
     icon: 'Cancel', onClick: (ev: any) => { documentProps.onRemoveItem(); }
   });
@@ -324,7 +325,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
       <div>
         <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
         <DocumentPicker
-          onRenderSuggestionsItem={ SuggestedBigItem }
+          onRenderSuggestionsItem={ SuggestedBigItem as any }
           onResolveSuggestions={ this._onFilterChanged }
           onRenderItem={ SelectedDocumentItem }
           getTextFromItem={ (props: any) => props.documentTitleProps.title }

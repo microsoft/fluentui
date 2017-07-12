@@ -19,7 +19,7 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
         items={ [
           {
             key: 'search',
-            'onRender': (item) => {
+            onRender: (item: any) => {
               return (
                 <SearchBox
                   labelText='Search'

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removed ARIA disabled from button, as already handled by button HTML attribute",
+      "comment": "List: Only draw a single window when receiving new items",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "ankhokha@microsoft.com"
+  "email": "cschleid@microsoft.com"
 }
