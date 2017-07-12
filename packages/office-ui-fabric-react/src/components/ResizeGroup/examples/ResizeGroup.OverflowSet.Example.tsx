@@ -32,7 +32,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
     dataItems.push(item);
   }
 
-  let result = {
+  let result: IOverflowData = {
     primary: dataItems,
     overflow: [] as any[]
   };

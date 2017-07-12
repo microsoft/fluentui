@@ -17,6 +17,7 @@ import {
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { IListProps } from '../List/index';
 
 export { IDetailsHeaderProps };
 
@@ -41,6 +42,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** The items to render. */
   items: any[];
+
+  /** Optional properties to pass through to the list components being rendered. */
+  listProps?: IListProps;
 
   /**
    * Optional default focused index to set focus to once the items have rendered and the index exists.
