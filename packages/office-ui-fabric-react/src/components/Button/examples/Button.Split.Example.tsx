@@ -13,7 +13,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div>
-        <Label>Split button</Label>
         <DefaultButton
           data-automation-id='test'
           disabled={ disabled }

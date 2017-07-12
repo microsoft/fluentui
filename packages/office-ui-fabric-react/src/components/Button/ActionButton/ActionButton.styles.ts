@@ -33,6 +33,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
+<<<<<<< HEAD
       color: theme.palette.themeDarker
     },
 
@@ -40,17 +41,45 @@ export const getStyles = memoizeFunction((
       color: theme.palette.themePrimary
     },
 
+=======
+      color: theme.palette.themePrimary,
+      icon: {
+        color: theme.palette.themePrimary
+      }
+    },
+
+    iconHovered: {
+      color: theme.palette.themePrimary
+    },
+
+    rootPressed: {
+      color: theme.palette.black,
+    },
+
+    iconPressed: {
+      color: theme.palette.themeDarker
+    },
+
+>>>>>>> commandbutton-to-actionbutton
     rootDisabled: {
       color: theme.palette.neutralTertiary,
       backgroundColor: 'transparent'
     },
 
     rootChecked: {
+<<<<<<< HEAD
       backgroundColor: theme.palette.neutralTertiaryAlt,
 
       ':hover': {
         backgroundColor: theme.palette.neutralLight
       }
+=======
+      color: theme.palette.black,
+    },
+
+    iconChecked: {
+      color: theme.palette.themeDarker
+>>>>>>> commandbutton-to-actionbutton
     },
 
     flexContainer: {
@@ -58,7 +87,11 @@ export const getStyles = memoizeFunction((
     },
 
     icon: {
+<<<<<<< HEAD
       color: theme.palette.themePrimary
+=======
+      color: theme.palette.themeDarkAlt
+>>>>>>> commandbutton-to-actionbutton
     },
 
     iconDisabled: {

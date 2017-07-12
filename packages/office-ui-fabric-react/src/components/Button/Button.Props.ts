@@ -249,6 +249,16 @@ export interface IButtonStyles {
   icon?: IStyle;
 
   /**
+   * Style for the icon on the near side of the label on hover.
+   */
+  iconHovered?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label when pressed.
+   */
+  iconPressed?: IStyle;
+
+  /**
    * Style override for the icon when the button is disabled.
    */
   iconDisabled?: IStyle;

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "CommandButton: Converted this button to ActionButton and created new CommandButton for CommandBar",
+      "type": "major"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "micahgodbolt@gmail.com"
+}
