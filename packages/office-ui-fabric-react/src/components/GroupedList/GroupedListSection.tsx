@@ -38,6 +38,11 @@ import * as stylesImport from './GroupedList.scss';
 const styles: any = stylesImport;
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 

@@ -41,7 +41,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IGroupedList) => void;
+  componentRef?: (component?: IGroupedList) => void;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -158,6 +158,7 @@ export interface IGroup {
 }
 
 export interface IGroupRenderProps {
+
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -191,6 +192,9 @@ export interface IGroupRenderProps {
 }
 
 export interface IGroupDividerProps {
+
+  componentRef?: () => void;
+
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
 

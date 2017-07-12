@@ -65,6 +65,11 @@ export enum DocumentCardType {
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {
   /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
+  /**
    * One or more preview images to display.
    */
   previewImages: IDocumentCardPreviewImage[];
@@ -77,6 +82,11 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
 }
 
 export interface IDocumentCardPreviewImage {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /**
    * File name for the document this preview represents.
    */
@@ -130,6 +140,11 @@ export interface IDocumentCardPreviewImage {
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
   /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
+  /**
    * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string. For example, a collection of four documents would have a string of "Document.docx +3".
    */
   title: string;
@@ -142,6 +157,11 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
 }
 
 export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /**
    * Text for the location of the document.
    */
@@ -164,6 +184,11 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
 }
 
 export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /**
    * Describes the activity that has taken place, such as "Created Feb 23, 2016".
    */
@@ -199,6 +224,11 @@ export interface IDocumentCardActivityPerson {
 }
 
 export interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /**
    * The actions available for this document.
    */

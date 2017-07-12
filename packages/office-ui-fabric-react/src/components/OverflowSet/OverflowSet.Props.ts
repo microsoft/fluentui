@@ -3,7 +3,13 @@ import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
 import { IObjectWithKey } from '../../Selection';
 
+export interface IOverflowSet { }
+
 export interface IOverflowSetProps extends React.Props<OverflowSet> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: (ref?: IOverflowSet) => void;
 
   /**
    * An array of items to be rendered by your onRenderItem function in the primary content area
