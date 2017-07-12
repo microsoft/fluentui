@@ -38,7 +38,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         overview={
           <div>
             <p>
-              @TODO Add ScrollablePane Description
+              ScrollablePane is a helper component designed to use in conjunction with a Sticky component.  ScrollablePane will find the nearest scrollable parent element, and designate that as the container for Sticky components.  Sticky components will "stick" to the top or bottom of a ScrollablePane's scrollable region and remain visible.
             </p>
           </div>
         }

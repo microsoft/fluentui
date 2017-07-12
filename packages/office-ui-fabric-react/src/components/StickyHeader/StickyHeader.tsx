@@ -15,8 +15,10 @@ import * as stylesImport from './StickyHeader.scss';
 const styles: any = stylesImport;
 
 export interface IStickyHeaderState {
-  isSticky: boolean;
+  isStickyTop: boolean;
+  isStickyBottom: boolean;
   topDistance?: number;
+  bottomDistance?: number;
 }
 
 export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeaderState> {
@@ -24,6 +26,7 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     addStickyHeader: PropTypes.func,
     removeStickyHeader: PropTypes.func,
     addStickyFooter: PropTypes.func,
+    removeStickyFooter: PropTypes.func,
     subscribe: PropTypes.func
   };
 
@@ -37,15 +40,18 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     subscribe: (handler: Function) => void;
     addStickyHeader: (sticky: StickyHeader) => void;
     removeStickyHeader: (sticky: StickyHeader) => void;
-    addStickyFooter: Function;
+    addStickyFooter: (sticky: StickyHeader) => void;
+    removeStickyFooter: (sticky: StickyHeader) => void;
   };
 
   private _offsetTop: number;
+  private _offsetBottom: number;
 
   constructor(props: IStickyHeaderProps) {
     super(props);
     this.state = {
-      isSticky: false
+      isStickyTop: false,
+      isStickyBottom: false
     };
   }
 
@@ -58,24 +64,42 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
   }
 
   @autobind
-  public handleScrollEvent(topScrollBound: number, topHeaderHeight: number, offsetTop: number) {
+  public handleScrollEvent(
+    topScrollBound: number,
+    topHeaderHeight: number,
+    offsetTop: number,
+    bottomScrollBound: number,
+    bottomFooterHeight: number,
+    offsetBottom: number
+    ) {
     const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
-    const distanceFromSticky = rootBounds.top - topScrollBound;
+    const distanceFromStickyTop = rootBounds.top - topScrollBound;
+    const distanceFromStickyBottom = rootBounds.bottom - bottomScrollBound;
     const topHeight = this.state.topDistance !== undefined ? this.state.topDistance : topHeaderHeight;
-    const isSticky = distanceFromSticky <= topHeight;
-    this._offsetTop = offsetTop;
+    const bottomHeight = this.state.bottomDistance !== undefined ? this.state.bottomDistance : bottomFooterHeight;
 
-    if (isSticky !== this.state.isSticky) {
+    const setStickyTop = distanceFromStickyTop <= topHeight;
+    const setStickyBottom = distanceFromStickyBottom >= -bottomHeight;
+    this._offsetTop = offsetTop;
+    this._offsetBottom = offsetBottom;
+    if (setStickyTop !== this.state.isStickyTop || setStickyBottom !== this.state.isStickyBottom) {
       this.setState({
-        isSticky: isSticky
+        isStickyTop: setStickyTop,
+        isStickyBottom: setStickyBottom
       }, () => {
-        if (isSticky) {
+        if (setStickyTop) {
           this.context.addStickyHeader(this);
         } else {
           this.context.removeStickyHeader(this);
         }
+        if (setStickyBottom) {
+          this.context.addStickyFooter(this);
+        } else {
+          this.context.removeStickyFooter(this);
+        }
       });
     }
+
   }
 
   public setTopDistance(distance: number) {
@@ -84,18 +108,28 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
     });
   }
 
-  public render() {
-    const { isSticky, topDistance } = this.state;
-    const { stickyClassName } = this.props;
+  public setBottomDistance(distance: number) {
+    this.setState({
+      bottomDistance: distance
+    });
+  }
 
-    const style = isSticky ?
-      {
-        top: `${this._offsetTop + topDistance}px`,
+  public render() {
+    const { isStickyTop, isStickyBottom, topDistance, bottomDistance } = this.state;
+    const { stickyClassName } = this.props;
+    let style;
+    if (isStickyTop || isStickyBottom) {
+      const top = isStickyTop ?
+        this._offsetTop + topDistance :
+        this._offsetBottom - this.refs.root.clientHeight - bottomDistance;
+      style = {
+        top: `${top}px`,
         width: `${this.refs.root.clientWidth}px`,
         background: this._getBackground()
-      } : {};
+      };
+    }
 
-    const placeholderStyle = isSticky ?
+    const placeholderStyle = isStickyTop || isStickyBottom ?
       {
         paddingBottom: `${this.refs.sticky.clientHeight}px`
       } : {};
@@ -104,8 +138,8 @@ export class StickyHeader extends BaseComponent<IStickyHeaderProps, IStickyHeade
       <div ref='root'>
         <div ref='placeholder' style={ placeholderStyle } />
         <div ref='sticky' className={ css({
-          [styles.isSticky]: isSticky,
-          [stickyClassName]: isSticky
+          [styles.isSticky]: isStickyTop || isStickyBottom,
+          [stickyClassName]: isStickyTop || isStickyBottom
         }) } style={ style }>
           { this.props.children }
         </div>

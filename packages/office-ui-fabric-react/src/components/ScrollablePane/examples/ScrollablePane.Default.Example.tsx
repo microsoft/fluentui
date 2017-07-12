@@ -13,7 +13,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   public render() {
     let contentAreas: JSX.Element[] = [];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 4; i++) {
       contentAreas.push(this._createContentArea(i));
     }
 
@@ -38,15 +38,19 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
   private _createContentArea(index) {
     return (
       <div key={ index }>
+        <div className='content'>
+          BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE
+          BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE
+        </div>
         <StickyHeader stickyClassName='stickySmall'>
           <div className='sticky'>
             THIS IS WRAPPED IN STICKY { index }
           </div>
         </StickyHeader>
         <div className='content'>
-          THIS IS THE CONTEXT AREA FOR scrollable pane default example lorem ipsum blah blha blah
-          THIS IS THE CONTEXT AREA FOR scrollable pane default example lorem ipsum blah blha blah
-          </div>
+          AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER
+          AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER
+        </div>
       </div>
     );
   }
