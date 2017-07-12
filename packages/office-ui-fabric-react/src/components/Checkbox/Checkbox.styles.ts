@@ -72,6 +72,7 @@ export const getStyles = memoizeFunction((
       borderStyle: 'solid',
       borderColor: checkboxBorderColor,
       boxSizing: 'border-box',
+      background: 'none',
       transitionProperty: 'background, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
@@ -84,34 +85,18 @@ export const getStyles = memoizeFunction((
     },
     checkboxChecked: {
       background: checkboxCheckedBackground,
-      borderWidth: '0',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderWidth: '1px',
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderWidth: '1px',
-      },
+      borderColor: 'transparent',
     },
     checkboxCheckedHovered: {
       background: checkboxCheckedHoveredBackground,
     },
     checkboxDisabled: {
       background: checkboxDisabledBackground,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderColor: palette.contrastWhiteDisabled,
-      },
+      borderColor: 'transparent',
     },
     checkboxCheckedDisabled: {
       background: checkboxDisabledBackground,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderColor: palette.contrastWhiteDisabled,
-      },
+      borderColor: 'transparent',
     },
     checkmark: {
       opacity: '0',
@@ -130,6 +115,7 @@ export const getStyles = memoizeFunction((
       },
     },
     checkmarkCheckedDisabled: {
+      opacity: '1',
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: palette.contrastBlackDisabled,
       },
