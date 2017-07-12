@@ -58,9 +58,9 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
       this._events.on(window, 'resize', () => {
+        this._notifySubscribers();
         this._notifyHeaders();
         this._notifyFooters();
-        this._notifySubscribers();
       });
       this._notifySubscribers();
     }
