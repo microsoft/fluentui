@@ -81,62 +81,31 @@ export const getStyles = memoizeFunction((
 
       /* incase the icon is bigger than the box */
       overflow: 'hidden',
-
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: palette.contrastBlackSelected,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderColor: palette.contrastWhiteSelected,
-      },
     },
     checkboxHovered: {
       borderColor: checkboxHoveredBorderColor,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: palette.contrastWhiteDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderColor: palette.contrastBlackDisabled,
-      },
     },
     checkboxChecked: {
       background: checkboxCheckedBackground,
       borderWidth: '0',
       [MS_HIGHCONTRAST_ACTIVE]: {
         borderWidth: '1px',
-        borderColor: palette.contrastWhiteSelected,
-        backgroundColor: palette.contrastWhiteSelected,
       },
       [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
         borderWidth: '1px',
-        borderColor: palette.contrastBlackSelected,
-        backgroundColor: palette.contrastBlackSelected,
       },
-
     },
     checkboxCheckedHovered: {
       background: checkboxCheckedHoveredBackground,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: palette.contrastWhiteDisabled,
-        backgroundColor: palette.contrastWhiteDisabled
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderColor: palette.contrastBlackDisabled,
-        backgroundColor: palette.contrastBlackDisabled
-      },
     },
     checkboxDisabled: {
       background: checkboxDisabledBackground,
       [MS_HIGHCONTRAST_ACTIVE]: {
         borderColor: palette.contrastBlackDisabled,
-        backgroundColor: palette.contrastBlackDisabled
       },
       [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
         borderColor: palette.contrastWhiteDisabled,
-        backgroundColor: palette.contrastWhiteDisabled
       },
-    },
-    checkboxCheckedDisabled: {
-      background: checkboxDisabledBackground
     },
     checkmark: {
       opacity: '0',

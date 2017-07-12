@@ -224,11 +224,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       checkbox: mergeStyles(
         'ms-Checkbox-checkbox',
         styles.checkbox,
-        !disabled && isChecked && styles.checkboxChecked,
-        disabled && [
-          !isChecked && styles.checkboxDisabled,
-          isChecked && styles.checkboxCheckedDisabled
-        ]
+        disabled && styles.checkboxDisabled,
+        isChecked && styles.checkboxChecked,
       ) as string,
 
       checkmark: mergeStyles(
