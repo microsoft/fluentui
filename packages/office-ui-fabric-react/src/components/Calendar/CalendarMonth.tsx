@@ -23,6 +23,11 @@ export interface ICalendarMonthProps {
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _selectMonthCallbacks: (() => void)[];
 
+  public refs: {
+    [key: string]: React.ReactInstance;
+    navigatedMonth: HTMLElement;
+  };
+
   public constructor(props: ICalendarMonthProps) {
     super(props);
 
@@ -86,6 +91,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 onClick={ this._selectMonthCallbacks[index] }
                 aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                 data-is-focusable={ true }
+                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : null }
               >
                 { month }
               </span>
@@ -94,6 +100,13 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         </FocusZone>
       </div>
     );
+  }
+
+  public focus() {
+    if (this.refs.navigatedMonth) {
+      this.refs.navigatedMonth.tabIndex = 0;
+      this.refs.navigatedMonth.focus();
+    }
   }
 
   private isCurrentMonth(month: number, year: number, today: Date) {
