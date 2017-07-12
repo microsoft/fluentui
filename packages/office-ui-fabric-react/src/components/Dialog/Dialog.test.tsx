@@ -19,7 +19,7 @@ describe('Dialog', () => {
     setWarningCallback(message => null);
   });
   afterEach(() => {
-    [].forEach.call(document.querySelectorAll('body > div'), div => div.parentNode.removeChild(div));
+    [].forEach.call(document.querySelectorAll('body > div'), (div: any) => div.parentNode.removeChild(div));
 
     expect(document.querySelector('.ms-Dialog')).to.be.null;
   });

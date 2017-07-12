@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove unnecessary line height",
+      "comment": "List: Only draw a single window when receiving new items",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "maricha@microsoft.com"
+  "email": "cschleid@microsoft.com"
 }

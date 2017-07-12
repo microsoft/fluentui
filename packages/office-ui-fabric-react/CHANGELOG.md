@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Jul 2017 10:22:21 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+
+## 4.18.0
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Minor changes
+
+- Expose APIs of selectableOptions since they're required APIs for ComboBox component
+- Adding ActivityItem component.
+
+### Patches
+
+- Fix styling issues with SplitButton. Add new split boolean property to Button.
+- Fixing typings for TypeScript 2.4.1 compatibility.
+- DocumentCard: Deprecate accentColor prop, reduce thickness of divider line
+- Enable noImplicitAny
+- MessageBar: Fixed collapsing text in multiline
+
+## 4.17.1
+Mon, 10 Jul 2017 19:18:55 GMT
+
+### Patches
+
+- Checkbox: reverting global class names to use ms-Checkbox-* prefixed values.
+- Remove unnecessary line height
+- Removed ARIA disabled from button, as already handled by button HTML attribute
 
 ## 4.17.0
 Mon, 10 Jul 2017 10:22:21 GMT

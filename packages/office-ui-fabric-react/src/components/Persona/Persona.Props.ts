@@ -128,7 +128,8 @@ export enum PersonaSize {
   regular = 4,
   large = 5,
   extraLarge = 6,
-  size28 = 7
+  size28 = 7,
+  size16 = 8
 }
 
 export enum PersonaPresence {

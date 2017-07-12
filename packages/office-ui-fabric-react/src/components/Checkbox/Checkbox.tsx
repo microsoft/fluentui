@@ -91,8 +91,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           aria-checked={ isChecked }
         />
         <label className={ css('ms-Checkbox-label', styles.label) } htmlFor={ this._id }>
-          <span className={ css('box', styles.box) }>
-            <span className={ css('checkbox', styles.checkbox) }>
+          <span className={ css('ms-Checkbox-box', styles.box) }>
+            <span className={ css('ms-Checkbox-checkbox', styles.checkbox) }>
               <Icon iconName='CheckMark' className={ styles.checkmark } />
             </span>
           </span>

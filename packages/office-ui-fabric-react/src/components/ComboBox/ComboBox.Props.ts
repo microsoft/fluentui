@@ -4,10 +4,13 @@ import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/
 
 export interface IComboBox {
   /**
- * Sets focus to the input in the comboBox
- * @returns True if focus could be set, false if no operation was taken.
- */
+   * Sets focus to the input in the comboBox
+   * @returns True if focus could be set, false if no operation was taken.
+   */
   focus(): boolean;
+}
+
+export interface IComboBoxOption extends ISelectableOption {
 }
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
@@ -20,7 +23,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Collection of options for this ComboBox
    */
-  options?: ISelectableOption[];
+  options?: IComboBoxOption[];
 
   /**
    * Callback issues when either:
@@ -28,13 +31,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
-  onChanged?: (option?: ISelectableOption, index?: number, value?: string) => void;
+  onChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
    * Callback issued when the options should be resolved, if they have been updated or
    * if they need to be passed in the first time
    */
-  onResolveOptions?: (options: ISelectableOption[]) => ISelectableOption[] | PromiseLike<ISelectableOption[]>;
+  onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
    * Whether the ComboBox is free form, meaning that the user input is not bound to provided items. Defaults to false.
