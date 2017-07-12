@@ -51,7 +51,7 @@ export interface IDetailsListDocumentsExampleState {
 }
 
 export interface IDocument {
-  key: number;
+  [key: string]: any;
   name: string;
   value: string;
   iconName: string;
@@ -79,7 +79,6 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
         userName = userName.split(' ').map((name: string) => name.charAt(0).toUpperCase() + name.slice(1)).join(' ');
         _items.push({
-          key: i,
           name: fileName,
           value: fileName,
           iconName: randomFileType.url,
