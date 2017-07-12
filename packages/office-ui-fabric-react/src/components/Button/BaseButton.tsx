@@ -345,9 +345,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   @autobind
   private _onToggleMenu(): void {
-    const { menuProps, onMenuToggled = () => null } = this.props;
+    const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
-    onMenuToggled(currentMenuProps ? null : this.props);
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
