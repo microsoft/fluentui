@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { registerLanguage } from 'highlight.js';
+import { registerLanguage, highlightBlock } from 'highlight.js';
 import * as javascript from 'highlight.js/lib/languages/javascript';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -30,6 +30,6 @@ export class Highlight extends BaseComponent<IHighlightProps, {}> {
   }
 
   public componentDidMount() {
-    hljs.highlightBlock(this._codeElement);
+    highlightBlock(this._codeElement);
   }
 }
