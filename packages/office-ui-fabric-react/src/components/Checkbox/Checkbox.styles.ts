@@ -4,7 +4,7 @@ import {
   mergeStyleSets,
   IProcessedStyle,
   mergeStyles,
-  getFocusStyle,
+  getFocusStyleBasedOnAncestorClass,
   parent
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
@@ -37,7 +37,7 @@ export const getStyles = memoizeFunction((
 
     },
     label: [
-      getCheckboxFocusStyle(theme),
+      getFocusStyleBasedOnAncestorClass(theme, '.ms-Fabric.is-focusVisible .is-inFocus'),
       {
         display: 'flex',
         alignItems: 'center',
@@ -117,26 +117,3 @@ export const getStyles = memoizeFunction((
 
   return mergeStyleSets(styles, customStyles);
 });
-
-function getCheckboxFocusStyle(
-  theme: ITheme,
-  color: string | undefined = theme.palette.neutralSecondary,
-): IProcessedStyle {
-  let padding = '0';
-  return mergeStyles(
-    parent('.ms-Fabric.is-focusVisible .is-inFocus', {
-      outline: 'transparent',
-      ':after': {
-        content: '""',
-        position: 'absolute',
-        top: padding,
-        right: padding,
-        bottom: padding,
-        left: padding,
-        margin: '0 4px',
-        border: '1px solid ' + color,
-        pointerEvents: 'none'
-      }
-    })
-  );
-}

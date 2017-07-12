@@ -36,3 +36,28 @@ export function getFocusStyle(
     })
   );
 }
+
+export function getFocusStyleBasedOnAncestorClass(
+  theme: ITheme,
+  ancestorSelectorName: string = '.ms-Fabric.is-focusVisible .is-inFocus',
+  inset: string = '0',
+  color: string | undefined = theme.palette.neutralSecondary,
+): IProcessedStyle {
+  let padding = '0';
+  return mergeStyles(
+    parent(ancestorSelectorName, {
+      outline: 'transparent',
+      ':after': {
+        content: '""',
+        position: 'absolute',
+        top: padding,
+        right: padding,
+        bottom: padding,
+        left: padding,
+        margin: '0 4px',
+        border: '1px solid ' + color,
+        pointerEvents: 'none'
+      }
+    })
+  );
+}
