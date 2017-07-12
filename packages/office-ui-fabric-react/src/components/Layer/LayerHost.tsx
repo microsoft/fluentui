@@ -6,8 +6,9 @@ import {
 import {
   Layer
 } from './Layer';
+import { ILayerHostProps } from './LayerHost.Props';
 
-export class LayerHost extends BaseComponent<React.HTMLAttributes<HTMLElement>, {}> {
+export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
 
   public shouldComponentUpdate() {
     return false;

@@ -14,7 +14,8 @@ export const getStyles = memoizeFunction((
 ): ISplitButtonStyles => {
   let iconButtonStyles: ISplitButtonStyles = {
     splitButtonContainer: {
-      position: 'absolute',
+      position: 'relative',
+      display: 'inline-block',
       border: '1px solid transparent',
       ':hover': {
         border: '1px solid',
@@ -34,9 +35,10 @@ export const getStyles = memoizeFunction((
     splitButtonMenuButton: {
       backgroundColor: theme.palette.neutralLighter,
       padding: '6px',
+      height: 'auto',
       ':hover': {
         backgroundColor: theme.palette.neutralLight
-      }
+      },
     },
 
     splitButtonMenuButtonDisabled: {

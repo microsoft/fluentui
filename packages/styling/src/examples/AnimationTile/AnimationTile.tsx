@@ -8,6 +8,7 @@ import {
 import { IAnimationTileStyles, getStyles } from './AnimationTile.styles';
 
 export interface IAnimationTileProps {
+  componentRef?: () => void;
   name: string;
 }
 
