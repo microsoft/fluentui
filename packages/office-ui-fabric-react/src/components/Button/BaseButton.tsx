@@ -14,6 +14,7 @@ import {
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
 import { IButtonProps, IButton } from './Button.Props';
 import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
@@ -65,7 +66,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName: 'menuIconProps',
       toggled: 'checked'
     });
-
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
@@ -83,18 +83,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       href,
       iconProps,
+      menuIconProps,
       styles,
       checked,
       variantClassName
          } = this.props;
+
+    let { menuProps } = this.state;
 
     this._classNames = getClassNames(
       styles,
       className,
       variantClassName,
       iconProps && iconProps.className,
+      menuIconProps && menuIconProps.className,
       disabled,
-      checked
+      checked,
+      menuProps !== null ? true : false
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -188,7 +193,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       tag,
       buttonProps,
       React.createElement(
-        'div',
+        'div' as any,
         { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
         onRenderText(props, this._onRenderText),
@@ -315,7 +320,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={ this._classNames.icon }
+          className={ this._classNames.menuIcon }
         />
         :
         null
@@ -333,6 +338,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
+        calloutProps={ { linkType: CalloutLinkType.attached } }
       />
     );
   }
@@ -341,7 +347,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
-
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 

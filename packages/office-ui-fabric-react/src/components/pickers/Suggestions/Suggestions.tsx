@@ -4,7 +4,7 @@ import {
   css,
   assign
 } from '../../../Utilities';
-import { CommandButton, IconButton, IButton } from '../../../Button';
+import { ActionButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import * as stylesImport from './Suggestions.scss';
@@ -33,12 +33,12 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
           className
         ) }
       >
-        <CommandButton
+        <ActionButton
           onClick={ onClick }
           className={ css('ms-Suggestions-itemButton', styles.itemButton) }
         >
           { RenderSuggestion(suggestionModel.item, this.props) }
-        </CommandButton>
+        </ActionButton>
         { this.props.showRemoveButton ? (
           <IconButton
             iconProps={ { iconName: 'Cancel' } }
@@ -118,14 +118,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable && (
-          <CommandButton
+          <ActionButton
             componentRef={ this._resolveRef('_searchForMoreButton') }
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults.bind(this) }
           >
             { searchForMoreText }
-          </CommandButton>
+          </ActionButton>
         ) }
         { isSearching ?
           (<Spinner

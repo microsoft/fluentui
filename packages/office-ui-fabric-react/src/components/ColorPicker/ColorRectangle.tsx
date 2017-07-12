@@ -16,6 +16,7 @@ import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 
 export interface IColorRectangleProps {
+  componentRef?: () => void;
   color: IColor;
   minSize?: number;
 

@@ -56,11 +56,15 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           offText='Hidden' />
         <CommandBar
           isSearchBoxVisible={ searchBoxVisible }
-          searchPlaceholderText='Search...'
+          searchPlaceholderText='Search'
           elipisisAriaLabel='More options'
           items={ filteredItems }
           overflowItems={ filteredOverflowItems }
           farItems={ filteredFarItems }
+          searchBoxProps={ {
+            onChange: (newValue) => console.log('SearchBox onChange fired: ' + newValue),
+            onSearch: (newValue) => console.log('SearchBox onSearch fired: ' + newValue)
+          } }
         />
       </div>
     );

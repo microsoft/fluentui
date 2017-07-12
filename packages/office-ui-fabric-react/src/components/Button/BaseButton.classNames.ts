@@ -17,8 +17,10 @@ export const getClassNames = memoizeFunction((
   className: string,
   variantClassName: string,
   iconClassName: string,
+  menuIconClassName: string,
   disabled: boolean,
-  checked: boolean
+  checked: boolean,
+  pressed: boolean
 ): IButtonClassNames => {
   return {
     root: mergeStyles(
@@ -30,20 +32,26 @@ export const getClassNames = memoizeFunction((
         'is-checked',
         styles.rootChecked
       ],
+      pressed && [
+        'is-pressed',
+        styles.rootPressed
+      ],
       disabled && [
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && {
+      !disabled && !pressed && {
         ':hover': styles.rootHovered,
         ':hover .ms-Button-description': styles.descriptionHovered,
+        ':hover .ms-Button-icon': styles.iconHovered,
         ':active': styles.rootPressed,
+        ':active .ms-Button-icon': styles.iconPressed,
         ':active .ms-Button-description': styles.descriptionPressed
       },
       disabled && checked && [
         styles.rootCheckedDisabled
       ],
-      !disabled && checked && {
+      !disabled && !pressed && checked && {
         ':hover': styles.rootCheckedHovered,
         ':active': styles.rootCheckedPressed
       }
@@ -71,6 +79,7 @@ export const getClassNames = memoizeFunction((
 
     menuIcon: mergeStyles(
       'ms-Button-menuIcon',
+      menuIconClassName,
       styles.menuIcon,
       checked && styles.menuIconChecked,
       disabled && styles.menuIconDisabled

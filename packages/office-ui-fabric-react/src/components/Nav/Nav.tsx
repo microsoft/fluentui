@@ -5,7 +5,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandButton } from '../../Button';
+import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
@@ -120,7 +120,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   private _renderButtonLink(link: INavLink, linkIndex: number) {
     return (
-      <CommandButton
+      <ActionButton
         className={ css('ms-Nav-link ms-Nav-linkButton', styles.link, {
           'isOnExpanded': this._hasExpandButton,
           [styles.linkIsOnExpanded]: this._hasExpandButton
@@ -130,7 +130,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
         { link.name }
-      </CommandButton>);
+      </ActionButton>);
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {

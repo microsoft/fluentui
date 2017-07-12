@@ -7,7 +7,6 @@ import { getStyles } from './CommandButton.styles';
 
 @customizable([ThemeSettingName])
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
-
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
