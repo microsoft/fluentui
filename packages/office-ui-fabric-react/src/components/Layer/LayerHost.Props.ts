@@ -14,5 +14,5 @@ export interface ILayerHostProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Defines the id for the layer host that Layers can target (using the hostId property.)
    */
-  id: string;
+  id?: string;
 }

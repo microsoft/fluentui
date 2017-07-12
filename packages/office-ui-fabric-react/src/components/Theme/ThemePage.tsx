@@ -25,7 +25,7 @@ export class ThemePage extends React.Component<any, any> {
       colors: Object.keys(defaultTheme).map(variableName => ({
         key: variableName,
         name: variableName,
-        value: defaultTheme[variableName],
+        value: (defaultTheme as any)[variableName],
         description: '',
         colorPickerProps: null
       }))
@@ -122,7 +122,7 @@ export class ThemePage extends React.Component<any, any> {
     for (let i = 0; i < colors.length; i++) {
       let themeColor = colors[i];
 
-      palette[themeColor.key] = themeColor.value;
+      (palette as any)[themeColor.key] = themeColor.value;
     }
 
     loadTheme({ palette });

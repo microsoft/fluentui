@@ -73,11 +73,11 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
     this._isMounted = false;
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IConnectedHostProps) {
     this._updateProps(newProps);
   }
 
-  public shouldComponentUpdate(newProps: IConnectedHostProps, newState) {
+  public shouldComponentUpdate(newProps: IConnectedHostProps, newState: IConnectedHostState) {
     let inputPropsHaveChanged = !shallowCompare(this.props.componentProps, newProps.componentProps);
     let computedPropsHaveChanged = !shallowCompare(this.state.props, newState.props);
     let shouldUpdate = inputPropsHaveChanged || computedPropsHaveChanged;
