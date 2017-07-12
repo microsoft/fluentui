@@ -23,8 +23,8 @@ export interface IStickyState {
 
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public static contextTypes = {
-    addSticky: PropTypes.func,
-    removeSticky: PropTypes.func,
+    addStickyHeader: PropTypes.func,
+    removeStickyHeader: PropTypes.func,
     addStickyFooter: PropTypes.func,
     removeStickyFooter: PropTypes.func,
     subscribe: PropTypes.func
@@ -38,8 +38,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public context: {
     subscribe: (handler: Function) => void;
-    addSticky: (sticky: Sticky) => void;
-    removeSticky: (sticky: Sticky) => void;
+    addStickyHeader: (sticky: Sticky) => void;
+    removeStickyHeader: (sticky: Sticky) => void;
     addStickyFooter: (sticky: Sticky) => void;
     removeStickyFooter: (sticky: Sticky) => void;
   };
@@ -88,9 +88,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         isStickyBottom: setStickyBottom
       }, () => {
         if (setStickyTop) {
-          this.context.addSticky(this);
+          this.context.addStickyHeader(this);
         } else {
-          this.context.removeSticky(this);
+          this.context.removeStickyHeader(this);
         }
         if (setStickyBottom) {
           this.context.addStickyFooter(this);

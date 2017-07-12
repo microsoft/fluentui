@@ -17,8 +17,8 @@ const styles: any = stylesImport;
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public static childContextTypes = {
     subscribe: PropTypes.func,
-    addSticky: PropTypes.func,
-    removeSticky: PropTypes.func,
+    addStickyHeader: PropTypes.func,
+    removeStickyHeader: PropTypes.func,
     addStickyFooter: PropTypes.func,
     removeStickyFooter: PropTypes.func
   };
@@ -37,8 +37,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public getChildContext() {
     return {
       subscribe: this.subscribe,
-      addSticky: this.addSticky,
-      removeSticky: this.removeSticky,
+      addStickyHeader: this.addStickyHeader,
+      removeStickyHeader: this.removeStickyHeader,
       addStickyFooter: this.addStickyFooter,
       removeStickyFooter: this.removeStickyFooter,
     };
@@ -88,7 +88,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   @autobind
-  public addSticky(sticky: Sticky) {
+  public addStickyHeader(sticky: Sticky) {
     if (this._stickyAbove.indexOf(sticky) < 0) {
       this._stickyAbove.push(sticky);
       this._notifyHeaders();
@@ -96,7 +96,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   @autobind
-  public removeSticky(sticky: Sticky) {
+  public removeStickyHeader(sticky: Sticky) {
     const indexOfHeader = this._stickyAbove.indexOf(sticky);
     if (indexOfHeader >= 0) {
       this._stickyAbove.splice(indexOfHeader, 1);
