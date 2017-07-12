@@ -24,7 +24,7 @@ import {
 } from 'office-ui-fabric-react/lib/StickyHeader';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
-let _items = [];
+let _items: any[] = [];
 
 let _columns: IColumn[] = [
   {

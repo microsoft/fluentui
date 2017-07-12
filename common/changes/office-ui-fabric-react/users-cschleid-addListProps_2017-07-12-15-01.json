@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Expose APIs of selectableOptions since they're required APIs for ComboBox component",
+      "comment": "DetailsList: Allow passing props to underlying List",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "liaye@microsoft.com"
+  "email": "cschleid@microsoft.com"
 }

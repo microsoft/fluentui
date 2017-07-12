@@ -193,7 +193,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: DirectionalHint[option.key]
+      directionalHint: (DirectionalHint as any)[option.key]
     });
   }
 

@@ -37,7 +37,7 @@ import {
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { GroupedList } from '../../GroupedList';
-import { List } from '../../List';
+import { List, IListProps } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 
 const styles: any = stylesImport;
@@ -214,7 +214,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       rowElementEventMap,
       shouldApplyApplicationRole = false,
       getKey,
-      lockedHeader
+      lockedHeader,
+      listProps
     } = this.props;
     let {
       adjustedColumns,
@@ -228,10 +229,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       _dragDropHelper: dragDropHelper
     } = this;
     let groupNestingDepth = this._getGroupNestingDepth();
-    let additionalListProps = {
+    const additionalListProps: IListProps = {
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
-      getKey
+      getKey,
+      ...listProps
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
     if (selectionMode === SelectionMode.single) {
