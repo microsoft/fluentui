@@ -23,11 +23,7 @@ export interface ICommandBarData {
   onReduceData: (data: ICommandBarData) => ICommandBarData;
 }
 
-<<<<<<< HEAD
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
-=======
-export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState> implements ICommandBar {
->>>>>>> 5.0
   public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: [],
@@ -130,7 +126,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       };
     }
 
-<<<<<<< HEAD
     return undefined;
   }
 
@@ -143,49 +138,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         className={ css(styles.search, searchBoxProps.className) }
         labelText={ searchPlaceholderText } />
     );
-=======
-    let renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
-      renderedItems.concat(this.state.renderedFarItems),
-      renderedOverflowItems);
-
-    this.setState({
-      renderedItems: renderedItems,
-      renderedOverflowItems: renderedOverflowItems,
-      expandedMenuItemKey: renderedContextualMenuProps ? this.state.expandedMenuItemKey : null,
-      contextualMenuProps: renderedContextualMenuProps,
-      contextualMenuTarget: renderedContextualMenuProps ? this.state.contextualMenuTarget : null
-    });
-  }
-
-  private _onItemClick(ev: React.MouseEvent<HTMLButtonElement>, item: IContextualMenuItem) {
-    if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
-      this._onContextMenuDismiss();
-    } else {
-      this.setState({
-        expandedMenuId: ev.currentTarget.id,
-        expandedMenuItemKey: item.key,
-        contextualMenuProps: this._getContextualMenuPropsFromItem(item),
-        contextualMenuTarget: ev.currentTarget
-      });
-    }
-    if (item.onClick) {
-      item.onClick(ev, item);
-    }
-  }
-
-  @autobind
-  private _onOverflowClick(ev: React.MouseEvent<HTMLButtonElement>) {
-    if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
-      this._onContextMenuDismiss();
-    } else {
-      this.setState({
-        expandedMenuId: ev.currentTarget.id,
-        expandedMenuItemKey: OVERFLOW_KEY,
-        contextualMenuProps: { items: this.state.renderedOverflowItems },
-        contextualMenuTarget: ev.currentTarget
-      });
-    }
->>>>>>> 5.0
   }
 
   @autobind
@@ -193,45 +145,12 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
     if (item.onRender) { return item.onRender(item); }
 
-<<<<<<< HEAD
     const commandButtonProps = assign({}, item, {
       styles: assign({}, item.buttonStyles, this.props.buttonStyles),
       className: css(styles.commandButton, item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,
     });
-=======
-      this.setState({
-        expandedMenuItemKey: null,
-        contextualMenuProps: null,
-        contextualMenuTarget: null
-      });
-    } else {
-      ev.stopPropagation();
-      ev.preventDefault();
-    }
-  }
-
-  private _getStateFromProps(nextProps: ICommandBarProps): ICommandBarState {
-    return {
-      renderedItems: nextProps.items || [],
-      renderedOverflowItems: null,
-      contextualMenuProps: this._getContextualMenuPropsAfterUpdate(
-        nextProps.items.concat(nextProps.farItems),
-        nextProps.overflowItems),
-      renderedFarItems: nextProps.farItems || null
-    };
-  }
-
-  private _getContextualMenuPropsAfterUpdate(renderedItems: IContextualMenuItem[], overflowItems: IContextualMenuItem[]) {
-    if (this.state && this.state.expandedMenuItemKey) {
-      if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
-        // Keep the overflow menu open
-        return { items: overflowItems };
-      } else {
-        // Find the currently open key in the new props
-        let matchingItem = renderedItems.filter(item => item.key === this.state.expandedMenuItemKey);
->>>>>>> 5.0
 
     if (item.iconOnly && item.name !== undefined) {
       return (
