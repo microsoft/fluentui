@@ -29,13 +29,13 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     );
   }
 
-  private _createHeader(index) {
+  private _createHeader(index: number) {
     return (
       <div className='exampleContentHeader'>this is a new header for this content area { index }</div>
     );
   }
 
-  private _createContentArea(index) {
+  private _createContentArea(index: number) {
     return (
       <div key={ index }>
         <div className='content'>

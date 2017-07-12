@@ -66,7 +66,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     }
   }
 
-  public componentDidUnmount() {
+  public componentWillUnmount() {
     this._events.off(this._scrollElement);
     this._events.off(window);
   }
@@ -83,7 +83,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   @autobind
-  public subscribe(handler) {
+  public subscribe(handler: (handler: Function) => void) {
     this._subscribers = this._subscribers.concat(handler);
   }
 
@@ -133,7 +133,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   private _notifyFooters() {
     let distance = 0;
-    console.log(this._stickyBelow);
     this._stickyBelow.forEach((sticky) => {
       sticky.setBottomDistance(distance);
       distance += sticky.refs.root.clientHeight;
