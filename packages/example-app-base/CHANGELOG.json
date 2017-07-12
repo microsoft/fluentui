@@ -2,6 +2,35 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.1.0",
+      "tag": "@uifabric/example-app-base_v4.1.0",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "2bd3f54840dfb665f6fdbe88408a4dd2c91b8979",
+            "comment": "Fix implicit anys, enable strict null checks"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.5 <1.0.0` to `>=0.13.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.1 <5.0.0` to `>=4.7.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.3",
       "tag": "@uifabric/example-app-base_v4.0.3",
       "date": "Tue, 11 Jul 2017 10:14:04 GMT",
