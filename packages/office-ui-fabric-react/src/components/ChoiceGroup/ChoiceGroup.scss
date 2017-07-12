@@ -38,7 +38,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 //
 
 .root {
-  margin-bottom: 4px;
+  display: block;
 }
 
 .choiceField {
@@ -258,12 +258,14 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     .labelWrapper {
       $lineHeight: 16px;
-      display: inline-block;
+      display: block;
       position: relative;
       margin: 4px 0 0 0;
       height: $lineHeight * 2;
       line-height: $lineHeight;
-      overflow-y: hidden;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       @include ms-font-m;
 
       :global(.ms-Label) {

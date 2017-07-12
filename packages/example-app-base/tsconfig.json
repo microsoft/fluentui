@@ -8,6 +8,8 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "lib": [
       "es2017",

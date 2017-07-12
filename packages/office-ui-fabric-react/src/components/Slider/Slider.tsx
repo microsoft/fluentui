@@ -207,7 +207,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
   }
 
-  private _updateValue(value, renderedValue) {
+  private _updateValue(value: number, renderedValue: number) {
     let valueChanged = value !== this.state.value;
 
     this.setState({

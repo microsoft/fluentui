@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Toggle: Fixed aria-label that was missing from button",
-      "type": "patch"
+      "comment": "Inputs: removed bottom margin causing issues when putting more than one per line",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",

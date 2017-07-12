@@ -2,6 +2,48 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.7.2",
+      "tag": "@uifabric/utilities_v4.7.2",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.1",
+      "tag": "@uifabric/utilities_v4.7.1",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating library comments."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.0",
+      "tag": "@uifabric/utilities_v4.7.0",
+      "date": "Thu, 06 Jul 2017 10:11:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8f7558c34ba8eece6830b3dba53f79f29af97a87",
+            "comment": "Adding export for GlobalSettings object."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.6.0",
       "tag": "@uifabric/utilities_v4.6.0",
       "date": "Fri, 30 Jun 2017 19:44:26 GMT",
