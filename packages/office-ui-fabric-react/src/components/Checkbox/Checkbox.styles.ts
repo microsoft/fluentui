@@ -2,10 +2,7 @@ import { ICheckboxStyles } from './Checkbox.Props';
 import {
   ITheme,
   mergeStyleSets,
-  IProcessedStyle,
-  mergeStyles,
-  getFocusStyleBasedOnAncestorClass,
-  parent
+  getFocusStyleBasedOnAncestorClass
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
@@ -107,6 +104,15 @@ export const getStyles = memoizeFunction((
         borderColor: palette.contrastWhiteDisabled,
       },
     },
+    checkboxCheckedDisabled: {
+      background: checkboxDisabledBackground,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: palette.contrastBlackDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderColor: palette.contrastWhiteDisabled,
+      },
+    },
     checkmark: {
       opacity: '0',
       flex: '0 0 auto',
@@ -123,9 +129,20 @@ export const getStyles = memoizeFunction((
         color: palette.contrastWhiteDisabled,
       },
     },
+    checkmarkCheckedDisabled: {
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: palette.contrastBlackDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        color: palette.contrastWhiteDisabled,
+      },
+    },
     text: {
       flex: '0 0 auto',
       margin: '0 4px'
+    },
+    textHovered: {
+      color: palette.black,
     },
     textDisabled: {
       color: checkboxDisabledTextColor,   // ms-fontColor-neutralTertiary

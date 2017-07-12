@@ -2,10 +2,7 @@ import * as React from 'react';
 import {
   BaseComponent,
   autobind,
-  css,
   getId,
-  inputProperties,
-  getNativeProps,
   memoize
 } from '../../Utilities';
 import { Icon } from '../../Icon';
@@ -201,6 +198,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           isChecked && {
             ':hover .ms-Checkbox-checkbox': styles.checkboxCheckedHovered
           },
+          {
+            ':hover .ms-Checkbox-text': styles.textHovered
+          }
         ]
       ) as string,
 
@@ -224,14 +224,16 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       checkbox: mergeStyles(
         'ms-Checkbox-checkbox',
         styles.checkbox,
-        disabled && styles.checkboxDisabled,
-        isChecked && styles.checkboxChecked,
+        !disabled && isChecked && styles.checkboxChecked,
+        disabled && !isChecked && styles.checkboxDisabled,
+        disabled && isChecked && styles.checkboxCheckedDisabled,
       ) as string,
 
       checkmark: mergeStyles(
         styles.checkmark,
-        isChecked && styles.checkmarkChecked,
-        disabled && styles.checkmarkDisabled
+        !disabled && isChecked && styles.checkmarkChecked,
+        disabled && !isChecked && styles.checkmarkDisabled,
+        disabled && isChecked && styles.checkmarkCheckedDisabled,
       ) as string,
 
       text: mergeStyles(
