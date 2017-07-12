@@ -40,6 +40,7 @@ const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
+  componentRef?: () => void;
   selection: ISelection;
   layout?: ISelectionLayout;
   selectionMode?: SelectionMode;
