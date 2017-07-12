@@ -2,7 +2,10 @@ import { ICheckboxStyles } from './Checkbox.Props';
 import {
   ITheme,
   mergeStyleSets,
-  getFocusStyle
+  IProcessedStyle,
+  mergeStyles,
+  getFocusStyle,
+  parent
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
@@ -31,14 +34,18 @@ export const getStyles = memoizeFunction((
     root: {
       overflow: 'hidden',
       position: 'relative',
+
     },
-    label: {
-      display: 'flex',
-      alignItems: 'center',
-      cursor: 'pointer',
-      position: 'relative',
-      margin: '0 -4px'
-    },
+    label: [
+      getCheckboxFocusStyle(theme),
+      {
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        position: 'relative',
+        margin: '0 -4px',
+      }
+    ],
     labelReversed: {
       flexDirection: 'row-reverse',
       justifyContent: 'flex-end'
@@ -110,3 +117,26 @@ export const getStyles = memoizeFunction((
 
   return mergeStyleSets(styles, customStyles);
 });
+
+function getCheckboxFocusStyle(
+  theme: ITheme,
+  color: string | undefined = theme.palette.neutralSecondary,
+): IProcessedStyle {
+  let padding = '0';
+  return mergeStyles(
+    parent('.ms-Fabric.is-focusVisible .is-inFocus', {
+      outline: 'transparent',
+      ':after': {
+        content: '""',
+        position: 'absolute',
+        top: padding,
+        right: padding,
+        bottom: padding,
+        left: padding,
+        margin: '0 4px',
+        border: '1px solid ' + color,
+        pointerEvents: 'none'
+      }
+    })
+  );
+}
