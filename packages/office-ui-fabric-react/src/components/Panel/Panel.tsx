@@ -241,7 +241,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   @autobind
   private _onRenderBody(props: IPanelProps): JSX.Element {
     return (
-      <div className={ css('ms-Panel-content', styles.content) } ref={ this._resolveRef('_content') }>
+      <div className={
+        css('ms-Panel-content',
+          styles.content,
+          props.isFooterAtBottom && styles.contentGrow)
+      } ref={ this._resolveRef('_content') }
+      >
         { props.children }
       </div>
     );
