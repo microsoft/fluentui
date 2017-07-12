@@ -1,5 +1,4 @@
 import { IRenderFunction } from '../../Utilities';
-import { Dropdown } from './Dropdown';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';

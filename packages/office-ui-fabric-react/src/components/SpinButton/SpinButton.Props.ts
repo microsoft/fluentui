@@ -115,4 +115,3 @@ export interface ISpinButtonProps {
    */
   decrementButtonIcon?: IIconProps;
 }
-
