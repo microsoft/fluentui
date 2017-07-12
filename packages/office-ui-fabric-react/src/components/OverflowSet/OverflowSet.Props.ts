@@ -2,7 +2,13 @@ import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
 
-export interface IOverflowSetProps extends React.HTMLAttributes<OverflowSet> {
+export interface IOverflowSet { }
+
+export interface IOverflowSetProps extends React.Props<OverflowSet> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: (ref?: IOverflowSet) => void;
 
   /**
    * An array of items to be rendered by your onRenderItem function in the primary content area

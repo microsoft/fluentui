@@ -6,6 +6,7 @@ import {
   autobind,
   assign
 } from '../../Utilities';
+<<<<<<< HEAD
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
 import { SearchBox } from '../../SearchBox';
 import { CommandButton } from '../../Button';
@@ -13,6 +14,19 @@ import { OverflowSet } from '../../OverflowSet';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost } from '../../Tooltip';
 
+=======
+import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import {
+  Icon,
+  IconName,
+  IIconProps
+} from '../../Icon';
+import { FontClassNames } from '../../Styling';
+>>>>>>> commandbutton-to-actionbutton
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
@@ -61,6 +75,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     };
 
     return (
+<<<<<<< HEAD
       <ResizeGroup
         data={ commandBardata }
         onReduceData={ onReduceData }
@@ -104,6 +119,52 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
           );
         } }
       />
+=======
+      <div className={ css('ms-CommandBar', styles.root, className) } ref='commandBarRegion'>
+        { searchBox }
+        <FocusZone ref='focusZone' className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
+          <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
+            { renderedItems.map((item, index) => (
+              this._renderItemInCommandBar(item, index, expandedMenuItemKey)
+            )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
+              <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+                <button
+                  type='button'
+                  id={ this._id + OVERFLOW_KEY }
+                  className={ css('ms-CommandBarItem-link', styles.itemLink, {
+                    ['is-expanded ' + styles.itemLinkIsExpanded]: (expandedMenuItemKey === OVERFLOW_KEY)
+                  }) }
+                  onClick={ this._onOverflowClick }
+                  role='menuitem'
+                  aria-label={ this.props.elipisisAriaLabel || '' }
+                  aria-haspopup={ true }
+                  data-automation-id='commandBarOverflow'
+                >
+                  <Icon className={ css('ms-CommandBarItem-overflow', styles.itemOverflow) } iconName='more' />
+                </button>
+              </div>
+            ] : []) }
+          </div>
+          <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref='farCommandSurface'>
+            { renderedFarItems.map((item, index) => (
+              this._renderItemInCommandBar(item, index, expandedMenuItemKey, true)
+            )) }
+          </div>
+        </FocusZone>
+        { (contextualMenuProps) ?
+          (<ContextualMenu
+            className={ css('ms-CommandBar-menuHost') }
+            directionalHint={ DirectionalHint.bottomAutoEdge }
+            { ...contextualMenuProps }
+            targetElement={ contextualMenuTarget }
+            labelElementId={ expandedMenuId }
+            onDismiss={ this._onContextMenuDismiss }
+            calloutProps={ { linkType: CalloutLinkType.attached } }
+          />
+          ) : (null)
+        }
+      </div >
+>>>>>>> commandbutton-to-actionbutton
     );
   }
 

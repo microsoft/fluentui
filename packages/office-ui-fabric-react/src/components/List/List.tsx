@@ -245,6 +245,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       newProps.renderCount !== this.props.renderCount ||
       newProps.startIndex !== this.props.startIndex) {
 
+      // We have received new items so we want to make sure that initially we only render a single window to
+      // fill the currently visible rect, and then later render additional windows.
+      this._resetRequiredWindows();
+      this._requiredRect = null;
+
       this._measureVersion++;
       this._updatePages(newProps);
     }
@@ -300,6 +305,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     for (let i = 0; i < pages.length; i++) {
       pageElements.push(this._renderPage(pages[i]));
     }
+
+    // console.log(`Page elements ${pageElements.length}`);
 
     return (
       <div ref='root' { ...divProps } role={ role } className={ css('ms-List', className) } >
@@ -382,6 +389,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
   private _onScroll() {
+    this._resetRequiredWindows();
+  }
+
+  private _resetRequiredWindows() {
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
   }
@@ -547,7 +558,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _onPageAdded(page: IPage) {
     let { onPageAdded } = this.props;
 
-    // console.log('page added', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
+    // console.log('page added', page.startIndex, this.state.pages.map(page => page.key).join(', '));
 
     if (onPageAdded) {
       onPageAdded(page);
@@ -558,7 +569,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _onPageRemoved(page: IPage) {
     let { onPageRemoved } = this.props;
 
-    // console.log('  --- page removed', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
+    // console.log('  --- page removed', page.startIndex, this.state.pages.map(page => page.key).join(', '));
 
     if (onPageRemoved) {
       onPageRemoved(page);

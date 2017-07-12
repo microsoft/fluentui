@@ -14,7 +14,6 @@ export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
             checked={ checked }
             iconProps={ { iconName: 'Add' } }
             text='Create account'
-            onMenuToggled={ (button) => console.log(button) }
             menuProps={ {
               items: [
                 {
