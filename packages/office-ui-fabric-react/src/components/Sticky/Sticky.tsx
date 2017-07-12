@@ -117,8 +117,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public render() {
     const { isStickyTop, isStickyBottom, topDistance, bottomDistance } = this.state;
     const { stickyClassName } = this.props;
+    const isSticky = isStickyTop || isStickyBottom;
+
     let style;
-    if (isStickyTop || isStickyBottom) {
+    if (isSticky) {
       const top = isStickyTop ?
         this._offsetTop + topDistance :
         this._offsetBottom - this.refs.root.clientHeight - bottomDistance;
@@ -129,7 +131,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       };
     }
 
-    const placeholderStyle = isStickyTop || isStickyBottom ?
+    const placeholderStyle = isSticky ?
       {
         paddingBottom: `${this.refs.sticky.clientHeight}px`
       } : {};
@@ -138,8 +140,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       <div ref='root'>
         <div ref='placeholder' style={ placeholderStyle } />
         <div ref='sticky' className={ css({
-          [styles.isSticky]: isStickyTop || isStickyBottom,
-          [stickyClassName]: isStickyTop || isStickyBottom
+          [styles.isSticky]: isSticky,
+          [stickyClassName]: isSticky
         }) } style={ style }>
           { this.props.children }
         </div>
