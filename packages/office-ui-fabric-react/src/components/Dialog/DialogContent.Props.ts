@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { DialogContent } from './DialogContent';
 import { IButtonProps } from '../Button/Button.Props';
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 export interface IDialogContent {
 
 }
 
 export interface IDialogContentProps extends React.Props<DialogContent> {
-   /**
-   * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
+  /**
+  * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
+  * the public methods and properties of the component.
+  */
   componentRef?: (component: IDialogContent) => void;
-  
+
   /**
   * Show an 'x' close button in the upper-right corner
   */
@@ -42,6 +43,11 @@ export interface IDialogContentProps extends React.Props<DialogContent> {
   * The title text to display at the top of the dialog.
   */
   title?: string;
+
+  /**
+   * Responsive mode passed in from decorator.
+   */
+  responsiveMode?: ResponsiveMode;
 
   /**
    * Label to be passed to to aria-label of close button
