@@ -7,6 +7,7 @@ import {
   getId
 } from '../../Utilities';
 import {
+  ISwatchColorPicker,
   ISwatchColorPickerProps,
   ISwatchColorPickerItemProps,
   SwatchColorPickerItemType
@@ -180,7 +181,7 @@ export interface ISwatchColorPickerState {
   expanded?: boolean;
 }
 
-export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> {
+export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
 
   public static defaultProps = {
     cellShape: 'circle',
@@ -745,6 +746,7 @@ class SwatchColorPickerMenuButton extends BaseComponent<IMenuButtonProps, {}> {
 }
 
 interface ISwatchColorPickerBodyProps {
+  componentRef?: () => void;
   swatchColorPickerItems: ISwatchColorPickerItemProps[];
   columnCount: number;
   onRenderItems: (items: ISwatchColorPickerItemProps[]) => JSX.Element[];

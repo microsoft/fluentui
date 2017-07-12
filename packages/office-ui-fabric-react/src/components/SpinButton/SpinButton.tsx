@@ -63,7 +63,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _initialStepDelay = 400;
   private _stepDelay = 75;
   private _formattedValidUnitOptions: string[] = [];
-  private _arrowButtonStyle: React.CSSProperties = {
+  private _arrowButtonStyle = {
     icon: {
       fontSize: '6px',
     }
@@ -223,6 +223,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     this._input.focus();
     this._input.select();
+  }
+
+  /**
+   * Gets the value of the spin button.
+   */
+  public get value(): string {
+    return this.props.value === undefined ? this.state.value : this.props.value;
   }
 
   /**

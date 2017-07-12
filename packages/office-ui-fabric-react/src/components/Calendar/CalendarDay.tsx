@@ -37,7 +37,8 @@ export interface IDayInfo {
   onSelected: () => void;
 }
 
-export interface ICalendarDayProps {
+export interface ICalendarDayProps extends React.Props<CalendarDay> {
+  componentRef?: () => void;
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;

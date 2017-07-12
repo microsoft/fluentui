@@ -264,7 +264,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </div>
 
         { isOpen && (
-          onRenderContainer({ ...this.props }, this._onRenderContainer)
+          onRenderContainer({ ...this.props as any }, this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -735,7 +735,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         linkType={ CalloutLinkType.attached }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
-          { onRenderList({ ...props }, this._onRenderList) }
+          { onRenderList({ ...props as any }, this._onRenderList) }
         </div>
       </Callout>
     );
@@ -1030,7 +1030,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
 
         // Allow TAB to propigate
-        if (ev.which === KeyCodes.tab) {
+        if (ev.which as number === KeyCodes.tab) {
           return;
         }
         break;
