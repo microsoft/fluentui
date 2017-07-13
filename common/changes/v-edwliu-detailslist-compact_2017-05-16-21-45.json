@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing",
+      "type": "minor"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
