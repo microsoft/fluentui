@@ -27,7 +27,8 @@ export const getStyles = memoizeFunction((
       verticalAlign: 'top',
       width: '32px',
     }
-  }
+  };
+
   let splitButtonStyles: ISplitButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
