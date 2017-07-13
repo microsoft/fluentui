@@ -52,4 +52,9 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
    * @defaultvalue labelText
    */
   ariaLabel?: string;
+
+  /**
+   * The boolean which indicates whether to hide search icon.
+   */
+  hideSearchIcon?: boolean;
 }

@@ -51,4 +51,15 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Additional css class to apply to the command bar primary command container
+   * @defaultvalue undefined
+   */
+  primaryCommandsClassName?: string;
+  /**
+   * Additional css class to apply to the command bar side command container
+   * @defaultvalue undefined
+   */
+  sideCommandsClassName?: string;
 }
