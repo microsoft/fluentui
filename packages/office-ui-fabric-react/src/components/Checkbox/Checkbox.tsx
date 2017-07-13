@@ -40,7 +40,6 @@ interface ICheckboxClassNames {
 
 @customizable(['theme'])
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
-  [x: string]: any;
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'
   };
@@ -115,11 +114,11 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           aria-checked={ isChecked }
         />
         <label className={ classNames.label } htmlFor={ this._id } >
-          <button className={ classNames.box } disabled={ disabled }>
+          <span className={ classNames.box }>
             <span className={ classNames.checkbox }>
               <Icon iconName='CheckMark' className={ classNames.checkmark } />
             </span>
-          </button>
+          </span>
           { label && <span className={ classNames.text }>{ label }</span> }
         </label>
       </div >

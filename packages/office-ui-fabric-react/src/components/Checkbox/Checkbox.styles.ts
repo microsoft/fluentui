@@ -31,16 +31,16 @@ export const getStyles = memoizeFunction((
     root: {
       overflow: 'hidden',
       position: 'relative',
-
     },
     label: [
       getFocusStyleBasedOnAncestorClass(theme, '.ms-Fabric.is-focusVisible .is-inFocus'),
       {
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
         cursor: 'pointer',
         position: 'relative',
         margin: '0 -4px',
+        userSelect: 'none'
       }
     ],
     labelReversed: {
@@ -61,13 +61,9 @@ export const getStyles = memoizeFunction((
       justifyContent: 'center',
       flex: '0 0 ' + MS_CHECKBOX_LABEL_SIZE,
       height: MS_CHECKBOX_LABEL_SIZE,
-      border: 'none',
-      visibility: 'hidden',
-      padding: '0',
     },
     checkbox: {
       display: 'flex',
-      visibility: 'visible',
       alignItems: 'center',
       justifyContent: 'center',
       height: MS_CHECKBOX_LABEL_SIZE,
@@ -95,25 +91,35 @@ export const getStyles = memoizeFunction((
     },
     checkboxDisabled: {
       background: checkboxDisabledBackground,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: palette.contrastBlackDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        borderColor: palette.contrastWhiteDisabled,
+      },
     },
     checkboxCheckedDisabled: {
       background: checkboxDisabledBackground,
     },
     checkmark: {
       opacity: '0',
-      flex: '0 0 auto',
       color: checkmarkFontColor
     },
     checkmarkChecked: {
       opacity: '1'
     },
     checkmarkDisabled: {
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: palette.contrastBlackDisabled,
+      },
+      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
+        color: palette.contrastWhiteDisabled,
+      },
     },
     checkmarkCheckedDisabled: {
       opacity: '1',
     },
     text: {
-      flex: '0 0 auto',
       margin: '0 4px'
     },
     textHovered: {
