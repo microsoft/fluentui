@@ -29,7 +29,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     };
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: any) {
     if (newProps.group) {
       let newCollapsed = newProps.group.isCollapsed;
       let isGroupLoading = newProps.headerProps && newProps.headerProps.isGroupLoading;

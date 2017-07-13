@@ -23,6 +23,7 @@ export * from './Facepile';
 export * from './FocusTrapZone';
 export * from './FocusZone';
 export * from './GroupedList';
+export * from './HoverCard';
 export * from './Icon';
 export * from './Image';
 export * from './Label';

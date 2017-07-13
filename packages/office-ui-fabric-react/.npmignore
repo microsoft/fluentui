@@ -13,7 +13,6 @@ results
 *.build.log
 dist/*.stats.html
 dist/demo*.*
-dist/css
 gulpfile.js
 index.html
 jsconfig.json

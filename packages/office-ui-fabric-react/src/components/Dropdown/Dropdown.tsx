@@ -35,7 +35,7 @@ export interface IDropdownState {
 export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownState> {
 
   public static defaultProps = {
-    options: []
+    options: [] as any[]
   };
 
   private static Option: string = 'option';
@@ -52,7 +52,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    props.options.forEach((option) => {
+    props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
       }
@@ -255,7 +255,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render placeHolder text in dropdown input
   @autobind
-  private _onRenderPlaceHolder(props): JSX.Element {
+  private _onRenderPlaceHolder(props: IDropdownProps): JSX.Element {
     if (!props.placeHolder) {
       return null;
     }
@@ -324,7 +324,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         onKeyDown={ this._onZoneKeyDown }
         role='listbox'
       >
-        { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+        { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
     );
   }
@@ -402,7 +402,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
-  private _onItemClick(index) {
+  private _onItemClick(index: number) {
     this.setSelectedIndex(index);
     this.setState({
       isOpen: false

@@ -1,15 +1,15 @@
 import { IRenderFunction } from '../../Utilities';
-import { Dropdown } from './Dropdown';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 
 export interface IDropdown {
-
+  focus: () => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<Dropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */
@@ -29,6 +29,8 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<Dropdown> 
    * Optional custom renderer for selected option displayed in input
    */
   onRenderTitle?: IRenderFunction<IDropdownOption>;
+
+  responsiveMode?: ResponsiveMode;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.

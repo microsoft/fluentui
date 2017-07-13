@@ -41,7 +41,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
         </CommandButton>
         { this.props.showRemoveButton ? (
           <IconButton
-            iconProps={ { iconName: 'Cancel' } }
+            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
             title='Remove'
             ariaLabel='Remove'
             onClick={ onRemoveItem }
@@ -177,7 +177,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         { suggestions.map((suggestion, index) =>
           <div ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
             // tslint:disable-next-line:no-string-literal
-            key={ suggestion.item['key'] ? suggestion.item['key'] : index }
+            key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
             role='menuitem'>
             <TypedSuggestionsItem

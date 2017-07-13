@@ -14,6 +14,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
+import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStyles from './DetailsRowCheck.scss';
@@ -24,6 +25,7 @@ const styles: any = stylesImport;
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
+const ISPADDED_WIDTH = 24;
 
 export interface IDetailsHeader {
   focus(): boolean;
@@ -42,6 +44,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
+  collapseAllVisibility?: CollapseAllVisibility;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
@@ -74,7 +77,8 @@ export interface IColumnResizeDetails {
 
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
-    isSelectAllVisible: SelectAllVisibility.visible
+    selectAllVisibility: SelectAllVisibility.visible,
+    collapseAllVisibility: CollapseAllVisibility.visible
   };
 
   public refs: {
@@ -111,7 +115,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
     let { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
@@ -172,7 +176,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             }
           </div>
         ) : null }
-        { groupNestingDepth > 0 ? (
+        { groupNestingDepth > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }
@@ -206,9 +210,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   column.headerClassName, {
                     ['is-actionable ' + styles.cellIsActionable]: column.columnActionsMode !== ColumnActionsMode.disabled,
                     ['is-empty ' + styles.cellIsEmpty]: !column.name,
-                    'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
+                    'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered,
+                    [styles.cellWrapperPadded]: column.isPadded
                   }) }
-                style={ { width: column.calculatedWidth + INNER_PADDING } }
+                style={ { width: column.calculatedWidth + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
                 aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
@@ -228,6 +233,20 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                         onClick={ this._onColumnClick.bind(this, column) }
                       >
+                        <span
+                          aria-label={ column.isIconOnly ? column.name : undefined }
+                          className={ css('ms-DetailsHeader-cellName',
+                            styles.cellName, {
+                              [styles.iconOnlyHeader]: column.isIconOnly
+                            }) }
+                        >
+                          { (column.iconName || column.iconClassName) && (
+                            <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                          ) }
+
+                          { !column.isIconOnly ? column.name : undefined }
+                        </span>
+
                         { column.isFiltered && (
                           <Icon className={ styles.nearIcon } iconName='Filter' />
                         ) }
@@ -239,17 +258,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                         { column.isGrouped && (
                           <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
                         ) }
-
-                        <span
-                          aria-label={ column.isIconOnly ? column.name : undefined }
-                          className={ css('ms-DetailsHeader-cellName', styles.cellName) }
-                        >
-                          { (column.iconName || column.iconClassName) && (
-                            <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
-                          ) }
-
-                          { !column.isIconOnly ? column.name : undefined }
-                        </span>
 
                         { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
                           <Icon
@@ -527,7 +535,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnClick(column, ev) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     let { onColumnClick } = this.props;
 
     if (column.onColumnClick) {

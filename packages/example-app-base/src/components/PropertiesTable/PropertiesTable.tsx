@@ -97,7 +97,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
       ))
       .map((prop, index) => assign({}, prop, { key: index }));
 
-    let groups = null;
+    let groups: IGroup[] | null = null;
 
     if (!props.renderAsEnum) {
       groups = this._getGroups(properties);
@@ -114,20 +114,20 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     let { title } = this.props;
     let { properties, isEnum, groups } = this.state;
 
+    if (properties.length === 0) {
+      return null;
+    }
+
     return (
       <div className='PropertiesTable'>
         <h2 className={ FontClassNames.xLarge }>{ title }</h2>
-        { (properties && properties.length) ? (
-          <DetailsList
-            selectionMode={ SelectionMode.none }
-            layoutMode={ DetailsListLayoutMode.justified }
-            items={ properties }
-            groups={ groups }
-            columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
-          />
-        ) : (
-            <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
-          ) }
+        <DetailsList
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.justified }
+          items={ properties }
+          groups={ groups }
+          columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
+        />
       </div>
     );
   }
@@ -143,8 +143,8 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     return groups;
   }
 
-  private _tryAddGroup(props, typeToCompare: InterfacePropertyType, name: string, index: number, allGroups): number {
-    let group: IGroup;
+  private _tryAddGroup(props: IInterfaceProperty[], typeToCompare: InterfacePropertyType, name: string, index: number, allGroups: IGroup[]): number {
+    let group: IGroup | undefined = undefined;
 
     while (index < props.length) {
       let prop = props[index];

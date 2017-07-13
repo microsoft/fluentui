@@ -34,7 +34,7 @@ import {
 
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import { GroupedList } from '../../GroupedList';
-import { List } from '../../List';
+import { List, IListProps } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 
 const styles: any = stylesImport;
@@ -54,6 +54,7 @@ const MIN_COLUMN_WIDTH = 100; // this is the global min width
 const CHECKBOX_WIDTH = 36;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
+const ISPADDED_WIDTH = 24;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -193,6 +194,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       ariaLabelForSelectionColumn,
       className,
       checkboxVisibility,
+      compact,
       constrainMode,
       dragDropEvents,
       groups,
@@ -209,7 +211,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       ariaLabelForGrid,
       rowElementEventMap,
       shouldApplyApplicationRole = false,
-      getKey
+      getKey,
+      listProps
     } = this.props;
     let {
       adjustedColumns,
@@ -223,10 +226,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       _dragDropHelper: dragDropHelper
     } = this;
     let groupNestingDepth = this._getGroupNestingDepth();
-    let additionalListProps = {
+    const additionalListProps: IListProps = {
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
-      getKey
+      getKey,
+      ...listProps
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
     if (selectionMode === SelectionMode.single) {
@@ -257,7 +261,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         ref={ this._resolveRef('_root') }
         className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
-          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained
+          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained,
+          'ms-DetailsList--Compact': compact,
+          [styles.rootCompact]: compact
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -286,7 +292,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ariaLabel: ariaLabelForListHeader,
               ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
               ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-              selectAllVisibility: selectAllVisibility
+              selectAllVisibility: selectAllVisibility,
+              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
             }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
@@ -355,6 +362,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
+      compact,
       dragDropEvents,
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
@@ -364,8 +372,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      checkButtonAriaLabel
+      checkButtonAriaLabel,
+      groupProps
     } = this.props;
+    let collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     let selection = this._selection;
     let dragDropHelper = this._dragDropHelper;
     let {
@@ -383,6 +393,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     return onRenderRow({
       item: item,
       itemIndex: index,
+      compact: compact,
       columns: columns,
       groupNestingDepth: nestingDepth,
       selectionMode: selectionMode,
@@ -395,6 +406,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       dragDropHelper: dragDropHelper,
       viewport: viewport,
       checkboxVisibility: checkboxVisibility,
+      collapseAllVisibility: collapseAllVisibility,
       getRowAriaLabel: getRowAriaLabel,
       checkButtonAriaLabel: checkButtonAriaLabel
     }, this._onRenderRow);
@@ -583,7 +595,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
         });
 
-      totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0);
+      totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
 
       return newColumn;
     });

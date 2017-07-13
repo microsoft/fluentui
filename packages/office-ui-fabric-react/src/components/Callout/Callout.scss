@@ -24,7 +24,6 @@ $Callout-smallbeak-slant-width: 16px;
 .root {
   @include ms-drop-shadow(0,0, 5px, 0px);
   position: absolute;
-  border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
 
   @media screen and (-ms-high-contrast: active) {
@@ -45,6 +44,10 @@ $Callout-smallbeak-slant-width: 16px;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
+}
+
+.overFlowYHidden {
+  overflow-y: hidden;
 }
 
 .beak {
