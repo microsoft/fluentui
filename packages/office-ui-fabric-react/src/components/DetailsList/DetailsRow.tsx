@@ -33,6 +33,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
   itemIndex: number;
   columns: IColumn[];
+  compact?: boolean;
   selectionMode: SelectionMode;
   selection: ISelection;
   eventsToRegister?: { eventName: string, callback: (item?: any, index?: number, event?: any) => void }[];
