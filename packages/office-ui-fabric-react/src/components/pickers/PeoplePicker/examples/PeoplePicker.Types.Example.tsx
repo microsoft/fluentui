@@ -14,7 +14,8 @@ import {
   CompactPeoplePicker,
   IBasePickerSuggestionsProps,
   ListPeoplePicker,
-  NormalPeoplePicker
+  NormalPeoplePicker,
+  ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mostRecentlyUsed } from './PeoplePickerExampleData';
@@ -118,6 +119,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         key={ 'list' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
       />
     );
   }
@@ -132,6 +134,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
       />
     );
   }
@@ -145,6 +148,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
       />
     );
   }
@@ -160,6 +164,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         key={ 'list' }
         pickerSuggestionsProps={ suggestionProps }
         onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
       />
     );
   }
@@ -280,6 +285,17 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _dropDownSelected(option: IDropdownOption) {
     this.setState({ currentPicker: option.key });
+  }
+
+  @autobind
+  private _validateInput(input: string) {
+    if (input.indexOf('@') !== -1) {
+      return ValidationState.valid;
+    } else if (input.length > 1) {
+      return ValidationState.warning;
+    } else {
+      return ValidationState.invalid;
+    }
   }
 
 }
