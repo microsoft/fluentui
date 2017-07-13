@@ -178,6 +178,8 @@ $DropDown-item-height: 32px;
   }
 
 .callout {
+  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
 }
 
 .errorMessage{

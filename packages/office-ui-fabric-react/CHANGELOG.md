@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jul 2017 02:58:02 GMT and should not be manually modified.
+
+## 4.19.0
+Thu, 13 Jul 2017 02:58:02 GMT
+
+### Minor changes
+
+- Addressing remaining TS 2.4.1 errors.
+- DetailsList: Allow passing props to underlying List
+
+### Patches
+
+- TooltipHost: Fixed check which kept onRenderContent from working
+- Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup
+- List: Only draw a single window when receiving new items
 
 ## 4.18.0
 Wed, 12 Jul 2017 01:49:50 GMT
