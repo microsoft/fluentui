@@ -26,7 +26,7 @@ describe('DefaultButton', () => {
   });
 
   it('can render with an onClick.', () => {
-    let onClick = () => null;
+    let onClick: () => null = () => null;
 
     const button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton onClick={ onClick }>Hello</DefaultButton>
@@ -46,7 +46,7 @@ describe('DefaultButton', () => {
   });
 
   describe('with menuProps', () => {
-    let button;
+    let button: Element;
 
     before(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
@@ -61,7 +61,7 @@ describe('DefaultButton', () => {
   });
 
   describe('without menuProps', () => {
-    let button;
+    let button: Element;
 
     before(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
@@ -76,7 +76,7 @@ describe('DefaultButton', () => {
   });
 
   describe('with menuIconProps', () => {
-    let button;
+    let button: Element;
 
     before(() => {
       const wrapper = ReactTestUtils.renderIntoDocument<any>(
@@ -90,11 +90,38 @@ describe('DefaultButton', () => {
     });
   });
 
-  it('Providing onClick and menuProps renders a SplitButton', () => {
+  it('Providing onClick and menuProps does not render a SplitButton', () => {
     const button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
         data-automation-id='test'
         text='Create account'
+        onClick={ () => alert('Clicked') }
+        menuProps={ {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              icon: 'Mail'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              icon: 'Calendar'
+            }
+          ]
+        } }
+      />
+    );
+    const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.tagName).not.equal('DIV', 'A Button with a menuProps and an onClick renders as a SplitButton');
+  });
+
+  it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
+    const button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        data-automation-id='test'
+        text='Create account'
+        split={ true }
         onClick={ () => alert('Clicked') }
         menuProps={ {
           items: [
@@ -122,6 +149,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
+        split={ true }
         onClick={ () => alert('Clicked') }
         menuProps={ {
           items: [
@@ -151,6 +179,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -180,6 +209,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -211,6 +241,7 @@ describe('DefaultButton', () => {
       <DefaultButton
         data-automation-id='test'
         text='Create account'
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -245,6 +276,7 @@ describe('DefaultButton', () => {
         disabled={ true }
         data-automation-id='test'
         text='Create account'
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [
@@ -279,6 +311,7 @@ describe('DefaultButton', () => {
         disabled={ true }
         data-automation-id='test'
         text='Create account'
+        split={ true }
         onClick={ () => { didClick = true; } }
         menuProps={ {
           items: [

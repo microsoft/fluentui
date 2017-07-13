@@ -1,5 +1,10 @@
 /* tslint:disable:no-string-literal */
 
+/**
+ * EventRecord interface.
+ *
+ * @internal
+ */
 export interface IEventRecord {
   target: any;
   eventName: string;
@@ -10,15 +15,30 @@ export interface IEventRecord {
   useCapture: boolean;
 }
 
+/**
+ * EventRecordsByName interface.
+ *
+ * @internal
+ */
 export interface IEventRecordsByName {
   [eventName: string]: IEventRecordList;
 }
 
+/**
+ * EventRecordList interface.
+ *
+ * @internal
+ */
 export interface IEventRecordList {
   [id: string]: IEventRecord[] | number;
   count: number;
 }
 
+/**
+ * DeclaredEventsByName interface.
+ *
+ * @internal
+ */
 export interface IDeclaredEventsByName {
   [eventName: string]: boolean;
 }
@@ -30,6 +50,8 @@ export interface IDeclaredEventsByName {
  *  HTMLElement, the event gets raised and is handled by the browser. Otherwise, it gets
  *  handled here in EventGroup, and the handler is called in the context of the parent
  *  (which is passed in in the constructor).
+ *
+ * @public
  */
 export class EventGroup {
   private static _uniqueId = 0;
@@ -42,6 +64,7 @@ export class EventGroup {
    *  Events raised here by default have bubbling set to false and cancelable set to true.
    *  This applies also to built-in events being raised manually here on HTMLElements,
    *  which may lead to unexpected behavior if it differs from the defaults.
+   *
    */
   public static raise(
     target: any,

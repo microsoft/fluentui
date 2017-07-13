@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make details row cells use flex box and stretch to total row height.",
+      "comment": "TooltipHost: Fixed check which kept onRenderContent from working",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "maricha@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }

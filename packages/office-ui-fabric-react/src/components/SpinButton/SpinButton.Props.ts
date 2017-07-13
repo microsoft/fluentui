@@ -1,7 +1,25 @@
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 
+export interface ISpinButton {
+  /**
+   * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
+   * This value is mutually exclusive to defaultValue. Use one or the other.
+   */
+  value?: string;
+
+  /**
+   * Sets focus to the spin button.
+   */
+  focus: () => void;
+}
+
 export interface ISpinButtonProps {
+
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: (component?: ISpinButton) => void;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.
@@ -96,12 +114,4 @@ export interface ISpinButtonProps {
    * Icon for the decrement button of the spinButton
    */
   decrementButtonIcon?: IIconProps;
-}
-
-export interface ISpinButton {
-  /**
-   * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
-   * This value is mutually exclusive to defaultValue. Use one or the other.
-   */
-  value?: string;
 }

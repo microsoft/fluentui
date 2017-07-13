@@ -3,7 +3,7 @@ import { beep } from './beep';
 export function instrumentMethod(target: any, methodName: string) {
   const originalMethod = target[methodName];
 
-  target[methodName] = function() {
+  target[methodName] = function () {
     beep();
 
     let startTime = performance.now();
@@ -12,11 +12,11 @@ export function instrumentMethod(target: any, methodName: string) {
 
     /* tslint:disable:no-console */
     if (duration <= 1) {
-      console.log(`${ methodName } called`, getStackTrace());
+      console.log(`${methodName} called`, getStackTrace());
     } else if (duration <= 10) {
-      console.warn(`${ methodName } called, took ${ Math.round(duration * 1000) / 1000 }ms`, getStackTrace());
+      console.warn(`${methodName} called, took ${Math.round(duration * 1000) / 1000}ms`, getStackTrace());
     } else {
-      console.error(`${ methodName } called, took ${ Math.round(duration * 1000) / 1000 }ms`, getStackTrace());
+      console.error(`${methodName} called, took ${Math.round(duration * 1000) / 1000}ms`, getStackTrace());
     }
     /* tslint:enable:no-console */
 
@@ -30,7 +30,7 @@ export function getStackTrace() {
   };
 
   /* tslint:disable:no-string-literal */
-  const captureStackTrace = Error['captureStackTrace'];
+  const captureStackTrace = (Error as any)['captureStackTrace'];
   /* tslint:enable:no-string-literal */
 
   if (captureStackTrace) {

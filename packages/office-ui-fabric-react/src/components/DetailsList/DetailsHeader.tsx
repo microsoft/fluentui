@@ -14,6 +14,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
+import { CollapseAllVisibility } from '../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { ITooltipHostProps } from '../../Tooltip';
 import * as checkStyles from './DetailsRowCheck.scss';
@@ -42,6 +43,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
+  collapseAllVisibility?: CollapseAllVisibility;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
@@ -74,7 +76,8 @@ export interface IColumnResizeDetails {
 
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
-    isSelectAllVisible: SelectAllVisibility.visible
+    selectAllVisibility: SelectAllVisibility.visible,
+    collapseAllVisibility: CollapseAllVisibility.visible
   };
 
   public refs: {
@@ -111,7 +114,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this._events.on(rootElement, 'keydown', this._onRootKeyDown);
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
     let { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
@@ -172,7 +175,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             }
           </div>
         ) : null }
-        { groupNestingDepth > 0 ? (
+        { groupNestingDepth > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }
@@ -527,7 +530,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnClick(column, ev) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     let { onColumnClick } = this.props;
 
     if (column.onColumnClick) {

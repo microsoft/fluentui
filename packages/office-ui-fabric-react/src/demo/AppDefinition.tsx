@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { App as AppBase, IAppDefinition } from '@uifabric/example-app-base';
+import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from '../components/DetailsList/examples/DetailsList.Basic.Example';
 
 export const AppDefinition: IAppDefinition = {
@@ -105,6 +105,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Facepile',
           name: 'Facepile',
           url: '#/examples/facepile'
+        },
+        {
+          component: require<any>('../components/HoverCard/HoverCardPage').HoverCardPage,
+          key: 'HoverCard',
+          name: 'HoverCard',
+          url: '#/examples/hovercard'
         },
         {
           component: require<any>('../components/Icon/IconPage').IconPage,
@@ -348,4 +354,4 @@ export const AppDefinition: IAppDefinition = {
 
 };
 
-export const App = (props) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;

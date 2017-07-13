@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Toggle: Fixed aria-label that was missing from button",
+      "comment": "List: Only draw a single window when receiving new items",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "cschleid@microsoft.com"
 }

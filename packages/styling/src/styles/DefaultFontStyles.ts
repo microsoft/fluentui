@@ -114,7 +114,7 @@ function _getFontFamily(): string {
   let fontFamily = FontFamilyWestEuropean;
 
   for (let lang in LanguageToFontMap) {
-    if (LanguageToFontMap.hasOwnProperty(lang) && lang.indexOf(language) === 0) {
+    if (LanguageToFontMap.hasOwnProperty(lang) && language && lang.indexOf(language) === 0) {
       // tslint:disable-next-line:no-any
       fontFamily = (LanguageToFontMap as any)[lang];
       break;
@@ -200,7 +200,7 @@ function _registerDefaultFontFaces(): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win: {} = typeof window !== 'undefined' ? window : undefined;
+  let win = typeof window !== 'undefined' ? window : undefined;
 
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;
