@@ -3,8 +3,7 @@ import {
   IRectangle,
   assign,
   getScrollbarWidth,
-  Rectangle,
-  IPoint
+  Rectangle
 } from '../Utilities';
 
 export enum RectangleEdge {
@@ -19,23 +18,6 @@ export enum Position {
   bottom = 1,
   start = 2,
   end = 3
-}
-
-export enum CalloutLinkType {
-  /**
-   * Default behavior. To show shadows on all sides
-   */
-  none = 0,
-
-  /**
-   * To show a beak between the target and the Callout
-   */
-  beak = 1,
-
-  /**
-   * To remove shadow on one side of the component, so that it appears attached to the target
-   */
-  attached = 2
 }
 
 let SLIDE_ANIMATIONS: { [key: number]: string; } = {
@@ -87,15 +69,8 @@ export interface IPositionProps {
    */
   targetPoint?: IPoint;
 
-  /** If true then the beak is visible. If false it will not be shown.
-   * @deprecated
-  */
+  /** If true then the beak is visible. If false it will not be shown. */
   isBeakVisible?: boolean;
-
-  /**
-   * To specify the link type between the callout and target. Such as a Beak, etc.
-   */
-  linkType: CalloutLinkType;
 
   /**
    * If true the position returned will have the menu element cover the target.
@@ -115,8 +90,12 @@ export interface IPositionInfo {
   calloutPosition: { top: number, left: number };
   beakPosition: { top: number, left: number, display: string };
   directionalClassName: string;
-  rectangleEdge: RectangleEdge;
   submenuDirection: DirectionalHint;
+}
+
+export interface IPoint {
+  x: number;
+  y: number;
 }
 
 export class PositionData {
@@ -181,8 +160,7 @@ export function getRelativePositions(
   props: IPositionProps,
   hostElement: HTMLElement,
   calloutElement: HTMLElement): IPositionInfo {
-  // Temporary as isBeakVisible is deprecated.
-  let beakWidth: number = (props.linkType ? props.linkType === CalloutLinkType.beak : props.isBeakVisible) ? props.beakWidth : 0;
+  let beakWidth: number = !props.isBeakVisible ? 0 : props.beakWidth;
   let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   let boundingRect: Rectangle = props.bounds ?
@@ -214,7 +192,6 @@ export function getRelativePositions(
     calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
     beakPosition: { top: beakPositioned.top, left: beakPositioned.left, display: 'block' },
     directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
-    rectangleEdge: positionedCallout.targetEdge,
     submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
   };
 }
