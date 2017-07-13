@@ -12,7 +12,23 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: ISplitButtonStyles
 ): ISplitButtonStyles => {
-  let iconButtonStyles: ISplitButtonStyles = {
+  let splitButtonCommonStyles: ISplitButtonStyles = {
+    splitButtonMenuButton: {
+      padding: '6px',
+      height: 'auto',
+      color: theme.palette.white,
+      boxSizing: 'border-box',
+      border: '1px solid transparent',
+      userSelect: 'none',
+      display: 'inline-block',
+      textDecoration: 'none',
+      textAlign: 'center',
+      cursor: 'pointer',
+      verticalAlign: 'top',
+      width: '32px',
+    }
+  }
+  let splitButtonStyles: ISplitButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
       display: 'inline-block',
@@ -32,18 +48,20 @@ export const getStyles = memoizeFunction((
       position: 'absolute',
     },
 
-    splitButtonMenuButton: {
+    splitButtonMenuButton: mergeStyleSets(splitButtonCommonStyles.splitButtonMenuButton, {
       backgroundColor: theme.palette.neutralLighter,
-      padding: '6px',
-      height: 'auto',
       ':hover': {
         backgroundColor: theme.palette.neutralLight
       },
-    },
+    }),
 
-    splitButtonMenuButtonDisabled: {
+    splitButtonMenuButtonDisabled: mergeStyleSets(splitButtonCommonStyles.splitButtonMenuButton, {
       backgroundColor: theme.palette.neutralLighter,
-    },
+    }),
+
+    splitButtonMenuButtonChecked: mergeStyleSets(splitButtonCommonStyles.splitButtonMenuButton, {
+      backgroundColor: theme.palette.themePrimary,
+    }),
 
     splitButtonMenuIcon: {
       color: theme.palette.neutralPrimary
@@ -53,10 +71,14 @@ export const getStyles = memoizeFunction((
       color: theme.palette.neutralTertiary
     },
 
-    splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themePrimary,
-    },
+    splitButtonFlexContainer: {
+      display: 'flex',
+      height: '100%',
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
   };
 
-  return mergeStyleSets(iconButtonStyles, customStyles);
+  return mergeStyleSets(splitButtonStyles, customStyles);
 });

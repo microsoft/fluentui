@@ -38,4 +38,9 @@ export interface ISplitButtonStyles extends IButtonStyles {
    */
   splitButtonMenuIconDisabled?: IStyle;
 
+  /**
+   * Style override for the SplitButton FlexContainer.
+   */
+  splitButtonFlexContainer?: IStyle;
+
 }

@@ -15,7 +15,6 @@ import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
-import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
@@ -386,12 +385,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     return (
-      <IconButton
+      <BaseButton
         tabIndex={ -1 }
+        variantClassName='ms-Button--icon'
         styles={ {
           root: disabled ? styles.splitButtonMenuButtonDisabled : styles.splitButtonMenuButton,
           rootChecked: styles.splitButtonMenuButtonChecked,
-          icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon
+          icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon,
+          flexContainer: styles.splitButtonFlexContainer
         } }
         checked={ this.props.checked }
         disabled={ this.props.disabled }
