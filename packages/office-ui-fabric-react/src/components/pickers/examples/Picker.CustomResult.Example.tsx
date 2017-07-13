@@ -296,7 +296,11 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   if (documentActionsProps) {
     documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
     actions.push({
-      icon: 'Cancel', onClick: (ev: any) => { documentProps.onRemoveItem && documentProps.onRemoveItem(); }
+      icon: 'Cancel', onClick: (ev: any) => {
+        if (documentProps.onRemoveItem) {
+          documentProps.onRemoveItem();
+        }
+      }
     });
   }
 
