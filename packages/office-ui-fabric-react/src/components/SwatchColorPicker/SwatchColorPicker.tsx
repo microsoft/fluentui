@@ -16,7 +16,7 @@ import { DirectionalHint } from '../../ContextualMenu';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { DefaultButton, CommandButton, IButtonProps } from '../../Button';
-import { Callout, CalloutLinkType } from '../../Callout';
+import { Callout } from '../../Callout';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
@@ -645,7 +645,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         className={ css('ms-swatchColorPickerMenu', styles.swatchColorPickerContainer) }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
-        linkType={ CalloutLinkType.attached }
         setInitialFocus={ true }>
         <SwatchColorPickerBody
           { ...this.props }
