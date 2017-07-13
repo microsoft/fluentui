@@ -136,7 +136,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
-    const paddingBefore: string = `${14 * nestingLevel}px`;
+    const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
 
     return (
       <div key={ link.key || linkIndex }
