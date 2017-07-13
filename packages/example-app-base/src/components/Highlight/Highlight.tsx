@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { registerLanguage } from 'highlight.js';
+import { registerLanguage, highlightBlock } from 'highlight.js';
 import * as javascript from 'highlight.js/lib/languages/javascript';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 registerLanguage('javascript', javascript);
 
-export class Highlight extends BaseComponent<React.HTMLAttributes<HTMLDivElement>, {}> {
+export interface IHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: () => void;
+}
+
+export class Highlight extends BaseComponent<IHighlightProps, {}> {
   private _codeElement: HTMLElement;
 
   public render() {
@@ -26,6 +30,6 @@ export class Highlight extends BaseComponent<React.HTMLAttributes<HTMLDivElement
   }
 
   public componentDidMount() {
-    hljs.highlightBlock(this._codeElement);
+    highlightBlock(this._codeElement);
   }
 }

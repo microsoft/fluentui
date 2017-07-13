@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Jul 2017 19:18:55 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jul 2017 02:58:02 GMT and should not be manually modified.
+
+## 4.19.0
+Thu, 13 Jul 2017 02:58:02 GMT
+
+### Minor changes
+
+- Addressing remaining TS 2.4.1 errors.
+- DetailsList: Allow passing props to underlying List
+
+### Patches
+
+- TooltipHost: Fixed check which kept onRenderContent from working
+- Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup
+- List: Only draw a single window when receiving new items
+
+## 4.18.0
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Minor changes
+
+- Expose APIs of selectableOptions since they're required APIs for ComboBox component
+- Adding ActivityItem component.
+
+### Patches
+
+- Fix styling issues with SplitButton. Add new split boolean property to Button.
+- Fixing typings for TypeScript 2.4.1 compatibility.
+- DocumentCard: Deprecate accentColor prop, reduce thickness of divider line
+- Enable noImplicitAny
+- MessageBar: Fixed collapsing text in multiline
 
 ## 4.17.1
 Mon, 10 Jul 2017 19:18:55 GMT

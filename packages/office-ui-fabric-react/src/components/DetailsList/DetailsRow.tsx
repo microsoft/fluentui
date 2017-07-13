@@ -29,6 +29,7 @@ import { AnimationClassNames } from '../../Styling';
 import * as checkStyles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columns: IColumn[];

@@ -17,6 +17,8 @@ export interface ISettings {
  * @public
  */
 export interface ICustomizerProps {
+  componentRef?: () => void;
+
   settings: ISettings;
 }
 

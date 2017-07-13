@@ -1,6 +1,25 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 11 Jul 2017 10:14:04 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jul 2017 10:21:52 GMT and should not be manually modified.
+
+## 0.13.8
+Thu, 13 Jul 2017 10:21:52 GMT
+
+### Patches
+
+- Only initialize the default theme once, even if multiple instances of @uifabric/styling are executed.
+
+## 0.13.7
+Thu, 13 Jul 2017 02:58:02 GMT
+
+*Changes not tracked*
+
+## 0.13.6
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
 
 ## 0.13.5
 Tue, 11 Jul 2017 10:14:04 GMT
