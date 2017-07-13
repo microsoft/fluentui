@@ -60,10 +60,14 @@ export const getStyles = memoizeFunction((
       alignItems: 'center',
       justifyContent: 'center',
       flex: '0 0 ' + MS_CHECKBOX_LABEL_SIZE,
-      height: MS_CHECKBOX_LABEL_SIZE
+      height: MS_CHECKBOX_LABEL_SIZE,
+      border: 'none',
+      visibility: 'hidden',
+      padding: '0',
     },
     checkbox: {
       display: 'flex',
+      visibility: 'visible',
       alignItems: 'center',
       justifyContent: 'center',
       height: MS_CHECKBOX_LABEL_SIZE,
@@ -85,18 +89,15 @@ export const getStyles = memoizeFunction((
     },
     checkboxChecked: {
       background: checkboxCheckedBackground,
-      borderColor: 'transparent',
     },
     checkboxCheckedHovered: {
       background: checkboxCheckedHoveredBackground,
     },
     checkboxDisabled: {
       background: checkboxDisabledBackground,
-      borderColor: 'transparent',
     },
     checkboxCheckedDisabled: {
       background: checkboxDisabledBackground,
-      borderColor: 'transparent',
     },
     checkmark: {
       opacity: '0',
@@ -107,21 +108,9 @@ export const getStyles = memoizeFunction((
       opacity: '1'
     },
     checkmarkDisabled: {
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        color: palette.contrastWhiteDisabled,
-      },
     },
     checkmarkCheckedDisabled: {
       opacity: '1',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        color: palette.contrastWhiteDisabled,
-      },
     },
     text: {
       flex: '0 0 auto',

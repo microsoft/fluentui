@@ -114,12 +114,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           onBlur={ this._onBlur }
           aria-checked={ isChecked }
         />
-        <label className={ classNames.label } htmlFor={ this._id }>
-          <span className={ classNames.box }>
+        <label className={ classNames.label } htmlFor={ this._id } >
+          <button className={ classNames.box } disabled={ disabled }>
             <span className={ classNames.checkbox }>
               <Icon iconName='CheckMark' className={ classNames.checkmark } />
             </span>
-          </span>
+          </button>
           { label && <span className={ classNames.text }>{ label }</span> }
         </label>
       </div >
