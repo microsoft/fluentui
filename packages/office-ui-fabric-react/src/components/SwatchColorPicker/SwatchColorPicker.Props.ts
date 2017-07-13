@@ -97,7 +97,7 @@ export interface ISwatchColorPickerItemProps {
   /**
    * The CSS-compatible string to describe the color
    */
-  color?: string;
+  color: string;
 
   /**
    * Index for this option
