@@ -430,12 +430,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       // Do not onBlur when the callout is opened
       return;
     }
-    if (this.props.onBlur) {
-      this.props.onBlur(ev);
-      if (ev.preventDefault) {
-        return;
-      }
-    }
   }
 
   @autobind
