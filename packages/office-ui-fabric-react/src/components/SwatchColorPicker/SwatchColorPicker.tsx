@@ -7,6 +7,7 @@ import {
   getId
 } from '../../Utilities';
 import {
+  ISwatchColorPicker,
   ISwatchColorPickerProps,
   ISwatchColorPickerItemProps,
   SwatchColorPickerItemType
@@ -15,7 +16,7 @@ import { DirectionalHint } from '../../ContextualMenu';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { DefaultButton, CommandButton, IButtonProps } from '../../Button';
-import { Callout } from '../../Callout';
+import { Callout, CalloutLinkType } from '../../Callout';
 import { FocusZone } from '../../FocusZone';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
@@ -180,7 +181,7 @@ export interface ISwatchColorPickerState {
   expanded?: boolean;
 }
 
-export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> {
+export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
 
   public static defaultProps = {
     cellShape: 'circle',
@@ -644,6 +645,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         className={ css('ms-swatchColorPickerMenu', styles.swatchColorPickerContainer) }
         targetElement={ this._buttonWrapper }
         onDismiss={ this._onDismiss }
+        linkType={ CalloutLinkType.attached }
         setInitialFocus={ true }>
         <SwatchColorPickerBody
           { ...this.props }
@@ -744,6 +746,7 @@ class SwatchColorPickerMenuButton extends BaseComponent<IMenuButtonProps, {}> {
 }
 
 interface ISwatchColorPickerBodyProps {
+  componentRef?: () => void;
   swatchColorPickerItems: ISwatchColorPickerItemProps[];
   columnCount: number;
   onRenderItems: (items: ISwatchColorPickerItemProps[]) => JSX.Element[];

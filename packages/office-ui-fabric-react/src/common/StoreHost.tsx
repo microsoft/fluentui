@@ -4,6 +4,7 @@ import { StoreSet } from './StoreSet';
 import { BaseComponent } from '../Utilities';
 
 export interface IStoreHostProps extends React.Props<StoreHost> {
+  componentRef?: () => void;
   stores?: StoreSet;
 }
 

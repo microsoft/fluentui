@@ -12,7 +12,8 @@ import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
-export interface ICalendarMonthProps {
+export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
+  componentRef?: () => void;
   navigatedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;

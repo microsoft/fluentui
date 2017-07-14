@@ -21,6 +21,11 @@ export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
   commentText?: string;
 
   /**
+   * Gets ref to component interface.
+   */
+  componentRef?: () => void;
+
+  /**
    * Indicated if the compact styling should be used.
    */
   isCompact?: boolean;

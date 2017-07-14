@@ -7,6 +7,7 @@ const styles: any = stylesImport;
 const INNER_PADDING = 16; // Account for padding around the cell.
 
 export interface IDetailsRowFieldsProps {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columnStartIndex: number;
