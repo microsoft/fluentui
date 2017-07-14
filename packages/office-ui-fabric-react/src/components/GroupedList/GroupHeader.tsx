@@ -137,11 +137,11 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     let { isCollapsed } = this.state;
 
     let newCollapsed = !isCollapsed;
-    let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group);
+    let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group!);
 
     this.setState({
       isCollapsed: newCollapsed,
-      isLoadingVisible: newLoadingVisible
+      isLoadingVisible: newLoadingVisible as boolean
     });
     if (onToggleCollapse) {
       onToggleCollapse(group!);
