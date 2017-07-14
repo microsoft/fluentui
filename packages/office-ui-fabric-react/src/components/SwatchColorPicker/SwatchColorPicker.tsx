@@ -165,7 +165,7 @@ const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOption
 
       // Build an SVG for the cell with the given shape and color properties
       return (
-        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
+        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color as string).str } >
           {
             cellShape === 'circle' ?
               <circle cx='50%' cy='50%' r='50%' /> :
