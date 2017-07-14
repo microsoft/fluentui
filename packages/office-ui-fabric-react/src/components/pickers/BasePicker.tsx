@@ -353,7 +353,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
-          this.dismissSuggestions();
+          this.setState({ suggestionsVisible: false });
           ev.preventDefault();
           ev.stopPropagation();
         }
