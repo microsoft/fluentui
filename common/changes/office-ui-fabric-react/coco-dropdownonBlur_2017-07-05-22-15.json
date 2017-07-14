@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "1. add onBlur event for dropDown 2. rename autoComplete -> autoCompleteInput in ComboBox",
+      "comment": "ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string.",
       "type": "minor"
     }
   ],
