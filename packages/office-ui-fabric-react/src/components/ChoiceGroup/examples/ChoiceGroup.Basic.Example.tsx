@@ -34,7 +34,6 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
               text: 'Option B',
             },
             {
-              automationId: 'forOptionC',
               key: 'C',
               text: 'Option C',
               disabled: true

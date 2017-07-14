@@ -77,8 +77,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           { options.map((option: IChoiceGroupOption) => {
             let {
               onRenderField = this._onRenderField,
-              onRenderLabel = this._onRenderLabel,
-              automationId = option.key
+              onRenderLabel = this._onRenderLabel
             } = option;
 
             // Merge internal props into option
@@ -113,7 +112,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   onFocus={ this._onFocus.bind(this, option) }
                   onBlur={ this._onBlur.bind(this, option) }
                   aria-labelledby={ option.id }
-                  data-automation-id={ automationId }
+                  data-automation-id={ option.automationId }
                 />
                 { onRenderField(option, this._onRenderField) }
               </div>

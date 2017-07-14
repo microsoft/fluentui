@@ -15,6 +15,7 @@ const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
+const QUERY_SELECTOR: string = '.ms-ChoiceField-input';
 
 describe('ChoiceGroup', () => {
 
@@ -42,7 +43,7 @@ describe('ChoiceGroup', () => {
     expect(threwException).to.be.false;
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+    let choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).to.be.eq(false, 'Choice 1 was true before click');
     expect((choiceOptions[1] as HTMLInputElement).checked).to.be.eq(false, 'Choice 2 was true before click');
@@ -91,7 +92,7 @@ describe('ChoiceGroup', () => {
     expect(threwException).to.be.false;
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+    let choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).disabled).to.be.eq(true, 'Disabled option 1 is not disabled');
     expect((choiceOptions[1] as HTMLInputElement).disabled).to.be.eq(false, 'Not disabled option 2 is disabled');
@@ -123,7 +124,7 @@ describe('ChoiceGroup', () => {
     expect(threwException).to.be.false;
 
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+    let choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).disabled).to.be.eq(true, 'Disabled option 1 is not disabled');
     expect((choiceOptions[1] as HTMLInputElement).disabled).to.be.eq(true, 'Disabled option 2 is not disabled');
@@ -138,7 +139,7 @@ describe('ChoiceGroup', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+    let choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).to.be.eq(true, 'Choice 1 was not selected');
 
@@ -157,7 +158,7 @@ describe('ChoiceGroup', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+    let choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).to.be.eq(true, 'Choice 1 was not selected');
 
@@ -169,7 +170,7 @@ describe('ChoiceGroup', () => {
     expect(_selectedItem).to.equal(TEST_OPTIONS[1], 'onChange did not return new item');
   });
 
-  it('automation id appears in dom and falls back to key if not specified', () => {
+  it('automation id appears in dom if specified', () => {
     let _selectedItem;
     const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
       <ChoiceGroup
@@ -178,13 +179,13 @@ describe('ChoiceGroup', () => {
       />
     );
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
-    const choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+    const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
     const autoIdGetter: (index: number) => string = (index: number): string => {
       return (choiceOptions[index] as HTMLInputElement).getAttribute('data-automation-id');
     };
 
     expect(autoIdGetter(0)).to.be.eq('auto1', 'Specified automation ID did not match');
-    expect(autoIdGetter(1)).to.be.eq('2', 'Automation ID should have defaulted to key');
+    expect(autoIdGetter(1)).to.be.null;
   });
 });
