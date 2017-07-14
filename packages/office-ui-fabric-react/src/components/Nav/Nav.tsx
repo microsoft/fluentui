@@ -53,7 +53,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     this._hasExpandButton = false;
   }
 
-  public render(): React.ReactElement<{}> {
+  public render(): JSX.Element | null {
     const { groups, className, isOnTop } = this.props;
 
     if (!groups) {
@@ -86,7 +86,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  public get selectedKey(): string {
+  public get selectedKey(): string | undefined {
     return this.state.selectedKey;
   }
 
@@ -113,7 +113,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             iconName='IconLink'
           />
         ) }
-        { this.props.onRenderLink(link) }
+        { this.props.onRenderLink!(link) }
       </a>
     );
   }
@@ -139,9 +139,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     return (
       <div key={ link.key || linkIndex }
         className={ css('ms-Nav-compositeLink', styles.compositeLink, {
-          ' is-expanded': link.isExpanded,
+          ' is-expanded': !!link.isExpanded,
           'is-selected': isLinkSelected,
-          [styles.compositeLinkIsExpanded]: link.isExpanded,
+          [styles.compositeLinkIsExpanded]: !!link.isExpanded,
           [styles.compositeLinkIsSelected]: isLinkSelected
         }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
@@ -171,7 +171,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  private _renderLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> {
+  private _renderLinks(links: INavLink[] | undefined, nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || !links.length) {
       return null;
     }
@@ -186,7 +186,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
-    const isGroupExpanded: boolean = !this.state.isGroupCollapsed[group.name];
+    const isGroupExpanded: boolean = !this.state.isGroupCollapsed![group.name as string];
 
     return (
       <div key={ groupIndex } className={ css('ms-Nav-group', styles.group, {
@@ -219,7 +219,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _onGroupHeaderClicked(groupKey: string, ev: React.MouseEvent<HTMLElement>): void {
     let { isGroupCollapsed } = this.state;
 
-    isGroupCollapsed[groupKey] = !isGroupCollapsed[groupKey];
+    isGroupCollapsed![groupKey] = !isGroupCollapsed![groupKey];
     this.setState({ isGroupCollapsed: isGroupCollapsed });
 
     ev.preventDefault();
