@@ -529,8 +529,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div>
         <div ref={ this._resolveRef('root') }
           className={ css('ms-BasePicker', className ? className : '') }
-          onKeyDown={ this.onKeyDown }
-          onBlur={ this.onBlur } >
+          onKeyDown={ this.onKeyDown } >
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
