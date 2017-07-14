@@ -63,7 +63,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     let { keyChecked, keyFocused } = this.state;
 
     return (
-      // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
+      // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
       <div role='application' className={ className }>
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
@@ -112,6 +112,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   onFocus={ this._onFocus.bind(this, option) }
                   onBlur={ this._onBlur.bind(this, option) }
                   aria-labelledby={ option.id }
+                  data-automation-id={ option.automationId || option.key }
                 />
                 { onRenderField(option, this._onRenderField) }
               </div>

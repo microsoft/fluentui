@@ -107,4 +107,9 @@ export interface IChoiceGroupOption {
    */
   labelId?: string;
 
+  /**
+   * Optional identifier for automating the clickable control in the choice field
+   */
+  automationId?: string;
+
 }
