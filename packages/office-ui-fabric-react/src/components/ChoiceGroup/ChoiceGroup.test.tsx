@@ -11,7 +11,7 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { key: '1', text: '1' },
+  { automationId: 'auto1', key: '1', text: '1' },
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
@@ -167,5 +167,24 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[1] as HTMLInputElement).checked).to.be.eq(false, 'Choice 2 was selected prematurely');
 
     expect(_selectedItem).to.equal(TEST_OPTIONS[1], 'onChange did not return new item');
+  });
+
+  it('automation id appears in dom and falls back to key if not specified', () => {
+    let _selectedItem;
+    const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+      <ChoiceGroup
+        options={ TEST_OPTIONS }
+        onChange={ (ev, item) => _selectedItem = item }
+      />
+    );
+    const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    const choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+
+    const autoIdGetter: (index: number) => string = (index: number): string => {
+      return (choiceOptions[index] as HTMLInputElement).getAttribute('data-automation-id');
+    };
+
+    expect(autoIdGetter(0)).to.be.eq('auto1', 'Specified automation ID did not match');
+    expect(autoIdGetter(1)).to.be.eq('2', 'Automation ID should have defaulted to key');
   });
 });
