@@ -16,6 +16,7 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
+import { CollapseAllVisibility } from '../../GroupedList';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -28,6 +29,7 @@ import { AnimationClassNames } from '../../Styling';
 import * as checkStyles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columns: IColumn[];
@@ -43,6 +45,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   groupNestingDepth?: number;
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
+  collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
 }
@@ -78,7 +81,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
-  constructor(props) {
+  constructor(props: IDetailsRowProps) {
     super(props);
 
     this.state = {
@@ -235,7 +238,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ count: groupNestingDepth }) }
+        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
         { item && (
           <DetailsRowFields

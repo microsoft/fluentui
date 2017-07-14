@@ -75,7 +75,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     );
   }
 
-  private _pageHeader(): JSX.Element {
+  private _pageHeader(): JSX.Element | undefined {
     if (this.props.isHeaderVisible) {
       return (
         <div className='ComponentPage-header'>
@@ -118,7 +118,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     );
   }
 
-  private _getRelatedComponents(): JSX.Element {
+  private _getRelatedComponents(): JSX.Element | undefined {
     if (this.props.related) {
       return (
         <div className='ComponentPage-related'>
@@ -129,7 +129,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
-  private _getPropertiesTable(): JSX.Element {
+  private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
       return (
         <div className='ComponentPage-implementationSection'>
@@ -140,7 +140,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
-  private _getDosAndDonts(): JSX.Element {
+  private _getDosAndDonts(): JSX.Element | undefined {
     let dosAndDonts: Array<JSX.Element> = [];
 
     if (this.props.bestPractices) {

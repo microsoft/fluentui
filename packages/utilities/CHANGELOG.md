@@ -1,6 +1,41 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 29 Jun 2017 10:13:16 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+
+## 4.7.2
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 4.7.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating library comments.
+
+## 4.7.0
+Thu, 06 Jul 2017 10:11:47 GMT
+
+### Minor changes
+
+- Adding export for GlobalSettings object.
+
+## 4.6.0
+Fri, 30 Jun 2017 19:44:26 GMT
+
+### Minor changes
+
+- Customizer `setDefault` method moved to GlobalSettings `setValue` helper. This patches the customization code in 2 ways: 1. Multiple copies of the Customizer on the page will no longer create script errors complaining about missing themes, and 2. React is no longer pulled into the styling graph.
+
+## 4.5.0
+Thu, 29 Jun 2017 20:48:31 GMT
+
+### Minor changes
+
+- Adding a new Grid utility
 
 ## 4.4.2
 Thu, 29 Jun 2017 10:13:16 GMT
