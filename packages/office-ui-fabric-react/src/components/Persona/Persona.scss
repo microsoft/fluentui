@@ -383,8 +383,8 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Extra Small Persona
 //
 .root.rootIsExtraExtraSmall {
-  height: $ms-Persona-sizeXxs;
-  min-width: $ms-Persona-sizeXxs;
+  height: $ms-Persona-sizeXs;
+  min-width: $ms-Persona-sizeXs;
 
   .imageArea,
   .image {
@@ -408,17 +408,24 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(16px);
+    @include ms-left(14px);
+    top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-sizeXxs;
   }
 
   .secondaryText {
@@ -433,6 +440,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       height: 16px;
       line-height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -468,16 +476,23 @@ $ms-Persona-presenceSizeXl: 28px;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
     @include ms-left(20px);
+    top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-size28;
   }
 
   .secondaryText {
@@ -492,6 +507,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       line-height: 16px;
       height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -525,9 +541,12 @@ $ms-Persona-presenceSizeXl: 28px;
     @include ms-left(19px);
   }
 
+  .details {
+    padding: 0 8px;
+  }
+
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-sizeXs;
   }
 
   .secondaryText {
@@ -540,6 +559,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       height: 16px;
       line-height: 16px;
+      overflow-x: hidden;
     }
   }
 }

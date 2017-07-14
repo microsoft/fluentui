@@ -9,7 +9,7 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "build": "gulp",
+    "build": "gulp --production",
     "clean": "gulp clean",
     "start": "gulp serve"
   },

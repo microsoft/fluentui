@@ -12,7 +12,7 @@ import { Selection, SelectionZone, SelectionMode } from '../../utilities/selecti
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePickerProps } from './BasePicker.Props';
+import { IBasePickerProps, ValidationState } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
@@ -373,6 +373,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
+        } else {
+          this._onValidateInput();
         }
 
         break;
@@ -388,6 +390,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           }
           this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
           this.forceUpdate();
+        } else {
+          this.onBackspace(ev);
         }
         break;
 
@@ -513,6 +517,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       }
     }
     return false;
+  }
+
+  private _onValidateInput() {
+    if (this.props.onValidateInput && this.props.onValidateInput(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
+      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
+      this.suggestionStore.createGenericSuggestion(itemToConvert);
+      this.completeSuggestion();
+    }
   }
 
   private _getTextFromItem(item: T, currentValue?: string): string {
