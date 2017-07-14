@@ -151,12 +151,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       isOpen,
       focused,
-      selectedIndex
+      selectedIndex,
+      currentPendingValueValidIndex
     } = this.state;
 
-    // If we are newly open, make sure the currently
-    // selected option is scrolled into view
-    if (!prevState.isOpen && isOpen) {
+    // If we are newly open or are open and the pending valid index changed,
+    // make sure the currently selected/pending option is scrolled into view
+    if (isOpen &&
+      (!prevState.isOpen ||
+        prevState.currentPendingValueValidIndex !== currentPendingValueValidIndex)) {
       this._scrollIntoView();
     }
 
