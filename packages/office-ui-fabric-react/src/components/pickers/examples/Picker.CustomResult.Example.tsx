@@ -308,10 +308,10 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
     <DocumentCard
       onClick={ () => { console.log('You clicked the card.'); } }
     >
-      <DocumentCardPreview { ...documentPreviewProps } />
+      <DocumentCardPreview { ...(documentPreviewProps as IDocumentCardPreviewProps) } />
       <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
-      <DocumentCardTitle { ...documentTitleProps } />
-      <DocumentCardActivity { ...documentActivityProps } />
+      <DocumentCardTitle { ...(documentTitleProps as IDocumentCardTitleProps) } />
+      <DocumentCardActivity { ...(documentActivityProps as IDocumentCardActivityProps) } />
       <DocumentCardActions actions={ actions } />
     </DocumentCard>
   );
