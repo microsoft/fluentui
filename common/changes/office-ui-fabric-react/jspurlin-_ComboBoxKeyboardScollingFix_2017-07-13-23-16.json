@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix a keyboard scrolling issue where the pending option would not be scrolled into view",
+      "comment": "ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view",
       "type": "patch"
     }
   ],
