@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.20.0",
+      "tag": "office-ui-fabric-react_v4.20.0",
+      "date": "Fri, 14 Jul 2017 17:34:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "5fef7e125450859c0fd8162221dc0999dbd0b800",
+            "comment": "ResizeGroup: Do measurements inside requestAnimationFrame"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "46e69e5a4e0d85230aa326c3aaff330c94aa042e",
+            "comment": "PeoplePicker: adding a custom validator prop"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "1200d471c740de9b9a3c8b1e1257048f1cbcfb3f",
+            "comment": "DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.8 <1.0.0` to `>=0.13.9 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.19.0",
       "tag": "office-ui-fabric-react_v4.19.0",
       "date": "Thu, 13 Jul 2017 02:58:02 GMT",
