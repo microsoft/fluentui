@@ -302,7 +302,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
-      const newValue = this._onValidate && this._onValidate(value);
+      const newValue = this._onValidate!(value);
       if (newValue) {
         this._lastValidValue = newValue;
         this.setState({ value: newValue });
