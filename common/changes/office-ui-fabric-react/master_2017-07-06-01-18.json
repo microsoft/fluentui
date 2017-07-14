@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Do measurements inside requestAnimationFrame",
+      "comment": "Allow deeply nested links to render in Nav",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "rydelan@microsoft.com"
 }
