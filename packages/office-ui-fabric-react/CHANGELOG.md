@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Jul 2017 02:58:02 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jul 2017 17:34:53 GMT and should not be manually modified.
+
+## 4.20.0
+Fri, 14 Jul 2017 17:34:53 GMT
+
+### Minor changes
+
+- PeoplePicker: adding a custom validator prop
+- DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing
+
+### Patches
+
+- ResizeGroup: Do measurements inside requestAnimationFrame
 
 ## 4.19.0
 Thu, 13 Jul 2017 02:58:02 GMT
