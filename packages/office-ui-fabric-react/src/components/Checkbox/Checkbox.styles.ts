@@ -19,18 +19,16 @@ export const getStyles = memoizeFunction((
   customStyles?: ICheckboxStyles
 ): ICheckboxStyles => {
   const { semanticColors, palette } = theme;
-  const checkmarkFontColor = semanticColors.bodyBackground;
+  const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkboxBorderColor = semanticColors.inputBorder;
-  const checkboxHoveredBorderColor = semanticColors.inputBorderHovered;
-  const checkboxCheckedBackground = semanticColors.inputBackgroundChecked;
-  const checkboxCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
-  const checkboxDisabledBackground = semanticColors.disabledText;
-  const checkboxDisabledTextColor = semanticColors.disabledText;
+  const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
+  const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
+  const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+  const checkboxBackgroundDisabled = semanticColors.disabledText;
+  const checkboxTextColorDisabled = semanticColors.disabledText;
 
   const styles: ICheckboxStyles = {
     root: {
-      overflow: 'hidden',
-      position: 'relative',
     },
     label: [
       getFocusStyleBasedOnAncestorClass(theme, '.ms-Fabric.is-focusVisible .is-inFocus'),
@@ -38,7 +36,6 @@ export const getStyles = memoizeFunction((
         display: 'inline-flex',
         alignItems: 'center',
         cursor: 'pointer',
-        position: 'relative',
         margin: '0 -4px',
         userSelect: 'none'
       }
@@ -72,7 +69,6 @@ export const getStyles = memoizeFunction((
       borderStyle: 'solid',
       borderColor: checkboxBorderColor,
       boxSizing: 'border-box',
-      background: 'none',
       transitionProperty: 'background, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
@@ -81,16 +77,16 @@ export const getStyles = memoizeFunction((
       overflow: 'hidden',
     },
     checkboxHovered: {
-      borderColor: checkboxHoveredBorderColor,
+      borderColor: checkboxBorderHoveredColor,
     },
     checkboxChecked: {
-      background: checkboxCheckedBackground,
+      background: checkboxBackgroundChecked,
     },
     checkboxCheckedHovered: {
-      background: checkboxCheckedHoveredBackground,
+      background: checkboxBackgroundCheckedHovered,
     },
     checkboxDisabled: {
-      background: checkboxDisabledBackground,
+      background: checkboxBackgroundDisabled,
       [MS_HIGHCONTRAST_ACTIVE]: {
         borderColor: palette.contrastBlackDisabled,
       },
@@ -99,7 +95,7 @@ export const getStyles = memoizeFunction((
       },
     },
     checkboxCheckedDisabled: {
-      background: checkboxDisabledBackground,
+      background: checkboxBackgroundDisabled,
     },
     checkmark: {
       opacity: '0',
@@ -126,7 +122,7 @@ export const getStyles = memoizeFunction((
       color: palette.black,
     },
     textDisabled: {
-      color: checkboxDisabledTextColor,   // ms-fontColor-neutralTertiary
+      color: checkboxTextColorDisabled,   // ms-fontColor-neutralTertiary
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: palette.contrastBlackDisabled,
       },
