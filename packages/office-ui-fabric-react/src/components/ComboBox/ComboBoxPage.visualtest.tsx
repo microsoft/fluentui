@@ -11,7 +11,7 @@ export default class ComboBoxVPage extends React.Component<any, any> {
         id='Basicdrop1'
         ariaLabel='Basic ComboBox example'
         allowFreeform={ true }
-        autoComplete={ true }
+        autoComplete='on'
         options={
           [
             { key: 'A', text: 'Option a' },
