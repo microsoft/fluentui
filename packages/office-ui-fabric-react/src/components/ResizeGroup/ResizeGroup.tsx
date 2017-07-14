@@ -237,18 +237,20 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   }
 
   private _afterComponentRendered() {
-    let containerWidth = undefined;
-    if (this.state.measureContainer) {
-      containerWidth = this._root.getBoundingClientRect().width;
-    }
-    let nextState = this._getNextResizeGroupState(this.props,
-      this.state,
-      () => this._measured.getBoundingClientRect().width,
-      containerWidth);
+    this._async.requestAnimationFrame(() => {
+      let containerWidth = undefined;
+      if (this.state.measureContainer) {
+        containerWidth = this._root.getBoundingClientRect().width;
+      }
+      let nextState = this._getNextResizeGroupState(this.props,
+        this.state,
+        () => this._measured.getBoundingClientRect().width,
+        containerWidth);
 
-    if (nextState) {
-      this.setState(nextState);
-    }
+      if (nextState) {
+        this.setState(nextState);
+      }
+    });
   }
 
   private _onResize() {
