@@ -187,7 +187,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       tag,
       buttonProps,
       React.createElement(
-        'div',
+        'div' as any,
         { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
         onRenderText(props, this._onRenderText),

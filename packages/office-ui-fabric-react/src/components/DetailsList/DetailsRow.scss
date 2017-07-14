@@ -1,40 +1,145 @@
 @import '../../common/common';
 
-$rowHeight: 36px;
-$rowVerticalPadding: 10px;
+$rowHeight: 42px;
+$compactRowHeight: 32px;
+$rowVerticalPadding: 11px;
+$rowHorizontalPadding: 8px;
+$compactRowVerticalPadding: 6px;
+$isPaddedMargin: 24px;
 
-// component slots
-$detailsList-item-hover-color: $listItemHoverColor;
-$detailsList-item-selected-color: $listItemSelectedColor;
-$detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
 
+/* DetailsList Colors */
+// Default
+$detailsList-item-default-header-text-color: $ms-color-neutralPrimary;
+$detailsList-item-default-meta-text-color: $ms-color-neutralSecondaryAlt;
+$detailsList-item-default-background-color: $ms-color-white;
+
+// Hover
+$detailsList-item-hover-text-color: $ms-color-neutralPrimary;
+$detailsList-item-hover-meta-text-color: $ms-color-neutralSecondary;
+$detailsList-item-hover-color-background: $ms-color-neutralLighter;
+
+// Selected
+$detailsList-item-selected-text-color: $ms-color-neutralDark;
+$detailsList-item-selected-meta-text-color: $ms-color-neutralPrimary;
+$detailsList-item-selected-background-color: $ms-color-neutralLight;
+
+// Selected Hover
+$detailsList-item-selected-hover-text-color: $ms-color-black;
+$detailsList-item-selected-hover-meta-text-color: $ms-color-neutralDark;
+$detailsList-item-selected-hover-background-color: $ms-color-neutralQuaternaryAlt;
+
+// Focus
+$detailsList-item-focus-header-text-color: $ms-color-black;
+$detailsList-item-focus-background-color: $ms-color-neutralQuaternaryAlt;
+$detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
+
+
+// Compact mode rules
+:global(.ms-DetailsList--Compact) {
+  .root {
+    min-height: $compactRowHeight;
+    border: 0;
+  }
+
+  .cell {
+    min-height: $compactRowHeight;
+    padding: $compactRowVerticalPadding $rowHorizontalPadding;
+  }
+
+  .check {
+    padding: $rowHorizontalPadding;
+  }
+}
+
+:global(.ms-List-cell:first-child) {
+  .root {
+    // Don't show border-top for first row's pseudo element
+    &:before {
+      display: none;
+    }
+  }
+}
+
+// Default state
 .root {
-  @include focus-border();
+  @include focus-border(0, $ms-color-neutralSecondary);
 
+  border-bottom: 1px solid $ms-color-neutralLighter;
+  background: $detailsList-item-default-background-color;
+  color: $detailsList-item-default-meta-text-color;
   display: flex;
   min-width: 100%;
   min-height: $rowHeight;
-  margin: 1px 0;
-  vertical-align: top;
   white-space: nowrap;
   padding: 0;
   box-sizing: border-box;
 
-  background: none;
-  border: none;
-  @include text-align(left);
+  @include ms-text-align(left);
   vertical-align: top;
 
+  // Default State hover
   &:hover {
-    background: $detailsList-item-hover-color;
+    background: $detailsList-item-hover-color-background;
+    color: $detailsList-item-hover-meta-text-color;
   }
 }
 
+// Selected State
 .rootIsSelected {
-  background: $detailsList-item-selected-color;
+  @include focus-border(0, $ms-color-themePrimary);
 
+  color: $detailsList-item-selected-meta-text-color;
+  background: $detailsList-item-selected-background-color;
+  border-bottom: 1px solid $ms-color-white;
+
+  .cell {
+    // Selected State Header cell
+    &.isRowHeader {
+      color: $detailsList-item-selected-text-color;
+    }
+  }
+
+  &:before {
+    position: absolute;
+    display: block;
+    top: -1px;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    border-top: 1px solid $ms-color-white;
+  }
+
+  // Selected State hover
   &:hover {
-    background: $detailsList-item-selected-hover-color;
+    background: $detailsList-item-selected-hover-background-color;
+
+    // Selected State hover meta cell
+    .cell {
+      color: $detailsList-item-selected-hover-meta-text-color;
+
+      // Selected State hover Header cell
+      &.isRowHeader {
+        color: $detailsList-item-selected-hover-text-color;
+      }
+    }
+  }
+
+  // Focus state
+  &:focus {
+    background: $detailsList-item-focus-background-color;
+
+    // Selected State hover meta cell
+    .cell {
+      color: $detailsList-item-focus-meta-text-color;
+
+      // Row header cell
+      &.isRowHeader {
+        color: $detailsList-item-focus-header-text-color;
+      }
+    }
   }
 }
 
@@ -43,13 +148,14 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   cursor: default;
 }
 
+// Default cell state
 .cell {
   @include focus-border();
 
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  padding: $rowVerticalPadding 8px;
+  padding: $rowVerticalPadding $rowHorizontalPadding;
   min-height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
@@ -59,6 +165,20 @@ $detailsList-item-selected-hover-color: $listItemSelectedHoverColor;
   & > button {
     max-width: 100%;
   }
+
+  // Default header cell state
+  &.isRowHeader {
+    color: $detailsList-item-default-header-text-color;
+    font-size: $ms-font-size-m;
+  }
+
+  [data-is-focusable=true] {
+    @include focus-border(0, $ms-color-neutralSecondary);
+  }
+}
+
+.isPadded {
+  @include ms-padding-right($isPaddedMargin + $rowHorizontalPadding);
 
   &.checkCell {
     padding: 0;

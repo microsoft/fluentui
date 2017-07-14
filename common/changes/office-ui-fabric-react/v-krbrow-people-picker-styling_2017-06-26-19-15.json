@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Allow passing props to underlying List",
+      "comment": "PeoplePicker: adding a custom validator prop",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "cschleid@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }
