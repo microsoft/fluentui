@@ -11,7 +11,7 @@ export interface IViewport {
 }
 
 export interface IWithViewportState {
-  viewport: IViewport;
+  viewport?: IViewport;
 }
 
 const RESIZE_DELAY = 500;
