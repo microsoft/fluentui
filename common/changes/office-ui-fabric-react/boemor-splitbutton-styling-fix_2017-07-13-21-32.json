@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Remove the IconButton dependency from BaseButton that was introduced with SplitButton.",
+      "comment": "BaseButton: Remove the IconButton dependency that was introduced with SplitButton.",
       "type": "patch"
     }
   ],
