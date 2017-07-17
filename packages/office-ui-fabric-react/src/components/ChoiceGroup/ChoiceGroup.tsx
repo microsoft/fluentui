@@ -5,9 +5,11 @@ import { Icon } from '../../Icon';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
   assign,
+  BaseComponent,
   css,
   getId,
-  BaseComponent
+  getNativeProps,
+  inputProperties
 } from '../../Utilities';
 import * as stylesImport from './ChoiceGroup.scss';
 const styles: any = stylesImport;
@@ -100,6 +102,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 }
               >
                 <input
+                  { ...getNativeProps(option.inputProps, inputProperties) }
                   ref={ (c): HTMLInputElement => this._inputElement = c }
                   id={ option.id }
                   className={ css('ms-ChoiceField-input', styles.input) }
@@ -112,7 +115,6 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   onFocus={ this._onFocus.bind(this, option) }
                   onBlur={ this._onBlur.bind(this, option) }
                   aria-labelledby={ option.id }
-                  data-automation-id={ option.automationId }
                 />
                 { onRenderField(option, this._onRenderField) }
               </div>

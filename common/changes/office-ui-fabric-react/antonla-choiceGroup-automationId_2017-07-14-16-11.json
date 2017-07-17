@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding optional automationId for choice group fields",
+      "comment": "Mixing choice group fields with html input attributes",
       "type": "minor"
     }
   ],

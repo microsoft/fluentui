@@ -25,9 +25,9 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           defaultSelectedKey='B'
           options={ [
             {
-              automationId: 'forOptionA',
               key: 'A',
-              text: 'Option A'
+              text: 'Option A',
+              inputProps: { data: 'forOptionA' }
             },
             {
               key: 'B',

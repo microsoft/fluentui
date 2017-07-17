@@ -11,7 +11,7 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { automationId: 'auto1', key: '1', text: '1' },
+  { key: '1', text: '1', inputProps: { data: 'test1' } },
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
@@ -181,11 +181,11 @@ describe('ChoiceGroup', () => {
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
-    const autoIdGetter: (index: number) => string = (index: number): string => {
-      return (choiceOptions[index] as HTMLInputElement).getAttribute('data-automation-id');
+    const extraAttributeGetter: (index: number) => string = (index: number): string => {
+      return (choiceOptions[index] as HTMLInputElement).getAttribute('data');
     };
 
-    expect(autoIdGetter(0)).to.be.eq('auto1', 'Specified automation ID did not match');
-    expect(autoIdGetter(1)).to.be.null;
+    expect(extraAttributeGetter(0)).to.be.eq('auto1', 'Specified automation ID did not match');
+    expect(extraAttributeGetter(1)).to.be.null;
   });
 });
