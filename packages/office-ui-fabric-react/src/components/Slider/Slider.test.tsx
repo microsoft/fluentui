@@ -17,7 +17,7 @@ describe('Slider', () => {
       <Slider label='slider' />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('.ms-Label');
+    let labelElement = renderedDOM.querySelector('.ms-Label') as HTMLElement;
 
     expect(labelElement.textContent).to.equal('slider');
   });
@@ -34,8 +34,8 @@ describe('Slider', () => {
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let sliderLine = renderedDOM.querySelector('.ms-Slider-line');
-    let sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox');
+    let sliderLine = renderedDOM.querySelector('.ms-Slider-line') as HTMLElement;
+    let sliderThumb = renderedDOM.querySelector('.ms-Slider-slideBox') as HTMLElement;
 
     sliderLine.getBoundingClientRect = () => ({
       left: 0,
@@ -81,11 +81,11 @@ describe('Slider', () => {
   });
 
   it('can read the current value', () => {
-    let slider: ISlider;
+    let slider: ISlider | undefined;
 
     let component = ReactTestUtils.renderIntoDocument(
       <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
-    expect(slider.value).equals(12);
+    expect(slider!.value).equals(12);
   });
 });
