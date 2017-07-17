@@ -56,7 +56,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
     public render() {
       let { viewport } = this.state;
-      let isViewportVisible = viewport.width > 0 && viewport.height > 0;
+      let isViewportVisible = viewport!.width > 0 && viewport!.height > 0;
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
@@ -89,8 +89,8 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       };
 
       let isSizeChanged = (
-        (clientRect && clientRect.width) !== viewport.width ||
-        (scrollRect && scrollRect.height) !== viewport.height);
+        (clientRect && clientRect.width) !== viewport!.width ||
+        (scrollRect && scrollRect.height) !== viewport!.height);
 
       if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;
