@@ -126,7 +126,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     let distance = 0;
     stickies.forEach((sticky) => {
       if (headers) {
-        sticky.setTopDistance(distance)
+        sticky.setTopDistance(distance);
       } else {
         sticky.setBottomDistance(distance);
       }
