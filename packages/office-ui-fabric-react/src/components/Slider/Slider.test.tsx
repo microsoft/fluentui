@@ -24,7 +24,7 @@ describe('Slider', () => {
 
   it('can slide to default min/max and execute onChange', () => {
     let changedValue;
-    let onChange = (val) => {
+    let onChange = (val: any) => {
       changedValue = val;
     };
     let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(

@@ -42,6 +42,11 @@ export interface IBaseAutoFill {
 
 export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElement | BaseAutoFill> {
   /**
+   * Gets the compoonent ref.
+   */
+  componentRef?: (componentRef?: IBaseAutoFill) => void;
+
+  /**
    * The suggested autofill value that will display.
    */
   suggestedDisplayValue?: string;

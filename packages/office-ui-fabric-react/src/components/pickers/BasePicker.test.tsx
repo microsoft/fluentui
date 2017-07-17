@@ -31,11 +31,11 @@ function onResolveSuggestions(text: string): ITag[] {
   ].filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map(item => ({ key: item, name: item }));
 }
 
-const basicRenderer = (props) => {
+const basicRenderer = (props: IPickerItemProps<{ key: string, name: string }>) => {
   return <div> { props.item.name } </div>;
 };
 
-const basicSuggestionRenderer = (props) => {
+const basicSuggestionRenderer = (props: ISimple) => {
   return <div> { props.name } </div>;
 };
 

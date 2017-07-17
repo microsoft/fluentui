@@ -40,7 +40,7 @@ class AddStore extends BaseStore implements ISubscribable {
 class HelloStore extends BaseStore implements IHelloStore {
   public message: string = '';
 
-  public say(message) {
+  public say(message: string) {
     this.message = message;
     this.emitChange();
   }

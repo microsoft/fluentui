@@ -59,7 +59,7 @@ export function Icon(props: IIconProps): JSX.Element {
             props.className
           ) }
       >
-        { IconCodes[iconMemberName] }
+        { (IconCodes as any)[iconMemberName] }
       </i>
     );
   }

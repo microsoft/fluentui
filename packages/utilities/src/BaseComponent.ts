@@ -46,10 +46,6 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   constructor(props?: P, context?: any) {
     super(props, context);
 
-    if (props) {
-      this.props = props;
-    }
-
     this._shouldUpdateComponentRef = true;
 
     _makeAllSafe(this, BaseComponent.prototype, [

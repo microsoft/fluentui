@@ -14,6 +14,14 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     type: DocumentCardType.normal
   };
 
+  constructor(props: IDocumentCardProps) {
+    super(props);
+
+    this._warnDeprecations({
+      accentColor: null
+    });
+  }
+
   public render() {
     let { onClick, onClickHref, children, className, type, accentColor } = this.props;
     let actionable = (onClick || onClickHref) ? true : false;
