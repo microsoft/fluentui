@@ -9,10 +9,6 @@ import { memoizeFunction } from '../../Utilities';
 const MS_CHECKBOX_LABEL_SIZE = '20px';
 const MS_CHECKBOX_TRANSITION_DURATION = '200ms';
 const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
-const MS_CHECKBOX_HIGHCONTRAST_ICONBOXSIZE = '16px';
-
-const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
-const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: black-on-white)';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -43,18 +39,16 @@ export const getStyles = memoizeFunction((
         overflow: 'hidden'
       }
     ],
-    label: [
-      {
-        display: 'inline-flex',
-        alignItems: 'center',
-        cursor: 'pointer',
+    label: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      cursor: 'pointer',
 
-        // The negative margin is in place to correct for the margin of the box
-        margin: '0 -4px',
-        position: 'relative',
-        userSelect: 'none'
-      }
-    ],
+      // The negative margin is in place to correct for the margin of the box
+      margin: '0 -4px',
+      position: 'relative',
+      userSelect: 'none'
+    },
     labelReversed: {
       flexDirection: 'row-reverse',
       justifyContent: 'flex-end'

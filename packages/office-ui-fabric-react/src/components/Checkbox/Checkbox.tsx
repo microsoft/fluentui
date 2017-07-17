@@ -100,6 +100,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
     return (
       <button
+        { ...inputProps }
         { ...(checked !== undefined && { checked }) }
         { ...(defaultChecked !== undefined && { defaultChecked }) }
         disabled={ disabled }
@@ -109,6 +110,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         role='checkbox'
         className={ classNames.root }
         onClick={ this._onClick }
+        onFocus={ this._onFocus }
+        onBlur={ this._onBlur }
         aria-checked={ isChecked }
         aria-disabled={ disabled }
       >
@@ -131,6 +134,24 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   public focus(): void {
     if (this._checkBox) {
       this._checkBox.focus();
+    }
+  }
+
+  @autobind
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement>): void {
+    const { inputProps } = this.props;
+
+    if (inputProps && inputProps.onFocus) {
+      inputProps.onFocus(ev);
+    }
+  }
+
+  @autobind
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+    const { inputProps } = this.props;
+
+    if (inputProps && inputProps.onBlur) {
+      inputProps.onBlur(ev);
     }
   }
 
