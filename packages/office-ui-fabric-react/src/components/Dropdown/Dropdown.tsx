@@ -440,6 +440,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
       }
     }
+    let newIndex: number;
+    const { selectedIndex } = this.state;
 
     switch (ev.which) {
       case KeyCodes.enter:
