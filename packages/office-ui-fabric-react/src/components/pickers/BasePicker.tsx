@@ -81,6 +81,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   public dismissSuggestions() {
+    // Select the first suggestion if one is available when user leaves.
+    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+      this.addItemByIndex(0);
+    }
     this.setState({ suggestionsVisible: false });
   }
 
@@ -105,8 +109,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         className={ css(
           'ms-BasePicker',
           className ? className : '') }
-        onKeyDown={ this.onKeyDown }
-        onBlur={ this.onBlur } >
+        onKeyDown={ this.onKeyDown } >
         <FocusZone
           ref={ this._resolveRef('focusZone') }
           direction={ FocusZoneDirection.bidirectional }
@@ -303,17 +306,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  /**
-   * Select the first suggestion if one is available when user leaves
-   * the input area.
-   */
-  @autobind
-  protected onBlur() {
-    if (this.suggestionStore.hasSelectedSuggestion()) {
-      this.addItemByIndex(0);
-    }
-  }
-
   @autobind
   protected onInputChange(value: string) {
     this.updateValue(value);
@@ -326,6 +318,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onSuggestionClick(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
     this.addItemByIndex(index);
+    this.setState({ suggestionsVisible: false });
   }
 
   @autobind
@@ -360,7 +353,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
-          this.dismissSuggestions();
+          this.setState({ suggestionsVisible: false });
           ev.preventDefault();
           ev.stopPropagation();
         }
@@ -548,8 +541,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div>
         <div ref={ this._resolveRef('root') }
           className={ css('ms-BasePicker', className ? className : '') }
-          onKeyDown={ this.onKeyDown }
-          onBlur={ this.onBlur } >
+          onKeyDown={ this.onKeyDown } >
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
