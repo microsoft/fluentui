@@ -23,7 +23,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Collection of options for this ComboBox
    */
-  options?: IComboBoxOption[];
+  options: IComboBoxOption[];
 
   /**
    * Callback issues when either:

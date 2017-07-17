@@ -65,7 +65,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   public render() {
-    let currentPicker: JSX.Element;
+    let currentPicker: JSX.Element | undefined = undefined;
 
     switch (this.state.currentPicker) {
       case 1:
@@ -83,6 +83,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       case 5:
         currentPicker = this._renderLimitedSearch();
         break;
+      default:
     }
 
     return (
@@ -114,7 +115,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
         key={ 'list' }
@@ -129,7 +130,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
@@ -144,7 +145,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
@@ -158,7 +159,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onEmptyInputFocus={ this._returnMostRecentlyUsed }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         className={ 'ms-PeoplePicker' }
         defaultSelectedItems={ people.splice(0, 3) }
         key={ 'list' }
@@ -177,7 +178,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
         onEmptyInputFocus={ this._returnMostRecentlyUsedWithLimit }
-        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
@@ -262,7 +263,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this.state.peopleList.filter(item => this._doesTextStartWith(item.primaryText, filterText));
+    return this.state.peopleList.filter(item => this._doesTextStartWith(item.primaryText as string, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {
