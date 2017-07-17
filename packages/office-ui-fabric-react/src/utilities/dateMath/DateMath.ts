@@ -1,4 +1,5 @@
 import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
+import { assertNever } from '../../Utilities';
 
 const DAYS_IN_WEEK = 7;
 const MONTHS_IN_YEAR = 12;
@@ -117,7 +118,7 @@ export function compareDatePart(date1: Date, date2: Date): Number {
  */
 export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek): Date[] {
   let datesArray = new Array<Date>();
-  let startDate = null;
+  let startDate: Date;
   let endDate = null;
 
   switch (dateRangeType) {
@@ -135,6 +136,8 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
       startDate = new Date(date.getFullYear(), date.getMonth(), 1);
       endDate = addMonths(startDate, 1);
       break;
+    default:
+      return assertNever(dateRangeType);
   }
 
   // Populate the dates array with the dates in range
