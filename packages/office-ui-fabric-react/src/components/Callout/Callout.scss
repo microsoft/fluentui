@@ -9,7 +9,6 @@
 
 $Callout-beak-slant-width: 28px;
 $Callout-smallbeak-slant-width: 16px;
-$Callout-shadow-spread-margin: 5px;
 
 @mixin calloutBeak {
   position: absolute;
@@ -23,9 +22,8 @@ $Callout-shadow-spread-margin: 5px;
 }
 
 .root {
-  @include ms-drop-shadow(0,0, #{ $Callout-shadow-spread-margin }, 0px);
+  @include ms-drop-shadow(0,0, 5px, 0px);
   position: absolute;
-  border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
 
   @media screen and (-ms-high-contrast: active) {
@@ -33,11 +31,6 @@ $Callout-shadow-spread-margin: 5px;
   }
   @media screen and (-ms-high-contrast: black-on-white) {
     border: 1px solid $ms-color-black;
-  }
-  &.rootIsAttached {
-    box-shadow: none;
-    border: none;
-    overflow: hidden;
   }
 }
 
@@ -51,12 +44,6 @@ $Callout-shadow-spread-margin: 5px;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
-
-  &.mainIsAttached {
-    margin: $Callout-shadow-spread-margin;
-    @include ms-drop-shadow(0,0, #{ $Callout-shadow-spread-margin }, 0px);
-    border: 1px solid $ms-color-neutralLight;
-  }
 }
 
 .overFlowYHidden {

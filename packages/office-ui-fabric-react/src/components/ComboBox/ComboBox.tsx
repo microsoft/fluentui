@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout, CalloutLinkType } from '../../Callout';
+import { Callout } from '../../Callout';
 import { Label } from '../../Label';
 import {
   CommandButton,
@@ -60,7 +60,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
     options: [],
     allowFreeform: false,
-    autoComplete: true,
+    autoComplete: 'on',
     buttonIconProps: { iconName: 'ChevronDown' }
   };
 
@@ -151,12 +151,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let {
       isOpen,
       focused,
-      selectedIndex
+      selectedIndex,
+      currentPendingValueValidIndex
     } = this.state;
 
-    // If we are newly open, make sure the currently
-    // selected option is scrolled into view
-    if (!prevState.isOpen && isOpen) {
+    // If we are newly open or are open and the pending valid index changed,
+    // make sure the currently selected/pending option is scrolled into view
+    if (isOpen &&
+      (!prevState.isOpen ||
+        prevState.currentPendingValueValidIndex !== currentPendingValueValidIndex)) {
       this._scrollIntoView();
     }
 
@@ -238,7 +241,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             onClick={ allowFreeform ? this.focus : this._onComboBoxClick }
             onInputValueChange={ this._onInputChange }
             aria-expanded={ isOpen }
-            aria-autocomplete={ (!disabled && autoComplete) }
+            aria-autocomplete={ (!disabled && autoComplete === 'on') }
             role='combobox'
             aria-readonly={ ((allowFreeform || disabled) ? null : 'true') }
             readOnly={ disabled || !allowFreeform }
@@ -352,7 +355,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // If we are allowing freeform and autocomplete is also true
       // and we've got a pending value that matches an option, remember
       // the matched option's index
-      if (autoComplete && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+      if (autoComplete === 'on' && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
         index = currentPendingValueValidIndex;
       }
 
@@ -370,7 +373,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If autoComplete is on, return the
         // raw pending value, otherwise remember
         // the matched option's index
-        if (autoComplete) {
+        if (autoComplete === 'on') {
           return currentPendingValue;
         }
 
@@ -433,7 +436,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let newCurrentPendingValueValidIndex = -1;
 
     // If autoComplete is on, attempt to find a match from the available options
-    if (this.props.autoComplete) {
+    if (this.props.autoComplete === 'on') {
 
       // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
       let items = currentOptions.map((item, index) => { return { ...item, index }; }).filter((option) => option.itemType !== SelectableOptionMenuItemType.Header && option.itemType !== SelectableOptionMenuItemType.Divider).filter((option) => option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
@@ -472,7 +475,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       selectedIndex
     } = this.state;
 
-    if (this.props.autoComplete) {
+    if (this.props.autoComplete === 'on') {
 
       // If autoComplete is on while allow freeform is off,
       // we will remember the keypresses and build up a string to attempt to match
@@ -732,7 +735,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
-        linkType={ CalloutLinkType.attached }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
           { onRenderList({ ...props as any }, this._onRenderList) }
@@ -1100,7 +1102,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       case KeyCodes.space:
         // event handled in _onComboBoxKeyUp
-        if (!allowFreeform && !autoComplete) {
+        if (!allowFreeform && autoComplete === 'off') {
           break;
         }
 
@@ -1120,7 +1122,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we are not allowing freeform and
         // allowing autoComplete, handle the input here
         // since we have marked the input as readonly
-        if (!allowFreeform && autoComplete) {
+        if (!allowFreeform && autoComplete === 'on') {
           this._onInputChange(String.fromCharCode(ev.which));
           break;
         }
@@ -1155,7 +1157,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we are not allowing freeform and are not autoComplete
         // make space expand/collapse the comboBox
         // and allow the event to propagate
-        if (!allowFreeform && !autoComplete) {
+        if (!allowFreeform && autoComplete === 'off') {
           this.setState({
             isOpen: !this.state.isOpen
           });

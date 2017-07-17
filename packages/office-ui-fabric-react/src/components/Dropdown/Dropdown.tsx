@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout, CalloutLinkType } from '../../Callout';
+import { Callout } from '../../Callout';
 import { Label } from '../../Label';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
@@ -15,7 +15,9 @@ import {
   autobind,
   css,
   findIndex,
-  getId
+  getId,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
@@ -112,6 +114,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
+    let divProps = getNativeProps(this.props, divProperties);
 
     // Remove this deprecation workaround at 1.0.0
     if (isDisabled !== undefined) {
@@ -133,9 +136,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             'is-required ': required,
           }) }
           tabIndex={ disabled ? -1 : 0 }
-          onKeyDown={ this._onDropdownKeyDown }
-          onKeyUp={ this._onDropdownKeyUp }
-          onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
@@ -144,6 +144,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
+          { ...divProps }
+          onBlur={ this._onDropdownBlur }
+          onKeyDown={ this._onDropdownKeyDown }
+          onKeyUp={ this._onDropdownKeyUp }
+          onClick={ this._onDropdownClick }
         >
           <span
             id={ id + '-option' }
@@ -295,7 +300,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
-          linkType={ CalloutLinkType.attached }
         >
           <div style={ { width: this._dropDown.clientWidth - 2 } }>
             { onRenderList(props, this._onRenderList) }
@@ -421,7 +425,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onDropdownBlur(ev: React.FocusEvent<HTMLDivElement>) {
+    if (this.state.isOpen) {
+      // Do not onBlur when the callout is opened
+      return;
+    }
+  }
+
+  @autobind
+  private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
     let newIndex: number;
     const { selectedIndex } = this.state;
 
@@ -477,7 +495,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLDivElement>) {
+    if (this.props.onKeyUp) {
+      this.props.onKeyUp(ev);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -522,7 +546,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onDropdownClick() {
+  private _onDropdownClick(ev: React.MouseEvent<HTMLDivElement>) {
+    if (this.props.onClick) {
+      this.props.onClick(ev);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
     let { disabled, isDisabled } = this.props;
     let { isOpen } = this.state;
 
