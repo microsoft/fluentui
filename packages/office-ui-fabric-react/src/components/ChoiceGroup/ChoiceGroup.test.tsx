@@ -185,7 +185,7 @@ describe('ChoiceGroup', () => {
       return (choiceOptions[index] as HTMLInputElement).getAttribute('data');
     };
 
-    expect(extraAttributeGetter(0)).to.be.eq('auto1', 'Specified automation ID did not match');
+    expect(extraAttributeGetter(0)).to.be.eq('test1', 'Specified automation ID did not match');
     expect(extraAttributeGetter(1)).to.be.null;
   });
 });
