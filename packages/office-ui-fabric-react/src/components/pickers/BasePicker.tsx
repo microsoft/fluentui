@@ -41,7 +41,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
-  protected loadingTimer: number;
+  protected loadingTimer: number | undefined;
   protected currentPromise: PromiseLike<any>;
 
   constructor(basePickerProps: P) {
@@ -141,7 +141,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   }
 
-  protected renderSuggestions(): JSX.Element {
+  protected renderSuggestions(): JSX.Element | null {
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
       <Callout
@@ -169,7 +169,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
-    let { onRenderItem } = this.props;
+    let onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
     let { items } = this.state;
     return items.map((item: any, index: number) => onRenderItem({
       item,
@@ -213,7 +213,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onEmptyInputFocus() {
-    let suggestions: T[] | PromiseLike<T[]> = this.props.onEmptyInputFocus(this.state.items);
+    let onEmptyInputFocus = this.props.onEmptyInputFocus as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+    let suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.state.items);
     this.updateSuggestionsList(suggestions);
   }
 
@@ -277,7 +278,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]) {
     this.suggestionStore.updateSuggestions(suggestions, 0);
-    let itemValue: string = undefined;
+    let itemValue: string | undefined = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
       itemValue = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
