@@ -2,6 +2,61 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.21.1",
+      "tag": "office-ui-fabric-react_v4.21.1",
+      "date": "Mon, 17 Jul 2017 18:38:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "267ed2d0b9466d29c173982bcfc897c92ef72525",
+            "comment": "BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.10 <1.0.0` to `>=0.13.11 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.0",
+      "tag": "office-ui-fabric-react_v4.21.0",
+      "date": "Mon, 17 Jul 2017 10:22:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "ycoco <ycocococo6256@gmail.com>",
+            "commit": "21c744979934285a8759d93ce8cd8748a16053a5",
+            "comment": "ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string."
+          }
+        ],
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "adaee4e1abe3a0ee70a4bdc01804aaca57f1d0c4",
+            "comment": "ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view"
+          },
+          {
+            "author": "Ryan Delaney <rrdelaney@outlook.com>",
+            "commit": "492c1840d6b7ae8ee5487d083eb3ee1c73ad4874",
+            "comment": "Allow deeply nested links to render in Nav"
+          },
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "241b0d25bbbedb8702ac7ae3ec995cbe9767bd54",
+            "comment": "Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.9 <1.0.0` to `>=0.13.10 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.20.0",
       "tag": "office-ui-fabric-react_v4.20.0",
       "date": "Fri, 14 Jul 2017 17:34:53 GMT",
