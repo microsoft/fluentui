@@ -627,7 +627,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         increment = spaceLeft;
       }
 
-      column.calculatedWidth! += increment;
+      column.calculatedWidth = (column.calculatedWidth as number) + increment;
       totalWidth += increment;
     }
 
