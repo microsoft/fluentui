@@ -389,7 +389,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return (
       <BaseButton
         tabIndex={ -1 }
-        variantClassName='ms-Button--icon'
         styles={ {
           root: disabled ? mergeStyles(styles.splitButtonMenuButton, styles.splitButtonMenuButtonDisabled) : styles.splitButtonMenuButton,
           rootChecked: checked ? mergeStyles(styles.splitButtonMenuButton, styles.splitButtonMenuButtonChecked) : undefined,
