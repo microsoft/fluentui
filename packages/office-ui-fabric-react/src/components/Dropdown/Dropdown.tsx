@@ -127,6 +127,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
+          { ...divProps }
           data-is-focusable={ !disabled }
           ref={ this._resolveRef('_dropDown') }
           id={ id }
@@ -144,7 +145,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
-          { ...divProps }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
