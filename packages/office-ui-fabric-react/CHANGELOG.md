@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Jul 2017 17:34:53 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2017 10:22:38 GMT and should not be manually modified.
+
+## 4.21.0
+Mon, 17 Jul 2017 10:22:38 GMT
+
+### Minor changes
+
+- ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string.
+
+### Patches
+
+- ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view
+- Allow deeply nested links to render in Nav
+- Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that.
 
 ## 4.20.0
 Fri, 14 Jul 2017 17:34:53 GMT
