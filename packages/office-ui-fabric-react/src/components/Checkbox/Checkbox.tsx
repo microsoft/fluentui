@@ -21,9 +21,6 @@ import {
 import { getStyles } from './Checkbox.styles';
 
 export interface ICheckboxState {
-  /** Is true when the control has focus. */
-  isFocused?: boolean;
-
   /** Is true when Uncontrolled control is checked. */
   isChecked?: boolean;
 }
@@ -61,9 +58,16 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
     this._id = getId('checkbox-');
     this.state = {
-      isFocused: false,
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
     };
+  }
+
+  public componentWillReceiveProps(newProps: ICheckboxProps) {
+    if (newProps.checked !== undefined) {
+      this.setState({
+        isChecked: !!newProps.checked // convert null to false
+      });
+    }
   }
 
   /**
@@ -83,7 +87,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       styles: customStyles,
         } = this.props;
 
-    const { isFocused } = this.state;
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
@@ -92,27 +95,23 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       className,
       disabled,
       isChecked,
-      isFocused,
       isReversed
     );
 
     return (
-      <div className={ classNames.root } >
-        <input
-          { ...inputProps }
-          { ...(checked !== undefined && { checked }) }
-          { ...(defaultChecked !== undefined && { defaultChecked }) }
-          disabled={ disabled }
-          ref={ this._resolveRef('_checkBox') }
-          id={ this._id }
-          name={ name || this._id }
-          className={ classNames.input }
-          type='checkbox'
-          onChange={ this._onChange }
-          onFocus={ this._onFocus }
-          onBlur={ this._onBlur }
-          aria-checked={ isChecked }
-        />
+      <button
+        { ...(checked !== undefined && { checked }) }
+        { ...(defaultChecked !== undefined && { defaultChecked }) }
+        disabled={ disabled }
+        ref={ this._resolveRef('_checkBox') }
+        name={ name }
+        id={ this._id }
+        role='checkbox'
+        className={ classNames.root }
+        onClick={ this._onClick }
+        aria-checked={ isChecked }
+        aria-disabled={ disabled }
+      >
         <label className={ classNames.label } htmlFor={ this._id } >
           <span className={ classNames.box }>
             <span className={ classNames.checkbox }>
@@ -121,12 +120,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           </span>
           { label && <span className={ classNames.text }>{ label }</span> }
         </label>
-      </div >
+      </button>
     );
   }
 
   public get checked(): boolean {
-    return this._checkBox ? this._checkBox.checked : false;
+    return this.state.isChecked;
   }
 
   public focus(): void {
@@ -136,38 +135,16 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   @autobind
-  private _onFocus(ev: React.FocusEvent<HTMLInputElement>): void {
-    const { inputProps } = this.props;
-
-    if (inputProps && inputProps.onFocus) {
-      inputProps.onFocus(ev);
-    }
-
-    this.setState({ isFocused: true });
-  }
-
-  @autobind
-  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
-    const { inputProps } = this.props;
-
-    if (inputProps && inputProps.onBlur) {
-      inputProps.onBlur(ev);
-    }
-
-    this.setState({ isFocused: false });
-  }
-
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLInputElement>) {
+  private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
     const { onChange } = this.props;
-    const isChecked = (ev.target as HTMLInputElement).checked;
+    let { isChecked } = this.state;
 
     if (onChange) {
-      onChange(ev, isChecked);
+      onChange(ev, !isChecked);
     }
 
     if (this.props.checked === undefined) {
-      this.setState({ isChecked: isChecked });
+      this.setState({ isChecked: !isChecked });
     }
   }
 
@@ -177,7 +154,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     className: string,
     disabled: boolean,
     isChecked: boolean,
-    isFocused: boolean,
     isReversed: boolean
     ): ICheckboxClassNames {
     return {
@@ -187,7 +163,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         isChecked && 'is-checked',
         !disabled && 'is-enabled',
         disabled && 'is-disabled',
-        isFocused && 'is-inFocus',
         className,
         styles.root,
         !disabled && [

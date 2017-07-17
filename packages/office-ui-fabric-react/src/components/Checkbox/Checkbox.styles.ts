@@ -2,7 +2,7 @@ import { ICheckboxStyles } from './Checkbox.Props';
 import {
   ITheme,
   mergeStyleSets,
-  getFocusStyleBasedOnAncestorClass
+  getFocusStyle
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
@@ -28,10 +28,18 @@ export const getStyles = memoizeFunction((
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
   const styles: ICheckboxStyles = {
-    root: {
-    },
+    root: [
+      getFocusStyle(theme),
+      {
+        padding: '0',
+        border: 'none',
+        background: 'none',
+        margin: '0',
+        outline: 'transparent',
+        display: 'block'
+      }
+    ],
     label: [
-      getFocusStyleBasedOnAncestorClass(theme, '.ms-Fabric.is-focusVisible .is-inFocus'),
       {
         display: 'inline-flex',
         alignItems: 'center',
@@ -88,12 +96,6 @@ export const getStyles = memoizeFunction((
     },
     checkboxDisabled: {
       background: checkboxBackgroundDisabled,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        borderColor: palette.contrastWhiteDisabled,
-      },
     },
     checkboxCheckedDisabled: {
       background: checkboxBackgroundDisabled,
@@ -106,12 +108,6 @@ export const getStyles = memoizeFunction((
       opacity: '1'
     },
     checkmarkDisabled: {
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        color: palette.contrastWhiteDisabled,
-      },
     },
     checkmarkCheckedDisabled: {
       opacity: '1',
@@ -124,12 +120,6 @@ export const getStyles = memoizeFunction((
     },
     textDisabled: {
       color: checkboxTextColorDisabled,   // ms-fontColor-neutralTertiary
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: palette.contrastBlackDisabled,
-      },
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        color: palette.contrastWhiteDisabled,
-      },
     }
   };
 
