@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Jul 2017 10:22:38 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2017 18:38:01 GMT and should not be manually modified.
+
+## 4.21.1
+Mon, 17 Jul 2017 18:38:01 GMT
+
+### Patches
+
+- BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions.
 
 ## 4.21.0
 Mon, 17 Jul 2017 10:22:38 GMT
