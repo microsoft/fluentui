@@ -113,11 +113,11 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         aria-disabled={ disabled }
       >
         <label className={ classNames.label } htmlFor={ this._id } >
-          <span className={ classNames.box }>
-            <span className={ classNames.checkbox }>
+          <div className={ classNames.box }>
+            <div className={ classNames.checkbox }>
               <Icon iconName='CheckMark' className={ classNames.checkmark } />
-            </span>
-          </span>
+            </div>
+          </div>
           { label && <span className={ classNames.text }>{ label }</span> }
         </label>
       </button>

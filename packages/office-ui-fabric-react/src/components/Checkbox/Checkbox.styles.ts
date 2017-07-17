@@ -35,8 +35,12 @@ export const getStyles = memoizeFunction((
         border: 'none',
         background: 'none',
         margin: '0',
-        outline: 'transparent',
-        display: 'block'
+        outline: 'none',
+        display: 'block',
+        cursor: 'pointer',
+
+        // This is to hide the label's overflow because of the negative margin.
+        overflow: 'hidden'
       }
     ],
     label: [
@@ -44,6 +48,8 @@ export const getStyles = memoizeFunction((
         display: 'inline-flex',
         alignItems: 'center',
         cursor: 'pointer',
+
+        // The negative margin is in place to correct for the margin of the box
         margin: '0 -4px',
         position: 'relative',
         userSelect: 'none'
