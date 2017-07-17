@@ -11,6 +11,7 @@ import {
   KeyCodes,
   css,
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -375,7 +376,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName,
       menuIconProps,
       styles,
-      disabled
+      disabled,
+      checked
     } = this.props;
 
     if (menuIconProps === undefined) {
@@ -389,9 +391,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         tabIndex={ -1 }
         variantClassName='ms-Button--icon'
         styles={ {
-          root: disabled ? styles.splitButtonMenuButtonDisabled : styles.splitButtonMenuButton,
-          rootChecked: styles.splitButtonMenuButtonChecked,
-          icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon,
+          root: disabled ? mergeStyles(styles.splitButtonMenuButton, styles.splitButtonMenuButtonDisabled) : styles.splitButtonMenuButton,
+          rootChecked: checked ? mergeStyles(styles.splitButtonMenuButton, styles.splitButtonMenuButtonChecked) : undefined,
+          icon: disabled ? mergeStyles(styles.splitButtonMenuIcon, styles.splitButtonMenuIconDisabled) : styles.splitButtonMenuIcon,
           flexContainer: styles.splitButtonFlexContainer
         } }
         checked={ this.props.checked }
