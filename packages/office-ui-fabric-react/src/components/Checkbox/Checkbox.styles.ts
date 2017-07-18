@@ -56,10 +56,6 @@ export const getStyles = memoizeFunction((
     labelDisabled: {
       cursor: 'default'
     },
-    input: {
-      position: 'absolute',
-      opacity: '0'
-    },
     box: {
       display: 'flex',
       margin: '0 4px',

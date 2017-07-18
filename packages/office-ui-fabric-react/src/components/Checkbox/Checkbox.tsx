@@ -28,7 +28,6 @@ export interface ICheckboxState {
 interface ICheckboxClassNames {
   root: string;
   label: string;
-  input: string;
   box: string;
   checkbox: string;
   checkmark: string;
@@ -60,14 +59,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
     };
-  }
-
-  public componentWillReceiveProps(newProps: ICheckboxProps) {
-    if (newProps.checked !== undefined) {
-      this.setState({
-        isChecked: !!newProps.checked // convert null to false
-      });
-    }
   }
 
   /**
@@ -204,11 +195,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         styles.label,
         isReversed && styles.labelReversed,
         disabled && styles.labelDisabled
-      ) as string,
-
-      input: mergeStyles(
-        'ms-Checkbox-input',
-        styles.input
       ) as string,
 
       box: mergeStyles(

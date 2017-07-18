@@ -81,14 +81,9 @@ export interface ICheckboxProps extends React.HTMLAttributes<HTMLElement | HTMLI
 
 export interface ICheckboxStyles {
   /**
-   * Style for the root element of the checkbox component in the default enabled/unchecked state.
+   * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
    */
   root?: IStyle;
-
-  /**
-   * Style for the checkbox input HTML element. This is hidden visually.
-   */
-  input?: IStyle;
 
   /**
    * Style for the label part (contains the customized checkbox + text) when enabled.
@@ -174,5 +169,4 @@ export interface ICheckboxStyles {
    * Style override for text appearing with the checkbox when disabled.
    */
   textDisabled?: IStyle;
-
 }
