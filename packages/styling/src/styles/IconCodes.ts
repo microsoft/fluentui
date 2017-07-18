@@ -2829,7 +2829,7 @@ export const IconCodes = {
   zoomOut: '\uE71F',
 
   // Manual additions for multi-column icons
-  singleColumn: '\uF321',
+  singleColumn: '\uF1D3',
   doubleColumn: '\uF1D4',
   tripleColumn: '\uF1D5',
   columnLeftTwoThirds: '\uF1D6',
