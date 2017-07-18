@@ -1,7 +1,13 @@
 language: node_js
 node_js:
-  - '7'
+- '7'
 before_script:
-  - npm install -g gulp
+- npm install -g gulp
 script:
-  - npm run buildfast
+- npm run buildfast
+env:
+  global:
+  - secure: IJ5xGVdnTjBQdp2QEff7jyISEwekooCMiZ0Wl4lvc2+eun+UT1PHuhSOZ7rrd2Dt7X8o3nPR0jVl4L1yRPRswvdVLbH4uEb+rtiiVJ4077vsgTF22Oxmh/EOUGu/kOK1dsxVW3vdg+YbB/1grYom/zCQ8LXoSMmktCNeH8QiouwR54eiy8VQCdls9w4mo9WGm038Vuzp0fOdXzpRoNLBSJRv4OlEdzReQ1Qcksv7lcFd9SCvOU2wPHHNdsvuLU+mi42EGWa4kMMTZ3Yex71rcGIVU99JTAHl/f23lLdSXTzzNOaOi3kVGxNz/fsaVZsDh7zBcb54qGe1846GBzQwBroWhyAKjajOs0cQtIISOepmvs0w8Oe+KrrF/F97KQOoMruXcuOf8bANEwDgrX0Lv1ogrc2Vf4VtZDTjT77Vjwzx1+DVXzPzFhkMj6Kw5VDa53afa5KQKBCZSrodJIp+9PnDmOuRzTyudN0Vi1B2OohdX6rZ9YYEvEdFUEaXFD5+rBokcuXwfcn7jAIvK6PQpOwy7MK/tR+oppxVkCzIBr+60m3oL+E12z/0zh0tK1EuVDD9eAFqx5MX0Tj0LYhSP/Bcq2sk2PzS+GRZKCfU4qAZhun0bArkHfSkrJNLExtPpCT07YDZitHaF8zb1Di0FqSTs2PbVFmCQ4tS+5wgCck=
+  - secure: fj+KU6ioUwce4ij+WjVM1gwsGKPFPDNAdVtAUbyLJOEmBRQ+Kc98BlaQlE1D9LVbpMzk/radnRAhGsYgMqLJwzKSaC/YhsQthj6ZbEMNQWBvoECw82p88ZtbbqKaPhPUpWSw/y/UdD6C70rnXM0mXuNQzxytP/0T/oykoeafGQl+/lZiv0vyIw/LHZPBEtgqI6QEklWlehhPR6ht53a/Pf9UEjtDpG6oCymC+O2Ylh5xkGjLxFdb5aGKbsUEkJ+EziOaM22UfM023jnjA0m5OWraPCh2wYIAP6DS/SN4ewnTbsiz35TWD6TDVKd+DW0ZrJuXJ6Zx+ou+lULzziwVedoUFw+UqqwfLuf4Dh9GhABNnUt9+dkUwlWQFsZCTkSIV6Kkv/xU0qHp7+Lk1+zSkT+pr1XKiMKNkvpIa7pFrnD6om8Tk7FcI2v28CZvqEH10jG/kNKBeegTiQQ0u1o0fyieegr0AZpaednfEaFDhY+hqLYA3qYv5ZMxgn8Ub/vkXxkk3Wa50p6IGSmkImoVmnx3a4XjTQCgMnP6kRqyuN+I1p6CYI1FKENe74eACxvhmbQiItwB9kE0m4Ye/L0bGTSll/QD3JjsPSXGOpAdIHFHzzGrbMdc00dvMXLw6d0iefLHPAB1ZI0wGAnPPHVWqLtpKDAVxnFF4Ng8lFnjiFw=
+after_success: curl --ftp-create-dirs -T packages/office-ui-fabric-react/visualtests/baseline
+  -u $FTP_USER:$FTP_PASSWORD ftp://waws-prod-bay-049.ftp.azurewebsites.windows.net/site/wwwroot/mgodbolt/vrt
