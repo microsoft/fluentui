@@ -1,6 +1,7 @@
 import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IComboBox {
   /**
@@ -59,4 +60,27 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * The IconProps to use for the button aspect of the combobox
    */
   buttonIconProps?: IIconProps;
+
+  styles?: IComboBoxStyles;
+
+  theme?: ITheme;
+}
+
+export interface IComboBoxStyles {
+  container?: IStyle;
+  root?: IStyle;
+  rootDisabled?: IStyle;
+  rootReadOnly?: IStyle;
+  rootFocused?: IStyle;
+  input?: IStyle;
+  caretButton?: IStyle;
+  errorMessage?: IStyle;
+  callout?: IStyle;
+  header?: IStyle;
+  divider?: IStyle;
+  items?: IStyle;
+  item?: IStyle;
+  itemSelected?: IStyle;
+  itemDisabled?: IStyle;
+  optionText?: IStyle;
 }

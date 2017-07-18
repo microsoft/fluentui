@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
+import { IComboBoxOption, IComboBoxProps, IComboBoxStyles } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -17,11 +17,21 @@ import {
   findIndex,
   getId,
   getNativeProps,
-  KeyCodes
+  KeyCodes,
+  memoize
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
-import * as stylesImport from './ComboBox.scss';
-const styles: any = stylesImport;
+
+import {
+  customizable,
+} from '../../Utilities';
+import {
+  ITheme,
+  mergeStyles,
+} from '../../Styling';
+import {
+  getStyles
+} from './ComboBox.styles';
 
 export interface IComboBoxState {
 
@@ -49,12 +59,28 @@ export interface IComboBoxState {
   currentPendingValue: string;
 }
 
+interface IComboBoxClassNames {
+  container: string;
+  root: string;
+  input: string;
+  caretButton: string;
+  errorMessage: string;
+  callout: string;
+  items: string;
+  item: string;
+  itemSelected: string;
+  header: string;
+  divider: string;
+  optionText: string;
+}
+
 enum SearchDirection {
   backward = -1,
   none = 0,
   forward = 1
 }
 
+@customizable(['theme'])
 export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public static defaultProps: IComboBoxProps = {
@@ -98,6 +124,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   // The current visible value sent to the auto fill on render
   private _currentVisibleValue: string | undefined;
+
+  private _classNames: IComboBoxClassNames;
 
   constructor(props: IComboBoxProps) {
     super(props);
@@ -200,38 +228,40 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       onRenderContainer = this._onRenderContainer,
       allowFreeform,
       autoComplete,
-      buttonIconProps
+      buttonIconProps,
+      styles: customStyles,
+      theme,
     } = this.props;
     let { isOpen, selectedIndex, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
     let divProps = getNativeProps(this.props, divProperties);
 
+    this._classNames = this._getClassNames(
+      getStyles(theme, customStyles),
+      className,
+      isOpen,
+      disabled,
+      required,
+      focused,
+      allowFreeform
+    );
+
     return (
-      <div {...divProps } ref='root' className={ css('ms-ComboBox-container') }>
+      <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
           <Label id={ id + '-label' } required={ required } htmlFor={ id }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }
           id={ id + 'wrapper' }
-          className={
-            css('ms-ComboBox', styles.wrapper,
-              (errorMessage && errorMessage.length > 0 ? styles.wrapperForError : null),
-              styles.root, className, {
-                'is-open': !!isOpen,
-                ['is-disabled ' + styles.rootIsDisabled]: !!disabled,
-                'is-required ': !!required,
-                [styles.focused]: !!focused,
-                [styles.readOnly]: !allowFreeform
-              }
-            )
-          } >
+          className={ this._classNames.root }
+        >
           <BaseAutoFill
             data-is-interactable={ !disabled }
             ref={ this._resolveRef('_comboBox') }
             id={ id + '-input' }
-            className={ css('ms-ComboBox-Input', styles.input) }
+            className={ this._classNames.input }
             type='text'
             key={ selectedIndex }
             onFocus={ this._select }
@@ -257,7 +287,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
           <IconButton
-            className={ css('ms-ComboBox-Button', styles.caretDown) }
+            className={ this._classNames.caretButton }
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
@@ -272,7 +302,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {
           errorMessage &&
           <div
-            className={ css(styles.errorMessage) }>
+            className={ this._classNames.errorMessage }>
             { errorMessage }
           </div>
         }
@@ -734,7 +764,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         directionalHint={ DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
         { ...calloutProps }
-        className={ css('ms-ComboBox-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
+        className={ this._classNames.callout }
         targetElement={ this._comboBoxWrapper }
         onDismiss={ this._onDismiss }
         setInitialFocus={ false }
@@ -759,7 +789,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       <div
         id={ id + '-list' }
-        className={ css('ms-ComboBox-items', styles.items) }
+        className={ this._classNames.items }
         aria-labelledby={ id + '-label' }
         role='listbox'
       >
@@ -788,7 +818,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return <div
         role='separator'
         key={ key }
-        className={ css('ms-ComboBox-divider', styles.divider) } />;
+        className={ this._classNames.divider } />;
     }
     return null;
   }
@@ -796,7 +826,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _renderHeader(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     return (
-      <div key={ item.key } className={ css('ms-ComboBox-header', styles.header) } role='header'>
+      <div key={ item.key } className={ this._classNames.header } role='header'>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -812,13 +842,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }
-        className={ css(
-          'ms-ComboBox-item', styles.item, {
-            ['is-selected ' + styles.itemIsSelected]:
-            isSelected,
-            ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
-          }
-        ) }
+        className={ mergeStyles(
+          this._classNames.item,
+          isSelected && this._classNames.itemSelected
+        ) as string }
         onClick={ () => this._onItemClick(item.index) }
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
@@ -868,7 +895,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    return <span className={ css('ms-ComboBox-optionText', styles.optionText) }>{ item.text }</span>;
+    return <span className={ this._classNames.optionText }>{ item.text }</span>;
   }
 
   /**
@@ -1216,5 +1243,75 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         isOpen: !isOpen
       });
     }
+  }
+
+  @memoize
+  private _getClassNames(
+    styles: IComboBoxStyles,
+    className: string,
+    isOpen: boolean,
+    disabled: boolean,
+    required: boolean,
+    focused: boolean,
+    allowFreeform: boolean
+    ): IComboBoxClassNames {
+    return {
+      container: mergeStyles(
+        'ms-ComboBox-container',
+        styles.container,
+      ) as string,
+      root: mergeStyles(
+        'ms-ComboBox',
+        isOpen && 'is-open',
+        disabled && 'is-disabled',
+        required && 'is-required',
+        className,
+        styles.root,
+        disabled && styles.rootDisabled,
+        focused && styles.rootFocused,
+        !allowFreeform && styles.rootReadOnly,
+      ) as string,
+      input: mergeStyles(
+        'ms-ComboBox-Input',
+        styles.input,
+      ) as string,
+      caretButton: mergeStyles(
+        'ms-ComboBox-Button',
+        styles.caretButton
+      ) as string,
+      errorMessage: mergeStyles(
+        styles.errorMessage
+      ) as string,
+      callout: mergeStyles(
+        'ms-ComboBox-callout',
+        styles.callout
+      ) as string,
+      items: mergeStyles(
+        'ms-ComboBox-items',
+        styles.items
+      ) as string,
+      item: mergeStyles(
+        'ms-ComboBox-item',
+        disabled && 'is-disabled',
+        styles.item,
+        disabled && styles.itemDisabled,
+      ) as string,
+      itemSelected: mergeStyles(
+        'is-selected',
+        styles.itemSelected,
+      ) as string,
+      header: mergeStyles(
+        'ms-ComboBox-header',
+        styles.header
+      ) as string,
+      divider: mergeStyles(
+        'ms-ComboBox-divider',
+        styles.divider
+      ) as string,
+      optionText: mergeStyles(
+        'ms-ComboBox-optionText',
+        styles.optionText
+      ) as string,
+    };
   }
 }
