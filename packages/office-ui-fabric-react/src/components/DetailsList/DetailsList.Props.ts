@@ -17,6 +17,7 @@ import {
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { IListProps } from '../List/index';
 
 export { IDetailsHeaderProps };
 
@@ -41,6 +42,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** The items to render. */
   items: any[];
+
+  /** Optional properties to pass through to the list components being rendered. */
+  listProps?: IListProps;
 
   /**
    * Optional default focused index to set focus to once the items have rendered and the index exists.
@@ -179,6 +183,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
    * @defaultValue 5
    */
   minimumPixelsForDrag?: number;
+
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
 }
 
 export interface IColumn {
@@ -311,6 +318,11 @@ export interface IColumn {
    * An optional class name to stick on the column cell within each header.
    */
   headerClassName?: string;
+
+  /**
+  * If set, will add additional LTR padding-right to column and cells.
+  */
+  isPadded?: boolean;
 }
 
 /**

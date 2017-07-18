@@ -25,7 +25,7 @@ const _indentWithExpandButton: number = 28;
 const _indentNoExpandButton: number = 20;
 
 // global var used in _isLinkSelectedKey
-let _urlResolver;
+let _urlResolver: HTMLAnchorElement | undefined;
 
 export interface INavState {
   isGroupCollapsed?: { [key: string]: boolean };
@@ -135,6 +135,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
+    const isRtl: boolean = getRTL();
+    const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
 
     return (
       <div key={ link.key || linkIndex }
@@ -144,8 +146,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           [styles.compositeLinkIsExpanded]: link.isExpanded,
           [styles.compositeLinkIsSelected]: isLinkSelected
         }) }>
-        { (nestingLevel === 0 && link.links && link.links.length > 0 ?
+        { (link.links && link.links.length > 0 ?
           <button
+            style={ { [isRtl ? 'marginRight' : 'marginLeft']: paddingBefore } }
             className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }

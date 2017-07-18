@@ -13,6 +13,7 @@ export * from './IRenderFunction';
 export * from './KeyCodes';
 export * from './Rectangle';
 export * from './array';
+export * from './assertNever';
 export * from './autobind';
 export * from './css';
 export * from './customizable';

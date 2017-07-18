@@ -32,9 +32,9 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
     dataItems.push(item);
   }
 
-  let result = {
+  let result: IOverflowData = {
     primary: dataItems,
-    overflow: []
+    overflow: [] as any[]
   };
 
   if (cachingEnabled) {
@@ -55,9 +55,9 @@ function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
   return primaryControls.reduce((acc, current) => acc + current.key, '');
 }
 
-export class ResizeGroupOverflowSetExample extends BaseComponent<any, IResizeGroupOverflowSetExampleState> {
+export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGroupOverflowSetExampleState> {
 
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
     this.state = {
       short: false,
@@ -137,12 +137,12 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<any, IResizeGro
   }
 
   @autobind
-  private onCachingEnabledChanged(_, checked: boolean) {
+  private onCachingEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
     this.setState({ cachingEnabled: checked });
   }
 
   @autobind
-  private onButtonsCheckedChanged(_, checked: boolean) {
+  private onButtonsCheckedChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
     this.setState({ buttonsChecked: checked });
   }
 

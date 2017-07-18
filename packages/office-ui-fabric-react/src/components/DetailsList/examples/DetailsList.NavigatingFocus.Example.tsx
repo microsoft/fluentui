@@ -3,8 +3,13 @@ import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import './DetailsListExample.scss';
 
-export class DetailsListNavigatingFocusExample extends React.Component<any, any> {
-  public state = {
+export interface IDetailsListNavigatingFocusExampleState {
+  items: any;
+  initialFocusedIndex?: number;
+}
+
+export class DetailsListNavigatingFocusExample extends React.Component<{}, IDetailsListNavigatingFocusExampleState> {
+  public state: IDetailsListNavigatingFocusExampleState = {
     items: generateItems(''),
     initialFocusedIndex: undefined,
   };
@@ -44,5 +49,5 @@ export class DetailsListNavigatingFocusExample extends React.Component<any, any>
 }
 
 function generateItems(parent: string) {
-  return Array.prototype.map.call('abcdefghi', name => parent + name);
+  return Array.prototype.map.call('abcdefghi', (name: string) => parent + name);
 }

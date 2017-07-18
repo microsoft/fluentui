@@ -8,15 +8,15 @@ import { KeyCodes } from '../../Utilities';
 let { expect } = chai;
 
 import { ComboBox } from './ComboBox';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
+import { IComboBoxOption } from './ComboBox.Props';
 
-const DEFAULT_OPTIONS: ISelectableOption[] = [
+const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
 
-const DEFAULT_OPTIONS2: ISelectableOption[] = [
+const DEFAULT_OPTIONS2: IComboBoxOption[] = [
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' }
@@ -103,6 +103,7 @@ describe('ComboBox', () => {
     let wrapper = mount(
       <ComboBox
         label='testgroup'
+        options={ [] }
         value='1'
       />);
     let comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -136,7 +137,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ true }
+        autoComplete='on'
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -154,7 +155,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ true }
+        autoComplete='on'
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -172,7 +173,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ false }
+        autoComplete='off'
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -190,7 +191,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ false }
+        autoComplete='off'
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
