@@ -89,10 +89,10 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       };
 
       let isSizeChanged = (
-        clientRect.width !== viewport.width ||
-        scrollRect.height !== viewport.height);
+        (clientRect && clientRect.width) !== viewport.width ||
+        (scrollRect && scrollRect.height) !== viewport.height);
 
-      if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS) {
+      if (isSizeChanged && this._resizeAttempts < MAX_RESIZE_ATTEMPTS && clientRect && scrollRect) {
         this._resizeAttempts++;
         this.setState({
           viewport: {
