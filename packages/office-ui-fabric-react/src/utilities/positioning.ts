@@ -160,7 +160,7 @@ export function getRelativePositions(
   props: IPositionProps,
   hostElement: HTMLElement,
   calloutElement: HTMLElement): IPositionInfo {
-  let beakWidth: number = !props.isBeakVisible ? 0 : props.beakWidth;
+  let beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
   let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   let boundingRect: Rectangle = props.bounds ?
@@ -173,7 +173,7 @@ export function getRelativePositions(
     props.targetPoint,
     props.useTargetPoint);
   let positionData: PositionData = positioningFunctions._getPositionData(
-    props.directionalHint,
+    props.directionalHint as DirectionalHint,
     targetRect,
     boundingRect,
     props.coverTarget);
@@ -283,7 +283,8 @@ export module positioningFunctions {
       if (targetPoint) {
         targetRectangle = new Rectangle(targetPoint.x, targetPoint.x, targetPoint.y, targetPoint.y);
       } else {
-        targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+        let event = ev as MouseEvent;
+        targetRectangle = new Rectangle(event.clientX, event.clientX, event.clientY, event.clientY);
       }
     } else {
       if (!targetElement) {
@@ -414,7 +415,7 @@ export module positioningFunctions {
 
   export function _finalizeBeakPosition(beakRectangle: Rectangle, callout: ICallout, estimatedTargetPoint: IPoint, border: number): Rectangle {
     let beakPixelSize: number = _calculateActualBeakWidthInPixels(beakRectangle.width) / 2;
-    let innerRect: Rectangle = null;
+    let innerRect: Rectangle | null = null;
     let beakPoint: IPoint = { x: beakRectangle.width / 2, y: beakRectangle.width / 2 };
 
     if (callout.calloutEdge === RectangleEdge.bottom || callout.calloutEdge === RectangleEdge.top) {
@@ -686,11 +687,11 @@ export module positioningFunctions {
   }
 
   export function _getBorderSize(element: HTMLElement): number {
-    let styles: CSSStyleDeclaration = getComputedStyle(element, null);
-    let topBorder: number = parseFloat(styles.borderTopWidth);
-    let bottomBorder: number = parseFloat(styles.borderBottomWidth);
-    let leftBorder: number = parseFloat(styles.borderLeftWidth);
-    let rightBorder: number = parseFloat(styles.borderRightWidth);
+    let styles: CSSStyleDeclaration = getComputedStyle(element, undefined);
+    let topBorder: number = parseFloat(styles.borderTopWidth || '');
+    let bottomBorder: number = parseFloat(styles.borderBottomWidth || '');
+    let leftBorder: number = parseFloat(styles.borderLeftWidth || '');
+    let rightBorder: number = parseFloat(styles.borderRightWidth || '');
 
     // If any of the borders are NaN default to 0
     if (isNaN(topBorder) || isNaN(bottomBorder) || isNaN(leftBorder) || isNaN(rightBorder)) {

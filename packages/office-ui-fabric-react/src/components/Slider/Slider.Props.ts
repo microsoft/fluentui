@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ISlider {
-  value: number;
+  value: number | undefined;
 
   focus: () => void;
 }
