@@ -1,0 +1,28 @@
+{
+  "localLinks": {
+    "@uifabric/example-app-base": [
+      "@uifabric/utilities"
+    ],
+    "@uifabric/example-component": [
+      "@uifabric/example-app-base",
+      "@uifabric/utilities",
+      "office-ui-fabric-react"
+    ],
+    "@uifabric/styling": [
+      "@uifabric/example-app-base",
+      "@uifabric/utilities"
+    ],
+    "fabric-website": [
+      "@uifabric/example-app-base",
+      "@uifabric/utilities",
+      "office-ui-fabric-react"
+    ],
+    "office-ui-fabric-react": [
+      "@uifabric/example-app-base",
+      "@uifabric/utilities"
+    ],
+    "todo-app": [
+      "office-ui-fabric-react"
+    ]
+  }
+}
