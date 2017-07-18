@@ -10,6 +10,9 @@ let fs = require('fs');
 let path = require('path');
 let del = require('del');
 let gulpConnect = require('gulp-connect');
+let ftp = require('vinyl-ftp');
+let gutil = require('gulp-util');
+let minimist = require('minimist');
 
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isNuke = process.argv.indexOf('nuke') >= 0;
@@ -40,6 +43,19 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
           comparisonResultRoot: 'visualtests/results'
         })).on('end', done);
   }
+});
+
+let args = minimist(process.argv.slice(2));
+gulp.task('ftpdeploy', function () {
+  var conn = ftp.create({
+    host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
+    user: args.user,
+    password: args.password,
+    log: gutil.log
+  });
+  gulp.src(['visualtests/baseline/**'], { base: '.', buffer: false })
+    .pipe(conn.newer('/site/wwwroot/mgodbolt/vrt/'))
+    .pipe(conn.dest('/site/wwwroot/mgodbolt/vrt/'));
 });
 
 // Configure custom lint overrides.
