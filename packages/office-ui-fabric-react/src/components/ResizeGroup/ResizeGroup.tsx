@@ -25,6 +25,15 @@ export interface IResizeGroupState {
    * be remeasured.
    */
   measureContainer?: boolean;
+
+  /**
+   * Are we resizing to accommodate having more or less available space?
+   * The 'grow' direction is when the container may have more room than the last render,
+   * such as when a window resize occurs. This means we will try to fit more content in the window.
+   * The 'shrink' direction is when the contents don't fit in the container and we need
+   * to find a transformation of the data that makes everything fit.
+   */
+  resizeDirection?: 'grow' | 'shrink';
 }
 
 /**
@@ -106,6 +115,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (nextMeasuredData === undefined) {
         return {
           renderedData: dataToMeasure,
+          resizeDirection: undefined,
           dataToMeasure: undefined
         };
       }
@@ -124,7 +134,54 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
     return {
       renderedData: dataToMeasure,
+      resizeDirection: undefined,
       dataToMeasure: undefined
+    };
+  }
+
+  /**
+   * This function should be called when the state changes in a manner that might allow for more content to fit
+   * on the screen, such as the window width growing.
+   * @param data - The initial data point to start measuring.
+   * @param onGrowData - Function that transforms the data into something that may take up more space when rendering.
+   * @param getElementToMeasureWidth - A function that returns the measurement of the rendered data. Only called when the measurement
+   * is not in the cache.
+   */
+  function _growDataUntilItDoesNotFit(data: any,
+    onGrowData: (prevData: any) => any,
+    getElementToMeasureWidth: () => number): IResizeGroupState {
+    let dataToMeasure = data;
+    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
+
+    while (measuredWidth < _containerWidth) {
+      let nextMeasuredData = onGrowData(dataToMeasure);
+
+      // We don't want to get stuck in an infinite render loop when there are no more
+      // scaling steps, so implementations of onGrowData should return undefined when
+      // there are no more scaling states to apply.
+      if (nextMeasuredData === undefined) {
+        return {
+          renderedData: dataToMeasure,
+          resizeDirection: undefined,
+          dataToMeasure: undefined
+        };
+      }
+
+      measuredWidth = _measurementCache.getCachedMeasurement(nextMeasuredData);
+      // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
+      if (measuredWidth === undefined) {
+        return {
+          dataToMeasure: nextMeasuredData
+        };
+      }
+
+      dataToMeasure = nextMeasuredData;
+    }
+
+    // Once the loop is done, we should now shrink until the contents fit.
+    return {
+      dataToMeasure,
+      resizeDirection: 'shrink'
     };
   }
 
@@ -133,15 +190,25 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param newWidth - The new width of the container.
    * @param fullWidthData - The initial data passed in as a prop to resizeGroup.
    * @param renderedData - The data that was rendered prior to the container size changing.
+   * @param onGrowData - Set to true if the Resize group has an onGrowData function.
    */
-  function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any): IResizeGroupState {
+  function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newWidth > _containerWidth) {
-      nextState = {
-        dataToMeasure: fullWidthData
-      };
+      if (hasOnGrowData) {
+        nextState = {
+          resizeDirection: 'grow',
+          dataToMeasure: renderedData
+        };
+      } else {
+        nextState = {
+          resizeDirection: 'shrink',
+          dataToMeasure: fullWidthData
+        };
+      }
     } else {
       nextState = {
+        resizeDirection: 'shrink',
         dataToMeasure: renderedData
       };
     }
@@ -161,7 +228,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
       if (_containerWidth && currentState.renderedData) {
-        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData) };
+        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData) };
       }
 
       // If we are just setting the container width for the first time, we can't do any optimizations
@@ -174,10 +241,17 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     };
 
     if (currentState.dataToMeasure) {
-      nextState = {
-        ...nextState,
-        ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureWidth)
-      };
+      if (currentState.resizeDirection === 'grow') {
+        nextState = {
+          ...nextState,
+          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth)
+        };
+      } else {
+        nextState = {
+          ...nextState,
+          ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureWidth)
+        };
+      }
     }
 
     return nextState;
@@ -193,6 +267,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     super(props);
     this.state = {
       dataToMeasure: { ...this.props.data },
+      resizeDirection: 'shrink',
       measureContainer: true,
     };
   }
@@ -222,6 +297,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   public componentWillReceiveProps(nextProps: IResizeGroupProps) {
     this.setState({
       dataToMeasure: { ...nextProps.data },
+      resizeDirection: 'shrink',
       renderedData: undefined,
       measureContainer: true // Receiving new props means the parent might rerender and the root width might change
     });
