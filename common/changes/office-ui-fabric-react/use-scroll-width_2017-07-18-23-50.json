@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "christianjordangonzalez@gmail.com"
+}
