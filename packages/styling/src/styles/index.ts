@@ -2,7 +2,7 @@ export { AnimationStyles } from './AnimationStyles';
 export { DefaultPalette } from './DefaultPalette';
 export { DefaultFontStyles, FontSizes, FontWeights } from './DefaultFontStyles';
 export { IconCodes } from './IconCodes';
-export { getFocusStyle, getFocusStyleBasedOnAncestorClass } from './getFocusStyle';
+export { getFocusStyle } from './getFocusStyle';
 export {
   ThemeSettingName,
   getTheme,
