@@ -2829,14 +2829,9 @@ export const IconCodes = {
   zoomOut: '\uE71F',
 
   // Manual additions for multi-column icons
-  singleColumn: '\F321',
-  singleColumnEdit: '\F1D3',
-  doubleColumn: '\F1D4',
-  doubleColumnEdit: '\F322',
-  tripleColumn: '\F1D5',
-  tripleColumnEdit: '\F323',
-  columnLeftTwoThirds: '\F1D6',
-  columnLeftTwoThirdsEdit: '\F324',
-  columnRightTwoThirds: '\F1D7',
-  columnRightTwoThirdsEdit: '\F325'
+  singleColumn: '\uF321',
+  doubleColumn: '\uF1D4',
+  tripleColumn: '\uF1D5',
+  columnLeftTwoThirds: '\uF1D6',
+  columnRightTwoThirds: '\uF1D7',
 };
