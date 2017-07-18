@@ -1,6 +1,109 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2017 18:38:01 GMT and should not be manually modified.
+
+## 4.21.1
+Mon, 17 Jul 2017 18:38:01 GMT
+
+### Patches
+
+- BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions.
+
+## 4.21.0
+Mon, 17 Jul 2017 10:22:38 GMT
+
+### Minor changes
+
+- ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string.
+
+### Patches
+
+- ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view
+- Allow deeply nested links to render in Nav
+- Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that.
+
+## 4.20.0
+Fri, 14 Jul 2017 17:34:53 GMT
+
+### Minor changes
+
+- PeoplePicker: adding a custom validator prop
+- DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing
+
+### Patches
+
+- ResizeGroup: Do measurements inside requestAnimationFrame
+
+## 4.19.0
+Thu, 13 Jul 2017 02:58:02 GMT
+
+### Minor changes
+
+- Addressing remaining TS 2.4.1 errors.
+- DetailsList: Allow passing props to underlying List
+
+### Patches
+
+- TooltipHost: Fixed check which kept onRenderContent from working
+- Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup
+- List: Only draw a single window when receiving new items
+
+## 4.18.0
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Minor changes
+
+- Expose APIs of selectableOptions since they're required APIs for ComboBox component
+- Adding ActivityItem component.
+
+### Patches
+
+- Fix styling issues with SplitButton. Add new split boolean property to Button.
+- Fixing typings for TypeScript 2.4.1 compatibility.
+- DocumentCard: Deprecate accentColor prop, reduce thickness of divider line
+- Enable noImplicitAny
+- MessageBar: Fixed collapsing text in multiline
+
+## 4.17.1
+Mon, 10 Jul 2017 19:18:55 GMT
+
+### Patches
+
+- Checkbox: reverting global class names to use ms-Checkbox-* prefixed values.
+- Remove unnecessary line height
+- Removed ARIA disabled from button, as already handled by button HTML attribute
+
+## 4.17.0
+Mon, 10 Jul 2017 10:22:21 GMT
+
+### Minor changes
+
+- ChoiceGroup: Allow image/icon labels to truncate when larger than parent. Provided onRenderLabel to add Tooltip or other decorations
+
+## 4.16.2
+Sat, 08 Jul 2017 05:59:27 GMT
+
+### Patches
+
+- AMD fix for GroupedList.
+
+## 4.16.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Fixing an import breaking AMD modules related to GroupedList.
+
+## 4.16.0
+Fri, 07 Jul 2017 10:11:38 GMT
+
+### Minor changes
+
+- GroupedList: Add a new prop to ignore the collapse button on the column name bar when there's custom group header
+
+### Patches
+
+- Buttons: disabled buttons with hrefs now render as BUTTON elements instead of A tags, since BUTTON can support the disabled flag.
 
 ## 4.15.0
 Thu, 06 Jul 2017 10:11:47 GMT

@@ -20,6 +20,7 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
           checked={ checked }
           text='Create account'
           onClick={ () => alert('Clicked') }
+          split={ true }
           menuProps={ {
             items: [
               {
@@ -59,6 +60,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           iconProps={ { iconName: 'Upload' } }
           text='Create account'
           onClick={ () => alert('Clicked') }
+          split={ true }
           styles={ style }
           menuProps={ {
             items: [

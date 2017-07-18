@@ -43,6 +43,7 @@ $ms-color-presence-busy-average:       #D93B3B;
 
 // Persona Sizes
 $ms-Persona-sizeTiny: 30px;
+$ms-Persona-size16:  16px;
 $ms-Persona-sizeXxs:  24px;
 $ms-Persona-size28:  28px;
 $ms-Persona-sizeXs:   32px;
@@ -328,12 +329,62 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+//== Modifier: 16px Persona
+//
+.root.rootIs16 {
+  height: $ms-Persona-size16;
+  min-width: $ms-Persona-size16;
+  overflow: hidden;
+
+  .imageArea {
+    box-shadow: 0 0 0 2px $ms-color-white;
+  }
+
+  .imageArea,
+  .image {
+    flex: 0 0 $ms-Persona-size16;
+    height: $ms-Persona-size16;
+    width: $ms-Persona-size16;
+  }
+
+  .placeholder {
+    font-size: 18px;
+    top: 4px;
+  }
+
+  .initials {
+    font-size: $ms-font-size-xs;
+    height: $ms-Persona-size16;
+    line-height: $ms-Persona-size16;
+  }
+
+  .presence {
+    height: $ms-Persona-presenceSizeXxs;
+    width: $ms-Persona-presenceSizeXxs;
+    border: 2px solid $ms-color-white;
+    @include ms-left(20px);
+  }
+
+  .presenceIcon {
+    font-size: 6px;
+    line-height: 9px;
+  }
+
+  .primaryText {
+    font-size: $ms-font-size-m;
+    line-height: $ms-Persona-size28;
+  }
+
+  .secondaryText {
+    display: none;
+  }
+}
 
 //== Modifier: Extra Small Persona
 //
 .root.rootIsExtraExtraSmall {
-  height: $ms-Persona-sizeXxs;
-  min-width: $ms-Persona-sizeXxs;
+  height: $ms-Persona-sizeXs;
+  min-width: $ms-Persona-sizeXs;
 
   .imageArea,
   .image {
@@ -357,17 +408,24 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(16px);
+    @include ms-left(14px);
+    top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-sizeXxs;
   }
 
   .secondaryText {
@@ -382,6 +440,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       height: 16px;
       line-height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -417,16 +476,23 @@ $ms-Persona-presenceSizeXl: 28px;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
     @include ms-left(20px);
+    top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-size28;
   }
 
   .secondaryText {
@@ -441,6 +507,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       line-height: 16px;
       height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -474,9 +541,12 @@ $ms-Persona-presenceSizeXl: 28px;
     @include ms-left(19px);
   }
 
+  .details {
+    padding: 0 8px;
+  }
+
   .primaryText {
     font-size: $ms-font-size-m;
-    line-height: $ms-Persona-sizeXs;
   }
 
   .secondaryText {
@@ -489,6 +559,7 @@ $ms-Persona-presenceSizeXl: 28px;
       display: block;
       height: 16px;
       line-height: 16px;
+      overflow-x: hidden;
     }
   }
 }

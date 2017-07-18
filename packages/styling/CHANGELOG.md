@@ -1,6 +1,78 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jul 2017 18:38:01 GMT and should not be manually modified.
+
+## 0.13.11
+Mon, 17 Jul 2017 18:38:01 GMT
+
+*Changes not tracked*
+
+## 0.13.10
+Mon, 17 Jul 2017 10:22:38 GMT
+
+*Changes not tracked*
+
+## 0.13.9
+Fri, 14 Jul 2017 17:34:53 GMT
+
+*Changes not tracked*
+
+## 0.13.8
+Thu, 13 Jul 2017 10:21:52 GMT
+
+### Patches
+
+- Only initialize the default theme once, even if multiple instances of @uifabric/styling are executed.
+
+## 0.13.7
+Thu, 13 Jul 2017 02:58:02 GMT
+
+*Changes not tracked*
+
+## 0.13.6
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 0.13.5
+Tue, 11 Jul 2017 10:14:04 GMT
+
+*Changes not tracked*
+
+## 0.13.4
+Mon, 10 Jul 2017 19:18:55 GMT
+
+*Changes not tracked*
+
+## 0.13.3
+Mon, 10 Jul 2017 10:22:21 GMT
+
+*Changes not tracked*
+
+## 0.13.2
+Sat, 08 Jul 2017 05:59:28 GMT
+
+*Changes not tracked*
+
+## 0.13.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating dev dependencies.
+
+## 0.13.0
+Fri, 07 Jul 2017 10:11:38 GMT
+
+### Minor changes
+
+- Styling package: remove optionals from interfaces, since consumers can now use partial interfaces to define overrides.
+
+### Patches
+
+- Enable strict null checks in the styling package
 
 ## 0.12.3
 Thu, 06 Jul 2017 10:11:47 GMT

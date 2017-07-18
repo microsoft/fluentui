@@ -48,7 +48,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
   }
 
   @autobind
-  private _onRenderItemColumn(item, index, column) {
+  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,

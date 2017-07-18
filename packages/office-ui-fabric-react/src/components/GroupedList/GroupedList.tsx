@@ -54,7 +54,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     };
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IGroupedListProps) {
     let {
       groups,
       selectionMode
@@ -131,7 +131,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   @autobind
-  private _renderGroup(group, groupIndex) {
+  private _renderGroup(group: any, groupIndex: number) {
     let {
       dragDropEvents,
       dragDropHelper,
@@ -259,7 +259,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  private _computeIsSomeGroupExpanded(groups: IGroup[]) {
+  private _computeIsSomeGroupExpanded(groups: IGroup[]): boolean {
     return groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed);
   }
 

@@ -1,7 +1,9 @@
+import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 import {
   IPalette,
   ISemanticColors,
-  ITheme
+  ITheme,
+  IPartialTheme
 } from '../interfaces/index';
 import {
   DefaultFontStyles
@@ -10,7 +12,7 @@ import {
   DefaultPalette
 } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
+
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
@@ -19,16 +21,18 @@ let _theme: ITheme = {
 
 export const ThemeSettingName = 'theme';
 
-let win = typeof window !== 'undefined' ? window : undefined;
+if (!GlobalSettings.getValue(ThemeSettingName)) {
+  let win = typeof window !== 'undefined' ? window : undefined;
 
-// tslint:disable:no-string-literal no-any
-if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-  _theme = createTheme((win as any)['FabricConfig'].theme);
+  // tslint:disable:no-string-literal no-any
+  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
+    _theme = createTheme((win as any)['FabricConfig'].theme);
+  }
+  // tslint:enable:no-string-literal no-any
+
+  // Set the default theme.
+  GlobalSettings.setValue(ThemeSettingName, _theme);
 }
-// tslint:enable:no-string-literal no-any
-
-// Set the default theme.
-GlobalSettings.setValue(ThemeSettingName, _theme);
 
 /**
  * Gets the theme object.
@@ -38,27 +42,29 @@ export function getTheme(): ITheme {
 }
 
 /**
- * Loads the default global theme definition.
+ * Applies the theme, while filling in missing slots.
  */
-export function loadTheme(theme: Partial<ITheme>): void {
+export function loadTheme(theme: IPartialTheme): ITheme {
   _theme = createTheme(theme);
 
   // Load the legacy theme from the palette.
   legacyLoadTheme(_theme.palette as {});
 
   GlobalSettings.setValue(ThemeSettingName, _theme);
+
+  return _theme;
 }
 
 /**
  * Creates a custom theme definition which can be used with the Customizer.
  */
-export function createTheme(theme: Partial<ITheme>): ITheme {
-  let newPalette = { ..._theme.palette, ...theme.palette };
+export function createTheme(theme: IPartialTheme): ITheme {
+  let newPalette = { ...DefaultPalette, ...theme.palette };
 
   return {
     palette: newPalette,
     fonts: {
-      ..._theme.fonts,
+      ...DefaultFontStyles,
       ...theme.fonts
     },
     semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
@@ -80,7 +86,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
 
     focusBorder: p.black,
 
-    // errorBackground: todo,
+    errorBackground: '#fde7e9',
     errorText: p.redDark,
 
     inputBorder: p.neutralTertiary,

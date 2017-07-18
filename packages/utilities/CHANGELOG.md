@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 06 Jul 2017 10:11:47 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+
+## 4.7.2
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 4.7.1
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating library comments.
 
 ## 4.7.0
 Thu, 06 Jul 2017 10:11:47 GMT

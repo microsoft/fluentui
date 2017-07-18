@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
+import {
+  ComboBox,
+  IComboBoxOption
+} from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
 import {
   assign,
   autobind
 } from 'office-ui-fabric-react/lib/Utilities';
-import { ISelectableOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
@@ -52,7 +55,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop1'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ true }
-          autoComplete={ true }
+          autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -63,7 +66,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop2'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ true }
-          autoComplete={ false }
+          autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -74,7 +77,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop3'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ false }
-          autoComplete={ true }
+          autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -85,7 +88,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           id='Basicdrop4'
           ariaLabel='Basic ComboBox example'
           allowFreeform={ false }
-          autoComplete={ false }
+          autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
         />
@@ -122,7 +125,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             id='Basicdrop5'
             ariaLabel='Basic ComboBox example'
             allowFreeform={ true }
-            autoComplete={ true }
+            autoComplete='on'
             options={ options }
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
@@ -136,7 +139,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             id='Basicdrop5'
             ariaLabel='Basic ComboBox example'
             allowFreeform={ true }
-            autoComplete={ true }
+            autoComplete='on'
             options={ options }
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
@@ -151,7 +154,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
 
   // Render content of item
   @autobind
-  private _onRenderFontOption(item: ISelectableOption): JSX.Element {
+  private _onRenderFontOption(item: IComboBoxOption): JSX.Element {
 
     if (item.itemType === SelectableOptionMenuItemType.Header ||
       item.itemType === SelectableOptionMenuItemType.Divider) {
@@ -177,7 +180,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _getOptions(currentOptions: ISelectableOption[]): ISelectableOption[] {
+  private _getOptions(currentOptions: IComboBoxOption[]): IComboBoxOption[] {
 
     if (this.state.options.length > 0) {
       return this.state.options;
@@ -210,7 +213,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onChanged(option: ISelectableOption, index: number, value: string) {
+  private _onChanged(option: IComboBoxOption, index: number, value: string) {
     if (option !== null) {
       this.setState({
         selectedOptionKey: option.key,
@@ -222,7 +225,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
         value: null
       });
     } else if (value !== null) {
-      let newOption: ISelectableOption = { key: value, text: value };
+      let newOption: IComboBoxOption = { key: value, text: value };
 
       this.setState({
         options: [...this.state.options, newOption],

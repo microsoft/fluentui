@@ -14,10 +14,10 @@ import '@uifabric/icons';
 
 setBaseUrl('./dist/');
 
-let rootElement;
+let rootElement: HTMLElement | undefined;
 
 // Return the anchor link from the URL without the hash
-function _extractAnchorLink(path) {
+function _extractAnchorLink(path: string) {
   let index = path.lastIndexOf('#');
   if (index >= 0) {
     path = path.substr(index + 1, path.length - index);
@@ -46,7 +46,7 @@ function _onLoad() {
 
 function _getRoutes() {
   let routes = AppDefinition.testPages.map(page => <Route key={ page.key } path={ page.url } component={ page.component } />);
-  let appRoutes = [];
+  let appRoutes: JSX.Element[] = [];
 
   AppDefinition.examplePages.forEach(group => {
     group.links

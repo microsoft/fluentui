@@ -1,7 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { registerCoreIcons } from '@uifabric/icons/lib/coreIcons';
 import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
@@ -11,9 +10,6 @@ import {
 } from '../../Utilities';
 import { getIcon } from '../../Styling';
 import { getStyles } from './Icon.styles';
-
-// Register core icons.
-registerCoreIcons();
 
 export function Icon(props: IIconProps): JSX.Element {
   let {
