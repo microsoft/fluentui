@@ -11,8 +11,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "_checksize": "node check-size.js",
     "_bundle": "node node_modules/webpack/bin/webpack --config webpack.config.js && echo Done",
-    "build": "npm run _bundle",
+    "build": "npm run _bundle && npm run _checksize",
     "clean": "",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
@@ -23,6 +24,7 @@
     "@types/react-dom": "15.5.0",
     "@types/webpack-env": "1.13.0",
     "@types/prop-types": "15.5.1",
+    "gzip-size": "^3.0.0",
     "source-map-loader": "^0.2.1",
     "ts-loader": "^2.0.1",
     "typescript": "2.2.2",
