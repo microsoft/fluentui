@@ -8,6 +8,7 @@ export function assign(target: any, ...args: any[]): any;
 // WARNING: _logError has incomplete type information
 // @public
 class Async {
+  // (undocumented)
   constructor(parent?: any, onError?: (e: any) => void);
   public clearTimeout(id: number): void;
   public debounce < T extends Function >(func: T, wait?: number, options?: {
@@ -29,6 +30,7 @@ class Async {
 // WARNING: dispose has incomplete type information
 // @public
 class AutoScroll {
+  // (undocumented)
   constructor(element: HTMLElement);
 }
 
@@ -59,6 +61,7 @@ export function createArray(size: number, getItem?: (index?: number) => any): an
 // WARNING: render has incomplete type information
 // @public
 class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
+  // (undocumented)
   constructor(props: any, context: any);
   // (undocumented)
   public getChildContext(): any;
@@ -70,6 +73,7 @@ class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
 // WARNING: render has incomplete type information
 // @public
 class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
+  // (undocumented)
   constructor(props: IDelayedRenderProps);
 }
 
@@ -228,14 +232,12 @@ interface ICustomizerProps {
   settings: ISettings;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface ICustomizerState {
   // (undocumented)
   injectedProps?: ISettings;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IDeclaredEventsByName {
   // (undocumented)
@@ -247,13 +249,11 @@ interface IDelayedRenderProps extends React.Props<any> {
   delay?: number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IDelayedRenderState {
   isRendered: boolean;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IDictionary {
   // (undocumented)
@@ -266,7 +266,6 @@ interface IDisposable {
   dispose: () => void;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IEventRecord {
   // (undocumented)
@@ -285,7 +284,6 @@ interface IEventRecord {
   useCapture: boolean;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IEventRecordList {
   // (undocumented)
@@ -294,14 +292,12 @@ interface IEventRecordList {
   count: number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IEventRecordsByName {
   // (undocumented)
   [ eventName: string ]: IEventRecordList;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IPerfData {
   // (undocumented)
@@ -310,7 +306,6 @@ interface IPerfData {
   timeStamp: number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IPerfMeasurement {
   // (undocumented)
@@ -321,7 +316,6 @@ interface IPerfMeasurement {
   totalDuration: number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface IPerfSummary {
   // (undocumented)
@@ -370,14 +364,12 @@ export function isElementTabbable(element: HTMLElement): boolean;
 // @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface ISerializableObject {
   // (undocumented)
   toString?: () => string;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 interface ISettings {
   // (undocumented)
@@ -431,6 +423,7 @@ export function nullRender(): JSX.Element | null;
 
 // @public
 class Rectangle {
+  // (undocumented)
   constructor(left: number = 0, right: number = 0, top: number = 0, bottom: number = 0);
   // (undocumented)
   public bottom: number;
@@ -445,7 +438,6 @@ class Rectangle {
   readonly width: number;
 }
 
-// WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal
 export function setMemoizeWeakMap(weakMap: any): void;
 
