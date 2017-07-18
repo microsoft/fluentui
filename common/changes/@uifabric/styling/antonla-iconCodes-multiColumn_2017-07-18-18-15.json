@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Adding multi-column icon to the icon map",
+      "comment": "Adding multi-column mapping to the icon map to be available in the ChoiceGroup",
       "type": "patch"
     }
   ],
