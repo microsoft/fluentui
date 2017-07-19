@@ -11,6 +11,7 @@ import {
 } from '../../Utilities';
 import { ScrollablePane } from '../../ScrollablePane';
 import { IStickyProps } from './Sticky.Props';
+import { IStyle } from '../../Styling';
 import * as stylesImport from './Sticky.scss';
 const styles: any = stylesImport;
 
@@ -119,7 +120,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { stickyClassName } = this.props;
     const isSticky = isStickyTop || isStickyBottom;
 
-    let style;
+    let style: IStyle;
     if (isSticky) {
       const top = isStickyTop ?
         this._offsetTop + topDistance :
@@ -131,7 +132,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       };
     }
 
-    const placeholderStyle = isSticky ?
+    const placeholderStyle: IStyle = isSticky ?
       {
         paddingBottom: `${this.refs.sticky.clientHeight}px`
       } : {};
