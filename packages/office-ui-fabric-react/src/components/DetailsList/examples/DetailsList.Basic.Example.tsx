@@ -16,15 +16,9 @@ import {
   TooltipHost,
   ITooltipHostProps
 } from 'office-ui-fabric-react/lib/Tooltip';
-import {
-  ScrollablePane
-} from 'office-ui-fabric-react/lib/ScrollablePane';
-import {
-  Sticky
-} from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
-let _items: any[] = [];
+let _items = [];
 
 let _columns: IColumn[] = [
   {
@@ -76,69 +70,33 @@ export class DetailsListBasicExample extends React.Component<any, any> {
 
   public render() {
     let { items, selectionDetails } = this.state;
-    const topHeader = {
-      content: (
-        <div>
-          <Sticky><div>{ selectionDetails }</div></Sticky>
-          <TextField
-            label='Filter by name:'
-            onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
-          />
-        </div>)
-    };
-
-    const element = {
-      content: <MarqueeSelection selection={ this._selection }>
-        <DetailsList
-          items={ items }
-          columns={ _columns }
-          setKey='set'
-          layoutMode={ DetailsListLayoutMode.fixedColumns }
-          lockedHeader={ true }
-          onRenderDetailsHeader={
-            (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
-              ...detailsHeaderProps,
-              onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
-            })
-          }
-          selection={ this._selection }
-          selectionPreservedOnEmptyClick={ true }
-          ariaLabelForSelectionColumn='Toggle selection'
-          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-          onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
-        />
-      </MarqueeSelection>
-    };
 
     return (
       <div>
-        <ScrollablePane>
-          <Sticky><div>{ selectionDetails }</div></Sticky>
-          <TextField
-            label='Filter by name:'
-            onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+        <div>{ selectionDetails }</div>
+        <TextField
+          label='Filter by name:'
+          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+        />
+        <MarqueeSelection selection={ this._selection }>
+          <DetailsList
+            items={ items }
+            columns={ _columns }
+            setKey='set'
+            layoutMode={ DetailsListLayoutMode.fixedColumns }
+            onRenderDetailsHeader={
+              (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
+                ...detailsHeaderProps,
+                onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
+              })
+            }
+            selection={ this._selection }
+            selectionPreservedOnEmptyClick={ true }
+            ariaLabelForSelectionColumn='Toggle selection'
+            ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
           />
-          <MarqueeSelection selection={ this._selection }>
-            <DetailsList
-              items={ items }
-              columns={ _columns }
-              setKey='set'
-              layoutMode={ DetailsListLayoutMode.fixedColumns }
-              lockedHeader={ true }
-              onRenderDetailsHeader={
-                (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
-                  ...detailsHeaderProps,
-                  onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
-                })
-              }
-              selection={ this._selection }
-              selectionPreservedOnEmptyClick={ true }
-              ariaLabelForSelectionColumn='Toggle selection'
-              ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-              onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
-            />
-          </MarqueeSelection>
-        </ScrollablePane>
+        </MarqueeSelection>
       </div>
     );
   }
