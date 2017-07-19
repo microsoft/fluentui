@@ -457,5 +457,91 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).to.equal(0);
       expect(onGrowData.callCount).to.equal(1);
     });
+
+    it('does not call getMeasuredElementBounds when the data has already been cached in the grow resizeDirection', () => {
+      const dataToMeasure = { index: 5, cacheKey: 'foo' };
+
+      const measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataToMeasure, 40);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+
+      const onGrowData = sinon.stub();
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
+      const measuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        measuredElementWidthStub,
+        100);
+
+      expect(result).to.deep.equal({
+        renderedData: dataToMeasure,
+        measureContainer: false,
+        dataToMeasure: undefined,
+        resizeDirection: undefined
+      });
+      expect(measuredElementWidthStub.callCount).to.equal(0);
+    });
+
+    it('calls onGrowData multiple times when everything is in the cache in the grow resizeDirection', () => {
+      const dataArray = [{ cacheKey: '5' },
+      { cacheKey: '6' },
+      { cacheKey: '7' }];
+
+      const measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataArray[0], 50);
+      measurementCache.addMeasurementToCache(dataArray[1], 70);
+      measurementCache.addMeasurementToCache(dataArray[2], 150);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+
+      const onGrowData = sinon.stub();
+      onGrowData.onFirstCall().returns(dataArray[1]);
+      onGrowData.onSecondCall().returns(dataArray[2]);
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+
+      const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
+      const measuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        measuredElementWidthStub,
+        100);
+
+      expect(result).to.deep.equal({
+        measureContainer: false,
+        dataToMeasure: dataArray[2],
+        resizeDirection: 'shrink'
+      });
+      expect(measuredElementWidthStub.callCount).to.equal(0);
+    });
+
+    it('sets dataToMeasure when the current data is in the cache but the onGrowData result is not in the cache in the grow resizeDirection', () => {
+      const dataArray = [{ cacheKey: '5' },
+      { cacheKey: '6' }];
+
+      let measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataArray[0], 40);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+
+      const onGrowData = sinon.stub();
+      onGrowData.onFirstCall().returns(dataArray[1]);
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+
+      const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
+      const measuredElementWidthStub = sinon.stub();
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        measuredElementWidthStub,
+        100);
+
+      expect(result).to.deep.equal({
+        dataToMeasure: dataArray[1],
+        measureContainer: false,
+        resizeDirection: 'grow'
+      });
+      expect(measuredElementWidthStub.callCount).to.equal(0);
+    });
   });
 });
