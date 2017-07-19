@@ -50,7 +50,7 @@ export class Check extends BaseComponent<ICheckProps, {}> {
         }) }
         { Icon({
           className: 'ms-Check-check ' + styles.check,
-          iconName: 'CheckMark'
+          iconName: 'StatusCircleCheckmark'
         }) }
       </div>
     );
