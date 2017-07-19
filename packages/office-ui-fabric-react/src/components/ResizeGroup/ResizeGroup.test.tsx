@@ -328,7 +328,7 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).to.equal(0);
     });
 
-    it('renders contents when the resize direction is grow, there is no onGrowData, and the contents fit', () => {
+    it('renders contents when the resizeDirection is grow, there is no onGrowData, and the contents fit', () => {
       const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
@@ -348,6 +348,30 @@ describe('ResizeGroup', () => {
         resizeDirection: undefined
       });
       expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+    });
+
+    it('measures the next state when the resizeDirection is grow and the dataToMeasure fits', () => {
+      const dataToMeasure = { index: 1 };
+      const onGrowData = sinon.stub();
+      onGrowData.returns({ index: 2 });
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(25);
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        getMeasuredElementWidthStub,
+        50);
+
+      expect(result).to.deep.equal({
+        measureContainer: false,
+        dataToMeasure: { index: 2 },
+        resizeDirection: 'grow'
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(onGrowData.callCount).to.equal(1);
     });
   });
 });
