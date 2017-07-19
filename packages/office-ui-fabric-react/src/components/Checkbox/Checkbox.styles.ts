@@ -60,6 +60,7 @@ export const getStyles = memoizeFunction((
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: checkboxBorderColor,
+      marginRight: '8px',
       boxSizing: 'border-box',
       transitionProperty: 'background, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
@@ -97,7 +98,7 @@ export const getStyles = memoizeFunction((
       color: checkmarkFontColorCheckedDisabled,
     },
     text: {
-      margin: '0 8px'
+      marginRight: '8px'
     },
     textHovered: {
       color: palette.black,
