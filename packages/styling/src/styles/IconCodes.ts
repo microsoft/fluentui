@@ -2420,6 +2420,10 @@ export const IconCodes = {
    */
   starburst: '\uEF78',
   /**
+   * Icon code with the value '\uF13E'.
+   */
+  statusCircleCheckmark: '\uF13E',
+  /**
    * Icon code with the value '\uEB90'.
    */
   statusErrorFull: '\uEB90',
