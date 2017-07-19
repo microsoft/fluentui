@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 17 Jul 2017 18:38:01 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2017 21:40:34 GMT and should not be manually modified.
+
+## 0.13.12
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Patches
+
+- Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts.
 
 ## 0.13.11
 Mon, 17 Jul 2017 18:38:01 GMT
