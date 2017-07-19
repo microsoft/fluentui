@@ -10,9 +10,7 @@ import {
   findScrollableParent
 } from '../../Utilities';
 import { IScrollablePaneProps } from './ScrollablePane.Props';
-import * as stylesImport from './ScrollablePane.scss';
 import { Sticky } from '../../Sticky';
-const styles: any = stylesImport;
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public static childContextTypes = {
