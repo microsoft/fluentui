@@ -8,7 +8,7 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { getIcon } from '../../Styling';
+import { getIcon, IIconDefinition } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
@@ -43,7 +43,7 @@ export function Icon(props: IIconProps): JSX.Element {
     let iconDefinition = getIcon(iconName) || {
       baseClassName: undefined,
       code: undefined
-    };
+    } as IIconDefinition;
 
     return (
       <i
