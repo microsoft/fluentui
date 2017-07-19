@@ -97,7 +97,7 @@ export const getStyles = memoizeFunction((
       color: checkmarkFontColorCheckedDisabled,
     },
     text: {
-      margin: '0 4px'
+      margin: '0 8px'
     },
     textHovered: {
       color: palette.black,
