@@ -192,13 +192,13 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param renderedData - The data that was rendered prior to the container size changing.
    * @param onGrowData - Set to true if the Resize group has an onGrowData function.
    */
-  function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any, hasOnGrowData: boolean): IResizeGroupState {
+  function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any, onGrowData?: (prevData: any) => any): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newWidth > _containerWidth) {
-      if (hasOnGrowData) {
+      if (onGrowData) {
         nextState = {
           resizeDirection: 'grow',
-          dataToMeasure: renderedData
+          dataToMeasure: onGrowData(renderedData)
         };
       } else {
         nextState = {
@@ -228,7 +228,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
       if (_containerWidth && currentState.renderedData) {
-        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, !!props.onGrowData) };
+        return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData) };
       }
 
       // If we are just setting the container width for the first time, we can't do any optimizations

@@ -263,7 +263,6 @@ describe('ResizeGroup', () => {
       const reducedWidth = 40;
       const renderedData = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
-      const resizeGroupState: IResizeGroupState = { renderedData, resizeDirection: 'shrink', };
       const getNextResizeGroupState = getNextResizeGroupStateProvider();
       const getMeasuredElementWidthStub = sinon.stub();
 
@@ -294,12 +293,11 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).to.equal(0);
     });
 
-    it('starts from the beginning when the container width increases', () => {
+    it('starts from the beginning when the container width increases and there is no onGrowData', () => {
       const initialWidth = 50;
       const increasedWidth = 60;
       const renderedData = { foo: 'bar' };
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' } };
-      const resizeGroupState: IResizeGroupState = { renderedData, resizeDirection: 'shrink' };
       const getNextResizeGroupState = getNextResizeGroupStateProvider();
       const getMeasuredElementWidthStub = sinon.stub();
 
@@ -422,6 +420,42 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).to.equal(1);
       expect(onGrowData.callCount).to.equal(1);
       expect(resizeGroupProps.onReduceData.callCount).to.equal(0);
+    });
+
+    it('calls onGrowData when the container width increases and onGrowData is provided', () => {
+      const initialWidth = 50;
+      const increasedWidth = 60;
+      const renderedData = { index: 3 };
+      const onGrowData = sinon.stub();
+      onGrowData.returns({ index: 4 });
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' }, onGrowData };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+
+      // Set the initial window width
+      getNextResizeGroupState(resizeGroupProps,
+        {},
+        undefined,
+        initialWidth);
+
+      // Pass in a state that reflects some rendered data
+      let currentState = {
+        renderedData: renderedData
+      };
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        increasedWidth);
+
+      expect(result).to.deep.equal({
+        renderedData: renderedData,
+        dataToMeasure: { index: 4 },
+        resizeDirection: 'grow',
+        measureContainer: false
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+      expect(onGrowData.callCount).to.equal(1);
     });
   });
 });
