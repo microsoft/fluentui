@@ -348,6 +348,29 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).to.equal(1);
     });
 
+    it('sets the resize direction to shrink when the resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
+      const dataToMeasure = { index: 8 };
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      resizeGroupProps.onReduceData.returns({ index: 7 });
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(100);
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        getMeasuredElementWidthStub,
+        72);
+
+      expect(result).to.deep.equal({
+        measureContainer: false,
+        dataToMeasure: { index: 7 },
+        resizeDirection: 'shrink'
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(resizeGroupProps.onReduceData.callCount).to.equal(1);
+    });
+
     it('measures the next state when the resizeDirection is grow and the dataToMeasure fits', () => {
       const dataToMeasure = { index: 1 };
       const onGrowData = sinon.stub();

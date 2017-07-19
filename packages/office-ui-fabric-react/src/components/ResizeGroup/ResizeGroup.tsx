@@ -125,7 +125,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
       if (measuredWidth === undefined) {
         return {
-          dataToMeasure: nextMeasuredData
+          dataToMeasure: nextMeasuredData,
+          resizeDirection: 'shrink'
         };
       }
 
@@ -267,7 +268,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     super(props);
     this.state = {
       dataToMeasure: { ...this.props.data },
-      resizeDirection: 'shrink',
+      resizeDirection: 'grow',
       measureContainer: true,
     };
   }
@@ -297,7 +298,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
   public componentWillReceiveProps(nextProps: IResizeGroupProps) {
     this.setState({
       dataToMeasure: { ...nextProps.data },
-      resizeDirection: 'shrink',
+      resizeDirection: 'grow',
       renderedData: undefined,
       measureContainer: true // Receiving new props means the parent might rerender and the root width might change
     });
