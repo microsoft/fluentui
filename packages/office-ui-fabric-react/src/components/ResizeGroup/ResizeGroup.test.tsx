@@ -397,5 +397,31 @@ describe('ResizeGroup', () => {
       expect(onGrowData.callCount).to.equal(0);
       expect(resizeGroupProps.onReduceData.callCount).to.equal(0);
     });
+
+    it('renders the last measured contents when onGrowData returns undefined', () => {
+      const dataToMeasure = { index: 1 };
+      const onGrowData = sinon.stub();
+      onGrowData.returns(undefined);
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(25);
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        getMeasuredElementWidthStub,
+        40);
+
+      expect(result).to.deep.equal({
+        measureContainer: false,
+        dataToMeasure: undefined,
+        renderedData: dataToMeasure,
+        resizeDirection: undefined
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(onGrowData.callCount).to.equal(1);
+      expect(resizeGroupProps.onReduceData.callCount).to.equal(0);
+    });
   });
 });
