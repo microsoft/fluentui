@@ -28,7 +28,6 @@ export interface ICheckboxState {
 interface ICheckboxClassNames {
   root: string;
   label: string;
-  box: string;
   checkbox: string;
   checkmark: string;
   text: string;
@@ -115,10 +114,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         aria-disabled={ disabled }
       >
         <label className={ classNames.label } htmlFor={ this._id } >
-          <div className={ classNames.box }>
-            <div className={ classNames.checkbox }>
-              <Icon iconName='CheckMark' className={ classNames.checkmark } />
-            </div>
+          <div className={ classNames.checkbox }>
+            <Icon iconName='CheckMark' className={ classNames.checkmark } />
           </div>
           { label && <span className={ classNames.text }>{ label }</span> }
         </label>
@@ -203,11 +200,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         styles.label,
         isReversed && styles.labelReversed,
         disabled && styles.labelDisabled
-      ) as string,
-
-      box: mergeStyles(
-        'ms-Checkbox-box',
-        styles.box
       ) as string,
 
       checkbox: mergeStyles(
