@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jul 2017 21:40:34 GMT and should not be manually modified.
+
+## 4.8.0
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Minor changes
+
+- Add assertNever function for exhaustive null checking
 
 ## 4.7.2
 Wed, 12 Jul 2017 01:49:50 GMT
