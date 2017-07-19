@@ -70,7 +70,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    lockedHeader: false
+    isLockedHeader: false
   };
 
   // References
@@ -216,7 +216,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       rowElementEventMap,
       shouldApplyApplicationRole = false,
       getKey,
-      lockedHeader,
+      isLockedHeader,
       listProps
     } = this.props;
     let {
@@ -300,7 +300,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly='true'>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
-            { isHeaderVisible && (lockedHeader ?
+            { isHeaderVisible && (isLockedHeader ?
               <Sticky>{ header }</Sticky> : header
             ) }
           </div>

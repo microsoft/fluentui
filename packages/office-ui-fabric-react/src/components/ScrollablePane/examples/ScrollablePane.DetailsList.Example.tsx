@@ -98,7 +98,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
               columns={ _columns }
               setKey='set'
               layoutMode={ DetailsListLayoutMode.fixedColumns }
-              lockedHeader={ true }
+              isLockedHeader={ true }
               onRenderDetailsHeader={
                 (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
                   ...detailsHeaderProps,

@@ -188,7 +188,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   compact?: boolean;
 
   /** Boolean value to indicate if the DetailsList Header should render in a Sticky component. Set to false by default */
-  lockedHeader?: boolean;
+  isLockedHeader?: boolean;
 }
 
 export interface IColumn {
