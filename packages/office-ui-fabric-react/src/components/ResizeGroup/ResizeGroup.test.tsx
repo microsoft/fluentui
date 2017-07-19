@@ -373,5 +373,29 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).to.equal(1);
       expect(onGrowData.callCount).to.equal(1);
     });
+
+    it('sets the resizeDirection to shrink after determining contents do not fit when the resize direction is grow', () => {
+      const dataToMeasure = { index: 1 };
+      const onGrowData = sinon.stub();
+      const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(75);
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        getMeasuredElementWidthStub,
+        40);
+
+      expect(result).to.deep.equal({
+        measureContainer: false,
+        dataToMeasure,
+        resizeDirection: 'shrink'
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+      expect(onGrowData.callCount).to.equal(0);
+      expect(resizeGroupProps.onReduceData.callCount).to.equal(0);
+    });
   });
 });
