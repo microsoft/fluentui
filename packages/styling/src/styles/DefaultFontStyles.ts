@@ -64,6 +64,8 @@ const LanguageToFontMap = {
   'zh-hant': FontFamilyChineseTraditional,
 };
 
+const FontFileVersion = 2.35;
+
 // Standard font sizes.
 export namespace FontSizes {
   export const mini = '10px';
@@ -192,7 +194,7 @@ function _registerDefaultFontFaces(): void {
     _registerFontFace('Leelawadee UI Web', `${fontUrl}/leelawadeeui-thai/leelawadeeui-bold`, FontWeights.semibold);
 
     // Register icon urls.
-    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons`, FontWeights.regular);
+    _registerFontFace('FabricMDL2Icons', `${iconUrl}/fabricmdl2icons-${FontFileVersion}`, FontWeights.regular);
   }
 }
 
