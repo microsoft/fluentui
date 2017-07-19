@@ -19,38 +19,39 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
     return (
       <div>
-        <div>{ lorem(60) }</div>
+        <div className='largeSpacing'></div>
         <ScrollablePane className='scrollablePaneDefaultExample'>
           { contentAreas.map((ele) => {
             return ele;
           }) }
         </ScrollablePane>
+        <div className='largeSpacing'></div>
       </div>
     );
   }
 
-  private _createHeader(index: number) {
-    return (
-      <div className='exampleContentHeader'>this is a new header for this content area { index }</div>
-    );
+  private _getRandomColor() {
+    let letters = 'BCDEF'.split('');
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * letters.length)];
+    }
+    return color;
   }
 
   private _createContentArea(index: number) {
+    const style = {
+      backgroundColor: this._getRandomColor()
+    }
+
     return (
       <div key={ index }>
-        <div className='content'>
-          BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE
-          BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE BEFORE
-        </div>
-        <Sticky stickyClassName='stickySmall'>
-          <div className='sticky'>
-            THIS IS WRAPPED IN STICKY { index }
+        <div className='spacing'></div>
+        <Sticky>
+          <div className='sticky' style={ style }>
+            Sticky Component #{ index }
           </div>
         </Sticky>
-        <div className='content'>
-          AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER
-          AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER AFTER
-        </div>
       </div>
     );
   }

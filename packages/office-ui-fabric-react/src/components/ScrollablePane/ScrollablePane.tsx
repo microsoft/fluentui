@@ -58,9 +58,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
       this._events.on(window, 'resize', () => {
-        this._notifySubscribers();
-        this._setDistances(this._stickyAbove, true);
-        this._setDistances(this._stickyBelow, false);
+        setTimeout(() => {
+          this._notifySubscribers();
+          this._setDistances(this._stickyAbove, true, false);
+          this._setDistances(this._stickyBelow, false, false);
+        }, 10)
       });
       this._notifySubscribers();
     }
@@ -91,7 +93,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public addStickyHeader(sticky: Sticky) {
     if (this._stickyAbove.indexOf(sticky) < 0) {
       this._stickyAbove.push(sticky);
-      this._setDistances(this._stickyAbove, true);
+      this._setDistances(this._stickyAbove, true, true);
     }
   }
 
@@ -110,7 +112,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       this._stickyBelow.sort((a, b) => {
         return b.refs.root.offsetTop - a.refs.root.offsetTop;
       });
-      this._setDistances(this._stickyBelow, false);
+      this._setDistances(this._stickyBelow, false, true);
     }
   }
 
@@ -122,7 +124,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     }
   }
 
-  private _setDistances(stickies: Sticky[], headers: boolean) {
+  private _setDistances(stickies: Sticky[], headers: boolean, notifyStickies: boolean) {
     let distance = 0;
     stickies.forEach((sticky) => {
       if (headers) {
@@ -133,6 +135,9 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       distance += sticky.refs.root.clientHeight;
     });
     headers ? this._topHeaderHeight = distance : this._bottomFooterHeight = distance;
+    if (notifyStickies) {
+      this._notifySubscribers();
+    }
   }
 
   private _notifySubscribers() {

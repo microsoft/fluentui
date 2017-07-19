@@ -1,31 +1,20 @@
 @import '../../../common/common';
 
 :global {
-  .exampleContentHeader {
-    height: 15px;
-    background: #fff;
-    padding: 15px 10px;
-    border: 1px solid black;
-  }
-
   .scrollablePaneDefaultExample {
-    max-width: 300px;
-  }
-
-  .stickySmall {
-    .sticky {
-      font-size: 16px;
-    }
+    max-width: 400px;
   }
 
   .sticky {
-    transition: font-size 0.25s ease-in-out;
-    font-size: 16px;
-    padding: 5px 10px;
-    border: 1px solid blue;
+    @include ms-fontColor-neutralDark;
+    padding: 10px 20px;
   }
 
-  .content {
-    font-size: 40px;
+  .largeSpacing {
+    padding-top: 250px;
+  }
+
+  .spacing {
+    padding-top: 100px;
   }
 }
