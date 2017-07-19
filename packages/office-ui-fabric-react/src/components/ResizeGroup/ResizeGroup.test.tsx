@@ -55,6 +55,7 @@ describe('ResizeGroup', () => {
       expect(result).to.equal(undefined);
       expect(getMeasuredElementWidthStub.callCount).to.equal(0);
     });
+
     it('sets the renderedData when the contents fit', () => {
       const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
@@ -76,6 +77,7 @@ describe('ResizeGroup', () => {
       });
       expect(getMeasuredElementWidthStub.callCount).to.equal(1);
     });
+
     it('calls onReduceData and sets the next measuredData when contents do not fit', () => {
       const dataToMeasure = { index: 5 };
       const resizeGroupProps = getRequiredResizeGroupProps();
@@ -97,7 +99,8 @@ describe('ResizeGroup', () => {
       });
       expect(getMeasuredElementWidthStub.callCount).to.equal(1);
     });
-    it('does not call getmeasuredElementBounds when the data has already been cached', () => {
+
+    it('does not call getMeasuredElementBounds when the data has already been cached', () => {
       const dataToMeasure = { index: 5, cacheKey: 'foo' };
 
       let measurementCache = getMeasurementCache();
@@ -323,6 +326,28 @@ describe('ResizeGroup', () => {
         measureContainer: false
       });
       expect(getMeasuredElementWidthStub.callCount).to.equal(0);
+    });
+
+    it('renders contents when the resize direction is grow, there is no onGrowData, and the contents fit', () => {
+      const dataToMeasure = { foo: 'bar' };
+      const resizeGroupProps = getRequiredResizeGroupProps();
+      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
+      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getMeasuredElementWidthStub = sinon.stub();
+      getMeasuredElementWidthStub.returns(25);
+
+      let result = getNextResizeGroupState(resizeGroupProps,
+        resizeGroupState,
+        getMeasuredElementWidthStub,
+        50);
+
+      expect(result).to.deep.equal({
+        renderedData: dataToMeasure,
+        measureContainer: false,
+        dataToMeasure: undefined,
+        resizeDirection: undefined
+      });
+      expect(getMeasuredElementWidthStub.callCount).to.equal(1);
     });
   });
 });

@@ -241,7 +241,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     };
 
     if (currentState.dataToMeasure) {
-      if (currentState.resizeDirection === 'grow') {
+      if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
           ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureWidth)
