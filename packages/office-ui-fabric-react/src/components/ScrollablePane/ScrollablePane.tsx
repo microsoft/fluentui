@@ -62,7 +62,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
           this._notifySubscribers();
           this._setDistances(this._stickyAbove, true, false);
           this._setDistances(this._stickyBelow, false, false);
-        }, 10)
+        }, 5);
       });
       this._notifySubscribers();
     }

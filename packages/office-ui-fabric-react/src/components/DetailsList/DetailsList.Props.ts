@@ -184,6 +184,10 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
    */
   minimumPixelsForDrag?: number;
 
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
+
+  /** Boolean value to indicate if the DetailsList Header should render in a Sticky component. Set to false by default */
   lockedHeader?: boolean;
 }
 
@@ -317,6 +321,11 @@ export interface IColumn {
    * An optional class name to stick on the column cell within each header.
    */
   headerClassName?: string;
+
+  /**
+  * If set, will add additional LTR padding-right to column and cells.
+  */
+  isPadded?: boolean;
 }
 
 /**

@@ -31,7 +31,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.Props.ts')
             ] }
           />
         }

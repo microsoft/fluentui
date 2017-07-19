@@ -149,6 +149,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     );
   }
 
+  // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string {
     let curr = this.refs.root;
     while (window.getComputedStyle(curr, null).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)') {

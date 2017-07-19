@@ -2,11 +2,14 @@ import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
 import { IRenderFunction } from '../../Utilities';
+import { ISuggestionModel } from './Suggestions/SuggestionsController';
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
+  componentRef?: () => void;
+
   /**
    * Function that specifies how the selected item will appear.
    */
@@ -58,7 +61,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onRemoveSuggestion?: (item: IPersonaProps) => void;
   /**
-   * The text to display while searching for more results in a limited sugesstions list
+   * A function used to validate if raw text entered into the well can be added into the selected items list
+   */
+  onValidateInput?: (input: string) => ValidationState;
+  /**
+   * The text to display while searching for more results in a limited suggestions list
    */
   searchingText?: ((props: { input: string }) => string) | string;
   /**
@@ -66,6 +73,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default false
    */
   disabled?: boolean;
+  /**
+   * Function that specifies how arbitrary text entered into the well is handled.
+   */
+  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -125,4 +136,10 @@ export interface IBasePickerSuggestionsProps {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+}
+
+export enum ValidationState {
+  valid,
+  warning,
+  invalid
 }

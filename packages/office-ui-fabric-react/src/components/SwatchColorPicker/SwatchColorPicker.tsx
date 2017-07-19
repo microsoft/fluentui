@@ -7,6 +7,7 @@ import {
   getId
 } from '../../Utilities';
 import {
+  ISwatchColorPicker,
   ISwatchColorPickerProps,
   ISwatchColorPickerItemProps,
   SwatchColorPickerItemType
@@ -164,7 +165,7 @@ const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOption
 
       // Build an SVG for the cell with the given shape and color properties
       return (
-        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color).str } >
+        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color as string).str } >
           {
             cellShape === 'circle' ?
               <circle cx='50%' cy='50%' r='50%' /> :
@@ -180,7 +181,7 @@ export interface ISwatchColorPickerState {
   expanded?: boolean;
 }
 
-export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> {
+export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
 
   public static defaultProps = {
     cellShape: 'circle',
@@ -197,14 +198,23 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
     this._id = props.id || getId('swatchColorPicker');
 
+    let selectedIndex: number | undefined;
+    if (props.selectedId) {
+      selectedIndex = this._getSelectedIndex(props.swatchColorPickerItems, props.selectedId);
+    }
+
     this.state = {
-      selectedIndex: props.selectedId && this._getSelectedIndex(props.swatchColorPickerItems, props.selectedId),
+      selectedIndex,
       expanded: false
     };
   }
 
   public componentWillReceiveProps(newProps: ISwatchColorPickerProps) {
-    let newSelectedIndex = newProps.selectedId && this._getSelectedIndex(newProps.swatchColorPickerItems, newProps.selectedId);
+    let newSelectedIndex;
+
+    if (newProps.selectedId) {
+      newSelectedIndex = this._getSelectedIndex(newProps.swatchColorPickerItems, newProps.selectedId);
+    }
 
     if (newSelectedIndex !== undefined &&
       newSelectedIndex !== this.state.selectedIndex) {
@@ -229,7 +239,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         { ...this.props }
         color={ colorToSet }
         onClick={ this._onButtonClick }
-        expanded={ this.state.expanded }
+        expanded={ !!this.state.expanded }
         onRenderContainer={ this._onRenderContainer }
         menuIconProps={ menuButtonProps.menuIconProps ?
           menuButtonProps.menuIconProps :
@@ -305,8 +315,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     // context each menuItem is in its own "chunk", only grouped
     // cells are processed as a chunk. This helps with being able
     // to determine the correct aria-posinset and aria-setsize values
-    let firstExecutableItemsPerChunk = this.props.menuButtonProps ?
-      this._getFirstExecutableItemsPerChunk() : undefined;
+    let firstExecutableItemsPerChunk = (this.props.menuButtonProps ?
+      this._getFirstExecutableItemsPerChunk() : undefined) as ISwatchColorPickerItemProps[];
 
     // Did we find any executable items? (e.g. should be calculate the set information)
     let shouldGetSetInfo = (firstExecutableItemsPerChunk && firstExecutableItemsPerChunk.length > 0);
@@ -540,7 +550,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       return;
     }
 
-    let index = item.index;
+    let index = item.index as number;
 
     // If we have a valid index and it is not already
     // selected, select it
@@ -557,7 +567,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
       // The index that got the click was already selected,
       // clear the selection
-      this._clearColors([this.props.onColorChanged, this.props.onCellHovered, this.props.onCellFocused]);
+      this._clearColors([this.props.onColorChanged!, this.props.onCellHovered!, this.props.onCellFocused!]);
 
       this.setState({
         selectedIndex: undefined,
@@ -581,7 +591,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     }
 
     // Make sure to clear any hover/focus colors
-    this._clearColors([this.props.onCellHovered, this.props.onCellFocused]);
+    this._clearColors([this.props.onCellHovered!, this.props.onCellFocused!]);
 
     this.setState({
       expanded: false
@@ -607,7 +617,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    */
   @autobind
   private _clearFocusColorOnMenuItem(id?: string, color?: string) {
-    this._clearColors([this.props.onCellFocused]);
+    this._clearColors([this.props.onCellFocused!]);
   }
 
   /**
@@ -658,7 +668,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    */
   @autobind
   private _onDismiss() {
-    this._clearColors([this.props.onCellHovered, this.props.onCellFocused]);
+    this._clearColors([this.props.onCellHovered!, this.props.onCellFocused!]);
 
     this.setState({
       expanded: false
@@ -744,6 +754,7 @@ class SwatchColorPickerMenuButton extends BaseComponent<IMenuButtonProps, {}> {
 }
 
 interface ISwatchColorPickerBodyProps {
+  componentRef?: () => void;
   swatchColorPickerItems: ISwatchColorPickerItemProps[];
   columnCount: number;
   onRenderItems: (items: ISwatchColorPickerItemProps[]) => JSX.Element[];

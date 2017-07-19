@@ -12,7 +12,11 @@
   position: relative;
 
   &:hover {
-    background: $ms-color-neutralLight;
+    background: $ms-color-neutralLighter;
+
+    .closeButton {
+      display: block;
+    }
   }
 
   &.suggestionsItemIsSuggested {
@@ -22,11 +26,28 @@
       background: $ms-color-neutralTertiaryAlt;
     }
 
+    @media screen and (-ms-high-contrast: active) {
+      border: 1px solid $ms-color-white;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border: 1px solid $ms-color-black;
+    }
+
     .closeButton {
       &:hover {
         background: $ms-color-neutralTertiary;
-        color: $ms-color-black;
+        color: $ms-color-neutralPrimary;
       }
+    }
+  }
+
+  .closeButton {
+    display: none;
+    color: $ms-color-neutralSecondary;
+
+    &:hover {
+      background: $ms-color-neutralLight;
     }
   }
 }
@@ -66,7 +87,6 @@
   padding: 0 12px;
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
 }
