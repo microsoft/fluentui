@@ -121,7 +121,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom, topDistance, bottomDistance } = this.state;
     const { stickyClassName } = this.props;
     const isSticky = isStickyTop || isStickyBottom;
-    const isEdge = navigator.userAgent.toLowerCase().indexOf('edge') > -1;
+    const isEdge = navigator && navigator.userAgent.toLowerCase().indexOf('edge') > -1;
 
     let style: IStyle;
     if (isSticky) {
