@@ -130,11 +130,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           data-is-focusable={ !disabled }
           ref={ this._resolveRef('_dropDown') }
           id={ id }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled,
-            'is-required ': required,
-          }) }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
@@ -145,6 +140,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
+          className={ css('ms-Dropdown', styles.root, className, {
+            'is-open': isOpen,
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
+          }) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }

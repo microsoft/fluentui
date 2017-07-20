@@ -266,7 +266,7 @@ const data: IFullDocumentCardProps[] = [
 ];
 
 export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
-  return (<div> { documentProps.documentTitleProps.title } </div>);
+  return (<div> { documentProps.documentTitleProps && documentProps.documentTitleProps.title } </div>);
 };
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => {
@@ -279,8 +279,8 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
   } = itemProps;
   return (
     <Persona
-      imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
-      primaryText={ documentTitleProps.title }
+      imageUrl={ documentPreviewProps && documentPreviewProps.previewImages[0].previewImageSrc }
+      primaryText={ documentTitleProps && documentTitleProps.title }
       size={ PersonaSize.small } />
   );
 };
@@ -293,19 +293,25 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
     documentTitleProps
   } = documentProps.item;
   let actions: IButtonProps[] = [];
-  documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
-  actions.push({
-    icon: 'Cancel', onClick: (ev: any) => { documentProps.onRemoveItem(); }
-  });
+  if (documentActionsProps) {
+    documentActionsProps.actions.forEach((action: IButtonProps) => actions.push(action));
+    actions.push({
+      icon: 'Cancel', onClick: (ev: any) => {
+        if (documentProps.onRemoveItem) {
+          documentProps.onRemoveItem();
+        }
+      }
+    });
+  }
 
   return (
     <DocumentCard
       onClick={ () => { console.log('You clicked the card.'); } }
     >
-      <DocumentCardPreview { ...documentPreviewProps } />
+      <DocumentCardPreview { ...(documentPreviewProps as IDocumentCardPreviewProps) } />
       <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
-      <DocumentCardTitle { ...documentTitleProps } />
-      <DocumentCardActivity { ...documentActivityProps } />
+      <DocumentCardTitle { ...(documentTitleProps as IDocumentCardTitleProps) } />
+      <DocumentCardActivity { ...(documentActivityProps as IDocumentCardActivityProps) } />
       <DocumentCardActions actions={ actions } />
     </DocumentCard>
   );
@@ -349,14 +355,15 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   }
 
   private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {
-    return filterText ? data.filter(item => item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, items)) : [];
+    return filterText ? data.filter(item => item.documentTitleProps && item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, items)) : [];
   }
 
   private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]) {
     if (!items || !items.length || items.length === 0) {
       return false;
     }
-    return items.filter(item => item.documentTitleProps.title === document.documentTitleProps.title).length > 0;
+    let documentTitle = document.documentTitleProps && document.documentTitleProps.title;
+    return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
   }
 }
 

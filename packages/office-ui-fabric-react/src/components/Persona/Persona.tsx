@@ -80,7 +80,6 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public render() {
     let {
       className,
-      size,
       imageUrl,
       imageAlt,
       initialsColor,
@@ -98,12 +97,13 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
       onRenderOptionalText,
       imageShouldStartVisible
     } = this.props;
+    let size = this.props.size as PersonaSize;
 
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
     let presenceElement = null;
     if (presence !== PersonaPresence.none) {
-      let userPresence = PersonaPresence[presence],
+      let userPresence = PersonaPresence[presence as PersonaPresence],
         statusIcon = null;
       switch (userPresence) {
         case 'online':
@@ -150,7 +150,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence], this.props.showSecondaryText ? styles.showSecondaryText : '') }
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence as PersonaPresence], this.props.showSecondaryText ? styles.showSecondaryText : '') }
       >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
@@ -188,7 +188,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   }
 
   @autobind
-  private _renderElement(text: string, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
+  private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
     return (
       <div className={ className }>
         { render ? render(this.props) : text }
@@ -212,7 +212,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
     );
   }
 
-  private _getColorFromName(displayName: string): PersonaInitialsColor {
+  private _getColorFromName(displayName: string | undefined): PersonaInitialsColor {
     let color = PersonaInitialsColor.blue;
     if (!displayName) {
       return color;
