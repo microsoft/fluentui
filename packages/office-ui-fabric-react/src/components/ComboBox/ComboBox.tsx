@@ -225,6 +225,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let divProps = getNativeProps(this.props, divProperties);
 
+    let hasErrorMessage = (errorMessage !== undefined) ? true : false;
+    let readonly = disabled || !allowFreeform;
+
     this._classNames = getClassNames(
       getStyles(theme, customStyles),
       className,
@@ -232,7 +235,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       disabled,
       required,
       focused,
-      allowFreeform
+      readonly,
+      hasErrorMessage
     );
 
     return (
@@ -275,7 +279,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
           <IconButton
-            className={ this._classNames.caretButton }
+            className={ this._classNames.caretDown }
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }

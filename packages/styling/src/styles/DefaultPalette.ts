@@ -47,4 +47,8 @@ export const DefaultPalette: IPalette = {
   greenDark: '#004b1c',
   green: '#107c10',
   greenLight: '#bad80a',
+  contrastBlackDisabled: '#00ff00',
+  contrastWhiteDisabled: '#600000',
+  contrastBlackSelected: '#1AEBFF',
+  contrastWhiteSelected: '#37006E',
 };

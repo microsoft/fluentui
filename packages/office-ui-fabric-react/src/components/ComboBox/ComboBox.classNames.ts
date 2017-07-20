@@ -1,7 +1,6 @@
-import { IComboBoxOption, IComboBoxProps, IComboBoxStyles } from './ComboBox.Props';
+import { IComboBoxStyles } from './ComboBox.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
-  ITheme,
   mergeStyles,
 } from '../../Styling';
 
@@ -9,12 +8,13 @@ export interface IComboBoxClassNames {
   container: string;
   root: string;
   input: string;
-  caretButton: string;
+  caretDown: string;
   errorMessage: string;
   callout: string;
   items: string;
   item: string;
   itemSelected: string;
+  itemDisabled: string;
   header: string;
   divider: string;
   optionText: string;
@@ -27,7 +27,8 @@ export const getClassNames = memoizeFunction((
   disabled: boolean,
   required: boolean,
   focused: boolean,
-  allowFreeform: boolean
+  readOnly: boolean,
+  hasErrorMessage: boolean
 ): IComboBoxClassNames => {
   return {
     container: mergeStyles(
@@ -42,16 +43,27 @@ export const getClassNames = memoizeFunction((
       className,
       styles.root,
       disabled && styles.rootDisabled,
-      focused && styles.rootFocused,
-      !allowFreeform && styles.rootReadOnly,
+      !disabled && focused && styles.rootHoveredOrFocused,
+      !disabled && {
+        ':hover': styles.rootHoveredOrFocused
+      },
+      readOnly && styles.rootReadOnly,
+      hasErrorMessage && styles.rootError
     ) as string,
     input: mergeStyles(
       'ms-ComboBox-Input',
       styles.input,
+      disabled && styles.inputDisabled
     ) as string,
-    caretButton: mergeStyles(
+    caretDown: mergeStyles(
       'ms-ComboBox-Button',
-      styles.caretButton
+      styles.caretDown,
+      !readOnly && {
+        ':hover': styles.caretDownHovered,
+        ':active': styles.caretDownActive,
+      },
+      disabled && styles.caretDownDisabled,
+      readOnly && styles.caretDownReadOnly,
     ) as string,
     errorMessage: mergeStyles(
       styles.errorMessage
@@ -66,13 +78,19 @@ export const getClassNames = memoizeFunction((
     ) as string,
     item: mergeStyles(
       'ms-ComboBox-item',
-      disabled && 'is-disabled',
       styles.item,
-      disabled && styles.itemDisabled,
     ) as string,
     itemSelected: mergeStyles(
+      'ms-ComboBox-item',
       'is-selected',
+      styles.item,
       styles.itemSelected,
+    ) as string,
+    itemDisabled: mergeStyles(
+      'ms-ComboBox-item',
+      'is-disabled',
+      styles.item,
+      styles.itemDisabled,
     ) as string,
     header: mergeStyles(
       'ms-ComboBox-header',

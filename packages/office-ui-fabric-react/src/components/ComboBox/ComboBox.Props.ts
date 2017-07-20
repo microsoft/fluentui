@@ -71,9 +71,15 @@ export interface IComboBoxStyles {
   root?: IStyle;
   rootDisabled?: IStyle;
   rootReadOnly?: IStyle;
-  rootFocused?: IStyle;
+  rootHoveredOrFocused?: IStyle;
+  rootError?: IStyle;
   input?: IStyle;
-  caretButton?: IStyle;
+  inputDisabled?: IStyle;
+  caretDown?: IStyle;
+  caretDownHovered?: IStyle;
+  caretDownActive?: IStyle;
+  caretDownReadOnly?: IStyle;
+  caretDownDisabled?: IStyle;
   errorMessage?: IStyle;
   callout?: IStyle;
   header?: IStyle;
