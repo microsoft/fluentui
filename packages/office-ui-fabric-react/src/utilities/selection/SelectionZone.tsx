@@ -168,7 +168,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -207,7 +207,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -232,7 +232,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
         return true;
       }
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
 
     return false;
@@ -266,10 +266,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = getParent(target);
+        target = getParent(target) as HTMLElement;
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -337,7 +337,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = getParent(target);
+        target = getParent(target) as HTMLElement;
       }
     }
 
@@ -445,7 +445,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._isMetaPressed = ev.metaKey;
   }
 
-  private _findItemRoot(target: HTMLElement): HTMLElement {
+  private _findItemRoot(target: HTMLElement): HTMLElement | undefined {
     let { selection } = this.props;
 
     while (target !== this.refs.root) {
@@ -456,7 +456,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         break;
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
 
     if (target === this.refs.root) {
@@ -475,7 +475,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     while (!isToggle && element !== this.refs.root) {
       isToggle = element.getAttribute(attributeName) === 'true';
-      element = getParent(element);
+      element = getParent(element) as HTMLElement;
     }
 
     return isToggle;
@@ -494,7 +494,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           return false;
         }
 
-        element = getParent(element);
+        element = getParent(element) as HTMLElement;
       }
     }
 

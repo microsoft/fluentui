@@ -1,4 +1,7 @@
 // @public
+export function assertNever(x: never): never;
+
+// @public
 export function assign(target: any, ...args: any[]): any;
 
 // WARNING: dispose has incomplete type information

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Do measurements inside requestAnimationFrame",
+      "comment": "Textfield: Fixed regression in disabled styles",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "micahgodbolt@gmail.com"
 }

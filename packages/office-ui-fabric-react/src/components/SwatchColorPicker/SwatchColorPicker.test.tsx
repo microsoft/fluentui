@@ -84,7 +84,7 @@ describe('SwatchColorPicker', () => {
     let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu');
 
     expect(menu).to.not.equal(null, 'should have a menu');
-    expect(menu.querySelectorAll('.ms-swatchColorPickerBodyContainer').length).to.equal(1, 'should have a swatch color picker body inside of the menu');
+    expect(menu!.querySelectorAll('.ms-swatchColorPickerBodyContainer').length).to.equal(1, 'should have a swatch color picker body inside of the menu');
   });
 
   it('Can render the correct options when in a menu', () => {
@@ -104,7 +104,7 @@ describe('SwatchColorPicker', () => {
     expect(button).to.not.equal(null, 'should have a button');
     button.simulate('click');
 
-    let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu');
+    let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu') as Element;
     expect(menu).to.not.equal(null, 'should have a menu');
 
     let tableElements = menu.querySelectorAll('table[role="grid"]');
@@ -213,10 +213,10 @@ describe('SwatchColorPicker', () => {
 
     expect(swatchColorPickerRoot.find('.ms-swatchColorPickerButton.is-expanded').length).to.equal(1, 'should be expanded');
 
-    let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu');
+    let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu') as Element;
     expect(menu).to.not.equal(null, 'should have a menu');
 
-    let cell = menu.querySelector('button');
+    let cell = menu.querySelector('button') as HTMLButtonElement;
     expect(cell).to.not.equal(null, 'should find a cell');
 
     ReactTestUtils.Simulate.click(cell);
@@ -246,10 +246,10 @@ describe('SwatchColorPicker', () => {
 
     expect(swatchColorPickerRoot.find('.ms-swatchColorPickerButton.is-expanded').length).to.equal(1, 'should be expanded');
 
-    let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu');
+    let menu = wrapper.getDOMNode().ownerDocument.querySelector('.ms-swatchColorPickerMenu') as Element;
     expect(menu).to.not.equal(null, 'should have a menu');
 
-    let cell = menu.querySelector('button');
+    let cell = menu.querySelector('button') as HTMLButtonElement;
     expect(cell).to.not.equal(null, 'should find a cell');
 
     ReactTestUtils.Simulate.click(cell);
@@ -302,7 +302,7 @@ describe('SwatchColorPicker', () => {
     let container = reactContainer.getDOMNode();
     expect(container).to.not.equal(null, 'should have a container');
 
-    let item = container.querySelector('[role="gridcell"]');
+    let item = container.querySelector('[role="gridcell"]') as Element;
     expect(item).to.not.equal(null, 'should find a item');
 
     ReactTestUtils.Simulate.click(item);
@@ -322,7 +322,7 @@ describe('SwatchColorPicker', () => {
     let container = reactContainer.getDOMNode();
     expect(container).to.not.equal(null, 'should have a container');
 
-    let item = container.querySelector('[role="button"]');
+    let item = container.querySelector('[role="button"]') as Element;
     expect(item).to.not.equal(null, 'should find a item');
 
     ReactTestUtils.Simulate.click(item);
@@ -342,7 +342,7 @@ describe('SwatchColorPicker', () => {
     let container = reactContainer.getDOMNode();
     expect(container).to.not.equal(null, 'should have a container');
 
-    let cell = container.querySelector('[role="gridcell"]');
+    let cell = container.querySelector('[role="gridcell"]') as Element;
     expect(cell).to.not.equal(null, 'should find a cell');
 
     ReactTestUtils.Simulate.mouseEnter(cell);
@@ -362,7 +362,7 @@ describe('SwatchColorPicker', () => {
     let container = reactContainer.getDOMNode();
     expect(container).to.not.equal(null, 'should have a container');
 
-    let cell = container.querySelector('[role="gridcell"]');
+    let cell = container.querySelector('[role="gridcell"]') as Element;
     expect(cell).to.not.equal(null, 'should find a cell');
 
     ReactTestUtils.Simulate.focus(cell);
@@ -383,7 +383,7 @@ describe('SwatchColorPicker', () => {
     let container = reactContainer.getDOMNode();
     expect(container).to.not.equal(null, 'should have a container');
 
-    let cell = container.querySelector('[role="gridcell"]');
+    let cell = container.querySelector('[role="gridcell"]') as Element;
     expect(cell).to.not.equal(null, 'should find a cell');
     ReactTestUtils.Simulate.mouseEnter(cell);
     ReactTestUtils.Simulate.focus(cell);
