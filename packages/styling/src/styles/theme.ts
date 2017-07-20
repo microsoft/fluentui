@@ -104,7 +104,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
     listBackground: p.white,
     listTextColor: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
-    listItemBackgroundChecked: p.neutralQuaternary,
+    listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
 }
