@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.13.12",
+      "tag": "@uifabric/styling_v0.13.12",
+      "date": "Wed, 19 Jul 2017 21:40:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "d21643832d11a6a6e2a7484a53de72a99665ad67",
+            "comment": "Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.2 <5.0.0` to `>=4.8.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.11",
       "tag": "@uifabric/styling_v0.13.11",
       "date": "Mon, 17 Jul 2017 18:38:01 GMT",
