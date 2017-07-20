@@ -149,7 +149,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         <div ref='placeholder' style={ placeholderStyle } />
         <div ref='sticky' className={ css({
           [styles.isSticky]: isSticky,
-          [stickyClassName]: isSticky
+          [stickyClassName]: isSticky && stickyClassName
         }) } style={ style }>
           { this.props.children }
         </div>
