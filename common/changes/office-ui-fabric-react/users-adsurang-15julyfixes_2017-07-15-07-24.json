@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: List native props at top of div element",
+      "comment": "Fixed deletion of tag item when tag picker is disabled",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "adsurang@microsoft.com"
 }
