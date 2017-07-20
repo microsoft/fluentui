@@ -54,6 +54,9 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public componentDidMount() {
     this._scrollElement = findScrollableParent(this.refs.root);
     if (this._scrollElement) {
+      if (navigator.userAgent.toLowerCase().indexOf('edge') > -1) {
+        this._scrollElement.style.transform = 'translateZ(0px)';
+      }
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
       this._events.on(window, 'resize', () => {
         setTimeout(() => {

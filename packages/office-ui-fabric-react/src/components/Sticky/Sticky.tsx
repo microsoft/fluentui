@@ -119,12 +119,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom, topDistance, bottomDistance } = this.state;
     const { stickyClassName } = this.props;
     const isSticky = isStickyTop || isStickyBottom;
+    const isEdge = navigator.userAgent.toLowerCase().indexOf('edge') > -1;
 
     let style: IStyle;
     if (isSticky) {
       const top = isStickyTop ?
-        this._offsetTop + topDistance :
-        this._offsetBottom - this.refs.root.clientHeight - bottomDistance;
+        (isEdge ? topDistance : this._offsetTop + topDistance) :
+        (isEdge ? bottomDistance : this._offsetBottom - this.refs.root.clientHeight - bottomDistance);
       style = {
         top: `${top}px`,
         width: `${this.refs.root.clientWidth}px`,
