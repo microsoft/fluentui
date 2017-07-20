@@ -6,11 +6,3 @@ before_script:
 script:
 - node vrtDeploy --user $FTP_USER --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
 after_success: node vrtDeploy --user $FTP_USER --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
-env:
-  global:
-    - FTP_USER:
-      secure: "Jug4VBUm+QqV4p7CEWEeuiOIkWKjNaqPdnKIRnpWRcX6zbQ3T2P1hVOyZn6vipbZVuCzxAOkaSiRRjbv8gU2r1YOpYxbMTqoKbna5xoqc1lfJcgOcHCaP9SvDBl4IHl3KtN1IB9C6qZmdeipAIViPnMfgmtJKgCooA9+PRfawgyZBrp4/gdCcbv4/KZSZDIjqPL/1AFzu3gcxYg9y5AeU
-pwnxIKL+bf/f1ednxrxmqcVX1PwzIdmhp2a0vGrmLJOJgs9eiZnV/mpNBQVjiSXg2ep5Msjuy8wJ5axk3i/mq+vw/hZRStEb9od1yDWPFwMPAknMpu+imIwoo2K7edaPYGzhuCZPcqZi5+MQ4F1c9nop3g+GGSf4iVhVZp/IkUHLW+lM7gOIa9XXPG4xpBnvsJRswGu213jcriGbAOgK0k5fDniNzX6J
-FY2OoluVxERwRIRYzX9alfrhtYgwt6xuptmL38QCRgCmKly84Q9h8qPh1wlUBZXMtRwQPAwvuyTjXbCqaTFGwqfzX0XTvUBVyfczFHHcJ/NeMgJkuaJg3Xoobxij6bd6SL+CvIOnBwuQe6xm3VKQpamp0mgS6vowoduZ3grAsPYwvHJcb255Lcp/GyFg2QW+wSqO1YbPjqjJmyOWLSMDaXYAMg6UXGIw
-lPEcuEYM0nQ0xkHUwNnOWc="
-    - FTP_PASSWORD=bar
