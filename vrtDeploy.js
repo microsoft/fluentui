@@ -5,7 +5,7 @@ const minimist = require('minimist');
 
 const args = minimist(process.argv.slice(2));
 
-console.log(args.user.substring(0, 10), args.password.substring(0, 10), args.pull);
+console.log(args.user, args.pull);
 
 
 const dest = path.join('/site/wwwroot/mgodbolt/vrt/', args.pull || './');
