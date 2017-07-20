@@ -5,4 +5,4 @@ before_script:
 - npm install -g gulp
 script:
 - npm run buildfast
-after_success: node vrtDeploy --user $FTP_USER --password $FTP_PASSWORD
+after_success: node vrtDeploy --user $FTP_USER --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
