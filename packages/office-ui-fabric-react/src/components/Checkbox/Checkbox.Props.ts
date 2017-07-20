@@ -101,11 +101,6 @@ export interface ICheckboxStyles {
   labelDisabled?: IStyle;
 
   /**
-   * Style for the box (container for the actual checkbox).
-   */
-  box?: IStyle;
-
-  /**
    * Style for checkbox in its default unchecked/enabled state.
    */
   checkbox?: IStyle;
