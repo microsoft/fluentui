@@ -12,5 +12,7 @@ const conn = new ftp({
   password: args.password
 });
 
+console.log(args.user.substring(0, 10), args.password.substring(0, 10), args.pull);
+
 fs.src(['./packages/office-ui-fabric-react/visualtests/baseline/*.png'], { buffer: false })
   .pipe(conn.dest(dest));
