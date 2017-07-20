@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: remove unnecessary styles and element",
+      "comment": "ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

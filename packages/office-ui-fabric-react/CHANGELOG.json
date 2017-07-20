@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.21.3",
+      "tag": "office-ui-fabric-react_v4.21.3",
+      "date": "Thu, 20 Jul 2017 10:11:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "85bd583f0009bdbc395702dc7c61f6cccad36e92",
+            "comment": "SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "db6b2fa0a54f623f0bd659938c7193c31ba3bbde",
+            "comment": "Checkbox: remove unnecessary styles and element"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.12 <1.0.0` to `>=0.13.13 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.2",
       "tag": "office-ui-fabric-react_v4.21.2",
       "date": "Wed, 19 Jul 2017 21:40:34 GMT",
