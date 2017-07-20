@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DefaultButton: Make styles match design",
+      "comment": "Fixed deletion of tag item when tag picker is disabled",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "adsurang@microsoft.com"
 }

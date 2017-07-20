@@ -1,3 +1,4 @@
+// @public
 export function assertNever(x: never): never;
 
 // @public
