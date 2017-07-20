@@ -2,6 +2,12 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.13.13",
+      "tag": "@uifabric/styling_v0.13.13",
+      "date": "Thu, 20 Jul 2017 10:11:23 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.13.12",
       "tag": "@uifabric/styling_v0.13.12",
       "date": "Wed, 19 Jul 2017 21:40:34 GMT",

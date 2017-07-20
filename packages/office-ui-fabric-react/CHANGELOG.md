@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Jul 2017 21:40:34 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2017 10:11:23 GMT and should not be manually modified.
+
+## 4.21.3
+Thu, 20 Jul 2017 10:11:23 GMT
+
+### Patches
+
+- SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker
+- Checkbox: remove unnecessary styles and element
 
 ## 4.21.2
 Wed, 19 Jul 2017 21:40:34 GMT
