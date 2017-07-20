@@ -1,7 +1,7 @@
 @import '../../common/common';
 
 .isSticky {
-  position: fixed;
+  position: absolute;
   -webkit-overflow-scrolling: touch;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
