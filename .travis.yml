@@ -4,5 +4,5 @@ node_js:
 before_script:
 - npm install -g gulp
 script:
-- node vrtDeploy --user $FTP_USER --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
-after_success: node vrtDeploy --user $FTP_USER --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
+- node vrtDeploy --user 'fabricreact\fabricreact' --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
+after_success: node vrtDeploy --user 'fabricreact\fabricreact' --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
