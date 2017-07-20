@@ -185,7 +185,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -208,7 +208,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -228,8 +228,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             aria-haspopup={ hasSubmenuItems(item) }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
-            <span className={ css(
-              'ms-CommandBarItem-commandText', styles.itemCommandText) } aria-hidden='true' role='presentation'>{ item.name }</span>
+            { (!!item.name) && (
+              <span
+                className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                aria-hidden='true'
+                role='presentation'
+              >
+                { item.name }
+              </span>
+            ) }
           </div>;
         }
       })() }
