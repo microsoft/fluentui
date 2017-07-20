@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.8.0",
+      "tag": "@uifabric/utilities_v4.8.0",
+      "date": "Wed, 19 Jul 2017 21:40:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "074fabb6f0ffd52598947d9dda563d4dd8113ee7",
+            "comment": "Add assertNever function for exhaustive null checking"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.2",
       "tag": "@uifabric/utilities_v4.7.2",
       "date": "Wed, 12 Jul 2017 01:49:50 GMT",

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-component",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "@types/react-dom": "15.5.0",
     "@types/webpack-env": "1.13.0",
     "@uifabric/example-app-base": "4.1.1",
-    "@uifabric/utilities": "4.7.2",
+    "@uifabric/utilities": "4.8.0",
     "autoprefixer": "^6.7.6",
     "chai": "^3.5.0",
     "css-loader": "^0.28.0",
@@ -49,7 +49,7 @@
     "react-dom": "^0.14 || ^15.4.2 || ^16.0.0-0"
   },
   "dependencies": {
-    "office-ui-fabric-react": ">=4.21.1 <5.0.0",
+    "office-ui-fabric-react": ">=4.21.3 <5.0.0",
     "tslib": "^1.6.0"
   }
 }
