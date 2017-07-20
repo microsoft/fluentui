@@ -7,6 +7,7 @@ const args = minimist(process.argv.slice(2));
 
 console.log(args.user, args.pull);
 
+console.log(args.password.substring(0, 4));
 
 const dest = path.join('/site/wwwroot/mgodbolt/vrt/', args.pull.toString() || './');
 const conn = new ftp({
