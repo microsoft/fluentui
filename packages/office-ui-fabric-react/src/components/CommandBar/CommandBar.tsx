@@ -185,7 +185,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -208,7 +208,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
