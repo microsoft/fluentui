@@ -4,5 +4,10 @@ node_js:
 before_script:
 - npm install -g gulp
 script:
-- node vrtDeploy --user 'fabricreact\fabricreact' --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
-after_success: node vrtDeploy --user 'fabricreact\fabricreact' --password $FTP_PASSWORD --pull $TRAVIS_PULL_REQUEST
+- node vrtDeploy --user 'fabricreact\fabricreact' --password $FTP_PASSWORD --pull
+  $TRAVIS_PULL_REQUEST
+after_success: node vrtDeploy --user 'fabricreact\fabricreact' --password $FTP_PASSWORD
+  --pull $TRAVIS_PULL_REQUEST
+env:
+  global:
+    secure: q7BHxQkXepFWc60LsIM5txN/Rg7KzoeVJO9mZnyKWvQWXKLHozNPf+2lFU2910hTYyhThnXIKBWN7tqbRqImVw2uTM31pYlmtUjoiiSvVwWzQjH+M0oEQ8UQM4nIsvlcSjjijCSAS0dj8G6hq9zfz5mLPxmaAWcy/YX1V2ybMs54rpnBR/Sr4G0K+mjHvtm7d+5z3nKKf1T7ailI/qCYgL+DD7kDR6g+cKkaFJEPoWasWgU0dLeY51koP3nuF87xk2UQZzdYcHEvm15HiedIFEJFQvzSpBe1yQOVORqStK8ZIg2AajO39ItEra//2OUflSmh4qRtxhBaOYaQI/OeNpJuO5KDyZKsf+1s9JrqcLd3UHVRdKOp//Wbbmu65+Va7Vj1cMMRRazisESYCvwu73xbLzpLUCymZksOmY17y1TLrlHRtYdq+GJlfYD0FLCbqAnnu6kTMgXFwxmqht8erQux4TEG/z2Kh1auanx1DXaIh3+zzcpejTrw+SAmoG+qA4Qtho3NX08Pi6TyU86SwavaWKj0kgZa4EZg/+fqtWcPhQbyHCv8+K1c6wqnIxafdqi3g/Bkf8wbc0eMgOC5qpeSKaw3JUqy+TmaL7ftI4QUnCuVkCnMVUt/pYJlgpFRDA9it4uCMQ5X4XvW9FhBdTy4Debg/fZgk6M03J99xF8=
