@@ -47,6 +47,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _offsetTop: number;
   private _offsetBottom: number;
+  private _scrollContainerHeight: number;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -71,7 +72,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     offsetTop: number,
     bottomScrollBound: number,
     bottomFooterHeight: number,
-    offsetBottom: number
+    scrollContainerHeight: number
     ) {
     const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
     const distanceFromStickyTop = rootBounds.top - topScrollBound;
@@ -82,7 +83,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const setStickyTop = distanceFromStickyTop <= topHeight;
     const setStickyBottom = distanceFromStickyBottom >= -bottomHeight;
     this._offsetTop = offsetTop;
-    this._offsetBottom = offsetBottom;
+    this._offsetBottom = offsetTop + scrollContainerHeight;
+    this._scrollContainerHeight = scrollContainerHeight;
     if (setStickyTop !== this.state.isStickyTop || setStickyBottom !== this.state.isStickyBottom) {
       this.setState({
         isStickyTop: setStickyTop,
@@ -124,8 +126,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     let style: IStyle;
     if (isSticky) {
       const top = isStickyTop ?
-        (isEdge ? topDistance : this._offsetTop + topDistance) :
-        (isEdge ? bottomDistance : this._offsetBottom - this.refs.root.clientHeight - bottomDistance);
+        (isEdge ?
+          topDistance :
+          this._offsetTop + topDistance) :
+        (isEdge ?
+          this._scrollContainerHeight - bottomDistance - this.refs.root.clientHeight :
+          this._offsetBottom - this.refs.root.clientHeight - bottomDistance);
       style = {
         top: `${top}px`,
         width: `${this.refs.root.clientWidth}px`,

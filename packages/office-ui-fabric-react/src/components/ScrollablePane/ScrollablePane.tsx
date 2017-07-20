@@ -144,7 +144,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   private _notifySubscribers() {
     const { top, bottom } = this._scrollElement.getBoundingClientRect();
     this._subscribers.forEach((handle) => {
-      handle(top, this._topHeaderHeight, this._scrollElement.offsetTop, bottom, this._bottomFooterHeight, this._scrollElement.offsetTop + this._scrollElement.clientHeight);
+      handle(top, this._topHeaderHeight, this._scrollElement.offsetTop, bottom, this._bottomFooterHeight, this._scrollElement.clientHeight);
     });
   }
 }
