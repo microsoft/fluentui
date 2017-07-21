@@ -2,6 +2,48 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.21.4",
+      "tag": "office-ui-fabric-react_v4.21.4",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "294b4174faf5455edc3526eba337b40a847fc10e",
+            "comment": "Do not redundantly set aria-label on command bar items. "
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "d5af8b6edae526651fcc1b2905a1119ef1408103",
+            "comment": "More strict null check fixes in office-ui-fabric-react"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "91323c55902c278e73a13118fc3cd2d7dc00da62",
+            "comment": "Textfield: Fixed regression in disabled styles"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "dcec97d5dd145a80baee3fd80c715286e1597d0a",
+            "comment": "ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div"
+          },
+          {
+            "author": "Aadhar Surange <adhargithub@gmail.com>",
+            "commit": "06ef248801b5a43513c86ce7cc3f06696cb43397",
+            "comment": "Fixed deletion of tag item when tag picker is disabled"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.8.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.13 <1.0.0` to `>=0.13.14 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.3",
       "tag": "office-ui-fabric-react_v4.21.3",
       "date": "Thu, 20 Jul 2017 10:11:23 GMT",
