@@ -42,13 +42,13 @@ export const getClassNames = memoizeFunction((
       required && 'is-required',
       className,
       styles.root,
-      disabled && styles.rootDisabled,
+      readOnly && styles.rootReadOnly,
+      hasErrorMessage && styles.rootError,
       !disabled && focused && styles.rootHoveredOrFocused,
       !disabled && {
         ':hover': styles.rootHoveredOrFocused
       },
-      readOnly && styles.rootReadOnly,
-      hasErrorMessage && styles.rootError
+      disabled && styles.rootDisabled,
     ) as string,
     input: mergeStyles(
       'ms-ComboBox-Input',
@@ -62,8 +62,8 @@ export const getClassNames = memoizeFunction((
         ':hover': styles.caretDownHovered,
         ':active': styles.caretDownActive,
       },
-      disabled && styles.caretDownDisabled,
       readOnly && styles.caretDownReadOnly,
+      disabled && styles.caretDownDisabled,
     ) as string,
     errorMessage: mergeStyles(
       styles.errorMessage

@@ -72,19 +72,18 @@ export const getStyles = memoizeFunction((
     },
     root: {
       boxShadow: 'none',
-      margin: '0',
+      margin: '0 0 10px 0',
       padding: '0',
+      paddingRight: ComboxBoxCaretDownWidth,
       font: fonts.medium,
       color: semanticColors.bodyText,
-      marginBottom: '10px',
       position: 'relative',
       outline: '0',
       userSelect: 'none',
       background: semanticColors.bodyBackground,
       borderWidth: '1px',
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBorder,
-      paddingRight: ComboxBoxCaretDownWidth,
+      borderColor: palette.neutralTertiaryAlt,
       cursor: 'text ',
       display: 'block',
       height: ComboBoxHeight,
@@ -128,7 +127,7 @@ export const getStyles = memoizeFunction((
       fontSize: FontSizes.small,
       position: 'absolute',
       height: ComboBoxHeight,
-      lineHeight: ComboBoxHeight,
+      lineHeight: ComboBoxLineHeight,
       width: ComboxBoxCaretDownWidth,
       textAlign: 'center',
       cursor: 'default',
@@ -212,9 +211,9 @@ export const getStyles = memoizeFunction((
         ':hover': {
           backgroundColor: ComboBoxItemBackgroundSelected
         },
-        ...getListItemHighContrastStyles(theme)
       },
-      getFocusStyle(theme)
+      getFocusStyle(theme),
+      getListItemHighContrastStyles(theme)
     ],
     header: {
       fontSize: fonts.medium,
@@ -227,7 +226,7 @@ export const getStyles = memoizeFunction((
       cursor: 'default',
       padding: '0px 16px',
       userSelect: 'none',
-      textAlign: 'left' // TODO
+      textAlign: 'left'
     },
     divider: {
       height: '1px',
