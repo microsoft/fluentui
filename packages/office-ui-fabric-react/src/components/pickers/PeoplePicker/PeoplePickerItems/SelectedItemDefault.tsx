@@ -14,7 +14,8 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
     item,
     onRemoveItem,
     index,
-    selected
+    selected,
+    removeButtonAriaLabel = ''
   } = peoplePickerItemProps;
   return (
     <div
@@ -38,6 +39,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
         className={ css('ms-PickerItem-removeButton', styles.removeButton) }
         data-is-focusable={ false }
+        ariaLabel={ removeButtonAriaLabel }
       />
     </div >
   );

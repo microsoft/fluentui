@@ -180,7 +180,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       disabled: disabled,
-      onItemChange: this.onItemChange
+      onItemChange: this.onItemChange,
+      removeButtonAriaLabel: this.props.removeButtonAriaLabel
     }));
   }
 
