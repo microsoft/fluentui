@@ -6,3 +6,4 @@ export { IPalette } from './IPalette';
 export { ISemanticColors } from './ISemanticColors';
 export { IFontStyles } from './IFontStyles';
 export { ITheme, IPartialTheme } from './ITheme';
+export { IFontFace } from './IFontFace';

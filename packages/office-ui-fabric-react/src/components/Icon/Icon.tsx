@@ -8,7 +8,7 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { getIcon, IIconDefinition } from '../../Styling';
+import { getIcon, IIconRecord } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
@@ -41,9 +41,9 @@ export function Icon(props: IIconProps): JSX.Element {
     );
   } else {
     let iconDefinition = getIcon(iconName) || {
-      baseClassName: undefined,
+      className: undefined,
       code: undefined
-    } as IIconDefinition;
+    } as IIconRecord;
 
     return (
       <i
@@ -57,7 +57,7 @@ export function Icon(props: IIconProps): JSX.Element {
         className={
           css(
             'ms-Icon', // dangerous?
-            iconDefinition.baseClassName,
+            iconDefinition.subset.className,
             styles.root,
             props.className
           ) }

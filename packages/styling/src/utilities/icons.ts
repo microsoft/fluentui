@@ -2,74 +2,89 @@ import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 import { fontFace } from '../glamorExports';
 import { mergeStyles } from './mergeStyles';
 import { FontWeights } from '../styles/DefaultFontStyles';
+import { IRawStyle } from '../interfaces/IRawStyle';
+import { IFontFace } from '../interfaces/IFontFace';
 
-export interface IIconSubsetDefinition {
-  fontFamily: string;
-  fontWeight?: number;
-  src?: string;
+export interface IIconSubset {
+  fontFace: IFontFace;
+  style: IRawStyle;
   icons: {
     [key: string]: string;
   };
 }
 
-export interface IIconDefinition {
-  baseClassName: string;
-  className: string;
-  code: string;
+export interface IIconSubsetRecord extends IIconSubset {
+  isRegistered?: boolean;
+  className?: string;
 }
 
-export interface IIconDefinitions {
-  [key: string]: IIconDefinition;
+export interface IIconRecord {
+  code: string;
+  subset: IIconSubsetRecord;
+  className?: string;
+}
+
+export interface IIconRecords {
+  [key: string]: IIconRecord;
 }
 
 const ICON_SETTING_NAME = 'icons';
-const _icons: IIconDefinitions = GlobalSettings.getValue(ICON_SETTING_NAME, {});
+const _icons: IIconRecords = GlobalSettings.getValue(ICON_SETTING_NAME, {});
 
 /**
  * Registers a given subset of icons.
  *
  * @param iconSubset - the icon subset definition.
  */
-export function registerIcons({
-  fontFamily,
-  fontWeight = FontWeights.regular,
-  src,
-  icons
-}: IIconSubsetDefinition): void {
-  // Register font face for given icons.
-  fontFace({
-    fontFamily,
-    fontWeight,
-    src
-  });
-
-  // Generate a base class name for the given font.
-  const baseClassName = mergeStyles({
-    fontFamily,
-    fontStyle: 'normal'
-  }).toString();
+export function registerIcons(iconSubset: IIconSubset): void {
+  let subset = {
+    ...iconSubset,
+    isRegistered: false,
+    className: undefined
+  };
+  let { icons } = iconSubset;
 
   for (const iconName in icons) {
     if (icons.hasOwnProperty(iconName)) {
       const code = icons[iconName];
 
       _icons[iconName] = {
-        baseClassName,
-        className: '',
-        code
+        code,
+        subset,
+        className: undefined
       };
     }
   }
 }
 
 /**
- * Gets an icon definition.
+ * Gets an icon definition. If an icon is requested but the subset has yet to be registered,
+ * it will get registered immediately.
  *
  * @public
  * @param name - Name of icon.
  */
-export function getIcon(name: string): IIconDefinition {
-  return _icons[name];
+export function getIcon(name: string): IIconRecord {
+  let icon: IIconRecord = _icons[name];
+  let { subset } = icon;
+
+  if (!subset.isRegistered) {
+    // Register font face for given icons.
+    fontFace(subset.fontFace);
+
+    // Generate a base class name for the given font.
+    subset.className = mergeStyles(
+      subset.style,
+      {
+        fontFamily: subset.fontFace.fontFamily,
+        fontWeight: subset.fontFace.fontWeight || FontWeights.regular,
+        fontStyle: subset.fontFace.fontStyle || 'normal'
+      }).toString();
+
+    subset.isRegistered = true;
+  }
+
+  return icon;
 }
 
 /**
@@ -77,7 +92,7 @@ export function getIcon(name: string): IIconDefinition {
  *
  * @public
  */
-export function getAllIcons(): IIconDefinitions {
+export function getAllIcons(): IIconRecords {
   return _icons;
 }
 
@@ -88,20 +103,21 @@ export function getAllIcons(): IIconDefinitions {
  * @param name - Name of icon.
  */
 export function getIconClassName(name: string): string {
-  let definition = _icons[name];
+  let icon = getIcon(name);
 
-  if (definition) {
-    if (!definition.className) {
-      definition.className = mergeStyles([
-        definition.baseClassName,
+  if (icon) {
+    if (!icon.className) {
+      icon.className = mergeStyles([
+        icon.subset.className,
         {
           ':after': {
-            content: `"${definition.code}"`
+            content: `"${icon.code}"`
           }
         }
       ]).toString();
     }
-    return definition.className;
+
+    return icon.className;
   }
 
   return '';
