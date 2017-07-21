@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div",
+      "comment": "ResizeGroup: Add support for onGrowData",
       "type": "patch"
     }
   ],

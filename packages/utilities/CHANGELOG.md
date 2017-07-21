@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 19 Jul 2017 21:40:34 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jul 2017 10:21:45 GMT and should not be manually modified.
+
+## 4.8.1
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Fixing filteredAssign function
 
 ## 4.8.0
 Wed, 19 Jul 2017 21:40:34 GMT
