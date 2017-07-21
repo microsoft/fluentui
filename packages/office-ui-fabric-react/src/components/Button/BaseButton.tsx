@@ -94,7 +94,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       iconProps && iconProps.className,
       disabled,
-      checked
+      checked,
+      this.state.menuProps != null && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
