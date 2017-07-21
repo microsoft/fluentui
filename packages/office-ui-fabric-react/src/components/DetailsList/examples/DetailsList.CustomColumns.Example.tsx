@@ -36,13 +36,13 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     return (
       <DetailsList
-        items={ sortedItems }
+        items={ sortedItems as any[] }
         setKey='set'
         columns={ columns }
         onRenderItemColumn={ _renderItemColumn }
         onColumnHeaderClick={ this._onColumnClick.bind(this) }
         onItemInvoked={ (item, index) => alert(`Item ${item.name} at index ${index} has been invoked.`) }
-        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column.key} contextmenu opened.`) } />
+        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column!.key} contextmenu opened.`) } />
     );
   }
 
@@ -56,7 +56,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     }
 
     // Sort the items.
-    sortedItems = sortedItems.concat([]).sort((a, b) => {
+    sortedItems = sortedItems!.concat([]).sort((a, b) => {
       let firstValue = a[column.fieldName];
       let secondValue = b[column.fieldName];
 
@@ -70,7 +70,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     // Reset the items and columns to match the state.
     this.setState({
       sortedItems: sortedItems,
-      columns: columns.map(col => {
+      columns: columns!.map(col => {
         col.isSorted = (col.key === column.key);
 
         if (col.isSorted) {

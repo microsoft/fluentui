@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Jul 2017 10:11:23 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jul 2017 10:21:45 GMT and should not be manually modified.
+
+## 4.21.4
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Do not redundantly set aria-label on command bar items. 
+- More strict null check fixes in office-ui-fabric-react
+- Textfield: Fixed regression in disabled styles
+- ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
+- Fixed deletion of tag item when tag picker is disabled
 
 ## 4.21.3
 Thu, 20 Jul 2017 10:11:23 GMT
