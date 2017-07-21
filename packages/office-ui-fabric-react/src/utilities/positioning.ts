@@ -3,7 +3,8 @@ import {
   IRectangle,
   assign,
   getScrollbarWidth,
-  Rectangle
+  Rectangle,
+  getRTL,
 } from '../Utilities';
 
 export enum RectangleEdge {
@@ -38,6 +39,12 @@ export interface IPositionProps {
 
   /** how the element should be positioned */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRtl?: DirectionalHint;
 
   /** The gap between the callout and the target */
   gapSpace?: number;
@@ -116,6 +123,22 @@ export class PositionData {
   }
 }
 
+let MirrorDirectionalHintDictionary: { [key: number]: DirectionalHint } = {
+  [DirectionalHint.topLeftEdge]: DirectionalHint.topRightEdge,
+  [DirectionalHint.topCenter]: DirectionalHint.topCenter,
+  [DirectionalHint.topRightEdge]: DirectionalHint.topLeftEdge,
+  [DirectionalHint.topAutoEdge]: DirectionalHint.topAutoEdge,
+  [DirectionalHint.bottomLeftEdge]: DirectionalHint.bottomRightEdge,
+  [DirectionalHint.bottomCenter]: DirectionalHint.bottomCenter,
+  [DirectionalHint.bottomRightEdge]: DirectionalHint.bottomLeftEdge,
+  [DirectionalHint.bottomAutoEdge]: DirectionalHint.bottomAutoEdge,
+  [DirectionalHint.leftTopEdge]: DirectionalHint.rightTopEdge,
+  [DirectionalHint.leftCenter]: DirectionalHint.rightCenter,
+  [DirectionalHint.leftBottomEdge]: DirectionalHint.rightBottomEdge,
+  [DirectionalHint.rightTopEdge]: DirectionalHint.leftTopEdge,
+  [DirectionalHint.rightCenter]: DirectionalHint.leftCenter,
+  [DirectionalHint.rightBottomEdge]: DirectionalHint.leftBottomEdge,
+};
 // Currently the beakPercent is set to 50 for all positions meaning that it should tend to the center of the target
 let DirectionalDictionary: { [key: number]: PositionData } = {
   [DirectionalHint.topLeftEdge]: new PositionData(RectangleEdge.bottom, RectangleEdge.top, 0, 0, 50, false),
@@ -156,6 +179,17 @@ let OppositeEdgeDictionary: { [key: number]: number } = {
   [RectangleEdge.right]: RectangleEdge.left,
   [RectangleEdge.left]: RectangleEdge.right,
 };
+
+function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint {
+  if (getRTL()) {
+    return props.directionalHintForRtl !== undefined ?
+      props.directionalHintForRtl :
+      MirrorDirectionalHintDictionary[props.directionalHint];
+  } else {
+    return props.directionalHint;
+  }
+}
+
 export function getRelativePositions(
   props: IPositionProps,
   hostElement: HTMLElement,
@@ -173,7 +207,7 @@ export function getRelativePositions(
     props.targetPoint,
     props.useTargetPoint);
   let positionData: PositionData = positioningFunctions._getPositionData(
-    props.directionalHint as DirectionalHint,
+    getDirectionalHintForLayout(props),
     targetRect,
     boundingRect,
     props.coverTarget);
