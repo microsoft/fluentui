@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - '7'
+- '7'
 before_script:
-  - npm install -g gulp
+- npm install -g gulp
+- chmod +x ./scripts/vrtDeploy.sh
 script:
-  - npm run buildfast
+- npm run buildfast
+after_success:
+- "./scripts/vrtDeploy.sh $FTP_USER $FTP_PASSWORD $TRAVIS_PULL_REQUEST"
+
