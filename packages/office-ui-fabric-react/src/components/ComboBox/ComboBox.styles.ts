@@ -138,7 +138,7 @@ export const getStyles = memoizeFunction((
     caretDownActive: {
       backgroundColor: palette.neutralTertiaryAlt,
     },
-    caretDownReadOnly: {
+    caretDownDisallowFreeForm: {
       backgroundColor: 'inherit',
     },
     caretDownDisabled: getDisabledStyles(theme),
@@ -181,21 +181,21 @@ export const getStyles = memoizeFunction((
         [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
           borderColor: palette.white
         },
-        ':hover': {
-          backgroundColor: ComboBoxItemBackgroundHovered,
-          color: palette.black,
-          ...getListItemHighContrastStyles(theme)
-        },
-        ':focus': {
-          backgroundColor: ComboBoxItemBackgroundHovered
-        },
-        ':active': {
-          backgroundColor: ComboBoxItemBackgroundHovered,
-          color: palette.black
-        },
       },
       getFocusStyle(theme),
     ],
+    itemHovered: {
+      backgroundColor: ComboBoxItemBackgroundHovered,
+      color: palette.black,
+      ...getListItemHighContrastStyles(theme)
+    },
+    itemFocused: {
+      backgroundColor: ComboBoxItemBackgroundHovered
+    },
+    itemActive: {
+      backgroundColor: ComboBoxItemBackgroundHovered,
+      color: palette.black
+    },
     itemDisabled: {
       backgroundColor: palette.white,
       color: palette.neutralTertiary,
@@ -208,13 +208,13 @@ export const getStyles = memoizeFunction((
       {
         backgroundColor: ComboBoxItemBackgroundSelected,
         color: palette.black,
-        ':hover': {
-          backgroundColor: ComboBoxItemBackgroundSelected
-        },
       },
       getFocusStyle(theme),
       getListItemHighContrastStyles(theme)
     ],
+    itemSelectedHovered: {
+      backgroundColor: ComboBoxItemBackgroundSelected
+    },
     header: {
       fontSize: fonts.medium,
       fontWeight: FontWeights.semibold,

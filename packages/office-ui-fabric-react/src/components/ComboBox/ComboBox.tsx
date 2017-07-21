@@ -226,7 +226,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let divProps = getNativeProps(this.props, divProperties);
 
     let hasErrorMessage = (errorMessage !== undefined) ? true : false;
-    let readonly = disabled || !allowFreeform;
 
     this._classNames = getClassNames(
       getStyles(theme, customStyles),
@@ -235,14 +234,14 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       disabled,
       required,
       focused,
-      readonly,
+      allowFreeform,
       hasErrorMessage
     );
 
     return (
       <div {...divProps } ref='root' className={ this._classNames.container }>
         { label && (
-          <Label id={ id + '-label' } required={ required } htmlFor={ id }>{ label }</Label>
+          <Label id={ id + '-label' } required={ required } htmlFor={ id } className={ this._classNames.label }>{ label }</Label>
         ) }
         <div
           ref={ this._resolveRef('_comboBoxWrapper') }

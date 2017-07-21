@@ -61,32 +61,154 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    */
   buttonIconProps?: IIconProps;
 
-  styles?: IComboBoxStyles;
-
+  /**
+   * Theme provided by HOC.
+   */
   theme?: ITheme;
+
+  /**
+   * Custom styles for this component
+   */
+  styles?: IComboBoxStyles;
 }
 
 export interface IComboBoxStyles {
+  /**
+   * Style for the container which has the ComboBox and the label
+   */
   container?: IStyle;
+
+  /**
+   * Style for the label element of the ComboBox.
+   */
+  label?: IStyle;
+
+  /**
+   * Base styles for the root element of all ComboBoxes.
+   */
   root?: IStyle;
-  rootDisabled?: IStyle;
-  rootReadOnly?: IStyle;
-  rootHoveredOrFocused?: IStyle;
+
+  /**
+   * Styles for the root element for variant of ComboBox with an errorMessage in the props.
+   */
   rootError?: IStyle;
+
+  /**
+ * Styles for variant of ComboBox where allowFreeForm is false in the props.
+ */
+  rootDisallowFreeForm?: IStyle;
+
+  /**
+ * Styles for when the ComboBox is hovered or focused. These styles are applied for all comboBoxes except when
+ * the comboBox is disabled.
+ */
+  rootHoveredOrFocused?: IStyle;
+
+  /**
+   * Styles for when the comboBox is disabled. These styles override all the other styles.
+   * NOTE : Hover (or) Focused (or) active styles are not applied for disabled comboBoxes.
+   */
+  rootDisabled?: IStyle;
+
+  /**
+   * Base styles for the input element - which contains the currently selected
+   * option.
+   */
   input?: IStyle;
+
+  /**
+   * Style override for the input element when comboBox is disabled.
+   */
   inputDisabled?: IStyle;
+
+  /**
+   * Base styles for the caretDown button when enabled.
+   */
   caretDown?: IStyle;
-  caretDownHovered?: IStyle;
-  caretDownActive?: IStyle;
-  caretDownReadOnly?: IStyle;
+
+  /**
+* Style override for caretDown button when freeform is disallowed.
+*/
+  caretDownDisallowFreeForm?: IStyle;
+
+  /**
+  * Style override for caretDown button when disabled.
+  */
   caretDownDisabled?: IStyle;
+
+  /**
+   * Style override for caretDown button when enabled/hovered.
+   */
+  caretDownHovered?: IStyle;
+
+  /**
+  * Style override for caretDown button when enabled/active.
+  */
+  caretDownActive?: IStyle;
+
+  /**
+   * Styles for the error Message text of the comboBox.
+   */
   errorMessage?: IStyle;
+
+  /**
+   * Styles for the callout.
+   */
   callout?: IStyle;
-  header?: IStyle;
-  divider?: IStyle;
+  /**
+   * Styles for the container of all the Combobox items
+   * Includes the headers and dividers.
+   */
   items?: IStyle;
+
+  /**
+   * Styles for a header in the options.
+   */
+  header?: IStyle;
+
+  /**
+   * Styles for a divider in the options.
+   */
+  divider?: IStyle;
+
+  /**
+   * Base styles for a comboBox option which is NOT a header/divider.
+   */
   item?: IStyle;
+
+  /**
+   * Style override for items when enabled/hovered.
+   */
+  itemHovered?: IStyle;
+
+  /**
+   * Style override for items when enabled/focussed.
+   */
+  itemFocused?: IStyle;
+
+  /**
+   * Style override for items when enabled/active.
+   */
+  itemActive?: IStyle;
+
+  /**
+   * Style overrides for an item which is selected.
+   */
   itemSelected?: IStyle;
+
+  /**
+   * Style overrides for an item when selected/hovered.
+   */
+  itemSelectedHovered?: IStyle;
+
+  /**
+   * Style overrides for an item which is disabled.
+   *
+   */
   itemDisabled?: IStyle;
+
+  /**
+   * Styles for the optionText for all comboBox options.
+   */
   optionText?: IStyle;
 }
