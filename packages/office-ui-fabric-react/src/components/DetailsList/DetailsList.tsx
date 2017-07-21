@@ -79,8 +79,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
-  private _dragDropHelper: DragDropHelper;
-  private _initialFocusedIndex: number;
+  private _dragDropHelper: DragDropHelper | null;
+  private _initialFocusedIndex: number | undefined;
 
   private _columnOverrides: {
     [key: string]: IColumn;
@@ -113,7 +113,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
-    this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
+    this._selection = props.selection || new Selection({ onSelectionChanged: undefined, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({
       selection: this._selection,
@@ -171,7 +171,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport.width !== viewport.width
+      newProps.viewport!.width !== viewport!.width
     ) {
       shouldForceUpdates = true;
     }
@@ -262,8 +262,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
           ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained,
-          'ms-DetailsList--Compact': compact,
-          [styles.rootCompact]: compact
+          'ms-DetailsList--Compact': !!compact,
+          [styles.rootCompact]: !!compact
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -277,10 +277,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && onRenderDetailsHeader({
               componentRef: this._resolveRef('_header'),
-              selectionMode: selectionMode,
-              layoutMode: layoutMode,
+              selectionMode: selectionMode!,
+              layoutMode: layoutMode!,
               selection: selection,
-              columns: adjustedColumns,
+              columns: adjustedColumns as IColumn[],
               onColumnClick: onColumnHeaderClick,
               onColumnContextMenu: onColumnHeaderContextMenu,
               onColumnResized: this._onColumnResized,
@@ -322,7 +322,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     selection={ selection }
                     selectionMode={ selectionMode }
                     dragDropEvents={ dragDropEvents }
-                    dragDropHelper={ dragDropHelper }
+                    dragDropHelper={ dragDropHelper as DragDropHelper }
                     eventsToRegister={ rowElementEventMap }
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
@@ -332,7 +332,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       ref={ this._resolveRef('_list') }
                       role='presentation'
                       items={ items }
-                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
                       { ...additionalListProps }
                     />
                   )
@@ -394,16 +394,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       item: item,
       itemIndex: index,
       compact: compact,
-      columns: columns,
+      columns: columns as IColumn[],
       groupNestingDepth: nestingDepth,
-      selectionMode: selectionMode,
+      selectionMode: selectionMode!,
       selection: selection,
       onDidMount: this._onRowDidMount,
       onWillUnmount: this._onRowWillUnmount,
       onRenderItemColumn: onRenderItemColumn,
       eventsToRegister: eventsToRegister,
       dragDropEvents: dragDropEvents,
-      dragDropHelper: dragDropHelper,
+      dragDropHelper: dragDropHelper!,
       viewport: viewport,
       checkboxVisibility: checkboxVisibility,
       collapseAllVisibility: collapseAllVisibility,
@@ -509,7 +509,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode) {
     let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, layoutMode);
-    let { viewport: { width: viewportWidth } } = this.props;
+    let { width: viewportWidth } = this.props.viewport!;
 
     if (adjustedColumns) {
       this.setState({
@@ -521,8 +521,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
-  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
-    let { columns: newColumns, items: newItems, viewport: { width: viewportWidth }, selectionMode } = newProps;
+  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] | undefined {
+    let { columns: newColumns, items: newItems, selectionMode } = newProps;
+    let { width: viewportWidth } = newProps.viewport!;
 
     if (layoutMode === undefined) {
       layoutMode = newProps.layoutMode;
@@ -537,10 +538,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         lastWidth === viewportWidth &&
         lastSelectionMode === selectionMode &&
         (!columns || newColumns === columns)) {
-        return;
+        return undefined;
       }
     } else {
-      viewportWidth = this.props.viewport.width;
+      viewportWidth = this.props.viewport!.width;
     }
 
     newColumns = newColumns || buildColumns(newItems, true);
@@ -607,7 +608,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       let column = adjustedColumns[lastIndex];
 
       if (column.isCollapsable) {
-        totalWidth -= column.calculatedWidth + DEFAULT_INNER_PADDING;
+        totalWidth -= column.calculatedWidth! + DEFAULT_INNER_PADDING;
         adjustedColumns.splice(lastIndex, 1);
       }
       lastIndex--;
@@ -626,7 +627,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         increment = spaceLeft;
       }
 
-      column.calculatedWidth += increment;
+      column.calculatedWidth = (column.calculatedWidth as number) + increment;
       totalWidth += increment;
     }
 
