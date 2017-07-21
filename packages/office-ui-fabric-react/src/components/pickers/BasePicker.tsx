@@ -169,7 +169,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
-    let { disabled } = this.props;
+    let { disabled, removeButtonAriaLabel } = this.props;
     let onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
     let { items } = this.state;
@@ -181,7 +181,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       onRemoveItem: () => this.removeItem(item),
       disabled: disabled,
       onItemChange: this.onItemChange,
-      removeButtonAriaLabel: this.props.removeButtonAriaLabel
+      removeButtonAriaLabel: removeButtonAriaLabel
     }));
   }
 
