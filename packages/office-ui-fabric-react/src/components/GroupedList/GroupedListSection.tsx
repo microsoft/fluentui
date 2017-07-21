@@ -207,7 +207,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                 (
                   <List
                     ref='list'
-                    items={ group.children }
+                    items={ group!.children }
                     onRenderCell={ this._renderSubGroup }
                     getItemCountForPage={ () => 1 }
                   />
@@ -263,7 +263,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
   private _onSelectionChange() {
     let { group, selection } = this.props;
-    let isSelected = selection.isRangeSelected(group.startIndex, group.count);
+    let isSelected = selection!.isRangeSelected(group!.startIndex, group!.count);
 
     if (isSelected !== this.state.isSelected) {
       this.setState({ isSelected });
@@ -353,10 +353,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
       canDrag: () => false, // cannot drag groups
-      canDrop: dragDropEvents.canDrop,
+      canDrop: dragDropEvents!.canDrop,
       updateDropState: this._updateDroppingState
     };
-    return options;
+    return options as IDragDropOptions;
   }
 
   /**
@@ -372,12 +372,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let { dragDropEvents } = this.props;
 
     if (!isDropping) {
-      if (dragDropEvents.onDragLeave) {
-        dragDropEvents.onDragLeave(event, null);
+      if (dragDropEvents && dragDropEvents.onDragLeave) {
+        dragDropEvents.onDragLeave!(event, undefined);
       }
     } else {
-      if (dragDropEvents.onDragEnter) {
-        dragDropEvents.onDragEnter(event, null);
+      if (dragDropEvents && dragDropEvents.onDragEnter) {
+        dragDropEvents.onDragEnter(event, undefined);
       }
     }
 

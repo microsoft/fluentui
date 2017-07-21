@@ -321,7 +321,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       }
       let nextState = this._getNextResizeGroupState(this.props,
         this.state,
-        () => this._measured.getBoundingClientRect().width,
+        () => this._measured.scrollWidth,
         containerWidth);
 
       if (nextState) {

@@ -173,7 +173,7 @@ describe('TextField', () => {
     });
 
     it('should not render error message when no value is provided', () => {
-      let actualValue: string = undefined;
+      let actualValue: string | undefined = undefined;
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
@@ -310,7 +310,7 @@ describe('TextField', () => {
       />
     );
 
-    expect(renderedDOM.querySelector('input').value).equals('initial value');
+    expect(renderedDOM.querySelector('input')!.value).equals('initial value');
   });
 
   it('can render a default value as a textarea', () => {
@@ -321,7 +321,7 @@ describe('TextField', () => {
       />
     );
 
-    expect(renderedDOM.querySelector('textarea').value).equals('initial value');
+    expect(renderedDOM.querySelector('textarea')!.value).equals('initial value');
   });
 
   it('should call onChanged handler for input change', () => {
@@ -365,6 +365,6 @@ describe('TextField', () => {
       />
     );
 
-    textField.setSelectionRange(0, initialValue.length);
+    textField!.setSelectionRange(0, initialValue.length);
   });
 });
