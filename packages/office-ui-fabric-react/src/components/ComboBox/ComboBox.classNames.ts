@@ -61,7 +61,7 @@ export const getClassNames = memoizeFunction((
       disabled && styles.inputDisabled
     ) as string,
     caretDown: mergeStyles(
-      'ms-ComboBox-caretDown-button',
+      'ms-ComboBox-CaretDown-button',
       styles.caretDown,
       !disabled && allowFreeForm && {
         ':hover': styles.caretDownHovered,
