@@ -1,6 +1,26 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 17 Jul 2017 18:38:01 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jul 2017 10:21:45 GMT and should not be manually modified.
+
+## 0.13.14
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Adding multi-column mapping to the icon map to be available in the ChoiceGroup
+- Theming: fix color mapping for listItemBackgroundChecked
+
+## 0.13.13
+Thu, 20 Jul 2017 10:11:23 GMT
+
+*Changes not tracked*
+
+## 0.13.12
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Patches
+
+- Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts.
 
 ## 0.13.11
 Mon, 17 Jul 2017 18:38:01 GMT

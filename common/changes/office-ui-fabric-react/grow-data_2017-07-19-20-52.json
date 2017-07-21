@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: Uses tooltip when breadcrumb text is truncated",
+      "comment": "ResizeGroup: Add support for onGrowData",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

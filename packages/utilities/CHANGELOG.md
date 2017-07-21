@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jul 2017 10:21:45 GMT and should not be manually modified.
+
+## 4.8.1
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Fixing filteredAssign function
+
+## 4.8.0
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Minor changes
+
+- Add assertNever function for exhaustive null checking
 
 ## 4.7.2
 Wed, 12 Jul 2017 01:49:50 GMT
