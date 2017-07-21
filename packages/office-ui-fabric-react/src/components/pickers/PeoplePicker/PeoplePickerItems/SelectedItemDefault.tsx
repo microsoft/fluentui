@@ -15,7 +15,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
     onRemoveItem,
     index,
     selected,
-    removeButtonAriaLabel = ''
+    removeButtonAriaLabel
   } = peoplePickerItemProps;
   return (
     <div
