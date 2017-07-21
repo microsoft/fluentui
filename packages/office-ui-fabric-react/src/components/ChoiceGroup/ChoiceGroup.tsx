@@ -72,7 +72,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
           role='radiogroup'
-          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(nativeProps as any)['aria-labelledBy'] || ''}` }
+          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(nativeProps as any)['aria-labelledby'] || ''}` }
         >
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
