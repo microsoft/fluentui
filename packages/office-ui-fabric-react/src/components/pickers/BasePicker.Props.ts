@@ -141,6 +141,10 @@ export interface IBasePickerSuggestionsProps {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+  /**
+   * Screen reader message to read when there are suggestions available.
+   */
+  suggestionsAvailableAlertText?: string;
 }
 
 export enum ValidationState {

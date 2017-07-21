@@ -88,6 +88,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsFooter,
       isResultsFooterVisible,
       showRemoveButtons,
+      suggestionsAvailableAlertText
     } = this.props;
 
     let noResults = () => {
@@ -138,6 +139,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
               { footerTitle && footerTitle(this.props) }
             </div>) : (null)
+        }
+        { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
+          (<span
+            role='alert'
+            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }>{ suggestionsAvailableAlertText }
+          </span>) : (null)
         }
       </div>
     );
