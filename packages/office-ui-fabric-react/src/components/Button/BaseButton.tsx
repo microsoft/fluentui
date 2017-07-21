@@ -84,6 +84,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       href,
       iconProps,
       styles,
+      text,
       checked,
       variantClassName
          } = this.props;
@@ -129,13 +130,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If an explicit aria-labelledby is given, use that and we're done.
     // If any kind of description is given (which will end up as an aria-describedby attribute),
     // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
-    // text on the button. Never set both aria-label and aria-labelledby.
+    // text on the button (if it exists). Never set both aria-label and aria-labelledby.
     let ariaLabelledBy = null;
     if (!ariaLabel) {
       if ((nativeProps as any)['aria-labelledby']) {
         ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
       } else if (ariaDescribedBy) {
-        ariaLabelledBy = _labelId;
+        ariaLabelledBy = text ? _labelId : null;
       }
     }
 
