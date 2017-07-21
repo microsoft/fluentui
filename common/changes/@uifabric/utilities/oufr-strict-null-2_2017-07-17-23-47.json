@@ -1,9 +1,9 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/utilities",
-      "comment": "Add assertNever function for exhaustive null checking",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/utilities",

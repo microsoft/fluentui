@@ -2420,6 +2420,10 @@ export const IconCodes = {
    */
   starburst: '\uEF78',
   /**
+   * Icon code with the value '\uF13E'.
+   */
+  statusCircleCheckmark: '\uF13E',
+  /**
    * Icon code with the value '\uEB90'.
    */
   statusErrorFull: '\uEB90',
@@ -2826,5 +2830,12 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uE71F'.
    */
-  zoomOut: '\uE71F'
+  zoomOut: '\uE71F',
+
+  // Manual additions for multi-column icons
+  singleColumn: '\uF1D3',
+  doubleColumn: '\uF1D4',
+  tripleColumn: '\uF1D5',
+  columnLeftTwoThirds: '\uF1D6',
+  columnRightTwoThirds: '\uF1D7',
 };

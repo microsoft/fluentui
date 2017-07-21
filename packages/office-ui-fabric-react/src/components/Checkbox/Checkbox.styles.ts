@@ -35,18 +35,12 @@ export const getStyles = memoizeFunction((
         outline: 'none',
         display: 'block',
         cursor: 'pointer',
-
-        // This is to hide the label's overflow because of the negative margin.
-        overflow: 'hidden'
       }
     ],
     label: {
       display: 'inline-flex',
       alignItems: 'center',
       cursor: 'pointer',
-
-      // The negative margin is in place to correct for the margin of the box
-      margin: '0 -4px',
       position: 'relative',
       userSelect: 'none'
     },
@@ -57,14 +51,6 @@ export const getStyles = memoizeFunction((
     labelDisabled: {
       cursor: 'default'
     },
-    box: {
-      display: 'flex',
-      margin: '0 4px',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: '0 0 ' + MS_CHECKBOX_LABEL_SIZE,
-      height: MS_CHECKBOX_LABEL_SIZE,
-    },
     checkbox: {
       display: 'flex',
       alignItems: 'center',
@@ -74,6 +60,7 @@ export const getStyles = memoizeFunction((
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: checkboxBorderColor,
+      marginRight: '8px',
       boxSizing: 'border-box',
       transitionProperty: 'background, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
@@ -111,7 +98,7 @@ export const getStyles = memoizeFunction((
       color: checkmarkFontColorCheckedDisabled,
     },
     text: {
-      margin: '0 4px'
+      marginRight: '8px'
     },
     textHovered: {
       color: palette.black,

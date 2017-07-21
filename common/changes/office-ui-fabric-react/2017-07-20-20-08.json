@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DefaultButton: Make styles match design",
+      "comment": "Do not redundantly set aria-label on command bar items. ",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "trgau@microsoft.com"
 }

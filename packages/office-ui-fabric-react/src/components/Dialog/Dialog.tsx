@@ -101,33 +101,33 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         onLayerDidMount={ onLayerDidMount }
         responsiveMode={ responsiveMode }
         { ...modalProps }
-        isDarkOverlay={ isDarkOverlay !== undefined ? isDarkOverlay : modalProps.isDarkOverlay }
-        isBlocking={ isBlocking !== undefined ? isBlocking : modalProps.isBlocking }
+        isDarkOverlay={ isDarkOverlay !== undefined ? isDarkOverlay : modalProps!.isDarkOverlay }
+        isBlocking={ isBlocking !== undefined ? isBlocking : modalProps!.isBlocking }
         isOpen={ isOpen !== undefined ? isOpen : !hidden }
-        className={ css('ms-Dialog', className ? className : modalProps.className) }
-        containerClassName={ css(styles.main, containerClassName ? containerClassName : modalProps.containerClassName) }
-        onDismiss={ onDismiss ? onDismiss : modalProps.onDismiss }
+        className={ css('ms-Dialog', className ? className : modalProps!.className) }
+        containerClassName={ css(styles.main, containerClassName ? containerClassName : modalProps!.containerClassName) }
+        onDismiss={ onDismiss ? onDismiss : modalProps!.onDismiss }
         subtitleAriaId={
           this._getAriaLabelId(
-            ariaDescribedById ? ariaDescribedById : modalProps.subtitleAriaId,
-            subText ? subText : modalProps.subtitleAriaId,
+            (ariaDescribedById ? ariaDescribedById : modalProps!.subtitleAriaId) as string,
+            (subText ? subText : modalProps!.subtitleAriaId) as string,
             id + '-subText'
           )
         }
         titleAriaId={
           this._getAriaLabelId(
-            modalProps.titleAriaId ? modalProps.titleAriaId : ariaLabelledById,
-            title ? title : modalProps.titleAriaId,
+            (modalProps!.titleAriaId ? modalProps!.titleAriaId : ariaLabelledById) as string,
+            (title ? title : modalProps!.titleAriaId) as string,
             id + '-title') }
       >
         <DialogContent
           title={ title }
           subText={ subText }
-          showCloseButton={ isBlocking !== undefined ? !isBlocking : !modalProps.isBlocking }
-          topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps.topButtonsProps }
-          type={ type !== undefined ? type : dialogContentProps.type }
-          onDismiss={ onDismiss ? onDismiss : dialogContentProps.onDismiss }
-          className={ css(contentClassName ? contentClassName : dialogContentProps.className) }
+          showCloseButton={ isBlocking !== undefined ? !isBlocking : !modalProps!.isBlocking }
+          topButtonsProps={ topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps }
+          type={ type !== undefined ? type : dialogContentProps!.type }
+          onDismiss={ onDismiss ? onDismiss : dialogContentProps!.onDismiss }
+          className={ css(contentClassName ? contentClassName : dialogContentProps!.className) }
           { ...dialogContentProps }
         >
           { this.props.children }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Start fixing some strictNullCheck errors",
+      "comment": "Fixed deletion of tag item when tag picker is disabled",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "adsurang@microsoft.com"
 }
