@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "updated keydown handler to respond correctly to normal dropdown items",
+      "comment": "Dropdown: Updated keydown handler to respond correctly to normal dropdown items",
       "type": "patch"
     }
   ],
