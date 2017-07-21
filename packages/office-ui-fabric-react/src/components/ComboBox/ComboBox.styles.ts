@@ -15,7 +15,7 @@ const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: bl
 const ComboBoxHeight = '32px';
 const ComboBoxLineHeight = '30px';
 const ComboxBoxCaretDownWidth = '32px';
-const ComboBoxItemHeight = '36px';
+const ComboBoxoptionHeight = '36px';
 
 const getDisabledStyles = (theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
@@ -36,7 +36,7 @@ const getDisabledStyles = (theme: ITheme): IStyle => {
   };
 };
 
-const getListItemHighContrastStyles = (theme: ITheme): IStyle => {
+const getListoptionHighContrastStyles = (theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
   return {
     [MS_HIGHCONTRAST_ACTIVE]: {
@@ -63,8 +63,8 @@ export const getStyles = memoizeFunction((
 
   const { semanticColors, fonts, palette } = theme;
 
-  const ComboBoxItemBackgroundSelected = semanticColors.menuItemBackgroundChecked;
-  const ComboBoxItemBackgroundHovered = semanticColors.menuItemBackgroundHovered;
+  const ComboBoxoptionBackgroundSelected = semanticColors.menuItemBackgroundChecked;
+  const ComboBoxoptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
 
   const styles: IComboBoxStyles = {
     container: {
@@ -84,7 +84,7 @@ export const getStyles = memoizeFunction((
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: palette.neutralTertiaryAlt,
-      cursor: 'text ',
+      cursor: 'text',
       display: 'block',
       height: ComboBoxHeight,
       lineHeight: ComboBoxLineHeight,
@@ -154,10 +154,10 @@ export const getStyles = memoizeFunction((
         content: '* ',
       }
     },
-    items: {
+    optionsContainer: {
       display: 'block'
     },
-    item: [
+    option: [
       {
         background: 'transparent',
         boxSizing: 'border-box',
@@ -165,7 +165,7 @@ export const getStyles = memoizeFunction((
         display: 'block',
         width: '100%',
         height: 'auto',
-        minHeight: ComboBoxItemHeight,
+        minHeight: ComboBoxoptionHeight,
         lineHeight: '20px',
         padding: '5px 16px',
         position: 'relative',
@@ -184,19 +184,19 @@ export const getStyles = memoizeFunction((
       },
       getFocusStyle(theme),
     ],
-    itemHovered: {
-      backgroundColor: ComboBoxItemBackgroundHovered,
+    optionHovered: {
+      backgroundColor: ComboBoxoptionBackgroundHovered,
       color: palette.black,
-      ...getListItemHighContrastStyles(theme)
+      ...getListoptionHighContrastStyles(theme)
     },
-    itemFocused: {
-      backgroundColor: ComboBoxItemBackgroundHovered
+    optionFocused: {
+      backgroundColor: ComboBoxoptionBackgroundHovered
     },
-    itemActive: {
-      backgroundColor: ComboBoxItemBackgroundHovered,
+    optionActive: {
+      backgroundColor: ComboBoxoptionBackgroundHovered,
       color: palette.black
     },
-    itemDisabled: {
+    optionDisabled: {
       backgroundColor: palette.white,
       color: palette.neutralTertiary,
       cursor: 'default',
@@ -204,16 +204,16 @@ export const getStyles = memoizeFunction((
         justifyContent: 'flex-start'
       }
     },
-    itemSelected: [
+    optionSelected: [
       {
-        backgroundColor: ComboBoxItemBackgroundSelected,
+        backgroundColor: ComboBoxoptionBackgroundSelected,
         color: palette.black,
       },
       getFocusStyle(theme),
-      getListItemHighContrastStyles(theme)
+      getListoptionHighContrastStyles(theme)
     ],
-    itemSelectedHovered: {
-      backgroundColor: ComboBoxItemBackgroundSelected
+    optionSelectedHovered: {
+      backgroundColor: ComboBoxoptionBackgroundSelected
     },
     header: {
       fontSize: fonts.medium,
@@ -221,8 +221,8 @@ export const getStyles = memoizeFunction((
       color: semanticColors.menuHeader,
       background: 'none',
       border: 'none',
-      height: ComboBoxItemHeight,
-      lineHeight: ComboBoxItemHeight,
+      height: ComboBoxoptionHeight,
+      lineHeight: ComboBoxoptionHeight,
       cursor: 'default',
       padding: '0px 16px',
       userSelect: 'none',

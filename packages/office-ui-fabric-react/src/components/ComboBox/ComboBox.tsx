@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps, IComboBoxStyles } from './ComboBox.Props';
+import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -12,13 +12,11 @@ import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
 import {
   autobind,
   BaseComponent,
-  css,
   divProperties,
   findIndex,
   getId,
   getNativeProps,
   KeyCodes,
-  memoize
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 
@@ -26,7 +24,6 @@ import {
   customizable,
 } from '../../Utilities';
 import {
-  ITheme,
   mergeStyles,
 } from '../../Styling';
 import {
@@ -780,7 +777,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     return (
       <div
         id={ id + '-list' }
-        className={ this._classNames.items }
+        className={ this._classNames.optionsContainer }
         aria-labelledby={ id + '-label' }
         role='listbox'
       >
@@ -834,8 +831,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         key={ item.key }
         data-index={ item.index }
         className={ mergeStyles(
-          this._classNames.item,
-          isSelected && this._classNames.itemSelected
+          this._classNames.option,
+          isSelected && this._classNames.optionSelected
         ) as string }
         onClick={ () => this._onItemClick(item.index) }
         role='option'

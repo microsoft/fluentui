@@ -41,13 +41,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
-   * Whether the ComboBox is free form, meaning that the user input is not bound to provided items. Defaults to false.
+   * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
    */
   allowFreeform?: boolean;
 
   /**
-   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of items. If
-   * the combo box is expanded, this will also scroll to the suggested item, and give it a selected style. Defaults to false.
+   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
+   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style. Defaults to false.
    */
   autoComplete?: string;
 
@@ -94,14 +94,14 @@ export interface IComboBoxStyles {
   rootError?: IStyle;
 
   /**
- * Styles for variant of ComboBox where allowFreeForm is false in the props.
- */
+   * Styles for variant of ComboBox where allowFreeForm is false in the props.
+   */
   rootDisallowFreeForm?: IStyle;
 
   /**
- * Styles for when the ComboBox is hovered or focused. These styles are applied for all comboBoxes except when
- * the comboBox is disabled.
- */
+   * Styles for when the ComboBox is hovered or focused. These styles are applied for all comboBoxes except when
+   * the comboBox is disabled.
+   */
   rootHoveredOrFocused?: IStyle;
 
   /**
@@ -127,8 +127,8 @@ export interface IComboBoxStyles {
   caretDown?: IStyle;
 
   /**
-* Style override for caretDown button when freeform is disallowed.
-*/
+  * Style override for caretDown button when freeform is disallowed.
+  */
   caretDownDisallowFreeForm?: IStyle;
 
   /**
@@ -156,10 +156,10 @@ export interface IComboBoxStyles {
    */
   callout?: IStyle;
   /**
-   * Styles for the container of all the Combobox items
+   * Styles for the container of all the Combobox options
    * Includes the headers and dividers.
    */
-  items?: IStyle;
+  optionsContainer?: IStyle;
 
   /**
    * Styles for a header in the options.
@@ -174,38 +174,38 @@ export interface IComboBoxStyles {
   /**
    * Base styles for a comboBox option which is NOT a header/divider.
    */
-  item?: IStyle;
+  option?: IStyle;
 
   /**
-   * Style override for items when enabled/hovered.
+   * Style override for options when enabled/hovered.
    */
-  itemHovered?: IStyle;
+  optionHovered?: IStyle;
 
   /**
-   * Style override for items when enabled/focussed.
+   * Style override for options when enabled/focussed.
    */
-  itemFocused?: IStyle;
+  optionFocused?: IStyle;
 
   /**
-   * Style override for items when enabled/active.
+   * Style override for options when enabled/active.
    */
-  itemActive?: IStyle;
+  optionActive?: IStyle;
 
   /**
-   * Style overrides for an item which is selected.
+   * Style overrides for an option which is selected.
    */
-  itemSelected?: IStyle;
+  optionSelected?: IStyle;
 
   /**
-   * Style overrides for an item when selected/hovered.
+   * Style overrides for an option when selected/hovered.
    */
-  itemSelectedHovered?: IStyle;
+  optionSelectedHovered?: IStyle;
 
   /**
-   * Style overrides for an item which is disabled.
+   * Style overrides for an option which is disabled.
    *
    */
-  itemDisabled?: IStyle;
+  optionDisabled?: IStyle;
 
   /**
    * Styles for the optionText for all comboBox options.
