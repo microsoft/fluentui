@@ -34,7 +34,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   mostRecentlyUsedHeaderText: 'Suggested Contacts',
   noResultsFoundText: 'No results found',
   loadingText: 'Loading',
-  showRemoveButtons: true
+  showRemoveButtons: true,
+  suggestionsAvailableAlertText: 'Suggestions available'
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
@@ -136,6 +137,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         key={ 'normal' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
+        removeButtonAriaLabel={ 'Remove' }
       />
     );
   }
