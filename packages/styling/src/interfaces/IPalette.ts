@@ -231,24 +231,4 @@ export interface IPalette {
    * Color code for greenLight.
    */
   greenLight: string;
-
-  /**
-   * Color code for contrastBlackDisabled
-   */
-  contrastBlackDisabled: string;
-
-  /**
- * Color code for contrastWhiteDisabled
- */
-  contrastWhiteDisabled: string;
-
-  /**
- * Color code for contrastBlackSelected
- */
-  contrastBlackSelected: string;
-
-  /**
- * Color code for contrastWhiteSelected
- */
-  contrastWhiteSelected: string;
 }

@@ -25,40 +25,31 @@ const getDisabledStyles = (theme: ITheme): IStyle => {
     color: semanticColors.disabledText,
     cursor: 'default',
     [MS_HIGHCONTRAST_ACTIVE]: {
-      borderColor: palette.contrastBlackDisabled,
-      color: palette.contrastBlackDisabled
+      borderColor: 'GrayText',
+      color: 'GrayText'
     },
 
     [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-      borderColor: palette.contrastWhiteDisabled,
-      color: palette.contrastWhiteDisabled
+      borderColor: 'GrayText',
+      color: 'GrayText'
     },
   };
 };
 
-const getListoptionHighContrastStyles = (theme: ITheme): IStyle => {
+const getListOptionHighContrastStyles = (theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
   return {
     [MS_HIGHCONTRAST_ACTIVE]: {
-      backgroundColor: palette.contrastBlackSelected,
-      borderColor: palette.contrastBlackSelected,
-      color: palette.black,
-      ':focus': {
-        borderColor: palette.black,
-      }
-    },
-
-    [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-      backgroundColor: palette.contrastBlackSelected,
-      borderColor: palette.contrastBlackSelected,
-      color: palette.white
+      backgroundColor: 'Highlight',
+      borderColor: 'Highlight',
+      color: 'HighlightText',
     },
   };
 };
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IComboBoxStyles,
+  customStyles?: Partial<IComboBoxStyles>,
 ): IComboBoxStyles => {
 
   const { semanticColors, fonts, palette } = theme;
@@ -68,6 +59,9 @@ export const getStyles = memoizeFunction((
 
   const styles: IComboBoxStyles = {
     container: {
+
+    },
+    label: {
 
     },
     root: {
@@ -100,16 +94,16 @@ export const getStyles = memoizeFunction((
     rootHoveredOrFocused: {
       borderColor: semanticColors.inputFocusBorderAlt,
       [MS_HIGHCONTRAST_ACTIVE]: {
-        color: palette.contrastBlackSelected
-      },
-
-      [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-        color: palette.contrastWhiteSelected
+        color: 'HighlightText',
+        borderColor: 'Highlight'
       },
     },
     rootDisabled: getDisabledStyles(theme),
     rootError: {
       borderColor: semanticColors.errorText
+    },
+    rootDisallowFreeForm: {
+
     },
     input: {
       boxSizing: 'border-box',
@@ -131,6 +125,11 @@ export const getStyles = memoizeFunction((
       width: ComboxBoxCaretDownWidth,
       textAlign: 'center',
       cursor: 'default',
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        backgroundColor: 'ButtonFace',
+        borderColor: 'ButtonText',
+        color: 'ButtonText',
+      }
     },
     caretDownHovered: {
       backgroundColor: palette.neutralQuaternaryAlt,
@@ -142,20 +141,37 @@ export const getStyles = memoizeFunction((
       backgroundColor: 'inherit',
     },
     caretDownDisabled: getDisabledStyles(theme),
-    callout: {
-      boxShadow: '0 0px 5px 0px rgba(0, 0, 0, 0.4)',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: palette.neutralLight,
-    },
     errorMessage: {
       color: semanticColors.errorText,
       ':before': {
         content: '* ',
       }
     },
+    callout: {
+      boxShadow: '0 0px 5px 0px rgba(0, 0, 0, 0.4)',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: palette.neutralLight,
+    },
     optionsContainer: {
       display: 'block'
+    },
+    header: {
+      fontSize: fonts.medium,
+      fontWeight: FontWeights.semibold,
+      color: semanticColors.menuHeader,
+      background: 'none',
+      border: 'none',
+      height: ComboBoxoptionHeight,
+      lineHeight: ComboBoxoptionHeight,
+      cursor: 'default',
+      padding: '0px 16px',
+      userSelect: 'none',
+      textAlign: 'left'
+    },
+    divider: {
+      height: '1px',
+      backgroundColor: semanticColors.bodyDivider
     },
     option: [
       {
@@ -175,19 +191,15 @@ export const getStyles = memoizeFunction((
         textAlign: 'left',
 
         [MS_HIGHCONTRAST_ACTIVE]: {
-          borderColor: palette.black
-        },
-
-        [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
-          borderColor: palette.white
-        },
+          borderColor: 'Background'
+        }
       },
       getFocusStyle(theme),
     ],
     optionHovered: {
       backgroundColor: ComboBoxoptionBackgroundHovered,
       color: palette.black,
-      ...getListoptionHighContrastStyles(theme)
+      ...getListOptionHighContrastStyles(theme)
     },
     optionFocused: {
       backgroundColor: ComboBoxoptionBackgroundHovered
@@ -196,6 +208,17 @@ export const getStyles = memoizeFunction((
       backgroundColor: ComboBoxoptionBackgroundHovered,
       color: palette.black
     },
+    optionSelected: [
+      {
+        backgroundColor: ComboBoxoptionBackgroundSelected,
+        color: palette.black,
+      },
+      getFocusStyle(theme),
+      getListOptionHighContrastStyles(theme)
+    ],
+    optionSelectedHovered: {
+      backgroundColor: ComboBoxoptionBackgroundSelected
+    },
     optionDisabled: {
       backgroundColor: palette.white,
       color: palette.neutralTertiary,
@@ -203,34 +226,6 @@ export const getStyles = memoizeFunction((
       ' .ms-Button-flexContainer': {
         justifyContent: 'flex-start'
       }
-    },
-    optionSelected: [
-      {
-        backgroundColor: ComboBoxoptionBackgroundSelected,
-        color: palette.black,
-      },
-      getFocusStyle(theme),
-      getListoptionHighContrastStyles(theme)
-    ],
-    optionSelectedHovered: {
-      backgroundColor: ComboBoxoptionBackgroundSelected
-    },
-    header: {
-      fontSize: fonts.medium,
-      fontWeight: FontWeights.semibold,
-      color: semanticColors.menuHeader,
-      background: 'none',
-      border: 'none',
-      height: ComboBoxoptionHeight,
-      lineHeight: ComboBoxoptionHeight,
-      cursor: 'default',
-      padding: '0px 16px',
-      userSelect: 'none',
-      textAlign: 'left'
-    },
-    divider: {
-      height: '1px',
-      backgroundColor: semanticColors.bodyDivider
     },
     optionText: {
       overflow: 'hidden',
@@ -244,5 +239,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(styles, customStyles);
+  return mergeStyleSets(styles, customStyles) as IComboBoxStyles;
 });
