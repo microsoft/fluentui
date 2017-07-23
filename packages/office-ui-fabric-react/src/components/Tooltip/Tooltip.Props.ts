@@ -54,7 +54,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
    * How the element should be positioned in RTL layouts.
    * If not specified, a mirror of `directionalHint` will be used instead
    */
-  directionalHintForRtl?: DirectionalHint;
+  directionalHintForRTL?: DirectionalHint;
 }
 
 export enum TooltipDelay {

@@ -175,7 +175,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       useTargetPoint,
       beakWidth,
       directionalHint,
-      directionalHintForRtl,
+      directionalHintForRTL,
       gapSpace,
       coverTarget,
       ariaLabel,
@@ -217,7 +217,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           isBeakVisible={ isBeakVisible }
           beakWidth={ beakWidth }
           directionalHint={ directionalHint }
-          directionalHintForRtl={ directionalHintForRtl }
+          directionalHintForRTL={ directionalHintForRTL }
           gapSpace={ gapSpace }
           coverTarget={ coverTarget }
           doNotLayer={ doNotLayer }

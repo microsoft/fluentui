@@ -51,7 +51,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * How the element should be positioned in RTL layouts.
    * If not specified, a mirror of `directionalHint` will be used instead
    */
-  directionalHintForRtl?: DirectionalHint;
+  directionalHintForRTL?: DirectionalHint;
 
   /**
    * The gap between the ContextualMenu and the target

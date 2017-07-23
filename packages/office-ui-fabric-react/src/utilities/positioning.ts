@@ -44,7 +44,7 @@ export interface IPositionProps {
    * How the element should be positioned in RTL layouts.
    * If not specified, a mirror of `directionalHint` will be used instead
    */
-  directionalHintForRtl?: DirectionalHint;
+  directionalHintForRTL?: DirectionalHint;
 
   /** The gap between the callout and the target */
   gapSpace?: number;
@@ -182,8 +182,8 @@ let OppositeEdgeDictionary: { [key: number]: number } = {
 
 function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint {
   if (getRTL()) {
-    return props.directionalHintForRtl !== undefined ?
-      props.directionalHintForRtl :
+    return props.directionalHintForRTL !== undefined ?
+      props.directionalHintForRTL :
       MirrorDirectionalHintDictionary[props.directionalHint];
   } else {
     return props.directionalHint;

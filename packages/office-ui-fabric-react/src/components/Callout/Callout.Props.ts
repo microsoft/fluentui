@@ -35,7 +35,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * How the element should be positioned in RTL layouts.
    * If not specified, a mirror of `directionalHint` will be used instead
    */
-  directionalHintForRtl?: DirectionalHint;
+  directionalHintForRTL?: DirectionalHint;
 
   /**
    * The gap between the Callout and the target

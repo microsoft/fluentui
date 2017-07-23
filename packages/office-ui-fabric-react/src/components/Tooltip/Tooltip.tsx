@@ -35,7 +35,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
       content,
       calloutProps,
       directionalHint,
-      directionalHintForRtl,
+      directionalHintForRTL,
       delay,
       id,
       onRenderContent = this._onRenderContent
@@ -52,7 +52,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
         ) }
         targetElement={ targetElement }
         directionalHint={ directionalHint }
-        directionalHintForRtl={ directionalHintForRtl }
+        directionalHintForRTL={ directionalHintForRTL }
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
       >
