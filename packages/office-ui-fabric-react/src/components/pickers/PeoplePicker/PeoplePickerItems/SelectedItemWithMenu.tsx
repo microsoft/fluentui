@@ -30,7 +30,8 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
   public render() {
     let {
       item,
-      onRemoveItem
+      onRemoveItem,
+      removeButtonAriaLabel
     } = this.props;
     return (
       <div data-is-focusable={ true } className={ css('ms-PickerItem-container', styles.itemContainer) }>
@@ -51,6 +52,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
             <IconButton
               iconProps={ { iconName: 'Cancel' } }
               onClick={ onRemoveItem }
+              ariaLabel={ removeButtonAriaLabel }
             />
           </div>
           { this.state.contextualMenuVisible ? (
