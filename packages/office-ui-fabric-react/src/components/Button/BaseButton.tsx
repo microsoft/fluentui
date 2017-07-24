@@ -11,6 +11,7 @@ import {
   KeyCodes,
   css,
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -95,7 +96,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       iconProps && iconProps.className,
       disabled,
-      checked
+      checked,
+      this.state.menuProps != null && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -404,7 +406,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <IconButton
         tabIndex={ -1 }
         styles={ {
-          root: disabled ? styles.splitButtonMenuButtonDisabled : styles.splitButtonMenuButton,
+          root: mergeStyles(
+            styles.splitButtonMenuButton,
+            !!this.state.menuProps && [
+              styles.splitButtonMenuButtonExpanded
+            ],
+            disabled && [
+              styles.splitButtonMenuButtonDisabled
+            ],
+          ) as string,
           rootChecked: styles.splitButtonMenuButtonChecked,
           icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon
         } }
