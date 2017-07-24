@@ -92,7 +92,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     super(props);
 
     this.state = {
-      columnResizeDetails: null,
+      columnResizeDetails: undefined,
       groupNestingDepth: this.props.groupNestingDepth,
       isAllCollapsed: this.props.isAllCollapsed
     };
@@ -176,7 +176,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             }
           </div>
         ) : null }
-        { groupNestingDepth > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
+        { groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div
             className={ css('ms-DetailsHeader-cell', styles.cell) }
             onClick={ this._onToggleCollapseAll }
@@ -191,7 +191,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             />
           </div>
         ) : (null) }
-        { GroupSpacer({ count: groupNestingDepth - 1 }) }
+        { GroupSpacer({ count: groupNestingDepth! - 1 }) }
         { columns.map((column: IColumn, columnIndex: number) => {
           const previousColumnIndex = columnIndex - 1;
           const previousColumn = columns[previousColumnIndex];
@@ -213,7 +213,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered,
                     [styles.cellWrapperPadded]: column.isPadded
                   }) }
-                style={ { width: column.calculatedWidth + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
+                style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
                 aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
@@ -365,7 +365,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this.setState({
       columnResizeDetails: {
         columnIndex: columnIndex,
-        columnMinWidth: columns[columnIndex].calculatedWidth,
+        columnMinWidth: columns[columnIndex].calculatedWidth!,
         originX: ev.clientX
       }
     });
@@ -401,7 +401,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         this.setState({
           columnResizeDetails: {
             columnIndex: columnIndex,
-            columnMinWidth: columns[columnIndex].calculatedWidth
+            columnMinWidth: columns[columnIndex].calculatedWidth!
           }
         });
 
@@ -409,11 +409,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         ev.stopPropagation();
       }
     } else {
-      let increment: number;
+      let increment: number | undefined;
 
       if (ev.which === KeyCodes.enter) {
         this.setState({
-          columnResizeDetails: null
+          columnResizeDetails: undefined
         });
 
         ev.preventDefault();
@@ -469,22 +469,22 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       return;
     }
 
-    if (ev.clientX !== columnResizeDetails.originX) {
+    if (ev.clientX !== columnResizeDetails!.originX) {
       if (onColumnIsSizingChanged) {
-        onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], true);
+        onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], true);
       }
     }
 
     if (onColumnResized) {
-      let movement = ev.clientX - columnResizeDetails.originX;
+      let movement = ev.clientX - columnResizeDetails!.originX!;
 
       if (getRTL()) {
         movement = -movement;
       }
 
       onColumnResized(
-        columns[columnResizeDetails.columnIndex],
-        columnResizeDetails.columnMinWidth + movement
+        columns[columnResizeDetails!.columnIndex],
+        columnResizeDetails!.columnMinWidth + movement
       );
     }
 
@@ -496,7 +496,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     if (columnResizeDetails) {
       this.setState({
-        columnResizeDetails: null,
+        columnResizeDetails: undefined,
         isSizing: false
       });
     }
@@ -516,12 +516,12 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { columnResizeDetails } = this.state;
 
     this.setState({
-      columnResizeDetails: null,
+      columnResizeDetails: undefined,
       isSizing: false
     });
 
     if (onColumnIsSizingChanged) {
-      onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
+      onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], false);
     }
   }
 
