@@ -104,9 +104,9 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onReduceData: (prevData: any) => any,
     getElementToMeasureWidth: () => number): IResizeGroupState {
     let dataToMeasure = data;
-    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
+    let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
-    while (measuredWidth > _containerWidth) {
+    while (measuredWidth > _containerWidth!) {
       let nextMeasuredData = onReduceData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
@@ -152,9 +152,9 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData: (prevData: any) => any,
     getElementToMeasureWidth: () => number): IResizeGroupState {
     let dataToMeasure = data;
-    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
+    let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
-    while (measuredWidth < _containerWidth) {
+    while (measuredWidth < _containerWidth!) {
       let nextMeasuredData = onGrowData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
@@ -195,7 +195,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    */
   function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any, onGrowData?: (prevData: any) => any): IResizeGroupState {
     let nextState: IResizeGroupState;
-    if (newWidth > _containerWidth) {
+    if (newWidth > _containerWidth!) {
       if (onGrowData) {
         nextState = {
           resizeDirection: 'grow',
