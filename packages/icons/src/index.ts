@@ -1,5 +1,5 @@
-import { initializeIcons as initializeCoreIcons } from './iconSets/core';
-import { initializeIcons as initializeMiscIcons } from './iconSets/misc';
+import { initializeIcons as initializeCoreIcons } from './core';
+import { initializeIcons as initializeMiscIcons } from './extraIconSets/misc';
 
 export function initializeIcons() {
   initializeCoreIcons();

@@ -90,39 +90,3 @@ export function getIcon(name: string): IIconRecord | undefined {
 
   return icon;
 }
-
-/**
- * Gets all icon definitions.
- *
- * @public
- */
-export function getAllIcons(): IIconRecords {
-  return _icons;
-}
-
-/**
- * Gets a given registered icon's class name to inject.
- *
- * @public
- * @param name - Name of icon.
- */
-export function getIconClassName(name: string): string {
-  let icon = getIcon(name);
-
-  if (icon) {
-    if (!icon.className) {
-      icon.className = mergeStyles([
-        icon.subset.className,
-        {
-          ':after': {
-            content: `"${icon.code}"`
-          }
-        }
-      ]).toString();
-    }
-
-    return icon.className;
-  }
-
-  return '';
-}

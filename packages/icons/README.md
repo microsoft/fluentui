@@ -4,7 +4,7 @@
 
 Fabric Icons includes a collection of 1100+ icons which you can use in your application.
 
-The library is rather large; downloading the entire font is more than 80k gzipped. Even the definitions of the codes can be large, so it is important to your application performance that you download the icons you need, rather than the entire set.
+The library is rather large; downloading the entire font is more than 80k gzipped, so it is important to your application performance that you download the icons you need, rather than the entire set.
 
 # Getting started
 
@@ -16,14 +16,14 @@ import { initializeIcons } from '@uifabric/icons';
 initializeIcons();
 ```
 
-This will make ALL icons in the collection available, but will download them on demand.
+This will make ALL icons in the collection available, but will download them on demand when used.
 
 # Reducing the download size
 
-If you are simply using Fabric React components, you can initialize only the core icons:
+If you are simply using Fabric React components, you can further reduce your download size by referencing only the core icons:
 
 ```tsx
-import { initializeIcons } from '@uifabric/icons/lib/iconSets/core';
+import { initializeIcons } from '@uifabric/icons/lib/core';
 
 initializeIcons();
 ```
@@ -43,10 +43,6 @@ If you are using Fabric React, you can use the `Icon` component and pass in the 
 ```
 
 The styling package includes a `getIcon` api which returns information about a given icon, including subset className and the icon code. This can be used to render icons in other frameworks.
-
-## getIconClassName API
-
-In special cases you may would prefer to simply get an icon class name, which can be attached to an `I` element. You can use the getIconClassName api in the styling package.
 
 ```ts
 import { getIconClassName } from '@uifabric/styling';
