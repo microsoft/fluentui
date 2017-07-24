@@ -2,6 +2,290 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.22.0",
+      "tag": "office-ui-fabric-react_v4.22.0",
+      "date": "Mon, 24 Jul 2017 10:24:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "5933799d69801712dffcf665ac73231a6a2e2357",
+            "comment": "Fix application of aria properties on BaseButton."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "67d167f3d9400b3f38c0106a78f91a67a6eabb5e",
+            "comment": "ResizeGroup: Add support for onGrowData"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "5c9d10ee2cb1e4ccc82d5f03dccb02bf1276a23e",
+            "comment": "Accessibility fixes for PeoplePicker"
+          },
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "3d593e67d11ce99ef269ce5a7e207aa9399ddd48",
+            "comment": "Dropdown: Updated keydown handler to respond correctly to normal dropdown items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f24070ef5b3a3173cfde2ee25cdb7b150a668ca7",
+            "comment": "Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.14 <1.0.0` to `>=0.13.15 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.4",
+      "tag": "office-ui-fabric-react_v4.21.4",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "294b4174faf5455edc3526eba337b40a847fc10e",
+            "comment": "Do not redundantly set aria-label on command bar items. "
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "d5af8b6edae526651fcc1b2905a1119ef1408103",
+            "comment": "More strict null check fixes in office-ui-fabric-react"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "91323c55902c278e73a13118fc3cd2d7dc00da62",
+            "comment": "Textfield: Fixed regression in disabled styles"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "dcec97d5dd145a80baee3fd80c715286e1597d0a",
+            "comment": "ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div"
+          },
+          {
+            "author": "Aadhar Surange <adhargithub@gmail.com>",
+            "commit": "06ef248801b5a43513c86ce7cc3f06696cb43397",
+            "comment": "Fixed deletion of tag item when tag picker is disabled"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.8.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.13 <1.0.0` to `>=0.13.14 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.3",
+      "tag": "office-ui-fabric-react_v4.21.3",
+      "date": "Thu, 20 Jul 2017 10:11:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "85bd583f0009bdbc395702dc7c61f6cccad36e92",
+            "comment": "SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "db6b2fa0a54f623f0bd659938c7193c31ba3bbde",
+            "comment": "Checkbox: remove unnecessary styles and element"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.12 <1.0.0` to `>=0.13.13 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.2",
+      "tag": "office-ui-fabric-react_v4.21.2",
+      "date": "Wed, 19 Jul 2017 21:40:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "808742dffd5378cd908cc4ed1bebc175a3702dff",
+            "comment": "Breadcrumb: Uses tooltip when breadcrumb text is truncated"
+          },
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "ae602de38bdd5268ac61138064ecf3f3dbaccd03",
+            "comment": "Fix CommandBar rendering commandText span when no item name is given: #2233."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "074fabb6f0ffd52598947d9dda563d4dd8113ee7",
+            "comment": "Start fixing some strictNullCheck errors"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "da9fc82e21b99e350ef090d15d26e06de61753ec",
+            "comment": "DefaultButton: Make styles match design"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "d21643832d11a6a6e2a7484a53de72a99665ad67",
+            "comment": "DetailsList: Adjust checkmark icon to use StatusCircleCheckmark icon"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a93a3a3fc9ef425df4bc6fb990125c0770b97374",
+            "comment": "Dropdown: List native props at top of div element"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.2 <5.0.0` to `>=4.8.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.11 <1.0.0` to `>=0.13.12 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.1",
+      "tag": "office-ui-fabric-react_v4.21.1",
+      "date": "Mon, 17 Jul 2017 18:38:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "267ed2d0b9466d29c173982bcfc897c92ef72525",
+            "comment": "BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.10 <1.0.0` to `>=0.13.11 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.21.0",
+      "tag": "office-ui-fabric-react_v4.21.0",
+      "date": "Mon, 17 Jul 2017 10:22:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "ycoco <ycocococo6256@gmail.com>",
+            "commit": "21c744979934285a8759d93ce8cd8748a16053a5",
+            "comment": "ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string."
+          }
+        ],
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "adaee4e1abe3a0ee70a4bdc01804aaca57f1d0c4",
+            "comment": "ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view"
+          },
+          {
+            "author": "Ryan Delaney <rrdelaney@outlook.com>",
+            "commit": "492c1840d6b7ae8ee5487d083eb3ee1c73ad4874",
+            "comment": "Allow deeply nested links to render in Nav"
+          },
+          {
+            "author": "John Lorenz <jcl47@duke.edu>",
+            "commit": "241b0d25bbbedb8702ac7ae3ec995cbe9767bd54",
+            "comment": "Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.9 <1.0.0` to `>=0.13.10 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.20.0",
+      "tag": "office-ui-fabric-react_v4.20.0",
+      "date": "Fri, 14 Jul 2017 17:34:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "5fef7e125450859c0fd8162221dc0999dbd0b800",
+            "comment": "ResizeGroup: Do measurements inside requestAnimationFrame"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "46e69e5a4e0d85230aa326c3aaff330c94aa042e",
+            "comment": "PeoplePicker: adding a custom validator prop"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "1200d471c740de9b9a3c8b1e1257048f1cbcfb3f",
+            "comment": "DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.8 <1.0.0` to `>=0.13.9 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.19.0",
+      "tag": "office-ui-fabric-react_v4.19.0",
+      "date": "Thu, 13 Jul 2017 02:58:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "677439867bfa02aa45d0f05ee2054bbcab797378",
+            "comment": "TooltipHost: Fixed check which kept onRenderContent from working"
+          },
+          {
+            "author": "aadhars <adhargithub@gmail.com>",
+            "commit": "f6dbb240e3b716c9c1cc3f649fed403d1552c2b9",
+            "comment": "Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup"
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "9ce99671d04ee11c943ae613be66603d4eb0a1d3",
+            "comment": "List: Only draw a single window when receiving new items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "894d72c05d1ca0dea6cf22d1bde17d6e9edc4147",
+            "comment": "Addressing remaining TS 2.4.1 errors."
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "ecac3cb1e22c64da7a846cbbe6c8a0a8ef0bd47b",
+            "comment": "DetailsList: Allow passing props to underlying List"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.6 <1.0.0` to `>=0.13.7 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `4.1.0` to `4.1.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.18.0",
       "tag": "office-ui-fabric-react_v4.18.0",
       "date": "Wed, 12 Jul 2017 01:49:50 GMT",

@@ -8,6 +8,7 @@
   width: 20px;
   height: 20px;
   padding: 4px;
+  box-sizing: content-box;
 }
 
 :global(.ms-Fabric.is-focusVisible) .cell {

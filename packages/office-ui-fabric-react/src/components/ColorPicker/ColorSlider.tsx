@@ -8,6 +8,7 @@ import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 
 export interface IColorSliderProps {
+  componentRef?: () => void;
   minValue?: number;
   maxValue?: number;
   value?: number;

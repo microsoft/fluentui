@@ -42,6 +42,11 @@ export interface IBaseAutoFill {
 
 export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElement | BaseAutoFill> {
   /**
+   * Gets the compoonent ref.
+   */
+  componentRef?: (componentRef?: IBaseAutoFill) => void;
+
+  /**
    * The suggested autofill value that will display.
    */
   suggestedDisplayValue?: string;
@@ -72,7 +77,7 @@ export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElemen
    *  in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
-  updateValueInWillReceiveProps?: () => string;
+  updateValueInWillReceiveProps?: () => string | null;
 
   /**
    * Handler for checking if the full value of the input should

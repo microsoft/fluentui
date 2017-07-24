@@ -21,16 +21,18 @@ let _theme: ITheme = {
 
 export const ThemeSettingName = 'theme';
 
-let win = typeof window !== 'undefined' ? window : undefined;
+if (!GlobalSettings.getValue(ThemeSettingName)) {
+  let win = typeof window !== 'undefined' ? window : undefined;
 
-// tslint:disable:no-string-literal no-any
-if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
-  _theme = createTheme((win as any)['FabricConfig'].theme);
+  // tslint:disable:no-string-literal no-any
+  if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
+    _theme = createTheme((win as any)['FabricConfig'].theme);
+  }
+  // tslint:enable:no-string-literal no-any
+
+  // Set the default theme.
+  GlobalSettings.setValue(ThemeSettingName, _theme);
 }
-// tslint:enable:no-string-literal no-any
-
-// Set the default theme.
-GlobalSettings.setValue(ThemeSettingName, _theme);
 
 /**
  * Gets the theme object.
@@ -102,7 +104,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
     listBackground: p.white,
     listTextColor: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
-    listItemBackgroundChecked: p.neutralQuaternary,
+    listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
 }
