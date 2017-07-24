@@ -2,6 +2,36 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.13.15",
+      "tag": "@uifabric/styling_v0.13.15",
+      "date": "Mon, 24 Jul 2017 10:24:30 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.14",
+      "tag": "@uifabric/styling_v0.13.14",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "antonlabunets <alabunets@gmail.com>",
+            "commit": "0a145b00965c9aefabc1aa6648b36f53281691fb",
+            "comment": "Adding multi-column mapping to the icon map to be available in the ChoiceGroup"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "6900fc6013e77eb6cd7268358aa64f9c9b46edd6",
+            "comment": "Theming: fix color mapping for listItemBackgroundChecked"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.8.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.13.13",
       "tag": "@uifabric/styling_v0.13.13",
       "date": "Thu, 20 Jul 2017 10:11:23 GMT",

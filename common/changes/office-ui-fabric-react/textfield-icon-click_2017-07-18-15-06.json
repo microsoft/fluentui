@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Textfield: Fixed regression in disabled styles",
+      "comment": "Textfield: Removed icon pointer events so that any click is click in textfield",
       "type": "patch"
     }
   ],

@@ -106,6 +106,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+  /**
+   * Screen reader message to read when there are suggestions available.
+   */
+  suggestionsAvailableAlertText?: string;
 }
 
 export interface ISuggestionItemProps<T> {

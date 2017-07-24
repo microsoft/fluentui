@@ -70,7 +70,10 @@ export class ResizeGroupPage extends React.Component<any, any> {
               </li>
               <li>
                 Include a cacheKey in your data to improve performance. Two objects with the same cacheKey are assumed to have the same
-                width, so the ResizeGroup will only store one measurement per resize group.g
+                width, so the ResizeGroup will only store one measurement per resize group.
+               </li>
+              <li>
+                Implement onGrowData for improved performance when the container for the resize group increases in size.
                </li>
             </ul>
           </div>
