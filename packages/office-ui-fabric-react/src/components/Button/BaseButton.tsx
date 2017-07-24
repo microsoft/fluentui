@@ -85,6 +85,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       href,
       iconProps,
       styles,
+      text,
       checked,
       variantClassName
          } = this.props;
@@ -113,10 +114,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       [
         'disabled' // Let disabled buttons be focused and styled as disabled.
       ]);
+
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
     let ariaDescribedBy;
-
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
     } else if (description) {
@@ -125,6 +126,20 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];
     } else {
       ariaDescribedBy = null;
+    }
+
+    // If an explicit ariaLabel is given, use that as the label and we're done.
+    // If an explicit aria-labelledby is given, use that and we're done.
+    // If any kind of description is given (which will end up as an aria-describedby attribute),
+    // set the labelledby element. Otherwise, the button is labeled implicitly by the descendent
+    // text on the button (if it exists). Never set both aria-label and aria-labelledby.
+    let ariaLabelledBy = null;
+    if (!ariaLabel) {
+      if ((nativeProps as any)['aria-labelledby']) {
+        ariaLabelledBy = (nativeProps as any)['aria-labelledby'];
+      } else if (ariaDescribedBy) {
+        ariaLabelledBy = text ? _labelId : null;
+      }
     }
 
     const tabIndex = (this.props.tabIndex === undefined) ? (this._isSplitButton ? -1 : 0) : this.props.tabIndex;
@@ -137,7 +152,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'disabled': disabled,
         tabIndex: tabIndex,
         'aria-label': ariaLabel,
-        'aria-labelledby': ariaLabel ? null : _labelId,
+        'aria-labelledby': ariaLabelledBy,
         'aria-describedby': ariaDescribedBy,
         'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked

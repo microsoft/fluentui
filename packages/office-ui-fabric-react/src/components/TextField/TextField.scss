@@ -149,6 +149,7 @@ $field-error-color: $errorTextColor;
 }
 
 .icon {
+  pointer-events: none;
   position: absolute;
   bottom: 8px;
   @include right(8px);
