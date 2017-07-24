@@ -77,6 +77,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Function that specifies how arbitrary text entered into the well is handled.
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
+  /**
+   * Aria label for the "X" button in the selected item component.
+   * @default ''
+   */
+  removeButtonAriaLabel?: string;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -136,6 +141,10 @@ export interface IBasePickerSuggestionsProps {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+  /**
+   * Screen reader message to read when there are suggestions available.
+   */
+  suggestionsAvailableAlertText?: string;
 }
 
 export enum ValidationState {

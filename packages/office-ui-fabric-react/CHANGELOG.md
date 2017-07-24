@@ -1,6 +1,51 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Jul 2017 18:38:01 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jul 2017 10:24:31 GMT and should not be manually modified.
+
+## 4.22.0
+Mon, 24 Jul 2017 10:24:30 GMT
+
+### Minor changes
+
+- Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`
+
+### Patches
+
+- Fix application of aria properties on BaseButton.
+- ResizeGroup: Add support for onGrowData
+- Accessibility fixes for PeoplePicker
+- Dropdown: Updated keydown handler to respond correctly to normal dropdown items
+
+## 4.21.4
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Do not redundantly set aria-label on command bar items. 
+- More strict null check fixes in office-ui-fabric-react
+- Textfield: Fixed regression in disabled styles
+- ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
+- Fixed deletion of tag item when tag picker is disabled
+
+## 4.21.3
+Thu, 20 Jul 2017 10:11:23 GMT
+
+### Patches
+
+- SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker
+- Checkbox: remove unnecessary styles and element
+
+## 4.21.2
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Patches
+
+- Breadcrumb: Uses tooltip when breadcrumb text is truncated
+- Fix CommandBar rendering commandText span when no item name is given: #2233.
+- Start fixing some strictNullCheck errors
+- DefaultButton: Make styles match design
+- DetailsList: Adjust checkmark icon to use StatusCircleCheckmark icon
+- Dropdown: List native props at top of div element
 
 ## 4.21.1
 Mon, 17 Jul 2017 18:38:01 GMT

@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.5.42",
+      "tag": "@uifabric/fabric-website_v4.5.42",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "305a3e76f8f9fae6b6ff1f7ceeb659b963f840f1",
+            "comment": "Remove erroneous usage of baseUrl to fix link to color accessibility guide"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.8.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.21.3 <5.0.0` to `>=4.21.4 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.5.41",
       "tag": "@uifabric/fabric-website_v4.5.41",
       "date": "Sat, 08 Jul 2017 03:34:35 GMT",
