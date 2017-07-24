@@ -156,12 +156,17 @@ export interface IComboBoxStyles {
    * Styles for the callout.
    */
   callout: IStyle;
+
   /**
    * Styles for the container of all the Combobox options
    * Includes the headers and dividers.
    */
   optionsContainer: IStyle;
 
+  /**
+   * Default styles that should be applied to ComboBox options,
+   * incase an option does not come with user-defined custom styles
+   */
   optionDefaultStyles: Partial<IComboBoxOptionStyles>;
 }
 
