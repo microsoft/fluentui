@@ -194,6 +194,16 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           allowFreeform={ true }
           autoComplete='on'
           options={ this._testOptionsWithCustomStyling }
+          styles={
+            {
+              optionDefaultStyles: {
+                optionText: {
+                  fontFamily: 'initial', // this should be overriden by custom styles for each option
+                  fontSize: '13px'
+                },
+              }
+            }
+          }
         />
 
       </div>

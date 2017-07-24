@@ -162,7 +162,7 @@ export interface IComboBoxStyles {
    */
   optionsContainer: IStyle;
 
-  optionDefaultStyles: IComboBoxOptionStyles;
+  optionDefaultStyles: Partial<IComboBoxOptionStyles>;
 }
 
 export interface IComboBoxOptionStyles {
