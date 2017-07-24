@@ -1,4 +1,4 @@
-import { IComboBoxStyles } from './ComboBox.Props';
+import { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyles,
@@ -13,11 +13,14 @@ export interface IComboBoxClassNames {
   errorMessage: string;
   callout: string;
   optionsContainer: string;
+}
+
+export interface IComboBoxOptionClassNames {
+  header: string;
+  divider: string;
   option: string;
   optionSelected: string;
   optionDisabled: string;
-  header: string;
-  divider: string;
   optionText: string;
 }
 
@@ -81,6 +84,13 @@ export const getClassNames = memoizeFunction((
       'ms-ComboBox-optionsContainer',
       styles.optionsContainer
     ) as string,
+  };
+});
+
+export const getComboBoxOptionClassNames = memoizeFunction((
+  styles: IComboBoxOptionStyles,
+): IComboBoxOptionClassNames => {
+  return {
     option: mergeStyles(
       'ms-ComboBox-option',
       styles.option,

@@ -27,10 +27,14 @@ import {
   mergeStyles,
 } from '../../Styling';
 import {
-  getStyles
+  getStyles,
+  getOptionStyles
 } from './ComboBox.styles';
 import {
-  IComboBoxClassNames, getClassNames
+  IComboBoxClassNames,
+  getClassNames,
+  IComboBoxOptionClassNames,
+  getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
@@ -789,39 +793,42 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render items
   @autobind
   private _onRenderItem(item: IComboBoxOption): JSX.Element | null {
+    const optionClassNames = this._getCurrentOptionClassNames(item);
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
-        return this._renderSeparator(item);
+        return this._renderSeparator(item, optionClassNames);
       case SelectableOptionMenuItemType.Header:
-        return this._renderHeader(item);
+        return this._renderHeader(item, optionClassNames);
       default:
-        return this._renderOption(item);
+        return this._renderOption(item, optionClassNames);
     }
   }
 
   // Render separator
-  private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
+  private _renderSeparator(item: IComboBoxOption, optionClassNames: IComboBoxOptionClassNames): JSX.Element | null {
     let { index, key } = item;
+
     if (index && index > 0) {
       return <div
         role='separator'
         key={ key }
-        className={ this._classNames.divider } />;
+        className={ optionClassNames.divider } />;
     }
     return null;
   }
 
-  private _renderHeader(item: IComboBoxOption): JSX.Element {
+  private _renderHeader(item: IComboBoxOption, optionClassNames: IComboBoxOptionClassNames): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
+
     return (
-      <div key={ item.key } className={ this._classNames.header } role='header'>
+      <div key={ item.key } className={ optionClassNames.header } role='header'>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
 
   // Render menu item
   @autobind
-  private _renderOption(item: IComboBoxOption): JSX.Element {
+  private _renderOption(item: IComboBoxOption, optionClassNames: IComboBoxOptionClassNames): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
@@ -831,8 +838,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         key={ item.key }
         data-index={ item.index }
         className={ mergeStyles(
-          this._classNames.option,
-          isSelected && this._classNames.optionSelected
+          optionClassNames.option,
+          isSelected && optionClassNames.optionSelected
         ) as string }
         onClick={ () => this._onItemClick(item.index) }
         role='option'
@@ -883,7 +890,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    return <span className={ this._classNames.optionText }>{ item.text }</span>;
+    const optionClassNames = this._getCurrentOptionClassNames(item);
+    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
   }
 
   /**
@@ -1231,5 +1239,19 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         isOpen: !isOpen
       });
     }
+  }
+
+  /**
+   * Get the class names for the current option.
+   * @param item Item props for the current option
+   */
+  private _getCurrentOptionClassNames(item: IComboBoxOption) {
+    const { styles: customStyles } = this.props;
+    const customStylesForAllOptions = (customStyles != null) ? customStyles.optionDefaultStyles : null;
+    const { styles: customStylesForCurrentOption } = item;
+
+    return getComboBoxOptionClassNames(
+      getOptionStyles(this.props.theme, customStylesForAllOptions, customStylesForCurrentOption)
+    );
   }
 }

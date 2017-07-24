@@ -27,6 +27,45 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   { key: 'J', text: 'Option j' },
   ];
 
+  private _testOptionsWithCustomStyling =
+  [{
+    key: 'A',
+    text: 'Arial Black',
+    styles: {
+      optionText: {
+        fontFamily: '"Arial Black", "Arial Black_MSFontService", sans-serif',
+      }
+    }
+  },
+  {
+    key: 'B',
+    text: 'Time New Roman',
+    styles: {
+      optionText: {
+        fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif',
+      }
+    }
+  },
+  {
+    key: 'C',
+    text: 'Comic Sans MS',
+    styles: {
+      optionText: {
+        fontFamily: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy',
+      }
+    }
+  },
+  {
+    key: 'D',
+    text: 'Calibri',
+    styles: {
+      optionText: {
+        fontFamily: 'Calibri, Calibri_MSFontService, sans-serif',
+      }
+    }
+  },
+  ];
+
   private _fontMapping: { [key: string]: string } = {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
     ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
@@ -146,6 +185,16 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onRenderOption={ this._onRenderFontOption }
           />
         }
+
+        <ComboBox
+          defaultSelectedKey='C'
+          label='Custom styled uncontrolled ComboBox (allowFreeform: T, AutoComplete: T):'
+          id='Basicdrop6'
+          ariaLabel='Custom styled ComboBox example'
+          allowFreeform={ true }
+          autoComplete='on'
+          options={ this._testOptionsWithCustomStyling }
+        />
 
       </div>
 

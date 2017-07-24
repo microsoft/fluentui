@@ -12,6 +12,7 @@ export interface IComboBox {
 }
 
 export interface IComboBoxOption extends ISelectableOption {
+  styles?: Partial<IComboBoxOptionStyles>;
 }
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
@@ -161,19 +162,13 @@ export interface IComboBoxStyles {
    */
   optionsContainer: IStyle;
 
-  /**
-   * Styles for a header in the options.
-   */
-  header: IStyle;
+  optionDefaultStyles: IComboBoxOptionStyles;
+}
 
+export interface IComboBoxOptionStyles {
   /**
-   * Styles for a divider in the options.
-   */
-  divider: IStyle;
-
-  /**
-   * Base styles for a comboBox option which is NOT a header/divider.
-   */
+ * Base styles for a comboBox option which is NOT a header/divider.
+ */
   option: IStyle;
 
   /**
@@ -211,4 +206,14 @@ export interface IComboBoxStyles {
    * Styles for the optionText for all comboBox options.
    */
   optionText: IStyle;
+
+  /**
+   * Styles for a header in the options.
+   */
+  header: IStyle;
+
+  /**
+   * Styles for a divider in the options.
+   */
+  divider: IStyle;
 }
