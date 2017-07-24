@@ -2,7 +2,8 @@ import { ICheckboxStyles } from './Checkbox.Props';
 import {
   ITheme,
   mergeStyleSets,
-  getFocusStyle
+  getFocusStyle,
+  FontSizes
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
@@ -98,7 +99,8 @@ export const getStyles = memoizeFunction((
       color: checkmarkFontColorCheckedDisabled,
     },
     text: {
-      marginRight: '8px'
+      marginRight: '8px',
+      fontSize: FontSizes.medium
     },
     textHovered: {
       color: palette.black,
