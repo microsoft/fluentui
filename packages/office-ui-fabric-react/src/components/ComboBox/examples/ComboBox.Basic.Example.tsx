@@ -14,7 +14,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   private _testOptions =
   [{ key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Arial Black' },
-  { key: 'B', text: 'Time New Roman' },
+  { key: 'B', text: 'Times New Roman' },
   { key: 'C', text: 'Comic Sans MS' },
   { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
   { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
@@ -39,7 +39,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   },
   {
     key: 'B',
-    text: 'Time New Roman',
+    text: 'Times New Roman',
     styles: {
       optionText: {
         fontFamily: '"Times New Roman", "Times New Roman_MSFontService", serif',
