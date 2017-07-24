@@ -13,10 +13,13 @@ import {
 } from './DefaultPalette';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
+let _defaultThemeSettings = { isInverted: false };
+
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
-  fonts: DefaultFontStyles
+  fonts: DefaultFontStyles,
+  settings: _defaultThemeSettings
 };
 
 export const ThemeSettingName = 'theme';
@@ -67,7 +70,8 @@ export function createTheme(theme: IPartialTheme): ITheme {
       ...DefaultFontStyles,
       ...theme.fonts
     },
-    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
+    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors },
+    settings: { ..._defaultThemeSettings, ...theme.settings }
   } as ITheme;
 }
 
