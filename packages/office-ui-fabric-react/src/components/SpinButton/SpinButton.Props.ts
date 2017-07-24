@@ -1,5 +1,6 @@
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
+import { ITheme, IStyle } from '../../Styling';
 
 export interface ISpinButton {
   /**
@@ -114,4 +115,29 @@ export interface ISpinButtonProps {
    * Icon for the decrement button of the spinButton
    */
   decrementButtonIcon?: IIconProps;
+
+  /**
+   * Custom styling for individual elements within the button DOM.
+   */
+  styles?: Partial<ISpinButtonStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+}
+
+export interface ISpinButtonStyles {
+  container: IStyle;
+  labelWrapper: IStyle;
+  icon: IStyle;
+  label: IStyle;
+  root: IStyle;
+  rootTopBottom: IStyle;
+  input: IStyle;
+  arrowBox: IStyle;
+  arrowButton: IStyle;
+  arrowButtonHovered: IStyle;
+  arrowButtonActive: IStyle;
+  arrowButtonDisabled: IStyle;
 }

@@ -7,15 +7,18 @@ import {
   css,
   getId,
   KeyCodes,
-  autobind
+  autobind,
+  customizable
 } from '../../Utilities';
+import { ThemeSettingName } from '../../Styling';
 import {
   ISpinButton,
-  ISpinButtonProps
+  ISpinButtonProps,
+  ISpinButtonStyles
 } from './SpinButton.Props';
 import { Position } from '../../utilities/positioning';
-import * as stylesImport from './SpinButton.scss';
-const styles: any = stylesImport;
+import { getStyles } from './SpinButton.styles';
+import { ISpinButtonClassNames, getClassNames } from './SpinButton.classNames';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -36,6 +39,7 @@ export interface ISpinButtonState {
   keyboardSpinDirection?: KeyboardSpinDirection;
 }
 
+@customizable([ThemeSettingName])
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
 
   public static defaultProps: ISpinButtonProps = {
@@ -128,7 +132,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       incrementButtonIcon,
       decrementButtonIcon,
       title,
-      ariaLabel
+      ariaLabel,
+      styles: customStyles,
+      theme
     } = this.props;
 
     const {
@@ -136,20 +142,27 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       keyboardSpinDirection
     } = this.state;
 
+    const classNames = getClassNames(
+      getStyles(customStyles, theme),
+      disabled,
+      keyboardSpinDirection,
+      labelPosition
+    );
+
     return (
-      <div className={ styles.SpinButtonContainer }>
-        { labelPosition !== Position.bottom && <div className={ css(styles.labelWrapper, this._getClassNameForLabelPosition(labelPosition as Position)) }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
+      <div className={ classNames.container }>
+        { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true'></Icon> }
           { label &&
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ styles.SpinButtonLabel }>{ label }
+              className={ classNames.label }>{ label }
             </Label>
           }
         </div> }
         <div
-          className={ css(styles.SpinButtonWrapper, ((labelPosition === Position.top || labelPosition === Position.bottom) ? styles.topBottom : '')) }
+          className={ classNames.root }
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
         >
@@ -158,7 +171,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             id={ this._inputId }
             onChange={ this._onChange }
             onInput={ this._onInputChange }
-            className={ css(styles.Input, (disabled ? styles.disabled : '')) }
+            className={ classNames.input }
             type='text'
             role='spinbutton'
             aria-labelledby={ label && this._labelId }
@@ -173,9 +186,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             readOnly={ disabled }
             aria-disabled={ disabled }
           />
-          <span className={ styles.ArrowBox }>
+          <span className={ classNames.arrowBox }>
             <IconButton
-              className={ css('ms-UpButton', styles.UpButton, (keyboardSpinDirection === KeyboardSpinDirection.up ? styles.active : '')) }
+              className={ classNames.upButton }
               styles={ this._arrowButtonStyle }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
@@ -186,7 +199,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              className={ css('ms-DownButton', styles.DownButton, (keyboardSpinDirection === KeyboardSpinDirection.down ? styles.active : '')) }
+              className={ classNames.downButton }
               styles={ this._arrowButtonStyle }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
@@ -198,13 +211,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             />
           </span>
         </div>
-        { labelPosition === Position.bottom && <div className={ css(styles.labelWrapper, this._getClassNameForLabelPosition(labelPosition)) }>
-          { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
+        { labelPosition === Position.bottom && <div className={ classNames.labelWrapper }>
+          { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true'></Icon> }
           { label &&
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ styles.SpinButtonLabel }>{ label }
+              className={ classNames.label }>{ label }
             </Label>
           }
         </div>
@@ -257,29 +270,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _defaultOnDecrement = (value: string) => {
     let newValue = Math.max(Number(value) - (this.props.step as number), this.props.min as number);
     return String(newValue);
-  }
-
-  /**
-   * Returns the class name corresponding to the label position
-   */
-  private _getClassNameForLabelPosition(labelPosition: Position): string {
-    let className: string = '';
-
-    switch (labelPosition) {
-      case Position.start:
-        className = styles.start;
-        break;
-      case Position.end:
-        className = styles.end;
-        break;
-      case Position.top:
-        className = styles.top;
-        break;
-      case Position.bottom:
-        className = styles.bottom;
-    }
-
-    return className;
   }
 
   private _onChange() {
