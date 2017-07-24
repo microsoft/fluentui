@@ -228,7 +228,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
-      if (_containerWidth && currentState.renderedData) {
+      if (_containerWidth && currentState.renderedData && !currentState.dataToMeasure) {
         return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData) };
       }
 
@@ -299,7 +299,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
-      renderedData: undefined,
       measureContainer: true // Receiving new props means the parent might rerender and the root width might change
     });
   }
