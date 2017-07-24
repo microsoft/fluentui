@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { KeyCodes } from '../../Utilities';
 let { expect } = chai;
 
@@ -25,26 +25,26 @@ const DEFAULT_OPTIONS2: IComboBoxOption[] = [
 describe('ComboBox', () => {
 
   it('Can flip between enabled and disabled.', () => {
-    let wrapper = shallow(
+    let wrapper = mount(
       <ComboBox
         disabled={ false }
         label='testgroup'
         options={ DEFAULT_OPTIONS }
       />);
-    let comboBoxRoot = wrapper.find('.ms-ComboBox-container');
+    let comboBoxRoot = wrapper.find('.ms-ComboBox');
 
-    expect(comboBoxRoot.find('.is-disabled').length).equals(0, `shouldn't be disabled`);
+    expect(comboBoxRoot.find('.ms-ComboBox.is-disabled').length).equals(0, `shouldn't be disabled`);
     expect(comboBoxRoot.find('[data-is-interactable=true]').length).equals(1, 'data-is-interactable="true"');
 
-    wrapper = shallow(
+    wrapper = mount(
       <ComboBox
         disabled={ true }
         label='testgroup'
         options={ DEFAULT_OPTIONS }
       />);
-    comboBoxRoot = wrapper.find('.ms-ComboBox-container');
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
 
-    expect(comboBoxRoot.find('.is-disabled').length).equals(1, `should be disabled`);
+    expect(comboBoxRoot.find('.ms-ComboBox.is-disabled').length).equals(1, `should be disabled`);
     expect(comboBoxRoot.find('[data-is-interactable=false]').length).equals(1, 'data-is-interactable="false"');
   });
 
