@@ -7,10 +7,10 @@ import { IFontFace } from '../interfaces/IFontFace';
 
 export interface IIconSubset {
   fontFace: IFontFace;
-  style: IRawStyle;
   icons: {
     [key: string]: string;
   };
+  style?: IRawStyle;
 }
 
 export interface IIconSubsetRecord extends IIconSubset {
@@ -64,24 +64,28 @@ export function registerIcons(iconSubset: IIconSubset): void {
  * @public
  * @param name - Name of icon.
  */
-export function getIcon(name: string): IIconRecord {
+export function getIcon(name: string): IIconRecord | undefined {
   let icon: IIconRecord = _icons[name];
-  let { subset } = icon;
 
-  if (!subset.isRegistered) {
-    // Register font face for given icons.
-    fontFace(subset.fontFace);
+  if (icon) {
 
-    // Generate a base class name for the given font.
-    subset.className = mergeStyles(
-      subset.style,
-      {
-        fontFamily: subset.fontFace.fontFamily,
-        fontWeight: subset.fontFace.fontWeight || FontWeights.regular,
-        fontStyle: subset.fontFace.fontStyle || 'normal'
-      }).toString();
+    let { subset } = icon;
 
-    subset.isRegistered = true;
+    if (!subset.isRegistered) {
+      // Register font face for given icons.
+      fontFace(subset.fontFace);
+
+      // Generate a base class name for the given font.
+      subset.className = mergeStyles(
+        subset.style,
+        {
+          fontFamily: subset.fontFace.fontFamily,
+          fontWeight: subset.fontFace.fontWeight || FontWeights.regular,
+          fontStyle: subset.fontFace.fontStyle || 'normal'
+        }).toString();
+
+      subset.isRegistered = true;
+    }
   }
 
   return icon;

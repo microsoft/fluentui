@@ -64,6 +64,8 @@ const LanguageToFontMap = {
   'zh-hant': FontFamilyChineseTraditional,
 };
 
+const FontFileVersion = 2.35;
+
 // Standard font sizes.
 export namespace FontSizes {
   export const mini = '10px';

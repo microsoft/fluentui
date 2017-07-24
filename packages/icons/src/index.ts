@@ -1,5 +1,7 @@
-import { registerCoreIcons } from './coreIcons';
-import { registerMiscIcons } from './miscIcons';
+import { initializeIcons as initializeCoreIcons } from './iconSets/core';
+import { initializeIcons as initializeMiscIcons } from './iconSets/misc';
 
-registerCoreIcons();
-registerMiscIcons();
+export function initializeIcons() {
+  initializeCoreIcons();
+  initializeMiscIcons();
+}

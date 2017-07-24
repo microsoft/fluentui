@@ -26,7 +26,7 @@ describe('Image', () => {
         onLoad={ () => {
           done();
         } }
-        />
+      />
     );
   });
 
@@ -34,7 +34,7 @@ describe('Image', () => {
     let root = document.createElement('div');
     let onLoadingStateChange = (loadState: ImageLoadState) => {
       if (loadState === ImageLoadState.loaded) {
-        let image = document.querySelector('.ms-Image.is-portraitFrame .ms-Image-image');
+        let image = document.querySelector('.ms-Image.is-portraitFrame .ms-Image-image') as Element;
         try {
           expect(image.className).to.contain('ms-Image-image--landscape');
         } catch (e) { done(e); }
@@ -50,7 +50,7 @@ describe('Image', () => {
         imageFit={ ImageFit.cover }
         className='is-portraitFrame'
         onLoadingStateChange={ onLoadingStateChange }
-        />, root
+      />, root
     );
   });
 
@@ -58,7 +58,7 @@ describe('Image', () => {
     let root = document.createElement('div');
     let onLoadingStateChange = (loadState: ImageLoadState) => {
       if (loadState === ImageLoadState.loaded) {
-        let image = document.querySelector('.ms-Image.is-landscapeFrame .ms-Image-image');
+        let image = document.querySelector('.ms-Image.is-landscapeFrame .ms-Image-image') as Element;
         try {
           expect(image.className).to.contain('ms-Image-image--portrait');
         } catch (e) { done(e); }
@@ -74,7 +74,7 @@ describe('Image', () => {
         imageFit={ ImageFit.cover }
         className='is-landscapeFrame'
         onLoadingStateChange={ onLoadingStateChange }
-        />, root
+      />, root
     );
   });
 
@@ -82,7 +82,7 @@ describe('Image', () => {
     let root = document.createElement('div');
     let onLoadingStateChange = (loadState: ImageLoadState) => {
       if (loadState === ImageLoadState.loaded) {
-        let image = document.querySelector('.ms-Image.is-frameMaximizedPortrait .ms-Image-image');
+        let image = document.querySelector('.ms-Image.is-frameMaximizedPortrait .ms-Image-image') as Element;
         try {
           expect(image.className).to.contain('ms-Image-image--portrait');
         } catch (e) { done(e); }
@@ -98,7 +98,7 @@ describe('Image', () => {
           maximizeFrame
           src={ testImage1x1 }
           onLoadingStateChange={ onLoadingStateChange }
-          />
+        />
       </div>, root
     );
   });
@@ -107,7 +107,7 @@ describe('Image', () => {
     let root = document.createElement('div');
     let onLoadingStateChange = (loadState: ImageLoadState) => {
       if (loadState === ImageLoadState.loaded) {
-        let image = document.querySelector('.ms-Image.is-frameMaximizedLandscape .ms-Image-image');
+        let image = document.querySelector('.ms-Image.is-frameMaximizedLandscape .ms-Image-image') as Element;
         try {
           expect(image.className).to.contain('ms-Image-image--landscape');
         } catch (e) { done(e); }
@@ -123,7 +123,7 @@ describe('Image', () => {
           className='is-frameMaximizedLandscape'
           onLoadingStateChange={ onLoadingStateChange }
           maximizeFrame
-          />
+        />
       </div>, root
     );
   });
@@ -135,7 +135,7 @@ describe('Image', () => {
         onError={ () => {
           done();
         } }
-        />
+      />
     );
   });
 });

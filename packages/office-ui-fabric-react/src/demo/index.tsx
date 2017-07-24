@@ -10,9 +10,10 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import './index.scss';
 import './ColorStyles.scss';
 
-import '@uifabric/icons';
+import { initializeIcons } from '@uifabric/icons';
 
 setBaseUrl('./dist/');
+initializeIcons();
 
 let rootElement: HTMLElement | undefined;
 

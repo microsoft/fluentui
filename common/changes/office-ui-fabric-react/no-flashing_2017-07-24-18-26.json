@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: List native props at top of div element",
+      "comment": "ResizeGroup: Prevent flashing when passing in new props",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "<christianjordangonzalez@gmail.com>"
 }

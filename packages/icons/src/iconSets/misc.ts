@@ -1,11 +1,11 @@
-import { registerIcons, IIconSubset, IFontFace } from '@uifabric/styling';
+import { registerIcons } from '@uifabric/styling';
 
-export function registerMiscIcons() {
+export function initializeIcons(): void {
   registerIcons({
     fontFace: {
       fontFamily: `"FabricMDL2Icons-misc"`,
       src: `url('//static2.sharepointonline.com/files/fabric/assets/icons/fabricmdl2icons.woff2') format('woff2')`,
-    } as IFontFace,
+    },
     icons: {
       'AadLogo': '\uED68',
       'Accept': '\uE8FB',

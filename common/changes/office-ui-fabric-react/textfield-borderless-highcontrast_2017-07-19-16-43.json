@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Start fixing some strictNullCheck errors",
+      "comment": "Textfield: Fixed high contrast border and textarea font family",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "micahgodbolt@gmail.com"
 }
