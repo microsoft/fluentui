@@ -15,7 +15,7 @@ const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: bl
 const ComboBoxHeight = '32px';
 const ComboBoxLineHeight = '30px';
 const ComboxBoxCaretDownWidth = '32px';
-const ComboBoxoptionHeight = '36px';
+const ComboBoxOptionHeight = '36px';
 
 const getDisabledStyles = (theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
@@ -162,8 +162,8 @@ export const getStyles = memoizeFunction((
       color: semanticColors.menuHeader,
       background: 'none',
       border: 'none',
-      height: ComboBoxoptionHeight,
-      lineHeight: ComboBoxoptionHeight,
+      height: ComboBoxOptionHeight,
+      lineHeight: ComboBoxOptionHeight,
       cursor: 'default',
       padding: '0px 16px',
       userSelect: 'none',
@@ -181,7 +181,7 @@ export const getStyles = memoizeFunction((
         display: 'block',
         width: '100%',
         height: 'auto',
-        minHeight: ComboBoxoptionHeight,
+        minHeight: ComboBoxOptionHeight,
         lineHeight: '20px',
         padding: '5px 16px',
         position: 'relative',
