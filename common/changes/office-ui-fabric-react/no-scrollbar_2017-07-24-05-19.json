@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Updated keydown handler to respond correctly to normal dropdown items",
+      "comment": "ResizeGroup: Don't show a scrollbar while measuring the hidden div",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "peterdunlop2519@gmail.com"
+  "email": "<christianjordangonzalez@gmail.com>"
 }
