@@ -9,7 +9,7 @@ export interface IDropdown {
   focus: () => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */

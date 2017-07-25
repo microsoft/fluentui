@@ -4,9 +4,8 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
 } from '../../Utilities';
-import { CalloutLinkType } from '../../utilities/positioning';
 
 export interface ICallout {
 
@@ -31,6 +30,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
 
   /**
    * The gap between the Callout and the target
@@ -73,9 +78,10 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   targetPoint?: IPoint;
 
   /**
-   * To specify the link type between the callout and target. Such as a Beak, etc.
+   * If true then the beak is visible. If false it will not be shown.
+   * @default true
    */
-  linkType?: CalloutLinkType;
+  isBeakVisible?: boolean;
 
   /**
    * If true then the onClose will not not dismiss on scroll
@@ -157,12 +163,6 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @returns True if focus was set, false if it was not.
    */
   setInitialFocus?: boolean;
-
-  /**
-   * Deprecated. If true then the beak is visible. If false it will not be shown. Use linkType instead.
-   * @deprecated @default true
-   */
-  isBeakVisible?: boolean;
 
   /**
     * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.

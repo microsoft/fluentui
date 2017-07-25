@@ -57,6 +57,14 @@ export const getStyles = memoizeFunction((
       }
     },
 
+    rootExpanded: {
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDark
+      }
+    },
+
     rootCheckedHovered: {
       backgroundColor: theme.palette.neutralQuaternary,
       color: theme.palette.black,

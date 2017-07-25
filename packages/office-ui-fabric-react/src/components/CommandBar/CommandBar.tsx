@@ -12,7 +12,6 @@ import {
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
-import { CalloutLinkType } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -148,7 +147,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             targetElement={ contextualMenuTarget }
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
-            calloutProps={ { linkType: CalloutLinkType.attached } }
           />
           ) : (null)
         }
@@ -187,7 +185,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -210,7 +208,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -230,8 +228,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             aria-haspopup={ hasSubmenuItems(item) }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
-            <span className={ css(
-              'ms-CommandBarItem-commandText', styles.itemCommandText) } aria-hidden='true' role='presentation'>{ item.name }</span>
+            { (!!item.name) && (
+              <span
+                className={ css('ms-CommandBarItem-commandText', styles.itemCommandText) }
+                aria-hidden='true'
+                role='presentation'
+              >
+                { item.name }
+              </span>
+            ) }
           </div>;
         }
       })() }

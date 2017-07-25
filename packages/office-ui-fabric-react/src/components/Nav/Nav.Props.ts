@@ -7,7 +7,7 @@ export interface INav {
    * that in order for Nav to properly understand which key is selected all NavItems in
    * all groups of the Nav must have populated key properties.
    */
-  selectedKey: string;
+  selectedKey: string | undefined;
 }
 
 export interface INavProps {
@@ -20,7 +20,7 @@ export interface INavProps {
   /**
    * A collection of link groups to display in the navigation bar
    */
-  groups: INavLinkGroup[];
+  groups: INavLinkGroup[] | null;
 
   /**
    * Optional class name to allow styling.

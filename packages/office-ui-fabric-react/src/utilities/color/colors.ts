@@ -25,13 +25,13 @@ export interface IColor extends IRGB, IHSV {
 }
 
 export function cssColor(color: string): IRGB {
-  return _named(color)
+  return (_named(color)
     || _hex3(color)
     || _hex6(color)
     || _rgb(color)
     || _rgba(color)
     || _hsl(color)
-    || _hsla(color);
+    || _hsla(color) as IRGB);
 }
 
 export function rgb2hex(r: number, g: number, b: number): string {
@@ -49,7 +49,7 @@ export function hsv2hex(h: number, s: number, v: number): string {
 }
 
 export function rgb2hsv(r: number, g: number, b: number): IHSV {
-  let h;
+  let h = NaN;
   let s;
   let v;
   const max = Math.max(r, g, b);
@@ -206,7 +206,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
     hex: hex,
     r: r,
     s: s,
-    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
+    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${(color.a as number) / 100})`,
     v: v
   };
 }
@@ -223,7 +223,7 @@ export function updateH(color: IColor, h: number): IColor {
     hex: hex,
     r: r,
     s: color.s,
-    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
+    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${(color.a as number) / 100})`,
     v: color.v
   };
 }
@@ -256,7 +256,7 @@ function _named(str: string) {
 
 function _rgb(str: string) {
   if (0 === str.indexOf('rgb(')) {
-    str = str.match(/rgb\(([^)]+)\)/)[1];
+    str = (str.match(/rgb\(([^)]+)\)/)!)[1];
 
     const parts = str.split(/ *, */).map(Number);
 
@@ -271,7 +271,7 @@ function _rgb(str: string) {
 
 function _rgba(str: string) {
   if (str.indexOf('rgba(') === 0) {
-    str = str.match(/rgba\(([^)]+)\)/)[1];
+    str = (str.match(/rgba\(([^)]+)\)/)!)[1];
 
     const parts = str.split(/ *, */).map(Number);
 
@@ -308,7 +308,7 @@ function _hex3(str: string) {
 
 function _hsl(str: string) {
   if (str.indexOf('hsl(') === 0) {
-    str = str.match(/hsl\(([^)]+)\)/)[1];
+    str = (str.match(/hsl\(([^)]+)\)/)!)[1];
     const parts = str.split(/ *, */);
 
     const h = parseInt(parts[0], 10);
@@ -324,7 +324,7 @@ function _hsl(str: string) {
 
 function _hsla(str: string) {
   if (str.indexOf('hsla(') === 0) {
-    str = str.match(/hsla\(([^)]+)\)/)[1];
+    str = (str.match(/hsla\(([^)]+)\)/)!)[1];
 
     const parts = str.split(/ *, */);
     const h = parseInt(parts[0], 10);

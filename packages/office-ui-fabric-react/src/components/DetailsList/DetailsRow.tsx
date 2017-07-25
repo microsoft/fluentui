@@ -33,6 +33,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
   itemIndex: number;
   columns: IColumn[];
+  compact?: boolean;
   selectionMode: SelectionMode;
   selection: ISelection;
   eventsToRegister?: { eventName: string, callback: (item?: any, index?: number, event?: any) => void }[];
@@ -74,7 +75,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     cellMeasurer: HTMLElement
   };
 
-  private _root: HTMLElement;
+  private _root: HTMLElement | undefined;
   private _focusZone: IFocusZone;
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
@@ -86,7 +87,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
 
     this.state = {
       selectionState: this._getSelectionState(props),
-      columnMeasureInfo: null,
+      columnMeasureInfo: undefined,
       isDropping: false,
       groupNestingDepth: props.groupNestingDepth
     };
@@ -103,7 +104,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     let { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      this._dragDropSubscription = dragDropHelper.subscribe(this._root, this._events, this._getRowDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(this._root as HTMLElement, this._events, this._getRowDragDropOptions());
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -129,7 +130,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       }
 
       if (this.props.dragDropHelper) {
-        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root, this._events, this._getRowDragDropOptions());
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this._root as HTMLElement, this._events, this._getRowDragDropOptions());
       }
     }
 
@@ -139,7 +140,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       columnMeasureInfo.onMeasureDone(newWidth);
 
       this.setState({
-        columnMeasureInfo: null
+        columnMeasureInfo: undefined
       });
     }
 
@@ -185,11 +186,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       checkButtonAriaLabel,
       selection
     } = this.props;
-    const { selectionState: { isSelected, anySelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
+    const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
+    const { isSelected, anySelected } = this.state.selectionState as IDetailsRowSelectionState;
     const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
-    const canSelect = selection.canSelectItem(item);
+    const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
 
@@ -238,7 +240,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
           </div>
         ) }
 
-        { GroupSpacer({ count: groupNestingDepth - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
+        { GroupSpacer({ count: groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0) }) }
 
         { item && (
           <DetailsRowFields
@@ -344,12 +346,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
       eventMap: eventsToRegister,
       selectionIndex: itemIndex,
       context: { data: item, index: itemIndex },
-      canDrag: dragDropEvents.canDrag,
-      canDrop: dragDropEvents.canDrop,
-      onDragStart: dragDropEvents.onDragStart,
+      canDrag: dragDropEvents!.canDrag,
+      canDrop: dragDropEvents!.canDrop,
+      onDragStart: dragDropEvents!.onDragStart,
       updateDropState: this._updateDroppingState,
-      onDrop: dragDropEvents.onDrop,
-      onDragEnd: dragDropEvents.onDragEnd,
+      onDrop: dragDropEvents!.onDrop,
+      onDragEnd: dragDropEvents!.onDragEnd,
     };
 
     return options;
@@ -372,12 +374,12 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     let { dragDropEvents, item } = this.props;
 
     if (!newValue) {
-      if (dragDropEvents.onDragLeave) {
-        dragDropEvents.onDragLeave(item, event);
+      if (dragDropEvents!.onDragLeave) {
+        dragDropEvents!.onDragLeave!(item, event);
       }
     } else {
-      if (dragDropEvents.onDragEnter) {
-        this._droppingClassNames = dragDropEvents.onDragEnter(item, event);
+      if (dragDropEvents!.onDragEnter) {
+        this._droppingClassNames = dragDropEvents!.onDragEnter!(item, event);
       }
     }
 

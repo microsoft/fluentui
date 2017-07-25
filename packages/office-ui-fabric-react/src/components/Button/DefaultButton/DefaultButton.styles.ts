@@ -39,13 +39,18 @@ export const getStyles = memoizeFunction((
     },
 
     rootPressed: {
-      backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      color: theme.palette.neutralDark
+    },
+
+    rootExpanded: {
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      color: theme.palette.neutralDark
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
+      backgroundColor: theme.palette.neutralTertiaryAlt,
+      color: theme.palette.neutralDark
     },
 
     label: {
