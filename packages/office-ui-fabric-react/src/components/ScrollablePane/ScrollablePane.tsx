@@ -68,8 +68,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
         setTimeout(() => {
           this._resizeContainer();
           this._notifySubscribers();
-          this._setDistances(this._stickyAbove, stickyAbove);
-          this._setDistances(this._stickyBelow, stickyBelow);
+          this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
+          this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
         }, 5);
       });
       setTimeout(() => {
@@ -118,7 +118,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       setTimeout(() => {
         sticky.content.children[0].classList.add(sticky.props.stickyClassName);
       }, 1);
-      this._setDistances(this._stickyAbove, stickyAbove);
+      this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
     }
   }
 
@@ -139,7 +139,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       setTimeout(() => {
         sticky.content.children[0].classList.add(sticky.props.stickyClassName);
       }, 1);
-      this._setDistances(this._stickyBelow, stickyBelow);
+      this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
     }
   }
 
@@ -157,7 +157,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     this._stickyContainer.style.top = this._scrollElement.offsetTop + 'px';
   }
 
-  private _setDistances(stickies: Sticky[], element: HTMLElement) {
+  private _setPlaceholderHeights(stickies: Sticky[], element: HTMLElement) {
     const { stickyAbove, stickyBelow } = this.refs;
     stickies.forEach((sticky, idx) => {
       sticky.setPlaceholderHeight(element.children[idx].clientHeight);
