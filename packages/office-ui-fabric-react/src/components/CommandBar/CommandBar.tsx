@@ -126,6 +126,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                   role='menuitem'
                   aria-label={ this.props.elipisisAriaLabel || '' }
                   aria-haspopup={ true }
+                  aria-expanded={ expandedMenuItemKey !== null }
                   data-automation-id='commandBarOverflow'
                 >
                   <Icon className={ css('ms-CommandBarItem-overflow', styles.itemOverflow) } iconName='more' />
