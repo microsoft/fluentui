@@ -5,21 +5,18 @@ import * as ReactDOM from 'react-dom';
 
 import * as PropTypes from 'prop-types';
 import {
-  css,
   BaseComponent,
   autobind
 } from '../../Utilities';
 import { ScrollablePane } from '../../ScrollablePane';
 import { IStickyProps } from './Sticky.Props';
-import { IStyle } from '../../Styling';
 import * as stylesImport from './Sticky.scss';
 const styles: any = stylesImport;
 
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
-  topDistance?: number;
-  bottomDistance?: number;
+  placeholderHeight?: number;
 }
 
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
@@ -34,7 +31,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public refs: {
     root: HTMLElement;
     placeholder: HTMLElement;
-    sticky: HTMLElement;
   };
 
   public context: {
@@ -45,9 +41,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     removeStickyFooter: (sticky: Sticky) => void;
   };
 
-  private _offsetTop: number;
-  private _offsetBottom: number;
-  private _scrollContainerHeight: number;
+  public content: HTMLElement;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -62,99 +56,73 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!this.context.subscribe) {
       throw new TypeError('Expected Sticky to be mounted within ScrollablePane');
     }
-    this.context.subscribe(this.handleScrollEvent);
+    const { stickyClassName } = this.props;
+    this.context.subscribe(this._onScrollEvent);
+    this.content = document.createElement('div');
+    this.content.style.background = this._getBackground();
+    ReactDOM.render(<div>{ this.props.children }</div>, this.content);
+    this.refs.root.appendChild(this.content);
   }
 
-  @autobind
-  public handleScrollEvent(
-    topScrollBound: number,
-    topHeaderHeight: number,
-    offsetTop: number,
-    bottomScrollBound: number,
-    bottomFooterHeight: number,
-    scrollContainerHeight: number
-    ) {
-    const rootBounds: ClientRect = this.refs.root.getBoundingClientRect();
-    const distanceFromStickyTop = rootBounds.top - topScrollBound;
-    const distanceFromStickyBottom = rootBounds.bottom - bottomScrollBound;
-    const topHeight = this.state.topDistance !== undefined ? this.state.topDistance : topHeaderHeight;
-    const bottomHeight = this.state.bottomDistance !== undefined ? this.state.bottomDistance : bottomFooterHeight;
-
-    const setStickyTop = distanceFromStickyTop <= topHeight;
-    const setStickyBottom = distanceFromStickyBottom >= -bottomHeight;
-    this._offsetTop = offsetTop;
-    this._offsetBottom = offsetTop + scrollContainerHeight;
-    this._scrollContainerHeight = scrollContainerHeight;
-    if (setStickyTop !== this.state.isStickyTop || setStickyBottom !== this.state.isStickyBottom) {
-      this.setState({
-        isStickyTop: setStickyTop,
-        isStickyBottom: setStickyBottom
-      }, () => {
-        if (setStickyTop) {
-          this.context.addStickyHeader(this);
-        } else {
-          this.context.removeStickyHeader(this);
-        }
-        if (setStickyBottom) {
-          this.context.addStickyFooter(this);
-        } else {
-          this.context.removeStickyFooter(this);
-        }
+  public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState) {
+    if (this.state.isStickyTop && !prevState.isStickyTop) {
+      this._setSticky(() => {
+        this.context.addStickyHeader(this);
+      });
+    } else if (!this.state.isStickyTop && prevState.isStickyTop) {
+      this._resetSticky(() => {
+        this.context.removeStickyHeader(this);
+      });
+    } else if (this.state.isStickyBottom && !prevState.isStickyBottom) {
+      this._setSticky(() => {
+        this.context.addStickyFooter(this);
+      });
+    } else if (!this.state.isStickyBottom && prevState.isStickyBottom) {
+      this._resetSticky(() => {
+        this.context.removeStickyFooter(this);
       });
     }
-
   }
 
-  public setTopDistance(distance: number) {
+  public setPlaceholderHeight(height: number) {
     this.setState({
-      topDistance: distance
-    });
-  }
-
-  public setBottomDistance(distance: number) {
-    this.setState({
-      bottomDistance: distance
+      placeholderHeight: height
     });
   }
 
   public render() {
-    const { isStickyTop, isStickyBottom, topDistance, bottomDistance } = this.state;
+    const { isStickyTop, isStickyBottom, placeholderHeight } = this.state;
     const { stickyClassName } = this.props;
     const isSticky = isStickyTop || isStickyBottom;
-    const isEdge = navigator && navigator.userAgent.toLowerCase().indexOf('edge') > -1;
-
-    let style: IStyle;
-    if (isSticky) {
-      const top = isStickyTop ?
-        (isEdge ?
-          topDistance :
-          this._offsetTop + topDistance) :
-        (isEdge ?
-          this._scrollContainerHeight - bottomDistance - this.refs.root.clientHeight :
-          this._offsetBottom - this.refs.root.clientHeight - bottomDistance);
-      style = {
-        top: `${top}px`,
-        width: `${this.refs.root.clientWidth}px`,
-        background: this._getBackground()
-      };
-    }
-
-    const placeholderStyle: IStyle = isSticky ?
-      {
-        paddingBottom: `${this.refs.sticky.clientHeight}px`
-      } : {};
 
     return (
       <div ref='root'>
-        <div ref='placeholder' style={ placeholderStyle } />
-        <div ref='sticky' className={ css({
-          [styles.isSticky]: isSticky,
-          [stickyClassName]: isSticky && stickyClassName
-        }) } style={ style }>
-          { this.props.children }
-        </div>
+        <div ref='placeholder' style={ { height: (isSticky ? placeholderHeight : 0) } } />
       </div>
     );
+  }
+
+  @autobind
+  private _onScrollEvent(headerBound: ClientRect, footerBound: ClientRect) {
+    const { top, bottom } = this.refs.root.getBoundingClientRect();
+    const { isStickyTop, isStickyBottom } = this.state;
+
+    this.setState({
+      isStickyTop: (!isStickyTop && top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom),
+      isStickyBottom: (!isStickyBottom && bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top)
+    });
+  }
+  private _setSticky(callback: () => void) {
+    this.content.parentElement.removeChild(this.content);
+    callback();
+  }
+
+  private _resetSticky(callback: () => void) {
+    this.refs.root.appendChild(this.content);
+    setTimeout(() => {
+      this.content.children[0].classList.remove(this.props.stickyClassName);
+    }, 1);
+    callback();
   }
 
   // Gets background of nearest parent element that has a declared background-color attribute

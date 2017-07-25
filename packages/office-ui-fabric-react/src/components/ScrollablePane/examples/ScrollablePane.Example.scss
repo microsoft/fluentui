@@ -8,13 +8,31 @@
   .sticky {
     @include ms-fontColor-neutralDark;
     padding: 10px 20px;
+    font-size: 16px;
+    -webkit-transition: font-size ease 0.3s;
+    -moz-transition: font-size ease 0.3s;
+    -o-transition: font-size ease 0.3s;
+    -ms-transition: font-size ease 0.3s;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: font-size;
   }
 
   .largeSpacing {
-    padding-top: 250px;
+    height: 700px;
+    background: gray;
   }
 
   .spacing {
-    padding-top: 100px;
+    height: 100px;
+  }
+
+  .largeFont {
+    .sticky {
+      font-size: 20px;
+    }
   }
 }

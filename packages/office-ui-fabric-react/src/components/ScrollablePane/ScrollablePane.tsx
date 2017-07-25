@@ -11,6 +11,8 @@ import {
 } from '../../Utilities';
 import { IScrollablePaneProps } from './ScrollablePane.Props';
 import { Sticky } from '../../Sticky';
+import * as stylesImport from './ScrollablePane.scss';
+const styles: any = stylesImport;
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public static childContextTypes = {
@@ -23,8 +25,12 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   public refs: {
     root: HTMLElement;
+    stickyContainer: HTMLElement;
+    stickyAbove: HTMLElement;
+    stickyBelow: HTMLElement;
   };
 
+  private _stickyContainer: HTMLElement;
   private _scrollElement: HTMLElement;
   private _subscribers: Function[];
   private _topHeaderHeight: number;
@@ -52,20 +58,29 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   public componentDidMount() {
-    this._scrollElement = findScrollableParent(this.refs.root);
+    const { stickyAbove, stickyBelow, root, stickyContainer } = this.refs;
+
+    this._scrollElement = findScrollableParent(root);
     if (this._scrollElement) {
-      if (navigator.userAgent.toLowerCase().indexOf('edge') > -1) {
-        this._scrollElement.style.transform = 'translateZ(0px)';
-      }
+      this._stickyContainer = stickyContainer;
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
       this._events.on(window, 'resize', () => {
         setTimeout(() => {
+          this._resizeContainer();
           this._notifySubscribers();
-          this._setDistances(this._stickyAbove, true, false);
-          this._setDistances(this._stickyBelow, false, false);
+          this._setDistances(this._stickyAbove, stickyAbove);
+          this._setDistances(this._stickyBelow, stickyBelow);
         }, 5);
       });
-      this._notifySubscribers();
+      setTimeout(() => {
+        this._resizeContainer();
+        this._stickyContainer.parentElement.removeChild(this._stickyContainer);
+        this._scrollElement.parentElement.insertBefore(this._stickyContainer, this._scrollElement.nextSibling);
+        this._notifySubscribers();
+        this._sortFooters();
+      }, 500);
+    } else {
+      throw new TypeError('Expected ScrollablePane to be within a parent element with data-is-scrollable=true');
     }
   }
 
@@ -80,6 +95,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     return (
       <div className={ css('ms-ScrollablePane', className) }
         ref='root'>
+        <div ref='stickyContainer' className={ styles.stickyContainer }>
+          <div ref='stickyAbove' className={ styles.stickyAbove } />
+          <div ref='stickyBelow' className={ styles.stickyBelow } />
+        </div>
         { this.props.children }
       </div>
     );
@@ -92,9 +111,14 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   @autobind
   public addStickyHeader(sticky: Sticky) {
+    const { stickyAbove } = this.refs;
     if (this._stickyAbove.indexOf(sticky) < 0) {
       this._stickyAbove.push(sticky);
-      this._setDistances(this._stickyAbove, true, true);
+      stickyAbove.appendChild(sticky.content);
+      setTimeout(() => {
+        sticky.content.children[0].classList.add(sticky.props.stickyClassName);
+      }, 1);
+      this._setDistances(this._stickyAbove, stickyAbove);
     }
   }
 
@@ -108,12 +132,14 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   @autobind
   public addStickyFooter(sticky: Sticky) {
+    const { stickyBelow } = this.refs;
     if (this._stickyBelow.indexOf(sticky) < 0) {
       this._stickyBelow.push(sticky);
-      this._stickyBelow.sort((a, b) => {
-        return b.refs.root.offsetTop - a.refs.root.offsetTop;
-      });
-      this._setDistances(this._stickyBelow, false, true);
+      stickyBelow.insertBefore(sticky.content, stickyBelow.firstChild);
+      setTimeout(() => {
+        sticky.content.children[0].classList.add(sticky.props.stickyClassName);
+      }, 1);
+      this._setDistances(this._stickyBelow, stickyBelow);
     }
   }
 
@@ -125,26 +151,37 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     }
   }
 
-  private _setDistances(stickies: Sticky[], headers: boolean, notifyStickies: boolean) {
-    let distance = 0;
-    stickies.forEach((sticky) => {
-      if (headers) {
-        sticky.setTopDistance(distance);
-      } else {
-        sticky.setBottomDistance(distance);
-      }
-      distance += sticky.refs.root.clientHeight;
+  private _resizeContainer() {
+    this._stickyContainer.style.height = this._scrollElement.clientHeight + 'px';
+    this._stickyContainer.style.width = this.refs.root.clientWidth + 'px';
+    this._stickyContainer.style.top = this._scrollElement.offsetTop + 'px';
+  }
+
+  private _setDistances(stickies: Sticky[], element: HTMLElement) {
+    const { stickyAbove, stickyBelow } = this.refs;
+    stickies.forEach((sticky, idx) => {
+      sticky.setPlaceholderHeight(element.children[idx].clientHeight);
     });
-    headers ? this._topHeaderHeight = distance : this._bottomFooterHeight = distance;
-    if (notifyStickies) {
-      this._notifySubscribers();
+    this._topHeaderHeight = stickyAbove.clientHeight;
+    this._bottomFooterHeight = stickyBelow.clientHeight;
+  }
+
+  private _sortFooters(): void {
+    this._stickyBelow.sort((a, b) => {
+      return a.refs.root.offsetTop - b.refs.root.offsetTop;
+    });
+    while (this.refs.stickyBelow.hasChildNodes()) {
+      this.refs.stickyBelow.removeChild(this.refs.stickyBelow.lastChild);
     }
+    this._stickyBelow.forEach((sticky) => {
+      this.refs.stickyBelow.appendChild(sticky.content);
+    });
   }
 
   private _notifySubscribers() {
-    const { top, bottom } = this._scrollElement.getBoundingClientRect();
+    const { stickyAbove, stickyBelow } = this.refs;
     this._subscribers.forEach((handle) => {
-      handle(top, this._topHeaderHeight, this._scrollElement.offsetTop, bottom, this._bottomFooterHeight, this._scrollElement.clientHeight);
+      handle(stickyAbove.getBoundingClientRect(), stickyBelow.getBoundingClientRect());
     });
   }
 }

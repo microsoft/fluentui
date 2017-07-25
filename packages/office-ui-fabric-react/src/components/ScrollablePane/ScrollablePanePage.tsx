@@ -48,7 +48,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         dos={
           <div>
             <ul>
-              <li>Designate the cloest scrollable parent with the attribute data-is-scrollable=true</li>
+              <li>Designate the nearest scrollable parent with the attribute data-is-scrollable=true</li>
               <li>Use Sticky component on block level elements</li>
               <li>Sticky component are ideally section headers and/or footers</li>
             </ul>

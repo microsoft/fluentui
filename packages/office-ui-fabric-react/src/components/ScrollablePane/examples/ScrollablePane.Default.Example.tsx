@@ -12,7 +12,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   public render() {
     let contentAreas: JSX.Element[] = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 6; i++) {
       contentAreas.push(this._createContentArea(i));
     }
 
@@ -46,7 +46,8 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     return (
       <div key={ index }>
         <div className='spacing'></div>
-        <Sticky>
+        <Sticky
+          stickyClassName='largeFont'>
           <div className='sticky' style={ style }>
             Sticky Component #{ index + 1 }
           </div>
