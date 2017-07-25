@@ -40,6 +40,11 @@ export const getStyles = memoizeFunction((
       color: palette.white
     },
 
+    rootExpanded: {
+      backgroundColor: palette.themePrimary,
+      color: palette.white
+    },
+
     rootChecked: {
       backgroundColor: palette.themeDark,
       color: palette.white,

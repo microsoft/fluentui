@@ -12,7 +12,7 @@ import { Selection, SelectionZone, SelectionMode } from '../../utilities/selecti
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePickerProps } from './BasePicker.Props';
+import { IBasePickerProps, ValidationState } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
@@ -41,7 +41,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
-  protected loadingTimer: number;
+  protected loadingTimer: number | undefined;
   protected currentPromise: PromiseLike<any>;
 
   constructor(basePickerProps: P) {
@@ -81,6 +81,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   public dismissSuggestions() {
+    // Select the first suggestion if one is available when user leaves.
+    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+      this.addItemByIndex(0);
+    }
     this.setState({ suggestionsVisible: false });
   }
 
@@ -105,8 +109,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         className={ css(
           'ms-BasePicker',
           className ? className : '') }
-        onKeyDown={ this.onKeyDown }
-        onBlur={ this.onBlur } >
+        onKeyDown={ this.onKeyDown } >
         <FocusZone
           ref={ this._resolveRef('focusZone') }
           direction={ FocusZoneDirection.bidirectional }
@@ -138,7 +141,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   }
 
-  protected renderSuggestions(): JSX.Element {
+  protected renderSuggestions(): JSX.Element | null {
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
       <Callout
@@ -166,7 +169,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
-    let { onRenderItem } = this.props;
+    let { disabled, removeButtonAriaLabel } = this.props;
+    let onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
+
     let { items } = this.state;
     return items.map((item: any, index: number) => onRenderItem({
       item,
@@ -174,7 +179,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       key: item.key ? item.key : index,
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
-      onItemChange: this.onItemChange
+      disabled: disabled,
+      onItemChange: this.onItemChange,
+      removeButtonAriaLabel: removeButtonAriaLabel
     }));
   }
 
@@ -210,7 +217,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onEmptyInputFocus() {
-    let suggestions: T[] | PromiseLike<T[]> = this.props.onEmptyInputFocus(this.state.items);
+    let onEmptyInputFocus = this.props.onEmptyInputFocus as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+    let suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.state.items);
     this.updateSuggestionsList(suggestions);
   }
 
@@ -274,7 +282,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]) {
     this.suggestionStore.updateSuggestions(suggestions, 0);
-    let itemValue: string = undefined;
+    let itemValue: string | undefined = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
       itemValue = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
@@ -303,17 +311,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  /**
-   * Select the first suggestion if one is available when user leaves
-   * the input area.
-   */
-  @autobind
-  protected onBlur() {
-    if (this.suggestionStore.hasSelectedSuggestion()) {
-      this.addItemByIndex(0);
-    }
-  }
-
   @autobind
   protected onInputChange(value: string) {
     this.updateValue(value);
@@ -326,6 +323,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onSuggestionClick(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
     this.addItemByIndex(index);
+    this.setState({ suggestionsVisible: false });
   }
 
   @autobind
@@ -360,7 +358,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
-          this.dismissSuggestions();
+          this.setState({ suggestionsVisible: false });
           ev.preventDefault();
           ev.stopPropagation();
         }
@@ -372,6 +370,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
+        } else {
+          this._onValidateInput();
         }
 
         break;
@@ -387,6 +387,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           }
           this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
           this.forceUpdate();
+        } else {
+          this.onBackspace(ev);
         }
         break;
 
@@ -514,6 +516,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return false;
   }
 
+  private _onValidateInput() {
+    if (this.props.onValidateInput && this.props.onValidateInput(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
+      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
+      this.suggestionStore.createGenericSuggestion(itemToConvert);
+      this.completeSuggestion();
+    }
+  }
+
   private _getTextFromItem(item: T, currentValue?: string): string {
     if (this.props.getTextFromItem) {
       return this.props.getTextFromItem(item, currentValue);
@@ -536,8 +546,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       <div>
         <div ref={ this._resolveRef('root') }
           className={ css('ms-BasePicker', className ? className : '') }
-          onKeyDown={ this.onKeyDown }
-          onBlur={ this.onBlur } >
+          onKeyDown={ this.onKeyDown } >
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>

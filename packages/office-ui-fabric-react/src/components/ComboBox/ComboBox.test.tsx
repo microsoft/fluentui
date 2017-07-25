@@ -103,6 +103,7 @@ describe('ComboBox', () => {
     let wrapper = mount(
       <ComboBox
         label='testgroup'
+        options={ [] }
         value='1'
       />);
     let comboBoxRoot = wrapper.find('.ms-ComboBox');
