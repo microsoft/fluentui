@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Jul 2017 10:24:31 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2017 10:22:35 GMT and should not be manually modified.
+
+## 4.23.0
+Tue, 25 Jul 2017 10:22:35 GMT
+
+### Minor changes
+
+- Button: Support expanded style state triggered by opened menu
+
+### Patches
+
+- Checkbox: Fixed label font size
+- TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font.
+- ResizeGroup: Prevent flashing when passing in new props
+- ResizeGroup: Don't show a scrollbar while measuring the hidden div
+- Textfield: Fixed high contrast border and textarea font family
+- Textfield: Removed icon pointer events so that any click is click in textfield
 
 ## 4.22.0
 Mon, 24 Jul 2017 10:24:30 GMT
