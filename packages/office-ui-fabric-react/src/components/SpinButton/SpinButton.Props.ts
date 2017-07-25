@@ -130,12 +130,22 @@ export interface ISpinButtonProps {
 export interface ISpinButtonStyles {
   container: IStyle;
   labelWrapper: IStyle;
+  labelWrapperStart: IStyle;
+  labelWrapperEnd: IStyle;
+  labelWrapperTop: IStyle;
+  labelWrapperBottom: IStyle;
   icon: IStyle;
   label: IStyle;
   root: IStyle;
   rootTopBottom: IStyle;
   input: IStyle;
+  inputHovered?: IStyle;
+  inputFocused?: IStyle;
+  inputTextSelected?: IStyle;
+  inputDisabled?: IStyle;
   arrowBox: IStyle;
+  arrowBoxHovered?: IStyle;
+  arrowBoxDisabled?: IStyle;
   arrowButton: IStyle;
   arrowButtonHovered: IStyle;
   arrowButtonActive: IStyle;

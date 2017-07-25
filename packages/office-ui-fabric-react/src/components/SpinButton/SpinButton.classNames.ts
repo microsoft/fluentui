@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
+import { mergeStyles, IStyle } from '../../Styling';
 import { ISpinButtonStyles } from './SpinButton.Props';
 import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
@@ -24,53 +24,70 @@ export const getClassNames = memoizeFunction((
 ): ISpinButtonClassNames => {
   return {
     container: mergeStyles(
-
+      styles.container
     ) as string,
     labelWrapper: mergeStyles(
+      styles.labelWrapper,
+      getStyleForLabelBasedOnPosition(labelPosition, styles)
     ) as string,
     icon: mergeStyles(
-
+      styles.icon,
     ) as string,
     label: mergeStyles(
-
+      styles.label
     ) as string,
     root: mergeStyles(
-
+      styles.root,
+      getStyleForRootBasedOnPosition(labelPosition, styles)
     ) as string,
     input: mergeStyles(
-      disabled
+      styles.input,
+      disabled && styles.inputDisabled,
     ) as string,
     arrowBox: mergeStyles(
-
+      styles.arrowBox,
+      disabled && styles.arrowBoxDisabled
     ) as string,
     upButton: mergeStyles(
-      'ms-UpButton'
+      'ms-UpButton',
+      styles.arrowButton,
+      disabled && styles.arrowButtonDisabled
     ) as string,
     downButton: mergeStyles(
-      'ms-DownButton'
+      'ms-DownButton',
+      styles.arrowButton,
+      disabled && styles.arrowButtonDisabled
     ) as string,
   };
 });
 
 /**
- * Returns the class name corresponding to the label position
+ * Returns the Style corresponding to the label position
  */
-function getClassNameForLabelPosition(labelPosition: Position): string {
-  let className: string = '';
-
+function getStyleForLabelBasedOnPosition(labelPosition: Position, styles: ISpinButtonStyles): IStyle {
   switch (labelPosition) {
     case Position.start:
-      className = styles.start;
-      break;
+      return styles.labelWrapperStart;
     case Position.end:
-      className = styles.end;
-      break;
+      return styles.labelWrapperEnd;
     case Position.top:
-      className = styles.top;
-      break;
+      return styles.labelWrapperTop;
     case Position.bottom:
-      className = styles.bottom;
+      return styles.labelWrapperBottom;
   }
+}
 
-  return className;
+/**
+ * Returns the Style corresponding to the label position
+ */
+function getStyleForRootBasedOnPosition(labelPosition: Position, styles: ISpinButtonStyles): IStyle {
+  switch (labelPosition) {
+    case Position.top:
+    case Position.bottom:
+      return styles.rootTopBottom;
+    default:
+      return {
+
+      };
+  }
 }

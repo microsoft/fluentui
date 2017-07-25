@@ -4,7 +4,6 @@ import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   BaseComponent,
-  css,
   getId,
   KeyCodes,
   autobind,
@@ -14,11 +13,10 @@ import { ThemeSettingName } from '../../Styling';
 import {
   ISpinButton,
   ISpinButtonProps,
-  ISpinButtonStyles
 } from './SpinButton.Props';
 import { Position } from '../../utilities/positioning';
 import { getStyles } from './SpinButton.styles';
-import { ISpinButtonClassNames, getClassNames } from './SpinButton.classNames';
+import { getClassNames } from './SpinButton.classNames';
 
 export enum KeyboardSpinDirection {
   down = -1,
@@ -67,11 +65,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _initialStepDelay = 400;
   private _stepDelay = 75;
   private _formattedValidUnitOptions: string[] = [];
-  private _arrowButtonStyle = {
-    icon: {
-      fontSize: '6px',
-    }
-  };
 
   constructor(props: ISpinButtonProps) {
     super(props);
@@ -188,8 +181,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className={ classNames.arrowBox }>
             <IconButton
-              className={ classNames.upButton }
-              styles={ this._arrowButtonStyle }
+              styles={
+                {
+                  root: classNames.upButton,
+                  icon: {
+                    fontSize: '6px',
+                  }
+                } }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               aria-hidden='true'
@@ -199,8 +197,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              className={ classNames.downButton }
-              styles={ this._arrowButtonStyle }
+              styles={
+                {
+                  root: classNames.downButton,
+                  icon: {
+                    fontSize: '6px',
+                  }
+                } }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               aria-hidden='true'
