@@ -33,8 +33,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   private _stickyContainer: HTMLElement;
   private _scrollElement: HTMLElement;
   private _subscribers: Function[];
-  private _topHeaderHeight: number;
-  private _bottomFooterHeight: number;
   private _stickyAbove: Sticky[];
   private _stickyBelow: Sticky[];
 
@@ -51,8 +49,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   constructor(props: IScrollablePaneProps) {
     super(props);
     this._subscribers = [];
-    this._topHeaderHeight = 0;
-    this._bottomFooterHeight = 0;
     this._stickyAbove = [];
     this._stickyBelow = [];
   }
@@ -162,8 +158,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     stickies.forEach((sticky, idx) => {
       sticky.setPlaceholderHeight(element.children[idx].clientHeight);
     });
-    this._topHeaderHeight = stickyAbove.clientHeight;
-    this._bottomFooterHeight = stickyBelow.clientHeight;
   }
 
   private _sortFooters(): void {
