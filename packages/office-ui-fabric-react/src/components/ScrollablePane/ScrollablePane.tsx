@@ -30,7 +30,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     stickyBelow: HTMLElement;
   };
 
-  private _stickyContainer: HTMLElement;
   private _scrollElement: HTMLElement;
   private _subscribers: Function[];
   private _stickyAbove: Sticky[];
@@ -54,24 +53,16 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   public componentDidMount() {
-    const { stickyAbove, stickyBelow, root, stickyContainer } = this.refs;
+    const { root, stickyContainer } = this.refs;
 
     this._scrollElement = findScrollableParent(root);
     if (this._scrollElement) {
-      this._stickyContainer = stickyContainer;
       this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
-      this._events.on(window, 'resize', () => {
-        setTimeout(() => {
-          this._resizeContainer();
-          this._notifySubscribers();
-          this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
-          this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
-        }, 5);
-      });
+      this._events.on(window, 'resize', this._onWindowResize);
       setTimeout(() => {
         this._resizeContainer();
-        this._stickyContainer.parentElement.removeChild(this._stickyContainer);
-        this._scrollElement.parentElement.insertBefore(this._stickyContainer, this._scrollElement.nextSibling);
+        stickyContainer.parentElement.removeChild(stickyContainer);
+        this._scrollElement.parentElement.insertBefore(stickyContainer, this._scrollElement.nextSibling);
         this._notifySubscribers();
         this._sortFooters();
       }, 500);
@@ -147,10 +138,21 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     }
   }
 
+  private _onWindowResize() {
+    const { stickyAbove, stickyBelow } = this.refs;
+    setTimeout(() => {
+      this._resizeContainer();
+      this._notifySubscribers();
+      this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
+      this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
+    }, 5);
+  }
+
   private _resizeContainer() {
-    this._stickyContainer.style.height = this._scrollElement.clientHeight + 'px';
-    this._stickyContainer.style.width = this.refs.root.clientWidth + 'px';
-    this._stickyContainer.style.top = this._scrollElement.offsetTop + 'px';
+    const { stickyContainer } = this.refs;
+    stickyContainer.style.height = this._scrollElement.clientHeight + 'px';
+    stickyContainer.style.width = this.refs.root.clientWidth + 'px';
+    stickyContainer.style.top = this._scrollElement.offsetTop + 'px';
   }
 
   private _setPlaceholderHeights(stickies: Sticky[], element: HTMLElement) {
