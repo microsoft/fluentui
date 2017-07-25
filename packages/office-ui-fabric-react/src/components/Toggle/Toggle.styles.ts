@@ -120,5 +120,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(styles, customStyles);
+  return mergeStyleSets(styles, customStyles) as IToggleStyles;
 });

@@ -25,6 +25,7 @@ const DIRECTIONAL_KEY_CODES = [
 ];
 
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: () => void;
   theme?: ITheme;
 }
 export interface IFabricState {

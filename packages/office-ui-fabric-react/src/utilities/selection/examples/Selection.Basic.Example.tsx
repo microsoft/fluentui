@@ -17,8 +17,8 @@ import './Selection.Example.scss';
 const ITEM_COUNT = 100;
 
 export interface ISelectionBasicExampleState {
-  items?: any[];
-  selection?: ISelection;
+  items: any[];
+  selection: ISelection;
   selectionMode?: SelectionMode;
   canSelect?: string;
 }
@@ -190,7 +190,11 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
 export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
   public render() {
     let { item, itemIndex, selection, selectionMode } = this.props;
-    let isSelected = selection.isIndexSelected(itemIndex);
+    let isSelected = false;
+
+    if (selection && itemIndex) {
+      selection.isIndexSelected(itemIndex);
+    }
 
     return (
       <div className='ms-SelectionItemExample' data-selection-index={ itemIndex }>

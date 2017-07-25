@@ -9,6 +9,7 @@ import { StoreSet } from './StoreSet';
 let _changedComponents: ConnectedHost[];
 
 export interface IConnectedHostProps {
+  componentRef?: () => void;
   componentProps: any;
   storesToSubscribe: IStoreKey<any>[];
   component: any;

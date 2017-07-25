@@ -103,6 +103,7 @@ describe('ComboBox', () => {
     let wrapper = mount(
       <ComboBox
         label='testgroup'
+        options={ [] }
         value='1'
       />);
     let comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -136,7 +137,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ true }
+        autoComplete='on'
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -154,7 +155,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ true }
+        autoComplete='on'
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -172,7 +173,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ false }
+        autoComplete='off'
         allowFreeform={ true }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -190,7 +191,7 @@ describe('ComboBox', () => {
         label='testgroup'
         defaultSelectedKey='1'
         options={ DEFAULT_OPTIONS2 }
-        autoComplete={ false }
+        autoComplete='off'
         allowFreeform={ false }
       />);
     comboBoxRoot = wrapper.find('.ms-ComboBox');

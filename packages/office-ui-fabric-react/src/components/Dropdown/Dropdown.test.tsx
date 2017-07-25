@@ -62,7 +62,7 @@ describe('Dropdown', () => {
       />,
       container);
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
     expect(titleElement.textContent).equals('');
   });
@@ -78,7 +78,7 @@ describe('Dropdown', () => {
       />,
       container);
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
     expect(titleElement.textContent).equals('1');
   });
@@ -94,14 +94,14 @@ describe('Dropdown', () => {
       />,
       container);
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
     expect(titleElement.textContent).equals('1');
   });
 
   it('Can change items in uncontrolled case', () => {
     let container = document.createElement('div');
-    let dropdownRoot;
+    let dropdownRoot: HTMLElement | undefined;
 
     document.body.appendChild(container);
 
@@ -117,11 +117,11 @@ describe('Dropdown', () => {
 
       ReactTestUtils.Simulate.click(dropdownRoot);
 
-      let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]');
+      let secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
       ReactTestUtils.Simulate.click(secondItemElement);
     }
     finally {
-      expect(dropdownRoot.querySelector('.ms-Dropdown-title').textContent).equals('2');
+      expect(dropdownRoot!.querySelector('.ms-Dropdown-title')!.textContent).equals('2');
     }
   });
 
@@ -137,7 +137,7 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
 
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
     expect(titleElement.textContent).equals('1');
   });
 
@@ -153,7 +153,7 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
 
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
     expect(titleElement.textContent).equals('1');
   });
 
@@ -169,7 +169,7 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
 
-    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
     expect(titleElement.textContent).equals('6');
   });
 
@@ -188,13 +188,13 @@ describe('Dropdown', () => {
     dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
-    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
     expect(titleElement.textContent).equals('1');
 
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
     ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
-    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title');
+    titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
     expect(titleElement.textContent).equals('4');
   });
 });
