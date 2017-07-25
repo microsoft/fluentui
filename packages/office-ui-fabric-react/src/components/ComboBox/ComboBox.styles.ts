@@ -123,22 +123,24 @@ export const getOptionStyles = memoizeFunction((
       overflowWrap: 'break-word',
       margin: '1px'
     },
-    header: {
-      fontSize: fonts.medium,
-      fontWeight: FontWeights.semibold,
-      color: semanticColors.menuHeader,
-      background: 'none',
-      border: 'none',
-      height: ComboBoxOptionHeight,
-      lineHeight: ComboBoxOptionHeight,
-      cursor: 'default',
-      padding: '0px 16px',
-      userSelect: 'none',
-      textAlign: 'left'
-    },
+    header: [
+      fonts.medium,
+      {
+        fontWeight: FontWeights.semibold,
+        color: semanticColors.menuHeader,
+        background: 'none',
+        border: 'none',
+        height: ComboBoxOptionHeight,
+        lineHeight: ComboBoxOptionHeight,
+        cursor: 'default',
+        padding: '0px 16px',
+        userSelect: 'none',
+        textAlign: 'left'
+      }
+    ],
     divider: {
-      height: '1px',
-      backgroundColor: semanticColors.bodyDivider
+      border: '1px solid',
+      borderColor: semanticColors.bodyDivider
     },
   };
 
@@ -159,33 +161,35 @@ export const getStyles = memoizeFunction((
     label: {
 
     },
-    root: {
-      boxShadow: 'none',
-      margin: '0 0 10px 0',
-      padding: '0',
-      paddingRight: ComboxBoxCaretDownWidth,
-      font: fonts.medium,
-      color: semanticColors.bodyText,
-      position: 'relative',
-      outline: '0',
-      userSelect: 'none',
-      background: semanticColors.bodyBackground,
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: palette.neutralTertiaryAlt,
-      cursor: 'text',
-      display: 'block',
-      height: ComboBoxHeight,
-      lineHeight: ComboBoxLineHeight,
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      boxSizing: 'content-box',
-      ' .ms-Label': {
-        display: 'inline-block',
-        marginBottom: '8px',
+    root: [
+      fonts.medium,
+      {
+        boxShadow: 'none',
+        margin: '0 0 10px 0',
+        padding: '0',
+        paddingRight: ComboxBoxCaretDownWidth,
+        color: semanticColors.bodyText,
+        position: 'relative',
+        outline: '0',
+        userSelect: 'none',
+        background: semanticColors.bodyBackground,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: palette.neutralTertiaryAlt,
+        cursor: 'text',
+        display: 'block',
+        height: ComboBoxHeight,
+        lineHeight: ComboBoxLineHeight,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
+        boxSizing: 'content-box',
+        ' .ms-Label': {
+          display: 'inline-block',
+          marginBottom: '8px',
+        }
       }
-    },
+    ],
     rootHoveredOrFocused: {
       borderColor: semanticColors.inputFocusBorderAlt,
       [MS_HIGHCONTRAST_ACTIVE]: {
@@ -220,6 +224,7 @@ export const getStyles = memoizeFunction((
       width: ComboxBoxCaretDownWidth,
       textAlign: 'center',
       cursor: 'default',
+      backgroundColor: 'red',
       [MS_HIGHCONTRAST_ACTIVE]: {
         backgroundColor: 'ButtonFace',
         borderColor: 'ButtonText',

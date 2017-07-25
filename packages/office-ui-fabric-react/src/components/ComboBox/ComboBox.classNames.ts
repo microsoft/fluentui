@@ -19,8 +19,6 @@ export interface IComboBoxOptionClassNames {
   header: string;
   divider: string;
   option: string;
-  optionSelected: string;
-  optionDisabled: string;
   optionText: string;
 }
 
@@ -89,27 +87,31 @@ export const getClassNames = memoizeFunction((
 
 export const getComboBoxOptionClassNames = memoizeFunction((
   styles: IComboBoxOptionStyles,
+  optionIsSelected: boolean,
+  disabled: boolean,
 ): IComboBoxOptionClassNames => {
   return {
     option: mergeStyles(
       'ms-ComboBox-option',
       styles.option,
-      {
-        ':hover': styles.optionHovered,
-        ':focus': styles.optionFocused,
-        ':active': styles.optionActive
-      },
-    ) as string,
-    optionSelected: mergeStyles(
-      'is-selected',
-      styles.optionSelected,
-      {
-        ':hover': styles.optionSelectedHovered
-      },
-    ) as string,
-    optionDisabled: mergeStyles(
-      'is-disabled',
-      styles.optionDisabled,
+      !disabled && [
+        {
+          ':hover': styles.optionHovered,
+          ':focus': styles.optionFocused,
+          ':active': styles.optionActive
+        },
+        optionIsSelected && [
+          'is-selected',
+          styles.optionSelected,
+          {
+            ':hover': styles.optionSelectedHovered
+          }
+        ]
+      ],
+      disabled && [
+        'is-disabled',
+        styles.optionDisabled,
+      ]
     ) as string,
     header: mergeStyles(
       'ms-ComboBox-header',

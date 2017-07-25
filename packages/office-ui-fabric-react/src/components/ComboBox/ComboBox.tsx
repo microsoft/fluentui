@@ -837,10 +837,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }
-        className={ mergeStyles(
-          optionClassNames.option,
-          isSelected && optionClassNames.optionSelected
-        ) as string }
+        className={ optionClassNames.option }
         onClick={ () => this._onItemClick(item.index) }
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
@@ -1250,8 +1247,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const customStylesForAllOptions = (customStyles != null) ? customStyles.optionDefaultStyles : null;
     const { styles: customStylesForCurrentOption } = item;
 
+    const isSelected: boolean = this._isOptionSelected(item.index);
+
     return getComboBoxOptionClassNames(
-      getOptionStyles(this.props.theme, customStylesForAllOptions, customStylesForCurrentOption)
+      getOptionStyles(this.props.theme, customStylesForAllOptions, customStylesForCurrentOption),
+      isSelected,
+      !!this.props.disabled
     );
   }
 }
