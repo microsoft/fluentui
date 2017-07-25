@@ -14,13 +14,13 @@ export class Selection implements ISelection {
 
   private _changeEventSuppressionCount: number;
   private _items: IObjectWithKey[];
-  private _selectedItems: IObjectWithKey[];
+  private _selectedItems: IObjectWithKey[] | null;
   private _isAllSelected: boolean;
   private _exemptedIndices: { [index: string]: boolean };
   private _exemptedCount: number;
   private _keyToIndexMap: { [key: string]: number };
   private _anchoredIndex: number;
-  private _onSelectionChanged: () => void;
+  private _onSelectionChanged: (() => void) | undefined;
   private _hasChanged: boolean;
   private _unselectableIndices: { [index: string]: boolean };
   private _unselectableCount: number;
@@ -31,7 +31,7 @@ export class Selection implements ISelection {
       getKey,
       canSelectItem = (item: IObjectWithKey) => { return true; }
     } = options;
-    this.getKey = getKey || ((item: IObjectWithKey, index?: number) => (item ? item.key : String(index)));
+    this.getKey = getKey || ((item: IObjectWithKey, index?: number) => ((item && item.key) ? item.key : String(index)));
 
     this._changeEventSuppressionCount = 0;
     this._exemptedCount = 0;

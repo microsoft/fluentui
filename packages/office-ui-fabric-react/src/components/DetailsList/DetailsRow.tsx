@@ -29,9 +29,11 @@ import { AnimationClassNames } from '../../Styling';
 import * as checkStyles from './DetailsRowCheck.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columns: IColumn[];
+  compact?: boolean;
   selectionMode: SelectionMode;
   selection: ISelection;
   eventsToRegister?: { eventName: string, callback: (item?: any, index?: number, event?: any) => void }[];
@@ -80,7 +82,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
-  constructor(props) {
+  constructor(props: IDetailsRowProps) {
     super(props);
 
     this.state = {

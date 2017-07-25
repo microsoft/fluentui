@@ -182,7 +182,7 @@ export function getRelativePositions(
   hostElement: HTMLElement,
   calloutElement: HTMLElement): IPositionInfo {
   // Temporary as isBeakVisible is deprecated.
-  let beakWidth: number = (props.linkType ? props.linkType === CalloutLinkType.beak : props.isBeakVisible) ? props.beakWidth : 0;
+  let beakWidth: number = (props.linkType ? props.linkType === CalloutLinkType.beak : props.isBeakVisible) ? (props.beakWidth || 0) : 0;
   let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   let boundingRect: Rectangle = props.bounds ?
@@ -195,7 +195,7 @@ export function getRelativePositions(
     props.targetPoint,
     props.useTargetPoint);
   let positionData: PositionData = positioningFunctions._getPositionData(
-    props.directionalHint,
+    props.directionalHint as DirectionalHint,
     targetRect,
     boundingRect,
     props.coverTarget);
@@ -292,7 +292,7 @@ export module positioningFunctions {
       let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
       for (let direction of outOfBounds) {
-        targetRectangle[RectangleEdge[direction]] = bounds[RectangleEdge[direction]];
+        (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
       }
     }
 
@@ -306,7 +306,8 @@ export module positioningFunctions {
       if (targetPoint) {
         targetRectangle = new Rectangle(targetPoint.x, targetPoint.x, targetPoint.y, targetPoint.y);
       } else {
-        targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+        let event = ev as MouseEvent;
+        targetRectangle = new Rectangle(event.clientX, event.clientX, event.clientY, event.clientY);
       }
     } else {
       if (!targetElement) {
@@ -324,7 +325,7 @@ export module positioningFunctions {
       let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
 
       for (let direction of outOfBounds) {
-        targetRectangle[RectangleEdge[direction]] = bounds[RectangleEdge[direction]];
+        (targetRectangle as any)[RectangleEdge[direction]] = (bounds as any)[RectangleEdge[direction]];
       }
     }
 
@@ -402,7 +403,7 @@ export module positioningFunctions {
     for (let direction of outOfBounds) {
       callout.calloutRectangle = _alignEdgeToCoordinate(
         callout.calloutRectangle,
-        boundingRectangle[RectangleEdge[direction]],
+        (boundingRectangle as any)[RectangleEdge[direction]],
         direction);
       let adjustedPercent: number = _recalculateMatchingPercents(
         callout.calloutRectangle,
@@ -437,7 +438,7 @@ export module positioningFunctions {
 
   export function _finalizeBeakPosition(beakRectangle: Rectangle, callout: ICallout, estimatedTargetPoint: IPoint, border: number): Rectangle {
     let beakPixelSize: number = _calculateActualBeakWidthInPixels(beakRectangle.width) / 2;
-    let innerRect: Rectangle = null;
+    let innerRect: Rectangle | null = null;
     let beakPoint: IPoint = { x: beakRectangle.width / 2, y: beakRectangle.width / 2 };
 
     if (callout.calloutEdge === RectangleEdge.bottom || callout.calloutEdge === RectangleEdge.top) {
@@ -685,7 +686,7 @@ export module positioningFunctions {
         } else {
           x = point.x;
         }
-        return { x: x, y: rect[RectangleEdge[edge]] };
+        return { x: x, y: (rect as any)[RectangleEdge[edge]] };
       case RectangleEdge.left:
       case RectangleEdge.right:
         let y: number;
@@ -697,7 +698,7 @@ export module positioningFunctions {
         } else {
           y = point.y;
         }
-        return { x: rect[RectangleEdge[edge]], y: y };
+        return { x: (rect as any)[RectangleEdge[edge]], y: y };
     }
   }
 
@@ -709,11 +710,11 @@ export module positioningFunctions {
   }
 
   export function _getBorderSize(element: HTMLElement): number {
-    let styles: CSSStyleDeclaration = getComputedStyle(element, null);
-    let topBorder: number = parseFloat(styles.borderTopWidth);
-    let bottomBorder: number = parseFloat(styles.borderBottomWidth);
-    let leftBorder: number = parseFloat(styles.borderLeftWidth);
-    let rightBorder: number = parseFloat(styles.borderRightWidth);
+    let styles: CSSStyleDeclaration = getComputedStyle(element, undefined);
+    let topBorder: number = parseFloat(styles.borderTopWidth || '');
+    let bottomBorder: number = parseFloat(styles.borderBottomWidth || '');
+    let leftBorder: number = parseFloat(styles.borderLeftWidth || '');
+    let rightBorder: number = parseFloat(styles.borderRightWidth || '');
 
     // If any of the borders are NaN default to 0
     if (isNaN(topBorder) || isNaN(bottomBorder) || isNaN(leftBorder) || isNaN(rightBorder)) {

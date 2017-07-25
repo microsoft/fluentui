@@ -15,7 +15,9 @@ import {
   autobind,
   css,
   findIndex,
-  getId
+  getId,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 import * as stylesImport from './Dropdown.scss';
@@ -35,7 +37,7 @@ export interface IDropdownState {
 export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownState> {
 
   public static defaultProps = {
-    options: []
+    options: [] as any[]
   };
 
   private static Option: string = 'option';
@@ -52,7 +54,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    props.options.forEach((option) => {
+    props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
       }
@@ -112,6 +114,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
+    let divProps = getNativeProps(this.props, divProperties);
 
     // Remove this deprecation workaround at 1.0.0
     if (isDisabled !== undefined) {
@@ -127,15 +130,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           data-is-focusable={ !disabled }
           ref={ this._resolveRef('_dropDown') }
           id={ id }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled,
-            'is-required ': required,
-          }) }
           tabIndex={ disabled ? -1 : 0 }
-          onKeyDown={ this._onDropdownKeyDown }
-          onKeyUp={ this._onDropdownKeyUp }
-          onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
@@ -144,6 +139,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
+          { ...divProps }
+          className={ css('ms-Dropdown', styles.root, className, {
+            'is-open': isOpen,
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
+          }) }
+          onBlur={ this._onDropdownBlur }
+          onKeyDown={ this._onDropdownKeyDown }
+          onKeyUp={ this._onDropdownKeyUp }
+          onClick={ this._onDropdownClick }
         >
           <span
             id={ id + '-option' }
@@ -255,7 +260,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render placeHolder text in dropdown input
   @autobind
-  private _onRenderPlaceHolder(props): JSX.Element {
+  private _onRenderPlaceHolder(props: IDropdownProps): JSX.Element {
     if (!props.placeHolder) {
       return null;
     }
@@ -325,7 +330,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         onKeyDown={ this._onZoneKeyDown }
         role='listbox'
       >
-        { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+        { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
     );
   }
@@ -403,7 +408,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
-  private _onItemClick(index) {
+  private _onItemClick(index: number) {
     this.setSelectedIndex(index);
     this.setState({
       isOpen: false
@@ -421,7 +426,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onDropdownBlur(ev: React.FocusEvent<HTMLDivElement>) {
+    if (this.state.isOpen) {
+      // Do not onBlur when the callout is opened
+      return;
+    }
+  }
+
+  @autobind
+  private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLDivElement>) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(ev);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
     let newIndex: number;
     const { selectedIndex } = this.state;
 
@@ -477,7 +496,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLDivElement>) {
+    if (this.props.onKeyUp) {
+      this.props.onKeyUp(ev);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -522,7 +547,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   @autobind
-  private _onDropdownClick() {
+  private _onDropdownClick(ev: React.MouseEvent<HTMLDivElement>) {
+    if (this.props.onClick) {
+      this.props.onClick(ev);
+      if (ev.preventDefault) {
+        return;
+      }
+    }
     let { disabled, isDisabled } = this.props;
     let { isOpen } = this.state;
 

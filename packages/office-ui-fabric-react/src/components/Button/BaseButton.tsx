@@ -31,7 +31,7 @@ export interface IBaseButtonState {
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
 
   private get _isSplitButton(): boolean {
-    return (!!this.props.menuProps && !!this.props.onClick);
+    return (!!this.props.menuProps && !!this.props.onClick) && this.props.split === true;
   }
 
   private get _isExpanded(): boolean {
@@ -41,7 +41,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   public static defaultProps = {
     baseClassName: 'ms-Button',
     classNames: {},
-    styles: {}
+    styles: {},
+    split: false
   };
 
   private _buttonElement: HTMLElement;
@@ -52,6 +53,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
+
+    this._warnConditionallyRequiredProps(
+      ['menuProps', 'onClick'],
+      'split',
+      this.props.split
+    );
 
     this._warnDeprecations({
       rootProps: null,
@@ -113,8 +120,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaDescribedBy = _ariaDescriptionId;
     } else if (description) {
       ariaDescribedBy = _descriptionId;
-    } else if (nativeProps['aria-describedby']) {
-      ariaDescribedBy = nativeProps['aria-describedby'];
+    } else if ((nativeProps as any)['aria-describedby']) {
+      ariaDescribedBy = (nativeProps as any)['aria-describedby'];
     } else {
       ariaDescribedBy = null;
     }
@@ -131,7 +138,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'data-is-focusable': (this.props['data-is-focusable'] === false || disabled) ? false : true,
+        'data-is-focusable': ((this.props as any)['data-is-focusable'] === false || disabled) ? false : true,
         'aria-pressed': checked
       }
     );
@@ -182,7 +189,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       tag,
       buttonProps,
       React.createElement(
-        'div',
+        'div' as any,
         { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
         onRenderText(props, this._onRenderText),
@@ -358,7 +365,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
       >
-        <span aria-hidden={ true }>
+        <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
           { this._onRenderSplitButtonMenuButton() }
         </span>

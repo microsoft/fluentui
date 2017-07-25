@@ -1,4 +1,7 @@
 // @public
+export function assertNever(x: never): never;
+
+// @public
 export function assign(target: any, ...args: any[]): any;
 
 // WARNING: dispose has incomplete type information
@@ -47,6 +50,7 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   protected readonly _events: EventGroup;
   protected _resolveRef(refName: string): (ref: any) => any;
   protected _shouldUpdateComponentRef: boolean;
+  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void;
   public static onError: ((errorMessage?: string, ex?: any) => void);
 }
 
@@ -224,6 +228,8 @@ interface IChangeEventCallback {
 
 // @public
 interface ICustomizerProps {
+  // (undocumented)
+  componentRef?: () => void;
   // (undocumented)
   settings: ISettings;
 }
@@ -460,6 +466,13 @@ export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
 export function warn(message: string): void;
+
+// @public
+export function warnConditionallyRequiredProps < P >(componentName: string,
+  props: P,
+  requiredProps: string[],
+  conditionalPropName: string,
+  condition: boolean): void;
 
 // @public
 export function warnDeprecations < P >(componentName: string,

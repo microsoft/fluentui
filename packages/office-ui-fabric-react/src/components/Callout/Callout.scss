@@ -25,7 +25,6 @@ $Callout-shadow-spread-margin: 5px;
 .root {
   @include ms-drop-shadow(0,0, #{ $Callout-shadow-spread-margin }, 0px);
   position: absolute;
-  border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
 
   @media screen and (-ms-high-contrast: active) {

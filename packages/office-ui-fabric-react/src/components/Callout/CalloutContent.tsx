@@ -141,7 +141,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     };
 
     let directionalClassName = (positions && positions.directionalClassName)
-      ? AnimationClassNames[positions.directionalClassName]
+      ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
 
     let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset;
