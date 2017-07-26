@@ -150,7 +150,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     if (item.onRender) { return item.onRender(item); }
 
-    const commandButtonProps = assign({}, item, {
+    const commandButtonProps: ICommandBarItemProps = assign({}, item, {
       styles: assign({}, item.buttonStyles, this.props.buttonStyles),
       className: css(styles.commandButton, item.className),
       text: !item.iconOnly ? item.name : '',
@@ -169,7 +169,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onRenderButton(item) {
-    return <CommandButton {...item} />;
+  private _onRenderButton(item: ICommandBarItemProps) {
+    return <CommandButton {...item as any} />;
   }
 }

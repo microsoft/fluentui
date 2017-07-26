@@ -11,6 +11,11 @@ export interface IOverflowSetProps extends React.Props<OverflowSet> {
   componentRef?: (ref?: IOverflowSet) => void;
 
   /**
+   * Class name
+   */
+  className?: string;
+
+  /**
    * An array of items to be rendered by your onRenderItem function in the primary content area
   */
   items?: IOverflowSetItemProps[];
