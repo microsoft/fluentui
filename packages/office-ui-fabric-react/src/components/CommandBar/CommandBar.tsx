@@ -12,12 +12,6 @@ import { CommandButton } from '../../Button';
 import { OverflowSet } from '../../OverflowSet';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost } from '../../Tooltip';
-import {
-  Icon,
-  IconName,
-  IIconProps
-} from '../../Icon';
-import { FontClassNames } from '../../Styling';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
@@ -25,6 +19,7 @@ export interface ICommandBarData {
   primaryItems: ICommandBarItemProps[];
   overflowItems: ICommandBarItemProps[];
   farItems: ICommandBarItemProps[];
+  defaultOverflowItems: ICommandBarItemProps[];
   cacheKey: string;
 }
 
@@ -59,16 +54,18 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     } = this.props;
 
     let commandBardata: ICommandBarData = {
-      primaryItems: items,
-      overflowItems,
+      primaryItems: [...items],
+      overflowItems: [...overflowItems],
+      defaultOverflowItems: [...overflowItems],
       farItems,
-      cacheKey: ''
+      cacheKey: '',
     };
 
     return (
       <ResizeGroup
         data={ commandBardata }
         onReduceData={ onReduceData }
+        onGrowData={ this._onGrowData }
         onRenderData={ (data: ICommandBarData) => {
           return (
             <div className={ css('ms-CommandBar', styles.root) }>
@@ -122,23 +119,41 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData {
-    let { primaryItems, overflowItems, farItems } = data;
+    let { primaryItems, overflowItems, cacheKey } = data;
     let movedItem = primaryItems[primaryItems.length - 1];
 
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
-      const cacheKey = this.computeCacheKey(primaryItems);
-      console.log(cacheKey);
-      return {
-        primaryItems: primaryItems.slice(0, -1),
-        overflowItems: overflowItems.concat(movedItem),
-        farItems,
-        cacheKey
-      };
+
+      overflowItems = overflowItems.concat(movedItem);
+      primaryItems = primaryItems.slice(0, -1);
+      cacheKey = this.computeCacheKey(primaryItems);
+
+      return { ...data, primaryItems, overflowItems, cacheKey };
     }
 
     return undefined;
   }
+
+  @autobind
+  private _onGrowData(data: ICommandBarData): ICommandBarData {
+    let { primaryItems, overflowItems, cacheKey } = data;
+    let movedItem = overflowItems[overflowItems.length - 1];
+
+    if (movedItem !== undefined && data.defaultOverflowItems.indexOf(movedItem) == -1) {
+      movedItem.renderedInOverflow = false;
+      console.log(movedItem);
+      overflowItems = overflowItems.slice(0, -1);
+      primaryItems = primaryItems.concat(movedItem);
+      cacheKey = this.computeCacheKey(primaryItems);
+
+      return { ...data, primaryItems, overflowItems, cacheKey };
+    }
+
+    return undefined;
+  }
+
+
 
   @autobind
   private _onRenderSearch(props: ICommandBarProps) {
