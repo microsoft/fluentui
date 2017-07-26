@@ -25,7 +25,7 @@ export interface ICommandBarData {
   primaryItems: ICommandBarItemProps[];
   overflowItems: ICommandBarItemProps[];
   farItems: ICommandBarItemProps[];
-  onReduceData: (data: ICommandBarData) => ICommandBarData;
+  cacheKey: string;
 }
 
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
@@ -62,7 +62,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       primaryItems: items,
       overflowItems,
       farItems,
-      onReduceData: this._onReduceData
+      cacheKey: ''
     };
 
     return (
@@ -116,18 +116,24 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     // this.refs.focusZone.focus();
   }
 
+  private computeCacheKey(primaryItems: ICommandBarItemProps[]): string {
+    return primaryItems.reduce((acc, current) => acc + current.key, '');
+  }
+
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData {
-    let { primaryItems, overflowItems, farItems, onReduceData } = data;
+    let { primaryItems, overflowItems, farItems } = data;
     let movedItem = primaryItems[primaryItems.length - 1];
 
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
+      const cacheKey = this.computeCacheKey(primaryItems);
+      console.log(cacheKey);
       return {
         primaryItems: primaryItems.slice(0, -1),
         overflowItems: overflowItems.concat(movedItem),
-        farItems: farItems,
-        onReduceData
+        farItems,
+        cacheKey
       };
     }
 
