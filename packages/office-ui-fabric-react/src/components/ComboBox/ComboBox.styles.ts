@@ -1,4 +1,8 @@
-import { IComboBoxStyles, IComboBoxOptionStyles, IComboBoxCaretDownButtonStyles } from './ComboBox.Props';
+import {
+  IComboBoxStyles,
+  IComboBoxOptionStyles,
+  IComboBoxCaretDownButtonStyles
+} from './ComboBox.Props';
 import {
   ITheme,
   IStyle,
@@ -55,53 +59,62 @@ export const getOptionStyles = memoizeFunction((
 
   const { semanticColors, fonts, palette } = theme;
 
-  const ComboBoxoptionBackgroundSelected = semanticColors.menuItemBackgroundChecked;
-  const ComboBoxoptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
+  const ComboBoxOptionBackgroundSelected = semanticColors.menuItemBackgroundChecked;
+  const ComboBoxOptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
+  const ComboBoxOptionTextColor = palette.black;
+  const ComboBoxOptionTextColorDisabled = palette.neutralTertiary;
+  const ComboBoxOptionBackgroundDisabled = palette.white;
 
   const optionStyles: IComboBoxOptionStyles = {
-    root: {
-      backgroundColor: 'transparent',
-      boxSizing: 'border-box',
-      cursor: 'pointer',
-      display: 'block',
-      width: '100%',
-      height: 'auto',
-      minHeight: ComboBoxOptionHeight,
-      lineHeight: '20px',
-      padding: '5px 16px',
-      position: 'relative',
-      border: '1px solid transparent',
-      wordWrap: 'break-word',
-      overflowWrap: 'break-word',
-      textAlign: 'left',
+    root: [
+      {
+        backgroundColor: 'transparent',
+        boxSizing: 'border-box',
+        cursor: 'pointer',
+        display: 'block',
+        width: '100%',
+        height: 'auto',
+        minHeight: ComboBoxOptionHeight,
+        lineHeight: '20px',
+        padding: '5px 16px',
+        position: 'relative',
+        border: '1px solid transparent',
+        wordWrap: 'break-word',
+        overflowWrap: 'break-word',
+        textAlign: 'left',
 
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: 'Background'
-      }
-    },
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          borderColor: 'Background'
+        }
+      },
+      getFocusStyle(theme),
+    ],
     rootHovered: {
-      backgroundColor: ComboBoxoptionBackgroundHovered,
-      color: palette.black,
+      backgroundColor: ComboBoxOptionBackgroundHovered,
+      color: ComboBoxOptionTextColor,
       ...getListOptionHighContrastStyles(theme)
     },
     rootFocused: {
-      backgroundColor: ComboBoxoptionBackgroundHovered
+      backgroundColor: ComboBoxOptionBackgroundHovered
     },
     rootPressed: {
-      backgroundColor: ComboBoxoptionBackgroundHovered,
-      color: palette.black
+      backgroundColor: ComboBoxOptionBackgroundHovered,
+      color: ComboBoxOptionTextColor
     },
-    rootChecked: {
-      backgroundColor: ComboBoxoptionBackgroundSelected,
-      color: palette.black,
-      ...getListOptionHighContrastStyles(theme)
-    },
+    rootChecked: [
+      {
+        backgroundColor: ComboBoxOptionBackgroundSelected,
+        color: ComboBoxOptionTextColor
+      },
+      getFocusStyle(theme),
+      getListOptionHighContrastStyles(theme)
+    ],
     rootCheckedHovered: {
-      backgroundColor: ComboBoxoptionBackgroundSelected
+      backgroundColor: ComboBoxOptionBackgroundSelected
     },
     rootDisabled: {
-      backgroundColor: palette.white,
-      color: palette.neutralTertiary,
+      backgroundColor: ComboBoxOptionBackgroundDisabled,
+      color: ComboBoxOptionTextColorDisabled,
       cursor: 'default',
       ' .ms-Button-flexContainer': {
         justifyContent: 'flex-start'
@@ -129,6 +142,15 @@ export const getStyles = memoizeFunction((
 
   const { semanticColors, fonts, palette } = theme;
 
+  const ComboBoxRootBackground = semanticColors.bodyBackground;
+  const ComboBoxRootTextColor = semanticColors.bodyText;
+  const ComboBoxRootBorderColor = palette.neutralTertiaryAlt;
+  const ComboBoxRootBorderColorHovered = semanticColors.inputFocusBorderAlt;
+  const ComboBoxRootColorErrored = semanticColors.errorText;
+  const ComboBoxCalloutBorderColor = palette.neutralLight;
+  const ComboBoxOptionHeaderTextColor = semanticColors.menuHeader;
+  const ComboBoxOptionDividerBorderColor = semanticColors.bodyDivider;
+
   const styles: IComboBoxStyles = {
     container: {
 
@@ -143,14 +165,14 @@ export const getStyles = memoizeFunction((
         margin: '0 0 10px 0',
         padding: '0',
         paddingRight: ComboxBoxCaretDownWidth,
-        color: semanticColors.bodyText,
+        color: ComboBoxRootTextColor,
         position: 'relative',
         outline: '0',
         userSelect: 'none',
-        background: semanticColors.bodyBackground,
+        background: ComboBoxRootBackground,
         borderWidth: '1px',
         borderStyle: 'solid',
-        borderColor: palette.neutralTertiaryAlt,
+        borderColor: ComboBoxRootBorderColor,
         cursor: 'text',
         display: 'block',
         height: ComboBoxHeight,
@@ -165,8 +187,15 @@ export const getStyles = memoizeFunction((
         }
       }
     ],
-    rootHoveredOrFocused: {
-      borderColor: semanticColors.inputFocusBorderAlt,
+    rootHovered: {
+      borderColor: ComboBoxRootBorderColorHovered,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: 'HighlightText',
+        borderColor: 'Highlight'
+      },
+    },
+    rootFocused: {
+      borderColor: ComboBoxRootBorderColorHovered,
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
         borderColor: 'Highlight'
@@ -174,7 +203,7 @@ export const getStyles = memoizeFunction((
     },
     rootDisabled: getDisabledStyles(theme),
     rootError: {
-      borderColor: semanticColors.errorText
+      borderColor: ComboBoxRootColorErrored
     },
     rootDisallowFreeForm: {
 
@@ -192,7 +221,7 @@ export const getStyles = memoizeFunction((
     inputDisabled: getDisabledStyles(theme),
     caretDownButtonStyles: getCaretDownButtonStyles(theme, customStyles ? customStyles.caretDownButtonStyles : null),
     errorMessage: {
-      color: semanticColors.errorText,
+      color: ComboBoxRootColorErrored,
       ':before': {
         content: '* ',
       }
@@ -201,7 +230,7 @@ export const getStyles = memoizeFunction((
       boxShadow: '0 0px 5px 0px rgba(0, 0, 0, 0.4)',
       borderWidth: '1px',
       borderStyle: 'solid',
-      borderColor: palette.neutralLight,
+      borderColor: ComboBoxCalloutBorderColor,
     },
     optionsContainer: {
       display: 'block'
@@ -210,7 +239,7 @@ export const getStyles = memoizeFunction((
       fonts.medium,
       {
         fontWeight: FontWeights.semibold,
-        color: semanticColors.menuHeader,
+        color: ComboBoxOptionHeaderTextColor,
         background: 'none',
         border: 'none',
         height: ComboBoxOptionHeight,
@@ -223,7 +252,7 @@ export const getStyles = memoizeFunction((
     ],
     divider: {
       border: '1px solid',
-      borderColor: semanticColors.bodyDivider
+      borderColor: ComboBoxOptionDividerBorderColor
     },
     optionDefaultStyles: getOptionStyles(theme)
   };
@@ -237,9 +266,13 @@ export const getCaretDownButtonStyles = memoizeFunction((
 ): IComboBoxCaretDownButtonStyles => {
   const { semanticColors, fonts, palette } = theme;
 
+  const caretButtonTextColor = palette.neutralDark;
+  const caretButtonBackgroundHovered = palette.neutralQuaternaryAlt;
+  const caretButtonBackgroundActive = palette.neutralTertiaryAlt;
+
   const styles: IComboBoxCaretDownButtonStyles = {
     root: {
-      color: palette.neutralDark,
+      color: caretButtonTextColor,
       fontSize: FontSizes.small,
       position: 'absolute',
       height: ComboBoxHeight,
@@ -254,10 +287,10 @@ export const getCaretDownButtonStyles = memoizeFunction((
       }
     },
     rootHovered: {
-      backgroundColor: palette.neutralQuaternaryAlt,
+      backgroundColor: caretButtonBackgroundHovered
     },
     rootPressed: {
-      backgroundColor: palette.neutralTertiaryAlt,
+      backgroundColor: caretButtonBackgroundActive
     },
     rootDisabled: getDisabledStyles(theme),
   };

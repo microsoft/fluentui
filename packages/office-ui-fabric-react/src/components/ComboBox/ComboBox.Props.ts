@@ -101,10 +101,16 @@ export interface IComboBoxStyles {
   rootDisallowFreeForm: IStyle;
 
   /**
-   * Styles for when the ComboBox is hovered or focused. These styles are applied for all comboBoxes except when
+   * Styles for when the ComboBox is hovered. These styles are applied for all comboBoxes except when
    * the comboBox is disabled.
    */
-  rootHoveredOrFocused: IStyle;
+  rootHovered: IStyle;
+
+  /**
+   * Styles for when the ComboBox is focused. These styles are applied for all comboBoxes except when
+   * the comboBox is disabled.
+   */
+  rootFocused: IStyle;
 
   /**
    * Styles for when the comboBox is disabled. These styles override all the other styles.
