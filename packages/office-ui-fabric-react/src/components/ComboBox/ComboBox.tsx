@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps, IComboBoxStyles } from './ComboBox.Props';
+import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
 import {
   CommandButton,
-  IconButton,
-  IButtonStyles
+  IconButton
 } from '../../Button';
 import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
 import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
@@ -32,8 +31,6 @@ import {
 import {
   IComboBoxClassNames,
   getClassNames,
-  IComboBoxOptionClassNames,
-  getComboBoxOptionClassNames
 } from './ComboBox.classNames';
 
 export interface IComboBoxState {
