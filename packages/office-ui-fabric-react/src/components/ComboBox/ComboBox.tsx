@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { IComboBoxOption, IComboBoxProps } from './ComboBox.Props';
+import { IComboBoxOption, IComboBoxProps, IComboBoxStyles } from './ComboBox.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
 import {
   CommandButton,
-  IconButton
+  IconButton,
+  IButtonStyles
 } from '../../Button';
 import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
 import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
@@ -23,9 +24,6 @@ import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/S
 import {
   customizable,
 } from '../../Utilities';
-import {
-  mergeStyles,
-} from '../../Styling';
 import {
   getStyles,
   getOptionStyles
@@ -115,6 +113,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _currentVisibleValue: string | undefined;
 
   private _classNames: IComboBoxClassNames;
+
+  private _mergedStyles: IComboBoxStyles;
 
   constructor(props: IComboBoxProps) {
     super(props);
@@ -228,8 +228,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
+    this._mergedStyles = getStyles(theme, customStyles);
     this._classNames = getClassNames(
-      getStyles(theme, customStyles),
+      this._mergedStyles,
       className,
       !!isOpen,
       !!disabled,
@@ -279,7 +280,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
           <IconButton
-            className={ this._classNames.caretDown }
+            className={ 'ms-ComboBox-CaretDown-button' }
+            styles={ this._mergedStyles.caretDownButtonStyles as IButtonStyles }
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
@@ -793,42 +795,42 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render items
   @autobind
   private _onRenderItem(item: IComboBoxOption): JSX.Element | null {
-    const optionClassNames = this._getCurrentOptionClassNames(item);
+
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
-        return this._renderSeparator(item, optionClassNames);
+        return this._renderSeparator(item);
       case SelectableOptionMenuItemType.Header:
-        return this._renderHeader(item, optionClassNames);
+        return this._renderHeader(item);
       default:
-        return this._renderOption(item, optionClassNames);
+        return this._renderOption(item);
     }
   }
 
   // Render separator
-  private _renderSeparator(item: IComboBoxOption, optionClassNames: IComboBoxOptionClassNames): JSX.Element | null {
+  private _renderSeparator(item: IComboBoxOption): JSX.Element | null {
     let { index, key } = item;
 
     if (index && index > 0) {
       return <div
         role='separator'
         key={ key }
-        className={ optionClassNames.divider } />;
+        className={ this._classNames.divider } />;
     }
     return null;
   }
 
-  private _renderHeader(item: IComboBoxOption, optionClassNames: IComboBoxOptionClassNames): JSX.Element {
+  private _renderHeader(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
 
     return (
-      <div key={ item.key } className={ optionClassNames.header } role='header'>
+      <div key={ item.key } className={ this._classNames.header } role='header'>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
 
   // Render menu item
   @autobind
-  private _renderOption(item: IComboBoxOption, optionClassNames: IComboBoxOptionClassNames): JSX.Element {
+  private _renderOption(item: IComboBoxOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     let isSelected: boolean = this._isOptionSelected(item.index);
@@ -837,7 +839,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         id={ id + '-list' + item.index }
         key={ item.key }
         data-index={ item.index }
-        className={ optionClassNames.option }
+        className={ 'ms-ComboBox-option' }
+        styles={ this._getCurrentOptionStyles(item) }
+        checked={ isSelected }
         onClick={ () => this._onItemClick(item.index) }
         role='option'
         aria-selected={ isSelected ? 'true' : 'false' }
@@ -887,8 +891,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   // Render content of item
   @autobind
   private _onRenderOption(item: IComboBoxOption): JSX.Element {
-    const optionClassNames = this._getCurrentOptionClassNames(item);
-    return <span className={ optionClassNames.optionText }>{ item.text }</span>;
+    const optionStyles = this._getCurrentOptionStyles(item);
+    return <span className={ optionStyles.optionText as string }>{ item.text }</span>;
   }
 
   /**
@@ -1239,20 +1243,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   /**
-   * Get the class names for the current option.
+   * Get the styles for the current option.
    * @param item Item props for the current option
    */
-  private _getCurrentOptionClassNames(item: IComboBoxOption) {
+  private _getCurrentOptionStyles(item: IComboBoxOption) {
     const { styles: customStyles } = this.props;
     const customStylesForAllOptions = (customStyles != null) ? customStyles.optionDefaultStyles : null;
     const { styles: customStylesForCurrentOption } = item;
 
     const isSelected: boolean = this._isOptionSelected(item.index);
 
-    return getComboBoxOptionClassNames(
-      getOptionStyles(this.props.theme, customStylesForAllOptions, customStylesForCurrentOption),
-      isSelected,
-      !!this.props.disabled
-    );
+    return getOptionStyles(this.props.theme, customStylesForAllOptions, customStylesForCurrentOption);
   }
 }

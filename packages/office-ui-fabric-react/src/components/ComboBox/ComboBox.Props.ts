@@ -2,6 +2,7 @@ import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
 import { IStyle, ITheme } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 
 export interface IComboBox {
   /**
@@ -123,29 +124,9 @@ export interface IComboBoxStyles {
   inputDisabled: IStyle;
 
   /**
-   * Base styles for the caretDown button when enabled.
+   * Styles for the caret down button.
    */
-  caretDown: IStyle;
-
-  /**
-  * Style override for caretDown button when freeform is disallowed.
-  */
-  caretDownDisallowFreeForm: IStyle;
-
-  /**
-  * Style override for caretDown button when disabled.
-  */
-  caretDownDisabled: IStyle;
-
-  /**
-   * Style override for caretDown button when enabled/hovered.
-   */
-  caretDownHovered: IStyle;
-
-  /**
-  * Style override for caretDown button when enabled/active.
-  */
-  caretDownActive: IStyle;
+  caretDownButtonStyles: Partial<IComboBoxOptionStyles>;
 
   /**
    * Styles for the error Message text of the comboBox.
@@ -164,61 +145,25 @@ export interface IComboBoxStyles {
   optionsContainer: IStyle;
 
   /**
-   * Default styles that should be applied to ComboBox options,
-   * incase an option does not come with user-defined custom styles
-   */
-  optionDefaultStyles: Partial<IComboBoxOptionStyles>;
-}
-
-export interface IComboBoxOptionStyles {
-  /**
- * Base styles for a comboBox option which is NOT a header/divider.
+ * Styles for a header in the options.
  */
-  option: IStyle;
-
-  /**
-   * Style override for options when enabled/hovered.
-   */
-  optionHovered: IStyle;
-
-  /**
-   * Style override for options when enabled/focussed.
-   */
-  optionFocused: IStyle;
-
-  /**
-   * Style override for options when enabled/active.
-   */
-  optionActive: IStyle;
-
-  /**
-   * Style overrides for an option which is selected.
-   */
-  optionSelected: IStyle;
-
-  /**
-   * Style overrides for an option when selected/hovered.
-   */
-  optionSelectedHovered: IStyle;
-
-  /**
-   * Style overrides for an option which is disabled.
-   *
-   */
-  optionDisabled: IStyle;
-
-  /**
-   * Styles for the optionText for all comboBox options.
-   */
-  optionText: IStyle;
-
-  /**
-   * Styles for a header in the options.
-   */
   header: IStyle;
 
   /**
    * Styles for a divider in the options.
    */
   divider: IStyle;
+
+  /**
+   * Default styles that should be applied to ComboBox options,
+   * incase an option does not come with user-defined custom styles
+   */
+  optionDefaultStyles: Partial<IComboBoxOptionStyles>;
+}
+
+export interface IComboBoxOptionStyles extends IButtonStyles {
+  optionText: IStyle;
+}
+
+export interface IComboBoxCaretDownButtonStyles extends IButtonStyles {
 }

@@ -9,16 +9,14 @@ export interface IComboBoxClassNames {
   label: string;
   root: string;
   input: string;
-  caretDown: string;
   errorMessage: string;
   callout: string;
   optionsContainer: string;
+  header: string;
+  divider: string;
 }
 
 export interface IComboBoxOptionClassNames {
-  header: string;
-  divider: string;
-  option: string;
   optionText: string;
 }
 
@@ -61,16 +59,6 @@ export const getClassNames = memoizeFunction((
       styles.input,
       disabled && styles.inputDisabled
     ) as string,
-    caretDown: mergeStyles(
-      'ms-ComboBox-CaretDown-button',
-      styles.caretDown,
-      !disabled && allowFreeForm && {
-        ':hover': styles.caretDownHovered,
-        ':active': styles.caretDownActive,
-      },
-      !allowFreeForm && styles.caretDownDisallowFreeForm,
-      disabled && styles.caretDownDisabled,
-    ) as string,
     errorMessage: mergeStyles(
       styles.errorMessage
     ) as string,
@@ -82,6 +70,14 @@ export const getClassNames = memoizeFunction((
       'ms-ComboBox-optionsContainer',
       styles.optionsContainer
     ) as string,
+    header: mergeStyles(
+      'ms-ComboBox-header',
+      styles.header
+    ) as string,
+    divider: mergeStyles(
+      'ms-ComboBox-divider',
+      styles.divider
+    ) as string,
   };
 });
 
@@ -91,36 +87,6 @@ export const getComboBoxOptionClassNames = memoizeFunction((
   disabled: boolean,
 ): IComboBoxOptionClassNames => {
   return {
-    option: mergeStyles(
-      'ms-ComboBox-option',
-      styles.option,
-      !disabled && [
-        {
-          ':hover': styles.optionHovered,
-          ':focus': styles.optionFocused,
-          ':active': styles.optionActive
-        },
-        optionIsSelected && [
-          'is-selected',
-          styles.optionSelected,
-          {
-            ':hover': styles.optionSelectedHovered
-          }
-        ]
-      ],
-      disabled && [
-        'is-disabled',
-        styles.optionDisabled,
-      ]
-    ) as string,
-    header: mergeStyles(
-      'ms-ComboBox-header',
-      styles.header
-    ) as string,
-    divider: mergeStyles(
-      'ms-ComboBox-divider',
-      styles.divider
-    ) as string,
     optionText: mergeStyles(
       'ms-ComboBox-optionText',
       styles.optionText
