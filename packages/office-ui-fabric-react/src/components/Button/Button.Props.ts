@@ -219,6 +219,11 @@ export interface IButtonStyles {
   rootPressed?: IStyle;
 
   /**
+   * Style override applied to the root on when menu is expanded in the default, enabled, non-toggled state.
+   */
+  rootExpanded?: IStyle;
+
+  /**
    * Style override applied to the root on hover in a checked, enabled state
    */
   rootCheckedHovered?: IStyle;

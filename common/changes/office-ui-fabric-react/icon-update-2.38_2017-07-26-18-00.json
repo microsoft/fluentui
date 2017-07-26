@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Addressing remaining TS 2.4.1 errors.",
-      "type": "minor"
+      "comment": "Icons: Added new icons from 2.38",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }

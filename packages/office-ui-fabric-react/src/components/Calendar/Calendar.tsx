@@ -41,6 +41,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     [key: string]: React.ReactInstance;
     root: HTMLElement;
     dayPicker: CalendarDay;
+    monthPicker: CalendarMonth;
   };
 
   private _focusOnUpdate: boolean;
@@ -76,7 +77,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public componentDidUpdate() {
     if (this._focusOnUpdate) {
-      this.refs.dayPicker.focus();
+      // if the day picker is shown, focus on it
+      if (this.refs.dayPicker) {
+        this.refs.dayPicker.focus();
+      } else if (this.refs.monthPicker) {
+        this.refs.monthPicker.focus();
+      }
       this._focusOnUpdate = false;
     }
   }
@@ -118,7 +124,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings }
                   onNavigateDate={ this._onNavigateDate }
                   today={ this.props.today }
-                  highlightCurrentMonth={ highlightCurrentMonth } /> }
+                  highlightCurrentMonth={ highlightCurrentMonth }
+                  ref='monthPicker' /> }
 
                 { showGoToToday &&
                   <span
@@ -153,12 +160,17 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-    this._navigateDay(date);
-    this._focusOnUpdate = focusOnNavigatedDay;
+    if (this.props.isDayPickerVisible) {
+      this._navigateDay(date);
+      this._focusOnUpdate = focusOnNavigatedDay;
+    } else {
+      // if only the month picker is shown, select the chosen month
+      this._onSelectDate(date);
+    }
   }
 
   @autobind
-  private _onSelectDate(date: Date, selectedDateRangeArray: Date[]) {
+  private _onSelectDate(date: Date, selectedDateRangeArray?: Date[]) {
     let { onSelectDate } = this.props;
 
     this.setState({

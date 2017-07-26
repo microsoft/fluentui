@@ -19,6 +19,7 @@
   box-sizing: border-box;
   border: 1px solid $ms-color-themePrimary;
   pointer-events: none;
+  z-index: $ms-zIndex-front;
 }
 
 .boxFill {
