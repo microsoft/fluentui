@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Sticky } from 'office-ui-fabric-react/lib/Sticky';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
 export class ScrollablePaneDefaultExample extends React.Component<any, any> {
@@ -12,17 +11,15 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
   public render() {
     let contentAreas: JSX.Element[] = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 4; i++) {
       contentAreas.push(this._createContentArea(i));
     }
 
     return (
       <ScrollablePane className='scrollablePaneDefaultExample'>
-        <div className='largeSpacing'></div>
         { contentAreas.map((ele) => {
           return ele;
         }) }
-        <div className='largeSpacing'></div>
       </ScrollablePane>
     );
   }
@@ -43,13 +40,15 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
 
     return (
       <div key={ index }>
-        <div className='spacing'></div>
         <Sticky
           stickyClassName='largeFont'>
           <div className='sticky' style={ style }>
             Sticky Component #{ index + 1 }
           </div>
         </Sticky>
+        <div className='textContent'>
+          { lorem(200) }
+        </div>
       </div>
     );
   }

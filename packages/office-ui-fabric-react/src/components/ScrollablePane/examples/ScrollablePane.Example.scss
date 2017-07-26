@@ -4,6 +4,7 @@
   .scrollablePaneDefaultExample {
     max-width: 400px;
     max-height: inherit;
+    border: 1px solid $ms-color-neutralLight;
   }
 
   .sticky {
@@ -20,6 +21,7 @@
     -o-transform: translateZ(0);
     transform: translateZ(0);
     will-change: font-size;
+    box-shadow: 0 0 5px -1px $ms-color-neutralDark;
   }
 
   .largeSpacing {
@@ -35,5 +37,9 @@
     .sticky {
       font-size: 20px;
     }
+  }
+
+  .textContent {
+    padding: 15px 10px;
   }
 }

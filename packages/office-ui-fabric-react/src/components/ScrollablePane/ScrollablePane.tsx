@@ -97,6 +97,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     if (this._stickyAbove.indexOf(sticky) < 0) {
       this._stickyAbove.push(sticky);
       stickyAbove.appendChild(sticky.content);
+      // Add event listener to re calculate placeholder heights once animation ends
+      sticky.content.addEventListener('transitionend',
+        this._setPlaceholderHeights.bind(null, this._stickyAbove, stickyAbove),
+        false);
       setTimeout(() => {
         sticky.content.children[0].classList.add(sticky.props.stickyClassName);
       }, 1);
@@ -106,8 +110,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   @autobind
   public removeStickyHeader(sticky: Sticky) {
+    const { stickyAbove } = this.refs;
     const indexOfHeader = this._stickyAbove.indexOf(sticky);
     if (indexOfHeader >= 0) {
+      sticky.content.removeEventListener('transitionend',
+        this._setPlaceholderHeights.bind(null, this._stickyAbove, stickyAbove));
       this._stickyAbove.splice(indexOfHeader, 1);
     }
   }
@@ -118,6 +125,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     if (this._stickyBelow.indexOf(sticky) < 0) {
       this._stickyBelow.push(sticky);
       stickyBelow.insertBefore(sticky.content, stickyBelow.firstChild);
+      // Add event listener to re calculate placeholder heights once animation ends
+      sticky.content.addEventListener('transitionend',
+        this._setPlaceholderHeights.bind(null, this._stickyBelow, stickyBelow),
+        false);
       setTimeout(() => {
         sticky.content.children[0].classList.add(sticky.props.stickyClassName);
       }, 1);
@@ -127,8 +138,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   @autobind
   public removeStickyFooter(sticky: Sticky) {
+    const { stickyBelow } = this.refs;
     const indexOfFooter = this._stickyBelow.indexOf(sticky);
     if (indexOfFooter >= 0) {
+      sticky.content.removeEventListener('transitionend',
+        this._setPlaceholderHeights.bind(null, this._stickyBelow, stickyBelow));
       this._stickyBelow.splice(indexOfFooter, 1);
     }
   }
@@ -147,9 +161,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     const { stickyContainer, root } = this.refs;
     stickyContainer.style.height = root.clientHeight + 'px';
     stickyContainer.style.width = root.clientWidth + 'px';
-    stickyContainer.style.top = root.offsetTop + 'px';
+    stickyContainer.style.top = root.offsetTop + parseInt(getComputedStyle(root, null).borderTopWidth, 10) + 'px';
+    stickyContainer.style.left = root.offsetLeft + parseInt(getComputedStyle(root, null).borderLeftWidth, 10) + 'px';
   }
 
+  @autobind
   private _setPlaceholderHeights(stickies: Sticky[], element: HTMLElement) {
     const { stickyAbove, stickyBelow } = this.refs;
     stickies.forEach((sticky, idx) => {
