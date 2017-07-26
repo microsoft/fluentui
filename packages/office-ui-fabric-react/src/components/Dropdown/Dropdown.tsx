@@ -53,7 +53,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _dropdownLabel: HTMLElement;
   private _id: string;
 
-  constructor(props?: IDropdownProps) {
+  constructor(props: IDropdownProps) {
     props.options.forEach((option: any) => {
       if (!option.itemType) {
         option.itemType = DropdownMenuItemType.Normal;
@@ -75,7 +75,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this.state = {
       isOpen: false,
-      selectedIndex: this._getSelectedIndex(props.options, selectedKey)
+      selectedIndex: this._getSelectedIndex(props.options, selectedKey!)
     };
   }
 
@@ -113,7 +113,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderPlaceHolder = this._onRenderPlaceHolder
     } = this.props;
     let { isOpen, selectedIndex } = this.state;
-    let selectedOption = options[selectedIndex];
+    let selectedOption = options[selectedIndex as number];
     let divProps = getNativeProps(this.props, divProperties);
 
     // Remove this deprecation workaround at 1.0.0
@@ -130,21 +130,21 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           data-is-focusable={ !disabled }
           ref={ this._resolveRef('_dropDown') }
           id={ id }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled,
-            'is-required ': required,
-          }) }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
-          aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
+          aria-activedescendant={ isOpen && selectedIndex! >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
+          className={ css('ms-Dropdown', styles.root, className, {
+            'is-open': isOpen,
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
+          }) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
@@ -235,7 +235,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
     let stepCounter = 0;
     // If current index is a header or divider, increment by step
-    while (options[index].itemType !== DropdownMenuItemType.Normal) {
+    while (options[index].itemType === DropdownMenuItemType.Header || options[index].itemType === DropdownMenuItemType.Divider) {
       // If stepCounter exceeds length of options, then return selectedIndex (-1)
       if (stepCounter >= options.length) {
         return selectedIndex;
@@ -260,7 +260,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render placeHolder text in dropdown input
   @autobind
-  private _onRenderPlaceHolder(props: IDropdownProps): JSX.Element {
+  private _onRenderPlaceHolder(props: IDropdownProps): JSX.Element | null {
     if (!props.placeHolder) {
       return null;
     }
@@ -276,7 +276,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       calloutProps
     } = this.props;
 
-    let isSmall = responsiveMode <= ResponsiveMode.medium;
+    let isSmall = responsiveMode! <= ResponsiveMode.medium;
 
     return (
       isSmall ?
@@ -336,7 +336,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render items
   @autobind
-  private _onRenderItem(item: IDropdownOption): JSX.Element {
+  private _onRenderItem(item: IDropdownOption): JSX.Element | null {
     switch (item.itemType) {
       case SelectableOptionMenuItemType.Divider:
         return this._renderSeparator(item);
@@ -348,9 +348,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   // Render separator
-  private _renderSeparator(item: IDropdownOption): JSX.Element {
+  private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     let { index, key } = item;
-    if (index > 0) {
+    if (index! > 0) {
       return <div
         role='separator'
         key={ key }
@@ -387,7 +387,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
           }
         ) }
-        onClick={ () => this._onItemClick(item.index) }
+        onClick={ () => this._onItemClick(item.index!) }
         role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         ariaLabel={ item.ariaLabel || item.text }

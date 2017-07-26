@@ -11,4 +11,5 @@ export interface IPickerItemProps<T> extends React.HTMLAttributes<HTMLElement> {
    */
   onItemChange?: (item: T, index: number) => void;
   key?: string | number;
+  removeButtonAriaLabel?: string;
 }

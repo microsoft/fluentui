@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 24px;
+$checkBoxHeight: 16px;
 
 .root {
   line-height: 1;
@@ -35,13 +35,13 @@ $checkBoxHeight: 24px;
   position: absolute;
   height: $checkBoxHeight;
   width: $checkBoxHeight;
-  left: 50%;
-  top: 50%;
   transform: translate(-50%, -50%);
   font-size: $checkBoxHeight;
 }
 
 .circle {
+  top: 50%;
+  left: 50%;
   color: $ms-color-neutralTertiaryAlt;
 }
 
@@ -53,7 +53,9 @@ $checkBoxHeight: 24px;
   width: auto;
   height: auto;
   color: $ms-color-neutralTertiaryAlt;
-  font-size: 12px;
+  font-size: 16px;
+  top: 40%;
+  left: 53%;
 }
 
 .rootIsChecked .check {
