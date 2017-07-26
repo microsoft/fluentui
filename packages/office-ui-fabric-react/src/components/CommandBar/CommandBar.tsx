@@ -142,7 +142,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     if (movedItem !== undefined && data.defaultOverflowItems.indexOf(movedItem) == -1) {
       movedItem.renderedInOverflow = false;
-      console.log(movedItem);
+
       overflowItems = overflowItems.slice(0, -1);
       primaryItems = primaryItems.concat(movedItem);
       cacheKey = this.computeCacheKey(primaryItems);
