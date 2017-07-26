@@ -126,7 +126,7 @@ export interface IComboBoxStyles {
   /**
    * Styles for the caret down button.
    */
-  caretDownButtonStyles: Partial<IComboBoxOptionStyles>;
+  caretDownButtonStyles: Partial<IComboBoxCaretDownButtonStyles>;
 
   /**
    * Styles for the error Message text of the comboBox.

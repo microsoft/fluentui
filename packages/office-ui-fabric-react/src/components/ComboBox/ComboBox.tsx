@@ -26,7 +26,8 @@ import {
 } from '../../Utilities';
 import {
   getStyles,
-  getOptionStyles
+  getOptionStyles,
+  getCaretDownButtonStyles
 } from './ComboBox.styles';
 import {
   IComboBoxClassNames,
@@ -113,8 +114,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _currentVisibleValue: string | undefined;
 
   private _classNames: IComboBoxClassNames;
-
-  private _mergedStyles: IComboBoxStyles;
 
   constructor(props: IComboBoxProps) {
     super(props);
@@ -228,9 +227,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
-    this._mergedStyles = getStyles(theme, customStyles);
     this._classNames = getClassNames(
-      this._mergedStyles,
+      getStyles(theme, customStyles),
       className,
       !!isOpen,
       !!disabled,
@@ -281,7 +279,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
-            styles={ this._mergedStyles.caretDownButtonStyles as IButtonStyles }
+            styles={ this._getCaretButtonStyles() }
             role='presentation'
             aria-hidden='true'
             tabIndex={ -1 }
@@ -1240,6 +1238,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         isOpen: !isOpen
       });
     }
+  }
+
+  /**
+ * Get the styles for the current option.
+ * @param item Item props for the current option
+ */
+  private _getCaretButtonStyles() {
+    const { styles: customStyles } = this.props;
+    const caretButtoncustomStyles = (customStyles != null) ? customStyles.caretDownButtonStyles : null;
+
+    return getCaretDownButtonStyles(this.props.theme, caretButtoncustomStyles);
   }
 
   /**

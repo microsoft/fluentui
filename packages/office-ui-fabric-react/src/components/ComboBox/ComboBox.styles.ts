@@ -231,7 +231,7 @@ export const getStyles = memoizeFunction((
   return mergeStyleSets(styles, customStyles) as IComboBoxStyles;
 });
 
-const getCaretDownButtonStyles = memoizeFunction((
+export const getCaretDownButtonStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<IComboBoxCaretDownButtonStyles>,
 ): IComboBoxCaretDownButtonStyles => {
@@ -247,7 +247,6 @@ const getCaretDownButtonStyles = memoizeFunction((
       width: ComboxBoxCaretDownWidth,
       textAlign: 'center',
       cursor: 'default',
-      backgroundColor: 'red',
       [MS_HIGHCONTRAST_ACTIVE]: {
         backgroundColor: 'ButtonFace',
         borderColor: 'ButtonText',
