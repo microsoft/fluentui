@@ -1,6 +1,7 @@
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 
 export interface ISpinButton {
   /**
@@ -138,16 +139,16 @@ export interface ISpinButtonStyles {
   label: IStyle;
   root: IStyle;
   rootTopBottom: IStyle;
+  rootHovered: IStyle;
+  rootFocused: IStyle;
   input: IStyle;
-  inputHovered?: IStyle;
-  inputFocused?: IStyle;
-  inputTextSelected?: IStyle;
-  inputDisabled?: IStyle;
+  inputTextSelected: IStyle;
+  inputDisabled: IStyle;
   arrowBox: IStyle;
-  arrowBoxHovered?: IStyle;
-  arrowBoxDisabled?: IStyle;
-  arrowButton: IStyle;
-  arrowButtonHovered: IStyle;
-  arrowButtonActive: IStyle;
-  arrowButtonDisabled: IStyle;
+  arrowBoxDisabled: IStyle;
+  arrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
+}
+
+export interface ISpinButtonArrowButtonStyles extends IButtonStyles {
+
 }

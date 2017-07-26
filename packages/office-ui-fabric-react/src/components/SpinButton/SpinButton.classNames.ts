@@ -12,8 +12,6 @@ export interface ISpinButtonClassNames {
   root: string;
   input: string;
   arrowBox: string;
-  upButton: string;
-  downButton: string;
 }
 
 export const getClassNames = memoizeFunction((
@@ -38,25 +36,20 @@ export const getClassNames = memoizeFunction((
     ) as string,
     root: mergeStyles(
       styles.root,
-      getStyleForRootBasedOnPosition(labelPosition, styles)
+      getStyleForRootBasedOnPosition(labelPosition, styles),
+      {
+        ':hover': styles.rootHovered,
+        ' .ms-spinButton-input:focus': styles.rootFocused,
+      }
     ) as string,
     input: mergeStyles(
+      'ms-spinButton-input',
       styles.input,
       disabled && styles.inputDisabled,
     ) as string,
     arrowBox: mergeStyles(
       styles.arrowBox,
       disabled && styles.arrowBoxDisabled
-    ) as string,
-    upButton: mergeStyles(
-      'ms-UpButton',
-      styles.arrowButton,
-      disabled && styles.arrowButtonDisabled
-    ) as string,
-    downButton: mergeStyles(
-      'ms-DownButton',
-      styles.arrowButton,
-      disabled && styles.arrowButtonDisabled
     ) as string,
   };
 });

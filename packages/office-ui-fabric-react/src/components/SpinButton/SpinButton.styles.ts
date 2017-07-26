@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { ISpinButtonStyles } from './SpinButton.Props';
+import { ISpinButtonStyles, ISpinButtonArrowButtonStyles } from './SpinButton.Props';
 import {
   ITheme,
   mergeStyleSets,
@@ -8,9 +8,54 @@ import {
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: black-on-white)';
 
+export const getArrowButtonStyles = memoizeFunction((
+  theme: ITheme,
+  customStyles: Partial<ISpinButtonArrowButtonStyles>
+): ISpinButtonArrowButtonStyles => {
+
+  const { semanticColors, fonts, palette } = theme;
+
+  const defaultStyles: ISpinButtonArrowButtonStyles = {
+    root: {
+      outline: 'none',
+      display: 'block',
+      height: '50%',
+      width: '14px',
+      padding: '0px',
+      backgroundColor: 'transparent',
+      textAlign: 'center',
+      cursor: 'default',
+      color: palette.neutralPrimary
+    },
+    rootHovered: {
+      backgroundColor: palette.neutralLight
+    },
+    rootPressed: {
+      backgroundColor: palette.themePrimary,
+      color: palette.white,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        backgroundColor: 'Highlight',
+        color: 'HighlightText'
+      }
+    },
+    rootDisabled: {
+      opacity: '0',
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        color: 'GrayText'
+      }
+    },
+    icon: {
+      fontSize: '6px',
+      margin: '0'
+    }
+  };
+
+  return mergeStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
+});
+
 export const getStyles = memoizeFunction((
-  customStyles: Partial<ISpinButtonStyles>,
-  theme: ITheme
+  theme: ITheme,
+  customStyles: Partial<ISpinButtonStyles>
 ): ISpinButtonStyles => {
   const { semanticColors, fonts, palette } = theme;
 
@@ -50,18 +95,34 @@ export const getStyles = memoizeFunction((
     root: {
       display: 'flex',
       height: '26px',
-      minWidth: '86px'
+      minWidth: '86px',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: palette.neutralTertiaryAlt,
+      borderRadius: '0'
     },
     rootTopBottom: {
       width: '100%'
     },
+    rootHovered: {
+      borderColor: palette.neutralSecondaryAlt,
+      outline: '2px dashed transparent',
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: 'Highlight'
+      }
+    },
+    rootFocused: {
+      borderColor: palette.themePrimary,
+      outline: '2px dashed transparent',
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: 'Highlight'
+      }
+    },
     input: {
       boxSizing: 'border-box',
       boxShadow: 'none',
+      border: 'none',
       margin: '0',
-      border: '1px solid',
-      borderColor: semanticColors.inputBorder,
-      borderRadius: '0',
       fontWeight: '$ms-font-weight-regular',
       fontSize: fonts.medium,
       color: palette.neutralPrimary,
@@ -73,24 +134,9 @@ export const getStyles = memoizeFunction((
       float: 'left',
       width: 'calc(100% - 14px)',
       minWidth: '72px',
-      borderRightWidth: '0px',
       overflow: 'hidden',
       cursor: 'text',
       userSelect: 'text'
-    },
-    inputHovered: {
-      borderColor: semanticColors.inputBorderHovered,
-      outline: '2px dashed transparent',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: 'Highlight'
-      }
-    },
-    inputFocused: {
-      borderColor: palette.themePrimary,
-      outline: '2px dashed transparent',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: 'Highlight'
-      }
     },
     inputTextSelected: {
       backgroundColor: palette.themePrimary,
@@ -117,19 +163,9 @@ export const getStyles = memoizeFunction((
       display: 'block',
       float: 'left',
       height: '100%',
-      border: '1px solid',
-      borderColor: palette.neutralTertiaryAlt,
-      borderLeftWidth: '0px',
       cursor: 'default',
       padding: '0px',
       boxSizing: 'border-box'
-    },
-    arrowBoxHovered: {
-      borderColor: semanticColors.inputBorderHovered,
-      outline: '2px dashed transparent',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        borderColor: 'Highlight'
-      }
     },
     arrowBoxDisabled: {
       backgroundColor: palette.neutralLighter,
@@ -141,36 +177,7 @@ export const getStyles = memoizeFunction((
         color: 'GrayText'
       }
     },
-    arrowButton: {
-      outline: 'none',
-      display: 'block',
-      height: '50%',
-      width: '12px',
-      padding: '0px',
-      backgroundColor: 'red',
-      textAlign: 'center',
-      cursor: 'default',
-      fontSize: '6px',
-      color: palette.neutralPrimary
-    },
-    arrowButtonHovered: {
-      backgroundColor: palette.neutralLight
-    },
-    arrowButtonActive: {
-      backgroundColor: palette.neutralPrimary,
-      color: palette.white,
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        backgroundColor: 'Highlight',
-        color: 'HighlightText'
-      }
-    },
-    arrowButtonDisabled: {
-      opacity: '0',
-      [MS_HIGHCONTRAST_ACTIVE]: {
-        color: 'GrayText'
-      }
-    },
-
+    arrowButtonStyles: getArrowButtonStyles(theme, customStyles ? customStyles.arrowButtonStyles : null),
   };
   return mergeStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
 });
