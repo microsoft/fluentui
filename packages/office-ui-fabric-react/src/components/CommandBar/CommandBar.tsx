@@ -185,6 +185,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             onClick={ (ev) => this._onItemClick(ev, item) }
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
+            aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
             role='menuitem'
             aria-label={ item.ariaLabel }
           >
