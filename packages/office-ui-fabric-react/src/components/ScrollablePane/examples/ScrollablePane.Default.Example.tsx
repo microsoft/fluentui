@@ -17,15 +17,13 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     }
 
     return (
-      <div>
-        <ScrollablePane className='scrollablePaneDefaultExample'>
-          <div className='largeSpacing'></div>
-          { contentAreas.map((ele) => {
-            return ele;
-          }) }
-          <div className='largeSpacing'></div>
-        </ScrollablePane>
-      </div>
+      <ScrollablePane className='scrollablePaneDefaultExample'>
+        <div className='largeSpacing'></div>
+        { contentAreas.map((ele) => {
+          return ele;
+        }) }
+        <div className='largeSpacing'></div>
+      </ScrollablePane>
     );
   }
 

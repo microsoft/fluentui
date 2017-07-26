@@ -82,38 +82,38 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
     let { items, selectionDetails } = this.state;
 
     return (
-      <div>
-        <ScrollablePane>
-          <Sticky><div>{ selectionDetails }</div></Sticky>
-          <TextField
-            label='Filter by name:'
-            onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+      <ScrollablePane>
+        <Sticky><div>{ selectionDetails }</div></Sticky>
+        <TextField
+          label='Filter by name:'
+          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+        />
+        <Sticky>
+          <h1 style={ { margin: '0px' } }>Item List</h1>
+        </Sticky>
+        <MarqueeSelection selection={ this._selection }>
+          <DetailsList
+            items={ items }
+            columns={ _columns }
+            setKey='set'
+            layoutMode={ DetailsListLayoutMode.fixedColumns }
+            onRenderDetailsHeader={
+              (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => (
+                <Sticky>
+                  { defaultRender({
+                    ...detailsHeaderProps,
+                    onRenderColumnHeaderTooltio: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
+                  }) }
+                </Sticky>
+              ) }
+            selection={ this._selection }
+            selectionPreservedOnEmptyClick={ true }
+            ariaLabelForSelectionColumn='Toggle selection'
+            ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
           />
-          <Sticky>
-            <h1 style={ { margin: '0px' } }>Item List</h1>
-          </Sticky>
-          <MarqueeSelection selection={ this._selection }>
-            <DetailsList
-              items={ items }
-              columns={ _columns }
-              setKey='set'
-              layoutMode={ DetailsListLayoutMode.fixedColumns }
-              isLockedHeader={ true }
-              onRenderDetailsHeader={
-                (detailsHeaderProps: IDetailsHeaderProps, defaultRender: IRenderFunction<IDetailsHeaderProps>) => defaultRender({
-                  ...detailsHeaderProps,
-                  onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
-                })
-              }
-              selection={ this._selection }
-              selectionPreservedOnEmptyClick={ true }
-              ariaLabelForSelectionColumn='Toggle selection'
-              ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-              onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
-            />
-          </MarqueeSelection>
-        </ScrollablePane>
-      </div>
+        </MarqueeSelection>
+      </ScrollablePane>
     );
   }
 

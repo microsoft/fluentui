@@ -1,5 +1,11 @@
 @import '../../common/common';
 
+.root {
+  overflow-y: auto;
+  max-height: inherit;
+  -webkit-overflow-scrolling: touch;
+}
+
 .stickyContainer {
   position: absolute;
   pointer-events: none;

@@ -6,8 +6,7 @@ import * as PropTypes from 'prop-types';
 import {
   autobind,
   BaseComponent,
-  css,
-  findScrollableParent
+  css
 } from '../../Utilities';
 import { IScrollablePaneProps } from './ScrollablePane.Props';
 import { Sticky } from '../../Sticky';
@@ -30,7 +29,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     stickyBelow: HTMLElement;
   };
 
-  private _scrollElement: HTMLElement;
   private _subscribers: Function[];
   private _stickyAbove: Sticky[];
   private _stickyBelow: Sticky[];
@@ -55,24 +53,19 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public componentDidMount() {
     const { root, stickyContainer } = this.refs;
 
-    this._scrollElement = findScrollableParent(root);
-    if (this._scrollElement) {
-      this._events.on(this._scrollElement, 'scroll', this._notifySubscribers);
-      this._events.on(window, 'resize', this._onWindowResize);
-      setTimeout(() => {
-        this._resizeContainer();
-        stickyContainer.parentElement.removeChild(stickyContainer);
-        this._scrollElement.parentElement.insertBefore(stickyContainer, this._scrollElement.nextSibling);
-        this._notifySubscribers();
-        this._sortFooters();
-      }, 500);
-    } else {
-      throw new TypeError('Expected ScrollablePane to be within a parent element with data-is-scrollable=true');
-    }
+    this._events.on(root, 'scroll', this._notifySubscribers);
+    this._events.on(window, 'resize', this._onWindowResize);
+    setTimeout(() => {
+      this._resizeContainer();
+      stickyContainer.parentElement.removeChild(stickyContainer);
+      root.parentElement.insertBefore(stickyContainer, root.nextSibling);
+      this._notifySubscribers();
+      this._sortFooters();
+    }, 500);
   }
 
   public componentWillUnmount() {
-    this._events.off(this._scrollElement);
+    this._events.off(this.refs.root);
     this._events.off(window);
   }
 
@@ -80,8 +73,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     const { className } = this.props;
 
     return (
-      <div className={ css('ms-ScrollablePane', className) }
-        ref='root'>
+      <div
+        ref='root'
+        className={ css('ms-ScrollablePane', styles.root, className) }
+        data-is-scrollable={ true }>
         <div ref='stickyContainer' className={ styles.stickyContainer }>
           <div ref='stickyAbove' className={ styles.stickyAbove } />
           <div ref='stickyBelow' className={ styles.stickyBelow } />
@@ -149,10 +144,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   private _resizeContainer() {
-    const { stickyContainer } = this.refs;
-    stickyContainer.style.height = this._scrollElement.clientHeight + 'px';
-    stickyContainer.style.width = this.refs.root.clientWidth + 'px';
-    stickyContainer.style.top = this._scrollElement.offsetTop + 'px';
+    const { stickyContainer, root } = this.refs;
+    stickyContainer.style.height = root.clientHeight + 'px';
+    stickyContainer.style.width = root.clientWidth + 'px';
+    stickyContainer.style.top = root.offsetTop + 'px';
   }
 
   private _setPlaceholderHeights(stickies: Sticky[], element: HTMLElement) {
