@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
+      "comment": "Icons: Added new icons from 2.38",
       "packageName": "@uifabric/styling",
-      "type": "none"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
