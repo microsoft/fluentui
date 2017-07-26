@@ -200,7 +200,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
-        key={ 'normal' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
         removeButtonAriaLabel={ 'Remove' }
