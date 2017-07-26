@@ -1,3 +1,3 @@
 module.exports = [].concat(
-  require('./webpack.site.config')
+  require('./webpack.lib.config')
 );
