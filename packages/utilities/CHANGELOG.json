@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.8.1",
+      "tag": "@uifabric/utilities_v4.8.1",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "e23f7f865699374df1d8f5de0f553ee1559b3f8f",
+            "comment": "Fixing filteredAssign function"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.8.0",
       "tag": "@uifabric/utilities_v4.8.0",
       "date": "Wed, 19 Jul 2017 21:40:34 GMT",

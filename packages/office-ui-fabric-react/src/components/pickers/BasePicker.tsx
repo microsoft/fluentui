@@ -169,7 +169,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
+    let { disabled, removeButtonAriaLabel } = this.props;
     let onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
+
     let { items } = this.state;
     return items.map((item: any, index: number) => onRenderItem({
       item,
@@ -177,7 +179,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       key: item.key ? item.key : index,
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
-      onItemChange: this.onItemChange
+      disabled: disabled,
+      onItemChange: this.onItemChange,
+      removeButtonAriaLabel: removeButtonAriaLabel
     }));
   }
 

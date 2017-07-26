@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: remove unnecessary styles and element",
+      "comment": "CommandBar: Accessibility fix for expand behavior",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com"
+  "email": "veloiya@microsoft.com"
 }

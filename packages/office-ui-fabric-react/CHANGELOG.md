@@ -1,6 +1,55 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Jul 2017 21:40:34 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jul 2017 10:22:35 GMT and should not be manually modified.
+
+## 4.23.0
+Tue, 25 Jul 2017 10:22:35 GMT
+
+### Minor changes
+
+- Button: Support expanded style state triggered by opened menu
+
+### Patches
+
+- Checkbox: Fixed label font size
+- TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font.
+- ResizeGroup: Prevent flashing when passing in new props
+- ResizeGroup: Don't show a scrollbar while measuring the hidden div
+- Textfield: Fixed high contrast border and textarea font family
+- Textfield: Removed icon pointer events so that any click is click in textfield
+
+## 4.22.0
+Mon, 24 Jul 2017 10:24:30 GMT
+
+### Minor changes
+
+- Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`
+
+### Patches
+
+- Fix application of aria properties on BaseButton.
+- ResizeGroup: Add support for onGrowData
+- Accessibility fixes for PeoplePicker
+- Dropdown: Updated keydown handler to respond correctly to normal dropdown items
+
+## 4.21.4
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Do not redundantly set aria-label on command bar items. 
+- More strict null check fixes in office-ui-fabric-react
+- Textfield: Fixed regression in disabled styles
+- ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
+- Fixed deletion of tag item when tag picker is disabled
+
+## 4.21.3
+Thu, 20 Jul 2017 10:11:23 GMT
+
+### Patches
+
+- SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker
+- Checkbox: remove unnecessary styles and element
 
 ## 4.21.2
 Wed, 19 Jul 2017 21:40:34 GMT
