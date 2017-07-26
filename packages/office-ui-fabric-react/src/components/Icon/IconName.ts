@@ -887,4 +887,27 @@ export type IconName =
   'YammerLogo' |
   'Zoom' |
   'ZoomIn' |
-  'ZoomOut';
+  'ZoomOut' |
+  'FilterSolid' |
+  'GridViewSmall' |
+  'GridViewMedium' |
+  'GridViewLarge' |
+  'ThisPc' |
+  'MailUndelivered' |
+  'MailTentative' |
+  'MailTentativeMirrored' |
+  'MailReminder' |
+  'IRMReply' |
+  'IRMReplyMirrored' |
+  'IRMForward' |
+  'IRMForwardMirrored' |
+  'ReceiptUndelivered' |
+  'ReceiptTentative' |
+  'ReceiptTentativeMirrored' |
+  'Inbox' |
+  'VoicemailRM' |
+  'EventAccepted' |
+  'EventTentative' |
+  'EventTentativeMirrored' |
+  'EventDeclined'
+  ;

@@ -2838,4 +2838,96 @@ export const IconCodes = {
   tripleColumn: '\uF1D5',
   columnLeftTwoThirds: '\uF1D6',
   columnRightTwoThirds: '\uF1D7',
+
+  // 2.38 Additions
+
+  /**
+   * Icon code with the value '\uF412'.
+   */
+  filterSolid: '\uF412',
+  /**
+   * Icon code with the value '\uF232'.
+   */
+  gridViewSmall: '\uF232',
+  /**
+   * Icon code with the value '\uF233'.
+   */
+  gridViewMedium: '\uF233',
+  /**
+   * Icon code with the value '\uF234'.
+   */
+  gridViewLarge: '\uF234',
+  /**
+   * Icon code with the value '\uEC4E'.
+   */
+  thisPc: '\uEC4E',
+  /**
+   * Icon code with the value '\uF415'.
+   */
+  mailUndelivered: '\uF415',
+  /**
+   * Icon code with value '\uF416'.
+   */
+  mailTentative: '\uF416',
+  /**
+   * Icon code with value '\uF417'.
+   */
+  mailTentativeMirrored: '\uF417',
+  /**
+   * Icon code with value '\uf418'.
+   */
+  mailReminder: '\uf418',
+  /**
+   * Icon code with value '\uF41D'.
+   */
+  irmReply: '\uF41D',
+  /**
+   * Icon code with value '\uF41E'.
+   */
+  irmReplyMirrored: '\uF41E',
+  /**
+   * Icon code with value '\uF41F'.
+   */
+  irmForward: '\uF41F',
+  /**
+   * Icon code with value '\uF420'.
+   */
+  irmForwardMirrored: '\uF420',
+  /**
+   * Icon code with value '\uF419'.
+   */
+  receiptUndelivered: '\uF419',
+  /**
+   * Icon code with value '\uF41A'.
+   */
+  receiptTentative: '\uF41A',
+  /**
+   * Icon code with value '\uF41B'.
+   */
+  receiptTentativeMirrored: '\uF41B',
+  /**
+   * Icon code with value '\uF41C'.
+   */
+  inbox: '\uF41C',
+  /**
+   * Icon code with value '\uF421'.
+   */
+  voicemailRM: '\uF421',
+  /**
+   * Icon code with value '\uF422'.
+   */
+  eventAccepted: '\uF422',
+  /**
+   * Icon code with value '\uF423'.
+   */
+  eventTentative: '\uF423',
+  /**
+   * Icon code with value '\uF424'.
+   */
+  eventTentativeMirrored: '\uF424',
+  /**
+   * Icon code with value '\uF425'.
+   */
+  eventDeclined: '\uF425',
+
 };
