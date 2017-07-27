@@ -89,7 +89,7 @@ export function getSubmenuItems(item: IContextualMenuItem) {
 
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
-  // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
+  // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
   public static defaultProps: IContextualMenuProps = {
     items: [],
     shouldFocusOnMount: true,
@@ -100,18 +100,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   };
 
   private _host: HTMLElement;
-  private _previousActiveElement: HTMLElement;
+  private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
-  private _target: HTMLElement | MouseEvent;
+  private _target: HTMLElement | MouseEvent | null;
 
   constructor(props: IContextualMenuProps) {
     super(props);
 
     this.state = {
-      contextualMenuItems: null,
+      contextualMenuItems: undefined,
       subMenuId: getId('ContextualMenu')
     };
 
@@ -131,14 +131,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   public componentWillUpdate(newProps: IContextualMenuProps) {
     if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
       let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
-      this._setTargetWindowAndElement(newTarget);
+      this._setTargetWindowAndElement(newTarget!);
     }
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
     let target = this.props.targetElement ? this.props.targetElement : this.props.target;
-    this._setTargetWindowAndElement(target);
+    this._setTargetWindowAndElement(target!);
     this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
@@ -157,7 +157,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
-      setTimeout(() => this._previousActiveElement.focus(), 0);
+      setTimeout(() => this._previousActiveElement!.focus(), 0);
     }
 
     this._events.dispose();
@@ -192,7 +192,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
-    isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode <= ResponsiveMode.medium : isBeakVisible;
+    isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
     /**
      * When useTargetWidth is true, get the width of the target element and apply it for the context menu container
      */
@@ -371,11 +371,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return React.createElement(
       'button',
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
-      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+      this._renderMenuItemChildren(item, index, !hasCheckmarks, !hasIcons));
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    let isItemChecked: boolean = item.isChecked || item.checked;
+    let isItemChecked: boolean = (item.isChecked || item.checked) as boolean;
     return (
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
@@ -506,12 +506,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _getSubmenuProps() {
     const { submenuTarget, expandedMenuItemKey } = this.state;
-    const item = this._findItemByKey(expandedMenuItemKey);
+    const item = this._findItemByKey(expandedMenuItemKey!);
     let submenuProps = null;
 
     if (item) {
       submenuProps = {
-        items: getSubmenuItems(item),
+        items: getSubmenuItems(item)!,
         target: submenuTarget,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
@@ -531,7 +531,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   }
 
-  private _findItemByKey(key: string): IContextualMenuItem | null {
+  private _findItemByKey(key: string): IContextualMenuItem | undefined {
     let { items } = this.props;
     for (const item of items) {
       if (item.key && item.key === key) {
@@ -547,8 +547,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     } else {
       this.setState({
         dismissedMenuItemKey: this.state.expandedMenuItemKey,
-        expandedMenuItemKey: null,
-        submenuTarget: null
+        expandedMenuItemKey: undefined,
+        submenuTarget: undefined
       });
     }
   }
@@ -556,19 +556,19 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
     if (target) {
       if (typeof target === 'string') {
-        let currentDoc: Document = getDocument();
+        let currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
-        this._targetWindow = getWindow();
+        this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._target = target;
-        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
       } else {
         let targetElement: HTMLElement = target as HTMLElement;
         this._target = target;
-        this._targetWindow = getWindow(targetElement);
+        this._targetWindow = getWindow(targetElement)!;
       }
     } else {
-      this._targetWindow = getWindow();
+      this._targetWindow = getWindow()!;
     }
   }
 }

@@ -239,9 +239,9 @@ describe('ContextualMenu', () => {
     let headerTwo = menuItems[3];
 
     expect(headerOne.className).to.not.contain('divider', 'The first item is a divider and it should be a header');
-    expect(headerOne.firstElementChild.className).to.contain('header', 'The first item was not a header');
+    expect(headerOne.firstElementChild!.className).to.contain('header', 'The first item was not a header');
     expect(dividerOne.className).to.contain('divider', 'The third item in the contextualmenu was not a divider');
-    expect(headerTwo.firstElementChild.className).to.contain('header', 'The final item was not a header');
+    expect(headerTwo.firstElementChild!.className).to.contain('header', 'The final item was not a header');
   });
 
   it('does not return a value if no items are given', () => {
@@ -275,7 +275,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1').firstChild;
+    let focusedItem = document.querySelector('.testkey1')!.firstChild;
     expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
   });
 
@@ -299,7 +299,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1').firstChild;
+    let focusedItem = document.querySelector('.testkey1')!.firstChild;
     expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
   });
 
