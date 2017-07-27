@@ -1,4 +1,4 @@
-import { DefaultButton, IconButton, CommandButton, CompoundButton, PrimaryButton } from './index';
+import { DefaultButton, IconButton, ActionButton, CompoundButton, PrimaryButton } from './index';
 import { IconName } from '../../Icon';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -26,20 +26,20 @@ export default class ButtonVPage extends React.Component<any, any> {
         <IconButton id={ 'IconButtonChecked' } checked={ true } iconProps={ { iconName } } />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButton'
+        <ActionButton id='ActionButton'
           icon='AddFriend'
-          text='Command Button' />
+          text='Action Button' />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButtonDisabled' icon='AddFriend'
+        <ActionButton id='ActionButtonDisabled' icon='AddFriend'
           disabled={ true }
-          text='Command Button' />
+          text='Action Button' />
       </div >&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButtonChecked'
+        <ActionButton id='ActionButtonChecked'
           checked={ true }
           icon='AddFriend'
-          text='Command Button' />
+          text='Action Button' />
       </div>&nbsp;
       <div>
         <CompoundButton id='CompoundButton'

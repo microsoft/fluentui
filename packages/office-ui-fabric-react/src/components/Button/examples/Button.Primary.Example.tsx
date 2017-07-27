@@ -12,7 +12,6 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Primary button</Label>
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }

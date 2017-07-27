@@ -66,7 +66,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName: 'menuIconProps',
       toggled: 'checked'
     });
-
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
@@ -84,20 +83,24 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       href,
       iconProps,
+      menuIconProps,
       styles,
       text,
       checked,
       variantClassName
          } = this.props;
 
+    let { menuProps } = this.state;
+
     this._classNames = getClassNames(
       styles,
       className,
       variantClassName,
       iconProps && iconProps.className,
+      menuIconProps && menuIconProps.className,
       disabled,
       checked,
-      this.state.menuProps != null && !this.props.split
+      menuProps != null && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -332,7 +335,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={ this._classNames.icon }
+          className={ this._classNames.menuIcon }
         />
         :
         null
@@ -358,7 +361,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onToggleMenu(): void {
     const { menuProps } = this.props;
     let currentMenuProps = this.state.menuProps;
-
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
 
