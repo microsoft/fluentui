@@ -25,6 +25,12 @@ export enum KeyboardSpinDirection {
 }
 
 export interface ISpinButtonState {
+
+  /**
+   * Is true when the control has focus.
+   */
+  isFocused?: boolean;
+
   /**
    * the value of the spin button
    */
@@ -77,6 +83,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = value;
 
     this.state = {
+      isFocused: false,
       value: value,
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
@@ -131,6 +138,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.props;
 
     const {
+      isFocused,
       value,
       keyboardSpinDirection
     } = this.state;
@@ -138,6 +146,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const classNames = getClassNames(
       getStyles(theme, customStyles),
       disabled,
+      isFocused,
       keyboardSpinDirection,
       labelPosition
     );
@@ -171,9 +180,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             aria-valuenow={ value }
             aria-valuemin={ min && String(min) }
             aria-valuemax={ max && String(max) }
-            onBlur={ this._validate }
+            onBlur={ this._onBlur }
             ref={ this._resolveRef('_input') }
-            onFocus={ this.focus }
+            onFocus={ this._onFocus }
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
             readOnly={ disabled }
@@ -181,8 +190,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className={ classNames.arrowBox }>
             <IconButton
-              styles={ getArrowButtonStyles(theme, customStyles ? customStyles.arrowButtonStyles : null) }
+              styles={ this._getUpArrowButtonStyles() }
               className={ 'ms-UpButton' }
+              checked={ keyboardSpinDirection === KeyboardSpinDirection.up ? true : false }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               aria-hidden='true'
@@ -192,8 +202,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              styles={ getArrowButtonStyles(theme, customStyles ? customStyles.arrowButtonStyles : null) }
+              styles={ this._getDownArrowButtonStyles() }
               className={ 'ms-DownButton' }
+              checked={ keyboardSpinDirection === KeyboardSpinDirection.down ? true : false }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               aria-hidden='true'
@@ -219,16 +230,27 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     );
   }
 
-  /**
-   * OnFocus select the contents of the input
-   */
-  public focus() {
+  public focus(): void {
+    if (this._input) {
+      this._input.focus();
+    }
+  }
+
+  @autobind
+  private _onFocus() {
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
 
-    this._input.focus();
     this._input.select();
+
+    this.setState({ isFocused: true });
+  }
+
+  @autobind
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+    this._validate(ev);
+    this.setState({ isFocused: false });
   }
 
   /**
@@ -414,6 +436,22 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   @autobind
   private _onDecrementMouseDown() {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
+  }
+
+  private _getUpArrowButtonStyles() {
+    const { styles: customStyles, theme } = this.props;
+    const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
+    const customStylesUpArrowButton = (customStyles != null) ? customStyles.upArrowButtonStyles : null;
+
+    return getArrowButtonStyles(theme, true, customStylesArrowButton, customStylesUpArrowButton);
+  }
+
+  private _getDownArrowButtonStyles() {
+    const { styles: customStyles, theme } = this.props;
+    const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
+    const customStylesDownArrowButton = (customStyles != null) ? customStyles.upArrowButtonStyles : null;
+
+    return getArrowButtonStyles(theme, false, customStylesArrowButton, customStylesDownArrowButton);
   }
 
 }

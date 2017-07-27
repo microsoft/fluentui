@@ -129,26 +129,154 @@ export interface ISpinButtonProps {
 }
 
 export interface ISpinButtonStyles {
+
+  /**
+   * Styles for the container of the spin button component.
+   */
   container: IStyle;
+
+  /**
+   * Style for the label wrapper element of the component
+   * The label wrapper contains the icon and the label.
+   */
   labelWrapper: IStyle;
+
+  /**
+   * Style override when the label is positioned at the start.
+   */
   labelWrapperStart: IStyle;
+
+  /**
+   * Style override when the label is positioned at the end.
+   */
   labelWrapperEnd: IStyle;
+
+  /**
+   * Style override when the label is positioned at the top.
+   */
   labelWrapperTop: IStyle;
+
+  /**
+   * Style override when the label is positioned at the bottom.
+   */
   labelWrapperBottom: IStyle;
+
+  /**
+   * Style for the icon.
+   */
   icon: IStyle;
+
+  /**
+   * Style for the label text
+   */
   label: IStyle;
+
+  /**
+   * Style for root when enabled.
+   */
   root: IStyle;
+
+  /**
+   * Style override when
+   */
   rootTopBottom: IStyle;
+
+  /**
+   * Style override when spinButton is enabled/hovered.
+   */
   rootHovered: IStyle;
+
+  /**
+   * Style override when spinButton is enabled/focused.
+   */
   rootFocused: IStyle;
+
+  /**
+   * Style override when spinButton is disabled.
+   */
+  rootDisabled: IStyle;
+
+  /**
+   * Styles for the input.
+   */
   input: IStyle;
+
+  /**
+   * Style override for ::selection
+   */
   inputTextSelected: IStyle;
+
+  /**
+   * Style override when spinButton is disabled.
+   */
   inputDisabled: IStyle;
-  arrowBox: IStyle;
-  arrowBoxDisabled: IStyle;
+
+  /**
+   * Styles for the arrowButtonsContainer
+   */
+  arrowButtonsContainer: IStyle;
+
+  /**
+   * Style override for the arrowButtonsContainer when spin button is disabled.
+   */
+  arrowButtonsContainerDisabled: IStyle;
+
+  /**
+   * Styles common for the upArrow and downArrow buttons.
+   */
   arrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
+
+  /**
+   * Style override for the upArrow button.
+   */
+  upArrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
+
+  /**
+   * Style override for the downArrow button.
+   */
+  downArrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
 }
 
+/**
+ * Styles for the arrow buttons.
+ *
+ * Note: The buttons are in a checked state when arrow keys are used to
+ * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
+ * for styling when that is the case.
+ */
 export interface ISpinButtonArrowButtonStyles extends IButtonStyles {
 
+  /**
+   * Style for arrow button
+   */
+  root: IStyle;
+
+  /**
+   * Style override for arrow button when hovered.
+   */
+  rootHovered: IStyle;
+
+  /**
+   * Style override for arrow button when pressed.
+   */
+  rootPressed: IStyle;
+
+  /**
+   * Style override for arrow button when checked.
+   *
+   * NOTE : The correct arrow button is checked when the spin button is incremented/decremented
+   * using arrow keys. This is useful for visual cues for indication whether the value is being incremented/
+   * decremented
+   */
+  rootChecked: IStyle;
+
+  /**
+   * Style override for arrow button when spin button is disabled.
+   */
+  rootDisabled: IStyle;
+
+  /**
+   * Style for icon in the arrow button.
+   */
+  icon: IStyle;
 }

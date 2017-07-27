@@ -17,6 +17,7 @@ export interface ISpinButtonClassNames {
 export const getClassNames = memoizeFunction((
   styles: ISpinButtonStyles,
   disabled: boolean,
+  isFocused: boolean,
   keyboardSpinDirection: KeyboardSpinDirection,
   labelPosition: Position
 ): ISpinButtonClassNames => {
@@ -37,19 +38,29 @@ export const getClassNames = memoizeFunction((
     root: mergeStyles(
       styles.root,
       getStyleForRootBasedOnPosition(labelPosition, styles),
-      {
-        ':hover': styles.rootHovered,
-        ' .ms-spinButton-input:focus': styles.rootFocused,
-      }
+      !disabled && [
+        {
+          ':hover': styles.rootHovered
+        },
+        isFocused && {
+          // This is to increase the specifity of the focus styles
+          // and make it equal to that of the hover styles.
+          '&&': styles.rootFocused
+        }
+      ],
+      disabled && styles.rootDisabled
     ) as string,
     input: mergeStyles(
       'ms-spinButton-input',
       styles.input,
+      !disabled && {
+        '::selection': styles.inputTextSelected
+      },
       disabled && styles.inputDisabled,
     ) as string,
     arrowBox: mergeStyles(
-      styles.arrowBox,
-      disabled && styles.arrowBoxDisabled
+      styles.arrowButtonsContainer,
+      disabled && styles.arrowButtonsContainerDisabled
     ) as string,
   };
 });
