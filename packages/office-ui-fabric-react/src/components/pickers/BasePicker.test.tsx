@@ -148,5 +148,32 @@ describe('Pickers', () => {
       expect(picker.items[0].name).to.be.equal('testColor', 'The selected item did not have the correct text');
       ReactDOM.unmountComponentAtNode(root);
     });
+    it('fires change events correctly for controlled components', (done) => {
+      let root = document.createElement('div');
+      document.body.appendChild(root);
+      let picker: TagPicker = ReactDOM.render(
+        <TagPicker
+          onResolveSuggestions={ onResolveSuggestions }
+          selectedItems={ [] }
+          onChange={ (items) => {
+            expect(items.length).to.be.equal(1, 'The picker incorrectly added an item');
+            expect(items[0].name).to.be.equal('black', 'The picker incorrectly added an item');
+            done();
+          } }
+        />,
+        root
+      ) as TagPicker;
+      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+
+      input.focus();
+      input.value = 'bl';
+      ReactTestUtils.Simulate.change(input);
+
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+
+      ReactTestUtils.Simulate.click(suggestionOptions[0]);
+
+      ReactDOM.unmountComponentAtNode(root);
+    });
   });
 });
