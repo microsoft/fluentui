@@ -21,7 +21,7 @@ const ComboBoxLineHeight = '30px';
 const ComboxBoxCaretDownWidth = '32px';
 const ComboBoxOptionHeight = '36px';
 
-const getDisabledStyles = (theme: ITheme): IStyle => {
+const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
   return {
     backgroundColor: semanticColors.disabledBackground,
@@ -38,9 +38,9 @@ const getDisabledStyles = (theme: ITheme): IStyle => {
       color: 'GrayText'
     },
   };
-};
+});
 
-const getListOptionHighContrastStyles = (theme: ITheme): IStyle => {
+const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
   return {
     [MS_HIGHCONTRAST_ACTIVE]: {
@@ -49,7 +49,7 @@ const getListOptionHighContrastStyles = (theme: ITheme): IStyle => {
       color: 'HighlightText',
     },
   };
-};
+});
 
 export const getOptionStyles = memoizeFunction((
   theme: ITheme,
