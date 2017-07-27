@@ -34,7 +34,8 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   mostRecentlyUsedHeaderText: 'Suggested Contacts',
   noResultsFoundText: 'No results found',
   loadingText: 'Loading',
-  showRemoveButtons: true
+  showRemoveButtons: true,
+  suggestionsAvailableAlertText: 'Suggestions available'
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
@@ -83,6 +84,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       case 5:
         currentPicker = this._renderLimitedSearch();
         break;
+      case 6:
+        currentPicker = this._renderProcessSelectionPicker();
       default:
     }
 
@@ -96,7 +99,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
               { key: 2, text: 'Compact' },
               { key: 3, text: 'Members List' },
               { key: 4, text: 'Preselected Items' },
-              { key: 5, text: 'Limit Search' }
+              { key: 5, text: 'Limit Search' },
+              { key: 6, text: 'Process Selection' }
             ] }
             selectedKey={ this.state.currentPicker }
             onChanged={ this._dropDownSelected }
@@ -136,6 +140,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         key={ 'normal' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
+        removeButtonAriaLabel={ 'Remove' }
       />
     );
   }
@@ -187,6 +192,22 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
+  public _renderProcessSelectionPicker() {
+    return (
+      <NormalPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        onEmptyInputFocus={ this._returnMostRecentlyUsed }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText as string }
+        pickerSuggestionsProps={ suggestionProps }
+        className={ 'ms-PeoplePicker' }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
+        onValidateInput={ this._validateInput }
+        removeButtonAriaLabel={ 'Remove' }
+        onItemSelected={ this._onItemSelected }
+      />
+    );
+  }
+
   @autobind
   private _renderFooterText(): JSX.Element {
     return <div>No additional results</div>;
@@ -212,6 +233,13 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       let newSuggestedPeople: IPersonaProps[] = mostRecentlyUsed.slice(0, indexMostRecentlyUsed).concat(mostRecentlyUsed.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
+  }
+
+  @autobind
+  private _onItemSelected(item: IPersonaProps) {
+    const processedItem = Object.assign({}, item);
+    processedItem.primaryText = `${item.primaryText} (selected)`;
+    return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
   }
 
   @autobind

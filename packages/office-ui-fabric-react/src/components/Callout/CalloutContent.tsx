@@ -48,9 +48,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _calloutElement: HTMLDivElement;
   private _targetWindow: Window;
   private _bounds: IRectangle;
-  private _maxHeight: number;
+  private _maxHeight: number | undefined;
   private _positionAttempts: number;
-  private _target: HTMLElement | MouseEvent;
+  private _target: HTMLElement | MouseEvent | null;
   private _setHeightOffsetTimer: number;
 
   constructor(props: ICalloutProps) {
@@ -60,9 +60,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
     this._didSetInitialFocus = false;
     this.state = {
-      positions: null,
-      slideDirectionalClassName: null,
-      calloutElementRect: null,
+      positions: undefined,
+      slideDirectionalClassName: undefined,
+      calloutElementRect: undefined,
       heightOffset: 0
     };
     this._positionAttempts = 0;
@@ -75,14 +75,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public componentWillMount() {
     let target = this.props.targetElement ? this.props.targetElement : this.props.target;
-    this._setTargetWindowAndElement(target);
+    this._setTargetWindowAndElement(target!);
   }
 
   public componentWillUpdate(newProps: ICalloutProps) {
     if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
       let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
       this._maxHeight = undefined;
-      this._setTargetWindowAndElement(newTarget);
+      this._setTargetWindowAndElement(newTarget!);
     }
     if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
       this._maxHeight = undefined;
@@ -133,8 +133,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       ? (AnimationClassNames as any)[positions.directionalClassName]
       : '';
 
-    let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset;
-    let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
+    let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
+    let beakVisible = isBeakVisible && (!!targetElement || !!target);
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -149,6 +149,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               directionalClassName
             ) }
           style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
+          tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
         >
 
@@ -227,8 +229,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this._async.setTimeout(() => {
       this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
       this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-      this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
-      this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow.document.body, 'focus', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow.document.body, 'click', this._dismissOnLostFocus, true);
     }, 0);
 
     if (this.props.onLayerMounted) {
@@ -245,16 +247,16 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let currentProps: IPositionProps;
+      let currentProps: IPositionProps | undefined;
       currentProps = assign(currentProps, this.props);
-      currentProps.bounds = this._getBounds();
+      currentProps!.bounds = this._getBounds();
       // Temporary to be removed when targetElement is removed. Currently deprecated.
       if (this.props.targetElement) {
-        currentProps.targetElement = this._target as HTMLElement;
+        currentProps!.targetElement = this._target as HTMLElement;
       } else {
-        currentProps.target = this._target;
+        currentProps!.target = this._target!;
       }
-      let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
+      let newPositions: IPositionInfo = getRelativePositions(currentProps!, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -282,12 +284,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
       if (!currentBounds) {
         currentBounds = {
-          top: 0 + this.props.minPagePadding,
-          left: 0 + this.props.minPagePadding,
-          right: this._targetWindow.innerWidth - this.props.minPagePadding,
-          bottom: this._targetWindow.innerHeight - this.props.minPagePadding,
-          width: this._targetWindow.innerWidth - this.props.minPagePadding * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding * 2
+          top: 0 + this.props.minPagePadding!,
+          left: 0 + this.props.minPagePadding!,
+          right: this._targetWindow.innerWidth - this.props.minPagePadding!,
+          bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
+          width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
+          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
         };
       }
       this._bounds = currentBounds;
@@ -300,7 +302,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       if (this.props.directionalHintFixed && this._target) {
         let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
         let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
-        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint, beakWidth + gapSpace, this._getBounds());
+        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, beakWidth! + gapSpace, this._getBounds());
       } else {
         this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
       }
@@ -329,19 +331,19 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
     if (target) {
       if (typeof target === 'string') {
-        let currentDoc: Document = getDocument();
+        let currentDoc: Document = getDocument()!;
         this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
-        this._targetWindow = getWindow();
+        this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._target = target;
-        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
       } else {
         let targetElement: HTMLElement = target as HTMLElement;
         this._target = target;
-        this._targetWindow = getWindow(targetElement);
+        this._targetWindow = getWindow(targetElement)!;
       }
     } else {
-      this._targetWindow = getWindow();
+      this._targetWindow = getWindow()!;
     }
   }
 
@@ -354,10 +356,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          heightOffset: this.state.heightOffset + scrollDiff
+          heightOffset: this.state.heightOffset! + scrollDiff
         });
 
-        if (calloutMainElem.offsetHeight < this.props.finalHeight) {
+        if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
           this._setHeightOffsetEveryFrame();
         } else {
           this._async.cancelAnimationFrame(this._setHeightOffsetTimer);
