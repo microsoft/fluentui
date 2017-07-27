@@ -82,6 +82,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default ''
    */
   removeButtonAriaLabel?: string;
+  /**
+   * A callback to process a selection after the user selects something from the picker.
+   */
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
 }
 
 export interface IBasePickerSuggestionsProps {
