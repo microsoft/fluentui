@@ -65,23 +65,36 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState) {
-    if (this.state.isStickyTop && !prevState.isStickyTop) {
+    const { isStickyTop, isStickyBottom } = this.state;
+
+    if (this.props.children !== prevProps.children) {
+      ReactDOM.render(<div>{ this.props.children }</div>, this.content);
+    }
+    if (isStickyTop && !prevState.isStickyTop) {
       this._setSticky(() => {
         this.context.addStickyHeader(this);
       });
-    } else if (!this.state.isStickyTop && prevState.isStickyTop) {
+    } else if (!isStickyTop && prevState.isStickyTop) {
       this._resetSticky(() => {
         this.context.removeStickyHeader(this);
       });
-    } else if (this.state.isStickyBottom && !prevState.isStickyBottom) {
+    } else if (isStickyBottom && !prevState.isStickyBottom) {
       this._setSticky(() => {
         this.context.addStickyFooter(this);
       });
-    } else if (!this.state.isStickyBottom && prevState.isStickyBottom) {
+    } else if (!isStickyBottom && prevState.isStickyBottom) {
       this._resetSticky(() => {
         this.context.removeStickyFooter(this);
       });
     }
+  }
+
+  public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState) {
+    const { isStickyTop, isStickyBottom, placeholderHeight } = this.state;
+    return isStickyTop !== nextState.isStickyTop ||
+      isStickyBottom !== nextState.isStickyBottom ||
+      placeholderHeight !== nextState.placeholderHeight ||
+      this.props.children !== nextProps.children;
   }
 
   public setPlaceholderHeight(height: number) {

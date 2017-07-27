@@ -101,9 +101,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       sticky.content.addEventListener('transitionend',
         this._setPlaceholderHeights.bind(null, this._stickyAbove, stickyAbove),
         false);
-      setTimeout(() => {
-        sticky.content.children[0].classList.add(sticky.props.stickyClassName);
-      }, 1);
+      if (sticky.props.stickyClassName) {
+        setTimeout(() => {
+          sticky.content.children[0].classList.add(sticky.props.stickyClassName);
+        }, 1);
+      }
       this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
     }
   }
@@ -129,9 +131,11 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       sticky.content.addEventListener('transitionend',
         this._setPlaceholderHeights.bind(null, this._stickyBelow, stickyBelow),
         false);
-      setTimeout(() => {
-        sticky.content.children[0].classList.add(sticky.props.stickyClassName);
-      }, 1);
+      if (sticky.props.stickyClassName) {
+        setTimeout(() => {
+          sticky.content.children[0].classList.add(sticky.props.stickyClassName);
+        }, 1);
+      }
       this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
     }
   }

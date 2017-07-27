@@ -83,7 +83,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
 
     return (
       <ScrollablePane>
-        <Sticky><div>{ selectionDetails }</div></Sticky>
+        <Sticky>{ selectionDetails }</Sticky>
         <TextField
           label='Filter by name:'
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
