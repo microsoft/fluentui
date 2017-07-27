@@ -8,8 +8,6 @@ import {
   css,
   getId,
   BaseComponent,
-  getNativeProps,
-  inputProperties,
 } from '@uifabric/utilities';
 import * as stylesImport from './ChoiceGroup.scss';
 const styles: any = stylesImport;
