@@ -296,15 +296,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       this.setState({
         selectedIndex: index
       });
-    } else if (index === this.state.selectedIndex) {
-
-      // The index that got the click was already selected,
-      // clear the selection
-      this._clearColors([this.props.onColorChanged!, this.props.onCellHovered!, this.props.onCellFocused!]);
-
-      this.setState({
-        selectedIndex: undefined
-      });
     }
   }
 
