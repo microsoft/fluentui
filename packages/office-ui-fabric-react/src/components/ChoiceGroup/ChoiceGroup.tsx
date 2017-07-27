@@ -64,15 +64,13 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     let { label, options, className, required } = this.props;
     let { keyChecked, keyFocused } = this.state;
 
-    let nativeProps = getNativeProps(this.props, inputProperties);
-
     return (
       // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
       <div role='application' className={ className }>
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
           role='radiogroup'
-          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(nativeProps as any)['aria-labelledby'] || ''}` }
+          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(this.props as any)['aria-labelledby'] || ''}` }
         >
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
