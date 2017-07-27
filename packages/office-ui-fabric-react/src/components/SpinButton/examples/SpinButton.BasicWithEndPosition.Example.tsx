@@ -5,7 +5,7 @@ import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 export class SpinButtonBasicWithEndPositionExample extends React.Component<any, any> {
   public render() {
     return (
-      <div style={ { width: '233px' } }>
+      <div style={ { width: '223px' } }>
         <SpinButton
           defaultValue='0'
           iconProps={ { iconName: 'Light' } }
