@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.24.0",
+      "tag": "office-ui-fabric-react_v4.24.0",
+      "date": "Thu, 27 Jul 2017 10:23:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "ycoco <ycocococo6256@gmail.com>",
+            "commit": "23d9125b1e4c2d506e276f6f023fc9f21a9cf1ea",
+            "comment": "Dropdown: added onBlur support."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b1a2623318f33bfdef482be2effeea65c4dbeba0",
+            "comment": "Fix focus issues for Safari and Firefox on Mac OS"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df7a230735c92a73935bbdf97cfb6f2fcae9af45",
+            "comment": "Icons: Added new icons from 2.38"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "6c84d750f0c2446449368200e23c2aede7ab04f5",
+            "comment": "Adds prop to process selection in BasePicker"
+          },
+          {
+            "author": "veloiya <30428533+veloiya@users.noreply.github.com>",
+            "commit": "b711509d4a7e73d3a89734afd3358f72805b8550",
+            "comment": "CommandBar: Accessibility fix for expand behavior"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "0a25f628156487f5767dec48629187098762493c",
+            "comment": "More type casting to get us on the path to enabling strictNullChecks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.16 <1.0.0` to `>=0.14.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.23.0",
       "tag": "office-ui-fabric-react_v4.23.0",
       "date": "Tue, 25 Jul 2017 10:22:35 GMT",

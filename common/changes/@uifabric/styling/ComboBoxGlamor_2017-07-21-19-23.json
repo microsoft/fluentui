@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "Icons: Added new icons from 2.38",
       "packageName": "@uifabric/styling",
+      "comment": "Adding High contrast colors to the paletter",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "micahgodbolt@gmail.com"
+  "email": "kushaly@microsoft.com"
 }
