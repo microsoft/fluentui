@@ -19,7 +19,7 @@ export interface ICommandBarData {
   primaryItems: ICommandBarItemProps[];
   overflowItems: ICommandBarItemProps[];
   farItems: ICommandBarItemProps[];
-  defaultOverflowItems: ICommandBarItemProps[];
+  originalOverflowItems: ICommandBarItemProps[];
   cacheKey: string;
 }
 
@@ -56,7 +56,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     let commandBardata: ICommandBarData = {
       primaryItems: [...items],
       overflowItems: [...overflowItems],
-      defaultOverflowItems: [...overflowItems],
+      originalOverflowItems: [...overflowItems],
       farItems,
       cacheKey: '',
     };
@@ -137,10 +137,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData {
-    let { primaryItems, overflowItems, cacheKey } = data;
+    let { primaryItems, overflowItems, cacheKey, originalOverflowItems } = data;
     let movedItem = overflowItems[overflowItems.length - 1];
 
-    if (movedItem !== undefined && data.defaultOverflowItems.indexOf(movedItem) == -1) {
+    // Make sure that moved item exists and is not one of the original overflow items
+    if (movedItem !== undefined && originalOverflowItems.indexOf(movedItem) == -1) {
       movedItem.renderedInOverflow = false;
 
       overflowItems = overflowItems.slice(0, -1);
