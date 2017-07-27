@@ -235,7 +235,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
     let stepCounter = 0;
     // If current index is a header or divider, increment by step
-    while (options[index].itemType !== DropdownMenuItemType.Normal) {
+    while (options[index].itemType === DropdownMenuItemType.Header || options[index].itemType === DropdownMenuItemType.Divider) {
       // If stepCounter exceeds length of options, then return selectedIndex (-1)
       if (stepCounter >= options.length) {
         return selectedIndex;
@@ -429,6 +429,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (this.state.isOpen) {
       // Do not onBlur when the callout is opened
       return;
+    }
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
     }
   }
 

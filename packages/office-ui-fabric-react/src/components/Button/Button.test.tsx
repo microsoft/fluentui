@@ -5,7 +5,10 @@ import * as ReactDOM from 'react-dom';
 
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { DefaultButton } from './DefaultButton/DefaultButton';
+import { IconButton } from './IconButton/IconButton';
+import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
+// import { IconButton } from "src";
 
 let { expect } = chai;
 
@@ -43,6 +46,84 @@ describe('DefaultButton', () => {
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     console.log(renderedDOM.tagName);
     expect(renderedDOM.tagName).equals('A', 'A Button with an href renders as an anchor');
+  });
+
+  it('applies the correct aria attributes', () => {
+    let button, renderedDOM;
+    button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        href='http://www.microsoft.com'
+        target='_blank'>
+        Hello
+      </DefaultButton>
+    );
+    renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.getAttribute('aria-label') === null);
+    expect(renderedDOM.getAttribute('aria-labelledby') === null);
+    expect(renderedDOM.getAttribute('aria-describedby') === null);
+
+    button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        href='http://www.microsoft.com'
+        target='_blank'
+        aria-label='MyLabel'>
+        Hello
+      </DefaultButton>
+    );
+    renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
+    expect(renderedDOM.getAttribute('aria-labelledby') === null);
+    expect(renderedDOM.getAttribute('aria-describedby') === null);
+
+    button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        href='http://www.microsoft.com'
+        target='_blank'
+        aria-labelledby='someid'>
+        Hello
+      </DefaultButton>
+    );
+    renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.getAttribute('aria-label') === 'MyLabel');
+    expect(renderedDOM.getAttribute('aria-labelledby') === 'someid');
+    expect(renderedDOM.getAttribute('aria-describedby') === null);
+
+    button = ReactTestUtils.renderIntoDocument<any>(
+      <DefaultButton
+        href='http://www.microsoft.com'
+        target='_blank'
+        ariaDescription='This description is not visible'
+        styles={{screenReaderText: 'some-screenreader-class'}}>
+        Hello
+      </DefaultButton>
+    );
+    renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.getAttribute('aria-label') === null);
+    expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector(`.ms-Button-label`).id);
+    expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
+
+    button = ReactTestUtils.renderIntoDocument<any>(
+      <IconButton
+        iconProps={{ iconName: 'Emoji2' }}
+        ariaDescription='Description on icon button'
+        styles={{screenReaderText: 'some-screenreader-class'}} />
+    );
+    renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.getAttribute('aria-label') === null);
+    expect(renderedDOM.getAttribute('aria-labelledby') === null);
+    expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.some-screenreader-class').id);
+
+    button = ReactTestUtils.renderIntoDocument<any>(
+      <CompoundButton
+        description='Some awesome description'
+        ariaDescription='Description on icon button'>
+        And this is the label
+      </CompoundButton>
+    );
+    renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+    expect(renderedDOM.getAttribute('aria-label') === null);
+    expect(renderedDOM.getAttribute('aria-labelledby') === renderedDOM.querySelector('.ms-Button-label').id);
+    expect(renderedDOM.getAttribute('aria-describedby') === renderedDOM.querySelector('.ms-Button-description').id);
   });
 
   describe('with menuProps', () => {

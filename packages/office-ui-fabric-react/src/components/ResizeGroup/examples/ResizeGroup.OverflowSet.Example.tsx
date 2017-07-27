@@ -49,6 +49,7 @@ export interface IResizeGroupOverflowSetExampleState {
   numberOfItems: number;
   buttonsChecked: boolean;
   cachingEnabled: boolean;
+  onGrowDataEnabled: boolean;
 }
 
 function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
@@ -63,31 +64,20 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
       short: false,
       buttonsChecked: false,
       cachingEnabled: false,
+      onGrowDataEnabled: false,
       numberOfItems: 20
     };
   }
 
   public render() {
-    let { numberOfItems, cachingEnabled, buttonsChecked, short } = this.state;
+    let { numberOfItems, cachingEnabled, buttonsChecked, short, onGrowDataEnabled } = this.state;
     let dataToRender = generateData(numberOfItems, cachingEnabled, buttonsChecked);
     return (
       <div className={ short ? styles.resizeIsShort : 'notResized' }>
         <ResizeGroup
           data={ dataToRender }
-          onReduceData={ (currentData) => {
-            if (currentData.primary.length === 0) {
-              return undefined;
-            }
-
-            let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
-            let primary = currentData.primary.slice(0, -1);
-
-            let cacheKey = undefined;
-            if (cachingEnabled) {
-              cacheKey = computeCacheKey(primary);
-            }
-            return { primary, overflow, cacheKey };
-          } }
+          onReduceData={ this.onReduceData }
+          onGrowData={ onGrowDataEnabled ? this.onGrowData : undefined }
           onRenderData={ (data) => {
             return (
               <OverflowSet
@@ -116,6 +106,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
         />
         <div className={ styles.settingsGroup }>
           <Checkbox label='Enable caching' onChange={ this.onCachingEnabledChanged } checked={ cachingEnabled } />
+          <Checkbox label='Set onGrowData' onChange={ this.onGrowDataEnabledChanged } checked={ onGrowDataEnabled } />
           <Checkbox label='Buttons checked' onChange={ this.onButtonsCheckedChanged } checked={ buttonsChecked } />
           <div className={ styles.itemCountDropdown } >
             <Dropdown
@@ -137,8 +128,45 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
   }
 
   @autobind
+  private onReduceData(currentData: any): any {
+    if (currentData.primary.length === 0) {
+      return undefined;
+    }
+
+    let overflow = [...currentData.primary.slice(-1), ...currentData.overflow];
+    let primary = currentData.primary.slice(0, -1);
+
+    let cacheKey = undefined;
+    if (this.state.cachingEnabled) {
+      cacheKey = computeCacheKey(primary);
+    }
+    return { primary, overflow, cacheKey };
+  }
+
+  @autobind
+  private onGrowData(currentData: any): any {
+    if (currentData.overflow.length === 0) {
+      return undefined;
+    }
+
+    let overflow = currentData.overflow.slice(1);
+    let primary = [...currentData.primary, ...currentData.overflow.slice(0, 1)];
+
+    let cacheKey = undefined;
+    if (this.state.cachingEnabled) {
+      cacheKey = computeCacheKey(primary);
+    }
+    return { primary, overflow, cacheKey };
+  }
+
+  @autobind
   private onCachingEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
     this.setState({ cachingEnabled: checked });
+  }
+
+  @autobind
+  private onGrowDataEnabledChanged(_: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean) {
+    this.setState({ onGrowDataEnabled: checked });
   }
 
   @autobind

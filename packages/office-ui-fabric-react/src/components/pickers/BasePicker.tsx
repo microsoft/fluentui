@@ -169,7 +169,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
-    let { disabled } = this.props;
+    let { disabled, removeButtonAriaLabel } = this.props;
     let onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
     let { items } = this.state;
@@ -180,7 +180,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       disabled: disabled,
-      onItemChange: this.onItemChange
+      onItemChange: this.onItemChange,
+      removeButtonAriaLabel: removeButtonAriaLabel
     }));
   }
 
@@ -462,8 +463,20 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected addItem(item: T) {
-    let newItems: T[] = this.state.items.concat([item]);
-    this.setState({ items: newItems }, () => this.onChange());
+    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ? this.props.onItemSelected(item) : item;
+
+    let processedItemObject: T = processedItem as T;
+    let processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
+
+    if (processedItemPromiseLike && processedItemPromiseLike.then) {
+      processedItemPromiseLike.then((resolvedProcessedItem: T) => {
+        let newItems: T[] = this.state.items.concat([resolvedProcessedItem]);
+        this.setState({ items: newItems }, () => this.onChange());
+      });
+    } else {
+      let newItems: T[] = this.state.items.concat([processedItemObject]);
+      this.setState({ items: newItems }, () => this.onChange());
+    }
   }
 
   @autobind

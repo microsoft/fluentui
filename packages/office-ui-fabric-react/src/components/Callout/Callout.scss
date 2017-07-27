@@ -26,6 +26,8 @@ $Callout-smallbeak-slant-width: 16px;
   position: absolute;
   box-sizing: border-box;
 
+  @include focus-clear();
+
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;
   }

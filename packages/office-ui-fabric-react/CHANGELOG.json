@@ -2,6 +2,144 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.24.0",
+      "tag": "office-ui-fabric-react_v4.24.0",
+      "date": "Thu, 27 Jul 2017 10:23:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "ycoco <ycocococo6256@gmail.com>",
+            "commit": "23d9125b1e4c2d506e276f6f023fc9f21a9cf1ea",
+            "comment": "Dropdown: added onBlur support."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "b1a2623318f33bfdef482be2effeea65c4dbeba0",
+            "comment": "Fix focus issues for Safari and Firefox on Mac OS"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df7a230735c92a73935bbdf97cfb6f2fcae9af45",
+            "comment": "Icons: Added new icons from 2.38"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "6c84d750f0c2446449368200e23c2aede7ab04f5",
+            "comment": "Adds prop to process selection in BasePicker"
+          },
+          {
+            "author": "veloiya <30428533+veloiya@users.noreply.github.com>",
+            "commit": "b711509d4a7e73d3a89734afd3358f72805b8550",
+            "comment": "CommandBar: Accessibility fix for expand behavior"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "0a25f628156487f5767dec48629187098762493c",
+            "comment": "More type casting to get us on the path to enabling strictNullChecks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.16 <1.0.0` to `>=0.14.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.23.0",
+      "tag": "office-ui-fabric-react_v4.23.0",
+      "date": "Tue, 25 Jul 2017 10:22:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "21e9f3cb32e33e534faa8929d1301bd2adc8de8e",
+            "comment": "Checkbox: Fixed label font size"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1fa13c6d69f2da24b26e429b009498ecb2e39037",
+            "comment": "TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "93603fc44d599a97603cba36b07384f3e99507a3",
+            "comment": "ResizeGroup: Prevent flashing when passing in new props"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "7932a0ee52e0beaa59ecdb6bac293ece52b28e23",
+            "comment": "ResizeGroup: Don't show a scrollbar while measuring the hidden div"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "c1e83a4109dda4cae3986bb38c77dfb724574287",
+            "comment": "Textfield: Fixed high contrast border and textarea font family"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ba082351b1f8c94015002bde8f3f1fdbe60241c9",
+            "comment": "Textfield: Removed icon pointer events so that any click is click in textfield"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "7ea94b40b14cd1928f477193867672fd5f422f14",
+            "comment": "Button: Support expanded style state triggered by opened menu"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.15 <1.0.0` to `>=0.13.16 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.22.0",
+      "tag": "office-ui-fabric-react_v4.22.0",
+      "date": "Mon, 24 Jul 2017 10:24:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Trevor Gau <trevorsg@gmail.com>",
+            "commit": "5933799d69801712dffcf665ac73231a6a2e2357",
+            "comment": "Fix application of aria properties on BaseButton."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "67d167f3d9400b3f38c0106a78f91a67a6eabb5e",
+            "comment": "ResizeGroup: Add support for onGrowData"
+          },
+          {
+            "author": "Joe Martella <martellaj@live.com>",
+            "commit": "5c9d10ee2cb1e4ccc82d5f03dccb02bf1276a23e",
+            "comment": "Accessibility fixes for PeoplePicker"
+          },
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "3d593e67d11ce99ef269ce5a7e207aa9399ddd48",
+            "comment": "Dropdown: Updated keydown handler to respond correctly to normal dropdown items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "f24070ef5b3a3173cfde2ee25cdb7b150a668ca7",
+            "comment": "Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.14 <1.0.0` to `>=0.13.15 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.21.4",
       "tag": "office-ui-fabric-react_v4.21.4",
       "date": "Fri, 21 Jul 2017 10:21:45 GMT",
