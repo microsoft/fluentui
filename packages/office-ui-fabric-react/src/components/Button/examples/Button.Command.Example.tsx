@@ -6,8 +6,8 @@ export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
     let { disabled, checked } = this.props;
 
     return (
-      <div className='ms-BasicButtonsExample'>
-        <div>
+      <div>
+        <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
           <CommandButton
             data-automation-id='test'
             disabled={ disabled }
@@ -28,6 +28,13 @@ export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
                 }
               ]
             } }
+          />
+          <CommandButton
+            data-automation-id='test2'
+            disabled={ disabled }
+            checked={ checked }
+            iconProps={ { iconName: 'Mail' } }
+            text='Send Mail'
           />
         </div>
       </div>

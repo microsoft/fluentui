@@ -12,10 +12,6 @@ import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
 
-const COMMAND_BUTTON_HEIGHT = '40px';
-const COMMAND_BUTTON_MINWIDTH = '40px';
-const COMMAND_PADDING = '0 4px';
-
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles,
@@ -26,11 +22,10 @@ export const getStyles = memoizeFunction((
   let baseSplitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
     root: {
-      minWidth: COMMAND_BUTTON_MINWIDTH,
-      height: COMMAND_BUTTON_HEIGHT,
+      minWidth: '40px',
       backgroundColor: theme.palette.neutralLighter,
       color: theme.palette.neutralPrimary,
-      padding: COMMAND_PADDING
+      padding: '0 4px'
     },
 
     rootHovered: {
@@ -58,7 +53,11 @@ export const getStyles = memoizeFunction((
     },
 
     rootExpanded: {
-      color: theme.palette.themePrimary
+      backgroundColor: theme.palette.neutralQuaternaryAlt,
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootCheckedHovered: {

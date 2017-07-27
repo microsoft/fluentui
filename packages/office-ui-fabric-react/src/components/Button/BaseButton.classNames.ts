@@ -40,7 +40,7 @@ export const getClassNames = memoizeFunction((
         'is-disabled',
         styles.rootDisabled
       ],
-      !disabled && !expanded && {
+      !disabled && !expanded && !checked && {
         ':hover': styles.rootHovered,
         ':hover .ms-Button-description': styles.descriptionHovered,
         ':hover .ms-Button-icon': styles.iconHovered,
