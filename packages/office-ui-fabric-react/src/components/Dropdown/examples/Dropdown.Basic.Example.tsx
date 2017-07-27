@@ -61,7 +61,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Controlled example:'
           selectedKey={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
-          onBlur={ this.onBlur.bind(this) }
+          onBlur={ () => console.log('onBlur called') }
           options={
             [
               { key: 'A', text: 'Option a' },
@@ -88,10 +88,6 @@ export class DropdownBasicExample extends React.Component<any, any> {
     }
 
     return list;
-  }
-
-  public onBlur() {
-    console.log('onBlur called....');
   }
 
 }
