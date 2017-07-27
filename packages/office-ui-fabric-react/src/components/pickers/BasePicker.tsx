@@ -75,6 +75,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.selection.setItems(this.state.items);
   }
 
+  public componentWillReceiveProps(newProps: P) {
+    if (newProps.selectedItems) {
+      this.setState({
+        items: newProps.selectedItems
+      });
+    }
+  }
+
   public focus() {
     this.focusZone.focus();
   }
@@ -185,10 +193,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }));
   }
 
-  protected resetFocus(index: number) {
+  protected resetFocus(index?: number) {
     let { items } = this.state;
 
-    if (items.length) {
+    if (items.length && index) {
       let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index, items.length - 1)] as HTMLElement;
 
       if (newEl) {
@@ -305,9 +313,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
-  protected onChange() {
+  protected onChange(items?: T[]) {
     if (this.props.onChange) {
-      this.props.onChange(this.state.items);
+      this.props.onChange(items || this.state.items);
     }
   }
 
@@ -420,7 +428,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       let newItems: T[] = items;
       newItems[index] = changedItem;
 
-      this.setState({ items: newItems }, () => this.onChange());
+      this._updateSelectedItems(newItems);
     }
   }
 
@@ -454,6 +462,26 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     });
   }
 
+  /**
+   * Controls what happens whenever there is an action that impacts the selected items.
+   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+   */
+  private _updateSelectedItems(items: T[], focusIndex?: number) {
+    if (this.props.selectedItems) {
+      this._onSelectedItemsUpdated(items);
+    } else {
+      this.setState({ items: items }, () => {
+        this._onSelectedItemsUpdated(null, focusIndex);
+      });
+    }
+  }
+
+  private _onSelectedItemsUpdated(items?: T[], focusIndex?: number) {
+    this.resetFocus(focusIndex);
+    this.onChange(items);
+  }
+
+
   @autobind
   protected addItemByIndex(index: number): void {
     this.addItem(this.suggestionStore.getSuggestionAtIndex(index).item);
@@ -471,11 +499,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (processedItemPromiseLike && processedItemPromiseLike.then) {
       processedItemPromiseLike.then((resolvedProcessedItem: T) => {
         let newItems: T[] = this.state.items.concat([resolvedProcessedItem]);
-        this.setState({ items: newItems }, () => this.onChange());
+        this._updateSelectedItems(newItems);
       });
     } else {
       let newItems: T[] = this.state.items.concat([processedItemObject]);
-      this.setState({ items: newItems }, () => this.onChange());
+      this._updateSelectedItems(newItems);
     }
   }
 
@@ -486,7 +514,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     if (index >= 0) {
       let newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
-      this.setState({ items: newItems }, () => this.onChange());
+      this._updateSelectedItems(newItems);
     }
   }
 
@@ -497,10 +525,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let firstItemToRemove = this.selection.getSelection()[0];
     let index: number = items.indexOf(firstItemToRemove);
 
-    this.setState({ items: newItems }, () => {
-      this.resetFocus(index);
-      this.onChange();
-    });
+    this._updateSelectedItems(newItems, index);
   }
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
