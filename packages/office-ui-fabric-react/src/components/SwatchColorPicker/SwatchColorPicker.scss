@@ -62,6 +62,7 @@
       box-shadow: 0 0 0 1px #969696;
     }
 
+    &:focus .svg,
     & .svg {
       &.circle {
         border-radius: 100%;
@@ -80,9 +81,17 @@
   &:hover .svg,
   &:focus .svg,
   &:active .svg {
-    border: 4px solid $ms-color-neutralTertiaryAlt;
     width: 12px;
     height: 12px;
+  }
+
+  &:hover .svg,
+  &:focus .svg {
+      border: 4px solid $ms-color-neutralQuaternaryAlt;
+   }
+
+  &:active .svg {
+  border: 4px solid $ms-color-neutralTertiaryAlt;
   }
 
   &:hover .svg.circle,
@@ -114,35 +123,6 @@
   clear: both;
   display: block;
   min-width: 180px;
-}
-
-.icon {
-  width: 16px;
-}
-
-.menuItem {
-  margin: 0px 4px;
-}
-
-.header {
-  color: $menuHeaderColor;
-  font-weight: $ms-font-weight-semibold;
-  white-space: nowrap;
-  background: none;
-  border: none;
-  height: 36px;
-  line-height: 36px;
-  cursor: default;
-  padding: 0px 16px;
-  user-select: none;
-  @include text-align(left);
-}
-
-.divider {
-  display: block;
-  height: 1px;
-  background-color: $menuDividerColor;
-  position: relative;
 }
 
 

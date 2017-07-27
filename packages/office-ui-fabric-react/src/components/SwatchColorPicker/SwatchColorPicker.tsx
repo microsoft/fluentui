@@ -249,22 +249,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   }
 
   /**
-   * Gets the color for the selected index
-   * @returns {string} - The color for the selected index,
-   *   or undefined if: we are not updating the button icon with color,
-   *   there is not a valid selected index, or if we do not have a valid color
-   */
-  private _getSelectedColorToSet(): string | undefined {
-    let { selectedIndex } = this.state;
-
-    // Do we need to update the button with the selected
-    // item's color? If so, attempt to grab the color
-    if (selectedIndex !== undefined) {
-      return this.props.swatchColorPickerItems[selectedIndex].color;
-    }
-  }
-
-  /**
    * Render a cell or menu item
    * @param item - The item to render
    * @returns {JSX.Element} - Element representing the item
