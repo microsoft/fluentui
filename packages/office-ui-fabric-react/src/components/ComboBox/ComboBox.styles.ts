@@ -71,9 +71,15 @@ export const getOptionStyles = memoizeFunction((
         height: 'auto',
         minHeight: ComboBoxOptionHeight,
         lineHeight: '20px',
-        padding: '5px 16px',
+        // padding: '5px 16px',
+        paddingTop: '5px',
+        paddingRight: '16px',
+        paddingBottom: '5px',
+        paddingLeft: '16px',
         position: 'relative',
-        border: '1px solid transparent',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
         textAlign: 'left',
@@ -123,7 +129,12 @@ export const getOptionStyles = memoizeFunction((
       maxWidth: '100%',
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
-      margin: '1px'
+
+      // margin: '1px',
+      marginTop: '1px',
+      marginRight: '1px',
+      marginBottom: '1px',
+      marginLeft: '1px',
     },
   };
 
@@ -194,15 +205,26 @@ export const getStyles = memoizeFunction((
       fonts.medium,
       {
         boxShadow: 'none',
-        margin: '0 0 10px 0',
-        padding: '0',
+        // margin: '0 0 10px 0',
+        marginTop: '0',
+        marginRight: '0',
+        marginBottom: '10px',
+        marginLeft: '0',
+
+        // padding: '0',
+        paddingTop: '0',
         paddingRight: ComboxBoxCaretDownWidth,
+        paddingBottom: '0',
+        paddingLeft: '0',
+
         color: ComboBoxRootTextColor,
         position: 'relative',
         outline: '0',
         userSelect: 'none',
-        background: ComboBoxRootBackground,
-        border: '1px solid' + ComboBoxRootBorderColor,
+        backgroundColor: ComboBoxRootBackground,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: ComboBoxRootBorderColor,
         cursor: 'text',
         display: 'block',
         height: ComboBoxHeight,
@@ -242,7 +264,7 @@ export const getStyles = memoizeFunction((
       boxSizing: 'border-box',
       width: '100%',
       height: '100%',
-      border: 'none',
+      borderStyle: 'none',
       outline: 'none',
       font: 'inherit',
       textOverflow: 'ellipsis',
@@ -258,7 +280,9 @@ export const getStyles = memoizeFunction((
     },
     callout: {
       boxShadow: '0 0px 5px 0px rgba(0, 0, 0, 0.4)',
-      border: '1px solid' + ComboBoxCalloutBorderColor,
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: ComboBoxCalloutBorderColor,
     },
     optionsContainer: {
       display: 'block'
@@ -268,18 +292,25 @@ export const getStyles = memoizeFunction((
       {
         fontWeight: FontWeights.semibold,
         color: ComboBoxOptionHeaderTextColor,
-        background: 'none',
-        border: 'none',
+        backgroundColor: 'none',
+        borderStyle: 'none',
         height: ComboBoxOptionHeight,
         lineHeight: ComboBoxOptionHeight,
         cursor: 'default',
-        padding: '0px 16px',
+        // padding: '0px 16px',
+        paddingTop: '0',
+        paddingRight: '16px',
+        paddingBottom: '0',
+        paddingLeft: '16px',
+
         userSelect: 'none',
         textAlign: 'left'
       }
     ],
     divider: {
-      border: '1px solid' + ComboBoxOptionDividerBorderColor
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: ComboBoxOptionDividerBorderColor
     },
     optionDefaultStyles: null,
   };
