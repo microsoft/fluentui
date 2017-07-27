@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Jul 2017 10:22:35 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2017 10:23:33 GMT and should not be manually modified.
+
+## 4.24.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- More type casting to get us on the path to enabling strictNullChecks
+
+### Patches
+
+- Dropdown: added onBlur support.
+- Fix focus issues for Safari and Firefox on Mac OS
+- Icons: Added new icons from 2.38
+- Adds prop to process selection in BasePicker
+- CommandBar: Accessibility fix for expand behavior
 
 ## 4.23.0
 Tue, 25 Jul 2017 10:22:35 GMT
