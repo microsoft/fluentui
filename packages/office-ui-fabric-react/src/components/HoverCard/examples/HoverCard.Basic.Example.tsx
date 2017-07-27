@@ -81,11 +81,15 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
 
   @autobind
   private _onRenderExpandedCard(item: any): JSX.Element {
+    let { items, columns } = this.state;
     return (
       <div className='hoverCardExample-expandedCard'>
         { item.description }
-        { item.description }
-        { item.description }
+        <DetailsList
+          setKey='_onRenderExpandedCardSet'
+          items={ items }
+          columns={ columns }
+        />
       </div>
     );
   }
