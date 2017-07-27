@@ -430,7 +430,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.up) {
+    if (ev.which === KeyCodes.up && !ev.altKey) {
       if (this._header && this._header.focus()) {
         ev.preventDefault();
         ev.stopPropagation();

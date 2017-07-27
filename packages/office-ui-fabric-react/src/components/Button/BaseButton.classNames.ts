@@ -16,7 +16,7 @@ export const getClassNames = memoizeFunction((
   styles: IButtonStyles,
   className: string,
   variantClassName: string,
-  iconClassName: string,
+  iconClassName: string | undefined,
   disabled: boolean,
   checked: boolean,
   expanded: boolean

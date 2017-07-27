@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 25 Jul 2017 10:22:35 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jul 2017 10:23:33 GMT and should not be manually modified.
+
+## 0.14.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- Icons: Added new icons from 2.38
 
 ## 0.13.16
 Tue, 25 Jul 2017 10:22:35 GMT
