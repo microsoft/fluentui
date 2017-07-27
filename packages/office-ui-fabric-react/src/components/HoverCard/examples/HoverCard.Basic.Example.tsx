@@ -86,7 +86,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
       <div className='hoverCardExample-expandedCard'>
         { item.description }
         <DetailsList
-          setKey='_onRenderExpandedCardSet'
+          setKey='expandedCardSet'
           items={ items }
           columns={ columns }
         />
