@@ -14,7 +14,6 @@ import {
 import { memoizeFunction } from '../../Utilities';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
-const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: black-on-white)';
 
 const ComboBoxHeight = '32px';
 const ComboBoxLineHeight = '30px';
@@ -29,11 +28,6 @@ const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
     color: semanticColors.disabledText,
     cursor: 'default',
     [MS_HIGHCONTRAST_ACTIVE]: {
-      borderColor: 'GrayText',
-      color: 'GrayText'
-    },
-
-    [MS_HIGHCONTRAST_BLACK_ON_WHITE]: {
       borderColor: 'GrayText',
       color: 'GrayText'
     },
@@ -61,9 +55,10 @@ export const getOptionStyles = memoizeFunction((
 
   const ComboBoxOptionBackgroundSelected = semanticColors.menuItemBackgroundChecked;
   const ComboBoxOptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
-  const ComboBoxOptionTextColor = palette.black;
-  const ComboBoxOptionTextColorDisabled = palette.neutralTertiary;
-  const ComboBoxOptionBackgroundDisabled = palette.white;
+  const ComboBoxOptionTextColorHovered = palette.black;
+  const ComboBoxOptionTextColorSelected = palette.black;
+  const ComboBoxOptionTextColorDisabled = semanticColors.disabledText;
+  const ComboBoxOptionBackgroundDisabled = semanticColors.disabledBackground;
 
   const optionStyles: IComboBoxOptionStyles = {
     root: [
@@ -91,7 +86,7 @@ export const getOptionStyles = memoizeFunction((
     ],
     rootHovered: {
       backgroundColor: ComboBoxOptionBackgroundHovered,
-      color: ComboBoxOptionTextColor,
+      color: ComboBoxOptionTextColorHovered,
       ...getListOptionHighContrastStyles(theme)
     },
     rootFocused: {
@@ -99,12 +94,12 @@ export const getOptionStyles = memoizeFunction((
     },
     rootPressed: {
       backgroundColor: ComboBoxOptionBackgroundHovered,
-      color: ComboBoxOptionTextColor
+      color: ComboBoxOptionTextColorHovered
     },
     rootChecked: [
       {
         backgroundColor: ComboBoxOptionBackgroundSelected,
-        color: ComboBoxOptionTextColor
+        color: ComboBoxOptionTextColorSelected
       },
       getFocusStyle(theme),
       getListOptionHighContrastStyles(theme)
@@ -207,9 +202,7 @@ export const getStyles = memoizeFunction((
         outline: '0',
         userSelect: 'none',
         background: ComboBoxRootBackground,
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: ComboBoxRootBorderColor,
+        border: '1px solid' + ComboBoxRootBorderColor,
         cursor: 'text',
         display: 'block',
         height: ComboBoxHeight,
@@ -265,9 +258,7 @@ export const getStyles = memoizeFunction((
     },
     callout: {
       boxShadow: '0 0px 5px 0px rgba(0, 0, 0, 0.4)',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: ComboBoxCalloutBorderColor,
+      border: '1px solid' + ComboBoxCalloutBorderColor,
     },
     optionsContainer: {
       display: 'block'
@@ -288,8 +279,7 @@ export const getStyles = memoizeFunction((
       }
     ],
     divider: {
-      border: '1px solid',
-      borderColor: ComboBoxOptionDividerBorderColor
+      border: '1px solid' + ComboBoxOptionDividerBorderColor
     },
     optionDefaultStyles: null,
   };

@@ -1243,7 +1243,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
  */
   private _getCaretButtonStyles() {
     const { styles: customStyles } = this.props;
-    const caretButtoncustomStyles = (customStyles != null) ? customStyles.caretDownButtonStyles : null;
+    const caretButtoncustomStyles = customStyles ? customStyles.caretDownButtonStyles : null;
 
     return getCaretDownButtonStyles(this.props.theme, caretButtoncustomStyles);
   }
@@ -1254,7 +1254,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    */
   private _getCurrentOptionStyles(item: IComboBoxOption) {
     const { styles: customStyles } = this.props;
-    const customStylesForAllOptions = (customStyles != null) ? customStyles.optionDefaultStyles : null;
+    const customStylesForAllOptions = customStyles ? customStyles.optionDefaultStyles : null;
     const { styles: customStylesForCurrentOption } = item;
 
     const isSelected: boolean = this._isOptionSelected(item.index);
