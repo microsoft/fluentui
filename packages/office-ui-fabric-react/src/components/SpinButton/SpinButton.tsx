@@ -449,7 +449,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _getDownArrowButtonStyles() {
     const { styles: customStyles, theme } = this.props;
     const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
-    const customStylesDownArrowButton = (customStyles != null) ? customStyles.upArrowButtonStyles : null;
+    const customStylesDownArrowButton = (customStyles != null) ? customStyles.downArrowButtonStyles : null;
 
     return getArrowButtonStyles(theme, false, customStylesArrowButton, customStylesDownArrowButton);
   }
