@@ -76,7 +76,7 @@ export interface ISwatchColorPickerProps {
   setSize?: number;
 
   /**
-   * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa). Defaults to false
+   * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa). Defaults to true
    */
   shouldFocusCircularNavigate?: boolean;
 }
