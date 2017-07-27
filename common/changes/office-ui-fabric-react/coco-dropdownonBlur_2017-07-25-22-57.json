@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "added custom onblur support for dropdown",
+      "comment": "Dropdown: added onBlur support.",
       "type": "patch"
     }
   ],
