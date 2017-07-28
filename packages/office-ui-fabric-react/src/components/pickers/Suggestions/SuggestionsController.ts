@@ -5,7 +5,7 @@ export interface ISuggestionModel<T> {
 
 export class SuggestionsController<T> {
   public currentIndex: number;
-  public currentSuggestion: ISuggestionModel<T>;
+  public currentSuggestion: ISuggestionModel<T> | undefined;
   private suggestions: ISuggestionModel<T>[];
   constructor() {
     this.suggestions = [];

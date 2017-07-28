@@ -186,8 +186,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
     }
 
-    let currentValue: number;
-    let renderedValue: number;
+    let currentValue: number | undefined;
+    let renderedValue: number | undefined;
 
     // The value shouldn't be bigger than max or be smaller than min.
     if (currentSteps! > Math.floor(steps)) {
