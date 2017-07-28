@@ -125,7 +125,7 @@ describe('ComboBox', () => {
     let buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
     let secondItemElement = wrapper.getDOMNode().ownerDocument.querySelector('.ms-ComboBox-option[data-index="1"]');
-    ReactTestUtils.Simulate.click(secondItemElement);
+    ReactTestUtils.Simulate.click(secondItemElement!);
     let inputElement = comboBoxRoot.find('input');
     expect(inputElement.props().value).equals('2');
   });
