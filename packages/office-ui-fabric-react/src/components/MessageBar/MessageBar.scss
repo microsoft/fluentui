@@ -19,6 +19,7 @@
   .icon {
     @include padding-right(8px);
     color: $ms-color-info;
+    flex-shrink: 0;
   }
 
   :global(.ms-Link) {
@@ -110,6 +111,7 @@
 // Shared
 .content {
   display: flex;
+  line-height: normal;
   width: 100%;
   box-sizing: border-box;
   &:before {
@@ -161,7 +163,7 @@
       .innerTextPadding {
         @include padding-right(8px);
         max-height: 1.3em;
-        overflow-x: hidden;
+        overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
@@ -183,13 +185,18 @@
   flex-shrink: 0;
 }
 
-.dismissalOneline {
+.dismissOneline {
+  display: flex;
+}
+
+.rootIsOneline {
   min-width: 16px;
   min-height: 16px;
   // We want padding between the outside of the dismiss button to be 8px
   // and the padding between the dismiss button and the text to be 12px
   @include padding(8px, 12px, 8px, 12px);
 }
+
 
 .actionsOneline {
   position: relative;
