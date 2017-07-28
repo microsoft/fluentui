@@ -49,6 +49,7 @@ export * from './Spinner';
 export * from './Styling';
 export * from './SwatchColorPicker';
 export * from './TeachingBubble';
+export * from './TeachingDialog';
 export * from './TextField';
 export * from './Toggle';
 export * from './Tooltip';

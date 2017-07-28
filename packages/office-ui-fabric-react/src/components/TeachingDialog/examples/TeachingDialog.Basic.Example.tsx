@@ -1,0 +1,69 @@
+/* tslint:disable:no-unused-variable */
+import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
+import {
+  TeachingDialog
+} from '../index';
+
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { IImageProps } from 'office-ui-fabric-react/lib/Image';
+import { ITeachingDialogViewProps } from '../TeachingDialogView.Props';
+
+export interface ITeachingDialogBasicExampleState {
+  isTeachingDialogVisible?: boolean;
+}
+
+export class TeachingDialogBasicExample extends React.Component<any, ITeachingDialogBasicExampleState> {
+
+  private _menuButtonElement: HTMLElement;
+
+  public constructor() {
+    super();
+
+    this._onDismiss = this._onDismiss.bind(this);
+
+    this.state = {
+      isTeachingDialogVisible: false,
+    };
+  }
+
+  public render() {
+    let imageProps: IImageProps = { src: 'odsp-media/images/spfirstrun/Activity.gif' } as IImageProps;
+    let viewProps: ITeachingDialogViewProps[] =
+      [{
+        headline: 'Welcome',
+        leftButtonText: 'Discard',
+        rightButtonText: 'Next',
+        title: 'Lorem ipsum',
+        textContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
+        image: imageProps
+      } as ITeachingDialogViewProps,
+      {
+        leftButtonText: 'Previous',
+        rightButtonText: 'Done',
+        title: 'Lorem ipsum 2',
+        textContent: 'Lorem ipsum 2 dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
+        image: imageProps
+      } as ITeachingDialogViewProps];
+
+    return (
+      <div className='ms-TeachingDialogExample'>
+        <span className='ms-TeachingDialogBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+          <DefaultButton onClick={ this._onDismiss } >{ 'Show TeachingDialog' }</DefaultButton>
+        </span>
+        { this.state.isTeachingDialogVisible ? (
+          <div>
+            <TeachingDialog viewProps={ viewProps } />
+          </div>
+        ) : (null) }
+      </div>
+    );
+  }
+
+  private _onDismiss(ev: any) {
+    this.setState({
+      isTeachingDialogVisible: !this.state.isTeachingDialogVisible
+    });
+  }
+}
