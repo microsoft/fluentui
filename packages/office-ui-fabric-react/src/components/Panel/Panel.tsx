@@ -110,7 +110,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
             !isOpen && isAnimating && AnimationClassNames.fadeOut200
           ) }
           isDarkThemed={ false }
-          onClick={ isLightDismiss ? this._onPanelClick : null }
+          onClick={ isLightDismiss ? this._onPanelClick : undefined }
         />
       );
     }
@@ -202,25 +202,27 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderNavigation(props: IPanelProps): JSX.Element {
+  private _onRenderNavigation(props: IPanelProps): JSX.Element | null {
     const {
       closeButtonAriaLabel,
       hasCloseButton
     } = props;
-    return (
-      hasCloseButton &&
-      <IconButton
-        className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
-        onClick={ this._onPanelClick }
-        ariaLabel={ closeButtonAriaLabel }
-        data-is-visible={ true }
-        iconProps={ { iconName: 'Cancel' } }
-      />
-    );
+    if (hasCloseButton) {
+      return (
+        <IconButton
+          className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
+          onClick={ this._onPanelClick }
+          ariaLabel={ closeButtonAriaLabel }
+          data-is-visible={ true }
+          iconProps={ { iconName: 'Cancel' } }
+        />
+      );
+    }
+    return null;
   }
 
   @autobind
-  private _onRenderHeader(props: IPanelProps): JSX.Element {
+  private _onRenderHeader(props: IPanelProps): JSX.Element | null {
     const {
       headerText,
       componentId,
@@ -228,14 +230,16 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     } = props;
 
     const { id } = this.state;
-    return (
-      headerText &&
-      <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ componentId + '-headerText' } role='heading'>
-          { headerText }
-        </p>
-      </div>
-    );
+    if (headerText) {
+      return (
+        <div className={ css('ms-Panel-header', styles.header) }>
+          <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ componentId + '-headerText' } role='heading'>
+            { headerText }
+          </p>
+        </div>
+      );
+    }
+    return null;
   }
 
   @autobind
@@ -248,17 +252,19 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   }
 
   @autobind
-  private _onRenderFooter(props: IPanelProps): JSX.Element {
+  private _onRenderFooter(props: IPanelProps): JSX.Element | null {
     let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
-    return (
-      onRenderFooterContent != null &&
-      <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
-        <div className={ css('ms-Panel-footerInner', styles.footerInner) }>
-          { onRenderFooterContent() }
+    if (onRenderFooterContent != null) {
+      return (
+        <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
+          <div className={ css('ms-Panel-footerInner', styles.footerInner) }>
+            { onRenderFooterContent() }
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return null;
   }
 
   private _updateFooterPosition() {
