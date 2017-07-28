@@ -94,39 +94,17 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   @autobind
   public addStickyHeader(sticky: Sticky) {
     const { stickyAbove } = this.refs;
-    if (this._stickyAbove.indexOf(sticky) < 0) {
-      this._stickyAbove.push(sticky);
+    this._addSticky(sticky, this._stickyAbove, stickyAbove, () => {
       stickyAbove.appendChild(sticky.content);
-      // Add event listener to re calculate placeholder heights once animation ends
-      sticky.content.addEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, this._stickyAbove, stickyAbove),
-        false);
-      if (sticky.props.stickyClassName) {
-        setTimeout(() => {
-          sticky.content.children[0].classList.add(sticky.props.stickyClassName);
-        }, 1);
-      }
-      this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
-    }
+    });
   }
 
   @autobind
   public addStickyFooter(sticky: Sticky) {
     const { stickyBelow } = this.refs;
-    if (this._stickyBelow.indexOf(sticky) < 0) {
-      this._stickyBelow.push(sticky);
+    this._addSticky(sticky, this._stickyBelow, stickyBelow, () => {
       stickyBelow.insertBefore(sticky.content, stickyBelow.firstChild);
-      // Add event listener to re calculate placeholder heights once animation ends
-      sticky.content.addEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, this._stickyBelow, stickyBelow),
-        false);
-      if (sticky.props.stickyClassName) {
-        setTimeout(() => {
-          sticky.content.children[0].classList.add(sticky.props.stickyClassName);
-        }, 1);
-      }
-      this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
-    }
+    });
   }
 
   @autobind
@@ -139,7 +117,22 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     this._removeSticky(sticky, this._stickyBelow, this.refs.stickyBelow);
   }
 
-  @autobind
+  private _addSticky(sticky: Sticky, stickyList: Sticky[], container: HTMLElement, addStickyToContainer: Function) {
+    if (stickyList.indexOf(sticky) < 0) {
+      stickyList.push(sticky);
+      addStickyToContainer();
+      sticky.content.addEventListener('transitionend',
+        this._setPlaceholderHeights.bind(null, stickyList, container),
+        false);
+      if (sticky.props.stickyClassName) {
+        setTimeout(() => {
+          sticky.content.children[0].classList.add(sticky.props.stickyClassName);
+        }, 1);
+      }
+      this._setPlaceholderHeights(stickyList, container);
+    }
+  }
+
   private _removeSticky(sticky: Sticky, stickyList: Sticky[], container: HTMLElement) {
     const indexOfSticky = stickyList.indexOf(sticky);
     if (indexOfSticky >= 0) {

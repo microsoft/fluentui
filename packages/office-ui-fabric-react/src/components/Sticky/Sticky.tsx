@@ -105,7 +105,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public render() {
     const { isStickyTop, isStickyBottom, placeholderHeight } = this.state;
-    const { stickyClassName } = this.props;
     const isSticky = isStickyTop || isStickyBottom;
 
     return (
