@@ -7,9 +7,9 @@ import {
   assign
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
-import { SearchBox } from '../../SearchBox';
 import { CommandButton } from '../../Button';
 import { OverflowSet } from '../../OverflowSet';
+import { FocusZone } from '../../FocusZone';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost } from '../../Tooltip';
 import * as stylesImport from './CommandBar.scss';
@@ -23,14 +23,19 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
+const COMMANDBAR_HEIGHT = '40px';
+
 export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: [],
     farItems: [],
-    searchPlaceholderText: 'Search',
     elipisisIconProps: { iconName: 'More' }
   };
+
+  public refs: {
+    overflowSet: OverflowSet
+  }
 
   private _id: string;
 
@@ -41,7 +46,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   public render() {
     const {
-      isSearchBoxVisible,
       className,
       items,
       overflowItems,
@@ -51,12 +55,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       buttonStyles,
       onRenderButton = this._onRenderButton,
       onReduceData = this._onReduceData,
+      onGrowData = this._onGrowData,
     } = this.props;
 
     let commandBardata: ICommandBarData = {
       primaryItems: [...items],
       overflowItems: [...overflowItems],
-      originalOverflowItems: [...overflowItems],
+      originalOverflowItems: [...overflowItems], // for tracking
       farItems,
       cacheKey: '',
     };
@@ -65,18 +70,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
       <ResizeGroup
         data={ commandBardata }
         onReduceData={ onReduceData }
-        onGrowData={ this._onGrowData }
+        onGrowData={ onGrowData }
         onRenderData={ (data: ICommandBarData) => {
           return (
             <div className={ css('ms-CommandBar', styles.root) }>
 
-              {/*Optional Search*/ }
-              { isSearchBoxVisible &&
-                this._onRenderSearch(this.props)
-              }
-
               {/*Primary Items*/ }
               <OverflowSet
+                ref='overflowSet'
                 className={ css(styles.primarySet) }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : null }
@@ -109,8 +110,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     );
   }
 
+
   public focus() {
-    // this.refs.focusZone.focus();
+    this.refs.overflowSet.focus();
   }
 
   private computeCacheKey(primaryItems: ICommandBarItemProps[]): string {
@@ -154,26 +156,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     return undefined;
   }
 
-
-
-  @autobind
-  private _onRenderSearch(props: ICommandBarProps) {
-    const { searchBoxProps, searchPlaceholderText } = props;
-    return (
-      <SearchBox
-        {...searchBoxProps }
-        className={ css(styles.search, searchBoxProps.className) }
-        labelText={ searchPlaceholderText } />
-    );
-  }
-
   @autobind
   private _onRenderItems(item: ICommandBarItemProps) {
+    let { buttonStyles } = this.props;
 
     if (item.onRender) { return item.onRender(item); }
 
     const commandButtonProps: ICommandBarItemProps = assign({}, item, {
-      styles: assign({}, item.buttonStyles, this.props.buttonStyles),
+      styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.buttonStyles, ...buttonStyles },
       className: css(styles.commandButton, item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,

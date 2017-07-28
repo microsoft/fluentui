@@ -21,7 +21,6 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
     return (
       <div>
         <CommandBar
-          isSearchBoxVisible={ false }
           items={
             [
               {

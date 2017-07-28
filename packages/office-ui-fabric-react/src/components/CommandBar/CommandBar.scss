@@ -3,7 +3,6 @@
 .root {
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
-  height: 40px;
   position: relative;
   display: flex;
   background-color: $ms-color-neutralLighter;

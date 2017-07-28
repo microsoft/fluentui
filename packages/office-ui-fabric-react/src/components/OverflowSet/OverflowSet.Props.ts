@@ -2,7 +2,12 @@ import * as React from 'react';
 import { OverflowSet } from './OverflowSet';
 import { IRenderFunction } from '../../Utilities';
 
-export interface IOverflowSet { }
+export interface IOverflowSet {
+  /**
+ * Sets focus to the button.
+ */
+  focus: () => void;
+}
 
 export interface IOverflowSetProps extends React.Props<OverflowSet> {
   /**

@@ -8,7 +8,6 @@ export class CommandBarBasicExample extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      isSearchBoxVisible: true,
       areNamesVisible: true,
       areIconsVisible: true
     };
@@ -16,7 +15,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
 
   public render() {
     let { items, overflowItems, farItems } = this.props;
-    let { isSearchBoxVisible: searchBoxVisible, areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
+    let { areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
 
     let filteredItems = items.map((item: any) => assign({}, item, {
       name: namesVisible ? item.name : '',
@@ -36,13 +35,6 @@ export class CommandBarBasicExample extends React.Component<any, any> {
     return (
       <div>
         <Toggle
-          label='Show search box'
-          checked={ searchBoxVisible }
-          onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
-          onText='Visible'
-          offText='Hidden'
-        />
-        <Toggle
           label='Show names'
           checked={ namesVisible }
           onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
@@ -54,17 +46,12 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
           onText='Visible'
           offText='Hidden' />
+        <br />
         <CommandBar
-          isSearchBoxVisible={ searchBoxVisible }
-          searchPlaceholderText='Search'
           elipisisAriaLabel='More options'
           items={ filteredItems }
           overflowItems={ filteredOverflowItems }
           farItems={ filteredFarItems }
-          searchBoxProps={ {
-            onChange: (newValue) => console.log('SearchBox onChange fired: ' + newValue),
-            onSearch: (newValue) => console.log('SearchBox onSearch fired: ' + newValue)
-          } }
         />
       </div>
     );

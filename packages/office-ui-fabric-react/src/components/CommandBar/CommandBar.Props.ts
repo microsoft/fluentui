@@ -20,22 +20,6 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: (component: ICommandBar) => void;
 
   /**
-   * Whether or not the search box is visible
-   * @defaultvalue false
-   */
-  isSearchBoxVisible?: boolean;
-
-  /**
-   * Placeholder text to display in the search box
-   */
-  searchPlaceholderText?: string;
-
-  /**
-   * Props to be passed into SearchBox
-   */
-  searchBoxProps?: ISearchBoxProps;
-
-  /**
    * Items to render
    */
   items: ICommandBarItemProps[];
@@ -76,6 +60,11 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   onReduceData?: (data: ICommandBarData) => ICommandBarData;
 
   /**
+   * Custom function to grow data if items are too small for the given space. Return `undefined` if no more steps can be taken to avoid infinate loop.
+   */
+  onGrowData?: (data: ICommandBarData) => ICommandBarData;
+
+  /**
    * Additional css class to apply to the command bar
    * @defaultvalue undefined
    */
@@ -91,7 +80,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   iconOnly?: boolean;
 
   /**
-   * Custom styles for individual button. Value set as parent buttonStyles by default if present
+   * Custom styles for individual button
    */
   buttonStyles?: IButtonStyles;
 
