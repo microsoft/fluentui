@@ -90,7 +90,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public completeSuggestion() {
     if (this.suggestionStore.hasSelectedSuggestion()) {
-      this.addItem(this.suggestionStore.currentSuggestion.item);
+      this.addItem(this.suggestionStore.currentSuggestion!.item);
       this.updateValue('');
       this.input.clear();
     }
@@ -307,7 +307,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onChange() {
     if (this.props.onChange) {
-      this.props.onChange(this.state.items);
+      (this.props.onChange as any)(this.state.items);
     }
   }
 
@@ -329,7 +329,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) {
     if (this.props.onRemoveSuggestion) {
-      this.props.onRemoveSuggestion(item);
+      (this.props.onRemoveSuggestion as any)(item);
     }
     this.suggestionStore.removeSuggestion(index);
   }
@@ -383,7 +383,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       case KeyCodes.del:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
           if (this.props.onRemoveSuggestion) {
-            this.props.onRemoveSuggestion(this.suggestionStore.currentSuggestion.item);
+            (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
           }
           this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
           this.forceUpdate();
@@ -430,7 +430,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       isSearching: true
     }, () => {
       if (this.props.onGetMoreResults) {
-        let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
+        let suggestions: T[] | PromiseLike<T[]> = (this.props.onGetMoreResults as any)(this.input.value, this.state.items);
         let suggestionsArray: T[] = suggestions as T[];
         let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
@@ -463,7 +463,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected addItem(item: T) {
-    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ? this.props.onItemSelected(item) : item;
+    let processedItem: T | PromiseLike<T> = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
 
     let processedItemObject: T = processedItem as T;
     let processedItemPromiseLike: PromiseLike<T> = processedItem as PromiseLike<T>;
@@ -529,8 +529,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   private _onValidateInput() {
-    if (this.props.onValidateInput && this.props.onValidateInput(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
-      let itemToConvert = this.props.createGenericItem(this.input.value, this.props.onValidateInput(this.input.value));
+    if (this.props.onValidateInput && (this.props.onValidateInput as any)(this.input.value) !== ValidationState.invalid && this.props.createGenericItem) {
+      let itemToConvert = (this.props.createGenericItem as any)(this.input.value, (this.props.onValidateInput as any)(this.input.value));
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
@@ -538,7 +538,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   private _getTextFromItem(item: T, currentValue?: string): string {
     if (this.props.getTextFromItem) {
-      return this.props.getTextFromItem(item, currentValue);
+      return (this.props.getTextFromItem as any)(item, currentValue);
     } else {
       return '';
     }
