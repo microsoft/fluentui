@@ -43,7 +43,8 @@ export const getStyles = memoizeFunction((
       alignItems: 'center',
       cursor: 'pointer',
       position: 'relative',
-      userSelect: 'none'
+      userSelect: 'none',
+      textAlign: 'left'
     },
     labelReversed: {
       flexDirection: 'row-reverse',
