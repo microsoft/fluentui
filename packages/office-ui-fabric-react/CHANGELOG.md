@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Jul 2017 10:23:10 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jul 2017 18:36:00 GMT and should not be manually modified.
+
+## 4.25.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+### Patches
+
+- Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue.
+- Fix Callout to get a valid element
 
 ## 4.25.0
 Fri, 28 Jul 2017 10:23:10 GMT
