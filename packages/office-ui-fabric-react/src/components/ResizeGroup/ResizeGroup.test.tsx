@@ -269,7 +269,7 @@ describe('ResizeGroup', () => {
       // Set the initial window width
       getNextResizeGroupState(resizeGroupProps,
         {},
-        undefined,
+        sinon.stub(),
         initialWidth);
 
       // Pass in a state that reflects some rendered data
@@ -304,7 +304,7 @@ describe('ResizeGroup', () => {
       // Set the initial window width
       getNextResizeGroupState(resizeGroupProps,
         {},
-        undefined,
+        sinon.stub(),
         initialWidth);
 
       // Pass in a state that reflects some rendered data
@@ -458,7 +458,7 @@ describe('ResizeGroup', () => {
       // Set the initial window width
       getNextResizeGroupState(resizeGroupProps,
         {},
-        undefined,
+        sinon.stub(),
         initialWidth);
 
       // Pass in a state that reflects some rendered data
@@ -566,5 +566,45 @@ describe('ResizeGroup', () => {
       });
       expect(measuredElementWidthStub.callCount).to.equal(0);
     });
+  });
+
+  it('does not clear out the rendered contents when setting a new dataToMeasure', () => {
+    const initialWidth = 50;
+    const renderedData = { index: 4 };
+    const resizeGroupProps = getRequiredResizeGroupProps();
+    const getNextResizeGroupState = getNextResizeGroupStateProvider();
+    const getMeasuredElementWidthStub = sinon.stub();
+    getMeasuredElementWidthStub.returns(100);
+
+    // Set the initial window width
+    getNextResizeGroupState(resizeGroupProps,
+      {},
+      undefined,
+      initialWidth);
+
+    // Pass in a state that reflects some rendered data
+    let currentState: IResizeGroupState = {
+      renderedData: renderedData,
+      dataToMeasure: { index: 8 },
+      resizeDirection: 'grow'
+    };
+
+    resizeGroupProps.onReduceData.returns({ index: 7 });
+
+    let result = getNextResizeGroupState(resizeGroupProps,
+      currentState,
+      getMeasuredElementWidthStub,
+      initialWidth);
+
+    // Important to note that we do not start scaling from the initial data,
+    // we continue from the last rendered data.
+    expect(result).to.deep.equal({
+      renderedData: renderedData,
+      dataToMeasure: { index: 7 },
+      measureContainer: false,
+      resizeDirection: 'shrink'
+    });
+    expect(getMeasuredElementWidthStub.callCount).to.equal(1);
+    expect(resizeGroupProps.onReduceData.callCount).to.equal(1);
   });
 });

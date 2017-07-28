@@ -2,6 +2,53 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.15.0",
+      "tag": "@uifabric/styling_v0.15.0",
+      "date": "Fri, 28 Jul 2017 10:23:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "20d920d1a9f38c468ab47027e9fb2ec80018d85d",
+            "comment": "Adding High contrast colors to the paletter"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fd03731e7523f372438853eccbc13f59d0f2d9d7",
+            "comment": "Theming: add settings to the interface so we can track whether the current theme is inverted or not"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.0",
+      "tag": "@uifabric/styling_v0.14.0",
+      "date": "Thu, 27 Jul 2017 10:23:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df7a230735c92a73935bbdf97cfb6f2fcae9af45",
+            "comment": "Icons: Added new icons from 2.38"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.16",
+      "tag": "@uifabric/styling_v0.13.16",
+      "date": "Tue, 25 Jul 2017 10:22:35 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.15",
+      "tag": "@uifabric/styling_v0.13.15",
+      "date": "Mon, 24 Jul 2017 10:24:30 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.13.14",
       "tag": "@uifabric/styling_v0.13.14",
       "date": "Fri, 21 Jul 2017 10:21:45 GMT",
