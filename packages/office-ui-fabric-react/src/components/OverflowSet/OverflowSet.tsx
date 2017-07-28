@@ -12,15 +12,20 @@ const styles: any = stylesImport;
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
 
+  public refs: {
+    focusZone: FocusZone;
+  };
+
   public render() {
     let {
       items,
       overflowItems,
-      onRenderOverflowButton
+      onRenderOverflowButton,
+      className
     } = this.props;
 
     return (
-      <FocusZone className={ css('ms-OverflowSet', styles.root) } direction={ FocusZoneDirection.horizontal } role='menubar' >
+      <FocusZone ref='focusZone' className={ css('ms-OverflowSet', styles.root, className) } direction={ FocusZoneDirection.horizontal } role='menubar' >
         { items && this._onRenderItems(items) }
         { overflowItems && overflowItems.length > 0 && onRenderOverflowButton(overflowItems) }
       </FocusZone>
@@ -40,5 +45,9 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
         </div>
       );
     });
+  }
+
+  public focus() {
+    this.refs.focusZone.focus();
   }
 }
