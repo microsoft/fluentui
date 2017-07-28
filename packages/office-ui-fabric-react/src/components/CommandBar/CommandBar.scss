@@ -3,6 +3,7 @@
 .root {
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
+  height: 40px;
   position: relative;
   display: flex;
   background-color: $ms-color-neutralLighter;
@@ -31,9 +32,13 @@
 .primarySet {
   @include margin-left(16px);
   flex-grow: 1;
+  display: flex;
+  align-items: stretch;
 }
 
 .secondarySet {
   @include margin-right(16px);
+  display: flex;
+  align-items: stretch;
 }
 
