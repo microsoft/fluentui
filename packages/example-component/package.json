@@ -11,8 +11,8 @@
   },
   "author": "",
   "devDependencies": {
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
-    "@microsoft/load-themed-styles": "^1.2.2",
+    "@microsoft/web-library-build": "^3.2.1",
+    "@microsoft/load-themed-styles": "^1.5.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
     "@types/es6-promise": "^0.0.32",
@@ -38,13 +38,13 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.17.0",
     "ts-loader": "^2.0.1",
-    "typescript": "2.2.2",
-    "webpack": "^2.4.1",
+    "typescript": "2.4.2",
+    "webpack": "^3.4.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-notifier": "^1.5.0"
   },
   "peerDependencies": {
-    "@microsoft/load-themed-styles": "^1.2.2",
+    "@microsoft/load-themed-styles": "^1.5.1",
     "react": "^0.14 || ^15.4.2-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.4.2 || ^16.0.0-0"
   },

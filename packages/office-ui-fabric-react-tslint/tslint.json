@@ -3,10 +3,17 @@
     "@microsoft/gulp-core-build-typescript/lib/defaultTslint.json"
   ],
   "rules": {
+    "no-duplicate-variable": true,
+    "use-isnan": true,
+    "triple-equals": [
+      true
+    ],
     "max-line-length": [
       true,
       140
     ],
+    "no-arg": true,
+    "radix": true,
     "typedef": [
       true,
       "call-signature",

@@ -12,7 +12,7 @@
   "devDependencies": {
     "@microsoft/sp-build-web": "~1.0.0",
     "@microsoft/sp-module-interfaces": "~1.0.0",
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "@microsoft/web-library-build": "^3.2.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
     "@types/mocha": "2.2.39",
@@ -35,16 +35,16 @@
     "react-dom": "^15.4.2",
     "source-map-loader": "^0.2.1",
     "ts-loader": "^2.1.0",
-    "typescript": "2.2.2",
+    "typescript": "2.4.2",
     "uglifyjs-webpack-plugin": "^0.4.3",
-    "webpack": "^2.4.1",
+    "webpack": "^3.4.1",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-notifier": "^1.5.0",
     "webpack-split-by-path": "2.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.2.2",
+    "@microsoft/load-themed-styles": "^1.5.1",
     "@uifabric/utilities": ">=4.8.0 <5.0.0",
     "tslib": "^1.6.0",
     "rtl-css-js": "^1.1.1",

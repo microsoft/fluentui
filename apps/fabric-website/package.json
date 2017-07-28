@@ -15,8 +15,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/load-themed-styles": "^1.2.2",
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "@microsoft/load-themed-styles": "^1.5.1",
+    "@microsoft/web-library-build": "^3.2.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
     "@types/es6-promise": "^0.0.32",
@@ -42,7 +42,7 @@
     "react-highlight": "0.9.0",
     "request": "^2.81.0",
     "source-map-loader": "0.2.1",
-    "typescript": "2.2.2",
+    "typescript": "2.4.2",
     "vinyl-ftp": "0.6.0",
     "webpack-bundle-analyzer": "^2.2.1"
   },

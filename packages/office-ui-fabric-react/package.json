@@ -16,8 +16,8 @@
     "test": "gulp"
   },
   "devDependencies": {
-    "@microsoft/load-themed-styles": "^1.2.2",
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
+    "@microsoft/load-themed-styles": "^1.5.1",
+    "@microsoft/web-library-build": "^3.2.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
     "@types/es6-promise": "^0.0.32",
@@ -61,16 +61,16 @@
     "source-map-loader": "0.2.1",
     "style-loader": "^0.17.0",
     "ts-loader": "^2.0.1",
-    "typescript": "2.2.2",
+    "typescript": "2.4.2",
     "vinyl-ftp": "0.6.0",
-    "webpack": "^2.4.1",
+    "webpack": "^3.4.1",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-notifier": "^1.5.0",
     "webpack-split-by-path": "2.0.0"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.2.2",
+    "@microsoft/load-themed-styles": "^1.5.1",
     "@uifabric/utilities": ">=4.8.0 <5.0.0",
     "@uifabric/styling": ">=0.15.1 <1.0.0",
     "prop-types": "^15.5.10",
