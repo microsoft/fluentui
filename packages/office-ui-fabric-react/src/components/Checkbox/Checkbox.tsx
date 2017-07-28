@@ -153,15 +153,17 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   @autobind
   private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
-    const { onChange } = this.props;
-    let { isChecked } = this.state;
+    const { disabled, onChange } = this.props;
+    const { isChecked } = this.state;
 
-    if (onChange) {
-      onChange(ev, !isChecked);
-    }
+    if (!disabled) {
+      if (onChange) {
+        onChange(ev, !isChecked);
+      }
 
-    if (this.props.checked === undefined) {
-      this.setState({ isChecked: !isChecked });
+      if (this.props.checked === undefined) {
+        this.setState({ isChecked: !isChecked });
+      }
     }
   }
 
