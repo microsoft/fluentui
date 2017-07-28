@@ -58,6 +58,7 @@ export const getStyles = memoizeFunction((
     },
     checkbox: {
       display: 'flex',
+      flexShrink: '0',
       alignItems: 'center',
       justifyContent: 'center',
       height: MS_CHECKBOX_LABEL_SIZE,
