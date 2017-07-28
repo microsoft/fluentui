@@ -124,7 +124,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public get checked(): boolean {
-    return this.state.isChecked;
+    return this.state.isChecked!;
   }
 
   public focus(): void {

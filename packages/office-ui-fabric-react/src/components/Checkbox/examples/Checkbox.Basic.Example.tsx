@@ -59,7 +59,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           label='Controlled checkbox'
           checked={ isChecked }
           onChange={ (ev, checked) => {
-            this.setState({ isChecked: checked });
+            this.setState({ isChecked: checked! });
           } }
           styles={ styles }
         />
