@@ -122,7 +122,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       ) as string }
         ref={ this._resolveRef('_expandedElem') }
       >
-        { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
+        <div className={ this._styles.expandedCardScroll as string }>
+          { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
+        </div>
       </div>
     );
   }

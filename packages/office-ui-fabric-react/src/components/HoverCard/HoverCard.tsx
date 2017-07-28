@@ -24,7 +24,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
-    expandedCardOpenDelay: 1000,
+    expandedCardOpenDelay: 1500,
     instantOpenOnClick: false
   };
 
