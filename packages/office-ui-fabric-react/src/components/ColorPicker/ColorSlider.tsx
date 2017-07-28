@@ -46,7 +46,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     this.state = {
       isAdjusting: false,
-      origin: null,
+      origin: undefined,
       currentValue: value
     };
   }
@@ -61,7 +61,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     let { className, minValue, maxValue, overlayStyle } = this.props;
     let { currentValue, isAdjusting } = this.state;
 
-    let currentPercentage = 100 * (currentValue - minValue) / (maxValue - minValue);
+    let currentPercentage = 100 * (currentValue! - minValue!) / (maxValue! - minValue!);
 
     return (
       <div
@@ -90,7 +90,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     let rectSize = this.refs.root.getBoundingClientRect();
 
     let currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    let newValue = Math.min(maxValue, Math.max(minValue, currentPercentage * maxValue));
+    let newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
 
     this.setState({
       isAdjusting: true,
@@ -111,7 +111,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     this.setState({
       isAdjusting: false,
-      origin: null
+      origin: undefined
     });
   }
 

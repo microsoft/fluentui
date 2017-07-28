@@ -5,8 +5,8 @@ import {
 } from 'office-ui-fabric-react/lib/SwatchColorPicker';
 
 export interface IBasicSwatchColorPickerExampleState {
-  color: string;
-  previewColor: string;
+  color: string | undefined;
+  previewColor: string | undefined;
 }
 
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
@@ -17,8 +17,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
     super(props);
 
     this.state = {
-      color: null,
-      previewColor: null
+      color: undefined,
+      previewColor: undefined
     };
   }
   public render() {
@@ -125,8 +125,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           menuButtonProps={ { iconProps: { iconName: 'fontColor' }, title: 'Font Color' } }
           setSelectedColorForIcon={ true }
-          onCellHovered={ (id, color) => this.setState({ previewColor: color }) }
-          onCellFocused={ (id, color) => this.setState({ previewColor: color }) }
+          onCellHovered={ (id, color) => this.setState({ previewColor: color! }) }
+          onCellFocused={ (id, color) => this.setState({ previewColor: color! }) }
           onColorChanged={ (id, newColor) => this.setState({ color: newColor }) }
           onMenuItemClick={ (item) => item.label && alert(item.label + ' was clicked') }
           columnCount={ 4 }

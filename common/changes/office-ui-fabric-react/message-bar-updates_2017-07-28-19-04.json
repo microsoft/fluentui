@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: Accessibility fix for expand behavior",
+      "comment": "MessageBar: Fix system problems that display when component is on website",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "veloiya@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }

@@ -1,6 +1,29 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 25 Jul 2017 10:22:35 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jul 2017 18:36:00 GMT and should not be manually modified.
+
+## 0.15.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+*Changes not tracked*
+
+## 0.15.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Adding High contrast colors to the paletter
+
+### Patches
+
+- Theming: add settings to the interface so we can track whether the current theme is inverted or not
+
+## 0.14.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- Icons: Added new icons from 2.38
 
 ## 0.13.16
 Tue, 25 Jul 2017 10:22:35 GMT
