@@ -39,7 +39,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       addStickyHeader: this.addStickyHeader,
       removeStickyHeader: this.removeStickyHeader,
       addStickyFooter: this.addStickyFooter,
-      removeStickyFooter: this.removeStickyFooter,
+      removeStickyFooter: this.removeStickyFooter
     };
   }
 
@@ -111,17 +111,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   @autobind
-  public removeStickyHeader(sticky: Sticky) {
-    const { stickyAbove } = this.refs;
-    const indexOfHeader = this._stickyAbove.indexOf(sticky);
-    if (indexOfHeader >= 0) {
-      sticky.content.removeEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, this._stickyAbove, stickyAbove));
-      this._stickyAbove.splice(indexOfHeader, 1);
-    }
-  }
-
-  @autobind
   public addStickyFooter(sticky: Sticky) {
     const { stickyBelow } = this.refs;
     if (this._stickyBelow.indexOf(sticky) < 0) {
@@ -141,13 +130,22 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   @autobind
+  public removeStickyHeader(sticky: Sticky) {
+    this._removeSticky(sticky, this._stickyAbove, this.refs.stickyAbove);
+  }
+
+  @autobind
   public removeStickyFooter(sticky: Sticky) {
-    const { stickyBelow } = this.refs;
-    const indexOfFooter = this._stickyBelow.indexOf(sticky);
-    if (indexOfFooter >= 0) {
+    this._removeSticky(sticky, this._stickyBelow, this.refs.stickyBelow);
+  }
+
+  @autobind
+  private _removeSticky(sticky: Sticky, stickyList: Sticky[], container: HTMLElement) {
+    const indexOfSticky = stickyList.indexOf(sticky);
+    if (indexOfSticky >= 0) {
       sticky.content.removeEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, this._stickyBelow, stickyBelow));
-      this._stickyBelow.splice(indexOfFooter, 1);
+        this._setPlaceholderHeights.bind(null, stickyList, container));
+      stickyList.splice(indexOfSticky, 1);
     }
   }
 
