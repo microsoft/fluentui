@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 27 Jul 2017 10:23:33 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jul 2017 10:23:10 GMT and should not be manually modified.
+
+## 4.25.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Moving ComboBox component to use the styling library
+
+### Patches
+
+- Fix hover card scroll
+- Checkbox: Added left textAlign style
+- Update accessibility for checkable menu items
 
 ## 4.24.0
 Thu, 27 Jul 2017 10:23:33 GMT
