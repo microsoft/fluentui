@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix hover card scroll",
+      "comment": "Fix Callout to get a valid element",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "anihan@microsoft.com"
+  "email": "daweffe@microsoft.com"
 }

@@ -19,10 +19,12 @@ export const getStyles = memoizeFunction((
   const checkmarkFontColor = semanticColors.inputForegroundChecked;
   const checkmarkFontColorCheckedDisabled = semanticColors.disabledBackground;
   const checkboxBorderColor = semanticColors.inputBorder;
+  const checkboxBorderColorDisabled = semanticColors.disabledText;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBackgroundDisabled = semanticColors.disabledText;
+  const checkboxTextColor = semanticColors.bodyText;
   const checkboxTextColorDisabled = semanticColors.disabledText;
 
   const styles: ICheckboxStyles = {
@@ -40,10 +42,12 @@ export const getStyles = memoizeFunction((
     ],
     label: {
       display: 'inline-flex',
+      margin: '0 -4px',
       alignItems: 'center',
       cursor: 'pointer',
       position: 'relative',
-      userSelect: 'none'
+      userSelect: 'none',
+      textAlign: 'left'
     },
     labelReversed: {
       flexDirection: 'row-reverse',
@@ -61,7 +65,7 @@ export const getStyles = memoizeFunction((
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: checkboxBorderColor,
-      marginRight: '8px',
+      margin: '0 4px',
       boxSizing: 'border-box',
       transitionProperty: 'background, border, border-color',
       transitionDuration: MS_CHECKBOX_TRANSITION_DURATION,
@@ -81,9 +85,11 @@ export const getStyles = memoizeFunction((
     },
     checkboxDisabled: {
       background: checkboxBackgroundDisabled,
+      borderColor: checkboxBorderColorDisabled
     },
     checkboxCheckedDisabled: {
       background: checkboxBackgroundDisabled,
+      borderColor: checkboxBorderColorDisabled
     },
     checkmark: {
       opacity: '0',
@@ -99,7 +105,8 @@ export const getStyles = memoizeFunction((
       color: checkmarkFontColorCheckedDisabled,
     },
     text: {
-      marginRight: '8px',
+      color: checkboxTextColor,
+      margin: '0 4px',
       fontSize: FontSizes.medium
     },
     textHovered: {
