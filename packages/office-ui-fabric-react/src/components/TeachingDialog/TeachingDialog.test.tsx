@@ -13,11 +13,10 @@ describe('TeachingDialog', () => {
 
   // <Layer> components will lead ReactDOM.findDOMNode(test_component) return null, so the test is based on the teaching bubble content.
   it('renders a label', () => {
-    let imageProps: IImageProps = { src: 'odsp-media/images/spfirstrun/Activity.gif' } as IImageProps;
     let component = ReactTestUtils.renderIntoDocument(
       <TeachingDialogContent
         title='Title'
-        image={ imageProps }
+        image=''
         textContent='Lorem ipsum'
       />
     );

@@ -37,7 +37,7 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
         rightButtonText: 'Next',
         title: 'Lorem ipsum',
         textContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
-        image: imageProps
+        image: 'https://spoprod-a.akamaihd.net/files/sphome-next-prod_ship-2017-07-25_20170725.001/odsp-media/images/spfirstrun/news.gif',
       } as ITeachingDialogViewProps,
       {
         leftButtonText: 'Previous',

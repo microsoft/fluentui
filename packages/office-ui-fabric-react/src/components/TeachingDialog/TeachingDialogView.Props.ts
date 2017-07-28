@@ -25,7 +25,7 @@ export interface ITeachingDialogViewProps extends React.Props<TeachingDialogCont
   /**
    * The string for the animation displayed on the page
    */
-  image: IImageProps;
+  image: string;
 
   /**
    * The text of the left button

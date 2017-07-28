@@ -1,3 +1,5 @@
+/// <amd-dependency path="../TeachingDialog.scss" />
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -26,7 +28,7 @@ export interface ITeachingDialogContentProps {
   /**
    * The string for the image displayed on the page
    */
-  image: IImageProps;
+  image: string;
 }
 
 /**
@@ -54,7 +56,7 @@ export class TeachingDialogContent extends BaseComponent<ITeachingDialogContentP
   public render(): React.ReactElement<{}> {
     return <div className='ms-TeachingDialogContent'>
       <div className='ms-TeachingDialogContent-imageArea'>
-        <Image className='ms-TeachingDialogContent-image' src={ ...this.props.image as any } />
+        <Image className='ms-TeachingDialogContent-image' src={ this.props.image } />
       </div>
       <div className='ms-TeachingDialogContent-desc'>
         <div className='ms-TeachingDialogContent-descTitle'>

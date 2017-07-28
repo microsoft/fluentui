@@ -6,6 +6,7 @@ import { ITeachingDialogProps } from './TeachingDialog.Props';
 import { ITeachingDialogViewProps } from './TeachingDialogView.Props';
 import { KeyCodes } from '../../../../utilities/src/KeyCodes';
 import { TeachingDialogContent } from './TeachingDialogContent';
+import './TeachingDialog.scss';
 
 export interface ITeachingDialogState {
   pageIndex: number;
@@ -74,7 +75,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
       !!currentPageProps.isRighButtonLight);
 
     // Creating the dialog and returning it
-    return <div className='ms-TeachingDialog-modal'
+    return <div className='ms-TeachingDialog-modal' >
       onKeyDown={ this._keyDown.bind(this) }>
       <div className='ms-TeachingDialog-main'>
         <div ref='xButton'
@@ -107,7 +108,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    */
   private _createHeadLine(headline: string): React.ReactElement<{}> {
     if (headline !== undefined && headline !== null && headline !== '') {
-      return <div className='TeachingDialog-headline'>
+      return <div className='ms-TeachingDialogContent-headline'>
         <p>{ headline }</p>
       </div> as React.ReactElement<{}>;
     }
@@ -136,8 +137,8 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    * Create the dialog button
    */
   private _createButton(buttonText: string, isRight: boolean, isLight: boolean): React.ReactElement<{}> {
-    const className: string = ['Button', isRight ? '-Right' : '', isLight ? ' isLight' : ''].join();
-    return <div ref='leftButton'
+    const className: string = ['Button', isRight ? '-Right' : '', isLight ? ' isLight' : ''].join('');
+    return <div ref={ isRight ? this._buttonsRefs[0] : this._buttonsRefs[2] }
       className={ className }
       role='button'
       tabIndex={ 0 }

@@ -1,5 +1,12 @@
 @import '../../common/common';
 
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Teaching Dialog styles
+
 $dialogHeight: 456px;
 $dialogWidth: 620px;
 $imageHeight: 268px;
@@ -27,7 +34,7 @@ $paginationWidth: 96px;
         box-shadow: 0px 0px 5px 2px transparentize(#333333,0.7);
         z-index: 20;
 
-        .ms-TeachingDialogContent-welcome {
+        .ms-TeachingDialogContent-headline {
             @include ms-font-su();
             position: absolute;
             width: 100%;
@@ -93,7 +100,7 @@ $paginationWidth: 96px;
          }
 
 
-        .ButtonsArea{
+        .footer{
                 width: 100%;
                 height: auto;
                 background-color: White;
@@ -144,7 +151,7 @@ $paginationWidth: 96px;
 
 //Large
 @media (max-width: 1024px){
-    .ms-TeachingDialog-modal{
+    .ms-TeachingDialog-modal {
         .ms-TeachingDialog-main {
             @include left(calc(50% - 262px));
             width: 524px;
