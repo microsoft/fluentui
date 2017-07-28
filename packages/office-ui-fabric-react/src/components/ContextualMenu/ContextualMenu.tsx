@@ -95,7 +95,7 @@ export function getSubmenuItems(item: IContextualMenuItem) {
  * @returns {false} if the item is unchecked.
  * @returns {null} if the item is not checkable.
  */
-function getIsChecked(item: IContextualMenuItem): boolean | null {
+function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
   if (item.canCheck) {
     return item.isChecked || item.checked;
   }
@@ -370,7 +370,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ariaLabel = item.name;
     }
 
-    const isChecked: boolean | null = getIsChecked(item);
+    const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
 
     const itemButtonProperties = {
@@ -400,7 +400,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    const isItemChecked: boolean | null = getIsChecked(item);
+    const isItemChecked: boolean | null | undefined = getIsChecked(item);
     return (
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
