@@ -72,7 +72,7 @@ describe('Layer', () => {
       expect(parentElement).is.not.empty;
       expect(parentElement.ownerDocument).is.not.empty;
 
-      let childElement = appElement.querySelector('#child');
+      let childElement = appElement.querySelector('#child') as Element;
 
       expect(childElement.textContent).equals('foo');
     } finally {
