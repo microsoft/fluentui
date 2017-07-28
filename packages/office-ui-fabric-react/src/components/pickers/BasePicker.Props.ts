@@ -86,6 +86,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback to process a selection after the user selects something from the picker.
    */
   onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  /**
+   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   */
+  selectedItems?: T[];
 }
 
 export interface IBasePickerSuggestionsProps {
