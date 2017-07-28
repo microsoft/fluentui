@@ -78,21 +78,12 @@
   color: $ms-color-themePrimary;
 }
 
-.root:hover:not(.rootIsDisabled):not(.rootIsActive) {
-  border-color: $ms-color-neutralDark;
-  .label {
-    color: $ms-color-black;
-
-    .iconContainer {
-      color:$ms-color-themeDark;
-    }
-  }
-}
-
 // State: Active searchbox
-.rootIsActive {
+.root.rootIsActive {
   border-color: $ms-color-themePrimary;
-
+  &:hover {
+    border-color: $ms-color-themePrimary;
+  }
   .iconContainer {
     width: 4px;
     transition: width $ms-animation-duration-1;
@@ -119,4 +110,16 @@
 
 .rootCanClear .clearButton {
   display: flex;
+}
+
+
+.root:hover {
+  border-color: $ms-color-neutralDark;
+  .label {
+    color: $ms-color-black;
+
+    .iconContainer {
+      color:$ms-color-themeDark;
+    }
+  }
 }
