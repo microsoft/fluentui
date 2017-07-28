@@ -2,6 +2,66 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.25.1",
+      "tag": "office-ui-fabric-react_v4.25.1",
+      "date": "Fri, 28 Jul 2017 18:36:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d2fdce1bdb3bec646721cf9dc0ec0cbc33622235",
+            "comment": "Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue."
+          },
+          {
+            "author": "daweffe <daweffe@microsoft.com>",
+            "commit": "bade6f5b0153fb82952b52be304241be9dc4572b",
+            "comment": "Fix Callout to get a valid element"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.0 <1.0.0` to `>=0.15.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.25.0",
+      "tag": "office-ui-fabric-react_v4.25.0",
+      "date": "Fri, 28 Jul 2017 10:23:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "71b918343e8b8afed73902008d5332bbc200136b",
+            "comment": "Fix hover card scroll"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "de23624077202ce5c1542db44d809586e6eef420",
+            "comment": "Checkbox: Added left textAlign style"
+          },
+          {
+            "author": "David Michon <dmichon@microsoft.com>",
+            "commit": "b5c0fba73cc02669f9e025a228811840876e8bf7",
+            "comment": "Update accessibility for checkable menu items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "20d920d1a9f38c468ab47027e9fb2ec80018d85d",
+            "comment": "Moving ComboBox component to use the styling library"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.14.0 <1.0.0` to `>=0.15.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.24.0",
       "tag": "office-ui-fabric-react_v4.24.0",
       "date": "Thu, 27 Jul 2017 10:23:33 GMT",

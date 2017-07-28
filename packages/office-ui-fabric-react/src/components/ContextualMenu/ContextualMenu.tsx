@@ -87,6 +87,27 @@ export function getSubmenuItems(item: IContextualMenuItem) {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
+/**
+ * Determines the effective checked state of a menu item.
+ *
+ * @param item {IContextualMenuItem} to get the check state of.
+ * @returns {true} if the item is checked.
+ * @returns {false} if the item is unchecked.
+ * @returns {null} if the item is not checkable.
+ */
+function getIsChecked(item: IContextualMenuItem): boolean | null {
+  if (item.canCheck) {
+    return item.isChecked || item.checked;
+  }
+
+  if (typeof item.isChecked === 'boolean') {
+    return item.isChecked;
+  }
+
+  // Item is not checkable.
+  return null;
+}
+
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
@@ -349,7 +370,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ariaLabel = item.name;
     }
 
-    let itemButtonProperties = {
+    const isChecked: boolean | null = getIsChecked(item);
+    const canCheck: boolean = isChecked !== null;
+
+    const itemButtonProperties = {
       className: css('ms-ContextualMenu-link', styles.link, {
         ['is-expanded ' + styles.isExpanded]: (expandedMenuItemKey === item.key)
       }),
@@ -362,9 +386,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
-      'aria-haspopup': hasSubmenuItems(item) ? true : null,
+      'aria-haspopup': hasSubmenuItems(item) || null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
-      role: 'menuitem',
+      'aria-checked': isChecked,
+      role: canCheck ? 'menuitemcheckbox' : 'menuitem',
       style: item.style,
     };
 
@@ -375,12 +400,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    let isItemChecked: boolean = (item.isChecked || item.checked) as boolean;
+    const isItemChecked: boolean | null = getIsChecked(item);
     return (
       <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
           <Icon
-            iconName={ isItemChecked ? 'CheckMark' : 'CustomIcon' }
+            iconName={ isItemChecked === true ? 'CheckMark' : 'CustomIcon' }
             className={ css('ms-ContextualMenu-icon', styles.icon) }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }

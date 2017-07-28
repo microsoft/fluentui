@@ -103,4 +103,9 @@ export interface IExpandingCardStyles {
    * Base Style for the expanded card content
    */
   expandedCard?: IStyle;
+
+  /**
+   * Style for the expanded card scroll content
+   */
+  expandedCardScroll?: IStyle;
 }
