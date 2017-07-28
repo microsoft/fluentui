@@ -174,7 +174,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
     const sliderLength: number = sliderPositionRect.width;
     const stepLength: number = sliderLength / steps;
-    let currentSteps: number;
+    let currentSteps: number | undefined;
 
     if (event.type === 'mousedown' || event.type === 'mousemove') {
       currentSteps = getRTL() ?
