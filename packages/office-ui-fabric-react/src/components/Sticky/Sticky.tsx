@@ -19,13 +19,21 @@ export interface IStickyState {
   placeholderHeight?: number;
 }
 
+export interface IStickyContext {
+  subscribe: PropTypes.Requireable<Function>;
+  addStickyHeader: PropTypes.Requireable<Function>;
+  removeStickyHeader: PropTypes.Requireable<Function>;
+  addStickyFooter: PropTypes.Requireable<Function>;
+  removeStickyFooter: PropTypes.Requireable<Function>;
+}
+
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
-  public static contextTypes = {
+  public static contextTypes: IStickyContext = {
+    subscribe: PropTypes.func,
     addStickyHeader: PropTypes.func,
     removeStickyHeader: PropTypes.func,
     addStickyFooter: PropTypes.func,
-    removeStickyFooter: PropTypes.func,
-    subscribe: PropTypes.func
+    removeStickyFooter: PropTypes.func
   };
 
   public refs: {
