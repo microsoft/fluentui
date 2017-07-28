@@ -9,7 +9,6 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
     return (
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox
-          disabled
           onChange={ (newValue) => console.log('SearchBox onChange fired: ' + newValue) }
           onSearch={ (newValue) => console.log('SearchBox onSearch fired: ' + newValue) }
         />
