@@ -314,7 +314,7 @@ describe('SwatchColorPicker', () => {
     const wrapper = mount(
       <SwatchColorPicker
         swatchColorPickerItems={ [{ id: 'a', label: 'green', type: SwatchColorPickerItemType.MenuItem }] }
-        onMenuItemClick={ (item) => eventFireCounter++ }
+        onMenuItemClick={ () => eventFireCounter++ }
         columnCount={ 4 }
       />);
     let swatchColorPickerRoot = wrapper.find('.ms-swatchColorPickerWrapper');

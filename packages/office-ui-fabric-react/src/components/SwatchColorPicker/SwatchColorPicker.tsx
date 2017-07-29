@@ -84,6 +84,83 @@ interface ISwatchColorPickerOptionProps {
   cellShape?: 'circle' | 'square';
 }
 
+interface IMenuButtonProps extends IButtonProps {
+  /**
+   * The CSS-compatible string to describe the color to set
+   * for the button
+   */
+  color?: string;
+
+  /**
+   * Is the menuButton expanded?
+   */
+  expanded: boolean;
+
+  /**
+   * Is the menuButton disabled>
+   */
+  disabled?: boolean;
+
+  /**
+   * OnClick handler
+   */
+  onClick: () => void;
+
+  /**
+   * Callback for rendering the expanded container
+   */
+  onRenderContainer: () => JSX.Element;
+
+  /**
+   * Optional, ButtonProps for the menuButton
+   */
+  menuButtonProps?: IButtonProps;
+}
+
+class SwatchColorPickerMenuButton extends BaseComponent<IMenuButtonProps, {}> {
+  public static defaultProps = {
+    expanded: false,
+    disabled: false
+  };
+
+  public render() {
+    let {
+      color,
+      expanded,
+      disabled,
+      onClick,
+      onRenderContainer,
+      menuIconProps,
+      menuButtonProps
+    } = this.props;
+    return (
+      <div>
+        <DefaultButton
+          { ...menuButtonProps }
+          style={ { color: color && color } }
+          className={
+            css('ms-swatchColorPickerButton',
+              {
+                'is-expanded': expanded
+              }
+            )
+          }
+          onClick={ onClick }
+          aria-haspopup={ true }
+          aria-expanded={ !disabled && expanded }
+          disabled={ disabled }
+          menuIconProps={ menuIconProps ?
+            menuIconProps :
+            { iconName: 'chevronDown' } }
+        />
+        { (!disabled && expanded) &&
+          onRenderContainer()
+        }
+      </div>
+    );
+  }
+}
+
 const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOptionProps> =
   (props: ISwatchColorPickerOptionProps) => {
     let {
@@ -179,6 +256,31 @@ const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOption
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
   expanded?: boolean;
+}
+
+interface ISwatchColorPickerBodyProps {
+  componentRef?: () => void;
+  swatchColorPickerItems: ISwatchColorPickerItemProps[];
+  columnCount: number;
+  onRenderItems: (items: ISwatchColorPickerItemProps[]) => JSX.Element[];
+}
+
+class SwatchColorPickerBody extends BaseComponent<ISwatchColorPickerBodyProps, {}> {
+  public render() {
+    let {
+      swatchColorPickerItems,
+      columnCount,
+      onRenderItems
+    } = this.props;
+    return (
+      <FocusZone
+        isCircularNavigation={ true }
+        className={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer) }
+      >
+        { onRenderItems(swatchColorPickerItems.map((item, index) => { return { ...item, index }; })) }
+      </FocusZone>
+    );
+  }
 }
 
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
@@ -673,107 +775,5 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     this.setState({
       expanded: false
     });
-  }
-}
-
-interface IMenuButtonProps extends IButtonProps {
-  /**
-   * The CSS-compatible string to describe the color to set
-   * for the button
-   */
-  color?: string;
-
-  /**
-   * Is the menuButton expanded?
-   */
-  expanded: boolean;
-
-  /**
-   * Is the menuButton disabled>
-   */
-  disabled?: boolean;
-
-  /**
-   * OnClick handler
-   */
-  onClick: () => void;
-
-  /**
-   * Callback for rendering the expanded container
-   */
-  onRenderContainer: () => JSX.Element;
-
-  /**
-   * Optional, ButtonProps for the menuButton
-   */
-  menuButtonProps?: IButtonProps;
-}
-
-class SwatchColorPickerMenuButton extends BaseComponent<IMenuButtonProps, {}> {
-  public static defaultProps = {
-    expanded: false,
-    disabled: false
-  };
-
-  public render() {
-    let {
-      color,
-      expanded,
-      disabled,
-      onClick,
-      onRenderContainer,
-      menuIconProps,
-      menuButtonProps
-    } = this.props;
-    return (
-      <div>
-        <DefaultButton
-          { ...menuButtonProps }
-          style={ { color: color && color } }
-          className={
-            css('ms-swatchColorPickerButton',
-              {
-                'is-expanded': expanded
-              }
-            )
-          }
-          onClick={ onClick }
-          aria-haspopup={ true }
-          aria-expanded={ !disabled && expanded }
-          disabled={ disabled }
-          menuIconProps={ menuIconProps ?
-            menuIconProps :
-            { iconName: 'chevronDown' } }
-        />
-        { (!disabled && expanded) &&
-          onRenderContainer()
-        }
-      </div>
-    );
-  }
-}
-
-interface ISwatchColorPickerBodyProps {
-  componentRef?: () => void;
-  swatchColorPickerItems: ISwatchColorPickerItemProps[];
-  columnCount: number;
-  onRenderItems: (items: ISwatchColorPickerItemProps[]) => JSX.Element[];
-}
-
-class SwatchColorPickerBody extends BaseComponent<ISwatchColorPickerBodyProps, {}> {
-  public render() {
-    let {
-      swatchColorPickerItems,
-      columnCount,
-      onRenderItems
-    } = this.props;
-    return (
-      <FocusZone
-        isCircularNavigation={ true }
-        className={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer) }
-      >
-        { onRenderItems(swatchColorPickerItems.map((item, index) => { return { ...item, index }; })) }
-      </FocusZone>
-    );
   }
 }

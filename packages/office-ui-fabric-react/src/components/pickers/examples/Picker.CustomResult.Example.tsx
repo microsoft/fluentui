@@ -317,6 +317,8 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   );
 };
 
+export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {
+}
 export class PickerCustomResultExample extends React.Component<any, IPeoplePickerExampleState> {
   constructor() {
     super();
@@ -365,7 +367,4 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
     let documentTitle = document.documentTitleProps && document.documentTitleProps.title;
     return items.filter(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle).length > 0;
   }
-}
-
-export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {
 }
