@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: Added left textAlign style",
+      "comment": "MessageBar: Fix system problems that display when component is on website",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "a.erich@gmail.com"
+  "email": "micahgodbolt@gmail.com"
 }
