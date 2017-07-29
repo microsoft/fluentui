@@ -19,9 +19,9 @@
   },
   "devDependencies": {
     "@microsoft/web-library-build": "^3.2.1",
-    "@types/react": "15.0.29",
+    "@types/react": "15.0.38",
     "@types/react-addons-test-utils": "0.14.18",
-    "@types/react-dom": "15.5.0",
+    "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
     "@types/prop-types": "15.5.1",
     "gzip-size": "^3.0.0",

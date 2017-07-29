@@ -1242,7 +1242,7 @@
       "version": "file:projects/fabric-website",
       "dependencies": {
         "@types/react-addons-test-utils": {
-          "version": "0.14.17",
+          "version": "0.14.19",
           "bundled": true
         },
         "async": {
@@ -2401,9 +2401,9 @@
       "integrity": "sha1-vShOV8hPEyXacCur/IKlMoGQwMU="
     },
     "@types/react": {
-      "version": "15.0.29",
-      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.29.tgz",
-      "integrity": "sha512-EL5P9r/q2gIsXJYS0yT9csyfwIMVhs2hnrtevDgSaB86sRmWPFFxIkTuP8wisKRRO6869AVR6dqmuqzFIAIWkg=="
+      "version": "15.0.38",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.38.tgz",
+      "integrity": "sha512-CkRB27L/kMDu7K20U0V7BwYK9/kPd9Im6Jlxv2vAEolYBvQy6JrSpPJsbZXtOk4MoDUomkct8Q7PNBUSLd0fmg=="
     },
     "@types/react-addons-test-utils": {
       "version": "0.14.18",
@@ -2411,9 +2411,9 @@
       "integrity": "sha1-g+EK8dvl7CU1vC3FNz17w7gv3uE="
     },
     "@types/react-dom": {
-      "version": "15.5.0",
-      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-15.5.0.tgz",
-      "integrity": "sha1-f0+5YT1AURQXcyQve2tfGkazS9k="
+      "version": "15.5.1",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-15.5.1.tgz",
+      "integrity": "sha512-4c+e/QPfvSa48YhgGOcQWoHishTo6BuJqka0Bh8qeLdnK1jS+1Nz8W/w1G17AIjtLxONYFUqmi8qyt+8p/yMFA=="
     },
     "@types/resemblejs": {
       "version": "1.3.28",
