@@ -21,7 +21,7 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.0",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": "4.1.1",
+    "@uifabric/example-app-base": ">=4.1.1 <5.0.0",
     "@uifabric/utilities": "4.8.1",
     "autoprefixer": "^6.7.6",
     "chai": "^3.5.0",

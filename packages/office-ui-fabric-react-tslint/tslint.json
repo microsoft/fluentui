@@ -22,8 +22,8 @@
       "property-declaration",
       "member-variable-declaration"
     ],
-    "no-unused-imports": [
-      true
+    "no-unused-expression": [
+      false
     ],
     "prefer-const": false,
     "quotemark": [
