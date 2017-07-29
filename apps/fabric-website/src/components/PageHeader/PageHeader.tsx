@@ -9,6 +9,8 @@ const FULL_HEADER_HEIGHT = 236;
 const ATTACHED_HEADER_HEIGHT = 128;
 
 export interface IPageHeaderProps {
+  componentRef?: () => void;
+
   /**
    * The title of the current page.
    * @default 'Page title'
