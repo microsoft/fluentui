@@ -55,7 +55,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * AutoFill input native props
    * @default undefined
    */
-  inputProps?: React.HTMLAttributes<HTMLInputElement>;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * A callback for when a persona is removed from the suggestion list
    */

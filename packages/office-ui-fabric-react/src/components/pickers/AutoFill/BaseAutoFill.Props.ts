@@ -40,7 +40,7 @@ export interface IBaseAutoFill {
   clear(): void;
 }
 
-export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElement | BaseAutoFill> {
+export interface IBaseAutoFillProps extends React.InputHTMLAttributes<HTMLInputElement | BaseAutoFill> {
   /**
    * Gets the compoonent ref.
    */

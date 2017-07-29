@@ -29,7 +29,7 @@ export interface ITextField {
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -95,13 +95,13 @@ export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement |
    * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
    * otherwise, use the "value" property.
    */
-  defaultValue?: string;
+  defaultValue?: string | undefined;
 
   /**
    * Current value of the textfield. Only provide this if the textfield is a controlled component where you
    * are maintaining its current state; otherwise, use the "defaultValue" property.
    */
-  value?: string;
+  value?: string | undefined;
 
   /**
    * Disabled state of the textfield.
