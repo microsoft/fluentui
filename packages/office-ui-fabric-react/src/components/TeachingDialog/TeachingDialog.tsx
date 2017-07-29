@@ -1,12 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import { ITeachingDialogProps } from './TeachingDialog.Props';
 import { ITeachingDialogViewProps } from './TeachingDialogView.Props';
 import { KeyCodes } from '../../../../utilities/src/KeyCodes';
 import { TeachingDialogContent } from './TeachingDialogContent';
-import './TeachingDialog.scss';
+import * as stylesImport from './TeachingDialog.scss';
+const styles: any = stylesImport;
 
 export interface ITeachingDialogState {
   pageIndex: number;
@@ -131,7 +132,6 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
 
     return buttons;
   };
-
 
   /**
    * Create the dialog button

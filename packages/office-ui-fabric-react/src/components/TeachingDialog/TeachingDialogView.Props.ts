@@ -1,6 +1,5 @@
 import * as React from 'react';
 import TeachingDialogContent from './TeachingDialogContent';
-import { IImageProps } from '../Image/Image.Props';
 
 /**
  * TeachingDialogPage props.

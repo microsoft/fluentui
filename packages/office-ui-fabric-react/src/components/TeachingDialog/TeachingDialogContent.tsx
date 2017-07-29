@@ -3,10 +3,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, css } from '../../Utilities';
+import { BaseComponent } from '../../Utilities';
 import './TeachingDialog.scss';
-import { IImageProps } from '../Image/Image.Props';
-import { Image, ImageFit } from '../../Image';
 export interface ITeachingDialogContentProps {
 
   /**
@@ -56,7 +54,7 @@ export class TeachingDialogContent extends BaseComponent<ITeachingDialogContentP
   public render(): React.ReactElement<{}> {
     return <div className='ms-TeachingDialogContent'>
       <div className='ms-TeachingDialogContent-imageArea'>
-        <Image className='ms-TeachingDialogContent-image' src={ this.props.image } />
+        <img className='ms-TeachingDialogContent-image' src={ this.props.image } />
       </div>
       <div className='ms-TeachingDialogContent-desc'>
         <div className='ms-TeachingDialogContent-descTitle'>
