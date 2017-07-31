@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "MessageBar: Fix system problems that display when component is on website",
-      "type": "patch"
+      "comment": "Panel: added prop to force footer to bottom of the page",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
