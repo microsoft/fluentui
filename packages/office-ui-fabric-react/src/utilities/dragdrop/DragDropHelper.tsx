@@ -30,7 +30,7 @@ export class DragDropHelper implements IDragDropHelper {
     dataTransfer?: DataTransfer;
     dropTarget?: IDragDropTarget;
     dragTarget?: IDragDropTarget;
-  };
+  } | null;
   private _selection: ISelection;
   private _activeTargets: {
     [key: string]: {
@@ -302,16 +302,19 @@ export class DragDropHelper implements IDragDropHelper {
         // the inner target (folder), we first set dropTarget to the inner element. But the same event is bubbled to the
         // outer target too, and we need to prevent the outer one from taking over.
         // So, check if the last dropTarget is not a child of the current.
-        if (this._dragData.dropTarget &&
-          this._dragData.dropTarget.key !== key &&
-          !this._isChild(root, this._dragData.dropTarget.root)) {
-          EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
-          this._dragData.dropTarget = null;
-        }
 
-        if (!this._dragData.dropTarget) {
-          EventGroup.raise(root, 'dragenter');
-          this._dragData.dropTarget = target;
+        if (this._dragData) {
+          if (this._dragData.dropTarget &&
+            this._dragData.dropTarget.key !== key &&
+            !this._isChild(root, this._dragData.dropTarget.root)) {
+            EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
+            this._dragData.dropTarget = undefined;
+          }
+
+          if (!this._dragData.dropTarget) {
+            EventGroup.raise(root, 'dragenter');
+            this._dragData.dropTarget = target;
+          }
         }
       }
     } else if (this._dragData) {
@@ -337,7 +340,7 @@ export class DragDropHelper implements IDragDropHelper {
     if (this._isDragging) {
       if (this._dragData && this._dragData.dropTarget && this._dragData.dropTarget.key === target.key) {
         EventGroup.raise(target.root, 'dragleave');
-        this._dragData.dropTarget = null;
+        this._dragData.dropTarget = undefined;
       }
     }
   }
@@ -388,13 +391,13 @@ export class DragDropHelper implements IDragDropHelper {
 
   private _isDraggable(target: IDragDropTarget): boolean {
     let { options } = target;
-    return options.canDrag && options.canDrag(options.context.data);
+    return !!(options.canDrag && options.canDrag(options.context.data));
   }
 
   private _isDroppable(target: IDragDropTarget): boolean {
     // TODO: take the drag item into consideration to prevent dragging an item into the same group
     let { options } = target;
-    let dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : null;
-    return options.canDrop && options.canDrop(options.context, dragContext);
+    let dragContext = this._dragData && this._dragData.dragTarget ? this._dragData.dragTarget.options.context : undefined;
+    return !!(options.canDrop && options.canDrop(options.context, dragContext));
   }
 }

@@ -2,6 +2,11 @@ import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
 
 export interface IRouterProps {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   replaceState?: boolean;
   children?: React.ReactElement<any>[];
   onNewRouteLoaded?: () => void;
@@ -31,7 +36,7 @@ export class Router extends BaseComponent<IRouterProps, {}> {
     return path;
   }
 
-  private _resolveRoute(path?: string, children?: React.ReactNode): React.DOMElement<{ key: any }, Element> | null {
+  private _resolveRoute(path?: string, children?: React.ReactNode): React.DOMElement<any, Element> | null {
     path = path || this._getPath();
     children = children || this.props.children;
 
@@ -65,9 +70,9 @@ export class Router extends BaseComponent<IRouterProps, {}> {
           let componentChildren = this._resolveRoute(path, route.props.children || []);
 
           if (componentChildren) {
-            return React.createElement(component, { key: route.key }, componentChildren);
+            return React.createElement(component, { key: route.key }, componentChildren) as React.DOMElement<any, any>;
           } else {
-            return React.createElement(component, { key: route.key });
+            return React.createElement(component, { key: route.key }) as React.DOMElement<any, any>;
           }
         } else if (getComponent) {
           // We are asynchronously fetching this component.

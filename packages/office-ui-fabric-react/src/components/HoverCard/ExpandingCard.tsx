@@ -43,7 +43,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   public componentDidMount() {
-    if (this._expandedElem && this._expandedElem.scrollHeight >= this.props.expandedCardHeight) {
+    if (this._expandedElem && this._expandedElem.scrollHeight >= (this.props.expandedCardHeight as number)) {
       this.setState({
         needsScroll: true
       });
@@ -65,7 +65,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       compactCardHeight,
       expandedCardHeight
     } = this.props;
-    this._styles = getStyles(theme, customStyles);
+    this._styles = getStyles(theme!, customStyles);
 
     return (
       <Callout
@@ -79,7 +79,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         isBeakVisible={ false }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
         directionalHintFixed={ true }
-        finalHeight={ compactCardHeight + expandedCardHeight }
+        finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }
       >
         <div
@@ -122,7 +122,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       ) as string }
         ref={ this._resolveRef('_expandedElem') }
       >
-        { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
+        <div className={ this._styles.expandedCardScroll as string }>
+          { this.props.onRenderExpandedCard && this.props.onRenderExpandedCard(this.props.renderData) }
+        </div>
       </div>
     );
   }
@@ -131,7 +133,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   private _checkNeedsScroll(): void {
     if (this._expandedElem) {
       this._async.requestAnimationFrame(() => {
-        if (this._expandedElem.scrollHeight >= this.props.expandedCardHeight) {
+        if (this._expandedElem.scrollHeight >= this.props.expandedCardHeight!) {
           this.setState({
             needsScroll: true
           });

@@ -5,12 +5,15 @@ import * as stylesImport from './DetailsRow.scss';
 const styles: any = stylesImport;
 
 const INNER_PADDING = 16; // Account for padding around the cell.
+const ISPADDED_WIDTH = 24;
 
 export interface IDetailsRowFieldsProps {
+  componentRef?: () => void;
   item: any;
   itemIndex: number;
   columnStartIndex: number;
   columns: IColumn[];
+  compact?: boolean;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 }
 
@@ -45,9 +48,11 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             aria-colindex={ columnIndex + columnStartIndex }
             className={ css('ms-DetailsRow-cell', styles.cell, column.className, {
               'is-multiline': column.isMultiline,
+              [styles.isRowHeader]: column.isRowHeader,
+              [styles.isPadded]: column.isPadded,
               [styles.isMultiline]: column.isMultiline
             }) }
-            style={ { width: column.calculatedWidth + INNER_PADDING } }
+            style={ { width: column.calculatedWidth + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
             data-automation-key={ column.key }>
             { cellContent[columnIndex] }

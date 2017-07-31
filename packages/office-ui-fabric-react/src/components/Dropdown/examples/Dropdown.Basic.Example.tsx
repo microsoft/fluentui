@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
 import './Dropdown.Basic.Example.scss';
-import { DropdownMenuItemType } from './../Dropdown.Props';
 
 export class DropdownBasicExample extends React.Component<any, any> {
   constructor() {
@@ -62,6 +61,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Controlled example:'
           selectedKey={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
+          onBlur={ () => console.log('onBlur called') }
           options={
             [
               { key: 'A', text: 'Option a' },

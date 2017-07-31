@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  Checkbox
+  Checkbox,
+  ICheckboxStyles
 } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface ICheckboxBasicExampleState {
@@ -21,6 +22,12 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   public render() {
     let { isChecked } = this.state;
 
+    let styles: ICheckboxStyles = {
+      root: {
+        marginTop: '10'
+      }
+    };
+
     return (
       <div>
         <Checkbox
@@ -30,14 +37,20 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
             onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
           } }
-          style={ { marginTop: 10 } }
+          styles={ styles }
         />
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          style={ { marginTop: 10 } }
+          styles={ styles }
+        />
+
+        <Checkbox
+          label='Disabled uncontrolled checkbox'
+          disabled={ true }
+          styles={ styles }
         />
 
         <Checkbox
@@ -45,7 +58,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           disabled={ true }
           defaultChecked={ true }
           onChange={ this._onCheckboxChange }
-          style={ { marginTop: 10 } }
+          styles={ styles }
         />
 
         <Checkbox
@@ -54,13 +67,13 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           onChange={ (ev, checked) => {
             this.setState({ isChecked: checked });
           } }
-          style={ { marginTop: 10 } }
+          styles={ styles }
         />
 
         <Checkbox
           label='Checkbox rendered with boxSide "end"'
           boxSide='end'
-          style={ { marginTop: 10 } }
+          styles={ styles }
         />
       </div>
     );

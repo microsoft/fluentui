@@ -1,6 +1,91 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Jul 2017 10:12:08 GMT and should not be manually modified.
+
+## 0.15.2
+Mon, 31 Jul 2017 10:12:08 GMT
+
+*Changes not tracked*
+
+## 0.15.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+*Changes not tracked*
+
+## 0.15.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Adding High contrast colors to the paletter
+
+### Patches
+
+- Theming: add settings to the interface so we can track whether the current theme is inverted or not
+
+## 0.14.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- Icons: Added new icons from 2.38
+
+## 0.13.16
+Tue, 25 Jul 2017 10:22:35 GMT
+
+*Changes not tracked*
+
+## 0.13.15
+Mon, 24 Jul 2017 10:24:30 GMT
+
+*Changes not tracked*
+
+## 0.13.14
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Adding multi-column mapping to the icon map to be available in the ChoiceGroup
+- Theming: fix color mapping for listItemBackgroundChecked
+
+## 0.13.13
+Thu, 20 Jul 2017 10:11:23 GMT
+
+*Changes not tracked*
+
+## 0.13.12
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Patches
+
+- Add statusCircleCheckmark to IconCodes.ts.  Add font file version to icon url in DefaultFontStyles.ts.
+
+## 0.13.11
+Mon, 17 Jul 2017 18:38:01 GMT
+
+*Changes not tracked*
+
+## 0.13.10
+Mon, 17 Jul 2017 10:22:38 GMT
+
+*Changes not tracked*
+
+## 0.13.9
+Fri, 14 Jul 2017 17:34:53 GMT
+
+*Changes not tracked*
+
+## 0.13.8
+Thu, 13 Jul 2017 10:21:52 GMT
+
+### Patches
+
+- Only initialize the default theme once, even if multiple instances of @uifabric/styling are executed.
+
+## 0.13.7
+Thu, 13 Jul 2017 02:58:02 GMT
+
+*Changes not tracked*
 
 ## 0.13.6
 Wed, 12 Jul 2017 01:49:50 GMT

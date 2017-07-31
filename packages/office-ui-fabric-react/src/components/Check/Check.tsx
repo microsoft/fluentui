@@ -6,6 +6,11 @@ const styles: any = stylesImport;
 
 export interface ICheckProps extends React.Props<Check> {
   /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
+  /**
    * Whether or not this menu item is currently checked.
    * @defaultvalue false
    */
@@ -45,7 +50,7 @@ export class Check extends BaseComponent<ICheckProps, {}> {
         }) }
         { Icon({
           className: 'ms-Check-check ' + styles.check,
-          iconName: 'CheckMark'
+          iconName: 'StatusCircleCheckmark'
         }) }
       </div>
     );
