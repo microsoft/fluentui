@@ -67,6 +67,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
   private _shouldHandleFocus: boolean;
+  private _shouldHandleFocusTimeoutId: number | undefined;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
@@ -107,7 +108,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   public ignoreNextFocus() {
-    this._shouldHandleFocus = false;
+    this._handleNextFocus(false);
   }
 
   @autobind
@@ -146,7 +147,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       }
     }
 
-    this._shouldHandleFocus = false;
+    this._handleNextFocus(false);
   }
 
   @autobind
@@ -292,7 +293,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
       // A key was pressed while an item in this zone was focused.
-      this._shouldHandleFocus = true;
+      this._handleNextFocus(true);
       return;
     }
 
@@ -344,7 +345,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
 
     // A key was pressed while an item in this zone was focused.
-    this._shouldHandleFocus = true;
+    this._handleNextFocus(true);
   }
 
   private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {
@@ -503,4 +504,18 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return true;
   }
 
+  private _handleNextFocus(handleFocus: boolean) {
+    if (this._shouldHandleFocusTimeoutId) {
+      this._async.clearTimeout(this._shouldHandleFocusTimeoutId);
+      this._shouldHandleFocusTimeoutId = undefined;
+    }
+
+    this._shouldHandleFocus = handleFocus;
+
+    if (handleFocus) {
+      this._async.setTimeout(() => {
+        this._shouldHandleFocus = false;
+      }, 100);
+    }
+  }
 }
