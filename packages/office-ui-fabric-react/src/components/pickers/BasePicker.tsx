@@ -210,8 +210,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected resetFocus(index?: number) {
     let { items } = this.state;
 
-    if (items.length && index >= 0) {
-      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index, items.length - 1)] as HTMLElement;
+    if (items.length && index! >= 0) {
+      let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
 
       if (newEl) {
         this.focusZone.focusElement(newEl);
