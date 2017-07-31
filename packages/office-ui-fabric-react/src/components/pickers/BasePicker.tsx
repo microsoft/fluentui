@@ -544,6 +544,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           return true;
       }
     }
+
+    if (ev.which === KeyCodes.enter) {
+      return true;
+    }
+
     return false;
   }
 
