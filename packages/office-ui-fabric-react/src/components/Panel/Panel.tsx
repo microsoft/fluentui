@@ -247,10 +247,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
     );
     
     return (
-      <div
-        ref={ this._resolveRef('_content') }
-        className={ contentClass }
-      >
+      <div ref={ this._resolveRef('_content') } className={ contentClass } >
         { props.children }
       </div>
     );
