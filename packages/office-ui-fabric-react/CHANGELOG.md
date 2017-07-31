@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Jul 2017 18:36:00 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Jul 2017 10:12:08 GMT and should not be manually modified.
+
+## 4.26.0
+Mon, 31 Jul 2017 10:12:08 GMT
+
+### Minor changes
+
+- BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems
+
+### Patches
+
+- MessageBar: Fix system problems that display when component is on website
+- Searchbox: Fixed broken disabled state and aligned styles with current XD styles
 
 ## 4.25.1
 Fri, 28 Jul 2017 18:36:00 GMT
