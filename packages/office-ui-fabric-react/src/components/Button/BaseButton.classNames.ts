@@ -42,6 +42,7 @@ export const getClassNames = memoizeFunction((
       !disabled && !expanded && {
         ':hover': styles.rootHovered,
         ':hover .ms-Button-description': styles.descriptionHovered,
+        ':focus': styles.rootFocused,
         ':active': styles.rootPressed,
         ':active .ms-Button-description': styles.descriptionPressed
       },
