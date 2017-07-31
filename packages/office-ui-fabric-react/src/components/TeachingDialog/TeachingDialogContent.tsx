@@ -3,8 +3,11 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import './TeachingDialog.scss';
+import * as stylesImport from './TeachingDialog.scss';
+const styles: any = stylesImport;
+
 export interface ITeachingDialogContentProps {
 
   /**
@@ -52,16 +55,19 @@ export class TeachingDialogContent extends BaseComponent<ITeachingDialogContentP
    * Invoked when the component is rendered
    */
   public render(): React.ReactElement<{}> {
-    return <div className='ms-TeachingDialogContent'>
-      <div className='ms-TeachingDialogContent-imageArea'>
-        <img className='ms-TeachingDialogContent-image' src={ this.props.image } />
+    return <div className={ css('ms-TeachingDialog-content', styles.content) } >
+      <div className={ css('ms-TeachingDialog-header', styles.header) } >
+        <img
+          className={ css('ms-TeachingDialog-header-image', styles.headerImg) }
+          src={ this.props.image }
+        />
       </div>
-      <div className='ms-TeachingDialogContent-desc'>
-        <div className='ms-TeachingDialogContent-descTitle'>
-          <p>{ this.props.title }</p>
+      <div className={ css('ms-TeachingDialog-contentbody', styles.contentBody) } >
+        <div className={ css('ms-TeachingDialog-contenttile', styles.contentTitle) } >
+          { this.props.title }
         </div>
-        <div className='ms-TeachingDialogContent-descText'>
-          <p>{ this.props.textContent }</p>
+        <div className={ css('ms-TeachingDialog-contenttext', styles.contentText) } >
+          { this.props.textContent }
         </div>
       </div>
     </div> as React.ReactElement<{}>;

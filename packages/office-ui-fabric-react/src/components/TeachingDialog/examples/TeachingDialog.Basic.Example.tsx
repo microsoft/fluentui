@@ -17,12 +17,11 @@ export interface ITeachingDialogBasicExampleState {
 export class TeachingDialogBasicExample extends React.Component<any, ITeachingDialogBasicExampleState> {
 
   private _menuButtonElement: HTMLElement;
-
+  private x: boolean;
   public constructor() {
     super();
-
     this._onDismiss = this._onDismiss.bind(this);
-
+    this.x = false;
     this.state = {
       isTeachingDialogVisible: false,
     };
@@ -35,6 +34,7 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
         headline: 'Welcome',
         leftButtonText: 'Discard',
         rightButtonText: 'Next',
+        onLeftButton: this._onDismiss,
         title: 'Lorem ipsum',
         textContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
         image: 'https://spoprod-a.akamaihd.net/files/sphome-next-prod_ship-2017-07-25_20170725.001/odsp-media/images/spfirstrun/news.gif',
@@ -42,19 +42,22 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
       {
         leftButtonText: 'Previous',
         rightButtonText: 'Done',
+        onRightButton: this._onDismiss,
         title: 'Lorem ipsum 2',
         textContent: 'Lorem ipsum 2 dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
-        image: imageProps
+        image: 'https://spoprod-a.akamaihd.net/files/sphome-next-prod_ship-2017-07-25_20170725.001/odsp-media/images/spfirstrun/news.gif',
       } as ITeachingDialogViewProps];
 
     return (
       <div className='ms-TeachingDialogExample'>
         <span className='ms-TeachingDialogBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <DefaultButton onClick={ this._onDismiss } >{ 'Show TeachingDialog' }</DefaultButton>
+          <DefaultButton onClick={ this._onDismiss } >
+            { this.state.isTeachingDialogVisible ? 'Hide TeachingDialog' : 'Show TeachingDialog' }
+          </DefaultButton>
         </span>
         { this.state.isTeachingDialogVisible ? (
           <div>
-            <TeachingDialog viewProps={ viewProps } />
+            <TeachingDialog viewProps={ viewProps } onXButton={ this._onDismiss } />
           </div>
         ) : (null) }
       </div>

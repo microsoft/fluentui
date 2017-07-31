@@ -1,11 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { ITeachingDialogProps } from './TeachingDialog.Props';
 import { ITeachingDialogViewProps } from './TeachingDialogView.Props';
 import { KeyCodes } from '../../../../utilities/src/KeyCodes';
 import { TeachingDialogContent } from './TeachingDialogContent';
+import { IconButton } from '../../Button';
 import * as stylesImport from './TeachingDialog.scss';
 const styles: any = stylesImport;
 
@@ -65,7 +66,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     }
 
     let currentPageProps: ITeachingDialogViewProps = this.props.viewProps[this.state.pageIndex];
-    let headLine: React.ReactElement<{}> = this._createHeadLine(currentPageProps.headline);
+    let headLine: React.ReactElement<{}> = this._createHeadline(currentPageProps.headline);
     let leftButton: React.ReactElement<{}> = this._createButton(
       currentPageProps.leftButtonText,
       false,
@@ -76,28 +77,29 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
       !!currentPageProps.isRighButtonLight);
 
     // Creating the dialog and returning it
-    return <div className='ms-TeachingDialog-modal' >
+    return <div
+      className={ css('ms-TeachingDialog-modal', styles.modal) }
       onKeyDown={ this._keyDown.bind(this) }>
-      <div className='ms-TeachingDialog-main'>
-        <div ref='xButton'
-          className='XButton'
+      <div className={ css('ms-TeachingDialog-root', styles.root) }>
+        <IconButton ref='xButton'
+          className={ css('ms-TeachingDialog-closeButton', styles.closeButton) }
           data-is-focusable={ true }
           onClick={ this._xButtonClicked.bind(this) }
           onKeyDown={ this._closeButtonKeyDown.bind(this) }
           role='button'
-          tabIndex={ 0 }>
-          <i className='mdl2-Icon mdl2-Icon--clear'></i>
-        </div>
+          tabIndex={ 0 }
+          iconProps={ { iconName: 'Cancel' } }
+        />
         { headLine }
         <TeachingDialogContent
           image={ currentPageProps.image }
           textContent={ currentPageProps.textContent }
           title={ currentPageProps.title } />
-        <div className='ms-TeachingDialogButtons'>
+        <div className={ css('ms-TeachingDialog-footer', styles.footer) }>
           { leftButton }
           { rightButton }
         </div>
-        <div className='ms-TeachingDialog-pagination' ref='pagination'>
+        <div className={ css('ms-TeachingDialog-pagination', styles.pagination) } ref='pagination'>
           { this._createPaginationButtons() }
         </div>
       </div>
@@ -107,10 +109,10 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   /**
    *  Creating a head line of the current page
    */
-  private _createHeadLine(headline: string): React.ReactElement<{}> {
+  private _createHeadline(headline: string): React.ReactElement<{}> {
     if (headline !== undefined && headline !== null && headline !== '') {
-      return <div className='ms-TeachingDialogContent-headline'>
-        <p>{ headline }</p>
+      return <div className={ css('ms-TeachingDialog-headline', styles.headline) }>
+        { headline }
       </div> as React.ReactElement<{}>;
     }
     return null;
@@ -124,10 +126,11 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     let buttons: React.ReactElement<{}>[] = [];
 
     for (let i: number = 0; i < this.props.viewProps.length; i++) {
-      buttons.push(<div className={ ['btn', i === this.state.pageIndex ? 'isFilled' : ''].join(' ') }
-        key={ i }>
-        <i className='ms-Icon ms-Icon--circleUnFilled'></i>
-      </div>);
+      buttons.push(
+        <IconButton
+          className={ css(styles.btn) }
+          iconProps={ { iconName: i === this.state.pageIndex ? 'circleFill' : 'CircleRing' } }
+          key={ i } />);
     }
 
     return buttons;
@@ -137,9 +140,9 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    * Create the dialog button
    */
   private _createButton(buttonText: string, isRight: boolean, isLight: boolean): React.ReactElement<{}> {
-    const className: string = ['Button', isRight ? '-Right' : '', isLight ? ' isLight' : ''].join('');
+    const className: string = ['button', isRight ? '-Right' : '', isLight ? ' isLight' : ''].join('');
     return <div ref={ isRight ? this._buttonsRefs[0] : this._buttonsRefs[2] }
-      className={ className }
+      className={ css(styles.button, isRight ? 'Right' : '', isLight ? styles.isLight : '') }
       role='button'
       tabIndex={ 0 }
       data-is-focusable={ true }
