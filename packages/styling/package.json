@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "0.15.0",
+  "version": "0.15.2",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
