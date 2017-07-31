@@ -112,7 +112,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div>
             <ul>
-              <li>Use for experiences where the user needs to interact with the app view. Use a Pane (which pushes content, doesn’t use an overlay, and sits on the same z-index as the rest of the UI) instead.</li>
+              <li>Use for experiences where the user needs to interact with the app view.</li>
             </ul>
           </div>
         }

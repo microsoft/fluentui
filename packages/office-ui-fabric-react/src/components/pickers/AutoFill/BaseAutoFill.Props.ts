@@ -77,7 +77,7 @@ export interface IBaseAutoFillProps extends React.HTMLAttributes<HTMLInputElemen
    *  in to the auto fill's componentWillReceiveProps
    * @returns {string} - the updated value to set, if needed
    */
-  updateValueInWillReceiveProps?: () => string;
+  updateValueInWillReceiveProps?: () => string | null;
 
   /**
    * Handler for checking if the full value of the input should

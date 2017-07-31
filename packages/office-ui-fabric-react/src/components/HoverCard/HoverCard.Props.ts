@@ -42,7 +42,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
 
   /**
    * Time in ms when expanded card should open after compact card
-   * @default 1000
+   * @default 1500
    */
   expandedCardOpenDelay?: number;
 
