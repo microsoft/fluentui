@@ -139,7 +139,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           // set anchor only.
           selection.setIndexSelected(index, selection.isIndexSelected(index), true);
         } else {
-          this._onItemSurfaceClick(ev, index);
+          if (this.props.isSelectedOnFocus) {
+            this._onItemSurfaceClick(ev, index);
+          }
         }
       }
     }
