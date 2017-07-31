@@ -32,9 +32,9 @@ export interface ISwatchColorPickerProps {
   selectedId?: string;
 
   /**
-   * The color options that will be made available to the user
+   * The color cells that will be made available to the user
    */
-  swatchColorPickerItems: ISwatchColorPickerItemProps[];
+  colorCells: IColorCellProps[];
 
   /**
    * Callback issued when the user changes the color.
@@ -42,11 +42,6 @@ export interface ISwatchColorPickerProps {
    * (e.g. the user executed the currently selected cell to unselect it)
    */
   onColorChanged?: (id?: string, color?: string) => void;
-
-  /**
- * Callback issued when the user click a menu item
- */
-  onMenuItemClick?: (item: ISwatchColorPickerItemProps) => void;
 
   /**
    * Callback issued when the user hovers over a color cell.
@@ -81,7 +76,7 @@ export interface ISwatchColorPickerProps {
   shouldFocusCircularNavigate?: boolean;
 }
 
-export interface ISwatchColorPickerItemProps {
+export interface IColorCellProps {
 
   /**
    * Arbitrary unique string associated with this option
@@ -104,9 +99,4 @@ export interface ISwatchColorPickerItemProps {
    * Index for this option
    */
   index?: number;
-
-  /**
-   * Is this individual item disabled?
-   */
-  disabled?: boolean;
 }

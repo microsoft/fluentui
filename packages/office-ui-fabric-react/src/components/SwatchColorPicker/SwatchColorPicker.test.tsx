@@ -5,11 +5,11 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
-import { ISwatchColorPickerItemProps } from './SwatchColorPicker.Props';
+import { IColorCellProps } from './SwatchColorPicker.Props';
 
 let { expect } = chai;
 
-const DEFAULT_OPTIONS: ISwatchColorPickerItemProps[] = [
+const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },
   { id: 'b', label: 'orange', color: '#ffa500' },
   { id: 'c', label: 'blue', color: '#0000ff' },
@@ -29,7 +29,7 @@ describe('SwatchColorPicker', () => {
   it('Can render in full without being parented to a button', () => {
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerItems={ DEFAULT_OPTIONS }
+        colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
     expect(wrapper.find('.ms-swatchColorPickerBodyContainer').length).to.equal(1, 'should have a swatch color picker');
@@ -38,7 +38,7 @@ describe('SwatchColorPicker', () => {
   it('Can render the correct options when not in a menu', () => {
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerItems={ DEFAULT_OPTIONS }
+        colorCells={ DEFAULT_OPTIONS }
         columnCount={ 4 }
       />);
     let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
@@ -65,27 +65,11 @@ describe('SwatchColorPicker', () => {
     expect(posInSetElements.length).to.equal(0, 'should be zero elements with aria-posinset since we are not in a menu in the swatch color picker');
   });
 
-  it('Cannot execute a disabled cell in a non-collapsable swatch color picker', () => {
-    let eventFireCounter = 0;
-    const wrapper = mount(
-      <SwatchColorPicker
-        swatchColorPickerItems={ [{ id: 'a', label: 'green', color: '#00ff00', disabled: true }] }
-        onColorChanged={ (color) => eventFireCounter++ }
-        columnCount={ 4 }
-      />);
-    let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
-
-    let button = reactContainer.find('button');
-    expect(button).to.not.equal(null, 'should find a button');
-    button.simulate('click');
-    expect(eventFireCounter).to.equal(0, 'no color changed events were fired');
-  });
-
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerItems={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         onColorChanged={ (color) => eventFireCounter++ }
         columnCount={ 4 }
       />);
@@ -104,7 +88,7 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerItems={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         onCellHovered={ (color) => eventFireCounter++ }
         columnCount={ 4 }
       />);
@@ -123,7 +107,7 @@ describe('SwatchColorPicker', () => {
     let eventFireCounter = 0;
     const wrapper = mount(
       <SwatchColorPicker
-        swatchColorPickerItems={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
+        colorCells={ [{ id: 'a', label: 'green', color: '#00ff00' }] }
         onCellFocused={ (color) => eventFireCounter++ }
         columnCount={ 4 }
       />);
@@ -136,25 +120,5 @@ describe('SwatchColorPicker', () => {
 
     ReactTestUtils.Simulate.focus(cell);
     expect(eventFireCounter).to.equal(1, 'one color changed events were fired');
-  });
-
-  it('Cannot fire a hover or focus event on a disabled cell in non-collapsable swatch color picker ', () => {
-    let eventFireCounter = 0;
-    const wrapper = mount(
-      <SwatchColorPicker
-        swatchColorPickerItems={ [{ id: 'a', label: 'green', color: '#00ff00', disabled: true }] }
-        onCellFocused={ (color) => eventFireCounter++ }
-        onCellHovered={ (color) => eventFireCounter++ }
-        columnCount={ 4 }
-      />);
-    let reactContainer = wrapper.find('.ms-swatchColorPickerBodyContainer');
-    let container = reactContainer.getDOMNode();
-    expect(container).to.not.equal(null, 'should have a container');
-
-    let cell = container.querySelector('[role="gridcell"]') as Element;
-    expect(cell).to.not.equal(null, 'should find a cell');
-    ReactTestUtils.Simulate.mouseEnter(cell);
-    ReactTestUtils.Simulate.focus(cell);
-    expect(eventFireCounter).to.equal(0, 'no color changed events were fired');
   });
 });

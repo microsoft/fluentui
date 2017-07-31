@@ -26,7 +26,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           columnCount={ 4 }
           cellShape={ 'circle' }
-          swatchColorPickerItems={
+          colorCells={
             [
               { id: 'a', label: 'green', color: '#00ff00' },
               { id: 'b', label: 'orange', color: '#ffa500' },
@@ -38,7 +38,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <SwatchColorPicker
           columnCount={ 4 }
           cellShape={ 'square' }
-          swatchColorPickerItems={
+          colorCells={
             [
               { id: 'a', label: 'green', color: '#00ff00' },
               { id: 'b', label: 'orange', color: '#ffa500' },
@@ -54,7 +54,7 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           onColorChanged={ (id, newColor) => this.setState({ color: newColor }) }
           columnCount={ 4 }
           cellShape={ 'circle' }
-          swatchColorPickerItems={
+          colorCells={
             [
               { id: 'a', label: 'green', color: '#00ff00' },
               { id: 'b', label: 'orange', color: '#ffa500' },
@@ -76,25 +76,12 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           disabled={ true }
           columnCount={ 4 }
           cellShape={ 'circle' }
-          swatchColorPickerItems={
+          colorCells={
             [
               { id: 'a', label: 'green', color: '#00ff00' },
               { id: 'b', label: 'orange', color: '#ffa500' },
               { id: 'c', label: 'blue', color: '#0000ff' },
               { id: 'd', label: 'red', color: '#ff0000' }
-            ]
-          } />
-        <div>Simple disabled square swatch color picker with a few disabled items:</div>
-        <SwatchColorPicker
-          disabled={ true }
-          columnCount={ 4 }
-          cellShape={ 'square' }
-          swatchColorPickerItems={
-            [
-              { id: 'a', label: 'green', color: '#00ff00' },
-              { id: 'b', label: 'orange', color: '#ffa500', disabled: true },
-              { id: 'c', label: 'blue', color: '#0000ff' },
-              { id: 'd', label: 'red', color: '#ff0000', disabled: true },
             ]
           } />
       </div>

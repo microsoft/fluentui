@@ -9,7 +9,7 @@ import {
 import {
   ISwatchColorPicker,
   ISwatchColorPickerProps,
-  ISwatchColorPickerItemProps
+  IColorCellProps
 } from './SwatchColorPicker.Props';
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
@@ -23,7 +23,7 @@ interface ISwatchColorPickerOptionProps {
   /**
    * The option that will be made available to the user
    */
-  item: ISwatchColorPickerItemProps;
+  item: IColorCellProps;
 
   /**
    * Arbitrary unique string associated with this option
@@ -43,7 +43,7 @@ interface ISwatchColorPickerOptionProps {
   /**
    * The on click handler
    */
-  onClick: (item: ISwatchColorPickerItemProps) => void;
+  onClick: (item: IColorCellProps) => void;
 
   /**
    * Optional, the onHover handler
@@ -71,8 +71,22 @@ interface ISwatchColorPickerOptionProps {
   cellShape?: 'circle' | 'square';
 }
 
-const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOptionProps> =
-  (props: ISwatchColorPickerOptionProps) => {
+class SwatchColorPickerOption extends React.Component<ISwatchColorPickerOptionProps, null> {
+
+  public static defaultProps = {
+    cellShape: 'circle',
+    disabled: false
+  };
+
+  private _id: string;
+
+  constructor(props: ISwatchColorPickerOptionProps) {
+    super(props);
+
+    this._id = props.id || getId('colorCell');
+  }
+
+  public render() {
     let {
       item,
       id,
@@ -84,7 +98,7 @@ const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOption
       onClick,
       onHover,
       onFocus
-    } = props;
+    } = this.props;
     return (
       <CommandButton
         id={ id + '-item' + item.index }
@@ -97,61 +111,94 @@ const SwatchColorPickerOption: React.StatelessComponent<ISwatchColorPickerOption
             ['is-disabled ' + styles.disabled]: disabled
           }
         ) }
-        onClick={ _onClick }
-        onMouseEnter={ _onMouseEnter }
-        onMouseLeave={ _onMouseLeave }
-        onFocus={ _onFocus }
+        onClick={ this._onClick }
+        onMouseEnter={ this._onMouseEnter }
+        onMouseLeave={ this._onMouseLeave }
+        onFocus={ this._onFocus }
         role={ role }
         aria-selected={ selectedIndex !== undefined && (selectedIndex === item.index).toString() }
         ariaLabel={ item.label && item.label }
         title={ item.label && item.label }
       >
-        { _onRenderOption() }
+        { this._onRenderOption() }
       </CommandButton>
     );
+  }
 
-    function _onClick() {
-      if (onClick && !disabled) {
-        onClick(item);
-      }
+  @autobind
+  private _onClick() {
+    let {
+        onClick,
+      disabled,
+      item
+      } = this.props;
+
+    if (onClick && !disabled) {
+      onClick(item);
     }
+  }
 
-    function _onMouseEnter() {
-      if (onHover && !disabled) {
-        onHover(item.id, item.color);
-      }
+  @autobind
+  private _onMouseEnter() {
+    let {
+        onHover,
+      disabled,
+      item
+      } = this.props;
+
+    if (onHover && !disabled) {
+      onHover(item.id, item.color);
     }
+  }
 
-    function _onMouseLeave() {
-      if (onHover && !disabled) {
-        onHover();
-      }
+  @autobind
+  private _onMouseLeave() {
+    let {
+        onHover,
+      disabled
+      } = this.props;
+
+    if (onHover && !disabled) {
+      onHover();
     }
+  }
 
-    function _onFocus() {
-      if (onFocus && !disabled) {
-        onFocus(item.id, item.color);
-      }
+  @autobind
+  private _onFocus() {
+    let {
+        onFocus,
+      disabled,
+      item
+      } = this.props;
+
+    if (onFocus && !disabled) {
+      onFocus(item.id, item.color);
     }
+  }
 
-    /**
-     * Render the core of an cell or menu item
-     * @returns {JSX.Element} - Element representing the core of the item
-     */
-    function _onRenderOption(): JSX.Element {
+  /**
+   * Render the core of a color cell
+   * @returns {JSX.Element} - Element representing the core of the item
+   */
+  @autobind
+  private _onRenderOption(): JSX.Element {
+    let {
+        cellShape,
+      item
+      } = this.props;
 
-      // Build an SVG for the cell with the given shape and color properties
-      return (
-        <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color as string).str } >
-          {
-            cellShape === 'circle' ?
-              <circle cx='50%' cy='50%' r='50%' /> :
-              <rect width='100%' height='100%' />
-          }
-        </svg>
-      );
-    }
-  };
+    // Build an SVG for the cell with the given shape and color properties
+    return (
+      <svg className={ css(styles.svg, cellShape, cellShape === 'circle' ? styles.circle : '') } viewBox='0 0 20 20' fill={ getColorFromString(item.color as string).str } >
+        {
+          cellShape === 'circle' ?
+            <circle cx='50%' cy='50%' r='50%' /> :
+            <rect width='100%' height='100%' />
+        }
+      </svg>
+    );
+  }
+}
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
@@ -161,7 +208,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
   public static defaultProps = {
     cellShape: 'circle',
-    updateButtonIconWithColor: false,
     disabled: false,
     shouldFocusCircularNavigate: true
   };
@@ -175,7 +221,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
     let selectedIndex: number | undefined;
     if (props.selectedId) {
-      selectedIndex = this._getSelectedIndex(props.swatchColorPickerItems, props.selectedId);
+      selectedIndex = this._getSelectedIndex(props.colorCells, props.selectedId);
     }
 
     this.state = {
@@ -187,7 +233,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let newSelectedIndex;
 
     if (newProps.selectedId) {
-      newSelectedIndex = this._getSelectedIndex(newProps.swatchColorPickerItems, newProps.selectedId);
+      newSelectedIndex = this._getSelectedIndex(newProps.colorCells, newProps.selectedId);
     }
 
     if (newSelectedIndex !== undefined &&
@@ -201,7 +247,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   public render() {
     let {
       disabled,
-      swatchColorPickerItems,
+      colorCells,
       columnCount,
       positionInSet,
       setSize,
@@ -216,8 +262,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       onBlur={ this.onSwatchColorPickerBlur }
     >
       <Grid
-        key={ this._id + swatchColorPickerItems[0].id + '-grid' }
-        items={ swatchColorPickerItems.map((item, index) => { return { ...item, index }; }) }
+        key={ this._id + colorCells[0].id + '-grid' }
+        items={ colorCells.map((item, index) => { return { ...item, index }; }) }
         columnCount={ this.props.columnCount }
         onRenderItem={ this._renderOption }
         positionInSet={ positionInSet && positionInSet }
@@ -243,18 +289,18 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param selectedId - The selected item's id to find
    * @returns {number} - The index of the selected item's id, -1 if there was no match
    */
-  private _getSelectedIndex(items: ISwatchColorPickerItemProps[], selectedId: string): number | undefined {
+  private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
     let selectedIndex = findIndex(items, (item => (item.id === selectedId)));
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
   /**
-   * Render a cell or menu item
+   * Render a color cell
    * @param item - The item to render
    * @returns {JSX.Element} - Element representing the item
    */
   @autobind
-  private _renderOption(item: ISwatchColorPickerItemProps): JSX.Element {
+  private _renderOption(item: IColorCellProps): JSX.Element {
     let id = this._id;
 
     return (
@@ -262,7 +308,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         item={ item }
         id={ id }
         key={ id + item.id }
-        disabled={ this.props.disabled || item.disabled }
+        disabled={ this.props.disabled }
         cellShape={ this.props.cellShape }
         className={ styles.cell }
         onClick={ this._onCellClick }
@@ -279,8 +325,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * @param item - The cell that the click was fired against
    */
   @autobind
-  private _onCellClick(item: ISwatchColorPickerItemProps) {
-    if (this.props.disabled || item.disabled) {
+  private _onCellClick(item: IColorCellProps) {
+    if (this.props.disabled) {
       return;
     }
 
