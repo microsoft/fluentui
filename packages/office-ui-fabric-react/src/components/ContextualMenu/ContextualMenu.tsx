@@ -396,7 +396,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return React.createElement(
       'button',
       assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
-      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+      this._renderMenuItemChildren(item, index, hasCheckmarks!, hasIcons!));
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
