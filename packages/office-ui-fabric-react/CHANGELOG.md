@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 31 Jul 2017 10:12:08 GMT and should not be manually modified.
+This log was last generated on Tue, 01 Aug 2017 10:13:55 GMT and should not be manually modified.
+
+## 4.27.0
+Tue, 01 Aug 2017 10:13:55 GMT
+
+### Minor changes
+
+- SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined
+- OverflowSet: Add focus method, class name and abstract item interface
+- Panel: added prop to force footer to bottom of the page
+
+### Patches
+
+- Allow the X in a persona to receive focus and update focus when it is clicked
 
 ## 4.26.0
 Mon, 31 Jul 2017 10:12:08 GMT
