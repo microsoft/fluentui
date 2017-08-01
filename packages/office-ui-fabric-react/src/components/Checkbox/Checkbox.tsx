@@ -106,6 +106,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         name={ name }
         id={ this._id }
         role='checkbox'
+        type='button'
         className={ classNames.root }
         onClick={ this._onClick }
         onFocus={ this._onFocus }
