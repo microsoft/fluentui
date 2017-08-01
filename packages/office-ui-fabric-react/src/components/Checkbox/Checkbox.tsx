@@ -155,6 +155,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
+    ev.preventDefault();
 
     if (!disabled) {
       if (onChange) {
