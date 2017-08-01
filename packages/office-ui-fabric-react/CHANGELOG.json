@@ -2,6 +2,133 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.27.0",
+      "tag": "office-ui-fabric-react_v4.27.0",
+      "date": "Tue, 01 Aug 2017 10:13:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "75b8690920938e69cdefd2d92363ccd3c6eabdef",
+            "comment": "SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "b08a5992ed06484684091b393002a6aab228908c",
+            "comment": "OverflowSet: Add focus method, class name and abstract item interface"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ea03c892b388f359812282a0e99f4b9adeb07f4b",
+            "comment": "Panel: added prop to force footer to bottom of the page"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "fa28674b2f94027e7ecd43ca8f114a7455af069e",
+            "comment": "Allow the X in a persona to receive focus and update focus when it is clicked"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.2 <1.0.0` to `>=0.15.3 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.26.0",
+      "tag": "office-ui-fabric-react_v4.26.0",
+      "date": "Mon, 31 Jul 2017 10:12:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "4b850dd2d9555fc5ab453d96c34670800cc78954",
+            "comment": "BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "c56fe93ca63b2e3d16ad94848515e54b4e3e7ea3",
+            "comment": "MessageBar: Fix system problems that display when component is on website"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "82ba693676dcf38e7a739663ae3228bc78fc4dfb",
+            "comment": "Searchbox: Fixed broken disabled state and aligned styles with current XD styles"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.1 <1.0.0` to `>=0.15.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.25.1",
+      "tag": "office-ui-fabric-react_v4.25.1",
+      "date": "Fri, 28 Jul 2017 18:36:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d2fdce1bdb3bec646721cf9dc0ec0cbc33622235",
+            "comment": "Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue."
+          },
+          {
+            "author": "daweffe <daweffe@microsoft.com>",
+            "commit": "bade6f5b0153fb82952b52be304241be9dc4572b",
+            "comment": "Fix Callout to get a valid element"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.0 <1.0.0` to `>=0.15.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.25.0",
+      "tag": "office-ui-fabric-react_v4.25.0",
+      "date": "Fri, 28 Jul 2017 10:23:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "71b918343e8b8afed73902008d5332bbc200136b",
+            "comment": "Fix hover card scroll"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "de23624077202ce5c1542db44d809586e6eef420",
+            "comment": "Checkbox: Added left textAlign style"
+          },
+          {
+            "author": "David Michon <dmichon@microsoft.com>",
+            "commit": "b5c0fba73cc02669f9e025a228811840876e8bf7",
+            "comment": "Update accessibility for checkable menu items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "20d920d1a9f38c468ab47027e9fb2ec80018d85d",
+            "comment": "Moving ComboBox component to use the styling library"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.14.0 <1.0.0` to `>=0.15.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.24.0",
       "tag": "office-ui-fabric-react_v4.24.0",
       "date": "Thu, 27 Jul 2017 10:23:33 GMT",
