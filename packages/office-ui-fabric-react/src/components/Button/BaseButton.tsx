@@ -311,7 +311,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ `${mergeStyles(screenReaderText)}` } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ `${styles!.screenReaderText || mergeStyles(screenReaderText)}` } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
