@@ -19,7 +19,7 @@ function _routerDidMount() {
   if (_hasAnchorLink(window.location.hash)) {
     let hash = _extractAnchorLink(window.location.hash);
     let el = document.getElementById(hash);
-    let elRect = el.getBoundingClientRect();
+    let elRect = el!.getBoundingClientRect();
     let bodySTop = document.body.scrollTop;
     let currentScrollPosition;
     currentScrollPosition = bodySTop + elRect.top;

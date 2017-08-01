@@ -269,7 +269,7 @@ describe('ResizeGroup', () => {
       // Set the initial window width
       getNextResizeGroupState(resizeGroupProps,
         {},
-        undefined,
+        sinon.stub(),
         initialWidth);
 
       // Pass in a state that reflects some rendered data
@@ -304,7 +304,7 @@ describe('ResizeGroup', () => {
       // Set the initial window width
       getNextResizeGroupState(resizeGroupProps,
         {},
-        undefined,
+        sinon.stub(),
         initialWidth);
 
       // Pass in a state that reflects some rendered data
@@ -458,7 +458,7 @@ describe('ResizeGroup', () => {
       // Set the initial window width
       getNextResizeGroupState(resizeGroupProps,
         {},
-        undefined,
+        sinon.stub(),
         initialWidth);
 
       // Pass in a state that reflects some rendered data
@@ -579,7 +579,7 @@ describe('ResizeGroup', () => {
     // Set the initial window width
     getNextResizeGroupState(resizeGroupProps,
       {},
-      undefined,
+      sinon.stub(),
       initialWidth);
 
     // Pass in a state that reflects some rendered data

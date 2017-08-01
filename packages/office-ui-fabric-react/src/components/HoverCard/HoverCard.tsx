@@ -24,7 +24,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
-    expandedCardOpenDelay: 1000,
+    expandedCardOpenDelay: 1500,
     instantOpenOnClick: false
   };
 
@@ -52,7 +52,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           this.setState({
             mode: ExpandingCardMode.expanded
           });
-        }, this.props.expandedCardOpenDelay);
+        }, this.props.expandedCardOpenDelay!);
       } else {
         this.setState({
           mode: ExpandingCardMode.compact
@@ -76,6 +76,10 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this._styles = getStyles(customStyles);
 
+    let onClick;
+    if (instantOpenOnClick) {
+      onClick = this._instantOpenExpanded;
+    }
     return (
       <div
         className={ css(this._styles.host) }
@@ -84,7 +88,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         onBlurCapture={ this._cardDismiss }
         onMouseEnter={ this._cardOpen }
         onMouseLeave={ this._cardDismiss }
-        onClick={ instantOpenOnClick && this._instantOpenExpanded }
+        onClick={ onClick }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
         { children }
@@ -119,7 +123,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           mode: ExpandingCardMode.compact
         });
       }
-    }, this.props.cardOpenDelay);
+    }, this.props.cardOpenDelay!);
   }
 
   // Hide HoverCard
@@ -135,7 +139,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
           mode: ExpandingCardMode.compact
         });
       }
-    }, this.props.cardDismissDelay);
+    }, this.props.cardDismissDelay!);
   }
 
   // Instant Open the card in Expanded mode
