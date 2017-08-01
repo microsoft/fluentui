@@ -12,7 +12,6 @@ const styles: any = stylesImport;
 
 export interface ITeachingDialogState {
   pageIndex: number;
-  showDialog: boolean;
 }
 
 /**
@@ -44,26 +43,21 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     this._buttonsRefs = ['rightButton', 'xButton', 'leftButton'];
     this._firstPageIndex = 0;
     this._lastPageIndex = props.viewProps.length - 1;
-    this.state = { pageIndex: this._firstPageIndex, showDialog: true } as ITeachingDialogState;
+    this.state = { pageIndex: this._firstPageIndex } as ITeachingDialogState;
   }
 
   /**
    * Invoked once only on the client immediately after the initial rendering occurs
    */
   public componentDidMount(): void {
-    if (this.state.showDialog) {
-      let nextButtonElement = this.refs[this._buttonsRefs[0]] as HTMLElement;
-      nextButtonElement.focus();
-    }
+    let nextButtonElement = this.refs[this._buttonsRefs[0]] as HTMLElement;
+    nextButtonElement.focus();
   }
 
   /**
    * Invoked when the component is rendered
    */
   public render(): React.ReactElement<{}> {
-    if (!this.state.showDialog) {
-      return null;
-    }
 
     let currentPageProps: ITeachingDialogViewProps = this.props.viewProps[this.state.pageIndex];
     let headLine: React.ReactElement<{}> = this._createHeadline(currentPageProps.headline);
@@ -114,7 +108,6 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     if (this.props.onXButton !== undefined && this.props.onXButton) {
       this.props.onXButton();
     }
-    this._closeDialog();
   }
 
   /**
@@ -122,20 +115,12 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    */
   private _closeButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
     if (event.which === KeyCodes.enter) {
-      if (this.props.onXButton) {
+      if (this.props.onXButton !== undefined && this.props.onXButton) {
         this.props.onXButton();
       }
-      this._closeDialog();
       event.preventDefault();
       event.stopPropagation();
     }
-  }
-
-  /**
-   * Close the dialog
-   */
-  private _closeDialog(): void {
-    this.setState({ pageIndex: this._firstPageIndex, showDialog: false });
   }
 
   /**
@@ -230,7 +215,8 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    */
   private _leftButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
     if (event.which === KeyCodes.enter) {
-      if (this.props.viewProps[this.state.pageIndex].onLeftButton) {
+      if (this.props.viewProps[this.state.pageIndex].onLeftButton !== undefined &&
+        this.props.viewProps[this.state.pageIndex].onLeftButton) {
         this.props.viewProps[this.state.pageIndex].onLeftButton();
       }
       this._previousPage();
@@ -244,12 +230,8 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    * On the last page, close the dialog
    */
   private _nextPage(): void {
-    if (this.state.pageIndex === this._lastPageIndex) {
-      this._closeDialog();
-    } else {
-      let nextPage: number = (this.state.pageIndex + 1) < this._lastPageIndex ? (this.state.pageIndex + 1) : this._lastPageIndex;
-      this.setState({ pageIndex: nextPage, showDialog: true } as ITeachingDialogState);
-    }
+    let nextPage: number = (this.state.pageIndex + 1) < this._lastPageIndex ? (this.state.pageIndex + 1) : this._lastPageIndex;
+    this.setState({ pageIndex: nextPage } as ITeachingDialogState);
   }
 
   /**
@@ -257,12 +239,8 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    * On the first page, closes the dialog
    */
   private _previousPage(): void {
-    if (this.state.pageIndex === this._firstPageIndex) {
-      this._closeDialog();
-    } else {
-      let prevPage: number = (this.state.pageIndex - 1) > this._firstPageIndex ? (this.state.pageIndex - 1) : this._firstPageIndex;
-      this.setState({ pageIndex: prevPage, showDialog: true } as ITeachingDialogState);
-    }
+    let prevPage: number = (this.state.pageIndex - 1) > this._firstPageIndex ? (this.state.pageIndex - 1) : this._firstPageIndex;
+    this.setState({ pageIndex: prevPage } as ITeachingDialogState);
   }
 
   /**
@@ -270,7 +248,8 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    */
   private _rightButtonClicked(event: MouseEvent): void {
     event.stopPropagation();
-    if (this.props.viewProps[this.state.pageIndex].onRightButton) {
+    if (this.props.viewProps[this.state.pageIndex].onRightButton !== undefined &&
+      this.props.viewProps[this.state.pageIndex].onRightButton) {
       this.props.viewProps[this.state.pageIndex].onRightButton();
     }
     this._nextPage();
