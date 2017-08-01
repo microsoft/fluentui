@@ -22,6 +22,6 @@ describe('TeachingDialog', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let titleElement = renderedDOM.querySelector('.ms-TeachingDialog-content-tile');
 
-    expect(titleElement.textContent).to.equal('Title');
+    expect(titleElement!.textContent).to.equal('Title');
   });
 });

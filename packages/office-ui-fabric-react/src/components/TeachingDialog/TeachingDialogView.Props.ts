@@ -33,13 +33,13 @@ export interface ITeachingDialogViewProps extends React.Props<TeachingDialogCont
 
   /**
    * Optional callback for the left button in addition to the default behavior
-   * By default, navigate to previous page, and close on the first page
+   * By default, left button navigate to previous page
    */
   onLeftButton?: () => void;
 
   /**
    * Optional callback for the right button in addition to the default behavior
-   * By default, navigate to next page, and close on the last page
+   * By default, right button navigate to next page
    */
   onRightButton?: () => void;
 

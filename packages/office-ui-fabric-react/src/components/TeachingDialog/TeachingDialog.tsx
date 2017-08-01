@@ -60,7 +60,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   public render(): React.ReactElement<{}> {
 
     let currentPageProps: ITeachingDialogViewProps = this.props.viewProps[this.state.pageIndex];
-    let headLine: React.ReactElement<{}> = this._createHeadline(currentPageProps.headline);
+    let headLine: React.ReactElement<{}> | null = this._createHeadline(currentPageProps.headline);
     let leftButton: React.ReactElement<{}> = this._createButton(
       currentPageProps.leftButtonText,
       false,
@@ -141,7 +141,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   /**
    *  Creating a head line of the current page
    */
-  private _createHeadline(headline: string): React.ReactElement<{}> {
+  private _createHeadline(headline: string | null | undefined): React.ReactElement<{}> | null {
     if (headline !== undefined && headline !== null && headline !== '') {
       return <div className={ css('ms-TeachingDialog-headline', styles.headline) }>
         { headline }
@@ -183,7 +183,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
 
       // find the active element and the next active element
       let activeElement = event.target as HTMLElement;
-      let nextActiveIndex: number;
+      let nextActiveIndex: number = 0;
 
       for (let i: number = 0; i < this._buttonsRefs.length; i++) {
         if (activeElement === this.refs[this._buttonsRefs[i]]) {
@@ -204,8 +204,9 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
  */
   private _leftButtonClicked(event: MouseEvent): void {
     event.stopPropagation();
-    if (this.props.viewProps[this.state.pageIndex].onLeftButton) {
-      this.props.viewProps[this.state.pageIndex].onLeftButton();
+    if (this.props.viewProps[this.state.pageIndex].onLeftButton !== undefined &&
+      this.props.viewProps[this.state.pageIndex].onLeftButton) {
+      this.props.viewProps[this.state.pageIndex].onLeftButton!();
     }
     this._previousPage();
   }
@@ -217,7 +218,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     if (event.which === KeyCodes.enter) {
       if (this.props.viewProps[this.state.pageIndex].onLeftButton !== undefined &&
         this.props.viewProps[this.state.pageIndex].onLeftButton) {
-        this.props.viewProps[this.state.pageIndex].onLeftButton();
+        this.props.viewProps[this.state.pageIndex].onLeftButton!();
       }
       this._previousPage();
       event.preventDefault();
@@ -227,7 +228,6 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
 
   /**
    * Navigate to the next page on all pages except for the last page
-   * On the last page, close the dialog
    */
   private _nextPage(): void {
     let nextPage: number = (this.state.pageIndex + 1) < this._lastPageIndex ? (this.state.pageIndex + 1) : this._lastPageIndex;
@@ -236,7 +236,6 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
 
   /**
    * Navigate to the previous page on all pages except for the first page
-   * On the first page, closes the dialog
    */
   private _previousPage(): void {
     let prevPage: number = (this.state.pageIndex - 1) > this._firstPageIndex ? (this.state.pageIndex - 1) : this._firstPageIndex;
@@ -250,7 +249,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     event.stopPropagation();
     if (this.props.viewProps[this.state.pageIndex].onRightButton !== undefined &&
       this.props.viewProps[this.state.pageIndex].onRightButton) {
-      this.props.viewProps[this.state.pageIndex].onRightButton();
+      this.props.viewProps[this.state.pageIndex].onRightButton!();
     }
     this._nextPage();
   }
@@ -260,8 +259,9 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    */
   private _rightButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
     if (event.which === KeyCodes.enter) {
-      if (this.props.viewProps[this.state.pageIndex].onRightButton) {
-        this.props.viewProps[this.state.pageIndex].onRightButton();
+      if (this.props.viewProps[this.state.pageIndex].onRightButton !== undefined &&
+        this.props.viewProps[this.state.pageIndex].onRightButton) {
+        this.props.viewProps[this.state.pageIndex].onRightButton!();
       }
       this._nextPage();
       event.preventDefault();
