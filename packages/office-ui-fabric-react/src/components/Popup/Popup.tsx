@@ -28,7 +28,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   private _containsFocus: boolean;
 
   public componentWillMount() {
-    this._originalFocusedElement = getDocument().activeElement as HTMLElement;
+    this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {

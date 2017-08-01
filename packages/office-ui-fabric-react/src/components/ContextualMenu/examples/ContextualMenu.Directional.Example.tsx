@@ -90,7 +90,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               onChange={ this._onBeakWidthSlider } />) }
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint] }
+            selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged } />
           { getRTL() &&
@@ -99,7 +99,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
           { getRTL() &&
             <Dropdown
               label='Directional hint for RTL'
-              selectedKey={ DirectionalHint[directionalHintForRTL] }
+              selectedKey={ DirectionalHint[directionalHintForRTL!] }
               options={ DIRECTION_OPTIONS }
               onChanged={ this._onDirectionalRtlChanged }
               disabled={ !useDirectionalHintForRtl } />

@@ -180,11 +180,11 @@ let OppositeEdgeDictionary: { [key: number]: number } = {
   [RectangleEdge.left]: RectangleEdge.right,
 };
 
-function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint {
+function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint | undefined {
   if (getRTL()) {
     return props.directionalHintForRTL !== undefined ?
       props.directionalHintForRTL :
-      MirrorDirectionalHintDictionary[props.directionalHint];
+      MirrorDirectionalHintDictionary[props.directionalHint!];
   } else {
     return props.directionalHint;
   }
@@ -207,7 +207,7 @@ export function getRelativePositions(
     props.targetPoint,
     props.useTargetPoint);
   let positionData: PositionData = positioningFunctions._getPositionData(
-    getDirectionalHintForLayout(props),
+    getDirectionalHintForLayout(props)!,
     targetRect,
     boundingRect,
     props.coverTarget);
