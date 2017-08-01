@@ -156,8 +156,8 @@ describe('Pickers', () => {
           onResolveSuggestions={ onResolveSuggestions }
           selectedItems={ [] }
           onChange={ (items) => {
-            expect(items.length).to.be.equal(1, 'The picker incorrectly added an item');
-            expect(items[0].name).to.be.equal('black', 'The picker incorrectly added an item');
+            expect(items!.length).to.be.equal(1, 'The picker incorrectly added an item');
+            expect(items![0].name).to.be.equal('black', 'The picker incorrectly added an item');
             done();
           } }
         />,

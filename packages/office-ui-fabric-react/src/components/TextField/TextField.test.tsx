@@ -349,7 +349,7 @@ describe('TextField', () => {
   });
 
   it('should select a range of text', () => {
-    let textField: TextField;
+    let textField: TextField | undefined;
     const initialValue = 'initial value';
 
     const onSelect = () => {

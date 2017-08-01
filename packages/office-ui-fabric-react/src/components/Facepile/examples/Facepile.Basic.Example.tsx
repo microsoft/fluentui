@@ -76,7 +76,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
           checked={ this.state.imagesFadeIn }
           onChange={ (ev, checked) => {
             this.setState((prevState: IFacepileBasicExampleState) => {
-              prevState.imagesFadeIn = checked;
+              prevState.imagesFadeIn = checked!;
               return prevState;
             });
           } }
