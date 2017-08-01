@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ITeachingDialogViewProps } from './TeachingDialogView.Props';
-import { TeachingDialog } from './TeachingDialog';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
+import { TeachingDialog } from './TeachingDialog';
+import { ITeachingDialogViewProps } from './TeachingDialogView.Props';
 
 /**
  * TeachingDialog component props.
@@ -14,13 +14,13 @@ export interface ITeachingDialogProps extends React.Props<TeachingDialog>, IAcce
   componentRef?: (component: TeachingDialog) => void;
 
   /**
-   * pageProps an array ITeachingDialogPageProps for all pages in the dialog
-   */
-  viewProps: ITeachingDialogViewProps[];
-
-  /**
    * Callback when trying to close TeachingDialog using X button.
    */
   onXButton?: (ev?: any) => void;
+
+  /**
+   * pageProps an array ITeachingDialogPageProps for all pages in the dialog
+   */
+  viewProps: ITeachingDialogViewProps[];
 
 }

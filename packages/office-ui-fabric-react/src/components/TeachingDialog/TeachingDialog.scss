@@ -24,31 +24,18 @@ $paginationWidth: 96px;
     z-index: 20;
 }
 
-.root .headline {
-    @include ms-font-su();
-    bottom: 474px;
-    color: White;
-    font-size: 32px;
-    height: auto;
-    line-height: 38pt;
-    opacity: 1;
-    position: absolute;
-    width: 100%;
+.pagination {
+    display: block;
+    padding-top: 24px;
     text-align: center;
-}
+    width: 100%;
 
-.root .closeButton{
-    position: absolute;
-    top: 0;
-    @include right(0);
-    @include margin-right(20px);
-    margin-top: 20px;
-    z-index: 20;
-    opacity: 1;
-    color: $ms-color-white;
-    font-size: $ms-icon-size-m;
-    height: 20px;
-    cursor: pointer;
+    .btn {
+        color: $ms-color-white;
+        display: inline-block;
+        font-size: $ms-icon-size-s;
+        margin: 0 8px 0 8px;
+    }
 }
 
 .root {
@@ -64,89 +51,103 @@ $paginationWidth: 96px;
     .content {
         width: 100%;
 
-        .header {
-          top: 0;
-          width: 100%;
-          height: auto;
-          background-color: #30C6CC;
-
-          .headerImg {
-          width: 100%;
-          height: 100%;
-        }
-      }
-
-      .contentBody {
+        .contentBody {
         @include ms-font-l();
-        width: 100%;
-        height: 124px;
         background-color: white;
+        height: 124px;
+        width: 100%;
 
         .contentTitle {
         @include ms-font-xxl();
-        display: block;
-        padding: 16px 24px 15px 24px;
-        line-height: 24pt;
         color: $ms-color-neutralPrimary;
+        display: block;
+        line-height: 24pt;
+        padding: 16px 24px 15px 24px;
       }
 
       .contentText {
           @include ms-font-m();
+          color: $ms-color-neutralPrimary;
           display: block;
           line-height: 15pt;
           padding: 0px 24px 22px 24px;
-          color: $ms-color-neutralPrimary;
+        }
+      }
+
+        .header {
+          background-color: #30C6CC;
+          height: auto;
+          top: 0;
+          width: 100%;
+
+          .headerImg {
+            height: 100%;
+            width: 100%;
         }
       }
     }
 }
 
+.root .closeButton{
+    @include margin-right(20px);
+    @include right(0);
+    color: $ms-color-white;
+    cursor: pointer;
+    font-size: $ms-icon-size-m;
+    height: 20px;
+    margin-top: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+}
+
 .root .footer {
-    width: 100%;
-    height: auto;
     background-color: White;
+    height: auto;
+    width: 100%;
 
     .button {
         @include ms-font-m();
-        width: 50%;
-        display: inline-block;
         border-top: 1px solid $ms-color-neutralLight;
-        padding: 20px 0px 21px 0px;
-        text-align: center;
         color: $ms-color-neutralPrimary;
         cursor: pointer;
-
-        &.Right {
-          width: calc(50% - 1px);
-          @include border-left(1px, solid, $ms-color-neutralLight);
-        }
+        display: inline-block;
+        padding: 20px 0px 21px 0px;
+        text-align: center;
+        width: 50%;
 
         &.isLight {
           color: $ms-color-neutralTertiary;
         }
+
+        &.isRight {
+          @include border-left(1px, solid, $ms-color-neutralLight);
+          width: calc(50% - 1px);
+        }
     }
 }
 
-.pagination {
-  display: block;
-  width: 100%;
-  padding-top: 24px;
-  text-align: center;
-  .btn {
-      margin: 0 8px 0 8px;
-      display: inline-block;
-      color: $ms-color-white;
-      font-size: $ms-icon-size-s;
-  }
+.root .headline {
+    @include ms-font-su();
+    bottom: 474px;
+    color: White;
+    font-size: 32px;
+    height: auto;
+    line-height: 38pt;
+    opacity: 1;
+    position: absolute;
+    text-align: center;
+    width: 100%;
 }
 
 //Large
 @media (max-width: 1024px){
-  .root {
-      @include left(calc(50% - 262px));
-      width: 524px;
-      height: 414px;
-  }
+    .root {
+        @include left(calc(50% - 262px));
+        height: 414px;
+        width: 524px;
+    }
 }
 
 //Smaller than large

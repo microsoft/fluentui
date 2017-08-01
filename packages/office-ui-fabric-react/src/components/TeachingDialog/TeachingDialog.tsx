@@ -2,11 +2,11 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent, css } from '../../Utilities';
+import { IconButton } from '../../Button';
 import { ITeachingDialogProps } from './TeachingDialog.Props';
 import { ITeachingDialogViewProps } from './TeachingDialogView.Props';
 import { KeyCodes } from '../../../../utilities/src/KeyCodes';
 import { TeachingDialogContent } from './TeachingDialogContent';
-import { IconButton } from '../../Button';
 import * as stylesImport from './TeachingDialog.scss';
 const styles: any = stylesImport;
 
@@ -84,7 +84,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
         <IconButton ref='xButton'
           className={ css('ms-TeachingDialog-closeButton', styles.closeButton) }
           data-is-focusable={ true }
-          onClick={ this._xButtonClicked.bind(this) }
+          onClick={ this._closeButtonClicked.bind(this) }
           onKeyDown={ this._closeButtonKeyDown.bind(this) }
           role='button'
           tabIndex={ 0 }
@@ -103,6 +103,53 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
           { this._createPaginationButtons() }
         </div>
       </div>
+    </div> as React.ReactElement<{}>;
+  }
+
+  /**
+   * Handles close button clicked event
+   */
+  private _closeButtonClicked(event: MouseEvent): void {
+    event.stopPropagation();
+    if (this.props.onXButton !== undefined && this.props.onXButton) {
+      this.props.onXButton();
+    }
+    this._closeDialog();
+  }
+
+  /**
+   * Handles close button key down event
+   */
+  private _closeButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
+    if (event.which === KeyCodes.enter) {
+      if (this.props.onXButton) {
+        this.props.onXButton();
+      }
+      this._closeDialog();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
+  /**
+   * Close the dialog
+   */
+  private _closeDialog(): void {
+    this.setState({ pageIndex: this._firstPageIndex, showDialog: false });
+  }
+
+  /**
+   * Create the dialog button
+   */
+  private _createButton(buttonText: string, isRight: boolean, isLight: boolean): React.ReactElement<{}> {
+    return <div ref={ isRight ? this._buttonsRefs[0] : this._buttonsRefs[2] }
+      className={ css(styles.button, isRight ? styles.isRight : '', isLight ? styles.isLight : '') }
+      role='button'
+      tabIndex={ 0 }
+      data-is-focusable={ true }
+      onKeyDown={ isRight ? this._rightButtonKeyDown.bind(this) : this._leftButtonKeyDown.bind(this) }
+      onClick={ isRight ? this._rightButtonClicked.bind(this) : this._leftButtonClicked.bind(this) }>
+      { buttonText }
     </div> as React.ReactElement<{}>;
   }
 
@@ -137,96 +184,6 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   };
 
   /**
-   * Create the dialog button
-   */
-  private _createButton(buttonText: string, isRight: boolean, isLight: boolean): React.ReactElement<{}> {
-    return <div ref={ isRight ? this._buttonsRefs[0] : this._buttonsRefs[2] }
-      className={ css(styles.button, isRight ? styles.Right : '', isLight ? styles.isLight : '') }
-      role='button'
-      tabIndex={ 0 }
-      data-is-focusable={ true }
-      onKeyDown={ isRight ? this._rightButtonKeyDown.bind(this) : this._leftButtonKeyDown.bind(this) }
-      onClick={ isRight ? this._rightButtonClicked.bind(this) : this._leftButtonClicked.bind(this) }>
-      { buttonText }
-    </div> as React.ReactElement<{}>;
-  }
-
-  /**
-   * Handles Right button clicked event
-   */
-  private _rightButtonClicked(event: MouseEvent): void {
-    event.stopPropagation();
-    if (this.props.viewProps[this.state.pageIndex].onRightButton) {
-      this.props.viewProps[this.state.pageIndex].onRightButton();
-    }
-    this._nextPage();
-  }
-
-  /**
-   * Handles Left button clicked event
-   */
-  private _leftButtonClicked(event: MouseEvent): void {
-    event.stopPropagation();
-    if (this.props.viewProps[this.state.pageIndex].onLeftButton) {
-      this.props.viewProps[this.state.pageIndex].onLeftButton();
-    }
-    this._previousPage();
-  }
-
-  /**
-   * Handles X button clicked event
-   */
-  private _xButtonClicked(event: MouseEvent): void {
-    event.stopPropagation();
-    if (this.props.onXButton !== undefined && this.props.onXButton) {
-      this.props.onXButton();
-    }
-    this._closeDialog();
-  }
-
-  /**
-   * Handles Left button key down event
-   */
-  private _leftButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
-    if (event.which === KeyCodes.enter) {
-      if (this.props.viewProps[this.state.pageIndex].onLeftButton) {
-        this.props.viewProps[this.state.pageIndex].onLeftButton();
-      }
-      this._previousPage();
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  }
-
-  /**
-   * Handles Right button key down event
-   */
-  private _rightButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
-    if (event.which === KeyCodes.enter) {
-      if (this.props.viewProps[this.state.pageIndex].onRightButton) {
-        this.props.viewProps[this.state.pageIndex].onRightButton();
-      }
-      this._nextPage();
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  }
-
-  /**
-   * Handles X button key down event
-   */
-  private _closeButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
-    if (event.which === KeyCodes.enter) {
-      if (this.props.onXButton) {
-        this.props.onXButton();
-      }
-      this._closeDialog();
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  }
-
-  /**
    * Handles Tab key down event
    */
   private _keyDown(event: React.KeyboardEvent<HTMLElement>): void {
@@ -258,15 +215,27 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   }
 
   /**
-   * Navigate to the previous page on all pages except for the first page
-   * On the first page, closes the dialog
+ * Handles Left button clicked event
+ */
+  private _leftButtonClicked(event: MouseEvent): void {
+    event.stopPropagation();
+    if (this.props.viewProps[this.state.pageIndex].onLeftButton) {
+      this.props.viewProps[this.state.pageIndex].onLeftButton();
+    }
+    this._previousPage();
+  }
+
+  /**
+   * Handles Left button key down event
    */
-  private _previousPage(): void {
-    if (this.state.pageIndex === this._firstPageIndex) {
-      this._closeDialog();
-    } else {
-      let prevPage: number = (this.state.pageIndex - 1) > this._firstPageIndex ? (this.state.pageIndex - 1) : this._firstPageIndex;
-      this.setState({ pageIndex: prevPage, showDialog: true } as ITeachingDialogState);
+  private _leftButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
+    if (event.which === KeyCodes.enter) {
+      if (this.props.viewProps[this.state.pageIndex].onLeftButton) {
+        this.props.viewProps[this.state.pageIndex].onLeftButton();
+      }
+      this._previousPage();
+      event.preventDefault();
+      event.stopPropagation();
     }
   }
 
@@ -284,9 +253,40 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   }
 
   /**
-   * Close the dialog
+   * Navigate to the previous page on all pages except for the first page
+   * On the first page, closes the dialog
    */
-  private _closeDialog(): void {
-    this.setState({ pageIndex: this._firstPageIndex, showDialog: false });
+  private _previousPage(): void {
+    if (this.state.pageIndex === this._firstPageIndex) {
+      this._closeDialog();
+    } else {
+      let prevPage: number = (this.state.pageIndex - 1) > this._firstPageIndex ? (this.state.pageIndex - 1) : this._firstPageIndex;
+      this.setState({ pageIndex: prevPage, showDialog: true } as ITeachingDialogState);
+    }
+  }
+
+  /**
+   * Handles Right button clicked event
+   */
+  private _rightButtonClicked(event: MouseEvent): void {
+    event.stopPropagation();
+    if (this.props.viewProps[this.state.pageIndex].onRightButton) {
+      this.props.viewProps[this.state.pageIndex].onRightButton();
+    }
+    this._nextPage();
+  }
+
+  /**
+   * Handles Right button key down event
+   */
+  private _rightButtonKeyDown(event: React.KeyboardEvent<HTMLElement>): void {
+    if (event.which === KeyCodes.enter) {
+      if (this.props.viewProps[this.state.pageIndex].onRightButton) {
+        this.props.viewProps[this.state.pageIndex].onRightButton();
+      }
+      this._nextPage();
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 }

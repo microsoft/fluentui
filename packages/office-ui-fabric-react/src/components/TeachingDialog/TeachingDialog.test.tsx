@@ -1,11 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { TeachingDialogContent } from './TeachingDialogContent';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
+import { TeachingDialogContent } from './TeachingDialogContent';
 
 let { expect } = chai;
 

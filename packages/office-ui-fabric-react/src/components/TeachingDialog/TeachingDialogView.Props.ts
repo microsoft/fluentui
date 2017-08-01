@@ -12,29 +12,9 @@ export interface ITeachingDialogViewProps extends React.Props<TeachingDialogCont
   headline?: string;
 
   /**
-   * The page title inside the dialog.
-   */
-  title: string;
-
-  /**
-   * The page text content.
-   */
-  textContent: string;
-
-  /**
    * The string for the animation displayed on the page
    */
   image: string;
-
-  /**
-   * The text of the left button
-   */
-  leftButtonText: string;
-
-  /**
-   * The text of the right button
-   */
-  rightButtonText: string;
 
   /**
    * Optional flag for the left button to it lighter
@@ -47,6 +27,11 @@ export interface ITeachingDialogViewProps extends React.Props<TeachingDialogCont
   isRighButtonLight: boolean;
 
   /**
+   * The text of the left button
+   */
+  leftButtonText: string;
+
+  /**
    * Optional callback for the left button in addition to the default behavior
    * By default, navigate to previous page, and close on the first page
    */
@@ -57,4 +42,19 @@ export interface ITeachingDialogViewProps extends React.Props<TeachingDialogCont
    * By default, navigate to next page, and close on the last page
    */
   onRightButton?: () => void;
+
+  /**
+   * The text of the right button
+   */
+  rightButtonText: string;
+
+  /**
+   * The page text content.
+   */
+  textContent: string;
+
+  /**
+   * The page title inside the dialog.
+   */
+  title: string;
 }

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
-  ExampleCard,
   ComponentPage,
+  ExampleCard,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TeachingDialogBasicExample } from './examples/TeachingDialog.Basic.Example';
 
 const TeachingDialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingDialog/examples/TeachingDialog.Basic.Example.tsx') as string;
