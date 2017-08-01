@@ -7,34 +7,34 @@
 // --------------------------------------------------
 // Teaching Dialog styles
 
+$buttonWidth: 310px;
+$descHeight: 124px;
 $dialogHeight: 456px;
 $dialogWidth: 620px;
 $imageHeight: 268px;
-$buttonWidth: 310px;
-$descHeight: 124px;
 $paginationWidth: 96px;
 
 .modal{
+    @include left(0);
+    background-color: transparentize(#333333,0.2);
+    height: 100%;
     position: fixed;
     top: 0;
-    @include left(0);
     width: 100%;
-    height: 100%;
-    background-color: transparentize(#333333,0.2);
     z-index: 20;
 }
 
 .root .headline {
     @include ms-font-su();
-    position: absolute;
-    width: 100%;
-    height: auto;
     bottom: 474px;
-    opacity: 1;
-    text-align: center;
-    line-height: 38pt;
     color: White;
     font-size: 32px;
+    height: auto;
+    line-height: 38pt;
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    text-align: center;
 }
 
 .root .closeButton{
@@ -117,7 +117,8 @@ $paginationWidth: 96px;
         cursor: pointer;
 
         &.Right {
-          border-left: 1px solid $ms-color-neutralLight;
+          width: calc(50% - 1px);
+          @include border-left(1px, solid, $ms-color-neutralLight);
         }
 
         &.isLight {
@@ -141,13 +142,11 @@ $paginationWidth: 96px;
 
 //Large
 @media (max-width: 1024px){
-    .modal {
-        .main {
-            @include left(calc(50% - 262px));
-            width: 524px;
-            height: 414px;
-        }
-    }
+  .root {
+      @include left(calc(50% - 262px));
+      width: 524px;
+      height: 414px;
+  }
 }
 
 //Smaller than large

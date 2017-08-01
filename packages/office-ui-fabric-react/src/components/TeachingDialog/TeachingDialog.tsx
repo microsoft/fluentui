@@ -140,9 +140,8 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
    * Create the dialog button
    */
   private _createButton(buttonText: string, isRight: boolean, isLight: boolean): React.ReactElement<{}> {
-    const className: string = ['button', isRight ? '-Right' : '', isLight ? ' isLight' : ''].join('');
     return <div ref={ isRight ? this._buttonsRefs[0] : this._buttonsRefs[2] }
-      className={ css(styles.button, isRight ? 'Right' : '', isLight ? styles.isLight : '') }
+      className={ css(styles.button, isRight ? styles.Right : '', isLight ? styles.isLight : '') }
       role='button'
       tabIndex={ 0 }
       data-is-focusable={ true }
@@ -290,5 +289,4 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
   private _closeDialog(): void {
     this.setState({ pageIndex: this._firstPageIndex, showDialog: false });
   }
-
 }

@@ -62,11 +62,11 @@ export class TeachingDialogContent extends BaseComponent<ITeachingDialogContentP
           src={ this.props.image }
         />
       </div>
-      <div className={ css('ms-TeachingDialog-contentbody', styles.contentBody) } >
-        <div className={ css('ms-TeachingDialog-contenttile', styles.contentTitle) } >
+      <div className={ css('ms-TeachingDialog-content-body', styles.contentBody) } >
+        <div className={ css('ms-TeachingDialog-content-tile', styles.contentTitle) } >
           { this.props.title }
         </div>
-        <div className={ css('ms-TeachingDialog-contenttext', styles.contentText) } >
+        <div className={ css('ms-TeachingDialog-content-text', styles.contentText) } >
           { this.props.textContent }
         </div>
       </div>

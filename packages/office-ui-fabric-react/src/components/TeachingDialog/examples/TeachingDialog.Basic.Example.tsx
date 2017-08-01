@@ -28,6 +28,7 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
   }
 
   public render() {
+    const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets';
     let imageProps: IImageProps = { src: 'odsp-media/images/spfirstrun/Activity.gif' } as IImageProps;
     let viewProps: ITeachingDialogViewProps[] =
       [{
@@ -35,9 +36,10 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
         leftButtonText: 'Discard',
         rightButtonText: 'Next',
         onLeftButton: this._onDismiss,
+        isLeftButtonLight: true,
         title: 'Lorem ipsum',
         textContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
-        image: 'https://spoprod-a.akamaihd.net/files/sphome-next-prod_ship-2017-07-25_20170725.001/odsp-media/images/spfirstrun/news.gif',
+        image: [baseProductionCdnUrl, 'teachingDialog.gif'].join('/'),
       } as ITeachingDialogViewProps,
       {
         leftButtonText: 'Previous',
@@ -45,7 +47,7 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
         onRightButton: this._onDismiss,
         title: 'Lorem ipsum 2',
         textContent: 'Lorem ipsum 2 dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
-        image: 'https://spoprod-a.akamaihd.net/files/sphome-next-prod_ship-2017-07-25_20170725.001/odsp-media/images/spfirstrun/news.gif',
+        image: [baseProductionCdnUrl, 'teachingDialog.gif'].join('/'),
       } as ITeachingDialogViewProps];
 
     return (
