@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing ContextualMenu issue where icons are not displayed.",
+      "comment": "ContextualMenu: Fixing issue where icons are not displayed.",
       "type": "patch"
     }
   ],
