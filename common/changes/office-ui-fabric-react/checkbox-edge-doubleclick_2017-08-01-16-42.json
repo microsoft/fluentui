@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "OverflowSet: Add focus method, class name and abstract item interface",
-      "type": "minor"
+      "comment": "Checkbox: Fix Edge bug where 2nd click event was being fired",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
