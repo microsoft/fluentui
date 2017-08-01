@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "MessageBar: Fix system problems that display when component is on website",
+      "comment": "ContextualMenu: Fixing issue where icons are not displayed.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "serkani@microsoft.com"
 }
