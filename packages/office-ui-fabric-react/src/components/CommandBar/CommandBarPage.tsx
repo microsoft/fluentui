@@ -1,3 +1,5 @@
+/* test CODEOWNERS */
+
 import * as React from 'react';
 import {
   ExampleCard,
