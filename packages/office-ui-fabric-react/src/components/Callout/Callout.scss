@@ -25,6 +25,7 @@ $Callout-smallbeak-slant-width: 16px;
   @include ms-drop-shadow(0,0, 5px, 0px);
   position: absolute;
   box-sizing: border-box;
+  border: 1px solid $ms-color-neutralLight;
 
   @include focus-clear();
 
