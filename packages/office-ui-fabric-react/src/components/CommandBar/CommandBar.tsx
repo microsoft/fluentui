@@ -24,6 +24,7 @@ const styles: any = stylesImport;
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
+const CODEOWNER = 'testing123';
 
 export interface ICommandBarState {
   renderedItems?: IContextualMenuItem[];
