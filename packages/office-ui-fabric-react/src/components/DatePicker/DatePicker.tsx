@@ -179,7 +179,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     return (
       <div className={ css('ms-DatePicker', styles.root, className) } ref='root'>
-        <div ref={ (c): HTMLElement => this._datepicker = c }>
+        <div ref={ (c): HTMLElement => this._datepicker = c! }>
           <TextField
             className={ styles.textField }
             ariaLabel={ ariaLabel }
