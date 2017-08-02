@@ -20,6 +20,21 @@ export interface IGridProps {
   onRenderItem: (item: any, index: number) => JSX.Element;
 
   /**
+   * Boolean indicating if the focus should support circular navigation
+   */
+  shouldFocusCircularNavigate?: boolean;
+
+  /**
+   * Optional, class name for the FocusZone container for the grid
+   */
+  containerClassName?: string;
+
+  /**
+   * Optional, handler for when the grid should blue
+   */
+  onBlur?: () => void;
+
+  /**
    * The optional position this grid is in the parent set (index in a parent menu, for example)
    */
   positionInSet?: number;
