@@ -15,7 +15,7 @@ import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
-  value?: string;
+  value?: string | undefined;
 
   /** Is true when the control has focus. */
   isFocused?: boolean;
@@ -49,10 +49,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   private _id: string;
   private _descriptionId: string;
-  private _delayedValidate: (value: string) => void;
+  private _delayedValidate: (value: string | undefined) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
-  private _latestValue: string;
+  private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLTextAreaElement;
