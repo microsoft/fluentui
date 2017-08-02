@@ -367,10 +367,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       return;
     }
 
-    if (Array.isArray(value)) {
-      value = value.join('');
-    }
-
     this._latestValidateValue = value;
     let onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
     let result = onGetErrorMessage(value || '');
@@ -397,10 +393,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _notifyAfterValidate(value: string | undefined, errorMessage: string): void {
-    if (Array.isArray(value)) {
-      value = value.join('');
-    }
-
     if (this._isMounted &&
       value === this.state.value &&
       this.props.onNotifyValidationResult) {
