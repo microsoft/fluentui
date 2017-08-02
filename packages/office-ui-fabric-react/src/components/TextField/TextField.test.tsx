@@ -359,7 +359,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        ref={ (t) => textField = t }
+        ref={ (t) => textField = t! }
         defaultValue={ initialValue }
         onSelect={ onSelect }
       />

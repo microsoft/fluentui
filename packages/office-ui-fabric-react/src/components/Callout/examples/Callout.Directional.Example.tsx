@@ -70,7 +70,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged } />
         </div>
-        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
           <DefaultButton
             onClick={ this._onShowMenuClicked }
             text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }

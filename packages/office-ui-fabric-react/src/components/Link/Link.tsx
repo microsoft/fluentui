@@ -28,11 +28,13 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
       href ? (
         <a
           { ...getNativeProps(this.props, anchorProperties) }
-          className={ css('ms-Link', styles.root, className, {
-            'is-disabled': disabled,
-            [styles.isDisabled]: disabled,
-            [styles.isEnabled]: !disabled
-          }) }
+          className={ css(
+            'ms-Link',
+            styles.root,
+            className,
+            disabled && ('is-disabled ' + styles.isDisabled),
+            !disabled && styles.isEnabled
+          ) }
           onClick={ this._onClick }
           ref={ this._resolveRef('_link') }
           target={ this.props.target }
@@ -42,10 +44,12 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
       ) : (
           <button
             { ...getNativeProps(this.props, buttonProperties) }
-            className={ css('ms-Link', styles.root, className, {
-              'is-disabled': disabled,
-              [styles.isDisabled]: disabled
-            }) }
+            className={ css(
+              'ms-Link',
+              styles.root,
+              className,
+              disabled && ('is-disabled ' + styles.isDisabled)
+            ) }
             onClick={ this._onClick }
             ref={ this._resolveRef('_link') }
           >
