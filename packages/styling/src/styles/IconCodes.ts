@@ -812,6 +812,10 @@ export const IconCodes = {
    */
   dislike: '\uE8E0',
   /**
+   * Icon code with the value '\uE949'.
+   */
+  divider: '\uE949',
+  /**
    * Icon code with the value '\uEEB8'.
    */
   docLibrary: '\uEEB8',
@@ -2399,6 +2403,10 @@ export const IconCodes = {
    * Icon code with the value '\uE7F5'.
    */
   speakers: '\uE7F5',
+  /**
+   * Icon code with the value '\uF40D'.
+   */
+  spacer: '\uF40D ',
   /**
    * Icon code with the value '\uEC4A'.
    */
