@@ -193,9 +193,7 @@ export const getStyles = memoizeFunction((
         borderColor: 'Highlight'
       }
     },
-    rootDisabled: {
-
-    },
+    rootDisabled: _getDisabledStyles(theme),
     input: {
       boxSizing: 'border-box',
       boxShadow: 'none',
@@ -230,7 +228,9 @@ export const getStyles = memoizeFunction((
         color: 'HighlightText',
       }
     },
-    inputDisabled: _getDisabledStyles(theme),
+    inputDisabled: {
+
+    },
     arrowButtonsContainer: {
       outline: 'none',
       fontSize: '12px',
@@ -245,10 +245,18 @@ export const getStyles = memoizeFunction((
 
       boxSizing: 'border-box'
     },
-    arrowButtonsContainerDisabled: _getDisabledStyles(theme),
-    arrowButtonStyles: {},
-    upArrowButtonStyles: {},
-    downArrowButtonStyles: {}
+    arrowButtonsContainerDisabled: {
+
+    },
+    arrowButtonStyles: {
+
+    },
+    upArrowButtonStyles: {
+
+    },
+    downArrowButtonStyles: {
+
+    }
   };
   return mergeStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
 });
