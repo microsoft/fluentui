@@ -150,7 +150,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
-
     const value = this._inputElement.value;
     if (value === this._latestValue) {
       return;
