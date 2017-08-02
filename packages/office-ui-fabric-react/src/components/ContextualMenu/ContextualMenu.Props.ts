@@ -265,7 +265,7 @@ export interface IContextualMenuItem {
   /**
    * An optional target when using href
    */
-  target?: '_blank' | '_self' | '_parent' | '_top';
+  target?: '_blank' | '_self' | '_parent' | '_top' | string;
 
   /**
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
