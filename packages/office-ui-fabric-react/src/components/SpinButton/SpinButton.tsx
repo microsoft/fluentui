@@ -186,6 +186,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
             readOnly={ disabled }
+            disabled={ disabled }
             aria-disabled={ disabled }
           />
           <span className={ classNames.arrowBox }>

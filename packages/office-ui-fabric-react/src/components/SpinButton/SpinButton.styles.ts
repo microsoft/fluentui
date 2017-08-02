@@ -7,7 +7,25 @@ import {
 } from '../../Styling';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
-const MS_HIGHCONTRAST_BLACK_ON_WHITE = '@media screen and (-ms-high-contrast: black-on-white)';
+
+const _getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
+  const { semanticColors, palette } = theme;
+
+  const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
+  const SpinButtonBackgroundColorDisabled = palette.neutralLighter;
+  const SpinButtonBorderColorDisabled = palette.neutralLighter;
+
+  return {
+    backgroundColor: SpinButtonBackgroundColorDisabled,
+    borderColor: SpinButtonBorderColorDisabled,
+    pointerEvents: 'none',
+    cursor: 'default',
+    color: SpinButtonTextColorDisabled,
+    [MS_HIGHCONTRAST_ACTIVE]: {
+      color: 'GrayText'
+    }
+  };
+});
 
 export const getArrowButtonStyles = memoizeFunction((
   theme: ITheme,
@@ -29,7 +47,6 @@ export const getArrowButtonStyles = memoizeFunction((
       display: 'block',
       height: '50%',
       width: '14px',
-      // padding: '0',
       paddingTop: '0',
       paddingRight: '0',
       paddingBottom: '0',
@@ -66,8 +83,6 @@ export const getArrowButtonStyles = memoizeFunction((
     },
     icon: {
       fontSize: '6px',
-
-      // margin: '0',
       marginTop: '0',
       marginRight: '0',
       marginBottom: '0',
@@ -90,25 +105,6 @@ export const getArrowButtonStyles = memoizeFunction((
     customCommonArrowStyles,
     customSpecificArrowStyles
   ) as ISpinButtonArrowButtonStyles;
-});
-
-const _getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
-  const { semanticColors, palette } = theme;
-
-  const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
-  const SpinButtonBackgroundColorDisabled = palette.neutralLighter;
-  const SpinButtonBorderColorDisabled = palette.neutralLighter;
-
-  return {
-    backgroundColor: SpinButtonBackgroundColorDisabled,
-    borderColor: SpinButtonBorderColorDisabled,
-    pointerEvents: 'none',
-    cursor: 'default',
-    color: SpinButtonTextColorDisabled,
-    [MS_HIGHCONTRAST_ACTIVE]: {
-      color: 'GrayText'
-    }
-  };
 });
 
 export const getStyles = memoizeFunction((
@@ -228,9 +224,7 @@ export const getStyles = memoizeFunction((
         color: 'HighlightText',
       }
     },
-    inputDisabled: {
-
-    },
+    inputDisabled: _getDisabledStyles(theme),
     arrowButtonsContainer: {
       outline: 'none',
       fontSize: '12px',
@@ -242,12 +236,9 @@ export const getStyles = memoizeFunction((
       paddingRight: '0',
       paddingBottom: '0',
       paddingLeft: '0',
-
       boxSizing: 'border-box'
     },
-    arrowButtonsContainerDisabled: {
-
-    },
+    arrowButtonsContainerDisabled: _getDisabledStyles(theme),
     arrowButtonStyles: {
 
     },
