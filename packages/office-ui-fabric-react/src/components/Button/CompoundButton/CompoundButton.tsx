@@ -18,7 +18,7 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--compound'
-        styles={ getStyles(theme, styles) }
+        styles={ getStyles(theme!, styles) }
         onRenderIcon={ nullRender }
       />
     );
