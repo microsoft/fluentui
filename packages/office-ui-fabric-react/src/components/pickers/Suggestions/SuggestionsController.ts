@@ -95,7 +95,7 @@ export class SuggestionsController<T> {
 
   public deselectAllSuggestions(): void {
     this.currentIndex = -1;
-    this.currentSuggestion.selected = false;
+    this.suggestions[this.currentIndex].selected = false;
   }
 
   public setSelectedSuggestion(index: number): void {

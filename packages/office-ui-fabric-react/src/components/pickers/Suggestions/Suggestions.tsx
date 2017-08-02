@@ -216,7 +216,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
-    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions == 'function') {
+    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
       this.props.refocusSuggestions(ev.keyCode);
     }
   }
