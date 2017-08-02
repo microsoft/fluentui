@@ -141,9 +141,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
           className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled,
-            'is-required ': required,
+            'is-open': isOpen!,
+            ['is-disabled ' + styles.rootIsDisabled]: disabled!,
+            'is-required ': required!,
           }) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
@@ -443,8 +443,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         return;
       }
     }
-    let newIndex: number;
-    const { selectedIndex } = this.state;
+    let newIndex: number | undefined;
+    const selectedIndex = this.state.selectedIndex!;
 
     switch (ev.which) {
       case KeyCodes.enter:
