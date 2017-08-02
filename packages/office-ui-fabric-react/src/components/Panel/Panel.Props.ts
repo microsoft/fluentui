@@ -46,6 +46,12 @@ export interface IPanelProps extends React.Props<Panel> {
   isBlocking?: boolean;
 
   /**
+   * Determines if content should stretch to fill available space putting footer at the bottom of the page
+   * @default false
+   */
+  isFooterAtBottom?: boolean;
+
+  /**
   * Header text for the Panel.
   * @default ""
   */

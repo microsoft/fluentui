@@ -20,7 +20,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
-    onDismiss: null,
+    onDismiss: undefined,
     isMultiline: true,
   };
 
@@ -49,7 +49,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
   }
 
-  private _getActionsDiv(): JSX.Element {
+  private _getActionsDiv(): JSX.Element | null {
     if (this.props.actions) {
       return <div className={ this.props.isMultiline ?
         ('ms-MessageBar-actions ' + styles.actions) :
@@ -72,7 +72,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     });
   }
 
-  private _getDismissDiv(): JSX.Element {
+  private _getDismissDiv(): JSX.Element | null {
     if (this.props.onDismiss) {
       return (
         <IconButton
@@ -87,7 +87,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
     return null;
   }
 
-  private _getDismissOneLine(): JSX.Element {
+  private _getDismissOneLine(): JSX.Element | null {
     if (this.props.onDismiss) {
       return (
         <div className={ css('ms-MessageBar-dismissOneline', styles.dismissOneline) }>
@@ -101,7 +101,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
   private _getIconSpan(): JSX.Element {
     return (
       <div className={ css('ms-MessageBar-icon', styles.icon) }>
-        <Icon iconName={ this.ICON_MAP[this.props.messageBarType] } />
+        <Icon iconName={ this.ICON_MAP[this.props.messageBarType!] } />
       </div>
     );
   }
@@ -140,7 +140,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
         css(this._getClassName(),
           'ms-MessageBar-singleline',
           styles.singleline,
-          this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.dismissalOneline,
+          this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.rootIsOneline,
           this.props.actions && styles.actionableOneline
         )
       } >

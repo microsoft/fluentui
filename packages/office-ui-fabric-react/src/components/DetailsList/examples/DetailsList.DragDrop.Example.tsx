@@ -67,7 +67,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
         _draggedItem = item;
-        _draggedIndex = itemIndex;
+        _draggedIndex = itemIndex!;
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
         _draggedItem = null;

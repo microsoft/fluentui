@@ -79,5 +79,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles);
+  return mergeStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
 });
