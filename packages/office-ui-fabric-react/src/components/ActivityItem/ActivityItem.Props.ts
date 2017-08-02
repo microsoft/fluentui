@@ -4,7 +4,7 @@ import { IRenderFunction } from '../../Utilities';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 // Please keep alphabetized
-export interface IActivityItemProps extends React.HTMLAttributes<HTMLElement> {
+export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Text describing the activity that occurred and naming the people involved in it.
    */
