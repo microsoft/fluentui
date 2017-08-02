@@ -7,8 +7,8 @@ import {
   assign,
   css,
   getId,
-  BaseComponent
-} from '../../Utilities';
+  BaseComponent,
+} from '@uifabric/utilities';
 import * as stylesImport from './ChoiceGroup.scss';
 const styles: any = stylesImport;
 
@@ -68,7 +68,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
           role='radiogroup'
-          aria-labelledby={ this.props.label ? this._id + '-label' : '' }
+          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(this.props as any)['aria-labelledby'] || ''}` }
         >
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
@@ -100,7 +100,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 }
               >
                 <input
-                  ref={ (c): HTMLInputElement => this._inputElement = c }
+                  ref={ (c): HTMLInputElement => this._inputElement = c! }
                   id={ option.id }
                   className={ css('ms-ChoiceField-input', styles.input) }
                   type='radio'
