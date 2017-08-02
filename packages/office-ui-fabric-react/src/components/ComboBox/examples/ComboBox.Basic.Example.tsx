@@ -171,7 +171,7 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
       // add a default fallback font
       newFontFamily += ',"Segoe UI",Tahoma,Sans-Serif';
 
-      this._fontMapping = assign({}, this._fontMapping, { [fontFamily]: newFontFamily });
+      this._fontMapping = assign({}, this._fontMapping, { [fontFamily as string]: newFontFamily });
       fontFamily = newFontFamily;
     }
 

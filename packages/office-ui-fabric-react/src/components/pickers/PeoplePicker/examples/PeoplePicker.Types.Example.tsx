@@ -218,7 +218,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     let controlledItems = [];
     for (let i = 0; i < 5; i++) {
       let item = this.state.peopleList[i];
-      if (this.state.currentSelectedItems.indexOf(item) === -1) {
+      if (this.state.currentSelectedItems!.indexOf(item) === -1) {
         controlledItems.push(this.state.peopleList[i]);
       }
     }
@@ -226,7 +226,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <div>
         <NormalPeoplePicker
           onResolveSuggestions={ this._onFilterChanged }
-          getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+          getTextFromItem={ (persona: IPersonaProps) => persona.primaryText! }
           pickerSuggestionsProps={ suggestionProps }
           className={ 'ms-PeoplePicker' }
           key={ 'controlled' }
@@ -238,7 +238,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           <DefaultButton className='controlledPickerButton'
             onClick={ () => {
               this.setState({
-                currentSelectedItems: this.state.currentSelectedItems.concat([item])
+                currentSelectedItems: this.state.currentSelectedItems!.concat([item])
               });
             } }>
             <Persona { ...item} />

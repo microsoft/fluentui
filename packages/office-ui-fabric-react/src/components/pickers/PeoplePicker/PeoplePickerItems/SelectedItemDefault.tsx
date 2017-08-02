@@ -26,6 +26,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
       ) }
       data-is-focusable={ true }
+      data-is-sub-focuszone={ true }
       data-selection-index={ index } >
       <div className={ css('ms-PickerItem-content', styles.itemContent) } >
         <Persona
@@ -38,7 +39,6 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
         iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
         className={ css('ms-PickerItem-removeButton', styles.removeButton) }
-        data-is-focusable={ false }
         ariaLabel={ removeButtonAriaLabel }
       />
     </div >
