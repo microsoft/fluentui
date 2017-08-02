@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
-import { IRenderFunction } from '../../../Utilities';
+import { IRenderFunction, KeyCodes } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.Props';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
@@ -110,6 +110,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Screen reader message to read when there are suggestions available.
    */
   suggestionsAvailableAlertText?: string;
+  /**
+   * A function that resets focus to the expected item in the suggestion list
+   */
+  refocusSuggestions?: (keyCode: KeyCodes) => void;
 }
 
 export interface ISuggestionItemProps<T> {
