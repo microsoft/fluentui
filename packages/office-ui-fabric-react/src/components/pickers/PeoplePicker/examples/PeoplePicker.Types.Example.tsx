@@ -184,7 +184,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   public _renderLimitedSearch() {
     limitedSearchSuggestionProps.resultsFooter = this._renderFooterText;
-    limitedSearchSuggestionProps.resultsFooterFull = this._renderFooterFullText;
 
     return (
       <CompactPeoplePicker
@@ -258,11 +257,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   @autobind
   private _renderFooterText(): JSX.Element {
     return <div>No additional results</div>;
-  }
-
-  @autobind
-  private _renderFooterFullText(): JSX.Element {
-    return <div>Top 10 results</div>;
   }
 
   @autobind
