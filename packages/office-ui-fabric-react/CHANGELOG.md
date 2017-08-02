@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 Aug 2017 10:13:55 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Aug 2017 10:22:40 GMT and should not be manually modified.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
 
 ## 4.27.0
 Tue, 01 Aug 2017 10:13:55 GMT
