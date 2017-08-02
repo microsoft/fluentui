@@ -52,7 +52,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
               <SpinButtonBasicWithEndPositionExample />
             </ExampleCard>
             <ExampleCard
-              title={ 'Custom Styled Sping Button' }
+              title={ 'Custom Styled SpinButton' }
               code={ SpinButtonBasicWithEndPositionExampleCode }>
               <SpinButtonCustomStyledExample />
             </ExampleCard>

@@ -92,7 +92,7 @@ export const getArrowButtonStyles = memoizeFunction((
   ) as ISpinButtonArrowButtonStyles;
 });
 
-const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
+const _getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
   const { semanticColors, palette } = theme;
 
   const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
@@ -113,12 +113,12 @@ const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles: Partial<ISpinButtonStyles>
+  customStyles?: Partial<ISpinButtonStyles>
 ): ISpinButtonStyles => {
   const { semanticColors, fonts, palette } = theme;
 
   const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
-  const SpinButtonRootBorderColorHovered = palette.neutralSecondaryAlt;
+  const SpinButtonRootBorderColorHovered = palette.neutralSecondary;
   const SpinButtonRootBorderColorFocused = palette.themePrimary;
 
   const SpinButtonInputTextColor = palette.neutralPrimary;
@@ -230,7 +230,7 @@ export const getStyles = memoizeFunction((
         color: 'HighlightText',
       }
     },
-    inputDisabled: getDisabledStyles(theme),
+    inputDisabled: _getDisabledStyles(theme),
     arrowButtonsContainer: {
       outline: 'none',
       fontSize: '12px',
@@ -245,10 +245,10 @@ export const getStyles = memoizeFunction((
 
       boxSizing: 'border-box'
     },
-    arrowButtonsContainerDisabled: getDisabledStyles(theme),
-    arrowButtonStyles: null,
-    upArrowButtonStyles: null,
-    downArrowButtonStyles: null
+    arrowButtonsContainerDisabled: _getDisabledStyles(theme),
+    arrowButtonStyles: {},
+    upArrowButtonStyles: {},
+    downArrowButtonStyles: {}
   };
   return mergeStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
 });

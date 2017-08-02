@@ -144,11 +144,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     } = this.state;
 
     const classNames = getClassNames(
-      getStyles(theme, customStyles),
-      disabled,
-      isFocused,
-      keyboardSpinDirection,
-      labelPosition
+      getStyles(theme!, customStyles),
+      disabled!,
+      isFocused!,
+      keyboardSpinDirection!,
+      labelPosition!
     );
 
     return (
@@ -443,7 +443,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
     const customStylesUpArrowButton = (customStyles != null) ? customStyles.upArrowButtonStyles : null;
 
-    return getArrowButtonStyles(theme, true, customStylesArrowButton, customStylesUpArrowButton);
+    return getArrowButtonStyles(theme!, true, customStylesArrowButton!, customStylesUpArrowButton!);
   }
 
   private _getDownArrowButtonStyles() {
@@ -451,7 +451,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
     const customStylesDownArrowButton = (customStyles != null) ? customStyles.downArrowButtonStyles : null;
 
-    return getArrowButtonStyles(theme, false, customStylesArrowButton, customStylesDownArrowButton);
+    return getArrowButtonStyles(theme!, false, customStylesArrowButton!, customStylesDownArrowButton!);
   }
 
 }

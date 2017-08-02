@@ -27,7 +27,7 @@ export const getClassNames = memoizeFunction((
     ) as string,
     labelWrapper: mergeStyles(
       styles.labelWrapper,
-      getStyleForLabelBasedOnPosition(labelPosition, styles)
+      _getStyleForLabelBasedOnPosition(labelPosition, styles)
     ) as string,
     icon: mergeStyles(
       styles.icon,
@@ -37,7 +37,7 @@ export const getClassNames = memoizeFunction((
     ) as string,
     root: mergeStyles(
       styles.root,
-      getStyleForRootBasedOnPosition(labelPosition, styles),
+      _getStyleForRootBasedOnPosition(labelPosition, styles),
       !disabled && [
         {
           ':hover': styles.rootHovered
@@ -68,7 +68,7 @@ export const getClassNames = memoizeFunction((
 /**
  * Returns the Style corresponding to the label position
  */
-function getStyleForLabelBasedOnPosition(labelPosition: Position, styles: ISpinButtonStyles): IStyle {
+function _getStyleForLabelBasedOnPosition(labelPosition: Position, styles: ISpinButtonStyles): IStyle {
   switch (labelPosition) {
     case Position.start:
       return styles.labelWrapperStart;
@@ -84,7 +84,7 @@ function getStyleForLabelBasedOnPosition(labelPosition: Position, styles: ISpinB
 /**
  * Returns the Style corresponding to the label position
  */
-function getStyleForRootBasedOnPosition(labelPosition: Position, styles: ISpinButtonStyles): IStyle {
+function _getStyleForRootBasedOnPosition(labelPosition: Position, styles: ISpinButtonStyles): IStyle {
   switch (labelPosition) {
     case Position.top:
     case Position.bottom:
