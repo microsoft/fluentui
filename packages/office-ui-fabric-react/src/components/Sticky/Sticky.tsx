@@ -133,14 +133,18 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     });
   }
   private _setSticky(callback: () => void) {
-    this.content.parentElement.removeChild(this.content);
+    if (this.content.parentElement) {
+      this.content.parentElement.removeChild(this.content);
+    }
     callback();
   }
 
   private _resetSticky(callback: () => void) {
     this.refs.root.appendChild(this.content);
     setTimeout(() => {
-      this.content.children[0].classList.remove(this.props.stickyClassName);
+      if (this.props.stickyClassName) {
+        this.content.children[0].classList.remove(this.props.stickyClassName);
+      }
     }, 1);
     callback();
   }
@@ -148,10 +152,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   // Gets background of nearest parent element that has a declared background-color attribute
   private _getBackground(): string {
     let curr = this.refs.root;
-    while (window.getComputedStyle(curr, null).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
-      window.getComputedStyle(curr, null).getPropertyValue('background-color') === 'transparent') {
-      curr = curr.parentElement;
+    while (window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
+      window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent') {
+      if (curr.parentElement) {
+        curr = curr.parentElement;
+      }
     }
-    return window.getComputedStyle(curr, null).getPropertyValue('background-color');
+    return window.getComputedStyle(curr).getPropertyValue('background-color');
   }
 }
