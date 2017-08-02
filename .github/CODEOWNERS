@@ -1,0 +1,94 @@
+# This is a comment.
+# Each line is a file pattern followed by one or more owners.
+
+# These owners will be the default owners for everything in the repo.
+# Unless a later match takes precedence, @global-owner1 and @global-owner2
+# will be requested for review when someone opens a pull request.
+# *       @global-owner1 @global-owner2
+
+# Order is important; the last matching pattern takes the most precedence.
+# When someone opens a pull request that only modifies JS files, only @js-owner
+# and not the global owner(s) will be requested for a review.
+# *.js    @js-owner
+
+# You can also use email addresses if you prefer. They'll be used to look up
+# users just like we do for commit author emails.
+# docs/*  docs@example.com
+
+#### Apps
+# component-demo/*
+# fabric-website/*
+# ssr-tests/*
+# test-bundle-button/*
+# todo-app/*
+
+#### Packages
+# packages/example-app-base/*
+# packages/example-component/*
+
+  ### Fabric
+  # packages/office-ui-fabric-react/src/common/*
+
+    ## Components
+    # packages/office-ui-fabric-react/src/component/ActivityItem/*
+    # packages/office-ui-fabric-react/src/component/Breadcrumb/*
+    # packages/office-ui-fabric-react/src/component/Button/*
+    # packages/office-ui-fabric-react/src/component/Calendar/*
+    # packages/office-ui-fabric-react/src/component/Callout/*
+    # packages/office-ui-fabric-react/src/component/Check/*
+    # packages/office-ui-fabric-react/src/component/Checkbox/*
+    # packages/office-ui-fabric-react/src/component/ChoiceGroup/*
+    # packages/office-ui-fabric-react/src/component/ColorPicker/*
+    # packages/office-ui-fabric-react/src/component/ComboBox/*
+    packages/office-ui-fabric-react/src/component/CommandBar/*   @micahgodbolt
+    # packages/office-ui-fabric-react/src/component/ContextualMenu/*
+    # packages/office-ui-fabric-react/src/component/DatePicker/*
+    # packages/office-ui-fabric-react/src/component/DetailsList/*
+    # packages/office-ui-fabric-react/src/component/Dialog/*
+    # packages/office-ui-fabric-react/src/component/DocumentCard/*
+    # packages/office-ui-fabric-react/src/component/Dropdown/*
+    # packages/office-ui-fabric-react/src/component/Fabric/*
+    # packages/office-ui-fabric-react/src/component/FacePile/*
+    # packages/office-ui-fabric-react/src/component/FocusTrapZone/*
+    # packages/office-ui-fabric-react/src/component/FocusZone/*
+    # packages/office-ui-fabric-react/src/component/GroupedList/*
+    # packages/office-ui-fabric-react/src/component/HoverCard/*
+    # packages/office-ui-fabric-react/src/component/Icon/*
+    # packages/office-ui-fabric-react/src/component/Image/*
+    # packages/office-ui-fabric-react/src/component/Label/*
+    # packages/office-ui-fabric-react/src/component/Layer/*
+    # packages/office-ui-fabric-react/src/component/Link/*
+    # packages/office-ui-fabric-react/src/component/List/*
+    # packages/office-ui-fabric-react/src/component/MarqueeSelection/*
+    # packages/office-ui-fabric-react/src/component/MessageBar/*
+    # packages/office-ui-fabric-react/src/component/Modal/*
+    # packages/office-ui-fabric-react/src/component/Nav/*
+    packages/office-ui-fabric-react/src/component/OverflowSet/*  @micahgodbolt
+    # packages/office-ui-fabric-react/src/component/Overlay/*
+    # packages/office-ui-fabric-react/src/component/Panel/*
+    # packages/office-ui-fabric-react/src/component/Persona/*
+    # packages/office-ui-fabric-react/src/component/pickers/*
+    # packages/office-ui-fabric-react/src/component/Pivot/*
+    # packages/office-ui-fabric-react/src/component/Popup/*
+    # packages/office-ui-fabric-react/src/component/ProgressIndicator/*
+    # packages/office-ui-fabric-react/src/component/Rating/*
+    packages/office-ui-fabric-react/src/component/ResizeGroup/*  @micahgodbolt
+    # packages/office-ui-fabric-react/src/component/SearchBox/*
+    # packages/office-ui-fabric-react/src/component/Slider/*
+    # packages/office-ui-fabric-react/src/component/SpinButton/*
+    # packages/office-ui-fabric-react/src/component/Spinner/*
+    # packages/office-ui-fabric-react/src/component/SwatchColorPicker/*
+    packages/office-ui-fabric-react/src/component/TeachingBubble/*   @micahgodbolt
+    # packages/office-ui-fabric-react/src/component/TextField/*
+    # packages/office-ui-fabric-react/src/component/Theme/*
+    # packages/office-ui-fabric-react/src/component/Toggle/*
+    packages/office-ui-fabric-react/src/component/Tooltip/*  @micahgodbolt
+
+  # packages/office-ui-fabric-react/src/demo/*
+  # packages/office-ui-fabric-react/src/utilities/*
+  # packages/office-ui-fabric-react/src/visualtest/*
+
+# packages/office-ui-fabric-react-tslint/*
+# packages/styling/*
+# packages/utilities/*
+
