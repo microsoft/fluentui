@@ -344,6 +344,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
+          target={ item.target }
           className={ css(
             'ms-ContextualMenu-link',
             styles.link,
