@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "OverflowSet: Add focus method, class name and abstract item interface",
+      "comment": "ConextualMenuItem: Support target value",
       "type": "minor"
     }
   ],

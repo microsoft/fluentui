@@ -19,7 +19,7 @@ export class IconButton extends BaseComponent<IButtonProps, {}> {
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--icon'
-        styles={ getStyles(theme, styles) }
+        styles={ getStyles(theme!, styles) }
         onRenderText={ nullRender }
         onRenderDescription={ nullRender }
       />

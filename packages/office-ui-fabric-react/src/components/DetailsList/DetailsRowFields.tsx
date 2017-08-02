@@ -52,7 +52,7 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
               [styles.isPadded]: column.isPadded,
               [styles.isMultiline]: column.isMultiline
             }) }
-            style={ { width: column.calculatedWidth + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
+            style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
             data-automation-key={ column.key }>
             { cellContent[columnIndex] }

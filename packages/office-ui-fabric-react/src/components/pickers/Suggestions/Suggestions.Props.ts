@@ -12,7 +12,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion: (props: T, suggestionItemProps: any) => JSX.Element;
+  onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked
    */

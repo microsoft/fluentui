@@ -15,11 +15,11 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
   }
 
   public componentDidMount() {
-    Layer.notifyHostChanged(this.props.id);
+    Layer.notifyHostChanged(this.props.id!);
   }
 
   public componentWillUnmount() {
-    Layer.notifyHostChanged(this.props.id);
+    Layer.notifyHostChanged(this.props.id!);
   }
 
   public render() {
