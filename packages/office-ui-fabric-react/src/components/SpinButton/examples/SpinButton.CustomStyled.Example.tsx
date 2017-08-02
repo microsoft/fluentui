@@ -5,7 +5,7 @@ export class SpinButtonCustomStyledExample extends React.Component<any, any> {
   public render() {
     const styles: Partial<ISpinButtonStyles> = {
       container: {
-        width: '203px'
+        width: '400px'
       },
       upArrowButtonStyles: {
         rootChecked: {
