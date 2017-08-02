@@ -19,7 +19,7 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--action'
-        styles={ getStyles(theme, styles) }
+        styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
     );

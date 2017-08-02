@@ -48,6 +48,12 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
         />
 
         <Checkbox
+          label='Disabled uncontrolled checkbox'
+          disabled={ true }
+          styles={ styles }
+        />
+
+        <Checkbox
           label='Disabled uncontrolled checkbox with defaultChecked true'
           disabled={ true }
           defaultChecked={ true }
@@ -59,7 +65,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           label='Controlled checkbox'
           checked={ isChecked }
           onChange={ (ev, checked) => {
-            this.setState({ isChecked: checked });
+            this.setState({ isChecked: checked! });
           } }
           styles={ styles }
         />

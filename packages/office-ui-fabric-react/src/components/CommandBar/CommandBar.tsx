@@ -18,7 +18,7 @@ const styles: any = stylesImport;
 export interface ICommandBarData {
   primaryItems: ICommandBarItemProps[];
   overflowItems: ICommandBarItemProps[];
-  farItems: ICommandBarItemProps[];
+  farItems: ICommandBarItemProps[] | undefined;
   originalOverflowItems: ICommandBarItemProps[];
   cacheKey: string;
 }
@@ -60,8 +60,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     let commandBardata: ICommandBarData = {
       primaryItems: [...items],
-      overflowItems: [...overflowItems],
-      originalOverflowItems: [...overflowItems], // for tracking
+      overflowItems: [...overflowItems!],
+      originalOverflowItems: [...overflowItems!], // for tracking
       farItems,
       cacheKey: '',
     };
@@ -80,7 +80,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 ref='overflowSet'
                 className={ css(styles.primarySet) }
                 items={ data.primaryItems }
-                overflowItems={ data.overflowItems.length ? data.overflowItems : null }
+                overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
                 onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
                   return (
@@ -120,7 +120,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onReduceData(data: ICommandBarData): ICommandBarData {
+  private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
     let { primaryItems, overflowItems, cacheKey } = data;
     let movedItem = primaryItems[primaryItems.length - 1];
 
@@ -138,7 +138,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onGrowData(data: ICommandBarData): ICommandBarData {
+  private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
     let { primaryItems, overflowItems, cacheKey, originalOverflowItems } = data;
     let movedItem = overflowItems[overflowItems.length - 1];
 

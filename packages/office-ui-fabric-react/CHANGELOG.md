@@ -1,6 +1,80 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Jul 2017 10:22:35 GMT and should not be manually modified.
+This log was last generated on Wed, 02 Aug 2017 10:22:40 GMT and should not be manually modified.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
+
+## 4.27.0
+Tue, 01 Aug 2017 10:13:55 GMT
+
+### Minor changes
+
+- SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined
+- OverflowSet: Add focus method, class name and abstract item interface
+- Panel: added prop to force footer to bottom of the page
+
+### Patches
+
+- Allow the X in a persona to receive focus and update focus when it is clicked
+
+## 4.26.0
+Mon, 31 Jul 2017 10:12:08 GMT
+
+### Minor changes
+
+- BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems
+
+### Patches
+
+- MessageBar: Fix system problems that display when component is on website
+- Searchbox: Fixed broken disabled state and aligned styles with current XD styles
+
+## 4.25.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+### Patches
+
+- Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue.
+- Fix Callout to get a valid element
+
+## 4.25.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Moving ComboBox component to use the styling library
+
+### Patches
+
+- Fix hover card scroll
+- Checkbox: Added left textAlign style
+- Update accessibility for checkable menu items
+
+## 4.24.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- More type casting to get us on the path to enabling strictNullChecks
+
+### Patches
+
+- Dropdown: added onBlur support.
+- Fix focus issues for Safari and Firefox on Mac OS
+- Icons: Added new icons from 2.38
+- Adds prop to process selection in BasePicker
+- CommandBar: Accessibility fix for expand behavior
 
 ## 4.23.0
 Tue, 25 Jul 2017 10:22:35 GMT

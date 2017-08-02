@@ -129,11 +129,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
-      _lastFocusableChild.focus();
+      _lastFocusableChild!.focus();
       ev.preventDefault();
       ev.stopPropagation();
     } else if (!ev.shiftKey && _lastFocusableChild === ev.target) {
-      _firstFocusableChild.focus();
+      _firstFocusableChild!.focus();
       ev.preventDefault();
       ev.stopPropagation();
     }

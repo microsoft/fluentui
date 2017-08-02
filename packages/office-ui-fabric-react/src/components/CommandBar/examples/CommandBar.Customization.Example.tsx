@@ -82,7 +82,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
             className={ dropDownButtonClass }
             menuProps={ {
               className: css('ms-CommandBar-menuHost'),
-              items: item.subMenuProps.items
+              items: item.subMenuProps!.items
             } } />
         </div>
       </div >

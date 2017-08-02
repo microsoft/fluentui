@@ -196,7 +196,7 @@ describe('CommandBar', () => {
       expect(document.querySelector('.SubMenuClass')).to.exist;
 
       // Update the props, and re-render
-      items[0].subMenuProps.items[0].className = 'SubMenuClassUpdate';
+      items[0].subMenuProps!.items[0].className = 'SubMenuClassUpdate';
 
       renderedContent = ReactDOM.render(
         <CommandBar

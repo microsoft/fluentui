@@ -32,6 +32,10 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     );
   }
 
+  public focus() {
+    this.refs.focusZone.focus();
+  }
+
   @autobind
   private _onRenderItems(items: any[]): JSX.Element[] {
     return items.map((item, i) => {
@@ -47,7 +51,4 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, {}> implements
     });
   }
 
-  public focus() {
-    this.refs.focusZone.focus();
-  }
 }
