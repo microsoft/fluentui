@@ -211,6 +211,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   private _getMoreResults() {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
+      console.log('testing a new PR');
     }
   }
 
