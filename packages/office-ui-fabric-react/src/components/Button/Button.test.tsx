@@ -49,7 +49,8 @@ describe('DefaultButton', () => {
   });
 
   it('applies the correct aria attributes', () => {
-    let button, renderedDOM;
+    let button;
+    let renderedDOM: any;
     button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
         href='http://www.microsoft.com'
@@ -93,7 +94,7 @@ describe('DefaultButton', () => {
         href='http://www.microsoft.com'
         target='_blank'
         ariaDescription='This description is not visible'
-        styles={{screenReaderText: 'some-screenreader-class'}}>
+        styles={ { screenReaderText: 'some-screenreader-class' } }>
         Hello
       </DefaultButton>
     );
@@ -104,9 +105,9 @@ describe('DefaultButton', () => {
 
     button = ReactTestUtils.renderIntoDocument<any>(
       <IconButton
-        iconProps={{ iconName: 'Emoji2' }}
+        iconProps={ { iconName: 'Emoji2' } }
         ariaDescription='Description on icon button'
-        styles={{screenReaderText: 'some-screenreader-class'}} />
+        styles={ { screenReaderText: 'some-screenreader-class' } } />
     );
     renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     expect(renderedDOM.getAttribute('aria-label') === null);
