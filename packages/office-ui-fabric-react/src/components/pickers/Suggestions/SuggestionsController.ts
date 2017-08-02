@@ -5,7 +5,7 @@ export interface ISuggestionModel<T> {
 
 export class SuggestionsController<T> {
   public currentIndex: number;
-  public currentSuggestion: ISuggestionModel<T>;
+  public currentSuggestion: ISuggestionModel<T> | undefined;
   private suggestions: ISuggestionModel<T>[];
   constructor() {
     this.suggestions = [];
@@ -66,7 +66,7 @@ export class SuggestionsController<T> {
   }
 
   public getCurrentItem(): ISuggestionModel<T> {
-    return this.currentSuggestion;
+    return this.currentSuggestion!;
   }
 
   public getSuggestionAtIndex(index: number): ISuggestionModel<T> {
@@ -95,7 +95,7 @@ export class SuggestionsController<T> {
   private _setSelectedSuggestion(index: number): void {
     if (index > this.suggestions.length - 1 || index < 0) {
       this.currentIndex = 0;
-      this.currentSuggestion.selected = false;
+      this.currentSuggestion!.selected = false;
       this.currentSuggestion = this.suggestions[0];
       this.currentSuggestion.selected = true;
     } else {

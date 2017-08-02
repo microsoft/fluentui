@@ -52,8 +52,8 @@ export class GroupedListCustomExample extends React.Component<any, any> {
   private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
     return (
       <div className={ css('ms-GroupedListExample-header', FontClassNames.xLarge) }>
-        This is a custom header for { props.group.name }
-        &nbsp;(<Link onClick={ () => props.onToggleCollapse(props.group) }>{ props.group.isCollapsed ? 'Expand' : 'Collapse' }</Link>)
+        This is a custom header for { props.group!.name }
+        &nbsp;(<Link onClick={ () => props.onToggleCollapse!(props.group!) }>{ props.group!.isCollapsed ? 'Expand' : 'Collapse' }</Link>)
       </div>
     );
   }
@@ -61,7 +61,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
   private _onRenderFooter(props: IGroupDividerProps): JSX.Element {
     return (
       <div className={ css('ms-GroupedListExample-footer', FontClassNames.xLarge) }>
-        This is a custom footer for { props.group.name }
+        This is a custom footer for { props.group!.name }
       </div>
     );
   }
