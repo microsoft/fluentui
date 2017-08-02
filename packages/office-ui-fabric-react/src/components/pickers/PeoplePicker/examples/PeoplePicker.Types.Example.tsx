@@ -18,7 +18,7 @@ import {
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people, mostRecentlyUsed } from './PeoplePickerExampleData';
+import { people, mru } from './PeoplePickerExampleData';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Promise } from 'es6-promise';
 import './PeoplePicker.Types.Example.scss';
@@ -63,7 +63,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       currentPicker: 1,
       delayResults: false,
       peopleList: peopleList,
-      mostRecentlyUsed: mostRecentlyUsed,
+      mostRecentlyUsed: mru,
       currentSelectedItems: []
     };
   }
@@ -261,9 +261,9 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   @autobind
   private _onRemoveSuggestion(item: IPersonaProps): void {
-    let { peopleList, mostRecentlyUsed } = this.state;
+    let { peopleList, mostRecentlyUsed: mruState } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
-    let indexMostRecentlyUsed: number = mostRecentlyUsed.indexOf(item);
+    let indexMostRecentlyUsed: number = mruState.indexOf(item);
 
     if (indexPeopleList >= 0) {
       let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
@@ -271,7 +271,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newSuggestedPeople: IPersonaProps[] = mostRecentlyUsed.slice(0, indexMostRecentlyUsed).concat(mostRecentlyUsed.slice(indexMostRecentlyUsed + 1));
+      let newSuggestedPeople: IPersonaProps[] = mruState.slice(0, indexMostRecentlyUsed).concat(mruState.slice(indexMostRecentlyUsed + 1));
       this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
