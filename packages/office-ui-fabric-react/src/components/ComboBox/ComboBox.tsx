@@ -18,7 +18,7 @@ import {
   getNativeProps,
   KeyCodes,
 } from '../../Utilities';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
+import { SelectableOptionMenuItemType, ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 
 import {
   customizable,
@@ -225,8 +225,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let hasErrorMessage = (errorMessage && errorMessage.length > 0) ? true : false;
 
     this._classNames = getClassNames(
-      getStyles(theme, customStyles),
-      className,
+      getStyles(theme!, customStyles),
+      className!,
       !!isOpen,
       !!disabled,
       !!required,
@@ -286,7 +286,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         </div>
 
         { isOpen && (
-          onRenderContainer({ ...this.props as any }, this._onRenderContainer)
+          (onRenderContainer as any)({ ...this.props as any }, this._onRenderContainer)
         ) }
         {
           errorMessage &&
@@ -759,7 +759,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         setInitialFocus={ false }
       >
         <div ref={ this._resolveRef('_comboBoxMenu') } style={ { width: this._comboBoxWrapper.clientWidth - 2 } }>
-          { onRenderList({ ...props as any }, this._onRenderList) }
+          { (onRenderList as any)({ ...props }, this._onRenderList) }
         </div>
       </Callout>
     );
@@ -782,7 +782,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         aria-labelledby={ id + '-label' }
         role='listbox'
       >
-        { this.state.currentOptions.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+        { this.state.currentOptions.map((item, index) => onRenderItem({ ...item, index } as ISelectableOption, this._onRenderItem)) }
       </div>
     );
   }
@@ -1245,7 +1245,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { styles: customStyles } = this.props;
     const caretButtoncustomStyles = customStyles ? customStyles.caretDownButtonStyles : null;
 
-    return getCaretDownButtonStyles(this.props.theme, caretButtoncustomStyles);
+    return getCaretDownButtonStyles(this.props.theme!, caretButtoncustomStyles!);
   }
 
   /**
@@ -1259,6 +1259,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     const isSelected: boolean = this._isOptionSelected(item.index);
 
-    return getOptionStyles(this.props.theme, customStylesForAllOptions, customStylesForCurrentOption);
+    return getOptionStyles(this.props.theme!, customStylesForAllOptions!, customStylesForCurrentOption);
   }
 }

@@ -62,5 +62,5 @@ export const getStyles = memoizeFunction((
     },
   };
 
-  return mergeStyleSets(iconButtonStyles, customStyles);
+  return mergeStyleSets(iconButtonStyles, customStyles)!;
 });
