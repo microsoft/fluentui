@@ -29,18 +29,18 @@ export interface ISpinButtonState {
   /**
    * Is true when the control has focus.
    */
-  isFocused?: boolean;
+  isFocused: boolean;
 
   /**
    * the value of the spin button
    */
-  value?: string;
+  value: string;
 
   /**
    * keyboard spin direction, used to style the up or down button
    * as active when up/down arrow is pressed
    */
-  keyboardSpinDirection?: KeyboardSpinDirection;
+  keyboardSpinDirection: KeyboardSpinDirection;
 }
 
 @customizable([ThemeSettingName])
@@ -60,7 +60,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _input: HTMLInputElement;
   private _inputId: string;
   private _labelId: string;
-  private _lastValidValue: string | undefined;
+  private _lastValidValue: string;
   private _spinningByMouse: boolean;
 
   private _onValidate?: (value: string) => string | void;
@@ -145,10 +145,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     const classNames = getClassNames(
       getStyles(theme!, customStyles),
-      disabled!,
-      isFocused!,
-      keyboardSpinDirection!,
-      labelPosition!
+      !!disabled,
+      !!isFocused,
+      keyboardSpinDirection,
+      labelPosition
     );
 
     return (
@@ -441,18 +441,18 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   private _getUpArrowButtonStyles() {
     const { styles: customStyles, theme } = this.props;
-    const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
-    const customStylesUpArrowButton = (customStyles != null) ? customStyles.upArrowButtonStyles : null;
+    const customStylesArrowButton = customStyles && customStyles.arrowButtonStyles;
+    const customStylesUpArrowButton = customStyles && customStyles.upArrowButtonStyles;
 
-    return getArrowButtonStyles(theme!, true, customStylesArrowButton!, customStylesUpArrowButton!);
+    return getArrowButtonStyles(theme!, true, customStylesArrowButton, customStylesUpArrowButton);
   }
 
   private _getDownArrowButtonStyles() {
     const { styles: customStyles, theme } = this.props;
-    const customStylesArrowButton = (customStyles != null) ? customStyles.arrowButtonStyles : null;
-    const customStylesDownArrowButton = (customStyles != null) ? customStyles.downArrowButtonStyles : null;
+    const customStylesArrowButton = customStyles && customStyles.arrowButtonStyles;
+    const customStylesDownArrowButton = customStyles && customStyles.downArrowButtonStyles;
 
-    return getArrowButtonStyles(theme!, false, customStylesArrowButton!, customStylesDownArrowButton!);
+    return getArrowButtonStyles(theme!, false, customStylesArrowButton, customStylesDownArrowButton);
   }
 
 }

@@ -19,7 +19,7 @@ export const getClassNames = memoizeFunction((
   disabled: boolean,
   isFocused: boolean,
   keyboardSpinDirection: KeyboardSpinDirection,
-  labelPosition: Position
+  labelPosition: Position = Position.start
 ): ISpinButtonClassNames => {
   return {
     container: mergeStyles(
