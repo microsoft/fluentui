@@ -143,7 +143,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               </tr>
             </thead>
             <tbody>
-              { weeks.map((week, weekIndex) =>
+              { weeks!.map((week, weekIndex) =>
                 <tr key={ weekIndex }>
                   { week.map((day, dayIndex) =>
                     <td key={ day.key }>
@@ -164,10 +164,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         aria-selected={ day.isSelected }
                         aria-label={ day.originalDate.toLocaleString ?
                           day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
-                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
+                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
-                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
+                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
+                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
                         <span aria-hidden='true'>{ day.date }</span>
                       </div>
                     </td>
@@ -192,7 +192,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (weekIndex === 0 && ev.which === KeyCodes.up) {
       this.props.onNavigateDate(addWeeks(date, -1), true);
       ev.preventDefault();
-    } else if (weekIndex === (this.state.weeks.length - 1) && ev.which === KeyCodes.down) {
+    } else if (weekIndex === (this.state.weeks!.length - 1) && ev.which === KeyCodes.down) {
       this.props.onNavigateDate(addWeeks(date, 1), true);
       ev.preventDefault();
     } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {

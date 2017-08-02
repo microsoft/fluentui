@@ -124,8 +124,11 @@ describe('ComboBox', () => {
     comboBoxRoot = wrapper.find('.ms-ComboBox');
     let buttonElement = comboBoxRoot.find('button');
     buttonElement.simulate('click');
-    let secondItemElement = wrapper.getDOMNode().ownerDocument.querySelector('.ms-ComboBox-option[data-index="1"]');
+    let secondItemElement: Element = wrapper.getDOMNode().ownerDocument.querySelector('.ms-ComboBox-option[data-index="1"]')!;
+
     ReactTestUtils.Simulate.click(secondItemElement);
+    ReactTestUtils.Simulate.click(secondItemElement!);
+
     let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any> = comboBoxRoot.find('input');
     expect(inputElement.props().value).equals('2');
   });
