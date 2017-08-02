@@ -99,7 +99,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   private _onRenderCompactCard(): JSX.Element {
     return (
       <div className={ mergeStyles(this._styles.compactCard, { height: this.props.compactCardHeight + 'px' }) as string }>
-        { this.props.onRenderCompactCard(this.props.renderData) }
+        { this.props.onRenderCompactCard!(this.props.renderData) }
       </div>
     );
   }

@@ -50,7 +50,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
         <div className='ms-CalloutExample-configArea'>
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint] }
+            selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged } />
         </div>

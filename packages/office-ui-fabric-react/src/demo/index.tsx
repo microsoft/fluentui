@@ -13,7 +13,7 @@ import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
 
-let rootElement: HTMLElement | undefined;
+let rootElement: HTMLElement | null;
 
 // Return the anchor link from the URL without the hash
 function _extractAnchorLink(path: string) {
@@ -27,7 +27,7 @@ function _extractAnchorLink(path: string) {
 function _scrollAnchorLink() {
   if ((window.location.hash.match(/#/g) || []).length > 1) {
     let anchor = _extractAnchorLink(window.location.hash);
-    document.getElementById(anchor).scrollIntoView();
+    document.getElementById(anchor)!.scrollIntoView();
   }
 }
 
