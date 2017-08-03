@@ -16,10 +16,25 @@ import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
 export interface ICommandBarData {
+  /**
+   * Items being rendered in the primary region
+   */
   primaryItems: ICommandBarItemProps[];
+  /**
+   * Items being rendered in the overflow
+   */
   overflowItems: ICommandBarItemProps[];
+  /**
+   * Items being rendered on the far side
+   */
   farItems: ICommandBarItemProps[] | undefined;
-  originalOverflowItems: ICommandBarItemProps[];
+  /**
+   * Length of original overflowItems to ensure that they are not moved into primary region on resize
+   */
+  minimumOverflowItems: number;
+  /**
+   * Unique string used to cache the width of the command bar
+   */
   cacheKey: string;
 }
 
@@ -35,7 +50,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   public refs: {
     overflowSet: OverflowSet
-  }
+  };
 
   private _id: string;
 
@@ -61,7 +76,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     let commandBardata: ICommandBarData = {
       primaryItems: [...items],
       overflowItems: [...overflowItems!],
-      originalOverflowItems: [...overflowItems!], // for tracking
+      minimumOverflowItems: [...overflowItems!].length, // for tracking
       farItems,
       cacheKey: '',
     };
@@ -110,26 +125,28 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     );
   }
 
-
   public focus() {
     this.refs.overflowSet.focus();
   }
 
-  private computeCacheKey(primaryItems: ICommandBarItemProps[]): string {
-    return primaryItems.reduce((acc, current) => acc + current.key, '');
+  private computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
+    const primaryKey = primaryItems.reduce((acc, current) => acc + current.key, '');
+    const farKey = farItems.reduce((acc, current) => acc + current.key, '');
+    const overflowKey = overflow ? 'overflow' : '';
+    return [primaryKey, farKey, overflowKey].join(' ');
   }
 
   @autobind
   private _onReduceData(data: ICommandBarData): ICommandBarData | undefined {
-    let { primaryItems, overflowItems, cacheKey } = data;
+    let { primaryItems, overflowItems, cacheKey, farItems } = data;
     let movedItem = primaryItems[primaryItems.length - 1];
 
     if (movedItem !== undefined) {
       movedItem.renderedInOverflow = true;
 
-      overflowItems = overflowItems.concat(movedItem);
+      overflowItems = [...overflowItems, movedItem];
       primaryItems = primaryItems.slice(0, -1);
-      cacheKey = this.computeCacheKey(primaryItems);
+      cacheKey = this.computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -139,16 +156,16 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onGrowData(data: ICommandBarData): ICommandBarData | undefined {
-    let { primaryItems, overflowItems, cacheKey, originalOverflowItems } = data;
+    let { primaryItems, overflowItems, cacheKey, minimumOverflowItems, farItems } = data;
     let movedItem = overflowItems[overflowItems.length - 1];
 
     // Make sure that moved item exists and is not one of the original overflow items
-    if (movedItem !== undefined && originalOverflowItems.indexOf(movedItem) == -1) {
+    if (movedItem !== undefined && overflowItems.length > minimumOverflowItems) {
       movedItem.renderedInOverflow = false;
 
       overflowItems = overflowItems.slice(0, -1);
-      primaryItems = primaryItems.concat(movedItem);
-      cacheKey = this.computeCacheKey(primaryItems);
+      primaryItems = [...primaryItems, movedItem];
+      cacheKey = this.computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -162,12 +179,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     if (item.onRender) { return item.onRender(item); }
 
-    const commandButtonProps: ICommandBarItemProps = assign({}, item, {
-      styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.buttonStyles, ...buttonStyles },
-      className: css(styles.commandButton, item.className),
-      text: !item.iconOnly ? item.name : '',
-      menuProps: item.subMenuProps,
-    });
+    const commandButtonProps: ICommandBarItemProps = {
+      ...item,
+      ...{
+        styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.buttonStyles, ...buttonStyles },
+        className: css(styles.commandButton, item.className),
+        text: !item.iconOnly ? item.name : '',
+        menuProps: item.subMenuProps,
+      }
+    };
 
     if (item.iconOnly && item.name !== undefined) {
       return (
