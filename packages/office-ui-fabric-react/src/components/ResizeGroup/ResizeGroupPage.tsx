@@ -22,7 +22,7 @@ export class ResizeGroupPage extends React.Component<any, any> {
             <ExampleCard title='ResizeGroup' code={ ResizeGroupBasicExampleCode }>
               <ResizeGroupOverflowSetExample />
             </ExampleCard>
-            <ExampleCard title='ResizeGroup with Flex Box Layout' code={ ResizeGroupBasicExampleCode }>
+            <ExampleCard title='ResizeGroup with flex box layout' code={ ResizeGroupBasicExampleCode }>
               <FlexBoxResizeGroupExample />
             </ExampleCard>
           </LayerHost>

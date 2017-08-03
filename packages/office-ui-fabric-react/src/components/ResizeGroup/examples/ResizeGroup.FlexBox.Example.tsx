@@ -1,34 +1,32 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 
-export interface IFlexBoxResizeGroupExampleStyles {
-  root: IStyle;
-  numberedBox: IStyle;
-}
-
-const styles: IFlexBoxResizeGroupExampleStyles = {
-  root: mergeStyles({
+const leftRightBoxClassName =
+  mergeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     whiteSpace: 'nowrap'
-  }),
-  numberedBox: mergeStyles({
+  }) as string;
+
+const getNumberedBoxClassName = memoizeFunction((backgroundColor: string) => {
+  return mergeStyles({
     display: 'inline-block',
     textAlign: 'center',
     fontSize: '20px',
     lineHeight: '50px',
     height: '50px',
     width: '50px',
-    backgroundColor: 'green',
     marginLeft: '10px',
-    marginRight: '10px'
-  })
-};
+    marginRight: '10px',
+    backgroundColor
+  }) as string;
+});
 
 interface IBoxWithLabelProps {
   label: string;
+  backgroundColor: string;
 }
 
 interface ILeftRightBoxSetProps {
@@ -36,29 +34,42 @@ interface ILeftRightBoxSetProps {
   rightCount: number;
 }
 
-function renderBoxWithLabels(count: number): JSX.Element[] {
+function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
   let result: JSX.Element[] = [];
   for (let i = 1; i <= count; i += 1) {
     result.push(<BoxWithLabel
-      label={ `${i}` } />);
+      label={ `${i}` }
+      backgroundColor={ backgroundColor } />);
   }
   return result;
 }
 
 const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
-  (props: IBoxWithLabelProps) => (<div className={ styles.numberedBox as string } >{ props.label }</div>);
+  (props: IBoxWithLabelProps) => (<div className={ getNumberedBoxClassName(props.backgroundColor) } >{ props.label }</div >);
 
 const LeftRightBoxSet: React.StatelessComponent<ILeftRightBoxSetProps> =
   (props: ILeftRightBoxSetProps) => (
-    <div className={ styles.root as string }>
+    <div className={ leftRightBoxClassName }>
       <div>
-        { renderBoxWithLabels(props.leftCount) }
+        { renderBoxWithLabels(props.leftCount, 'orange') }
       </div>
       <div>
-        { renderBoxWithLabels(props.rightCount) }
+        { renderBoxWithLabels(props.rightCount, 'green') }
       </div>
     </div >
   );
+
+function onReduceData(props: ILeftRightBoxSetProps): ILeftRightBoxSetProps | undefined {
+  if (props.leftCount === 0 && props.rightCount === 0) {
+    return undefined;
+  }
+
+  if (props.leftCount > props.rightCount) {
+    return { ...props, leftCount: props.leftCount - 1 };
+  }
+
+  return { ...props, rightCount: props.rightCount - 1 };
+}
 
 export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
   public render() {
@@ -67,7 +78,7 @@ export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
       <ResizeGroup
         data={ data }
         onRenderData={ (scaledData: ILeftRightBoxSetProps) => <LeftRightBoxSet {...scaledData} /> }
-        onReduceData={ (_) => undefined }
+        onReduceData={ onReduceData }
       />);
   }
 }
