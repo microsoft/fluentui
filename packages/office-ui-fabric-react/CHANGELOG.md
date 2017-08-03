@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 02 Aug 2017 10:22:40 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+
+## 4.29.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- ConextualMenuItem: Support target value
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+- Searchbox: fixed bug when repeatedly entering a single character
+- Callout: Reverting the callout border to it's previous state with a light border.
 
 ## 4.28.0
 Wed, 02 Aug 2017 10:22:40 GMT
