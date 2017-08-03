@@ -7,6 +7,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
+import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
@@ -20,6 +21,9 @@ export class ResizeGroupPage extends React.Component<any, any> {
           <LayerHost>
             <ExampleCard title='ResizeGroup' code={ ResizeGroupBasicExampleCode }>
               <ResizeGroupOverflowSetExample />
+            </ExampleCard>
+            <ExampleCard title='ResizeGroup with Flex Box Layout' code={ ResizeGroupBasicExampleCode }>
+              <FlexBoxResizeGroupExample />
             </ExampleCard>
           </LayerHost>
         }
