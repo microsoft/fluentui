@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends React.Component<any, any> {
@@ -78,12 +78,12 @@ export class DropdownBasicExample extends React.Component<any, any> {
         />
 
         <Dropdown
-          placeHolder='Enter or select an option'
-          label='Multi-Choice example:'
+          placeHolder='Select options'
+          label='Multi-Choice uncontrolled example:'
           defaultSelectedKeys={ ['Apple', 'Banana'] }
-          onChanged={ (item) => this.setState({ selectedItem: item }) }
+          onChanged={ (item) => this.changeState(item) }
           onBlur={ () => console.log('onBlur called') }
-          multiChoice={ true }
+          multiSelect
           options={
             [
               { key: 'HeaderF', text: 'Fruits', itemType: DropdownMenuItemType.Header },
@@ -99,6 +99,46 @@ export class DropdownBasicExample extends React.Component<any, any> {
             ]
           }
         />
+
+        <Dropdown
+          placeHolder='Select options'
+          label='Multi-Choice controlled example:'
+          selectedKeys={ selectedItem && selectedItem.key }
+          onChanged={ (item) => this.onChangeMultiSelect(item) }
+          onBlur={ () => console.log('onBlur called') }
+          multiSelect
+          options={
+            [
+              { key: 'HeaderF', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+              { key: 'App', text: 'apple' },
+              { key: 'Ban', text: 'banana' },
+              { key: 'Ca', text: 'cat' },
+              { key: 'Do', text: 'dog' },
+              { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
+              { key: 'HeaderF', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
+              { key: 'Eng', text: 'english' },
+              { key: 'Fre', text: 'french' },
+              { key: 'Ger', text: 'germany' },
+            ]
+          }
+        />
+        <Dropdown
+          label='Disabled uncontrolled example with defaultSelectedKey:'
+          defaultSelectedKeys={ ['GG'] }
+          multiSelect
+          options={
+            [
+              { key: 'AA', text: 'Option a' },
+              { key: 'BB', text: 'Option b' },
+              { key: 'CC', text: 'Option c' },
+              { key: 'DD', text: 'Option d' },
+              { key: 'EE', text: 'Option e' },
+              { key: 'FF', text: 'Option f' },
+              { key: 'GG', text: 'Option g' },
+            ]
+          }
+          disabled={ true }
+        />
       </div>
 
     );
@@ -111,6 +151,29 @@ export class DropdownBasicExample extends React.Component<any, any> {
     }
 
     return list;
+  }
+
+  public changeState(item: IDropdownOption) {
+    console.log('here is the things updating...' + item.key + ' ' + item.text + ' ' + item.selected);
+    this.setState({ selectedItem: item });
+  }
+
+  public onChangeMultiSelect(item: IDropdownOption) {
+    let updatedSelectedItem = { ...this.state.selectedItem };
+    let updatedSelectedItemArr = Object.keys(updatedSelectedItem).map(key => updatedSelectedItem[Number(key)]);
+    if (item.selected) {
+      // add the option if it's checked
+      updatedSelectedItemArr.push(item);
+    } else {
+      // remove the option if it's unchecked
+      let currIndex = updatedSelectedItemArr.indexOf(item.index);
+      if (currIndex > -1) {
+        updatedSelectedItemArr.splice(currIndex, 1);
+      }
+    }
+    this.setState({
+      selectedItem: updatedSelectedItem
+    });
   }
 
 }

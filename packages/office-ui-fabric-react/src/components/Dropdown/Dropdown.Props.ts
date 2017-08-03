@@ -35,16 +35,23 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   /**
    * Optional mode indicates if multi-choice selections is allowed.  Default to false
    */
-  multiChoice?: boolean;
+  multiSelect?: boolean;
 
+  /**
+   * Keys that will be initially used to set a selected item.
+   */
+  defaultSelectedKeys?: string[] | number[];
+
+  /**
+  * Keys of the selected items. If you provide this, you must maintain selection
+  * state by observing onChange events and passing a new value in when changed.
+  */
+  selectedKeys?: string[] | number[];
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
    */
   isDisabled?: boolean;
-
-  selectedKeys?: string[] | number[];
-  defaultSelectedKeys?: string[] | number[];
 }
 
 export interface IDropdownOption extends ISelectableOption {

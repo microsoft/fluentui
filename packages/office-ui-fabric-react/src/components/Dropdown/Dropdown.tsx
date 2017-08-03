@@ -54,7 +54,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
   private _id: string;
-  private _multiChoice: boolean;
+  private _multiSelect: boolean;
 
   constructor(props: IDropdownProps) {
     props.options.forEach((option: any) => {
@@ -69,28 +69,24 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     });
 
     this._warnMutuallyExclusive({
-      'defaultSelectedKey': 'selectedKey'
-    });
-
-    this._warnMutuallyExclusive({
-      'defaultSelectedKeys': 'defaultSelectedKey'
-    });
-
-    this._warnMutuallyExclusive({
-      'selectedKeys': 'selectedKey'
+      'defaultSelectedKey': 'selectedKey',
+      'defaultSelectedKeys': 'defaultSelectedKey',
+      'selectedKeys': 'selectedKey',
+      'multiSelect': 'defaultSelectedKey',
+      'selectedKey': 'multiSelect'
     });
 
     this._id = props.id || getId('Dropdown');
-    this._multiChoice = props.multiChoice ? props.multiChoice : false;
+    this._multiSelect = props.multiSelect ? props.multiSelect : false;
 
 
     this.state = {
       isOpen: false
     }
-    if (this._multiChoice) {
+    if (this._multiSelect) {
       let selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       this.state = {
-        selectedIndexes: this._getAllSelectedIndex(props.options, selectedKeys!)
+        selectedIndexes: this._getSelectedIndexes(props.options, selectedKeys!)
       }
     } else {
       let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
@@ -106,9 +102,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     // state if the key or options change.
     if (newProps.selectedKey !== undefined &&
       (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
-      if (this._multiChoice) {
+      if (this._multiSelect) {
         this.setState({
-          selectedIndexes: this._getAllSelectedIndex(newProps.options, newProps.selectedKeys)
+          selectedIndexes: this._getSelectedIndexes(newProps.options, newProps.selectedKeys)
         });
       } else {
         this.setState({
@@ -141,7 +137,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderPlaceHolder = this._onRenderPlaceHolder
     } = this.props;
     let { isOpen, selectedIndex, selectedIndexes } = this.state;
-    let selectedOption = this._multiChoice ? selectedIndexes && this._getAllSelectedOptions(options, selectedIndexes)
+    let selectedOption = this._multiSelect ? selectedIndexes && this._getAllSelectedOptions(options, selectedIndexes)
       : options[selectedIndex as number];
     let divProps = getNativeProps(this.props, divProperties);
 
@@ -223,27 +219,28 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   public setSelectedIndex(index: number) {
     let { onChanged, options, selectedKey, selectedKeys } = this.props;
     let { selectedIndex, selectedIndexes } = this.state;
+    let checked: boolean = selectedIndexes ? Object.values(selectedIndexes).indexOf(index) > -1 : false;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
     if (index !== selectedIndex) {
       if (selectedKey === undefined) {
         // Set the selected option if this is an uncontrolled component
-        if (this._multiChoice) {
-          // add the new selected indexes into the existing one
+        if (this._multiSelect) {
           let newIndexes = selectedIndexes ? { ...selectedIndexes } : [];
-          //let arr = Object.keys(newIndexes).map(function (key) { return newIndexes[key]; });
-          let arr = Object.keys(newIndexes).map(key => newIndexes[Number(key)]);
-          if (this._isItemChecked(index)) {
-            var index = arr.indexOf(index);
-            if (index > -1) {
-              arr.splice(index, 1);
+          let IndexArr = Object.keys(newIndexes).map(key => newIndexes[Number(key)]);
+          if (checked) {
+            var position = IndexArr.indexOf(index);
+            if (position > -1) {
+              // unchecked current one
+              IndexArr.splice(position, 1);
             }
           } else {
-            arr.push(index);
+            // add the new selected indexes into the existing one
+            IndexArr.push(index);
           }
           this.setState({
-            selectedIndexes: arr
+            selectedIndexes: IndexArr
           });
         } else {
           this.setState({
@@ -251,9 +248,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           });
         }
       }
-
       if (onChanged) {
-        onChanged(options[index], index);
+        // for single-select, option passed will always be selected.
+        // for multi-select, flip the check boolean
+        let changedOpt = options[index];
+        changedOpt.selected = this._multiSelect ? !checked : true;
+        onChanged(changedOpt, index);
       }
     }
   }
@@ -299,19 +299,19 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return index;
   }
 
+
   // Render text in dropdown input
   @autobind
   private _onRenderTitle(item: IDropdownOption | IDropdownOption[]): JSX.Element {
     let displayTxt: string = '';
-    if (this._multiChoice && Array.isArray(item)) {
+    if (this._multiSelect && Array.isArray(item)) {
       for (let opt of item) {
-        displayTxt += opt.text;
+        displayTxt += opt ? opt.text : '';
         displayTxt += ' ';
       }
     } else {
       displayTxt = (item as IDropdownOption).text;
     }
-
     return <span>{ displayTxt }</span>;
   }
 
@@ -430,9 +430,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _renderOption(item: IDropdownOption, isHeader?: boolean): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
+    let { selectedIndexes } = this.state;
     let id = this._id;
+    let isItemSelected;
+    if (this._multiSelect) {
+      isItemSelected = item.index && selectedIndexes ? Object.values(selectedIndexes).indexOf(item.index) > -1 : false;
+    }
     return (
-      !this._multiChoice ?
+      !this._multiSelect ?
         <CommandButton
           id={ id + '-list' + item.index }
           ref={ Dropdown.Option + item.index }
@@ -463,13 +468,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           className={ css(
             'ms-ColumnManagementPanel-checkbox',
             'ms-Dropdown-item', styles.item, {
-              ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
-              ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+              ['is-selected ' + styles.itemIsSelected]: isItemSelected,
+              ['is-disabled ' + styles.itemIsDisabled]: isItemSelected
             }
           ) }
           role='option'
-          aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-          checked={ item.index ? this._isItemChecked(item.index) : false }
+          aria-selected={ isItemSelected ? 'true' : 'false' }
+          checked={ isItemSelected }
         >{ onRenderOption(item, this._onRenderOption) } </Checkbox>
     );
   }
@@ -486,16 +491,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _onItemClick(item: IDropdownOption) {
-    if (!this._multiChoice) {
-      this.setSelectedIndex(item.index!);
+    this.setSelectedIndex(item.index!);
+    if (!this._multiSelect) {
+      // only close the callout when it's in single-select mode
       this.setState({
         isOpen: false
       });
-    } else {
-      this.setSelectedIndex(item.index!);
-      //item.selected = true;
     }
-
   }
 
   @autobind
@@ -504,7 +506,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._dropDown.focus();
   }
 
-  private _getAllSelectedIndex(options: IDropdownOption[], selectedKey: any): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: any): number[] {
+    if (!selectedKey) {
+      return [];
+    }
     let selectedIndex: number[] = [];
     for (let key of selectedKey) {
       selectedIndex.push(this._getSelectedIndex(options, key));
@@ -512,27 +517,23 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return selectedIndex;
   }
 
-  private _isItemChecked(index: number, key?: string | number) {
-    if (this.state.selectedIndexes) {
-      for (let selectedIndex of this.state.selectedIndexes) {
-        if (selectedIndex === index) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndex: number[]) {
+  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndex: number[]): IDropdownOption[] | undefined {
     let selectedOptions: IDropdownOption[] = [];
     for (let index of selectedIndex) {
       selectedOptions.push(options[index]);
+    }
+    if (selectedOptions.length < 1) {
+      return undefined;
     }
     return selectedOptions;
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
     return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
+  }
+
+  private _getSelectedIndexFromIndexes(selectedIndexes: number[]): number {
+    return selectedIndexes ? selectedIndexes[0] : -1;
   }
 
   @autobind
@@ -555,7 +556,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       }
     }
     let newIndex: number | undefined;
-    const selectedIndex = this.state.selectedIndex!;
+    const selectedIndex = this._multiSelect ? (this.state.selectedIndexes ? this.state.selectedIndexes[0] : -1) : this.state.selectedIndex!;
 
     switch (ev.which) {
       case KeyCodes.enter:
@@ -575,11 +576,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.up:
-        newIndex = this._moveIndex(-1, selectedIndex - 1, selectedIndex);
+        if (this._multiSelect) {
+          this.setState({ isOpen: true });
+        } else {
+          newIndex = this._moveIndex(-1, selectedIndex - 1, selectedIndex);
+        }
         break;
 
       case KeyCodes.down:
-        if (ev.altKey || ev.metaKey) {
+        if (ev.altKey || ev.metaKey || this._multiSelect) {
           this.setState({ isOpen: true });
         } else {
           newIndex = this._moveIndex(1, selectedIndex + 1, selectedIndex);
