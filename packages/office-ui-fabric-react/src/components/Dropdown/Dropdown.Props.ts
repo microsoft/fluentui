@@ -38,7 +38,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   multiSelect?: boolean;
 
   /**
-   * Keys that will be initially used to set a selected item.
+   * Keys that will be initially used to set selected items.
    */
   defaultSelectedKeys?: string[] | number[];
 
@@ -47,6 +47,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   * state by observing onChange events and passing a new value in when changed.
   */
   selectedKeys?: string[] | number[];
+
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated

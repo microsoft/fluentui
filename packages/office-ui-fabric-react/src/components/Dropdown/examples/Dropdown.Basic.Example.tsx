@@ -124,7 +124,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         />
         <Dropdown
           label='Disabled uncontrolled example with defaultSelectedKey:'
-          defaultSelectedKeys={ ['GG'] }
+          defaultSelectedKeys={ ['GG', 'FF'] }
           multiSelect
           options={
             [
@@ -159,21 +159,29 @@ export class DropdownBasicExample extends React.Component<any, any> {
   }
 
   public onChangeMultiSelect(item: IDropdownOption) {
-    let updatedSelectedItem = { ...this.state.selectedItem };
-    let updatedSelectedItemArr = Object.keys(updatedSelectedItem).map(key => updatedSelectedItem[Number(key)]);
+    let updatedSelectedItem = this.state.selectedItem ? this.copyArray(this.state.selectedItem) : [];
+    //let updatedSelectedItemArr = Object.keys(updatedSelectedItem).map(key => updatedSelectedItem[Number(key)]);
     if (item.selected) {
       // add the option if it's checked
-      updatedSelectedItemArr.push(item);
+      updatedSelectedItem.push(item);
     } else {
       // remove the option if it's unchecked
-      let currIndex = updatedSelectedItemArr.indexOf(item.index);
+      let currIndex = updatedSelectedItem.indexOf(item.index);
       if (currIndex > -1) {
-        updatedSelectedItemArr.splice(currIndex, 1);
+        updatedSelectedItem.splice(currIndex, 1);
       }
     }
     this.setState({
       selectedItem: updatedSelectedItem
     });
+  }
+
+  public copyArray(array: any[]): any[] {
+    let newArray: any[] = [];
+    for (let i = 0; i < array.length; i++) {
+      newArray[i] = array[i];
+    }
+    return newArray;
   }
 
 }
