@@ -160,7 +160,6 @@ export class DropdownBasicExample extends React.Component<any, any> {
 
   public onChangeMultiSelect(item: IDropdownOption) {
     let updatedSelectedItem = this.state.selectedItem ? this.copyArray(this.state.selectedItem) : [];
-    //let updatedSelectedItemArr = Object.keys(updatedSelectedItem).map(key => updatedSelectedItem[Number(key)]);
     if (item.selected) {
       // add the option if it's checked
       updatedSelectedItem.push(item);

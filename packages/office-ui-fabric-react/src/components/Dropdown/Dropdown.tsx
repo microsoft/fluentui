@@ -79,12 +79,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     this.state = {
       isOpen: false
-    }
+    };
     if (this.props.multiSelect) {
       let selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
       this.state = {
         selectedIndexes: this._getSelectedIndexes(props.options, selectedKeys!)
-      }
+      };
     } else {
       let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
       this.state = {
