@@ -70,6 +70,7 @@ $Calendar-dayPicker-margin: 10px;
   line-height: 44px;
 }
 
+
 // The month and year labels.
 .month,
 .year {
@@ -385,7 +386,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  // Show the month picker next to date picker, if enabled
+  // Show the month picker next to date picker (2 column layout), if enabled
   .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .dayPicker {
@@ -485,7 +486,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  // Show the month picker next to date picker, if enabled
+  // Show the month picker over date picker (1 column layout), if enabled
   .onlyMonthPickerOverlayVisible {
     // Show the month picker.
 
@@ -591,7 +592,7 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .holder {
-      width: 220px;
+      width: 296px;
     }
 
     .currentYear {
@@ -609,10 +610,12 @@ $Calendar-dayPicker-margin: 10px;
 // On smaller screens the month button toggles to the picking months state.
 @media (max-width: 459px) {
 
-  //Risize wrapper so elements do not go off screen
+  //Stop elements from going off screen
+  //Resize from 440px to 300px
   .holder{
     width: 300px;
   }
+
   // State: The picker is showing the month components.
   .root.isPickingMonths {
 
