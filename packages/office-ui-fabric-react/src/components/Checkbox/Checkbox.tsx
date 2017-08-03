@@ -41,6 +41,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   private _checkBox: HTMLInputElement;
   private _id: string;
+  private _classNames: ICheckboxClassNames;
 
   /**
    * Initialize a new instance of the TopHeaderV2
@@ -83,12 +84,13 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       boxSide,
       theme,
       styles: customStyles,
-        } = this.props;
+      onRenderLabel = this._onRenderLabel
+    } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    const classNames = this._getClassNames(
+    this._classNames = this._getClassNames(
       getStyles(theme!, customStyles),
       className!,
       disabled!,
@@ -107,18 +109,18 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         id={ this._id }
         role='checkbox'
         type='button'
-        className={ classNames.root }
+        className={ this._classNames.root }
         onClick={ this._onClick }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         aria-checked={ isChecked }
         aria-disabled={ disabled }
       >
-        <label className={ classNames.label } htmlFor={ this._id } >
-          <div className={ classNames.checkbox }>
-            <Icon iconName='CheckMark' className={ classNames.checkmark } />
+        <label className={ this._classNames.label } htmlFor={ this._id } >
+          <div className={ this._classNames.checkbox }>
+            <Icon iconName='CheckMark' className={ this._classNames.checkmark } />
           </div>
-          { label && <span className={ classNames.text }>{ label }</span> }
+          { label && onRenderLabel(this.props, this._onRenderLabel) }
         </label>
       </button>
     );
@@ -167,6 +169,19 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         this.setState({ isChecked: !isChecked });
       }
     }
+  }
+
+  @autobind
+  private _onRenderLabel() {
+    const {
+      label
+    } = this.props;
+
+    return label ? (
+      <span className={ this._classNames.text }>{ label }</span>
+    ) : (
+        null
+      );
   }
 
   @memoize
