@@ -11,6 +11,8 @@ import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Exampl
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
+const ResizeGroupFlexBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
+
 export class ResizeGroupPage extends React.Component<any, any> {
   public render() {
     return (
@@ -22,7 +24,7 @@ export class ResizeGroupPage extends React.Component<any, any> {
             <ExampleCard title='ResizeGroup' code={ ResizeGroupBasicExampleCode }>
               <ResizeGroupOverflowSetExample />
             </ExampleCard>
-            <ExampleCard title='ResizeGroup with flex box layout' code={ ResizeGroupBasicExampleCode }>
+            <ExampleCard title='ResizeGroup with flex box layout' code={ ResizeGroupFlexBoxExampleCode }>
               <FlexBoxResizeGroupExample />
             </ExampleCard>
           </LayerHost>

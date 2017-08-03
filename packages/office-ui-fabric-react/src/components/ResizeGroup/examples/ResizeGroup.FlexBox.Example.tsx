@@ -39,7 +39,8 @@ function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Elemen
   for (let i = 1; i <= count; i += 1) {
     result.push(<BoxWithLabel
       label={ `${i}` }
-      backgroundColor={ backgroundColor } />);
+      backgroundColor={ backgroundColor }
+      key={ `${backgroundColor}-${i}` } />);
   }
   return result;
 }
