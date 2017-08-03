@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
+import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
@@ -31,6 +32,7 @@ export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveM
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
+  selectedIndexes?: number[];
 }
 
 @withResponsiveMode
@@ -52,6 +54,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
   private _id: string;
+  private _multiChoice: boolean;
 
   constructor(props: IDropdownProps) {
     props.options.forEach((option: any) => {
@@ -69,14 +72,33 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       'defaultSelectedKey': 'selectedKey'
     });
 
-    this._id = props.id || getId('Dropdown');
+    this._warnMutuallyExclusive({
+      'defaultSelectedKeys': 'defaultSelectedKey'
+    });
 
-    let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
+    this._warnMutuallyExclusive({
+      'selectedKeys': 'selectedKey'
+    });
+
+    this._id = props.id || getId('Dropdown');
+    this._multiChoice = props.multiChoice ? props.multiChoice : false;
+
 
     this.state = {
-      isOpen: false,
-      selectedIndex: this._getSelectedIndex(props.options, selectedKey!)
-    };
+      isOpen: false
+    }
+    if (this._multiChoice) {
+      let selectedKeys = props.defaultSelectedKeys !== undefined ? props.defaultSelectedKeys : props.selectedKeys;
+      this.state = {
+        selectedIndexes: this._getAllSelectedIndex(props.options, selectedKeys!)
+      }
+    } else {
+      let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
+      this.state = {
+        selectedIndex: this._getSelectedIndex(props.options, selectedKey!)
+      };
+    }
+
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
@@ -84,9 +106,15 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     // state if the key or options change.
     if (newProps.selectedKey !== undefined &&
       (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
-      this.setState({
-        selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
-      });
+      if (this._multiChoice) {
+        this.setState({
+          selectedIndexes: this._getAllSelectedIndex(newProps.options, newProps.selectedKeys)
+        });
+      } else {
+        this.setState({
+          selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+        });
+      }
     }
   }
 
@@ -112,8 +140,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderContainer = this._onRenderContainer,
       onRenderPlaceHolder = this._onRenderPlaceHolder
     } = this.props;
-    let { isOpen, selectedIndex } = this.state;
-    let selectedOption = options[selectedIndex as number];
+    let { isOpen, selectedIndex, selectedIndexes } = this.state;
+    let selectedOption = this._multiChoice ? selectedIndexes && this._getAllSelectedOptions(options, selectedIndexes)
+      : options[selectedIndex as number];
     let divProps = getNativeProps(this.props, divProperties);
 
     // Remove this deprecation workaround at 1.0.0
@@ -192,17 +221,35 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options, selectedKey } = this.props;
-    let { selectedIndex } = this.state;
+    let { onChanged, options, selectedKey, selectedKeys } = this.props;
+    let { selectedIndex, selectedIndexes } = this.state;
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
     if (index !== selectedIndex) {
       if (selectedKey === undefined) {
         // Set the selected option if this is an uncontrolled component
-        this.setState({
-          selectedIndex: index
-        });
+        if (this._multiChoice) {
+          // add the new selected indexes into the existing one
+          let newIndexes = selectedIndexes ? { ...selectedIndexes } : [];
+          //let arr = Object.keys(newIndexes).map(function (key) { return newIndexes[key]; });
+          let arr = Object.keys(newIndexes).map(key => newIndexes[Number(key)]);
+          if (this._isItemChecked(index)) {
+            var index = arr.indexOf(index);
+            if (index > -1) {
+              arr.splice(index, 1);
+            }
+          } else {
+            arr.push(index);
+          }
+          this.setState({
+            selectedIndexes: arr
+          });
+        } else {
+          this.setState({
+            selectedIndex: index
+          });
+        }
       }
 
       if (onChanged) {
@@ -254,8 +301,18 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render text in dropdown input
   @autobind
-  private _onRenderTitle(item: IDropdownOption): JSX.Element {
-    return <span>{ item.text }</span>;
+  private _onRenderTitle(item: IDropdownOption | IDropdownOption[]): JSX.Element {
+    let displayTxt: string = '';
+    if (this._multiChoice && Array.isArray(item)) {
+      for (let opt of item) {
+        displayTxt += opt.text;
+        displayTxt += ' ';
+      }
+    } else {
+      displayTxt = (item as IDropdownOption).text;
+    }
+
+    return <span>{ displayTxt }</span>;
   }
 
   // Render placeHolder text in dropdown input
@@ -371,28 +428,49 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render menu item
   @autobind
-  private _renderOption(item: IDropdownOption): JSX.Element {
+  private _renderOption(item: IDropdownOption, isHeader?: boolean): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     return (
-      <CommandButton
-        id={ id + '-list' + item.index }
-        ref={ Dropdown.Option + item.index }
-        key={ item.key }
-        data-index={ item.index }
-        data-is-focusable={ true }
-        className={ css(
-          'ms-Dropdown-item', styles.item, {
-            ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
-            ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
-          }
-        ) }
-        onClick={ () => this._onItemClick(item.index!) }
-        role='option'
-        aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-        ariaLabel={ item.ariaLabel || item.text }
-        title={ item.text }
-      > { onRenderOption(item, this._onRenderOption) }</CommandButton>
+      !this._multiChoice ?
+        <CommandButton
+          id={ id + '-list' + item.index }
+          ref={ Dropdown.Option + item.index }
+          key={ item.key }
+          data-index={ item.index }
+          data-is-focusable={ true }
+          className={ css(
+            'ms-Dropdown-item', styles.item, {
+              ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
+              ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+            }
+          ) }
+          onClick={ () => this._onItemClick(item) }
+          role='option'
+          aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
+          ariaLabel={ item.ariaLabel || item.text }
+          title={ item.text }
+        > { onRenderOption(item, this._onRenderOption) }</CommandButton>
+        :
+        <Checkbox
+          id={ id + '-list' + item.index }
+          ref={ Dropdown.Option + item.index }
+          key={ item.key }
+          data-index={ item.index }
+          data-is-focusable={ true }
+          onChange={ () => this._onItemClick(item) }
+          label={ item.text }
+          className={ css(
+            'ms-ColumnManagementPanel-checkbox',
+            'ms-Dropdown-item', styles.item, {
+              ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
+              ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+            }
+          ) }
+          role='option'
+          aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
+          checked={ item.index ? this._isItemChecked(item.index) : false }
+        >{ onRenderOption(item, this._onRenderOption) } </Checkbox>
     );
   }
 
@@ -407,11 +485,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
-  private _onItemClick(index: number) {
-    this.setSelectedIndex(index);
-    this.setState({
-      isOpen: false
-    });
+  private _onItemClick(item: IDropdownOption) {
+    if (!this._multiChoice) {
+      this.setSelectedIndex(item.index!);
+      this.setState({
+        isOpen: false
+      });
+    } else {
+      this.setSelectedIndex(item.index!);
+      //item.selected = true;
+    }
+
   }
 
   @autobind
@@ -420,7 +504,34 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._dropDown.focus();
   }
 
-  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
+  private _getAllSelectedIndex(options: IDropdownOption[], selectedKey: any): number[] {
+    let selectedIndex: number[] = [];
+    for (let key of selectedKey) {
+      selectedIndex.push(this._getSelectedIndex(options, key));
+    }
+    return selectedIndex;
+  }
+
+  private _isItemChecked(index: number, key?: string | number) {
+    if (this.state.selectedIndexes) {
+      for (let selectedIndex of this.state.selectedIndexes) {
+        if (selectedIndex === index) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndex: number[]) {
+    let selectedOptions: IDropdownOption[] = [];
+    for (let index of selectedIndex) {
+      selectedOptions.push(options[index]);
+    }
+    return selectedOptions;
+  }
+
+  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
     return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
   }
 

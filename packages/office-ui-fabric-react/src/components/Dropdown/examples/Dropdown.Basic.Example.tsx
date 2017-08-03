@@ -62,6 +62,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           selectedKey={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
           onBlur={ () => console.log('onBlur called') }
+          placeHolder='Select an Option'
           options={
             [
               { key: 'A', text: 'Option a' },
@@ -76,6 +77,28 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
         />
 
+        <Dropdown
+          placeHolder='Enter or select an option'
+          label='Multi-Choice example:'
+          defaultSelectedKeys={ ['Apple', 'Banana'] }
+          onChanged={ (item) => this.setState({ selectedItem: item }) }
+          onBlur={ () => console.log('onBlur called') }
+          multiChoice={ true }
+          options={
+            [
+              { key: 'HeaderF', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+              { key: 'Apple', text: 'apple' },
+              { key: 'Banana', text: 'banana' },
+              { key: 'Cat', text: 'cat' },
+              { key: 'Dog', text: 'dog' },
+              { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
+              { key: 'HeaderL', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
+              { key: 'English', text: 'english' },
+              { key: 'French', text: 'french' },
+              { key: 'Germany', text: 'germany' },
+            ]
+          }
+        />
       </div>
 
     );

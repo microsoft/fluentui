@@ -28,15 +28,23 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   /**
    * Optional custom renderer for selected option displayed in input
    */
-  onRenderTitle?: IRenderFunction<IDropdownOption>;
+  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
 
   responsiveMode?: ResponsiveMode;
+
+  /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiChoice?: boolean;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
    */
   isDisabled?: boolean;
+
+  selectedKeys?: string[] | number[];
+  defaultSelectedKeys?: string[] | number[];
 }
 
 export interface IDropdownOption extends ISelectableOption {
