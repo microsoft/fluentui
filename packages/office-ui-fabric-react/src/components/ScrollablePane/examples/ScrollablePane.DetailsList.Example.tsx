@@ -102,7 +102,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<any, any> 
                 <Sticky>
                   { defaultRender({
                     ...detailsHeaderProps,
-                    onRenderColumnHeaderTooltio: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
+                    onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost { ...tooltipHostProps } />
                   }) }
                 </Sticky>
               ) }

@@ -41,6 +41,13 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   private _stickyAbove: Sticky[];
   private _stickyBelow: Sticky[];
 
+  constructor(props: IScrollablePaneProps) {
+    super(props);
+    this._subscribers = [];
+    this._stickyAbove = [];
+    this._stickyBelow = [];
+  }
+
   public getChildContext() {
     return {
       subscribe: this.subscribe,
@@ -49,13 +56,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       addStickyFooter: this.addStickyFooter,
       removeStickyFooter: this.removeStickyFooter
     };
-  }
-
-  constructor(props: IScrollablePaneProps) {
-    super(props);
-    this._subscribers = [];
-    this._stickyAbove = [];
-    this._stickyBelow = [];
   }
 
   public componentDidMount() {
