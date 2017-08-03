@@ -92,7 +92,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink' key='nav-link'>
-          <Link href={ this._baseUrl + '#Best Practices' }>Best Practices</Link>
+          <Link { ...{ href: this._baseUrl + '#Best Practices' } }>Best Practices</Link>
         </div>
       );
     }
@@ -100,14 +100,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className='ComponentPage-navigation'>
         <div className='ComponentPage-navLink'>
-          <Link href={ this._baseUrl + '#Overview' }>Overview</Link>
+          <Link { ...{ href: this._baseUrl + '#Overview' } }>Overview</Link>
         </div>
         { links }
         <div className='ComponentPage-navLink'>
-          <Link href={ this._baseUrl + '#Variants' }>Variants</Link>
+          <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
         </div>
         <div className='ComponentPage-navLink'>
-          <Link href={ this._baseUrl + '#Implementation' }>Implementation</Link>
+          <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
         </div>
       </div>
     );

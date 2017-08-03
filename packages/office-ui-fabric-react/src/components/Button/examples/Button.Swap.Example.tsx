@@ -68,7 +68,7 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   }
 
   @autobind
-  private _setButtonRef(ref: React.ReactInstance): void {
+  private _setButtonRef(ref: any): void {
     this.buttonRef = ReactDOM.findDOMNode(ref) as HTMLElement;
   }
 
