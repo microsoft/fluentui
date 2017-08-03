@@ -127,8 +127,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { top, bottom } = this.refs.root.getBoundingClientRect();
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyPosition } = this.props;
-    const canStickyHeader = stickyPosition === StickyPositionType.Both || stickyPosition == StickyPositionType.Header;
-    const canStickyFooter = stickyPosition === StickyPositionType.Both || stickyPosition == StickyPositionType.Footer;
+    const canStickyHeader = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Header;
+    const canStickyFooter = stickyPosition === StickyPositionType.Both || stickyPosition === StickyPositionType.Footer;
 
     this.setState({
       isStickyTop: canStickyHeader && ((!isStickyTop && top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom)),
