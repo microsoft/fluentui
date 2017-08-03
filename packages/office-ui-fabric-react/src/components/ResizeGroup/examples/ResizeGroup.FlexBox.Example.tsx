@@ -35,6 +35,9 @@ interface ILeftRightBoxSetProps {
   cacheKey: string;
 }
 
+const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
+  (props: IBoxWithLabelProps) => (<div className={ getNumberedBoxClassName(props.backgroundColor) } >{ props.label }</div >);
+
 function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
   let result: JSX.Element[] = [];
   for (let i = 1; i <= count; i += 1) {
@@ -45,9 +48,6 @@ function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Elemen
   }
   return result;
 }
-
-const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
-  (props: IBoxWithLabelProps) => (<div className={ getNumberedBoxClassName(props.backgroundColor) } >{ props.label }</div >);
 
 const LeftRightBoxSet: React.StatelessComponent<ILeftRightBoxSetProps> =
   (props: ILeftRightBoxSetProps) => (
