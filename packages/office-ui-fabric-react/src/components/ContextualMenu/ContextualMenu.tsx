@@ -124,7 +124,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _previousActiveElement: HTMLElement | null;
   private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number;
-  private _focusZone: FocusZone;
   private _targetWindow: Window;
   private _target: HTMLElement | MouseEvent | null;
 
@@ -252,7 +251,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
                 direction={ arrowDirection }
-                ref={ (focusZone) => this._focusZone = focusZone }
                 isCircularNavigation={ true }
               >
                 <ul
@@ -344,6 +342,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
+          target={ item.target }
           className={ css(
             'ms-ContextualMenu-link',
             styles.link,
