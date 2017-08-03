@@ -209,6 +209,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/resizegroup'
         },
         {
+          component: require<any>('../components/ScrollablePane/ScrollablePanePage').ScrollablePanePage,
+          key: 'ScrollablePane',
+          name: 'ScrollablePane',
+          url: '#/examples/scrollablepane'
+        },
+        {
           component: require<any>('../components/SearchBox/SearchBoxPage').SearchBoxPage,
           key: 'SearchBox',
           name: 'SearchBox',
