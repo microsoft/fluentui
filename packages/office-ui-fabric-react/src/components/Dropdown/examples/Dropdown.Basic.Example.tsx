@@ -79,7 +79,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
 
         <Dropdown
           placeHolder='Select options'
-          label='Multi-Choice uncontrolled example:'
+          label='Multi-Select uncontrolled example:'
           defaultSelectedKeys={ ['Apple', 'Banana'] }
           onChanged={ (item) => this.changeState(item) }
           onBlur={ () => console.log('onBlur called') }
@@ -102,7 +102,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
 
         <Dropdown
           placeHolder='Select options'
-          label='Multi-Choice controlled example:'
+          label='Multi-Select controlled example:'
           selectedKeys={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.onChangeMultiSelect(item) }
           onBlur={ () => console.log('onBlur called') }

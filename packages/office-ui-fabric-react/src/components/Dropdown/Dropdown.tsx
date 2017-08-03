@@ -226,7 +226,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         if (this.props.multiSelect) {
           let newIndexes = selectedIndexes ? this._copyArray(selectedIndexes) : [];
           if (checked) {
-            var position = newIndexes.indexOf(index);
+            let position = newIndexes.indexOf(index);
             if (position > -1) {
               // unchecked current one
               newIndexes.splice(position, 1);
