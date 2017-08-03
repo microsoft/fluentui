@@ -35,7 +35,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   /**
    * Custom styling for individual elements within the button DOM.
    */
-  styles?: ISplitButtonStyles;
+  styles?: IButtonStyles | ISplitButtonStyles;
 
   /**
    * Theme provided by HOC.
