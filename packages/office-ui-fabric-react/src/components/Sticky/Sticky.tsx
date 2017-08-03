@@ -20,20 +20,12 @@ export interface IStickyState {
 }
 
 export interface IStickyContext {
-  subscribe: PropTypes.Requireable<Function>;
-  addStickyHeader: PropTypes.Requireable<Function>;
-  removeStickyHeader: PropTypes.Requireable<Function>;
-  addStickyFooter: PropTypes.Requireable<Function>;
-  removeStickyFooter: PropTypes.Requireable<Function>;
+  scrollablePane: PropTypes.Requireable<object>;
 }
 
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public static contextTypes: IStickyContext = {
-    subscribe: PropTypes.func,
-    addStickyHeader: PropTypes.func,
-    removeStickyHeader: PropTypes.func,
-    addStickyFooter: PropTypes.func,
-    removeStickyFooter: PropTypes.func
+    scrollablePane: PropTypes.object
   };
 
   public refs: {
@@ -42,11 +34,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   };
 
   public context: {
-    subscribe: (handler: Function) => void;
-    addStickyHeader: (sticky: Sticky) => void;
-    removeStickyHeader: (sticky: Sticky) => void;
-    addStickyFooter: (sticky: Sticky) => void;
-    removeStickyFooter: (sticky: Sticky) => void;
+    scrollablePane: {
+      subscribe: (handler: Function) => void;
+      addStickyHeader: (sticky: Sticky) => void;
+      removeStickyHeader: (sticky: Sticky) => void;
+      addStickyFooter: (sticky: Sticky) => void;
+      removeStickyFooter: (sticky: Sticky) => void;
+    }
   };
 
   public content: HTMLElement;
@@ -61,11 +55,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   @autobind
   public componentDidMount() {
-    if (!this.context.subscribe) {
+    if (!this.context.scrollablePane) {
       throw new TypeError('Expected Sticky to be mounted within ScrollablePane');
     }
+    const { scrollablePane } = this.context;
     const { stickyClassName } = this.props;
-    this.context.subscribe(this._onScrollEvent);
+    scrollablePane.subscribe(this._onScrollEvent);
     this.content = document.createElement('div');
     this.content.style.background = this._getBackground();
     ReactDOM.render(<div>{ this.props.children }</div>, this.content);
@@ -74,25 +69,26 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState) {
     const { isStickyTop, isStickyBottom } = this.state;
+    const { scrollablePane } = this.context;
 
     if (this.props.children !== prevProps.children) {
       ReactDOM.render(<div>{ this.props.children }</div>, this.content);
     }
     if (isStickyTop && !prevState.isStickyTop) {
       this._setSticky(() => {
-        this.context.addStickyHeader(this);
+        scrollablePane.addStickyHeader(this);
       });
     } else if (!isStickyTop && prevState.isStickyTop) {
       this._resetSticky(() => {
-        this.context.removeStickyHeader(this);
+        scrollablePane.removeStickyHeader(this);
       });
     } else if (isStickyBottom && !prevState.isStickyBottom) {
       this._setSticky(() => {
-        this.context.addStickyFooter(this);
+        scrollablePane.addStickyFooter(this);
       });
     } else if (!isStickyBottom && prevState.isStickyBottom) {
       this._resetSticky(() => {
-        this.context.removeStickyFooter(this);
+        scrollablePane.removeStickyFooter(this);
       });
     }
   }

@@ -14,20 +14,12 @@ import * as stylesImport from './ScrollablePane.scss';
 const styles: any = stylesImport;
 
 export interface IScrollablePaneContext {
-  subscribe: PropTypes.Requireable<Function>;
-  addStickyHeader: PropTypes.Requireable<Function>;
-  removeStickyHeader: PropTypes.Requireable<Function>;
-  addStickyFooter: PropTypes.Requireable<Function>;
-  removeStickyFooter: PropTypes.Requireable<Function>;
+  scrollablePane: PropTypes.Requireable<object>;
 }
 
 export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   public static childContextTypes: IScrollablePaneContext = {
-    subscribe: PropTypes.func,
-    addStickyHeader: PropTypes.func,
-    removeStickyHeader: PropTypes.func,
-    addStickyFooter: PropTypes.func,
-    removeStickyFooter: PropTypes.func
+    scrollablePane: PropTypes.object
   };
 
   public refs: {
@@ -50,11 +42,13 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   public getChildContext() {
     return {
-      subscribe: this.subscribe,
-      addStickyHeader: this.addStickyHeader,
-      removeStickyHeader: this.removeStickyHeader,
-      addStickyFooter: this.addStickyFooter,
-      removeStickyFooter: this.removeStickyFooter
+      scrollablePane: {
+        subscribe: this.subscribe,
+        addStickyHeader: this.addStickyHeader,
+        removeStickyHeader: this.removeStickyHeader,
+        addStickyFooter: this.addStickyFooter,
+        removeStickyFooter: this.removeStickyFooter,
+      }
     };
   }
 
