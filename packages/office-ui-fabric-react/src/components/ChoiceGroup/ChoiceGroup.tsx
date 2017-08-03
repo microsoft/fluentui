@@ -100,7 +100,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 }
               >
                 <input
-                  ref={ (c): HTMLInputElement => this._inputElement = c }
+                  ref={ (c): HTMLInputElement => this._inputElement = c! }
                   id={ option.id }
                   className={ css('ms-ChoiceField-input', styles.input) }
                   type='radio'
