@@ -16,6 +16,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   placeHolder?: string;
 
   /**
+   * Custom width for dropdown. Otherwise the width of the input field is used.
+   */
+  dropdownWidth?: number;
+
+  /**
    * Callback issues when the selected option changes
    */
   onChanged?: (option: IDropdownOption, index?: number) => void;

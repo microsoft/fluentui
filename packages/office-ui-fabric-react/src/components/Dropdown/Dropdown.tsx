@@ -273,7 +273,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let {
       onRenderList = this._onRenderList,
       responsiveMode,
-      calloutProps
+      calloutProps,
+      dropdownWidth
     } = this.props;
 
     let isSmall = responsiveMode! <= ResponsiveMode.medium;
@@ -301,7 +302,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
+          <div style={ { width: dropdownWidth || this._dropDown.clientWidth - 2 } }>
             { onRenderList(props, this._onRenderList) }
           </div>
         </Callout>
