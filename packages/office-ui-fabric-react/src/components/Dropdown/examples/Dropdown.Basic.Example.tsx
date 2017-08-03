@@ -89,8 +89,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'Apple', text: 'apple' },
               { key: 'Banana', text: 'banana' },
-              { key: 'Cat', text: 'cat' },
-              { key: 'Dog', text: 'dog' },
+              { key: 'Orange', text: 'orange' },
+              { key: 'Grape', text: 'grape' },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
               { key: 'English', text: 'english' },
@@ -109,16 +109,16 @@ export class DropdownBasicExample extends React.Component<any, any> {
           multiSelect
           options={
             [
-              { key: 'Header4', text: 'Fruits', itemType: DropdownMenuItemType.Header },
-              { key: 'App', text: 'apple' },
-              { key: 'Ban', text: 'banana' },
-              { key: 'Ca', text: 'cat' },
-              { key: 'Do', text: 'dog' },
-              { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'Header5', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
-              { key: 'Eng', text: 'english' },
-              { key: 'Fre', text: 'french' },
-              { key: 'Ger', text: 'germany' },
+              { key: 'Header4', text: 'Colors', itemType: DropdownMenuItemType.Header },
+              { key: 'red', text: 'Red' },
+              { key: 'green', text: 'Green' },
+              { key: 'blue', text: 'Blue' },
+              { key: 'yellow', text: 'Yellow' },
+              { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
+              { key: 'Header5', text: 'Flower', itemType: DropdownMenuItemType.Header },
+              { key: 'rose', text: 'Rose' },
+              { key: 'lily', text: 'Lily' },
+              { key: 'sunflower', text: 'Sunflower' },
             ]
           }
         />
