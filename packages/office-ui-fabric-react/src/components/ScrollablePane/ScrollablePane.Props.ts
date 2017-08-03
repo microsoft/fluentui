@@ -3,8 +3,7 @@ import { ScrollablePane } from './ScrollablePane';
 
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePane> {
   /**
-   * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Gets ref to component interface.
    */
   componentRef?: (component: IScrollablePaneProps) => void;
 
