@@ -29,22 +29,39 @@ interface IBoxWithLabelProps {
   label: string;
 }
 
+interface ILeftRightBoxSetProps {
+  leftCount: number;
+  rightCount: number;
+}
+
 const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
   (props: IBoxWithLabelProps) => (<div className={ styles.numberedBox as string } >{ props.label }</div>);
+
+const LeftRightBoxSet: React.StatelessComponent<ILeftRightBoxSetProps> =
+  () => (
+    <div className={ styles.root as string }>
+      <div>
+        <BoxWithLabel
+          label='1' />
+        <BoxWithLabel
+          label='2' />
+      </div>
+      <div>
+        <BoxWithLabel
+          label='1' />
+        <BoxWithLabel
+          label='2' />
+      </div>
+    </div >
+  );
 
 export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
 
   public render() {
     return (
-      <div className={ styles.root as string }>
-        <div>
-          <BoxWithLabel
-            label='1' />
-          <BoxWithLabel
-            label='2' />
-        </div>
-        <span>Right </span>
-      </div >
+      <LeftRightBoxSet
+        leftCount={ 10 }
+        rightCount={ 10 } />
     );
   }
 }
