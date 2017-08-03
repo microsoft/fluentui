@@ -19,6 +19,8 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
+  isCalendarsOverlayed?: boolean;
+  onSelectSwitchCalendar: () => void;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -45,7 +47,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, isCalendarsOverlayed } = this.props;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -75,6 +77,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
+          {
+            isCalendarsOverlayed ?
+              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ this._onSelectSwitchCalendar.bind(this) } />
+              :
+              null
+          }
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
@@ -133,5 +141,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
+  }
+
+  private _onSelectSwitchCalendar() {
+    this.props.onSelectSwitchCalendar();
   }
 }

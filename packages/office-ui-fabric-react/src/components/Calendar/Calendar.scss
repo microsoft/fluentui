@@ -70,7 +70,6 @@ $Calendar-dayPicker-margin: 10px;
   line-height: 44px;
 }
 
-
 // The month and year labels.
 .month,
 .year {
@@ -386,7 +385,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  // Show the month picker, if enabled
+  // Show the month picker next to date picker, if enabled
   .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .dayPicker {
@@ -486,6 +485,89 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
+  // Show the month picker next to date picker, if enabled
+  .onlyMonthPickerOverlayVisible {
+    // Show the month picker.
+    .monthPicker {
+      display: block;
+    }
+    // Style the the month and year pickers.
+    .monthPicker,
+    .yearPicker {
+      position: relative;
+    }
+    // Size and position of the month and year labels.
+    .month {
+      @include margin-left(12px);
+    }
+
+    .holder {
+      width: 220px;
+    }
+
+    .optionGrid {
+      width: 220px;
+      @include margin(10px, 0, 0, 0px);
+    }
+    // This component is only used on small displays.
+    .toggleMonthView {
+      display: none;
+    }
+    // Position the current year and decade labels.
+    .currentYear,
+    .currentDecade {
+      font-size: 17px;
+      margin: 0;
+      height: $Calendar-day;
+      line-height: 26px;
+      padding: 0;
+      display: inline-block;
+    }
+    // Reduce the size of the month buttons.
+    .monthOption,
+    .yearOption {
+      width: 40px;
+      height: 40px;
+      line-height: 38px;
+      font-size: 12px;
+      @include margin(0, 10px, 10px, 0);
+
+      &:hover {
+        outline: 1px solid transparent;
+      }
+    }
+    // Position the "Go to today" button below the month picker.
+    .goToday {
+      @include ms-borderBox;
+      font-size: 12px;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
+      padding: 0 10px;
+      @include ms-right(3px);
+      @include text-align(right);
+      top: 199px;
+    }
+    // State: The picker is showing the year components.
+    // On larger screens the calendar will remain and the years
+    // will replace the months.
+    .root.isPickingYears {
+      // On large screens, we need to keep the day picker
+      // and month components in view.
+      .dayPicker,
+      .monthComponents {
+        display: block;
+      }
+      // Hide the month picking components.
+      .monthPicker {
+        display: none;
+      }
+      // Show the year picking components.
+      .yearPicker {
+        display: block;
+      }
+    }
+  }
+
   // if only the month picker is visible, don't show day picker
   .pickerOnlyMonthPickerVisible {
     // Hide the day picking components.
@@ -500,7 +582,7 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .holder {
-      width: 296px;
+      width: 220px;
     }
 
     .currentYear {
@@ -529,6 +611,13 @@ $Calendar-dayPicker-margin: 10px;
 
     // Show the month picking components.
     .monthPicker {
+      display: block;
+    }
+  }
+
+  // Do not hide Month picker if it is the only calendar
+  .pickerOnlyMonthPickerVisible, .onlyMonthPickerOverlayVisible{
+    .monthPicker{
       display: block;
     }
   }

@@ -49,6 +49,8 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   today?: Date;
+  isCalendarsOverlayed?: boolean;
+  onSelectSwitchCalendar: () => void;
 }
 
 export interface ICalendarDayState {
@@ -84,13 +86,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectSwitchCalendar, isCalendarsOverlayed } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
+        <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
             <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
             <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
@@ -119,7 +121,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
             </span >
           </div >
-          <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
+          {
+            isCalendarsOverlayed ?
+              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ this._onSelectSwitchCalendar.bind(this) } />
+              :
+              null
+          }
         </div >
         <FocusZone>
           <table
@@ -235,6 +242,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   private _onSelectPrevMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
+  }
+
+  private _onSelectSwitchCalendar() {
+    this.props.onSelectSwitchCalendar();
   }
 
   @autobind
