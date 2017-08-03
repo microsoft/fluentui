@@ -17,7 +17,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
-import { getClassNames as getSplitButtonClassNames } from './SplitButton/SplitButton.classNames'
+import { getClassNames as getSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -408,7 +408,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    const classNames = styles ? getSplitButtonClassNames(styles!, disabled || false, !!this.state.menuProps, checked || false) : undefined
+    const classNames = styles ? getSplitButtonClassNames(styles!, disabled || false, !!this.state.menuProps, checked || false) : undefined;
 
     return (
       <BaseButton

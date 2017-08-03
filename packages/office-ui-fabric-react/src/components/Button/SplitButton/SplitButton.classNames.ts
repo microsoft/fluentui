@@ -1,5 +1,5 @@
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { memoizeFunction } from '../../../Utilities';
+import { mergeStyles } from '../../../Styling';
 import { ISplitButtonStyles } from './SplitButton.Props';
 
 export interface ISplitButtonClassNames {
