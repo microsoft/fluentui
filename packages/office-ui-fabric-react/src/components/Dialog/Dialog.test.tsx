@@ -56,8 +56,8 @@ describe('Dialog', () => {
 
     const dialogHTML = document.querySelector('[role="dialog"]');
     expect(dialogHTML).to.not.be.null;
-    expect(dialogHTML.getAttribute('aria-labelledby')).to.match(/Dialog[\d+]+-title/, 'aria label should match the pattern');
-    expect(dialogHTML.getAttribute('aria-describedby')).to.match(/Dialog[\d+]+-subText/, 'aria describeby should match the pattern');
+    expect(dialogHTML!.getAttribute('aria-labelledby')).to.match(/Dialog[\d+]+-title/, 'aria label should match the pattern');
+    expect(dialogHTML!.getAttribute('aria-describedby')).to.match(/Dialog[\d+]+-subText/, 'aria describeby should match the pattern');
     wrapper.unmount();
   });
 
@@ -79,8 +79,8 @@ describe('Dialog', () => {
 
     const dialogHTML = document.querySelector('[role="dialog"]');
     expect(dialogHTML).to.not.be.null;
-    expect(dialogHTML.getAttribute('aria-labelledby')).to.match(/Dialog[\d+]+-title/, 'aria label should match the pattern');
-    expect(dialogHTML.getAttribute('aria-describedby')).equals(subTextAriaId, 'aria describeby should match the pattern');
+    expect(dialogHTML!.getAttribute('aria-labelledby')).to.match(/Dialog[\d+]+-title/, 'aria label should match the pattern');
+    expect(dialogHTML!.getAttribute('aria-describedby')).equals(subTextAriaId, 'aria describeby should match the pattern');
     wrapper.unmount();
   });
 
@@ -102,8 +102,8 @@ describe('Dialog', () => {
 
     const dialogHTML = document.querySelector('[role="dialog"]');
     expect(dialogHTML).to.not.be.null;
-    expect(dialogHTML.getAttribute('aria-labelledby')).equals(titleAriaId, 'aria label should match the pattern');
-    expect(dialogHTML.getAttribute('aria-describedby')).to.match(/Dialog[\d+]+-subText/, 'aria describeby should match the pattern');
+    expect(dialogHTML!.getAttribute('aria-labelledby')).equals(titleAriaId, 'aria label should match the pattern');
+    expect(dialogHTML!.getAttribute('aria-describedby')).to.match(/Dialog[\d+]+-subText/, 'aria describeby should match the pattern');
     wrapper.unmount();
   });
 });
