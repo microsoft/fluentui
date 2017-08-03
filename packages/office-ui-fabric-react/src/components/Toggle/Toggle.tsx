@@ -110,7 +110,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             { ...toggleNativeProps }
             type='button'
             className={ classNames.pill }
-            ref={ (c): HTMLButtonElement => this._toggleButton = c }
+            ref={ (c): HTMLButtonElement => this._toggleButton = c! }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
             aria-label={ ariaLabel }

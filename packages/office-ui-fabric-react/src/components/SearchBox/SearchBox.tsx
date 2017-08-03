@@ -97,6 +97,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onClearClick(ev?: any) {
+    this._latestValue = '';
     this.setState({
       value: ''
     });

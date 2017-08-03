@@ -8,6 +8,6 @@
     "build": "node -v"
   },
   "devDependencies": {
-    "@microsoft/gulp-core-build-typescript": "^2.4.4"
+    "@microsoft/gulp-core-build-typescript": "^3.3.1"
   }
 }
