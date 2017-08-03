@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: added prop to force footer to bottom of the page",
+      "comment": "ConextualMenuItem: Support target value",
       "type": "minor"
     }
   ],

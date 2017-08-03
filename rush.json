@@ -33,11 +33,6 @@
       ]
     },
     {
-      "packageName": "@uifabric/example-component",
-      "projectFolder": "packages/example-component",
-      "shouldPublish": false
-    },
-    {
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
       "shouldPublish": false

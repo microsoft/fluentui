@@ -52,7 +52,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
         <div className={ css('ms-Dialog-header', styles.header) }>
           <p className={ css('ms-Dialog-title', styles.title) } id={ titleId } role='heading'>{ title }</p>
           <div className={ css('ms-Dialog-topButton', styles.topButton) }>
-            { this.props.topButtonsProps.map((props) => (
+            { this.props.topButtonsProps!.map((props) => (
               <IconButton {...props} />
             )) }
             { showCloseButton && type !== DialogType.largeHeader &&
@@ -63,7 +63,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
                 ) }
                 iconProps={ { iconName: 'Cancel' } }
                 ariaLabel={ closeButtonAriaLabel }
-                onClick={ onDismiss }
+                onClick={ onDismiss as any }
               />
             }
           </div>

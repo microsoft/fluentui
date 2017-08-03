@@ -60,7 +60,7 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
 
   public render() {
     const { isFocusVisible } = this.state;
-    const styles = getStyles(this.props.theme);
+    const styles = getStyles(this.props.theme!);
 
     const rootClass = css(
       'ms-Fabric',

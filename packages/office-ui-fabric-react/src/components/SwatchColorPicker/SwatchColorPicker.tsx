@@ -71,7 +71,7 @@ interface ISwatchColorPickerOptionProps {
   cellShape?: 'circle' | 'square';
 }
 
-class SwatchColorPickerOption extends React.Component<ISwatchColorPickerOptionProps, null> {
+class SwatchColorPickerOption extends React.Component<ISwatchColorPickerOptionProps, {}> {
 
   public static defaultProps = {
     cellShape: 'circle',

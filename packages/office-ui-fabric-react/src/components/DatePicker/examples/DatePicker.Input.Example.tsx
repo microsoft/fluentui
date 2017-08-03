@@ -66,7 +66,7 @@ const DayPickerStrings: IDatePickerStrings = {
 
 export interface IDatePickerInputExampleState {
   firstDayOfWeek?: DayOfWeek;
-  value?: Date;
+  value?: Date | null;
 }
 
 export class DatePickerInputExample extends React.Component<any, IDatePickerInputExampleState> {
@@ -92,7 +92,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           ariaLabel={ desc }
           firstDayOfWeek={ firstDayOfWeek }
           strings={ DayPickerStrings }
-          value={ value }
+          value={ value! }
           onSelectDate={ date => this.setState({ value: date }) }
         />
         <DefaultButton onClick={ () => this.setState({ value: null }) } text='Clear' />

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Allow the X in a persona to receive focus and update focus when it is clicked",
+      "comment": "Callout: Reverting the callout border to it's previous state with a light border.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }
