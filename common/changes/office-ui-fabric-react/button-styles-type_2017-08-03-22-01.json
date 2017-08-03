@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: Update the styles object to take an IButtonStyles or ISplitButtonStyles instead of just ISplitButtonStyles",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "christianjordangonzalez@gmail.com"
+}
