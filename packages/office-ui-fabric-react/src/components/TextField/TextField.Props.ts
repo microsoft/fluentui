@@ -29,7 +29,7 @@ export interface ITextField {
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

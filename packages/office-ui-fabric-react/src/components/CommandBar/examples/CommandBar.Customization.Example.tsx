@@ -71,7 +71,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
         <div className={ css(
           styles.customButtonContainer,
           darkerBG
-        ) } ref={ ref => this.container = ref }>
+        ) } ref={ ref => this.container = ref! }>
           <ActionButton
             className={ mainBtnClassName }
             iconProps={ { iconName: 'Add' } }
