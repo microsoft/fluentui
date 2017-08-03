@@ -132,8 +132,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         onRenderItem={ this._onRenderColorOption }
         role={ 'gridcell' }
         selectedIndex={ this.state.selectedIndex }
-        cellDisabledStyle={ ['is-selected ' + styles.cellIsSelected] }
-        cellIsSelectedStyle={ ['is-disabled ' + styles.disabled] }
+        cellIsSelectedStyle={ ['is-selected ' + styles.cellIsSelected] }
+        cellDisabledStyle={ ['is-disabled ' + styles.disabled] }
       />
     );
   }
