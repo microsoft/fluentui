@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  assign
+  autobind,
+  assign,
+  KeyCodes
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
@@ -88,6 +90,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsFooter,
       isResultsFooterVisible,
       showRemoveButtons,
+      suggestionsAvailableAlertText
     } = this.props;
 
     let noResults = () => {
@@ -123,6 +126,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults.bind(this) }
+            onKeyDown={ this._onKeyDown }
           >
             { searchForMoreText }
           </CommandButton>
@@ -138,6 +142,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
               { footerTitle && footerTitle(this.props) }
             </div>) : (null)
+        }
+        { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
+          (<span
+            role='alert'
+            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }>{ suggestionsAvailableAlertText }
+          </span>) : (null)
         }
       </div>
     );
@@ -183,7 +193,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             <TypedSuggestionsItem
               id={ 'sug-item' + index }
               suggestionModel={ suggestion }
-              RenderSuggestion={ onRenderSuggestion }
+              RenderSuggestion={ onRenderSuggestion as any }
               onClick={ (ev: React.MouseEvent<HTMLElement>) => { this.props.onSuggestionClick(ev, suggestion.item, index); } }
               className={ suggestionsItemClassName }
               showRemoveButton={ showRemoveButtons }
@@ -204,4 +214,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     }
   }
 
+  @autobind
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
+    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
+      this.props.refocusSuggestions(ev.keyCode);
+    }
+  }
 }

@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "lib": [

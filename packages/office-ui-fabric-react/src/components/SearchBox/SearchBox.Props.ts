@@ -8,7 +8,7 @@ export interface ISearchBox {
   focus(): void;
 }
 
-export interface ISearchBoxProps extends React.Props<SearchBox> {
+export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

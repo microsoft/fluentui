@@ -60,10 +60,6 @@ export const getStyles = memoizeFunction((
       }
     },
 
-    splitButtonMenuButtonChecked: {
-      backgroundColor: theme.palette.themePrimary,
-    },
-
     splitButtonMenuIcon: {
       color: theme.palette.neutralPrimary
     },
@@ -78,8 +74,15 @@ export const getStyles = memoizeFunction((
       flexWrap: 'nowrap',
       justifyContent: 'center',
       alignItems: 'center'
-    }
+    },
+    splitButtonMenuButtonChecked: {
+      backgroundColor: theme.palette.themePrimary,
+    },
+
+    splitButtonMenuButtonExpanded: {
+      backgroundColor: theme.palette.neutralLight,
+    },
   };
 
-  return mergeStyleSets(splitButtonStyles, customStyles);
+  return mergeStyleSets(splitButtonStyles, customStyles)!;
 });

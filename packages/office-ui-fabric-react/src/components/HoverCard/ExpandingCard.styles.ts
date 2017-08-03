@@ -2,7 +2,7 @@ import { IExpandingCardStyles } from './ExpandingCard.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
   mergeStyleSets,
-  after,
+  before,
   ITheme
 } from '../../Styling';
 
@@ -20,28 +20,34 @@ export const getStyles = memoizeFunction((
         border: 'none'
       }
     },
-    compactCard: [
+    compactCard: {
+      'pointer-events': 'auto',
+      position: 'relative'
+    },
+    expandedCard: [
       {
+        height: '1px',
+        'overflow-y': 'hidden',
         'pointer-events': 'auto',
-        position: 'relative'
+        transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)'
       },
-      after({
+      before({
         content: '""',
-        position: 'absolute',
-        bottom: '0',
+        position: 'relative',
+        display: 'block',
+        top: '0',
         left: '0',
         right: '0',
         height: '1px',
         'background-color': theme.palette.neutralLighter
       })
     ],
-    expandedCard: {
-      height: '0',
-      'overflow-y': 'hidden',
-      'pointer-events': 'auto',
-      transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)'
+    expandedCardScroll: {
+      height: '100%',
+      'box-sizing': 'border-box',
+      'overflow-y': 'auto'
     }
   };
 
-  return mergeStyleSets(styles, customStyles);
+  return mergeStyleSets(styles, customStyles)!;
 });

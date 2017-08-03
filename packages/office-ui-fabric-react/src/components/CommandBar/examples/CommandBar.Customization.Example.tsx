@@ -72,7 +72,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
         <div className={ css(
           styles.customButtonContainer,
           darkerBG
-        ) } ref={ ref => this.container = ref }>
+        ) } ref={ ref => this.container = ref! }>
           <CommandButton
             className={ mainBtnClassName }
             iconProps={ { iconName: 'Add' } }
@@ -83,7 +83,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
             className={ dropDownButtonClass }
             menuProps={ {
               className: css('ms-CommandBar-menuHost'),
-              items: item.subMenuProps.items
+              items: item.subMenuProps!.items
             } } />
         </div>
       </div >

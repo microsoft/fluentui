@@ -16,7 +16,8 @@ import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 let _theme: ITheme = {
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
-  fonts: DefaultFontStyles
+  fonts: DefaultFontStyles,
+  isInverted: false
 };
 
 export const ThemeSettingName = 'theme';
@@ -67,7 +68,8 @@ export function createTheme(theme: IPartialTheme): ITheme {
       ...DefaultFontStyles,
       ...theme.fonts
     },
-    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
+    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors },
+    isInverted: !!theme.isInverted
   } as ITheme;
 }
 
@@ -104,7 +106,7 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
     listBackground: p.white,
     listTextColor: p.neutralPrimary,
     listItemBackgroundHovered: p.neutralLighter,
-    listItemBackgroundChecked: p.neutralQuaternary,
+    listItemBackgroundChecked: p.neutralLight,
     listItemBackgroundCheckedHovered: p.neutralQuaternaryAlt
   };
 }

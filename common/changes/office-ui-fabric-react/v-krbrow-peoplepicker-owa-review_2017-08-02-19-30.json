@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Textfield: Fixed regression in disabled styles",
+      "comment": "PeoplePicker: Improved keyboard support and font size updates.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "v-krbrow@microsoft.com"
 }
