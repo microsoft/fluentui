@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 
 export interface IFlexBoxResizeGroupExampleStyles {
   root: IStyle;
@@ -10,7 +11,8 @@ export interface IFlexBoxResizeGroupExampleStyles {
 const styles: IFlexBoxResizeGroupExampleStyles = {
   root: mergeStyles({
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    whiteSpace: 'nowrap'
   }),
   numberedBox: mergeStyles({
     display: 'inline-block',
@@ -60,10 +62,12 @@ const LeftRightBoxSet: React.StatelessComponent<ILeftRightBoxSetProps> =
 
 export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
   public render() {
+    let data: ILeftRightBoxSetProps = { leftCount: 10, rightCount: 10 };
     return (
-      <LeftRightBoxSet
-        leftCount={ 10 }
-        rightCount={ 10 } />
-    );
+      <ResizeGroup
+        data={ data }
+        onRenderData={ (scaledData: ILeftRightBoxSetProps) => <LeftRightBoxSet {...scaledData} /> }
+        onReduceData={ (_) => undefined }
+      />);
   }
 }
