@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add Spacer and Divider toolbox icon",
+      "comment": "PeoplePicker: Improved keyboard support and font size updates.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "t-qianl@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }

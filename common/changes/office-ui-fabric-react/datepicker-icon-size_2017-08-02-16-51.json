@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ConextualMenuItem: Support target value",
-      "type": "minor"
+      "comment": "Datepicker: updated icon size",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
