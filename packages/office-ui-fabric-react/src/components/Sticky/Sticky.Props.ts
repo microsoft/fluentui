@@ -3,8 +3,7 @@ import { Sticky } from './Sticky';
 
 export interface IStickyProps extends React.Props<Sticky> {
   /**
-   * Optional callback to access the IDialog interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * Gets ref to component interface.
    */
   componentRef?: (component: IStickyProps) => void;
 
@@ -12,4 +11,15 @@ export interface IStickyProps extends React.Props<Sticky> {
    * Class name to apply to the sticky element if component is sticky.
   */
   stickyClassName?: string;
+
+  /**
+   * Region to render sticky component in.  Defaults to Both.
+   */
+  stickyPosition?: StickyPositionType;
+}
+
+export enum StickyPositionType {
+  Both = 0,
+  Header = 1,
+  Footer = 2
 }

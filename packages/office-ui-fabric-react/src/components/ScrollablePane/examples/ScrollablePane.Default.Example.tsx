@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky } from 'office-ui-fabric-react/lib/Sticky';
+import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { lorem } from '@uifabric/example-app-base';
 import './ScrollablePane.Example.scss';
 
@@ -41,6 +41,7 @@ export class ScrollablePaneDefaultExample extends React.Component<any, any> {
     return (
       <div key={ index }>
         <Sticky
+          stickyPosition={ StickyPositionType.Both }
           stickyClassName='largeFont'>
           <div className='sticky' style={ style }>
             Sticky Component #{ index + 1 }

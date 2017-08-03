@@ -9,7 +9,7 @@ import {
   autobind
 } from '../../Utilities';
 import { ScrollablePane } from '../../ScrollablePane';
-import { IStickyProps } from './Sticky.Props';
+import { IStickyProps, StickyPositionType } from './Sticky.Props';
 import * as stylesImport from './Sticky.scss';
 const styles: any = stylesImport;
 
@@ -24,6 +24,10 @@ export interface IStickyContext {
 }
 
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
+  public static defaultProps: IStickyProps = {
+    stickyPosition: StickyPositionType.Both
+  };
+
   public static contextTypes: IStickyContext = {
     scrollablePane: PropTypes.object
   };
@@ -122,10 +126,13 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _onScrollEvent(headerBound: ClientRect, footerBound: ClientRect) {
     const { top, bottom } = this.refs.root.getBoundingClientRect();
     const { isStickyTop, isStickyBottom } = this.state;
+    const { stickyPosition } = this.props;
+    const canStickyHeader = stickyPosition == StickyPositionType.Both || stickyPosition == StickyPositionType.Header;
+    const canStickyFooter = stickyPosition == StickyPositionType.Both || stickyPosition == StickyPositionType.Footer;
 
     this.setState({
-      isStickyTop: (!isStickyTop && top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom),
-      isStickyBottom: (!isStickyBottom && bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top)
+      isStickyTop: canStickyHeader && ((!isStickyTop && top <= headerBound.bottom) || (isStickyTop && bottom < headerBound.bottom)),
+      isStickyBottom: canStickyFooter && ((!isStickyBottom && bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top))
     });
   }
   private _setSticky(callback: () => void) {
