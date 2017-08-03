@@ -114,7 +114,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
-
   /**
    * Render a color cell
    * @param item - The item to render
