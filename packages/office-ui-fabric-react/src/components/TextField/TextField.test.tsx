@@ -349,7 +349,7 @@ describe('TextField', () => {
   });
 
   it('should select a range of text', () => {
-    let textField: TextField;
+    let textField: TextField | undefined;
     const initialValue = 'initial value';
 
     const onSelect = () => {
@@ -359,7 +359,7 @@ describe('TextField', () => {
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
-        ref={ (t) => textField = t }
+        ref={ (t) => textField = t! }
         defaultValue={ initialValue }
         onSelect={ onSelect }
       />

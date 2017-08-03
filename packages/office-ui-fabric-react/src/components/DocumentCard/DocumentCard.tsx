@@ -18,7 +18,7 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     super(props);
 
     this._warnDeprecations({
-      accentColor: null
+      accentColor: undefined
     });
   }
 
@@ -35,8 +35,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? 'button' : 'link') : null;
-    let tabIndex = actionable ? 0 : null;
+    let role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    let tabIndex = actionable ? 0 : undefined;
 
     return (
       <div
@@ -53,8 +53,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
             className
           )
         }
-        onKeyDown={ actionable ? this._onKeyDown : null }
-        onClick={ actionable ? this._onClick : null }
+        onKeyDown={ actionable ? this._onKeyDown : undefined }
+        onClick={ actionable ? this._onClick : undefined }
         style={ style }>
         { children }
       </div>

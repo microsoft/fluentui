@@ -405,4 +405,4 @@ export const people: (IPersonaProps & { key: string | number })[] = [
   }
 ];
 
-export const mostRecentlyUsed: IPersonaProps[] = people.slice(0, 5);
+export const mru: IPersonaProps[] = people.slice(0, 5);

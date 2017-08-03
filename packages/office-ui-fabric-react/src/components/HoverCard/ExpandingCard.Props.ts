@@ -25,7 +25,7 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   /**
    *  Render function to populate compact content area
    */
-  onRenderCompactCard: IRenderFunction<IExpandingCardProps>;
+  onRenderCompactCard?: IRenderFunction<IExpandingCardProps>;
 
   /**
    *  Render function to populate expanded content area

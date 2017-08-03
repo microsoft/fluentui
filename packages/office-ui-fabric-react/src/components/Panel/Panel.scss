@@ -253,6 +253,10 @@ $CommandBarHeight: 44px;
   overflow-y: auto;
 }
 
+.contentGrow {
+  flex-grow: 1;
+}
+
 .footer {
   // Ensure that footer doesn't shrink if screen is too small
   flex-grow: 0;
