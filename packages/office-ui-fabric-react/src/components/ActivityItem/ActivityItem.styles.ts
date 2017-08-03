@@ -15,7 +15,7 @@ const COMPACT_ICON_SIZE = '13px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IActivityItemStyles = undefined
+  customStyles: IActivityItemStyles | undefined = undefined
 ): IActivityItemStyles => {
   let ActivityItemStyles = {
 
@@ -112,5 +112,5 @@ export const getStyles = memoizeFunction((
     ]
   };
 
-  return mergeStyleSets(ActivityItemStyles, customStyles);
+  return mergeStyleSets(ActivityItemStyles, customStyles)!;
 });

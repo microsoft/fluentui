@@ -39,7 +39,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
         <p> Hover over location of a row item to see the card </p>
         <DetailsList
           setKey='hoverSet'
-          items={ items }
+          items={ items! }
           columns={ columns }
           onRenderItemColumn={ this._onRenderItemColumn }
         />
@@ -87,7 +87,7 @@ export class HoverCardBasicExample extends BaseComponent<{}, IHoverCardExampleSt
         { item.description }
         <DetailsList
           setKey='expandedCardSet'
-          items={ items }
+          items={ items! }
           columns={ columns }
         />
       </div>

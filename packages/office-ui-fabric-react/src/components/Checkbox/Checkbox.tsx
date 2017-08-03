@@ -89,11 +89,11 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const isReversed = boxSide !== 'start' ? true : false;
 
     const classNames = this._getClassNames(
-      getStyles(theme, customStyles),
-      className,
-      disabled,
-      isChecked,
-      isReversed
+      getStyles(theme!, customStyles),
+      className!,
+      disabled!,
+      isChecked!,
+      isReversed!
     );
 
     return (
@@ -106,6 +106,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         name={ name }
         id={ this._id }
         role='checkbox'
+        type='button'
         className={ classNames.root }
         onClick={ this._onClick }
         onFocus={ this._onFocus }
@@ -124,7 +125,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public get checked(): boolean {
-    return this.state.isChecked;
+    return this.state.isChecked!;
   }
 
   public focus(): void {
@@ -155,6 +156,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
+    ev.preventDefault();
 
     if (!disabled) {
       if (onChange) {

@@ -17,7 +17,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  onRenderSuggestionsItem?: (props: T, itemProps?: T) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
@@ -55,7 +55,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * AutoFill input native props
    * @default undefined
    */
-  inputProps?: React.HTMLAttributes<HTMLInputElement>;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
