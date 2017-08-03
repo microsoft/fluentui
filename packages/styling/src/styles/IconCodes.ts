@@ -1,3 +1,11 @@
+/**
+ * Get IconCode by IconName.
+*/
+export function getIconCodeByIconName(iconName: string): string {
+  const iconMemberName: string = iconName ? iconName.charAt(0).toLowerCase() + iconName.substr(1) : '';
+  return IconCodes[iconMemberName];
+}
+
 export const IconCodes = {
   /**
    * Icon code with the value '\uED68'.
