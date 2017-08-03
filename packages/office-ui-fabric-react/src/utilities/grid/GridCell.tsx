@@ -8,19 +8,18 @@ import {
 import { IGridCellProps } from './GridCell.Props';
 import { CommandButton } from '../../Button';
 
-export class GridCell extends React.Component<IGridCellProps, {}> {
+export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
 
   public static defaultProps = {
     cellShape: 'circle',
-    disabled: false
+    disabled: false,
+    id: getId('gridCell')
   };
 
   private _id: string;
 
-  constructor(props: IGridCellProps) {
-    super(props);
-
-    this._id = props.id || getId('gridCell');
+  constructor(props?: P) {
+    super();
   }
 
   public render() {
@@ -29,24 +28,26 @@ export class GridCell extends React.Component<IGridCellProps, {}> {
       id,
       className,
       role,
-      selectedIndex,
+      selected,
       disabled,
       onClick,
       onHover,
       onFocus,
       onRenderItem,
       cellDisabledStyle,
-      cellIsSelectedStyle
+      cellIsSelectedStyle,
+      index,
+      label
     } = this.props;
     return (
       <CommandButton
-        id={ id + '-item' + item.index }
-        data-index={ item.index }
+        id={ id + '-item' + index }
+        data-index={ index }
         data-is-focusable={ true }
         disabled={ disabled }
         className={ css(className,
           {
-            ['' + cellIsSelectedStyle]: (selectedIndex !== undefined && selectedIndex === item.index),
+            ['' + cellIsSelectedStyle]: selected,
             ['' + cellDisabledStyle]: disabled
           }
         ) }
@@ -55,9 +56,9 @@ export class GridCell extends React.Component<IGridCellProps, {}> {
         onMouseLeave={ this._onMouseLeave }
         onFocus={ this._onFocus }
         role={ role }
-        aria-selected={ selectedIndex !== undefined && (selectedIndex === item.index).toString() }
-        ariaLabel={ item.label && item.label }
-        title={ item.label && item.label }
+        aria-selected={ selected }
+        ariaLabel={ label }
+        title={ label }
       >
         { onRenderItem(item) }
       </CommandButton >
@@ -70,7 +71,7 @@ export class GridCell extends React.Component<IGridCellProps, {}> {
         onClick,
       disabled,
       item
-      } = this.props;
+      } = this.props as P;
 
     if (onClick && !disabled) {
       onClick(item);
@@ -83,7 +84,7 @@ export class GridCell extends React.Component<IGridCellProps, {}> {
         onHover,
       disabled,
       item
-      } = this.props;
+      } = this.props as P;
 
     if (onHover && !disabled) {
       onHover(item);
@@ -96,10 +97,10 @@ export class GridCell extends React.Component<IGridCellProps, {}> {
         onHover,
       disabled,
       item
-      } = this.props;
+      } = this.props as P;
 
     if (onHover && !disabled) {
-      onHover(item);
+      onHover();
     }
   }
 
@@ -109,7 +110,7 @@ export class GridCell extends React.Component<IGridCellProps, {}> {
         onFocus,
       disabled,
       item
-      } = this.props;
+      } = this.props as P;
 
     if (onFocus && !disabled) {
       onFocus(item);

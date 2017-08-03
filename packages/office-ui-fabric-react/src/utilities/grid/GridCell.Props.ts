@@ -1,9 +1,9 @@
-export interface IGridCellProps {
+export interface IGridCellProps<T> extends React.Props<any> {
 
   /**
    * The option that will be made available to the user
    */
-  item: any;
+  item: T;
 
   /**
    * Arbitrary unique string associated with this option
@@ -16,29 +16,29 @@ export interface IGridCellProps {
   disabled?: boolean;
 
   /**
-   * Optional, the currently selectedIndex in the set of options
+   * Optional, if the cell is currently selected
    */
-  selectedIndex?: number;
+  selected?: boolean;
 
   /**
    * The on click handler
    */
-  onClick: (item: any) => void;
+  onClick?: (item: T) => void;
 
   /**
    * The render callback to handle rendering the item
    */
-  onRenderItem: (item: any) => JSX.Element;
+  onRenderItem: (item: T) => JSX.Element;
 
   /**
    * Optional, the onHover handler
    */
-  onHover?: (item: any) => void;
+  onHover?: (item?: T) => void;
 
   /**
    * Optional, the onFocus handler
    */
-  onFocus?: (item: any) => void;
+  onFocus?: (item: T) => void;
 
   /**
    * The accessible role for this option
@@ -59,4 +59,16 @@ export interface IGridCellProps {
   * Optional, the CSS class used for when the cell is selected
   */
   cellIsSelectedStyle?: string[];
+
+  /**
+  * Index for this option
+  */
+  index?: number;
+
+  /**
+ * The label for this item.
+ * Visible text if this item is a header,
+ * tooltip if is this item is normal
+ */
+  label?: string;
 }

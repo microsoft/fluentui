@@ -30,7 +30,7 @@ export interface IGridProps {
   containerClassName?: string;
 
   /**
-   * Optional, handler for when the grid should blue
+   * Optional, handler for when the grid should blur
    */
   onBlur?: () => void;
 

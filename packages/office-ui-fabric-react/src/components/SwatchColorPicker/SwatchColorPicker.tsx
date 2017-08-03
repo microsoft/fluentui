@@ -14,12 +14,16 @@ import {
 import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
+import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
 import { CommandButton } from '../../Button';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
 export interface ISwatchColorPickerState {
   selectedIndex?: number;
+}
+
+class ColorPickerGridCell extends GridCell<IColorCellProps, IGridCellProps<IColorCellProps>> {
 }
 
 export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
@@ -110,6 +114,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     return selectedIndex >= 0 ? selectedIndex : undefined;
   }
 
+
   /**
    * Render a color cell
    * @param item - The item to render
@@ -120,7 +125,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     let id = this._id;
 
     return (
-      <GridCell
+      <ColorPickerGridCell
         item={ item }
         id={ id }
         key={ id + item.id }
@@ -131,9 +136,10 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         onFocus={ this.props.onCellFocused }
         onRenderItem={ this._onRenderColorOption }
         role={ 'gridcell' }
-        selectedIndex={ this.state.selectedIndex }
+        selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
         cellIsSelectedStyle={ ['is-selected ' + styles.cellIsSelected] }
         cellDisabledStyle={ ['is-disabled ' + styles.disabled] }
+        label={ item.label }
       />
     );
   }

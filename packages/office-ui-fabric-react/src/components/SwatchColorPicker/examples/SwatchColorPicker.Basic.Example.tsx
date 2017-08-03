@@ -49,8 +49,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
         <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
         <div style={ { color: this.state.previewColor ? this.state.previewColor : this.state.color ? this.state.color : null, fontSize: '24px' } } >Sample Text</div>
         <SwatchColorPicker
-          onCellHovered={ (id, color) => this.setState({ previewColor: color! }) }
-          onCellFocused={ (id, color) => this.setState({ previewColor: color! }) }
+          onCellHovered={ (item) => this.setState({ previewColor: (item) ? item.color! : undefined }) }
+          onCellFocused={ (item) => this.setState({ previewColor: (item) ? item.color! : undefined }) }
           onColorChanged={ (id, newColor) => this.setState({ color: newColor }) }
           columnCount={ 4 }
           cellShape={ 'circle' }
