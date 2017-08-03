@@ -3,9 +3,7 @@ import {
   autobind,
   BaseComponent,
   css,
-  findIndex,
   getId,
-  toMatrix
 } from '../../Utilities';
 import { IGridCellProps } from './GridCell.Props';
 import { CommandButton } from '../../Button';

@@ -1,9 +1,6 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent,
-  css,
-  findIndex,
   getId,
   toMatrix
 } from '../../Utilities';
