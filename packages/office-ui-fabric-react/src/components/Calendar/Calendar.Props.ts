@@ -41,6 +41,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isDayPickerVisible?: boolean;
 
   /**
+  * Overlay month picker over date picker when visible.
+  * @defaultvalue true
+  */
+  isCalendarsOverlayed?: boolean;
+
+  /**
     * Value of today. If null, current time in client machine will be used.
     */
   today?: Date;
