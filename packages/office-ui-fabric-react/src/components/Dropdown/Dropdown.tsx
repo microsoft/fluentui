@@ -299,7 +299,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return index;
   }
 
-
   // Render text in dropdown input
   @autobind
   private _onRenderTitle(item: IDropdownOption | IDropdownOption[]): JSX.Element {
@@ -428,7 +427,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render menu item
   @autobind
-  private _renderOption(item: IDropdownOption, isHeader?: boolean): JSX.Element {
+  private _renderOption(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let { selectedIndexes } = this.state;
     let id = this._id;
@@ -450,7 +449,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
             }
           ) }
-          onClick={ () => this._onItemClick(item) }
+          onClick={ () => this._onItemClick(item.index!) }
           role='option'
           aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
           ariaLabel={ item.ariaLabel || item.text }
@@ -463,7 +462,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           key={ item.key }
           data-index={ item.index }
           data-is-focusable={ true }
-          onChange={ () => this._onItemClick(item) }
+          onChange={ () => this._onItemClick(item.index!) }
           label={ item.text }
           className={ css(
             'ms-ColumnManagementPanel-checkbox',
@@ -490,8 +489,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._focusZone.focus();
   }
 
-  private _onItemClick(item: IDropdownOption) {
-    this.setSelectedIndex(item.index!);
+  private _onItemClick(index: number) {
+    this.setSelectedIndex(index);
     if (!this._multiSelect) {
       // only close the callout when it's in single-select mode
       this.setState({
@@ -507,33 +506,29 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _getSelectedIndexes(options: IDropdownOption[], selectedKey: any): number[] {
-    if (!selectedKey) {
-      return [];
-    }
     let selectedIndex: number[] = [];
+    if (!selectedKey) {
+      return selectedIndex;
+    }
     for (let key of selectedKey) {
       selectedIndex.push(this._getSelectedIndex(options, key));
     }
     return selectedIndex;
   }
 
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndex: number[]): IDropdownOption[] | undefined {
+  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndex: number[]): IDropdownOption[] | null {
     let selectedOptions: IDropdownOption[] = [];
     for (let index of selectedIndex) {
       selectedOptions.push(options[index]);
     }
     if (selectedOptions.length < 1) {
-      return undefined;
+      return null;
     }
     return selectedOptions;
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
     return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
-  }
-
-  private _getSelectedIndexFromIndexes(selectedIndexes: number[]): number {
-    return selectedIndexes ? selectedIndexes[0] : -1;
   }
 
   @autobind

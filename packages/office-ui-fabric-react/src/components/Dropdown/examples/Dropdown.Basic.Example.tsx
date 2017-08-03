@@ -86,13 +86,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
           multiSelect
           options={
             [
-              { key: 'HeaderF', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+              { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'Apple', text: 'apple' },
               { key: 'Banana', text: 'banana' },
               { key: 'Cat', text: 'cat' },
               { key: 'Dog', text: 'dog' },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'HeaderL', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
+              { key: 'Header3', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
               { key: 'English', text: 'english' },
               { key: 'French', text: 'french' },
               { key: 'Germany', text: 'germany' },
@@ -109,13 +109,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
           multiSelect
           options={
             [
-              { key: 'HeaderF', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+              { key: 'Header4', text: 'Fruits', itemType: DropdownMenuItemType.Header },
               { key: 'App', text: 'apple' },
               { key: 'Ban', text: 'banana' },
               { key: 'Ca', text: 'cat' },
               { key: 'Do', text: 'dog' },
               { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'HeaderF', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
+              { key: 'Header5', text: 'Lanuages', itemType: DropdownMenuItemType.Header },
               { key: 'Eng', text: 'english' },
               { key: 'Fre', text: 'french' },
               { key: 'Ger', text: 'germany' },
