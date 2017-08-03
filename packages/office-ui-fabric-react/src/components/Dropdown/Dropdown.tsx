@@ -228,11 +228,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           if (checked) {
             let position = newIndexes.indexOf(index);
             if (position > -1) {
-              // unchecked current one
+              // unchecked the current one
               newIndexes.splice(position, 1);
             }
           } else {
-            // add the new selected indexes into the existing one
+            // add the new selected index into the existing one
             newIndexes.push(index);
           }
           this.setState({
