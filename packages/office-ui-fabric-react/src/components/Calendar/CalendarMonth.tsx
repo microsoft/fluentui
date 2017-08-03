@@ -79,7 +79,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
           {
             isCalendarsOverlayed ?
-              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ this._onSelectSwitchCalendar.bind(this) } />
+              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ () => this._onSelectSwitchCalendar() } />
               :
               null
           }

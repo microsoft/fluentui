@@ -123,7 +123,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           </div >
           {
             isCalendarsOverlayed ?
-              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ this._onSelectSwitchCalendar.bind(this) } />
+              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ () => this._onSelectSwitchCalendar() } />
               :
               null
           }

@@ -488,6 +488,11 @@ $Calendar-dayPicker-margin: 10px;
   // Show the month picker next to date picker, if enabled
   .onlyMonthPickerOverlayVisible {
     // Show the month picker.
+
+    .holder {
+      width: 230px;
+    }
+
     .monthPicker {
       display: block;
     }
@@ -499,10 +504,6 @@ $Calendar-dayPicker-margin: 10px;
     // Size and position of the month and year labels.
     .month {
       @include margin-left(12px);
-    }
-
-    .holder {
-      width: 220px;
     }
 
     .optionGrid {
@@ -530,12 +531,20 @@ $Calendar-dayPicker-margin: 10px;
       height: 40px;
       line-height: 38px;
       font-size: 12px;
-      @include margin(0, 10px, 10px, 0);
+      @include margin(0, 14px, 14px, 0);
 
       &:hover {
         outline: 1px solid transparent;
       }
     }
+
+    // Arrows need to be in the same spot as the calendar
+    //when switching between the two
+    .yearComponents,
+    .decadeComponents {
+      @include ms-right(2px);
+    }
+
     // Position the "Go to today" button below the month picker.
     .goToday {
       @include ms-borderBox;
@@ -543,7 +552,7 @@ $Calendar-dayPicker-margin: 10px;
       height: $Calendar-day;
       line-height: $Calendar-day;
       padding: 0 10px;
-      @include ms-right(3px);
+      @include ms-right(10px);
       @include text-align(right);
       top: 199px;
     }
@@ -600,6 +609,10 @@ $Calendar-dayPicker-margin: 10px;
 // On smaller screens the month button toggles to the picking months state.
 @media (max-width: 459px) {
 
+  //Risize wrapper so elements do not go off screen
+  .holder{
+    width: 300px;
+  }
   // State: The picker is showing the month components.
   .root.isPickingMonths {
 
