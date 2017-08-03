@@ -21,10 +21,10 @@ export class ResizeGroupPage extends React.Component<any, any> {
         componentName='ResizeGroupExample'
         exampleCards={
           <LayerHost>
-            <ExampleCard title='ResizeGroup' code={ ResizeGroupBasicExampleCode }>
+            <ExampleCard title='Use ResizeGroup to move commands into an overflow menu' code={ ResizeGroupBasicExampleCode }>
               <ResizeGroupOverflowSetExample />
             </ExampleCard>
-            <ExampleCard title='ResizeGroup with flex box layout' code={ ResizeGroupFlexBoxExampleCode }>
+            <ExampleCard title='Use ResizeGroup to prevent two groups of items from overlapping' code={ ResizeGroupFlexBoxExampleCode }>
               <FlexBoxResizeGroupExample />
             </ExampleCard>
           </LayerHost>

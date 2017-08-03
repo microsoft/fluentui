@@ -32,6 +32,7 @@ interface IBoxWithLabelProps {
 interface ILeftRightBoxSetProps {
   leftCount: number;
   rightCount: number;
+  cacheKey: string;
 }
 
 function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
@@ -65,16 +66,20 @@ function onReduceData(props: ILeftRightBoxSetProps): ILeftRightBoxSetProps | und
     return undefined;
   }
 
+  let result: ILeftRightBoxSetProps;
   if (props.leftCount > props.rightCount) {
-    return { ...props, leftCount: props.leftCount - 1 };
+    result = { ...props, leftCount: props.leftCount - 1 };
+  } else {
+    result = { ...props, rightCount: props.rightCount - 1 };
   }
 
-  return { ...props, rightCount: props.rightCount - 1 };
+  // Update the cache key
+  return { ...result, cacheKey: `${result.leftCount + result.rightCount}` };
 }
 
 export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
   public render() {
-    let data: ILeftRightBoxSetProps = { leftCount: 10, rightCount: 10 };
+    let data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
     return (
       <ResizeGroup
         data={ data }
