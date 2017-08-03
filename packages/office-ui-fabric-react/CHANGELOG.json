@@ -2,6 +2,53 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.29.0",
+      "tag": "office-ui-fabric-react_v4.29.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "LQQ <lqq201194@163.com>",
+            "commit": "de2008d03de119da17a26b616be69c4b09c5320c",
+            "comment": "add Spacer and Divider toolbox icon"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "061d4bb481795b35e55b07e5df833bd824bcc35f",
+            "comment": "Searchbox: fixed bug when repeatedly entering a single character"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "265ac177461bc60b63601e4bc6c88d3064b3bf13",
+            "comment": "Callout: Reverting the callout border to it's previous state with a light border."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "7bfa0875f4198bda88a74f700745d8a23721a3b1",
+            "comment": "ConextualMenuItem: Support target value"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.9.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.4 <1.0.0` to `>=0.16.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.1.1 <5.0.0` to `>=4.2.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.28.0",
       "tag": "office-ui-fabric-react_v4.28.0",
       "date": "Wed, 02 Aug 2017 10:22:40 GMT",
