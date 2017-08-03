@@ -245,8 +245,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         }
       }
       if (onChanged) {
-        // for single-select, option passed will always be selected.
-        // for multi-select, flip the check boolean
+        // for single-select, option passed in will always be selected.
+        // for multi-select, flip the checked value
         let changedOpt = options[index];
         changedOpt.selected = this.props.multiSelect ? !checked : true;
         onChanged(changedOpt, index);
@@ -509,6 +509,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     this._dropDown.focus();
   }
 
+  // Get all selected indexes for multi-select mode
   private _getSelectedIndexes(options: IDropdownOption[], selectedKey: any): number[] {
     let selectedIndex: number[] = [];
     if (!selectedKey) {
@@ -520,6 +521,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return selectedIndex;
   }
 
+  // Get all selected options for multi-select mode
   private _getAllSelectedOptions(options: IDropdownOption[], selectedIndex: number[]) {
     let selectedOptions: IDropdownOption[] = [];
     for (let index of selectedIndex) {
