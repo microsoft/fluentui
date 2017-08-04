@@ -1,6 +1,64 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 08 Jun 2017 00:18:05 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+
+## 4.6.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- Fix utility class names, apply "ms-" prefix
+
+## 4.5.42
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Remove erroneous usage of baseUrl to fix link to color accessibility guide
+
+## 4.5.41
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating dev dependencies.
+
+## 4.5.40
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.5.39
+Wed, 21 Jun 2017 00:45:41 GMT
+
+*Changes not tracked*
+
+## 4.5.38
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Patches
+
+- Bumping fabric-core dependency.
+
+## 4.5.37
+Tue, 13 Jun 2017 10:13:21 GMT
+
+### Patches
+
+- Fix issues with dev.office.com header
+
+## 4.5.36
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Patches
+
+- Enable no implicit any in utilities package
 
 ## 4.5.35
 Thu, 08 Jun 2017 00:18:05 GMT

@@ -44,7 +44,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     max: 100,
     disabled: false,
     labelPosition: Position.start,
-    label: null,
+    label: '',
     incrementButtonIcon: { iconName: 'ChevronUpSmall' },
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
@@ -52,7 +52,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _input: HTMLInputElement;
   private _inputId: string;
   private _labelId: string;
-  private _lastValidValue: string;
+  private _lastValidValue: string | undefined;
   private _spinningByMouse: boolean;
 
   private _onValidate?: (value: string) => string | void;
@@ -60,9 +60,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _onDecrement?: (value: string) => string | void;
 
   private _currentStepFunctionHandle: number;
-  private _stepDelay = 100;
+  private _initialStepDelay = 400;
+  private _stepDelay = 75;
   private _formattedValidUnitOptions: string[] = [];
-  private _arrowButtonStyle: React.CSSProperties = {
+  private _arrowButtonStyle = {
     icon: {
       fontSize: '6px',
     }
@@ -75,7 +76,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       'value': 'defaultValue'
     });
 
-    let value = props.value || props.defaultValue || String(props.min);
+    let value = props.value || props.defaultValue || String(props.min) || '0';
     this._lastValidValue = value;
 
     this.state = {
@@ -88,14 +89,14 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._inputId = getId('input');
     this._spinningByMouse = false;
 
-    if (props.defaultValue) {
-      this._onValidate = this._defaultOnValidate;
-      this._onIncrement = this._defaultOnIncrement;
-      this._onDecrement = this._defaultOnDecrement;
-    } else {
+    if (!props.defaultValue && props.value) {
       this._onValidate = props.onValidate;
       this._onIncrement = props.onIncrement;
       this._onDecrement = props.onDecrement;
+    } else {
+      this._onValidate = this._defaultOnValidate;
+      this._onIncrement = this._defaultOnIncrement;
+      this._onDecrement = this._defaultOnDecrement;
     }
 
     this.focus = this.focus.bind(this);
@@ -108,7 +109,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = this.state.value;
     let value: string = newProps.value ? newProps.value : String(newProps.min);
     if (newProps.defaultValue) {
-      value = String(Math.max(newProps.min, Math.min(newProps.max, Number(newProps.defaultValue))));
+      value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
     }
 
     this.setState({
@@ -137,7 +138,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     return (
       <div className={ styles.SpinButtonContainer }>
-        { labelPosition !== Position.bottom && <div className={ css(styles.labelWrapper, this._getClassNameForLabelPosition(labelPosition)) }>
+        { labelPosition !== Position.bottom && <div className={ css(styles.labelWrapper, this._getClassNameForLabelPosition(labelPosition as Position)) }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ css(styles.SpinButtonIcon) } aria-hidden='true'></Icon> }
           { label &&
             <Label
@@ -225,13 +226,20 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   /**
+   * Gets the value of the spin button.
+   */
+  public get value(): string | undefined {
+    return this.props.value === undefined ? this.state.value : this.props.value;
+  }
+
+  /**
    * Validate function to use if one is not passed in
    */
   private _defaultOnValidate = (value: string) => {
     if (isNaN(Number(value))) {
       return this._lastValidValue;
     }
-    const newValue = Math.min(this.props.max, Math.max(this.props.min, Number(value)));
+    const newValue = Math.min(this.props.max as number, Math.max(this.props.min as number, Number(value)));
     return String(newValue);
   }
 
@@ -239,7 +247,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnIncrement = (value: string) => {
-    let newValue = Math.min(Number(value) + this.props.step, this.props.max);
+    let newValue = Math.min(Number(value) + (this.props.step as number), this.props.max as number);
     return String(newValue);
   }
 
@@ -247,7 +255,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnDecrement = (value: string) => {
-    let newValue = Math.max(Number(value) - this.props.step, this.props.min);
+    let newValue = Math.max(Number(value) - (this.props.step as number), this.props.min as number);
     return String(newValue);
   }
 
@@ -294,7 +302,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     if (this.state.value) {
-      const newValue = this._onValidate(value);
+      const newValue = this._onValidate!(value);
       if (newValue) {
         this._lastValidValue = newValue;
         this.setState({ value: newValue });
@@ -324,8 +332,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * @param stepFunction - function to use to step by
    */
   @autobind
-  private _updateValue(shouldSpin: boolean, stepFunction: (string) => string | void) {
-    const newValue = stepFunction(this.state.value);
+  private _updateValue(shouldSpin: boolean, stepDelay: number, stepFunction: (string: string) => string | void) {
+    const newValue = stepFunction(this.state.value as string);
     if (newValue) {
       this._lastValidValue = newValue;
       this.setState({ value: newValue });
@@ -336,7 +344,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
 
     if (shouldSpin) {
-      this._currentStepFunctionHandle = this._async.setTimeout(() => { this._updateValue(shouldSpin, stepFunction); }, this._stepDelay);
+      this._currentStepFunctionHandle = this._async.setTimeout(() => { this._updateValue(shouldSpin, this._stepDelay, stepFunction); }, stepDelay);
     }
   }
 
@@ -380,11 +388,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     if (event.which === KeyCodes.up) {
 
       spinDirection = KeyboardSpinDirection.up;
-      this._updateValue(false /* shouldSpin */, this._onIncrement);
+      this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
     } else if (event.which === KeyCodes.down) {
 
       spinDirection = KeyboardSpinDirection.down;
-      this._updateValue(false /* shouldSpin */, this._onDecrement);
+      this._updateValue(false /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
     } else if (event.which === KeyCodes.enter) {
       event.currentTarget.blur();
       this.focus();
@@ -417,12 +425,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
   @autobind
   private _onIncrementMouseDown() {
-    this._updateValue(true /* shouldSpin */, this._onIncrement);
+    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onIncrement!);
   }
 
   @autobind
   private _onDecrementMouseDown() {
-    this._updateValue(true /* shouldSpin */, this._onDecrement);
+    this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
   }
 
 }

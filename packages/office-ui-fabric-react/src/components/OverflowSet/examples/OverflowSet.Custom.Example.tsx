@@ -19,7 +19,7 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
         items={ [
           {
             key: 'search',
-            'onRender': (item) => {
+            onRender: (item: any) => {
               return (
                 <SearchBox
                   labelText='Search'
@@ -115,8 +115,8 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
             <DefaultButton
               className={ css(styles.overflowButton) }
               iconProps={ { iconName: 'More' } }
-              menuIconProps={ null }
-              menuProps={ { items: overflowItems } }
+              menuIconProps={ undefined }
+              menuProps={ { items: overflowItems! } }
             />
           );
         } }

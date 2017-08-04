@@ -86,6 +86,11 @@ export const getStyles = memoizeFunction((
       top: '.2em',
       transition: 'all 0.1s ease',
       backgroundColor: thumbBackground,
+      /* Border is added to handle high contrast mode for Firefox */
+      borderColor: 'transparent',
+      borderWidth: '.27em',
+      borderStyle: 'solid',
+      boxSizing: 'border-box',
       left: '.2em'
     },
 
@@ -116,5 +121,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(styles, customStyles);
+  return mergeStyleSets(styles, customStyles) as IToggleStyles;
 });

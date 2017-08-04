@@ -1,15 +1,16 @@
 @import '../../../../common/common';
 
 .personaContainer {
-  @include focus-border();
+  @include focus-border(-2px);
   border-radius: 15px;
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
-  margin: 1px;
+  margin: 4px;
   cursor: default;
   user-select: none;
-  max-width: 180px;
+  max-width: 300px;
+  vertical-align: middle;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -37,6 +38,43 @@
         background: $ms-color-themeDark;
       }
     }
+
+    @media screen and (-ms-high-contrast: active) {
+      border: 1px solid $ms-color-themePrimary;
+    }
+  }
+
+  &.validationError {
+    // Setting global values here to override persona's normal behavior in the error version
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-redDark;
+      border-bottom: 2px dotted $ms-color-redDark;
+    }
+
+    :global(.ms-Persona-initials) {
+      font-size: 20px;
+    }
+
+    &.personaContainerIsSelected {
+      background: $ms-color-redDark;
+
+      :global(.ms-Persona-primaryText) {
+        color: $ms-color-white;
+        border-bottom: 2px dotted $ms-color-white;
+      }
+
+      .removeButton:hover {
+        background: $ms-color-red;
+      }
+    }
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
   }
 
   .itemContent {

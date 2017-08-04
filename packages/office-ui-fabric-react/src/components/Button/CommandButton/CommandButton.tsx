@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { ThemeSettingName } from '../../../Styling';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './CommandButton.styles';
 
-@customizable(['theme'])
+@customizable([ThemeSettingName])
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
   /**
@@ -19,7 +20,7 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--command'
-        styles={ getStyles(theme, styles) }
+        styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
     );

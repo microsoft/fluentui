@@ -13,12 +13,19 @@
  * [hovered/pressed/disabled state] – One of these states, if applicable. Each of these states are mutually exclusive.
  * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.   
  *  
- * ## Base/Body
+ * ## Base Slots
  *
- * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, error text, and so on.
+ * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, and so on.
  * If a category doesn't provide the slot you're looking for, use one from this category.
  * For example, the placeholder text on a text input field has no corresponding slot in its category,
- * so you'd use the bodySubtextColor from this category. 
+ * so you'd use the bodySubtextColor from this category.
+ *
+ * ## Invariants
+ *
+ * When color has meaning, we do not want to change the color much theme to theme. For example, we
+ * will always want errors to be some shade of red, but we will need to tweak the exact shade so it's
+ * legible depending on whether it's an inverted theme or not.
+ * Invariant colors should almost never be changed by the theme, the defaults should suffice.
  *  
  * ## Input Controls 
  *
@@ -38,134 +45,145 @@
 export interface ISemanticColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette() */
 
+  //// Base slots
+
   /**
    * The default color for backgrounds.
    */
-  bodyBackground?: string;
+  bodyBackground: string;
 
   /**
    * The default color for text.
    */
-  bodyText?: string;
+  bodyText: string;
 
   /**
    * De-emphasized text; e.g. metadata, captions, placeholder text.
    */
-  bodySubtext?: string;
+  bodySubtext: string;
 
   /**
    * Divider lines; e.g. lines that separate sections in a menu, an <HR> element.
    */
-  bodyDivider?: string;
+  bodyDivider: string;
 
   /**
    * The default color for backgrounds of disabled controls; e.g. disabled text field.
    */
-  disabledBackground?: string;
+  disabledBackground: string;
 
   /**
    * The default color for disabled text; e.g. user input inside a disabled text field.
    */
-  disabledText?: string;
+  disabledText: string;
 
   /**
    * Disabled de-emphasized text; e.g. placeholder text inside disabled input field.
    */
-  disabledSubtext?: string;
+  disabledSubtext: string;
 
   /**
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
-  focusBorder?: string;
+  focusBorder: string;
 
-  // Invariants - slots that rarely change color theme-to-theme because the color has meaning
+  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
+
   /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
-  errorBackground?: string;
+  errorBackground: string;
   /**
    * The default color of error text.
    */
-  errorText?: string;
+  errorText: string;
+  /**
+   * Background for blocking issues, which is more severe than a warning, but not as bad as an error.
+   */
+  blockingBackground: string;
+  /**
+   * Background for warning messages.
+   */
+  warningBackground: string;
 
-  // Input controls slots (text fields, checkboxes, radios...)
+  //// Input controls slots (text fields, checkboxes, radios...)
 
   /**
    * The border of an input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
    */
-  inputBorder?: string;
+  inputBorder: string;
   /**
    * The border color of a hovered input control.
    */
-  inputBorderHovered?: string;
+  inputBorderHovered: string;
 
   /**
    * The background of a checked control; e.g. checked radio button's dot, checked toggle's background.
    */
-  inputBackgroundChecked?: string;
+  inputBackgroundChecked: string;
 
   /**
    * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
    */
-  inputBackgroundCheckedHovered?: string;
+  inputBackgroundCheckedHovered: string;
 
   /**
    * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color,
    * radio button's background color around the dot.
    */
-  inputForegroundChecked?: string;
+  inputForegroundChecked: string;
 
   /**
    * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
    */
-  inputFocusBorderAlt?: string;
+  inputFocusBorderAlt: string;
 
-  // Menus, popups, etc
+  //// Menus, popups, etc
 
   /**
    * The background of a hovered menu item.
    */
-  menuItemBackgroundHovered?: string;
+  menuItemBackgroundHovered: string;
 
   /**
    * The background of checked menu item; e.g. a menu item whose submenu is open, a selected dropdown item.
    */
-  menuItemBackgroundChecked?: string;
+  menuItemBackgroundChecked: string;
 
   /**
    * The default colors of icons in menus.
    */
-  menuIcon?: string;
+  menuIcon: string;
 
   /**
    * The headers in menus that denote title of a section.
    */
-  menuHeader?: string;
+  menuHeader: string;
 
-  // Lists
+  //// Lists
 
   /**
    * The background color for the entire list.
    */
-  listBackground?: string;
+  listBackground: string;
 
   /**
    * The default text color for list item titles and text in column fields.
    */
-  listTextColor?: string;
+  listTextColor: string;
 
   /**
    * The background color of a hovered list item.
    */
-  listItemBackgroundHovered?: string;
+  listItemBackgroundHovered: string;
 
   /**
    * The background color of a checked list item.
    */
-  listItemBackgroundChecked?: string;
+  listItemBackgroundChecked: string;
 
   /**
    * The background color of a checked and hovered list item.
    */
-  listItemBackgroundCheckedHovered?: string;
+  listItemBackgroundCheckedHovered: string;
 }

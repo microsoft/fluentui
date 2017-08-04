@@ -43,6 +43,7 @@ $ms-color-presence-busy-average:       #D93B3B;
 
 // Persona Sizes
 $ms-Persona-sizeTiny: 30px;
+$ms-Persona-size16:  16px;
 $ms-Persona-sizeXxs:  24px;
 $ms-Persona-size28:  28px;
 $ms-Persona-sizeXs:   32px;
@@ -67,7 +68,6 @@ $ms-Persona-presenceSizeXl: 28px;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
-  line-height: 1;
   position: relative;
   height: $ms-Persona-sizeMd;
   display: flex;
@@ -238,6 +238,9 @@ $ms-Persona-presenceSizeXl: 28px;
   min-width: 0;
   width: 100%;
   @include text-align(left);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .primaryText,
@@ -252,8 +255,6 @@ $ms-Persona-presenceSizeXl: 28px;
   color: $ms-color-neutralPrimary;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-l;
-  margin-top: -3px;
-  line-height: 1.4;
 }
 
 .secondaryText,
@@ -263,16 +264,10 @@ $ms-Persona-presenceSizeXl: 28px;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
   white-space: nowrap;
-  line-height: 1.3;
-}
-
-.secondaryText {
-  padding-top: 3px;
 }
 
 .tertiaryText,
 .optionalText {
-  padding-top: 5px;
   display: none; // Hidden on default persona
 }
 
@@ -312,7 +307,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 4px;
+    line-height: $ms-Persona-sizeTiny;
   }
 
   .secondaryText {
@@ -334,14 +329,62 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+//== Modifier: 16px Persona
+//
+.root.rootIs16 {
+  height: $ms-Persona-size16;
+  min-width: $ms-Persona-size16;
+  overflow: hidden;
+
+  .imageArea {
+    box-shadow: 0 0 0 2px $ms-color-white;
+  }
+
+  .imageArea,
+  .image {
+    flex: 0 0 $ms-Persona-size16;
+    height: $ms-Persona-size16;
+    width: $ms-Persona-size16;
+  }
+
+  .placeholder {
+    font-size: 18px;
+    top: 4px;
+  }
+
+  .initials {
+    font-size: $ms-font-size-xs;
+    height: $ms-Persona-size16;
+    line-height: $ms-Persona-size16;
+  }
+
+  .presence {
+    height: $ms-Persona-presenceSizeXxs;
+    width: $ms-Persona-presenceSizeXxs;
+    border: 2px solid $ms-color-white;
+    @include ms-left(20px);
+  }
+
+  .presenceIcon {
+    font-size: 6px;
+    line-height: 9px;
+  }
+
+  .primaryText {
+    font-size: $ms-font-size-m;
+    line-height: $ms-Persona-size28;
+  }
+
+  .secondaryText {
+    display: none;
+  }
+}
 
 //== Modifier: Extra Small Persona
 //
 .root.rootIsExtraExtraSmall {
-  height: $ms-Persona-sizeXxs;
-  line-height: $ms-Persona-sizeXxs;
-  min-width: $ms-Persona-sizeXxs;
-  margin-right: 4px;
+  height: $ms-Persona-sizeXs;
+  min-width: $ms-Persona-sizeXs;
 
   .imageArea,
   .image {
@@ -365,17 +408,24 @@ $ms-Persona-presenceSizeXl: 28px;
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
-    @include ms-left(16px);
+    @include ms-left(14px);
+    top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 3px;
   }
 
   .secondaryText {
@@ -383,14 +433,14 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   &.showSecondaryText {
-    height: 30px;
+    height: 32px;
 
     .primaryText,
     .secondaryText {
       display: block;
-      padding: 0;
-      line-height: 1;
-      overflow: visible;
+      height: 16px;
+      line-height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -400,7 +450,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIs28 {
   height: $ms-Persona-size28;
-  line-height: $ms-Persona-size28;
   min-width: $ms-Persona-size28;
   overflow: hidden;
 
@@ -427,16 +476,23 @@ $ms-Persona-presenceSizeXl: 28px;
     width: $ms-Persona-presenceSizeXxs;
     border: 2px solid $ms-color-white;
     @include ms-left(20px);
+    top: 18px;
+
+    &:after {
+      display: none;
+    }
   }
 
   .presenceIcon {
-    font-size: 6px;
-    line-height: 9px;
+    display: none;
+  }
+
+  .details {
+    padding: 0 8px;
   }
 
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 3px;
   }
 
   .secondaryText {
@@ -444,12 +500,14 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   &.showSecondaryText {
+    height: 32px;
+
     .primaryText,
     .secondaryText {
       display: block;
-      padding: 0;
-      line-height: 1;
-      overflow: visible;
+      line-height: 16px;
+      height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -459,7 +517,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsExtraSmall {
   height: $ms-Persona-sizeXs;
-  line-height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
 
   .imageArea,
@@ -484,9 +541,12 @@ $ms-Persona-presenceSizeXl: 28px;
     @include ms-left(19px);
   }
 
+  .details {
+    padding: 0 8px;
+  }
+
   .primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 3px;
   }
 
   .secondaryText {
@@ -497,9 +557,9 @@ $ms-Persona-presenceSizeXl: 28px;
     .primaryText,
     .secondaryText {
       display: block;
-      padding: 0;
-      line-height: 1;
-      overflow: visible;
+      height: 16px;
+      line-height: 16px;
+      overflow-x: hidden;
     }
   }
 }
@@ -509,7 +569,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsSmall {
   height: $ms-Persona-sizeSm;
-  line-height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
 
   .imageArea,
@@ -537,11 +596,6 @@ $ms-Persona-presenceSizeXl: 28px;
   .primaryText {
     font-size: $ms-font-size-m;
   }
-
-  .primaryText,
-  .secondaryText {
-    padding-top: 1px;
-  }
 }
 
 
@@ -549,7 +603,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsLarge {
   height: $ms-Persona-sizeLg;
-  line-height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
 
   .imageArea,
@@ -582,12 +635,7 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
   }
 
-  .secondaryText {
-    padding-top: 3px;
-  }
-
   .tertiaryText {
-    padding-top: 5px;
     display: block;
   }
 }
@@ -597,7 +645,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .root.rootIsExtraLarge {
   height: $ms-Persona-sizeXl;
-  line-height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
 
   .imageArea,
@@ -635,16 +682,10 @@ $ms-Persona-presenceSizeXl: 28px;
   .primaryText {
     font-size: $ms-font-size-xl;
     font-weight: $ms-font-weight-semilight;
-    margin-top: 0;
-  }
-
-  .secondaryText {
-    padding-top: 2px;
   }
 
   .tertiaryText,
   .optionalText {
-    padding-top: 5px;
     display: block; // Show tertiary and optional text
   }
 }

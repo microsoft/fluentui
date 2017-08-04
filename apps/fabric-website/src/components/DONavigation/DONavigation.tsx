@@ -94,7 +94,7 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
               <div className='od-Navigation-subMenuItems'>
                 <div className='ms-Grid'>
                   <div className='ms-Grid-row'>
-                    <div className='ms-Grid-col ms-u-xl3 ms-sm12 od-Navigation-menuFirstColumn'>
+                    <div className='ms-Grid-col ms-xl3 ms-sm12 od-Navigation-menuFirstColumn'>
                       { this._getLinks(links.exploreLinks.firstMenuColumn) }
                     </div>
                     <div className='ms-Grid-col ms-xl3 ms-sm12  od-Navigation-menuSecondColumn'>

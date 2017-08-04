@@ -25,7 +25,7 @@ const _indentWithExpandButton: number = 28;
 const _indentNoExpandButton: number = 20;
 
 // global var used in _isLinkSelectedKey
-let _urlResolver;
+let _urlResolver: HTMLAnchorElement | undefined;
 
 export interface INavState {
   isGroupCollapsed?: { [key: string]: boolean };
@@ -53,7 +53,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     this._hasExpandButton = false;
   }
 
-  public render(): React.ReactElement<{}> {
+  public render(): JSX.Element | null {
     const { groups, className, isOnTop } = this.props;
 
     if (!groups) {
@@ -86,7 +86,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  public get selectedKey(): string {
+  public get selectedKey(): string | undefined {
     return this.state.selectedKey;
   }
 
@@ -110,10 +110,10 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         { link.iconClassName && (
           <Icon
             className={ css(link.iconClassName, styles.iconLink) }
-            iconName='iconLink'
+            iconName='IconLink'
           />
         ) }
-        { this.props.onRenderLink(link) }
+        { this.props.onRenderLink!(link) }
       </a>
     );
   }
@@ -135,17 +135,20 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
+    const isRtl: boolean = getRTL();
+    const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
 
     return (
       <div key={ link.key || linkIndex }
         className={ css('ms-Nav-compositeLink', styles.compositeLink, {
-          ' is-expanded': link.isExpanded,
+          ' is-expanded': !!link.isExpanded,
           'is-selected': isLinkSelected,
-          [styles.compositeLinkIsExpanded]: link.isExpanded,
+          [styles.compositeLinkIsExpanded]: !!link.isExpanded,
           [styles.compositeLinkIsSelected]: isLinkSelected
         }) }>
-        { (nestingLevel === 0 && link.links && link.links.length > 0 ?
+        { (link.links && link.links.length > 0 ?
           <button
+            style={ { [isRtl ? 'marginRight' : 'marginLeft']: paddingBefore } }
             className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
@@ -153,7 +156,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           >
             <Icon
               className={ css('ms-Nav-chevron', styles.chevronIcon, link.isExpanded) }
-              iconName='chevronDown'
+              iconName='ChevronDown'
             />
           </button> : null
         ) }
@@ -171,7 +174,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  private _renderLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> {
+  private _renderLinks(links: INavLink[] | undefined, nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || !links.length) {
       return null;
     }
@@ -186,7 +189,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
-    const isGroupExpanded: boolean = !this.state.isGroupCollapsed[group.name];
+    const isGroupExpanded: boolean = !this.state.isGroupCollapsed![group.name as string];
 
     return (
       <div key={ groupIndex } className={ css('ms-Nav-group', styles.group, {
@@ -204,7 +207,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
                 styles.chevronIcon,
                 isGroupExpanded && styles.chevronIsExpanded
               ) }
-              iconName='chevronDown'
+              iconName='ChevronDown'
             />
             { group.name }
           </button> : null)
@@ -219,7 +222,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _onGroupHeaderClicked(groupKey: string, ev: React.MouseEvent<HTMLElement>): void {
     let { isGroupCollapsed } = this.state;
 
-    isGroupCollapsed[groupKey] = !isGroupCollapsed[groupKey];
+    isGroupCollapsed![groupKey] = !isGroupCollapsed![groupKey];
     this.setState({ isGroupCollapsed: isGroupCollapsed });
 
     ev.preventDefault();

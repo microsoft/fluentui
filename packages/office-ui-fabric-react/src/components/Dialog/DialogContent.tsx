@@ -4,7 +4,7 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { IDialogContentProps } from './Dialog.Props';
+import { IDialogContentProps, DialogType } from './DialogContent.Props';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -21,7 +21,8 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
   public static defaultProps: IDialogContentProps = {
     showCloseButton: false,
     className: '',
-    topButtonsProps: []
+    topButtonsProps: [],
+    closeButtonAriaLabel: 'Close'
   };
 
   constructor(props: IDialogContentProps) {
@@ -38,7 +39,8 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
       closeButtonAriaLabel,
       onDismiss,
       subText,
-      title
+      title,
+      type
     } = this.props;
     let { id } = this.state;
 
@@ -48,24 +50,30 @@ export class DialogContent extends BaseComponent<IDialogContentProps, IDialogCon
       subTextContent = <p className={ css('ms-Dialog-subText', styles.subText) } id={ id + '-subText' }>{ subText }</p>;
     }
 
+    const contentClassName = css(this.props.className, {
+      ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
+      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
+    });
+
     return (
-      <div>
+      <div className={ css(contentClassName) }>
         <div className={ css('ms-Dialog-header', styles.header) }>
           <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
           <div className={ css('ms-Dialog-topButton', styles.topButton) }>
-            { this.props.topButtonsProps.map((props) => (
+            { this.props.topButtonsProps!.map((props) => (
               <IconButton {...props} />
             )) }
-            <IconButton
-              className={ css(
-                'ms-Dialog-button ms-Dialog-button--close',
-                styles.button,
-                { [styles.isClose]: !showCloseButton }
-              ) }
-              iconProps={ { iconName: 'Cancel' } }
-              ariaLabel={ closeButtonAriaLabel }
-              onClick={ onDismiss }
-            />
+            { showCloseButton && type !== DialogType.largeHeader &&
+              <IconButton
+                className={ css(
+                  'ms-Dialog-button ms-Dialog-button--close',
+                  styles.button
+                ) }
+                iconProps={ { iconName: 'Cancel' } }
+                ariaLabel={ closeButtonAriaLabel }
+                onClick={ onDismiss as any }
+              />
+            }
           </div>
         </div>
         <div className={ css('ms-Dialog-inner', styles.inner) }>

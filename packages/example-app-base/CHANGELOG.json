@@ -2,6 +2,202 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.2.0",
+      "tag": "@uifabric/example-app-base_v4.2.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.4 <1.0.0` to `>=0.15.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.9.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.1",
+      "tag": "@uifabric/example-app-base_v4.1.1",
+      "date": "Thu, 13 Jul 2017 02:58:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "253b23f0aa42bcc62ad8f861953c3bc0f0343c81",
+            "comment": "Highlight: Use correct import for highlightBlock"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.6 <1.0.0` to `>=0.13.7 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.0",
+      "tag": "@uifabric/example-app-base_v4.1.0",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "2bd3f54840dfb665f6fdbe88408a4dd2c91b8979",
+            "comment": "Fix implicit anys, enable strict null checks"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.5 <1.0.0` to `>=0.13.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.7.1 <5.0.0` to `>=4.7.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.3",
+      "tag": "@uifabric/example-app-base_v4.0.3",
+      "date": "Tue, 11 Jul 2017 10:14:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "27eddf24f95cee9af7f38aac881899cedd2871bb",
+            "comment": "Website: Stop displaying \"missing properties\" notification if props includes empty interface"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.4 <1.0.0` to `>=0.13.5 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.2",
+      "tag": "@uifabric/example-app-base_v4.0.2",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating dev dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.0 <1.0.0` to `>=0.13.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.6.0 <5.0.0` to `>=4.7.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.1",
+      "tag": "@uifabric/example-app-base_v4.0.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.11.5 <1.0.0` to `>=0.11.6 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.4.0 <5.0.0` to `>=4.4.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.0",
+      "tag": "@uifabric/example-app-base_v4.0.0",
+      "date": "Wed, 21 Jun 2017 00:45:41 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bff150fa91e87c31d8d433092b007ee604f22d8b",
+            "comment": "Add support for adding a default route in createApp. Remove unused hideChrome parameter."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.10.5 <1.0.0` to `>=0.11.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "3.0.2",
+      "tag": "@uifabric/example-app-base_v3.0.2",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f962234cf5c1231976331cfabc06680a762cd516",
+            "comment": "Bumping fabric-core dependency."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.4 <1.0.0` to `>=0.8.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.3.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "3.0.1",
+      "tag": "@uifabric/example-app-base_v3.0.1",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.1.2 <5.0.0` to `>=4.1.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.0",
       "tag": "@uifabric/example-app-base_v3.0.0",
       "date": "Thu, 08 Jun 2017 00:18:05 GMT",

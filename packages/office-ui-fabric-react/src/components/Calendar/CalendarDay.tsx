@@ -37,7 +37,8 @@ export interface IDayInfo {
   onSelected: () => void;
 }
 
-export interface ICalendarDayProps {
+export interface ICalendarDayProps extends React.Props<CalendarDay> {
+  componentRef?: () => void;
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;
@@ -105,7 +106,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.prevMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronRight' : 'chevronLeft' } />
+              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
@@ -115,7 +116,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronLeft' : 'chevronRight' } />
+              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
             </span >
           </div >
           <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
@@ -142,7 +143,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               </tr>
             </thead>
             <tbody>
-              { weeks.map((week, weekIndex) =>
+              { weeks!.map((week, weekIndex) =>
                 <tr key={ weekIndex }>
                   { week.map((day, dayIndex) =>
                     <td key={ day.key }>
@@ -163,10 +164,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         aria-selected={ day.isSelected }
                         aria-label={ day.originalDate.toLocaleString ?
                           day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
-                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
+                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
-                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
+                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
+                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
                         <span aria-hidden='true'>{ day.date }</span>
                       </div>
                     </td>
@@ -191,7 +192,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (weekIndex === 0 && ev.which === KeyCodes.up) {
       this.props.onNavigateDate(addWeeks(date, -1), true);
       ev.preventDefault();
-    } else if (weekIndex === (this.state.weeks.length - 1) && ev.which === KeyCodes.down) {
+    } else if (weekIndex === (this.state.weeks!.length - 1) && ev.which === KeyCodes.down) {
       this.props.onNavigateDate(addWeeks(date, 1), true);
       ev.preventDefault();
     } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
@@ -253,8 +254,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let { navigatedDate, selectedDate, dateRangeType, firstDayOfWeek, today } = propsToUse;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let todaysDate = today || new Date();
-    let weeks = [];
-    let week;
+    let weeks: IDayInfo[][] = [];
 
     // Cycle the date backwards to get to the first day of the week.
     while (date.getDay() !== firstDayOfWeek) {
@@ -267,15 +267,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
 
     for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
-      week = [];
+      let week: IDayInfo[] = [];
 
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
         let originalDate = new Date(date.toString());
-        let dayInfo = {
+        let dayInfo: IDayInfo = {
           key: date.toString(),
-          date: date.getDate(),
+          date: date.getDate().toString(),
           originalDate: originalDate,
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
           isToday: compareDates(todaysDate, date),

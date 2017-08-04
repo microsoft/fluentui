@@ -15,7 +15,7 @@ import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
-  value?: string;
+  value?: string | undefined;
 
   /** Is true when the control has focus. */
   isFocused?: boolean;
@@ -49,13 +49,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   private _id: string;
   private _descriptionId: string;
-  private _delayedValidate: (value: string) => void;
+  private _delayedValidate: (value: string | undefined) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
-  private _latestValue;
-  private _latestValidateValue;
+  private _latestValue: string | undefined;
+  private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
-  private _textElement: HTMLInputElement | HTMLTextAreaElement;
+  private _textElement: HTMLTextAreaElement;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -89,7 +89,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   /**
    * Gets the current value of the text field.
    */
-  public get value(): string {
+  public get value(): string | undefined {
     return this.state.value;
   }
 
@@ -140,7 +140,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon
     } = this.props;
     let { isFocused } = this.state;
-    const errorMessage: string = this._errorMessage;
+    const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
@@ -154,15 +154,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <div className={ textFieldClassName }>
-        { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
-          { (addonString !== undefined || this.props.onRenderAddon) && (
-            <div className={ css(styles.fieldAddon) }>
-              { onRenderAddon(this.props, this._onRenderAddon) }
-            </div>
-          ) }
-          { multiline ? this._renderTextArea() : this._renderInput() }
-          { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+        <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
+          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+          <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
+            { (addonString !== undefined || this.props.onRenderAddon) && (
+              <div className={ css(styles.fieldAddon) }>
+                { onRenderAddon(this.props, this._onRenderAddon) }
+              </div>
+            ) }
+            { multiline ? this._renderTextArea() : this._renderInput() }
+            { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+          </div>
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
@@ -172,9 +174,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                 <DelayedRender>
                   <p
                     className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
-                    data-automation-id='error-message'>
-                    <Icon iconName='error' className={ styles.errorIcon } />
-                    { errorMessage }
+                  >
+                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
+                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>
@@ -262,7 +264,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _getTextElementClassName(): string {
-    const errorMessage: string = this._errorMessage;
+    const errorMessage = this._errorMessage;
     let textFieldClassName: string;
 
     if (this.props.multiline && !this.props.resizable) {
@@ -276,7 +278,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     });
   }
 
-  private get _errorMessage(): string {
+  private get _errorMessage(): string | undefined {
     let { errorMessage } = this.state;
     if (!errorMessage) {
       errorMessage = this.props.errorMessage;
@@ -355,19 +357,19 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this._delayedValidate(value);
     }
 
-    const { onBeforeChange } = this.props;
+    const onBeforeChange = this.props.onBeforeChange as (newValue: any) => void;
     onBeforeChange(value);
   }
 
-  private _validate(value: string): void {
+  private _validate(value: string | undefined): void {
     // In case of _validate called multi-times during executing validate logic with promise return.
     if (this._latestValidateValue === value) {
       return;
     }
 
     this._latestValidateValue = value;
-    let { onGetErrorMessage } = this.props;
-    let result: string | PromiseLike<string> = onGetErrorMessage(value || '');
+    let onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
+    let result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
       if (typeof result === 'string') {
@@ -390,7 +392,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _notifyAfterValidate(value: string, errorMessage: string): void {
+  private _notifyAfterValidate(value: string | undefined, errorMessage: string): void {
     if (this._isMounted &&
       value === this.state.value &&
       this.props.onNotifyValidationResult) {

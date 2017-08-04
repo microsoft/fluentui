@@ -1,8 +1,9 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { Customizer } from './Customizer';
+import { GlobalSettings, IChangeDescription } from './GlobalSettings';
 
 export function customizable<P>(fields: string[]) {
+  // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
   ): any {
@@ -18,20 +19,20 @@ export function customizable<P>(fields: string[]) {
       }
 
       public componentDidMount() {
-        Customizer.addChangeListener(this._onSettingChanged);
+        GlobalSettings.addChangeListener(this._onSettingChanged);
       }
 
       public componentWillUnmount() {
-        Customizer.removeChangeListener(this._onSettingChanged);
+        GlobalSettings.removeChangeListener(this._onSettingChanged);
       }
 
       public render() {
         let defaultProps = {};
 
         for (let propName of fields) {
-          defaultProps[propName] = (this.context.injectedProps) ?
+          (defaultProps as any)[propName] = (this.context.injectedProps) ?
             this.context.injectedProps[propName] :
-            Customizer.getDefault(propName);
+            GlobalSettings.getValue(propName);
         }
 
         return (
@@ -39,8 +40,8 @@ export function customizable<P>(fields: string[]) {
         );
       }
 
-      private _onSettingChanged(name: string) {
-        if (fields.indexOf(name) >= 0) {
+      private _onSettingChanged(change: IChangeDescription): void {
+        if (fields.indexOf(change.key) >= 0) {
           this.forceUpdate();
         }
       }

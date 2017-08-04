@@ -28,19 +28,19 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true },
           ] }
-          maxDisplayedItems={ 3 } 
-          ariaLabel={'Website breadcrumb'} />
+          maxDisplayedItems={ 6 }
+          ariaLabel={ 'Website breadcrumb' } />
         <Breadcrumb
           items={ [
             { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is link 1', 'key': 'l1', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is link 2', 'key': 'l2', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
-            { text: 'This is link 3', 'key': 'l3', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is link 3 with a long name', 'key': 'l3', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is link 4', 'key': 'l4', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
             { text: 'This is link 5', 'key': 'l5', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true },
           ] }
           maxDisplayedItems={ 3 }
-          ariaLabel={'Website breadcrumb'} />
+          ariaLabel={ 'Website breadcrumb' } />
       </div>
     );
   }

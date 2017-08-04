@@ -4,6 +4,7 @@ import { StoreSet } from './StoreSet';
 import { BaseComponent } from '../Utilities';
 
 export interface IStoreHostProps extends React.Props<StoreHost> {
+  componentRef?: () => void;
   stores?: StoreSet;
 }
 
@@ -26,7 +27,7 @@ export class StoreHost extends BaseComponent<IStoreHostProps, {}> {
     let { stores: parentStores } = this.context;
     let { stores: currentStores } = this.props;
 
-    return { stores: parentStores ? parentStores.merge(currentStores) : currentStores };
+    return { stores: parentStores ? parentStores.merge(currentStores!) : currentStores };
   }
 
   public render() {

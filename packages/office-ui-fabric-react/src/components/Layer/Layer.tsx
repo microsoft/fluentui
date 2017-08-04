@@ -13,14 +13,14 @@ let _layersByHostId: { [hostId: string]: Layer[] } = {};
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
 
-  public static defaultProps = {
+  public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
     onLayerWillUnmount: () => undefined
   };
 
   private _rootElement: HTMLElement;
   private _host: Node;
-  private _layerElement: HTMLElement;
+  private _layerElement: HTMLElement | undefined;
   private _hasMounted: boolean;
   /**
    * Used for notifying applicable Layers that a host is available/unavailable and to re-evaluate Layers that
@@ -74,7 +74,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       this._host = host;
 
       if (!this._layerElement) {
-        let doc = getDocument(this._rootElement);
+        let doc = getDocument(this._rootElement) as Document;
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = css('ms-Layer', {
@@ -101,7 +101,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
               this.props.onLayerMounted();
             }
 
-            this.props.onLayerDidMount();
+            this.props.onLayerDidMount!();
           }
         });
     }
@@ -118,7 +118,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
 
   private _removeLayerElement() {
     if (this._layerElement) {
-      this.props.onLayerWillUnmount();
+      this.props.onLayerWillUnmount!();
 
       ReactDOM.unmountComponentAtNode(this._layerElement);
       let parentNode = this._layerElement.parentNode;
@@ -132,10 +132,10 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
 
   private _getHost(): Node {
     let { hostId } = this.props;
-    let doc = getDocument(this._rootElement);
+    let doc = getDocument(this._rootElement) as Document;
 
     if (hostId) {
-      return doc.getElementById(hostId);
+      return doc.getElementById(hostId) as Node;
     } else {
       return doc.body;
     }

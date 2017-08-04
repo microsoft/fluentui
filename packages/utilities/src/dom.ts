@@ -14,6 +14,8 @@ interface IVirtualElement extends HTMLElement {
 /**
  * Sets the virtual parent of an element.
  * Pass `undefined` as the `parent` to clear the virtual parent.
+ *
+ * @public
  */
 export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
   let virtualChild = <IVirtualElement>child;
@@ -49,8 +51,13 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
   }
 }
 
-export function getVirtualParent(child: HTMLElement): HTMLElement {
-  let parent: HTMLElement;
+/**
+ * Gets the virtual parent given the child element, if it exists.
+ *
+ * @public
+ */
+export function getVirtualParent(child: HTMLElement): HTMLElement | undefined {
+  let parent: HTMLElement | undefined;
 
   if (child && isVirtualElement(child)) {
     parent = child._virtual.parent;
@@ -63,8 +70,10 @@ export function getVirtualParent(child: HTMLElement): HTMLElement {
  * Gets the element which is the parent of a given element.
  * If `allowVirtuaParents` is `true`, this method prefers the virtual parent over
  * real DOM parent when present.
+ *
+ * @public
  */
-export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement {
+export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
   return child && (
     allowVirtualParents && getVirtualParent(child) ||
     child.parentNode && child.parentNode as HTMLElement
@@ -75,8 +84,10 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  * Determines whether or not a parent element contains a given child element.
  * If `allowVirtualParents` is true, this method may return `true` if the child
  * has the parent in its virtual element hierarchy.
+ *
+ * @public
  */
-export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean {
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean {
   let isContained = false;
 
   if (parent && child) {
@@ -84,7 +95,7 @@ export function elementContains(parent: HTMLElement, child: HTMLElement, allowVi
       isContained = false;
 
       while (child) {
-        let nextParent = getParent(child);
+        let nextParent: HTMLElement | null = getParent(child);
 
         if (nextParent === parent) {
           isContained = true;
@@ -105,12 +116,18 @@ let _isSSR = false;
 
 /**
  * Helper to set ssr mode to simulate no window object returned from getWindow helper.
+ *
+ * @public
  */
-export function setSSR(isEnabled) {
+export function setSSR(isEnabled: boolean) {
   _isSSR = isEnabled;
 }
 
-/** Helper to get the window object. */
+/**
+ * Helper to get the window object.
+ *
+ * @public
+ */
 export function getWindow(rootElement?: HTMLElement) {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
@@ -127,6 +144,8 @@ export function getWindow(rootElement?: HTMLElement) {
 
 /**
  * Helper to get the document object.
+ *
+ * @public
  */
 export function getDocument(rootElement?: HTMLElement) {
   if (_isSSR || typeof document === 'undefined') {
@@ -138,9 +157,11 @@ export function getDocument(rootElement?: HTMLElement) {
 
 /**
  * Helper to get bounding client rect, works with window.
+ *
+ * @public
  */
-export function getRect(element: HTMLElement | Window): IRectangle {
-  let rect: IRectangle;
+export function getRect(element: HTMLElement | Window | null): IRectangle | undefined {
+  let rect: IRectangle | undefined;
 
   if (element) {
     if (element === window) {
@@ -162,6 +183,8 @@ export function getRect(element: HTMLElement | Window): IRectangle {
 
 /**
  * Determines whether or not an element has the virtual hierarchy extension.
+ *
+ * @public
  */
 function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement {
   return element && !!(<IVirtualElement>element)._virtual;

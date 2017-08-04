@@ -1,10 +1,10 @@
 import { memoize, memoizeFunction, setMemoizeWeakMap } from './memoize';
-import * as weakMapPolyfill from 'es6-weak-map/polyfill';
+import weakMapPolyfill = require('es6-weak-map');
 
 let { expect } = chai;
 
 describe('memoizeFunction', () => {
-  before(()=> {
+  before(() => {
     setMemoizeWeakMap(weakMapPolyfill);
   });
 
@@ -95,7 +95,7 @@ describe('memoizeFunction', () => {
 });
 
 describe('memoize', () => {
-  before(()=> {
+  before(() => {
     setMemoizeWeakMap(weakMapPolyfill);
   });
 

@@ -7,12 +7,16 @@ import { memoizeFunction } from '../../../Utilities';
 import {
   getStyles as getDefaultButtonStyles
 } from '../DefaultButton/DefaultButton.styles';
+import {
+  getStyles as getSplitButtonStyles
+} from '../SplitButton/SplitButton.styles';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
   let { palette } = theme;
+  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
     theme,
     customStyles,
@@ -35,6 +39,11 @@ export const getStyles = memoizeFunction((
       color: palette.white
     },
 
+    rootExpanded: {
+      backgroundColor: palette.themePrimary,
+      color: palette.white
+    },
+
     rootChecked: {
       backgroundColor: palette.themeDark,
       color: palette.white,
@@ -46,5 +55,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, customStyles);
+  return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, splitButtonStyles, customStyles)!;
 });

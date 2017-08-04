@@ -113,7 +113,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
-      _firstFocusableChild.focus();
+      (_firstFocusableChild as any).focus();
     }
   }
 
@@ -129,11 +129,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
-      _lastFocusableChild.focus();
+      _lastFocusableChild!.focus();
       ev.preventDefault();
       ev.stopPropagation();
     } else if (!ev.shiftKey && _lastFocusableChild === ev.target) {
-      _firstFocusableChild.focus();
+      _firstFocusableChild!.focus();
       ev.preventDefault();
       ev.stopPropagation();
     }

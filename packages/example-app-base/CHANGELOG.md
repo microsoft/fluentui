@@ -1,6 +1,73 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 08 Jun 2017 00:18:05 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+
+## 4.2.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- TypeScript 2.4.1 bump
+
+## 4.1.1
+Thu, 13 Jul 2017 02:58:02 GMT
+
+### Patches
+
+- Highlight: Use correct import for highlightBlock
+
+## 4.1.0
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Minor changes
+
+- Fix implicit anys, enable strict null checks
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 4.0.3
+Tue, 11 Jul 2017 10:14:04 GMT
+
+### Patches
+
+- Website: Stop displaying "missing properties" notification if props includes empty interface
+
+## 4.0.2
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating dev dependencies.
+
+## 4.0.1
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.0.0
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Breaking changes
+
+- Add support for adding a default route in createApp. Remove unused hideChrome parameter.
+
+## 3.0.2
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Patches
+
+- Bumping fabric-core dependency.
+
+## 3.0.1
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Patches
+
+- Enable no implicit any in utilities package
 
 ## 3.0.0
 Thu, 08 Jun 2017 00:18:05 GMT

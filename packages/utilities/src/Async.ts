@@ -1,22 +1,23 @@
+declare function setTimeout(cb: Function, delay: number): number;
+declare function setInterval(cb: Function, delay: number): number;
+
 /**
  * Bugs often appear in async code when stuff gets disposed, but async operations don't get canceled.
  * This Async helper class solves these issues by tying async code to the lifetime of a disposable object.
  *
  * Usage: Anything class extending from BaseModel can access this helper via this.async. Otherwise create a
  * new instance of the class and remember to call dispose() during your code's dispose handler.
+ *
+ * @public
  */
-
-declare function setTimeout(cb: Function, delay: number): number;
-declare function setInterval(cb: Function, delay: number): number;
-
 export class Async {
-  private _timeoutIds = null;
-  private _immediateIds = null;
-  private _intervalIds = null;
-  private _animationFrameIds: { [id: number]: boolean } = null;
+  private _timeoutIds: any = null;
+  private _immediateIds: any = null;
+  private _intervalIds: any = null;
+  private _animationFrameIds: { [id: number]: boolean } | null = null;
   private _isDisposed = false;
   private _parent: any;
-  private _onErrorHandler: (e: any) => void;
+  private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: any;
 
   constructor(parent?: any, onError?: (e: any) => void) {
@@ -38,7 +39,7 @@ export class Async {
     if (this._timeoutIds) {
       for (id in this._timeoutIds) {
         if (this._timeoutIds.hasOwnProperty(id)) {
-          this.clearTimeout(id);
+          this.clearTimeout(parseInt(id, 10));
         }
       }
 
@@ -49,7 +50,7 @@ export class Async {
     if (this._immediateIds) {
       for (id in this._immediateIds) {
         if (this._immediateIds.hasOwnProperty(id)) {
-          this.clearImmediate(id);
+          this.clearImmediate(parseInt(id, 10));
         }
       }
 
@@ -60,7 +61,7 @@ export class Async {
     if (this._intervalIds) {
       for (id in this._intervalIds) {
         if (this._intervalIds.hasOwnProperty(id)) {
-          this.clearInterval(id);
+          this.clearInterval(parseInt(id, 10));
         }
       }
       this._intervalIds = null;
@@ -70,7 +71,7 @@ export class Async {
     if (this._animationFrameIds) {
       for (id in this._animationFrameIds) {
         if (this._animationFrameIds.hasOwnProperty(id)) {
-          this.cancelAnimationFrame(id);
+          this.cancelAnimationFrame(parseInt(id, 10));
         }
       }
 
@@ -254,9 +255,9 @@ export class Async {
     let leading = true;
     let trailing = true;
     let lastExecuteTime = 0;
-    let lastResult;
+    let lastResult: any;
     let lastArgs: any[];
-    let timeoutId: number = null;
+    let timeoutId: number | null = null;
 
     if (options && typeof (options.leading) === 'boolean') {
       leading = options.leading;
@@ -320,12 +321,12 @@ export class Async {
     let waitMS = wait || 0;
     let leading = false;
     let trailing = true;
-    let maxWait = null;
+    let maxWait: any = null;
     let lastCallTime = 0;
     let lastExecuteTime = (new Date).getTime();
-    let lastResult;
+    let lastResult: any;
     let lastArgs: any[];
-    let timeoutId: number = null;
+    let timeoutId: number | null = null;
 
     if (options && typeof (options.leading) === 'boolean') {
       leading = options.leading;
@@ -396,7 +397,10 @@ export class Async {
       let animationFrameCallback = () => {
         try {
           // Now delete the record and call the callback.
-          delete this._animationFrameIds[animationFrameId];
+          if (this._animationFrameIds) {
+            delete this._animationFrameIds[animationFrameId];
+          }
+
           callback.apply(this._parent);
         } catch (e) {
           this._logError(e);

@@ -5,17 +5,17 @@ const LOREM_IPSUM = ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
   'mollit anim id est laborum').split(' ');
 
 const DATA = {
-  'color' : [ 'red', 'blue', 'green', 'yellow' ],
-  'shape' : [ 'circle', 'square', 'triangle' ],
-  'location' : [ 'Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland' ]
+  'color': ['red', 'blue', 'green', 'yellow'],
+  'shape': ['circle', 'square', 'triangle'],
+  'location': ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
 };
 
 export function createListItems(count: number, startIndex = 0): any {
-  return Array.apply(null, Array(count)).map((item, index) => {
+  return Array.apply(null, Array(count)).map((item: any, index: number) => {
     let size = 150 + Math.round(Math.random() * 100);
 
     return {
-      thumbnail: `//placehold.it/${ size }x${ size }`,
+      thumbnail: `//placehold.it/${size}x${size}`,
       key: 'item-' + (index + startIndex) + ' ' + lorem(4),
       name: lorem(5),
       description: lorem(10 + Math.round(Math.random() * 50)),
@@ -30,11 +30,12 @@ export function createListItems(count: number, startIndex = 0): any {
 
 export function createGroups(
   groupCount: number, groupDepth: number, startIndex: number,
-  itemsPerGroup: number, level?: number, key?: string) {
-  key = key ? key + '-' : '';
-  level = level ? level : 0;
+  itemsPerGroup: number, level: number = 0, key: string = '') {
+  if (key !== '') {
+    key = key + '-';
+  }
   let count = Math.pow(itemsPerGroup, groupDepth);
-  return Array.apply(null, Array(groupCount)).map((value, index) => {
+  return Array.apply(null, Array(groupCount)).map((value: any, index: number) => {
     return {
       count: count,
       key: 'group' + key + index,
@@ -50,7 +51,7 @@ export function createGroups(
 
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
-    .map(item => _randWord(LOREM_IPSUM))
+    .map((item: any) => _randWord(LOREM_IPSUM))
     .join(' ');
 }
 

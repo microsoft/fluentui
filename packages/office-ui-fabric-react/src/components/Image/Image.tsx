@@ -8,7 +8,7 @@ import {
   getNativeProps,
   imageProperties
 } from '../../Utilities';
-import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
+import { IImageProps, ImageFit, ImageLoadState, ImageCoverStyle } from './Image.Props';
 import { AnimationClassNames } from '../../Styling';
 import * as stylesImport from './Image.scss';
 const styles: any = stylesImport;
@@ -17,14 +17,9 @@ export interface IImageState {
   loadState?: ImageLoadState;
 }
 
-export enum CoverStyle {
-  landscape = 0,
-  portrait = 1
-}
-
 export const CoverStyleMap = {
-  [CoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageIsLandscape,
-  [CoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imageIsPortrait
+  [ImageCoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageIsLandscape,
+  [ImageCoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imageIsPortrait
 };
 
 export const ImageFitMap = {
@@ -46,7 +41,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   // Make an initial assumption about the image layout until we can
   // check the rendered element. The value here only takes effect when
   // shouldStartVisible is true.
-  private _coverStyle: CoverStyle = CoverStyle.portrait;
+  private _coverStyle: ImageCoverStyle = ImageCoverStyle.portrait;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
 
@@ -72,7 +67,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this._checkImageLoaded();
     if (this.props.onLoadingStateChange
       && prevState.loadState !== this.state.loadState) {
-      this.props.onLoadingStateChange(this.state.loadState);
+      this.props.onLoadingStateChange(this.state.loadState!);
     }
   }
 
@@ -80,7 +75,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame } = this.props;
     let { loadState } = this.state;
-    let coverStyle = this._coverStyle;
+    let coverStyle = this.props.coverStyle !== undefined ? this.props.coverStyle : this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
 
     // If image dimensions aren't specified, the natural size of the image is used.
@@ -152,8 +147,8 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       // .complete, because .complete will also be set to true if the image breaks. However,
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
-      let isLoaded: boolean = src && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
-        (this._imageElement.complete && Image._svgRegex.test(src));
+      let isLoaded: boolean = src && this._imageElement && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
+        (this._imageElement.complete && Image._svgRegex.test(src!));
 
       if (isLoaded) {
         this._computeCoverStyle(this.props);
@@ -166,26 +161,28 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   private _computeCoverStyle(props: IImageProps) {
     let { imageFit, width, height } = props;
-    if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
-      if (this._imageElement) {
-        // Determine the desired ratio using the width and height props.
-        // If those props aren't available, measure measure the frame.
-        let desiredRatio;
-        if (!!width && !!height) {
-          desiredRatio = (width as number) / (height as number);
-        } else {
-          desiredRatio = this._frameElement.clientWidth / this._frameElement.clientHeight;
-        }
 
-        // Examine the source image to determine its original ratio.
-        let naturalRatio = this._imageElement.naturalWidth / this._imageElement.naturalHeight;
+    // Do not compute cover style if it was already specified in props
+    if ((imageFit === ImageFit.cover || imageFit === ImageFit.contain) &&
+      this.props.coverStyle === undefined &&
+      this._imageElement) {
+      // Determine the desired ratio using the width and height props.
+      // If those props aren't available, measure measure the frame.
+      let desiredRatio;
+      if (!!width && !!height) {
+        desiredRatio = (width as number) / (height as number);
+      } else {
+        desiredRatio = this._frameElement.clientWidth / this._frameElement.clientHeight;
+      }
 
-        // Should we crop from the top or the sides?
-        if (naturalRatio > desiredRatio) {
-          this._coverStyle = CoverStyle.landscape;
-        } else {
-          this._coverStyle = CoverStyle.portrait;
-        }
+      // Examine the source image to determine its original ratio.
+      let naturalRatio = this._imageElement.naturalWidth / this._imageElement.naturalHeight;
+
+      // Should we crop from the top or the sides?
+      if (naturalRatio > desiredRatio) {
+        this._coverStyle = ImageCoverStyle.landscape;
+      } else {
+        this._coverStyle = ImageCoverStyle.portrait;
       }
     }
   }

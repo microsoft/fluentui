@@ -6,19 +6,20 @@ import {
 import {
   Layer
 } from './Layer';
+import { ILayerHostProps } from './LayerHost.Props';
 
-export class LayerHost extends BaseComponent<React.HTMLAttributes<HTMLElement>, {}> {
+export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
 
   public shouldComponentUpdate() {
     return false;
   }
 
   public componentDidMount() {
-    Layer.notifyHostChanged(this.props.id);
+    Layer.notifyHostChanged(this.props.id!);
   }
 
   public componentWillUnmount() {
-    Layer.notifyHostChanged(this.props.id);
+    Layer.notifyHostChanged(this.props.id!);
   }
 
   public render() {

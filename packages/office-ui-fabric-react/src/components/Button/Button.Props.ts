@@ -13,7 +13,7 @@ export interface IButton {
   focus: () => void;
 }
 
-export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -75,9 +75,14 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
 
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks.
+   * how the default icon looks. Providing this in addition of onClick and setting the split property to true will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
+
+  /**
+   * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
+   */
+  split?: boolean;
 
   /**
    * The props for the icon shown when providing a menu dropdown.
@@ -138,7 +143,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * they will be mixed into the button/anchor element rendered by the component.
    * @deprecated
    */
-  rootProps?: React.HTMLAttributes<HTMLButtonElement> | React.HTMLAttributes<HTMLAnchorElement>;
+  rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
    * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
@@ -198,9 +203,19 @@ export interface IButtonStyles {
   rootHovered?: IStyle;
 
   /**
+   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   */
+  rootFocused?: IStyle;
+
+  /**
    * Style override applied to the root on pressed in the default, enabled, non-toggled state.
    */
   rootPressed?: IStyle;
+
+  /**
+   * Style override applied to the root on when menu is expanded in the default, enabled, non-toggled state.
+   */
+  rootExpanded?: IStyle;
 
   /**
    * Style override applied to the root on hover in a checked, enabled state
@@ -293,7 +308,47 @@ export interface IButtonStyles {
   descriptionChecked?: IStyle;
 
   /**
-   * Style for the screen reader text.
+   * Style override for the screen reader text.
    */
   screenReaderText?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element
+   */
+  splitButtonContainer?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element in a disabled state
+   */
+  splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button
+   */
+  splitButtonMenuButton?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a disabled state.
+   */
+  splitButtonMenuButtonDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a checked state
+   */
+  splitButtonMenuButtonChecked?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in an expanded state
+   */
+  splitButtonMenuButtonExpanded?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element
+   */
+  splitButtonMenuIcon?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element in a disabled state
+   */
+  splitButtonMenuIconDisabled?: IStyle;
 }

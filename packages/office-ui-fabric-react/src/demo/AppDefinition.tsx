@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { App as AppBase, IAppDefinition } from '@uifabric/example-app-base';
+import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from '../components/DetailsList/examples/DetailsList.Basic.Example';
 
 export const AppDefinition: IAppDefinition = {
@@ -53,6 +53,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/choicegroup'
         },
         {
+          component: require<any>('../components/ComboBox/ComboBoxPage').ComboBoxPage,
+          key: 'ComboBox',
+          name: 'ComboBox',
+          url: '#/examples/ComboBox'
+        },
+        {
           component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
           key: 'CommandBar',
           name: 'CommandBar',
@@ -99,6 +105,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Facepile',
           name: 'Facepile',
           url: '#/examples/facepile'
+        },
+        {
+          component: require<any>('../components/HoverCard/HoverCardPage').HoverCardPage,
+          key: 'HoverCard',
+          name: 'HoverCard',
+          url: '#/examples/hovercard'
         },
         {
           component: require<any>('../components/Icon/IconPage').IconPage,
@@ -197,6 +209,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/resizegroup'
         },
         {
+          component: require<any>('../components/ScrollablePane/ScrollablePanePage').ScrollablePanePage,
+          key: 'ScrollablePane',
+          name: 'ScrollablePane',
+          url: '#/examples/scrollablepane'
+        },
+        {
           component: require<any>('../components/SearchBox/SearchBoxPage').SearchBoxPage,
           key: 'SearchBox',
           name: 'SearchBox',
@@ -213,6 +231,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Spinner',
           name: 'Spinner',
           url: '#/examples/spinner'
+        },
+        {
+          component: require<any>('../components/SwatchColorPicker/SwatchColorPickerPage').SwatchColorPickerPage,
+          key: 'SwatchColorPicker',
+          name: 'SwatchColorPicker',
+          url: '#/examples/swatchcolorpicker'
         },
         {
           component: require<any>('../components/TeachingBubble/TeachingBubblePage').TeachingBubblePage,
@@ -336,4 +360,4 @@ export const AppDefinition: IAppDefinition = {
 
 };
 
-export const App = (props) => <AppBase appDefinition={ AppDefinition } { ...props } />;
+export const App = (props: IAppProps) => <AppBase appDefinition={ AppDefinition } { ...props } />;

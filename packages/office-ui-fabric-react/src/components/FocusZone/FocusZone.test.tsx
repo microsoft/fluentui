@@ -12,9 +12,9 @@ import { FocusZoneDirection } from './FocusZone.Props';
 import { assert } from 'chai';
 
 describe('FocusZone', () => {
-  let lastFocusedElement: HTMLElement;
+  let lastFocusedElement: HTMLElement | undefined;
 
-  function _onFocus(ev) {
+  function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
   }
 
@@ -588,5 +588,56 @@ describe('FocusZone', () => {
 
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.left });
     assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
+  });
+
+  it('Focus first tabbable element, when active elemet is dynamically disabled', () => {
+    let focusZone: FocusZone | null = null;
+    let buttonA: any;
+    let buttonB: any;
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <textarea className='t'></textarea>
+        <FocusZone ref={ (focus) => { focusZone = focus; } }>
+          <button className='a' ref={ (button) => { buttonA = button; } }>a</button>
+          <button className='b' ref={ (button) => { buttonB = button; } }>b</button>
+        </FocusZone>
+      </div>
+    );
+
+    const rootNode = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const textArea = rootNode.children[0];
+    const focusZoneElement = rootNode.children[1];
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // ButtonA should be focussed.
+    focusZone!.focus();
+    assert(lastFocusedElement === buttonA, 'buttonA was not focused');
+
+    buttonA.disabled = true;
+
+    // Focus the text area, outside focus zone.
+    ReactTestUtils.Simulate.focus(textArea);
+    assert(lastFocusedElement === textArea, 'textArea was not focused');
+
+    // ButtonB should be focussed.
+    focusZone!.focus();
+    assert(lastFocusedElement === buttonB, 'buttonB was not focused ');
   });
 });

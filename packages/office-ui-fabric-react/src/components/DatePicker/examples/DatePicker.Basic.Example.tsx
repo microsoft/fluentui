@@ -111,7 +111,7 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
               key: DayOfWeek[DayOfWeek.Saturday]
             }
           ] }
-          selectedKey={ DayOfWeek[firstDayOfWeek] }
+          selectedKey={ DayOfWeek[firstDayOfWeek!] }
           onChanged={ this._onDropdownChanged.bind(this) }
         />
       </div>
@@ -120,7 +120,7 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
 
   private _onDropdownChanged(option: IDropdownOption) {
     this.setState({
-      firstDayOfWeek: DayOfWeek[option.key]
+      firstDayOfWeek: (DayOfWeek as any)[option.key]
     });
   }
 }

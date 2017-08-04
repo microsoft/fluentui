@@ -50,12 +50,12 @@ let _items = [
   }
 ];
 
-function groupBy(items, fieldName) {
+function groupBy(items: any[], fieldName: string) {
   let groups = items.reduce((currentGroups, currentItem, index) => {
-    let lastGroup = currentGroups[currentGroups.length - 1];
+    let lastCurrentGroup = currentGroups[currentGroups.length - 1];
     let fieldValue = currentItem[fieldName];
 
-    if (!lastGroup || lastGroup.value !== fieldValue) {
+    if (!lastCurrentGroup || lastCurrentGroup.value !== fieldValue) {
       currentGroups.push({
         key: 'group' + fieldValue + index,
         name: `By "${fieldValue}"`,
@@ -65,8 +65,8 @@ function groupBy(items, fieldName) {
         count: 0
       });
     }
-    if (lastGroup) {
-      lastGroup.count = index - lastGroup.startIndex;
+    if (lastCurrentGroup) {
+      lastCurrentGroup.count = index - lastCurrentGroup.startIndex;
     }
     return currentGroups;
   }, []);

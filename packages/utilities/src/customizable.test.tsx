@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
+import { GlobalSettings } from './GlobalSettings';
 
 let { expect } = chai;
 
@@ -10,14 +11,14 @@ class Foo extends React.Component<{ field: string; }, {}> {
   public name: any;
 
   public render() {
-    return <div>{ this.props[this.props.field] }</div>;
+    return <div>{ (this.props as any)[this.props.field] }</div>;
   }
 }
 
 describe('customizable', () => {
 
   it('can inject customizations', () => {
-    Customizer.setDefault('name', 'defaultName');
+    GlobalSettings.setValue('name', 'defaultName');
 
     expect(ReactDOM.renderToStaticMarkup(<Foo field='name' />)).equals('<div>defaultName</div>');
     expect(ReactDOM.renderToStaticMarkup(<Foo field='name2' />)).equals('<div></div>');

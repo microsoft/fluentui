@@ -12,13 +12,21 @@ import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
-export interface ICalendarMonthProps {
+export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
+  componentRef?: () => void;
   navigatedDate: Date;
   strings: ICalendarStrings;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+  today?: Date;
+  highlightCurrentMonth: boolean;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
+  public refs: {
+    [key: string]: React.ReactInstance;
+    navigatedMonth: HTMLElement;
+  };
+
   private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {
@@ -29,6 +37,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 
+    this.isCurrentMonth = this.isCurrentMonth.bind(this);
     this._onSelectNextYear = this._onSelectNextYear.bind(this);
     this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
     this._onSelectMonth = this._onSelectMonth.bind(this);
@@ -36,7 +45,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -53,7 +62,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.prevYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronRight' : 'chevronLeft' } />
+              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
             </span>
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
@@ -62,7 +71,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.nextYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'chevronLeft' : 'chevronRight' } />
+              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
@@ -72,11 +81,18 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             { strings.shortMonths.map((month, index) =>
               <span
                 role='button'
-                className={ css('ms-DatePicker-monthOption', styles.monthOption) }
+                className={
+                  css('ms-DatePicker-monthOption',
+                    styles.monthOption,
+                    {
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today!)
+                    })
+                }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
                 aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                 data-is-focusable={ true }
+                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
                 { month }
               </span>
@@ -85,6 +101,17 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         </FocusZone>
       </div>
     );
+  }
+
+  public focus() {
+    if (this.refs.navigatedMonth) {
+      this.refs.navigatedMonth.tabIndex = 0;
+      this.refs.navigatedMonth.focus();
+    }
+  }
+
+  private isCurrentMonth(month: number, year: number, today: Date) {
+    return today.getFullYear() === year && today.getMonth() === month;
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
@@ -96,12 +123,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _onSelectNextYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
-  };
+  }
 
   private _onSelectPrevYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
-  };
+  }
 
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;

@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
-import { IRenderFunction } from '../../../Utilities';
+import { IRenderFunction, KeyCodes } from '../../../Utilities';
 import { IPersonaProps } from '../../Persona/Persona.Props';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
+  /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion: (props: T, suggestionItemProps: any) => JSX.Element;
+  onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
   /**
    * What should occur when a suggestion is clicked
    */
@@ -101,9 +106,18 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+  /**
+   * Screen reader message to read when there are suggestions available.
+   */
+  suggestionsAvailableAlertText?: string;
+  /**
+   * A function that resets focus to the expected item in the suggestion list
+   */
+  refocusSuggestions?: (keyCode: KeyCodes) => void;
 }
 
 export interface ISuggestionItemProps<T> {
+  componentRef?: () => void;
   suggestionModel: ISuggestionModel<T>;
   RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;

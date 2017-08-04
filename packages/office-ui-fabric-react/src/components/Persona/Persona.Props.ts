@@ -47,6 +47,11 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   imageUrl?: string;
 
   /**
+   * Alt text for the image to use. Defaults to an empty string.
+   */
+  imageAlt?: string;
+
+  /**
    * The user's initials to display in the image area when there is no image.
    * @defaultvalue [Derived from primaryText]
    */
@@ -123,7 +128,8 @@ export enum PersonaSize {
   regular = 4,
   large = 5,
   extraLarge = 6,
-  size28 = 7
+  size28 = 7,
+  size16 = 8
 }
 
 export enum PersonaPresence {

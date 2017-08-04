@@ -1,12 +1,14 @@
 import { getDocument, getWindow } from './dom';
 
 // Default to undefined so that we initialize on first read.
-let _language: string;
+let _language: string | null;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
+ *
+ * @public
  */
-export function getLanguage(): string {
+export function getLanguage(): string | null {
   if (_language === undefined) {
     let doc = getDocument();
     let win = getWindow();
@@ -34,6 +36,8 @@ export function getLanguage(): string {
 
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
+ *
+ * @public
  */
 export function setLanguage(language: string, avoidPersisting = false): void {
   let doc = getDocument();

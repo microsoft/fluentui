@@ -3,19 +3,21 @@ import * as React from 'react';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
-import { shallow } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import * as chai from 'chai';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
+const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+
 const { expect } = chai;
 
 describe('Persona', () => {
-  describe('initials and colors', () => {
-    beforeEach(() => {
-      setRTL(false);
-    });
+  beforeEach(() => {
+    setRTL(false);
+  });
 
+  describe('initials and colors', () => {
     it('renders with expected initialsColor if none was provided', () => {
       const wrapper = shallow(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find('.' + styles.initialsIsRed);
@@ -75,4 +77,19 @@ describe('Persona', () => {
     });
   });
 
+  describe('image', () => {
+    it('renders empty alt text by default', () => {
+      const wrapper = shallow(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
+      const image: ShallowWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
+
+      expect(image.props().alt).to.equal('');
+    });
+
+    it('renders its given alt text', () => {
+      const wrapper = shallow(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } imageAlt='ALT TEXT' />);
+      const image: ShallowWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
+
+      expect(image.props().alt).to.equal('ALT TEXT');
+    });
+  });
 });

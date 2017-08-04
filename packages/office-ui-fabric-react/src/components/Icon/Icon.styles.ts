@@ -11,18 +11,21 @@ import { IIconStyles } from './Icon.Props';
 
 export const getStyles = memoizeFunction((
   theme: ITheme = getTheme(),
-  customStyles: IIconStyles = undefined
+  customStyles: IIconStyles | undefined = undefined
 ): IIconStyles => {
   let iconStyles = {
 
-    root: mergeStyles({
-      display: 'inline-block'
-    }),
+    root: mergeStyles([
+      theme.fonts.icon,
+      {
+        display: 'inline-block'
+      }
+    ]),
 
     imageContainer: mergeStyles({
       overflow: 'hidden'
     })
   };
 
-  return mergeStyleSets(iconStyles, customStyles);
+  return mergeStyleSets(iconStyles, customStyles)!;
 });

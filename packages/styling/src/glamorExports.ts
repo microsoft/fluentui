@@ -1,7 +1,7 @@
 import * as Glamor from 'glamor';
 import rtlify from 'rtl-css-js';
 import { IRawStyle, IProcessedStyle } from './interfaces/index';
-import { getRTL } from '@uifabric/utilities/lib/index';
+import { getRTL } from '@uifabric/utilities/lib/rtl';
 
 interface IGlamorRulePair {
   selector: string;
@@ -10,14 +10,14 @@ interface IGlamorRulePair {
 
 function _initializeGlamor(): void {
   // force speedy.
-  // tslint:disable-next-line:no-string-literal
-  if (!Glamor['styleSheet'] || !Glamor['styleSheet'].isSpeedy) {
-    // tslint:disable-next-line:no-string-literal
-    Glamor['speedy'](true);
+  // tslint:disable-next-line:no-string-literal no-any
+  if (!(Glamor as any)['styleSheet'] || !(Glamor as any)['styleSheet'].isSpeedy) {
+    // tslint:disable-next-line:no-string-literal no-any
+    (Glamor as any)['speedy'](true);
   }
 
-  // tslint:disable-next-line:no-string-literal
-  Glamor['plugins'].add(
+  // tslint:disable-next-line:no-string-literal no-any
+  (Glamor as any)['plugins'].add(
     ({ selector, style }: IGlamorRulePair): IGlamorRulePair => (
       {
         selector,

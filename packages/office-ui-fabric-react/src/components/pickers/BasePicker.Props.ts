@@ -2,11 +2,14 @@ import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
 import { IRenderFunction } from '../../Utilities';
+import { ISuggestionModel } from './Suggestions/SuggestionsController';
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
+  componentRef?: () => void;
+
   /**
    * Function that specifies how the selected item will appear.
    */
@@ -14,7 +17,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  onRenderSuggestionsItem?: (props: T, itemProps?: T) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
@@ -52,13 +55,17 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * AutoFill input native props
    * @default undefined
    */
-  inputProps?: React.HTMLAttributes<HTMLInputElement>;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
   onRemoveSuggestion?: (item: IPersonaProps) => void;
   /**
-   * The text to display while searching for more results in a limited sugesstions list
+   * A function used to validate if raw text entered into the well can be added into the selected items list
+   */
+  onValidateInput?: (input: string) => ValidationState;
+  /**
+   * The text to display while searching for more results in a limited suggestions list
    */
   searchingText?: ((props: { input: string }) => string) | string;
   /**
@@ -66,6 +73,23 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default false
    */
   disabled?: boolean;
+  /**
+   * Function that specifies how arbitrary text entered into the well is handled.
+   */
+  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
+  /**
+   * Aria label for the "X" button in the selected item component.
+   * @default ''
+   */
+  removeButtonAriaLabel?: string;
+  /**
+   * A callback to process a selection after the user selects something from the picker.
+   */
+  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
+  /**
+   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
+   */
+  selectedItems?: T[];
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -125,4 +149,14 @@ export interface IBasePickerSuggestionsProps {
    * Indicates whether to show a button with each suggestion to remove that suggestion.
    */
   showRemoveButtons?: boolean;
+  /**
+   * Screen reader message to read when there are suggestions available.
+   */
+  suggestionsAvailableAlertText?: string;
+}
+
+export enum ValidationState {
+  valid,
+  warning,
+  invalid
 }

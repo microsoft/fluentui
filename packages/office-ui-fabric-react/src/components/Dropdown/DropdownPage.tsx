@@ -6,8 +6,10 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
+import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -16,9 +18,17 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         title='Dropdown'
         componentName='DropdownExample'
         exampleCards={
-          <ExampleCard title='Dropdown' code={ DropdownBasicExampleCode }>
-            <DropdownBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Dropdown' code={ DropdownBasicExampleCode }>
+              <DropdownBasicExample />
+            </ExampleCard>
+
+            <ExampleCard title='Customized Dropdown' code={ DropdownCustomExampleCode }>
+              <DropdownCustomExample />
+            </ExampleCard>
+
+          </div>
+
         }
         propertiesTables={
           <PropertiesTableSet
