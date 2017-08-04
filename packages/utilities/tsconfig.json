@@ -21,6 +21,8 @@
     ]
   },
   "exclude": [
+    "api",
+    "temp",
     "node_modules",
     "dist",
     "lib",

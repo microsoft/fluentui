@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ResizeGroup: Add support for onGrowData",
+      "comment": "PeoplePicker: Improved keyboard support and font size updates.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "v-krbrow@microsoft.com"
 }

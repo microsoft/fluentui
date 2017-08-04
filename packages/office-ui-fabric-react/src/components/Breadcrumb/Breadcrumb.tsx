@@ -41,8 +41,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     const { onReduceData = this._onReduceData, maxDisplayedItems, items } = this.props;
     const breadCrumbData: IBreadCrumbData = {
       props: this.props,
-      renderedItems: items.slice(-maxDisplayedItems),
-      renderedOverflowItems: items.slice(0, -maxDisplayedItems)
+      renderedItems: items.slice(-maxDisplayedItems!),
+      renderedOverflowItems: items.slice(0, -maxDisplayedItems!)
     };
 
     return (
@@ -97,7 +97,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  menuIconProps={ null }
+                  menuIconProps={ undefined }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge

@@ -162,6 +162,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'Bing',
                   name: 'Go to Bing',
+                  target: '_blank',
                   href: 'http://www.bing.com'
                 },
               ]

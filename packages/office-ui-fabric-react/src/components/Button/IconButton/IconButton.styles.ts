@@ -37,6 +37,10 @@ export const getStyles = memoizeFunction((
       color: theme.palette.themePrimary
     },
 
+    rootExpanded: {
+      color: theme.palette.themePrimary
+    },
+
     rootChecked: {
       backgroundColor: theme.palette.neutralTertiaryAlt,
     },
@@ -50,5 +54,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles);
+  return mergeStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
 });

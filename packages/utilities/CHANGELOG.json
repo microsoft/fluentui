@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.9.0",
+      "tag": "@uifabric/utilities_v4.9.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.8.1",
       "tag": "@uifabric/utilities_v4.8.1",
       "date": "Fri, 21 Jul 2017 10:21:45 GMT",

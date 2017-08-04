@@ -11,6 +11,7 @@ import {
   KeyCodes,
   css,
 } from '../../Utilities';
+import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -56,11 +57,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._warnConditionallyRequiredProps(
       ['menuProps', 'onClick'],
       'split',
-      this.props.split
+      this.props.split!
     );
 
     this._warnDeprecations({
-      rootProps: null,
+      rootProps: undefined,
       icon: 'iconProps',
       menuIconName: 'menuIconProps',
       toggled: 'checked'
@@ -90,12 +91,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
          } = this.props;
 
     this._classNames = getClassNames(
-      styles,
-      className,
-      variantClassName,
+      styles!,
+      className!,
+      variantClassName!,
       iconProps && iconProps.className,
-      disabled,
-      checked
+      disabled!,
+      checked!,
+      this.state.menuProps != null && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -216,7 +218,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
-  private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
+  private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
     let {
       baseClassName,
       disabled,
@@ -232,16 +234,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       } as IIconProps;
     }
 
-    return iconProps && (
-      Icon({
+    if (iconProps) {
+      return Icon({
         ...iconProps,
         className: this._classNames.icon
-      })
-    );
+      });
+    }
+    return null;
   }
 
   @autobind
-  private _onRenderText() {
+  private _onRenderText(): JSX.Element | null {
     let {
       children,
       disabled,
@@ -254,14 +257,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       text = children;
     }
 
-    return text && (
-      <span
-        className={ this._classNames.label }
-        id={ this._labelId }
-      >
-        { text }
-      </span>
-    );
+    if (text) {
+      return (
+        <span
+          className={ this._classNames.label }
+          id={ this._labelId }
+        >
+          { text }
+        </span>
+      );
+    }
+
+    return null;
   }
 
   @autobind
@@ -304,7 +311,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ styles.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ styles!.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
@@ -374,9 +381,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
-        className={ css(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
+        className={ css(disabled ? styles!.splitButtonContainerDisabled : styles!.splitButtonContainer) }
         tabIndex={ 0 }
-        onKeyDown={ this.props.disabled ? null : this._onSplitButtonKeyDown }
+        onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
       >
         <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
@@ -404,14 +411,22 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       <IconButton
         tabIndex={ -1 }
         styles={ {
-          root: disabled ? styles.splitButtonMenuButtonDisabled : styles.splitButtonMenuButton,
-          rootChecked: styles.splitButtonMenuButtonChecked,
-          icon: disabled ? styles.splitButtonMenuIconDisabled : styles.splitButtonMenuIcon
+          root: mergeStyles(
+            styles!.splitButtonMenuButton,
+            !!this.state.menuProps && [
+              styles!.splitButtonMenuButtonExpanded
+            ],
+            disabled && [
+              styles!.splitButtonMenuButtonDisabled
+            ],
+          ) as string,
+          rootChecked: styles!.splitButtonMenuButtonChecked,
+          icon: disabled ? styles!.splitButtonMenuIconDisabled : styles!.splitButtonMenuIcon
         } }
         checked={ this.props.checked }
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
-        menuProps={ null }
+        menuProps={ undefined }
         iconProps={ menuIconProps } />
     );
   }
@@ -421,7 +436,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     switch (ev.which) {
       case KeyCodes.enter:
       case KeyCodes.space:
-        this.props.onClick(null);
+        (this.props.onClick as any)(null);
         return;
     }
 

@@ -104,9 +104,9 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onReduceData: (prevData: any) => any,
     getElementToMeasureWidth: () => number): IResizeGroupState {
     let dataToMeasure = data;
-    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
+    let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
-    while (measuredWidth > _containerWidth) {
+    while (measuredWidth > _containerWidth!) {
       let nextMeasuredData = onReduceData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
@@ -152,9 +152,9 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData: (prevData: any) => any,
     getElementToMeasureWidth: () => number): IResizeGroupState {
     let dataToMeasure = data;
-    let measuredWidth = _getMeasuredWidth(data, getElementToMeasureWidth);
+    let measuredWidth: number | undefined = _getMeasuredWidth(data, getElementToMeasureWidth);
 
-    while (measuredWidth < _containerWidth) {
+    while (measuredWidth < _containerWidth!) {
       let nextMeasuredData = onGrowData(dataToMeasure);
 
       // We don't want to get stuck in an infinite render loop when there are no more
@@ -195,7 +195,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    */
   function _updateContainerWidth(newWidth: number, fullWidthData: any, renderedData: any, onGrowData?: (prevData: any) => any): IResizeGroupState {
     let nextState: IResizeGroupState;
-    if (newWidth > _containerWidth) {
+    if (newWidth > _containerWidth!) {
       if (onGrowData) {
         nextState = {
           resizeDirection: 'grow',
@@ -228,7 +228,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
     if (newContainerWidth) {
       // If we know what the last container size was and we rendered data at that width, we can do an optimized render
-      if (_containerWidth && currentState.renderedData) {
+      if (_containerWidth && currentState.renderedData && !currentState.dataToMeasure) {
         return { ...currentState, ..._updateContainerWidth(newContainerWidth, props.data, currentState.renderedData, props.onGrowData) };
       }
 
@@ -299,7 +299,6 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
-      renderedData: undefined,
       measureContainer: true // Receiving new props means the parent might rerender and the root width might change
     });
   }

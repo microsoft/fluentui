@@ -47,14 +47,15 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className } = this.props;
+    let { labelText, className, disabled } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
         className={ css('ms-SearchBox', className, styles.root, {
           ['is-active ' + styles.rootIsActive]: hasFocus,
-          ['can-clear ' + styles.rootCanClear]: value.length > 0,
+          ['is-disabled ' + styles.rootIsDisabled]: disabled,
+          ['can-clear ' + styles.rootCanClear]: value!.length > 0,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
@@ -71,6 +72,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
+          disabled={ this.props.disabled }
           aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
           ref={ this._resolveRef('_inputElement') }
         />
@@ -95,6 +97,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onClearClick(ev?: any) {
+    this._latestValue = '';
     this.setState({
       value: ''
     });
@@ -123,7 +126,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         break;
 
       case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value.length > 0) {
+        if (this.props.onSearch && this.state.value!.length > 0) {
           this.props.onSearch(this.state.value);
         }
         break;

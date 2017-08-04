@@ -15,6 +15,7 @@ import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
+import { PanelFooterExample } from './examples/Panel.Footer.Example';
 import { FontClassNames } from '../../Styling';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
@@ -27,6 +28,7 @@ const PanelExtraLargeExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const PanelCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Custom.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
+const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 
 export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -62,9 +64,12 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Non-Modal' code={ PanelNonModalExampleCode }>
               <PanelNonModalExample />
+            </ExampleCard>
+            <ExampleCard title='Panel - Footer' code={ PanelFooterExampleCode }>
+              <PanelFooterExample />
             </ExampleCard>
           </div>
         }
@@ -107,7 +112,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div>
             <ul>
-              <li>Use for experiences where the user needs to interact with the app view. Use a Pane (which pushes content, doesn’t use an overlay, and sits on the same z-index as the rest of the UI) instead.</li>
+              <li>Use for experiences where the user needs to interact with the app view.</li>
             </ul>
           </div>
         }

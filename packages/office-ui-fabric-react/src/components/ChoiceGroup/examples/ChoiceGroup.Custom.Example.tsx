@@ -23,7 +23,7 @@ export class ChoiceGroupCustomExample extends React.Component<any, any> {
               onRenderField: (props, render) => {
                 return (
                   <div className={ css(styles.root) }>
-                    { render(props) }
+                    { render!(props) }
                     <Dropdown
                       className={ css(styles.dropdown) }
                       defaultSelectedKey='A'

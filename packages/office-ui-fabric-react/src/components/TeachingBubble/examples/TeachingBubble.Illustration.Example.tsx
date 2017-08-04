@@ -36,7 +36,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<any, ITea
 
     return (
       <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
           <DefaultButton
             onClick={ this._onDismiss }
             text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }

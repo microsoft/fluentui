@@ -56,7 +56,11 @@ export const getStyles = memoizeFunction((
     splitButtonMenuButtonChecked: {
       backgroundColor: theme.palette.themePrimary,
     },
+
+    splitButtonMenuButtonExpanded: {
+      backgroundColor: theme.palette.neutralLight,
+    },
   };
 
-  return mergeStyleSets(iconButtonStyles, customStyles);
+  return mergeStyleSets(iconButtonStyles, customStyles)!;
 });

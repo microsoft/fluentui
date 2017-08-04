@@ -29,6 +29,11 @@ export interface ISplitButtonStyles extends IButtonStyles {
   splitButtonMenuButtonChecked?: IStyle;
 
   /**
+   * Style override for the SplitButton menu button element in an expanded state
+   */
+  splitButtonMenuButtonExpanded?: IStyle;
+
+  /**
    * Style override for the SplitButton menu icon element
    */
   splitButtonMenuIcon?: IStyle;
