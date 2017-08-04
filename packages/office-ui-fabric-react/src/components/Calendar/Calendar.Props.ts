@@ -152,12 +152,12 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 
   /**
-  * Aria-label for the "current month" button.
+  * Aria-label for the "month picker" button.
   */
-  currentMonthAriaLabel?: string;
+  monthPickerAriaLabel?: string;
 
   /**
-  * Aria-label for the "current year" button.
+  * Aria-label for the "day picker" button.
   */
-  currentYearAriaLabel?: string;
+  dayPickerAriaLabel?: string;
 }

@@ -127,7 +127,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
                 onClick={ () => this._onSelectSwitchCalendar(false) }
                 onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
-                aria-label={ strings.currentMonthAriaLabel }
+                aria-label={ strings.monthPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
               />
@@ -252,7 +252,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _onSelectSwitchCalendar(focus: boolean) {
-    console.log('switch it! 22')
     this.props.onSelectSwitchCalendar(focus);
   }
 

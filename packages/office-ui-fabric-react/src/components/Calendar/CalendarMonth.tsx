@@ -83,7 +83,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
                 onClick={ () => this._onSelectSwitchCalendar(false) }
                 onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
-                aria-label={ strings.currentMonthAriaLabel }
+                aria-label={ strings.dayPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
               />
@@ -151,7 +151,6 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _onSelectSwitchCalendar(focus: boolean) {
-    console.log('switch it!')
     this.props.onSelectSwitchCalendar(focus);
   }
 }

@@ -138,7 +138,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onSelectSwitchCalendar={ this._onSelectSwitchCalendar }
                   ref='monthPicker' /> }
 
-                { showGoToToday && isMonthPickerVisible &&
+                { showGoToToday &&
                   <span
                     role='button'
                     className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
@@ -200,7 +200,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       isMonthPickerVisible: !this.state.isMonthPickerVisible
     });
 
-    focus ? this._focusOnUpdate = focus : null
+    focus ? this._focusOnUpdate = focus : null;
   }
 
   @autobind
