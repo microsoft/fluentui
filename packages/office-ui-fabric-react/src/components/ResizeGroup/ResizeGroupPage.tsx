@@ -7,8 +7,11 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
+import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
+
+const ResizeGroupFlexBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
 
 export class ResizeGroupPage extends React.Component<any, any> {
   public render() {
@@ -18,8 +21,11 @@ export class ResizeGroupPage extends React.Component<any, any> {
         componentName='ResizeGroupExample'
         exampleCards={
           <LayerHost>
-            <ExampleCard title='ResizeGroup' code={ ResizeGroupBasicExampleCode }>
+            <ExampleCard title='Use ResizeGroup to move commands into an overflow menu' code={ ResizeGroupBasicExampleCode }>
               <ResizeGroupOverflowSetExample />
+            </ExampleCard>
+            <ExampleCard title='Use ResizeGroup to prevent two groups of items from overlapping' code={ ResizeGroupFlexBoxExampleCode }>
+              <FlexBoxResizeGroupExample />
             </ExampleCard>
           </LayerHost>
         }

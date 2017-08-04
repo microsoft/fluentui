@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.17.0",
+      "tag": "@uifabric/styling_v0.17.0",
+      "date": "Fri, 04 Aug 2017 10:11:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "a230ec9fb1b83d215f7281cc3ee75f05d90f91f3",
+            "comment": "Theming: add semantic slots for warnings, and also legacy theme semantic slots"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.0",
       "tag": "@uifabric/styling_v0.16.0",
       "date": "Thu, 03 Aug 2017 10:13:03 GMT",
