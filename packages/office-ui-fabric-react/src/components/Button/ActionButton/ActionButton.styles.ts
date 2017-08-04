@@ -1,5 +1,4 @@
 import { IButtonStyles } from '../Button.Props';
-import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
   mergeStyleSets

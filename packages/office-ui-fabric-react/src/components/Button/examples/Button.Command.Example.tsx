@@ -10,6 +10,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
         <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
           <CommandButton
             data-automation-id='test'
+            styles={ { icon: { fontSize: '18px' } } }
             disabled={ disabled }
             checked={ checked }
             iconProps={ { iconName: 'Add' } }

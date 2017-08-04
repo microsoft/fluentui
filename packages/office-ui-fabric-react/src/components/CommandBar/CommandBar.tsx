@@ -12,6 +12,7 @@ import { OverflowSet } from '../../OverflowSet';
 import { FocusZone } from '../../FocusZone';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost } from '../../Tooltip';
+import { FontSizes } from 'office-ui-fabric-react/lib/Styling';
 import * as stylesImport from './CommandBar.scss';
 const styles: any = stylesImport;
 
@@ -101,7 +102,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                   return (
                     this._onRenderButton({
                       key: 'oveflowButton',
-                      styles: { buttonStyles },
+                      styles: { ...buttonStyles, menuIcon: { fontSize: FontSizes.large } },
                       ariaLabel: elipisisAriaLabel,
                       className: css(styles.overflowButton),
                       menuProps: { items: renderedOverflowItems },
@@ -199,7 +200,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onRenderButton(item: ICommandBarItemProps) {
-    return <CommandButton {...item as any} />;
+  private _onRenderButton(props: ICommandBarItemProps) {
+    return <CommandButton {...props as any} />;
   }
 }

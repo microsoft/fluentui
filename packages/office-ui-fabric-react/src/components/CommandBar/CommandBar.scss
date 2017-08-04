@@ -1,31 +1,8 @@
 @import '../../common/common';
 
 .root {
-  @include ms-font-m;
-  color: $ms-color-neutralPrimary;
-  position: relative;
   display: flex;
   background-color: $ms-color-neutralLighter;
-  white-space: nowrap;
-  user-select: none;
-  .search {
-    margin: 0;
-    width: 208px;
-    background: $ms-color-white;
-    border-color: transparent;
-    border-right-color: $ms-color-neutralLight;
-    position: relative;
-    height: auto;
-    &:after {
-      content: "";
-      position: absolute;
-      background: $ms-color-neutralLight;
-      height: 1px;
-      left: 0;
-      bottom: 0;
-      right: 10px;
-    }
-  }
 }
 
 .primarySet {
@@ -37,7 +14,7 @@
 
 .secondarySet {
   @include margin-right(16px);
+  flex-shrink: 0;
   display: flex;
   align-items: stretch;
 }
-

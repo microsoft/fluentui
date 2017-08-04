@@ -82,7 +82,7 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Custom styles for individual button
    */
-  buttonStyles?: IButtonStyles;
+  styles?: IButtonStyles;
 
   /**
    * Context under which the item is being rendered
