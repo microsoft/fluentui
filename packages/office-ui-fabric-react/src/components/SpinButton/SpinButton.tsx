@@ -154,7 +154,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     );
 
     return (
-      <div className={ classNames.container }>
+      <div className={ classNames.root }>
         { labelPosition !== Position.bottom && <div className={ classNames.labelWrapper }>
           { iconProps && <Icon iconName={ iconProps.iconName } className={ classNames.icon } aria-hidden='true'></Icon> }
           { label &&
@@ -166,7 +166,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           }
         </div> }
         <div
-          className={ classNames.root }
+          className={ classNames.spinButtonWrapper }
           title={ title && title }
           aria-label={ ariaLabel && ariaLabel }
         >

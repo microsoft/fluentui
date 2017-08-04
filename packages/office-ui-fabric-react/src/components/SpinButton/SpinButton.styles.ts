@@ -122,7 +122,7 @@ export const getStyles = memoizeFunction((
   const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
 
   const defaultStyles: ISpinButtonStyles = {
-    container: {
+    root: {
       outline: 'none',
       fontSize: '12px',
       width: '100%',
@@ -164,7 +164,7 @@ export const getStyles = memoizeFunction((
       paddingBottom: '2px',
       paddingLeft: '0',
     },
-    root: {
+    spinButtonWrapper: {
       display: 'flex',
       height: '26px',
       minWidth: '86px',
@@ -172,24 +172,24 @@ export const getStyles = memoizeFunction((
       borderStyle: 'solid',
       borderColor: SpinButtonRootBorderColor,
     },
-    rootTopBottom: {
+    spinButtonWrapperTopBottom: {
       width: '100%'
     },
-    rootHovered: {
+    spinButtonWrapperHovered: {
       borderColor: SpinButtonRootBorderColorHovered,
       outline: '2px dashed transparent',
       [MS_HIGHCONTRAST_ACTIVE]: {
         borderColor: 'Highlight'
       }
     },
-    rootFocused: {
+    spinButtonWrapperFocused: {
       borderColor: SpinButtonRootBorderColorFocused,
       outline: '2px dashed transparent',
       [MS_HIGHCONTRAST_ACTIVE]: {
         borderColor: 'Highlight'
       }
     },
-    rootDisabled: _getDisabledStyles(theme),
+    spinButtonWrapperDisabled: _getDisabledStyles(theme),
     input: {
       boxSizing: 'border-box',
       boxShadow: 'none',

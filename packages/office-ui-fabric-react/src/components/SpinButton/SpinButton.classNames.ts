@@ -5,11 +5,11 @@ import { KeyboardSpinDirection } from './SpinButton';
 import { Position } from '../../utilities/positioning';
 
 export interface ISpinButtonClassNames {
-  container: string;
+  root: string;
   labelWrapper: string;
   icon: string;
   label: string;
-  root: string;
+  spinButtonWrapper: string;
   input: string;
   arrowBox: string;
 }
@@ -22,8 +22,8 @@ export const getClassNames = memoizeFunction((
   labelPosition: Position = Position.start
 ): ISpinButtonClassNames => {
   return {
-    container: mergeStyles(
-      styles.container
+    root: mergeStyles(
+      styles.root
     ) as string,
     labelWrapper: mergeStyles(
       styles.labelWrapper,
@@ -35,20 +35,20 @@ export const getClassNames = memoizeFunction((
     label: mergeStyles(
       styles.label
     ) as string,
-    root: mergeStyles(
-      styles.root,
+    spinButtonWrapper: mergeStyles(
+      styles.spinButtonWrapper,
       _getStyleForRootBasedOnPosition(labelPosition, styles),
       !disabled && [
         {
-          ':hover': styles.rootHovered
+          ':hover': styles.spinButtonWrapperHovered
         },
         isFocused && {
           // This is to increase the specifity of the focus styles
           // and make it equal to that of the hover styles.
-          '&&': styles.rootFocused
+          '&&': styles.spinButtonWrapperFocused
         }
       ],
-      disabled && styles.rootDisabled
+      disabled && styles.spinButtonWrapperDisabled
     ) as string,
     input: mergeStyles(
       'ms-spinButton-input',
@@ -88,7 +88,7 @@ function _getStyleForRootBasedOnPosition(labelPosition: Position, styles: ISpinB
   switch (labelPosition) {
     case Position.top:
     case Position.bottom:
-      return styles.rootTopBottom;
+      return styles.spinButtonWrapperTopBottom;
     default:
       return {
 

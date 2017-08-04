@@ -149,9 +149,9 @@ export interface ISpinButtonProps {
 export interface ISpinButtonStyles {
 
   /**
-   * Styles for the container of the spin button component.
+   * Styles for the root of the spin button component.
    */
-  container: IStyle;
+  root: IStyle;
 
   /**
    * Style for the label wrapper element of the component
@@ -190,29 +190,29 @@ export interface ISpinButtonStyles {
   label: IStyle;
 
   /**
-   * Style for root when enabled.
+   * Style for spinButtonWrapper when enabled.
    */
-  root: IStyle;
+  spinButtonWrapper: IStyle;
 
   /**
-   * Style override when
+   * Style override when label is positioned at the top/bottom.
    */
-  rootTopBottom: IStyle;
+  spinButtonWrapperTopBottom: IStyle;
 
   /**
    * Style override when spinButton is enabled/hovered.
    */
-  rootHovered: IStyle;
+  spinButtonWrapperHovered: IStyle;
 
   /**
    * Style override when spinButton is enabled/focused.
    */
-  rootFocused: IStyle;
+  spinButtonWrapperFocused: IStyle;
 
   /**
    * Style override when spinButton is disabled.
    */
-  rootDisabled: IStyle;
+  spinButtonWrapperDisabled: IStyle;
 
   /**
    * Styles for the input.
