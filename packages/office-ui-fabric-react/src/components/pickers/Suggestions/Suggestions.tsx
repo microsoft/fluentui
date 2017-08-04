@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   BaseComponent,
   css,
-  assign
+  autobind,
+  assign,
+  KeyCodes
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
@@ -124,6 +126,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
             iconProps={ { iconName: 'Search' } }
             onClick={ this._getMoreResults.bind(this) }
+            onKeyDown={ this._onKeyDown }
           >
             { searchForMoreText }
           </CommandButton>
@@ -211,4 +214,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     }
   }
 
+  @autobind
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
+    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
+      this.props.refocusSuggestions(ev.keyCode);
+    }
+  }
 }
