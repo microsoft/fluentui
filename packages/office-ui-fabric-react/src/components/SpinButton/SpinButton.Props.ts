@@ -123,6 +123,24 @@ export interface ISpinButtonProps {
   styles?: Partial<ISpinButtonStyles>;
 
   /**
+   * Custom styles for the upArrow button.
+   *
+   * Note: The buttons are in a checked state when arrow keys are used to
+   * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
+   * for styling when that is the case.
+   */
+  upArrowButtonStyles?: Partial<IButtonStyles>;
+
+  /**
+   * Custom styles for the downArrow button.
+   *
+   * Note: The buttons are in a checked state when arrow keys are used to
+   * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
+   * for styling when that is the case.
+   */
+  downArrowButtonStyles?: Partial<IButtonStyles>;
+
+  /**
    * Theme provided by HOC.
    */
   theme?: ITheme;
@@ -220,63 +238,4 @@ export interface ISpinButtonStyles {
    * Style override for the arrowButtonsContainer when spin button is disabled.
    */
   arrowButtonsContainerDisabled: IStyle;
-
-  /**
-   * Styles common for the upArrow and downArrow buttons.
-   */
-  arrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
-
-  /**
-   * Style override for the upArrow button.
-   */
-  upArrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
-
-  /**
-   * Style override for the downArrow button.
-   */
-  downArrowButtonStyles: Partial<ISpinButtonArrowButtonStyles>;
-}
-
-/**
- * Styles for the arrow buttons.
- *
- * Note: The buttons are in a checked state when arrow keys are used to
- * incremenent/decrement the spinButton. Use rootChecked instead of rootPressed
- * for styling when that is the case.
- */
-export interface ISpinButtonArrowButtonStyles extends IButtonStyles {
-
-  /**
-   * Style for arrow button
-   */
-  root: IStyle;
-
-  /**
-   * Style override for arrow button when hovered.
-   */
-  rootHovered: IStyle;
-
-  /**
-   * Style override for arrow button when pressed.
-   */
-  rootPressed: IStyle;
-
-  /**
-   * Style override for arrow button when checked.
-   *
-   * NOTE : The correct arrow button is checked when the spin button is incremented/decremented
-   * using arrow keys. This is useful for visual cues for indication whether the value is being incremented/
-   * decremented
-   */
-  rootChecked: IStyle;
-
-  /**
-   * Style override for arrow button when spin button is disabled.
-   */
-  rootDisabled: IStyle;
-
-  /**
-   * Style for icon in the arrow button.
-   */
-  icon: IStyle;
 }

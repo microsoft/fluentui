@@ -17,6 +17,7 @@ const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric
 const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
 const SpinButtonBasicWithIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
 const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
+const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
 
 export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -53,7 +54,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
             </ExampleCard>
             <ExampleCard
               title={ 'Custom Styled SpinButton' }
-              code={ SpinButtonBasicWithEndPositionExampleCode }>
+              code={ SpinButtonCustomStyledExampleCode }>
               <SpinButtonCustomStyledExample />
             </ExampleCard>
 

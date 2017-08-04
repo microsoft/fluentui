@@ -134,6 +134,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       title,
       ariaLabel,
       styles: customStyles,
+      upArrowButtonStyles: customUpArrowButtonStyles,
+      downArrowButtonStyles: customDownArrowButtonStyles,
       theme
     } = this.props;
 
@@ -191,9 +193,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           />
           <span className={ classNames.arrowBox }>
             <IconButton
-              styles={ this._getUpArrowButtonStyles() }
+              styles={ getArrowButtonStyles(theme!, true, customUpArrowButtonStyles) }
               className={ 'ms-UpButton' }
-              checked={ keyboardSpinDirection === KeyboardSpinDirection.up ? true : false }
+              checked={ keyboardSpinDirection === KeyboardSpinDirection.up }
               disabled={ disabled }
               iconProps={ incrementButtonIcon }
               aria-hidden='true'
@@ -203,9 +205,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
               tabIndex={ -1 }
             />
             <IconButton
-              styles={ this._getDownArrowButtonStyles() }
+              styles={ getArrowButtonStyles(theme!, false, customDownArrowButtonStyles) }
               className={ 'ms-DownButton' }
-              checked={ keyboardSpinDirection === KeyboardSpinDirection.down ? true : false }
+              checked={ keyboardSpinDirection === KeyboardSpinDirection.down }
               disabled={ disabled }
               iconProps={ decrementButtonIcon }
               aria-hidden='true'
@@ -438,21 +440,4 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _onDecrementMouseDown() {
     this._updateValue(true /* shouldSpin */, this._initialStepDelay, this._onDecrement!);
   }
-
-  private _getUpArrowButtonStyles() {
-    const { styles: customStyles, theme } = this.props;
-    const customStylesArrowButton = customStyles && customStyles.arrowButtonStyles;
-    const customStylesUpArrowButton = customStyles && customStyles.upArrowButtonStyles;
-
-    return getArrowButtonStyles(theme!, true, customStylesArrowButton, customStylesUpArrowButton);
-  }
-
-  private _getDownArrowButtonStyles() {
-    const { styles: customStyles, theme } = this.props;
-    const customStylesArrowButton = customStyles && customStyles.arrowButtonStyles;
-    const customStylesDownArrowButton = customStyles && customStyles.downArrowButtonStyles;
-
-    return getArrowButtonStyles(theme!, false, customStylesArrowButton, customStylesDownArrowButton);
-  }
-
 }

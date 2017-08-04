@@ -1,5 +1,7 @@
+import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
-import { ISpinButtonStyles, ISpinButtonArrowButtonStyles } from './SpinButton.Props';
+import { ISpinButtonStyles } from './SpinButton.Props';
+
 import {
   ITheme,
   IStyle,
@@ -30,9 +32,8 @@ const _getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
 export const getArrowButtonStyles = memoizeFunction((
   theme: ITheme,
   isUpArrow: boolean,
-  customCommonArrowStyles?: Partial<ISpinButtonArrowButtonStyles>,
-  customSpecificArrowStyles?: Partial<ISpinButtonArrowButtonStyles>,
-): ISpinButtonArrowButtonStyles => {
+  customSpecificArrowStyles?: Partial<IButtonStyles>,
+): IButtonStyles => {
 
   const { semanticColors, fonts, palette } = theme;
 
@@ -41,7 +42,7 @@ export const getArrowButtonStyles = memoizeFunction((
   const ArrowButtonBackgroundHovered = palette.neutralLight;
   const ArrowButtonBackgroundPressed = palette.themePrimary;
 
-  const defaultArrowButtonStyles: ISpinButtonArrowButtonStyles = {
+  const defaultArrowButtonStyles: IButtonStyles = {
     root: {
       outline: 'none',
       display: 'block',
@@ -91,20 +92,19 @@ export const getArrowButtonStyles = memoizeFunction((
   };
 
   // No specific styles needed as of now.
-  const defaultUpArrowButtonStyles: Partial<ISpinButtonArrowButtonStyles> = {
+  const defaultUpArrowButtonStyles: Partial<IButtonStyles> = {
 
   };
 
-  const defaultDownArrowButtonStyles: Partial<ISpinButtonArrowButtonStyles> = {
+  const defaultDownArrowButtonStyles: Partial<IButtonStyles> = {
 
   };
 
   return mergeStyleSets(
     defaultArrowButtonStyles,
     isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
-    customCommonArrowStyles,
     customSpecificArrowStyles
-  ) as ISpinButtonArrowButtonStyles;
+  ) as IButtonStyles;
 });
 
 export const getStyles = memoizeFunction((
@@ -239,15 +239,6 @@ export const getStyles = memoizeFunction((
       boxSizing: 'border-box'
     },
     arrowButtonsContainerDisabled: _getDisabledStyles(theme),
-    arrowButtonStyles: {
-
-    },
-    upArrowButtonStyles: {
-
-    },
-    downArrowButtonStyles: {
-
-    }
   };
   return mergeStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
 });
