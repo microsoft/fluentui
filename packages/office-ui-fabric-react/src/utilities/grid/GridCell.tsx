@@ -18,10 +18,6 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 
   private _id: string;
 
-  constructor(props?: P) {
-    super();
-  }
-
   public render() {
     let {
       item,
@@ -68,7 +64,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   @autobind
   private _onClick() {
     let {
-        onClick,
+      onClick,
       disabled,
       item
       } = this.props as P;
@@ -81,7 +77,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   @autobind
   private _onMouseEnter() {
     let {
-        onHover,
+      onHover,
       disabled,
       item
       } = this.props as P;
@@ -94,7 +90,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   @autobind
   private _onMouseLeave() {
     let {
-        onHover,
+      onHover,
       disabled,
       item
       } = this.props as P;
@@ -107,7 +103,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   @autobind
   private _onFocus() {
     let {
-        onFocus,
+      onFocus,
       disabled,
       item
       } = this.props as P;

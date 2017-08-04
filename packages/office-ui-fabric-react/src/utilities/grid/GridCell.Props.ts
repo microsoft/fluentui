@@ -1,4 +1,4 @@
-export interface IGridCellProps<T> extends React.Props<any> {
+export interface IGridCellProps<T> {
 
   /**
    * The option that will be made available to the user
