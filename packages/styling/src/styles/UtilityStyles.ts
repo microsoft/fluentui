@@ -1,6 +1,6 @@
 import { IRawStyle } from '../interfaces/index';
 
-export const screenReaderText: IRawStyle = {
+export const hideText: IRawStyle = {
   position: 'absolute',
   width: '1px',
   height: '1px',

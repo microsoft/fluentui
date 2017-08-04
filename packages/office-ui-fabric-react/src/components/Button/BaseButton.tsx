@@ -11,7 +11,7 @@ import {
   KeyCodes,
   css,
 } from '../../Utilities';
-import { mergeStyles, screenReaderText } from '../../Styling';
+import { mergeStyles, hideText } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -311,7 +311,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ `${styles!.screenReaderText || mergeStyles(screenReaderText)}` } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ `${styles!.screenReaderText || mergeStyles(hideText)}` } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );

@@ -4,7 +4,7 @@ export { DefaultFontStyles, FontSizes, FontWeights } from './DefaultFontStyles';
 export { IconCodes } from './IconCodes';
 export { getFocusStyle } from './getFocusStyle';
 export {
-  screenReaderText
+  hideText
 } from './UtilityStyles';
 export {
   ThemeSettingName,
