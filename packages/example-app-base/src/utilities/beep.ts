@@ -13,8 +13,9 @@ export function beep() {
 
 function playBeep() {
   if (_beepsLeft) {
-    const beep = new Audio(BEEP_DATA);
-    beep.play();
+    const beepSound = new Audio(BEEP_DATA);
+
+    beepSound.play();
 
     setTimeout(() => {
       _beepsLeft--;

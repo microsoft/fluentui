@@ -3,7 +3,7 @@ import * as React from 'react';
 import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
-import { shallow } from 'enzyme';
+import { shallow, ShallowWrapper } from 'enzyme';
 import * as chai from 'chai';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
@@ -80,12 +80,16 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = shallow(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } />);
-      expect(wrapper.find('Image').props().alt).to.equal('');
+      const image: ShallowWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
+
+      expect(image.props().alt).to.equal('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = shallow(<Persona primaryText='Kat Larrson' imageUrl={ testImage1x1 } imageAlt='ALT TEXT' />);
-      expect(wrapper.find('Image').props().alt).to.equal('ALT TEXT');
+      const image: ShallowWrapper<React.ImgHTMLAttributes<any>, any> = wrapper.find('Image');
+
+      expect(image.props().alt).to.equal('ALT TEXT');
     });
   });
 });

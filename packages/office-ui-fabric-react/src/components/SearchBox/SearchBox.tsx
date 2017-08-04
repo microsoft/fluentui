@@ -55,7 +55,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         className={ css('ms-SearchBox', className, styles.root, {
           ['is-active ' + styles.rootIsActive]: hasFocus,
           ['is-disabled ' + styles.rootIsDisabled]: disabled,
-          ['can-clear ' + styles.rootCanClear]: value.length > 0,
+          ['can-clear ' + styles.rootCanClear]: value!.length > 0,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
@@ -97,6 +97,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onClearClick(ev?: any) {
+    this._latestValue = '';
     this.setState({
       value: ''
     });
@@ -125,7 +126,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         break;
 
       case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value.length > 0) {
+        if (this.props.onSearch && this.state.value!.length > 0) {
           this.props.onSearch(this.state.value);
         }
         break;

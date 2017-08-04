@@ -15,7 +15,7 @@ import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
 import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
-  value?: string;
+  value?: string | undefined;
 
   /** Is true when the control has focus. */
   isFocused?: boolean;
@@ -49,10 +49,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   private _id: string;
   private _descriptionId: string;
-  private _delayedValidate: (value: string) => void;
+  private _delayedValidate: (value: string | undefined) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
-  private _latestValue: string;
+  private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLTextAreaElement;
@@ -156,7 +156,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       <div className={ textFieldClassName }>
         <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
           { label && <Label htmlFor={ this._id }>{ label }</Label> }
-          <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
+          <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
             { (addonString !== undefined || this.props.onRenderAddon) && (
               <div className={ css(styles.fieldAddon) }>
                 { onRenderAddon(this.props, this._onRenderAddon) }
