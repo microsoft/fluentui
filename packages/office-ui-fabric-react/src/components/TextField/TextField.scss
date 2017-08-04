@@ -103,6 +103,7 @@ $field-error-color: $errorTextColor;
   font-size: $ms-font-size-m;
   border-radius: 0;
   border: none;
+  background: none;
   color: $field-text-color;
   @include ms-padding(0, 12px, 0, 12px);
   width: 100%;
