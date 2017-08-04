@@ -312,6 +312,10 @@ export const IconCodes = {
    */
   broom: '\uEA99',
   /**
+   * Icon code with the value '\uF24F'.
+   */
+  buildQueue: '\uF24F',
+  /**
    * Icon code with the value '\uF0D0'.
    */
   bufferTimeAfter: '\uF0D0',
@@ -772,6 +776,10 @@ export const IconCodes = {
    */
   delveLogo: '\uED76',
   /**
+   * Icon code with the value '\uF29D'.
+   */
+  deploy: '\uF29D',
+  /**
    * Icon code with the value '\uEDC1'.
    */
   descending: '\uEDC1',
@@ -1163,6 +1171,10 @@ export const IconCodes = {
    * Icon code with the value '\uE7C1'.
    */
   flag: '\uE7C1',
+  /**
+   * Icon code with the value '\uF1F3'.
+   */
+  flameSolid: '\uF1F3',
   /**
    * Icon code with the value '\uE935'.
    */
@@ -2051,6 +2063,10 @@ export const IconCodes = {
    * Icon code with the value '\uEA86'.
    */
   puzzle: '\uEA86',
+  /**
+   * Icon code with the value '\uF288'.
+   */
+  queryList: '\uF288',
   /**
    * Icon code with the value '\uEE19'.
    */
