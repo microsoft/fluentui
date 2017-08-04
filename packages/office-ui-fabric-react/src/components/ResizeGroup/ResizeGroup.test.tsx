@@ -607,4 +607,31 @@ describe('ResizeGroup', () => {
     expect(getMeasuredElementWidthStub.callCount).to.equal(1);
     expect(resizeGroupProps.onReduceData.callCount).to.equal(1);
   });
+
+  it('does not render to the hidden div when there is no dataToMeasure', () => {
+    const resizeGroupStateProvider = getNextResizeGroupStateProvider();
+
+    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
+
+    expect(result).to.equal(false);
+  });
+
+  it('does render to the hidden div when there is dataToMeasure', () => {
+    const resizeGroupStateProvider = getNextResizeGroupStateProvider();
+
+    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
+
+    expect(result).to.equal(true);
+  });
+
+  it('does not render to the hidden div when there is dataToMeasure that is in the cache', () => {
+    let data = { index: 8, cacheKey: 'myCoolCacheKey' };
+    const measurementCache = getMeasurementCache();
+    measurementCache.addMeasurementToCache(data, 12);
+    const resizeGroupStateProvider = getNextResizeGroupStateProvider(measurementCache);
+
+    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
+
+    expect(result).to.equal(false);
+  });
 });
