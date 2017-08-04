@@ -45,7 +45,7 @@ describe('ResizeGroup', () => {
     it('does not provide a new state when there is no container width provided or data to measure', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = {};
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
       let result = getNextResizeGroupState(resizeGroupProps,
@@ -60,7 +60,7 @@ describe('ResizeGroup', () => {
       const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
@@ -83,7 +83,7 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
       resizeGroupProps.onReduceData.returns({ index: 4 });
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
@@ -105,7 +105,7 @@ describe('ResizeGroup', () => {
 
       let measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataToMeasure, 40);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
@@ -134,7 +134,7 @@ describe('ResizeGroup', () => {
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       measurementCache.addMeasurementToCache(dataArray[1], 40);
       measurementCache.addMeasurementToCache(dataArray[2], 5);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
       resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
@@ -163,7 +163,7 @@ describe('ResizeGroup', () => {
 
       let measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 50);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
       resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
@@ -191,7 +191,7 @@ describe('ResizeGroup', () => {
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
       resizeGroupProps.onReduceData.returns(undefined);
 
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
 
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
@@ -217,7 +217,7 @@ describe('ResizeGroup', () => {
       let measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       measurementCache.addMeasurementToCache(dataArray[1], 40);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
       resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
@@ -244,7 +244,7 @@ describe('ResizeGroup', () => {
       const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink', };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
       let result = getNextResizeGroupState(resizeGroupProps,
@@ -263,7 +263,7 @@ describe('ResizeGroup', () => {
       const reducedWidth = 40;
       const renderedData = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
       // Set the initial window width
@@ -298,7 +298,7 @@ describe('ResizeGroup', () => {
       const increasedWidth = 60;
       const renderedData = { foo: 'bar' };
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' } };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
       // Set the initial window width
@@ -330,7 +330,7 @@ describe('ResizeGroup', () => {
       const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
@@ -353,7 +353,7 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       resizeGroupProps.onReduceData.returns({ index: 7 });
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(100);
 
@@ -377,7 +377,7 @@ describe('ResizeGroup', () => {
       onGrowData.returns({ index: 2 });
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
@@ -400,7 +400,7 @@ describe('ResizeGroup', () => {
       const onGrowData = sinon.stub();
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(75);
 
@@ -425,7 +425,7 @@ describe('ResizeGroup', () => {
       onGrowData.returns(undefined);
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
       getMeasuredElementWidthStub.returns(25);
 
@@ -452,7 +452,7 @@ describe('ResizeGroup', () => {
       const onGrowData = sinon.stub();
       onGrowData.returns({ index: 4 });
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' }, onGrowData };
-      const getNextResizeGroupState = getNextResizeGroupStateProvider();
+      const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
       // Set the initial window width
@@ -486,7 +486,7 @@ describe('ResizeGroup', () => {
 
       const measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataToMeasure, 40);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const onGrowData = sinon.stub();
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
@@ -516,7 +516,7 @@ describe('ResizeGroup', () => {
       measurementCache.addMeasurementToCache(dataArray[0], 50);
       measurementCache.addMeasurementToCache(dataArray[1], 70);
       measurementCache.addMeasurementToCache(dataArray[2], 150);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const onGrowData = sinon.stub();
       onGrowData.onFirstCall().returns(dataArray[1]);
@@ -545,7 +545,7 @@ describe('ResizeGroup', () => {
 
       let measurementCache = getMeasurementCache();
       measurementCache.addMeasurementToCache(dataArray[0], 40);
-      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache);
+      const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const onGrowData = sinon.stub();
       onGrowData.onFirstCall().returns(dataArray[1]);
@@ -572,14 +572,14 @@ describe('ResizeGroup', () => {
     const initialWidth = 50;
     const renderedData = { index: 4 };
     const resizeGroupProps = getRequiredResizeGroupProps();
-    const getNextResizeGroupState = getNextResizeGroupStateProvider();
+    const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
     const getMeasuredElementWidthStub = sinon.stub();
     getMeasuredElementWidthStub.returns(100);
 
     // Set the initial window width
     getNextResizeGroupState(resizeGroupProps,
       {},
-      undefined,
+      sinon.stub(),
       initialWidth);
 
     // Pass in a state that reflects some rendered data
@@ -606,5 +606,32 @@ describe('ResizeGroup', () => {
     });
     expect(getMeasuredElementWidthStub.callCount).to.equal(1);
     expect(resizeGroupProps.onReduceData.callCount).to.equal(1);
+  });
+
+  it('does not render to the hidden div when there is no dataToMeasure', () => {
+    const resizeGroupStateProvider = getNextResizeGroupStateProvider();
+
+    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(undefined);
+
+    expect(result).to.equal(false);
+  });
+
+  it('does render to the hidden div when there is dataToMeasure', () => {
+    const resizeGroupStateProvider = getNextResizeGroupStateProvider();
+
+    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv({ index: 18 });
+
+    expect(result).to.equal(true);
+  });
+
+  it('does not render to the hidden div when there is dataToMeasure that is in the cache', () => {
+    let data = { index: 8, cacheKey: 'myCoolCacheKey' };
+    const measurementCache = getMeasurementCache();
+    measurementCache.addMeasurementToCache(data, 12);
+    const resizeGroupStateProvider = getNextResizeGroupStateProvider(measurementCache);
+
+    let result = resizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(data);
+
+    expect(result).to.equal(false);
   });
 });

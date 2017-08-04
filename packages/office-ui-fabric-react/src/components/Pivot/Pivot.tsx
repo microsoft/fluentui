@@ -48,7 +48,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     super(props);
     this._pivotId = getId('Pivot');
     const links: IPivotItemProps[] = this._getPivotLinks(this.props);
-    let selectedKey: string;
+    let selectedKey: string | undefined;
 
     if (props.initialSelectedKey) {
       selectedKey = props.initialSelectedKey;

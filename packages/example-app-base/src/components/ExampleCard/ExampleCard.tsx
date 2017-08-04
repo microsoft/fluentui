@@ -44,7 +44,10 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               <CommandButton
                 iconProps={ { iconName: 'Embed' } }
                 onClick={ this._onToggleCodeClick }
-                className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }
+                className={ css(
+                  'ExampleCard-codeButton',
+                  isCodeVisible && 'is-active'
+                ) }
               >
                 { isCodeVisible ? 'Hide code' : 'Show code' }
               </CommandButton>
@@ -60,7 +63,13 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           ) }
         </div>
 
-        <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>
+        <div
+          className={ css(
+            'ExampleCard-example',
+            isRightAligned && ' is-right-aligned'
+          ) }
+          data-is-scrollable='true'
+        >
           { children }
         </div>
 

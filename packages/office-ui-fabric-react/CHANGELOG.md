@@ -1,6 +1,74 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Jul 2017 18:36:00 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Aug 2017 10:11:48 GMT and should not be manually modified.
+
+## 4.30.0
+Fri, 04 Aug 2017 10:11:48 GMT
+
+### Minor changes
+
+- Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props.
+- Add ScrollablePane and Sticky components
+
+### Patches
+
+- Button: Merge the ISplitButtonStyles into IButtonStyles
+- Datepicker: updated icon size
+- Expand hit target of DetailsRow checkbox
+- ResizeGroup: Add another example use case to demo site
+- PeoplePicker: Improved keyboard support and font size updates.
+
+## 4.29.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- ConextualMenuItem: Support target value
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+- Searchbox: fixed bug when repeatedly entering a single character
+- Callout: Reverting the callout border to it's previous state with a light border.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
+
+## 4.27.0
+Tue, 01 Aug 2017 10:13:55 GMT
+
+### Minor changes
+
+- SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined
+- OverflowSet: Add focus method, class name and abstract item interface
+- Panel: added prop to force footer to bottom of the page
+
+### Patches
+
+- Allow the X in a persona to receive focus and update focus when it is clicked
+
+## 4.26.0
+Mon, 31 Jul 2017 10:12:08 GMT
+
+### Minor changes
+
+- BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems
+
+### Patches
+
+- MessageBar: Fix system problems that display when component is on website
+- Searchbox: Fixed broken disabled state and aligned styles with current XD styles
 
 ## 4.25.1
 Fri, 28 Jul 2017 18:36:00 GMT

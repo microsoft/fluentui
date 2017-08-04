@@ -1,5 +1,4 @@
 import { IButtonStyles } from '../Button.Props';
-import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
   mergeStyleSets
@@ -17,7 +16,7 @@ export const getStyles = memoizeFunction((
   customStyles?: IButtonStyles
 ): IButtonStyles => {
   let { palette } = theme;
-  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
+  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
     theme,
     customStyles,
@@ -56,5 +55,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, splitButtonStyles, customStyles);
+  return mergeStyleSets(defaultButtonStyles, primaryButtonStyles, splitButtonStyles, customStyles)!;
 });
