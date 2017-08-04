@@ -1,6 +1,6 @@
 import { memoizeFunction } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
-import { ISplitButtonStyles } from './SplitButton.Props';
+import { IButtonStyles } from '../Button.Props';
 
 export interface ISplitButtonClassNames {
   root?: string;
@@ -9,7 +9,7 @@ export interface ISplitButtonClassNames {
 }
 
 export const getClassNames = memoizeFunction((
-  styles: ISplitButtonStyles,
+  styles: IButtonStyles,
   disabled: boolean,
   expanded: boolean,
   checked: boolean,

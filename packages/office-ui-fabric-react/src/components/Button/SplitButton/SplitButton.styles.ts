@@ -1,4 +1,4 @@
-import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
+import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
   mergeStyleSets
@@ -10,10 +10,9 @@ const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: ISplitButtonStyles
-): ISplitButtonStyles => {
-
-  let splitButtonStyles: ISplitButtonStyles = {
+  customStyles?: IButtonStyles
+): IButtonStyles => {
+  let splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
       display: 'inline-block',
@@ -30,7 +29,6 @@ export const getStyles = memoizeFunction((
     },
 
     splitButtonContainerDisabled: {
-      position: 'absolute',
     },
 
     splitButtonMenuButton: {
