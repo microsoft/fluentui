@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "add StreamLogo, rename PowerBiLogo in IconCodes to PowerBILogo",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "t-qianl@microsoft.com"
+}
