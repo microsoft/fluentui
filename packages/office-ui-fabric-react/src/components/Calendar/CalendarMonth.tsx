@@ -19,8 +19,8 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
-  isCalendarsOverlayed?: boolean;
-  onSelectSwitchCalendar: () => void;
+  showMonthPickerAsOverlay?: boolean;
+  onSelectSwitchCalendar: (focus: boolean) => void;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -47,7 +47,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, isCalendarsOverlayed } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, showMonthPickerAsOverlay } = this.props;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -78,8 +78,15 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
           {
-            isCalendarsOverlayed ?
-              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ () => this._onSelectSwitchCalendar() } />
+            showMonthPickerAsOverlay ?
+              <div
+                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
+                onClick={ () => this._onSelectSwitchCalendar(false) }
+                onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
+                aria-label={ strings.currentMonthAriaLabel }
+                role='button'
+                tabIndex={ 0 }
+              />
               :
               null
           }
@@ -143,7 +150,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 
-  private _onSelectSwitchCalendar() {
-    this.props.onSelectSwitchCalendar();
+  private _onSelectSwitchCalendar(focus: boolean) {
+    console.log('switch it!')
+    this.props.onSelectSwitchCalendar(focus);
   }
 }

@@ -49,8 +49,8 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   today?: Date;
-  isCalendarsOverlayed?: boolean;
-  onSelectSwitchCalendar: () => void;
+  showMonthPickerAsOverlay?: boolean;
+  onSelectSwitchCalendar: (focus: boolean) => void;
 }
 
 export interface ICalendarDayState {
@@ -86,7 +86,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectSwitchCalendar, isCalendarsOverlayed } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectSwitchCalendar, showMonthPickerAsOverlay } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
@@ -122,8 +122,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </span >
           </div >
           {
-            isCalendarsOverlayed ?
-              <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } onClick={ () => this._onSelectSwitchCalendar() } />
+            showMonthPickerAsOverlay ?
+              <div
+                className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
+                onClick={ () => this._onSelectSwitchCalendar(false) }
+                onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
+                aria-label={ strings.currentMonthAriaLabel }
+                role='button'
+                tabIndex={ 0 }
+              />
               :
               null
           }
@@ -244,8 +251,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   }
 
-  private _onSelectSwitchCalendar() {
-    this.props.onSelectSwitchCalendar();
+  private _onSelectSwitchCalendar(focus: boolean) {
+    console.log('switch it! 22')
+    this.props.onSelectSwitchCalendar(focus);
   }
 
   @autobind

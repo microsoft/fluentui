@@ -41,10 +41,10 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isDayPickerVisible?: boolean;
 
   /**
-  * Overlay month picker over date picker when visible.
-  * @defaultvalue true
+  * Show month picker on top of date picker when visible.
+  * @defaultvalue false
   */
-  isCalendarsOverlayed?: boolean;
+  showMonthPickerAsOverlay?: boolean;
 
   /**
     * Value of today. If null, current time in client machine will be used.
@@ -150,4 +150,14 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+  * Aria-label for the "current month" button.
+  */
+  currentMonthAriaLabel?: string;
+
+  /**
+  * Aria-label for the "current year" button.
+  */
+  currentYearAriaLabel?: string;
 }

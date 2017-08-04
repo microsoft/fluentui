@@ -30,7 +30,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     onDismiss: undefined,
     isMonthPickerVisible: true,
     isDayPickerVisible: true,
-    isCalendarsOverlayed: false,
+    showMonthPickerAsOverlay: false,
     value: undefined,
     today: new Date(),
     firstDayOfWeek: DayOfWeek.Sunday,
@@ -53,13 +53,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   constructor(props: ICalendarProps) {
     super(props);
     let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
-    let showMonthPicker = this.props.isCalendarsOverlayed ? false : this.props.isMonthPickerVisible
-    let showDayPicker = this.props.isCalendarsOverlayed ? true : this.props.isDayPickerVisible
+
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate,
-      isMonthPickerVisible: showMonthPicker,
-      isDayPickerVisible: showDayPicker
+      isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
+      isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible
     };
 
     this._focusOnUpdate = false;
@@ -96,7 +95,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, isCalendarsOverlayed, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth } = this.props;
+    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth } = this.props;
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
 
     return (
@@ -106,10 +105,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          isMonthPickerVisible && isDayPickerVisible && !isCalendarsOverlayed && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
-          isMonthPickerVisible && !isDayPickerVisible && !isCalendarsOverlayed && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible),
-          isMonthPickerVisible && isCalendarsOverlayed && ('is-onlymonthPickerVisible ' + styles.pickerIsMonthPickerOverlayVisible),
-
+          isMonthPickerVisible && isDayPickerVisible && !showMonthPickerAsOverlay && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
+          isMonthPickerVisible && !isDayPickerVisible && !showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible),
+          isMonthPickerVisible && showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerIsMonthPickerOverlayVisible)
         ) } >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
@@ -125,7 +123,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateRangeType={ dateRangeType! }
                   autoNavigateOnSelection={ autoNavigateOnSelection! }
                   strings={ strings! }
-                  isCalendarsOverlayed={ isCalendarsOverlayed }
+                  showMonthPickerAsOverlay={ showMonthPickerAsOverlay }
                   onSelectSwitchCalendar={ this._onSelectSwitchCalendar }
                   ref='dayPicker' />
                 }
@@ -136,7 +134,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onNavigateDate={ this._onNavigateDate }
                   today={ this.props.today }
                   highlightCurrentMonth={ highlightCurrentMonth! }
-                  isCalendarsOverlayed={ isCalendarsOverlayed }
+                  showMonthPickerAsOverlay={ showMonthPickerAsOverlay }
                   onSelectSwitchCalendar={ this._onSelectSwitchCalendar }
                   ref='monthPicker' /> }
 
@@ -196,11 +194,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   @autobind
-  private _onSelectSwitchCalendar() {
+  private _onSelectSwitchCalendar(focus: boolean) {
     this.setState({
       isDayPickerVisible: !this.state.isDayPickerVisible,
       isMonthPickerVisible: !this.state.isMonthPickerVisible
     });
+
+    focus ? this._focusOnUpdate = focus : null
   }
 
   @autobind

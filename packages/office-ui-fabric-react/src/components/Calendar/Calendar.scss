@@ -224,7 +224,7 @@ $Calendar-dayPicker-margin: 10px;
 .headerToggleView {
   height: $Calendar-day;
   @include ms-left(0px);
-  position: absolute;
+  position: absolute !important;
   top: 0px;
   width: 140px;
   cursor: pointer;
@@ -629,12 +629,20 @@ $Calendar-dayPicker-margin: 10px;
     .monthPicker {
       display: block;
     }
+
   }
 
   // Do not hide Month picker if it is the only calendar
-  .pickerOnlyMonthPickerVisible, .onlyMonthPickerOverlayVisible{
+  .pickerOnlyMonthPickerVisible, .pickerIsMonthPickerOverlayVisible{
     .monthPicker{
       display: block;
+    }
+
+    //keep arrows in place when switching between calendar and month overlay
+    .yearComponents,
+    .decadeComponents {
+      @include ms-right(9px);
+      top: 9px;
     }
   }
 }
