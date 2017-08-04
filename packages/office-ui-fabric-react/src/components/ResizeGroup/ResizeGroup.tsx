@@ -217,10 +217,10 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return { ...nextState, measureContainer: false };
   }
 
-  return (props: IResizeGroupProps,
+  function getNextStateAfterComponentDidUpdate(props: IResizeGroupProps,
     currentState: IResizeGroupState,
     getElementToMeasureWidth: () => number,
-    newContainerWidth?: number): IResizeGroupState | undefined => {
+    newContainerWidth?: number): IResizeGroupState | undefined {
     // If there is no new container width or data to measure, there is no need for a new state update
     if (newContainerWidth === undefined && currentState.dataToMeasure === undefined) {
       return undefined;
@@ -256,11 +256,15 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     }
 
     return nextState;
+  }
+
+  return {
+    getNextStateAfterComponentDidUpdate
   };
 };
 
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
-  private _getNextResizeGroupState = getNextResizeGroupStateProvider();
+  private _getNextResizeGroupState = getNextResizeGroupStateProvider().getNextStateAfterComponentDidUpdate;
   private _root: HTMLElement;
   private _measured: HTMLElement;
 
