@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.30.0",
+      "tag": "office-ui-fabric-react_v4.30.0",
+      "date": "Fri, 04 Aug 2017 10:11:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "ff44b6b9c31ceac21ade3f66c356e49bdee0287c",
+            "comment": "Button: Merge the ISplitButtonStyles into IButtonStyles"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "90e90f0999ed4040061d5bb2a18f7ccedb9755e9",
+            "comment": "Datepicker: updated icon size"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "7b6124e4236d8977f270f369c7dd48a76cf841f0",
+            "comment": "Expand hit target of DetailsRow checkbox"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "7956a3996fa829659c05ee74f626dab41bf5b434",
+            "comment": "ResizeGroup: Add another example use case to demo site"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "8b5f91d7accb2087de8cc60dc75b823efc400ebf",
+            "comment": "PeoplePicker: Improved keyboard support and font size updates."
+          }
+        ],
+        "minor": [
+          {
+            "author": "ycoco <ycocococo6256@gmail.com>",
+            "commit": "b7b031bb833cf4ce042a951228a3c6a63a7386fa",
+            "comment": "Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "2c7fbb2c4a9fe78f2c92ebc3f9e58a5d152d3073",
+            "comment": "Add ScrollablePane and Sticky components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.16.0 <1.0.0` to `>=0.17.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.29.0",
       "tag": "office-ui-fabric-react_v4.29.0",
       "date": "Thu, 03 Aug 2017 10:13:03 GMT",

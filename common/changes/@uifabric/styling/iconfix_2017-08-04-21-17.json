@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Theming: add semantic slots for warnings, and also legacy theme semantic slots",
+      "comment": "Adding 4 icons that were missing in the codes map.",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "phkuo@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }
