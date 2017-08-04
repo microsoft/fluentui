@@ -258,13 +258,22 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return nextState;
   }
 
+  function shouldRenderDataToMeasureInHiddenDiv(dataToMeasure: any | undefined): boolean {
+    if (!dataToMeasure || _measurementCache.getCachedMeasurement(dataToMeasure) !== undefined) {
+      return false;
+    }
+
+    return true;
+  }
+
   return {
-    getNextStateAfterComponentDidUpdate
+    getNextStateAfterComponentDidUpdate,
+    shouldRenderDataToMeasureInHiddenDiv
   };
 };
 
 export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
-  private _getNextResizeGroupState = getNextResizeGroupStateProvider().getNextStateAfterComponentDidUpdate;
+  private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   private _root: HTMLElement;
   private _measured: HTMLElement;
 
@@ -283,7 +292,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
 
     return (
       <div className={ css('ms-ResizeGroup') } ref={ this._resolveRef('_root') }>
-        { dataToMeasure && (
+        { this._nextResizeGroupStateProvider.shouldRenderDataToMeasureInHiddenDiv(dataToMeasure) && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             { onRenderData(dataToMeasure) }
           </div>
@@ -322,7 +331,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       if (this.state.measureContainer) {
         containerWidth = this._root.getBoundingClientRect().width;
       }
-      let nextState = this._getNextResizeGroupState(this.props,
+      let nextState = this._nextResizeGroupStateProvider.getNextStateAfterComponentDidUpdate(this.props,
         this.state,
         () => this._measured.scrollWidth,
         containerWidth);
