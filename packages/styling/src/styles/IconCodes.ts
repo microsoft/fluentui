@@ -1978,7 +1978,7 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uEA1E'.
    */
-  powerBiLogo: '\uEA1E',
+  powerBILogo: '\uEA1E',
   /**
    * Icon code with the value '\uEF72'.
    */
@@ -2459,6 +2459,10 @@ export const IconCodes = {
    * Icon code with the value '\uEA04'.
    */
   storeLogoMed: '\uEA04',
+  /**
+   * Icon code with the value '\uF329'.
+   */
+  streamLogo: '\uF329',
   /**
    * Icon code with the value '\uEDE0'.
    */
