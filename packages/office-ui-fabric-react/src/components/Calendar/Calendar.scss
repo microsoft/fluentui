@@ -224,12 +224,15 @@ $Calendar-dayPicker-margin: 10px;
 .headerToggleView {
   height: $Calendar-day;
   @include ms-left(0px);
-  position: absolute !important;
+  position: absolute;
   top: 0px;
   width: 140px;
   cursor: pointer;
 }
 
+.wrap div.headerToggleView:focus {
+  position: absolute;
+}
 
 // Text showing the currently-selected year.
 .currentYear,
@@ -626,8 +629,7 @@ $Calendar-dayPicker-margin: 10px;
 @media (max-width: 459px) {
 
   //Stop elements from going off screen
-  //Resize from 440px to 300px
-  .holder{
+  .holder {
     width: 300px;
   }
 
