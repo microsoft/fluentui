@@ -49,8 +49,9 @@ describe('DefaultButton', () => {
   });
 
   it('applies the correct aria attributes', () => {
-    let button;
+    let button: any;
     let renderedDOM: any;
+
     button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
         href='http://www.microsoft.com'

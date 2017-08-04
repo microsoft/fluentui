@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { css } from '../../../Utilities';
+import { css, IDictionary } from '../../../Utilities';
 import { Icon } from '../../../Icon';
 import { IPickerItemProps } from '../PickerItem.Props';
 import { ITag } from './TagPicker';
@@ -12,7 +12,7 @@ export const TagItem = (props: IPickerItemProps<ITag>) => (
   <div
     className={ css('ms-TagItem',
       styles.root,
-      { 'is-selected': props.selected },
+      { 'is-selected': props.selected } as IDictionary,
       props.selected && styles.isSelected) }
     key={ props.index }
     data-selection-index={ props.index }
