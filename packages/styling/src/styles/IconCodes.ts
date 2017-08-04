@@ -2064,10 +2064,6 @@ export const IconCodes = {
    */
   puzzle: '\uEA86',
   /**
-   * Icon code with the value '\uF288'.
-   */
-  queryList: '\uF288',
-  /**
    * Icon code with the value '\uEE19'.
    */
   questionnaire: '\uEE19',
