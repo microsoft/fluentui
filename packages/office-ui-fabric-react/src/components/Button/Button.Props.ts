@@ -5,7 +5,6 @@ import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
-import { ISplitButtonStyles } from './SplitButton/SplitButton.Props';
 
 export interface IButton {
   /**
@@ -40,7 +39,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   /**
    * Custom styling for individual elements within the button DOM.
    */
-  styles?: ISplitButtonStyles;
+  styles?: IButtonStyles;
 
   /**
    * Theme provided by HOC.
@@ -333,4 +332,43 @@ export interface IButtonStyles {
    */
   screenReaderText?: IStyle;
 
+  /**
+   * Style override for the container div around a SplitButton element
+   */
+  splitButtonContainer?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element in a disabled state
+   */
+  splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button
+   */
+  splitButtonMenuButton?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a disabled state.
+   */
+  splitButtonMenuButtonDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a checked state
+   */
+  splitButtonMenuButtonChecked?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in an expanded state
+   */
+  splitButtonMenuButtonExpanded?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element
+   */
+  splitButtonMenuIcon?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element in a disabled state
+   */
+  splitButtonMenuIconDisabled?: IStyle;
 }
