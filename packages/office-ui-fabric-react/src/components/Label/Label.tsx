@@ -11,12 +11,13 @@ export class Label extends BaseComponent<ILabelProps, any> {
     return (
       <label
         { ...getNativeProps(this.props, divProperties) }
-        className={ css(styles.root, 'ms-Label', className, {
-          'is-disabled': disabled,
-          'is-required': required,
-          [styles.isDisabled]: disabled,
-          [styles.isRequired]: required
-        }) }>
+        className={ css(
+          styles.root,
+          'ms-Label',
+          className,
+          disabled && ('is-disabled ' + styles.isDisabled),
+          required && ('is-required ' + styles.isRequired)
+        ) }>
         { children }
       </label>
     );
