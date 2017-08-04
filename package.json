@@ -29,6 +29,7 @@
     "yargs": "^6.5.0"
   },
   "dependencies": {
-    "phantomjs-prebuilt": "^2.1.14"
+    "phantomjs-prebuilt": "^2.1.14",
+    "rush": "0.0.2"
   }
 }
