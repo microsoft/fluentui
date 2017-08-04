@@ -48,7 +48,7 @@ export interface IPalette {
   themeLighterAlt: string;
 
   /**
-   * Color code for black.
+   * Color code for the strongest color, which is black in the default theme. This is a very light color in inverted themes.
    */
   black: string;
 
@@ -113,7 +113,8 @@ export interface IPalette {
   neutralLighterAlt: string;
 
   /**
-   * Color code for white.
+   * Color code for the softest color, which is white in the default theme. This is a very dark color in dark themes.
+   * This is the page background.
    */
   white: string;
 
