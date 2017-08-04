@@ -15,7 +15,7 @@ import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
-  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
+  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false),
   fonts: DefaultFontStyles,
   isInverted: false
 };

@@ -113,7 +113,8 @@ export interface IPalette {
   neutralLighterAlt: string;
 
   /**
-   * Color code for the softest color, which is white in the default theme. This is a very dark color in dark themes. This is the page background.
+   * Color code for the softest color, which is white in the default theme. This is a very dark color in dark themes.
+   * This is the page background.
    */
   white: string;
 
