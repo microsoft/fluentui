@@ -13,12 +13,19 @@
  * [hovered/pressed/disabled state] – One of these states, if applicable. Each of these states are mutually exclusive.
  * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.   
  *  
- * ## Base/Body
+ * ## Base Slots
  *
- * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, error text, and so on.
+ * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, and so on.
  * If a category doesn't provide the slot you're looking for, use one from this category.
  * For example, the placeholder text on a text input field has no corresponding slot in its category,
- * so you'd use the bodySubtextColor from this category. 
+ * so you'd use the bodySubtextColor from this category.
+ *
+ * ## Invariants
+ *
+ * When color has meaning, we do not want to change the color much theme to theme. For example, we
+ * will always want errors to be some shade of red, but we will need to tweak the exact shade so it's
+ * legible depending on whether it's an inverted theme or not.
+ * Invariant colors should almost never be changed by the theme, the defaults should suffice.
  *  
  * ## Input Controls 
  *
@@ -37,6 +44,8 @@
  */
 export interface ISemanticColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\styling\src\utilities\theme.ts:_makeSemanticColorsFromPalette() */
+
+  //// Base slots
 
   /**
    * The default color for backgrounds.
@@ -78,7 +87,8 @@ export interface ISemanticColors {
    */
   focusBorder: string;
 
-  // Invariants - slots that rarely change color theme-to-theme because the color has meaning
+  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
+
   /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
@@ -87,8 +97,16 @@ export interface ISemanticColors {
    * The default color of error text.
    */
   errorText: string;
+  /**
+   * Background for blocking issues, which is more severe than a warning, but not as bad as an error.
+   */
+  blockingBackground: string;
+  /**
+   * Background for warning messages.
+   */
+  warningBackground: string;
 
-  // Input controls slots (text fields, checkboxes, radios...)
+  //// Input controls slots (text fields, checkboxes, radios...)
 
   /**
    * The border of an input control in its resting, unchecked state; e.g. the box of an unchecked checkbox.
@@ -120,7 +138,7 @@ export interface ISemanticColors {
    */
   inputFocusBorderAlt: string;
 
-  // Menus, popups, etc
+  //// Menus, popups, etc
 
   /**
    * The background of a hovered menu item.
@@ -142,7 +160,7 @@ export interface ISemanticColors {
    */
   menuHeader: string;
 
-  // Lists
+  //// Lists
 
   /**
    * The background color for the entire list.

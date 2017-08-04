@@ -118,6 +118,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   }
 
+  @autobind
+  public refocusSuggestions(keyCode: KeyCodes) {
+    this.resetFocus();
+    if (keyCode === KeyCodes.up) {
+      this.suggestionStore.setSelectedSuggestion(this.suggestionStore.suggestions.length - 1);
+    } else if (keyCode === KeyCodes.down) {
+      this.suggestionStore.setSelectedSuggestion(0);
+    }
+  }
+
   public render() {
     let { suggestedDisplayValue } = this.state;
     let {
@@ -184,6 +194,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isSearching={ this.state.isSearching }
           isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
           isResultsFooterVisible={ this.state.isResultsFooterVisible }
+          refocusSuggestions={ this.refocusSuggestions }
           { ...this.props.pickerSuggestionsProps as any }
         />
       </Callout>
@@ -259,7 +270,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (updatedValue !== undefined) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else {
-        this.suggestionStore.updateSuggestions(suggestionsArray);
+        this.suggestionStore.updateSuggestions(suggestionsArray, 0);
       }
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
@@ -415,20 +426,35 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.up:
-        if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion() && this.state.suggestionsVisible) {
-          ev.preventDefault();
-          ev.stopPropagation();
-          this.onSuggestionSelect();
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
+          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && this.suggestionStore.currentIndex === 0) {
+            this.suggestionElement.focusSearchForMoreButton();
+            this.suggestionStore.deselectAllSuggestions();
+            this.forceUpdate();
+          } else {
+            if (this.suggestionStore.previousSuggestion()) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              this.onSuggestionSelect();
+            }
+          }
         }
         break;
 
       case KeyCodes.down:
         if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
-          if (this.suggestionStore.nextSuggestion()) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            this.onSuggestionSelect();
+          if (this.state.moreSuggestionsAvailable && this.suggestionElement.props.searchForMoreText && (this.suggestionStore.currentIndex + 1) === this.suggestionStore.suggestions.length) {
+            this.suggestionElement.focusSearchForMoreButton();
+            this.suggestionStore.deselectAllSuggestions();
+            this.forceUpdate();
+          } else {
+            if (this.suggestionStore.nextSuggestion()) {
+              ev.preventDefault();
+              ev.stopPropagation();
+              this.onSuggestionSelect();
+            }
           }
+
         }
         break;
     }

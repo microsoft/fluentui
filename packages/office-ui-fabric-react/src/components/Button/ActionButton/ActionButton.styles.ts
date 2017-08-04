@@ -22,7 +22,7 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
+  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
     root: {
       borderWidth: '0',

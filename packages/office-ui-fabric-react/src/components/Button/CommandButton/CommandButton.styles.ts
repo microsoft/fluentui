@@ -1,5 +1,4 @@
 import { IButtonStyles } from '../Button.Props';
-import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
   mergeStyleSets
@@ -19,7 +18,7 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let baseSplitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
+  let baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
     root: {
       minWidth: '40px',

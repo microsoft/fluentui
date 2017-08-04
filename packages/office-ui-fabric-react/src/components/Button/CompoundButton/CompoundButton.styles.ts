@@ -1,5 +1,4 @@
 import { IButtonStyles } from '../Button.Props';
-import { ISplitButtonStyles } from '../SplitButton/SplitButton.Props';
 import {
   ITheme,
   mergeStyleSets
@@ -24,7 +23,7 @@ export const getStyles = memoizeFunction((
     theme,
     customStyles
   );
-  let splitButtonStyles: ISplitButtonStyles = getSplitButtonStyles(theme);
+  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let compoundButtonStyles: IButtonStyles = {
     root: {
       maxWidth: '280px',
