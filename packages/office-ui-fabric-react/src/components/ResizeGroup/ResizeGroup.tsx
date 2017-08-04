@@ -217,7 +217,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return { ...nextState, measureContainer: false };
   }
 
-  function getNextStateAfterComponentDidUpdate(props: IResizeGroupProps,
+  function getNextState(props: IResizeGroupProps,
     currentState: IResizeGroupState,
     getElementToMeasureWidth: () => number,
     newContainerWidth?: number): IResizeGroupState | undefined {
@@ -267,7 +267,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   }
 
   return {
-    getNextStateAfterComponentDidUpdate,
+    getNextState,
     shouldRenderDataToMeasureInHiddenDiv
   };
 };
@@ -331,7 +331,7 @@ export class ResizeGroup extends BaseComponent<IResizeGroupProps, IResizeGroupSt
       if (this.state.measureContainer) {
         containerWidth = this._root.getBoundingClientRect().width;
       }
-      let nextState = this._nextResizeGroupStateProvider.getNextStateAfterComponentDidUpdate(this.props,
+      let nextState = this._nextResizeGroupStateProvider.getNextState(this.props,
         this.state,
         () => this._measured.scrollWidth,
         containerWidth);
