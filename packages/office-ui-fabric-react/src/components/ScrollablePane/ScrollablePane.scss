@@ -1,0 +1,29 @@
+@import '../../common/common';
+
+.root {
+  overflow-y: auto;
+  max-height: inherit;
+  -webkit-overflow-scrolling: touch;
+}
+
+.stickyContainer {
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+.stickyAbove,
+.stickyBelow {
+  position: absolute;
+  pointer-events: auto;
+  width: 100%;
+  z-index: 1;
+}
+
+.stickyAbove {
+  top: 0;
+}
+
+.stickyBelow {
+  bottom: 0;
+}

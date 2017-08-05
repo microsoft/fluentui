@@ -46,13 +46,13 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             key={ columnIndex }
             role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
             aria-colindex={ columnIndex + columnStartIndex }
-            className={ css('ms-DetailsRow-cell', styles.cell, column.className, {
-              'is-multiline': column.isMultiline,
-              [styles.isRowHeader]: column.isRowHeader,
-              [styles.isPadded]: column.isPadded,
-              [styles.isMultiline]: column.isMultiline
-            }) }
-            style={ { width: column.calculatedWidth + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
+            className={ css('ms-DetailsRow-cell', styles.cell, column.className,
+              column.isMultiline && 'is-multiline',
+              column.isRowHeader && styles.isRowHeader,
+              column.isPadded && styles.isPadded,
+              column.isMultiline && styles.isMultiline,
+            ) }
+            style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
             data-automation-key={ column.key }>
             { cellContent[columnIndex] }

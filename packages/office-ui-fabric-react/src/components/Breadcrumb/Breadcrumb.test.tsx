@@ -31,7 +31,7 @@ describe('Breadcrumb', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
 
-    ReactTestUtils.Simulate.click(itemLink);
+    ReactTestUtils.Simulate.click(itemLink!);
     expect(callbackValue).to.equal('TestKey');
   });
 

@@ -91,8 +91,8 @@ export function findScrollableParent(startingElement: HTMLElement): HTMLElement 
 
   while (el && el !== document.body) {
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
-      const styles = getComputedStyle(el);
-      let overflowY = styles ? styles.getPropertyValue('overflow-y') : '';
+      const computedStyles = getComputedStyle(el);
+      let overflowY = computedStyles ? computedStyles.getPropertyValue('overflow-y') : '';
 
       if (overflowY && (overflowY === 'scroll' || overflowY === 'auto')) {
         return el;
