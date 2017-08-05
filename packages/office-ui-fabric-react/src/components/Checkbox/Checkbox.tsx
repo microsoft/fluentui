@@ -172,10 +172,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   @autobind
-  private _onRenderLabel() {
-    const {
-      label
-    } = this.props;
+  private _onRenderLabel(props: ICheckboxProps) {
+    const { label } = props;
 
     return label ? (
       <span className={ this._classNames.text }>{ label }</span>
