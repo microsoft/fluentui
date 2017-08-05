@@ -4,7 +4,7 @@ import { IIconProps } from '../../Icon';
 
 export interface ITextField {
   /** Gets the current value of the input. */
-  value: string;
+  value: string | undefined;
 
   /** Sets focus to the input. */
   focus: () => void;
@@ -29,7 +29,7 @@ export interface ITextField {
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
+export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -127,7 +127,7 @@ export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement |
   /**
    * Callback for the onNotifyValidationResult event.
    */
-  onNotifyValidationResult?: (errorMessage: string, value: string) => void;
+  onNotifyValidationResult?: (errorMessage: string, value: string | undefined) => void;
 
   /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
@@ -142,7 +142,7 @@ export interface ITextFieldProps extends React.HTMLAttributes<HTMLInputElement |
    *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: string) => string | PromiseLike<string>;
+  onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.

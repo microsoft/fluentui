@@ -9,7 +9,7 @@ export interface IDropdown {
   focus: () => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */
@@ -28,9 +28,25 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown>
   /**
    * Optional custom renderer for selected option displayed in input
    */
-  onRenderTitle?: IRenderFunction<IDropdownOption>;
+  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
 
   responsiveMode?: ResponsiveMode;
+
+  /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
+
+  /**
+   * Keys that will be initially used to set selected items.
+   */
+  defaultSelectedKeys?: string[] | number[];
+
+  /**
+  * Keys of the selected items. If you provide this, you must maintain selection
+  * state by observing onChange events and passing a new value in when changed.
+  */
+  selectedKeys?: string[] | number[];
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.

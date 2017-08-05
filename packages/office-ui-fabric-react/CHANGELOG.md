@@ -1,6 +1,203 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Jul 2017 02:58:02 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Aug 2017 10:11:48 GMT and should not be manually modified.
+
+## 4.30.0
+Fri, 04 Aug 2017 10:11:48 GMT
+
+### Minor changes
+
+- Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props.
+- Add ScrollablePane and Sticky components
+
+### Patches
+
+- Button: Merge the ISplitButtonStyles into IButtonStyles
+- Datepicker: updated icon size
+- Expand hit target of DetailsRow checkbox
+- ResizeGroup: Add another example use case to demo site
+- PeoplePicker: Improved keyboard support and font size updates.
+
+## 4.29.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- ConextualMenuItem: Support target value
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+- Searchbox: fixed bug when repeatedly entering a single character
+- Callout: Reverting the callout border to it's previous state with a light border.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
+
+## 4.27.0
+Tue, 01 Aug 2017 10:13:55 GMT
+
+### Minor changes
+
+- SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined
+- OverflowSet: Add focus method, class name and abstract item interface
+- Panel: added prop to force footer to bottom of the page
+
+### Patches
+
+- Allow the X in a persona to receive focus and update focus when it is clicked
+
+## 4.26.0
+Mon, 31 Jul 2017 10:12:08 GMT
+
+### Minor changes
+
+- BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems
+
+### Patches
+
+- MessageBar: Fix system problems that display when component is on website
+- Searchbox: Fixed broken disabled state and aligned styles with current XD styles
+
+## 4.25.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+### Patches
+
+- Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue.
+- Fix Callout to get a valid element
+
+## 4.25.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Moving ComboBox component to use the styling library
+
+### Patches
+
+- Fix hover card scroll
+- Checkbox: Added left textAlign style
+- Update accessibility for checkable menu items
+
+## 4.24.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- More type casting to get us on the path to enabling strictNullChecks
+
+### Patches
+
+- Dropdown: added onBlur support.
+- Fix focus issues for Safari and Firefox on Mac OS
+- Icons: Added new icons from 2.38
+- Adds prop to process selection in BasePicker
+- CommandBar: Accessibility fix for expand behavior
+
+## 4.23.0
+Tue, 25 Jul 2017 10:22:35 GMT
+
+### Minor changes
+
+- Button: Support expanded style state triggered by opened menu
+
+### Patches
+
+- Checkbox: Fixed label font size
+- TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font.
+- ResizeGroup: Prevent flashing when passing in new props
+- ResizeGroup: Don't show a scrollbar while measuring the hidden div
+- Textfield: Fixed high contrast border and textarea font family
+- Textfield: Removed icon pointer events so that any click is click in textfield
+
+## 4.22.0
+Mon, 24 Jul 2017 10:24:30 GMT
+
+### Minor changes
+
+- Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`
+
+### Patches
+
+- Fix application of aria properties on BaseButton.
+- ResizeGroup: Add support for onGrowData
+- Accessibility fixes for PeoplePicker
+- Dropdown: Updated keydown handler to respond correctly to normal dropdown items
+
+## 4.21.4
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Do not redundantly set aria-label on command bar items. 
+- More strict null check fixes in office-ui-fabric-react
+- Textfield: Fixed regression in disabled styles
+- ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
+- Fixed deletion of tag item when tag picker is disabled
+
+## 4.21.3
+Thu, 20 Jul 2017 10:11:23 GMT
+
+### Patches
+
+- SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker
+- Checkbox: remove unnecessary styles and element
+
+## 4.21.2
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Patches
+
+- Breadcrumb: Uses tooltip when breadcrumb text is truncated
+- Fix CommandBar rendering commandText span when no item name is given: #2233.
+- Start fixing some strictNullCheck errors
+- DefaultButton: Make styles match design
+- DetailsList: Adjust checkmark icon to use StatusCircleCheckmark icon
+- Dropdown: List native props at top of div element
+
+## 4.21.1
+Mon, 17 Jul 2017 18:38:01 GMT
+
+### Patches
+
+- BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions.
+
+## 4.21.0
+Mon, 17 Jul 2017 10:22:38 GMT
+
+### Minor changes
+
+- ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string.
+
+### Patches
+
+- ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view
+- Allow deeply nested links to render in Nav
+- Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that.
+
+## 4.20.0
+Fri, 14 Jul 2017 17:34:53 GMT
+
+### Minor changes
+
+- PeoplePicker: adding a custom validator prop
+- DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing
+
+### Patches
+
+- ResizeGroup: Do measurements inside requestAnimationFrame
 
 ## 4.19.0
 Thu, 13 Jul 2017 02:58:02 GMT

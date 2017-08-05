@@ -12,7 +12,7 @@ import { FocusZoneDirection } from './FocusZone.Props';
 import { assert } from 'chai';
 
 describe('FocusZone', () => {
-  let lastFocusedElement: HTMLElement;
+  let lastFocusedElement: HTMLElement | undefined;
 
   function _onFocus(ev: any) {
     lastFocusedElement = ev.target;
@@ -591,8 +591,9 @@ describe('FocusZone', () => {
   });
 
   it('Focus first tabbable element, when active elemet is dynamically disabled', () => {
-    let focusZone: FocusZone = null;
-    let buttonA: any, buttonB = null;
+    let focusZone: FocusZone | null = null;
+    let buttonA: any;
+    let buttonB: any;
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
         <textarea className='t'></textarea>
@@ -626,7 +627,7 @@ describe('FocusZone', () => {
     });
 
     // ButtonA should be focussed.
-    focusZone.focus();
+    focusZone!.focus();
     assert(lastFocusedElement === buttonA, 'buttonA was not focused');
 
     buttonA.disabled = true;
@@ -636,7 +637,7 @@ describe('FocusZone', () => {
     assert(lastFocusedElement === textArea, 'textArea was not focused');
 
     // ButtonB should be focussed.
-    focusZone.focus();
+    focusZone!.focus();
     assert(lastFocusedElement === buttonB, 'buttonB was not focused ');
   });
 });

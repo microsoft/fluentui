@@ -12,6 +12,7 @@ import { IconButton } from '../../Button';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 
 import * as stylesImport from './Breadcrumb.scss';
 const styles: any = stylesImport;
@@ -40,8 +41,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     const { onReduceData = this._onReduceData, maxDisplayedItems, items } = this.props;
     const breadCrumbData: IBreadCrumbData = {
       props: this.props,
-      renderedItems: items.slice(-maxDisplayedItems),
-      renderedOverflowItems: items.slice(0, -maxDisplayedItems)
+      renderedItems: items.slice(-maxDisplayedItems!),
+      renderedOverflowItems: items.slice(0, -maxDisplayedItems!)
     };
 
     return (
@@ -96,7 +97,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   iconProps={ { iconName: 'More' } }
                   role='button'
                   aria-haspopup='true'
-                  menuIconProps={ null }
+                  menuIconProps={ undefined }
                   menuProps={ {
                     items: contextualItems,
                     directionalHint: DirectionalHint.bottomLeftEdge
@@ -111,7 +112,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
             { renderedItems.map(
               (item, index) => (
                 <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) } ref={ item.key || String(index) }>
-                  { onRenderItem(item, this._defaultRenderItem) }
+                  { onRenderItem(item, this._onRenderItem) }
                   <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
                     iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
@@ -124,12 +125,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   @autobind
-  private _onRenderItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
-    return this._defaultRenderItem(item);
-  }
-
-  @autobind
-  private _defaultRenderItem(item: IBreadcrumbItem) {
+  private _onRenderItem(item: IBreadcrumbItem) {
     if (item.onClick || item.href) {
       return (
         <Link
@@ -137,13 +133,23 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           href={ item.href }
           aria-current={ item.isCurrentItem ? 'page' : null }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }>
-          { item.text }
+          <TooltipHost
+            content={ item.text }
+            overflowMode={ TooltipOverflowMode.Parent }
+          >
+            { item.text }
+          </TooltipHost>
         </Link>
       );
     } else {
       return (
         <span className={ css('ms-Breadcrumb-item', styles.item) }>
-          { item.text }
+          <TooltipHost
+            content={ item.text }
+            overflowMode={ TooltipOverflowMode.Parent }
+          >
+            { item.text }
+          </TooltipHost>
         </span>
       );
     }

@@ -17,8 +17,8 @@ import './Selection.Example.scss';
 const ITEM_COUNT = 100;
 
 export interface ISelectionBasicExampleState {
-  items?: any[];
-  selection?: ISelection;
+  items: any[];
+  selection: ISelection;
   selectionMode?: SelectionMode;
   canSelect?: string;
 }
@@ -28,6 +28,33 @@ export interface ISelectionItemExampleProps {
   itemIndex?: number;
   selection?: ISelection;
   selectionMode?: SelectionMode;
+}
+
+/**
+ * The SelectionItemExample controls and displays the selection state of a single item
+ */
+export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
+  public render() {
+    let { item, itemIndex, selection, selectionMode } = this.props;
+    let isSelected = false;
+
+    if (selection && itemIndex) {
+      selection.isIndexSelected(itemIndex);
+    }
+
+    return (
+      <div className='ms-SelectionItemExample' data-selection-index={ itemIndex }>
+        { (selectionMode !== SelectionMode.none) && (
+          <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
+            <Check checked={ isSelected } />
+          </div>
+        ) }
+        <span className='ms-SelectionItemExample-name'>
+          { item.name }
+        </span>
+      </div>
+    );
+  }
 }
 
 /**
@@ -181,28 +208,5 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
         ]
       }
     ];
-  }
-}
-
-/**
- * The SelectionItemExample controls and displays the selection state of a single item
- */
-export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
-  public render() {
-    let { item, itemIndex, selection, selectionMode } = this.props;
-    let isSelected = selection.isIndexSelected(itemIndex);
-
-    return (
-      <div className='ms-SelectionItemExample' data-selection-index={ itemIndex }>
-        { (selectionMode !== SelectionMode.none) && (
-          <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
-            <Check checked={ isSelected } />
-          </div>
-        ) }
-        <span className='ms-SelectionItemExample-name'>
-          { item.name }
-        </span>
-      </div>
-    );
   }
 }

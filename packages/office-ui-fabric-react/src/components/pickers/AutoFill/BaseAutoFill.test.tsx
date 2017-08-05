@@ -17,7 +17,7 @@ describe('BaseAutoFill', () => {
 
     let component = ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello' />,
       baseNode
     );
@@ -27,7 +27,7 @@ describe('BaseAutoFill', () => {
   it('correctly autofills', (done) => {
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
             assert(text === 'hel', 'text was ' + text);
@@ -42,7 +42,7 @@ describe('BaseAutoFill', () => {
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
             assert(text === 'hel', 'text was ' + text);
@@ -60,7 +60,7 @@ describe('BaseAutoFill', () => {
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
             assert(autoFill.value === 'hep', 'text was ' + autoFill.value);
@@ -81,7 +81,7 @@ describe('BaseAutoFill', () => {
 
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello' />,
       baseNode
     );
@@ -104,7 +104,7 @@ describe('BaseAutoFill', () => {
 
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello' />,
       baseNode
     );
@@ -122,7 +122,7 @@ describe('BaseAutoFill', () => {
 
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         suggestedDisplayValue='hello' />,
       baseNode
     );

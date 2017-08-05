@@ -40,7 +40,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
     this.state = {
       keyChecked: (props.defaultSelectedKey === undefined) ?
-        this._getKeyChecked(props) :
+        this._getKeyChecked(props)! :
         props.defaultSelectedKey,
       keyFocused: undefined
     };
@@ -55,7 +55,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
     if (newKeyChecked !== oldKeyCheched) {
       this.setState({
-        keyChecked: newKeyChecked,
+        keyChecked: newKeyChecked!,
       });
     }
   }
@@ -70,13 +70,13 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
           role='radiogroup'
-          aria-labelledby={ this.props.label ? this._id + '-label' : '' }
+          aria-labelledby={ `${this.props.label ? this._id + '-label' : ''} ${(this.props as any)['aria-labelledby'] || ''}` }
         >
           { this.props.label && (
             <Label className={ className } required={ required } id={ this._id + '-label' }>{ label }</Label>
           ) }
 
-          { options.map((option: IChoiceGroupOption) => {
+          { options!.map((option: IChoiceGroupOption) => {
             let {
               onRenderField = this._onRenderField,
               onRenderLabel = this._onRenderLabel
@@ -171,8 +171,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <Image
                   src={ option.imageSrc }
-                  width={ option.imageSize ? option.imageSize.width : null }
-                  height={ option.imageSize ? option.imageSize.height : null }
+                  width={ option.imageSize ? option.imageSize.width : undefined }
+                  height={ option.imageSize ? option.imageSize.height : undefined }
                 />
               </div>
               <div className={ css(
@@ -184,8 +184,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
               >
                 <Image
                   src={ option.selectedImageSrc }
-                  width={ option.imageSize ? option.imageSize.width : null }
-                  height={ option.imageSize ? option.imageSize.height : null }
+                  width={ option.imageSize ? option.imageSize.width : undefined }
+                  height={ option.imageSize ? option.imageSize.height : undefined }
                 />
               </div>
             </div>
@@ -204,9 +204,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           option.imageSrc || option.iconProps
             ? (
               <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
-                { onRenderLabel(option) }
+                { onRenderLabel!(option) }
               </div>
-            ) : onRenderLabel(option)
+            ) : onRenderLabel!(option)
         }
       </label>
     );
@@ -240,12 +240,12 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
    * If all the isChecked property of options are falsy values, return undefined;
    * Else return the key of the first option with the truthy isChecked property.
    */
-  private _getKeyChecked(props: IChoiceGroupProps): string | number {
+  private _getKeyChecked(props: IChoiceGroupProps): string | number | undefined {
     if (props.selectedKey !== undefined) {
       return props.selectedKey;
     }
 
-    const optionsChecked = props.options.filter((option: IChoiceGroupOption) => {
+    const optionsChecked = props.options!.filter((option: IChoiceGroupOption) => {
       return option.checked;
     });
 

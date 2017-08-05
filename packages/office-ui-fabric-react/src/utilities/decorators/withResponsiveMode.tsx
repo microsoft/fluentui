@@ -24,12 +24,12 @@ const RESPONSIVE_MAX_CONSTRAINT = [
   99999999
 ];
 
-let _defaultMode: ResponsiveMode;
+let _defaultMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export function setResponsiveMode(responsiveMode: ResponsiveMode) {
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
   _defaultMode = responsiveMode;
 }
 

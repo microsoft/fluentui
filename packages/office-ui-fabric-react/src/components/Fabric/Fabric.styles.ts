@@ -23,7 +23,8 @@ export const getStyles = memoizeFunction((
       {
         color: theme.palette.neutralPrimary,
         '& button': inheritFont,
-        '& input': inheritFont
+        '& input': inheritFont,
+        '& textarea': inheritFont
       }
     ])
   };

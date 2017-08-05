@@ -47,6 +47,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       content,
       children,
       directionalHint,
+      directionalHintForRTL,
       delay,
       id,
       setAriaDescribedBy = true,
@@ -72,6 +73,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             content={ content }
             targetElement={ this._getTargetElement() }
             directionalHint={ directionalHint }
+            directionalHintForRTL={ directionalHintForRTL }
             calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
             { ...getNativeProps(this.props, divProperties) }
             { ...tooltipProps }
@@ -90,7 +92,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.parentElement;
+          return this._tooltipHost.parentElement!;
 
         case TooltipOverflowMode.Self:
           return this._tooltipHost;

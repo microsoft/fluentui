@@ -12,5 +12,5 @@ export const getStyles = memoizeFunction((
     host: {}
   };
 
-  return mergeStyleSets(styles, customStyles);
+  return mergeStyleSets(styles, customStyles)!;
 });

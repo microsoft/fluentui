@@ -1,6 +1,8 @@
 import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
+import { IStyle, ITheme } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 
 export interface IComboBox {
   /**
@@ -11,6 +13,7 @@ export interface IComboBox {
 }
 
 export interface IComboBoxOption extends ISelectableOption {
+  styles?: Partial<IComboBoxOptionStyles>;
 }
 
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
@@ -23,7 +26,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   /**
    * Collection of options for this ComboBox
    */
-  options?: IComboBoxOption[];
+  options: IComboBoxOption[];
 
   /**
    * Callback issues when either:
@@ -40,15 +43,15 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   onResolveOptions?: (options: IComboBoxOption[]) => IComboBoxOption[] | PromiseLike<IComboBoxOption[]>;
 
   /**
-   * Whether the ComboBox is free form, meaning that the user input is not bound to provided items. Defaults to false.
+   * Whether the ComboBox is free form, meaning that the user input is not bound to provided options. Defaults to false.
    */
   allowFreeform?: boolean;
 
   /**
-   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of items. If
-   * the combo box is expanded, this will also scroll to the suggested item, and give it a selected style. Defaults to false.
+   * Whether the ComboBox auto completes. As the user is inputing text, it will be suggested potential matches from the list of options. If
+   * the combo box is expanded, this will also scroll to the suggested option, and give it a selected style. Defaults to false.
    */
-  autoComplete?: boolean;
+  autoComplete?: string;
 
   /**
    * Value to show in the input, does not have to map to a combobox option
@@ -59,4 +62,114 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * The IconProps to use for the button aspect of the combobox
    */
   buttonIconProps?: IIconProps;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Custom styles for this component
+   */
+  styles?: Partial<IComboBoxStyles>;
+}
+
+export interface IComboBoxStyles {
+  /**
+   * Style for the container which has the ComboBox and the label
+   */
+  container: IStyle;
+
+  /**
+   * Style for the label element of the ComboBox.
+   */
+  label: IStyle;
+
+  /**
+   * Base styles for the root element of all ComboBoxes.
+   */
+  root: IStyle;
+
+  /**
+   * Styles for the root element for variant of ComboBox with an errorMessage in the props.
+   */
+  rootError: IStyle;
+
+  /**
+   * Styles for variant of ComboBox where allowFreeForm is false in the props.
+   */
+  rootDisallowFreeForm: IStyle;
+
+  /**
+   * Styles for when the ComboBox is hovered. These styles are applied for all comboBoxes except when
+   * the comboBox is disabled.
+   */
+  rootHovered: IStyle;
+
+  /**
+   * Styles for when the ComboBox is focused. These styles are applied for all comboBoxes except when
+   * the comboBox is disabled.
+   */
+  rootFocused: IStyle;
+
+  /**
+   * Styles for when the comboBox is disabled. These styles override all the other styles.
+   * NOTE : Hover (or) Focused (or) active styles are not applied for disabled comboBoxes.
+   */
+  rootDisabled: IStyle;
+
+  /**
+   * Base styles for the input element - which contains the currently selected
+   * option.
+   */
+  input: IStyle;
+
+  /**
+   * Style override for the input element when comboBox is disabled.
+   */
+  inputDisabled: IStyle;
+
+  /**
+   * Styles for the caret down button.
+   */
+  caretDownButtonStyles: Partial<IComboBoxCaretDownButtonStyles> | null;
+
+  /**
+   * Styles for the error Message text of the comboBox.
+   */
+  errorMessage: IStyle;
+
+  /**
+   * Styles for the callout.
+   */
+  callout: IStyle;
+
+  /**
+   * Styles for the container of all the Combobox options
+   * Includes the headers and dividers.
+   */
+  optionsContainer: IStyle;
+
+  /**
+ * Styles for a header in the options.
+ */
+  header: IStyle;
+
+  /**
+   * Styles for a divider in the options.
+   */
+  divider: IStyle;
+
+  /**
+   * Default styles that should be applied to ComboBox options,
+   * incase an option does not come with user-defined custom styles
+   */
+  optionDefaultStyles: Partial<IComboBoxOptionStyles> | null;
+}
+
+export interface IComboBoxOptionStyles extends IButtonStyles {
+  optionText: IStyle;
+}
+
+export interface IComboBoxCaretDownButtonStyles extends IButtonStyles {
 }

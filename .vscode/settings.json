@@ -34,5 +34,5 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
-  "tslint.autoFixOnSave": true
+  "tslint.autoFixOnSave": false
 }
