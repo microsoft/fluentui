@@ -50,8 +50,8 @@ $errorTextColor: $ms-color-redDark;
 $fieldBackgroundColor: $ms-color-white;
 $fieldTextColor: $ms-color-neutralPrimary;
 
-$fieldBorderColor: $ms-color-neutralTertiaryAlt;
-$fieldBorderHoverColor: $ms-color-neutralSecondaryAlt;
+$fieldBorderColor: $ms-color-neutralTertiary;
+$fieldBorderHoverColor: $ms-color-neutralDark;
 $fieldBorderFocusColor: $ms-color-themePrimary;
 
 $fieldPlaceholderColor: $ms-color-neutralTertiary;
@@ -59,14 +59,14 @@ $fieldPlaceholderColor: $ms-color-neutralTertiary;
 /*** State controls ***/
 $controlBackgroundColor: $ms-color-white;
 $controlBackgroundSelectedColor: $ms-color-themePrimary;
-$controlBackgroundSelectedHoverColor: $ms-color-themeSecondary;
+$controlBackgroundSelectedHoverColor: $ms-color-themeDarkAlt;
 
 $controlForegroundColor: $ms-color-neutralPrimary;
 $controlForegroundHoverColor: $ms-color-black;
 $controlForegroundSelectedColor: $ms-color-white;
 
-$controlBorderUnselectedColor: $ms-color-neutralSecondaryAlt;
-$controlBorderUnselectedHoverColor: $ms-color-black;
+$controlBorderUnselectedColor: $ms-color-neutralTertiary;
+$controlBorderUnselectedHoverColor: $ms-color-neutralPrimary;
 // $controlBorderSelectedColor: unused
 $controlBorderSelectedHoverColor: $ms-color-themePrimary;
 

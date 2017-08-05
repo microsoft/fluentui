@@ -15,7 +15,7 @@
   @include high-contrast {
     border-bottom: 1px solid $ms-color-white;
   }
-  
+
   @include high-contrast-black-on-white  {
     border-bottom: 1px solid $ms-color-black;
   }
@@ -29,20 +29,20 @@
   font-weight: $ms-font-weight-light;
   line-height: 1;
   padding: 40px 0;
-  transition: font-size $ms-duration1 $ms-ease1;
+  transition: font-size $ms-animation-duration-1 $ms-animation-ease-1;
 }
 
 .pageNav {
   display: none;
 }
 
-@media screen and (max-width: $ms-screen-md-max) {
+@media screen and (max-width: $ms-screen-max-md) {
   .pageHeader {
     margin-bottom: -2px;
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .pageHeader {
     height: $PageHeader-fullHeight;
 
@@ -57,14 +57,14 @@
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
 
         @include high-contrast {
-          @include border-right(1px, solid, $ms-color-white);
+          @include ms-border-right(1px, solid, $ms-color-white);
         }
-        
+
         @include high-contrast-black-on-white  {
-          @include border-right(1px, solid, $ms-color-black);
+          @include ms-border-right(1px, solid, $ms-color-black);
         }
       }
-      
+
       .pageTitle {
         font-size: $font-size-big;
         font-weight: $ms-font-weight-regular;
@@ -75,7 +75,7 @@
 
   .content {
     height: $PageHeader-titleHeight + $PageHeader-navHeight;
-    transition: box-shadow $ms-duration2 $ms-ease1;
+    transition: box-shadow $ms-animation-duration-2 $ms-animation-ease-1;
     position: relative;
   }
 
@@ -83,7 +83,7 @@
     font-size: $font-size-huge;
     padding-top: 94px;
   }
-  
+
   .pageNav {
     display: block;
     height: $PageHeader-navHeight;
@@ -101,7 +101,7 @@
         font-weight: $ms-font-weight-semilight;
         height: $PageHeader-navHeight;
         line-height: $PageHeader-navHeight;
-        @include margin-right(28px);
+        @include ms-margin-right(28px);
         text-decoration: none;
         text-align: center;
 
@@ -125,7 +125,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   // The mobile nav is no longer present, so the attached page header is higher up
   .pageHeader.isAttached {
     .content {

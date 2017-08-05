@@ -1,24 +1,44 @@
 /* tslint:disable:no-string-literal */
 
+/**
+ * EventRecord interface.
+ *
+ * @internal
+ */
 export interface IEventRecord {
   target: any;
   eventName: string;
   parent: any;
   callback: (args?: any) => void;
-  elementCallback: (...args: any[]) => void;
-  objectCallback: (args?: any) => void;
+  elementCallback?: (...args: any[]) => void;
+  objectCallback?: (args?: any) => void;
   useCapture: boolean;
 }
 
+/**
+ * EventRecordsByName interface.
+ *
+ * @internal
+ */
 export interface IEventRecordsByName {
   [eventName: string]: IEventRecordList;
 }
 
+/**
+ * EventRecordList interface.
+ *
+ * @internal
+ */
 export interface IEventRecordList {
   [id: string]: IEventRecord[] | number;
   count: number;
 }
 
+/**
+ * DeclaredEventsByName interface.
+ *
+ * @internal
+ */
 export interface IDeclaredEventsByName {
   [eventName: string]: boolean;
 }
@@ -30,10 +50,12 @@ export interface IDeclaredEventsByName {
  *  HTMLElement, the event gets raised and is handled by the browser. Otherwise, it gets
  *  handled here in EventGroup, and the handler is called in the context of the parent
  *  (which is passed in in the constructor).
+ *
+ * @public
  */
 export class EventGroup {
   private static _uniqueId = 0;
-  private _parent;
+  private _parent: any;
   private _eventRecords: IEventRecord[];
   private _id = EventGroup._uniqueId++;
   private _isDisposed: boolean;
@@ -42,6 +64,7 @@ export class EventGroup {
    *  Events raised here by default have bubbling set to false and cancelable set to true.
    *  This applies also to built-in events being raised manually here on HTMLElements,
    *  which may lead to unexpected behavior if it differs from the defaults.
+   *
    */
   public static raise(
     target: any,
@@ -55,11 +78,11 @@ export class EventGroup {
       if (document.createEvent) {
         let ev = document.createEvent('HTMLEvents');
 
-        ev.initEvent(eventName, bubbleEvent, true);
-        ev['args'] = eventArgs;
+        ev.initEvent(eventName, bubbleEvent || false, true);
+        (ev as any)['args'] = eventArgs;
         retVal = target.dispatchEvent(ev);
-      } else if (document['createEventObject']) { // IE8
-        let evObj = document['createEventObject'](eventArgs);
+      } else if ((document as any)['createEventObject']) { // IE8
+        let evObj = (document as any)['createEventObject'](eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }
@@ -68,15 +91,17 @@ export class EventGroup {
         let events = <IEventRecordsByName>target.__events__;
         let eventRecords = events ? events[eventName] : null;
 
-        for (let id in eventRecords) {
-          if (eventRecords.hasOwnProperty(id)) {
-            let eventRecordList = <IEventRecord[]>eventRecords[id];
+        if (eventRecords) {
+          for (let id in eventRecords) {
+            if (eventRecords.hasOwnProperty(id)) {
+              let eventRecordList = <IEventRecord[]>eventRecords[id];
 
-            for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
-              let record = eventRecordList[listIndex];
+              for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
+                let record = eventRecordList[listIndex];
 
-              if (record.objectCallback) {
-                retVal = record.objectCallback.call(record.parent, eventArgs);
+                if (record.objectCallback) {
+                  retVal = record.objectCallback.call(record.parent, eventArgs);
+                }
               }
             }
           }
@@ -156,9 +181,7 @@ export class EventGroup {
         eventName: eventName,
         parent: parent,
         callback: callback,
-        objectCallback: null,
-        elementCallback: null,
-        useCapture: useCapture
+        useCapture: useCapture || false
       };
 
       // Initialize and wire up the record on the target, so that it can call the callback if the event fires.

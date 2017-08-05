@@ -23,7 +23,7 @@
     width: 36px;
     height: 36px;
     vertical-align: middle;
-    @include margin-right(5px);
+    @include ms-margin-right(5px);
     border: 1px solid rgba(127, 127, 127, .5);
   }
 

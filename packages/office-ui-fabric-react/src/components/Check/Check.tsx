@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
+import { Icon } from '../../Icon';
 import * as stylesImport from './Check.scss';
 const styles: any = stylesImport;
 
 export interface ICheckProps extends React.Props<Check> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /**
    * Whether or not this menu item is currently checked.
    * @defaultvalue false
@@ -14,6 +20,8 @@ export interface ICheckProps extends React.Props<Check> {
    * @deprecated
    */
   isChecked?: boolean;
+
+  alwaysShowCheck?: boolean;
 }
 
 export class Check extends BaseComponent<ICheckProps, {}> {
@@ -34,12 +42,16 @@ export class Check extends BaseComponent<ICheckProps, {}> {
       <div className={ css(
         'ms-Check',
         styles.root,
-        {
-          ['is-checked ' + styles.rootIsChecked]: isChecked
-        }) }>
-        <div className={ css('ms-Icon ms-Check-background', styles.background) }>
-        </div>
-        <i className={ css('ms-Check-check ms-Icon ms-Icon--CheckMark', styles.check) }></i>
+        isChecked && ('is-checked ' + styles.rootIsChecked)
+      ) }>
+        { Icon({
+          className: 'ms-Check-circle ' + styles.circle,
+          iconName: 'CircleRing'
+        }) }
+        { Icon({
+          className: 'ms-Check-check ' + styles.check,
+          iconName: 'StatusCircleCheckmark'
+        }) }
       </div>
     );
   }

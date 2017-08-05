@@ -15,7 +15,7 @@
     th {
       font-weight: $ms-font-weight-semibold;
       color: $ms-color-neutralSecondary;
-      @include text-align(left);
+      @include ms-text-align(left);
     }
   }
 
@@ -26,13 +26,13 @@
       line-height:  normal;
 
       &.animCell {
-        width: 260px; 
+        width: 260px;
       }
-      
+
       &:first-child {
         width: 1%;
         white-space: nowrap;
-        @include padding-right(20px);
+        @include ms-padding-right(20px);
       }
     }
   }
@@ -57,7 +57,7 @@
       td:first-child {
         color: $ms-color-neutralSecondary;
         padding: 8px auto 8px 8px;
-        @include padding-right(35px);
+        @include ms-padding-right(35px);
       }
     }
   }

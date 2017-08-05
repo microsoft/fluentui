@@ -1,0 +1,128 @@
+@import '../../common/common';
+
+.root {
+  position: relative;
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  box-sizing: content-box;
+}
+
+:global(.ms-Fabric.is-focusVisible) .cell {
+  &:focus,
+  &:focus::after {
+    border: none;
+  }
+}
+
+.item {
+  @include ms-font-m;
+  @include focus-border();
+  @include text-align(left);
+  color: $menuTextColor;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  display: block;
+  cursor: pointer;
+  padding: 0px 6px;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover:not([disabled]) {
+    background: $menuBackgroundHoverColor;
+  }
+  &.disabled,
+  &[disabled] {
+    color: $menuTextDisabledColor;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  :global(.is-focusVisible) &:focus {
+    background: $menuBackgroundHoverColor;
+  }
+}
+
+.cell {
+  padding: 0px;
+  overflow: visible;
+
+  &.cellIsSelected {
+    &:hover .svg,
+    &:active .svg {
+      box-shadow: 0 0 0 1px #969696;
+    }
+
+    &:focus .svg,
+    & .svg {
+      &.circle {
+        border-radius: 100%;
+      }
+
+      width: 12px;
+      height: 12px;
+      border: 4px solid $ms-color-neutralTertiaryAlt;
+    }
+  }
+
+   &:focus .svg {
+      box-shadow: 0 0 0 1px #969696;
+   }
+
+  &:hover .svg,
+  &:focus .svg,
+  &:active .svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &:hover .svg,
+  &:focus .svg {
+      border: 4px solid $ms-color-neutralQuaternaryAlt;
+   }
+
+  &:active .svg {
+  border: 4px solid $ms-color-neutralTertiaryAlt;
+  }
+
+  &:hover .svg.circle,
+  &:focus .svg.circle,
+  &:active .svg.circle {
+    border-radius: 100%;
+  }
+
+  &:active .svg {
+    border: 4px solid #969696;
+
+    // This is for a transform issue in IE
+    // where the edge of the SVG becomes hidden
+    // (e.g. the browser is not correctly listening to overflow: visible).
+    // Edge does the right thing and is not altered by this
+    -ms-transform: translate(-1px, -1px);
+  }
+
+    &.disabled,
+  &[disabled] {
+    color: $menuTextDisabledColor;
+    cursor: default;
+    pointer-events: none;
+    opacity: .3;
+  }
+}
+
+.swatchColorPickerContainer {
+  clear: both;
+  display: block;
+  min-width: 180px;
+}
+
+

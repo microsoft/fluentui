@@ -29,6 +29,12 @@ $od-Navigation-columnPadding: 30px;
     background-color: $ms-color-black;
     vertical-align: top;
 
+    .ms-Icon {
+      height: auto;
+      position: relative;
+      top: -4px;
+    }
+
     &.is-open {
       .od-Navigation-link {
         background-color: $ms-color-neutralPrimaryAlt;
@@ -67,7 +73,7 @@ $od-Navigation-columnPadding: 30px;
 
     @media (min-width: $od-Header-bannerWidth) {
       position: fixed;
-      top: 50px;
+      top: $od-Header-height;
       left: 0;
       height: 404px;
     }

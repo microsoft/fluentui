@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IconName } from './IconName';
 import { IImageProps } from '../Image/Image.Props';
+import { IStyle } from '../../Styling';
 
 // Please keep alphabetized
 export enum IconType {
@@ -28,7 +29,12 @@ export enum IconType {
   Image = 100001
 }
 
-export interface IIconProps extends React.HTMLProps<HTMLElement> {
+export interface IIconStyles {
+  root?: IStyle;
+  imageContainer?: IStyle;
+}
+
+export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font.
    *
@@ -36,6 +42,16 @@ export interface IIconProps extends React.HTMLProps<HTMLElement> {
    * @memberOf IIconProps
    */
   iconName?: IconName | string | null;
+
+  /**
+   * Optional styling for the elements within the Icon.
+   */
+  styles?: IIconStyles;
+
+  /**
+   * The aria label of the button for the benefit of screen readers.
+   */
+  ariaLabel?: string;
 
   /**
    * The type of icon to render (image or icon font).

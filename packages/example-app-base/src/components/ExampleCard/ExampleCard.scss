@@ -23,7 +23,7 @@
     @include float(right);
 
     .ms-Button.ExampleCard-codeButton {
-      @include margin-right(0);
+      @include ms-margin-right(0);
       background: none;
       border: 1px solid $ms-color-neutralTertiary;
       border-bottom: 0;
@@ -32,7 +32,7 @@
       line-height: 1;
       padding: 4px 12px;
       min-width: 100px;
-      transition: border $ms-duration3 $ms-ease1;
+      transition: border $ms-animation-duration-3 $ms-animation-ease-1;
 
       .ms-Button-label {
         color: $ms-color-neutralDark;
@@ -58,6 +58,7 @@
     overflow-x: hidden;
     overflow-y: auto;
     padding: 20px 0;
+    position: relative;
   }
 
   .ExampleCard-example.is-right-aligned {
@@ -73,7 +74,7 @@
       margin: 0;
       max-height: 0;
       overflow: auto;
-      transition: all $ms-duration3 $ms-ease1;
+      transition: all $ms-animation-duration-3 $ms-animation-ease-1;
     }
 
     code {
@@ -105,7 +106,7 @@
   .ExampleCard-dos {
     width: calc(50% - 50px);
     display: inline-block;
-    @include margin-right(50px);
+    @include ms-margin-right(50px);
 
     h4 {
       @include ms-font-l;

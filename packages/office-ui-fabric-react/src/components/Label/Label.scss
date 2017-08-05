@@ -11,7 +11,7 @@
 
 .root {
   @include ms-font-m;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   box-sizing: border-box;
   display: block;

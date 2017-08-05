@@ -29,9 +29,10 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 140,
   "tslint.enable": true,
-  "tslint.rulesDirectory": "./common/node_modules/tslint-microsoft-contrib",
+  "tslint.rulesDirectory": "./common/temp/node_modules/tslint-microsoft-contrib",
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
-  "typescript.tsdk": "./common/node_modules/typescript/lib"
+  "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
+  "tslint.autoFixOnSave": false
 }

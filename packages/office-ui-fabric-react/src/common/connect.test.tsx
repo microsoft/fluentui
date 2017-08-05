@@ -13,7 +13,7 @@ import { ISubscribable } from './ISubscribable';
 
 let { expect } = chai;
 
-interface ITestComponentProps extends React.HTMLProps<HTMLDivElement> { }
+interface ITestComponentProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 // Dumb component.
 const TestComponent = (props: ITestComponentProps) => (
@@ -40,7 +40,7 @@ class AddStore extends BaseStore implements ISubscribable {
 class HelloStore extends BaseStore implements IHelloStore {
   public message: string = '';
 
-  public say(message) {
+  public say(message: string) {
     this.message = message;
     this.emitChange();
   }
@@ -92,7 +92,7 @@ describe('connect', () => {
 
   it('can throw when requiring a store in an environment without any stores hosted', () => {
     let hello = storeKey<IHelloStore>('hello');
-    let Connected = connect(
+    let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       [hello],
       () => ({ /* empty */ })
@@ -112,7 +112,7 @@ describe('connect', () => {
 
   it('can throw in an environment that does not contain the required store', () => {
     let hello = storeKey<IHelloStore>('hello');
-    let Connected = connect(
+    let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       [hello],
       () => ({ /* empty */ })

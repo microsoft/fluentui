@@ -19,8 +19,10 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public shouldComponentUpdate(): void {
+  public shouldComponentUpdate(nextProps?: {}, nextState?: {}): boolean {
     this._createNullRef();
+
+    return true;
   }
 
   public componentWillUpdate(): void {
@@ -31,7 +33,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public render(): JSX.Element {
+  public render(): JSX.Element | null {
     this._createNullRef();
     return null;
   }
@@ -45,7 +47,7 @@ class TestComponent extends BaseComponent<{}, {}> {
   }
 
   private _createNullRef() {
-    let foo: () => void = null;
+    let foo: any = null;
 
     // Calling a null
     foo();
@@ -83,7 +85,7 @@ describe('BaseComponent', () => {
   });
 });
 
-function _buildTestFor(methodName) {
+function _buildTestFor(methodName: string) {
   it(`calls the error logger on ${methodName} exception`, () => {
     let lastErrorMessage = null;
 
@@ -91,7 +93,7 @@ function _buildTestFor(methodName) {
 
     let c = new TestComponent();
 
-    c[methodName]();
+    (c as any)[methodName]();
 
     assert(lastErrorMessage !== null, 'Error callback not called');
   });

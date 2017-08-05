@@ -2,8 +2,15 @@ import * as React from 'react';
 import {
   BaseComponent,
   KeyCodes,
-  css
+  customizable,
+  css,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
+import {
+  ITheme
+} from '../../Styling';
+import { getStyles } from './Fabric.styles';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -17,6 +24,10 @@ const DIRECTIONAL_KEY_CODES = [
   KeyCodes.pageDown
 ];
 
+export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: () => void;
+  theme?: ITheme;
+}
 export interface IFabricState {
   isFocusVisible?: boolean;
 }
@@ -30,11 +41,9 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
   document.documentElement.setAttribute('dir', 'ltr');
 }
 
-export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabricState> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    root: HTMLElement;
-  };
+@customizable(['theme'])
+export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
+  private _root: HTMLElement;
 
   constructor() {
     super();
@@ -51,12 +60,22 @@ export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabr
 
   public render() {
     const { isFocusVisible } = this.state;
-    const rootClass = css('ms-Fabric ms-font-m', this.props.className, {
-      'is-focusVisible': isFocusVisible
-    });
+    const styles = getStyles(this.props.theme!);
 
+    const rootClass = css(
+      'ms-Fabric',
+      styles.root,
+      this.props.className,
+      isFocusVisible && 'is-focusVisible'
+    ) as string;
+
+    let divProps = getNativeProps(this.props, divProperties);
     return (
-      <div { ...this.props } className={ rootClass } ref='root' />
+      <div
+        { ...divProps }
+        className={ rootClass }
+        ref={ this._resolveRef('_root') }
+      />
     );
   }
 

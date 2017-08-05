@@ -23,7 +23,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .designSection,
   .structureSection,
   .instructionsSection {
@@ -76,13 +76,13 @@
   }
 }
 
-@media screen and (max-width: $ms-screen-md-max) {
+@media screen and (max-width: $ms-screen-max-md) {
   .designSection .feature {
     float: none;
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   img {
     margin-bottom: 20px;
   }
@@ -120,7 +120,7 @@
   counter-reset: li; // Start a counter of list items
   max-width: 50em;
   margin: 60px auto;
-  @include margin-right(0);
+  @include ms-margin-right(0);
 
   li {
     list-style: none; // Remove the usual numbers
@@ -150,14 +150,14 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .steps {
     li {
-      @include padding-left(56px);
+      @include ms-padding-left(56px);
       padding-top: 0;
 
       &::before {
-        @include left(0);
+        @include ms-left(0);
       }
     }
   }

@@ -2,25 +2,28 @@
   "name": "office-ui-fabric-react-repo",
   "version": "1.0.0",
   "description": "Reusable React components for building experiences for Office 365.",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install",
-    "_rushLink": "node node_modules/@microsoft/rush/bin/rush link",
-    "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build --verbose",
+    "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install -c",
+    "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build --verbose --production",
     "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
-    "postinstall": "npm run _rushInstall && npm run _rushLink && npm run _rushBuildToFabric",
+    "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose",
+    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
     "test": "npm run _rushBuild",
     "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
-    "change": "node node_modules/@microsoft/rush/bin/rush change"
+    "buildfast": "npm run _rushBuild",
+    "change": "node node_modules/@microsoft/rush/bin/rush change",
+    "generate": "node node_modules/@microsoft/rush/bin/rush generate"
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "2.5.0",
+    "@microsoft/rush": "3.0.11",
     "github": "^7.0.0",
     "gulp": "^3.9.1",
     "yargs": "^6.5.0"

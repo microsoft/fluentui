@@ -17,6 +17,11 @@ import {
 } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
+export enum CollapseAllVisibility {
+  hidden = 0,
+  visible = 1
+}
+
 export interface IGroupedList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
@@ -36,7 +41,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IGroupedList) => void;
+  componentRef?: (component?: IGroupedList) => void;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -153,6 +158,7 @@ export interface IGroup {
 }
 
 export interface IGroupRenderProps {
+
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -177,9 +183,18 @@ export interface IGroupRenderProps {
    * Override which allows the caller to provider a customer footer.
    */
   onRenderFooter?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Flag to indicate whether to ignore the collapsing icon on header.
+   * @default CheckboxVisibility.visible
+   */
+  collapseAllVisibility?: CollapseAllVisibility;
 }
 
 export interface IGroupDividerProps {
+
+  componentRef?: () => void;
+
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
 

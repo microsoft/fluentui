@@ -19,15 +19,18 @@ build.sass.setConfig({
 let rules = Object.assign(
   {},
   require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
 build.tslint.setConfig({
   lintConfig: { rules },
-  sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
+  displayAsWarning: false
 });
+
 // TODO: remove this! There are a number of lint errors to fix.
 build.tslint.isEnabled = () => false;
+
+build.webpack.isEnabled = () => isProduction;
 
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
@@ -43,14 +46,15 @@ build.postCopy.setConfig({
   }
 });
 
-build.karma.isEnabled = () => false;
-
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
+
+// Use Karma Tests - Disable during develoment if prefered, turned off for now
+build.karma.isEnabled = () => false;
 
 // initialize tasks.
 build.initialize(gulp);

@@ -20,6 +20,9 @@ import {
   BaseButton
 } from '../../Button';
 import {
+  Icon
+} from '../../Icon';
+import {
   Persona,
   PersonaSize
 } from '../../Persona';
@@ -52,7 +55,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       personas,
       showAddButton
     } = this.props;
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
+    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas as number);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -142,7 +145,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     </div>;
   }
 
-  private _getOverflowElement(numPersonasToShow: number): JSX.Element {
+  private _getOverflowElement(numPersonasToShow: number): JSX.Element | null {
     switch (this.props.overflowButtonType) {
       case OverflowButtonType.descriptive:
         return this._getDescriptiveOverflowElement(numPersonasToShow);
@@ -155,7 +158,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     }
   }
 
-  private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element {
+  private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element | null {
     let { overflowButtonProps, personas, personaSize } = this.props;
     let numPersonasNotPictured: number = personas.length - numPersonasToShow;
 
@@ -192,7 +195,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => (
-          <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true' />
+          <Icon iconName={ icon } />
         ) }
       />
     </BaseButton>;
@@ -208,16 +211,16 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => (
-          <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true' />
+          <Icon iconName='AddFriend' />
         ) }
       />
     </BaseButton>;
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
-    persona.onClick(ev, persona);
-    ev.preventDefault();
-    ev.stopPropagation();
+    persona.onClick!(ev, persona);
+    ev!.preventDefault();
+    ev!.stopPropagation();
   }
 
   private _onPersonaMouseMove(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {

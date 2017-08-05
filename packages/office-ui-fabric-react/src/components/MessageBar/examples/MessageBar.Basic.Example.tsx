@@ -12,20 +12,17 @@ export const MessageBarBasicExample = () => (
     <Label>Info/Default MessageBar</Label>
     <MessageBar>Info - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
 
-    <Label>Error MessageBar - only dismiss</Label>
+    <Label>Error MessageBar - only dismiss single line</Label>
     <MessageBar
       messageBarType={ MessageBarType.error }
+      isMultiline={ false }
       onDismiss={ () => { console.log('test'); } }>
       Error - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
-    <p>
-      Add a close box when the user can safely dismiss the message. They’ll want to do this to reclaim space or if they feel too disrupted.
-          </p>
 
-    <Label>Blocked MessageBar - single line</Label>
+    <Label>Blocked MessageBar - single line no buttons</Label>
     <MessageBar messageBarType={ MessageBarType.blocked }
-      onDismiss={ () => { console.log('test'); } }
       isMultiline={ false }
-      actions={ <div><DefaultButton>Yes</DefaultButton><DefaultButton>No</DefaultButton></div> }>
+      onDismiss={ () => { console.log('test'); } }>
       Blocked - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
 
     <Label>SevereWarning MessageBar - multiline (default)</Label>
@@ -41,7 +38,7 @@ export const MessageBarBasicExample = () => (
       <Link href='www.bing.com'>Visit our website</Link>
     </MessageBar>
 
-    <Label>Success MessageBar - single line, long text with buttons</Label>
+    <Label>Success MessageBar - single line, short text with buttons</Label>
     <MessageBar
       actions={
         <div>

@@ -2,6 +2,350 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.9.0",
+      "tag": "@uifabric/utilities_v4.9.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.1",
+      "tag": "@uifabric/utilities_v4.8.1",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Alex Bettadapur <alexbettadapur@gmail.com>",
+            "commit": "e23f7f865699374df1d8f5de0f553ee1559b3f8f",
+            "comment": "Fixing filteredAssign function"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.8.0",
+      "tag": "@uifabric/utilities_v4.8.0",
+      "date": "Wed, 19 Jul 2017 21:40:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "074fabb6f0ffd52598947d9dda563d4dd8113ee7",
+            "comment": "Add assertNever function for exhaustive null checking"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.2",
+      "tag": "@uifabric/utilities_v4.7.2",
+      "date": "Wed, 12 Jul 2017 01:49:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "73a4ebc5ae382eb50a4a3f3a2048066748358471",
+            "comment": "Fixing typings for TypeScript 2.4.1 compatibility."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.1",
+      "tag": "@uifabric/utilities_v4.7.1",
+      "date": "Sat, 08 Jul 2017 03:34:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3df78de25c03bf92d299e9f544950593001861eb",
+            "comment": "Updating library comments."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.7.0",
+      "tag": "@uifabric/utilities_v4.7.0",
+      "date": "Thu, 06 Jul 2017 10:11:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8f7558c34ba8eece6830b3dba53f79f29af97a87",
+            "comment": "Adding export for GlobalSettings object."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.6.0",
+      "tag": "@uifabric/utilities_v4.6.0",
+      "date": "Fri, 30 Jun 2017 19:44:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8729d1e873367ac7a0f541a05878e0ef711927af",
+            "comment": "Customizer `setDefault` method moved to GlobalSettings `setValue` helper. This patches the customization code in 2 ways: 1. Multiple copies of the Customizer on the page will no longer create script errors complaining about missing themes, and 2. React is no longer pulled into the styling graph."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.5.0",
+      "tag": "@uifabric/utilities_v4.5.0",
+      "date": "Thu, 29 Jun 2017 20:48:31 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "1df26a8f1b5c02da41f36b1f4f20003ab20671d0",
+            "comment": "Adding a new Grid utility"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.2",
+      "tag": "@uifabric/utilities_v4.4.2",
+      "date": "Thu, 29 Jun 2017 10:13:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5720ea897345a93668e50c9d5684359e5ecad48b",
+            "comment": "Removing localstorage persistence for rtl helpers."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.1",
+      "tag": "@uifabric/utilities_v4.4.1",
+      "date": "Tue, 27 Jun 2017 01:26:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8e7c0dbb6bee06a7e289b6df7da934df425b9871",
+            "comment": "Enable forceConsistentCasingInFileNames tsconfig option"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.4.0",
+      "tag": "@uifabric/utilities_v4.4.0",
+      "date": "Wed, 21 Jun 2017 01:52:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "221454482fd48138b0485715170c03c64fa1cef7",
+            "comment": "Add FabricPerformance utility to measure performance"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.3.0",
+      "tag": "@uifabric/utilities_v4.3.0",
+      "date": "Wed, 14 Jun 2017 06:02:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "74c01f80ee4fb502a45c77ac0ad135148b2146d9",
+            "comment": "isTabbableElement: fixed edge cases with identifying focusable elements that have tabIndex assigned."
+          },
+          {
+            "author": "Chad Sheets <cjsheets@gmail.com>",
+            "commit": "d4527911db0d3c4bbdc74473e3d7d996c182b444",
+            "comment": "Focus Utility should respect tabindex=-1 on tabable elements"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "a07c7287aeec78d8f17712551f94d3af55031592",
+            "comment": "Enable strictNullChecks in utilities package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.0",
+      "tag": "@uifabric/utilities_v4.2.0",
+      "date": "Mon, 12 Jun 2017 01:47:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "de7c49d2bd5e85af8d7ae0aee97eb9afd297966d",
+            "comment": "Enable no implicit any in utilities package"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.2",
+      "tag": "@uifabric/utilities_v4.1.2",
+      "date": "Thu, 08 Jun 2017 00:18:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "soorajpurandare <soorajashutosh@gmail.com>",
+            "commit": "f382123efa18802b5f86f4be669c5b34847872d4",
+            "comment": "Adding a try-catch around setting RTL in local storage for the browser"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.1",
+      "tag": "@uifabric/utilities_v4.1.1",
+      "date": "Tue, 06 Jun 2017 06:06:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1820479f14ee2ddd8b6c926f7420aac1415feaa2",
+            "comment": "Adding tslib dependency to reduce re"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.0",
+      "tag": "@uifabric/utilities_v4.1.0",
+      "date": "Tue, 06 Jun 2017 00:50:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8024225d8a3936ccddbcfb9688727260827dfe09",
+            "comment": "Customizer/customizable: adjusting to take in fields, rather than a single string representing the thing to customize."
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cb407443e257121037ba57a6bc302f87e03eec9c",
+            "comment": "memoize: returns the callback in scenarios where WeakMap isn't available."
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.1",
+      "tag": "@uifabric/utilities_v4.0.1",
+      "date": "Thu, 01 Jun 2017 16:34:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "262f85869f3c6b60fc403ab720e95f6687f8e0e0",
+            "comment": "getDocument/getWindow: now checks for doc/win undefined before accessing, making them ssr happy."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "90ef0576bb0f68a3a157176937b9ad5cc1797730",
+            "comment": "Update Focus handling to suport immediately-nested focus zones"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.0.0",
+      "tag": "@uifabric/utilities_v4.0.0",
+      "date": "Tue, 30 May 2017 03:27:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ryo Miyake <ryo.studiom@gmail.com>",
+            "commit": "83b0787a17884867a2ad336d3dad9e713da8f04e",
+            "comment": "Introduce prop-types instead of React.PropTypes"
+          }
+        ],
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "memoize/memoizeFunction: memoize converted to a decorator, memoizeFunction is now for memoizing functions."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "3a198d4811b76f491acce31efa358c9c95740a63",
+            "comment": "getLangauge/setLanguage: new apis added for getting/setting the language normally specified on the html lang attribute."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.2",
+      "tag": "@uifabric/utilities_v1.10.2",
+      "date": "Fri, 26 May 2017 10:21:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kristian Halle <khalle@microsoft.com>",
+            "commit": "a564ac9adcc0b2fdbcdf00ac97b797e81ab4ebbe",
+            "comment": "Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. "
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.1",
+      "tag": "@uifabric/utilities_v1.10.1",
+      "date": "Wed, 24 May 2017 23:52:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "1020ec60dd7d0461fc945a2b2a87c6cbb0e07db9",
+            "comment": "Add utlities for unit tests that need to override or spy on React lifecycle methods"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.0",
+      "tag": "@uifabric/utilities_v1.10.0",
+      "date": "Tue, 23 May 2017 10:16:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "40f7131f031ed5b4b7bcf0cc6b3ace39e5f5dde4",
+            "comment": "warn: Making ISettingsMap have optionals so that the warn utilities can be used for Prop interfaces containing required params."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.9.0",
+      "tag": "@uifabric/utilities_v1.9.0",
+      "date": "Thu, 18 May 2017 10:09:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a0783284d6ad0eca368a4a10a16ffd30e4af16c5",
+            "comment": "Adding memoize utility. Updating css to handle serializable objects. Updating rtl helper to respect a localStorage setting."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.7",
       "tag": "@uifabric/utilities_v1.8.7",
       "date": "Fri, 05 May 2017 10:18:19 GMT",

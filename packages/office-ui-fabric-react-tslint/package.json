@@ -1,0 +1,13 @@
+{
+  "name": "office-ui-fabric-react-tslint",
+  "version": "1.0.0",
+  "description": "Shared tslint rules",
+  "main": "tslint.json",
+  "scripts": {
+    "clean": "",
+    "build": "node -v"
+  },
+  "devDependencies": {
+    "@microsoft/gulp-core-build-typescript": "^3.3.1"
+  }
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  Checkbox
+  Checkbox,
+  ICheckboxStyles
 } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface ICheckboxBasicExampleState {
@@ -21,6 +22,12 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   public render() {
     let { isChecked } = this.state;
 
+    let styles: ICheckboxStyles = {
+      root: {
+        marginTop: '10'
+      }
+    };
+
     return (
       <div>
         <Checkbox
@@ -29,23 +36,45 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           inputProps={ {
             onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
-          } } />
+          } }
+          styles={ styles }
+        />
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
           defaultChecked={ true }
-          onChange={ this._onCheckboxChange } />
+          onChange={ this._onCheckboxChange }
+          styles={ styles }
+        />
+
+        <Checkbox
+          label='Disabled uncontrolled checkbox'
+          disabled={ true }
+          styles={ styles }
+        />
 
         <Checkbox
           label='Disabled uncontrolled checkbox with defaultChecked true'
           disabled={ true }
           defaultChecked={ true }
-          onChange={ this._onCheckboxChange } />
+          onChange={ this._onCheckboxChange }
+          styles={ styles }
+        />
 
         <Checkbox
           label='Controlled checkbox'
           checked={ isChecked }
-          onChange={ (ev, checked) => this.setState({ isChecked: checked }) } />
+          onChange={ (ev, checked) => {
+            this.setState({ isChecked: checked! });
+          } }
+          styles={ styles }
+        />
+
+        <Checkbox
+          label='Checkbox rendered with boxSide "end"'
+          boxSide='end'
+          styles={ styles }
+        />
       </div>
     );
   }

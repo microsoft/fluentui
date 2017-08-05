@@ -35,7 +35,7 @@ export interface IAppDefinition {
 
 export interface IAppProps extends React.Props<App> {
   responsiveMode?: ResponsiveMode;
-  appDefinition?: IAppDefinition;
+  appDefinition: IAppDefinition;
 }
 
 export interface IAppState {
@@ -57,11 +57,15 @@ export class App extends React.Component<IAppProps, any> {
   }
 
   public render() {
-    let { responsiveMode, appDefinition } = this.props;
+    let { appDefinition, responsiveMode } = this.props;
     let { isMenuVisible } = this.state;
 
+    if (responsiveMode === undefined) {
+      responsiveMode = ResponsiveMode.large;
+    }
+
     let navPanel = (
-      <Nav groups={ appDefinition.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={ (link) => ([
+      <Nav groups={ appDefinition.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={ (link: INavLink) => ([
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
         (link.status !== undefined ?
           <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
@@ -94,7 +98,7 @@ export class App extends React.Component<IAppProps, any> {
 
         { (responsiveMode <= ResponsiveMode.large) ? (
           <Panel
-            className='ms-App-navPanel ms-font-m'
+            className='ms-App-navPanel'
             isOpen={ isMenuVisible }
             isLightDismiss={ true }
             type={ PanelType.smallFixedNear }

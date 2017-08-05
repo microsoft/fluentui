@@ -13,7 +13,6 @@ $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
 
 .root {
-  @include ms-baseFont;
   font-weight: $ms-font-weight-regular;
 }
 

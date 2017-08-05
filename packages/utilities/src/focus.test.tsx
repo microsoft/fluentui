@@ -8,9 +8,9 @@ let { expect } = chai;
 
 import { isElementVisible, isElementTabbable } from './focus';
 
-let _hiddenElement;
-let _visibleElement;
-let _element;
+let _hiddenElement: HTMLElement | undefined;
+let _visibleElement: HTMLElement | undefined;
+let _element: HTMLElement | undefined;
 
 function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);

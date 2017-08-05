@@ -1,5 +1,6 @@
 import * as React from 'react';
-export interface IPickerItemProps<T> extends React.Props<any> {
+export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement> {
+  componentRef?: () => void;
   item: T;
   index: number;
   selected?: boolean;
@@ -9,4 +10,6 @@ export interface IPickerItemProps<T> extends React.Props<any> {
    * This allows the base picker to keep track of changes in the items.
    */
   onItemChange?: (item: T, index: number) => void;
+  key?: string | number;
+  removeButtonAriaLabel?: string;
 }

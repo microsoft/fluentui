@@ -5,7 +5,7 @@ const styles: any = stylesImport;
 
 const Highlight = require('react-highlight');
 
-export interface ICodeBlockProps extends React.HTMLProps<HTMLElement> {
+export interface ICodeBlockProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * The language of the code block. See https://highlightjs.org/static/demo/ for a list of supported languages.
    * @default html

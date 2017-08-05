@@ -10,7 +10,7 @@
 $Dropdown-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
 $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
-$DropDown-item-height: 36px;
+$DropDown-item-height: 32px;
 
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
@@ -34,7 +34,7 @@ $DropDown-item-height: 36px;
 }
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -138,7 +138,7 @@ $DropDown-item-height: 36px;
   font-size: $ms-icon-size-s;
   position: absolute;
   top: 1px; // border
-  @include right(12px);
+  @include ms-right(12px);
   pointer-events: none;
   height: $DropDown-height;
   line-height: $DropDown-height - 2px; // height minus the border
@@ -146,7 +146,7 @@ $DropDown-item-height: 36px;
 
 // Style the new, replacement component
 .title {
-  @include ms-u-normalize;
+  @include ms-normalize;
   background: $ms-color-white;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   cursor: pointer;
@@ -169,7 +169,7 @@ $DropDown-item-height: 36px;
 .panel {
     // Force drop shadow even under medium breakpoint
     :global(.ms-Panel-main) {
-      @include drop-shadow(-30px, 0px, 30px, -30px, .2);
+      @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
     }
     // Remove padding as items have their own padding and bg
     :global(.ms-Panel-contentInner) {
@@ -178,7 +178,7 @@ $DropDown-item-height: 36px;
   }
 
 .callout {
-  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
   border: 1px solid $ms-color-neutralLight;
 }
 
@@ -203,7 +203,7 @@ $DropDown-item-height: 36px;
   height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 5px 16px;
+  padding: 4px 16px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;

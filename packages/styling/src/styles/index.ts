@@ -1,4 +1,11 @@
-export { animationStyles, IAnimationStyles } from './animationStyles';
-export { fontStyles, IFontStyles } from './fontStyles';
-export { colorStyles, IColorStyles } from './colorStyles';
-export { iconCodes, IIconCodes } from './iconCodes';
+export { AnimationStyles } from './AnimationStyles';
+export { DefaultPalette } from './DefaultPalette';
+export { DefaultFontStyles, FontSizes, FontWeights } from './DefaultFontStyles';
+export { IconCodes } from './IconCodes';
+export { getFocusStyle } from './getFocusStyle';
+export {
+  ThemeSettingName,
+  getTheme,
+  loadTheme,
+  createTheme
+} from './theme';

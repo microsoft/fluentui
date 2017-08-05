@@ -6,7 +6,6 @@
   cursor: pointer;
 
   :global(.ms-Link) {
-    @include ms-baseFont;
     font-size: $ms-font-size-s;
   }
 }

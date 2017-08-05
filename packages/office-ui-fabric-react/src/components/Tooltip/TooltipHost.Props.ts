@@ -19,7 +19,7 @@ export enum TooltipOverflowMode {
 /**
  * Tooltip component props.
  */
-export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | TooltipHost> {
+export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHost> {
   /**
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -37,6 +37,12 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
   tooltipProps?: ITooltipProps;
 
   /**
+   * Whether or not to mark the container as described by the tooltip.
+   * If not specified, the caller should mark as element as described by the tooltip id.
+   */
+  setAriaDescribedBy?: boolean;
+
+  /**
    * Length of delay
    * @default medium
    */
@@ -52,6 +58,12 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
 
   /**
    * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.

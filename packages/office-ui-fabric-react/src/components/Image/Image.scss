@@ -23,7 +23,7 @@
 .imageIsContain,
 .imageIsCover {
   position: relative;
-  @include left(50%);
+  @include ms-left(50%);
   top: 50%;
   // transform-translateX mixin is not used here because a transateY is also required.
   @include LTR {

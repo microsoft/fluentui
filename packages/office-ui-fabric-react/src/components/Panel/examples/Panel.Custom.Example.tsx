@@ -26,7 +26,7 @@ export class PanelCustomExample extends React.Component<any, any> {
           customWidth='888px'
           headerText='Custom Panel with custom 888px width'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );

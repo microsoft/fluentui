@@ -1,42 +1,38 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument, getWindow } from './dom';
+import { getDocument } from './dom';
 
 // Default to undefined so that we initialize on first read.
-let _isRTL: boolean;
+let _isRTL: boolean | undefined;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
+ *
+ * @public
  */
 export function getRTL(): boolean {
-  if (_isRTL === undefined) {
+  let isRTL: boolean = _isRTL as boolean;
+
+  if (isRTL === undefined) {
     let doc = getDocument();
 
-    if (doc) {
-      _isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-    } else {
-      throw new Error(
-        'getRTL was called in a server environment without setRTL being called first. ' +
-        'Call setRTL to set the correct direction first.'
-      );
+    if (doc && doc.documentElement) {
+      isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
     }
   }
 
-  return _isRTL;
+  return isRTL;
 }
 
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
+ *
+ * @public
  */
 export function setRTL(isRTL: boolean) {
   let doc = getDocument();
-  if (doc) {
-    doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-  }
 
-  let win = getWindow();
-  // tslint:disable-next-line:no-string-literal
-  if (win && win['localStorage']) {
-    localStorage.setItem('isRTL', isRTL ? '1' : '0');
+  if (doc && doc.documentElement) {
+    doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
   _isRTL = isRTL;
@@ -44,6 +40,8 @@ export function setRTL(isRTL: boolean) {
 
 /**
  * Returns the given key, but flips right/left arrows if necessary.
+ *
+ * @public
  */
 export function getRTLSafeKeyCode(key: number): number {
   if (getRTL()) {

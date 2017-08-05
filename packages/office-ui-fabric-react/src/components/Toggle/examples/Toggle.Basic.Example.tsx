@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export const ToggleBasicExample = () => (
-  <div>
+  <div style={ { padding: '2px' } }>
     <Toggle
       defaultChecked={ true }
       label='Enabled and checked'

@@ -16,7 +16,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
    * Callback issued when a date is selected
    */
-  onSelectDate?: (date: Date) => void;
+  onSelectDate?: (date: Date | null | undefined) => void;
 
   /**
    * Label for the DatePicker
@@ -30,9 +30,21 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   isRequired?: boolean;
 
   /**
+   * Disabled state of the DatePicker.
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
    * Aria Label for TextField of the DatePicker for screen reader users.
    */
   ariaLabel?: string;
+
+  /**
+   * Aria label for date picker popup for screen reader users.
+   * @defaultvalue Calendar
+   */
+  pickerAriaLabel?: string;
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
@@ -72,7 +84,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
    * @defaultvalue new Date(Date.parse(dateStr))
    */
-  parseDateFromString?: (dateStr: string) => Date;
+  parseDateFromString?: (dateStr: string) => Date | null;
 
   /**
    * The first day of the week for your locale.
@@ -90,6 +102,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * @defaultvalue false
    */
   borderless?: boolean;
+
+  /**
+   * Optional Classname for datepicker root element .
+   */
+  className?: string;
 }
 
 export interface IDatePickerStrings {

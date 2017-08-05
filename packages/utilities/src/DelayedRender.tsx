@@ -1,13 +1,22 @@
 import * as React from 'react';
 
+/**
+ * DelayedRender component props.
+ *
+ * @public
+ */
 export interface IDelayedRenderProps extends React.Props<any> {
   /**
    * Number of milliseconds to delay rendering children.
-   * @default 0
    */
   delay?: number;
 }
 
+/**
+ * DelayedRender component state.
+ *
+ * @internal
+ */
 export interface IDelayedRenderState {
   /**
    * Whether the component is rendered or not.
@@ -20,20 +29,14 @@ export interface IDelayedRenderState {
  * requires a single child component; don't pass in many components. Wrap multiple components in a DIV
  * if necessary.
  *
- * @example
- * <DelayedRender delay={ 3000 }>
- *  <div className='foo-List-loadingSpinner'>
- *    <p>I am loading</p>
- *    <Spinner />
- *  </div>
- * </DelayedRender>
+ * @public
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
   public static defaultProps = {
     delay: 0
   };
 
-  private _timeoutId;
+  private _timeoutId: number | undefined;
 
   constructor(props: IDelayedRenderProps) {
     super(props);
@@ -52,7 +55,9 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
   }
 
   public componentWillUnmount() {
-    clearTimeout(this._timeoutId);
+    if (this._timeoutId) {
+      clearTimeout(this._timeoutId);
+    }
   }
 
   public render() {

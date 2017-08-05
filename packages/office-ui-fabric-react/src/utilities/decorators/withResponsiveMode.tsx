@@ -24,12 +24,12 @@ const RESPONSIVE_MAX_CONSTRAINT = [
   99999999
 ];
 
-let _defaultMode: ResponsiveMode;
+let _defaultMode: ResponsiveMode | undefined;
 
 /**
  * Allows a server rendered scenario to provide a default responsive mode.
  */
-export function setResponsiveMode(responsiveMode: ResponsiveMode) {
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined) {
   _defaultMode = responsiveMode;
 }
 
@@ -75,8 +75,13 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
       let win = getWindow();
 
       if (typeof win !== 'undefined') {
-        while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
-          responsiveMode++;
+        try {
+          while (win.innerWidth > RESPONSIVE_MAX_CONSTRAINT[responsiveMode]) {
+            responsiveMode++;
+          }
+        } catch (e) {
+          // Return a best effort result in cases where we're in the browser but it throws on getting innerWidth.
+          responsiveMode = ResponsiveMode.large;
         }
       } else {
         if (_defaultMode !== undefined) {

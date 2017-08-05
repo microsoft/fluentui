@@ -12,6 +12,7 @@ import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './Tooltip.scss';
 const styles: any = stylesImport;
+import { AnimationClassNames } from '../../Styling';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -34,18 +35,24 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
       content,
       calloutProps,
       directionalHint,
+      directionalHintForRTL,
       delay,
       id,
       onRenderContent = this._onRenderContent
-    } = this.props;
+  } = this.props;
 
     return (
       <Callout
-        className={ css('ms-Tooltip ms-u-fadeIn200', styles.root, {
-          [styles.hasMediumDelay]: delay === TooltipDelay.medium
-        }) }
+        className={ css(
+          'ms-Tooltip',
+          AnimationClassNames.fadeIn200,
+          styles.root, {
+            [styles.hasMediumDelay]: delay === TooltipDelay.medium
+          }
+        ) }
         targetElement={ targetElement }
         directionalHint={ directionalHint }
+        directionalHintForRTL={ directionalHintForRTL }
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
       >

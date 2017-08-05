@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ISlider {
-  value: number;
+  value: number | undefined;
 
   focus: () => void;
 }
@@ -77,5 +77,5 @@ export interface ISliderProps {
   /**
    * Optional mixin for additional props on the thumb button within the slider.
    */
-  buttonProps?: React.HTMLProps<HTMLButtonElement>;
+  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }

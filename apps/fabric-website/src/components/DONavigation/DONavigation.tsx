@@ -17,8 +17,8 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
   private LINKS_CLASS = '.od-Navigation-link';
   private LINKS_CONTAINER_CLASS = '.od-Header-navigationContainer';
   private LINKS_BANNER_CLASS = '.od-Header-banner';
-  private LINKS_CONTAINER_ANIM_IN_CLASS = 'ms-u-slideDownIn10';
-  private LINKS_CONTAINER_ANIM_OUT_CLASS = 'ms-u-slideUpOut10';
+  private LINKS_CONTAINER_ANIM_IN_CLASS = 'ms-slideDownIn10';
+  private LINKS_CONTAINER_ANIM_OUT_CLASS = 'ms-slideUpOut10';
   private CONTAINER_CLASS = '.od-Navigation-linkContainer';
   private SUBMENU_CLASS = '.od-Navigation-subMenu';
   private HAMBURGER_MENU_CLASS = '.od-Header-hamburgerButton';
@@ -94,13 +94,13 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
               <div className='od-Navigation-subMenuItems'>
                 <div className='ms-Grid'>
                   <div className='ms-Grid-row'>
-                    <div className='ms-Grid-col ms-u-xl3 ms-u-sm12 od-Navigation-menuFirstColumn'>
+                    <div className='ms-Grid-col ms-xl3 ms-sm12 od-Navigation-menuFirstColumn'>
                       { this._getLinks(links.exploreLinks.firstMenuColumn) }
                     </div>
-                    <div className='ms-Grid-col ms-u-xl3 ms-u-sm12  od-Navigation-menuSecondColumn'>
+                    <div className='ms-Grid-col ms-xl3 ms-sm12  od-Navigation-menuSecondColumn'>
                       { this._getLinks(links.exploreLinks.secondMenuColumn) }
                     </div>
-                    <div className='ms-Grid-col ms-u-xl3 ms-u-sm12  od-Navigation-menuThirdColumn'>
+                    <div className='ms-Grid-col ms-xl3 ms-sm12  od-Navigation-menuThirdColumn'>
                       { this._getLinks(links.exploreLinks.thirdMenuColumn) }
                       <div className='od-Navigation-subMenuOverflowColor'></div>
                     </div>
@@ -224,21 +224,21 @@ export class DONavigation extends React.Component<IDONavigationProps, IDONavigat
 
   // Removes Office Dev Navigation
   private _removeNavigation() {
-    this.navcontainerel.classList.remove('ms-u-slideDownIn20');
-    this.navcontainerel.classList.add('ms-u-slideUpOut20');
+    this.navcontainerel.classList.remove('ms-slideDownIn20');
+    this.navcontainerel.classList.add('ms-slideUpOut20');
     this.navcontainerel.classList.remove('docs-showNavigation');
   }
 
   private _addNavigationBack() {
-    this.navcontainerel.classList.remove('ms-u-slideUpOut20');
+    this.navcontainerel.classList.remove('ms-slideUpOut20');
     this.navcontainerel.classList.remove('docs-hideNavigation');
   }
 
   private _addNavigation() {
-    if (!this.navcontainerel.classList.contains('ms-u-slideDownIn20')) {
+    if (!this.navcontainerel.classList.contains('ms-slideDownIn20')) {
       this.navcontainerel.classList.add('docs-showNavigation');
-      this.navcontainerel.classList.remove('ms-u-slideUpOut20');
-      this.navcontainerel.classList.add('ms-u-slideDownIn20');
+      this.navcontainerel.classList.remove('ms-slideUpOut20');
+      this.navcontainerel.classList.add('ms-slideDownIn20');
     }
   }
 

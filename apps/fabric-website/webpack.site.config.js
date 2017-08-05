@@ -43,7 +43,7 @@ function createConfig(isProduction, publicPath) {
       path: path.join(__dirname, '/dist'),
       publicPath: publicPath,
       filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `fabric-site-[name]-${version}${minFileNamePart}.js`
+      chunkFilename: `fabric-site-${version}-[name]${minFileNamePart}.js`
     },
 
     devServer: {
@@ -69,7 +69,6 @@ function createConfig(isProduction, publicPath) {
 
     module: {
       noParse: [/autoit.js/],
-
       loaders: [
         {
           test: /\.js$/,

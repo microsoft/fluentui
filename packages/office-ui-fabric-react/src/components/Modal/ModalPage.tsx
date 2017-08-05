@@ -36,7 +36,7 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
               Modals are temporary, modal UI overlay that generally provide contextual app information or require user confirmation/input, or can be used to advertise new app features. In some cases, Modals block interactions with the web page or application until being explicitly dismissed. They are can be used for lightweight creation or edit tasks and simple management tasks, or for hosting heavier temporary content.
             </p>
             <p>
-              For usage requiring a quick choice from the user, <Link href='#/examples/dialog'>Dialog</Link> may be a more appropriate control.
+              For usage requiring a quick choice from the user, <Link href='#/components/dialog'>Dialog</Link> may be a more appropriate control.
             </p>
           </div>
         }

@@ -3,6 +3,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Layer.Example.scss';
+import { AnimationClassNames } from '../../../Styling';
 
 export class LayerHostedExample extends React.Component<any, any> {
   constructor() {
@@ -14,9 +15,9 @@ export class LayerHostedExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { showLayer, showHost} = this.state;
+    let { showLayer, showHost } = this.state;
     let content = (
-      <div className='LayerExample-content ms-u-scaleUpIn100'>
+      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 } >
         This is example layer content.
       </div>
     );

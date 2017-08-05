@@ -4,7 +4,7 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
 } from '../../Utilities';
 
 export interface ICallout {
@@ -30,6 +30,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
 
   /**
    * The gap between the Callout and the target
@@ -73,7 +79,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default false
+   * @default true
    */
   isBeakVisible?: boolean;
 
@@ -94,6 +100,11 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * Aria role assigned to the callout (Eg. dialog, alertdialog).
    */
   role?: string;
+
+  /**
+   * Accessible label text for callout.
+   */
+  ariaLabel?: string;
 
   /**
    *  Defines the element id referencing the element containing label text for callout.
@@ -137,6 +148,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default false
    */
   directionalHintFixed?: boolean;
+
+  /**
+   * Specify the final height of the content.
+   * To be used when expanding the content dynamically so that callout can adjust its position.
+   */
+  finalHeight?: number;
 
   /**
    * If true then the callout will attempt to focus the first focusable element that it contains.

@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { BaseButton, Button } from '../../Button';
 
 export interface IMessageBar {
 
 }
 
-export interface IMessageBarProps extends React.HTMLProps<HTMLElement> {
+export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -32,7 +33,7 @@ export interface IMessageBarProps extends React.HTMLProps<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | Button>) => any;
 
   /**
    * Determines if the message bar is multi lined.

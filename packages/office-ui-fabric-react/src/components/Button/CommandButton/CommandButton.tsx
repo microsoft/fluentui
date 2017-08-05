@@ -1,22 +1,11 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent, nullRender } from '../../../Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { ThemeSettingName } from '../../../Styling';
 import { IButtonProps } from '../Button.Props';
-import * as stylesImport from './CommandButton.scss';
-const styles: any = stylesImport;
+import { getStyles } from './CommandButton.styles';
 
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--command',
-  icon: styles.icon,
-  menuIcon: styles.icon,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root,
-  flexContainer: styles.flexContainer
-};
-
+@customizable([ThemeSettingName])
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
   /**
@@ -25,11 +14,15 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    let { styles, theme } = this.props;
+
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
+        { ...this.props }
+        variantClassName='ms-Button--command'
+        styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
-        { ...this.props } />
+      />
     );
   }
 }

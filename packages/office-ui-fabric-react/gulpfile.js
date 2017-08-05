@@ -46,10 +46,13 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
 let rules = Object.assign(
   {},
   require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
-build.tslint.setConfig({ lintConfig: { rules } });
+build.tslint.setConfig({
+  lintConfig: { rules },
+  displayAsWarning: false
+});
 
 // Configure TypeScript.
 // build.typescript.setConfig({ typescript: require('typescript') });
@@ -74,10 +77,10 @@ build.postCopy.setConfig({
   shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [
-      'node_modules/office-ui-fabric-core/dist/sass/*.*'
+      'node_modules/office-ui-fabric-core/dist/sass/**/*.*'
     ],
     [path.join(distFolder, 'css')]: [
-      'node_modules/office-ui-fabric-core/dist/css/*.*'
+      'node_modules/office-ui-fabric-core/dist/css/**/*.*'
     ]
   }
 });

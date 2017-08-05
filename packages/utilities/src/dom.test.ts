@@ -1,5 +1,9 @@
 import {
-  elementContains, getParent
+  getDocument,
+  getParent,
+  getWindow,
+  setSSR,
+  elementContains
 } from './dom';
 
 const { expect } = chai;
@@ -42,5 +46,21 @@ describe('getParent', () => {
 
     expect(getParent(svgRectangle)).equals(childSvg);
     expect(getParent(childSvg)).equals(parentDiv);
+  });
+});
+
+describe('getWindow', () => {
+  it('returns undefined in server environment', () => {
+    setSSR(true);
+    expect(getWindow()).equals(undefined);
+    setSSR(false);
+  });
+});
+
+describe('getDocument', () => {
+  it('returns undefined in server environment', () => {
+    setSSR(true);
+    expect(getDocument()).equals(undefined);
+    setSSR(false);
   });
 });

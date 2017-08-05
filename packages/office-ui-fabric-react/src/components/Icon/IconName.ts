@@ -1,9 +1,16 @@
 // Please keep alphabetized
 export type IconName =
+  // These icons are not in the font.
+  'CustomIcon' |
+  'None' |
+
+  // Icons from the Fabric MDL2 set.
   'AADLogo' |
   'Accept' |
   'AccessLogo' |
+  'AccessLogoFill' |
   'Accounts' |
+  'ActivityFeed' |
   'Add' |
   'AddEvent' |
   'AddFavorite' |
@@ -29,14 +36,17 @@ export type IconName =
   'AlarmClock' |
   'Album' |
   'AlbumRemove' |
-  'AlchemyLogo' |
   'AlignCenter' |
   'AlignLeft' |
   'AlignRight' |
+  'AnalyticsLogo' |
+  'AnalyticsQuery' |
+  'AnalyticsReport' |
   'AndroidLogo' |
   'Annotation' |
-  'AppForOfficeLogo' |
   'AppIconDefault' |
+  'Archive' |
+  'AreaChart' |
   'Arrivals' |
   'ArrowDownRight8' |
   'ArrowDownRightMirrored8' |
@@ -44,13 +54,16 @@ export type IconName =
   'ArrowUpRightMirrored8' |
   'Articles' |
   'Ascending' |
+  'AssessmentGroup' |
   'AssetLibrary' |
+  'Assign' |
   'Asterisk' |
   'ATPLogo' |
   'Attach' |
   'AustralianRules' |
   'AutoEnhanceOff' |
   'AutoEnhanceOn' |
+  'AutoFillTemplate' |
   'AutoRacing' |
   'AwayStatus' |
   'AzureLogo' |
@@ -60,6 +73,7 @@ export type IconName =
   'Balloons' |
   'BarChart4' |
   'BarChartHorizontal' |
+  'BarChartVertical' |
   'Baseball' |
   'BidiLtr' |
   'BidiRtl' |
@@ -68,21 +82,37 @@ export type IconName =
   'Blocked' |
   'Blocked2' |
   'BlowingSnow' |
+  'Blur' |
   'Boards' |
   'Bold' |
   'BookingsLogo' |
   'Bookmarks' |
   'BookmarksMirrored' |
   'BoxLogo' |
+  'BranchCommit' |
+  'BranchCompare' |
   'BranchFork' |
+  'BranchFork2' |
+  'BranchLocked' |
+  'BranchMerge' |
+  'BranchPullRequest' |
+  'BranchSearch' |
+  'BranchShelveset' |
   'Breadcrumb' |
   'Brightness' |
   'Broom' |
+  'BucketColor' |
+  'BucketColorFill' |
   'BufferTimeAfter' |
   'BufferTimeBefore' |
   'BufferTimeBoth' |
+  'Build' |
+  'BuildIssue' |
+  'BuildQueue' |
+  'BuildQueueNew' |
   'BulletedList' |
   'BulletedListMirrored' |
+  'BusinessHoursSign' |
   'BusSolid' |
   'Cafe' |
   'Cake' |
@@ -98,6 +128,7 @@ export type IconName =
   'CaloriesAdd' |
   'Camera' |
   'Cancel' |
+  'CannedChat' |
   'Car' |
   'CaretBottomLeftSolid8' |
   'CaretBottomRightSolid8' |
@@ -107,10 +138,16 @@ export type IconName =
   'CaretHollowMirrored' |
   'CaretLeft8' |
   'CaretLeftSolid8' |
+  'CaretRight' |
   'CaretRight8' |
   'CaretRightSolid8' |
   'CaretSolid' |
+  'CaretSolid16' |
+  'CaretSolidDown' |
+  'CaretSolidLeft' |
   'CaretSolidMirrored' |
+  'CaretSolidRight' |
+  'CaretSolidUp' |
   'CaretTopLeftSolid8' |
   'CaretTopRightSolid8' |
   'CaretUp8' |
@@ -123,6 +160,7 @@ export type IconName =
   'ChatInviteFriend' |
   'Checkbox' |
   'CheckboxComposite' |
+  'CheckboxCompositeReversed' |
   'CheckboxIndeterminate' |
   'CheckList' |
   'CheckMark' |
@@ -146,16 +184,18 @@ export type IconName =
   'CircleHalfFull' |
   'CirclePlus' |
   'CircleRing' |
-  'ClassNotebookLogo' |
+  'ClassNotebookLogoInverse' |
   'ClassroomLogo' |
   'Clear' |
   'ClearFilter' |
   'ClearFormatting' |
   'ClearNight' |
   'Clock' |
+  'CloneToDesktop' |
   'ClosedCaption' |
   'ClosePane' |
   'ClosePaneMirrored' |
+  'Cloud' |
   'CloudAdd' |
   'CloudDownload' |
   'CloudUpload' |
@@ -164,12 +204,19 @@ export type IconName =
   'Cocktails' |
   'Code' |
   'Coffee' |
-  'CollabsDBLogo' |
+  'CollapseContent' |
+  'CollapseContentSingle' |
   'CollapseMenu' |
   'CollegeFootball' |
   'CollegeHoops' |
   'Color' |
+  'ColumnLeftTwoThirds' |
+  'ColumnOptions' |
+  'ColumnRightTwoThirds' |
   'Combine' |
+  'Comment' |
+  'CommentUrgent' |
+  'Communications' |
   'CompassNW' |
   'Completed' |
   'CompletedSolid' |
@@ -180,11 +227,14 @@ export type IconName =
   'Copy' |
   'Cotton' |
   'Cricket' |
+  'CRMReport' |
   'CSS' |
-  'CustomIcon' |
   'CustomList' |
   'CustomListMirrored' |
+  'Cut' |
   'Cycling' |
+  'DataBarsFill' |
+  'Database' |
   'DataConnectionLibrary' |
   'DateTime' |
   'DateTime2' |
@@ -194,6 +244,9 @@ export type IconName =
   'DelveAnalytics' |
   'DelveAnalyticsLogo' |
   'DelveLogo' |
+  'DelveLogoFill' |
+  'DelveLogoInverse' |
+  'Deploy' |
   'Descending' |
   'Design' |
   'DeveloperTools' |
@@ -202,13 +255,16 @@ export type IconName =
   'Dialpad' |
   'Dictionary' |
   'DietPlanNotebook' |
+  'DiffInline' |
+  'DiffSideBySide' |
   'DisableUpdates' |
   'Dislike' |
+  'Divider' |
   'DockLeft' |
   'DockLeftMirrored' |
   'DockRight' |
   'DocLibrary' |
-  'DocsLogo' |
+  'DocsLogoInverse' |
   'Document' |
   'Documentation' |
   'DocumentReply' |
@@ -226,6 +282,7 @@ export type IconName =
   'DoubleChevronRight12' |
   'DoubleChevronUp' |
   'DoubleChevronUp12' |
+  'DoubleColumn' |
   'Down' |
   'Download' |
   'DRM' |
@@ -258,8 +315,16 @@ export type IconName =
   'EventInfo' |
   'ExcelDocument' |
   'ExcelLogo' |
+  'ExcelLogoFill' |
+  'ExcelLogoInverse' |
   'ExchangeLogo' |
+  'ExchangeLogoFill' |
+  'ExchangeLogoInverse' |
   'ExpandMenu' |
+  'ExploreContent' |
+  'ExploreContentSingle' |
+  'Export' |
+  'ExportMirrored' |
   'FabricAssetLibrary' |
   'FabricDataConnectionLibrary' |
   'FabricDocLibrary' |
@@ -280,22 +345,32 @@ export type IconName =
   'FacebookLogo' |
   'Family' |
   'FangBody' |
+  'FastForward' |
+  'Favicon' |
   'FavoriteList' |
   'FavoriteStar' |
   'FavoriteStarFill' |
   'Fax' |
   'Ferry' |
   'FerrySolid' |
+  'FileBug' |
+  'FileCode' |
+  'FileComment' |
+  'FileImage' |
+  'FileSymlink' |
   'Filter' |
   'Filters' |
   'Financial' |
   'Fingerprint' |
+  'FiveTileGrid' |
   'Flag' |
+  'FlameSolid' |
   'FlickDown' |
   'FlickLeft' |
   'FlickRight' |
   'FlickUp' |
   'Flow' |
+  'FocalPoint' |
   'Fog' |
   'Folder' |
   'FolderFill' |
@@ -314,9 +389,11 @@ export type IconName =
   'Freezing' |
   'Frigid' |
   'FullCircleMask' |
+  'FullHistory' |
   'FullScreen' |
   'Generate' |
   'Giftbox' |
+  'GiftboxOpen' |
   'GiftCard' |
   'Glasses' |
   'Glimmer' |
@@ -326,6 +403,7 @@ export type IconName =
   'Golf' |
   'GoogleDriveLogo' |
   'GotoToday' |
+  'GripperBarVertical' |
   'GripperTool' |
   'Group' |
   'GroupedAscending' |
@@ -334,6 +412,7 @@ export type IconName =
   'HailDay' |
   'HailNight' |
   'Handwriting' |
+  'HardDriveGroup' |
   'Header1' |
   'Header2' |
   'Header3' |
@@ -346,18 +425,26 @@ export type IconName =
   'HelpMirrored' |
   'Hide' |
   'Hide2' |
+  'Highlight' |
+  'HighlightMappedShapes' |
   'History' |
   'Home' |
   'HomeSolid' |
   'Hospital' |
   'Hotel' |
+  'IconSetsFlag' |
+  'IconSetsFlagFill' |
+  'ImageDiff' |
+  'ImagePixel' |
   'Important' |
   'InboxCheck' |
   'IncidentTriangle' |
   'IncreaseIndentLegacy' |
   'Info' |
   'Info2' |
+  'InfoSolid' |
   'InsertTextBox' |
+  'InstallToDrive' |
   'InternetSharing' |
   'iOSAppStoreLogo' |
   'IssueTracking' |
@@ -376,6 +463,7 @@ export type IconName =
   'Lightbulb' |
   'LightningBolt' |
   'Like' |
+  'LineChart' |
   'Link' |
   'List' |
   'ListMirrored' |
@@ -384,6 +472,8 @@ export type IconName =
   'LocationDot' |
   'LocationFill' |
   'Lock' |
+  'LockSolid' |
+  'LogRemove' |
   'LowerBrightness' |
   'LyncLogo' |
   'Mail' |
@@ -406,6 +496,7 @@ export type IconName =
   'Megaphone' |
   'Memo' |
   'Merge' |
+  'MergeDuplicate' |
   'Message' |
   'MessageFill' |
   'Microphone' |
@@ -418,40 +509,52 @@ export type IconName =
   'Move' |
   'MoveToFolder' |
   'MSNLogo' |
+  'MSNVideos' |
   'MultiSelect' |
   'MultiSelectMirrored' |
   'MusicInCollection' |
   'MusicInCollectionFill' |
   'MusicNote' |
   'Nav2DMapView' |
+  'NetworkTower' |
+  'NewAnalyticsQuery' |
   'NewFolder' |
   'News' |
-  'None' |
+  'Next' |
   'NoteForward' |
   'NotePinned' |
   'NoteReply' |
   'NumberedList' |
   'NumberField' |
+  'OfficeAddinsLogo' |
   'OfficeAssistantLogo' |
   'OfficeFormLogo' |
   'OfficeLogo' |
   'OfficeStoreLogo' |
   'OfficeVideoLogo' |
+  'OfficeVideoLogoFill' |
+  'OfficeVideoLogoInverse' |
   'OfflineOneDriveParachute' |
   'OfflineOneDriveParachuteDisabled' |
   'OneDrive' |
   'OneDriveAdd' |
-  'OneNoteEduLogo' |
+  'OneNoteEduLogoInverse' |
   'OneNoteLogo' |
+  'OneNoteLogoFill' |
+  'OneNoteLogoInverse' |
   'OpenFile' |
   'OpenFolderHorizontal' |
   'OpenInNewWindow' |
   'OpenPane' |
   'OpenPaneMirrored' |
+  'OpenSource' |
   'Org' |
   'OutlookLogo' |
+  'OutlookLogoFill' |
+  'OutlookLogoInverse' |
   'OutOfOffice' |
   'Package' |
+  'Packages' |
   'Page' |
   'PageAdd' |
   'PageCheckedin' |
@@ -460,10 +563,12 @@ export type IconName =
   'PageRight' |
   'PageSolid' |
   'PanoIndicator' |
+  'Parameter' |
   'ParatureLogo' |
   'PartlyCloudyDay' |
   'PartlyCloudyNight' |
   'PartyLeader' |
+  'Paste' |
   'Pause' |
   'PaymentCard' |
   'PC1' |
@@ -476,6 +581,7 @@ export type IconName =
   'PeoplePause' |
   'PeopleRepeat' |
   'Permissions' |
+  'Personalize' |
   'Phone' |
   'Photo2' |
   'Photo2Add' |
@@ -484,13 +590,19 @@ export type IconName =
   'Picture' |
   'PictureLibrary' |
   'PieDouble' |
+  'PieSingle' |
   'Pill' |
   'Pin' |
   'Pinned' |
   'PinnedFill' |
-  'Planner' |
+  'PivotChart' |
+  'PlannerLogo' |
   'Play' |
   'PlayerSettings' |
+  'Plug' |
+  'PlugConnected' |
+  'PlugDisconnected' |
+  'PlugSolid' |
   'POI' |
   'PostUpdate' |
   'PowerApps' |
@@ -499,40 +611,53 @@ export type IconName =
   'PowerBILogo' |
   'PowerPointDocument' |
   'PowerPointLogo' |
+  'PowerPointLogoFill' |
+  'PowerPointLogoInverse' |
   'Precipitation' |
   'PresenceChickletVideo' |
   'Preview' |
   'PreviewLink' |
+  'Previous' |
   'Print' |
   'PrintfaxPrinterFile' |
+  'Processing' |
+  'ProcessMetaTask' |
   'Product' |
   'ProFootball' |
+  'ProgressRingDots' |
   'ProHockey' |
-  'ProjectLogo' |
+  'ProjectLogoInverse' |
   'ProtectedDocument' |
+  'ProtectRestrict' |
   'PublicCalendar' |
   'PublicContactCard' |
   'PublicEmail' |
   'PublicFolder' |
+  'PublisherLogo' |
+  'PublisherLogoFill' |
   'Puzzle' |
   'Questionnaire' |
   'QuestionnaireMirrored' |
   'QuickNote' |
+  'RadioBtnOff' |
   'RadioBtnOn' |
   'RadioBullet' |
   'Rain' |
   'RainShowersDay' |
   'RainShowersNight' |
   'RainSnow' |
+  'RawSource' |
   'Read' |
   'ReadingMode' |
   'ReceiptCheck' |
   'ReceiptForward' |
   'ReceiptReply' |
   'Recent' |
+  'Record2' |
   'RecurringEvent' |
   'RecurringTask' |
   'RecycleBin' |
+  'Redeploy' |
   'RedEye' |
   'Redo' |
   'Refresh' |
@@ -555,27 +680,40 @@ export type IconName =
   'ReportLibraryMirrored' |
   'ReturnToSession' |
   'RevToggleKey' |
+  'Rewind' |
   'Ribbon' |
   'RightDoubleQuote' |
   'Ringer' |
+  'Robot' |
   'Room' |
   'Rotate' |
+  'RowsChild' |
+  'RowsGroup' |
   'Rugby' |
   'Running' |
   'Sad' |
   'Save' |
+  'SaveAll' |
   'SaveAs' |
+  'ScheduleEventAction' |
+  'Script' |
+  'ScrollUpDown' |
   'Search' |
   'Section' |
   'Sections' |
   'SecurityGroup' |
   'Send' |
   'SendMirrored' |
+  'Server' |
+  'ServerEnviroment' |
+  'ServerProcesses' |
   'SetAction' |
   'Settings' |
   'Share' |
   'ShareiOS' |
   'SharepointLogo' |
+  'SharepointLogoFill' |
+  'SharepointLogoInverse' |
   'Shield' |
   'Shop' |
   'ShoppingCart' |
@@ -583,17 +721,20 @@ export type IconName =
   'ShowResultsMirrored' |
   'SidePanel' |
   'SingleBookmark' |
+  'SingleColumn' |
   'SIPMove' |
   'SkypeCheck' |
   'SkypeCircleCheck' |
   'SkypeCircleClock' |
   'SkypeCircleMinus' |
   'SkypeClock' |
+  'SkypeForBusinessLogoFill' |
   'SkypeLogo' |
   'SkypeMessage' |
   'SkypeMinus' |
   'SliderThumb' |
   'Snow' |
+  'Snowflake' |
   'SnowShowerDay' |
   'SnowShowerNight' |
   'Soccer' |
@@ -602,19 +743,31 @@ export type IconName =
   'SortDown' |
   'SortLines' |
   'SortUp' |
+  'Spacer' |
   'Speakers' |
   'SpeedHigh' |
   'Split' |
   'Squalls' |
+  'StackedBarChart' |
+  'StackedLineChart' |
   'StackIndicator' |
   'Starburst' |
   'StatusErrorFull' |
   'StatusTriangle' |
+  'Step' |
+  'StepInsert' |
+  'StepShared' |
+  'StepSharedAdd' |
+  'StepSharedInsert' |
   'StockDown' |
   'StockUp' |
+  'Stop' |
+  'StopSolid' |
   'Stopwatch' |
   'StoreLogo' |
   'StoreLogoMed' |
+  'Storyboard' |
+  'Streaming' |
   'Strikethrough' |
   'Subscribe' |
   'Subscript' |
@@ -623,7 +776,7 @@ export type IconName =
   'Sunny' |
   'SunQuestionMark' |
   'Superscript' |
-  'SwayLogo' |
+  'SwayLogoInverse' |
   'Switch' |
   'SwitcherStartEnd' |
   'Sync' |
@@ -637,10 +790,16 @@ export type IconName =
   'Tag' |
   'TaskManager' |
   'TaskManagerMirrored' |
+  'TeamsLogo' |
+  'TeamsLogoFill' |
+  'TeamsLogoInverse' |
   'Teamwork' |
   'TemporaryUser' |
   'Tennis' |
   'TextBox' |
+  'TextCallout' |
+  'TextCalloutFill' |
+  'TextDocument' |
   'TextField' |
   'ThumbnailView' |
   'ThumbnailViewMirrored' |
@@ -661,11 +820,15 @@ export type IconName =
   'TriangleDown12' |
   'TriangleLeft12' |
   'TriangleRight12' |
+  'TriangleSolid' |
   'TriangleSolidDown12' |
   'TriangleSolidLeft12' |
   'TriangleSolidRight12' |
   'TriangleSolidUp12' |
   'TriangleUp12' |
+  'TriggerAuto' |
+  'TriggerUser' |
+  'TripleColumn' |
   'Trophy' |
   'TurnRight' |
   'TVMonitor' |
@@ -673,19 +836,32 @@ export type IconName =
   'Underline' |
   'Undo' |
   'Unfavorite' |
+  'Unknown' |
   'UnknownCall' |
   'Unlock' |
+  'UnlockSolid' |
   'Unpin' |
   'Unsubscribe' |
   'UnsyncFolder' |
   'Up' |
   'Upload' |
+  'Variable' |
+  'VariableGroup' |
+  'VennDiagram' |
   'Video' |
   'VideoSolid' |
   'View' |
   'ViewAll' |
   'ViewAll2' |
+  'ViewDashboard' |
+  'ViewList' |
+  'ViewListGroup' |
+  'ViewListTree' |
+  'VisioDiagram' |
+  'VisioDocument' |
   'VisioLogo' |
+  'VisioLogoFill' |
+  'VisioLogoInverse' |
   'VoicemailForward' |
   'VoicemailReply' |
   'Volume0' |
@@ -697,15 +873,43 @@ export type IconName =
   'Warning' |
   'Website' |
   'Weights' |
+  'WifiEthernet' |
   'WindDirection' |
   'WindowsLogo' |
   'WipePhone' |
   'WordDocument' |
   'WordLogo' |
+  'WordLogoFill' |
+  'WordLogoInverse' |
   'Work' |
   'WorkFlow' |
+  'WorkItem' |
+  'WorkItemBug' |
   'WorldClock' |
   'YammerLogo' |
   'Zoom' |
   'ZoomIn' |
-  'ZoomOut';
+  'ZoomOut' |
+  'FilterSolid' |
+  'GridViewSmall' |
+  'GridViewMedium' |
+  'GridViewLarge' |
+  'ThisPc' |
+  'MailUndelivered' |
+  'MailTentative' |
+  'MailTentativeMirrored' |
+  'MailReminder' |
+  'IRMReply' |
+  'IRMReplyMirrored' |
+  'IRMForward' |
+  'IRMForwardMirrored' |
+  'ReceiptUndelivered' |
+  'ReceiptTentative' |
+  'ReceiptTentativeMirrored' |
+  'Inbox' |
+  'VoicemailRM' |
+  'EventAccepted' |
+  'EventTentative' |
+  'EventTentativeMirrored' |
+  'EventDeclined'
+  ;

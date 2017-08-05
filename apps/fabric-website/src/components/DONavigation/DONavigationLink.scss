@@ -41,7 +41,7 @@
 
     .ms-Icon {
       color: $ms-color-white;
-      @include margin-left(6px);
+      @include ms-margin-left(6px);
       transition: transform 0.4s;
       margin-top: 1px;
       line-height: 40px;

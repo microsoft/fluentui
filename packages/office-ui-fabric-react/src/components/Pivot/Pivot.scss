@@ -8,8 +8,7 @@
 // Pivot and tab styles
 
 .root {
-  @include ms-baseFont;
-  @include ms-u-normalize;
+  @include ms-normalize;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   position: relative;
@@ -32,7 +31,7 @@
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   line-height: 40px;
-  @include margin-right(8px);
+  @include ms-margin-right(8px);
   padding: 0 8px;
   text-align: center;
   position: relative;
@@ -56,7 +55,7 @@
     left: 8px;
     position: absolute;
     right: 8px;
-    transition: background-color $ms-duration2 $ms-ease2;
+    transition: background-color $ms-animation-duration-2 $ms-animation-ease-2;
   }
 
   // Make room for the heavier text of the selected state
@@ -93,16 +92,15 @@
 
     // Show the underline
     &::before {
-      background-color: $ms-color-themePrimary;
+      box-sizing: border-box;
+      border-bottom: 2px solid $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        background-color: transparent;
-        border-bottom: 2px solid $ms-color-white;
+        border-bottom-color: $ms-color-white;
       }
 
       @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: transparent;
-        border-bottom: 2px solid $ms-color-black;
+        border-bottom-color: $ms-color-black;
       }
     }
   }
@@ -165,7 +163,7 @@
 .root.rootIsTabs {
   .link {
     @include focus-border();
-    @include margin-right(0px);
+    @include ms-margin-right(0px);
     height: 40px;
     line-height: 40px;
     background-color: $ms-color-neutralLighter;
@@ -231,7 +229,7 @@
 
 // @TODO: Confirm that this component is not responsive.
 //
-// @media (min-width: $ms-screen-lg-min) {
+// @media (min-width: $ms-screen-min-lg) {
 //   .link {
 //     font-size: $ms-font-size-m;
 //   }

@@ -1,6 +1,6 @@
 {
   "extends": [
-    "../../tslint.json"
+    "office-ui-fabric-react-tslint"
   ],
   "rules": {
     "max-line-length": [

@@ -173,7 +173,7 @@ describe('TextField', () => {
     });
 
     it('should not render error message when no value is provided', () => {
-      let actualValue: string = undefined;
+      let actualValue: string | undefined = undefined;
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
@@ -213,7 +213,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -236,7 +236,7 @@ describe('TextField', () => {
 
     it('should trigger validation only on blur', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -260,7 +260,7 @@ describe('TextField', () => {
 
     it('should trigger validation on both blur and focus', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
       };
@@ -287,7 +287,7 @@ describe('TextField', () => {
 
     it('should not trigger validation on component mount', () => {
       let validationCallCount = 0;
-      let validatorSpy = value => {
+      let validatorSpy = (value: string) => {
         validationCallCount++;
         return '';
       };
@@ -310,7 +310,7 @@ describe('TextField', () => {
       />
     );
 
-    expect(renderedDOM.querySelector('input').value).equals('initial value');
+    expect(renderedDOM.querySelector('input')!.value).equals('initial value');
   });
 
   it('can render a default value as a textarea', () => {
@@ -321,12 +321,12 @@ describe('TextField', () => {
       />
     );
 
-    expect(renderedDOM.querySelector('textarea').value).equals('initial value');
+    expect(renderedDOM.querySelector('textarea')!.value).equals('initial value');
   });
 
   it('should call onChanged handler for input change', () => {
     let callCount = 0;
-    let onChangedSpy = value => { callCount++; };
+    let onChangedSpy = (value: string) => { callCount++; };
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
@@ -346,5 +346,25 @@ describe('TextField', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).to.equal(2);
+  });
+
+  it('should select a range of text', () => {
+    let textField: TextField | undefined;
+    const initialValue = 'initial value';
+
+    const onSelect = () => {
+      const selectedText = window.getSelection().toString();
+      expect(selectedText).to.equal(initialValue);
+    };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        ref={ (t) => textField = t! }
+        defaultValue={ initialValue }
+        onSelect={ onSelect }
+      />
+    );
+
+    textField!.setSelectionRange(0, initialValue.length);
   });
 });

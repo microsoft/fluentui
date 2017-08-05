@@ -8,9 +8,9 @@ export class IconBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Icon iconName={ 'CompassNW' } className={ 'ms-IconExample' } />
-        <Icon iconName={ 'Dictionary' } className={ 'ms-IconExample' } />
-        <Icon iconName={ 'TrainSolid' } className={ 'ms-IconExample' } />
+        <Icon iconName='CompassNW' className='ms-IconExample' />
+        <Icon iconName='Dictionary' className='ms-IconExample' />
+        <Icon iconName='TrainSolid' className='ms-IconExample' />
       </div>
     );
   }

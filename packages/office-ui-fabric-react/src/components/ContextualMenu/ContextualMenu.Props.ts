@@ -8,6 +8,7 @@ import {
   IPoint,
   IRectangle
 } from '../../Utilities';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export enum ContextualMenuItemType {
@@ -20,7 +21,7 @@ export interface IContextualMenu {
 
 }
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu> {
+export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -47,6 +48,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   directionalHint?: DirectionalHint;
 
   /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
+
+  /**
    * The gap between the ContextualMenu and the target
    * @default 0
    */
@@ -59,7 +66,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   beakWidth?: number;
 
   /**
-   * The bounding rectangle for which  the contextual menu can appear in.
+   * If true the context menu will render as the same width as the target element
+   * @default false
+   */
+  useTargetWidth?: boolean;
+
+  /**
+   * The bounding rectangle for which the contextual menu can appear in.
    */
   bounds?: IRectangle;
 
@@ -76,7 +89,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default false
    */
   isBeakVisible?: boolean;
 
@@ -169,7 +181,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * Pass in custom callout props
    */
   calloutProps?: ICalloutProps;
-
 }
 
 export interface IContextualMenuItem {
@@ -250,6 +261,11 @@ export interface IContextualMenuItem {
    * An optional URL to navigate to upon selection
    */
   href?: string;
+
+  /**
+   * An optional target when using href
+   */
+  target?: string;
 
   /**
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.

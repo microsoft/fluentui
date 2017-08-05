@@ -25,7 +25,7 @@ export class PanelLargeFixedExample extends React.Component<any, any> {
           type={ PanelType.largeFixed }
           headerText='Large Panel'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );

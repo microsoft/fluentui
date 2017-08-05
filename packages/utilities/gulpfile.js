@@ -8,14 +8,20 @@ let buildConfig = build.getConfig();
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isClean = process.argv.indexOf('clean') >= 0;
 
+// initialize tasks.
+build.initialize(gulp);
+
 /* Configure lint rules */
 let rules = Object.assign(
   {},
   require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
-build.tslint.setConfig({ lintConfig: { rules } });
+build.tslint.setConfig({
+  lintConfig: { rules },
+  displayAsWarning: false
+});
 
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
@@ -37,5 +43,3 @@ if (isProduction || isClean) {
 
 build.task('tslint', build.tslint);
 
-// initialize tasks.
-build.initialize(gulp);

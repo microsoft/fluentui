@@ -4,6 +4,7 @@ import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface IButton {
   /**
@@ -12,7 +13,7 @@ export interface IButton {
   focus: () => void;
 }
 
-export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -29,6 +30,21 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * Whether the button is disabled
    */
   disabled?: boolean;
+
+  /**
+   * Custom styling for individual elements within the button DOM.
+   */
+  styles?: IButtonStyles;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Whether the button is checked
+   */
+  checked?: boolean;
 
   /**
    * If provided, additional class name to provide on the root element.
@@ -59,9 +75,14 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
 
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks.
+   * how the default icon looks. Providing this in addition of onClick and setting the split property to true will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
+
+  /**
+   * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
+   */
+  split?: boolean;
 
   /**
    * The props for the icon shown when providing a menu dropdown.
@@ -122,20 +143,25 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * they will be mixed into the button/anchor element rendered by the component.
    * @deprecated
    */
-  rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
+  rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
-   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } } .
+   * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
    * @deprecated
    */
   icon?: string;
 
   /**
-   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } } .
+   * Deprecated on 4/15/2017, use menuIconProps={ { iconName: 'Emoji2' } }.
    * @deprecated
    */
   menuIconName?: IconName | string | null;
 
+  /**
+   * Deprecated on 5/26/2016, use checked.
+   * @deprecated
+   */
+  toggled?: boolean;
 }
 
 export enum ElementType {
@@ -153,4 +179,176 @@ export enum ButtonType {
   command = 4,
   icon = 5,
   default = 6
+}
+
+export interface IButtonStyles {
+  /**
+   * Style for the root element in the default enabled, non-toggled state.
+   */
+  root?: IStyle;
+
+  /**
+   * Style override for the root element in a checked state, layered on top of the root style.
+   */
+  rootChecked?: IStyle;
+
+  /**
+   * Style override for the root element in a disabled state, layered on top of the root style.
+   */
+  rootDisabled?: IStyle;
+
+  /**
+   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   */
+  rootHovered?: IStyle;
+
+  /**
+   * Style override applied to the root on hover in the default, enabled, non-toggled state.
+   */
+  rootFocused?: IStyle;
+
+  /**
+   * Style override applied to the root on pressed in the default, enabled, non-toggled state.
+   */
+  rootPressed?: IStyle;
+
+  /**
+   * Style override applied to the root on when menu is expanded in the default, enabled, non-toggled state.
+   */
+  rootExpanded?: IStyle;
+
+  /**
+   * Style override applied to the root on hover in a checked, enabled state
+   */
+  rootCheckedHovered?: IStyle;
+
+  /**
+   * Style override applied to the root on pressed in a checked, enabled state
+   */
+  rootCheckedPressed?: IStyle;
+
+  /**
+  * Style override applied to the root on hover in a checked, disabled state
+  */
+  rootCheckedDisabled?: IStyle;
+
+  /**
+   * Style for the flexbox container within the root element.
+   */
+  flexContainer?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label.
+   */
+  icon?: IStyle;
+
+  /**
+   * Style override for the icon when the button is disabled.
+   */
+  iconDisabled?: IStyle;
+
+  /**
+   * Style override for the icon when the button is checked.
+   */
+  iconChecked?: IStyle;
+
+  /**
+   * Style for the text content of the button.
+   */
+  label?: IStyle;
+
+  /**
+   * Style override for the text content when the button is disabled.
+   */
+  labelDisabled?: IStyle;
+
+  /**
+   * Style override for the text content when the button is checked.
+   */
+  labelChecked?: IStyle;
+
+  /**
+   * Style for the menu chevron.
+   */
+  menuIcon?: IStyle;
+
+  /**
+   * Style override for the menu chevron when the button is disabled.
+   */
+  menuIconDisabled?: IStyle;
+
+  /**
+   * Style override for the menu chevron when the button is checked.
+   */
+  menuIconChecked?: IStyle;
+
+  /**
+   * Style for the description text if applicable (for compound buttons.)
+   */
+  description?: IStyle;
+
+  /**
+   * Style override for the description text when the button is hovered.
+   */
+  descriptionHovered?: IStyle;
+
+  /**
+   * Style for the description text when the button is pressed.
+   */
+  descriptionPressed?: IStyle;
+
+  /**
+   * Style override for the description text when the button is disabled.
+   */
+  descriptionDisabled?: IStyle;
+
+  /**
+   * Style override for the description text when the button is checked.
+   */
+  descriptionChecked?: IStyle;
+
+  /**
+   * Style override for the screen reader text.
+   */
+  screenReaderText?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element
+   */
+  splitButtonContainer?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element in a disabled state
+   */
+  splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button
+   */
+  splitButtonMenuButton?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a disabled state.
+   */
+  splitButtonMenuButtonDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a checked state
+   */
+  splitButtonMenuButtonChecked?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in an expanded state
+   */
+  splitButtonMenuButtonExpanded?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element
+   */
+  splitButtonMenuIcon?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element in a disabled state
+   */
+  splitButtonMenuIconDisabled?: IStyle;
 }

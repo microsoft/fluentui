@@ -13,9 +13,9 @@ import {
 } from '../../Utilities';
 import * as stylesImport from './TextField.scss';
 const styles: any = stylesImport;
-
+import { AnimationClassNames } from '../../Styling';
 export interface ITextFieldState {
-  value?: string;
+  value?: string | undefined;
 
   /** Is true when the control has focus. */
   isFocused?: boolean;
@@ -49,16 +49,20 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   private _id: string;
   private _descriptionId: string;
-  private _delayedValidate: (value: string) => void;
+  private _delayedValidate: (value: string | undefined) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
-  private _latestValue;
-  private _latestValidateValue;
+  private _latestValue: string | undefined;
+  private _latestValidateValue: string | undefined;
   private _isDescriptionAvailable: boolean;
-  private _textElement: HTMLInputElement | HTMLTextAreaElement;
+  private _textElement: HTMLTextAreaElement;
 
   public constructor(props: ITextFieldProps) {
     super(props);
+
+    this._warnDeprecations({
+      'iconClass': 'iconProps'
+    });
 
     this._warnMutuallyExclusive({
       'value': 'defaultValue'
@@ -85,7 +89,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   /**
    * Gets the current value of the text field.
    */
-  public get value(): string {
+  public get value(): string | undefined {
     return this.state.value;
   }
 
@@ -126,6 +130,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       description,
       disabled,
       iconClass,
+      iconProps,
       label,
       multiline,
       required,
@@ -135,7 +140,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       onRenderAddon = this._onRenderAddon
     } = this.props;
     let { isFocused } = this.state;
-    const errorMessage: string = this._errorMessage;
+    const errorMessage = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
@@ -149,15 +154,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <div className={ textFieldClassName }>
-        { label && <Label htmlFor={ this._id }>{ label }</Label> }
-        <div className={ css(styles.fieldGroup, isFocused && styles.fieldGroupIsFocused) }>
-          { (addonString !== undefined || this.props.onRenderAddon) && (
-            <div className={ css(styles.fieldAddon) }>
-              { onRenderAddon(this.props, this._onRenderAddon) }
-            </div>
-          ) }
-          { multiline ? this._renderTextArea() : this._renderInput() }
-          { iconClass && <i className={ css(iconClass, styles.icon) }></i> }
+        <div className={ css('ms-TextField-wrapper', styles.wrapper) }>
+          { label && <Label htmlFor={ this._id }>{ label }</Label> }
+          <div className={ css('ms-TextField-fieldGroup', styles.fieldGroup, isFocused && styles.fieldGroupIsFocused, errorMessage && styles.invalid) }>
+            { (addonString !== undefined || this.props.onRenderAddon) && (
+              <div className={ css(styles.fieldAddon) }>
+                { onRenderAddon(this.props, this._onRenderAddon) }
+              </div>
+            ) }
+            { multiline ? this._renderTextArea() : this._renderInput() }
+            { (iconClass || iconProps) && <Icon className={ css(iconClass, styles.icon) } { ...iconProps } /> }
+          </div>
         </div>
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
@@ -166,10 +173,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
               <div aria-live='assertive'>
                 <DelayedRender>
                   <p
-                    className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
-                    data-automation-id='error-message'>
-                    <i className={ css('ms-Icon ms-Icon--Error', styles.errorIcon) } aria-hidden='true'></i>
-                    { errorMessage }
+                    className={ css('ms-TextField-errorMessage', AnimationClassNames.slideDownIn20, styles.errorMessage) }
+                  >
+                    { Icon({ iconName: 'Error', className: styles.errorIcon }) }
+                    <span className={ styles.errorText } data-automation-id='error-message'>{ errorMessage }</span>
                   </p>
                 </DelayedRender>
               </div>
@@ -216,6 +223,17 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
+  /**
+   * Sets the start and end positions of a selection in a text field.
+   * @param start Index of the start of the selection.
+   * @param end Index of the end of the selection.
+   */
+  public setSelectionRange(start: number, end: number) {
+    if (this._textElement) {
+      this._textElement.setSelectionRange(start, end);
+    }
+  }
+
   private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
@@ -246,7 +264,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _getTextElementClassName(): string {
-    const errorMessage: string = this._errorMessage;
+    const errorMessage = this._errorMessage;
     let textFieldClassName: string;
 
     if (this.props.multiline && !this.props.resizable) {
@@ -256,12 +274,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
 
     return css(textFieldClassName, this.props.inputClassName, {
-      ['ms-TextField-invalid ' + styles.invalid]: !!errorMessage,
       [styles.hasIcon]: !!this.props.iconClass,
     });
   }
 
-  private get _errorMessage(): string {
+  private get _errorMessage(): string | undefined {
     let { errorMessage } = this.state;
     if (!errorMessage) {
       errorMessage = this.props.errorMessage;
@@ -270,7 +287,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return errorMessage;
   }
 
-  private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+  private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
@@ -291,8 +308,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLProps<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
+    let inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input
@@ -340,19 +357,19 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       this._delayedValidate(value);
     }
 
-    const { onBeforeChange } = this.props;
+    const onBeforeChange = this.props.onBeforeChange as (newValue: any) => void;
     onBeforeChange(value);
   }
 
-  private _validate(value: string): void {
+  private _validate(value: string | undefined): void {
     // In case of _validate called multi-times during executing validate logic with promise return.
     if (this._latestValidateValue === value) {
       return;
     }
 
     this._latestValidateValue = value;
-    let { onGetErrorMessage } = this.props;
-    let result: string | PromiseLike<string> = onGetErrorMessage(value || '');
+    let onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
+    let result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
       if (typeof result === 'string') {
@@ -375,7 +392,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private _notifyAfterValidate(value: string, errorMessage: string): void {
+  private _notifyAfterValidate(value: string | undefined, errorMessage: string): void {
     if (this._isMounted &&
       value === this.state.value &&
       this.props.onNotifyValidationResult) {

@@ -12,7 +12,7 @@ export interface IButtonSwapExampleState {
 }
 
 export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwapExampleState> {
-  private buttonRef: HTMLElement;
+  private buttonRef: HTMLElement | null;
   private hasFocus: boolean;
 
   public constructor() {
@@ -34,13 +34,13 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
     // if our button previously had focus but we lost it
     // because we switched the control type, we need to set focus again
     if (this.hasFocus && document.activeElement !== this.buttonRef) {
-      this.buttonRef.focus();
+      this.buttonRef!.focus();
     }
   }
 
   public render() {
     let { isPrimary } = this.state;
-    let { disabled } = this.props;
+    let { disabled, checked } = this.props;
     let text = 'Swap';
 
     // determine which button to render
@@ -48,12 +48,14 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
       ? <PrimaryButton
         ref={ this._setButtonRef }
         disabled={ disabled }
+        checked={ checked }
         onClick={ this._onClick }>
         { text }
       </PrimaryButton>
       : <DefaultButton
         ref={ this._setButtonRef }
         disabled={ disabled }
+        checked={ checked }
         onClick={ this._onClick }>
         { text }
       </DefaultButton>;
@@ -67,7 +69,7 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
   }
 
   @autobind
-  private _setButtonRef(ref: React.ReactInstance): void {
+  private _setButtonRef(ref: any): void {
     this.buttonRef = ReactDOM.findDOMNode(ref) as HTMLElement;
   }
 

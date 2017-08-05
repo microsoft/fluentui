@@ -38,6 +38,11 @@ import * as stylesImport from './GroupedList.scss';
 const styles: any = stylesImport;
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
+
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -158,7 +163,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       getGroupItemLimit,
       group,
@@ -191,6 +196,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       <div
         ref='root'
         className={ css('ms-GroupedList-group', styles.group, this._getDroppingClassName()) }
+        role='presentation'
       >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
@@ -201,7 +207,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                 (
                   <List
                     ref='list'
-                    items={ group.children }
+                    items={ group!.children }
                     onRenderCell={ this._renderSubGroup }
                     getItemCountForPage={ () => 1 }
                   />
@@ -257,7 +263,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
   private _onSelectionChange() {
     let { group, selection } = this.props;
-    let isSelected = selection.isRangeSelected(group.startIndex, group.count);
+    let isSelected = selection!.isRangeSelected(group!.startIndex, group!.count);
 
     if (isSelected !== this.state.isSelected) {
       this.setState({ isSelected });
@@ -288,7 +294,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   @autobind
-  private _renderSubGroup(subGroup, subGroupIndex) {
+  private _renderSubGroup(subGroup: any, subGroupIndex: number) {
     let {
       dragDropEvents,
       dragDropHelper,
@@ -332,7 +338,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     ) : null;
   }
 
-  private _getGroupKey(group, index) {
+  private _getGroupKey(group: any, index: number) {
     return 'group-' + ((group && group.key) ? group.key : String(group.level) + String(index));
   }
 
@@ -347,11 +353,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
       canDrag: () => false, // cannot drag groups
-      canDrop: dragDropEvents.canDrop,
-      onDragStart: null,
+      canDrop: dragDropEvents!.canDrop,
       updateDropState: this._updateDroppingState
     };
-    return options;
+    return options as IDragDropOptions;
   }
 
   /**
@@ -367,12 +372,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let { dragDropEvents } = this.props;
 
     if (!isDropping) {
-      if (dragDropEvents.onDragLeave) {
-        dragDropEvents.onDragLeave(event, null);
+      if (dragDropEvents && dragDropEvents.onDragLeave) {
+        dragDropEvents.onDragLeave!(event, undefined);
       }
     } else {
-      if (dragDropEvents.onDragEnter) {
-        dragDropEvents.onDragEnter(event, null);
+      if (dragDropEvents && dragDropEvents.onDragEnter) {
+        dragDropEvents.onDragEnter(event, undefined);
       }
     }
 

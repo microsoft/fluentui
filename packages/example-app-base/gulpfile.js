@@ -11,10 +11,13 @@ let isClean = process.argv.indexOf('clean') >= 0;
 let rules = Object.assign(
   {},
   require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('../../tslint.json').rules,
+  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
-build.tslint.setConfig({ lintConfig: { rules } });
+build.tslint.setConfig({
+  lintConfig: { rules },
+  displayAsWarning: false
+});
 
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));

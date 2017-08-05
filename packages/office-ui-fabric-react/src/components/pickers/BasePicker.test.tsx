@@ -31,11 +31,11 @@ function onResolveSuggestions(text: string): ITag[] {
   ].filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map(item => ({ key: item, name: item }));
 }
 
-const basicRenderer = (props) => {
+const basicRenderer = (props: IPickerItemProps<{ key: string, name: string }>) => {
   return <div> { props.item.name } </div>;
 };
 
-const basicSuggestionRenderer = (props) => {
+const basicSuggestionRenderer = (props: ISimple) => {
   return <div> { props.name } </div>;
 };
 
@@ -69,7 +69,7 @@ describe('Pickers', () => {
       let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
       expect(suggestions).to.exist;
-      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-item');
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
       expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
@@ -103,7 +103,7 @@ describe('Pickers', () => {
       let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
       expect(suggestions).to.exist;
-      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-item');
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
       expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
@@ -112,6 +112,68 @@ describe('Pickers', () => {
       expect(picker.items[0].name).to.be.equal('black', 'The selected item did not have the correct text');
       ReactDOM.unmountComponentAtNode(root);
 
+    });
+
+    it('can be a controlled component', () => {
+      let root = document.createElement('div');
+      document.body.appendChild(root);
+      let picker: TagPicker = ReactDOM.render(
+        <TagPicker
+          onResolveSuggestions={ onResolveSuggestions }
+          selectedItems={ [] }
+        />,
+        root
+      ) as TagPicker;
+      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+
+      input.focus();
+      input.value = 'bl';
+      ReactTestUtils.Simulate.change(input);
+
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+
+      ReactTestUtils.Simulate.click(suggestionOptions[0]);
+
+      expect(picker.items.length).to.be.equal(0, 'The picker incorrectly added an item');
+
+      picker = ReactDOM.render(
+        <TagPicker
+          onResolveSuggestions={ onResolveSuggestions }
+          selectedItems={ [{ key: 'testColor', name: 'testColor' }] }
+        />,
+        root
+      ) as TagPicker;
+
+      expect(picker.items.length).to.be.equal(1, 'The picker rendered with an item.');
+      expect(picker.items[0].name).to.be.equal('testColor', 'The selected item did not have the correct text');
+      ReactDOM.unmountComponentAtNode(root);
+    });
+    it('fires change events correctly for controlled components', (done) => {
+      let root = document.createElement('div');
+      document.body.appendChild(root);
+      let picker: TagPicker = ReactDOM.render(
+        <TagPicker
+          onResolveSuggestions={ onResolveSuggestions }
+          selectedItems={ [] }
+          onChange={ (items) => {
+            expect(items!.length).to.be.equal(1, 'The picker incorrectly added an item');
+            expect(items![0].name).to.be.equal('black', 'The picker incorrectly added an item');
+            done();
+          } }
+        />,
+        root
+      ) as TagPicker;
+      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+
+      input.focus();
+      input.value = 'bl';
+      ReactTestUtils.Simulate.change(input);
+
+      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+
+      ReactTestUtils.Simulate.click(suggestionOptions[0]);
+
+      ReactDOM.unmountComponentAtNode(root);
     });
   });
 });

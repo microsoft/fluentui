@@ -8,7 +8,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { disabled } = this.props;
+    let { disabled, checked } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
@@ -16,6 +16,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
+          checked={ checked }
           text='Create account'
           onClick={ () => alert('Clicked') }
         />

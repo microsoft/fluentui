@@ -1,0 +1,37 @@
+
+@import '../../common/common';
+
+.check {
+  @include focus-border();
+
+  display: inline-block;
+  cursor: default;
+  box-sizing: border-box;
+  vertical-align: top;
+  background: none;
+  border: none;
+  opacity: 0;
+
+  &:focus {
+    opacity: 1;
+  }
+}
+
+button.check {
+  padding: 3px;
+}
+
+.owner {
+  &.isSelected,
+  &.isVisible,
+  &:hover,
+  &:focus {
+    .check {
+      opacity: 1;
+    }
+  }
+}
+
+.isDisabled {
+  visibility: hidden;
+}

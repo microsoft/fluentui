@@ -6,10 +6,12 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
+import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
+const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
 const ChoiceGroupImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Image.Example.tsx') as string;
 const ChoiceGroupIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
 
@@ -23,6 +25,9 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
           <div>
             <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
               <ChoiceGroupBasicExample />
+            </ExampleCard>
+            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupCustomExampleCode }>
+              <ChoiceGroupCustomExample />
             </ExampleCard>
             <ExampleCard title='ChoiceGroups using Images' code={ ChoiceGroupImageExampleCode }>
               <ChoiceGroupImageExample />

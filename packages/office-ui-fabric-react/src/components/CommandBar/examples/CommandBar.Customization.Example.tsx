@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
 import styles = require('./CommandBar.Example.scss');
-import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface ISplitDropDownButtonState {
   isContextMenuShown: boolean;
 }
 
-export class CommandBarCustomizationExample extends React.Component<any, ISplitDropDownButtonState> {
+export class CommandBarCustomizationExample extends React.Component<{}, ISplitDropDownButtonState> {
   private container: HTMLElement;
 
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
     this.state = { isContextMenuShown: false };
   }
@@ -56,24 +56,6 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
   @autobind
   private _renderSplitButtonMenuItem(item: IContextualMenuItem) {
     let darkerBG = this.state.isContextMenuShown && styles.darkerBG;
-    let leftIconClassNames = css(
-      styles.icon,
-      styles.themeDarkAltColor,
-      'ms-Icon ms-Icon--Add',
-      darkerBG);
-    let dropDownIconClassNames = css(
-      styles.icon,
-      'ms-Icon ms-Icon--ChevronDown',
-      darkerBG);
-    let leftTextClassNames = css(
-      styles.leftText,
-      'ms-CommandBarItem-commandText',
-      darkerBG);
-
-    let containerClasName = css(
-      styles.customButtonContainer,
-      darkerBG
-    );
 
     let dropDownButtonClass = css(
       styles.button,
@@ -87,46 +69,35 @@ export class CommandBarCustomizationExample extends React.Component<any, ISplitD
 
     return (
       <div>
-        <div className={ containerClasName } ref={ ref => this.container = ref }>
-          <DefaultButton
-            key='mainButton'
+        <div className={ css(
+          styles.customButtonContainer,
+          darkerBG
+        ) } ref={ ref => this.container = ref! }>
+          <CommandButton
             className={ mainBtnClassName }
-            data-is-focusable={ true }>
-            <span className={ leftIconClassNames } />
-            <span className={ leftTextClassNames }>{ 'New' }</span>
-          </DefaultButton>
+            iconProps={ { iconName: 'Add' } }
+            text='New' />
           <span className={ styles.splitter }>|</span>
-          <DefaultButton
-            key='dropDownButton'
+          <CommandButton
             onClick={ this.onClickChevron }
-            className={ dropDownButtonClass }>
-            <span
-              className={ dropDownIconClassNames }
-              data-is-focusable={ true } />
-          </DefaultButton>
+            className={ dropDownButtonClass }
+            menuProps={ {
+              className: css('ms-CommandBar-menuHost'),
+              items: item.subMenuProps!.items
+            } } />
         </div>
-        {
-          this.state && this.state.isContextMenuShown &&
-          <ContextualMenu
-            isBeakVisible={ true }
-            className={ css('ms-CommandBar-menuHost') }
-            items={ item.subMenuProps.items }
-            target={ this.container }
-            directionalHint={ DirectionalHint.bottomAutoEdge }
-            onDismiss={ this.toggleDropDownMenuShown } />
-        }
       </div >
     );
   }
 
   @autobind
-  private onClickChevron(ev) {
+  private onClickChevron(ev: any) {
     ev.stopPropagation();
     this.toggleDropDownMenuShown(ev);
   }
 
   @autobind
-  private toggleDropDownMenuShown(ev) {
+  private toggleDropDownMenuShown(ev: any) {
     this.setState({
       isContextMenuShown: !this.state.isContextMenuShown
     });

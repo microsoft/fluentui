@@ -1,22 +1,23 @@
+declare function setTimeout(cb: Function, delay: number): number;
+declare function setInterval(cb: Function, delay: number): number;
+
 /**
  * Bugs often appear in async code when stuff gets disposed, but async operations don't get canceled.
  * This Async helper class solves these issues by tying async code to the lifetime of a disposable object.
  *
  * Usage: Anything class extending from BaseModel can access this helper via this.async. Otherwise create a
  * new instance of the class and remember to call dispose() during your code's dispose handler.
+ *
+ * @public
  */
-
-declare function setTimeout(cb: Function, delay: number): number;
-declare function setInterval(cb: Function, delay: number): number;
-
 export class Async {
-  private _timeoutIds = null;
-  private _immediateIds = null;
-  private _intervalIds = null;
-  private _animationFrameIds: { [id: number]: boolean } = null;
+  private _timeoutIds: any = null;
+  private _immediateIds: any = null;
+  private _intervalIds: any = null;
+  private _animationFrameIds: { [id: number]: boolean } | null = null;
   private _isDisposed = false;
   private _parent: any;
-  private _onErrorHandler: (e: any) => void;
+  private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: any;
 
   constructor(parent?: any, onError?: (e: any) => void) {
@@ -38,7 +39,7 @@ export class Async {
     if (this._timeoutIds) {
       for (id in this._timeoutIds) {
         if (this._timeoutIds.hasOwnProperty(id)) {
-          this.clearTimeout(id);
+          this.clearTimeout(parseInt(id, 10));
         }
       }
 
@@ -49,7 +50,7 @@ export class Async {
     if (this._immediateIds) {
       for (id in this._immediateIds) {
         if (this._immediateIds.hasOwnProperty(id)) {
-          this.clearImmediate(id);
+          this.clearImmediate(parseInt(id, 10));
         }
       }
 
@@ -60,7 +61,7 @@ export class Async {
     if (this._intervalIds) {
       for (id in this._intervalIds) {
         if (this._intervalIds.hasOwnProperty(id)) {
-          this.clearInterval(id);
+          this.clearInterval(parseInt(id, 10));
         }
       }
       this._intervalIds = null;
@@ -70,7 +71,7 @@ export class Async {
     if (this._animationFrameIds) {
       for (id in this._animationFrameIds) {
         if (this._animationFrameIds.hasOwnProperty(id)) {
-          this.cancelAnimationFrame(id);
+          this.cancelAnimationFrame(parseInt(id, 10));
         }
       }
 
@@ -80,9 +81,9 @@ export class Async {
 
   /**
    * SetTimeout override, which will auto cancel the timeout during dispose.
-   * @param callback Callback to execute.
-   * @param duration Duration in milliseconds.
-   * @return The setTimeout id.
+   * @param callback - Callback to execute.
+   * @param duration - Duration in milliseconds.
+   * @returns The setTimeout id.
    */
   public setTimeout(callback: () => void, duration: number): number {
 
@@ -119,9 +120,9 @@ export class Async {
 
   /**
    * Clears the timeout.
-   * @param id Id to cancel.
+   * @param id - Id to cancel.
    */
-  public clearTimeout(id: number) {
+  public clearTimeout(id: number): void {
 
     if (this._timeoutIds && this._timeoutIds[id]) {
       /* tslint:disable:ban-native-functions */
@@ -133,8 +134,8 @@ export class Async {
 
   /**
    * SetImmediate override, which will auto cancel the immediate during dispose.
-   * @param callback Callback to execute.
-   * @return The setTimeout id.
+   * @param callback - Callback to execute.
+   * @returns The setTimeout id.
    */
   public setImmediate(callback: () => void): number {
 
@@ -169,7 +170,7 @@ export class Async {
 
   /**
    * Clears the immediate.
-   * @param id Id to cancel.
+   * @param id - Id to cancel.
    */
   public clearImmediate(id: number) {
 
@@ -183,9 +184,9 @@ export class Async {
 
   /**
    * SetInterval override, which will auto cancel the timeout during dispose.
-   * @param callback Callback to execute.
-   * @param duration Duration in milliseconds.
-   * @return The setTimeout id.
+   * @param callback - Callback to execute.
+   * @param duration - Duration in milliseconds.
+   * @returns The setTimeout id.
    */
   public setInterval(callback: () => void, duration: number): number {
     let intervalId = 0;
@@ -216,7 +217,7 @@ export class Async {
 
   /**
    * Clears the interval.
-   * @param id Id to cancel.
+   * @param id - Id to cancel.
    */
   public clearInterval(id: number) {
     if (this._intervalIds && this._intervalIds[id]) {
@@ -236,12 +237,10 @@ export class Async {
    * Note: If leading and trailing options are true func will be called on the trailing edge of
    * the timeout only if the the throttled function is invoked more than once during the wait timeout.
    *
-   * @param func The function to throttle.
-   * @param wait The number of milliseconds to throttle executions to. Defaults to 0.
-   * @param options The options object.
-   * @param options.leading Specify execution on the leading edge of the timeout.
-   * @param options.trailing Specify execution on the trailing edge of the timeout.
-   * @return The new throttled function.
+   * @param func - The function to throttle.
+   * @param wait - The number of milliseconds to throttle executions to. Defaults to 0.
+   * @param options - The options object.
+   * @returns The new throttled function.
    */
   public throttle<T extends Function>(func: T, wait?: number, options?: {
     leading?: boolean;
@@ -256,9 +255,9 @@ export class Async {
     let leading = true;
     let trailing = true;
     let lastExecuteTime = 0;
-    let lastResult;
+    let lastResult: any;
     let lastArgs: any[];
-    let timeoutId: number = null;
+    let timeoutId: number | null = null;
 
     if (options && typeof (options.leading) === 'boolean') {
       leading = options.leading;
@@ -304,13 +303,10 @@ export class Async {
    * the timeout only if the the debounced function is invoked more than once during the wait
    * timeout.
    *
-   * @param func The function to debounce.
-   * @param wait The number of milliseconds to delay.
-   * @param options The options object.
-   * @param options.leading Specify execution on the leading edge of the timeout.
-   * @param options.maxWait The maximum time func is allowed to be delayed before it's called.
-   * @param options.trailing Specify execution on the trailing edge of the timeout.
-   * @return The new debounced function.
+   * @param func - The function to debounce.
+   * @param wait - The number of milliseconds to delay.
+   * @param options - The options object.
+   * @returns The new debounced function.
    */
   public debounce<T extends Function>(func: T, wait?: number, options?: {
     leading?: boolean;
@@ -325,12 +321,12 @@ export class Async {
     let waitMS = wait || 0;
     let leading = false;
     let trailing = true;
-    let maxWait = null;
+    let maxWait: any = null;
     let lastCallTime = 0;
     let lastExecuteTime = (new Date).getTime();
-    let lastResult;
+    let lastResult: any;
     let lastArgs: any[];
-    let timeoutId: number = null;
+    let timeoutId: number | null = null;
 
     if (options && typeof (options.leading) === 'boolean') {
       leading = options.leading;
@@ -401,7 +397,10 @@ export class Async {
       let animationFrameCallback = () => {
         try {
           // Now delete the record and call the callback.
-          delete this._animationFrameIds[animationFrameId];
+          if (this._animationFrameIds) {
+            delete this._animationFrameIds[animationFrameId];
+          }
+
           callback.apply(this._parent);
         } catch (e) {
           this._logError(e);

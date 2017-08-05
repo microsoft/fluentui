@@ -1,8 +1,10 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { StoreSet } from './StoreSet';
 import { BaseComponent } from '../Utilities';
 
 export interface IStoreHostProps extends React.Props<StoreHost> {
+  componentRef?: () => void;
   stores?: StoreSet;
 }
 
@@ -12,11 +14,11 @@ export interface IStoreHostContext {
 
 export class StoreHost extends BaseComponent<IStoreHostProps, {}> {
   public static contextTypes = {
-    stores: React.PropTypes.object
+    stores: PropTypes.object
   };
 
   public static childContextTypes = {
-    stores: React.PropTypes.object
+    stores: PropTypes.object
   };
 
   public context: IStoreHostContext;
@@ -25,7 +27,7 @@ export class StoreHost extends BaseComponent<IStoreHostProps, {}> {
     let { stores: parentStores } = this.context;
     let { stores: currentStores } = this.props;
 
-    return { stores: parentStores ? parentStores.merge(currentStores) : currentStores };
+    return { stores: parentStores ? parentStores.merge(currentStores!) : currentStores };
   }
 
   public render() {

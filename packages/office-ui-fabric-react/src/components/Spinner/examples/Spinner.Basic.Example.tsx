@@ -26,7 +26,7 @@ export class SpinnerBasicExample extends React.Component<any, any> {
         <Spinner label='I am definitely loading...' />
 
         <Label>Large Spinner With Label</Label>
-        <Spinner size={ SpinnerSize.large } label='Seriously, still loading...' />
+        <Spinner size={ SpinnerSize.large } label='Seriously, still loading...' ariaLive='assertive' />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
+import { loadTheme, FontClassNames, ITheme, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -7,7 +7,6 @@ import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabr
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import './ThemePage.scss';
-
 const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
 export class ThemePage extends React.Component<any, any> {
@@ -26,7 +25,7 @@ export class ThemePage extends React.Component<any, any> {
       colors: Object.keys(defaultTheme).map(variableName => ({
         key: variableName,
         name: variableName,
-        value: defaultTheme[variableName],
+        value: (defaultTheme as any)[variableName],
         description: '',
         colorPickerProps: null
       }))
@@ -38,7 +37,7 @@ export class ThemePage extends React.Component<any, any> {
 
     return (
       <div className='Themes'>
-        <h1 className='ms-font-xxl'>Themes</h1>
+        <h1 className={ FontClassNames.xxLarge }>Themes</h1>
         <p>The entire color pallete of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
         <p>To override the themes, you need to call <span className='code'>loadTheme()</span> with the appropriate set of overrides:</p>
 
@@ -46,7 +45,7 @@ export class ThemePage extends React.Component<any, any> {
           { ThemeCodeExample }
         </Highlight>
 
-        <h1 className='ms-font-xl'>Define a theme</h1>
+        <h1 className={ FontClassNames.xLarge }>Define a theme</h1>
         <div>
           <DetailsList
             ref='list'
@@ -116,17 +115,17 @@ export class ThemePage extends React.Component<any, any> {
   private _onColorChanged(index: number, newColor: string) {
     let { colors } = this.state;
     let color = colors[index];
-    let theme: ITheme = {};
+    let palette: Partial<IPalette> = {};
 
     color.value = newColor;
 
     for (let i = 0; i < colors.length; i++) {
       let themeColor = colors[i];
 
-      theme[themeColor.key] = themeColor.value;
+      (palette as any)[themeColor.key] = themeColor.value;
     }
 
-    loadTheme(theme);
+    loadTheme({ palette });
 
     // The theme has changed values, but color state is the same. Force an update on the list.
     this.refs.list.forceUpdate();

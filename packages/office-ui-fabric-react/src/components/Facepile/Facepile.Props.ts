@@ -53,14 +53,14 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
-  
+
   /**
    * Optional class for Facepile root element.
    */
   className?: string;
 }
 
-export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
+export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.
    */

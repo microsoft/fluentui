@@ -1,4 +1,4 @@
-@import "~/office-ui-fabric-core/dist/sass/Fabric.Common";
+@import "~/office-ui-fabric-core/dist/sass/References";
 
 .todo {
   padding: 28px 40px 60px 40px;
@@ -28,7 +28,7 @@
     }
     .addButton {
       display: table-cell;
-      @include margin-left(16px);
+      @include ms-margin-left(16px);
       white-space: nowrap;
     }
   }
@@ -49,7 +49,7 @@
           top: 50%;
           transform: translateY(-50%);
           right: 0px;
-          @include margin-right(16px);
+          @include ms-margin-right(16px);
 
           &:hover, &:focus {
             color: $ms-color-themePrimary;

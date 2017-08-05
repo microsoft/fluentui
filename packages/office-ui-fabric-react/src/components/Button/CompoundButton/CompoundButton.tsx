@@ -1,23 +1,11 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent } from '../../../Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { ThemeSettingName } from '../../../Styling';
 import { IButtonProps } from '../Button.Props';
+import { getStyles } from './CompoundButton.styles';
 
-import * as stylesImport from './CompoundButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--compound',
-  description: styles.description,
-  flexContainer: styles.flexContainer,
-  icon: null,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root
-};
-
+@customizable([ThemeSettingName])
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
@@ -25,10 +13,13 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
+    let { styles, theme } = this.props;
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
         { ...this.props }
+        variantClassName='ms-Button--compound'
+        styles={ getStyles(theme!, styles) }
+        onRenderIcon={ nullRender }
       />
     );
   }

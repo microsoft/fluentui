@@ -1,6 +1,145 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 05 May 2017 10:18:19 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+
+## 4.2.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- TypeScript 2.4.1 bump
+
+## 4.1.1
+Thu, 13 Jul 2017 02:58:02 GMT
+
+### Patches
+
+- Highlight: Use correct import for highlightBlock
+
+## 4.1.0
+Wed, 12 Jul 2017 01:49:50 GMT
+
+### Minor changes
+
+- Fix implicit anys, enable strict null checks
+
+### Patches
+
+- Fixing typings for TypeScript 2.4.1 compatibility.
+
+## 4.0.3
+Tue, 11 Jul 2017 10:14:04 GMT
+
+### Patches
+
+- Website: Stop displaying "missing properties" notification if props includes empty interface
+
+## 4.0.2
+Sat, 08 Jul 2017 03:34:35 GMT
+
+### Patches
+
+- Updating dev dependencies.
+
+## 4.0.1
+Tue, 27 Jun 2017 01:26:31 GMT
+
+### Patches
+
+- Enable forceConsistentCasingInFileNames tsconfig option
+
+## 4.0.0
+Wed, 21 Jun 2017 00:45:41 GMT
+
+### Breaking changes
+
+- Add support for adding a default route in createApp. Remove unused hideChrome parameter.
+
+## 3.0.2
+Wed, 14 Jun 2017 06:02:15 GMT
+
+### Patches
+
+- Bumping fabric-core dependency.
+
+## 3.0.1
+Mon, 12 Jun 2017 01:47:18 GMT
+
+### Patches
+
+- Enable no implicit any in utilities package
+
+## 3.0.0
+Thu, 08 Jun 2017 00:18:05 GMT
+
+### Breaking changes
+
+- Bumping fabric dependency in example-app-base
+
+## 2.1.2
+Tue, 06 Jun 2017 07:41:47 GMT
+
+*Changes not tracked*
+
+## 2.1.1
+Tue, 06 Jun 2017 06:06:46 GMT
+
+### Patches
+
+- Adding tslib dependency to reduce re
+
+## 2.1.0
+Tue, 06 Jun 2017 00:50:06 GMT
+
+### Minor changes
+
+- Add the ability to optionally pass in the app title and header links for createApp
+
+## 2.0.4
+Fri, 02 Jun 2017 01:19:36 GMT
+
+*Changes not tracked*
+
+## 2.0.3
+Thu, 01 Jun 2017 16:34:03 GMT
+
+*Changes not tracked*
+
+## 2.0.2
+Wed, 31 May 2017 01:58:23 GMT
+
+*Changes not tracked*
+
+## 2.0.1
+Tue, 30 May 2017 20:23:45 GMT
+
+*Changes not tracked*
+
+## 2.0.0
+Tue, 30 May 2017 03:27:20 GMT
+
+### Breaking changes
+
+- All references to fabric-core removed.
+
+### Patches
+
+- Updated dependency to Fabric Core 7
+
+## 1.3.14
+Fri, 26 May 2017 10:21:03 GMT
+
+*Changes not tracked*
+
+## 1.3.13
+Tue, 23 May 2017 10:16:04 GMT
+
+*Changes not tracked*
+
+## 1.3.12
+Thu, 18 May 2017 10:09:58 GMT
+
+*Changes not tracked*
 
 ## 1.3.11
 Fri, 05 May 2017 10:18:19 GMT

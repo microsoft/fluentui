@@ -40,98 +40,98 @@ export class LayoutPage extends React.Component<any, any> {
 
         <div className='ms-Grid' aria-label='Example fabric grid where every row has a different number of columns.'>
           <div className='ms-Grid-row' aria-label='Example of 12 equal columns using the grid'>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm1 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm1 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>1</div>
             </div>
           </div>
           <div className='ms-Grid-row' aria-label='Example of 6 equal columns using the grid'>
-            <div className={ 'ms-Grid-col ms-u-sm2 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm2 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>2</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm2 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm2 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>2</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm2 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm2 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>2</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm2 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm2 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>2</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm2 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm2 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>2</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm2 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm2 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>2</div>
             </div>
           </div>
           <div className='ms-Grid-row' aria-label='Example of 4 equal columns using the grid'>
-            <div className={ 'ms-Grid-col ms-u-sm3 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm3 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>3</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm3 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm3 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>3</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm3 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm3 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>3</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm3 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm3 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>3</div>
             </div>
           </div>
           <div className='ms-Grid-row' aria-label='Example of 3 equal columns using the grid'>
-            <div className={ 'ms-Grid-col ms-u-sm4 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm4 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>4</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm4 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm4 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>4</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm4 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm4 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>4</div>
             </div>
           </div>
           <div className='ms-Grid-row' aria-label='Example of 2 equal columns using the grid'>
-            <div className={ 'ms-Grid-col ms-u-sm6 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm6 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>6</div>
             </div>
-            <div className={ 'ms-Grid-col ms-u-sm6 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm6 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>6</div>
             </div>
           </div>
           <div className='ms-Grid-row' aria-label='Example of 1 equal column using the grid'>
-            <div className={ 'ms-Grid-col ms-u-sm12 ' + styles.demoBlockCol }>
+            <div className={ 'ms-Grid-col ms-sm12 ' + styles.demoBlockCol }>
               <div className={ styles.demoBlock }>12</div>
             </div>
           </div>
@@ -139,24 +139,24 @@ export class LayoutPage extends React.Component<any, any> {
 
         <div className={ pageStyles.u_maxTextWidth }>
           <h3>How to use</h3>
-          <p>A grid (ms-Grid) can contain multiple rows (ms-Grid-row), each of which has one or more columns (ms-Grid-col). Utility classes (ms-u-sm6) specify how large each column should be on small, medium, and large devices. The columns in a row should add up to 12 for each device size.</p>
+          <p>A grid (ms-Grid) can contain multiple rows (ms-Grid-row), each of which has one or more columns (ms-Grid-col). Utility classes (ms-sm6) specify how large each column should be on small, medium, and large devices. The columns in a row should add up to 12 for each device size.</p>
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
             `<div class="ms-Grid">
   <div class="ms-Grid-row">
-    <div class="ms-Grid-col ms-u-sm6 ms-u-md4 ms-u-lg2">A</div>
-    <div class="ms-Grid-col ms-u-sm6 ms-u-md8 ms-u-lg10">B</div>
+    <div class="ms-Grid-col ms-sm6 ms-md4 ms-lg2">A</div>
+    <div class="ms-Grid-col ms-sm6 ms-md8 ms-lg10">B</div>
   </div>
 </div>`
           }
         </CodeBlock>
         <div className='ms-Grid'>
           <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-sm6 ms-u-md4 ms-u-lg2'>
+            <div className='ms-Grid-col ms-sm6 ms-md4 ms-lg2'>
               <div className={ styles.demoBlock }>A</div>
             </div>
-            <div className='ms-Grid-col ms-u-sm6 ms-u-md8 ms-u-lg10'>
+            <div className='ms-Grid-col ms-sm6 ms-md8 ms-lg10'>
               <div className={ styles.demoBlock }>B</div>
             </div>
           </div>
@@ -164,17 +164,17 @@ export class LayoutPage extends React.Component<any, any> {
 
         <div className={ pageStyles.u_maxTextWidth }>
           <h4>Inheritance</h4>
-          <p>Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium and large screens. The small size utilities (ms-u-sm6) are required. If you want to change the layout on larger screens, you can apply the other utility classes.</p>
+          <p>Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium and large screens. The small size utilities (ms-sm6) are required. If you want to change the layout on larger screens, you can apply the other utility classes.</p>
           <p>Try this out! On a large screen, the example block will be smaller. Try shrinking your browser window to see how the example block will take up the entire width of the screen.</p>
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-            `<div class="ms-Grid-col ms-u-sm12 ms-u-lg4">Example</div>`
+            `<div class="ms-Grid-col ms-sm12 ms-lg4">Example</div>`
           }
         </CodeBlock>
         <div className='ms-Grid'>
           <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-sm12 ms-u-lg4'>
+            <div className='ms-Grid-col ms-sm12 ms-lg4'>
               <div className={ styles.demoBlock }>Example</div>
             </div>
           </div>
@@ -186,16 +186,16 @@ export class LayoutPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-            `<div class="ms-Grid-col ms-u-sm4 ms-u-smPush8">First in code</div>
-<div class="ms-Grid-col ms-u-sm8 ms-u-smPull4">Second in code</div>`
+            `<div class="ms-Grid-col ms-sm4 ms-smPush8">First in code</div>
+<div class="ms-Grid-col ms-sm8 ms-smPull4">Second in code</div>`
           }
         </CodeBlock>
         <div className='ms-Grid'>
           <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-sm4 ms-u-smPush8'>
+            <div className='ms-Grid-col ms-sm4 ms-smPush8'>
               <div className={ styles.demoBlock }>First in code</div>
             </div>
-            <div className='ms-Grid-col ms-u-sm8 ms-u-smPull4'>
+            <div className='ms-Grid-col ms-sm8 ms-smPull4'>
               <div className={ styles.demoBlock }>Second in code</div>
             </div>
           </div>
@@ -209,16 +209,16 @@ export class LayoutPage extends React.Component<any, any> {
 
         <CodeBlock language='html' isLightTheme={ true }>
           {
-            `<div class="ms-Grid-col ms-u-sm12 ms-u-hiddenXxlUp">Visible on smaller screens</div>
-<div class="ms-Grid-col ms-u-sm12 ms-u-hiddenXlDown">Visible on larger screens</div>`
+            `<div class="ms-Grid-col ms-sm12 ms-hiddenXxlUp">Visible on smaller screens</div>
+<div class="ms-Grid-col ms-sm12 ms-hiddenXlDown">Visible on larger screens</div>`
           }
         </CodeBlock>
         <div className='ms-Grid'>
           <div className='ms-Grid-row'>
-            <div className='ms-Grid-col ms-u-sm12 ms-u-hiddenXxlUp'>
+            <div className='ms-Grid-col ms-sm12 ms-hiddenXxlUp'>
               <div className={ styles.demoBlock }>Visible on smaller screens</div>
             </div>
-            <div className='ms-Grid-col ms-u-sm12 ms-u-hiddenXlDown'>
+            <div className='ms-Grid-col ms-sm12 ms-hiddenXlDown'>
               <div className={ styles.demoBlock }>Visible on larger screens</div>
             </div>
           </div>

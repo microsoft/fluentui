@@ -35,12 +35,12 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     window.clearTimeout(this._animationTimeoutId);
   }
 
-  public render(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+  public render(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const className: string = css(
       styles.todoItem,
       this.props.item.isComplete === true ? styles.isCompleted : '',
       'ms-Grid',
-      'ms-u-slideDownIn20'
+      'ms-slideDownIn20'
     );
 
     return (
@@ -60,7 +60,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
             />
             <IconButton
               className={ styles.deleteButton }
-              iconProps={ { iconName: 'x' } }
+              iconProps={ { iconName: 'X' } }
               onClick={ this._onDelete }
               title={ strings.deleteItemTitle }
               ariaLabel={ strings.deleteItemAriaLabel }
@@ -80,11 +80,11 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   }
 
   private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
-    this._handleWithAnimation(this.props.onToggleComplete, 'ms-u-slideUpOut20');
+    this._handleWithAnimation(this.props.onToggleComplete, 'ms-slideUpOut20');
   }
 
   private _onDelete(event: React.MouseEvent<HTMLButtonElement>): void {
-    this._handleWithAnimation(this.props.onDeleteItem, 'ms-u-slideUpOut20');
+    this._handleWithAnimation(this.props.onDeleteItem, 'ms-slideUpOut20');
   }
 
   private _handleWithAnimation(callback: (task: ITodoItem) => void, animationClass: string): void {

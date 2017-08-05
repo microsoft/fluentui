@@ -31,7 +31,7 @@ module.exports = function (config) {
 
     // webpack config for bundling tests.
     webpack: {
-      devtool: 'inline-source-map',
+      devtool: 'source-map',
       module: {
         loaders: [
           {
