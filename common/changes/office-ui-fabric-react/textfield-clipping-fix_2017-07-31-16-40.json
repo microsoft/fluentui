@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Datepicker: updated icon size",
+      "comment": "Textfield: removed background from textfield internal field",
       "type": "patch"
     }
   ],

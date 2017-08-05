@@ -58,7 +58,7 @@
     # packages/office-ui-fabric-react/src/components/Label/*
     # packages/office-ui-fabric-react/src/components/Layer/*
     # packages/office-ui-fabric-react/src/components/Link/*
-    # packages/office-ui-fabric-react/src/components/List/*
+    # packages/office-ui-fabric-react/src/components/List/*  @cschleiden
     # packages/office-ui-fabric-react/src/components/MarqueeSelection/*
     # packages/office-ui-fabric-react/src/components/MessageBar/*
     # packages/office-ui-fabric-react/src/components/Modal/*
@@ -71,7 +71,7 @@
     # packages/office-ui-fabric-react/src/components/Pivot/*
     # packages/office-ui-fabric-react/src/components/Popup/*
     # packages/office-ui-fabric-react/src/components/ProgressIndicator/*
-    # packages/office-ui-fabric-react/src/components/Rating/*
+    # packages/office-ui-fabric-react/src/components/Rating/*  @cschleiden
     packages/office-ui-fabric-react/src/components/ResizeGroup/*  @micahgodbolt
     # packages/office-ui-fabric-react/src/components/SearchBox/*
     # packages/office-ui-fabric-react/src/components/Slider/*
@@ -81,7 +81,7 @@
     packages/office-ui-fabric-react/src/components/TeachingBubble/*   @micahgodbolt
     # packages/office-ui-fabric-react/src/components/TextField/*
     # packages/office-ui-fabric-react/src/components/Theme/*
-    # packages/office-ui-fabric-react/src/components/Toggle/*
+    packages/office-ui-fabric-react/src/components/Toggle/*  @phkuo
     packages/office-ui-fabric-react/src/components/Tooltip/*  @micahgodbolt
 
   # packages/office-ui-fabric-react/src/demo/*
@@ -89,6 +89,6 @@
   # packages/office-ui-fabric-react/src/visualtest/*
 
 # packages/office-ui-fabric-react-tslint/*
-# packages/styling/*
+packages/styling/*  @dzearing @phkuo
 # packages/utilities/*
 
