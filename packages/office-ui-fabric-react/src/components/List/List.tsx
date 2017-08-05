@@ -28,6 +28,15 @@ export interface IListState {
   measureVersion?: number;
 }
 
+interface IPageCacheItem {
+  page: IPage;
+  pageElement?: JSX.Element;
+}
+
+interface IPageCache {
+  [key: string]: IPageCacheItem;
+}
+
 const EMPTY_RECT = {
   top: -1,
   bottom: -1,
@@ -64,7 +73,7 @@ const _measureScrollRect = _measurePageRect;
 export class List extends BaseComponent<IListProps, IListState> implements IList {
   public static defaultProps = {
     startIndex: 0,
-    onRenderCell: (item: any, index: number, containsFocus: boolean) => (<div>{ (item && item.name) || '' }</div>),
+    onRenderCell: (item: any, index: number, containsFocus: boolean) => (<div>{(item && item.name) || ''}</div>),
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND
   };
@@ -106,6 +115,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _measureVersion: number;
   private _scrollHeight: number;
   private _scrollTop: number;
+  private _pageCache: IPageCache;
 
   constructor(props: IListProps) {
     super(props);
@@ -148,6 +158,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
     this._scrollingToIndex = -1;
+    this._pageCache = {};
   }
 
   /**
@@ -251,6 +262,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       this._requiredRect = null;
 
       this._measureVersion++;
+      const log = `List componentWillReceiveProps: items count ${this.props.items!.length}, ${newProps.items ? newProps.items.length : 0}`;
+      performance.mark(log);
+      console.log(log);
+      this._invalidPageCache(newProps);
       this._updatePages(newProps);
     }
   }
@@ -280,6 +295,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     } else {
       shouldComponentUpdate = true;
     }
+    const logData = shouldComponentUpdate ? `measureVersion: ${this._measureVersion}, ${measureVersion}; items count: ${this.props.items ? this.props.items.length : 0}, ${newProps.items ? newProps.items.length : 0}; page keys: ${oldPages ? oldPages.map((page: IPage) => page.key).join(',') : ''} | ${newPages ? newPages.map((page: IPage) => page.key).join(',') : ''}` : '';
+    performance.mark(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
+    console.log(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
 
     return shouldComponentUpdate;
   }
@@ -306,18 +324,49 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       pageElements.push(this._renderPage(pages![i]));
     }
 
+    performance.mark(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`);
+    console.log(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`);
+
     // console.log(`Page elements ${pageElements.length}`);
 
     return (
-      <div ref='root' { ...divProps } role={ role } className={ css('ms-List', className) } >
+      <div ref='root' { ...divProps } role={role} className={css('ms-List', className)} >
         <div ref='surface' className='ms-List-surface' role='presentation'>
-          { pageElements }
+          {pageElements}
         </div>
       </div>
     );
   }
 
+  private _invalidPageCache(newProps: IListProps | undefined, force?: boolean) {
+    if (force) {
+      this._pageCache = {};
+      performance.mark('invalidPageCache force');
+    } else {
+      if (newProps && newProps.items && this.props.items && newProps.items.length > this.props.items.length) {
+        const itemsPerPage = this._getItemCountForPage(0, this._allowedRect);
+        for (let key in this._pageCache) {
+          if (this._pageCache.hasOwnProperty(key)) {
+            const cachedPage = this._pageCache[key];
+            if (cachedPage.page.itemCount < itemsPerPage &&
+              cachedPage.page.items.filter((item: any) => !item).length > 0) {
+              delete this._pageCache[key];
+            }
+          }
+        }
+        performance.mark('invalidPageCache incremental');
+      } else {
+        this._pageCache = {};
+        performance.mark('invalidPageCache force');
+      }
+    }
+  }
+
   private _renderPage(page: IPage): any {
+    const cachedPage = this._pageCache[page.key];
+    if (cachedPage && cachedPage.pageElement) {
+      return cachedPage.pageElement;
+    }
     let { onRenderCell, role } = this.props;
     let cells = [];
     let pageStyle = this._getPageStyle(page);
@@ -338,17 +387,29 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
 
       cells.push(
-        <div role={ role } className='ms-List-cell' key={ itemKey } data-list-index={ i + page.startIndex } data-automationid='ListCell'>
-          { onRenderCell!(item, page.startIndex + i) }
+        <div role={role} className='ms-List-cell' key={itemKey} data-list-index={i + page.startIndex} data-automationid='ListCell'>
+          {onRenderCell!(item, page.startIndex + i)}
         </div>
       );
     }
 
-    return (
-      <div className='ms-List-page' key={ page.key } ref={ page.key } style={ pageStyle } role='presentation'>
-        { cells }
+    const pageElement = (
+      <div className='ms-List-page' key={page.key} ref={page.key} style={pageStyle} role='presentation'>
+        {cells}
       </div>
     );
+    if (page.key.lastIndexOf('spacer', 0) === -1) {
+      if (cachedPage) {
+        cachedPage.pageElement = pageElement;
+      } else {
+        // todo
+        this._pageCache[page.key] = {
+          page: page,
+          pageElement: pageElement
+        };
+      }
+    }
+    return pageElement;
   }
 
   /** Generate the style object for the page. */
@@ -598,8 +659,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       let pageBottom = pageTop + pageHeight - 1;
 
       let isPageRendered = findIndex(this.state.pages as IPage[], (page) => page.items && page.startIndex === itemIndex) > -1;
-      let isPageInAllowedRange = pageBottom >= this._allowedRect.top && pageTop <= this._allowedRect.bottom!;
-      let isPageInRequiredRange = pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!;
+      let isPageInAllowedRange = !this._allowedRect || pageBottom >= this._allowedRect.top && pageTop <= this._allowedRect.bottom!;
+      let isPageInRequiredRange = !this._requiredRect || pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!;
       let isPageVisible = !isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered));
       let isPageFocused = focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage);
       let isFirstPage = itemIndex === startIndex;
@@ -621,7 +682,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
         pages.push(newPage);
 
-        if (isPageInRequiredRange) {
+        if (isPageInRequiredRange && this._allowedRect) {
           _mergeRect(materializedRect, {
             top: pageTop,
             bottom: pageBottom,
@@ -682,6 +743,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   private _createPage(pageKey: string | null, items: any[] | null, startIndex?: number, count?: number, style?: any): IPage {
     pageKey = pageKey || ('page-' + startIndex);
+    const cachedPage = this._pageCache[pageKey];
+    if (cachedPage && cachedPage.page) {
+      return cachedPage.page;
+    }
 
     // Fill undefined cells because array.map will ignore undefined cells.
     if (items) {
@@ -690,7 +755,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
     }
 
-    return {
+    const page = {
       key: pageKey,
       startIndex: startIndex === undefined ? -1 : startIndex,
       itemCount: (count === undefined) ? (items ? items.length : 0) : count,
@@ -699,6 +764,18 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       top: 0,
       height: 0
     };
+    if (pageKey.lastIndexOf('spacer', 0) === -1) {
+      if (cachedPage) {
+        cachedPage.page = page;
+      } else {
+        // todo
+        this._pageCache[pageKey] = {
+          page: page,
+          pageElement: undefined
+        };
+      }
+    }
+    return page;
   }
 
   private _getRenderCount(props?: IListProps): number {
@@ -709,6 +786,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
   private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
+    if (performance.getEntriesByName('EUPL.glass').length === 0) {
+      return;
+    }
+
     const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
     const { pages } = this.state;
     const renderCount = this._getRenderCount(props);
