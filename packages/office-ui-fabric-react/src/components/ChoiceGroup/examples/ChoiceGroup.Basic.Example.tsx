@@ -27,7 +27,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             {
               key: 'A',
               text: 'Option A',
-              inputProps: { data: 'forOptionA' }
+              data: 'forOptionA'
             },
             {
               key: 'B',

@@ -106,12 +106,4 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * This value is maintained by the component and is accessible during onRenderField
    */
   labelId?: string;
-
-  /**
-  * Optional input props that will be mixed into the input element, *before* other props are applied. This allows
-  * you to extend the input element with additional attributes, such as data-automation-id needed for automation.
-  * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
-  * precedence over the later.
-  */
-  inputProps?: React.HTMLAttributes<HTMLElement | HTMLInputElement>;
 }

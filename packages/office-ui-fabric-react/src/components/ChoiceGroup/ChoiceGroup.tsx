@@ -102,7 +102,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 }
               >
                 <input
-                  { ...getNativeProps(option.inputProps, inputProperties) }
+                  { ...getNativeProps(option, inputProperties) }
                   ref={ (c): HTMLInputElement => this._inputElement = c }
                   id={ option.id }
                   className={ css('ms-ChoiceField-input', styles.input) }

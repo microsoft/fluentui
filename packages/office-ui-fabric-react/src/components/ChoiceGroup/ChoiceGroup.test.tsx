@@ -11,7 +11,7 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { key: '1', text: '1', inputProps: { data: 'test1' } },
+  { key: '1', text: '1', data: 'test1' },
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
@@ -170,7 +170,7 @@ describe('ChoiceGroup', () => {
     expect(_selectedItem).to.equal(TEST_OPTIONS[1], 'onChange did not return new item');
   });
 
-  it('automation id appears in dom if specified', () => {
+  it('extra <input> attributes appear in dom if specified', () => {
     let _selectedItem;
     const choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
       <ChoiceGroup
@@ -185,7 +185,7 @@ describe('ChoiceGroup', () => {
       return (choiceOptions[index] as HTMLInputElement).getAttribute('data');
     };
 
-    expect(extraAttributeGetter(0)).to.be.eq('test1', 'Specified automation ID did not match');
+    expect(extraAttributeGetter(0)).to.be.eq('test1', 'Specified data attribute did not match');
     expect(extraAttributeGetter(1)).to.be.null;
   });
 });
