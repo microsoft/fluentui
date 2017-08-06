@@ -1978,6 +1978,10 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uEA1E'.
    */
+  powerBiLogo: '\uEA1E',
+  /**
+   * Icon code with the value '\uEA1E'.
+   */
   powerBILogo: '\uEA1E',
   /**
    * Icon code with the value '\uEF72'.
