@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "add StreamLogo, rename PowerBiLogo in IconCodes to PowerBILogo",
+      "comment": "add StreamLogo and PowerBILogo icons",
       "type": "patch"
     }
   ],
