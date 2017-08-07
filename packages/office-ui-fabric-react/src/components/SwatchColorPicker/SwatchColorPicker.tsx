@@ -151,8 +151,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     if (this.props && this.props.onCellHovered) {
       if (item) {
         this.props.onCellHovered(item.id, item.color);
-      }
-      else {
+      } else {
         this.props.onCellHovered();
       }
     }
@@ -166,8 +165,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     if (this.props && this.props.onCellFocused) {
       if (item) {
         this.props.onCellFocused(item.id, item.color);
-      }
-      else {
+      } else {
         this.props.onCellFocused();
       }
     }
