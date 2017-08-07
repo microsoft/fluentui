@@ -16,8 +16,8 @@ import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
-import { IconButton } from './IconButton/IconButton';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
+import { getClassNames as getSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -398,7 +398,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconName,
       menuIconProps,
       styles,
-      disabled
+      disabled,
+      checked
     } = this.props;
 
     if (menuIconProps === undefined) {
@@ -407,22 +408,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
+    const classNames = styles ? getSplitButtonClassNames(styles!, disabled || false, !!this.state.menuProps, checked || false) : undefined;
+
     return (
-      <IconButton
+      <BaseButton
         tabIndex={ -1 }
-        styles={ {
-          root: mergeStyles(
-            styles!.splitButtonMenuButton,
-            !!this.state.menuProps && [
-              styles!.splitButtonMenuButtonExpanded
-            ],
-            disabled && [
-              styles!.splitButtonMenuButtonDisabled
-            ],
-          ) as string,
-          rootChecked: styles!.splitButtonMenuButtonChecked,
-          icon: disabled ? styles!.splitButtonMenuIconDisabled : styles!.splitButtonMenuIcon
-        } }
+        styles={ classNames }
         checked={ this.props.checked }
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
