@@ -24,8 +24,13 @@ button.check {
 .owner {
   &.isSelected,
   &.isVisible,
-  &:hover,
-  &:focus {
+  &:hover {
+    .check {
+      opacity: 1;
+    }
+  }
+
+  @include focus(true) {
     .check {
       opacity: 1;
     }

@@ -324,7 +324,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
       return false;
     }
-    if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
+    if (positions.beakPosition.left.toFixed(2) !== newPosition.beakPosition.left.toFixed(2)) {
       return false;
     }
 
