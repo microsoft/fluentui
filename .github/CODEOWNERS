@@ -33,7 +33,7 @@
     # packages/office-ui-fabric-react/src/components/ActivityItem/*
     # packages/office-ui-fabric-react/src/components/Breadcrumb/*
     # packages/office-ui-fabric-react/src/components/Button/*
-    # packages/office-ui-fabric-react/src/components/Calendar/*
+    # packages/office-ui-fabric-react/src/components/Calendar/*   @johannao76 @lorejoh12
     # packages/office-ui-fabric-react/src/components/Callout/*
     # packages/office-ui-fabric-react/src/components/Check/*
     # packages/office-ui-fabric-react/src/components/Checkbox/*
@@ -42,7 +42,7 @@
     # packages/office-ui-fabric-react/src/components/ComboBox/*
     packages/office-ui-fabric-react/src/components/CommandBar/*   @micahgodbolt
     # packages/office-ui-fabric-react/src/components/ContextualMenu/*
-    # packages/office-ui-fabric-react/src/components/DatePicker/*
+    # packages/office-ui-fabric-react/src/components/DatePicker/*   @johannao76 @lorejoh12
     # packages/office-ui-fabric-react/src/components/DetailsList/*
     # packages/office-ui-fabric-react/src/components/Dialog/*
     # packages/office-ui-fabric-react/src/components/DocumentCard/*
@@ -58,7 +58,7 @@
     # packages/office-ui-fabric-react/src/components/Label/*
     # packages/office-ui-fabric-react/src/components/Layer/*
     # packages/office-ui-fabric-react/src/components/Link/*
-    # packages/office-ui-fabric-react/src/components/List/*
+    # packages/office-ui-fabric-react/src/components/List/*  @cschleiden
     # packages/office-ui-fabric-react/src/components/MarqueeSelection/*
     # packages/office-ui-fabric-react/src/components/MessageBar/*
     # packages/office-ui-fabric-react/src/components/Modal/*
@@ -71,7 +71,7 @@
     # packages/office-ui-fabric-react/src/components/Pivot/*
     # packages/office-ui-fabric-react/src/components/Popup/*
     # packages/office-ui-fabric-react/src/components/ProgressIndicator/*
-    # packages/office-ui-fabric-react/src/components/Rating/*
+    # packages/office-ui-fabric-react/src/components/Rating/*  @cschleiden
     packages/office-ui-fabric-react/src/components/ResizeGroup/*  @micahgodbolt
     # packages/office-ui-fabric-react/src/components/SearchBox/*
     # packages/office-ui-fabric-react/src/components/Slider/*
