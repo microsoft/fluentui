@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 04 Aug 2017 10:11:48 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+
+## 0.18.0
+Mon, 07 Aug 2017 10:22:46 GMT
+
+### Minor changes
+
+- Adding 4 icons that were missing in the codes map.
 
 ## 0.17.0
 Fri, 04 Aug 2017 10:11:48 GMT
