@@ -11,6 +11,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/experiments",
+      "projectFolder": "packages/office-ui-fabric-react-experiments",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@uifabric/utilities",
       "projectFolder": "packages/utilities",
       "shouldPublish": true
