@@ -39,7 +39,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
       label = title;
     }
 
-    percentComplete = Math.min(100, Math.max(0, percentComplete * 100));
+    percentComplete = Math.min(100, Math.max(0, percentComplete! * 100));
 
     return (
       <div className={ css('ms-ProgressIndicator', styles.root, className) }>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-export interface IPickerItemProps<T> extends React.HTMLAttributes<HTMLElement> {
+export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement> {
   componentRef?: () => void;
   item: T;
   index: number;

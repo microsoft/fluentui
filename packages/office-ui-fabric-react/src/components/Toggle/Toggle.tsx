@@ -92,9 +92,9 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
     const classNames = this._getClassNames(
-      getStyles(theme, customStyles),
-      className,
-      disabled,
+      getStyles(theme!, customStyles),
+      className!,
+      disabled!,
       isChecked
     );
 
@@ -110,7 +110,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
             { ...toggleNativeProps }
             type='button'
             className={ classNames.pill }
-            ref={ (c): HTMLButtonElement => this._toggleButton = c }
+            ref={ (c): HTMLButtonElement => this._toggleButton = c! }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
             aria-label={ ariaLabel }
