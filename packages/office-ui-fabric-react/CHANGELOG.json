@@ -2,6 +2,179 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.30.1",
+      "tag": "office-ui-fabric-react_v4.30.1",
+      "date": "Mon, 07 Aug 2017 10:22:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "b0b4d93a4375433f03885fbbebc9a715aa4ec34d",
+            "comment": "Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed\""
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "d8ffba67d710b76be69866ab49ca5239b63ae76c",
+            "comment": "Dialog: fixing accessibility regression"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "f88b41c8fa81ae1a673458c8e7824623e82f5ffd",
+            "comment": "Prevent auto-selection on focus in DetailsList"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "36ce1d12e6ba50ee97860100d1560365c193e3dd",
+            "comment": "ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5c8d23dabbf43aff06ffe5ce4a99f0d3b577ea06",
+            "comment": "Textfield: removed background from textfield internal field"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.17.0 <1.0.0` to `>=0.17.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.30.0",
+      "tag": "office-ui-fabric-react_v4.30.0",
+      "date": "Fri, 04 Aug 2017 10:11:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "ff44b6b9c31ceac21ade3f66c356e49bdee0287c",
+            "comment": "Button: Merge the ISplitButtonStyles into IButtonStyles"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "90e90f0999ed4040061d5bb2a18f7ccedb9755e9",
+            "comment": "Datepicker: updated icon size"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "7b6124e4236d8977f270f369c7dd48a76cf841f0",
+            "comment": "Expand hit target of DetailsRow checkbox"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "7956a3996fa829659c05ee74f626dab41bf5b434",
+            "comment": "ResizeGroup: Add another example use case to demo site"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "8b5f91d7accb2087de8cc60dc75b823efc400ebf",
+            "comment": "PeoplePicker: Improved keyboard support and font size updates."
+          }
+        ],
+        "minor": [
+          {
+            "author": "ycoco <ycocococo6256@gmail.com>",
+            "commit": "b7b031bb833cf4ce042a951228a3c6a63a7386fa",
+            "comment": "Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "2c7fbb2c4a9fe78f2c92ebc3f9e58a5d152d3073",
+            "comment": "Add ScrollablePane and Sticky components"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.16.0 <1.0.0` to `>=0.17.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.29.0",
+      "tag": "office-ui-fabric-react_v4.29.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "LQQ <lqq201194@163.com>",
+            "commit": "de2008d03de119da17a26b616be69c4b09c5320c",
+            "comment": "add Spacer and Divider toolbox icon"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "061d4bb481795b35e55b07e5df833bd824bcc35f",
+            "comment": "Searchbox: fixed bug when repeatedly entering a single character"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "265ac177461bc60b63601e4bc6c88d3064b3bf13",
+            "comment": "Callout: Reverting the callout border to it's previous state with a light border."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "7bfa0875f4198bda88a74f700745d8a23721a3b1",
+            "comment": "ConextualMenuItem: Support target value"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.9.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.4 <1.0.0` to `>=0.16.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.1.1 <5.0.0` to `>=4.2.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.28.0",
+      "tag": "office-ui-fabric-react_v4.28.0",
+      "date": "Wed, 02 Aug 2017 10:22:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d40a9c8afb171e1a550a05c60d542d27da3f48d3",
+            "comment": "Checkbox: Fix Edge bug where 2nd click event was being fired"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "a0d19b3a683e4fb97d4f91836eeaad3d6dd4c399",
+            "comment": "ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids"
+          },
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "59f419ddeeb9fbfa5db9e90875c672c49fec3545",
+            "comment": "ContextualMenu: Fixing issue where icons are not displayed."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "856e21fb25f76daf48d08c6eba5445a4e33de352",
+            "comment": "Enable strictNullChecks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.3 <1.0.0` to `>=0.15.4 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.27.0",
       "tag": "office-ui-fabric-react_v4.27.0",
       "date": "Tue, 01 Aug 2017 10:13:55 GMT",

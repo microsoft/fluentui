@@ -5,7 +5,6 @@ import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IIconProps, IconName } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
-import { ISplitButtonStyles } from './SplitButton/SplitButton.Props';
 
 export interface IButton {
   /**
@@ -14,7 +13,7 @@ export interface IButton {
   focus: () => void;
 }
 
-export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -35,7 +34,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
   /**
    * Custom styling for individual elements within the button DOM.
    */
-  styles?: ISplitButtonStyles;
+  styles?: IButtonStyles;
 
   /**
    * Theme provided by HOC.
@@ -144,7 +143,7 @@ export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | H
    * they will be mixed into the button/anchor element rendered by the component.
    * @deprecated
    */
-  rootProps?: React.HTMLAttributes<HTMLButtonElement> | React.HTMLAttributes<HTMLAnchorElement>;
+  rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
    * Deprecated on 4/15/2017, use iconProps={ { iconName: 'Emoji2' } }.
@@ -313,4 +312,48 @@ export interface IButtonStyles {
    */
   screenReaderText?: IStyle;
 
+  /**
+     * Style override for the container div around a SplitButton element
+     */
+  splitButtonContainer?: IStyle;
+
+  /**
+   * Style override for the container div around a SplitButton element in a disabled state
+   */
+  splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button
+   */
+  splitButtonMenuButton?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a disabled state.
+   */
+  splitButtonMenuButtonDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in a checked state
+   */
+  splitButtonMenuButtonChecked?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu button element in an expanded state
+   */
+  splitButtonMenuButtonExpanded?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element
+   */
+  splitButtonMenuIcon?: IStyle;
+
+  /**
+   * Style override for the SplitButton menu icon element in a disabled state
+   */
+  splitButtonMenuIconDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton FlexContainer.
+   */
+  splitButtonFlexContainer?: IStyle;
 }

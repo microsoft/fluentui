@@ -1,6 +1,36 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 01 Aug 2017 10:13:55 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+
+## 0.18.0
+Mon, 07 Aug 2017 10:22:46 GMT
+
+### Minor changes
+
+- Adding 4 icons that were missing in the codes map.
+
+## 0.17.0
+Fri, 04 Aug 2017 10:11:48 GMT
+
+### Minor changes
+
+- Theming: add semantic slots for warnings, and also legacy theme semantic slots
+
+## 0.16.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+
+## 0.15.4
+Wed, 02 Aug 2017 10:22:40 GMT
+
+*Changes not tracked*
 
 ## 0.15.3
 Tue, 01 Aug 2017 10:13:55 GMT

@@ -1,6 +1,60 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 01 Aug 2017 10:13:55 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+
+## 4.30.1
+Mon, 07 Aug 2017 10:22:46 GMT
+
+### Patches
+
+- Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed"
+- Dialog: fixing accessibility regression
+- Prevent auto-selection on focus in DetailsList
+- ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache
+- Textfield: removed background from textfield internal field
+
+## 4.30.0
+Fri, 04 Aug 2017 10:11:48 GMT
+
+### Minor changes
+
+- Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props.
+- Add ScrollablePane and Sticky components
+
+### Patches
+
+- Button: Merge the ISplitButtonStyles into IButtonStyles
+- Datepicker: updated icon size
+- Expand hit target of DetailsRow checkbox
+- ResizeGroup: Add another example use case to demo site
+- PeoplePicker: Improved keyboard support and font size updates.
+
+## 4.29.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- ConextualMenuItem: Support target value
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+- Searchbox: fixed bug when repeatedly entering a single character
+- Callout: Reverting the callout border to it's previous state with a light border.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
 
 ## 4.27.0
 Tue, 01 Aug 2017 10:13:55 GMT

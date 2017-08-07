@@ -49,8 +49,9 @@ describe('DefaultButton', () => {
   });
 
   it('applies the correct aria attributes', () => {
-    let button;
+    let button: any;
     let renderedDOM: any;
+
     button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
         href='http://www.microsoft.com'
@@ -250,7 +251,7 @@ describe('DefaultButton', () => {
       />
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-Button--icon')[0] as HTMLButtonElement;
+    const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuButtonDOM);
     expect(renderedDOM.getAttribute('aria-expanded')).to.equal('true');
   });
