@@ -143,8 +143,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     );
   }
 
+  /**
+   * Callback passed to the GridCell class that will trigger the onCellHovered callback of the SwatchColorPicker
+   */
+  @autobind
   private onGridCellHovered(item?: IColorCellProps): void {
-    if (this.props.onCellHovered) {
+    if (this.props && this.props.onCellHovered) {
       if (item) {
         this.props.onCellHovered(item.id, item.color);
       }
@@ -154,8 +158,12 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     }
   }
 
+  /**
+   * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
+   */
+  @autobind
   private onGridCellFocused(item?: IColorCellProps): void {
-    if (this.props.onCellFocused) {
+    if (this.props && this.props.onCellFocused) {
       if (item) {
         this.props.onCellFocused(item.id, item.color);
       }
