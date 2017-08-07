@@ -12,7 +12,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
-  let iconButtonStyles: IButtonStyles = {
+  let splitButtonStyles: IButtonStyles = {
     splitButtonContainer: {
       position: 'relative',
       display: 'inline-block',
@@ -29,13 +29,22 @@ export const getStyles = memoizeFunction((
     },
 
     splitButtonContainerDisabled: {
-      position: 'absolute',
     },
 
     splitButtonMenuButton: {
-      backgroundColor: theme.palette.neutralLighter,
       padding: '6px',
       height: 'auto',
+      color: theme.palette.white,
+      boxSizing: 'border-box',
+      border: '1px solid transparent',
+      userSelect: 'none',
+      display: 'inline-block',
+      textDecoration: 'none',
+      textAlign: 'center',
+      cursor: 'pointer',
+      verticalAlign: 'top',
+      width: '32px',
+      backgroundColor: theme.palette.neutralLighter,
       ':hover': {
         backgroundColor: theme.palette.neutralLight
       },
@@ -43,6 +52,10 @@ export const getStyles = memoizeFunction((
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: theme.palette.neutralLighter,
+      ':hover': {
+        backgroundColor: theme.palette.neutralLighter,
+        cursor: 'default'
+      }
     },
 
     splitButtonMenuIcon: {
@@ -53,6 +66,13 @@ export const getStyles = memoizeFunction((
       color: theme.palette.neutralTertiary
     },
 
+    splitButtonFlexContainer: {
+      display: 'flex',
+      height: '100%',
+      flexWrap: 'nowrap',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
     splitButtonMenuButtonChecked: {
       backgroundColor: theme.palette.themePrimary,
     },
@@ -62,5 +82,5 @@ export const getStyles = memoizeFunction((
     },
   };
 
-  return mergeStyleSets(iconButtonStyles, customStyles)!;
+  return mergeStyleSets(splitButtonStyles, customStyles)!;
 });
