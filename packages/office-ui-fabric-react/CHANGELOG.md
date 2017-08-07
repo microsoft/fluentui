@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 04 Aug 2017 10:11:48 GMT and should not be manually modified.
+This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+
+## 4.30.1
+Mon, 07 Aug 2017 10:22:46 GMT
+
+### Patches
+
+- Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed"
+- Dialog: fixing accessibility regression
+- Prevent auto-selection on focus in DetailsList
+- ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache
+- Textfield: removed background from textfield internal field
 
 ## 4.30.0
 Fri, 04 Aug 2017 10:11:48 GMT
