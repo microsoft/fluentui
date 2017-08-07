@@ -259,6 +259,7 @@ export type IconName =
   'DiffSideBySide' |
   'DisableUpdates' |
   'Dislike' |
+  'Divider' |
   'DockLeft' |
   'DockLeftMirrored' |
   'DockRight' |
@@ -742,6 +743,7 @@ export type IconName =
   'SortDown' |
   'SortLines' |
   'SortUp' |
+  'Spacer' |
   'Speakers' |
   'SpeedHigh' |
   'Split' |
@@ -887,4 +889,27 @@ export type IconName =
   'YammerLogo' |
   'Zoom' |
   'ZoomIn' |
-  'ZoomOut';
+  'ZoomOut' |
+  'FilterSolid' |
+  'GridViewSmall' |
+  'GridViewMedium' |
+  'GridViewLarge' |
+  'ThisPc' |
+  'MailUndelivered' |
+  'MailTentative' |
+  'MailTentativeMirrored' |
+  'MailReminder' |
+  'IRMReply' |
+  'IRMReplyMirrored' |
+  'IRMForward' |
+  'IRMForwardMirrored' |
+  'ReceiptUndelivered' |
+  'ReceiptTentative' |
+  'ReceiptTentativeMirrored' |
+  'Inbox' |
+  'VoicemailRM' |
+  'EventAccepted' |
+  'EventTentative' |
+  'EventTentativeMirrored' |
+  'EventDeclined'
+  ;

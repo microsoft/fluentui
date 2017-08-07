@@ -2,6 +2,161 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.18.0",
+      "tag": "@uifabric/styling_v0.18.0",
+      "date": "Mon, 07 Aug 2017 10:22:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2c4a1740d6e9495c9eca4c27f8c8fb6c70b2c61a",
+            "comment": "Adding 4 icons that were missing in the codes map."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.17.0",
+      "tag": "@uifabric/styling_v0.17.0",
+      "date": "Fri, 04 Aug 2017 10:11:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "a230ec9fb1b83d215f7281cc3ee75f05d90f91f3",
+            "comment": "Theming: add semantic slots for warnings, and also legacy theme semantic slots"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.0",
+      "tag": "@uifabric/styling_v0.16.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "LQQ <lqq201194@163.com>",
+            "commit": "de2008d03de119da17a26b616be69c4b09c5320c",
+            "comment": "add Spacer and Divider toolbox icon"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.1 <5.0.0` to `>=4.9.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.15.4",
+      "tag": "@uifabric/styling_v0.15.4",
+      "date": "Wed, 02 Aug 2017 10:22:40 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.3",
+      "tag": "@uifabric/styling_v0.15.3",
+      "date": "Tue, 01 Aug 2017 10:13:55 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.2",
+      "tag": "@uifabric/styling_v0.15.2",
+      "date": "Mon, 31 Jul 2017 10:12:08 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.1",
+      "tag": "@uifabric/styling_v0.15.1",
+      "date": "Fri, 28 Jul 2017 18:36:00 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.15.0",
+      "tag": "@uifabric/styling_v0.15.0",
+      "date": "Fri, 28 Jul 2017 10:23:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "20d920d1a9f38c468ab47027e9fb2ec80018d85d",
+            "comment": "Adding High contrast colors to the paletter"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "fd03731e7523f372438853eccbc13f59d0f2d9d7",
+            "comment": "Theming: add settings to the interface so we can track whether the current theme is inverted or not"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.14.0",
+      "tag": "@uifabric/styling_v0.14.0",
+      "date": "Thu, 27 Jul 2017 10:23:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "df7a230735c92a73935bbdf97cfb6f2fcae9af45",
+            "comment": "Icons: Added new icons from 2.38"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.16",
+      "tag": "@uifabric/styling_v0.13.16",
+      "date": "Tue, 25 Jul 2017 10:22:35 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.15",
+      "tag": "@uifabric/styling_v0.13.15",
+      "date": "Mon, 24 Jul 2017 10:24:30 GMT",
+      "comments": {}
+    },
+    {
+      "version": "0.13.14",
+      "tag": "@uifabric/styling_v0.13.14",
+      "date": "Fri, 21 Jul 2017 10:21:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "antonlabunets <alabunets@gmail.com>",
+            "commit": "0a145b00965c9aefabc1aa6648b36f53281691fb",
+            "comment": "Adding multi-column mapping to the icon map to be available in the ChoiceGroup"
+          },
+          {
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "6900fc6013e77eb6cd7268358aa64f9c9b46edd6",
+            "comment": "Theming: fix color mapping for listItemBackgroundChecked"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.8.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.13.13",
+      "tag": "@uifabric/styling_v0.13.13",
+      "date": "Thu, 20 Jul 2017 10:11:23 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.13.12",
       "tag": "@uifabric/styling_v0.13.12",
       "date": "Wed, 19 Jul 2017 21:40:34 GMT",

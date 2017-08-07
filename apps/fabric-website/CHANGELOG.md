@@ -1,6 +1,24 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Sat, 08 Jul 2017 03:34:35 GMT and should not be manually modified.
+This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+
+## 4.6.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- Fix utility class names, apply "ms-" prefix
+
+## 4.5.42
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Remove erroneous usage of baseUrl to fix link to color accessibility guide
 
 ## 4.5.41
 Sat, 08 Jul 2017 03:34:35 GMT

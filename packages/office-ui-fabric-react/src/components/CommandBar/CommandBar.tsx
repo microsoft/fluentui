@@ -53,7 +53,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
   private _id: string;
   private _overflowWidth: number;
-  private _commandItemWidths: { [key: string]: number };
+  private _commandItemWidths: { [key: string]: number } | null;
 
   constructor(props: ICommandBarProps) {
     super(props);
@@ -112,8 +112,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
         { searchBox }
         <FocusZone ref='focusZone' className={ styles.container } direction={ FocusZoneDirection.horizontal } role='menubar' >
           <div className={ css('ms-CommandBar-primaryCommands', styles.primaryCommands) } ref='commandSurface'>
-            { renderedItems.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey)
+            { renderedItems!.map((item, index) => (
+              this._renderItemInCommandBar(item, index, expandedMenuItemKey!)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
               <div className={ css('ms-CommandBarItem', styles.item) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <button
@@ -134,8 +134,8 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             ] : []) }
           </div>
           <div className={ css('ms-CommandBar-sideCommands', styles.sideCommands) } ref='farCommandSurface'>
-            { renderedFarItems.map((item, index) => (
-              this._renderItemInCommandBar(item, index, expandedMenuItemKey, true)
+            { renderedFarItems!.map((item, index) => (
+              this._renderItemInCommandBar(item, index, expandedMenuItemKey!, true)
             )) }
           </div>
         </FocusZone>
@@ -184,8 +184,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             onClick={ (ev) => this._onItemClick(ev, item) }
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
+            aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -208,7 +209,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
-            aria-label={ item.ariaLabel || item.name }
+            aria-label={ item.ariaLabel }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
@@ -293,13 +294,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     let farCommandSurface = this.refs.farCommandSurface;
     let commandBarRegion = this.refs.commandBarRegion;
     let searchSurface = this.refs.searchSurface;
-    let renderedItems = [].concat(items);
+    let renderedItems = [...items];
     let renderedOverflowItems = overflowItems;
     let consumedWidth = 0;
     let isOverflowVisible = overflowItems && overflowItems.length;
 
     let style = window.getComputedStyle(commandSurface);
-    let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10);
+    let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft!, 10) - parseInt(style.marginRight!, 10);
     if (searchSurface) {
       availableWidth -= searchSurface.getBoundingClientRect().width;
     }
@@ -313,14 +314,14 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
 
     for (let i = 0; i < renderedItems.length; i++) {
       let item = renderedItems[i];
-      let itemWidth = this._commandItemWidths[item.key];
+      let itemWidth = this._commandItemWidths![item.key];
 
       if ((consumedWidth + itemWidth) >= availableWidth) {
         if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < OVERFLOW_WIDTH) {
           i--;
         }
 
-        renderedOverflowItems = renderedItems.splice(i).concat(overflowItems);
+        renderedOverflowItems = renderedItems.splice(i).concat(overflowItems!);
         break;
       } else {
         consumedWidth += itemWidth;
@@ -329,15 +330,15 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
     }
 
     let renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
-      renderedItems.concat(this.state.renderedFarItems),
-      renderedOverflowItems);
+      renderedItems.concat(this.state.renderedFarItems!),
+      renderedOverflowItems!);
 
     this.setState({
       renderedItems: renderedItems,
       renderedOverflowItems: renderedOverflowItems,
-      expandedMenuItemKey: renderedContextualMenuProps ? this.state.expandedMenuItemKey : null,
-      contextualMenuProps: renderedContextualMenuProps,
-      contextualMenuTarget: renderedContextualMenuProps ? this.state.contextualMenuTarget : null
+      expandedMenuItemKey: renderedContextualMenuProps ? this.state.expandedMenuItemKey : undefined,
+      contextualMenuProps: renderedContextualMenuProps!,
+      contextualMenuTarget: renderedContextualMenuProps ? this.state.contextualMenuTarget : undefined
     });
   }
 
@@ -365,7 +366,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: OVERFLOW_KEY,
-        contextualMenuProps: { items: this.state.renderedOverflowItems },
+        contextualMenuProps: { items: this.state.renderedOverflowItems! },
         contextualMenuTarget: ev.currentTarget
       });
     }
@@ -377,13 +378,13 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       let { contextualMenuProps } = this.state;
 
       if (contextualMenuProps && contextualMenuProps.onDismiss) {
-        this.state.contextualMenuProps.onDismiss(ev);
+        this.state.contextualMenuProps!.onDismiss!(ev);
       }
 
       this.setState({
-        expandedMenuItemKey: null,
-        contextualMenuProps: null,
-        contextualMenuTarget: null
+        expandedMenuItemKey: undefined,
+        contextualMenuProps: undefined,
+        contextualMenuTarget: undefined
       });
     } else {
       ev.stopPropagation();
@@ -394,11 +395,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _getStateFromProps(nextProps: ICommandBarProps): ICommandBarState {
     return {
       renderedItems: nextProps.items || [],
-      renderedOverflowItems: null,
+      renderedOverflowItems: undefined,
       contextualMenuProps: this._getContextualMenuPropsAfterUpdate(
-        nextProps.items.concat(nextProps.farItems),
-        nextProps.overflowItems),
-      renderedFarItems: nextProps.farItems || null
+        nextProps.items.concat(nextProps.farItems!),
+        nextProps.overflowItems!)!,
+      renderedFarItems: nextProps.farItems || undefined
     };
   }
 

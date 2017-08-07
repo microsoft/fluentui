@@ -7,8 +7,11 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
+import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
+
+const ResizeGroupFlexBoxExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.FlexBox.Example.tsx') as string;
 
 export class ResizeGroupPage extends React.Component<any, any> {
   public render() {
@@ -18,8 +21,11 @@ export class ResizeGroupPage extends React.Component<any, any> {
         componentName='ResizeGroupExample'
         exampleCards={
           <LayerHost>
-            <ExampleCard title='ResizeGroup' code={ ResizeGroupBasicExampleCode }>
+            <ExampleCard title='Use ResizeGroup to move commands into an overflow menu' code={ ResizeGroupBasicExampleCode }>
               <ResizeGroupOverflowSetExample />
+            </ExampleCard>
+            <ExampleCard title='Use ResizeGroup to prevent two groups of items from overlapping' code={ ResizeGroupFlexBoxExampleCode }>
+              <FlexBoxResizeGroupExample />
             </ExampleCard>
           </LayerHost>
         }
@@ -70,7 +76,10 @@ export class ResizeGroupPage extends React.Component<any, any> {
               </li>
               <li>
                 Include a cacheKey in your data to improve performance. Two objects with the same cacheKey are assumed to have the same
-                width, so the ResizeGroup will only store one measurement per resize group.g
+                width, so the ResizeGroup will only store one measurement per resize group.
+               </li>
+              <li>
+                Implement onGrowData for improved performance when the container for the resize group increases in size.
                </li>
             </ul>
           </div>

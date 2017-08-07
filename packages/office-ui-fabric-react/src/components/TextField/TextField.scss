@@ -56,7 +56,7 @@ $field-error-color: $errorTextColor;
     border-color: $field-border-focus-color;
   }
 
-  .rootIsDisabled > & {
+  .rootIsDisabled & {
     background-color: $field-background-disabled-color;
     border-color: $field-border-disabled-color;
     pointer-events: none;
@@ -103,6 +103,7 @@ $field-error-color: $errorTextColor;
   font-size: $ms-font-size-m;
   border-radius: 0;
   border: none;
+  background: none;
   color: $field-text-color;
   @include ms-padding(0, 12px, 0, 12px);
   width: 100%;
@@ -149,6 +150,7 @@ $field-error-color: $errorTextColor;
 }
 
 .icon {
+  pointer-events: none;
   position: absolute;
   bottom: 8px;
   @include right(8px);
@@ -162,6 +164,7 @@ $field-error-color: $errorTextColor;
 
 .rootIsBorderless .fieldGroup {
   border-color: transparent;
+  border-width: 0;
 }
 
 //== Modifier: Single line (default), underlined
@@ -196,7 +199,7 @@ $field-error-color: $errorTextColor;
 
   .fieldGroup {
     flex: 1 1 0px;
-    border: 0;
+    border-width: 0;
 
     @include ms-text-align(left);
   }

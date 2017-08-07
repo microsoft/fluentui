@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseButton, Button } from '../../Button';
 
 export interface IMessageBar {
 
@@ -32,7 +33,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
-  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | Button>) => any;
 
   /**
    * Determines if the message bar is multi lined.

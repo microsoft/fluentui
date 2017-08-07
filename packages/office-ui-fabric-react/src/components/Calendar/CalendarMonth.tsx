@@ -85,14 +85,14 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
                     {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today)
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today!)
                     })
                 }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
                 aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                 data-is-focusable={ true }
-                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : null }
+                ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
                 { month }
               </span>

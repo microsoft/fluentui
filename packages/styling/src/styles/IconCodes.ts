@@ -312,6 +312,10 @@ export const IconCodes = {
    */
   broom: '\uEA99',
   /**
+   * Icon code with the value '\uF24F'.
+   */
+  buildQueue: '\uF24F',
+  /**
    * Icon code with the value '\uF0D0'.
    */
   bufferTimeAfter: '\uF0D0',
@@ -772,6 +776,10 @@ export const IconCodes = {
    */
   delveLogo: '\uED76',
   /**
+   * Icon code with the value '\uF29D'.
+   */
+  deploy: '\uF29D',
+  /**
    * Icon code with the value '\uEDC1'.
    */
   descending: '\uEDC1',
@@ -811,6 +819,10 @@ export const IconCodes = {
    * Icon code with the value '\uE8E0'.
    */
   dislike: '\uE8E0',
+  /**
+   * Icon code with the value '\uE949'.
+   */
+  divider: '\uE949',
   /**
    * Icon code with the value '\uEEB8'.
    */
@@ -1159,6 +1171,10 @@ export const IconCodes = {
    * Icon code with the value '\uE7C1'.
    */
   flag: '\uE7C1',
+  /**
+   * Icon code with the value '\uF1F3'.
+   */
+  flameSolid: '\uF1F3',
   /**
    * Icon code with the value '\uE935'.
    */
@@ -2400,6 +2416,10 @@ export const IconCodes = {
    */
   speakers: '\uE7F5',
   /**
+   * Icon code with the value '\uF40D'.
+   */
+  spacer: '\uF40D ',
+  /**
    * Icon code with the value '\uEC4A'.
    */
   speedHigh: '\uEC4A',
@@ -2830,5 +2850,104 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uE71F'.
    */
-  zoomOut: '\uE71F'
+  zoomOut: '\uE71F',
+
+  // Manual additions for multi-column icons
+  singleColumn: '\uF1D3',
+  doubleColumn: '\uF1D4',
+  tripleColumn: '\uF1D5',
+  columnLeftTwoThirds: '\uF1D6',
+  columnRightTwoThirds: '\uF1D7',
+
+  // 2.38 Additions
+
+  /**
+   * Icon code with the value '\uF412'.
+   */
+  filterSolid: '\uF412',
+  /**
+   * Icon code with the value '\uF232'.
+   */
+  gridViewSmall: '\uF232',
+  /**
+   * Icon code with the value '\uF233'.
+   */
+  gridViewMedium: '\uF233',
+  /**
+   * Icon code with the value '\uF234'.
+   */
+  gridViewLarge: '\uF234',
+  /**
+   * Icon code with the value '\uEC4E'.
+   */
+  thisPc: '\uEC4E',
+  /**
+   * Icon code with the value '\uF415'.
+   */
+  mailUndelivered: '\uF415',
+  /**
+   * Icon code with value '\uF416'.
+   */
+  mailTentative: '\uF416',
+  /**
+   * Icon code with value '\uF417'.
+   */
+  mailTentativeMirrored: '\uF417',
+  /**
+   * Icon code with value '\uf418'.
+   */
+  mailReminder: '\uf418',
+  /**
+   * Icon code with value '\uF41D'.
+   */
+  irmReply: '\uF41D',
+  /**
+   * Icon code with value '\uF41E'.
+   */
+  irmReplyMirrored: '\uF41E',
+  /**
+   * Icon code with value '\uF41F'.
+   */
+  irmForward: '\uF41F',
+  /**
+   * Icon code with value '\uF420'.
+   */
+  irmForwardMirrored: '\uF420',
+  /**
+   * Icon code with value '\uF419'.
+   */
+  receiptUndelivered: '\uF419',
+  /**
+   * Icon code with value '\uF41A'.
+   */
+  receiptTentative: '\uF41A',
+  /**
+   * Icon code with value '\uF41B'.
+   */
+  receiptTentativeMirrored: '\uF41B',
+  /**
+   * Icon code with value '\uF41C'.
+   */
+  inbox: '\uF41C',
+  /**
+   * Icon code with value '\uF421'.
+   */
+  voicemailRM: '\uF421',
+  /**
+   * Icon code with value '\uF422'.
+   */
+  eventAccepted: '\uF422',
+  /**
+   * Icon code with value '\uF423'.
+   */
+  eventTentative: '\uF423',
+  /**
+   * Icon code with value '\uF424'.
+   */
+  eventTentativeMirrored: '\uF424',
+  /**
+   * Icon code with value '\uF425'.
+   */
+  eventDeclined: '\uF425',
+
 };

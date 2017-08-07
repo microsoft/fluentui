@@ -28,7 +28,6 @@ export interface ICheckboxState {
 interface ICheckboxClassNames {
   root: string;
   label: string;
-  box: string;
   checkbox: string;
   checkmark: string;
   text: string;
@@ -90,11 +89,11 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const isReversed = boxSide !== 'start' ? true : false;
 
     const classNames = this._getClassNames(
-      getStyles(theme, customStyles),
-      className,
-      disabled,
-      isChecked,
-      isReversed
+      getStyles(theme!, customStyles),
+      className!,
+      disabled!,
+      isChecked!,
+      isReversed!
     );
 
     return (
@@ -107,6 +106,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         name={ name }
         id={ this._id }
         role='checkbox'
+        type='button'
         className={ classNames.root }
         onClick={ this._onClick }
         onFocus={ this._onFocus }
@@ -115,10 +115,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         aria-disabled={ disabled }
       >
         <label className={ classNames.label } htmlFor={ this._id } >
-          <div className={ classNames.box }>
-            <div className={ classNames.checkbox }>
-              <Icon iconName='CheckMark' className={ classNames.checkmark } />
-            </div>
+          <div className={ classNames.checkbox }>
+            <Icon iconName='CheckMark' className={ classNames.checkmark } />
           </div>
           { label && <span className={ classNames.text }>{ label }</span> }
         </label>
@@ -127,7 +125,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public get checked(): boolean {
-    return this.state.isChecked;
+    return this.state.isChecked!;
   }
 
   public focus(): void {
@@ -156,15 +154,18 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   @autobind
   private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
-    const { onChange } = this.props;
-    let { isChecked } = this.state;
+    const { disabled, onChange } = this.props;
+    const { isChecked } = this.state;
+    ev.preventDefault();
 
-    if (onChange) {
-      onChange(ev, !isChecked);
-    }
+    if (!disabled) {
+      if (onChange) {
+        onChange(ev, !isChecked);
+      }
 
-    if (this.props.checked === undefined) {
-      this.setState({ isChecked: !isChecked });
+      if (this.props.checked === undefined) {
+        this.setState({ isChecked: !isChecked });
+      }
     }
   }
 
@@ -203,11 +204,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         styles.label,
         isReversed && styles.labelReversed,
         disabled && styles.labelDisabled
-      ) as string,
-
-      box: mergeStyles(
-        'ms-Checkbox-box',
-        styles.box
       ) as string,
 
       checkbox: mergeStyles(

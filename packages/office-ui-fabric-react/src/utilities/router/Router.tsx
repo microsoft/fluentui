@@ -8,7 +8,7 @@ export interface IRouterProps {
   componentRef?: () => void;
 
   replaceState?: boolean;
-  children?: React.ReactElement<any>[];
+  children?: any;
   onNewRouteLoaded?: () => void;
 }
 
