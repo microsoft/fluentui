@@ -17,7 +17,7 @@ import {
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import * as stylesImport from './Callout.scss';
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../Styling';
 
 const styles: any = stylesImport;
 
@@ -80,7 +80,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public componentWillUpdate(newProps: ICalloutProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
-    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target || typeof(newProps.target) === 'string' || newProps.target instanceof String) {
+    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target || typeof (newProps.target) === 'string' || newProps.target instanceof String) {
       let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
@@ -111,6 +111,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyle,
       children,
       beakWidth,
+      calloutWidth,
       finalHeight,
       backgroundColor } = this.props;
     let { positions } = this.state;
@@ -136,6 +137,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
     let contentMaxHeight: number = this._getMaxHeight() + this.state.heightOffset!;
     let beakVisible = isBeakVisible && (!!targetElement || !!target);
+
     let content = (
       <div
         ref={ this._resolveRef('_hostElement') }
@@ -143,13 +145,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       >
         <div
           className={
-            css(
+            mergeStyles(
               'ms-Callout',
               styles.root,
               className,
-              directionalClassName
-            ) }
-          style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
+              directionalClassName,
+              positions ? positions.calloutPosition : OFF_SCREEN_STYLE,
+              calloutWidth && { width: calloutWidth }
+            ) as string }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
