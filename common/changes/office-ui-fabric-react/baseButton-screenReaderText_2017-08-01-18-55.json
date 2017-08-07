@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "PeoplePicker: Improved keyboard support and font size updates.",
+      "comment": "BaseButton: Added screenReaderText styles to base button",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-krbrow@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }

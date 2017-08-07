@@ -80,7 +80,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public componentWillUpdate(newProps: ICalloutProps) {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we do not know if fabric has rendered a new element and disposed the old element.
-    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target || typeof(newProps.target) === 'string' || newProps.target instanceof String) {
+    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target || typeof (newProps.target) === 'string' || newProps.target instanceof String) {
       let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
       this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget!);
@@ -321,7 +321,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
       return false;
     }
-    if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
+    if (positions.beakPosition.left.toFixed(2) !== newPosition.beakPosition.left.toFixed(2)) {
       return false;
     }
 
