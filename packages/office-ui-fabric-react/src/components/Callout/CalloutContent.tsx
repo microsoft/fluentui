@@ -150,9 +150,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               styles.root,
               className,
               directionalClassName,
-              positions ? positions.calloutPosition : OFF_SCREEN_STYLE,
               calloutWidth && { width: calloutWidth }
             ) as string }
+          style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
           tabIndex={ -1 } // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           ref={ this._resolveRef('_calloutElement') }
