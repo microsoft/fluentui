@@ -15,7 +15,7 @@ export interface IComboBox {
 export interface IComboBoxOption extends ISelectableOption {
   /**
    * Specific styles for each comboBox option. If you intend to give
-   * common stlyes to all comboBox option please use
+   * common styles to all comboBox option please use
    * the prop comboBoxOptionStyles
    */
   styles?: Partial<IComboBoxOptionStyles>;
@@ -85,7 +85,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
 
   /**
    * Default styles that should be applied to ComboBox options,
-   * incase an option does not come with user-defined custom styles
+   * in case an option does not come with user-defined custom styles
    */
   comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
 }
@@ -173,5 +173,12 @@ export interface IComboBoxStyles {
 }
 
 export interface IComboBoxOptionStyles extends IButtonStyles {
+
+  /**
+   * Styles for the text inside the comboBox option.
+   * This should be used instead of the description
+   * inside IButtonStyles because we custom render the text
+   * in the comboBox options.
+   */
   optionText: IStyle;
 }
