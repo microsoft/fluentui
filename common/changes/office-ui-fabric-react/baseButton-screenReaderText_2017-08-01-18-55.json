@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Textfield: removed background from textfield internal field",
+      "comment": "BaseButton: Added screenReaderText styles to base button",
       "type": "patch"
     }
   ],
