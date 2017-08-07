@@ -131,8 +131,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         disabled={ this.props.disabled }
         className={ styles.cell }
         onClick={ this._onCellClick }
-        onHover={ this.props.onCellHovered }
-        onFocus={ this.props.onCellFocused }
+        onHover={ this.onGridCellHovered }
+        onFocus={ this.onGridCellFocused }
         onRenderItem={ this._onRenderColorOption }
         role={ 'gridcell' }
         selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
@@ -141,6 +141,28 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         label={ item.label }
       />
     );
+  }
+
+  private onGridCellHovered(item?: IColorCellProps): void {
+    if (this.props.onCellHovered) {
+      if (item) {
+        this.props.onCellHovered(item.id, item.color);
+      }
+      else {
+        this.props.onCellHovered();
+      }
+    }
+  }
+
+  private onGridCellFocused(item?: IColorCellProps): void {
+    if (this.props.onCellFocused) {
+      if (item) {
+        this.props.onCellFocused(item.id, item.color);
+      }
+      else {
+        this.props.onCellFocused();
+      }
+    }
   }
 
   /**

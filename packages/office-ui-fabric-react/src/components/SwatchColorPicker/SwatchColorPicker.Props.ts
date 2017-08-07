@@ -47,13 +47,13 @@ export interface ISwatchColorPickerProps {
    * Callback issued when the user hovers over a color cell.
    * Note, if no id or color is given, cells are not longer being hovered
    */
-  onCellHovered?: (item?: IColorCellProps) => void;
+  onCellHovered?: (id?: string, color?: string) => void;
 
   /**
    * Callback issued when the user focuses a color cell.
    * Note, if no id or color is given, cells are not longer being focused
    */
-  onCellFocused?: (item?: IColorCellProps) => void;
+  onCellFocused?: (id?: string, color?: string) => void;
 
   /**
    * Is this swatch color picker disabled?
