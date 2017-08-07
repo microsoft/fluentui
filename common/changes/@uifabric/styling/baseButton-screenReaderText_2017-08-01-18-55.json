@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Styling: added a screenReaderText utility style",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "micahgodbolt@gmail.com"
+}
