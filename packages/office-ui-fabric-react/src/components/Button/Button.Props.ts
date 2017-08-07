@@ -313,8 +313,8 @@ export interface IButtonStyles {
   screenReaderText?: IStyle;
 
   /**
-   * Style override for the container div around a SplitButton element
-   */
+     * Style override for the container div around a SplitButton element
+     */
   splitButtonContainer?: IStyle;
 
   /**
@@ -351,4 +351,9 @@ export interface IButtonStyles {
    * Style override for the SplitButton menu icon element in a disabled state
    */
   splitButtonMenuIconDisabled?: IStyle;
+
+  /**
+   * Style override for the SplitButton FlexContainer.
+   */
+  splitButtonFlexContainer?: IStyle;
 }
