@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Adding 4 icons that were missing in the codes map.",
+      "comment": "Styling: added a screenReaderText utility style",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "dzearing@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
