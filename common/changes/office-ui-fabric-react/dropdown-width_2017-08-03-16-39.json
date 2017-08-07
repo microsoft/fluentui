@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Support custom widths",
+      "comment": "Callout/Dropdown: Both components now support custom widths",
       "type": "minor"
     }
   ],
