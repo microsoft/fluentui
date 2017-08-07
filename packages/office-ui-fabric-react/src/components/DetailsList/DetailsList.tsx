@@ -212,7 +212,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       rowElementEventMap,
       shouldApplyApplicationRole = false,
       getKey,
-      listProps
+      listProps,
+      registerInitialMeasurementHandler
     } = this.props;
     let {
       adjustedColumns,
@@ -333,6 +334,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       role='presentation'
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
+                      registerInitialMeasurementHandler = { registerInitialMeasurementHandler }
                       { ...additionalListProps }
                     />
                   )

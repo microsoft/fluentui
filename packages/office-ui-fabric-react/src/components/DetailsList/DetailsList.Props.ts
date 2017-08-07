@@ -186,6 +186,8 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
   compact?: boolean;
+
+  registerInitialMeasurementHandler?: (measurer: () => void) => void;
 }
 
 export interface IColumn {

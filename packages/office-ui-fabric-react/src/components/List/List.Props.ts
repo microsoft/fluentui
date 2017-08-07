@@ -75,6 +75,8 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /** Number of items to render. Defaults to items.length. */
   renderCount?: number;
+  
+  registerInitialMeasurementHandler?: (measurer: () => void) => void;
 }
 
 export interface IPage {
