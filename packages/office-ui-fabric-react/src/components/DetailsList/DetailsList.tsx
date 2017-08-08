@@ -540,15 +540,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       adjustedColumns = this._getFixedColumns(newColumns);
+
+      // Preserve adjusted column calculated widths.
+      adjustedColumns.forEach(column => {
+        this._rememberCalculatedWidth(column, column.calculatedWidth!);
+      });
     } else {
       adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps);
     }
-
-    // Preserve adjusted column calculated widths.
-    adjustedColumns.forEach(column => {
-      let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
-      overrides.calculatedWidth = column.calculatedWidth;
-    });
 
     return adjustedColumns;
   }
@@ -584,7 +583,12 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         column,
         {
           calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
-        });
+        },
+        this._columnOverrides[column.key]);
+
+      if (newColumn.maxWidth && newColumn.calculatedWidth > newColumn.maxWidth) {
+        newColumn.calculatedWidth = newColumn.maxWidth;
+      }
 
       totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0) + (column.isPadded ? ISPADDED_WIDTH : 0);
 
@@ -607,6 +611,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     // Then expand columns starting at the beginning, until we've filled the width.
     for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       let column = adjustedColumns[i];
+      const overrides = this._columnOverrides[column.key];
+      if (overrides && overrides.calculatedWidth) {
+        continue;
+      }
+
       let maxWidth = column.maxWidth;
       let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
@@ -634,9 +643,16 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (this.props.onColumnResize) {
       this.props.onColumnResize(resizingColumn, newCalculatedWidth);
     }
-    this._columnOverrides[resizingColumn.key].calculatedWidth = newCalculatedWidth;
+
+    this._rememberCalculatedWidth(resizingColumn, newCalculatedWidth);
+
     this._adjustColumns(this.props, true);
     this._forceListUpdates();
+  }
+
+  private _rememberCalculatedWidth(column: IColumn, newCalculatedWidth: number) {
+    let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
+    overrides.calculatedWidth = newCalculatedWidth;
   }
 
   /**
