@@ -4,7 +4,7 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
 } from '../../Utilities';
 import { CalloutLinkType } from '../../utilities/positioning';
 
@@ -31,6 +31,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
 
   /**
    * The gap between the Callout and the target

@@ -68,13 +68,13 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
     if (this.props.updateValueInWillReceiveProps) {
-      let newValue: string = this.props.updateValueInWillReceiveProps();
+      let newValue = this.props.updateValueInWillReceiveProps();
 
       if (newValue !== null) {
         this._value = newValue;
       }
     }
-    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue, this._value)) {
+    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue!, this._value)) {
       this.setState({ displayValue: nextProps.suggestedDisplayValue });
     }
   }
@@ -164,7 +164,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
         break;
       default:
         if (!this._autoFillEnabled) {
-          if (this.props.enableAutoFillOnKeyPress.indexOf(ev.which) !== -1) {
+          if (this.props.enableAutoFillOnKeyPress!.indexOf(ev.which) !== -1) {
             this._autoFillEnabled = true;
           }
         }

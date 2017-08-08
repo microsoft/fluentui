@@ -67,7 +67,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this._checkImageLoaded();
     if (this.props.onLoadingStateChange
       && prevState.loadState !== this.state.loadState) {
-      this.props.onLoadingStateChange(this.state.loadState);
+      this.props.onLoadingStateChange(this.state.loadState!);
     }
   }
 
@@ -148,7 +148,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
       // to checking .complete for these images.
       let isLoaded: boolean = src && this._imageElement && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
-        (this._imageElement.complete && Image._svgRegex.test(src));
+        (this._imageElement.complete && Image._svgRegex.test(src!));
 
       if (isLoaded) {
         this._computeCoverStyle(this.props);

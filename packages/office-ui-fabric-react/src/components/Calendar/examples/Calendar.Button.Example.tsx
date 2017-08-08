@@ -62,7 +62,7 @@ const DayPickerStrings = {
 
 export interface ICalendarButtonExampleState {
   showCalendar: boolean;
-  selectedDate: Date;
+  selectedDate: Date | null;
 }
 
 export class CalendarButtonExample extends React.Component<any, ICalendarButtonExampleState> {
@@ -84,10 +84,10 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
   public render() {
     return (
       <div>
-        <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn }>
+        <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn! }>
           <DefaultButton
             onClick={ this._onClick }
-            text={ this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
+            text={ !this.state.selectedDate ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
           />
         </div>
         { this.state.showCalendar && (
@@ -105,7 +105,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._onDismiss }
               isMonthPickerVisible={ true }
-              value={ this.state.selectedDate }
+              value={ this.state.selectedDate! }
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
             >

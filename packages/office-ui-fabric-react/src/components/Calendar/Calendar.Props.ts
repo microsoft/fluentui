@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Calendar } from './Calendar';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 
-export { DayOfWeek, DateRangeType }
+export { DayOfWeek, DateRangeType };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
@@ -86,7 +86,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   /**
    * Localized strings to use in the Calendar
    */
-  strings: ICalendarStrings;
+  strings: ICalendarStrings | null;
 
   /**
   * Whether the month picker should highlight the current month

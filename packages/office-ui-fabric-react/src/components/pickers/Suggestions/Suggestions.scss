@@ -63,6 +63,7 @@
   height: 40px;
   @include ms-text-align(left);
   width: 100%;
+  font-size: 12px;
   &:hover {
       background-color: $ms-color-neutralLight;
       cursor: pointer;
@@ -111,6 +112,7 @@
   @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
+  font-size: 12px;
 
   :global(.ms-Spinner-circle) {
     display: inline-block;
@@ -138,4 +140,15 @@
     background: $ms-color-neutralTertiaryAlt;
     color: $ms-color-neutralDark;
   }
+}
+
+.suggestionsAvailable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }

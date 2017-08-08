@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
+import { IRenderFunction } from '../../Utilities';
 
 /**
  * Checkbox class interface.
@@ -15,7 +16,7 @@ export interface ICheckbox {
 /**
  * Checkbox properties.
  */
-export interface ICheckboxProps extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -60,7 +61,7 @@ export interface ICheckboxProps extends React.HTMLAttributes<HTMLElement | HTMLI
    * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
    * precedence over the later.
    */
-  inputProps?: React.HTMLAttributes<HTMLElement | HTMLInputElement>;
+  inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
 
   /**
    * Allows you to set the checkbox to be at the before (start) or after (end) the label.
@@ -77,6 +78,11 @@ export interface ICheckboxProps extends React.HTMLAttributes<HTMLElement | HTMLI
    * Custom styles for this component
    */
   styles?: ICheckboxStyles;
+
+  /**
+   * Custom render function for the label.
+   */
+  onRenderLabel?: IRenderFunction<ICheckboxProps>;
 }
 
 export interface ICheckboxStyles {
@@ -99,11 +105,6 @@ export interface ICheckboxStyles {
    * Style override for the label part when disabled.
    */
   labelDisabled?: IStyle;
-
-  /**
-   * Style for the box (container for the actual checkbox).
-   */
-  box?: IStyle;
 
   /**
    * Style for checkbox in its default unchecked/enabled state.
