@@ -13,12 +13,12 @@ import {
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
-const leftArrow: string = "ChevronLeft";
-const rightArrow: string = "ChevronRight";
+const leftArrow: string = 'ChevronLeft';
+const rightArrow: string = 'ChevronRight';
 let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
-}
+};
 
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */
