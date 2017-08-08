@@ -5,7 +5,7 @@ import {
   css,
   getRTL
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
@@ -19,6 +19,9 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
+  showMonthPickerAsOverlay?: boolean;
+  onSelectSwitchCalendar: (focus: boolean) => void;
+  navigationIcons: ICalendarIconStrings;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -45,7 +48,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, showMonthPickerAsOverlay, navigationIcons } = this.props;
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -75,6 +80,19 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
+          {
+            showMonthPickerAsOverlay ?
+              <div
+                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
+                onClick={ () => this._onSelectSwitchCalendar(false) }
+                onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
+                aria-label={ strings.dayPickerAriaLabel }
+                role='button'
+                tabIndex={ 0 }
+              />
+              :
+              null
+          }
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
@@ -133,5 +151,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
+  }
+
+  private _onSelectSwitchCalendar(focus: boolean) {
+    this.props.onSelectSwitchCalendar(focus);
   }
 }

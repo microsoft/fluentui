@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps } from './Calendar.Props';
+import { ICalendar, ICalendarProps, ICalendarIconStrings } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
@@ -13,12 +13,22 @@ import {
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
+const leftArrow: string = 'ChevronLeft';
+const rightArrow: string = 'ChevronRight';
+let iconStrings: ICalendarIconStrings = {
+  leftNavigation: leftArrow,
+  rightNavigation: rightArrow
+};
+
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */
   navigatedDate?: Date;
 
   /** The currently selected date in the calendar */
   selectedDate?: Date;
+
+  isMonthPickerVisible?: boolean;
+  isDayPickerVisible?: boolean;
 }
 
 export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
@@ -27,6 +37,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     onDismiss: undefined,
     isMonthPickerVisible: true,
     isDayPickerVisible: true,
+    showMonthPickerAsOverlay: false,
     value: undefined,
     today: new Date(),
     firstDayOfWeek: DayOfWeek.Sunday,
@@ -34,7 +45,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     autoNavigateOnSelection: false,
     showGoToToday: true,
     strings: null,
-    highlightCurrentMonth: false
+    highlightCurrentMonth: false,
+    navigationIcons: iconStrings
   };
 
   public refs: {
@@ -47,12 +59,14 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   private _focusOnUpdate: boolean;
 
   constructor(props: ICalendarProps) {
-    super();
-
+    super(props);
     let currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : (props.today || new Date());
+
     this.state = {
       selectedDate: currentDate,
-      navigatedDate: currentDate
+      navigatedDate: currentDate,
+      isMonthPickerVisible: this.props.showMonthPickerAsOverlay ? false : this.props.isMonthPickerVisible,
+      isDayPickerVisible: this.props.showMonthPickerAsOverlay ? true : this.props.isDayPickerVisible
     };
 
     this._focusOnUpdate = false;
@@ -71,7 +85,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     this.setState({
-      selectedDate: value || today
+      selectedDate: value || today,
     });
   }
 
@@ -89,8 +103,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, isDayPickerVisible, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth } = this.props;
-    let { selectedDate, navigatedDate } = this.state;
+    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
+    let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
@@ -99,8 +113,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          isMonthPickerVisible && isDayPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
-          isMonthPickerVisible && !isDayPickerVisible && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible)
+          isMonthPickerVisible && isDayPickerVisible && !showMonthPickerAsOverlay && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
+          isMonthPickerVisible && !isDayPickerVisible && !showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible),
+          isMonthPickerVisible && showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerIsMonthPickerOverlayVisible),
+          isDayPickerVisible && showMonthPickerAsOverlay && styles.pickerIsDayPickerOverlayVisible
         ) } >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
@@ -116,6 +132,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateRangeType={ dateRangeType! }
                   autoNavigateOnSelection={ autoNavigateOnSelection! }
                   strings={ strings! }
+                  showMonthPickerAsOverlay={ showMonthPickerAsOverlay }
+                  onSelectSwitchCalendar={ this._onSelectSwitchCalendar }
+                  navigationIcons={ navigationIcons! }
                   ref='dayPicker' />
                 }
 
@@ -125,6 +144,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onNavigateDate={ this._onNavigateDate }
                   today={ this.props.today }
                   highlightCurrentMonth={ highlightCurrentMonth! }
+                  showMonthPickerAsOverlay={ showMonthPickerAsOverlay }
+                  onSelectSwitchCalendar={ this._onSelectSwitchCalendar }
+                  navigationIcons={ navigationIcons! }
                   ref='monthPicker' /> }
 
                 { showGoToToday &&
@@ -180,6 +202,16 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     if (onSelectDate) {
       onSelectDate(date, selectedDateRangeArray);
     }
+  }
+
+  @autobind
+  private _onSelectSwitchCalendar(focus: boolean) {
+    this.setState({
+      isDayPickerVisible: !this.state.isDayPickerVisible,
+      isMonthPickerVisible: !this.state.isMonthPickerVisible
+    });
+
+    focus ? this._focusOnUpdate = focus : null;
   }
 
   @autobind

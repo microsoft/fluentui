@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -49,6 +49,9 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   today?: Date;
+  showMonthPickerAsOverlay?: boolean;
+  onSelectSwitchCalendar: (focus: boolean) => void;
+  navigationIcons: ICalendarIconStrings;
 }
 
 export interface ICalendarDayState {
@@ -84,13 +87,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectSwitchCalendar, showMonthPickerAsOverlay, navigationIcons } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
+        <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
             <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
             <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
@@ -106,7 +111,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.prevMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
@@ -116,10 +121,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
-          <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
+          {
+            showMonthPickerAsOverlay ?
+              <div
+                className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
+                onClick={ () => this._onSelectSwitchCalendar(false) }
+                onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
+                aria-label={ strings.monthPickerAriaLabel }
+                role='button'
+                tabIndex={ 0 }
+              />
+              :
+              null
+          }
         </div >
         <FocusZone>
           <table
@@ -235,6 +252,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   private _onSelectPrevMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
+  }
+
+  private _onSelectSwitchCalendar(focus: boolean) {
+    this.props.onSelectSwitchCalendar(focus);
   }
 
   @autobind

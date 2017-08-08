@@ -74,6 +74,7 @@ export interface ICalendarInlineExampleProps {
   showNavigateButtons?: boolean;
   highlightCurrentMonth?: boolean;
   isDayPickerVisible?: boolean;
+  showMonthPickerAsOverlay?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -129,6 +130,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           strings={ DayPickerStrings }
           highlightCurrentMonth={ this.props.highlightCurrentMonth }
           isDayPickerVisible={ this.props.isDayPickerVisible }
+          showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
         >
         </Calendar>
         { this.props.showNavigateButtons &&
