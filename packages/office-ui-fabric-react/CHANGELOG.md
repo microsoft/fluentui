@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+
+## 4.31.0
+Tue, 08 Aug 2017 15:28:32 GMT
+
+### Minor changes
+
+- ComboBox: Putting the child component styles in the main props and a few other fixes
+- Moving SpinButton to Glamor based styling
+- GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component.
+- Checkbox: add custom render function for checkbox label.
+
+### Patches
+
+- BaseButton: Added screenReaderText styles to base button
+- BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
+- Added role alert to "no results" view 
 
 ## 4.30.1
 Mon, 07 Aug 2017 10:22:46 GMT

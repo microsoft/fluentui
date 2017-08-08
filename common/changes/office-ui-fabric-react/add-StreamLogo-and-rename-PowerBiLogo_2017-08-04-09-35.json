@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Added screenReaderText styles to base button",
+      "comment": "add StreamLogo and PowerBILogo icons",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "t-qianl@microsoft.com"
 }

@@ -6,7 +6,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
     let suffix = ' cm';
 
     return (
-      <div style={ { width: '203px' } }>
+      <div style={ { width: '400px' } }>
         <SpinButton
           label='SpinButton with custom implementation:'
           value={ '7' + suffix }
