@@ -31,7 +31,6 @@
 
 // Link implemented as a button.
 button.root {
-  @include focus-border;
   @include text-align(left);
   background: none;
   border: none;
@@ -42,6 +41,5 @@ button.root {
 
 // Link implemented as an anchor.
 a.root {
-  @include focus-outline;
   text-decoration: none;
 }
