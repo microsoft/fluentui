@@ -1,9 +1,13 @@
 import * as React from 'react';
 import {
   Checkbox,
-  ICheckboxStyles
+  ICheckboxStyles,
+  ICheckboxProps
 } from 'office-ui-fabric-react/lib/Checkbox';
-
+import {
+  Persona,
+  PersonaSize
+} from 'office-ui-fabric-react/lib/Persona';
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
 }
@@ -75,6 +79,12 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
           boxSide='end'
           styles={ styles }
         />
+
+        <Checkbox
+          label='Persona Checkbox'
+          styles={ styles }
+          onRenderLabel={ this._renderPersonaLabel }
+        />
       </div>
     );
   }
@@ -83,4 +93,8 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
     console.log(`The option has been changed to ${isChecked}.`);
   }
 
+  private _renderPersonaLabel(props: ICheckboxProps) {
+    const DEFAULT_IMAGE_URL = '/_layouts/15/userphoto.aspx?size=S&accountname=';
+    return <Persona primaryText={ props.label } imageUrl={ DEFAULT_IMAGE_URL } size={ PersonaSize.extraSmall } />;
+  }
 }
