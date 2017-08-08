@@ -2,6 +2,7 @@ export const items = [
   {
     key: 'newItem',
     name: 'New',
+    cacheKey: 'myCacheKey',
     iconProps: {
       iconName: 'Add',
     },
