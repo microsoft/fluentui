@@ -133,7 +133,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
-    }
+    };
 
     const primaryKey = primaryItems.reduce(returnKey, '');
     const farKey = farItems.reduce(returnKey, '');
