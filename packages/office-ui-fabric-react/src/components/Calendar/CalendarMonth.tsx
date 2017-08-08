@@ -5,7 +5,7 @@ import {
   css,
   getRTL
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
@@ -21,6 +21,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   highlightCurrentMonth: boolean;
   showMonthPickerAsOverlay?: boolean;
   onSelectSwitchCalendar: (focus: boolean) => void;
+  navigationIcons: ICalendarIconStrings;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -47,7 +48,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, showMonthPickerAsOverlay } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, showMonthPickerAsOverlay, navigationIcons } = this.props;
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
