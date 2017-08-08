@@ -1242,10 +1242,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
  * @param item Item props for the current option
  */
   private _getCaretButtonStyles() {
-    const { styles: customStyles } = this.props;
-    const caretButtoncustomStyles = customStyles ? customStyles.caretDownButtonStyles : null;
-
-    return getCaretDownButtonStyles(this.props.theme!, caretButtoncustomStyles!);
+    const { caretDownButtonStyles: customCaretDownButtonStyles } = this.props;
+    return getCaretDownButtonStyles(this.props.theme!, customCaretDownButtonStyles);
   }
 
   /**
@@ -1253,12 +1251,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param item Item props for the current option
    */
   private _getCurrentOptionStyles(item: IComboBoxOption) {
-    const { styles: customStyles } = this.props;
-    const customStylesForAllOptions = customStyles ? customStyles.optionDefaultStyles : null;
+    const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    const isSelected: boolean = this._isOptionSelected(item.index);
-
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions!, customStylesForCurrentOption);
+    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption);
   }
 }

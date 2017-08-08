@@ -99,4 +99,5 @@ export interface IColorCellProps {
    * Index for this option
    */
   index?: number;
+
 }
