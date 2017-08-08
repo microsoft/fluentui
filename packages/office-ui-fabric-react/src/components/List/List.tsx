@@ -116,7 +116,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _scrollHeight: number;
   private _scrollTop: number;
   private _pageCache: IPageCache;
-  private _waitingInitialMeasurementDone = true;
+
+  // when true, _updateRenderRects and _updatePageMeasurements will be no-op.
+  // This allows consumer app to be able to control when to do expensive measurement, such as after glass
+  private _waitingInitialMeasurement = false;
 
   constructor(props: IListProps) {
     super(props);
@@ -161,10 +164,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._scrollingToIndex = -1;
     this._pageCache = {};
     const {
-      registerInitialMeasurementHandler
+      registerInitialMeasurement
     } = props;
-    if (registerInitialMeasurementHandler) {
-      registerInitialMeasurementHandler(this._handleInitialMeasurement.bind(this));
+    if (registerInitialMeasurement) {
+      registerInitialMeasurement(this._doInitialMeasurement.bind(this));
+      this._waitingInitialMeasurement = true;
     }
   }
 
@@ -272,7 +276,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       const log = `List componentWillReceiveProps: items count ${this.props.items!.length}, ${newProps.items ? newProps.items.length : 0}`;
       performance.mark(log);
       console.log(log);
-      this._invalidatePageCache(newProps);
+      this._invalidatePageCache();
       this._updatePages(newProps);
     }
   }
@@ -310,7 +314,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   public forceUpdate() {
-    this._invalidatePageCache(undefined, true);
+    this._invalidatePageCache();
     // Ensure that when the list is force updated we update the pages first before render.
     this._updateRenderRects(this.props, true);
     this._updatePages();
@@ -346,32 +350,19 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     );
   }
 
-  private _invalidatePageCache(newProps: IListProps | undefined, force?: boolean) {
-    if (force) {
-      this._pageCache = {};
-      performance.mark('invalidPageCache force');
-    } else {
-      if (newProps && newProps.items && this.props.items && newProps.items.length > this.props.items.length) {
-        const itemsPerPage = this._getItemCountForPage(0, this._allowedRect);
-        for (let key in this._pageCache) {
-          if (this._pageCache.hasOwnProperty(key)) {
-            const cachedPage = this._pageCache[key];
-            if (cachedPage.page.itemCount < itemsPerPage &&
-              cachedPage.page.items.filter((item: any) => !item).length > 0) {
-              delete this._pageCache[key];
-            }
-          }
-        }
-        performance.mark('invalidPageCache incremental');
-      } else {
-        this._pageCache = {};
-        performance.mark('invalidPageCache force');
-      }
-    }
+  /**
+   * when props.items change or forceUpdate called, throw away cached pages
+   */
+  private _invalidatePageCache() {
+    performance.mark('invalidPageCache');
+    this._pageCache = {};
   }
 
-  private _handleInitialMeasurement(): void {
-    this._waitingInitialMeasurementDone = false;
+  /**
+   * This is called from consume app to do expensive measurement at desired time to reduce reflow and glass render time
+   */
+  private _doInitialMeasurement(): void {
+    this._waitingInitialMeasurement = false;
     const {
       pages
     } = this.state;
@@ -380,11 +371,16 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _renderPage(page: IPage): any {
-    const cachedPage = this._pageCache[page.key];
-    if (cachedPage && cachedPage.pageElement) {
-      return cachedPage.pageElement;
+    let { onRenderCell, role, usePageCache } = this.props;
+    let cachedPage;
+    // if usePageCache is set and cached page element can be found, just return cached page
+    if (usePageCache) {
+      cachedPage = this._pageCache[page.key];
+      if (cachedPage && cachedPage.pageElement) {
+        return cachedPage.pageElement;
+      }
     }
-    let { onRenderCell, role } = this.props;
+
     let cells = [];
     let pageStyle = this._getPageStyle(page);
 
@@ -415,11 +411,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         {cells}
       </div>
     );
-    if (page.key.lastIndexOf('spacer', 0) === -1) {
+    // cache the first page for now since it is re-rendered a lot times unncessarily.
+    // todo: a more aggresive caching mechanism is to cache pages constaining the items not changed.
+    // now we re-render pages too frequently, for example, props.items increased from 30 to 60, although the 
+    // first 30 items did not change, we still re-rendered all of them in this props.items change.
+    if (usePageCache && page.startIndex === 0) {
       if (cachedPage) {
         cachedPage.pageElement = pageElement;
       } else {
-        // todo
         this._pageCache[page.key] = {
           page: page,
           pageElement: pageElement
@@ -561,11 +560,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let heightChanged = false;
     let renderCount = this._getRenderCount();
 
-    const {
-      registerInitialMeasurementHandler
-    } = this.props;
-    // for perf reason, apps want to defer page and rect measurements (expensive operations) until glass is hit
-    if (registerInitialMeasurementHandler && this._waitingInitialMeasurementDone) {
+    // for perf reason, consumer apps want to defer page and rect measurements (expensive operations) until glass is rendered
+    if (this._waitingInitialMeasurement) {
       return heightChanged;
     }
 
@@ -675,7 +671,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
     // However if the user provides a measure function, let's just assume they know the right heights.
-    let isFirstRender = !this.props.registerInitialMeasurementHandler && this._estimatedPageHeight === 0 && !this.props.getPageHeight;
+    let isFirstRender = this._estimatedPageHeight === 0 && !this.props.getPageHeight;
 
     for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
       itemsPerPage = this._getItemCountForPage(itemIndex, this._allowedRect);
@@ -692,8 +688,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
-      // Only render whats visible, focused, or first page.
-      if (isPageVisible || isPageFocused || isFirstPage) {
+      // Only render whats visible, focused, or first page, 
+      // or when _waitingInitialMeasurement is set, consumers want to render pages with current items then do measurements
+      if (isPageVisible || isPageFocused || isFirstPage || this._waitingInitialMeasurement) {
         if (currentSpacer) {
           pages.push(currentSpacer);
           currentSpacer = null;
@@ -727,7 +724,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
       pageTop += (pageBottom - pageTop + 1);
 
-      if (isFirstRender) {
+      // when _waitingInitialMeasurement is set, consumer apps want to delay measurments, so no need to stop at the first page
+      if (isFirstRender && !this._waitingInitialMeasurement) {
         break;
       }
     }
@@ -811,9 +809,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
   private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
-    const { renderedWindowsAhead, renderedWindowsBehind, registerInitialMeasurementHandler } = (props || this.props);
-    // for perf reason, apps want to defer page and rect measurements (expensive operations) until glass is hit
-    if (registerInitialMeasurementHandler && this._waitingInitialMeasurementDone) {
+    const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
+    // for perf reason, apps want to defer page and rect measurements (expensive operations) until glass is rendered
+    if (this._waitingInitialMeasurement) {
       return;
     }
     const { pages } = this.state;

@@ -187,7 +187,19 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
   compact?: boolean;
 
-  registerInitialMeasurementHandler?: (measurer: () => void) => void;
+  /** 
+   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization 
+   * The same property in List.Props
+   */
+  usePageCache?: boolean;
+  
+  /** 
+   * @measurer is the function to do visibleRect measurement and page measurement which are expensive.
+   * Allow consumer app to be able to call measurer function after glass to reduce glass rendering latency.
+   * And because measurements are executed at the same time in measurer call, it will reduce reflows too.
+   * The same property in List.Props
+  */
+  registerInitialMeasurement?: (measurer: () => void) => void;
 }
 
 export interface IColumn {

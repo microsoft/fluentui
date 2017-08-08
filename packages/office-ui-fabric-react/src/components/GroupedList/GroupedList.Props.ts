@@ -85,6 +85,20 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
 
   /** Optional callback when the group expand state changes between all collapsed and at least one group is expanded. */
   onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
+
+  /** 
+   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization 
+   * The same property in List.Props
+   */
+  usePageCache?: boolean;
+  
+  /** 
+   * @measurer is the function to do visibleRect measurement and page measurement which are expensive.
+   * Allow consumer app to be able to call measurer function after glass to reduce glass rendering latency.
+   * And because measurements are executed at the same time in measurer call, it will reduce reflows too.
+   * The same property in List.Props
+  */
+  registerInitialMeasurement?: (measurer: () => void) => void;
 }
 
 export interface IGroup {

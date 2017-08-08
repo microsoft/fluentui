@@ -75,8 +75,16 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /** Number of items to render. Defaults to items.length. */
   renderCount?: number;
+
+  /** control if pages containing unchanged items should be cached, this is a perf optimization */
+  usePageCache?: boolean;
   
-  registerInitialMeasurementHandler?: (measurer: () => void) => void;
+  /** 
+   * measurer is the function to do visibleRect measurement and page measurement which are expensive.
+   * Allow consumer app to be able to call measurer function after glass to reduce glass rendering latency.
+   * And because measurements are executed at the same time in measurer call, it will reduce reflows too.
+  */
+  registerInitialMeasurement?: (measurer: () => void) => void;
 }
 
 export interface IPage {

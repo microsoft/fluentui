@@ -213,7 +213,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       shouldApplyApplicationRole = false,
       getKey,
       listProps,
-      registerInitialMeasurementHandler
+      usePageCache,
+      registerInitialMeasurement
     } = this.props;
     let {
       adjustedColumns,
@@ -327,6 +328,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     eventsToRegister={ rowElementEventMap }
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
+                    usePageCache = { usePageCache }
+                    registerInitialMeasurement = { registerInitialMeasurement }
                   />
                 ) : (
                     <List
@@ -334,7 +337,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       role='presentation'
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
-                      registerInitialMeasurementHandler = { registerInitialMeasurementHandler }
+                      usePageCache = { usePageCache }
+                      registerInitialMeasurement = { registerInitialMeasurement }
                       { ...additionalListProps }
                     />
                   )
