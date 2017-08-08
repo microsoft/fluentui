@@ -2,6 +2,39 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.19.0",
+      "tag": "@uifabric/styling_v0.19.0",
+      "date": "Tue, 08 Aug 2017 15:28:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a92eb2a9a79dcab033bdbe78ca7a18b2d6607e99",
+            "comment": "Styling: added a screenReaderText utility style"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a7bc11ddacabfcfbf4fbc56e99e6d13ea296b787",
+            "comment": "Adding a color to the palette"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.18.0",
+      "tag": "@uifabric/styling_v0.18.0",
+      "date": "Mon, 07 Aug 2017 10:22:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2c4a1740d6e9495c9eca4c27f8c8fb6c70b2c61a",
+            "comment": "Adding 4 icons that were missing in the codes map."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.17.0",
       "tag": "@uifabric/styling_v0.17.0",
       "date": "Fri, 04 Aug 2017 10:11:48 GMT",
