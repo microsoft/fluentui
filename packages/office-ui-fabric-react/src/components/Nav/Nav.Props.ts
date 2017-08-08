@@ -100,12 +100,7 @@ export interface INavLinkGroup {
   /**
    * Callback invoked when a group header is clicked
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
-
-  /**
-   * Function callback invoked when a link in this group is clicked
-   */
-  onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
+  onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
 }
 
 export interface INavLink {
@@ -186,6 +181,12 @@ export interface INavLink {
    *   parent link vs vers.
    */
   parentId?: string;
+
+  /**
+   * (Optional) By default, any link with onClick defined will render as a button.
+   * Set this property to true to override that behavior.
+   */
+  isAnchor?: boolean;
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.

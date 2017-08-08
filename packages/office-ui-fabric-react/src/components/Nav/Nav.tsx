@@ -28,6 +28,11 @@ const _indentNoExpandButton: number = 20;
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
 
+export function isRelativeUrl(url: string): boolean {
+  // A URL is relative if it has no protocol.
+  return !!url && !/^[a-z0-9+-.]:\/\//i.test(url);
+}
+
 export interface INavState {
   isGroupCollapsed?: { [key: string]: boolean };
   isLinkExpandStateChanged?: boolean;
@@ -97,22 +102,24 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     return this.state.selectedKey;
   }
 
-  private _renderAnchorLink(link: INavLink, linkIndex: number, nestingLevel: number, group: INavLinkGroup): React.ReactElement<{}> {
+  private _renderAnchorLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     // Determine the appropriate padding to add before this link.
     // In RTL, the "before" padding will go on the right instead of the left.
     const isRtl: boolean = getRTL();
     const paddingBefore: string = (_indentationSize * nestingLevel) +
       String(this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton) + 'px';
+    const target = link.target || (isRelativeUrl(link.url) ? '_self' : '_blank');
 
     return (
       <a
         className={ css('ms-Nav-link', styles.link) }
         style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore } }
         href={ link.url || 'javascript:' }
-        onClick={ this._onNavAnchorLinkClicked.bind(this, link, group) }
+        onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
         aria-label={ link.ariaLabel }
         title={ link.title || link.name }
-        target={ link.target }
+        target={ target }
+        rel='noopener'
       >
         { link.iconClassName && (
           <Icon
@@ -125,7 +132,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  private _renderButtonLink(link: INavLink, linkIndex: number, group: INavLinkGroup) {
+  private _renderButtonLink(link: INavLink, linkIndex: number) {
     return (
       <CommandButton
         className={ css('ms-Nav-link ms-Nav-linkButton', styles.link, {
@@ -135,12 +142,12 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         href={ link.url }
         iconProps={ { iconName: link.icon } }
         description={ link.title || link.name }
-        onClick={ this._onNavButtonLinkClicked.bind(this, link, group) }>
+        onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
         { link.name }
       </CommandButton>);
   }
 
-  private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number, group: INavLinkGroup): React.ReactElement<{}> {
+  private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
     const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
@@ -167,28 +174,28 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             />
           </button> : null
         ) }
-        { link.onClick
-          ? this._renderButtonLink(link, linkIndex, group)
-          : this._renderAnchorLink(link, linkIndex, nestingLevel, group) }
+        { link.onClick && !link.isAnchor
+          ? this._renderButtonLink(link, linkIndex)
+          : this._renderAnchorLink(link, linkIndex, nestingLevel) }
       </div>
     );
   }
 
-  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number, group: INavLinkGroup): React.ReactElement<{}> {
+  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
       <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem) }>
-        { this._renderCompositeLink(link, linkIndex, nestingLevel, group) }
-        { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel, group) : null) }
+        { this._renderCompositeLink(link, linkIndex, nestingLevel) }
+        { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
     );
   }
 
-  private _renderLinks(links: INavLink[] | undefined, nestingLevel: number, group: INavLinkGroup): React.ReactElement<{}> | null {
+  private _renderLinks(links: INavLink[] | undefined, nestingLevel: number): React.ReactElement<{}> | null {
     if (!links || !links.length) {
       return null;
     }
     const linkElements: React.ReactElement<{}>[] = links.map(
-      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel, group));
+      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
     return (
       <ul role='list' aria-label={ this.props.ariaLabel } className={ css(styles.navItems) }>
@@ -223,7 +230,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           </button> : null)
         }
         <div className={ css('ms-Nav-groupContent', AnimationClassNames.slideDownIn20, styles.groupContent) }>
-          { this._renderLinks(group.links, 0 /* nestingLevel */, group) }
+          { this._renderLinks(group.links, 0 /* nestingLevel */) }
         </div>
       </div>
     );
@@ -234,8 +241,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     let groupKey = group.name!;
     let isCollapsed = !isGroupCollapsed![groupKey];
 
-    if (group.onClick) {
-      group.onClick(ev, isCollapsed);
+    if (group.onHeaderClick) {
+      group.onHeaderClick(ev, isCollapsed);
     }
 
     isGroupCollapsed![groupKey] = isCollapsed;
@@ -253,23 +260,17 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     ev.stopPropagation();
   }
 
-  private _onNavAnchorLinkClicked(link: INavLink, group: INavLinkGroup, ev: React.MouseEvent<HTMLElement>): void {
+  private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
-    }
-    if (group.onLinkClick) {
-      group.onLinkClick(ev, link);
     }
 
     this.setState({ selectedKey: link.key });
   }
 
-  private _onNavButtonLinkClicked(link: INavLink, group: INavLinkGroup, ev: React.MouseEvent<HTMLElement>): void {
+  private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (link.onClick) {
       link.onClick(ev, link);
-    }
-    if (group.onLinkClick) {
-      group.onLinkClick(ev, link);
     }
 
     this.setState({ selectedKey: link.key });
