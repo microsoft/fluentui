@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '../../../office-ui-fabric-react/lib/Link';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import './GettingStartedPage.scss';
 import { Highlight } from '@uifabric/example-app-base';
 
