@@ -24,7 +24,6 @@ let rules = Object.assign(
 );
 
 // Configure TypeScript.
-// build.typescript.setConfig({ typescript: require('typescript') });
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 // Use css modules.
 build.sass.setConfig({
@@ -38,8 +37,8 @@ build.karma.isEnabled = () => false;
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
 
-// Until typings work.
-//build.apiExtractor.isEnabled = () => false;
+//Disable tslint
+build.tslint.isEnabled = () => false;
 
 // Copy fabric-core to dist to be published with fabric-react.
 build.postCopy.setConfig({
