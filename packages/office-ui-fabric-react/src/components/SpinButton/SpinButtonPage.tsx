@@ -10,12 +10,14 @@ import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisab
 import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
+import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
 const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
 const SpinButtonBasicWithIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
 const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
+const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
 
 export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -50,6 +52,12 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
               code={ SpinButtonBasicWithEndPositionExampleCode }>
               <SpinButtonBasicWithEndPositionExample />
             </ExampleCard>
+            <ExampleCard
+              title={ 'Custom Styled SpinButton' }
+              code={ SpinButtonCustomStyledExampleCode }>
+              <SpinButtonCustomStyledExample />
+            </ExampleCard>
+
           </div>
         }
         propertiesTables={

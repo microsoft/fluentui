@@ -4,7 +4,7 @@ import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 export class SpinButtonBasicExample extends React.Component<any, any> {
   public render() {
     return (
-      <div style={ { width: '203px' } }>
+      <div style={ { width: '400px' } }>
         <SpinButton
           defaultValue='0'
           label={ 'Basic SpinButton:' }

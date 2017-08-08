@@ -1,7 +1,6 @@
 import {
   IComboBoxStyles,
   IComboBoxOptionStyles,
-  IComboBoxCaretDownButtonStyles
 } from './ComboBox.Props';
 import {
   ITheme,
@@ -11,6 +10,7 @@ import {
   FontWeights,
   getFocusStyle
 } from '../../Styling';
+import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
@@ -143,15 +143,15 @@ export const getOptionStyles = memoizeFunction((
 
 export const getCaretDownButtonStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: Partial<IComboBoxCaretDownButtonStyles>,
-): IComboBoxCaretDownButtonStyles => {
+  customStyles?: Partial<IButtonStyles>,
+): IButtonStyles => {
   const { semanticColors, fonts, palette } = theme;
 
   const caretButtonTextColor = palette.neutralDark;
   const caretButtonBackgroundHovered = palette.neutralQuaternaryAlt;
   const caretButtonBackgroundActive = palette.neutralTertiaryAlt;
 
-  const styles: IComboBoxCaretDownButtonStyles = {
+  const styles: IButtonStyles = {
     root: {
       color: caretButtonTextColor,
       fontSize: FontSizes.small,
@@ -175,7 +175,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
     },
     rootDisabled: getDisabledStyles(theme),
   };
-  return mergeStyleSets(styles, customStyles) as IComboBoxCaretDownButtonStyles;
+  return mergeStyleSets(styles, customStyles) as IButtonStyles;
 });
 
 export const getStyles = memoizeFunction((
@@ -271,7 +271,6 @@ export const getStyles = memoizeFunction((
       paddingLeft: '12px'
     },
     inputDisabled: getDisabledStyles(theme),
-    caretDownButtonStyles: null,
     errorMessage: {
       color: ComboBoxRootColorErrored,
       ':before': {
@@ -312,7 +311,6 @@ export const getStyles = memoizeFunction((
       borderStyle: 'solid',
       borderColor: ComboBoxOptionDividerBorderColor
     },
-    optionDefaultStyles: null,
   };
 
   return mergeStyleSets(styles, customStyles) as IComboBoxStyles;
