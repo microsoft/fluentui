@@ -13,12 +13,12 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    let { styles, theme } = this.props;
+    let { buttonTheme, styles, theme } = this.props;
     return (
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--compound'
-        styles={ getStyles(theme!, styles) }
+        styles={ getStyles(buttonTheme!, theme!, styles) }
         onRenderIcon={ nullRender }
       />
     );

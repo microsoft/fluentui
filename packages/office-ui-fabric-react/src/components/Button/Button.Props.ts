@@ -42,6 +42,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   theme?: ITheme;
 
   /**
+   * Color theme used by button.
+   * @default Standard
+   */
+  buttonTheme?: ButtonTheme;
+
+  /**
    * Whether the button is checked
    */
   checked?: boolean;
@@ -169,6 +175,11 @@ export enum ElementType {
   button = 0,
   /** <a> element. */
   anchor = 1
+}
+
+export enum ButtonTheme {
+  standard = 0,
+  primary = 1,
 }
 
 export enum ButtonType {

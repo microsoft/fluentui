@@ -52,13 +52,12 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         componentName='ButtonExample'
         exampleCards={
           <div>
-            <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
-            <Checkbox label='Mark as checked' checked={ this.state.areButtonsChecked } onChange={ this._onToggledChanged.bind(this) } />
-            <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
+            <div style={ { marginBottom: '20px' } }>
+              <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
+              <Checkbox label='Mark as checked' checked={ this.state.areButtonsChecked } onChange={ this._onToggledChanged.bind(this) } />
+            </div>
+            <ExampleCard title='Button' code={ ButtonDefaultExampleCode }>
               <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
-            </ExampleCard>
-            <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
-              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />

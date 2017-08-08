@@ -1,4 +1,4 @@
-import { IButtonStyles } from '../Button.Props';
+import { IButtonStyles, ButtonTheme } from '../Button.Props';
 import {
   ITheme,
   mergeStyleSets
@@ -16,6 +16,7 @@ const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
 export const getStyles = memoizeFunction((
+  buttonTheme: ButtonTheme,
   theme: ITheme,
   customStyles?: IButtonStyles
 ): IButtonStyles => {
@@ -47,10 +48,16 @@ export const getStyles = memoizeFunction((
     description: [
       theme.fonts.small,
       {
-        color: theme.palette.neutralSecondary,
         lineHeight: '100%'
       }
     ],
+
+  };
+
+  let standardTheme: IButtonStyles = {
+    description: {
+      color: theme.palette.neutralSecondary,
+    },
 
     descriptionHovered: {
       color: theme.palette.neutralDark
@@ -67,8 +74,67 @@ export const getStyles = memoizeFunction((
     descriptionDisabled: {
       color: 'inherit'
     }
+  }
 
-  };
+  let primaryTheme: IButtonStyles = {
+    root: {
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white
+    },
 
-  return mergeStyleSets(defaultButtonStyles, compoundButtonStyles, splitButtonStyles, customStyles)!;
+    rootHovered: {
+      backgroundColor: theme.palette.themeDark,
+      color: theme.palette.white
+    },
+
+    rootPressed: {
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white
+    },
+
+    rootExpanded: {
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white
+    },
+
+    rootChecked: {
+      backgroundColor: theme.palette.themeDark,
+      color: theme.palette.white,
+    },
+
+    rootCheckedHovered: {
+      backgroundColor: theme.palette.neutralLight,
+      color: theme.palette.black
+    },
+
+    description: {
+      color: theme.palette.white,
+    },
+
+    descriptionHovered: {
+      color: theme.palette.white
+    },
+
+    descriptionPressed: {
+      color: 'inherit'
+    },
+
+    descriptionChecked: {
+      color: 'inherit'
+    },
+
+    descriptionDisabled: {
+      color: 'inherit'
+    }
+  }
+
+
+
+  return mergeStyleSets(
+    defaultButtonStyles,
+    compoundButtonStyles,
+    buttonTheme == ButtonTheme.primary ? primaryTheme : standardTheme,
+    splitButtonStyles,
+    customStyles
+  )!;
 });
