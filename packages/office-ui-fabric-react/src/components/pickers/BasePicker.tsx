@@ -154,6 +154,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
@@ -382,6 +383,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         isMostRecentlyUsedVisible: false,
         suggestionsVisible: true
       });
+    }
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
+  }
+
+  @autobind
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement>) {
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
     }
   }
 
@@ -637,6 +648,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
+                onBlur={ this.onInputBlur }
                 onInputValueChange={ this.onInputChange }
                 suggestedDisplayValue={ suggestedDisplayValue }
                 aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }

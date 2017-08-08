@@ -106,6 +106,16 @@ export interface ISpinButtonProps {
   onDecrement?: (value: string) => string | void;
 
   /**
+   * A callback for when the user put focus on the picker
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * A callback for when the user moves the focus away from the picker
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
    * Icon for the increment button of the spinButton
    */
   incrementButtonIcon?: IIconProps;
