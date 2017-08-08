@@ -91,6 +91,21 @@ export interface INavLinkGroup {
    * The name to use for functional automation tests
    */
   automationId?: string;
+
+  /**
+   * If true, the group should render collapsed by default
+   */
+  collapseByDefault?: boolean;
+
+  /**
+   * Callback invoked when a group header is clicked
+   */
+  onClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
+
+  /**
+   * Function callback invoked when a link in this group is clicked
+   */
+  onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 }
 
 export interface INavLink {
