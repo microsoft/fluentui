@@ -31,7 +31,6 @@
 
 // Link implemented as a button.
 button.root {
-  @include text-align(left);
   background: none;
   border: none;
   cursor: pointer;
