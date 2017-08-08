@@ -1,0 +1,47 @@
+@import '~office-ui-fabric-react/dist/sass/References';
+
+// Element: ms-Link root component
+.root {
+  color: $ms-color-themePrimary;
+  margin: 0;
+  overflow: inherit;
+  padding: 0;
+  text-overflow: inherit;
+}
+
+// State: The button is not disabled.
+.isEnabled {
+  &:hover,
+  &:focus {
+    color: $ms-color-themeDarker;
+  }
+
+  &:active {
+    color: $ms-color-themePrimary;
+  }
+}
+
+// State: The button is disabled.
+.isDisabled {
+  color: $ms-color-neutralTertiary;
+  pointer-events: none;
+  cursor: default;
+}
+
+
+// Link implemented as a button.
+button.root {
+  @include focus-border;
+  @include text-align(left);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  font-size: inherit; // Ensure that we inherit font size, rather than the browser's default.
+}
+
+// Link implemented as an anchor.
+a.root {
+  @include focus-outline;
+  text-decoration: none;
+}
