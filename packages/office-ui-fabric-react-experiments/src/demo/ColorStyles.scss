@@ -1,8 +1,9 @@
+@import '../../../office-ui-fabric-react/src/common/common';
 
 :global {
   .hljs {
-    // background: $ms-color-neutralDark;
-    // color: $ms-color-white;
+    background: $ms-color-neutralDark;
+    color: $ms-color-white;
   }
   .hljs-comment, .hljs-quote {
     color: #777;
