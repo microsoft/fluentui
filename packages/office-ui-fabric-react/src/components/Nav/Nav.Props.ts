@@ -125,7 +125,8 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
-   * Function callback invoked when a link in the navigation is clicked
+   * Callback invoked when this link is clicked. Providing this callback will cause the link
+   * to render as a button (rather than an anchor) unless isAnchor is set to true.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
