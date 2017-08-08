@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Remove the IconButton dependency that was introduced with SplitButton.",
+      "comment": "Change dropdown's role from \"combobox\" to \"menu\" ",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "boemor@microsoft.com"
+  "email": "rickyp@microsoft.com"
 }
