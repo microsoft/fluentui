@@ -130,9 +130,10 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   private computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
-    const primaryKey = primaryItems.reduce((acc, current) => acc + current.key, '');
-    const farKey = farItems.reduce((acc, current) => acc + current.key, '');
+    const primaryKey = primaryItems.reduce((acc, current) => acc + current.cachekey || current.key, '');
+    const farKey = farItems.reduce((acc, current) => acc + current.cachekey || current.key, '');
     const overflowKey = overflow ? 'overflow' : '';
+    console.log(primaryKey);
     return [primaryKey, farKey, overflowKey].join(' ');
   }
 

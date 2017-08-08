@@ -85,6 +85,11 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   styles?: IButtonStyles;
 
   /**
+   * A custom cache key to be used for this item. If cacheKey is changed, the cache will invalidate. Defaults to key value;
+   */
+  cacheKey?: string;
+
+  /**
    * Context under which the item is being rendered
    * This value is controlled by the component and useful for adjusting onRender function
    */
