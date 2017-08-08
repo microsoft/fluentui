@@ -75,6 +75,9 @@ module.exports = {
           },
           {
             loader: "sass-loader",
+            options: {
+              includePaths: ["../office-ui-fabric-react/src"]
+            }
           }
         ]
       }
