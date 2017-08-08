@@ -273,9 +273,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       this._requiredRect = null;
 
       this._measureVersion++;
-      const log = `List componentWillReceiveProps: items count ${this.props.items!.length}, ${newProps.items ? newProps.items.length : 0}`;
-      performance.mark(log);
-      console.log(log);
       this._invalidatePageCache();
       this._updatePages(newProps);
     }
@@ -306,10 +303,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     } else {
       shouldComponentUpdate = true;
     }
-    const logData = shouldComponentUpdate ? `measureVersion: ${this._measureVersion}, ${measureVersion}; items count: ${this.props.items ? this.props.items.length : 0}, ${newProps.items ? newProps.items.length : 0}; page keys: ${oldPages ? oldPages.map((page: IPage) => page.key).join(',') : ''} | ${newPages ? newPages.map((page: IPage) => page.key).join(',') : ''}` : '';
-    performance.mark(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
-    console.log(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
-
     return shouldComponentUpdate;
   }
 
@@ -336,9 +329,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       pageElements.push(this._renderPage(pages![i]));
     }
 
-    performance.mark(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`);
-    console.log(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`);
-
     // console.log(`Page elements ${pageElements.length}`);
 
     return (
@@ -354,7 +344,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * when props.items change or forceUpdate called, throw away cached pages
    */
   private _invalidatePageCache() {
-    performance.mark('invalidPageCache');
     this._pageCache = {};
   }
 

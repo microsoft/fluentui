@@ -194,7 +194,6 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
     const canSelect = selection.canSelectItem!(item);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
-    performance.mark(`DetailsRow.render: ${item.name}`);
 
     return (
       <FocusZone
