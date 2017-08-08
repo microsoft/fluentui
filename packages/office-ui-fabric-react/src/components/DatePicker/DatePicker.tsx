@@ -205,7 +205,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             } }
             readOnly={ !allowTextInput }
             value={ formattedDate }
-            ref='textField' />
+            ref='textField'
+            role={ allowTextInput ? "combobox" : "menu" }
+          />
         </div>
         { isDatePickerShown && (
           <Callout
