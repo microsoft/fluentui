@@ -125,11 +125,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     let beakReactStyle: React.CSSProperties = {
-      top: positions! && positions!.beakPosition ? positions!.beakPosition.top : BEAK_ORIGIN_POSITION.top,
-      left: positions! && positions!.beakPosition ? positions!.beakPosition.left : BEAK_ORIGIN_POSITION.left,
-      height: beakStyleWidth!,
-      width: beakStyleWidth!,
-      backgroundColor: backgroundColor!
+      top: positions && positions.beakPosition ? positions.beakPosition.top : BEAK_ORIGIN_POSITION.top,
+      left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
+      height: beakStyleWidth,
+      width: beakStyleWidth,
+      backgroundColor: backgroundColor
     };
 
     let isAttached = linkType === CalloutLinkType.attached;
