@@ -118,7 +118,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Show HoverCard
   @autobind
-  private _cardOpen(ev: any) {
+  private _cardOpen(ev: MouseEvent) {
     this._async.clearTimeout(this._dismissTimerId);
 
     this._openTimerId = this._async.setTimeout(() => {
