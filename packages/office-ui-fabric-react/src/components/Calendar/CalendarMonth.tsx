@@ -6,7 +6,7 @@ import {
   getRTL,
   autobind
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
@@ -21,6 +21,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   today?: Date;
   highlightCurrentMonth: boolean;
   onHeaderClick?: (focus: boolean) => void;
+  navigationIcons: ICalendarIconStrings;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -47,7 +48,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons } = this.props;
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -64,7 +67,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.prevYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span>
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
@@ -73,7 +76,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               aria-label={ strings.nextYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span>
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>

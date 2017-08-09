@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps } from './Calendar.Props';
+import { ICalendar, ICalendarProps, ICalendarIconStrings } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
@@ -12,6 +12,13 @@ import {
 } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
+
+const leftArrow: string = 'ChevronLeft';
+const rightArrow: string = 'ChevronRight';
+let iconStrings: ICalendarIconStrings = {
+  leftNavigation: leftArrow,
+  rightNavigation: rightArrow
+};
 
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */
@@ -41,7 +48,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     autoNavigateOnSelection: false,
     showGoToToday: true,
     strings: null,
-    highlightCurrentMonth: false
+    highlightCurrentMonth: false,
+    navigationIcons: iconStrings
   };
 
   public refs: {
@@ -82,7 +90,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     this.setState({
-      selectedDate: value || today,
+      selectedDate: value || today
     });
   }
 
@@ -100,9 +108,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth } = this.props;
-    let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
+    let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, isMonthPickerVisible, isDayPickerVisible, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
+    let { selectedDate, navigatedDate } = this.state;
     let onHeaderClick = showMonthPickerAsOverlay ? this._onHeaderClick : undefined;
+
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
         <div className={ css(
@@ -130,6 +139,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   autoNavigateOnSelection={ autoNavigateOnSelection! }
                   strings={ strings! }
                   onHeaderClick={ onHeaderClick }
+                  navigationIcons={ navigationIcons! }
                   ref='dayPicker' />
                 }
 
@@ -140,6 +150,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   today={ this.props.today }
                   highlightCurrentMonth={ highlightCurrentMonth! }
                   onHeaderClick={ onHeaderClick }
+                  navigationIcons={ navigationIcons! }
                   ref='monthPicker' /> }
 
                 { showGoToToday &&

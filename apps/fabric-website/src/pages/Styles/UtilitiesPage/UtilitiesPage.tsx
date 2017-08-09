@@ -3,7 +3,7 @@ import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const utilitiesData = require('json!../../../data/utilities.json');
+const utilitiesData = require('../../../data/utilities.json');
 
 export class UtilitiesPage extends React.Component<any, any> {
   public render() {
