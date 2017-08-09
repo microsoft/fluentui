@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Putting the child component styles in the main props and a few other fixes",
+      "comment": "Nav: Add more options for nav link groups",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kushaly@microsoft.com"
+  "email": "elcraig@microsoft.com"
 }

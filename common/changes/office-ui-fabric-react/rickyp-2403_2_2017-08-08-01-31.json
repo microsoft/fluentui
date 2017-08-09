@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Added screenReaderText styles to base button",
+      "comment": "Changed DatePicker role to be more accurate for screen readers",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "rickyp@microsoft.com"
 }
