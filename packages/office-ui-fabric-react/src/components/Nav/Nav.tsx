@@ -108,7 +108,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     const isRtl: boolean = getRTL();
     const paddingBefore: string = (_indentationSize * nestingLevel) +
       String(this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton) + 'px';
-    const target = link.target || (isRelativeUrl(link.url) ? '_self' : '_blank');
+    // Prevent hijacking of the parent window if link.target is defined
+    const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
       <a
@@ -118,8 +119,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
         aria-label={ link.ariaLabel }
         title={ link.title || link.name }
-        target={ target }
-        rel='noopener'
+        target={ link.target }
+        rel={ rel }
       >
         { link.iconClassName && (
           <Icon
