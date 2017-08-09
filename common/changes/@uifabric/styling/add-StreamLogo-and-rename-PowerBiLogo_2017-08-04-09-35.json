@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "add StreamLogo and PowerBILogo icons",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "t-qianl@microsoft.com"
+}
