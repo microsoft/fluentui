@@ -43,8 +43,6 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
             }
           }
           disabled={ this.state.isPickerDisabled }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

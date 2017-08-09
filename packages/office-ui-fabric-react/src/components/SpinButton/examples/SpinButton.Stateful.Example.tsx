@@ -26,8 +26,6 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
             value = this.removeSuffix(value, suffix);
             return String(+value - 2) + suffix;
           } }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

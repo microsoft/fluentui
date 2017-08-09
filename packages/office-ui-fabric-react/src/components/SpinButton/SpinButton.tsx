@@ -102,6 +102,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._onIncrement = this._defaultOnIncrement;
       this._onDecrement = this._defaultOnDecrement;
     }
+
+    this.focus = this.focus.bind(this);
   }
 
   /**
@@ -180,9 +182,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             aria-valuenow={ value }
             aria-valuemin={ min && String(min) }
             aria-valuemax={ max && String(max) }
-            onBlur={ this._onBlur }
+            onBlur={ this._validate }
             ref={ this._resolveRef('_input') }
-            onFocus={ this._onFocus }
+            onFocus={ this.focus }
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
             readOnly={ disabled }

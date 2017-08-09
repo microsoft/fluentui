@@ -345,8 +345,6 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
             }
           }
           disabled={ this.state.isPickerDisabled }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

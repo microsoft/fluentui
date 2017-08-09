@@ -11,8 +11,6 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
           min={ 0 }
           max={ 100 }
           step={ 1 }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );
