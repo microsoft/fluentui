@@ -54,7 +54,15 @@ export const getStyles = memoizeFunction((
       cursor: 'default',
       pointerEvents: 'none',
       ':hover': noOutline,
-      ':focus': noOutline
+      ':focus': noOutline,
+    },
+
+    iconDisabled: {
+      color: theme.palette.neutralTertiary
+    },
+
+    menuIconDisabled: {
+      color: theme.palette.neutralTertiary
     },
 
     flexContainer: {
@@ -78,17 +86,6 @@ export const getStyles = memoizeFunction((
       margin: '0 4px',
       lineHeight: '100%'
     },
-
-    screenReaderText: {
-      position: 'absolute',
-      width: '1px',
-      height: '1px',
-      margin: '-1px',
-      padding: 0,
-      overflow: 'hidden',
-      clip: 'rect(0,0,0,0)',
-      border: 0
-    }
 
   };
 });

@@ -15,8 +15,9 @@ import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
 
 let _theme: ITheme = {
   palette: DefaultPalette,
-  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette),
-  fonts: DefaultFontStyles
+  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false),
+  fonts: DefaultFontStyles,
+  isInverted: false
 };
 
 export const ThemeSettingName = 'theme';
@@ -47,8 +48,8 @@ export function getTheme(): ITheme {
 export function loadTheme(theme: IPartialTheme): ITheme {
   _theme = createTheme(theme);
 
-  // Load the legacy theme from the palette.
-  legacyLoadTheme(_theme.palette as {});
+  // Invoke the legacy method of theming the page as well.
+  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
 
   GlobalSettings.setValue(ThemeSettingName, _theme);
 
@@ -67,13 +68,14 @@ export function createTheme(theme: IPartialTheme): ITheme {
       ...DefaultFontStyles,
       ...theme.fonts
     },
-    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette), ...theme.semanticColors }
+    semanticColors: { ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted), ...theme.semanticColors },
+    isInverted: !!theme.isInverted
   } as ITheme;
 }
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
+function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean): ISemanticColors {
   return {
     bodyBackground: p.white,
     bodyText: p.neutralPrimary,
@@ -86,8 +88,10 @@ function _makeSemanticColorsFromPalette(p: IPalette): ISemanticColors {
 
     focusBorder: p.black,
 
-    errorBackground: '#fde7e9',
-    errorText: p.redDark,
+    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
+    errorText: !isInverted ? p.redDark : '#ff5f5f',
+    blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
+    warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
 
     inputBorder: p.neutralTertiary,
     inputBorderHovered: p.neutralPrimary,

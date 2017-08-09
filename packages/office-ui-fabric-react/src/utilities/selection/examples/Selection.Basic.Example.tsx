@@ -31,6 +31,33 @@ export interface ISelectionItemExampleProps {
 }
 
 /**
+ * The SelectionItemExample controls and displays the selection state of a single item
+ */
+export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
+  public render() {
+    let { item, itemIndex, selection, selectionMode } = this.props;
+    let isSelected = false;
+
+    if (selection && itemIndex !== undefined) {
+      isSelected = selection.isIndexSelected(itemIndex);
+    }
+
+    return (
+      <div className='ms-SelectionItemExample' data-selection-index={ itemIndex }>
+        { (selectionMode !== SelectionMode.none) && (
+          <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
+            <Check checked={ isSelected } />
+          </div>
+        ) }
+        <span className='ms-SelectionItemExample-name'>
+          { item.name }
+        </span>
+      </div>
+    );
+  }
+}
+
+/**
  * The SelectionBasicExample controls the selection state of all items
  */
 export class SelectionBasicExample extends React.Component<any, ISelectionBasicExampleState> {
@@ -181,32 +208,5 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
         ]
       }
     ];
-  }
-}
-
-/**
- * The SelectionItemExample controls and displays the selection state of a single item
- */
-export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
-  public render() {
-    let { item, itemIndex, selection, selectionMode } = this.props;
-    let isSelected = false;
-
-    if (selection && itemIndex) {
-      selection.isIndexSelected(itemIndex);
-    }
-
-    return (
-      <div className='ms-SelectionItemExample' data-selection-index={ itemIndex }>
-        { (selectionMode !== SelectionMode.none) && (
-          <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
-            <Check checked={ isSelected } />
-          </div>
-        ) }
-        <span className='ms-SelectionItemExample-name'>
-          { item.name }
-        </span>
-      </div>
-    );
   }
 }

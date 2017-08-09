@@ -63,6 +63,7 @@
   height: 40px;
   @include ms-text-align(left);
   width: 100%;
+  font-size: 12px;
   &:hover {
       background-color: $ms-color-neutralLight;
       cursor: pointer;
@@ -111,6 +112,7 @@
   @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
+  font-size: 12px;
 
   :global(.ms-Spinner-circle) {
     display: inline-block;

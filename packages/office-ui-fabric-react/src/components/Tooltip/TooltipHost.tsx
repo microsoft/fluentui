@@ -92,7 +92,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     if (overflowMode !== undefined) {
       switch (overflowMode) {
         case TooltipOverflowMode.Parent:
-          return this._tooltipHost.parentElement;
+          return this._tooltipHost.parentElement!;
 
         case TooltipOverflowMode.Self:
           return this._tooltipHost;

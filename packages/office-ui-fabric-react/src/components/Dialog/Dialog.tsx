@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent,
   css,
   getId
@@ -14,13 +13,8 @@ const styles: any = stylesImport;
 
 import { DialogContent } from './DialogContent';
 
-export interface IDialogState {
-  id?: string;
-}
-
 @withResponsiveMode
-export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
-
+export class Dialog extends BaseComponent<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
     modalProps: {
       isDarkOverlay: true,
@@ -36,12 +30,16 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     hidden: true,
   };
 
+  private _id: string;
+  private _defaultTitleTextId: string;
+  private _defaultSubTextId: string;
+
   constructor(props: IDialogProps) {
     super(props);
 
-    this.state = {
-      id: getId('Dialog'),
-    };
+    this._id = getId('Dialog');
+    this._defaultTitleTextId = this._id + '-title';
+    this._defaultSubTextId = this._id + '-subText';
 
     this._warnDeprecations({
       'isOpen': 'hidden',
@@ -88,7 +86,6 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       containerClassName,
       hidden
     } = this.props;
-    let { id } = this.state;
 
     return (
       <Modal
@@ -107,20 +104,12 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         className={ css('ms-Dialog', className ? className : modalProps!.className) }
         containerClassName={ css(styles.main, containerClassName ? containerClassName : modalProps!.containerClassName) }
         onDismiss={ onDismiss ? onDismiss : modalProps!.onDismiss }
-        subtitleAriaId={
-          this._getAriaLabelId(
-            (ariaDescribedById ? ariaDescribedById : modalProps!.subtitleAriaId) as string,
-            (subText ? subText : modalProps!.subtitleAriaId) as string,
-            id + '-subText'
-          )
-        }
-        titleAriaId={
-          this._getAriaLabelId(
-            (modalProps!.titleAriaId ? modalProps!.titleAriaId : ariaLabelledById) as string,
-            (title ? title : modalProps!.titleAriaId) as string,
-            id + '-title') }
+        subtitleAriaId={ this._getSubTextId() }
+        titleAriaId={ this._getTitleTextId() }
       >
         <DialogContent
+          titleId={ this._defaultTitleTextId }
+          subTextId={ this._defaultSubTextId }
           title={ title }
           subText={ subText }
           showCloseButton={ isBlocking !== undefined ? !isBlocking : !modalProps!.isBlocking }
@@ -132,13 +121,29 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         >
           { this.props.children }
         </DialogContent>
-
       </Modal>
     );
   }
 
-  @autobind
-  private _getAriaLabelId(ariaId: string, text: string, alternativeId: string): string {
-    return ariaId || text && alternativeId;
+  private _getSubTextId = (): string | undefined => {
+    let { ariaDescribedById, modalProps, dialogContentProps, subText } = this.props;
+    let id = ariaDescribedById || (modalProps && modalProps.subtitleAriaId);
+
+    if (!id) {
+      id = (subText || (dialogContentProps && dialogContentProps.subText)) && this._defaultSubTextId;
+    }
+
+    return id;
+  }
+
+  private _getTitleTextId = (): string | undefined => {
+    let { ariaLabelledById, modalProps, dialogContentProps, title } = this.props;
+    let id = ariaLabelledById || (modalProps && modalProps.titleAriaId);
+
+    if (!id) {
+      id = (title || (dialogContentProps && dialogContentProps.title)) && this._defaultTitleTextId;
+    }
+
+    return id;
   }
 }

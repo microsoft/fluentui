@@ -87,7 +87,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                   <TextField
                     className={ css('ms-ColorPicker-input', styles.input) }
                     value={ color.hex }
-                    ref={ (ref) => this.hexText = ref }
+                    ref={ (ref) => this.hexText = ref! }
                     onBlur={ this._onHexChanged }
                   />
                 </td>
@@ -96,7 +96,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.r) }
-                    ref={ (ref) => this.rText = ref }
+                    ref={ (ref) => this.rText = ref! }
                   />
                 </td>
                 <td style={ { width: '18%' } }>
@@ -104,7 +104,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.g) }
-                    ref={ (ref) => this.gText = ref }
+                    ref={ (ref) => this.gText = ref! }
                   />
                 </td>
                 <td style={ { width: '18%' } }>
@@ -112,7 +112,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     className={ css('ms-ColorPicker-input', styles.input) }
                     onBlur={ this._onRGBAChanged }
                     value={ String(color.b) }
-                    ref={ (ref) => this.bText = ref }
+                    ref={ (ref) => this.bText = ref! }
                   />
                 </td>
                 { !this.props.alphaSliderHidden && (
@@ -121,7 +121,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                       className={ css('ms-ColorPicker-input', styles.input) }
                       onBlur={ this._onRGBAChanged }
                       value={ String(color.a) }
-                      ref={ (ref) => this.aText = ref }
+                      ref={ (ref) => this.aText = ref! }
                     />
                   </td>
                 ) }

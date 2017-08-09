@@ -7,7 +7,6 @@ import { getStyles } from './CommandButton.styles';
 
 @customizable([ThemeSettingName])
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
-
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
@@ -20,7 +19,7 @@ export class CommandButton extends BaseComponent<IButtonProps, {}> {
       <BaseButton
         { ...this.props }
         variantClassName='ms-Button--command'
-        styles={ getStyles(theme, styles) }
+        styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
     );

@@ -1,5 +1,3 @@
-import { IButtonProps } from '../../Button';
-
 export interface ISwatchColorPicker { }
 
 export interface ISwatchColorPickerProps {
@@ -19,6 +17,11 @@ export interface ISwatchColorPickerProps {
   id?: string;
 
   /**
+   * Additional class name to provide on the root element
+   */
+  className?: string;
+
+  /**
    * The shape of the color cells, defaults to circle
    */
   cellShape?: 'circle' | 'square';
@@ -29,21 +32,9 @@ export interface ISwatchColorPickerProps {
   selectedId?: string;
 
   /**
-   * IButtonProps for the swatch color picker. If given the swatch color picker
-   * will render inside of a menu
+   * The color cells that will be made available to the user
    */
-  menuButtonProps?: IButtonProps;
-
-  /**
-   * Should the icon color be updated to align
-   * with the selected color? Default is false
-   */
-  setSelectedColorForIcon?: boolean;
-
-  /**
-   * The color options that will be made available to the user
-   */
-  swatchColorPickerItems: ISwatchColorPickerItemProps[];
+  colorCells: IColorCellProps[];
 
   /**
    * Callback issued when the user changes the color.
@@ -51,11 +42,6 @@ export interface ISwatchColorPickerProps {
    * (e.g. the user executed the currently selected cell to unselect it)
    */
   onColorChanged?: (id?: string, color?: string) => void;
-
-  /**
- * Callback issued when the user click a menu item
- */
-  onMenuItemClick?: (item: ISwatchColorPickerItemProps) => void;
 
   /**
    * Callback issued when the user hovers over a color cell.
@@ -73,9 +59,24 @@ export interface ISwatchColorPickerProps {
    * Is this swatch color picker disabled?
    */
   disabled?: boolean;
+
+  /**
+   * The optional position this grid is in the parent set (index in a parent menu, for example)
+   */
+  positionInSet?: number;
+
+  /**
+   * The optional size of the parent set (size of parent menu, for example)
+   */
+  setSize?: number;
+
+  /**
+   * Should focus cycle to the beginning of once the user navigates past the end (and visa vsersa). Defaults to true
+   */
+  shouldFocusCircularNavigate?: boolean;
 }
 
-export interface ISwatchColorPickerItemProps {
+export interface IColorCellProps {
 
   /**
    * Arbitrary unique string associated with this option
@@ -90,11 +91,6 @@ export interface ISwatchColorPickerItemProps {
   label?: string;
 
   /**
-   * The type of item this is
-   */
-  type: SwatchColorPickerItemType;
-
-  /**
    * The CSS-compatible string to describe the color
    */
   color?: string;
@@ -104,21 +100,4 @@ export interface ISwatchColorPickerItemProps {
    */
   index?: number;
 
-  /**
-   * The menu item button props. This value is only used if
-   * the type is MenuItem
-   */
-  menuItemButtonProps?: IButtonProps;
-
-  /**
-   * Is this individual item disabled?
-   */
-  disabled?: boolean;
-}
-
-export enum SwatchColorPickerItemType {
-  Cell = 0,
-  MenuItem = 1,
-  Divider = 2,
-  Header = 3
 }

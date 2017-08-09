@@ -7,7 +7,7 @@ import {
 import { IIconStyles } from './Icon.Props';
 
 export const getStyles = memoizeFunction((
-  customStyles: IIconStyles = undefined
+  customStyles?: IIconStyles
 ): IIconStyles => {
   let iconStyles = {
     root: {
@@ -19,5 +19,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(iconStyles, customStyles);
+  return mergeStyleSets(iconStyles, customStyles)!;
 });

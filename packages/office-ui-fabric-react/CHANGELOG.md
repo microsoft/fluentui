@@ -1,6 +1,153 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Jul 2017 10:24:31 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+
+## 4.31.0
+Tue, 08 Aug 2017 15:28:32 GMT
+
+### Minor changes
+
+- ComboBox: Putting the child component styles in the main props and a few other fixes
+- Moving SpinButton to Glamor based styling
+- GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component.
+- Checkbox: add custom render function for checkbox label.
+
+### Patches
+
+- BaseButton: Added screenReaderText styles to base button
+- BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
+- Added role alert to "no results" view 
+
+## 4.30.1
+Mon, 07 Aug 2017 10:22:46 GMT
+
+### Patches
+
+- Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed"
+- Dialog: fixing accessibility regression
+- Prevent auto-selection on focus in DetailsList
+- ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache
+- Textfield: removed background from textfield internal field
+
+## 4.30.0
+Fri, 04 Aug 2017 10:11:48 GMT
+
+### Minor changes
+
+- Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props.
+- Add ScrollablePane and Sticky components
+
+### Patches
+
+- Button: Merge the ISplitButtonStyles into IButtonStyles
+- Datepicker: updated icon size
+- Expand hit target of DetailsRow checkbox
+- ResizeGroup: Add another example use case to demo site
+- PeoplePicker: Improved keyboard support and font size updates.
+
+## 4.29.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- ConextualMenuItem: Support target value
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+- Searchbox: fixed bug when repeatedly entering a single character
+- Callout: Reverting the callout border to it's previous state with a light border.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
+
+## 4.27.0
+Tue, 01 Aug 2017 10:13:55 GMT
+
+### Minor changes
+
+- SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined
+- OverflowSet: Add focus method, class name and abstract item interface
+- Panel: added prop to force footer to bottom of the page
+
+### Patches
+
+- Allow the X in a persona to receive focus and update focus when it is clicked
+
+## 4.26.0
+Mon, 31 Jul 2017 10:12:08 GMT
+
+### Minor changes
+
+- BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems
+
+### Patches
+
+- MessageBar: Fix system problems that display when component is on website
+- Searchbox: Fixed broken disabled state and aligned styles with current XD styles
+
+## 4.25.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+### Patches
+
+- Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue.
+- Fix Callout to get a valid element
+
+## 4.25.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Moving ComboBox component to use the styling library
+
+### Patches
+
+- Fix hover card scroll
+- Checkbox: Added left textAlign style
+- Update accessibility for checkable menu items
+
+## 4.24.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- More type casting to get us on the path to enabling strictNullChecks
+
+### Patches
+
+- Dropdown: added onBlur support.
+- Fix focus issues for Safari and Firefox on Mac OS
+- Icons: Added new icons from 2.38
+- Adds prop to process selection in BasePicker
+- CommandBar: Accessibility fix for expand behavior
+
+## 4.23.0
+Tue, 25 Jul 2017 10:22:35 GMT
+
+### Minor changes
+
+- Button: Support expanded style state triggered by opened menu
+
+### Patches
+
+- Checkbox: Fixed label font size
+- TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font.
+- ResizeGroup: Prevent flashing when passing in new props
+- ResizeGroup: Don't show a scrollbar while measuring the hidden div
+- Textfield: Fixed high contrast border and textarea font family
+- Textfield: Removed icon pointer events so that any click is click in textfield
 
 ## 4.22.0
 Mon, 24 Jul 2017 10:24:30 GMT

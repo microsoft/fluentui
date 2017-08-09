@@ -41,6 +41,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   private _checkBox: HTMLInputElement;
   private _id: string;
+  private _classNames: ICheckboxClassNames;
 
   /**
    * Initialize a new instance of the TopHeaderV2
@@ -83,17 +84,18 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       boxSide,
       theme,
       styles: customStyles,
-        } = this.props;
+      onRenderLabel = this._onRenderLabel
+    } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
     const isReversed = boxSide !== 'start' ? true : false;
 
-    const classNames = this._getClassNames(
-      getStyles(theme, customStyles),
-      className,
-      disabled,
-      isChecked,
-      isReversed
+    this._classNames = this._getClassNames(
+      getStyles(theme!, customStyles),
+      className!,
+      disabled!,
+      isChecked!,
+      isReversed!
     );
 
     return (
@@ -106,25 +108,26 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         name={ name }
         id={ this._id }
         role='checkbox'
-        className={ classNames.root }
+        type='button'
+        className={ this._classNames.root }
         onClick={ this._onClick }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         aria-checked={ isChecked }
         aria-disabled={ disabled }
       >
-        <label className={ classNames.label } htmlFor={ this._id } >
-          <div className={ classNames.checkbox }>
-            <Icon iconName='CheckMark' className={ classNames.checkmark } />
+        <label className={ this._classNames.label } htmlFor={ this._id } >
+          <div className={ this._classNames.checkbox }>
+            <Icon iconName='CheckMark' className={ this._classNames.checkmark } />
           </div>
-          { label && <span className={ classNames.text }>{ label }</span> }
+          { onRenderLabel(this.props, this._onRenderLabel) }
         </label>
       </button>
     );
   }
 
   public get checked(): boolean {
-    return this.state.isChecked;
+    return this.state.isChecked!;
   }
 
   public focus(): void {
@@ -153,16 +156,30 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   @autobind
   private _onClick(ev: React.FormEvent<HTMLButtonElement>) {
-    const { onChange } = this.props;
-    let { isChecked } = this.state;
+    const { disabled, onChange } = this.props;
+    const { isChecked } = this.state;
+    ev.preventDefault();
 
-    if (onChange) {
-      onChange(ev, !isChecked);
-    }
+    if (!disabled) {
+      if (onChange) {
+        onChange(ev, !isChecked);
+      }
 
-    if (this.props.checked === undefined) {
-      this.setState({ isChecked: !isChecked });
+      if (this.props.checked === undefined) {
+        this.setState({ isChecked: !isChecked });
+      }
     }
+  }
+
+  @autobind
+  private _onRenderLabel(props: ICheckboxProps) {
+    const { label } = props;
+
+    return label ? (
+      <span className={ this._classNames.text }>{ label }</span>
+    ) : (
+        null
+      );
   }
 
   @memoize

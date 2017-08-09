@@ -12,7 +12,6 @@ export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}>
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Button with aria description for screen reader</Label>
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
