@@ -22,39 +22,49 @@ let rules = Object.assign(
   require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
-build.tslint.setConfig({
-  lintConfig: { rules },
-  displayAsWarning: false
-});
-
-// TODO: remove this! There are a number of lint errors to fix.
-build.tslint.isEnabled = () => false;
-
-build.webpack.isEnabled = () => isProduction;
 
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
+// Use css modules.
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
 
-build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
+// Use Karma Tests - Disable during develoment if prefered
+build.karma.isEnabled = () => false;
 
+// Disable unnecessary subtasks.
+build.preCopy.isEnabled = () => false;
+
+//Disable tslint
+build.tslint.isEnabled = () => false;
+
+// Copy fabric-core to dist to be published with fabric-react.
 build.postCopy.setConfig({
+  shouldFlatten: false,
   copyTo: {
-    [distFolder]: [
-      'src/**/*.png',
-      'node_modules/office-ui-fabric-core/dist/css/**/*'
+    [path.join(distFolder, 'sass')]: [
+      'node_modules/office-ui-fabric-core/dist/sass/**/*.*'
+    ],
+    [path.join(distFolder, 'css')]: [
+      'node_modules/office-ui-fabric-core/dist/css/**/*.*'
     ]
   }
 });
 
-// process *.Example.tsx as text.
-build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
+// Produce AMD bits in lib-amd on production builds.
+if (isProduction || isNuke) {
+  build.setConfig({
+    libAMDFolder: path.join(packageFolder, 'lib-amd')
+  });
+}
 
+// Short aliases for subtasks.
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
-
-// Use Karma Tests - Disable during develoment if prefered, turned off for now
-build.karma.isEnabled = () => false;
+build.task('sass', build.sass);
 
 // initialize tasks.
 build.initialize(gulp);
