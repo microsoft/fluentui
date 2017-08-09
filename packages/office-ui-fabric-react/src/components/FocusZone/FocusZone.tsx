@@ -62,7 +62,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     this._warnDeprecations({ rootProps: undefined });
 
     this._id = getId('FocusZone');
-    _allInstances[this._id] = this;
 
     this._focusAlignment = {
       left: 0,
@@ -71,6 +70,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public componentDidMount() {
+    _allInstances[this._id] = this;
     const windowElement = this.refs.root.ownerDocument.defaultView;
 
     let parentElement = getParent(this.refs.root);
