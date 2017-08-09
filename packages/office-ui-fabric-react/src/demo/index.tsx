@@ -12,8 +12,9 @@ import './ColorStyles.scss';
 
 import { initializeIcons } from '@uifabric/icons';
 
-setBaseUrl('./dist/');
 initializeIcons();
+
+setBaseUrl('./dist/');
 
 let rootElement: HTMLElement | null;
 

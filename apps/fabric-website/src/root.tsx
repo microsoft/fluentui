@@ -10,6 +10,9 @@ import { setBaseUrl } from '@uifabric/utilities/lib/resources';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
+import { initializeIcons } from '@uifabric/icons';
+
+initializeIcons();
 
 let isProduction = process.argv.indexOf('--production') > -1;
 
