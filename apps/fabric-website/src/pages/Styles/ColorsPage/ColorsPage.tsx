@@ -7,10 +7,10 @@ const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 import { baseURL } from '../../../appConfig';
 
-const accentColorsData = require('json!../../../data/colors-accent.json');
-const colorClassesData = require('json!../../../data/colors-classes.json');
-const neutralColorsData = require('json!../../../data/colors-neutral.json');
-const themeColorsData = require('json!../../../data/colors-theme.json');
+const accentColorsData = require('../../../data/colors-accent.json');
+const colorClassesData = require('../../../data/colors-classes.json');
+const neutralColorsData = require('../../../data/colors-neutral.json');
+const themeColorsData = require('../../../data/colors-theme.json');
 
 export class ColorsPage extends React.Component<any, any> {
   public render() {

@@ -94,7 +94,7 @@
 
     if (isLocal) {
       scripts.push.apply(scripts, reactDevelopment);
-      scripts.push('/dist/fabric-site.js');
+      scripts.push('fabric-website.js');
     } else if (isDogfood) {
       if (noCompress) {
         scripts.push.apply(scripts, reactDevelopment);
