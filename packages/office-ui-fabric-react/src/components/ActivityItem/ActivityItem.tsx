@@ -31,10 +31,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   public render() {
     let {
       className,
-      onRenderIcon = this._onRenderIcon,
-      onRenderActivityDescription = this._onRenderActivityDescription,
-      onRenderComments = this._onRenderComments,
-      onRenderTimeStamp = this._onRenderTimeStamp,
       styles: customStyles,
     } = this.props;
 
@@ -49,56 +45,26 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return (
       <div className={ this._classNames.root } style={ this.props.style } >
 
-        { (this.props.onRenderIcon || this.props.activityPersonas) &&
+        { (this.props.activityPersonas || this.props.activityIcon) &&
           <div className={ this._classNames.activityTypeIcon }>
-            { onRenderIcon(this.props, this._onRenderIcon) }
+            { this.props.activityPersonas ? this._onRenderPersonaArray(this.props) : this.props.activityIcon }
           </div>
         }
 
         <div className={ this._classNames.activityContent }>
-          { onRenderActivityDescription(this.props, this._onRenderActivityDescription) }
-          { onRenderComments(this.props, this._onRenderComments) }
-          { onRenderTimeStamp(this.props, this._onRenderTimeStamp) }
+          { this.props.activityDescription &&
+            <span className={ this._classNames.activityText }>{ this.props.activityDescription }</span>
+          }
+          { !this.props.isCompact && this.props.comments &&
+            <div className={ this._classNames.commentText }>{ this.props.comments }</div>
+          }
+          { !this.props.isCompact && this.props.timeStamp &&
+            <div className={ this._classNames.timeStamp }>{ this.props.timeStamp }</div>
+          }
         </div>
 
       </div>
     );
-  }
-
-  @autobind
-  private _onRenderIcon(props: IActivityItemProps): JSX.Element | null {
-    if (props.activityPersonas) {
-      return this._onRenderPersonaArray(props);
-    }
-
-    return null;
-  }
-
-  @autobind
-  private _onRenderActivityDescription(props: IActivityItemProps): JSX.Element | null {
-    if (props.activityDescriptionText) {
-      return (<span className={ this._classNames.activityText }>{ props.activityDescriptionText }</span>);
-    }
-
-    return null;
-  }
-
-  @autobind
-  private _onRenderComments(props: IActivityItemProps): JSX.Element | null {
-    if (!props.isCompact && props.commentText) {
-      return (<div className={ this._classNames.commentText }>{ props.commentText }</div>);
-    }
-
-    return null;
-  }
-
-  @autobind
-  private _onRenderTimeStamp(props: IActivityItemProps): JSX.Element | null {
-    if (!props.isCompact && props.timeStamp) {
-      return (<div className={ this._classNames.timeStamp }>{ props.timeStamp }</div>);
-    }
-
-    return null;
   }
 
   // If activityPersonas is an array of persona props, build the persona cluster element.

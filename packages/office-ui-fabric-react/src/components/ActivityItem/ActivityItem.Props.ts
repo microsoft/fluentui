@@ -6,19 +6,24 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 // Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * Text describing the activity that occurred and naming the people involved in it.
+   * An element describing the activity that took place. If not included, no description of the activity is shown.
    */
-  activityDescriptionText?: string;
+  activityDescription?: React.ReactNode[] | React.ReactNode;
 
   /**
-   * If onRenderIcon is not, then the persona props in this array will be used as the icon for the this activity item.
+   * An element containing an icon shown next to the activity item.
+   */
+  activityIcon?: React.ReactNode;
+
+  /**
+   * If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.
    */
   activityPersonas?: Array<IPersonaProps>;
 
   /**
-   * Text of comments or @mention messages.
+   * An element containing the text of comments or @mention messages. If not included, no comments are shown.
    */
-  commentText?: string;
+  comments?: React.ReactNode[] | React.ReactNode;
 
   /**
    * Gets ref to component interface.
@@ -31,34 +36,14 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   isCompact?: boolean;
 
   /**
-   * A renderer for the description of the current activity.
-   */
-  onRenderActivityDescription?: IRenderFunction<IActivityItemProps>;
-
-  /**
-   * A renderer that adds the text of a comment below the activity description.
-   */
-  onRenderComments?: IRenderFunction<IActivityItemProps>;
-
-  /**
-   * A renderer to create the icon next to the activity item.
-   */
-  onRenderIcon?: IRenderFunction<IActivityItemProps>;
-
-  /**
-   * A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.
-   */
-  onRenderTimeStamp?: IRenderFunction<IActivityItemProps>;
-
-  /**
    * Optional styling for the elements within the Activity Item.
    */
   styles?: IActivityItemStyles;
 
   /**
-   * Text shown as a timestamp on this activity. If not included, no timestamp is shown.
+   * Element shown as a timestamp on this activity. If not included, no timestamp is shown.
    */
-  timeStamp?: string;
+  timeStamp?: React.ReactNode[] | React.ReactNode;
 }
 
 export interface IActivityItemStyles {
