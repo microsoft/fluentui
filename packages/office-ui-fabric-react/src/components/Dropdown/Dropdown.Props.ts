@@ -18,7 +18,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   /**
    * Callback issues when the selected option changes
    */
-  onChanged?: (option: IDropdownOption, index?: number) => void;
+  onChanged?: (option: IDropdownOption) => void;
 
   /**
    * Optional custom renderer for placeholder text
