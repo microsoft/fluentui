@@ -119,10 +119,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          isMonthPickerVisible && isDayPickerVisible && !showMonthPickerAsOverlay && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
+          isMonthPickerVisible && isDayPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
           isMonthPickerVisible && !isDayPickerVisible && !showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible),
-          isMonthPickerVisible && showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerIsMonthPickerOverlayVisible),
-          isDayPickerVisible && showMonthPickerAsOverlay && styles.pickerIsDayPickerOverlayVisible
+          showMonthPickerAsOverlay && styles.overlayedCalendars,
         ) } >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>

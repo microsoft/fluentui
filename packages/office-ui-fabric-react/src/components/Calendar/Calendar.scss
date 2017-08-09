@@ -260,8 +260,8 @@ $Calendar-dayPicker-margin: 10px;
 // five pixels for horizontal centering and moves them down.
 .optionGrid {
   position: relative;
-  height: 210px;
-  width: 280px;
+  height: 155px;
+  width: 220px;
   @include margin(10px, 0, 30px, 5px);
 }
 
@@ -406,7 +406,7 @@ $Calendar-dayPicker-margin: 10px;
 
 
     .holder {
-      width: 440px;
+      width: 450px;
     }
     // Show the month picker.
     .monthPicker {
@@ -424,9 +424,7 @@ $Calendar-dayPicker-margin: 10px;
       @include margin-left(12px);
     }
 
-
     .optionGrid {
-      width: 200px;
       height: auto;
       @include margin(10px, 0, 0, 0);
     }
@@ -451,7 +449,7 @@ $Calendar-dayPicker-margin: 10px;
       height: 40px;
       line-height: 38px;
       font-size: 12px;
-      @include margin(0, 10px, 10px, 0);
+      @include margin(0, 14px, 14px, 0);
 
       &:hover {
         outline: 1px solid transparent;
@@ -490,7 +488,7 @@ $Calendar-dayPicker-margin: 10px;
   }
 
   // Show the month picker over date picker (1 column layout), if enabled
-  .pickerIsMonthPickerOverlayVisible {
+  .overlayedCalendars {
     // Show the month picker.
 
     .holder {
@@ -510,10 +508,6 @@ $Calendar-dayPicker-margin: 10px;
       @include margin-left(12px);
     }
 
-    .optionGrid {
-      width: 220px;
-      @include margin(10px, 0, 0, 0px);
-    }
     // This component is only used on small displays.
     .toggleMonthView {
       display: none;
@@ -551,15 +545,10 @@ $Calendar-dayPicker-margin: 10px;
 
     // Position the "Go to today" button below the month picker.
     .goToday {
-      @include ms-borderBox;
-      font-size: 12px;
-      height: $Calendar-day;
-      line-height: $Calendar-day;
-      padding: 0 10px;
-      @include ms-right(10px);
-      @include text-align(right);
-      top: 199px;
+      @include ms-right(5px);
+      bottom: 9px;
     }
+
     // State: The picker is showing the year components.
     // On larger screens the calendar will remain and the years
     // will replace the months.
@@ -581,27 +570,17 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-   // Show the month picker over day picker (1 column layout), if enabled
-  .pickerIsDayPickerOverlayVisible{
-
-    //When calendars are overlayed on each other, and 'Go to today' button is enabled
-    //keeps button from going off screen
-    .holder {
-      width: 230px;
-    }
-
-    //keep 'Go to today' button in same spot as month picker
-    .goToday{
-      right: 10px;
-    }
-  }
-
   // if only the month picker is visible, don't show day picker
   .pickerOnlyMonthPickerVisible {
     // Hide the day picking components.
     .dayPicker,
     .monthComponents {
       display: none;
+    }
+
+    .optionGrid{
+      width: 280px;
+      height: 210px;
     }
 
     // Show the month picking components.
@@ -650,9 +629,14 @@ $Calendar-dayPicker-margin: 10px;
   }
 
   // Do not hide Month picker if it is the only calendar
-  .pickerOnlyMonthPickerVisible, .pickerIsMonthPickerOverlayVisible{
+  .pickerOnlyMonthPickerVisible, .overlayedCalendars{
     .monthPicker{
       display: block;
+    }
+
+    .optionGrid{
+      height: 210px;
+      width: 280px;
     }
 
     //keep arrows in place when switching between calendar and month overlay
