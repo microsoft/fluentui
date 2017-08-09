@@ -45,6 +45,16 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     };
   }
 
+  public componentDidMount() {
+    const target = this._getTargetElement();
+
+    this._events.on(target, 'mouseenter', this._cardOpen);
+    this._events.on(target, 'mouseleave', this._cardDismiss);
+    this._events.on(target, 'focus', this._cardOpen);
+    this._events.on(target, 'blur', this._cardDismiss);
+    this.props.instantOpenOnClick && this._events.on(target, 'click', this._instantOpenExpanded);
+  }
+
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
     if (newState.isHoverCardVisible !== this.state.isHoverCardVisible) {
       if (newState.isHoverCardVisible) {
@@ -84,11 +94,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       <div
         className={ css(this._styles.host) }
         ref={ this._resolveRef('_hoverCard') }
-        onFocusCapture={ this._cardOpen }
-        onBlurCapture={ this._cardDismiss }
-        onMouseEnter={ this._cardOpen }
-        onMouseLeave={ this._cardDismiss }
-        onClick={ onClick }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >
         { children }
@@ -108,7 +113,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   private _getTargetElement(): HTMLElement {
-    return this._hoverCard;
+    return this.props.target ? this.props.target : this._hoverCard;
   }
 
   // Show HoverCard
@@ -128,16 +133,21 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // Hide HoverCard
   @autobind
-  private _cardDismiss(ev: React.MouseEvent<HTMLDivElement> | React.FocusEvent<HTMLDivElement>) {
-    const eventType = ev.type;
+  private _cardDismiss(ev: MouseEvent) {
+    const { type, x, y } = ev;
     this._async.clearTimeout(this._openTimerId);
 
     this._dismissTimerId = this._async.setTimeout(() => {
-      if (!(this.props.sticky && eventType === 'mouseleave')) {
-        this.setState({
-          isHoverCardVisible: false,
-          mode: ExpandingCardMode.compact
-        });
+      if (!(this.props.sticky && type === 'mouseleave')) {
+        const rect = this._hoverCard.getBoundingClientRect();
+        // handle the case when dismiss is called by target when cursor moves towards the card.
+        const isInsideCard: boolean = x <= rect.right && x >= rect.left && y >= rect.top;
+        if (!isInsideCard) {
+          this.setState({
+            isHoverCardVisible: false,
+            mode: ExpandingCardMode.compact
+          });
+        }
       }
     }, this.props.cardDismissDelay!);
   }
