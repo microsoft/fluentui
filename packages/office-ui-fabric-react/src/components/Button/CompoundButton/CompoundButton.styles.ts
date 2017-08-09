@@ -1,29 +1,34 @@
-import { IButtonStyles, ButtonTheme } from '../Button.Props';
+import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets
+  mergeStyleSets,
+  FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
-  getStyles as getDefaultButtonStyles
-} from '../DefaultButton/DefaultButton.styles';
+  getStyles as getBaseButtonStyles
+} from '../BaseButton.styles';
 import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
+
+import {
+  primaryStyles,
+  standardStyles
+} from '../ButtonThemes';
 
 const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
 export const getStyles = memoizeFunction((
-  buttonTheme: ButtonTheme,
+  primary: boolean,
   theme: ITheme,
-  customStyles?: IButtonStyles
+  customStyles?: IButtonStyles,
+  focusInset?: string,
+  focusColor?: string
 ): IButtonStyles => {
-  let defaultButtonStyles: IButtonStyles = getDefaultButtonStyles(
-    theme,
-    customStyles
-  );
+  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let compoundButtonStyles: IButtonStyles = {
     root: {
@@ -42,9 +47,9 @@ export const getStyles = memoizeFunction((
 
     label: {
       margin: '0 0 5px',
-      lineHeight: '100%'
+      lineHeight: '100%',
+      fontWeight: FontWeights.semibold
     },
-
     description: [
       theme.fonts.small,
       {
@@ -54,7 +59,10 @@ export const getStyles = memoizeFunction((
 
   };
 
-  let standardTheme: IButtonStyles = {
+  let standardCompoundTheme: IButtonStyles = {
+
+    ...standardStyles(theme),
+
     description: {
       color: theme.palette.neutralSecondary,
     },
@@ -76,36 +84,9 @@ export const getStyles = memoizeFunction((
     }
   }
 
-  let primaryTheme: IButtonStyles = {
-    root: {
-      backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
-    },
+  let primaryCompoundTheme: IButtonStyles = {
 
-    rootHovered: {
-      backgroundColor: theme.palette.themeDark,
-      color: theme.palette.white
-    },
-
-    rootPressed: {
-      backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
-    },
-
-    rootExpanded: {
-      backgroundColor: theme.palette.themePrimary,
-      color: theme.palette.white
-    },
-
-    rootChecked: {
-      backgroundColor: theme.palette.themeDark,
-      color: theme.palette.white,
-    },
-
-    rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.black
-    },
+    ...primaryStyles(theme),
 
     description: {
       color: theme.palette.white,
@@ -131,9 +112,9 @@ export const getStyles = memoizeFunction((
 
 
   return mergeStyleSets(
-    defaultButtonStyles,
+    baseButtonStyles,
     compoundButtonStyles,
-    buttonTheme == ButtonTheme.primary ? primaryTheme : standardTheme,
+    primary ? primaryCompoundTheme : standardCompoundTheme,
     splitButtonStyles,
     customStyles
   )!;

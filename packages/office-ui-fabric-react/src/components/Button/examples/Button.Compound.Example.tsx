@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {
   CompoundButton,
-  IButtonProps,
-  ButtonTheme
+  IButtonProps
 } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
@@ -29,7 +28,7 @@ export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
         <div>
           <Label>Primary</Label>
           <CompoundButton
-            buttonTheme={ ButtonTheme.primary }
+            primary={ true }
             description='You can create a new account here.'
             disabled={ disabled }
             checked={ checked }

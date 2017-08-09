@@ -19,7 +19,8 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
         </div>
         <div>
           <Label>Primary</Label>
-          <PrimaryButton
+          <DefaultButton
+            primary={ true }
             data-automation-id='test'
             disabled={ disabled }
             checked={ checked }

@@ -12,11 +12,17 @@ import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
 
+import {
+  primaryStyles,
+  standardStyles
+} from '../ButtonThemes';
+
 const DEFAULT_BUTTON_HEIGHT = '32px';
 const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
 export const getStyles = memoizeFunction((
+  primary: boolean,
   theme: ITheme,
   customStyles?: IButtonStyles,
   focusInset?: string,
@@ -28,34 +34,19 @@ export const getStyles = memoizeFunction((
     root: {
       minWidth: DEFAULT_BUTTON_MINWIDTH,
       height: DEFAULT_BUTTON_HEIGHT,
-      backgroundColor: theme.palette.neutralLighter,
-      color: theme.palette.neutralPrimary
     },
-
-    rootHovered: {
-      backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.black
-    },
-
-    rootPressed: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
-    },
-
-    rootExpanded: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
-    },
-
-    rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-      color: theme.palette.neutralDark
-    },
-
     label: {
       fontWeight: FontWeights.semibold
     }
   };
 
-  return mergeStyleSets(baseButtonStyles, defaultButtonStyles, splitButtonStyles, customStyles)!;
+
+
+  return mergeStyleSets(
+    baseButtonStyles,
+    defaultButtonStyles,
+    primary ? primaryStyles(theme) : standardStyles(theme),
+    splitButtonStyles,
+    customStyles
+  )!;
 });
