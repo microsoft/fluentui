@@ -362,6 +362,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           aria-posinset={ index + 1 }
           aria-setsize={ totalItemCount }
+          aria-disabled={ item.isDisabled }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
@@ -403,10 +404,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-haspopup': hasSubmenuItems(item) || null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
       'aria-checked': isChecked,
-      role: canCheck ? 'menuitemcheckbox' : 'menuitem',
-      style: item.style,
       'aria-posinset': index + 1,
       'aria-setsize': totalItemCount,
+      'aria-disabled': item.isDisabled,
+      role: canCheck ? 'menuitemcheckbox' : 'menuitem',
+      style: item.style
     };
 
     return React.createElement(
