@@ -390,7 +390,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement>) {
+  protected onInputBlur(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }

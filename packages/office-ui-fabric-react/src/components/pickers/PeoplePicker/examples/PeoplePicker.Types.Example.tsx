@@ -18,7 +18,8 @@ import {
   NormalPeoplePicker,
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button'; import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people, mru } from './PeoplePickerExampleData';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Promise } from 'es6-promise';
