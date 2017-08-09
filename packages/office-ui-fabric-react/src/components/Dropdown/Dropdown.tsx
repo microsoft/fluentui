@@ -156,7 +156,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ ariaLabel || label }
+          aria-label={ ariaLabel && !label ? ariaLabel : null }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex! >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
