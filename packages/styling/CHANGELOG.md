@@ -1,6 +1,14 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+
+## 0.19.0
+Tue, 08 Aug 2017 15:28:32 GMT
+
+### Minor changes
+
+- Styling: added a screenReaderText utility style
+- Adding a color to the palette
 
 ## 0.18.0
 Mon, 07 Aug 2017 10:22:46 GMT
