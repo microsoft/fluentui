@@ -32,7 +32,9 @@ module.exports = {
     inline: true,
     port: 4321
   },
-
+  preLoaders: [
+    { test: /\.json$/, loader: 'json' },
+  ],
   module: {
     loaders: [
       {
