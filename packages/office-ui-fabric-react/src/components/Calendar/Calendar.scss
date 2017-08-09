@@ -447,8 +447,8 @@ $Calendar-dayPicker-margin: 10px;
     // Reduce the size of the month buttons.
     .monthOption,
     .yearOption {
-      width: $Calendar-day;
-      height: $Calendar-day;
+      width: 40px;
+      height: 40px;
       line-height: 38px;
       font-size: 12px;
       @include margin(0, 10px, 10px, 0);
@@ -531,8 +531,8 @@ $Calendar-dayPicker-margin: 10px;
     // Reduce the size of the month buttons.
     .monthOption,
     .yearOption {
-      width: $Calendar-day;
-      height: $Calendar-day;
+      width: 40px;
+      height: 40px;
       line-height: 38px;
       font-size: 12px;
       @include margin(0, 14px, 14px, 0);
