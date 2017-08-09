@@ -212,15 +212,10 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onChanged(option: IComboBoxOption, index: number, value: string) {
+  private _onChanged(option: IComboBoxOption, value: string) {
     if (option !== undefined) {
       this.setState({
         selectedOptionKey: option.key,
-        value: null
-      });
-    } else if (index !== undefined && index >= 0 && index < this.state.options.length) {
-      this.setState({
-        selectedOptionKey: this.state.options[index].key,
         value: null
       });
     } else if (value !== undefined) {

@@ -249,7 +249,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         // for multi-select, flip the checked value
         let changedOpt = options[index];
         changedOpt.selected = this.props.multiSelect ? !checked : true;
-        onChanged(changedOpt, index);
+        onChanged(changedOpt);
       }
     }
   }

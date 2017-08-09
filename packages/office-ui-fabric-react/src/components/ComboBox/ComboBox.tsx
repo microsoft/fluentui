@@ -611,7 +611,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Did the creator give us an onChanged callback?
       if (onChanged) {
-        onChanged(option, index);
+        onChanged(option);
       }
 
       // if we have a new selected index,
@@ -725,7 +725,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       });
 
       if (onChanged) {
-        onChanged(undefined, undefined, currentPendingValue);
+        onChanged(undefined, currentPendingValue);
       }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
