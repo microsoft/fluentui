@@ -3,7 +3,8 @@ import {
   BaseComponent,
   KeyCodes,
   css,
-  getRTL
+  getRTL,
+  autobind
 } from '../../Utilities';
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
@@ -19,8 +20,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
-  showMonthPickerAsOverlay?: boolean;
-  onSelectSwitchCalendar: (focus: boolean) => void;
+  onHeaderClick?: (focus: boolean) => void;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -47,7 +47,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, showMonthPickerAsOverlay } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth } = this.props;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
@@ -60,7 +60,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             <span
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
               onClick={ this._onSelectPrevYear }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
+              onKeyDown={ this._onSelectPrevYear }
               aria-label={ strings.prevYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
@@ -69,7 +69,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
               onClick={ this._onSelectNextYear }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
+              onKeyDown={ this._onSelectNextYear }
               aria-label={ strings.nextYearAriaLabel }
               role='button'
               tabIndex={ 0 }>
@@ -78,11 +78,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
           {
-            showMonthPickerAsOverlay ?
+            this.props.onHeaderClick ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                onClick={ () => this._onSelectSwitchCalendar(false) }
-                onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
+                onClick={ () => this._onHeaderClick(false) }
+                onKeyDown={ () => this._onHeaderClick(true) }
                 aria-label={ strings.dayPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
@@ -129,28 +129,33 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
-      callback();
-    }
-  }
+  // @autobind
+  // private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
+  //   if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+  //     callback();
+  //   }
+  // }
 
+  @autobind
   private _onSelectNextYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
   }
 
+  @autobind
   private _onSelectPrevYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
   }
 
+  @autobind
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 
-  private _onSelectSwitchCalendar(focus: boolean) {
-    this.props.onSelectSwitchCalendar(focus);
+  @autobind
+  private _onHeaderClick(focus: boolean) {
+    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null
   }
 }

@@ -49,8 +49,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   today?: Date;
-  showMonthPickerAsOverlay?: boolean;
-  onSelectSwitchCalendar: (focus: boolean) => void;
+  onHeaderClick?: (focus: boolean) => void;
 }
 
 export interface ICalendarDayState {
@@ -86,7 +85,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectSwitchCalendar, showMonthPickerAsOverlay } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
@@ -113,7 +112,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
+              onKeyDown={ this._onSelectNextMonth }
               aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
@@ -122,11 +121,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </span >
           </div >
           {
-            showMonthPickerAsOverlay ?
+            this.props.onHeaderClick ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
-                onClick={ () => this._onSelectSwitchCalendar(false) }
-                onKeyDown={ this._onKeyDown.bind(this, () => this._onSelectSwitchCalendar(true)) }
+                onClick={ () => this._onHeaderClick(false) }
+                onKeyDown={ () => this._onHeaderClick(true) }
                 aria-label={ strings.monthPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
@@ -218,12 +217,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
+  @autobind
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
 
+  @autobind
   private _onSelectDate(selectedDate: Date) {
     let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection } = this.props;
 
@@ -243,16 +244,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
+  @autobind
   private _onSelectNextMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
   }
 
+  @autobind
   private _onSelectPrevMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   }
 
-  private _onSelectSwitchCalendar(focus: boolean) {
-    this.props.onSelectSwitchCalendar(focus);
+  @autobind
+  private _onHeaderClick(focus: boolean) {
+    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null
   }
 
   @autobind

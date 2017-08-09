@@ -67,7 +67,7 @@ export interface ICalendarInlineExampleState {
 }
 
 export interface ICalendarInlineExampleProps {
-  isMonthPickerVisible: boolean;
+  isMonthPickerVisible?: boolean;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   showGoToToday: boolean;

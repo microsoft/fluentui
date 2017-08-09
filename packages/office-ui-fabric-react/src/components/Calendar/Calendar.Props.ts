@@ -152,12 +152,12 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 
   /**
-  * Aria-label for the "month picker" button.
+  * Aria-label for the "month picker" header. When showMonthPickerAsOverlay is true the header becomes clickable.
   */
   monthPickerAriaLabel?: string;
 
   /**
-  * Aria-label for the "day picker" button.
+  * Aria-label for the "day picker" header. When showMonthPickerAsOverlay is true the header becomes clickable.
   */
   dayPickerAriaLabel?: string;
 }
