@@ -75,6 +75,21 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   theme?: ITheme;
 
   /**
+   * Accessibile label for the checkbox.
+   */
+  ariaLabel?: string;
+
+  /**
+   * ID for element that contains label information for the checkbox. By default, passed-in 'label' property with be used.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * ID for element that provides extended information for the checkbox.
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * Custom styles for this component
    */
   styles?: ICheckboxStyles;
