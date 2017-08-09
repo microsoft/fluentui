@@ -205,7 +205,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     });
 
     if (focus) {
-      this._focusOnUpdate = true
+      this._focusOnUpdate = true;
     }
   }
 

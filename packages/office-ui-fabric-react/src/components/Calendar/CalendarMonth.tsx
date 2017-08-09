@@ -156,6 +156,6 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onHeaderClick(focus: boolean) {
-    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null
+    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null;
   }
 }

@@ -256,7 +256,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   @autobind
   private _onHeaderClick(focus: boolean) {
-    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null
+    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null;
   }
 
   @autobind
