@@ -23,9 +23,12 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.11",
+    "@microsoft/rush": "3.0.12",
     "github": "^7.0.0",
     "gulp": "^3.9.1",
     "yargs": "^6.5.0"
+  },
+  "dependencies": {
+    "rush": "0.0.2"
   }
 }
