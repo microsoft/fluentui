@@ -174,7 +174,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             />
           </button> : null
         ) }
-        { link.onClick && !link.isAnchor
+        { link.onClick && !link.forceAnchor
           ? this._renderButtonLink(link, linkIndex)
           : this._renderAnchorLink(link, linkIndex, nestingLevel) }
       </div>

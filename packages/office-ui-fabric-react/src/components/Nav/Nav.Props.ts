@@ -126,7 +126,7 @@ export interface INavLink {
 
   /**
    * Callback invoked when this link is clicked. Providing this callback will cause the link
-   * to render as a button (rather than an anchor) unless isAnchor is set to true.
+   * to render as a button (rather than an anchor) unless forceAnchor is set to true.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
@@ -185,9 +185,10 @@ export interface INavLink {
 
   /**
    * (Optional) By default, any link with onClick defined will render as a button.
-   * Set this property to true to override that behavior.
+   * Set this property to true to override that behavior. (Links without onClick defined
+   * will render as anchors by default.)
    */
-  isAnchor?: boolean;
+  forceAnchor?: boolean;
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.
