@@ -151,7 +151,6 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 }
 
-
 export interface ICalendarIconStrings {
   /**
   * FabricMDL2Icons name for the left navigation icon
