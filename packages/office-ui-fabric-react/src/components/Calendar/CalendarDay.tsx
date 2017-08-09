@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -48,6 +48,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   firstDayOfWeek: DayOfWeek;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
+  navigationIcons: ICalendarIconStrings;
   today?: Date;
 }
 
@@ -84,9 +85,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, navigationIcons } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
+    let leftNavigationIcon = navigationIcons.leftNavigation;
+    let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
@@ -106,7 +109,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.prevMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronRight' : 'ChevronLeft' } />
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
@@ -116,7 +119,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
           <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
