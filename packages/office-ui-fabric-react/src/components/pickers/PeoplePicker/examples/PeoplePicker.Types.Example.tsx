@@ -139,8 +139,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         key={ 'list' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
-        onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-        onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+        inputProps={ {
+          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+        } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
       />
     );
@@ -158,8 +160,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
         removeButtonAriaLabel={ 'Remove' }
-        onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-        onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+        inputProps={ {
+          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+        } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
       />
     );
@@ -175,8 +179,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
-        onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-        onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+        inputProps={ {
+          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+        } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
       />
     );
@@ -194,8 +200,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         onValidateInput={ this._validateInput }
-        onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-        onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+        inputProps={ {
+          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+        } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
       />
     );
@@ -213,8 +221,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
         onRemoveSuggestion={ this._onRemoveSuggestion }
-        onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-        onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+        inputProps={ {
+          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+        } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
       />
     );
@@ -232,8 +242,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onValidateInput={ this._validateInput }
         removeButtonAriaLabel={ 'Remove' }
         onItemSelected={ this._onItemSelected }
-        onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-        onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+        inputProps={ {
+          onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+        } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
       />
     );
@@ -257,8 +269,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           key={ 'controlled' }
           selectedItems={ this.state.currentSelectedItems }
           onChange={ this.onItemsChange.bind(this) }
-          onBlur={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onBlur was called.') }
-          onFocus={ (ev: React.FocusEvent<HTMLInputElement>) => console.log('Picker onFocus was called.') }
+          inputProps={ {
+            onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
+            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          } }
           componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
         />
         <label> Click to Add a person </label>
