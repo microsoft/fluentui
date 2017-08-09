@@ -5,19 +5,11 @@ import { IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 
-export interface IBasePicker<T> {
-  /** Gets the current value of the input. */
-  items: T[] | undefined;
-
-  /** Sets focus to the input. */
-  focus: () => void;
-}
-
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBasePicker<T>) => void;
+  componentRef?: () => void;
 
   /**
    * Function that specifies how the selected item will appear.
