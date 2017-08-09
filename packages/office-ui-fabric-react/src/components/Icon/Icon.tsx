@@ -41,9 +41,11 @@ export function Icon(props: IIconProps): JSX.Element {
     );
   } else {
     let iconDefinition = getIcon(iconName) || {
-      className: undefined,
+      subset: {
+        className: undefined
+      },
       code: undefined
-    } as IIconRecord;
+    };
 
     return (
       <i

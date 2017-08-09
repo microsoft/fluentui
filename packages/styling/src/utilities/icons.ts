@@ -64,11 +64,10 @@ export function registerIcons(iconSubset: IIconSubset): void {
  * @public
  * @param name - Name of icon.
  */
-export function getIcon(name: string): IIconRecord | undefined {
-  let icon: IIconRecord = _icons[name];
+export function getIcon(name?: string | null): IIconRecord | undefined {
+  let icon: IIconRecord = _icons[name!];
 
   if (icon) {
-
     let { subset } = icon;
 
     if (!subset.isRegistered) {
