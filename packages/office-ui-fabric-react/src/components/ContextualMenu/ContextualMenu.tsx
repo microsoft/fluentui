@@ -227,6 +227,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     // The menu should only return if items were provided, if no items were provided then it should not appear.
     if (items && items.length > 0) {
+      let indexCorrection = 0;
+      let totalItemCount = 0;
+      for (let item of items) {
+        if (item.itemType !== ContextualMenuItemType.Divider &&
+          item.itemType !== ContextualMenuItemType.Header) {
+          totalItemCount++;
+        }
+      }
       return (
         <Callout
           {...calloutProps}
@@ -259,9 +267,13 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                   aria-labelledby={ labelElementId }
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
                   onKeyDown={ this._onKeyDown }>
-                  { items.map((item, index) => (
-                    this._renderMenuItem(item, index, hasCheckmarks, hasIcons)
-                  )) }
+                  { items.map((item, index) => {
+                    if (item.itemType === ContextualMenuItemType.Divider ||
+                      item.itemType === ContextualMenuItemType.Header) {
+                      indexCorrection++;
+                    }
+                    return this._renderMenuItem(item, index - indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                  }) }
                 </ul>
               </FocusZone>
             ) : (null) }
@@ -274,7 +286,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+  private _renderMenuItem(item: IContextualMenuItem, index: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
 
     if (item.name === '-') {
@@ -291,7 +303,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         renderedItems.push(this._renderListItem(headerItem, item.key || index, item.className, item.title));
         break;
       default:
-        let menuItem = this._renderNormalItem(item, index, hasCheckmarks, hasIcons);
+        let menuItem = this._renderNormalItem(item, index, totalItemCount, hasCheckmarks, hasIcons);
         renderedItems.push(this._renderListItem(menuItem, item.key || index, item.className, item.title));
         break;
     }
@@ -319,14 +331,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return null;
   }
 
-  private _renderNormalItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+  private _renderNormalItem(item: IContextualMenuItem, index: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
       return [item.onRender(item)];
     }
     if (item.href) {
-      return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
+      return this._renderAnchorMenuItem(item, index, totalItemCount, hasCheckmarks, hasIcons);
     }
-    return this._renderButtonItem(item, index, hasCheckmarks, hasIcons);
+    return this._renderButtonItem(item, index, totalItemCount, hasCheckmarks, hasIcons);
   }
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
@@ -336,7 +348,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       </div>);
   }
 
-  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
       <div>
         <a
@@ -348,6 +360,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
           role='menuitem'
+          aria-posinset={ index + 1 }
+          aria-setsize={ totalItemCount }
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
@@ -358,6 +372,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderButtonItem(
     item: IContextualMenuItem,
     index: number,
+    totalItemCount: number,
     hasCheckmarks?: boolean,
     hasIcons?: boolean) {
     let { expandedMenuItemKey, subMenuId } = this.state;
@@ -390,6 +405,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-checked': isChecked,
       role: canCheck ? 'menuitemcheckbox' : 'menuitem',
       style: item.style,
+      'aria-posinset': index + 1,
+      'aria-setsize': totalItemCount,
     };
 
     return React.createElement(
