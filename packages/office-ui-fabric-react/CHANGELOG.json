@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.31.0",
+      "tag": "office-ui-fabric-react_v4.31.0",
+      "date": "Tue, 08 Aug 2017 15:28:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a92eb2a9a79dcab033bdbe78ca7a18b2d6607e99",
+            "comment": "BaseButton: Added screenReaderText styles to base button"
+          },
+          {
+            "author": "Boris Emorine <boris.emorine@gmail.com>",
+            "commit": "3966386109ba377bd35636def5b8f86ca9bcb3d0",
+            "comment": "BaseButton: Remove the IconButton dependency that was introduced with SplitButton."
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "231ef83db44a8da2e437f3436de05a2b39946f51",
+            "comment": "Added role alert to \"no results\" view "
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "40a60aa2489aa49074e7ed40b7de42f7125b5641",
+            "comment": "ComboBox: Putting the child component styles in the main props and a few other fixes"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a7bc11ddacabfcfbf4fbc56e99e6d13ea296b787",
+            "comment": "Moving SpinButton to Glamor based styling"
+          },
+          {
+            "author": "thomabr <thomabr@microsoft.com>",
+            "commit": "5e07c6d8d3518ef0301b1d1655dc467f4f7a0d3b",
+            "comment": "GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component."
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "5588aeea04b799744c9159401e448f76749c64e0",
+            "comment": "Checkbox: add custom render function for checkbox label."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.17.0 <1.0.0` to `>=0.19.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.30.1",
       "tag": "office-ui-fabric-react_v4.30.1",
       "date": "Mon, 07 Aug 2017 10:22:46 GMT",
