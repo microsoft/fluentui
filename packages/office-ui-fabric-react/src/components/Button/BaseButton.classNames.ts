@@ -52,7 +52,7 @@ export const getClassNames = memoizeFunction((
       disabled && checked && [
         styles.rootCheckedDisabled
       ],
-      !disabled && checked && {
+      !disabled && !expanded && checked && {
         ':hover': styles.rootCheckedHovered,
         ':active': styles.rootCheckedPressed
       }

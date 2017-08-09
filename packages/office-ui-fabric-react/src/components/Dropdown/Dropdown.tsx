@@ -4,7 +4,7 @@ import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
-import { CommandButton } from '../../Button';
+import { ActionButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -441,7 +441,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
     return (
       !this.props.multiSelect ?
-        <CommandButton
+        <ActionButton
           id={ id + '-list' + item.index }
           ref={ Dropdown.Option + item.index }
           key={ item.key }
@@ -458,7 +458,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
           ariaLabel={ item.ariaLabel || item.text }
           title={ item.text }
-        > { onRenderOption(item, this._onRenderOption) }</CommandButton>
+        > { onRenderOption(item, this._onRenderOption) }</ActionButton>
         :
         <Checkbox
           id={ id + '-list' + item.index }
