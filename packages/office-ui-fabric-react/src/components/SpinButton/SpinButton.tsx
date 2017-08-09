@@ -102,8 +102,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._onIncrement = this._defaultOnIncrement;
       this._onDecrement = this._defaultOnDecrement;
     }
-
-    this.focus = this.focus.bind(this);
   }
 
   /**
@@ -182,9 +180,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             aria-valuenow={ value }
             aria-valuemin={ min && String(min) }
             aria-valuemax={ max && String(max) }
-            onBlur={ this._onBlur }
+            onBlur={ this._onInputBlur }
             ref={ this._resolveRef('_input') }
-            onFocus={ this._onFocus }
+            onFocus={ this._onInputFocus }
             onKeyDown={ this._handleKeyDown }
             onKeyUp={ this._handleKeyUp }
             readOnly={ disabled }
@@ -240,7 +238,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   @autobind
-  private _onFocus() {
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement>) {
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
@@ -248,12 +246,19 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._input.select();
 
     this.setState({ isFocused: true });
+
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
   }
 
   @autobind
   private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
     this._validate(ev);
     this.setState({ isFocused: false });
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
   }
 
   /**
@@ -298,6 +303,24 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
      * still need to be wired to avoid React console errors
      * TODO: Check if issue is resolved when React 16 is available.
      */
+  }
+
+  @autobind
+  private _onInputBlur(ev: React.FocusEvent<HTMLInputElement>) {
+    this._validate(ev);
+
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
+  }
+
+  @autobind
+  private _onInputFocus(ev: React.FocusEvent<HTMLInputElement>) {
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
+
+    this.focus();
   }
 
   /**
