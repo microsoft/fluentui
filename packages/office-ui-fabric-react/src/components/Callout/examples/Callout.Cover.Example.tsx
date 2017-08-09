@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './CalloutExample.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint, CalloutLinkType } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
 export interface ICalloutCoverExampleState {
@@ -67,7 +67,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
             targetElement={ this._menuButtonElement }
             directionalHint={ directionalHint }
             coverTarget={ true }
-            isBeakVisible={ false }
+            linkType={ CalloutLinkType.none }
             gapSpace={ 0 }
           >
             <div className='ms-CalloutExample-header'>

@@ -15,6 +15,7 @@ import { mergeStyles, hideText } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
+import { CalloutLinkType } from '../../Callout';
 import { IButtonProps, IButton } from './Button.Props';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
 import { getClassNames as getSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
@@ -355,6 +356,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         target={ this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
+        calloutProps={ { linkType: CalloutLinkType.attached } }
       />
     );
   }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdown.Props';
 import { Checkbox } from '../../Checkbox';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
+import { Callout, CalloutLinkType } from '../../Callout';
 import { Label } from '../../Label';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
@@ -360,6 +360,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
+          linkType={ CalloutLinkType.attached }
         >
           <div style={ { width: this._dropDown.clientWidth - 2 } }>
             { onRenderList(props, this._onRenderList) }
