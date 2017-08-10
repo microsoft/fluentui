@@ -392,14 +392,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // now we re-render pages too frequently, for example, props.items increased from 30 to 60, although the 
     // first 30 items did not change, we still re-rendered all of them in this props.items change.
     if (usePageCache && page.startIndex === 0) {
-      if (cachedPage) {
-        cachedPage.pageElement = pageElement;
-      } else {
-        this._pageCache[page.key] = {
-          page: page,
-          pageElement: pageElement
-        };
-      }
+      this._pageCache[page.key] = {
+        page: page,
+        pageElement: pageElement
+      };
     }
     return pageElement;
   }
@@ -755,7 +751,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
     }
 
-    const page = {
+    return {
       key: pageKey,
       startIndex: startIndex === undefined ? -1 : startIndex,
       itemCount: (count === undefined) ? (items ? items.length : 0) : count,
@@ -764,18 +760,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       top: 0,
       height: 0
     };
-    if (pageKey.lastIndexOf('spacer', 0) === -1) {
-      if (cachedPage) {
-        cachedPage.page = page;
-      } else {
-        // todo
-        this._pageCache[pageKey] = {
-          page: page,
-          pageElement: undefined
-        };
-      }
-    }
-    return page;
   }
 
   private _getRenderCount(props?: IListProps): number {
