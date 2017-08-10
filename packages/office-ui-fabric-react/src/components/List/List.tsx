@@ -269,9 +269,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       // fill the currently visible rect, and then later render additional windows.
       this._resetRequiredWindows();
       this._requiredRect = null;
-      const log = `List componentWillReceiveProps: items count ${this.props.items!.length}, ${newProps.items ? newProps.items.length : 0}`;
-      performance.mark(log);
-      console.log(log);
 
       this._measureVersion++;
       this._invalidatePageCache();
@@ -304,9 +301,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     } else {
       shouldComponentUpdate = true;
     }
-    const logData = shouldComponentUpdate ? `measureVersion: ${this._measureVersion}, ${measureVersion}; items count: ${this.props.items ? this.props.items.length : 0}, ${newProps.items ? newProps.items.length : 0}; page keys: ${oldPages ? oldPages.map((page: IPage) => page.key).join(',') : ''} | ${newPages ? newPages.map((page: IPage) => page.key).join(',') : ''}` : '';
-    performance.mark(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
-    console.log(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
 
     return shouldComponentUpdate;
   }
@@ -334,9 +328,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       pageElements.push(this._renderPage(pages![i]));
     }
 
-    performance.mark(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`);
-    console.log(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`); 
-
     // console.log(`Page elements ${pageElements.length}`);
 
     return (
@@ -352,7 +343,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * when props.items change or forceUpdate called, throw away cached pages
    */
   private _invalidatePageCache() {
-    performance.mark('invalidPageCache');
     this._pageCache = {};
   }
 
@@ -592,7 +582,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let cachedHeight = this._cachedPageHeights[page.startIndex];
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
-    performance.mark(`measurepage fast rendering ${this._doFastRendering()}`);
 
     if (pageElement && !this._doFastRendering() && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       let newClientRect = {
@@ -655,8 +644,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let focusedIndex = this._focusedIndex;
     let endIndex = startIndex + renderCount;
     const fastRendering = this._doFastRendering();
-
-    performance.mark(`buildPages fast rendering ${fastRendering}`);
 
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
@@ -806,7 +793,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
     const { pages } = this.state;
     const renderCount = this._getRenderCount(props);
-    performance.mark(`updateRenderRects fast rendering ${this._doFastRendering()}`);
     // when running in faster rendering mode, we render all items without measurement to optimize page rendering perf
     if (this._doFastRendering()) {
       return;
