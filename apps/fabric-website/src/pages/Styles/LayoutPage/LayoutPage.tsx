@@ -6,8 +6,8 @@ import * as stylesImport from './LayoutPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const visibilityData = require('json!../../../data/layout-visibility.json');
-const breakpointsData = require('json!../../../data/responsive-breakpoints.json');
+const visibilityData = require('../../../data/layout-visibility.json');
+const breakpointsData = require('../../../data/responsive-breakpoints.json');
 
 export class LayoutPage extends React.Component<any, any> {
   public render() {

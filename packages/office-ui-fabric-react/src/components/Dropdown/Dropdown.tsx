@@ -154,7 +154,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='combobox'
+          role='menu'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel && !label ? ariaLabel : null }
           aria-describedby={ id + '-option' }
@@ -333,7 +333,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let {
       onRenderList = this._onRenderList,
       responsiveMode,
-      calloutProps
+      calloutProps,
+      dropdownWidth
     } = this.props;
 
     let isSmall = responsiveMode! <= ResponsiveMode.medium;
@@ -354,16 +355,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           isBeakVisible={ false }
           gapSpace={ 0 }
           doNotLayer={ false }
+          directionalHintFixed={ true }
           directionalHint={ DirectionalHint.bottomLeftEdge }
           { ...calloutProps }
           className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
           targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
+          calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
-            { onRenderList(props, this._onRenderList) }
-          </div>
+          { onRenderList(props, this._onRenderList) }
         </Callout>
     );
   }
