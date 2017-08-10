@@ -616,7 +616,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       // Did the creator give us an onChanged callback?
       if (onChanged) {
-        onChanged(option);
+        onChanged(option, index);
       }
 
       // if we have a new selected index,
