@@ -67,17 +67,6 @@ function createConfig(isProduction, publicPath) {
       extensions: ['', '.js']
     },
 
-    module: {
-      noParse: [/autoit.js/],
-      loaders: [
-        {
-          test: /\.js$/,
-          loader: 'source-map-loader',
-          enforce: 'pre'
-        }
-      ],
-    },
-
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',

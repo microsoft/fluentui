@@ -2974,11 +2974,11 @@
         "@microsoft/web-library-build": "3.2.4",
         "gulp": "3.9.1",
         "tslib": "1.7.1",
-        "typescript": "2.2.2"
+        "typescript": "2.4.2"
       },
       "dependencies": {
         "typescript": {
-          "version": "2.2.2",
+          "version": "2.4.2",
           "bundled": true
         }
       }
