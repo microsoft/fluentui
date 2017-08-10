@@ -27,8 +27,8 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             {
               key: 'A',
               text: 'Option A',
-              title: 'test1'
-            },
+              'data-automation-id': 'auto1'
+            } as IChoiceGroupOption,
             {
               key: 'B',
               text: 'Option B',

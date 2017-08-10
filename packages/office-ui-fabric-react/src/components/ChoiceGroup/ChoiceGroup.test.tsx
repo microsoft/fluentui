@@ -11,7 +11,7 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { key: '1', text: '1', title: 'test1' },
+  { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
@@ -183,10 +183,10 @@ describe('ChoiceGroup', () => {
 
     const extraAttributeGetter: (index: number) => string | null = (index: number): string | null => {
       const input: HTMLInputElement = choiceOptions[index] as HTMLInputElement;
-      return input.getAttribute('title');
+      return input.getAttribute('data-automation-id');
     };
 
-    expect(extraAttributeGetter(0)).to.be.eq('test1', 'Specified data attribute did not match');
+    expect(extraAttributeGetter(0)).to.be.eq('auto1', 'Specified data attribute did not match');
     expect(extraAttributeGetter(1)).to.be.null;
   });
 });
