@@ -79,7 +79,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     let {
       className,
       usePageCache,
-      registerInitialMeasurement
+      fastRenderingItemCount
     } = this.props;
     let {
       groups
@@ -101,7 +101,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ () => 1 }
               usePageCache = { usePageCache }
-              registerInitialMeasurement = { registerInitialMeasurement }
+              fastRenderingItemCount = { fastRenderingItemCount }
             />
           )
         }

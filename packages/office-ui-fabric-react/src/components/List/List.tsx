@@ -65,6 +65,10 @@ const _measureScrollRect = _measurePageRect;
  *
  * Measuring too frequently can pull performance down significantly. To compensate, we cache measured values so that
  * we can avoid re-measuring during operations that should not alter heights, like scrolling.
+ * 
+ * To optimize glass rendering performance, fastRenderingItemCount can be set. When items is smaller or equal to this
+ * number, List will run in fast mode to render all items without any measurements to improve page load time. And we
+ * start doing measurements when items grows larger than this threshold.
  *
  * However, certain operations can make measure data stale. For example, resizing the list, or passing in new props,
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
@@ -116,10 +120,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _scrollHeight: number;
   private _scrollTop: number;
   private _pageCache: IPageCache;
-
-  // when true, _updateRenderRects and _updatePageMeasurements will be no-op.
-  // This allows consumer app to be able to control when to do expensive measurement, such as after glass
-  private _waitingInitialMeasurement = false;
+  private _fastRenderingItemCount: number;
 
   constructor(props: IListProps) {
     super(props);
@@ -164,12 +165,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._scrollingToIndex = -1;
     this._pageCache = {};
     const {
-      registerInitialMeasurement
+      fastRenderingItemCount
     } = props;
-    if (registerInitialMeasurement) {
-      registerInitialMeasurement(this._doInitialMeasurement.bind(this));
-      this._waitingInitialMeasurement = true;
-    }
+    this._fastRenderingItemCount = fastRenderingItemCount || 0;
   }
 
   /**
@@ -271,6 +269,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       // fill the currently visible rect, and then later render additional windows.
       this._resetRequiredWindows();
       this._requiredRect = null;
+      const log = `List componentWillReceiveProps: items count ${this.props.items!.length}, ${newProps.items ? newProps.items.length : 0}`;
+      performance.mark(log);
+      console.log(log);
 
       this._measureVersion++;
       this._invalidatePageCache();
@@ -303,6 +304,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     } else {
       shouldComponentUpdate = true;
     }
+    const logData = shouldComponentUpdate ? `measureVersion: ${this._measureVersion}, ${measureVersion}; items count: ${this.props.items ? this.props.items.length : 0}, ${newProps.items ? newProps.items.length : 0}; page keys: ${oldPages ? oldPages.map((page: IPage) => page.key).join(',') : ''} | ${newPages ? newPages.map((page: IPage) => page.key).join(',') : ''}` : '';
+    performance.mark(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
+    console.log(`List shouldComponentUpdate: ${shouldComponentUpdate} ${logData}`);
+
     return shouldComponentUpdate;
   }
 
@@ -329,6 +334,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       pageElements.push(this._renderPage(pages![i]));
     }
 
+    performance.mark(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`);
+    console.log(`List render: items count ${this.props.items ? this.props.items.length : 0}, page count: ${pages ? pages.length : 0}`); 
+
     // console.log(`Page elements ${pageElements.length}`);
 
     return (
@@ -344,19 +352,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
    * when props.items change or forceUpdate called, throw away cached pages
    */
   private _invalidatePageCache() {
+    performance.mark('invalidPageCache');
     this._pageCache = {};
-  }
-
-  /**
-   * This is called from consume app to do expensive measurement at desired time to reduce reflow and glass render time
-   */
-  private _doInitialMeasurement(): void {
-    this._waitingInitialMeasurement = false;
-    const {
-      pages
-    } = this.state;
-    this._updateRenderRects();
-    this._updatePageMeasurements([] as IPage[], pages as IPage[]);
   }
 
   private _renderPage(page: IPage): any {
@@ -549,8 +546,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let heightChanged = false;
     let renderCount = this._getRenderCount();
 
-    // for perf reason, consumer apps want to defer page and rect measurements (expensive operations) until glass is rendered
-    if (this._waitingInitialMeasurement) {
+    // when doing fast rendering, we render all the items without page measurement
+    if (this._doFastRendering()) {
       return heightChanged;
     }
 
@@ -595,8 +592,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let cachedHeight = this._cachedPageHeights[page.startIndex];
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
+    performance.mark(`measurepage fast rendering ${this._doFastRendering()}`);
 
-    if (pageElement && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
+    if (pageElement && !this._doFastRendering() && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       let newClientRect = {
         width: pageElement.clientWidth,
         height: pageElement.clientHeight
@@ -656,6 +654,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let currentSpacer = null;
     let focusedIndex = this._focusedIndex;
     let endIndex = startIndex + renderCount;
+    const fastRendering = this._doFastRendering();
+
+    performance.mark(`buildPages fast rendering ${fastRendering}`);
 
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
@@ -671,15 +672,15 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       let isPageRendered = findIndex(this.state.pages as IPage[], (page) => page.items && page.startIndex === itemIndex) > -1;
       let isPageInAllowedRange = !this._allowedRect || pageBottom >= this._allowedRect.top && pageTop <= this._allowedRect.bottom!;
       let isPageInRequiredRange = !this._requiredRect || pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!;
-      let isPageVisible = !isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered));
+      let isPageVisible = !isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered)) || fastRendering;
       let isPageFocused = focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage);
       let isFirstPage = itemIndex === startIndex;
 
       // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
       // Only render whats visible, focused, or first page, 
-      // or when _waitingInitialMeasurement is set, consumers want to render pages with current items then do measurements
-      if (isPageVisible || isPageFocused || isFirstPage || this._waitingInitialMeasurement) {
+      // or when running in fast rendering mode, we render all current items in pages
+      if (isPageVisible || isPageFocused || isFirstPage) {
         if (currentSpacer) {
           pages.push(currentSpacer);
           currentSpacer = null;
@@ -713,8 +714,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
       pageTop += (pageBottom - pageTop + 1);
 
-      // when _waitingInitialMeasurement is set, consumer apps want to delay measurments, so no need to stop at the first page
-      if (isFirstRender && !this._waitingInitialMeasurement) {
+      // when running in faster rendering mode, we render all items without measurement so no need to stop at the first page
+      if (isFirstRender && !fastRendering) {
         break;
       }
     }
@@ -796,15 +797,21 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     return (renderCount === undefined ? (items ? items.length - startIndex! : 0) : renderCount);
   }
 
+  private _doFastRendering(): boolean {
+    return this._getRenderCount(this.props) <= this._fastRenderingItemCount;
+  }
+
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
   private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
     const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
-    // for perf reason, apps want to defer page and rect measurements (expensive operations) until glass is rendered
-    if (this._waitingInitialMeasurement) {
-      return;
-    }
     const { pages } = this.state;
     const renderCount = this._getRenderCount(props);
+    performance.mark(`updateRenderRects fast rendering ${this._doFastRendering()}`);
+    // when running in faster rendering mode, we render all items without measurement to optimize page rendering perf
+    if (this._doFastRendering()) {
+      return;
+    }
+
     let surfaceRect = this._surfaceRect;
     let scrollHeight = this._scrollElement && this._scrollElement.scrollHeight;
     let scrollTop = this._scrollElement ? this._scrollElement.scrollTop : 0;

@@ -98,7 +98,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * And because measurements are executed at the same time in measurer call, it will reduce reflows too.
    * The same property in List.Props
   */
-  registerInitialMeasurement?: (measurer: () => void) => void;
+  fastRenderingItemCount?: number;
 }
 
 export interface IGroup {
