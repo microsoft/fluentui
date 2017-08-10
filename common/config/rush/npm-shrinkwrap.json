@@ -2558,6 +2558,11 @@
       "resolved": "https://registry.npmjs.org/@types/gulp-util/-/gulp-util-3.0.30.tgz",
       "integrity": "sha1-TF9lg6IWCBOWZ+OsVrBbxn7PqPs="
     },
+    "@types/highlight.js": {
+      "version": "9.1.9",
+      "resolved": "https://registry.npmjs.org/@types/highlight.js/-/highlight.js-9.1.9.tgz",
+      "integrity": "sha1-7WM2lV6vIzt163kjubHzc9BF7wE="
+    },
     "@types/karma": {
       "version": "0.13.33",
       "resolved": "https://registry.npmjs.org/@types/karma/-/karma-0.13.33.tgz",
