@@ -2518,7 +2518,7 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uE8AB'.
    */
-  switcher: '\uE8AB',
+  switch: '\uE8AB',
   /**
    * Icon code with the value '\uE810'.
    */
@@ -2654,7 +2654,7 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uE74D'.
    */
-  trash: '\uE74D',
+  delete: '\uE74D',
   /**
    * Icon code with the value '\uEED1'.
    */
