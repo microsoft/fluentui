@@ -260,8 +260,8 @@ $Calendar-dayPicker-margin: 10px;
 // five pixels for horizontal centering and moves them down.
 .optionGrid {
   position: relative;
-  height: 155px;
-  width: 220px;
+  height: 210px;
+  width: 280px;
   @include margin(10px, 0, 30px, 5px);
 }
 
@@ -326,6 +326,15 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
+
+ .pickerOnlyMonthPickerVisible {
+
+  .yearComponents,
+  .decadeComponents {
+    top: 9px;
+  }
+ }
+
 // 460px and up.
 //
 // On screens that can fit it, we show the month picker next to the day picker if we have it enabled.
@@ -351,7 +360,7 @@ $Calendar-dayPicker-margin: 10px;
   }
 
   // Size the month components to the day picker's new width
-  .monthComponents {
+  .monthComponents,.yearComponents {
     width: 210px;
   }
 
@@ -389,7 +398,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  // Show the month picker next to date picker (2 column layout), if enabled
+  // Show the day picker and month picker side-by-side, if enabled
   .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .dayPicker {
@@ -425,7 +434,7 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .optionGrid {
-      height: auto;
+      width: 200px;
       @include margin(10px, 0, 0, 0);
     }
     // This component is only used on small displays.
@@ -450,7 +459,7 @@ $Calendar-dayPicker-margin: 10px;
       height: 40px;
       line-height: 38px;
       font-size: 12px;
-      @include margin(0, 14px, 14px, 0);
+      @include margin(0, 10px, 10px, 0);
 
       &:hover {
         outline: 1px solid transparent;
@@ -502,43 +511,21 @@ $Calendar-dayPicker-margin: 10px;
     // Style the month and year pickers.
     .monthPicker,
     .yearPicker {
+      top: 0px;
+      @include ms-left(0px);
       position: relative;
     }
-    // Size and position of the month and year labels.
-    .month {
-      @include margin-left(12px);
-    }
 
-    // This component is only used on small displays.
-    .toggleMonthView {
-      display: none;
-    }
-    // Position the current year and decade labels.
     .currentYear,
     .currentDecade {
-      font-size: 17px;
-      margin: 0;
-      height: $Calendar-day;
-      line-height: 26px;
-      padding: 0;
-      display: inline-block;
-    }
-    // Reduce the size of the month buttons.
-    .monthOption,
-    .yearOption {
-      width: 40px;
-      height: 40px;
-      line-height: 38px;
-      font-size: 12px;
-      @include margin(0, 14px, 14px, 0);
-
-      &:hover {
-        outline: 1px solid transparent;
-      }
+      padding:0px;
     }
 
+    .optionGrid{
+      margin: 10px 0 0 10px;
+    }
     // Arrows need to be in the same spot as the calendar
-    //when switching between the two
+    // when switching between the two
     .yearComponents,
     .decadeComponents {
       @include ms-right(2px);
@@ -549,26 +536,6 @@ $Calendar-dayPicker-margin: 10px;
       @include ms-right(5px);
       bottom: 9px;
     }
-
-    // State: The picker is showing the year components.
-    // On larger screens the calendar will remain and the years
-    // will replace the months.
-    .root.isPickingYears {
-      // On large screens, we need to keep the day picker
-      // and month components in view.
-      .dayPicker,
-      .monthComponents {
-        display: block;
-      }
-      // Hide the month picking components.
-      .monthPicker {
-        display: none;
-      }
-      // Show the year picking components.
-      .yearPicker {
-        display: block;
-      }
-    }
   }
 
   // if only the month picker is visible, don't show day picker
@@ -577,11 +544,6 @@ $Calendar-dayPicker-margin: 10px;
     .dayPicker,
     .monthComponents {
       display: none;
-    }
-
-    .optionGrid{
-      width: 280px;
-      height: 210px;
     }
 
     // Show the month picking components.
@@ -594,13 +556,8 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .currentYear {
-      height: initial;
-      line-height: initial;
-    }
-
-    .yearComponents {
-      position: relative;
-      top: 0;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
     }
   }
 }

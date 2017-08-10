@@ -55,31 +55,29 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css(
-            'ms-DatePicker-yearComponents ms-DatePicker-navContainer',
-            styles.yearComponents,
-            styles.navContainer
-          ) }>
-            <span
-              className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
-              onClick={ this._onSelectPrevYear }
-              onKeyDown={ this._onSelectPrevYear }
-              aria-label={ strings.prevYearAriaLabel }
-              role='button'
-              tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span>
-            <span
-              className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
-              onClick={ this._onSelectNextYear }
-              onKeyDown={ this._onSelectNextYear }
-              aria-label={ strings.nextYearAriaLabel }
-              role='button'
-              tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span>
-          </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
+          <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
+            <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
+              <span
+                className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
+                onClick={ this._onSelectPrevYear }
+                onKeyDown={ this._onSelectPrevYear }
+                aria-label={ strings.prevYearAriaLabel }
+                role='button'
+                tabIndex={ 0 }>
+                <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
+              </span>
+              <span
+                className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
+                onClick={ this._onSelectNextYear }
+                onKeyDown={ this._onSelectNextYear }
+                aria-label={ strings.nextYearAriaLabel }
+                role='button'
+                tabIndex={ 0 }>
+                <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
+              </span>
+            </div>
+          </div>
           {
             this.props.onHeaderClick ?
               <div

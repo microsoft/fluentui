@@ -112,6 +112,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     let onHeaderClick = showMonthPickerAsOverlay ? this._onHeaderClick : undefined;
 
+    let showSmallMonthPicker = isMonthPickerVisible && isDayPickerVisible || showMonthPickerAsOverlay && isMonthPickerVisible ? true : false
+
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
         <div className={ css(
@@ -119,7 +121,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          isMonthPickerVisible && isDayPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
+          showSmallMonthPicker && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
           isMonthPickerVisible && !isDayPickerVisible && !showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible),
           showMonthPickerAsOverlay && styles.overlayedCalendars,
         ) } >
