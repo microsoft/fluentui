@@ -27,6 +27,7 @@ export const FocusZonePhotosExample = () => (
         className='ms-FocusZoneExamples-photoCell'
         aria-posinset={ index + 1 }
         aria-setsize={ PHOTOS.length }
+        aria-label="Photo"
         data-is-focusable={ true }
         onClick={ () => console.log('clicked') }>
         <Image src={ photo.url } width={ photo.width } height={ photo.height } />
