@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './BlogPost.scss';
 
-const blogData = require('json!../../data/blog-posts.json');
+const blogData = require('../../data/blog-posts.json');
 
 export class BlogPost extends React.Component<{}, {}> {
   private _postId: string;

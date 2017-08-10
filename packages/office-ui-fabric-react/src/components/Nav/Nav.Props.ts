@@ -91,6 +91,16 @@ export interface INavLinkGroup {
    * The name to use for functional automation tests
    */
   automationId?: string;
+
+  /**
+   * If true, the group should render collapsed by default
+   */
+  collapseByDefault?: boolean;
+
+  /**
+   * Callback invoked when a group header is clicked
+   */
+  onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
 }
 
 export interface INavLink {
@@ -115,7 +125,8 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
-   * Function callback invoked when a link in the navigation is clicked
+   * Callback invoked when this link is clicked. Providing this callback will cause the link
+   * to render as a button (rather than an anchor) unless forceAnchor is set to true.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
@@ -171,6 +182,13 @@ export interface INavLink {
    *   parent link vs vers.
    */
   parentId?: string;
+
+  /**
+   * (Optional) By default, any link with onClick defined will render as a button.
+   * Set this property to true to override that behavior. (Links without onClick defined
+   * will render as anchors by default.)
+   */
+  forceAnchor?: boolean;
 
   /**
    * (Optional) Any additional properties to apply to the rendered links.
