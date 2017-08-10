@@ -111,8 +111,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     let onHeaderClick = showMonthPickerAsOverlay ? this._onHeaderClick : undefined;
-
-    let showSmallMonthPicker = isMonthPickerVisible && isDayPickerVisible || showMonthPickerAsOverlay && isMonthPickerVisible ? true : false
+    let showSmallMonthPicker = isMonthPickerVisible && isDayPickerVisible || showMonthPickerAsOverlay && isMonthPickerVisible ? true : false;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
