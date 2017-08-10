@@ -214,7 +214,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       getKey,
       listProps,
       usePageCache,
-      fastRenderingItemCount
+      onShouldVirtualize
     } = this.props;
     let {
       adjustedColumns,
@@ -329,7 +329,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
                     usePageCache = { usePageCache }
-                    fastRenderingItemCount = { fastRenderingItemCount }
+                    onShouldVirtualize = { onShouldVirtualize }
                   />
                 ) : (
                     <List
@@ -338,7 +338,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
                       usePageCache = { usePageCache }
-                      fastRenderingItemCount = { fastRenderingItemCount }
+                      onShouldVirtualize = { onShouldVirtualize }
                       { ...additionalListProps }
                     />
                   )

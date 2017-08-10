@@ -187,16 +187,20 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
   compact?: boolean;
 
-  /** 
-   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization 
-   * The same property in List.Props
-   */
+  /**
+  * Boolean value to enable render page caching. This is an experimental performance optimization 
+  * that is off by default.
+  * @defaultValue false
+  */
   usePageCache?: boolean;
   
-  /** 
-   * when items count is not greater than this number, List will render in fast mode without expensive measurement operations that cause reflows
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when rendering more than 50 items.
    */
-  fastRenderingItemCount?: number;
+  onShouldVirtualize?: (props: IListProps) => boolean;
 }
 
 export interface IColumn {

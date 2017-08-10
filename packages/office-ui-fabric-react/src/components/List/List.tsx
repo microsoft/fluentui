@@ -66,9 +66,9 @@ const _measureScrollRect = _measurePageRect;
  * Measuring too frequently can pull performance down significantly. To compensate, we cache measured values so that
  * we can avoid re-measuring during operations that should not alter heights, like scrolling.
  * 
- * To optimize glass rendering performance, fastRenderingItemCount can be set. When items is smaller or equal to this
- * number, List will run in fast mode to render all items without any measurements to improve page load time. And we
- * start doing measurements when items grows larger than this threshold.
+ * To optimize glass rendering performance, onShouldVirtualize can be set. When onShouldVirtualize return false,
+ * List will run in fast mode (not virtualized) to render all items without any measurements to improve page load time. And we
+ * start doing measurements and rendering in virtualized mode when items grows larger than this threshold.
  *
  * However, certain operations can make measure data stale. For example, resizing the list, or passing in new props,
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
@@ -120,7 +120,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _scrollHeight: number;
   private _scrollTop: number;
   private _pageCache: IPageCache;
-  private _fastRenderingItemCount: number;
+  private _shouldVirtualize: (props: IListProps) => boolean;
 
   constructor(props: IListProps) {
     super(props);
@@ -165,9 +165,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._scrollingToIndex = -1;
     this._pageCache = {};
     const {
-      fastRenderingItemCount
+      onShouldVirtualize
     } = props;
-    this._fastRenderingItemCount = fastRenderingItemCount || 0;
+    this._shouldVirtualize = (listProps: IListProps) => !onShouldVirtualize || onShouldVirtualize(listProps);
   }
 
   /**
@@ -532,8 +532,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let heightChanged = false;
     let renderCount = this._getRenderCount();
 
-    // when doing fast rendering, we render all the items without page measurement
-    if (this._doFastRendering()) {
+    // when not in virtualize mode, we render all the items without page measurement
+    if (!this._shouldVirtualize(this.props)) {
       return heightChanged;
     }
 
@@ -579,7 +579,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
 
-    if (pageElement && !this._doFastRendering() && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
+    if (pageElement && this._shouldVirtualize(this.props) && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       let newClientRect = {
         width: pageElement.clientWidth,
         height: pageElement.clientHeight
@@ -639,7 +639,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let currentSpacer = null;
     let focusedIndex = this._focusedIndex;
     let endIndex = startIndex + renderCount;
-    const fastRendering = this._doFastRendering();
+    const shouldVirtualize = this._shouldVirtualize(this.props);
 
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
@@ -655,14 +655,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       let isPageRendered = findIndex(this.state.pages as IPage[], (page) => page.items && page.startIndex === itemIndex) > -1;
       let isPageInAllowedRange = !this._allowedRect || pageBottom >= this._allowedRect.top && pageTop <= this._allowedRect.bottom!;
       let isPageInRequiredRange = !this._requiredRect || pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!;
-      let isPageVisible = !isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered)) || fastRendering;
+      let isPageVisible = !isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered)) || !shouldVirtualize;
       let isPageFocused = focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage);
       let isFirstPage = itemIndex === startIndex;
 
       // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
       // Only render whats visible, focused, or first page, 
-      // or when running in fast rendering mode, we render all current items in pages
+      // or when running in fast rendering mode (not in virtualized mode), we render all current items in pages
       if (isPageVisible || isPageFocused || isFirstPage) {
         if (currentSpacer) {
           pages.push(currentSpacer);
@@ -697,8 +697,9 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
       pageTop += (pageBottom - pageTop + 1);
 
-      // when running in faster rendering mode, we render all items without measurement so no need to stop at the first page
-      if (isFirstRender && !fastRendering) {
+      // in virtualized mode, we render need to render first page then break and measure,
+      // otherwise, we render all items without measurement to make rendering fast
+      if (isFirstRender && shouldVirtualize) {
         break;
       }
     }
@@ -768,17 +769,14 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     return (renderCount === undefined ? (items ? items.length - startIndex! : 0) : renderCount);
   }
 
-  private _doFastRendering(): boolean {
-    return this._getRenderCount(this.props) <= this._fastRenderingItemCount;
-  }
-
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
   private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
-    const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
+    props = props || this.props;
+    const { renderedWindowsAhead, renderedWindowsBehind } = props;
     const { pages } = this.state;
     const renderCount = this._getRenderCount(props);
-    // when running in faster rendering mode, we render all items without measurement to optimize page rendering perf
-    if (this._doFastRendering()) {
+    // when not in virtualize mode, we render all items without measurement to optimize page rendering perf
+    if (!this._shouldVirtualize(props)) {
       return;
     }
 

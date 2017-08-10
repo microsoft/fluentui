@@ -92,13 +92,13 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    */
   usePageCache?: boolean;
   
-  /** 
-   * @measurer is the function to do visibleRect measurement and page measurement which are expensive.
-   * Allow consumer app to be able to call measurer function after glass to reduce glass rendering latency.
-   * And because measurements are executed at the same time in measurer call, it will reduce reflows too.
-   * The same property in List.Props
-  */
-  fastRenderingItemCount?: number;
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when rendering more than 50 items.
+   */
+  onShouldVirtualize?: (props: IListProps) => boolean;
 }
 
 export interface IGroup {
