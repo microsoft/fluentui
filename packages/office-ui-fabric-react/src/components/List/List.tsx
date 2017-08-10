@@ -120,7 +120,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _scrollHeight: number;
   private _scrollTop: number;
   private _pageCache: IPageCache;
-  private _shouldVirtualize: (props: IListProps) => boolean;
 
   constructor(props: IListProps) {
     super(props);
@@ -164,10 +163,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this._focusedIndex = -1;
     this._scrollingToIndex = -1;
     this._pageCache = {};
-    const {
-      onShouldVirtualize
-    } = props;
-    this._shouldVirtualize = (listProps: IListProps) => !onShouldVirtualize || onShouldVirtualize(listProps);
   }
 
   /**
@@ -337,6 +332,13 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         </div>
       </div>
     );
+  }
+
+  private _shouldVirtualize(): boolean {
+    const {
+      onShouldVirtualize
+    } = this.props;
+    return !onShouldVirtualize || onShouldVirtualize(this.props);
   }
 
   /**
@@ -533,7 +535,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let renderCount = this._getRenderCount();
 
     // when not in virtualize mode, we render all the items without page measurement
-    if (!this._shouldVirtualize(this.props)) {
+    if (!this._shouldVirtualize()) {
       return heightChanged;
     }
 
@@ -579,7 +581,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     // console.log('   * measure attempt', page.startIndex, cachedHeight);
 
-    if (pageElement && this._shouldVirtualize(this.props) && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
+    if (pageElement && this._shouldVirtualize() && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       let newClientRect = {
         width: pageElement.clientWidth,
         height: pageElement.clientHeight
@@ -639,7 +641,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let currentSpacer = null;
     let focusedIndex = this._focusedIndex;
     let endIndex = startIndex + renderCount;
-    const shouldVirtualize = this._shouldVirtualize(this.props);
+    const shouldVirtualize = this._shouldVirtualize();
 
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
@@ -776,7 +778,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     const { pages } = this.state;
     const renderCount = this._getRenderCount(props);
     // when not in virtualize mode, we render all items without measurement to optimize page rendering perf
-    if (!this._shouldVirtualize(props)) {
+    if (!this._shouldVirtualize()) {
       return;
     }
 
