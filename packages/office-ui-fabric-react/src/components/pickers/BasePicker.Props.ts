@@ -3,12 +3,21 @@ import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
 import { IRenderFunction } from '../../Utilities';
 import { ISuggestionModel } from './Suggestions/SuggestionsController';
+import { BaseAutoFill } from './AutoFill/BaseAutoFill';
+
+export interface IBasePicker<T> {
+  /** Gets the current value of the input. */
+  items: T[] | undefined;
+
+  /** Sets focus to the input. */
+  focus: () => void;
+}
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 export interface IBasePickerProps<T> extends React.Props<any> {
-  componentRef?: () => void;
+  componentRef?: (component?: IBasePicker<T>) => void;
 
   /**
    * Function that specifies how the selected item will appear.
@@ -35,6 +44,17 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback for when the selected list of items changes.
    */
   onChange?: (items?: T[]) => void;
+
+  /**
+   * A callback for when the user put focus on the picker
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+
+  /**
+   * A callback for when the user moves the focus away from the picker
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+
   /**
    * A callback to get text from an item. Used to autofill text in the pickers.
    */

@@ -38,6 +38,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'J', text: 'Option j' },
             ]
           }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
 
         <Dropdown
@@ -54,6 +56,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'G', text: 'Option g' },
             ]
           }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
           disabled={ true }
         />
 
@@ -61,6 +65,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Controlled example:'
           selectedKey={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
+          onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           placeHolder='Select an Option'
           options={
@@ -82,6 +87,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Multi-Select uncontrolled example:'
           defaultSelectedKeys={ ['Apple', 'Banana'] }
           onChanged={ (item) => this.changeState(item) }
+          onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           multiSelect
           options={
@@ -105,6 +111,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Multi-Select controlled example:'
           selectedKeys={ selectedItem && selectedItem.key }
           onChanged={ (item) => this.onChangeMultiSelect(item) }
+          onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
           multiSelect
           options={
@@ -138,6 +145,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
             ]
           }
           disabled={ true }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
       </div>
 

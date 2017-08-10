@@ -126,7 +126,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
     this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
 
-    let index: number = this._getSelectedIndex(props.options!, selectedKey!);
+    let index: number = this._getSelectedIndex(props.options, selectedKey);
 
     this.state = {
       isOpen: false,
@@ -145,11 +145,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
-    // In controlled component usage where selectedKey is provided, update the selectedIndex
-    // and currentOptions state if the key or options change
-    if (newProps.selectedKey !== undefined &&
+    // In controlled component usage where selectedKey or value is provided,
+    // update the selectedIndex and currentOptions state if the selectedKey or options have changed
+    if ((newProps.selectedKey || newProps.value) &&
       (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
-      let index: number = this._getSelectedIndex(newProps.options!, newProps.selectedKey);
+      let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
       this.setState({
         selectedIndex: index,
         currentOptions: newProps.options
@@ -159,7 +159,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
     let {
-      allowFreeform
+      allowFreeform,
+      value
     } = this.props;
     let {
       isOpen,
@@ -184,11 +185,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If we just opened/closed the menu OR
     // updated the selectedIndex with the menu closed OR
-    // we are focused and are not allowing freeform
-    // we need to fix up focus and set selection
+    // are focused and are not allowing freeform or the value changed
+    // we need to set selection
     if (prevState.isOpen !== isOpen ||
       (!isOpen && prevState.selectedIndex !== selectedIndex) ||
-      (!allowFreeform && focused)) {
+      (focused && (!allowFreeform || value !== prevProps.value))) {
       this._select();
     }
   }
@@ -359,11 +360,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValueValidIndex,
       currentOptions,
       currentPendingValue,
-      suggestedDisplayValue
+      suggestedDisplayValue,
+      isOpen
     } = this.state;
 
+    let currentPendingIndexValid = this._indexWithinBounds(currentOptions, currentPendingValueValidIndex);
+
     // If the user passed is a value prop, use that
-    if (value) {
+    // unless we are open and have a valid current pending index
+    if (!(isOpen && currentPendingIndexValid) && value) {
       return value;
     }
 
@@ -374,7 +379,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // If we are allowing freeform and autocomplete is also true
       // and we've got a pending value that matches an option, remember
       // the matched option's index
-      if (autoComplete === 'on' && this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+      if (autoComplete === 'on' && currentPendingIndexValid) {
         index = currentPendingValueValidIndex;
       }
 
@@ -387,7 +392,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       // If we are not allowing freeform and have a
       // valid index that matches the pending value,
       // we know we will need some version of the pending value
-      if (this._indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
+      if (currentPendingIndexValid) {
 
         // If autoComplete is on, return the
         // raw pending value, otherwise remember
@@ -714,18 +719,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      // Create a new option
-      let newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
-      let newOptions: IComboBoxOption[] = [...currentOptions, newOption];
-      let newSelectedIndex: number = this._getSelectedIndex(newOptions, currentPendingValue);
-
-      this.setState({
-        currentOptions: newOptions,
-        selectedIndex: newSelectedIndex
-      });
-
       if (onChanged) {
         onChanged(undefined, undefined, currentPendingValue);
+      } else {
+        // If we are not controlled, create a new option
+        let newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
+        let newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+
+        this.setState({
+          currentOptions: newOptions,
+          selectedIndex: newOptions.length - 1
+        });
       }
     } else if (currentPendingValueValidIndex >= 0) {
       // Since we are not allowing freeform, we must have a matching
@@ -923,8 +927,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param selectedKey - the known selected key to find
    * @returns {number} - the index of the selected option, -1 if not found
    */
-  private _getSelectedIndex(options: IComboBoxOption[], selectedKey: string | number): number {
-    return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey !== null) && option.key === selectedKey)));
+  private _getSelectedIndex(options: IComboBoxOption[] | undefined, selectedKey: string | number | undefined): number {
+    if (options === undefined || selectedKey === undefined) {
+      return -1;
+    }
+
+    return findIndex(options, (option => (option.isSelected || option.selected || option.key === selectedKey)));
   }
 
   /**
@@ -944,6 +952,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     if (selectedIndex > 0 && selectedIndex < currentOptions.length) {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
+      });
+    } else if (this.props.value) {
+      // If we had a value initially, restore it
+      this.setState({
+        suggestedDisplayValue: this.props.value
       });
     }
   }
@@ -978,7 +991,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentOptions
     } = this.state;
 
-    if (index > 0 && index < currentOptions.length) {
+    if (index >= 0 && index < currentOptions.length) {
       let option = currentOptions[index];
       this._setPendingInfo(option.text, index, option.text);
     } else {
