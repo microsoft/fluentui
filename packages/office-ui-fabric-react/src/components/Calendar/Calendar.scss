@@ -304,6 +304,7 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
+//additional 30px margin needed when "Go to today" button is visible
 .wrap.goTodaySpacing{
   margin-bottom: 30px;
 }
@@ -403,7 +404,6 @@ $Calendar-dayPicker-margin: 10px;
       min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin;
     }
 
-
     .holder {
       width: 440px;
     }
@@ -422,7 +422,6 @@ $Calendar-dayPicker-margin: 10px;
     .month {
       @include margin-left(12px);
     }
-
 
     .optionGrid {
       width: 200px;
@@ -467,7 +466,7 @@ $Calendar-dayPicker-margin: 10px;
       @include text-align(right);
       top: 199px;
     }
-
+    //When date and month picker are side-by-side and "Go to today" button is visible no additional margin is needed
     .wrap.goTodaySpacing{
       margin-bottom: 0px;
     }
@@ -543,6 +542,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
+  //additional 30px margin needed when "Go to today" button is visible
   .wrap.goTodaySpacing{
     margin-bottom: 30px;
   }
