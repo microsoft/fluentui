@@ -126,7 +126,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
     this._lastReadOnlyAutoCompleteChangeTimeoutId = -1;
 
-    let index: number = selectedKey !== undefined ? this._getSelectedIndex(props.options!, selectedKey) : -1;
+    let index: number = this._getSelectedIndex(props.options, selectedKey);
 
     this.state = {
       isOpen: false,
@@ -149,7 +149,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // update the selectedIndex and currentOptions state if the selectedKey or options have changed
     if ((newProps.selectedKey || newProps.value) &&
       (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
-      let index: number = newProps.selectedKey !== undefined ? this._getSelectedIndex(newProps.options!, newProps.selectedKey) : -1;
+      let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
       this.setState({
         selectedIndex: index,
         currentOptions: newProps.options
@@ -725,11 +725,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         // If we are not controlled, create a new option
         let newOption: IComboBoxOption = { key: currentPendingValue, text: currentPendingValue };
         let newOptions: IComboBoxOption[] = [...currentOptions, newOption];
-        let newSelectedIndex: number = this._getSelectedIndex(newOptions, currentPendingValue);
 
         this.setState({
           currentOptions: newOptions,
-          selectedIndex: newSelectedIndex
+          selectedIndex: newOptions.length - 1
         });
       }
     } else if (currentPendingValueValidIndex >= 0) {
@@ -928,8 +927,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param selectedKey - the known selected key to find
    * @returns {number} - the index of the selected option, -1 if not found
    */
-  private _getSelectedIndex(options: IComboBoxOption[], selectedKey: string | number): number {
-    return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey !== null) && option.key === selectedKey)));
+  private _getSelectedIndex(options: IComboBoxOption[] | undefined, selectedKey: string | number | undefined): number {
+    if (options === undefined || selectedKey === undefined) {
+      return -1;
+    }
+
+    return findIndex(options, (option => (option.isSelected || option.selected || option.key === selectedKey)));
   }
 
   /**
