@@ -11,7 +11,7 @@ import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { key: '1', text: '1', data: 'test1' },
+  { key: '1', text: '1', title: 'test1' },
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];
@@ -181,8 +181,9 @@ describe('ChoiceGroup', () => {
     const renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
     const choiceOptions = renderedDOM.querySelectorAll(QUERY_SELECTOR);
 
-    const extraAttributeGetter: (index: number) => string = (index: number): string => {
-      return (choiceOptions[index] as HTMLInputElement).getAttribute('data');
+    const extraAttributeGetter: (index: number) => string | null = (index: number): string | null => {
+      const input: HTMLInputElement = choiceOptions[index] as HTMLInputElement;
+      return input.getAttribute('title');
     };
 
     expect(extraAttributeGetter(0)).to.be.eq('test1', 'Specified data attribute did not match');
