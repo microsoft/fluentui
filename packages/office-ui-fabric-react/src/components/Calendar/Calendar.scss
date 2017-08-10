@@ -11,7 +11,6 @@ $Calendar-dayPicker-margin: 10px;
 
 .root {
   @include ms-normalize;
-  margin-bottom: 17px;
 }
 
 // Base wrapper for the date picker.
@@ -60,7 +59,6 @@ $Calendar-dayPicker-margin: 10px;
 // Wrapper containing the calendar view to pick a specific date.
 .dayPicker {
   display: block;
-  margin-bottom: 30px;
 }
 
 
@@ -259,7 +257,7 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   height: 210px;
   width: 280px;
-  @include margin(10px, 0, 30px, 5px);
+  @include margin(10px, 0, 0px, 5px);
 }
 
 // Button to select a different month.
@@ -304,6 +302,10 @@ $Calendar-dayPicker-margin: 10px;
   &:hover {
     outline: 1px solid transparent;
   }
+}
+
+.wrap.goTodaySpacing{
+  margin-bottom: 30px;
 }
 
 // State: The picker is showing the year components.
@@ -465,6 +467,10 @@ $Calendar-dayPicker-margin: 10px;
       @include text-align(right);
       top: 199px;
     }
+
+    .wrap.goTodaySpacing{
+      margin-bottom: 0px;
+    }
     // State: The picker is showing the year components.
     // On larger screens the calendar will remain and the years
     // will replace the months.
@@ -512,6 +518,10 @@ $Calendar-dayPicker-margin: 10px;
       position: relative;
       top: 0;
     }
+
+    .wrap.goTodaySpacing{
+      margin-bottom: 30px;
+    }
   }
 }
 
@@ -531,6 +541,10 @@ $Calendar-dayPicker-margin: 10px;
     .monthPicker {
       display: block;
     }
+  }
+
+  .wrap.goTodaySpacing{
+    margin-bottom: 30px;
   }
 }
 
