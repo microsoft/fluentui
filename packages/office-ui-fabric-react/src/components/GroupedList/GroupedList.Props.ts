@@ -96,7 +96,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
    * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
-   * The default implementation will virtualize when rendering more than 50 items.
+   * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
 }
