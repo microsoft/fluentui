@@ -106,15 +106,15 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     // Determine the appropriate padding to add before this link.
     // In RTL, the "before" padding will go on the right instead of the left.
     const isRtl: boolean = getRTL();
-    const paddingBefore: string = (_indentationSize * nestingLevel) +
-      String(this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton) + 'px';
+    const paddingBefore = _indentationSize * nestingLevel +
+      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
       <a
         className={ css('ms-Nav-link', styles.link) }
-        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore } }
+        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore + 'px' } }
         href={ link.url || 'javascript:' }
         onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
         aria-label={ link.ariaLabel }
