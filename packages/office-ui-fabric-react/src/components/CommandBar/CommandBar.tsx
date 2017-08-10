@@ -15,7 +15,6 @@ import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuIt
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
-  IconName,
   IIconProps
 } from '../../Icon';
 import { FontClassNames } from '../../Styling';
@@ -247,7 +246,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: item.icon as IconName
+      iconName: item.icon
     };
     // Use the default icon color for the known icon names
     let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-CommandBarItem-iconColor ' + styles.itemIconColor);

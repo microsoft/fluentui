@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "office-ui-fabric-react-tslint"
+  ],
+  "rules": {
+    "no-any": false,
+    "variable-name": false,
+    "no-internal-module": false,
+    "prefer-const": false,
+    "typedef": [
+      false
+    ]
+  }
+}

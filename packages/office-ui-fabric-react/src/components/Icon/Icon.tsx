@@ -1,7 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-
 import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
@@ -9,7 +8,7 @@ import {
   getNativeProps,
   htmlElementProperties
 } from '../../Utilities';
-import { IconCodes } from '../../Styling';
+import { getIcon, IIconRecord } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
 export function Icon(props: IIconProps): JSX.Element {
@@ -19,7 +18,7 @@ export function Icon(props: IIconProps): JSX.Element {
     styles: customStyles,
     iconName
    } = props;
-  let styles = getStyles(undefined, customStyles);
+  let styles = getStyles(customStyles);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
@@ -41,7 +40,12 @@ export function Icon(props: IIconProps): JSX.Element {
       </div>
     );
   } else {
-    let iconMemberName = iconName ? iconName.charAt(0).toLowerCase() + iconName.substr(1) : '';
+    let iconDefinition = getIcon(iconName) || {
+      subset: {
+        className: undefined
+      },
+      code: undefined
+    };
 
     return (
       <i
@@ -54,12 +58,13 @@ export function Icon(props: IIconProps): JSX.Element {
         { ...getNativeProps(props, htmlElementProperties) }
         className={
           css(
-            'ms-Icon',
+            'ms-Icon', // dangerous?
+            iconDefinition.subset.className,
             styles.root,
             props.className
           ) }
       >
-        { (IconCodes as any)[iconMemberName] }
+        { iconDefinition.code }
       </i>
     );
   }

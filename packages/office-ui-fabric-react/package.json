@@ -71,9 +71,11 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
+    "@uifabric/icons": ">=0.0.1 <1.0.0",
     "@uifabric/utilities": ">=4.9.0 <5.0.0",
     "@uifabric/styling": ">=0.19.0 <1.0.0",
     "prop-types": "^15.5.10",
+    "source-map-loader": "^0.2.1",
     "tslib": "^1.6.0"
   },
   "peerDependencies": {

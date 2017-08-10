@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IconName } from './IconName';
 import { IImageProps } from '../Image/Image.Props';
 import { IStyle } from '../../Styling';
 
@@ -41,7 +40,7 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @type {(IconName | string | null)}
    * @memberOf IIconProps
    */
-  iconName?: IconName | string | null;
+  iconName?: string | null;
 
   /**
    * Optional styling for the elements within the Icon.

@@ -15,9 +15,9 @@ export class ButtonIconExample extends React.Component<IButtonProps, {}> {
         <IconButton
           disabled={ disabled }
           checked={ checked }
-          iconProps={ { iconName: 'Emoji2' } }
-          title='Emoji'
-          ariaLabel='Emoji' />
+          iconProps={ { iconName: 'Upload' } }
+          title='Upload'
+          ariaLabel='Upload' />
       </div>
     );
   }

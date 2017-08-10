@@ -11,7 +11,7 @@ import {
   KeyCodes,
   css,
 } from '../../Utilities';
-import { mergeStyles, hideText } from '../../Styling';
+import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
@@ -61,10 +61,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     );
 
     this._warnDeprecations({
-      rootProps: undefined,
-      icon: 'iconProps',
-      menuIconName: 'menuIconProps',
-      toggled: 'checked'
+      rootProps: undefined
     });
     this._labelId = getId();
     this._descriptionId = getId();
@@ -100,6 +97,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps && menuIconProps.className,
       disabled!,
       checked!,
+      // tslint:disable-next-line:triple-equals
       menuProps != null && !this.props.split
     );
 
@@ -192,7 +190,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let {
       baseClassName,
       styles,
-      menuIconName,
       menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
@@ -215,7 +212,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         onRenderDescription(props, this._onRenderDescription),
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
-        !this._isSplitButton && (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        !this._isSplitButton && (menuProps || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
@@ -225,17 +222,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let {
       baseClassName,
       disabled,
-      icon,
       iconProps,
       styles,
       checked
        } = this.props;
-
-    if (icon || iconProps) {
-      iconProps = iconProps || {
-        iconName: icon
-      } as IIconProps;
-    }
 
     if (iconProps) {
       return Icon({
@@ -307,14 +297,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderAriaDescription() {
     const {
-     ariaDescription,
+      ariaDescription,
       styles
-     } = this.props;
+    } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className={ `${styles!.screenReaderText || mergeStyles(hideText)}` } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ styles!.screenReaderText as string } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
@@ -326,19 +316,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       baseClassName,
       checked,
       disabled,
-      menuIconName,
       menuIconProps
        } = this.props;
-
-    if (menuIconProps === undefined) {
-      menuIconProps = {
-        iconName: menuIconName === undefined ? 'ChevronDown' : menuIconName
-      };
-    }
 
     return (
       menuIconProps ?
         <Icon
+          iconName='ChevronDown'
           { ...menuIconProps }
           className={ this._classNames.menuIcon }
         />
@@ -397,18 +381,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonMenuButton(): JSX.Element {
     let {
-      menuIconName,
       menuIconProps,
       styles,
       disabled,
       checked
     } = this.props;
-
-    if (menuIconProps === undefined) {
-      menuIconProps = {
-        iconName: menuIconName === undefined ? 'ChevronDown' : menuIconName
-      };
-    }
 
     const classNames = styles ? getSplitButtonClassNames(styles!, disabled || false, !!this.state.menuProps, checked || false) : undefined;
 
@@ -420,7 +397,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
         menuProps={ undefined }
-        iconProps={ menuIconProps } />
+        iconProps={ {
+          iconName: 'ChevronDown',
+          ...menuIconProps
+        } } />
     );
   }
 

@@ -183,7 +183,7 @@ class GlobalSettings {
   // (undocumented)
   public static addChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
-  public static getValue < T >(key: string): T;
+  public static getValue < T >(key: string, defaultValue?: T): T;
   // (undocumented)
   public static removeChangeListener(cb: IChangeEventCallback): void;
   // (undocumented)
