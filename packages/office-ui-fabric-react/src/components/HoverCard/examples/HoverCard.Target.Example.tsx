@@ -35,7 +35,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
 
     this.state = {
       contentRendered: undefined
-    }
+    };
   }
 
   public render() {
