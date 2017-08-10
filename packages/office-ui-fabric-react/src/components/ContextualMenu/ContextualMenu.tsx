@@ -272,7 +272,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                       item.itemType === ContextualMenuItemType.Header) {
                       indexCorrection++;
                     }
-                    return this._renderMenuItem(item, index - indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
+                    return this._renderMenuItem(item, index, index - indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
                   }) }
                 </ul>
               </FocusZone>
@@ -286,7 +286,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _renderMenuItem(item: IContextualMenuItem, index: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+  private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
 
     if (item.name === '-') {
@@ -303,7 +303,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         renderedItems.push(this._renderListItem(headerItem, item.key || index, item.className, item.title));
         break;
       default:
-        let menuItem = this._renderNormalItem(item, index, totalItemCount, hasCheckmarks, hasIcons);
+        let menuItem = this._renderNormalItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
         renderedItems.push(this._renderListItem(menuItem, item.key || index, item.className, item.title));
         break;
     }
@@ -331,14 +331,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return null;
   }
 
-  private _renderNormalItem(item: IContextualMenuItem, index: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+  private _renderNormalItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     if (item.onRender) {
       return [item.onRender(item)];
     }
     if (item.href) {
-      return this._renderAnchorMenuItem(item, index, totalItemCount, hasCheckmarks, hasIcons);
+      return this._renderAnchorMenuItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
     }
-    return this._renderButtonItem(item, index, totalItemCount, hasCheckmarks, hasIcons);
+    return this._renderButtonItem(item, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons);
   }
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
@@ -348,7 +348,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       </div>);
   }
 
-  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
       <div>
         <a
@@ -360,7 +360,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
           role='menuitem'
-          aria-posinset={ index + 1 }
+          aria-posinset={ focusableElementIndex + 1 }
           aria-setsize={ totalItemCount }
           aria-disabled={ item.isDisabled }
           style={ item.style }
@@ -373,6 +373,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderButtonItem(
     item: IContextualMenuItem,
     index: number,
+    focusableElementIndex: number,
     totalItemCount: number,
     hasCheckmarks?: boolean,
     hasIcons?: boolean) {
@@ -404,7 +405,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-haspopup': hasSubmenuItems(item) || null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
       'aria-checked': isChecked,
-      'aria-posinset': index + 1,
+      'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': item.isDisabled,
       role: canCheck ? 'menuitemcheckbox' : 'menuitem',
