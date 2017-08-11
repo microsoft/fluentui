@@ -69,20 +69,11 @@ function createConfig(isProduction, publicPath) {
     module: {
       noParse: [/autoit.js/],
       preLoaders: [
-        { test: /\.json$/, loader: 'json' },
+        { test: /\.json$/, loader: 'json' }
       ]
     },
 
-    plugins: [
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'fabric-website-common'
-      }),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: 'fabric-site.stats.html',
-        openAnalyzer: false
-      })
-    ]
+    plugins: []
   };
 
   if (isProduction) {
