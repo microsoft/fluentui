@@ -224,6 +224,28 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   /**
+   * Gets the selection start of the text field
+   */
+  public get selectionStart(): number {
+    if (this._textElement) {
+      return this._textElement.selectionStart;
+    } else {
+      return -1;
+    }
+  }
+
+  /**
+   * Gets the selection end of the text field
+   */
+  public get selectionEnd(): number {
+    if (this._textElement) {
+      return this._textElement.selectionEnd;
+    } else {
+      return -1;
+    }
+  }
+
+  /**
    * Sets the start and end positions of a selection in a text field.
    * @param start Index of the start of the selection.
    * @param end Index of the end of the selection.

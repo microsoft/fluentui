@@ -24,6 +24,12 @@ export interface ITextField {
    * @param end Index of the end of the selection.
    */
   setSelectionRange: (start: number, end: number) => void;
+
+  /** Gets the selection start of the text field */
+  selectionStart: number;
+
+  /** Gets the selection end of the text field */
+  selectionEnd: number;
 }
 
 /**
