@@ -41,8 +41,7 @@ build.sass.setConfig({
 });
 
 // Use Karma Tests - Disable during develoment if prefered
-// Set to false for experiments. Tests don't need to pass for code to live in experiments
-build.karma.isEnabled = () => false;
+build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
