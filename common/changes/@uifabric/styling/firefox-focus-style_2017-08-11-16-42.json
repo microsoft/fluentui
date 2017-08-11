@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "getFocusStyle: Add -moz-focus-inner to fix outline bug",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "micahgodbolt@gmail.com"
+}
