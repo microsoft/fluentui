@@ -79,15 +79,7 @@ function createConfig(isProduction, publicPath) {
           enforce: 'pre'
         }
       ],
-    },
-
-    plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: 'fabric-site.stats.html',
-        openAnalyzer: false
-      })
-    ]
+    }
   };
 
   if (isProduction) {
