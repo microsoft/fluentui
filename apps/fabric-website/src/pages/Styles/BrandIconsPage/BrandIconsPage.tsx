@@ -7,11 +7,11 @@ import * as stylesImport from './BrandIconsPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const svgResolutionData = require('json!../../../data/brand-icons-svg-resolutions.json');
-const pngResolutionData = require('json!../../../data/brand-icons-png-resolutions.json');
-const productIconsData = require('json!../../../data/brand-icons-products.json');
-const documentIconsData = require('json!../../../data/brand-icons-documents.json');
-const monochromeIconsData = require('json!../../../data/brand-icons-monochrome.json');
+const svgResolutionData = require('../../../data/brand-icons-svg-resolutions.json');
+const pngResolutionData = require('../../../data/brand-icons-png-resolutions.json');
+const productIconsData = require('../../../data/brand-icons-products.json');
+const documentIconsData = require('../../../data/brand-icons-documents.json');
+const monochromeIconsData = require('../../../data/brand-icons-monochrome.json');
 
 export class BrandIconsPage extends React.Component<any, any> {
   public render() {
