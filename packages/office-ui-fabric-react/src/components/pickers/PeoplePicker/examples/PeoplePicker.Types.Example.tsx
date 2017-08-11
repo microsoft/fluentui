@@ -144,6 +144,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -165,6 +166,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -184,6 +186,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -205,6 +208,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -226,6 +230,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -247,6 +252,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
+        wellAriaLabel={ 'People Picker' }
       />
     );
   }

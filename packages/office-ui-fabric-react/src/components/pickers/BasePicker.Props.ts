@@ -110,6 +110,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
+
+  /**
+   * Aria label for the main picker input well.
+   * @default ''
+   */
+  wellAriaLabel?: string;
 }
 
 export interface IBasePickerSuggestionsProps {
