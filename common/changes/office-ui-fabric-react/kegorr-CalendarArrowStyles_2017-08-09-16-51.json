@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Enhancement: added ability to customize calendar's navigation icons.",
+      "comment": "Calendar: added ability to customize navigation icons.",
       "type": "minor"
     }
   ],

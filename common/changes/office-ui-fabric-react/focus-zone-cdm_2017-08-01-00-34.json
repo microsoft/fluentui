@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Move registering FocusZone instance to componentDidMount",
+      "comment": "FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.",
       "type": "patch"
     }
   ],
