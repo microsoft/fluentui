@@ -4,7 +4,7 @@ import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 export class SpinButtonBasicDisabledExample extends React.Component<any, any> {
   public render() {
     return (
-      <div style={ { width: '203px' } }>
+      <div style={ { width: '400px' } }>
         <SpinButton
           defaultValue='25'
           label={ 'Basic SpinButton:' }
@@ -12,6 +12,8 @@ export class SpinButtonBasicDisabledExample extends React.Component<any, any> {
           max={ 100 }
           step={ 1 }
           disabled={ true }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

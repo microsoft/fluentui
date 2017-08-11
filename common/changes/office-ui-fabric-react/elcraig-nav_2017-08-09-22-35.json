@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Textfield: removed background from textfield internal field",
+      "comment": "Nav: fix bug with sublink padding",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "elcraig@microsoft.com"
 }

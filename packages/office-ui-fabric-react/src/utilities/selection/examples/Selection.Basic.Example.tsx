@@ -38,8 +38,8 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
     let { item, itemIndex, selection, selectionMode } = this.props;
     let isSelected = false;
 
-    if (selection && itemIndex) {
-      selection.isIndexSelected(itemIndex);
+    if (selection && itemIndex !== undefined) {
+      isSelected = selection.isIndexSelected(itemIndex);
     }
 
     return (

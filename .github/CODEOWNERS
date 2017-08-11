@@ -33,7 +33,7 @@
     # packages/office-ui-fabric-react/src/components/ActivityItem/*
     # packages/office-ui-fabric-react/src/components/Breadcrumb/*
     # packages/office-ui-fabric-react/src/components/Button/*
-    # packages/office-ui-fabric-react/src/components/Calendar/*
+    # packages/office-ui-fabric-react/src/components/Calendar/*   @johannao76 @lorejoh12
     # packages/office-ui-fabric-react/src/components/Callout/*
     # packages/office-ui-fabric-react/src/components/Check/*
     # packages/office-ui-fabric-react/src/components/Checkbox/*
@@ -42,7 +42,7 @@
     # packages/office-ui-fabric-react/src/components/ComboBox/*
     packages/office-ui-fabric-react/src/components/CommandBar/*   @micahgodbolt
     # packages/office-ui-fabric-react/src/components/ContextualMenu/*
-    # packages/office-ui-fabric-react/src/components/DatePicker/*
+    # packages/office-ui-fabric-react/src/components/DatePicker/*   @johannao76 @lorejoh12
     # packages/office-ui-fabric-react/src/components/DetailsList/*
     # packages/office-ui-fabric-react/src/components/Dialog/*
     # packages/office-ui-fabric-react/src/components/DocumentCard/*
@@ -52,7 +52,7 @@
     # packages/office-ui-fabric-react/src/components/FocusTrapZone/*
     # packages/office-ui-fabric-react/src/components/FocusZone/*
     # packages/office-ui-fabric-react/src/components/GroupedList/*
-    packages/office-ui-fabric-react/src/components/HoverCard/*   @atneik
+    packages/office-ui-fabric-react/src/components/HoverCard/*   @atneik @micahgodbolt
     # packages/office-ui-fabric-react/src/components/Icon/*
     # packages/office-ui-fabric-react/src/components/Image/*
     # packages/office-ui-fabric-react/src/components/Label/*
