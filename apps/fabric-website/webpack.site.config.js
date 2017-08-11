@@ -67,6 +67,20 @@ function createConfig(isProduction, publicPath) {
       extensions: ['', '.js']
     },
 
+    module: {
+      noParse: [/autoit.js/],
+      preLoaders: [
+        { test: /\.json$/, loader: 'json' },
+      ],
+      loaders: [
+        {
+          test: /\.js$/,
+          loader: 'source-map-loader',
+          enforce: 'pre'
+        }
+      ],
+    },
+
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
