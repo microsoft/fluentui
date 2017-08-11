@@ -90,12 +90,20 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     this.setState({
       focusedRating: value
     } as IRatingState);
+
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
   }
 
   private _onBlur(option: number, ev: React.FocusEvent<HTMLElement>): void {
     this.setState({
       focusedRating: null
     } as IRatingState);
+
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
   }
 
   private _onChange(rating: number, evt: React.FormEvent<HTMLInputElement>) {
