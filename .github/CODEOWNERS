@@ -52,7 +52,7 @@
     # packages/office-ui-fabric-react/src/components/FocusTrapZone/*
     # packages/office-ui-fabric-react/src/components/FocusZone/*
     # packages/office-ui-fabric-react/src/components/GroupedList/*
-    packages/office-ui-fabric-react/src/components/HoverCard/*   @atneik
+    packages/office-ui-fabric-react/src/components/HoverCard/*   @atneik @micahgodbolt
     # packages/office-ui-fabric-react/src/components/Icon/*
     # packages/office-ui-fabric-react/src/components/Image/*
     # packages/office-ui-fabric-react/src/components/Label/*

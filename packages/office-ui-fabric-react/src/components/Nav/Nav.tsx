@@ -56,6 +56,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey,
     };
+
     if (props.groups) {
       for (let group of props.groups) {
         if (group.collapseByDefault && group.name) {
@@ -64,6 +65,28 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
       }
     }
     this._hasExpandButton = false;
+  }
+
+  public componentWillReceiveProps(newProps: INavProps) {
+    let newGroups = newProps.groups || [];
+    let isGroupCollapsed = this.state.isGroupCollapsed!;
+
+    // If the component's props were updated, new groups may have been added, which may have
+    // collapseByDefault set. Ensure that setting is respected for any new groups.
+    // (If isGroupCollapsed is already set for a group, don't overwrite that.)
+    let hasUpdated = false;
+    for (let newGroup of newGroups) {
+      if (newGroup.name && newGroup.collapseByDefault && !isGroupCollapsed.hasOwnProperty(newGroup.name)) {
+        isGroupCollapsed[newGroup.name] = true;
+        hasUpdated = true;
+      }
+    }
+
+    if (hasUpdated) {
+      this.setState({
+        isGroupCollapsed: isGroupCollapsed
+      });
+    }
   }
 
   public render(): JSX.Element | null {
@@ -106,15 +129,15 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     // Determine the appropriate padding to add before this link.
     // In RTL, the "before" padding will go on the right instead of the left.
     const isRtl: boolean = getRTL();
-    const paddingBefore: string = (_indentationSize * nestingLevel) +
-      String(this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton) + 'px';
+    const paddingBefore = _indentationSize * nestingLevel +
+      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
       <a
         className={ css('ms-Nav-link', styles.link) }
-        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore } }
+        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore + 'px' } }
         href={ link.url || 'javascript:' }
         onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
         aria-label={ link.ariaLabel }
