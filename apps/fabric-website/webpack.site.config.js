@@ -27,7 +27,6 @@ if (isProduction) {
   configs.push(createConfig(true, publicPath));
 }
 
-
 // Helper to create the config.
 function createConfig(isProduction, publicPath) {
   let today = new Date();
@@ -70,16 +69,11 @@ function createConfig(isProduction, publicPath) {
     module: {
       noParse: [/autoit.js/],
       preLoaders: [
-        { test: /\.json$/, loader: 'json' },
-      ],
-      loaders: [
-        {
-          test: /\.js$/,
-          loader: 'source-map-loader',
-          enforce: 'pre'
-        }
-      ],
-    }
+        { test: /\.json$/, loader: 'json' }
+      ]
+    },
+
+    plugins: []
   };
 
   if (isProduction) {

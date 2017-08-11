@@ -93,6 +93,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * @defaultvalue false
   */
   highlightCurrentMonth?: boolean;
+
+  /**
+  * Customize navigation icons using ICalendarIconStrings
+  */
+  navigationIcons?: ICalendarIconStrings;
 }
 
 export interface ICalendarStrings {
@@ -144,4 +149,19 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+}
+
+export interface ICalendarIconStrings {
+  /**
+  * FabricMDL2Icons name for the left navigation icon
+  * @defaultvalue  'ChevronLeft'
+  */
+  leftNavigation?: string;
+
+  /**
+  * FabricMDL2Icons name for the right navigation icon
+  * @defaultvalue  'ChevronRight'
+  */
+  rightNavigation?: string;
+
 }
