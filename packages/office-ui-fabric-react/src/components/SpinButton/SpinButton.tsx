@@ -102,8 +102,6 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       this._onIncrement = this._defaultOnIncrement;
       this._onDecrement = this._defaultOnDecrement;
     }
-
-    this.focus = this.focus.bind(this);
   }
 
   /**
@@ -240,7 +238,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   }
 
   @autobind
-  private _onFocus() {
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement>) {
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._stop();
     }
@@ -248,12 +246,19 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._input.select();
 
     this.setState({ isFocused: true });
+
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
   }
 
   @autobind
   private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
     this._validate(ev);
     this.setState({ isFocused: false });
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
   }
 
   /**
