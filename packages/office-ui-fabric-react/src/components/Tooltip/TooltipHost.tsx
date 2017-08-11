@@ -114,24 +114,26 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       }
     }
 
-    this.setState({
-      isTooltipVisible: true
-    });
+    this.toggleTooltip(true);
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipMouseLeave(ev: any) {
-    this.setState({
-      isTooltipVisible: false
-    });
+    this.toggleTooltip(false);
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipCallOutDismiss() {
-    this.setState({
-      isTooltipVisible: false
-    });
+    this.toggleTooltip(false);
+  }
+
+  private toggleTooltip(isTooltipVisible: boolean) {
+    if (this.props.onTooltipToggle && this.state.isTooltipVisible !== isTooltipVisible) {
+      this.props.onTooltipToggle(isTooltipVisible);
+    }
+
+    this.setState({ isTooltipVisible });
   }
 }
