@@ -1,7 +1,5 @@
 import { IButtonStyles } from './Button.Props';
-import {
-  ITheme,
-} from '../../Styling';
+import { ITheme } from '../../Styling';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   return {
@@ -29,7 +27,7 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.neutralTertiaryAlt,
       color: theme.palette.neutralDark
     },
-  }
+  };
 }
 
 export function primaryStyles(theme: ITheme): IButtonStyles {
@@ -63,5 +61,5 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.neutralLight,
       color: theme.palette.black
     }
-  }
+  };
 }

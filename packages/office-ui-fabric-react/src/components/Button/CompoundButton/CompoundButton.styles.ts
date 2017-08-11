@@ -82,7 +82,7 @@ export const getStyles = memoizeFunction((
     descriptionDisabled: {
       color: 'inherit'
     }
-  }
+  };
 
   let primaryCompoundTheme: IButtonStyles = {
 
@@ -107,9 +107,7 @@ export const getStyles = memoizeFunction((
     descriptionDisabled: {
       color: 'inherit'
     }
-  }
-
-
+  };
 
   return mergeStyleSets(
     baseButtonStyles,

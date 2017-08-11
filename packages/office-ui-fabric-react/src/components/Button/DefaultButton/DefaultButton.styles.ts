@@ -40,8 +40,6 @@ export const getStyles = memoizeFunction((
     }
   };
 
-
-
   return mergeStyleSets(
     baseButtonStyles,
     defaultButtonStyles,
