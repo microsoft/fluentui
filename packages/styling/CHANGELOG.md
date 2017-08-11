@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2017 19:38:35 GMT and should not be manually modified.
+
+## 0.19.1
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
 
 ## 0.19.0
 Tue, 08 Aug 2017 15:28:32 GMT
