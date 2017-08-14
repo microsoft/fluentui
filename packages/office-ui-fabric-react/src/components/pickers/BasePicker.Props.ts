@@ -185,5 +185,5 @@ export interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
   /**
    * Screen reader label to apply to an input element.
    */
-  "aria-label"?: string;
+  'aria-label'?: string;
 }
