@@ -45,7 +45,8 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
           disabled={ this.state.isPickerDisabled }
           inputProps={ {
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+            'aria-label': 'Tag Picker'
           } }
         />
       </div>

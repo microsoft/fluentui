@@ -822,7 +822,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     let { onRenderOption = this._onRenderOption } = this.props;
 
     return (
-      <div key={ item.key } className={ this._classNames.header } role='header'>
+      <div key={ item.key } className={ this._classNames.header } role='heading'>
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }

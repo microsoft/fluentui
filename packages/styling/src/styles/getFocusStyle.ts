@@ -21,6 +21,7 @@ export function getFocusStyle(
   return mergeStyles(
     {
       outline: 'transparent',
+      '::-moz-focus-inner': { border: 0 },
       position
     },
     parent('.ms-Fabric.is-focusVisible', {
