@@ -8,6 +8,9 @@ let buildConfig = build.getConfig();
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isClean = process.argv.indexOf('clean') >= 0;
 
+build.task('test', build.serial(build.typescript, build.karma));
+build.task('tslint', build.tslint);
+
 // initialize tasks.
 build.initialize(gulp);
 
@@ -18,9 +21,15 @@ let rules = Object.assign(
   require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
   require('./tslint.json').rules
 );
+
 build.tslint.setConfig({
   lintConfig: { rules },
   displayAsWarning: false
+});
+
+// Always fail on test failures.
+build.karma.setConfig({
+  failBuildOnErrors: true
 });
 
 // Configure TypeScript.
@@ -40,6 +49,4 @@ if (isProduction || isClean) {
     libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
 }
-
-build.task('tslint', build.tslint);
 
