@@ -2,7 +2,7 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import {
   ITheme,
   mergeStyleSets
-} from '@uifabric/Styling';
+} from '@uifabric/styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getBaseButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
