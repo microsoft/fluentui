@@ -15,6 +15,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Link',
           url: '#/examples/link'
         },
+        {
+          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
+          key: 'CommandBar',
+          name: 'CommandBar',
+          url: '#/examples/commandbar'
+        },
       ]
     }
   ],

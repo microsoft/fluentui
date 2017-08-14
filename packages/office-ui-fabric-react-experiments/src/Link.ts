@@ -1,1 +1,1 @@
-export * from './components/Link/index';
+export * from './components/Link';
