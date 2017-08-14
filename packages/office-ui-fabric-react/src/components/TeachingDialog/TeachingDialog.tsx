@@ -166,7 +166,7 @@ export class TeachingDialog extends BaseComponent<ITeachingDialogProps, ITeachin
     }
 
     return buttons;
-  };
+  }
 
   /**
    * Handles Tab key down event

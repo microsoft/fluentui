@@ -16,7 +16,7 @@ export interface ITeachingDialogBasicExampleState {
 
 export class TeachingDialogBasicExample extends React.Component<any, ITeachingDialogBasicExampleState> {
 
-  private _menuButtonElement: HTMLElement;
+  private _menuButtonElement: HTMLSpanElement | null;
   private x: boolean;
   public constructor() {
     super();
