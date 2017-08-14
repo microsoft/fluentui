@@ -19,29 +19,6 @@ let {
   packageFolder = ''
 } = buildConfig;
 
-let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
-  return del(['visualtests/results/*png']).then(() => done());
-});
-
-let visualTest = build.subTask('visualtest', (gulp, options, done) => {
-  gulpConnect.server({
-    port: 43210,
-    livereload: false,
-    directoryListing: false
-  });
-  if (!options.args['debug']) {
-    let matchFile = options.args['match'] || '';
-
-    let casperJs = require('gulp-phantomcss');
-    gulp.src(['lib/**/*' + matchFile + '.visualtest.js'])
-      .pipe(casperJs(
-        {
-          screenshots: 'visualtests/baseline',
-          comparisonResultRoot: 'visualtests/results'
-        })).on('end', done);
-  }
-});
-
 // Configure custom lint overrides.
 let rules = Object.assign(
   {},
@@ -54,14 +31,9 @@ build.tslint.setConfig({
   displayAsWarning: false
 });
 
-// Always fail on test failures.
-build.karma.setConfig({
-  failBuildOnErrors: true
-});
-
 // Configure TypeScript.
+// build.typescript.setConfig({ typescript: require('typescript') });
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
-
 // Use css modules.
 build.sass.setConfig({
   useCSSModules: true,
@@ -102,8 +74,6 @@ build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 build.task('sass', build.sass);
-build.task('test', serial(build.sass, build.typescript, build.karma));
-build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
 
 // initialize tasks.
 build.initialize(gulp);
