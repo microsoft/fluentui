@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2017 19:38:35 GMT and should not be manually modified.
+
+## 4.32.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Mixing choice group fields with html input attributes
+- Callout/Dropdown: Both components now support custom widths
+- Nav: Add more options for nav link groups
+- ComboBox: Fix some functionality for when the comboBox is controlled
+- Calendar: added ability to customize navigation icons.
+- Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus().
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
+- Add target to hover card
+- Nav: fix bug with sublink padding
+- FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
+- ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
+- Nav: update isGroupCollapsed for new groups
+- Change dropdown's role from "combobox" to "menu" 
+- Changed DatePicker role to be more accurate for screen readers
+- Selection: Fix broken selection state in example.
 
 ## 4.31.0
 Tue, 08 Aug 2017 15:28:32 GMT
