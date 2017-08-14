@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Update example to work correctly now that StrictNullChecks have been put in place",
+      "comment": "ComboBox: Fix role typo to read heading instead of header",
       "type": "patch"
     }
   ],

@@ -115,6 +115,10 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     });
 
     this._events.on(this._rootElement, 'blur', this._onBlur, true);
+
+    if (this.props.onFocus) {
+      this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+    }
   }
 
   @autobind
@@ -141,11 +145,15 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onBlur(ev: React.ChangeEvent<HTMLInputElement>) {
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement>) {
     this._events.off(this._rootElement, 'blur');
     this.setState({
       hasFocus: false
     });
+
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
   }
 
   @autobind
