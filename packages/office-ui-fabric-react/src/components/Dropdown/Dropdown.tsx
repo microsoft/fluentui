@@ -307,8 +307,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderTitle(item: IDropdownOption | IDropdownOption[]): JSX.Element {
     let displayTxt: string = '';
+    let { multiSelectDelimiter = ', ' } = this.props;
+
     if (this.props.multiSelect && Array.isArray(item)) {
-      displayTxt = item.map(i => i.text).join(', ');
+      displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
     } else {
       displayTxt = (item as IDropdownOption).text;
     }
@@ -385,7 +387,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id + '-list' }
           className={ css('ms-Dropdown-items', styles.items) }
           aria-labelledby={ id + '-label' }
-
           role='listbox'
         >
           { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
