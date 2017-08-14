@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2017 19:38:35 GMT and should not be manually modified.
+
+## 4.7.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Updated fabric build system to use webpack dev server, removed the explicit !json loader in require statements.
 
 ## 4.6.0
 Thu, 03 Aug 2017 10:13:03 GMT

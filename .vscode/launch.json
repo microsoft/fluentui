@@ -17,9 +17,7 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
+      "sourceMaps": false
     },
     {
       "name": "Run ssr tests",
@@ -40,9 +38,7 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
-    },
+      "sourceMaps": false
+    }
   ]
 }
