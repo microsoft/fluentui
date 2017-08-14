@@ -6,7 +6,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
     let suffix = ' cm';
 
     return (
-      <div style={ { width: '203px' } }>
+      <div style={ { width: '400px' } }>
         <SpinButton
           label='SpinButton with custom implementation:'
           value={ '7' + suffix }
@@ -26,6 +26,8 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
             value = this.removeSuffix(value, suffix);
             return String(+value - 2) + suffix;
           } }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

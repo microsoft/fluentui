@@ -2,6 +2,148 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.32.0",
+      "tag": "office-ui-fabric-react_v4.32.0",
+      "date": "Fri, 11 Aug 2017 19:38:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Qianqian Li <lqq201194@163.com>",
+            "commit": "c66fa123e9533644a1e1401005c8dc8a425aa448",
+            "comment": "add StreamLogo and PowerBILogo icons"
+          },
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "d5c814642cc050fea38ca3310cd222783ff7a678",
+            "comment": "Add target to hover card"
+          },
+          {
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "709a3da96e538f46e3c6ff7ba722550cc4cedfcc",
+            "comment": "Nav: fix bug with sublink padding"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "50b608ee4ee1ad5c948073121fd92f0fbaed81d5",
+            "comment": "FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "16b6cf3cc48ef357b28af2e5abc3717f21044812",
+            "comment": "ComboBox: Update example to work correctly now that StrictNullChecks have been put in place"
+          },
+          {
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "7ac4aa1a0969d2195482d1bd9a6da99e95b16fc4",
+            "comment": "Nav: update isGroupCollapsed for new groups"
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "d57ca247d7333fa86473482e2037e1a5aca2c2f2",
+            "comment": "Change dropdown's role from \"combobox\" to \"menu\" "
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "850350776afe17bb20cfb16f7d1b2ab59e7058b3",
+            "comment": "Changed DatePicker role to be more accurate for screen readers"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "1dd7376fecc68f3fb995d2279d871433967f7f16",
+            "comment": "Selection: Fix broken selection state in example."
+          }
+        ],
+        "minor": [
+          {
+            "author": "antonlabunets <alabunets@gmail.com>",
+            "commit": "a044e9533a8e9fe6906df2103e84ff8663ba6127",
+            "comment": "Mixing choice group fields with html input attributes"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "f4f9dc61003f76431d100794eb7d61ddfa2c4ab2",
+            "comment": "Callout/Dropdown: Both components now support custom widths"
+          },
+          {
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "38128798ac4d27ec6eae5036932742de15c56e21",
+            "comment": "Nav: Add more options for nav link groups"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "4672a8423b1156afe54ad8be7439e947170658f0",
+            "comment": "ComboBox: Fix some functionality for when the comboBox is controlled"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "50b608ee4ee1ad5c948073121fd92f0fbaed81d5",
+            "comment": "Calendar: added ability to customize navigation icons."
+          },
+          {
+            "author": "Stanley Yao <stanley.yao@microsoft.com>",
+            "commit": "741bf74775697aa459121b4b1b81af7e44138991",
+            "comment": "Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus()."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.19.0 <1.0.0` to `>=0.19.1 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.31.0",
+      "tag": "office-ui-fabric-react_v4.31.0",
+      "date": "Tue, 08 Aug 2017 15:28:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "a92eb2a9a79dcab033bdbe78ca7a18b2d6607e99",
+            "comment": "BaseButton: Added screenReaderText styles to base button"
+          },
+          {
+            "author": "Boris Emorine <boris.emorine@gmail.com>",
+            "commit": "3966386109ba377bd35636def5b8f86ca9bcb3d0",
+            "comment": "BaseButton: Remove the IconButton dependency that was introduced with SplitButton."
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "231ef83db44a8da2e437f3436de05a2b39946f51",
+            "comment": "Added role alert to \"no results\" view "
+          }
+        ],
+        "minor": [
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "40a60aa2489aa49074e7ed40b7de42f7125b5641",
+            "comment": "ComboBox: Putting the child component styles in the main props and a few other fixes"
+          },
+          {
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a7bc11ddacabfcfbf4fbc56e99e6d13ea296b787",
+            "comment": "Moving SpinButton to Glamor based styling"
+          },
+          {
+            "author": "thomabr <thomabr@microsoft.com>",
+            "commit": "5e07c6d8d3518ef0301b1d1655dc467f4f7a0d3b",
+            "comment": "GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component."
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "5588aeea04b799744c9159401e448f76749c64e0",
+            "comment": "Checkbox: add custom render function for checkbox label."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.17.0 <1.0.0` to `>=0.19.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.30.1",
       "tag": "office-ui-fabric-react_v4.30.1",
       "date": "Mon, 07 Aug 2017 10:22:46 GMT",

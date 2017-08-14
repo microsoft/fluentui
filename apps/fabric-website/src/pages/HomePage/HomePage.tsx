@@ -3,7 +3,7 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './HomePage.module.scss';
 const styles: any = stylesImport;
 
-const packageData = require('json!../../../package.json');
+const packageData = require('../../../package.json');
 
 export class HomePage extends React.Component<any, any> {
   public render() {
