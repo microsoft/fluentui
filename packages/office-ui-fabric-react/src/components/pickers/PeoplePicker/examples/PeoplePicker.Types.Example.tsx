@@ -39,7 +39,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   noResultsFoundText: 'No results found',
   loadingText: 'Loading',
   showRemoveButtons: true,
-  suggestionsAvailableAlertText: 'Suggestions available'
+  suggestionsAvailableAlertText: 'People Picker Suggestions available'
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
@@ -141,10 +141,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onValidateInput={ this._validateInput }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+          "aria-label": 'People Picker'
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
-        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -163,10 +163,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         removeButtonAriaLabel={ 'Remove' }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+          "aria-label": 'People Picker'
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
-        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -183,10 +183,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onValidateInput={ this._validateInput }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+          "aria-label": 'People Picker'
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
-        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -205,10 +205,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onValidateInput={ this._validateInput }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+          "aria-label": 'People Picker'
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
-        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -227,10 +227,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onRemoveSuggestion={ this._onRemoveSuggestion }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+          "aria-label": 'People Picker'
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
-        wellAriaLabel={ 'People Picker' }
       />
     );
   }
@@ -249,10 +249,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onItemSelected={ this._onItemSelected }
         inputProps={ {
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+          onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
+          "aria-label": 'People Picker'
         } }
         componentRef={ (component: IBasePicker<IPersonaProps>) => this._picker = component }
-        wellAriaLabel={ 'People Picker' }
       />
     );
   }

@@ -160,7 +160,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 aria-owns='suggestion-list'
                 aria-expanded='true'
                 aria-haspopup='true'
-                aria-label={ this.props.wellAriaLabel ? this.props.wellAriaLabel : '' }
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
@@ -647,7 +646,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 aria-owns='suggestion-list'
                 aria-expanded='true'
                 aria-haspopup='true'
-                aria-label={ this.props.wellAriaLabel ? this.props.wellAriaLabel : '' }
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'

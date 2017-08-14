@@ -75,7 +75,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * AutoFill input native props
    * @default undefined
    */
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  inputProps?: IInputProps;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -110,12 +110,6 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled component.
    */
   selectedItems?: T[];
-
-  /**
-   * Aria label for the main picker input well.
-   * @default ''
-   */
-  wellAriaLabel?: string;
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -185,4 +179,11 @@ export enum ValidationState {
   valid,
   warning,
   invalid
+}
+
+export interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
+  /**
+   * Screen reader label to apply to an input element.
+   */
+  "aria-label"?: string;
 }
