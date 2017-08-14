@@ -29,34 +29,38 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark,
-      icon: {
-        color: theme.palette.themeDark
-      }
+      color: theme.palette.neutralDark
+    },
+
+    iconHovered: {
+      color: theme.palette.themeDark
     },
 
     rootPressed: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDark
-      }
+      color: theme.palette.black
+    },
+
+    iconPressed: {
+      color: theme.palette.themeDark
     },
 
     rootChecked: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDarker
-      }
+      color: theme.palette.black
+    },
+
+    iconChecked: {
+      color: theme.palette.themeDarker
     },
 
     rootExpanded: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDark
-      }
+      color: theme.palette.black
+    },
+
+    iconExpanded: {
+      color: theme.palette.themeDark
     },
 
     rootCheckedHovered: {

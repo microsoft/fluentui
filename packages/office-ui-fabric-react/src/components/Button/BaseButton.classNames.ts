@@ -69,6 +69,7 @@ export const getClassNames = memoizeFunction((
       styles.icon,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
+      expanded && styles.iconExpanded
     ) as string,
 
     label: mergeStyles(

@@ -263,6 +263,11 @@ export interface IButtonStyles {
   iconPressed?: IStyle;
 
   /**
+   * Style for the icon on the near side of the label when expanded.
+   */
+  iconExpanded?: IStyle;
+
+  /**
    * Style override for the icon when the button is disabled.
    */
   iconDisabled?: IStyle;
