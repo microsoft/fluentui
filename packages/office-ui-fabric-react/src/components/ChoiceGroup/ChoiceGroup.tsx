@@ -5,10 +5,12 @@ import { Icon } from '../../Icon';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
   assign,
+  BaseComponent,
   css,
   getId,
-  BaseComponent,
-} from '@uifabric/utilities';
+  getNativeProps,
+  inputProperties
+} from '../../Utilities';
 import * as stylesImport from './ChoiceGroup.scss';
 const styles: any = stylesImport;
 
@@ -26,7 +28,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
 
   private _id: string;
   private _labelId: string;
-  private _inputElement: HTMLInputElement;
+  private _inputElement: HTMLInputElement | null;
 
   constructor(props: IChoiceGroupProps, ) {
     super(props);
@@ -63,7 +65,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     let { keyChecked, keyFocused } = this.state;
 
     return (
-      // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
+      // Need to assign role application on containing div because JAWS doesn't call OnKeyDown without this role
       <div role='application' className={ className }>
         <div
           className={ css('ms-ChoiceFieldGroup', styles.root) }
@@ -100,7 +102,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 }
               >
                 <input
-                  ref={ (c): HTMLInputElement => this._inputElement = c! }
+                  ref={ this._resolveRef('_inputElement') }
                   id={ option.id }
                   className={ css('ms-ChoiceField-input', styles.input) }
                   type='radio'
@@ -112,6 +114,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                   onFocus={ this._onFocus.bind(this, option) }
                   onBlur={ this._onBlur.bind(this, option) }
                   aria-labelledby={ option.id }
+                  { ...getNativeProps(option, inputProperties) }
                 />
                 { onRenderField(option, this._onRenderField) }
               </div>
