@@ -9,6 +9,7 @@ import {
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 import { ITeachingDialogViewProps } from '../TeachingDialogView.Props';
+import { baseProductionCdnUrl, TestImages } from '../../../common/TestImages';
 
 export interface ITeachingDialogBasicExampleState {
   isTeachingDialogVisible?: boolean;
@@ -28,7 +29,6 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
   }
 
   public render() {
-    const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets';
     let imageProps: IImageProps = { src: 'odsp-media/images/spfirstrun/Activity.gif' } as IImageProps;
     let viewProps: ITeachingDialogViewProps[] =
       [{
@@ -39,7 +39,7 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
         isLeftButtonLight: true,
         title: 'Lorem ipsum',
         textContent: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
-        image: [baseProductionCdnUrl, 'teachingDialog.gif'].join('/'),
+        image: TestImages.teachingDialog,
       } as ITeachingDialogViewProps,
       {
         leftButtonText: 'Previous',
@@ -47,7 +47,7 @@ export class TeachingDialogBasicExample extends React.Component<any, ITeachingDi
         onRightButton: this._onDismiss,
         title: 'Lorem ipsum 2',
         textContent: 'Lorem ipsum 2 dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?',
-        image: [baseProductionCdnUrl, 'teachingDialog.gif'].join('/'),
+        image: TestImages.teachingDialog,
       } as ITeachingDialogViewProps];
 
     return (
