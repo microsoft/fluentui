@@ -104,7 +104,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   public dismissSuggestions() {
     // Select the first suggestion if one is available when user leaves.
-    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible && this.state.suggestedDisplayValue) {
       this.addItemByIndex(0);
     }
     this.setState({ suggestionsVisible: false });
