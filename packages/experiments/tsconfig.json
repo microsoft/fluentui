@@ -22,7 +22,7 @@
       "webpack-env"
     ],
     "paths": {
-      "office-ui-fabric-react-experiments/lib/*": [
+      "experiments/lib/*": [
         "./src/*"
       ]
     }

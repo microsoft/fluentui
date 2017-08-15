@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 
-let LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react-experiments/src/components/Link/examples/Link.Basic.Example.tsx') as string;
+let LinkBasicExampleCode = require('!raw-loader!experiments/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
 export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -23,7 +23,7 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react-experiments/src/components/Link/Link.Props.ts')
+              require<string>('!raw-loader!experiments/src/components/Link/Link.Props.ts')
             ] }
           />
         }
