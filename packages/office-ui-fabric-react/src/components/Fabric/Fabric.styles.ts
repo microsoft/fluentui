@@ -21,7 +21,8 @@ export const getStyles = memoizeFunction((
     root: mergeStyles([
       theme.fonts.medium,
       {
-        color: theme.palette.neutralPrimary,
+        color: theme.semanticColors.bodyText,
+        '&.ms-Fabric': { color: theme.semanticColors.bodyText } // overwrite default ms-Fabric's color with one that themes
         '& button': inheritFont,
         '& input': inheritFont,
         '& textarea': inheritFont
