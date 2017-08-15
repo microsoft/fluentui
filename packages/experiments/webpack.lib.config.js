@@ -8,7 +8,7 @@ let path = require('path');
 let buildConfig = build.getConfig();
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const BUNDLE_NAME = 'office-ui-fabric-react-experiments';
+const BUNDLE_NAME = 'experiments';
 const BUNDLE_TEST = 'fabric-test';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
