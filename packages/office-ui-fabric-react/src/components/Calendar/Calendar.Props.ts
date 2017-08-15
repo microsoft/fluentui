@@ -98,6 +98,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * Customize navigation icons using ICalendarIconStrings
   */
   navigationIcons?: ICalendarIconStrings;
+
+  /**
+  * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+  * @defaultvalue false
+  */
+  showWeekNumbers?: boolean;
 }
 
 export interface ICalendarStrings {

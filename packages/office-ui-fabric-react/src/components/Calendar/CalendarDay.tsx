@@ -50,6 +50,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   autoNavigateOnSelection: boolean;
   navigationIcons: ICalendarIconStrings;
   today?: Date;
+  showWeekNumbers?: boolean;
 }
 
 export interface ICalendarDayState {
@@ -85,14 +86,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, navigationIcons } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, navigationIcons, showWeekNumbers } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
+      <div className={ css(
+        'ms-DatePicker-dayPicker',
+        styles.dayPicker,
+        showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+
+      ) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
             <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
@@ -125,6 +131,31 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
         </div >
         <FocusZone>
+          {
+            showWeekNumbers ?
+              <table
+                className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers, 'ms-DatePicker-table', styles.table) }
+              >
+                <tbody>
+                  { weeks!.map((day, index) =>
+                    <tr key={ index }>
+                      <td>
+
+                        <div
+                          className={ css(
+                            'ms-DatePicker-day',
+                            styles.day
+                          ) }
+                        >
+                          <span>{ index }</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ) }
+                </tbody>
+              </table>
+              : null
+          }
           <table
             className={ css('ms-DatePicker-table', styles.table) }
             aria-readonly='true'

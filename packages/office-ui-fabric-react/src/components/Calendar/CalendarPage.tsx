@@ -22,10 +22,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           <div>
             <ExampleCard title='Inline Calendar' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
-                showGoToToday={ false } />
+                showGoToToday={ false } showWeekNumbers={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } showWeekNumbers={ true }
                 showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>

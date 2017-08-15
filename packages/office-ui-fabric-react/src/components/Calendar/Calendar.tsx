@@ -42,7 +42,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     showGoToToday: true,
     strings: null,
     highlightCurrentMonth: false,
-    navigationIcons: iconStrings
+    navigationIcons: iconStrings,
+    showWeekNumbers: false
   };
 
   public refs: {
@@ -125,6 +126,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   autoNavigateOnSelection={ autoNavigateOnSelection! }
                   strings={ strings! }
                   navigationIcons={ navigationIcons! }
+                  showWeekNumbers={ this.props.showWeekNumbers }
                   ref='dayPicker' />
                 }
 

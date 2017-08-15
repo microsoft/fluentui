@@ -171,6 +171,24 @@ $Calendar-dayPicker-margin: 10px;
   background: $ms-color-neutralTertiary;
 }
 
+.showWeekNumbers{
+  .weekNumbers{
+    position: absolute;
+    margin-top: $Calendar-day;
+    border-right: 1px solid $ms-color-neutralTertiary;
+    .day{
+      color: $ms-color-neutralTertiary;
+    }
+  }
+  .table{
+    &:not(.weekNumbers){
+      margin-left: $Calendar-day;
+    }
+    .day, .weekday{
+      width: 30px;
+    }
+  }
+}
 
 // Month and year pickers, hidden on small screens by default.
 .monthPicker,
@@ -383,6 +401,20 @@ $Calendar-dayPicker-margin: 10px;
     &:hover {
       color: $ms-color-neutralPrimary;
       cursor: default;
+    }
+  }
+
+  .showWeekNumbers{
+    .weekNumbers{
+      margin-top: $Calendar-day;
+    }
+    .table{
+      &:not(.weekNumbers){
+        margin-left: $Calendar-day;
+      }
+      .day, .weekday{
+        width: 25px;
+      }
     }
   }
 
