@@ -99,7 +99,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let rootClass = 'ms-DatePicker';
     let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, isDayPickerVisible, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
     let { selectedDate, navigatedDate } = this.state;
-
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
         <div className={ css(
@@ -112,7 +111,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
         ) } >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
-              <div className={ css('ms-DatePicker-wrap', styles.wrap) }>
+              <div className={ css('ms-DatePicker-wrap', styles.wrap, showGoToToday && styles.goTodaySpacing) }>
                 { isDayPickerVisible && <CalendarDay
                   selectedDate={ selectedDate! }
                   navigatedDate={ navigatedDate! }
