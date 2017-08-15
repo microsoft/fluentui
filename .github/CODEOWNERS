@@ -58,7 +58,7 @@
     # packages/office-ui-fabric-react/src/components/Label/*
     # packages/office-ui-fabric-react/src/components/Layer/*
     # packages/office-ui-fabric-react/src/components/Link/*
-    # packages/office-ui-fabric-react/src/components/List/*  @cschleiden
+    packages/office-ui-fabric-react/src/components/List/*  @cschleiden
     # packages/office-ui-fabric-react/src/components/MarqueeSelection/*
     # packages/office-ui-fabric-react/src/components/MessageBar/*
     # packages/office-ui-fabric-react/src/components/Modal/*
