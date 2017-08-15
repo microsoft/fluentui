@@ -108,22 +108,21 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     let divProps = getNativeProps(this.props, divProperties);
 
-    return (
-      <div
-        role='presentation'
-        { ...divProps }
-        { ...rootProps }
-        className={ css('ms-FocusZone', className) }
-        ref='root'
-        data-focuszone-id={ this._id }
-        aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }
-        onKeyDown={ this._onKeyDown }
-        onFocus={ this._onFocus }
-        { ...{ onMouseDownCapture: this._onMouseDown } }
-      >
-        { this.props.children }
-      </div>
+    return React.createElement(
+      this.props.elementType || 'div', {
+        role: 'presentation',
+        ...divProps,
+        ...rootProps,
+        className: css('ms-FocusZone', className),
+        ref: 'root',
+        'data-focuszone-id': this._id,
+        'aria-labelledby': ariaLabelledBy,
+        'aria-describedby': ariaDescribedBy,
+        onKeyDown: this._onKeyDown,
+        onFocus: this._onFocus,
+        ...{ onMouseDownCapture: this._onMouseDown }
+      },
+      this.props.children
     );
   }
 
