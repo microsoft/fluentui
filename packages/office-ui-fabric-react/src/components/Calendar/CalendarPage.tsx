@@ -8,12 +8,16 @@ import {
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-
+import { ICalendarIconStrings } from './Calendar.Props';
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
+    let navIcons: ICalendarIconStrings = {
+      leftNavigation: 'Up',
+      rightNavigation: 'Down'
+    }
     return (
       <ComponentPage
         title='Calendar'
@@ -21,7 +25,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         exampleCards={
           <div>
             <ExampleCard title='Inline Calendar' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+              <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } navigationIcons={ navIcons }
                 showGoToToday={ false } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>

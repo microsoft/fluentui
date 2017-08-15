@@ -93,12 +93,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
-          </div>
-        </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
@@ -124,6 +118,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           </div >
           <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
         </div >
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          </div>
+        </div>
         <FocusZone>
           <table
             className={ css('ms-DatePicker-table', styles.table) }

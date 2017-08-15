@@ -64,6 +64,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // The header containing the month and year.
 .header {
+  display: inline-flex;
   height: $Calendar-day;
   line-height: 44px;
 }
@@ -119,6 +120,7 @@ $Calendar-dayPicker-margin: 10px;
   line-height: $Calendar-day;
   @include ms-font-m-plus;
   color: $ms-color-neutralPrimary;
+  border-radius: 2px;
 }
 
 
@@ -179,10 +181,8 @@ $Calendar-dayPicker-margin: 10px;
 
 // Month and year previous/next components.
 .monthComponents {
-  position: absolute;
-  top: 9px;
-  @include ms-right(9px);
-  @include ms-left(9px);
+  display: inline-flex;
+  margin-left: 5px;
 }
 
 .yearComponents,
@@ -201,7 +201,6 @@ $Calendar-dayPicker-margin: 10px;
   width: $Calendar-day;
   height: $Calendar-day;
   display: block;
-  @include margin-left(10px);
   text-align: center;
   line-height: $Calendar-day;
   text-align: center;
@@ -273,6 +272,7 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-font-s-plus;
   color: $ms-color-neutralPrimary;
   text-align: center;
+  border-radius: 2px;
 
   &:hover {
     background-color: $ms-color-neutralTertiaryAlt;
@@ -350,10 +350,6 @@ $Calendar-dayPicker-margin: 10px;
     font-size: $ms-font-size-s;
   }
 
-  // Size the month components to the day picker's new width
-  .monthComponents {
-    width: 210px;
-  }
 
   // Reduce the size of arrows to change month/year.
   .prevMonth,
@@ -362,7 +358,7 @@ $Calendar-dayPicker-margin: 10px;
   .nextYear,
   .prevDecade,
   .nextDecade {
-    font-size: $ms-icon-size-s;
+    font-size: 14px;
     width: 24px;
     height: 24px;
     line-height: 24px;
@@ -566,10 +562,6 @@ $Calendar-dayPicker-margin: 10px;
 .nextYear,
 .prevYear {
   display: inline-block;
-}
-
-.navContainer {
-  @include float('right')
 }
 
 .monthIsCurrentMonth {
