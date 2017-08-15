@@ -99,7 +99,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     };
 
     let buttonStyle: React.CSSProperties = {
-      margin: '0 10px 0 0'
+      margin: '17px 10px 0 0'
     };
 
     let dateRangeString: string | null = null;
