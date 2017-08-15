@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 Aug 2017 19:38:35 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Aug 2017 10:19:22 GMT and should not be manually modified.
+
+## 4.33.0
+Tue, 15 Aug 2017 10:19:22 GMT
+
+### Minor changes
+
+- Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario.
+- Pickers: fixing accessiblity and styling issues
+
+### Patches
+
+- ComboBox: Fix role typo to read heading instead of header
+- Added menu indexes to the accessibility readouts for ContextMenus
+- Added the ability to change the root element of a FocusZone
 
 ## 4.32.0
 Fri, 11 Aug 2017 19:38:35 GMT
