@@ -108,7 +108,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
         this.addItemByIndex(0);
       }
-    }
+    };
     if (this.currentPromise) {
       this.currentPromise.then(() => selectItemFunction());
     } else {
