@@ -110,7 +110,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let rootClass = 'ms-DatePicker';
     let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
-    let onHeaderClick = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
+    let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     let showSmallMonthPicker = (isMonthPickerVisible && isDayPickerVisible) || (showMonthPickerAsOverlay && isMonthPickerVisible)
 
     return (
@@ -138,7 +138,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   dateRangeType={ dateRangeType! }
                   autoNavigateOnSelection={ autoNavigateOnSelection! }
                   strings={ strings! }
-                  onHeaderClick={ onHeaderClick }
+                  onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   ref='dayPicker' />
                 }
@@ -149,7 +149,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onNavigateDate={ this._onNavigateDate }
                   today={ this.props.today }
                   highlightCurrentMonth={ highlightCurrentMonth! }
-                  onHeaderClick={ onHeaderClick }
+                  onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   ref='monthPicker' /> }
 

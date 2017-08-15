@@ -20,7 +20,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
-  onHeaderClick?: (focus: boolean) => void;
+  onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
 }
 
@@ -79,7 +79,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             </div>
           </div>
           {
-            this.props.onHeaderClick ?
+            this.props.onHeaderSelect ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
@@ -151,15 +151,20 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   @autobind
   private _onSelectMonth(newMonth: number) {
-    let { navigatedDate, onNavigateDate } = this.props;
+    let { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
+
+    //if header is clickable the calendars are overlayed, switch back to day picker when month is clicked
+    if (onHeaderSelect) {
+      onHeaderSelect(true)
+    }
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 
   @autobind
   private _onHeaderSelect() {
-    let { onHeaderClick } = this.props;
-    if (onHeaderClick) {
-      onHeaderClick(true);
+    let { onHeaderSelect } = this.props;
+    if (onHeaderSelect) {
+      onHeaderSelect(true);
     }
   }
 }

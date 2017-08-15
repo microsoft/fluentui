@@ -50,7 +50,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   autoNavigateOnSelection: boolean;
   navigationIcons: ICalendarIconStrings;
   today?: Date;
-  onHeaderClick?: (focus: boolean) => void;
+  onHeaderSelect?: (focus: boolean) => void;
 }
 
 export interface ICalendarDayState {
@@ -124,7 +124,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </span >
           </div >
           {
-            this.props.onHeaderClick ?
+            this.props.onHeaderSelect ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
@@ -259,9 +259,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   @autobind
   private _onHeaderSelect() {
-    let { onHeaderClick } = this.props;
-    if (onHeaderClick) {
-      onHeaderClick(true);
+    let { onHeaderSelect } = this.props;
+    if (onHeaderSelect) {
+      onHeaderSelect(true);
     }
   }
 
