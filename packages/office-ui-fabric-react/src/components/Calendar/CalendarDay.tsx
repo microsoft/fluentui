@@ -115,7 +115,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
-              onKeyDown={ this._onSelectNextMonth }
+              onKeyDown={ (e) => this._onKeyDown(this._onSelectNextMonth, e) }
               aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
@@ -127,8 +127,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             this.props.onHeaderClick ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
-                onClick={ () => this._onHeaderClick(false) }
-                onKeyDown={ () => this._onHeaderClick(true) }
+                onClick={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderSelect }
                 aria-label={ strings.monthPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
@@ -258,8 +258,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   @autobind
-  private _onHeaderClick(focus: boolean) {
-    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null;
+  private _onHeaderSelect() {
+    let { onHeaderClick } = this.props;
+    if (onHeaderClick) {
+      onHeaderClick(true);
+    }
   }
 
   @autobind

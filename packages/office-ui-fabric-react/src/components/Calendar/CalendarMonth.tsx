@@ -61,7 +61,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               <span
                 className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
                 onClick={ this._onSelectPrevYear }
-                onKeyDown={ this._onSelectPrevYear }
+                onKeyDown={ (e) => this._onKeyDown(this._onSelectPrevYear, e) }
                 aria-label={ strings.prevYearAriaLabel }
                 role='button'
                 tabIndex={ 0 }>
@@ -70,7 +70,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               <span
                 className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
                 onClick={ this._onSelectNextYear }
-                onKeyDown={ this._onSelectNextYear }
+                onKeyDown={ (e) => this._onKeyDown(this._onSelectNextYear, e) }
                 aria-label={ strings.nextYearAriaLabel }
                 role='button'
                 tabIndex={ 0 }>
@@ -82,8 +82,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
             this.props.onHeaderClick ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                onClick={ () => this._onHeaderClick(false) }
-                onKeyDown={ () => this._onHeaderClick(true) }
+                onClick={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderSelect }
                 aria-label={ strings.dayPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
@@ -130,12 +130,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 
-  // @autobind
-  // private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
-  //   if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
-  //     callback();
-  //   }
-  // }
+  @autobind
+  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+      callback();
+    }
+  }
 
   @autobind
   private _onSelectNextYear() {
@@ -156,7 +156,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   @autobind
-  private _onHeaderClick(focus: boolean) {
-    this.props.onHeaderClick ? this.props.onHeaderClick(focus) : null;
+  private _onHeaderSelect() {
+    let { onHeaderClick } = this.props;
+    if (onHeaderClick) {
+      onHeaderClick(true);
+    }
   }
 }
