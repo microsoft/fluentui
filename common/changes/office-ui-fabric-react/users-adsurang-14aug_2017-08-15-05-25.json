@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Making collapse all button in grouped list accessible and adding aria expanded in  overflow button of command bar",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "adsurang@microsoft.com"
+}
