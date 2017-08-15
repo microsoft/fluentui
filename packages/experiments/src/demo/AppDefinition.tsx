@@ -15,6 +15,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'Link',
           url: '#/examples/link'
         },
+        {
+          component: require<any>('../components/Tile/TilePage').TilePage,
+          key: 'Tile',
+          name: 'Tile',
+          url: '#/examples/tile'
+        }
       ]
     }
   ],
