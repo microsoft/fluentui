@@ -54,6 +54,11 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   disabled?: boolean;
 
   /**
+   * Element type the root element will use. Default is "div".
+   */
+  elementType?: keyof React.ReactHTML;
+
+  /**
    * If set, will cycle to the beginning of the targets once the user navigates to the
    * next target while at the end, and to the end when navigate to the previous at the beginning.
    */
