@@ -7,6 +7,10 @@ $rowHorizontalPadding: 8px;
 $compactRowVerticalPadding: 6px;
 $isPaddedMargin: 24px;
 
+/* Original Styles */
+$origRowHeight: 36px;
+$origRowVerticalPadding: 10px;
+
 
 /* DetailsList Colors */
 // Default
@@ -52,9 +56,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   }
 }
 
-:global(.ms-List-cell:first-child) {
+//.ms-List-cell:first-child
+:global(.ms-List-page:first-child.ms-List-cell:first-child) {
   .root {
-    // Don't show border-top for first row's pseudo element
     &:before {
       display: none;
     }
@@ -200,4 +204,36 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
 .cellMeasurer .cell {
   overflow: visible;
   white-space: nowrap;
+}
+
+/* Original Styles */
+:global(.ms-DetailsList--Original) {
+  .root {
+    min-height: $origRowHeight;
+    border: 0;
+    margin: 1px 0;
+    color: $ms-color-neutralPrimary;
+  }
+
+  .rootIsSelected {
+    background: $ms-color-neutralQuaternary;
+
+    &:hover {
+      background: $ms-color-neutralQuaternaryAlt;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .cell {
+    min-height: $origRowHeight;
+    padding: $origRowVerticalPadding 8px;
+
+    &.checkCell {
+      padding: 0;
+      margin: 0;
+    }
+  }
 }

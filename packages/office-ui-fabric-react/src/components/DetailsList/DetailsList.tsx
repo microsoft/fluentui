@@ -16,10 +16,11 @@ import {
   CheckboxVisibility,
   ColumnActionsMode,
   ConstrainMode,
+  DetailsListDisplayMode,
   DetailsListLayoutMode,
   IColumn,
   IDetailsList,
-  IDetailsListProps,
+  IDetailsListProps
 } from '../DetailsList/DetailsList.Props';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
@@ -66,7 +67,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    displayMode: DetailsListDisplayMode.original
   };
 
   // References
@@ -148,7 +150,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       setKey,
       selectionMode,
       columns,
-      viewport
+      viewport,
+      displayMode,
+      compact
     } = this.props;
     let { layoutMode } = this.state;
     let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
@@ -157,6 +161,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (newProps.layoutMode !== this.props.layoutMode) {
       layoutMode = newProps.layoutMode;
       this.setState({ layoutMode: layoutMode });
+      shouldForceUpdates = true;
+    }
+
+    if (newProps.displayMode !== this.props.displayMode || compact !== newProps.compact) {
       shouldForceUpdates = true;
     }
 
@@ -212,7 +220,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       rowElementEventMap,
       shouldApplyApplicationRole = false,
       getKey,
-      listProps
+      listProps,
+      displayMode
     } = this.props;
     let {
       adjustedColumns,
@@ -262,8 +271,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
           ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained,
-          'ms-DetailsList--Compact': !!compact,
-          [styles.rootCompact]: !!compact
+          'ms-DetailsList--Compact': !!compact || displayMode === DetailsListDisplayMode.compact,
+          [styles.rootCompact]: !!compact || displayMode === DetailsListDisplayMode.compact,
+          'ms-DetailsList--Original': !!!compact && displayMode === DetailsListDisplayMode.original
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -293,7 +303,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
               ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
               selectAllVisibility: selectAllVisibility,
-              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
+              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+              displayMode: displayMode
             }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>

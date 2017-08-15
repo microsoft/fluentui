@@ -186,6 +186,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
   compact?: boolean;
+
+  /** Prop to introduce the new styles of DetailsList.  */
+  displayMode?: DetailsListDisplayMode;
 }
 
 export interface IColumn {
@@ -385,4 +388,13 @@ export enum CheckboxVisibility {
    * Hide checkboxes.
    */
   hidden = 2
+}
+
+export enum DetailsListDisplayMode {
+  /** Original styles */
+  original = 0,
+  /** 42px row height styles */
+  new = 1,
+  /** 32px row height styles */
+  compact = 2
 }

@@ -40,3 +40,9 @@ button.check {
 .isDisabled {
   visibility: hidden;
 }
+
+:global(.ms-DetailsList--Original) {
+  button.check {
+    padding: 7px 6px;
+  }
+}

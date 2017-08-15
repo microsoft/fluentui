@@ -45,7 +45,6 @@ $isPaddedMargin: 24px;
   border: none;
   line-height: inherit;
   margin: 0;
-  @include ms-text-align(left);
   height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
@@ -180,4 +179,32 @@ $isPaddedMargin: 24px;
 
 .cell .collapseButton {
   @include ms-padding-right(0);
+}
+
+$origRowHeight: 36px;
+
+/* Original Styles */
+:global(.ms-DetailsList--Original) {
+  .root {
+    height: $origRowHeight;
+    line-height: $origRowHeight;
+  }
+  .cell {
+    height: $origRowHeight;
+    background: transparent;
+
+    &.cellIsActionable {
+      color: $ms-color-neutralSecondary;
+    }
+
+    &.cellIsCheck {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .cell .nearIcon {
+    @include padding-right(4px);
+    @include padding-left(0);
+  }
 }
