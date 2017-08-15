@@ -22,7 +22,7 @@ export const getStyles = memoizeFunction((
       theme.fonts.medium,
       {
         color: theme.semanticColors.bodyText,
-        '&.ms-Fabric': { color: theme.semanticColors.bodyText } // overwrite default ms-Fabric's color with one that themes
+        '&.ms-Fabric': { color: theme.semanticColors.bodyText }, // overwrite default ms-Fabric's color with one that themes
         '& button': inheritFont,
         '& input': inheritFont,
         '& textarea': inheritFont
