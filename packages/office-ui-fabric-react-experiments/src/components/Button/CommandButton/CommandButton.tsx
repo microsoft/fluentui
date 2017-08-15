@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { BaseComponent, customizable, nullRender } from 'office-ui-fabric-react/lib/Utilities';
-import { ThemeSettingName } from '@uifabric/styling';
+import { ThemeSettingName } from 'office-ui-fabric-react/lib/Styling';
 import { getStyles } from './CommandButton.styles';
 
 @customizable([ThemeSettingName])
