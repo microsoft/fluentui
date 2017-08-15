@@ -55,6 +55,14 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   selectedKeys?: string[] | number[];
 
   /**
+   * When multiple items are selected, this still will be used to separate values in
+   * the dropdown title.
+   *
+   * @defaultValue ", "
+   */
+  multiSelectDelimiter?: string;
+
+  /**
    * Deprecated at v0.52.0, use 'disabled' instead.
    * @deprecated
    */
