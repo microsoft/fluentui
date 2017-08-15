@@ -61,7 +61,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               <span
                 className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
                 onClick={ this._onSelectPrevYear }
-                onKeyDown={ (e) => this._onKeyDown(this._onSelectPrevYear, e) }
+                onKeyDown={ this._onSelectPrevYearKeyDown }
                 aria-label={ strings.prevYearAriaLabel }
                 role='button'
                 tabIndex={ 0 }>
@@ -70,7 +70,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               <span
                 className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
                 onClick={ this._onSelectNextYear }
-                onKeyDown={ (e) => this._onKeyDown(this._onSelectNextYear, e) }
+                onKeyDown={ this._onSelectNextYearKeyDown }
                 aria-label={ strings.nextYearAriaLabel }
                 role='button'
                 tabIndex={ 0 }>
@@ -83,7 +83,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderKeyDown }
                 aria-label={ strings.dayPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
@@ -144,9 +144,19 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   @autobind
+  private _onSelectNextYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    this._onKeyDown(this._onSelectNextYear, ev);
+  }
+
+  @autobind
   private _onSelectPrevYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
+  }
+
+  @autobind
+  private _onSelectPrevYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    this._onKeyDown(this._onSelectNextYear, ev);
   }
 
   @autobind
@@ -164,6 +174,14 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _onHeaderSelect() {
     let { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
+      onHeaderSelect(true);
+    }
+  }
+
+  @autobind
+  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let { onHeaderSelect } = this.props;
+    if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }
   }

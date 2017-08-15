@@ -115,7 +115,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
-              onKeyDown={ (e) => this._onKeyDown(this._onSelectNextMonth, e) }
+              onKeyDown={ this.onNextMonthKeyDown }
               aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
@@ -128,7 +128,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderKeyDown }
                 aria-label={ strings.monthPickerAriaLabel }
                 role='button'
                 tabIndex={ 0 }
@@ -266,16 +266,21 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   @autobind
-  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.tab && ev.shiftKey) {
-      if (this.props.onDismiss) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        this.props.onDismiss();
-      }
-    } else {
-      this._onKeyDown(this._onSelectPrevMonth, ev);
+  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let { onHeaderSelect } = this.props;
+    if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      onHeaderSelect(true);
     }
+  }
+
+  @autobind
+  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    this._onKeyDown(this._onSelectPrevMonth, ev);
+  }
+
+  @autobind
+  private onNextMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    this._onKeyDown(this._onSelectNextMonth, ev);
   }
 
   private _getWeeks(propsToUse: ICalendarDayProps): IDayInfo[][] {
