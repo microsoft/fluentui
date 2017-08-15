@@ -153,9 +153,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
 
-    //if header is clickable the calendars are overlayed, switch back to day picker when month is clicked
+    // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
     if (onHeaderSelect) {
-      onHeaderSelect(true)
+      onHeaderSelect(true);
     }
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
