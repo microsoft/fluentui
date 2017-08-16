@@ -326,7 +326,7 @@ interface IRawStyle extends IRawFontStyle {
   zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;
 }
 
-// @public (undocumented)
+// @public
 export function keyframes(timeline: { [key: string]: {} }): string;
 
 // @public

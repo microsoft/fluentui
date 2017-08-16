@@ -3,6 +3,7 @@ import { Stylesheet } from './Stylesheet';
 import { serializeRuleEntries } from './styleToClassName';
 
 /**
+ * Registers keyframe definitions.
  *
  * @public
  */

@@ -1,6 +1,9 @@
 # [Office UI Fabric - merge-styles](http://dev.office.com/fabric)
 
-The merge-styles library provides a number of utilities for loading styles through javascript. It is designed to make it simple to convert javascript style objects into css classes on the fly.
+The merge-styles library provides a number of utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css rules, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
+
+The library was built for speed and size; the entire package is 3.4k gzipped.
+
 
 The basic idea is to provide a method which can take in one or more style objects css styling javascript objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
 
@@ -74,7 +77,7 @@ When building a component, you will need a *style set* map of class names to inj
 The recommended pattern is to provide the classnames in a separate function, typically in a separate file `ComponentName.classNames.ts`.
 
 ```tsx
-import { IStyle, mergeStyleSets, memoize } from '@uifabric/merge-styles';
+import { IStyle, mergeStyleSets } from '@uifabric/merge-styles';
 
 export interface IComponentClassNames {
   root: string;
