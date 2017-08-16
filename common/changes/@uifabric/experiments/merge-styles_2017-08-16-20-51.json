@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Updating project dependencies.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "dzearing@microsoft.com"
+}
