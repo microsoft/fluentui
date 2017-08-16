@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 Aug 2017 10:19:22 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2017 10:11:43 GMT and should not be manually modified.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
 
 ## 4.33.0
 Tue, 15 Aug 2017 10:19:22 GMT
