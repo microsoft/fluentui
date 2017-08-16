@@ -768,6 +768,7 @@ export type IconName =
   'StoreLogoMed' |
   'Storyboard' |
   'Streaming' |
+  'StreamLogo' |
   'Strikethrough' |
   'Subscribe' |
   'Subscript' |

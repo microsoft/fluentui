@@ -6,8 +6,8 @@ const pageStyles: any = require('../../PageStyles.module.scss');
 import * as stylesImport from './LocalizationPage.module.scss';
 const styles: any = stylesImport;
 
-const directionalIconsData = require('json!../../../data/directional-icons.json');
-const localizedFontsData = require('json!../../../data/localized-fonts.json');
+const directionalIconsData = require('../../../data/directional-icons.json');
+const localizedFontsData = require('../../../data/localized-fonts.json');
 
 export class LocalizationPage extends React.Component<any, any> {
   public render() {
