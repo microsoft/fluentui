@@ -24,20 +24,24 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
                 showGoToToday={ false } />
             </ExampleCard>
+            <ExampleCard title='Inline Calendar with overlayed month picker when header is clicked' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample showMonthPickerAsOverlay={ true } highlightCurrentMonth={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+                showGoToToday={ true } />
+            </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+              <CalendarInlineExample dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
                 showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Week } autoNavigateOnSelection={ true }
+              <CalendarInlineExample dateRangeType={ DateRangeType.Week } autoNavigateOnSelection={ true }
                 showGoToToday={ true } showNavigateButtons={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month selection' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ true }
+              <CalendarInlineExample dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ true }
                 showGoToToday={ true } showNavigateButtons={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker and no day picker' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ false }
+              <CalendarInlineExample dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ false }
                 showGoToToday={ true } highlightCurrentMonth={ true } isDayPickerVisible={ false } />
             </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>

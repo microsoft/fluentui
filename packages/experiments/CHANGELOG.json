@@ -2,6 +2,18 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.0.2",
+      "tag": "@uifabric/experiments_v0.0.2",
+      "date": "Wed, 16 Aug 2017 10:11:43 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.33.0` to `4.34.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.1",
       "tag": "@uifabric/experiments_v0.0.1",
       "date": "Tue, 15 Aug 2017 10:19:22 GMT",
