@@ -1,7 +1,7 @@
 {
-  "name": "@uifabric/utilities",
+  "name": "@uifabric/merge-styles",
   "version": "4.9.0",
-  "description": "Office UI Fabric utilities for building React components.",
+  "description": "Office UI Fabric style loading utilities.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
@@ -29,6 +29,7 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.0",
     "enzyme": "^2.7.0",
+    "es6-map": "^0.1.5",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "gulp": "~3.9.1",
@@ -42,6 +43,7 @@
     "typescript": "2.4.2"
   },
   "dependencies": {
+    "@uifabric/utilities": ">=4.9.0 <5.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.6.0"
   },
