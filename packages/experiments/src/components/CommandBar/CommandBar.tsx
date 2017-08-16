@@ -7,7 +7,7 @@ import {
   assign
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
-import { CommandButton } from '../Button';
+import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
@@ -206,6 +206,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onRenderButton(props: ICommandBarItemProps) {
-    return <CommandButton {...props as any} />;
+    return <CommandBarButton {...props as any} />;
   }
 }

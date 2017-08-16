@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { assign } from 'office-ui-fabric-react/lib/Utilities';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar } from '../CommandBar';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export class CommandBarBasicExample extends React.Component<any, any> {

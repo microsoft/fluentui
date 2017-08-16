@@ -1,10 +1,15 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
   mergeStyleSets
-} from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getBaseButtonStyles } from 'office-ui-fabric-react/lib/Button';
+} from '../../../Styling';
+import { memoizeFunction } from '../../../Utilities';
+import {
+  getStyles as getBaseButtonStyles
+} from '../BaseButton.styles';
+import {
+  getStyles as getSplitButtonStyles
+} from '../SplitButton/SplitButton.styles';
 
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
@@ -16,6 +21,7 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
     root: {
       borderWidth: '0',

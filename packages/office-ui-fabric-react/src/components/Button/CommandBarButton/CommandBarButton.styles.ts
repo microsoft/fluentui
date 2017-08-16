@@ -1,10 +1,15 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
   mergeStyleSets
-} from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getBaseButtonStyles } from 'office-ui-fabric-react/lib/Button';
+} from '../../../Styling';
+import { memoizeFunction } from '../../../Utilities';
+import {
+  getStyles as getBaseButtonStyles
+} from '../BaseButton.styles';
+import {
+  getStyles as getSplitButtonStyles
+} from '../SplitButton/SplitButton.styles';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
@@ -13,6 +18,7 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  let baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let commandButtonStyles: IButtonStyles = {
     root: {
       minWidth: '40px',
@@ -23,38 +29,34 @@ export const getStyles = memoizeFunction((
 
     rootHovered: {
       backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark
-    },
-
-    iconHovered: {
-      color: theme.palette.themeDark
+      color: theme.palette.neutralDark,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootPressed: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
-    },
-
-    iconPressed: {
-      color: theme.palette.themeDark
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootChecked: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
-    },
-
-    iconChecked: {
-      color: theme.palette.themeDarker
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDarker
+      }
     },
 
     rootExpanded: {
       backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black
-    },
-
-    iconExpanded: {
-      color: theme.palette.themeDark
+      color: theme.palette.black,
+      icon: {
+        color: theme.palette.themeDark
+      }
     },
 
     rootCheckedHovered: {
@@ -76,9 +78,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(
-    baseButtonStyles,
-    commandButtonStyles,
-    customStyles
-  )!;
+  return mergeStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
 });

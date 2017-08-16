@@ -1,7 +1,8 @@
 export * from './BaseButton';
-export { getStyles as getBaseButtonStyles } from './BaseButton.styles';
 export * from './Button.Props';
 export * from './Button';
+export * from './ActionButton/ActionButton';
+export * from './CommandBarButton/CommandBarButton';
 export * from './CommandButton/CommandButton';
 export * from './CompoundButton/CompoundButton';
 export * from './DefaultButton/DefaultButton';

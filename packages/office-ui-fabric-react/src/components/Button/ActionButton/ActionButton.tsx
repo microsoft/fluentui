@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { BaseButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { BaseComponent, customizable, nullRender } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { IButtonProps } from '../Button.Props';
 import { getStyles } from './ActionButton.styles';
 
 @customizable(['theme'])
@@ -17,7 +18,7 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         { ...this.props }
-        variantClassName='ms-Button--action'
+        variantClassName='ms-Button--action ms-Button--command'
         styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
