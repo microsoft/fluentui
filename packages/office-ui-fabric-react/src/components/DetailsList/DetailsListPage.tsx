@@ -44,7 +44,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         componentName='DetailsListExample'
         exampleCards={
           <div>
-            <ExampleCard title='Document DetailsList with 500 items, sorting, filtering, marquee selection' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
+            <ExampleCard title='Document DetailsList with 500 items, sorting, filtering, marquee selection, justified columns' isOptIn={ true } code={ DetailsListDocumentsExampleCode }>
               <DetailsListDocumentsExample />
             </ExampleCard>
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
