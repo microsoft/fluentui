@@ -75,4 +75,12 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Optional class name to apply to tooltip host.
    */
   hostClassName?: string;
+
+  /**
+   * Manual way to display tooltip when the element is not directly focusable but an ancestor is,
+   * so it can pass down that state via this property.
+   * It honors overflow rules and keyboard and mouse interaction, so this just adds another interaction way
+   * delegated on another element.
+   */
+  isFocused?: boolean;
 }

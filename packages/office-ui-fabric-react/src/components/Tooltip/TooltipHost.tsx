@@ -39,6 +39,22 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
     };
   }
 
+  public componentWillReceiveProps(nextProps: ITooltipHostProps) {
+    if (nextProps.isFocused !== this.props.isFocused) {
+      if (this.props.isFocused) {
+        this._onTooltipMouseEnter();
+      } else {
+        this._onTooltipMouseLeave();
+      }
+    }
+  }
+
+  public componentDidMount() {
+    if (this.props.isFocused) {
+      this._onTooltipMouseEnter();
+    }
+  }
+
   // Render
   public render() {
     const {
@@ -104,7 +120,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   // Show Tooltip
   @autobind
-  private _onTooltipMouseEnter(ev: any) {
+  private _onTooltipMouseEnter() {
     const { overflowMode } = this.props;
 
     if (overflowMode !== undefined) {
@@ -121,7 +137,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
   // Hide Tooltip
   @autobind
-  private _onTooltipMouseLeave(ev: any) {
+  private _onTooltipMouseLeave() {
     this.setState({
       isTooltipVisible: false
     });
