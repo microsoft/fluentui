@@ -27,7 +27,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   href?: string;
 
   /**
-   * Button uses primary color theme if defined.
+   * Changes the visual presentation of the button to be emphasized (if defined)
    * @default false
    */
   primary?: boolean;
