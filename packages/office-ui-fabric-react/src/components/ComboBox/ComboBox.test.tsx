@@ -87,6 +87,45 @@ describe('ComboBox', () => {
     expect(inputElement.props().value).equals('1');
   });
 
+  it('New options are not automatically added when allowFreeform on in controlled case', () => {
+    let comboBoxRoot;
+    let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
+    let comboBoxComponent: any;
+    let wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        options={ DEFAULT_OPTIONS }
+        allowFreeform={ true }
+        onChanged={ () => { return; } }
+        componentRef={ ref => comboBoxComponent = ref }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('change', { target: { value: 'f' } });
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    expect((comboBoxComponent as React.Component<any, any>).state.currentOptions.length).equals(DEFAULT_OPTIONS.length);
+  });
+
+  it('New options are automatically added when allowFreeform on in uncontrolled case', () => {
+    let comboBoxRoot;
+    let inputElement: ReactWrapper<React.InputHTMLAttributes<any>, any>;
+    let comboBoxComponent: any;
+    let wrapper = mount(
+      <ComboBox
+        label='testgroup'
+        options={ DEFAULT_OPTIONS }
+        allowFreeform={ true }
+        componentRef={ ref => comboBoxComponent = ref }
+      />);
+    comboBoxRoot = wrapper.find('.ms-ComboBox');
+    inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('change', { target: { value: 'f' } });
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    let currentOptions = (comboBoxComponent as React.Component<any, any>).state.currentOptions;
+    expect(currentOptions.length).equals(DEFAULT_OPTIONS.length + 1);
+    expect(currentOptions[currentOptions.length - 1].text).equals('f');
+  });
+
   it('Renders a default value with options', () => {
     let wrapper = mount(
       <ComboBox

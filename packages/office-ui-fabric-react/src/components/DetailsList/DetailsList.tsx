@@ -208,7 +208,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       rowElementEventMap,
       shouldApplyApplicationRole = false,
       getKey,
-      listProps
+      listProps,
+      usePageCache,
+      onShouldVirtualize
     } = this.props;
     let {
       adjustedColumns,
@@ -321,6 +323,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                     eventsToRegister={ rowElementEventMap }
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
+                    usePageCache={ usePageCache }
+                    onShouldVirtualize={ onShouldVirtualize }
                   />
                 ) : (
                     <List
@@ -328,6 +332,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
                       role='presentation'
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex as number) }
+                      usePageCache={ usePageCache }
+                      onShouldVirtualize={ onShouldVirtualize }
                       { ...additionalListProps }
                     />
                   )

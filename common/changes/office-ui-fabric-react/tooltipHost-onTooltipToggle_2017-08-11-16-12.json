@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Enhancement: added ability to customize calendar's navigation icons.",
+      "comment": "TooltipHost: new onTooltipToggle callback",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "v-panu@microsoft.com"
 }

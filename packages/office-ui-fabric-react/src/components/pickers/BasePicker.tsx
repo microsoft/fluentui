@@ -12,7 +12,7 @@ import { Selection, SelectionZone, SelectionMode } from '../../utilities/selecti
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePickerProps, ValidationState } from './BasePicker.Props';
+import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
@@ -30,7 +30,7 @@ export interface IBasePickerState {
   isResultsFooterVisible?: boolean;
 }
 
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
 
   protected selection: Selection;
 
@@ -104,7 +104,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   public dismissSuggestions() {
     // Select the first suggestion if one is available when user leaves.
-    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible && this.state.suggestedDisplayValue) {
       this.addItemByIndex(0);
     }
     this.setState({ suggestionsVisible: false });
@@ -382,6 +382,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         isMostRecentlyUsedVisible: false,
         suggestionsVisible: true
       });
+    }
+    if (this.props.inputProps && this.props.inputProps.onFocus) {
+      this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
   }
 
