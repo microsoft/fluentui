@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add ability to override page render behavior in List",
+      "comment": "TooltipHost: new onTooltipToggle callback",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com"
+  "email": "v-panu@microsoft.com"
 }

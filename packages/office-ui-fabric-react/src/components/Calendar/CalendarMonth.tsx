@@ -3,7 +3,8 @@ import {
   BaseComponent,
   KeyCodes,
   css,
-  getRTL
+  getRTL,
+  autobind
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
@@ -19,6 +20,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   today?: Date;
   highlightCurrentMonth: boolean;
+  onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
 }
 
@@ -53,31 +55,42 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css(
-            'ms-DatePicker-yearComponents ms-DatePicker-navContainer',
-            styles.yearComponents,
-            styles.navContainer
-          ) }>
-            <span
-              className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
-              onClick={ this._onSelectPrevYear }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
-              aria-label={ strings.prevYearAriaLabel }
-              role='button'
-              tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span>
-            <span
-              className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
-              onClick={ this._onSelectNextYear }
-              onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
-              aria-label={ strings.nextYearAriaLabel }
-              role='button'
-              tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span>
-          </div>
           <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
+          <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
+            <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
+              <span
+                className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
+                onClick={ this._onSelectPrevYear }
+                onKeyDown={ this._onSelectPrevYearKeyDown }
+                aria-label={ strings.prevYearAriaLabel }
+                role='button'
+                tabIndex={ 0 }>
+                <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
+              </span>
+              <span
+                className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
+                onClick={ this._onSelectNextYear }
+                onKeyDown={ this._onSelectNextYearKeyDown }
+                aria-label={ strings.nextYearAriaLabel }
+                role='button'
+                tabIndex={ 0 }>
+                <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
+              </span>
+            </div>
+          </div>
+          {
+            this.props.onHeaderSelect ?
+              <div
+                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
+                onClick={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderKeyDown }
+                aria-label={ strings.dayPickerAriaLabel }
+                role='button'
+                tabIndex={ 0 }
+              />
+              :
+              null
+          }
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
@@ -117,24 +130,59 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 
+  @autobind
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       callback();
     }
   }
 
+  @autobind
   private _onSelectNextYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, 1), false);
   }
 
+  @autobind
+  private _onSelectNextYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    this._onKeyDown(this._onSelectNextYear, ev);
+  }
+
+  @autobind
   private _onSelectPrevYear() {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(addYears(navigatedDate, -1), false);
   }
 
+  @autobind
+  private _onSelectPrevYearKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    this._onKeyDown(this._onSelectNextYear, ev);
+  }
+
+  @autobind
   private _onSelectMonth(newMonth: number) {
-    let { navigatedDate, onNavigateDate } = this.props;
+    let { navigatedDate, onNavigateDate, onHeaderSelect } = this.props;
+
+    // If header is clickable the calendars are overlayed, switch back to day picker when month is clicked
+    if (onHeaderSelect) {
+      onHeaderSelect(true);
+    }
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
+  }
+
+  @autobind
+  private _onHeaderSelect() {
+    let { onHeaderSelect } = this.props;
+    if (onHeaderSelect) {
+      onHeaderSelect(true);
+    }
+  }
+
+  @autobind
+  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    let { onHeaderSelect } = this.props;
+    if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      onHeaderSelect(true);
+    }
   }
 }
