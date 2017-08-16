@@ -22,6 +22,7 @@ export class SliderBasicExample extends React.Component<any, any> {
           step={ 1 }
           defaultValue={ 2 }
           showValue={ true }
+          horizontal={ false }
           onChange={ (value) => console.log(value) }
         />
 

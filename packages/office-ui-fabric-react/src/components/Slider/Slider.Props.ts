@@ -65,6 +65,12 @@ export interface ISliderProps {
   ariaLabel?: string;
 
   /**
+   * Whether the slider is horzontal;
+   * If you want to use vertical slider, you need to set this value to false;
+   */
+  horizontal?: boolean;
+
+  /**
    * Whether or not the Slider is disabled.
    */
   disabled?: boolean;

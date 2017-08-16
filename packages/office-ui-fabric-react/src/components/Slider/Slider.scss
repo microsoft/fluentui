@@ -1,5 +1,6 @@
 @import '../../common/common';
 
+.row {
 .root {
   user-select: none;
   margin-bottom: 8px;
@@ -21,40 +22,7 @@
   box-sizing: border-box;
 }
 
-.activeSection {
-  background: $ms-color-neutralSecondary;
 
-  @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-black;
-  }
-}
-
-.inactiveSection {
-  background: $ms-color-neutralTertiaryAlt;
-
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: 1px solid $ms-color-black;
-  }
-}
-
-.showTransitions {
-  .thumb {
-    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
-  }
-
-  .activeSection,
-  .inactiveSection {
-    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
-  }
-}
 .slideBox {
   background: transparent;
   border: none;
@@ -95,6 +63,118 @@
   width: 30px;
   margin: 0 8px;
   line-height: 1;
+}
+}
+.activeSection {
+  background: $ms-color-neutralSecondary;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $ms-color-black;
+  }
+}
+
+.inactiveSection {
+  background: $ms-color-neutralTertiaryAlt;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
+  }
+}
+
+.showTransitions {
+  .thumb {
+    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
+  }
+
+  .activeSection,
+  .inactiveSection {
+    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
+  }
+}
+.column {
+  .root {
+  user-select: none;
+  //display: inline-block;
+  //align-items: stretch;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.titleLabel {
+  padding: 0;
+}
+
+.line {
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 4px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.line span {
+  width: 4px;
+  height: 100%;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.slideBox {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  height: 100%;
+    outline: none;
+  flex-grow: 1;
+  width: 28px;
+  line-height: 28px;
+  padding: 0 0 12px 0; // Make room for thumb at bottom of line
+  //display: flex;
+  //align-items: stretch;
+}
+
+.slideBox .thumb {
+  border: 2px solid $ms-color-neutralSecondary;
+  box-sizing: border-box;
+  background: $ms-color-white;
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: -6px;
+  border-radius: 10px;
+  margin: 0 auto;
+  //@include transform-translateX(-50%);
+}
+
+.container {
+  display: flex;
+  //align-items: stretch;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.valueLabel {
+  flex-shrink: 1;
+  width: 30px;
+  margin: 0 auto;
+  line-height: 1;
+  display: block;
+}
 }
 
 .rootIsEnabled {

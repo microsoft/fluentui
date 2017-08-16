@@ -30,6 +30,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     max: 10,
     showValue: true,
     disabled: false,
+    horizontal: true,
     buttonProps: {}
   };
 
@@ -83,7 +84,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       max,
       min,
       showValue,
-      buttonProps
+      buttonProps,
+      horizontal
     } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue! - min!) / (max! - min!) * 100;
@@ -91,57 +93,116 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
-
-    return (
-      <div
-        className={ css('ms-Slider', styles.root, className, {
-          ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
-          ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled
-        }) }
-        ref='root'>
-        { label && (
-          <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
-            { label }
-          </Label>
-        ) }
-        <div className={ css('ms-Slider-container', styles.container) }>
-          <button
-            aria-valuenow={ value }
-            aria-valuemin={ min }
-            aria-valuemax={ max }
-            { ...onMouseDownProp }
-            { ...onTouchStartProp }
-            { ...onKeyDownProp }
-            { ...buttonProps }
-            className={ css('ms-Slider-slideBox', styles.slideBox, buttonProps!.className, {
-              'ms-Slider-showValue': !!showValue,
-              ['ms-Slider-showTransitions ' + styles.showTransitions]: (renderedValue === value)
-            }) }
-            id={ this._id }
-            disabled={ disabled }
-            type='button'
-            role='slider'
-          >
-            <div
-              ref='sliderLine'
-              className={ css('ms-Slider-line', styles.line) }
+    if (horizontal) {
+      return (
+        <div
+          className={ css('ms-Slider', styles.root, className, {
+            ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
+            ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
+            ['ms-Slider-row ' + styles.row]: horizontal,
+            ['ms-Slider-column ' + styles.column]: !horizontal
+          }) }
+          ref='root'>
+          { label && (
+            <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
+              { label }
+            </Label>
+          ) }
+          <div className={ css('ms-Slider-container', styles.container) }>
+            <button
+              aria-valuenow={ value }
+              aria-valuemin={ min }
+              aria-valuemax={ max }
+              { ...onMouseDownProp }
+              { ...onTouchStartProp }
+              { ...onKeyDownProp }
+              { ...buttonProps }
+              className={ css('ms-Slider-slideBox', styles.slideBox, buttonProps!.className, {
+                'ms-Slider-showValue': !!showValue,
+                ['ms-Slider-showTransitions ' + styles.showTransitions]: (renderedValue === value)
+              }) }
+              id={ this._id }
+              disabled={ disabled }
+              type='button'
+              role='slider'
             >
-              <span
-                ref='thumb'
-                className={ css('ms-Slider-thumb', styles.thumb) }
-                { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
-                style={ getRTL() ?
-                  { 'right': thumbOffsetPercent + '%' } :
-                  { 'left': thumbOffsetPercent + '%' } }
-              />
-              <span className={ css('ms-Slider-active', styles.activeSection) } style={ { 'width': thumbOffsetPercent + '%' } }></span>
-              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
-            </div>
-          </button>
-          { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
+              <div
+                ref='sliderLine'
+                className={ css('ms-Slider-line', styles.line) }
+              >
+                <span
+                  ref='thumb'
+                  className={ css('ms-Slider-thumb', styles.thumb) }
+                  { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
+                  style={ getRTL() ?
+                    { 'right': thumbOffsetPercent + '%' } :
+                    { 'left': thumbOffsetPercent + '%' } }
+                />
+                <span className={ css('ms-Slider-active', styles.activeSection) } style={ { 'width': thumbOffsetPercent + '%' } }></span>
+                <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
+              </div>
+            </button>
+            { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
+          </div>
         </div>
-      </div>
-    ) as React.ReactElement<{}>;
+      ) as React.ReactElement<{}>;
+    } else {
+      return (
+        <div
+          className={ css('ms-Slider', styles.root, className, {
+            ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
+            ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
+          }) }
+          ref='root'>
+          { label && (
+            <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
+              { label }
+            </Label>
+          ) }
+          <div className={ css('ms-Slider-container', styles.container) }>
+            <button
+              aria-valuenow={ value }
+              aria-valuemin={ min }
+              aria-valuemax={ max }
+              { ...onMouseDownProp }
+              //{ ...onTouchStartProp }
+              { ...onKeyDownProp }
+              { ...buttonProps }
+              className={ css('ms-Slider-slideBox', styles.slideBox, buttonProps!.className, {
+                'ms-Slider-showValue': !!showValue,
+                ['ms-Slider-showTransitions ' + styles.showTransitions]: (renderedValue === value)
+              }) }
+              id={ this._id }
+              disabled={ disabled }
+              type='button'
+              role='slider'
+            >
+              <div
+                ref='sliderLine'
+                className={ css('ms-Slider-line', styles.line) }
+              >
+                <span
+                  ref='thumb'
+                  className={ css('ms-Slider-thumb', styles.thumb) }
+                  { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
+                  style={ getRTL() ?
+                    { 'bottom': thumbOffsetPercent + '%' } :
+                    { 'top': thumbOffsetPercent + '%' } }
+                /*style={ getRTL() ?
+                  { 'right': thumbOffsetPercent + '%' } :
+                  { 'left': thumbOffsetPercent + '%' } }*/
+                />
+                <span className={ css('ms-Slider-active', styles.activeSection) } style={ { 'height': (thumbOffsetPercent) + '%' } } > </span>
+                <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ { 'height': (100 - thumbOffsetPercent) + '%' } }
+                ></span>
+              </div>
+            </button>
+            { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
+          </div>
+        </div>
+      ) as React.ReactElement<{}>;
+    }
+
   }
 
   public focus(): void {
