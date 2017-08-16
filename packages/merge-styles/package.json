@@ -40,7 +40,8 @@
     "react-dom": "^15.4.2",
     "sinon": "^2.3.2",
     "source-map-loader": "^0.2.1",
-    "typescript": "2.4.2"
+    "typescript": "2.4.2",
+    "webpack-bundle-analyzer": "^2.2.1"
   },
   "dependencies": {
     "@uifabric/utilities": ">=4.9.0 <5.0.0",

@@ -29,9 +29,6 @@ build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 // Use css modules.
 build.sass.setConfig({ useCSSModules: true });
 
-/** Disable webpack. */
-build.webpack.isEnabled = () => false;
-
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
 
