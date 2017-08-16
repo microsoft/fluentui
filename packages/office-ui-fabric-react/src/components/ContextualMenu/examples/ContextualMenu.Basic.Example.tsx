@@ -25,6 +25,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
         <DefaultButton onClick={ this._onClick } id='ContextualMenuButton1' text='Click for ContextualMenu' />
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
+            title='My Menu'
             shouldFocusOnMount={ true }
             target={ this.state.target }
             onDismiss={ this._onDismiss }

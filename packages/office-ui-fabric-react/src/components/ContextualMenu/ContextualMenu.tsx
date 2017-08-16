@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
+import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType, IContextualMenuSection } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { getStyles } from './ContextualMenu.styles';
+import { getClassNames } from './ContextualMenu.classNames';
+import { ThemeSettingName } from '../../Styling';
 import {
   BaseComponent,
   anchorProperties,
@@ -14,7 +17,8 @@ import {
   autobind,
   KeyCodes,
   getDocument,
-  getWindow
+  getWindow,
+  customizable
 } from '../../Utilities';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout } from '../../Callout';
@@ -108,6 +112,7 @@ function getIsChecked(item: IContextualMenuItem): boolean | null | undefined {
   return null;
 }
 
+@customizable([ThemeSettingName])
 @withResponsiveMode
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
@@ -206,9 +211,31 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       useTargetWidth,
       directionalHintFixed,
       shouldFocusOnMount,
+      title,
+      styles: customStyles,
+      theme,
       calloutProps } = this.props;
 
-    let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
+    const classNames = getClassNames(
+      getStyles(theme!, customStyles),
+    );
+
+    let hasIcons = itemsHaveIcons(items);
+
+    function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
+      for (const item of contextualMenuItems) {
+        if (!!item.icon || !!item.iconProps) {
+          return true;
+        }
+
+        if (item.itemType === ContextualMenuItemType.Section && item.sectionProps && itemsHaveIcons(item.sectionProps.items) === true) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
     const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
 
@@ -247,6 +274,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
           <div style={ contextMenuStyle } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
+            { title ? <div className={ classNames.title } role='heading' aria-level={ 1 }> { title } </div> : (undefined) }
             { (items && items.length) ? (
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
@@ -276,11 +304,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     let renderedItems: React.ReactNode[] = [];
-
     if (item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;
     }
-
     switch (item.itemType) {
       case ContextualMenuItemType.Divider:
         renderedItems.push(this._renderSeparator(index, item.className));
@@ -290,6 +316,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         let headerItem = this._renderHeaderMenuItem(item, index, hasCheckmarks, hasIcons);
         renderedItems.push(this._renderListItem(headerItem, item.key || index, item.className, item.title));
         break;
+      case ContextualMenuItemType.Section:
+        renderedItems.push(this._renderSectionItem(item, index, hasCheckmarks, hasIcons));
+        break;
       default:
         let menuItem = this._renderNormalItem(item, index, hasCheckmarks, hasIcons);
         renderedItems.push(this._renderListItem(menuItem, item.key || index, item.className, item.title));
@@ -297,6 +326,32 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     return renderedItems;
+  }
+
+  private _renderSectionItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+    const section = item.sectionProps;
+    if (!section) {
+      return;
+    }
+
+    let headerItem = section.title ? this._renderHeaderMenuItem(section.title, index, hasCheckmarks, hasIcons) : undefined;
+
+    if (section.items && section.items.length > 0) {
+      return <li
+        role='presentation'
+        key={ section.key }>
+        <div role='group'>
+          <ul className={ css('ms-ContextualMenu-list is-open', styles.list) }>
+            { section.topDivider ? this._renderSeparator(index, undefined, true, true) : undefined }
+            { headerItem ? this._renderListItem(headerItem, item.key || index, item.className, item.title) : undefined }
+            { section.items.map((contextualMenuItem, itemsIndex) => (
+              this._renderMenuItem(contextualMenuItem, itemsIndex, hasCheckmarks, hasIcons)
+            )) }
+            { section.bottomDivider ? this._renderSeparator(index, undefined, false, true) : undefined }
+          </ul>
+        </div>
+      </li>;
+    }
   }
 
   private _renderListItem(content: React.ReactNode, key: string | number, className?: string, title?: string) {
@@ -309,11 +364,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     </li>;
   }
 
-  private _renderSeparator(index: number, className?: string): React.ReactNode {
-    if (index > 0) {
+  private _renderSeparator(index: number, className?: string, top?: boolean, fromSection?: boolean): React.ReactNode {
+    if (fromSection || index > 0) {
       return <li
         role='separator'
-        key={ 'separator-' + index }
+        key={ 'separator-' + index + (top === undefined ? '' : (top ? '-top' : '-bottom')) }
         className={ css('ms-ContextualMenu-divider', styles.divider, className) } />;
     }
     return null;
@@ -331,7 +386,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
-      <div className={ css('ms-ContextualMenu-header', styles.header) } style={ item.style }>
+      <div className={ css('ms-ContextualMenu-header', styles.header) } style={ item.style } role='heading' aria-level={ this.props.title ? 2 : 1 }>
         { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
       </div>);
   }
@@ -424,7 +479,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
-
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: item.icon
     };
@@ -520,7 +574,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       if (this.state.expandedMenuItemKey) {
         this._onSubMenuDismiss();
       }
-
       this.setState({
         expandedMenuItemKey: item.key,
         submenuTarget: target
@@ -550,15 +603,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         assign(submenuProps, item.subMenuProps);
       }
     }
-
     return submenuProps;
-
   }
 
   private _findItemByKey(key: string): IContextualMenuItem | undefined {
     let { items } = this.props;
+    return this._findItemByKeyFromItems(key, items);
+  }
+
+  private _findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
     for (const item of items) {
-      if (item.key && item.key === key) {
+      if (item.itemType === ContextualMenuItemType.Section && item.sectionProps) {
+        const match = this._findItemByKeyFromItems(key, item.sectionProps.items);
+        if (match) {
+          return match;
+        }
+      } else if (item.key && item.key === key) {
         return item;
       }
     }
