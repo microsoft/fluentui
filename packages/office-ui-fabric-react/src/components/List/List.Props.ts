@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRectangle } from '../../Utilities';
+import { IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
 export interface IList {
@@ -41,7 +41,18 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   /** Optional callback to get the item key, to be used on render. */
   getKey?: (item: any, index?: number) => string;
 
-  /** Method called by the list to get how many items to render per page from specified index. */
+  /**
+   * Called by the list to get the specification for a page.
+   * Use this method to provide an allocation of items per page,
+   * as well as an estimated rendered height for the page.
+   * The list will use this to optimize virtualization.
+   */
+  getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
+
+  /**
+   * Method called by the list to get how many items to render per page from specified index.
+   * In general, use `getPageSpecification` instead.
+   */
   getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
 
   /**
@@ -49,6 +60,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * page's height and default all other pages to that height when calculating the surface space. It is
    * ideal to be able to adequately predict page heights in order to keep the surface space from jumping
    * in pixels, which has been seen to cause browser performance issues.
+   * In general, use `getPageSpecification` instead.
    */
   getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
 
@@ -75,14 +87,68 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
 
   /** Number of items to render. Defaults to items.length. */
   renderCount?: number;
+
+  /**
+  * Boolean value to enable render page caching. This is an experimental performance optimization
+  * that is off by default.
+  * @defaultValue false
+  */
+  usePageCache?: boolean;
+
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when this callback is not provided.
+   */
+  onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * The role to assign to the list root element.
+   * Use this to override the default assignment of 'list' to the root and 'listitem' to the cells.
+   */
+  role?: string;
+
+  /**
+   * Called when the List will render a page.
+   * Override this to control how cells are rendered within a page.
+   */
+  onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
 }
 
 export interface IPage {
   key: string;
-  items: any[];
+  items: any[] | undefined;
   startIndex: number;
   itemCount: number;
   style: any;
   top: number;
   height: number;
+  data?: any;
+}
+
+export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+  /**
+   * The role being assigned to the rendered page element by the list.
+   */
+  role?: string;
+  /**
+   * The allocation data for the page.
+   */
+  page: IPage;
+}
+
+export interface IPageSpecification {
+  /**
+   * The number of items to allocate to the page.
+   */
+  itemCount?: number;
+  /**
+   * The estimated pixel height of the page.
+   */
+  height?: number;
+  /**
+   * Data to pass through to the page when rendering.
+   */
+  data?: any;
 }

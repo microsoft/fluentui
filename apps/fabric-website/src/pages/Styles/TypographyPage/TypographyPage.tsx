@@ -3,9 +3,9 @@ import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const typeRampData = require('json!../../../data/type-ramp.json');
-const typeSizeData = require('json!../../../data/type-sizes.json');
-const typeWeightData = require('json!../../../data/type-weights.json');
+const typeRampData = require('../../../data/type-ramp.json');
+const typeSizeData = require('../../../data/type-sizes.json');
+const typeWeightData = require('../../../data/type-weights.json');
 
 export class TypographyPage extends React.Component<any, any> {
   public render() {

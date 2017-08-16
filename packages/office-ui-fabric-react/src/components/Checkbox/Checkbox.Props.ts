@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
+import { IRenderFunction } from '../../Utilities';
 
 /**
  * Checkbox class interface.
@@ -77,6 +78,11 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom styles for this component
    */
   styles?: ICheckboxStyles;
+
+  /**
+   * Custom render function for the label.
+   */
+  onRenderLabel?: IRenderFunction<ICheckboxProps>;
 }
 
 export interface ICheckboxStyles {

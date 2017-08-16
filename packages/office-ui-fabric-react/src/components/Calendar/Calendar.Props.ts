@@ -41,6 +41,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isDayPickerVisible?: boolean;
 
   /**
+  * Show month picker on top of date picker when visible.
+  * @defaultvalue false
+  */
+  showMonthPickerAsOverlay?: boolean;
+
+  /**
     * Value of today. If null, current time in client machine will be used.
     */
   today?: Date;
@@ -93,6 +99,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * @defaultvalue false
   */
   highlightCurrentMonth?: boolean;
+
+  /**
+  * Customize navigation icons using ICalendarIconStrings
+  */
+  navigationIcons?: ICalendarIconStrings;
 }
 
 export interface ICalendarStrings {
@@ -144,4 +155,29 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
+  /**
+  * Aria-label for the "month picker" header. When showMonthPickerAsOverlay is true the header becomes clickable.
+  */
+  monthPickerAriaLabel?: string;
+
+  /**
+  * Aria-label for the "day picker" header. When showMonthPickerAsOverlay is true the header becomes clickable.
+  */
+  dayPickerAriaLabel?: string;
+}
+
+export interface ICalendarIconStrings {
+  /**
+  * FabricMDL2Icons name for the left navigation icon
+  * @defaultvalue  'ChevronLeft'
+  */
+  leftNavigation?: string;
+
+  /**
+  * FabricMDL2Icons name for the right navigation icon
+  * @defaultvalue  'ChevronRight'
+  */
+  rightNavigation?: string;
+
 }

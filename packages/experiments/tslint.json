@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "office-ui-fabric-react-tslint"
+  ],
+  "rules": {
+    "max-line-length": [
+      false,
+      140
+    ],
+    "no-any": false,
+    "typedef": [
+      false
+    ]
+  }
+}
