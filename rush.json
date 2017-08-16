@@ -12,7 +12,7 @@
     },
     {
       "packageName": "@uifabric/experiments",
-      "projectFolder": "packages/office-ui-fabric-react-experiments",
+      "projectFolder": "packages/experiments",
       "shouldPublish": true
     },
     {

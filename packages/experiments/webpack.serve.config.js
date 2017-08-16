@@ -18,8 +18,8 @@ module.exports = {
 
   resolve: {
     alias: {
-      'office-ui-fabric-react-experiments/src': path.join(__dirname, 'src'),
-      'office-ui-fabric-react-experiments/lib': path.join(__dirname, 'src'),
+      'experiments/src': path.join(__dirname, 'src'),
+      'experiments/lib': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     },

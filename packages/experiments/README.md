@@ -7,7 +7,7 @@ These are not production ready components and __should never be used in product_
 To import experimantal components:
 
 ```js
-import { ComponentName } from '@officeui/experiments/lib/ComponentName';
+import { ComponentName } from '@uifabric/experiments/lib/ComponentName';
 ```
 
 Once the experimental component graduates to a production release the component will be available at:
