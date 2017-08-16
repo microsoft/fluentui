@@ -15,6 +15,18 @@ export const AppDefinition: IAppDefinition = {
           name: 'CommandBar',
           url: '#/examples/commandbar'
         },
+        {
+          component: require<any>('../components/Tile/TilePage').TilePage,
+          key: 'Tile',
+          name: 'Tile',
+          url: '#/examples/tile'
+        },
+        {
+          component: require<any>('../components/TilesList/TilesListPage').TilesListPage,
+          key: 'TilesList',
+          name: 'TilesList',
+          url: '#/examples/tileslist'
+        }
       ]
     }
   ],
