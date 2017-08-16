@@ -19,7 +19,7 @@ import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
 
 export interface ITooltipHostState {
-  isTooltipVisible?: boolean;
+  isTooltipVisible: boolean;
 }
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
@@ -130,10 +130,9 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
   }
 
   private toggleTooltip(isTooltipVisible: boolean) {
-    if (this.props.onTooltipToggle && this.state.isTooltipVisible !== isTooltipVisible) {
-      this.props.onTooltipToggle(isTooltipVisible);
-    }
-
-    this.setState({ isTooltipVisible });
+    this.setState(
+      { isTooltipVisible },
+      () => this.props.onTooltipToggle &&
+        this.props.onTooltipToggle(this.state.isTooltipVisible));
   }
 }
