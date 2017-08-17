@@ -102,8 +102,6 @@
 .column {
   .root {
   user-select: none;
-  //display: inline-block;
-  //align-items: stretch;
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -129,18 +127,17 @@
 }
 
 .slideBox {
+  @include focus-border();
   background: transparent;
   border: none;
   padding: 0;
   margin: 0 auto;
   height: 100%;
-    outline: none;
   flex-grow: 1;
   width: 28px;
   line-height: 28px;
-  padding: 0 0 12px 0; // Make room for thumb at bottom of line
-  //display: flex;
-  //align-items: stretch;
+  padding-top: 8px;
+  padding-bottom: 8px; // Make room for thumb at bottom of line
 }
 
 .slideBox .thumb {
@@ -154,7 +151,7 @@
   left: -6px;
   border-radius: 10px;
   margin: 0 auto;
-  //@include transform-translateX(-50%);
+  transform: translateY(-8px);
 }
 
 .container {

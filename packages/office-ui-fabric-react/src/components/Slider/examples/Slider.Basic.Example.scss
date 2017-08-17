@@ -1,9 +1,21 @@
 :global {
 
+  .ms-basicSlider {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+  }
   .ms-SliderBasicExample {
     max-width: 300px;
   }
   .ms-SliderVertical {
-
+    padding-top:20px;
+    display: flex;
+    height: 200px;
+    flex-direction: row;
+  }
+  .ms-verticalBox {
+    display: flex;
+    padding: 8px;
   }
 }
