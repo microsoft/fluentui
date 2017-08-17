@@ -256,12 +256,14 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       // with JAWS.
       <div
         ref={ this._resolveRef('_root') }
-        className={ css('ms-DetailsList', styles.root, className, {
-          'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
-          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained,
-          'ms-DetailsList--Compact': !!compact,
-          [styles.rootCompact]: !!compact
-        }) }
+        className={ css(
+          'ms-DetailsList',
+          styles.root,
+          className,
+          (layoutMode === DetailsListLayoutMode.fixedColumns) && 'is-fixed',
+          (constrainMode === ConstrainMode.horizontalConstrained) && ('is-horizontalConstrained ' + styles.rootIsHorizontalConstrained),
+          !!compact && ('ms-DetailsList--Compact ' + styles.rootCompact)
+        ) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
