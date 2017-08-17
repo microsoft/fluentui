@@ -93,18 +93,14 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   background: $detailsList-item-selected-background-color;
   border-bottom: 1px solid $ms-color-white;
 
-  @media screen and (-ms-high-contrast: active) {
-    border: 1px solid Highlight;
-
-    &:before {
-      border-top: 1px solid Highlight;
-    }
-  }
-
   .cell {
     // Selected State Header cell
     &.isRowHeader {
       color: $detailsList-item-selected-text-color;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      color: Highlight;
     }
   }
 
