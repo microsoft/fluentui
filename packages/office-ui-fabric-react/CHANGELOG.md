@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2017 10:11:43 GMT and should not be manually modified.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
+
+## 4.33.0
+Tue, 15 Aug 2017 10:19:22 GMT
+
+### Minor changes
+
+- Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario.
+- Pickers: fixing accessiblity and styling issues
+
+### Patches
+
+- ComboBox: Fix role typo to read heading instead of header
+- Added menu indexes to the accessibility readouts for ContextMenus
+- Added the ability to change the root element of a FocusZone
+
+## 4.32.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Mixing choice group fields with html input attributes
+- Callout/Dropdown: Both components now support custom widths
+- Nav: Add more options for nav link groups
+- ComboBox: Fix some functionality for when the comboBox is controlled
+- Calendar: added ability to customize navigation icons.
+- Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus().
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
+- Add target to hover card
+- Nav: fix bug with sublink padding
+- FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
+- ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
+- Nav: update isGroupCollapsed for new groups
+- Change dropdown's role from "combobox" to "menu" 
+- Changed DatePicker role to be more accurate for screen readers
+- Selection: Fix broken selection state in example.
 
 ## 4.31.0
 Tue, 08 Aug 2017 15:28:32 GMT

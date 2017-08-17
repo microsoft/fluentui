@@ -31,10 +31,12 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
     <button
       { ...buttonProps }
       role='checkbox'
-      className={ css('ms-DetailsRow-check', styles.check, {
-        [styles.isDisabled]: !props.canSelect,
-        'ms-DetailsRow-check--isDisabled': !props.canSelect
-      }) }
+      className={ css(
+        'ms-DetailsRow-check',
+        styles.check,
+        !props.canSelect && styles.isDisabled,
+        !props.canSelect && 'ms-DetailsRow-check--isDisabled'
+      ) }
       aria-checked={ isPressed }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
