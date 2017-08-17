@@ -47,6 +47,10 @@ $checkBoxHeight: 16px;
 
 .rootIsChecked .circle {
   color: $ms-color-white;
+
+  @media screen and (-ms-high-contrast: active) {
+    display: none;
+  }
 }
 
 .check {
