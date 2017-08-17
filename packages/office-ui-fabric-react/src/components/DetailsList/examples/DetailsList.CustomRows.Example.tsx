@@ -41,9 +41,9 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
     return (
       <div
         className={ css(
-          'ms-DetailsRow-check DetailsListExample-customCheck', {
-            'is-any-selected': props.anySelected
-          }) }
+          'ms-DetailsRow-check DetailsListExample-customCheck',
+          props.anySelected && 'is-any-selected'
+        ) }
         role='button'
         aria-pressed={ props.isSelected }
         data-selection-toggle={ true }
