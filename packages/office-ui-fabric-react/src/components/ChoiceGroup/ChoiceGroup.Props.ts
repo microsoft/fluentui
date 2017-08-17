@@ -6,7 +6,7 @@ export interface IChoiceGroup {
 
 }
 
-export interface IChoiceGroupProps extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -46,7 +46,7 @@ export interface IChoiceGroupProps extends React.HTMLAttributes<HTMLElement | HT
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 }
 
-export interface IChoiceGroupOption {
+export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
    */
@@ -106,5 +106,4 @@ export interface IChoiceGroupOption {
    * This value is maintained by the component and is accessible during onRenderField
    */
   labelId?: string;
-
 }

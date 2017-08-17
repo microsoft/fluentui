@@ -8,6 +8,7 @@ import * as stylesImport from './ColorPicker.scss';
 const styles: any = stylesImport;
 
 export interface IColorSliderProps {
+  componentRef?: () => void;
   minValue?: number;
   maxValue?: number;
   value?: number;
@@ -45,7 +46,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     this.state = {
       isAdjusting: false,
-      origin: null,
+      origin: undefined,
       currentValue: value
     };
   }
@@ -60,14 +61,17 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     let { className, minValue, maxValue, overlayStyle } = this.props;
     let { currentValue, isAdjusting } = this.state;
 
-    let currentPercentage = 100 * (currentValue - minValue) / (maxValue - minValue);
+    let currentPercentage = 100 * (currentValue! - minValue!) / (maxValue! - minValue!);
 
     return (
       <div
         ref='root'
-        className={ css('ms-ColorPicker-slider', styles.slider, className, {
-          'is-adjusting': isAdjusting
-        }) }
+        className={ css(
+          'ms-ColorPicker-slider',
+          styles.slider,
+          className,
+          isAdjusting && 'is-adjusting'
+        ) }
         onMouseDown={ this._onMouseDown }>
         <div className={ css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay) } style={ overlayStyle } />
         <div className={ css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider) } style={ { left: currentPercentage + '%' } } />
@@ -89,7 +93,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     let rectSize = this.refs.root.getBoundingClientRect();
 
     let currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    let newValue = Math.min(maxValue, Math.max(minValue, currentPercentage * maxValue));
+    let newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
 
     this.setState({
       isAdjusting: true,
@@ -110,7 +114,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     this.setState({
       isAdjusting: false,
-      origin: null
+      origin: undefined
     });
   }
 

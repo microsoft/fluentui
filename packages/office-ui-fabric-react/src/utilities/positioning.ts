@@ -3,7 +3,8 @@ import {
   IRectangle,
   assign,
   getScrollbarWidth,
-  Rectangle
+  Rectangle,
+  getRTL,
 } from '../Utilities';
 
 export enum RectangleEdge {
@@ -38,6 +39,12 @@ export interface IPositionProps {
 
   /** how the element should be positioned */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
 
   /** The gap between the callout and the target */
   gapSpace?: number;
@@ -116,6 +123,23 @@ export class PositionData {
   }
 }
 
+let MirrorDirectionalHintDictionary: { [key: number]: DirectionalHint } = {
+  [DirectionalHint.topLeftEdge]: DirectionalHint.topRightEdge,
+  [DirectionalHint.topCenter]: DirectionalHint.topCenter,
+  [DirectionalHint.topRightEdge]: DirectionalHint.topLeftEdge,
+  [DirectionalHint.topAutoEdge]: DirectionalHint.topAutoEdge,
+  [DirectionalHint.bottomLeftEdge]: DirectionalHint.bottomRightEdge,
+  [DirectionalHint.bottomCenter]: DirectionalHint.bottomCenter,
+  [DirectionalHint.bottomRightEdge]: DirectionalHint.bottomLeftEdge,
+  [DirectionalHint.bottomAutoEdge]: DirectionalHint.bottomAutoEdge,
+  [DirectionalHint.leftTopEdge]: DirectionalHint.rightTopEdge,
+  [DirectionalHint.leftCenter]: DirectionalHint.rightCenter,
+  [DirectionalHint.leftBottomEdge]: DirectionalHint.rightBottomEdge,
+  [DirectionalHint.rightTopEdge]: DirectionalHint.leftTopEdge,
+  [DirectionalHint.rightCenter]: DirectionalHint.leftCenter,
+  [DirectionalHint.rightBottomEdge]: DirectionalHint.leftBottomEdge,
+};
+
 // Currently the beakPercent is set to 50 for all positions meaning that it should tend to the center of the target
 let DirectionalDictionary: { [key: number]: PositionData } = {
   [DirectionalHint.topLeftEdge]: new PositionData(RectangleEdge.bottom, RectangleEdge.top, 0, 0, 50, false),
@@ -133,6 +157,7 @@ let DirectionalDictionary: { [key: number]: PositionData } = {
   [DirectionalHint.rightCenter]: new PositionData(RectangleEdge.left, RectangleEdge.right, 50, 50, 50, false),
   [DirectionalHint.rightBottomEdge]: new PositionData(RectangleEdge.left, RectangleEdge.right, 100, 100, 50, false)
 };
+
 let CoverDictionary: { [key: number]: PositionData } = {
   [DirectionalHint.topLeftEdge]: new PositionData(RectangleEdge.top, RectangleEdge.top, 0, 0, 50, false),
   [DirectionalHint.topCenter]: new PositionData(RectangleEdge.top, RectangleEdge.top, 50, 50, 50, false),
@@ -156,67 +181,6 @@ let OppositeEdgeDictionary: { [key: number]: number } = {
   [RectangleEdge.right]: RectangleEdge.left,
   [RectangleEdge.left]: RectangleEdge.right,
 };
-export function getRelativePositions(
-  props: IPositionProps,
-  hostElement: HTMLElement,
-  calloutElement: HTMLElement): IPositionInfo {
-  let beakWidth: number = !props.isBeakVisible ? 0 : props.beakWidth;
-  let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
-  let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
-  let boundingRect: Rectangle = props.bounds ?
-    positioningFunctions._getRectangleFromIRect(props.bounds) :
-    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
-  let targetRect: Rectangle = props.target ? positioningFunctions._getTargetRect(boundingRect, props.target) : positioningFunctions._getTargetRectDEPRECATED(
-    boundingRect,
-    props.targetElement,
-    props.creationEvent,
-    props.targetPoint,
-    props.useTargetPoint);
-  let positionData: PositionData = positioningFunctions._getPositionData(
-    props.directionalHint,
-    targetRect,
-    boundingRect,
-    props.coverTarget);
-  let positionedCallout: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(
-    positioningFunctions._getRectangleFromHTMLElement(calloutElement),
-    targetRect,
-    boundingRect,
-    positionData,
-    gap,
-    props.coverTarget,
-    props.directionalHintFixed);
-  let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
-  let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
-
-  return {
-    calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
-    beakPosition: { top: beakPositioned.top, left: beakPositioned.left, display: 'block' },
-    directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
-    submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
-  };
-}
-/**
- * Get's the maximum height that a rectangle can have in order to fit below or above a target.
- * If the directional hint specifies a left or right edge (i.e. leftCenter) it will limit the height to the topBorder
- * of the target given.
- * If no bounds are provided then the window is treated as the bounds.
- */
-export function getMaxHeight(target: HTMLElement | MouseEvent, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
-  let mouseTarget: MouseEvent = target as MouseEvent;
-  let elementTarget: HTMLElement = target as HTMLElement;
-  let targetRect: Rectangle;
-  let boundingRectangle = bounds ?
-    positioningFunctions._getRectangleFromIRect(bounds) :
-    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
-
-  if (mouseTarget.stopPropagation) {
-    targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
-  } else {
-    targetRect = positioningFunctions._getRectangleFromHTMLElement(elementTarget);
-  }
-
-  return positioningFunctions._getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle);
-}
 
 export module positioningFunctions {
 
@@ -283,7 +247,8 @@ export module positioningFunctions {
       if (targetPoint) {
         targetRectangle = new Rectangle(targetPoint.x, targetPoint.x, targetPoint.y, targetPoint.y);
       } else {
-        targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+        let event = ev as MouseEvent;
+        targetRectangle = new Rectangle(event.clientX, event.clientX, event.clientY, event.clientY);
       }
     } else {
       if (!targetElement) {
@@ -414,7 +379,7 @@ export module positioningFunctions {
 
   export function _finalizeBeakPosition(beakRectangle: Rectangle, callout: ICallout, estimatedTargetPoint: IPoint, border: number): Rectangle {
     let beakPixelSize: number = _calculateActualBeakWidthInPixels(beakRectangle.width) / 2;
-    let innerRect: Rectangle = null;
+    let innerRect: Rectangle | null = null;
     let beakPoint: IPoint = { x: beakRectangle.width / 2, y: beakRectangle.width / 2 };
 
     if (callout.calloutEdge === RectangleEdge.bottom || callout.calloutEdge === RectangleEdge.top) {
@@ -686,11 +651,11 @@ export module positioningFunctions {
   }
 
   export function _getBorderSize(element: HTMLElement): number {
-    let styles: CSSStyleDeclaration = getComputedStyle(element, null);
-    let topBorder: number = parseFloat(styles.borderTopWidth);
-    let bottomBorder: number = parseFloat(styles.borderBottomWidth);
-    let leftBorder: number = parseFloat(styles.borderLeftWidth);
-    let rightBorder: number = parseFloat(styles.borderRightWidth);
+    let styles: CSSStyleDeclaration = getComputedStyle(element, undefined);
+    let topBorder: number = parseFloat(styles.borderTopWidth || '');
+    let bottomBorder: number = parseFloat(styles.borderBottomWidth || '');
+    let leftBorder: number = parseFloat(styles.borderLeftWidth || '');
+    let rightBorder: number = parseFloat(styles.borderRightWidth || '');
 
     // If any of the borders are NaN default to 0
     if (isNaN(topBorder) || isNaN(bottomBorder) || isNaN(leftBorder) || isNaN(rightBorder)) {
@@ -755,4 +720,77 @@ export module positioningFunctions {
 
     return callout;
   }
+}
+
+function getDirectionalHintForLayout(props: IPositionProps): DirectionalHint | undefined {
+  if (getRTL()) {
+    return props.directionalHintForRTL !== undefined ?
+      props.directionalHintForRTL :
+      MirrorDirectionalHintDictionary[props.directionalHint!];
+  } else {
+    return props.directionalHint;
+  }
+}
+
+export function getRelativePositions(
+  props: IPositionProps,
+  hostElement: HTMLElement,
+  calloutElement: HTMLElement): IPositionInfo {
+  let beakWidth: number = !props.isBeakVisible ? 0 : (props.beakWidth || 0);
+  let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
+  let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+  let boundingRect: Rectangle = props.bounds ?
+    positioningFunctions._getRectangleFromIRect(props.bounds) :
+    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  let targetRect: Rectangle = props.target ? positioningFunctions._getTargetRect(boundingRect, props.target) : positioningFunctions._getTargetRectDEPRECATED(
+    boundingRect,
+    props.targetElement,
+    props.creationEvent,
+    props.targetPoint,
+    props.useTargetPoint);
+  let positionData: PositionData = positioningFunctions._getPositionData(
+    getDirectionalHintForLayout(props)!,
+    targetRect,
+    boundingRect,
+    props.coverTarget);
+  let positionedCallout: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(
+    positioningFunctions._getRectangleFromHTMLElement(calloutElement),
+    targetRect,
+    boundingRect,
+    positionData,
+    gap,
+    props.coverTarget,
+    props.directionalHintFixed);
+  let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
+  let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
+
+  return {
+    calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
+    beakPosition: { top: beakPositioned.top, left: beakPositioned.left, display: 'block' },
+    directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
+    submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
+  };
+}
+
+/**
+ * Get's the maximum height that a rectangle can have in order to fit below or above a target.
+ * If the directional hint specifies a left or right edge (i.e. leftCenter) it will limit the height to the topBorder
+ * of the target given.
+ * If no bounds are provided then the window is treated as the bounds.
+ */
+export function getMaxHeight(target: HTMLElement | MouseEvent, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+  let mouseTarget: MouseEvent = target as MouseEvent;
+  let elementTarget: HTMLElement = target as HTMLElement;
+  let targetRect: Rectangle;
+  let boundingRectangle = bounds ?
+    positioningFunctions._getRectangleFromIRect(bounds) :
+    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+
+  if (mouseTarget.stopPropagation) {
+    targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
+  } else {
+    targetRect = positioningFunctions._getRectangleFromHTMLElement(elementTarget);
+  }
+
+  return positioningFunctions._getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle);
 }

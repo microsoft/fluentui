@@ -1,15 +1,15 @@
 import { IRenderFunction } from '../../Utilities';
-import { Dropdown } from './Dropdown';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.Props';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.Props';
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.Props';
 
 export interface IDropdown {
-
+  focus: () => void;
 }
 
-export interface IDropdownProps extends ISelectableDroppableTextProps<Dropdown> {
+export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivElement> {
   /**
    * Input placeholder text. Displayed until option is selected.
    */
@@ -28,7 +28,39 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<Dropdown> 
   /**
    * Optional custom renderer for selected option displayed in input
    */
-  onRenderTitle?: IRenderFunction<IDropdownOption>;
+  onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
+
+  /**
+   * Custom width for dropdown. If value is 0, width of the input field is used.
+   * @default 0
+   */
+  dropdownWidth?: number;
+
+  responsiveMode?: ResponsiveMode;
+
+  /**
+   * Optional mode indicates if multi-choice selections is allowed.  Default to false
+   */
+  multiSelect?: boolean;
+
+  /**
+   * Keys that will be initially used to set selected items.
+   */
+  defaultSelectedKeys?: string[] | number[];
+
+  /**
+  * Keys of the selected items. If you provide this, you must maintain selection
+  * state by observing onChange events and passing a new value in when changed.
+  */
+  selectedKeys?: string[] | number[];
+
+  /**
+   * When multiple items are selected, this still will be used to separate values in
+   * the dropdown title.
+   *
+   * @defaultValue ", "
+   */
+  multiSelectDelimiter?: string;
 
   /**
    * Deprecated at v0.52.0, use 'disabled' instead.

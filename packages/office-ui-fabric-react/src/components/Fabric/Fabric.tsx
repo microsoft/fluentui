@@ -25,6 +25,7 @@ const DIRECTIONAL_KEY_CODES = [
 ];
 
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
+  componentRef?: () => void;
   theme?: ITheme;
 }
 export interface IFabricState {
@@ -59,7 +60,7 @@ export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
 
   public render() {
     const { isFocusVisible } = this.state;
-    const styles = getStyles(this.props.theme);
+    const styles = getStyles(this.props.theme!);
 
     const rootClass = css(
       'ms-Fabric',

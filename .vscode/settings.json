@@ -16,6 +16,14 @@
     "**/coverage": true,
     "**/*.scss.ts": true
   },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/bower_components/**": true,
+    "**/dist/**": true
+  },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
     "common": true,
@@ -34,5 +42,5 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
-  "tslint.autoFixOnSave": true
+  "tslint.autoFixOnSave": false
 }

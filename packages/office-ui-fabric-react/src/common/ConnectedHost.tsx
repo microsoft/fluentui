@@ -6,9 +6,10 @@ import { IStoreKey } from './storeKey';
 import { StoreSet } from './StoreSet';
 
 // Track all components that require changes.
-let _changedComponents: ConnectedHost[];
+let _changedComponents: ConnectedHost[] | null;
 
 export interface IConnectedHostProps {
+  componentRef?: () => void;
   componentProps: any;
   storesToSubscribe: IStoreKey<any>[];
   component: any;
@@ -102,7 +103,7 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
       if (!_changedComponents) {
         _changedComponents = [];
         this._async.setImmediate(() => {
-          _changedComponents.forEach(comp => comp._updateProps());
+          _changedComponents!.forEach(comp => comp._updateProps());
           _changedComponents = null;
         });
       }

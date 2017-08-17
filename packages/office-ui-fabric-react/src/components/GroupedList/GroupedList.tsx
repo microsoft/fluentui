@@ -77,7 +77,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   public render() {
     let {
-      className
+      className,
+      usePageCache,
+      onShouldVirtualize
     } = this.props;
     let {
       groups
@@ -98,6 +100,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ () => 1 }
+              usePageCache = { usePageCache }
+              onShouldVirtualize = { onShouldVirtualize }
             />
           )
         }
@@ -152,8 +156,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       onToggleSummarize: this._onToggleSummarize
     };
 
-    let headerProps = assign({}, groupProps.headerProps, dividerProps);
-    let footerProps = assign({}, groupProps.footerProps, dividerProps);
+    let headerProps = assign({}, groupProps!.headerProps, dividerProps);
+    let footerProps = assign({}, groupProps!.footerProps, dividerProps);
     let groupNestingDepth = this._getGroupNestingDepth();
 
     return (!group || group.count > 0) ? (
@@ -172,8 +176,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         listProps={ listProps }
         items={ items }
         onRenderCell={ onRenderCell }
-        onRenderGroupHeader={ groupProps.onRenderHeader }
-        onRenderGroupFooter={ groupProps.onRenderFooter }
+        onRenderGroupHeader={ groupProps!.onRenderHeader }
+        onRenderGroupFooter={ groupProps!.onRenderFooter }
         selectionMode={ selectionMode }
         selection={ selection }
         viewport={ viewport }
@@ -217,7 +221,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   @autobind
   private _onToggleSelectGroup(group: IGroup) {
     if (group) {
-      this.props.selection.toggleRangeSelected(group.startIndex, group.count);
+      this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
     }
   }
 
@@ -259,8 +263,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  private _computeIsSomeGroupExpanded(groups: IGroup[]): boolean {
-    return groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed);
+  private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
+    return !!(groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed));
   }
 
   private _updateIsSomeGroupExpanded() {

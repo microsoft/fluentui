@@ -42,7 +42,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   private _id: string;
 
-  constructor(props?: ISliderProps) {
+  constructor(props: ISliderProps) {
     super(props);
 
     this._warnMutuallyExclusive({
@@ -65,7 +65,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   public componentWillReceiveProps(newProps: ISliderProps): void {
 
     if (newProps.value !== undefined) {
-      let value = Math.max(newProps.min, Math.min(newProps.max, newProps.value));
+      let value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
 
       this.setState({
         value: value,
@@ -86,7 +86,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       buttonProps
     } = this.props;
     const { value, renderedValue } = this.state;
-    const thumbOffsetPercent: number = (renderedValue - min) / (max - min) * 100;
+    const thumbOffsetPercent: number = (renderedValue! - min!) / (max! - min!) * 100;
 
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
@@ -113,10 +113,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             { ...onTouchStartProp }
             { ...onKeyDownProp }
             { ...buttonProps }
-            className={ css('ms-Slider-slideBox', styles.slideBox, buttonProps.className, {
-              'ms-Slider-showValue': showValue,
-              ['ms-Slider-showTransitions ' + styles.showTransitions]: (renderedValue === value)
-            }) }
+            className={ css(
+              'ms-Slider-slideBox',
+              styles.slideBox,
+              buttonProps!.className,
+              !!showValue && 'ms-Slider-showValue',
+              (renderedValue === value) && ('ms-Slider-showTransitions ' + styles.showTransitions)
+            ) }
             id={ this._id }
             disabled={ disabled }
             type='button'
@@ -150,7 +153,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
   }
 
-  public get value(): number {
+  public get value(): number | undefined {
     return this.state.value;
   }
 
@@ -170,11 +173,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   @autobind
   private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
     const { max, min, step } = this.props;
-    const steps: number = (max - min) / step;
+    const steps: number = (max! - min!) / step!;
     const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
     const sliderLength: number = sliderPositionRect.width;
     const stepLength: number = sliderLength / steps;
-    let currentSteps: number;
+    let currentSteps: number | undefined;
 
     if (event.type === 'mousedown' || event.type === 'mousemove') {
       currentSteps = getRTL() ?
@@ -186,17 +189,17 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
     }
 
-    let currentValue: number;
-    let renderedValue: number;
+    let currentValue: number | undefined;
+    let renderedValue: number | undefined;
 
     // The value shouldn't be bigger than max or be smaller than min.
-    if (currentSteps > Math.floor(steps)) {
-      renderedValue = currentValue = max;
-    } else if (currentSteps < 0) {
-      renderedValue = currentValue = min;
+    if (currentSteps! > Math.floor(steps)) {
+      renderedValue = currentValue = max as number;
+    } else if (currentSteps! < 0) {
+      renderedValue = currentValue = min as number;
     } else {
-      renderedValue = min + step * currentSteps;
-      currentValue = min + step * Math.round(currentSteps);
+      renderedValue = min! + step! * currentSteps!;
+      currentValue = min! + step! * Math.round(currentSteps!);
     }
 
     this._updateValue(currentValue, renderedValue);
@@ -215,7 +218,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       renderedValue
     }, () => {
       if (valueChanged && this.props.onChange) {
-        this.props.onChange(this.state.value);
+        this.props.onChange(this.state.value as number);
       }
     });
   }
@@ -233,15 +236,15 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   @autobind
   private _onKeyDown(event: KeyboardEvent): void {
-    let value: number = this.state.value;
+    let value: number | undefined = this.state.value;
     const { max, min, step } = this.props;
 
-    let diff: number = 0;
+    let diff: number | undefined = 0;
 
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:
-        diff = -step;
+        diff = -(step as number);
         break;
       case getRTLSafeKeyCode(KeyCodes.right):
       case KeyCodes.up:
@@ -260,7 +263,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         return;
     }
 
-    const newValue: number = Math.min(max, Math.max(min, value + diff));
+    const newValue: number = Math.min(max as number, Math.max(min as number, value! + diff!));
 
     this._updateValue(newValue, newValue);
 

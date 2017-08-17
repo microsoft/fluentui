@@ -1,6 +1,291 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Jul 2017 01:49:50 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2017 10:11:43 GMT and should not be manually modified.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
+
+## 4.33.0
+Tue, 15 Aug 2017 10:19:22 GMT
+
+### Minor changes
+
+- Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario.
+- Pickers: fixing accessiblity and styling issues
+
+### Patches
+
+- ComboBox: Fix role typo to read heading instead of header
+- Added menu indexes to the accessibility readouts for ContextMenus
+- Added the ability to change the root element of a FocusZone
+
+## 4.32.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Mixing choice group fields with html input attributes
+- Callout/Dropdown: Both components now support custom widths
+- Nav: Add more options for nav link groups
+- ComboBox: Fix some functionality for when the comboBox is controlled
+- Calendar: added ability to customize navigation icons.
+- Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus().
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
+- Add target to hover card
+- Nav: fix bug with sublink padding
+- FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
+- ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
+- Nav: update isGroupCollapsed for new groups
+- Change dropdown's role from "combobox" to "menu" 
+- Changed DatePicker role to be more accurate for screen readers
+- Selection: Fix broken selection state in example.
+
+## 4.31.0
+Tue, 08 Aug 2017 15:28:32 GMT
+
+### Minor changes
+
+- ComboBox: Putting the child component styles in the main props and a few other fixes
+- Moving SpinButton to Glamor based styling
+- GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component.
+- Checkbox: add custom render function for checkbox label.
+
+### Patches
+
+- BaseButton: Added screenReaderText styles to base button
+- BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
+- Added role alert to "no results" view 
+
+## 4.30.1
+Mon, 07 Aug 2017 10:22:46 GMT
+
+### Patches
+
+- Callout: Fix positioning comparision so it correctly repositions if the beak left/right position has changed"
+- Dialog: fixing accessibility regression
+- Prevent auto-selection on focus in DetailsList
+- ResizeGroup: Prevent rendering to the hidden div on prop updates that has an initial data that is in the cache
+- Textfield: removed background from textfield internal field
+
+## 4.30.0
+Fri, 04 Aug 2017 10:11:48 GMT
+
+### Minor changes
+
+- Dropdown: added `multiSelect` attribute, which controls multi-item selection. Added `selectedKeys` to `IDropdown` which provides access to all selected keys, in addition to `defaultSelectedKeys` and `selectedKeys` props.
+- Add ScrollablePane and Sticky components
+
+### Patches
+
+- Button: Merge the ISplitButtonStyles into IButtonStyles
+- Datepicker: updated icon size
+- Expand hit target of DetailsRow checkbox
+- ResizeGroup: Add another example use case to demo site
+- PeoplePicker: Improved keyboard support and font size updates.
+
+## 4.29.0
+Thu, 03 Aug 2017 10:13:03 GMT
+
+### Minor changes
+
+- ConextualMenuItem: Support target value
+- TypeScript 2.4.1 bump
+
+### Patches
+
+- add Spacer and Divider toolbox icon
+- Searchbox: fixed bug when repeatedly entering a single character
+- Callout: Reverting the callout border to it's previous state with a light border.
+
+## 4.28.0
+Wed, 02 Aug 2017 10:22:40 GMT
+
+### Minor changes
+
+- Enable strictNullChecks
+
+### Patches
+
+- Checkbox: Fix Edge bug where 2nd click event was being fired
+- ChoiceGroup: allow developers to pass additional 'aria-labelledBy' ids
+- ContextualMenu: Fixing issue where icons are not displayed.
+
+## 4.27.0
+Tue, 01 Aug 2017 10:13:55 GMT
+
+### Minor changes
+
+- SwatchColorPicker: Simplify component to remove the menu button and header/divider aspects that were built in to the component. Now the SwatchColorPicker only renders the grid portion and is more streamlined
+- OverflowSet: Add focus method, class name and abstract item interface
+- Panel: added prop to force footer to bottom of the page
+
+### Patches
+
+- Allow the X in a persona to receive focus and update focus when it is clicked
+
+## 4.26.0
+Mon, 31 Jul 2017 10:12:08 GMT
+
+### Minor changes
+
+- BasePicker: Add in the ability for it to be used as a controlled component with the property selectedItems
+
+### Patches
+
+- MessageBar: Fix system problems that display when component is on website
+- Searchbox: Fixed broken disabled state and aligned styles with current XD styles
+
+## 4.25.1
+Fri, 28 Jul 2017 18:36:00 GMT
+
+### Patches
+
+- Checkbox: Adjusting the default text color to not use default button color, removing click behavior for disabled checkboxes, fixing an rtl margin issue.
+- Fix Callout to get a valid element
+
+## 4.25.0
+Fri, 28 Jul 2017 10:23:10 GMT
+
+### Minor changes
+
+- Moving ComboBox component to use the styling library
+
+### Patches
+
+- Fix hover card scroll
+- Checkbox: Added left textAlign style
+- Update accessibility for checkable menu items
+
+## 4.24.0
+Thu, 27 Jul 2017 10:23:33 GMT
+
+### Minor changes
+
+- More type casting to get us on the path to enabling strictNullChecks
+
+### Patches
+
+- Dropdown: added onBlur support.
+- Fix focus issues for Safari and Firefox on Mac OS
+- Icons: Added new icons from 2.38
+- Adds prop to process selection in BasePicker
+- CommandBar: Accessibility fix for expand behavior
+
+## 4.23.0
+Tue, 25 Jul 2017 10:22:35 GMT
+
+### Minor changes
+
+- Button: Support expanded style state triggered by opened menu
+
+### Patches
+
+- Checkbox: Fixed label font size
+- TextField: multiline variant font now correct, assuming the Fabric component wraps the application. A new selector was added which will force TEXTAREA elements to inherit the font.
+- ResizeGroup: Prevent flashing when passing in new props
+- ResizeGroup: Don't show a scrollbar while measuring the hidden div
+- Textfield: Fixed high contrast border and textarea font family
+- Textfield: Removed icon pointer events so that any click is click in textfield
+
+## 4.22.0
+Mon, 24 Jul 2017 10:24:30 GMT
+
+### Minor changes
+
+- Callout/ContextualMenu/Tooltip: we now mirror DirectionalHints in RTL layouts by default. To override this behavior, specify `directionalHintForRtl`
+
+### Patches
+
+- Fix application of aria properties on BaseButton.
+- ResizeGroup: Add support for onGrowData
+- Accessibility fixes for PeoplePicker
+- Dropdown: Updated keydown handler to respond correctly to normal dropdown items
+
+## 4.21.4
+Fri, 21 Jul 2017 10:21:45 GMT
+
+### Patches
+
+- Do not redundantly set aria-label on command bar items. 
+- More strict null check fixes in office-ui-fabric-react
+- Textfield: Fixed regression in disabled styles
+- ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
+- Fixed deletion of tag item when tag picker is disabled
+
+## 4.21.3
+Thu, 20 Jul 2017 10:11:23 GMT
+
+### Patches
+
+- SwatchColorPicker: Fix a recent regression in box-sizing seen on the external site for the swatchColorPicker
+- Checkbox: remove unnecessary styles and element
+
+## 4.21.2
+Wed, 19 Jul 2017 21:40:34 GMT
+
+### Patches
+
+- Breadcrumb: Uses tooltip when breadcrumb text is truncated
+- Fix CommandBar rendering commandText span when no item name is given: #2233.
+- Start fixing some strictNullCheck errors
+- DefaultButton: Make styles match design
+- DetailsList: Adjust checkmark icon to use StatusCircleCheckmark icon
+- Dropdown: List native props at top of div element
+
+## 4.21.1
+Mon, 17 Jul 2017 18:38:01 GMT
+
+### Patches
+
+- BasePicker: Removes onBlur to fix onSuggestionClick prevention and adds onBlur functionality to dismissSuggestions.
+
+## 4.21.0
+Mon, 17 Jul 2017 10:22:38 GMT
+
+### Minor changes
+
+- ComboBox: props have been adjusted to inherit from HTMLAttributes to allow fo props like onBlur to be mixed in. Note that this has forced the `autoComplete` prop to be changed to a string.
+
+### Patches
+
+- ComboBox: Fix a keyboard scrolling issue where the pending option would not be scrolled into view
+- Allow deeply nested links to render in Nav
+- Last pull request added the option to display the month picker by itself without the day picker, but selecting the month picker was not calling selectDate. This should fix that.
+
+## 4.20.0
+Fri, 14 Jul 2017 17:34:53 GMT
+
+### Minor changes
+
+- PeoplePicker: adding a custom validator prop
+- DetailsList: Add compact mode to component, add column padding, fix styling and Check component sizing
+
+### Patches
+
+- ResizeGroup: Do measurements inside requestAnimationFrame
+
+## 4.19.0
+Thu, 13 Jul 2017 02:58:02 GMT
+
+### Minor changes
+
+- Addressing remaining TS 2.4.1 errors.
+- DetailsList: Allow passing props to underlying List
+
+### Patches
+
+- TooltipHost: Fixed check which kept onRenderContent from working
+- Fixing null reference exception caused if user does not specify imageSize along with imageSrc in choiceGroup
+- List: Only draw a single window when receiving new items
 
 ## 4.18.0
 Wed, 12 Jul 2017 01:49:50 GMT

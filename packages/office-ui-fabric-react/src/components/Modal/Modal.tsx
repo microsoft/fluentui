@@ -79,7 +79,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     let {
       elementToFocusOnDismiss,
       firstFocusableSelector,
@@ -96,17 +96,20 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     } = this.props;
     let { id, isOpen, isVisible } = this.state;
 
-    const modalClassName = css('ms-Modal', styles.root, this.props.className, {
-      ['is-open']: isOpen,
-      [styles.rootIsVisible]: isVisible,
-    });
+    const modalClassName = css(
+      'ms-Modal',
+      styles.root,
+      this.props.className,
+      !!isOpen && 'is-open',
+      !!isVisible && styles.rootIsVisible
+    );
 
     if (!isOpen) {
       return null;
     }
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
-    if (responsiveMode >= ResponsiveMode.small) {
+    if (responsiveMode! >= ResponsiveMode.small) {
       return (
         <Layer onLayerDidMount={ onLayerDidMount }>
           <Popup
@@ -116,7 +119,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
             onDismiss={ onDismiss }
           >
             <div className={ modalClassName }>
-              <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
+              <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? undefined : (onDismiss as any) } />
               <FocusTrapZone
                 className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
@@ -131,6 +134,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
         </Layer>
       );
     }
+    return null;
   }
 
   // Watch for completed animations and set the state

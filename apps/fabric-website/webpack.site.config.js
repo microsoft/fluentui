@@ -27,7 +27,6 @@ if (isProduction) {
   configs.push(createConfig(true, publicPath));
 }
 
-
 // Helper to create the config.
 function createConfig(isProduction, publicPath) {
   let today = new Date();
@@ -69,22 +68,12 @@ function createConfig(isProduction, publicPath) {
 
     module: {
       noParse: [/autoit.js/],
-      loaders: [
-        {
-          test: /\.js$/,
-          loader: 'source-map-loader',
-          enforce: 'pre'
-        }
-      ],
+      preLoaders: [
+        { test: /\.json$/, loader: 'json' }
+      ]
     },
 
-    plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        reportFilename: 'fabric-site.stats.html',
-        openAnalyzer: false
-      })
-    ]
+    plugins: []
   };
 
   if (isProduction) {

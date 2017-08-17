@@ -7,10 +7,10 @@ const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 import { baseURL } from '../../../appConfig';
 
-const accentColorsData = require('json!../../../data/colors-accent.json');
-const colorClassesData = require('json!../../../data/colors-classes.json');
-const neutralColorsData = require('json!../../../data/colors-neutral.json');
-const themeColorsData = require('json!../../../data/colors-theme.json');
+const accentColorsData = require('../../../data/colors-accent.json');
+const colorClassesData = require('../../../data/colors-classes.json');
+const neutralColorsData = require('../../../data/colors-neutral.json');
+const themeColorsData = require('../../../data/colors-theme.json');
 
 export class ColorsPage extends React.Component<any, any> {
   public render() {
@@ -38,7 +38,7 @@ export class ColorsPage extends React.Component<any, any> {
         />
         <div className={ pageStyles.u_maxTextWidth }>
           <h2 id='Overview'>Overview</h2>
-          <p>Fabric includes 9 theme colors and 11 neutral colors. Each has helper classes for text, background, border, and hover states. When selecting colors, refer to the <a href={ baseURL + 'https://static2.sharepointonline.com/files/fabric/fabric-website/files/coloraccessibility_29sep2016.pdf' }>color accessibility guidance (PDF)</a> to ensure that your text can be ready by everyone.</p>
+          <p>Fabric includes 9 theme colors and 11 neutral colors. Each has helper classes for text, background, border, and hover states. When selecting colors, refer to the <a href={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/files/coloraccessibility_29sep2016.pdf' }>color accessibility guidance (PDF)</a> to ensure that your text can be ready by everyone.</p>
         </div>
         <h2 id='implementation'>Implementation</h2>
         <p>Colors can be applied to text, backgrounds, or borders using the following class name conventions:</p>

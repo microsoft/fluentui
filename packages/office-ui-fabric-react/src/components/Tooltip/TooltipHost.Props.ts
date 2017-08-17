@@ -60,6 +60,12 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   directionalHint?: DirectionalHint;
 
   /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
+
+  /**
    * Only show if there is overflow. If set, the tooltip hosts observes  and only shows the tooltip if this element has overflow.
    * It also uses the parent as target element for the tooltip.
    */
@@ -69,4 +75,9 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
    * Optional class name to apply to tooltip host.
    */
   hostClassName?: string;
+
+  /**
+   * Notifies when tooltip becomes visible or hidden, whatever the trigger was.
+   */
+  onTooltipToggle?(isTooltipVisible: boolean): void;
 }

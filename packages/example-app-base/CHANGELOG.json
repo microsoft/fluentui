@@ -2,6 +2,47 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.2.0",
+      "tag": "@uifabric/example-app-base_v4.2.0",
+      "date": "Thu, 03 Aug 2017 10:13:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb487aa0e1510e9182394ff2ee04966986502634",
+            "comment": "TypeScript 2.4.1 bump"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.15.4 <1.0.0` to `>=0.15.4 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.8.0 <5.0.0` to `>=4.9.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.1.1",
+      "tag": "@uifabric/example-app-base_v4.1.1",
+      "date": "Thu, 13 Jul 2017 02:58:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "253b23f0aa42bcc62ad8f861953c3bc0f0343c81",
+            "comment": "Highlight: Use correct import for highlightBlock"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.13.6 <1.0.0` to `>=0.13.7 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.1.0",
       "tag": "@uifabric/example-app-base_v4.1.0",
       "date": "Wed, 12 Jul 2017 01:49:50 GMT",

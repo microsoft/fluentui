@@ -41,7 +41,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IGroupedList) => void;
+  componentRef?: (component?: IGroupedList) => void;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -85,6 +85,20 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
 
   /** Optional callback when the group expand state changes between all collapsed and at least one group is expanded. */
   onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
+
+  /** 
+   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization 
+   * The same property in List.Props
+   */
+  usePageCache?: boolean;
+  
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when this callback is not provided.
+   */
+  onShouldVirtualize?: (props: IListProps) => boolean;
 }
 
 export interface IGroup {
@@ -158,6 +172,7 @@ export interface IGroup {
 }
 
 export interface IGroupRenderProps {
+
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -191,6 +206,9 @@ export interface IGroupRenderProps {
 }
 
 export interface IGroupDividerProps {
+
+  componentRef?: () => void;
+
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
 

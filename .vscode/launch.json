@@ -5,10 +5,10 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/packages/office-ui-fabric-react/node_modules/gulp/bin/gulp.js",
+      "program": "${workspaceRoot}/packages/utilities/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
       "args": [],
-      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
+      "cwd": "${workspaceRoot}/packages/utilities",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",
@@ -17,9 +17,7 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
+      "sourceMaps": false
     },
     {
       "name": "Run ssr tests",
@@ -40,9 +38,7 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
-    },
+      "sourceMaps": false
+    }
   ]
 }

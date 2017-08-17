@@ -67,6 +67,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
   private _shouldHandleFocus: boolean;
+  private _shouldHandleFocusTimeoutId: number | undefined;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
@@ -107,7 +108,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   public ignoreNextFocus() {
-    this._shouldHandleFocus = false;
+    this._handleNextFocus(false);
   }
 
   @autobind
@@ -139,12 +140,14 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           // set anchor only.
           selection.setIndexSelected(index, selection.isIndexSelected(index), true);
         } else {
-          this._onItemSurfaceClick(ev, index);
+          if (this.props.isSelectedOnFocus) {
+            this._onItemSurfaceClick(ev, index);
+          }
         }
       }
     }
 
-    this._shouldHandleFocus = false;
+    this._handleNextFocus(false);
   }
 
   @autobind
@@ -168,7 +171,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -207,7 +210,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -232,7 +235,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
         return true;
       }
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
 
     return false;
@@ -266,10 +269,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = getParent(target);
+        target = getParent(target) as HTMLElement;
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
   }
 
@@ -290,7 +293,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
       // A key was pressed while an item in this zone was focused.
-      this._shouldHandleFocus = true;
+      this._handleNextFocus(true);
       return;
     }
 
@@ -337,12 +340,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = getParent(target);
+        target = getParent(target) as HTMLElement;
       }
     }
 
     // A key was pressed while an item in this zone was focused.
-    this._shouldHandleFocus = true;
+    this._handleNextFocus(true);
   }
 
   private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {
@@ -445,7 +448,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._isMetaPressed = ev.metaKey;
   }
 
-  private _findItemRoot(target: HTMLElement): HTMLElement {
+  private _findItemRoot(target: HTMLElement): HTMLElement | undefined {
     let { selection } = this.props;
 
     while (target !== this.refs.root) {
@@ -456,7 +459,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         break;
       }
 
-      target = getParent(target);
+      target = getParent(target) as HTMLElement;
     }
 
     if (target === this.refs.root) {
@@ -475,7 +478,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     while (!isToggle && element !== this.refs.root) {
       isToggle = element.getAttribute(attributeName) === 'true';
-      element = getParent(element);
+      element = getParent(element) as HTMLElement;
     }
 
     return isToggle;
@@ -494,11 +497,25 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           return false;
         }
 
-        element = getParent(element);
+        element = getParent(element) as HTMLElement;
       }
     }
 
     return true;
   }
 
+  private _handleNextFocus(handleFocus: boolean) {
+    if (this._shouldHandleFocusTimeoutId) {
+      this._async.clearTimeout(this._shouldHandleFocusTimeoutId);
+      this._shouldHandleFocusTimeoutId = undefined;
+    }
+
+    this._shouldHandleFocus = handleFocus;
+
+    if (handleFocus) {
+      this._async.setTimeout(() => {
+        this._shouldHandleFocus = false;
+      }, 100);
+    }
+  }
 }

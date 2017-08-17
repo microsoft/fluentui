@@ -4,7 +4,7 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
 } from '../../Utilities';
 
 export interface ICallout {
@@ -32,6 +32,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   directionalHint?: DirectionalHint;
 
   /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
+
+  /**
    * The gap between the Callout and the target
    * @default 0
    */
@@ -42,6 +48,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default 16
    */
   beakWidth?: number;
+
+  /**
+   * Custom width for callout including borders. If value is 0, no width is applied.
+   * @default 0
+   */
+  calloutWidth?: number;
 
   /**
    * The background color of the Callout in hex format ie. #ffffff.

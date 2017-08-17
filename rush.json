@@ -1,6 +1,6 @@
 {
   "npmVersion": "5.0.3",
-  "rushMinimumVersion": "3.0.7",
+  "rushMinimumVersion": "3.0.11",
   "nodeSupportedVersionRange": ">=6.9.0 <9.0.0",
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 999,
@@ -8,6 +8,11 @@
     {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/experiments",
+      "projectFolder": "packages/experiments",
       "shouldPublish": true
     },
     {
@@ -31,11 +36,6 @@
         "office-ui-fabric-react",
         "@uifabric/example-app-base"
       ]
-    },
-    {
-      "packageName": "@uifabric/example-component",
-      "projectFolder": "packages/example-component",
-      "shouldPublish": false
     },
     {
       "packageName": "ssr-tests",

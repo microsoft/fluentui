@@ -1,4 +1,8 @@
 export interface IGridProps {
+  /**
+   * Gets the component ref.
+   */
+  componentRef?: () => void;
 
   /**
    * The items to turn into a grid
@@ -14,6 +18,21 @@ export interface IGridProps {
    * Custom renderer for the individual items
    */
   onRenderItem: (item: any, index: number) => JSX.Element;
+
+  /**
+   * Boolean indicating if the focus should support circular navigation
+   */
+  shouldFocusCircularNavigate?: boolean;
+
+  /**
+   * Optional, class name for the FocusZone container for the grid
+   */
+  containerClassName?: string;
+
+  /**
+   * Optional, handler for when the grid should blur
+   */
+  onBlur?: () => void;
 
   /**
    * The optional position this grid is in the parent set (index in a parent menu, for example)

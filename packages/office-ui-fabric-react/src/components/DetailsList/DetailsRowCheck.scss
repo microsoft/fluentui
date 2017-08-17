@@ -18,14 +18,19 @@
 }
 
 button.check {
-  padding: 6px;
+  padding: 3px;
 }
 
 .owner {
   &.isSelected,
   &.isVisible,
-  &:hover,
-  &:focus {
+  &:hover {
+    .check {
+      opacity: 1;
+    }
+  }
+
+  @include focus(true) {
     .check {
       opacity: 1;
     }

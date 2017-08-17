@@ -48,6 +48,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
   directionalHint?: DirectionalHint;
 
   /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
+
+  /**
    * The gap between the ContextualMenu and the target
    * @default 0
    */
@@ -255,6 +261,11 @@ export interface IContextualMenuItem {
    * An optional URL to navigate to upon selection
    */
   href?: string;
+
+  /**
+   * An optional target when using href
+   */
+  target?: string;
 
   /**
    * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.

@@ -6,8 +6,10 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
+import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
+const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
 
 export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -16,9 +18,14 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
         title='ComboBox'
         componentName='ComboBoxExample'
         exampleCards={
-          <ExampleCard title='ComboBox' code={ ComboBoxBasicExampleCode }>
-            <ComboBoxBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='ComboBox' code={ ComboBoxBasicExampleCode }>
+              <ComboBoxBasicExample />
+            </ExampleCard>
+            <ExampleCard title='ComboBoxCustomStyled' code={ ComboBoxCustomStyledExampleCode }>
+              <ComboBoxCustomStyledExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet

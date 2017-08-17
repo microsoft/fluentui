@@ -18,7 +18,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('.ms-Toggle-label');
+    let labelElement = renderedDOM.querySelector('.ms-Toggle-label') as Element;
 
     expect(labelElement.textContent).to.equal('Label');
   });
@@ -31,7 +31,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('button');
+    let labelElement = renderedDOM.querySelector('button') as Element;
 
     expect(labelElement.getAttribute('aria-label')).to.equal('offLabel');
   });
@@ -41,7 +41,7 @@ describe('Toggle', () => {
     let callback = (isToggled: boolean) => {
       isToggledValue = isToggled;
     };
-    let component;
+    let component: any;
 
     ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Toggle
@@ -51,7 +51,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let button = renderedDOM.querySelector('button');
+    let button = renderedDOM.querySelector('button') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(button);
     expect(isToggledValue).to.equal(true);
@@ -59,7 +59,7 @@ describe('Toggle', () => {
   });
 
   it(`doesn't update the state if the user provides checked`, () => {
-    let component;
+    let component: any;
 
     ReactTestUtils.renderIntoDocument(
       <Toggle
@@ -69,7 +69,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let button = renderedDOM.querySelector('button');
+    let button = renderedDOM.querySelector('button') as HTMLButtonElement;
 
     ReactTestUtils.Simulate.click(button);
 
@@ -90,7 +90,7 @@ describe('Toggle', () => {
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
-    let component;
+    let component: any;
     const onSubmit = sinon.spy();
 
     const wrapper = mount(

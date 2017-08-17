@@ -56,15 +56,16 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
         <Checkbox
           label='Is marquee enabled'
           defaultChecked={ true }
-          onChange={ (ev, isMarqueeEnabled) => this.setState({ isMarqueeEnabled }) } />
+          onChange={ (ev, isMarqueeEnabled) => this.setState({ isMarqueeEnabled: isMarqueeEnabled! }) } />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className='ms-MarqueeSelectionBasicExample-photoList'>
           { PHOTOS.map((photo, index) => (
             <div
               key={ index }
-              className={ css('ms-MarqueeSelectionBasicExample-photoCell', {
-                'is-selected': this._selection.isIndexSelected(index)
-              }) }
+              className={ css(
+                'ms-MarqueeSelectionBasicExample-photoCell',
+                this._selection.isIndexSelected(index) && 'is-selected'
+              ) }
               data-is-focusable={ true }
               data-selection-index={ index }
               onClick={ () => console.log('clicked') }

@@ -58,7 +58,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           <List
             ref={ this._resolveList }
             items={ items }
-            getPageHeight={ (idx) => {
+            getPageHeight={ (idx: number) => {
               let h = 0;
               for (let i = idx; i < idx + numberOfItemsOnPage; ++i) {
                 const isEvenRow = i % 2 === 0;
@@ -67,12 +67,13 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
               }
               return h;
             } }
-            onRenderCell={ (item, index) => (
+            onRenderCell={ (item, index: number) => (
               <div className='ms-ListScrollingExample-itemCell' data-is-focusable={ true }>
-                <div className={ css('ms-ListScrollingExample-itemContent', {
-                  'ms-ListScrollingExample-itemContent-even': index % 2 === 0,
-                  'ms-ListScrollingExample-itemContent-odd': index % 2 === 1
-                }) }>
+                <div className={ css(
+                  'ms-ListScrollingExample-itemContent',
+                  (index % 2 === 0) && 'ms-ListScrollingExample-itemContent-even',
+                  (index % 2 === 1) && 'ms-ListScrollingExample-itemContent-odd'
+                ) }>
                   { index } &nbsp; { item.name }
                 </div>
               </div>
