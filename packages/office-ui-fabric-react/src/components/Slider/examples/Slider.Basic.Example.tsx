@@ -75,7 +75,6 @@ export class SliderBasicExample extends React.Component<any, any> {
             <Slider
               label='Controlled example:'
               max={ 10 }
-              value={ this.state.value }
               horizontal={ false }
               showValue={ true }
             />
