@@ -1,0 +1,103 @@
+
+@import '../../../../office-ui-fabric-react/src/common/common';
+
+.signal {
+  display: inline-block;
+  margin: 0 4px;
+
+  &:first-child {
+    @include margin-left(0);
+  }
+
+  &:last-child {
+    @include margin-right(0);
+  }
+}
+
+.new {
+  width: 0;
+  height: 1em;
+  position: relative;
+  @include margin-right(0);
+  line-height: 1em;
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.newIcon {
+  position: absolute;
+  bottom: 100%;
+  @include right(-1px);
+  font-size: 0.66em;
+  margin-bottom: -0.75em;
+}
+
+.comments {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.commentsIcon {
+  vertical-align: middle;
+}
+
+.commentsCount {
+  @include margin-left(0.2em);
+  font-size: 0.9em;
+  font-weight: $ms-font-weight-semibold;
+  vertical-align: baseline;
+}
+
+.trending {
+  color: #006257;
+}
+
+.blocked {
+  color: #a80000;
+}
+
+.warning {
+  color: #cf3902;
+}
+
+.shared {
+  color: $ms-color-neutralSecondary;
+}
+
+.missingMetadata {
+  color: $ms-color-themeDarker;
+}
+
+.mention {
+  color: $ms-color-themePrimary;
+
+  .selected & {
+    color: $ms-color-themeDark;
+  }
+}
+
+.signal {
+  .dark &,
+  .dark.selected {
+    color: $ms-color-white;
+  }
+}
+
+.signalField {
+  display: inline-flex;
+  max-width: 100%;
+  flex-direction: row nowrap;
+}
+
+.signalFieldValue {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+}

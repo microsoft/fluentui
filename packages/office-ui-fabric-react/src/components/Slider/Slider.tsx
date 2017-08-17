@@ -113,10 +113,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             { ...onTouchStartProp }
             { ...onKeyDownProp }
             { ...buttonProps }
-            className={ css('ms-Slider-slideBox', styles.slideBox, buttonProps!.className, {
-              'ms-Slider-showValue': !!showValue,
-              ['ms-Slider-showTransitions ' + styles.showTransitions]: (renderedValue === value)
-            }) }
+            className={ css(
+              'ms-Slider-slideBox',
+              styles.slideBox,
+              buttonProps!.className,
+              !!showValue && 'ms-Slider-showValue',
+              (renderedValue === value) && ('ms-Slider-showTransitions ' + styles.showTransitions)
+            ) }
             id={ this._id }
             disabled={ disabled }
             type='button'
