@@ -86,11 +86,16 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
+    let weekCorners: any = false;
+    if (dateRangeType == 2) {
+      console.log(selectedDate.getMonth(), selectedDate, navigatedDate.getMonth(), navigatedDate)
+      weekCorners = selectedDate.getMonth() == navigatedDate.getMonth() ? this.findWeekCorners(weeks) : this.findUnFocusedWeekCorners(weeks);
+    }
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
@@ -117,6 +122,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
+        </div >
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          </div>
           {
             this.props.onHeaderSelect ?
               <div
@@ -130,12 +141,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               :
               null
           }
-        </div >
-        <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
-          </div>
         </div>
         <FocusZone>
           <table
@@ -160,9 +165,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody>
               { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex }>
+                <tr key={ weekIndex } >
                   { week.map((day, dayIndex) =>
-                    <td key={ day.key }>
+                    <td key={ day.key } className={ css(
+                      {
+                        ['ms-DatePicker-weekHighlighted ' + styles.weekHighlighted]: day.isSelected && dateRangeType == 1,
+                        ['ms-DatePicker-monthHighlighted ' + this.checkHighlightCorner(weekCorners, dayIndex, weekIndex)]: day.isSelected && dateRangeType == 2
+                      }) }
+                    >
                       <div
                         className={ css(
                           'ms-DatePicker-day',
@@ -202,6 +212,153 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       this.refs.navigatedDay.tabIndex = 0;
       this.refs.navigatedDay.focus();
     }
+  }
+
+  private findWeekCorners(weeks: any) {
+    let weekCorners: any[] = [];
+    let firstWeek: any[] = [];
+    let lastWeek: any[] = [];
+    let daysInWeek = weeks[0].length;
+    let numberOfWeeks = weeks.length;
+
+    weeks[0].map((day: any, index: number) => {
+      if (day.isInMonth) { firstWeek.push(index) }
+    });
+
+    weeks[numberOfWeeks - 1].map((day: any, index: number) => {
+      if (day.isInMonth) { lastWeek.push(index) }
+    });
+
+    if (firstWeek.length == 1) {
+      weekCorners.push({
+        index: daysInWeek - 1,
+        styles: styles.monthHighlightedTop,
+        week: 0
+      })
+    }
+    else {
+      weekCorners.push({
+        index: firstWeek[0],
+        styles: styles.monthHighlightedTopLeft,
+        week: 0
+      },
+        {
+          index: daysInWeek - 1,
+          styles: styles.monthHighlightedTopRight,
+          week: 0
+        });
+    }
+
+    if (daysInWeek != firstWeek.length) {
+      weekCorners.push({
+        index: 0,
+        styles: styles.monthHighlightedTopLeft,
+        week: 1
+      });
+    }
+
+    if (lastWeek.length == 1) {
+      weekCorners.push({
+        index: 0,
+        styles: styles.monthHighlightedBottom,
+        week: numberOfWeeks - 1
+      })
+    }
+    else {
+      weekCorners.push({
+        index: 0,
+        styles: styles.monthHighlightedBottomLeft,
+        week: numberOfWeeks - 1
+      },
+        {
+          index: lastWeek[lastWeek.length - 1],
+          styles: styles.monthHighlightedBottomRight,
+          week: numberOfWeeks - 1
+        });
+    }
+
+    if (daysInWeek != lastWeek.length) {
+      weekCorners.push({
+        index: daysInWeek - 1,
+        styles: styles.monthHighlightedBottomRight,
+        week: numberOfWeeks - 2
+      });
+    }
+    return weekCorners
+
+  }
+
+  private findUnFocusedWeekCorners(weeks: any) {
+    console.log('unfocused corners!!!')
+    let weekCorners: any[] = [];
+    let firstWeek: any[] = [];
+    let lastWeek: any[] = [];
+    let daysInWeek = weeks[0].length;
+    let numberOfWeeks = weeks.length;
+
+    weeks[0].map((day: any, index: number) => {
+      if (!day.isInMonth) { firstWeek.push(index) }
+    });
+
+    weeks[numberOfWeeks - 1].map((day: any, index: number) => {
+      if (!day.isInMonth) { lastWeek.push(index) }
+    });
+
+    if (firstWeek.length == 1) {
+      weekCorners.push({
+        index: 0,
+        styles: styles.monthHighlightedFull,
+        week: 0
+      })
+    }
+    else {
+      weekCorners.push({
+        index: 0,
+        styles: styles.monthHighlightedLeft,
+        week: 0
+      },
+        {
+          index: firstWeek[firstWeek.length - 1],
+          styles: styles.monthHighlightedRight,
+          week: 0
+        });
+    }
+
+    if (lastWeek.length == 1) {
+      weekCorners.push({
+        index: lastWeek[lastWeek.length - 1],
+        styles: styles.monthHighlightedFull,
+        week: numberOfWeeks - 1
+      })
+    }
+    else {
+      weekCorners.push({
+        index: lastWeek[0],
+        styles: styles.monthHighlightedLeft,
+        week: numberOfWeeks - 1
+      },
+        {
+          index: lastWeek[lastWeek.length - 1],
+          styles: styles.monthHighlightedRight,
+          week: numberOfWeeks - 1
+        });
+    }
+    return weekCorners
+
+  }
+
+
+  private checkHighlightCorner(weekCorners: any, dayIndex: number, weekIndex: number) {
+    let cornerStyle = styles.monthHighlighted
+    if (weekCorners) {
+      weekCorners.forEach((corner: any) => {
+        if (corner.index == dayIndex && corner.week == weekIndex) {
+          cornerStyle = corner.styles;
+        }
+      });
+    }
+
+    return cornerStyle
   }
 
   private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
