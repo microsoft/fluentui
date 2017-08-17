@@ -154,7 +154,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='combobox'
+          role='menu'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
@@ -162,11 +162,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen!,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled!,
-            'is-required ': required!,
-          }) }
+          className={ css(
+            'ms-Dropdown',
+            styles.root,
+            className,
+            isOpen! && 'is-open',
+            disabled! && ('is-disabled ' + styles.rootIsDisabled),
+            required! && 'is-required',
+          ) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
@@ -307,11 +310,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderTitle(item: IDropdownOption | IDropdownOption[]): JSX.Element {
     let displayTxt: string = '';
+    let { multiSelectDelimiter = ', ' } = this.props;
+
     if (this.props.multiSelect && Array.isArray(item)) {
-      for (let i = 0; i < item.length; i++) {
-        displayTxt += item[i].text;
-        displayTxt += (i === item.length - 1) ? '' : ',';
-      }
+      displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
     } else {
       displayTxt = (item as IDropdownOption).text;
     }
@@ -333,7 +335,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let {
       onRenderList = this._onRenderList,
       responsiveMode,
-      calloutProps
+      calloutProps,
+      dropdownWidth
     } = this.props;
 
     let isSmall = responsiveMode! <= ResponsiveMode.medium;
@@ -354,16 +357,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           isBeakVisible={ false }
           gapSpace={ 0 }
           doNotLayer={ false }
+          directionalHintFixed={ true }
           directionalHint={ DirectionalHint.bottomLeftEdge }
           { ...calloutProps }
           className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
           targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
+          calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
-            { onRenderList(props, this._onRenderList) }
-          </div>
+          { onRenderList(props, this._onRenderList) }
         </Callout>
     );
   }
@@ -379,18 +382,19 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndex } = this.state;
 
     return (
-      <FocusZone
-        ref={ this._resolveRef('_focusZone') }
-        direction={ FocusZoneDirection.vertical }
-        defaultActiveElement={ '#' + id + '-list' + selectedIndex }
-        id={ id + '-list' }
-        className={ css('ms-Dropdown-items', styles.items) }
-        aria-labelledby={ id + '-label' }
-        onKeyDown={ this._onZoneKeyDown }
-        role='listbox'
-      >
-        { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
-      </FocusZone>
+      <div onKeyDown={ this._onZoneKeyDown }>
+        <FocusZone
+          ref={ this._resolveRef('_focusZone') }
+          direction={ FocusZoneDirection.vertical }
+          defaultActiveElement={ '#' + id + '-list' + selectedIndex }
+          id={ id + '-list' }
+          className={ css('ms-Dropdown-items', styles.items) }
+          aria-labelledby={ id + '-label' }
+          role='listbox'
+        >
+          { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+        </FocusZone>
+      </div>
     );
   }
 
@@ -534,6 +538,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
+    // tslint:disable-next-line:triple-equals
     return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
   }
 
@@ -644,10 +649,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.up:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
-          break;
         }
+        break;
 
-        return;
+      // All directional keystrokes should be canceled when the zone is rendered.
+      // This avoids the body scroll from reacting and thus dismissing the dropdown.
+      case KeyCodes.home:
+      case KeyCodes.end:
+      case KeyCodes.pageUp:
+      case KeyCodes.pageDown:
+      case KeyCodes.down:
+        break;
 
       case KeyCodes.escape:
         this.setState({ isOpen: false });

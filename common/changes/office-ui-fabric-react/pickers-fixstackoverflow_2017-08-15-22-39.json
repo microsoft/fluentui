@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com"
+}

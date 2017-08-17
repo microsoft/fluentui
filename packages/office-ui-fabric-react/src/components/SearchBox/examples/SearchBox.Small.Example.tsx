@@ -11,6 +11,8 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
         <SearchBox
           onChange={ (newValue) => console.log('SearchBox onChange fired: ' + newValue) }
           onSearch={ (newValue) => console.log('SearchBox onSearch fired: ' + newValue) }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

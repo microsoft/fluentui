@@ -62,7 +62,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     this._warnDeprecations({ rootProps: undefined });
 
     this._id = getId('FocusZone');
-    _allInstances[this._id] = this;
 
     this._focusAlignment = {
       left: 0,
@@ -71,6 +70,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   public componentDidMount() {
+    _allInstances[this._id] = this;
     const windowElement = this.refs.root.ownerDocument.defaultView;
 
     let parentElement = getParent(this.refs.root);
@@ -108,11 +108,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     let divProps = getNativeProps(this.props, divProperties);
 
+    const Tag = this.props.elementType || 'div';
+
     return (
-      <div
+      <Tag
         role='presentation'
-        { ...divProps }
-        { ...rootProps }
+        {
+        ...divProps
+        }
+        {
+        ...rootProps
+        }
         className={ css('ms-FocusZone', className) }
         ref='root'
         data-focuszone-id={ this._id }
@@ -120,10 +126,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
-        { ...{ onMouseDownCapture: this._onMouseDown } }
+        onMouseDownCapture={ this._onMouseDown }
       >
         { this.props.children }
-      </div>
+      </Tag>
     );
   }
 
