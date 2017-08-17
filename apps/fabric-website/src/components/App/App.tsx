@@ -38,8 +38,9 @@ export class App extends React.Component<IAppProps, any> {
     }
 
     return (
-      <Fabric className={ css('App',
-        { 'is-navOpen': isNavOpen }
+      <Fabric className={ css(
+        'App',
+        isNavOpen && 'is-navOpen'
       ) }>
         <Header />
         <div className='App-wrapper'>
