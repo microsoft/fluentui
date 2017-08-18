@@ -205,11 +205,8 @@ function getDatePartHashValue(date: Date) {
  */
 export function getWeekofYear(date: Date, firstDayOfWeek: number) {
   let num = getDayOfYear(date) - 1;
-  console.log(date, 'num', num);
   let num2 = (date.getDay()) - (num % 7);
-  console.log(num2);
   let num3 = ((num2 - firstDayOfWeek) + 14) % 7;
-  console.log(num3);
 
   console.log('returning', Math.floor(((num + num3) / 7) + 1));
   return Math.floor(((num + num3) / 7) + 1);
