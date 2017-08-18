@@ -19,7 +19,8 @@ import {
   compareDates,
   compareDatePart,
   getDateRangeArray,
-  isInDateRangeArray
+  isInDateRangeArray,
+  getWeekofYear
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
@@ -147,7 +148,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             styles.day
                           ) }
                         >
-                          <span>{ index }</span>
+                          <span>{ getWeekofYear(day[0].originalDate, 0) }</span>
                         </div>
                       </td>
                     </tr>

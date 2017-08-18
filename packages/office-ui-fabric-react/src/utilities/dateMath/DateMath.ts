@@ -199,3 +199,42 @@ function getDatePartHashValue(date: Date) {
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
   /* tslint:enable:no-bitwise */
 }
+
+/**
+ * Returns week number for a date when supplied the date and the first day of that week.
+ */
+export function getWeekofYear(date: Date, firstDayOfWeek: number) {
+  let num = getDayOfYear(date) - 1;
+  console.log(date, 'num', num);
+  let num2 = (date.getDay()) - (num % 7);
+  console.log(num2);
+  let num3 = ((num2 - firstDayOfWeek) + 14) % 7;
+  console.log(num3);
+
+  console.log('returning', Math.floor(((num + num3) / 7) + 1));
+  return Math.floor(((num + num3) / 7) + 1);
+}
+
+/**
+ * Returns the day number of a date in a year
+ * The number of days since January 1st in the particular year.
+ */
+function getDayOfYear(date: Date) {
+  let month = date.getMonth();
+  let daysUntilDate = 0;
+
+  for (let i = 0; i < month; i++) {
+    daysUntilDate += daysInMonth(i, date.getFullYear());
+  }
+
+  daysUntilDate += date.getUTCDate();
+
+  return daysUntilDate;
+}
+
+/**
+ * Returns the number of days in the month
+ */
+function daysInMonth(month: number, year: number) {
+  return new Date(year, month, 0).getDate();
+}
