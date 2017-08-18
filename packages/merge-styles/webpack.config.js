@@ -28,10 +28,10 @@ let webpackConfig = {
 
   externals: [
     {
-      // 'tslib': {
-      //   commonjs: 'tslib',
-      //   amd: 'tslib'
-      // }
+      'tslib': {
+        commonjs: 'tslib',
+        amd: 'tslib'
+      }
     }
   ],
 

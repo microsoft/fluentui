@@ -27,41 +27,40 @@ export function getRTL(): boolean {
   return _rtl;
 }
 
-export function rtlifyRules(rulePairs: string[]): string[] {
+export function rtlifyRules(
+  rulePairs: (string | number)[],
+  index: number
+): void {
   if (getRTL()) {
-    for (let nameIndex = 0, valueIndex = 1; nameIndex < rulePairs.length; nameIndex += 2, valueIndex += 2) {
-      const name = rulePairs[nameIndex];
-      const value = rulePairs[valueIndex];
+    const name = rulePairs[index] as string;
+    const value = rulePairs[index + 1] as string;
 
-      if (value.indexOf(NO_FLIP) >= 0) {
-        continue;
-      } else if (name.indexOf('Left') >= 0) {
-        rulePairs[nameIndex] = name.replace('Left', 'Right');
-      } else if (name.indexOf('Right') >= 0) {
-        rulePairs[nameIndex] = name.replace('Right', 'Left');
-      } else if (String(value).indexOf('left') >= 0) {
-        rulePairs[valueIndex] = value.replace('left', 'right');
-      } else if (String(value).indexOf('right') >= 0) {
-        rulePairs[valueIndex] = value.replace('right', 'left');
-      } else if (_nameReplacements[name]) {
-        rulePairs[nameIndex] = _nameReplacements[name];
-      } else if (_valueReplacements[value]) {
-        rulePairs[valueIndex] = _valueReplacements[value];
-      } else {
-        switch (name) {
-          case 'margin':
-          case 'padding':
-            rulePairs[valueIndex] = flipQuad(value);
-            break;
-          case 'boxShadow':
-            rulePairs[valueIndex] = negateNum(value, 0);
-            break;
-        }
+    if (value.indexOf(NO_FLIP) >= 0) {
+      return;
+    } else if (name.indexOf('left') >= 0) {
+      rulePairs[index] = name.replace('left', 'right');
+    } else if (name.indexOf('right') >= 0) {
+      rulePairs[index] = name.replace('right', 'left');
+    } else if (String(value).indexOf('left') >= 0) {
+      rulePairs[index + 1] = value.replace('left', 'right');
+    } else if (String(value).indexOf('right') >= 0) {
+      rulePairs[index + 1] = value.replace('right', 'left');
+    } else if (_nameReplacements[name]) {
+      rulePairs[index] = _nameReplacements[name];
+    } else if (_valueReplacements[value]) {
+      rulePairs[index + 1] = _valueReplacements[value];
+    } else {
+      switch (name) {
+        case 'margin':
+        case 'padding':
+          rulePairs[index + 1] = flipQuad(value);
+          break;
+        case 'box-shadow':
+          rulePairs[index + 1] = negateNum(value, 0);
+          break;
       }
     }
   }
-
-  return rulePairs;
 }
 
 function negateNum(value: string, partIndex: number): string {

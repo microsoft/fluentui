@@ -16,7 +16,7 @@ describe('prefixRules', () => {
       const rules = [rule, 'none'];
 
       setVendorSettings({ isWebkit: true });
-      prefixRules(rules);
+      prefixRules(rules, 0);
 
       expect(rules).eql([
         rule, 'none',
@@ -30,7 +30,7 @@ describe('prefixRules', () => {
       const rules = [rule, 'none'];
 
       setVendorSettings({ isMoz: true });
-      prefixRules(rules);
+      prefixRules(rules, 0);
       expect(rules).eql([
         rule, 'none',
         '-moz-' + rule, 'none'
@@ -43,7 +43,7 @@ describe('prefixRules', () => {
       const rules = [rule, 'none'];
 
       setVendorSettings({ isMs: true });
-      prefixRules(rules);
+      prefixRules(rules, 0);
       expect(rules).eql([
         rule, 'none',
         '-ms-' + rule, 'none'
@@ -56,7 +56,7 @@ describe('prefixRules', () => {
       const rules = [rule, 'none'];
 
       setVendorSettings({ isOpera: true });
-      prefixRules(rules);
+      prefixRules(rules, 0);
       expect(rules).eql([
         rule, 'none',
         '-o-' + rule, 'none'

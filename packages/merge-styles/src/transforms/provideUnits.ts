@@ -1,12 +1,14 @@
-export function provideUnits(rulePairs: (string | number)[]): void {
-  for (let i = 0; i < rulePairs.length; i += 2) {
-    const name = rulePairs[i];
-    const value = rulePairs[i + 1];
-    if (
-      name !== 'opacity' &&
-      typeof value === 'number'
-    ) {
-      rulePairs[i + 1] = `${value}px`;
-    }
+export function provideUnits(
+  rulePairs: (string | number)[],
+  index: number
+): void {
+  const name = rulePairs[index];
+  const value = rulePairs[index + 1];
+
+  if (
+    name !== 'opacity' &&
+    typeof value === 'number'
+  ) {
+    rulePairs[index + 1] = `${value}px`;
   }
 }

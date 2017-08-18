@@ -5,13 +5,15 @@ const autoPrefixNames: { [key: string]: number } = {
 };
 
 export function prefixRules(
-  rulePairs: string[]
+  rulePairs: (string | number)[],
+  index: number
 ): void {
   const vendorSettings = getVendorSettings();
 
-  for (let nameIndex = 0, valueIndex = 1; nameIndex < rulePairs.length; nameIndex += 2, valueIndex += 2) {
-    const name = rulePairs[nameIndex];
-    const value = rulePairs[valueIndex];
+  const name = rulePairs[index];
+
+  if (autoPrefixNames[name]) {
+    const value = rulePairs[index + 1];
 
     if (autoPrefixNames[name]) {
       if (vendorSettings.isWebkit) {

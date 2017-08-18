@@ -42,5 +42,8 @@
     "source-map-loader": "^0.2.1",
     "typescript": "2.4.2",
     "webpack-bundle-analyzer": "^2.2.1"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
   }
 }

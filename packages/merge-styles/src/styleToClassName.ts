@@ -1,42 +1,12 @@
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
+import { kebabRules } from './transforms/kebabRules';
 import { getVendorSettings } from './getVendorSettings';
 import { Stylesheet } from './Stylesheet';
 import { IStyle, IExtendedRawStyle } from './IStyle';
 
 const DISPLAY_NAME = 'displayName';
-
-function toRuleEntry(name: string, value: string): string | undefined {
-  if (name === DISPLAY_NAME) {
-    return undefined;
-  }
-
-  // Prefixes like WebKit need a dash infront of them.
-  if (/[A-Z]/.test(name[0])) {
-    name = '-' + name;
-  }
-
-  // Kebab case the rule.
-  const rulePair: string[] = [
-    name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
-    value
-  ];
-
-  // Apply transforms.
-  provideUnits(rulePair);
-  rtlifyRules(rulePair);
-  prefixRules(rulePair);
-
-  const ruleEntries: string[] = [];
-
-  // Stringify the rules.
-  for (let i = 0; i < rulePair.length; i += 2) {
-    ruleEntries.push(rulePair[i], ':', rulePair[i + 1], ';');
-  }
-
-  return ruleEntries.join('');
-}
 
 function getDisplayName(rules?: Map<string, IStyle>): string | undefined {
   const rootStyle: IStyle = rules && rules.get('&');
@@ -114,7 +84,7 @@ function expandQuads(
   currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
 }
 
-function serializeRules(rules: Map<string, IStyle>): string | undefined {
+function getKeyForRules(rules: Map<string, IStyle>): string | undefined {
   const serialized: string[] = [];
   let hasProps = false;
 
@@ -132,15 +102,30 @@ function serializeRules(rules: Map<string, IStyle>): string | undefined {
   return hasProps ? serialized.join('') : undefined;
 }
 
-export function serializeRuleEntries(ruleEntries: { [key: string]: string }): string {
-  const allEntries: string[] = [];
+export function serializeRuleEntries(ruleEntries: { [key: string]: string | number }): string {
+  if (!ruleEntries) {
+    return '';
+  }
 
-  if (ruleEntries) {
-    for (const entry in ruleEntries) {
-      if (ruleEntries.hasOwnProperty(entry)) {
-        allEntries.push(toRuleEntry(entry, ruleEntries[entry])!);
-      }
+  const allEntries: (string | number)[] = [];
+
+  for (const entry in ruleEntries) {
+    if (ruleEntries.hasOwnProperty(entry) && entry !== DISPLAY_NAME) {
+      allEntries.push(entry, ruleEntries[entry]);
     }
+  }
+
+  // Apply transforms.
+  for (let i = 0; i < allEntries.length; i += 2) {
+    kebabRules(allEntries, i);
+    provideUnits(allEntries, i);
+    rtlifyRules(allEntries, i);
+    prefixRules(allEntries, i);
+  }
+
+  // Apply punctuation.
+  for (let i = 1; i < allEntries.length; i += 4) {
+    allEntries.splice(i, 1, ':', allEntries[i], ';');
   }
 
   return allEntries.join('');
@@ -148,7 +133,7 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string }): st
 
 export function styleToClassName(...args: IStyle[]): string {
   const rules: Map<string, IStyle> = extractRules(args);
-  const key = serializeRules(rules);
+  const key = getKeyForRules(rules);
   let className = '';
 
   if (key) {

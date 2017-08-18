@@ -10,7 +10,7 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "noImplicitAny": true,
+    "importHelpers": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",

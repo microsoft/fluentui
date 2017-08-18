@@ -13,7 +13,7 @@ describe('provideUnits', () => {
     ].forEach((property: string) => {
       const testSet: (string | number)[] = [property, 1];
 
-      provideUnits(testSet);
+      provideUnits(testSet, 0);
 
       expect(testSet).eql([property, '1px']);
     });
@@ -33,7 +33,11 @@ describe('provideUnits', () => {
         property + 'Bottom', 1
       ];
 
-      provideUnits(testSet);
+      provideUnits(testSet, 0);
+      provideUnits(testSet, 2);
+      provideUnits(testSet, 4);
+      provideUnits(testSet, 6);
+      provideUnits(testSet, 8);
 
       expect(testSet).eql([
         property, '1px',
@@ -51,7 +55,7 @@ describe('provideUnits', () => {
       0
     ];
 
-    provideUnits(testSet);
+    provideUnits(testSet, 0);
 
     expect(testSet).eql(['opacity', 0]);
   });

@@ -23,27 +23,32 @@ describe('rtlifyRules', () => {
       [['margin', '1 2'], ['margin', '1 2']],
       [['margin', '1 2 3'], ['margin', '1 2 3']],
       [['margin', '1 2 3 4'], ['margin', '1 4 3 2']],
-      [['marginLeft', '42'], ['marginRight', '42']],
-      [['marginRight', '42'], ['marginLeft', '42']],
+      [['margin-left', '42'], ['margin-right', '42']],
+      [['margin-right', '42'], ['margin-left', '42']],
       [['padding', '42'], ['padding', '42']],
       [['padding', '1 2'], ['padding', '1 2']],
       [['padding', '1 2 3'], ['padding', '1 2 3']],
       [['padding', '1 2 3 4'], ['padding', '1 4 3 2']],
-      [['paddingLeft', '42'], ['paddingRight', '42']],
-      [['paddingRight', '42'], ['paddingLeft', '42']],
+      [['padding-left', '42'], ['padding-right', '42']],
+      [['padding-right', '42'], ['padding-left', '42']],
       [['cursor', 'w-resize'], ['cursor', 'e-resize']],
       [['cursor', 'sw-resize'], ['cursor', 'se-resize']],
       [['cursor', 'nw-resize'], ['cursor', 'ne-resize']],
       [['left', '42px /*noflip*/'], ['left', '42px /*noflip*/']],
-      [['boxShadow', '42px 0 red'], ['boxShadow', '-42px 0 red']],
-      [['boxShadow', '-42px 0 red'], ['boxShadow', '42px 0 red']]
-    ].forEach((test: string[][]) => expect(rtlifyRules(test[0])).eqls(test[1]));
+      [['box-shadow', '42px 0 red'], ['box-shadow', '-42px 0 red']],
+      [['box-shadow', '-42px 0 red'], ['box-shadow', '42px 0 red']]
+    ].forEach((test: string[][]) => {
+      rtlifyRules(test[0], 0);
+      expect(test[0]).eqls(test[1]);
+    });
   });
 
   it('does not flip an unflippable cursor', () => {
     const rules = ['cursor', 'hand'];
 
-    expect(rtlifyRules(rules)).eqls(['cursor', 'hand']);
+    rtlifyRules(rules, 0);
+
+    expect(rules).eqls(['cursor', 'hand']);
   });
 
 });
