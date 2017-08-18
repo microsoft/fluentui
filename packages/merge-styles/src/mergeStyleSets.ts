@@ -8,7 +8,7 @@ import { IStyle } from './IStyle';
  *
  * @public
  */
-export function mergeStyleSets<T extends {}>(
+export function mergeStyleSets<T extends object>(
   ...cssSets: T[]
 ): {[P in keyof T]?: string } {
   const classNameSet: {[P in keyof T]?: string } = {};

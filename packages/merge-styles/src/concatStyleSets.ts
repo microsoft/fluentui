@@ -4,8 +4,9 @@ import { IStyleSet } from './IStyleSet';
  * Combine a set of styles together (but does not register css classes.)
  * @public
  */
-export function concatStyleSets<T extends {}>(...args: (T | false | null | undefined)[]): T {
-  const mergedSet: IStyleSet = {};
+export function concatStyleSets<T extends object>(...args: (T | false | null | undefined)[]): T {
+  // tslint:disable-next-line:no-any
+  const mergedSet: T = {} as any;
 
   for (const currentSet of args) {
     if (currentSet) {
@@ -27,5 +28,5 @@ export function concatStyleSets<T extends {}>(...args: (T | false | null | undef
     }
   }
 
-  return mergedSet as T;
+  return mergedSet;
 }

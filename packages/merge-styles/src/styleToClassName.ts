@@ -19,21 +19,21 @@ function toRuleEntry(name: string, value: string): string | undefined {
   }
 
   // Kebab case the rule.
-  const rules: string[] = [
+  const rulePair: string[] = [
     name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
     value
   ];
 
+  // Apply transforms.
+  provideUnits(rulePair);
+  rtlifyRules(rulePair);
+  prefixRules(rulePair);
+
   const ruleEntries: string[] = [];
 
-  // Apply transforms.
-  provideUnits(rules);
-  rtlifyRules(rules);
-  prefixRules(rules);
-
   // Stringify the rules.
-  for (let i = 0; i < rules.length; i += 2) {
-    ruleEntries.push(rules[i], ':', rules[i + 1], ';');
+  for (let i = 0; i < rulePair.length; i += 2) {
+    ruleEntries.push(rulePair[i], ':', rulePair[i + 1], ';');
   }
 
   return ruleEntries.join('');
@@ -125,8 +125,7 @@ function serializeRules(rules: Map<string, IStyle>): string | undefined {
     for (const propName in ruleEntries) {
       if (ruleEntries.hasOwnProperty(propName)) {
         hasProps = true;
-        serialized.push(propName);
-        serialized.push(ruleEntries[propName]);
+        serialized.push(propName, ruleEntries[propName]);
       }
     }
   });

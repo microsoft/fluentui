@@ -1,12 +1,10 @@
 import { concatStyleSets } from './concatStyleSets';
-
+import { IStyle } from './IStyle';
 const { expect } = chai;
 
 describe('concatStyleSets', () => {
   it('can concat style sets', () => {
-
-    // tslint:disable-next-line:no-any
-    const result = concatStyleSets<any>(
+    const result = concatStyleSets<{ root?: IStyle, a?: IStyle, b?: IStyle }>(
       {
         root: { background: 'red' },
         a: { background: 'green' }
