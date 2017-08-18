@@ -6,9 +6,11 @@ The library was built for speed and size; the entire package is 2.62k gzipped. I
 
 The basic idea is to provide a method which can take in one or more style objects css styling javascript objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
 
-This has a number of benefits over traditional build time staticly produced css:
+## Why not static solutions like scss?
 
-* Only register classes that are needed, when they're needed, reducing the overall selector count.
+Defining rules at runtime has a number of benefits over traditional build time staticly produced css:
+
+* Only register classes that are needed, when they're needed, reducing the overall selector count and improving TTG.
 
 * Dynamically create new class permutations based on contextual theming requirements. (Use a different theme inside of a DIV without downloading multiple copies of the css rule definitions.)
 
@@ -16,7 +18,7 @@ This has a number of benefits over traditional build time staticly produced css:
 
 * Allow control libraries to merge customized styling in with their rules, avoiding complexities like css selector specificity.
 
-* Simplify RTL processing; lefts become rights in RTL, in the actual rules. No complexity like `html[dir=rtl]` prefixes necessary, which alleviates unexpected specificity bugs.
+* Simplify RTL processing; lefts become rights in RTL, in the actual rules. No complexity like `html[dir=rtl]` prefixes necessary, which alleviates unexpected specificity bugs. (You can use `/* noflip */` comments to avoid flipping if needed.)
 
 * Reduce bundle size. Automatically handles vendor prefixing, unit providing, RTL flipping, and margin/padding expansion (e.g. margin will automatically expand out to margin TRBL, so that we avoid specificity problems when merging things together.)
 
@@ -24,19 +26,23 @@ This has a number of benefits over traditional build time staticly produced css:
 
 * TypeScript type safety; spell "background" wrong and get build breaks.
 
-The api surfaces consists of TypeScript interfaces and a few important methods:
+## What tradeoffs are there? Are there downsides to using JavaScript to process styling?
 
-`mergeStyles(..args[]` - Takes in one or more style objects, merges them in the right order, and produces a single css class name which can be injected into any component.
+In static solutions, there is very little runtime evaluation required; everything is
 
-`mergeStyleSet` - Takes in one or more style set objects, each consisting of a set of areas, each which will produce a class name. Using this is analogous to calling mergeStyles for each property in the object, but ensures we maintain the set ordering when multiple style sets are merged.
+# API
 
-`concatStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
+The api surfaces consists of 3 methods and a handful of interfaces:
+
+`mergeStyles(..args[]: IStyle[]): string` - Takes in one or more style objects, merges them in the right order, and produces a single css class name which can be injected into any component.
+
+`mergeStyleSet(...args[]: IStyleSet[]): { [key: string]: string }` - Takes in one or more style set objects, each consisting of a set of areas, each which will produce a class name. Using this is analogous to calling mergeStyles for each property in the object, but ensures we maintain the set ordering when multiple style sets are merged.
+
+`concatStyleSet(...args[]: IStyleSet[]): IStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
 
 ## Vocabulary
 
-Let's clear up a few definitions before we start;
-
-A *style object* represents the collection of css rules, except that the names are camelCased rather than kebab-cased. Example:
+A **style object** represents the collection of css rules, except that the names are camelCased rather than kebab-cased. Example:
 
 ```tsx
 let style = {
@@ -45,7 +51,7 @@ let style = {
 };
 ```
 
-Additionally, *style objects* can contain selectors under the `selectors` property:
+Additionally, **style objects** can contain selectors under the `selectors` property:
 
 ```tsx
 let style = {
@@ -60,7 +66,7 @@ let style = {
 };
 ```
 
-A *style set* represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would defint this in a *style set*.
+A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would defint this in a **style set**.
 
 ```tsx
 let styleSet = {
@@ -71,7 +77,7 @@ let styleSet = {
 
 ## Basic usage
 
-When building a component, you will need a *style set* map of class names to inject into your elements' class attributes.
+When building a component, you will need a **style set** map of class names to inject into your elements' class attributes.
 
 The recommended pattern is to provide the classnames in a separate function, typically in a separate file `ComponentName.classNames.ts`.
 
@@ -107,7 +113,7 @@ export const getClassNames = () => {
 };
 ```
 
-The class map can then be used in a component:
+The class map can then be used in a component. The example below illustrates a React component, but the library can be used with any framework.
 
 ```tsx
 import { getClassNames } from './MyComponent.classNames';
