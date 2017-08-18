@@ -155,7 +155,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
-              { this.renderItems() }
+              <span role={ 'list' }>
+                { this.renderItems() }
+              </span>
               <BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
