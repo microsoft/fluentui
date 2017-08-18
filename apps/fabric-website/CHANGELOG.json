@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.7.1",
+      "tag": "@uifabric/fabric-website_v4.7.1",
+      "date": "Fri, 18 Aug 2017 16:32:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "14f335d0ca77f09cc9422c1809121e527153c430",
+            "comment": "Minor css usage cleanup."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.34.0 <5.0.0` to `>=4.35.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.0",
       "tag": "@uifabric/fabric-website_v4.7.0",
       "date": "Fri, 11 Aug 2017 19:38:35 GMT",
