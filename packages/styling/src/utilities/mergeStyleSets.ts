@@ -5,8 +5,8 @@ import { mergeStyles } from './mergeStyles';
  * like Object.assign in that it layers them in the argument order specified, but will
  * not mutate them and will return the merged result.
  */
-export function mergeStyleSets<T>(...args: T[]): T {
-  const mergedRules: T = {} as T;
+export function mergeStyleSets<T>(...args: T[]): {[key in keyof T]?: string } {
+  const mergedRules: {[key in keyof T]?: string } = {};
   // tslint:disable-next-line:no-any
   const setStyles: any = {};
 
