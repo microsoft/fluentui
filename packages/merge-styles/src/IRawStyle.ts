@@ -11,6 +11,9 @@ export type ICSSLengthRule = number | string;
 
 export type IFontWeight = ICSSRule | 'normal' | 'bold' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
+/**
+ * The base font style.
+ */
 export interface IRawFontStyle {
   /**
    * The font property is shorthand that allows you to do one of two things: you can
@@ -115,6 +118,8 @@ export interface IRawFontStyle {
 }
 
 /**
+ * Font face definition.
+ *
  * @public
  */
 export interface IFontFace extends IRawFontStyle {
@@ -130,10 +135,15 @@ export interface IFontFace extends IRawFontStyle {
    */
   unicodeRange?: ICSSRule | string;
 
+  /**
+   * Feature settings for the font.
+   */
   fontFeatureSettings?: string;
 }
 
 /**
+ * All raw style properties.
+ *
  * @public
  */
 export interface IRawStyle extends IRawFontStyle {
@@ -173,6 +183,13 @@ export interface IRawStyle extends IRawFontStyle {
    */
   alignmentAdjust?: ICSSRule | string;
 
+  /**
+   * Specifies how an object is aligned with respect to its parent. This property specifies
+   * which baseline of this element is to be aligned with the corresponding baseline of the
+   * parent. For example, this allows alphabetic baselines in Roman text to stay aligned
+   * across font size changes. It defaults to the baseline with the same name as the computed
+   * value of the alignment-baseline property.
+   */
   alignmentBaseline?: ICSSRule | string;
 
   /**
@@ -192,7 +209,8 @@ export interface IRawStyle extends IRawFontStyle {
   animationDuration?: ICSSRule | string;
 
   /**
-   *
+   * The animation-fill-mode CSS property specifies how a CSS animation should apply
+   * styles to its target before and after its execution.
    */
   animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both';
 
@@ -259,6 +277,9 @@ export interface IRawStyle extends IRawFontStyle {
    */
   backgroundColor?: ICSSRule | string;
 
+  /**
+   * Sets a compositing style for background images and colors.
+   */
   backgroundComposite?: ICSSRule | string;
 
   /**
@@ -282,16 +303,6 @@ export interface IRawStyle extends IRawFontStyle {
    * have been sized and positioned
    */
   backgroundRepeat?: ICSSRule | string;
-
-  /**
-   * Obsolete - spec retired, not implemented.
-   */
-  baselineShift?: ICSSRule | string;
-
-  /**
-   * Non standard. Sets or retrieves the location of the Dynamic HTML (DHTML) behavior.
-   */
-  behavior?: ICSSRule | string;
 
   /**
    * Shorthand property that defines the different properties of all four sides of an
@@ -512,53 +523,11 @@ export interface IRawStyle extends IRawFontStyle {
   bottom?: ICSSRule | number | string;
 
   /**
-   * Obsolete.
-   */
-  boxAlign?: ICSSRule | string;
-
-  /**
    * Breaks a box into fragments creating new borders, padding and repeating backgrounds
    * or lets it stay as a continuous box on a page break, column break, or, for inline
    * elements, at a line break.
    */
   boxDecorationBreak?: ICSSRule | string;
-
-  /**
-   * Deprecated
-   */
-  boxDirection?: ICSSRule | string;
-
-  /**
-   * Do not use. This property has been replaced by the flex-wrap property.
-   * Gets or sets a value that specifies the direction to add successive rows or columns
-   * when the value of box-lines is set to multiple.
-   */
-  boxLineProgression?: ICSSRule | string;
-
-  /**
-   * Do not use. This property has been replaced by the flex-wrap property.
-   * Gets or sets a value that specifies whether child elements wrap onto multiple lines
-   * or columns based on the space available in the object.
-   */
-  boxLines?: ICSSRule | string;
-
-  /**
-   * Do not use. This property has been replaced by flex-order.
-   * Specifies the ordinal group that a child element of the object belongs to. This
-   * ordinal value identifies the display order (along the axis defined by the box-orient
-   * property) for the group.
-   */
-  boxOrdinalGroup?: ICSSRule | string;
-
-  /**
-   * Deprecated.
-   */
-  boxFlex?: ICSSRule | number;
-
-  /**
-   * Deprecated.
-   */
-  boxFlexGroup?: ICSSRule | number;
 
   /**
    * Cast a drop shadow from the frame of almost any element.
@@ -596,13 +565,6 @@ export interface IRawStyle extends IRawFontStyle {
    * positioned below the floating elements that precede it in the markup.
    */
   clear?: ICSSRule | string;
-
-  /**
-   * Deprecated; see clip-path.
-   * Lets you specify the dimensions of an absolutely positioned element that should be
-   * visible, and the element is clipped into this shape, and displayed.
-   */
-  clip?: ICSSRule | string;
 
   /**
    * Clipping crops an graphic, so that only a portion of the graphic is rendered, or
@@ -761,13 +723,6 @@ export interface IRawStyle extends IRawFontStyle {
   flex?: ICSSRule | number | string;
 
   /**
-   * Obsolete, do not use. This property has been renamed to align-items.
-   * Specifies the alignment (perpendicular to the layout axis defined by the
-   * flex-direction property) of child elements of the object.
-   */
-  flexAlign?: ICSSRule | string;
-
-  /**
    * The flex-basis CSS property describes the initial main size of the flex item before
    * any free space is distributed according to the flex factors described in the flex
    * property (flex-grow and flex-shrink).
@@ -791,20 +746,6 @@ export interface IRawStyle extends IRawFontStyle {
    * See CSS flex-grow property https://drafts.csswg.org/css-flexbox-1/#flex-grow-property
    */
   flexGrow?: ICSSRule | number;
-
-  /**
-   * Do not use. This property has been renamed to align-self
-   * Specifies the alignment (perpendicular to the layout axis defined by flex-direction) of child elements of the object.
-   */
-  flexItemAlign?: ICSSRule | string;
-
-  /**
-   * Do not use. This property has been renamed to align-content.
-   * Specifies how a flexbox's lines align within the flexbox when there is extra space
-   *  along the axis that is perpendicular to the axis defined by the flex-direction
-   *  property.
-   */
-  flexLinePack?: ICSSRule | string;
 
   /**
    * Gets or sets a value that specifies the ordinal group that a flexbox element
@@ -895,8 +836,6 @@ export interface IRawStyle extends IRawFontStyle {
    */
   gridRowPosition?: ICSSRule | string;
 
-  gridRowSpan?: ICSSRule | string;
-
   /**
    * Specifies named grid areas which are not associated with any particular grid item,
    * but can be referenced from the grid-placement properties. The syntax of the
@@ -951,8 +890,6 @@ export interface IRawStyle extends IRawFontStyle {
    */
   hyphens?: ICSSRule | string;
 
-  imeMode?: ICSSRule | string;
-
   /**
    * Defines how the browser distributes space between and around flex items
    * along the main-axis of their container.
@@ -960,16 +897,6 @@ export interface IRawStyle extends IRawFontStyle {
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
   justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
-
-  layoutGrid?: ICSSRule | string;
-
-  layoutGridChar?: ICSSRule | string;
-
-  layoutGridLine?: ICSSRule | string;
-
-  layoutGridMode?: ICSSRule | string;
-
-  layoutGridType?: ICSSRule | string;
 
   /**
    * Sets the left position of an element relative to the nearest anscestor that is set
@@ -982,14 +909,6 @@ export interface IRawStyle extends IRawFontStyle {
    * characters.
    */
   letterSpacing?: ICSSRule | string;
-
-  /**
-   * Deprecated. Gets or sets line-breaking rules for text in selected languages such as
-   * Japanese, Chinese, and Korean.
-   */
-  lineBreak?: ICSSRule | string;
-
-  lineClamp?: ICSSRule | number;
 
   /**
    * Specifies the height of an inline block level element.
@@ -1358,14 +1277,6 @@ export interface IRawStyle extends IRawFontStyle {
   position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
 
   /**
-   * Obsolete: unsupported.
-   * This property determines whether or not a full-width punctuation mark character
-   * should be trimmed if it appears at the beginning of a line, so that its "ink" lines
-   * up with the first glyph in the line above and below.
-   */
-  punctuationTrim?: ICSSRule | string;
-
-  /**
    * Sets the type of quotation marks for embedded quotations.
    */
   quotes?: ICSSRule | string;
@@ -1398,10 +1309,6 @@ export interface IRawStyle extends IRawFontStyle {
    * element.
    */
   right?: ICSSRule | number | string;
-
-  rubyAlign?: ICSSRule | string;
-
-  rubyPosition?: ICSSRule | string;
 
   /**
    * Defines the alpha channel threshold used to extract a shape from an image. Can be
@@ -1502,12 +1409,6 @@ export interface IRawStyle extends IRawFontStyle {
    */
   textDecorationLine?: ICSSRule | string;
 
-  textDecorationLineThrough?: ICSSRule | string;
-
-  textDecorationNone?: ICSSRule | string;
-
-  textDecorationOverline?: ICSSRule | string;
-
   /**
    * Specifies what parts of an element’s content are skipped over when applying any
    * text decoration.
@@ -1520,8 +1421,6 @@ export interface IRawStyle extends IRawFontStyle {
    * the border-style-properties.
    */
   textDecorationStyle?: ICSSRule | string;
-
-  textDecorationUnderline?: ICSSRule | string;
 
   /**
    * The text-emphasis property will apply special emphasis marks to the elements text.
@@ -1558,41 +1457,6 @@ export interface IRawStyle extends IRawFontStyle {
    * line and is in respect to the left edge of the containing block box.
    */
   textIndent?: ICSSRule | string;
-
-  textJustifyTrim?: ICSSRule | string;
-
-  textKashidaSpace?: ICSSRule | string;
-
-  /**
-   * The text-line-through property is a shorthand property for text-line-through-style,
-   * text-line-through-color and text-line-through-mode. (Considered obsolete; use
-   * text-decoration instead.)
-   */
-  textLineThrough?: ICSSRule | string;
-
-  /**
-   * Specifies the line colors for the line-through text decoration.
-   * (Considered obsolete; use text-decoration-color instead.)
-   */
-  textLineThroughColor?: ICSSRule | string;
-
-  /**
-   * Sets the mode for the line-through text decoration, determining whether the text
-   * decoration affects the space characters or not. (Considered obsolete; use
-   * text-decoration-skip instead.)
-   */
-  textLineThroughMode?: ICSSRule | string;
-
-  /**
-   * Specifies the line style for line-through text decoration.
-   * (Considered obsolete; use text-decoration-style instead.)
-   */
-  textLineThroughStyle?: ICSSRule | string;
-
-  /**
-   * Specifies the line width for the line-through text decoration.
-   */
-  textLineThroughWidth?: ICSSRule | string;
 
   /**
    * The text-overflow shorthand CSS property determines how overflowed content that is
@@ -1634,11 +1498,6 @@ export interface IRawStyle extends IRawFontStyle {
    * optimize when rendering text. Options are: legibility, speed or geometric precision.
    */
   textRendering?: ICSSRule | string;
-
-  /**
-   * Obsolete: unsupported.
-   */
-  textScript?: ICSSRule | string;
 
   /**
    * The CSS text-shadow property applies one or more drop shadows to the text and
@@ -1838,11 +1697,6 @@ export interface IRawStyle extends IRawFontStyle {
   whiteSpace?: ICSSRule | string;
 
   /**
-   * Obsolete: unsupported.
-   */
-  whiteSpaceTreatment?: ICSSRule | string;
-
-  /**
    * In paged media, this property defines the mimimum number of lines that must be left
    * at the top of the second page.
    * See CSS 3 orphans, widows properties
@@ -1888,12 +1742,6 @@ export interface IRawStyle extends IRawFontStyle {
    * margin.
    */
   wrapMargin?: ICSSRule | string;
-
-  /**
-   * Obsolete and unsupported. Do not use.
-   * This CSS property controls the text when it reaches the end of the block in which it is enclosed.
-   */
-  wrapOption?: ICSSRule | string;
 
   /**
    * writing-mode specifies if lines of text are laid out horizontally or vertically,

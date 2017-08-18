@@ -6,7 +6,14 @@ import { IRawStyle } from './IRawStyle';
  * @public
  */
 export interface IExtendedRawStyle extends IRawStyle {
+  /**
+   * Display name for the style.
+   */
   displayName?: string;
+
+  /**
+   * Custom selectors for the style.
+   */
   selectors?: {
     [key: string]: IStyle;
   };

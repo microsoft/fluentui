@@ -4,6 +4,10 @@ export {
 } from './IStyle';
 
 export {
+  IStyleSet
+} from './IStyleSet';
+
+export {
   IRawStyle,
   IFontFace,
   IFontWeight
@@ -30,5 +34,7 @@ export {
 } from './keyframes';
 
 export {
+  IStyleSheetConfig,
+  InjectionMode,
   Stylesheet
 } from './Stylesheet';

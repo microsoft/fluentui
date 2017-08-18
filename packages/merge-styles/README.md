@@ -1,6 +1,6 @@
-# [Office UI Fabric - merge-styles](http://dev.office.com/fabric)
+# [merge-styles](http://dev.office.com/fabric)
 
-The merge-styles library provides a number of utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css rules, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
+The `merge-styles` library provides a number of utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css rules, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
 
 The library was built for speed and size; the entire package is 2.7k gzipped.
 

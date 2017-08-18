@@ -1,11 +1,31 @@
 import { IStyle } from './IStyle';
 
+/**
+ * Injection mode for the stylesheet.
+ *
+ * @public
+ */
 export const enum InjectionMode {
+  /**
+   * Avoids style injection, use getRules() to read the styles.
+   */
   none = 0,
+
+  /**
+   * Inserts rules using the insertRule api.
+   */
   insertNode = 1
 }
 
+/**
+ * Stylesheet config.
+ *
+ * @public
+ */
 export interface IStyleSheetConfig {
+  /**
+   * Injection mode for how rules are inserted.
+   */
   injectionMode?: InjectionMode;
 }
 
@@ -32,6 +52,9 @@ export class Stylesheet {
   // tslint:disable-next-line:no-any
   private _classNameToArgs: { [key: string]: any };
 
+  /**
+   * Gets the singleton instance.
+   */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
     const win: any = typeof window !== 'undefined' ? window : {};
@@ -54,6 +77,9 @@ export class Stylesheet {
     this.reset();
   }
 
+  /**
+   * Configures the stylesheet.
+   */
   public setConfig(config?: IStyleSheetConfig): void {
     this._config = {
       ...this._config,
@@ -61,25 +87,45 @@ export class Stylesheet {
     };
   }
 
+  /**
+   * Generates a unique classname.
+   *
+   * @param displayName - Optional value to use as a prefix.
+   */
   public getClassName(displayName?: string): string {
     const prefix = displayName || 'css';
 
     return `${prefix}-${this._counter++}`;
   }
 
-  public classNameFromKey(key: string): string | undefined {
-    return this._keyToClassName[key];
-  }
-
+  /**
+   * Used internally to cache information about a class which was
+   * registered with the stylesheet.
+   */
   public cacheClassName(className: string, key: string, args: IStyle[]): void {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = args;
   }
 
+  /**
+   * Gets the appropriate classname given a key which was previously
+   * registered using cacheClassName.
+   */
+  public classNameFromKey(key: string): string | undefined {
+    return this._keyToClassName[key];
+  }
+
+  /**
+   * Gets the arguments associated with a given classname which was
+   * previously registered using cacheClassName.
+   */
   public argsFromClassName(className: string): IStyle[] | undefined {
     return this._classNameToArgs[className];
   }
 
+  /**
+   * Inserts a css rule into the stylesheet.
+   */
   public insertRule(
     rule: string
   ): void {
@@ -104,10 +150,18 @@ export class Stylesheet {
     }
   }
 
+  /**
+   * Gets all rules registered with the stylesheet; only valid when
+   * using InsertionMode.none.
+   */
   public getRules(): string {
     return (this._rules.join('') || '') + (this._rulesToInsert.join('') || '');
   }
 
+  /**
+   * Resets the internal state of the stylesheet. Only used in server
+   * rendered scenarios where we're using InsertionMode.none.
+   */
   public reset(): void {
     this._rules = [];
     this._rulesToInsert = [];

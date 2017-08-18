@@ -6,34 +6,35 @@ export function fontFace(font: IFontFace): void;
 
 // @public
 interface IExtendedRawStyle extends IRawStyle {
-  // (undocumented)
   displayName?: string;
-  // (undocumented)
   selectors?: {
     [ key: string ]: IStyle;
   }
 }
 
-// @public (undocumented)
+// @public
 interface IFontFace extends IRawFontStyle {
-  // (undocumented)
   fontFeatureSettings?: string;
   src?: string;
   unicodeRange?: ICSSRule | string;
 }
 
-// @public (undocumented)
+// @public
+enum InjectionMode {
+  insertNode = 1,
+  none = 0
+}
+
+// @public
 interface IRawStyle extends IRawFontStyle {
   alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
   alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   alignmentAdjust?: ICSSRule | string;
-  // (undocumented)
   alignmentBaseline?: ICSSRule | string;
   alignSelf?: ICSSRule | 'auto' | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
   animationDelay?: ICSSRule | string;
   animationDirection?: ICSSRule | string;
   animationDuration?: ICSSRule | string;
-  // (undocumented)
   animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both';
   animationIterationCount?: ICSSRule | string;
   animationName?: ICSSRule | string;
@@ -45,14 +46,11 @@ interface IRawStyle extends IRawFontStyle {
   backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local';
   backgroundBlendMode?: ICSSRule | string;
   backgroundColor?: ICSSRule | string;
-  // (undocumented)
   backgroundComposite?: ICSSRule | string;
   backgroundImage?: ICSSRule | string;
   backgroundOrigin?: ICSSRule | string;
   backgroundPosition?: ICSSRule | string;
   backgroundRepeat?: ICSSRule | string;
-  baselineShift?: ICSSRule | string;
-  behavior?: ICSSRule | string;
   border?: ICSSRule | 0 | string;
   borderBottom?: ICSSRule | number | string;
   borderBottomColor?: ICSSRule | string;
@@ -84,23 +82,13 @@ interface IRawStyle extends IRawFontStyle {
   borderTopWidth?: ICSSRule | string;
   borderWidth?: ICSSRule | number | string;
   bottom?: ICSSRule | number | string;
-  // (undocumented)
-  boxAlign?: ICSSRule | string;
   boxDecorationBreak?: ICSSRule | string;
-  // (undocumented)
-  boxDirection?: ICSSRule | string;
-  boxFlex?: ICSSRule | number;
-  boxFlexGroup?: ICSSRule | number;
-  boxLineProgression?: ICSSRule | string;
-  boxLines?: ICSSRule | string;
-  boxOrdinalGroup?: ICSSRule | string;
   boxShadow?: ICSSRule | string;
   boxSizing?: ICSSRule | 'border-box' | 'content-box';
   breakAfter?: ICSSRule | string;
   breakBefore?: ICSSRule | string;
   breakInside?: ICSSRule | string;
   clear?: ICSSRule | string;
-  clip?: ICSSRule | string;
   clipRule?: ICSSRule | string;
   color?: ICSSRule | string;
   columnCount?: ICSSRule | number | 'auto';
@@ -125,13 +113,10 @@ interface IRawStyle extends IRawFontStyle {
   fillRule?: ICSSRule | string;
   filter?: ICSSRule | string;
   flex?: ICSSRule | number | string;
-  flexAlign?: ICSSRule | string;
   flexBasis?: ICSSRule | string;
   flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse';
   flexFlow?: ICSSRule | string;
   flexGrow?: ICSSRule | number;
-  flexItemAlign?: ICSSRule | string;
-  flexLinePack?: ICSSRule | string;
   flexOrder?: ICSSRule | string;
   flexShrink?: ICSSRule | number;
   flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse';
@@ -144,8 +129,6 @@ interface IRawStyle extends IRawFontStyle {
   gridRow?: ICSSRule | string;
   gridRowEnd?: ICSSRule | string;
   gridRowPosition?: ICSSRule | string;
-  // (undocumented)
-  gridRowSpan?: ICSSRule | string;
   gridTemplateAreas?: ICSSRule | string;
   gridTemplateColumns?: ICSSRule | string;
   gridTemplateRows?: ICSSRule | string;
@@ -154,24 +137,9 @@ interface IRawStyle extends IRawFontStyle {
   hyphenateLimitLines?: ICSSRule | string;
   hyphenateLimitZone?: ICSSRule | string;
   hyphens?: ICSSRule | string;
-  // (undocumented)
-  imeMode?: ICSSRule | string;
   justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
-  // (undocumented)
-  layoutGrid?: ICSSRule | string;
-  // (undocumented)
-  layoutGridChar?: ICSSRule | string;
-  // (undocumented)
-  layoutGridLine?: ICSSRule | string;
-  // (undocumented)
-  layoutGridMode?: ICSSRule | string;
-  // (undocumented)
-  layoutGridType?: ICSSRule | string;
   left?: ICSSRule | number | string;
   letterSpacing?: ICSSRule | string;
-  lineBreak?: ICSSRule | string;
-  // (undocumented)
-  lineClamp?: ICSSRule | number;
   lineHeight?: ICSSRule | 'normal' | number | ICSSLengthRule | ICSSPercentageRule;
   listStyle?: ICSSRule | string;
   listStyleImage?: ICSSRule | string;
@@ -224,16 +192,11 @@ interface IRawStyle extends IRawFontStyle {
   perspectiveOrigin?: ICSSRule | string;
   pointerEvents?: ICSSRule | string;
   position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
-  punctuationTrim?: ICSSRule | string;
   quotes?: ICSSRule | string;
   regionFragment?: ICSSRule | string;
   restAfter?: ICSSRule | string;
   restBefore?: ICSSRule | string;
   right?: ICSSRule | number | string;
-  // (undocumented)
-  rubyAlign?: ICSSRule | string;
-  // (undocumented)
-  rubyPosition?: ICSSRule | string;
   shapeImageThreshold?: ICSSRule | string;
   shapeInside?: ICSSRule | string;
   shapeMargin?: ICSSRule | string;
@@ -249,30 +212,13 @@ interface IRawStyle extends IRawFontStyle {
   textDecoration?: ICSSRule | string;
   textDecorationColor?: ICSSRule | string;
   textDecorationLine?: ICSSRule | string;
-  // (undocumented)
-  textDecorationLineThrough?: ICSSRule | string;
-  // (undocumented)
-  textDecorationNone?: ICSSRule | string;
-  // (undocumented)
-  textDecorationOverline?: ICSSRule | string;
   textDecorationSkip?: ICSSRule | string;
   textDecorationStyle?: ICSSRule | string;
-  // (undocumented)
-  textDecorationUnderline?: ICSSRule | string;
   textEmphasis?: ICSSRule | string;
   textEmphasisColor?: ICSSRule | string;
   textEmphasisStyle?: ICSSRule | string;
   textHeight?: ICSSRule | string;
   textIndent?: ICSSRule | string;
-  // (undocumented)
-  textJustifyTrim?: ICSSRule | string;
-  // (undocumented)
-  textKashidaSpace?: ICSSRule | string;
-  textLineThrough?: ICSSRule | string;
-  textLineThroughColor?: ICSSRule | string;
-  textLineThroughMode?: ICSSRule | string;
-  textLineThroughStyle?: ICSSRule | string;
-  textLineThroughWidth?: ICSSRule | string;
   textOverflow?: ICSSRule | string;
   textOverline?: ICSSRule | string;
   textOverlineColor?: ICSSRule | string;
@@ -280,7 +226,6 @@ interface IRawStyle extends IRawFontStyle {
   textOverlineStyle?: ICSSRule | string;
   textOverlineWidth?: ICSSRule | string;
   textRendering?: ICSSRule | string;
-  textScript?: ICSSRule | string;
   textShadow?: ICSSRule | string;
   textTransform?: ICSSRule | string;
   textUnderlinePosition?: ICSSRule | string;
@@ -312,7 +257,6 @@ interface IRawStyle extends IRawFontStyle {
   voiceVolume?: ICSSRule | string;
   WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
   whiteSpace?: ICSSRule | string;
-  whiteSpaceTreatment?: ICSSRule | string;
   widows?: ICSSRule | number;
   width?: ICSSRule | string;
   wordBreak?: ICSSRule | string;
@@ -320,10 +264,14 @@ interface IRawStyle extends IRawFontStyle {
   wordWrap?: ICSSRule | string;
   wrapFlow?: ICSSRule | string;
   wrapMargin?: ICSSRule | string;
-  wrapOption?: ICSSRule | string;
   writingMode?: ICSSRule | string;
   zIndex?: ICSSRule | 'auto' | number;
   zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;
+}
+
+// @public
+interface IStyleSheetConfig {
+  injectionMode?: InjectionMode;
 }
 
 // @public
@@ -337,29 +285,19 @@ export function mergeStyleSets < T extends object >(...cssSets: T[]): {[P in key
 
 // @public
 class Stylesheet {
-  // WARNING: The type "IStyleSheetConfig" needs to be exported by the package (e.g. added to index.ts)
   constructor(config?: IStyleSheetConfig);
-  // (undocumented)
   public argsFromClassName(className: string): IStyle[] | undefined;
-  // (undocumented)
   public cacheClassName(className: string, key: string, args: IStyle[]): void;
-  // (undocumented)
   public classNameFromKey(key: string): string | undefined;
-  // (undocumented)
   public getClassName(displayName?: string): string;
-  // (undocumented)
   public static getInstance(): Stylesheet;
-  // (undocumented)
   public getRules(): string;
-  // (undocumented)
   public insertRule(rule: string): void;
-  // (undocumented)
   public reset(): void;
-  // WARNING: The type "IStyleSheetConfig" needs to be exported by the package (e.g. added to index.ts)
-  // (undocumented)
   public setConfig(config?: IStyleSheetConfig): void;
 }
 
 // WARNING: Unsupported export: IStyle
+// WARNING: Unsupported export: IStyleSet
 // WARNING: Unsupported export: IFontWeight
 // (No packageDescription for this package)
