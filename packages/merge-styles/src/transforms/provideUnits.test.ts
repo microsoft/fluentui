@@ -43,6 +43,17 @@ describe('provideUnits', () => {
         property + 'Bottom', '1px'
       ]);
     });
-
   });
+
+  it('ignores opacity', () => {
+    const testSet = [
+      'opacity',
+      0
+    ];
+
+    provideUnits(testSet);
+
+    expect(testSet).eql(['opacity', 0]);
+  });
+
 });
