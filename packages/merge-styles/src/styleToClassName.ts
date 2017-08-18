@@ -1,4 +1,3 @@
-import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
