@@ -6,29 +6,11 @@ import { TestImages } from '../../../common/TestImages';
 import { Icon } from '../../../Icon';
 import { Link } from '../../../Link';
 
-export class ActivityItemPersonaExample extends React.Component<React.Props<ActivityItemPersonaExample>, {}> {
-  public render() {
-    let activityExampleList: Array<JSX.Element> = [];
-    activityItemExamples.forEach((item) => {
-      let props = item;
-      activityExampleList.push(
-        <ActivityItem {...props} key={ item.key } className={ 'ms-activityItem-exampleRoot' } />
-      );
-    });
-
-    return (
-      <div>
-        { activityExampleList }
-      </div>
-    );
-  }
-}
-
 const activityItemExamples = [
   {
     key: 1,
     activityDescription: [
-      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >Jack Howden</Link>,
+      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >Jack Howden</Link>,
       <span key={ 2 }> renamed </span>,
       <span key={ 3 } className={ 'ms-activityItem-nameText' }>DocumentTitle.docx</span>
     ],
@@ -43,11 +25,11 @@ const activityItemExamples = [
   {
     key: 2,
     activityDescription: [
-      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >Javiera Márquez</Link>,
+      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >Javiera Márquez</Link>,
       <span key={ 2 }> and </span>,
-      <Link key={ 3 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >Amelia Povalіy</Link>,
+      <Link key={ 3 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >Amelia Povalіy</Link>,
       <span key={ 4 }> edited </span>,
-      <Link key={ 5 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A document was clicked.') } } >SpreadsheetTitle.xlsx</Link>
+      <Link key={ 5 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A document was clicked.'); } } >SpreadsheetTitle.xlsx</Link>
     ],
     activityPersonas: [
       {
@@ -63,9 +45,9 @@ const activityItemExamples = [
   {
     key: 3,
     activityDescription: [
-      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >Robert Larsson</Link>,
+      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >Robert Larsson</Link>,
       <span key={ 2 }> and </span>,
-      <Link key={ 3 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >2 others</Link>,
+      <Link key={ 3 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >2 others</Link>,
       <span key={ 4 }> commented </span>
     ],
     activityPersonas: [
@@ -85,9 +67,9 @@ const activityItemExamples = [
   {
     key: 4,
     activityDescription: [
-      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >Jin Cheng</Link>,
+      <Link key={ 1 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >Jin Cheng</Link>,
       <span key={ 2 }> and </span>,
-      <Link key={ 3 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.') } } >5 others</Link>,
+      <Link key={ 3 } className={ 'ms-activityItem-nameText' } onClick={ () => { alert('A name was clicked.'); } } >5 others</Link>,
       <span key={ 4 }> edited this file</span>
     ],
     activityPersonas: [
@@ -115,3 +97,21 @@ const activityItemExamples = [
     timeStamp: 'August 3, 2017'
   }
 ];
+
+export class ActivityItemPersonaExample extends React.Component<React.Props<ActivityItemPersonaExample>, {}> {
+  public render() {
+    let activityExampleList: Array<JSX.Element> = [];
+    activityItemExamples.forEach((item) => {
+      let props = item;
+      activityExampleList.push(
+        <ActivityItem {...props} key={ item.key } className={ 'ms-activityItem-exampleRoot' } />
+      );
+    });
+
+    return (
+      <div>
+        { activityExampleList }
+      </div>
+    );
+  }
+}

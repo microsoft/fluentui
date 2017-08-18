@@ -5,24 +5,6 @@ import { ActivityItem } from '../ActivityItem';
 import { TestImages } from '../../../common/TestImages';
 import { Icon } from '../../../Icon';
 
-export class ActivityItemCompactExample extends React.Component<React.Props<ActivityItemCompactExample>, {}> {
-  public render() {
-    let activityExampleList: Array<JSX.Element> = [];
-    activityItemExamples.forEach((item) => {
-      let props = item;
-      activityExampleList.push(
-        <ActivityItem {...props} key={ item.key } className={ 'ms-activityItem-exampleRoot' } />
-      );
-    });
-
-    return (
-      <div>
-        { activityExampleList }
-      </div>
-    );
-  }
-}
-
 const activityItemExamples = [
   {
     key: 1,
@@ -78,3 +60,21 @@ const activityItemExamples = [
     isCompact: true
   }
 ];
+
+export class ActivityItemCompactExample extends React.Component<React.Props<ActivityItemCompactExample>, {}> {
+  public render() {
+    let activityExampleList: Array<JSX.Element> = [];
+    activityItemExamples.forEach((item) => {
+      let props = item;
+      activityExampleList.push(
+        <ActivityItem {...props} key={ item.key } className={ 'ms-activityItem-exampleRoot' } />
+      );
+    });
+
+    return (
+      <div>
+        { activityExampleList }
+      </div>
+    );
+  }
+}
