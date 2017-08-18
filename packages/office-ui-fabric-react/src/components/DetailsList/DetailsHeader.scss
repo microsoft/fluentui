@@ -11,6 +11,7 @@ $isPaddedMargin: 24px;
 
 .root {
   display: inline-block;
+  background: $headerBackgroundColor;
   position: relative;
   min-width: 100%;
   vertical-align: top;
@@ -35,7 +36,6 @@ $isPaddedMargin: 24px;
 
 .cell {
   @include ms-font-s;
-  background: $headerBackgroundColor;
   color: $headerForegroundColor;
   @include focus-border();
   position: relative;
