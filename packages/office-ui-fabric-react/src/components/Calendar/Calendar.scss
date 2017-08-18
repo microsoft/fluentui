@@ -151,28 +151,11 @@ $Calendar-dayPicker-margin: 10px;
   @include focus-border(1px, $ms-color-white);
 }
 
-.dayIsHighlighted{
-  background: $ms-color-neutralLight;
-}
 
-.weekHighlighted{
-    background: $ms-color-neutralLight;
-    &:first-child{
-      border-radius: 2px 0px 0px 2px;
-    }
-
-    &:last-child{
-      border-radius: 0px 2px 2px 0px;
-    }
-}
-
-.monthHighlighted{
-    background: $ms-color-neutralLight;
-}
-
-.dayIsHighlighted:hover{
-  cursor: pointer;
-  background: $ms-color-neutralTertiaryAlt;
+.dayIsUnfocused:active, .dayIsFocused:active, .dayIsHighlighted{
+  &.day{
+    background: $ms-color-themeLight;
+  }
 }
 
 // Disabled and highlighted dates.
@@ -186,6 +169,29 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
+}
+
+//Background for highlighted day
+.dayBackground{
+  background: $ms-color-neutralLight;
+  border-radius: 2px;
+}
+
+//Background for highlighted week
+.weekBackground{
+    background: $ms-color-neutralLight;
+    &:first-child{
+      border-radius: 2px 0px 0px 2px;
+    }
+
+    &:last-child{
+      border-radius: 0px 2px 2px 0px;
+    }
+}
+
+//Background for highlighted month
+.monthBackground{
+    background: $ms-color-neutralLight;
 }
 
 // Month and year previous/next components.
@@ -269,6 +275,7 @@ $Calendar-dayPicker-margin: 10px;
   border-radius: 2px;
 
   &:hover {
+    color: $ms-color-black;
     background-color: $ms-color-neutralTertiaryAlt;
     outline: 1px solid transparent;
   }
@@ -518,7 +525,7 @@ $Calendar-dayPicker-margin: 10px;
 
 .wrap span:focus,
 .wrap div:focus {
-  @include focus-border(1px, $ms-color-themePrimary);
+  @include focus-border(1px, $ms-color-neutralSecondary);
 }
 
 .goToday {
@@ -537,10 +544,19 @@ $Calendar-dayPicker-margin: 10px;
   margin-left: 3px;
 }
 
+.monthIsHighlighted{
+  background-color: $ms-color-themeLight;
+}
+
 .monthIsCurrentMonth {
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
 }
+
+.monthOption:active{
+  background-color: $ms-color-themeLight;
+}
+
 
 //Rounded corners
 .roundedCornersTopLeft{

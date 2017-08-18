@@ -170,8 +170,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { week.map((day, dayIndex) =>
                     <td key={ day.key } className={ css(
                       {
-                        ['ms-DatePicker-weekHighlighted ' + styles.weekHighlighted]: day.isSelected && dateRangeType == 1,
-                        ['ms-DatePicker-monthHighlighted ' + styles.monthHighlighted + ' ' + this.checkHighlightCorner(weekCorners, dayIndex, weekIndex)]: day.isSelected && dateRangeType == 2
+                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType == 1,
+                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this.checkHighlightCorner(weekCorners, dayIndex, weekIndex)]: day.isSelected && dateRangeType == 2,
+                        ['ms-DatePicker-day--dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType == 0
                       }) }
                     >
                       <div
