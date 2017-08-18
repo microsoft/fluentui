@@ -1,12 +1,12 @@
 # [merge-styles](http://dev.office.com/fabric)
 
-The `merge-styles` library provides a number of utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css rules, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
+The `merge-styles` library provides utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css classes, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
 
-The library was built for speed and size; the entire package is 2.62k gzipped. It has no dependencies.
+The library was built for speed and size; the entire package is 2.62k gzipped. It has no dependencies other than `tslib`.
 
 The basic idea is to provide a method which can take in one or more style objects css styling javascript objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
 
-## Why not static solutions like scss?
+## Motivation
 
 Defining rules at runtime has a number of benefits over traditional build time staticly produced css:
 
@@ -28,7 +28,9 @@ Defining rules at runtime has a number of benefits over traditional build time s
 
 ## What tradeoffs are there? Are there downsides to using JavaScript to process styling?
 
-In static solutions, there is very little runtime evaluation required; everything is
+In static solutions, there is very little runtime evaluation required; everything is injected as-is. Things like auto prefixing and language specific processing like sass mixins are all evaluated at build time.
+
+In runtime styling, much of this is evaluated in the browser, so you are paying a cost in doing this. However, with performance optimizations like memoization, you can minimize this quite a bit, and you gain all of the robustness enumerated above.
 
 # API
 
@@ -90,7 +92,7 @@ export interface IComponentClassNames {
   buttonIcon: string;
 }
 
-export const getClassNames = () => {
+export const getClassNames = (): IComponentClassNames => {
   return mergeStyleSets({
     root: {
         background: 'red'
@@ -99,11 +101,6 @@ export const getClassNames = () => {
 
     button: {
       backgroundColor: 'green',
-      selectors: {
-        ':hover': {
-          backgroundColor: 'blue'
-        }
-      }
     },
 
     buttonIcon: {
@@ -113,7 +110,7 @@ export const getClassNames = () => {
 };
 ```
 
-The class map can then be used in a component. The example below illustrates a React component, but the library can be used with any framework.
+The class map can then be used in a component:
 
 ```tsx
 import { getClassNames } from './MyComponent.classNames';
@@ -129,6 +126,71 @@ export const MyComponent = () => {
     </div>
   );
 };
+```
+
+## Selectors
+
+Custom selectors can be defined within `IStyle` definitions under the `selectors` section:
+
+```tsx
+{
+  background: 'red',
+  selectors: {
+    ':hover': {
+      background: 'green'
+    }
+  }
+}
+```
+
+By default, the rule will be appended to the current selector scope. That is, in the above scenario, there will be 2 rules inserted when using `mergeRules`:
+
+```css
+.css-0 { background: red; }
+.css-0:hover { background: green; }
+```
+
+In some cases, you may need to use parent or child selectors. To do so, you can define a selector from scratch and use the `&` character to represent the generated class name. When using the `&`, the current scope is ignored. Example:
+
+```tsx
+{
+  selectors: {
+    // selector relative to parent
+    '.ms-Fabric.is-focusVisible &': {
+      background: 'red'
+    }
+    // selector for child
+    '& .child' {
+      background: 'green'
+    }
+  }
+}
+```
+
+This would register the rules:
+
+```css
+.ms-Fabric.is-focusVisible .css-0 { background: red; }
+.css-0 .child { background: green; }
+```
+
+## Custom class names
+
+By default class names that are generated will use the prefix `css-` followed by a number, creating unique rules where needed.
+
+While this prefix is fine, sometimes a more readable prefix is desired. You can pass in a `displayName` to resolve this:
+
+```tsx
+{
+  displayName: 'MyComponent',
+  background: 'red'
+}
+```
+
+This generates:
+
+```css
+.MyComponent-0 { background: red; }
 ```
 
 ## Managing conditionals and states
@@ -239,3 +301,5 @@ Caveats for server-side rendering (TODOs):
 * Until all Fabric components use the merge-styles library, this will only return a subset of the styling. Also a known limitation and work in progress.
 
 * The rehydration logic has not yet been implemented, so we may run into issues when you rehydrate.
+
+* Only components which USE mergeStyles will have their css included. In Fabric, not all components have been converted from using SASS yet.
