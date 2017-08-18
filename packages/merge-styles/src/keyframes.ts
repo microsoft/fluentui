@@ -1,4 +1,3 @@
-import { getVendorSettings } from './getVendorSettings';
 import { Stylesheet } from './Stylesheet';
 import { serializeRuleEntries } from './styleToClassName';
 
@@ -8,7 +7,6 @@ import { serializeRuleEntries } from './styleToClassName';
  * @public
  */
 export function keyframes(timeline: { [key: string]: {} }): string {
-  let vendorSettings = getVendorSettings();
   let stylesheet = Stylesheet.getInstance();
   let name = stylesheet.getClassName();
 
@@ -23,20 +21,7 @@ export function keyframes(timeline: { [key: string]: {} }): string {
 
   stylesheet.insertRule(`@keyframes ${name}{${rules}}`);
 
-  if (vendorSettings.isWebkit) {
-    stylesheet.insertRule(`@-webkit-keyframes ${name}{${rules}}`);
-  }
-  if (vendorSettings.isMoz) {
-    stylesheet.insertRule(`@-moz-keyframes ${name}{${rules}}`);
-  }
-
-  if (vendorSettings.isOpera) {
-    stylesheet.insertRule(`@-o-keyframes ${name}{${rules}}`);
-  }
-
-  if (vendorSettings.isMs) {
-    stylesheet.insertRule(`@-ms-keyframes ${name}{${rules}}`);
-  }
+  // If needed later, we would add vendor prefixes here.
 
   return name;
 }

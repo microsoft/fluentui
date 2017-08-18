@@ -2,7 +2,6 @@ import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
-import { expandQuads } from './transforms/expandQuads';
 import { getVendorSettings } from './getVendorSettings';
 import { Stylesheet } from './Stylesheet';
 import { IStyle } from './IStyle';
@@ -31,7 +30,6 @@ function toRuleEntry(name: string, value: string): string | undefined {
   provideUnits(rules);
   rtlifyRules(rules);
   prefixRules(rules);
-  expandQuads(rules);
 
   // Stringify the rules.
   for (let i = 0; i < rules.length; i += 2) {
@@ -48,17 +46,6 @@ function getDisplayName(rules?: Map<string, IStyle>): string | undefined {
   return rootStyle && (rootStyle as any).displayName;
 }
 
-/**
- * Given an array of objects or strings, iterate through each:
- *  if string, look up Map. Merge map into current map.
- *  else if object:
- *    iterate through each prop:
- *      if is a selector.
- *
- *
- * edge cases; should :active always have prescidence over :hover?
- * ([':hover': {}, ':active': {}], [':hover': {}])
- */
 function extractRules(
   args: IStyle[],
   rules: Map<string, {}> = new Map<string, {}>(),
@@ -104,14 +91,31 @@ function extractRules(
           }
         } else {
           // Else, add the rule to the currentSelector.
-          // tslint:disable-next-line:no-any
-          (currentRules as any)[prop] = (arg as any)[prop] as any;
+          if (prop === 'margin' || prop === 'padding') {
+            // tslint:disable-next-line:no-any
+            expandQuads(currentRules, prop, (arg as any)[prop]);
+          } else {
+            // tslint:disable-next-line:no-any
+            (currentRules as any)[prop] = (arg as any)[prop] as any;
+          }
         }
       }
     }
   }
 
   return rules;
+}
+
+function expandQuads(
+  currentRules: { [key: string]: string },
+  name: string,
+  value: string
+): void {
+  let parts = value.split(' ');
+  currentRules[name + 'Top'] = parts[0];
+  currentRules[name + 'Right'] = parts[1] || parts[0];
+  currentRules[name + 'Bottom'] = parts[2] || parts[0];
+  currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
 }
 
 function serializeRules(rules: Map<string, IStyle>): string | undefined {
@@ -168,12 +172,13 @@ export function styleToClassName(...args: IStyle[]): string {
         let rulesToInsert: string = serializeRuleEntries(rules.get(selector) as {});
 
         if (rulesToInsert) {
-          selector = selector.replace('&', `.${className}`);
+          selector = selector.replace(/\&/g, `.${className}`);
           stylesheet.insertRule(`${selector}{${rulesToInsert}}`);
         }
         selector = ruleSelectors.next().value;
       }
     }
   }
+
   return className;
 }

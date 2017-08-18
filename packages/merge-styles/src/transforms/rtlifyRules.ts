@@ -1,5 +1,3 @@
-import { getRTL } from '@uifabric/utilities/lib/rtl';
-
 const _nameReplacements: { [key: string]: string } = {
   'left': 'right',
   'right': 'left'
@@ -12,6 +10,22 @@ const _valueReplacements: { [key: string]: string } = {
 };
 
 const NO_FLIP = 'noflip';
+
+let _rtl = getRTL();
+
+export function setRTL(isRTL: boolean): void {
+  _rtl = isRTL;
+}
+export function getRTL(): boolean {
+  if (_rtl === undefined) {
+    _rtl = (
+      typeof document !== undefined &&
+      !!document.documentElement &&
+      document.documentElement.getAttribute('dir') === 'rtl'
+    );
+  }
+  return _rtl;
+}
 
 export function rtlifyRules(rulePairs: string[]): string[] {
   if (getRTL()) {

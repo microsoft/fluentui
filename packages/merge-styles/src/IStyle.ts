@@ -12,7 +12,7 @@ export interface IExtendedRawStyle extends IRawStyle {
   };
 }
 
-export type IStyleBase = IExtendedRawStyle | string | boolean | null | undefined;
+export type IStyleBase = IExtendedRawStyle | string | false | null | undefined;
 
 /**
  * IStyleObject extends a raw style objects, but allows selectors to be defined

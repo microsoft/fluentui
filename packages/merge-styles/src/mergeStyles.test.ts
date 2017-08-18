@@ -26,4 +26,22 @@ describe('mergeStyles', () => {
     expect(mergeStyles('foo', { background: 'red' })).equals('foo css-0');
     expect(_stylesheet.getRules()).equals('.css-0{background:red;}');
   });
+
+  it('can remerge styles', () => {
+    let className: string = mergeStyles({ background: 'red', color: 'black' });
+    let newClassName = mergeStyles(className, { color: 'white' });
+
+    expect(className).equals('css-0');
+    expect(newClassName).equals('css-1');
+    expect(_stylesheet.getRules()).equals(
+      '.css-0{background:red;color:black;}.css-1{background:red;color:white;}'
+    );
+  });
+
+  it('can normalize margins', () => {
+    mergeStyles({ margin: '4px' }, { marginRight: '8px' });
+    expect(_stylesheet.getRules()).equals(
+      '.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}'
+    );
+  });
 });

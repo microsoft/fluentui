@@ -335,7 +335,7 @@ export function mergeStyles(...args: (IStyle | IStyle[])[]): string;
 // @public
 export function mergeStyleSets < T extends {} >(...cssSets: T[]): {[P in keyof T]?: string };
 
-// @public (undocumented)
+// @public
 class Stylesheet {
   // WARNING: The type "IStyleSheetConfig" needs to be exported by the package (e.g. added to index.ts)
   constructor(config?: IStyleSheetConfig);
@@ -352,8 +352,7 @@ class Stylesheet {
   // (undocumented)
   public getRules(): string;
   // (undocumented)
-  public insertRule(rule: string,
-      forceSync: boolean = false): void;
+  public insertRule(rule: string): void;
   // (undocumented)
   public reset(): void;
   // WARNING: The type "IStyleSheetConfig" needs to be exported by the package (e.g. added to index.ts)

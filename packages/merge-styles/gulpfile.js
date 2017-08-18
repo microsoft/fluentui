@@ -26,8 +26,11 @@ build.tslint.setConfig({
 // Configure TypeScript.
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 
-// Use css modules.
-build.sass.setConfig({ useCSSModules: true });
+// Disable unnecessary steps.
+build.preCopy.isEnabled = () => false;
+build.postCopy.isEnabled = () => false;
+build.text.isEnabled = () => false;
+build.sass.isEnabled = () => false;
 
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
@@ -39,4 +42,3 @@ if (isProduction || isClean) {
 }
 
 build.task('tslint', build.tslint);
-

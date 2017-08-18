@@ -2,7 +2,7 @@
 
 The merge-styles library provides a number of utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css rules, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
 
-The library was built for speed and size; the entire package is 3.4k gzipped.
+The library was built for speed and size; the entire package is 2.7k gzipped.
 
 
 The basic idea is to provide a method which can take in one or more style objects css styling javascript objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
@@ -154,14 +154,14 @@ export const getClassNames = (
 
 Resolving the class names on every render can be an unwanted expense especially in hot spots where things are rendered frequently. To optimize, we recommend 2 guidelines:
 
-1. For your `getClassNames` function, flatten all input parameters into simple immutable values. This helps the `memoize` utility to cache the results based on the input.
+1. For your `getClassNames` function, flatten all input parameters into simple immutable values. This helps the `memoizeFunction` utility to cache the results based on the input.
 
-2. Use the `memoize` function from the `@uifabric/utilities` package to cache the results, given a unique combination of inputs. Example:
+2. Use the `memoizeFunction` function from the `@uifabric/utilities` package to cache the results, given a unique combination of inputs. Example:
 
 ```tsx
-import { memoize } from '@uifabric/utilities';
+import { memoizeFunction } from '@uifabric/utilities';
 
-export const getClassNames = memoize((
+export const getClassNames = memoizeFunction((
   isToggled: boolean
 ) => {
   return mergeStyleSet({
@@ -213,6 +213,8 @@ export const getClassNames = () => {
 
 ## Server-side rendering
 
+You can import `renderStatic` method from the `/lib/server` entry to render content and extract the css rules that would have been registered, as a string.
+
 Example:
 
 ```tsx
@@ -223,6 +225,12 @@ let { html, css } = renderStatic(() => {
 });
 ```
 
-Caveats:
+Caveats for server-side rendering (TODOs):
 
 * Currently font face definitions and keyframes won't be included in the result.
+
+* Using the `memoizeFunction` utility may short circuit calling merge-styles APIs to register styles, which may cause the helper here to skip returning css. This can be fixed, but it is currently a known limitation.
+
+* Until all Fabric components use the merge-styles library, this will only return a subset of the styling. Also a known limitation and work in progress.
+
+* The rehydration logic has not yet been implemented, so we may run into issues when you rehydrate.

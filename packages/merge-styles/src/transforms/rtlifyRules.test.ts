@@ -1,5 +1,4 @@
-import { setRTL } from '@uifabric/utilities/lib/rtl';
-import { rtlifyRules } from './rtlifyRules';
+import { setRTL, rtlifyRules } from './rtlifyRules';
 
 let { expect } = chai;
 

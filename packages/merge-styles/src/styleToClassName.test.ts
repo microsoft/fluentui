@@ -1,5 +1,5 @@
 import 'es6-map/implement';
-import { setRTL } from '@uifabric/utilities/lib/rtl';
+import { setRTL } from './transforms/rtlifyRules';
 import { styleToClassName } from './styleToClassName';
 import {
   InjectionMode,
@@ -111,4 +111,15 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).equals('.css-0{background:white;}');
   });
 
+  it('can expand increased specificity rules', () => {
+    styleToClassName({
+      selectors: {
+        '&&&': {
+          background: 'red'
+        }
+      }
+    });
+
+    expect(_stylesheet.getRules()).equals('.css-0.css-0.css-0{background:red;}');
+  });
 });

@@ -1,6 +1,6 @@
 import { IStyle } from './IStyle';
 import { styleToClassName } from './styleToClassName';
-
+import { Stylesheet } from './Stylesheet';
 /**
  * Concatination helper, which can merge class names together. Skips over falsey values.
  *
@@ -9,6 +9,7 @@ import { styleToClassName } from './styleToClassName';
 export function mergeStyles(...args: (IStyle | IStyle[])[]): string {
   let classes: string[] = [];
   let objects: {}[] = [];
+  let stylesheet = Stylesheet.getInstance();
 
   function _processArgs(argsList: (IStyle | IStyle[])[]): void {
     for (let i = 0; i < argsList.length; i++) {
@@ -16,7 +17,12 @@ export function mergeStyles(...args: (IStyle | IStyle[])[]): string {
 
       if (arg) {
         if (typeof arg === 'string') {
-          classes.push(arg);
+          let translatedArgs = stylesheet.argsFromClassName(arg);
+          if (translatedArgs) {
+            objects.push(translatedArgs);
+          } else {
+            classes.push(arg);
+          }
         } else if (Array.isArray(arg)) {
           _processArgs(arg);
         } else if (typeof arg === 'object') {
