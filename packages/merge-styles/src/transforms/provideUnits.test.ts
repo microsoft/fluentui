@@ -4,14 +4,14 @@ import { expect } from 'chai';
 
 describe('provideUnits', () => {
   it('can provide units', () => {
-    let propertiesToTest = [
+    const propertiesToTest = [
       'left',
       'right',
       'top',
       'bottom',
       'borderWidth'
     ].forEach((property: string) => {
-      let testSet: (string | number)[] = [property, 1];
+      const testSet: (string | number)[] = [property, 1];
 
       provideUnits(testSet);
 
@@ -20,12 +20,12 @@ describe('provideUnits', () => {
   });
 
   it('can provide units for directional props', () => {
-    let propertiesToTest = [
+    const propertiesToTest = [
       'padding',
       'margin',
       'border'
     ].forEach((property: string) => {
-      let testSet: (string | number)[] = [
+      const testSet: (string | number)[] = [
         property, 1,
         property + 'Left', 1,
         property + 'Right', 1,

@@ -1,12 +1,12 @@
 import { concatStyleSets } from './concatStyleSets';
 
-let { expect } = chai;
+const { expect } = chai;
 
 describe('concatStyleSets', () => {
   it('can concat style sets', () => {
 
     // tslint:disable-next-line:no-any
-    let result = concatStyleSets<any>(
+    const result = concatStyleSets<any>(
       {
         root: { background: 'red' },
         a: { background: 'green' }

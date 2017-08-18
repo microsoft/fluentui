@@ -4,8 +4,8 @@ import {
   InjectionMode
 } from './Stylesheet';
 
-let { expect } = chai;
-let _stylesheet: Stylesheet = Stylesheet.getInstance();
+const { expect } = chai;
+const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
@@ -17,7 +17,7 @@ describe('mergeStyleSets', () => {
   it('can merge style sets', () => {
 
     // tslint:disable-next-line:no-any
-    let result = mergeStyleSets<any>(
+    const result = mergeStyleSets<any>(
       {
         root: { background: 'red' },
         a: { background: 'green' }

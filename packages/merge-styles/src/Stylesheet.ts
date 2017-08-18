@@ -34,7 +34,7 @@ export class Stylesheet {
 
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    let win: any = typeof window !== 'undefined' ? window : {};
+    const win: any = typeof window !== 'undefined' ? window : {};
     _stylesheet = win[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet) {
@@ -62,7 +62,7 @@ export class Stylesheet {
   }
 
   public getClassName(displayName?: string): string {
-    let prefix = displayName || 'css';
+    const prefix = displayName || 'css';
 
     return `${prefix}-${this._counter++}`;
   }
@@ -83,12 +83,12 @@ export class Stylesheet {
   public insertRule(
     rule: string
   ): void {
-    let element = this._getElement();
-    let injectionMode = element ? this._config.injectionMode : InjectionMode.none;
+    const element = this._getElement();
+    const injectionMode = element ? this._config.injectionMode : InjectionMode.none;
 
     switch (injectionMode) {
       case InjectionMode.insertNode:
-        let { sheet } = element;
+        const { sheet } = element;
 
         try {
           // tslint:disable-next-line:no-any

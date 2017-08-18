@@ -9,9 +9,9 @@ let _vendorSettings: IVendorSettings | undefined;
 
 export function getVendorSettings(): IVendorSettings {
   if (!_vendorSettings) {
-    let doc = typeof document !== 'undefined' ? document : undefined;
-    let nav = typeof navigator !== 'undefined' ? navigator : undefined;
-    let userAgent = nav ? nav.userAgent.toLowerCase() : undefined;
+    const doc = typeof document !== 'undefined' ? document : undefined;
+    const nav = typeof navigator !== 'undefined' ? navigator : undefined;
+    const userAgent = nav ? nav.userAgent.toLowerCase() : undefined;
 
     if (!doc) {
       _vendorSettings = {

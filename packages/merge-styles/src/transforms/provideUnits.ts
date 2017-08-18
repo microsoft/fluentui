@@ -23,7 +23,7 @@ let PX_BASED_PROPERTIES: string[] = [
 
 export function provideUnits(rulePairs: (string | number)[]): void {
   for (let i = 0; i < rulePairs.length; i += 2) {
-    let value = rulePairs[i + 1];
+    const value = rulePairs[i + 1];
     if (typeof value === 'number' && PX_BASED_PROPERTIES.indexOf(rulePairs[i] as string) >= 0) {
       rulePairs[i + 1] = `${value}px`;
     }

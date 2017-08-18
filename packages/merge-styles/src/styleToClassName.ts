@@ -4,7 +4,7 @@ import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
 import { getVendorSettings } from './getVendorSettings';
 import { Stylesheet } from './Stylesheet';
-import { IStyle } from './IStyle';
+import { IStyle, IExtendedRawStyle } from './IStyle';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -19,12 +19,12 @@ function toRuleEntry(name: string, value: string): string | undefined {
   }
 
   // Kebab case the rule.
-  let rules: string[] = [
+  const rules: string[] = [
     name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase(),
     value
   ];
 
-  let ruleEntries: string[] = [];
+  const ruleEntries: string[] = [];
 
   // Apply transforms.
   provideUnits(rules);
@@ -40,10 +40,9 @@ function toRuleEntry(name: string, value: string): string | undefined {
 }
 
 function getDisplayName(rules?: Map<string, IStyle>): string | undefined {
-  let rootStyle: IStyle = rules && rules.get('&');
+  const rootStyle: IStyle = rules && rules.get('&');
 
-  // tslint:disable-next-line:no-any
-  return rootStyle && (rootStyle as any).displayName;
+  return rootStyle ? (rootStyle as IExtendedRawStyle).displayName : undefined;
 }
 
 function extractRules(
@@ -51,7 +50,7 @@ function extractRules(
   rules: Map<string, {}> = new Map<string, {}>(),
   currentSelector: string = '&'
 ): Map<string, {}> {
-  let stylesheet = Stylesheet.getInstance();
+  const stylesheet = Stylesheet.getInstance();
   let currentRules: {} | undefined = rules.get(currentSelector);
 
   if (!currentRules) {
@@ -62,7 +61,7 @@ function extractRules(
   for (const arg of args) {
     // If the arg is a string, we need to look up the class map and merge.
     if (typeof arg === 'string') {
-      let expandedRules = stylesheet.argsFromClassName(arg);
+      const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
         extractRules(expandedRules, rules);
@@ -72,14 +71,14 @@ function extractRules(
       extractRules(arg, rules, currentSelector);
     } else {
       // tslint:disable-next-line:no-any
-      for (let prop in (arg as any)) {
+      for (const prop in (arg as any)) {
         if (prop === 'selectors') {
           // tslint:disable-next-line:no-any
-          let selectors: { [key: string]: IStyle } = (arg as any).selectors;
+          const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
           for (let newSelector in selectors) {
             if (selectors.hasOwnProperty(newSelector)) {
-              let selectorValue = selectors[newSelector];
+              const selectorValue = selectors[newSelector];
 
               if (newSelector.indexOf('&') < 0) {
                 newSelector = currentSelector + newSelector;
@@ -109,7 +108,7 @@ function expandQuads(
   name: string,
   value: string
 ): void {
-  let parts = value.split(' ');
+  const parts = value.split(' ');
   currentRules[name + 'Top'] = parts[0];
   currentRules[name + 'Right'] = parts[1] || parts[0];
   currentRules[name + 'Bottom'] = parts[2] || parts[0];
@@ -117,13 +116,13 @@ function expandQuads(
 }
 
 function serializeRules(rules: Map<string, IStyle>): string | undefined {
-  let serialized: string[] = [];
+  const serialized: string[] = [];
   let hasProps = false;
 
   rules.forEach((ruleEntries: { [key: string]: string }, selector: string): void => {
     serialized.push(selector);
 
-    for (let propName in ruleEntries) {
+    for (const propName in ruleEntries) {
       if (ruleEntries.hasOwnProperty(propName)) {
         hasProps = true;
         serialized.push(propName);
@@ -136,10 +135,10 @@ function serializeRules(rules: Map<string, IStyle>): string | undefined {
 }
 
 export function serializeRuleEntries(ruleEntries: { [key: string]: string }): string {
-  let allEntries: string[] = [];
+  const allEntries: string[] = [];
 
   if (ruleEntries) {
-    for (let entry in ruleEntries) {
+    for (const entry in ruleEntries) {
       if (ruleEntries.hasOwnProperty(entry)) {
         allEntries.push(toRuleEntry(entry, ruleEntries[entry])!);
       }
@@ -150,12 +149,12 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string }): st
 }
 
 export function styleToClassName(...args: IStyle[]): string {
-  let rules: Map<string, IStyle> = extractRules(args);
-  let key = serializeRules(rules);
+  const rules: Map<string, IStyle> = extractRules(args);
+  const key = serializeRules(rules);
   let className = '';
 
   if (key) {
-    let stylesheet = Stylesheet.getInstance();
+    const stylesheet = Stylesheet.getInstance();
 
     className = stylesheet.classNameFromKey(key)!;
 
@@ -163,11 +162,11 @@ export function styleToClassName(...args: IStyle[]): string {
       className = stylesheet.getClassName(getDisplayName(rules));
       stylesheet.cacheClassName(className, key, args);
 
-      let ruleSelectors = rules.keys();
+      const ruleSelectors = rules.keys();
       let selector = ruleSelectors.next().value;
 
       while (selector) {
-        let rulesToInsert: string = serializeRuleEntries(rules.get(selector) as {});
+        const rulesToInsert: string = serializeRuleEntries(rules.get(selector) as {});
 
         if (rulesToInsert) {
           selector = selector.replace(/\&/g, `.${className}`);

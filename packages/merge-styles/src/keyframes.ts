@@ -7,17 +7,17 @@ import { serializeRuleEntries } from './styleToClassName';
  * @public
  */
 export function keyframes(timeline: { [key: string]: {} }): string {
-  let stylesheet = Stylesheet.getInstance();
-  let name = stylesheet.getClassName();
+  const stylesheet = Stylesheet.getInstance();
+  const name = stylesheet.getClassName();
 
-  let rulesArray: string[] = [];
+  const rulesArray: string[] = [];
 
   for (const prop in timeline) {
     if (timeline.hasOwnProperty(prop)) {
       rulesArray.push(prop, ' {', serializeRuleEntries(timeline[prop]), '}');
     }
   }
-  let rules = rulesArray.join('');
+  const rules = rulesArray.join('');
 
   stylesheet.insertRule(`@keyframes ${name}{${rules}}`);
 

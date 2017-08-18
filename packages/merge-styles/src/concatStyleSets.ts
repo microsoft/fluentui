@@ -5,14 +5,14 @@ import { IStyleSet } from './IStyleSet';
  * @public
  */
 export function concatStyleSets<T extends {}>(...args: (T | false | null | undefined)[]): T {
-  let mergedSet: IStyleSet = {};
+  const mergedSet: IStyleSet = {};
 
   for (const currentSet of args) {
     if (currentSet) {
       for (const prop in currentSet) {
         if (currentSet.hasOwnProperty(prop)) {
-          let mergedValue = mergedSet[prop];
-          let currentValue = currentSet[prop];
+          const mergedValue = mergedSet[prop];
+          const currentValue = currentSet[prop];
 
           if (mergedValue === undefined) {
             mergedSet[prop] = currentValue;

@@ -7,13 +7,13 @@ import {
   mergeStyleSets
 } from './mergeStyleSets';
 
-let { expect } = chai;
+const { expect } = chai;
 
 describe('staticRender', () => {
   it('can render content', () => {
 
-    let { html, css } = renderStatic(() => {
-      let classNames = mergeStyleSets({
+    const { html, css } = renderStatic(() => {
+      const classNames = mergeStyleSets({
         root: {
           background: 'red'
         }

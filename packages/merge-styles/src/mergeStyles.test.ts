@@ -4,8 +4,8 @@ import {
   InjectionMode
 } from './Stylesheet';
 
-let { expect } = chai;
-let _stylesheet: Stylesheet = Stylesheet.getInstance();
+const { expect } = chai;
+const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
@@ -28,8 +28,8 @@ describe('mergeStyles', () => {
   });
 
   it('can remerge styles', () => {
-    let className: string = mergeStyles({ background: 'red', color: 'black' });
-    let newClassName = mergeStyles(className, { color: 'white' });
+    const className: string = mergeStyles({ background: 'red', color: 'black' });
+    const newClassName = mergeStyles(className, { color: 'white' });
 
     expect(className).equals('css-0');
     expect(newClassName).equals('css-1');
@@ -44,4 +44,5 @@ describe('mergeStyles', () => {
       '.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}'
     );
   });
+
 });

@@ -11,7 +11,7 @@ import { IStyle } from './IStyle';
 export function mergeStyleSets<T extends {}>(
   ...cssSets: T[]
 ): {[P in keyof T]?: string } {
-  let classNameSet: {[P in keyof T]?: string } = {};
+  const classNameSet: {[P in keyof T]?: string } = {};
   let cssSet = cssSets[0];
 
   if (cssSets.length > 1) {

@@ -13,7 +13,7 @@ describe('prefixRules', () => {
 
   it('can provide translate webkit rules', () => {
     AUTO_TRANSLATED_RULES.forEach((rule: string) => {
-      let rules = [rule, 'none'];
+      const rules = [rule, 'none'];
 
       setVendorSettings({ isWebkit: true });
       prefixRules(rules);
@@ -27,7 +27,7 @@ describe('prefixRules', () => {
 
   it('can provide translate moz rules', () => {
     AUTO_TRANSLATED_RULES.forEach((rule: string) => {
-      let rules = [rule, 'none'];
+      const rules = [rule, 'none'];
 
       setVendorSettings({ isMoz: true });
       prefixRules(rules);
@@ -40,7 +40,7 @@ describe('prefixRules', () => {
 
   it('can provide translate ms rules', () => {
     AUTO_TRANSLATED_RULES.forEach((rule: string) => {
-      let rules = [rule, 'none'];
+      const rules = [rule, 'none'];
 
       setVendorSettings({ isMs: true });
       prefixRules(rules);
@@ -53,7 +53,7 @@ describe('prefixRules', () => {
 
   it('can provide translate opera rules', () => {
     AUTO_TRANSLATED_RULES.forEach((rule: string) => {
-      let rules = [rule, 'none'];
+      const rules = [rule, 'none'];
 
       setVendorSettings({ isOpera: true });
       prefixRules(rules);

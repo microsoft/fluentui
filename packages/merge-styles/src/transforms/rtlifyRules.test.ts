@@ -1,6 +1,6 @@
 import { setRTL, rtlifyRules } from './rtlifyRules';
 
-let { expect } = chai;
+const { expect } = chai;
 
 describe('rtlifyRules', () => {
 
@@ -41,7 +41,7 @@ describe('rtlifyRules', () => {
   });
 
   it('does not flip an unflippable cursor', () => {
-    let rules = ['cursor', 'hand'];
+    const rules = ['cursor', 'hand'];
 
     expect(rtlifyRules(rules)).eqls(['cursor', 'hand']);
   });

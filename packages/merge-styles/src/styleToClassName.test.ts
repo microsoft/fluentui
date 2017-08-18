@@ -6,8 +6,8 @@ import {
   Stylesheet
 } from './Stylesheet';
 
-let { expect } = chai;
-let _stylesheet: Stylesheet = Stylesheet.getInstance();
+const { expect } = chai;
+const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
 
@@ -34,7 +34,7 @@ describe('styleToClassName', () => {
   });
 
   it('can register pseudo selectors', () => {
-    let className = styleToClassName({
+    const className = styleToClassName({
       selectors: {
         ':hover': { background: 'red' }
       }
@@ -45,7 +45,7 @@ describe('styleToClassName', () => {
   });
 
   it('can register parent and sibling selectors', () => {
-    let className = styleToClassName({
+    const className = styleToClassName({
       selectors: {
         '& .child': { background: 'red' },
         '.parent &': { background: 'green' }
@@ -96,8 +96,8 @@ describe('styleToClassName', () => {
   });
 
   it('can expand previously defined rules', () => {
-    let className = styleToClassName({ background: 'red' });
-    let newClassName = styleToClassName(className, { color: 'white' });
+    const className = styleToClassName({ background: 'red' });
+    const newClassName = styleToClassName(className, { color: 'white' });
 
     expect(newClassName).equals('css-1');
     expect(_stylesheet.getRules()).equals('.css-0{background:red;}.css-1{background:red;color:white;}');

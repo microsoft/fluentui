@@ -30,8 +30,8 @@ export function getRTL(): boolean {
 export function rtlifyRules(rulePairs: string[]): string[] {
   if (getRTL()) {
     for (let nameIndex = 0, valueIndex = 1; nameIndex < rulePairs.length; nameIndex += 2, valueIndex += 2) {
-      let name = rulePairs[nameIndex];
-      let value = rulePairs[valueIndex];
+      const name = rulePairs[nameIndex];
+      const value = rulePairs[valueIndex];
 
       if (value.indexOf(NO_FLIP) >= 0) {
         continue;
@@ -65,8 +65,8 @@ export function rtlifyRules(rulePairs: string[]): string[] {
 }
 
 function negateNum(value: string, partIndex: number): string {
-  let parts = value.split(' ');
-  let numberVal = parseInt(parts[partIndex], 10);
+  const parts = value.split(' ');
+  const numberVal = parseInt(parts[partIndex], 10);
 
   parts[0] = parts[0].replace(String(numberVal), String(numberVal * -1));
 
@@ -75,7 +75,7 @@ function negateNum(value: string, partIndex: number): string {
 
 function flipQuad(value: string): string {
   if (typeof value === 'string') {
-    let parts = value.split(' ');
+    const parts = value.split(' ');
 
     if (parts.length === 4) {
       return `${parts[0]} ${parts[3]} ${parts[2]} ${parts[1]}`;

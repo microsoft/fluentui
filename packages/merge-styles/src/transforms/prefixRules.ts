@@ -1,17 +1,17 @@
 import { getVendorSettings } from '../getVendorSettings';
 
-let autoPrefixNames: { [key: string]: number } = {
+const autoPrefixNames: { [key: string]: number } = {
   'user-select': 1
 };
 
 export function prefixRules(
   rulePairs: string[]
 ): void {
-  let vendorSettings = getVendorSettings();
+  const vendorSettings = getVendorSettings();
 
   for (let nameIndex = 0, valueIndex = 1; nameIndex < rulePairs.length; nameIndex += 2, valueIndex += 2) {
-    let name = rulePairs[nameIndex];
-    let value = rulePairs[valueIndex];
+    const name = rulePairs[nameIndex];
+    const value = rulePairs[valueIndex];
 
     if (autoPrefixNames[name]) {
       if (vendorSettings.isWebkit) {

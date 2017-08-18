@@ -8,15 +8,15 @@ import { Stylesheet } from './Stylesheet';
  * @public
  */
 export function mergeStyles(...args: (IStyle | IStyle[])[]): string {
-  let classes: string[] = [];
-  let objects: {}[] = [];
-  let stylesheet = Stylesheet.getInstance();
+  const classes: string[] = [];
+  const objects: {}[] = [];
+  const stylesheet = Stylesheet.getInstance();
 
   function _processArgs(argsList: (IStyle | IStyle[])[]): void {
     for (const arg of argsList) {
       if (arg) {
         if (typeof arg === 'string') {
-          let translatedArgs = stylesheet.argsFromClassName(arg);
+          const translatedArgs = stylesheet.argsFromClassName(arg);
           if (translatedArgs) {
             objects.push(translatedArgs);
           } else {
