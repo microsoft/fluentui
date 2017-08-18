@@ -2,12 +2,12 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "CommandBar: adding `aria-expanded` attribute to overflow menu."
+      "comment": "CommandBar: adding `aria-expanded` attribute to overflow menu.",
       "type": "patch"
     },
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible."
+      "comment": "DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible.",
       "type": "patch"
     }
   ],
