@@ -1,5 +1,5 @@
 // @public
-export function concatStyleSets < T extends {} >(...args: (T | false | null | undefined)[]): T;
+export function concatStyleSets < T extends object >(...args: (T | false | null | undefined)[]): T;
 
 // @public
 export function fontFace(font: IFontFace): void;
@@ -333,7 +333,7 @@ export function keyframes(timeline: { [key: string]: {} }): string;
 export function mergeStyles(...args: (IStyle | IStyle[])[]): string;
 
 // @public
-export function mergeStyleSets < T extends {} >(...cssSets: T[]): {[P in keyof T]?: string };
+export function mergeStyleSets < T extends object >(...cssSets: T[]): {[P in keyof T]?: string };
 
 // @public
 class Stylesheet {
