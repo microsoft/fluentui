@@ -12,7 +12,7 @@ export function keyframes(timeline: { [key: string]: {} }): string {
 
   let rulesArray: string[] = [];
 
-  for (let prop in timeline) {
+  for (const prop in timeline) {
     if (timeline.hasOwnProperty(prop)) {
       rulesArray.push(prop, ' {', serializeRuleEntries(timeline[prop]), '}');
     }

@@ -11,7 +11,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": [

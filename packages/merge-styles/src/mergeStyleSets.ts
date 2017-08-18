@@ -17,7 +17,7 @@ export function mergeStyleSets<T extends {}>(
   if (cssSets.length > 1) {
     cssSet = concatStyleSets(...cssSets);
   }
-  for (let prop in cssSet) {
+  for (const prop in cssSet) {
     if (cssSet.hasOwnProperty(prop)) {
       classNameSet[prop] = mergeStyles(cssSet[prop] as IStyle);
     }

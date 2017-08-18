@@ -7,11 +7,9 @@ import { IStyleSet } from './IStyleSet';
 export function concatStyleSets<T extends {}>(...args: (T | false | null | undefined)[]): T {
   let mergedSet: IStyleSet = {};
 
-  for (let i = 0; i < args.length; i++) {
-    let currentSet = args[i];
-
+  for (const currentSet of args) {
     if (currentSet) {
-      for (let prop in currentSet) {
+      for (const prop in currentSet) {
         if (currentSet.hasOwnProperty(prop)) {
           let mergedValue = mergedSet[prop];
           let currentValue = currentSet[prop];

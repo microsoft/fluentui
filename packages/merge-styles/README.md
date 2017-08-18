@@ -4,7 +4,6 @@ The merge-styles library provides a number of utilities for loading styles throu
 
 The library was built for speed and size; the entire package is 2.7k gzipped.
 
-
 The basic idea is to provide a method which can take in one or more style objects css styling javascript objects representing the styles for a given element, and return a single class name. If the same set of styling is passed in, the same name returns and nothing is re-registered.
 
 This has a number of benefits over traditional build time staticly produced css:

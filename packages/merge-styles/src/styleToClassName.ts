@@ -59,9 +59,7 @@ function extractRules(
     rules.set(currentSelector, currentRules);
   }
 
-  for (let i = 0; i < args.length; i++) {
-    const arg: IStyle = args[i];
-
+  for (const arg of args) {
     // If the arg is a string, we need to look up the class map and merge.
     if (typeof arg === 'string') {
       let expandedRules = stylesheet.argsFromClassName(arg);
