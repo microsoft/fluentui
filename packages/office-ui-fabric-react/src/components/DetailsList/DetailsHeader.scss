@@ -45,7 +45,6 @@ $isPaddedMargin: 24px;
   border: none;
   line-height: inherit;
   margin: 0;
-  @include ms-text-align(left);
   height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
