@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { GlobalSettings, IChangeDescription } from './GlobalSettings';
 
-export function customizable<P>(fields: string[]) {
+export function customizable(fields: string[]) {
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)

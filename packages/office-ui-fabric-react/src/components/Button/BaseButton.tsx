@@ -8,8 +8,7 @@ import {
   buttonProperties,
   getId,
   getNativeProps,
-  KeyCodes,
-  css,
+  KeyCodes
 } from '../../Utilities';
 import { mergeStyles } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
@@ -355,8 +354,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     const {
-      styles,
-      disabled
+      disabled,
+      styles = {}
     } = this.props;
 
     return (
@@ -367,11 +366,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
-        className={ css(disabled ? styles!.splitButtonContainerDisabled : styles!.splitButtonContainer) }
+        // TODO: This needs to be moved into style calcs and not done inline.
+        className={ mergeStyles(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
       >
-        <span aria-hidden={ true } style={ { 'display': 'flex' } }>
+        <span
+          aria-hidden={ true }
+          // TODO: THIS SHOULD BE REMOVED!
+          style={ { 'display': 'flex' } }
+        >
           { this._onRenderContent(tag, buttonProps) }
           { this._onRenderSplitButtonMenuButton() }
         </span>

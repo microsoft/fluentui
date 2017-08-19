@@ -58,7 +58,7 @@ export const getStyles = memoizeFunction((
     },
     checkbox: {
       display: 'flex',
-      flexShrink: '0',
+      flexShrink: 0,
       alignItems: 'center',
       justifyContent: 'center',
       height: MS_CHECKBOX_LABEL_SIZE,
@@ -73,7 +73,7 @@ export const getStyles = memoizeFunction((
       transitionTimingFunction: MS_CHECKBOX_TRANSITION_TIMING,
 
       /* incase the icon is bigger than the box */
-      overflow: 'hidden',
+      overflow: 'hidden'
     },
     checkboxHovered: {
       borderColor: checkboxBorderHoveredColor,

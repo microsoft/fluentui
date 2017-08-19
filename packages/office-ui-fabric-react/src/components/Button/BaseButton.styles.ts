@@ -2,11 +2,12 @@ import { IButtonStyles } from './Button.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,
+  IExtendedRawStyle,
   getFocusStyle,
   FontSizes
 } from '../../Styling';
 
-const noOutline = {
+const noOutline: IExtendedRawStyle = {
   outline: 0
 };
 
@@ -53,8 +54,10 @@ export const getStyles = memoizeFunction((
       color: theme.palette.neutralTertiary,
       cursor: 'default',
       pointerEvents: 'none',
-      ':hover': noOutline,
-      ':focus': noOutline,
+      selectors: {
+        ':hover': noOutline,
+        ':focus': noOutline
+      }
     },
 
     iconDisabled: {

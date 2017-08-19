@@ -9,23 +9,25 @@ import {
   htmlElementProperties
 } from '../../Utilities';
 import { getIcon, IIconRecord } from '../../Styling';
-import { getStyles } from './Icon.styles';
+import { getClassNames } from './Icon.classNames';
 
 export function Icon(props: IIconProps): JSX.Element {
   let {
     ariaLabel,
     className,
-    styles: customStyles,
+    styles,
     iconName
    } = props;
-  let styles = getStyles(customStyles);
+  let classNames = getClassNames(
+    styles
+  );
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css(
       'ms-Icon',
       'ms-Icon-imageContainer',
-      styles.root,
-      styles.imageContainer,
+      classNames.root,
+      classNames.imageContainer,
       className
     );
 
@@ -33,7 +35,7 @@ export function Icon(props: IIconProps): JSX.Element {
       <div className={
         css(
           containerClassName,
-          styles.root
+          classNames.root
         ) }
       >
         <Image { ...props.imageProps as any } />
@@ -60,7 +62,7 @@ export function Icon(props: IIconProps): JSX.Element {
           css(
             'ms-Icon', // dangerous?
             iconDefinition.subset.className,
-            styles.root,
+            classNames.root,
             props.className
           ) }
       >

@@ -7,9 +7,20 @@ export type ICSSRule = 'initial' | 'inherit' | 'unset';
 export type ICSSPercentageRule = string;
 
 // See CSS 3 <length> type https://drafts.csswg.org/css-values-3/#lengths
-export type ICSSLengthRule = number | string;
+export type ICSSPixelUnitRule = string | number;
 
-export type IFontWeight = ICSSRule | 'normal' | 'bold' | 'bolder' | 'lighter' | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+export type IFontWeight =
+  ICSSRule |
+  'normal' | 'bold' | 'bolder' | 'lighter' |
+  '100' | 100 |
+  '200' | 200 |
+  '300' | 300 |
+  '400' | 400 |
+  '500' | 500 |
+  '600' | 600 |
+  '700' | 700 |
+  '800' | 800 |
+  '900' | 900;
 
 /**
  * The base font style.
@@ -53,7 +64,7 @@ export interface IRawFontStyle {
   | 'xx-large'
   | 'larger'
   | 'smaller'
-  | ICSSLengthRule
+  | ICSSPixelUnitRule
   | ICSSPercentageRule;
 
   /**
@@ -315,7 +326,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Shorthand that sets the values of border-bottom-color,
    * border-bottom-style, and border-bottom-width.
    */
-  borderBottom?: ICSSRule | number | string;
+  borderBottom?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the color of the bottom border of an element.
@@ -342,7 +353,7 @@ export interface IRawStyle extends IRawFontStyle {
    * border-width shorthand property which sets the values simultaneously for
    * border-top-width, border-right-width, border-bottom-width, and border-left-width.
    */
-  borderBottomWidth?: ICSSRule | string;
+  borderBottomWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Border-collapse can be used for collapsing the borders between table cells
@@ -384,7 +395,7 @@ export interface IRawStyle extends IRawFontStyle {
    * and central right edge. They represent inward distance from the top, right, bottom,
    * and left edges.
    */
-  borderImageWidth?: ICSSRule | string;
+  borderImageWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Shorthand property that defines the border-width, border-style and border-color of
@@ -392,7 +403,7 @@ export interface IRawStyle extends IRawFontStyle {
    * corresponding longhand properties to set specific individual properties of the left
    * border — border-left-width, border-left-style and border-left-color.
    */
-  borderLeft?: ICSSRule | number | string;
+  borderLeft?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The CSS border-left-color property sets the color of an element's left border. This
@@ -415,12 +426,12 @@ export interface IRawStyle extends IRawFontStyle {
    * border-width shorthand property which sets the values simultaneously for
    * border-top-width, border-right-width, border-bottom-width, and border-left-width.
    */
-  borderLeftWidth?: ICSSRule | string;
+  borderLeftWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Defines how round the border's corners are.
    */
-  borderRadius?: ICSSRule | string;
+  borderRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Shorthand property that defines the border-width, border-style and border-color of
@@ -428,7 +439,7 @@ export interface IRawStyle extends IRawFontStyle {
    * corresponding longhand properties to set specific individual properties of the
    * right border — border-right-width, border-right-style and border-right-color.
    */
-  borderRight?: ICSSRule | number | string;
+  borderRight?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the color of an element's right border. This page explains the
@@ -450,7 +461,7 @@ export interface IRawStyle extends IRawFontStyle {
    * border-width shorthand property which sets the values simultaneously for
    * border-top-width, border-right-width, border-bottom-width, and border-left-width.
    */
-  borderRightWidth?: ICSSRule | string;
+  borderRightWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Specifies the distance between the borders of adjacent cells.
@@ -472,7 +483,7 @@ export interface IRawStyle extends IRawFontStyle {
    * corresponding longhand properties to set specific individual properties of the top
    * border — border-top-width, border-top-style and border-top-color.
    */
-  borderTop?: ICSSRule | number | string;
+  borderTop?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the color of an element's top border. This page explains the border-top-color
@@ -504,14 +515,14 @@ export interface IRawStyle extends IRawFontStyle {
    * border-width shorthand property which sets the values simultaneously for
    * border-top-width, border-right-width, border-bottom-width, and border-left-width.
    */
-  borderTopWidth?: ICSSRule | string;
+  borderTopWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the width of an element's four borders. This property can have from one to
    * four values. This is a shorthand property for setting values simultaneously for
    * border-top-width, border-right-width, border-bottom-width, and border-left-width.
    */
-  borderWidth?: ICSSRule | number | string;
+  borderWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * This property specifies how far an absolutely positioned box's bottom margin edge
@@ -520,7 +531,7 @@ export interface IRawStyle extends IRawFontStyle {
    * (i.e., the box is given a position in the normal flow, then offset from that
    * position according to these properties).
    */
-  bottom?: ICSSRule | number | string;
+  bottom?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Breaks a box into fragments creating new borders, padding and repeating backgrounds
@@ -615,7 +626,7 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * Specifies the width of the rule between columns.
    */
-  columnRuleWidth?: ICSSRule | string;
+  columnRuleWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The column-span CSS property makes it possible for an element to span across all
@@ -627,7 +638,7 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * Specifies the width of columns in multi-column elements.
    */
-  columnWidth?: ICSSRule | string;
+  columnWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * This property is a shorthand property for setting column-width and/or column-count.
@@ -726,7 +737,7 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * Shorthand for `flex-grow`, `flex-shrink`, and `flex-basis`.
    */
-  flex?: ICSSRule | number | string;
+  flex?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The flex-basis CSS property describes the initial main size of the flex item before
@@ -870,7 +881,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Sets the height of an element. The content area of the element height does not
    * include the padding, border, and margin of the element.
    */
-  height?: ICSSRule | string;
+  height?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Specifies the minimum number of characters in a hyphenated word
@@ -908,7 +919,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Sets the left position of an element relative to the nearest anscestor that is set
    * to position absolute, relative, or fixed.
    */
-  left?: ICSSRule | number | string;
+  left?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The letter-spacing CSS property specifies the spacing behavior between text
@@ -920,7 +931,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Specifies the height of an inline block level element.
    * See CSS 2.1 line-height property https://www.w3.org/TR/CSS21/visudet.html#propdef-line-height
    */
-  lineHeight?: ICSSRule | 'normal' | number | ICSSLengthRule | ICSSPercentageRule;
+  lineHeight?: ICSSRule | 'normal' | number | ICSSPixelUnitRule | ICSSPercentageRule;
 
   /**
    * Shorthand property that sets the list-style-type, list-style-position and
@@ -951,27 +962,27 @@ export interface IRawStyle extends IRawFontStyle {
    * at once. Its equivalent longhand properties are margin-top, margin-right,
    * margin-bottom and margin-left. Negative values are also allowed.
    */
-  margin?: ICSSRule | number | string;
+  margin?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * margin-bottom sets the bottom margin of an element.
    */
-  marginBottom?: ICSSRule | number | string;
+  marginBottom?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * margin-left sets the left margin of an element.
    */
-  marginLeft?: ICSSRule | number | string;
+  marginLeft?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * margin-right sets the right margin of an element.
    */
-  marginRight?: ICSSRule | number | string;
+  marginRight?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * margin-top sets the top margin of an element.
    */
-  marginTop?: ICSSRule | number | string;
+  marginTop?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The marquee-direction determines the initial direction in which the marquee content moves.
@@ -1027,7 +1038,7 @@ export interface IRawStyle extends IRawFontStyle {
    * This property sets the width of the mask box image, similar to the CSS
    * border-image-width property.
    */
-  maskBorderWidth?: ICSSRule | string;
+  maskBorderWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Determines the mask painting area, which defines the area that is affected by
@@ -1062,26 +1073,26 @@ export interface IRawStyle extends IRawFontStyle {
    * Sets the maximum width for an element. It limits the width property to be larger
    * than the value specified in max-width.
    */
-  maxWidth?: ICSSRule | string;
+  maxWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the minimum height for an element. It prevents the height of the element to
    * be smaller than the specified value. The value of min-height overrides both
    * max-height and height.
    */
-  minHeight?: ICSSRule | string;
+  minHeight?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the minimum width of an element. It limits the width property to be not
    * smaller than the value specified in min-width.
    */
-  minWidth?: ICSSRule | string;
+  minWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
-  opacity?: ICSSRule | number;
+  opacity?: ICSSRule | number | string;
 
   /**
    * Specifies the order used to lay out flex items in their flex container.
@@ -1164,7 +1175,7 @@ export interface IRawStyle extends IRawFontStyle {
    * setting each side separately (padding-top, padding-right, padding-bottom,
    * padding-left).
    */
-  padding?: ICSSRule | number | string;
+  padding?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-bottom CSS property of an element sets the padding space required on
@@ -1172,7 +1183,7 @@ export interface IRawStyle extends IRawFontStyle {
    * element and its border. Contrary to margin-bottom values, negative values of
    * padding-bottom are invalid.
    */
-  paddingBottom?: ICSSRule | number | string;
+  paddingBottom?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-left CSS property of an element sets the padding space required on the
@@ -1180,7 +1191,7 @@ export interface IRawStyle extends IRawFontStyle {
    * element and its border. Contrary to margin-left values, negative values of
    * padding-left are invalid.
    */
-  paddingLeft?: ICSSRule | number | string;
+  paddingLeft?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-right CSS property of an element sets the padding space required on the
@@ -1188,7 +1199,7 @@ export interface IRawStyle extends IRawFontStyle {
    * element and its border. Contrary to margin-right values, negative values of
    * padding-right are invalid.
    */
-  paddingRight?: ICSSRule | number | string;
+  paddingRight?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The padding-top CSS property of an element sets the padding space required on the
@@ -1196,7 +1207,7 @@ export interface IRawStyle extends IRawFontStyle {
    * and its border. Contrary to margin-top values, negative values of padding-top are
    * invalid.
    */
-  paddingTop?: ICSSRule | number | string;
+  paddingTop?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The page-break-after property is supported in all major browsers. With CSS3,
@@ -1314,7 +1325,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Specifies the position an element in relation to the right side of the containing
    * element.
    */
-  right?: ICSSRule | number | string;
+  right?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Defines the alpha channel threshold used to extract a shape from an image. Can be
@@ -1371,7 +1382,7 @@ export interface IRawStyle extends IRawFontStyle {
    * SVG: Specifies the width of the outline on the current object.
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#StrokeWidthProperty
    */
-  strokeWidth?: ICSSRule | ICSSPercentageRule | ICSSLengthRule;
+  strokeWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The tab-size CSS property is used to customise the width of a tab (U+0009) character.
@@ -1497,7 +1508,7 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * Specifies the line width for the overline text decoration.
    */
-  textOverlineWidth?: ICSSRule | string;
+  textOverlineWidth?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The text-rendering CSS property provides information to the browser about how to
@@ -1539,7 +1550,7 @@ export interface IRawStyle extends IRawFontStyle {
    * is given a position in the normal flow, then offset from that position according to
    * these properties).
    */
-  top?: ICSSRule | number | string;
+  top?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Determines whether touch input may trigger default behavior supplied by the user
@@ -1714,7 +1725,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Specifies the width of the content area of an element. The content area of the element
    * width does not include the padding, border, and margin of the element.
    */
-  width?: ICSSRule | string;
+  width?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * The word-break property is often used when there is long generated content that is

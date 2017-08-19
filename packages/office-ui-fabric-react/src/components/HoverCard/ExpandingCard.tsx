@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   BaseComponent,
-  css,
   getNativeProps,
   divProperties,
   customizable,
@@ -13,7 +12,7 @@ import {
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { AnimationStyles, mergeStyles } from '../../Styling';
 
 import { getStyles } from './ExpandingCard.styles';
 
@@ -71,8 +70,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <Callout
         { ...getNativeProps(this.props, divProperties) }
         componentRef={ this._resolveRef('_callout') }
-        className={ css(
-          AnimationClassNames.scaleUpIn100,
+        className={ mergeStyles(
+          AnimationStyles.scaleUpIn100,
           this._styles.root
         ) }
         targetElement={ targetElement }
@@ -118,7 +117,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
       <div className={ mergeStyles(
         this._styles.expandedCard,
         this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
-        this.state.needsScroll && { 'overflow-y': 'auto' }
+        this.state.needsScroll && { overflowY: 'auto' }
       ) as string }
         ref={ this._resolveRef('_expandedElem') }
       >

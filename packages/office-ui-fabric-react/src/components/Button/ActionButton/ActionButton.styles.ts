@@ -1,7 +1,7 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets
+  concatStyleSets
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import {
@@ -18,13 +18,8 @@ export const getStyles = memoizeFunction((
   focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-<<<<<<< HEAD:packages/office-ui-fabric-react/src/components/Button/CommandButton/CommandButton.styles.ts
-  let baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let commandButtonStyles: IButtonStyles = {
-=======
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
->>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9:packages/office-ui-fabric-react/src/components/Button/ActionButton/ActionButton.styles.ts
     root: {
       minWidth: '40px',
       backgroundColor: theme.palette.neutralLighter,
@@ -33,46 +28,7 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
-<<<<<<< HEAD:packages/office-ui-fabric-react/src/components/Button/CommandButton/CommandButton.styles.ts
-      backgroundColor: theme.palette.neutralLight,
-      color: theme.palette.neutralDark,
-      icon: {
-        color: theme.palette.themeDark
-      }
-    },
-
-    rootPressed: {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDark
-      }
-    },
-
-    rootChecked: {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDarker
-      }
-    },
-
-    rootExpanded: {
-      backgroundColor: theme.palette.neutralQuaternaryAlt,
-      color: theme.palette.black,
-      icon: {
-        color: theme.palette.themeDark
-      }
-    },
-
-    rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralQuaternary,
-      color: theme.palette.black,
-=======
       color: theme.palette.themePrimary,
-      icon: {
-        color: theme.palette.themePrimary
-      }
     },
 
     iconHovered: {
@@ -102,7 +58,6 @@ export const getStyles = memoizeFunction((
 
     iconChecked: {
       color: theme.palette.themeDarker
->>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9:packages/office-ui-fabric-react/src/components/Button/ActionButton/ActionButton.styles.ts
     },
 
     label: {
@@ -111,13 +66,10 @@ export const getStyles = memoizeFunction((
 
     icon: {
       color: theme.palette.themeDarkAlt
-<<<<<<< HEAD:packages/office-ui-fabric-react/src/components/Button/CommandButton/CommandButton.styles.ts
-=======
     },
 
     iconDisabled: {
       color: 'inherit'
->>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9:packages/office-ui-fabric-react/src/components/Button/ActionButton/ActionButton.styles.ts
     },
 
     menuIcon: {
@@ -126,10 +78,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-<<<<<<< HEAD:packages/office-ui-fabric-react/src/components/Button/CommandButton/CommandButton.styles.ts
-  return mergeStyleSets(baseButtonStyles, commandButtonStyles, baseSplitButtonStyles, customStyles)!;
+  return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles);
 });
-=======
-  return mergeStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
-});
->>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9:packages/office-ui-fabric-react/src/components/Button/ActionButton/ActionButton.styles.ts
