@@ -62,9 +62,10 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
           { PHOTOS.map((photo, index) => (
             <div
               key={ index }
-              className={ css('ms-MarqueeSelectionBasicExample-photoCell', {
-                'is-selected': this._selection.isIndexSelected(index)
-              }) }
+              className={ css(
+                'ms-MarqueeSelectionBasicExample-photoCell',
+                this._selection.isIndexSelected(index) && 'is-selected'
+              ) }
               data-is-focusable={ true }
               data-selection-index={ index }
               onClick={ () => console.log('clicked') }

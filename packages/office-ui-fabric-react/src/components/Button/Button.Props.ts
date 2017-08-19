@@ -153,6 +153,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   /**
    * Any custom data the developer wishes to associate with the menu item.
    */
+  toggled?: boolean;
+
+  /**
+ * Any custom data the developer wishes to associate with the menu item.
+ */
   data?: any;
 }
 
@@ -243,6 +248,11 @@ export interface IButtonStyles {
    * Style for the icon on the near side of the label when pressed.
    */
   iconPressed?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label when expanded.
+   */
+  iconExpanded?: IStyle;
 
   /**
    * Style override for the icon when the button is disabled.

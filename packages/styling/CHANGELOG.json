@@ -2,6 +2,48 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.20.0",
+      "tag": "@uifabric/styling_v0.20.0",
+      "date": "Fri, 18 Aug 2017 16:32:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e35e5e23555797dae09d6f3aac98fd932c245f1d",
+            "comment": "mergeStyleSets: tweaked the return type to be less restrictive."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.2",
+      "tag": "@uifabric/styling_v0.19.2",
+      "date": "Mon, 14 Aug 2017 10:20:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "aed8e8abf6e9e97c6228d66e012e79da08fb63ea",
+            "comment": "getFocusStyle: Add -moz-focus-inner to fix outline bug"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.19.1",
+      "tag": "@uifabric/styling_v0.19.1",
+      "date": "Fri, 11 Aug 2017 19:38:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Qianqian Li <lqq201194@163.com>",
+            "commit": "c66fa123e9533644a1e1401005c8dc8a425aa448",
+            "comment": "add StreamLogo and PowerBILogo icons"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.19.0",
       "tag": "@uifabric/styling_v0.19.0",
       "date": "Tue, 08 Aug 2017 15:28:32 GMT",

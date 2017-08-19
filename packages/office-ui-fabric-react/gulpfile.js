@@ -54,9 +54,14 @@ build.tslint.setConfig({
   displayAsWarning: false
 });
 
+// Always fail on test failures.
+build.karma.setConfig({
+  failBuildOnErrors: true
+});
+
 // Configure TypeScript.
-// build.typescript.setConfig({ typescript: require('typescript') });
 build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
+
 // Use css modules.
 build.sass.setConfig({
   useCSSModules: true,
@@ -67,13 +72,13 @@ build.sass.setConfig({
 build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
-build.preCopy.isEnabled = () => false;
+build.postCopy.isEnabled = () => true;
 
 // Until typings work.
 //build.apiExtractor.isEnabled = () => false;
 
 // Copy fabric-core to dist to be published with fabric-react.
-build.postCopy.setConfig({
+build.preCopy.setConfig({
   shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [
@@ -97,7 +102,7 @@ build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 build.task('sass', build.sass);
-
+build.task('test', serial(build.sass, build.typescript, build.karma));
 build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
 
 // initialize tasks.

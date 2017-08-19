@@ -11,6 +11,16 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/experiments",
+      "projectFolder": "packages/experiments",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/merge-styles",
+      "projectFolder": "packages/merge-styles",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/utilities",
       "projectFolder": "packages/utilities",
       "shouldPublish": true

@@ -32,7 +32,7 @@
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
     "gulp": "~3.9.1",
-    "mocha": "~3.3.0",
+    "mocha": "^3.3.0",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",

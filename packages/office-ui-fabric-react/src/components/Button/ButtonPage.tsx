@@ -12,6 +12,7 @@ import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Ex
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonActionExample } from './examples/Button.Action.Example';
+import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
@@ -25,6 +26,7 @@ const ButtonCommandExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const ButtonPrimaryExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Primary.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
 const ButtonActionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx') as string;
+const ButtonCommandBarExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CommandBar.Example.tsx') as string;
 const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
@@ -65,8 +67,11 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
-            <ExampleCard title='Command Buttons' code={ ButtonCommandExampleCode }>
-              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+            <ExampleCard title='Command Bar Button' code={ ButtonCommandBarExampleCode }>
+              <ButtonCommandBarExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+            </ExampleCard>
+            <ExampleCard title='Action Button' code={ ButtonActionExampleCode }>
+              <ButtonActionExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
             <ExampleCard title='Action Button' code={ ButtonActionExampleCode }>
               <ButtonActionExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />

@@ -18,10 +18,18 @@ export class ActionButton extends BaseComponent<IButtonProps, {}> {
     return (
       <BaseButton
         { ...this.props }
+<<<<<<< HEAD
         variantClassName='ms-Button--action'
+=======
+        variantClassName='ms-Button--action ms-Button--command'
+>>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9
         styles={ getStyles(theme!, styles) }
         onRenderDescription={ nullRender }
       />
     );
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9

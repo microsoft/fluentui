@@ -52,9 +52,9 @@ export interface IChangeEventCallback {
  * @public
  */
 export class GlobalSettings {
-  public static getValue<T>(key: string, defaultValue?: T): T {
-    if (_globalSettings[key] === undefined && defaultValue !== undefined) {
-      GlobalSettings.setValue(key, defaultValue);
+  public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {
+    if (_globalSettings[key] === undefined) {
+      _globalSettings[key] = typeof defaultValue === 'function' ? defaultValue() : defaultValue;
     }
 
     return _globalSettings[key];

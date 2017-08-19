@@ -42,6 +42,7 @@ export const getClassNames = memoizeFunction((
       ],
       !disabled && !expanded && !checked && {
         ':hover': styles.rootHovered,
+        ':hover .ms-Button-icon': styles.iconHovered,
         ':hover .ms-Button-description': styles.descriptionHovered,
         ':hover .ms-Button-icon': styles.iconHovered,
         ':focus': styles.rootFocused,
@@ -67,6 +68,7 @@ export const getClassNames = memoizeFunction((
       'ms-Button-icon',
       iconClassName,
       styles.icon,
+      expanded && styles.iconExpanded,
       checked && styles.iconChecked,
       disabled && styles.iconDisabled,
     ) as string,
