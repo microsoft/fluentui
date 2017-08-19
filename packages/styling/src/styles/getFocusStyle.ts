@@ -1,6 +1,5 @@
-import { mergeStyles } from '../utilities/index';
-import { IProcessedStyle, ITheme } from '../interfaces/index';
-import { parent } from '../glamorExports';
+import { IExtendedRawStyle } from '@uifabric/merge-styles';
+import { ITheme } from '../interfaces/index';
 
 /**
  * Generates a focus style which can be used to define an :after focus border.
@@ -17,15 +16,18 @@ export function getFocusStyle(
   inset: string = '0',
   color: string | undefined = theme.palette.neutralSecondary,
   position: 'relative' | 'absolute' = 'relative'
-): IProcessedStyle {
-  return mergeStyles(
-    {
-      outline: 'transparent',
-      '::-moz-focus-inner': { border: 0 },
-      position
-    },
-    parent('.ms-Fabric.is-focusVisible', {
-      ':focus:after': {
+): IExtendedRawStyle {
+  return {
+    outline: 'transparent',
+    position,
+
+    selectors: {
+
+      '::-moz-focus-inner': {
+        border: '0'
+      },
+
+      '.ms-Fabric.is-focusVisible &:focus:after': {
         content: '""',
         position: 'absolute',
         left: inset,
@@ -34,6 +36,7 @@ export function getFocusStyle(
         right: inset,
         border: '1px solid ' + color
       }
-    })
-  );
+
+    }
+  };
 }

@@ -1,12 +1,10 @@
-import { IRawStyle } from '../interfaces/index';
+import { IExtendedRawStyle } from '@uifabric/merge-styles';
 
-export const hideText: IRawStyle = {
+export const hideText: IExtendedRawStyle = {
   position: 'absolute',
   width: '1px',
   height: '1px',
-  margin: '-1px',
-  padding: 0,
   overflow: 'hidden',
-  clip: 'rect(0,0,0,0)',
-  border: 0
+  opacity: .0001,
+  border: '0'
 };

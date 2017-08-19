@@ -150,7 +150,7 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * (Moz specific) font smoothing directive.
    */
-  MozFontSmoothing?: string;
+  MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
 
   /**
    * (Webkit specific) font smoothing directive.
@@ -565,6 +565,12 @@ export interface IRawStyle extends IRawFontStyle {
    * positioned below the floating elements that precede it in the markup.
    */
   clear?: ICSSRule | string;
+
+  /**
+   * This feature has been removed from the Web standards. Though some
+   * browsers may still support it, it is in the process of being dropped.
+   */
+  clip?: void;
 
   /**
    * Clipping crops an graphic, so that only a portion of the graphic is rendered, or

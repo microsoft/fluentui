@@ -89,6 +89,7 @@ interface IRawStyle extends IRawFontStyle {
   breakBefore?: ICSSRule | string;
   breakInside?: ICSSRule | string;
   clear?: ICSSRule | string;
+  clip?: void;
   clipRule?: ICSSRule | string;
   color?: ICSSRule | string;
   columnCount?: ICSSRule | number | 'auto';
@@ -165,7 +166,7 @@ interface IRawStyle extends IRawFontStyle {
   maxWidth?: ICSSRule | string;
   minHeight?: ICSSRule | string;
   minWidth?: ICSSRule | string;
-  MozFontSmoothing?: string;
+  MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
   opacity?: ICSSRule | number;
   order?: ICSSRule | number;
   orphans?: ICSSRule | number;
