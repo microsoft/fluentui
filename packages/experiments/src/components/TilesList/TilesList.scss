@@ -1,0 +1,47 @@
+
+@import '../../../../office-ui-fabric-react/src/common/common';
+
+.listCell {
+  display: block;
+  margin: 0;
+}
+
+.listPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell {
+  display: block;
+  position: relative;
+}
+
+.cellContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.cellFirstInRow {
+  display: block;
+}
+
+.sizer {
+  display: block;
+  visibility: hidden;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.none {
+  display: block;
+}

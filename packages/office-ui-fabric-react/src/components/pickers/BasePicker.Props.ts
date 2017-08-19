@@ -75,7 +75,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * AutoFill input native props
    * @default undefined
    */
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  inputProps?: IInputProps;
   /**
    * A callback for when a persona is removed from the suggestion list
    */
@@ -184,4 +184,11 @@ export enum ValidationState {
   valid,
   warning,
   invalid
+}
+
+export interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
+  /**
+   * Screen reader label to apply to an input element.
+   */
+  'aria-label'?: string;
 }

@@ -148,7 +148,7 @@ $DropDown-item-height: 32px;
 .title {
   @include ms-normalize;
   background: $ms-color-white;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
+  border: 1px solid $ms-color-neutralTertiary;
   cursor: pointer;
   display: block;
   height: $DropDown-height;

@@ -16,11 +16,13 @@ const DEFAULT_PADDING = '0 4px';
 
 export const getStyles = memoizeFunction((
   theme: ITheme,
-  customStyles?: IButtonStyles
+  customStyles?: IButtonStyles,
+  focusInset?: string,
+  focusColor?: string
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let commandButtonStyles: IButtonStyles = {
+  let actionButtonStyles: IButtonStyles = {
     root: {
       borderWidth: '0',
       padding: DEFAULT_PADDING,
@@ -30,11 +32,26 @@ export const getStyles = memoizeFunction((
     },
 
     rootHovered: {
-      color: theme.palette.themeDarker
+      color: theme.palette.themePrimary,
+      icon: {
+        color: theme.palette.themePrimary
+      }
+    },
+
+    iconHovered: {
+      color: theme.palette.themePrimary
     },
 
     rootPressed: {
+      color: theme.palette.black,
+    },
+
+    rootExpanded: {
       color: theme.palette.themePrimary
+    },
+
+    iconPressed: {
+      color: theme.palette.themeDarker
     },
 
     rootDisabled: {
@@ -43,15 +60,11 @@ export const getStyles = memoizeFunction((
     },
 
     rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
+      color: theme.palette.black,
     },
 
-    rootExpanded: {
-      color: theme.palette.themePrimary
-    },
-
-    rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight
+    iconChecked: {
+      color: theme.palette.themeDarker
     },
 
     flexContainer: {
@@ -59,7 +72,7 @@ export const getStyles = memoizeFunction((
     },
 
     icon: {
-      color: theme.palette.themePrimary
+      color: theme.palette.themeDarkAlt
     },
 
     iconDisabled: {
@@ -72,5 +85,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(baseButtonStyles, commandButtonStyles, splitButtonStyles, customStyles)!;
+  return mergeStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
 });
