@@ -129,7 +129,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   public render() {
-    let { suggestedDisplayValue } = this.state;
+    let { suggestedDisplayValue, items } = this.state;
     let {
       className,
       inputProps,
@@ -149,7 +149,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               { this.renderItems() }
-              <BaseAutoFill
+              { this.okToAddMore() && (<BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -164,13 +164,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 autoComplete='off'
                 role='combobox'
                 disabled={ disabled }
-              />
+              />) }
             </div>
           </SelectionZone>
         </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
+  }
+
+  protected okToAddMore(): boolean {
+    const { items } = this.state;
+    const { itemLimit } = this.props;
+    if (typeof itemLimit !== 'undefined' && items.length === itemLimit) {
+      return false;
+    }
+    return true;
   }
 
   protected renderSuggestions(): JSX.Element | null {
@@ -227,6 +236,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (newEl) {
         this.focusZone.focusElement(newEl);
       }
+    } else if (!this.okToAddMore()) {
+      (items[items.length - 1] as IPickerItemProps<T>).selected = true;
+      this.resetFocus(items.length - 1);
     } else {
       this.input.focus();
     }

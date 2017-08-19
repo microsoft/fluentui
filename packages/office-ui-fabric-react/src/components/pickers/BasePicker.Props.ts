@@ -93,6 +93,11 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default false
    */
   disabled?: boolean;
+
+  /**
+   * Restrict the amount of selectable items.
+   */
+  itemLimit?: number;
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
