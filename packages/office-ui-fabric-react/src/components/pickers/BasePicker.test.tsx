@@ -103,7 +103,6 @@ describe('Pickers', () => {
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
       expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
       input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-      console.log(input);
       expect(input).to.be.null;
 
       ReactDOM.unmountComponentAtNode(root);
