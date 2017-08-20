@@ -279,7 +279,7 @@ interface IStyleSheetConfig {
 export function keyframes(timeline: { [key: string]: {} }): string;
 
 // @public
-export function mergeStyles(...args: (IStyle | IStyle[])[]): string;
+export function mergeStyles(...args: (IStyle | IStyle[] | false | null | undefined)[]): string;
 
 // @public
 export function mergeStyleSets < T extends object >(...cssSets: (T | false | null | undefined)[]): {[P in keyof T]?: string };
