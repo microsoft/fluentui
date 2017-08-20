@@ -136,7 +136,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   public render() {
-    let { suggestedDisplayValue, items } = this.state;
+    let { suggestedDisplayValue } = this.state;
     let {
       className,
       inputProps,
