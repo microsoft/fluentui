@@ -96,6 +96,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * Restrict the amount of selectable items.
+   * @default undefined
    */
   itemLimit?: number;
   /**
