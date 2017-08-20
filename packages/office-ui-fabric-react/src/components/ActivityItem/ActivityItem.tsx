@@ -2,23 +2,13 @@
 import * as React from 'react';
 /* tslint:enable */
 
-import { autobind, BaseComponent, memoize } from '../../Utilities';
+import { autobind, BaseComponent } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
+import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-
-export interface IActivityItemClassNames {
-  root?: string;
-  activityContent?: string;
-  activityText?: string;
-  personaContainer?: string;
-  activityPersona?: string;
-  activityTypeIcon?: string;
-  commentText?: string;
-  timeStamp?: string;
-}
 
 export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
   private _classNames: IActivityItemClassNames;
@@ -39,7 +29,7 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     } = this.props;
 
     this._styles = getStyles(undefined, customStyles);
-    this._classNames = this._getClassNames(
+    this._classNames = getClassNames(
       this._styles,
       this.props.className!,
       this.props.activityPersonas!,
@@ -136,45 +126,4 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
     return personaElement;
   }
 
-  // Determine what classNames each element needs
-  @memoize
-  private _getClassNames(styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean): IActivityItemClassNames {
-    return {
-      root: mergeStyles(
-        'ms-ActivityItem',
-        styles.root,
-        className,
-        isCompact && styles.isCompactRoot
-      ) as string,
-
-      personaContainer: mergeStyles(
-        'ms-ActivityItem-personaContainer',
-        styles.personaContainer,
-        isCompact && styles.isCompactPersonaContainer
-      ) as string,
-
-      activityPersona: mergeStyles(
-        'ms-ActivityItem-activityPersona',
-        styles.activityPersona,
-        isCompact && styles.isCompactPersona,
-        !isCompact && activityPersonas && activityPersonas.length === 2 && styles.doublePersona
-      ) as string,
-
-      activityTypeIcon: mergeStyles(
-        'ms-ActivityItem-activityTypeIcon',
-        styles.activityTypeIcon,
-        isCompact && styles.isCompactIcon
-      ) as string,
-
-      activityContent: mergeStyles(
-        'ms-ActivityItem-activityContent',
-        styles.activityContent,
-        isCompact && styles.isCompactContent
-      ) as string,
-
-      activityText: mergeStyles('ms-ActivityItem-activityText', styles.activityText) as string,
-      commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText) as string,
-      timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp) as string
-    };
-  }
 }
