@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.9.1",
+      "tag": "@uifabric/utilities_v4.9.1",
+      "date": "Mon, 21 Aug 2017 10:19:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Minor tweaks to utilities to reduce the graph edges."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.9.0",
       "tag": "@uifabric/utilities_v4.9.0",
       "date": "Thu, 03 Aug 2017 10:13:03 GMT",
