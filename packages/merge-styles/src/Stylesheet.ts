@@ -134,7 +134,7 @@ export class Stylesheet {
 
     switch (injectionMode) {
       case InjectionMode.insertNode:
-        const { sheet } = element;
+        const { sheet } = element!;
 
         try {
           // tslint:disable-next-line:no-any
@@ -175,8 +175,8 @@ export class Stylesheet {
     }
   }
 
-  private _getElement(): HTMLStyleElement {
-    if (!this._styleElement) {
+  private _getElement(): HTMLStyleElement | undefined {
+    if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = document.createElement('style');
       document.head.appendChild(this._styleElement);
     }
