@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Aug 2017 16:32:33 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
 
 ## 4.35.0
 Fri, 18 Aug 2017 16:32:33 GMT
