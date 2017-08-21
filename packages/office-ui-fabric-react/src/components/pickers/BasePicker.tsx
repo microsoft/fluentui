@@ -104,8 +104,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   public dismissSuggestions() {
     // Select the first suggestion if one is available when user leaves.
-    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
-      this.addItemByIndex(0);
+    let selectItemFunction = () => {
+      if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+        this.addItemByIndex(0);
+      }
+    };
+    if (this.currentPromise) {
+      this.currentPromise.then(() => selectItemFunction());
+    } else {
+      selectItemFunction();
     }
     this.setState({ suggestionsVisible: false });
   }
@@ -147,7 +154,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
               <BaseAutoFill
                 { ...inputProps as any }
@@ -326,16 +333,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: itemValue,
       suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
     });
-
-    /**
-     * If user exits the input box before suggestions are returned,
-     * select the first result upon promise resolution, if a suggestion
-     * is available.
-     */
-    if (this.suggestionStore.hasSelectedSuggestion() &&
-      this.input.inputElement !== document.activeElement) {
-      this.addItemByIndex(0);
-    }
   }
 
   protected onChange(items?: T[]) {
@@ -528,6 +525,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       let newItems: T[] = this.state.items.concat([processedItemObject]);
       this._updateSelectedItems(newItems);
     }
+    this.setState({ suggestedDisplayValue: '' });
   }
 
   @autobind

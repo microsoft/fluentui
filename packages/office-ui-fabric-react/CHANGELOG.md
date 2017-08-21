@@ -1,6 +1,58 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 11 Aug 2017 19:38:35 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
+
+## 4.35.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- Added ActionButton and CommandBarButton
+- DetailsList: Resizing columns preserves justified mode.
+- TooltipHost: new onTooltipToggle callback
+
+### Patches
+
+- Minor cleanup in merging of css class names.
+- Dropdown: Fixed bug where selected state was not being removed from dropdown options
+- FocusZone: presssing home/end inside of an input/textarea element should respect cursor location.
+- Fix some unused code and typings in List
+- Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value.
+- Toggle: fixed issue where disabled Toggles are clickable. Also cleaned up some of the styling.
+- CommandBar: adding `aria-expanded` attribute to overflow menu.
+- DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
+
+## 4.33.0
+Tue, 15 Aug 2017 10:19:22 GMT
+
+### Minor changes
+
+- Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario.
+- Pickers: fixing accessiblity and styling issues
+
+### Patches
+
+- ComboBox: Fix role typo to read heading instead of header
+- Added menu indexes to the accessibility readouts for ContextMenus
+- Added the ability to change the root element of a FocusZone
 
 ## 4.32.0
 Fri, 11 Aug 2017 19:38:35 GMT

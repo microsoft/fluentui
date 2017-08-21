@@ -1,0 +1,77 @@
+{
+  "name": "@uifabric/experiments",
+  "entries": [
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/experiments_v0.1.1",
+      "date": "Mon, 21 Aug 2017 10:19:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Updating project dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.35.0` to `4.35.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.0 <5.0.0` to `>=4.2.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.0",
+      "tag": "@uifabric/experiments_v0.1.0",
+      "date": "Fri, 18 Aug 2017 16:32:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "be902328b437c88c85b8e1f924b421e94b163f5f",
+            "comment": "Added commandbar as ExperimentCommandBar"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "3ab591c8b3f3c9645beb16022d8a3e67c6ee2fac",
+            "comment": "Fix underflow for TilesList with stack grids"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.34.0` to `4.35.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.0.2",
+      "tag": "@uifabric/experiments_v0.0.2",
+      "date": "Wed, 16 Aug 2017 10:11:43 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.33.0` to `4.34.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.0.1",
+      "tag": "@uifabric/experiments_v0.0.1",
+      "date": "Tue, 15 Aug 2017 10:19:22 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.31.0` to `4.33.0`"
+          }
+        ]
+      }
+    }
+  ]
+}
