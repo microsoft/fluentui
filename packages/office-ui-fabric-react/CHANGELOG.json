@@ -2,6 +2,38 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.35.1",
+      "tag": "office-ui-fabric-react_v4.35.1",
+      "date": "Mon, 21 Aug 2017 10:19:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Updating project dependencies."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "0f3606270be2ca8b30a4ad753d678e1071a66c70",
+            "comment": "DetailsList: Move background color from .cell to .root for DetailsHeader"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "86e32f8ba71d8697da0c5f7f472619784b51a0bf",
+            "comment": "PeoplePicker: Fixing A11yMAS accessibility issue in selected items."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.0 <5.0.0` to `>=4.9.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.0 <5.0.0` to `>=4.2.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.35.0",
       "tag": "office-ui-fabric-react_v4.35.0",
       "date": "Fri, 18 Aug 2017 16:32:33 GMT",

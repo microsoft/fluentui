@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 18 Aug 2017 16:32:33 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+
+## 4.7.2
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
 
 ## 4.7.1
 Fri, 18 Aug 2017 16:32:33 GMT
