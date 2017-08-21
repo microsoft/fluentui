@@ -7,10 +7,16 @@ import {
   createArray
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { MarqueeSelection, Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
 
-const PHOTOS = createArray(250, () => {
+interface IPhoto extends IObjectWithKey {
+  url: string;
+  width: number;
+  height: number;
+}
+
+const PHOTOS: IPhoto[] = createArray(250, () => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
 
   return {
