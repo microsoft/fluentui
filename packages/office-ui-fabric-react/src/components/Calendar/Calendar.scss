@@ -26,7 +26,6 @@ $Calendar-dayPicker-margin: 10px;
 .holder {
   -webkit-overflow-scrolling: touch;
   @include ms-borderBox;
-  background: $ms-color-white;
   display: none;
 }
 
