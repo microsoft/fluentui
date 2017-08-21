@@ -110,6 +110,10 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
+.weekNumbers{
+  position: absolute;
+  top: 20px;
+}
 
 // The days on the calendar.
 .day, .weekday {

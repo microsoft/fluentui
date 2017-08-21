@@ -290,19 +290,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   @autobind
-  private _onPrevMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.tab && ev.shiftKey) {
-      if (this.props.onDismiss) {
-        ev.preventDefault();
-        ev.stopPropagation();
-        this.props.onDismiss();
-      }
-    } else {
-      this._onKeyDown(this._onSelectPrevMonth, ev);
-    }
-  }
-
-  @autobind
   private _onHeaderSelect() {
     let { onHeaderSelect } = this.props;
     if (onHeaderSelect) {
