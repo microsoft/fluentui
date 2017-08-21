@@ -13,8 +13,8 @@ import {
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
-const leftArrow: string = 'ChevronLeft';
-const rightArrow: string = 'ChevronRight';
+const leftArrow: string = 'Up';
+const rightArrow: string = 'Down';
 let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow

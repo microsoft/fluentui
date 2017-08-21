@@ -6,7 +6,6 @@ import {
   DayOfWeek
 } from 'office-ui-fabric-react/lib/Calendar';
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
-import { ICalendarIconStrings } from '../Calendar.Props';
 
 const DayPickerStrings = {
   months: [
@@ -75,7 +74,6 @@ export interface ICalendarInlineExampleProps {
   showNavigateButtons?: boolean;
   highlightCurrentMonth?: boolean;
   isDayPickerVisible?: boolean;
-  navigationIcons?: ICalendarIconStrings;
   showMonthPickerAsOverlay?: boolean;
 }
 
@@ -131,7 +129,6 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           strings={ DayPickerStrings }
           highlightCurrentMonth={ this.props.highlightCurrentMonth }
           isDayPickerVisible={ this.props.isDayPickerVisible }
-          navigationIcons={ this.props.navigationIcons }
           showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
         >
         </Calendar>

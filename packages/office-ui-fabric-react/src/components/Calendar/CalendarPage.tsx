@@ -8,16 +8,11 @@ import {
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-import { ICalendarIconStrings } from './Calendar.Props';
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
-    let navIcons: ICalendarIconStrings = {
-      leftNavigation: 'Up',
-      rightNavigation: 'Down'
-    }
     return (
       <ComponentPage
         title='Calendar'
@@ -29,11 +24,11 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showGoToToday={ false } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with overlayed month picker when header is clicked' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample showMonthPickerAsOverlay={ true } highlightCurrentMonth={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } navigationIcons={ navIcons }
-                showGoToToday={ true } />
+              <CalendarInlineExample showMonthPickerAsOverlay={ true } highlightCurrentMonth={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+                showGoToToday={ false } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } navigationIcons={ navIcons } highlightCurrentMonth={ true }
+              <CalendarInlineExample dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } highlightCurrentMonth={ true }
                 showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>

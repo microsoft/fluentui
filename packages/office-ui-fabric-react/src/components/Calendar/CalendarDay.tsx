@@ -92,10 +92,23 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
-    //When the month is highlighted get the corner squares so that rounded corners can be added to them
+    //When the month is highlighted get the corner dates so that rounded corners can be added to them
     let weekCorners: any[] = [];
+    let nextMonth = addMonths(selectedDate, 1)
+    let previousMonth = addMonths(selectedDate, -1)
     if (dateRangeType == 2) {
-      weekCorners = selectedDate.getMonth() == navigatedDate.getMonth() ? this.findWeekCorners(weeks) : this.findUnFocusedWeekCorners(weeks);
+      //navigatedDate is on the current month and current year
+      if (selectedDate.getMonth() == navigatedDate.getMonth() && selectedDate.getFullYear() == navigatedDate.getFullYear()) {
+        weekCorners = this.findWeekCorners(weeks)
+      }
+      //navigatedDate is next month
+      else if (nextMonth.getMonth() == navigatedDate.getMonth() && nextMonth.getFullYear() == navigatedDate.getFullYear()) {
+        weekCorners = this.findUnFocusedWeekCorners(weeks);
+      }
+      //navigatedDate is previous month
+      else if (previousMonth.getMonth() == navigatedDate.getMonth() && previousMonth.getFullYear() == previousMonth.getFullYear()) {
+        weekCorners = this.findUnFocusedWeekCorners(weeks);
+      }
     }
 
     return (
@@ -217,6 +230,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private findWeekCorners(weeks: any) {
+    console.log("CURRENT MONTH")
     let weekCorners: any[] = [];
     let daysInWeek = weeks[0].length;
     let numberOfWeeks = weeks.length;
@@ -301,6 +315,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private findUnFocusedWeekCorners(weeks: any) {
+    console.log("NEXT TO MONTH")
     let weekCorners: any[] = [];
     let daysInWeek = weeks[0].length;
     let numberOfWeeks = weeks.length;

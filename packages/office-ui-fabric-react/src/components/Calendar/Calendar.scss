@@ -103,7 +103,6 @@ $Calendar-dayPicker-margin: 10px;
   table-layout: fixed;
   font-size: inherit;
   margin-top: 10px;
-  margin-right: 10px;
 
   td {
     margin: 0;
@@ -135,7 +134,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // Out of focus days.
 .dayIsUnfocused {
-  color: $ms-color-neutralSecondary;
+  color: $ms-color-neutralTertiary;
   font-weight: $ms-font-weight-regular;
 }
 
@@ -154,6 +153,7 @@ $Calendar-dayPicker-margin: 10px;
 
 .dayIsUnfocused:active, .dayIsFocused:active, .dayIsHighlighted{
   &.day{
+    color: $ms-color-black;
     background: $ms-color-themeLight;
   }
 }
@@ -169,6 +169,7 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
+  font-weight: 600;
 }
 
 //Background for highlighted day
@@ -257,7 +258,7 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   height: 210px;
   width: 280px;
-  @include margin(15px, 0, 0, 0);
+  @include margin(12px, 0, 0, 0);
 }
 
 // Button to select a different month.
@@ -284,6 +285,7 @@ $Calendar-dayPicker-margin: 10px;
     background-color: $ms-color-neutralPrimary;
     color: $ms-color-white;
   }
+
 }
 
 
@@ -301,7 +303,12 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-right(13px);
 
   &:hover {
+    color: $ms-color-themePrimary;
     outline: 1px solid transparent;
+  }
+
+  &:active {
+    color: $ms-color-themeDark;
   }
 }
 
@@ -436,10 +443,14 @@ $Calendar-dayPicker-margin: 10px;
       height: $Calendar-month;
       line-height: $Calendar-month;
       font-size: 12px;
-      @include margin(0, 10px, 10px, 0);
+      @include margin(0, 11px, 11px, 0);
 
       &:hover {
         outline: 1px solid transparent;
+      }
+
+      &:nth-child(4n+4){
+        @include margin(0, 0px, 11px, 0);
       }
     }
     // Position the "Go to today" button below the month picker.
@@ -479,16 +490,23 @@ $Calendar-dayPicker-margin: 10px;
   }
 
   .calendarsInline{
+    .wrap {
+      padding: 9px 12px;
+    }
+
     .holder {
       width: 440px;
     }
 
+    .table{
+      margin-right: 12px
+    }
     .monthPicker{
-      margin-left: 10px;
+      margin-left: 13px;
     }
 
     .goToday {
-      @include ms-right(25px);
+      @include ms-right(15px);
     }
   }
 }
@@ -546,11 +564,22 @@ $Calendar-dayPicker-margin: 10px;
 
 .monthIsHighlighted{
   background-color: $ms-color-themeLight;
+
+  &.monthOption:hover{
+    background-color: $ms-color-themeLight;
+  }
 }
 
 .monthIsCurrentMonth {
+  font-weight: 600;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
+
+  &.monthOption:hover{
+    font-weight: 600;
+    color: $ms-color-white;
+    background-color: $ms-color-themePrimary;
+  }
 }
 
 .monthOption:active{
