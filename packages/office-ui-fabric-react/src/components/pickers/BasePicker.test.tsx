@@ -81,7 +81,7 @@ describe('Pickers', () => {
 
     });
 
-    it('can be restricted to only one selection', () => {
+    it('can will not render input when items reach itemLimit', () => {
       let root = document.createElement('div');
       document.body.appendChild(root);
       let picker: TypedBasePicker = ReactDOM.render(
@@ -104,6 +104,46 @@ describe('Pickers', () => {
       expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
       input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
       expect(input).to.be.null;
+
+      ReactDOM.unmountComponentAtNode(root);
+    });
+
+    it('will still render with itemLimit set to 0', () => {
+      let root = document.createElement('div');
+      document.body.appendChild(root);
+      let picker: TypedBasePicker = ReactDOM.render(
+        <BasePickerWithType
+          onResolveSuggestions={ onResolveSuggestions }
+          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
+          onRenderSuggestionsItem={ basicSuggestionRenderer }
+          itemLimit={ 0 }
+        />,
+        root
+      ) as TypedBasePicker;
+
+      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+      expect(input).to.be.null;
+
+      ReactDOM.unmountComponentAtNode(root);
+    });
+
+    it('can be set with selectedItems and a lower itemLimit', () => {
+      let root = document.createElement('div');
+      document.body.appendChild(root);
+      let picker: TypedBasePicker = ReactDOM.render(
+        <BasePickerWithType
+          selectedItems={ [{ key: '1', name: 'blue' }, { key: '2', name: 'black' }] }
+          onResolveSuggestions={ onResolveSuggestions }
+          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
+          onRenderSuggestionsItem={ basicSuggestionRenderer }
+          itemLimit={ 0 }
+        />,
+        root
+      ) as TypedBasePicker;
+
+      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+      expect(input).to.be.null;
+      expect(picker.items.length).to.equal(2);
 
       ReactDOM.unmountComponentAtNode(root);
     });
