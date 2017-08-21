@@ -162,11 +162,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen!,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled!,
-            'is-required ': required!,
-          }) }
+          className={ css(
+            'ms-Dropdown',
+            styles.root,
+            className,
+            isOpen! && 'is-open',
+            disabled! && ('is-disabled ' + styles.rootIsDisabled),
+            required! && 'is-required',
+          ) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
@@ -214,7 +217,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options, selectedKey, selectedKeys } = this.props;
+    let { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
     let { selectedIndex, selectedIndexes } = this.state;
     let checked: boolean = selectedIndexes ? selectedIndexes.indexOf(index) > -1 : false;
 
@@ -223,7 +226,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (index !== selectedIndex) {
       if (selectedKey === undefined) {
         // Set the selected option if this is an uncontrolled component
-        if (this.props.multiSelect) {
+        if (multiSelect) {
           let newIndexes = selectedIndexes ? this._copyArray(selectedIndexes) : [];
           if (checked) {
             let position = newIndexes.indexOf(index);
@@ -246,9 +249,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       }
       if (onChanged) {
         // for single-select, option passed in will always be selected.
+        if (!multiSelect) {
+          options.map((option: any) => option.selected === true ? option.selected = false : null);
+        }
         // for multi-select, flip the checked value
         let changedOpt = options[index];
-        changedOpt.selected = this.props.multiSelect ? !checked : true;
+        changedOpt.selected = multiSelect ? !checked : true;
         onChanged(changedOpt, index);
       }
     }

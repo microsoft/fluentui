@@ -10,11 +10,23 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Link/LinkPage').LinkPage,
-          key: 'Link',
-          name: 'Link',
-          url: '#/examples/link'
+          component: require<any>('../components/CommandBar/CommandBarPage').CommandBarPage,
+          key: 'CommandBar',
+          name: 'CommandBar',
+          url: '#/examples/commandbar'
         },
+        {
+          component: require<any>('../components/Tile/TilePage').TilePage,
+          key: 'Tile',
+          name: 'Tile',
+          url: '#/examples/tile'
+        },
+        {
+          component: require<any>('../components/TilesList/TilesListPage').TilesListPage,
+          key: 'TilesList',
+          name: 'TilesList',
+          url: '#/examples/tileslist'
+        }
       ]
     }
   ],
