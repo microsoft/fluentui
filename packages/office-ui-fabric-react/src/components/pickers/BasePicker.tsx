@@ -156,7 +156,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
-              { this.okToAddMore() && (<BaseAutoFill
+              { this.canAddItems() && (<BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -180,13 +180,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     );
   }
 
-  protected okToAddMore(): boolean {
+  protected canAddItems(): boolean {
     const { items } = this.state;
     const { itemLimit } = this.props;
-    if (typeof itemLimit !== 'undefined' && items.length === itemLimit) {
-      return false;
-    }
-    return true;
+    return itemLimit === undefined || items.length < itemLimit;
   }
 
   protected renderSuggestions(): JSX.Element | null {
@@ -243,7 +240,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (newEl) {
         this.focusZone.focusElement(newEl);
       }
-    } else if (!this.okToAddMore()) {
+    } else if (!this.canAddItems()) {
       (items[items.length - 1] as IPickerItemProps<T>).selected = true;
       this.resetFocus(items.length - 1);
     } else {
