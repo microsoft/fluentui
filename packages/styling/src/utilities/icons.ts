@@ -1,16 +1,19 @@
-import { GlobalSettings } from '@uifabric/utilities/lib/GlobalSettings';
-import { fontFace } from '../glamorExports';
-import { mergeStyles } from './mergeStyles';
-import { FontWeights } from '../styles/DefaultFontStyles';
-import { IRawStyle } from '../interfaces/IRawStyle';
-import { IFontFace } from '../interfaces/IFontFace';
+import {
+  GlobalSettings
+} from '@uifabric/utilities/lib/GlobalSettings';
+import {
+  IExtendedRawStyle,
+  IFontFace,
+  fontFace,
+  mergeStyles
+} from '@uifabric/merge-styles';
 
 export interface IIconSubset {
   fontFace: IFontFace;
   icons: {
     [key: string]: string;
   };
-  style?: IRawStyle;
+  style?: IExtendedRawStyle;
 }
 
 export interface IIconSubsetRecord extends IIconSubset {
@@ -79,7 +82,7 @@ export function getIcon(name?: string | null): IIconRecord | undefined {
         subset.style,
         {
           fontFamily: subset.fontFace.fontFamily,
-          fontWeight: subset.fontFace.fontWeight || FontWeights.regular,
+          fontWeight: subset.fontFace.fontWeight || 'normal',
           fontStyle: subset.fontFace.fontStyle || 'normal'
         }).toString();
 

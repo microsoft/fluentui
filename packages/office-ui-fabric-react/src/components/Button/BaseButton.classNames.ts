@@ -41,21 +41,24 @@ export const getClassNames = memoizeFunction((
         styles.rootDisabled
       ],
       !disabled && !expanded && !checked && {
-        ':hover': styles.rootHovered,
-        ':hover .ms-Button-icon': styles.iconHovered,
-        ':hover .ms-Button-description': styles.descriptionHovered,
-        ':hover .ms-Button-icon': styles.iconHovered,
-        ':focus': styles.rootFocused,
-        ':active': styles.rootPressed,
-        ':active .ms-Button-icon': styles.iconPressed,
-        ':active .ms-Button-description': styles.descriptionPressed
+        selectors: {
+          ':hover': styles.rootHovered,
+          ':hover .ms-Button-icon': styles.iconHovered,
+          ':hover .ms-Button-description': styles.descriptionHovered,
+          ':focus': styles.rootFocused,
+          ':active': styles.rootPressed,
+          ':active .ms-Button-icon': styles.iconPressed,
+          ':active .ms-Button-description': styles.descriptionPressed
+        }
       },
       disabled && checked && [
         styles.rootCheckedDisabled
       ],
       !disabled && checked && {
-        ':hover': styles.rootCheckedHovered,
-        ':active': styles.rootCheckedPressed
+        selectors: {
+          ':hover': styles.rootCheckedHovered,
+          ':active': styles.rootCheckedPressed
+        }
       }
     ) as string,
 

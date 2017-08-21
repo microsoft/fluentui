@@ -1,4 +1,4 @@
-import { IRawStyle } from '../interfaces/index';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 /**
  * UI Fabric font set.

@@ -16,11 +16,7 @@
       "es2017",
       "dom"
     ],
-    "types": [
-      "chai",
-      "mocha",
-      "webpack-env"
-    ],
+    "types": [],
     "paths": {
       "@uifabric/styling": [
         "./src"

@@ -1,5 +1,12 @@
-import { IFontStyles, IRawStyle } from '../interfaces/index';
-import { fontFace } from '../glamorExports';
+import {
+  fontFace,
+  IExtendedRawStyle,
+  IFontWeight
+} from '@uifabric/merge-styles';
+import {
+  IFontStyles
+} from '../interfaces/index';
+
 import { getLanguage } from '@uifabric/utilities/lib/language';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
@@ -64,8 +71,6 @@ const LanguageToFontMap = {
   'zh-hant': FontFamilyChineseTraditional,
 };
 
-const FontFileVersion = 2.38;
-
 // Standard font sizes.
 export namespace FontSizes {
   export const mini = '10px';
@@ -121,7 +126,7 @@ function _getFontFamily(): string {
   return `${fontFamily}, ${FontFamilyFallbacks}`;
 }
 
-function _createFont(size: string, weight: number): IRawStyle {
+function _createFont(size: string, weight: IFontWeight): IExtendedRawStyle {
   return {
     fontFamily: _getFontFamily(),
     MozOsxFontSmoothing: 'grayscale',
@@ -134,7 +139,7 @@ function _createFont(size: string, weight: number): IRawStyle {
 function _registerFontFace(
   fontFamily: string,
   url: string,
-  fontWeight?: number
+  fontWeight?: IFontWeight
 ): void {
   fontFamily = `'${fontFamily}'`;
 

@@ -17,14 +17,16 @@ export const getStyles = memoizeFunction((
       position: 'relative',
       display: 'inline-block',
       border: '1px solid transparent',
-      ':hover': {
-        border: '1px solid',
-        borderColor: theme.palette.neutralLight
-      },
-      ':focus': {
-        outline: 'none!important',
-        border: '1px solid',
-        borderColor: theme.palette.neutralDark
+      selectors: {
+        ':hover': {
+          border: '1px solid',
+          borderColor: theme.palette.neutralLight
+        },
+        ':focus': {
+          outline: 'none!important',
+          border: '1px solid',
+          borderColor: theme.palette.neutralDark
+        }
       }
     },
 
@@ -45,16 +47,20 @@ export const getStyles = memoizeFunction((
       verticalAlign: 'top',
       width: '32px',
       backgroundColor: theme.palette.neutralLighter,
-      ':hover': {
-        backgroundColor: theme.palette.neutralLight
-      },
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLight
+        }
+      }
     },
 
     splitButtonMenuButtonDisabled: {
       backgroundColor: theme.palette.neutralLighter,
-      ':hover': {
-        backgroundColor: theme.palette.neutralLighter,
-        cursor: 'default'
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLighter,
+          cursor: 'default'
+        }
       }
     },
 

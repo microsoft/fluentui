@@ -4,13 +4,14 @@ import { ISpinButtonStyles } from './SpinButton.Props';
 
 import {
   ITheme,
-  IStyle,
-  mergeStyleSets,
+  IExtendedRawStyle,
+  concatStyleSets,
+  FontSizes
 } from '../../Styling';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
-const _getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
+const _getDisabledStyles = memoizeFunction((theme: ITheme): IExtendedRawStyle => {
   const { semanticColors, palette } = theme;
 
   const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
@@ -77,7 +78,7 @@ export const getArrowButtonStyles = memoizeFunction((
       }
     },
     rootDisabled: {
-      opacity: '0',
+      opacity: 0,
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'GrayText'
       }
@@ -100,7 +101,7 @@ export const getArrowButtonStyles = memoizeFunction((
 
   };
 
-  return mergeStyleSets(
+  return concatStyleSets(
     defaultArrowButtonStyles,
     isUpArrow ? defaultUpArrowButtonStyles : defaultDownArrowButtonStyles,
     customSpecificArrowStyles
@@ -198,7 +199,7 @@ export const getStyles = memoizeFunction((
       marginRight: '0',
       marginBottom: '0',
       marginLeft: '0',
-      fontSize: fonts.medium,
+      fontSize: FontSizes.medium,
       color: SpinButtonInputTextColor,
       height: '100%',
       paddingTop: '3px',
@@ -240,5 +241,5 @@ export const getStyles = memoizeFunction((
     },
     arrowButtonsContainerDisabled: _getDisabledStyles(theme),
   };
-  return mergeStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
+  return concatStyleSets(defaultStyles, customStyles) as ISpinButtonStyles;
 });

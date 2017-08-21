@@ -1,6 +1,6 @@
 'use strict';
 
-let build = require('@microsoft/sp-build-web');
+let build = require('@microsoft/web-library-build');
 let path = require('path');
 let gulp = require('gulp');
 let buildConfig = build.getConfig();
@@ -31,6 +31,7 @@ build.sass.isEnabled = () => false;
 build.karma.isEnabled = () => false;
 build.text.isEnabled = () => false;
 build.preCopy.isEnabled = () => false;
+build.webpack.isEnabled = () => false;
 
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;

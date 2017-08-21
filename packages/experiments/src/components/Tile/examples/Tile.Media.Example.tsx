@@ -8,7 +8,6 @@ import {
   Signal,
   NewSignal,
   CommentsSignal,
-  TrendingSignal,
   SharedSignal,
   MentionSignal
 } from '../../signals/Signals';

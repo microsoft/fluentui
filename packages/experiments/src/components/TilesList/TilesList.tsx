@@ -437,11 +437,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
 
     const itemWidthOverHeight = item.aspectRatio || 1;
-    const itemHeightOverWidth = 1 / itemWidthOverHeight;
     const margin = grid.spacing / 2;
-
     const isFill = gridMode === TilesGridMode.fill;
-
     const width = itemWidthOverHeight * grid.minRowHeight;
 
     return {

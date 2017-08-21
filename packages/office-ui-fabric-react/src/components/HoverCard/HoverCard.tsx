@@ -4,11 +4,14 @@ import * as React from 'react';
 import {
   BaseComponent,
   autobind,
-  css,
   divProperties,
   getNativeProps,
   getId
 } from '../../Utilities';
+import {
+  mergeStyles
+} from '../../Styling';
+
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode } from './ExpandingCard.Props';
@@ -92,7 +95,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     }
     return (
       <div
-        className={ css(this._styles.host) }
+        className={ mergeStyles(this._styles.host) }
         ref={ this._resolveRef('_hoverCard') }
         aria-describedby={ setAriaDescribedBy && isHoverCardVisible ? hoverCardId : undefined }
       >

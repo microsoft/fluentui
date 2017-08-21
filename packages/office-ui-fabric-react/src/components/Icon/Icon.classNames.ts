@@ -6,10 +6,15 @@ import {
 } from '../../Utilities';
 import { IIconStyles } from './Icon.Props';
 
-export const getStyles = memoizeFunction((
+export interface IIconClassNames {
+  root?: string;
+  imageContainer?: string;
+}
+
+export const getClassNames = memoizeFunction((
   customStyles?: IIconStyles
-): IIconStyles => {
-  let iconStyles = {
+): IIconClassNames => {
+  let iconStyles: IIconStyles = {
     root: {
       display: 'inline-block'
     },
@@ -19,5 +24,8 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(iconStyles, customStyles)!;
+  return mergeStyleSets(
+    iconStyles,
+    customStyles
+  );
 });

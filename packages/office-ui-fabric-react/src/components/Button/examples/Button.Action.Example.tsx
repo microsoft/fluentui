@@ -28,8 +28,4 @@ export class ButtonActionExample extends React.Component<IButtonProps, any> {
       </div>
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 7141e63018997876d0c4f9d8dc6e420eb5f52db9

@@ -1,6 +1,5 @@
 import { IAnimationStyles } from '../interfaces/index';
-import { IRawStyle } from '../interfaces/index';
-import { keyframes } from '../glamorExports';
+import { IRawStyle, keyframes } from '@uifabric/merge-styles';
 
 /* Register the keyframes */
 
