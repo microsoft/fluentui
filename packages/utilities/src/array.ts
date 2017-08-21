@@ -6,7 +6,7 @@
  * @param array - Array to search.
  * @param cb - Callback which returns true on matches.
  */
-export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number {
+export function findIndex<T>(array: T[], cb: (item: any, index: number) => boolean): number {
   let index = -1;
 
   for (let i = 0; array && i < array.length; i++) {
@@ -26,11 +26,11 @@ export function findIndex(array: any[], cb: (item: any, index?: number) => boole
  * @param size - Size of array.
  * @param getItem - Callback to populate given cell index.
  */
-export function createArray(size: number, getItem?: (index?: number) => any): any[] {
+export function createArray<T>(size: number, getItem: (index: number) => T): T[] {
   let array = [];
 
   for (let i = 0; i < size; i++) {
-    array.push(getItem ? getItem(i) : null);
+    array.push(getItem(i));
   }
 
   return array;
