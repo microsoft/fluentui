@@ -4,6 +4,9 @@
  * This is a test entry point to help karma-webpack find all tests in the project.
  **/
 
+// Polyfills
+require('es6-map/implement');
+
 // Before loading modules, treat errors and warnings as test failures.
 console.error = console.warn = function (warning) {
   throw new Error(warning);

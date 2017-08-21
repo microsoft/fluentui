@@ -1,3 +1,4 @@
+/* tslint:disable:no-unused-variable */
 
 import * as React from 'react';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';

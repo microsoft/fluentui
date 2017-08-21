@@ -3,13 +3,11 @@ import {
   BaseComponent,
   css,
   getId,
-  autobind,
-  assign
+  autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import * as stylesImport from './CommandBar.scss';
@@ -83,6 +81,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     return (
       <ResizeGroup
+        className={ className }
         data={ commandBardata }
         onReduceData={ onReduceData }
         onGrowData={ onGrowData }
@@ -99,7 +98,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
                 onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
                   return (
-                    this._onRenderButton({
+                    onRenderButton({
                       key: 'oveflowButton',
                       styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
                       ariaLabel: elipisisAriaLabel,
