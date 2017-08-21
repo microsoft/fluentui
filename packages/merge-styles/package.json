@@ -1,0 +1,49 @@
+{
+  "name": "@uifabric/merge-styles",
+  "version": "0.0.1",
+  "description": "Office UI Fabric style loading utilities.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp",
+    "clean": "gulp clean",
+    "test": "gulp",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+  },
+  "devDependencies": {
+    "@microsoft/web-library-build": "^3.2.1",
+    "@types/chai": "3.4.35",
+    "@types/enzyme": "2.8.0",
+    "@types/es6-promise": "^0.0.32",
+    "@types/es6-weak-map": "1.2.0",
+    "@types/mocha": "2.2.39",
+    "@types/prop-types": "15.5.1",
+    "@types/react": "15.0.38",
+    "@types/react-addons-test-utils": "0.14.18",
+    "@types/react-dom": "15.5.1",
+    "@types/sinon": "2.2.2",
+    "@types/webpack-env": "1.13.0",
+    "enzyme": "^2.7.0",
+    "es6-map": "^0.1.5",
+    "es6-promise": "^4.1.0",
+    "es6-weak-map": "^2.0.2",
+    "gulp": "~3.9.1",
+    "mocha": "^3.3.0",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "sinon": "^2.3.2",
+    "source-map-loader": "^0.2.1",
+    "typescript": "2.4.2",
+    "webpack-bundle-analyzer": "^2.2.1"
+  },
+  "dependencies": {
+    "tslib": "^1.7.1"
+  }
+}

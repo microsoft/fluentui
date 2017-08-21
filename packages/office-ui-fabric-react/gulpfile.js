@@ -72,13 +72,13 @@ build.sass.setConfig({
 build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
-build.preCopy.isEnabled = () => false;
+build.postCopy.isEnabled = () => true;
 
 // Until typings work.
 //build.apiExtractor.isEnabled = () => false;
 
 // Copy fabric-core to dist to be published with fabric-react.
-build.postCopy.setConfig({
+build.preCopy.setConfig({
   shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [

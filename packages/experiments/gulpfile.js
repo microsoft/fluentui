@@ -40,9 +40,6 @@ build.sass.setConfig({
   moduleExportName: ''
 });
 
-// Use Karma Tests - Disable during develoment if prefered
-build.karma.isEnabled = () => true;
-
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
 
