@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 describe('provideUnits', () => {
   it('can provide units', () => {
-    const propertiesToTest = [
+    [
       'left',
       'right',
       'top',
@@ -20,7 +20,7 @@ describe('provideUnits', () => {
   });
 
   it('can provide units for directional props', () => {
-    const propertiesToTest = [
+    [
       'padding',
       'margin',
       'border'

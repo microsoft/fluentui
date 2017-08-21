@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.1.1",
+      "tag": "@uifabric/experiments_v0.1.1",
+      "date": "Mon, 21 Aug 2017 10:19:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Updating project dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.35.0` to `4.35.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.0 <5.0.0` to `>=4.2.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.0",
       "tag": "@uifabric/experiments_v0.1.0",
       "date": "Fri, 18 Aug 2017 16:32:33 GMT",
