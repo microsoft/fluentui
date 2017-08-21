@@ -459,7 +459,7 @@ $Calendar-dayPicker-margin: 10px;
       height: $Calendar-day;
       line-height: $Calendar-day;
       padding: 0 10px;
-      @include ms-right(14px);
+      @include ms-right(10px);
       @include text-align(right);
       top: 199px;
     }
@@ -505,7 +505,7 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .goToday {
-      @include ms-right(15px);
+      @include ms-right(13px);
     }
   }
 }
