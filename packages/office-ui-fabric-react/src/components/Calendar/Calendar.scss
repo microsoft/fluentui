@@ -110,11 +110,6 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-.weekNumbers{
-  position: absolute;
-  top: 20px;
-}
-
 // The days on the calendar.
 .day, .weekday {
   width: $Calendar-day;
@@ -173,6 +168,24 @@ $Calendar-dayPicker-margin: 10px;
   background: $ms-color-neutralTertiary;
 }
 
+.showWeekNumbers{
+  .weekNumbers{
+    position: absolute;
+    margin-top: $Calendar-day;
+    border-right: 1px solid $ms-color-neutralTertiary;
+    .day{
+      color: $ms-color-neutralTertiary;
+    }
+  }
+  .table{
+    &:not(.weekNumbers){
+      margin-left: $Calendar-day;
+    }
+    .day, .weekday{
+      width: 30px;
+    }
+  }
+}
 
 // Month and year pickers, hidden on small screens by default.
 .monthPicker,
@@ -405,6 +418,20 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
+  .showWeekNumbers{
+    .weekNumbers{
+      margin-top: $Calendar-day;
+    }
+    .table{
+      &:not(.weekNumbers){
+        margin-left: $Calendar-day;
+      }
+      .day, .weekday{
+        width: 25px;
+      }
+    }
+  }
+
   // Show the day picker and month picker side-by-side, if enabled
   .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
@@ -506,6 +533,7 @@ $Calendar-dayPicker-margin: 10px;
       }
     }
   }
+
 
   // Show the month picker over date picker (1 column layout), if enabled
   .overlayedCalendars {
