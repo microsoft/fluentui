@@ -47,7 +47,6 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         });
 
       this._events.on(window, 'resize', this._onAsyncResize);
-      this._updateViewport();
     }
 
     public componentWillUnmount() {
@@ -56,13 +55,10 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
     public render() {
       let { viewport } = this.state;
-      let isViewportVisible = viewport!.width > 0 && viewport!.height > 0;
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
-          { isViewportVisible && (
-            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props as any } />
-          ) }
+          <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props as any } />
         </div>
       );
     }
