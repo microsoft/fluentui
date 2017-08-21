@@ -92,21 +92,21 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
-    //When the month is highlighted get the corner dates so that rounded corners can be added to them
+    // When the month is highlighted get the corner dates so that rounded corners can be added to them
     let weekCorners: any[] = [];
-    let nextMonth = addMonths(selectedDate, 1)
-    let previousMonth = addMonths(selectedDate, -1)
-    if (dateRangeType == 2) {
-      //navigatedDate is on the current month and current year
-      if (selectedDate.getMonth() == navigatedDate.getMonth() && selectedDate.getFullYear() == navigatedDate.getFullYear()) {
-        weekCorners = this.findWeekCorners(weeks)
+    let nextMonth = addMonths(selectedDate, 1);
+    let previousMonth = addMonths(selectedDate, -1);
+    if (dateRangeType === 2) {
+      // navigatedDate is on the current month and current year
+      if (selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
+        weekCorners = this.findWeekCorners(weeks);
       }
-      //navigatedDate is next month
-      else if (nextMonth.getMonth() == navigatedDate.getMonth() && nextMonth.getFullYear() == navigatedDate.getFullYear()) {
+      // navigatedDate is next month
+      else if (nextMonth.getMonth() === navigatedDate.getMonth() && nextMonth.getFullYear() === navigatedDate.getFullYear()) {
         weekCorners = this.findUnFocusedWeekCorners(weeks);
       }
-      //navigatedDate is previous month
-      else if (previousMonth.getMonth() == navigatedDate.getMonth() && previousMonth.getFullYear() == previousMonth.getFullYear()) {
+      // navigatedDate is previous month
+      else if (previousMonth.getMonth() === navigatedDate.getMonth() && previousMonth.getFullYear() === previousMonth.getFullYear()) {
         weekCorners = this.findUnFocusedWeekCorners(weeks);
       }
     }
@@ -183,9 +183,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { week.map((day, dayIndex) =>
                     <td key={ day.key } className={ css(
                       {
-                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType == 1,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this.checkHighlightCorner(weekCorners, dayIndex, weekIndex)]: day.isSelected && dateRangeType == 2,
-                        ['ms-DatePicker-day--dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType == 0
+                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === 1,
+                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this.checkHighlightCorner(weekCorners, dayIndex, weekIndex)]: day.isSelected && dateRangeType === 2,
+                        ['ms-DatePicker-day--dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === 0
                       }) }
                     >
                       <div
@@ -196,7 +196,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
                             ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
-                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType == 0
+                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === 0
                           }) }
                         role='button'
                         onClick={ day.onSelected }
@@ -230,33 +230,32 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private findWeekCorners(weeks: any) {
-    console.log("CURRENT MONTH")
     let weekCorners: any[] = [];
     let daysInWeek = weeks[0].length;
     let numberOfWeeks = weeks.length;
 
-    //highlighted days in first week of month
+    // Highlighted days in first week of month
     let firstWeek: any[] = [];
     weeks[0].map((day: any, index: number) => {
-      if (day.isInMonth) { firstWeek.push(index) }
+      if (day.isInMonth) { firstWeek.push(index); }
     });
 
-    //highlighted days in last week of month
+    // Highlighted days in last week of month
     let lastWeek: any[] = [];
     weeks[numberOfWeeks - 1].map((day: any, index: number) => {
-      if (day.isInMonth) { lastWeek.push(index) }
+      if (day.isInMonth) { lastWeek.push(index); }
     });
 
     if (firstWeek.length == 1) {
-      //If only one highlighted day in first week this square has rounded corners on top
+      // If only one highlighted day in first week this square has rounded corners on top
       weekCorners.push({
         index: daysInWeek - 1,
         styles: styles.roundedCornersTop,
         week: 0
-      })
+      });
     }
     else {
-      //Add rounded corners to first and last highlighted squares in the first week
+      // Add rounded corners to first and last highlighted squares in the first week
       weekCorners.push({
         index: firstWeek[0],
         styles: styles.roundedCornersTopLeft,
@@ -269,9 +268,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         });
     }
 
-    //If the first week does not have the whole week highlighted
-    //The first square in week 2 will need rounded corners
-    if (daysInWeek != firstWeek.length) {
+    // If the first week does not have the whole week highlighted
+    // The first square in week 2 will need rounded corners
+    if (daysInWeek !== firstWeek.length) {
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersTopLeft,
@@ -280,15 +279,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     if (lastWeek.length == 1) {
-      //If only one highlighted day in last week this square has rounded corners on the bottom
+      // If only one highlighted day in last week this square has rounded corners on the bottom
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersBottom,
         week: numberOfWeeks - 1
-      })
+      });
     }
     else {
-      //Add rounded corners to first and last highlighted squares in the last week
+      // Add rounded corners to first and last highlighted squares in the last week
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersBottomLeft,
@@ -301,9 +300,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         });
     }
 
-    //If the last week does not have the whole week highlighted
-    //The last square in the week before it will need rounded corners
-    if (daysInWeek != lastWeek.length) {
+    // If the last week does not have the whole week highlighted
+    // The last square in the week before it will need rounded corners
+    if (daysInWeek !== lastWeek.length) {
       weekCorners.push({
         index: daysInWeek - 1,
         styles: styles.roundedCornersBottomRight,
@@ -315,33 +314,32 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private findUnFocusedWeekCorners(weeks: any) {
-    console.log("NEXT TO MONTH")
     let weekCorners: any[] = [];
     let daysInWeek = weeks[0].length;
     let numberOfWeeks = weeks.length;
 
-    //highlighted days in first week of month
+    // Highlighted days in first week of month
     let firstWeek: any[] = [];
     weeks[0].map((day: any, index: number) => {
-      if (!day.isInMonth) { firstWeek.push(index) }
+      if (!day.isInMonth) { firstWeek.push(index); }
     });
 
-    //highlighted days in last week of month
+    // Highlighted days in last week of month
     let lastWeek: any[] = [];
     weeks[numberOfWeeks - 1].map((day: any, index: number) => {
-      if (!day.isInMonth) { lastWeek.push(index) }
+      if (!day.isInMonth) { lastWeek.push(index); }
     });
 
     if (firstWeek.length == 1) {
-      //If only one highlighted day this square has rounded corners on all sides
+      // If only one highlighted day this square has rounded corners on all sides
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersFull,
         week: 0
-      })
+      });
     }
     else {
-      //Add rounded corners to first and last highlighted squares in the first week
+      // Add rounded corners to first and last highlighted squares in the first week
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersLeft,
@@ -355,15 +353,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     if (lastWeek.length == 1) {
-      //If only one highlighted day this square has rounded corners on all sides
+      // If only one highlighted day this square has rounded corners on all sides
       weekCorners.push({
         index: daysInWeek - 1,
         styles: styles.roundedCornersFull,
         week: numberOfWeeks - 1
-      })
+      });
     }
     else {
-      //Add rounded corners to first and last highlighted squares in the last week
+      // Add rounded corners to first and last highlighted squares in the last week
       weekCorners.push({
         index: lastWeek[0],
         styles: styles.roundedCornersLeft,
@@ -376,9 +374,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         });
     }
     return weekCorners
-
   }
-
 
   private checkHighlightCorner(weekCorners: any, dayIndex: number, weekIndex: number) {
     let cornerStyle = '0px';
