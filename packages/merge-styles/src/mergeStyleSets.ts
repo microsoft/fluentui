@@ -9,17 +9,19 @@ import { IStyle } from './IStyle';
  * @public
  */
 export function mergeStyleSets<T extends object>(
-  ...cssSets: T[]
+  ...cssSets: (T | false | null | undefined)[]
 ): {[P in keyof T]?: string } {
   const classNameSet: {[P in keyof T]?: string } = {};
   let cssSet = cssSets[0];
 
-  if (cssSets.length > 1) {
-    cssSet = concatStyleSets(...cssSets);
-  }
-  for (const prop in cssSet) {
-    if (cssSet.hasOwnProperty(prop)) {
-      classNameSet[prop] = mergeStyles(cssSet[prop] as IStyle);
+  if (cssSet) {
+    if (cssSets.length > 1) {
+      cssSet = concatStyleSets(...cssSets);
+    }
+    for (const prop in cssSet) {
+      if (cssSet.hasOwnProperty(prop)) {
+        classNameSet[prop] = mergeStyles(cssSet[prop] as IStyle);
+      }
     }
   }
 
