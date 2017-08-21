@@ -49,10 +49,10 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendors',
-      minChunks: module => isExternal(module)
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendors',
+    //   minChunks: module => isExternal(module)
+    // }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
@@ -80,8 +80,8 @@ function isExternal(module) {
   }
 
   return (
-   context.indexOf('node_modules') !== -1 ||
-   context.indexOf('packages/styling') !== -1 ||
-   context.indexOf('packages/utilities') !== -1
+    context.indexOf('node_modules') !== -1 ||
+    context.indexOf('packages/styling') !== -1 ||
+    context.indexOf('packages/utilities') !== -1
   );
 }
