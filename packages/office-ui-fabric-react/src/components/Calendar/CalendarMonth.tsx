@@ -102,7 +102,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                     styles.monthOption,
                     {
                       ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today!),
-                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && (navigatedDate.getMonth() == index)
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && (navigatedDate.getMonth() === index)
                     })
                 }
                 key={ index }

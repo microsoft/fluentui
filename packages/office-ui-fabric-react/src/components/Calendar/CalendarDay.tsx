@@ -97,16 +97,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let nextMonth = addMonths(selectedDate, 1);
     let previousMonth = addMonths(selectedDate, -1);
     if (dateRangeType === 2) {
-      // navigatedDate is on the current month and current year
       if (selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
+        // navigatedDate is on the current month and current year
         weekCorners = this.findWeekCorners(weeks);
-      }
-      // navigatedDate is next month
-      else if (nextMonth.getMonth() === navigatedDate.getMonth() && nextMonth.getFullYear() === navigatedDate.getFullYear()) {
+      } else if (nextMonth.getMonth() === navigatedDate.getMonth() && nextMonth.getFullYear() === navigatedDate.getFullYear()) {
+        // navigatedDate is next month
         weekCorners = this.findUnFocusedWeekCorners(weeks);
-      }
-      // navigatedDate is previous month
-      else if (previousMonth.getMonth() === navigatedDate.getMonth() && previousMonth.getFullYear() === previousMonth.getFullYear()) {
+      } else if (previousMonth.getMonth() === navigatedDate.getMonth() && previousMonth.getFullYear() === previousMonth.getFullYear()) {
+        // navigatedDate is previous month
         weekCorners = this.findUnFocusedWeekCorners(weeks);
       }
     }
@@ -246,15 +244,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       if (day.isInMonth) { lastWeek.push(index); }
     });
 
-    if (firstWeek.length == 1) {
+    if (firstWeek.length === 1) {
       // If only one highlighted day in first week this square has rounded corners on top
       weekCorners.push({
         index: daysInWeek - 1,
         styles: styles.roundedCornersTop,
         week: 0
       });
-    }
-    else {
+    } else {
       // Add rounded corners to first and last highlighted squares in the first week
       weekCorners.push({
         index: firstWeek[0],
@@ -278,15 +275,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       });
     }
 
-    if (lastWeek.length == 1) {
+    if (lastWeek.length === 1) {
       // If only one highlighted day in last week this square has rounded corners on the bottom
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersBottom,
         week: numberOfWeeks - 1
       });
-    }
-    else {
+    } else {
       // Add rounded corners to first and last highlighted squares in the last week
       weekCorners.push({
         index: 0,
@@ -309,7 +305,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         week: numberOfWeeks - 2
       });
     }
-    return weekCorners
+    return weekCorners;
 
   }
 
@@ -330,15 +326,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       if (!day.isInMonth) { lastWeek.push(index); }
     });
 
-    if (firstWeek.length == 1) {
+    if (firstWeek.length === 1) {
       // If only one highlighted day this square has rounded corners on all sides
       weekCorners.push({
         index: 0,
         styles: styles.roundedCornersFull,
         week: 0
       });
-    }
-    else {
+    } else {
       // Add rounded corners to first and last highlighted squares in the first week
       weekCorners.push({
         index: 0,
@@ -352,15 +347,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         });
     }
 
-    if (lastWeek.length == 1) {
+    if (lastWeek.length === 1) {
       // If only one highlighted day this square has rounded corners on all sides
       weekCorners.push({
         index: daysInWeek - 1,
         styles: styles.roundedCornersFull,
         week: numberOfWeeks - 1
       });
-    }
-    else {
+    } else {
       // Add rounded corners to first and last highlighted squares in the last week
       weekCorners.push({
         index: lastWeek[0],
@@ -373,20 +367,20 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           week: numberOfWeeks - 1
         });
     }
-    return weekCorners
+    return weekCorners;
   }
 
   private checkHighlightCorner(weekCorners: any, dayIndex: number, weekIndex: number) {
     let cornerStyle = '0px';
     if (weekCorners) {
       weekCorners.forEach((corner: any) => {
-        if (corner.index == dayIndex && corner.week == weekIndex) {
+        if (corner.index === dayIndex && corner.week === weekIndex) {
           cornerStyle = corner.styles;
         }
       });
     }
 
-    return cornerStyle
+    return cornerStyle;
   }
 
   private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
