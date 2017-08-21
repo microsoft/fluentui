@@ -1,10 +1,10 @@
-import { IStyleSet } from './IStyleSet';
-
 /**
  * Combine a set of styles together (but does not register css classes.)
  * @public
  */
-export function concatStyleSets<T extends object>(...args: (T | false | null | undefined)[]): T {
+export function concatStyleSets<T extends object>(
+  ...args: (T | false | null | undefined)[]
+): T {
   // tslint:disable-next-line:no-any
   const mergedSet: T = {} as any;
 
