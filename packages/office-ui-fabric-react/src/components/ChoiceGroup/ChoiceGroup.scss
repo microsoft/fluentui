@@ -127,11 +127,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       border: 2px solid $radioButton-border-selected-color;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+        border-color: Highlight;
       }
     }
 
@@ -143,11 +139,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       height: 10px;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+        border-color: Highlight;
       }
     }
 
@@ -169,11 +161,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       border-color: $radioButton-border-disabled-color;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackDisabled;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteDisabled;
+        border-color: GrayText;
       }
     }
 
@@ -181,11 +169,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       color: $radioButton-text-disabled-color;
 
       @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackDisabled;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteDisabled;
+        color: GrayText;
       }
     }
   }
@@ -336,38 +320,13 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     line-height: $iconSize;
     height: $iconSize;
   }
-
-}
-
-
-@mixin highContrast-border($active-color, $bw-color, $size: 2px) {
-  @media screen and (-ms-high-contrast: active) {
-    border: $size solid $active-color;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: $size solid $bw-color;
-  }
-}
-
-@mixin highContrast-color($active-color, $bw-color) {
-  @media screen and (-ms-high-contrast: active) {
-    color: $active-color;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $bw-color;
-  }
 }
 
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
 
   @media screen and (-ms-high-contrast: active) {
-     @include focus-border(1px, $ms-color-white, 2px, false);
-  }
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include focus-border(1px, $ms-color-black, 2px, false);
+     @include focus-border(1px, WindowText, 2px, false);
   }
 }
 
@@ -376,10 +335,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     @include focus-border(0, $ms-color-neutralPrimary, 1px, false);
 
     @media screen and (-ms-high-contrast: active) {
-      @include focus-border(1px, $ms-color-white, 2px, false);
-    }
-    @media screen and (-ms-high-contrast: black-on-white) {
-      @include focus-border(1px, $ms-color-black, 3px, false);
+      @include focus-border(1px, WindowText, 2px, false);
     }
   }
 }

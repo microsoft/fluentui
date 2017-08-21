@@ -47,7 +47,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
 
   public render() {
     let { disabled, checked } = this.props;
-    const style: IButtonStyles = { splitButtonMenuButton: { backgroundColor: 'white', width: '10px' }, splitButtonMenuIcon: { fontSize: '7px' } };
+    const style: IButtonStyles = { splitButtonMenuButton: { backgroundColor: 'white', width: '18px' }, splitButtonMenuIcon: { fontSize: '7px' } };
 
     return (
       <div>

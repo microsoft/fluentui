@@ -121,11 +121,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &:hover,
   &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
-      @include focus-border(0px, $ms-color-white, 1px, false);
-      }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      @include focus-border(0px, $ms-color-black, 1px, false);
+      @include focus-border(0px, WindowText, 1px, false);
     }
   }
 
@@ -211,12 +207,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   @include border-right(1px, solid, $ms-color-neutralLight);
 
   @media screen and (-ms-high-contrast: active) {
-    @include border-right(1px, solid, $ms-color-white);
+    @include border-right(1px, solid, WindowText);
     z-index: 10;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include border-right(1px, solid, $ms-color-black);
   }
 
   &:before {
@@ -233,11 +225,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
-      @include focus-border(0px, $ms-color-white, 1px, false);
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      @include focus-border(0px, $ms-color-black, 1px, false);
+      @include focus-border(0px, WindowText, 1px, false);
     }
   }
 }
@@ -256,11 +244,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   font-size: $ms-font-size-m;
 
   @media screen and (-ms-high-contrast: active) {
-    @include border-left($SearchBox-height, solid, $ms-color-black);
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include border-left($SearchBox-height, solid, $ms-color-white);
+    @include border-left($SearchBox-height, solid, Window);
   }
 
   // remove default iOS styles on input boxes
@@ -302,6 +286,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
   position: absolute;
   text-align: center;
+  -ms-high-contrast-adjust: none;
 }
 
 // New rules

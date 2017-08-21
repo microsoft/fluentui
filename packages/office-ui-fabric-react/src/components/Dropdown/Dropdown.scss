@@ -15,19 +15,9 @@ $DropDown-item-height: 32px;
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
   @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-contrastBlackSelected;
-    border-color: $ms-color-contrastBlackSelected;
-    color: $ms-color-black;
-
-    &:focus {
-      border-color: $ms-color-black;
-    }
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-contrastWhiteSelected;
-    border-color: $ms-color-contrastWhiteSelected;
-    color: $ms-color-white;
+    background-color: Highlight;
+    border-color: Highlight;
+    color: HighlightText;
   }
 
   @include highContrastAdjust();
@@ -51,11 +41,7 @@ $DropDown-item-height: 32px;
       color: $ms-color-black;
 
       @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteSelected;
+        color: Highlight;
       }
     }
     .titleIsPlaceHolder {
@@ -69,11 +55,7 @@ $DropDown-item-height: 32px;
       border-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+        border-color: Highlight;
       }
     }
   }
@@ -83,11 +65,7 @@ $DropDown-item-height: 32px;
       border-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+        border-color: Highlight;
       }
     }
   }
@@ -107,14 +85,10 @@ $DropDown-item-height: 32px;
     cursor: default;
 
     @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackDisabled;
-      color: $ms-color-contrastBlackDisabled;
+      border-color: GrayText;
+      color: GrayText;
     }
 
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteDisabled;
-      color: $ms-color-contrastWhiteDisabled;
-    }
     &.titleIsError {
         border-color: $ms-color-error;
     }
@@ -124,11 +98,7 @@ $DropDown-item-height: 32px;
     color: $ms-color-neutralTertiary;
 
     @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-contrastBlackDisabled;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-contrastWhiteDisabled;
+      color: GrayText;
     }
   }
 }
@@ -211,11 +181,7 @@ $DropDown-item-height: 32px;
   text-align: left;
 
   @media screen and (-ms-high-contrast: active) {
-    border-color: $ms-color-black;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border-color: $ms-color-white;
+    border-color: Window;
   }
 
   &:hover {
