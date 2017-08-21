@@ -1,8 +1,5 @@
 'use strict';
 
-// Polyfills
-require('es6-weak-map/implement');
-
 /**
  * This is a test entry point to help karma-webpack find all tests in the project.
  **/
