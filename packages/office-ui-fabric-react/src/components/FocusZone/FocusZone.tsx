@@ -243,8 +243,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         break;
       }
     }
-
-    this._updateTabIndexes();
   }
 
   private setActiveElement(element: HTMLElement): void {
