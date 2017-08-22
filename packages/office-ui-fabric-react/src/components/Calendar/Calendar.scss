@@ -125,6 +125,10 @@ $Calendar-dayPicker-margin: 10px;
 .dayIsToday {
   position: relative;
   background-color: $ms-color-themeLight;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid WindowText;
+  }
 }
 
 
@@ -159,6 +163,10 @@ $Calendar-dayPicker-margin: 10px;
   cursor: pointer;
   color: $ms-color-white;
   background: $ms-color-themePrimary;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid Highlight;
+  }
 }
 
 
