@@ -200,15 +200,44 @@ function getDatePartHashValue(date: Date) {
   /* tslint:enable:no-bitwise */
 }
 
+
 /**
- * Returns week number for a date when supplied the date and the first day of that week.
+ * Returns week number for a date.
  */
-export function getWeekofYear(date: Date, firstDayOfWeek: number) {
+export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
+  console.log('week length ', weeks.length)
+  let monthRange = getDateRangeArray(navigatedDate, DateRangeType.Month, firstDayOfWeek);
+  console.log(monthRange)
+  let weekDates = [monthRange[0], addDays(monthRange[0], weeks[0].length - 1)]
+  console.log('weekDates ', weekDates);
+  let weekDates0;
+  let weekDates1;
+
+  let weekArray = []
+  for (let x = 0; x < weeks.length; x++) {
+
+    weekDates0 = weekDates[0];
+    weekDates1 = weekDates[1];
+
+    // Get week number using last day of the week
+    if (weekDates0.getMonth() === navigatedDate.getMonth() || weekDates1.getMonth() === navigatedDate.getMonth()) {
+      weekArray.push(getWeekofYear(weekDates1, 0));
+    }
+    weekDates[0] = addDays(weekDates0, weeks[0].length);
+    weekDates[1] = addDays(weekDates1, weeks[0].length);
+
+  }
+
+  return weekArray;
+
+}
+
+
+function getWeekofYear(date: Date, firstDayOfWeek: number) {
   let num = getDayOfYear(date) - 1;
   let num2 = (date.getDay()) - (num % 7);
   let num3 = ((num2 - firstDayOfWeek) + 14) % 7;
 
-  console.log('returning', Math.floor(((num + num3) / 7) + 1));
   return Math.floor(((num + num3) / 7) + 1);
 }
 

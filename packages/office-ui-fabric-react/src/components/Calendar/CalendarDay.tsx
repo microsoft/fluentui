@@ -20,7 +20,7 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekofYear
+  getWeekNumbers
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
@@ -88,12 +88,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, navigationIcons, showWeekNumbers } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
+    let weekNumbers = showWeekNumbers ? getWeekNumbers(weeks!, firstDayOfWeek, navigatedDate) : null;
 
+    console.log('weekNumbersArray ', weekNumbers)
     return (
       <div className={ css(
         'ms-DatePicker-dayPicker',
@@ -151,7 +153,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers, 'ms-DatePicker-table', styles.table) }
               >
                 <tbody>
-                  { weeks!.map((day, index) =>
+                  { weekNumbers!.map((weekNumber, index) =>
                     <tr key={ index }>
                       <td>
 
@@ -161,7 +163,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             styles.day
                           ) }
                         >
-                          <span>{ getWeekofYear(day[0].originalDate, 0) }</span>
+                          <span>{ weekNumber }</span>
                         </div>
                       </td>
                     </tr>
@@ -364,4 +366,5 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     return weeks;
   }
+
 }
