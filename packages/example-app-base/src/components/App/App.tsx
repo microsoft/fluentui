@@ -65,12 +65,15 @@ export class App extends React.Component<IAppProps, any> {
     }
 
     let navPanel = (
-      <Nav groups={ appDefinition.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={ (link: INavLink) => ([
-        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-        (link.status !== undefined ?
-          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-          null)
-      ]) }
+      <Nav
+        groups={ appDefinition.examplePages }
+        onLinkClick={ this._onLinkClick }
+        onRenderLink={ (link: INavLink) => ([
+          <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
+          (link.status !== undefined ?
+            <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+            null)
+        ]) }
       />
     );
 
@@ -102,7 +105,8 @@ export class App extends React.Component<IAppProps, any> {
             isOpen={ isMenuVisible }
             isLightDismiss={ true }
             type={ PanelType.smallFixedNear }
-            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }>
+            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }
+          >
             { navPanel }
           </Panel>
         ) : (null) }

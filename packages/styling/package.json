@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
     "clean": "gulp clean",
-    "build": "gulp"
+    "build": "node ../../scripts/build.js"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "^1.1.0",
@@ -25,6 +25,7 @@
     "enzyme": "^2.7.0",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
+    "es6-map": "^0.1.5",
     "gulp": "~3.9.1",
     "mocha": "^3.2.0",
     "mocha-loader": "^1.1.1",
