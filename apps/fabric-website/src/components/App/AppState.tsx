@@ -334,6 +334,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ToggleComponentPage').ToggleComponentPage))
         },
         {
+          title: 'Tooltip',
+          url: '#/components/tooltip',
+          component: () => <LoadingComponent title='Tooltip' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/TooltipComponentPage').TooltipComponentPage))
+        },
+        {
           title: 'Utilities',
           url: '#/components/utilities',
           component: () => <LoadingComponent title='Utilities' />,

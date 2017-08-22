@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "4.7.0",
+  "version": "4.7.2",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,7 +29,6 @@
     "@types/react-addons-test-utils": "0.14.19",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": "4.1.1",
     "autoprefixer": "^6.7.6",
     "chai": "^3.5.0",
     "css-loader": "^0.28.0",
@@ -44,7 +43,7 @@
     "gutil": "1.6.4",
     "highlight.js": "^9.6.0",
     "load-themed-styles-loader": "^0.0.3",
-    "mocha": "^3.2.0",
+    "mocha": "^3.3.0",
     "mocha-loader": "^1.1.1",
     "node-sass": "^4.5.0",
     "office-ui-fabric-core": ">=7.1.2 <8.0.0",
@@ -58,7 +57,7 @@
     "resemblejs": "~2.2.3",
     "sass-loader": "^6.0.3",
     "sinon": "^2.3.2",
-    "source-map-loader": "0.2.1",
+    "source-map-loader": "^0.2.1",
     "ts-loader": "^2.0.1",
     "typescript": "2.4.2",
     "webpack": "^3.5.1",
@@ -68,13 +67,12 @@
     "webpack-split-by-path": "2.0.0"
   },
   "dependencies": {
-    "@uifabric/example-app-base": ">=4.2.0 <5.0.0",
-    "@uifabric/utilities": ">=4.9.0 <5.0.0",
+    "@uifabric/example-app-base": ">=4.2.1 <5.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
     "load-themed-styles": "^1.1.0",
     "office-ui-fabric-core": ">=7.1.2 <8.0.0",
-    "office-ui-fabric-react": ">=4.34.0 <5.0.0",
+    "office-ui-fabric-react": ">=4.35.2 <5.0.0",
     "tslib": "^1.6.0"
   }
 }

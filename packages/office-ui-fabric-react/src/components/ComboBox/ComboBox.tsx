@@ -937,7 +937,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return -1;
     }
 
-    return findIndex(options, (option => (option.isSelected || option.selected || option.key === selectedKey)));
+    return findIndex(options, (option => (option.selected || option.key === selectedKey)));
   }
 
   /**

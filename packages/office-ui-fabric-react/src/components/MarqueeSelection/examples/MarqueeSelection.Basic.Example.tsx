@@ -10,10 +10,11 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
 
-const PHOTOS = createArray(250, () => {
+const PHOTOS = createArray(250, (index: number) => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
 
   return {
+    key: index,
     url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
     height: 100
@@ -62,9 +63,10 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
           { PHOTOS.map((photo, index) => (
             <div
               key={ index }
-              className={ css('ms-MarqueeSelectionBasicExample-photoCell', {
-                'is-selected': this._selection.isIndexSelected(index)
-              }) }
+              className={ css(
+                'ms-MarqueeSelectionBasicExample-photoCell',
+                this._selection.isIndexSelected(index) && 'is-selected'
+              ) }
               data-is-focusable={ true }
               data-selection-index={ index }
               onClick={ () => console.log('clicked') }
