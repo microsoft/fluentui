@@ -184,13 +184,8 @@
   font-weight: $ms-font-weight-semilight;
 
   @include high-contrast {
-    border-top: 1px solid $ms-color-white;
-    border-bottom: 1px solid $ms-color-white;
-  }
-
-  @include high-contrast-black-on-white  {
-    border-top: 1px solid $ms-color-black;
-    border-bottom: 1px solid $ms-color-black;
+    border-top: 1px solid WindowText;
+    border-bottom: 1px solid WindowText;
   }
 }
 

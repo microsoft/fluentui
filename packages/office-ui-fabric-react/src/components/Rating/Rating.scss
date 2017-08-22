@@ -41,12 +41,24 @@ $Rating-largeIconSize: 20px;
 
     color: $Rating-defaultColor;
 
+    @media screen and (-ms-high-contrast: active) {
+      color: WindowText;
+    }
+
     &.starIsSelected {
       color: $Rating-selectedColor;
+
+      @media screen and (-ms-high-contrast: active) {
+        color: Highlight;
+      }
     }
 
     &.starIsDisabled {
       color: $Rating-disabledColor;
+
+      @media screen and (-ms-high-contrast: active) {
+        color: GrayText;
+      }
 
       .label {
         cursor: default;
@@ -62,6 +74,10 @@ $Rating-largeIconSize: 20px;
 
       // Reserve space for focus styling
       border: 1px solid transparent;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: Window;
+      }
     }
   }
 

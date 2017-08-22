@@ -95,11 +95,7 @@ $ms-Persona-presenceSizeXl: 28px;
   border-radius: 50%;
 
   @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: 1px solid $ms-color-black;
+    border: 1px solid WindowText;
   }
 
   .image {
@@ -206,15 +202,9 @@ $ms-Persona-presenceSizeXl: 28px;
   // This is a temporary local fix and should be removed once Fabric Core 6.0 is released.
 
   @media screen and (-ms-high-contrast: active) {
-    border-color: $ms-color-black;
-    color: $ms-color-black;
-    background-color: $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border-color: $ms-color-white;
-    color: $ms-color-white;
-    background-color: $ms-color-black;
+    border-color: Window;
+    color: Window;
+    background-color: WindowText;
   }
 
   .presenceIcon {
@@ -224,11 +214,7 @@ $ms-Persona-presenceSizeXl: 28px;
     vertical-align: top;
 
     @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-black;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-white;
+      color: Window;
     }
   }
 }
@@ -293,11 +279,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
     @media screen and (-ms-high-contrast: active) {
       top: 9px;
-      border: 1px solid $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border: 1px solid $ms-color-black;
+      border: 1px solid WindowText;
     }
   }
 
@@ -732,7 +714,7 @@ $ms-Persona-presenceSizeXl: 28px;
     background-color: $ms-color-presence-available;
 
     @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-white;
+      background-color: WindowText;
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
@@ -749,11 +731,7 @@ $ms-Persona-presenceSizeXl: 28px;
     background-color: $ms-color-presence-away;
 
     @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-black;
+      background-color: WindowText;
     }
   }
 
@@ -793,11 +771,9 @@ $ms-Persona-presenceSizeXl: 28px;
       @include ms-left(0);
     }
 
-
-
     @media screen and (-ms-high-contrast: active) {
       color: $ms-color-contrastBlackDisabled;
-      background-color: $ms-color-black;
+      background-color: Window;
 
       &::before {
         box-shadow: 0 0 0 2px $ms-color-contrastBlackDisabled inset;
@@ -810,7 +786,6 @@ $ms-Persona-presenceSizeXl: 28px;
 
     @media screen and (-ms-high-contrast: black-on-white) {
       color: $ms-color-contrastWhiteDisabled;
-      background-color: $ms-color-white;
 
       &::before {
         box-shadow: 0 0 0 2px $ms-color-contrastWhiteDisabled inset;

@@ -25,11 +25,7 @@
   background: $ms-color-neutralSecondary;
 
   @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-black;
+    background-color: WindowText;
   }
 }
 
@@ -37,11 +33,7 @@
   background: $ms-color-neutralTertiaryAlt;
 
   @media screen and (-ms-high-contrast: active) {
-    border: 1px solid $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    border: 1px solid $ms-color-black;
+    border: 1px solid WindowText;
   }
 }
 
@@ -106,11 +98,7 @@
       border: 2px solid $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+        border-color: Highlight;
       }
     }
 
@@ -118,11 +106,7 @@
       background-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        background-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: $ms-color-contrastWhiteSelected;
+        background-color: Highlight;
       }
     }
 
@@ -130,11 +114,7 @@
       background-color: $ms-color-themeLight;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+        border-color: Highlight;
       }
     }
   }
@@ -154,24 +134,15 @@
     border-color: $ms-color-neutralTertiaryAlt;
 
     @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackDisabled;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteDisabled;
+      border-color: GrayText;
     }
   }
 
   .activeSection,
   .inactiveSection {
     @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-contrastBlackDisabled;
-      border-color: $ms-color-contrastBlackDisabled;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-contrastWhiteDisabled;
-      border-color: $ms-color-contrastWhiteDisabled;
+      background-color: GrayText;
+      border-color: GrayText;
     }
   }
 

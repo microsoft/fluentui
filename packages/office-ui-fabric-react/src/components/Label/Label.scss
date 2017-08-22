@@ -26,4 +26,8 @@
 
 .isDisabled {
   @include ms-Label-is-disabled;
+
+  @media screen and (-ms-high-contrast: active) {
+    color: GrayText;
+  }
 }

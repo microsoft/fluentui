@@ -35,11 +35,7 @@
     background-color: $ms-color-themePrimary;
 
     @include high-contrast {
-    background-color: $ms-color-white;
-    }
-
-    @include high-contrast-black-on-white  {
-    background-color: $ms-color-black;
+    background-color: WindowText;
     }
   }
 

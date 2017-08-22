@@ -66,11 +66,7 @@ $field-error-color: $errorTextColor;
   &:hover,
   &.fieldGroupIsFocused {
     @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackSelected;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteSelected;
+      border-color: Highlight;
     }
   }
 
@@ -175,11 +171,7 @@ $field-error-color: $errorTextColor;
     border-color: $field-border-hover-color;
 
     @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackSelected;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteSelected;
+      border-color: Highlight;
     }
   }
 
@@ -221,11 +213,7 @@ $field-error-color: $errorTextColor;
     border-color: $field-border-focus-color;
 
     @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackSelected;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteSelected;
+      border-color: Highlight;
     }
   }
 }

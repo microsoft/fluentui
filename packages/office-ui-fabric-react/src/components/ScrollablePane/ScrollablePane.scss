@@ -22,8 +22,16 @@
 
 .stickyAbove {
   top: 0;
+
+  @media screen and (-ms-high-contrast: active) {
+    border-bottom: 1px solid WindowText;
+  }
 }
 
 .stickyBelow {
   bottom: 0;
+
+  @media screen and (-ms-high-contrast: active) {
+    border-top: 1px solid WindowText;
+  }
 }

@@ -26,4 +26,8 @@
   &.rootIsDark {
     background-color: $ms-color-blackTranslucent40;
   }
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid WindowText;
+  }
 }

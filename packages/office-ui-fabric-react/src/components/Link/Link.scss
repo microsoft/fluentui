@@ -38,6 +38,10 @@ button.root {
   cursor: pointer;
   display: inline;
   font-size: inherit; // Ensure that we inherit font size, rather than the browser's default.
+
+  @media screen and (-ms-high-contrast: active) {
+    color: Highlight;
+  }
 }
 
 // Link implemented as an anchor.

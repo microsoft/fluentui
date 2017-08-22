@@ -13,11 +13,7 @@
   margin-bottom: 2px;
 
   @include high-contrast {
-    border-bottom: 1px solid $ms-color-white;
-  }
-
-  @include high-contrast-black-on-white  {
-    border-bottom: 1px solid $ms-color-black;
+    border-bottom: 1px solid WindowText;
   }
 }
 
@@ -57,11 +53,7 @@
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
 
         @include high-contrast {
-          @include ms-border-right(1px, solid, $ms-color-white);
-        }
-
-        @include high-contrast-black-on-white  {
-          @include ms-border-right(1px, solid, $ms-color-black);
+          @include ms-border-right(1px, solid, WindowText);
         }
       }
 
