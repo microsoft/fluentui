@@ -1,7 +1,7 @@
 module.exports = function (options) {
   const path = require('path');
   const execSync = require('../exec-sync');
-  const typescriptPath = 'tsc';
+  const typescriptPath = 'node ' + path.resolve(require.resolve('typescript/lib/tsc'));
 
   execSync(typescriptPath + ' -outDir lib -t es5 -m commonjs --pretty', 'typescript commonjs/es5');
 

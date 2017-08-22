@@ -38,7 +38,7 @@ function myExecSync(cmd, displayName) {
     }`);
 
   if (returnValue !== 0) {
-    console.error('The task ${ displayName || cmd } failed.');
+    console.error(`The task "${chalk.cyan(displayName || cmd)}" failed.`);
     process.exit(returnValue);
   }
 
