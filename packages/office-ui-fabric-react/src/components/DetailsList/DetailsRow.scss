@@ -98,6 +98,10 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     &.isRowHeader {
       color: $detailsList-item-selected-text-color;
     }
+
+    @media screen and (-ms-high-contrast: active) {
+      color: Highlight;
+    }
   }
 
   &:before {
