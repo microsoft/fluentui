@@ -11,7 +11,7 @@ let _changedComponents: ConnectedHost[] | null;
 export interface IConnectedHostProps {
   componentRef?: () => void;
   componentProps: any;
-  storesToSubscribe: IStoreKey<any>[];
+  storesToSubscribe: IStoreKey[];
   component: any;
   getProps: (stores: any, props: any) => any;
 }
