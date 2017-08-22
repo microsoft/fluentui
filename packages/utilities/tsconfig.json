@@ -17,7 +17,8 @@
     "moduleResolution": "node",
     "types": [
       "chai",
-      "mocha"
+      "mocha",
+      "webpack-env"
     ]
   },
   "exclude": [

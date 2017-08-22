@@ -77,9 +77,12 @@ export class TilesListMediaExample extends React.Component<any, any> {
         selection={ this._selection }
         selectionIndex={ item.index }
         background={
-          <img style={ { display: 'block' } } src={
-            `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
-          } />
+          <img
+            style={ { display: 'block' } }
+            src={
+              `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
+            }
+          />
         }
         showBackgroundFrame={ true }
         itemName={ item.name }
