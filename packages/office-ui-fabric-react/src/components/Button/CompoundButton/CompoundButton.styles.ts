@@ -22,9 +22,9 @@ const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
 export const getStyles = memoizeFunction((
-  primary: boolean,
   theme: ITheme,
   customStyles?: IButtonStyles,
+  primary?: boolean,
   focusInset?: string,
   focusColor?: string
 ): IButtonStyles => {
@@ -61,8 +61,6 @@ export const getStyles = memoizeFunction((
 
   let standardCompoundTheme: IButtonStyles = {
 
-    ...standardStyles(theme),
-
     description: {
       color: theme.palette.neutralSecondary,
     },
@@ -85,8 +83,6 @@ export const getStyles = memoizeFunction((
   };
 
   let primaryCompoundTheme: IButtonStyles = {
-
-    ...primaryStyles(theme),
 
     description: {
       color: theme.palette.white,
@@ -112,6 +108,7 @@ export const getStyles = memoizeFunction((
   return mergeStyleSets(
     baseButtonStyles,
     compoundButtonStyles,
+    primary ? primaryStyles(theme) : standardStyles(theme),
     primary ? primaryCompoundTheme : standardCompoundTheme,
     splitButtonStyles,
     customStyles

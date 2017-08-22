@@ -33,6 +33,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   primary?: boolean;
 
   /**
+   * Unique id to identify the item. Typically a duplicate of key value.
+   */
+  uniqueId?: string | number;
+
+  /**
    * Whether the button is disabled
    */
   disabled?: boolean;
@@ -168,6 +173,11 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
    * @deprecated
    */
   toggled?: boolean;
+
+  /**
+ * Any custom data the developer wishes to associate with the menu item.
+ */
+  data?: any;
 }
 
 export enum ElementType {
@@ -247,6 +257,21 @@ export interface IButtonStyles {
    * Style for the icon on the near side of the label.
    */
   icon?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label on hover.
+   */
+  iconHovered?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label when pressed.
+   */
+  iconPressed?: IStyle;
+
+  /**
+   * Style for the icon on the near side of the label when expanded.
+   */
+  iconExpanded?: IStyle;
 
   /**
    * Style override for the icon when the button is disabled.

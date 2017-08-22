@@ -22,11 +22,11 @@ const DEFAULT_BUTTON_MINWIDTH = '80px';
 const DEFAULT_PADDING = '0 16px';
 
 export const getStyles = memoizeFunction((
-  primary: boolean,
   theme: ITheme,
   customStyles?: IButtonStyles,
+  primary?: boolean,
   focusInset?: string,
-  focusColor?: string
+  focusColor?: string,
 ): IButtonStyles => {
   let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme, focusInset, focusColor);
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);

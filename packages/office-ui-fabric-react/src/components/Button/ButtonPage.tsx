@@ -9,7 +9,8 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
-import { ButtonCommandExample } from './examples/Button.Command.Example';
+import { ButtonActionExample } from './examples/Button.Action.Example';
+import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
@@ -20,7 +21,8 @@ import { Link } from '../../Link';
 
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
-const ButtonCommandExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Command.Example.tsx') as string;
+const ButtonActionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx') as string;
+const ButtonCommandBarExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CommandBar.Example.tsx') as string;
 const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
@@ -60,8 +62,11 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
-            <ExampleCard title='Command Button' code={ ButtonCommandExampleCode }>
-              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+            <ExampleCard title='Command Bar Button' code={ ButtonCommandBarExampleCode }>
+              <ButtonCommandBarExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
+            </ExampleCard>
+            <ExampleCard title='Action Button' code={ ButtonActionExampleCode }>
+              <ButtonActionExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
             <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
               <ButtonIconExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
