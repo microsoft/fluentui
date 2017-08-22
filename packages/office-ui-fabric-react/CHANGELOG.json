@@ -2,6 +2,123 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.35.2",
+      "tag": "office-ui-fabric-react_v4.35.2",
+      "date": "Tue, 22 Aug 2017 10:09:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Melina Sparks <30634057+melvsparks@users.noreply.github.com>",
+            "commit": "1eef5ec0708f79a87492e4d4fe2f3cf81ed77468",
+            "comment": "Dropdown: Fixed bug where selectedKey selects dropdown option with a different key"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.35.1",
+      "tag": "office-ui-fabric-react_v4.35.1",
+      "date": "Mon, 21 Aug 2017 10:19:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Updating project dependencies."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "0f3606270be2ca8b30a4ad753d678e1071a66c70",
+            "comment": "DetailsList: Move background color from .cell to .root for DetailsHeader"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "86e32f8ba71d8697da0c5f7f472619784b51a0bf",
+            "comment": "PeoplePicker: Fixing A11yMAS accessibility issue in selected items."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.0 <5.0.0` to `>=4.9.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.0 <5.0.0` to `>=4.2.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.35.0",
+      "tag": "office-ui-fabric-react_v4.35.0",
+      "date": "Fri, 18 Aug 2017 16:32:33 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "be902328b437c88c85b8e1f924b421e94b163f5f",
+            "comment": "Added ActionButton and CommandBarButton"
+          },
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "ff9c4c0f916b47fec51b8df461f37f5cb4ca635a",
+            "comment": "DetailsList: Resizing columns preserves justified mode."
+          },
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "ec2a0c25f756846079d25f97a768c584682c85b2",
+            "comment": "TooltipHost: new onTooltipToggle callback"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "14f335d0ca77f09cc9422c1809121e527153c430",
+            "comment": "Minor cleanup in merging of css class names."
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "8d1c3d64c38899aad8ccad960fbaea5ccef9872f",
+            "comment": "Dropdown: Fixed bug where selected state was not being removed from dropdown options"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "860ca7ed4743647c6740e39ec2e21b060884a23a",
+            "comment": "FocusZone: presssing home/end inside of an input/textarea element should respect cursor location."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "3ab591c8b3f3c9645beb16022d8a3e67c6ee2fac",
+            "comment": "Fix some unused code and typings in List"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "66cfd860da0296f9c4cd583ae1112059eb23d887",
+            "comment": "Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e35e5e23555797dae09d6f3aac98fd932c245f1d",
+            "comment": "Toggle: fixed issue where disabled Toggles are clickable. Also cleaned up some of the styling."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2669e2f9e147a34134b072c36e95ded7d91d2fae",
+            "comment": "CommandBar: adding `aria-expanded` attribute to overflow menu."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2669e2f9e147a34134b072c36e95ded7d91d2fae",
+            "comment": "DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.19.2 <1.0.0` to `>=0.20.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.34.0",
       "tag": "office-ui-fabric-react_v4.34.0",
       "date": "Wed, 16 Aug 2017 10:11:43 GMT",

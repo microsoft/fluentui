@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "apiReviewFolder": "./api",
+  "apiJsonFolder": "./temp",
+  "entry": "src/index.ts"
+}

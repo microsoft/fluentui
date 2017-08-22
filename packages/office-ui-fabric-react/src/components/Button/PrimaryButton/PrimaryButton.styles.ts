@@ -11,6 +11,8 @@ import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
 
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles
@@ -26,7 +28,11 @@ export const getStyles = memoizeFunction((
   let primaryButtonStyles: IButtonStyles = {
     root: {
       backgroundColor: palette.themePrimary,
-      color: palette.white
+      color: palette.white,
+      [MS_HIGHCONTRAST_ACTIVE]: {
+        borderColor: 'Highlight',
+        color: 'Highlight'
+      }
     },
 
     rootHovered: {
