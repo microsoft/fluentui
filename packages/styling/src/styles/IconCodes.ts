@@ -684,6 +684,10 @@ export const IconCodes = {
    */
   combine: '\uEDBB',
   /**
+   * Icon code with value '\uE90A'.
+   */
+  comment: '\uE90A',
+  /**
    * Icon code with the value '\uE942'.
    */
   compassNW: '\uE942',
