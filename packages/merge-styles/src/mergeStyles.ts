@@ -7,7 +7,9 @@ import { Stylesheet } from './Stylesheet';
  *
  * @public
  */
-export function mergeStyles(...args: (IStyle | IStyle[])[]): string {
+export function mergeStyles(
+  ...args: (IStyle | IStyle[] | false | null | undefined)[]
+): string {
   const classes: string[] = [];
   const objects: {}[] = [];
   const stylesheet = Stylesheet.getInstance();

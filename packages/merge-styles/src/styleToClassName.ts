@@ -2,7 +2,6 @@ import { rtlifyRules } from './transforms/rtlifyRules';
 import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
 import { kebabRules } from './transforms/kebabRules';
-import { getVendorSettings } from './getVendorSettings';
 import { Stylesheet } from './Stylesheet';
 import { IStyle, IExtendedRawStyle } from './IStyle';
 

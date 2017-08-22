@@ -21,17 +21,17 @@
   },
   {
     "name": "themeSecondary",
-    "value": "#2488d8",
+    "value": "#2b88d8",
     "labelColorClass": "ms-fontColor-white"
   },
   {
     "name": "themeTertiary",
-    "value": "#69afe5",
+    "value": "#71afe5",
     "labelColorClass": "ms-fontColor-white"
   },
   {
     "name": "themeLight",
-    "value": "#b3d6f2",
+    "value": "#c730f4",
     "labelColorClass": "ms-fontColor-black"
   },
   {
