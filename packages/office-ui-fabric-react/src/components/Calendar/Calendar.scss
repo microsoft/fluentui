@@ -125,6 +125,18 @@ $Calendar-dayPicker-margin: 10px;
   border-radius: 2px;
 }
 
+
+// Today.
+.dayIsToday {
+  position: relative;
+  background-color: $ms-color-themeLight;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid WindowText;
+  }
+}
+
+
 // Disabled day.
 .dayIsDisabled:before {
   border-top-color: $ms-color-neutralTertiary;
@@ -149,6 +161,15 @@ $Calendar-dayPicker-margin: 10px;
   @include focus-border(1px, $ms-color-white);
 }
 
+// Highlighted and hovered/focused dates.
+.dayIsHighlighted:hover,
+.pickerIsFocused .dayIsHighlighted {
+  cursor: pointer;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid Highlight;
+  }
+}
 
 .dayIsUnfocused:active, .dayIsFocused:active, .dayIsHighlighted{
   &.day{
