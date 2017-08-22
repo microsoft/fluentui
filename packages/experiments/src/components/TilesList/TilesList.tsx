@@ -114,7 +114,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           selection ?
             <SelectionZone
               selection={ selection }
-              selectionMode={ SelectionMode.multiple }>
+              selectionMode={ SelectionMode.multiple }
+            >
               { list }
             </SelectionZone> :
             list
@@ -126,7 +127,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize) {
     if (item.grid.mode === TilesGridMode.none) {
       return (
-        <div className={ css(TilesListStyles.header) }
+        <div
+          className={ css(TilesListStyles.header) }
         >
           { item.onRender(item.content, { width: 0, height: 0 }) }
         </div>
@@ -207,7 +209,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             scaleFactor
           } = currentRow;
 
-          if (!currentRow.isLastRow || scaleFactor <= grid.maxScaleFactor) {
+          if (grid.mode === TilesGridMode.fill && (!currentRow.isLastRow || scaleFactor <= grid.maxScaleFactor)) {
             const finalScaleFactor = Math.min(grid.maxScaleFactor, scaleFactor);
 
             finalSize = {
@@ -253,7 +255,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
               marginTop: isOpenStart ? '0' : `${grid.marginTop - margin}px`,
               marginBottom: isOpenEnd ? '0' : `${grid.marginBottom - margin}px`
             }
-          }>
+          }
+        >
           { ...renderedCells }
         </div>
       );
@@ -347,7 +350,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
         const width = aspectRatio * grid.minRowHeight + grid.spacing;
 
-        if (rowWidth + width > boundsWidth && grid.mode === TilesGridMode.fill) {
+        if (rowWidth + width > boundsWidth) {
           const totalMargin = grid.spacing * (i - rowStart);
           currentRow.scaleFactor = (boundsWidth - totalMargin) / (rowWidth - totalMargin);
         }
@@ -379,7 +382,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         currentRow.isLastRow = true;
       }
 
-      if (rowWidth < boundsWidth && grid.mode === TilesGridMode.fill) {
+      if (rowWidth < boundsWidth) {
         const totalMargin = grid.spacing * (i - rowStart);
         currentRow.scaleFactor = (boundsWidth - totalMargin) / (rowWidth - totalMargin);
       }
