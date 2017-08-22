@@ -152,6 +152,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         { showCheckbox ? (
           [
             <div
+              key='__checkbox'
               className={ css(
                 'ms-DetailsHeader-cell',
                 'ms-DetailsHeader-cellIsCheck',
@@ -182,9 +183,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   )
                 }, this._onRenderColumnHeaderTooltip)
               }
-            </div >,
+            </div>,
             ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? (
               <label
+                key='__checkboxLabel'
                 id={ `${this._id}-checkTooltip` }
                 className={ styles.accessibleLabel }
               >
@@ -291,13 +293,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                             />
                           ) }
                         </span>
-
                       )
                     }, this._onRenderColumnHeaderTooltip)
                   }
                 </div>,
                 column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
                   <label
+                    key={ `${column.key}_label` }
                     id={ `${this._id}-${column.key}-tooltip` }
                     className={ styles.accessibleLabel }
                   >
@@ -320,7 +322,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             </Layer>
           )
         }
-      </FocusZone >
+      </FocusZone>
     );
   }
 
@@ -336,6 +338,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     return (
       <div
+        key={ `${column.key}_sizer` }
         aria-hidden={ true }
         role='button'
         data-is-focusable={ false }

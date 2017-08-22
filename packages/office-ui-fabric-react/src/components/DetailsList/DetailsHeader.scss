@@ -182,10 +182,5 @@ $isPaddedMargin: 24px;
 }
 
 .accessibleLabel {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  text-indent: 1px;
-  white-space: nowrap;
+  @include ms-screenReaderOnly;
 }
