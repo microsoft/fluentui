@@ -43,11 +43,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/40x40` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/40x40` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showForegroundFrame={ true }
           />
@@ -73,11 +76,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/80x120` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/80x120` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showForegroundFrame={ true }
           />
@@ -103,11 +109,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/168x96` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/168x96` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showForegroundFrame={ true }
           />
@@ -125,12 +134,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/168x120` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/168x120` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-
-              } />
+              />
             }
             showForegroundFrame={ true }
           />

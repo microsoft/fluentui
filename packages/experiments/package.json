@@ -10,10 +10,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
+    "build": "node ../../scripts/build.js",
     "clean": "gulp clean",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "test": "gulp"
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
