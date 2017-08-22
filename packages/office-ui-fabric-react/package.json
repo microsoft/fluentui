@@ -10,10 +10,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
+    "build": "node ../../scripts/build.js",
     "clean": "gulp clean",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "test": "gulp"
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
@@ -36,6 +35,7 @@
     "enzyme": "^2.7.0",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
+    "es6-map": "^0.1.5",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
     "gulp-phantomcss": "~0.3.0",
@@ -61,7 +61,6 @@
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.17.0",
     "ts-loader": "^2.0.1",
-    "typescript": "2.4.2",
     "vinyl-ftp": "0.6.0",
     "webpack": "^3.4.1",
     "webpack-bundle-analyzer": "^2.2.1",

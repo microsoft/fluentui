@@ -1,3 +1,4 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
