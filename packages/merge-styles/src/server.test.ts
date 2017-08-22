@@ -1,9 +1,5 @@
 import { renderStatic } from './server';
 import {
-  Stylesheet,
-  InjectionMode
-} from './Stylesheet';
-import {
   mergeStyleSets
 } from './mergeStyleSets';
 
