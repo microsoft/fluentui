@@ -185,13 +185,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
     // If we just opened/closed the menu OR
     // are focused AND
-    // updated the selectedIndex with the menu closed OR
-    // are not allowing freeform or the value changed
+    //   updated the selectedIndex with the menu closed OR
+    //   are not allowing freeform OR
+    //   the value changed
     // we need to set selection
     if (prevState.isOpen !== isOpen ||
       (focused &&
         ((!isOpen && prevState.selectedIndex !== selectedIndex) ||
-          (!allowFreeform || value !== prevProps.value)))) {
+          !allowFreeform ||
+          value !== prevProps.value)
+      )) {
       this._select();
     }
   }
