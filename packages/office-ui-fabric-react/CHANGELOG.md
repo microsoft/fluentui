@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Aug 2017 10:09:55 GMT and should not be manually modified.
+
+## 4.35.2
+Tue, 22 Aug 2017 10:09:55 GMT
+
+### Patches
+
+- Dropdown: Fixed bug where selectedKey selects dropdown option with a different key
 
 ## 4.35.1
 Mon, 21 Aug 2017 10:19:29 GMT
