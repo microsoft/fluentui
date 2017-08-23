@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+
+## 4.7.3
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- Removed Trello reference
+- Updated branding guidance pdf from the cdn.
+- Updated the CDN link on the "Get Started" page and section to an updated version of Fabric Core, 7.2.0
 
 ## 4.7.2
 Mon, 21 Aug 2017 10:19:29 GMT

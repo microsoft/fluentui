@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 22 Aug 2017 10:09:55 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+
+## 4.36.0
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Minor changes
+
+- DocumentCardPreview: Allow show Icon in the preview area instead of image.
+
+### Patches
+
+- ContextualMenu: Add ability to override role on menu items
+- ComboBox: Content should not be selected when comboBox isn't focused
+- Adding react import to SpinButton.Props for classic module resolution.
+- High contrast, accesibility, and other bugfixes
+- Dropdown: adds a for property to dropdown labels.
 
 ## 4.35.2
 Tue, 22 Aug 2017 10:09:55 GMT
