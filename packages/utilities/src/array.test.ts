@@ -1,5 +1,5 @@
 import { findIndex, createArray } from './array';
-let { expect, should } = chai;
+let { expect } = chai;
 
 describe('array utils tests', () => {
   describe('findIndex tests', () => {
