@@ -11,7 +11,6 @@ $Calendar-dayPicker-margin: 10px;
 
 .root {
   @include ms-normalize;
-  margin-bottom: 17px;
 }
 
 // Base wrapper for the date picker.
@@ -60,7 +59,6 @@ $Calendar-dayPicker-margin: 10px;
 // Wrapper containing the calendar view to pick a specific date.
 .dayPicker {
   display: block;
-  margin-bottom: 30px;
 }
 
 
@@ -128,6 +126,10 @@ $Calendar-dayPicker-margin: 10px;
 .dayIsToday {
   position: relative;
   background-color: $ms-color-themeLight;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid WindowText;
+  }
 }
 
 
@@ -162,6 +164,10 @@ $Calendar-dayPicker-margin: 10px;
   cursor: pointer;
   color: $ms-color-white;
   background: $ms-color-themePrimary;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid Highlight;
+  }
 }
 
 
@@ -230,6 +236,9 @@ $Calendar-dayPicker-margin: 10px;
   cursor: pointer;
 }
 
+.wrap div.headerToggleView:focus {
+  position: absolute;
+}
 
 // Text showing the currently-selected year.
 .currentYear,
@@ -259,7 +268,7 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   height: 210px;
   width: 280px;
-  @include margin(10px, 0, 30px, 5px);
+  @include margin(10px, 0, 0px, 5px);
 }
 
 // Button to select a different month.
@@ -306,6 +315,11 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
+//additional 30px margin needed when "Go to today" button is visible
+.wrap.goTodaySpacing{
+  margin-bottom: 30px;
+}
+
 // State: The picker is showing the year components.
 .root.isPickingYears {
   // Hide the day picking components.
@@ -322,6 +336,15 @@ $Calendar-dayPicker-margin: 10px;
     display: block;
   }
 }
+
+
+ .pickerOnlyMonthPickerVisible {
+
+  .yearComponents,
+  .decadeComponents {
+    top: 9px;
+  }
+ }
 
 // 460px and up.
 //
@@ -348,7 +371,7 @@ $Calendar-dayPicker-margin: 10px;
   }
 
   // Size the month components to the day picker's new width
-  .monthComponents {
+  .monthComponents,.yearComponents {
     width: 210px;
   }
 
@@ -386,7 +409,7 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  // Show the month picker, if enabled
+  // Show the day picker and month picker side-by-side, if enabled
   .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .dayPicker {
@@ -401,7 +424,6 @@ $Calendar-dayPicker-margin: 10px;
       min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin;
     }
 
-
     .holder {
       width: 440px;
     }
@@ -409,7 +431,7 @@ $Calendar-dayPicker-margin: 10px;
     .monthPicker {
       display: block;
     }
-    // Style the the month and year pickers.
+    // Style the month and year pickers.
     .monthPicker,
     .yearPicker {
       top: 9px;
@@ -421,10 +443,8 @@ $Calendar-dayPicker-margin: 10px;
       @include margin-left(12px);
     }
 
-
     .optionGrid {
       width: 200px;
-      height: auto;
       @include margin(10px, 0, 0, 0);
     }
     // This component is only used on small displays.
@@ -441,6 +461,7 @@ $Calendar-dayPicker-margin: 10px;
       padding: 0 10px;
       display: inline-block;
     }
+
     // Reduce the size of the month buttons.
     .monthOption,
     .yearOption {
@@ -465,6 +486,10 @@ $Calendar-dayPicker-margin: 10px;
       @include text-align(right);
       top: 199px;
     }
+    //When date and month picker are side-by-side and "Go to today" button is visible no additional margin is needed
+    .wrap.goTodaySpacing{
+      margin-bottom: 0px;
+    }
     // State: The picker is showing the year components.
     // On larger screens the calendar will remain and the years
     // will replace the months.
@@ -486,6 +511,47 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
+  // Show the month picker over date picker (1 column layout), if enabled
+  .overlayedCalendars {
+    // Show the month picker.
+
+    .holder {
+      width: 230px;
+    }
+
+    .monthPicker {
+      display: block;
+    }
+    // Style the month and year pickers.
+    .monthPicker,
+    .yearPicker {
+      top: 0px;
+      @include ms-left(0px);
+      position: relative;
+    }
+
+    .currentYear,
+    .currentDecade {
+      padding:0px;
+    }
+
+    .optionGrid{
+      margin: 10px 0 0 10px;
+    }
+    // Arrows need to be in the same spot as the calendar
+    // when switching between the two
+    .yearComponents,
+    .decadeComponents {
+      @include ms-right(2px);
+    }
+
+    // Position the "Go to today" button below the month picker.
+    .goToday {
+      @include ms-right(5px);
+      bottom: 9px;
+    }
+  }
+
   // if only the month picker is visible, don't show day picker
   .pickerOnlyMonthPickerVisible {
     // Hide the day picking components.
@@ -504,19 +570,23 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .currentYear {
-      height: initial;
-      line-height: initial;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
     }
 
-    .yearComponents {
-      position: relative;
-      top: 0;
+    .wrap.goTodaySpacing{
+      margin-bottom: 30px;
     }
   }
 }
 
 // On smaller screens the month button toggles to the picking months state.
 @media (max-width: 459px) {
+
+  //Stop elements from going off screen
+  .holder {
+    width: 300px;
+  }
 
   // State: The picker is showing the month components.
   .root.isPickingMonths {
@@ -531,6 +601,31 @@ $Calendar-dayPicker-margin: 10px;
     .monthPicker {
       display: block;
     }
+
+  }
+
+  // Do not hide Month picker if it is the only calendar
+  .pickerOnlyMonthPickerVisible, .overlayedCalendars{
+    .monthPicker{
+      display: block;
+    }
+
+    .optionGrid{
+      height: 210px;
+      width: 280px;
+    }
+
+    //keep arrows in place when switching between calendar and month overlay
+    .yearComponents,
+    .decadeComponents {
+      @include ms-right(9px);
+      top: 9px;
+    }
+  }
+
+  //additional 30px margin needed when "Go to today" button is visible
+  .wrap.goTodaySpacing{
+    margin-bottom: 30px;
   }
 }
 

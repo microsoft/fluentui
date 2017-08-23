@@ -77,7 +77,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   public render() {
     let {
-      className
+      className,
+      usePageCache,
+      onShouldVirtualize
     } = this.props;
     let {
       groups
@@ -98,6 +100,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ () => 1 }
+              usePageCache = { usePageCache }
+              onShouldVirtualize = { onShouldVirtualize }
             />
           )
         }

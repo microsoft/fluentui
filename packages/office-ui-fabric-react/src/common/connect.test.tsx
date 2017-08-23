@@ -27,16 +27,6 @@ interface IHelloStore extends ISubscribable {
   say(message: string): void;
 }
 
-interface IAddStore extends ISubscribable {
-  result: number;
-
-  add(num1: number, num2: number): void;
-}
-
-class AddStore extends BaseStore implements ISubscribable {
-
-}
-
 class HelloStore extends BaseStore implements IHelloStore {
   public message: string = '';
 
@@ -48,8 +38,8 @@ class HelloStore extends BaseStore implements IHelloStore {
 
 describe('connect', () => {
   it('can observe store changes', (done) => {
-    let hello1 = storeKey<IHelloStore>('hello1');
-    let hello2 = storeKey<IHelloStore>('hello2');
+    let hello1 = storeKey('hello1');
+    let hello2 = storeKey('hello2');
     let localStores = new StoreSet()
       .add(hello1, new HelloStore())
       .add(hello2, new HelloStore());
@@ -72,11 +62,11 @@ describe('connect', () => {
 
     expect(rootElement.textContent).equals('');
 
-    localStores.getStore(hello1).say('hello');
+    localStores.getStore<IHelloStore>(hello1).say('hello');
     setTimeout(() => {
       try {
         expect(rootElement.textContent).equals('hello');
-        localStores.getStore(hello2).say(' world');
+        localStores.getStore<IHelloStore>(hello2).say(' world');
 
         setTimeout(() => {
           try {
@@ -91,7 +81,7 @@ describe('connect', () => {
   });
 
   it('can throw when requiring a store in an environment without any stores hosted', () => {
-    let hello = storeKey<IHelloStore>('hello');
+    let hello = storeKey('hello');
     let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       [hello],
@@ -111,7 +101,7 @@ describe('connect', () => {
   });
 
   it('can throw in an environment that does not contain the required store', () => {
-    let hello = storeKey<IHelloStore>('hello');
+    let hello = storeKey('hello');
     let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       [hello],
@@ -141,8 +131,8 @@ describe('connect', () => {
       return <div>hi</div>;
     };
 
-    let hello1 = storeKey<IHelloStore>('hello1');
-    let hello2 = storeKey<IHelloStore>('hello2');
+    let hello1 = storeKey('hello1');
+    let hello2 = storeKey('hello2');
     let localStores = new StoreSet()
       .add(hello1, new HelloStore())
       .add(hello2, new HelloStore());
@@ -166,8 +156,8 @@ describe('connect', () => {
     expect(renders).to.equal(1, 'render was not 1');
 
     // Cause 2 store changes. This should setImmediate and cause 1 resolve.
-    localStores.getStore(hello1).say('hello');
-    localStores.getStore(hello2).say(' world');
+    localStores.getStore<IHelloStore>(hello1).say('hello');
+    localStores.getStore<IHelloStore>(hello2).say(' world');
 
     setTimeout(() => {
       try {

@@ -62,6 +62,10 @@
     @include border-right(1px, solid, $ms-color-neutralLight);
   }
 
+  .previewIconContainer {
+    height: 100%;
+  }
+
   .title {
       padding: 12px 16px 8px 16px;
       @include ms-font-m-plus;
@@ -217,6 +221,12 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   &.previewIsFileList {
     background-color: $ms-color-white;
   }
+}
+
+.previewIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 .icon {

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Removed suppression of tslint unused variables rule from Experiments package and removed unused variables to pass tslint",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "a.erich@gmail.com"
+}

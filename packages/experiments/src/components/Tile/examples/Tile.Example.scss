@@ -1,0 +1,23 @@
+
+.tile {
+  display: inline-block;
+  position: relative;
+  margin: 4px;
+}
+
+.landscapeTile {
+  width: 250px;
+  height: 200px;
+}
+
+.portraitTile {
+  width: 175px;
+  height: 200px;
+}
+
+.squareTile {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+}

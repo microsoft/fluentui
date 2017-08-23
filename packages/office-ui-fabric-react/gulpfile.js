@@ -19,61 +19,43 @@ let {
   packageFolder = ''
 } = buildConfig;
 
-let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
-  return del(['visualtests/results/*png']).then(() => done());
+// let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
+//   return del(['visualtests/results/*png']).then(() => done());
+// });
+
+// let visualTest = build.subTask('visualtest', (gulp, options, done) => {
+//   gulpConnect.server({
+//     port: 43210,
+//     livereload: false,
+//     directoryListing: false
+//   });
+//   if (!options.args['debug']) {
+//     let matchFile = options.args['match'] || '';
+
+//     let casperJs = require('gulp-phantomcss');
+//     gulp.src(['lib/**/*' + matchFile + '.visualtest.js'])
+//       .pipe(casperJs(
+//         {
+//           screenshots: 'visualtests/baseline',
+//           comparisonResultRoot: 'visualtests/results'
+//         })).on('end', done);
+//   }
+// });
+
+
+// Always fail on test failures.
+build.karma.setConfig({
+  failBuildOnErrors: true
 });
 
-let visualTest = build.subTask('visualtest', (gulp, options, done) => {
-  gulpConnect.server({
-    port: 43210,
-    livereload: false,
-    directoryListing: false
-  });
-  if (!options.args['debug']) {
-    let matchFile = options.args['match'] || '';
-
-    let casperJs = require('gulp-phantomcss');
-    gulp.src(['lib/**/*' + matchFile + '.visualtest.js'])
-      .pipe(casperJs(
-        {
-          screenshots: 'visualtests/baseline',
-          comparisonResultRoot: 'visualtests/results'
-        })).on('end', done);
-  }
-});
-
-// Configure custom lint overrides.
-let rules = Object.assign(
-  {},
-  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
-  require('./node_modules/office-ui-fabric-react-tslint/tslint.json').rules,
-  require('./tslint.json').rules
-);
-build.tslint.setConfig({
-  lintConfig: { rules },
-  displayAsWarning: false
-});
-
-// Configure TypeScript.
-// build.typescript.setConfig({ typescript: require('typescript') });
-build.TypeScriptConfiguration.setTypescriptCompiler(require('typescript'));
 // Use css modules.
 build.sass.setConfig({
   useCSSModules: true,
   moduleExportName: ''
 });
 
-// Use Karma Tests - Disable during develoment if prefered
-build.karma.isEnabled = () => true;
-
-// Disable unnecessary subtasks.
-build.preCopy.isEnabled = () => false;
-
-// Until typings work.
-//build.apiExtractor.isEnabled = () => false;
-
 // Copy fabric-core to dist to be published with fabric-react.
-build.postCopy.setConfig({
+build.preCopy.setConfig({
   shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [
@@ -85,20 +67,14 @@ build.postCopy.setConfig({
   }
 });
 
-// Produce AMD bits in lib-amd on production builds.
-if (isProduction || isNuke) {
-  build.setConfig({
-    libAMDFolder: path.join(packageFolder, 'lib-amd')
-  });
-}
-
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
-build.task('sass', build.sass);
-
-build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
+build.task('sass', build.serial(build.preCopy, build.sass));
+build.task('karma', build.karma);
+build.task('test', serial(build.sass, build.typescript, build.karma));
+// build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
 
 // initialize tasks.
 build.initialize(gulp);

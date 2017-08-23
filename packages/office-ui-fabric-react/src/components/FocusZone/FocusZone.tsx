@@ -108,11 +108,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     let divProps = getNativeProps(this.props, divProperties);
 
+    const Tag = this.props.elementType || 'div';
+
     return (
-      <div
+      <Tag
         role='presentation'
-        { ...divProps }
-        { ...rootProps }
+        {
+        ...divProps
+        }
+        {
+        ...rootProps
+        }
         className={ css('ms-FocusZone', className) }
         ref='root'
         data-focuszone-id={ this._id }
@@ -120,10 +126,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-describedby={ ariaDescribedBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
-        { ...{ onMouseDownCapture: this._onMouseDown } }
+        onMouseDownCapture={ this._onMouseDown }
       >
         { this.props.children }
-      </div>
+      </Tag>
     );
   }
 
@@ -337,6 +343,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.home:
+          if (
+            this._isElementInput(ev.target as HTMLElement) &&
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)) {
+            return false;
+          }
           const firstChild = this.refs.root.firstChild as HTMLElement;
           if (this.focusElement(getNextElement(this.refs.root, firstChild, true) as HTMLElement)) {
             break;
@@ -344,6 +355,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
           return;
 
         case KeyCodes.end:
+          if (
+            this._isElementInput(ev.target as HTMLElement) &&
+            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)) {
+            return false;
+          }
+
           const lastChild = this.refs.root.lastChild as HTMLElement;
           if (this.focusElement(getPreviousElement(this.refs.root, lastChild, true, true, true) as HTMLElement)) {
             break;
