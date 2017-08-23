@@ -11,9 +11,6 @@
       false,
       140
     ],
-    "no-any": false,
-    "typedef": [
-      false
-    ]
+    "no-any": false
   }
 }

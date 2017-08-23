@@ -51,7 +51,7 @@ export class TilesListDocumentExample extends React.Component<any, any> {
 
     this._selection.setItems(ITEMS);
   }
-  public render() {
+  public render(): JSX.Element {
     const items = getTileCells(GROUPS, {
       onRenderCell: this._onRenderDocumentCell,
       onRenderHeader: this._onRenderHeader
@@ -70,7 +70,7 @@ export class TilesListDocumentExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onRenderDocumentCell(item: IExampleItem) {
+  private _onRenderDocumentCell(item: IExampleItem): JSX.Element {
     return (
       <Tile
         className={ AnimationClassNames.fadeIn400 }
@@ -99,7 +99,7 @@ export class TilesListDocumentExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onRenderHeader(item: IExampleItem) {
+  private _onRenderHeader(item: IExampleItem): JSX.Element {
     return (
       <div>
         <h3>{ item.name }</h3>

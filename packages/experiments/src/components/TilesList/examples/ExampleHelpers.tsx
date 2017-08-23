@@ -34,7 +34,7 @@ export interface IExampleGroup {
   key: string;
 }
 
-export function createMediaItems(count: number, indexOffset: number) {
+export function createMediaItems(count: number, indexOffset: number): IExampleItem[] {
   const items: IExampleItem[] = [];
 
   for (let i = 0; i < count; i++) {
@@ -51,7 +51,7 @@ export function createMediaItems(count: number, indexOffset: number) {
   return items;
 }
 
-export function createDocumentItems(count: number, indexOffset: number) {
+export function createDocumentItems(count: number, indexOffset: number): IExampleItem[] {
   const items: IExampleItem[] = [];
 
   for (let i = 0; i < count; i++) {
@@ -84,7 +84,7 @@ export function getTileCells(groups: IExampleGroup[], {
 }: {
     onRenderHeader: (item: IExampleItem) => JSX.Element;
     onRenderCell: (item: IExampleItem, finalSize?: ITileSize) => JSX.Element;
-  }) {
+  }): (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] {
   const items: (ITilesGridSegment<IExampleItem> | ITilesGridItem<IExampleItem>)[] = [];
 
   for (const group of groups) {

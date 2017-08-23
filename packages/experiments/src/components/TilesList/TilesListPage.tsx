@@ -17,7 +17,7 @@ import { TilesListMediaExample } from './examples/TilesList.Media.Example';
 const TilesListMediaExampleCode = require('!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx') as string;
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TilesList'

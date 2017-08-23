@@ -43,7 +43,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: ITileProps) {
+  public componentWillReceiveProps(nextProps: ITileProps): void {
     const {
       selection,
       selectionIndex
@@ -63,7 +63,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const {
       selection
     } = this.props;
@@ -73,7 +73,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public componentDidUpdate(previousProps: ITileProps) {
+  public componentDidUpdate(previousProps: ITileProps): void {
     const {
       selection
     } = this.props;
@@ -93,7 +93,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       children,
       selectionIndex = -1,
@@ -163,7 +163,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     background
   }: {
       background: React.ReactNode | React.ReactNode[]
-    }) {
+    }): JSX.Element {
     return (
       <span className={ css('ms-Tile-background', TileStyles.background) }>
         { background }
@@ -177,7 +177,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       foreground: React.ReactNode | React.ReactNode[];
       showForegroundFrame: boolean;
-    }) {
+    }): JSX.Element {
     return (
       <span
         role='presentation'
@@ -206,7 +206,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       name: React.ReactNode | React.ReactNode[];
       activity: React.ReactNode | React.ReactNode[];
-    }) {
+    }): JSX.Element {
     return (
       <span
         className={ css('ms-Tile-nameplate', TileStyles.nameplate) }
@@ -239,7 +239,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     isSelected
   }: {
       isSelected: boolean;
-    }) {
+    }): JSX.Element {
     return (
       <button
         aria-label={ this.props.toggleSelectionAriaLabel }
@@ -255,7 +255,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }
 
   @autobind
-  private _onSelectionChange() {
+  private _onSelectionChange(): void {
     const {
       selection,
       selectionIndex = -1
