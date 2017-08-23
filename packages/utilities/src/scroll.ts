@@ -1,5 +1,5 @@
 import { getDocument } from './dom';
-import styles from './scroll.scss';
+import * as styles from './scroll.scss';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
@@ -22,7 +22,7 @@ export function disableBodyScroll() {
   let doc = getDocument();
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
-    doc.body.classList.add(styles.msFabricScrollDisabled);
+    doc.body.classList.add(styles.scrollDisabled);
   }
 
   _bodyScrollDisabledCount++;
@@ -38,7 +38,7 @@ export function enableBodyScroll() {
     let doc = getDocument();
 
     if (doc && doc.body && _bodyScrollDisabledCount === 1) {
-      doc.body.classList.remove(styles.msFabricScrollDisabled);
+      doc.body.classList.remove(styles.scrollDisabled);
     }
 
     _bodyScrollDisabledCount--;
