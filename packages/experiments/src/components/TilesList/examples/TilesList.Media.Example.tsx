@@ -2,9 +2,6 @@
 import * as React from 'react';
 import {
   TilesList,
-  ITilesGridSegment,
-  ITilesGridItem,
-  TilesGridMode,
   ITileSize
 } from '../../TilesList';
 import { Tile } from '../../../Tile';
@@ -12,7 +9,6 @@ import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Select
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { lorem } from '@uifabric/example-app-base';
 import { IExampleGroup, IExampleItem, createGroup, createMediaItems, getTileCells } from './ExampleHelpers';
 
 function createGroups(): IExampleGroup[] {
@@ -77,9 +73,12 @@ export class TilesListMediaExample extends React.Component<any, any> {
         selection={ this._selection }
         selectionIndex={ item.index }
         background={
-          <img style={ { display: 'block' } } src={
-            `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
-          } />
+          <img
+            style={ { display: 'block' } }
+            src={
+              `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
+            }
+          />
         }
         showBackgroundFrame={ true }
         itemName={ item.name }

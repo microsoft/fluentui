@@ -4,19 +4,19 @@ import { assign } from '../Utilities';
 
 export class StoreSet {
   private _stores: {
-    [ key: string]: any;
+    [key: string]: any;
   };
 
   constructor() {
     this._stores = {};
   }
 
-  public add<T extends ISubscribable>(key: IStoreKey<T>, value: T): StoreSet {
+  public add<T extends ISubscribable>(key: IStoreKey, value: T): StoreSet {
     this._stores[key.id] = value;
     return this;
   }
 
-  public getStore<T extends ISubscribable>(key: IStoreKey<T>): T {
+  public getStore<T extends ISubscribable>(key: IStoreKey): T {
     return this._stores[key.id];
   }
 

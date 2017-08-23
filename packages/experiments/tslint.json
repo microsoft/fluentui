@@ -3,10 +3,9 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
-    "max-line-length": [
-      false,
-      140
-    ],
+    "jsx-ban-props": false,
+    "jsx-self-close": false,
+    "jsx-no-multiline-js": false,
     "no-any": false,
     "typedef": [
       false

@@ -1,5 +1,5 @@
 export interface IObjectWithKey {
-  key?: string;
+  key?: string | number;
 }
 
 export const SELECTION_CHANGE = 'change';

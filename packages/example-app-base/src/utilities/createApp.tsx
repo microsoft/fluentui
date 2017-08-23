@@ -1,3 +1,5 @@
+/* tslint:disable:jsx-no-lambda */
+
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
@@ -53,7 +55,7 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
     ReactDOM.render(
       <Fabric>
         <Router>
-          <Route key='minimal' path='?minimal' component={ (props: any) => <div { ...props } /> }>
+          <Route key='minimal' path='?minimal' component={ _getComponent }>
             { routes }
           </Route>
           <Route key={ 'app' } component={ (props: any) => <App appDefinition={ appDefinition } { ...props } /> }>
@@ -81,6 +83,12 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
   }
 
   window.onunload = _onUnload;
+}
+
+function _getComponent(props: any): JSX.Element {
+  return (
+    <div { ...props } />
+  );
 }
 
 function _getDefinition(groups: ExampleGroup[]): IAppDefinition {

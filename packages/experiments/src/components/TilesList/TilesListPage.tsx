@@ -7,6 +7,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+/* tslint:disable:max-line-length */
 import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
 const TilesListBasicExampleCode = require('!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx') as string;
 
@@ -15,6 +16,7 @@ const TilesListDocumentExampleCode = require('!raw-loader!experiments/src/compon
 
 import { TilesListMediaExample } from './examples/TilesList.Media.Example';
 const TilesListMediaExampleCode = require('!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx') as string;
+/* tslint:enable:max-line-length */
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -49,7 +51,8 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
               It is intended to represent items visual using a one or mote content-focused flowing grids.
             </p>
             <p>
-              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component. The <code>Tile</code> component provides a standardized form of focusable and selectable content item.
+              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component.
+              The <code>Tile</code> component provides a standardized form of focusable and selectable content item.
             </p>
           </div>
         }
@@ -70,7 +73,8 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

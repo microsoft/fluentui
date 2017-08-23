@@ -8,6 +8,7 @@ import {
 import { items, overflowItems, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 
+// tslint:disable-next-line:max-line-length
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -33,6 +34,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             ] }
           />
         }
+        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>
@@ -46,6 +48,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             </p>
           </div>
         }
+        /* tslint:enable:max-line-length */
         bestPractices={
           <div></div>
         }
@@ -72,7 +75,8 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

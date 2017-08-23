@@ -16,10 +16,11 @@ interface IPhoto extends IObjectWithKey {
   height: number;
 }
 
-const PHOTOS: IPhoto[] = createArray(250, () => {
+const PHOTOS: IPhoto[] = createArray(250, (index: number) => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
 
   return {
+    key: index,
     url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
     height: 100
