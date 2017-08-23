@@ -55,7 +55,7 @@ function cleanupDisplayName(displayName: string): string {
  * @public
  */
 export function getInitials(displayName: string | undefined | null, isRtl: boolean): string {
-  if (displayName == null) {
+  if (!displayName) {
     return '';
   }
 

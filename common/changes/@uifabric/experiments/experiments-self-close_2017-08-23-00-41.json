@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Removed suppression of tslint self-close rule from Experiments package and self-closed all empty elements to pass tslint",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "a.erich@gmail.com"
+}

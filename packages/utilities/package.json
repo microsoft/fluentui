@@ -10,10 +10,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
-    "clean": "gulp clean",
-    "test": "gulp",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "tslint": "node ../../scripts/tslint.js",
+    "build": "node ../../scripts/build.js",
+    "clean": "gulp clean"
   },
   "devDependencies": {
     "@microsoft/web-library-build": "^3.2.1",
@@ -31,6 +30,7 @@
     "enzyme": "^2.7.0",
     "es6-promise": "^4.1.0",
     "es6-weak-map": "^2.0.2",
+    "es6-map": "^0.1.5",
     "gulp": "~3.9.1",
     "mocha": "^3.3.0",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
