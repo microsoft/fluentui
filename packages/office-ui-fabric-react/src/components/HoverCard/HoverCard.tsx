@@ -30,6 +30,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard: HTMLElement;
+  private _expandingCard: ExpandingCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
 
@@ -99,6 +100,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
+            componentRef={ this._resolveRef('_expandingCard') }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             targetElement={ this._getTargetElement() }
@@ -139,7 +141,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this._dismissTimerId = this._async.setTimeout(() => {
       if (!(this.props.sticky && type === 'mouseleave')) {
-        const rect = this._hoverCard.getBoundingClientRect();
+        const rect = this._expandingCard.element.getBoundingClientRect();
         // handle the case when dismiss is called by target when cursor moves towards the card.
         const isInsideCard: boolean = x <= rect.right && x >= rect.left && y >= rect.top;
         if (!isInsideCard) {

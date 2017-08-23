@@ -32,6 +32,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   private _styles: IExpandingCardStyles;
   private _callout: ICallout;
   private _expandedElem: HTMLDivElement;
+  private _fullCard: HTMLDivElement;
 
   constructor(props: IExpandingCardProps) {
     super(props);
@@ -87,12 +88,17 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
           onBlurCapture={ this.props.onLeave }
           onMouseEnter={ this.props.onEnter }
           onMouseLeave={ this.props.onLeave }
+          ref={ this._resolveRef('_fullCard') }
         >
           { this._onRenderCompactCard() }
           { this._onRenderExpandedCard() }
         </div>
       </Callout >
     );
+  }
+
+  public get element(): HTMLDivElement {
+    return this._fullCard;
   }
 
   @autobind
