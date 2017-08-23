@@ -157,15 +157,12 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
-
   private _getThumbStyle(horizontal: boolean | undefined, thumbOffsetPercent: number): any {
-    var thumbStyle: string;
     if (horizontal) {
       return getRTL() ? { 'right': thumbOffsetPercent + '%' } : { 'left': thumbOffsetPercent + '%' };
     } else {
       return getRTL() ? { 'bottom': thumbOffsetPercent + '%' } : { 'top': thumbOffsetPercent + '%' };
     }
-
   }
 
   @autobind
@@ -210,7 +207,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
           (sliderPositionRect.bottom - (event as TouchEvent).touches[0].clientY) / stepLength;
       }
     }
-
 
     let currentValue: number | undefined;
     let renderedValue: number | undefined;
