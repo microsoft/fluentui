@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "High contrast, accesibility, and other bugfixes",
+      "comment": "DetailsList: Set button.check margin to 0",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-krbrow@microsoft.com"
+  "email": "v-edwliu@microsoft.com"
 }

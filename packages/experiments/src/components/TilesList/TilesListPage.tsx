@@ -19,7 +19,7 @@ const TilesListMediaExampleCode = require('!raw-loader!experiments/src/component
 /* tslint:enable:max-line-length */
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TilesList'
