@@ -55,8 +55,6 @@ export function createDocumentItems(count: number, indexOffset: number): IExampl
   const items: IExampleItem[] = [];
 
   for (let i = 0; i < count; i++) {
-    const seed = Math.random();
-
     items.push({
       key: `item-${indexOffset + i}`,
       name: lorem(4),

@@ -4,8 +4,7 @@ import {
   TilesList,
   ITilesGridSegment,
   ITilesGridItem,
-  TilesGridMode,
-  ITileSize
+  TilesGridMode
 } from '../../TilesList';
 
 export interface IBasicItem {

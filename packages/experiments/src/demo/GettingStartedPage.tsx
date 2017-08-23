@@ -1,4 +1,4 @@
-/* tslint:disable:jsx-no-multiline-js */
+/* tslint:disable:jsx-no-multiline-js max-line-length */
 
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';

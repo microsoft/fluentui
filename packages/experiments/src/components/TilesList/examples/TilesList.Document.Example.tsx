@@ -1,18 +1,13 @@
 
 import * as React from 'react';
 import {
-  TilesList,
-  ITilesGridSegment,
-  ITilesGridItem,
-  TilesGridMode,
-  ITileSize
+  TilesList
 } from '../../TilesList';
 import { Tile } from '../../../Tile';
 import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { lorem } from '@uifabric/example-app-base';
 import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells } from './ExampleHelpers';
 
 function createGroups(): IExampleGroup[] {

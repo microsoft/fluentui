@@ -1,16 +1,13 @@
 
 import * as React from 'react';
 import { Tile } from '../Tile';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import {
   SignalField,
-  Signal,
   NewSignal,
   CommentsSignal,
   TrendingSignal,
-  SharedSignal,
-  MentionSignal
+  SharedSignal
 } from '../../signals/Signals';
 import { lorem } from '@uifabric/example-app-base';
 import * as TileExampleStylesModule from './Tile.Example.scss';
