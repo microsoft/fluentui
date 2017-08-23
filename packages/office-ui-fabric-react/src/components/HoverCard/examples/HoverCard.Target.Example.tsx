@@ -46,7 +46,6 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
           this.state.contentRendered &&
           <HoverCard
             expandingCardProps={ this.props.expandingCardProps }
-            instantOpenOnClick={ true }
             target={ this.state.contentRendered }
           />
         }

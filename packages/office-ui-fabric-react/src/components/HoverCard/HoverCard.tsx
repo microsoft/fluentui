@@ -53,7 +53,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     this._events.on(target, 'mouseleave', this._cardDismiss);
     this._events.on(target, 'focus', this._cardOpen);
     this._events.on(target, 'blur', this._cardDismiss);
-    this.props.instantOpenOnClick && this._events.on(target, 'click', this._instantOpenExpanded);
+    if (this.props.instantOpenOnClick) {
+      this._events.on(target, 'click', this._instantOpenExpanded);
+    } else {
+      this._events.on(target, 'mousedown', this._cardDismiss);
+      this._events.on(target, 'keydown', this._cardDismiss);
+    }
   }
 
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
@@ -87,10 +92,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this._styles = getStyles(customStyles);
 
-    let onClick;
-    if (instantOpenOnClick) {
-      onClick = this._instantOpenExpanded;
-    }
     return (
       <div
         className={ css(this._styles.host) }
