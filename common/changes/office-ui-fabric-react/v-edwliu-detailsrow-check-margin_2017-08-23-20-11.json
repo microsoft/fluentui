@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Set button.check margin to 0",
+      "comment": "DetailsRow: Removed margin from check buttons.",
       "type": "patch"
     }
   ],
