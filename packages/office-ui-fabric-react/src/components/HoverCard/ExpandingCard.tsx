@@ -26,7 +26,8 @@ export interface IExpandingCardState {
 export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
-    expandedCardHeight: 384
+    expandedCardHeight: 384,
+    directionalHint: DirectionalHint.bottomLeftEdge
   };
 
   private _styles: IExpandingCardStyles;
@@ -78,7 +79,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         ) }
         targetElement={ targetElement }
         isBeakVisible={ false }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
+        directionalHint={ this.props.directionalHint }
         directionalHintFixed={ true }
         finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }

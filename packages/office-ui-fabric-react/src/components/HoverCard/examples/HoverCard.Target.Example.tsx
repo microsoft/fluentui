@@ -8,6 +8,7 @@ import {
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './HoverCard.Example.scss';
@@ -47,6 +48,7 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
           <HoverCard
             expandingCardProps={ this.props.expandingCardProps }
             target={ this.state.contentRendered }
+            cardDismissDelay={ 300 }
           />
         }
       </div>
@@ -88,7 +90,8 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
-      renderData: item
+      renderData: item,
+      directionalHint: DirectionalHint.rightCenter
     };
 
     if (column.key === 'location') {

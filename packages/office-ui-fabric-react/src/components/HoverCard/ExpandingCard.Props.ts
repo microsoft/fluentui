@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ExpandingCard } from './ExpandingCard';
 import { IRenderFunction } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
+import { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IExpandingCard {
 
@@ -69,6 +70,12 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * Theme provided by HOC.
    */
   theme?: ITheme;
+
+  /**
+   * How the element should be positioned
+   * @default DirectionalHint.bottomLeftEdge
+   */
+  directionalHint?: DirectionalHint
 
   /**
    * Custom styles for this component
