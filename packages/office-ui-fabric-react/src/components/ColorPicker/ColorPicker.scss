@@ -99,9 +99,10 @@
     padding-right: 2px;
   }
 
-  .input &:global(.ms-TextField-field) {
+  :global(.ms-TextField-field) {
     min-width: auto;
     padding: 5px;
+    text-overflow: clip;
   }
 }
 
