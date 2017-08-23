@@ -74,7 +74,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
 
     return (
       <div>
-        <p> Hover over location of a row item to see the card </p>
+        <p> Hover over key of a row item to see the card </p>
         <DetailsList
           setKey='hoverSet'
           items={ items! }
