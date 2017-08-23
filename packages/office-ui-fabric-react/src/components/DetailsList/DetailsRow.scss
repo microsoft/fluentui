@@ -97,6 +97,10 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     // Selected State Header cell
     &.isRowHeader {
       color: $detailsList-item-selected-text-color;
+
+      @media screen and (-ms-high-contrast: active) {
+        color: HighlightText;
+      }
     }
 
     @media screen and (-ms-high-contrast: active) {
@@ -126,9 +130,17 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     .cell {
       color: $detailsList-item-selected-hover-meta-text-color;
 
+      @media screen and (-ms-high-contrast: active) {
+        color: HighlightText;
+      }
+
       // Selected State hover Header cell
       &.isRowHeader {
         color: $detailsList-item-selected-hover-text-color;
+
+        @media screen and (-ms-high-contrast: active) {
+          color: HighlightText;
+        }
       }
     }
   }
@@ -141,9 +153,17 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     .cell {
       color: $detailsList-item-focus-meta-text-color;
 
+      @media screen and (-ms-high-contrast: active) {
+        color: HighlightText;
+      }
+
       // Row header cell
       &.isRowHeader {
         color: $detailsList-item-focus-header-text-color;
+
+        @media screen and (-ms-high-contrast: active) {
+          color: HighlightText;
+        }
       }
     }
   }
