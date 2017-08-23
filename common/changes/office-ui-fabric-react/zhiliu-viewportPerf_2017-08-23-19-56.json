@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "perf optimization in withViewport, do not need to do expensive measurement when list is fixed column layout",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "zhiliu@microsoft.com"
+}
