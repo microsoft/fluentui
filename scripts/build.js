@@ -10,8 +10,8 @@ let tasks = [
   'sass',
   'tslint',
   'ts',
-  'karma',
-  'webpack'
+  //'karma',
+  //'webpack'
 ];
 
 if (process.argv.length >= 3 && process.argv[2].indexOf('--') === -1) {
