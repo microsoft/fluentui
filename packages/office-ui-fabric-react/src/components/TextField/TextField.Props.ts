@@ -12,10 +12,10 @@ export interface ITextField {
   /** Select the value of the text field. */
   select: () => void;
 
-  /** Sets the selection start of the text field to a specified value. Returns -1 if there is no selection. */
+  /** Sets the selection start of the text field to a specified value. */
   setSelectionStart: (value: number) => void;
 
-  /** Sets the selection end of the text field to a specified value. Returns -1 if there is no selection. */
+  /** Sets the selection end of the text field to a specified value. */
   setSelectionEnd: (value: number) => void;
 
   /**
@@ -25,10 +25,10 @@ export interface ITextField {
    */
   setSelectionRange: (start: number, end: number) => void;
 
-  /** Gets the selection start of the text field */
+  /** Gets the selection start of the text field. Returns -1 if there is no selection. */
   selectionStart: number;
 
-  /** Gets the selection end of the text field */
+  /** Gets the selection end of the text field. Returns -1 if there is no selection. */
   selectionEnd: number;
 }
 
