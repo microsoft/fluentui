@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { css, BaseComponent, autobind, getNativeProps, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
@@ -131,7 +131,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
         data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
-        data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }>
+        data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }
+      >
         {
           background ? this._onRenderBackground({
             background: background
@@ -180,15 +181,18 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     return (
       <span
         role='presentation'
-        className={ css('ms-Tile-content', TileStyles.content) }>
+        className={ css('ms-Tile-content', TileStyles.content) }
+      >
         <span
           role='presentation'
-          className={ css('ms-Tile-foreground', TileStyles.foreground) }>
+          className={ css('ms-Tile-foreground', TileStyles.foreground) }
+        >
           <span
             role='presentation'
             className={ css('ms-Tile-frame', TileStyles.frame, {
               [`ms-Tile-frame--hasForegroundFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame
-            }) }>
+            }) }
+          >
             { foreground }
           </span>
         </span>
@@ -205,12 +209,14 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }) {
     return (
       <span
-        className={ css('ms-Tile-nameplate', TileStyles.nameplate) }>
+        className={ css('ms-Tile-nameplate', TileStyles.nameplate) }
+      >
         {
           name ? (
             <span
               id={ this._nameId }
-              className={ css('ms-Tile-name', TileStyles.name) }>
+              className={ css('ms-Tile-name', TileStyles.name) }
+            >
               { name }
             </span>
           ) : null
@@ -219,7 +225,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           activity ? (
             <span
               id={ this._activityId }
-              className={ css('ms-Tile-activity', TileStyles.activity) }>
+              className={ css('ms-Tile-activity', TileStyles.activity) }
+            >
               { activity }
             </span>
           ) : null
@@ -238,7 +245,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         aria-label={ this.props.toggleSelectionAriaLabel }
         className={ css('ms-Tile-check', TileStyles.check) }
         data-selection-toggle={ true }
-        role='checkbox'>
+        role='checkbox'
+      >
         <Check
           checked={ isSelected }
         />

@@ -1,8 +1,27 @@
 {
   "extends": [
-    "@microsoft/gulp-core-build-typescript/lib/defaultTslint.json"
+    "@microsoft/gulp-core-build-typescript/lib/defaultTslint.json",
+    "tslint-react"
   ],
   "rules": {
+    "jsx-curly-spacing": {
+      "when": "always"
+    },
+    "jsx-no-bind": true,
+    "jsx-boolean-value": "never",
+    "jsx-equals-spacing": "never",
+    "jsx-key": true,
+    "jsx-no-lambda": true,
+    "jsx-self-close": true,
+    "jsx-wrap-multiline": true,
+    "jsx-no-string-ref": true,
+    "jsx-ban-props": [
+      true,
+      [
+        "style",
+        "Use className and provide css rules instead of using inline styles."
+      ]
+    ],
     "no-duplicate-variable": true,
     "use-isnan": true,
     "triple-equals": [
