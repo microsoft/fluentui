@@ -89,7 +89,8 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             targetElement={ contextMenu.target }
             directionalHint={ DirectionalHint.bottomAutoEdge }
             gapSpace={ 5 }
-            onDismiss={ this._onDismiss } />
+            onDismiss={ this._onDismiss }
+          />
         ) : (null) }
       </div>
     );
