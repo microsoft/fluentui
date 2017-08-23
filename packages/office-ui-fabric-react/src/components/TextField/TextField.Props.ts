@@ -12,10 +12,10 @@ export interface ITextField {
   /** Select the value of the text field. */
   select: () => void;
 
-  /** Sets the selection start of the text field to a specified value */
+  /** Sets the selection start of the text field to a specified value. Returns -1 if there is no selection. */
   setSelectionStart: (value: number) => void;
 
-  /** Sets the selection end of the text field to a specified value */
+  /** Sets the selection end of the text field to a specified value. Returns -1 if there is no selection. */
   setSelectionEnd: (value: number) => void;
 
   /**
