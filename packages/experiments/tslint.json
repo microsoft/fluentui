@@ -4,7 +4,6 @@
   ],
   "rules": {
     "jsx-ban-props": false,
-    "no-unused-variable": false,
     "jsx-no-multiline-js": false,
     "max-line-length": [
       false,
