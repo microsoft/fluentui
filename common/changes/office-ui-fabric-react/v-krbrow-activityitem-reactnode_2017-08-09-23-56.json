@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ActivityItem: Replacing IRenderFunctions with ReactNodes in the interface.",
-      "type": "major"
+      "comment": "ActivityItem: Adding ReactNodes in the interface in addition to the IRenderFunction props.",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
