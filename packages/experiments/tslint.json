@@ -4,7 +4,6 @@
   ],
   "rules": {
     "jsx-ban-props": false,
-    "jsx-self-close": false,
     "jsx-no-multiline-js": false,
     "no-any": false,
     "typedef": [
