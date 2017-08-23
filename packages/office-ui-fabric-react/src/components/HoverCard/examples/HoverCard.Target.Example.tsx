@@ -91,14 +91,15 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
       renderData: item,
-      directionalHint: DirectionalHint.rightCenter
+      directionalHint: DirectionalHint.rightCenter,
+      gapSpace: 16
     };
 
-    if (column.key === 'location') {
+    if (column.key === 'key') {
       return (
         <div className='HoverCard-item'>
           <HoverCardField
-            content={ item.location }
+            content={ item.key }
             expandingCardProps={ expandingCardProps }
           />
         </div>

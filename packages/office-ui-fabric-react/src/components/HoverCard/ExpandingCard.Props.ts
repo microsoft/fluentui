@@ -78,6 +78,12 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
   directionalHint?: DirectionalHint
 
   /**
+   * The gap between the card and the target
+   * @default 0
+   */
+  gapSpace?: number
+
+  /**
    * Custom styles for this component
    */
   styles?: IExpandingCardStyles;
