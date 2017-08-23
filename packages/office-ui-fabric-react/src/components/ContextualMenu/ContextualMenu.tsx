@@ -443,6 +443,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
+    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
 
     const itemButtonProperties = {
       className: css('ms-ContextualMenu-link', styles.link, {
@@ -463,7 +464,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': item.isDisabled,
-      role: canCheck ? 'menuitemcheckbox' : 'menuitem',
+      role: item.role || defaultRole,
       style: item.style
     };
 

@@ -570,9 +570,11 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _updatePageMeasurements(oldPages: IPage[], newPages: IPage[]) {
-    let renderedIndexes = {};
+    const renderedIndexes: {
+      [index: number]: IPage;
+    } = {};
+
     let heightChanged = false;
-    let renderCount = this._getRenderCount();
 
     // when not in virtualize mode, we render all the items without page measurement
     if (!this._shouldVirtualize()) {
@@ -583,7 +585,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       let page = oldPages[i];
 
       if (page.items) {
-        (renderedIndexes as any)[page.startIndex] = page;
+        renderedIndexes[page.startIndex] = page;
       }
     }
 
@@ -593,17 +595,17 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       if (page.items) {
         heightChanged = this._measurePage(page) || heightChanged;
 
-        if (!(renderedIndexes as any)[page.startIndex]) {
+        if (!renderedIndexes[page.startIndex]) {
           this._onPageAdded(page);
         } else {
-          delete (renderedIndexes as any)[page.startIndex];
+          delete renderedIndexes[page.startIndex];
         }
       }
     }
 
     for (let index in renderedIndexes) {
       if (renderedIndexes.hasOwnProperty(index)) {
-        this._onPageRemoved((renderedIndexes as any)[index]);
+        this._onPageRemoved(renderedIndexes[index]);
       }
     }
 
@@ -700,7 +702,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
       let pageBottom = pageTop + pageHeight - 1;
 
-      let isPageRendered = findIndex(this.state.pages as IPage[], (page) => page.items && page.startIndex === itemIndex) > -1;
+      let isPageRendered = findIndex(this.state.pages as IPage[], (page: IPage) => !!page.items && page.startIndex === itemIndex) > -1;
       let isPageInAllowedRange = !allowedRect || pageBottom >= allowedRect.top && pageTop <= allowedRect.bottom!;
       let isPageInRequiredRange = !this._requiredRect || pageBottom >= this._requiredRect!.top && pageTop <= this._requiredRect!.bottom!;
       let isPageVisible = !isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered)) || !shouldVirtualize;
@@ -858,7 +860,6 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     props = props || this.props;
     const { renderedWindowsAhead, renderedWindowsBehind } = props;
     const { pages } = this.state;
-    const renderCount = this._getRenderCount(props);
     // when not in virtualize mode, we render all items without measurement to optimize page rendering perf
     if (!this._shouldVirtualize()) {
       return;

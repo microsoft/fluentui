@@ -1,5 +1,6 @@
 // Note: due to this being attached to body, we'll make the variable Fabric specific to be clear where it
 // is coming from.
-.msFabricScrollDisabled {
+.scrollDisabled {
   overflow: hidden !important;
+  user-select: none;
 }

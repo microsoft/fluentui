@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
   IComponentDemoPageProps,
@@ -37,11 +36,10 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-          </div>
+          <div />
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -57,8 +55,8 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

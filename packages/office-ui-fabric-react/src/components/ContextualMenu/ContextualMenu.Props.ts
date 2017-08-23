@@ -318,7 +318,7 @@ export interface IContextualMenuItem {
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
-   * If none is specified, the arai-label attribute will contain the item name
+   * If none is specified, the aria-label attribute will contain the item name
    */
   ariaLabel?: string;
 
@@ -341,6 +341,12 @@ export interface IContextualMenuItem {
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
+
+  /**
+   * Optional override for the role attribute on the menu button. If one is not provided, it will
+   * have a value of menuitem or menuitemcheckbox.
+   */
+  role?: string;
 
   /**
    * Any additional properties to use when custom rendering menu items.
