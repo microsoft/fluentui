@@ -2,6 +2,35 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "4.7.3",
+      "tag": "@uifabric/fabric-website_v4.7.3",
+      "date": "Wed, 23 Aug 2017 19:04:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f9295f56a26a91d6fd35776490ca91d7ae83bd40",
+            "comment": "Removed Trello reference"
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "d13adf8353d706d583a1e217135890ceaf6e49ff",
+            "comment": "Updated branding guidance pdf from the cdn."
+          },
+          {
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "2d179149380245f586834535299b5832094bee6d",
+            "comment": "Updated the CDN link on the \"Get Started\" page and section to an updated version of Fabric Core, 7.2.0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.35.2 <5.0.0` to `>=4.36.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.7.2",
       "tag": "@uifabric/fabric-website_v4.7.2",
       "date": "Mon, 21 Aug 2017 10:19:29 GMT",

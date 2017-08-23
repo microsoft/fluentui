@@ -19,7 +19,7 @@ const TilesListMediaExampleCode = require('!raw-loader!experiments/src/component
 /* tslint:enable:max-line-length */
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TilesList'
@@ -57,7 +57,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -74,8 +74,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

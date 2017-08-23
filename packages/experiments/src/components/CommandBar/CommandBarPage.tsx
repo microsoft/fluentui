@@ -12,7 +12,7 @@ import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (
@@ -50,7 +50,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         }
         /* tslint:enable:max-line-length */
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -76,8 +76,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 
