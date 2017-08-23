@@ -19,6 +19,8 @@ module.exports = function (options) {
     const promises = [];
 
     glob.sync(path.resolve(process.cwd(), 'src/**/*.scss')).forEach(fileName => {
+      fileName = path.resolve(fileName);
+
       promises.push(new Promise((resolve, reject) => {
         sass.render(
           {
@@ -56,7 +58,7 @@ module.exports = function (options) {
   }
 
   function getJSON(cssFileName, json) {
-    _fileNameToClassMap[cssFileName] = json;
+    _fileNameToClassMap[path.resolve(cssFileName)] = json;
   }
 
   function createTypeScriptModule(fileName, css) {
