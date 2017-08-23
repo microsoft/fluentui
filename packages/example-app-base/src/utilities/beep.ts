@@ -5,14 +5,14 @@ const MIN_DURATION_BETWEEN_BEEPS = 100;
 
 let _beepsLeft = 0;
 
-export function beep() {
+export function beep(): void {
   _beepsLeft++;
   if (_beepsLeft === 1) {
     playBeep();
   }
 }
 
-function playBeep() {
+function playBeep(): void {
   if (_beepsLeft) {
     const beepSound = new Audio(BEEP_DATA);
 

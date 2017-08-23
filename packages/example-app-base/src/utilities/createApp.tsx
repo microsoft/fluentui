@@ -22,17 +22,21 @@ export function createApp(
   examples: ExampleGroup | ExampleGroup[],
   defaultRouteComponent: () => (JSX.Element | null) = () => null,
   appTitle?: string, headerLinks?: IAppLink[]
+<<<<<<< HEAD
 ) {
+=======
+): void {
+>>>>>>> Added missing typedefs in ex-app-base pkg to pass tslint
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
-  function _onLoad() {
+  function _onLoad(): void {
     rootElement = document.createElement('div');
     document.body.appendChild(rootElement);
 
     setBaseUrl('./dist/');
 
-    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group, groupIndex) => group.examples.map(
+    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group: ExampleGroup, groupIndex: number) => group.examples.map(
       (example: IExample, index: number) => (
         <Route
           key={ example.key }
@@ -71,7 +75,7 @@ export function createApp(
       rootElement);
   }
 
-  function _onUnload() {
+  function _onUnload(): void {
     if (rootElement) {
       ReactDOM.unmountComponentAtNode(rootElement);
       rootElement = null;
@@ -99,10 +103,10 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
   return {
     appTitle: 'Fabric Examples',
     testPages: [],
-    examplePages: groups.map((group, groupIndex) => (
+    examplePages: groups.map((group: ExampleGroup, groupIndex: number) => (
       {
         name: group.title,
-        links: group.examples.map((example, exampleIndex) => (
+        links: group.examples.map((example: IExample, exampleIndex: number) => (
           {
             component: example.onRender,
             key: example.key,
