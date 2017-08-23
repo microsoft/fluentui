@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "perf optimization in withViewport, do not need to do expensive measurement when list is fixed column layout",
+      "comment": "withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode.",
       "type": "minor"
     }
   ],
