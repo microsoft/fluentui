@@ -6,9 +6,15 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 // Please keep alphabetized
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
-   * An element describing the activity that took place. If not included, no description of the activity is shown.
+   * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or onRenderActivityDescription are included, no description of the activity is shown.
    */
   activityDescription?: React.ReactNode[] | React.ReactNode;
+
+  /**
+   * Text describing the activity that occurred and naming the people involved in it. Deprecated, use activityDescription instead.
+   * @deprecated
+   */
+  activityDescriptionText?: string;
 
   /**
    * An element containing an icon shown next to the activity item.
@@ -21,9 +27,15 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   activityPersonas?: Array<IPersonaProps>;
 
   /**
-   * An element containing the text of comments or @mention messages. If not included, no comments are shown.
+   * An element containing the text of comments or @mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.
    */
   comments?: React.ReactNode[] | React.ReactNode;
+
+  /**
+   * Text of comments or @mention messages. Deprecated, use comments instead.
+   * @deprecated
+   */
+  commentText?: string;
 
   /**
    * Gets ref to component interface.
@@ -34,6 +46,26 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * Indicated if the compact styling should be used.
    */
   isCompact?: boolean;
+
+  /**
+   * A renderer for the description of the current activity.
+   */
+  onRenderActivityDescription?: IRenderFunction<IActivityItemProps>;
+
+  /**
+   * A renderer that adds the text of a comment below the activity description.
+   */
+  onRenderComments?: IRenderFunction<IActivityItemProps>;
+
+  /**
+   * A renderer to create the icon next to the activity item.
+   */
+  onRenderIcon?: IRenderFunction<IActivityItemProps>;
+
+  /**
+   * A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.
+   */
+  onRenderTimeStamp?: IRenderFunction<IActivityItemProps>;
 
   /**
    * Optional styling for the elements within the Activity Item.
