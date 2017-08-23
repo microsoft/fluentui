@@ -14,6 +14,10 @@ export interface IWithViewportState {
   viewport?: IViewport;
 }
 
+export interface IWithViewportProps {
+  noUpdateViewport?: boolean;
+}
+
 const RESIZE_DELAY = 500;
 const MAX_RESIZE_ATTEMPTS = 3;
 
@@ -47,7 +51,12 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         });
 
       this._events.on(window, 'resize', this._onAsyncResize);
-      this._updateViewport();
+      const {
+        noUpdateViewport
+      } = this.props as IWithViewportProps;
+      if (!noUpdateViewport) {
+        this._updateViewport();
+      }
     }
 
     public componentWillUnmount() {
@@ -56,7 +65,10 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
     public render() {
       let { viewport } = this.state;
-      let isViewportVisible = viewport!.width > 0 && viewport!.height > 0;
+      const {
+        noUpdateViewport
+      } = this.props as IWithViewportProps;
+      let isViewportVisible = noUpdateViewport || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
