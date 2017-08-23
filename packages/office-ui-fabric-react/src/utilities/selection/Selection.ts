@@ -3,13 +3,13 @@ import { EventGroup } from '../../Utilities';
 
 export interface ISelectionOptions {
   onSelectionChanged?: () => void;
-  getKey?: (item: IObjectWithKey, index?: number) => string;
+  getKey?: (item: IObjectWithKey, index?: number) => string | number;
   canSelectItem?: (item: IObjectWithKey) => boolean;
 }
 
 export class Selection implements ISelection {
   public count: number;
-  public getKey: (item: IObjectWithKey, index?: number) => string;
+  public getKey: (item: IObjectWithKey, index?: number) => string | number;
   public canSelectItem: (item: IObjectWithKey) => boolean;
 
   private _changeEventSuppressionCount: number;

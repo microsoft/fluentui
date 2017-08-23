@@ -1,0 +1,24 @@
+{
+  "name": "@uifabric/build",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "",
+    "build": "node -v"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "chalk": "^2.1.0",
+    "cpx": "^1.5.0",
+    "github": "^7.0.0",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "node-sass": "^4.5.3",
+    "postcss": "^6.0.9",
+    "postcss-modules": "^0.8.0",
+    "tslint": "^5.6.0",
+    "tslint-microsoft-contrib": "^5.0.1",
+    "typescript": "2.4.2",
+    "yargs": "^6.5.0"
+  }
+}

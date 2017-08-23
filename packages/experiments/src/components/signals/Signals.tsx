@@ -87,7 +87,7 @@ export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Elemen
  */
 export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <span className={ css(SignalStyles.signal, SignalStyles.new) }>
+    <span className={ css(SignalStyles.signal, SignalStyles.newItem) }>
       <Icon className={ css(SignalStyles.newIcon) } iconName='glimmer' />
     </span>
   );

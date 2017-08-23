@@ -75,7 +75,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     };
   }
 
-  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>) {
+  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
         cells: this._getCells(nextProps.items)
@@ -83,13 +83,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>) {
+  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       selection
     } = this.props;
@@ -114,7 +114,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           selection ?
             <SelectionZone
               selection={ selection }
-              selectionMode={ SelectionMode.multiple }>
+              selectionMode={ SelectionMode.multiple }
+            >
               { list }
             </SelectionZone> :
             list
@@ -123,10 +124,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     );
   }
 
-  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize) {
+  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize): JSX.Element {
     if (item.grid.mode === TilesGridMode.none) {
       return (
-        <div className={ css(TilesListStyles.header) }
+        <div
+          className={ css(TilesListStyles.header) }
         >
           { item.onRender(item.content, { width: 0, height: 0 }) }
         </div>
@@ -157,7 +159,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 
   @autobind
-  private _onRenderPage(pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) {
+  private _onRenderPage(pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element {
     const {
       page,
       className: pageClassName,
@@ -253,7 +255,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
               marginTop: isOpenStart ? '0' : `${grid.marginTop - margin}px`,
               marginBottom: isOpenEnd ? '0' : `${grid.marginBottom - margin}px`
             }
-          }>
+          }
+        >
           { ...renderedCells }
         </div>
       );
@@ -437,7 +440,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
 
     const itemWidthOverHeight = item.aspectRatio || 1;
-    const itemHeightOverWidth = 1 / itemWidthOverHeight;
     const margin = grid.spacing / 2;
 
     const isFill = gridMode === TilesGridMode.fill;

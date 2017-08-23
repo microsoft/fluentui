@@ -4,8 +4,7 @@ import {
   TilesList,
   ITilesGridSegment,
   ITilesGridItem,
-  TilesGridMode,
-  ITileSize
+  TilesGridMode
 } from '../../TilesList';
 
 export interface IBasicItem {
@@ -42,7 +41,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     const gridSegment: ITilesGridSegment<IBasicItem> = {
       items: this.state.items,
       key: 'grid',
@@ -61,7 +60,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
   }
 }
 
-function renderItem(item: IBasicItem) {
+function renderItem(item: IBasicItem): JSX.Element {
   return (
     <div
       style={
