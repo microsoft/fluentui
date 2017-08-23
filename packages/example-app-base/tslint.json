@@ -6,16 +6,8 @@
     "jsx-no-multiline-js": false,
     "jsx-no-lambda": false,
     "no-any": false,
-    "no-null-keyword": false,
-    "variable-name": false,
     "typedef": [
       false
-    ],
-    "export-name": false,
-    "trailing-comma": [
-      false
-    ],
-    "no-internal-module": false,
-    "prefer-const": false
+    ]
   }
 }
