@@ -1,149 +1,145 @@
-import * as React from "react";
-import { BaseComponent, IBaseProps, css, IRenderFunction } from "office-ui-fabric-react/lib/Utilities";
+import * as React from 'react';
+import { BaseComponent, IBaseProps, css, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { ISelection, Selection, SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { IItem } from './List';
+import { StaticList } from './StaticList';
+import { VirtualizedList, IVirtualizedListProps } from './VirtualizedList';
+import { DataListRow } from './DataListRow';
+import { DataListHeader } from './DataListHeader';
+import * as stylesImport from './DataList.scss';
+const styles: any = stylesImport;
 
-///
+export interface ISizing {
+  grow: number;
 
-export interface IList<TItem> {
+  shrink: number;
 
+  basis: number | string;
 }
-
-export interface IListProps<TItem> {
-  className?: string;
-
-  items: TItem[];
-
-  onRenderItem: IRenderFunction<TItem>;
-}
-
-export interface IStaticListProps<TItem> extends IListProps<TItem> {
-
-}
-
-export class StaticList<TItem = any> extends React.PureComponent<IStaticListProps<TItem>> implements IList<TItem> {
-  render(): JSX.Element {
-    const { className, items, onRenderItem = this.onRenderItem } = this.props;
-
-    return <ul className={ css(className) }>
-      { items.map(item => onRenderItem(item, this.onRenderItem)) }
-    </ul>;
-  }
-
-  private onRenderItem(item: TItem): JSX.Element {
-    return <li>
-      { item }
-    </li>;
-  }
-}
-
-//
-
-export interface IVirtualizedListProps<TItem> extends IListProps<TItem>, IBaseProps {
-  initialViewportHeight?: number;
-
-  itemHeight: number;
-}
-
-export interface IVirtualizedListState<TItem> {
-  viewportHeight: number;
-
-  scrollTop: number;
-}
-
-export class VirtualizedList<TItem> extends BaseComponent<IVirtualizedListProps<TItem>, IVirtualizedListState<TItem>> implements IList<TItem> {
-  private root: HTMLElement;
-
-  constructor(props: IVirtualizedListProps<TItem>, context: any) {
-    super(props, context);
-
-    const { initialViewportHeight = window.innerHeight } = this.props;
-
-    this.state = {
-      viewportHeight: initialViewportHeight, // Start with the window height
-
-      scrollTop: 0
-    };
-
-    this.onScroll = this._async.debounce(this.onScroll, 100);
-  }
-
-  componentDidMount() {
-    // Start measurement timer, after delay measure actual surface
-    this._events.on(this.root, "scroll", this.onScroll);
-  }
-
-  componentWillUnmount() {
-    this._events.off(this.root, "scroll");
-  }
-
-  render() {
-    const { className } = this.props;
-
-    // TODO: Make element overflow auto, works better with how people use the list
-    return <div className={ css(className, "ms-VirtualizedList") } ref={ this._resolveRef("root") }>
-
-    </div>;
-  }
-
-  private renderItems(): (JSX.Element | null)[] {
-    const { itemHeight, items, onRenderItem = this.onRenderItem } = this.props;
-    const { scrollTop, viewportHeight } = this.state;
-
-    const numberOfElementsOverdraw = 2;
-
-    let result: (JSX.Element | null)[] = [];
-
-    const startIndex = scrollTop / itemHeight - numberOfElementsOverdraw;
-    const endIndex = startIndex + (numberOfElementsOverdraw * 2) + (viewportHeight / itemHeight);
-    for (let i = startIndex; i < endIndex; ++i) {
-      result.push(onRenderItem(items[i], this.onRenderItem));
-    }
-
-    // Generate spacer page
-    const spacerHeight = startIndex * itemHeight;
-    result.unshift(<li style={ { height: spacerHeight } } />)
-
-    return result;
-  }
-
-  private onScroll() {
-    this.setState({
-      scrollTop: this.root.scrollTop
-    });
-  }
-
-  private onRenderItem(item: TItem): JSX.Element {
-    return <li>
-      { item }
-    </li>;
-  }
-}
-
-/////
 
 export interface IColumn {
   key: string;
 
-  text: string;
+  name: string;
+
+  sizing?: ISizing;
+
+  fieldName: string | null;
+
+  minWidth: number;
+  maxWidth?: number;
+
+  /**
+   * Optional property that determines whether the column can be dropped if there is not enough room to satisfy all min-width
+   * requests. Only works for columns from right to left.
+   */
+  isCollapsable?: boolean;
+
+  isResizable?: boolean;
 }
 
-export interface IDataListProps<TItem> {
+export interface IDataListProps<TItem extends IItem> extends IBaseProps {
   items: TItem[];
 
   columns: IColumn[];
 
   isVirtualized?: boolean;
+
+  itemHeight: number;
+
+  dropColumns?: boolean;
 }
 
-export class DataList<TItem = any> extends React.PureComponent<IDataListProps<TItem> {
-  render() {
-    const { items, isVirtualized } = this.props;
+export class DataList<TItem extends IItem = any> extends BaseComponent<IDataListProps<TItem>, {}> {
+  private container: HTMLElement;
 
-    // TODO: Header/Columns
+  private selection: ISelection;
+  private start = 0;
 
-    if (isVirtualized) {
-      return <VirtualizedList items={ items } />;
-    } else {
-      return <StaticList items={ items } />;
-    }
+  constructor(props: IDataListProps<TItem>, context: any) {
+    super(props, context);
+
+    this.selection = new Selection();
+    this.selection.setItems(this.props.items, true);
+  }
+
+  public render(): JSX.Element {
+    const { items, isVirtualized, itemHeight, columns, dropColumns } = this.props;
+
+    /*onItemInvoked={ onItemInvoked }
+          onItemContextMenu={ onItemContextMenu }*/
+
+    return <div className={ css(
+      'ms-DataList',
+      styles.root,
+      dropColumns && styles.dropColumns
+    ) } ref={ this._resolveRef('container') }>
+      <DataListHeader columns={ columns } itemHeight={ itemHeight } />
+
+      <FocusZone
+        ref={ this._resolveRef('_focusZone') }
+        className={ styles.focusZone }
+        direction={ FocusZoneDirection.vertical }
+        isInnerZoneKeystroke={ () => false }
+      >
+        <SelectionZone
+          ref={ this._resolveRef('_selectionZone') }
+          selection={ this.selection }
+          selectionPreservedOnEmptyClick={ true }
+          selectionMode={ SelectionMode.single }
+        >
+
+          {
+            isVirtualized ?
+              (
+                React.createElement(
+                  VirtualizedList,
+                  {
+                    items,
+                    itemHeight,
+                    onRenderItem: this.renderRow,
+                    itemOverdraw: 4,
+                    scrollContainer: () => this.container
+                  } as IVirtualizedListProps<TItem>
+                )
+              ) : (
+                <StaticList items={ items } onRenderItem={ this.renderRow } />
+              )
+          }
+
+        </SelectionZone>
+      </FocusZone>
+    </div>;
+  }
+
+  public componentWillMount() {
+    performance.mark('control-start');
+    this.start = performance.now();
+  }
+
+  public componentDidMount() {
+    performance.mark('control-end');
+    performance.measure('control', 'control-start', 'control-end');
+
+    console.log(`DataList rendering ${performance.now() - this.start}s`);
+  }
+
+  private renderRow = (index: number, item: TItem): (JSX.Element | null) => {
+    const { itemHeight, columns } = this.props;
+
+    return <div key={ item.key }>
+      {
+        React.createElement(
+          DataListRow as { new(): DataListRow<TItem> },
+          {
+            columns,
+            index,
+            item,
+            itemHeight,
+            selection: this.selection
+          })
+      }
+    </div>;
   }
 }

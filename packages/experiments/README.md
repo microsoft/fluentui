@@ -2,9 +2,9 @@
 
 ##### Experimental components for Office UI Fabric React
 
-These are not production ready components and __should never be used in product__. This experimental space is useful for testing new components whos API might change before final release.
+These are not production ready components and __should never be used in product__. This experimental space is useful for testing new components whose API might change before final release.
 
-To import experimantal components:
+To import experimental components:
 
 ```js
 import { ComponentName } from '@uifabric/experiments/lib/ComponentName';

@@ -10,6 +10,7 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
 import './index.scss';
 import './ColorStyles.scss';
+import { DataListBasicExample } from '../components/DataList/examples/DataList.Basic.Example';
 
 setBaseUrl('./dist/');
 
@@ -36,9 +37,10 @@ function _onLoad() {
 
   ReactDOM.render(
     <Fabric>
-      <Router onNewRouteLoaded={ _scrollAnchorLink }>
+      {/*<Router onNewRouteLoaded={ _scrollAnchorLink }>
         { _getRoutes() }
-      </Router>
+      </Router>*/}
+      <DataListBasicExample />
     </Fabric>,
     rootElement);
 }

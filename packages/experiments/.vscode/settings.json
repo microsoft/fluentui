@@ -8,7 +8,7 @@
   // Controls if the editor should automatically close brackets after opening them
   "editor.autoClosingBrackets": false,
   // Controls whether the editor should render whitespace characters
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "none",
   // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
   "editor.insertSpaces": true,
   "files.exclude": {
@@ -33,5 +33,6 @@
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
+  "editor.autoIndent": true,
   "typescript.tsdk": "../../common/node_modules/typescript/lib"
 }

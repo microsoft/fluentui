@@ -15,6 +15,13 @@ export const AppDefinition: IAppDefinition = {
           name: 'Link',
           url: '#/examples/link'
         },
+
+        {
+          component: require<any>('../components/DataList/DataListPage').DataListPage,
+          key: 'DataList',
+          name: 'DataList',
+          url: '#/examples/dataList'
+        },
       ]
     }
   ],

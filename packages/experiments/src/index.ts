@@ -4,3 +4,4 @@
  */
 
 export * from './Link';
+export * from './components/DataList/DataList';
