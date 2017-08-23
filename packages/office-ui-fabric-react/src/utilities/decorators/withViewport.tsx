@@ -66,7 +66,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
     public render() {
       let { viewport } = this.state;
       const {
-        noUpdateViewport
+        skipViewportMeasures
       } = this.props as IWithViewportProps;
       let isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
