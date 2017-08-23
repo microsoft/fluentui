@@ -222,8 +222,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onGotoToday() {
-    this._navigateDay(this.props.today!);
+    let { onSelectDate, today } = this.props;
+    this._navigateDay(today!);
     this._focusOnUpdate = true;
+
+    if (onSelectDate) {
+      onSelectDate(today!);
+    }
   }
 
   @autobind
