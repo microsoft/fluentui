@@ -14,7 +14,7 @@
     "**/.DS_Store": true,
     "**/bower_components": true,
     "**/coverage": true,
-    "**/*.scss.ts": true
+    "**/*.scss.ts": false
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,

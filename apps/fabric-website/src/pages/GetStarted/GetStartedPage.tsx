@@ -161,7 +161,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
           <p>For advanced scenarios or alternatives to NPM see the <a href='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md'>advanced documentation in the Fabric React repository</a>.</p>
 
           <h3>Need a component Fabric React doesn&rsquo;t have?</h3>
-          <p>Check the <a href='https://trello.com/b/hBP8XdvR/office-ui-fabric-react-requests'>Fabric React Trello board</a> and vote up the request so we can track it. If you don&rsquo;t see an existing card, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repository</a> and we&rsquo;ll add the card for you.</p>
+          <p>First, check the <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
 
           <h2 id='core'>Get started with Fabric Core</h2>
           <p>With one reference to our CDN, you can access Fabric&rsquo;s fonts, icons, type styles, colors, grid, and more.</p>
