@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
-import { Tile } from './Tile';
 import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Selection';
 
 export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpanElement | HTMLAnchorElement> {
