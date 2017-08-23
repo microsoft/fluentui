@@ -75,13 +75,13 @@ export interface IExpandingCardProps extends React.HTMLAttributes<HTMLDivElement
    * How the element should be positioned
    * @default DirectionalHint.bottomLeftEdge
    */
-  directionalHint?: DirectionalHint
+  directionalHint?: DirectionalHint;
 
   /**
    * The gap between the card and the target
    * @default 0
    */
-  gapSpace?: number
+  gapSpace?: number;
 
   /**
    * Custom styles for this component
