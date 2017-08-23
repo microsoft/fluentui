@@ -21,17 +21,17 @@ function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
 function _initialize() {
   _hiddenElement = renderIntoDocument(
     <div data-is-visible={ false }>
-      <button></button>
+      <button />
     </div>
   ) as HTMLElement;
   _visibleElement = renderIntoDocument(
     <div data-is-visible={ true }>
-      <button></button>
+      <button />
     </div>
   ) as HTMLElement;
   _element = renderIntoDocument(
     <div>
-      <button></button>
+      <button />
     </div>
   ) as HTMLElement;
   (_element as any).isVisible = true;
