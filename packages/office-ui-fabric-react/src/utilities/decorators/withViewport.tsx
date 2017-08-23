@@ -15,7 +15,7 @@ export interface IWithViewportState {
 }
 
 export interface IWithViewportProps {
-  noUpdateViewport?: boolean;
+  skipViewportMeasures?: boolean;
 }
 
 const RESIZE_DELAY = 500;
@@ -52,9 +52,9 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
       this._events.on(window, 'resize', this._onAsyncResize);
       const {
-        noUpdateViewport
+        skipViewportMeasures
       } = this.props as IWithViewportProps;
-      if (!noUpdateViewport) {
+      if (!skipViewportMeasures) {
         this._updateViewport();
       }
     }
@@ -68,7 +68,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       const {
         noUpdateViewport
       } = this.props as IWithViewportProps;
-      let isViewportVisible = noUpdateViewport || (viewport!.width > 0 && viewport!.height > 0);
+      let isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
