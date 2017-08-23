@@ -7,7 +7,8 @@ import {
   css,
   divProperties,
   getNativeProps,
-  getId
+  getId,
+  getDocument
 } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
 import { ExpandingCard } from './ExpandingCard';
@@ -116,7 +117,18 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   private _getTargetElement(): HTMLElement {
-    return this.props.target ? this.props.target : this._hoverCard;
+    const { target } = this.props;
+
+    switch (typeof target) {
+      case 'string':
+        return getDocument()!.querySelector(target as string) as HTMLElement;
+
+      case 'object':
+        return target as HTMLElement;
+
+      default:
+        return this._hoverCard;
+    }
   }
 
   // Show HoverCard
