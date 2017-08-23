@@ -55,7 +55,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     this._id = getId('CommandBar');
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       items,
@@ -123,7 +123,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     );
   }
 
-  public focus() {
+  public focus(): void {
     this._overflowSet.focus();
   }
 
@@ -178,7 +178,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onRenderItems(item: ICommandBarItemProps) {
+  private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
     let { buttonStyles } = this.props;
 
     if (item.onRender) { return item.onRender(item); }
@@ -203,7 +203,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onRenderButton(props: ICommandBarItemProps) {
+  private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
     return <CommandBarButton {...props as any} />;
   }
 }
