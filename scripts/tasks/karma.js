@@ -6,6 +6,6 @@ module.exports = function (options) {
   if (fs.existsSync(karmaPath)) {
     const execSync = require('../exec-sync');
 
-    execSync('gulp karma');
+    execSync('gulp karma' + (options.isProduction ? ' --production' : ''));
   }
 };
