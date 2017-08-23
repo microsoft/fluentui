@@ -55,7 +55,7 @@ class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
 }
 
 // @public
-export function createArray(size: number, getItem?: (index?: number) => any): any[];
+export function createArray < T >(size: number, getItem: (index: number) => T): T[];
 
 // WARNING: contextTypes has incomplete type information
 // WARNING: childContextTypes has incomplete type information
@@ -106,7 +106,7 @@ class FabricPerformance {
 }
 
 // @public
-export function findIndex(array: any[], cb: (item: any, index?: number) => boolean): number;
+export function findIndex < T >(array: T[], cb: (item: any, index: number) => boolean): number;
 
 // @public
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
