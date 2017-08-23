@@ -26,14 +26,14 @@ export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolea
  * @param size - Size of array.
  * @param getItem - Callback to populate given cell index.
  */
-export function createArray<T>(size: number, getItem?: (index?: number) => T): T[] {
-  let array: (T | null)[] = [];
+export function createArray<T>(size: number, getItem: (index: number) => T): T[] {
+  let array: T[] = [];
 
   for (let i = 0; i < size; i++) {
-    array.push(getItem ? getItem(i) : null);
+    array.push(getItem(i));
   }
 
-  return array as T[];
+  return array;
 }
 
 /**
