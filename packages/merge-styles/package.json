@@ -10,9 +10,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gulp",
+    "build": "node ../../scripts/build.js",
     "clean": "gulp clean",
-    "test": "gulp",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "devDependencies": {

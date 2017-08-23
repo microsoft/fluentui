@@ -10,10 +10,11 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
 
-const PHOTOS = createArray(250, () => {
+const PHOTOS = createArray(250, (index: number) => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
 
   return {
+    key: index,
     url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
     height: 100
