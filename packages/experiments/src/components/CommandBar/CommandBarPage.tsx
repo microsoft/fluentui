@@ -12,7 +12,7 @@ import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (

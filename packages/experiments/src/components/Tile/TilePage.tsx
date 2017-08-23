@@ -13,7 +13,7 @@ import { TileDocumentExample } from './examples/Tile.Document.Example';
 const TileDocumentExampleCode = require('!raw-loader!experiments/src/components/Tile/examples/Tile.Document.Example.tsx') as string;
 
 export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Tile'
