@@ -176,8 +176,13 @@ export class Selection implements ISelection {
   }
 
   public isAllSelected(): boolean {
-    let selectableCount = Math.min(this.mode === SelectionMode.single ? 1 : Infinity, this._items.length - this._unselectableCount);
+    let selectableCount = this._items.length - this._unselectableCount;
 
+    // In single mode, we can only have a max of 1 item.
+    if (this.mode === SelectionMode.single) {
+      selectableCount = Math.min(selectableCount, 1);
+    }
+    
     return (
       (this.count > 0) &&
       (this._isAllSelected && this._exemptedCount === 0) ||
