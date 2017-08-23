@@ -20,7 +20,8 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekNumbers
+  getWeekNumbers,
+  getDayOfYear
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
@@ -95,7 +96,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let rightNavigationIcon = navigationIcons.rightNavigation;
     let weekNumbers = showWeekNumbers ? getWeekNumbers(weeks!, firstDayOfWeek, navigatedDate) : null;
 
-    console.log('weekNumbersArray ', weekNumbers)
     return (
       <div className={ css(
         'ms-DatePicker-dayPicker',
@@ -156,13 +156,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { weekNumbers!.map((weekNumber, index) =>
                     <tr key={ index }>
                       <td>
-
-                        <div
-                          className={ css(
-                            'ms-DatePicker-day',
-                            styles.day
-                          ) }
-                        >
+                        <div className={ css(
+                          'ms-DatePicker-day',
+                          styles.day,
+                          {
+                            ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: (getDayOfYear(selectedDate) > (weekNumber - 1) * DAYS_IN_WEEK) && (getDayOfYear(selectedDate) < weekNumber * DAYS_IN_WEEK)
+                          }
+                        ) }>
                           <span>{ weekNumber }</span>
                         </div>
                       </td>

@@ -180,9 +180,12 @@ $Calendar-dayPicker-margin: 10px;
   .weekNumbers{
     position: absolute;
     margin-top: $Calendar-day;
-    border-right: 1px solid $ms-color-neutralTertiary;
+    border-right: 1px solid $ms-color-neutralLight;
     .day{
       color: $ms-color-neutralTertiary;
+      &.weekIsHighlighted{
+        color: $ms-color-black;
+      }
     }
   }
   .table{

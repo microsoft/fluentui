@@ -200,52 +200,31 @@ function getDatePartHashValue(date: Date) {
   /* tslint:enable:no-bitwise */
 }
 
-
 /**
- * Returns week number for a date.
+ * Returns week number for a week in a year.
  */
 export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
-  console.log('week length ', weeks.length)
   let monthRange = getDateRangeArray(navigatedDate, DateRangeType.Month, firstDayOfWeek);
-  console.log(monthRange)
-  let weekDates = [monthRange[0], addDays(monthRange[0], weeks[0].length - 1)]
-  console.log('weekDates ', weekDates);
-  let weekDates0;
-  let weekDates1;
 
-  let weekArray = []
-  for (let x = 0; x < weeks.length; x++) {
+  let getDayofYear = getDayOfYear(monthRange[0]);
+  if (weeks.length == 6) { getDayofYear = getDayofYear - 1; }
 
-    weekDates0 = weekDates[0];
-    weekDates1 = weekDates[1];
+  let firstWeekNumber = Math.ceil(getDayofYear / DAYS_IN_WEEK);
 
-    // Get week number using last day of the week
-    if (weekDates0.getMonth() === navigatedDate.getMonth() || weekDates1.getMonth() === navigatedDate.getMonth()) {
-      weekArray.push(getWeekofYear(weekDates1, 0));
-    }
-    weekDates[0] = addDays(weekDates0, weeks[0].length);
-    weekDates[1] = addDays(weekDates1, weeks[0].length);
+  let weeksArray = [];
 
+  for (var i = 0; i < weeks.length; i++) {
+    weeksArray.push(firstWeekNumber + i)
   }
 
-  return weekArray;
-
-}
-
-
-function getWeekofYear(date: Date, firstDayOfWeek: number) {
-  let num = getDayOfYear(date) - 1;
-  let num2 = (date.getDay()) - (num % 7);
-  let num3 = ((num2 - firstDayOfWeek) + 14) % 7;
-
-  return Math.floor(((num + num3) / 7) + 1);
+  return weeksArray;
 }
 
 /**
- * Returns the day number of a date in a year
+ * Returns the day number for a date in a year
  * The number of days since January 1st in the particular year.
  */
-function getDayOfYear(date: Date) {
+export function getDayOfYear(date: Date) {
   let month = date.getMonth();
   let daysUntilDate = 0;
 
@@ -253,7 +232,7 @@ function getDayOfYear(date: Date) {
     daysUntilDate += daysInMonth(i, date.getFullYear());
   }
 
-  daysUntilDate += date.getUTCDate();
+  daysUntilDate += date.getDate();
 
   return daysUntilDate;
 }
