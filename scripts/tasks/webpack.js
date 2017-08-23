@@ -9,6 +9,6 @@ module.exports = function (options) {
 
     const execSync = require('../exec-sync');
 
-    execSync('gulp webpack');
+    execSync('gulp webpack' + (options.isProduction ? ' --production' : ''));
   }
 };
