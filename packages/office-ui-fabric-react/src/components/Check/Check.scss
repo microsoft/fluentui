@@ -68,6 +68,7 @@ $checkBoxHeight: 16px;
 
   @media screen and (-ms-high-contrast: active) {
     border-radius: 10px;
-    border: 1px solid WindowText;
+    border: none;
+    background: Window;
   }
 }

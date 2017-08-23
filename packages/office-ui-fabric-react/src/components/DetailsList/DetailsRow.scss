@@ -100,7 +100,9 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     }
 
     @media screen and (-ms-high-contrast: active) {
-      color: Highlight;
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
     }
   }
 
