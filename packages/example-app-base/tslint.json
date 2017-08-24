@@ -6,11 +6,6 @@
     "jsx-no-multiline-js": false,
     "jsx-no-lambda": false,
     "no-any": false,
-<<<<<<< HEAD
-    "typedef": [
-      false
-    ]
-=======
     "no-null-keyword": false,
     "variable-name": false,
     "export-name": false,
@@ -19,6 +14,5 @@
     ],
     "no-internal-module": false,
     "prefer-const": false
->>>>>>> Added missing typedefs in ex-app-base pkg to pass tslint
   }
 }

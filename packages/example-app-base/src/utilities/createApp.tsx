@@ -22,11 +22,7 @@ export function createApp(
   examples: ExampleGroup | ExampleGroup[],
   defaultRouteComponent: () => (JSX.Element | null) = () => null,
   appTitle?: string, headerLinks?: IAppLink[]
-<<<<<<< HEAD
-) {
-=======
 ): void {
->>>>>>> Added missing typedefs in ex-app-base pkg to pass tslint
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
