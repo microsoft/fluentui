@@ -70,3 +70,12 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
     return rows;
   }, [] as T[][]);
 }
+
+/**
+ * Given an array, it returns a new array that does not contain the item at the given index.
+ * @param array - The array to operate on
+ * @param index - The index of the element to remove
+ */
+export function removeElement<T>(array: T[], index: number): T[] {
+  return [...array.slice(0, index), ...array.slice(index + 1)];
+}
