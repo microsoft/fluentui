@@ -3,7 +3,8 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
@@ -15,6 +16,7 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
@@ -116,7 +118,12 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

@@ -4,10 +4,12 @@ import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
@@ -92,7 +94,11 @@ export class ResizeGroupPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-      />
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        } />
     );
   }
 }

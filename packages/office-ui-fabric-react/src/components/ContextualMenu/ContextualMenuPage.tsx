@@ -3,13 +3,15 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
@@ -89,7 +91,12 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         related={
           <a href='https://dev.office.com/fabric-js/Components/ContextualMenu/ContextualMenu.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

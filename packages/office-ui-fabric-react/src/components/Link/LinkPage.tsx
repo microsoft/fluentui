@@ -3,9 +3,11 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 let LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Link/examples/Link.Basic.Example.tsx') as string;
 
@@ -63,7 +65,12 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Link/Link.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

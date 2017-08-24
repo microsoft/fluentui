@@ -4,11 +4,13 @@ import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const TeachingBubbleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
 const TeachingBubbleCondensedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
@@ -46,7 +48,11 @@ export class TeachingBubblePage extends React.Component<any, any> {
             <span> allow the user to display important hints on their web pages with a callout box.</span>
           </div>
         }
-      />
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        } />
     );
   }
 }

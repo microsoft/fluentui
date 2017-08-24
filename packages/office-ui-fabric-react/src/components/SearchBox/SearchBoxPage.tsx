@@ -3,11 +3,13 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
@@ -120,7 +122,12 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         related={
           <a href='https://dev.office.com/fabric-js/Components/SearchBox/SearchBox.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

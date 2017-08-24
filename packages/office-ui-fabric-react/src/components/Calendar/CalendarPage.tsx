@@ -3,11 +3,13 @@ import {
   ComponentPage,
   ExampleCard,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
@@ -87,7 +89,12 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible } componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }
+      >
       </ComponentPage>
     );
   }

@@ -3,11 +3,13 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
@@ -73,7 +75,12 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/DatePicker/DatePicker.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

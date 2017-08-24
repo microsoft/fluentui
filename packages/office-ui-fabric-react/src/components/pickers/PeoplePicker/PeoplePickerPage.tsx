@@ -4,9 +4,11 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
+import { ComponentStatusState } from '../../ComponentStatusState';
 
 const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
@@ -61,6 +63,11 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
               <li>Use the PeoplePicker without sufficient space</li>
             </ul>
           </div>
+        }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
         }>
       </ComponentPage>
     );

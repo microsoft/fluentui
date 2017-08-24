@@ -3,11 +3,13 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
 const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
@@ -75,7 +77,12 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

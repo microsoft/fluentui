@@ -3,12 +3,14 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
@@ -74,7 +76,12 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Persona/Persona.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

@@ -3,12 +3,14 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { items, overflowItems, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.NonFocusable.Example.tsx') as string;
@@ -82,7 +84,11 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible } componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

@@ -3,12 +3,14 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
@@ -86,7 +88,12 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         related={
           <a href='https://dev.office.com/fabric-js/Components/ChoiceFieldGroup/ChoiceFieldGroup.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

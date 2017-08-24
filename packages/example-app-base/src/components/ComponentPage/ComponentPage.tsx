@@ -20,7 +20,7 @@ export interface IComponentPageProps {
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   className?: string;
-  componentChecklist?: JSX.Element;
+  componentStatus?: JSX.Element;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -43,7 +43,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       exampleCards,
       overview,
       className,
-      componentChecklist
+      componentStatus
     } = this.props;
 
     return (
@@ -51,6 +51,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         <div className={ componentName }>
           { this._pageHeader() }
           <div className='ComponentPage-body'>
+            { this._getComponentStatusBadges() }
             <div className='ComponentPage-overviewSection'>
               <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
               <div className='ComponentPage-overviewSectionContent'>
@@ -66,9 +67,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               { exampleCards }
             </div>
             { this._getPropertiesTable() }
-          </div>
-          <div className='ComponentPage-variantsSection'>
-            { this._getComponentChecklist() }
           </div>
         </div >
       </div >
@@ -176,12 +174,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
-  private _getComponentChecklist(): JSX.Element | null {
-    if (this.props.componentChecklist) {
+  private _getComponentStatusBadges(): JSX.Element | null {
+    if (this.props.componentStatus) {
       return (
-        <div>
-          <h2 className='ComponentPage-subHeading'>Status</h2>
-          { this.props.componentChecklist }
+        <div className='ComponentPage-componentStatusSection'>
+          { this.props.componentStatus }
         </div>
       );
     }

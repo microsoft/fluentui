@@ -4,11 +4,13 @@ import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 import './TooltipPage.scss';
 
@@ -50,7 +52,11 @@ export class TooltipPage extends React.Component<any, any> {
             <span> supplement content associated with a specific UI component.</span>
           </div>
         }
-      />
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        } />
     );
   }
 }

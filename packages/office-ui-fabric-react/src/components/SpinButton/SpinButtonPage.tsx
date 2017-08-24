@@ -4,7 +4,7 @@ import {
   IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet,
-  ComponentChecklist
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
 import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
@@ -12,6 +12,7 @@ import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Exampl
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
@@ -96,19 +97,15 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
             </ul>
           </div>
         }
-        componentChecklist={
-          <ComponentChecklist
-            designApproved={ false }
-            highContrastSupport={ false }
-            keyboardAccessibilitySupport={ false }
-            rtlSupport={ false }
-            status={ false }
-          />
-        }
         related={
           <a href='https://dev.office.com/fabric-js/Components/SpinButton/SpinButton.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

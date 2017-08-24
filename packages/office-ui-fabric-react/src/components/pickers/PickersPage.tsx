@@ -4,10 +4,12 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const TagPickerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/TagPicker.Basic.Example.tsx') as string;
 const PickerCustomResultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/Picker.CustomResult.Example.tsx') as string;
@@ -41,7 +43,12 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
             <span> are used to pick recipients.</span>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

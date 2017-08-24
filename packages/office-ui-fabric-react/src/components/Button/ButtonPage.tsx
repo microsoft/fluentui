@@ -3,7 +3,8 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
@@ -16,6 +17,7 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 import './examples/Button.Basic.Example.scss';
 import { Link } from '../../Link';
 
@@ -141,7 +143,12 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

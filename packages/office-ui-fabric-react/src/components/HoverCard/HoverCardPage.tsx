@@ -4,10 +4,12 @@ import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 import './HoverCardPage.scss';
 
@@ -44,7 +46,11 @@ export class HoverCardPage extends React.Component<any, any> {
             <span> supplement content associated with a specific data element.</span>
           </div>
         }
-      />
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        } />
     );
   }
 }

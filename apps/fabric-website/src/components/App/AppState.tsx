@@ -23,6 +23,12 @@ export const AppState: IAppState = {
   appTitle: 'Office UI Fabric',
   pages: [
     {
+      title: 'Component Status',
+      url: '#/component-status',
+      className: 'fabricPage',
+      component: require<any>('../../pages/ComponentStatus/ComponentStatusPage').ComponentStatusPage
+    },
+    {
       title: 'Fabric',
       url: '#/',
       className: 'fabricPage',
@@ -81,7 +87,6 @@ export const AppState: IAppState = {
           url: '#/styles/utilities',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
-
       ]
     },
     {

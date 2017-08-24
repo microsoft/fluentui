@@ -94,7 +94,13 @@ $dontColor: #A61E22;
     }
   }
 
-  .ComponentPage-overviewSection,
+  .ComponentPage-overviewSection {
+    padding-top: 15px;
+    padding-bottom: $componentPagePadding;
+    padding-left: $componentPagePadding;
+    padding-right: $componentPagePadding;
+  }
+
   .ComponentPage-bestPracticesSection,
   .ComponentPage-variantsSection,
   .ComponentPage-implementationSection {
@@ -169,6 +175,13 @@ $dontColor: #A61E22;
       margin-bottom: -10px; // Trim last list item
       width: calc(50% - 60px);
     }
+  }
+
+  .ComponentPage-componentStatusSection {
+    padding-top: $componentPagePadding;
+    padding-bottom: 0px;
+    padding-left: $componentPagePadding;
+    padding-right: $componentPagePadding;
   }
 
 }

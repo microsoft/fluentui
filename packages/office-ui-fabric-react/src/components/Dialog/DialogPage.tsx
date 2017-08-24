@@ -3,11 +3,13 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
@@ -82,7 +84,12 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Dialog/Dialog.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

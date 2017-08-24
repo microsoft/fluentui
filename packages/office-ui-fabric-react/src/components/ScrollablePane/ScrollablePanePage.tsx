@@ -3,10 +3,12 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 
@@ -61,7 +63,12 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

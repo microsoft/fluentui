@@ -3,7 +3,8 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
@@ -17,6 +18,7 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
@@ -119,7 +121,12 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Panel/Panel.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

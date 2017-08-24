@@ -3,9 +3,12 @@ import {
   ExampleCard,
   ComponentPage,
   IComponentDemoPageProps,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
+
 const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -80,7 +83,12 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         related={
           <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }

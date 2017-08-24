@@ -3,9 +3,11 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentStatus
 } from '@uifabric/example-app-base';
 import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basic.Example';
+import { ComponentStatusState } from '../ComponentStatusState';
 
 const SwatchColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 
@@ -52,7 +54,12 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         related={
           <a href='https://dev.office.com/fabric-js/Components/SwatchColorPicker/SwatchColorPicker.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Button}>
+          </ComponentStatus>
+        }>
       </ComponentPage>
     );
   }
