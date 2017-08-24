@@ -11,7 +11,7 @@ import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-
 import './FocusZone.List.Example.scss';
 
 const ITEMS = createArray(10, (index) => ({
-  key: index,
+  key: index.toString(),
   name: 'Item-' + index,
   url: 'http://placehold.it/100x' + (200 + index!)
 }));

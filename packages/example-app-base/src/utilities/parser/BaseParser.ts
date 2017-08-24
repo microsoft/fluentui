@@ -3,7 +3,9 @@
  * Base for a parser - does not actually do any parsing.
  */
 export class BaseParser {
-  private _currLocation = 0;
+  // Disabled bc of tslint conflict https://github.com/palantir/tslint/issues/711
+  // tslint:disable:no-inferrable-types
+  private _currLocation: number = 0;
   private _str: string;
   private _strLength: number;
 
