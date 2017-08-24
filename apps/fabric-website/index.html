@@ -45,7 +45,7 @@
       case location.hostname === 'dev.office.com':
         isProduction = true;
         break;
-      case location.hostname === 'officedevcentersite-devx.azurewebsites.net':
+      case location.hostname === 'officedevcentersite-devx.azurewebsites.net' || location.hostname === 'https://devx.microsoft-tst.com':
         isDogfood = true;
         break;
       case location.hostname === 'officedevcentersite-release.azurewebsites.net':
