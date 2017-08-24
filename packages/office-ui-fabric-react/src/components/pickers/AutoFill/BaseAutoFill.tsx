@@ -77,7 +77,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       newValue = nextProps.suggestedDisplayValue;
     }
 
-    if (!!newValue) {
+    if (typeof newValue === 'string') {
       this.setState({ displayValue: newValue });
     }
   }
