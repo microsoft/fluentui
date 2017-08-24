@@ -75,7 +75,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   /**
    * Element shown as a timestamp on this activity. If not included, no timestamp is shown.
    */
-  timeStamp?: React.ReactNode[] | React.ReactNode;
+  timeStamp?: string | React.ReactNode[] | React.ReactNode;
 }
 
 export interface IActivityItemStyles {
