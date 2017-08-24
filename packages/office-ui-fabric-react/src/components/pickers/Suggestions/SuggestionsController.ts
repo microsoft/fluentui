@@ -15,7 +15,7 @@ export class SuggestionsController<T> {
 
   public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
     if (newSuggestions && newSuggestions.length > 0) {
-      this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
+      this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
       if (selectedIndex !== undefined) {
         this.suggestions[selectedIndex].selected = true;
@@ -83,11 +83,11 @@ export class SuggestionsController<T> {
   }
 
   public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
-    let itemToAdd = this._convertSuggestionsToSuggestionItems([itemToConvert])[0];
+    let itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
     this.currentSuggestion = itemToAdd;
   }
 
-  public _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
+  public convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
     suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));
     return converted;
