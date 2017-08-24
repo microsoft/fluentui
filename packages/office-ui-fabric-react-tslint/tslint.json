@@ -14,6 +14,7 @@
     "jsx-no-lambda": true,
     "jsx-self-close": true,
     "jsx-wrap-multiline": true,
+    "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
       true,
