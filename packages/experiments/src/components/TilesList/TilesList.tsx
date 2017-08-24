@@ -372,18 +372,16 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         currentRow.scaleFactor = (boundsWidth - totalMargin) / (rowWidth - totalMargin);
       }
 
-      if (!isAtGridEnd && currentRow.scaleFactor > grid.maxScaleFactor) {
+      if (!isAtGridEnd && currentRow.scaleFactor > (grid.mode === TilesGridMode.fill ? grid.maxScaleFactor : 1)) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
         extraCells = cells.slice(rowStart, i);
       }
     }
 
-    const itemCount = extraCells ?
-      // If there are extra cells, cut off the page so the extra cells will be pushed into the next page.
-      rowStart - startIndex :
-      // Otherwise, take all the cells.
-      i - startIndex;
+    // If there are extra cells, cut off the page so the extra cells will be pushed into the next page.
+    // Otherwise, take all the cells.
+    const itemCount = i - (extraCells ? extraCells.length : 0) - startIndex;
 
     const pageSpecification: IPageSpecification<TItem> = {
       itemCount: itemCount,
