@@ -5,7 +5,7 @@ import {
   ITileSize
 } from '../../TilesList';
 import { Tile } from '../../../Tile';
-import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Selection';
+import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
@@ -57,13 +57,25 @@ export class TilesListMediaExample extends React.Component<any, any> {
       // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '4px' } }>
         <MarqueeSelection selection={ this._selection }>
-          <TilesListType
+          <SelectionZone
             selection={ this._selection }
-            items={ items }
-          />
+            onItemInvoked={ this._onItemInvoked }
+          >
+            <TilesListType
+              items={ items }
+            />
+          </SelectionZone>
         </MarqueeSelection>
       </div>
     );
+  }
+
+  @autobind
+  private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    alert(`Invoked item '${item.name}'`);
   }
 
   @autobind
