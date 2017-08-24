@@ -23,12 +23,27 @@ $Rating-largeIconSize: 20px;
     .star:not(.starIsDisabled) {
       color: $Rating-selectedColor;
 
+      @media screen and (-ms-high-contrast: active) {
+        color: HighlightText;
+        background-color: Highlight;
+        -ms-high-contrast-adjust: none;
+      }
+
       &.star:hover {
         color: $Rating-hoverColor;
+
+        @media screen and (-ms-high-contrast: active) {
+          color: HighlightText;
+        }
 
         & ~ .star {
           // Set default color for any star after hovered one
           color: $Rating-defaultColor;
+
+          @media screen and (-ms-high-contrast: active) {
+            color: GrayText;
+            background-color: Window;
+          }
         }
       }
     }
@@ -43,13 +58,16 @@ $Rating-largeIconSize: 20px;
 
     @media screen and (-ms-high-contrast: active) {
       color: WindowText;
+      -ms-high-contrast-adjust: none;
     }
 
     &.starIsSelected {
       color: $Rating-selectedColor;
 
       @media screen and (-ms-high-contrast: active) {
-        color: Highlight;
+        color: HighlightText;
+        background-color: Highlight;
+        -ms-high-contrast-adjust: none;
       }
     }
 
@@ -58,6 +76,7 @@ $Rating-largeIconSize: 20px;
 
       @media screen and (-ms-high-contrast: active) {
         color: GrayText;
+        background-color: Window;
       }
 
       .label {

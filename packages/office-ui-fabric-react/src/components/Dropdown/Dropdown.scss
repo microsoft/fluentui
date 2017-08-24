@@ -41,6 +41,7 @@ $DropDown-item-height: 32px;
       color: $ms-color-black;
 
       @media screen and (-ms-high-contrast: active) {
+        // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
         color: Highlight;
       }
     }
