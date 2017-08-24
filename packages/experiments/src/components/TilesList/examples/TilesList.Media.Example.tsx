@@ -2,9 +2,6 @@
 import * as React from 'react';
 import {
   TilesList,
-  ITilesGridSegment,
-  ITilesGridItem,
-  TilesGridMode,
   ITileSize
 } from '../../TilesList';
 import { Tile } from '../../../Tile';
@@ -12,7 +9,6 @@ import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Select
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { lorem } from '@uifabric/example-app-base';
 import { IExampleGroup, IExampleItem, createGroup, createMediaItems, getTileCells } from './ExampleHelpers';
 
 function createGroups(): IExampleGroup[] {
@@ -51,13 +47,14 @@ export class TilesListMediaExample extends React.Component<any, any> {
 
     this._selection.setItems(ITEMS);
   }
-  public render() {
+  public render(): JSX.Element {
     const items = getTileCells(GROUPS, {
       onRenderCell: this._onRenderMediaCell,
       onRenderHeader: this._onRenderHeader
     });
 
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '4px' } }>
         <MarqueeSelection selection={ this._selection }>
           <TilesListType
@@ -70,16 +67,19 @@ export class TilesListMediaExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onRenderMediaCell(item: IExampleItem, finalSize: ITileSize) {
+  private _onRenderMediaCell(item: IExampleItem, finalSize: ITileSize): JSX.Element {
     return (
       <Tile
         className={ AnimationClassNames.fadeIn400 }
         selection={ this._selection }
         selectionIndex={ item.index }
         background={
-          <img style={ { display: 'block' } } src={
-            `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
-          } />
+          <img
+            style={ { display: 'block' } }
+            src={
+              `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
+            }
+          />
         }
         showBackgroundFrame={ true }
         itemName={ item.name }
@@ -89,7 +89,7 @@ export class TilesListMediaExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onRenderHeader(item: IExampleItem) {
+  private _onRenderHeader(item: IExampleItem): JSX.Element {
     return (
       <div>
         <h3>{ item.name }</h3>

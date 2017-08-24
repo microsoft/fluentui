@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBar } from '../CommandBar';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-
 export class CommandBarBasicExample extends React.Component<any, any> {
 
   constructor(props: any) {
@@ -13,7 +10,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { items, overflowItems, farItems } = this.props;
 
     return (

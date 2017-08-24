@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';

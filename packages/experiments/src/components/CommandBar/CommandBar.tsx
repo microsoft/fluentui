@@ -3,13 +3,11 @@ import {
   BaseComponent,
   css,
   getId,
-  autobind,
-  assign
+  autobind
 } from 'office-ui-fabric-react/lib/Utilities';
 import { ICommandBar, ICommandBarProps, ICommandBarItemProps } from './CommandBar.Props';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
-import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import * as stylesImport from './CommandBar.scss';
@@ -48,9 +46,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     elipisisIconProps: { iconName: 'More' }
   };
 
-  public refs: {
-    overflowSet: OverflowSet
-  };
+  private _overflowSet: IOverflowSet;
 
   private _id: string;
 
@@ -59,7 +55,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     this._id = getId('CommandBar');
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       className,
       items,
@@ -83,23 +79,25 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
     return (
       <ResizeGroup
+        className={ className }
         data={ commandBardata }
         onReduceData={ onReduceData }
         onGrowData={ onGrowData }
+        // tslint:disable-next-line:jsx-no-lambda
         onRenderData={ (data: ICommandBarData) => {
           return (
             <div className={ css('ms-CommandBar', styles.root) }>
 
               {/*Primary Items*/ }
               <OverflowSet
-                ref='overflowSet'
+                componentRef={ this._resolveRef('_overflowSet') }
                 className={ css(styles.primarySet) }
                 items={ data.primaryItems }
                 overflowItems={ data.overflowItems.length ? data.overflowItems : undefined }
                 onRenderItem={ this._onRenderItems }
                 onRenderOverflowButton={ (renderedOverflowItems: ICommandBarItemProps[]) => {
                   return (
-                    this._onRenderButton({
+                    onRenderButton({
                       key: 'oveflowButton',
                       styles: { ...buttonStyles, menuIcon: { fontSize: '17px' } },
                       ariaLabel: elipisisAriaLabel,
@@ -125,11 +123,11 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     );
   }
 
-  public focus() {
-    this.refs.overflowSet.focus();
+  public focus(): void {
+    this._overflowSet.focus();
   }
 
-  private computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
+  private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
@@ -152,7 +150,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
       overflowItems = [...overflowItems, movedItem];
       primaryItems = primaryItems.slice(0, -1);
-      cacheKey = this.computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+      cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -171,7 +169,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
       overflowItems = overflowItems.slice(0, -1);
       primaryItems = [...primaryItems, movedItem];
-      cacheKey = this.computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+      cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -180,7 +178,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onRenderItems(item: ICommandBarItemProps) {
+  private _onRenderItems(item: ICommandBarItemProps): JSX.Element | React.ReactNode {
     let { buttonStyles } = this.props;
 
     if (item.onRender) { return item.onRender(item); }
@@ -205,7 +203,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
   }
 
   @autobind
-  private _onRenderButton(props: ICommandBarItemProps) {
+  private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
     return <CommandBarButton {...props as any} />;
   }
 }

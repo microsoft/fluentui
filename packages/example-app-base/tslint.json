@@ -3,21 +3,8 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
-    "max-line-length": [
-      false,
-      140
-    ],
-    "no-any": false,
-    "no-null-keyword": false,
-    "variable-name": false,
-    "typedef": [
-      false
-    ],
-    "export-name": false,
-    "trailing-comma": [
-      false
-    ],
-    "no-internal-module": false,
-    "prefer-const": false
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false,
+    "no-any": false
   }
 }
