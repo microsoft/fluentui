@@ -94,7 +94,7 @@ $ms-Persona-presenceSizeXl: 28px;
   width: $ms-Persona-sizeMd;
   border-radius: 50%;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid WindowText;
   }
 
@@ -201,7 +201,7 @@ $ms-Persona-presenceSizeXl: 28px;
   -ms-high-contrast-adjust: none;
   // This is a temporary local fix and should be removed once Fabric Core 6.0 is released.
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border-color: Window;
     color: Window;
     background-color: WindowText;
@@ -213,7 +213,7 @@ $ms-Persona-presenceSizeXl: 28px;
     line-height: $ms-Persona-presenceSizeMd;
     vertical-align: top;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       color: Window;
     }
   }
@@ -277,7 +277,7 @@ $ms-Persona-presenceSizeXl: 28px;
     @include ms-left(0);
     border: 0;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       top: 9px;
       border: 1px solid WindowText;
     }
@@ -713,7 +713,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-available;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: WindowText;
     }
 
@@ -730,7 +730,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-away;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: WindowText;
     }
   }
@@ -771,7 +771,7 @@ $ms-Persona-presenceSizeXl: 28px;
       @include ms-left(0);
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       color: $ms-color-contrastBlackDisabled;
       background-color: Window;
 
@@ -821,7 +821,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-busy-average;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: $ms-color-contrastBlackDisabled;
     }
 
@@ -838,7 +838,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-dnd-background;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       color: $ms-color-black;
       background-color: $ms-color-contrastBlackDisabled;
 
@@ -864,7 +864,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .presence {
     background-color: $ms-color-presence-offline;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: $ms-color-contrastBlackDisabled;
       box-shadow: 0 0 0 1px $ms-color-white inset;
     }

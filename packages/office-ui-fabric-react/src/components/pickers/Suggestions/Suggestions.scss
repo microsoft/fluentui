@@ -26,7 +26,7 @@
       background: $ms-color-neutralTertiaryAlt;
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       border: 1px solid WindowText;
     }
 

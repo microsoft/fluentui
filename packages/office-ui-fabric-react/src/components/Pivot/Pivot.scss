@@ -95,7 +95,7 @@
       box-sizing: border-box;
       border-bottom: 2px solid $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-bottom-color: WindowText;
       }
     }
@@ -193,7 +193,7 @@
         content: '';
         height: auto;
 
-        @media screen and (-ms-high-contrast: active) {
+        @include high-contrast {
           border: 1px solid WindowText;
         }
       }
@@ -235,7 +235,7 @@
 // }
 
 // All high contrast styling rules
-@media screen and (-ms-high-contrast: active) {
+@include high-contrast {
   .root.rootIsTabs {
     .link {
       &.linkIsSelected {

@@ -19,7 +19,7 @@
   @include padding(0, 0, 0, 8px);
   border: 1px solid $ms-color-neutralTertiary;
   height: 32px;
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid WindowText;
   }
 }

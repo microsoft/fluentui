@@ -126,7 +126,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     &::before { // the circle
       border: 2px solid $radioButton-border-selected-color;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: Highlight;
       }
     }
@@ -138,7 +138,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       width: 10px;
       height: 10px;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: Highlight;
       }
     }
@@ -160,7 +160,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       background-color: $radioButton-background-unselected-disabled-color;
       border-color: $radioButton-border-disabled-color;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: GrayText;
       }
     }
@@ -168,7 +168,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     :global(.ms-Label) {
       color: $radioButton-text-disabled-color;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         color: GrayText;
       }
     }
@@ -325,7 +325,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   @include focus-border(1px, $ms-color-neutralPrimary, 1px, false);
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
      @include focus-border(1px, WindowText, 2px, false);
   }
 }
@@ -334,7 +334,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   &.choiceFieldIsImage, &.choiceFieldIsIcon {
     @include focus-border(0, $ms-color-neutralPrimary, 1px, false);
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       @include focus-border(1px, WindowText, 2px, false);
     }
   }

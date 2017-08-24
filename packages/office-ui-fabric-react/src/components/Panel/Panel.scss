@@ -178,7 +178,7 @@ $CommandBarHeight: 44px;
     cursor: pointer;
     pointer-events: auto;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       opacity: 0;
     }
   }

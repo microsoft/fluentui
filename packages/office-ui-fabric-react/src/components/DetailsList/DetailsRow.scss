@@ -98,12 +98,12 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     &.isRowHeader {
       color: $detailsList-item-selected-text-color;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         color: HighlightText;
       }
     }
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background: Highlight;
       color: HighlightText;
       -ms-high-contrast-adjust: none;
@@ -130,7 +130,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     .cell {
       color: $detailsList-item-selected-hover-meta-text-color;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         color: HighlightText;
       }
 
@@ -138,7 +138,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
       &.isRowHeader {
         color: $detailsList-item-selected-hover-text-color;
 
-        @media screen and (-ms-high-contrast: active) {
+        @include high-contrast {
           color: HighlightText;
         }
       }
@@ -153,7 +153,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
     .cell {
       color: $detailsList-item-focus-meta-text-color;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         color: HighlightText;
       }
 
@@ -161,7 +161,7 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
       &.isRowHeader {
         color: $detailsList-item-focus-header-text-color;
 
-        @media screen and (-ms-high-contrast: active) {
+        @include high-contrast {
           color: HighlightText;
         }
       }

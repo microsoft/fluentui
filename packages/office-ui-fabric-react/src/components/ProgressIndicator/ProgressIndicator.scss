@@ -53,7 +53,7 @@ $ProgressIndicatorTextHeight: 18px;
   transition: width .3s ease;
   width: 0;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     background-color: WindowText;
   }
 }

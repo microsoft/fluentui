@@ -120,7 +120,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
   &:hover,
   &.itemLinkIsExpanded {
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       @include focus-border(0px, WindowText, 1px, false);
     }
   }
@@ -206,7 +206,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   border-color: transparent; // give a base state for animation
   @include border-right(1px, solid, $ms-color-neutralLight);
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     @include border-right(1px, solid, WindowText);
     z-index: 10;
   }
@@ -224,7 +224,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &:hover {
     color: $ms-color-themePrimary;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       @include focus-border(0px, WindowText, 1px, false);
     }
   }
@@ -243,7 +243,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
   font-size: $ms-font-size-m;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     @include border-left($SearchBox-height, solid, Window);
   }
 

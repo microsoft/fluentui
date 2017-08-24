@@ -14,7 +14,7 @@ $DropDown-item-height: 32px;
 
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     background-color: Highlight;
     border-color: Highlight;
     color: HighlightText;
@@ -40,7 +40,7 @@ $DropDown-item-height: 32px;
     .caretDown {
       color: $ms-color-black;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         // Using Highlight for text here specifically to match the border color that indicates focus on dropdown root elements.
         color: Highlight;
       }
@@ -55,7 +55,7 @@ $DropDown-item-height: 32px;
     .title {
       border-color: $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: Highlight;
       }
     }
@@ -65,7 +65,7 @@ $DropDown-item-height: 32px;
     .title {
       border-color: $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: Highlight;
       }
     }
@@ -85,7 +85,7 @@ $DropDown-item-height: 32px;
     color: $ms-color-neutralTertiary;
     cursor: default;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       border-color: GrayText;
       color: GrayText;
     }
@@ -98,7 +98,7 @@ $DropDown-item-height: 32px;
   .caretDown {
     color: $ms-color-neutralTertiary;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       color: GrayText;
     }
   }
@@ -181,7 +181,7 @@ $DropDown-item-height: 32px;
   overflow-wrap: break-word;
   text-align: left;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border-color: Window;
   }
 

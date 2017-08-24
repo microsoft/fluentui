@@ -13,7 +13,7 @@
   right: 0;
   bottom: 0;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     background: none;
   }
 }
@@ -25,7 +25,7 @@
   pointer-events: none;
   z-index: $ms-zIndex-front;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border-color: Highlight;
   }
 }
@@ -40,7 +40,7 @@
   right: 0;
   bottom: 0;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     background: none;
   }
 }

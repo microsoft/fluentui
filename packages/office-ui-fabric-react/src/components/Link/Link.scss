@@ -39,7 +39,7 @@ button.root {
   display: inline;
   font-size: inherit; // Ensure that we inherit font size, rather than the browser's default.
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     // Using Highlight here so we still have a themeable system color that is different from both window text and link text.
     color: Highlight;
   }

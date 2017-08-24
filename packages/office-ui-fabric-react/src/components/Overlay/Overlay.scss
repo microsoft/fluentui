@@ -27,7 +27,7 @@
     background-color: $ms-color-blackTranslucent40;
   }
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid WindowText;
   }
 }

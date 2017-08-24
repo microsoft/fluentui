@@ -24,7 +24,7 @@
 .activeSection {
   background: $ms-color-neutralSecondary;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     background-color: WindowText;
   }
 }
@@ -32,7 +32,7 @@
 .inactiveSection {
   background: $ms-color-neutralTertiaryAlt;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid WindowText;
   }
 }
@@ -97,7 +97,7 @@
     .thumb {
       border: 2px solid $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: Highlight;
       }
     }
@@ -105,7 +105,7 @@
     .activeSection {
       background-color: $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         background-color: Highlight;
       }
     }
@@ -113,7 +113,7 @@
     .inactiveSection {
       background-color: $ms-color-themeLight;
 
-      @media screen and (-ms-high-contrast: active) {
+      @include high-contrast {
         border-color: Highlight;
       }
     }
@@ -133,14 +133,14 @@
   .thumb {
     border-color: $ms-color-neutralTertiaryAlt;
 
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       border-color: GrayText;
     }
   }
 
   .activeSection,
   .inactiveSection {
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       background-color: GrayText;
       border-color: GrayText;
     }
