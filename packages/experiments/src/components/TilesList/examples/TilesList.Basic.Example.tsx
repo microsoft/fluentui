@@ -63,6 +63,7 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
 function renderItem(item: IBasicItem): JSX.Element {
   return (
     <div
+      // tslint:disable-next-line:jsx-ban-props
       style={
         {
           position: 'absolute',

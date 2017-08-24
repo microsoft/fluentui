@@ -10,7 +10,7 @@ const DATA = {
   'location': ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
 };
 
-export function createListItems(count: number, startIndex = 0): any {
+export function createListItems(count: number, startIndex: number = 0): any {
   return Array.apply(null, Array(count)).map((item: any, index: number) => {
     let size = 150 + Math.round(Math.random() * 100);
 
@@ -30,7 +30,7 @@ export function createListItems(count: number, startIndex = 0): any {
 
 export function createGroups(
   groupCount: number, groupDepth: number, startIndex: number,
-  itemsPerGroup: number, level: number = 0, key: string = '') {
+  itemsPerGroup: number, level: number = 0, key: string = ''): any {
   if (key !== '') {
     key = key + '-';
   }
@@ -61,7 +61,7 @@ export function isGroupable(key: string): boolean {
     key === 'location';
 }
 
-function _randWord(array: string[]) {
+function _randWord(array: string[]): string {
   let index = Math.floor(Math.random() * array.length);
   return array[index];
 }

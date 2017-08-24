@@ -80,22 +80,22 @@ const ENUM_COLUMNS: IColumn[] = [
 ];
 
 export class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
-  public static defaultProps = {
+  public static defaultProps: Partial<IPropertiesTableProps> = {
     title: 'Properties'
   };
 
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    let properties = (props.properties as any[])
-      .sort((a, b) => (
+    let properties = (props.properties as IInterfaceProperty[])
+      .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
         a.interfacePropertyType < b.interfacePropertyType ? -1 :
           a.interfacePropertyType > b.interfacePropertyType ? 1 :
             a.name < b.name ? -1 :
               a.name > b.name ? 1 :
                 0
       ))
-      .map((prop, index) => assign({}, prop, { key: index }));
+      .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
 
     let groups: IGroup[] | null = null;
 
@@ -110,7 +110,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     };
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     let { title } = this.props;
     let { properties, isEnum, groups } = this.state;
 
@@ -132,7 +132,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     );
   }
 
-  private _getGroups(props: IInterfaceProperty[]) {
+  private _getGroups(props: IInterfaceProperty[]): IGroup[] {
     let groups: IGroup[] = [];
     let index = 0;
 
@@ -143,7 +143,12 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     return groups;
   }
 
-  private _tryAddGroup(props: IInterfaceProperty[], typeToCompare: InterfacePropertyType, name: string, index: number, allGroups: IGroup[]): number {
+  private _tryAddGroup(
+    props: IInterfaceProperty[],
+    typeToCompare: InterfacePropertyType,
+    name: string, index: number,
+    allGroups: IGroup[]
+  ): number {
     let group: IGroup | undefined = undefined;
 
     while (index < props.length) {
