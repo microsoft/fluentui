@@ -48,14 +48,17 @@ export class Nav extends React.Component<INavProps, INavState> {
         page.isHomePage ? styles.isHomePage : '',
         page.className ? styles[page.className] : ''
       ) } key={ linkIndex }>
-        <a
-          href={ page.url }
-          onClick={ this.props.onLinkClick }
-          title={ title }
-          aria-label={ ariaLabel }
-        >
-          { page.title }
-        </a>
+
+        { page.isHeaderLink ?
+          '' : <a
+            href={ page.url }
+            onClick={ this.props.onLinkClick }
+            title={ title }
+            aria-label={ ariaLabel }
+          >
+            { page.title }
+          </a> }
+
         { childLinks }
       </li>
     );
