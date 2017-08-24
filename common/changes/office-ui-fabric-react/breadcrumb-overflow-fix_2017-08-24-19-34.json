@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsRow: Removed margin from check buttons.",
+      "comment": "Breadcrumb: Fixed extra dropdown icon",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }

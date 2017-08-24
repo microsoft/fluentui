@@ -6,7 +6,7 @@
  * @param array - Array to search.
  * @param cb - Callback which returns true on matches.
  */
-export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolean): number {
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number {
   let index = -1;
 
   for (let i = 0; array && i < array.length; i++) {
@@ -17,6 +17,21 @@ export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolea
   }
 
   return index;
+}
+
+/**
+ * Helper to find the first item within an array that satisfies the callback.
+ * @param array - Array to search
+ * @param cb - Callback which returns true on matches
+ */
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
+  let index = findIndex(array, cb);
+
+  if (index < 0) {
+    return undefined;
+  }
+
+  return array[index];
 }
 
 /**
