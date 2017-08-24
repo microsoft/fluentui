@@ -87,7 +87,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         positionInSet={ positionInSet && positionInSet }
         setSize={ setSize && setSize }
         shouldFocusCircularNavigate={ shouldFocusCircularNavigate }
-        onBlur={ this.onSwatchColorPickerBlur }
+        onBlur={ this._onSwatchColorPickerBlur }
         containerClassName={ css('ms-swatchColorPickerBodyContainer', styles.swatchColorPickerContainer, className) }
       />);
   }
@@ -97,7 +97,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * make sure to clear the pending focused stated
    */
   @autobind
-  private onSwatchColorPickerBlur() {
+  private _onSwatchColorPickerBlur() {
     if (this.props.onCellFocused) {
       this.props.onCellFocused();
     }
@@ -131,8 +131,8 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         disabled={ this.props.disabled }
         className={ styles.cell }
         onClick={ this._onCellClick }
-        onHover={ this.onGridCellHovered }
-        onFocus={ this.onGridCellFocused }
+        onHover={ this._onGridCellHovered }
+        onFocus={ this._onGridCellFocused }
         onRenderItem={ this._onRenderColorOption }
         role={ 'gridcell' }
         selected={ this.state.selectedIndex !== undefined && (this.state.selectedIndex === item.index) }
@@ -147,7 +147,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Callback passed to the GridCell class that will trigger the onCellHovered callback of the SwatchColorPicker
    */
   @autobind
-  private onGridCellHovered(item?: IColorCellProps): void {
+  private _onGridCellHovered(item?: IColorCellProps): void {
     if (this.props && this.props.onCellHovered) {
       if (item) {
         this.props.onCellHovered(item.id, item.color);
@@ -161,7 +161,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Callback passed to the GridCell class that will trigger the onCellFocus callback of the SwatchColorPicker
    */
   @autobind
-  private onGridCellFocused(item?: IColorCellProps): void {
+  private _onGridCellFocused(item?: IColorCellProps): void {
     if (this.props && this.props.onCellFocused) {
       if (item) {
         this.props.onCellFocused(item.id, item.color);
