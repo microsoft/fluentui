@@ -77,5 +77,7 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
  * @param index - The index of the element to remove
  */
 export function removeElement<T>(array: T[], index: number): T[] {
-  return [...array.slice(0, index), ...array.slice(index + 1)];
+  let cloneArray = array.slice();
+  cloneArray.splice(index, 1);
+  return cloneArray;
 }
