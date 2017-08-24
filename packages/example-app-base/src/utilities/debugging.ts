@@ -1,9 +1,9 @@
 import { beep } from './beep';
 
-export function instrumentMethod(target: any, methodName: string) {
+export function instrumentMethod(target: any, methodName: string): void {
   const originalMethod = target[methodName];
 
-  target[methodName] = function () {
+  target[methodName] = function (): any {
     beep();
 
     let startTime = performance.now();
@@ -24,7 +24,7 @@ export function instrumentMethod(target: any, methodName: string) {
   };
 }
 
-export function getStackTrace() {
+export function getStackTrace(): string {
   let obj = {
     stack: ''
   };

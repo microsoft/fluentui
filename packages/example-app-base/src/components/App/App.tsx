@@ -56,7 +56,7 @@ export class App extends React.Component<IAppProps, any> {
     this._onLinkClick = this._onLinkClick.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { appDefinition, responsiveMode } = this.props;
     let { isMenuVisible } = this.state;
 
@@ -114,11 +114,11 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean) {
+  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
     this.setState({ isMenuVisible });
   }
 
-  private _onLinkClick() {
+  private _onLinkClick(): void {
     this.setState({ isMenuVisible: false });
   }
 }

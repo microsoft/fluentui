@@ -30,7 +30,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { title, code, children, isRightAligned } = this.props;
     const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
@@ -78,7 +78,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     );
   }
 
-  private _getDosAndDonts() {
+  private _getDosAndDonts(): JSX.Element | void {
     if (this.props.dos && this.props.donts) {
       return (
         <div className='ExampleCard-dosAndDonts'>
@@ -95,7 +95,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     }
   }
 
-  private _onToggleCodeClick() {
+  private _onToggleCodeClick(): void {
     this.setState({
       isCodeVisible: !this.state.isCodeVisible
     });

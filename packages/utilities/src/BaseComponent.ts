@@ -18,7 +18,7 @@ export interface IBaseProps {
  *
  * @public
  */
-export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
+export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.

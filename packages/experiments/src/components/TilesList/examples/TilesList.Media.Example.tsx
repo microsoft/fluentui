@@ -54,6 +54,7 @@ export class TilesListMediaExample extends React.Component<any, any> {
     });
 
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '4px' } }>
         <MarqueeSelection selection={ this._selection }>
           <TilesListType
