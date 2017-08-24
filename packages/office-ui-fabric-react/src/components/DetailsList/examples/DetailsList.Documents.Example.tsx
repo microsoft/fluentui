@@ -223,6 +223,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            displayMode={ 0 }
           />
         </MarqueeSelection>
       </div>

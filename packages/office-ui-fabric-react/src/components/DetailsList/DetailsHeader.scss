@@ -181,6 +181,10 @@ $isPaddedMargin: 24px;
   @include ms-padding-right(0);
 }
 
+.accessibleLabel {
+  @include ms-screenReaderOnly;
+}
+
 $origRowHeight: 36px;
 
 /* Original Styles */
@@ -188,10 +192,10 @@ $origRowHeight: 36px;
   .root {
     height: $origRowHeight;
     line-height: $origRowHeight;
+    background: transparent;
   }
   .cell {
     height: $origRowHeight;
-    background: transparent;
 
     &.cellIsActionable {
       color: $ms-color-neutralSecondary;

@@ -304,7 +304,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
               selectAllVisibility: selectAllVisibility,
               collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-              displayMode: displayMode
+              displayMode: displayMode,
+              compact: compact
             }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>
