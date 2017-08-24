@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2017 05:38:14 GMT and should not be manually modified.
+
+## 0.1.4
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Patches
+
+- Inserted disable jsx-ban-props lines to experiments pkg to pass tslint
 
 ## 0.1.3
 Wed, 23 Aug 2017 19:04:55 GMT

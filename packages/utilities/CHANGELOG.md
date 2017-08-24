@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 21 Aug 2017 10:19:29 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2017 05:38:14 GMT and should not be manually modified.
+
+## 4.10.0
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Minor changes
+
+- createArray: reverting previous change to make getItem optional, cleaning up so that the return value is correct.
+- Array: Add typesafety for createArray and findIndex
 
 ## 4.9.1
 Mon, 21 Aug 2017 10:19:29 GMT
