@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 Aug 2017 05:38:14 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2017 10:20:20 GMT and should not be manually modified.
+
+## 4.37.1
+Thu, 24 Aug 2017 10:20:20 GMT
+
+### Patches
+
+- Darkened the placeholder text for dropdowns to meet MAS color contrast standards
 
 ## 4.37.0
 Thu, 24 Aug 2017 05:38:14 GMT
