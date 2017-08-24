@@ -257,7 +257,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             id={ id + '-input' }
             className={ this._classNames.input }
             type='text'
-            key={ selectedIndex }
             onFocus={ this._select }
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }

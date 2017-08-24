@@ -67,15 +67,18 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
-    if (this.props.updateValueInWillReceiveProps) {
-      let newValue = this.props.updateValueInWillReceiveProps();
+    let newValue;
 
-      if (newValue !== null) {
-        this._value = newValue;
-      }
+    if (this.props.updateValueInWillReceiveProps) {
+      newValue = this.props.updateValueInWillReceiveProps();
     }
-    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue!, this._value)) {
-      this.setState({ displayValue: nextProps.suggestedDisplayValue });
+
+    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue!, newValue ? newValue : this._value)) {
+      newValue = nextProps.suggestedDisplayValue;
+    }
+
+    if (!!newValue) {
+      this.setState({ displayValue: newValue });
     }
   }
 
