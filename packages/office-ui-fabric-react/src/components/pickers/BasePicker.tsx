@@ -156,7 +156,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
-              <BaseAutoFill
+              { this.canAddItems() && (<BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -171,13 +171,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 autoComplete='off'
                 role='combobox'
                 disabled={ disabled }
-              />
+              />) }
             </div>
           </SelectionZone>
         </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
+  }
+
+  protected canAddItems(): boolean {
+    const { items } = this.state;
+    const { itemLimit } = this.props;
+    return itemLimit === undefined || items.length < itemLimit;
   }
 
   protected renderSuggestions(): JSX.Element | null {
@@ -230,10 +236,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     if (items.length && index! >= 0) {
       let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
-
       if (newEl) {
         this.focusZone.focusElement(newEl);
       }
+    } else if (!this.canAddItems()) {
+      (items[items.length - 1] as IPickerItemProps<T>).selected = true;
+      this.resetFocus(items.length - 1);
     } else {
       this.input.focus();
     }
@@ -387,7 +395,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let value = this.input.value;
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
@@ -414,7 +421,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.del:
-        if (ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+        if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
           if (this.props.onRemoveSuggestion) {
             (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
           }
@@ -552,7 +559,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    if (this.state.items.length && !this.input.isValueSelected && this.input.cursorLocation === 0) {
+    if (this.state.items.length && !this.input || (!this.input.isValueSelected && this.input.cursorLocation === 0)) {
       if (this.selection.getSelectedCount() > 0) {
         this.removeItems(this.selection.getSelection());
       } else {
