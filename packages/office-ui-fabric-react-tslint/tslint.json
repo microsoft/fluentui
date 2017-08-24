@@ -4,6 +4,12 @@
     "tslint-react"
   ],
   "rules": {
+    "function-name": [
+      true,
+      {
+        "private-method-regex": "^_[a-z][\\w\\d]+$"
+      }
+    ],
     "jsx-curly-spacing": {
       "when": "always"
     },
