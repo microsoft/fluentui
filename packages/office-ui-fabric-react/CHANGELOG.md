@@ -1,6 +1,66 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 Aug 2017 10:19:22 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+
+## 4.36.0
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Minor changes
+
+- DocumentCardPreview: Allow show Icon in the preview area instead of image.
+
+### Patches
+
+- ContextualMenu: Add ability to override role on menu items
+- ComboBox: Content should not be selected when comboBox isn't focused
+- Adding react import to SpinButton.Props for classic module resolution.
+- High contrast, accesibility, and other bugfixes
+- Dropdown: adds a for property to dropdown labels.
+
+## 4.35.2
+Tue, 22 Aug 2017 10:09:55 GMT
+
+### Patches
+
+- Dropdown: Fixed bug where selectedKey selects dropdown option with a different key
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
+
+## 4.35.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- Added ActionButton and CommandBarButton
+- DetailsList: Resizing columns preserves justified mode.
+- TooltipHost: new onTooltipToggle callback
+
+### Patches
+
+- Minor cleanup in merging of css class names.
+- Dropdown: Fixed bug where selected state was not being removed from dropdown options
+- FocusZone: presssing home/end inside of an input/textarea element should respect cursor location.
+- Fix some unused code and typings in List
+- Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value.
+- Toggle: fixed issue where disabled Toggles are clickable. Also cleaned up some of the styling.
+- CommandBar: adding `aria-expanded` attribute to overflow menu.
+- DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
 
 ## 4.33.0
 Tue, 15 Aug 2017 10:19:22 GMT

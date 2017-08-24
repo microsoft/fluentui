@@ -19,7 +19,7 @@ import * as stylesImport from './TooltipHost.scss';
 const styles: any = stylesImport;
 
 export interface ITooltipHostState {
-  isTooltipVisible?: boolean;
+  isTooltipVisible: boolean;
 }
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
@@ -114,24 +114,25 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
       }
     }
 
-    this.setState({
-      isTooltipVisible: true
-    });
+    this.toggleTooltip(true);
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipMouseLeave(ev: any) {
-    this.setState({
-      isTooltipVisible: false
-    });
+    this.toggleTooltip(false);
   }
 
   // Hide Tooltip
   @autobind
   private _onTooltipCallOutDismiss() {
-    this.setState({
-      isTooltipVisible: false
-    });
+    this.toggleTooltip(false);
+  }
+
+  private toggleTooltip(isTooltipVisible: boolean) {
+    this.setState(
+      { isTooltipVisible },
+      () => this.props.onTooltipToggle &&
+        this.props.onTooltipToggle(this.state.isTooltipVisible));
   }
 }

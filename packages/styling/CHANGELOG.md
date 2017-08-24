@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 14 Aug 2017 10:20:31 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+
+## 0.20.1
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- add Comment icon
+
+## 0.20.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- mergeStyleSets: tweaked the return type to be less restrictive.
 
 ## 0.19.2
 Mon, 14 Aug 2017 10:20:31 GMT

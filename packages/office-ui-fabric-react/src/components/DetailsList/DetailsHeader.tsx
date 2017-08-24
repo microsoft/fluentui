@@ -190,6 +190,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             <div
               className={ css('ms-DetailsHeader-cell', styles.cell) }
               onClick={ this._onToggleCollapseAll }
+              data-is-focusable={ true }
             >
               <Icon
                 className={ css(

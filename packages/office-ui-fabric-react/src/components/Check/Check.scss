@@ -44,6 +44,10 @@ $origCheckBoxHeight: 24px;
   top: 50%;
   left: 50%;
   color: $ms-color-neutralTertiaryAlt;
+
+  @media screen and (-ms-high-contrast: active) {
+    display: none;
+  }
 }
 
 .rootIsChecked .circle {
@@ -62,6 +66,11 @@ $origCheckBoxHeight: 24px;
 .rootIsChecked .check {
   color: $ms-color-white;
   font-weight: 900;
+
+  @media screen and (-ms-high-contrast: active) {
+    border-radius: 10px;
+    border: 1px solid WindowText;
+  }
 }
 
 :global(.ms-DetailsList--Original) {

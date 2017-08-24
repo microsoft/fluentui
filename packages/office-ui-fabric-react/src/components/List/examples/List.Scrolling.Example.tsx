@@ -69,10 +69,11 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
             } }
             onRenderCell={ (item, index: number) => (
               <div className='ms-ListScrollingExample-itemCell' data-is-focusable={ true }>
-                <div className={ css('ms-ListScrollingExample-itemContent', {
-                  'ms-ListScrollingExample-itemContent-even': index % 2 === 0,
-                  'ms-ListScrollingExample-itemContent-odd': index % 2 === 1
-                }) }>
+                <div className={ css(
+                  'ms-ListScrollingExample-itemContent',
+                  (index % 2 === 0) && 'ms-ListScrollingExample-itemContent-even',
+                  (index % 2 === 1) && 'ms-ListScrollingExample-itemContent-odd'
+                ) }>
                   { index } &nbsp; { item.name }
                 </div>
               </div>
