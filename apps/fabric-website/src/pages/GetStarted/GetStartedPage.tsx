@@ -72,7 +72,7 @@ export class GetStartedPage extends React.Component<any, any> {
             </div>
             <div className={ diagramStyles.or }>or</div>
             <ul className={ diagramStyles.components }>
-              <li className={ css(diagramStyles.component, diagramStyles.featuredComponent) }>
+              <li className={ diagramStyles.component }>
                 <div className={ diagramStyles.graphics }>
                   <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg' } width='175' height='90' alt='Illustrated Diagram of many components' />
                   <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
@@ -81,17 +81,6 @@ export class GetStartedPage extends React.Component<any, any> {
                   <span className={ diagramStyles.headline }>Fabric React</span>
                   <span className={ diagramStyles.description }>Robust, up-to-date components built with the React framework</span>
                   <a href='#/components'>See components</a>
-                </div>
-              </li>
-              <li className={ diagramStyles.component }>
-                <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' } width='175' height='90' alt='Illustrated Diagram of few components' />
-                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
-                </div>
-                <div className={ diagramStyles.content }>
-                  <span className={ diagramStyles.headline }>Fabric JS</span>
-                  <span className={ diagramStyles.description }>Simple, visuals-focused components that you can extend, rework, and use</span>
-                  <a href='#/fabric-js'>Learn more</a>
                 </div>
               </li>
               <li className={ diagramStyles.component }>
@@ -182,7 +171,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
                   `<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
                 }
               </CodeBlock>
-              <p>To reference all the assets available in Fabric Core, see the <a href='#/styles'>styles page</a>. To use components, see <a href='#/get-started#react'>Fabric React</a>, <a href='#/fabric-js'>Fabric JS</a>, or <a href='#/angular-js'>ngOfficeUIFabric</a>.</p>
+              <p>To reference all the assets available in Fabric Core, see the <a href='#/styles'>styles page</a>. To use components, see <a href='#/get-started#react'>Fabric React</a> or <a href='#/angular-js'>ngOfficeUIFabric</a>.</p>
             </li>
           </ol>
 
