@@ -34,6 +34,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   private _expandingCard: ExpandingCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
+  private _currentMouseTarget: EventTarget;
 
   private _styles: IHoverCardStyles;
 
@@ -135,6 +136,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   @autobind
   private _cardOpen(ev: MouseEvent) {
     this._async.clearTimeout(this._dismissTimerId);
+    this._currentMouseTarget = ev.currentTarget;
 
     this._openTimerId = this._async.setTimeout(() => {
       if (!this.state.isHoverCardVisible) {
@@ -149,20 +151,16 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Hide HoverCard
   @autobind
   private _cardDismiss(ev: MouseEvent) {
-    const { type, x, y } = ev;
+    const { type, currentTarget } = ev;
     this._async.clearTimeout(this._openTimerId);
 
     this._dismissTimerId = this._async.setTimeout(() => {
-      if (!(this.props.sticky && type === 'mouseleave')) {
-        const rect = this._expandingCard.element.getBoundingClientRect();
-        // handle the case when dismiss is called by target when cursor moves towards the card.
-        const isInsideCard: boolean = x <= rect.right && x >= rect.left && y >= rect.top;
-        if (!isInsideCard) {
-          this.setState({
-            isHoverCardVisible: false,
-            mode: ExpandingCardMode.compact
-          });
-        }
+      // Dismiss if not sticky and currentTarget is the same element that mouse last entered
+      if (!(this.props.sticky && type === 'mouseleave') && this._currentMouseTarget === currentTarget) {
+        this.setState({
+          isHoverCardVisible: false,
+          mode: ExpandingCardMode.compact
+        });
       }
     }, this.props.cardDismissDelay!);
   }
