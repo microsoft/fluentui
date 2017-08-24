@@ -444,7 +444,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let id = this._id;
     let isItemSelected;
     if (this.props.multiSelect) {
-      isItemSelected = item.index != null && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
+      isItemSelected = item.index !== undefined && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
     }
     return (
       !this.props.multiSelect ?
