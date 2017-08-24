@@ -128,7 +128,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderListPicker() {
+  private _renderListPicker() {
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -149,7 +149,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderNormalPicker() {
+  private _renderNormalPicker() {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -171,7 +171,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderCompactPicker() {
+  private _renderCompactPicker() {
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -191,7 +191,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderPreselectedItemsPicker() {
+  private _renderPreselectedItemsPicker() {
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -213,7 +213,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderLimitedSearch() {
+  private _renderLimitedSearch() {
     limitedSearchSuggestionProps.resultsFooter = this._renderFooterText;
 
     return (
@@ -235,7 +235,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderProcessSelectionPicker() {
+  private _renderProcessSelectionPicker() {
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
@@ -257,7 +257,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public _renderControlledPicker() {
+  private _renderControlledPicker() {
     let controlledItems = [];
     for (let i = 0; i < 5; i++) {
       let item = this.state.peopleList[i];
@@ -274,7 +274,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           className={ 'ms-PeoplePicker' }
           key={ 'controlled' }
           selectedItems={ this.state.currentSelectedItems }
-          onChange={ this.onItemsChange.bind(this) }
+          onChange={ this._onItemsChange.bind(this) }
           inputProps={ {
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
@@ -296,7 +296,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  public onItemsChange(items: any[]) {
+  private _onItemsChange(items: any[]) {
     this.setState({
       currentSelectedItems: items
     });

@@ -15,7 +15,7 @@ import * as TileExampleStylesModule from './Tile.Example.scss';
 const TileExampleStyles = TileExampleStylesModule as any;
 
 export class TileDocumentExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <h3>Tiny document thumbnail</h3>

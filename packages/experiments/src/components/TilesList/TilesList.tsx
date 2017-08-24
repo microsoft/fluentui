@@ -75,7 +75,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     };
   }
 
-  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>) {
+  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
         cells: this._getCells(nextProps.items)
@@ -83,13 +83,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>) {
+  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       selection
     } = this.props;
@@ -124,7 +124,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     );
   }
 
-  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize) {
+  private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize): JSX.Element {
     if (item.grid.mode === TilesGridMode.none) {
       return (
         <div
@@ -142,6 +142,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <div
         role='presentation'
         className={ css(TilesListStyles.cell) }
+        // tslint:disable-next-line:jsx-ban-props
         style={
           {
             paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
@@ -159,7 +160,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 
   @autobind
-  private _onRenderPage(pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) {
+  private _onRenderPage(pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>): JSX.Element {
     const {
       page,
       className: pageClassName,
@@ -226,6 +227,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             className={ css('ms-List-cell', this._onGetCellClassName(), {
               [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
             }) }
+            // tslint:disable-next-line:jsx-ban-props
             style={
               {
                 ...this._onGetCellStyle(cell, currentRow)
@@ -248,6 +250,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           className={ css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none
           }) }
+          // tslint:disable-next-line:jsx-ban-props
           style={
             {
               width: `${width}px`,
