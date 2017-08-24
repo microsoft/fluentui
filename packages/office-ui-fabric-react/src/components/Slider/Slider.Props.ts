@@ -68,7 +68,7 @@ export interface ISliderProps {
    * Whether the slider is horzontal;
    * If you want to use vertical slider, you need to set this value to false;
    */
-  horizontal?: boolean;
+  vertical?: boolean;
 
   /**
    * Whether or not the Slider is disabled.

@@ -1,70 +1,145 @@
 @import '../../common/common';
 
 .row {
-.root {
+  .root {
+    user-select: none;
+    margin-bottom: 8px;
+  }
+
+  .titleLabel {
+    padding: 0;
+  }
+
+  .line {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
+
+  .line span {
+    height: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+
+  .slideBox {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .slideBox .thumb {
+    border: 2px solid $ms-color-neutralSecondary;
+    box-sizing: border-box;
+    background: $ms-color-white;
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: -6px;
+    border-radius: 10px;
+    @include transform-translateX(-50%);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+
+  .slideBox {
+    @include focus-border();
+    flex-grow: 1;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 8px; // Make room for thumb at ends of line
+  }
+
+  .valueLabel {
+    flex-shrink: 1;
+    width: 30px;
+    margin: 0 8px;
+    line-height: 1;
+  }
+}
+
+.column {
+  .root {
   user-select: none;
-  margin-bottom: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  }
+
+  .titleLabel {
+    padding: 0;
+  }
+
+  .line {
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 4px;
+    margin: 0 auto;
+    flex-direction: column-reverse;
+  }
+
+  .line span {
+    width: 4px;
+    height: 100%;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .slideBox {
+    @include focus-border();
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 auto;
+    height: 100%;
+    flex-grow: 1;
+    width: 28px;
+    line-height: 28px;
+    padding-top: 8px;
+    padding-bottom: 8px; // Make room for thumb at bottom of line
+  }
+
+  .slideBox .thumb {
+    border: 2px solid $ms-color-neutralSecondary;
+    box-sizing: border-box;
+    background: $ms-color-white;
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: -6px;
+    border-radius: 10px;
+    margin: 0 auto;
+    transform: translateY(8px);
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .valueLabel {
+    flex-shrink: 1;
+    width: 30px;
+    margin: 0 auto;
+    line-height: 1;
+    display: block;
+  }
 }
 
-.titleLabel {
-  padding: 0;
-}
-
-.line {
-  display: flex;
-  position: relative;
-  width: 100%;
-}
-
-.line span {
-  height: 4px;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-
-.slideBox {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.slideBox .thumb {
-  border: 2px solid $ms-color-neutralSecondary;
-  box-sizing: border-box;
-  background: $ms-color-white;
-  display: block;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: -6px;
-  border-radius: 10px;
-  @include transform-translateX(-50%);
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-
-.slideBox {
-  @include focus-border();
-  flex-grow: 1;
-  height: 28px;
-  line-height: 28px;
-  padding: 0 8px; // Make room for thumb at ends of line
-}
-
-.valueLabel {
-  flex-shrink: 1;
-  width: 30px;
-  margin: 0 8px;
-  line-height: 1;
-}
-}
 .activeSection {
   background: $ms-color-neutralSecondary;
 
@@ -98,80 +173,6 @@
   .inactiveSection {
     transition: width $ms-animation-duration-3 $ms-animation-ease-1;
   }
-}
-.column {
-  .root {
-  user-select: none;
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-.titleLabel {
-  padding: 0;
-}
-
-.line {
-  display: flex;
-  position: relative;
-  height: 100%;
-  width: 4px;
-  margin: 0 auto;
-  flex-direction: column;
-}
-
-.line span {
-  width: 4px;
-  height: 100%;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.slideBox {
-  @include focus-border();
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0 auto;
-  height: 100%;
-  flex-grow: 1;
-  width: 28px;
-  line-height: 28px;
-  padding-top: 8px;
-  padding-bottom: 8px; // Make room for thumb at bottom of line
-}
-
-.slideBox .thumb {
-  border: 2px solid $ms-color-neutralSecondary;
-  box-sizing: border-box;
-  background: $ms-color-white;
-  display: block;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  left: -6px;
-  border-radius: 10px;
-  margin: 0 auto;
-  transform: translateY(-8px);
-}
-
-.container {
-  display: flex;
-  //align-items: stretch;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  height: 100%;
-  text-align: center;
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.valueLabel {
-  flex-shrink: 1;
-  width: 30px;
-  margin: 0 auto;
-  line-height: 1;
-  display: block;
-}
 }
 
 .rootIsEnabled {

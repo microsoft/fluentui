@@ -23,10 +23,8 @@ export class SliderBasicExample extends React.Component<any, any> {
             step={ 1 }
             defaultValue={ 2 }
             showValue={ true }
-            horizontal={ true }
             onChange={ (value) => console.log(value) }
           />
-
           <Slider
             label='Disabled example:'
             min={ 50 }
@@ -36,7 +34,6 @@ export class SliderBasicExample extends React.Component<any, any> {
             showValue={ true }
             disabled={ true }
           />
-
           <Slider
             label='Controlled example:'
             max={ 10 }
@@ -44,7 +41,6 @@ export class SliderBasicExample extends React.Component<any, any> {
             onChange={ value => this.setState({ value }) }
             showValue={ true }
           />
-
         </div>
         <div className='ms-SliderVertical '>
           <div className='ms-verticalBox'>
@@ -55,7 +51,7 @@ export class SliderBasicExample extends React.Component<any, any> {
               step={ 1 }
               defaultValue={ 2 }
               showValue={ true }
-              horizontal={ false }
+              vertical={ true }
               onChange={ (value) => console.log(value) }
             />
           </div>
@@ -67,7 +63,7 @@ export class SliderBasicExample extends React.Component<any, any> {
               step={ 50 }
               defaultValue={ 300 }
               showValue={ true }
-              horizontal={ false }
+              vertical={ true }
               disabled={ true }
             />
           </div>
@@ -75,7 +71,7 @@ export class SliderBasicExample extends React.Component<any, any> {
             <Slider
               label='Controlled example:'
               max={ 10 }
-              horizontal={ false }
+              vertical={ true }
               showValue={ true }
             />
           </div>
@@ -83,5 +79,4 @@ export class SliderBasicExample extends React.Component<any, any> {
       </div>
     );
   }
-
 }

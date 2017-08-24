@@ -30,7 +30,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     max: 10,
     showValue: true,
     disabled: false,
-    horizontal: true,
+    vertical: false,
     buttonProps: {}
   };
 
@@ -85,7 +85,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       min,
       showValue,
       buttonProps,
-      horizontal
+      vertical
     } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue! - min!) / (max! - min!) * 100;
@@ -98,8 +98,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         className={ css('ms-Slider', styles.root, className, {
           ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
           ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
-          ['ms-Slider-row ' + styles.row]: horizontal,
-          ['ms-Slider-column ' + styles.column]: !horizontal
+          ['ms-Slider-row ' + styles.row]: !vertical,
+          ['ms-Slider-column ' + styles.column]: vertical
         }) }
         ref='root'>
         { label && (
@@ -133,10 +133,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 ref='thumb'
                 className={ css('ms-Slider-thumb', styles.thumb) }
                 { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
-                style={ this._getThumbStyle(horizontal, thumbOffsetPercent) }
+                style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
-              <span className={ css('ms-Slider-active', styles.activeSection) } style={ horizontal ? { 'width': thumbOffsetPercent + '%' } : { 'height': (thumbOffsetPercent) + '%' } }></span>
-              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ horizontal ? { 'width': (100 - thumbOffsetPercent) + '%' } : { 'height': (100 - thumbOffsetPercent) + '%' } }></span>
+              <span className={ css('ms-Slider-active', styles.activeSection) } style={ !vertical ? { 'width': thumbOffsetPercent + '%' } : { 'height': (thumbOffsetPercent) + '%' } }></span>
+              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ !vertical ? { 'width': (100 - thumbOffsetPercent) + '%' } : { 'height': (100 - thumbOffsetPercent) + '%' } }></span>
             </div>
           </button>
           { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
@@ -154,15 +154,13 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
-
-  private _getThumbStyle(horizontal: boolean | undefined, thumbOffsetPercent: number): any {
-    var thumbStyle: string;
-    if (horizontal) {
+  private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
+    let thumbStyle: string;
+    if (!vertical) {
       return getRTL() ? { 'right': thumbOffsetPercent + '%' } : { 'left': thumbOffsetPercent + '%' };
     } else {
-      return getRTL() ? { 'bottom': thumbOffsetPercent + '%' } : { 'top': thumbOffsetPercent + '%' };
+      return getRTL() ? { 'top': thumbOffsetPercent + '%' } : { 'bottom': thumbOffsetPercent + '%' };
     }
-
   }
 
   @autobind
@@ -174,7 +172,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       this._events.on(window, 'touchmove', this._onMouseMoveOrTouchMove, true);
       this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
     }
-
     this._onMouseMoveOrTouchMove(event, true);
   }
 
@@ -183,10 +180,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     const { max, min, step } = this.props;
     const steps: number = (max! - min!) / step!;
     const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
-    const sliderLength: number = this.props.horizontal ? sliderPositionRect.width : sliderPositionRect.height;
+    const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
-    if (this.props.horizontal) {
+    if (!this.props.vertical) {
       if (event.type === 'mousedown' || event.type === 'mousemove') {
         currentSteps = getRTL() ?
           (sliderPositionRect.right - (event as MouseEvent).clientX) / stepLength :
@@ -199,26 +196,33 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     } else {
       if (event.type === 'mousedown' || event.type === 'mousemove') {
         currentSteps = getRTL() ?
-          ((event as MouseEvent).clientY - sliderPositionRect.top) / stepLength :
-          (sliderPositionRect.bottom - (event as MouseEvent).clientY) / stepLength;
+          (sliderPositionRect.bottom - (event as MouseEvent).clientY) / stepLength :
+          ((event as MouseEvent).clientY - sliderPositionRect.top) / stepLength;
       } else if (event.type === 'touchstart' || event.type === 'touchmove') {
         currentSteps = getRTL() ?
-          ((event as TouchEvent).touches[0].clientY - sliderPositionRect.top) / stepLength :
-          (sliderPositionRect.bottom - (event as TouchEvent).touches[0].clientY) / stepLength;
+          (sliderPositionRect.bottom - (event as TouchEvent).touches[0].clientY) / stepLength :
+          ((event as TouchEvent).touches[0].clientY - sliderPositionRect.top) / stepLength;
       }
     }
-
 
     let currentValue: number | undefined;
     let renderedValue: number | undefined;
 
     // The value shouldn't be bigger than max or be smaller than min.
     if (currentSteps! > Math.floor(steps)) {
-      this.props.horizontal ? renderedValue = currentValue = max as number : renderedValue = currentValue = min as number;
+      if (!this.props.vertical) {
+        renderedValue = currentValue = max as number;
+      } else {
+        renderedValue = currentValue = min as number;
+      }
     } else if (currentSteps! < 0) {
-      this.props.horizontal ? renderedValue = currentValue = min as number : renderedValue = currentValue = max as number;
+      if (!this.props.vertical) {
+        renderedValue = currentValue = min as number;
+      } else {
+        renderedValue = currentValue = max as number;
+      }
     } else {
-      if (this.props.horizontal) {
+      if (!this.props.vertical) {
         renderedValue = min! + step! * currentSteps!;
         currentValue = min! + step! * Math.round(currentSteps!);
       } else {
@@ -251,7 +255,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   @autobind
   private _onMouseUpOrTouchEnd(): void {
-
     // Synchronize the renderedValue to the actual value.
     this.setState({
       renderedValue: this.state.value
@@ -270,11 +273,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:
-        diff = this.props.horizontal ? -(step as number) : +(step as number);
+        diff = -(step as number);
         break;
       case getRTLSafeKeyCode(KeyCodes.right):
       case KeyCodes.up:
-        diff = this.props.horizontal ? step : -(step as number);
+        diff = step;
         break;
 
       case KeyCodes.home:
