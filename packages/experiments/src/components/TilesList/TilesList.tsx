@@ -142,6 +142,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <div
         role='presentation'
         className={ css(TilesListStyles.cell) }
+        // tslint:disable-next-line:jsx-ban-props
         style={
           {
             paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
@@ -226,6 +227,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             className={ css('ms-List-cell', this._onGetCellClassName(), {
               [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
             }) }
+            // tslint:disable-next-line:jsx-ban-props
             style={
               {
                 ...this._onGetCellStyle(cell, currentRow)
@@ -248,6 +250,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           className={ css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none
           }) }
+          // tslint:disable-next-line:jsx-ban-props
           style={
             {
               width: `${width}px`,
