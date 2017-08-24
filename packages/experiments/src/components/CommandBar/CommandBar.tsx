@@ -11,7 +11,6 @@ import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSe
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import * as stylesImport from './CommandBar.scss';
-import { IButtonProps } from '../../../../office-ui-fabric-react/lib/index';
 
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
