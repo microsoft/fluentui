@@ -1,5 +1,5 @@
 
-@import '../../../../office-ui-fabric-react/src/common/common';
+@import '~office-ui-fabric-react/src/common/common';
 
 .signal {
   display: inline-block;
@@ -14,7 +14,7 @@
   }
 }
 
-.new {
+.newItem {
   width: 0;
   height: 1em;
   position: relative;

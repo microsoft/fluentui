@@ -15,7 +15,7 @@ import * as TileExampleStylesModule from './Tile.Example.scss';
 const TileExampleStyles = TileExampleStylesModule as any;
 
 export class TileDocumentExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <h3>Tiny document thumbnail</h3>
@@ -40,11 +40,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/40x40` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/40x40` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showForegroundFrame={ true }
           />
@@ -70,11 +73,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/80x120` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/80x120` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showForegroundFrame={ true }
           />
@@ -100,11 +106,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/168x96` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/168x96` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showForegroundFrame={ true }
           />
@@ -122,12 +131,14 @@ export class TileDocumentExample extends React.Component<any, any> {
               </SignalField>
             }
             foreground={
-              <img src={ `//placehold.it/168x120` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/168x120` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-
-              } />
+              />
             }
             showForegroundFrame={ true }
           />

@@ -17,7 +17,7 @@ import * as TileExampleStylesModule from './Tile.Example.scss';
 const TileExampleStyles = TileExampleStylesModule as any;
 
 export class TileMediaExample extends React.Component<any, any> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <h3>Landscape</h3>
@@ -35,18 +35,21 @@ export class TileMediaExample extends React.Component<any, any> {
             itemActivity={
               <SignalField
                 before={
-                  [<Signal><Icon iconName='play' /></Signal>, <MentionSignal />]
+                  [<Signal key={ 0 }><Icon iconName='play' /></Signal>, <MentionSignal key={ 1 } />]
                 }
               >
                 { lorem(6) }
               </SignalField>
             }
             background={
-              <img src={ `//placehold.it/250x200` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/250x200` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showBackgroundFrame={ true }
           />
@@ -73,11 +76,14 @@ export class TileMediaExample extends React.Component<any, any> {
               </SignalField>
             }
             background={
-              <img src={ `//placehold.it/175x200` } style={
-                {
-                  display: 'block'
+              <img
+                src={ `//placehold.it/175x200` }
+                style={
+                  {
+                    display: 'block'
+                  }
                 }
-              } />
+              />
             }
             showBackgroundFrame={ true }
           />
@@ -98,7 +104,10 @@ export class TileMediaExample extends React.Component<any, any> {
               (
                 <SignalField
                   before={
-                    [<Signal><Icon iconName='play' /></Signal>, <SharedSignal />]
+                    [
+                      <Signal key={ 0 }><Icon iconName='play' /></Signal>,
+                      <SharedSignal key={ 1 } />
+                    ]
                   }
                 >
                   { lorem(8) }

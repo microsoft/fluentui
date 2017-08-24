@@ -10,7 +10,7 @@
   "scripts": {
     "_rushInstall": "node node_modules/@microsoft/rush/bin/rush install -c",
     "_rushBuild": "node node_modules/@microsoft/rush/bin/rush build --verbose",
-    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react",
+    "_rushBuildToFabric": "node node_modules/@microsoft/rush/bin/rush build --to office-ui-fabric-react --verbose",
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
     "_rushRebuildFast": "node node_modules/@microsoft/rush/bin/rush rebuild --verbose",
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric",
@@ -23,9 +23,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "3.0.12",
-    "github": "^7.0.0",
-    "gulp": "^3.9.1",
-    "yargs": "^6.5.0"
+    "@microsoft/rush": "3.0.12"
   }
 }

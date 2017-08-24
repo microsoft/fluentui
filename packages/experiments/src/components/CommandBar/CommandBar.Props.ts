@@ -56,14 +56,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   onRenderButton?: (item: ICommandBarItemProps) => JSX.Element;
 
   /**
-   * Custom function to reduce data if items do not fit in given space. Return `undefined` if no more
-   * steps can be taken to avoid infinate loop.
+   * Custom function to reduce data if items do not fit in given space. Return `undefined`
+   * if no more steps can be taken to avoid infinate loop.
    */
   onReduceData?: (data: ICommandBarData) => ICommandBarData;
 
   /**
-   * Custom function to grow data if items are too small for the given space. Return `undefined` if no
-   * more steps can be taken to avoid infinate loop.
+   * Custom function to grow data if items are too small for the given space.
+   * Return `undefined` if no more steps can be taken to avoid infinate loop.
    */
   onGrowData?: (data: ICommandBarData) => ICommandBarData;
 

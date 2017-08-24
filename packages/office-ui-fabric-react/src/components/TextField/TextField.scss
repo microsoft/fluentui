@@ -39,6 +39,7 @@ $field-error-color: $errorTextColor;
 
 //= State: default
 .fieldGroup {
+  @include ms-normalize;
   border: 1px solid $field-border-color;
   background: $field-background-color;
   height: 32px;

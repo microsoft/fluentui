@@ -7,6 +7,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
+/* tslint:disable:max-line-length */
 import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
 const TilesListBasicExampleCode = require(
   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
@@ -18,12 +19,13 @@ const TilesListDocumentExampleCode = require(
 ) as string;
 
 import { TilesListMediaExample } from './examples/TilesList.Media.Example';
+
 const TilesListMediaExampleCode = require(
   '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
 ) as string;
 
 export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='TilesList'
@@ -61,7 +63,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -77,8 +79,8 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

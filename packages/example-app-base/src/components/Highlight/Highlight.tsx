@@ -12,7 +12,7 @@ export interface IHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
 export class Highlight extends BaseComponent<IHighlightProps, {}> {
   private _codeElement: HTMLElement;
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <pre>
         <code
@@ -25,11 +25,11 @@ export class Highlight extends BaseComponent<IHighlightProps, {}> {
     );
   }
 
-  public shouldComponentUpdate() {
+  public shouldComponentUpdate(): boolean {
     return false;
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     highlightBlock(this._codeElement);
   }
 }

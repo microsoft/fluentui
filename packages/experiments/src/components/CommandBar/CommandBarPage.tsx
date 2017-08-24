@@ -13,7 +13,7 @@ const CommandBarBasicExampleCode = require(
 ) as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
 
     return (
@@ -35,6 +35,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             ] }
           />
         }
+        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>
@@ -61,8 +62,9 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
             </p>
           </div>
         }
+        /* tslint:enable:max-line-length */
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -87,8 +89,8 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 

@@ -1,6 +1,60 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 18 Aug 2017 16:32:33 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2017 10:20:20 GMT and should not be manually modified.
+
+## 4.37.1
+Thu, 24 Aug 2017 10:20:20 GMT
+
+### Patches
+
+- Darkened the placeholder text for dropdowns to meet MAS color contrast standards
+
+## 4.37.0
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Minor changes
+
+- Checkbox: support for aria attributes
+- BasePicker: added itemLimit property, which will allow preventing adding more items than set limit.
+- Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object.
+- TextField: Added selectionStart and selectionEnd getters to ITextField.
+- withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode.
+
+### Patches
+
+- Fix aria-labeling for DetailsList column headers
+- DetailsRow: Removed margin from check buttons.
+
+## 4.36.0
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Minor changes
+
+- DocumentCardPreview: Allow show Icon in the preview area instead of image.
+
+### Patches
+
+- ContextualMenu: Add ability to override role on menu items
+- ComboBox: Content should not be selected when comboBox isn't focused
+- Adding react import to SpinButton.Props for classic module resolution.
+- High contrast, accesibility, and other bugfixes
+- Dropdown: adds a for property to dropdown labels.
+
+## 4.35.2
+Tue, 22 Aug 2017 10:09:55 GMT
+
+### Patches
+
+- Dropdown: Fixed bug where selectedKey selects dropdown option with a different key
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
 
 ## 4.35.0
 Fri, 18 Aug 2017 16:32:33 GMT

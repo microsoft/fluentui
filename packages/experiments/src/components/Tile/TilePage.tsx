@@ -13,7 +13,7 @@ import { TileDocumentExample } from './examples/Tile.Document.Example';
 const TileDocumentExampleCode = require('!raw-loader!experiments/src/components/Tile/examples/Tile.Document.Example.tsx') as string;
 
 export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
+  public render(): JSX.Element {
     return (
       <ComponentPage
         title='Tile'
@@ -36,11 +36,10 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-          </div>
+          <div />
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -56,8 +55,8 @@ export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

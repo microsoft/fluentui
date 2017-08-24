@@ -2,6 +2,49 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.2.2",
+      "tag": "@uifabric/example-app-base_v4.2.2",
+      "date": "Thu, 24 Aug 2017 05:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "eee654b354aa2ff30830fcc51319da11f3b8d688",
+            "comment": "Break up long lines or disable max line length in ex-app-base pkg to pass tslint"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "f7b6bb4aceffd947b2443eb14f3271a05175e670",
+            "comment": "Added missing typedefs in ex-app-base pkg to pass tslint"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.1 <5.0.0` to `>=4.10.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.1",
+      "tag": "@uifabric/example-app-base_v4.2.1",
+      "date": "Mon, 21 Aug 2017 10:19:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Updating project dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.0 <5.0.0` to `>=4.9.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.2.0",
       "tag": "@uifabric/example-app-base_v4.2.0",
       "date": "Thu, 03 Aug 2017 10:13:03 GMT",

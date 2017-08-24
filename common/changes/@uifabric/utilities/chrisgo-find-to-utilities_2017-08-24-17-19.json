@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Minor tweaks to utilities to reduce the graph edges.",
+      "comment": "Array: Add find utility method",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

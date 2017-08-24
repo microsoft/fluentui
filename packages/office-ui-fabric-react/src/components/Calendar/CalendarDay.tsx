@@ -115,7 +115,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
-              onKeyDown={ this.onNextMonthKeyDown }
+              onKeyDown={ this._onNextMonthKeyDown }
               aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
@@ -279,7 +279,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   @autobind
-  private onNextMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+  private _onNextMonthKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     this._onKeyDown(this._onSelectNextMonth, ev);
   }
 

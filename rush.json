@@ -6,6 +6,11 @@
   "projectFolderMaxDepth": 999,
   "projects": [
     {
+      "packageName": "@uifabric/build",
+      "projectFolder": "scripts",
+      "shouldPublish": false
+    },
+    {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
       "shouldPublish": true
