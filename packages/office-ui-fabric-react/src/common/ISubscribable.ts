@@ -5,5 +5,5 @@ export interface IEmptyFunction {
 }
 
 export interface ISubscribable {
-  subscribe: (onChange: IEmptyFunction) => (IDisposable | IEmptyFunction);
+  subscribe: (onChange?: IEmptyFunction) => IDisposable;
 }

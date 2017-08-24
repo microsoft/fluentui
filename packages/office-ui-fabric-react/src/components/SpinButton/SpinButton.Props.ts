@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
@@ -106,6 +107,16 @@ export interface ISpinButtonProps {
    * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
    */
   onDecrement?: (value: string) => string | void;
+
+  /**
+   * A callback for when the user put focus on the picker
+   */
+  onFocus?: React.FocusEventHandler<HTMLInputElement>;
+
+  /**
+   * A callback for when the user moves the focus away from the picker
+   */
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
 
   /**
    * Icon for the increment button of the spinButton

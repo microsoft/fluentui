@@ -7,11 +7,11 @@ import * as stylesImport from './BrandIconsPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
 
-const svgResolutionData = require('json!../../../data/brand-icons-svg-resolutions.json');
-const pngResolutionData = require('json!../../../data/brand-icons-png-resolutions.json');
-const productIconsData = require('json!../../../data/brand-icons-products.json');
-const documentIconsData = require('json!../../../data/brand-icons-documents.json');
-const monochromeIconsData = require('json!../../../data/brand-icons-monochrome.json');
+const svgResolutionData = require('../../../data/brand-icons-svg-resolutions.json');
+const pngResolutionData = require('../../../data/brand-icons-png-resolutions.json');
+const productIconsData = require('../../../data/brand-icons-products.json');
+const documentIconsData = require('../../../data/brand-icons-documents.json');
+const monochromeIconsData = require('../../../data/brand-icons-monochrome.json');
 
 export class BrandIconsPage extends React.Component<any, any> {
   public render() {
@@ -52,7 +52,7 @@ export class BrandIconsPage extends React.Component<any, any> {
         <div className={ pageStyles.u_maxTextWidth }>
           <h2 id='overview'>Overview</h2>
           <p>Fabric includes product and document icons that you can use to connect your experience with other Office and Office 365 endpoints. The icons come in three formats &mdash; SVG and PNG for multicolor and the icon font for monochrome &mdash; in a variety of sizes and resolutions.</p>
-          <p>Usage of these icons is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement (DOCX)</a> and our <a href={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/files/officebrandguide_16sep2016.pdf' }>brand guidelines (PDF)</a>. Please read this document and the resolution/size guidance carefully to ensure that you use our branded icons correctly to create the best experience.</p>
+          <p>Usage of these icons is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement (DOCX)</a> and our <a href={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/files/office_marketing_guidelines.pdf' }>brand guidelines (PDF)</a>. Please read this document and the resolution/size guidance carefully to ensure that you use our branded icons correctly to create the best experience.</p>
         </div>
         <h3>Product icons</h3>
         <div className='ms-Grid ms-Grid--wide'>

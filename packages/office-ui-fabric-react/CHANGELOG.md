@@ -1,6 +1,105 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Aug 2017 10:09:55 GMT and should not be manually modified.
+
+## 4.35.2
+Tue, 22 Aug 2017 10:09:55 GMT
+
+### Patches
+
+- Dropdown: Fixed bug where selectedKey selects dropdown option with a different key
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
+
+## 4.35.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- Added ActionButton and CommandBarButton
+- DetailsList: Resizing columns preserves justified mode.
+- TooltipHost: new onTooltipToggle callback
+
+### Patches
+
+- Minor cleanup in merging of css class names.
+- Dropdown: Fixed bug where selected state was not being removed from dropdown options
+- FocusZone: presssing home/end inside of an input/textarea element should respect cursor location.
+- Fix some unused code and typings in List
+- Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value.
+- Toggle: fixed issue where disabled Toggles are clickable. Also cleaned up some of the styling.
+- CommandBar: adding `aria-expanded` attribute to overflow menu.
+- DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
+
+## 4.33.0
+Tue, 15 Aug 2017 10:19:22 GMT
+
+### Minor changes
+
+- Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario.
+- Pickers: fixing accessiblity and styling issues
+
+### Patches
+
+- ComboBox: Fix role typo to read heading instead of header
+- Added menu indexes to the accessibility readouts for ContextMenus
+- Added the ability to change the root element of a FocusZone
+
+## 4.32.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Mixing choice group fields with html input attributes
+- Callout/Dropdown: Both components now support custom widths
+- Nav: Add more options for nav link groups
+- ComboBox: Fix some functionality for when the comboBox is controlled
+- Calendar: added ability to customize navigation icons.
+- Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus().
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
+- Add target to hover card
+- Nav: fix bug with sublink padding
+- FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
+- ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
+- Nav: update isGroupCollapsed for new groups
+- Change dropdown's role from "combobox" to "menu" 
+- Changed DatePicker role to be more accurate for screen readers
+- Selection: Fix broken selection state in example.
+
+## 4.31.0
+Tue, 08 Aug 2017 15:28:32 GMT
+
+### Minor changes
+
+- ComboBox: Putting the child component styles in the main props and a few other fixes
+- Moving SpinButton to Glamor based styling
+- GridCell: Add a component to handle the shared logic managing selection and navigation of cells within all consumers of the Grid class. This change also updates the SwatchColorPicker to  use the GridCell component and removes  most of the logic now contained in the GridCell component.
+- Checkbox: add custom render function for checkbox label.
+
+### Patches
+
+- BaseButton: Added screenReaderText styles to base button
+- BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
+- Added role alert to "no results" view 
 
 ## 4.30.1
 Mon, 07 Aug 2017 10:22:46 GMT

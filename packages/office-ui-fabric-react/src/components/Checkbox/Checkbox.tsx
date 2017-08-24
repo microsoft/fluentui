@@ -159,6 +159,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();
+    ev.stopPropagation();
 
     if (!disabled) {
       if (onChange) {

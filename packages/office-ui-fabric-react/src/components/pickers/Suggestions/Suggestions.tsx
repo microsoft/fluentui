@@ -95,7 +95,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
     let noResults = () => {
       return noResultsFoundText ?
-        <div className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
+        <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
           { noResultsFoundText }
         </div> : null;
     };

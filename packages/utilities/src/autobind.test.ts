@@ -1,4 +1,4 @@
-let { expect, should } = chai;
+let { expect } = chai;
 import { autobind } from './autobind';
 
 class Greeter {

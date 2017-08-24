@@ -1,6 +1,35 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 07 Aug 2017 10:22:46 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2017 16:32:33 GMT and should not be manually modified.
+
+## 0.20.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- mergeStyleSets: tweaked the return type to be less restrictive.
+
+## 0.19.2
+Mon, 14 Aug 2017 10:20:31 GMT
+
+### Patches
+
+- getFocusStyle: Add -moz-focus-inner to fix outline bug
+
+## 0.19.1
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
+
+## 0.19.0
+Tue, 08 Aug 2017 15:28:32 GMT
+
+### Minor changes
+
+- Styling: added a screenReaderText utility style
+- Adding a color to the palette
 
 ## 0.18.0
 Mon, 07 Aug 2017 10:22:46 GMT

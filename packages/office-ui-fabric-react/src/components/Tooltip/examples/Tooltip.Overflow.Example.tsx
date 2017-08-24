@@ -1,19 +1,27 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, css, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   TooltipHost,
   TooltipOverflowMode
 } from 'office-ui-fabric-react/lib/Tooltip';
 
-export class TooltipOverflowExample extends BaseComponent<any, any> {
+export interface ITooltipOverflowExampleState {
+  overflow: boolean;
+  isTooltipVisible: boolean;
+}
+
+export class TooltipOverflowExample extends BaseComponent<{}, ITooltipOverflowExampleState> {
+  private readonly tooltipId = getId('text-tooltip');
+
   constructor(props: any) {
     super(props);
 
     this.state = {
-      overflow: false
+      overflow: false,
+      isTooltipVisible: false,
     };
   }
 
@@ -32,8 +40,12 @@ export class TooltipOverflowExample extends BaseComponent<any, any> {
             width: this.state.overflow && '200px',
             border: '1px solid black'
           } }>
-            <TooltipHost content='This is the tooltip' id='myID' overflowMode={ TooltipOverflowMode.Parent }>
-              <span aria-describedby='myID'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat lectus ut magna sodales, sit amet accumsan arcu accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+            <TooltipHost
+              content='This is the tooltip'
+              id={ this.tooltipId }
+              overflowMode={ TooltipOverflowMode.Parent }
+              onTooltipToggle={ isTooltipVisible => this.setState({ isTooltipVisible }) }>
+              <span aria-describedby={ this.state.isTooltipVisible ? this.tooltipId : undefined }>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat lectus ut magna sodales, sit amet accumsan arcu accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
             </TooltipHost>
           </div>
         </div>

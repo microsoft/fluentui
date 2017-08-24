@@ -124,6 +124,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                   }) }
                   onClick={ this._onOverflowClick }
                   role='menuitem'
+                  aria-expanded={this.state.expandedMenuItemKey === OVERFLOW_KEY}
                   aria-label={ this.props.elipisisAriaLabel || '' }
                   aria-haspopup={ true }
                   data-automation-id='commandBarOverflow'
