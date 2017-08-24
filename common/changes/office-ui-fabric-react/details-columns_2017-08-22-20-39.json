@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsRow: Removed margin from check buttons.",
+      "comment": "Fix aria-labeling for DetailsList column headers",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }

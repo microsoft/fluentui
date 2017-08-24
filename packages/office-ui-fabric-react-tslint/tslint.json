@@ -4,6 +4,16 @@
     "tslint-react"
   ],
   "rules": {
+    "function-name": [
+      true,
+      {
+        "method-regex": "^[a-z][\\w\\d]+$",
+        "private-method-regex": "^_[a-z][\\w\\d]+$",
+        "protected-method-regex": "^[_]?[a-z][\\w\\d]+$",
+        "static-method-regex": "^[a-z][\\w\\d]+$",
+        "function-regex": "^[_]?[a-z][\\w\\d]+$"
+      }
+    ],
     "jsx-curly-spacing": {
       "when": "always"
     },
@@ -14,6 +24,7 @@
     "jsx-no-lambda": true,
     "jsx-self-close": true,
     "jsx-wrap-multiline": true,
+    "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
       true,
