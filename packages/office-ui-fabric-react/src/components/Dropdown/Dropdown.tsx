@@ -146,7 +146,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
@@ -154,19 +154,22 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           tabIndex={ disabled ? -1 : 0 }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='combobox'
+          role='menu'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ ariaLabel || label }
+          aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex! >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen!,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled!,
-            'is-required ': required!,
-          }) }
+          className={ css(
+            'ms-Dropdown',
+            styles.root,
+            className,
+            isOpen! && 'is-open',
+            disabled! && ('is-disabled ' + styles.rootIsDisabled),
+            required! && 'is-required',
+          ) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
@@ -214,7 +217,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options, selectedKey, selectedKeys } = this.props;
+    let { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
     let { selectedIndex, selectedIndexes } = this.state;
     let checked: boolean = selectedIndexes ? selectedIndexes.indexOf(index) > -1 : false;
 
@@ -223,7 +226,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (index !== selectedIndex) {
       if (selectedKey === undefined) {
         // Set the selected option if this is an uncontrolled component
-        if (this.props.multiSelect) {
+        if (multiSelect) {
           let newIndexes = selectedIndexes ? this._copyArray(selectedIndexes) : [];
           if (checked) {
             let position = newIndexes.indexOf(index);
@@ -246,9 +249,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       }
       if (onChanged) {
         // for single-select, option passed in will always be selected.
+        if (!multiSelect) {
+          options.map((option: any) => option.selected === true ? option.selected = false : null);
+        }
         // for multi-select, flip the checked value
         let changedOpt = options[index];
-        changedOpt.selected = this.props.multiSelect ? !checked : true;
+        changedOpt.selected = multiSelect ? !checked : true;
         onChanged(changedOpt, index);
       }
     }
@@ -307,11 +313,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderTitle(item: IDropdownOption | IDropdownOption[]): JSX.Element {
     let displayTxt: string = '';
+    let { multiSelectDelimiter = ', ' } = this.props;
+
     if (this.props.multiSelect && Array.isArray(item)) {
-      for (let i = 0; i < item.length; i++) {
-        displayTxt += item[i].text;
-        displayTxt += (i === item.length - 1) ? '' : ',';
-      }
+      displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
     } else {
       displayTxt = (item as IDropdownOption).text;
     }
@@ -333,7 +338,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let {
       onRenderList = this._onRenderList,
       responsiveMode,
-      calloutProps
+      calloutProps,
+      dropdownWidth
     } = this.props;
 
     let isSmall = responsiveMode! <= ResponsiveMode.medium;
@@ -354,16 +360,16 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           isBeakVisible={ false }
           gapSpace={ 0 }
           doNotLayer={ false }
+          directionalHintFixed={ true }
           directionalHint={ DirectionalHint.bottomLeftEdge }
           { ...calloutProps }
           className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
           targetElement={ this._dropDown }
           onDismiss={ this._onDismiss }
           onPositioned={ this._onPositioned }
+          calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
         >
-          <div style={ { width: this._dropDown.clientWidth - 2 } }>
-            { onRenderList(props, this._onRenderList) }
-          </div>
+          { onRenderList(props, this._onRenderList) }
         </Callout>
     );
   }
@@ -379,18 +385,19 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { selectedIndex } = this.state;
 
     return (
-      <FocusZone
-        ref={ this._resolveRef('_focusZone') }
-        direction={ FocusZoneDirection.vertical }
-        defaultActiveElement={ '#' + id + '-list' + selectedIndex }
-        id={ id + '-list' }
-        className={ css('ms-Dropdown-items', styles.items) }
-        aria-labelledby={ id + '-label' }
-        onKeyDown={ this._onZoneKeyDown }
-        role='listbox'
-      >
-        { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
-      </FocusZone>
+      <div onKeyDown={ this._onZoneKeyDown }>
+        <FocusZone
+          ref={ this._resolveRef('_focusZone') }
+          direction={ FocusZoneDirection.vertical }
+          defaultActiveElement={ '#' + id + '-list' + selectedIndex }
+          id={ id + '-list' }
+          className={ css('ms-Dropdown-items', styles.items) }
+          aria-labelledby={ id + '-label' }
+          role='listbox'
+        >
+          { this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem)) }
+        </FocusZone>
+      </div>
     );
   }
 
@@ -437,7 +444,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let id = this._id;
     let isItemSelected;
     if (this.props.multiSelect) {
-      isItemSelected = item.index && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
+      isItemSelected = item.index !== undefined && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
     }
     return (
       !this.props.multiSelect ?
@@ -534,7 +541,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
-    return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
+    // tslint:disable-next-line:triple-equals
+    return findIndex(options, (option => ((option.isSelected || option.selected || (selectedKey != null)) && option.key === selectedKey)));
   }
 
   @autobind
@@ -644,10 +652,17 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       case KeyCodes.up:
         if (ev.altKey || ev.metaKey) {
           this.setState({ isOpen: false });
-          break;
         }
+        break;
 
-        return;
+      // All directional keystrokes should be canceled when the zone is rendered.
+      // This avoids the body scroll from reacting and thus dismissing the dropdown.
+      case KeyCodes.home:
+      case KeyCodes.end:
+      case KeyCodes.pageUp:
+      case KeyCodes.pageDown:
+      case KeyCodes.down:
+        break;
 
       case KeyCodes.escape:
         this.setState({ isOpen: false });

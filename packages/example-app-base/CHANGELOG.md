@@ -1,6 +1,21 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2017 05:38:14 GMT and should not be manually modified.
+
+## 4.2.2
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Patches
+
+- Break up long lines or disable max line length in ex-app-base pkg to pass tslint
+- Added missing typedefs in ex-app-base pkg to pass tslint
+
+## 4.2.1
+Mon, 21 Aug 2017 10:19:28 GMT
+
+### Patches
+
+- Updating project dependencies.
 
 ## 4.2.0
 Thu, 03 Aug 2017 10:13:03 GMT

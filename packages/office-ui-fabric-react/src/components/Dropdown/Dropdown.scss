@@ -59,7 +59,7 @@ $DropDown-item-height: 32px;
       }
     }
     .titleIsPlaceHolder {
-      color: $ms-color-neutralTertiary;
+      color: $ms-color-neutralSecondary;
     }
   }
 
@@ -148,7 +148,7 @@ $DropDown-item-height: 32px;
 .title {
   @include ms-normalize;
   background: $ms-color-white;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
+  border: 1px solid $ms-color-neutralTertiary;
   cursor: pointer;
   display: block;
   height: $DropDown-height;
@@ -162,7 +162,7 @@ $DropDown-item-height: 32px;
         border-color: $ms-color-error;
     }
   &.titleIsPlaceHolder {
-    color: $ms-color-neutralTertiary;
+    color: $ms-color-neutralSecondary;
   }
 }
 
@@ -178,7 +178,7 @@ $DropDown-item-height: 32px;
   }
 
 .callout {
-  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
 }
 

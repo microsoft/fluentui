@@ -4,7 +4,7 @@ import { BlogItem } from './BlogItem';
 import * as stylesImport from './BlogPage.module.scss';
 const styles: any = stylesImport;
 
-const blogData = require('json!../../data/blog-posts.json');
+const blogData = require('../../data/blog-posts.json');
 
 export class BlogPage extends React.Component<any, any> {
   public render() {

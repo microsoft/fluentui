@@ -1,6 +1,36 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 03 Aug 2017 10:13:03 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+
+## 4.7.3
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- Removed Trello reference
+- Updated branding guidance pdf from the cdn.
+- Updated the CDN link on the "Get Started" page and section to an updated version of Fabric Core, 7.2.0
+
+## 4.7.2
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+
+## 4.7.1
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Patches
+
+- Minor css usage cleanup.
+
+## 4.7.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Updated fabric build system to use webpack dev server, removed the explicit !json loader in require statements.
 
 ## 4.6.0
 Thu, 03 Aug 2017 10:13:03 GMT

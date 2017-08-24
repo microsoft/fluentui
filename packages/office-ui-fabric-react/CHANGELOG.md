@@ -1,6 +1,127 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 08 Aug 2017 15:28:32 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2017 10:20:20 GMT and should not be manually modified.
+
+## 4.37.1
+Thu, 24 Aug 2017 10:20:20 GMT
+
+### Patches
+
+- Darkened the placeholder text for dropdowns to meet MAS color contrast standards
+
+## 4.37.0
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Minor changes
+
+- Checkbox: support for aria attributes
+- BasePicker: added itemLimit property, which will allow preventing adding more items than set limit.
+- Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object.
+- TextField: Added selectionStart and selectionEnd getters to ITextField.
+- withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode.
+
+### Patches
+
+- Fix aria-labeling for DetailsList column headers
+- DetailsRow: Removed margin from check buttons.
+
+## 4.36.0
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Minor changes
+
+- DocumentCardPreview: Allow show Icon in the preview area instead of image.
+
+### Patches
+
+- ContextualMenu: Add ability to override role on menu items
+- ComboBox: Content should not be selected when comboBox isn't focused
+- Adding react import to SpinButton.Props for classic module resolution.
+- High contrast, accesibility, and other bugfixes
+- Dropdown: adds a for property to dropdown labels.
+
+## 4.35.2
+Tue, 22 Aug 2017 10:09:55 GMT
+
+### Patches
+
+- Dropdown: Fixed bug where selectedKey selects dropdown option with a different key
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
+
+## 4.35.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- Added ActionButton and CommandBarButton
+- DetailsList: Resizing columns preserves justified mode.
+- TooltipHost: new onTooltipToggle callback
+
+### Patches
+
+- Minor cleanup in merging of css class names.
+- Dropdown: Fixed bug where selected state was not being removed from dropdown options
+- FocusZone: presssing home/end inside of an input/textarea element should respect cursor location.
+- Fix some unused code and typings in List
+- Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value.
+- Toggle: fixed issue where disabled Toggles are clickable. Also cleaned up some of the styling.
+- CommandBar: adding `aria-expanded` attribute to overflow menu.
+- DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
+
+## 4.33.0
+Tue, 15 Aug 2017 10:19:22 GMT
+
+### Minor changes
+
+- Dropdown: no longer scrolls body when arrowing up down at the start/end of the menu. Also added `multSelectDelimiter` for tweaking how the title is rendered in a multi-select scenario.
+- Pickers: fixing accessiblity and styling issues
+
+### Patches
+
+- ComboBox: Fix role typo to read heading instead of header
+- Added menu indexes to the accessibility readouts for ContextMenus
+- Added the ability to change the root element of a FocusZone
+
+## 4.32.0
+Fri, 11 Aug 2017 19:38:35 GMT
+
+### Minor changes
+
+- Mixing choice group fields with html input attributes
+- Callout/Dropdown: Both components now support custom widths
+- Nav: Add more options for nav link groups
+- ComboBox: Fix some functionality for when the comboBox is controlled
+- Calendar: added ability to customize navigation icons.
+- Add onFocus and onBlur for Pickers, SpinButton, SearchBox, and Rating. Add IBasePicker with focus().
+
+### Patches
+
+- add StreamLogo and PowerBILogo icons
+- Add target to hover card
+- Nav: fix bug with sublink padding
+- FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
+- ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
+- Nav: update isGroupCollapsed for new groups
+- Change dropdown's role from "combobox" to "menu" 
+- Changed DatePicker role to be more accurate for screen readers
+- Selection: Fix broken selection state in example.
 
 ## 4.31.0
 Tue, 08 Aug 2017 15:28:32 GMT

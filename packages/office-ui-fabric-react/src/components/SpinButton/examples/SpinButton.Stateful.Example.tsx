@@ -11,7 +11,7 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
           label='SpinButton with custom implementation:'
           value={ '7' + suffix }
           onValidate={ (value: string) => {
-            value = this.removeSuffix(value, suffix);
+            value = this._removeSuffix(value, suffix);
             if (isNaN(+value)) {
               return '0' + suffix;
             }
@@ -19,25 +19,27 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
             return String(value) + suffix;
           } }
           onIncrement={ (value: string) => {
-            value = this.removeSuffix(value, suffix);
+            value = this._removeSuffix(value, suffix);
             return String(+value + 2) + suffix;
           } }
           onDecrement={ (value: string) => {
-            value = this.removeSuffix(value, suffix);
+            value = this._removeSuffix(value, suffix);
             return String(+value - 2) + suffix;
           } }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );
   }
 
-  private hasSuffix(string: string, suffix: string): Boolean {
+  private _hasSuffix(string: string, suffix: string): Boolean {
     let subString = string.substr(string.length - suffix.length);
     return subString === suffix;
   }
 
-  private removeSuffix(string: string, suffix: string): string {
-    if (!this.hasSuffix(string, suffix)) {
+  private _removeSuffix(string: string, suffix: string): string {
+    if (!this._hasSuffix(string, suffix)) {
       return string;
     }
 

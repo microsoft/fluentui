@@ -1,0 +1,265 @@
+
+@import '~office-ui-fabric-react/src/common/common';
+
+.tile {
+  @include focus-clear();
+
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $ms-color-white;
+  transition: transform 0.1s linear;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+
+  text-decoration: none;
+  color: $ms-color-neutralPrimary;
+
+  &:hover {
+    background-color: $ms-color-neutralLighter;
+
+    &.selected {
+      background-color: $ms-color-neutralQuaternaryAlt;
+    }
+  }
+
+  &.selected {
+    background-color: $ms-color-neutralLight;
+  }
+
+  @include focus(true) {
+    background-color: $ms-color-neutralLighter;
+
+    &.selected {
+      background-color: $ms-color-neutralQuaternaryAlt; // Todo need a color variable.
+    }
+  }
+
+  @include focus(true) {
+    outline: 1px solid $ms-color-neutralSecondary;
+
+    &.selected {
+      outline: 1px solid $ms-color-themePrimary;
+    }
+  }
+
+  &.hasBackgroundFrame {
+    box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+
+    &:hover {
+      outline: 1px solid $ms-color-neutralTertiaryAlt;
+    }
+
+    @include focus(true) {
+      outline: 1px solid $ms-color-neutralSecondary;
+
+      &.selected {
+        outline: 1px solid $ms-color-themePrimary;
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+      border: 2px solid $ms-color-white;
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.frame {
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+
+  &.hasForegroundFrame {
+    margin: auto auto 0 auto;
+    background-color: $ms-color-white;
+    box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      pointer-events: none;
+      border: 2px solid $ms-color-white;
+    }
+  }
+}
+
+.check {
+  @include focus-border($position: absolute);
+  display: none;
+  top: 0;
+  @include right(0);
+  border: none;
+  background: none;
+  opacity: 0;
+
+  .tile.selectable & {
+    display: block;
+  }
+
+  .tile.selected &,
+  .tile:hover & {
+    opacity: 1;
+  }
+
+  @include focus(true) {
+    opacity: 1;
+  }
+}
+
+.tile {
+  @include focus(true) {
+    .check {
+      opacity: 1;
+    }
+  }
+}
+
+button.check {
+  padding: 6px;
+}
+
+.content {
+  position: relative;
+  flex: 1;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.foreground {
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+
+.nameplate {
+  display: block;
+  margin: auto 0 0 0;
+  padding: 12px 8px;
+  text-align: center;
+
+  .tile.hasBackgroundFrame & {
+    padding: 12px 10px;
+  }
+}
+
+.signal {
+  display: inline-block;
+
+  &.storageSignal {
+    @include margin-left(4px);
+  }
+
+  &.socialSignal {
+    @include margin-right(4px);
+  }
+
+  &.lifecycleSignal {
+    @include margin-right(4px);
+  }
+}
+
+@mixin preserveExtenders($topMargin: 0px) {
+  padding-top: 8px;
+  margin-top: $topMargin - 8px;
+  @include margin-left(-8px);
+  @include padding-left(8px);
+}
+
+.name {
+  display: block;
+  font-weight: $ms-font-weight-regular;
+  font-size: $ms-font-size-m;
+  color: $ms-color-neutralPrimary;
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include preserveExtenders();
+}
+
+.activity {
+  margin-top: 4px;
+  display: block;
+  font-weight: $ms-font-weight-regular;
+  font-size: $ms-font-size-s;
+  color: #767676;
+  height: 16px;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include preserveExtenders(4px);
+}
+
+.hasBackgroundFrame {
+  .nameplate {
+    @include text-align(left);
+  }
+}
+
+.hasBackground {
+  .nameplate {
+    position: relative;
+    background-image: linear-gradient(to top, rgba(#000, 0.65) 0%, rgba(#000, 0.65 * 0.85) 70%, rgba(#000, 0.30 * 0.85) 100%);
+
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      height: 12px;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      background-image: linear-gradient(to top, rgba(#000, 0.30 * 0.85) 0%, rgba(#000, 0) 100%);
+    }
+  }
+
+  .name {
+    color: $ms-color-white;
+    text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+  }
+
+  .activity {
+    color: $ms-color-white;
+    text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+  }
+}

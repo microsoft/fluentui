@@ -12,7 +12,7 @@ import { Selection, SelectionZone, SelectionMode } from '../../utilities/selecti
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePickerProps, ValidationState } from './BasePicker.Props';
+import { IBasePicker, IBasePickerProps, ValidationState } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
 import { IPersonaProps } from '../Persona/Persona.Props';
@@ -30,7 +30,7 @@ export interface IBasePickerState {
   isResultsFooterVisible?: boolean;
 }
 
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
 
   protected selection: Selection;
 
@@ -104,8 +104,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   public dismissSuggestions() {
     // Select the first suggestion if one is available when user leaves.
-    if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
-      this.addItemByIndex(0);
+    let selectItemFunction = () => {
+      if (this.suggestionStore.hasSelectedSuggestion() && this.state.suggestedDisplayValue) {
+        this.addItemByIndex(0);
+      }
+    };
+    if (this.currentPromise) {
+      this.currentPromise.then(() => selectItemFunction());
+    } else {
+      selectItemFunction();
     }
     this.setState({ suggestionsVisible: false });
   }
@@ -147,9 +154,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           direction={ FocusZoneDirection.bidirectional }
           isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }>
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
-              <BaseAutoFill
+              { this.canAddItems() && (<BaseAutoFill
                 { ...inputProps as any }
                 className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
@@ -164,13 +171,19 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                 autoComplete='off'
                 role='combobox'
                 disabled={ disabled }
-              />
+              />) }
             </div>
           </SelectionZone>
         </FocusZone>
         { this.renderSuggestions() }
       </div>
     );
+  }
+
+  protected canAddItems(): boolean {
+    const { items } = this.state;
+    const { itemLimit } = this.props;
+    return itemLimit === undefined || items.length < itemLimit;
   }
 
   protected renderSuggestions(): JSX.Element | null {
@@ -223,10 +236,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     if (items.length && index! >= 0) {
       let newEl: HTMLElement = this.root.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement;
-
       if (newEl) {
         this.focusZone.focusElement(newEl);
       }
+    } else if (!this.canAddItems()) {
+      (items[items.length - 1] as IPickerItemProps<T>).selected = true;
+      this.resetFocus(items.length - 1);
     } else {
       this.input.focus();
     }
@@ -326,16 +341,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       suggestedDisplayValue: itemValue,
       suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
     });
-
-    /**
-     * If user exits the input box before suggestions are returned,
-     * select the first result upon promise resolution, if a suggestion
-     * is available.
-     */
-    if (this.suggestionStore.hasSelectedSuggestion() &&
-      this.input.inputElement !== document.activeElement) {
-      this.addItemByIndex(0);
-    }
   }
 
   protected onChange(items?: T[]) {
@@ -383,11 +388,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         suggestionsVisible: true
       });
     }
+    if (this.props.inputProps && this.props.inputProps.onFocus) {
+      this.props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+    }
   }
 
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let value = this.input.value;
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
@@ -414,7 +421,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.del:
-        if (ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+        if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
           if (this.props.onRemoveSuggestion) {
             (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
           }
@@ -525,6 +532,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       let newItems: T[] = this.state.items.concat([processedItemObject]);
       this._updateSelectedItems(newItems);
     }
+    this.setState({ suggestedDisplayValue: '' });
   }
 
   @autobind
@@ -551,7 +559,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    if (this.state.items.length && !this.input.isValueSelected && this.input.cursorLocation === 0) {
+    if (this.state.items.length && !this.input || (!this.input.isValueSelected && this.input.cursorLocation === 0)) {
       if (this.selection.getSelectedCount() > 0) {
         this.removeItems(this.selection.getSelection());
       } else {

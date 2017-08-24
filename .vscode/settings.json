@@ -14,7 +14,15 @@
     "**/.DS_Store": true,
     "**/bower_components": true,
     "**/coverage": true,
-    "**/*.scss.ts": true
+    "**/*.scss.ts": false
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/tmp/**": true,
+    "**/bower_components/**": true,
+    "**/dist/**": true
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
