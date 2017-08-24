@@ -11,6 +11,9 @@ import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
 
+const DEFAULT_BUTTON_HEIGHT = '40px';
+const DEFAULT_PADDING = '0 4px';
+
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles,
@@ -21,10 +24,11 @@ export const getStyles = memoizeFunction((
   let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
   let actionButtonStyles: IButtonStyles = {
     root: {
-      minWidth: '40px',
-      backgroundColor: theme.palette.neutralLighter,
+      borderWidth: '0',
+      padding: DEFAULT_PADDING,
+      height: DEFAULT_BUTTON_HEIGHT,
       color: theme.palette.neutralPrimary,
-      padding: '0 4px'
+      backgroundColor: 'transparent'
     },
 
     rootHovered: {
@@ -60,8 +64,8 @@ export const getStyles = memoizeFunction((
       color: theme.palette.themeDarker
     },
 
-    label: {
-      fontWeight: 'normal' // theme.fontWeights.semibold,
+    flexContainer: {
+      justifyContent: 'flex-start'
     },
 
     icon: {
@@ -78,5 +82,5 @@ export const getStyles = memoizeFunction((
 
   };
 
-  return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles);
+  return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
 });

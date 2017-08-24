@@ -1,7 +1,7 @@
 import { ICheckboxStyles } from './Checkbox.Props';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   getFocusStyle,
   FontSizes
 } from '../../Styling';
@@ -118,5 +118,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(styles, customStyles)!;
+  return concatStyleSets(styles, customStyles)!;
 });

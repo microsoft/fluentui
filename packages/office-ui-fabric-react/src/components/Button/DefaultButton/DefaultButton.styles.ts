@@ -1,7 +1,7 @@
 import { IButtonStyles } from '../Button.Props';
 import {
   ITheme,
-  mergeStyleSets,
+  concatStyleSets,
   FontWeights
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -57,5 +57,5 @@ export const getStyles = memoizeFunction((
     }
   };
 
-  return mergeStyleSets(baseButtonStyles, defaultButtonStyles, splitButtonStyles, customStyles)!;
+  return concatStyleSets(baseButtonStyles, defaultButtonStyles, splitButtonStyles, customStyles)!;
 });
