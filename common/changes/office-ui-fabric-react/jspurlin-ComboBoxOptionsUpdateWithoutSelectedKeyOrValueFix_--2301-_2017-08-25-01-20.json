@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "High contrast, accesibility, and other bugfixes",
+      "comment": "ComboBox- Make sure the option always get updated if they change (#2301)",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-krbrow@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }

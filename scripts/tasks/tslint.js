@@ -5,6 +5,7 @@ module.exports = function (options) {
   const rulesPath = path.dirname(msCustomRulesMain);
   const projectPath = path.resolve(process.cwd(), 'tsconfig.json');
   const sourcePath = path.resolve(process.cwd(), 'src/**/*.ts*');
+  const tslintPath = 'node ' + path.resolve(__dirname, '../node_modules/tslint/lib/tslint-cli');
 
-  execSync(`tslint --project ${projectPath} -t stylish -r ${rulesPath}`, 'tslint');
+  execSync(`${tslintPath} --project ${projectPath} -t stylish -r ${rulesPath}`);
 };

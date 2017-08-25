@@ -3,8 +3,9 @@ import { CommandBar } from './index';
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-export default class CommandBarVPage extends React.Component<any, any> {
-  public render() {
+
+export default class CommandBarVPage extends React.Component<{}, {}> {
+  public render(): JSX.Element {
     return (
       <div style={ { width: '600px' } }>
         <CommandBar
