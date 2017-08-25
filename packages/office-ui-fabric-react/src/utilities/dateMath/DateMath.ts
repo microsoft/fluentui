@@ -213,8 +213,8 @@ export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigate
 
   let weeksArray = [];
 
-  for (var i = 0; i < weeks.length; i++) {
-    weeksArray.push(firstWeekNumber + i)
+  for (let i = 0; i < weeks.length; i++) {
+    weeksArray.push(firstWeekNumber + i);
   }
 
   return weeksArray;
