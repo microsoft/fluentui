@@ -25,7 +25,7 @@ export class HoverCardPage extends React.Component<any, any> {
             <ExampleCard title='HoverCard' code={ HoverCardBasicExampleCode }>
               <HoverCardBasicExample />
             </ExampleCard>
-            <ExampleCard title='HoverCard using Target' code={ HoverCardTargetExampleCode }>
+            <ExampleCard title='HoverCard using Target and at right center' code={ HoverCardTargetExampleCode }>
               <HoverCardTargetExample />
             </ExampleCard>
           </LayerHost>

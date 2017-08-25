@@ -66,7 +66,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement | H
   /**
    * Optional target element to tag hover card on
    */
-  target?: HTMLElement;
+  target?: HTMLElement | string;
 }
 
 export interface IHoverCardStyles {
