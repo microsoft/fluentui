@@ -181,8 +181,10 @@ $Calendar-dayPicker-margin: 10px;
     position: absolute;
     margin-top: $Calendar-day;
     border-right: 1px solid $ms-color-neutralLight;
+    box-sizing: border-box;
+    width: 30px;
     .day{
-      color: $ms-color-neutralTertiary;
+      color: $ms-color-neutralSecondary;
       &.weekIsHighlighted{
         color: $ms-color-black;
       }
@@ -190,7 +192,7 @@ $Calendar-dayPicker-margin: 10px;
   }
   .table{
     &:not(.weekNumbers){
-      margin-left: $Calendar-day;
+      margin-left: 30px;
     }
     .day, .weekday{
       width: 30px;
@@ -432,13 +434,14 @@ $Calendar-dayPicker-margin: 10px;
   .showWeekNumbers{
     .weekNumbers{
       margin-top: $Calendar-day;
+      width: 26px;
     }
     .table{
       &:not(.weekNumbers){
-        margin-left: $Calendar-day;
+        margin-left: 26px;
       }
       .day, .weekday{
-        width: 25px;
+        width: 26px;
       }
     }
   }
