@@ -121,8 +121,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const Tag = aProps.href ? 'a' : 'span';
 
     return (
-      <Tag
-        { ...(aProps.href ? aProps : {}) }
+      <div
         aria-labelledby={ this._nameId }
         aria-describedby={ this._activityId }
         className={ css('ms-Tile', className, TileStyles.tile, {
@@ -133,32 +132,38 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         }) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
-        data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
+        data-disable-click-on-enter={ true }
         data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }
       >
-        {
-          background ? this._onRenderBackground({
-            background: background
-          }) : null
-        }
-        {
-          foreground ? this._onRenderForeground({
-            foreground: foreground,
-            showForegroundFrame: showForegroundFrame
-          }) : null
-        }
-        {
-          (itemName || itemActivity) ? this._onRenderNameplate({
-            name: itemName,
-            activity: itemActivity
-          }) : null
-        }
+        <Tag
+          { ...aProps }
+          data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
+          className={ css('ms-Tile-link', TileStyles.link) }
+        >
+          {
+            background ? this._onRenderBackground({
+              background: background
+            }) : null
+          }
+          {
+            foreground ? this._onRenderForeground({
+              foreground: foreground,
+              showForegroundFrame: showForegroundFrame
+            }) : null
+          }
+          {
+            (itemName || itemActivity) ? this._onRenderNameplate({
+              name: itemName,
+              activity: itemActivity
+            }) : null
+          }
+        </Tag>
         {
           isSelectable ? this._onRenderCheck({
             isSelected: isSelected
           }) : null
         }
-      </Tag>
+      </div>
     );
   }
 
