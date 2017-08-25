@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
-import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Selection';
 
 export interface ITilesGridItem<TItem> {
   /**
@@ -95,8 +94,4 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.HTMLAttributes
    * The desired number of content cells to render per page.
    */
   cellsPerPage?: number;
-  /**
-   * The current selection model.
-   */
-  selection?: Selection;
 }
