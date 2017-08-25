@@ -11,6 +11,8 @@ import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSe
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import * as stylesImport from './CommandBar.scss';
+
+// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface ICommandBarData {
@@ -38,7 +40,7 @@ export interface ICommandBarData {
 
 const COMMANDBAR_HEIGHT = '40px';
 
-export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
+export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: [],
@@ -204,6 +206,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
+    // tslint:disable-next-line:no-any
     return <CommandBarButton {...props as any} />;
   }
 }
