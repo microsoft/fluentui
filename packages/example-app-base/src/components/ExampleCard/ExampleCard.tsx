@@ -8,7 +8,7 @@ export interface IExampleCardProps {
   title: string;
   isOptIn?: boolean;
   code?: string;
-  children?: any;
+  children?: JSX.Element;
   isRightAligned?: boolean;
   dos?: JSX.Element;
   donts?: JSX.Element;
