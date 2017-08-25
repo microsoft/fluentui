@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/merge-styles",
-  "version": "0.0.1",
+  "version": "5.0.0",
   "description": "Office UI Fabric style loading utilities.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -33,7 +33,7 @@
     "es6-promise": "^4.1.0",
     "gulp": "~3.9.1",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",

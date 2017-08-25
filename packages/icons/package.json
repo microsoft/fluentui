@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/icons",
-  "version": "0.0.1",
+  "version": "5.0.0",
   "description": "Office UI Fabric icon set.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,11 +17,11 @@
   "devDependencies": {
     "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "gulp": "~3.9.1",
-    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
     "typescript": "2.4.2"
   },
   "dependencies": {
-    "@uifabric/styling": ">=0.0.1 <= 1.0.0",
+    "@uifabric/styling": ">=5.0.0 <6.0.0",
     "tslib": "^1.6.0"
   }
 }
