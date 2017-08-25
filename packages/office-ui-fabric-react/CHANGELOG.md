@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Aug 2017 10:09:40 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 19:27:18 GMT and should not be manually modified.
+
+## 4.37.3
+Fri, 25 Aug 2017 19:27:18 GMT
+
+### Patches
+
+- ComboBox- Make sure the option always get updated if they change (#2301)
+- Pickers: Have IInput props correctly extend inputhtmlattributes
 
 ## 4.37.2
 Fri, 25 Aug 2017 10:09:40 GMT

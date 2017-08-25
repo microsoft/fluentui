@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -64,7 +64,7 @@
     "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
-    "office-ui-fabric-react": "4.37.2"
+    "office-ui-fabric-react": "4.37.3"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
