@@ -2,6 +2,103 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.37.2",
+      "tag": "office-ui-fabric-react_v4.37.2",
+      "date": "Fri, 25 Aug 2017 10:09:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "7b608ea0e6dc3d75b07e2998b7b5ace77fb8fb32",
+            "comment": "HoverCard: Dismiss on key/mouse down, Add directionalHint, Fix target prop"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "fe61630fd3fa722f7f1eb380e1f8d59f377aa14d",
+            "comment": "Breadcrumb: Fixed extra dropdown icon"
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "8c44eb11c83b26cba83a170b8f757a774ec2109f",
+            "comment": "ComboBox - Fix so the component doesn't cause it's children to rebuild and fix up the  the updating of the value  accordingly"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.0 <5.0.0` to `>=4.10.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.37.1",
+      "tag": "office-ui-fabric-react_v4.37.1",
+      "date": "Thu, 24 Aug 2017 10:20:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "petdun2519 <peterdunlop2519@gmail.com>",
+            "commit": "dca2b82fd6f32ba7e8e6d1d196a5952ae85fc177",
+            "comment": "Darkened the placeholder text for dropdowns to meet MAS color contrast standards"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.37.0",
+      "tag": "office-ui-fabric-react_v4.37.0",
+      "date": "Thu, 24 Aug 2017 05:38:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "a22b9c12cba3c9df75beeb076a929f2d8a3bc8a6",
+            "comment": "Checkbox: support for aria attributes"
+          },
+          {
+            "author": "Sohan Fernando <ohritz@users.noreply.github.com>",
+            "commit": "cd5b68bacd924f438829c16d9e824cfa5bf9b632",
+            "comment": "BasePicker: added itemLimit property, which will allow preventing adding more items than set limit."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f641204ac5537dfaed6787fbece6d512e6e29439",
+            "comment": "Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f641204ac5537dfaed6787fbece6d512e6e29439",
+            "comment": "TextField: Added selectionStart and selectionEnd getters to ITextField."
+          },
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "0d1a498dbb1fb2456db97592c553fbe05572930a",
+            "comment": "withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "5803bbd5fcbf189e55c7826189edaf93a79dc6c5",
+            "comment": "Fix aria-labeling for DetailsList column headers"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f641204ac5537dfaed6787fbece6d512e6e29439",
+            "comment": "DetailsRow: Removed margin from check buttons."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.1 <5.0.0` to `>=4.10.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.1 <5.0.0` to `>=4.2.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.36.0",
       "tag": "office-ui-fabric-react_v4.36.0",
       "date": "Wed, 23 Aug 2017 19:04:55 GMT",

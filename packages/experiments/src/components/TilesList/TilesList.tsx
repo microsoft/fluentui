@@ -7,6 +7,7 @@ import { SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/utiliti
 import { autobind, css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 
+// tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
 
 const MAX_TILE_STRETCH = 1.5;
@@ -67,6 +68,7 @@ interface IPageSpecificationCache<TItem> {
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
 
+  // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
 
@@ -142,6 +144,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <div
         role='presentation'
         className={ css(TilesListStyles.cell) }
+        // tslint:disable-next-line:jsx-ban-props
         style={
           {
             paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
@@ -226,6 +229,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             className={ css('ms-List-cell', this._onGetCellClassName(), {
               [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
             }) }
+            // tslint:disable-next-line:jsx-ban-props
             style={
               {
                 ...this._onGetCellStyle(cell, currentRow)
@@ -248,6 +252,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           className={ css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none
           }) }
+          // tslint:disable-next-line:jsx-ban-props
           style={
             {
               width: `${width}px`,

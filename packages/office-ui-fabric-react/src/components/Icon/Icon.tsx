@@ -12,7 +12,7 @@ import {
 import { IconCodes } from '../../Styling';
 import { getStyles } from './Icon.styles';
 
-export function Icon(props: IIconProps): JSX.Element {
+export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
@@ -63,4 +63,4 @@ export function Icon(props: IIconProps): JSX.Element {
       </i>
     );
   }
-}
+};

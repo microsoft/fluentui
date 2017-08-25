@@ -34,7 +34,7 @@ declare class TilesListClass extends TilesList<IExampleItem> { }
 
 const TilesListType: typeof TilesListClass = TilesList;
 
-export class TilesListDocumentExample extends React.Component<any, any> {
+export class TilesListDocumentExample extends React.Component<{}, {}> {
   private _selection: Selection;
 
   constructor() {
@@ -53,6 +53,7 @@ export class TilesListDocumentExample extends React.Component<any, any> {
     });
 
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '4px' } }>
         <MarqueeSelection selection={ this._selection }>
           <TilesListType

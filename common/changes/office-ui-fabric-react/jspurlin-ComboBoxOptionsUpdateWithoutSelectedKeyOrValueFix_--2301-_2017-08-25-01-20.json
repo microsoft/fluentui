@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Set button.check margin to 0",
+      "comment": "ComboBox- Make sure the option always get updated if they change (#2301)",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "jspurlin@microsoft.com"
 }

@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 10:09:40 GMT and should not be manually modified.
+
+## 4.37.2
+Fri, 25 Aug 2017 10:09:40 GMT
+
+### Patches
+
+- HoverCard: Dismiss on key/mouse down, Add directionalHint, Fix target prop
+- Breadcrumb: Fixed extra dropdown icon
+- ComboBox - Fix so the component doesn't cause it's children to rebuild and fix up the  the updating of the value  accordingly
+
+## 4.37.1
+Thu, 24 Aug 2017 10:20:20 GMT
+
+### Patches
+
+- Darkened the placeholder text for dropdowns to meet MAS color contrast standards
+
+## 4.37.0
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Minor changes
+
+- Checkbox: support for aria attributes
+- BasePicker: added itemLimit property, which will allow preventing adding more items than set limit.
+- Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object.
+- TextField: Added selectionStart and selectionEnd getters to ITextField.
+- withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode.
+
+### Patches
+
+- Fix aria-labeling for DetailsList column headers
+- DetailsRow: Removed margin from check buttons.
 
 ## 4.36.0
 Wed, 23 Aug 2017 19:04:55 GMT
