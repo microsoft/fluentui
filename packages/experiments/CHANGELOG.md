@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 Aug 2017 19:27:18 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+
+## 0.1.7
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
 
 ## 0.1.6
 Fri, 25 Aug 2017 19:27:18 GMT
