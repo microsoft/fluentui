@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
-    "@uifabric/utilities": ">=4.10.0 <5.0.0",
+    "@uifabric/utilities": ">=4.10.1 <5.0.0",
     "tslib": "^1.6.0",
     "rtl-css-js": "^1.1.1",
     "glamor": "^2.20.24"
