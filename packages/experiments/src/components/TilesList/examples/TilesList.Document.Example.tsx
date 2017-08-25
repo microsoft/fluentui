@@ -34,7 +34,7 @@ declare class TilesListClass extends TilesList<IExampleItem> { }
 
 const TilesListType: typeof TilesListClass = TilesList;
 
-export class TilesListDocumentExample extends React.Component<any, any> {
+export class TilesListDocumentExample extends React.Component<{}, {}> {
   private _selection: Selection;
 
   constructor() {
