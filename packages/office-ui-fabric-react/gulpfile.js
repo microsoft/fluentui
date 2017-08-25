@@ -22,7 +22,6 @@ let {
 // let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
 //   return del(['visualtests/results/*png']).then(() => done());
 // });
-
 // let visualTest = build.subTask('visualtest', (gulp, options, done) => {
 //   gulpConnect.server({
 //     port: 43210,
