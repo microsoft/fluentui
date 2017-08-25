@@ -18,5 +18,3 @@ build.karma.setConfig({
 build.sass.setConfig({
   useCSSModules: true
 });
-
-//
