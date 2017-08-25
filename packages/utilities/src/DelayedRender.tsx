@@ -32,7 +32,7 @@ export interface IDelayedRenderState {
  * @public
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
-  public static defaultProps = {
+  public static defaultProps: { delay: number } = {
     delay: 0
   };
 
@@ -45,7 +45,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
     };
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     let { delay } = this.props;
     this._timeoutId = setTimeout(() => {
       this.setState({
@@ -54,13 +54,13 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
     }, delay);
   }
 
-  public componentWillUnmount() {
+  public componentWillUnmount(): void {
     if (this._timeoutId) {
       clearTimeout(this._timeoutId);
     }
   }
 
-  public render() {
+  public render(): React.ReactElement<any> | null {
     return this.state.isRendered ? React.Children.only(this.props.children) : null;
   }
 }

@@ -32,7 +32,10 @@ export function setMemoizeWeakMap(weakMap: any): void {
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>) {
+  descriptor: TypedPropertyDescriptor<T>): {
+    configurable: boolean;
+    get(): any;
+  } {
 
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
   // rather than passing them in as input values which can be memoized.
@@ -40,7 +43,7 @@ export function memoize<T extends Function>(
 
   return {
     configurable: true,
-    get() {
+    get(): any {
       return fn;
     }
   };
@@ -106,7 +109,7 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   } as any;
 }
 
-function _normalizeArg(val: any) {
+function _normalizeArg(val: any): any {
   if (!val) {
     return _emptyObject;
   } else if (typeof val === 'object') {

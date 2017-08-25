@@ -39,7 +39,7 @@ export function getLanguage(): string | null {
  *
  * @public
  */
-export function setLanguage(language: string, avoidPersisting = false): void {
+export function setLanguage(language: string, avoidPersisting: boolean = false): void {
   let doc = getDocument();
 
   if (doc) {
