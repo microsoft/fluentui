@@ -2,6 +2,40 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.1.7",
+      "tag": "@uifabric/experiments_v0.1.7",
+      "date": "Fri, 25 Aug 2017 20:31:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
+            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.3` to `4.37.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.2 <5.0.0` to `>=4.2.3 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.6",
+      "tag": "@uifabric/experiments_v0.1.6",
+      "date": "Fri, 25 Aug 2017 19:27:18 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.2` to `4.37.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.5",
       "tag": "@uifabric/experiments_v0.1.5",
       "date": "Thu, 24 Aug 2017 10:20:20 GMT",

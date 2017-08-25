@@ -7,8 +7,10 @@ import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
+// tslint:disable:no-any
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
+// tslint:enable:no-any
 
 export interface ITileState {
   isSelected?: boolean;
@@ -25,6 +27,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   private _nameId: string;
   private _activityId: string;
 
+  // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
 
