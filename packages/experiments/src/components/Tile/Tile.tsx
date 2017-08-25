@@ -3,12 +3,14 @@ import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { css, BaseComponent, autobind, getNativeProps, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
+// tslint:disable:no-any
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
+// tslint:enable:no-any
 
 export interface ITileState {
   isSelected?: boolean;
@@ -25,6 +27,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   private _nameId: string;
   private _activityId: string;
 
+  // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
 
@@ -43,7 +46,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: ITileProps) {
+  public componentWillReceiveProps(nextProps: ITileProps): void {
     const {
       selection,
       selectionIndex
@@ -63,7 +66,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const {
       selection
     } = this.props;
@@ -73,7 +76,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public componentDidUpdate(previousProps: ITileProps) {
+  public componentDidUpdate(previousProps: ITileProps): void {
     const {
       selection
     } = this.props;
@@ -93,7 +96,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       children,
       selectionIndex = -1,
@@ -131,7 +134,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
         data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
-        data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }>
+        data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }
+      >
         {
           background ? this._onRenderBackground({
             background: background
@@ -162,7 +166,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     background
   }: {
       background: React.ReactNode | React.ReactNode[]
-    }) {
+    }): JSX.Element {
     return (
       <span className={ css('ms-Tile-background', TileStyles.background) }>
         { background }
@@ -176,19 +180,22 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       foreground: React.ReactNode | React.ReactNode[];
       showForegroundFrame: boolean;
-    }) {
+    }): JSX.Element {
     return (
       <span
         role='presentation'
-        className={ css('ms-Tile-content', TileStyles.content) }>
+        className={ css('ms-Tile-content', TileStyles.content) }
+      >
         <span
           role='presentation'
-          className={ css('ms-Tile-foreground', TileStyles.foreground) }>
+          className={ css('ms-Tile-foreground', TileStyles.foreground) }
+        >
           <span
             role='presentation'
             className={ css('ms-Tile-frame', TileStyles.frame, {
               [`ms-Tile-frame--hasForegroundFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame
-            }) }>
+            }) }
+          >
             { foreground }
           </span>
         </span>
@@ -202,15 +209,17 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       name: React.ReactNode | React.ReactNode[];
       activity: React.ReactNode | React.ReactNode[];
-    }) {
+    }): JSX.Element {
     return (
       <span
-        className={ css('ms-Tile-nameplate', TileStyles.nameplate) }>
+        className={ css('ms-Tile-nameplate', TileStyles.nameplate) }
+      >
         {
           name ? (
             <span
               id={ this._nameId }
-              className={ css('ms-Tile-name', TileStyles.name) }>
+              className={ css('ms-Tile-name', TileStyles.name) }
+            >
               { name }
             </span>
           ) : null
@@ -219,7 +228,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           activity ? (
             <span
               id={ this._activityId }
-              className={ css('ms-Tile-activity', TileStyles.activity) }>
+              className={ css('ms-Tile-activity', TileStyles.activity) }
+            >
               { activity }
             </span>
           ) : null
@@ -232,13 +242,14 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     isSelected
   }: {
       isSelected: boolean;
-    }) {
+    }): JSX.Element {
     return (
       <button
         aria-label={ this.props.toggleSelectionAriaLabel }
         className={ css('ms-Tile-check', TileStyles.check) }
         data-selection-toggle={ true }
-        role='checkbox'>
+        role='checkbox'
+      >
         <Check
           checked={ isSelected }
         />
@@ -247,7 +258,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }
 
   @autobind
-  private _onSelectionChange() {
+  private _onSelectionChange(): void {
     const {
       selection,
       selectionIndex = -1

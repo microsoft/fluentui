@@ -145,10 +145,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
-    // In controlled component usage where selectedKey or value is provided,
-    // update the selectedIndex and currentOptions state if the selectedKey or options have changed
-    if ((newProps.selectedKey || newProps.value) &&
-      (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
+    // Update the selectedIndex and currentOptions state if the selectedKey or options have changed
+    if (((newProps.selectedKey || newProps.value) && newProps.selectedKey !== this.props.selectedKey) ||
+      newProps.options !== this.props.options) {
       let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
       this.setState({
         selectedIndex: index,
@@ -184,12 +183,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // If we just opened/closed the menu OR
-    // updated the selectedIndex with the menu closed OR
-    // are focused and are not allowing freeform or the value changed
+    // are focused AND
+    //   updated the selectedIndex with the menu closed OR
+    //   are not allowing freeform OR
+    //   the value changed
     // we need to set selection
     if (prevState.isOpen !== isOpen ||
-      (!isOpen && prevState.selectedIndex !== selectedIndex) ||
-      (focused && (!allowFreeform || value !== prevProps.value))) {
+      (focused &&
+        ((!isOpen && prevState.selectedIndex !== selectedIndex) ||
+          !allowFreeform ||
+          value !== prevProps.value)
+      )) {
       this._select();
     }
   }
@@ -252,7 +256,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             id={ id + '-input' }
             className={ this._classNames.input }
             type='text'
-            key={ selectedIndex }
             onFocus={ this._select }
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
@@ -932,7 +935,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return -1;
     }
 
-    return findIndex(options, (option => (option.isSelected || option.selected || option.key === selectedKey)));
+    return findIndex(options, (option => (option.selected || option.key === selectedKey)));
   }
 
   /**

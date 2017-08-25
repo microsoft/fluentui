@@ -79,7 +79,7 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
             text='New' />
           <span className={ styles.splitter }>|</span>
           <CommandButton
-            onClick={ this.onClickChevron }
+            onClick={ this._onClickChevron }
             className={ dropDownButtonClass }
             menuProps={ {
               className: css('ms-CommandBar-menuHost'),
@@ -91,13 +91,13 @@ export class CommandBarCustomizationExample extends React.Component<{}, ISplitDr
   }
 
   @autobind
-  private onClickChevron(ev: any) {
+  private _onClickChevron(ev: any) {
     ev.stopPropagation();
-    this.toggleDropDownMenuShown(ev);
+    this._toggleDropDownMenuShown(ev);
   }
 
   @autobind
-  private toggleDropDownMenuShown(ev: any) {
+  private _toggleDropDownMenuShown(ev: any) {
     this.setState({
       isContextMenuShown: !this.state.isContextMenuShown
     });

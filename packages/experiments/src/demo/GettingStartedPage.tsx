@@ -1,13 +1,15 @@
+/* tslint:disable:jsx-no-multiline-js max-line-length */
+
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import './GettingStartedPage.scss';
 import { Highlight } from '@uifabric/example-app-base';
 
-export class GettingStartedPage extends React.Component<any, any> {
-  public render() {
+export class GettingStartedPage extends React.Component<{}, {}> {
+
+  public render(): JSX.Element {
     return (
       <div className='ms-GettingStartedPage'>
-
         <div className='ms-GettingStartedPage-banner'>
           <h1>Office UI Fabric React Experiments!</h1>
           <h3>A library of reusable, generic React components</h3>
