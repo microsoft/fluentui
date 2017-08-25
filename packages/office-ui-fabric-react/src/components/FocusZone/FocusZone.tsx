@@ -174,7 +174,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     if (element) {
-      this.setActiveElement(element);
+      this._setActiveElement(element);
       element.focus();
 
       return true;
@@ -235,7 +235,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       target = path.pop() as HTMLElement;
 
       if (target && isElementTabbable(target)) {
-        this.setActiveElement(target);
+        this._setActiveElement(target);
       }
 
       if (isElementFocusZone(target)) {
@@ -245,7 +245,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
   }
 
-  private setActiveElement(element: HTMLElement): void {
+  private _setActiveElement(element: HTMLElement): void {
     const previousActiveElement = this._activeElement;
 
     this._activeElement = element;
