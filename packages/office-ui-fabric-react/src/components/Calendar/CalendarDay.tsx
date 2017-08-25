@@ -92,20 +92,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
-    // When the month is highlighted get the corner dates so that rounded corners can be added to them
+    // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: any[] = [];
-    let nextMonth = addMonths(selectedDate, 1);
-    let previousMonth = addMonths(selectedDate, -1);
     if (dateRangeType === 2) {
       if (selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
         // navigatedDate is on the current month and current year
         weekCorners = this.findWeekCorners(weeks);
-      } else if (nextMonth.getMonth() === navigatedDate.getMonth() && nextMonth.getFullYear() === navigatedDate.getFullYear()) {
-        // navigatedDate is next month
-        weekCorners = this.findUnFocusedWeekCorners(weeks);
-      } else if (previousMonth.getMonth() === navigatedDate.getMonth() && previousMonth.getFullYear() === previousMonth.getFullYear()) {
-        // navigatedDate is previous month
-        weekCorners = this.findUnFocusedWeekCorners(weeks);
       }
     }
 
@@ -182,7 +174,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     <td key={ day.key } className={ css(
                       {
                         ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === 1,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this.checkHighlightCorner(weekCorners, dayIndex, weekIndex)]: day.isSelected && dateRangeType === 2,
+                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this.getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === 2,
                         ['ms-DatePicker-day--dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === 0
                       }) }
                     >
@@ -228,157 +220,71 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private findWeekCorners(weeks: any) {
-    let weekCorners: any[] = [];
-    let daysInWeek = weeks[0].length;
+    let weekCorners: any = {};
     let numberOfWeeks = weeks.length;
+    let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
 
-    // Highlighted days in first week of month
-    let firstWeek: any[] = [];
-    weeks[0].map((day: any, index: number) => {
-      if (day.isInMonth) { firstWeek.push(index); }
-    });
+    // Get all days in current month
+    let dateRange = getDateRangeArray(navigatedDate, dateRangeType, firstDayOfWeek);
 
-    // Highlighted days in last week of month
-    let lastWeek: any[] = [];
-    weeks[numberOfWeeks - 1].map((day: any, index: number) => {
-      if (day.isInMonth) { lastWeek.push(index); }
-    });
+    //Check to see if second to the last day (of the first week) is within the current month
+    if (weeks[0][DAYS_IN_WEEK - 2].originalDate.getMonth() !== navigatedDate.getMonth()) {
+      //There is only one highlighted day in first week, add styles to this square
+      let weekIndex = 0;
+      let dayIndex = DAYS_IN_WEEK - 1;
+      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-singleTopDate ' + styles.singleTopDate;
+    }
+    else {
+      //Add styles to first and last highlighted squares in the first week
+      let weekIndex = 0;
+      let dayIndex = dateRange[0].getDay();
+      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
 
-    if (firstWeek.length === 1) {
-      // If only one highlighted day in first week this square has rounded corners on top
-      weekCorners.push({
-        index: daysInWeek - 1,
-        styles: styles.roundedCornersTop,
-        week: 0
-      });
-    } else {
-      // Add rounded corners to first and last highlighted squares in the first week
-      weekCorners.push({
-        index: firstWeek[0],
-        styles: styles.roundedCornersTopLeft,
-        week: 0
-      },
-        {
-          index: daysInWeek - 1,
-          styles: styles.roundedCornersTopRight,
-          week: 0
-        });
+      let weekIndex2 = 0;
+      let dayIndex2 = DAYS_IN_WEEK - 1;
+      weekCorners[weekIndex2 + '_' + dayIndex2] = 'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate;
     }
 
-    // If the first week does not have the whole week highlighted
-    // The first square in week 2 will need rounded corners
-    if (daysInWeek !== firstWeek.length) {
-      weekCorners.push({
-        index: 0,
-        styles: styles.roundedCornersTopLeft,
-        week: 1
-      });
+    //check the first week to see if the first day of the week is NOT within the current month
+    if (weeks[0][0].originalDate.getMonth() !== navigatedDate.getMonth()) {
+      //The first day of week 2 is a corner
+      let weekIndex = 1;
+      let dayIndex = 0;
+      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
     }
 
-    if (lastWeek.length === 1) {
-      // If only one highlighted day in last week this square has rounded corners on the bottom
-      weekCorners.push({
-        index: 0,
-        styles: styles.roundedCornersBottom,
-        week: numberOfWeeks - 1
-      });
-    } else {
-      // Add rounded corners to first and last highlighted squares in the last week
-      weekCorners.push({
-        index: 0,
-        styles: styles.roundedCornersBottomLeft,
-        week: numberOfWeeks - 1
-      },
-        {
-          index: lastWeek[lastWeek.length - 1],
-          styles: styles.roundedCornersBottomRight,
-          week: numberOfWeeks - 1
-        });
+    //Check to see if second day (of the last week) is within the current month
+    if (weeks[numberOfWeeks - 1][1].originalDate.getMonth() !== navigatedDate.getMonth()) {
+      //There is only one highlighted day in the last week, add styles to this square
+      let weekIndex = numberOfWeeks - 1;
+      let dayIndex = 0;
+      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate;
+    }
+    else {
+      //Add styles to first and last highlighted squares in the last week
+      let weekIndex = numberOfWeeks - 1;
+      let dayIndex = 0;
+      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate;
+
+      let weekIndex2 = numberOfWeeks - 1;
+      let dayIndex2 = dateRange[dateRange.length - 1].getDay();
+      weekCorners[weekIndex2 + '_' + dayIndex2] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
+
     }
 
-    // If the last week does not have the whole week highlighted
-    // The last square in the week before it will need rounded corners
-    if (daysInWeek !== lastWeek.length) {
-      weekCorners.push({
-        index: daysInWeek - 1,
-        styles: styles.roundedCornersBottomRight,
-        week: numberOfWeeks - 2
-      });
-    }
-    return weekCorners;
-
-  }
-
-  private findUnFocusedWeekCorners(weeks: any) {
-    let weekCorners: any[] = [];
-    let daysInWeek = weeks[0].length;
-    let numberOfWeeks = weeks.length;
-
-    // Highlighted days in first week of month
-    let firstWeek: any[] = [];
-    weeks[0].map((day: any, index: number) => {
-      if (!day.isInMonth) { firstWeek.push(index); }
-    });
-
-    // Highlighted days in last week of month
-    let lastWeek: any[] = [];
-    weeks[numberOfWeeks - 1].map((day: any, index: number) => {
-      if (!day.isInMonth) { lastWeek.push(index); }
-    });
-
-    if (firstWeek.length === 1) {
-      // If only one highlighted day this square has rounded corners on all sides
-      weekCorners.push({
-        index: 0,
-        styles: styles.roundedCornersFull,
-        week: 0
-      });
-    } else {
-      // Add rounded corners to first and last highlighted squares in the first week
-      weekCorners.push({
-        index: 0,
-        styles: styles.roundedCornersLeft,
-        week: 0
-      },
-        {
-          index: firstWeek[firstWeek.length - 1],
-          styles: styles.roundedCornersRight,
-          week: 0
-        });
+    //check the last week to see if the last day of this week is NOT within the current month
+    if (weeks[numberOfWeeks - 1][DAYS_IN_WEEK - 1].originalDate.getMonth() !== navigatedDate.getMonth()) {
+      //If the last week is not all within the current month, the last day of the second to last week is a corner
+      let weekIndex = numberOfWeeks - 2;
+      let dayIndex = DAYS_IN_WEEK - 1;
+      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
     }
 
-    if (lastWeek.length === 1) {
-      // If only one highlighted day this square has rounded corners on all sides
-      weekCorners.push({
-        index: daysInWeek - 1,
-        styles: styles.roundedCornersFull,
-        week: numberOfWeeks - 1
-      });
-    } else {
-      // Add rounded corners to first and last highlighted squares in the last week
-      weekCorners.push({
-        index: lastWeek[0],
-        styles: styles.roundedCornersLeft,
-        week: numberOfWeeks - 1
-      },
-        {
-          index: daysInWeek - 1,
-          styles: styles.roundedCornersRight,
-          week: numberOfWeeks - 1
-        });
-    }
     return weekCorners;
   }
 
-  private checkHighlightCorner(weekCorners: any, dayIndex: number, weekIndex: number) {
-    let cornerStyle = '0px';
-    if (weekCorners) {
-      weekCorners.forEach((corner: any) => {
-        if (corner.index === dayIndex && corner.week === weekIndex) {
-          cornerStyle = corner.styles;
-        }
-      });
-    }
+  private getHighlightedCornerStyle(weekCorners: any, dayIndex: number, weekIndex: number) {
+    let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : ''
 
     return cornerStyle;
   }

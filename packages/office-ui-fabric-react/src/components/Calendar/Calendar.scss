@@ -11,7 +11,6 @@ $Calendar-dayPicker-margin: 10px;
 
 .root {
   @include ms-normalize;
-  letter-spacing: -0.1px;
 }
 
 // Base wrapper for the date picker.
@@ -122,7 +121,7 @@ $Calendar-dayPicker-margin: 10px;
   line-height: $Calendar-day;
   @include ms-font-m-plus;
   color: $ms-color-neutralPrimary;
-  border-radius: 2px;
+  // border-radius: 2px;
 }
 
 
@@ -192,26 +191,8 @@ $Calendar-dayPicker-margin: 10px;
   font-weight: 600;
 }
 
-//Background for highlighted day
-.dayBackground{
-  background: $ms-color-neutralLight;
-  border-radius: 2px;
-}
-
-//Background for highlighted week
-.weekBackground{
-    background: $ms-color-neutralLight;
-    &:first-child{
-      border-radius: 2px 0px 0px 2px;
-    }
-
-    &:last-child{
-      border-radius: 0px 2px 2px 0px;
-    }
-}
-
-//Background for highlighted month
-.monthBackground{
+// Highlighted date squares
+.dayBackground, .weekBackground, .monthBackground{
     background: $ms-color-neutralLight;
 }
 
@@ -293,7 +274,7 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-font-s-plus;
   color: $ms-color-neutralPrimary;
   text-align: center;
-  border-radius: 2px;
+  // border-radius: 2px;
 
   &:hover {
     color: $ms-color-black;
@@ -332,7 +313,7 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-//additional 30px margin needed when "Go to today" button is visible
+// Additional 30px margin needed when "Go to today" button is visible
 .wrap.goTodaySpacing{
   margin-bottom: 30px;
 }
@@ -365,7 +346,7 @@ $Calendar-dayPicker-margin: 10px;
   // Update the spacing and text for the day and month pickers
 
   .dayPicker,.monthPicker {
-    min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin;
+    min-height: 214px;
   }
 
   .header {
@@ -398,6 +379,7 @@ $Calendar-dayPicker-margin: 10px;
 
   .holder {
     width: 212px;
+    height: 240px;
   }
 
   .month,
@@ -431,7 +413,7 @@ $Calendar-dayPicker-margin: 10px;
       @include ms-borderBox;
       @include border-right(1px, solid, $ms-color-neutralLight);
       width: 212px;
-      min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin;
+      min-height: 214px;
     }
     // Show the month picker.
     .monthPicker {
@@ -439,7 +421,7 @@ $Calendar-dayPicker-margin: 10px;
     }
 
     .optionGrid {
-      height: ( ($Calendar-month + 10) * 3 );
+      height: 150px;
       width: 212px;
     }
     // This component is only used on small displays.
@@ -484,7 +466,7 @@ $Calendar-dayPicker-margin: 10px;
       @include text-align(right);
       top: 199px;
     }
-    //When date and month picker are side-by-side and "Go to today" button is visible no additional margin is needed
+    // When date and month picker are side-by-side and "Go to today" button is visible no additional margin is needed
     .wrap.goTodaySpacing{
       margin-bottom: 0px;
     }
@@ -516,6 +498,7 @@ $Calendar-dayPicker-margin: 10px;
 
     .holder {
       width: 440px;
+      height: auto;
     }
 
     .table{
@@ -534,7 +517,7 @@ $Calendar-dayPicker-margin: 10px;
 // On smaller screens the month button toggles to the picking months state.
 @media (max-width: 459px) {
 
-  //Stop elements from going off screen
+  // Stop elements from going off screen
   .holder {
     width: 300px;
   }
@@ -551,7 +534,7 @@ $Calendar-dayPicker-margin: 10px;
     left: 100px;
   }
 
-  //position year components so they do not move when switching between calendars (overlayed calendars)
+  // position year components so they do not move when switching between calendars (overlayed calendars)
   .yearComponents {
     margin-top: 2px;
   }
@@ -607,39 +590,27 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 
-//Rounded corners
-.roundedCornersTopLeft{
-  border-radius: 2px 0px 0px 0px;
+// Highlighted Month date styling
+.topLeftCornerDate{
+  // border-radius: 2px 0px 0px 0px;
 }
 
-.roundedCornersTopRight{
-  border-radius: 0px 2px 0px 0px;
+.topRightCornerDate{
+  // border-radius: 0px 2px 0px 0px;
 }
 
-.roundedCornersBottomLeft{
-   border-radius: 0px 0px 0px 2px;
+.bottomLeftCornerDate{
+  //  border-radius: 0px 0px 0px 2px;
 }
 
-.roundedCornersBottomRight{
-  border-radius: 0px 0px 2px 0px;
+.bottomRightCornerDate{
+  // border-radius: 0px 0px 2px 0px;
 }
 
-.roundedCornersTop{
-  border-radius: 2px 2px 0px 0px;
+.singleTopDate{
+  // border-radius: 2px 2px 0px 0px;
 }
 
-.roundedCornersBottom{
-  border-radius: 0px 0px 2px 2px;
-}
-
-.roundedCornersLeft{
-  border-radius: 2px 0px 0px 2px;
-}
-
-.roundedCornersRight{
-  border-radius: 0px 2px 2px 0px;
-}
-
-.roundedCornersFull{
-  border-radius: 2px;
+.singleBottomDate{
+  // border-radius: 0px 0px 2px 2px;
 }
