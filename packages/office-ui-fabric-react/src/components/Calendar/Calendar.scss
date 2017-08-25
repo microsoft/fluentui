@@ -196,6 +196,20 @@ $Calendar-dayPicker-margin: 10px;
     background: $ms-color-neutralLight;
 }
 
+.dayBackground{
+  // border-radius: 2px;
+}
+
+.weekBackground{
+    &:first-child{
+      // border-radius: 2px 0px 0px 2px;
+    }
+
+    &:last-child{
+      // border-radius: 0px 2px 2px 0px;
+    }
+}
+
 // Month and year previous/next components.
 .monthComponents,.yearComponents,
 .decadeComponents {
@@ -600,7 +614,7 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .bottomLeftCornerDate{
-  //  border-radius: 0px 0px 0px 2px;
+  // border-radius: 0px 0px 0px 2px;
 }
 
 .bottomRightCornerDate{
