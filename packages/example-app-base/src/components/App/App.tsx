@@ -68,7 +68,7 @@ export class App extends React.Component<IAppProps, any> {
       <Nav
         groups={ appDefinition.examplePages }
         onLinkClick={ this._onLinkClick }
-        onRenderLink={ this._renderLink }
+        onRenderLink={ this._onRenderLink }
       />
     );
 
@@ -109,7 +109,15 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
-  private _renderLink(link: INavLink): (JSX.Element | null)[] {
+  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
+    this.setState({ isMenuVisible });
+  }
+
+  private _onLinkClick(): void {
+    this.setState({ isMenuVisible: false });
+  }
+
+  private _onRenderLink(link: INavLink): (JSX.Element | null)[] {
     return (
       [
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
@@ -118,13 +126,5 @@ export class App extends React.Component<IAppProps, any> {
           null)
       ]
     );
-  }
-
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
-    this.setState({ isMenuVisible });
-  }
-
-  private _onLinkClick(): void {
-    this.setState({ isMenuVisible: false });
   }
 }
