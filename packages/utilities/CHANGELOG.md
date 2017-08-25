@@ -1,6 +1,14 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 24 Aug 2017 05:38:14 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 10:09:40 GMT and should not be manually modified.
+
+## 4.10.1
+Fri, 25 Aug 2017 10:09:40 GMT
+
+### Patches
+
+- Array: Add find utility method
+- BaseComponent: Make State type optional to be consistent with React.Component typing
 
 ## 4.10.0
 Thu, 24 Aug 2017 05:38:14 GMT

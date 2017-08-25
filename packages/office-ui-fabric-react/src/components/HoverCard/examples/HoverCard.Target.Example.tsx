@@ -8,6 +8,7 @@ import {
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './HoverCard.Example.scss';
@@ -46,8 +47,8 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
           this.state.contentRendered &&
           <HoverCard
             expandingCardProps={ this.props.expandingCardProps }
-            instantOpenOnClick={ true }
             target={ this.state.contentRendered }
+            cardDismissDelay={ 300 }
           />
         }
       </div>
@@ -73,7 +74,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
 
     return (
       <div>
-        <p> Hover over location of a row item to see the card </p>
+        <p> Hover over key of a row item to see the card </p>
         <DetailsList
           setKey='hoverSet'
           items={ items! }
@@ -89,14 +90,16 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
-      renderData: item
+      renderData: item,
+      directionalHint: DirectionalHint.rightCenter,
+      gapSpace: 16
     };
 
-    if (column.key === 'location') {
+    if (column.key === 'key') {
       return (
         <div className='HoverCard-item'>
           <HoverCardField
-            content={ item.location }
+            content={ item.key }
             expandingCardProps={ expandingCardProps }
           />
         </div>
