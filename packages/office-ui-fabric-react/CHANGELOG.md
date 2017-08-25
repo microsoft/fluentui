@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 24 Aug 2017 10:20:20 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 10:09:40 GMT and should not be manually modified.
+
+## 4.37.2
+Fri, 25 Aug 2017 10:09:40 GMT
+
+### Patches
+
+- HoverCard: Dismiss on key/mouse down, Add directionalHint, Fix target prop
+- Breadcrumb: Fixed extra dropdown icon
+- ComboBox - Fix so the component doesn't cause it's children to rebuild and fix up the  the updating of the value  accordingly
 
 ## 4.37.1
 Thu, 24 Aug 2017 10:20:20 GMT
