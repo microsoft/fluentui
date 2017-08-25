@@ -175,7 +175,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (element) {
       this._setActiveElement(element);
-      element.focus();
 
       return true;
     }
@@ -258,12 +257,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       previousActiveElement.tabIndex = -1;
     }
 
-    if (element) {
+    if (this._activeElement) {
       if (!this._focusAlignment) {
         this._setFocusAlignment(element, true, true);
       }
 
       this._activeElement.tabIndex = 0;
+      this._activeElement.focus();
     }
   }
 
