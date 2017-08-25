@@ -151,18 +151,17 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Hide HoverCard
   @autobind
   private _cardDismiss(ev: MouseEvent) {
-    const { type, currentTarget } = ev;
     this._async.clearTimeout(this._openTimerId);
 
-    this._dismissTimerId = this._async.setTimeout(() => {
-      // Dismiss if not sticky and currentTarget is the same element that mouse last entered
-      if (!(this.props.sticky && type === 'mouseleave') && this._currentMouseTarget === currentTarget) {
+    // Dismiss if not sticky and currentTarget is the same element that mouse last entered
+    if (!this.props.sticky && this._currentMouseTarget === ev.currentTarget) {
+      this._dismissTimerId = this._async.setTimeout(() => {
         this.setState({
           isHoverCardVisible: false,
           mode: ExpandingCardMode.compact
         });
-      }
-    }, this.props.cardDismissDelay!);
+      }, this.props.cardDismissDelay!);
+    }
   }
 
   // Instant Open the card in Expanded mode
