@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.37.3",
+      "tag": "office-ui-fabric-react_v4.37.3",
+      "date": "Fri, 25 Aug 2017 19:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "74203c8aec4976f12a30eb4abab4738ed4487b67",
+            "comment": "ComboBox- Make sure the option always get updated if they change (#2301)"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "66b1a18537f33d92434acc717842762bdad47eef",
+            "comment": "Pickers: Have IInput props correctly extend inputhtmlattributes"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.37.2",
       "tag": "office-ui-fabric-react_v4.37.2",
       "date": "Fri, 25 Aug 2017 10:09:40 GMT",
