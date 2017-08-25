@@ -4,6 +4,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as SignalStylesModule from './Signals.scss';
 
+// tslint:disable-next-line:no-any
 const SignalStyles = SignalStylesModule as any;
 
 export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement> {

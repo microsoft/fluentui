@@ -7,6 +7,7 @@ import { SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/utiliti
 import { autobind, css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 
+// tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
 
 const MAX_TILE_STRETCH = 1.5;
@@ -67,6 +68,7 @@ interface IPageSpecificationCache<TItem> {
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
 
+  // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
 
