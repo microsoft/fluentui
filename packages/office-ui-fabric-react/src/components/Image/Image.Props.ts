@@ -30,6 +30,11 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
 
   /**
+   * Specifies alternative text for an image.
+   */
+  alt?: string;
+
+  /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
    * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the
@@ -56,7 +61,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
 
   /**
-   * Specified the cover style to be used for this image. If not
+   * Specifies the cover style to be used for this image. If not
    * specified, this will be dynamically calculated based on the
    * aspect ratio for the image.
    */
