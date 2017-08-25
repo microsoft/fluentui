@@ -27,21 +27,21 @@ export const AppState: IAppState = {
       url: '#/',
       className: 'fabricPage',
       isHomePage: true,
-      isHeaderLink: true,
+      isTopNavHeader: true,
       component: require<any>('../../pages/HomePage/HomePage').HomePage,
     },
     {
       title: 'Get started',
       url: '#/get-started',
       className: 'getStartedPage',
-      isHeaderLink: true,
+      isTopNavHeader: true,
       component: require<any>('../../pages/GetStarted/GetStartedPage').GetStartedPage,
     },
     {
       title: 'Styles',
       url: '#/styles',
       className: 'stylesPage',
-      isHeaderLink: true,
+      isTopNavHeader: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
       pages: [
         {
@@ -91,7 +91,7 @@ export const AppState: IAppState = {
       title: 'Components',
       url: '#/components',
       className: 'componentsPage',
-      isHeaderLink: true,
+      isTopNavHeader: true,
       component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
       pages: [
         {
@@ -387,14 +387,14 @@ export const AppState: IAppState = {
       title: 'Resources',
       url: '#/resources',
       className: 'resourcesPage',
-      isHeaderLink: true,
+      isTopNavHeader: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesPage))
     },
     {
       title: 'Blog',
       url: '#/blog',
       className: 'blogPage',
-      isHeaderLink: true,
+      isTopNavHeader: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
     },
     {
