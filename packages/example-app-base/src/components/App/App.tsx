@@ -64,18 +64,11 @@ export class App extends React.Component<IAppProps, any> {
       responsiveMode = ResponsiveMode.large;
     }
 
-    let renderLink = (link: INavLink) => ([
-      <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-      (link.status !== undefined ?
-        <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-        null)
-    ]);
-
     let navPanel = (
       <Nav
         groups={ appDefinition.examplePages }
         onLinkClick={ this._onLinkClick }
-        onRenderLink={ renderLink }
+        onRenderLink={ this._renderLink }
       />
     );
 
@@ -113,6 +106,17 @@ export class App extends React.Component<IAppProps, any> {
           </Panel>
         ) : (null) }
       </Fabric>
+    );
+  }
+
+  private _renderLink(link: INavLink): (JSX.Element | null)[] {
+    return (
+      [
+        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
+        (link.status !== undefined ?
+          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+          null)
+      ]
     );
   }
 
