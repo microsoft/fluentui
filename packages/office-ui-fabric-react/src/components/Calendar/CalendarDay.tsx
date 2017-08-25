@@ -219,7 +219,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private findWeekCorners(weeks: any) {
+  private findWeekCorners(weeks: any): any {
     let weekCorners: any = {};
     let numberOfWeeks = weeks.length;
     let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
@@ -227,15 +227,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     // Get all days in current month
     let dateRange = getDateRangeArray(navigatedDate, dateRangeType, firstDayOfWeek);
 
-    //Check to see if second to the last day (of the first week) is within the current month
+    // Check to see if second to the last day (of the first week) is within the current month
     if (weeks[0][DAYS_IN_WEEK - 2].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      //There is only one highlighted day in first week, add styles to this square
+      // There is only one highlighted day in first week, add styles to this square
       let weekIndex = 0;
       let dayIndex = DAYS_IN_WEEK - 1;
       weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-singleTopDate ' + styles.singleTopDate;
-    }
-    else {
-      //Add styles to first and last highlighted squares in the first week
+    } else {
+      // Add styles to first and last highlighted squares in the first week
       let weekIndex = 0;
       let dayIndex = dateRange[0].getDay();
       weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
@@ -245,23 +244,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       weekCorners[weekIndex2 + '_' + dayIndex2] = 'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate;
     }
 
-    //check the first week to see if the first day of the week is NOT within the current month
+    // check the first week to see if the first day of the week is NOT within the current month
     if (weeks[0][0].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      //The first day of week 2 is a corner
+      // The first day of week 2 is a corner
       let weekIndex = 1;
       let dayIndex = 0;
       weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
     }
 
-    //Check to see if second day (of the last week) is within the current month
+    // Check to see if second day (of the last week) is within the current month
     if (weeks[numberOfWeeks - 1][1].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      //There is only one highlighted day in the last week, add styles to this square
+      // There is only one highlighted day in the last week, add styles to this square
       let weekIndex = numberOfWeeks - 1;
       let dayIndex = 0;
       weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate;
-    }
-    else {
-      //Add styles to first and last highlighted squares in the last week
+    } else {
+      // Add styles to first and last highlighted squares in the last week
       let weekIndex = numberOfWeeks - 1;
       let dayIndex = 0;
       weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate;
@@ -272,9 +270,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     }
 
-    //check the last week to see if the last day of this week is NOT within the current month
+    // check the last week to see if the last day of this week is NOT within the current month
     if (weeks[numberOfWeeks - 1][DAYS_IN_WEEK - 1].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      //If the last week is not all within the current month, the last day of the second to last week is a corner
+      // If the last week is not all within the current month, the last day of the second to last week is a corner
       let weekIndex = numberOfWeeks - 2;
       let dayIndex = DAYS_IN_WEEK - 1;
       weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
@@ -283,8 +281,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return weekCorners;
   }
 
-  private getHighlightedCornerStyle(weekCorners: any, dayIndex: number, weekIndex: number) {
-    let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : ''
+  private getHighlightedCornerStyle(weekCorners: any, dayIndex: number, weekIndex: number): any {
+    let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
 
     return cornerStyle;
   }
