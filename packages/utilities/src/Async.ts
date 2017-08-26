@@ -15,13 +15,13 @@ export class Async {
   private _immediateIds: any = null;
   private _intervalIds: any = null;
   private _animationFrameIds: { [id: number]: boolean } | null = null;
-  // tslint:disable-next-line:typedef
-  private _isDisposed = false;
+  private _isDisposed: boolean;
   private _parent: any;
   private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: any;
 
   constructor(parent?: any, onError?: (e: any) => void) {
+    this._isDisposed = false;
     this._parent = parent || null;
     this._onErrorHandler = onError;
     this._noop = () => { /* do nothing */ };

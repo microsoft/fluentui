@@ -32,7 +32,8 @@ export interface IDelayedRenderState {
  * @public
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
-  public static defaultProps: { delay: number } = {
+  // tslint:disable-next-line:typedef
+  public static defaultProps = {
     delay: 0
   };
 

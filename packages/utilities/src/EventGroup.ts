@@ -72,7 +72,7 @@ export class EventGroup {
     eventName: string,
     eventArgs?: any,
     bubbleEvent?: boolean
-  ): any {
+  ): boolean | undefined {
     let retVal;
 
     if (EventGroup._isElement(target)) {
@@ -137,9 +137,8 @@ export class EventGroup {
     }
   }
 
-  // tslint:disable-next-line:typedef
-  private static _isElement(target: HTMLElement) {
-    return !!target && (target.addEventListener || target instanceof HTMLElement);
+  private static _isElement(target: HTMLElement): boolean {
+    return !!target && (!!target.addEventListener || target instanceof HTMLElement);
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */

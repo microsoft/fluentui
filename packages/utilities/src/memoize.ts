@@ -34,7 +34,7 @@ export function memoize<T extends Function>(
   key: string,
   descriptor: TypedPropertyDescriptor<T>): {
     configurable: boolean;
-    get(): any;
+    get(): T;
   } {
 
   // We bind to "null" to prevent people from inadvertently pulling values from "this",
@@ -43,7 +43,7 @@ export function memoize<T extends Function>(
 
   return {
     configurable: true,
-    get(): any {
+    get(): T {
       return fn;
     }
   };
@@ -109,6 +109,8 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   } as any;
 }
 
+function _normalizeArg(val: null | undefined): { empty: boolean } | any;
+function _normalizeArg(val: object): any;
 function _normalizeArg(val: any): any {
   if (!val) {
     return _emptyObject;
