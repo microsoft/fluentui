@@ -31,8 +31,10 @@ export function getStackTrace(): string {
     stack: ''
   };
 
-  // tslint:disable-next-line:no-string-literal no-any
-  const captureStackTrace = (Error as any)['captureStackTrace'];
+  const captureStackTrace = (Error as {
+    captureStackTrace?: (obj: { stack: string; },
+      getStackTrace: () => {}) => void;
+  }).captureStackTrace;
 
   if (captureStackTrace) {
     captureStackTrace(obj, getStackTrace);

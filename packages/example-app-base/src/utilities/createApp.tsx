@@ -62,8 +62,7 @@ export function createApp(
           <Route key='minimal' path='?minimal' component={ _getComponent }>
             { routes }
           </Route>
-          { /* tslint:disable-next-line:no-any */ }
-          <Route key={ 'app' } component={ (props: any) => <App appDefinition={ appDefinition } { ...props } /> }>
+          <Route key={ 'app' } component={ (props: {}) => <App appDefinition={ appDefinition } { ...props } /> }>
             { routes }
           </Route>
         </Router>
@@ -90,8 +89,7 @@ export function createApp(
   window.onunload = _onUnload;
 }
 
-// tslint:disable-next-line:no-any
-function _getComponent(props: any): JSX.Element {
+function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
   return (
     <div { ...props } />
   );

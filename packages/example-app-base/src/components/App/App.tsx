@@ -20,7 +20,7 @@ export enum ExampleStatus {
 // tslint:disable:no-any
 export interface IAppLink extends INavLink {
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: any;
+  component?: () => JSX.Element;
 }
 // tslint:enable:no-any
 

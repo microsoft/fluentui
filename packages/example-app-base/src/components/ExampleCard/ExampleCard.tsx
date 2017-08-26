@@ -8,8 +8,7 @@ export interface IExampleCardProps {
   title: string;
   isOptIn?: boolean;
   code?: string;
-  // tslint:disable-next-line:no-any
-  children?: any;
+  children?: React.ReactNode;
   isRightAligned?: boolean;
   dos?: JSX.Element;
   donts?: JSX.Element;
