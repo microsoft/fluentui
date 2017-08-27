@@ -4,12 +4,10 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let build = require('@microsoft/web-library-build');
-let webpack = require('webpack');
-let buildConfig = build.getConfig();
-let configResources = build.karma.resources;
-let bindPolyfillPath = configResources.bindPolyfillPath;
+let resources = require('../../scripts/tasks/karma-resources');
+let bindPolyfillPath = resources.bindPolyfillPath;
 let debugRun = (process.argv.indexOf('--debug') > -1);
+let webpack = resources.webpack;
 
 module.exports = function (config) {
   let karmaConfig = {
@@ -23,7 +21,9 @@ module.exports = function (config) {
 
 
     // list of files / patterns to load in the browser
-    files: [bindPolyfillPath].concat([path.join(buildConfig.libFolder, 'common/tests.js')]),
+    files: resources.files.concat([
+      path.join('lib', 'common/tests.js')
+    ]),
 
     // list of files to exclude
     exclude: [],
@@ -41,7 +41,7 @@ module.exports = function (config) {
           debugRun ? {} : {
             test: /\.js/,
             exclude: /(test|node_modules|bower_components)/,
-            loader: configResources.istanbulInstrumenterLoaderPath,
+            loader: resources.istanbulInstrumenterLoaderPath,
             enforce: 'post'
           }
         ],
@@ -54,7 +54,7 @@ module.exports = function (config) {
       },
       resolve: {
         modules: [
-          buildConfig.libFolder,
+          'lib',
           'node_modules'
         ]
       },
@@ -72,10 +72,10 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      [path.join(buildConfig.libFolder, '/**/*.js')]: ['webpack']
+      [path.join('lib', '/**/*.js')]: ['webpack']
     },
 
-    plugins: configResources.plugins.concat([
+    plugins: resources.plugins.concat([
     ]),
 
     // test results reporter to use

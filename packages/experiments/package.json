@@ -58,7 +58,7 @@
     "ts-loader": "^2.0.1",
     "typescript": "2.4.2",
     "vinyl-ftp": "0.6.0",
-    "webpack": "^3.4.1",
+    "webpack": "^3.5.5",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-server": "^2.4.1",
     "webpack-notifier": "^1.5.0"
