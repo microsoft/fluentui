@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Refresh the page when swtiching languages to make sure that memoized styles are recomputed",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "christianjordangonzalez@gmail.com"
+}
