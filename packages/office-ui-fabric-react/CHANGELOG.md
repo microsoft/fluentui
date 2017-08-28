@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Aug 2017 10:09:40 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Aug 2017 00:52:38 GMT and should not be manually modified.
+
+## 4.37.5
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Patches
+
+- Add LikeSolid icon
+- Updating sass build to pre-process theming again for better registration performance.
+- Fix issues when a SelectionZone is outside a FocusZone
+
+## 4.37.4
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 4.37.3
+Fri, 25 Aug 2017 19:27:18 GMT
+
+### Patches
+
+- ComboBox- Make sure the option always get updated if they change (#2301)
+- Pickers: Have IInput props correctly extend inputhtmlattributes
 
 ## 4.37.2
 Fri, 25 Aug 2017 10:09:40 GMT
