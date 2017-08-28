@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Handle case where getKey is null or undefined in Selection",
+      "comment": "Selection: Adding better handling around a case where getKey returns null or undefined.",
       "type": "patch"
     }
   ],
