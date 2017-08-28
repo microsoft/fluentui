@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.10.3",
+      "tag": "@uifabric/utilities_v4.10.3",
+      "date": "Mon, 28 Aug 2017 10:09:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "8787bed91ff5e856975c631dc8454c1edde1327b",
+            "comment": "Array: Add removeElement method"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.10.2",
       "tag": "@uifabric/utilities_v4.10.2",
       "date": "Fri, 25 Aug 2017 20:31:51 GMT",
