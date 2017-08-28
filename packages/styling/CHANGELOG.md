@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 18 Aug 2017 16:32:33 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+
+## 0.20.2
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 0.20.1
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- add Comment icon
 
 ## 0.20.0
 Fri, 18 Aug 2017 16:32:33 GMT
