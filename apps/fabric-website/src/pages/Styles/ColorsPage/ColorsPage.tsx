@@ -5,7 +5,6 @@ import { Table } from '../../../components/Table/Table';
 import * as stylesImport from './ColorsPage.module.scss';
 const styles: any = stylesImport;
 const pageStyles: any = require('../../PageStyles.module.scss');
-import { baseURL } from '../../../appConfig';
 
 const accentColorsData = require('../../../data/colors-accent.json');
 const colorClassesData = require('../../../data/colors-classes.json');

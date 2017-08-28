@@ -1,5 +1,8 @@
 const chalk = require('chalk');
 
+const isProduction = process.argv.indexOf('--production') > -1;
+const isVerbose = process.argv.indexOf('--verbose') > -1;
+
 module.exports.logStartTask = (task) => {
   console.log(
     `${
@@ -25,7 +28,9 @@ module.exports.logEndTask = (task, startTime, errorMessage) => {
 }
 
 module.exports.logStatus = (taskStatus) => {
-  console.log('  ' + taskStatus);
+  if (isProduction || isVerbose) {
+    console.log('  ' + taskStatus);
+  }
 }
 
 module.exports.logEndBuild = (packageName, passed, startTime) => {

@@ -11,7 +11,7 @@ import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 
-import * as stylesImport from './Todo.module.scss';
+import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;
 import strings from './../strings';
 

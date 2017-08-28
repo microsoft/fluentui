@@ -5,10 +5,12 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/packages/utilities/node_modules/gulp/bin/gulp.js",
+      "program": "${workspaceRoot}/scripts/build.js",
       "stopOnEntry": false,
-      "args": [],
-      "cwd": "${workspaceRoot}/packages/utilities",
+      "args": [
+        "webpack"
+      ],
+      "cwd": "${workspaceRoot}/packages/experiments",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",
