@@ -18,15 +18,13 @@ module.exports = {
       loaders: [
         {
           test: /\.json$/,
-          enforce: 'pre',
-          loader: 'json-loader',
-          exclude: [
-            /node_modules/
-          ]
+          loader: 'json-loader'
         }
       ]
     };
 
+    const stats = 'errors-only';
+    const devtool = 'source-map';
     const configs = [];
 
     if (!onlyProduction) {
@@ -38,7 +36,8 @@ module.exports = {
           },
           resolveLoader,
           module,
-          devtool: 'source-map',
+          stats,
+          devtool,
           plugins: getPlugins(packageName, false)
         },
         customConfig
@@ -53,7 +52,8 @@ module.exports = {
         },
         resolveLoader,
         module,
-        devtool: 'source-map',
+        stats,
+        devtool,
         plugins: getPlugins(packageName, true)
       }, customConfig));
     }
