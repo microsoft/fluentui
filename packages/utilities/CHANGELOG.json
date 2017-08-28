@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.10.2",
+      "tag": "@uifabric/utilities_v4.10.2",
+      "date": "Fri, 25 Aug 2017 20:31:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
+            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.10.1",
       "tag": "@uifabric/utilities_v4.10.1",
       "date": "Fri, 25 Aug 2017 10:09:40 GMT",
