@@ -189,17 +189,17 @@ export interface ICalendarIconStrings {
 
 export interface ICalendarFormatDateCallbacks {
   /**
-  * Callback to apply formatting to the date (Month and Year) in the Calendar header
+  * Callback to apply formatting to the month and year in the Day Picker header
   */
   formatMonthYear?: (date: Date) => string;
 
   /**
-  * Callback to apply formatting to the days in the month
+  * Callback to apply formatting to the days in the Day Picker calendar
   */
   formatDay?: (date: Date) => string;
 
   /**
-  * Callback to apply formatting to the year in the month picker header
+  * Callback to apply formatting to the year in the Month Picker header
   */
   formatYear?: (date: Date) => string;
 
