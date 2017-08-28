@@ -18,7 +18,7 @@ export interface IBaseProps {
  *
  * @public
  */
-export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
+export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
@@ -32,11 +32,13 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
    */
   protected _shouldUpdateComponentRef: boolean;
 
+  // tslint:disable:variable-name
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[] | null;
   private __resolves: { [name: string]: (ref: any) => any };
   private __className: string;
+  // tslint:enable:variable-name
 
   /**
    * BaseComponent constructor

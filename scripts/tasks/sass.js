@@ -5,6 +5,7 @@ module.exports = function (options) {
   const path = require('path');
   const fs = require('fs');
   const postcss = require('postcss');
+  const { splitStyles } = require("@microsoft/load-themed-styles");
   const autoprefixer = require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions', 'ie >= 11'] });
   const modules = require('postcss-modules')({
     getJSON,
@@ -19,6 +20,8 @@ module.exports = function (options) {
     const promises = [];
 
     glob.sync(path.resolve(process.cwd(), 'src/**/*.scss')).forEach(fileName => {
+      fileName = path.resolve(fileName);
+
       promises.push(new Promise((resolve, reject) => {
         sass.render(
           {
@@ -56,7 +59,7 @@ module.exports = function (options) {
   }
 
   function getJSON(cssFileName, json) {
-    _fileNameToClassMap[cssFileName] = json;
+    _fileNameToClassMap[path.resolve(cssFileName)] = json;
   }
 
   function createTypeScriptModule(fileName, css) {
@@ -64,8 +67,9 @@ module.exports = function (options) {
     const source = [
       `/* tslint:disable */`,
       `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-      `loadStyles(${JSON.stringify(css)});`
+      `loadStyles(${JSON.stringify(splitStyles(css))});`
     ];
+
     const map = _fileNameToClassMap[fileName];
 
     for (let prop in map) {

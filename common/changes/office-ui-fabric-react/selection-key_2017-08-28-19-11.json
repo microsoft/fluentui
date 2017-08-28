@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ContextualMenu: Add ability to override role on menu items",
+      "comment": "Selection: Adding better handling around a case where getKey returns null or undefined.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "tmichon@microsoft.com"
 }
