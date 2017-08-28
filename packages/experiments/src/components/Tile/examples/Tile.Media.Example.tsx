@@ -14,9 +14,10 @@ import {
 import { lorem } from '@uifabric/example-app-base';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
+// tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
-export class TileMediaExample extends React.Component<any, any> {
+export class TileMediaExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>

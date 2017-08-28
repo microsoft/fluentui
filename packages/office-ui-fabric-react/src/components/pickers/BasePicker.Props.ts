@@ -187,7 +187,7 @@ export enum ValidationState {
   invalid
 }
 
-export interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * Screen reader label to apply to an input element.
    */
