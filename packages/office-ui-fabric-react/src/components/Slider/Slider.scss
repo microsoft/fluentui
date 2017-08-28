@@ -1,85 +1,103 @@
 @import '../../common/common';
 
+.root {
+  user-select: none;
+}
+
+.titleLabel {
+    padding: 0;
+}
+
+.line {
+  display: flex;
+  position: relative;
+}
+
+.line span {
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.slideBox {
+  @include focus-border();
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  line-height: 28px;
+}
+
+.slideBox .thumb {
+  border: 2px solid $ms-color-neutralSecondary;
+  box-sizing: border-box;
+  background: $ms-color-white;
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.valueLabel {
+  flex-shrink: 1;
+  width: 30px;
+  line-height: 1;
+}
+
 .row {
   .root {
-    user-select: none;
+    @extend .root;
     margin-bottom: 8px;
   }
 
-  .titleLabel {
-    padding: 0;
-  }
-
   .line {
-    display: flex;
-    position: relative;
+    @extend .line;
     width: 100%;
   }
 
   .line span {
     height: 4px;
-    border-radius: 4px;
-    box-sizing: border-box;
   }
 
 
   .slideBox {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
+    @extend .slideBox;
+    height: 28px;
+    padding: 0 8px; // Make room for thumb at ends of line
   }
 
   .slideBox .thumb {
-    border: 2px solid $ms-color-neutralSecondary;
-    box-sizing: border-box;
-    background: $ms-color-white;
-    display: block;
-    width: 16px;
-    height: 16px;
-    position: absolute;
+    @extend .thumb;
     top: -6px;
-    border-radius: 10px;
     @include transform-translateX(-50%);
   }
 
   .container {
-    display: flex;
+    @extend .container;
     align-items: center;
-    flex-wrap: nowrap;
-  }
-
-
-  .slideBox {
-    @include focus-border();
-    flex-grow: 1;
-    height: 28px;
-    line-height: 28px;
-    padding: 0 8px; // Make room for thumb at ends of line
   }
 
   .valueLabel {
-    flex-shrink: 1;
-    width: 30px;
+    @extend .valueLabel;
     margin: 0 8px;
-    line-height: 1;
   }
 }
 
 .column {
   .root {
-  user-select: none;
-  margin-left: 8px;
-  margin-right: 8px;
-  }
-
-  .titleLabel {
-    padding: 0;
+    @extend .root;
+    margin-left: 8px;
+    margin-right: 8px;
   }
 
   .line {
-    display: flex;
-    position: relative;
+    @extend .line;
     height: 100%;
     width: 4px;
     margin: 0 auto;
@@ -89,41 +107,25 @@
   .line span {
     width: 4px;
     height: 100%;
-    border-radius: 4px;
-    box-sizing: border-box;
   }
 
   .slideBox {
-    @include focus-border();
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0 auto;
+    @extend .slideBox;
     height: 100%;
-    flex-grow: 1;
     width: 28px;
-    line-height: 28px;
     padding-top: 8px;
     padding-bottom: 8px; // Make room for thumb at bottom of line
   }
 
   .slideBox .thumb {
-    border: 2px solid $ms-color-neutralSecondary;
-    box-sizing: border-box;
-    background: $ms-color-white;
-    display: block;
-    width: 16px;
-    height: 16px;
-    position: absolute;
+    @extend .thumb;
     left: -6px;
-    border-radius: 10px;
     margin: 0 auto;
     transform: translateY(8px);
   }
 
   .container {
-    display: flex;
-    flex-wrap: nowrap;
+    @extend .container;
     flex-direction: column;
     height: 100%;
     text-align: center;
@@ -132,10 +134,9 @@
   }
 
   .valueLabel {
-    flex-shrink: 1;
+    @extend .valueLabel;
     width: 30px;
     margin: 0 auto;
-    line-height: 1;
     display: block;
   }
 }
