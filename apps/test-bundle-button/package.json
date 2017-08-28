@@ -11,11 +11,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "_checksize": "node check-size.js",
-    "_bundle": "node node_modules/webpack/bin/webpack --config webpack.config.js && echo Done",
-    "build": "npm run _bundle && npm run _checksize",
-    "clean": "",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
     "@types/react": "15.0.38",

@@ -182,7 +182,7 @@ export class Selection implements ISelection {
     if (this.mode === SelectionMode.single) {
       selectableCount = Math.min(selectableCount, 1);
     }
-    
+
     return (
       (this.count > 0) &&
       (this._isAllSelected && this._exemptedCount === 0) ||

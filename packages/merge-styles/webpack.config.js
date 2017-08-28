@@ -14,10 +14,7 @@ module.exports = resources.createConfig(
 
     output: {
       libraryTarget: 'var',
-      library: 'MergeStyles',
-      path: path.join(__dirname, 'dist'),
-      publicPath: '/dist/',
-      filename: `[name].min.js`
+      library: 'MergeStyles'
     }
   }
 );

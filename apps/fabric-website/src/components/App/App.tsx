@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { Fabric } from 'office-ui-fabric-react/lib/components/Fabric';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { Nav } from '../Nav/Nav';

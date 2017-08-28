@@ -4,22 +4,22 @@ const path = require('path');
 module.exports = {
   webpack,
 
-  createConfig(packageName, isProduction, customConfig) {
+  createConfig(packageName, isProduction, customConfig, onlyProduction) {
 
     const resolveLoader = {
       modules: [
         path.resolve(__dirname, '../node_modules'),
         path.resolve(process.cwd(), 'node_modules')
       ]
-    }
+    };
 
     const module = {
       noParse: [/autoit.js/],
       loaders: [
         {
-          test: [/\.json$/],
+          test: /\.json$/,
           enforce: 'pre',
-          loader: 'json',
+          loader: 'json-loader',
           exclude: [
             /node_modules/
           ]
@@ -27,18 +27,30 @@ module.exports = {
       ]
     };
 
-    const configs = [merge(
-      {
-        resolveLoader,
-        module,
-        devtool: 'source-map',
-        plugins: getPlugins(packageName, false)
-      },
-      customConfig
-    )];
+    const configs = [];
+
+    if (!onlyProduction) {
+      configs.push(merge(
+        {
+          output: {
+            filename: `[name].js`,
+            path: path.resolve(process.cwd(), 'dist')
+          },
+          resolveLoader,
+          module,
+          devtool: 'source-map',
+          plugins: getPlugins(packageName, false)
+        },
+        customConfig
+      ));
+    }
 
     if (isProduction) {
       configs.push(merge({
+        output: {
+          filename: `[name].min.js`,
+          path: path.resolve(process.cwd(), 'dist')
+        },
         resolveLoader,
         module,
         devtool: 'source-map',
@@ -161,7 +173,7 @@ function getPlugins(
   bundleName,
   isProduction
 ) {
-  const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
   const plugins = [];
 
@@ -179,7 +191,9 @@ function getPlugins(
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
         reportFilename: bundleName + '.stats.html',
-        openAnalyzer: false
+        openAnalyzer: false,
+        generateStatsFile: true,
+        statsFilename: bundleName + '.stats.json'
       })
     );
   }

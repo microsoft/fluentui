@@ -4,9 +4,9 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let webpack = require('webpack');
 let resources = require('../../scripts/tasks/karma-resources');
 let debugRun = (process.argv.indexOf('--debug') > -1);
+let webpack = require('../../scripts/tasks/webpack-resources').webpack;
 
 module.exports = function (config) {
   let karmaConfig = {
@@ -51,7 +51,8 @@ module.exports = function (config) {
       },
       resolve: {
         modules: [
-          'lib',
+          path.resolve(__dirname, 'lib'),
+          path.resolve('../../scripts/node_modules'),
           'node_modules'
         ]
       },

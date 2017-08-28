@@ -10,26 +10,13 @@ module.exports = resources.createConfig(
     entry: './src/index.tsx',
 
     output: {
-      path: path.join(__dirname, 'dist'),
-      filename: PACKAGE_NAME + '.js',
+      path: path.join(__dirname, 'dist')
     },
 
     externals: {
       'react': 'React',
       'react-dom': 'ReactDOM'
-    },
-
-    module: {
-      loaders: [
-        {
-          test: [/\.tsx?$/],
-          loader: 'awesome-typescript-loader',
-          exclude: [
-            /node_modules/,
-            /\.scss.ts$/
-          ]
-        }
-      ]
     }
+
   });
 

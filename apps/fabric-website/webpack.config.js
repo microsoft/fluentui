@@ -44,5 +44,6 @@ module.exports = resources.createConfig(
         'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib')
       }
     },
-  }
+  },
+  true /* only production */
 );

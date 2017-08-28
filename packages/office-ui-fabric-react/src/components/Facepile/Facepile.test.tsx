@@ -5,13 +5,12 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 /* tslint:enable:no-unused-variable */
 import { mount, shallow } from 'enzyme';
 import { setRTL } from '../../Utilities';
-import * as chai from 'chai';
-let { expect } = chai;
-
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
 import { Persona, PersonaSize } from '../Persona';
 import { TestImages } from '../../common/TestImages';
+
+const { expect } = chai;
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [

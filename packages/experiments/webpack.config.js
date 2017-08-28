@@ -6,7 +6,7 @@ const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = resources.createConfig(
   BUNDLE_NAME,
-  isProduction,
+  IS_PRODUCTION,
   {
     entry: {
       [BUNDLE_NAME]: './lib/index.js'
@@ -14,10 +14,7 @@ module.exports = resources.createConfig(
 
     output: {
       libraryTarget: 'var',
-      library: 'Fabric',
-      path: path.resolve(__dirname, 'dist'),
-      publicPath: '/dist/',
-      filename: `[name]${isProduction ? '.min' : ''}.js`
+      library: 'Fabric'
     },
 
     externals: [

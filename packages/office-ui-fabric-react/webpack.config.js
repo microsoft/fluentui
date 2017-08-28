@@ -13,10 +13,7 @@ module.exports = resources.createConfig(
 
     output: {
       libraryTarget: 'var',
-      library: 'Fabric',
-      path: path.join(__dirname, 'dist'),
-      publicPath: '/dist/',
-      filename: `[name]${isProduction ? '.min' : ''}.js`
+      library: 'Fabric'
     },
 
     externals: [

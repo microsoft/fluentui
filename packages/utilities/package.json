@@ -30,6 +30,9 @@
     "es6-weak-map": "^2.0.2",
     "es6-map": "^0.1.5",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "sinon": "^2.3.2"
   },
   "dependencies": {

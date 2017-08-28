@@ -56,8 +56,8 @@ module.exports = function (config) {
       },
       resolve: {
         modules: [
-          'lib',
-          'node_modules'
+          path.resolve(__dirname, 'lib'),
+          path.resolve(__dirname, 'node_modules')
         ]
       }
     },

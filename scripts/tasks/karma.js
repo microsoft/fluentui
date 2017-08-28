@@ -1,7 +1,7 @@
 module.exports = function (options) {
   let path = require('path');
   let fs = require('fs');
-  let karmaPath = path.resolve('./node_modules/karma/bin/karma');
+  let karmaPath = path.resolve(__dirname, '../node_modules/karma/bin/karma');
   let karmaConfigPath = path.join(process.cwd(), 'karma.config.js');
 
   if (fs.existsSync(karmaConfigPath)) {
