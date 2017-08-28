@@ -188,7 +188,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   private _formatYear(navigatedDate: Date) {
-    let { strings, formatDate } = this.props;
+    let { formatDate } = this.props;
     let formatedDate = navigatedDate.getFullYear().toString();
 
     if (formatDate && formatDate.formatYear) {

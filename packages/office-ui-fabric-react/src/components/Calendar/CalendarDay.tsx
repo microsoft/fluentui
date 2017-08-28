@@ -285,20 +285,24 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   private _formatMonthYear(navigatedDate: Date) {
     let { strings, formatDate } = this.props;
-    let formatedDate = strings.months[navigatedDate.getMonth()] + ' ' + navigatedDate.getFullYear();
+    let formatedDate;
 
     if (formatDate && formatDate.formatMonthYear) {
       formatedDate = formatDate.formatMonthYear(navigatedDate);
+    } else {
+      formatedDate = strings.months[navigatedDate.getMonth()] + ' ' + navigatedDate.getFullYear();
     }
     return formatedDate;
   }
 
   private _formatDay(day: any) {
-    let { strings, formatDate } = this.props;
-    let formatedDate = day.date;
+    let { formatDate } = this.props;
+    let formatedDate;
 
     if (formatDate && formatDate.formatDay) {
       formatedDate = formatDate.formatDay(day.originalDate);
+    } else {
+      formatedDate = day.date;
     }
     return formatedDate;
   }
