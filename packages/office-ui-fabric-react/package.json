@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
-    "@uifabric/utilities": ">=4.10.2 <5.0.0",
+    "@uifabric/utilities": ">=4.10.3 <5.0.0",
     "@uifabric/styling": ">=0.20.2 <1.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.6.0"
