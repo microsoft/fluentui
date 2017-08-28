@@ -1520,6 +1520,10 @@ export const IconCodes = {
    */
   like: '\uE8E1',
   /**
+   * Icon code with the value '\uF3BF'
+   */
+  likeSolid: '\uF3BF',
+  /**
    * Icon code with the value '\uE71B'.
    */
   link: '\uE71B',

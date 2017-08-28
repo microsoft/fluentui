@@ -12,13 +12,6 @@
   right: 0;
   background-color: $ms-color-white;
   transition: transform 0.1s linear;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  align-content: stretch;
-
-  text-decoration: none;
   color: $ms-color-neutralPrimary;
 
   &:hover {
@@ -80,6 +73,24 @@
   &:active {
     transform: scale(0.95);
   }
+}
+
+.link {
+  @include focus-clear();
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+  text-decoration: none;
 }
 
 .frame {
