@@ -57,7 +57,11 @@ export class Selection implements ISelection {
   }
 
   public getKey(item: IObjectWithKey, index?: number): string {
-    return `${this._getKey(item, index)}`;
+    const key = this._getKey(item, index);
+
+    return (typeof key === 'number' || key) ?
+      `${key}` :
+      '';
   }
 
   public setChangeEvents(isEnabled: boolean, suppressChange?: boolean) {
@@ -93,7 +97,11 @@ export class Selection implements ISelection {
       let item = items[i];
 
       if (item) {
-        newKeyToIndexMap[this.getKey(item, i)] = i;
+        const key = this.getKey(item, i);
+
+        if (key) {
+          newKeyToIndexMap[key] = i;
+        }
       }
 
       newUnselectableIndices[i] = item && !this.canSelectItem(item);

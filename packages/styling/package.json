@@ -28,7 +28,7 @@
     "react-dom": "^15.4.2"
   },
   "dependencies": {
-    "@uifabric/utilities": ">=4.10.2 <5.0.0",
+    "@uifabric/utilities": ">=4.10.3 <5.0.0",
     "tslib": "^1.7.1",
     "rtl-css-js": "^1.1.3",
     "glamor": "^2.20.40"
