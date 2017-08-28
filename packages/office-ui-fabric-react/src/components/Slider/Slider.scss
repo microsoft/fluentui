@@ -1,63 +1,64 @@
 @import '../../common/common';
 
-.root {
-  user-select: none;
-}
+.row, .column {
+  .root {
+    user-select: none;
+  }
 
-.titleLabel {
+  .titleLabel {
+      padding: 0;
+  }
+
+  .line {
+    display: flex;
+    position: relative;
+  }
+
+  .line span {
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .slideBox {
+    @include focus-border();
+    background: transparent;
+    border: none;
     padding: 0;
-}
+    margin: 0;
+    flex-grow: 1;
+    line-height: 28px;
+  }
 
-.line {
-  display: flex;
-  position: relative;
-}
+  .slideBox .thumb {
+    border: 2px solid $ms-color-neutralSecondary;
+    box-sizing: border-box;
+    background: $ms-color-white;
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    border-radius: 10px;
+  }
 
-.line span {
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
 
-.slideBox {
-  @include focus-border();
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-  flex-grow: 1;
-  line-height: 28px;
-}
-
-.slideBox .thumb {
-  border: 2px solid $ms-color-neutralSecondary;
-  box-sizing: border-box;
-  background: $ms-color-white;
-  display: block;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  border-radius: 10px;
-}
-
-.container {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.valueLabel {
-  flex-shrink: 1;
-  width: 30px;
-  line-height: 1;
+  .valueLabel {
+    flex-shrink: 1;
+    width: 30px;
+    line-height: 1;
+  }
 }
 
 .row {
   .root {
-    @extend .root;
     margin-bottom: 8px;
   }
 
   .line {
-    @extend .line;
     width: 100%;
   }
 
@@ -65,39 +66,28 @@
     height: 4px;
   }
 
-
   .slideBox {
-    @extend .slideBox;
     height: 28px;
     padding: 0 8px; // Make room for thumb at ends of line
   }
 
   .slideBox .thumb {
-    @extend .thumb;
     top: -6px;
     @include transform-translateX(-50%);
   }
 
-  .container {
-    @extend .container;
-    align-items: center;
-  }
-
   .valueLabel {
-    @extend .valueLabel;
     margin: 0 8px;
   }
 }
 
 .column {
   .root {
-    @extend .root;
     margin-left: 8px;
     margin-right: 8px;
   }
 
   .line {
-    @extend .line;
     height: 100%;
     width: 4px;
     margin: 0 auto;
@@ -110,7 +100,6 @@
   }
 
   .slideBox {
-    @extend .slideBox;
     height: 100%;
     width: 28px;
     padding-top: 8px;
@@ -118,14 +107,12 @@
   }
 
   .slideBox .thumb {
-    @extend .thumb;
     left: -6px;
     margin: 0 auto;
     transform: translateY(8px);
   }
 
   .container {
-    @extend .container;
     flex-direction: column;
     height: 100%;
     text-align: center;
@@ -134,8 +121,6 @@
   }
 
   .valueLabel {
-    @extend .valueLabel;
-    width: 30px;
     margin: 0 auto;
     display: block;
   }

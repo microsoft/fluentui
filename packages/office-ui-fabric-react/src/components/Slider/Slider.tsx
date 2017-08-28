@@ -186,6 +186,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
+
     if (!this.props.vertical) {
       if (event.type === 'mousedown' || event.type === 'mousemove') {
         currentSteps = getRTL() ?
@@ -199,12 +200,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     } else {
       if (event.type === 'mousedown' || event.type === 'mousemove') {
         currentSteps = getRTL() ?
-          (sliderPositionRect.bottom - (event as MouseEvent).clientY) / stepLength :
-          ((event as MouseEvent).clientY - sliderPositionRect.top) / stepLength;
+          ((event as MouseEvent).clientY - sliderPositionRect.top) / stepLength :
+          (sliderPositionRect.bottom - (event as MouseEvent).clientY) / stepLength;
+
       } else if (event.type === 'touchstart' || event.type === 'touchmove') {
         currentSteps = getRTL() ?
-          (sliderPositionRect.bottom - (event as TouchEvent).touches[0].clientY) / stepLength :
-          ((event as TouchEvent).touches[0].clientY - sliderPositionRect.top) / stepLength;
+          ((event as TouchEvent).touches[0].clientY - sliderPositionRect.top) / stepLength :
+          (sliderPositionRect.bottom - (event as TouchEvent).touches[0].clientY) / stepLength;
+
       }
     }
 
@@ -213,26 +216,12 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
     // The value shouldn't be bigger than max or be smaller than min.
     if (currentSteps! > Math.floor(steps)) {
-      if (!this.props.vertical) {
-        renderedValue = currentValue = max as number;
-      } else {
-        renderedValue = currentValue = min as number;
-      }
+      renderedValue = currentValue = max as number;
     } else if (currentSteps! < 0) {
-      if (!this.props.vertical) {
-        renderedValue = currentValue = min as number;
-      } else {
-        renderedValue = currentValue = max as number;
-      }
+      renderedValue = currentValue = min as number;
     } else {
-      if (!this.props.vertical) {
-        renderedValue = min! + step! * currentSteps!;
-        currentValue = min! + step! * Math.round(currentSteps!);
-      } else {
-        renderedValue = max! - step! * currentSteps!;
-        currentValue = max! - step! * Math.round(currentSteps!);
-      }
-
+      renderedValue = min! + step! * currentSteps!;
+      currentValue = min! + step! * Math.round(currentSteps!);
     }
 
     this._updateValue(currentValue, renderedValue);
