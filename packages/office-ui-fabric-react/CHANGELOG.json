@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.37.5",
+      "tag": "office-ui-fabric-react_v4.37.5",
+      "date": "Sat, 26 Aug 2017 00:52:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Benjamin Kaiser <benjaminjkaiser@gmail.com>",
+            "commit": "23006609806052685ddc3fb0414f6814ba8fd619",
+            "comment": "Add LikeSolid icon"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7aa10dd59accd3de49d0e5256d693c72fbcae231",
+            "comment": "Updating sass build to pre-process theming again for better registration performance."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a8c320b1aad836100fe35a56eea73be2b2ac9652",
+            "comment": "Fix issues when a SelectionZone is outside a FocusZone"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.37.4",
       "tag": "office-ui-fabric-react_v4.37.4",
       "date": "Fri, 25 Aug 2017 20:31:51 GMT",

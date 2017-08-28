@@ -1,8 +1,7 @@
-/* tslint:disable:no-unused-variable */
+
 import * as React from 'react';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ISearchBoxProps } from 'office-ui-fabric-react/lib/SearchBox';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ICommandBarData } from './CommandBar';
 
