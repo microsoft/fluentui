@@ -55,8 +55,8 @@ export interface INavPage {
   isHomePage?: boolean;
 
   /**
-   * Whether this appears in the UHF header nav.
+   * Whether this link appears in the UHF header nav.
    * @default false
    */
-  isTopNavHeader?: boolean;
+  isTopNavLink?: boolean;
 }
