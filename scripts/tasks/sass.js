@@ -5,6 +5,7 @@ module.exports = function (options) {
   const path = require('path');
   const fs = require('fs');
   const postcss = require('postcss');
+  const { splitStyles } = require("@microsoft/load-themed-styles");
   const autoprefixer = require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions', 'ie >= 11'] });
   const modules = require('postcss-modules')({
     getJSON,
@@ -66,8 +67,9 @@ module.exports = function (options) {
     const source = [
       `/* tslint:disable */`,
       `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-      `loadStyles(${JSON.stringify(css)});`
+      `loadStyles(${JSON.stringify(splitStyles(css))});`
     ];
+
     const map = _fileNameToClassMap[fileName];
 
     for (let prop in map) {

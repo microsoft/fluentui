@@ -32,11 +32,13 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    */
   protected _shouldUpdateComponentRef: boolean;
 
+  // tslint:disable:variable-name
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[] | null;
   private __resolves: { [name: string]: (ref: any) => any };
   private __className: string;
+  // tslint:enable:variable-name
 
   /**
    * BaseComponent constructor

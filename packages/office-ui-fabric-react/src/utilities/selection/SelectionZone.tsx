@@ -74,7 +74,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let scrollElement = findScrollableParent(this.refs.root);
 
     // Track the latest modifier keys globally.
-    this._events.on(win, 'keydown keyup', this._updateModifiers);
+    this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
     this._events.on(scrollElement, 'click', this._tryClearOnEmptyClick);
   }
 
@@ -85,6 +85,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         ref='root'
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
+        onKeyDownCapture={ this._onKeyDownCapture }
         onClick={ this._onClick }
         role='presentation'
 
@@ -281,6 +282,13 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   @autobind
+  private _onKeyDownCapture(ev: React.KeyboardEvent<HTMLElement>) {
+    this._updateModifiers(ev);
+
+    this._handleNextFocus(true);
+  }
+
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     this._updateModifiers(ev);
 
@@ -297,7 +305,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
       // A key was pressed while an item in this zone was focused.
-      this._handleNextFocus(true);
       return;
     }
 
@@ -349,9 +356,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         target = getParent(target) as HTMLElement;
       }
     }
-
-    // A key was pressed while an item in this zone was focused.
-    this._handleNextFocus(true);
   }
 
   private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {
