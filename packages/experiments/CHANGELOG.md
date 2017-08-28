@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Aug 2017 00:52:38 GMT and should not be manually modified.
+
+## 0.2.0
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Minor changes
+
+- Separate Selection out from TilesList and fix minor TilesList bugs
 
 ## 0.1.7
 Fri, 25 Aug 2017 20:31:51 GMT
