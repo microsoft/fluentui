@@ -106,7 +106,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   navigationIcons?: ICalendarIconStrings;
 
   /**
-  * Apply additional formating to the date, for example localized date formatting.
+  * Apply additional formating to dates, for example localized date formatting.
   */
   formatDate?: ICalendarFormatDateCallbacks;
 }
