@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   css
 } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
@@ -51,9 +52,6 @@ export class App extends React.Component<IAppProps, any> {
     this.state = {
       isMenuVisible: false
     };
-
-    this._onIsMenuVisibleChanged = this._onIsMenuVisibleChanged.bind(this);
-    this._onLinkClick = this._onLinkClick.bind(this);
   }
 
   public render(): JSX.Element {
@@ -109,14 +107,17 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
+  @autobind
   private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
     this.setState({ isMenuVisible });
   }
 
+  @autobind
   private _onLinkClick(): void {
     this.setState({ isMenuVisible: false });
   }
 
+  @autobind
   private _onRenderLink(link: INavLink): (JSX.Element | null)[] {
     return (
       [
