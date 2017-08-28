@@ -17,12 +17,11 @@ export enum ExampleStatus {
   release = 3
 }
 
-// tslint:disable:no-any
 export interface IAppLink extends INavLink {
+  // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: () => JSX.Element;
+  component?: React.ComponentClass | (() => JSX.Element);
 }
-// tslint:enable:no-any
 
 export interface IAppLinkGroup extends INavLinkGroup {
   links: IAppLink[];
