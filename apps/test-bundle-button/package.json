@@ -20,7 +20,8 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
-    "@types/prop-types": "15.5.1"
+    "@types/prop-types": "15.5.1",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",

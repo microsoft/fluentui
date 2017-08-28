@@ -8,7 +8,7 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "_webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js",
+    "_webpack": "node ../../scripts/build.js webpack",
     "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
     "_test": "npm run _webpack && npm run _mocha",
     "build": "npm run _test",

@@ -1,8 +1,8 @@
+const path = require('path');
 const resources = require('../../scripts/tasks/webpack-resources');
 
 const isProduction = process.argv.indexOf('--production') > -1;
 const isDogfood = process.argv.indexOf('--dogfood') > -1;
-const path = require('path');
 const version = require('./package.json').version;
 let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
@@ -11,22 +11,19 @@ if (isDogfood) {
 } else if (!isProduction) {
   publicPath = "/dist/";
 }
-
-const minFileNamePart = isProduction ? '.min' : '';
+const PACKAGE_NAME = 'fabric-site';
 
 module.exports = resources.createConfig(
-  'fabric-site',
+  PACKAGE_NAME,
   isProduction,
   {
     entry: {
-      'fabric-site': './lib/root.js'
+      [PACKAGE_NAME]: './lib/root.js'
     },
 
     output: {
-      path: path.join(__dirname, '/dist'),
       publicPath: publicPath,
-      filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `fabric-site-${version}-[name]${minFileNamePart}.js`
+      chunkFilename: `${PACKAGE_NAME}-${version}-[name].min.js`
     },
 
     externals: [

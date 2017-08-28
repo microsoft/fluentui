@@ -10,7 +10,7 @@ import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 
 const BreadcrumbBasicExampleCode = require(
-  '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
+  'raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
 ) as string;
 const BreadcrumbStaticExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx'

@@ -7,11 +7,7 @@ module.exports = resources.createConfig(
   PACKAGE_NAME,
   true,
   {
-    entry: './src/index.tsx',
-
-    output: {
-      path: path.join(__dirname, 'dist')
-    },
+    entry: './lib/index.js',
 
     externals: {
       'react': 'React',

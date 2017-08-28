@@ -193,7 +193,8 @@ function getPlugins(
         reportFilename: bundleName + '.stats.html',
         openAnalyzer: false,
         generateStatsFile: true,
-        statsFilename: bundleName + '.stats.json'
+        statsFilename: bundleName + '.stats.json',
+        logLevel: 'warn'
       })
     );
   }

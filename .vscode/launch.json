@@ -8,9 +8,11 @@
       "program": "${workspaceRoot}/scripts/build.js",
       "stopOnEntry": false,
       "args": [
-        "webpack"
+        "webpack",
+        "--",
+        "--production"
       ],
-      "cwd": "${workspaceRoot}/packages/experiments",
+      "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",

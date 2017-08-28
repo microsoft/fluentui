@@ -5,9 +5,9 @@ import {
   IPivotProps,
   PivotLinkSize
 } from 'office-ui-fabric-react/lib/Pivot';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 
@@ -61,7 +61,7 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
       <PivotItem linkText={ `${tabName} (${tasks.length})` }>
         <FocusZone
           direction={ FocusZoneDirection.vertical }
-          isInnerZoneKeystroke={ ev => ev.which === KeyCodes.right }
+          isInnerZoneKeystroke={ this._isInnerZoneKeystroke }
         >
           <List
             className={ styles.todoList }
@@ -71,6 +71,11 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
         </FocusZone>
       </PivotItem>
     );
+  }
+
+  @autobind
+  private _isInnerZoneKeystroke(ev): boolean {
+    return ev.which === KeyCodes.right;
   }
 
   private _onRenderTodoItem(item: ITodoItem): React.ReactElement<ITodoItemProps> {

@@ -17,6 +17,7 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "react-addons-test-utils": "^15.4.2"
   },
   "dependencies": {
