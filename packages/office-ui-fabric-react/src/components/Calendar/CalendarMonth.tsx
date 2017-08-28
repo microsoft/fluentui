@@ -6,7 +6,7 @@ import {
   getRTL,
   autobind
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
@@ -22,6 +22,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   highlightCurrentMonth: boolean;
   onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
+  formatDate: ICalendarFormatDateCallbacks;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -55,7 +56,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
+          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ this._formatYear(navigatedDate) }</div>
           <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
             <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
               <span
@@ -184,5 +185,15 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }
+  }
+
+  private _formatYear(navigatedDate: Date) {
+    let { strings, formatDate } = this.props;
+    let formatedDate = navigatedDate.getFullYear().toString();
+
+    if (formatDate && formatDate.formatYear) {
+      formatedDate = formatDate.formatYear(navigatedDate);
+    }
+    return formatedDate;
   }
 }

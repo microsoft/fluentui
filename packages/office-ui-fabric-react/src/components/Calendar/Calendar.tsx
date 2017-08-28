@@ -49,7 +49,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     showGoToToday: true,
     strings: null,
     highlightCurrentMonth: false,
-    navigationIcons: iconStrings
+    navigationIcons: iconStrings,
+    formatDate: undefined
   };
 
   public refs: {
@@ -140,6 +141,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
+                  formatDate={ this.props.formatDate! }
                   ref='dayPicker' />
                 }
 
@@ -151,6 +153,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   highlightCurrentMonth={ highlightCurrentMonth! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
+                  formatDate={ this.props.formatDate! }
                   ref='monthPicker' /> }
 
                 { showGoToToday &&

@@ -104,6 +104,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   * Customize navigation icons using ICalendarIconStrings
   */
   navigationIcons?: ICalendarIconStrings;
+
+  /**
+  * Apply additional formating to the date, for example localized date formatting.
+  */
+  formatDate?: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarStrings {
@@ -179,5 +184,23 @@ export interface ICalendarIconStrings {
   * @defaultvalue  'ChevronRight'
   */
   rightNavigation?: string;
+
+}
+
+export interface ICalendarFormatDateCallbacks {
+  /**
+  * Callback to apply formatting to the date (Month and Year) in the Calendar header
+  */
+  formatMonthYear?: (date: Date) => string;
+
+  /**
+  * Callback to apply formatting to the days in the month
+  */
+  formatDay?: (date: Date) => string;
+
+  /**
+  * Callback to apply formatting to the year in the month picker header
+  */
+  formatYear?: (date: Date) => string;
 
 }
