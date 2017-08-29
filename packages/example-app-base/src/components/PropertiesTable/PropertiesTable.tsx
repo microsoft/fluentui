@@ -17,6 +17,12 @@ export interface IPropertiesTableProps {
   key?: string;
 }
 
+export interface IProptertiesTableState {
+  properties: IInterfaceProperty[] | IEnumProperty[];
+  isEnum: boolean;
+  groups: IGroup[] | undefined;
+}
+
 const DEFAULT_COLUMNS: IColumn[] = [
   {
     key: 'name',
@@ -79,7 +85,7 @@ const ENUM_COLUMNS: IColumn[] = [
   }
 ];
 
-export class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
+export class PropertiesTable extends React.Component<IPropertiesTableProps, IProptertiesTableState> {
   public static defaultProps: Partial<IPropertiesTableProps> = {
     title: 'Properties'
   };
@@ -97,7 +103,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
       ))
       .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
 
-    let groups: IGroup[] | null = null;
+    let groups: IGroup[] | undefined = undefined;
 
     if (!props.renderAsEnum) {
       groups = this._getGroups(properties);
