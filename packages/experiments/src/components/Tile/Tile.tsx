@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
-import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
