@@ -49,7 +49,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         page.className ? styles[page.className] : ''
       ) } key={ linkIndex }>
 
-        { page.isTopNavLink ?
+        { page.isUhfLink ?
           '' : <a
             href={ page.url }
             onClick={ this.props.onLinkClick }
