@@ -1,7 +1,7 @@
 /**
  * NOTE: Use this config file is for when you want to build and serve the website
  * for the purpose of testing your local changes with the UHF.
- * Using this will considerably slow down the gulp build and serve process
+ * Using this will considerably slow down the build and serve process
  * but will allow you to access the output file on your local machine.
  */
 
