@@ -17,6 +17,11 @@ module.exports = {
       noParse: [/autoit.js/],
       loaders: [
         {
+          test: /\.js$/,
+          loader: 'source-map-loader',
+          enforce: 'pre'
+        },
+        {
           test: /\.json$/,
           loader: 'json-loader'
         }
