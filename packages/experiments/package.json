@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -42,7 +42,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
     "@uifabric/utilities": ">=4.10.2 <5.0.0",
-    "office-ui-fabric-react": ">=4.37.5 <5.0.0",
+    "office-ui-fabric-react": ">=4.37.6 <5.0.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
