@@ -67,7 +67,7 @@ export class TileFolderExample extends React.Component<{}, {}> {
             }
             foreground={
               <FolderCover
-                type='media'
+                folderCoverType='media'
               >
                 <img src='//placehold.it/104x72' />
               </FolderCover>

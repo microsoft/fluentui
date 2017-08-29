@@ -46,8 +46,8 @@ const ASSETS: {
 export class FolderCover extends React.Component<IFolderCoverProps, IFolderCoverState> {
   public render(): JSX.Element | null {
     const {
-      size = 'large',
-      type = 'default'
+      folderCoverSize: size = 'large',
+      folderCoverType: type = 'default'
     } = this.props;
 
     const assets = ASSETS[size][type];
