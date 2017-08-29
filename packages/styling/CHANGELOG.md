@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 10:20:56 GMT and should not be manually modified.
+
+## 0.21.0
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Minor changes
+
+- Theming: added an accent color slot
 
 ## 0.20.2
 Fri, 25 Aug 2017 20:31:51 GMT

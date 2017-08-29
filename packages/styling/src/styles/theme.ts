@@ -62,6 +62,10 @@ export function loadTheme(theme: IPartialTheme): ITheme {
 export function createTheme(theme: IPartialTheme): ITheme {
   let newPalette = { ...DefaultPalette, ...theme.palette };
 
+  if (!theme.palette || !theme.palette.accent) {
+    newPalette.accent = newPalette.themePrimary;
+  }
+
   return {
     palette: newPalette,
     fonts: {

@@ -12,7 +12,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
   constructor(props: IPropertiesTableSetProps) {
     super(props);
     let { componentName, componentPath, sources } = props;
-    let src: any;
+    let src: string;
     let properties: IProperty[] = [];
 
     if (sources) {

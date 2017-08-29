@@ -18,8 +18,9 @@ export enum ExampleStatus {
 }
 
 export interface IAppLink extends INavLink {
+  // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: any;
+  component?: React.ComponentClass | (() => JSX.Element);
 }
 
 export interface IAppLinkGroup extends INavLinkGroup {
@@ -43,7 +44,7 @@ export interface IAppState {
 }
 
 @withResponsiveMode
-export class App extends React.Component<IAppProps, any> {
+export class App extends React.Component<IAppProps, IAppState> {
 
   constructor(props: IAppProps) {
     super(props);
