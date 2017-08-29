@@ -4,8 +4,8 @@ import {
   warnMutuallyExclusive,
   warnConditionallyRequiredProps
 } from './warn';
-import { expect } from 'chai';
 
+let { expect } = chai;
 let _lastWarning: string | undefined;
 
 describe('warnDeprecations', () => {
