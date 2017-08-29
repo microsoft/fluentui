@@ -83,11 +83,9 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ChoiceFieldGroup/ChoiceFieldGroup.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
-      />
+      >
+      </ComponentPage>
     );
   }
 }

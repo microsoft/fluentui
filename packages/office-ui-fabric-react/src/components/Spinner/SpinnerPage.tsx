@@ -59,11 +59,9 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Spinner/Spinner.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
-      />
+      >
+      </ComponentPage>
     );
   }
 }
