@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 25 Aug 2017 10:09:40 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Aug 2017 10:09:32 GMT and should not be manually modified.
+
+## 4.10.3
+Mon, 28 Aug 2017 10:09:32 GMT
+
+### Patches
+
+- Array: Add removeElement method
+
+## 4.10.2
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
 
 ## 4.10.1
 Fri, 25 Aug 2017 10:09:40 GMT
