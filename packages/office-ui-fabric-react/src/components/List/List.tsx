@@ -344,11 +344,12 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     );
   }
 
-  private _shouldVirtualize(): boolean {
+  private _shouldVirtualize(props?: IListProps): boolean {
+    const properties = props || this.props;
     const {
       onShouldVirtualize
-    } = this.props;
-    return !onShouldVirtualize || onShouldVirtualize(this.props);
+    } = properties;
+    return !onShouldVirtualize || onShouldVirtualize(properties);
   }
 
   /**
@@ -536,17 +537,13 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _updatePages(props?: IListProps) {
-    let { items, startIndex, renderCount } = (props || this.props);
-
-    renderCount = this._getRenderCount(props);
-
     // console.log('updating pages');
 
     if (!this._requiredRect) {
       this._updateRenderRects(props);
     }
 
-    let newListState = this._buildPages(items as any[], startIndex as number, renderCount);
+    let newListState = this._buildPages(props);
     let oldListPages = this.state.pages;
 
     this.setState(newListState, () => {
@@ -675,7 +672,10 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Build up the pages that should be rendered. */
-  private _buildPages(items: any[], startIndex: number, renderCount: number): IListState {
+  private _buildPages(props?: IListProps): IListState {
+    let { items, startIndex, renderCount } = (props || this.props);
+    renderCount = this._getRenderCount(props);
+    
     const materializedRect = { ...EMPTY_RECT };
     const pages: IPage[] = [];
 
@@ -683,8 +683,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     let pageTop = 0;
     let currentSpacer = null;
     let focusedIndex = this._focusedIndex;
-    let endIndex = startIndex + renderCount;
-    const shouldVirtualize = this._shouldVirtualize();
+    let endIndex = startIndex! + renderCount;
+    const shouldVirtualize = this._shouldVirtualize(props);
 
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
@@ -693,7 +693,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     const allowedRect = this._allowedRect;
 
-    for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
+    for (let itemIndex = startIndex!; itemIndex < endIndex; itemIndex += itemsPerPage) {
       const pageSpecification = this._getPageSpecification(itemIndex, allowedRect);
       const pageHeight = pageSpecification.height;
       const pageData = pageSpecification.data;
@@ -720,7 +720,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         }
 
         let itemsInPage = Math.min(itemsPerPage, endIndex - itemIndex);
-        let newPage = this._createPage(undefined, items.slice(itemIndex, itemIndex + itemsInPage), itemIndex, undefined, undefined, pageData);
+        let newPage = this._createPage(undefined, items!.slice(itemIndex!, itemIndex! + itemsInPage), itemIndex!, undefined, undefined, pageData);
 
         newPage.top = pageTop;
         newPage.height = pageHeight;
