@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "CodePenEmbed: Added new component for rendering codepens",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "micahgodbolt@gmail.com"
+}
