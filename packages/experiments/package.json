@@ -15,7 +15,6 @@
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open"
   },
   "devDependencies": {
-    "@microsoft/load-themed-styles": "^1.5.1",
     "@microsoft/web-library-build": "^3.2.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
@@ -64,7 +63,8 @@
     "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
-    "office-ui-fabric-react": "4.37.6"
+    "@microsoft/load-themed-styles": "^1.5.1",
+    "office-ui-fabric-react": ">=4.37.6 <5.0.0"
   },
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
