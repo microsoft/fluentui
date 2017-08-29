@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Aug 2017 00:52:38 GMT and should not be manually modified.
+
+## 4.37.5
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Patches
+
+- Add LikeSolid icon
+- Updating sass build to pre-process theming again for better registration performance.
+- Fix issues when a SelectionZone is outside a FocusZone
 
 ## 4.37.4
 Fri, 25 Aug 2017 20:31:51 GMT

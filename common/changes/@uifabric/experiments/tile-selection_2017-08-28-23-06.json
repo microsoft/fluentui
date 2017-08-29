@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Separate Selection out from TilesList and fix minor TilesList bugs",
-      "type": "minor"
+      "comment": "Fix Selection module reference in Tile modules",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",

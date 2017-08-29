@@ -463,6 +463,7 @@ export type IconName =
   'Lightbulb' |
   'LightningBolt' |
   'Like' |
+  'LikeSolid' |
   'LineChart' |
   'Link' |
   'List' |

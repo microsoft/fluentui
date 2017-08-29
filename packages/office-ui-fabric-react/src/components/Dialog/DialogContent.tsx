@@ -55,7 +55,7 @@ export class DialogContent extends BaseComponent<IDialogContentProps, {}> {
             { this.props.topButtonsProps!.map((props) => (
               <IconButton {...props} />
             )) }
-            { showCloseButton && type !== DialogType.largeHeader &&
+            { (type === DialogType.close || (showCloseButton && type !== DialogType.largeHeader)) &&
               <IconButton
                 className={ css(
                   'ms-Dialog-button ms-Dialog-button--close',
