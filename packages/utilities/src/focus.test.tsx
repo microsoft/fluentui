@@ -18,7 +18,7 @@ function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
   return renderedDOM as HTMLElement;
 }
 
-function _initialize() {
+function _initialize(): void {
   _hiddenElement = renderIntoDocument(
     <div data-is-visible={ false }>
       <button />
