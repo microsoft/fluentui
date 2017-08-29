@@ -1,5 +1,4 @@
 const path = require('path');
-// const nodeExternals = require('webpack-node-externals');
 const resources = require('../../scripts/tasks/webpack-resources');
 
 module.exports = resources.createConfig(
@@ -13,11 +12,6 @@ module.exports = resources.createConfig(
     },
 
     target: 'node',
-
-    externals: [
-      //  nodeExternals()
-      "vertx"
-    ],
 
     node: {
       fs: 'empty'
@@ -38,5 +32,3 @@ module.exports = resources.createConfig(
       }),
     ]
   });
-
-console.log(module.exports[0].resolve.extensions)
