@@ -228,7 +228,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           return true;
         }
 
-        if (item.itemType === ContextualMenuItemType.Section && item.sectionProps && itemsHaveIcons(item.sectionProps.items) === true) {
+        if (item.itemType === ContextualMenuItemType.Section && item.sectionProps && itemsHaveIcons(item.sectionProps.items)) {
           return true;
         }
       }
@@ -346,7 +346,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return;
     }
 
-    let headerItem = section.title ? this._renderHeaderMenuItem(section.title, index, hasCheckmarks, hasIcons) : undefined;
+    let headerItem = section.title && this._renderHeaderMenuItem(section.title, index, hasCheckmarks, hasIcons);
 
     if (section.items && section.items.length > 0) {
       return <li
@@ -354,12 +354,12 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         key={ section.key }>
         <div role='group'>
           <ul className={ css('ms-ContextualMenu-list is-open', styles.list) }>
-            { section.topDivider ? this._renderSeparator(index, undefined, true, true) : undefined }
-            { headerItem ? this._renderListItem(headerItem, item.key || index, item.className, item.title) : undefined }
+            { section.topDivider && this._renderSeparator(index, undefined, true, true) }
+            { headerItem && this._renderListItem(headerItem, item.key || index, item.className, item.title) }
             { section.items.map((contextualMenuItem, itemsIndex) => (
-              this._renderMenuItem(contextualMenuItem, itemsIndex, hasCheckmarks, hasIcons)
+              this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
             )) }
-            { section.bottomDivider ? this._renderSeparator(index, undefined, false, true) : undefined }
+            { section.bottomDivider && this._renderSeparator(index, undefined, false, true) }
           </ul>
         </div>
       </li>;
@@ -632,6 +632,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     return this._findItemByKeyFromItems(key, items);
   }
 
+  /**
+   * Returns the item that mathes a given key if any.
+   * @param key The key of the item to match
+   * @param items The items to look for the key
+   */
   private _findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
     for (const item of items) {
       if (item.itemType === ContextualMenuItemType.Section && item.sectionProps) {
