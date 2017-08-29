@@ -91,11 +91,11 @@
 
     var scripts = [];
     var noCompress = getParameterByName('noCompress') === 'true';
-    var devScript = getParameterByName('devUrl'); // Should be atleast 4 characters long
+    var devUrl = getParameterByName('devUrl');
 
-    if (devScript) {
+    if (devUrl) {
       scripts.push.apply(scripts, reactDevelopment);
-      scripts.push(devScript);
+      scripts.push(devUrl);
     } else if (isLocal) {
       scripts.push.apply(scripts, reactDevelopment);
       scripts.push('fabric-website.js');
