@@ -1,6 +1,25 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 24 Aug 2017 10:20:20 GMT and should not be manually modified.
+This log was last generated on Sat, 26 Aug 2017 00:52:38 GMT and should not be manually modified.
+
+## 0.2.0
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Minor changes
+
+- Separate Selection out from TilesList and fix minor TilesList bugs
+
+## 0.1.7
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 0.1.6
+Fri, 25 Aug 2017 19:27:18 GMT
+
+*Changes not tracked*
 
 ## 0.1.5
 Thu, 24 Aug 2017 10:20:20 GMT

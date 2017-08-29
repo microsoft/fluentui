@@ -86,13 +86,17 @@
       '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js'
     ];
 
-    var baseProductionUrl = "https://static2.sharepointonline.com/files/fabric/fabric-website/dist/";
-    var baseDogfoodUrl = "https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/";
+    var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+    var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
 
     var scripts = [];
     var noCompress = getParameterByName('noCompress') === 'true';
+    var devScript = getParameterByName('devUrl'); // Should be atleast 4 characters long
 
-    if (isLocal) {
+    if (devScript) {
+      scripts.push.apply(scripts, reactDevelopment);
+      scripts.push(devScript);
+    } else if (isLocal) {
       scripts.push.apply(scripts, reactDevelopment);
       scripts.push('fabric-website.js');
     } else if (isDogfood) {
