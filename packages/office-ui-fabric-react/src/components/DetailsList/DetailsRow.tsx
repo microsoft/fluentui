@@ -8,8 +8,11 @@ import {
   css,
   shallowCompare,
   getNativeProps,
-  divProperties
+  divProperties,
+  getRTLSafeKeyCode,
+  KeyCodes,
 } from '../../Utilities';
+
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -49,6 +52,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
+  innerZoneFocusible?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -224,6 +228,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
         allowFocusRoot={ true }
+        isInnerZoneKeystroke={ (ev: React.KeyboardEvent<HTMLElement>) => (this.props.innerZoneFocusible ? ev.which === getRTLSafeKeyCode(KeyCodes.down) : false) }
       >
         { showCheckbox && (
           <div
