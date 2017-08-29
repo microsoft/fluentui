@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "give up-to-date properties to shouldVirtualize",
+      "comment": "List: fixing minor issue around using the `shouldVirtualize` prop.",
       "type": "patch"
     }
   ],
