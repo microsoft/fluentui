@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+const { expect } = chai;
 import { OverflowSet } from './OverflowSet';
 import * as sinon from 'sinon';
 

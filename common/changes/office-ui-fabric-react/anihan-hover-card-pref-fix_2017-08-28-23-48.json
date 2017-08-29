@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adjusted build to produce sourcemaps with correct sourceRoot.",
+      "comment": "HoverCard: Improved performance of expanding animation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "anihan@microsoft.com"
 }

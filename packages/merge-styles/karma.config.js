@@ -4,9 +4,7 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let build = require('@microsoft/web-library-build');
-let buildConfig = build.getConfig();
-let configResources = build.karma.resources;
+let configResources = require('../../scripts/tasks/karma-resources');
 let bindPolyfillPath = configResources.bindPolyfillPath;
 let debugRun = (process.argv.indexOf('--debug') > -1);
 
@@ -22,7 +20,9 @@ module.exports = function (config) {
 
 
     // list of files / patterns to load in the browser
-    files: [bindPolyfillPath].concat([path.join(buildConfig.libFolder, '**', '*.test.js')]),
+    files: configResources.files.concat([
+      path.join('lib', '**', '*.test.js')
+    ]),
 
 
     // list of files to exclude
@@ -55,7 +55,7 @@ module.exports = function (config) {
       },
       resolve: {
         modules: [
-          buildConfig.libFolder,
+          'lib',
           'node_modules'
         ]
       }
@@ -68,7 +68,7 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      [path.join(buildConfig.libFolder, '/**/*.js')]: ['webpack']
+      [path.join('lib', '/**/*.js')]: ['webpack']
     },
 
     plugins: configResources.plugins.concat([

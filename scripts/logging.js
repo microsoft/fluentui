@@ -1,18 +1,21 @@
 const chalk = require('chalk');
 
-module.exports.logStartTask = (task) => {
+const isProduction = process.argv.indexOf('--production') > -1;
+const isVerbose = process.argv.indexOf('--verbose') > -1;
+
+module.exports.logStartTask = (packageName, task) => {
   console.log(
     `${
-    chalk.white('[') + chalk.gray(new Date().toLocaleTimeString({ hour12: false })) + chalk.white('] Starting:')
-    } ${
+    getTimePrefix(packageName)
+    } Starting: ${
     chalk.cyan(task)
     }`);
 };
 
-module.exports.logEndTask = (task, startTime, errorMessage) => {
+module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
   console.log(
     `${
-    getTimePrefix()
+    getTimePrefix(packageName)
     } ${
     getPassFail(errorMessage === undefined)
     }: ${
@@ -25,19 +28,19 @@ module.exports.logEndTask = (task, startTime, errorMessage) => {
 }
 
 module.exports.logStatus = (taskStatus) => {
-  console.log('  ' + taskStatus);
+  if (isProduction || isVerbose) {
+    console.log('  ' + taskStatus);
+  }
 }
 
 module.exports.logEndBuild = (packageName, passed, startTime) => {
   console.log();
   console.log(
     `${
-    getTimePrefix()
-    } ${
-    chalk.grey('===') + chalk.white('[ ') + chalk.cyan(packageName) + chalk.white(' ]') +
+    chalk.grey('============') + chalk.white('[ ') + chalk.cyan(packageName) + chalk.white(' ]') +
     chalk.grey('=') + chalk.white('[ ') + getPassFail(passed) + chalk.white(' ]') +
     chalk.grey('=') + chalk.white('[ ') + getDuration(startTime) + chalk.white(' ]') +
-    chalk.grey('===')
+    chalk.grey('============')
     }
   `);
 }
@@ -51,11 +54,12 @@ function getPassFail(passed) {
   return passed ? chalk.green('Pass') : chalk.red('Error');
 }
 
-function getTimePrefix() {
-  return `[${
+function getTimePrefix(packageName) {
+  return `[${chalk.magenta(packageName)} ${
     chalk.gray(new Date().toLocaleTimeString({ hour12: false }))
     }]`;
 }
+
 function formatTime(milliseconds) {
   if (milliseconds >= 1000) {
     return (milliseconds / 1000) + 's';

@@ -273,7 +273,7 @@ export function isElementFocusSubZone(element?: HTMLElement): boolean {
  *
  * @public
  */
-export function doesElementContainFocus(element: HTMLElement) {
+export function doesElementContainFocus(element: HTMLElement): boolean {
   let document = getDocument(element);
   let currentActiveElement: HTMLElement | undefined = document && document.activeElement as HTMLElement;
   if (currentActiveElement && elementContains(element, currentActiveElement)) {
