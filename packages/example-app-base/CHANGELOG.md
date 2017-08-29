@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 4.2.4
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 4.2.3
 Fri, 25 Aug 2017 20:31:51 GMT

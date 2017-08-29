@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 26 Aug 2017 00:52:38 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 4.37.7
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.37.6
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Patches
+
+- FocusZone: disable tabIndex of previous element on mouse focus.
+- Selection: Adding better handling around a case where getKey returns null or undefined.
+- Dialog: Show close button when dialog type is DialogType.close
 
 ## 4.37.5
 Sat, 26 Aug 2017 00:52:38 GMT
