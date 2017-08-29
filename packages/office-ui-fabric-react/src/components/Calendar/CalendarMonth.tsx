@@ -40,7 +40,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
       this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
 
-    this.isCurrentMonth = this.isCurrentMonth.bind(this);
+    this._isCurrentMonth = this._isCurrentMonth.bind(this);
     this._onSelectNextYear = this._onSelectNextYear.bind(this);
     this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
     this._onSelectMonth = this._onSelectMonth.bind(this);
@@ -101,7 +101,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
                     {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this.isCurrentMonth(index, navigatedDate.getFullYear(), today!),
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!),
                       ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && (navigatedDate.getMonth() === index)
                     })
                 }
@@ -127,7 +127,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     }
   }
 
-  private isCurrentMonth(month: number, year: number, today: Date) {
+  private _isCurrentMonth(month: number, year: number, today: Date) {
     return today.getFullYear() === year && today.getMonth() === month;
   }
 

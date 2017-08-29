@@ -97,7 +97,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (dateRangeType === 2) {
       if (selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
         // navigatedDate is on the current month and current year
-        weekCorners = this.findWeekCorners(weeks);
+        weekCorners = this._findWeekCorners(weeks);
       }
     }
 
@@ -174,7 +174,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     <td key={ day.key } className={ css(
                       {
                         ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === 1,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this.getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === 2,
+                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === 2,
                         ['ms-DatePicker-day--dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === 0
                       }) }
                     >
@@ -219,7 +219,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private findWeekCorners(weeks: any): any {
+  private _findWeekCorners(weeks: any) {
     let weekCorners: any = {};
     let numberOfWeeks = weeks.length;
     let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
@@ -281,7 +281,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return weekCorners;
   }
 
-  private getHighlightedCornerStyle(weekCorners: any, dayIndex: number, weekIndex: number): any {
+  private _getHighlightedCornerStyle(weekCorners: any, dayIndex: number, weekIndex: number) {
     let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
 
     return cornerStyle;
