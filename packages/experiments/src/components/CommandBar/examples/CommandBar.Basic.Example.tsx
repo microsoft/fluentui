@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { CommandBar } from '../CommandBar';
-export class CommandBarBasicExample extends React.Component<any, any> {
+import { ICommandBarProps } from './../CommandBar.Props';
+export class CommandBarBasicExample extends React.Component<ICommandBarProps, {}> {
 
-  constructor(props: any) {
+  constructor(props: ICommandBarProps) {
     super(props);
     this.state = {
       areNamesVisible: true,

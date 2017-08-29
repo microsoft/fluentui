@@ -211,7 +211,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
           onRenderItemLink: pivotItem.props.onRenderItemLink
         });
         this._keyToIndexMapping[itemKey] = index;
-        this._keyToTabIds[itemKey] = this.getTabId(itemKey, index);
+        this._keyToTabIds[itemKey] = this._getTabId(itemKey, index);
       }
     });
 
@@ -221,7 +221,7 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   /**
    * Generates the Id for the tab button.
    */
-  private getTabId(itemKey: string, index: number): string {
+  private _getTabId(itemKey: string, index: number): string {
     if (this.props.getTabId) {
       return this.props.getTabId(itemKey, index);
     }

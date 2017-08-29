@@ -68,8 +68,8 @@ function createConfig(isProduction, publicPath) {
 
     module: {
       noParse: [/autoit.js/],
-      preLoaders: [
-        { test: /\.json$/, loader: 'json' }
+      loaders: [
+        { test: /\.json$/, loader: 'json', enforce: 'pre' }
       ]
     },
 

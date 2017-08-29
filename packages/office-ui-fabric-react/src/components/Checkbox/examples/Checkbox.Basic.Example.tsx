@@ -42,7 +42,9 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
             onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
           } }
           styles={ styles }
+          ariaDescribedBy={ 'descriptionID' }
         />
+        <label id='descriptionID' className='screenReaderOnly'>Uncontroller checkbox description</label>
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'

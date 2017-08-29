@@ -18,8 +18,9 @@ export enum ExampleStatus {
 }
 
 export interface IAppLink extends INavLink {
+  // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: any;
+  component?: React.ComponentClass | (() => JSX.Element);
 }
 
 export interface IAppLinkGroup extends INavLinkGroup {
@@ -43,7 +44,7 @@ export interface IAppState {
 }
 
 @withResponsiveMode
-export class App extends React.Component<IAppProps, any> {
+export class App extends React.Component<IAppProps, IAppState> {
 
   constructor(props: IAppProps) {
     super(props);
@@ -56,7 +57,7 @@ export class App extends React.Component<IAppProps, any> {
     this._onLinkClick = this._onLinkClick.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { appDefinition, responsiveMode } = this.props;
     let { isMenuVisible } = this.state;
 
@@ -114,11 +115,11 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean) {
+  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
     this.setState({ isMenuVisible });
   }
 
-  private _onLinkClick() {
+  private _onLinkClick(): void {
     this.setState({ isMenuVisible: false });
   }
 }

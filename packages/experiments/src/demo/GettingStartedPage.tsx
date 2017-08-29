@@ -5,7 +5,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import './GettingStartedPage.scss';
 import { Highlight } from '@uifabric/example-app-base';
 
-export class GettingStartedPage extends React.Component<any, any> {
+export class GettingStartedPage extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (

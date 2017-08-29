@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Set button.check margin to 0",
+      "comment": "HoverCard: Improved performance of expanding animation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "anihan@microsoft.com"
 }

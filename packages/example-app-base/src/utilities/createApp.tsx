@@ -18,17 +18,21 @@ import { ExampleGroup, IExample } from './examplesOf';
  * @param appTitle A title for the application that will be displayed in the header.
  * @param headerLinks A set of links to put in the header of the application.
  */
-export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteComponent: () => (JSX.Element | null) = () => null, appTitle?: string, headerLinks?: IAppLink[]) {
+export function createApp(
+  examples: ExampleGroup | ExampleGroup[],
+  defaultRouteComponent: () => (JSX.Element | null) = () => null,
+  appTitle?: string, headerLinks?: IAppLink[]
+): void {
   let rootElement: HTMLElement | null;
   let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
-  function _onLoad() {
+  function _onLoad(): void {
     rootElement = document.createElement('div');
     document.body.appendChild(rootElement);
 
     setBaseUrl('./dist/');
 
-    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group, groupIndex) => group.examples.map(
+    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group: ExampleGroup, groupIndex: number) => group.examples.map(
       (example: IExample, index: number) => (
         <Route
           key={ example.key }
@@ -58,7 +62,7 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
           <Route key='minimal' path='?minimal' component={ _getComponent }>
             { routes }
           </Route>
-          <Route key={ 'app' } component={ (props: any) => <App appDefinition={ appDefinition } { ...props } /> }>
+          <Route key={ 'app' } component={ (props: {}) => <App appDefinition={ appDefinition } { ...props } /> }>
             { routes }
           </Route>
         </Router>
@@ -67,7 +71,7 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
       rootElement);
   }
 
-  function _onUnload() {
+  function _onUnload(): void {
     if (rootElement) {
       ReactDOM.unmountComponentAtNode(rootElement);
       rootElement = null;
@@ -85,7 +89,7 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], defaultRouteC
   window.onunload = _onUnload;
 }
 
-function _getComponent(props: any): JSX.Element {
+function _getComponent<TProps extends React.Props<{}>>(props: TProps): JSX.Element {
   return (
     <div { ...props } />
   );
@@ -95,10 +99,10 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
   return {
     appTitle: 'Fabric Examples',
     testPages: [],
-    examplePages: groups.map((group, groupIndex) => (
+    examplePages: groups.map((group: ExampleGroup, groupIndex: number) => (
       {
         name: group.title,
-        links: group.examples.map((example, exampleIndex) => (
+        links: group.examples.map((example: IExample, exampleIndex: number) => (
           {
             component: example.onRender,
             key: example.key,

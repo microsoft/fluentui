@@ -3,10 +3,10 @@ import * as React from 'react';
 import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.Props';
 import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { SelectionZone, SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { autobind, css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 
+// tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
 
 const MAX_TILE_STRETCH = 1.5;
@@ -67,6 +67,7 @@ interface IPageSpecificationCache<TItem> {
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
 
+  // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
 
@@ -91,35 +92,18 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
   public render(): JSX.Element {
     const {
-      selection
-    } = this.props;
-
-    const {
       cells
     } = this.state;
-
-    const list = (
-      <List
-        items={ cells }
-        getPageSpecification={ this._getPageSpecification }
-        onRenderPage={ this._onRenderPage }
-      />
-    );
 
     return (
       <FocusZone
         direction={ FocusZoneDirection.bidirectional }
       >
-        {
-          selection ?
-            <SelectionZone
-              selection={ selection }
-              selectionMode={ SelectionMode.multiple }
-            >
-              { list }
-            </SelectionZone> :
-            list
-        }
+        <List
+          items={ cells }
+          getPageSpecification={ this._getPageSpecification }
+          onRenderPage={ this._onRenderPage }
+        />
       </FocusZone>
     );
   }
@@ -142,6 +126,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       <div
         role='presentation'
         className={ css(TilesListStyles.cell) }
+        // tslint:disable-next-line:jsx-ban-props
         style={
           {
             paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
@@ -226,6 +211,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             className={ css('ms-List-cell', this._onGetCellClassName(), {
               [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
             }) }
+            // tslint:disable-next-line:jsx-ban-props
             style={
               {
                 ...this._onGetCellStyle(cell, currentRow)
@@ -248,6 +234,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           className={ css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none
           }) }
+          // tslint:disable-next-line:jsx-ban-props
           style={
             {
               width: `${width}px`,
@@ -387,18 +374,16 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         currentRow.scaleFactor = (boundsWidth - totalMargin) / (rowWidth - totalMargin);
       }
 
-      if (!isAtGridEnd && currentRow.scaleFactor > grid.maxScaleFactor) {
+      if (!isAtGridEnd && currentRow.scaleFactor > (grid.mode === TilesGridMode.fill ? grid.maxScaleFactor : 1)) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
         extraCells = cells.slice(rowStart, i);
       }
     }
 
-    const itemCount = extraCells ?
-      // If there are extra cells, cut off the page so the extra cells will be pushed into the next page.
-      rowStart - startIndex :
-      // Otherwise, take all the cells.
-      i - startIndex;
+    // If there are extra cells, cut off the page so the extra cells will be pushed into the next page.
+    // Otherwise, take all the cells.
+    const itemCount = i - (extraCells ? extraCells.length : 0) - startIndex;
 
     const pageSpecification: IPageSpecification<TItem> = {
       itemCount: itemCount,

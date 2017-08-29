@@ -1,3 +1,4 @@
+// tslint:disable:no-any
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 
@@ -14,6 +15,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'CommandBar',
           name: 'CommandBar',
           url: '#/examples/commandbar'
+        },
+        {
+          component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
+          key: 'FolderCover',
+          name: 'FolderCover',
+          url: '#/examples/foldercover'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,

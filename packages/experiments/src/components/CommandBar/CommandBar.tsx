@@ -11,6 +11,8 @@ import { OverflowSet, IOverflowSet } from 'office-ui-fabric-react/lib/OverflowSe
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import * as stylesImport from './CommandBar.scss';
+
+// tslint:disable-next-line:no-any
 const styles: any = stylesImport;
 
 export interface ICommandBarData {
@@ -38,7 +40,7 @@ export interface ICommandBarData {
 
 const COMMANDBAR_HEIGHT = '40px';
 
-export class CommandBar extends BaseComponent<ICommandBarProps, any> implements ICommandBar {
+export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: [],
@@ -127,7 +129,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
     this._overflowSet.focus();
   }
 
-  private computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
+  private _computeCacheKey(primaryItems: ICommandBarItemProps[], farItems: ICommandBarItemProps[], overflow: boolean): string {
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
@@ -150,7 +152,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
       overflowItems = [...overflowItems, movedItem];
       primaryItems = primaryItems.slice(0, -1);
-      cacheKey = this.computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+      cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -169,7 +171,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
       overflowItems = overflowItems.slice(0, -1);
       primaryItems = [...primaryItems, movedItem];
-      cacheKey = this.computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
+      cacheKey = this._computeCacheKey(primaryItems, farItems!, !!overflowItems.length);
 
       return { ...data, primaryItems, overflowItems, cacheKey };
     }
@@ -204,6 +206,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, any> implements 
 
   @autobind
   private _onRenderButton(props: ICommandBarItemProps): JSX.Element {
+    // tslint:disable-next-line:no-any
     return <CommandBarButton {...props as any} />;
   }
 }
