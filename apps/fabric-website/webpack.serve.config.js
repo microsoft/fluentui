@@ -40,7 +40,8 @@ module.exports = {
   devServer: {
     inline: true,
     port: 4321,
-    host: HOST_NAME
+    host: HOST_NAME,
+    disableHostCheck: true
   },
   module: {
     loaders: [
