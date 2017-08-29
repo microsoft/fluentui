@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.2.1",
+      "tag": "@uifabric/experiments_v0.2.1",
+      "date": "Tue, 29 Aug 2017 10:20:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "9d4818a42955c9517b5b64c0e4d4ea2bab4c05ad",
+            "comment": "Fix Selection module reference in Tile modules"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.5` to `4.37.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "@uifabric/experiments_v0.2.0",
       "date": "Sat, 26 Aug 2017 00:52:38 GMT",

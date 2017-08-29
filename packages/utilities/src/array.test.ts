@@ -1,4 +1,4 @@
-import { findIndex, find, createArray, removeElement } from './array';
+import { findIndex, find, createArray, removeIndex } from './array';
 let { expect } = chai;
 
 describe('array utils tests', () => {
@@ -56,28 +56,28 @@ describe('array utils tests', () => {
     });
   });
 
-  describe('removeElement tests', () => {
+  describe('removeIndex tests', () => {
     it('should return a new array instead of mutating the existing array', () => {
       const array = [0, 1, 2];
-      const result = removeElement(array, 0);
+      const result = removeIndex(array, 0);
       expect(result).to.not.equal(array);
     });
 
     it('should remove the first element of the array', () => {
       const array = [0, 1, 2];
-      const result = removeElement(array, 0);
+      const result = removeIndex(array, 0);
       expect(result).to.deep.equal([1, 2]);
     });
 
     it('should remove the last element of the array', () => {
       const array = [0, 1, 2];
-      const result = removeElement(array, 2);
+      const result = removeIndex(array, 2);
       expect(result).to.deep.equal([0, 1]);
     });
 
     it('should remove the element in the middle of the array', () => {
       const array = [0, 1, 2];
-      const result = removeElement(array, 1);
+      const result = removeIndex(array, 1);
       expect(result).to.deep.equal([0, 2]);
     });
   });
