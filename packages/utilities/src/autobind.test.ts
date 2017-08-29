@@ -2,7 +2,8 @@ let { expect } = chai;
 import { autobind } from './autobind';
 
 class Greeter {
-  private _hello = 'hello';
+  // tslint:disable-next-line:no-inferrable-types
+  private _hello: string = 'hello';
 
   @autobind
   public sayHello(): string {
