@@ -1,6 +1,21 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 21 Aug 2017 10:19:28 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+
+## 4.2.3
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 4.2.2
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Patches
+
+- Break up long lines or disable max line length in ex-app-base pkg to pass tslint
+- Added missing typedefs in ex-app-base pkg to pass tslint
 
 ## 4.2.1
 Mon, 21 Aug 2017 10:19:28 GMT

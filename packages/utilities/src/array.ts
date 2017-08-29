@@ -6,7 +6,7 @@
  * @param array - Array to search.
  * @param cb - Callback which returns true on matches.
  */
-export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolean): number {
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number {
   let index = -1;
 
   for (let i = 0; array && i < array.length; i++) {
@@ -20,20 +20,35 @@ export function findIndex<T>(array: T[], cb: (item: T, index?: number) => boolea
 }
 
 /**
+ * Helper to find the first item within an array that satisfies the callback.
+ * @param array - Array to search
+ * @param cb - Callback which returns true on matches
+ */
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined {
+  let index = findIndex(array, cb);
+
+  if (index < 0) {
+    return undefined;
+  }
+
+  return array[index];
+}
+
+/**
  * Creates an array of a given size and helper method to populate.
  *
  * @public
  * @param size - Size of array.
  * @param getItem - Callback to populate given cell index.
  */
-export function createArray<T>(size: number, getItem?: (index?: number) => T): T[] {
-  let array: (T | null)[] = [];
+export function createArray<T>(size: number, getItem: (index: number) => T): T[] {
+  let array: T[] = [];
 
   for (let i = 0; i < size; i++) {
-    array.push(getItem ? getItem(i) : null);
+    array.push(getItem(i));
   }
 
-  return array as T[];
+  return array;
 }
 
 /**
@@ -54,4 +69,13 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
     }
     return rows;
   }, [] as T[][]);
+}
+
+/**
+ * Given an array, it returns a new array that does not contain the item at the given index.
+ * @param array - The array to operate on
+ * @param index - The index of the element to remove
+ */
+export function removeIndex<T>(array: T[], index: number): T[] {
+  return array.filter((_, i) => index !== i);
 }
