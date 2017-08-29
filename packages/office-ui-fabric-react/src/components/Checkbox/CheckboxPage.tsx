@@ -69,9 +69,6 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/CheckBox/CheckBox.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

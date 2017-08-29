@@ -59,9 +59,6 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div></div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Dropdown/Dropdown.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
