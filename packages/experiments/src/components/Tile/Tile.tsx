@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { css, BaseComponent, autobind, getId, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
@@ -273,4 +273,19 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected: selectionIndex > -1 && selection && selection.isIndexSelected(selectionIndex)
     });
   }
+}
+
+export interface ITileDimensionsProps {
+  dimensions: ISize;
+  hasName?: boolean;
+  hasActivity?: boolean;
+}
+
+export function getForegroundSize(props: ITileDimensionsProps) {
+  const width = props.dimensions.width - 32;
+
+  return {
+    width: width,
+    height: height
+  };
 }
