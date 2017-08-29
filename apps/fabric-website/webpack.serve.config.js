@@ -1,24 +1,29 @@
-/**
- * TODO Remove this plugin when merging back into master as it greatly slows down
- * build times. This is mainly so that we can serve up the entry point to our devx
- * testing site
- */
-let WriteFilePlugin = require('write-file-webpack-plugin');
+
 let path = require('path');
 let webpack = require('webpack');
 let WebpackNotifierPlugin = require('webpack-notifier');
-const HOST_NAME = require('os').hostname();
-
 const PACKAGE_NAME = require('./package.json').name;
+
+let plugins = [
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('production')
+  }),
+  new WebpackNotifierPlugin(),
+];
+
+const devServerConfig = {
+  inline: true,
+  port: 4321
+};
+
+const outputConfig = {
+  filename: 'fabric-site.js'
+}
 
 module.exports = {
   entry: './src/root.tsx',
 
-  output: {
-    path: path.join(__dirname, '/dist'),
-    publicPath: '/dist/',
-    filename: 'fabric-website.js'
-  },
+  output: outputConfig,
 
   externals: {
     'react': 'React',
@@ -37,12 +42,7 @@ module.exports = {
 
   devtool: 'source-map',
 
-  devServer: {
-    inline: true,
-    port: 4321,
-    host: HOST_NAME,
-    disableHostCheck: true
-  },
+  devServer: devServerConfig,
   module: {
     loaders: [
       {
@@ -91,11 +91,5 @@ module.exports = {
     ]
   },
 
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new WebpackNotifierPlugin(),
-    new WriteFilePlugin()
-  ]
+  plugins: plugins
 }

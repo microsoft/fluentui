@@ -12,7 +12,8 @@
     "build": "gulp",
     "clean": "gulp clean",
     "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "production": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js --production"
+    "production": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js --production",
+    "startuhf": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.uhf.serve.config.js --open"
   },
   "license": "MIT",
   "devDependencies": {
