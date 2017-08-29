@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix Selection module reference in Tile modules",
-      "type": "patch"
+      "comment": "Implement FolderCover component",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
