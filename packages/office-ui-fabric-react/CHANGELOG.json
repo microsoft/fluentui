@@ -2,6 +2,38 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.37.6",
+      "tag": "office-ui-fabric-react_v4.37.6",
+      "date": "Tue, 29 Aug 2017 10:20:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "5a1d787d64a053d6ab882c2b6cadfa3c56b8005b",
+            "comment": "FocusZone: disable tabIndex of previous element on mouse focus."
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "1bfc50eb3e4f3a47c38e705a5484b643f35f3bce",
+            "comment": "Selection: Adding better handling around a case where getKey returns null or undefined."
+          },
+          {
+            "author": "David Wolf <lupine86@users.noreply.github.com>",
+            "commit": "42a8dbcf9c3715d41f1393ec98642de1f73e67a9",
+            "comment": "Dialog: Show close button when dialog type is DialogType.close"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.3 <5.0.0` to `>=4.11.0 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.20.2 <1.0.0` to `>=0.21.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.37.5",
       "tag": "office-ui-fabric-react_v4.37.5",
       "date": "Sat, 26 Aug 2017 00:52:38 GMT",
