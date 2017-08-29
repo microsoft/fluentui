@@ -94,9 +94,14 @@ $dontColor: #A61E22;
     }
   }
 
+  .ComponentPage-codePenSection iframe {
+    border: none;
+  }
+
   .ComponentPage-overviewSection,
   .ComponentPage-bestPracticesSection,
   .ComponentPage-variantsSection,
+  .ComponentPage-codePenSection,
   .ComponentPage-implementationSection {
     padding: $componentPagePadding;
   }
