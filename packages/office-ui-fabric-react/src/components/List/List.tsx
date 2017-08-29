@@ -675,7 +675,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   private _buildPages(props?: IListProps): IListState {
     let { items, startIndex, renderCount } = (props || this.props);
     renderCount = this._getRenderCount(props);
-    
+
     const materializedRect = { ...EMPTY_RECT };
     const pages: IPage[] = [];
 
