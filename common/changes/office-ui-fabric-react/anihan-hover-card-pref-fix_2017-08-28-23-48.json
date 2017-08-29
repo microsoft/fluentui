@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "HoverCard perf fix",
+      "comment": "HoverCard: Improved performance of expanding animation.",
       "type": "patch"
     }
   ],
