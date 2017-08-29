@@ -12,7 +12,7 @@ let _hiddenElement: HTMLElement | undefined;
 let _visibleElement: HTMLElement | undefined;
 let _element: HTMLElement | undefined;
 
-function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
+function renderIntoDocument(element: React.ReactElement<{}>): HTMLElement {
   const component = ReactTestUtils.renderIntoDocument(element);
   const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
   return renderedDOM as HTMLElement;
@@ -34,6 +34,7 @@ function _initialize(): void {
       <button />
     </div>
   ) as HTMLElement;
+  // tslint:disable-next-line:no-any
   (_element as any).isVisible = true;
 }
 

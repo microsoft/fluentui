@@ -54,17 +54,19 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
     injectedProps: PropTypes.Requireable<any>;
   } = Customizer.contextTypes;
 
-  constructor(props: any, context: any) {
+  // tslint:disable-next-line:no-any
+  constructor(props: ICustomizerProps, context: any) {
     super(props);
 
     this.state = this._getInjectedProps(props, context);
   }
 
-  public getChildContext(): any {
+  public getChildContext(): ICustomizerState {
     return this.state;
   }
 
-  public componentWillReceiveProps(newProps: any, newContext: any): void {
+  // tslint:disable-next-line:no-any
+  public componentWillReceiveProps(newProps: ICustomizerProps, newContext: any): void {
     this.setState(this._getInjectedProps(newProps, newContext));
   }
 
