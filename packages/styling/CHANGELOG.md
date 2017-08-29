@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 29 Aug 2017 10:20:56 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 0.21.1
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 0.21.0
 Tue, 29 Aug 2017 10:20:56 GMT
