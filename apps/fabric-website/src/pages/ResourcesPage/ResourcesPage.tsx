@@ -25,7 +25,7 @@ export class ResourcesPage extends React.Component<any, any> {
           backgroundColor='#ff8c00'
         />
 
-        <div className={ styles.angle }></div>
+        <div className={ styles.angle } />
 
         <h2 className={ styles.pageTitle }>We want to hear from you</h2>
 

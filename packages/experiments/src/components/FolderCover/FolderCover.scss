@@ -1,0 +1,85 @@
+
+@import '~office-ui-fabric-react/src/common/common';
+
+.root {
+  display: inline-flex;
+  position: relative;
+  vertical-align: bottom;
+
+  &,
+  &.isSmall {
+    width: 72px;
+    height: 52px;
+  }
+
+  &.isLarge {
+    width: 112px;
+    height: 80px;
+  }
+}
+
+.front {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.back {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.content {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  &,
+  .isSmall & {
+    max-height: 52px - 8px;
+  }
+
+  .isLarge & {
+    max-height: 80px - 8px;
+  }
+}
+
+.metadata {
+  position: absolute;
+  display: block;
+  right: 8px;
+  left: 8px;
+  @include text-align(right);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: $ms-font-weight-regular;
+  color: $ms-color-white;
+
+  &,
+  &.isSmall {
+    font-size: $ms-font-size-s;
+  }
+
+  .isLarge & {
+    font-size: $ms-font-size-m;
+  }
+
+  &,
+  &.isDefault {
+    bottom: 8px;
+  }
+
+  .isMedia & {
+    bottom: 4px;
+  }
+}
