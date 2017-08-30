@@ -10,12 +10,12 @@ export type TileSize = keyof {
 
 export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpanElement | HTMLAnchorElement> {
   /**
-   * The rendered bound size for the Tile.
+   * The intended dimensions for the Tile.
    *
    * @type {ISize}
    * @memberof ITileProps
    */
-  bounds?: ISize;
+  contentSize?: ISize;
   /**
    * The breakpoint size for the Tile.
    *

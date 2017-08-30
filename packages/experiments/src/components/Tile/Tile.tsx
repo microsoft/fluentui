@@ -3,7 +3,8 @@ import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { css, BaseComponent, autobind, getId, ISize } from 'office-ui-fabric-react/lib/Utilities';
+import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { ISize } from '@uifabric/utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
@@ -275,17 +276,52 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }
 }
 
-export interface ITileDimensionsProps {
-  dimensions: ISize;
-  hasName?: boolean;
-  hasActivity?: boolean;
+export interface ITileLayout {
+  foregroundSize?: ISize | undefined;
+  backgroundSize?: ISize | undefined;
 }
 
-export function getForegroundSize(props: ITileDimensionsProps) {
-  const width = props.dimensions.width - 32;
+export function getTileLayout(tileElement: JSX.Element): ITileLayout {
+  const tileProps: ITileProps = tileElement.props;
+
+  const {
+    contentSize
+  } = tileProps;
+
+  if (!contentSize) {
+    return {};
+  }
+
+  const width = contentSize.width;
+
+  let nameplateHeight = 0;
+
+  if (tileProps.itemName || tileProps.itemActivity) {
+    nameplateHeight += 12 * 2; // 12px top/bottom padding.
+    if (tileProps.itemName) {
+      nameplateHeight += 20;
+    }
+    if (tileProps.itemActivity) {
+      nameplateHeight += 20;
+    }
+  }
 
   return {
-    width: width,
-    height: height
+    foregroundSize: {
+      width: width - 16 * 2,
+      height: contentSize.height - 16 - nameplateHeight
+    },
+    backgroundSize: contentSize
   };
+}
+
+export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<ITileProps>): JSX.Element {
+  const Tag = tileElement.type;
+
+  return (
+    <Tag
+      { ...tileElement.props }
+      { ...props }
+    />
+  );
 }
