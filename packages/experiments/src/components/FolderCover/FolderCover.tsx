@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCover.Props';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { ISize } from '@uifabric/utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
 
 // tslint:disable-next-line:no-any
@@ -12,6 +13,19 @@ export interface IFolderCoverState {
 }
 
 const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets';
+
+const SIZES: {
+  [P in FolderCoverSize]: ISize;
+} = {
+    small: {
+      width: 72 - 8,
+      height: 52 - 8
+    },
+    large: {
+      width: 112 - 8,
+      height: 80 - 8
+    }
+  };
 
 const ASSETS: {
   [P in FolderCoverSize]: {
@@ -84,4 +98,31 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
       </div>
     );
   }
+}
+
+export interface IFolderCoverLayout {
+  contentSize: ISize;
+}
+
+export function getFolderCoverLayout(element: JSX.Element): IFolderCoverLayout {
+  const folderCoverProps: IFolderCoverProps = element.props;
+
+  const {
+    folderCoverSize = 'large'
+  } = folderCoverProps;
+
+  return {
+    contentSize: SIZES[folderCoverSize]
+  };
+}
+
+export function renderFolderCoverWithLayout(element: JSX.Element, props: Partial<IFolderCoverProps>): JSX.Element {
+  const Tag = element.type;
+
+  return (
+    <Tag
+      { ...element.props }
+      { ...props }
+    />
+  );
 }
