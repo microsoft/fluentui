@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dialog: Show close button when dialog type is DialogType.close",
+      "comment": "HoverCard: Improved performance of expanding animation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "davwolf@microsoft.com"
+  "email": "anihan@microsoft.com"
 }

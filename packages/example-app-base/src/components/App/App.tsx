@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   css
 } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
@@ -18,8 +19,9 @@ export enum ExampleStatus {
 }
 
 export interface IAppLink extends INavLink {
+  // tslint:disable-next-line:no-any
   getComponent?: (cb: (obj: any) => void) => any;
-  component?: any;
+  component?: React.ComponentClass | (() => JSX.Element);
 }
 
 export interface IAppLinkGroup extends INavLinkGroup {
@@ -43,7 +45,7 @@ export interface IAppState {
 }
 
 @withResponsiveMode
-export class App extends React.Component<IAppProps, any> {
+export class App extends React.Component<IAppProps, IAppState> {
 
   constructor(props: IAppProps) {
     super(props);
@@ -51,9 +53,6 @@ export class App extends React.Component<IAppProps, any> {
     this.state = {
       isMenuVisible: false
     };
-
-    this._onIsMenuVisibleChanged = this._onIsMenuVisibleChanged.bind(this);
-    this._onLinkClick = this._onLinkClick.bind(this);
   }
 
   public render(): JSX.Element {
@@ -68,12 +67,7 @@ export class App extends React.Component<IAppProps, any> {
       <Nav
         groups={ appDefinition.examplePages }
         onLinkClick={ this._onLinkClick }
-        onRenderLink={ (link: INavLink) => ([
-          <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-          (link.status !== undefined ?
-            <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-            null)
-        ]) }
+        onRenderLink={ this._onRenderLink }
       />
     );
 
@@ -114,11 +108,25 @@ export class App extends React.Component<IAppProps, any> {
     );
   }
 
+  @autobind
   private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
     this.setState({ isMenuVisible });
   }
 
+  @autobind
   private _onLinkClick(): void {
     this.setState({ isMenuVisible: false });
+  }
+
+  @autobind
+  private _onRenderLink(link: INavLink): (JSX.Element | null)[] {
+    return (
+      [
+        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
+        (link.status !== undefined ?
+          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+          null)
+      ]
+    );
   }
 }
