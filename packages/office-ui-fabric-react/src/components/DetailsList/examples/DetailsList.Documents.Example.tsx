@@ -118,7 +118,6 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         fieldName: 'name',
         minWidth: 210,
         maxWidth: 350,
-        isRowHeader: true,
         isResizable: true,
         isSorted: true,
         isSortedDescending: false,
@@ -224,6 +223,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            displayMode={ 0 }
           />
         </MarqueeSelection>
       </div>

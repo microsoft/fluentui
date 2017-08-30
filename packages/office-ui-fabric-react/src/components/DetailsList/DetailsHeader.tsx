@@ -9,7 +9,7 @@ import {
   KeyCodes,
   IRenderFunction
 } from '../../Utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode, DetailsListDisplayMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
@@ -53,6 +53,8 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   ariaLabelForSelectAllCheckbox?: string;
   ariaLabelForSelectionColumn?: string;
   selectAllVisibility?: SelectAllVisibility;
+  displayMode?: DetailsListDisplayMode;
+  compact?: boolean;
 }
 
 export enum SelectAllVisibility {
@@ -124,7 +126,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render() {
-    let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
+    let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn, displayMode, compact } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -219,6 +221,21 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           columns.map((column: IColumn, columnIndex: number) => {
             const previousColumnIndex = columnIndex - 1;
             const previousColumn = columns[previousColumnIndex];
+            const nearIconLabel = (
+              <span
+                aria-label={ column.isIconOnly ? column.name : undefined }
+                className={ css('ms-DetailsHeader-cellName',
+                  styles.cellName, {
+                    [styles.iconOnlyHeader]: column.isIconOnly
+                  }) }
+              >
+                { (column.iconName || column.iconClassName) && (
+                  <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                ) }
+
+                { !column.isIconOnly ? column.name : undefined }
+              </span>
+            );
 
             return (
               [
@@ -260,19 +277,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                           onClick={ this._onColumnClick.bind(this, column) }
                         >
-                          <span
-                            id={ `${this._id}-${column.key}-name` }
-                            className={ css('ms-DetailsHeader-cellName',
-                              styles.cellName, {
-                                [styles.iconOnlyHeader]: column.isIconOnly
-                              }) }
-                          >
-                            { (column.iconName || column.iconClassName) && (
-                              <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
-                            ) }
-
-                            { !column.isIconOnly ? column.name : undefined }
-                          </span>
+                          { (displayMode !== DetailsListDisplayMode.original || compact) && nearIconLabel }
 
                           { column.isFiltered && (
                             <Icon className={ styles.nearIcon } iconName='Filter' />
@@ -285,6 +290,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           { column.isGrouped && (
                             <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
                           ) }
+
+                          { (displayMode === DetailsListDisplayMode.original && !compact) && nearIconLabel }
 
                           { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
                             <Icon

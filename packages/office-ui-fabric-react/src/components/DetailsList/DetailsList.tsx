@@ -16,10 +16,11 @@ import {
   CheckboxVisibility,
   ColumnActionsMode,
   ConstrainMode,
+  DetailsListDisplayMode,
   DetailsListLayoutMode,
   IColumn,
   IDetailsList,
-  IDetailsListProps,
+  IDetailsListProps
 } from '../DetailsList/DetailsList.Props';
 import { DetailsHeader, IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps } from '../DetailsList/DetailsHeader';
 import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
@@ -65,7 +66,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    compact: false,
+    displayMode: DetailsListDisplayMode.original
   };
 
   // References
@@ -146,12 +149,18 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       setKey,
       selectionMode,
       columns,
-      viewport
+      viewport,
+      displayMode,
+      compact
     } = this.props;
     let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
     if (newProps.layoutMode !== this.props.layoutMode) {
+      shouldForceUpdates = true;
+    }
+
+    if (newProps.displayMode !== this.props.displayMode || compact !== newProps.compact) {
       shouldForceUpdates = true;
     }
 
@@ -209,6 +218,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       shouldApplyApplicationRole = false,
       getKey,
       listProps,
+      displayMode,
       usePageCache,
       onShouldVirtualize
     } = this.props;
@@ -262,7 +272,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           className,
           (layoutMode === DetailsListLayoutMode.fixedColumns) && 'is-fixed',
           (constrainMode === ConstrainMode.horizontalConstrained) && ('is-horizontalConstrained ' + styles.rootIsHorizontalConstrained),
-          !!compact && ('ms-DetailsList--Compact ' + styles.rootCompact)
+          (!!compact || displayMode === DetailsListDisplayMode.compact) && ('ms-DetailsList--Compact ' + styles.rootCompact),
+          (!compact && displayMode === DetailsListDisplayMode.original) && 'ms-DetailsList--Original'
         ) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -292,7 +303,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
               ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
               ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
               selectAllVisibility: selectAllVisibility,
-              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility
+              collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
+              displayMode: displayMode,
+              compact: compact
             }, this._onRenderDetailsHeader) }
           </div>
           <div onKeyDown={ this._onContentKeyDown } role='presentation'>

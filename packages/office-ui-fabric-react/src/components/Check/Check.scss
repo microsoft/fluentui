@@ -8,6 +8,7 @@
 // Check styles
 
 $checkBoxHeight: 16px;
+$origCheckBoxHeight: 24px;
 
 .root {
   line-height: 1;
@@ -69,5 +70,29 @@ $checkBoxHeight: 16px;
   @media screen and (-ms-high-contrast: active) {
     border-radius: 10px;
     border: 1px solid WindowText;
+  }
+}
+
+:global(.ms-DetailsList--Original) {
+  .root {
+    width: $origCheckBoxHeight - 2px;
+    height: $origCheckBoxHeight - 2px;
+    border-radius: $origCheckBoxHeight;
+  }
+
+  .circle,
+  .check {
+    height: $origCheckBoxHeight;
+    width: $origCheckBoxHeight;
+    left: 50%;
+    top: 50%;
+    font-size: 24px;
+  }
+
+  .check {
+    top: 46%;
+    font-weight: 400;
+    left: 51%;
+    font-size: 22px;
   }
 }

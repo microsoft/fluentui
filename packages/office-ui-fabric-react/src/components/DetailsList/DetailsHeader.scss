@@ -184,3 +184,31 @@ $isPaddedMargin: 24px;
 .accessibleLabel {
   @include ms-screenReaderOnly;
 }
+
+$origRowHeight: 36px;
+
+/* Original Styles */
+:global(.ms-DetailsList--Original) {
+  .root {
+    height: $origRowHeight;
+    line-height: $origRowHeight;
+    background: transparent;
+  }
+  .cell {
+    height: $origRowHeight;
+
+    &.cellIsActionable {
+      color: $ms-color-neutralSecondary;
+    }
+
+    &.cellIsCheck {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .cell .nearIcon {
+    @include padding-right(4px);
+    @include padding-left(0);
+  }
+}
