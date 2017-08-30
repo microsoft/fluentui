@@ -46,7 +46,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  private _createNullRef() {
+  private _createNullRef(): void {
     let foo: any = null;
 
     // Calling a null
@@ -72,7 +72,7 @@ describe('BaseComponent', () => {
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
 
-      public render() {
+      public render(): JSX.Element {
         return <div ref={ this._resolveRef('root') } />;
       }
     }
@@ -85,11 +85,11 @@ describe('BaseComponent', () => {
   });
 });
 
-function _buildTestFor(methodName: string) {
+function _buildTestFor(methodName: string): void {
   it(`calls the error logger on ${methodName} exception`, () => {
     let lastErrorMessage = null;
 
-    BaseComponent.onError = (errorMessage, ex) => lastErrorMessage = errorMessage;
+    BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
 
     let c = new TestComponent();
 

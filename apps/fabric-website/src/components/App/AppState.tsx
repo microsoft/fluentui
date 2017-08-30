@@ -4,20 +4,19 @@ import * as React from 'react';
 import { INavPage } from '../Nav/Nav.Props';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
-import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 
 export interface IAppState {
   appTitle: string;
   pages: INavPage[];
 }
 
-function LoadingComponent(props: any): JSX.Element {
+const LoadingComponent = (props: any): JSX.Element => {
   return (
     <ComponentPage>
       <PageHeader pageTitle={ props.title } backgroundColor='#038387' />
     </ComponentPage>
   );
-}
+};
 
 export const AppState: IAppState = {
   appTitle: 'Office UI Fabric',
