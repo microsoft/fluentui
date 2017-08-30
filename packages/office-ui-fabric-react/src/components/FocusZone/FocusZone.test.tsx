@@ -9,7 +9,7 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection } from './FocusZone.Props';
 
-import { assert } from 'chai';
+const { assert } = chai;
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;

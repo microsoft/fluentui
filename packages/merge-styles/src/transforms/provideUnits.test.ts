@@ -1,6 +1,6 @@
 import { provideUnits } from './provideUnits';
 
-import { expect } from 'chai';
+const { expect } = chai;
 
 describe('provideUnits', () => {
   it('can provide units', () => {
