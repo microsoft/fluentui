@@ -183,7 +183,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             id={ this._id + item.key }
             className={ className }
             onClick={ (ev) => this._onItemClick(ev, item) }
-            data-command-key={ item.key }
+            data-command-key={ itemKey }
             aria-haspopup={ hasSubmenuItems(item) }
             aria-expanded={ hasSubmenuItems(item) ? expandedMenuItemKey === item.key : undefined }
             role='menuitem'
@@ -207,7 +207,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             id={ this._id + item.key }
             className={ className }
             href={ item.href }
-            data-command-key={ item.key }
+            data-command-key={ itemKey }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel }
@@ -226,7 +226,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             { ...getNativeProps(item, divProperties) }
             id={ this._id + item.key }
             className={ className }
-            data-command-key={ item.key }
+            data-command-key={ itemKey }
             aria-haspopup={ hasSubmenuItems(item) }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
