@@ -3,7 +3,8 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  CodePenEmbed
 } from '@uifabric/example-app-base';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
@@ -22,6 +23,14 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
       <ComponentPage
         title='Breadcrumb'
         componentName='BreadcrumbExample'
+        codePenDemos={
+          <div>
+            <CodePenEmbed
+              user="FabricReact"
+              hash="LjXyLa"
+            />
+          </div>
+        }
         exampleCards={
           <div>
             <ExampleCard

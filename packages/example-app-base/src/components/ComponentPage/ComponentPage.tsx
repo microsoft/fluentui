@@ -12,6 +12,7 @@ export interface IComponentPageProps {
   title: string;
   componentName: string;
   exampleCards: JSX.Element;
+  codePenDemos?: JSX.Element;
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
@@ -41,7 +42,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       componentName,
       exampleCards,
       overview,
-      className
+      className,
+      codePenDemos
     } = this.props;
 
     return (
@@ -59,6 +61,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
               </div>
             </div>
             { this._getDosAndDonts() }
+            { codePenDemos !== undefined &&
+              <div className='ComponentPage-codePenSection'>
+                <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='CodePens'>CodePens</h2>
+                { codePenDemos }
+              </div>
+            }
             <div className='ComponentPage-variantsSection'>
               <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
               { exampleCards }
