@@ -6,7 +6,7 @@ import {
   IFontFace,
   fontFace,
   mergeStyles
-} from '@uifabric/merge-styles';
+} from '@uifabric/merge-styles/lib/index';
 
 export interface IIconSubset {
   fontFace: IFontFace;

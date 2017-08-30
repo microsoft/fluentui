@@ -11,7 +11,8 @@ const packages = [
   'merge-styles',
   'icons',
   'styling',
-  'office-ui-fabric-react'
+  'office-ui-fabric-react',
+  'experiments'
 ];
 
 for (const package of packages) {

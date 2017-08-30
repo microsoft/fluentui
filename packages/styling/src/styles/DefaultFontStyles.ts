@@ -2,7 +2,7 @@ import {
   fontFace,
   IExtendedRawStyle,
   IFontWeight
-} from '@uifabric/merge-styles';
+} from '@uifabric/merge-styles/lib/index';
 import {
   IFontStyles
 } from '../interfaces/index';

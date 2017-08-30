@@ -10,7 +10,7 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import './index.scss';
 import './ColorStyles.scss';
 
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@uifabric/icons/lib/index';
 
 initializeIcons();
 

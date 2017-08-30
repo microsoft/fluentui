@@ -1,4 +1,4 @@
-import { IExtendedRawStyle } from '@uifabric/merge-styles';
+import { IExtendedRawStyle } from '@uifabric/merge-styles/lib/index';
 import { ITheme } from '../interfaces/index';
 
 /**

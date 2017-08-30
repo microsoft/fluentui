@@ -1,7 +1,7 @@
 {
   "name": "todo-app",
   "description": "Sample todo app using office-ui-fabric-react.",
-  "version": "5.0.0",
+  "version": "5.0.0-beta.4",
   "private": true,
   "scripts": {
     "build": "node ../../scripts/build.js",
@@ -17,14 +17,14 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react-tslint": "5.0.0-beta.4",
     "react-addons-test-utils": "^15.4.2"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.0.0",
-    "office-ui-fabric-react": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react": "5.0.0-beta.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "typescript": "2.4.2",

@@ -8,14 +8,16 @@ const SEPARATOR = process.platform === 'win32' ? ';' : ':',
 
 env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
 
-function myExecSync(cmd, displayName) {
+function myExecSync(cmd, displayName, cwd) {
   let returnValue = 0;
   let start = new Date().getTime();
+
+  cwd = cwd || process.cwd();
 
   logStatus(chalk.gray('Executing: ') + chalk.cyan(displayName || cmd));
 
   const output = execSync(cmd, {
-    cwd: process.cwd(),
+    cwd,
     env: env,
     stdio: 'inherit'
   });

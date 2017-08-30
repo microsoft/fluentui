@@ -1,4 +1,4 @@
-import { registerIcons } from '@uifabric/styling';
+import { registerIcons } from '@uifabric/styling/lib/index';
 
 export function initializeIcons(): void {
   registerIcons({
