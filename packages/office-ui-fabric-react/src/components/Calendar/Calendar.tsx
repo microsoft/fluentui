@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
@@ -18,6 +18,12 @@ const rightArrow: string = 'ChevronRight';
 let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
+};
+
+let dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
+  formatMonthYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getFullYear()),
+  formatDay: (date: Date) => date.getDate().toString(),
+  formatYear: (date: Date) => date.getFullYear().toString()
 };
 
 export interface ICalendarState {
@@ -50,7 +56,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     strings: null,
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
-    formatDate: undefined
+    dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
   public refs: {
@@ -141,7 +147,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
-                  formatDate={ this.props.formatDate! }
+                  dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='dayPicker' />
                 }
 
@@ -153,7 +159,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   highlightCurrentMonth={ highlightCurrentMonth! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
-                  formatDate={ this.props.formatDate! }
+                  dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='monthPicker' /> }
 
                 { showGoToToday &&

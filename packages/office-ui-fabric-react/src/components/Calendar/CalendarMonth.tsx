@@ -22,7 +22,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   highlightCurrentMonth: boolean;
   onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
-  formatDate: ICalendarFormatDateCallbacks;
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -49,14 +49,14 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter } = this.props;
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ this._formatYear(navigatedDate) }</div>
+          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
           <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
             <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
               <span
@@ -185,15 +185,5 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
     if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       onHeaderSelect(true);
     }
-  }
-
-  private _formatYear(navigatedDate: Date) {
-    let { formatDate } = this.props;
-    let formatedDate = navigatedDate.getFullYear().toString();
-
-    if (formatDate && formatDate.formatYear) {
-      formatedDate = formatDate.formatYear(navigatedDate);
-    }
-    return formatedDate;
   }
 }

@@ -108,7 +108,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   /**
   * Apply additional formating to dates, for example localized date formatting.
   */
-  formatDate?: ICalendarFormatDateCallbacks;
+  dateTimeFormatter?: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarStrings {
@@ -191,16 +191,16 @@ export interface ICalendarFormatDateCallbacks {
   /**
   * Callback to apply formatting to the month and year in the Day Picker header
   */
-  formatMonthYear?: (date: Date) => string;
+  formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
 
   /**
   * Callback to apply formatting to the days in the Day Picker calendar
   */
-  formatDay?: (date: Date) => string;
+  formatDay: (date: Date) => string;
 
   /**
   * Callback to apply formatting to the year in the Month Picker header
   */
-  formatYear?: (date: Date) => string;
+  formatYear: (date: Date) => string;
 
 }
