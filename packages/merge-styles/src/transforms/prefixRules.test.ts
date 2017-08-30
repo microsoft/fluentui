@@ -1,6 +1,6 @@
 import { prefixRules } from './prefixRules';
 import { setVendorSettings } from '../getVendorSettings';
-import { expect } from 'chai';
+const { expect } = chai;
 
 const AUTO_TRANSLATED_RULES = [
   'user-select'

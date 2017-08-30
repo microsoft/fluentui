@@ -28,7 +28,7 @@ describe('filteredAssign', () => {
       a: 1,
       b: 'string'
     };
-    let result = filteredAssign((propName) => propName !== 'b', {}, source);
+    let result = filteredAssign((propName: string) => propName !== 'b', {}, source);
 
     expect(result.a).to.equal(1);
     expect(result.b).to.equal(undefined, 'b was not excluded');

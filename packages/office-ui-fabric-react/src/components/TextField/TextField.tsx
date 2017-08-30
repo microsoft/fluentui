@@ -227,7 +227,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
    * Gets the selection start of the text field
    */
   public get selectionStart(): number {
-    return this._textElement ? this._textElement.selectionStart : -1;    
+    return this._textElement ? this._textElement.selectionStart : -1;
   }
 
   /**
