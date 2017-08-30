@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
     "lib": [
       "es2017",
@@ -20,12 +21,7 @@
       "webpack-env"
     ]
   },
-  "exclude": [
-    "api",
-    "temp",
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

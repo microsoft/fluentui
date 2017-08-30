@@ -31,7 +31,7 @@ export function getRTL(): boolean {
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
  */
-export function setRTL(isRTL: boolean, persistSetting: boolean = false) {
+export function setRTL(isRTL: boolean, persistSetting: boolean = false): void {
   let doc = getDocument();
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');

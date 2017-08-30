@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 29 Aug 2017 10:20:56 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 0.3.0
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Minor changes
+
+- Implement FolderCover component
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 0.2.1
 Tue, 29 Aug 2017 10:20:56 GMT
