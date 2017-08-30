@@ -6,6 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { items, overflowItems, farItems } from './examples/data';
+import { ICommandBarProps } from './CommandBar.Props';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 
 const CommandBarBasicExampleCode = require(
@@ -14,7 +15,7 @@ const CommandBarBasicExampleCode = require(
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
-    let cmdBarParamsTextAndIcons: any = { items, overflowItems, farItems };
+    let cmdBarParamsTextAndIcons: ICommandBarProps = { items, overflowItems, farItems };
 
     return (
       <ComponentPage

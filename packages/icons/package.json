@@ -11,14 +11,10 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "gulp clean",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "clean": "node ../../scripts/clean.js"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
-    "gulp": "~3.9.1",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "typescript": "2.4.2"
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
     "@uifabric/styling": ">=5.0.0 <6.0.0",

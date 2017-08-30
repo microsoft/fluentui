@@ -15,15 +15,9 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "types": [
-      "chai",
-      "mocha"
-    ]
+    "types": []
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

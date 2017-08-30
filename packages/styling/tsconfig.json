@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "lib",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -25,12 +26,7 @@
       ]
     }
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd",
-    "api",
-    "temp"
+  "include": [
+    "src"
   ]
 }

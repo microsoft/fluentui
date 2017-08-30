@@ -11,11 +11,9 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "gulp clean",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "clean": "node ../../scripts/clean.js"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": "^3.2.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
     "@types/es6-promise": "^0.0.32",
@@ -28,19 +26,9 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.0",
     "enzyme": "^2.7.0",
-    "es6-weak-map": "^2.0.2",
     "es6-map": "^0.1.5",
-    "es6-promise": "^4.1.0",
-    "gulp": "~3.9.1",
-    "mocha": "^3.3.0",
-    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "sinon": "^2.3.2",
-    "source-map-loader": "^0.2.1",
-    "typescript": "2.4.2",
-    "webpack-bundle-analyzer": "^2.2.1"
+    "es6-weak-map": "^2.0.2",
+    "office-ui-fabric-react-tslint": ">=5.0.0 <6.0.0"
   },
   "dependencies": {
     "tslib": "^1.7.1"

@@ -4,14 +4,14 @@ import {
   warnMutuallyExclusive,
   warnConditionallyRequiredProps
 } from './warn';
-import { expect } from 'chai';
 
+let { expect } = chai;
 let _lastWarning: string | undefined;
 
 describe('warnDeprecations', () => {
   beforeEach(() => {
     _lastWarning = undefined;
-    setWarningCallback(message => _lastWarning = message);
+    setWarningCallback((message: string) => _lastWarning = message);
   });
 
   afterEach(() => setWarningCallback(undefined));
@@ -35,7 +35,7 @@ describe('warnDeprecations', () => {
 describe('warnMutuallyExclusive', () => {
   beforeEach(() => {
     _lastWarning = undefined;
-    setWarningCallback(message => _lastWarning = message);
+    setWarningCallback((message: string) => _lastWarning = message);
   });
 
   afterEach(() => setWarningCallback(undefined));
@@ -54,7 +54,7 @@ describe('warnMutuallyExclusive', () => {
 describe('warnConditionallyRequiredProps', () => {
   beforeEach(() => {
     _lastWarning = undefined;
-    setWarningCallback(message => _lastWarning = message);
+    setWarningCallback((message: string) => _lastWarning = message);
   });
 
   afterEach(() => setWarningCallback(undefined));

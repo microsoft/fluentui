@@ -27,7 +27,7 @@ export function getRTL(): boolean {
  *
  * @public
  */
-export function setRTL(isRTL: boolean) {
+export function setRTL(isRTL: boolean): void {
   let doc = typeof document === 'undefined' ? undefined : document;
 
   if (doc && doc.documentElement) {

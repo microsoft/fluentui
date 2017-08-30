@@ -1,6 +1,6 @@
 import { registerIcons } from '@uifabric/styling';
 
-export function initializeIcons() {
+export function initializeIcons(): void {
   registerIcons({
     style: {},
     fontFace: {

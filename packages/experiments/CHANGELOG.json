@@ -2,6 +2,107 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.3.0",
+      "tag": "@uifabric/experiments_v0.3.0",
+      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "f5b0c87005e04ebae9f29f0a6b84692550ff83de",
+            "comment": "Implement FolderCover component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
+            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.37.6 <5.0.0` to `>=4.37.7 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.3 <5.0.0` to `>=4.2.4 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.1",
+      "tag": "@uifabric/experiments_v0.2.1",
+      "date": "Tue, 29 Aug 2017 10:20:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "9d4818a42955c9517b5b64c0e4d4ea2bab4c05ad",
+            "comment": "Fix Selection module reference in Tile modules"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.5` to `4.37.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.2.0",
+      "tag": "@uifabric/experiments_v0.2.0",
+      "date": "Sat, 26 Aug 2017 00:52:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a8c320b1aad836100fe35a56eea73be2b2ac9652",
+            "comment": "Separate Selection out from TilesList and fix minor TilesList bugs"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.4` to `4.37.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.7",
+      "tag": "@uifabric/experiments_v0.1.7",
+      "date": "Fri, 25 Aug 2017 20:31:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
+            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.3` to `4.37.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.2 <5.0.0` to `>=4.2.3 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.6",
+      "tag": "@uifabric/experiments_v0.1.6",
+      "date": "Fri, 25 Aug 2017 19:27:18 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `4.37.2` to `4.37.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.5",
       "tag": "@uifabric/experiments_v0.1.5",
       "date": "Thu, 24 Aug 2017 10:20:20 GMT",

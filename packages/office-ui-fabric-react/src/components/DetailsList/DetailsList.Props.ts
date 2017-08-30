@@ -187,12 +187,12 @@ export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewpo
   compact?: boolean;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization 
+  * Boolean value to enable render page caching. This is an experimental performance optimization
   * that is off by default.
   * @defaultValue false
   */
   usePageCache?: boolean;
-  
+
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
