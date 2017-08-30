@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Loosen the renendering requirements for comboBoxes",
+      "comment": "ComboBox: Loosen the re-rendering requirement",
       "type": "patch"
     }
   ],
