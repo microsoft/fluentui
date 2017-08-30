@@ -17,7 +17,7 @@ export function getItem(key: string): string | null {
  * @param key The key of the item to add to session storage
  * @param data The data to put into session storage
  */
-export function setItem(key: string, data: string) {
+export function setItem(key: string, data: string): void {
   try {
     window.sessionStorage.setItem(key, data);
   } catch (e) {

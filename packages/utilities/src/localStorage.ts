@@ -17,7 +17,7 @@ export function getItem(key: string): string | null {
  * @param key The key of the item to add to local storage
  * @param data The data to put into local storage
  */
-export function setItem(key: string, data: string) {
+export function setItem(key: string, data: string): void {
   try {
     window.localStorage.setItem(key, data);
   } catch (e) {
