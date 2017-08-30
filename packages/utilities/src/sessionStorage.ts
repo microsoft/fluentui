@@ -5,7 +5,7 @@
 export function getItem(key: string): string | null {
   let result = null;
   try {
-    result = window.sessionStorage.getItem(key)
+    result = window.sessionStorage.getItem(key);
   } catch (e) {
     /* Eat the exception */
   }
