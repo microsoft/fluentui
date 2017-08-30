@@ -1,6 +1,6 @@
 import { KeyCodes } from './KeyCodes';
 import { getDocument } from './dom';
-import { getItem, setItem } from './localStorage';
+import { getItem, setItem } from './sessionStorage';
 
 const RTL_LOCAL_STORAGE_KEY = 'isRTL';
 
@@ -31,13 +31,13 @@ export function getRTL(): boolean {
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
  */
-export function setRTL(isRTL: boolean, avoidPersisting = false) {
+export function setRTL(isRTL: boolean, persistSetting: boolean = false) {
   let doc = getDocument();
   if (doc) {
     doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
-  if (!avoidPersisting) {
+  if (persistSetting) {
     setItem(RTL_LOCAL_STORAGE_KEY, isRTL ? '1' : '0');
   }
 
