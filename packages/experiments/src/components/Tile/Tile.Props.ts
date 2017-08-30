@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { ISelection } from 'office-ui-fabric-react/lib/Selection';
 
 export type TileSize = keyof {
   small: 'small',
@@ -33,10 +33,10 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   /**
    * Selection controller for the item rendered in the tile.
    *
-   * @type {Selection}
+   * @type {ISelection}
    * @memberof ITileProps
    */
-  selection?: Selection;
+  selection?: ISelection;
   /**
    * Name to use on the nameplate for the tile.
    *
