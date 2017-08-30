@@ -17,6 +17,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/commandbar'
         },
         {
+          component: require<any>('../components/FolderCover/FolderCoverPage').FolderCoverPage,
+          key: 'FolderCover',
+          name: 'FolderCover',
+          url: '#/examples/foldercover'
+        },
+        {
           component: require<any>('../components/Tile/TilePage').TilePage,
           key: 'Tile',
           name: 'Tile',

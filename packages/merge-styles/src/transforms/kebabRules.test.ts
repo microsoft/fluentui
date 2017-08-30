@@ -1,5 +1,6 @@
 import { kebabRules } from './kebabRules';
-import { expect } from 'chai';
+
+const { expect } = chai;
 
 describe('kebabRules', () => {
 

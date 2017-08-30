@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Aug 2017 10:20:56 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 4.37.7
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 4.37.6
 Tue, 29 Aug 2017 10:20:56 GMT

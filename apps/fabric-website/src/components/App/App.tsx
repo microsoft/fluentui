@@ -2,7 +2,7 @@ import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { Fabric } from 'office-ui-fabric-react/lib/components/Fabric';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { Nav } from '../Nav/Nav';
@@ -30,10 +30,10 @@ export class App extends React.Component<IAppProps, any> {
     let toggleIcon;
     let siteTitle;
     if (isNavOpen) {
-      toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose'></i>;
+      toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose' />;
       siteTitle = '';
     } else {
-      toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton'></i>;
+      toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton' />;
       siteTitle = <div className='siteTitle'>Fabric</div>;
     }
 
@@ -50,7 +50,7 @@ export class App extends React.Component<IAppProps, any> {
             </button>
             { siteTitle }
           </div>
-          <div className='App-mobileNavOverlay' onClick={ this._onOverlayClicked.bind(this) }></div>
+          <div className='App-mobileNavOverlay' onClick={ this._onOverlayClicked.bind(this) } />
           <div className='App-nav'>
             <Nav pages={ AppState.pages } onLinkClick={ this._onNavItemClicked.bind(this) } />
           </div>

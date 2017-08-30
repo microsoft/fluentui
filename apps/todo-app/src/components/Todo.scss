@@ -1,4 +1,4 @@
-@import "~/office-ui-fabric-core/dist/sass/References";
+@import "~office-ui-fabric-react/dist/sass/References";
 
 .todo {
   padding: 28px 40px 60px 40px;
@@ -25,6 +25,7 @@
     .textField {
       display: table-cell;
       width: 100%;
+      vertical-align: top;
     }
     .addButton {
       display: table-cell;

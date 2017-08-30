@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.11.1",
+      "tag": "@uifabric/utilities_v4.11.1",
+      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
+            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.11.0",
       "tag": "@uifabric/utilities_v4.11.0",
       "date": "Tue, 29 Aug 2017 10:20:56 GMT",
