@@ -77,7 +77,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _selectionZone: SelectionZone;
 
   private _selection: ISelection;
-  private _activeRows: { [key: string]: DetailsRow };
+  private _activeRows: DetailsRow[];
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
 
@@ -88,7 +88,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   constructor(props: IDetailsListProps) {
     super(props);
 
-    this._activeRows = {};
+    this._activeRows = [];
     this._columnOverrides = {};
     this._onColumnIsSizingChanged = this._onColumnIsSizingChanged.bind(this);
     this._onColumnResized = this._onColumnResized.bind(this);
