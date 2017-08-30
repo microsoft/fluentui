@@ -112,9 +112,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <p>Note that both iconProps and menuIconProps take <Link href='#/examples/icon'>IIconProps</Link> to specify name and type.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Button/Button.html'>Fabric JS</a>
-        }
         bestPractices={
           <div></div>
         }
