@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 25 Aug 2017 19:27:18 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 4.37.7
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.37.6
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Patches
+
+- FocusZone: disable tabIndex of previous element on mouse focus.
+- Selection: Adding better handling around a case where getKey returns null or undefined.
+- Dialog: Show close button when dialog type is DialogType.close
+
+## 4.37.5
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Patches
+
+- Add LikeSolid icon
+- Updating sass build to pre-process theming again for better registration performance.
+- Fix issues when a SelectionZone is outside a FocusZone
+
+## 4.37.4
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
 
 ## 4.37.3
 Fri, 25 Aug 2017 19:27:18 GMT

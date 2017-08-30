@@ -1,6 +1,38 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 25 Aug 2017 19:27:18 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+
+## 0.3.0
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Minor changes
+
+- Implement FolderCover component
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 0.2.1
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Patches
+
+- Fix Selection module reference in Tile modules
+
+## 0.2.0
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Minor changes
+
+- Separate Selection out from TilesList and fix minor TilesList bugs
+
+## 0.1.7
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
 
 ## 0.1.6
 Fri, 25 Aug 2017 19:27:18 GMT

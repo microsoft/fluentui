@@ -4,13 +4,11 @@
   "version": "1.0.3",
   "private": true,
   "scripts": {
-    "build": "gulp",
-    "clean": "gulp clean",
-    "start": "gulp serve",
-    "test": "gulp test"
+    "build": "node ../../scripts/build.js",
+    "clean": "node ../../scripts/clean.js",
+    "start": "node ../../scripts/start.js"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": "^3.2.1",
     "@types/chai": "3.4.35",
     "@types/enzyme": "2.8.0",
     "@types/es6-promise": "^0.0.32",
@@ -19,17 +17,17 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/webpack-env": "1.13.0",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "react-addons-test-utils": "^15.4.2"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.5.1",
     "es6-promise": "^4.1.0",
     "immutability-helper": "^2.0.0",
-    "office-ui-fabric-core": ">=7.1.2 <8.0.0",
-    "office-ui-fabric-react": ">=4.37.3 <5.0.0",
+    "office-ui-fabric-react": ">=4.37.7 <5.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "typescript": "2.4.2",
-    "tslib": "^1.6.0"
+    "tslib": "^1.7.1"
   }
 }

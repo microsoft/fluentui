@@ -3,7 +3,7 @@ import { ICalendar, ICalendarProps, ICalendarIconStrings } from './Calendar.Prop
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
-import { compareDates } from '../../utilities/dateMath/DateMath';
+import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
 import {
   autobind,
   css,
@@ -220,8 +220,13 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onGotoToday() {
-    this._navigateDay(this.props.today!);
-    this._focusOnUpdate = true;
+
+    let { onSelectDate, dateRangeType, firstDayOfWeek, today } = this.props;
+
+    let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!);
+
+    this._onSelectDate(today!, dates);
+
   }
 
   @autobind

@@ -9,7 +9,7 @@ import { KeyCodes } from '../../Utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection } from './FocusZone.Props';
 
-import { assert } from 'chai';
+const { assert } = chai;
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -590,7 +590,7 @@ describe('FocusZone', () => {
     assert(lastFocusedElement === divB, 'pressing left did not skip back to divB');
   });
 
-  it('Focus first tabbable element, when active elemet is dynamically disabled', () => {
+  it('Focus first tabbable element, when active element is dynamically disabled', () => {
     let focusZone: FocusZone | null = null;
     let buttonA: any;
     let buttonB: any;
@@ -606,7 +606,6 @@ describe('FocusZone', () => {
 
     const rootNode = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
     const textArea = rootNode.children[0];
-    const focusZoneElement = rootNode.children[1];
 
     setupElement(buttonA, {
       clientRect: {
@@ -639,5 +638,67 @@ describe('FocusZone', () => {
     // ButtonB should be focussed.
     focusZone!.focus();
     assert(lastFocusedElement === buttonB, 'buttonB was not focused ');
+  });
+
+  it('removes tab-index of previous element when another one is selected (mouse & keyboard)', () => {
+    let focusZone: FocusZone | null = null;
+    let buttonA: HTMLButtonElement | null = null;
+    let buttonB: HTMLButtonElement | null = null;
+    const component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone ref={ (focus) => { focusZone = focus; } }>
+          <button className='a' ref={ (button) => { buttonA = button; } }>a</button>
+          <button className='b' ref={ (button) => { buttonB = button; } }>b</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZoneElement = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    const buttonAElement = focusZoneElement.querySelector('.a') as HTMLElement;
+
+    // HACK declare that elements are not null at this point.
+    // Type narrowing doesn't work because TypeScript is not considering the assignments inside `ref` lambdas.
+    focusZone = focusZone!;
+    buttonA = buttonA!;
+    buttonB = buttonB!;
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // ButtonA should be focussed.
+    focusZone.focus();
+    assert(lastFocusedElement === buttonA, 'buttonA was not focused after initial focus');
+
+    assert(buttonA.tabIndex === 0, 'buttonA tab-index was not on after initial focus');
+    assert(buttonB.tabIndex === -1, 'buttonB tab-index was not off after initial focus');
+
+    // Pressing right should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZoneElement, { which: KeyCodes.right });
+    assert(lastFocusedElement === buttonB, 'buttonB was not focused after key down');
+
+    assert(buttonA.tabIndex === -1, 'buttonA tab-index was not off after key down');
+    assert(buttonB.tabIndex === 0, 'buttonB tab-index was not on after key down');
+
+    // Clicking on A should enable its tab-index and disable others.
+    ReactTestUtils.Simulate.mouseDown(buttonAElement);
+    assert(lastFocusedElement === buttonA, 'buttonA was not focused after mouse down');
+
+    assert(buttonA.tabIndex === 0, 'buttonA tab-index was not on after mouse down');
+    assert(buttonB.tabIndex === -1, 'buttonB tab-index was not off after mouse down');
   });
 });
