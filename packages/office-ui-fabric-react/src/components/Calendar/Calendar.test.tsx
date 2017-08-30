@@ -99,7 +99,7 @@ describe('Calendar', () => {
 
     it('Verify day picker header', () => {
       let today = new Date();
-      let monthName = dayPickerStrings.shortMonths[today.getMonth()];
+      let monthName = dayPickerStrings.months[today.getMonth()];
       let year = today.getFullYear();
       let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-month');
       expect(dayPickerMonth).to.not.be.undefined;
@@ -163,7 +163,7 @@ describe('Calendar', () => {
     });
 
     it('Verify day picker header', () => {
-      let monthName = dayPickerStrings.shortMonths[defaultDate.getMonth()];
+      let monthName = dayPickerStrings.months[defaultDate.getMonth()];
       let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-month');
       expect(dayPickerMonth).to.not.be.undefined;
       expect(dayPickerMonth.textContent).to.equal(monthName);

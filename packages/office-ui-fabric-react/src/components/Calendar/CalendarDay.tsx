@@ -58,6 +58,10 @@ export interface ICalendarDayState {
   weeks?: IDayInfo[][];
 }
 
+interface IWeekCorners {
+  [key: string]: string;
+}
+
 export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
   public refs: {
     [key: string]: React.ReactInstance;
@@ -93,12 +97,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
-    let weekCorners: any[] = [];
-    if (dateRangeType === 2) {
-      if (selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
-        // navigatedDate is on the current month and current year
-        weekCorners = this._findWeekCorners(weeks);
-      }
+    let weekCorners: IWeekCorners = {};
+    if (dateRangeType === DateRangeType.Month && selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
+      // navigatedDate is on the current month and current year
+      weekCorners = this._getWeekCornerStyles(weeks!);
     }
 
     return (
@@ -129,7 +131,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         </div >
         <div className={ css('ms-DatePicker-header', styles.header) }>
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.shortMonths[navigatedDate.getMonth()] }</div>
+            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
             <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
           </div>
           {
@@ -173,9 +175,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { week.map((day, dayIndex) =>
                     <td key={ day.key } className={ css(
                       {
-                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === 1,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === 2,
-                        ['ms-DatePicker-day--dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === 0
+                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
+                        ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
                       }) }
                     >
                       <div
@@ -186,7 +188,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
                             ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
-                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === 0
+                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
                           }) }
                         role='button'
                         onClick={ day.onSelected }
@@ -219,69 +221,75 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _findWeekCorners(weeks: any) {
-    let weekCorners: any = {};
-    let numberOfWeeks = weeks.length;
+  private _findCornerIndexes(week: IDayInfo[], weekType: string) {
     let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
+    let cornerIndexes = [];
 
-    // Get all days in current month
-    let dateRange = getDateRangeArray(navigatedDate, dateRangeType, firstDayOfWeek);
+    if (weekType === 'firstWeek') {
 
-    // Check to see if second to the last day (of the first week) is within the current month
-    if (weeks[0][DAYS_IN_WEEK - 2].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      // There is only one highlighted day in first week, add styles to this square
-      let weekIndex = 0;
-      let dayIndex = DAYS_IN_WEEK - 1;
-      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-singleTopDate ' + styles.singleTopDate;
+      if (week[DAYS_IN_WEEK - 2].isInMonth) {
+        let firstDayOfMonth = addDays(navigatedDate, - navigatedDate.getDate() + 1);
+        // Account for firstDayOfWeek not beeing Sunday
+        let firstDayIndex = firstDayOfMonth.getDay() - firstDayOfWeek;
+        firstDayIndex = firstDayIndex < 0 ? firstDayIndex + DAYS_IN_WEEK : firstDayIndex;
+        cornerIndexes.push(firstDayIndex);
+      }
+      cornerIndexes.push(DAYS_IN_WEEK - 1);
     } else {
-      // Add styles to first and last highlighted squares in the first week
-      let weekIndex = 0;
-      let dayIndex = dateRange[0].getDay();
-      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
+      if (week[1].isInMonth) {
+        let daysInMonth = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth() + 1, 0).getDate();
+        let lastDayofMonth = addDays(navigatedDate, daysInMonth - navigatedDate.getDate());
+        // Account for firstDayOfWeek not beeing Sunday
+        let lastDayIndex = lastDayofMonth.getDay() - firstDayOfWeek;
+        lastDayIndex = lastDayIndex < 0 ? lastDayIndex + DAYS_IN_WEEK : lastDayIndex;
+        cornerIndexes.push(lastDayIndex);
+      }
 
-      let weekIndex2 = 0;
-      let dayIndex2 = DAYS_IN_WEEK - 1;
-      weekCorners[weekIndex2 + '_' + dayIndex2] = 'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate;
+      cornerIndexes.push(0);
     }
 
-    // check the first week to see if the first day of the week is NOT within the current month
-    if (weeks[0][0].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      // The first day of week 2 is a corner
-      let weekIndex = 1;
-      let dayIndex = 0;
-      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
-    }
-
-    // Check to see if second day (of the last week) is within the current month
-    if (weeks[numberOfWeeks - 1][1].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      // There is only one highlighted day in the last week, add styles to this square
-      let weekIndex = numberOfWeeks - 1;
-      let dayIndex = 0;
-      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate;
-    } else {
-      // Add styles to first and last highlighted squares in the last week
-      let weekIndex = numberOfWeeks - 1;
-      let dayIndex = 0;
-      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate;
-
-      let weekIndex2 = numberOfWeeks - 1;
-      let dayIndex2 = dateRange[dateRange.length - 1].getDay();
-      weekCorners[weekIndex2 + '_' + dayIndex2] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
-
-    }
-
-    // check the last week to see if the last day of this week is NOT within the current month
-    if (weeks[numberOfWeeks - 1][DAYS_IN_WEEK - 1].originalDate.getMonth() !== navigatedDate.getMonth()) {
-      // If the last week is not all within the current month, the last day of the second to last week is a corner
-      let weekIndex = numberOfWeeks - 2;
-      let dayIndex = DAYS_IN_WEEK - 1;
-      weekCorners[weekIndex + '_' + dayIndex] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
-    }
-
-    return weekCorners;
+    return cornerIndexes;
   }
 
-  private _getHighlightedCornerStyle(weekCorners: any, dayIndex: number, weekIndex: number) {
+  private _getWeekCornerStyles(weeks: IDayInfo[][]) {
+    let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
+
+    let weekCornersStyled: any = {};
+    let numberOfWeeks = weeks.length;
+    let firstWeek = weeks[0];
+    let lastWeek = weeks[numberOfWeeks - 1];
+    let indexesFirstWeek = this._findCornerIndexes(firstWeek, 'firstWeek');
+    let indexesLastWeek = this._findCornerIndexes(lastWeek, 'lastWeek');
+
+    if (indexesFirstWeek.length === 1) {
+      weekCornersStyled[0 + '_' + indexesFirstWeek[0]] = 'ms-DatePicker-singleTopDate ' + styles.singleTopDate;
+    } else {
+      weekCornersStyled[0 + '_' + indexesFirstWeek[0]] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
+      weekCornersStyled[0 + '_' + indexesFirstWeek[1]] = 'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate;
+    }
+
+    // check if second week needs corner styles
+    if (!weeks[0][0].isInMonth) {
+      weekCornersStyled[1 + '_' + 0] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
+    }
+
+    let lastWeekIndex = numberOfWeeks - 1;
+    if (indexesLastWeek.length === 1) {
+      weekCornersStyled[lastWeekIndex + '_' + indexesLastWeek[0]] = 'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate;
+    } else {
+      weekCornersStyled[lastWeekIndex + '_' + indexesLastWeek[0]] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
+      weekCornersStyled[lastWeekIndex + '_' + indexesLastWeek[1]] = 'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate;
+    }
+
+    // check if second-to-last week needs corner styles
+    if (!weeks[lastWeekIndex][DAYS_IN_WEEK - 1].isInMonth) {
+      weekCornersStyled[(lastWeekIndex - 1) + '_' + (DAYS_IN_WEEK - 1)] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
+    }
+
+    return weekCornersStyled;
+  }
+
+  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number) {
     let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
 
     return cornerStyle;
