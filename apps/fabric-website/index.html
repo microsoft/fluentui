@@ -41,6 +41,7 @@
     var isLocal = false;
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
     switch (true) {
       case location.hostname === 'dev.office.com':
         isProduction = true;
@@ -98,7 +99,7 @@
       scripts.push(devUrl);
     } else if (isLocal) {
       scripts.push.apply(scripts, reactDevelopment);
-      scripts.push('fabric-website.js');
+      scripts.push('fabric-site.js');
     } else if (isDogfood) {
       if (noCompress) {
         scripts.push.apply(scripts, reactDevelopment);
