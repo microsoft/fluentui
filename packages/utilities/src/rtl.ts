@@ -23,10 +23,6 @@ export function getRTL(): boolean {
     if (_isRTL === undefined && doc) {
       _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
     }
-
-    if (_isRTL !== undefined) {
-      setRTL(_isRTL, true);
-    }
   }
 
   return !!_isRTL;
