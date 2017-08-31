@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Adjusted build to produce sourcemaps with correct sourceRoot.",
+      "comment": "Persist RTL setting between page refreshes",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/example-app-base",
-  "email": "dzearing@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }
