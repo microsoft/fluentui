@@ -1278,7 +1278,7 @@ export const IconCodes = {
   /**
    * Icon code with the value '\uF2FE'.
    */
-  fullWidth: '\uF2FE"',
+  fullWidth: '\uF2FE',
   /**
    * Icon code with the value '\uE9DA'.
    */
