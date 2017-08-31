@@ -1,7 +1,5 @@
 import { kebabRules } from './kebabRules';
 
-const { expect } = chai;
-
 describe('kebabRules', () => {
 
   it('can kebab the names', () => {
@@ -12,7 +10,7 @@ describe('kebabRules', () => {
 
     kebabRules(rules, 0);
 
-    expect(rules).eqls([
+    expect(rules).toEqual([
       'background-color',
       '#cAcAcA'
     ]);
@@ -26,7 +24,7 @@ describe('kebabRules', () => {
 
     kebabRules(rules, 0);
 
-    expect(rules).eqls([
+    expect(rules).toEqual([
       '-webkit-font-smoothing',
       'antialiased'
     ]);
