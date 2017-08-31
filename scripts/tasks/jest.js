@@ -6,9 +6,10 @@ module.exports = function (options) {
 
   const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
   const jestConfigPath = findConfig('jest.config.js');
+  const coverage = (options.isProduction) ? ' --coverage' : '';
 
   if (fs.existsSync(jestConfigPath)) {
-    const command = `node ${jestPath} --config ${jestConfigPath} ${options.args || ''}`;
+    const command = `node ${jestPath} --config ${jestConfigPath} ${coverage} ${options.args || ''}`;
 
     execSync(command, undefined, path.dirname(jestConfigPath));
   }
