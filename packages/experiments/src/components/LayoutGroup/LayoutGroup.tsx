@@ -23,7 +23,8 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     const numberOfChildren = React.Children.count(children);
 
     const group = React.Children.map(children, (child: React.ReactChild, i: number) => {
-      const isLastChild = i === numberOfChildren - 1
+      const isLastChild = i === numberOfChildren - 1;
+
       return (
         <div
           className={
