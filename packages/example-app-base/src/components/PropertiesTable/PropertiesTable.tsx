@@ -8,7 +8,7 @@ import {
   IEnumProperty,
   InterfacePropertyType
 } from '../../utilities/parser/index';
-import { FontClassNames } from '@uifabric/styling/lib/index';
+import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableProps {
   title?: string;
