@@ -12,7 +12,7 @@ module.exports = {
       "reporters": [
         path.resolve(__dirname, './jest-reporter.js')
       ],
-      "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+      "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$",
       "moduleFileExtensions": [
         "ts",
         "tsx",
