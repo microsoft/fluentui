@@ -52,7 +52,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   collapseAllVisibility?: CollapseAllVisibility;
   getRowAriaLabel?: (item: any) => string;
   checkButtonAriaLabel?: string;
-  innerZoneFocusible?: boolean;
+  innerZoneFocusable?: boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -228,7 +228,7 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
         allowFocusRoot={ true }
-        isInnerZoneKeystroke={ (ev: React.KeyboardEvent<HTMLElement>) => (this.props.innerZoneFocusible ? ev.which === getRTLSafeKeyCode(KeyCodes.down) : false) }
+        isInnerZoneKeystroke={ (ev: React.KeyboardEvent<HTMLElement>) => (this.props.innerZoneFocusable ? ev.which === getRTLSafeKeyCode(KeyCodes.down) : false) }
       >
         { showCheckbox && (
           <div
