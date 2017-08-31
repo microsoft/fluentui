@@ -98,8 +98,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         className={ css('ms-Slider', styles.root, className, {
           ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
           ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled,
-          ['ms-Slider-row ' + styles.row]: !vertical,
-          ['ms-Slider-column ' + styles.column]: vertical
+          ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
+          ['ms-Slider-column ' + styles.rootIsVertical]: vertical
         }) }
         ref='root'>
         { label && (
@@ -138,8 +138,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
                 style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
-              <span className={ css('ms-Slider-active', styles.activeSection) } style={ !vertical ? { 'width': thumbOffsetPercent + '%' } : { 'height': (thumbOffsetPercent) + '%' } }></span>
-              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ !vertical ? { 'width': (100 - thumbOffsetPercent) + '%' } : { 'height': (100 - thumbOffsetPercent) + '%' } }></span>
+              <span className={ css('ms-Slider-active', styles.lineContainer, styles.activeSection) } style={ !vertical ? { 'width': thumbOffsetPercent + '%' } : { 'height': (thumbOffsetPercent) + '%' } }></span>
+              <span className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) } style={ !vertical ? { 'width': (100 - thumbOffsetPercent) + '%' } : { 'height': (100 - thumbOffsetPercent) + '%' } }></span>
             </div>
           </button>
           { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
@@ -186,29 +186,16 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     const sliderLength: number = !this.props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
     let currentSteps: number | undefined;
+    let distance: number | undefined;
 
     if (!this.props.vertical) {
-      if (event.type === 'mousedown' || event.type === 'mousemove') {
-        currentSteps = getRTL() ?
-          (sliderPositionRect.right - (event as MouseEvent).clientX) / stepLength :
-          ((event as MouseEvent).clientX - sliderPositionRect.left) / stepLength;
-      } else if (event.type === 'touchstart' || event.type === 'touchmove') {
-        currentSteps = getRTL() ?
-          (sliderPositionRect.right - (event as TouchEvent).touches[0].clientX) / stepLength :
-          ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
-      }
+      let left: number | undefined = this._getPosition(event, this.props.vertical);
+      distance = getRTL() ? sliderPositionRect.right - left! : left! - sliderPositionRect.left;
+      currentSteps = distance / stepLength;
     } else {
-      if (event.type === 'mousedown' || event.type === 'mousemove') {
-        currentSteps = getRTL() ?
-          ((event as MouseEvent).clientY - sliderPositionRect.top) / stepLength :
-          (sliderPositionRect.bottom - (event as MouseEvent).clientY) / stepLength;
-
-      } else if (event.type === 'touchstart' || event.type === 'touchmove') {
-        currentSteps = getRTL() ?
-          ((event as TouchEvent).touches[0].clientY - sliderPositionRect.top) / stepLength :
-          (sliderPositionRect.bottom - (event as TouchEvent).touches[0].clientY) / stepLength;
-
-      }
+      let bottom: number | undefined = this._getPosition(event, this.props.vertical);
+      distance = getRTL() ? bottom! - sliderPositionRect.top : sliderPositionRect.bottom - bottom!;
+      currentSteps = distance / stepLength;
     }
 
     let currentValue: number | undefined;
@@ -232,6 +219,20 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
   }
 
+  private _getPosition(event: MouseEvent | TouchEvent, vertical: boolean | undefined): number | undefined {
+    let currentPosition: number | undefined;
+    switch (event.type) {
+      case 'mousedown':
+      case 'mousemove':
+        currentPosition = !vertical ? (event as MouseEvent).clientX : (event as MouseEvent).clientY;
+        break;
+      case 'touchstart':
+      case 'touchmove':
+        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        break;
+    }
+    return currentPosition;
+  }
   private _updateValue(value: number, renderedValue: number) {
     let valueChanged = value !== this.state.value;
 
