@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.props';
 import { mergeStyles } from '@uifabric/styling';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
 
@@ -19,30 +20,19 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
       justify
     } = this.props;
 
-    let justifyValue: string;
-
-    switch (justify) {
-      case 'end':
-        justifyValue = 'flex-end';
-        break;
-      case 'center':
-        justifyValue = 'center';
-        break;
-      default:
-        justifyValue = 'flex-start'
-    };
+    const numberOfChildren = React.Children.count(children);
 
     const group = React.Children.map(children, (child: React.ReactChild, i: number) => {
-      const numberOfChildren = React.Children.count(children);
+      const isLastChild = i === numberOfChildren - 1
       return (
         <div
           className={
             mergeStyles(
               'ms-LayoutGroup-item',
-              direction === 'horizontal' && i < numberOfChildren - 1 && {
+              direction === 'horizontal' && !isLastChild && {
                 marginRight: gap + 'px'
               },
-              direction === 'vertical' && i < numberOfChildren - 1 && {
+              direction === 'vertical' && !isLastChild && {
                 marginBottom: gap + 'px'
               },
               justify === 'fill' && {
@@ -66,7 +56,7 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
             {
               display: 'flex',
               flexDirection: direction === 'horizontal' ? 'row' : 'column',
-              justifyContent: justifyValue
+              justifyContent: this._getJustify(justify)
             }
           ) as string
         }
@@ -74,5 +64,16 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
         { group }
       </div>
     );
+  }
+
+  @autobind
+  private _getJustify(justify: string | undefined): string {
+    if (justify === 'end') {
+      return 'flex-end';
+    } else if (justify === 'center') {
+      return 'center';
+    } else {
+      return 'flex-start';
+    }
   }
 }
