@@ -118,7 +118,7 @@ export default class DataProvider implements IDataProvider {
       const index: number =
         findIndex(
           this.items,
-          (item: ITodoItem) => item.id === newItem.id
+          (current: ITodoItem) => current.id === newItem.id
         );
       if (index !== -1) {
         this.items[index] = newItem;
@@ -159,9 +159,15 @@ export default class DataProvider implements IDataProvider {
   }
 
   private _generateGuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      (c) => {
+        // tslint:disable-next-line:no-bitwise
+        const r = Math.random() * 16 | 0;
+        // tslint:disable-next-line:no-bitwise
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+
+        return v.toString(16);
+      });
   }
 }

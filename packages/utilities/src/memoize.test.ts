@@ -22,7 +22,7 @@ describe('memoizeFunction', () => {
 
   it('can return a cached result with a 2 arg function', () => {
     let _timesCalled = 0;
-    let combine = memoizeFunction((obj1, obj2) => (obj1.val + obj2.val + ++_timesCalled));
+    let combine = memoizeFunction((obj1: any, obj2: any) => (obj1.val + obj2.val + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -36,7 +36,7 @@ describe('memoizeFunction', () => {
 
   it('can return a cached result with falsy args', () => {
     let _timesCalled = 0;
-    let combine = memoizeFunction((obj1, obj2) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
+    let combine = memoizeFunction((obj1: any, obj2: any) => ((obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled));
     let objA = { val: 'a' };
     let objB = { val: 'b' };
 
@@ -109,7 +109,7 @@ describe('memoize', () => {
     class Foo {
 
       @memoize
-      public bar(val: string) {
+      public bar(val: string): string {
         return val + _count++;
       }
     }
