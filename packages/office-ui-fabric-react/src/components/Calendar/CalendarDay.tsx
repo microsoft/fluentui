@@ -221,70 +221,90 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _findCornerIndexes(week: IDayInfo[], weekType: string) {
-    let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
+  private _findCornerIndexes(week: IDayInfo[]) {
+
     let cornerIndexes = [];
 
-    if (weekType === 'firstWeek') {
+    for (let i = 0, length = week.length; i < length; i++) {
 
-      if (week[DAYS_IN_WEEK - 2].isInMonth) {
-        let firstDayOfMonth = addDays(navigatedDate, - navigatedDate.getDate() + 1);
-        // Account for firstDayOfWeek not beeing Sunday
-        let firstDayIndex = firstDayOfMonth.getDay() - firstDayOfWeek;
-        firstDayIndex = firstDayIndex < 0 ? firstDayIndex + DAYS_IN_WEEK : firstDayIndex;
-        cornerIndexes.push(firstDayIndex);
-      }
-      cornerIndexes.push(DAYS_IN_WEEK - 1);
-    } else {
-      if (week[1].isInMonth) {
-        let daysInMonth = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth() + 1, 0).getDate();
-        let lastDayofMonth = addDays(navigatedDate, daysInMonth - navigatedDate.getDate());
-        // Account for firstDayOfWeek not beeing Sunday
-        let lastDayIndex = lastDayofMonth.getDay() - firstDayOfWeek;
-        lastDayIndex = lastDayIndex < 0 ? lastDayIndex + DAYS_IN_WEEK : lastDayIndex;
-        cornerIndexes.push(lastDayIndex);
+      let day = week[i];
+      if (day.isInMonth) {
+        cornerIndexes.push(i);
       }
 
-      cornerIndexes.push(0);
+    }
+
+    if (cornerIndexes.length > 2) {
+      cornerIndexes.splice(1, cornerIndexes.length - 2);
     }
 
     return cornerIndexes;
   }
 
+  private _populateCornerStyles(
+    weekCornersStyled: any,
+    weekIndex: number,
+    cornerIndexes: number[],
+    singleCornerStyle: string,
+    leftCornerStyle: string,
+    rightCornerStyle: string) {
+
+    let cornersLength = cornerIndexes.length;
+    if (cornersLength > 0) {
+
+      if (cornersLength == 1) {
+
+        weekCornersStyled[weekIndex + '_' + cornerIndexes[0]] = singleCornerStyle;
+
+      } else if (cornersLength == 2) {
+
+        weekCornersStyled[weekIndex + '_' + cornerIndexes[0]] = leftCornerStyle;
+        weekCornersStyled[weekIndex + '_' + cornerIndexes[1]] = rightCornerStyle;
+      }
+
+      if (weekIndex == 0) {
+
+        // check if second week needs corner styles
+        if (cornerIndexes[0] != 0) {
+          weekCornersStyled['1_0'] = leftCornerStyle;
+        }
+
+      } else {
+
+        // Assume we are on the last week. Check if second-to-last week needs corner styles
+        let lastDayIndex = DAYS_IN_WEEK - 1;
+        if (cornerIndexes[cornersLength - 1] != lastDayIndex) {
+          weekCornersStyled[(weekIndex - 1) + '_' + lastDayIndex] = rightCornerStyle;
+        }
+
+      }
+    }
+  }
+
   private _getWeekCornerStyles(weeks: IDayInfo[][]) {
-    let { firstDayOfWeek, navigatedDate, dateRangeType } = this.props;
 
     let weekCornersStyled: any = {};
     let numberOfWeeks = weeks.length;
-    let firstWeek = weeks[0];
-    let lastWeek = weeks[numberOfWeeks - 1];
-    let indexesFirstWeek = this._findCornerIndexes(firstWeek, 'firstWeek');
-    let indexesLastWeek = this._findCornerIndexes(lastWeek, 'lastWeek');
+    let indexesFirstWeek = this._findCornerIndexes(weeks[0]);
+    let indexesLastWeek = this._findCornerIndexes(weeks[numberOfWeeks - 1]);
 
-    if (indexesFirstWeek.length === 1) {
-      weekCornersStyled[0 + '_' + indexesFirstWeek[0]] = 'ms-DatePicker-singleTopDate ' + styles.singleTopDate;
-    } else {
-      weekCornersStyled[0 + '_' + indexesFirstWeek[0]] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
-      weekCornersStyled[0 + '_' + indexesFirstWeek[1]] = 'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate;
-    }
+    this._populateCornerStyles(
+      weekCornersStyled,
+      0 /* week index */,
+      indexesFirstWeek,
+      'ms-DatePicker-singleTopDate ' + styles.singleTopDate,
+      'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate,
+      'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate
+    );
 
-    // check if second week needs corner styles
-    if (!weeks[0][0].isInMonth) {
-      weekCornersStyled[1 + '_' + 0] = 'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate;
-    }
-
-    let lastWeekIndex = numberOfWeeks - 1;
-    if (indexesLastWeek.length === 1) {
-      weekCornersStyled[lastWeekIndex + '_' + indexesLastWeek[0]] = 'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate;
-    } else {
-      weekCornersStyled[lastWeekIndex + '_' + indexesLastWeek[0]] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
-      weekCornersStyled[lastWeekIndex + '_' + indexesLastWeek[1]] = 'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate;
-    }
-
-    // check if second-to-last week needs corner styles
-    if (!weeks[lastWeekIndex][DAYS_IN_WEEK - 1].isInMonth) {
-      weekCornersStyled[(lastWeekIndex - 1) + '_' + (DAYS_IN_WEEK - 1)] = 'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate;
-    }
+    this._populateCornerStyles(
+      weekCornersStyled,
+      weeks.length - 1 /* week index */,
+      indexesLastWeek,
+      'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate,
+      'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate,
+      'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate
+    );
 
     return weekCornersStyled;
   }
