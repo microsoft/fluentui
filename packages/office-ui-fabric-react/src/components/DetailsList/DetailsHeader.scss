@@ -128,16 +128,19 @@ $isPaddedMargin: 24px;
 .iconOnlyHeader {
   .nearIcon {
     @include ms-padding-left(0);
-    top: initial;
   }
 }
 
 .nearIcon {
   color: $iconForegroundColor;
   opacity: 1;
-  @include ms-padding-left(4px);
-  position: relative;
-  top: 1px;
+  @include ms-padding-left(8px);
+
+  &.sortIcon {
+    @include ms-padding-left(4px);
+    position: relative;
+    top: 1px;
+  }
 }
 
 .cell .filterChevron {
