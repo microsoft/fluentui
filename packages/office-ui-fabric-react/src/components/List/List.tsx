@@ -344,8 +344,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     );
   }
 
-  private _shouldVirtualize(props?: IListProps): boolean {
-    const properties = props || this.props;
+  private _shouldVirtualize(props: IListProps = this.props): boolean {
     const {
       onShouldVirtualize
     } = properties;
