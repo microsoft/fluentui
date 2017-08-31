@@ -4,7 +4,6 @@ import { AppState } from './AppState';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/components/Fabric';
 import { Footer } from '../Footer/Footer';
-import { Header } from '../Header/Header';
 import { Nav } from '../Nav/Nav';
 
 export interface IAppProps extends React.Props<App> {
@@ -31,10 +30,8 @@ export class App extends React.Component<IAppProps, any> {
     let siteTitle;
     if (isNavOpen) {
       toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose'></i>;
-      siteTitle = '';
     } else {
       toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton'></i>;
-      siteTitle = <div className='siteTitle'>Fabric</div>;
     }
 
     return (
@@ -42,13 +39,11 @@ export class App extends React.Component<IAppProps, any> {
         'App',
         isNavOpen && 'is-navOpen'
       ) }>
-        <Header />
         <div className='App-wrapper'>
           <div className='App-mobileNavBar'>
             <button className='menuButton' onClick={ this._onNavToggleClicked.bind(this) }>
               { toggleIcon }
             </button>
-            { siteTitle }
           </div>
           <div className='App-mobileNavOverlay' onClick={ this._onOverlayClicked.bind(this) }></div>
           <div className='App-nav'>

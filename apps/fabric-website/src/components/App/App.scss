@@ -13,26 +13,26 @@
     flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
-    padding-top: $Header-height; // Keep content from being covered by the header
   }
 
   .App-mobileNavBar {
-    @include contentPadding(0, 0);
+    // @include contentPadding(0, 0);
     background: $ms-color-neutralDark;
     color: $ms-color-white;
     display: flex;
     height: $App-mobileNavBarHeight;
     left: 0;
-    position: fixed;
+    // position: fixed;
     right: 0;
     z-index: 600;
 
     .menuButton {
       color: $ms-color-white;
-      font-size: $font-size-big;
+      font-size: 20px; // Matches UHF menu button size
       font-weight: $ms-font-weight-regular;
       height: $App-mobileNavBarHeight;
       line-height: $App-mobileNavBarHeight;
+      min-width: 48px;
       @include ms-margin-right(12px);
       padding: 0;
 
@@ -66,7 +66,7 @@
     background-color: $ms-color-neutralLighter;
     flex-grow: 1;
     left: 0;
-    margin-top: $App-mobileNavBarHeight; // Move it down below the mobile nav bar
+    // margin-top: $App-mobileNavBarHeight; // Move it down below the mobile nav bar
     overflow: hidden;
     position: relative;
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
@@ -88,6 +88,7 @@
   // Overlay to dim content and dismiss the mobile nav (hidden by default)
   .App-mobileNavOverlay {
     display: none;
+    // height: $ms
   }
 
   // When the nav is open (smaller screens only) push the content over and prevent app from scrolling
@@ -100,9 +101,9 @@
       right: 0;
       top: 0;
 
-      .App-mobileNavBar {
-        @include ms-padding-left(36px); // Align to menu items
-      }
+      // .App-mobileNavBar {
+      //   @include ms-padding-left(36px); // Align to menu items
+      // }
 
       .App-mobileNavOverlay {
         background: transparent;
