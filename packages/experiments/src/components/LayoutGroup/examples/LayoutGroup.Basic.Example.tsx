@@ -41,7 +41,7 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
             <TextField label='TextField with an icon' iconProps={ { iconName: 'Calendar' } } />
           </LayoutGroup>
 
-          <LayoutGroup gap={ 20 } direction="horizontal" justify='fill'>
+          <LayoutGroup gap={ 20 } direction='horizontal' justify='fill'>
             <ChoiceGroup
               defaultSelectedKey='B'
               options={ [
