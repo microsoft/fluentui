@@ -203,9 +203,10 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement): void {
-    const stickyArr = Array.from(stickyList).sort((a, b) => {
+    let stickyArr = Array.from(stickyList);
+    stickyArr = stickyArr.sort((a, b) => {
       return a.refs.root.offsetTop - b.refs.root.offsetTop;
-    })
+    });
     while (container.lastChild) {
       container.removeChild(container.lastChild);
     }
