@@ -4,14 +4,14 @@
   "lockfileVersion": 1,
   "dependencies": {
     "@microsoft/load-themed-styles": {
-      "version": "1.7.3",
-      "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.7.3.tgz",
-      "integrity": "sha1-vECKxo5op1L8tB9QMUkco2hSPr0="
+      "version": "1.7.4",
+      "resolved": "https://registry.npmjs.org/@microsoft/load-themed-styles/-/load-themed-styles-1.7.4.tgz",
+      "integrity": "sha1-3SU9gMgiCRPSerBu5WxLLsRR89M="
     },
     "@microsoft/loader-load-themed-styles": {
-      "version": "1.5.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/loader-load-themed-styles/-/loader-load-themed-styles-1.5.0.tgz",
-      "integrity": "sha1-zt/Y9nepJoVnM8C1Y4RkNaChJ8E="
+      "version": "1.5.1",
+      "resolved": "https://registry.npmjs.org/@microsoft/loader-load-themed-styles/-/loader-load-themed-styles-1.5.1.tgz",
+      "integrity": "sha1-Y1VyRApbBFYM35zrC7OKTVbGSfQ="
     },
     "@rush-temp/build": {
       "version": "file:projects/build",
