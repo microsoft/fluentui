@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add the vetical slider component",
+      "comment": "Slider: adding `vertical` property to render as a vertical slider.",
       "type": "patch"
     }
   ],
