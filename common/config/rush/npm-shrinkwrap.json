@@ -2031,6 +2031,11 @@
       "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-2.2.39.tgz",
       "integrity": "sha1-9o1j24tpw46VWLQHNSXPlsT3qCk="
     },
+    "@types/node": {
+      "version": "8.0.26",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-8.0.26.tgz",
+      "integrity": "sha512-wbKN0MB4XsjdnSE04HiCzLoBDirGCM6zXrqavSj44nZnPFYpnrTF64E9O6Xmf0ca/IuKK/BHUcXwMiwk92gW6Q=="
+    },
     "@types/prop-types": {
       "version": "15.5.1",
       "resolved": "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.5.1.tgz",
@@ -2067,9 +2072,9 @@
       "integrity": "sha1-MEQ4FkfhHulzxa8uklMjkw9pHYA="
     },
     "@uifabric/example-app-base": {
-      "version": "4.2.4",
-      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-4.2.4.tgz",
-      "integrity": "sha512-L5NF7mzoZVIZ65u/blapDjzuVnPSnlyOWqDMjhV8BohpJks/crkSmCx8VqHx3a1aq9m++zQYrUwmBkqRZtIpnw=="
+      "version": "4.2.5",
+      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-4.2.5.tgz",
+      "integrity": "sha512-o18n/zKj8KTQ2JDHBoQtjUPRJkd0I3lwAK017+3UlA/Suh0V3AxjfXSN+4v1hq7SAcjTnoaMctJ0q+ux+/61ww=="
     },
     "@uifabric/styling": {
       "version": "0.21.1",
@@ -2077,9 +2082,9 @@
       "integrity": "sha512-SlQwGCtqnN7SIklqi534nLMTVfjLkaK1QGmTxGq5BQutz/tiJNVIJ7hVuRMNI669TNu0Gf+nkIFPcEn56DxavQ=="
     },
     "@uifabric/utilities": {
-      "version": "4.11.1",
-      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-4.11.1.tgz",
-      "integrity": "sha512-5jqVkf90oEfRaaVvVjxcTknZtck/ULmLh/Usv3/Pc0SRW3m9JTfUdzaPTNYs7BrwtNXzCt9sII0RPcuJfLq/0g=="
+      "version": "4.12.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-4.12.0.tgz",
+      "integrity": "sha512-Udgu19qBxsT+s5Z50OhM/tMAok3WBlB6lUkxVjs8W8ZeGkPefqp5T6vb5o4pKZNrjM4poYDVVBe3veJTmEXR2Q=="
     },
     "abab": {
       "version": "1.0.3",
@@ -3127,9 +3132,9 @@
       "integrity": "sha1-Z29us8OZl8LuGsOpJP1hJHSPV40="
     },
     "core-js": {
-      "version": "2.5.0",
-      "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.5.0.tgz",
-      "integrity": "sha1-VpwFCRi+ZIazg3VSAorgRmtxcIY="
+      "version": "2.5.1",
+      "resolved": "https://registry.npmjs.org/core-js/-/core-js-2.5.1.tgz",
+      "integrity": "sha1-rmh03GaTd4m4B1T/VCjfZoGcpQs="
     },
     "core-util-is": {
       "version": "1.0.2",
@@ -3582,9 +3587,9 @@
       "integrity": "sha1-zIcsFoiArjxxiXYv1f/ACJbJUYo="
     },
     "electron-to-chromium": {
-      "version": "1.3.18",
-      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.18.tgz",
-      "integrity": "sha1-PcyZ2j5rZl9qu8ccKK1Ros1zGpw="
+      "version": "1.3.19",
+      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.19.tgz",
+      "integrity": "sha1-c9l7DosFqnds7fPNzn/cBTgDdnU="
     },
     "elliptic": {
       "version": "6.4.0",
@@ -6470,9 +6475,9 @@
       "integrity": "sha1-JKwXdDPkou6REP5DWAutBZ+gBQk="
     },
     "office-ui-fabric-react": {
-      "version": "4.37.7",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.37.7.tgz",
-      "integrity": "sha512-bdWrZtY1Z//s2vN9lgsdSxxye836QcOXpcd8ZNyq/dArqeJYamKwXWRGWOY2uOdKxjkt63u85lhdccP9ZKoCQg=="
+      "version": "4.38.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.38.0.tgz",
+      "integrity": "sha512-xrPQzOcv8uud2MgFkNi2yNMUuv66Iv1j+xb1T5N1G2XzZBtGkwk/2Zeg6x6ZndYKVJffY2FlXW6PvMZOh14Kjw=="
     },
     "on-finished": {
       "version": "2.3.0",
@@ -8750,9 +8755,9 @@
       }
     },
     "supports-color": {
-      "version": "4.3.0",
-      "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-4.3.0.tgz",
-      "integrity": "sha512-Yf+8UYPgZlMkps2h2P+248+8iE2hXXWjiZgwcKQc2ncE2s1cYAMdpzyPJ4+ttifNogmi09L5Wr0QxyZN6O9M/w=="
+      "version": "4.4.0",
+      "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-4.4.0.tgz",
+      "integrity": "sha512-rKC3+DyXWgK0ZLKwmRsrkyHVZAjNkfzeehuFWdGGcqGDTZFH73+RH6S/RDAAxl9GusSjZSUWYLmT9N5pzXFOXQ=="
     },
     "svgo": {
       "version": "0.7.2",
