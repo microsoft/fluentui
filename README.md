@@ -13,8 +13,6 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 - [Get started](#get-started)
 - [Testing](#testing)
 - [Advanced usage](#advanced-usage)
-- [Roadmap](#roadmap)
-- [Trello board](#trello-board)
 - [Browser support](#browser-support)
 - [Contribute to Fabric React](#contribute-to-fabric-react)
 - [Licenses](#licenses)
