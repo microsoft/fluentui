@@ -15,21 +15,14 @@ export class Async {
   private _immediateIds: { [x: number]: boolean } | null = null;
   private _intervalIds: { [x: number]: boolean } | null = null;
   private _animationFrameIds: { [id: number]: boolean } | null = null;
-<<<<<<< HEAD
   private _isDisposed: boolean;
-=======
-  private _isDisposed = false;
->>>>>>> e3ff2d00a4954f367475ae8be49ec12f84c6ebd1
   private _parent: React.ReactNode | null;
   // tslint:disable-next-line:no-any
   private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: () => void;
   // tslint:disable-next-line:no-any
   constructor(parent?: React.ReactNode, onError?: (e: any) => void) {
-<<<<<<< HEAD
     this._isDisposed = false;
-=======
->>>>>>> e3ff2d00a4954f367475ae8be49ec12f84c6ebd1
     this._parent = parent || null;
     this._onErrorHandler = onError;
     this._noop = () => { /* do nothing */ };
