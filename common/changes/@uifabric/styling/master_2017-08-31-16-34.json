@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
+      "comment": "Add FullWidth icon.",
       "packageName": "@uifabric/styling",
-      "type": "none"
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/styling",
