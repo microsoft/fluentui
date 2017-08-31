@@ -543,7 +543,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       this._updateRenderRects(props);
     }
 
-    let newListState = this._buildPages(props);
+    let newListState = this._buildPages(items as any[], startIndex as number, renderCount);
     let oldListPages = this.state.pages;
 
     this.setState(newListState, () => {
@@ -672,7 +672,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   /** Build up the pages that should be rendered. */
-  private _buildPages(props?: IListProps): IListState {
+  private _buildPages(items: any[], startIndex: number, renderCount: number): IListState {
     let { items, startIndex, renderCount } = (props || this.props);
     renderCount = this._getRenderCount(props);
 
