@@ -12,12 +12,47 @@ export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number
   return distance;
 }
 
+/**
+ * The available fit modes. These should match the fit modes for CSS.
+ */
 export type FitMode = 'contain' | 'cover';
 
+/**
+ * Options for fitting content sizes into bounding sizes.
+ *
+ * @export
+ * @interface IFitContentToBoundsOptions
+ */
 export interface IFitContentToBoundsOptions {
+  /**
+   * The size of the content to fit to the bounds.
+   * The output will be proportional to this value.
+   *
+   * @type {ISize}
+   * @memberof IFitContentToBoundsOptions
+   */
   contentSize: ISize;
+  /**
+   * The size of the bounds.
+   *
+   * @type {ISize}
+   * @memberof IFitContentToBoundsOptions
+   */
   boundsSize: ISize;
+  /**
+   * The fit mode to apply, either 'contain' or 'cover'.
+   *
+   * @type {FitMode}
+   * @memberof IFitContentToBoundsOptions
+   */
   mode: FitMode;
+  /**
+   * An optional maximum scale factor to apply. The default is 1.
+   * Use Infinity for an unbounded resize.
+   *
+   * @type {number}
+   * @memberof IFitContentToBoundsOptions
+   */
   maxScale?: number;
 }
 
