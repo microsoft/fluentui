@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dialog: Show close button when dialog type is DialogType.close",
+      "comment": "Respect ths isHeader property on the ResizeGroup demo page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "davwolf@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

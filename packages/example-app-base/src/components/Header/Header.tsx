@@ -9,7 +9,7 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './Header.scss';
-import { FontClassNames } from '@uifabric/styling/lib/index';
+import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IHeaderProps {
   title: string;
@@ -26,11 +26,12 @@ export interface IHeaderState {
     target: HTMLElement,
     items: IContextualMenuItem[]
   };
-  isRTLEnabled?: boolean;
 }
 
 @withResponsiveMode
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
+  private _isRTLEnabled: boolean;
+
   constructor(props: IHeaderProps) {
     super(props);
 
@@ -39,9 +40,9 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this._onRTLToggled = this._onRTLToggled.bind(this);
     this._onMenuClick = this._onMenuClick.bind(this);
 
+    this._isRTLEnabled = getRTL();
     this.state = {
-      contextMenu: undefined,
-      isRTLEnabled: getRTL()
+      contextMenu: undefined
     };
   }
 
@@ -121,21 +122,15 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   private _getOptionMenuItems(): IContextualMenuItem[] {
     return [{
       key: 'isRTL',
-      name: `Render in ${this.state.isRTLEnabled ? 'LTR' : 'RTL'}`,
+      name: `Render in ${this._isRTLEnabled ? 'LTR' : 'RTL'}`,
       icon: 'Settings',
       onClick: this._onRTLToggled
     }];
   }
 
   private _onRTLToggled(ev: React.MouseEvent<HTMLElement>): void {
-    let { isRTLEnabled } = this.state;
-
-    setRTL(!isRTLEnabled);
-
-    this.setState({
-      isRTLEnabled: !isRTLEnabled,
-      contextMenu: undefined
-    });
+    setRTL(!this._isRTLEnabled, true);
+    location.reload();
   }
 
   private _onDismiss(): void {

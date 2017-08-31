@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 25 Aug 2017 20:31:51 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Aug 2017 15:41:56 GMT and should not be manually modified.
+
+## 4.2.5
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Patches
+
+- Refresh the page when swtiching languages to make sure that memoized styles are recomputed
+
+## 4.2.4
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 4.2.3
 Fri, 25 Aug 2017 20:31:51 GMT

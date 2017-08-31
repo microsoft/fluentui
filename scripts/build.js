@@ -2,7 +2,7 @@ const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
 const { logStartTask, logEndTask, logEndBuild } = require('./logging');
-
+const packageName = getPackageName();
 const isProduction = process.argv.indexOf('--production') > -1;
 
 let tasks = [
@@ -30,7 +30,7 @@ promise.then(() => {
   if (hasFailures) {
     process.exitCode = 1;
   }
-  logEndBuild(getPackageName(), !hasFailures, buildStartTime);
+  logEndBuild(packageName, !hasFailures, buildStartTime);
 });
 
 function runTask(task) {
@@ -38,12 +38,12 @@ function runTask(task) {
 
   return Promise.resolve()
     .then(() => !hasFailures && Promise.resolve()
-      .then(() => logStartTask(task))
+      .then(() => logStartTask(packageName, task))
       .then(() => require('./tasks/' + task)({ isProduction }))
-      .then(() => logEndTask(task, taskStartTime))
+      .then(() => logEndTask(packageName, task, taskStartTime))
       .catch((e) => {
         hasFailures = true;
-        logEndTask(task, taskStartTime, e);
+        logEndTask(packageName, task, taskStartTime, e);
       }));
 }
 

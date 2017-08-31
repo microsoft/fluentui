@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 23 Aug 2017 19:04:55 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Aug 2017 15:41:56 GMT and should not be manually modified.
+
+## 4.7.5
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Patches
+
+- Add @types/node dependency
+
+## 4.7.4
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
 
 ## 4.7.3
 Wed, 23 Aug 2017 19:04:55 GMT
