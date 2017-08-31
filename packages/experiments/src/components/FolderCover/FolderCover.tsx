@@ -12,18 +12,26 @@ export interface IFolderCoverState {
   // TODO Add animation support for drag/drop events.
 }
 
+const enum FolderCoverLayoutValues {
+  smallWidth = 72,
+  smallHeight = 52,
+  largeWidth = 112,
+  largeHeight = 80,
+  contentPadding = 4
+}
+
 const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets';
 
 const SIZES: {
   [P in FolderCoverSize]: ISize;
 } = {
     small: {
-      width: 72 - 8,
-      height: 52 - 8
+      width: FolderCoverLayoutValues.smallWidth - FolderCoverLayoutValues.contentPadding * 2,
+      height: FolderCoverLayoutValues.smallHeight - FolderCoverLayoutValues.contentPadding * 2
     },
     large: {
-      width: 112 - 8,
-      height: 80 - 8
+      width: FolderCoverLayoutValues.largeWidth - FolderCoverLayoutValues.contentPadding * 2,
+      height: FolderCoverLayoutValues.largeHeight - FolderCoverLayoutValues.contentPadding * 2
     }
   };
 

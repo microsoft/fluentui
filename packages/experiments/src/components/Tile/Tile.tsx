@@ -13,6 +13,13 @@ const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
 // tslint:enable:no-any
 
+const enum TileLayoutValues {
+  nameplatePadding = 12,
+  nameplateNameHeight = 20,
+  nameplateActivityHeight = 20,
+  foregroundMargin = 16
+}
+
 export interface ITileState {
   isSelected?: boolean;
 }
@@ -297,19 +304,19 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
   let nameplateHeight = 0;
 
   if (tileProps.itemName || tileProps.itemActivity) {
-    nameplateHeight += 12 * 2; // 12px top/bottom padding.
+    nameplateHeight += TileLayoutValues.nameplatePadding * 2; // 12px top/bottom padding.
     if (tileProps.itemName) {
-      nameplateHeight += 20;
+      nameplateHeight += TileLayoutValues.nameplateNameHeight;
     }
     if (tileProps.itemActivity) {
-      nameplateHeight += 20;
+      nameplateHeight += TileLayoutValues.nameplateActivityHeight;
     }
   }
 
   return {
     foregroundSize: {
-      width: width - 16 * 2,
-      height: contentSize.height - 16 - nameplateHeight
+      width: width - TileLayoutValues.foregroundMargin * 2,
+      height: contentSize.height - TileLayoutValues.foregroundMargin - nameplateHeight
     },
     backgroundSize: contentSize
   };
