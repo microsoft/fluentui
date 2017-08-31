@@ -2067,9 +2067,9 @@
       "integrity": "sha1-MEQ4FkfhHulzxa8uklMjkw9pHYA="
     },
     "@uifabric/example-app-base": {
-      "version": "4.2.4",
-      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-4.2.4.tgz",
-      "integrity": "sha512-L5NF7mzoZVIZ65u/blapDjzuVnPSnlyOWqDMjhV8BohpJks/crkSmCx8VqHx3a1aq9m++zQYrUwmBkqRZtIpnw=="
+      "version": "4.2.5",
+      "resolved": "https://registry.npmjs.org/@uifabric/example-app-base/-/example-app-base-4.2.5.tgz",
+      "integrity": "sha512-o18n/zKj8KTQ2JDHBoQtjUPRJkd0I3lwAK017+3UlA/Suh0V3AxjfXSN+4v1hq7SAcjTnoaMctJ0q+ux+/61ww=="
     },
     "@uifabric/styling": {
       "version": "0.21.1",
@@ -2077,9 +2077,9 @@
       "integrity": "sha512-SlQwGCtqnN7SIklqi534nLMTVfjLkaK1QGmTxGq5BQutz/tiJNVIJ7hVuRMNI669TNu0Gf+nkIFPcEn56DxavQ=="
     },
     "@uifabric/utilities": {
-      "version": "4.11.1",
-      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-4.11.1.tgz",
-      "integrity": "sha512-5jqVkf90oEfRaaVvVjxcTknZtck/ULmLh/Usv3/Pc0SRW3m9JTfUdzaPTNYs7BrwtNXzCt9sII0RPcuJfLq/0g=="
+      "version": "4.12.0",
+      "resolved": "https://registry.npmjs.org/@uifabric/utilities/-/utilities-4.12.0.tgz",
+      "integrity": "sha512-Udgu19qBxsT+s5Z50OhM/tMAok3WBlB6lUkxVjs8W8ZeGkPefqp5T6vb5o4pKZNrjM4poYDVVBe3veJTmEXR2Q=="
     },
     "abbrev": {
       "version": "1.0.9",
@@ -6312,9 +6312,9 @@
       "integrity": "sha1-JKwXdDPkou6REP5DWAutBZ+gBQk="
     },
     "office-ui-fabric-react": {
-      "version": "4.37.7",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.37.7.tgz",
-      "integrity": "sha512-bdWrZtY1Z//s2vN9lgsdSxxye836QcOXpcd8ZNyq/dArqeJYamKwXWRGWOY2uOdKxjkt63u85lhdccP9ZKoCQg=="
+      "version": "4.38.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.38.0.tgz",
+      "integrity": "sha512-xrPQzOcv8uud2MgFkNi2yNMUuv66Iv1j+xb1T5N1G2XzZBtGkwk/2Zeg6x6ZndYKVJffY2FlXW6PvMZOh14Kjw=="
     },
     "on-finished": {
       "version": "2.3.0",
