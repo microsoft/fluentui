@@ -61,7 +61,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
     }
   }
 
-  public render(): React.ReactElement<any> | null {
+  public render(): React.ReactElement<{}> | null {
     return this.state.isRendered ? React.Children.only(this.props.children) : null;
   }
 }

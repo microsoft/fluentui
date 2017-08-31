@@ -1,14 +1,16 @@
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
 
-declare const process: any;
+declare const process: {};
 
-let _global = (typeof window !== 'undefined' && window) || process;
+// tslint:disable-next-line:no-any
+let _global: any = (typeof window !== 'undefined' && window) || process;
 
 if (_global[CURRENT_ID_PROPERTY] === undefined) {
   _global[CURRENT_ID_PROPERTY] = 0;
 }
 
+// tslint:disable-next-line:no-any
 function checkProperties(a: any, b: any): boolean {
   for (let propName in a) {
     if (a.hasOwnProperty(propName)) {
@@ -26,6 +28,7 @@ function checkProperties(a: any, b: any): boolean {
  *
  * @public
  */
+// tslint:disable-next-line:no-any
 export function shallowCompare(a: any, b: any): boolean {
   return checkProperties(a, b) && checkProperties(b, a);
 }
@@ -40,6 +43,7 @@ export function shallowCompare(a: any, b: any): boolean {
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
+// tslint:disable-next-line:no-any
 export function assign(target: any, ...args: any[]): any {
   return filteredAssign.apply(this, [null, target].concat(args));
 }
@@ -56,6 +60,7 @@ export function assign(target: any, ...args: any[]): any {
  * @param args - One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
+// tslint:disable-next-line:no-any
 export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]): any {
   target = target || {};
 

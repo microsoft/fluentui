@@ -160,7 +160,8 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
     }
     if (!this.__resolves[refName]) {
       // tslint:disable-next-line:no-any
-      this.__resolves[refName] = (ref: any) => {
+      this.__resolves[refName] = (ref: React.ReactNode) => {
+        // tslint:disable-next-line:no-any
         return (this as any)[refName] = ref;
       };
     }

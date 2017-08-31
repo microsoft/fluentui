@@ -8,6 +8,7 @@ import { BaseComponent } from './BaseComponent';
  * @internal
  */
 export interface ISettings {
+  // tslint:disable-next-line:no-any
   [key: string]: any;
 }
 
@@ -45,13 +46,13 @@ export interface ICustomizerState {
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   public static contextTypes: {
-    injectedProps: PropTypes.Requireable<any>;
+    injectedProps: PropTypes.Requireable<{}>;
   } = {
     injectedProps: PropTypes.object
   };
 
   public static childContextTypes: {
-    injectedProps: PropTypes.Requireable<any>;
+    injectedProps: PropTypes.Requireable<{}>;
   } = Customizer.contextTypes;
 
   // tslint:disable-next-line:no-any
@@ -70,12 +71,13 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
     this.setState(this._getInjectedProps(newProps, newContext));
   }
 
-  public render(): React.ReactElement<any> {
+  public render(): React.ReactElement<{}> {
     return React.Children.only(this.props.children);
   }
 
   private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState): {
     injectedProps: {
+      // tslint:disable-next-line:no-any
       [x: string]: any;
     };
   } {
