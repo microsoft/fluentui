@@ -25,12 +25,12 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         exampleCards={
           <div>
             <ExampleCard
-              title='Simple breadcrumb'
+              title='Default Breadcrumb'
               code={ BreadcrumbBasicExampleCode }>
               <BreadcrumbBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='Static width'
+              title='Breadcrumb with static width '
               code={ BreadcrumbStaticExampleCode }>
               <BreadcrumbStaticExample />
             </ExampleCard>

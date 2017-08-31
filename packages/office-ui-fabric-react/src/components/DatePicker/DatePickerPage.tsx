@@ -21,10 +21,10 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         componentName='DatePickerExample'
         exampleCards={
           <div>
-            <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
+            <ExampleCard title='Default DatePicker' code={ DatePickerBasicExampleCode }>
               <DatePickerBasicExample />
             </ExampleCard>
-            <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
+            <ExampleCard title='DatePicker with required field' code={ DatePickerRequiredExampleCode }>
               <DatePickerRequiredExample />
             </ExampleCard>
             <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>

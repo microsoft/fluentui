@@ -18,6 +18,7 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
 import './examples/Button.Basic.Example.scss';
+import '../../common/_exampleStyles.scss';
 import { Link } from '../../Link';
 
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
@@ -54,8 +55,16 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         componentName='ButtonExample'
         exampleCards={
           <div>
-            <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
-            <Checkbox label='Mark as checked' checked={ this.state.areButtonsChecked } onChange={ this._onToggledChanged.bind(this) } />
+            <Checkbox
+              className='exampleCheckbox'
+              label='Disable buttons'
+              checked={ this.state.areButtonsDisabled }
+              onChange={ this._onDisabledChanged.bind(this) } />
+            <Checkbox
+              className='exampleCheckbox'
+              label='Mark as checked'
+              checked={ this.state.areButtonsChecked }
+              onChange={ this._onToggledChanged.bind(this) } />
             <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
               <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
