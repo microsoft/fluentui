@@ -175,10 +175,12 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
+    const linkKey: string = link.key || linkIndex.toString();
     const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
 
     return (
-      <div key={ link.key || linkIndex }
+      <div key={ linkKey }
+        data-link-key={ linkKey }
         className={ css(
           'ms-Nav-compositeLink',
           styles.compositeLink,
@@ -209,8 +211,9 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   }
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
+    const linkKey: string = link.key || linkIndex.toString();
     return (
-      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem) }>
+      <li key={ linkKey } role='listitem' className={ css(styles.navItem) } data-link-key={ linkKey }>
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
