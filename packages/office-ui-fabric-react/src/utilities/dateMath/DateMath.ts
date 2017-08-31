@@ -207,8 +207,6 @@ export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigate
   let monthRange = getDateRangeArray(navigatedDate, DateRangeType.Month, firstDayOfWeek);
 
   let getDayofYear = getDayOfYear(monthRange[0]);
-  if (weeks.length == 6) { getDayofYear = getDayofYear - 1; }
-
   let firstWeekNumber = Math.ceil(getDayofYear / DAYS_IN_WEEK);
 
   let weeksArray = [];
@@ -241,5 +239,5 @@ export function getDayOfYear(date: Date) {
  * Returns the number of days in the month
  */
 function daysInMonth(month: number, year: number) {
-  return new Date(year, month, 0).getDate();
+  return new Date(year, month + 1, 0).getDate();
 }
