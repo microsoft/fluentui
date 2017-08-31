@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "High contrast, accesibility, and other bugfixes",
+      "comment": "HoverCard: Improved performance of expanding animation.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-krbrow@microsoft.com"
+  "email": "anihan@microsoft.com"
 }

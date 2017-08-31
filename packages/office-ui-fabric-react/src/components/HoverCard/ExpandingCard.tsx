@@ -26,7 +26,9 @@ export interface IExpandingCardState {
 export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
   public static defaultProps = {
     compactCardHeight: 156,
-    expandedCardHeight: 384
+    expandedCardHeight: 384,
+    directionalHint: DirectionalHint.bottomLeftEdge,
+    gapSpace: 0
   };
 
   private _styles: IExpandingCardStyles;
@@ -77,10 +79,11 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
         ) }
         targetElement={ targetElement }
         isBeakVisible={ false }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
+        directionalHint={ this.props.directionalHint }
         directionalHintFixed={ true }
         finalHeight={ compactCardHeight! + expandedCardHeight! }
         minPagePadding={ 24 }
+        gapSpace={ this.props.gapSpace }
       >
         <div
           onFocusCapture={ this.props.onEnter }
@@ -106,9 +109,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
   @autobind
   private _onRenderExpandedCard(): JSX.Element {
-    // firstFrameRendered helps in initially setting height of expanded card to 0, even if
+    // firstFrameRendered helps in initially setting height of expanded card to 1px, even if
     // mode prop is set to ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
-    this._async.requestAnimationFrame(() => {
+    !this.state.firstFrameRendered && this._async.requestAnimationFrame(() => {
       this.setState({
         firstFrameRendered: true
       });

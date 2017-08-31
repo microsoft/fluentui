@@ -4,7 +4,7 @@ import {
   TilesList
 } from '../../TilesList';
 import { Tile } from '../../../Tile';
-import { Selection } from 'office-ui-fabric-react/lib/utilities/selection/Selection';
+import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
@@ -34,7 +34,7 @@ declare class TilesListClass extends TilesList<IExampleItem> { }
 
 const TilesListType: typeof TilesListClass = TilesList;
 
-export class TilesListDocumentExample extends React.Component<any, any> {
+export class TilesListDocumentExample extends React.Component<{}, {}> {
   private _selection: Selection;
 
   constructor() {
@@ -46,26 +46,39 @@ export class TilesListDocumentExample extends React.Component<any, any> {
 
     this._selection.setItems(ITEMS);
   }
-  public render() {
+  public render(): JSX.Element {
     const items = getTileCells(GROUPS, {
       onRenderCell: this._onRenderDocumentCell,
       onRenderHeader: this._onRenderHeader
     });
 
     return (
+      // tslint:disable-next-line:jsx-ban-props
       <div style={ { padding: '4px' } }>
         <MarqueeSelection selection={ this._selection }>
-          <TilesListType
+          <SelectionZone
             selection={ this._selection }
-            items={ items }
-          />
+            onItemInvoked={ this._onItemInvoked }
+          >
+            <TilesListType
+              items={ items }
+            />
+          </SelectionZone>
         </MarqueeSelection>
       </div>
     );
   }
 
   @autobind
-  private _onRenderDocumentCell(item: IExampleItem) {
+  private _onItemInvoked(item: IExampleItem, index: number, event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    alert(`Invoked item '${item.name}'`);
+  }
+
+  @autobind
+  private _onRenderDocumentCell(item: IExampleItem): JSX.Element {
     return (
       <Tile
         className={ AnimationClassNames.fadeIn400 }
@@ -94,7 +107,7 @@ export class TilesListDocumentExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onRenderHeader(item: IExampleItem) {
+  private _onRenderHeader(item: IExampleItem): JSX.Element {
     return (
       <div>
         <h3>{ item.name }</h3>
