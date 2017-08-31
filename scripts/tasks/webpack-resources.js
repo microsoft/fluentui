@@ -94,7 +94,7 @@ module.exports = {
             {
               test: [/\.json$/],
               enforce: 'pre',
-              loader: 'json-loader',
+              loader: 'json',
               exclude: [
                 /node_modules/
               ]
