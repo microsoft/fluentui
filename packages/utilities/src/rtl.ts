@@ -12,14 +12,13 @@ let _isRTL: boolean | undefined;
  */
 export function getRTL(): boolean {
   if (_isRTL === undefined) {
-    let doc = getDocument();
-
     let savedRTL = getItem(RTL_LOCAL_STORAGE_KEY);
-
     if (savedRTL !== null) {
       _isRTL = savedRTL === '1';
+      setRTL(_isRTL);
     }
 
+    let doc = getDocument();
     if (_isRTL === undefined && doc) {
       _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
     }
