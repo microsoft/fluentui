@@ -2,29 +2,38 @@
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.props';
 import { mergeStyles } from '@uifabric/styling';
-// import { css } from 'office-ui-fabric-react/lib/Utilities';
-
-export interface ILayoutGroupState {
-  // TODO Add animation support for drag/drop events.
-}
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, any> {
 
   public static defaultProps: ILayoutGroupProps = {
     gap: 8,
-    direction: 'vertical'
+    direction: 'vertical',
+    justify: 'start'
   }
 
   public render(): JSX.Element | null {
     const {
       children,
       direction,
-      gap
+      gap,
+      justify
     } = this.props;
+
+    let justifyValue: string;
+
+    switch (justify) {
+      case 'end':
+        justifyValue = 'flex-end';
+        break;
+      case 'center':
+        justifyValue = 'center';
+        break;
+      default:
+        justifyValue = 'flex-start'
+    }
 
     const group = React.Children.map(children, (child: React.ReactChild, i: number) => {
       const numberOfChildren = React.Children.count(children);
-      const marginDirection = direction === 'horizontal' ? 'right' : 'bottom';
       return (
         <div className={
           mergeStyles(
@@ -34,7 +43,12 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, any> {
             },
             direction === 'vertical' && i < numberOfChildren - 1 && {
               marginBottom: gap + 'px'
+            },
+            justify === 'fill' && {
+              flexBasis: 0,
+              flexGrow: 1
             }
+
           ) as string
         }>
           { child }
@@ -48,7 +62,8 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, any> {
           'ms-LayoutGroup',
           {
             display: 'flex',
-            flexDirection: direction === 'horizontal' ? 'row' : 'column'
+            flexDirection: direction === 'horizontal' ? 'row' : 'column',
+            justifyContent: justifyValue
           }
         ) as string
       }>
