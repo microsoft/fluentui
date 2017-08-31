@@ -21,6 +21,7 @@ let iconStrings: ICalendarIconStrings = {
 };
 
 let dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
+  formatMonthDayYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()),
   formatMonthYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getFullYear()),
   formatDay: (date: Date) => date.getDate().toString(),
   formatYear: (date: Date) => date.getFullYear().toString()

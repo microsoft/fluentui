@@ -129,7 +129,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ strings.monthPickerAriaLabel }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 role='button'
                 tabIndex={ 0 }
               />
@@ -178,8 +178,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
-                        aria-label={ day.originalDate.toLocaleString ?
-                          day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
+                        aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }

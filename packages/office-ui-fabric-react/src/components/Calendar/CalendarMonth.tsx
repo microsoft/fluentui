@@ -85,7 +85,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ strings.dayPickerAriaLabel }
+                aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
                 role='button'
                 tabIndex={ 0 }
               />
@@ -107,7 +107,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
-                aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 data-is-focusable={ true }
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
