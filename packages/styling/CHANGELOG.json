@@ -2,6 +2,44 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.21.1",
+      "tag": "@uifabric/styling_v0.21.1",
+      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
+            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.11.0 <5.0.0` to `>=4.11.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.21.0",
+      "tag": "@uifabric/styling_v0.21.0",
+      "date": "Tue, 29 Aug 2017 10:20:56 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e9a99a34b2950f779b13b4299e2d495265872b52",
+            "comment": "Theming: added an accent color slot"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.3 <5.0.0` to `>=4.11.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.20.2",
       "tag": "@uifabric/styling_v0.20.2",
       "date": "Fri, 25 Aug 2017 20:31:51 GMT",

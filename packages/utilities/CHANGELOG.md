@@ -1,6 +1,27 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 28 Aug 2017 10:09:32 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Aug 2017 15:41:56 GMT and should not be manually modified.
+
+## 4.12.0
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Minor changes
+
+- RTL: Persist rtl settings between sessions
+
+## 4.11.1
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.11.0
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Minor changes
+
+- Array: rename removeElement to removeIndex
 
 ## 4.10.3
 Mon, 28 Aug 2017 10:09:32 GMT
