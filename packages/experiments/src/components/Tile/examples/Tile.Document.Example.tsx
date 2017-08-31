@@ -85,7 +85,7 @@ export class TileDocumentExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h3>Tiny document thumbnail</h3>
+        <h3>Document thumbnail</h3>
         <DocumentTileWithThumbnail
           originalImageSize={
             {

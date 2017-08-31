@@ -91,8 +91,17 @@ export class TileFolderExample extends React.Component<{}, {}> {
         <FolderTileWithThumbnail
           originalImageSize={
             {
-              width: 400,
-              height: 300
+              width: 300,
+              height: 400
+            }
+          }
+          folderCoverType='media'
+        />
+        <FolderTileWithThumbnail
+          originalImageSize={
+            {
+              width: 40,
+              height: 40
             }
           }
           folderCoverType='media'
