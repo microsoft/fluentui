@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox- Make sure the option always get updated if they change (#2301)",
+      "comment": "Respect ths isHeader property on the ResizeGroup demo page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

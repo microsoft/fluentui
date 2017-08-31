@@ -40,6 +40,12 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   delay?: TooltipDelay;
 
   /**
+   * Max width of tooltip
+   * @default 364px
+   */
+  maxWidth?: string | null;
+
+  /**
    * Element to anchor the Tooltip to.
    */
   targetElement?: HTMLElement;

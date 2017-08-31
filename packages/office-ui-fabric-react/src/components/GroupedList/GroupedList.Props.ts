@@ -86,12 +86,12 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   /** Optional callback when the group expand state changes between all collapsed and at least one group is expanded. */
   onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
 
-  /** 
-   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization 
+  /**
+   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization
    * The same property in List.Props
    */
   usePageCache?: boolean;
-  
+
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.

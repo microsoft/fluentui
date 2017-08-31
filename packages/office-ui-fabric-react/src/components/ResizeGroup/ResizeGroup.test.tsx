@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { expect } from 'chai';
+const { expect } = chai;
 import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
 import { IResizeGroupProps } from './ResizeGroup.Props';
 import * as sinon from 'sinon';

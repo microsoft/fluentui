@@ -10,7 +10,7 @@ let { expect } = chai;
 class Foo extends React.Component<{ field: string; }, {}> {
   public name: any;
 
-  public render() {
+  public render(): JSX.Element {
     return <div>{ (this.props as any)[this.props.field] }</div>;
   }
 }
