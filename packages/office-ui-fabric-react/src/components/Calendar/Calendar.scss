@@ -70,7 +70,7 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // The month and year labels.
-.month,
+.monthAndYear,
 .year {
   display: inline-block;
   @include ms-font-xl;
@@ -83,7 +83,7 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-.month {
+.monthAndYear {
   @include margin-left(15px);
 }
 
@@ -476,7 +476,7 @@ $Calendar-dayPicker-margin: 10px;
       position: absolute;
     }
     // Size and position of the month and year labels.
-    .month {
+    .monthAndYear {
       @include margin-left(12px);
     }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalendar, ICalendarProps, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
@@ -18,6 +18,13 @@ const rightArrow: string = 'ChevronRight';
 let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
+};
+
+let dateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
+  formatMonthDayYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear()),
+  formatMonthYear: (date: Date, strings: ICalendarStrings) => (strings.months[date.getMonth()] + ' ' + date.getFullYear()),
+  formatDay: (date: Date) => date.getDate().toString(),
+  formatYear: (date: Date) => date.getFullYear().toString()
 };
 
 export interface ICalendarState {
@@ -50,7 +57,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     strings: null,
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
-    showWeekNumbers: false
+    showWeekNumbers: false,
+    dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
   public refs: {
@@ -142,6 +150,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   showWeekNumbers={ this.props.showWeekNumbers }
+                  dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='dayPicker' />
                 }
 
@@ -153,6 +162,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   highlightCurrentMonth={ highlightCurrentMonth! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
+                  dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='monthPicker' /> }
 
                 { showGoToToday &&
