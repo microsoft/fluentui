@@ -5,11 +5,15 @@
  * but will allow you to access the output file on your local machine.
  */
 
-let WriteFilePlugin = require('write-file-webpack-plugin');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
-let serveConfig = require('./webpack.serve.config');
-let path = require('path');
+const serveConfig = require('./webpack.serve.config');
+const path = require('path');
 const entryPointFilename = 'fabric-sitev5';
+const version = require('./package.json').version;
+const isProduction = process.argv.indexOf('--production') > -1;
+const minFileNamePart = isProduction ? '.min' : '';
+
 
 // Overwrite the main webpack.site.config properties
 serveConfig.entry = {
