@@ -158,11 +158,9 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
-    let thumbStyle: string;
-    if (!vertical) {
-      return getRTL() ? { 'right': thumbOffsetPercent + '%' } : { 'left': thumbOffsetPercent + '%' };
-    } else {
-      return getRTL() ? { 'top': thumbOffsetPercent + '%' } : { 'bottom': thumbOffsetPercent + '%' };
+    let direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
+    return {
+      [direction]: thumbOffsetPercent + '%'
     }
   }
 
@@ -194,7 +192,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       currentSteps = distance / stepLength;
     } else {
       let bottom: number | undefined = this._getPosition(event, this.props.vertical);
-      distance = getRTL() ? bottom! - sliderPositionRect.top : sliderPositionRect.bottom - bottom!;
+      distance = sliderPositionRect.bottom - bottom!;
       currentSteps = distance / stepLength;
     }
 
