@@ -352,7 +352,7 @@ $Calendar-dayPicker-margin: 10px;
 // 460px and up.
 //
 // On screens that can fit it, we show the month picker next to the day picker if we have it enabled.
-@media (min-width: 460px) {
+@media (min-device-width: 460px) {
 
   $Calendar-day: 28px;
   $Calendar-month: 40px;
@@ -532,7 +532,7 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // On smaller screens the month button toggles to the picking months state.
-@media (max-width: 459px) {
+@media (max-device-width: 459px) {
 
   // Stop elements from going off screen
   .holder {
