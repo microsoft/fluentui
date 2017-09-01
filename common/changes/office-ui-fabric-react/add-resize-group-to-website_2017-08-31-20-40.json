@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check: Increased size of check to 18px",
+      "comment": "Respect ths isHeader property on the ResizeGroup demo page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "betrue@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

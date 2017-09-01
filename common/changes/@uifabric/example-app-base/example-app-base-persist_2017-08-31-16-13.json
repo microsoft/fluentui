@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Refresh the page when swtiching languages to make sure that memoized styles are recomputed",
+      "comment": "Persist RTL setting between page refreshes",
       "type": "patch"
     }
   ],
