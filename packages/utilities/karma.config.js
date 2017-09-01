@@ -52,7 +52,8 @@ module.exports = function (config) {
         'cheerio': 'window',
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true
+        'react/lib/ReactContext': true,
+        'chai': true
       },
       resolve: {
         modules: [
