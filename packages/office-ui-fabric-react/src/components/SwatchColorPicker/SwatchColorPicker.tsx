@@ -58,8 +58,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       newSelectedIndex = this._getSelectedIndex(newProps.colorCells, newProps.selectedId);
     }
 
-    if (newSelectedIndex !== undefined &&
-      newSelectedIndex !== this.state.selectedIndex) {
+    if (newSelectedIndex !== this.state.selectedIndex) {
       this.setState({
         selectedIndex: newSelectedIndex
       });
