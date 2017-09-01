@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed chrome check placement bug, and converted to flex box",
+      "comment": "Check: Fixed chrome alignment of the checkmark within the circle.",
       "type": "patch"
     }
   ],
