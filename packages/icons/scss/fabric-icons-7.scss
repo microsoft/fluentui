@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-7';
+  src: url('fabric-icons-7.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-7';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+// Mixins
+@mixin ms-Icon--AndroidLogo { content: "\EF8B"; }
+@mixin ms-Icon--Breadcrumb { content: "\EF8C"; }
+@mixin ms-Icon--ClearFilter { content: "\EF8F"; }
+@mixin ms-Icon--Flow { content: "\EF90"; }
+@mixin ms-Icon--PageEdit { content: "\EFB6"; }
+@mixin ms-Icon--Database { content: "\EFC7"; }
+@mixin ms-Icon--DocumentManagement { content: "\EFFC"; }
+@mixin ms-Icon--CRMReport { content: "\EFFE"; }
+@mixin ms-Icon--ZipFolder { content: "\F012"; }
+@mixin ms-Icon--TextDocument { content: "\F029"; }
+@mixin ms-Icon--PageCheckedOut { content: "\F02C"; }
+@mixin ms-Icon--SaveAndClose { content: "\F038"; }
+@mixin ms-Icon--Script { content: "\F03A"; }
+@mixin ms-Icon--Archive { content: "\F03F"; }
+@mixin ms-Icon--ActivityFeed { content: "\F056"; }
+@mixin ms-Icon--EventDate { content: "\F059"; }
+@mixin ms-Icon--CaretRight { content: "\F06B"; }
+@mixin ms-Icon--SetAction { content: "\F071"; }
+@mixin ms-Icon--CaretSolidLeft { content: "\F08D"; }
+@mixin ms-Icon--CaretSolidDown { content: "\F08E"; }
+@mixin ms-Icon--CaretSolidRight { content: "\F08F"; }
+@mixin ms-Icon--CaretSolidUp { content: "\F090"; }
+@mixin ms-Icon--PowerAppsLogo { content: "\F091"; }
+@mixin ms-Icon--PowerApps2Logo { content: "\F092"; }
+@mixin ms-Icon--SearchIssue { content: "\F09A"; }
+@mixin ms-Icon--SearchIssueMirrored { content: "\F09B"; }
+@mixin ms-Icon--FabricAssetLibrary { content: "\F09C"; }
+@mixin ms-Icon--FabricDataConnectionLibrary { content: "\F09D"; }
+@mixin ms-Icon--FabricDocLibrary { content: "\F09E"; }
+@mixin ms-Icon--FabricFormLibrary { content: "\F09F"; }
+@mixin ms-Icon--FabricFormLibraryMirrored { content: "\F0A0"; }
+@mixin ms-Icon--FabricReportLibrary { content: "\F0A1"; }
+@mixin ms-Icon--FabricReportLibraryMirrored { content: "\F0A2"; }
+@mixin ms-Icon--FabricPublicFolder { content: "\F0A3"; }
+@mixin ms-Icon--FabricFolderSearch { content: "\F0A4"; }
+@mixin ms-Icon--FabricMovetoFolder { content: "\F0A5"; }
+@mixin ms-Icon--FabricUnsyncFolder { content: "\F0A6"; }
+@mixin ms-Icon--FabricSyncFolder { content: "\F0A7"; }
+@mixin ms-Icon--FabricOpenFolderHorizontal { content: "\F0A8"; }
+@mixin ms-Icon--FabricFolder { content: "\F0A9"; }
+@mixin ms-Icon--FabricFolderFill { content: "\F0AA"; }
+@mixin ms-Icon--FabricNewFolder { content: "\F0AB"; }
+@mixin ms-Icon--FabricPictureLibrary { content: "\F0AC"; }
+@mixin ms-Icon--AddFavorite { content: "\F0C8"; }
+@mixin ms-Icon--AddFavoriteFill { content: "\F0C9"; }
+@mixin ms-Icon--BufferTimeBefore { content: "\F0CF"; }
+@mixin ms-Icon--BufferTimeAfter { content: "\F0D0"; }
+@mixin ms-Icon--BufferTimeBoth { content: "\F0D1"; }
+@mixin ms-Icon--CannedChat { content: "\F0F2"; }
+@mixin ms-Icon--SkypeForBusinessLogo { content: "\F0FC"; }
+@mixin ms-Icon--PageCheckedin { content: "\F104"; }
+@mixin ms-Icon--CaretBottomLeftSolid8 { content: "\F121"; }
+@mixin ms-Icon--CaretBottomRightSolid8 { content: "\F122"; }
+@mixin ms-Icon--FolderHorizontal { content: "\F12B"; }
+@mixin ms-Icon--MicrosoftStaffhubLogo { content: "\F130"; }
+@mixin ms-Icon--GiftboxOpen { content: "\F133"; }
+@mixin ms-Icon--StatusCircleOuter { content: "\F136"; }
+@mixin ms-Icon--StatusCircleInner { content: "\F137"; }
+@mixin ms-Icon--ExploreContentSingle { content: "\F164"; }
+@mixin ms-Icon--CollapseContent { content: "\F165"; }
+@mixin ms-Icon--CollapseContentSingle { content: "\F166"; }
+@mixin ms-Icon--InfoSolid { content: "\F167"; }
+@mixin ms-Icon--ProgressRingDots { content: "\F16A"; }
+@mixin ms-Icon--CaloriesAdd { content: "\F172"; }
+@mixin ms-Icon--BranchFork { content: "\F173"; }
+@mixin ms-Icon--HardDriveGroup { content: "\F18F"; }
+@mixin ms-Icon--BucketColor { content: "\F1B6"; }
+@mixin ms-Icon--BucketColorFill { content: "\F1B7"; }
+@mixin ms-Icon--Taskboard { content: "\F1C2"; }
+@mixin ms-Icon--SingleColumn { content: "\F1D3"; }
+@mixin ms-Icon--DoubleColumn { content: "\F1D4"; }
+@mixin ms-Icon--TripleColumn { content: "\F1D5"; }
+@mixin ms-Icon--ColumnLeftTwoThirds { content: "\F1D6"; }
+@mixin ms-Icon--ColumnRightTwoThirds { content: "\F1D7"; }
+@mixin ms-Icon--AccessLogoFill { content: "\F1DB"; }
+@mixin ms-Icon--AnalyticsLogo { content: "\F1DE"; }
+@mixin ms-Icon--AnalyticsQuery { content: "\F1DF"; }
+@mixin ms-Icon--NewAnalyticsQuery { content: "\F1E0"; }
+@mixin ms-Icon--AnalyticsReport { content: "\F1E1"; }
+@mixin ms-Icon--WordLogo { content: "\F1E3"; }
+@mixin ms-Icon--WordLogoFill { content: "\F1E4"; }
+@mixin ms-Icon--ExcelLogo { content: "\F1E5"; }
+@mixin ms-Icon--ExcelLogoFill { content: "\F1E6"; }
+@mixin ms-Icon--OneNoteLogo { content: "\F1E7"; }
+@mixin ms-Icon--OneNoteLogoFill { content: "\F1E8"; }
+@mixin ms-Icon--OutlookLogo { content: "\F1E9"; }
+@mixin ms-Icon--OutlookLogoFill { content: "\F1EA"; }
+@mixin ms-Icon--PowerPointLogo { content: "\F1EB"; }
+@mixin ms-Icon--PowerPointLogoFill { content: "\F1EC"; }
+@mixin ms-Icon--PublisherLogo { content: "\F1ED"; }
+@mixin ms-Icon--PublisherLogoFill { content: "\F1EE"; }
+@mixin ms-Icon--ScheduleEventAction { content: "\F1EF"; }
+@mixin ms-Icon--FlameSolid { content: "\F1F3"; }
+@mixin ms-Icon--ServerProcesses { content: "\F1FE"; }
+@mixin ms-Icon--Server { content: "\F201"; }
+@mixin ms-Icon--SaveAll { content: "\F203"; }
+@mixin ms-Icon--LinkedInLogo { content: "\F20A"; }
+@mixin ms-Icon--SidePanelMirrored { content: "\F221"; }
+@mixin ms-Icon--ProtectRestrict { content: "\F22A"; }
+@mixin ms-Icon--GridViewSmall { content: "\F232"; }
+
+
+// Classes
+.ms-Icon--AndroidLogo:before { @include ms-Icon--AndroidLogo }
+.ms-Icon--Breadcrumb:before { @include ms-Icon--Breadcrumb }
+.ms-Icon--ClearFilter:before { @include ms-Icon--ClearFilter }
+.ms-Icon--Flow:before { @include ms-Icon--Flow }
+.ms-Icon--PageEdit:before { @include ms-Icon--PageEdit }
+.ms-Icon--Database:before { @include ms-Icon--Database }
+.ms-Icon--DocumentManagement:before { @include ms-Icon--DocumentManagement }
+.ms-Icon--CRMReport:before { @include ms-Icon--CRMReport }
+.ms-Icon--ZipFolder:before { @include ms-Icon--ZipFolder }
+.ms-Icon--TextDocument:before { @include ms-Icon--TextDocument }
+.ms-Icon--PageCheckedOut:before { @include ms-Icon--PageCheckedOut }
+.ms-Icon--SaveAndClose:before { @include ms-Icon--SaveAndClose }
+.ms-Icon--Script:before { @include ms-Icon--Script }
+.ms-Icon--Archive:before { @include ms-Icon--Archive }
+.ms-Icon--ActivityFeed:before { @include ms-Icon--ActivityFeed }
+.ms-Icon--EventDate:before { @include ms-Icon--EventDate }
+.ms-Icon--CaretRight:before { @include ms-Icon--CaretRight }
+.ms-Icon--SetAction:before { @include ms-Icon--SetAction }
+.ms-Icon--CaretSolidLeft:before { @include ms-Icon--CaretSolidLeft }
+.ms-Icon--CaretSolidDown:before { @include ms-Icon--CaretSolidDown }
+.ms-Icon--CaretSolidRight:before { @include ms-Icon--CaretSolidRight }
+.ms-Icon--CaretSolidUp:before { @include ms-Icon--CaretSolidUp }
+.ms-Icon--PowerAppsLogo:before { @include ms-Icon--PowerAppsLogo }
+.ms-Icon--PowerApps2Logo:before { @include ms-Icon--PowerApps2Logo }
+.ms-Icon--SearchIssue:before { @include ms-Icon--SearchIssue }
+.ms-Icon--SearchIssueMirrored:before { @include ms-Icon--SearchIssueMirrored }
+.ms-Icon--FabricAssetLibrary:before { @include ms-Icon--FabricAssetLibrary }
+.ms-Icon--FabricDataConnectionLibrary:before { @include ms-Icon--FabricDataConnectionLibrary }
+.ms-Icon--FabricDocLibrary:before { @include ms-Icon--FabricDocLibrary }
+.ms-Icon--FabricFormLibrary:before { @include ms-Icon--FabricFormLibrary }
+.ms-Icon--FabricFormLibraryMirrored:before { @include ms-Icon--FabricFormLibraryMirrored }
+.ms-Icon--FabricReportLibrary:before { @include ms-Icon--FabricReportLibrary }
+.ms-Icon--FabricReportLibraryMirrored:before { @include ms-Icon--FabricReportLibraryMirrored }
+.ms-Icon--FabricPublicFolder:before { @include ms-Icon--FabricPublicFolder }
+.ms-Icon--FabricFolderSearch:before { @include ms-Icon--FabricFolderSearch }
+.ms-Icon--FabricMovetoFolder:before { @include ms-Icon--FabricMovetoFolder }
+.ms-Icon--FabricUnsyncFolder:before { @include ms-Icon--FabricUnsyncFolder }
+.ms-Icon--FabricSyncFolder:before { @include ms-Icon--FabricSyncFolder }
+.ms-Icon--FabricOpenFolderHorizontal:before { @include ms-Icon--FabricOpenFolderHorizontal }
+.ms-Icon--FabricFolder:before { @include ms-Icon--FabricFolder }
+.ms-Icon--FabricFolderFill:before { @include ms-Icon--FabricFolderFill }
+.ms-Icon--FabricNewFolder:before { @include ms-Icon--FabricNewFolder }
+.ms-Icon--FabricPictureLibrary:before { @include ms-Icon--FabricPictureLibrary }
+.ms-Icon--AddFavorite:before { @include ms-Icon--AddFavorite }
+.ms-Icon--AddFavoriteFill:before { @include ms-Icon--AddFavoriteFill }
+.ms-Icon--BufferTimeBefore:before { @include ms-Icon--BufferTimeBefore }
+.ms-Icon--BufferTimeAfter:before { @include ms-Icon--BufferTimeAfter }
+.ms-Icon--BufferTimeBoth:before { @include ms-Icon--BufferTimeBoth }
+.ms-Icon--CannedChat:before { @include ms-Icon--CannedChat }
+.ms-Icon--SkypeForBusinessLogo:before { @include ms-Icon--SkypeForBusinessLogo }
+.ms-Icon--PageCheckedin:before { @include ms-Icon--PageCheckedin }
+.ms-Icon--CaretBottomLeftSolid8:before { @include ms-Icon--CaretBottomLeftSolid8 }
+.ms-Icon--CaretBottomRightSolid8:before { @include ms-Icon--CaretBottomRightSolid8 }
+.ms-Icon--FolderHorizontal:before { @include ms-Icon--FolderHorizontal }
+.ms-Icon--MicrosoftStaffhubLogo:before { @include ms-Icon--MicrosoftStaffhubLogo }
+.ms-Icon--GiftboxOpen:before { @include ms-Icon--GiftboxOpen }
+.ms-Icon--StatusCircleOuter:before { @include ms-Icon--StatusCircleOuter }
+.ms-Icon--StatusCircleInner:before { @include ms-Icon--StatusCircleInner }
+.ms-Icon--ExploreContentSingle:before { @include ms-Icon--ExploreContentSingle }
+.ms-Icon--CollapseContent:before { @include ms-Icon--CollapseContent }
+.ms-Icon--CollapseContentSingle:before { @include ms-Icon--CollapseContentSingle }
+.ms-Icon--InfoSolid:before { @include ms-Icon--InfoSolid }
+.ms-Icon--ProgressRingDots:before { @include ms-Icon--ProgressRingDots }
+.ms-Icon--CaloriesAdd:before { @include ms-Icon--CaloriesAdd }
+.ms-Icon--BranchFork:before { @include ms-Icon--BranchFork }
+.ms-Icon--HardDriveGroup:before { @include ms-Icon--HardDriveGroup }
+.ms-Icon--BucketColor:before { @include ms-Icon--BucketColor }
+.ms-Icon--BucketColorFill:before { @include ms-Icon--BucketColorFill }
+.ms-Icon--Taskboard:before { @include ms-Icon--Taskboard }
+.ms-Icon--SingleColumn:before { @include ms-Icon--SingleColumn }
+.ms-Icon--DoubleColumn:before { @include ms-Icon--DoubleColumn }
+.ms-Icon--TripleColumn:before { @include ms-Icon--TripleColumn }
+.ms-Icon--ColumnLeftTwoThirds:before { @include ms-Icon--ColumnLeftTwoThirds }
+.ms-Icon--ColumnRightTwoThirds:before { @include ms-Icon--ColumnRightTwoThirds }
+.ms-Icon--AccessLogoFill:before { @include ms-Icon--AccessLogoFill }
+.ms-Icon--AnalyticsLogo:before { @include ms-Icon--AnalyticsLogo }
+.ms-Icon--AnalyticsQuery:before { @include ms-Icon--AnalyticsQuery }
+.ms-Icon--NewAnalyticsQuery:before { @include ms-Icon--NewAnalyticsQuery }
+.ms-Icon--AnalyticsReport:before { @include ms-Icon--AnalyticsReport }
+.ms-Icon--WordLogo:before { @include ms-Icon--WordLogo }
+.ms-Icon--WordLogoFill:before { @include ms-Icon--WordLogoFill }
+.ms-Icon--ExcelLogo:before { @include ms-Icon--ExcelLogo }
+.ms-Icon--ExcelLogoFill:before { @include ms-Icon--ExcelLogoFill }
+.ms-Icon--OneNoteLogo:before { @include ms-Icon--OneNoteLogo }
+.ms-Icon--OneNoteLogoFill:before { @include ms-Icon--OneNoteLogoFill }
+.ms-Icon--OutlookLogo:before { @include ms-Icon--OutlookLogo }
+.ms-Icon--OutlookLogoFill:before { @include ms-Icon--OutlookLogoFill }
+.ms-Icon--PowerPointLogo:before { @include ms-Icon--PowerPointLogo }
+.ms-Icon--PowerPointLogoFill:before { @include ms-Icon--PowerPointLogoFill }
+.ms-Icon--PublisherLogo:before { @include ms-Icon--PublisherLogo }
+.ms-Icon--PublisherLogoFill:before { @include ms-Icon--PublisherLogoFill }
+.ms-Icon--ScheduleEventAction:before { @include ms-Icon--ScheduleEventAction }
+.ms-Icon--FlameSolid:before { @include ms-Icon--FlameSolid }
+.ms-Icon--ServerProcesses:before { @include ms-Icon--ServerProcesses }
+.ms-Icon--Server:before { @include ms-Icon--Server }
+.ms-Icon--SaveAll:before { @include ms-Icon--SaveAll }
+.ms-Icon--LinkedInLogo:before { @include ms-Icon--LinkedInLogo }
+.ms-Icon--SidePanelMirrored:before { @include ms-Icon--SidePanelMirrored }
+.ms-Icon--ProtectRestrict:before { @include ms-Icon--ProtectRestrict }
+.ms-Icon--GridViewSmall:before { @include ms-Icon--GridViewSmall }
+

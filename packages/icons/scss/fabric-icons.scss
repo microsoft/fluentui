@@ -1,0 +1,100 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet';
+  src: url('fabric-icons.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+// Mixins
+@mixin ms-Icon--StatusCircleCheckmark { content: "\F13E"; }
+@mixin ms-Icon--Cancel { content: "\E711"; }
+@mixin ms-Icon--ChevronDown { content: "\E70D"; }
+@mixin ms-Icon--ChevronLeft { content: "\E76B"; }
+@mixin ms-Icon--ChevronRight { content: "\E76C"; }
+@mixin ms-Icon--ChevronUp { content: "\E70E"; }
+@mixin ms-Icon--SkypeCheck { content: "\EF80"; }
+@mixin ms-Icon--SkypeClock { content: "\EF81"; }
+@mixin ms-Icon--SkypeMinus { content: "\EF82"; }
+@mixin ms-Icon--Clear { content: "\E894"; }
+@mixin ms-Icon--Search { content: "\E721"; }
+@mixin ms-Icon--FavoriteStar { content: "\E734"; }
+@mixin ms-Icon--FavoriteStarFill { content: "\E735"; }
+@mixin ms-Icon--AddFriend { content: "\E8FA"; }
+@mixin ms-Icon--Tag { content: "\E8EC"; }
+@mixin ms-Icon--More { content: "\E712"; }
+@mixin ms-Icon--Ascending { content: "\EDC0"; }
+@mixin ms-Icon--Descending { content: "\EDC1"; }
+@mixin ms-Icon--Filter { content: "\E71C"; }
+@mixin ms-Icon--Sort { content: "\E8CB"; }
+@mixin ms-Icon--SortDown { content: "\EE69"; }
+@mixin ms-Icon--SortLines { content: "\E9D0"; }
+@mixin ms-Icon--SortUp { content: "\EE68"; }
+@mixin ms-Icon--LargeGrid { content: "\EECB"; }
+@mixin ms-Icon--List { content: "\EA37"; }
+@mixin ms-Icon--View { content: "\E890"; }
+@mixin ms-Icon--Add { content: "\E710"; }
+@mixin ms-Icon--Download { content: "\E896"; }
+@mixin ms-Icon--Calendar { content: "\E787"; }
+@mixin ms-Icon--Edit { content: "\E70F"; }
+@mixin ms-Icon--Embed { content: "\ECCE"; }
+@mixin ms-Icon--GlobalNavButton { content: "\E700"; }
+@mixin ms-Icon--Info { content: "\E946"; }
+@mixin ms-Icon--Mail { content: "\E715"; }
+@mixin ms-Icon--Settings { content: "\E713"; }
+@mixin ms-Icon--Share { content: "\E72D"; }
+@mixin ms-Icon--Tiles { content: "\ECA5"; }
+@mixin ms-Icon--Upload { content: "\E898"; }
+@mixin ms-Icon--CircleRing { content: "\EA3A"; }
+@mixin ms-Icon--CheckMark { content: "\E73E"; }
+
+
+// Classes
+.ms-Icon--StatusCircleCheckmark:before { @include ms-Icon--StatusCircleCheckmark }
+.ms-Icon--Cancel:before { @include ms-Icon--Cancel }
+.ms-Icon--ChevronDown:before { @include ms-Icon--ChevronDown }
+.ms-Icon--ChevronLeft:before { @include ms-Icon--ChevronLeft }
+.ms-Icon--ChevronRight:before { @include ms-Icon--ChevronRight }
+.ms-Icon--ChevronUp:before { @include ms-Icon--ChevronUp }
+.ms-Icon--SkypeCheck:before { @include ms-Icon--SkypeCheck }
+.ms-Icon--SkypeClock:before { @include ms-Icon--SkypeClock }
+.ms-Icon--SkypeMinus:before { @include ms-Icon--SkypeMinus }
+.ms-Icon--Clear:before { @include ms-Icon--Clear }
+.ms-Icon--Search:before { @include ms-Icon--Search }
+.ms-Icon--FavoriteStar:before { @include ms-Icon--FavoriteStar }
+.ms-Icon--FavoriteStarFill:before { @include ms-Icon--FavoriteStarFill }
+.ms-Icon--AddFriend:before { @include ms-Icon--AddFriend }
+.ms-Icon--Tag:before { @include ms-Icon--Tag }
+.ms-Icon--More:before { @include ms-Icon--More }
+.ms-Icon--Ascending:before { @include ms-Icon--Ascending }
+.ms-Icon--Descending:before { @include ms-Icon--Descending }
+.ms-Icon--Filter:before { @include ms-Icon--Filter }
+.ms-Icon--Sort:before { @include ms-Icon--Sort }
+.ms-Icon--SortDown:before { @include ms-Icon--SortDown }
+.ms-Icon--SortLines:before { @include ms-Icon--SortLines }
+.ms-Icon--SortUp:before { @include ms-Icon--SortUp }
+.ms-Icon--LargeGrid:before { @include ms-Icon--LargeGrid }
+.ms-Icon--List:before { @include ms-Icon--List }
+.ms-Icon--View:before { @include ms-Icon--View }
+.ms-Icon--Add:before { @include ms-Icon--Add }
+.ms-Icon--Download:before { @include ms-Icon--Download }
+.ms-Icon--Calendar:before { @include ms-Icon--Calendar }
+.ms-Icon--Edit:before { @include ms-Icon--Edit }
+.ms-Icon--Embed:before { @include ms-Icon--Embed }
+.ms-Icon--GlobalNavButton:before { @include ms-Icon--GlobalNavButton }
+.ms-Icon--Info:before { @include ms-Icon--Info }
+.ms-Icon--Mail:before { @include ms-Icon--Mail }
+.ms-Icon--Settings:before { @include ms-Icon--Settings }
+.ms-Icon--Share:before { @include ms-Icon--Share }
+.ms-Icon--Tiles:before { @include ms-Icon--Tiles }
+.ms-Icon--Upload:before { @include ms-Icon--Upload }
+.ms-Icon--CircleRing:before { @include ms-Icon--CircleRing }
+.ms-Icon--CheckMark:before { @include ms-Icon--CheckMark }
+

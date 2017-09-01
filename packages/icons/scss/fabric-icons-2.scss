@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-2';
+  src: url('fabric-icons-2.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-2';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+// Mixins
+@mixin ms-Icon--FullCircleMask { content: "\E91F"; }
+@mixin ms-Icon--LocationFill { content: "\E920"; }
+@mixin ms-Icon--ChromeMinimize { content: "\E921"; }
+@mixin ms-Icon--Annotation { content: "\E924"; }
+@mixin ms-Icon--ChromeClose { content: "\E8BB"; }
+@mixin ms-Icon--Accept { content: "\E8FB"; }
+@mixin ms-Icon--Fingerprint { content: "\E928"; }
+@mixin ms-Icon--Handwriting { content: "\E929"; }
+@mixin ms-Icon--StackIndicator { content: "\E7FF"; }
+@mixin ms-Icon--Completed { content: "\E930"; }
+@mixin ms-Icon--Label { content: "\E932"; }
+@mixin ms-Icon--FlickDown { content: "\E935"; }
+@mixin ms-Icon--FlickUp { content: "\E936"; }
+@mixin ms-Icon--FlickLeft { content: "\E937"; }
+@mixin ms-Icon--FlickRight { content: "\E938"; }
+@mixin ms-Icon--Streaming { content: "\E93E"; }
+@mixin ms-Icon--MusicInCollection { content: "\E940"; }
+@mixin ms-Icon--OneDrive { content: "\E941"; }
+@mixin ms-Icon--CompassNW { content: "\E942"; }
+@mixin ms-Icon--Code { content: "\E943"; }
+@mixin ms-Icon--LightningBolt { content: "\E945"; }
+@mixin ms-Icon--CalculatorMultiply { content: "\E947"; }
+@mixin ms-Icon--CalculatorAddition { content: "\E948"; }
+@mixin ms-Icon--CalculatorSubtract { content: "\E949"; }
+@mixin ms-Icon--CalculatorEqualTo { content: "\E94E"; }
+@mixin ms-Icon--PrintfaxPrinterFile { content: "\E956"; }
+@mixin ms-Icon--Communications { content: "\E95A"; }
+@mixin ms-Icon--Headset { content: "\E95B"; }
+@mixin ms-Icon--Health { content: "\E95E"; }
+@mixin ms-Icon--ChevronUpSmall { content: "\E96D"; }
+@mixin ms-Icon--ChevronDownSmall { content: "\E96E"; }
+@mixin ms-Icon--ChevronLeftSmall { content: "\E96F"; }
+@mixin ms-Icon--ChevronRightSmall { content: "\E970"; }
+@mixin ms-Icon--ChevronUpMed { content: "\E971"; }
+@mixin ms-Icon--ChevronDownMed { content: "\E972"; }
+@mixin ms-Icon--ChevronLeftMed { content: "\E973"; }
+@mixin ms-Icon--ChevronRightMed { content: "\E974"; }
+@mixin ms-Icon--Dictionary { content: "\E82D"; }
+@mixin ms-Icon--ChromeBack { content: "\E830"; }
+@mixin ms-Icon--PC1 { content: "\E977"; }
+@mixin ms-Icon--PresenceChickletVideo { content: "\E979"; }
+@mixin ms-Icon--Reply { content: "\E97A"; }
+@mixin ms-Icon--HalfAlpha { content: "\E97E"; }
+@mixin ms-Icon--LockSolid { content: "\E9A2"; }
+@mixin ms-Icon--ConstructionCone { content: "\E98F"; }
+@mixin ms-Icon--DoubleChevronLeftMed { content: "\E991"; }
+@mixin ms-Icon--Volume0 { content: "\E992"; }
+@mixin ms-Icon--Volume1 { content: "\E993"; }
+@mixin ms-Icon--Volume2 { content: "\E994"; }
+@mixin ms-Icon--Volume3 { content: "\E995"; }
+@mixin ms-Icon--CaretHollow { content: "\E817"; }
+@mixin ms-Icon--CaretSolid { content: "\E818"; }
+@mixin ms-Icon--FolderOpen { content: "\E838"; }
+@mixin ms-Icon--Pinned { content: "\E840"; }
+@mixin ms-Icon--PinnedFill { content: "\E842"; }
+@mixin ms-Icon--Chart { content: "\E999"; }
+@mixin ms-Icon--Robot { content: "\E99A"; }
+@mixin ms-Icon--BidiLtr { content: "\E9AA"; }
+@mixin ms-Icon--BidiRtl { content: "\E9AB"; }
+@mixin ms-Icon--RevToggleKey { content: "\E845"; }
+@mixin ms-Icon--RightDoubleQuote { content: "\E9B1"; }
+@mixin ms-Icon--Sunny { content: "\E9BD"; }
+@mixin ms-Icon--CloudWeather { content: "\E9BE"; }
+@mixin ms-Icon--Cloudy { content: "\E9BF"; }
+@mixin ms-Icon--PartlyCloudyDay { content: "\E9C0"; }
+@mixin ms-Icon--PartlyCloudyNight { content: "\E9C1"; }
+@mixin ms-Icon--ClearNight { content: "\E9C2"; }
+@mixin ms-Icon--RainShowersDay { content: "\E9C3"; }
+@mixin ms-Icon--Rain { content: "\E9C4"; }
+@mixin ms-Icon--Thunderstorms { content: "\E9C6"; }
+@mixin ms-Icon--RainSnow { content: "\E9C7"; }
+@mixin ms-Icon--Snow { content: "\E9C8"; }
+@mixin ms-Icon--BlowingSnow { content: "\E9C9"; }
+@mixin ms-Icon--Frigid { content: "\E9CA"; }
+@mixin ms-Icon--Fog { content: "\E9CB"; }
+@mixin ms-Icon--Squalls { content: "\E9CC"; }
+@mixin ms-Icon--Duststorm { content: "\E9CD"; }
+@mixin ms-Icon--Unknown { content: "\E9CE"; }
+@mixin ms-Icon--Precipitation { content: "\E9CF"; }
+@mixin ms-Icon--Ringer { content: "\EA8F"; }
+@mixin ms-Icon--PDF { content: "\EA90"; }
+@mixin ms-Icon--Ribbon { content: "\E9D1"; }
+@mixin ms-Icon--AreaChart { content: "\E9D2"; }
+@mixin ms-Icon--Assign { content: "\E9D3"; }
+@mixin ms-Icon--CheckList { content: "\E9D5"; }
+@mixin ms-Icon--Diagnostic { content: "\E9D9"; }
+@mixin ms-Icon--Generate { content: "\E9DA"; }
+@mixin ms-Icon--LineChart { content: "\E9E6"; }
+@mixin ms-Icon--Equalizer { content: "\E9E9"; }
+@mixin ms-Icon--BarChartHorizontal { content: "\E9EB"; }
+@mixin ms-Icon--BarChartVertical { content: "\E9EC"; }
+@mixin ms-Icon--Freezing { content: "\E9EF"; }
+@mixin ms-Icon--Processing { content: "\E9F5"; }
+@mixin ms-Icon--SnowShowerDay { content: "\E9FD"; }
+@mixin ms-Icon--HailDay { content: "\EA00"; }
+@mixin ms-Icon--WorkFlow { content: "\EA01"; }
+@mixin ms-Icon--StoreLogoMed { content: "\EA04"; }
+@mixin ms-Icon--TriangleSolid { content: "\EA08"; }
+@mixin ms-Icon--RainShowersNight { content: "\EA0F"; }
+@mixin ms-Icon--SnowShowerNight { content: "\EA11"; }
+
+
+// Classes
+.ms-Icon--FullCircleMask:before { @include ms-Icon--FullCircleMask }
+.ms-Icon--LocationFill:before { @include ms-Icon--LocationFill }
+.ms-Icon--ChromeMinimize:before { @include ms-Icon--ChromeMinimize }
+.ms-Icon--Annotation:before { @include ms-Icon--Annotation }
+.ms-Icon--ChromeClose:before { @include ms-Icon--ChromeClose }
+.ms-Icon--Accept:before { @include ms-Icon--Accept }
+.ms-Icon--Fingerprint:before { @include ms-Icon--Fingerprint }
+.ms-Icon--Handwriting:before { @include ms-Icon--Handwriting }
+.ms-Icon--StackIndicator:before { @include ms-Icon--StackIndicator }
+.ms-Icon--Completed:before { @include ms-Icon--Completed }
+.ms-Icon--Label:before { @include ms-Icon--Label }
+.ms-Icon--FlickDown:before { @include ms-Icon--FlickDown }
+.ms-Icon--FlickUp:before { @include ms-Icon--FlickUp }
+.ms-Icon--FlickLeft:before { @include ms-Icon--FlickLeft }
+.ms-Icon--FlickRight:before { @include ms-Icon--FlickRight }
+.ms-Icon--Streaming:before { @include ms-Icon--Streaming }
+.ms-Icon--MusicInCollection:before { @include ms-Icon--MusicInCollection }
+.ms-Icon--OneDrive:before { @include ms-Icon--OneDrive }
+.ms-Icon--CompassNW:before { @include ms-Icon--CompassNW }
+.ms-Icon--Code:before { @include ms-Icon--Code }
+.ms-Icon--LightningBolt:before { @include ms-Icon--LightningBolt }
+.ms-Icon--CalculatorMultiply:before { @include ms-Icon--CalculatorMultiply }
+.ms-Icon--CalculatorAddition:before { @include ms-Icon--CalculatorAddition }
+.ms-Icon--CalculatorSubtract:before { @include ms-Icon--CalculatorSubtract }
+.ms-Icon--CalculatorEqualTo:before { @include ms-Icon--CalculatorEqualTo }
+.ms-Icon--PrintfaxPrinterFile:before { @include ms-Icon--PrintfaxPrinterFile }
+.ms-Icon--Communications:before { @include ms-Icon--Communications }
+.ms-Icon--Headset:before { @include ms-Icon--Headset }
+.ms-Icon--Health:before { @include ms-Icon--Health }
+.ms-Icon--ChevronUpSmall:before { @include ms-Icon--ChevronUpSmall }
+.ms-Icon--ChevronDownSmall:before { @include ms-Icon--ChevronDownSmall }
+.ms-Icon--ChevronLeftSmall:before { @include ms-Icon--ChevronLeftSmall }
+.ms-Icon--ChevronRightSmall:before { @include ms-Icon--ChevronRightSmall }
+.ms-Icon--ChevronUpMed:before { @include ms-Icon--ChevronUpMed }
+.ms-Icon--ChevronDownMed:before { @include ms-Icon--ChevronDownMed }
+.ms-Icon--ChevronLeftMed:before { @include ms-Icon--ChevronLeftMed }
+.ms-Icon--ChevronRightMed:before { @include ms-Icon--ChevronRightMed }
+.ms-Icon--Dictionary:before { @include ms-Icon--Dictionary }
+.ms-Icon--ChromeBack:before { @include ms-Icon--ChromeBack }
+.ms-Icon--PC1:before { @include ms-Icon--PC1 }
+.ms-Icon--PresenceChickletVideo:before { @include ms-Icon--PresenceChickletVideo }
+.ms-Icon--Reply:before { @include ms-Icon--Reply }
+.ms-Icon--HalfAlpha:before { @include ms-Icon--HalfAlpha }
+.ms-Icon--LockSolid:before { @include ms-Icon--LockSolid }
+.ms-Icon--ConstructionCone:before { @include ms-Icon--ConstructionCone }
+.ms-Icon--DoubleChevronLeftMed:before { @include ms-Icon--DoubleChevronLeftMed }
+.ms-Icon--Volume0:before { @include ms-Icon--Volume0 }
+.ms-Icon--Volume1:before { @include ms-Icon--Volume1 }
+.ms-Icon--Volume2:before { @include ms-Icon--Volume2 }
+.ms-Icon--Volume3:before { @include ms-Icon--Volume3 }
+.ms-Icon--CaretHollow:before { @include ms-Icon--CaretHollow }
+.ms-Icon--CaretSolid:before { @include ms-Icon--CaretSolid }
+.ms-Icon--FolderOpen:before { @include ms-Icon--FolderOpen }
+.ms-Icon--Pinned:before { @include ms-Icon--Pinned }
+.ms-Icon--PinnedFill:before { @include ms-Icon--PinnedFill }
+.ms-Icon--Chart:before { @include ms-Icon--Chart }
+.ms-Icon--Robot:before { @include ms-Icon--Robot }
+.ms-Icon--BidiLtr:before { @include ms-Icon--BidiLtr }
+.ms-Icon--BidiRtl:before { @include ms-Icon--BidiRtl }
+.ms-Icon--RevToggleKey:before { @include ms-Icon--RevToggleKey }
+.ms-Icon--RightDoubleQuote:before { @include ms-Icon--RightDoubleQuote }
+.ms-Icon--Sunny:before { @include ms-Icon--Sunny }
+.ms-Icon--CloudWeather:before { @include ms-Icon--CloudWeather }
+.ms-Icon--Cloudy:before { @include ms-Icon--Cloudy }
+.ms-Icon--PartlyCloudyDay:before { @include ms-Icon--PartlyCloudyDay }
+.ms-Icon--PartlyCloudyNight:before { @include ms-Icon--PartlyCloudyNight }
+.ms-Icon--ClearNight:before { @include ms-Icon--ClearNight }
+.ms-Icon--RainShowersDay:before { @include ms-Icon--RainShowersDay }
+.ms-Icon--Rain:before { @include ms-Icon--Rain }
+.ms-Icon--Thunderstorms:before { @include ms-Icon--Thunderstorms }
+.ms-Icon--RainSnow:before { @include ms-Icon--RainSnow }
+.ms-Icon--Snow:before { @include ms-Icon--Snow }
+.ms-Icon--BlowingSnow:before { @include ms-Icon--BlowingSnow }
+.ms-Icon--Frigid:before { @include ms-Icon--Frigid }
+.ms-Icon--Fog:before { @include ms-Icon--Fog }
+.ms-Icon--Squalls:before { @include ms-Icon--Squalls }
+.ms-Icon--Duststorm:before { @include ms-Icon--Duststorm }
+.ms-Icon--Unknown:before { @include ms-Icon--Unknown }
+.ms-Icon--Precipitation:before { @include ms-Icon--Precipitation }
+.ms-Icon--Ringer:before { @include ms-Icon--Ringer }
+.ms-Icon--PDF:before { @include ms-Icon--PDF }
+.ms-Icon--Ribbon:before { @include ms-Icon--Ribbon }
+.ms-Icon--AreaChart:before { @include ms-Icon--AreaChart }
+.ms-Icon--Assign:before { @include ms-Icon--Assign }
+.ms-Icon--CheckList:before { @include ms-Icon--CheckList }
+.ms-Icon--Diagnostic:before { @include ms-Icon--Diagnostic }
+.ms-Icon--Generate:before { @include ms-Icon--Generate }
+.ms-Icon--LineChart:before { @include ms-Icon--LineChart }
+.ms-Icon--Equalizer:before { @include ms-Icon--Equalizer }
+.ms-Icon--BarChartHorizontal:before { @include ms-Icon--BarChartHorizontal }
+.ms-Icon--BarChartVertical:before { @include ms-Icon--BarChartVertical }
+.ms-Icon--Freezing:before { @include ms-Icon--Freezing }
+.ms-Icon--Processing:before { @include ms-Icon--Processing }
+.ms-Icon--SnowShowerDay:before { @include ms-Icon--SnowShowerDay }
+.ms-Icon--HailDay:before { @include ms-Icon--HailDay }
+.ms-Icon--WorkFlow:before { @include ms-Icon--WorkFlow }
+.ms-Icon--StoreLogoMed:before { @include ms-Icon--StoreLogoMed }
+.ms-Icon--TriangleSolid:before { @include ms-Icon--TriangleSolid }
+.ms-Icon--RainShowersNight:before { @include ms-Icon--RainShowersNight }
+.ms-Icon--SnowShowerNight:before { @include ms-Icon--SnowShowerNight }
+

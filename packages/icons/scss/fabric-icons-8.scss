@@ -1,0 +1,220 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-8';
+  src: url('fabric-icons-8.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-8';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+// Mixins
+@mixin ms-Icon--GridViewMedium { content: "\F233"; }
+@mixin ms-Icon--GridViewLarge { content: "\F234"; }
+@mixin ms-Icon--Step { content: "\F241"; }
+@mixin ms-Icon--StepInsert { content: "\F242"; }
+@mixin ms-Icon--StepShared { content: "\F243"; }
+@mixin ms-Icon--StepSharedAdd { content: "\F244"; }
+@mixin ms-Icon--StepSharedInsert { content: "\F245"; }
+@mixin ms-Icon--ViewDashboard { content: "\F246"; }
+@mixin ms-Icon--ViewList { content: "\F247"; }
+@mixin ms-Icon--ViewListGroup { content: "\F248"; }
+@mixin ms-Icon--ViewListTree { content: "\F249"; }
+@mixin ms-Icon--TriggerAuto { content: "\F24A"; }
+@mixin ms-Icon--TriggerUser { content: "\F24B"; }
+@mixin ms-Icon--PivotChart { content: "\F24C"; }
+@mixin ms-Icon--StackedBarChart { content: "\F24D"; }
+@mixin ms-Icon--StackedLineChart { content: "\F24E"; }
+@mixin ms-Icon--BuildQueue { content: "\F24F"; }
+@mixin ms-Icon--BuildQueueNew { content: "\F250"; }
+@mixin ms-Icon--UserFollowed { content: "\F25C"; }
+@mixin ms-Icon--VennDiagram { content: "\F273"; }
+@mixin ms-Icon--FiveTileGrid { content: "\F274"; }
+@mixin ms-Icon--FocalPoint { content: "\F277"; }
+@mixin ms-Icon--TeamsLogoInverse { content: "\F27A"; }
+@mixin ms-Icon--TeamsLogo { content: "\F27B"; }
+@mixin ms-Icon--TeamsLogoFill { content: "\F27C"; }
+@mixin ms-Icon--SkypeForBusinessLogoFill { content: "\F27D"; }
+@mixin ms-Icon--SharepointLogo { content: "\F27E"; }
+@mixin ms-Icon--SharepointLogoFill { content: "\F27F"; }
+@mixin ms-Icon--DelveLogo { content: "\F280"; }
+@mixin ms-Icon--DelveLogoFill { content: "\F281"; }
+@mixin ms-Icon--OfficeVideoLogo { content: "\F282"; }
+@mixin ms-Icon--OfficeVideoLogoFill { content: "\F283"; }
+@mixin ms-Icon--ExchangeLogo { content: "\F284"; }
+@mixin ms-Icon--ExchangeLogoFill { content: "\F285"; }
+@mixin ms-Icon--CloneToDesktop { content: "\F28C"; }
+@mixin ms-Icon--InstallToDrive { content: "\F28D"; }
+@mixin ms-Icon--Blur { content: "\F28E"; }
+@mixin ms-Icon--Build { content: "\F28F"; }
+@mixin ms-Icon--ProcessMetaTask { content: "\F290"; }
+@mixin ms-Icon--BranchFork2 { content: "\F291"; }
+@mixin ms-Icon--BranchLocked { content: "\F292"; }
+@mixin ms-Icon--BranchCommit { content: "\F293"; }
+@mixin ms-Icon--BranchCompare { content: "\F294"; }
+@mixin ms-Icon--BranchMerge { content: "\F295"; }
+@mixin ms-Icon--BranchPullRequest { content: "\F296"; }
+@mixin ms-Icon--BranchSearch { content: "\F297"; }
+@mixin ms-Icon--BranchShelveset { content: "\F298"; }
+@mixin ms-Icon--RawSource { content: "\F299"; }
+@mixin ms-Icon--MergeDuplicate { content: "\F29A"; }
+@mixin ms-Icon--RowsGroup { content: "\F29B"; }
+@mixin ms-Icon--RowsChild { content: "\F29C"; }
+@mixin ms-Icon--Deploy { content: "\F29D"; }
+@mixin ms-Icon--Redeploy { content: "\F29E"; }
+@mixin ms-Icon--ServerEnviroment { content: "\F29F"; }
+@mixin ms-Icon--Plug { content: "\F300"; }
+@mixin ms-Icon--PlugSolid { content: "\F301"; }
+@mixin ms-Icon--PlugConnected { content: "\F302"; }
+@mixin ms-Icon--PlugDisconnected { content: "\F303"; }
+@mixin ms-Icon--UnlockSolid { content: "\F304"; }
+@mixin ms-Icon--Variable { content: "\F305"; }
+@mixin ms-Icon--Parameter { content: "\F306"; }
+@mixin ms-Icon--CommentUrgent { content: "\F307"; }
+@mixin ms-Icon--Storyboard { content: "\F308"; }
+@mixin ms-Icon--DiffInline { content: "\F309"; }
+@mixin ms-Icon--DiffSideBySide { content: "\F30A"; }
+@mixin ms-Icon--ImageDiff { content: "\F30B"; }
+@mixin ms-Icon--ImagePixel { content: "\F30C"; }
+@mixin ms-Icon--FileBug { content: "\F30D"; }
+@mixin ms-Icon--FileCode { content: "\F30E"; }
+@mixin ms-Icon--FileComment { content: "\F30F"; }
+@mixin ms-Icon--FileImage { content: "\F311"; }
+@mixin ms-Icon--FileSymlink { content: "\F312"; }
+@mixin ms-Icon--AutoFillTemplate { content: "\F313"; }
+@mixin ms-Icon--WorkItem { content: "\F314"; }
+@mixin ms-Icon--WorkItemBug { content: "\F315"; }
+@mixin ms-Icon--LogRemove { content: "\F316"; }
+@mixin ms-Icon--ColumnOptions { content: "\F317"; }
+@mixin ms-Icon--Packages { content: "\F318"; }
+@mixin ms-Icon--BuildIssue { content: "\F319"; }
+@mixin ms-Icon--AssessmentGroup { content: "\F31A"; }
+@mixin ms-Icon--VariableGroup { content: "\F31B"; }
+@mixin ms-Icon--FullHistory { content: "\F31C"; }
+@mixin ms-Icon--BusinessHoursSign { content: "\F310"; }
+@mixin ms-Icon--VisioDiagram { content: "\F2A0"; }
+@mixin ms-Icon--HighlightMappedShapes { content: "\F2A1"; }
+@mixin ms-Icon--TextCallout { content: "\F2A2"; }
+@mixin ms-Icon--IconSetsFlag { content: "\F2A4"; }
+@mixin ms-Icon--VisioLogo { content: "\F2A7"; }
+@mixin ms-Icon--VisioLogoFill { content: "\F2A8"; }
+@mixin ms-Icon--VisioDocument { content: "\F2A9"; }
+@mixin ms-Icon--TimelineProgress { content: "\F2AA"; }
+@mixin ms-Icon--TimelineDelivery { content: "\F2AB"; }
+@mixin ms-Icon--Backlog { content: "\F2AC"; }
+@mixin ms-Icon--TeamFavorite { content: "\F2AD"; }
+@mixin ms-Icon--TaskGroup { content: "\F2AE"; }
+@mixin ms-Icon--TaskGroupMirrored { content: "\F2AF"; }
+@mixin ms-Icon--ScopeTemplate { content: "\F2B0"; }
+@mixin ms-Icon--AssessmentGroupTemplate { content: "\F2B1"; }
+@mixin ms-Icon--NewTeamProject { content: "\F2B2"; }
+@mixin ms-Icon--CommentAdd { content: "\F2B3"; }
+
+
+// Classes
+.ms-Icon--GridViewMedium:before { @include ms-Icon--GridViewMedium }
+.ms-Icon--GridViewLarge:before { @include ms-Icon--GridViewLarge }
+.ms-Icon--Step:before { @include ms-Icon--Step }
+.ms-Icon--StepInsert:before { @include ms-Icon--StepInsert }
+.ms-Icon--StepShared:before { @include ms-Icon--StepShared }
+.ms-Icon--StepSharedAdd:before { @include ms-Icon--StepSharedAdd }
+.ms-Icon--StepSharedInsert:before { @include ms-Icon--StepSharedInsert }
+.ms-Icon--ViewDashboard:before { @include ms-Icon--ViewDashboard }
+.ms-Icon--ViewList:before { @include ms-Icon--ViewList }
+.ms-Icon--ViewListGroup:before { @include ms-Icon--ViewListGroup }
+.ms-Icon--ViewListTree:before { @include ms-Icon--ViewListTree }
+.ms-Icon--TriggerAuto:before { @include ms-Icon--TriggerAuto }
+.ms-Icon--TriggerUser:before { @include ms-Icon--TriggerUser }
+.ms-Icon--PivotChart:before { @include ms-Icon--PivotChart }
+.ms-Icon--StackedBarChart:before { @include ms-Icon--StackedBarChart }
+.ms-Icon--StackedLineChart:before { @include ms-Icon--StackedLineChart }
+.ms-Icon--BuildQueue:before { @include ms-Icon--BuildQueue }
+.ms-Icon--BuildQueueNew:before { @include ms-Icon--BuildQueueNew }
+.ms-Icon--UserFollowed:before { @include ms-Icon--UserFollowed }
+.ms-Icon--VennDiagram:before { @include ms-Icon--VennDiagram }
+.ms-Icon--FiveTileGrid:before { @include ms-Icon--FiveTileGrid }
+.ms-Icon--FocalPoint:before { @include ms-Icon--FocalPoint }
+.ms-Icon--TeamsLogoInverse:before { @include ms-Icon--TeamsLogoInverse }
+.ms-Icon--TeamsLogo:before { @include ms-Icon--TeamsLogo }
+.ms-Icon--TeamsLogoFill:before { @include ms-Icon--TeamsLogoFill }
+.ms-Icon--SkypeForBusinessLogoFill:before { @include ms-Icon--SkypeForBusinessLogoFill }
+.ms-Icon--SharepointLogo:before { @include ms-Icon--SharepointLogo }
+.ms-Icon--SharepointLogoFill:before { @include ms-Icon--SharepointLogoFill }
+.ms-Icon--DelveLogo:before { @include ms-Icon--DelveLogo }
+.ms-Icon--DelveLogoFill:before { @include ms-Icon--DelveLogoFill }
+.ms-Icon--OfficeVideoLogo:before { @include ms-Icon--OfficeVideoLogo }
+.ms-Icon--OfficeVideoLogoFill:before { @include ms-Icon--OfficeVideoLogoFill }
+.ms-Icon--ExchangeLogo:before { @include ms-Icon--ExchangeLogo }
+.ms-Icon--ExchangeLogoFill:before { @include ms-Icon--ExchangeLogoFill }
+.ms-Icon--CloneToDesktop:before { @include ms-Icon--CloneToDesktop }
+.ms-Icon--InstallToDrive:before { @include ms-Icon--InstallToDrive }
+.ms-Icon--Blur:before { @include ms-Icon--Blur }
+.ms-Icon--Build:before { @include ms-Icon--Build }
+.ms-Icon--ProcessMetaTask:before { @include ms-Icon--ProcessMetaTask }
+.ms-Icon--BranchFork2:before { @include ms-Icon--BranchFork2 }
+.ms-Icon--BranchLocked:before { @include ms-Icon--BranchLocked }
+.ms-Icon--BranchCommit:before { @include ms-Icon--BranchCommit }
+.ms-Icon--BranchCompare:before { @include ms-Icon--BranchCompare }
+.ms-Icon--BranchMerge:before { @include ms-Icon--BranchMerge }
+.ms-Icon--BranchPullRequest:before { @include ms-Icon--BranchPullRequest }
+.ms-Icon--BranchSearch:before { @include ms-Icon--BranchSearch }
+.ms-Icon--BranchShelveset:before { @include ms-Icon--BranchShelveset }
+.ms-Icon--RawSource:before { @include ms-Icon--RawSource }
+.ms-Icon--MergeDuplicate:before { @include ms-Icon--MergeDuplicate }
+.ms-Icon--RowsGroup:before { @include ms-Icon--RowsGroup }
+.ms-Icon--RowsChild:before { @include ms-Icon--RowsChild }
+.ms-Icon--Deploy:before { @include ms-Icon--Deploy }
+.ms-Icon--Redeploy:before { @include ms-Icon--Redeploy }
+.ms-Icon--ServerEnviroment:before { @include ms-Icon--ServerEnviroment }
+.ms-Icon--Plug:before { @include ms-Icon--Plug }
+.ms-Icon--PlugSolid:before { @include ms-Icon--PlugSolid }
+.ms-Icon--PlugConnected:before { @include ms-Icon--PlugConnected }
+.ms-Icon--PlugDisconnected:before { @include ms-Icon--PlugDisconnected }
+.ms-Icon--UnlockSolid:before { @include ms-Icon--UnlockSolid }
+.ms-Icon--Variable:before { @include ms-Icon--Variable }
+.ms-Icon--Parameter:before { @include ms-Icon--Parameter }
+.ms-Icon--CommentUrgent:before { @include ms-Icon--CommentUrgent }
+.ms-Icon--Storyboard:before { @include ms-Icon--Storyboard }
+.ms-Icon--DiffInline:before { @include ms-Icon--DiffInline }
+.ms-Icon--DiffSideBySide:before { @include ms-Icon--DiffSideBySide }
+.ms-Icon--ImageDiff:before { @include ms-Icon--ImageDiff }
+.ms-Icon--ImagePixel:before { @include ms-Icon--ImagePixel }
+.ms-Icon--FileBug:before { @include ms-Icon--FileBug }
+.ms-Icon--FileCode:before { @include ms-Icon--FileCode }
+.ms-Icon--FileComment:before { @include ms-Icon--FileComment }
+.ms-Icon--FileImage:before { @include ms-Icon--FileImage }
+.ms-Icon--FileSymlink:before { @include ms-Icon--FileSymlink }
+.ms-Icon--AutoFillTemplate:before { @include ms-Icon--AutoFillTemplate }
+.ms-Icon--WorkItem:before { @include ms-Icon--WorkItem }
+.ms-Icon--WorkItemBug:before { @include ms-Icon--WorkItemBug }
+.ms-Icon--LogRemove:before { @include ms-Icon--LogRemove }
+.ms-Icon--ColumnOptions:before { @include ms-Icon--ColumnOptions }
+.ms-Icon--Packages:before { @include ms-Icon--Packages }
+.ms-Icon--BuildIssue:before { @include ms-Icon--BuildIssue }
+.ms-Icon--AssessmentGroup:before { @include ms-Icon--AssessmentGroup }
+.ms-Icon--VariableGroup:before { @include ms-Icon--VariableGroup }
+.ms-Icon--FullHistory:before { @include ms-Icon--FullHistory }
+.ms-Icon--BusinessHoursSign:before { @include ms-Icon--BusinessHoursSign }
+.ms-Icon--VisioDiagram:before { @include ms-Icon--VisioDiagram }
+.ms-Icon--HighlightMappedShapes:before { @include ms-Icon--HighlightMappedShapes }
+.ms-Icon--TextCallout:before { @include ms-Icon--TextCallout }
+.ms-Icon--IconSetsFlag:before { @include ms-Icon--IconSetsFlag }
+.ms-Icon--VisioLogo:before { @include ms-Icon--VisioLogo }
+.ms-Icon--VisioLogoFill:before { @include ms-Icon--VisioLogoFill }
+.ms-Icon--VisioDocument:before { @include ms-Icon--VisioDocument }
+.ms-Icon--TimelineProgress:before { @include ms-Icon--TimelineProgress }
+.ms-Icon--TimelineDelivery:before { @include ms-Icon--TimelineDelivery }
+.ms-Icon--Backlog:before { @include ms-Icon--Backlog }
+.ms-Icon--TeamFavorite:before { @include ms-Icon--TeamFavorite }
+.ms-Icon--TaskGroup:before { @include ms-Icon--TaskGroup }
+.ms-Icon--TaskGroupMirrored:before { @include ms-Icon--TaskGroupMirrored }
+.ms-Icon--ScopeTemplate:before { @include ms-Icon--ScopeTemplate }
+.ms-Icon--AssessmentGroupTemplate:before { @include ms-Icon--AssessmentGroupTemplate }
+.ms-Icon--NewTeamProject:before { @include ms-Icon--NewTeamProject }
+.ms-Icon--CommentAdd:before { @include ms-Icon--CommentAdd }
+

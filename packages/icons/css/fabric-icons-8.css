@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-8';
+  src: url('fabric-icons-8.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-8';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.ms-Icon--GridViewMedium:before { content: "\F233"; }
+.ms-Icon--GridViewLarge:before { content: "\F234"; }
+.ms-Icon--Step:before { content: "\F241"; }
+.ms-Icon--StepInsert:before { content: "\F242"; }
+.ms-Icon--StepShared:before { content: "\F243"; }
+.ms-Icon--StepSharedAdd:before { content: "\F244"; }
+.ms-Icon--StepSharedInsert:before { content: "\F245"; }
+.ms-Icon--ViewDashboard:before { content: "\F246"; }
+.ms-Icon--ViewList:before { content: "\F247"; }
+.ms-Icon--ViewListGroup:before { content: "\F248"; }
+.ms-Icon--ViewListTree:before { content: "\F249"; }
+.ms-Icon--TriggerAuto:before { content: "\F24A"; }
+.ms-Icon--TriggerUser:before { content: "\F24B"; }
+.ms-Icon--PivotChart:before { content: "\F24C"; }
+.ms-Icon--StackedBarChart:before { content: "\F24D"; }
+.ms-Icon--StackedLineChart:before { content: "\F24E"; }
+.ms-Icon--BuildQueue:before { content: "\F24F"; }
+.ms-Icon--BuildQueueNew:before { content: "\F250"; }
+.ms-Icon--UserFollowed:before { content: "\F25C"; }
+.ms-Icon--VennDiagram:before { content: "\F273"; }
+.ms-Icon--FiveTileGrid:before { content: "\F274"; }
+.ms-Icon--FocalPoint:before { content: "\F277"; }
+.ms-Icon--TeamsLogoInverse:before { content: "\F27A"; }
+.ms-Icon--TeamsLogo:before { content: "\F27B"; }
+.ms-Icon--TeamsLogoFill:before { content: "\F27C"; }
+.ms-Icon--SkypeForBusinessLogoFill:before { content: "\F27D"; }
+.ms-Icon--SharepointLogo:before { content: "\F27E"; }
+.ms-Icon--SharepointLogoFill:before { content: "\F27F"; }
+.ms-Icon--DelveLogo:before { content: "\F280"; }
+.ms-Icon--DelveLogoFill:before { content: "\F281"; }
+.ms-Icon--OfficeVideoLogo:before { content: "\F282"; }
+.ms-Icon--OfficeVideoLogoFill:before { content: "\F283"; }
+.ms-Icon--ExchangeLogo:before { content: "\F284"; }
+.ms-Icon--ExchangeLogoFill:before { content: "\F285"; }
+.ms-Icon--CloneToDesktop:before { content: "\F28C"; }
+.ms-Icon--InstallToDrive:before { content: "\F28D"; }
+.ms-Icon--Blur:before { content: "\F28E"; }
+.ms-Icon--Build:before { content: "\F28F"; }
+.ms-Icon--ProcessMetaTask:before { content: "\F290"; }
+.ms-Icon--BranchFork2:before { content: "\F291"; }
+.ms-Icon--BranchLocked:before { content: "\F292"; }
+.ms-Icon--BranchCommit:before { content: "\F293"; }
+.ms-Icon--BranchCompare:before { content: "\F294"; }
+.ms-Icon--BranchMerge:before { content: "\F295"; }
+.ms-Icon--BranchPullRequest:before { content: "\F296"; }
+.ms-Icon--BranchSearch:before { content: "\F297"; }
+.ms-Icon--BranchShelveset:before { content: "\F298"; }
+.ms-Icon--RawSource:before { content: "\F299"; }
+.ms-Icon--MergeDuplicate:before { content: "\F29A"; }
+.ms-Icon--RowsGroup:before { content: "\F29B"; }
+.ms-Icon--RowsChild:before { content: "\F29C"; }
+.ms-Icon--Deploy:before { content: "\F29D"; }
+.ms-Icon--Redeploy:before { content: "\F29E"; }
+.ms-Icon--ServerEnviroment:before { content: "\F29F"; }
+.ms-Icon--Plug:before { content: "\F300"; }
+.ms-Icon--PlugSolid:before { content: "\F301"; }
+.ms-Icon--PlugConnected:before { content: "\F302"; }
+.ms-Icon--PlugDisconnected:before { content: "\F303"; }
+.ms-Icon--UnlockSolid:before { content: "\F304"; }
+.ms-Icon--Variable:before { content: "\F305"; }
+.ms-Icon--Parameter:before { content: "\F306"; }
+.ms-Icon--CommentUrgent:before { content: "\F307"; }
+.ms-Icon--Storyboard:before { content: "\F308"; }
+.ms-Icon--DiffInline:before { content: "\F309"; }
+.ms-Icon--DiffSideBySide:before { content: "\F30A"; }
+.ms-Icon--ImageDiff:before { content: "\F30B"; }
+.ms-Icon--ImagePixel:before { content: "\F30C"; }
+.ms-Icon--FileBug:before { content: "\F30D"; }
+.ms-Icon--FileCode:before { content: "\F30E"; }
+.ms-Icon--FileComment:before { content: "\F30F"; }
+.ms-Icon--FileImage:before { content: "\F311"; }
+.ms-Icon--FileSymlink:before { content: "\F312"; }
+.ms-Icon--AutoFillTemplate:before { content: "\F313"; }
+.ms-Icon--WorkItem:before { content: "\F314"; }
+.ms-Icon--WorkItemBug:before { content: "\F315"; }
+.ms-Icon--LogRemove:before { content: "\F316"; }
+.ms-Icon--ColumnOptions:before { content: "\F317"; }
+.ms-Icon--Packages:before { content: "\F318"; }
+.ms-Icon--BuildIssue:before { content: "\F319"; }
+.ms-Icon--AssessmentGroup:before { content: "\F31A"; }
+.ms-Icon--VariableGroup:before { content: "\F31B"; }
+.ms-Icon--FullHistory:before { content: "\F31C"; }
+.ms-Icon--BusinessHoursSign:before { content: "\F310"; }
+.ms-Icon--VisioDiagram:before { content: "\F2A0"; }
+.ms-Icon--HighlightMappedShapes:before { content: "\F2A1"; }
+.ms-Icon--TextCallout:before { content: "\F2A2"; }
+.ms-Icon--IconSetsFlag:before { content: "\F2A4"; }
+.ms-Icon--VisioLogo:before { content: "\F2A7"; }
+.ms-Icon--VisioLogoFill:before { content: "\F2A8"; }
+.ms-Icon--VisioDocument:before { content: "\F2A9"; }
+.ms-Icon--TimelineProgress:before { content: "\F2AA"; }
+.ms-Icon--TimelineDelivery:before { content: "\F2AB"; }
+.ms-Icon--Backlog:before { content: "\F2AC"; }
+.ms-Icon--TeamFavorite:before { content: "\F2AD"; }
+.ms-Icon--TaskGroup:before { content: "\F2AE"; }
+.ms-Icon--TaskGroupMirrored:before { content: "\F2AF"; }
+.ms-Icon--ScopeTemplate:before { content: "\F2B0"; }
+.ms-Icon--AssessmentGroupTemplate:before { content: "\F2B1"; }
+.ms-Icon--NewTeamProject:before { content: "\F2B2"; }
+.ms-Icon--CommentAdd:before { content: "\F2B3"; }
