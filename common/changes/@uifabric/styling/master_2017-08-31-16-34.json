@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Add FullWidth icon.",
+      "packageName": "@uifabric/styling",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "lijunle@gmail.com"
+}

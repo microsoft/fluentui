@@ -11,7 +11,12 @@ module.exports = function (options) {
     return new Promise((resolve, reject) => {
       webpack(config, (err, stats) => {
         if (err || stats.hasErrors()) {
-          reject(err);
+          const chalk = require('chalk');
+          let errorStats = stats.toJson('errors-only');
+          errorStats.errors.forEach(error => {
+            console.log(chalk.red(error));
+          })
+          reject(`Webpack failed with ${errorStats.errors.length} error(s).`);
         } else {
           _printStats(stats);
           resolve();
