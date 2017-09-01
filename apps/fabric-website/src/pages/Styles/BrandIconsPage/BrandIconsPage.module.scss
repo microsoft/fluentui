@@ -1,5 +1,11 @@
 @import '../../../styles/variables';
 
+:global {
+  .paragraphInGrid {
+    padding-left: 12px;
+  }
+}
+
 .exampleIcons {
   align-items: center;
   display: flex;

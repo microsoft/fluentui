@@ -1,48 +1,128 @@
 [
-  { "name": "AADLogo" },
-  { "name": "AccessLogo" },
-  { "name": "AlchemyLogo" },
-  { "name": "AppForOfficeLogo" },
-  { "name": "ATPLogo" },
-  { "name": "AzureLogo" },
-  { "name": "BingLogo" },
-  { "name": "BookingsLogo" },
-  { "name": "ClassNotebookLogo" },
-  { "name": "ClassroomLogo" },
-  { "name": "CollabsDBLogo" },
-  { "name": "DelveAnalyticsLogo" },
-  { "name": "DelveLogo" },
-  { "name": "DocsLogo" },
-  { "name": "DynamicsCRMLogo" },
-  { "name": "DynamicSMBLogo" },
-  { "name": "EdgeLogo" },
-  { "name": "ExcelDocument" },
-  { "name": "ExcelLogo" },
-  { "name": "ExchangeLogo" },
-  { "name": "LyncLogo" },
-  { "name": "MSNLogo" },
-  { "name": "OfficeAssistantLogo" },
-  { "name": "OfficeFormLogo" },
-  { "name": "OfficeLogo" },
-  { "name": "OfficeStoreLogo" },
-  { "name": "OfficeVideoLogo" },
-  { "name": "OneDrive" },
-  { "name": "OneNoteEduLogo" },
-  { "name": "OneNoteLogo" },
-  { "name": "OutlookLogo" },
-  { "name": "PowerBILogo" },
-  { "name": "PowerPointDocument" },
-  { "name": "PowerPointLogo" },
-  { "name": "ProjectLogo" },
-  { "name": "SharepointLogo" },
-  { "name": "SkypeLogo" },
-  { "name": "SocialListeningLogo" },
-  { "name": "StoreLogo" },
-  { "name": "StoreLogoMed" },
-  { "name": "SwayLogo" },
-  { "name": "VisioLogo" },
-  { "name": "WindowsLogo" },
-  { "name": "WordDocument" },
-  { "name": "WordLogo" },
-  { "name": "YammerLogo" }
+  {
+    "name": "AADLogo"
+  },
+  {
+    "name": "AccessLogo"
+  },
+  {
+    "name": "ATPLogo"
+  },
+  {
+    "name": "AzureLogo"
+  },
+  {
+    "name": "BingLogo"
+  },
+  {
+    "name": "BookingsLogo"
+  },
+  {
+    "name": "ClassNotebookLogo"
+  },
+  {
+    "name": "ClassroomLogo"
+  },
+  {
+    "name": "DelveAnalyticsLogo"
+  },
+  {
+    "name": "DelveLogo"
+  },
+  {
+    "name": "DocsLogo"
+  },
+  {
+    "name": "DynamicSMBLogo"
+  },
+  {
+    "name": "EdgeLogo"
+  },
+  {
+    "name": "ExcelDocument"
+  },
+  {
+    "name": "ExcelLogo"
+  },
+  {
+    "name": "ExchangeLogo"
+  },
+  {
+    "name": "LyncLogo"
+  },
+  {
+    "name": "MSNLogo"
+  },
+  {
+    "name": "OfficeAssistantLogo"
+  },
+  {
+    "name": "OfficeFormLogo"
+  },
+  {
+    "name": "OfficeLogo"
+  },
+  {
+    "name": "OfficeStoreLogo"
+  },
+  {
+    "name": "OfficeVideoLogo"
+  },
+  {
+    "name": "OneDrive"
+  },
+  {
+    "name": "OneNoteEduLogo"
+  },
+  {
+    "name": "OneNoteLogo"
+  },
+  {
+    "name": "OutlookLogo"
+  },
+  {
+    "name": "PowerBILogo"
+  },
+  {
+    "name": "PowerPointDocument"
+  },
+  {
+    "name": "PowerPointLogo"
+  },
+  {
+    "name": "ProjectLogo"
+  },
+  {
+    "name": "SharepointLogo"
+  },
+  {
+    "name": "SkypeLogo"
+  },
+  {
+    "name": "SocialListeningLogo"
+  },
+  {
+    "name": "StoreLogo"
+  },
+  {
+    "name": "StoreLogoMed"
+  },
+  {
+    "name": "SwayLogo"
+  },
+  {
+    "name": "VisioLogo"
+  },
+  {
+    "name": "WindowsLogo"
+  },
+  {
+    "name": "WordDocument"
+  },
+  {
+    "name": "WordLogo"
+  },
+  {
+    "name": "YammerLogo"
+  }
 ]
