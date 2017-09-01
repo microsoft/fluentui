@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check: Fixed chrome alignment of the checkmark within the circle.",
+      "comment": "Check: Fixed Chrome-specific alignment for the checkmark within the circle.",
       "type": "patch"
     }
   ],
