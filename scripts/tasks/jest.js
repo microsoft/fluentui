@@ -10,8 +10,16 @@ module.exports = function (options) {
     const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
 
     const args = [
+      // Specify the config file.
       `--config ${jestConfigPath}`,
-      options.isProduction && '--coverage --runInBand',
+
+      // Run tests in serial (parallel builds seem to hang rush.)
+      `--runInBand`,
+
+      // In production builds, produce coverage information.
+      options.isProduction && '--coverage',
+
+      // Pass in custom arguments.
       options.args
     ].filter(arg => !!arg).join(' ');
 
