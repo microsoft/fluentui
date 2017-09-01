@@ -279,7 +279,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                           ) }
 
                           { column.isSorted && (
-                            <Icon className={ styles.nearIcon } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
+                            <Icon className={ css(styles.nearIcon, styles.sortIcon) } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
                           ) }
 
                           { column.isGrouped && (
