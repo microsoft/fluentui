@@ -2600,6 +2600,10 @@ export const IconCodes = {
    */
   textField: '\uEDC3',
   /**
+   * Icon code with the value '\uF029'.
+   */
+  textDocument: '\uF029',
+  /**
    * Icon code with the value '\uE7B6'.
    */
   thumbnailView: '\uE7B6',

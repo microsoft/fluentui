@@ -94,8 +94,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
   public render() {
     let divStyle: React.CSSProperties = {
-      height: '340px',
-      width: '400px'
+      height: '340px'
     };
 
     let buttonStyle: React.CSSProperties = {
