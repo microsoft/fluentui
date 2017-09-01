@@ -106,11 +106,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-header', styles.header) } >
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-monthAndYear', styles.month) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
-          </div>
-        </div>
       <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
         <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
           <span
@@ -135,6 +130,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           </span >
         </div >
       </div >
+        <div className={ css('ms-DatePicker-header', styles.header) } >
+        <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+          <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
+        </div>
         {
           this.props.onHeaderSelect ?
             <div
@@ -148,6 +147,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             :
             null
         }
+      </div>
       <FocusZone>
         <table
           className={ css('ms-DatePicker-table', styles.table) }
