@@ -92,6 +92,7 @@ export class ResizeGroupPage extends React.Component<any, any> {
             </ul>
           </div>
         }
+        isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }
