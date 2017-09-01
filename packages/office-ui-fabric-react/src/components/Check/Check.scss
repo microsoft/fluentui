@@ -33,15 +33,17 @@ $checkBoxHeight: 18px;
 .circle,
 .check {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: $checkBoxHeight;
   width: $checkBoxHeight;
-  transform: translate(-50%, -50%);
   font-size: $checkBoxHeight;
+  top: -1px;
 }
 
 .circle {
-  top: 50%;
-  left: 50%;
+  @include left(-1px);
   color: $ms-color-neutralTertiaryAlt;
 
   @media screen and (-ms-high-contrast: active) {
@@ -58,8 +60,8 @@ $checkBoxHeight: 18px;
   height: auto;
   color: $ms-color-neutralTertiaryAlt;
   font-size: 16px;
-  top: 40%;
-  left: 53%;
+  // top: 40%;
+  // left: 53%;
 }
 
 .rootIsChecked .check {
