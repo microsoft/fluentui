@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.39.0",
+      "tag": "office-ui-fabric-react_v4.39.0",
+      "date": "Fri, 01 Sep 2017 16:51:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "12102f19df80c0eb6116e599bdfdce055389372a",
+            "comment": "Respect ths isHeader property on the ResizeGroup demo page"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "55878db9b288ea9ad5e86a357158358e3a238e49",
+            "comment": "BaseButton: Put the right classname on the menu icon"
+          },
+          {
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "02d0358d39021ab96b27eb1ad78f595e3891d9a5",
+            "comment": "Add FullWidth icon."
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "fded8a25de72a6469ac2a3419e7d687e766a4ae3",
+            "comment": "SwatchColorPicker: Fixed so it will deselect the current items if there is a selected id passed in that does not exist in the color list"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "9cd0df8633aca2afde1ba2c2e811434939c13bf1",
+            "comment": "Calendar: Adding option to add date formatting to calendar"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.21.1 <1.0.0` to `>=0.22.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=4.2.5 <5.0.0` to `>=4.2.6 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.38.0",
       "tag": "office-ui-fabric-react_v4.38.0",
       "date": "Thu, 31 Aug 2017 15:41:56 GMT",

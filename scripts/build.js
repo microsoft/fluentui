@@ -21,7 +21,7 @@ let tasks = [
   'webpack'
 ];
 
-// Remove disabled tasks.
+// Filter disabled tasks if specified in the package.json.
 if (package.disabledTasks) {
   tasks = tasks.filter(task => package.disabledTasks.indexOf(task) < 0);
 }
