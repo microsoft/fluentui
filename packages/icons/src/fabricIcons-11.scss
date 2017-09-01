@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-11';
+  src: url('fabricIcons-11.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-11';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+// Mixins
+@mixin ms-Icon--MailUndelivered { content: "\F415"; }
+@mixin ms-Icon--MailTentative { content: "\F416"; }
+@mixin ms-Icon--MailTentativeMirrored { content: "\F417"; }
+@mixin ms-Icon--MailReminder { content: "\F418"; }
+@mixin ms-Icon--ReceiptUndelivered { content: "\F419"; }
+@mixin ms-Icon--ReceiptTentative { content: "\F41A"; }
+@mixin ms-Icon--ReceiptTentativeMirrored { content: "\F41B"; }
+@mixin ms-Icon--Inbox { content: "\F41C"; }
+@mixin ms-Icon--IRMReply { content: "\F41D"; }
+@mixin ms-Icon--IRMReplyMirrored { content: "\F41E"; }
+@mixin ms-Icon--IRMForward { content: "\F41F"; }
+@mixin ms-Icon--IRMForwardMirrored { content: "\F420"; }
+@mixin ms-Icon--VoicemailIRM { content: "\F421"; }
+@mixin ms-Icon--EventAccepted { content: "\F422"; }
+@mixin ms-Icon--EventTentative { content: "\F423"; }
+@mixin ms-Icon--EventTentativeMirrored { content: "\F424"; }
+@mixin ms-Icon--EventDeclined { content: "\F425"; }
+@mixin ms-Icon--IDBadge { content: "\F427"; }
+@mixin ms-Icon--OfficeFormsLogoInverse16 { content: "\F433"; }
+@mixin ms-Icon--OfficeFormsLogo { content: "\F434"; }
+@mixin ms-Icon--OfficeFormsLogoFill { content: "\F435"; }
+@mixin ms-Icon--OfficeFormsLogo16 { content: "\F436"; }
+@mixin ms-Icon--OfficeFormsLogoFill16 { content: "\F437"; }
+@mixin ms-Icon--OfficeFormsLogoInverse24 { content: "\F43A"; }
+@mixin ms-Icon--OfficeFormsLogo24 { content: "\F43B"; }
+@mixin ms-Icon--OfficeFormsLogoFill24 { content: "\F43C"; }
+@mixin ms-Icon--PageLock { content: "\F43F"; }
+@mixin ms-Icon--NotExecuted { content: "\F440"; }
+@mixin ms-Icon--NotImpactedSolid { content: "\F441"; }
+@mixin ms-Icon--FieldReadOnly { content: "\F442"; }
+@mixin ms-Icon--FieldRequired { content: "\F443"; }
+@mixin ms-Icon--BacklogBoard { content: "\F444"; }
+@mixin ms-Icon--ExternalBuild { content: "\F445"; }
+@mixin ms-Icon--ExternalTFVC { content: "\F446"; }
+@mixin ms-Icon--ExternalXAML { content: "\F447"; }
+@mixin ms-Icon--IssueSolid { content: "\F448"; }
+@mixin ms-Icon--DefectSolid { content: "\F449"; }
+@mixin ms-Icon--LadybugSolid { content: "\F44A"; }
+@mixin ms-Icon--MTMLogo { content: "\F44B"; }
+@mixin ms-Icon--NugetLogo { content: "\F44C"; }
+@mixin ms-Icon--TFVCLogo { content: "\F44D"; }
+@mixin ms-Icon--ProjectLogo32 { content: "\F47E"; }
+@mixin ms-Icon--ProjectLogoFill32 { content: "\F47F"; }
+@mixin ms-Icon--ProjectLogo16 { content: "\F480"; }
+@mixin ms-Icon--ProjectLogoFill16 { content: "\F481"; }
+@mixin ms-Icon--SwayLogo32 { content: "\F482"; }
+@mixin ms-Icon--SwayLogoFill32 { content: "\F483"; }
+@mixin ms-Icon--SwayLogo16 { content: "\F484"; }
+@mixin ms-Icon--SwayLogoFill16 { content: "\F485"; }
+@mixin ms-Icon--ClassNotebookLogo32 { content: "\F486"; }
+@mixin ms-Icon--ClassNotebookLogoFill32 { content: "\F487"; }
+@mixin ms-Icon--ClassNotebookLogo16 { content: "\F488"; }
+@mixin ms-Icon--ClassNotebookLogoFill16 { content: "\F489"; }
+@mixin ms-Icon--ClassNotebookLogoInverse32 { content: "\F48A"; }
+@mixin ms-Icon--ClassNotebookLogoInverse16 { content: "\F48B"; }
+@mixin ms-Icon--StaffNotebookLogo32 { content: "\F48C"; }
+@mixin ms-Icon--StaffNotebookLogoFill32 { content: "\F48D"; }
+@mixin ms-Icon--StaffNotebookLogo16 { content: "\F48E"; }
+@mixin ms-Icon--StaffNotebookLogoFill16 { content: "\F48F"; }
+@mixin ms-Icon--StaffNotebookLogoInverted32 { content: "\F490"; }
+@mixin ms-Icon--StaffNotebookLogoInverted16 { content: "\F491"; }
+@mixin ms-Icon--KaizalaLogo { content: "\F492"; }
+@mixin ms-Icon--TaskLogo { content: "\F493"; }
+@mixin ms-Icon--ProtectionCenterLogo32 { content: "\F494"; }
+@mixin ms-Icon--NonprofitLogo32 { content: "\F495"; }
+@mixin ms-Icon--GallatinLogo { content: "\F496"; }
+@mixin ms-Icon--Globe2 { content: "\F49A"; }
+@mixin ms-Icon--Guitar { content: "\F49B"; }
+@mixin ms-Icon--Breakfast { content: "\F49C"; }
+@mixin ms-Icon--Brunch { content: "\F49D"; }
+@mixin ms-Icon--BeerMug { content: "\F49E"; }
+@mixin ms-Icon--Vacation { content: "\F49F"; }
+@mixin ms-Icon--Teeth { content: "\F4A0"; }
+@mixin ms-Icon--Taxi { content: "\F4A1"; }
+@mixin ms-Icon--Chopsticks { content: "\F4A2"; }
+@mixin ms-Icon--SyncOccurence { content: "\F4A3"; }
+@mixin ms-Icon--UnsyncOccurence { content: "\F4A4"; }
+
+
+// Classes
+.ms-Icon--MailUndelivered:before { @include ms-Icon--MailUndelivered }
+.ms-Icon--MailTentative:before { @include ms-Icon--MailTentative }
+.ms-Icon--MailTentativeMirrored:before { @include ms-Icon--MailTentativeMirrored }
+.ms-Icon--MailReminder:before { @include ms-Icon--MailReminder }
+.ms-Icon--ReceiptUndelivered:before { @include ms-Icon--ReceiptUndelivered }
+.ms-Icon--ReceiptTentative:before { @include ms-Icon--ReceiptTentative }
+.ms-Icon--ReceiptTentativeMirrored:before { @include ms-Icon--ReceiptTentativeMirrored }
+.ms-Icon--Inbox:before { @include ms-Icon--Inbox }
+.ms-Icon--IRMReply:before { @include ms-Icon--IRMReply }
+.ms-Icon--IRMReplyMirrored:before { @include ms-Icon--IRMReplyMirrored }
+.ms-Icon--IRMForward:before { @include ms-Icon--IRMForward }
+.ms-Icon--IRMForwardMirrored:before { @include ms-Icon--IRMForwardMirrored }
+.ms-Icon--VoicemailIRM:before { @include ms-Icon--VoicemailIRM }
+.ms-Icon--EventAccepted:before { @include ms-Icon--EventAccepted }
+.ms-Icon--EventTentative:before { @include ms-Icon--EventTentative }
+.ms-Icon--EventTentativeMirrored:before { @include ms-Icon--EventTentativeMirrored }
+.ms-Icon--EventDeclined:before { @include ms-Icon--EventDeclined }
+.ms-Icon--IDBadge:before { @include ms-Icon--IDBadge }
+.ms-Icon--OfficeFormsLogoInverse16:before { @include ms-Icon--OfficeFormsLogoInverse16 }
+.ms-Icon--OfficeFormsLogo:before { @include ms-Icon--OfficeFormsLogo }
+.ms-Icon--OfficeFormsLogoFill:before { @include ms-Icon--OfficeFormsLogoFill }
+.ms-Icon--OfficeFormsLogo16:before { @include ms-Icon--OfficeFormsLogo16 }
+.ms-Icon--OfficeFormsLogoFill16:before { @include ms-Icon--OfficeFormsLogoFill16 }
+.ms-Icon--OfficeFormsLogoInverse24:before { @include ms-Icon--OfficeFormsLogoInverse24 }
+.ms-Icon--OfficeFormsLogo24:before { @include ms-Icon--OfficeFormsLogo24 }
+.ms-Icon--OfficeFormsLogoFill24:before { @include ms-Icon--OfficeFormsLogoFill24 }
+.ms-Icon--PageLock:before { @include ms-Icon--PageLock }
+.ms-Icon--NotExecuted:before { @include ms-Icon--NotExecuted }
+.ms-Icon--NotImpactedSolid:before { @include ms-Icon--NotImpactedSolid }
+.ms-Icon--FieldReadOnly:before { @include ms-Icon--FieldReadOnly }
+.ms-Icon--FieldRequired:before { @include ms-Icon--FieldRequired }
+.ms-Icon--BacklogBoard:before { @include ms-Icon--BacklogBoard }
+.ms-Icon--ExternalBuild:before { @include ms-Icon--ExternalBuild }
+.ms-Icon--ExternalTFVC:before { @include ms-Icon--ExternalTFVC }
+.ms-Icon--ExternalXAML:before { @include ms-Icon--ExternalXAML }
+.ms-Icon--IssueSolid:before { @include ms-Icon--IssueSolid }
+.ms-Icon--DefectSolid:before { @include ms-Icon--DefectSolid }
+.ms-Icon--LadybugSolid:before { @include ms-Icon--LadybugSolid }
+.ms-Icon--MTMLogo:before { @include ms-Icon--MTMLogo }
+.ms-Icon--NugetLogo:before { @include ms-Icon--NugetLogo }
+.ms-Icon--TFVCLogo:before { @include ms-Icon--TFVCLogo }
+.ms-Icon--ProjectLogo32:before { @include ms-Icon--ProjectLogo32 }
+.ms-Icon--ProjectLogoFill32:before { @include ms-Icon--ProjectLogoFill32 }
+.ms-Icon--ProjectLogo16:before { @include ms-Icon--ProjectLogo16 }
+.ms-Icon--ProjectLogoFill16:before { @include ms-Icon--ProjectLogoFill16 }
+.ms-Icon--SwayLogo32:before { @include ms-Icon--SwayLogo32 }
+.ms-Icon--SwayLogoFill32:before { @include ms-Icon--SwayLogoFill32 }
+.ms-Icon--SwayLogo16:before { @include ms-Icon--SwayLogo16 }
+.ms-Icon--SwayLogoFill16:before { @include ms-Icon--SwayLogoFill16 }
+.ms-Icon--ClassNotebookLogo32:before { @include ms-Icon--ClassNotebookLogo32 }
+.ms-Icon--ClassNotebookLogoFill32:before { @include ms-Icon--ClassNotebookLogoFill32 }
+.ms-Icon--ClassNotebookLogo16:before { @include ms-Icon--ClassNotebookLogo16 }
+.ms-Icon--ClassNotebookLogoFill16:before { @include ms-Icon--ClassNotebookLogoFill16 }
+.ms-Icon--ClassNotebookLogoInverse32:before { @include ms-Icon--ClassNotebookLogoInverse32 }
+.ms-Icon--ClassNotebookLogoInverse16:before { @include ms-Icon--ClassNotebookLogoInverse16 }
+.ms-Icon--StaffNotebookLogo32:before { @include ms-Icon--StaffNotebookLogo32 }
+.ms-Icon--StaffNotebookLogoFill32:before { @include ms-Icon--StaffNotebookLogoFill32 }
+.ms-Icon--StaffNotebookLogo16:before { @include ms-Icon--StaffNotebookLogo16 }
+.ms-Icon--StaffNotebookLogoFill16:before { @include ms-Icon--StaffNotebookLogoFill16 }
+.ms-Icon--StaffNotebookLogoInverted32:before { @include ms-Icon--StaffNotebookLogoInverted32 }
+.ms-Icon--StaffNotebookLogoInverted16:before { @include ms-Icon--StaffNotebookLogoInverted16 }
+.ms-Icon--KaizalaLogo:before { @include ms-Icon--KaizalaLogo }
+.ms-Icon--TaskLogo:before { @include ms-Icon--TaskLogo }
+.ms-Icon--ProtectionCenterLogo32:before { @include ms-Icon--ProtectionCenterLogo32 }
+.ms-Icon--NonprofitLogo32:before { @include ms-Icon--NonprofitLogo32 }
+.ms-Icon--GallatinLogo:before { @include ms-Icon--GallatinLogo }
+.ms-Icon--Globe2:before { @include ms-Icon--Globe2 }
+.ms-Icon--Guitar:before { @include ms-Icon--Guitar }
+.ms-Icon--Breakfast:before { @include ms-Icon--Breakfast }
+.ms-Icon--Brunch:before { @include ms-Icon--Brunch }
+.ms-Icon--BeerMug:before { @include ms-Icon--BeerMug }
+.ms-Icon--Vacation:before { @include ms-Icon--Vacation }
+.ms-Icon--Teeth:before { @include ms-Icon--Teeth }
+.ms-Icon--Taxi:before { @include ms-Icon--Taxi }
+.ms-Icon--Chopsticks:before { @include ms-Icon--Chopsticks }
+.ms-Icon--SyncOccurence:before { @include ms-Icon--SyncOccurence }
+.ms-Icon--UnsyncOccurence:before { @include ms-Icon--UnsyncOccurence }
+

@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-10';
+  src: url('fabricIcons-10.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-10';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.ms-Icon--RibbonSolid:before { content: "\F345"; }
+.ms-Icon--FinancialSolid:before { content: "\F346"; }
+.ms-Icon--FinancialMirroredSolid:before { content: "\F347"; }
+.ms-Icon--HeadsetSolid:before { content: "\F348"; }
+.ms-Icon--PermissionsSolid:before { content: "\F349"; }
+.ms-Icon--ParkingSolid:before { content: "\F34A"; }
+.ms-Icon--ParkingMirroredSolid:before { content: "\F34B"; }
+.ms-Icon--DiamondSolid:before { content: "\F34C"; }
+.ms-Icon--AsteriskSolid:before { content: "\F34D"; }
+.ms-Icon--OfflineStorageSolid:before { content: "\F34E"; }
+.ms-Icon--BankSolid:before { content: "\F34F"; }
+.ms-Icon--DecisionSolid:before { content: "\F350"; }
+.ms-Icon--Parachute:before { content: "\F351"; }
+.ms-Icon--ParachuteSolid:before { content: "\F352"; }
+.ms-Icon--FiltersSolid:before { content: "\F353"; }
+.ms-Icon--ColorSolid:before { content: "\F354"; }
+.ms-Icon--ReviewSolid:before { content: "\F355"; }
+.ms-Icon--ReviewRequestSolid:before { content: "\F356"; }
+.ms-Icon--ReviewRequestMirroredSolid:before { content: "\F357"; }
+.ms-Icon--ReviewResponseSolid:before { content: "\F358"; }
+.ms-Icon--FeedbackRequestSolid:before { content: "\F359"; }
+.ms-Icon--FeedbackRequestMirroredSolid:before { content: "\F35A"; }
+.ms-Icon--FeedbackResponseSolid:before { content: "\F35B"; }
+.ms-Icon--WorkItemBar:before { content: "\F35C"; }
+.ms-Icon--WorkItemBarSolid:before { content: "\F35D"; }
+.ms-Icon--Separator:before { content: "\F35E"; }
+.ms-Icon--NavigateExternalInline:before { content: "\F35F"; }
+.ms-Icon--PlanView:before { content: "\F360"; }
+.ms-Icon--TimelineMatrixView:before { content: "\F361"; }
+.ms-Icon--EngineeringGroup:before { content: "\F362"; }
+.ms-Icon--ProjectCollection:before { content: "\F363"; }
+.ms-Icon--CaretBottomRightCenter8:before { content: "\F364"; }
+.ms-Icon--CaretBottomLeftCenter8:before { content: "\F365"; }
+.ms-Icon--CaretTopRightCenter8:before { content: "\F366"; }
+.ms-Icon--CaretTopLeftCenter8:before { content: "\F367"; }
+.ms-Icon--DonutChart:before { content: "\F368"; }
+.ms-Icon--ChevronUnfold10:before { content: "\F369"; }
+.ms-Icon--ChevronFold10:before { content: "\F36A"; }
+.ms-Icon--DoubleChevronDown8:before { content: "\F36B"; }
+.ms-Icon--DoubleChevronUp8:before { content: "\F36C"; }
+.ms-Icon--DoubleChevronLeft8:before { content: "\F36D"; }
+.ms-Icon--DoubleChevronRight8:before { content: "\F36E"; }
+.ms-Icon--ChevronDownEnd6:before { content: "\F36F"; }
+.ms-Icon--ChevronUpEnd6:before { content: "\F370"; }
+.ms-Icon--ChevronLeftEnd6:before { content: "\F371"; }
+.ms-Icon--ChevronRightEnd6:before { content: "\F372"; }
+.ms-Icon--EgnyteLogo:before { content: "\F373"; }
+.ms-Icon--GoogleDriveLogoLeftGreen:before { content: "\F374"; }
+.ms-Icon--GoogleDriveLogoBottomBlue:before { content: "\F375"; }
+.ms-Icon--GoogleDriveLogoRightYellow:before { content: "\F376"; }
+.ms-Icon--AzureAPIManagement:before { content: "\F37F"; }
+.ms-Icon--AzureServiceEndpoint:before { content: "\F380"; }
+.ms-Icon--VSTSLogo:before { content: "\F381"; }
+.ms-Icon--VSTSAltLogo1:before { content: "\F382"; }
+.ms-Icon--VSTSAltLogo2:before { content: "\F383"; }
+.ms-Icon--FileTypeSolution:before { content: "\F387"; }
+.ms-Icon--WordLogoInverse16:before { content: "\F390"; }
+.ms-Icon--WordLogo16:before { content: "\F391"; }
+.ms-Icon--WordLogoFill16:before { content: "\F392"; }
+.ms-Icon--PowerPointLogoInverse16:before { content: "\F393"; }
+.ms-Icon--PowerPointLogo16:before { content: "\F394"; }
+.ms-Icon--PowerPointLogoFill16:before { content: "\F395"; }
+.ms-Icon--ExcelLogoInverse16:before { content: "\F396"; }
+.ms-Icon--ExcelLogo16:before { content: "\F397"; }
+.ms-Icon--ExcelLogoFill16:before { content: "\F398"; }
+.ms-Icon--OneNoteLogoInverse16:before { content: "\F399"; }
+.ms-Icon--OneNoteLogo16:before { content: "\F39A"; }
+.ms-Icon--OneNoteLogoFill16:before { content: "\F39B"; }
+.ms-Icon--OutlookLogoInverse16:before { content: "\F39C"; }
+.ms-Icon--OutlookLogo16:before { content: "\F39D"; }
+.ms-Icon--OutlookLogoFill16:before { content: "\F39E"; }
+.ms-Icon--PublisherLogoInverse16:before { content: "\F39F"; }
+.ms-Icon--PublisherLogo16:before { content: "\F3A0"; }
+.ms-Icon--PublisherLogoFill16:before { content: "\F3A1"; }
+.ms-Icon--VisioLogoInverse16:before { content: "\F3A2"; }
+.ms-Icon--VisioLogo16:before { content: "\F3A3"; }
+.ms-Icon--VisioLogoFill16:before { content: "\F3A4"; }
+.ms-Icon--TestBeaker:before { content: "\F3A5"; }
+.ms-Icon--TestBeakerSolid:before { content: "\F3A6"; }
+.ms-Icon--TestExploreSolid:before { content: "\F3A7"; }
+.ms-Icon--TestAutoSolid:before { content: "\F3A8"; }
+.ms-Icon--TestUserSolid:before { content: "\F3A9"; }
+.ms-Icon--TestImpactSolid:before { content: "\F3AA"; }
+.ms-Icon--TestPlan:before { content: "\F3AB"; }
+.ms-Icon--TestStep:before { content: "\F3AC"; }
+.ms-Icon--TestParameter:before { content: "\F3AD"; }
+.ms-Icon--TestSuite:before { content: "\F3AE"; }
+.ms-Icon--TestCase:before { content: "\F3AF"; }
+.ms-Icon--Sprint:before { content: "\F3B0"; }
+.ms-Icon--SignOut:before { content: "\F3B1"; }
+.ms-Icon--TriggerApproval:before { content: "\F3B2"; }
+.ms-Icon--Rocket:before { content: "\F3B3"; }
+.ms-Icon--AzureKeyVault:before { content: "\F3B4"; }
+.ms-Icon--LikeSolid:before { content: "\F3BF"; }
+.ms-Icon--DislikeSolid:before { content: "\F3C0"; }
+.ms-Icon--Spacer:before { content: "\F40D"; }
+.ms-Icon--SkypeLogo16:before { content: "\F40E"; }
+.ms-Icon--SkypeForBusinessLogo16:before { content: "\F40F"; }
+.ms-Icon--SkypeForBusinessLogoFill16:before { content: "\F410"; }
+.ms-Icon--FilterSolid:before { content: "\F412"; }

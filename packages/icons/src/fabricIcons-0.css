@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-0';
+  src: url('fabricIcons-0.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-0';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.ms-Icon--DecreaseIndentLegacy:before { content: "\E290"; }
+.ms-Icon--IncreaseIndentLegacy:before { content: "\E291"; }
+.ms-Icon--InternetSharing:before { content: "\E704"; }
+.ms-Icon--Brightness:before { content: "\E706"; }
+.ms-Icon--MapPin:before { content: "\E707"; }
+.ms-Icon--Airplane:before { content: "\E709"; }
+.ms-Icon--Tablet:before { content: "\E70A"; }
+.ms-Icon--QuickNote:before { content: "\E70B"; }
+.ms-Icon--Video:before { content: "\E714"; }
+.ms-Icon--People:before { content: "\E716"; }
+.ms-Icon--Phone:before { content: "\E717"; }
+.ms-Icon--Pin:before { content: "\E718"; }
+.ms-Icon--Shop:before { content: "\E719"; }
+.ms-Icon--Stop:before { content: "\E71A"; }
+.ms-Icon--Link:before { content: "\E71B"; }
+.ms-Icon--Zoom:before { content: "\E71E"; }
+.ms-Icon--ZoomOut:before { content: "\E71F"; }
+.ms-Icon--Microphone:before { content: "\E720"; }
+.ms-Icon--Camera:before { content: "\E722"; }
+.ms-Icon--Attach:before { content: "\E723"; }
+.ms-Icon--Send:before { content: "\E724"; }
+.ms-Icon--FavoriteList:before { content: "\E728"; }
+.ms-Icon--PageSolid:before { content: "\E729"; }
+.ms-Icon--Forward:before { content: "\E72A"; }
+.ms-Icon--Back:before { content: "\E72B"; }
+.ms-Icon--Refresh:before { content: "\E72C"; }
+.ms-Icon--Lock:before { content: "\E72E"; }
+.ms-Icon--EMI:before { content: "\E731"; }
+.ms-Icon--MiniLink:before { content: "\E732"; }
+.ms-Icon--Blocked:before { content: "\E733"; }
+.ms-Icon--ReadingMode:before { content: "\E736"; }
+.ms-Icon--Favicon:before { content: "\E737"; }
+.ms-Icon--Remove:before { content: "\E738"; }
+.ms-Icon--Checkbox:before { content: "\E739"; }
+.ms-Icon--CheckboxComposite:before { content: "\E73A"; }
+.ms-Icon--CheckboxIndeterminate:before { content: "\E73C"; }
+.ms-Icon--CheckboxCompositeReversed:before { content: "\E73D"; }
+.ms-Icon--BackToWindow:before { content: "\E73F"; }
+.ms-Icon--FullScreen:before { content: "\E740"; }
+.ms-Icon--Print:before { content: "\E749"; }
+.ms-Icon--Up:before { content: "\E74A"; }
+.ms-Icon--Down:before { content: "\E74B"; }
+.ms-Icon--Delete:before { content: "\E74D"; }
+.ms-Icon--Save:before { content: "\E74E"; }
+.ms-Icon--Cloud:before { content: "\E753"; }
+.ms-Icon--CommandPrompt:before { content: "\E756"; }
+.ms-Icon--Sad:before { content: "\E757"; }
+.ms-Icon--SIPMove:before { content: "\E759"; }
+.ms-Icon--EraseTool:before { content: "\E75C"; }
+.ms-Icon--GripperTool:before { content: "\E75E"; }
+.ms-Icon--Dialpad:before { content: "\E75F"; }
+.ms-Icon--PageLeft:before { content: "\E760"; }
+.ms-Icon--PageRight:before { content: "\E761"; }
+.ms-Icon--MultiSelect:before { content: "\E762"; }
+.ms-Icon--Play:before { content: "\E768"; }
+.ms-Icon--Pause:before { content: "\E769"; }
+.ms-Icon--Emoji2:before { content: "\E76E"; }
+.ms-Icon--System:before { content: "\E770"; }
+.ms-Icon--Personalize:before { content: "\E771"; }
+.ms-Icon--SearchAndApps:before { content: "\E773"; }
+.ms-Icon--Globe:before { content: "\E774"; }
+.ms-Icon--ContactInfo:before { content: "\E779"; }
+.ms-Icon--Unpin:before { content: "\E77A"; }
+.ms-Icon--Contact:before { content: "\E77B"; }
+.ms-Icon--Memo:before { content: "\E77C"; }
+.ms-Icon--Paste:before { content: "\E77F"; }
+.ms-Icon--WindowsLogo:before { content: "\E782"; }
+.ms-Icon--Error:before { content: "\E783"; }
+.ms-Icon--GripperBarVertical:before { content: "\E784"; }
+.ms-Icon--Unlock:before { content: "\E785"; }
+.ms-Icon--Megaphone:before { content: "\E789"; }
+.ms-Icon--AutoEnhanceOn:before { content: "\E78D"; }
+.ms-Icon--AutoEnhanceOff:before { content: "\E78E"; }
+.ms-Icon--Color:before { content: "\E790"; }
+.ms-Icon--SaveAs:before { content: "\E792"; }
+.ms-Icon--Light:before { content: "\E793"; }
+.ms-Icon--Filters:before { content: "\E795"; }
+.ms-Icon--AspectRatio:before { content: "\E799"; }
+.ms-Icon--Contrast:before { content: "\E7A1"; }
+.ms-Icon--Redo:before { content: "\E7A6"; }
+.ms-Icon--Undo:before { content: "\E7A7"; }
+.ms-Icon--PhotoCollection:before { content: "\E7AA"; }
+.ms-Icon--Album:before { content: "\E7AB"; }
+.ms-Icon--Rotate:before { content: "\E7AD"; }
+.ms-Icon--PanoIndicator:before { content: "\E7B0"; }
+.ms-Icon--RedEye:before { content: "\E7B3"; }
+.ms-Icon--ThumbnailView:before { content: "\E7B6"; }
+.ms-Icon--Package:before { content: "\E7B8"; }
+.ms-Icon--Warning:before { content: "\E7BA"; }
+.ms-Icon--Financial:before { content: "\E7BB"; }
+.ms-Icon--Education:before { content: "\E7BE"; }
+.ms-Icon--ShoppingCart:before { content: "\E7BF"; }
+.ms-Icon--Train:before { content: "\E7C0"; }
+.ms-Icon--Flag:before { content: "\E7C1"; }
+.ms-Icon--Move:before { content: "\E7C2"; }
+.ms-Icon--Page:before { content: "\E7C3"; }
+.ms-Icon--TouchPointer:before { content: "\E7C9"; }
+.ms-Icon--Merge:before { content: "\E7D5"; }
+.ms-Icon--TurnRight:before { content: "\E7DB"; }
+.ms-Icon--Ferry:before { content: "\E7E3"; }

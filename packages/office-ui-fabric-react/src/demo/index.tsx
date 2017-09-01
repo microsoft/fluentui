@@ -12,7 +12,7 @@ import './ColorStyles.scss';
 
 import { initializeIcons } from '@uifabric/icons/lib/index';
 
-initializeIcons();
+initializeIcons('dist/');
 
 setBaseUrl('./dist/');
 

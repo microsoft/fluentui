@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'FabricMDL2IconSet-6';
+  src: url('fabricIcons-6.woff') format('woff');
+}
+
+.ms-Icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2IconSet-6';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.ms-Icon--AustralianRules:before { content: "\EE70"; }
+.ms-Icon--WifiEthernet:before { content: "\EE77"; }
+.ms-Icon--DateTimeMirrored:before { content: "\EE93"; }
+.ms-Icon--StopSolid:before { content: "\EE95"; }
+.ms-Icon--DoubleChevronUp12:before { content: "\EE96"; }
+.ms-Icon--DoubleChevronDown12:before { content: "\EE97"; }
+.ms-Icon--DoubleChevronLeft12:before { content: "\EE98"; }
+.ms-Icon--DoubleChevronRight12:before { content: "\EE99"; }
+.ms-Icon--CalendarAgenda:before { content: "\EE9A"; }
+.ms-Icon--AddEvent:before { content: "\EEB5"; }
+.ms-Icon--AssetLibrary:before { content: "\EEB6"; }
+.ms-Icon--DataConnectionLibrary:before { content: "\EEB7"; }
+.ms-Icon--DocLibrary:before { content: "\EEB8"; }
+.ms-Icon--FormLibrary:before { content: "\EEB9"; }
+.ms-Icon--FormLibraryMirrored:before { content: "\EEBA"; }
+.ms-Icon--ReportLibrary:before { content: "\EEBB"; }
+.ms-Icon--ReportLibraryMirrored:before { content: "\EEBC"; }
+.ms-Icon--ContactCard:before { content: "\EEBD"; }
+.ms-Icon--CustomList:before { content: "\EEBE"; }
+.ms-Icon--CustomListMirrored:before { content: "\EEBF"; }
+.ms-Icon--IssueTracking:before { content: "\EEC0"; }
+.ms-Icon--IssueTrackingMirrored:before { content: "\EEC1"; }
+.ms-Icon--PictureLibrary:before { content: "\EEC2"; }
+.ms-Icon--OfficeAddinsLogo:before { content: "\EEC7"; }
+.ms-Icon--OfflineOneDriveParachute:before { content: "\EEC8"; }
+.ms-Icon--OfflineOneDriveParachuteDisabled:before { content: "\EEC9"; }
+.ms-Icon--TriangleSolidUp12:before { content: "\EECC"; }
+.ms-Icon--TriangleSolidDown12:before { content: "\EECD"; }
+.ms-Icon--TriangleSolidLeft12:before { content: "\EECE"; }
+.ms-Icon--TriangleSolidRight12:before { content: "\EECF"; }
+.ms-Icon--TriangleUp12:before { content: "\EED0"; }
+.ms-Icon--TriangleDown12:before { content: "\EED1"; }
+.ms-Icon--TriangleLeft12:before { content: "\EED2"; }
+.ms-Icon--TriangleRight12:before { content: "\EED3"; }
+.ms-Icon--ArrowUpRight8:before { content: "\EED4"; }
+.ms-Icon--ArrowDownRight8:before { content: "\EED5"; }
+.ms-Icon--DocumentSet:before { content: "\EED6"; }
+.ms-Icon--DelveAnalytics:before { content: "\EEEE"; }
+.ms-Icon--ArrowUpRightMirrored8:before { content: "\EEEF"; }
+.ms-Icon--ArrowDownRightMirrored8:before { content: "\EEF0"; }
+.ms-Icon--OneDriveAdd:before { content: "\EF32"; }
+.ms-Icon--Header2:before { content: "\EF36"; }
+.ms-Icon--Header3:before { content: "\EF37"; }
+.ms-Icon--Header4:before { content: "\EF38"; }
+.ms-Icon--MarketDown:before { content: "\EF42"; }
+.ms-Icon--CalendarWorkWeek:before { content: "\EF51"; }
+.ms-Icon--SidePanel:before { content: "\EF52"; }
+.ms-Icon--GlobeFavorite:before { content: "\EF53"; }
+.ms-Icon--CaretTopLeftSolid8:before { content: "\EF54"; }
+.ms-Icon--CaretTopRightSolid8:before { content: "\EF55"; }
+.ms-Icon--ViewAll2:before { content: "\EF56"; }
+.ms-Icon--DocumentReply:before { content: "\EF57"; }
+.ms-Icon--PlayerSettings:before { content: "\EF58"; }
+.ms-Icon--ReceiptForward:before { content: "\EF59"; }
+.ms-Icon--ReceiptReply:before { content: "\EF5A"; }
+.ms-Icon--ReceiptCheck:before { content: "\EF5B"; }
+.ms-Icon--Fax:before { content: "\EF5C"; }
+.ms-Icon--RecurringEvent:before { content: "\EF5D"; }
+.ms-Icon--ReplyAlt:before { content: "\EF5E"; }
+.ms-Icon--ReplyAllAlt:before { content: "\EF5F"; }
+.ms-Icon--EditStyle:before { content: "\EF60"; }
+.ms-Icon--EditMail:before { content: "\EF61"; }
+.ms-Icon--Lifesaver:before { content: "\EF62"; }
+.ms-Icon--LifesaverLock:before { content: "\EF63"; }
+.ms-Icon--InboxCheck:before { content: "\EF64"; }
+.ms-Icon--FolderSearch:before { content: "\EF65"; }
+.ms-Icon--CollapseMenu:before { content: "\EF66"; }
+.ms-Icon--ExpandMenu:before { content: "\EF67"; }
+.ms-Icon--Boards:before { content: "\EF68"; }
+.ms-Icon--SunAdd:before { content: "\EF69"; }
+.ms-Icon--SunQuestionMark:before { content: "\EF6A"; }
+.ms-Icon--LandscapeOrientation:before { content: "\EF6B"; }
+.ms-Icon--DocumentSearch:before { content: "\EF6C"; }
+.ms-Icon--PublicCalendar:before { content: "\EF6D"; }
+.ms-Icon--PublicContactCard:before { content: "\EF6E"; }
+.ms-Icon--PublicEmail:before { content: "\EF6F"; }
+.ms-Icon--PublicFolder:before { content: "\EF70"; }
+.ms-Icon--WordDocument:before { content: "\EF71"; }
+.ms-Icon--PowerPointDocument:before { content: "\EF72"; }
+.ms-Icon--ExcelDocument:before { content: "\EF73"; }
+.ms-Icon--GroupedList:before { content: "\EF74"; }
+.ms-Icon--ClassroomLogo:before { content: "\EF75"; }
+.ms-Icon--Sections:before { content: "\EF76"; }
+.ms-Icon--EditPhoto:before { content: "\EF77"; }
+.ms-Icon--Starburst:before { content: "\EF78"; }
+.ms-Icon--ShareiOS:before { content: "\EF79"; }
+.ms-Icon--AirTickets:before { content: "\EF7A"; }
+.ms-Icon--PencilReply:before { content: "\EF7B"; }
+.ms-Icon--Tiles2:before { content: "\EF7C"; }
+.ms-Icon--SkypeCircleCheck:before { content: "\EF7D"; }
+.ms-Icon--SkypeCircleClock:before { content: "\EF7E"; }
+.ms-Icon--SkypeCircleMinus:before { content: "\EF7F"; }
+.ms-Icon--SkypeMessage:before { content: "\EF83"; }
+.ms-Icon--ClosedCaption:before { content: "\EF84"; }
+.ms-Icon--ATPLogo:before { content: "\EF85"; }
+.ms-Icon--OfficeFormsLogoInverse:before { content: "\EF86"; }
+.ms-Icon--RecycleBin:before { content: "\EF87"; }
+.ms-Icon--EmptyRecycleBin:before { content: "\EF88"; }
+.ms-Icon--Hide2:before { content: "\EF89"; }
+.ms-Icon--iOSAppStoreLogo:before { content: "\EF8A"; }

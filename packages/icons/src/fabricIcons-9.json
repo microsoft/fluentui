@@ -1,0 +1,411 @@
+{
+	"fontName": "fabricIcons-9",
+	"fontFamilyName": "FabricMDL2IconSet-9",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "CommentNext",
+			"unicode": "F2B4"
+		},
+		{
+			"name": "CommentPrevious",
+			"unicode": "F2B5"
+		},
+		{
+			"name": "ShopServer",
+			"unicode": "F2B6"
+		},
+		{
+			"name": "LocaleLanguage",
+			"unicode": "F2B7"
+		},
+		{
+			"name": "QueryList",
+			"unicode": "F2B8"
+		},
+		{
+			"name": "UserSync",
+			"unicode": "F2B9"
+		},
+		{
+			"name": "UserPause",
+			"unicode": "F2BA"
+		},
+		{
+			"name": "StreamingOff",
+			"unicode": "F2BB"
+		},
+		{
+			"name": "MoreVertical",
+			"unicode": "F2BC"
+		},
+		{
+			"name": "ArrowTallUpLeft",
+			"unicode": "F2BD"
+		},
+		{
+			"name": "ArrowTallUpRight",
+			"unicode": "F2BE"
+		},
+		{
+			"name": "ArrowTallDownLeft",
+			"unicode": "F2BF"
+		},
+		{
+			"name": "ArrowTallDownRight",
+			"unicode": "F2C0"
+		},
+		{
+			"name": "FieldEmpty",
+			"unicode": "F2C1"
+		},
+		{
+			"name": "FieldFilled",
+			"unicode": "F2C2"
+		},
+		{
+			"name": "FieldChanged",
+			"unicode": "F2C3"
+		},
+		{
+			"name": "FieldNotChanged",
+			"unicode": "F2C4"
+		},
+		{
+			"name": "RingerOff",
+			"unicode": "F2C5"
+		},
+		{
+			"name": "PlayResume",
+			"unicode": "F2C6"
+		},
+		{
+			"name": "BulletedList2",
+			"unicode": "F2C7"
+		},
+		{
+			"name": "BulletedList2Mirrored",
+			"unicode": "F2C8"
+		},
+		{
+			"name": "ImageCrosshair",
+			"unicode": "F2C9"
+		},
+		{
+			"name": "GitGraph",
+			"unicode": "F2CA"
+		},
+		{
+			"name": "Repo",
+			"unicode": "F2CB"
+		},
+		{
+			"name": "RepoSolid",
+			"unicode": "F2CC"
+		},
+		{
+			"name": "FolderQuery",
+			"unicode": "F2CD"
+		},
+		{
+			"name": "FolderList",
+			"unicode": "F2CE"
+		},
+		{
+			"name": "FolderListMirrored",
+			"unicode": "F2CF"
+		},
+		{
+			"name": "LocationOutline",
+			"unicode": "F2D0"
+		},
+		{
+			"name": "POISolid",
+			"unicode": "F2D1"
+		},
+		{
+			"name": "CalculatorNotEqualTo",
+			"unicode": "F2D2"
+		},
+		{
+			"name": "BoxSubtractSolid",
+			"unicode": "F2D3"
+		},
+		{
+			"name": "BoxAdditionSolid",
+			"unicode": "F2D4"
+		},
+		{
+			"name": "BoxMultiplySolid",
+			"unicode": "F2D5"
+		},
+		{
+			"name": "BoxPlaySolid",
+			"unicode": "F2D6"
+		},
+		{
+			"name": "BoxCheckmarkSolid",
+			"unicode": "F2D7"
+		},
+		{
+			"name": "CirclePauseSolid",
+			"unicode": "F2D8"
+		},
+		{
+			"name": "CirclePause",
+			"unicode": "F2D9"
+		},
+		{
+			"name": "MSNVideosSolid",
+			"unicode": "F2DA"
+		},
+		{
+			"name": "CircleStopSolid",
+			"unicode": "F2DB"
+		},
+		{
+			"name": "CircleStop",
+			"unicode": "F2DC"
+		},
+		{
+			"name": "NavigateBack",
+			"unicode": "F2DD"
+		},
+		{
+			"name": "NavigateBackMirrored",
+			"unicode": "F2DE"
+		},
+		{
+			"name": "NavigateForward",
+			"unicode": "F2DF"
+		},
+		{
+			"name": "NavigateForwardMirrored",
+			"unicode": "F2E0"
+		},
+		{
+			"name": "UnknownSolid",
+			"unicode": "F2E1"
+		},
+		{
+			"name": "UnknownMirroredSolid",
+			"unicode": "F2E2"
+		},
+		{
+			"name": "CircleAddition",
+			"unicode": "F2E3"
+		},
+		{
+			"name": "CircleAdditionSolid",
+			"unicode": "F2E4"
+		},
+		{
+			"name": "FilePDB",
+			"unicode": "F2E5"
+		},
+		{
+			"name": "FileTemplate",
+			"unicode": "F2E6"
+		},
+		{
+			"name": "FileSQL",
+			"unicode": "F2E7"
+		},
+		{
+			"name": "FileJAVA",
+			"unicode": "F2E8"
+		},
+		{
+			"name": "FileASPX",
+			"unicode": "F2E9"
+		},
+		{
+			"name": "FileCSS",
+			"unicode": "F2EA"
+		},
+		{
+			"name": "FileSass",
+			"unicode": "F2EB"
+		},
+		{
+			"name": "FileLess",
+			"unicode": "F2EC"
+		},
+		{
+			"name": "FileHTML",
+			"unicode": "F2ED"
+		},
+		{
+			"name": "JavaScriptLanguage",
+			"unicode": "F2EE"
+		},
+		{
+			"name": "CSharpLanguage",
+			"unicode": "F2EF"
+		},
+		{
+			"name": "CSharp",
+			"unicode": "F2F0"
+		},
+		{
+			"name": "VisualBasicLanguage",
+			"unicode": "F2F1"
+		},
+		{
+			"name": "VB",
+			"unicode": "F2F2"
+		},
+		{
+			"name": "CPlusPlusLanguage",
+			"unicode": "F2F3"
+		},
+		{
+			"name": "CPlusPlus",
+			"unicode": "F2F4"
+		},
+		{
+			"name": "FSharpLanguage",
+			"unicode": "F2F5"
+		},
+		{
+			"name": "FSharp",
+			"unicode": "F2F6"
+		},
+		{
+			"name": "TypeScriptLanguage",
+			"unicode": "F2F7"
+		},
+		{
+			"name": "PythonLanguage",
+			"unicode": "F2F8"
+		},
+		{
+			"name": "PY",
+			"unicode": "F2F9"
+		},
+		{
+			"name": "CoffeeScript",
+			"unicode": "F2FA"
+		},
+		{
+			"name": "MarkDownLanguage",
+			"unicode": "F2FB"
+		},
+		{
+			"name": "FullWidth",
+			"unicode": "F2FE"
+		},
+		{
+			"name": "FullWidthEdit",
+			"unicode": "F2FF"
+		},
+		{
+			"name": "SingleColumnEdit",
+			"unicode": "F321"
+		},
+		{
+			"name": "DoubleColumnEdit",
+			"unicode": "F322"
+		},
+		{
+			"name": "TripleColumnEdit",
+			"unicode": "F323"
+		},
+		{
+			"name": "ColumnLeftTwoThirdsEdit",
+			"unicode": "F324"
+		},
+		{
+			"name": "ColumnRightTwoThirdsEdit",
+			"unicode": "F325"
+		},
+		{
+			"name": "StreamLogo",
+			"unicode": "F329"
+		},
+		{
+			"name": "AlertSolid",
+			"unicode": "F331"
+		},
+		{
+			"name": "MegaphoneSolid",
+			"unicode": "F332"
+		},
+		{
+			"name": "TaskSolid",
+			"unicode": "F333"
+		},
+		{
+			"name": "ConfigurationSolid",
+			"unicode": "F334"
+		},
+		{
+			"name": "BugSolid",
+			"unicode": "F335"
+		},
+		{
+			"name": "CrownSolid",
+			"unicode": "F336"
+		},
+		{
+			"name": "Trophy2Solid",
+			"unicode": "F337"
+		},
+		{
+			"name": "QuickNoteSolid",
+			"unicode": "F338"
+		},
+		{
+			"name": "ConstructionConeSolid",
+			"unicode": "F339"
+		},
+		{
+			"name": "PageListSolid",
+			"unicode": "F33A"
+		},
+		{
+			"name": "PageListMirroredSolid",
+			"unicode": "F33B"
+		},
+		{
+			"name": "StarburstSolid",
+			"unicode": "F33C"
+		},
+		{
+			"name": "ReadingModeSolid",
+			"unicode": "F33D"
+		},
+		{
+			"name": "SadSolid",
+			"unicode": "F33E"
+		},
+		{
+			"name": "HealthSolid",
+			"unicode": "F33F"
+		},
+		{
+			"name": "ShieldSolid",
+			"unicode": "F340"
+		},
+		{
+			"name": "GiftBoxSolid",
+			"unicode": "F341"
+		},
+		{
+			"name": "ShoppingCartSolid",
+			"unicode": "F342"
+		},
+		{
+			"name": "MailSolid",
+			"unicode": "F343"
+		},
+		{
+			"name": "ChatSolid",
+			"unicode": "F344"
+		}
+	]
+}

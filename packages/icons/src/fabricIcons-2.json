@@ -1,0 +1,411 @@
+{
+	"fontName": "fabricIcons-2",
+	"fontFamilyName": "FabricMDL2IconSet-2",
+	"excludeGlyphs": false,
+	"chunkSubsets": true,
+	"subsetChunkSettings": {
+		"maxSubsetSize": 100
+	},
+	"glyphs": [
+		{
+			"name": "FullCircleMask",
+			"unicode": "E91F"
+		},
+		{
+			"name": "LocationFill",
+			"unicode": "E920"
+		},
+		{
+			"name": "ChromeMinimize",
+			"unicode": "E921"
+		},
+		{
+			"name": "Annotation",
+			"unicode": "E924"
+		},
+		{
+			"name": "ChromeClose",
+			"unicode": "E8BB"
+		},
+		{
+			"name": "Accept",
+			"unicode": "E8FB"
+		},
+		{
+			"name": "Fingerprint",
+			"unicode": "E928"
+		},
+		{
+			"name": "Handwriting",
+			"unicode": "E929"
+		},
+		{
+			"name": "StackIndicator",
+			"unicode": "E7FF"
+		},
+		{
+			"name": "Completed",
+			"unicode": "E930"
+		},
+		{
+			"name": "Label",
+			"unicode": "E932"
+		},
+		{
+			"name": "FlickDown",
+			"unicode": "E935"
+		},
+		{
+			"name": "FlickUp",
+			"unicode": "E936"
+		},
+		{
+			"name": "FlickLeft",
+			"unicode": "E937"
+		},
+		{
+			"name": "FlickRight",
+			"unicode": "E938"
+		},
+		{
+			"name": "Streaming",
+			"unicode": "E93E"
+		},
+		{
+			"name": "MusicInCollection",
+			"unicode": "E940"
+		},
+		{
+			"name": "OneDrive",
+			"unicode": "E941"
+		},
+		{
+			"name": "CompassNW",
+			"unicode": "E942"
+		},
+		{
+			"name": "Code",
+			"unicode": "E943"
+		},
+		{
+			"name": "LightningBolt",
+			"unicode": "E945"
+		},
+		{
+			"name": "CalculatorMultiply",
+			"unicode": "E947"
+		},
+		{
+			"name": "CalculatorAddition",
+			"unicode": "E948"
+		},
+		{
+			"name": "CalculatorSubtract",
+			"unicode": "E949"
+		},
+		{
+			"name": "CalculatorEqualTo",
+			"unicode": "E94E"
+		},
+		{
+			"name": "PrintfaxPrinterFile",
+			"unicode": "E956"
+		},
+		{
+			"name": "Communications",
+			"unicode": "E95A"
+		},
+		{
+			"name": "Headset",
+			"unicode": "E95B"
+		},
+		{
+			"name": "Health",
+			"unicode": "E95E"
+		},
+		{
+			"name": "ChevronUpSmall",
+			"unicode": "E96D"
+		},
+		{
+			"name": "ChevronDownSmall",
+			"unicode": "E96E"
+		},
+		{
+			"name": "ChevronLeftSmall",
+			"unicode": "E96F"
+		},
+		{
+			"name": "ChevronRightSmall",
+			"unicode": "E970"
+		},
+		{
+			"name": "ChevronUpMed",
+			"unicode": "E971"
+		},
+		{
+			"name": "ChevronDownMed",
+			"unicode": "E972"
+		},
+		{
+			"name": "ChevronLeftMed",
+			"unicode": "E973"
+		},
+		{
+			"name": "ChevronRightMed",
+			"unicode": "E974"
+		},
+		{
+			"name": "Dictionary",
+			"unicode": "E82D"
+		},
+		{
+			"name": "ChromeBack",
+			"unicode": "E830"
+		},
+		{
+			"name": "PC1",
+			"unicode": "E977"
+		},
+		{
+			"name": "PresenceChickletVideo",
+			"unicode": "E979"
+		},
+		{
+			"name": "Reply",
+			"unicode": "E97A"
+		},
+		{
+			"name": "HalfAlpha",
+			"unicode": "E97E"
+		},
+		{
+			"name": "LockSolid",
+			"unicode": "E9A2"
+		},
+		{
+			"name": "ConstructionCone",
+			"unicode": "E98F"
+		},
+		{
+			"name": "DoubleChevronLeftMed",
+			"unicode": "E991"
+		},
+		{
+			"name": "Volume0",
+			"unicode": "E992"
+		},
+		{
+			"name": "Volume1",
+			"unicode": "E993"
+		},
+		{
+			"name": "Volume2",
+			"unicode": "E994"
+		},
+		{
+			"name": "Volume3",
+			"unicode": "E995"
+		},
+		{
+			"name": "CaretHollow",
+			"unicode": "E817"
+		},
+		{
+			"name": "CaretSolid",
+			"unicode": "E818"
+		},
+		{
+			"name": "FolderOpen",
+			"unicode": "E838"
+		},
+		{
+			"name": "Pinned",
+			"unicode": "E840"
+		},
+		{
+			"name": "PinnedFill",
+			"unicode": "E842"
+		},
+		{
+			"name": "Chart",
+			"unicode": "E999"
+		},
+		{
+			"name": "Robot",
+			"unicode": "E99A"
+		},
+		{
+			"name": "BidiLtr",
+			"unicode": "E9AA"
+		},
+		{
+			"name": "BidiRtl",
+			"unicode": "E9AB"
+		},
+		{
+			"name": "RevToggleKey",
+			"unicode": "E845"
+		},
+		{
+			"name": "RightDoubleQuote",
+			"unicode": "E9B1"
+		},
+		{
+			"name": "Sunny",
+			"unicode": "E9BD"
+		},
+		{
+			"name": "CloudWeather",
+			"unicode": "E9BE"
+		},
+		{
+			"name": "Cloudy",
+			"unicode": "E9BF"
+		},
+		{
+			"name": "PartlyCloudyDay",
+			"unicode": "E9C0"
+		},
+		{
+			"name": "PartlyCloudyNight",
+			"unicode": "E9C1"
+		},
+		{
+			"name": "ClearNight",
+			"unicode": "E9C2"
+		},
+		{
+			"name": "RainShowersDay",
+			"unicode": "E9C3"
+		},
+		{
+			"name": "Rain",
+			"unicode": "E9C4"
+		},
+		{
+			"name": "Thunderstorms",
+			"unicode": "E9C6"
+		},
+		{
+			"name": "RainSnow",
+			"unicode": "E9C7"
+		},
+		{
+			"name": "Snow",
+			"unicode": "E9C8"
+		},
+		{
+			"name": "BlowingSnow",
+			"unicode": "E9C9"
+		},
+		{
+			"name": "Frigid",
+			"unicode": "E9CA"
+		},
+		{
+			"name": "Fog",
+			"unicode": "E9CB"
+		},
+		{
+			"name": "Squalls",
+			"unicode": "E9CC"
+		},
+		{
+			"name": "Duststorm",
+			"unicode": "E9CD"
+		},
+		{
+			"name": "Unknown",
+			"unicode": "E9CE"
+		},
+		{
+			"name": "Precipitation",
+			"unicode": "E9CF"
+		},
+		{
+			"name": "Ringer",
+			"unicode": "EA8F"
+		},
+		{
+			"name": "PDF",
+			"unicode": "EA90"
+		},
+		{
+			"name": "Ribbon",
+			"unicode": "E9D1"
+		},
+		{
+			"name": "AreaChart",
+			"unicode": "E9D2"
+		},
+		{
+			"name": "Assign",
+			"unicode": "E9D3"
+		},
+		{
+			"name": "CheckList",
+			"unicode": "E9D5"
+		},
+		{
+			"name": "Diagnostic",
+			"unicode": "E9D9"
+		},
+		{
+			"name": "Generate",
+			"unicode": "E9DA"
+		},
+		{
+			"name": "LineChart",
+			"unicode": "E9E6"
+		},
+		{
+			"name": "Equalizer",
+			"unicode": "E9E9"
+		},
+		{
+			"name": "BarChartHorizontal",
+			"unicode": "E9EB"
+		},
+		{
+			"name": "BarChartVertical",
+			"unicode": "E9EC"
+		},
+		{
+			"name": "Freezing",
+			"unicode": "E9EF"
+		},
+		{
+			"name": "Processing",
+			"unicode": "E9F5"
+		},
+		{
+			"name": "SnowShowerDay",
+			"unicode": "E9FD"
+		},
+		{
+			"name": "HailDay",
+			"unicode": "EA00"
+		},
+		{
+			"name": "WorkFlow",
+			"unicode": "EA01"
+		},
+		{
+			"name": "StoreLogoMed",
+			"unicode": "EA04"
+		},
+		{
+			"name": "TriangleSolid",
+			"unicode": "EA08"
+		},
+		{
+			"name": "RainShowersNight",
+			"unicode": "EA0F"
+		},
+		{
+			"name": "SnowShowerNight",
+			"unicode": "EA11"
+		}
+	]
+}
