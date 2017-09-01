@@ -357,6 +357,9 @@ $Calendar-dayPicker-margin: 10px;
   $Calendar-day: 28px;
   $Calendar-month: 40px;
 
+  .wrap {
+    padding: 4px 7px;
+  }
   // Update the spacing and text for the day and month pickers
 
   .dayPicker,.monthPicker {
@@ -604,27 +607,28 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 
-// Highlighted Month date styling
+// Highlighted Month date styling.
+// Border-radius to be updated once rolled out across fabric
 .topLeftCornerDate{
-  // border-radius: 2px 0px 0px 0px;
+  border-radius: 0;
 }
 
 .topRightCornerDate{
-  // border-radius: 0px 2px 0px 0px;
+  border-radius: 0;
 }
 
 .bottomLeftCornerDate{
-  // border-radius: 0px 0px 0px 2px;
+  border-radius: 0;
 }
 
 .bottomRightCornerDate{
-  // border-radius: 0px 0px 2px 0px;
+  border-radius: 0;
 }
 
 .singleTopDate{
-  // border-radius: 2px 2px 0px 0px;
+  border-radius: 0;
 }
 
 .singleBottomDate{
-  // border-radius: 0px 0px 2px 2px;
+  border-radius: 0;
 }
