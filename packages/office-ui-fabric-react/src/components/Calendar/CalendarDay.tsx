@@ -232,7 +232,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection } = this.props;
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
-    if (onSelectDate != null) {
+    if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
     }
 
