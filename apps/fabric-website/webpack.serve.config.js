@@ -8,7 +8,7 @@ let plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
-  new WebpackNotifierPlugin(),
+  new WebpackNotifierPlugin()
 ];
 
 const devServerConfig = {

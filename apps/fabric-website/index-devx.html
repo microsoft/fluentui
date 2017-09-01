@@ -27,6 +27,7 @@
   var isLocal = false;
   var today = new Date();
   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var entryPointFilename = 'fabric-sitev5';
 
   switch (true) {
     case location.hostname === 'dev.office.com':
@@ -63,16 +64,6 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
-  var reactProduction = [
-    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js',
-    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js'
-  ];
-
-  var reactDevelopment = [
-    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js',
-    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js'
-  ];
-
   var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
   var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
 
@@ -83,23 +74,18 @@
   if (devUrl) {
     scripts.push(devUrl);
   } else if (isLocal) {
-    scripts.push.apply(scripts, reactDevelopment);
-    scripts.push('fabric-site.js');
+    scripts.push(entryPointFilename + '.js');
   } else if (isDogfood) {
     if (noCompress) {
-      scripts.push.apply(scripts, reactDevelopment);
-      scripts.push(baseDogfoodUrl + 'fabric-site.min.js?date=' + Date.now());
+      scripts.push(baseDogfoodUrl + entryPointFilename + '.min.js?date=' + Date.now());
     } else {
-      scripts.push.apply(scripts, reactProduction);
-      scripts.push(baseDogfoodUrl + 'fabric-site.js?date=' + Date.now());
+      scripts.push(baseDogfoodUrl + entryPointFilename + '.js?date=' + Date.now());
     }
   } else {
     if (noCompress) {
-      scripts.push.apply(scripts, reactDevelopment);
-      scripts.push(baseProductionUrl + 'fabric-site.js?date=' + date);
+      scripts.push(baseProductionUrl + entryPointFilename + '.js?date=' + date);
     } else {
-      scripts.push.apply(scripts, reactProduction);
-      scripts.push(baseProductionUrl + 'fabric-site.min.js?date=' + date);
+      scripts.push(baseProductionUrl + entryPointFilename + '.min.js?date=' + date);
     }
   }
 

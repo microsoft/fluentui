@@ -9,12 +9,18 @@ let WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
 let serveConfig = require('./webpack.serve.config');
 let path = require('path');
+const entryPointFilename = 'fabric-sitev5';
 
 // Overwrite the main webpack.site.config properties
+serveConfig.entry = {
+  [entryPointFilename]: './lib/root.js'
+};
+
 serveConfig.plugins.push(new WriteFilePlugin());
 serveConfig.devServer.host = HOST_NAME;
 serveConfig.devServer.disableHostCheck = true;
 serveConfig.output.path = path.join(__dirname, '/dist');
 serveConfig.output.publicPath = '/dist/';
+serveConfig.output.chunkFilename = `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`;
 
 module.exports = serveConfig;
