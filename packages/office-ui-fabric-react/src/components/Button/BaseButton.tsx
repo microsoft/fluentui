@@ -337,7 +337,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={ this._classNames.icon }
+          className={ this._classNames.menuIcon }
         />
         :
         null

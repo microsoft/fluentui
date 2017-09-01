@@ -23,6 +23,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
+          component: require<any>('../components/LayoutGroup/LayoutGroupPage').LayoutGroupPage,
+          key: 'LayoutGroup',
+          name: 'LayoutGroup',
+          url: '#/examples/layoutgroup'
+        },
+        {
           component: require<any>('../components/Tile/TilePage').TilePage,
           key: 'Tile',
           name: 'Tile',

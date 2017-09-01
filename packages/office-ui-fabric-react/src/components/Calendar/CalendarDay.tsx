@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -51,6 +51,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   navigationIcons: ICalendarIconStrings;
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarDayState {
@@ -90,7 +91,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate, dateTimeFormatter } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
@@ -105,111 +106,109 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
-          <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-            <span
-              className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
-              onClick={ this._onSelectPrevMonth }
-              onKeyDown={ this._onPrevMonthKeyDown }
-              aria-controls={ dayPickerId }
-              aria-label={ strings.prevMonthAriaLabel }
-              role='button'
-              tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-            </span >
-            <span
-              className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
-              onClick={ this._onSelectNextMonth }
-              onKeyDown={ this._onNextMonthKeyDown }
-              aria-controls={ dayPickerId }
-              aria-label={ strings.nextMonthAriaLabel }
-              role='button'
-              tabIndex={ 0 }>
-              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-            </span >
-          </div >
-        </div >
-        <div className={ css('ms-DatePicker-header', styles.header) }>
+        <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+            <div className={ css('ms-DatePicker-monthAndYear', styles.month) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
           </div>
-          {
-            this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ strings.monthPickerAriaLabel }
-                role='button'
-                tabIndex={ 0 }
-              />
-              :
-              null
-          }
         </div>
-        <FocusZone>
-          <table
-            className={ css('ms-DatePicker-table', styles.table) }
-            aria-readonly='true'
-            aria-multiselectable='false'
-            aria-labelledby={ monthAndYearId }
-            aria-activedescendant={ activeDescendantId }
-          >
-            <thead>
-              <tr>
-                { strings.shortDays.map((val, index) =>
-                  <th
-                    className={ css('ms-DatePicker-weekday', styles.weekday) }
-                    scope='col'
-                    key={ index }
-                    title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
-                    { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                  </th>) }
+      <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
+        <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
+          <span
+            className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
+            onClick={ this._onSelectPrevMonth }
+            onKeyDown={ this._onPrevMonthKeyDown }
+            aria-controls={ dayPickerId }
+            aria-label={ strings.prevMonthAriaLabel }
+            role='button'
+            tabIndex={ 0 }>
+            <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
+          </span >
+          <span
+            className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
+            onClick={ this._onSelectNextMonth }
+            onKeyDown={ this._onNextMonthKeyDown }
+            aria-controls={ dayPickerId }
+            aria-label={ strings.nextMonthAriaLabel }
+            role='button'
+            tabIndex={ 0 }>
+            <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
+          </span >
+        </div >
+      </div >
+        {
+          this.props.onHeaderSelect ?
+            <div
+              className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
+              onClick={ this._onHeaderSelect }
+              onKeyDown={ this._onHeaderKeyDown }
+              aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              role='button'
+              tabIndex={ 0 }
+            />
+            :
+            null
+        }
+      <FocusZone>
+        <table
+          className={ css('ms-DatePicker-table', styles.table) }
+          aria-readonly='true'
+          aria-multiselectable='false'
+          aria-labelledby={ monthAndYearId }
+          aria-activedescendant={ activeDescendantId }
+        >
+          <thead>
+            <tr>
+              { strings.shortDays.map((val, index) =>
+                <th
+                  className={ css('ms-DatePicker-weekday', styles.weekday) }
+                  scope='col'
+                  key={ index }
+                  title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                  { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                </th>) }
+            </tr>
+          </thead>
+          <tbody>
+            { weeks!.map((week, weekIndex) =>
+              <tr key={ weekIndex } >
+                { week.map((day, dayIndex) =>
+                  <td key={ day.key } className={ css(
+                    {
+                      ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                      ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
+                      ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
+                    }) }
+                  >
+                    <div
+                      className={ css(
+                        'ms-DatePicker-day',
+                        styles.day,
+                        {
+                          ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
+                          ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
+                          ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
+                          ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
+                        }) }
+                      role='button'
+                      onClick={ day.onSelected }
+                      onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
+                        this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
+                      aria-selected={ day.isSelected }
+                      aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
+                      id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
+                      data-is-focusable={ true }
+                      ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
+                      key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
+                      <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
+                    </div>
+                  </td>
+                ) }
               </tr>
-            </thead>
-            <tbody>
-              { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex } >
-                  { week.map((day, dayIndex) =>
-                    <td key={ day.key } className={ css(
-                      {
-                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
-                        ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
-                      }) }
-                    >
-                      <div
-                        className={ css(
-                          'ms-DatePicker-day',
-                          styles.day,
-                          {
-                            ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
-                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
-                            ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
-                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
-                          }) }
-                        role='button'
-                        onClick={ day.onSelected }
-                        onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
-                          this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
-                        aria-selected={ day.isSelected }
-                        aria-label={ day.originalDate.toLocaleString ?
-                          day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
-                        id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
-                        data-is-focusable={ true }
-                        ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
-                        <span aria-hidden='true'>{ day.date }</span>
-                      </div>
-                    </td>
-                  ) }
-                </tr>
-              ) }
-            </tbody>
-          </table>
-        </FocusZone>
+            ) }
+          </tbody>
+        </table>
+      </FocusZone>
       </div >
     );
   }

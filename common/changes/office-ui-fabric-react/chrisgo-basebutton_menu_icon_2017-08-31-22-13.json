@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ComboBox: Loosen the re-rendering requirement",
+      "comment": "BaseButton: Put the right classname on the menu icon",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }
