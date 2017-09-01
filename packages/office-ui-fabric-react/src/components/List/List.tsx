@@ -535,7 +535,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     this.forceUpdate();
   }
 
-  private _updatePages(props?: IListProps) {
+  private _updatePages(props: IListProps = this.props) {
     // console.log('updating pages');
 
     if (!this._requiredRect) {
@@ -554,7 +554,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
         this._materializedRect = null;
         if (!this._hasCompletedFirstRender) {
           this._hasCompletedFirstRender = true;
-          this._updatePages();
+          this._updatePages(props);
         } else {
           this._onAsyncScroll();
         }
