@@ -4,12 +4,18 @@ module.exports = function (options) {
   const execSync = require('../exec-sync');
   const findConfig = require('../find-config');
 
-  const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
   const jestConfigPath = findConfig('jest.config.js');
-  const coverage = (options.isProduction) ? ' --coverage' : '';
 
   if (fs.existsSync(jestConfigPath)) {
-    const command = `node ${jestPath} --config ${jestConfigPath} ${coverage} ${options.args || ''}`;
+    const jestPath = path.resolve(__dirname, '../node_modules/jest/bin/jest');
+
+    const args = [
+      `--config ${jestConfigPath}`,
+      options.isProduction && '--coverage --runInBand',
+      options.args
+    ].filter(arg => !!arg).join(' ');
+
+    const command = `node ${jestPath} ${args}`;
 
     execSync(command, undefined, path.dirname(jestConfigPath));
   }
