@@ -15,6 +15,9 @@ import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
 
+// Initialize all icons.
+initializeIcons('dist/');
+
 let rootElement: HTMLElement | null;
 
 // Return the anchor link from the URL without the hash

@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.props';
-import { mergeStyles } from '@uifabric/styling';
+import { IExtendedRawStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
@@ -58,8 +58,8 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
               display: 'flex',
               flexDirection: direction === 'horizontal' ? 'row' : 'column',
               justifyContent: this._getJustify(justify)
-            }
-          ) as string
+            } as IExtendedRawStyle
+          )
         }
       >
         { group }
