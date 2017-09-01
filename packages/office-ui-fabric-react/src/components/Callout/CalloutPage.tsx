@@ -27,16 +27,16 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='CalloutExample'
         exampleCards={
           <div>
-            <ExampleCard title='Simple callout' code={ CalloutBasicExampleCode }>
+            <ExampleCard title='Default Callout' code={ CalloutBasicExampleCode }>
               <CalloutBasicExample />
             </ExampleCard>
-            <ExampleCard title='Nested callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
+            <ExampleCard title='Nested Callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
               <CalloutNestedExample { ...cmdBarParamsTextAndIcons } />
             </ExampleCard>
-            <ExampleCard title='Callout directional example' code={ CalloutDirectionalExampleCode }>
+            <ExampleCard title='Callout with directional hint' code={ CalloutDirectionalExampleCode }>
               <CalloutDirectionalExample />
             </ExampleCard>
-            <ExampleCard title='Callout cover example' code={ CalloutCoverExampleCode }>
+            <ExampleCard title='Callout with cover' code={ CalloutCoverExampleCode }>
               <CalloutCoverExample />
             </ExampleCard>
           </div>

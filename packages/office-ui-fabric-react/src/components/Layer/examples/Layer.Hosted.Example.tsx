@@ -3,6 +3,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Layer.Example.scss';
+import '../../../common/_exampleStyles.scss';
 import { AnimationClassNames } from '../../../Styling';
 
 export class LayerHostedExample extends React.Component<any, any> {
@@ -39,6 +40,7 @@ export class LayerHostedExample extends React.Component<any, any> {
         </p>
 
         <Checkbox
+          className='exampleCheckbox'
           label='Render the box below in a Layer and target it at hostId=layerhost1'
           checked={ showLayer }
           onChange={ (ev, checked) => this.setState({ showLayer: checked }) }
