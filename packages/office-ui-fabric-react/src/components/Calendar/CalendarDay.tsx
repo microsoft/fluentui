@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -51,6 +51,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   navigationIcons: ICalendarIconStrings;
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarDayState {
@@ -86,7 +87,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateTimeFormatter } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
@@ -96,8 +97,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+            <div className={ css('ms-DatePicker-monthAndYear', styles.month) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
           </div>
         </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
@@ -129,7 +129,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ strings.monthPickerAriaLabel }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 role='button'
                 tabIndex={ 0 }
               />
@@ -178,13 +178,12 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
-                        aria-label={ day.originalDate.toLocaleString ?
-                          day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
+                        aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
-                        <span aria-hidden='true'>{ day.date }</span>
+                        <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
                     </td>
                   ) }
