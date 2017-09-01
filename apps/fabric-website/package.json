@@ -40,15 +40,10 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",
-<<<<<<< HEAD"@uifabric/example-app-base": ">=5.0.0 <6.0.0",
     "@uifabric/icons": ">=5.0.0 <6.0.0",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
     "office-ui-fabric-react": ">=5.0.0 <6.0.0",
-======="@uifabric/example-app-base": ">=4.2.6 <5.0.0",
-    "color-functions": "1.1.0",
-    "json-loader": "^0.5.4",
-    "office-ui-fabric-react": ">=4.39.0 <5.0.0",
->>>>>>>4c5aa46769a93acfaa017f3a09d15b8e2f04c322"tslib": "^1.7.1"
+    "tslib": "^1.7.1"
   }
 }
