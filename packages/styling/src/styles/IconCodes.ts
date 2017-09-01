@@ -1276,6 +1276,10 @@ export const IconCodes = {
    */
   fullScreen: '\uE740',
   /**
+   * Icon code with the value '\uF2FE'.
+   */
+  fullWidth: '\uF2FE',
+  /**
    * Icon code with the value '\uE9DA'.
    */
   generate: '\uE9DA',
