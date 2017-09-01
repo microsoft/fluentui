@@ -693,7 +693,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
     const allowedRect = this._allowedRect;
 
-    for (let itemIndex = startIndex!; itemIndex < endIndex; itemIndex += itemsPerPage) {
+    for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
       const pageSpecification = this._getPageSpecification(itemIndex, allowedRect);
       const pageHeight = pageSpecification.height;
       const pageData = pageSpecification.data;
