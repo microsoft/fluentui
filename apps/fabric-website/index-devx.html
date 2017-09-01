@@ -29,11 +29,17 @@
   var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   var entryPointFilename = 'fabric-sitev5';
 
+  // Query params
+  var noCompress = getParameterByName('noCompress') === 'true';
+  var devUrl = getParameterByName('devUrl');
+  var dogfood = getParameterByName('isDogfood');
+  var production = getParameterByName('isProduction');
+
   switch (true) {
-    case location.hostname === 'dev.office.com':
+    case location.hostname === 'dev.office.com' || production:
       isProduction = true;
       break;
-    case location.hostname === 'officedevcentersite-devx.azurewebsites.net' || location.hostname === 'https://devx.microsoft-tst.com':
+    case location.hostname === 'officedevcentersite-devx.azurewebsites.net' || location.hostname === 'devx.microsoft-tst.com' || dogfood:
       isDogfood = true;
       break;
     case location.hostname === 'officedevcentersite-release.azurewebsites.net':
@@ -68,8 +74,6 @@
   var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
 
   var scripts = [];
-  var noCompress = getParameterByName('noCompress') === 'true';
-  var devUrl = getParameterByName('devUrl');
 
   if (devUrl) {
     scripts.push(devUrl);
