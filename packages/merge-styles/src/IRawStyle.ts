@@ -737,14 +737,14 @@ export interface IRawStyle extends IRawFontStyle {
   /**
    * Shorthand for `flex-grow`, `flex-shrink`, and `flex-basis`.
    */
-  flex?: ICSSRule | ICSSPixelUnitRule;
+  flex?: ICSSRule | string | number;
 
   /**
    * The flex-basis CSS property describes the initial main size of the flex item before
    * any free space is distributed according to the flex factors described in the flex
    * property (flex-grow and flex-shrink).
    */
-  flexBasis?: ICSSRule | string;
+  flexBasis?: ICSSRule | string | number;
 
   /**
    * The flex-direction CSS property describes how flex items are placed in the flex
@@ -763,12 +763,6 @@ export interface IRawStyle extends IRawFontStyle {
    * See CSS flex-grow property https://drafts.csswg.org/css-flexbox-1/#flex-grow-property
    */
   flexGrow?: ICSSRule | number;
-
-  /**
-   * Gets or sets a value that specifies the ordinal group that a flexbox element
-   *  belongs to. This ordinal value identifies the display order for the group.
-   */
-  flexOrder?: ICSSRule | string;
 
   /**
    * Specifies the flex shrink factor of a flex item.
@@ -931,7 +925,7 @@ export interface IRawStyle extends IRawFontStyle {
    * Specifies the height of an inline block level element.
    * See CSS 2.1 line-height property https://www.w3.org/TR/CSS21/visudet.html#propdef-line-height
    */
-  lineHeight?: ICSSRule | 'normal' | number | ICSSPixelUnitRule | ICSSPercentageRule;
+  lineHeight?: ICSSRule | 'normal' | ICSSPixelUnitRule | ICSSPercentageRule;
 
   /**
    * Shorthand property that sets the list-style-type, list-style-position and

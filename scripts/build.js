@@ -17,6 +17,7 @@ let tasks = [
   'tslint',
   'ts',
   'karma',
+  'jest',
   'webpack'
 ];
 

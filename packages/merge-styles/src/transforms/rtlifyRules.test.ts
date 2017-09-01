@@ -1,14 +1,12 @@
 import { setRTL, rtlifyRules } from './rtlifyRules';
 
-const { expect } = chai;
-
 describe('rtlifyRules', () => {
 
-  before(() => {
+  beforeAll(() => {
     setRTL(true);
   });
 
-  after(() => {
+  afterAll(() => {
     setRTL(false);
   });
 
@@ -41,7 +39,7 @@ describe('rtlifyRules', () => {
       [['box-shadow', '-42px 0 red'], ['box-shadow', '42px 0 red']]
     ].forEach((test: string[][]) => {
       rtlifyRules(test[0], 0);
-      expect(test[0]).eqls(test[1]);
+      expect(test[0]).toEqual(test[1]);
     });
   });
 
@@ -50,7 +48,7 @@ describe('rtlifyRules', () => {
 
     rtlifyRules(rules, 0);
 
-    expect(rules).eqls(['cursor', 'hand']);
+    expect(rules).toEqual(['cursor', 'hand']);
   });
 
 });

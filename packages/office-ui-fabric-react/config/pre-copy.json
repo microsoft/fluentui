@@ -1,7 +1,7 @@
 {
   "copyTo": {
     "dist": [
-      "../icons/src/**/*.woff"
+      "../icons/fonts/*"
     ],
     "dist/sass": [
       "node_modules/office-ui-fabric-core/dist/sass/**/*"
