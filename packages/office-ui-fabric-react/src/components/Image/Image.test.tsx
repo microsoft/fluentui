@@ -95,7 +95,7 @@ describe('Image', () => {
         <Image
           className='is-frameMaximizedPortrait'
           imageFit={ ImageFit.cover }
-          maximizeFrame
+          maximizeFrame={ true }
           src={ testImage1x1 }
           onLoadingStateChange={ onLoadingStateChange }
         />
@@ -122,7 +122,7 @@ describe('Image', () => {
           imageFit={ ImageFit.cover }
           className='is-frameMaximizedLandscape'
           onLoadingStateChange={ onLoadingStateChange }
-          maximizeFrame
+          maximizeFrame={ true }
         />
       </div>, root
     );
