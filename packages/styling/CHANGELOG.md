@@ -1,6 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+
+## 0.22.0
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Minor changes
+
+- Add a new semantic slot for the warning foreground color
+
+### Patches
+
+- Add FullWidth icon.
 
 ## 0.21.1
 Tue, 29 Aug 2017 20:55:35 GMT
