@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 31 Aug 2017 15:41:56 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Sep 2017 18:06:55 GMT and should not be manually modified.
+
+## 4.12.1
+Fri, 01 Sep 2017 18:06:55 GMT
+
+### Patches
+
+- Set the RTL language when the language is read from session storage
 
 ## 4.12.0
 Thu, 31 Aug 2017 15:41:56 GMT

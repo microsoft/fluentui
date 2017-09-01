@@ -2,7 +2,27 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch",
+      "name": "Debug test",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false,
+      "args": [
+        "-i"
+      ],
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug build",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/build.js",
@@ -20,8 +40,7 @@
       ],
       "env": {
         "NODE_ENV": "development"
-      },
-      "sourceMaps": false
+      }
     },
     {
       "name": "Run ssr tests",
