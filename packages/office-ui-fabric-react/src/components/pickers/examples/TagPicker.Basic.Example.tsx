@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TagPicker } from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ITagPickerDemoPageState } from 'office-ui-fabric-react/lib/components/pickers/examples/ITagPickerDemoPageState';
+import '../../../common/_exampleStyles.scss';
 
 let _testTags = [
   'black',
@@ -32,7 +33,11 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
   public render() {
     return (
       <div>
-        <Checkbox label='Disable Tag Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
+        <Checkbox
+          className='exampleCheckbox'
+          label='Disable Tag Picker'
+          checked={ this.state.isPickerDisabled }
+          onChange={ this._onDisabledButtonClick.bind(this) } />
         <TagPicker ref='tagPicker'
           onResolveSuggestions={ this._onFilterChanged.bind(this) }
           getTextFromItem={ (item: any) => { return item.name; } }
