@@ -1,0 +1,108 @@
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .loading {
+    align-items: center;
+    background-color: #212121;
+    border-top: 50px solid #000;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+  }
+</style>
+<div id="main">
+  <div class="loading">
+    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading"
+      width="32" height="32" />
+  </div>
+</div>
+
+<script type="text/javascript">
+  var isProduction = false;
+  var isDogfood = false;
+  var isLocal = false;
+  var today = new Date();
+  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+  switch (true) {
+    case location.hostname === 'dev.office.com':
+      isProduction = true;
+      break;
+    case location.hostname === 'officedevcentersite-devx.azurewebsites.net' || location.hostname === 'https://devx.microsoft-tst.com':
+      isDogfood = true;
+      break;
+    case location.hostname === 'officedevcentersite-release.azurewebsites.net':
+      isProduction = true;
+      break;
+    case location.hostname === 'localhost':
+      isLocal = true;
+  }
+
+  function loadScript(n) {
+    for (var i = 0; i < n.length; i++) {
+      var s = document.createElement('script');
+      s.src = n[i];
+      s.async = false;
+      document.body.appendChild(s);
+    }
+  }
+
+  function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  var reactProduction = [
+    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js',
+    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js'
+  ];
+
+  var reactDevelopment = [
+    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js',
+    '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js'
+  ];
+
+  var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
+
+  var scripts = [];
+  var noCompress = getParameterByName('noCompress') === 'true';
+  var devUrl = getParameterByName('devUrl');
+
+  if (devUrl) {
+    scripts.push(devUrl);
+  } else if (isLocal) {
+    scripts.push.apply(scripts, reactDevelopment);
+    scripts.push('fabric-site.js');
+  } else if (isDogfood) {
+    if (noCompress) {
+      scripts.push.apply(scripts, reactDevelopment);
+      scripts.push(baseDogfoodUrl + 'fabric-site.min.js?date=' + Date.now());
+    } else {
+      scripts.push.apply(scripts, reactProduction);
+      scripts.push(baseDogfoodUrl + 'fabric-site.js?date=' + Date.now());
+    }
+  } else {
+    if (noCompress) {
+      scripts.push.apply(scripts, reactDevelopment);
+      scripts.push(baseProductionUrl + 'fabric-site.js?date=' + date);
+    } else {
+      scripts.push.apply(scripts, reactProduction);
+      scripts.push(baseProductionUrl + 'fabric-site.min.js?date=' + date);
+    }
+  }
+
+  loadScript(scripts);
+
+</script>
