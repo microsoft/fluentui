@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.2.6",
+      "tag": "@uifabric/example-app-base_v4.2.6",
+      "date": "Fri, 01 Sep 2017 16:51:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "fd435b3657df001d9a90b1ad0fc2e312a6643fa0",
+            "comment": "Persist RTL setting between page refreshes"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.2.5",
       "tag": "@uifabric/example-app-base_v4.2.5",
       "date": "Thu, 31 Aug 2017 15:41:56 GMT",
