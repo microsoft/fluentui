@@ -275,7 +275,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
-    if (this.props.onDismiss != null) {
+    if (this.props.onDismiss) {
       this.props.onDismiss();
     }
   }

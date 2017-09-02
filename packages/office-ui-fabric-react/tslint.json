@@ -3,7 +3,6 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
-    "triple-equals": false,
     "jsx-no-string-ref": false,
     "jsx-key": false,
     "jsx-boolean-value": false,
