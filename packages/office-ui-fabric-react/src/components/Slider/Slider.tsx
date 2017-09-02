@@ -168,7 +168,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     let direction: string = vertical ? 'bottom' : (getRTL() ? 'right' : 'left');
     return {
       [direction]: thumbOffsetPercent + '%'
-    }
+    };
   }
 
   @autobind
