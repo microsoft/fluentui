@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "HoverCard: Refresh the card if expanded card's heigh is changed",
+      "comment": "HoverCard: Refresh the card if expanded card's height is changed",
       "type": "patch"
     }
   ],
