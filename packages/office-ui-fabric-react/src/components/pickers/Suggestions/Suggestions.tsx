@@ -63,7 +63,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
-    this._getMoreResults = this._getMoreResults.bind(this);
   }
 
   public componentDidUpdate() {
@@ -125,7 +124,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             componentRef={ this._resolveRef('_searchForMoreButton') }
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
             iconProps={ { iconName: 'Search' } }
-            onClick={ this._getMoreResults.bind(this) }
+            onClick={ this._getMoreResults }
             onKeyDown={ this._onKeyDown }
           >
             { searchForMoreText }
@@ -208,6 +207,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       </div>);
   }
 
+  @autobind
   private _getMoreResults() {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
