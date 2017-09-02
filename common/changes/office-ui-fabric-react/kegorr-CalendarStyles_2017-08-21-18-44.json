@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updating Calendar component styles to match new OWA calendar styles for the Calendar team.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kegorr@microsoft.com"
+}

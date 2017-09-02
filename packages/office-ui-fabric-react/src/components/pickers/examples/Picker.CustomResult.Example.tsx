@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from '../../../Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { SelectionZone } from 'office-ui-fabric-react/lib/DetailsList';
 import {
@@ -344,7 +345,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   public render() {
     return (
       <div>
-        <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } />
+        <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick } />
         <DocumentPicker
           onRenderSuggestionsItem={ SuggestedBigItem as any }
           onResolveSuggestions={ this._onFilterChanged }
@@ -367,6 +368,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
     );
   }
 
+  @autobind
   private _onDisabledButtonClick(): void {
     this.setState({
       isPickerDisabled: !this.state.isPickerDisabled

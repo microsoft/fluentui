@@ -6,18 +6,110 @@
 
 .titleLabel {
   padding: 0;
-}
+ }
 
 .line {
   display: flex;
   position: relative;
-  width: 100%;
 }
 
-.line span {
-  height: 4px;
+.line .lineContainer {
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.valueLabel {
+  flex-shrink: 1;
+  width: 30px;
+  line-height: 1;
+}
+
+.slideBox {
+  @include focus-border();
+  background: transparent;
+  border: none;
+  flex-grow: 1;
+  line-height: 28px;
+}
+
+.slideBox .thumb {
+  border: 2px solid $ms-color-neutralSecondary;
+  box-sizing: border-box;
+  background: $ms-color-white;
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  border-radius: 10px;
+}
+
+.rootIsHorizontal {
+  .line {
+    width: 100%;
+  }
+
+  .line .lineContainer {
+    height: 4px;
+  }
+
+  .slideBox {
+    height: 28px;
+    padding: 0 8px; // Make room for thumb at ends of line
+  }
+
+  .slideBox .thumb {
+    top: -6px;
+    @include transform-translateX(-50%);
+  }
+
+  .valueLabel {
+    margin: 0 8px;
+  }
+}
+
+.rootIsVertical {
+  margin-right: 8px;
+
+  .line {
+    height: 100%;
+    width: 4px;
+    margin: 0 auto;
+    flex-direction: column-reverse;
+  }
+
+  .line .lineContainer {
+    width: 4px;
+    height: 100%;
+  }
+
+  .slideBox {
+    height: 100%;
+    width: 28px;
+    padding: 8px 0; // Make room for thumb at bottom of line
+  }
+
+  .slideBox .thumb {
+    left: -6px;
+    margin: 0 auto;
+    transform: translateY(8px);
+  }
+
+  .container {
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .valueLabel {
+    margin: 0 auto;
+  }
 }
 
 .activeSection {
@@ -53,47 +145,6 @@
   .inactiveSection {
     transition: width $ms-animation-duration-3 $ms-animation-ease-1;
   }
-}
-.slideBox {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-.slideBox .thumb {
-  border: 2px solid $ms-color-neutralSecondary;
-  box-sizing: border-box;
-  background: $ms-color-white;
-  display: block;
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: -6px;
-  border-radius: 10px;
-  @include transform-translateX(-50%);
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-
-.slideBox {
-  @include focus-border();
-  flex-grow: 1;
-  height: 28px;
-  line-height: 28px;
-  padding: 0 8px; // Make room for thumb at ends of line
-}
-
-.valueLabel {
-  flex-shrink: 1;
-  width: 30px;
-  margin: 0 8px;
-  line-height: 1;
 }
 
 .rootIsEnabled {

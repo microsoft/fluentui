@@ -96,8 +96,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps && menuIconProps.className,
       disabled!,
       checked!,
-      // tslint:disable-next-line:triple-equals
-      menuProps != null && !this.props.split
+      !!this.state.menuProps && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
