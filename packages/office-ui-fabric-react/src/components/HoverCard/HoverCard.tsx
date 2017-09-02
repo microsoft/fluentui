@@ -103,6 +103,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
+            key={ expandingCardProps!.expandedCardHeight! }
             componentRef={ this._resolveRef('_expandingCard') }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
