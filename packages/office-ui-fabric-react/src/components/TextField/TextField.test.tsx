@@ -47,7 +47,7 @@ describe('TextField', () => {
 
   it('should render multiline as text area element', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField value='This\nIs\nMultiline\nText\n' multiline />
+      <TextField value='This\nIs\nMultiline\nText\n' multiline={ true } />
     );
 
     // Assert on the input element.
@@ -222,7 +222,7 @@ describe('TextField', () => {
         <TextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
-          validateOnFocusIn
+          validateOnFocusIn={ true }
         />
       );
 
@@ -245,7 +245,7 @@ describe('TextField', () => {
         <TextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
-          validateOnFocusOut
+          validateOnFocusOut={ true }
         />
       );
 
@@ -269,8 +269,8 @@ describe('TextField', () => {
         <TextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
-          validateOnFocusOut
-          validateOnFocusIn
+          validateOnFocusOut={ true }
+          validateOnFocusIn={ true }
         />
       );
 

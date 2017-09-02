@@ -5,7 +5,6 @@
   "rules": {
     "jsx-no-string-ref": false,
     "jsx-key": false,
-    "jsx-boolean-value": false,
     "no-unused-variable": false,
     "jsx-no-multiline-js": false,
     "jsx-alignment": false,

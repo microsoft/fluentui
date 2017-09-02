@@ -89,7 +89,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           onChanged={ (item) => this.changeState(item) }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          multiSelect
+          multiSelect={ true }
           options={
             [
               { key: 'Header2', text: 'Fruits', itemType: DropdownMenuItemType.Header },
@@ -113,7 +113,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           onChanged={ (item) => this.onChangeMultiSelect(item) }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
-          multiSelect
+          multiSelect={ true }
           options={
             [
               { key: 'Header4', text: 'Colors', itemType: DropdownMenuItemType.Header },
@@ -132,7 +132,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
         <Dropdown
           label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKeys={ ['GG', 'FF'] }
-          multiSelect
+          multiSelect={ true }
           options={
             [
               { key: 'AA', text: 'Option a' },

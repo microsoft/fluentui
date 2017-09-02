@@ -54,16 +54,16 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
           label='TextField that validates only on focus and blur. Hint: the length of the input string must be less than 3.'
           placeholder='Validation will start only on input focus and blur'
           onGetErrorMessage={ this._getErrorMessage }
-          validateOnFocusIn
-          validateOnFocusOut
+          validateOnFocusIn={ true }
+          validateOnFocusOut={ true }
         />
         <TextField
           label='TextField that validates only on blur. Hint: the length of the input string must be less than 3.'
           placeholder='Validation will start only on input blur.'
           onGetErrorMessage={ this._getErrorMessage }
-          validateOnFocusOut
+          validateOnFocusOut={ true }
         />
-        <TextField label='Underlined TextField' underlined onGetErrorMessage={ this._getErrorMessage } />
+        <TextField label='Underlined TextField' underlined={ true } onGetErrorMessage={ this._getErrorMessage } />
 
         <TextField
           label='TextField that uses the errorMessage property to set an error state.'
