@@ -245,6 +245,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/teachingbubble'
         },
         {
+          component: require<any>('../components/TeachingDialog/TeachingDialogPage').TeachingDialogPage,
+          key: 'TeachingDialog',
+          name: 'TeachingDialog',
+          url: '#/examples/teachingdialog'
+        },
+        {
           component: require<any>('../components/TextField/TextFieldPage').TextFieldPage,
           key: 'TextField',
           name: 'TextField',

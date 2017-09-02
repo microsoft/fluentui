@@ -1,0 +1,158 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Teaching Dialog styles
+
+$buttonWidth: 310px;
+$descHeight: 124px;
+$dialogHeight: 456px;
+$dialogWidth: 620px;
+$imageHeight: 268px;
+$paginationWidth: 96px;
+
+.modal{
+    @include left(0);
+    background-color: transparentize(#333333,0.2);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+.pagination {
+    display: block;
+    padding-top: 24px;
+    text-align: center;
+    width: 100%;
+
+    .btn {
+        color: $ms-color-white;
+        display: inline-block;
+        font-size: $ms-icon-size-s;
+        margin: 0 8px 0 8px;
+    }
+}
+
+.root {
+    cursor: default;
+    position: fixed;
+    top: calc(50% - 227px);
+    @include left(calc(50% - 310px));
+    width: $dialogWidth;
+    height: $dialogHeight;
+    box-shadow: 0px 0px 5px 2px transparentize(#333333,0.7);
+    z-index: 20;
+
+    .content {
+        width: 100%;
+
+        .contentBody {
+        @include ms-font-l();
+        background-color: white;
+        height: 124px;
+        width: 100%;
+
+        .contentTitle {
+        @include ms-font-xxl();
+        color: $ms-color-neutralPrimary;
+        display: block;
+        line-height: 24pt;
+        padding: 16px 24px 15px 24px;
+      }
+
+      .contentText {
+          @include ms-font-m();
+          color: $ms-color-neutralPrimary;
+          display: block;
+          line-height: 15pt;
+          padding: 0px 24px 22px 24px;
+        }
+      }
+
+        .header {
+          background-color: #30C6CC;
+          height: auto;
+          top: 0;
+          width: 100%;
+
+          .headerImg {
+            height: 100%;
+            width: 100%;
+        }
+      }
+    }
+}
+
+.root .closeButton{
+    @include margin-right(20px);
+    @include right(0);
+    color: $ms-color-white;
+    cursor: pointer;
+    font-size: $ms-icon-size-m;
+    height: 20px;
+    margin-top: 20px;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+}
+
+.root .footer {
+    background-color: White;
+    height: auto;
+    width: 100%;
+
+    .button {
+        @include ms-font-m();
+        border-top: 1px solid $ms-color-neutralLight;
+        color: $ms-color-neutralPrimary;
+        cursor: pointer;
+        display: inline-block;
+        padding: 20px 0px 21px 0px;
+        text-align: center;
+        width: 50%;
+
+        &.isLight {
+          color: $ms-color-neutralTertiary;
+        }
+
+        &.isRight {
+          @include border-left(1px, solid, $ms-color-neutralLight);
+          width: calc(50% - 1px);
+        }
+    }
+}
+
+.root .headline {
+    @include ms-font-su();
+    bottom: 474px;
+    color: White;
+    font-size: 32px;
+    height: auto;
+    line-height: 38pt;
+    opacity: 1;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+//Large
+@media (max-width: 1024px){
+    .root {
+        @include left(calc(50% - 262px));
+        height: 414px;
+        width: 524px;
+    }
+}
+
+//Smaller than large
+@media (max-width: 640px){
+    .modal{
+        display: none;
+    }
+}

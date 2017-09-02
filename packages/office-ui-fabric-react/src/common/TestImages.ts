@@ -1,4 +1,4 @@
-const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+export const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
 
 export const TestImages = {
   choiceGroupBarUnselected: baseProductionCdnUrl + 'choicegroup-bar-unselected.png',
@@ -11,5 +11,6 @@ export const TestImages = {
   iconOne: baseProductionCdnUrl + 'icon-one.png',
   iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
-  personaMale: baseProductionCdnUrl + 'persona-male.png'
+  personaMale: baseProductionCdnUrl + 'persona-male.png',
+  teachingDialog: baseProductionCdnUrl + 'teaching-dialog.png'
 };
