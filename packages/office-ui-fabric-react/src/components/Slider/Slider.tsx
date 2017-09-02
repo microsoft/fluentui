@@ -89,10 +89,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue! - min!) / (max! - min!) * 100;
-
+    const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
     const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
+
     return (
       <div
         className={ css('ms-Slider', styles.root, className, {
@@ -138,8 +139,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
                 style={ this._getThumbStyle(vertical, thumbOffsetPercent) }
               />
-              <span className={ css('ms-Slider-active', styles.lineContainer, styles.activeSection) } style={ !vertical ? { 'width': thumbOffsetPercent + '%' } : { 'height': (thumbOffsetPercent) + '%' } }></span>
-              <span className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) } style={ !vertical ? { 'width': (100 - thumbOffsetPercent) + '%' } : { 'height': (100 - thumbOffsetPercent) + '%' } }></span>
+              <span
+                className={ css('ms-Slider-active', styles.lineContainer, styles.activeSection) }
+                style={ { [lengthString]: thumbOffsetPercent + '%' } }
+              />
+              <span
+                 className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
+                 style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
+              />
             </div>
           </button>
           { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }
