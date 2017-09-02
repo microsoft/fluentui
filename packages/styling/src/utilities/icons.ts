@@ -24,7 +24,6 @@ export interface IIconSubsetRecord extends IIconSubset {
 export interface IIconRecord {
   code: string;
   subset: IIconSubsetRecord;
-  className?: string;
 }
 
 export interface IIconRecords {
@@ -53,11 +52,35 @@ export function registerIcons(iconSubset: IIconSubset): void {
 
       _icons[iconName] = {
         code,
-        subset,
-        className: undefined
+        subset
       };
     }
   }
+}
+
+/**
+ * Gets an icon classname. You should be able to add this classname to an I tag with no
+ * additional classnames, and render the icon.
+ *
+ * @public
+ */
+export function getIconClassName(name: string): string {
+  let className = '';
+  const icon = getIcon(name);
+
+  if (icon) {
+    className = mergeStyles(
+      icon.subset.className,
+      {
+        selectors: {
+          '::before': {
+            content: `"${icon.code}"`
+          }
+        }
+      });
+  }
+
+  return className;
 }
 
 /**
@@ -67,7 +90,7 @@ export function registerIcons(iconSubset: IIconSubset): void {
  * @public
  * @param name - Name of icon.
  */
-export function getIcon(name?: string | null): IIconRecord | undefined {
+export function getIcon(name?: string): IIconRecord | undefined {
   let icon: IIconRecord = _icons[name!];
 
   if (icon) {
