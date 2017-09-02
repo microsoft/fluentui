@@ -8,7 +8,7 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
@@ -51,11 +51,16 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   navigationIcons: ICalendarIconStrings;
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarDayState {
   activeDescendantId?: string;
   weeks?: IDayInfo[][];
+}
+
+interface IWeekCorners {
+  [key: string]: string;
 }
 
 export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
@@ -86,20 +91,21 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate, dateTimeFormatter } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
+    // When the month is highlighted get the corner dates so that styles can be added to them
+    let weekCorners: IWeekCorners = {};
+    if (dateRangeType === DateRangeType.Month && selectedDate.getMonth() === navigatedDate.getMonth() && selectedDate.getFullYear() === navigatedDate.getFullYear()) {
+      // navigatedDate is on the current month and current year
+      weekCorners = this._getWeekCornerStyles(weeks!);
+    }
+
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-header', styles.header) } >
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
-          </div>
-        </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
@@ -123,20 +129,25 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
+        </div >
+        <div className={ css('ms-DatePicker-header', styles.header) } >
+          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
+            <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
+          </div>
           {
             this.props.onHeaderSelect ?
               <div
                 className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ strings.monthPickerAriaLabel }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 role='button'
                 tabIndex={ 0 }
               />
               :
               null
           }
-        </div >
+        </div>
         <FocusZone>
           <table
             className={ css('ms-DatePicker-table', styles.table) }
@@ -160,9 +171,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody>
               { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex }>
+                <tr key={ weekIndex } >
                   { week.map((day, dayIndex) =>
-                    <td key={ day.key }>
+                    <td key={ day.key } className={ css(
+                      {
+                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
+                        ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
+                      }) }
+                    >
                       <div
                         className={ css(
                           'ms-DatePicker-day',
@@ -171,20 +188,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
                             ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
-                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
+                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
                           }) }
                         role='button'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
-                        aria-label={ day.originalDate.toLocaleString ?
-                          day.originalDate.toLocaleString([], { day: 'numeric', month: 'long', year: 'numeric' }) : day.originalDate.getDate() }
+                        aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
-                        <span aria-hidden='true'>{ day.date }</span>
+                        <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
                     </td>
                   ) }
@@ -202,6 +218,100 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       this.refs.navigatedDay.tabIndex = 0;
       this.refs.navigatedDay.focus();
     }
+  }
+
+  private _findCornerIndexes(week: IDayInfo[]) {
+
+    let cornerIndexes = [];
+
+    for (let i = 0, length = week.length; i < length; i++) {
+
+      let day = week[i];
+      if (day.isInMonth) {
+        cornerIndexes.push(i);
+      }
+
+    }
+
+    if (cornerIndexes.length > 2) {
+      cornerIndexes.splice(1, cornerIndexes.length - 2);
+    }
+
+    return cornerIndexes;
+  }
+
+  private _populateCornerStyles(
+    weekCornersStyled: any,
+    weekIndex: number,
+    cornerIndexes: number[],
+    singleCornerStyle: string,
+    leftCornerStyle: string,
+    rightCornerStyle: string) {
+
+    let cornersLength = cornerIndexes.length;
+    if (cornersLength > 0) {
+
+      if (cornersLength === 1) {
+
+        weekCornersStyled[weekIndex + '_' + cornerIndexes[0]] = singleCornerStyle;
+
+      } else if (cornersLength === 2) {
+
+        weekCornersStyled[weekIndex + '_' + cornerIndexes[0]] = leftCornerStyle;
+        weekCornersStyled[weekIndex + '_' + cornerIndexes[1]] = rightCornerStyle;
+      }
+
+      if (weekIndex === 0) {
+
+        // check if second week needs corner styles
+        if (cornerIndexes[0] !== 0) {
+          weekCornersStyled['1_0'] = leftCornerStyle;
+        }
+
+      } else {
+
+        // Assume we are on the last week. Check if second-to-last week needs corner styles
+        let lastDayIndex = DAYS_IN_WEEK - 1;
+        if (cornerIndexes[cornersLength - 1] !== lastDayIndex) {
+          weekCornersStyled[(weekIndex - 1) + '_' + lastDayIndex] = rightCornerStyle;
+        }
+
+      }
+    }
+  }
+
+  private _getWeekCornerStyles(weeks: IDayInfo[][]) {
+
+    let weekCornersStyled: any = {};
+    let numberOfWeeks = weeks.length;
+    let indexesFirstWeek = this._findCornerIndexes(weeks[0]);
+    let indexesLastWeek = this._findCornerIndexes(weeks[numberOfWeeks - 1]);
+
+    this._populateCornerStyles(
+      weekCornersStyled,
+      0 /* week index */,
+      indexesFirstWeek,
+      'ms-DatePicker-singleTopDate ' + styles.singleTopDate,
+      'ms-DatePicker-topLeftCornerDate ' + styles.topLeftCornerDate,
+      'ms-DatePicker-topRightCornerDate ' + styles.topRightCornerDate
+    );
+
+    this._populateCornerStyles(
+      weekCornersStyled,
+      weeks.length - 1 /* week index */,
+      indexesLastWeek,
+      'ms-DatePicker-singleBottomDate ' + styles.singleBottomDate,
+      'ms-DatePicker-bottomLeftCornerDate ' + styles.bottomLeftCornerDate,
+      'ms-DatePicker-bottomRightCornerDate ' + styles.bottomRightCornerDate
+    );
+
+    return weekCornersStyled;
+  }
+
+  private _getHighlightedCornerStyle(weekCorners: IWeekCorners, dayIndex: number, weekIndex: number) {
+    let cornerStyle = weekCorners[weekIndex + '_' + dayIndex] ? weekCorners[weekIndex + '_' + dayIndex] : '';
+
+    return cornerStyle;
   }
 
   private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
@@ -232,7 +342,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection } = this.props;
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
-    if (onSelectDate != null) {
+    if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
     }
 

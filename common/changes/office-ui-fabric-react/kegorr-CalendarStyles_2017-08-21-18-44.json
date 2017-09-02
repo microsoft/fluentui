@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updating goToToday to include onSelectDate function if defined so that this button behaves like a date has been picked",
+      "comment": "Updating Calendar component styles to match new OWA calendar styles for the Calendar team.",
       "type": "minor"
     }
   ],

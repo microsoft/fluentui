@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix data-command-key to key instead of index.",
+      "comment": "DetailsHeader: Adjust sortIcon position",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "s@warmsea.net"
+  "email": "v-edwliu@microsoft.com"
 }

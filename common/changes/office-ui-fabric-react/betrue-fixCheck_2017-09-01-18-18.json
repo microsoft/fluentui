@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "HoverCard: Improved performance of expanding animation.",
+      "comment": "Check: Fixed Chrome-specific alignment for the checkmark within the circle.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "anihan@microsoft.com"
+  "email": "betrue@microsoft.com"
 }

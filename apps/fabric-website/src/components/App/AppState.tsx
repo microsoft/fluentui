@@ -291,6 +291,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/RatingComponentPage').RatingComponentPage))
         },
         {
+          title: 'ResizeGroup',
+          url: '#/components/resizegroup',
+          component: () => <LoadingComponent title='ResizeGroup' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ResizeGroupComponentPage').ResizeGroupComponentPage))
+        },
+        {
           title: 'SearchBox',
           url: '#/components/searchbox',
           component: () => <LoadingComponent title='SearchBox' />,

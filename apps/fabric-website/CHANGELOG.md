@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+
+## 4.7.6
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Patches
+
+- Publish resize group on fabric-website
+
+## 4.7.5
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Patches
+
+- Add @types/node dependency
 
 ## 4.7.4
 Tue, 29 Aug 2017 20:55:35 GMT

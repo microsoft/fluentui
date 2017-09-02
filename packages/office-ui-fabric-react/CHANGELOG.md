@@ -1,6 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+
+## 4.39.0
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Minor changes
+
+- Calendar: Adding option to add date formatting to calendar
+
+### Patches
+
+- Respect ths isHeader property on the ResizeGroup demo page
+- BaseButton: Put the right classname on the menu icon
+- Add FullWidth icon.
+- SwatchColorPicker: Fixed so it will deselect the current items if there is a selected id passed in that does not exist in the color list
+
+## 4.38.0
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Minor changes
+
+- Updating goToToday to include onSelectDate function if defined so that this button behaves like a date has been picked
+- Tooltip: Added support for custom maxWidth values
+
+### Patches
+
+- HoverCard: Improved performance of expanding animation.
+- Check: Increased size of check to 18px
+- Fix data-command-key to key instead of index.
+- ComboBox: Loosen the re-rendering requirement
 
 ## 4.37.7
 Tue, 29 Aug 2017 20:55:35 GMT

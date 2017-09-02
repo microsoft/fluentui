@@ -97,7 +97,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps && iconProps.className,
       disabled!,
       checked!,
-      this.state.menuProps != null && !this.props.split
+      !!this.state.menuProps && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -337,7 +337,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={ this._classNames.icon }
+          className={ this._classNames.menuIcon }
         />
         :
         null
