@@ -10,7 +10,6 @@
   // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
   "editor.insertSpaces": true,
   "files.exclude": {
-    "**/node_modules": true,
     "**/.git": true,
     "**/.DS_Store": true,
     "**/bower_components": true,
