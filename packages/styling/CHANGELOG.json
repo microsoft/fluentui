@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.22.1",
+      "tag": "@uifabric/styling_v0.22.1",
+      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "b4eee571f31db3c0950938e40aafea9313f73003",
+            "comment": "Icons: Added textDocument back into the icon list"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.12.1 <5.0.0` to `>=4.13.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.22.0",
       "tag": "@uifabric/styling_v0.22.0",
       "date": "Fri, 01 Sep 2017 16:51:57 GMT",
