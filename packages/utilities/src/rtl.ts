@@ -12,6 +12,7 @@ let _isRTL: boolean | undefined;
  */
 export function getRTL(): boolean {
   if (_isRTL === undefined) {
+    // Fabric supports persisting the RTL setting between page refreshes via session storage
     let savedRTL = getItem(RTL_LOCAL_STORAGE_KEY);
     if (savedRTL !== null) {
       _isRTL = savedRTL === '1';

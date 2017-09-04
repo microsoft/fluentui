@@ -164,14 +164,14 @@ export interface ICalendarStrings {
 
 export interface ICalendarIconStrings {
   /**
-  * FabricMDL2Icons name for the left navigation icon
-  * @defaultvalue  'ChevronLeft'
+  * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
+  * @defaultvalue  'Up'
   */
   leftNavigation?: string;
 
   /**
-  * FabricMDL2Icons name for the right navigation icon
-  * @defaultvalue  'ChevronRight'
+  * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
+  * @defaultvalue  'Down'
   */
   rightNavigation?: string;
 

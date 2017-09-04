@@ -261,7 +261,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   private _onRenderFooter(props: IPanelProps): JSX.Element | null {
     let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
-    if (onRenderFooterContent != null) {
+    if (onRenderFooterContent) {
       return (
         <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
           <div className={ css('ms-Panel-footerInner', styles.footerInner) }>

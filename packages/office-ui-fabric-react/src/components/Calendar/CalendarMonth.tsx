@@ -55,8 +55,6 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
           <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
             <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
               <span
@@ -79,19 +77,21 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               </span>
             </div>
           </div>
-          {
-            this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
-                role='button'
-                tabIndex={ 0 }
-              />
-              :
-              null
-          }
+          <div className={ css('ms-DatePicker-header', styles.header) }>
+            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
+            {
+              this.props.onHeaderSelect ?
+                <div
+                  className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
+                  onClick={ this._onHeaderSelect }
+                  onKeyDown={ this._onHeaderKeyDown }
+                  aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+                  role='button'
+                  tabIndex={ 0 }
+                />
+                :
+                null
+            }
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
@@ -102,7 +102,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
                     {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!)
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!),
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && (navigatedDate.getMonth() === index)
                     })
                 }
                 key={ index }
