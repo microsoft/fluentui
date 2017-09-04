@@ -85,13 +85,6 @@ describe('memoizeFunction', () => {
 });
 
 describe('memoize', () => {
-  // before(() => {
-  //   setMemoizeWeakMap(weakMapPolyfill);
-  // });
-
-  // after(() => {
-  //   setMemoizeWeakMap(undefined);
-  // });
 
   it('can work on multiple instances of a class', () => {
     let _count = 0;
