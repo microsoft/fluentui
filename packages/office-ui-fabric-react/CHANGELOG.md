@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 4.40.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Updating Calendar component styles to match new OWA calendar styles for the Calendar team.
+
+### Patches
+
+- Check: Fixed Chrome-specific alignment for the checkmark within the circle.
+- Slider: adding `vertical` property to render as a vertical slider.
+- DetailsHeader: Adjust sortIcon position
 
 ## 4.39.0
 Fri, 01 Sep 2017 16:51:57 GMT

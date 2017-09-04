@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 01 Sep 2017 18:06:55 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 4.13.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Add ISize interface and fitContentToBounds utility function
 
 ## 4.12.1
 Fri, 01 Sep 2017 18:06:55 GMT
