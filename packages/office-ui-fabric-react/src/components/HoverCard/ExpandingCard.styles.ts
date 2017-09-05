@@ -37,8 +37,8 @@ export const getStyles = memoizeFunction((
             position: 'relative',
             display: 'block',
             top: '0',
-            left: '0',
-            right: '0',
+            left: '24px',
+            width: '292px',
             height: '1px',
             backgroundColor: theme.palette.neutralLighter
           }

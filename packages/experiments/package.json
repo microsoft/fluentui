@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/experiments",
   "version": "5.0.0",
-  "main": "lib/index.js",
+  "description": "Experimental React components for building experiences for Office 365.",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",

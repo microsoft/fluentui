@@ -4,53 +4,38 @@ import {
   hasOverflow
 } from './overflow';
 
-let { expect } = chai;
-
 describe('overflow', () => {
-  let content: HTMLDivElement;
-  let element: HTMLDivElement;
-
-  beforeEach(() => {
-    content = document.createElement('div');
-    content.style.minWidth = '200px';
-    content.style.minHeight = '200px';
-
-    element = document.createElement('div');
-    element.style.overflow = 'auto';
-    element.style.maxWidth = '100px';
-    element.style.maxHeight = '100px';
-    element.appendChild(content);
-
-    // Add to dom to force layout
-    document.body.appendChild(element);
-  });
-
-  afterEach(() => {
-    element.remove();
-  });
-
-  it('detects overflow', () => {
-    expect(hasOverflow(element)).to.be.true;
-
-    content.style.minWidth = '50px';
-    content.style.minHeight = '50px';
-
-    expect(hasOverflow(element)).to.be.false;
+  it('returns false when no overflow is present', () => {
+    expect(hasOverflow({
+      clientWidth: 10,
+      clientHeight: 10,
+      scrollWidth: 10,
+      scrollHeight: 10
+    } as any)).toEqual(false);
   });
 
   it('detects horizontal overflow', () => {
-    expect(hasHorizontalOverflow(element)).to.be.true;
+    const elementWithOverflow = {
+      clientWidth: 10,
+      clientHeight: 10,
+      scrollWidth: 20,
+      scrollHeight: 10
+    };
 
-    content.style.minWidth = '50px';
-
-    expect(hasHorizontalOverflow(element)).to.be.false;
+    expect(hasOverflow(elementWithOverflow as any)).toEqual(true);
+    expect(hasHorizontalOverflow(elementWithOverflow as any)).toEqual(true);
   });
 
   it('detects vertical overflow', () => {
-    expect(hasVerticalOverflow(element)).to.be.true;
+    const elementWithOverflow = {
+      clientWidth: 10,
+      clientHeight: 10,
+      scrollWidth: 10,
+      scrollHeight: 20
+    };
 
-    content.style.minHeight = '50px';
-
-    expect(hasVerticalOverflow(element)).to.be.false;
+    expect(hasOverflow(elementWithOverflow as any)).toEqual(true);
+    expect(hasVerticalOverflow(elementWithOverflow as any)).toEqual(true);
   });
+
 });

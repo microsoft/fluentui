@@ -42,6 +42,7 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
 
 @customizable(['theme'])
 export class Fabric extends BaseComponent<IFabricProps, IFabricState> {
+  // tslint:disable-next-line:no-unused-variable
   private _root: HTMLElement;
 
   constructor() {

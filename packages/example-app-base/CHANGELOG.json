@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.2.7",
+      "tag": "@uifabric/example-app-base_v4.2.7",
+      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "7836034345ccf0f347adece0c2c20ba5d63ddcf7",
+            "comment": "Update fabric-dependency version"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.2.6",
       "tag": "@uifabric/example-app-base_v4.2.6",
       "date": "Fri, 01 Sep 2017 16:51:57 GMT",

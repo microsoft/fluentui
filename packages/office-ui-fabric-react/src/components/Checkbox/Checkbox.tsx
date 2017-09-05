@@ -74,7 +74,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       defaultChecked,
       disabled,
       inputProps,
-      label,
       name,
       boxSide,
       theme,

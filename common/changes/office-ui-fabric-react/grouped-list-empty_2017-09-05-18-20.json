@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsHeader: Adjust sortIcon position",
-      "type": "patch"
+      "comment": "Allow rendering empty GroupedList headers",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-edwliu@microsoft.com"
+  "email": "spelliot@microsoft.com"
 }

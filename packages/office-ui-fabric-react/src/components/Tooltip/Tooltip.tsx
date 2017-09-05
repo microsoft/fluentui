@@ -33,7 +33,6 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   public render() {
     const {
       targetElement,
-      content,
       calloutProps,
       directionalHint,
       directionalHintForRTL,

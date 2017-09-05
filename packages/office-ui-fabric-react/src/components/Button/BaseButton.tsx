@@ -186,8 +186,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     let props = this.props;
     let {
-      baseClassName,
-      styles,
       menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
@@ -218,11 +216,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
     let {
-      baseClassName,
-      disabled,
-      iconProps,
-      styles,
-      checked
+      iconProps
        } = this.props;
 
     if (iconProps) {
@@ -238,8 +232,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderText(): JSX.Element | null {
     let {
       children,
-      disabled,
-      styles,
       text
             } = this.props;
 
@@ -311,9 +303,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
     let {
-      baseClassName,
-      checked,
-      disabled,
       menuIconProps
        } = this.props;
 
