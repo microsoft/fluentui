@@ -116,7 +116,8 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     } = this.state;
 
     const nativeProps = getNativeProps(this.props, inputProperties);
-    return <input { ...nativeProps}
+    return <input
+      { ...nativeProps}
       ref={ this._resolveRef('_inputElement') }
       value={ displayValue }
       autoCapitalize={ 'off' }
