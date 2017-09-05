@@ -282,7 +282,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
           <div style={ contextMenuStyle } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
-            { title ? <div className={ classNames.title } role='heading' aria-level={ 1 }> { title } </div> : (undefined) }
+            { title && <div className={ classNames.title } role='heading' aria-level={ 1 }> { title } </div> }
             { (items && items.length) ? (
               <FocusZone
                 className={ css('ms-ContextualMenu is-open', styles.root) }
