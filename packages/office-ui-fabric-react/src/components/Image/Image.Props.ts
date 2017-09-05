@@ -30,11 +30,6 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
 
   /**
-   * Specifies alternative text for an image.
-   */
-  alt?: string;
-
-  /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
    * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the
