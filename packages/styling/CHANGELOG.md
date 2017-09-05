@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 0.22.1
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Icons: Added textDocument back into the icon list
 
 ## 0.22.0
 Fri, 01 Sep 2017 16:51:57 GMT
