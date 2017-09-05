@@ -13,8 +13,8 @@ import {
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
-const leftArrow: string = 'ChevronLeft';
-const rightArrow: string = 'ChevronRight';
+const leftArrow: string = 'Up';
+const rightArrow: string = 'Down';
 let iconStrings: ICalendarIconStrings = {
   leftNavigation: leftArrow,
   rightNavigation: rightArrow
@@ -119,7 +119,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
-    let showSmallMonthPicker = (isMonthPickerVisible && isDayPickerVisible) || (showMonthPickerAsOverlay && isMonthPickerVisible);
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
@@ -128,9 +127,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          showSmallMonthPicker && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible),
-          isMonthPickerVisible && !isDayPickerVisible && !showMonthPickerAsOverlay && ('is-onlymonthPickerVisible ' + styles.pickerOnlyMonthPickerVisible),
-          showMonthPickerAsOverlay && styles.overlayedCalendars,
+          isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
+          isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
         ) } >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
@@ -277,7 +275,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
-    if (this.props.onDismiss != null) {
+    if (this.props.onDismiss) {
       this.props.onDismiss();
     }
   }

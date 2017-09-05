@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 31 Aug 2017 15:41:56 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 4.2.7
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Update fabric-dependency version
+
+## 4.2.6
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Patches
+
+- Persist RTL setting between page refreshes
 
 ## 4.2.5
 Thu, 31 Aug 2017 15:41:56 GMT

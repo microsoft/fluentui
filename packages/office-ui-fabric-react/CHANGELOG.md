@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 31 Aug 2017 15:41:56 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 4.40.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Updating Calendar component styles to match new OWA calendar styles for the Calendar team.
+
+### Patches
+
+- Check: Fixed Chrome-specific alignment for the checkmark within the circle.
+- Slider: adding `vertical` property to render as a vertical slider.
+- DetailsHeader: Adjust sortIcon position
+
+## 4.39.0
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Minor changes
+
+- Calendar: Adding option to add date formatting to calendar
+
+### Patches
+
+- Respect ths isHeader property on the ResizeGroup demo page
+- BaseButton: Put the right classname on the menu icon
+- Add FullWidth icon.
+- SwatchColorPicker: Fixed so it will deselect the current items if there is a selected id passed in that does not exist in the color list
 
 ## 4.38.0
 Thu, 31 Aug 2017 15:41:56 GMT

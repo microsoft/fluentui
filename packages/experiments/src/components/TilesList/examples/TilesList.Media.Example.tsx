@@ -4,12 +4,16 @@ import {
   TilesList,
   ITileSize
 } from '../../TilesList';
-import { Tile } from '../../../Tile';
+import { Tile, getTileLayout, renderTileWithLayout } from '../../../Tile';
 import { Selection, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { IExampleGroup, IExampleItem, createGroup, createMediaItems, getTileCells } from './ExampleHelpers';
+import * as TilesListExampleStylesModule from './TilesList.Example.scss';
+
+// tslint:disable-next-line:no-any
+const TilesListExampleStyles = TilesListExampleStylesModule as any;
 
 function createGroups(): IExampleGroup[] {
   let offset = 0;
@@ -80,24 +84,35 @@ export class TilesListMediaExample extends React.Component<{}, {}> {
 
   @autobind
   private _onRenderMediaCell(item: IExampleItem, finalSize: ITileSize): JSX.Element {
-    return (
+    const tile = (
       <Tile
+        contentSize={ finalSize }
         className={ AnimationClassNames.fadeIn400 }
         selection={ this._selection }
         selectionIndex={ item.index }
         background={
-          <img
-            style={ { display: 'block' } }
-            src={
-              `//placehold.it/${Math.round(finalSize.width)}x${Math.round(finalSize.height)}`
-            }
-          />
+          <span /> // Placeholder
         }
         showBackgroundFrame={ true }
         itemName={ item.name }
         itemActivity={ item.key }
       />
     );
+
+    const {
+      backgroundSize = { width: 0, height: 0 }
+    } = getTileLayout(tile);
+
+    return renderTileWithLayout(tile, {
+      background: (
+        <img
+          className={ TilesListExampleStyles.tileImage }
+          src={
+            `//placehold.it/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`
+          }
+        />
+      )
+    });
   }
 
   @autobind
