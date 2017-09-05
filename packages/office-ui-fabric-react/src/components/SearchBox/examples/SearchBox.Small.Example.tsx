@@ -10,7 +10,7 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox
           onEscape={ (ev, onClear) => {
-            console.log('hi there');
+            console.log(ev);
             onClear ? onClear(ev) : null;
           } }
           onChange={ (newValue) => console.log('SearchBox onChange fired: ' + newValue) }
