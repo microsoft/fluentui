@@ -49,6 +49,8 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
             expandingCardProps={ this.props.expandingCardProps }
             target={ this.state.contentRendered }
             cardDismissDelay={ 300 }
+            onCardVisible={ () => console.log('onCardVisible') }
+            onCardHide={ () => console.log('onCardHide') }
           />
         }
       </div>
@@ -91,7 +93,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
       renderData: item,
-      directionalHint: DirectionalHint.rightCenter,
+      directionalHint: DirectionalHint.rightTopEdge,
       gapSpace: 16
     };
 
