@@ -16,16 +16,18 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
 
     return (
       <div className={ css('ms-Spinner', styles.root, className) }>
-        <div className={ css('ms-Spinner-circle', styles.circle,
-          {
-            ['ms-Spinner--xSmall ' + styles.circleIsXSmall]: size === SpinnerSize.xSmall,
-            ['ms-Spinner--small ' + styles.circleIsSmall]: size === SpinnerSize.small,
-            ['ms-Spinner--medium ' + styles.circleIsMedium]: size === SpinnerSize.medium,
-            ['ms-Spinner--large ' + styles.circleIsLarge]: size === SpinnerSize.large,
-            ['ms-Spinner--normal ' + styles.circleIsTypeMedium]: type === SpinnerType.normal, // TODO remove deprecated value at >= 2.0.0
-            ['ms-Spinner--large ' + styles.circleIsTypeLarge]: type === SpinnerType.large // TODO remove deprecated value at >= 2.0.0
-          })
-        }>
+        <div
+          className={ css('ms-Spinner-circle', styles.circle,
+            {
+              ['ms-Spinner--xSmall ' + styles.circleIsXSmall]: size === SpinnerSize.xSmall,
+              ['ms-Spinner--small ' + styles.circleIsSmall]: size === SpinnerSize.small,
+              ['ms-Spinner--medium ' + styles.circleIsMedium]: size === SpinnerSize.medium,
+              ['ms-Spinner--large ' + styles.circleIsLarge]: size === SpinnerSize.large,
+              ['ms-Spinner--normal ' + styles.circleIsTypeMedium]: type === SpinnerType.normal, // TODO remove deprecated value at >= 2.0.0
+              ['ms-Spinner--large ' + styles.circleIsTypeLarge]: type === SpinnerType.large // TODO remove deprecated value at >= 2.0.0
+            })
+          }
+        >
         </div>
         {
           label && <div className={ css('ms-Spinner-label', styles.label) }>{ label }</div>

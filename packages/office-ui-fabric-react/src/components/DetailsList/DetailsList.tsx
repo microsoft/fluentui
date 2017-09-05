@@ -267,12 +267,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
-        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
-        <div role='grid'
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }
+      >
+        <div
+          role='grid'
           aria-label={ ariaLabelForGrid }
           aria-rowcount={ (isHeaderVisible ? 1 : 0) + (items ? items.length : 0) }
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
-          aria-readonly='true'>
+          aria-readonly='true'
+        >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && onRenderDetailsHeader({
               componentRef: this._resolveRef('_header'),
