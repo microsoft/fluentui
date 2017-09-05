@@ -233,7 +233,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   @autobind
   private _onGotoToday() {
 
-    let { onSelectDate, dateRangeType, firstDayOfWeek, today } = this.props;
+    let { dateRangeType, firstDayOfWeek, today } = this.props;
 
     let dates = getDateRangeArray(today!, dateRangeType!, firstDayOfWeek!);
 

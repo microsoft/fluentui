@@ -85,7 +85,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   public componentDidUpdate() {
     let value = this._value;
     let {
-      defaultVisibleValue,
       suggestedDisplayValue,
       shouldSelectFullInputValueInComponentDidUpdate
     } = this.props;
