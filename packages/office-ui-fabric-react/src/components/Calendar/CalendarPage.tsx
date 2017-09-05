@@ -8,7 +8,6 @@ import {
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
@@ -24,8 +23,16 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
                 showGoToToday={ false } />
             </ExampleCard>
+            <ExampleCard title='Inline Calendar with overlayed month picker when header is clicked' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample showMonthPickerAsOverlay={ true } highlightCurrentMonth={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+                showGoToToday={ false } />
+            </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+                showGoToToday={ false } />
+            </ExampleCard>
+            <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } highlightCurrentMonth={ true }
                 showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>

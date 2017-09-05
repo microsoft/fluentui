@@ -14,7 +14,7 @@ module.exports = resources.createConfig(
 
     output: {
       libraryTarget: 'var',
-      library: 'Fabric'
+      library: 'FabricExperiments'
     },
 
     externals: [

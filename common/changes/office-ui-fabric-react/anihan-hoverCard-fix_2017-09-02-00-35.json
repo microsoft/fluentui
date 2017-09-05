@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Respect ths isHeader property on the ResizeGroup demo page",
+      "comment": "HoverCard: Support change in expanded card height. Add callbacks upon card visible/hide",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "anihan@microsoft.com"
 }
