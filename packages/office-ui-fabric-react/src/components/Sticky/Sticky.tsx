@@ -40,10 +40,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public context: {
     scrollablePane: {
       subscribe: (handler: Function) => void;
+      unsubscribe: (handler: Function) => void;
       addStickyHeader: (sticky: Sticky) => void;
       removeStickyHeader: (sticky: Sticky) => void;
       addStickyFooter: (sticky: Sticky) => void;
       removeStickyFooter: (sticky: Sticky) => void;
+      notifySubscribers: (sort?: boolean) => void;
     }
   };
 
@@ -69,6 +71,23 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.content.style.background = this._getBackground();
     ReactDOM.render(<div>{ this.props.children }</div>, this.content);
     this.refs.root.appendChild(this.content);
+    this.context.scrollablePane.notifySubscribers(true);
+  }
+
+  public componentWillUnmount() {
+    const { isStickyTop, isStickyBottom } = this.state;
+    const { scrollablePane } = this.context;
+    if (isStickyTop) {
+      this._resetSticky(() => {
+        scrollablePane.removeStickyHeader(this);
+      });
+    }
+    if (isStickyBottom) {
+      this._resetSticky(() => {
+        scrollablePane.removeStickyFooter(this);
+      });
+    }
+    scrollablePane.unsubscribe(this._onScrollEvent);
   }
 
   public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState) {
@@ -135,6 +154,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       isStickyBottom: canStickyFooter && ((!isStickyBottom && bottom >= footerBound.top) || (isStickyBottom && top > footerBound.top))
     });
   }
+
   private _setSticky(callback: () => void) {
     if (this.content.parentElement) {
       this.content.parentElement.removeChild(this.content);

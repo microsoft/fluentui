@@ -1,3 +1,3 @@
 require('./tasks/jest')({
-  'args': '--watch'
+  'args': '--watch -i'
 });;
