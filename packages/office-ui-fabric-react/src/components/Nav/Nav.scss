@@ -103,6 +103,10 @@ $linkRightPadding: 20px;
   display: block;
   position: relative;
 
+  & button {
+    width: 100%;
+  }
+
   .chevronButton.chevronButtonLink {
     display: block;
     width: $hasExpandButtonLinkLeftPadding - 2;
@@ -120,7 +124,7 @@ $linkRightPadding: 20px;
   }
 
   & a {
-  color: $unselectedForegroundColor;
+    color: $unselectedForegroundColor;
   }
   color: $unselectedForegroundColor;
   background: $unselectedBackgroundColor;
@@ -128,6 +132,7 @@ $linkRightPadding: 20px;
   &:hover {
 
     & a,
+    & button,
     & .chevronButton {
       background: $unselectedHoverBackgroundColor;
       color: $unselectedHoverForegroundColor;
@@ -142,6 +147,7 @@ $linkRightPadding: 20px;
 
   &.compositeLinkIsSelected {
     & a,
+    & button,
     & .chevronButton {
 
       color: $ms-color-themePrimary;
@@ -194,6 +200,13 @@ $linkRightPadding: 20px;
   }
 
   &.linkIsOnExpanded {
-  @include ms-padding-left($hasExpandButtonLinkLeftPadding);
+    @include ms-padding-left($hasExpandButtonLinkLeftPadding);
+  }
+
+}
+
+.root .commandButtonNoIcon {
+  & span {
+    margin: 0;
   }
 }

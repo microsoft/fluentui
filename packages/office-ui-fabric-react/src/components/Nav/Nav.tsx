@@ -156,16 +156,22 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     );
   }
 
-  private _renderButtonLink(link: INavLink, linkIndex: number) {
-    return (
+  private _renderButtonLink(link: INavLink, linkIndex: number, nestingLevel: number) {
+    const isRtl: boolean = getRTL();
+    const paddingBefore = _indentationSize * nestingLevel +
+      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
+
+      return (
       <CommandButton
         className={ css(
           'ms-Nav-link ms-Nav-linkButton',
           styles.link,
-          this._hasExpandButton && 'isOnExpanded ' + styles.linkIsOnExpanded
+          this._hasExpandButton && 'isOnExpanded ' + styles.linkIsOnExpanded,
+          !link.icon && styles.commandButtonNoIcon
         ) }
+        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore + 'px'} }
         href={ link.url }
-        iconProps={ { iconName: link.icon } }
+        iconProps={ link.icon  ? { iconName: link.icon } : undefined }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
         { link.name }
@@ -202,7 +208,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           </button> : null
         ) }
         { link.onClick && !link.forceAnchor
-          ? this._renderButtonLink(link, linkIndex)
+          ? this._renderButtonLink(link, linkIndex, nestingLevel)
           : this._renderAnchorLink(link, linkIndex, nestingLevel) }
       </div>
     );
