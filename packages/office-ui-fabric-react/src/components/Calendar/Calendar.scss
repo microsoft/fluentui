@@ -448,10 +448,11 @@ $Calendar-dayPicker-margin: 10px;
     .weekNumbers{
       margin-top: $Calendar-day;
       width: 26px;
+      margin-left: -7px
     }
     .table{
       &:not(.weekNumbers){
-        margin-left: 26px;
+        margin-left: 19px;
       }
       .day, .weekday{
         width: 26px;

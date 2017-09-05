@@ -109,7 +109,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
+      <div className={ css(
+        'ms-DatePicker-dayPicker',
+        styles.dayPicker,
+        showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+      ) } id={ dayPickerId }>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
