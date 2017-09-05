@@ -672,7 +672,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
 
   /** Build up the pages that should be rendered. */
   private _buildPages(props: IListProps): IListState {
-    let { items, startIndex, renderCount } = props;
+    let { items, startIndex, renderCount, getPageHeight } = props;
 
     renderCount = this._getRenderCount(props);
 
@@ -689,7 +689,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
     // However if the user provides a measure function, let's just assume they know the right heights.
-    let isFirstRender = this._estimatedPageHeight === 0 && !this.props.getPageHeight;
+    let isFirstRender = this._estimatedPageHeight === 0 && !getPageHeight;
 
     const allowedRect = this._allowedRect;
 
