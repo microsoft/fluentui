@@ -10,7 +10,6 @@ import {
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { lorem } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';

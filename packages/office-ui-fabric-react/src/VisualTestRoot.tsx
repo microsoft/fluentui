@@ -9,7 +9,6 @@ import { setBaseUrl } from './Utilities';
 setBaseUrl('./dist/');
 
 let rootElement: HTMLElement;
-let currentBreakpoint;
 let scrollDistance: number;
 let requireContext = require.context('./components', true, /Page.visualtest$/);
 
