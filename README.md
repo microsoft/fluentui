@@ -9,20 +9,20 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ## Contents
 
-- [View the docs](#view-the-docs)
-- [Get started](#get-started)
-- [Testing](#testing)
-- [Advanced usage](#advanced-usage)
+- [Using Fabric React](#using-fabric-react)
 - [Browser support](#browser-support)
+- [Server-side rendering](#server-side-rendering)
+- [Advanced usage](#advanced-usage)
 - [Contribute to Fabric React](#contribute-to-fabric-react)
+- [Building the repo](#building-the-repo)
+- [Testing](#testing)
+- [Advanced building tips](#advanced-building-tips)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 
-### Using Fabric-react
+### Using Fabric React
 
 [Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
-
-### Integrate into an existing project
 
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
@@ -46,7 +46,11 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
 
-## Rendering Fabric components on the server (SSR)
+## Browser support
+
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
+
+## Server-side rendering
 
 If you need to render Fabric components on the server side in a node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
 
@@ -85,11 +89,6 @@ Note: we are evaluating a more robust theming and style loading approach, which 
 ## Advanced usage
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
-
-## Browser support
-
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
-
 
 ## Contribute to Fabric React
 
