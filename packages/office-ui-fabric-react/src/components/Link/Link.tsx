@@ -16,8 +16,6 @@ interface IMyScreen extends Screen {
   top: number;
 }
 
-declare var screen: IMyScreen;
-
 export class Link extends BaseComponent<ILinkProps, any> implements ILink {
   private _link: HTMLElement;
 
