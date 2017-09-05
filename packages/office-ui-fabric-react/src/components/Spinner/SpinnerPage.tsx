@@ -7,7 +7,7 @@ import {
   ComponentStatus
 } from '@uifabric/example-app-base';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;
 
@@ -66,7 +66,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.Spinner}>
           </ComponentStatus>
         }>
       </ComponentPage>

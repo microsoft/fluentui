@@ -7,7 +7,7 @@ import {
   ComponentStatus
 } from '@uifabric/example-app-base';
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
 
@@ -66,7 +66,7 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.MessageBar}>
           </ComponentStatus>
         }>
       </ComponentPage>

@@ -7,7 +7,7 @@ import {
   ComponentStatus
 } from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 
@@ -77,7 +77,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.Checkbox}>
           </ComponentStatus>
         }>
       </ComponentPage>

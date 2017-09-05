@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
@@ -67,7 +67,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.Dropdown}>
           </ComponentStatus>
         }>
       </ComponentPage>

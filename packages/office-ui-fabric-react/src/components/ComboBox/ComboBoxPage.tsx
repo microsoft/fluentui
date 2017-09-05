@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ComboBoxBasicExample } from './examples/ComboBox.Basic.Example';
 import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
 const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.CustomStyled.Example.tsx') as string;
@@ -64,7 +64,7 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.ComboBox}>
           </ComponentStatus>
         }>
       </ComponentPage>

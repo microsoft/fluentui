@@ -17,7 +17,7 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 import './examples/Button.Basic.Example.scss';
 import { Link } from '../../Link';
 

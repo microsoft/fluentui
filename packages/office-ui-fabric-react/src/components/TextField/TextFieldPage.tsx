@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
@@ -81,7 +81,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.TextField}>
           </ComponentStatus>
         }>
       </ComponentPage>

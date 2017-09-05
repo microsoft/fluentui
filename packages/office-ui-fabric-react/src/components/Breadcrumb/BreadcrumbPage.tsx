@@ -6,7 +6,7 @@ import {
   PropertiesTableSet,
   ComponentStatus
 } from '@uifabric/example-app-base';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
@@ -74,7 +74,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.Breadcrumb}>
           </ComponentStatus>
         }>
       </ComponentPage>

@@ -9,7 +9,7 @@ import {
 } from '@uifabric/example-app-base';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 import './HoverCardPage.scss';
 
@@ -48,7 +48,7 @@ export class HoverCardPage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.HoverCard}>
           </ComponentStatus>
         } />
     );

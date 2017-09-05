@@ -1,0 +1,12 @@
+@import '../../common/common';
+
+:global {
+
+  .componentList {
+    list-style-type: none;
+  }
+
+  .componentListItem {
+    border-bottom: 1px solid black;
+  }
+}

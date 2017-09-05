@@ -36,12 +36,6 @@ export const AppState: IAppState = {
       component: require<any>('../../pages/GetStarted/GetStartedPage').GetStartedPage,
     },
     {
-      title: 'Component Status',
-      url: '#/component-status',
-      className: 'fabricPage',
-      component: require<any>('../../pages/ComponentStatus/ComponentStatusPage').ComponentStatusPage
-    },
-    {
       title: 'Styles',
       url: '#/styles',
       className: 'stylesPage',

@@ -10,7 +10,7 @@ import {
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const TeachingBubbleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
 const TeachingBubbleCondensedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
@@ -50,7 +50,7 @@ export class TeachingBubblePage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.TeachingBubble}>
           </ComponentStatus>
         } />
     );

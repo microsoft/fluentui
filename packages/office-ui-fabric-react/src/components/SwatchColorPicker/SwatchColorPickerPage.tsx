@@ -7,7 +7,7 @@ import {
   ComponentStatus
 } from '@uifabric/example-app-base';
 import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const SwatchColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 
@@ -57,7 +57,7 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.SwatchColorPicker}>
           </ComponentStatus>
         }>
       </ComponentPage>

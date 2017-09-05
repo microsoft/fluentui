@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
-import { ComponentStatusState } from '../ComponentStatusState';
+import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const OverlayLightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Light.Example.tsx') as string;
 const OverlayDarkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Dark.Example.tsx') as string;
@@ -67,7 +67,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Button}>
+            {...ComponentStatusState.Overlay}>
           </ComponentStatus>
         }>
       </ComponentPage>
