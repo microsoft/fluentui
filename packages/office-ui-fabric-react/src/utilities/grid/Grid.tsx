@@ -44,20 +44,23 @@ export class Grid extends BaseComponent<IGridProps, {}> {
           role={ 'grid' }
           aria-posinset={ positionInSet }
           aria-setsize={ setSize }
-          style={ { padding: '2px', outline: 'none' } }>
+          style={ { padding: '2px', outline: 'none' } }
+        >
           <tbody>
             {
               rowsOfItems.map((rows: any[], rowIndex) => {
                 return (
                   <tr
                     role={ 'row' }
-                    key={ this._id + '-' + rowIndex + '-row' }>
+                    key={ this._id + '-' + rowIndex + '-row' }
+                  >
                     { rows.map((cell) => {
                       return (
                         <td
                           role={ 'presentation' }
                           key={ this._id + '-' + cell.index + '-cell' }
-                          style={ { padding: '0px' } }>
+                          style={ { padding: '0px' } }
+                        >
                           { onRenderItem(cell, cell.index) }
                         </td>
                       );

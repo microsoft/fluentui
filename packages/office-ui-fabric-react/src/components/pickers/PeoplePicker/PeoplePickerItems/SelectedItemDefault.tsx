@@ -32,10 +32,12 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       data-is-sub-focuszone={ true }
       data-selection-index={ index }
       role={ 'listitem' }
-      aria-labelledby={ 'selectedItemPersona-' + itemId } >
+      aria-labelledby={ 'selectedItemPersona-' + itemId }
+    >
       <div
         className={ css('ms-PickerItem-content', styles.itemContent) }
-        id={ 'selectedItemPersona-' + itemId } >
+        id={ 'selectedItemPersona-' + itemId }
+      >
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
