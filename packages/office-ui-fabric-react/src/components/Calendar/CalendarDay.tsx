@@ -94,11 +94,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-<<<<<<< HEAD
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, dateTimeFormatter } = this.props;
-=======
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate, dateTimeFormatter } = this.props;
->>>>>>> master
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
@@ -113,21 +109,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return (
-<<<<<<< HEAD
-      <div className={ css(
-        'ms-DatePicker-dayPicker',
-        styles.dayPicker,
-        showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
-
-      ) } id={ dayPickerId }>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-monthAndYear', styles.month) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
-          </div>
-        </div>
-=======
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
->>>>>>> master
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
