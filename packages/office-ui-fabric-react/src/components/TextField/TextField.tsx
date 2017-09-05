@@ -278,7 +278,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _getTextElementClassName(): string {
-    const errorMessage = this._errorMessage;
     let textFieldClassName: string;
 
     if (this.props.multiline && !this.props.resizable) {

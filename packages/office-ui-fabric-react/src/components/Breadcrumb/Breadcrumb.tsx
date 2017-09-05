@@ -31,8 +31,6 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
     maxDisplayedItems: 999
   };
 
-  private _id: string;
-
   constructor(props: IBreadcrumbProps) {
     super(props);
   }
@@ -69,7 +67,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
 
   @autobind
   private _onRenderBreadcrumb(data: IBreadCrumbData) {
-    let { className, ariaLabel, items, onRenderItem = this._onRenderItem } = data.props;
+    let { className, ariaLabel, onRenderItem = this._onRenderItem } = data.props;
     let { renderedOverflowItems, renderedItems } = data;
 
     let contextualItems = renderedOverflowItems.map(
