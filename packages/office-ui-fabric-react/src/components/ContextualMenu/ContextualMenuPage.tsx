@@ -34,7 +34,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             <ExampleCard title='ContextualMenu with beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
               <ContextualMenuDirectionalExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu wtih customization' code={ ContextualMenuCustomizationExampleCode }>
+            <ExampleCard title='ContextualMenu with customization' code={ ContextualMenuCustomizationExampleCode }>
               <ContextualMenuCustomizationExample />
             </ExampleCard>
             <ExampleCard title='ContextualMenu with header' code={ ContextualMenuHeaderExampleCode }>
