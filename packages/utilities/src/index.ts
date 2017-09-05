@@ -10,6 +10,7 @@ export * from './IDisposable';
 export * from './IPoint';
 export * from './IRectangle';
 export * from './IRenderFunction';
+export * from './ISize';
 export * from './KeyCodes';
 export * from './Rectangle';
 export * from './array';

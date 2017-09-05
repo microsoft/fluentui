@@ -6,7 +6,7 @@ import {
   getRTL,
   autobind
 } from '../../Utilities';
-import { ICalendarStrings, ICalendarIconStrings } from './Calendar.Props';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
@@ -22,6 +22,7 @@ export interface ICalendarMonthProps extends React.Props<CalendarMonth> {
   highlightCurrentMonth: boolean;
   onHeaderSelect?: (focus: boolean) => void;
   navigationIcons: ICalendarIconStrings;
+  dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
 export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
@@ -48,14 +49,12 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
   public render() {
 
-    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons } = this.props;
+    let { navigatedDate, strings, today, highlightCurrentMonth, navigationIcons, dateTimeFormatter } = this.props;
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
-        <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ navigatedDate.getFullYear() }</div>
           <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
             <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
               <span
@@ -78,19 +77,21 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               </span>
             </div>
           </div>
-          {
-            this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ strings.dayPickerAriaLabel }
-                role='button'
-                tabIndex={ 0 }
-              />
-              :
-              null
-          }
+          <div className={ css('ms-DatePicker-header', styles.header) }>
+            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
+            {
+              this.props.onHeaderSelect ?
+                <div
+                  className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
+                  onClick={ this._onHeaderSelect }
+                  onKeyDown={ this._onHeaderKeyDown }
+                  aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+                  role='button'
+                  tabIndex={ 0 }
+                />
+                :
+                null
+            }
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
@@ -101,12 +102,13 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
                     {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!)
+                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!),
+                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]: highlightCurrentMonth && (navigatedDate.getMonth() === index)
                     })
                 }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
-                aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
+                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 data-is-focusable={ true }
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >

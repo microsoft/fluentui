@@ -58,14 +58,6 @@ enum VerticalAlignmentHint {
   bottom
 }
 
-interface IMenuSizeWindowSizeInfo {
-  hostRect: IRect;
-  targetRect: IRect;
-  menuRect: IRect;
-  windowSize: any;
-  gapSpace: number;
-}
-
 interface IRect {
   left: number;
   top: number;
@@ -73,12 +65,6 @@ interface IRect {
   bottom: number;
   width: number;
   height: number;
-}
-
-interface IParsedDirectionalHint {
-  contextualMenuType: ContextualMenuType;
-  horizontalAlignmentHint: HorizontalAlignmentHint;
-  verticalAlignmentHint: VerticalAlignmentHint;
 }
 
 export function hasSubmenuItems(item: IContextualMenuItem) {

@@ -1,7 +1,5 @@
 import { EventGroup } from './EventGroup';
 
-let { expect } = chai;
-
 describe('EventGroup', () => {
   it('can observe an HTML element event', () => {
     let timesCalled = 0;
@@ -18,15 +16,15 @@ describe('EventGroup', () => {
     ev.initEvent('click', true, true);
 
     sourceButton.dispatchEvent(ev);
-    expect(timesCalled).to.equal(1);
+    expect(timesCalled).toEqual(1);
 
     sourceButton.dispatchEvent(ev);
-    expect(timesCalled).to.equal(2);
+    expect(timesCalled).toEqual(2);
 
     eg.dispose();
 
     sourceButton.dispatchEvent(ev);
-    expect(timesCalled).to.equal(2);
+    expect(timesCalled).toEqual(2);
   });
 
   it('can observe an object event', () => {
@@ -43,26 +41,26 @@ describe('EventGroup', () => {
 
     sourceEvents.declare(['foo', 'bar']);
 
-    expect(EventGroup.isDeclared(sourceObject, 'foo')).to.equal(true);
-    expect(EventGroup.isDeclared(sourceObject, 'bar')).to.equal(true);
-    expect(EventGroup.isDeclared(sourceObject, 'baz')).to.equal(false);
+    expect(EventGroup.isDeclared(sourceObject, 'foo')).toEqual(true);
+    expect(EventGroup.isDeclared(sourceObject, 'bar')).toEqual(true);
+    expect(EventGroup.isDeclared(sourceObject, 'baz')).toEqual(false);
 
     parentEvents.on(sourceObject, 'foo, bar', parent.cb);
 
-    expect(EventGroup.isObserved(sourceObject, 'foo')).to.equal(true);
-    expect(EventGroup.isObserved(sourceObject, 'bar')).to.equal(true);
-    expect(EventGroup.isObserved(sourceObject, 'baz')).to.equal(false);
+    expect(EventGroup.isObserved(sourceObject, 'foo')).toEqual(true);
+    expect(EventGroup.isObserved(sourceObject, 'bar')).toEqual(true);
+    expect(EventGroup.isObserved(sourceObject, 'baz')).toEqual(false);
 
     sourceEvents.raise('foo');
-    expect(timesCalled).to.equal(1);
+    expect(timesCalled).toEqual(1);
 
     sourceEvents.raise('bar');
-    expect(timesCalled).to.equal(2);
+    expect(timesCalled).toEqual(2);
 
     parentEvents.dispose();
 
     sourceEvents.raise('thing');
-    expect(timesCalled).to.equal(2);
+    expect(timesCalled).toEqual(2);
   });
 
   it('can bubble object events', () => {
@@ -99,17 +97,17 @@ describe('EventGroup', () => {
     // bubble up to the root.
     grandChildEvents.raise('foo', null, true);
 
-    expect(rootCalled).to.equal(1);
-    expect(childCalled).to.equal(1);
-    expect(grandChildCalled).to.equal(1);
+    expect(rootCalled).toEqual(1);
+    expect(childCalled).toEqual(1);
+    expect(grandChildCalled).toEqual(1);
 
     // cancel at the child.
     childResponse = false;
     grandChildEvents.raise('foo', null, true);
 
-    expect(rootCalled).to.equal(1);
-    expect(childCalled).to.equal(2);
-    expect(grandChildCalled).to.equal(2);
+    expect(rootCalled).toEqual(1);
+    expect(childCalled).toEqual(2);
+    expect(grandChildCalled).toEqual(2);
 
     // dispose all.
     rootEvents.dispose();
@@ -118,9 +116,9 @@ describe('EventGroup', () => {
 
     grandChildEvents.raise('foo', null, true);
 
-    expect(rootCalled).to.equal(1);
-    expect(childCalled).to.equal(2);
-    expect(grandChildCalled).to.equal(2);
+    expect(rootCalled).toEqual(1);
+    expect(childCalled).toEqual(2);
+    expect(grandChildCalled).toEqual(2);
   });
 
   it('can cancelBubble/preventDefault if false is returned on an element event callback', () => {
@@ -156,21 +154,21 @@ describe('EventGroup', () => {
       grandChildButton.dispatchEvent(ev);
 
       // verify we bubble.
-      expect(childCalled).to.equal(1, 'child not 1');
-      expect(rootCalled).to.equal(1);
+      expect(childCalled).toEqual(1);
+      expect(rootCalled).toEqual(1);
 
       // now return false at the child, shouldn't hit root.
       childResponse = false;
       grandChildButton.dispatchEvent(ev);
-      expect(childCalled).to.equal(2);
-      expect(rootCalled).to.equal(1);
+      expect(childCalled).toEqual(2);
+      expect(rootCalled).toEqual(1);
 
       parentEvents.dispose();
 
       grandChildButton.dispatchEvent(ev);
 
-      expect(childCalled).to.equal(2);
-      expect(rootCalled).to.equal(1);
+      expect(childCalled).toEqual(2);
+      expect(rootCalled).toEqual(1);
     } finally {
       document.body.removeChild(rootDiv);
 
@@ -197,39 +195,39 @@ describe('EventGroup', () => {
     parentEvents.on(sourceObject, 'foo', parent.cb2);
 
     sourceEvents.raise('foo');
-    expect(cb1Called).to.equal(1);
-    expect(cb1Called).to.equal(1);
+    expect(cb1Called).toEqual(1);
+    expect(cb1Called).toEqual(1);
 
     // remove one.
     parentEvents.off(sourceObject, 'foo', parent.cb1);
     sourceEvents.raise('foo');
-    expect(cb1Called).to.equal(1);
-    expect(cb2Called).to.equal(2);
+    expect(cb1Called).toEqual(1);
+    expect(cb2Called).toEqual(2);
 
     // attach it again.
     parentEvents.on(sourceObject, 'foo', parent.cb1);
     sourceEvents.raise('foo');
-    expect(cb1Called).to.equal(2);
-    expect(cb2Called).to.equal(3);
+    expect(cb1Called).toEqual(2);
+    expect(cb2Called).toEqual(3);
 
     // detatch both based on event name.
     parentEvents.off(sourceObject, 'foo');
     sourceEvents.raise('foo');
-    expect(cb1Called).to.equal(2);
-    expect(cb2Called).to.equal(3);
+    expect(cb1Called).toEqual(2);
+    expect(cb2Called).toEqual(3);
 
     // attach it again.
     parentEvents.on(sourceObject, 'foo', parent.cb1);
     parentEvents.on(sourceObject, 'foo', parent.cb2);
     sourceEvents.raise('foo');
-    expect(cb1Called).to.equal(3);
-    expect(cb2Called).to.equal(4);
+    expect(cb1Called).toEqual(3);
+    expect(cb2Called).toEqual(4);
 
     // detach based on object.
     parentEvents.off(sourceObject);
     sourceEvents.raise('foo');
-    expect(cb1Called).to.equal(3);
-    expect(cb2Called).to.equal(4);
+    expect(cb1Called).toEqual(3);
+    expect(cb2Called).toEqual(4);
   });
 
   it('can raise custom html events', () => {
@@ -246,14 +244,14 @@ describe('EventGroup', () => {
 
     EventGroup.raise(sourceButton, 'foobar');
 
-    expect(timesCalled).to.equal(1);
+    expect(timesCalled).toEqual(1);
 
     EventGroup.raise(sourceButton, 'foobar');
-    expect(timesCalled).to.equal(2);
+    expect(timesCalled).toEqual(2);
 
     eg.dispose();
 
     EventGroup.raise(sourceButton, 'foobar');
-    expect(timesCalled).to.equal(2);
+    expect(timesCalled).toEqual(2);
   });
 });

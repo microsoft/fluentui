@@ -109,9 +109,9 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
   @autobind
   private _onRenderExpandedCard(): JSX.Element {
-    // firstFrameRendered helps in initially setting height of expanded card to 0, even if
+    // firstFrameRendered helps in initially setting height of expanded card to 1px, even if
     // mode prop is set to ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
-    this._async.requestAnimationFrame(() => {
+    !this.state.firstFrameRendered && this._async.requestAnimationFrame(() => {
       this.setState({
         firstFrameRendered: true
       });
