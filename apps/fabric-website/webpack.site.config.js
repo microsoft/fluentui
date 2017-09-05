@@ -35,14 +35,14 @@ function createConfig(isProduction, publicPath) {
   let webpackConfig = {
 
     entry: {
-      'fabric-site': './lib/root.js'
+      'fabric-sitev5': './lib/root.js'
     },
 
     output: {
       path: path.join(__dirname, '/dist'),
       publicPath: publicPath,
       filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `fabric-site-${version}-[name]${minFileNamePart}.js`
+      chunkFilename: `fabric-sitev5-${version}-[name]${minFileNamePart}.js`
     },
 
     devServer: {
