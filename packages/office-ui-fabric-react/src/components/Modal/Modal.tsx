@@ -94,7 +94,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
       titleAriaId,
       subtitleAriaId,
     } = this.props;
-    let { id, isOpen, isVisible } = this.state;
+    let { isOpen, isVisible } = this.state;
 
     const modalClassName = css(
       'ms-Modal',

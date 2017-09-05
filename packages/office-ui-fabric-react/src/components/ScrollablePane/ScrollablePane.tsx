@@ -179,7 +179,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   @autobind
   private _setPlaceholderHeights(stickies: Sticky[], element: HTMLElement) {
-    const { stickyAbove, stickyBelow } = this.refs;
     stickies.forEach((sticky, idx) => {
       sticky.setPlaceholderHeight(element.children[idx].clientHeight);
     });

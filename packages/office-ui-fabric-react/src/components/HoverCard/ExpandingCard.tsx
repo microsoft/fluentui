@@ -7,8 +7,7 @@ import {
   getNativeProps,
   divProperties,
   customizable,
-  autobind,
-  getRTL
+  autobind
 } from '../../Utilities';
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
@@ -32,6 +31,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   };
 
   private _styles: IExpandingCardStyles;
+  // tslint:disable-next-line:no-unused-variable
   private _callout: ICallout;
   private _expandedElem: HTMLDivElement;
 
@@ -59,11 +59,8 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   public render() {
     const {
       targetElement,
-      id,
       theme,
       styles: customStyles,
-      onRenderCompactCard,
-      onRenderExpandedCard,
       compactCardHeight,
       expandedCardHeight
     } = this.props;
@@ -133,6 +130,7 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   @autobind
+  // tslint:disable-next-line:no-unused-variable
   private _checkNeedsScroll(): void {
     if (this._expandedElem) {
       this._async.requestAnimationFrame(() => {

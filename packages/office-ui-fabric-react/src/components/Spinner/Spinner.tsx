@@ -32,7 +32,7 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
         }
         {
           statusMessage &&
-          <div role='status' aria-live={ this.props.ariaLive }>
+          <div role='status' aria-live={ ariaLive }>
             <DelayedRender>
               <div className={ styles.screenReaderOnly }>{ statusMessage }</div>
             </DelayedRender>

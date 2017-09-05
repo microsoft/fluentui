@@ -6,7 +6,6 @@ import {
 } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGridProps } from './Grid.Props';
-import { GridCell } from './GridCell';
 
 export class Grid extends BaseComponent<IGridProps, {}> {
 
@@ -23,10 +22,7 @@ export class Grid extends BaseComponent<IGridProps, {}> {
       columnCount,
       onRenderItem,
       positionInSet,
-      setSize,
-      shouldFocusCircularNavigate,
-      containerClassName,
-      onBlur
+      setSize
     } = this.props;
 
     // Array to store the cells in the correct row index
