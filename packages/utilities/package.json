@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "4.12.1",
+  "version": "4.13.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -11,24 +11,23 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "start-test": "node ../../scripts/start-test.js"
   },
+  "disabledTasks": [
+    "copy",
+    "karma",
+    "webpack"
+  ],
   "devDependencies": {
-    "@types/chai": "3.4.35",
+    "@types/jest": "20.0.8",
     "@types/enzyme": "2.8.0",
-    "@types/es6-promise": "^0.0.32",
-    "@types/es6-weak-map": "1.2.0",
-    "@types/mocha": "2.2.39",
     "@types/prop-types": "15.5.1",
     "@types/react": "15.0.38",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/sinon": "2.2.2",
-    "@types/webpack-env": "1.13.0",
     "enzyme": "^2.7.0",
-    "es6-promise": "^4.1.0",
-    "es6-weak-map": "^2.0.2",
-    "es6-map": "^0.1.5",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",

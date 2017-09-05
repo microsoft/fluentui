@@ -1,7 +1,5 @@
 import { assign, filteredAssign } from './object';
 
-let { assert, expect } = chai;
-
 describe('assign', () => {
   it('can copy an object', () => {
     let source = {
@@ -15,10 +13,9 @@ describe('assign', () => {
     let resultTarget = {};
     let result = assign(resultTarget, source);
 
-    assert(result !== source, 'result was same as source');
-    assert(result === resultTarget, 'target was not returned');
-
-    expect(result).to.eql(source, 'result did not equal source');
+    expect(result).not.toBe(source);
+    expect(result).toBe(resultTarget);
+    expect(result).toEqual(source);
   });
 });
 
@@ -30,7 +27,7 @@ describe('filteredAssign', () => {
     };
     let result = filteredAssign((propName: string) => propName !== 'b', {}, source);
 
-    expect(result.a).to.equal(1);
-    expect(result.b).to.equal(undefined, 'b was not excluded');
+    expect(result.a).toEqual(1);
+    expect(result.b).toBeUndefined();
   });
 });

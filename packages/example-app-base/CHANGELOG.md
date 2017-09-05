@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 4.2.7
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Update fabric-dependency version
 
 ## 4.2.6
 Fri, 01 Sep 2017 16:51:57 GMT

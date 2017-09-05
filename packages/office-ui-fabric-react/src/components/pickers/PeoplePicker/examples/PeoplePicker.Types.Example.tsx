@@ -274,7 +274,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           className={ 'ms-PeoplePicker' }
           key={ 'controlled' }
           selectedItems={ this.state.currentSelectedItems }
-          onChange={ this._onItemsChange.bind(this) }
+          onChange={ this._onItemsChange }
           inputProps={ {
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
@@ -296,6 +296,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
+  @autobind
   private _onItemsChange(items: any[]) {
     this.setState({
       currentSelectedItems: items

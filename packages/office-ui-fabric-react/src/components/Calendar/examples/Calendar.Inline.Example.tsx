@@ -102,7 +102,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     };
 
     let dateRangeString: string | null = null;
-    if (this.state.selectedDateRange != null) {
+    if (this.state.selectedDateRange) {
       let rangeStart = this.state.selectedDateRange[0];
       let rangeEnd = this.state.selectedDateRange[this.state.selectedDateRange.length - 1];
       dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
@@ -111,11 +111,11 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     return (
       <div style={ divStyle }>
         { <div>
-          Selected date(s): <span>{ this.state.selectedDate == null ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
+          Selected date(s): <span>{ !this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
         </div> }
         <div>
           Selected dates:
-          <span> { dateRangeString == null ? 'Not set' : dateRangeString }</span>
+          <span> { !dateRangeString ? 'Not set' : dateRangeString }</span>
         </div>
         <Calendar
           onSelectDate={ this._onSelectDate }
