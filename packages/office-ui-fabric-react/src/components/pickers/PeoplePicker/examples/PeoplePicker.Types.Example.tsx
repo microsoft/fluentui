@@ -8,8 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IPersonaProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
 import {
   CompactPeoplePicker,
   IBasePickerSuggestionsProps,

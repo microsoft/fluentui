@@ -512,7 +512,6 @@ describe('SpinButton', () => {
     const exampleLabelValue: string = 'SpinButton';
     const exampleMinValue: number = 2;
     const exampleMaxValue: number = 22;
-    const exampleDefaultValue: string = '12';
     const exampleStepValue: number = 2;
 
     const renderedDOM: HTMLElement = renderIntoDocument(
@@ -535,8 +534,6 @@ describe('SpinButton', () => {
 
   it('should use 0 as defaultvalue if neither value, defaultValue nor min are passed', () => {
     const exampleLabelValue: string = 'SpinButton';
-    const exampleDefaultValue: string = '12';
-    const exampleStepValue: number = 2;
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton
@@ -553,8 +550,6 @@ describe('SpinButton', () => {
 
   it('should use the default onIncrement function when no value, defaultValue nor onIncrement function is passed', () => {
     const exampleLabelValue: string = 'SpinButton';
-    const exampleDefaultValue: string = '12';
-    const exampleStepValue: number = 2;
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton

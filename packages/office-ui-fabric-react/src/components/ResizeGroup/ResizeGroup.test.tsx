@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 const { expect } = chai;
 import { ResizeGroup, IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup';
@@ -243,7 +242,6 @@ describe('ResizeGroup', () => {
     it('does not crash when the container size is set and there is no dataToMeasure', () => {
       const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
-      const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink', };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();
 
