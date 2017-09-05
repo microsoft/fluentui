@@ -32,6 +32,11 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   onSearch?: (newValue: any) => void;
 
   /**
+   * Callback executed when the user presses escape in the search box.
+   */
+  onEscape?: (ev?: any, onClear?: ((ev?: any) => void) | null) => void;
+
+  /**
    * Deprecated at v0.52.2, use 'onChange' instead.
    * @deprecated
    */
