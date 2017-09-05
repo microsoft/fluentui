@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from '../../OverflowSet';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';

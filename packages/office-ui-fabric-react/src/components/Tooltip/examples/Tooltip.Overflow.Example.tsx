@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, css, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import {
   TooltipHost,
