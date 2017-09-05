@@ -8,7 +8,6 @@ import {
   IconButton
 } from '../../Button';
 import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
-import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
 import {
   autobind,
   BaseComponent,

@@ -82,8 +82,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   public componentWillReceiveProps(nextProps: ICalendarDayProps) {
-    const { navigatedDate, selectedDate, today } = nextProps;
-
     this.setState({
       weeks: this._getWeeks(nextProps)
     });

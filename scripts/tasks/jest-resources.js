@@ -1,6 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  createRawConfig: () => (
+    {
+      rootDir: 'lib',
+      "testRegex": "(/__tests__/.*|\\.(test|spec))\\.js$",
+    }
+  ),
   createConfig: () => (
     {
       moduleNameMapper: {

@@ -1,6 +1,4 @@
-
 import { fitContentToBounds } from './math';
-import { expect } from 'chai';
 
 describe('math', () => {
   describe('#fitContentToBounds', () => {
@@ -16,7 +14,7 @@ describe('math', () => {
             height: 200
           },
           mode: 'contain'
-        })).to.deep.equal({
+        })).toEqual({
           width: 200,
           height: 150
         });
@@ -33,7 +31,7 @@ describe('math', () => {
             height: 200
           },
           mode: 'contain'
-        })).to.deep.equal({
+        })).toEqual({
           width: 150,
           height: 200
         });
@@ -50,7 +48,7 @@ describe('math', () => {
             height: 200
           },
           mode: 'contain'
-        })).to.deep.equal({
+        })).toEqual({
           width: 100,
           height: 75
         });
@@ -68,7 +66,7 @@ describe('math', () => {
           },
           mode: 'contain',
           maxScale: 2
-        })).to.deep.equal({
+        })).toEqual({
           width: 200,
           height: 150
         });
@@ -87,7 +85,7 @@ describe('math', () => {
             height: 200
           },
           mode: 'cover'
-        })).to.deep.equal({
+        })).toEqual({
           width: 300,
           height: 200
         });
@@ -104,7 +102,7 @@ describe('math', () => {
             height: 200
           },
           mode: 'cover'
-        })).to.deep.equal({
+        })).toEqual({
           width: 200,
           height: 300
         });
@@ -121,7 +119,7 @@ describe('math', () => {
             height: 200
           },
           mode: 'cover'
-        })).to.deep.equal({
+        })).toEqual({
           width: 100,
           height: 50
         });
@@ -139,7 +137,7 @@ describe('math', () => {
           },
           mode: 'cover',
           maxScale: 4
-        })).to.deep.equal({
+        })).toEqual({
           width: 400,
           height: 200
         });
