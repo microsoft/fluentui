@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from '../../../Utilities';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
@@ -18,12 +19,12 @@ export class ModalBasicExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           description='Opens the Sample Modal'
-          onClick={ this._showModal.bind(this) }
+          onClick={ this._showModal }
           text='Open Modal'
         />
         <Modal
           isOpen={ this.state.showModal }
-          onDismiss={ this._closeModal.bind(this) }
+          onDismiss={ this._closeModal }
           isBlocking={ false }
           containerClassName='ms-modalExample-container'
         >
@@ -42,10 +43,12 @@ export class ModalBasicExample extends React.Component<any, any> {
     );
   }
 
+  @autobind
   private _showModal() {
     this.setState({ showModal: true });
   }
 
+  @autobind
   private _closeModal() {
     this.setState({ showModal: false });
   }

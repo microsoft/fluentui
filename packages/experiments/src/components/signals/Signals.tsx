@@ -4,6 +4,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as SignalStylesModule from './Signals.scss';
 
+// tslint:disable-next-line:no-any
 const SignalStyles = SignalStylesModule as any;
 
 export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement> {
@@ -87,7 +88,7 @@ export const SomeoneCheckedOutSignal: Signal = (props: ISignalProps): JSX.Elemen
  */
 export const NewSignal: Signal = (props: ISignalProps): JSX.Element => {
   return (
-    <span className={ css(SignalStyles.signal, SignalStyles.new) }>
+    <span className={ css(SignalStyles.signal, SignalStyles.newItem) }>
       <Icon className={ css(SignalStyles.newIcon) } iconName='glimmer' />
     </span>
   );

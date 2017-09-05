@@ -7,7 +7,8 @@ import {
   css,
   divProperties,
   getNativeProps,
-  getId
+  getId,
+  getDocument
 } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles } from './HoverCard.Props';
 import { ExpandingCard } from './ExpandingCard';
@@ -30,8 +31,10 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard: HTMLElement;
+  private _expandingCard: ExpandingCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
+  private _currentMouseTarget: EventTarget;
 
   private _styles: IHoverCardStyles;
 
@@ -52,7 +55,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
     this._events.on(target, 'mouseleave', this._cardDismiss);
     this._events.on(target, 'focus', this._cardOpen);
     this._events.on(target, 'blur', this._cardDismiss);
-    this.props.instantOpenOnClick && this._events.on(target, 'click', this._instantOpenExpanded);
+    if (this.props.instantOpenOnClick) {
+      this._events.on(target, 'click', this._instantOpenExpanded);
+    } else {
+      this._events.on(target, 'mousedown', this._cardDismiss);
+      this._events.on(target, 'keydown', this._cardDismiss);
+    }
   }
 
   public componentWillUpdate(newProps: IHoverCardProps, newState: IHoverCardState) {
@@ -63,10 +71,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             mode: ExpandingCardMode.expanded
           });
         }, this.props.expandedCardOpenDelay!);
+        this.props.onCardVisible && this.props.onCardVisible();
       } else {
         this.setState({
           mode: ExpandingCardMode.compact
         });
+        this.props.onCardHide && this.props.onCardHide();
       }
     }
   }
@@ -86,10 +96,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
     this._styles = getStyles(customStyles);
 
-    let onClick;
-    if (instantOpenOnClick) {
-      onClick = this._instantOpenExpanded;
-    }
     return (
       <div
         className={ css(this._styles.host) }
@@ -99,6 +105,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
         { children }
         { isHoverCardVisible &&
           <ExpandingCard
+            componentRef={ this._resolveRef('_expandingCard') }
             { ...getNativeProps(this.props, divProperties) }
             id={ hoverCardId }
             targetElement={ this._getTargetElement() }
@@ -113,13 +120,25 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   }
 
   private _getTargetElement(): HTMLElement {
-    return this.props.target ? this.props.target : this._hoverCard;
+    const { target } = this.props;
+
+    switch (typeof target) {
+      case 'string':
+        return getDocument()!.querySelector(target as string) as HTMLElement;
+
+      case 'object':
+        return target as HTMLElement;
+
+      default:
+        return this._hoverCard;
+    }
   }
 
   // Show HoverCard
   @autobind
   private _cardOpen(ev: MouseEvent) {
     this._async.clearTimeout(this._dismissTimerId);
+    this._currentMouseTarget = ev.currentTarget;
 
     this._openTimerId = this._async.setTimeout(() => {
       if (!this.state.isHoverCardVisible) {
@@ -134,22 +153,17 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
   // Hide HoverCard
   @autobind
   private _cardDismiss(ev: MouseEvent) {
-    const { type, x, y } = ev;
     this._async.clearTimeout(this._openTimerId);
 
-    this._dismissTimerId = this._async.setTimeout(() => {
-      if (!(this.props.sticky && type === 'mouseleave')) {
-        const rect = this._hoverCard.getBoundingClientRect();
-        // handle the case when dismiss is called by target when cursor moves towards the card.
-        const isInsideCard: boolean = x <= rect.right && x >= rect.left && y >= rect.top;
-        if (!isInsideCard) {
-          this.setState({
-            isHoverCardVisible: false,
-            mode: ExpandingCardMode.compact
-          });
-        }
-      }
-    }, this.props.cardDismissDelay!);
+    // Dismiss if not sticky and currentTarget is the same element that mouse last entered
+    if (!this.props.sticky && this._currentMouseTarget === ev.currentTarget) {
+      this._dismissTimerId = this._async.setTimeout(() => {
+        this.setState({
+          isHoverCardVisible: false,
+          mode: ExpandingCardMode.compact
+        });
+      }, this.props.cardDismissDelay!);
+    }
   }
 
   // Instant Open the card in Expanded mode

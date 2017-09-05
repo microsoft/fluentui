@@ -15,7 +15,7 @@ export class ExampleGroup {
     this._examples = [];
   }
 
-  public get title() {
+  public get title(): string {
     return this._title;
   }
 

@@ -2,13 +2,23 @@
 import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
-import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { css, BaseComponent, autobind, getNativeProps, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
+import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { ISize } from '@uifabric/utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
+// tslint:disable:no-any
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
+// tslint:enable:no-any
+
+const enum TileLayoutValues {
+  nameplatePadding = 12,
+  nameplateNameHeight = 20,
+  nameplateActivityHeight = 20,
+  foregroundMargin = 16
+}
 
 export interface ITileState {
   isSelected?: boolean;
@@ -25,6 +35,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   private _nameId: string;
   private _activityId: string;
 
+  // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
 
@@ -43,7 +54,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: ITileProps) {
+  public componentWillReceiveProps(nextProps: ITileProps): void {
     const {
       selection,
       selectionIndex
@@ -63,7 +74,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     const {
       selection
     } = this.props;
@@ -73,7 +84,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public componentDidUpdate(previousProps: ITileProps) {
+  public componentDidUpdate(previousProps: ITileProps): void {
     const {
       selection
     } = this.props;
@@ -93,7 +104,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
-  public render() {
+  public render(): JSX.Element {
     const {
       children,
       selectionIndex = -1,
@@ -118,8 +129,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const Tag = aProps.href ? 'a' : 'span';
 
     return (
-      <Tag
-        { ...(aProps.href ? aProps : {}) }
+      <div
         aria-labelledby={ this._nameId }
         aria-describedby={ this._activityId }
         className={ css('ms-Tile', className, TileStyles.tile, {
@@ -130,32 +140,38 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         }) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
-        data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
+        data-disable-click-on-enter={ true }
         data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }
       >
-        {
-          background ? this._onRenderBackground({
-            background: background
-          }) : null
-        }
-        {
-          foreground ? this._onRenderForeground({
-            foreground: foreground,
-            showForegroundFrame: showForegroundFrame
-          }) : null
-        }
-        {
-          (itemName || itemActivity) ? this._onRenderNameplate({
-            name: itemName,
-            activity: itemActivity
-          }) : null
-        }
+        <Tag
+          { ...aProps }
+          data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
+          className={ css('ms-Tile-link', TileStyles.link) }
+        >
+          {
+            background ? this._onRenderBackground({
+              background: background
+            }) : null
+          }
+          {
+            foreground ? this._onRenderForeground({
+              foreground: foreground,
+              showForegroundFrame: showForegroundFrame
+            }) : null
+          }
+          {
+            (itemName || itemActivity) ? this._onRenderNameplate({
+              name: itemName,
+              activity: itemActivity
+            }) : null
+          }
+        </Tag>
         {
           isSelectable ? this._onRenderCheck({
             isSelected: isSelected
           }) : null
         }
-      </Tag>
+      </div>
     );
   }
 
@@ -163,7 +179,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     background
   }: {
       background: React.ReactNode | React.ReactNode[]
-    }) {
+    }): JSX.Element {
     return (
       <span className={ css('ms-Tile-background', TileStyles.background) }>
         { background }
@@ -177,7 +193,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       foreground: React.ReactNode | React.ReactNode[];
       showForegroundFrame: boolean;
-    }) {
+    }): JSX.Element {
     return (
       <span
         role='presentation'
@@ -206,7 +222,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }: {
       name: React.ReactNode | React.ReactNode[];
       activity: React.ReactNode | React.ReactNode[];
-    }) {
+    }): JSX.Element {
     return (
       <span
         className={ css('ms-Tile-nameplate', TileStyles.nameplate) }
@@ -239,7 +255,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     isSelected
   }: {
       isSelected: boolean;
-    }) {
+    }): JSX.Element {
     return (
       <button
         aria-label={ this.props.toggleSelectionAriaLabel }
@@ -255,7 +271,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }
 
   @autobind
-  private _onSelectionChange() {
+  private _onSelectionChange(): void {
     const {
       selection,
       selectionIndex = -1
@@ -265,4 +281,54 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected: selectionIndex > -1 && selection && selection.isIndexSelected(selectionIndex)
     });
   }
+}
+
+export interface ITileLayout {
+  foregroundSize?: ISize | undefined;
+  backgroundSize?: ISize | undefined;
+}
+
+export function getTileLayout(tileElement: JSX.Element): ITileLayout {
+  const tileProps: ITileProps = tileElement.props;
+
+  const {
+    contentSize
+  } = tileProps;
+
+  if (!contentSize) {
+    return {};
+  }
+
+  const width = contentSize.width;
+
+  let nameplateHeight = 0;
+
+  if (tileProps.itemName || tileProps.itemActivity) {
+    nameplateHeight += TileLayoutValues.nameplatePadding * 2; // 12px top/bottom padding.
+    if (tileProps.itemName) {
+      nameplateHeight += TileLayoutValues.nameplateNameHeight;
+    }
+    if (tileProps.itemActivity) {
+      nameplateHeight += TileLayoutValues.nameplateActivityHeight;
+    }
+  }
+
+  return {
+    foregroundSize: {
+      width: width - TileLayoutValues.foregroundMargin * 2,
+      height: contentSize.height - TileLayoutValues.foregroundMargin - nameplateHeight
+    },
+    backgroundSize: contentSize
+  };
+}
+
+export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<ITileProps>): JSX.Element {
+  const Tag = tileElement.type;
+
+  return (
+    <Tag
+      { ...tileElement.props }
+      { ...props }
+    />
+  );
 }

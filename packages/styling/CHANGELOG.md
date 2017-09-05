@@ -1,6 +1,52 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 18 Aug 2017 16:32:33 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 0.22.1
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Patches
+
+- Icons: Added textDocument back into the icon list
+
+## 0.22.0
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Minor changes
+
+- Add a new semantic slot for the warning foreground color
+
+### Patches
+
+- Add FullWidth icon.
+
+## 0.21.1
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 0.21.0
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Minor changes
+
+- Theming: added an accent color slot
+
+## 0.20.2
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 0.20.1
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Patches
+
+- add Comment icon
 
 ## 0.20.0
 Fri, 18 Aug 2017 16:32:33 GMT

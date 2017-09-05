@@ -54,14 +54,6 @@ enum VerticalAlignmentHint {
   bottom
 }
 
-interface IMenuSizeWindowSizeInfo {
-  hostRect: IRect;
-  targetRect: IRect;
-  menuRect: IRect;
-  windowSize: any;
-  gapSpace: number;
-}
-
 interface IRect {
   left: number;
   top: number;
@@ -69,12 +61,6 @@ interface IRect {
   bottom: number;
   width: number;
   height: number;
-}
-
-interface IParsedDirectionalHint {
-  contextualMenuType: ContextualMenuType;
-  horizontalAlignmentHint: HorizontalAlignmentHint;
-  verticalAlignmentHint: VerticalAlignmentHint;
 }
 
 export function hasSubmenuItems(item: IContextualMenuItem) {
@@ -388,6 +374,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
+    const defaultRole = canCheck ? 'menuitemcheckbox' : 'menuitem';
 
     const itemButtonProperties = {
       className: css('ms-ContextualMenu-link', styles.link, {
@@ -408,7 +395,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
       'aria-disabled': item.isDisabled,
-      role: canCheck ? 'menuitemcheckbox' : 'menuitem',
+      role: item.role || defaultRole,
       style: item.style
     };
 

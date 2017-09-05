@@ -244,12 +244,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   @autobind
   private _onRenderBody(props: IPanelProps): JSX.Element {
-    const contentClass = css( 
-      'ms-Panel-content', 
-      styles.content, 
-      props.isFooterAtBottom && styles.contentGrow 
+    const contentClass = css(
+      'ms-Panel-content',
+      styles.content,
+      props.isFooterAtBottom && styles.contentGrow
     );
-    
+
     return (
       <div ref={ this._resolveRef('_content') } className={ contentClass } >
         { props.children }
@@ -261,7 +261,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   private _onRenderFooter(props: IPanelProps): JSX.Element | null {
     let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
-    if (onRenderFooterContent != null) {
+    if (onRenderFooterContent) {
       return (
         <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
           <div className={ css('ms-Panel-footerInner', styles.footerInner) }>

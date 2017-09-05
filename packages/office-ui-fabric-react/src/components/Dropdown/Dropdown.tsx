@@ -146,7 +146,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
@@ -156,7 +156,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='menu'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ ariaLabel || label }
+          aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex! >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
@@ -444,7 +444,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let id = this._id;
     let isItemSelected;
     if (this.props.multiSelect) {
-      isItemSelected = item.index && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
+      isItemSelected = item.index !== undefined && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
     }
     return (
       !this.props.multiSelect ?

@@ -391,6 +391,7 @@ export type IconName =
   'FullCircleMask' |
   'FullHistory' |
   'FullScreen' |
+  'FullWidth' |
   'Generate' |
   'Giftbox' |
   'GiftboxOpen' |
@@ -463,6 +464,7 @@ export type IconName =
   'Lightbulb' |
   'LightningBolt' |
   'Like' |
+  'LikeSolid' |
   'LineChart' |
   'Link' |
   'List' |
