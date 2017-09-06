@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "maxvay@microsoft.com"
+}
