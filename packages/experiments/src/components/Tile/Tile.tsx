@@ -113,6 +113,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       foreground,
       showBackgroundFrame = false,
       showForegroundFrame = false,
+      hideBackground = false,
+      hideForeground = false,
       itemName,
       itemActivity,
       componentRef,
@@ -136,7 +138,9 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--hasBackgroundFrame ${TileStyles.hasBackgroundFrame}`]: showBackgroundFrame,
           [`ms-Tile--isSelected ${TileStyles.selected} ${SignalStyles.selected}`]: isSelected,
           [`ms-Tile--isSelectable ${TileStyles.selectable}`]: isSelectable,
-          [`ms-Tile--hasBackground ${TileStyles.hasBackground} ${SignalStyles.dark}`]: !!background
+          [`ms-Tile--hasBackground ${TileStyles.hasBackground}`]: !!background,
+          [SignalStyles.dark]: !!background && !hideBackground,
+          [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground
         }) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
@@ -150,13 +154,15 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         >
           {
             background ? this._onRenderBackground({
-              background: background
+              background: background,
+              hideBackground
             }) : null
           }
           {
             foreground ? this._onRenderForeground({
               foreground: foreground,
-              showForegroundFrame: showForegroundFrame
+              showForegroundFrame: showForegroundFrame,
+              hideForeground
             }) : null
           }
           {
@@ -176,12 +182,18 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }
 
   private _onRenderBackground({
-    background
+    background,
+    hideBackground
   }: {
-      background: React.ReactNode | React.ReactNode[]
+      background: React.ReactNode | React.ReactNode[];
+      hideBackground: boolean;
     }): JSX.Element {
     return (
-      <span className={ css('ms-Tile-background', TileStyles.background) }>
+      <span
+        className={ css('ms-Tile-background', TileStyles.background, {
+          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground
+        }) }
+      >
         { background }
       </span>
     );
@@ -189,10 +201,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
   private _onRenderForeground({
     foreground,
-    showForegroundFrame
+    showForegroundFrame,
+    hideForeground
   }: {
       foreground: React.ReactNode | React.ReactNode[];
       showForegroundFrame: boolean;
+      hideForeground: boolean;
     }): JSX.Element {
     return (
       <span
@@ -201,16 +215,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       >
         <span
           role='presentation'
-          className={ css('ms-Tile-foreground', TileStyles.foreground) }
+          className={ css('ms-Tile-foreground', TileStyles.foreground, {
+            [`ms-Tile-foreground--hasFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame,
+            [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
+          }) }
         >
-          <span
-            role='presentation'
-            className={ css('ms-Tile-frame', TileStyles.frame, {
-              [`ms-Tile-frame--hasForegroundFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame
-            }) }
-          >
-            { foreground }
-          </span>
+          { foreground }
         </span>
       </span>
     );
