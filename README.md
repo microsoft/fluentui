@@ -9,39 +9,21 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ## Contents
 
-- [View the docs](#view-the-docs)
-- [Get started](#get-started)
-- [Testing](#testing)
-- [Advanced usage](#advanced-usage)
-- [Roadmap](#roadmap)
-- [Trello board](#trello-board)
+- [Using Fabric React](#using-fabric-react)
 - [Browser support](#browser-support)
+- [Server-side rendering](#server-side-rendering)
+- [Advanced usage](#advanced-usage)
 - [Contribute to Fabric React](#contribute-to-fabric-react)
+- [Building the repo](#building-the-repo)
+- [Testing](#testing)
+- [Advanced building tips](#advanced-building-tips)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
 
+### Using Fabric React
 
-## View the docs
-
-Before you get started, **make sure you have [node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.**
-
-To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
-
-1. `npm install -g gulp`
-2. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-3. `npm install`
-4. `npm start`
-
-This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
-
-To build all packages in the repo, you can use `npm run build`.
-
-## Get started
-
-### Tutorial
 [Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
 
-### Integrate into an existing project
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
 Within an npm project, you should install the package and save it as a dependency:
@@ -64,7 +46,11 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
 
-## Rendering Fabric components on the server (SSR)
+## Browser support
+
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
+
+## Server-side rendering
 
 If you need to render Fabric components on the server side in a node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
 
@@ -100,23 +86,49 @@ console.log(
 
 Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
-## Testing
-
-For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
-
 ## Advanced usage
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
 
-## Browser support
-
-Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
-
-
 ## Contribute to Fabric React
 
-We're excited to share our development of this project with folks outside of the company, but please keep in mind that we're moving towards a v1 state which requires that we stay focused on reaching that goal. With this in mind, take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/CONTRIBUTING.md) for more info on how we plan to look at issues, how to structure your commit messages, and more.
+Please take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/CONTRIBUTING.md) for more info.
 
+## Building the repo
+
+Before you get started, **make sure you have [node.js](https://nodejs.org/) and [git](https://git-scm.com/) installed.**
+
+To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
+
+1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
+2. `npm install`
+3. `npm start`
+
+This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
+
+To build and run tests for all packages in the repo, you can run `npm run build` from the root.
+
+To build individual packages within the `packages/*/` folders, you can use `npm run build` in each individually. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
+
+## Testing
+
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
+
+## Advanced building tips
+
+The repo contains many packages, each which may have dependencies on each other. You can use the rush tool to build projects in the correct order, if you have it globally installed.
+
+```bash
+npm install -g @microsoft/rush
+```
+
+To use rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build.)
+
+To can also build up to a specific project using the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, you can run:
+
+```bash
+rush build --to office-ui-fabric-react
+```
 
 ## Licenses
 

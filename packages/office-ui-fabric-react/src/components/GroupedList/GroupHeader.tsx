@@ -73,7 +73,8 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
         aria-label={ group.ariaLabel || group.name }
-        data-is-focusable={ true } >
+        data-is-focusable={ true }
+      >
 
         <FocusZone className={ styles.groupHeaderContainer } direction={ FocusZoneDirection.horizontal }>
 
@@ -82,7 +83,8 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
               type='button'
               className={ css('ms-GroupHeader-check', styles.check) }
               data-selection-toggle={ true }
-              onClick={ this._onToggleSelectGroupClick } >
+              onClick={ this._onToggleSelectGroupClick }
+            >
               <Check checked={ currentlySelected } />
             </button>
           ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
@@ -96,7 +98,8 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
           <button
             type='button'
             className={ css('ms-GroupHeader-expand', styles.expand) }
-            onClick={ this._onToggleCollapse }>
+            onClick={ this._onToggleCollapse }
+          >
             <Icon
               className={ css(
                 isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)

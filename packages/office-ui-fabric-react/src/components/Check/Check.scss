@@ -7,20 +7,29 @@
 // --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 16px;
+$checkBoxHeight: 18px;
 
 .root {
   line-height: 1;
-  width: $checkBoxHeight - 2px;
-  height: $checkBoxHeight - 2px;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
-  @include ms-user-select(none);
-  background: $ms-color-white;
-  border-radius: $checkBoxHeight;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 
-  &.rootIsChecked {
+  @include ms-user-select(none);
+
+  &.rootIsChecked:before {
     background: $ms-color-themePrimary;
+    content: '';
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    top: 1px;
+    border-radius: 50%;
   }
 }
 
@@ -32,16 +41,11 @@ $checkBoxHeight: 16px;
 
 .circle,
 .check {
-  position: absolute;
-  height: $checkBoxHeight;
-  width: $checkBoxHeight;
-  transform: translate(-50%, -50%);
   font-size: $checkBoxHeight;
 }
 
 .circle {
-  top: 50%;
-  left: 50%;
+  position: absolute;
   color: $ms-color-neutralTertiaryAlt;
 
   @include high-contrast {
@@ -54,12 +58,9 @@ $checkBoxHeight: 16px;
 }
 
 .check {
-  width: auto;
-  height: auto;
+  position: absolute;
   color: $ms-color-neutralTertiaryAlt;
   font-size: 16px;
-  top: 40%;
-  left: 53%;
 }
 
 .rootIsChecked .check {

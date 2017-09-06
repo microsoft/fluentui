@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 0.4.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Add size pre-computation support to Tile and FolderCover
 
 ## 0.3.0
 Tue, 29 Aug 2017 20:55:35 GMT

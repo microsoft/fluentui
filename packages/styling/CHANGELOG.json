@@ -2,6 +2,46 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.22.1",
+      "tag": "@uifabric/styling_v0.22.1",
+      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "b4eee571f31db3c0950938e40aafea9313f73003",
+            "comment": "Icons: Added textDocument back into the icon list"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.12.1 <5.0.0` to `>=4.13.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.22.0",
+      "tag": "@uifabric/styling_v0.22.0",
+      "date": "Fri, 01 Sep 2017 16:51:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Marena Richardson <marena.richardson@gmail.com>",
+            "commit": "698632d5cc6e2564f3b745e3c1919ff020fb6004",
+            "comment": "Add a new semantic slot for the warning foreground color"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "02d0358d39021ab96b27eb1ad78f595e3891d9a5",
+            "comment": "Add FullWidth icon."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.21.1",
       "tag": "@uifabric/styling_v0.21.1",
       "date": "Tue, 29 Aug 2017 20:55:35 GMT",

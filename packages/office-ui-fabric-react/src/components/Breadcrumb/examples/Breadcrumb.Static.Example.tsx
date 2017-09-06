@@ -9,8 +9,6 @@ import {
   autobind
 } from '../../../Utilities';
 
-import { Link } from 'office-ui-fabric-react/lib/Link';
-
 export class BreadcrumbStaticExample extends React.Component<any, any> {
   constructor() {
     super();
@@ -31,7 +29,8 @@ export class BreadcrumbStaticExample extends React.Component<any, any> {
           // Returning undefined to OnReduceData tells the breadcrumb not to shrink
           onReduceData={ (data) => undefined }
           maxDisplayedItems={ 3 }
-          ariaLabel={ 'Website breadcrumb' } />
+          ariaLabel={ 'Website breadcrumb' }
+        />
       </div>
     );
   }

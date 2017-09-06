@@ -135,6 +135,12 @@ $isPaddedMargin: 24px;
   color: $iconForegroundColor;
   opacity: 1;
   @include ms-padding-left(8px);
+
+  &.sortIcon {
+    @include ms-padding-left(4px);
+    position: relative;
+    top: 1px;
+  }
 }
 
 .cell .filterChevron {
