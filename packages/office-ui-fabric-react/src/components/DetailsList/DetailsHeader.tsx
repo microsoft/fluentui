@@ -164,7 +164,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               aria-labelledby={ `${this._id}-check` }
               onClick={ this._onSelectAllClicked }
               aria-colindex={ 0 }
-              role='columnheader' >
+              role='columnheader'
+            >
               {
                 onRenderColumnHeaderTooltip({
                   hostClassName: css(styles.checkTooltip),
@@ -218,7 +219,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         {
           columns.map((column: IColumn, columnIndex: number) => {
             const previousColumnIndex = columnIndex - 1;
-            const previousColumn = columns[previousColumnIndex];
 
             return (
               [
@@ -334,7 +334,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   private _renderColumnSizer(columnIndex: number) {
     const { columns } = this.props;
     const column = this.props.columns[columnIndex];
-    const { isSizing, columnResizeDetails } = this.state;
+    const { columnResizeDetails } = this.state;
 
     return (
       <div

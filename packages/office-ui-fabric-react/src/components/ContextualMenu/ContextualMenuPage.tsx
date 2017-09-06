@@ -89,7 +89,8 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         related={
           <a href='https://dev.office.com/fabric-js/Components/ContextualMenu/ContextualMenu.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }
