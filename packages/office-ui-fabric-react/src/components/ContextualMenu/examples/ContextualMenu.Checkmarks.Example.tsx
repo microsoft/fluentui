@@ -31,7 +31,8 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     return (
       <div>
         <DefaultButton
-          onClick={ this._onClick } id='ContextualMenuButton2'
+          onClick={ this._onClick }
+          id='ContextualMenuButton2'
           text='Click for ContextualMenu'
         />
         { this.state.isContextMenuVisible ? (

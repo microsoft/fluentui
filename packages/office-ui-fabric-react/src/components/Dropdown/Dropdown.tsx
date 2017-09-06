@@ -52,6 +52,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
+  // tslint:disable-next-line:no-unused-variable
   private _dropdownLabel: HTMLElement;
   private _id: string;
 
@@ -202,7 +203,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         {
           errorMessage &&
           <div
-            className={ css(styles.errorMessage) }>
+            className={ css(styles.errorMessage) }
+          >
             { errorMessage }
           </div>
         }
@@ -217,7 +219,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options, selectedKey, selectedKeys, multiSelect } = this.props;
+    let { onChanged, options, selectedKey, multiSelect } = this.props;
     let { selectedIndex, selectedIndexes } = this.state;
     let checked: boolean = selectedIndexes ? selectedIndexes.indexOf(index) > -1 : false;
 
@@ -421,7 +423,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       return <div
         role='separator'
         key={ key }
-        className={ css('ms-Dropdown-divider', styles.divider) } />;
+        className={ css('ms-Dropdown-divider', styles.divider) }
+      />;
     }
     return null;
   }
@@ -430,8 +433,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key } = item;
     return (
-      <div key={ key }
-        className={ css('ms-Dropdown-header', styles.header) }>
+      <div
+        key={ key }
+        className={ css('ms-Dropdown-header', styles.header) }
+      >
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -465,7 +470,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
           ariaLabel={ item.ariaLabel || item.text }
           title={ item.text }
-        > { onRenderOption(item, this._onRenderOption) }</CommandButton>
+        >
+          { onRenderOption(item, this._onRenderOption) }
+        </CommandButton>
         :
         <Checkbox
           id={ id + '-list' + item.index }
@@ -485,7 +492,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           role='option'
           aria-selected={ isItemSelected ? 'true' : 'false' }
           checked={ isItemSelected }
-        >{ onRenderOption(item, this._onRenderOption) } </Checkbox>
+        >{ onRenderOption(item, this._onRenderOption) }
+        </Checkbox>
     );
   }
 

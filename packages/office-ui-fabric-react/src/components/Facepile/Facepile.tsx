@@ -50,7 +50,6 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       maxDisplayablePersonas,
       overflowButtonProps,
       overflowButtonType,
-      ariaDescription,
       className,
       personas,
       showAddButton
