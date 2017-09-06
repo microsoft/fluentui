@@ -26,37 +26,50 @@ export default class ButtonVPage extends React.Component<any, any> {
         <IconButton id={ 'IconButtonChecked' } checked={ true } iconProps={ { iconName } } />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButton'
+        <CommandButton
+          id='CommandButton'
           icon='AddFriend'
-          text='Command Button' />
+          text='Command Button'
+        />
       </div>&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButtonDisabled' icon='AddFriend'
+        <CommandButton
+          id='CommandButtonDisabled'
+          icon='AddFriend'
           disabled={ true }
-          text='Command Button' />
+          text='Command Button'
+        />
       </div >&nbsp;
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButtonChecked'
+        <CommandButton
+          id='CommandButtonChecked'
           checked={ true }
           icon='AddFriend'
-          text='Command Button' />
+          text='Command Button'
+        />
       </div>&nbsp;
       <div>
-        <CompoundButton id='CompoundButton'
+        <CompoundButton
+          id='CompoundButton'
           description='You can create a new account here.'
-          text='Compound Button' />
+          text='Compound Button'
+        />
       </div>&nbsp;
       <div>
-        <CompoundButton id='CompoundButtonDisabled'
+        <CompoundButton
+          id='CompoundButtonDisabled'
           disabled={ true }
           description='You can create a new account here.'
-          text='Compound Button' />
+          text='Compound Button'
+        />
       </div>&nbsp;
       <div>
-        <CompoundButton id='CompoundButtonChecked'
+        <CompoundButton
+          id='CompoundButtonChecked'
           checked={ true }
           description='You can create a new account here.'
-          text='Compound Button' />
+          text='Compound Button'
+        />
       </div>&nbsp;
       <div>
         <PrimaryButton id='PrimaryButton' icon='Add' text='Primary Button' />

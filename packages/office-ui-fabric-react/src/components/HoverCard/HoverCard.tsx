@@ -31,6 +31,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard: HTMLElement;
+  // tslint:disable-next-line:no-unused-variable
   private _expandingCard: ExpandingCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
@@ -71,10 +72,12 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
             mode: ExpandingCardMode.expanded
           });
         }, this.props.expandedCardOpenDelay!);
+        this.props.onCardVisible && this.props.onCardVisible();
       } else {
         this.setState({
           mode: ExpandingCardMode.compact
         });
+        this.props.onCardHide && this.props.onCardHide();
       }
     }
   }
@@ -85,7 +88,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       expandingCardProps,
       children,
       id,
-      instantOpenOnClick,
       setAriaDescribedBy = true,
       styles: customStyles
     } = this.props;

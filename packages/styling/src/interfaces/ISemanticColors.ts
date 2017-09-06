@@ -1,18 +1,18 @@
 /**
  * The collection of semantic slots for colors used in themes.
  *
- * ## Naming Convention 
+ * ## Naming Convention
  *
- * The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format: 
+ * The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format:
  *
- * [category name][element name][checked state][hovered/pressed/disabled state]  
- * [category name] – The “family” that this slot belongs to. 
- * [element name] – The name of the thing being targeted, such as the background or border. 
+ * [category name][element name][checked state][hovered/pressed/disabled state]
+ * [category name] – The “family” that this slot belongs to.
+ * [element name] – The name of the thing being targeted, such as the background or border.
  * [checked state] – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
- * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.) 
+ * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.)
  * [hovered/pressed/disabled state] – One of these states, if applicable. Each of these states are mutually exclusive.
- * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.   
- *  
+ * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.
+ *
  * ## Base Slots
  *
  * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, and so on.
@@ -26,18 +26,18 @@
  * will always want errors to be some shade of red, but we will need to tweak the exact shade so it's
  * legible depending on whether it's an inverted theme or not.
  * Invariant colors should almost never be changed by the theme, the defaults should suffice.
- *  
- * ## Input Controls 
+ *
+ * ## Input Controls
  *
  * This category contains input components commonly used to denote state, including radio buttons,
- * check boxes, toggle switches, sliders, progress bars, and more. 
- *  
- * ## Menus 
+ * check boxes, toggle switches, sliders, progress bars, and more.
  *
- * Any kind of popup menus uses this category. 
- *  
+ * ## Menus
+ *
+ * Any kind of popup menus uses this category.
+ *
  * ## Lists
- *  
+ *
  * Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
@@ -105,6 +105,10 @@ export interface ISemanticColors {
    * Background for warning messages.
    */
   warningBackground: string;
+  /**
+   * Foreground color for warning highlights
+   */
+  warningHighlight: string;
 
   //// Input controls slots (text fields, checkboxes, radios...)
 

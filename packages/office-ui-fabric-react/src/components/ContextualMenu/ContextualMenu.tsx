@@ -54,14 +54,6 @@ enum VerticalAlignmentHint {
   bottom
 }
 
-interface IMenuSizeWindowSizeInfo {
-  hostRect: IRect;
-  targetRect: IRect;
-  menuRect: IRect;
-  windowSize: any;
-  gapSpace: number;
-}
-
 interface IRect {
   left: number;
   top: number;
@@ -69,12 +61,6 @@ interface IRect {
   bottom: number;
   width: number;
   height: number;
-}
-
-interface IParsedDirectionalHint {
-  contextualMenuType: ContextualMenuType;
-  horizontalAlignmentHint: HorizontalAlignmentHint;
-  verticalAlignmentHint: VerticalAlignmentHint;
 }
 
 export function hasSubmenuItems(item: IContextualMenuItem) {
@@ -253,7 +239,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
-          directionalHintFixed={ directionalHintFixed }>
+          directionalHintFixed={ directionalHintFixed }
+        >
           <div style={ contextMenuStyle } ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
@@ -266,7 +253,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                   aria-label={ ariaLabel }
                   aria-labelledby={ labelElementId }
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
-                  onKeyDown={ this._onKeyDown }>
+                  onKeyDown={ this._onKeyDown }
+                >
                   { items.map((item, index) => {
                     if (item.itemType === ContextualMenuItemType.Divider ||
                       item.itemType === ContextualMenuItemType.Header) {
@@ -316,7 +304,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       role='presentation'
       title={ title }
       key={ key }
-      className={ css('ms-ContextualMenu-item', styles.item, className) }>
+      className={ css('ms-ContextualMenu-item', styles.item, className) }
+    >
       { content }
     </li>;
   }
@@ -326,7 +315,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return <li
         role='separator'
         key={ 'separator-' + index }
-        className={ css('ms-ContextualMenu-divider', styles.divider, className) } />;
+        className={ css('ms-ContextualMenu-divider', styles.divider, className) }
+      />;
     }
     return null;
   }
@@ -364,7 +354,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           aria-setsize={ totalItemCount }
           aria-disabled={ item.isDisabled }
           style={ item.style }
-          onClick={ this._onAnchorClick.bind(this, item) }>
+          onClick={ this._onAnchorClick.bind(this, item) }
+        >
           { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
         </a>
       </div>);
@@ -427,7 +418,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           <Icon
             iconName={ isItemChecked === true ? 'CheckMark' : 'CustomIcon' }
             className={ css('ms-ContextualMenu-icon', styles.icon) }
-            onClick={ this._onItemClick.bind(this, item) } />
+            onClick={ this._onItemClick.bind(this, item) }
+          />
         ) : (null) }
         { (hasIcons) ? (
           this._renderIcon(item)
@@ -437,7 +429,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           <Icon
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
             { ...item.submenuIconProps }
-            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, item.submenuIconProps ? item.submenuIconProps.className : '') } />
+            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, item.submenuIconProps ? item.submenuIconProps.className : '') }
+          />
         ) : (null) }
       </div>
     );

@@ -1,6 +1,31 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Sat, 26 Aug 2017 00:52:38 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+
+## 0.4.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Add size pre-computation support to Tile and FolderCover
+
+## 0.3.0
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Minor changes
+
+- Implement FolderCover component
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 0.2.1
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Patches
+
+- Fix Selection module reference in Tile modules
 
 ## 0.2.0
 Sat, 26 Aug 2017 00:52:38 GMT

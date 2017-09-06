@@ -2,8 +2,9 @@
 import * as React from 'react';
 import { ITileProps } from './Tile.Props';
 import { Check } from 'office-ui-fabric-react/lib/Check';
-import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { css, BaseComponent, autobind, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { ISize } from '@uifabric/utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signals.scss';
 
@@ -11,6 +12,13 @@ import * as SignalStylesModule from '../signals/Signals.scss';
 const TileStyles: any = TileStylesModule;
 const SignalStyles: any = SignalStylesModule;
 // tslint:enable:no-any
+
+const enum TileLayoutValues {
+  nameplatePadding = 12,
+  nameplateNameHeight = 20,
+  nameplateActivityHeight = 20,
+  foregroundMargin = 16
+}
 
 export interface ITileState {
   isSelected?: boolean;
@@ -273,4 +281,54 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected: selectionIndex > -1 && selection && selection.isIndexSelected(selectionIndex)
     });
   }
+}
+
+export interface ITileLayout {
+  foregroundSize?: ISize | undefined;
+  backgroundSize?: ISize | undefined;
+}
+
+export function getTileLayout(tileElement: JSX.Element): ITileLayout {
+  const tileProps: ITileProps = tileElement.props;
+
+  const {
+    contentSize
+  } = tileProps;
+
+  if (!contentSize) {
+    return {};
+  }
+
+  const width = contentSize.width;
+
+  let nameplateHeight = 0;
+
+  if (tileProps.itemName || tileProps.itemActivity) {
+    nameplateHeight += TileLayoutValues.nameplatePadding * 2; // 12px top/bottom padding.
+    if (tileProps.itemName) {
+      nameplateHeight += TileLayoutValues.nameplateNameHeight;
+    }
+    if (tileProps.itemActivity) {
+      nameplateHeight += TileLayoutValues.nameplateActivityHeight;
+    }
+  }
+
+  return {
+    foregroundSize: {
+      width: width - TileLayoutValues.foregroundMargin * 2,
+      height: contentSize.height - TileLayoutValues.foregroundMargin - nameplateHeight
+    },
+    backgroundSize: contentSize
+  };
+}
+
+export function renderTileWithLayout(tileElement: JSX.Element, props: Partial<ITileProps>): JSX.Element {
+  const Tag = tileElement.type;
+
+  return (
+    <Tag
+      { ...tileElement.props }
+      { ...props }
+    />
+  );
 }

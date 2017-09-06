@@ -30,7 +30,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   public render() {
     let {
-      className,
       onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
@@ -132,7 +131,8 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
             className={ this._classNames.activityPersona }
             size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
             hidePersonaDetails={ true }
-            style={ style } />
+            style={ style }
+          />
         );
       });
       personaElement = <div className={ this._classNames.personaContainer }>{ personaList }</div>;
