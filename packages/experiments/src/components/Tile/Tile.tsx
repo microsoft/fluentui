@@ -15,8 +15,9 @@ const SignalStyles: any = SignalStylesModule;
 
 const enum TileLayoutValues {
   nameplatePadding = 12,
-  nameplateNameHeight = 20,
-  nameplateActivityHeight = 20,
+  nameplateNameHeight = 17,
+  nameplateMargin = 4,
+  nameplateActivityHeight = 14,
   foregroundMargin = 16
 }
 
@@ -211,16 +212,21 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     return (
       <span
         role='presentation'
-        className={ css('ms-Tile-content', TileStyles.content) }
+        className={ css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate) }
       >
         <span
           role='presentation'
-          className={ css('ms-Tile-foreground', TileStyles.foreground, {
-            [`ms-Tile-foreground--hasFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame,
-            [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
-          }) }
+          className={ css('ms-Tile-content', TileStyles.content) }
         >
-          { foreground }
+          <span
+            role='presentation'
+            className={ css('ms-Tile-foreground', TileStyles.foreground, {
+              [`ms-Tile-foreground--hasFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame,
+              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
+            }) }
+          >
+            { foreground }
+          </span>
         </span>
       </span>
     );
@@ -319,7 +325,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
       nameplateHeight += TileLayoutValues.nameplateNameHeight;
     }
     if (tileProps.itemActivity) {
-      nameplateHeight += TileLayoutValues.nameplateActivityHeight;
+      nameplateHeight += TileLayoutValues.nameplateActivityHeight + TileLayoutValues.nameplateMargin;
     }
   }
 

@@ -178,13 +178,21 @@ button.check {
   }
 }
 
-.content {
-  margin: 16px 16px 0 16px;
+.aboveNameplate {
   flex: 1;
+  position: relative;
+  margin: 16px 16px 0 16px;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
 }
 
 .nameplate {
@@ -236,8 +244,8 @@ button.check {
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
-  height: 20px;
-  line-height: 20px;
+  height: 17px;
+  line-height: 17px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -250,8 +258,8 @@ button.check {
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
   color: #767676;
-  height: 16px;
-  line-height: 16px;
+  height: 14px;
+  line-height: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
