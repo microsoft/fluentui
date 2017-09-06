@@ -3,7 +3,6 @@ import './App.scss';
 import { AppState } from './AppState';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/components/Fabric';
-import { Footer } from '../Footer/Footer';
 import { Nav } from '../Nav/Nav';
 
 export interface IAppProps extends React.Props<App> {
@@ -40,12 +39,6 @@ export class App extends React.Component<IAppProps, any> {
         isNavOpen && 'is-navOpen'
       ) }>
         <div className='App-wrapper'>
-          <div className='App-mobileNavBar'>
-            <button className='menuButton' onClick={ this._onNavToggleClicked.bind(this) }>
-              { toggleIcon }
-            </button>
-          </div>
-          <div className='App-mobileNavOverlay' onClick={ this._onOverlayClicked.bind(this) }></div>
           <div className='App-nav'>
             <Nav pages={ AppState.pages } onLinkClick={ this._onNavItemClicked.bind(this) } />
           </div>
@@ -53,7 +46,6 @@ export class App extends React.Component<IAppProps, any> {
             { this.props.children }
           </div>
         </div>
-        <Footer />
       </Fabric>
     );
   }

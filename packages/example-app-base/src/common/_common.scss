@@ -4,3 +4,6 @@
 @import './focusBorder';
 @import './semanticColorVariables';
 
+// UHF sizing
+$uhf-screen-min-mobile: 768px;
+$uhf-screen-max-mobile: ($uhf-screen-min-mobile - 1);
