@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IEventHandler } from '@uifabric/utilities/lib/IEventHandler';
 
 export interface ISearchBox {
   /**
@@ -33,12 +34,12 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   /**
    * Callback executed when the user clears the search box by either clicking 'X' or hitting escape.
    */
-  onClearClick?: (ev?: any, onClear?: ((ev?: any) => void) | null) => void;
+  onClear?: IEventHandler<any>;
 
   /**
    * Callback executed when the user presses escape in the search box.
    */
-  onEscape?: (ev?: any, onClear?: ((ev?: any) => void) | null) => void;
+  onEscape?: IEventHandler<any>;
 
   /**
    * Deprecated at v0.52.2, use 'onChange' instead.

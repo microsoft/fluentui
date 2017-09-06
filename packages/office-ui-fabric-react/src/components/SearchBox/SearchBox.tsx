@@ -47,7 +47,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className, disabled } = this.props;
+    let { labelText, className, disabled, onClear = this._onClear } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
@@ -78,7 +78,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         />
         <div
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
-          onClick={ this._onClearClick }
+          onClick={ (ev) => onClear(ev, this._onClear) }
         >
           <Icon iconName='Clear' />
         </div>
@@ -93,12 +93,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     if (this._inputElement) {
       this._inputElement.focus();
     }
-  }
-
-  @autobind
-  private _onClearClick(ev?: any) {
-    const { onClearClick = this._onClear } = this.props;
-    onClearClick(ev, this._onClear);
   }
 
   @autobind
