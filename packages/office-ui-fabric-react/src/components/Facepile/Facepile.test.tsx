@@ -82,7 +82,8 @@ describe('Facepile', () => {
 
     it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
       const wrapper = ReactTestUtils.renderIntoDocument(
-        <Facepile personas={ [] }
+        <Facepile
+          personas={ [] }
           overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.descriptive }
         />);

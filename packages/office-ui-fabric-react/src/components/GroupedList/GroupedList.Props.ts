@@ -203,6 +203,12 @@ export interface IGroupRenderProps {
    * @default CheckboxVisibility.visible
    */
   collapseAllVisibility?: CollapseAllVisibility;
+
+  /**
+   * Boolean indicating if empty groups are shown
+   * @defaultvalue false
+   */
+  showEmptyGroups?: boolean;
 }
 
 export interface IGroupDividerProps {

@@ -148,11 +148,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         className={ css(
           'ms-BasePicker',
           className ? className : '') }
-        onKeyDown={ this.onKeyDown } >
+        onKeyDown={ this.onKeyDown }
+      >
         <FocusZone
           ref={ this._resolveRef('focusZone') }
           direction={ FocusZoneDirection.bidirectional }
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }>
+          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
+        >
           <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
             <div className={ css('ms-BasePicker-text', styles.pickerText) } role={ 'list' }>
               { this.renderItems() }
@@ -194,7 +196,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         gapSpace={ 5 }
         targetElement={ this.input.inputElement }
         onDismiss={ this.dismissSuggestions }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
+        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
+      >
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
@@ -634,11 +637,15 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 
     return (
       <div>
-        <div ref={ this._resolveRef('root') }
+        <div
+          ref={ this._resolveRef('root') }
           className={ css('ms-BasePicker', className ? className : '') }
-          onKeyDown={ this.onKeyDown } >
-          <SelectionZone selection={ this.selection }
-            selectionMode={ SelectionMode.multiple }>
+          onKeyDown={ this.onKeyDown }
+        >
+          <SelectionZone
+            selection={ this.selection }
+            selectionMode={ SelectionMode.multiple }
+          >
             <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               <BaseAutoFill
                 { ...inputProps as any }
@@ -660,11 +667,13 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           </SelectionZone>
         </div>
         { this.renderSuggestions() }
-        <FocusZone ref={ this._resolveRef('focusZone') }
+        <FocusZone
+          ref={ this._resolveRef('focusZone') }
           className='ms-BasePicker-selectedItems'
           isCircularNavigation={ true }
           direction={ FocusZoneDirection.bidirectional }
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke } >
+          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
+        >
           { this.renderItems() }
         </FocusZone>
 
