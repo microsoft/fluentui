@@ -441,19 +441,20 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
 
       return (
-        <div role={ cellRole }
+        <div
+          role={ cellRole }
           className={ css('ms-List-cell') }
           key={ itemKey }
           data-list-index={ index }
-          data-automationid='ListCell'>
+          data-automationid='ListCell'
+        >
           { onRenderCell && onRenderCell(item, index) }
         </div>
       );
     });
 
     return (
-      <div
-        { ...divProps }>
+      <div { ...divProps }>
         { cells }
       </div>
     );

@@ -85,7 +85,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       <div
         ref='root'
         className={ css('ms-ScrollablePane', styles.root, className) }
-        data-is-scrollable={ true }>
+        data-is-scrollable={ true }
+      >
         <div ref='stickyContainer' className={ styles.stickyContainer }>
           <div ref='stickyAbove' className={ styles.stickyAbove } />
           <div ref='stickyBelow' className={ styles.stickyBelow } />
