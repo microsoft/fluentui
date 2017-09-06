@@ -18,8 +18,17 @@ export interface ISignalFieldProps extends React.HTMLAttributes<HTMLSpanElement>
  * Pass the main value as the children.
  */
 export const SignalField: React.StatelessComponent<ISignalFieldProps> = (props: ISignalFieldProps): JSX.Element => {
+  const {
+    before,
+    after,
+    className,
+    ...spanProps
+  } = props;
   return (
-    <span className={ SignalStyles.signalField }>
+    <span
+      { ...spanProps }
+      className={ css(SignalStyles.signalField, className) }
+    >
       { props.before }
       <span className={ SignalStyles.signalFieldValue }>
         { props.children }
