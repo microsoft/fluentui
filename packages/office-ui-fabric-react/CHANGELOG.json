@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.41.0",
+      "tag": "office-ui-fabric-react_v4.41.0",
+      "date": "Wed, 06 Sep 2017 10:16:32 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "10771104576cbaaa2dac7d3d434976225354eb50",
+            "comment": "Allow rendering empty GroupedList headers"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.40.1",
+      "tag": "office-ui-fabric-react_v4.40.1",
+      "date": "Tue, 05 Sep 2017 20:36:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "aabfe574769721a9d7f385920be84cfac3f90a34",
+            "comment": "HoverCard: Support change in expanded card height. Add callbacks upon card visible/hide"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "017faf1afb99aaa2e3307c09c50c84edb94fc2b4",
+            "comment": "ScrollablePane: Fix component to remove stickyContainer element on component unmount."
+          },
+          {
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "9d2dc9540265de67d34c20f61a112b8eb47d3cf2",
+            "comment": "List: fixing minor issue around using the `shouldVirtualize` prop."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.40.0",
       "tag": "office-ui-fabric-react_v4.40.0",
       "date": "Mon, 04 Sep 2017 10:16:56 GMT",
