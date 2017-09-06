@@ -42,7 +42,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         onRenderItemColumn={ _renderItemColumn }
         onColumnHeaderClick={ this._onColumnClick }
         onItemInvoked={ (item, index) => alert(`Item ${item.name} at index ${index} has been invoked.`) }
-        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column!.key} contextmenu opened.`) } />
+        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column!.key} contextmenu opened.`) }
+      />
     );
   }
 

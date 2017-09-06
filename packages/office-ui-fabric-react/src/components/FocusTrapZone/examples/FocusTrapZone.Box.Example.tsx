@@ -69,7 +69,8 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         { (() => {
           if (isChecked) {
             return (
