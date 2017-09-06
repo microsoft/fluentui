@@ -15,7 +15,6 @@ import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
-import { CommandButton } from '../../Button';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -67,14 +66,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
   public render() {
     let {
-      disabled,
       colorCells,
-      columnCount,
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
-      className,
-      onCellFocused
+      className
     } = this.props;
 
     return (
@@ -217,6 +213,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
    * Clear the colors by calling the given callbacks
    * @param callbacks - The callbacks to handle the clear operation
    */
+  // tsline:disable-next-line:no-unused-variable
   private _clearColors(callbacks: ((id?: string, color?: string) => void)[]) {
     callbacks.forEach((callback) => {
       if (callback) {

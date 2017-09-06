@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import * as stylesImport from './DetailsList.scss';
-import * as ReactDOM from 'react-dom';
 
 import {
   BaseComponent,
@@ -69,6 +68,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   };
 
   // References
+  // tslint:disable-next-line:no-unused-variable
   private _root: HTMLElement;
   private _header: IDetailsHeader;
   private _groupedList: GroupedList;

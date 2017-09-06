@@ -19,11 +19,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem,
-      showRemoveButton,
-      id
+      onRemoveItem
     } = this.props;
-    let itemProps = assign({}, suggestionModel.item, { onRemoveItem });
     return (
       <div
         className={ css(
@@ -71,7 +68,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   public render() {
     let {
-      suggestionsHeaderText,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -87,8 +83,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
-      isResultsFooterVisible,
-      showRemoveButtons,
       suggestionsAvailableAlertText
     } = this.props;
 
