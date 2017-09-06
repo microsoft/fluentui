@@ -242,13 +242,24 @@ button.check {
 .name {
   display: block;
   font-weight: $ms-font-weight-regular;
-  font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
-  height: 17px;
-  line-height: 17px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &,
+  .isLarge & {
+    font-size: $ms-font-size-m;
+    height: 17px;
+    line-height: 17px;
+  }
+
+  .isSmall & {
+    font-size: $ms-font-size-s;
+    height: 14px;
+    line-height: 14px;
+  }
+
   @include preserveExtenders();
 }
 
