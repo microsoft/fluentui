@@ -25,7 +25,7 @@ describe('Callout', () => {
           >
             <div>
               Content
-                        </div>
+            </div>
           </Callout>
         </div>
       );
@@ -52,7 +52,7 @@ describe('Callout', () => {
           >
             <div>
               Content
-                        </div>
+            </div>
           </Callout>
         </div>
       );
