@@ -40,9 +40,9 @@
   position: relative;
 
   &::after {
-    bottom: 0;
+    bottom: -1px;
     content: '';
-    height: 70px;
+    height: 82px;
     left: -10px;
     pointer-events: none;
     position: absolute;
