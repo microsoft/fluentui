@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType, IContextualMenuSection } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { getStyles } from './ContextualMenu.styles';
 import { getClassNames } from './ContextualMenu.classNames';
 import { ThemeSettingName } from '../../Styling';
 import {
@@ -202,10 +201,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       theme,
       calloutProps } = this.props;
 
-    const classNames = getClassNames(
-      getStyles(theme!, customStyles),
-    );
-
+    const classNames = getClassNames(customStyles!, theme!);
     let hasIcons = itemsHaveIcons(items);
 
     function itemsHaveIcons(contextualMenuItems: IContextualMenuItem[]): boolean {
@@ -371,7 +367,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         role='separator'
         key={ 'separator-' + index + (top === undefined ? '' : (top ? '-top' : '-bottom')) }
         className={ css('ms-ContextualMenu-divider', styles.divider, className) } />;
-      />;
     }
     return null;
   }

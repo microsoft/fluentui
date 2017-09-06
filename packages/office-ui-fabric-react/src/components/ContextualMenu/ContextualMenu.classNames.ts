@@ -1,17 +1,28 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles, IStyle } from '../../Styling';
+import { mergeStyleSets, IStyle, ITheme } from '../../Styling';
 import { IContextualMenuStyles } from './ContextualMenu.Props';
 
 export interface IContextualMenuClassNames {
-  title: string;
+  title?: string;
 }
 
 export const getClassNames = memoizeFunction((
-  styles: IContextualMenuStyles
+  styles: IContextualMenuStyles,
+  theme: ITheme,
 ): IContextualMenuClassNames => {
-  return {
-    title: mergeStyles(
-      styles.title
-    ) as string
-  };
+
+  styles = styles || {};
+
+  return mergeStyleSets({
+    title: [{
+      fontSize: '16px',
+      paddingRight: '14px',
+      paddingLeft: '14px',
+      paddingBottom: '5px',
+      paddingTop: '5px',
+      backgroundColor: theme.palette.neutralLight
+    },
+    styles.title
+    ]
+  });
 });
