@@ -188,7 +188,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   @autobind
   private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
     return (
-      <div className={ className }>
+      <div className={ className } title={ render ? '' : text }>
         { render ? render(this.props) : text }
       </div>
     );
