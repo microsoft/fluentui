@@ -97,6 +97,12 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onClearClick(ev?: any) {
+    const { onClearClick = this._onClear } = this.props;
+    onClearClick(ev, this._onClear);
+  }
+
+  @autobind
+  private _onClear(ev?: any) {
     this._latestValue = '';
     this.setState({
       value: ''
@@ -124,13 +130,13 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
     const {
-      onEscape = this._onClearClick
+      onEscape = this._onClear
     } = this.props;
 
     switch (ev.which) {
 
       case KeyCodes.escape:
-        onEscape(ev, this._onClearClick);
+        onEscape(ev, this._onClear);
         break;
 
       case KeyCodes.enter:
