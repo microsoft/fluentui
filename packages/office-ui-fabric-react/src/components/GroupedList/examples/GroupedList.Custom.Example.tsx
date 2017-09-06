@@ -31,6 +31,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
         groupProps={
           {
             onRenderHeader: this._onRenderHeader,
+            onRenderShowAll: this._onRenderShowAll,
             onRenderFooter: this._onRenderFooter
           }
         }
@@ -58,9 +59,17 @@ export class GroupedListCustomExample extends React.Component<any, any> {
     );
   }
 
+  private _onRenderShowAll(props: IGroupDividerProps): JSX.Element {
+    return (
+      <div className={ css('ms-GroupedListExample-showall', FontClassNames.medium) }>
+        This is a custom <Link onClick={ () => props.onToggleSummarize }>Show All</Link> link for { props.group!.name }
+      </div>
+    );
+  }
+
   private _onRenderFooter(props: IGroupDividerProps): JSX.Element {
     return (
-      <div className={ css('ms-GroupedListExample-footer', FontClassNames.xLarge) }>
+      <div className={ css('ms-GroupedListExample-footer', FontClassNames.large) }>
         This is a custom footer for { props.group!.name }
       </div>
     );

@@ -7,10 +7,10 @@ import {
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
-import * as stylesImport from './GroupFooter.scss';
+import * as stylesImport from './GroupShowAll.scss';
 const styles: any = stylesImport;
 
-export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
+export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
   public render(): JSX.Element | null {
     let { group, groupLevel, showAllLinkText } = this.props;
 
@@ -18,7 +18,7 @@ export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
       return (
         <div className={ css('ms-groupFooter', styles.root) }>
           { GroupSpacer({ count: groupLevel! }) }
-          TODO: make group footer less prominent or only render when overridden
+          <Link onClick={ this._onSummarizeClick }>{ showAllLinkText }</Link>
         </div>
       );
     }
