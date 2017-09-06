@@ -69,7 +69,8 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
   public render(): JSX.Element | null {
     const {
       folderCoverSize: size = 'large',
-      folderCoverType: type = 'default'
+      folderCoverType: type = 'default',
+      hideContent = false
     } = this.props;
 
     const assets = ASSETS[size][type];
@@ -77,27 +78,32 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     return (
       <div
         className={ css(FolderCoverStyles.root, {
-          [FolderCoverStyles.isSmall]: size === 'small',
-          [FolderCoverStyles.isLarge]: size === 'large',
-          [FolderCoverStyles.isDefault]: type === 'default',
-          [FolderCoverStyles.isMedia]: type === 'media'
+          [`ms-FolderCover--isSmall ${FolderCoverStyles.isSmall}`]: size === 'small',
+          [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
+          [`ms-FolderCover--isDefault ${FolderCoverStyles.isDefault}`]: type === 'default',
+          [`ms-FolderCover--isMedia ${FolderCoverStyles.isMedia}`]: type === 'media',
+          [`ms-FolderCover--hideContent ${FolderCoverStyles.hideContent}`]: hideContent
         }) }
       >
         <img
-          className={ css(FolderCoverStyles.back) }
+          className={ css('ms-FolderCover-back', FolderCoverStyles.back) }
           src={ assets.back }
         />
-        <span className={ css(FolderCoverStyles.content) }>
-          { this.props.children }
-        </span>
+        {
+          this.props.children ? (
+            <span className={ css('ms-FolderCover-content', FolderCoverStyles.content) }>
+              { this.props.children }
+            </span>
+          ) : null
+        }
         <img
-          className={ css(FolderCoverStyles.front) }
+          className={ css('ms-FolderCover-front', FolderCoverStyles.front) }
           src={ assets.front }
         />
         {
           this.props.metadata ?
             (
-              <span className={ css(FolderCoverStyles.metadata) }>
+              <span className={ css('ms-FolderCover-metadata', FolderCoverStyles.metadata) }>
                 { this.props.metadata }
               </span>
             ) :
