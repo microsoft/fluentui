@@ -146,7 +146,8 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

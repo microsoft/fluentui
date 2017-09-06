@@ -55,7 +55,8 @@ describe('DefaultButton', () => {
     button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
         href='http://www.microsoft.com'
-        target='_blank'>
+        target='_blank'
+      >
         Hello
       </DefaultButton>
     );
@@ -68,7 +69,8 @@ describe('DefaultButton', () => {
       <DefaultButton
         href='http://www.microsoft.com'
         target='_blank'
-        aria-label='MyLabel'>
+        aria-label='MyLabel'
+      >
         Hello
       </DefaultButton>
     );
@@ -81,7 +83,8 @@ describe('DefaultButton', () => {
       <DefaultButton
         href='http://www.microsoft.com'
         target='_blank'
-        aria-labelledby='someid'>
+        aria-labelledby='someid'
+      >
         Hello
       </DefaultButton>
     );
@@ -95,7 +98,8 @@ describe('DefaultButton', () => {
         href='http://www.microsoft.com'
         target='_blank'
         ariaDescription='This description is not visible'
-        styles={ { screenReaderText: 'some-screenreader-class' } }>
+        styles={ { screenReaderText: 'some-screenreader-class' } }
+      >
         Hello
       </DefaultButton>
     );
@@ -108,7 +112,8 @@ describe('DefaultButton', () => {
       <IconButton
         iconProps={ { iconName: 'Emoji2' } }
         ariaDescription='Description on icon button'
-        styles={ { screenReaderText: 'some-screenreader-class' } } />
+        styles={ { screenReaderText: 'some-screenreader-class' } }
+      />
     );
     renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     expect(renderedDOM.getAttribute('aria-label') === null);
@@ -118,7 +123,8 @@ describe('DefaultButton', () => {
     button = ReactTestUtils.renderIntoDocument<any>(
       <CompoundButton
         description='Some awesome description'
-        ariaDescription='Description on icon button'>
+        ariaDescription='Description on icon button'
+      >
         And this is the label
       </CompoundButton>
     );

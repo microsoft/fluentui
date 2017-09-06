@@ -5,11 +5,17 @@ import * as React from 'react';
 export default class CheckboxVPage extends React.Component<any, any> {
   public render() {
     return <div style={ { backgroundColor: 'white' } } >
-      <Checkbox className='Checkbox' label='Check Box'
-        defaultChecked={ true } />
-      <Checkbox className='CheckboxDisabled' label='Check Box Disabled'
+      <Checkbox
+        className='Checkbox'
+        label='Check Box'
         defaultChecked={ true }
-        disabled={ true } />
+      />
+      <Checkbox
+        className='CheckboxDisabled'
+        label='Check Box Disabled'
+        defaultChecked={ true }
+        disabled={ true }
+      />
     </div>;
   }
 }
