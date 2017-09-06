@@ -240,7 +240,6 @@ describe('ResizeGroup', () => {
     });
 
     it('does not crash when the container size is set and there is no dataToMeasure', () => {
-      const dataToMeasure = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
       const getMeasuredElementWidthStub = sinon.stub();

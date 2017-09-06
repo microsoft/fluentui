@@ -208,17 +208,4 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       });
     }
   }
-
-  /**
-   * Clear the colors by calling the given callbacks
-   * @param callbacks - The callbacks to handle the clear operation
-   */
-  // tsline:disable-next-line:no-unused-variable
-  private _clearColors(callbacks: ((id?: string, color?: string) => void)[]) {
-    callbacks.forEach((callback) => {
-      if (callback) {
-        callback();
-      }
-    });
-  }
 }
