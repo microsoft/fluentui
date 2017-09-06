@@ -10,7 +10,19 @@ import { GroupSpacer } from './GroupSpacer';
 import * as stylesImport from './GroupShowAll.scss';
 const styles: any = stylesImport;
 
+export interface IGroupDividerProps {
+  /**
+ * The Show All link text.
+ * @default 'Show All'
+ */
+  showAllLinkText: string;
+}
+
 export class GroupShowAll extends BaseComponent<IGroupDividerProps, {}> {
+  public static defaultProps: IGroupDividerProps = {
+    showAllLinkText: 'Show All'
+  };
+
   public render(): JSX.Element | null {
     let { group, groupLevel, showAllLinkText } = this.props;
 
