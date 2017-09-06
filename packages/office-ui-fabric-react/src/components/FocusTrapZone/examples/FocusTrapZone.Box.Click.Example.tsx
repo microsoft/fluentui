@@ -68,7 +68,8 @@ export default class BoxNoClickExample extends React.Component<React.HTMLAttribu
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         { (() => {
           if (isToggled) {
             return (

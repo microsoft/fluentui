@@ -20,7 +20,8 @@ export default class DocumentCardVPage extends React.Component<any, any> {
         <DocumentCardPreview { ...previewProps } />
         <DocumentCardTitle
           title='Document Card'
-          shouldTruncate={ true } />
+          shouldTruncate={ true }
+        />
         <DocumentCardActivity
           activity='Created a few minutes ago'
           people={

@@ -33,7 +33,8 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         {
           this.props.children
         }

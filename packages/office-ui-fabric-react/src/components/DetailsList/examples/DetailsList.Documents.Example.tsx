@@ -107,7 +107,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
           return (
             <img
               src={ item.iconName }
-              className={ 'DetailsListExample-documentIconImage' } />
+              className={ 'DetailsListExample-documentIconImage' }
+            />
           );
         }
       },
@@ -137,7 +138,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onRender: (item: IDocument) => {
           return (
             <span
-              data-is-focusable={ true }>
+              data-is-focusable={ true }
+            >
               { item.dateModified }
             </span>
           );
@@ -156,7 +158,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onRender: (item: IDocument) => {
           return (
             <span
-              data-is-focusable={ true }>
+              data-is-focusable={ true }
+            >
               { item.modifiedBy }
             </span>
           );
@@ -175,7 +178,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         onRender: (item: IDocument) => {
           return (
             <span
-              data-is-focusable={ true }>
+              data-is-focusable={ true }
+            >
               { item.fileSize }
             </span>
           );
