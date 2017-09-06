@@ -233,7 +233,6 @@ describe('DefaultButton', () => {
   });
 
   it('Tapping menu button of SplitButton expands menu', () => {
-    let didClick = false;
     const button = ReactTestUtils.renderIntoDocument<any>(
       <DefaultButton
         data-automation-id='test'
@@ -286,7 +285,6 @@ describe('DefaultButton', () => {
         } }
       />
     );
-    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
     const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-Button--default')[0] as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuButtonDOM);
     expect(didClick).to.equal(true);
@@ -418,7 +416,6 @@ describe('DefaultButton', () => {
         } }
       />
     );
-    const splitButtonDOM = ReactDOM.findDOMNode(renderedDOM as React.ReactInstance);
     const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByClassName('ms-Button--default')[0] as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuButtonDOM);
     expect(didClick).to.equal(false);

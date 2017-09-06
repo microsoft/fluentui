@@ -9,8 +9,6 @@ import {
   autobind
 } from '../../../Utilities';
 
-import { Link } from 'office-ui-fabric-react/lib/Link';
-
 export class BreadcrumbBasicExample extends React.Component<any, any> {
   constructor() {
     super();

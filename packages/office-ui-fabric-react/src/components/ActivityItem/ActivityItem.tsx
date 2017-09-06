@@ -30,7 +30,6 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
 
   public render() {
     let {
-      className,
       onRenderIcon = this._onRenderIcon,
       onRenderActivityDescription = this._onRenderActivityDescription,
       onRenderComments = this._onRenderComments,
