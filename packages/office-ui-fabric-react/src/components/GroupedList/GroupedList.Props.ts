@@ -174,8 +174,16 @@ export interface IGroup {
 
 export interface IGroupRenderProps {
 
-  /** Boolean indicating if all groups are in collapsed state. */
+  /**
+   * Boolean indicating if all groups are in collapsed state.
+   * @deprecated
+   */
   isAllGroupsCollapsed?: boolean;
+
+  /**
+   * Boolean indicating if all groups are initially in collapsed state.
+   */
+  initialAllGroupsCollapsed?: boolean;
 
   /** Grouping item limit. */
   getGroupItemLimit?: (group: IGroup) => number;
