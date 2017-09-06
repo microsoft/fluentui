@@ -18,12 +18,14 @@ export class PivotSeparateExample extends React.Component<any, any> {
             width: 100,
             height: this.state.selectedKey === 'squareRed' ? 100 : 200,
             background: this.state.selectedKey === 'rectangleGreen' ? 'green' : 'red'
-          } } />
+          } }
+        />
         <Pivot
           selectedKey={ this.state.selectedKey }
           onLinkClick={ this._handleLinkClick }
           headersOnly={ true }
-          getTabId={ this._getTabId }>
+          getTabId={ this._getTabId }
+        >
           <PivotItem linkText='Rectangle red' itemKey='rectangleRed' />
           <PivotItem linkText='Square red' itemKey='squareRed' />
           <PivotItem linkText='Rectangle green' itemKey='rectangleGreen' />

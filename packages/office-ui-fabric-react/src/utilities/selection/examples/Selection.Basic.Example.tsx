@@ -95,7 +95,8 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
         <MarqueeSelection selection={ selection } isEnabled={ selection.mode === SelectionMode.multiple } >
           <SelectionZone
             selection={ selection }
-            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }>
+            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }
+          >
             { items.map((item, index) => (
               <SelectionItemExample
                 ref={ 'detailsGroup_' + index }
