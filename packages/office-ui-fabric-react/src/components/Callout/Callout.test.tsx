@@ -22,7 +22,7 @@ describe('Callout', () => {
           <Callout
             target='#target'
             directionalHint={ DirectionalHint.topLeftEdge }
-            >
+          >
             <div>
               Content
                         </div>
@@ -49,7 +49,7 @@ describe('Callout', () => {
           <Callout
             target={ eventTarget }
             directionalHint={ DirectionalHint.topLeftEdge }
-            >
+          >
             <div>
               Content
                         </div>
@@ -74,7 +74,7 @@ describe('Callout', () => {
           <Callout
             target={ targetElement }
             directionalHint={ DirectionalHint.topLeftEdge }
-            >
+          >
             <div>
               Content
                         </div>
@@ -99,7 +99,7 @@ describe('Callout', () => {
           <Callout
             targetElement={ targetElement }
             directionalHint={ DirectionalHint.topLeftEdge }
-            >
+          >
             <div>
               Content
                         </div>
@@ -120,7 +120,7 @@ describe('Callout', () => {
         <div>
           <Callout
             directionalHint={ DirectionalHint.topLeftEdge }
-            >
+          >
             <div>
               Content
                         </div>
@@ -155,7 +155,7 @@ describe('Callout', () => {
             target='#target'
             directionalHint={ DirectionalHint.topLeftEdge }
             onDismiss={ onDismiss }
-            >
+          >
             <div>
               Content
             </div>
