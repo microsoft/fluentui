@@ -69,7 +69,8 @@ function _getAppRoutes(): JSX.Element[] {
       <Route
         key={ pathIndex }
         path={ '#/' + url }
-        getComponent={ getPath(path) } />);
+        getComponent={ getPath(path) }
+      />);
   });
   return routes;
 }

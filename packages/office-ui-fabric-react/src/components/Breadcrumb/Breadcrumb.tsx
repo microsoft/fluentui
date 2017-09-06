@@ -113,7 +113,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
                   { onRenderItem(item, this._onRenderItem) }
                   <Icon
                     className={ css('ms-Breadcrumb-chevron', styles.chevron) }
-                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+                    iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+                  />
                 </li>
               )) }
           </ol>
@@ -130,7 +131,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, any> {
           className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
           aria-current={ item.isCurrentItem ? 'page' : null }
-          onClick={ this._onBreadcrumbClicked.bind(this, item) }>
+          onClick={ this._onBreadcrumbClicked.bind(this, item) }
+        >
           <TooltipHost
             content={ item.text }
             overflowMode={ TooltipOverflowMode.Parent }

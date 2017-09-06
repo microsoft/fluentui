@@ -118,11 +118,12 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
     });
 
     return (
-      <div className={ mergeStyles(
-        this._styles.expandedCard,
-        this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
-        this.state.needsScroll && { 'overflow-y': 'auto' }
-      ) as string }
+      <div
+        className={ mergeStyles(
+          this._styles.expandedCard,
+          this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
+          this.state.needsScroll && { 'overflow-y': 'auto' }
+        ) as string }
         ref={ this._resolveRef('_expandedElem') }
       >
         <div className={ this._styles.expandedCardScroll as string }>

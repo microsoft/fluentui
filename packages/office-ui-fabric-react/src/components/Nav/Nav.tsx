@@ -108,13 +108,15 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation'
+        <nav
+          role='navigation'
           className={ css(
             'ms-Nav',
             styles.root,
             className,
             isOnTop && css('is-onTop', styles.rootIsOnTop, AnimationClassNames.slideRightIn40)
-          ) }>
+          ) }
+        >
           { groupElements }
         </nav>
       </FocusZone>
@@ -167,7 +169,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         href={ link.url }
         iconProps={ { iconName: link.icon } }
         description={ link.title || link.name }
-        onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
+        onClick={ this._onNavButtonLinkClicked.bind(this, link) }
+      >
         { link.name }
       </CommandButton>);
   }
@@ -178,7 +181,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
 
     return (
-      <div key={ link.key || linkIndex }
+      <div
+        key={ link.key || linkIndex }
         className={ css(
           'ms-Nav-compositeLink',
           styles.compositeLink,
@@ -186,7 +190,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           isLinkSelected && 'is-selected',
           !!link.isExpanded && styles.compositeLinkIsExpanded,
           isLinkSelected && styles.compositeLinkIsSelected
-        ) }>
+        ) }
+      >
         { (link.links && link.links.length > 0 ?
           <button
             style={ { [isRtl ? 'marginRight' : 'marginLeft']: paddingBefore } }
@@ -242,7 +247,8 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           'ms-Nav-group',
           styles.group,
           isGroupExpanded && ('is-expanded ' + styles.groupIsExpanded)
-        ) }>
+        ) }
+      >
         { (group.name ?
           <button
             className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonIsGroup, styles.groupHeaderFontSize) }

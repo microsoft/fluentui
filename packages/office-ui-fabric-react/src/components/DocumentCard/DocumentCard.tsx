@@ -55,7 +55,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
         }
         onKeyDown={ actionable ? this._onKeyDown : undefined }
         onClick={ actionable ? this._onClick : undefined }
-        style={ style }>
+        style={ style }
+      >
         { children }
       </div>
     );
