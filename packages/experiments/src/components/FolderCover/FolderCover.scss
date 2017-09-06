@@ -43,6 +43,14 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+  opacity: 1;
+
+  transition: opacity 0.2s linear;
+
+  .hideContent & {
+    opacity: 0;
+  }
 
   &,
   .isSmall & {
