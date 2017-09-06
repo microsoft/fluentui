@@ -29,32 +29,38 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           <div>
             <ExampleCard
               title={ 'Basic SpinButton' }
-              code={ SpinButtonBasicExampleCode }>
+              code={ SpinButtonBasicExampleCode }
+            >
               <SpinButtonBasicExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Basic Disabled SpinButton' }
-              code={ SpinButtonBasicDisabledExampleCode }>
+              code={ SpinButtonBasicDisabledExampleCode }
+            >
               <SpinButtonBasicDisabledExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Stateful SpinButton' }
-              code={ SpinButtonBasicExampleCode }>
+              code={ SpinButtonBasicExampleCode }
+            >
               <SpinButtonStatefulExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Basic SpinButton With Icon' }
-              code={ SpinButtonBasicWithIconExampleCode }>
+              code={ SpinButtonBasicWithIconExampleCode }
+            >
               <SpinButtonBasicWithIconExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Basic SpinButton With Icon and Positioned at the End' }
-              code={ SpinButtonBasicWithEndPositionExampleCode }>
+              code={ SpinButtonBasicWithEndPositionExampleCode }
+            >
               <SpinButtonBasicWithEndPositionExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Custom Styled SpinButton' }
-              code={ SpinButtonCustomStyledExampleCode }>
+              code={ SpinButtonCustomStyledExampleCode }
+            >
               <SpinButtonCustomStyledExample />
             </ExampleCard>
 
@@ -98,7 +104,8 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/SpinButton/SpinButton.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }
