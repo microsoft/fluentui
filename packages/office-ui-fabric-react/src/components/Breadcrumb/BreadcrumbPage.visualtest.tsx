@@ -17,7 +17,8 @@ export default class BreadcrumbVPage extends React.Component<any, any> {
           { text: 'This is folder 4', 'key': 'f4', onClick: () => { return; } },
           { text: 'This is folder 5', 'key': 'f5', onClick: () => { return; } },
         ] }
-        maxDisplayedItems={ 3 } />
+        maxDisplayedItems={ 3 }
+      />
     </div>;
   }
 }

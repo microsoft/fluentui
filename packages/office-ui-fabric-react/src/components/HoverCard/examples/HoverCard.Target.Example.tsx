@@ -2,14 +2,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import {
   HoverCard,
   IExpandingCardProps
 } from 'office-ui-fabric-react/lib/HoverCard';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './HoverCard.Example.scss';
 
@@ -49,6 +49,8 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
             expandingCardProps={ this.props.expandingCardProps }
             target={ this.state.contentRendered }
             cardDismissDelay={ 300 }
+            onCardVisible={ () => console.log('onCardVisible') }
+            onCardHide={ () => console.log('onCardHide') }
           />
         }
       </div>
@@ -91,7 +93,7 @@ export class HoverCardTargetExample extends BaseComponent<{}, IHoverCardExampleS
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
       renderData: item,
-      directionalHint: DirectionalHint.rightCenter,
+      directionalHint: DirectionalHint.rightTopEdge,
       gapSpace: 16
     };
 

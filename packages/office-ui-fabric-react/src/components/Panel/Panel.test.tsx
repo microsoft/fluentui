@@ -26,7 +26,8 @@ describe('Panel', () => {
       <Panel
         isOpen={ true }
         onDismiss={ () => { dismissCalled = true; } }
-        onDismissed={ () => dismissedCalled = true } />,
+        onDismissed={ () => dismissedCalled = true }
+      />,
       div) as any;
 
     panel.dismiss();

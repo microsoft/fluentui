@@ -18,7 +18,8 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         exampleCards={
           <ExampleCard
             title='Various MessageBar types'
-            code={ MessageBarBasicExampleCode }>
+            code={ MessageBarBasicExampleCode }
+          >
             <MessageBarBasicExample />
           </ExampleCard>
         }
@@ -61,7 +62,8 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/MessageBar/MessageBar.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

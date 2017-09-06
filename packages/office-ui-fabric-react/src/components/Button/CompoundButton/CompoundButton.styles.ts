@@ -11,7 +11,6 @@ import {
 import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
-
 import {
   primaryStyles,
   standardStyles

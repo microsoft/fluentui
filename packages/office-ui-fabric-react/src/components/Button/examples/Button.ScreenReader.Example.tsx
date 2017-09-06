@@ -17,7 +17,8 @@ export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}>
           data-automation-id='test'
           disabled={ disabled }
           checked={ checked }
-          ariaDescription='This is aria description used for screen reader.'>
+          ariaDescription='This is aria description used for screen reader.'
+        >
           Aria Description
         </PrimaryButton>
       </div>

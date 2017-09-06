@@ -29,7 +29,7 @@ export function hoistMethods(destination: any, source: any, exclusions: string[]
     ) {
       hoisted.push(methodName);
       /* tslint:disable:no-function-expression */
-      destination[methodName] = function () { source[methodName].apply(source, arguments); };
+      destination[methodName] = function (): void { source[methodName].apply(source, arguments); };
       /* tslint:enable */
     }
   }
@@ -46,5 +46,5 @@ export function hoistMethods(destination: any, source: any, exclusions: string[]
  */
 export function unhoistMethods(source: any, methodNames: string[]): void {
   methodNames
-    .forEach((methodName) => delete source[methodName]);
+    .forEach((methodName: string) => delete source[methodName]);
 }
