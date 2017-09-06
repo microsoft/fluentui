@@ -164,7 +164,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               aria-labelledby={ `${this._id}-check` }
               onClick={ this._onSelectAllClicked }
               aria-colindex={ 0 }
-              role='columnheader' >
+              role='columnheader'
+            >
               {
                 onRenderColumnHeaderTooltip({
                   hostClassName: css(styles.checkTooltip),

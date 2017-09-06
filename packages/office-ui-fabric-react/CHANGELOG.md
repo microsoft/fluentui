@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2017 20:36:48 GMT and should not be manually modified.
+
+## 4.40.1
+Tue, 05 Sep 2017 20:36:48 GMT
+
+### Patches
+
+- HoverCard: Support change in expanded card height. Add callbacks upon card visible/hide
+- ScrollablePane: Fix component to remove stickyContainer element on component unmount.
+- List: fixing minor issue around using the `shouldVirtualize` prop.
 
 ## 4.40.0
 Mon, 04 Sep 2017 10:16:56 GMT

@@ -175,7 +175,8 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
               alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange } />
+              onLoadingStateChange={ this._onPhotoLoadingStateChange }
+            />
           </div>
         ) }
         { presenceElement }

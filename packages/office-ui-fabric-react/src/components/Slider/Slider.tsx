@@ -102,7 +102,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
           ['ms-Slider-row ' + styles.rootIsHorizontal]: !vertical,
           ['ms-Slider-column ' + styles.rootIsVertical]: vertical
         }) }
-        ref='root'>
+        ref='root'
+      >
         { label && (
           <Label className={ styles.titleLabel } { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
             { label }
@@ -144,8 +145,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 style={ { [lengthString]: thumbOffsetPercent + '%' } }
               />
               <span
-                 className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
-                 style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
+                className={ css('ms-Slider-inactive', styles.lineContainer, styles.inactiveSection) }
+                style={ { [lengthString]: (100 - thumbOffsetPercent) + '%' } }
               />
             </div>
           </button>

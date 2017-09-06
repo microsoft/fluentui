@@ -117,7 +117,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         <Popup
           role='dialog'
           ariaLabelledBy={ headerText && headerTextId }
-          onDismiss={ this.dismiss }>
+          onDismiss={ this.dismiss }
+        >
           <div
             className={
               css(
