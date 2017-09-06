@@ -12,24 +12,16 @@ const styles: any = stylesImport;
 
 export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render(): JSX.Element | null {
-    let { group, groupLevel, showAllLinkText } = this.props;
+    let { group, groupLevel, footerText } = this.props;
 
-    if (group) {
+    if (group && footerText) {
       return (
         <div className={ css('ms-groupFooter', styles.root) }>
           { GroupSpacer({ count: groupLevel! }) }
-          TODO: make group footer less prominent or only render when overridden
+          { footerText }
         </div>
       );
     }
     return null;
-  }
-
-  @autobind
-  private _onSummarizeClick(ev: React.MouseEvent<HTMLElement>) {
-    this.props.onToggleSummarize!(this.props.group!);
-
-    ev.stopPropagation();
-    ev.preventDefault();
   }
 }

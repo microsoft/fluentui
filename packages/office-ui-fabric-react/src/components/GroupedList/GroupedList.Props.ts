@@ -253,6 +253,9 @@ export interface IGroupDividerProps {
   /** The selection mode of the list the group lives within. */
   selectionMode?: SelectionMode;
 
+  /** Text to display for the group footer. */
+  footerText?: string;
+
   /** Text to display for the group "Show All" link. */
   showAllLinkText?: string;
 

@@ -225,7 +225,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                 this._onRenderGroup(renderCount)
             )
         }
-        { onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll) }
+        { isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll) }
         { onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
       </div>
     );
