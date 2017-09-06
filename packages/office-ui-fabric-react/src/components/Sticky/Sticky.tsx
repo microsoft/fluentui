@@ -8,10 +8,8 @@ import {
   BaseComponent,
   autobind
 } from '../../Utilities';
-import { ScrollablePane } from '../../ScrollablePane';
 import { IStickyProps, StickyPositionType } from './Sticky.Props';
 import * as stylesImport from './Sticky.scss';
-const styles: any = stylesImport;
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -65,7 +63,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       throw new TypeError('Expected Sticky to be mounted within ScrollablePane');
     }
     const { scrollablePane } = this.context;
-    const { stickyClassName } = this.props;
     scrollablePane.subscribe(this._onScrollEvent);
     this.content = document.createElement('div');
     this.content.style.background = this._getBackground();

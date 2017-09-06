@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 05 Sep 2017 20:36:48 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Sep 2017 10:16:32 GMT and should not be manually modified.
+
+## 4.41.0
+Wed, 06 Sep 2017 10:16:32 GMT
+
+### Minor changes
+
+- Allow rendering empty GroupedList headers
 
 ## 4.40.1
 Tue, 05 Sep 2017 20:36:48 GMT
