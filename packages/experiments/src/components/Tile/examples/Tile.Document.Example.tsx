@@ -48,8 +48,8 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
       <Tile
         contentSize={
           {
-            width: 200,
-            height: 200
+            width: 176,
+            height: 171
           }
         }
         itemName={
@@ -89,7 +89,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
     });
 
     return (
-      <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+      <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
         {
           renderTileWithLayout(tile, {
             foreground: (
@@ -161,7 +161,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
           item={ ITEMS[2] }
         />
         <h3>Document icon</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+        <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
             itemName={
               <SignalField
