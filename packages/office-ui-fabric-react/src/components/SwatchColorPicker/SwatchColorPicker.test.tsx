@@ -48,10 +48,6 @@ describe('SwatchColorPicker', () => {
     let tableElements = container.querySelectorAll('table[role="grid"]');
     let tableRowElements = container.querySelectorAll('tr[role="row"]');
     let tableCellElements = container.querySelectorAll('button[role="gridcell"]');
-    let headingElements = container.querySelectorAll('[role="heading"]');
-    let dividerElements = container.querySelectorAll('[role="separator"]');
-    let menuitems = container.querySelectorAll('button[role="menuitem"]');
-    let buttons = container.querySelectorAll('button[role="button"]');
     let setSizeElements = container.querySelectorAll('[aria-setsize]');
     let posInSetElements = container.querySelectorAll('[aria-posinset]');
 

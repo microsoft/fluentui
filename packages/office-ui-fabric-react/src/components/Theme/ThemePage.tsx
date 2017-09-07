@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme, FontClassNames, ITheme, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { loadTheme, FontClassNames, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';

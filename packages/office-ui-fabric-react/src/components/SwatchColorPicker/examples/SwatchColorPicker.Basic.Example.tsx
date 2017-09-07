@@ -7,9 +7,6 @@ export interface IBasicSwatchColorPickerExampleState {
 }
 
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
-
-  private width: number = 4;
-
   constructor(props: any) {
     super(props);
 

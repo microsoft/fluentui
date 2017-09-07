@@ -784,7 +784,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
 
     let id = this._id;
-    let { selectedIndex } = this.state;
 
     return (
       <div

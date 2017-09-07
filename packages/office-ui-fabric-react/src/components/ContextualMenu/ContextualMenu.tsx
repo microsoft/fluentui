@@ -36,33 +36,6 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-enum ContextualMenuType {
-  vertical,
-  horizontal
-}
-
-enum HorizontalAlignmentHint {
-  auto,
-  left,
-  center,
-  right
-}
-
-enum VerticalAlignmentHint {
-  top,
-  center,
-  bottom
-}
-
-interface IRect {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-  width: number;
-  height: number;
-}
-
 export function hasSubmenuItems(item: IContextualMenuItem) {
   let submenuItems = getSubmenuItems(item);
 

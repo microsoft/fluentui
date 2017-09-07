@@ -35,7 +35,7 @@ export interface ISelectionItemExampleProps {
  */
 export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
   public render() {
-    let { item, itemIndex, selection, selectionMode } = this.props;
+    let { item, itemIndex, selection } = this.props;
     let isSelected = false;
 
     if (selection && itemIndex !== undefined) {
@@ -87,7 +87,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
   }
 
   public render() {
-    let { items, selection, selectionMode } = this.state;
+    let { items, selection } = this.state;
 
     return (
       <div className='ms-SelectionBasicExample'>
