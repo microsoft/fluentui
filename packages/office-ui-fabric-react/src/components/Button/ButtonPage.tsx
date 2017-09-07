@@ -56,12 +56,12 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         exampleCards={
           <div>
             <Checkbox
-              className='exampleCheckbox'
+              className={ exampleStyles.exampleCheckbox }
               label='Disable buttons'
               checked={ this.state.areButtonsDisabled }
               onChange={ this._onDisabledChanged.bind(this) } />
             <Checkbox
-              className='exampleCheckbox'
+              className={ exampleStyles.exampleCheckbox }
               label='Mark as checked'
               checked={ this.state.areButtonsChecked }
               onChange={ this._onToggledChanged.bind(this) } />

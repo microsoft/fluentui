@@ -33,25 +33,6 @@ export class DialogBlockingExample extends React.Component<any, any> {
             containerClassName: 'ms-dialogMainOverride'
           } }
         >
-          <ChoiceGroup
-            options={ [
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              },
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              }
-            ] }
-            onChange={ this._onChoiceChanged }
-          />
           <DialogFooter>
             <PrimaryButton onClick={ this._closeDialog.bind(this) } text='Save' />
             <DefaultButton onClick={ this._closeDialog.bind(this) } text='Cancel' />

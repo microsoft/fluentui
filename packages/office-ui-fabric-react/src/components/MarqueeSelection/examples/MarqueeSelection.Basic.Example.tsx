@@ -9,7 +9,8 @@ import {
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
-import '../../../common/_exampleStyles.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 interface IPhoto extends IObjectWithKey {
   url: string;
@@ -62,7 +63,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     return (
       <MarqueeSelection selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
         <Checkbox
-          className='exampleCheckbox'
+          className={ exampleStyles.exampleCheckbox }
           label='Is marquee enabled'
           defaultChecked={ true }
           onChange={ (ev, isMarqueeEnabled) => this.setState({ isMarqueeEnabled: isMarqueeEnabled! }) } />
