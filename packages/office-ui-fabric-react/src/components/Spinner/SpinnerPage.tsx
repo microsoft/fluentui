@@ -18,7 +18,8 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         exampleCards={
           <ExampleCard
             title='Various Spinner Types'
-            code={ SpinnerBasicExampleCode }>
+            code={ SpinnerBasicExampleCode }
+          >
             <SpinnerBasicExample />
           </ExampleCard>
         }
@@ -61,7 +62,8 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Spinner/Spinner.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

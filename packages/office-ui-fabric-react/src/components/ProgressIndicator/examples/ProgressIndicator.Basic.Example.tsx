@@ -43,7 +43,8 @@ export class ProgressIndicatorBasicExample extends React.Component<any, IProgres
       <ProgressIndicator
         label='Example title'
         description='Example description'
-        percentComplete={ percentComplete } />
+        percentComplete={ percentComplete }
+      />
     );
   }
 

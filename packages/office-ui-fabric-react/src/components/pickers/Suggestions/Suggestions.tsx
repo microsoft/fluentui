@@ -3,7 +3,6 @@ import {
   BaseComponent,
   css,
   autobind,
-  assign,
   KeyCodes
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
