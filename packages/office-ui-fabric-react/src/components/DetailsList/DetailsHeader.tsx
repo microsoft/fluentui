@@ -218,8 +218,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         { GroupSpacer({ count: groupNestingDepth! - 1 }) }
         {
           columns.map((column: IColumn, columnIndex: number) => {
-            const previousColumnIndex = columnIndex - 1;
-
             return (
               [
                 <div

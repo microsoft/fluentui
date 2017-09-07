@@ -15,8 +15,9 @@ const SignalStyles: any = SignalStylesModule;
 
 const enum TileLayoutValues {
   nameplatePadding = 12,
-  nameplateNameHeight = 20,
-  nameplateActivityHeight = 20,
+  nameplateNameHeight = 17,
+  nameplateMargin = 4,
+  nameplateActivityHeight = 14,
   foregroundMargin = 16
 }
 
@@ -113,6 +114,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       foreground,
       showBackgroundFrame = false,
       showForegroundFrame = false,
+      hideBackground = false,
+      hideForeground = false,
       itemName,
       itemActivity,
       componentRef,
@@ -136,7 +139,9 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--hasBackgroundFrame ${TileStyles.hasBackgroundFrame}`]: showBackgroundFrame,
           [`ms-Tile--isSelected ${TileStyles.selected} ${SignalStyles.selected}`]: isSelected,
           [`ms-Tile--isSelectable ${TileStyles.selectable}`]: isSelectable,
-          [`ms-Tile--hasBackground ${TileStyles.hasBackground} ${SignalStyles.dark}`]: !!background
+          [`ms-Tile--hasBackground ${TileStyles.hasBackground}`]: !!background,
+          [SignalStyles.dark]: !!background && !hideBackground,
+          [`ms-Tile--showBackground ${TileStyles.showBackground}`]: !hideBackground
         }) }
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
@@ -150,13 +155,15 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         >
           {
             background ? this._onRenderBackground({
-              background: background
+              background: background,
+              hideBackground
             }) : null
           }
           {
             foreground ? this._onRenderForeground({
               foreground: foreground,
-              showForegroundFrame: showForegroundFrame
+              showForegroundFrame: showForegroundFrame,
+              hideForeground
             }) : null
           }
           {
@@ -176,12 +183,18 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   }
 
   private _onRenderBackground({
-    background
+    background,
+    hideBackground
   }: {
-      background: React.ReactNode | React.ReactNode[]
+      background: React.ReactNode | React.ReactNode[];
+      hideBackground: boolean;
     }): JSX.Element {
     return (
-      <span className={ css('ms-Tile-background', TileStyles.background) }>
+      <span
+        className={ css('ms-Tile-background', TileStyles.background, {
+          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground
+        }) }
+      >
         { background }
       </span>
     );
@@ -189,24 +202,27 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
   private _onRenderForeground({
     foreground,
-    showForegroundFrame
+    showForegroundFrame,
+    hideForeground
   }: {
       foreground: React.ReactNode | React.ReactNode[];
       showForegroundFrame: boolean;
+      hideForeground: boolean;
     }): JSX.Element {
     return (
       <span
         role='presentation'
-        className={ css('ms-Tile-content', TileStyles.content) }
+        className={ css('ms-Tile-aboveNameplate', TileStyles.aboveNameplate) }
       >
         <span
           role='presentation'
-          className={ css('ms-Tile-foreground', TileStyles.foreground) }
+          className={ css('ms-Tile-content', TileStyles.content) }
         >
           <span
             role='presentation'
-            className={ css('ms-Tile-frame', TileStyles.frame, {
-              [`ms-Tile-frame--hasForegroundFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame
+            className={ css('ms-Tile-foreground', TileStyles.foreground, {
+              [`ms-Tile-foreground--hasFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame,
+              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
             }) }
           >
             { foreground }
@@ -309,7 +325,7 @@ export function getTileLayout(tileElement: JSX.Element): ITileLayout {
       nameplateHeight += TileLayoutValues.nameplateNameHeight;
     }
     if (tileProps.itemActivity) {
-      nameplateHeight += TileLayoutValues.nameplateActivityHeight;
+      nameplateHeight += TileLayoutValues.nameplateActivityHeight + TileLayoutValues.nameplateMargin;
     }
   }
 
