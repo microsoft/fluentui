@@ -228,8 +228,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         {
           group && group.isCollapsed ?
             null :
-            //isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)
-            onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)
+            isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)
         }
         { onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
       </div>
