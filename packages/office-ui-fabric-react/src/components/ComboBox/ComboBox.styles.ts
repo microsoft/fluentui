@@ -4,7 +4,7 @@ import {
 } from './ComboBox.Props';
 import {
   ITheme,
-  IExtendedRawStyle,
+  IRawStyle,
   mergeStyleSets,
   FontSizes,
   FontWeights,
@@ -20,7 +20,7 @@ const ComboBoxLineHeight = '30px';
 const ComboxBoxCaretDownWidth = '32px';
 const ComboBoxOptionHeight = '36px';
 
-const getDisabledStyles = memoizeFunction((theme: ITheme): IExtendedRawStyle => {
+const getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   const { semanticColors } = theme;
 
   return {
@@ -35,7 +35,7 @@ const getDisabledStyles = memoizeFunction((theme: ITheme): IExtendedRawStyle => 
   };
 });
 
-const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IExtendedRawStyle => {
+const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   return {
     selectors: {
       [MS_HIGHCONTRAST_ACTIVE]: {

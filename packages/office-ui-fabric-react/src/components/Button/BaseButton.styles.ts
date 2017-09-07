@@ -2,12 +2,12 @@ import { IButtonStyles } from './Button.Props';
 import { memoizeFunction } from '../../Utilities';
 import {
   ITheme,
-  IExtendedRawStyle,
+  IRawStyle,
   getFocusStyle,
   FontSizes
 } from '../../Styling';
 
-const noOutline: IExtendedRawStyle = {
+const noOutline: IRawStyle = {
   outline: 0
 };
 

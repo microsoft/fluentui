@@ -3,14 +3,14 @@ import { provideUnits } from './transforms/provideUnits';
 import { prefixRules } from './transforms/prefixRules';
 import { kebabRules } from './transforms/kebabRules';
 import { Stylesheet } from './Stylesheet';
-import { IStyle, IExtendedRawStyle } from './IStyle';
+import { IStyle, IRawStyle } from './IStyle';
 
 const DISPLAY_NAME = 'displayName';
 
 function getDisplayName(rules?: Map<string, IStyle>): string | undefined {
   const rootStyle: IStyle = rules && rules.get('&');
 
-  return rootStyle ? (rootStyle as IExtendedRawStyle).displayName : undefined;
+  return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
 function extractRules(

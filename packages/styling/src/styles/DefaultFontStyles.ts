@@ -1,6 +1,6 @@
 import {
   fontFace,
-  IExtendedRawStyle,
+  IRawStyle,
   IFontWeight
 } from '@uifabric/merge-styles/lib/index';
 import {
@@ -126,7 +126,7 @@ function _getFontFamily(): string {
   return `${fontFamily}, ${FontFamilyFallbacks}`;
 }
 
-function _createFont(size: string, weight: IFontWeight): IExtendedRawStyle {
+function _createFont(size: string, weight: IFontWeight): IRawStyle {
   return {
     fontFamily: _getFontFamily(),
     MozOsxFontSmoothing: 'grayscale',

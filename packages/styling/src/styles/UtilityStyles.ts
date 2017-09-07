@@ -1,6 +1,6 @@
-import { IExtendedRawStyle } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 
-export const hideText: IExtendedRawStyle = {
+export const hideText: IRawStyle = {
   position: 'absolute',
   width: '1px',
   height: '1px',

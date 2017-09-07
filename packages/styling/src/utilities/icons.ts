@@ -2,7 +2,7 @@ import {
   GlobalSettings
 } from '@uifabric/utilities/lib/GlobalSettings';
 import {
-  IExtendedRawStyle,
+  IRawStyle,
   IFontFace,
   fontFace,
   mergeStyles
@@ -13,7 +13,7 @@ export interface IIconSubset {
   icons: {
     [key: string]: string;
   };
-  style?: IExtendedRawStyle;
+  style?: IRawStyle;
 }
 
 export interface IIconSubsetRecord extends IIconSubset {

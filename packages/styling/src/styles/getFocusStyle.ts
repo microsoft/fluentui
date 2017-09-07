@@ -1,4 +1,4 @@
-import { IExtendedRawStyle } from '@uifabric/merge-styles/lib/index';
+import { IRawStyle } from '@uifabric/merge-styles/lib/index';
 import { ITheme } from '../interfaces/index';
 
 /**
@@ -16,7 +16,7 @@ export function getFocusStyle(
   inset: string = '0',
   color: string | undefined = theme.palette.neutralSecondary,
   position: 'relative' | 'absolute' = 'relative'
-): IExtendedRawStyle {
+): IRawStyle {
   return {
     outline: 'transparent',
     position,

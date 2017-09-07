@@ -157,7 +157,7 @@ export interface IFontFace extends IRawFontStyle {
  *
  * @public
  */
-export interface IRawStyle extends IRawFontStyle {
+export interface IRawStyleBase extends IRawFontStyle {
   /**
    * (Moz specific) font smoothing directive.
    */

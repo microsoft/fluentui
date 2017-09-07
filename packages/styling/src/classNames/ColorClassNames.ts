@@ -1,5 +1,5 @@
 import {
-  IExtendedRawStyle,
+  IRawStyle,
   mergeStyles
 } from '@uifabric/merge-styles/lib/index';
 import { DefaultPalette } from '../styles/DefaultPalette';
@@ -333,7 +333,7 @@ function _defineGetter(
   Object.defineProperty(obj, colorName + suffix, {
     get: (): string => {
       // tslint:disable-next-line:no-any
-      const style: IExtendedRawStyle = { [cssProperty]: (getTheme().palette as any)[colorName] };
+      const style: IRawStyle = { [cssProperty]: (getTheme().palette as any)[colorName] };
 
       return mergeStyles(isHover ? { selectors: { ':hover': style } } : style).toString();
     },

@@ -4,14 +4,14 @@ import { ISpinButtonStyles } from './SpinButton.Props';
 
 import {
   ITheme,
-  IExtendedRawStyle,
+  IRawStyle,
   concatStyleSets,
   FontSizes
 } from '../../Styling';
 
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
-const _getDisabledStyles = memoizeFunction((theme: ITheme): IExtendedRawStyle => {
+const _getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
   const { semanticColors, palette } = theme;
 
   const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
