@@ -23,8 +23,9 @@ import {
   SELECTION_CHANGE
 } from '../../utilities/selection/index';
 
-import { GroupFooter } from './GroupFooter';
 import { GroupHeader } from './GroupHeader';
+import { GroupShowAll } from './GroupShowAll';
+import { GroupFooter } from './GroupFooter';
 
 import {
   List
@@ -89,11 +90,17 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   /** Controls how/if the details list manages selection. */
   selectionMode?: SelectionMode;
 
+  /** Information to pass in to the group Show All footer. */
+  showAllProps?: IGroupDividerProps;
+
   /** Optional Viewport, provided by the parent component. */
   viewport?: IViewport;
 
   /** Override for rendering the group header. */
   onRenderGroupHeader?: IRenderFunction<IGroupDividerProps>;
+
+  /** Override for rendering the group Show All link. */
+  onRenderGroupShowAll?: IRenderFunction<IGroupDividerProps>;
 
   /** Override for rendering the group footer. */
   onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
@@ -169,15 +176,17 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       group,
       groupIndex,
       headerProps,
+      showAllProps,
       footerProps,
       viewport,
       selectionMode,
       onRenderGroupHeader = this._onRenderGroupHeader,
+      onRenderGroupShowAll = this._onRenderGroupShowAll,
       onRenderGroupFooter = this._onRenderGroupFooter
     } = this.props;
     let { isSelected } = this.state;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
-    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
+    let isShowAllVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
       (group.count > renderCount || group.hasMoreData);
     let hasNestedGroups = group && group.children && group.children.length > 0;
 
@@ -190,6 +199,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionMode: selectionMode
     };
     let groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
+    let groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
     let groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
 
     return (
@@ -215,7 +225,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                 this._onRenderGroup(renderCount)
             )
         }
-        { isFooterVisible && onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
+        {
+          group && group.isCollapsed ?
+            null :
+            isShowAllVisible && onRenderGroupShowAll(groupShowAllProps, this._onRenderGroupShowAll)
+        }
+        { onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
       </div>
     );
   }
@@ -254,6 +269,11 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   @autobind
   private _onRenderGroupHeader(props: IGroupDividerProps) {
     return <GroupHeader { ...props } />;
+  }
+
+  @autobind
+  private _onRenderGroupShowAll(props: IGroupDividerProps) {
+    return <GroupShowAll { ...props } />;
   }
 
   @autobind
@@ -303,6 +323,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       groupNestingDepth,
       items,
       headerProps,
+      showAllProps,
       footerProps,
       listProps,
       onRenderCell,
@@ -310,6 +331,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       selectionMode,
       viewport,
       onRenderGroupHeader,
+      onRenderGroupShowAll,
       onRenderGroupFooter
     } = this.props;
 
@@ -331,8 +353,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderCell={ onRenderCell }
         selection={ selection }
         selectionMode={ selectionMode }
+        showAllProps={ showAllProps }
         viewport={ viewport }
         onRenderGroupHeader={ onRenderGroupHeader }
+        onRenderGroupShowAll={ onRenderGroupShowAll }
         onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;

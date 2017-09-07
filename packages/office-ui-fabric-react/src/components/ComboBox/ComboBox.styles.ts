@@ -21,7 +21,7 @@ const ComboxBoxCaretDownWidth = '32px';
 const ComboBoxOptionHeight = '36px';
 
 const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
-  const { semanticColors, palette } = theme;
+  const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.disabledBackground,
     borderColor: semanticColors.disabledBackground,
@@ -35,7 +35,6 @@ const getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
 });
 
 const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IStyle => {
-  const { semanticColors, palette } = theme;
   return {
     [MS_HIGHCONTRAST_ACTIVE]: {
       backgroundColor: 'Highlight',
@@ -51,7 +50,7 @@ export const getOptionStyles = memoizeFunction((
   customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
 ): IComboBoxOptionStyles => {
 
-  const { semanticColors, fonts, palette } = theme;
+  const { semanticColors, palette } = theme;
 
   const ComboBoxOptionBackgroundSelected = semanticColors.menuItemBackgroundChecked;
   const ComboBoxOptionBackgroundHovered = semanticColors.menuItemBackgroundHovered;
@@ -145,7 +144,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
-  const { semanticColors, fonts, palette } = theme;
+  const { palette } = theme;
 
   const caretButtonTextColor = palette.neutralDark;
   const caretButtonBackgroundHovered = palette.neutralQuaternaryAlt;

@@ -64,7 +64,8 @@ export class LayerBasicExample extends BaseComponent<any, any> {
         <Checkbox
           label='Wrap the content box belowed in a Layer'
           checked={ showLayer }
-          onChange={ (ev, checked) => this.setState({ showLayer: checked }) } />
+          onChange={ (ev, checked) => this.setState({ showLayer: checked }) }
+        />
 
         { showLayer ? (
           <Layer>

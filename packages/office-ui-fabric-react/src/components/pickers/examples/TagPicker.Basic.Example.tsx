@@ -34,7 +34,8 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
     return (
       <div>
         <Checkbox label='Disable Tag Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick } />
-        <TagPicker ref='tagPicker'
+        <TagPicker
+          ref='tagPicker'
           onResolveSuggestions={ this._onFilterChanged }
           getTextFromItem={ (item: any) => { return item.name; } }
           pickerSuggestionsProps={

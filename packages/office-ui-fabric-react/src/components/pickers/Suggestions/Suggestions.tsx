@@ -3,7 +3,6 @@ import {
   BaseComponent,
   css,
   autobind,
-  assign,
   KeyCodes
 } from '../../../Utilities';
 import { CommandButton, IconButton, IButton } from '../../../Button';
@@ -19,11 +18,8 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
       RenderSuggestion,
       onClick,
       className,
-      onRemoveItem,
-      showRemoveButton,
-      id
+      onRemoveItem
     } = this.props;
-    let itemProps = assign({}, suggestionModel.item, { onRemoveItem });
     return (
       <div
         className={ css(
@@ -71,7 +67,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   public render() {
     let {
-      suggestionsHeaderText,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -87,8 +82,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
-      isResultsFooterVisible,
-      showRemoveButtons,
       suggestionsAvailableAlertText
     } = this.props;
 
@@ -102,10 +95,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     let headerText = isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText ? mostRecentlyUsedHeaderText : null;
     let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
     return (
-      <div className={ css(
-        'ms-Suggestions',
-        className ? className : '',
-        styles.root) }>
+      <div
+        className={ css(
+          'ms-Suggestions',
+          className ? className : '',
+          styles.root) }
+      >
         { headerText ?
           (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
             { headerText }
@@ -145,7 +140,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
           (<span
             role='alert'
-            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }>{ suggestionsAvailableAlertText }
+            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }
+          >
+            { suggestionsAvailableAlertText }
           </span>) : (null)
         }
       </div>
@@ -182,13 +179,16 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       <div
         className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
         id='suggestion-list'
-        role='menu'>
+        role='menu'
+      >
         { suggestions.map((suggestion, index) =>
-          <div ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
+          <div
+            ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
             // tslint:disable-next-line:no-string-literal
             key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
             id={ 'sug-' + index }
-            role='menuitem'>
+            role='menuitem'
+          >
             <TypedSuggestionsItem
               id={ 'sug-item' + index }
               suggestionModel={ suggestion }
