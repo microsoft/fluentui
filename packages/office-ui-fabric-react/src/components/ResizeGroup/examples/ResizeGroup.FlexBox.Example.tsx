@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 
 const leftRightBoxClassName =
@@ -44,7 +44,8 @@ function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Elemen
     result.push(<BoxWithLabel
       label={ `${i}` }
       backgroundColor={ backgroundColor }
-      key={ `${backgroundColor}-${i}` } />);
+      key={ `${backgroundColor}-${i}` }
+    />);
   }
   return result;
 }

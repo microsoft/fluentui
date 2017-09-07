@@ -10,6 +10,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 0; // Reset the stacking context.
   background-color: $ms-color-white;
   transition: transform 0.1s linear;
   color: $ms-color-neutralPrimary;
@@ -93,12 +94,18 @@
   text-decoration: none;
 }
 
-.frame {
+.foreground {
   margin: auto;
   position: relative;
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+
+  &.foregroundHide {
+    opacity: 0;
+  }
 
   &.hasForegroundFrame {
     margin: auto auto 0 auto;
@@ -154,11 +161,6 @@ button.check {
   padding: 6px;
 }
 
-.content {
-  position: relative;
-  flex: 1;
-}
-
 .background {
   position: absolute;
   top: 0;
@@ -166,25 +168,48 @@ button.check {
   right: 0;
   bottom: 0;
   overflow: hidden;
+
+  opacity: 1;
+
+  transition: opacity 0.2s linear;
+
+  &.backgroundHide {
+    opacity: 0;
+  }
 }
 
-.foreground {
-  top: 16px;
-  left: 16px;
-  right: 16px;
+.aboveNameplate {
+  flex: 1;
+  position: relative;
+  margin: 16px 16px 0 16px;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
   bottom: 0;
-  flex-grow: 1;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
 }
 
 .nameplate {
   display: block;
+  position: relative;
   margin: auto 0 0 0;
   padding: 12px 8px;
   text-align: center;
+  z-index: 0;
+
+  .name {
+    transition: color 0.2s linear;
+  }
+
+  .activity {
+    transition: color 0.2s linear;
+  }
 
   .tile.hasBackgroundFrame & {
     padding: 12px 10px;
@@ -219,8 +244,8 @@ button.check {
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
-  height: 20px;
-  line-height: 20px;
+  height: 17px;
+  line-height: 17px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -233,8 +258,8 @@ button.check {
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
   color: #767676;
-  height: 16px;
-  line-height: 16px;
+  height: 14px;
+  line-height: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -249,28 +274,36 @@ button.check {
 
 .hasBackground {
   .nameplate {
-    position: relative;
-    background-image: linear-gradient(to top, rgba(#000, 0.65) 0%, rgba(#000, 0.65 * 0.85) 70%, rgba(#000, 0.30 * 0.85) 100%);
-
     &:before {
       position: absolute;
       content: '';
       display: block;
-      height: 12px;
-      bottom: 100%;
+      top: -12px;
+      bottom: 0;
       left: 0;
       right: 0;
-      background-image: linear-gradient(to top, rgba(#000, 0.30 * 0.85) 0%, rgba(#000, 0) 100%);
+      background-image: linear-gradient(to top, rgba(#000, 0.65) 0%, rgba(#000, 0.65 * 0.85) 55%, rgba(#000, 0.65 * 0.30) 80%, rgba(#000, 0) 100%);
+      z-index: -1;
+      transition: opacity 0.2s linear;
+      opacity: 0;
     }
   }
 
-  .name {
-    color: $ms-color-white;
-    text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
-  }
+  &.showBackground {
+    .name {
+      color: $ms-color-white;
+      text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+    }
 
-  .activity {
-    color: $ms-color-white;
-    text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+    .activity {
+      color: $ms-color-white;
+      text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
+    }
+
+    .nameplate {
+      &:before {
+        opacity: 1;
+      }
+    }
   }
 }
