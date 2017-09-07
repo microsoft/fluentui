@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind,
   css
 } from '../../Utilities';
 import { Link } from '../../Link';
