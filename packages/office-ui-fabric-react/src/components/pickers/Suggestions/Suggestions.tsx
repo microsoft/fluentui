@@ -94,9 +94,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         </div> : null;
     };
     // MostRecently Used text should supercede the header text if it's there and available.
-    let headerText = isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText ?
-      mostRecentlyUsedHeaderText :
-      suggestionsHeaderText ? suggestionsHeaderText : null;
+    let headerText: string | undefined = suggestionsHeaderText;
+    if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
+      headerText = mostRecentlyUsedHeaderText;
+    }
     let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
     return (
       <div
