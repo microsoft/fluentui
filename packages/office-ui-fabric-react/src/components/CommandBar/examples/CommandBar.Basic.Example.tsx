@@ -47,13 +47,15 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           checked={ namesVisible }
           onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
           onText='Visible'
-          offText='Hidden' />
+          offText='Hidden'
+        />
         <Toggle
           label='Show icons'
           checked={ iconsVisible }
           onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
           onText='Visible'
-          offText='Hidden' />
+          offText='Hidden'
+        />
         <CommandBar
           isSearchBoxVisible={ searchBoxVisible }
           searchPlaceholderText='Search...'

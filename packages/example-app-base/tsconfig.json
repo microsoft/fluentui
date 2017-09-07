@@ -11,6 +11,7 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "moduleResolution": "node",
+    "outDir": "lib",
     "lib": [
       "es2017",
       "dom"
@@ -21,10 +22,7 @@
       "webpack-env"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
+  "include": [
+    "src"
   ]
 }

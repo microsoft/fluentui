@@ -79,10 +79,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       defaultChecked,
       disabled,
       inputProps,
-      label,
       name,
       boxSide,
       theme,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
       styles: customStyles,
       onRenderLabel = this._onRenderLabel
     } = this.props;
@@ -115,6 +117,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         onBlur={ this._onBlur }
         aria-checked={ isChecked }
         aria-disabled={ disabled }
+        aria-label={ ariaLabel }
+        aria-labelledby={ ariaLabelledBy }
+        aria-describedby={ ariaDescribedBy }
       >
         <label className={ this._classNames.label } htmlFor={ this._id } >
           <div className={ this._classNames.checkbox }>
@@ -159,6 +164,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const { disabled, onChange } = this.props;
     const { isChecked } = this.state;
     ev.preventDefault();
+    ev.stopPropagation();
 
     if (!disabled) {
       if (onChange) {

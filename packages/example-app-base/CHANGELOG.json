@@ -2,6 +2,140 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "4.2.7",
+      "tag": "@uifabric/example-app-base_v4.2.7",
+      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "7836034345ccf0f347adece0c2c20ba5d63ddcf7",
+            "comment": "Update fabric-dependency version"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.6",
+      "tag": "@uifabric/example-app-base_v4.2.6",
+      "date": "Fri, 01 Sep 2017 16:51:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "fd435b3657df001d9a90b1ad0fc2e312a6643fa0",
+            "comment": "Persist RTL setting between page refreshes"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.5",
+      "tag": "@uifabric/example-app-base_v4.2.5",
+      "date": "Thu, 31 Aug 2017 15:41:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "7d9c47c1240c0877a023c3fb181b7870a695416a",
+            "comment": "Refresh the page when swtiching languages to make sure that memoized styles are recomputed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.11.1 <5.0.0` to `>=4.12.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.4",
+      "tag": "@uifabric/example-app-base_v4.2.4",
+      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
+            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.21.0 <1.0.0` to `>=0.21.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.11.0 <5.0.0` to `>=4.11.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.3",
+      "tag": "@uifabric/example-app-base_v4.2.3",
+      "date": "Fri, 25 Aug 2017 20:31:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "6746103da3c35f95afb1cde1b304a756c550deff",
+            "comment": "Adding back sourcemap content to .map files, which should alleviate \"../src/* missing\" issues when using webpack."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.20.1 <1.0.0` to `>=0.20.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.10.1 <5.0.0` to `>=4.10.2 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.2",
+      "tag": "@uifabric/example-app-base_v4.2.2",
+      "date": "Thu, 24 Aug 2017 05:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "eee654b354aa2ff30830fcc51319da11f3b8d688",
+            "comment": "Break up long lines or disable max line length in ex-app-base pkg to pass tslint"
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "f7b6bb4aceffd947b2443eb14f3271a05175e670",
+            "comment": "Added missing typedefs in ex-app-base pkg to pass tslint"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.1 <5.0.0` to `>=4.10.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.2.1",
+      "tag": "@uifabric/example-app-base_v4.2.1",
+      "date": "Mon, 21 Aug 2017 10:19:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7141e63018997876d0c4f9d8dc6e420eb5f52db9",
+            "comment": "Updating project dependencies."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.9.0 <5.0.0` to `>=4.9.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.2.0",
       "tag": "@uifabric/example-app-base_v4.2.0",
       "date": "Thu, 03 Aug 2017 10:13:03 GMT",

@@ -1,6 +1,204 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 15 Aug 2017 10:19:22 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Sep 2017 10:09:51 GMT and should not be manually modified.
+
+## 4.42.0
+Thu, 07 Sep 2017 10:09:51 GMT
+
+### Minor changes
+
+- Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state.
+- ContextualMenu: `onRenderSubMenu` prop added to allow the overriding of submenu rendering.
+
+## 4.41.0
+Wed, 06 Sep 2017 10:16:32 GMT
+
+### Minor changes
+
+- Allow rendering empty GroupedList headers
+
+## 4.40.1
+Tue, 05 Sep 2017 20:36:48 GMT
+
+### Patches
+
+- HoverCard: Support change in expanded card height. Add callbacks upon card visible/hide
+- ScrollablePane: Fix component to remove stickyContainer element on component unmount.
+- List: fixing minor issue around using the `shouldVirtualize` prop.
+
+## 4.40.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Updating Calendar component styles to match new OWA calendar styles for the Calendar team.
+
+### Patches
+
+- Check: Fixed Chrome-specific alignment for the checkmark within the circle.
+- Slider: adding `vertical` property to render as a vertical slider.
+- DetailsHeader: Adjust sortIcon position
+
+## 4.39.0
+Fri, 01 Sep 2017 16:51:57 GMT
+
+### Minor changes
+
+- Calendar: Adding option to add date formatting to calendar
+
+### Patches
+
+- Respect ths isHeader property on the ResizeGroup demo page
+- BaseButton: Put the right classname on the menu icon
+- Add FullWidth icon.
+- SwatchColorPicker: Fixed so it will deselect the current items if there is a selected id passed in that does not exist in the color list
+
+## 4.38.0
+Thu, 31 Aug 2017 15:41:56 GMT
+
+### Minor changes
+
+- Updating goToToday to include onSelectDate function if defined so that this button behaves like a date has been picked
+- Tooltip: Added support for custom maxWidth values
+
+### Patches
+
+- HoverCard: Improved performance of expanding animation.
+- Check: Increased size of check to 18px
+- Fix data-command-key to key instead of index.
+- ComboBox: Loosen the re-rendering requirement
+
+## 4.37.7
+Tue, 29 Aug 2017 20:55:35 GMT
+
+### Patches
+
+- Adjusted build to produce sourcemaps with correct sourceRoot.
+
+## 4.37.6
+Tue, 29 Aug 2017 10:20:56 GMT
+
+### Patches
+
+- FocusZone: disable tabIndex of previous element on mouse focus.
+- Selection: Adding better handling around a case where getKey returns null or undefined.
+- Dialog: Show close button when dialog type is DialogType.close
+
+## 4.37.5
+Sat, 26 Aug 2017 00:52:38 GMT
+
+### Patches
+
+- Add LikeSolid icon
+- Updating sass build to pre-process theming again for better registration performance.
+- Fix issues when a SelectionZone is outside a FocusZone
+
+## 4.37.4
+Fri, 25 Aug 2017 20:31:51 GMT
+
+### Patches
+
+- Adding back sourcemap content to .map files, which should alleviate "../src/* missing" issues when using webpack.
+
+## 4.37.3
+Fri, 25 Aug 2017 19:27:18 GMT
+
+### Patches
+
+- ComboBox- Make sure the option always get updated if they change (#2301)
+- Pickers: Have IInput props correctly extend inputhtmlattributes
+
+## 4.37.2
+Fri, 25 Aug 2017 10:09:40 GMT
+
+### Patches
+
+- HoverCard: Dismiss on key/mouse down, Add directionalHint, Fix target prop
+- Breadcrumb: Fixed extra dropdown icon
+- ComboBox - Fix so the component doesn't cause it's children to rebuild and fix up the  the updating of the value  accordingly
+
+## 4.37.1
+Thu, 24 Aug 2017 10:20:20 GMT
+
+### Patches
+
+- Darkened the placeholder text for dropdowns to meet MAS color contrast standards
+
+## 4.37.0
+Thu, 24 Aug 2017 05:38:14 GMT
+
+### Minor changes
+
+- Checkbox: support for aria attributes
+- BasePicker: added itemLimit property, which will allow preventing adding more items than set limit.
+- Selection: now takes in a selectionMode, which DetailsList and others can read from. This does not break any existing SelectionMode passed into DetailsList currently but allows you to move the setting to the Selection object.
+- TextField: Added selectionStart and selectionEnd getters to ITextField.
+- withViewport: adding the ability to disable measures to improve performance of rendering the DetailsList in fixed mode.
+
+### Patches
+
+- Fix aria-labeling for DetailsList column headers
+- DetailsRow: Removed margin from check buttons.
+
+## 4.36.0
+Wed, 23 Aug 2017 19:04:55 GMT
+
+### Minor changes
+
+- DocumentCardPreview: Allow show Icon in the preview area instead of image.
+
+### Patches
+
+- ContextualMenu: Add ability to override role on menu items
+- ComboBox: Content should not be selected when comboBox isn't focused
+- Adding react import to SpinButton.Props for classic module resolution.
+- High contrast, accesibility, and other bugfixes
+- Dropdown: adds a for property to dropdown labels.
+
+## 4.35.2
+Tue, 22 Aug 2017 10:09:55 GMT
+
+### Patches
+
+- Dropdown: Fixed bug where selectedKey selects dropdown option with a different key
+
+## 4.35.1
+Mon, 21 Aug 2017 10:19:29 GMT
+
+### Patches
+
+- Updating project dependencies.
+- DetailsList: Move background color from .cell to .root for DetailsHeader
+- PeoplePicker: Fixing A11yMAS accessibility issue in selected items.
+
+## 4.35.0
+Fri, 18 Aug 2017 16:32:33 GMT
+
+### Minor changes
+
+- Added ActionButton and CommandBarButton
+- DetailsList: Resizing columns preserves justified mode.
+- TooltipHost: new onTooltipToggle callback
+
+### Patches
+
+- Minor cleanup in merging of css class names.
+- Dropdown: Fixed bug where selected state was not being removed from dropdown options
+- FocusZone: presssing home/end inside of an input/textarea element should respect cursor location.
+- Fix some unused code and typings in List
+- Pickers: Fixed an issue where a loop would sometimes occur if values were resolved when input had an empty value.
+- Toggle: fixed issue where disabled Toggles are clickable. Also cleaned up some of the styling.
+- CommandBar: adding `aria-expanded` attribute to overflow menu.
+- DetailsList: Making expand/collapse chevron in grouped list headers keyboard accessible.
+
+## 4.34.0
+Wed, 16 Aug 2017 10:11:43 GMT
+
+### Minor changes
+
+- Enhancing the calendar component.  Created option to have month picker overlayed on top of calendar so that the calendar remains in one column and switches between the two.  Added accessibility in new overlay to mimi OWA calendar.  Fixed issue: When the month picker is the only calendar, and screen is small, calendar would disappear when it should be visible.
+- Calendar had extra 30px margin at the bottom of the component.  It interfered with the layout below the component.  The 30px margin is only necessary when the 'go to today' button is visible.
+- Add ability to override page render behavior in List
 
 ## 4.33.0
 Tue, 15 Aug 2017 10:19:22 GMT

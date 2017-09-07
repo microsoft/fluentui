@@ -1,5 +1,5 @@
 export interface IObjectWithKey {
-  key?: string;
+  key?: string | number;
 }
 
 export const SELECTION_CHANGE = 'change';
@@ -12,7 +12,9 @@ export enum SelectionMode {
 
 export interface ISelection {
   count: number;
-  canSelectItem?: (item: IObjectWithKey) => boolean;
+  mode: SelectionMode;
+
+  canSelectItem: (item: IObjectWithKey) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;

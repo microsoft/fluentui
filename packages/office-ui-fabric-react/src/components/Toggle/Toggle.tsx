@@ -4,35 +4,20 @@ import {
   autobind,
   getId,
   inputProperties,
-  getNativeProps,
-  memoize
+  getNativeProps
 } from '../../Utilities';
 import {
   IToggleProps,
-  IToggle,
-  IToggleStyles
+  IToggle
 } from './Toggle.Props';
 import { Label } from '../../Label';
 import {
   customizable
 } from '../../Utilities';
-import {
-  mergeStyles
-} from '../../Styling';
-
-import { getStyles } from './Toggle.styles';
+import { getClassNames } from './Toggle.classNames';
 
 export interface IToggleState {
   isChecked: boolean;
-}
-
-interface IToggleClassNames {
-  root: string;
-  label: string;
-  container: string;
-  pill: string;
-  thumb: string;
-  text: string;
 }
 
 @customizable(['theme'])
@@ -91,8 +76,9 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
     let stateText = isChecked ? onText : offText;
     const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
     const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
-    const classNames = this._getClassNames(
-      getStyles(theme!, customStyles),
+    const classNames = getClassNames(
+      theme!,
+      customStyles!,
       className!,
       disabled!,
       isChecked
@@ -108,22 +94,22 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
         <div className={ classNames.container } >
           <button
             { ...toggleNativeProps }
-            type='button'
             className={ classNames.pill }
-            ref={ (c): HTMLButtonElement => this._toggleButton = c! }
+            disabled={ disabled }
+            id={ this._id }
+            type='button'
+            ref={ this._resolveRef('_toggleButton') }
             aria-disabled={ disabled }
             aria-pressed={ isChecked }
             aria-label={ ariaLabel }
-            id={ this._id }
-            onChange={ () => { /* no-op */ } }
-            disabled={ disabled }
             data-is-focusable={ true }
+            onChange={ () => { /* no-op */ } }
             onClick={ this._onClick }
           >
             <div className={ classNames.thumb } />
           </button>
           { stateText && (
-            <Label className={ classNames.text }>{ stateText }</Label>
+            <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
           ) }
         </div>
       </div >
@@ -138,91 +124,25 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLElement>) {
-    let { checked, onChanged, onClick } = this.props;
+    let { disabled, checked, onChanged, onClick } = this.props;
     let { isChecked } = this.state;
 
-    // Only update the state if the user hasn't provided it.
-    if (checked === undefined) {
-      this.setState({
-        isChecked: !isChecked
-      });
+    if (!disabled) {
+      // Only update the state if the user hasn't provided it.
+      if (checked === undefined) {
+        this.setState({
+          isChecked: !isChecked
+        });
+      }
+
+      if (onChanged) {
+        onChanged(!isChecked);
+      }
+
+      if (onClick) {
+        onClick(ev);
+      }
     }
-
-    if (onChanged) {
-      onChanged(!isChecked);
-    }
-
-    if (onClick) {
-      onClick(ev);
-    }
-  }
-
-  @memoize
-  private _getClassNames(
-    styles: IToggleStyles,
-    className: string,
-    disabled: boolean,
-    isChecked: boolean
-    ): IToggleClassNames {
-
-    return {
-      root: mergeStyles(
-        'ms-Toggle',
-        isChecked && 'is-checked',
-        !disabled && 'is-enabled',
-        disabled && 'is-disabled',
-        className,
-        styles.root
-      ) as string,
-
-      label: mergeStyles(
-        'ms-Toggle-label',
-        styles.label
-      ) as string,
-
-      container: mergeStyles(
-        'ms-Toggle-innerContainer',
-        styles.container
-      ) as string,
-
-      pill: mergeStyles(
-        'ms-Toggle-background',
-        styles.pill,
-        !disabled && [
-          !isChecked && {
-            ':hover': styles.pillHovered,
-            ':hover .ms-Toggle-thumb': styles.thumbHovered
-          },
-          isChecked && [
-            styles.pillChecked,
-            {
-              ':hover': styles.pillCheckedHovered,
-              ':hover .ms-Toggle-thumb': styles.thumbCheckedHovered
-            }
-          ]
-        ],
-        disabled && [
-          !isChecked && styles.pillDisabled,
-          isChecked && styles.pillCheckedDisabled,
-        ]
-      ) as string,
-
-      thumb: mergeStyles(
-        'ms-Toggle-thumb',
-        styles.thumb,
-        !disabled && isChecked && styles.thumbChecked,
-        disabled && [
-          !isChecked && styles.thumbDisabled,
-          isChecked && styles.thumbCheckedDisabled
-        ]
-      ) as string,
-
-      text: mergeStyles(
-        'ms-Toggle-stateText',
-        styles.text
-      ) as string,
-
-    };
   }
 
 }

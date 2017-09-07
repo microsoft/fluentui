@@ -45,6 +45,15 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       ],
     };
 
+    let previewPropsUsingIcon: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          previewIconProps: { iconName: 'OpenFile', styles: { root: { fontSize: 42, color: '#ffffff' } } },
+          width: 144
+        }
+      ]
+    };
+
     return (
       <div>
         <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
@@ -52,7 +61,8 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='4 files were uploaded'
-              shouldTruncate={ true } />
+              shouldTruncate={ true }
+            />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={
@@ -69,7 +79,26 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='Revenue stream proposal fiscal year 2016 version02.pptx'
-              shouldTruncate={ true } />
+              shouldTruncate={ true }
+            />
+            <DocumentCardActivity
+              activity='Created a few minutes ago'
+              people={
+                [
+                  { name: 'Kat Larrson', profileImageSrc: TestImages.personaFemale }
+                ]
+              }
+            />
+          </div>
+        </DocumentCard>
+        <p />
+        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
+          <DocumentCardPreview { ...previewPropsUsingIcon } />
+          <div className='ms-DocumentCard-details'>
+            <DocumentCardTitle
+              title='View and share files'
+              shouldTruncate={ true }
+            />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={

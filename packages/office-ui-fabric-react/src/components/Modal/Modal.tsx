@@ -94,12 +94,15 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
       titleAriaId,
       subtitleAriaId,
     } = this.props;
-    let { id, isOpen, isVisible } = this.state;
+    let { isOpen, isVisible } = this.state;
 
-    const modalClassName = css('ms-Modal', styles.root, this.props.className, {
-      ['is-open']: !!isOpen,
-      [styles.rootIsVisible]: !!isVisible,
-    });
+    const modalClassName = css(
+      'ms-Modal',
+      styles.root,
+      this.props.className,
+      !!isOpen && 'is-open',
+      !!isVisible && styles.rootIsVisible
+    );
 
     if (!isOpen) {
       return null;
@@ -123,7 +126,8 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
                 isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
                 ignoreExternalFocusing={ ignoreExternalFocusing }
                 forceFocusInsideTrap={ forceFocusInsideTrap }
-                firstFocusableSelector={ firstFocusableSelector }>
+                firstFocusableSelector={ firstFocusableSelector }
+              >
                 { this.props.children }
               </FocusTrapZone>
             </div>

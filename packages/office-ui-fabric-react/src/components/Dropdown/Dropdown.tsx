@@ -52,6 +52,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
+  // tslint:disable-next-line:no-unused-variable
   private _dropdownLabel: HTMLElement;
   private _id: string;
 
@@ -146,7 +147,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } htmlFor={ id } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
@@ -156,17 +157,20 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='menu'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ ariaLabel || label }
+          aria-label={ ariaLabel }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex! >= 0 ? (this._id + '-list' + selectedIndex) : null }
           aria-disabled={ disabled }
           aria-owns={ isOpen ? id + '-list' : null }
           { ...divProps }
-          className={ css('ms-Dropdown', styles.root, className, {
-            'is-open': isOpen!,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled!,
-            'is-required ': required!,
-          }) }
+          className={ css(
+            'ms-Dropdown',
+            styles.root,
+            className,
+            isOpen! && 'is-open',
+            disabled! && ('is-disabled ' + styles.rootIsDisabled),
+            required! && 'is-required',
+          ) }
           onBlur={ this._onDropdownBlur }
           onKeyDown={ this._onDropdownKeyDown }
           onKeyUp={ this._onDropdownKeyUp }
@@ -199,7 +203,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         {
           errorMessage &&
           <div
-            className={ css(styles.errorMessage) }>
+            className={ css(styles.errorMessage) }
+          >
             { errorMessage }
           </div>
         }
@@ -214,7 +219,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   }
 
   public setSelectedIndex(index: number) {
-    let { onChanged, options, selectedKey, selectedKeys } = this.props;
+    let { onChanged, options, selectedKey, multiSelect } = this.props;
     let { selectedIndex, selectedIndexes } = this.state;
     let checked: boolean = selectedIndexes ? selectedIndexes.indexOf(index) > -1 : false;
 
@@ -223,7 +228,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     if (index !== selectedIndex) {
       if (selectedKey === undefined) {
         // Set the selected option if this is an uncontrolled component
-        if (this.props.multiSelect) {
+        if (multiSelect) {
           let newIndexes = selectedIndexes ? this._copyArray(selectedIndexes) : [];
           if (checked) {
             let position = newIndexes.indexOf(index);
@@ -246,9 +251,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       }
       if (onChanged) {
         // for single-select, option passed in will always be selected.
+        if (!multiSelect) {
+          options.map((option: any) => option.selected === true ? option.selected = false : null);
+        }
         // for multi-select, flip the checked value
         let changedOpt = options[index];
-        changedOpt.selected = this.props.multiSelect ? !checked : true;
+        changedOpt.selected = multiSelect ? !checked : true;
         onChanged(changedOpt, index);
       }
     }
@@ -415,7 +423,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       return <div
         role='separator'
         key={ key }
-        className={ css('ms-Dropdown-divider', styles.divider) } />;
+        className={ css('ms-Dropdown-divider', styles.divider) }
+      />;
     }
     return null;
   }
@@ -424,8 +433,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     const { onRenderOption = this._onRenderOption } = this.props;
     const { key } = item;
     return (
-      <div key={ key }
-        className={ css('ms-Dropdown-header', styles.header) }>
+      <div
+        key={ key }
+        className={ css('ms-Dropdown-header', styles.header) }
+      >
         { onRenderOption(item, this._onRenderOption) }
       </div>);
   }
@@ -438,7 +449,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let id = this._id;
     let isItemSelected;
     if (this.props.multiSelect) {
-      isItemSelected = item.index && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
+      isItemSelected = item.index !== undefined && selectedIndexes ? selectedIndexes.indexOf(item.index) > -1 : false;
     }
     return (
       !this.props.multiSelect ?
@@ -459,7 +470,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
           ariaLabel={ item.ariaLabel || item.text }
           title={ item.text }
-        > { onRenderOption(item, this._onRenderOption) }</CommandButton>
+        >
+          { onRenderOption(item, this._onRenderOption) }
+        </CommandButton>
         :
         <Checkbox
           id={ id + '-list' + item.index }
@@ -479,7 +492,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           role='option'
           aria-selected={ isItemSelected ? 'true' : 'false' }
           checked={ isItemSelected }
-        >{ onRenderOption(item, this._onRenderOption) } </Checkbox>
+        >{ onRenderOption(item, this._onRenderOption) }
+        </Checkbox>
     );
   }
 
@@ -536,7 +550,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number): number {
     // tslint:disable-next-line:triple-equals
-    return findIndex(options, (option => (option.isSelected || option.selected || (selectedKey != null) && option.key === selectedKey)));
+    return findIndex(options, (option => ((option.isSelected || option.selected || (selectedKey != null)) && option.key === selectedKey)));
   }
 
   @autobind

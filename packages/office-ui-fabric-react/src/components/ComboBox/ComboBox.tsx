@@ -8,7 +8,6 @@ import {
   IconButton
 } from '../../Button';
 import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
-import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
 import {
   autobind,
   BaseComponent,
@@ -145,10 +144,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
-    // In controlled component usage where selectedKey or value is provided,
-    // update the selectedIndex and currentOptions state if the selectedKey or options have changed
-    if ((newProps.selectedKey || newProps.value) &&
-      (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
+    // Update the selectedIndex and currentOptions state if
+    // the selectedKey, value, or options have changed
+    if (newProps.selectedKey !== this.props.selectedKey ||
+      newProps.value !== this.props.value ||
+      newProps.options !== this.props.options) {
       let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
       this.setState({
         selectedIndex: index,
@@ -184,12 +184,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     // If we just opened/closed the menu OR
-    // updated the selectedIndex with the menu closed OR
-    // are focused and are not allowing freeform or the value changed
+    // are focused AND
+    //   updated the selectedIndex with the menu closed OR
+    //   are not allowing freeform OR
+    //   the value changed
     // we need to set selection
     if (prevState.isOpen !== isOpen ||
-      (!isOpen && prevState.selectedIndex !== selectedIndex) ||
-      (focused && (!allowFreeform || value !== prevProps.value))) {
+      (focused &&
+        ((!isOpen && prevState.selectedIndex !== selectedIndex) ||
+          !allowFreeform ||
+          value !== prevProps.value)
+      )) {
       this._select();
     }
   }
@@ -252,7 +257,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             id={ id + '-input' }
             className={ this._classNames.input }
             type='text'
-            key={ selectedIndex }
             onFocus={ this._select }
             onBlur={ this._onBlur }
             onKeyDown={ this._onInputKeyDown }
@@ -274,7 +278,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             defaultVisibleValue={ this._currentVisibleValue }
             suggestedDisplayValue={ suggestedDisplayValue }
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
-            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+          />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
@@ -283,7 +288,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
-            disabled={ disabled } />
+            disabled={ disabled }
+          />
         </div>
 
         { isOpen && (
@@ -292,7 +298,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {
           errorMessage &&
           <div
-            className={ this._classNames.errorMessage }>
+            className={ this._classNames.errorMessage }
+          >
             { errorMessage }
           </div>
         }
@@ -777,7 +784,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
 
     let id = this._id;
-    let { selectedIndex } = this.state;
 
     return (
       <div
@@ -813,7 +819,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return <div
         role='separator'
         key={ key }
-        className={ this._classNames.divider } />;
+        className={ this._classNames.divider }
+      />;
     }
     return null;
   }
@@ -932,7 +939,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return -1;
     }
 
-    return findIndex(options, (option => (option.isSelected || option.selected || option.key === selectedKey)));
+    return findIndex(options, (option => (option.selected || option.key === selectedKey)));
   }
 
   /**

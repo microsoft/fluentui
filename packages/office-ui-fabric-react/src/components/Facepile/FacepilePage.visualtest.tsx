@@ -6,7 +6,8 @@ export default class FacepileVPage extends React.Component<any, any> {
   public render() {
     return <div>
       <label>Basic Facepile:</label>
-      <Facepile className='Facepile'
+      <Facepile
+        className='Facepile'
         personas={ [{
           imageUrl: './images/persona-female.png',
           personaName: 'Annie Lindqvist',
@@ -18,7 +19,8 @@ export default class FacepileVPage extends React.Component<any, any> {
           personaName: 'Aaron Reid',
           imageInitials: 'AR',
           data: '$1,000'
-        }] } />
+        }] }
+      />
     </div>;
   }
 }

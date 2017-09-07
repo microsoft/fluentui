@@ -83,14 +83,29 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return (
       <div
         { ...rootProps }
-        className={ css('ms-MarqueeSelection', styles.root, rootProps && rootProps.className) }
+        className={ css(
+          'ms-MarqueeSelection',
+          styles.root,
+          rootProps && rootProps.className
+        ) }
         ref='root'
       >
         { children }
         { dragRect && (<div className={ css('ms-MarqueeSelection-dragMask', styles.dragMask) } />) }
         { dragRect && (
-          <div className={ css('ms-MarqueeSelection-box', styles.box) } style={ dragRect }>
-            <div className={ css('ms-MarqueeSelection-boxFill', styles.boxFill) } />
+          <div
+            className={ css(
+              'ms-MarqueeSelection-box',
+              styles.box
+            ) }
+            style={ dragRect }
+          >
+            <div
+              className={ css(
+                'ms-MarqueeSelection-boxFill',
+                styles.boxFill
+              ) }
+            />
           </div>
         ) }
       </div>

@@ -46,15 +46,19 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
         <div className={ css('ms-ProgressIndicator-itemName', styles.itemName) }>{ label }</div>
         <div className={ css('ms-ProgressIndicator-itemProgress', styles.itemProgress) }>
           <div className={ css('ms-ProgressIndicator-progressTrack', styles.progressTrack) }></div>
-          <div className={ css('ms-ProgressIndicator-progressBar', styles.progressBar, {
-            'smoothTransition': percentComplete > ZERO_THRESHOLD
-          }) }
+          <div
+            className={ css(
+              'ms-ProgressIndicator-progressBar',
+              styles.progressBar,
+              percentComplete > ZERO_THRESHOLD && 'smoothTransition'
+            ) }
             style={ { width: percentComplete + '%' } }
             role='progressbar'
             aria-valuemin='0'
             aria-valuemax='100'
             aria-valuenow={ percentComplete.toFixed().toString() }
-            aria-valuetext={ ariaValueText }>
+            aria-valuetext={ ariaValueText }
+          >
           </div>
         </div>
         <div className={ css('ms-ProgressIndicator-itemDescription', styles.itemDescription) }>{ description }</div>
