@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add onRenderSubMenu prop to ContextualMenu.",
+      "comment": "ContextualMenu: `onRenderSubMenu` prop added to allow the overriding of submenu rendering.",
       "type": "minor"
     }
   ],
