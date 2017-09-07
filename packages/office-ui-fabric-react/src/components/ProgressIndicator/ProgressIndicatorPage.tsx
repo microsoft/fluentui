@@ -80,7 +80,8 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         related={
           <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

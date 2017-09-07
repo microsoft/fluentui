@@ -7,9 +7,6 @@ export interface IBasicSwatchColorPickerExampleState {
 }
 
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
-
-  private width: number = 4;
-
   constructor(props: any) {
     super(props);
 
@@ -33,7 +30,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'c', label: 'blue', color: '#0000ff' },
               { id: 'd', label: 'red', color: '#ff0000' }
             ]
-          } />
+          }
+        />
         <div>Simple square swatch color picker:</div>
         <SwatchColorPicker
           columnCount={ 4 }
@@ -45,7 +43,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'c', label: 'blue', color: '#0000ff' },
               { id: 'd', label: 'red', color: '#ff0000' }
             ]
-          } />
+          }
+        />
         <div>Simple swatch color picker with multiple rows that updates it's icon color and shows a preview color:</div>
         <div style={ { color: this.state.previewColor ? this.state.previewColor : this.state.color ? this.state.color : null, fontSize: '24px' } } >Sample Text</div>
         <SwatchColorPicker
@@ -70,7 +69,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'n', label: 'yellow', color: 'yellow' }
 
             ]
-          } />
+          }
+        />
         <div>Simple disabled circle swatch color picker:</div>
         <SwatchColorPicker
           disabled={ true }
@@ -83,7 +83,8 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
               { id: 'c', label: 'blue', color: '#0000ff' },
               { id: 'd', label: 'red', color: '#ff0000' }
             ]
-          } />
+          }
+        />
       </div>
     );
   }

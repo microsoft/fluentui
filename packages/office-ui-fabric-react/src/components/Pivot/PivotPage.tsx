@@ -116,7 +116,8 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }
