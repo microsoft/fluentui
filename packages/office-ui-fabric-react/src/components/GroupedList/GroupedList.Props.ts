@@ -185,6 +185,9 @@ export interface IGroupRenderProps {
   /** Information to pass in to the group header. */
   headerProps?: IGroupDividerProps;
 
+  /** Information to pass in to the group Show all footer. */
+  showAllProps?: IGroupDividerProps;
+
   /** Information to pass in to the group footer. */
   footerProps?: IGroupDividerProps;
 
@@ -194,7 +197,12 @@ export interface IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IGroupDividerProps>;
 
   /**
-   * Override which allows the caller to provider a customer footer.
+   * Override which allows the caller to provide a custom Show All link.
+   */
+  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Override which allows the caller to provide a custom footer.
    */
   onRenderFooter?: IRenderFunction<IGroupDividerProps>;
 
@@ -245,10 +253,13 @@ export interface IGroupDividerProps {
   /** The selection mode of the list the group lives within. */
   selectionMode?: SelectionMode;
 
-  /** Text to display for the group footer show all link. */
+  /** Text to display for the group footer. */
+  footerText?: string;
+
+  /** Text to display for the group "Show All" link. */
   showAllLinkText?: string;
 
-  /** Callback for when the "Show All" link in group footer is clicked */
+  /** Callback for when the group "Show All" link is clicked */
   onToggleSummarize?: (group: IGroup) => void;
 
   /** Callback for when the group header is clicked. */

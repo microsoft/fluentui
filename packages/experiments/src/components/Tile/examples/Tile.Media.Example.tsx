@@ -165,7 +165,7 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           showBackground={ imagesLoaded }
         />
         <h3>No preview</h3>
-        <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+        <div className={ css(TileExampleStyles.tile, TileExampleStyles.largeTile) }>
           <Tile
             itemName={
               <SignalField
