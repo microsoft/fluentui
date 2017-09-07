@@ -100,10 +100,12 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
             ) }
             style={ dragRect }
           >
-            <div className={ css(
-              'ms-MarqueeSelection-boxFill',
-              styles.boxFill
-            ) } />
+            <div
+              className={ css(
+                'ms-MarqueeSelection-boxFill',
+                styles.boxFill
+              ) }
+            />
           </div>
         ) }
       </div>

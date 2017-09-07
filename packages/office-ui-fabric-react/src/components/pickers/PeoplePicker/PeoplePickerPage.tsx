@@ -58,7 +58,8 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
               <li>Use the PeoplePicker without sufficient space</li>
             </ul>
           </div>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

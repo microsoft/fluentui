@@ -18,7 +18,8 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         exampleCards={
           <ExampleCard
             title='Various MessageBar types'
-            code={ MessageBarBasicExampleCode }>
+            code={ MessageBarBasicExampleCode }
+          >
             <MessageBarBasicExample />
           </ExampleCard>
         }

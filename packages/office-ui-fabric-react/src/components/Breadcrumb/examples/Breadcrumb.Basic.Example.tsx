@@ -43,7 +43,8 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is link 5', 'key': 'l5', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true },
           ] }
           maxDisplayedItems={ 3 }
-          ariaLabel={ 'Website breadcrumb' } />
+          ariaLabel={ 'Website breadcrumb' }
+        />
       </div>
     );
   }

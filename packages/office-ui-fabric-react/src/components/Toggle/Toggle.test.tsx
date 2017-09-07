@@ -94,10 +94,13 @@ describe('Toggle', () => {
     const onSubmit = sinon.spy();
 
     const wrapper = mount(
-      <form action='#' onSubmit={ (e) => {
-        onSubmit();
-        e.preventDefault();
-      } }>
+      <form
+        action='#'
+        onSubmit={ (e) => {
+          onSubmit();
+          e.preventDefault();
+        } }
+      >
         <Toggle
           componentRef={ ref => component = ref }
           label='Label'

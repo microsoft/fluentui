@@ -15,7 +15,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     return (
       <header className='od-Header'>
         <button className='od-Header-hamburgerButton' role='menu' aria-label='Mobile menu, press enter to open'>
-          <i className='ms-Icon ms-Icon--menu2' aria-hidden='true'></i>
+          <i className='ms-Icon ms-Icon--menu2' aria-hidden='true' />
         </button>
       </header>
     );

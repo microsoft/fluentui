@@ -44,11 +44,15 @@ export interface ICustomizerState {
  * @public
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
-  public static contextTypes = {
+  public static contextTypes: {
+    injectedProps: PropTypes.Requireable<any>;
+  } = {
     injectedProps: PropTypes.object
   };
 
-  public static childContextTypes = Customizer.contextTypes;
+  public static childContextTypes: {
+    injectedProps: PropTypes.Requireable<any>;
+  } = Customizer.contextTypes;
 
   constructor(props: any, context: any) {
     super(props);
@@ -60,15 +64,19 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
     return this.state;
   }
 
-  public componentWillReceiveProps(newProps: any, newContext: any) {
+  public componentWillReceiveProps(newProps: any, newContext: any): void {
     this.setState(this._getInjectedProps(newProps, newContext));
   }
 
-  public render() {
+  public render(): React.ReactElement<any> {
     return React.Children.only(this.props.children);
   }
 
-  private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState) {
+  private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState): {
+    injectedProps: {
+      [x: string]: any;
+    };
+  } {
     let { settings: injectedPropsFromSettings = {} as ISettings } = props;
     let { injectedProps: injectedPropsFromContext = {} as ISettings } = context;
 

@@ -8,7 +8,6 @@ import {
   IconButton
 } from '../../Button';
 import { BaseAutoFill } from '../pickers/AutoFill/BaseAutoFill';
-import { IBaseAutoFillProps } from '../pickers/AutoFill/BaseAutoFill.Props';
 import {
   autobind,
   BaseComponent,
@@ -145,8 +144,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentWillReceiveProps(newProps: IComboBoxProps) {
-    // Update the selectedIndex and currentOptions state if the selectedKey or options have changed
-    if (((newProps.selectedKey || newProps.value) && newProps.selectedKey !== this.props.selectedKey) ||
+    // Update the selectedIndex and currentOptions state if
+    // the selectedKey, value, or options have changed
+    if (newProps.selectedKey !== this.props.selectedKey ||
+      newProps.value !== this.props.value ||
       newProps.options !== this.props.options) {
       let index: number = this._getSelectedIndex(newProps.options, newProps.selectedKey);
       this.setState({
@@ -277,7 +278,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             defaultVisibleValue={ this._currentVisibleValue }
             suggestedDisplayValue={ suggestedDisplayValue }
             updateValueInWillReceiveProps={ this._onUpdateValueInAutoFillWillReceiveProps }
-            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate } />
+            shouldSelectFullInputValueInComponentDidUpdate={ this._onShouldSelectFullInputValueInAutoFillComponentDidUpdate }
+          />
           <IconButton
             className={ 'ms-ComboBox-CaretDown-button' }
             styles={ this._getCaretButtonStyles() }
@@ -286,7 +288,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             tabIndex={ -1 }
             onClick={ this._onComboBoxClick }
             iconProps={ buttonIconProps }
-            disabled={ disabled } />
+            disabled={ disabled }
+          />
         </div>
 
         { isOpen && (
@@ -295,7 +298,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         {
           errorMessage &&
           <div
-            className={ this._classNames.errorMessage }>
+            className={ this._classNames.errorMessage }
+          >
             { errorMessage }
           </div>
         }
@@ -780,7 +784,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     } = this.props;
 
     let id = this._id;
-    let { selectedIndex } = this.state;
 
     return (
       <div
@@ -816,7 +819,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       return <div
         role='separator'
         key={ key }
-        className={ this._classNames.divider } />;
+        className={ this._classNames.divider }
+      />;
     }
     return null;
   }
