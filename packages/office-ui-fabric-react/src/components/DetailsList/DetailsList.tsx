@@ -584,10 +584,10 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   /** Builds a set of columns to fix within the viewport width. */
   private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps) {
     let {
-        selectionMode,
+      selectionMode,
       checkboxVisibility,
       groups
-      } = props;
+    } = props;
     let outerPadding = DEFAULT_INNER_PADDING;
     let rowCheckWidth = (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) ? CHECKBOX_WIDTH : 0;
     let groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
