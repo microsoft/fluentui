@@ -83,7 +83,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
-      suggestionsAvailableAlertText
+      suggestionsAvailableAlertText,
+      suggestionsHeaderText
     } = this.props;
 
     let noResults = () => {
@@ -92,8 +93,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           { noResultsFoundText }
         </div> : null;
     };
-
-    let headerText = isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText ? mostRecentlyUsedHeaderText : null;
+    // MostRecently Used text should supercede the header text if it's there and available.
+    let headerText = isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText ?
+      mostRecentlyUsedHeaderText :
+      suggestionsHeaderText ? suggestionsHeaderText : null;
     let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
     return (
       <div
