@@ -165,7 +165,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       useTargetWidth,
       directionalHintFixed,
       shouldFocusOnMount,
-      calloutProps } = this.props;
+      calloutProps,
+      onRenderSubMenu = this._onRenderSubMenu } = this.props;
 
     let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
@@ -238,13 +239,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 </ul>
               </FocusZone>
             ) : (null) }
-            { submenuProps && <ContextualMenu { ...submenuProps } /> }
+            { submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu) }
           </div>
         </Callout>
       );
     } else {
       return null;
     }
+  }
+
+  private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
+    return <ContextualMenu { ...subMenuProps } />;
   }
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
