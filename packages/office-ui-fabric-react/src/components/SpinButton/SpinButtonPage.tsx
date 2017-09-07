@@ -14,7 +14,6 @@ import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyle
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
-const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
 const SpinButtonBasicWithIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
 const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
 const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
@@ -29,32 +28,38 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           <div>
             <ExampleCard
               title={ 'Basic SpinButton' }
-              code={ SpinButtonBasicExampleCode }>
+              code={ SpinButtonBasicExampleCode }
+            >
               <SpinButtonBasicExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Basic Disabled SpinButton' }
-              code={ SpinButtonBasicDisabledExampleCode }>
+              code={ SpinButtonBasicDisabledExampleCode }
+            >
               <SpinButtonBasicDisabledExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Stateful SpinButton' }
-              code={ SpinButtonBasicExampleCode }>
+              code={ SpinButtonBasicExampleCode }
+            >
               <SpinButtonStatefulExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Basic SpinButton With Icon' }
-              code={ SpinButtonBasicWithIconExampleCode }>
+              code={ SpinButtonBasicWithIconExampleCode }
+            >
               <SpinButtonBasicWithIconExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Basic SpinButton With Icon and Positioned at the End' }
-              code={ SpinButtonBasicWithEndPositionExampleCode }>
+              code={ SpinButtonBasicWithEndPositionExampleCode }
+            >
               <SpinButtonBasicWithEndPositionExample />
             </ExampleCard>
             <ExampleCard
               title={ 'Custom Styled SpinButton' }
-              code={ SpinButtonCustomStyledExampleCode }>
+              code={ SpinButtonCustomStyledExampleCode }
+            >
               <SpinButtonCustomStyledExample />
             </ExampleCard>
 
@@ -98,7 +103,8 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/SpinButton/SpinButton.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

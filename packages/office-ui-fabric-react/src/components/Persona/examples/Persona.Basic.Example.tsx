@@ -5,7 +5,6 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TestImages } from '../../../common/TestImages';
 
 const examplePersona = {

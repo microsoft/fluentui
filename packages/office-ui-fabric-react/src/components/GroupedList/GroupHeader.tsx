@@ -111,9 +111,9 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
           <div className={ css('ms-GroupHeader-title', styles.title) }>
             <span>{ group.name }</span>
             {
-              // hasMoreData flag is set when grouping is throttle by SPO server which in turn resorts to regular
+              // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
               // sorting to simulate grouping behaviors, in which case group count is the number of items returned
-              // so far. That's the reasons we need to use "+" to show we might have more items than count
+              // so far. That's the reason we need to use "+" to show we might have more items than count
               // indicates.
             }
             <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>

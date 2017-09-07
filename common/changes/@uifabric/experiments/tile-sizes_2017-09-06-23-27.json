@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix minor alignment issues with SignalField",
+      "comment": "Add breakpoint size support to Tile",
       "type": "patch"
     }
   ],
