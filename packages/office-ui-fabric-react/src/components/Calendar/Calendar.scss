@@ -63,6 +63,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // The header containing the month and year.
 .header {
+  position: relative;
   display: inline-flex;
   height: $Calendar-day;
   line-height: 44px;
@@ -246,8 +247,9 @@ $Calendar-dayPicker-margin: 10px;
 .headerToggleView {
   height: $Calendar-day;
   position: absolute;
-  top: 9px;
-  width: 130px;
+  @include ms-left(5px);
+  top: 1px;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -414,7 +416,6 @@ $Calendar-dayPicker-margin: 10px;
   // button is necessary to toggle the month view.
   .headerToggleView {
     height: $Calendar-day;
-    @include ms-left(70px);
   }
 
   // Show month picker, if enabled
@@ -547,10 +548,6 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  .headerToggleView{
-    left: 100px;
-  }
-
   // position year components so they do not move when switching between calendars (overlayed calendars)
   .yearComponents {
     margin-top: 2px;
@@ -563,7 +560,7 @@ $Calendar-dayPicker-margin: 10px;
 
 .wrap span:focus,
 .wrap div:focus {
-  @include focus-border(1px, $ms-color-neutralSecondary);
+  @include focus-border(1px, #979797);
 }
 
 .goToday {

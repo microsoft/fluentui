@@ -113,7 +113,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onPrevMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.prevMonthAriaLabel }
+              aria-label={ strings.prevMonthAriaLabel ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()] : undefined }
               role='button'
               tabIndex={ 0 }>
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
@@ -123,7 +123,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onNextMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.nextMonthAriaLabel }
+              aria-label={ strings.nextMonthAriaLabel ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()] : undefined }
               role='button'
               tabIndex={ 0 }>
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
@@ -194,12 +194,18 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
-                        aria-selected={ day.isSelected }
                         aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
+                        {
+                          // aria-selected not read by screenreader in IE/Edge.  Using hidden string instead
+                          strings.selectedStateScreenReader ?
+                            <span className={ 'screenReaderOnly' }>
+                              { day.isSelected ? strings.selectedStateScreenReader.selectedButtonString : strings.selectedStateScreenReader.unSelectedButtonString }
+                            </span> : null
+                        }
                         <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
                     </td>

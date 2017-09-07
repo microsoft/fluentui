@@ -55,43 +55,43 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
 
     return (
       <div className={ css('ms-DatePicker-monthPicker', styles.monthPicker) }>
-          <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
-            <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
-              <span
-                className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
-                onClick={ this._onSelectPrevYear }
-                onKeyDown={ this._onSelectPrevYearKeyDown }
-                aria-label={ strings.prevYearAriaLabel }
-                role='button'
-                tabIndex={ 0 }>
-                <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
-              </span>
-              <span
-                className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
-                onClick={ this._onSelectNextYear }
-                onKeyDown={ this._onSelectNextYearKeyDown }
-                aria-label={ strings.nextYearAriaLabel }
-                role='button'
-                tabIndex={ 0 }>
-                <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
-              </span>
-            </div>
+        <div className={ css('ms-DatePicker-yearComponents', styles.yearComponents) }>
+          <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
+            <span
+              className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
+              onClick={ this._onSelectPrevYear }
+              onKeyDown={ this._onSelectPrevYearKeyDown }
+              aria-label={ strings.prevYearAriaLabel ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1)) : undefined }
+              role='button'
+              tabIndex={ 0 }>
+              <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
+            </span>
+            <span
+              className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
+              onClick={ this._onSelectNextYear }
+              onKeyDown={ this._onSelectNextYearKeyDown }
+              aria-label={ strings.nextYearAriaLabel ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1)) : undefined }
+              role='button'
+              tabIndex={ 0 }>
+              <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
+            </span>
           </div>
-          <div className={ css('ms-DatePicker-header', styles.header) }>
-            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
-            {
-              this.props.onHeaderSelect ?
-                <div
-                  className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                  onClick={ this._onHeaderSelect }
-                  onKeyDown={ this._onHeaderKeyDown }
-                  aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
-                  role='button'
-                  tabIndex={ 0 }
-                />
-                :
-                null
-            }
+        </div>
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
+          {
+            this.props.onHeaderSelect ?
+              <div
+                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
+                onClick={ this._onHeaderSelect }
+                onKeyDown={ this._onHeaderKeyDown }
+                aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+                role='button'
+                tabIndex={ 0 }
+              />
+              :
+              null
+          }
         </div>
         <FocusZone>
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
@@ -108,10 +108,17 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
-                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+                aria-label={ dateTimeFormatter.formatMonthYear(setMonth(navigatedDate, index), strings) }
                 data-is-focusable={ true }
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
+                {
+                  // aria-selected not read by screenreader in IE/Edge.  Using hidden string instead
+                  strings.selectedStateScreenReader ?
+                    <span className={ 'screenReaderOnly' }>
+                      { highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!) || highlightCurrentMonth && (navigatedDate.getMonth() === index) ? strings.selectedStateScreenReader.selectedButtonString : strings.selectedStateScreenReader.unSelectedButtonString }
+                    </span> : null
+                }
                 { month }
               </span>
             ) }
