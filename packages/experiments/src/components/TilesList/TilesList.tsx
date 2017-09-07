@@ -95,9 +95,24 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       cells
     } = this.state;
 
+    const {
+      className,
+      onActiveElementChanged,
+      items,
+      cellsPerPage,
+      ref,
+      focusZoneComponentRef,
+      ...divProps
+    } = this.props;
+
     return (
       <FocusZone
+        { ...divProps }
+        ref={ ref as ((element: FocusZone | null) => void) }
+        componentRef={ focusZoneComponentRef }
+        className={ css('ms-TilesList', className) }
         direction={ FocusZoneDirection.bidirectional }
+        onActiveElementChanged={ this.props.onActiveElementChanged }
       >
         <List
           items={ cells }
