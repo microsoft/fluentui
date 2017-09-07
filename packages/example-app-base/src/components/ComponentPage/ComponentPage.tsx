@@ -30,7 +30,7 @@ export interface IComponentPageProps {
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
-  public static defaultProps = {
+  public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true
   };
 
@@ -43,7 +43,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     this._baseUrl = doc ? document.location.href : '';
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       componentName,
       overview,

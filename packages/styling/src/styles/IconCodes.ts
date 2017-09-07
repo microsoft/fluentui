@@ -684,6 +684,10 @@ export const IconCodes = {
    */
   combine: '\uEDBB',
   /**
+   * Icon code with value '\uE90A'.
+   */
+  comment: '\uE90A',
+  /**
    * Icon code with the value '\uE942'.
    */
   compassNW: '\uE942',
@@ -1272,6 +1276,10 @@ export const IconCodes = {
    */
   fullScreen: '\uE740',
   /**
+   * Icon code with the value '\uF2FE'.
+   */
+  fullWidth: '\uF2FE',
+  /**
    * Icon code with the value '\uE9DA'.
    */
   generate: '\uE9DA',
@@ -1515,6 +1523,10 @@ export const IconCodes = {
    * Icon code with the value '\uE8E1'.
    */
   like: '\uE8E1',
+  /**
+   * Icon code with the value '\uF3BF'
+   */
+  likeSolid: '\uF3BF',
   /**
    * Icon code with the value '\uE71B'.
    */
@@ -2587,6 +2599,10 @@ export const IconCodes = {
    * Icon code with the value '\uEDC3'.
    */
   textField: '\uEDC3',
+  /**
+   * Icon code with the value '\uF029'.
+   */
+  textDocument: '\uF029',
   /**
    * Icon code with the value '\uE7B6'.
    */

@@ -16,7 +16,7 @@ import {
 } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
-import { IViewport } from '../../utilities/decorators/withViewport';
+import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
 
 export { IDetailsHeaderProps };
@@ -30,7 +30,7 @@ export interface IDetailsList {
   forceUpdate: () => void;
 }
 
-export interface IDetailsListProps extends React.Props<DetailsList> {
+export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -188,12 +188,12 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   compact?: boolean;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization 
+  * Boolean value to enable render page caching. This is an experimental performance optimization
   * that is off by default.
   * @defaultValue false
   */
   usePageCache?: boolean;
-  
+
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.

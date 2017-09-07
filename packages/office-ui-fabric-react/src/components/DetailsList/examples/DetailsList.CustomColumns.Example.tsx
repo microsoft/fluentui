@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { createListItems } from '@uifabric/example-app-base';
-
+import { autobind } from '../../../Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import {
@@ -40,12 +40,14 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         setKey='set'
         columns={ columns }
         onRenderItemColumn={ _renderItemColumn }
-        onColumnHeaderClick={ this._onColumnClick.bind(this) }
+        onColumnHeaderClick={ this._onColumnClick }
         onItemInvoked={ (item, index) => alert(`Item ${item.name} at index ${index} has been invoked.`) }
-        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column!.key} contextmenu opened.`) } />
+        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column!.key} contextmenu opened.`) }
+      />
     );
   }
 
+  @autobind
   private _onColumnClick(event: React.MouseEvent<HTMLElement>, column: IColumn) {
     let { sortedItems, columns } = this.state;
     let isSortedDescending = column.isSortedDescending;

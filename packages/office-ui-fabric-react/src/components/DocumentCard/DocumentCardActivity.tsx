@@ -11,9 +11,11 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
 
     return (
       people && people.length > 0 &&
-      <div className={ css('ms-DocumentCardActivity', styles.activity, {
-        ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
-      }) }>
+      <div
+        className={ css('ms-DocumentCardActivity', styles.activity, {
+          ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
+        }) }
+      >
         { this._renderAvatars(people) }
         <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
           <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>

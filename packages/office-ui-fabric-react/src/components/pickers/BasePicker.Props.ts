@@ -93,6 +93,12 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default false
    */
   disabled?: boolean;
+
+  /**
+   * Restrict the amount of selectable items.
+   * @default undefined
+   */
+  itemLimit?: number;
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
@@ -181,7 +187,7 @@ export enum ValidationState {
   invalid
 }
 
-export interface IInputProps extends React.HTMLAttributes<HTMLInputElement> {
+export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * Screen reader label to apply to an input element.
    */

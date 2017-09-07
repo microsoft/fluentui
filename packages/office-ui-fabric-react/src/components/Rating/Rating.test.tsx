@@ -18,7 +18,7 @@ describe('Rating', () => {
       rating = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           rating={ 2 }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -59,7 +59,7 @@ describe('Rating', () => {
       rating = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           rating={ 10 }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -86,7 +86,7 @@ describe('Rating', () => {
       choiceGroup = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           disabled={ true }
-          />
+        />
       );
     } catch (e) {
       exception = e;

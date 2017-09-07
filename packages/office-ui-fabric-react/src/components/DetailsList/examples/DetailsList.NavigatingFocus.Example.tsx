@@ -20,7 +20,8 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
       onRender: item =>
         <Link
           key={ item }
-          onClick={ () => this.navigate(item) }>
+          onClick={ () => this._navigate(item) }
+        >
           { item }
         </Link>,
     } as IColumn,
@@ -40,7 +41,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     );
   }
 
-  private navigate(name: string) {
+  private _navigate(name: string) {
     this.setState({
       items: generateItems(name + '/'),
       initialFocusedIndex: 0,

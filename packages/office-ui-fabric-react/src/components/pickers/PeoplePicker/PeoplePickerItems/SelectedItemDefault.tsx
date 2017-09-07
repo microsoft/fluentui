@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { css } from '../../../../Utilities';
+import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
 import { ValidationState } from '../../BasePicker.Props';
@@ -17,6 +17,9 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
     selected,
     removeButtonAriaLabel
   } = peoplePickerItemProps;
+
+  const itemId = getId();
+
   return (
     <div
       className={ css(
@@ -27,8 +30,14 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       ) }
       data-is-focusable={ true }
       data-is-sub-focuszone={ true }
-      data-selection-index={ index } >
-      <div className={ css('ms-PickerItem-content', styles.itemContent) } >
+      data-selection-index={ index }
+      role={ 'listitem' }
+      aria-labelledby={ 'selectedItemPersona-' + itemId }
+    >
+      <div
+        className={ css('ms-PickerItem-content', styles.itemContent) }
+        id={ 'selectedItemPersona-' + itemId }
+      >
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
