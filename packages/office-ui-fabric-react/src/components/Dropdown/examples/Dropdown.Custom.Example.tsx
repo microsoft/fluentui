@@ -13,8 +13,6 @@ export class DropdownCustomExample extends React.Component<any, any> {
   }
 
   public render() {
-    let { selectedItem } = this.state;
-
     return (
       <div className='dropdownExample'>
 

@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Sep 2017 10:09:51 GMT and should not be manually modified.
+
+## 4.42.0
+Thu, 07 Sep 2017 10:09:51 GMT
+
+### Minor changes
+
+- Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state.
+- ContextualMenu: `onRenderSubMenu` prop added to allow the overriding of submenu rendering.
+
+## 4.41.0
+Wed, 06 Sep 2017 10:16:32 GMT
+
+### Minor changes
+
+- Allow rendering empty GroupedList headers
+
+## 4.40.1
+Tue, 05 Sep 2017 20:36:48 GMT
+
+### Patches
+
+- HoverCard: Support change in expanded card height. Add callbacks upon card visible/hide
+- ScrollablePane: Fix component to remove stickyContainer element on component unmount.
+- List: fixing minor issue around using the `shouldVirtualize` prop.
 
 ## 4.40.0
 Mon, 04 Sep 2017 10:16:56 GMT

@@ -82,8 +82,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   public componentWillReceiveProps(nextProps: ICalendarDayProps) {
-    const { navigatedDate, selectedDate, today } = nextProps;
-
     this.setState({
       weeks: this._getWeeks(nextProps)
     });
@@ -115,7 +113,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-controls={ dayPickerId }
               aria-label={ strings.prevMonthAriaLabel ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()] : undefined }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span >
             <span
@@ -125,7 +124,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()] : undefined }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
@@ -164,7 +164,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  >
                     { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
@@ -173,12 +174,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               { weeks!.map((week, weekIndex) =>
                 <tr key={ weekIndex } >
                   { week.map((day, dayIndex) =>
-                    <td key={ day.key } className={ css(
-                      {
-                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
-                        ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
-                      }) }
+                    <td
+                      key={ day.key }
+                      className={ css(
+                        {
+                          ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                          ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
+                          ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
+                        }) }
                     >
                       <div
                         className={ css(

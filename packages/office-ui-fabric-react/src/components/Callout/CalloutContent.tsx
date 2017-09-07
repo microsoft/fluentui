@@ -180,7 +180,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             }) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
+            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }
+          >
             { children }
           </Popup>
         </div>
