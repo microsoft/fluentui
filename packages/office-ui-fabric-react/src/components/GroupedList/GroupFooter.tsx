@@ -3,7 +3,6 @@ import {
   BaseComponent,
   css
 } from '../../Utilities';
-import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
 import * as stylesImport from './GroupFooter.scss';
