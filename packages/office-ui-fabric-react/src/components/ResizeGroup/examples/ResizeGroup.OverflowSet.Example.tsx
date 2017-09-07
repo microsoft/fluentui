@@ -120,7 +120,8 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 { key: '50', text: '50' },
                 { key: '75', text: '75' },
                 { key: '100', text: '100' },
-                { key: '200', text: '200' }] } />
+                { key: '200', text: '200' }] }
+            />
           </div>
         </div>
       </div>
