@@ -5,8 +5,8 @@
   .App {
     background-color: $ms-color-neutralDark;
     justify-content: center;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 5%; // % matches UHF breakpoint sizes
+    padding-right: 5%; // % matches UHF breakpoint sizes
   }
 
   // Element that wraps everything except for the header
@@ -111,12 +111,12 @@
 
   @media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
     .App {
-      padding-right: 24px;
-      padding-left: 6px;
+      @include ms-padding-right(24px);
+      @include ms-padding-left(6px);
     }
 
     .App-nav {
-      margin-left: 18px;
+      @include ms-margin-left(18px);
     }
   }
 }

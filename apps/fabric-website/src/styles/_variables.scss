@@ -73,11 +73,9 @@ $contentPadding-lg: 32px;
 $contentPadding-xl: 40px;
 $contentPaddingBottom: 100px;
 
-// UHF sizing
+// Screen sizes that align with UHF breakpoints
 $uhf-screen-min-mobile: 768px;
 $uhf-screen-max-mobile: ($uhf-screen-min-mobile - 1);
 $uhf-screen-max-lg: 1083px;
-$uhf-menuButtonSize: 48px;
-$uhf-menuIconSize: 20px;
 
 $baseURL: ' https://static2.sharepointonline.com/files/fabric/';
