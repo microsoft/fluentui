@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.42.0",
+      "tag": "office-ui-fabric-react_v4.42.0",
+      "date": "Thu, 07 Sep 2017 10:09:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Max Vaysburd <max@angrykitten.com>",
+            "commit": "88fce95c6a4369a57affdcd4f81bd4d060c39daf",
+            "comment": "Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state."
+          },
+          {
+            "author": "David Wilson (VSNC) <dawilson@microsoft.com>",
+            "commit": "d52a454962cbbcec7774e163f86052175cf075f1",
+            "comment": "ContextualMenu: `onRenderSubMenu` prop added to allow the overriding of submenu rendering."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.41.0",
       "tag": "office-ui-fabric-react_v4.41.0",
       "date": "Wed, 06 Sep 2017 10:16:32 GMT",

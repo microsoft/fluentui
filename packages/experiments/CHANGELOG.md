@@ -1,6 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Sep 2017 10:09:51 GMT and should not be manually modified.
+
+## 0.5.0
+Thu, 07 Sep 2017 10:09:51 GMT
+
+### Minor changes
+
+- Removed global fabric export
+- Add presentation hooks for Tile and FolderCover
+- Support auto-focus for TilesList
+
+### Patches
+
+- Fix minor alignment issues with SignalField
 
 ## 0.4.0
 Mon, 04 Sep 2017 10:16:56 GMT
