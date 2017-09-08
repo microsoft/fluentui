@@ -37,7 +37,7 @@ export class App extends React.Component<IAppProps, any> {
       <Fabric className={ css(
         'App',
         isNavOpen && 'is-navOpen'
-      )}>
+      ) }>
         <div className='App-wrapper'>
           <div className='App-nav'>
             <Nav pages={ AppState.pages } onLinkClick={ this._onNavItemClicked.bind(this) } />
