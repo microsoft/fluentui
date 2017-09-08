@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixing wrong positioning for overflow menu, when overflow menu open and CommandBar is updated",
+      "comment": "CommandBar: Fixing wrong positioning for overflow menu, when overflow menu open and CommandBar is updated",
       "type": "patch"
     }
   ],
