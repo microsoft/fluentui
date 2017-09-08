@@ -27,6 +27,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   href?: string;
 
   /**
+   * Changes the visual presentation of the button to be emphasized (if defined)
+   * @default false
+   */
+  primary?: boolean;
+
+  /**
    * Unique id to identify the item. Typically a duplicate of key value.
    */
   uniqueId?: string | number;

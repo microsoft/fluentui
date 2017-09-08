@@ -168,6 +168,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',
           [`ms-Tile--hasBackgroundFrame ${TileStyles.hasBackgroundFrame}`]: showBackgroundFrame,
+          [`ms-Tile--hasForegroundFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame,
           [`ms-Tile--isSelected ${TileStyles.selected} ${SignalStyles.selected}`]: isSelected,
           [`ms-Tile--isSelectable ${TileStyles.selectable}`]: isSelectable,
           [`ms-Tile--hasBackground ${TileStyles.hasBackground}`]: !!background,
@@ -193,7 +194,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           {
             foreground ? this._onRenderForeground({
               foreground: foreground,
-              showForegroundFrame: showForegroundFrame,
               hideForeground
             }) : null
           }
@@ -233,11 +233,9 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
   private _onRenderForeground({
     foreground,
-    showForegroundFrame,
     hideForeground
   }: {
       foreground: React.ReactNode | React.ReactNode[];
-      showForegroundFrame: boolean;
       hideForeground: boolean;
     }): JSX.Element {
     return (
@@ -252,7 +250,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           <span
             role='presentation'
             className={ css('ms-Tile-foreground', TileStyles.foreground, {
-              [`ms-Tile-foreground--hasFrame ${TileStyles.hasForegroundFrame}`]: showForegroundFrame,
               [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
             }) }
           >
