@@ -4,7 +4,10 @@ import {
 } from '../utilities/index';
 
 /**
- * All class names for all Fabric icons.
+ * Deprecated: All class names for all Fabric icons.
+ * NOTE: This is deprecated, being replaced with a getIconClassName function.
+ *
+ * @deprecated
  */
 export const IconClassNames: {[key in keyof typeof IconCodes]?: string } = {};
 
