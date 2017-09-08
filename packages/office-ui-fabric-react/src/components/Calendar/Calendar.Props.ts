@@ -161,11 +161,6 @@ export interface ICalendarStrings {
    */
   nextYearAriaLabel?: string;
 
-  /**
-   * Button selected state. (ScreenReader not reading arial-selected in Edge/IE)
-   */
-  selectedStateScreenReader?: selectedStateScreenReaderStrings;
-
 }
 
 export interface ICalendarIconStrings {
@@ -204,16 +199,4 @@ export interface ICalendarFormatDateCallbacks {
   */
   formatYear: (date: Date) => string;
 
-}
-
-export interface selectedStateScreenReaderStrings {
-  /**
- * Callback to apply formatting to mmmm d, yyyy formated dates
- */
-  selectedButtonString: string;
-
-  /**
-  * Callback to apply formatting to the month and year in the Day Picker header
-  */
-  unSelectedButtonString: string;
 }

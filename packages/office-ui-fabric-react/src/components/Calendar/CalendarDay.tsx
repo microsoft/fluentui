@@ -161,6 +161,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 { strings.shortDays.map((val, index) =>
                   <th
                     className={ css('ms-DatePicker-weekday', styles.weekday) }
+                    role='tablist'
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
@@ -193,7 +194,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
                           }) }
-                        role='button'
+                        role='tab'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
@@ -201,14 +202,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
-                        {
-                          // aria-selected not read by screenreader in IE/Edge.  Using hidden string instead
-                          strings.selectedStateScreenReader ?
-                            <span className={ 'screenReaderOnly' }>
-                              { day.isSelected ? strings.selectedStateScreenReader.selectedButtonString : strings.selectedStateScreenReader.unSelectedButtonString }
-                            </span> : null
-                        }
+                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
+                      >
                         <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
                     </td>

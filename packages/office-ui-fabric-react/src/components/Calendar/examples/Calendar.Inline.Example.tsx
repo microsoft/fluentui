@@ -7,13 +7,6 @@ import {
 } from 'office-ui-fabric-react/lib/Calendar';
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 
-import { selectedStateScreenReaderStrings } from '../Calendar.Props';
-
-let selectedStateStrings: selectedStateScreenReaderStrings = {
-  selectedButtonString: 'selected',
-  unSelectedButtonString: 'unselected'
-};
-
 const DayPickerStrings = {
   months: [
     'January',
@@ -65,9 +58,7 @@ const DayPickerStrings = {
     'S'
   ],
 
-  goToToday: 'Go to today',
-
-  selectedStateScreenReader: selectedStateStrings
+  goToToday: 'Go to today'
 };
 
 export interface ICalendarInlineExampleState {

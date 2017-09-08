@@ -63,7 +63,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               onKeyDown={ this._onSelectPrevYearKeyDown }
               aria-label={ strings.prevYearAriaLabel ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1)) : undefined }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span>
             <span
@@ -72,7 +73,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               onKeyDown={ this._onSelectNextYearKeyDown }
               aria-label={ strings.nextYearAriaLabel ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1)) : undefined }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span>
           </div>
@@ -97,7 +99,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
             { strings.shortMonths.map((month, index) =>
               <span
-                role='button'
+                role='tab'
                 className={
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
@@ -112,13 +114,6 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 data-is-focusable={ true }
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
-                {
-                  // aria-selected not read by screenreader in IE/Edge.  Using hidden string instead
-                  strings.selectedStateScreenReader ?
-                    <span className={ 'screenReaderOnly' }>
-                      { highlightCurrentMonth && this._isCurrentMonth(index, navigatedDate.getFullYear(), today!) || highlightCurrentMonth && (navigatedDate.getMonth() === index) ? strings.selectedStateScreenReader.selectedButtonString : strings.selectedStateScreenReader.unSelectedButtonString }
-                    </span> : null
-                }
                 { month }
               </span>
             ) }
