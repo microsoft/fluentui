@@ -4,7 +4,6 @@ import { setRTL } from '../../Utilities';
 import { Persona } from './Persona';
 import { PersonaInitialsColor } from './Persona.Props';
 import { shallow, ShallowWrapper } from 'enzyme';
-import * as chai from 'chai';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 

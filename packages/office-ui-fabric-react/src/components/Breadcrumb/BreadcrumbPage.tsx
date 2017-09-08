@@ -26,12 +26,14 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           <div>
             <ExampleCard
               title='Default Breadcrumb'
-              code={ BreadcrumbBasicExampleCode }>
+              code={ BreadcrumbBasicExampleCode }
+            >
               <BreadcrumbBasicExample />
             </ExampleCard>
             <ExampleCard
               title='Breadcrumb with static width '
-              code={ BreadcrumbStaticExampleCode }>
+              code={ BreadcrumbStaticExampleCode }
+            >
               <BreadcrumbStaticExample />
             </ExampleCard>
           </div>
@@ -66,7 +68,8 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

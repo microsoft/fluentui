@@ -18,7 +18,8 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         exampleCards={
           <ExampleCard
             title='Various MessageBar types'
-            code={ MessageBarBasicExampleCode }>
+            code={ MessageBarBasicExampleCode }
+          >
             <MessageBarBasicExample />
           </ExampleCard>
         }
@@ -58,7 +59,8 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

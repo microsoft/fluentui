@@ -29,7 +29,8 @@ export class LayerHostedExample extends React.Component<any, any> {
         <Toggle
           label='Show host'
           checked={ showHost }
-          onChanged={ checked => this.setState({ showHost: checked }) } />
+          onChanged={ checked => this.setState({ showHost: checked }) }
+        />
 
         { showHost && (
           <LayerHost id='layerhost1' className='LayerExample-customHost' />
@@ -43,7 +44,8 @@ export class LayerHostedExample extends React.Component<any, any> {
           className={ exampleStyles.exampleCheckbox }
           label='Render the box below in a Layer and target it at hostId=layerhost1'
           checked={ showLayer }
-          onChange={ (ev, checked) => this.setState({ showLayer: checked }) } />
+          onChange={ (ev, checked) => this.setState({ showLayer: checked }) }
+        />
 
         { showLayer ? (
           <Layer

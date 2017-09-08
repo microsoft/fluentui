@@ -15,7 +15,6 @@ import { getColorFromString } from '../../utilities/color/colors';
 import { Grid } from '../../utilities/grid/Grid';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.Props';
-import { CommandButton } from '../../Button';
 import * as stylesImport from './SwatchColorPicker.scss';
 const styles: any = stylesImport;
 
@@ -58,8 +57,7 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
       newSelectedIndex = this._getSelectedIndex(newProps.colorCells, newProps.selectedId);
     }
 
-    if (newSelectedIndex !== undefined &&
-      newSelectedIndex !== this.state.selectedIndex) {
+    if (newSelectedIndex !== this.state.selectedIndex) {
       this.setState({
         selectedIndex: newSelectedIndex
       });
@@ -68,14 +66,11 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
 
   public render() {
     let {
-      disabled,
       colorCells,
-      columnCount,
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
-      className,
-      onCellFocused
+      className
     } = this.props;
 
     return (
@@ -212,17 +207,5 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
         selectedIndex: index
       });
     }
-  }
-
-  /**
-   * Clear the colors by calling the given callbacks
-   * @param callbacks - The callbacks to handle the clear operation
-   */
-  private _clearColors(callbacks: ((id?: string, color?: string) => void)[]) {
-    callbacks.forEach((callback) => {
-      if (callback) {
-        callback();
-      }
-    });
   }
 }

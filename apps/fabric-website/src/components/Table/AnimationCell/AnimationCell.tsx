@@ -13,12 +13,13 @@ export class AnimationCell extends React.Component<IAnimationCellProps, {}> {
   public render() {
     const name = this.props.data[0].value;
     const animClass = this.props.data[1].value;
+
     return (
-      <div className={`AnimationExample ${animClass}`}
-          data-class={ animClass }
-          aria-label={`Visual Animation Example for ${ name }`}
-          onClick={ this._doAnimation }
-          >
+      <div className={ `AnimationExample ${animClass}` }
+        data-class={ animClass }
+        aria-label={ `Visual Animation Example for ${name}` }
+        onClick={ this._doAnimation }
+      >
         <div className='AnimationExample-content' aria-hidden='true'>
           <hr />
           <hr />
@@ -28,16 +29,16 @@ export class AnimationCell extends React.Component<IAnimationCellProps, {}> {
           <hr />
           <hr />
         </div>
-        <div className='animationExample_panel ms-bg-color-themePrimary' data-class={ animClass }></div>
+        <div className='animationExample_panel ms-bg-color-themePrimary' data-class={ animClass } />
       </div>
     );
   }
 
   // Apply animation to animation cell
   private _doAnimation(e): void {
-    const AnimationCell = e.currentTarget;
-    const panel = AnimationCell.getElementsByClassName('animationExample_panel')[0];
-    const animClass = AnimationCell.getAttribute('data-class');
+    const cell = e.currentTarget;
+    const panel = cell.getElementsByClassName('animationExample_panel')[0];
+    const animClass = cell.getAttribute('data-class');
     panel.classList.add(animClass);
     setTimeout(() => {
       panel.classList.remove(animClass);

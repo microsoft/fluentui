@@ -3,14 +3,10 @@
     "office-ui-fabric-react-tslint"
   ],
   "rules": {
-    "triple-equals": false,
     "jsx-no-string-ref": false,
     "jsx-key": false,
     "jsx-boolean-value": false,
-    "no-unused-variable": false,
-    "jsx-no-bind": false,
     "jsx-no-multiline-js": false,
-    "jsx-alignment": false,
     "jsx-wrap-multiline": false,
     "jsx-self-close": false,
     "jsx-no-lambda": false,

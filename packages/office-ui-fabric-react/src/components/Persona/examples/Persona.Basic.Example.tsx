@@ -5,8 +5,8 @@ import {
   PersonaPresence
 } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TestImages } from '../../../common/TestImages';
+import { Label } from '../../Label/Label';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
@@ -36,7 +36,8 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           <Checkbox
             label='Include persona details'
             checked={ renderPersonaDetails }
-            onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); } } />
+            onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); } }
+          />
         </div>
 
         <Label className={ exampleStyles.exampleLabel }>Tiny Persona (12px)</Label>

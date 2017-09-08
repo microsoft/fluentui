@@ -79,30 +79,35 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             className={ exampleStyles.exampleCheckbox }
             label='Show beak'
             checked={ isBeakVisible }
-            onChange={ this._onShowBeakChange } />
+            onChange={ this._onShowBeakChange }
+          />
           <Checkbox
             className={ exampleStyles.exampleCheckbox }
             label='Fix Edge'
             checked={ edgeFixed }
-            onChange={ this._onFixEdgeChange } />
+            onChange={ this._onFixEdgeChange }
+          />
           <Slider
             max={ 20 }
             label='Gap Space'
             min={ 0 }
             defaultValue={ 0 }
-            onChange={ this._onGapSlider } />
+            onChange={ this._onGapSlider }
+          />
           { isBeakVisible &&
             (<Slider
               max={ 50 }
               label='Beak Width'
               min={ 10 }
               defaultValue={ 10 }
-              onChange={ this._onBeakWidthSlider } />) }
+              onChange={ this._onBeakWidthSlider }
+            />) }
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged } />
+            onChanged={ this._onDirectionalChanged }
+          />
           { getRTL() &&
             <Checkbox label='Use RTL directional hint' checked={ useDirectionalHintForRtl } onChange={ this._onUseRtlHintChange } />
           }
@@ -112,7 +117,8 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               selectedKey={ DirectionalHint[directionalHintForRTL!] }
               options={ DIRECTION_OPTIONS }
               onChanged={ this._onDirectionalRtlChanged }
-              disabled={ !useDirectionalHintForRtl } />
+              disabled={ !useDirectionalHintForRtl }
+            />
           }
         </div>
         <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
