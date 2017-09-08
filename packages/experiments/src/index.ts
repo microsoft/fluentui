@@ -1,2 +1,2 @@
-export * from 'office-ui-fabric-react';
+export { CommandBar } from './CommandBar';
 export { CommandBar as ExperimentCommandBar } from './CommandBar';

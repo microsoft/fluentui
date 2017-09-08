@@ -55,7 +55,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   public componentDidMount() {
-    const { root, stickyContainer, stickyAbove, stickyBelow } = this.refs;
+    const { root, stickyContainer } = this.refs;
 
     this._events.on(root, 'scroll', this.notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
@@ -85,7 +85,8 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       <div
         ref='root'
         className={ css('ms-ScrollablePane', styles.root, className) }
-        data-is-scrollable={ true }>
+        data-is-scrollable={ true }
+      >
         <div ref='stickyContainer' className={ styles.stickyContainer }>
           <div ref='stickyAbove' className={ styles.stickyAbove } />
           <div ref='stickyBelow' className={ styles.stickyBelow } />
@@ -173,7 +174,6 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   private _onWindowResize() {
-    const { stickyAbove, stickyBelow } = this.refs;
     setTimeout(() => {
       this._resizeContainer();
       this.notifySubscribers();

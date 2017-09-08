@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { autobind } from '../../../Utilities';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { SelectionZone } from 'office-ui-fabric-react/lib/DetailsList';
 import {
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
@@ -21,9 +19,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   IBasePickerProps,
   BasePickerListBelow,
-  BaseAutoFill,
   IPickerItemProps,
-  ISuggestionsProps,
   ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
 import './Picker.CustomResult.Example.scss';
@@ -287,14 +283,13 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps
     documentPreviewProps,
     documentTitleProps
   } = documentProps;
-  let {
-    onClick
-  } = itemProps;
+
   return (
     <Persona
       imageUrl={ documentPreviewProps && documentPreviewProps.previewImages[0].previewImageSrc }
       primaryText={ documentTitleProps && documentTitleProps.title }
-      size={ PersonaSize.small } />
+      size={ PersonaSize.small }
+    />
   );
 };
 

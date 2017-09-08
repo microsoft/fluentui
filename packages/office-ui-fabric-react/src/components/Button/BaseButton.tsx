@@ -389,10 +389,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
         menuProps={ undefined }
-        iconProps={ {
-          iconName: 'ChevronDown',
-          ...menuIconProps
-        } } />
+        iconProps={ menuIconProps }
+      />
     );
   }
 

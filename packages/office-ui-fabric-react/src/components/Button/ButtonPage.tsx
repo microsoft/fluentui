@@ -9,7 +9,6 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
-import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonActionExample } from './examples/Button.Action.Example';
 import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
@@ -21,19 +20,36 @@ import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.
 import './examples/Button.Basic.Example.scss';
 import { Link } from '../../Link';
 
-const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
-const ButtonCommandExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Command.Example.tsx') as string;
-const ButtonPrimaryExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Primary.Example.tsx') as string;
-const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
-const ButtonActionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx') as string;
-const ButtonCommandBarExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CommandBar.Example.tsx') as string;
-const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
-const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
-const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
-const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
-const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
-const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
-const ButtonSplitCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
+const ButtonDefaultExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx'
+) as string;
+const ButtonCompoundExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx'
+) as string;
+const ButtonActionExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx'
+) as string;
+const ButtonCommandBarExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CommandBar.Example.tsx'
+) as string;
+const ButtonIconExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx'
+) as string;
+const ButtonAnchorExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx'
+) as string;
+const ButtonScreenReaderExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx'
+) as string;
+const ButtonContextualMenuExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx'
+) as string;
+const ButtonSwapExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx'
+) as string;
+const ButtonSplitExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx'
+) as string;
 
 export interface IButtonDemoPageState {
   areButtonsDisabled?: boolean;
@@ -56,13 +72,12 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         componentName='ButtonExample'
         exampleCards={
           <div>
-            <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
-            <Checkbox label='Mark as checked' checked={ this.state.areButtonsChecked } onChange={ this._onToggledChanged.bind(this) } />
-            <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
+            <div style={ { marginBottom: '20px' } }>
+              <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
+              <Checkbox label='Mark as checked' checked={ this.state.areButtonsChecked } onChange={ this._onToggledChanged.bind(this) } />
+            </div>
+            <ExampleCard title='Button' code={ ButtonDefaultExampleCode }>
               <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
-            </ExampleCard>
-            <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
-              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
@@ -148,7 +163,8 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

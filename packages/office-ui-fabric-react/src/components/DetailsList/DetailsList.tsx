@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import * as stylesImport from './DetailsList.scss';
-import * as ReactDOM from 'react-dom';
 
 import {
   BaseComponent,
@@ -69,6 +68,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   };
 
   // References
+  // tslint:disable-next-line:no-unused-variable
   private _root: HTMLElement;
   private _header: IDetailsHeader;
   private _groupedList: GroupedList;
@@ -118,6 +118,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       minimumPixelsForDrag: props.minimumPixelsForDrag
     }) : null;
     this._initialFocusedIndex = props.initialFocusedIndex;
+  }
+
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+    this._list && this._list.scrollToIndex(index, measureItem);
+    this._groupedList && this._groupedList.scrollToIndex(index, measureItem);
   }
 
   public componentWillUnmount() {
@@ -267,12 +272,15 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
-        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
-        <div role='grid'
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }
+      >
+        <div
+          role='grid'
           aria-label={ ariaLabelForGrid }
           aria-rowcount={ (isHeaderVisible ? 1 : 0) + (items ? items.length : 0) }
           aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
-          aria-readonly='true'>
+          aria-readonly='true'
+        >
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && onRenderDetailsHeader({
               componentRef: this._resolveRef('_header'),

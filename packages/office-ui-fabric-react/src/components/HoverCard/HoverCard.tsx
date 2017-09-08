@@ -34,6 +34,7 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
 
   // The wrapping div that gets the hover events
   private _hoverCard: HTMLElement;
+  // tslint:disable-next-line:no-unused-variable
   private _expandingCard: ExpandingCard;
   private _dismissTimerId: number;
   private _openTimerId: number;
@@ -90,7 +91,6 @@ export class HoverCard extends BaseComponent<IHoverCardProps, IHoverCardState> {
       expandingCardProps,
       children,
       id,
-      instantOpenOnClick,
       setAriaDescribedBy = true,
       styles: customStyles
     } = this.props;

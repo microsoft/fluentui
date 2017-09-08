@@ -31,7 +31,8 @@ export class PanelSmallRightExample extends React.Component<any, any> {
               <div>
                 <PrimaryButton
                   onClick={ this._onClosePanel }
-                  style={ { 'marginRight': '8px' } } >
+                  style={ { 'marginRight': '8px' } }
+                >
                   Save
                 </PrimaryButton>
                 <DefaultButton

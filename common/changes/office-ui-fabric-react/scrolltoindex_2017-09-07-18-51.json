@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Allow rendering empty GroupedList headers",
+      "comment": "Add scrollToIndex to GroupedList, DetailsList",
       "type": "minor"
     }
   ],
