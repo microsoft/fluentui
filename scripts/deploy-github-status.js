@@ -2,8 +2,7 @@ let argv = require('yargs').argv;
 let GitHubApi = require('github');
 
 const REPO_DETAILS = {
-  owner: "OfficeDev",
-  repo: "office-ui-fabric-react"
+
 };
 
 if (!argv.token) {
@@ -19,10 +18,13 @@ github.authenticate({
 });
 
 let statusConfig = {
-  "state": "success",
-  "target_url": "http://odsp-ext.azurewebsites.net/fabric-deploy-test/" + argv.prID,
-  "description": "PR Deployed - click \"Details\" to view site",
-  "context": "vsts/pr-deploy"
+  owner: "OfficeDev",
+  repo: "office-ui-fabric-react",
+  state: "success",
+  sha: argv.commitID,
+  target_url: "http://odsp-ext.azurewebsites.net/fabric-deploy-test/" + argv.prID,
+  description: "PR Deployed - click \"Details\" to view site",
+  context: "vsts/pr-deploy"
 };
 
 github.repos.createStatus(statusConfig, (err, res) => {
