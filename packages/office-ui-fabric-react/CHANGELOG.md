@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 07 Sep 2017 10:09:51 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Sep 2017 10:16:28 GMT and should not be manually modified.
+
+## 4.43.0
+Fri, 08 Sep 2017 10:16:28 GMT
+
+### Minor changes
+
+- Add scrollToIndex to GroupedList, DetailsList
+
+### Patches
+
+- DetailsList: Fixing alignment issues due to recent changes in Check.
 
 ## 4.42.0
 Thu, 07 Sep 2017 10:09:51 GMT
