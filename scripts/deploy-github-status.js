@@ -27,8 +27,8 @@ let statusConfig = {
 
 github.repos.createStatus(statusConfig, (err, res) => {
   if (err) {
-    throw new Error(`Failed to deploy this pull request. \n ${err}`);
+    throw new Error(`Failed to deploy pull request #${argv.prID}. \n ${err}`);
   }
 
-
+  console.log(`Successfully deployed pull request #${argv.prID}`);
 });
