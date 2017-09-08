@@ -61,6 +61,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           onClick={ () => alert('Clicked') }
           split={ true }
           styles={ style }
+          onRenderSplitButtonDivider={ () => <div style={ { borderLeft: '1px solid #c8c8c8' } } /> }
           menuProps={ {
             items: [
               {

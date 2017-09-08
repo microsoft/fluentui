@@ -130,6 +130,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
+   * Custom render function to show a divider between the
+   * primary button and the menu launcher for a split button.
+   */
+  onRenderSplitButtonDivider?: () => JSX.Element | null;
+
+  /**
    * Description of the action this button takes.
    * Only used for compound buttons
    */

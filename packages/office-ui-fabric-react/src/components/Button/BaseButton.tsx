@@ -376,6 +376,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       >
         <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
+          { this.props.onRenderSplitButtonDivider && this.props.onRenderSplitButtonDivider() }
           { this._onRenderSplitButtonMenuButton() }
         </span>
       </div >
