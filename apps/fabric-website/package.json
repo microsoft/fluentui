@@ -13,10 +13,7 @@
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
     "production": "node --max_old_space_size=8192 ../../scripts/build.js --production",
-    "startuhf": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.uhf.serve.config.js --open"
-    // "production": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js --production",
-    // "startuhf": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.uhf.serve.config.js --open",
-    // "dogfood": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js --dogfood --production"
+    "startuhf": "node ../../scripts/start.js --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -41,6 +38,7 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-highlight": "^0.10.0",
     "resemblejs": "~2.2.3",
     "sass-loader": "^6.0.3",
     "sinon": "^2.3.2",
