@@ -17,7 +17,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
-import { getClassNames as getSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -359,8 +359,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     const {
       styles,
-      disabled
+      disabled,
+      checked
     } = this.props;
+
+    const classNames = styles ? getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked) : undefined;
 
     return (
       <div
@@ -374,16 +377,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
       >
+
         <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
-          { this.props.onRenderSplitButtonDivider && this.props.onRenderSplitButtonDivider() }
-          { this._onRenderSplitButtonMenuButton() }
+          { classNames && classNames.divider && <span className={ classNames.divider } /> }
+          { this._onRenderSplitButtonMenuButton(classNames) }
         </span>
       </div >
     );
   }
 
-  private _onRenderSplitButtonMenuButton(): JSX.Element {
+  private _onRenderSplitButtonMenuButton(classNames?: ISplitButtonClassNames): JSX.Element {
     let {
       menuIconName,
       menuIconProps,
@@ -397,8 +401,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         iconName: menuIconName === undefined ? 'ChevronDown' : menuIconName
       };
     }
-
-    const classNames = styles ? getSplitButtonClassNames(styles!, disabled || false, !!this.state.menuProps, checked || false) : undefined;
 
     return (
       <BaseButton
