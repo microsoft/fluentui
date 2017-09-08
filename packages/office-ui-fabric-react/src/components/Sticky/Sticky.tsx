@@ -9,7 +9,6 @@ import {
   autobind
 } from '../../Utilities';
 import { IStickyProps, StickyPositionType } from './Sticky.Props';
-import * as stylesImport from './Sticky.scss';
 
 export interface IStickyState {
   isStickyTop: boolean;

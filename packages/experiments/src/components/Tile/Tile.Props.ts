@@ -66,6 +66,14 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   showBackgroundFrame?: boolean;
   /**
+   * Whether or not to hide the background, regardless of whether it is present.
+   * Use this to control when the background "fades in" if the content needs to be loaded.
+   *
+   * @type {boolean}
+   * @memberof ITileProps
+   */
+  hideBackground?: boolean;
+  /**
    * Content to render as the foreground of the tile, bounded by padding and the nameplate.
    *
    * @type {(React.ReactNode | React.ReactNode[])}
@@ -79,6 +87,14 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * @memberof ITileProps
    */
   showForegroundFrame?: boolean;
+  /**
+   * Whether or not to hide the foreground, regardless of whether it is present.
+   * Use this to control when the foreground "fades in" if the content needs to be loaded.
+   *
+   * @type {boolean}
+   * @memberof ITileProps
+   */
+  hideForeground?: boolean;
   /**
    * The accessible label for the selection checkbox.
    *

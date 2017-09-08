@@ -6,7 +6,8 @@ import { IIconProps } from '../Icon/Icon.Props';
 import { ICalloutProps } from '../../Callout';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
+  IRenderFunction
 } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -181,6 +182,9 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IWith
    * Pass in custom callout props
    */
   calloutProps?: ICalloutProps;
+
+  /** Method to call when trying to render a submenu. */
+  onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
 }
 
 export interface IContextualMenuItem {

@@ -27,6 +27,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   href?: string;
 
   /**
+   * Changes the visual presentation of the button to be emphasized (if defined)
+   * @default false
+   */
+  primary?: boolean;
+
+  /**
    * Unique id to identify the item. Typically a duplicate of key value.
    */
   uniqueId?: string | number;
@@ -243,6 +249,11 @@ export interface IButtonStyles {
   rootCheckedDisabled?: IStyle;
 
   /**
+* Style override applied to the root on hover in a expanded state on hover
+*/
+  rootExpandedHovered?: IStyle;
+
+  /**
    * Style for the flexbox container within the root element.
    */
   flexContainer?: IStyle;
@@ -266,6 +277,11 @@ export interface IButtonStyles {
    * Style for the icon on the near side of the label when expanded.
    */
   iconExpanded?: IStyle;
+
+  /**
+ * Style for the icon on the near side of the label when expanded and hovered.
+ */
+  iconExpandedHovered?: IStyle;
 
   /**
    * Style override for the icon when the button is disabled.
