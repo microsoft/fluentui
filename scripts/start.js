@@ -16,7 +16,6 @@ const options = commandLineArgs(optionDefinitions);
 let webpackConfigFilePath = 'webpack.serve.config.js';
 
 if (options && options.webpackConfig) {
-  console.log("here");
   webpackConfigFilePath = options.webpackConfig;
 }
 
