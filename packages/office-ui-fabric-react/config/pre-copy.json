@@ -1,5 +1,8 @@
 {
   "copyTo": {
+    "dist": [
+      "index.html"
+    ],
     "dist/sass": [
       "node_modules/office-ui-fabric-core/dist/sass/**/*"
     ],
