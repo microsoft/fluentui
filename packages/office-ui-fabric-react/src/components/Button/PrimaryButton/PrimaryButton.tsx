@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { ThemeSettingName } from '../../../Styling';
-import { BaseButton } from '../BaseButton';
+import { DefaultButton } from '../';
 import { IButtonProps } from '../Button.Props';
-import { getStyles } from './PrimaryButton.styles';
 
 @customizable([ThemeSettingName])
 
@@ -17,11 +16,10 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
     const { theme, styles } = this.props;
 
     return (
-      <BaseButton
+      <DefaultButton
         { ...this.props }
-        variantClassName='ms-Button--primary'
+        primary={ true }
         onRenderDescription={ nullRender }
-        styles={ getStyles(theme!, styles) }
       />
     );
   }
