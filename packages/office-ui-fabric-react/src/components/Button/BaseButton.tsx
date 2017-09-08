@@ -206,11 +206,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'div' as any,
         { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
-        React.createElement(
-          'div' as any,
-          { className: this._classNames.textContainer },
-          onRenderText(props, this._onRenderText),
-          onRenderDescription(props, this._onRenderDescription)),
+        this._onRenderTextContents(),
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
         !this._isSplitButton && (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
@@ -241,6 +237,29 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   @autobind
+  private _onRenderTextContents(): JSX.Element | (JSX.Element | null)[] {
+    let {
+      text,
+      children,
+      description,
+      onRenderText = this._onRenderText,
+      onRenderDescription = this._onRenderDescription
+    } = this.props;
+
+    if (this.props.text || typeof (children) === 'string' || this.props.description) {
+      return React.createElement(
+        'div' as any,
+        { className: this._classNames.textContainer },
+        onRenderText(this.props, this._onRenderText),
+        onRenderDescription(this.props, this._onRenderDescription));
+    }
+    return ([
+      onRenderText(this.props, this._onRenderText),
+      onRenderDescription(this.props, this._onRenderDescription)
+    ]);
+  }
+
+  @autobind
   private _onRenderText(): JSX.Element | null {
     let {
       children,
@@ -254,12 +273,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (text) {
       return (
-        <span
+        <div
+          key={ this._labelId }
           className={ this._classNames.label }
           id={ this._labelId }
         >
           { text }
-        </span>
+        </div>
       );
     }
 
@@ -288,9 +308,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
-      <span className={ this._classNames.description } id={ this._descriptionId }>
+      <div
+        key={ this._descriptionId }
+        className={ this._classNames.description } id={ this._descriptionId }>
         { description }
-      </span>
+      </div>
     ) : (
         null
       );

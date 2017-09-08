@@ -81,13 +81,7 @@ export const getStyles = memoizeFunction((
 
     label: {
       margin: '0 4px',
-      lineHeight: '100%',
-      display: 'block'
+      lineHeight: '100%'
     },
-
-    description: {
-      display: 'block'
-    }
-
   };
 });
