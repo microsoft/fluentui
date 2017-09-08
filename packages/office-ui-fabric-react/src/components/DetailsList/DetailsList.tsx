@@ -475,7 +475,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _setFocusToRowIfPending(row: DetailsRow) {
-    const itemIndex = row.props.itemIndex;
+    const { itemIndex } = row.props;
     if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
       if (this._selectionZone) {
         this._selectionZone.ignoreNextFocus();
