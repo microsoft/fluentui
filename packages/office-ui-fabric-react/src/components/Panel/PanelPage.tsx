@@ -116,11 +116,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Panel/Panel.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
-      />
+      >
+      </ComponentPage>
     );
   }
 

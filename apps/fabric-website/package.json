@@ -9,19 +9,11 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-<<<<<<< HEAD
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
-    "production": "node --max_old_space_size=8192 ../../scripts/build.js --production"
-=======
-    "build": "gulp",
-    "clean": "gulp clean",
-    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
-    "production": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js --production",
-    "dogfood": "node --max_old_space_size=8192 ./node_modules/gulp/bin/gulp.js --dogfood --production",
-    "startuhf": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.uhf.serve.config.js --open"
->>>>>>> 2cfe833d... UHF header testing polish (#2669)
+    "production": "node --max_old_space_size=8192 ../../scripts/build.js --production",
+    "startuhf": "node ../../scripts/start.js --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
   "devDependencies": {

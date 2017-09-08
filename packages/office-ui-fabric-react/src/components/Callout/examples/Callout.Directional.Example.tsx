@@ -50,7 +50,12 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
-          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
+          <Checkbox
+            className='exampleCheckbox'
+            label='Show beak'
+            checked={ isBeakVisible }
+            onChange={ this._onShowBeakChange }
+          />
           <Slider
             max={ 30 }
             label='Gap Space'

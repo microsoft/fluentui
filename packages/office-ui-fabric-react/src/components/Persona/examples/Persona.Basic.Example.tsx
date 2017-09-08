@@ -6,6 +6,8 @@ import {
 } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { TestImages } from '../../../common/TestImages';
+import '../../../common/_exampleStyles.scss';
+import { Label } from '../../Label/Label';
 
 const examplePersona = {
   imageUrl: TestImages.personaFemale,
