@@ -363,7 +363,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       checked
     } = this.props;
 
-    const classNames = styles ? getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked) : undefined;
+    const classNames = styles && getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
 
     return (
       <div
@@ -380,14 +380,21 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
         <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
-          { classNames && classNames.divider && <span className={ classNames.divider } /> }
+          { this._onRenderSplitButtonDivider(classNames) }
           { this._onRenderSplitButtonMenuButton(classNames) }
         </span>
       </div >
     );
   }
 
-  private _onRenderSplitButtonMenuButton(classNames?: ISplitButtonClassNames): JSX.Element {
+  private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
+    if (classNames && classNames.divider) {
+      return <span className={ classNames.divider } />;
+    }
+    return null;
+  }
+
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
     let {
       menuIconName,
       menuIconProps,
