@@ -120,6 +120,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+    this._list && this._list.scrollToIndex(index, measureItem);
+    this._groupedList && this._groupedList.scrollToIndex(index, measureItem);
+  }
+
   public componentWillUnmount() {
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
