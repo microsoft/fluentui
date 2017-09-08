@@ -29,10 +29,19 @@ export const getStyles = memoizeFunction((
     },
 
     flexContainer: {
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'flex-start',
       minWidth: '100%',
       margin: ''
+    },
+
+    icon: {
+      float: 'left',
+      fontSize: '2em',
+      lineHeight: '1em',
+      width: '1em',
+      height: '1em',
+      margin: '0px 8px 0px 0px'
     },
 
     label: {

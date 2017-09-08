@@ -65,6 +65,11 @@ export const getStyles = memoizeFunction((
       alignItems: 'center'
     },
 
+    textContainer: {
+      width: '100%',
+      textAlign: 'left'
+    },
+
     icon: iconStyle,
 
     menuIcon: [
@@ -76,8 +81,13 @@ export const getStyles = memoizeFunction((
 
     label: {
       margin: '0 4px',
-      lineHeight: '100%'
+      lineHeight: '100%',
+      display: 'block'
     },
+
+    description: {
+      display: 'block'
+    }
 
   };
 });

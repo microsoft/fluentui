@@ -206,8 +206,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         'div' as any,
         { className: this._classNames.flexContainer },
         onRenderIcon(props, this._onRenderIcon),
-        onRenderText(props, this._onRenderText),
-        onRenderDescription(props, this._onRenderDescription),
+        React.createElement(
+          'div' as any,
+          { className: this._classNames.textContainer },
+          onRenderText(props, this._onRenderText),
+          onRenderDescription(props, this._onRenderDescription)),
         onRenderAriaDescription(props, this._onRenderAriaDescription),
         onRenderChildren(props, this._onRenderChildren),
         !this._isSplitButton && (menuProps || menuIconName || menuIconProps || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),

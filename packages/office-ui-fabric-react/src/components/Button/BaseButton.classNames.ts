@@ -5,6 +5,7 @@ import { IButtonStyles } from './Button.Props';
 export interface IButtonClassNames {
   root?: string;
   flexContainer?: string;
+  textContainer?: string;
   icon?: string;
   label?: string;
   menuIcon?: string;
@@ -59,6 +60,11 @@ export const getClassNames = memoizeFunction((
     flexContainer: mergeStyles(
       'ms-Button-flexContainer',
       styles.flexContainer
+    ) as string,
+
+    textContainer: mergeStyles(
+      'ms-Button-textContainer',
+      styles.textContainer
     ) as string,
 
     icon: mergeStyles(
