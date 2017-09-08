@@ -23,8 +23,7 @@ export class OverlayDarkExample extends React.Component<any, any> {
         { isOverlayVisible && (
           <Overlay
             isDarkThemed={ true }
-            onClick={ () => this.setState({ isOverlayVisible: false }) }
-          >
+            onClick={ () => this.setState({ isOverlayVisible: false }) }>
             <div className='OverlayExample-content'>
               <p>I am content within the overlay.</p>
             </div>

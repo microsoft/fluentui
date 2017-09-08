@@ -9,6 +9,7 @@ import { setBaseUrl } from './Utilities';
 setBaseUrl('./dist/');
 
 let rootElement: HTMLElement;
+let currentBreakpoint;
 let scrollDistance: number;
 let requireContext = require.context('./components', true, /Page.visualtest$/);
 
@@ -68,8 +69,7 @@ function _getAppRoutes(): JSX.Element[] {
       <Route
         key={ pathIndex }
         path={ '#/' + url }
-        getComponent={ getPath(path) }
-      />);
+        getComponent={ getPath(path) } />);
   });
   return routes;
 }

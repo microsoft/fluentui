@@ -93,8 +93,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
         className={ className }
         ref='root'
         aria-labelledby={ ariaLabelledBy }
-        onKeyDown={ this._onKeyboardHandler }
-      >
+        onKeyDown={ this._onKeyboardHandler }>
         { this.props.children }
       </div>
     );

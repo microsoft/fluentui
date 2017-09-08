@@ -49,12 +49,9 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
         <div>
           Scroll item index:
-          <TextField
-            value={ this.state.selectedIndex.toString(10) }
-            onChanged={ (value) => {
-              this._scroll(parseInt(value, 10) || 0);
-            } }
-          />
+          <TextField value={ this.state.selectedIndex.toString(10) } onChanged={ (value) => {
+            this._scroll(parseInt(value, 10) || 0);
+          } } />
         </div>
 
         <div className='ms-ListScrollingExample-container' data-is-scrollable={ true }>
@@ -72,13 +69,11 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
             } }
             onRenderCell={ (item, index: number) => (
               <div className='ms-ListScrollingExample-itemCell' data-is-focusable={ true }>
-                <div
-                  className={ css(
-                    'ms-ListScrollingExample-itemContent',
-                    (index % 2 === 0) && 'ms-ListScrollingExample-itemContent-even',
-                    (index % 2 === 1) && 'ms-ListScrollingExample-itemContent-odd'
-                  ) }
-                >
+                <div className={ css(
+                  'ms-ListScrollingExample-itemContent',
+                  (index % 2 === 0) && 'ms-ListScrollingExample-itemContent-even',
+                  (index % 2 === 1) && 'ms-ListScrollingExample-itemContent-odd'
+                ) }>
                   { index } &nbsp; { item.name }
                 </div>
               </div>

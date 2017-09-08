@@ -1,7 +1,16 @@
 module.exports = function (options) {
+  const execSync = require('../exec-sync');
   const glob = require('glob');
+  const sass = require('node-sass');
   const path = require('path');
-
+  const fs = require('fs');
+  const postcss = require('postcss');
+  const { splitStyles } = require("@microsoft/load-themed-styles");
+  const autoprefixer = require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions', 'ie >= 11'] });
+  const modules = require('postcss-modules')({
+    getJSON,
+    generateScopedName
+  });
   const _fileNameToClassMap = {};
 
   // Return a promise.
@@ -9,50 +18,36 @@ module.exports = function (options) {
 
   function processFiles() {
     const promises = [];
-    const files = glob.sync(path.resolve(process.cwd(), 'src/**/*.scss'));
 
-    if (files.length) {
-      const execSync = require('../exec-sync');
-      const sass = require('node-sass');
-      const fs = require('fs');
-      const postcss = require('postcss');
-      const autoprefixer = require('autoprefixer')({ browsers: ['> 1%', 'last 2 versions', 'ie >= 11'] });
-      const modules = require('postcss-modules')({
-        getJSON,
-        generateScopedName
-      });
+    glob.sync(path.resolve(process.cwd(), 'src/**/*.scss')).forEach(fileName => {
+      fileName = path.resolve(fileName);
 
-      files.forEach(fileName => {
+      promises.push(new Promise((resolve, reject) => {
+        sass.render(
+          {
+            file: fileName,
+            outputStyle: 'compressed',
+            importer: patchSassUrl,
+            includePaths: [
+              path.resolve(process.cwd(), 'node_modules')
+            ]
+          },
+          (err, result) => {
+            if (err) {
+              reject(path.relative(process.cwd(), fileName) + ': ' + err);
+            } else {
+              const css = result.css.toString();
 
-        fileName = path.resolve(fileName);
-
-        promises.push(new Promise((resolve, reject) => {
-          sass.render(
-            {
-              file: fileName,
-              outputStyle: 'compressed',
-              importer: patchSassUrl,
-              includePaths: [
-                path.resolve(process.cwd(), 'node_modules')
-              ]
-            },
-            (err, result) => {
-              if (err) {
-                reject(path.relative(process.cwd(), fileName) + ': ' + err);
-              } else {
-                const css = result.css.toString();
-
-                postcss([autoprefixer, modules])
-                  .process(css, { from: fileName })
-                  .then(result => {
-                    fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
-                    resolve();
-                  });
-              }
-            });
-        }));
-      });
-    }
+              postcss([autoprefixer, modules])
+                .process(css, { from: fileName })
+                .then(result => {
+                  fs.writeFileSync(fileName + '.ts', createTypeScriptModule(fileName, result.css));
+                  resolve();
+                });
+            }
+          });
+      }));
+    });
 
     return Promise.all(promises);
   }
@@ -68,8 +63,6 @@ module.exports = function (options) {
   }
 
   function createTypeScriptModule(fileName, css) {
-    const { splitStyles } = require("@microsoft/load-themed-styles");
-
     // Create a source file.
     const source = [
       `/* tslint:disable */`,

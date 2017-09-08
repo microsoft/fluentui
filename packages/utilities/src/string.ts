@@ -18,7 +18,7 @@ export function format(s: string, ...values: any[]): string {
 
   let args = values;
   // Callback match function
-  function replace_func(match: string): string {
+  function replace_func(match: string) {
     // looks up in the args
     let replacement = args[match.replace(FORMAT_ARGS_REGEX, '') as any];
 

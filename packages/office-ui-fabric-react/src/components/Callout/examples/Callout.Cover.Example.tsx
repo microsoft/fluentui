@@ -52,8 +52,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged }
-          />
+            onChanged={ this._onDirectionalChanged } />
         </div>
         <div className='ms-CalloutCoverExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
           <DefaultButton

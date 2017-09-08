@@ -2,15 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug test",
+      "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/debug-test.js",
-      "cwd": "${fileDirname}",
+      "program": "${workspaceRoot}/packages/utilities/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
-      "args": [
-        "-i"
-      ],
+      "args": [],
+      "cwd": "${workspaceRoot}/packages/utilities",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",
@@ -19,28 +17,7 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
-    },
-    {
-      "name": "Debug build",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/scripts/build.js",
-      "stopOnEntry": false,
-      "args": [
-        "webpack",
-        "--",
-        "--production"
-      ],
-      "cwd": "${workspaceRoot}/apps/fabric-website",
-      "runtimeExecutable": null,
-      "runtimeArgs": [
-        "--nolazy",
-        "--debug"
-      ],
-      "env": {
-        "NODE_ENV": "development"
-      }
+      "sourceMaps": false
     },
     {
       "name": "Run ssr tests",

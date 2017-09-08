@@ -54,11 +54,10 @@ export interface IDeclaredEventsByName {
  * @public
  */
 export class EventGroup {
-  // tslint:disable-next-line:no-inferrable-types
-  private static _uniqueId: number = 0;
+  private static _uniqueId = 0;
   private _parent: any;
   private _eventRecords: IEventRecord[];
-  private _id: number = EventGroup._uniqueId++;
+  private _id = EventGroup._uniqueId++;
   private _isDisposed: boolean;
 
   /** For IE8, bubbleEvent is ignored here and must be dealt with by the handler.
@@ -72,7 +71,7 @@ export class EventGroup {
     eventName: string,
     eventArgs?: any,
     bubbleEvent?: boolean
-  ): boolean | undefined {
+  ) {
     let retVal;
 
     if (EventGroup._isElement(target)) {
@@ -129,7 +128,7 @@ export class EventGroup {
     return !!declaredEvents && !!declaredEvents[eventName];
   }
 
-  public static stopPropagation(event: any): void {
+  public static stopPropagation(event: any) {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else { // IE8
@@ -137,8 +136,8 @@ export class EventGroup {
     }
   }
 
-  private static _isElement(target: HTMLElement): boolean {
-    return !!target && (!!target.addEventListener || target instanceof HTMLElement);
+  private static _isElement(target: HTMLElement) {
+    return !!target && (target.addEventListener || target instanceof HTMLElement);
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
@@ -147,7 +146,7 @@ export class EventGroup {
     this._eventRecords = [];
   }
 
-  public dispose(): void {
+  public dispose() {
     if (!this._isDisposed) {
       this._isDisposed = true;
 
@@ -157,7 +156,7 @@ export class EventGroup {
   }
 
   /** On the target, attach a set of events, where the events object is a name to function mapping. */
-  public onAll(target: any, events: { [key: string]: (args?: any) => void; }, useCapture?: boolean): void {
+  public onAll(target: any, events: { [key: string]: (args?: any) => void; }, useCapture?: boolean) {
     for (let eventName in events) {
       if (events.hasOwnProperty(eventName)) {
         this.on(target, eventName, events[eventName], useCapture);
@@ -168,7 +167,7 @@ export class EventGroup {
   /** On the target, attach an event whose handler will be called in the context of the parent
    * of this instance of EventGroup.
    */
-  public on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void {
+  public on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean) {
     if (eventName.indexOf(',') > -1) {
       let events = eventName.split(/[ ,]+/);
 
@@ -249,7 +248,7 @@ export class EventGroup {
     }
   }
 
-  public off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void {
+  public off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean) {
     for (let i = 0; i < this._eventRecords.length; i++) {
       let eventRecord = this._eventRecords[i];
       if ((!target || target === eventRecord.target) &&
@@ -294,7 +293,7 @@ export class EventGroup {
   }
 
   /** Declare an event as being supported by this instance of EventGroup. */
-  public declare(event: any): void {
+  public declare(event: any) {
     let declaredEvents = this._parent.__declaredEvents = this._parent.__declaredEvents || {};
 
     if (typeof event === 'string') {

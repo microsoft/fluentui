@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   autobind,
+  BaseComponent,
   css,
   getId,
 } from '../../Utilities';
@@ -15,6 +16,8 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
     id: getId('gridCell')
   };
 
+  private _id: string;
+
   public render() {
     let {
       item,
@@ -23,6 +26,9 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       role,
       selected,
       disabled,
+      onClick,
+      onHover,
+      onFocus,
       onRenderItem,
       cellDisabledStyle,
       cellIsSelectedStyle,
@@ -85,7 +91,8 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
   private _onMouseLeave() {
     let {
       onHover,
-      disabled
+      disabled,
+      item
       } = this.props as P;
 
     if (onHover && !disabled) {

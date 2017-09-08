@@ -2,15 +2,13 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { GlobalSettings, IChangeDescription } from './GlobalSettings';
 
-export function customizable(fields: string[]): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
+export function customizable(fields: string[]) {
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
-      public static contextTypes: {
-        injectedProps: PropTypes.Requireable<any>;
-      } = {
+      public static contextTypes = {
         injectedProps: PropTypes.object
       };
 
@@ -20,15 +18,15 @@ export function customizable(fields: string[]): <P, S>(ComposedComponent: new (p
         this._onSettingChanged = this._onSettingChanged.bind(this);
       }
 
-      public componentDidMount(): void {
+      public componentDidMount() {
         GlobalSettings.addChangeListener(this._onSettingChanged);
       }
 
-      public componentWillUnmount(): void {
+      public componentWillUnmount() {
         GlobalSettings.removeChangeListener(this._onSettingChanged);
       }
 
-      public render(): JSX.Element {
+      public render() {
         let defaultProps = {};
 
         for (let propName of fields) {

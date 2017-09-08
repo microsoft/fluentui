@@ -17,7 +17,7 @@ interface IVirtualElement extends HTMLElement {
  *
  * @public
  */
-export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void {
+export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
   let virtualChild = <IVirtualElement>child;
   let virtualParent = <IVirtualElement>parent;
 
@@ -119,7 +119,7 @@ let _isSSR = false;
  *
  * @public
  */
-export function setSSR(isEnabled: boolean): void {
+export function setSSR(isEnabled: boolean) {
   _isSSR = isEnabled;
 }
 
@@ -128,7 +128,7 @@ export function setSSR(isEnabled: boolean): void {
  *
  * @public
  */
-export function getWindow(rootElement?: HTMLElement): Window | undefined {
+export function getWindow(rootElement?: HTMLElement) {
   if (_isSSR || typeof window === 'undefined') {
     return undefined;
   } else {
@@ -147,7 +147,7 @@ export function getWindow(rootElement?: HTMLElement): Window | undefined {
  *
  * @public
  */
-export function getDocument(rootElement?: HTMLElement): Document | undefined {
+export function getDocument(rootElement?: HTMLElement) {
   if (_isSSR || typeof document === 'undefined') {
     return undefined;
   } else {

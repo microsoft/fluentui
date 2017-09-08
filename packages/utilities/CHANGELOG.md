@@ -1,34 +1,6 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
-
-## 4.13.0
-Mon, 04 Sep 2017 10:16:56 GMT
-
-### Minor changes
-
-- Add ISize interface and fitContentToBounds utility function
-
-## 4.12.1
-Fri, 01 Sep 2017 18:06:55 GMT
-
-### Patches
-
-- Set the RTL language when the language is read from session storage
-
-## 4.12.0
-Thu, 31 Aug 2017 15:41:56 GMT
-
-### Minor changes
-
-- RTL: Persist rtl settings between sessions
-
-## 4.11.1
-Tue, 29 Aug 2017 20:55:35 GMT
-
-### Patches
-
-- Adjusted build to produce sourcemaps with correct sourceRoot.
+This log was last generated on Tue, 29 Aug 2017 10:20:56 GMT and should not be manually modified.
 
 ## 4.11.0
 Tue, 29 Aug 2017 10:20:56 GMT

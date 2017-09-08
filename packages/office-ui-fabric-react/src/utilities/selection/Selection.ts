@@ -172,10 +172,6 @@ export class Selection implements ISelection {
   }
 
   public isRangeSelected(fromIndex: number, count: number): boolean {
-    if (count === 0) {
-      return false;
-    }
-
     let endIndex = fromIndex + count;
 
     for (let i = fromIndex; i < endIndex; i++) {

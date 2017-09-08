@@ -3,6 +3,8 @@ import {
   mergeStyleSets
 } from './mergeStyleSets';
 
+const { expect } = chai;
+
 describe('staticRender', () => {
   it('can render content', () => {
 
@@ -16,7 +18,7 @@ describe('staticRender', () => {
       return `<div class="${classNames.root}">Hello!</div>`;
     });
 
-    expect(html).toEqual(`<div class="css-0">Hello!</div>`);
-    expect(css).toEqual(`.css-0{background:red;}`);
+    expect(html).equals(`<div class="css-0">Hello!</div>`);
+    expect(css).equals(`.css-0{background:red;}`);
   });
 });

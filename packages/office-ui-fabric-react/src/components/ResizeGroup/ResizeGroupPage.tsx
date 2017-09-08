@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
@@ -91,7 +92,6 @@ export class ResizeGroupPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
   }

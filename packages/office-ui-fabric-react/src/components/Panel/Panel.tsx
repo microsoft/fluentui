@@ -68,7 +68,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   public render() {
     let {
+      children,
       className = '',
+      closeButtonAriaLabel,
       elementToFocusOnDismiss,
       firstFocusableSelector,
       forceFocusInsideTrap,
@@ -80,12 +82,13 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       layerProps,
       type,
       customWidth,
+      headerClassName,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    let { isOpen, isAnimating, id } = this.state;
+    let { isOpen, isAnimating, id, isFooterSticky } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
@@ -117,8 +120,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
         <Popup
           role='dialog'
           ariaLabelledBy={ headerText && headerTextId }
-          onDismiss={ this.dismiss }
-        >
+          onDismiss={ this.dismiss }>
           <div
             className={
               css(
@@ -227,6 +229,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
       headerClassName = '',
     } = props;
 
+    const { id } = this.state;
     if (headerText) {
       return (
         <div className={ css('ms-Panel-header', styles.header) }>
@@ -241,12 +244,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
 
   @autobind
   private _onRenderBody(props: IPanelProps): JSX.Element {
-    const contentClass = css(
-      'ms-Panel-content',
-      styles.content,
-      props.isFooterAtBottom && styles.contentGrow
+    const contentClass = css( 
+      'ms-Panel-content', 
+      styles.content, 
+      props.isFooterAtBottom && styles.contentGrow 
     );
-
+    
     return (
       <div ref={ this._resolveRef('_content') } className={ contentClass } >
         { props.children }
@@ -258,7 +261,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> implements IP
   private _onRenderFooter(props: IPanelProps): JSX.Element | null {
     let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
-    if (onRenderFooterContent) {
+    if (onRenderFooterContent != null) {
       return (
         <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
           <div className={ css('ms-Panel-footerInner', styles.footerInner) }>

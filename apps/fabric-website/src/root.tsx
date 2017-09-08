@@ -84,6 +84,7 @@ function _onLoad(): void {
 
 function _createRoutes(pages: {}[]): {}[] {
   let routes = [];
+  let pageRoutes = [];
 
   // tslint:disable-next-line:no-any
   pages.forEach((page: any, pageIndex: number) => {

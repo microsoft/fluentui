@@ -11,7 +11,7 @@ import {
 const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
 
 const _getDisabledStyles = memoizeFunction((theme: ITheme): IStyle => {
-  const { palette } = theme;
+  const { semanticColors, palette } = theme;
 
   const SpinButtonTextColorDisabled = palette.neutralTertiaryAlt;
   const SpinButtonBackgroundColorDisabled = palette.neutralLighter;
@@ -35,7 +35,7 @@ export const getArrowButtonStyles = memoizeFunction((
   customSpecificArrowStyles?: Partial<IButtonStyles>,
 ): IButtonStyles => {
 
-  const { palette } = theme;
+  const { semanticColors, fonts, palette } = theme;
 
   const ArrowButtonTextColor = palette.neutralPrimary;
   const ArrowButtonTextColorPressed = palette.white;
@@ -111,7 +111,7 @@ export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: Partial<ISpinButtonStyles>
 ): ISpinButtonStyles => {
-  const { fonts, palette } = theme;
+  const { semanticColors, fonts, palette } = theme;
 
   const SpinButtonRootBorderColor = palette.neutralTertiaryAlt;
   const SpinButtonRootBorderColorHovered = palette.neutralSecondary;

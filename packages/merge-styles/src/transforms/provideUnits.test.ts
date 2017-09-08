@@ -1,5 +1,7 @@
 import { provideUnits } from './provideUnits';
 
+import { expect } from 'chai';
+
 describe('provideUnits', () => {
   it('can provide units', () => {
     [
@@ -13,7 +15,7 @@ describe('provideUnits', () => {
 
       provideUnits(testSet, 0);
 
-      expect(testSet).toEqual([property, '1px']);
+      expect(testSet).eql([property, '1px']);
     });
   });
 
@@ -37,7 +39,7 @@ describe('provideUnits', () => {
       provideUnits(testSet, 6);
       provideUnits(testSet, 8);
 
-      expect(testSet).toEqual([
+      expect(testSet).eql([
         property, '1px',
         property + 'Left', '1px',
         property + 'Right', '1px',
@@ -55,7 +57,7 @@ describe('provideUnits', () => {
 
     provideUnits(testSet, 0);
 
-    expect(testSet).toEqual(['opacity', 0]);
+    expect(testSet).eql(['opacity', 0]);
   });
 
 });

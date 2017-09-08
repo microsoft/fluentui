@@ -128,7 +128,7 @@ export class BrandIconsPage extends React.Component<any, any> {
               </ul>
               <ul className={ styles.exampleIcons }>
                 <li>
-                  <i className='ms-Icon ms-Icon--OutlookLogo ms-fontColor-neutralSecondary' style={ { fontSize: '64px' } } />
+                  <i className='ms-Icon ms-Icon--OutlookLogo ms-fontColor-neutralSecondary' style={ { fontSize: '64px' } }></i>
                   <span>Icon font</span>
                 </li>
               </ul>

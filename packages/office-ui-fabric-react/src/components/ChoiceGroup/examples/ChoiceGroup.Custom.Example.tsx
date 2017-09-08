@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 

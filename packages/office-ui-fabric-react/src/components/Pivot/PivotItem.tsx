@@ -11,8 +11,7 @@ export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
   public render() {
     return (
       <div
-        { ...getNativeProps(this.props, divProperties) }
-      >
+        { ...getNativeProps(this.props, divProperties) }>
         { this.props.children }
       </div>
     );

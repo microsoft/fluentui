@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { autobind } from '../../../Utilities';
+import * as ReactDOM from 'react-dom';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -32,7 +32,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
       <div>
         <DefaultButton
           description='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler }
+          onClick={ this._onButtonClickHandler.bind(this) }
           text='Go to Trap Zone'
         />
 
@@ -65,17 +65,16 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         <Toggle
           componentRef={ toggle => this._toggle = toggle }
           checked={ isChecked }
-          onChanged={ this._onFocusTrapZoneToggleChanged }
+          onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off'
-        />
+          offText='Off' />
         { (() => {
           if (isChecked) {
             return (
               <DefaultButton
                 description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler }
+                onClick={ this._onExitButtonClickHandler.bind(this) }
                 text='Exit Focus Trap Zone'
               />
             );
@@ -85,21 +84,18 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     );
   }
 
-  @autobind
   private _onButtonClickHandler() {
     this.setState({
       isChecked: true
     });
   }
 
-  @autobind
   private _onExitButtonClickHandler() {
     this.setState({
       isChecked: false
     });
   }
 
-  @autobind
   private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
     this.setState({
       isChecked: isChecked

@@ -4,6 +4,7 @@ import {
   InjectionMode
 } from './Stylesheet';
 
+const { expect } = chai;
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -23,7 +24,7 @@ describe('keyframes', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).toEqual(
+    expect(_stylesheet.getRules()).equals(
       '@keyframes css-0{from{opacity:0;}to{opacity:1;}}'
     );
   });
@@ -41,7 +42,7 @@ describe('keyframes', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).toEqual(
+    expect(_stylesheet.getRules()).equals(
       '@keyframes css-0{0%{opacity:0;}50%{opacity:0.8;}100%{opacity:1;}}'
     );
   });

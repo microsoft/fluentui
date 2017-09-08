@@ -41,7 +41,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
     return (
       (cell.value.length) ?
         <td className={ cell.className } key={ index }>{ cell.value }</td> :
-        <td className={ cell.className } key={ index } dangerouslySetInnerHTML={ { __html: cell.html } } />
+        <td className={ cell.className } key={ index } dangerouslySetInnerHTML={ { __html: cell.html } }></td>
     );
   }
 
@@ -105,8 +105,8 @@ export class Table extends React.Component<ITableProps, ITableState> {
   }
 
   // Capitalize the first letter of a string
-  private _capitalizeFirstLetter(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+  private _capitalizeFirstLetter(string: string): string {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   // Check current window size and set state if current size is different from state

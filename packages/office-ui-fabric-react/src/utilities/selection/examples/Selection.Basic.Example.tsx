@@ -35,7 +35,7 @@ export interface ISelectionItemExampleProps {
  */
 export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
   public render() {
-    let { item, itemIndex, selection } = this.props;
+    let { item, itemIndex, selection, selectionMode } = this.props;
     let isSelected = false;
 
     if (selection && itemIndex !== undefined) {
@@ -87,7 +87,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
   }
 
   public render() {
-    let { items, selection } = this.state;
+    let { items, selection, selectionMode } = this.state;
 
     return (
       <div className='ms-SelectionBasicExample'>
@@ -95,8 +95,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
         <MarqueeSelection selection={ selection } isEnabled={ selection.mode === SelectionMode.multiple } >
           <SelectionZone
             selection={ selection }
-            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }
-          >
+            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }>
             { items.map((item, index) => (
               <SelectionItemExample
                 ref={ 'detailsGroup_' + index }

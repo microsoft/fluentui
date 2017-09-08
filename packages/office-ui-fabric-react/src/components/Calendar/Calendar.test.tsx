@@ -101,9 +101,12 @@ describe('Calendar', () => {
       let today = new Date();
       let monthName = dayPickerStrings.months[today.getMonth()];
       let year = today.getFullYear();
-      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-month');
       expect(dayPickerMonth).to.not.be.undefined;
-      expect(dayPickerMonth.textContent).to.equal(monthName + ' ' + year.toString());
+      expect(dayPickerMonth.textContent).to.equal(monthName);
+      let dayPickerYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-year');
+      expect(dayPickerYear).to.not.be.undefined;
+      expect(dayPickerYear.textContent).to.equal(year.toString());
     });
 
     it('Verify first day of week', () => {
@@ -161,9 +164,12 @@ describe('Calendar', () => {
 
     it('Verify day picker header', () => {
       let monthName = dayPickerStrings.months[defaultDate.getMonth()];
-      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-monthAndYear');
+      let dayPickerMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-month');
       expect(dayPickerMonth).to.not.be.undefined;
-      expect(dayPickerMonth.textContent).to.equal(monthName + ' ' + defaultDate.getFullYear().toString());
+      expect(dayPickerMonth.textContent).to.equal(monthName);
+      let dayPickerYear = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-year');
+      expect(dayPickerYear).to.not.be.undefined;
+      expect(dayPickerYear.textContent).to.equal(defaultDate.getFullYear().toString());
     });
 
     it('Verify first day of week', () => {

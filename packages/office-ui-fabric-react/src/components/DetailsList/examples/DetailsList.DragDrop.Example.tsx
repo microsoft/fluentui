@@ -2,11 +2,14 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsRowProps, DetailsRow, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import {
+  IDragDropHelper,
   IDragDropEvents,
+  IDragDropOptions,
   IDragDropContext
 } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { createListItems } from '@uifabric/example-app-base';

@@ -5,6 +5,8 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { BaseComponent } from './BaseComponent';
 
+let { assert, expect } = chai;
+
 let _originalOnError = BaseComponent.onError;
 
 class TestComponent extends BaseComponent<{}, {}> {
@@ -44,7 +46,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  private _createNullRef(): void {
+  private _createNullRef() {
     let foo: any = null;
 
     // Calling a null
@@ -70,7 +72,7 @@ describe('BaseComponent', () => {
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
 
-      public render(): JSX.Element {
+      public render() {
         return <div ref={ this._resolveRef('root') } />;
       }
     }
@@ -79,20 +81,20 @@ describe('BaseComponent', () => {
       <Foo />
     ) as any;
 
-    expect(component.root).toBeDefined();
+    expect(component.root).to.exist;
   });
 });
 
-function _buildTestFor(methodName: string): void {
+function _buildTestFor(methodName: string) {
   it(`calls the error logger on ${methodName} exception`, () => {
-    let lastErrorMessage;
+    let lastErrorMessage = null;
 
-    BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
+    BaseComponent.onError = (errorMessage, ex) => lastErrorMessage = errorMessage;
 
     let c = new TestComponent();
 
     (c as any)[methodName]();
 
-    expect(lastErrorMessage).toBeDefined();
+    assert(lastErrorMessage !== null, 'Error callback not called');
   });
 }

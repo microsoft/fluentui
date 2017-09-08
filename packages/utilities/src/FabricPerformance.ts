@@ -46,7 +46,7 @@ export class FabricPerformance {
    * @param name - The name of this measurement
    * @param func - The logic to be measured for execution time
    */
-  public static measure(name: string, func: () => void): void {
+  public static measure(name: string, func: () => void) {
     const start = now();
     func();
     const end = now();
@@ -65,7 +65,7 @@ export class FabricPerformance {
     FabricPerformance.summary[name] = measurement;
   }
 
-  public static reset(): void {
+  public static reset() {
     FabricPerformance.summary = {};
     clearTimeout(FabricPerformance._timeoutId);
     FabricPerformance.setPeriodicReset();

@@ -2,18 +2,5 @@
   "extends": [
     "office-ui-fabric-react-tslint"
   ],
-  "rules": {
-    "no-any": false,
-    "no-inferrable-types": false,
-    "typedef": [
-      false
-    ],
-    "max-line-length": [
-      false
-    ],
-    "jsx-alignment": false,
-    "jsx-ban-props": false,
-    "jsx-no-string-ref": false,
-    "jsx-no-bind": false
-  }
+  "rules": {}
 }

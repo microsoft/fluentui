@@ -1,8 +1,8 @@
+let { expect } = chai;
 import { autobind } from './autobind';
 
 class Greeter {
-  // tslint:disable-next-line:no-inferrable-types
-  private _hello: string = 'hello';
+  private _hello = 'hello';
 
   @autobind
   public sayHello(): string {
@@ -15,7 +15,7 @@ describe('autobind', () => {
     let greeter = new Greeter();
     let sayHello = greeter.sayHello;
 
-    expect(sayHello()).toEqual('hello');
+    expect(sayHello()).equals('hello', 'autobind did not bind the sayHello method to the object instance.');
   });
 
   it('does not bind again every time method is called', () => {
@@ -24,6 +24,6 @@ describe('autobind', () => {
     const sayHello1 = greeter.sayHello;
     const sayHello2 = greeter.sayHello;
 
-    expect(sayHello1).toEqual(sayHello2);
+    expect(sayHello1).equals(sayHello2, 'autobind did not cache the bound method.');
   });
 });

@@ -4,16 +4,21 @@ import {
   autobind,
   getId,
   inputProperties,
-  getNativeProps
+  getNativeProps,
+  memoize
 } from '../../Utilities';
 import {
   IToggleProps,
-  IToggle
+  IToggle,
+  IToggleStyles
 } from './Toggle.Props';
 import { Label } from '../../Label';
 import {
   customizable
 } from '../../Utilities';
+import {
+  mergeStyles
+} from '../../Styling';
 import { getClassNames } from './Toggle.classNames';
 
 export interface IToggleState {

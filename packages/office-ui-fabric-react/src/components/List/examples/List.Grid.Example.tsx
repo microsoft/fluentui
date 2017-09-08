@@ -40,8 +40,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
               data-is-focusable={ true }
               style={ {
                 width: (100 / this._columnCount) + '%'
-              } }
-            >
+              } }>
               <div className='ms-ListGridExample-sizer'>
                 <div className='msListGridExample-padder'>
                   <img src={ item.thumbnail } className='ms-ListGridExample-image' />

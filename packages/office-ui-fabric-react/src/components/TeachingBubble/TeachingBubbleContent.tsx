@@ -56,14 +56,12 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (headline) {
       headerContent = (
-        <div
-          className={ css(
-            'ms-TeachingBubble-header',
-            hasCondensedHeadline ?
-              'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
-              'ms-TeachingBubble-header--large ' + styles.headerIsLarge
-          ) }
-        >
+        <div className={ css(
+          'ms-TeachingBubble-header',
+          hasCondensedHeadline ?
+            'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
+            'ms-TeachingBubble-header--large ' + styles.headerIsLarge
+        ) }>
           <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
             { headline }
           </p>

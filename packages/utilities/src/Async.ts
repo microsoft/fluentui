@@ -15,13 +15,12 @@ export class Async {
   private _immediateIds: any = null;
   private _intervalIds: any = null;
   private _animationFrameIds: { [id: number]: boolean } | null = null;
-  private _isDisposed: boolean;
+  private _isDisposed = false;
   private _parent: any;
   private _onErrorHandler: ((e: any) => void) | undefined;
   private _noop: any;
 
   constructor(parent?: any, onError?: (e: any) => void) {
-    this._isDisposed = false;
     this._parent = parent || null;
     this._onErrorHandler = onError;
     this._noop = () => { /* do nothing */ };
@@ -30,7 +29,7 @@ export class Async {
   /**
    * Dispose function, clears all async operations.
    */
-  public dispose(): void {
+  public dispose() {
     let id;
 
     this._isDisposed = true;
@@ -173,7 +172,7 @@ export class Async {
    * Clears the immediate.
    * @param id - Id to cancel.
    */
-  public clearImmediate(id: number): void {
+  public clearImmediate(id: number) {
 
     if (this._immediateIds && this._immediateIds[id]) {
       /* tslint:disable:ban-native-functions */
@@ -220,7 +219,7 @@ export class Async {
    * Clears the interval.
    * @param id - Id to cancel.
    */
-  public clearInterval(id: number): void {
+  public clearInterval(id: number) {
     if (this._intervalIds && this._intervalIds[id]) {
       /* tslint:disable:ban-native-functions */
       clearInterval(id);
@@ -419,7 +418,7 @@ export class Async {
     return animationFrameId;
   }
 
-  public cancelAnimationFrame(id: number): void {
+  public cancelAnimationFrame(id: number) {
     if (this._animationFrameIds && this._animationFrameIds[id]) {
       /* tslint:disable:ban-native-functions */
       window.cancelAnimationFrame ? window.cancelAnimationFrame(id) : window.clearTimeout(id);
@@ -428,7 +427,7 @@ export class Async {
     }
   }
 
-  protected _logError(e: any): void {
+  protected _logError(e: any) {
     if (this._onErrorHandler) {
       this._onErrorHandler(e);
     }

@@ -1,44 +1,37 @@
 import { KeyCodes } from './KeyCodes';
-import { getDocument } from './dom';
-import { getItem, setItem } from './sessionStorage';
-
-const RTL_LOCAL_STORAGE_KEY = 'isRTL';
 
 // Default to undefined so that we initialize on first read.
 let _isRTL: boolean | undefined;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
+ *
+ * @public
  */
 export function getRTL(): boolean {
-  if (_isRTL === undefined) {
-    // Fabric supports persisting the RTL setting between page refreshes via session storage
-    let savedRTL = getItem(RTL_LOCAL_STORAGE_KEY);
-    if (savedRTL !== null) {
-      _isRTL = savedRTL === '1';
-      setRTL(_isRTL);
-    }
+  let isRTL: boolean = _isRTL as boolean;
 
-    let doc = getDocument();
-    if (_isRTL === undefined && doc) {
-      _isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
+  if (isRTL === undefined) {
+    let doc = typeof document === 'undefined' ? undefined : document;
+
+    if (doc && doc.documentElement) {
+      isRTL = doc.documentElement.getAttribute('dir') === 'rtl';
     }
   }
 
-  return !!_isRTL;
+  return isRTL;
 }
 
 /**
  * Sets the rtl state of the page (by adjusting the dir attribute of the html element.)
+ *
+ * @public
  */
-export function setRTL(isRTL: boolean, persistSetting: boolean = false): void {
-  let doc = getDocument();
-  if (doc) {
-    doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
-  }
+export function setRTL(isRTL: boolean) {
+  let doc = typeof document === 'undefined' ? undefined : document;
 
-  if (persistSetting) {
-    setItem(RTL_LOCAL_STORAGE_KEY, isRTL ? '1' : '0');
+  if (doc && doc.documentElement) {
+    doc.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }
 
   _isRTL = isRTL;
@@ -46,6 +39,8 @@ export function setRTL(isRTL: boolean, persistSetting: boolean = false): void {
 
 /**
  * Returns the given key, but flips right/left arrows if necessary.
+ *
+ * @public
  */
 export function getRTLSafeKeyCode(key: number): number {
   if (getRTL()) {

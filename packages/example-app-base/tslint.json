@@ -2,5 +2,8 @@
   "extends": [
     "office-ui-fabric-react-tslint"
   ],
-  "rules": {}
+  "rules": {
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false
+  }
 }

@@ -57,8 +57,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
             aria-valuemin='0'
             aria-valuemax='100'
             aria-valuenow={ percentComplete.toFixed().toString() }
-            aria-valuetext={ ariaValueText }
-          >
+            aria-valuetext={ ariaValueText }>
           </div>
         </div>
         <div className={ css('ms-ProgressIndicator-itemDescription', styles.itemDescription) }>{ description }</div>

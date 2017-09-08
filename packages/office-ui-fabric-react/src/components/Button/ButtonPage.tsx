@@ -32,6 +32,7 @@ const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-reac
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
 const ButtonSwapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Swap.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
+const ButtonSplitCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 
 export interface IButtonDemoPageState {
   areButtonsDisabled?: boolean;
@@ -151,8 +152,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      >
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

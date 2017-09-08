@@ -4,7 +4,6 @@
 .signal {
   display: inline-block;
   margin: 0 4px;
-  position: relative;
 
   &:first-child {
     @include margin-left(0);
@@ -69,7 +68,6 @@
 
 .shared {
   color: $ms-color-neutralSecondary;
-  top: 1px;
 }
 
 .missingMetadata {
@@ -85,8 +83,6 @@
 }
 
 .signal {
-  transition: color 0.2s linear;
-
   .dark &,
   .dark.selected {
     color: $ms-color-white;

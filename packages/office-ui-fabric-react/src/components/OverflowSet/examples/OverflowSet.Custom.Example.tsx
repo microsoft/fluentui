@@ -131,7 +131,7 @@ export class OverflowSetCustomExample extends BaseComponent<any, any> {
               iconProps={ { iconName: item.icon } }
               menuProps={ item.subMenuProps }
               text={ item.name }
-            />
+            >  </DefaultButton>
           );
         } }
       />

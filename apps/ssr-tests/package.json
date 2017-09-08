@@ -8,7 +8,7 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "_webpack": "node ../../scripts/build.js webpack",
+    "_webpack": "node ./node_modules/webpack/bin/webpack --config webpack.config.js",
     "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
     "_test": "npm run _webpack && npm run _mocha",
     "build": "npm run _test",
@@ -23,15 +23,16 @@
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.0",
     "mocha": "~3.3.0",
-    "office-ui-fabric-react": ">=4.41.0 <5.0.0",
+    "office-ui-fabric-react": ">=4.37.5 <5.0.0",
     "raw-loader": "^0.5.1",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
-    "webpack": "^3.5.5"
+    "webpack": "^3.4.1",
+    "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
-    "tslib": "^1.7.1"
+    "tslib": "^1.6.0"
   }
 }

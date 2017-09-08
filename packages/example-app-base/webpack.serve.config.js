@@ -1,7 +1,6 @@
 const path = require('path');
-const resources = require('../../scripts/tasks/webpack-resources');
 
-module.exports = resources.createServeConfig({
+module.exports = {
   entry: './src/index.demo.tsx',
 
   output: {
@@ -12,5 +11,38 @@ module.exports = resources.createServeConfig({
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'
-  }
-});
+  },
+
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx']
+  },
+
+  devtool: 'source-map',
+
+  devServer: {
+    inline: true,
+    port: 4322
+  },
+
+  module: {
+    loaders: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: [
+          /node_modules/
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader" // creates style nodes from JS strings
+        }, {
+          loader: "css-loader" // translates CSS into CommonJS
+        }, {
+          loader: "sass-loader" // compiles Sass to CSS
+        }]
+      }
+    ]
+  },
+}

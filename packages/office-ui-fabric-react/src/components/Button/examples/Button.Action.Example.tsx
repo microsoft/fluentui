@@ -3,6 +3,9 @@ import {
   ActionButton,
   IButtonProps
 } from 'office-ui-fabric-react/lib/Button';
+import {
+  Label
+} from 'office-ui-fabric-react/lib/Label';
 
 export class ButtonActionExample extends React.Component<IButtonProps, any> {
   public constructor() {

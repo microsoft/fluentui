@@ -4,19 +4,20 @@ import * as React from 'react';
 import { INavPage } from '../Nav/Nav.Props';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
+import { Spinner } from 'office-ui-fabric-react/lib/Spinner';
 
 export interface IAppState {
   appTitle: string;
   pages: INavPage[];
 }
 
-const LoadingComponent = (props: any): JSX.Element => {
+function LoadingComponent(props: any): JSX.Element {
   return (
     <ComponentPage>
       <PageHeader pageTitle={ props.title } backgroundColor='#038387' />
     </ComponentPage>
   );
-};
+}
 
 export const AppState: IAppState = {
   appTitle: 'Office UI Fabric',
@@ -293,12 +294,6 @@ export const AppState: IAppState = {
           url: '#/components/rating',
           component: () => <LoadingComponent title='Rating' />,
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/RatingComponentPage').RatingComponentPage))
-        },
-        {
-          title: 'ResizeGroup',
-          url: '#/components/resizegroup',
-          component: () => <LoadingComponent title='ResizeGroup' />,
-          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ResizeGroupComponentPage').ResizeGroupComponentPage))
         },
         {
           title: 'SearchBox',

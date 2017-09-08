@@ -1,12 +1,11 @@
 module.exports = function (options) {
   let path = require('path');
   let fs = require('fs');
-  let karmaPath = path.resolve(__dirname, '../node_modules/karma/bin/karma');
-  let karmaConfigPath = path.join(process.cwd(), 'karma.config.js');
+  let karmaPath = path.join(process.cwd(), 'karma.config.js');
 
-  if (fs.existsSync(karmaConfigPath)) {
+  if (fs.existsSync(karmaPath)) {
     const execSync = require('../exec-sync');
 
-    execSync(`node ${karmaPath} start ${karmaConfigPath}`);
+    execSync('gulp karma' + (options.isProduction ? ' --production' : ''));
   }
 };

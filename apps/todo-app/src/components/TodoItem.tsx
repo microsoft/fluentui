@@ -2,10 +2,11 @@ import * as React from 'react';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { DocumentCardActivity } from 'office-ui-fabric-react/lib/DocumentCard';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
-import * as stylesImport from './Todo.scss';
+import * as stylesImport from './Todo.module.scss';
 const styles: any = stylesImport;
 import strings from './../strings';
 
@@ -18,7 +19,7 @@ import strings from './../strings';
  * Link of DocumentCardActivity: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/documentcard
  */
 export default class TodoItem extends React.Component<ITodoItemProps, {}> {
-  private static ANIMATION_TIMEOUT = 200;
+  private static ANIMATION_TIMEOUT: number = 200;
 
   private _animationTimeoutId: number;
   private _rowItem: HTMLDivElement;

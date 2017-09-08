@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme, FontClassNames, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { loadTheme, FontClassNames, ITheme, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -86,8 +86,7 @@ export class ThemePage extends React.Component<any, any> {
               isBeakVisible={ false }
               gapSpace={ 10 }
               targetElement={ colorPickerProps.targetElement }
-              onDismiss={ this._onPickerDismiss }
-            >
+              onDismiss={ this._onPickerDismiss }>
 
               <ColorPicker
                 color={ colorPickerProps.value }

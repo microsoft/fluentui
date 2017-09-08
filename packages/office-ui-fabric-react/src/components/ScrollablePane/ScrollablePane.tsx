@@ -29,53 +29,53 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     stickyBelow: HTMLElement;
   };
 
-  private _subscribers: Set<Function>;
-  private _stickyAbove: Set<Sticky>;
-  private _stickyBelow: Set<Sticky>;
+  private _subscribers: Function[];
+  private _stickyAbove: Sticky[];
+  private _stickyBelow: Sticky[];
 
   constructor(props: IScrollablePaneProps) {
     super(props);
-    this._subscribers = new Set<Function>();
-    this._stickyAbove = new Set<Sticky>();
-    this._stickyBelow = new Set<Sticky>();
+    this._subscribers = [];
+    this._stickyAbove = [];
+    this._stickyBelow = [];
   }
 
   public getChildContext() {
     return {
       scrollablePane: {
         subscribe: this.subscribe,
-        unsubscribe: this.unsubscribe,
         addStickyHeader: this.addStickyHeader,
         removeStickyHeader: this.removeStickyHeader,
         addStickyFooter: this.addStickyFooter,
         removeStickyFooter: this.removeStickyFooter,
-        notifySubscribers: this.notifySubscribers
       }
     };
   }
 
   public componentDidMount() {
-    const { root, stickyContainer } = this.refs;
+    const { root, stickyContainer, stickyAbove, stickyBelow } = this.refs;
 
-    this._events.on(root, 'scroll', this.notifySubscribers);
+    this._events.on(root, 'scroll', this._notifySubscribers);
     this._events.on(window, 'resize', this._onWindowResize);
     setTimeout(() => {
       this._resizeContainer();
       if (stickyContainer.parentElement && root.parentElement) {
         stickyContainer.parentElement.removeChild(stickyContainer);
         root.parentElement.insertBefore(stickyContainer, root.nextSibling);
-        this.notifySubscribers();
+        this._notifySubscribers();
+        if (this._stickyAbove.length > 1) {
+          this._sortStickies(this._stickyAbove, stickyAbove);
+        }
+        if (this._stickyBelow.length > 1) {
+          this._sortStickies(this._stickyBelow, stickyBelow);
+        }
       }
     }, 500);
   }
 
   public componentWillUnmount() {
-    const { stickyContainer } = this.refs;
     this._events.off(this.refs.root);
     this._events.off(window);
-    if (stickyContainer.parentElement) {
-      stickyContainer.parentElement.removeChild(stickyContainer);
-    }
   }
 
   public render() {
@@ -85,8 +85,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
       <div
         ref='root'
         className={ css('ms-ScrollablePane', styles.root, className) }
-        data-is-scrollable={ true }
-      >
+        data-is-scrollable={ true }>
         <div ref='stickyContainer' className={ styles.stickyContainer }>
           <div ref='stickyAbove' className={ styles.stickyAbove } />
           <div ref='stickyBelow' className={ styles.stickyBelow } />
@@ -98,12 +97,7 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
 
   @autobind
   public subscribe(handler: (headerBound: ClientRect, footerBound: ClientRect) => void) {
-    this._subscribers.add(handler);
-  }
-
-  @autobind
-  public unsubscribe(handler: (headerBound: ClientRect, footerBound: ClientRect) => void) {
-    this._subscribers.delete(handler);
+    this._subscribers = this._subscribers.concat(handler);
   }
 
   @autobind
@@ -132,26 +126,12 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
     this._removeSticky(sticky, this._stickyBelow, this.refs.stickyBelow);
   }
 
-  @autobind
-  public notifySubscribers(sort?: boolean): void {
-    const { stickyAbove, stickyBelow } = this.refs;
-    this._subscribers.forEach((handle) => {
-      handle(stickyAbove.getBoundingClientRect(), stickyBelow.getBoundingClientRect());
-    });
-    if (this._stickyAbove.size > 1) {
-      this._sortStickies(this._stickyAbove, stickyAbove);
-    }
-    if (this._stickyBelow.size > 1) {
-      this._sortStickies(this._stickyBelow, stickyBelow);
-    }
-  }
-
-  private _addSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement, addStickyToContainer: () => void) {
-    if (!stickyList.has(sticky)) {
-      stickyList.add(sticky);
+  private _addSticky(sticky: Sticky, stickyList: Sticky[], container: HTMLElement, addStickyToContainer: () => void) {
+    if (stickyList.indexOf(sticky) < 0) {
+      stickyList.push(sticky);
       addStickyToContainer();
       sticky.content.addEventListener('transitionend',
-        this._setPlaceholderHeights.bind(null, stickyList),
+        this._setPlaceholderHeights.bind(null, stickyList, container),
         false);
       if (sticky.props.stickyClassName) {
         setTimeout(() => {
@@ -160,25 +140,27 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
           }
         }, 1);
       }
-      this.notifySubscribers();
-      this._setPlaceholderHeights(stickyList);
+      this._notifySubscribers();
+      this._setPlaceholderHeights(stickyList, container);
     }
   }
 
-  private _removeSticky(sticky: Sticky, stickyList: Set<Sticky>, container: HTMLElement) {
-    if (stickyList.has(sticky)) {
+  private _removeSticky(sticky: Sticky, stickyList: Sticky[], container: HTMLElement) {
+    const indexOfSticky = stickyList.indexOf(sticky);
+    if (indexOfSticky >= 0) {
       sticky.content.removeEventListener('transitionend',
         this._setPlaceholderHeights.bind(null, stickyList, container));
-      stickyList.delete(sticky);
+      stickyList.splice(indexOfSticky, 1);
     }
   }
 
   private _onWindowResize() {
+    const { stickyAbove, stickyBelow } = this.refs;
     setTimeout(() => {
       this._resizeContainer();
-      this.notifySubscribers();
-      this._setPlaceholderHeights(this._stickyAbove);
-      this._setPlaceholderHeights(this._stickyBelow);
+      this._notifySubscribers();
+      this._setPlaceholderHeights(this._stickyAbove, stickyAbove);
+      this._setPlaceholderHeights(this._stickyBelow, stickyBelow);
     }, 5);
   }
 
@@ -196,22 +178,29 @@ export class ScrollablePane extends BaseComponent<IScrollablePaneProps, {}> {
   }
 
   @autobind
-  private _setPlaceholderHeights(stickies: Set<Sticky>) {
+  private _setPlaceholderHeights(stickies: Sticky[], element: HTMLElement) {
+    const { stickyAbove, stickyBelow } = this.refs;
     stickies.forEach((sticky, idx) => {
-      sticky.setPlaceholderHeight(sticky.content.clientHeight);
+      sticky.setPlaceholderHeight(element.children[idx].clientHeight);
     });
   }
 
-  private _sortStickies(stickyList: Set<Sticky>, container: HTMLElement): void {
-    let stickyArr = Array.from(stickyList);
-    stickyArr = stickyArr.sort((a, b) => {
+  private _sortStickies(stickyList: Sticky[], container: HTMLElement): void {
+    stickyList.sort((a, b) => {
       return a.refs.root.offsetTop - b.refs.root.offsetTop;
     });
     while (container.lastChild) {
-      container.removeChild(container.lastChild);
+      this.refs.stickyBelow.removeChild(container.lastChild);
     }
-    stickyArr.forEach((sticky) => {
+    stickyList.forEach((sticky) => {
       container.appendChild(sticky.content);
+    });
+  }
+
+  private _notifySubscribers() {
+    const { stickyAbove, stickyBelow } = this.refs;
+    this._subscribers.forEach((handle) => {
+      handle(stickyAbove.getBoundingClientRect(), stickyBelow.getBoundingClientRect());
     });
   }
 }

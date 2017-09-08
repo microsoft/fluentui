@@ -67,7 +67,7 @@ interface IButton {
 
 ## Naming guidance
 
-### Flags(Booleans)
+### Flags
 
 Property flags should be as consistent as possible with given html guidelines.
 

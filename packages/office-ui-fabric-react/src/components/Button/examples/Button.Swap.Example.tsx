@@ -49,16 +49,14 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
         ref={ this._setButtonRef }
         disabled={ disabled }
         checked={ checked }
-        onClick={ this._onClick }
-      >
+        onClick={ this._onClick }>
         { text }
       </PrimaryButton>
       : <DefaultButton
         ref={ this._setButtonRef }
         disabled={ disabled }
         checked={ checked }
-        onClick={ this._onClick }
-      >
+        onClick={ this._onClick }>
         { text }
       </DefaultButton>;
 

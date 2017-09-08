@@ -4,6 +4,7 @@ import {
   InjectionMode
 } from './Stylesheet';
 
+const { expect } = chai;
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 
 _stylesheet.setConfig({ injectionMode: InjectionMode.none });
@@ -34,13 +35,13 @@ describe('mergeStyleSets', () => {
       }
     );
 
-    expect(result).toEqual({
+    expect(result).eqls({
       root: 'css-0',
       a: 'css-1',
       b: 'css-2'
     });
 
-    expect(_stylesheet.getRules()).toEqual(
+    expect(_stylesheet.getRules()).equals(
       '.css-0{background:red;}.css-0:hover{background:yellow;}' +
       '.css-1{background:white;}' +
       '.css-2{background:blue;}'

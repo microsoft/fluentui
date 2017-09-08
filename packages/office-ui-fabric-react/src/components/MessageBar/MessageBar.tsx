@@ -51,11 +51,9 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _getActionsDiv(): JSX.Element | null {
     if (this.props.actions) {
-      return <div
-        className={ this.props.isMultiline ?
-          ('ms-MessageBar-actions ' + styles.actions) :
-          ('ms-MessageBar-actionsOneline ' + styles.actionsOneline) }
-      >
+      return <div className={ this.props.isMultiline ?
+        ('ms-MessageBar-actions ' + styles.actions) :
+        ('ms-MessageBar-actionsOneline ' + styles.actionsOneline) }>
         { this.props.actions }
       </div>;
     }
@@ -125,8 +123,7 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
           )
         }
         role='status'
-        aria-live={ this._getAnnouncementPriority() }
-      >
+        aria-live={ this._getAnnouncementPriority() }>
         <div className={ css(styles.content, 'ms-MessageBar-content') }>
           { this._getIconSpan() }
           { this._renderInnerText() }
@@ -139,16 +136,14 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     return (
-      <div
-        className={
-          css(this._getClassName(),
-            'ms-MessageBar-singleline',
-            styles.singleline,
-            this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.rootIsOneline,
-            this.props.actions && styles.actionableOneline
-          )
-        }
-      >
+      <div className={
+        css(this._getClassName(),
+          'ms-MessageBar-singleline',
+          styles.singleline,
+          this.props.onDismiss && 'ms-MessageBar-dismissalOneline ' + styles.rootIsOneline,
+          this.props.actions && styles.actionableOneline
+        )
+      } >
         <div className={ css(styles.content, 'ms-MessageBar-content') }>
           { this._getIconSpan() }
           { this._renderInnerText() }

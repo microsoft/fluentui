@@ -41,22 +41,22 @@ export class AutoScroll {
     }
   }
 
-  public dispose(): void {
+  public dispose() {
     this._events.dispose();
     this._stopScroll();
   }
 
-  private _onMouseMove(ev: MouseEvent): void {
+  private _onMouseMove(ev: MouseEvent) {
     this._computeScrollVelocity(ev.clientY);
   }
 
-  private _onTouchMove(ev: TouchEvent): void {
+  private _onTouchMove(ev: TouchEvent) {
     if (ev.touches.length > 0) {
       this._computeScrollVelocity(ev.touches[0].clientY);
     }
   }
 
-  private _computeScrollVelocity(clientY: number): void {
+  private _computeScrollVelocity(clientY: number) {
     if (!this._scrollRect) {
       return;
     }
@@ -85,13 +85,13 @@ export class AutoScroll {
     }
   }
 
-  private _startScroll(): void {
+  private _startScroll() {
     if (!this._timeoutId) {
       this._incrementScroll();
     }
   }
 
-  private _incrementScroll(): void {
+  private _incrementScroll() {
     if (this._scrollableParent) {
       this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
     }
@@ -99,7 +99,7 @@ export class AutoScroll {
     this._timeoutId = setTimeout(this._incrementScroll, SCROLL_ITERATION_DELAY);
   }
 
-  private _stopScroll(): void {
+  private _stopScroll() {
     if (this._timeoutId) {
       clearTimeout(this._timeoutId);
       delete this._timeoutId;

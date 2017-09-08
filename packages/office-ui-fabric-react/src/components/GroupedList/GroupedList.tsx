@@ -100,8 +100,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ () => 1 }
-              usePageCache={ usePageCache }
-              onShouldVirtualize={ onShouldVirtualize }
+              usePageCache = { usePageCache }
+              onShouldVirtualize = { onShouldVirtualize }
             />
           )
         }
@@ -160,11 +160,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     let footerProps = assign({}, groupProps!.footerProps, dividerProps);
     let groupNestingDepth = this._getGroupNestingDepth();
 
-    if (!groupProps!.showEmptyGroups && group && group.count === 0) {
-      return null;
-    }
-
-    return (
+    return (!group || group.count > 0) ? (
       <GroupedListSection
         ref={ 'group_' + groupIndex }
         key={ this._getGroupKey(group, groupIndex) }
@@ -186,7 +182,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         selection={ selection }
         viewport={ viewport }
       />
-    );
+    ) : null;
   }
 
   private _getGroupKey(group: IGroup, index: number): string {

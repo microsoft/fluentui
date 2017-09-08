@@ -4,9 +4,12 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let resources = require('../../scripts/tasks/karma-resources');
+let build = require('@microsoft/web-library-build');
+let webpack = require('webpack');
+let buildConfig = build.getConfig();
+let configResources = build.karma.resources;
+let bindPolyfillPath = configResources.bindPolyfillPath;
 let debugRun = (process.argv.indexOf('--debug') > -1);
-let webpack = require('../../scripts/tasks/webpack-resources').webpack;
 
 module.exports = function (config) {
   let karmaConfig = {
@@ -20,7 +23,7 @@ module.exports = function (config) {
 
 
     // list of files / patterns to load in the browser
-    files: resources.files.concat([path.join('lib', 'common/tests.js')]),
+    files: [bindPolyfillPath].concat([path.join(buildConfig.libFolder, 'common/tests.js')]),
 
     // list of files to exclude
     exclude: [],
@@ -38,7 +41,7 @@ module.exports = function (config) {
           debugRun ? {} : {
             test: /\.js/,
             exclude: /(test|node_modules|bower_components)/,
-            loader: resources.istanbulInstrumenterLoaderPath,
+            loader: configResources.istanbulInstrumenterLoaderPath,
             enforce: 'post'
           }
         ],
@@ -51,8 +54,7 @@ module.exports = function (config) {
       },
       resolve: {
         modules: [
-          path.resolve(__dirname, 'lib'),
-          path.resolve('../../scripts/node_modules'),
+          buildConfig.libFolder,
           'node_modules'
         ]
       },
@@ -70,10 +72,10 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      [path.join('lib', '/**/*.js')]: ['webpack']
+      [path.join(buildConfig.libFolder, '/**/*.js')]: ['webpack']
     },
 
-    plugins: resources.plugins.concat([
+    plugins: configResources.plugins.concat([
     ]),
 
     // test results reporter to use

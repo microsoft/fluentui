@@ -85,6 +85,9 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
       initialsColor,
       presence,
       primaryText,
+      secondaryText,
+      tertiaryText,
+      optionalText,
       hidePersonaDetails,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
@@ -175,8 +178,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
               alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange }
-            />
+              onLoadingStateChange={ this._onPhotoLoadingStateChange } />
           </div>
         ) }
         { presenceElement }

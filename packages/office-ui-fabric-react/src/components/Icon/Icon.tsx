@@ -31,12 +31,11 @@ export const Icon = (props: IIconProps): JSX.Element => {
     );
 
     return (
-      <div
-        className={
-          css(
-            containerClassName,
-            styles.root
-          ) }
+      <div className={
+        css(
+          containerClassName,
+          styles.root
+        ) }
       >
         <Image { ...props.imageProps as any } />
       </div>

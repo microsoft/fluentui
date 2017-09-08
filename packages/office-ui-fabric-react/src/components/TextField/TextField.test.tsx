@@ -357,7 +357,7 @@ describe('TextField', () => {
       expect(selectedText).to.equal(initialValue);
     };
 
-    renderIntoDocument(
+    const renderedDOM: HTMLElement = renderIntoDocument(
       <TextField
         ref={ (t) => textField = t! }
         defaultValue={ initialValue }

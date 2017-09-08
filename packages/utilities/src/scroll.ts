@@ -18,7 +18,7 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
  *
  * @public
  */
-export function disableBodyScroll(): void {
+export function disableBodyScroll() {
   let doc = getDocument();
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
@@ -33,7 +33,7 @@ export function disableBodyScroll(): void {
  *
  * @public
  */
-export function enableBodyScroll(): void {
+export function enableBodyScroll() {
   if (_bodyScrollDisabledCount > 0) {
     let doc = getDocument();
 

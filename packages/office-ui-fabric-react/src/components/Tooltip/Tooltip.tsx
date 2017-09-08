@@ -12,7 +12,7 @@ import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import * as stylesImport from './Tooltip.scss';
 const styles: any = stylesImport;
-import { AnimationClassNames, mergeStyles } from '../../Styling';
+import { AnimationClassNames } from '../../Styling';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -20,7 +20,6 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   public static defaultProps = {
     directionalHint: DirectionalHint.topCenter,
     delay: TooltipDelay.medium,
-    maxWidth: '364px',
     calloutProps: {
       isBeakVisible: true,
       beakWidth: 16,
@@ -33,24 +32,24 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   public render() {
     const {
       targetElement,
+      content,
       calloutProps,
       directionalHint,
       directionalHintForRTL,
       delay,
       id,
-      maxWidth,
       onRenderContent = this._onRenderContent
   } = this.props;
 
     return (
       <Callout
-        className={ mergeStyles(
+        className={ css(
           'ms-Tooltip',
           AnimationClassNames.fadeIn200,
-          styles.root,
-          (delay === TooltipDelay.medium) && styles.hasMediumDelay,
-          (maxWidth !== null) && { maxWidth: maxWidth }
-        ) as string }
+          styles.root, {
+            [styles.hasMediumDelay]: delay === TooltipDelay.medium
+          }
+        ) }
         targetElement={ targetElement }
         directionalHint={ directionalHint }
         directionalHintForRTL={ directionalHintForRTL }

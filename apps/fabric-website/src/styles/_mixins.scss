@@ -1,8 +1,10 @@
+@import './variables';
+
 // Apply content padding, based on device size
 @mixin contentPadding($paddingTop:0px, $paddingBottom:$contentPaddingBottom) {
   padding: $paddingTop $contentPadding-sm $paddingBottom $contentPadding-sm;
 
-  @media screen and (min-width: $ms-screen-min-lg) {
+  @media screen and (min-width: $uhf-screen-min-mobile) {
     padding: $paddingTop $contentPadding-lg $paddingBottom $contentPadding-lg;
   }
 
@@ -16,7 +18,7 @@
   margin-left: -$contentPadding-sm;
   margin-right: -$contentPadding-sm;
 
-  @media screen and (min-width: $ms-screen-min-lg) {
+  @media screen and (min-width: $uhf-screen-min-mobile) {
     margin-left: -$contentPadding-lg;
     margin-right: -$contentPadding-lg;
   }
@@ -38,9 +40,9 @@
   position: relative;
 
   &::after {
-    bottom: 0;
+    bottom: -1px;
     content: '';
-    height: 70px;
+    height: 82px;
     left: -10px;
     pointer-events: none;
     position: absolute;
@@ -67,8 +69,8 @@
       background-position: center bottom;
     }
 
-    @media screen and (min-width: $ms-screen-min-lg) {
-      height: 140px; // Make room for wider angle
+    @media screen and (min-width: $uhf-screen-min-mobile) {
+      height: 150px; // Make room for wider angle
     }
   }
 }

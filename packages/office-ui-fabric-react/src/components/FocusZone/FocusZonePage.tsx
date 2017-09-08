@@ -46,8 +46,7 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
             <p>Using a FocusZone is simple. Just wrap a bunch of content inside of a FocusZone, and arrows and tabbling will be handled for you! See examples below.</p>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      >
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

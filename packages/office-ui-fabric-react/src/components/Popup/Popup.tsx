@@ -66,8 +66,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         aria-label={ ariaLabel }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
-        onKeyDown={ this._onKeyDown }
-      >
+        onKeyDown={ this._onKeyDown }>
         { this.props.children }
       </div>
     );

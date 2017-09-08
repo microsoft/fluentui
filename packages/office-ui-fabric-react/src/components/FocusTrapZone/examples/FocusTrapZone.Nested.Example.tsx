@@ -4,9 +4,12 @@ import * as React from 'react';
 
 /* tslint:disable:no-string-literal */
 
+import * as ReactDOM from 'react-dom';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './FocusTrapZone.Box.Example.scss';
 
@@ -33,8 +36,7 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off'
-        />
+          offText='Off' />
         {
           this.props.children
         }

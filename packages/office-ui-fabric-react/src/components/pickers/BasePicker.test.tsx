@@ -98,6 +98,7 @@ describe('Pickers', () => {
       input.value = 'bl';
       ReactTestUtils.Simulate.change(input);
 
+      let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
       let suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
       ReactTestUtils.Simulate.click(suggestionOptions[0]);
       expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
@@ -110,7 +111,7 @@ describe('Pickers', () => {
     it('will still render with itemLimit set to 0', () => {
       let root = document.createElement('div');
       document.body.appendChild(root);
-      ReactDOM.render(
+      let picker: TypedBasePicker = ReactDOM.render(
         <BasePickerWithType
           onResolveSuggestions={ onResolveSuggestions }
           onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
@@ -217,7 +218,7 @@ describe('Pickers', () => {
     it('fires change events correctly for controlled components', (done) => {
       let root = document.createElement('div');
       document.body.appendChild(root);
-      ReactDOM.render(
+      let picker: TagPicker = ReactDOM.render(
         <TagPicker
           onResolveSuggestions={ onResolveSuggestions }
           selectedItems={ [] }

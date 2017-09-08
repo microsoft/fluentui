@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import * as ReactDOM from 'react-dom';
 
 let { expect } = chai;
 import { mount } from 'enzyme';
@@ -21,8 +22,7 @@ describe('Dialog', () => {
     const wrapper = mount(
       <Dialog
         hidden={ false }
-        modalProps={ { onDismissed: handleDismissed } }
-      />
+        modalProps={ { onDismissed: handleDismissed } } />
     );
 
     expect(document.querySelector('[role="dialog"]')).to.not.be.null;
@@ -51,8 +51,7 @@ describe('Dialog', () => {
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext'
-        } }
-      />
+        } } />
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
@@ -75,8 +74,7 @@ describe('Dialog', () => {
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext'
-        } }
-      />
+        } } />
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
@@ -99,8 +97,7 @@ describe('Dialog', () => {
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext'
-        } }
-      />
+        } } />
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');

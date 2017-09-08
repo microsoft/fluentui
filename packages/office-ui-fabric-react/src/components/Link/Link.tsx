@@ -11,6 +11,13 @@ import { ILink, ILinkProps } from './Link.Props';
 import * as stylesImport from './Link.scss';
 const styles: any = stylesImport;
 
+interface IMyScreen extends Screen {
+  left: number;
+  top: number;
+}
+
+declare var screen: IMyScreen;
+
 export class Link extends BaseComponent<ILinkProps, any> implements ILink {
   private _link: HTMLElement;
 

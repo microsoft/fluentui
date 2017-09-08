@@ -1,5 +1,6 @@
 import { concatStyleSets } from './concatStyleSets';
 import { IStyle } from './IStyle';
+const { expect } = chai;
 
 describe('concatStyleSets', () => {
   it('can concat style sets', () => {
@@ -21,7 +22,7 @@ describe('concatStyleSets', () => {
       }
     );
 
-    expect(result).toEqual({
+    expect(result).eqls({
       root: [
         { background: 'red' },
         {

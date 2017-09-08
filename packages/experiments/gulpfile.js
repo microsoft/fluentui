@@ -7,8 +7,6 @@ let gulp = require('gulp');
 build.task('webpack', build.webpack);
 build.task('sass', build.sass);
 build.task('karma', build.karma);
-build.task('ts', build.typescript);
-build.task('tslist', build.tslint);
 
 // initialize tasks.
 build.initialize(gulp);

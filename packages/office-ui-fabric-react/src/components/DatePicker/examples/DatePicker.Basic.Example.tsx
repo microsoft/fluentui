@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { autobind } from '../../../Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 
@@ -113,13 +112,12 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
             }
           ] }
           selectedKey={ DayOfWeek[firstDayOfWeek!] }
-          onChanged={ this._onDropdownChanged }
+          onChanged={ this._onDropdownChanged.bind(this) }
         />
       </div>
     );
   }
 
-  @autobind
   private _onDropdownChanged(option: IDropdownOption) {
     this.setState({
       firstDayOfWeek: (DayOfWeek as any)[option.key]

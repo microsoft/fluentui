@@ -42,7 +42,7 @@ function createConfig(isProduction, publicPath) {
       path: path.join(__dirname, '/dist'),
       publicPath: publicPath,
       filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `fabric-sitev5-${version}-[name]-${Date.now()}${minFileNamePart}.js`
+      chunkFilename: `fabric-sitev5-${version}-[name]${minFileNamePart}.js`
     },
 
     devServer: {

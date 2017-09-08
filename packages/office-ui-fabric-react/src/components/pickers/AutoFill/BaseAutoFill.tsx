@@ -85,6 +85,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   public componentDidUpdate() {
     let value = this._value;
     let {
+      defaultVisibleValue,
       suggestedDisplayValue,
       shouldSelectFullInputValueInComponentDidUpdate
     } = this.props;
@@ -116,8 +117,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     } = this.state;
 
     const nativeProps = getNativeProps(this.props, inputProperties);
-    return <input
-      { ...nativeProps}
+    return <input { ...nativeProps}
       ref={ this._resolveRef('_inputElement') }
       value={ displayValue }
       autoCapitalize={ 'off' }

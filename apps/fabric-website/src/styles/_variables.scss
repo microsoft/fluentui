@@ -1,5 +1,5 @@
 // Import the Fabric variables and mixins
-@import '~office-ui-fabric-react/dist/sass/References';
+@import '../../node_modules/office-ui-fabric-core/src/sass/References';
 
 // Colors (all taken from the MDL2 palette)
 $color-home-darker: #004e8c;
@@ -39,8 +39,7 @@ $color-blog-light: #bad80a;
 $color-blog-lighter: #d1ec3c;
 
 // Component variables
-$App-maximumWidth: 1300px;
-$App-mobileNavBarHeight: 48px;
+$App-maximumWidth: 1600px;
 
 $CodeBlock-toggleButtonHeight: 28px;
 
@@ -74,5 +73,9 @@ $contentPadding-lg: 32px;
 $contentPadding-xl: 40px;
 $contentPaddingBottom: 100px;
 
+// Screen sizes that align with UHF breakpoints
+$uhf-screen-min-mobile: 768px;
+$uhf-screen-max-mobile: ($uhf-screen-min-mobile - 1);
+$uhf-screen-max-lg: 1083px;
 
 $baseURL: ' https://static2.sharepointonline.com/files/fabric/';

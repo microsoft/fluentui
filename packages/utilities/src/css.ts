@@ -28,7 +28,7 @@ export type ICssInput = string | ISerializableObject | IDictionary | null | unde
  *
  * @public
  */
-export function css(...args: ICssInput[]): string {
+export function css(...args: ICssInput[]) {
   let classes = [];
 
   for (let arg of args) {

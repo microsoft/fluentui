@@ -6,6 +6,8 @@ import {
   elementContains
 } from './dom';
 
+const { expect } = chai;
+
 let unattachedSvg = document.createElement('svg');
 let unattachedDiv = document.createElement('div');
 let parentDiv = document.createElement('div');
@@ -15,23 +17,23 @@ parentDiv.appendChild(childDiv);
 
 describe('elementContains', () => {
   it('can find a child', () => {
-    expect(elementContains(parentDiv, childDiv)).toEqual(true);
+    expect(elementContains(parentDiv, childDiv)).equals(true);
   });
 
   it('can return false on an unattached child', () => {
-    expect(elementContains(parentDiv, unattachedDiv)).toEqual(false);
+    expect(elementContains(parentDiv, unattachedDiv)).equals(false);
   });
 
   it('can return false on a null child', () => {
-    expect(elementContains(parentDiv, null)).toEqual(false);
+    expect(elementContains(parentDiv, null)).equals(false);
   });
 
   it('can return false on a null parent', () => {
-    expect(elementContains(null, null)).toEqual(false);
+    expect(elementContains(null, null)).equals(false);
   });
 
   it('can return false when parent is an svg', () => {
-    expect(elementContains(unattachedSvg, unattachedDiv)).toEqual(false);
+    expect(elementContains(unattachedSvg, unattachedDiv)).equals(false);
   });
 });
 
@@ -42,15 +44,15 @@ describe('getParent', () => {
     childSvg.appendChild(svgRectangle);
     parentDiv.appendChild(childSvg);
 
-    expect(getParent(svgRectangle)).toEqual(childSvg);
-    expect(getParent(childSvg)).toEqual(parentDiv);
+    expect(getParent(svgRectangle)).equals(childSvg);
+    expect(getParent(childSvg)).equals(parentDiv);
   });
 });
 
 describe('getWindow', () => {
   it('returns undefined in server environment', () => {
     setSSR(true);
-    expect(getWindow()).toEqual(undefined);
+    expect(getWindow()).equals(undefined);
     setSSR(false);
   });
 });
@@ -58,7 +60,7 @@ describe('getWindow', () => {
 describe('getDocument', () => {
   it('returns undefined in server environment', () => {
     setSSR(true);
-    expect(getDocument()).toEqual(undefined);
+    expect(getDocument()).equals(undefined);
     setSSR(false);
   });
 });

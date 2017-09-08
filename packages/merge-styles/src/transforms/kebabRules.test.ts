@@ -1,4 +1,5 @@
 import { kebabRules } from './kebabRules';
+import { expect } from 'chai';
 
 describe('kebabRules', () => {
 
@@ -10,7 +11,7 @@ describe('kebabRules', () => {
 
     kebabRules(rules, 0);
 
-    expect(rules).toEqual([
+    expect(rules).eqls([
       'background-color',
       '#cAcAcA'
     ]);
@@ -24,7 +25,7 @@ describe('kebabRules', () => {
 
     kebabRules(rules, 0);
 
-    expect(rules).toEqual([
+    expect(rules).eqls([
       '-webkit-font-smoothing',
       'antialiased'
     ]);

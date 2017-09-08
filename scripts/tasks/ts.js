@@ -2,10 +2,8 @@ module.exports = function (options) {
   const path = require('path');
   const execSync = require('../exec-sync');
   const typescriptPath = 'node ' + path.resolve(__dirname, '../node_modules/typescript/lib/tsc');
-  const libPath = path.resolve(process.cwd(), 'lib');
-  const srcPath = path.resolve(process.cwd(), 'src');
-  const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
-
+  const extraParams = '--pretty' + (options.isProduction ? ' --inlineSources --mapRoot ../src' : '');
+  
   execSync(typescriptPath + ' -outDir lib -t es5 -m commonjs ' + extraParams);
 
   if (options.isProduction) {

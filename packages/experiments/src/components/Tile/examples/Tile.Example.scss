@@ -5,11 +5,19 @@
   margin: 4px;
 }
 
-.squareTile {
-  width: 200px;
+.landscapeTile {
+  width: 250px;
   height: 200px;
 }
 
-.tileImage {
-  display: block;
+.portraitTile {
+  width: 175px;
+  height: 200px;
+}
+
+.squareTile {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
 }

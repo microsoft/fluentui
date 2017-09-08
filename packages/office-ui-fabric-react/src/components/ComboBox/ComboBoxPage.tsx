@@ -56,11 +56,7 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div></div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ComboBox/ComboBox.html'>Fabric JS</a>
-        }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      >
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

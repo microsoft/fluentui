@@ -97,7 +97,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       iconProps && iconProps.className,
       disabled!,
       checked!,
-      !!this.state.menuProps && !this.props.split
+      this.state.menuProps != null && !this.props.split
     );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -187,6 +187,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     let props = this.props;
     let {
+      baseClassName,
+      styles,
       menuIconName,
       menuIconProps,
       menuProps,
@@ -218,8 +220,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null {
     let {
+      baseClassName,
+      disabled,
       icon,
-      iconProps
+      iconProps,
+      styles,
+      checked
        } = this.props;
 
     if (icon || iconProps) {
@@ -241,6 +247,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderText(): JSX.Element | null {
     let {
       children,
+      disabled,
+      styles,
       text
             } = this.props;
 
@@ -312,6 +320,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   @autobind
   private _onRenderMenuIcon(props: IButtonProps): JSX.Element | null {
     let {
+      baseClassName,
+      checked,
+      disabled,
       menuIconName,
       menuIconProps
        } = this.props;
@@ -326,7 +337,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps ?
         <Icon
           { ...menuIconProps }
-          className={ this._classNames.menuIcon }
+          className={ this._classNames.icon }
         />
         :
         null
@@ -407,8 +418,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         disabled={ this.props.disabled }
         onClick={ this._onToggleMenu }
         menuProps={ undefined }
-        iconProps={ menuIconProps }
-      />
+        iconProps={ menuIconProps } />
     );
   }
 

@@ -1,8 +1,14 @@
 import * as React from 'react';
 import {
-  ComboBox
+  ComboBox,
+  IComboBoxOption
 } from 'office-ui-fabric-react/lib/ComboBox';
 import './ComboBox.Basic.Example.scss';
+import {
+  assign,
+  autobind
+} from 'office-ui-fabric-react/lib/Utilities';
+import { SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/utilities/selectableOption/SelectableOption.Props';
 
 export class ComboBoxCustomStyledExample extends React.Component<any, any> {
 

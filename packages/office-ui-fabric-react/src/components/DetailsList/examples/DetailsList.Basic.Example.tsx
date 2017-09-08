@@ -5,9 +5,13 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
+  IDetailsHeaderProps,
   Selection,
   IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  IRenderFunction
+} from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 
 let _items: any[] = [];

@@ -43,7 +43,7 @@ class AutoScroll {
 // WARNING: _warnDeprecations has incomplete type information
 // WARNING: _warnMutuallyExclusive has incomplete type information
 // @public
-class BaseComponent<P extends IBaseProps, S = {}> extends React.Component<P, S> {
+class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   constructor(props?: P, context?: any);
   protected readonly _async: Async;
   protected readonly _disposables: IDisposable[];
@@ -105,10 +105,8 @@ class FabricPerformance {
   public static summary: IPerfSummary;
 }
 
-export function find < T >(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
-
 // @public
-export function findIndex < T >(array: T[], cb: (item: T, index: number) => boolean): number;
+export function findIndex < T >(array: T[], cb: (item: any, index: number) => boolean): number;
 
 // @public
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null;
@@ -452,8 +450,6 @@ class Rectangle {
   public top: number;
   readonly width: number;
 }
-
-export function removeElement < T >(array: T[], index: number): T[];
 
 // WARNING: Because this definition is explicitly marked as @internal, an underscore prefix ("_") should be added to its name
 // @internal

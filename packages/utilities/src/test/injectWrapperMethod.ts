@@ -6,14 +6,14 @@ import { ReactWrapper } from 'enzyme';
  * @param methodName - The name of the method to modify on the wrapper
  * @param fn - The function to run prior to the call of the original method
  */
-export function injectWrapperMethod(wrapper: ReactWrapper<any, any>, methodName: string, fn: () => void): void {
+export function injectWrapperMethod(wrapper: ReactWrapper<any, any>, methodName: string, fn: () => void) {
   const originalMethod = (wrapper.instance() as any)[methodName];
 
   if (typeof originalMethod !== 'function') {
     throw new Error(`Tried to override the method ${methodName} on a ReactWrapper that does not have that function`);
   }
 
-  (wrapper.instance() as any)[methodName] = function (prevProps: any): void {
+  (wrapper.instance() as any)[methodName] = function (prevProps: any) {
     fn();
     originalMethod.call(this, prevProps);
   };

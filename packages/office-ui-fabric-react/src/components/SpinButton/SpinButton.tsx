@@ -70,6 +70,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
   private _stepDelay = 75;
+  private _formattedValidUnitOptions: string[] = [];
 
   constructor(props: ISpinButtonProps) {
     super(props);
@@ -158,9 +159,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ classNames.label }
-            >
-              { label }
+              className={ classNames.label }>{ label }
             </Label>
           }
         </div> }
@@ -223,9 +222,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
             <Label
               id={ this._labelId }
               htmlFor={ this._inputId }
-              className={ classNames.label }
-            >
-              { label }
+              className={ classNames.label }>{ label }
             </Label>
           }
         </div>

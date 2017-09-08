@@ -11,7 +11,7 @@ export class BlogPage extends React.Component<any, any> {
     return (
       <div>
         <PageHeader pageTitle='Blog' backgroundColor='#73aa24' />
-        <div className={ styles.angle } />
+        <div className={ styles.angle }></div>
         { this._getBlogItems() }
       </div>
     );

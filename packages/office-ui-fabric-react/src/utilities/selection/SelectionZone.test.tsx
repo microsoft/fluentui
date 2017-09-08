@@ -35,8 +35,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
     <SelectionZone
       selection={ _selection }
       selectionMode={ selectionMode }
-      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
-    >
+      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }>
 
       <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
 

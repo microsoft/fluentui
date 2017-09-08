@@ -2,62 +2,6 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
-      "version": "4.13.0",
-      "tag": "@uifabric/utilities_v4.13.0",
-      "date": "Mon, 04 Sep 2017 10:16:56 GMT",
-      "comments": {
-        "minor": [
-          {
-            "author": "Thomas Michon <thomas@michon.com>",
-            "commit": "57ea45fbfaf4f4ee89a4da54a0a4beab7b16051b",
-            "comment": "Add ISize interface and fitContentToBounds utility function"
-          }
-        ]
-      }
-    },
-    {
-      "version": "4.12.1",
-      "tag": "@uifabric/utilities_v4.12.1",
-      "date": "Fri, 01 Sep 2017 18:06:55 GMT",
-      "comments": {
-        "patch": [
-          {
-            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
-            "commit": "2ac7d28b38f8540783b021498cb8e5773355e342",
-            "comment": "Set the RTL language when the language is read from session storage"
-          }
-        ]
-      }
-    },
-    {
-      "version": "4.12.0",
-      "tag": "@uifabric/utilities_v4.12.0",
-      "date": "Thu, 31 Aug 2017 15:41:56 GMT",
-      "comments": {
-        "minor": [
-          {
-            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
-            "commit": "7d9c47c1240c0877a023c3fb181b7870a695416a",
-            "comment": "RTL: Persist rtl settings between sessions"
-          }
-        ]
-      }
-    },
-    {
-      "version": "4.11.1",
-      "tag": "@uifabric/utilities_v4.11.1",
-      "date": "Tue, 29 Aug 2017 20:55:35 GMT",
-      "comments": {
-        "patch": [
-          {
-            "author": "David Zearing <dzearing@microsoft.com>",
-            "commit": "8af993abbec24538b5bfebe2322122710b17b316",
-            "comment": "Adjusted build to produce sourcemaps with correct sourceRoot."
-          }
-        ]
-      }
-    },
-    {
       "version": "4.11.0",
       "tag": "@uifabric/utilities_v4.11.0",
       "date": "Tue, 29 Aug 2017 10:20:56 GMT",

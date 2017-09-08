@@ -8,7 +8,8 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CompactPeoplePicker,
   IBasePickerSuggestionsProps,
@@ -102,8 +103,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       <div>
         { currentPicker }
         <div className={ 'dropdown-div' }>
-          <Dropdown
-            label='Select People Picker Type'
+          <Dropdown label='Select People Picker Type'
             options={ [
               { key: 1, text: 'Normal' },
               { key: 2, text: 'Compact' },
@@ -119,13 +119,11 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           <Toggle
             label='Delay Suggestion Results'
             defaultChecked={ false }
-            onChanged={ this._toggleDelayResultsChange }
-          />
+            onChanged={ this._toggleDelayResultsChange } />
         </div>
         <PrimaryButton
           text='Set focus'
-          onClick={ this._onSetFocusButtonClicked }
-        />
+          onClick={ this._onSetFocusButtonClicked } />
       </div>
     );
   }
@@ -276,7 +274,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           className={ 'ms-PeoplePicker' }
           key={ 'controlled' }
           selectedItems={ this.state.currentSelectedItems }
-          onChange={ this._onItemsChange }
+          onChange={ this._onItemsChange.bind(this) }
           inputProps={ {
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
             onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
@@ -285,14 +283,12 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         />
         <label> Click to Add a person </label>
         { controlledItems.map(item => <div>
-          <DefaultButton
-            className='controlledPickerButton'
+          <DefaultButton className='controlledPickerButton'
             onClick={ () => {
               this.setState({
                 currentSelectedItems: this.state.currentSelectedItems!.concat([item])
               });
-            } }
-          >
+            } }>
             <Persona { ...item} />
           </DefaultButton>
         </div>) }
@@ -300,7 +296,6 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     );
   }
 
-  @autobind
   private _onItemsChange(items: any[]) {
     this.setState({
       currentSelectedItems: items

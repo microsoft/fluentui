@@ -11,6 +11,10 @@ import {
   getStyles as getSplitButtonStyles
 } from '../SplitButton/SplitButton.styles';
 
+const DEFAULT_BUTTON_HEIGHT = '32px';
+const DEFAULT_BUTTON_MINWIDTH = '80px';
+const DEFAULT_PADDING = '0 16px';
+
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles

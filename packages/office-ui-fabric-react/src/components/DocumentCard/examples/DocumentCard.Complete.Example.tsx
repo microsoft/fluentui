@@ -143,8 +143,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='View and share files'
-              shouldTruncate={ true }
-            />
+              shouldTruncate={ true } />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={

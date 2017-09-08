@@ -11,8 +11,7 @@ export default class DialogVPage extends React.Component<any, any> {
         className='Dialog'
         title='All emails together'
         subText='Your Inbox has changed.'
-        isBlocking={ false }
-      >
+        isBlocking={ false }>
         <DialogFooter>
           <Button >Save</Button>
           <Button >Cancel</Button>

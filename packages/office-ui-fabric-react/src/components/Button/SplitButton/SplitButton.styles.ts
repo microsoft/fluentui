@@ -5,6 +5,9 @@ import {
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
+const DEFAULT_BUTTON_HEIGHT = '32px';
+const DEFAULT_PADDING = '0 4px';
+
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IButtonStyles

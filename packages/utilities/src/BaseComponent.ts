@@ -65,21 +65,21 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
   /**
    * When the component will receive props, make sure the componentRef is updated.
    */
-  public componentWillReceiveProps(newProps?: P, newContext?: any): void {
+  public componentWillReceiveProps(newProps?: P, newContext?: any) {
     this._updateComponentRef(this.props, newProps);
   }
 
   /**
    * When the component has mounted, update the componentRef.
    */
-  public componentDidMount(): void {
+  public componentDidMount() {
     this._updateComponentRef(undefined, this.props);
   }
 
   /**
    * If we have disposables, dispose them automatically on unmount.
    */
-  public componentWillUnmount(): void {
+  public componentWillUnmount() {
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
         let disposable = this.__disposables[i];
@@ -95,7 +95,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
   /**
    * Gets the object's class name.
    */
-  public get className(): string {
+  public get className() {
     if (!this.__className) {
       let funcNameRegex = /function (.{1,})\(/;
       let results = (funcNameRegex).exec((this).constructor.toString());
@@ -156,7 +156,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
       this.__resolves = {};
     }
     if (!this.__resolves[refName]) {
-      this.__resolves[refName] = (ref: any) => {
+      this.__resolves[refName] = (ref) => {
         return (this as any)[refName] = ref;
       };
     }
@@ -167,7 +167,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
   /**
    * Updates the componentRef (by calling it with "this" when necessary.)
    */
-  protected _updateComponentRef(currentProps: IBaseProps | undefined, newProps: IBaseProps = {}): void {
+  protected _updateComponentRef(currentProps: IBaseProps | undefined, newProps: IBaseProps = {}) {
     if (this._shouldUpdateComponentRef &&
       ((!currentProps && newProps.componentRef) ||
         (currentProps && currentProps.componentRef !== newProps.componentRef))) {
@@ -187,7 +187,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
    * either null or a replacement prop name.
    */
-  protected _warnDeprecations(deprecationMap: ISettingsMap<P>): void {
+  protected _warnDeprecations(deprecationMap: ISettingsMap<P>) {
     warnDeprecations(this.className, this.props, deprecationMap);
   }
 
@@ -196,7 +196,7 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
    *
    * @param mutuallyExclusiveMap - The map of mutually exclusive props.
    */
-  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>): void {
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>) {
     warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
   }
 
@@ -218,18 +218,18 @@ export class BaseComponent<P extends IBaseProps, S = {}> extends React.Component
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
-function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNames: string[]): void {
+function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNames: string[]) {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
-function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: string): void {
+function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: string) {
   let classMethod = (obj as any)[methodName];
   let prototypeMethod = (prototype as any)[methodName];
 
   if (classMethod || prototypeMethod) {
-    (obj as any)[methodName] = function (): any {
+    (obj as any)[methodName] = function () {
       let retVal;
 
       try {
@@ -252,7 +252,7 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
   }
 }
 
-BaseComponent.onError = (errorMessage: string) => {
+BaseComponent.onError = (errorMessage) => {
   console.error(errorMessage);
   throw errorMessage;
 };

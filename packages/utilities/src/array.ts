@@ -77,5 +77,5 @@ export function toMatrix<T>(items: T[], columnCount: number): T[][] {
  * @param index - The index of the element to remove
  */
 export function removeIndex<T>(array: T[], index: number): T[] {
-  return array.filter((_: T, i: number) => index !== i);
+  return array.filter((_, i) => index !== i);
 }

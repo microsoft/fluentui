@@ -62,8 +62,7 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
             <Link
               className={ css(styles.overflowLinks) }
               onClick={ item.onClick }
-            >{ item.name }
-            </Link>
+            >{ item.name }</Link>
           );
         } }
       />

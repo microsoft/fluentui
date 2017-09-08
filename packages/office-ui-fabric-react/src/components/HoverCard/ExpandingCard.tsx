@@ -7,7 +7,8 @@ import {
   getNativeProps,
   divProperties,
   customizable,
-  autobind
+  autobind,
+  getRTL
 } from '../../Utilities';
 import { IExpandingCardProps, IExpandingCardStyles, ExpandingCardMode } from './ExpandingCard.Props';
 import { Callout, ICallout } from '../../Callout';
@@ -31,7 +32,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   };
 
   private _styles: IExpandingCardStyles;
-  // tslint:disable-next-line:no-unused-variable
   private _callout: ICallout;
   private _expandedElem: HTMLDivElement;
 
@@ -59,8 +59,11 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   public render() {
     const {
       targetElement,
+      id,
       theme,
       styles: customStyles,
+      onRenderCompactCard,
+      onRenderExpandedCard,
       compactCardHeight,
       expandedCardHeight
     } = this.props;
@@ -106,21 +109,20 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
 
   @autobind
   private _onRenderExpandedCard(): JSX.Element {
-    // firstFrameRendered helps in initially setting height of expanded card to 1px, even if
+    // firstFrameRendered helps in initially setting height of expanded card to 0, even if
     // mode prop is set to ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
-    !this.state.firstFrameRendered && this._async.requestAnimationFrame(() => {
+    this._async.requestAnimationFrame(() => {
       this.setState({
         firstFrameRendered: true
       });
     });
 
     return (
-      <div
-        className={ mergeStyles(
-          this._styles.expandedCard,
-          this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
-          this.state.needsScroll && { 'overflow-y': 'auto' }
-        ) as string }
+      <div className={ mergeStyles(
+        this._styles.expandedCard,
+        this.props.mode === ExpandingCardMode.expanded && this.state.firstFrameRendered && { height: this.props.expandedCardHeight + 'px' },
+        this.state.needsScroll && { 'overflow-y': 'auto' }
+      ) as string }
         ref={ this._resolveRef('_expandedElem') }
       >
         <div className={ this._styles.expandedCardScroll as string }>
@@ -131,7 +133,6 @@ export class ExpandingCard extends BaseComponent<IExpandingCardProps, IExpanding
   }
 
   @autobind
-  // tslint:disable-next-line:no-unused-variable
   private _checkNeedsScroll(): void {
     if (this._expandedElem) {
       this._async.requestAnimationFrame(() => {

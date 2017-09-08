@@ -37,8 +37,7 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}
         overview={
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      >
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

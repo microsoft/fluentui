@@ -61,8 +61,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
-      >
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

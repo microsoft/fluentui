@@ -43,14 +43,14 @@ export interface ISliderProps {
   max?: number;
 
   /**
-   * The difference between the two adjacent values of the Slider
+   * The diffrrence between the two adjacent values of the Slider
    * @default 1
    */
   step?: number;
 
   /**
    * Whether to show the value on the right of the Slider.
-   * @default true
+   * If you want to show the value by yourself, you may want to set this value to false.
    */
   showValue?: boolean;
 
@@ -65,17 +65,12 @@ export interface ISliderProps {
   ariaLabel?: string;
 
   /**
-   * Optional flag to render the slider vertically. Defaults to rendering horizontal.
-   */
-  vertical?: boolean;
-
-  /**
-   * Optional flag to render the Slider as disabled.
+   * Whether or not the Slider is disabled.
    */
   disabled?: boolean;
 
   /**
-  * Optional className to attach to the slider root element.
+  * Optional className for slider.
   */
   className?: string;
 
