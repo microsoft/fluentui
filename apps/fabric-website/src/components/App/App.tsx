@@ -2,7 +2,13 @@ import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+<<<<<<< HEAD
 import { Fabric } from 'office-ui-fabric-react/lib/components/Fabric';
+=======
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Footer } from '../Footer/Footer';
+import { Header } from '../Header/Header';
+>>>>>>> fabric-website-v5.0
 import { Nav } from '../Nav/Nav';
 
 export interface IAppProps extends React.Props<App> {
@@ -28,9 +34,17 @@ export class App extends React.Component<IAppProps, any> {
     let toggleIcon;
     let siteTitle;
     if (isNavOpen) {
+<<<<<<< HEAD
       toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose'></i>;
     } else {
       toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton'></i>;
+=======
+      toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose' />;
+      siteTitle = '';
+    } else {
+      toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton' />;
+      siteTitle = <div className='siteTitle'>Fabric</div>;
+>>>>>>> fabric-website-v5.0
     }
 
     return (
@@ -39,6 +53,16 @@ export class App extends React.Component<IAppProps, any> {
         isNavOpen && 'is-navOpen'
       ) }>
         <div className='App-wrapper'>
+<<<<<<< HEAD
+=======
+          <div className='App-mobileNavBar'>
+            <button className='menuButton' onClick={ this._onNavToggleClicked.bind(this) }>
+              { toggleIcon }
+            </button>
+            { siteTitle }
+          </div>
+          <div className='App-mobileNavOverlay' onClick={ this._onOverlayClicked.bind(this) } />
+>>>>>>> fabric-website-v5.0
           <div className='App-nav'>
             <Nav pages={ AppState.pages } onLinkClick={ this._onNavItemClicked.bind(this) } />
           </div>
