@@ -38,6 +38,7 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-highlight": "^0.10.0",
     "resemblejs": "~2.2.3",
     "sass-loader": "^6.0.3",
     "sinon": "^2.3.2",
