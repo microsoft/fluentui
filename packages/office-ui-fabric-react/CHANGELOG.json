@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.43.0",
+      "tag": "office-ui-fabric-react_v4.43.0",
+      "date": "Fri, 08 Sep 2017 10:16:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "126f8036a2bc3e3b1ecb056db6e8d30f02d9ac3a",
+            "comment": "DetailsList: Fixing alignment issues due to recent changes in Check."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Spencer Elliott <me@elliottsj.com>",
+            "commit": "6857963fe1ac223c3224fb7a4361c7457983da95",
+            "comment": "Add scrollToIndex to GroupedList, DetailsList"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.42.0",
       "tag": "office-ui-fabric-react_v4.42.0",
       "date": "Thu, 07 Sep 2017 10:09:51 GMT",
