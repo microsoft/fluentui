@@ -219,7 +219,7 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .yearComponents{
-  margin-left: 1px;
+  margin-left: 3px;
 }
 
 .prevMonth,
@@ -416,11 +416,14 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
+  .yearComponents{
+    margin-left: 1px;
+  }
+
   // Without modifying the Pickadate JS, this transparent
   // button is necessary to toggle the month view.
   .headerToggleView {
     height: $Calendar-day;
-    @include ms-left(70px);
   }
 
   // Show month picker, if enabled
@@ -586,6 +589,10 @@ $Calendar-dayPicker-margin: 10px;
 .nextYear,
 .prevYear {
   display: inline-block;
+
+  &:hover{
+    background-color: $ms-color-neutralLighter;
+  }
 }
 
 .nextMonth,

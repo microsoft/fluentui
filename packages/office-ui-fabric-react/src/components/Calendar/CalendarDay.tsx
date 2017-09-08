@@ -200,6 +200,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
+                        aria-selected={ day.isSelected }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }

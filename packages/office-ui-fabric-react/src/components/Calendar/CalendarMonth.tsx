@@ -96,7 +96,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           }
         </div>
         <FocusZone>
-          <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
+          <div
+            className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }
+            role='tablist'
+          >
             { strings.shortMonths.map((month, index) =>
               <span
                 role='tab'
@@ -111,6 +114,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
                 aria-label={ dateTimeFormatter.formatMonthYear(setMonth(navigatedDate, index), strings) }
+                aria-selected={ this._isCurrentMonth(index, navigatedDate.getFullYear(), today!) || (navigatedDate.getMonth() === index) }
                 data-is-focusable={ true }
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >
