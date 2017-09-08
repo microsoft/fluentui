@@ -2,7 +2,8 @@
 
 .root {
   position: relative;
-  padding: 5px 38px;
+  padding: 10px 84px;
+  cursor: pointer;
 
   :global(.ms-Link) {
     font-size: $ms-font-size-s;

@@ -17,11 +17,11 @@ import {
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps } from './DetailsHeader';
 import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
-import { IListProps } from '../List/index';
+import { IList, IListProps } from '../List/index';
 
 export { IDetailsHeaderProps };
 
-export interface IDetailsList {
+export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
    * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can

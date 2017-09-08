@@ -34,7 +34,11 @@ export const getClassNames = memoizeFunction((
       ],
       expanded && [
         'is-expanded',
-        styles.rootExpanded
+        styles.rootExpanded,
+        {
+          ':hover .ms-Button-icon': styles.iconExpandedHovered,
+          ':hover': styles.rootExpandedHovered
+        }
       ],
       disabled && [
         'is-disabled',

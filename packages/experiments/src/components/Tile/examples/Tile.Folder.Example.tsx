@@ -1,7 +1,8 @@
 
 import * as React from 'react';
 import { Tile } from '../Tile';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   SignalField,
   NewSignal,
@@ -16,15 +17,33 @@ import * as TileExampleStylesModule from './Tile.Example.scss';
 // tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
+const ITEMS: { name: string; activity: string; }[] = [
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+  }
+];
+
 interface IFolderTileWithThumbnailProps {
   folderCoverType?: FolderCoverType;
   originalImageSize: ISize;
+  size: 'small' | 'large';
+  item: typeof ITEMS[0];
 }
 
 const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnailProps> =
   (props: IFolderTileWithThumbnailProps): JSX.Element => {
     const folderCover = (
       <FolderCover
+        folderCoverSize={ props.size }
         folderCoverType={ props.folderCoverType }
       />
     );
@@ -40,15 +59,21 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
     });
 
     return (
-      <div className={ css(TileExampleStyles.tile, TileExampleStyles.squareTile) }>
+      <div
+        className={ css(TileExampleStyles.tile, {
+          [TileExampleStyles.largeTile]: props.size === 'large',
+          [TileExampleStyles.smallTile]: props.size === 'small'
+        }) }
+      >
         <Tile
+          tileSize={ props.size }
           itemName={
             <SignalField
               before={
                 <NewSignal />
               }
             >
-              { lorem(2) }
+              { props.item.name }
             </SignalField>
           }
           itemActivity={
@@ -57,7 +82,7 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
                 <CommentsSignal>{ '12' }</CommentsSignal>
               }
             >
-              { lorem(2) }
+              { props.item.activity }
             </SignalField>
           }
           foreground={
@@ -75,10 +100,31 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
     );
   };
 
-export class TileFolderExample extends React.Component<{}, {}> {
+export interface ITileFolderExampleState {
+  size: 'small' | 'large';
+}
+
+export class TileFolderExample extends React.Component<{}, ITileFolderExampleState> {
+  constructor() {
+    super();
+
+    this.state = {
+      size: 'large'
+    };
+  }
+
   public render(): JSX.Element {
+    const {
+      size
+    } = this.state;
+
     return (
       <div>
+        <Checkbox
+          label='Use large tiles'
+          checked={ size === 'large' }
+          onChange={ this._onIsLargeChanged }
+        />
         <h3>Folder</h3>
         <FolderTileWithThumbnail
           originalImageSize={
@@ -87,6 +133,8 @@ export class TileFolderExample extends React.Component<{}, {}> {
               height: 300
             }
           }
+          item={ ITEMS[0] }
+          size={ size }
         />
         <FolderTileWithThumbnail
           originalImageSize={
@@ -95,7 +143,9 @@ export class TileFolderExample extends React.Component<{}, {}> {
               height: 400
             }
           }
+          item={ ITEMS[1] }
           folderCoverType='media'
+          size={ size }
         />
         <FolderTileWithThumbnail
           originalImageSize={
@@ -104,9 +154,18 @@ export class TileFolderExample extends React.Component<{}, {}> {
               height: 40
             }
           }
+          item={ ITEMS[2] }
           folderCoverType='media'
+          size={ size }
         />
       </div>
     );
+  }
+
+  @autobind
+  private _onIsLargeChanged(event: React.FormEvent<HTMLInputElement>, checked: boolean): void {
+    this.setState({
+      size: checked ? 'large' : 'small'
+    });
   }
 }
