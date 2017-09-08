@@ -12,7 +12,8 @@ export default class ToggleVPage extends React.Component<any, any> {
         onAriaLabel='This toggle is checked. Press to uncheck.'
         offAriaLabel='This toggle is unchecked. Press to check.'
         onText='On'
-        offText='Off' />
+        offText='Off'
+      />
     </div>;
   }
 }

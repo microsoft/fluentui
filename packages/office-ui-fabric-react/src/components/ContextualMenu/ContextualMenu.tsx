@@ -39,33 +39,6 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-enum ContextualMenuType {
-  vertical,
-  horizontal
-}
-
-enum HorizontalAlignmentHint {
-  auto,
-  left,
-  center,
-  right
-}
-
-enum VerticalAlignmentHint {
-  top,
-  center,
-  bottom
-}
-
-interface IRect {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-  width: number;
-  height: number;
-}
-
 export function hasSubmenuItems(item: IContextualMenuItem) {
   let submenuItems = getSubmenuItems(item);
 
@@ -199,7 +172,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       title,
       styles: customStyles,
       theme,
-      calloutProps } = this.props;
+      calloutProps,
+      onRenderSubMenu = this._onRenderSubMenu
+    } = this.props;
 
     const classNames = getClassNames(customStyles!, theme!);
     let hasIcons = itemsHaveIcons(items);
@@ -289,13 +264,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 </ul>
               </FocusZone>
             ) : (null) }
-            { submenuProps && <ContextualMenu { ...submenuProps } /> }
+            { submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu) }
           </div>
         </Callout>
       );
     } else {
       return null;
     }
+  }
+
+  private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
+    return <ContextualMenu { ...subMenuProps } />;
   }
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, focusableElementIndex: number, totalItemCount: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {

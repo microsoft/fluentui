@@ -95,7 +95,6 @@
 }
 
 .foreground {
-  margin: auto;
   position: relative;
   overflow: hidden;
   max-width: 100%;
@@ -107,8 +106,7 @@
     opacity: 0;
   }
 
-  &.hasForegroundFrame {
-    margin: auto auto 0 auto;
+  .hasForegroundFrame & {
     background-color: $ms-color-white;
     box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
 
@@ -168,6 +166,10 @@ button.check {
   right: 0;
   bottom: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   opacity: 1;
 
@@ -193,6 +195,11 @@ button.check {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  .hasForegroundFrame & {
+    justify-content: flex-end;
+  }
 }
 
 .nameplate {
@@ -242,13 +249,24 @@ button.check {
 .name {
   display: block;
   font-weight: $ms-font-weight-regular;
-  font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
-  height: 17px;
-  line-height: 17px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &,
+  .isLarge & {
+    font-size: $ms-font-size-m;
+    height: 17px;
+    line-height: 17px;
+  }
+
+  .isSmall & {
+    font-size: $ms-font-size-s;
+    height: 14px;
+    line-height: 14px;
+  }
+
   @include preserveExtenders();
 }
 
