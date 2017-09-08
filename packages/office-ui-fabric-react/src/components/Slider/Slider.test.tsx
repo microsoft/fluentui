@@ -83,7 +83,7 @@ describe('Slider', () => {
   it('can read the current value', () => {
     let slider: ISlider | undefined;
 
-    let component = ReactTestUtils.renderIntoDocument(
+    ReactTestUtils.renderIntoDocument(
       <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
     );
     expect(slider!.value).equals(12);
