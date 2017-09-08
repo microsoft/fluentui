@@ -18,7 +18,7 @@ github.authenticate({
 });
 
 let statusConfig = {
-  owner: "OfficeDev",
+  owner: "erichdev",
   repo: "office-ui-fabric-react",
   state: "success",
   sha: argv.commitID,
