@@ -3,6 +3,7 @@ import {
   GroupedList
 } from './GroupedList';
 import {
+  IList,
   IListProps
 } from '../../List';
 import { IRenderFunction } from '../../Utilities';
@@ -22,7 +23,7 @@ export enum CollapseAllVisibility {
   visible = 1
 }
 
-export interface IGroupedList {
+export interface IGroupedList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
    * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
