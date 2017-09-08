@@ -187,7 +187,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         className={ mergeStyles(
           'ms-Nav-link ms-Nav-linkButton',
           styles.link,
-          this._hasExpandButton && 'isOnExpanded ' + styles.linkIsOnExpanded,
+          this._hasExpandButton && 'isOnExpanded',
           !link.icon && styles.commandButtonNoIcon,
           isRtl && {
             'paddingRight': paddingBeforeString,
