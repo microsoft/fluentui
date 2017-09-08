@@ -34,7 +34,7 @@ export class App extends React.Component<IAppProps, any> {
     }
 
     return (
-      <Fabric className={css(
+      <Fabric className={ css(
         'App',
         isNavOpen && 'is-navOpen'
       )}>
