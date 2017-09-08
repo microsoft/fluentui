@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Update _activeRows management to use item keys",
+      "comment": "DetailsList: Update activeRows management to use item keys",
       "type": "patch"
     }
   ],
