@@ -66,8 +66,7 @@ export const getStyles = memoizeFunction((
     },
 
     textContainer: {
-      width: '100%',
-      textAlign: 'left'
+      width: '100%'
     },
 
     icon: iconStyle,

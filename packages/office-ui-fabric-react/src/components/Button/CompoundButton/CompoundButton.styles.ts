@@ -35,6 +35,10 @@ export const getStyles = memoizeFunction((
       margin: ''
     },
 
+    textContainer: {
+      textAlign: 'left'
+    },
+
     icon: {
       float: 'left',
       fontSize: '2em',
