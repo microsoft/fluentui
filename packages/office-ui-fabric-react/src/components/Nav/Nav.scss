@@ -173,7 +173,6 @@ $linkRightPadding: 20px;
   height: $navnode-height;
   line-height: $navnode-height;
   text-decoration: none;
-  padding: 0 20px;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
@@ -193,14 +192,12 @@ $linkRightPadding: 20px;
 }
 
 .root .link {
-  @include ms-padding-left($noExpandButtonLinkLeftPadding);
   :global(.ms-Button-label) {
     @include ms-font-m;
     color: $ms-color-themePrimary;
   }
 
   &.linkIsOnExpanded {
-    @include ms-padding-left($hasExpandButtonLinkLeftPadding);
   }
 
 }

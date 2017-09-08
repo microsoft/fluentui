@@ -5,6 +5,7 @@ import {
   css,
   getRTL
 } from '../../Utilities';
+import { mergeStyles } from "@uifabric/styling"
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -20,10 +21,13 @@ import {
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
-// Tne number of pixels of left margin when there is expand/collaps button
+// The number of pixels of left margin when there is expand/collapse button
 const _indentWithExpandButton: number = 28;
-// Tne number of pixels of left margin when there is expand/collaps button
+// The number of pixels of left margin when there is expand/collapse button
 const _indentNoExpandButton: number = 20;
+
+// The number of pixels of padding to add to the far side of the button (allows ellipsis to happen)
+const _farSidePadding: number = 20;
 
 // global var used in _isLinkSelectedKey
 let _urlResolver: HTMLAnchorElement | undefined;
@@ -133,13 +137,25 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel +
       (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
+    const paddingBeforeString = paddingBefore + 'px';
+    const paddingAfterString = _farSidePadding + 'px';
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
 
     return (
       <a
-        className={ css('ms-Nav-link', styles.link) }
-        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore + 'px' } }
+        className={ mergeStyles(
+          'ms-Nav-link',
+          styles.link,
+          isRtl && {
+            'paddingRight': paddingBeforeString,
+            'paddingLeft': paddingAfterString
+          },
+          !isRtl && {
+            'paddingLeft': paddingBeforeString,
+            'paddingRight': paddingAfterString
+          }) as string
+        }
         href={ link.url || 'javascript:' }
         onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
         aria-label={ link.ariaLabel }
@@ -162,16 +178,26 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel +
       (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
+    const paddingBeforeString = paddingBefore + 'px !important';
+    const paddingAfterString = _farSidePadding + 'px !important';
+
 
       return (
       <CommandButton
-        className={ css(
+        className={ mergeStyles(
           'ms-Nav-link ms-Nav-linkButton',
           styles.link,
           this._hasExpandButton && 'isOnExpanded ' + styles.linkIsOnExpanded,
-          !link.icon && styles.commandButtonNoIcon
-        ) }
-        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore + 'px'} }
+          !link.icon && styles.commandButtonNoIcon,
+          isRtl && {
+            'paddingRight': paddingBeforeString,
+            'paddingLeft': paddingAfterString
+          },
+          !isRtl && {
+            'paddingLeft': paddingBeforeString,
+            'paddingRight': paddingAfterString
+          }) as string
+        }
         href={ link.url }
         iconProps={ link.icon  ? { iconName: link.icon } : undefined }
         description={ link.title || link.name }
@@ -184,7 +210,11 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
-    const paddingBefore: string = `${_indentationSize * nestingLevel}px`;
+    const paddingBefore = _indentationSize * nestingLevel +
+      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
+    const paddingBeforeString = paddingBefore + 'px';
+    const paddingAfterString = _farSidePadding + 'px';
+
 
     return (
       <div
@@ -200,8 +230,19 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
       >
         { (link.links && link.links.length > 0 ?
           <button
-            style={ { [isRtl ? 'marginRight' : 'marginLeft']: paddingBefore } }
-            className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
+            className={ mergeStyles(
+              'ms-Nav-chevronButton ms-Nav-chevronButton--link',
+              styles.chevronButton,
+              styles.chevronButtonLink,
+              isRtl && {
+                'paddingRight': paddingBeforeString,
+                'paddingLeft': paddingAfterString
+              },
+              !isRtl && {
+                'paddingLeft': paddingBeforeString,
+                'paddingRight': paddingAfterString
+              }) as string
+            }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
