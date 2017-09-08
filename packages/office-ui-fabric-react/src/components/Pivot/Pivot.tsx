@@ -105,10 +105,12 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _renderPivotLinks() {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
-        <ul className={ css('ms-Pivot', styles.root,
-          { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
-          { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
-          role='tablist'>
+        <ul
+          className={ css('ms-Pivot', styles.root,
+            { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
+            { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
+          role='tablist'
+        >
           { this.state.links.map(this._renderLink) }
         </ul>
       </FocusZone>
@@ -146,7 +148,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
         ariaLabel={ link.ariaLabel }
         role='tab'
-        aria-selected={ this.state.selectedKey === itemKey }>
+        aria-selected={ this.state.selectedKey === itemKey }
+      >
         { linkContent }
       </CommandButton>
     );
@@ -182,7 +185,8 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
     return (
       <div
         role='tabpanel'
-        aria-labelledby={ selectedTabId }>
+        aria-labelledby={ selectedTabId }
+      >
         { React.Children.toArray(this.props.children)[index] }
       </div>
     );

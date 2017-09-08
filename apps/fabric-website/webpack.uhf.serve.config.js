@@ -5,27 +5,46 @@
  * but will allow you to access the output file on your local machine.
  */
 
+const path = require('path');
+const PACKAGE_NAME = require('./package.json').name;
+const resources = require('../../scripts/tasks/webpack-resources');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
-const serveConfig = require('./webpack.serve.config');
-const path = require('path');
-const entryPointFilename = 'fabric-sitev5';
 const version = require('./package.json').version;
 const isProduction = process.argv.indexOf('--production') > -1;
 const minFileNamePart = isProduction ? '.min' : '';
+const entryPointFilename = 'fabric-sitev5';
 
+module.exports = resources.createServeConfig({
+  entry: './src/root.tsx',
+  output: {
+    filename: entryPointFilename + '.js',
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/dist/',
+    chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`
+  },
 
-// Overwrite the main webpack.site.config properties
-serveConfig.entry = {
-  [entryPointFilename]: './lib/root.js'
-};
+  devServer: {
+    host: HOST_NAME,
+    disableHostCheck: true
+  },
 
-serveConfig.plugins.push(new WriteFilePlugin());
-serveConfig.devServer.host = HOST_NAME;
-serveConfig.devServer.disableHostCheck = true;
-serveConfig.output.path = path.join(__dirname, '/dist');
-serveConfig.output.publicPath = '/dist/';
-serveConfig.output.filename = entryPointFilename + '.js';
-serveConfig.output.chunkFilename = `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`;
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM'
+  },
 
-module.exports = serveConfig;
+  resolve: {
+    alias: {
+      'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+      'Props.ts.js': 'Props',
+      'Example.tsx.js': 'Example'
+    }
+  },
+
+  plugins: [
+    new WriteFilePlugin()
+  ]
+
+});

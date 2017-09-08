@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  css,
-  getRTL
-} from 'office-ui-fabric-react/lib/Utilities';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';

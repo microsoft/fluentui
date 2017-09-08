@@ -184,10 +184,9 @@ export class CommandBar extends BaseComponent<ICommandBarProps, {}> implements I
     let { buttonStyles } = this.props;
 
     if (item.onRender) { return item.onRender(item); }
-
     const commandButtonProps: ICommandBarItemProps = {
       ...item,
-      styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.buttonStyles, ...buttonStyles },
+      styles: { root: { height: COMMANDBAR_HEIGHT }, ...item.styles, ...buttonStyles },
       className: css(styles.commandButton, item.className),
       text: !item.iconOnly ? item.name : '',
       menuProps: item.subMenuProps,

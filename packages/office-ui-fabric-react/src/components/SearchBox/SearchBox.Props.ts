@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SearchBox } from './SearchBox';
 
 export interface ISearchBox {
   /**

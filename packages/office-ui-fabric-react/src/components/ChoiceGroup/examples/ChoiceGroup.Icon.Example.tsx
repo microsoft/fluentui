@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 export class ChoiceGroupIconExample extends React.Component<any, any> {
   public render() {

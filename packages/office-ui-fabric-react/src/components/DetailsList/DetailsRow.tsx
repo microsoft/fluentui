@@ -249,7 +249,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
             item={ item }
             itemIndex={ itemIndex }
             columnStartIndex={ showCheckbox ? 1 : 0 }
-            onRenderItemColumn={ onRenderItemColumn } />
+            onRenderItemColumn={ onRenderItemColumn }
+          />
         ) }
 
         { columnMeasureInfo && (
@@ -263,7 +264,8 @@ export class DetailsRow extends BaseComponent<IDetailsRowProps, IDetailsRowState
               item={ item }
               itemIndex={ itemIndex }
               columnStartIndex={ (showCheckbox ? 1 : 0) + columns.length }
-              onRenderItemColumn={ onRenderItemColumn } />
+              onRenderItemColumn={ onRenderItemColumn }
+            />
           </span>
         ) }
       </FocusZone>

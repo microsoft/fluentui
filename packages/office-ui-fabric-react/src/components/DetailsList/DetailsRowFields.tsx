@@ -40,7 +40,8 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
       <div
         className={ css('ms-DetailsRow-fields', styles.fields) }
         data-automationid='DetailsRowFields'
-        role='presentation'>
+        role='presentation'
+      >
         { columns.map((column, columnIndex) => (
           <div
             key={ columnIndex }
@@ -54,7 +55,8 @@ export class DetailsRowFields extends BaseComponent<IDetailsRowFieldsProps, IDet
             ) }
             style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
             data-automationid='DetailsRowCell'
-            data-automation-key={ column.key }>
+            data-automation-key={ column.key }
+          >
             { cellContent[columnIndex] }
           </div>
         )) }

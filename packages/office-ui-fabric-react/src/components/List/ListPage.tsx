@@ -61,7 +61,8 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

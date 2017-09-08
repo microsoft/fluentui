@@ -59,7 +59,8 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         donts={
           <div></div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      >
       </ComponentPage>
     );
   }

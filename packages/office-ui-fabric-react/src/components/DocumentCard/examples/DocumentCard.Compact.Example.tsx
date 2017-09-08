@@ -61,7 +61,8 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='4 files were uploaded'
-              shouldTruncate={ true } />
+              shouldTruncate={ true }
+            />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={
@@ -78,7 +79,8 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='Revenue stream proposal fiscal year 2016 version02.pptx'
-              shouldTruncate={ true } />
+              shouldTruncate={ true }
+            />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={
@@ -95,7 +97,8 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='View and share files'
-              shouldTruncate={ true } />
+              shouldTruncate={ true }
+            />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={
