@@ -30,7 +30,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
               </p>
               <DialogLargeHeaderExample />
             </ExampleCard>
-            <ExampleCard title='Dialog with blocking' code={ DialogBlockingExampleCode }>
+            <ExampleCard title='Blocking Dialog' code={ DialogBlockingExampleCode }>
               <p>
                 A blocking Dialog disables all other actions and commands on the page behind it. They should be used very sparingly, only when it is critical that the user makes a choice or provides information before they can proceed. Blocking Dialogs are generally used for irreversible or potentially destructive tasks.
               </p>
