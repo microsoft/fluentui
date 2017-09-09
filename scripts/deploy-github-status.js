@@ -9,7 +9,7 @@ const REPO_DETAILS = {
 let statusConfig = Object.assign({},
   REPO_DETAILS,
   {
-    state: "success",
+    state: argv.state,
     target_url: "http://odsp-ext.azurewebsites.net/fabric-deploy-test/" + argv.prID,
     description: "PR deployed. Click \"Details\" to view site",
     context: "vsts/pr-deploy"
