@@ -1,4 +1,8 @@
-// Please keep alphabetized
+/**
+ * This is being removed from the styling package in Fabric 5 and moved into a dedicated
+ * icons package.
+ * @deprecated
+ */
 export type IconName =
   // These icons are not in the font.
   'CustomIcon' |
