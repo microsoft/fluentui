@@ -312,40 +312,48 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let headerItem = section.title && this._renderHeaderMenuItem(section.title, index, hasCheckmarks, hasIcons);
 
     if (section.items && section.items.length > 0) {
-      return <li
-        role='presentation'
-        key={ section.key }>
-        <div role='group'>
-          <ul className={ css('ms-ContextualMenu-list is-open', styles.list) }>
-            { section.topDivider && this._renderSeparator(index, undefined, true, true) }
-            { headerItem && this._renderListItem(headerItem, item.key || index, item.className, item.title) }
-            { section.items.map((contextualMenuItem, itemsIndex) => (
-              this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
-            )) }
-            { section.bottomDivider && this._renderSeparator(index, undefined, false, true) }
-          </ul>
-        </div>
-      </li>;
+      return (
+        <li
+          role='presentation'
+          key={ section.key }
+        >
+          <div role='group'>
+            <ul className={ css('ms-ContextualMenu-list is-open', styles.list) }>
+              { section.topDivider && this._renderSeparator(index, undefined, true, true) }
+              { headerItem && this._renderListItem(headerItem, item.key || index, item.className, item.title) }
+              { section.items.map((contextualMenuItem, itemsIndex) => (
+                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
+              )) }
+              { section.bottomDivider && this._renderSeparator(index, undefined, false, true) }
+            </ul>
+          </div>
+        </li>
+      );
     }
   }
 
   private _renderListItem(content: React.ReactNode, key: string | number, className?: string, title?: string) {
-    return <li
-      role='presentation'
-      title={ title }
-      key={ key }
-      className={ css('ms-ContextualMenu-item', styles.item, className) }
-    >
-      { content }
-    </li>;
+    return (
+      <li
+        role='presentation'
+        title={ title }
+        key={ key }
+        className={ css('ms-ContextualMenu-item', styles.item, className) }
+      >
+        { content }
+      </li>
+    );
   }
 
   private _renderSeparator(index: number, className?: string, top?: boolean, fromSection?: boolean): React.ReactNode {
     if (fromSection || index > 0) {
-      return <li
-        role='separator'
-        key={ 'separator-' + index + (top === undefined ? '' : (top ? '-top' : '-bottom')) }
-        className={ css('ms-ContextualMenu-divider', styles.divider, className) } />;
+      return (
+        <li
+          role='separator'
+          key={ 'separator-' + index + (top === undefined ? '' : (top ? '-top' : '-bottom')) }
+          className={ css('ms-ContextualMenu-divider', styles.divider, className) }
+        />
+      );
     }
     return null;
   }
