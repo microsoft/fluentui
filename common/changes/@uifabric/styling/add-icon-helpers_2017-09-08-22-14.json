@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "dzearing@microsoft.com"
+}
