@@ -2,7 +2,7 @@ let argv = require('yargs').argv;
 let GitHubApi = require('github');
 
 const REPO_DETAILS = {
-  owner: "erichdev", // TODO: Change to OfficeDev **********************************
+  owner: "erichdev", // TODO: Change to OfficeDev ***********************************
   repo: "office-ui-fabric-react",
 };
 
