@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.43.1",
+      "tag": "office-ui-fabric-react_v4.43.1",
+      "date": "Sat, 09 Sep 2017 01:39:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a19c7cc3986c2ef7e799f595fc46798fb5e09a48",
+            "comment": "Check: Updating css to look great on IE11."
+          },
+          {
+            "author": "LU Hu <luh@microsoft.com>",
+            "commit": "61705c67b8b6ae1563f68f299242c14806977c64",
+            "comment": "Add tool tip to text of Persona."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.43.0",
       "tag": "office-ui-fabric-react_v4.43.0",
       "date": "Fri, 08 Sep 2017 10:16:28 GMT",

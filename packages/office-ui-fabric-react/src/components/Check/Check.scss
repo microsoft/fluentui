@@ -15,9 +15,6 @@ $checkBoxHeight: 18px;
   height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
 
   @include ms-user-select(none);
 
@@ -42,10 +39,14 @@ $checkBoxHeight: 18px;
 .circle,
 .check {
   font-size: $checkBoxHeight;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
 }
 
 .circle {
-  position: absolute;
   color: $ms-color-neutralTertiaryAlt;
 
   @media screen and (-ms-high-contrast: active) {
@@ -58,7 +59,6 @@ $checkBoxHeight: 18px;
 }
 
 .check {
-  position: absolute;
   color: $ms-color-neutralTertiaryAlt;
   font-size: 16px;
 }
