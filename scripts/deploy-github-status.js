@@ -2,17 +2,18 @@ let argv = require('yargs').argv;
 let GitHubApi = require('github');
 
 const REPO_DETAILS = {
-  owner: "erichdev",
+  owner: "erichdev", // TODO: Change to OfficeDev **********************************
   repo: "office-ui-fabric-react",
 };
 
-let statusConfig = {
-  ...REPO_DETAILS,
-  state: "success",
-  target_url: "http://odsp-ext.azurewebsites.net/fabric-deploy-test/" + argv.prID,
-  description: "PR Deployed - click \"Details\" to view site",
-  context: "vsts/pr-deploy"
-};
+let statusConfig = Object.assign({},
+  REPO_DETAILS,
+  {
+    state: "success",
+    target_url: "http://odsp-ext.azurewebsites.net/fabric-deploy-test/" + argv.prID,
+    description: "PR deployed. Click \"Details\" to view site",
+    context: "vsts/pr-deploy"
+  });
 
 let pr = parsePRNumber();
 
@@ -31,20 +32,19 @@ github.authenticate({
 getLatestCommitFromPR();
 
 function createStatus(sha) {
-  github.repos.createStatus({ ...statusConfig, sha }, (err, res) => {
-    if (err) {
-      throw new Error(`Failed to deploy pull request #${pr}. \n ${err}`);
-    }
+  github.repos.createStatus(Object.assign({}, statusConfig, { sha }),
+    (err, res) => {
+      if (err) {
+        throw new Error(`Failed to deploy pull request #${pr}. \n ${err}`);
+      }
 
-    console.log(`Successfully deployed pull request #${pr}`);
-  });
+      console.log(`Successfully deployed pull request #${pr}`);
+    });
 }
 
+
 function getLatestCommitFromPR() {
-  github.pullRequests.get({
-    ...REPO_DETAILS,
-    number: pr
-  }, onGetLatestCommit);
+  github.pullRequests.get(Object.assign({}, REPO_DETAILS, { number: pr }), onGetLatestCommit);
 }
 
 function onGetLatestCommit(err, res) {
