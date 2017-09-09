@@ -397,10 +397,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
     let {
       menuIconName,
-      menuIconProps,
-      styles,
-      disabled,
-      checked
+      menuIconProps
     } = this.props;
 
     if (menuIconProps === undefined) {
