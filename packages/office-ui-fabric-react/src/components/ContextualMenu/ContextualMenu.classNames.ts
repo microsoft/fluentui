@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets, IStyle, ITheme } from '../../Styling';
+import { mergeStyleSets, ITheme } from '../../Styling';
 import { IContextualMenuStyles } from './ContextualMenu.Props';
 
 export interface IContextualMenuClassNames {
