@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Sep 2017 10:16:28 GMT and should not be manually modified.
+This log was last generated on Sat, 09 Sep 2017 01:39:37 GMT and should not be manually modified.
+
+## 4.43.1
+Sat, 09 Sep 2017 01:39:37 GMT
+
+### Patches
+
+- Check: Updating css to look great on IE11.
+- Add tool tip to text of Persona.
 
 ## 4.43.0
 Fri, 08 Sep 2017 10:16:28 GMT
