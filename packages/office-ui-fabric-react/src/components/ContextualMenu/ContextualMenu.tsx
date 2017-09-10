@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType, IContextualMenuSection } from './ContextualMenu.Props';
+import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { getClassNames } from './ContextualMenu.classNames';
