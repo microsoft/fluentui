@@ -77,7 +77,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _selectionZone: SelectionZone;
 
   private _selection: ISelection;
-  private _activeRows: { [key: string]: DetailsRow };
+  private _activeRows: DetailsRow[];
   private _dragDropHelper: DragDropHelper | null;
   private _initialFocusedIndex: number | undefined;
 
@@ -88,7 +88,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   constructor(props: IDetailsListProps) {
     super(props);
 
-    this._activeRows = {};
+    this._activeRows = [];
     this._columnOverrides = {};
     this._onColumnIsSizingChanged = this._onColumnIsSizingChanged.bind(this);
     this._onColumnResized = this._onColumnResized.bind(this);
@@ -466,7 +466,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let { onRowDidMount } = this.props;
     let index = row.props.itemIndex;
 
-    this._activeRows[index] = row; // this is used for column auto resize
+    this._activeRows.splice(index, 0, row);
 
     this._setFocusToRowIfPending(row);
 
@@ -492,8 +492,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   private _onRowWillUnmount(row: DetailsRow) {
     let { onRowWillUnmount } = this.props;
     let index = row.props.itemIndex;
-
-    delete this._activeRows[index];
+    this._activeRows.splice(index, 1);
     this._events.off(row.refs.root);
     if (onRowWillUnmount) {
       onRowWillUnmount(row.props.item, index);
