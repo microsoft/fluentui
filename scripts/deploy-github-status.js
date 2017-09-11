@@ -10,9 +10,8 @@ let statusConfig = Object.assign({},
   REPO_DETAILS,
   {
     state: argv.state,
-    target_url: "http://odsp-ext.azurewebsites.net/fabric-deploy-test/" + argv.prID,
     description: "PR deployed. Click \"Details\" to view site",
-    context: "vsts/pr-deploy"
+    context: "VSTS: Deploy Demo"
   });
 
 let pr = parsePRNumber();
@@ -32,6 +31,8 @@ github.authenticate({
 getLatestCommitFromPR();
 
 function createStatus(sha) {
+  setDescription(); // Based on status of build - pending or success
+
   github.repos.createStatus(Object.assign({}, statusConfig, { sha }),
     (err, res) => {
       if (err) {
@@ -70,4 +71,17 @@ function parsePRNumber() {
     throw new Error(`Failed to get PR number. \n ${err}`);
 
   return splitString[2];
+}
+
+/*
+Set status text that will be posted to Github.
+*/
+function setDescription() {
+  if (argv.state === 'pending') {
+    statusConfig.description = 'Deployment pending.';
+  }
+  else if (argv.state === 'success') {
+    statusConfig.description = 'PR deployed. Click "Details" to view demo app.';
+    statusConfig.target_url = 'http://odsp-ext.azurewebsites.net/fabric-deploy-test/' + argv.prID;
+  }
 }
