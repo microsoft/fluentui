@@ -127,9 +127,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
-    const {
-      onEscape = this._onClear
-    } = this.props;
 
     switch (ev.which) {
 

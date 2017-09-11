@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IEventHandler } from '@uifabric/utilities/lib/IEventHandler';
 
 export interface ISearchBox {
   /**

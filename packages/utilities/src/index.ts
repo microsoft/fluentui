@@ -9,7 +9,6 @@ export * from './GlobalSettings';
 export * from './IDisposable';
 export * from './IPoint';
 export * from './IRectangle';
-export * from './IEventHandler';
 export * from './IRenderFunction';
 export * from './ISize';
 export * from './KeyCodes';
