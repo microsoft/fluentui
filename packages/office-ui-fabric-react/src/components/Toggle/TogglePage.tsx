@@ -17,7 +17,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         title='Toggle'
         componentName='ToggleExample'
         exampleCards={
-          <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
+          <ExampleCard title='Default Toggles' code={ ToggleBasicExampleCode }>
             <ToggleBasicExample />
           </ExampleCard>
         }

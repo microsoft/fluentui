@@ -8,7 +8,8 @@ import {
   autobind
 } from '../../../Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import '../../../common/_exampleStyles.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
   constructor() {
@@ -18,7 +19,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Label className='exampleLabel'>With maxDisplayedItems set to six</Label>
+        <Label className={ exampleStyles.exampleLabel }>With maxDisplayedItems set to six</Label>
         <Breadcrumb
           items={ [
             { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
@@ -32,7 +33,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           ariaLabel={ 'Website breadcrumb' }
         />
 
-        <Label className='exampleLabel'>With maxDisplayedItems set to three</Label>
+        <Label className={ exampleStyles.exampleLabel }>With maxDisplayedItems set to three</Label>
         <Breadcrumb
           items={ [
             { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },

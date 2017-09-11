@@ -22,10 +22,11 @@ import {
   IPickerItemProps,
   ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
-import './Picker.CustomResult.Example.scss';
-import '../../../common/_exampleStyles.scss';
 import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import './Picker.CustomResult.Example.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -329,7 +330,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
     return (
       <div>
         <Checkbox
-          className='exampleCheckbox'
+          className={ exampleStyles.exampleCheckbox }
           label='Disable Document Picker'
           checked={ this.state.isPickerDisabled }
           onChange={ this._onDisabledButtonClick }

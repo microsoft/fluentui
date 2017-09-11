@@ -6,8 +6,9 @@ import {
 } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { TestImages } from '../../../common/TestImages';
-import '../../../common/_exampleStyles.scss';
 import { Label } from '../../Label/Label';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 const examplePersona = {
   imageUrl: TestImages.personaFemale,
@@ -39,7 +40,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           />
         </div>
 
-        <Label className='exampleLabel'>Tiny Persona (12px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Tiny Persona (12px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.tiny }
@@ -47,7 +48,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Extra Extra Small Persona (24px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Extra Extra Small Persona (24px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraExtraSmall }
@@ -55,7 +56,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Size 28 Persona (28px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Size 28 Persona (28px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size28 }
@@ -63,7 +64,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Extra Small Persona (32px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Extra Small Persona (32px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraSmall }
@@ -71,7 +72,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Small Persona (40px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Small Persona (40px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.small }
@@ -79,14 +80,14 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Medium Persona (48px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Medium Persona (48px)</Label>
         <Persona
           { ...examplePersona }
           hidePersonaDetails={ !renderPersonaDetails }
           presence={ PersonaPresence.busy }
         />
 
-        <Label className='exampleLabel'>Large Persona (72px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Large Persona (72px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.large }
@@ -94,7 +95,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Extra Large Persona (100px)</Label>
+        <Label className={ exampleStyles.exampleLabel }>Extra Large Persona (100px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraLarge }

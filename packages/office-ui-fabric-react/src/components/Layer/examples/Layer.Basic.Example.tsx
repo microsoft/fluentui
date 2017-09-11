@@ -1,11 +1,12 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import * as PropTypes from 'prop-types';
 import './Layer.Example.scss';
-import '../../../common/_exampleStyles.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { AnimationClassNames } from '../../../Styling';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export class LayerContentExample extends BaseComponent<any, any> {
   public static contextTypes = {
@@ -63,7 +64,7 @@ export class LayerBasicExample extends BaseComponent<any, any> {
       <div>
 
         <Checkbox
-          className='exampleCheckbox'
+          className={ exampleStyles.exampleCheckbox }
           label='Wrap the content box belowed in a Layer'
           checked={ showLayer }
           onChange={ (ev, checked) => this.setState({ showLayer: checked }) }

@@ -5,7 +5,6 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
@@ -17,9 +16,11 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
-import './examples/Button.Basic.Example.scss';
-import '../../common/_exampleStyles.scss';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Link } from '../../Link';
+import './examples/Button.Basic.Example.scss';
+import * as exampleStylesImport from '../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
 const ButtonPrimaryExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Primary.Example.tsx') as string;
@@ -55,13 +56,13 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         exampleCards={
           <div>
             <Checkbox
-              className='exampleCheckbox'
+              className={ exampleStyles.exampleCheckbox }
               label='Disable buttons'
               checked={ this.state.areButtonsDisabled }
               onChange={ this._onDisabledChanged.bind(this) }
             />
             <Checkbox
-              className='exampleCheckbox'
+              className={ exampleStyles.exampleCheckbox }
               label='Mark as checked'
               checked={ this.state.areButtonsChecked }
               onChange={ this._onToggledChanged.bind(this) }

@@ -20,10 +20,10 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='SearchBoxExample'
         exampleCards={
           <div>
-            <ExampleCard title='SearchBox' code={ SearchBoxSmallExampleCode }>
+            <ExampleCard title='Default SearchBox' code={ SearchBoxSmallExampleCode }>
               <SearchBoxSmallExample />
             </ExampleCard>
-            <ExampleCard title='SearchBox - No Parent Container' code={ SearchBoxFullSizeExampleCode }>
+            <ExampleCard title='SearchBox with no parent container' code={ SearchBoxFullSizeExampleCode }>
               <SearchBoxFullSizeExample />
             </ExampleCard>
           </div>
