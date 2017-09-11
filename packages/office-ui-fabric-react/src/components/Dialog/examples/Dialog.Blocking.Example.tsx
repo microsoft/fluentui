@@ -2,7 +2,6 @@ import * as React from 'react';
 import { autobind } from '../../../Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 export class DialogBlockingExample extends React.Component<any, any> {
 
