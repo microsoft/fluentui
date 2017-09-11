@@ -25,6 +25,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
                 showGoToToday={ false }
+                showWeekNumbers={ true }
               />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with overlayed month picker when header is clicked' code={ CalendarInlineExampleCode }>

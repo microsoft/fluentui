@@ -92,7 +92,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, onSelectDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, dateTimeFormatter } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, dateTimeFormatter } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
@@ -108,11 +108,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return (
-      <div className={ css(
-        'ms-DatePicker-dayPicker',
-        styles.dayPicker,
-        showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
-      ) } id={ dayPickerId }>
+      <div
+        className={ css('ms-DatePicker-dayPicker',
+          styles.dayPicker,
+          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+        ) }
+        id={ dayPickerId }
+      >
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
@@ -167,13 +169,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { weekNumbers!.map((weekNumber, index) =>
                     <tr key={ index }>
                       <td>
-                        <div className={ css(
-                          'ms-DatePicker-day',
-                          styles.day,
-                          {
-                            ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: (selectedDateDayNumber! > (weekNumber - 1) * DAYS_IN_WEEK) && (selectedDateDayNumber! < weekNumber * DAYS_IN_WEEK)
-                          }
-                        ) }>
+                        <div
+                          className={ css(
+                            'ms-DatePicker-day',
+                            styles.day,
+                            {
+                              ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: (selectedDateDayNumber! > (weekNumber - 1) * DAYS_IN_WEEK) && (selectedDateDayNumber! < weekNumber * DAYS_IN_WEEK)
+                            }
+                          ) }
+                        >
                           <span>{ weekNumber }</span>
                         </div>
                       </td>

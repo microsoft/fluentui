@@ -204,10 +204,16 @@ function getDatePartHashValue(date: Date) {
  * Returns week number for a week in a year.
  */
 export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
+  console.log('firstDayOfWeek', firstDayOfWeek)
+  let monthRange = getDateRangeArray(navigatedDate, DateRangeType.Month, firstDayOfWeek);
 
-  let firstDayOfMonth = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
+  console.log('monthRange[0]', monthRange[0])
+  let getDayofYear = getDayOfYear(monthRange[0]);
 
-  let getDayofYear = getDayOfYear(addDays(firstDayOfMonth, firstDayOfWeek + 1));
+
+  // let firstDayOfMonth = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
+
+  // let getDayofYear = getDayOfYear(addDays(firstDayOfMonth, firstDayOfWeek + 1));
 
   let firstWeekNumber = Math.ceil(getDayofYear / DAYS_IN_WEEK);
 
@@ -227,7 +233,6 @@ export function getDayOfYear(date: Date) {
   let month = date.getMonth();
   let year = date.getFullYear();
   let daysUntilDate = 0;
-
 
   for (let i = 0; i < month; i++) {
     daysUntilDate += daysInMonth(i, year);
