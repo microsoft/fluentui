@@ -78,19 +78,15 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-neutralPrimary;
   margin-top: -1px;
   font-weight: $ms-font-weight-semilight;
-
-  &:hover {
-    color: $ms-color-themeDark;
-    cursor: pointer;
-  }
+  padding: 0 5px;
 }
 
 .monthAndYear {
-  @include margin-left(10px);
+  @include margin-left(5px);
 }
 
 .year {
-  @include margin-left(10px);
+  @include margin-left(5px);
 }
 
 
@@ -248,28 +244,21 @@ $Calendar-dayPicker-margin: 10px;
 
 // Without modifying the Pickadate JS, this transparent
 // button is necessary to toggle the month view.
-.headerToggleView {
-  height: $Calendar-day;
-  position: absolute;
-  @include ms-left(5px);
-  top: 1px;
-  width: 100%;
+.headerToggleView:hover {
+  color: $ms-color-neutralSecondary;
   cursor: pointer;
-}
-
-.wrap div.headerToggleView:focus {
-  position: absolute;
 }
 
 // Text showing the currently-selected year.
 .currentYear,
 .currentDecade {
   display: block;
+  padding: 0 5px;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
   height: $Calendar-day;
   line-height: $Calendar-day;
-  @include margin-left(10px);
+  @include margin-left(5px);
   font-weight: $ms-font-weight-semilight;
 }
 
@@ -409,21 +398,10 @@ $Calendar-dayPicker-margin: 10px;
   .year {
     font-size: 17px;
     color: $ms-color-neutralPrimary;
-
-    &:hover {
-      color: $ms-color-neutralPrimary;
-      cursor: default;
-    }
   }
 
   .yearComponents{
     margin-left: 1px;
-  }
-
-  // Without modifying the Pickadate JS, this transparent
-  // button is necessary to toggle the month view.
-  .headerToggleView {
-    height: $Calendar-day;
   }
 
   // Show month picker, if enabled
@@ -561,10 +539,6 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
 
-  .headerToggleView{
-    left: 100px;
-  }
-
   // position year components so they do not move when switching between calendars (overlayed calendars)
   .yearComponents {
     margin-top: 2px;
@@ -577,7 +551,7 @@ $Calendar-dayPicker-margin: 10px;
 
 .wrap span:focus,
 .wrap div:focus {
-  @include focus-border(1px, #979797);
+  @include focus-border(1px, $ms-color-neutralSecondary);
 }
 
 .goToday {
@@ -591,7 +565,7 @@ $Calendar-dayPicker-margin: 10px;
   display: inline-block;
 
   &:hover{
-    background-color: $ms-color-neutralLighter;
+    background-color: $ms-color-neutralTertiaryAlt;
   }
 }
 

@@ -132,21 +132,23 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         </div >
         <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
-          </div>
-          {
-            this.props.onHeaderSelect ?
+            { this.props.onHeaderSelect ?
               <div
-                className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
+                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
                 aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 role='button'
                 tabIndex={ 0 }
-              />
+              >
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
               :
-              null
-          }
+              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+            }
+          </div>
         </div>
         <FocusZone>
           <table

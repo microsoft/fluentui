@@ -80,19 +80,21 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           </div>
         </div>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
-          {
-            this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
-                role='button'
-                tabIndex={ 0 }
-              />
-              :
-              null
+          { this.props.onHeaderSelect ?
+            <div
+              className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView) }
+              onClick={ this._onHeaderSelect }
+              onKeyDown={ this._onHeaderKeyDown }
+              aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+              role='button'
+              tabIndex={ 0 }
+            >
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
+            :
+            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
           }
         </div>
         <FocusZone>
