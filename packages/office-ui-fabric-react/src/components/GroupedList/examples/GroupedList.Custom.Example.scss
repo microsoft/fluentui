@@ -1,11 +1,17 @@
 :global {
 
   .ms-GroupedListExample-header,
+  .ms-GroupedListExample-showall,
   .ms-GroupedListExample-footer {
     min-width: 300px;
     min-height: 40px;
     line-height: 40px;
     padding-left: 16px;
+  }
+
+  .ms-GroupedListExample-showall {
+    cursor: pointer;
+    padding-left: 32px;
   }
 
   .ms-GroupedListExample-name {

@@ -1,6 +1,44 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 06 Sep 2017 10:16:32 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Sep 2017 10:08:07 GMT and should not be manually modified.
+
+## 4.44.0
+Mon, 11 Sep 2017 10:08:07 GMT
+
+### Minor changes
+
+- Icon: tweaked `iconName` to take in a string, rather than IconCode. The type safety can't be enforced in Fabric 5 which will support whatever subsets the customer registers.
+
+### Patches
+
+- CommandBar: Fixing wrong positioning for overflow menu, when overflow menu open and CommandBar is updated
+
+## 4.43.1
+Sat, 09 Sep 2017 01:39:37 GMT
+
+### Patches
+
+- Check: Updating css to look great on IE11.
+- Add tool tip to text of Persona.
+
+## 4.43.0
+Fri, 08 Sep 2017 10:16:28 GMT
+
+### Minor changes
+
+- Add scrollToIndex to GroupedList, DetailsList
+
+### Patches
+
+- DetailsList: Fixing alignment issues due to recent changes in Check.
+
+## 4.42.0
+Thu, 07 Sep 2017 10:09:51 GMT
+
+### Minor changes
+
+- Added rootExpandedHovered and iconExpandedHovered to IButtonStyles interface.  These entries are for specifying on hover style for expanded state.
+- ContextualMenu: `onRenderSubMenu` prop added to allow the overriding of submenu rendering.
 
 ## 4.41.0
 Wed, 06 Sep 2017 10:16:32 GMT

@@ -189,7 +189,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       const renderedCells: React.ReactNode[] = [];
 
-      const width = data.pageWidths[i];
+      const width = data.pageWidths[page.startIndex + i];
 
       for (; i < endIndex && cells[i].grid === grid; i++) {
         // For each cell in the current grid.

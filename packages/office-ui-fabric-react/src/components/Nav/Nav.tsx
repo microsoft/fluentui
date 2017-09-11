@@ -3,6 +3,8 @@ import {
   autobind,
   BaseComponent,
   css,
+  divProperties,
+  getNativeProps,
   getRTL
 } from '../../Utilities';
 import { mergeStyles } from "@uifabric/styling"
@@ -218,6 +220,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
     return (
       <div
+        { ...getNativeProps(link, divProperties) }
         key={ link.key || linkIndex }
         className={ css(
           'ms-Nav-compositeLink',
