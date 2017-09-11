@@ -421,6 +421,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.backspace:
         this.onBackspace(ev);
+        ev.stopPropagation();
         break;
 
       case KeyCodes.del:
@@ -433,6 +434,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         } else {
           this.onBackspace(ev);
         }
+        ev.stopPropagation();
         break;
 
       case KeyCodes.up:

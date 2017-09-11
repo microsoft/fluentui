@@ -2,6 +2,30 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.5.1",
+      "tag": "@uifabric/experiments_v0.5.1",
+      "date": "Fri, 08 Sep 2017 10:16:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "ebde5bae7f28a13f3a838db51c63d66b1d2d1328",
+            "comment": "Fix alignment of Tile foreground and background using flexbox"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "20cf30afccaf99a2d1a92a642bfb0b9a1359c365",
+            "comment": "Add breakpoint size support to Tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.42.0 <5.0.0` to `>=4.43.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.0",
       "tag": "@uifabric/experiments_v0.5.0",
       "date": "Thu, 07 Sep 2017 10:09:51 GMT",
