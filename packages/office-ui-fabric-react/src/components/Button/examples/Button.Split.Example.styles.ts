@@ -6,5 +6,5 @@ export const getCustomSplitButtonStyles = memoizeFunction((): IButtonStyles => {
     splitButtonMenuButton: { backgroundColor: 'white', width: '10px' },
     splitButtonMenuIcon: { fontSize: '7px' },
     splitButtonDivider: { borderLeft: '1px solid #c8c8c8' }
-  }
+  };
 });

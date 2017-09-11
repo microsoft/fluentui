@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IconButton, IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
