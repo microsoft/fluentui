@@ -3,6 +3,8 @@ import {
   autobind,
   BaseComponent,
   css,
+  divProperties,
+  getNativeProps,
   getRTL
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -182,6 +184,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
     return (
       <div
+        { ...getNativeProps(link, divProperties) }
         key={ link.key || linkIndex }
         className={ css(
           'ms-Nav-compositeLink',
