@@ -2,7 +2,6 @@ import * as React from 'react';
 import { autobind } from '../../../Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import './Dialog.Basic.Example.scss';
 
 export class DialogBasicExample extends React.Component<any, any> {
@@ -58,9 +57,5 @@ export class DialogBasicExample extends React.Component<any, any> {
   @autobind
   private _closeDialog() {
     this.setState({ hideDialog: true });
-  }
-
-  private _onChoiceChanged() {
-    console.log('Choice option change');
   }
 }

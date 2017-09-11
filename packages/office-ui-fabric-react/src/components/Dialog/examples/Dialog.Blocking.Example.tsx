@@ -52,8 +52,4 @@ export class DialogBlockingExample extends React.Component<any, any> {
   private _closeDialog() {
     this.setState({ hideDialog: true });
   }
-
-  private _onChoiceChanged() {
-    console.log('Choice option change');
-  }
 }
