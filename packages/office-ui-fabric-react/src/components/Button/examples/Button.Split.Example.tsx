@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DefaultButton, IconButton, IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
 export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   public constructor() {
@@ -47,11 +48,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
 
   public render() {
     let { disabled, checked } = this.props;
-    const style: IButtonStyles = {
-      splitButtonMenuButton: { backgroundColor: 'white', width: '10px' },
-      splitButtonMenuIcon: { fontSize: '7px' },
-      splitButtonDivider: { borderLeft: '1px solid #c8c8c8' }
-    };
+    const customSplitButtonStyles = getCustomSplitButtonStyles();
 
     return (
       <div>
@@ -64,7 +61,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           text='Create account'
           onClick={ () => alert('Clicked') }
           split={ true }
-          styles={ style }
+          styles={ customSplitButtonStyles }
           menuProps={ {
             items: [
               {
