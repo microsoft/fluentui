@@ -1,4 +1,7 @@
 import {
+  warn
+} from '@uifabric/utilities/lib/warn';
+import {
   GlobalSettings
 } from '@uifabric/utilities/lib/GlobalSettings';
 import {
@@ -86,6 +89,8 @@ export function getIcon(name?: string): IIconRecord | undefined {
 
       subset.isRegistered = true;
     }
+  } else {
+    warn(`The icon "${name}" was rendered but not registered.`);
   }
 
   return icon;
