@@ -54,6 +54,10 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     };
   }
 
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+    this.refs.list && this.refs.list.scrollToIndex(index, measureItem);
+  }
+
   public componentWillReceiveProps(newProps: IGroupedListProps) {
     let {
       groups,

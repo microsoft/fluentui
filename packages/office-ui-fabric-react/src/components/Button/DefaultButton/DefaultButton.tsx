@@ -13,13 +13,13 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   protected _shouldUpdateComponentRef = false;
 
   public render() {
-    const { styles, theme } = this.props;
+    const { primary = false, styles, theme } = this.props;
 
     return (
       <BaseButton
         { ...this.props }
-        variantClassName='ms-Button--default'
-        styles={ getStyles(theme!, styles) }
+        variantClassName={ primary ? 'ms-Button--primary' : 'ms-Button--default' }
+        styles={ getStyles(theme!, styles, primary) }
         onRenderDescription={ nullRender }
       />
     );
