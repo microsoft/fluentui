@@ -52,8 +52,8 @@ export function registerIcons(iconSubset: IIconSubset): void {
   for (const iconName in icons) {
     if (icons.hasOwnProperty(iconName)) {
       const code = icons[iconName];
-
-      _icons[iconName] = {
+      console.log(`Regstering: ${iconName}`);
+      _icons[iconName.toLowerCase()] = {
         code,
         subset
       };
@@ -69,6 +69,8 @@ export function registerIcons(iconSubset: IIconSubset): void {
  * @param name - Name of icon.
  */
 export function getIcon(name?: string): IIconRecord | undefined {
+  name = name ? name.toLowerCase() : '';
+
   let icon: IIconRecord = _icons[name!];
 
   if (icon) {
@@ -90,7 +92,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
       subset.isRegistered = true;
     }
   } else {
-    warn(`The icon "${name}" was rendered but not registered.`);
+    warn(`The icon "${name}" was referenced but not registered.`);
   }
 
   return icon;
