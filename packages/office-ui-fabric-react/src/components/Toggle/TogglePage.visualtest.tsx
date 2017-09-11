@@ -5,7 +5,7 @@ import * as React from 'react';
 export default class ToggleVPage extends React.Component<any, any> {
   public render() {
     return (
-      <div >
+      <div>
         <Toggle
           className='Toggle'
           defaultChecked={ true }
