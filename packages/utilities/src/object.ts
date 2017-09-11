@@ -28,7 +28,7 @@ function checkProperties(a: any, b: any): boolean {
  *
  * @public
  */
-export function shallowCompareM<TA, TB>(a: TA, b: TB): boolean {
+export function shallowCompare<TA, TB>(a: TA, b: TB): boolean {
   return checkProperties(a, b) && checkProperties(b, a);
 }
 
