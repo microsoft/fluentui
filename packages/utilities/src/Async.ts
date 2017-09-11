@@ -11,9 +11,9 @@ declare function setInterval(cb: Function, delay: number): number;
  * @public
  */
 export class Async {
-  private _timeoutIds: { [x: number]: boolean } | null = null;
-  private _immediateIds: { [x: number]: boolean } | null = null;
-  private _intervalIds: { [x: number]: boolean } | null = null;
+  private _timeoutIds: { [id: number]: boolean } | null = null;
+  private _immediateIds: { [id: number]: boolean } | null = null;
+  private _intervalIds: { [id: number]: boolean } | null = null;
   private _animationFrameIds: { [id: number]: boolean } | null = null;
   private _isDisposed: boolean;
   private _parent: React.ReactNode | null;

@@ -12,7 +12,6 @@ export function customizable(fields: string[]): <P, S>(ComposedComponent: new (p
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static contextTypes: {
-        // tslint:disable-next-line:no-any
         injectedProps: PropTypes.Requireable<{}>;
       } = {
         injectedProps: PropTypes.object

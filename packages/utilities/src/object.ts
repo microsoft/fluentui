@@ -28,8 +28,7 @@ function checkProperties(a: any, b: any): boolean {
  *
  * @public
  */
-// tslint:disable-next-line:no-any
-export function shallowCompare(a: any, b: any): boolean {
+export function shallowCompareM<TA, TB>(a: TA, b: TB): boolean {
   return checkProperties(a, b) && checkProperties(b, a);
 }
 
