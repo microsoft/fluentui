@@ -357,9 +357,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
   @autobind
   private _onRenderColumnHeaderTooltip(tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>) {
-    return <span className={ tooltipHostProps.hostClassName }> {
-      tooltipHostProps.children
-    }</span >;
+    return (
+      <span className={ tooltipHostProps.hostClassName }>
+        { tooltipHostProps.children }
+      </span >
+    );
   }
 
   /**
