@@ -42,7 +42,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -77,8 +77,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
           <a href='https://dev.office.com/fabric-js/Components/TextField/TextField.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

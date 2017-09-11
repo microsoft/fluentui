@@ -104,8 +104,7 @@ export default class ButtonVPage extends React.Component<any, any> {
             ]
           }
           }
-        >
-        </DefaultButton>
+        />
         <DefaultButton
           id='ContextualButtonToggled'
           checked={ true }
@@ -128,8 +127,7 @@ export default class ButtonVPage extends React.Component<any, any> {
             ]
           }
           }
-        >
-        </DefaultButton>
+        />
       </div >
     </div>;
   }
