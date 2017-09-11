@@ -34,10 +34,12 @@ export class App extends React.Component<IAppProps, any> {
     }
 
     return (
-      <Fabric className={ css(
-        'App',
-        isNavOpen && 'is-navOpen'
-      ) }>
+      <Fabric
+        className={ css(
+          'App',
+          isNavOpen && 'is-navOpen'
+        ) }
+      >
         <div className='App-wrapper'>
           <div className='App-nav'>
             <Nav
