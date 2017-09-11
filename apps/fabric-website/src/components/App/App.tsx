@@ -26,11 +26,10 @@ export class App extends React.Component<IAppProps, any> {
     let { isNavOpen } = this.state;
 
     let toggleIcon;
-    let siteTitle;
     if (isNavOpen) {
-      toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose'></i>;
+      toggleIcon = <i className='ms-Icon ms-Icon--ChromeClose' />;
     } else {
-      toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton'></i>;
+      toggleIcon = <i className='ms-Icon ms-Icon--GlobalNavButton' />;
     }
 
     return (
@@ -53,18 +52,6 @@ export class App extends React.Component<IAppProps, any> {
         </div>
       </Fabric>
     );
-  }
-
-  private _onNavToggleClicked(ev: MouseEvent) {
-    this.setState({
-      isNavOpen: !this.state.isNavOpen
-    });
-  }
-
-  private _onOverlayClicked(ev: MouseEvent) {
-    this.setState({
-      isNavOpen: false
-    });
   }
 
   private _onNavItemClicked(ev: MouseEvent) {
