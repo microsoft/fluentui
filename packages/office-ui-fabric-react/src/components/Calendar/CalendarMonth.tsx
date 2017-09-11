@@ -100,11 +100,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
         <FocusZone>
           <div
             className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }
-            role='tablist'
+            role='grid'
           >
             { strings.shortMonths.map((month, index) =>
               <span
-                role='tab'
+                role='gridcell'
                 className={
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,

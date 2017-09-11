@@ -163,7 +163,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 { strings.shortDays.map((val, index) =>
                   <th
                     className={ css('ms-DatePicker-weekday', styles.weekday) }
-                    role='tablist'
+                    role='grid'
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
@@ -175,7 +175,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody>
               { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex } >
+                <tr key={ weekIndex } role='row'>
                   { week.map((day, dayIndex) =>
                     <td
                       key={ day.key }
@@ -196,7 +196,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
                           }) }
-                        role='tab'
+                        role='gridcell'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
