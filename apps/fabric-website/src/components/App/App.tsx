@@ -40,7 +40,10 @@ export class App extends React.Component<IAppProps, any> {
       ) }>
         <div className='App-wrapper'>
           <div className='App-nav'>
-            <Nav pages={ AppState.pages } onLinkClick={ this._onNavItemClicked.bind(this) } />
+            <Nav
+              pages={ AppState.pages }
+              onLinkClick={ this._onNavItemClicked.bind(this) }
+            />
           </div>
           <div className='App-content' data-is-scrollable='true'>
             { this.props.children }
