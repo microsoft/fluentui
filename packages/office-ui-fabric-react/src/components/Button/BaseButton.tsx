@@ -46,7 +46,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _buttonElement: HTMLElement;
-  private _splitButtonContainer: HTMLElement | null;
+  private _splitButtonContainer: HTMLElement;
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
@@ -342,7 +342,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
-        target={ this._splitButtonContainer || this._buttonElement }
+        target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
       />
@@ -374,7 +374,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ css(disabled ? styles!.splitButtonContainerDisabled : styles!.splitButtonContainer) }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
-        ref={ div => this._splitButtonContainer = div }
+        ref={ this._resolveRef('_splitButtonContainer') }
       >
         <span aria-hidden={ true } style={ { 'display': 'flex' } }>
           { this._onRenderContent(tag, buttonProps) }
