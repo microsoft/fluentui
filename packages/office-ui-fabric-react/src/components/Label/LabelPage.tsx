@@ -62,9 +62,11 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Label}>
+            {...ComponentStatusState.Label}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

@@ -70,9 +70,11 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Icon}>
+            {...ComponentStatusState.Icon}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

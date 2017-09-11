@@ -84,11 +84,14 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         related={
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible } componentStatus={
+        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.CommandBar}>
+            {...ComponentStatusState.CommandBar}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

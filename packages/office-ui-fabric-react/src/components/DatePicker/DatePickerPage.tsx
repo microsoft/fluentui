@@ -78,9 +78,11 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.DatePicker}>
+            {...ComponentStatusState.DatePicker}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

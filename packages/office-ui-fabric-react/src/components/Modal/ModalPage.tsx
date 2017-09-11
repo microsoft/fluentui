@@ -63,9 +63,11 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Modal}>
+            {...ComponentStatusState.Modal}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

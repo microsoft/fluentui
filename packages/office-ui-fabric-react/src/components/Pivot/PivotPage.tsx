@@ -121,9 +121,11 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Pivot}>
+            {...ComponentStatusState.Pivot}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

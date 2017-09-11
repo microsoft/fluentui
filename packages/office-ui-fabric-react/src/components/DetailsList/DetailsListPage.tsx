@@ -124,9 +124,11 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.DetailsList}>
+            {...ComponentStatusState.DetailsList}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

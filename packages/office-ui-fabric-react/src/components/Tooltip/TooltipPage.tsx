@@ -54,9 +54,11 @@ export class TooltipPage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Tooltip}>
+            {...ComponentStatusState.Tooltip}
+          >
           </ComponentStatus>
-        } />
+        }
+      />
     );
   }
 }

@@ -15,8 +15,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     super(props);
   }
 
-  public render() {
-    const statusSubject = 'Status';
+  public render(): JSX.Element {
+    // const statusSubject = 'Status';
     const keyboardAccessibilitySubject = 'Keyboard Accessibility';
     const highContrastSupportSubject = 'High Contrast';
     const rtlSubject = 'Right to Left';
@@ -24,10 +24,54 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
     return (
       <div>
-        <a href='https://www.google.com' className='ComponentStatus-badge'><img src={ this._badgeURL(this._colorForKeyboardAccessibility(this.props.keyboardAccessibilitySupport), keyboardAccessibilitySubject, this._badgeStatusForKeyboardAccessibility(this.props.keyboardAccessibilitySupport)) } /></a>
-        <a href='https://www.google.com' className='ComponentStatus-badge'><img src={ this._badgeURL(this._colorForHighContrast(this.props.highContrastSupport), highContrastSupportSubject, this._badgeStatusForHighContrast(this.props.highContrastSupport)) } /></a>
-        <a href='https://www.google.com' className='ComponentStatus-badge'><img src={ this._badgeURL(this._colorForRTL(this.props.rtlSupport), rtlSubject, this._badgeStatusForRTL(this.props.rtlSupport)) } /></a>
-        <a href='https://www.google.com' className='ComponentStatus-badge'><img src={ this._badgeURL(this._colorForTestCoverageStatus(this.props.testCoverage), testCoverageSubject, this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none) } /></a>
+        <a
+          href='https://www.google.com'
+          className='ComponentStatus-badge'
+        >
+          <img
+            src={ this._badgeURL(
+              this._colorForKeyboardAccessibility(this.props.keyboardAccessibilitySupport),
+              keyboardAccessibilitySubject,
+              this._badgeStatusForKeyboardAccessibility(this.props.keyboardAccessibilitySupport))
+            }
+          />
+        </a>
+        <a
+          href='https://www.google.com'
+          className='ComponentStatus-badge'
+        >
+          <img
+            src={ this._badgeURL(
+              this._colorForHighContrast(this.props.highContrastSupport),
+              highContrastSupportSubject,
+              this._badgeStatusForHighContrast(this.props.highContrastSupport))
+            }
+          />
+        </a>
+        <a
+          href='https://www.google.com'
+          className='ComponentStatus-badge'
+        >
+          <img
+            src={ this._badgeURL(
+              this._colorForRTL(this.props.rtlSupport),
+              rtlSubject,
+              this._badgeStatusForRTL(this.props.rtlSupport))
+            }
+          />
+        </a>
+        <a
+          href='https://www.google.com'
+          className='ComponentStatus-badge'
+        >
+          <img
+            src={ this._badgeURL(
+              this._colorForTestCoverageStatus(this.props.testCoverage),
+              testCoverageSubject,
+              this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none)
+            }
+          />
+        </a>
       </div>
     );
   }
@@ -35,8 +79,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
   private _badgeURL(color: string, subject: String, status: String): string {
     const badgeBaseURL = 'https://img.shields.io/badge/';
     const badgeStyle = 'flat';
-    const badgeValidColor = 'brightgreen';
-    const badgeInvalidColor = 'red';
+    // const badgeValidColor = 'brightgreen';
+    // const badgeInvalidColor = 'red';
 
     return badgeBaseURL + subject + '-' + status + '-' + color + '.svg' + '?style=' + badgeStyle;
   }

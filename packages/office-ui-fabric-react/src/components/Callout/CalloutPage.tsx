@@ -97,9 +97,11 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Callout}>
+            {...ComponentStatusState.Callout}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

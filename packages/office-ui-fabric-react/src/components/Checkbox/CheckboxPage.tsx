@@ -77,9 +77,11 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Checkbox}>
+            {...ComponentStatusState.Checkbox}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

@@ -91,9 +91,11 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ChoiceGroup}>
+            {...ComponentStatusState.ChoiceGroup}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

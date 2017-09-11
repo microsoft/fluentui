@@ -80,9 +80,11 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.DocumentCard}>
+            {...ComponentStatusState.DocumentCard}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

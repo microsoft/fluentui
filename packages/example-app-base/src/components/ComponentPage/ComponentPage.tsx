@@ -48,7 +48,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       componentName,
       overview,
       className,
-      componentStatus
     } = this.props;
 
     return (
@@ -114,7 +113,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
         </div> }
-        { this.props.otherSections && this.props.otherSections.map((title) => {
+        { this.props.otherSections && this.props.otherSections.map((title: IComponentPageSection) => {
           <Link { ...{ href: this._baseUrl + '#' + title }}> { title }</Link>;
         }) }
       </div>

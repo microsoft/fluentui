@@ -81,9 +81,11 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.TextField}>
+            {...ComponentStatusState.TextField}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

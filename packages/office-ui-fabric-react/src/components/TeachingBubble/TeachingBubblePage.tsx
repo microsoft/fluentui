@@ -50,9 +50,11 @@ export class TeachingBubblePage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.TeachingBubble}>
+            {...ComponentStatusState.TeachingBubble}
+          >
           </ComponentStatus>
-        } />
+        }
+      />
     );
   }
 }

@@ -20,7 +20,8 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         exampleCards={
           <ExampleCard
             title='Various Spinner Types'
-            code={ SpinnerBasicExampleCode }>
+            code={ SpinnerBasicExampleCode }
+          >
             <SpinnerBasicExample />
           </ExampleCard>
         }
@@ -66,9 +67,11 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Spinner}>
+            {...ComponentStatusState.Spinner}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }

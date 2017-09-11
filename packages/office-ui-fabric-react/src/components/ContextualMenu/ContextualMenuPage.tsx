@@ -99,9 +99,11 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ContextualMenu}>
+            {...ComponentStatusState.ContextualMenu}
+          >
           </ComponentStatus>
-        }>
+        }
+      >
       </ComponentPage>
     );
   }
