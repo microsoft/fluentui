@@ -529,6 +529,13 @@ $Calendar-dayPicker-margin: 10px;
       @include ms-right(13px);
     }
   }
+
+  //when month picker is only visible
+  .monthPickerOnly{
+    .wrap{
+      padding: 10px 7px;
+    }
+  }
 }
 
 // On smaller screens the month button toggles to the picking months state.
