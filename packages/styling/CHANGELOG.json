@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.23.0",
+      "tag": "@uifabric/styling_v0.23.0",
+      "date": "Mon, 11 Sep 2017 10:08:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "eca3d17992576760e7b6b55d74f2d7a2b85e3a21",
+            "comment": "Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.22.1",
       "tag": "@uifabric/styling_v0.22.1",
       "date": "Mon, 04 Sep 2017 10:16:56 GMT",

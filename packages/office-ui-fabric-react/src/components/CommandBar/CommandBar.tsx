@@ -400,7 +400,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _getStateFromProps(nextProps: ICommandBarProps): ICommandBarState {
     return {
       renderedItems: nextProps.items || [],
-      renderedOverflowItems: undefined,
       contextualMenuProps: this._getContextualMenuPropsAfterUpdate(
         nextProps.items.concat(nextProps.farItems!),
         nextProps.overflowItems!)!,
