@@ -9,13 +9,11 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
     return (
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox
-          onEscape={ (ev, onClear) => {
+          onEscape={ (ev) => {
             console.log('Custom onEscape Called');
-            onClear ? onClear(ev) : null;
           } }
-          onClear={ (ev, onClear) => {
+          onClear={ (ev) => {
             console.log('Custom onClear Called');
-            onClear ? onClear(ev) : null;
           } }
           onChange={ (newValue) => console.log('SearchBox onChange fired: ' + newValue) }
           onSearch={ (newValue) => console.log('SearchBox onSearch fired: ' + newValue) }

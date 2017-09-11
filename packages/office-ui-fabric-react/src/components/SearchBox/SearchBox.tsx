@@ -47,7 +47,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className, disabled, onClear = this._onClear } = this.props;
+    let { labelText, className, disabled } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
@@ -78,7 +78,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         />
         <div
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
-          onClick={ (ev) => onClear(ev, this._onClear) }
+          onClick={ this._onClear }
         >
           <Icon iconName='Clear' />
         </div>
@@ -97,15 +97,19 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onClear(ev?: any) {
-    this._latestValue = '';
-    this.setState({
-      value: ''
-    });
-    this._callOnChange('');
-    ev.stopPropagation();
-    ev.preventDefault();
+    this.props.onClear && this.props.onClear(ev);
+    if (!ev.defaultPrevented) {
+      this._latestValue = '';
+      this.setState({
+        value: ''
+      });
+      this._callOnChange('');
+      ev.stopPropagation();
+      ev.preventDefault();
 
-    this._inputElement.focus();
+      this._inputElement.focus();
+    }
+
   }
 
   @autobind
@@ -130,7 +134,10 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     switch (ev.which) {
 
       case KeyCodes.escape:
-        onEscape(ev, this._onClear);
+        this.props.onEscape && this.props.onEscape(ev);
+        if (!ev.defaultPrevented) {
+          this._onClear(ev);
+        }
         break;
 
       case KeyCodes.enter:
