@@ -122,7 +122,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-controls={ dayPickerId }
               aria-label={ strings.prevMonthAriaLabel }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span >
             <span
@@ -132,7 +133,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               aria-controls={ dayPickerId }
               aria-label={ strings.nextMonthAriaLabel }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span >
           </div >
@@ -196,7 +198,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                    aria-label={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  >
                     { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
@@ -205,12 +208,14 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               { weeks!.map((week, weekIndex) =>
                 <tr key={ weekIndex } >
                   { week.map((day, dayIndex) =>
-                    <td key={ day.key } className={ css(
-                      {
-                        ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
-                        ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
-                        ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
-                      }) }
+                    <td
+                      key={ day.key }
+                      className={ css(
+                        {
+                          ['ms-DatePicker-weekBackground ' + styles.weekBackground]: day.isSelected && dateRangeType === DateRangeType.Week,
+                          ['ms-DatePicker-monthBackground ' + styles.monthBackground + ' ' + this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex)]: day.isInMonth && day.isSelected && dateRangeType === DateRangeType.Month,
+                          ['ms-DatePicker-dayBackground ' + styles.dayBackground]: day.isSelected && dateRangeType === DateRangeType.Day
+                        }) }
                     >
                       <div
                         className={ css(
@@ -231,7 +236,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
-                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined } >
+                        key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
+                      >
                         <span aria-hidden='true'>{ dateTimeFormatter.formatDay(day.originalDate) }</span>
                       </div>
                     </td>

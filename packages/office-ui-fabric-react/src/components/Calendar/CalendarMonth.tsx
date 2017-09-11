@@ -63,7 +63,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               onKeyDown={ this._onSelectPrevYearKeyDown }
               aria-label={ strings.prevYearAriaLabel }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? rightNavigationIcon : leftNavigationIcon } />
             </span>
             <span
@@ -72,7 +73,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               onKeyDown={ this._onSelectNextYearKeyDown }
               aria-label={ strings.nextYearAriaLabel }
               role='button'
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+            >
               <Icon iconName={ getRTL() ? leftNavigationIcon : rightNavigationIcon } />
             </span>
           </div>

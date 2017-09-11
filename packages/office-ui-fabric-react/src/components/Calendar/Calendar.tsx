@@ -123,14 +123,16 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
-        <div className={ css(
-          'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
-          styles.picker,
-          styles.pickerIsOpened,
-          styles.pickerIsFocused,
-          isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
-          isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
-        ) } >
+        <div
+          className={ css(
+            'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
+            styles.picker,
+            styles.pickerIsOpened,
+            styles.pickerIsFocused,
+            isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
+            isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
+          ) }
+        >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
               <div className={ css('ms-DatePicker-wrap', styles.wrap, showGoToToday && styles.goTodaySpacing) }>
@@ -149,7 +151,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   navigationIcons={ navigationIcons! }
                   showWeekNumbers={ this.props.showWeekNumbers }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
-                  ref='dayPicker' />
+                  ref='dayPicker'
+                />
                 }
 
                 { isMonthPickerVisible && <CalendarMonth
@@ -161,7 +164,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
-                  ref='monthPicker' /> }
+                  ref='monthPicker'
+                /> }
 
                 { showGoToToday &&
                   <span
@@ -169,7 +173,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                     onClick={ this._onGotoToday }
                     onKeyDown={ this._onGotoTodayKeyDown }
-                    tabIndex={ 0 }>
+                    tabIndex={ 0 }
+                  >
                     { strings!.goToToday }
                   </span>
                 }

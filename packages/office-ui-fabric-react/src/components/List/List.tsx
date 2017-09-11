@@ -11,7 +11,7 @@ import {
   IRenderFunction,
   autobind
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps, IPageSpecification } from './List.Props';
+import { IList, IListProps, IPage, IPageProps } from './List.Props';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -278,9 +278,8 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
-    let { renderedWindowsAhead, renderedWindowsBehind } = this.props;
     let { pages: oldPages } = this.state;
-    let { pages: newPages, measureVersion } = newState;
+    let { pages: newPages } = newState;
     let shouldComponentUpdate = false;
 
     if (newProps.items === this.props.items &&
@@ -315,8 +314,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   public render() {
     const {
       className,
-      role,
-      onRenderPage = this._onRenderPage
+      role
     } = this.props;
     const {
       pages = []
@@ -359,7 +357,7 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
   }
 
   private _renderPage(page: IPage): JSX.Element {
-    let { onRenderCell, role, usePageCache } = this.props;
+    let { usePageCache } = this.props;
     let cachedPage;
     // if usePageCache is set and cached page element can be found, just return cached page
     if (usePageCache) {
@@ -441,19 +439,20 @@ export class List extends BaseComponent<IListProps, IListState> implements IList
       }
 
       return (
-        <div role={ cellRole }
+        <div
+          role={ cellRole }
           className={ css('ms-List-cell') }
           key={ itemKey }
           data-list-index={ index }
-          data-automationid='ListCell'>
+          data-automationid='ListCell'
+        >
           { onRenderCell && onRenderCell(item, index) }
         </div>
       );
     });
 
     return (
-      <div
-        { ...divProps }>
+      <div { ...divProps }>
         { cells }
       </div>
     );

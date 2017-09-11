@@ -33,12 +33,14 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
                 <div className='DetailsListExample-customHeaderLinkSet'>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={ () => props!.onToggleSelectGroup!(props!.group!) }>
+                    onClick={ () => props!.onToggleSelectGroup!(props!.group!) }
+                  >
                     { props!.isSelected ? 'Remove selection' : 'Select group' }
                   </Link>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={ () => props!.onToggleCollapse!(props!.group!) }>
+                    onClick={ () => props!.onToggleCollapse!(props!.group!) }
+                  >
                     { props!.group!.isCollapsed ? 'Expand group' : 'Collapse group' }
                   </Link>
                 </div>

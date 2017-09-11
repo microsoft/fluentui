@@ -90,17 +90,21 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
       searchBox = (
         <div className={ css('ms-CommandBarSearch', styles.search) } ref='searchSurface'>
           <input className={ css('ms-CommandBarSearch-input', styles.searchInput) } type='text' placeholder={ searchPlaceholderText } />
-          <div className={ css(
-            'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper',
-            styles.searchIconWrapper, styles.searchIconSearchWrapper) }>
+          <div
+            className={ css(
+              'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper',
+              styles.searchIconWrapper, styles.searchIconSearchWrapper) }
+          >
             { Icon({ iconName: 'Search' }) }
           </div>
-          <div className={ css(
-            'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper',
-            FontClassNames.small,
-            styles.searchIconWrapper,
-            styles.searchIconClearWrapper
-          ) }>
+          <div
+            className={ css(
+              'ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper',
+              FontClassNames.small,
+              styles.searchIconWrapper,
+              styles.searchIconClearWrapper
+            ) }
+          >
             <Icon iconName='cancel' />
           </div>
         </div>
@@ -396,7 +400,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
   private _getStateFromProps(nextProps: ICommandBarProps): ICommandBarState {
     return {
       renderedItems: nextProps.items || [],
-      renderedOverflowItems: undefined,
       contextualMenuProps: this._getContextualMenuPropsAfterUpdate(
         nextProps.items.concat(nextProps.farItems!),
         nextProps.overflowItems!)!,

@@ -11,6 +11,7 @@ import {
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -85,9 +86,6 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
       initialsColor,
       presence,
       primaryText,
-      secondaryText,
-      tertiaryText,
-      optionalText,
       hidePersonaDetails,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
@@ -178,7 +176,8 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
               alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange } />
+              onLoadingStateChange={ this._onPhotoLoadingStateChange }
+            />
           </div>
         ) }
         { presenceElement }
@@ -191,7 +190,10 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
     return (
       <div className={ className }>
-        { render ? render(this.props) : text }
+        { render
+          ? render(this.props)
+          : <TooltipHost content={ text } overflowMode={ TooltipOverflowMode.Parent }>{ text }</TooltipHost>
+        }
       </div>
     );
   }
