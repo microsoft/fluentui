@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 08 Sep 2017 10:16:28 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Sep 2017 10:08:07 GMT and should not be manually modified.
+
+## 4.44.0
+Mon, 11 Sep 2017 10:08:07 GMT
+
+### Minor changes
+
+- Icon: tweaked `iconName` to take in a string, rather than IconCode. The type safety can't be enforced in Fabric 5 which will support whatever subsets the customer registers.
+
+### Patches
+
+- CommandBar: Fixing wrong positioning for overflow menu, when overflow menu open and CommandBar is updated
+
+## 4.43.1
+Sat, 09 Sep 2017 01:39:37 GMT
+
+### Patches
+
+- Check: Updating css to look great on IE11.
+- Add tool tip to text of Persona.
 
 ## 4.43.0
 Fri, 08 Sep 2017 10:16:28 GMT
