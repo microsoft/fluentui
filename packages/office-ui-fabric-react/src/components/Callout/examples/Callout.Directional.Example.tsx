@@ -6,6 +6,8 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
@@ -50,7 +52,12 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
-          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
+          <Checkbox
+            className={ exampleStyles.exampleCheckbox }
+            label='Show beak'
+            checked={ isBeakVisible }
+            onChange={ this._onShowBeakChange }
+          />
           <Slider
             max={ 30 }
             label='Gap Space'
