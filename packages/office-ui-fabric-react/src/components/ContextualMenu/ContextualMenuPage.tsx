@@ -7,6 +7,7 @@ import {
   ComponentStatus
 } from '@uifabric/example-app-base';
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
+import { ContextualMenuSectionExample } from './examples/ContextualMenu.Section.Example';
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
@@ -14,6 +15,7 @@ import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Ex
 import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
 const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
 const ContextualMenuDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Directional.Example.tsx') as string;
 const ContextualMenuCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
@@ -29,6 +31,9 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
           <div>
             <ExampleCard title='ContextualMenu' code={ ContextualMenuBasicExampleCode }>
               <ContextualMenuBasicExample />
+            </ExampleCard>
+            <ExampleCard title='ContextualMenu section example' code={ ContextualMenuSectionExampleCode }>
+              <ContextualMenuSectionExample />
             </ExampleCard>
             <ExampleCard title='ContextualMenu checked menus example' code={ ContextualMenuCheckmarksExampleCode }>
               <ContextualMenuCheckmarksExample />

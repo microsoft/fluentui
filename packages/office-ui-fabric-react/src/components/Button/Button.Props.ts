@@ -27,6 +27,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   href?: string;
 
   /**
+   * Changes the visual presentation of the button to be emphasized (if defined)
+   * @default false
+   */
+  primary?: boolean;
+
+  /**
    * Unique id to identify the item. Typically a duplicate of key value.
    */
   uniqueId?: string | number;
@@ -356,6 +362,12 @@ export interface IButtonStyles {
    * Style override for the container div around a SplitButton element in a disabled state
    */
   splitButtonContainerDisabled?: IStyle;
+
+  /**
+   * Style override for the divider element that appears between the button and menu button
+   * for a split button.
+   */
+  splitButtonDivider?: IStyle;
 
   /**
    * Style override for the SplitButton menu button
