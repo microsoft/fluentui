@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add scrollToIndex to GroupedList, DetailsList",
-      "type": "minor"
+      "comment": "Mix native props to Nav items.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "spelliot@microsoft.com"
+  "email": "s@warmsea.net"
 }

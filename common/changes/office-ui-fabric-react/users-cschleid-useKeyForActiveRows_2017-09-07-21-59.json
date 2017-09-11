@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Fixing alignment issues due to recent changes in Check.",
+      "comment": "DetailsList: Update activeRows management to use item keys",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "cschleid@microsoft.com"
 }

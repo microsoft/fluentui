@@ -6,6 +6,9 @@ export {
   IIconRecord,
   IIconSubset,
   getIcon,
-  getIconClassName,
   registerIcons
 } from './icons';
+
+export {
+  getIconClassName
+} from './getIconClassName';
