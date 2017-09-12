@@ -51,7 +51,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -70,8 +70,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

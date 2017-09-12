@@ -42,7 +42,7 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -54,14 +54,13 @@ export class ComboBoxPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         donts={
-          <div></div>
+          <div />
         }
         related={
           <a href='https://dev.office.com/fabric-js/Components/ComboBox/ComboBox.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

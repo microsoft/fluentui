@@ -1,7 +1,7 @@
 import { IconCodes, DefaultFontStyles } from '../styles/index';
 import {
   mergeStyles
-} from '../utilities/index';
+} from '../utilities/mergeStyles';
 
 /**
  * Deprecated: All class names for all Fabric icons.

@@ -61,7 +61,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -90,8 +90,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

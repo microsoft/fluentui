@@ -55,7 +55,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -78,8 +78,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

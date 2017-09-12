@@ -8,7 +8,6 @@
   .loading {
     align-items: center;
     background-color: #212121;
-    border-top: 50px solid #000;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -16,7 +15,7 @@
 </style>
 <div id="main">
   <div class="loading">
-    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading"
+    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif" alt="Loading"
       width="32" height="32" />
   </div>
 </div>
@@ -35,6 +34,7 @@
   var dogfood = getParameterByName('isDogfood');
   var production = getParameterByName('isProduction');
 
+  // @TODO: change this to only check for production
   switch (true) {
     case location.hostname === 'dev.office.com' || production:
       isProduction = true;
@@ -45,8 +45,6 @@
     case location.hostname === 'officedevcentersite-release.azurewebsites.net':
       isProduction = true;
       break;
-    case location.hostname === 'localhost':
-      isLocal = true;
   }
 
   function loadScript(n) {
@@ -77,8 +75,6 @@
 
   if (devUrl) {
     scripts.push(devUrl);
-  } else if (isLocal) {
-    scripts.push(entryPointFilename + '.js');
   } else if (isDogfood) {
     if (noCompress) {
       scripts.push(baseDogfoodUrl + entryPointFilename + '.min.js?date=' + Date.now());
