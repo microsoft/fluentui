@@ -6,6 +6,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
   public static defaultProps: IComponentStatusProps = {
     keyboardAccessibilitySupport: false,
+    markupSupport: false,
     highContrastSupport: false,
     rtlSupport: false,
     testCoverage: TestCoverageStatus.none
@@ -17,6 +18,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
   public render(): JSX.Element {
     const keyboardAccessibilitySubject = 'Keyboard Accessibility';
+    const markupSubject = 'Markup';
     const highContrastSupportSubject = 'High Contrast';
     const rtlSubject = 'Right to Left';
     const testCoverageSubject = 'Test Coverage';
@@ -32,6 +34,18 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
               this._colorForDualStatusBadge(this.props.keyboardAccessibilitySupport),
               keyboardAccessibilitySubject,
               this._badgeStatusString(this.props.keyboardAccessibilitySupport))
+            }
+          />
+        </a>
+        <a
+          href='https://www.google.com'
+          className='ComponentStatus-badge'
+        >
+          <img
+            src={ this._badgeURL(
+              this._colorForDualStatusBadge(this.props.markupSupport),
+              markupSubject,
+              this._badgeStatusString(this.props.markupSupport))
             }
           />
         </a>

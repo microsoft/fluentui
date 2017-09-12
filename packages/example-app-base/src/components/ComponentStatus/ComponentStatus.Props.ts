@@ -1,5 +1,6 @@
 export interface IComponentStatusProps {
   keyboardAccessibilitySupport: boolean | undefined;
+  markupSupport: boolean | undefined;
   highContrastSupport: boolean | undefined;
   rtlSupport: boolean | undefined;
   testCoverage: TestCoverageStatus | undefined;
