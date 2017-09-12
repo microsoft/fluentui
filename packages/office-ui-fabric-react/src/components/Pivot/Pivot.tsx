@@ -159,15 +159,17 @@ export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _renderLinkContent(link: IPivotItemProps): JSX.Element {
     const { itemCount, itemIcon, linkText } = link;
 
-    return <span className={ css('ms-Pivot-link-content') }>
-      { itemIcon !== undefined && (
-        <span className={ css('ms-Pivot-icon', styles.icon) }>
-          <Icon iconName={ itemIcon } />
-        </span>
-      ) }
-      { linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }
-      { itemCount !== undefined && <span className={ css('ms-Pivot-count', styles.count) } > ({ itemCount })</span> }
-    </span>;
+    return (
+      <span className={ css('ms-Pivot-link-content') }>
+        { itemIcon !== undefined && (
+          <span className={ css('ms-Pivot-icon', styles.icon) }>
+            <Icon iconName={ itemIcon } />
+          </span>
+        ) }
+        { linkText !== undefined && <span className={ css('ms-Pivot-text', styles.text) }> { link.linkText }</span> }
+        { itemCount !== undefined && <span className={ css('ms-Pivot-count', styles.count) } > ({ itemCount })</span> }
+      </span>
+    );
   }
 
   /**

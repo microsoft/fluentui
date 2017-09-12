@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.45.0",
+      "tag": "office-ui-fabric-react_v4.45.0",
+      "date": "Tue, 12 Sep 2017 10:10:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Boris Emorine <boris.emorine@gmail.com>",
+            "commit": "4507629a84b12d34710a1c4a3dcdcfb1d0cd3706",
+            "comment": "Add sections to contextual menus"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "bb12bfd38b0ecd888f8ca3093b189441a0f25d59",
+            "comment": "Calendar: Arrows (when month picker only) do not navigate correctly.  Fixed this and fixed position."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5ae36cdf70861f2394d26860828e835b8e3f104f",
+            "comment": "MessageBar: Added word-break to fix long words in message bar"
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "50f32d1f57ddc19896859706988532d802e58c21",
+            "comment": "Pickers: Fixed a bug where suggestionsHeaderText would not display, also fixed backspace event propagating even when it was handled."
+          },
+          {
+            "author": "Su Su <s@warmsea.net>",
+            "commit": "78da91b485c66020572cf39c8e89f480201f62c6",
+            "comment": "Mix native props to Nav items."
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "ac1613307947170307bd3df04c193d45c02f85f2",
+            "comment": "Button: Add support for dividers in split buttons"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "1b885ff4a5b392b121d8251ccf2601d667e2e946",
+            "comment": "SplitButton: Update the menu launcher target for a split button to be the entire control instead of just the menu launching portion"
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "ec3bd72dd9a215594f95bd18ade01676ceefeb29",
+            "comment": "DetailsList: Update activeRows management to use item keys"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.44.0",
       "tag": "office-ui-fabric-react_v4.44.0",
       "date": "Mon, 11 Sep 2017 10:08:07 GMT",

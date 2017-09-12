@@ -244,6 +244,55 @@ describe('ContextualMenu', () => {
     expect(headerTwo.firstElementChild!.className).to.contain('header', 'The final item was not a header');
   });
 
+  it('renders sections properly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          topDivider: true,
+          bottomDivider: true,
+          items: [
+            {
+              name: 'TestText 2',
+              key: 'TestKey3'
+            },
+            {
+              name: 'TestText 3',
+              key: 'TestKey3',
+            }
+          ]
+        }
+      }, {
+        name: 'TestText 4',
+        key: 'TestKey4',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          items: [
+            {
+              name: 'TestText 5',
+              key: 'TestKey5'
+            },
+            {
+              name: 'TestText 6',
+              key: 'TestKey6',
+            }
+          ]
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    let menuItems = document.querySelectorAll('li');
+    expect(menuItems.length).to.be.eq(8, 'This menu has an incorrect number of items');
+  });
+
   it('does not return a value if no items are given', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
