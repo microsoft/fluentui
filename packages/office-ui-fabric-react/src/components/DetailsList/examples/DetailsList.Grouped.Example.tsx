@@ -64,7 +64,10 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
 
     return (
       <Fabric className='foo'>
-        <DefaultButton onClick={ () => this._addItem() } text='Add an item' />
+        <DefaultButton
+          onClick={ this._addItem }
+          text='Add an item'
+        />
         <DetailsList
           items={ items }
           groups={ [
