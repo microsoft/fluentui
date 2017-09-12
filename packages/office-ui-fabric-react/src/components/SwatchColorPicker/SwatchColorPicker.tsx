@@ -4,8 +4,7 @@ import {
   BaseComponent,
   css,
   findIndex,
-  getId,
-  warn
+  getId
 } from '../../Utilities';
 import {
   ISwatchColorPicker,
@@ -76,11 +75,6 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
     } = this.props;
 
     if (colorCells.length < 1 || columnCount < 1) {
-      warn(
-        'The SwatchColorPicker component should have colorCells with at least one item and ' +
-        'a positive, non-zero columnCount'
-      );
-
       return null;
     }
 
