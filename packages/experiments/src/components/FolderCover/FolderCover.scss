@@ -5,6 +5,8 @@
   display: inline-flex;
   position: relative;
   vertical-align: bottom;
+  flex-direction: row;
+  align-items: flex-end;
 
   &,
   &.isSmall {
@@ -63,15 +65,16 @@
 }
 
 .metadata {
-  position: absolute;
   display: block;
-  right: 8px;
-  left: 8px;
+  @include margin-right(8px);
+  flex: 1 1;
   @include text-align(right);
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
   font-weight: $ms-font-weight-regular;
   color: $ms-color-white;
+  position: relative;
 
   &,
   &.isSmall {
@@ -84,10 +87,37 @@
 
   &,
   &.isDefault {
-    bottom: 8px;
+    margin-bottom: 8px;
   }
 
   .isMedia & {
-    bottom: 4px;
+    margin-bottom: 4px;
+  }
+}
+
+.signal {
+  display: block;
+  position: relative;
+  margin-bottom: 8px;
+  @include margin-left(8px);
+  @include margin-right(4px);
+
+  &,
+  &.isSmall {
+    font-size: $ms-font-size-l;
+  }
+
+  .isLarge & {
+    font-size: $ms-font-size-xl;
+  }
+
+
+  &,
+  &.isDefault {
+    margin-bottom: 8px;
+  }
+
+  .isMedia & {
+    margin-bottom: 4px;
   }
 }
