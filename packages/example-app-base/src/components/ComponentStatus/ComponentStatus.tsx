@@ -16,7 +16,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
   }
 
   public render(): JSX.Element {
-    // const statusSubject = 'Status';
     const keyboardAccessibilitySubject = 'Keyboard Accessibility';
     const highContrastSupportSubject = 'High Contrast';
     const rtlSubject = 'Right to Left';
@@ -30,9 +29,9 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
         >
           <img
             src={ this._badgeURL(
-              this._colorForKeyboardAccessibility(this.props.keyboardAccessibilitySupport),
+              this._colorForDualStatusBadge(this.props.keyboardAccessibilitySupport),
               keyboardAccessibilitySubject,
-              this._badgeStatusForKeyboardAccessibility(this.props.keyboardAccessibilitySupport))
+              this._badgeStatusString(this.props.keyboardAccessibilitySupport))
             }
           />
         </a>
@@ -42,9 +41,9 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
         >
           <img
             src={ this._badgeURL(
-              this._colorForHighContrast(this.props.highContrastSupport),
+              this._colorForDualStatusBadge(this.props.highContrastSupport),
               highContrastSupportSubject,
-              this._badgeStatusForHighContrast(this.props.highContrastSupport))
+              this._badgeStatusString(this.props.highContrastSupport))
             }
           />
         </a>
@@ -54,9 +53,9 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
         >
           <img
             src={ this._badgeURL(
-              this._colorForRTL(this.props.rtlSupport),
+              this._colorForDualStatusBadge(this.props.rtlSupport),
               rtlSubject,
-              this._badgeStatusForRTL(this.props.rtlSupport))
+              this._badgeStatusString(this.props.rtlSupport))
             }
           />
         </a>
@@ -86,31 +85,13 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
   }
 
   // Status
-
-  private _badgeStatusForKeyboardAccessibility(keyboardAccessibilitySupport: boolean | undefined): string {
-    return keyboardAccessibilitySupport ? 'Pass' : 'Fail';
-  }
-
-  private _badgeStatusForHighContrast(highContrastSupport: boolean | undefined): string {
-    return highContrastSupport ? 'Pass' : 'Fail';
-  }
-
-  private _badgeStatusForRTL(rtlSupport: boolean | undefined): string {
-    return rtlSupport ? 'Pass' : 'Fail';
+  private _badgeStatusString(isSupported: boolean | undefined): string {
+    return isSupported ? 'Pass' : 'Fail';
   }
 
   // Colors
-
-  private _colorForKeyboardAccessibility(keyboardAccessibilitySupport: boolean | undefined): string {
-    return keyboardAccessibilitySupport ? 'green' : 'red';
-  }
-
-  private _colorForHighContrast(highContrastSupport: boolean | undefined): string {
-    return highContrastSupport ? 'green' : 'red';
-  }
-
-  private _colorForRTL(rtlSupport: boolean | undefined): string {
-    return rtlSupport ? 'green' : 'red';
+  private _colorForDualStatusBadge(isSupported: boolean | undefined): string {
+    return isSupported ? 'green' : 'red';
   }
 
   private _colorForTestCoverageStatus(testCoverageStatus: TestCoverageStatus | undefined): string {
