@@ -40,7 +40,7 @@
   position: relative;
 
   &::after {
-    bottom: -1px;
+    bottom: $svg-angle-bottom-alignment;
     content: '';
     height: 82px;
     left: -10px;

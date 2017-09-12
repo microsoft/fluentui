@@ -41,6 +41,14 @@ $color-blog-lighter: #d1ec3c;
 // Component variables
 $App-maximumWidth: 1600px;
 
+//SVG
+// With the increase in App-maximumWidth for UHF adoption,
+// this makes sure the "V" in the hero stays visable at different breakpoints
+$svg-hero-bottom-alignment: -3px;
+// With the increase in App-maximumWidth for UHF adoption,
+// this gets rid of a thin white gap under component page angles
+$svg-angle-bottom-alignment: -1px;
+
 $CodeBlock-toggleButtonHeight: 28px;
 
 $Header-backgroundColor: $ms-color-black;
