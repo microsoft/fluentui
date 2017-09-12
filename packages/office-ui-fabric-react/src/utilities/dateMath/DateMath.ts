@@ -209,13 +209,13 @@ export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigate
   let selectedMonth = navigatedDate.getMonth();
   let previousWeekNumber = 0;
 
-  //If first day of week is not Sunday, use alternative calculations
+  // If first day of week is not Sunday, use alternative calculations
   if (firstDayOfWeek === 0) {
     let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
     let getDayofYear = getDayOfYear(addDays(firstDayOfMonth, firstDayOfWeek + 1));
     previousWeekNumber = Math.ceil(getDayofYear / DAYS_IN_WEEK) - 1;
   } else {
-    previousWeekNumber = getPreviousWeekNumbers(firstDayOfWeek, navigatedDate)
+    previousWeekNumber = getPreviousWeekNumbers(firstDayOfWeek, navigatedDate);
   }
 
   let weeksArray = [];
@@ -231,24 +231,24 @@ function getPreviousWeekNumbers(firstDayOfWeek: DayOfWeek, navigatedDate: Date) 
   let selectedMonth = navigatedDate.getMonth();
   let weekNumbersTotal = 0;
 
-  //Get week numbers up to navigated month
+  // Get week numbers up to navigated month
   for (let x = 1; x < selectedMonth + 1; x++) {
     let weeksInMonthTotal = weeksInMonth(selectedYear, x, firstDayOfWeek);
 
-    //Adjust for duplicated weeks every alternate month
+    // Adjust for duplicated weeks every alternate month
     if (x % 2 === 0) {
       let firstOfMonth = new Date(selectedYear, x - 1, 1);
       let lastOfMonth = new Date(selectedYear, x, 0);
       let lastDayOfWeek = firstDayOfWeek - 1 >= 0 ? firstDayOfWeek - 1 : 6;
-      //If the first day of the month is not on the first day of the week than this week was already counted in the previous month
+      // If the first day of the month is not on the first day of the week than this week was already counted in the previous month
       weeksInMonthTotal = firstOfMonth.getDay() !== firstDayOfWeek ? weeksInMonthTotal - 1 : weeksInMonthTotal;
       weeksInMonthTotal = lastOfMonth.getDay() !== lastDayOfWeek ? weeksInMonthTotal - 1 : weeksInMonthTotal;
     }
 
-    weekNumbersTotal += weeksInMonthTotal
+    weekNumbersTotal += weeksInMonthTotal;
   }
 
-  //If an alternate month, check for duplicate first week
+  // If an alternate month, check for duplicate first week
   if (navigatedDate.getMonth() % 2 !== 0) {
     let firstOfMonth = new Date(selectedYear, selectedMonth - 1, 1);
     weekNumbersTotal = firstOfMonth.getDay() !== firstDayOfWeek ? weekNumbersTotal - 1 : weekNumbersTotal;
@@ -286,12 +286,12 @@ function daysInMonth(month: number, year: number) {
  * Returns the number of weeks in the month
  */
 function weeksInMonth(year: number, month: number, startDayOfWeek: number) {
-  var firstOfMonth = new Date(year, month - 1, 1);
-  var lastOfMonth = new Date(year, month, 0);
-  var numberOfDaysInMonth = lastOfMonth.getDate();
-  var firstWeekDay = (firstOfMonth.getDay() - startDayOfWeek + 7) % 7;
+  let firstOfMonth = new Date(year, month - 1, 1);
+  let lastOfMonth = new Date(year, month, 0);
+  let numberOfDaysInMonth = lastOfMonth.getDate();
+  let firstWeekDay = (firstOfMonth.getDay() - startDayOfWeek + 7) % 7;
 
-  var totalDays = firstWeekDay + numberOfDaysInMonth;
+  let totalDays = firstWeekDay + numberOfDaysInMonth;
 
   return Math.ceil(totalDays / 7);
 }
