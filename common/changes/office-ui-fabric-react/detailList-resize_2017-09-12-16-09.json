@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailList: Fixed collapsing logic to look at all items including first 2",
+      "comment": "DetailsList: Fixed collapsing logic to look at all items including first 2",
       "type": "patch"
     }
   ],
