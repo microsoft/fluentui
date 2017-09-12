@@ -61,7 +61,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div/>
         }
         dos={
           <div>
