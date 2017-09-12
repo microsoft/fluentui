@@ -5,8 +5,6 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { BaseComponent } from './BaseComponent';
 
-let { assert, expect } = chai;
-
 let _originalOnError = BaseComponent.onError;
 
 class TestComponent extends BaseComponent<{}, {}> {
@@ -83,13 +81,13 @@ describe('BaseComponent', () => {
       // tslint:disable-next-line:no-any
     ) as any;
 
-    expect(component.root).to.exist;
+    expect(component.root).toBeDefined();
   });
 });
 
 function _buildTestFor(methodName: string): void {
   it(`calls the error logger on ${methodName} exception`, () => {
-    let lastErrorMessage = null;
+    let lastErrorMessage;
 
     BaseComponent.onError = (errorMessage: string | undefined) => lastErrorMessage = errorMessage;
 
@@ -98,6 +96,6 @@ function _buildTestFor(methodName: string): void {
     // tslint:disable-next-line:no-any
     (c as any)[methodName]();
 
-    assert(lastErrorMessage !== null, 'Error callback not called');
+    expect(lastErrorMessage).toBeDefined();
   });
 }

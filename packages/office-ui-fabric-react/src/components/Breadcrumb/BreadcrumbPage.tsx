@@ -26,12 +26,14 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           <div>
             <ExampleCard
               title='Simple breadcrumb'
-              code={ BreadcrumbBasicExampleCode }>
+              code={ BreadcrumbBasicExampleCode }
+            >
               <BreadcrumbBasicExample />
             </ExampleCard>
             <ExampleCard
               title='Static width'
-              code={ BreadcrumbStaticExampleCode }>
+              code={ BreadcrumbStaticExampleCode }
+            >
               <BreadcrumbStaticExample />
             </ExampleCard>
           </div>
@@ -53,7 +55,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -69,8 +71,8 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

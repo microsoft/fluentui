@@ -1,11 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-let { expect } = chai;
-
 import { isElementVisible, isElementTabbable } from './focus';
 
 let _hiddenElement: HTMLElement | undefined;
@@ -41,15 +38,15 @@ function _initialize(): void {
 describe('isElementVisible', () => {
   beforeEach(() => _initialize());
   it('returns false if data-is-visible is false', () => {
-    expect(isElementVisible(_hiddenElement)).equals(false, 'Element is not visible');
+    expect(isElementVisible(_hiddenElement)).toEqual(false);
   });
 
   it('returns true if data-is-visible is true', () => {
-    expect(isElementVisible(_visibleElement)).equals(true, 'Element is visible');
+    expect(isElementVisible(_visibleElement)).toEqual(true);
   });
 
   it('returns true if data-is-visible is undefined but element is visible', () => {
-    expect(isElementVisible(_element)).equals(true, 'Element is visible but data-is-visible is undefined');
+    expect(isElementVisible(_element)).toEqual(true);
   });
 
 });
@@ -57,13 +54,13 @@ describe('isElementVisible', () => {
 describe('isElementTabbable', () => {
 
   it('returns false on null', () => {
-    expect(isElementVisible(null)).is.false;
+    expect(isElementVisible(null)).toEqual(false);
   });
 
   it('returns false on normal divs', () => {
     let div = document.createElement('div');
 
-    expect(isElementTabbable(div)).is.false;
+    expect(isElementTabbable(div)).toEqual(false);
   });
 
   it('returns false on disabled buttons', () => {
@@ -71,32 +68,32 @@ describe('isElementTabbable', () => {
 
     button.setAttribute('disabled', 'true');
 
-    expect(isElementTabbable(button)).is.false;
+    expect(isElementTabbable(button)).toEqual(false);
 
   });
 
   it('returns true on buttons', () => {
     let button = document.createElement('button');
 
-    expect(isElementTabbable(button)).is.true;
+    expect(isElementTabbable(button)).toEqual(true);
   });
 
   it('returns true on anchors', () => {
     let anchor = document.createElement('a');
 
-    expect(isElementTabbable(anchor)).is.true;
+    expect(isElementTabbable(anchor)).toEqual(true);
   });
 
   it('returns true on input elements', () => {
     let input = document.createElement('input');
 
-    expect(isElementTabbable(input)).is.true;
+    expect(isElementTabbable(input)).toEqual(true);
   });
 
   it('returns true on textarea elements', () => {
     let textarea = document.createElement('textarea');
 
-    expect(isElementTabbable(textarea)).is.true;
+    expect(isElementTabbable(textarea)).toEqual(true);
   });
 
   it('works with tabbable divs', () => {
@@ -104,7 +101,7 @@ describe('isElementTabbable', () => {
 
     div.tabIndex = 0;
 
-    expect(isElementTabbable(div)).is.true;
+    expect(isElementTabbable(div)).toEqual(true);
   });
 
   it('returns true with role=button divs', () => {
@@ -112,7 +109,7 @@ describe('isElementTabbable', () => {
 
     div.setAttribute('role', 'button');
 
-    expect(isElementTabbable(div)).is.true;
+    expect(isElementTabbable(div)).toEqual(true);
   });
 
   it('returns false with role=button disabled buttons', () => {
@@ -121,7 +118,7 @@ describe('isElementTabbable', () => {
     button.setAttribute('role', 'button');
     button.setAttribute('disabled', 'true');
 
-    expect(isElementTabbable(button)).is.false;
+    expect(isElementTabbable(button)).toEqual(false);
   });
 
 });

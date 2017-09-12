@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
+import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
 export interface ITilesGridItem<TItem> {
   /**
@@ -82,7 +83,7 @@ export interface ITileSize {
   height: number;
 }
 
-export interface ITilesListProps<TItem> extends IBaseProps, React.HTMLAttributes<TilesList<TItem>> {
+export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.
@@ -94,4 +95,12 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.HTMLAttributes
    * The desired number of content cells to render per page.
    */
   cellsPerPage?: number;
+  /**
+   * Component ref for the focus zone within the list. Use this to control auto-focus.
+   */
+  focusZoneComponentRef?: (focusZone: IFocusZone) => void;
+  /**
+   * Callback for when the active element within the list's FocusZone changes.
+   */
+  onActiveElementChanged?: (element: HTMLElement) => void;
 }

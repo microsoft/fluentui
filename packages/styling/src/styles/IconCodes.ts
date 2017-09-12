@@ -1,3 +1,9 @@
+/**
+ * This is being removed in Fabric 5 due to the need to support arbitrary icon names
+ * for variable subsetting. Please use getIconClassName if you need the icon code, or
+ * render an <Icon /> component which will abstract how the icon is rendered.
+ * @deprecated
+ */
 export const IconCodes = {
   /**
    * Icon code with the value '\uED68'.
@@ -1275,6 +1281,10 @@ export const IconCodes = {
    * Icon code with the value '\uE740'.
    */
   fullScreen: '\uE740',
+  /**
+   * Icon code with the value '\uF2FE'.
+   */
+  fullWidth: '\uF2FE',
   /**
    * Icon code with the value '\uE9DA'.
    */
@@ -2595,6 +2605,10 @@ export const IconCodes = {
    * Icon code with the value '\uEDC3'.
    */
   textField: '\uEDC3',
+  /**
+   * Icon code with the value '\uF029'.
+   */
+  textDocument: '\uF029',
   /**
    * Icon code with the value '\uE7B6'.
    */

@@ -17,9 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "types": [
-      "chai",
-      "mocha",
-      "webpack-env"
+      "jest"
     ]
   },
   "include": [

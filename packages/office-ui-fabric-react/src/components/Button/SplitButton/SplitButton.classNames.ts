@@ -6,6 +6,7 @@ export interface ISplitButtonClassNames {
   root?: string;
   icon?: string;
   flexContainer?: string;
+  divider?: string;
 }
 
 export const getClassNames = memoizeFunction((
@@ -28,6 +29,7 @@ export const getClassNames = memoizeFunction((
       ]
     ) as string,
     icon: (disabled ? mergeStyles(styles.splitButtonMenuIcon, styles.splitButtonMenuIconDisabled) : styles.splitButtonMenuIcon) as string,
-    flexContainer: styles.splitButtonFlexContainer as string
+    flexContainer: styles.splitButtonFlexContainer as string,
+    divider: styles.splitButtonDivider as string
   };
 });

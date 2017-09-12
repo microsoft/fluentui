@@ -1,2 +1,2 @@
 
-export * from './components/FolderCover';
+export * from './components/FolderCover/index';

@@ -230,8 +230,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               ref={ this._resolveRef('_calendar') }
-            >
-            </Calendar>
+            />
           </Callout>
         ) }
       </div>
@@ -376,7 +375,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _validateTextInput() {
-    let { isRequired, allowTextInput, strings, formatDate, parseDateFromString, onSelectDate } = this.props;
+    let { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate } = this.props;
     const inputValue = this.state.formattedDate;
 
     // Do validation only if DatePicker's popup is dismissed

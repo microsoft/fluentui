@@ -35,7 +35,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -57,8 +57,8 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Label/Label.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

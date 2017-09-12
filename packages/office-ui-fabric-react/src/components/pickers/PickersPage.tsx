@@ -41,8 +41,8 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
             <span> are used to pick recipients.</span>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 

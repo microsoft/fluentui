@@ -1,6 +1,41 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 29 Aug 2017 20:55:35 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+
+## 0.6.0
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Minor changes
+
+- Added LayoutGroup, FolderCover, Tile and TilesList to exports
+
+## 0.5.1
+Fri, 08 Sep 2017 10:16:28 GMT
+
+### Patches
+
+- Fix alignment of Tile foreground and background using flexbox
+- Add breakpoint size support to Tile
+
+## 0.5.0
+Thu, 07 Sep 2017 10:09:51 GMT
+
+### Minor changes
+
+- Removed global fabric export
+- Add presentation hooks for Tile and FolderCover
+- Support auto-focus for TilesList
+
+### Patches
+
+- Fix minor alignment issues with SignalField
+
+## 0.4.0
+Mon, 04 Sep 2017 10:16:56 GMT
+
+### Minor changes
+
+- Add size pre-computation support to Tile and FolderCover
 
 ## 0.3.0
 Tue, 29 Aug 2017 20:55:35 GMT

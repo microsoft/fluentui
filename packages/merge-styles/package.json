@@ -11,11 +11,16 @@
   "license": "MIT",
   "scripts": {
     "build": "node ../../scripts/build.js",
-    "clean": "node ../../scripts/clean.js"
+    "clean": "node ../../scripts/clean.js",
+    "start-test": "node ../../scripts/start-test.js"
   },
+  "disabledTasks": [
+    "sass",
+    "copy",
+    "karma"
+  ],
   "devDependencies": {
-    "@types/chai": "3.4.35",
-    "@types/enzyme": "2.8.0",
+    "@types/jest": "^20.0.8",
     "@types/es6-promise": "^0.0.32",
     "@types/es6-weak-map": "1.2.0",
     "@types/mocha": "2.2.39",
