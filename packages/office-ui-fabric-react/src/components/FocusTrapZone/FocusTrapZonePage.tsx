@@ -56,8 +56,7 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

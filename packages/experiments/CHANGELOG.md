@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 08 Sep 2017 10:16:28 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+
+## 0.6.0
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Minor changes
+
+- Added LayoutGroup, FolderCover, Tile and TilesList to exports
 
 ## 0.5.1
 Fri, 08 Sep 2017 10:16:28 GMT
