@@ -202,7 +202,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
 
-
     if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
       this._navigateDay(date);
       this._focusOnUpdate = focusOnNavigatedDay;
