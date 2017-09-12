@@ -394,8 +394,7 @@ describe('ContextualMenu', () => {
             }
             menuMounted = true;
           } }
-        >
-        </ContextualMenu>
+        />
       </div>
     );
     expect(menuMounted).to.be.equal(true, 'Menu opened callback was not properly called');
