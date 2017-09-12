@@ -619,7 +619,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let lastIndex = adjustedColumns.length - 1;
 
     // Remove collapsable columns.
-    while (lastIndex > 1 && totalWidth > availableWidth) {
+    while (lastIndex > -1 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
       if (column.isCollapsable) {
