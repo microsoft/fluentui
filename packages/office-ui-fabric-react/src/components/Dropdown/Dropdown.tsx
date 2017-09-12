@@ -348,31 +348,35 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     return (
       isSmall ?
-        <Panel
-          className={ css('ms-Dropdown-panel', styles.panel) }
-          isOpen={ true }
-          isLightDismiss={ true }
-          onDismissed={ this._onDismiss }
-          hasCloseButton={ false }
-        >
-          { onRenderList(props, this._onRenderList) }
-        </Panel>
+        (
+          <Panel
+            className={ css('ms-Dropdown-panel', styles.panel) }
+            isOpen={ true }
+            isLightDismiss={ true }
+            onDismissed={ this._onDismiss }
+            hasCloseButton={ false }
+          >
+            { onRenderList(props, this._onRenderList) }
+          </Panel>
+        )
         :
-        <Callout
-          isBeakVisible={ false }
-          gapSpace={ 0 }
-          doNotLayer={ false }
-          directionalHintFixed={ true }
-          directionalHint={ DirectionalHint.bottomLeftEdge }
-          { ...calloutProps }
-          className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
-          targetElement={ this._dropDown }
-          onDismiss={ this._onDismiss }
-          onPositioned={ this._onPositioned }
-          calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
-        >
-          { onRenderList(props, this._onRenderList) }
-        </Callout>
+        (
+          <Callout
+            isBeakVisible={ false }
+            gapSpace={ 0 }
+            doNotLayer={ false }
+            directionalHintFixed={ true }
+            directionalHint={ DirectionalHint.bottomLeftEdge }
+            { ...calloutProps }
+            className={ css('ms-Dropdown-callout', styles.callout, calloutProps ? calloutProps.className : undefined) }
+            targetElement={ this._dropDown }
+            onDismiss={ this._onDismiss }
+            onPositioned={ this._onPositioned }
+            calloutWidth={ dropdownWidth || this._dropDown.clientWidth }
+          >
+            { onRenderList(props, this._onRenderList) }
+          </Callout>
+        )
     );
   }
 
@@ -420,11 +424,13 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _renderSeparator(item: IDropdownOption): JSX.Element | null {
     let { index, key } = item;
     if (index! > 0) {
-      return <div
-        role='separator'
-        key={ key }
-        className={ css('ms-Dropdown-divider', styles.divider) }
-      />;
+      return (
+        <div
+          role='separator'
+          key={ key }
+          className={ css('ms-Dropdown-divider', styles.divider) }
+        />
+      );
     }
     return null;
   }
@@ -453,7 +459,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
     return (
       !this.props.multiSelect ?
-        <CommandButton
+        (
+          <CommandButton
           id={ id + '-list' + item.index }
           ref={ Dropdown.Option + item.index }
           key={ item.key }
@@ -473,27 +480,28 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         >
           { onRenderOption(item, this._onRenderOption) }
         </CommandButton>
-        :
-        <Checkbox
-          id={ id + '-list' + item.index }
-          ref={ Dropdown.Option + item.index }
-          key={ item.key }
-          data-index={ item.index }
-          data-is-focusable={ true }
-          onChange={ this._onItemClick(item.index!) }
-          label={ item.text }
-          className={ css(
-            'ms-ColumnManagementPanel-checkbox',
-            'ms-Dropdown-item', styles.item, {
-              ['is-selected ' + styles.itemIsSelected]: isItemSelected,
-              ['is-disabled ' + styles.itemIsDisabled]: isItemSelected
-            }
-          ) }
-          role='option'
-          aria-selected={ isItemSelected ? 'true' : 'false' }
-          checked={ isItemSelected }
-        >{ onRenderOption(item, this._onRenderOption) }
-        </Checkbox>
+        ) : (
+          <Checkbox
+            id={ id + '-list' + item.index }
+            ref={ Dropdown.Option + item.index }
+            key={ item.key }
+            data-index={ item.index }
+            data-is-focusable={ true }
+            onChange={ this._onItemClick(item.index!) }
+            label={ item.text }
+            className={ css(
+              'ms-ColumnManagementPanel-checkbox',
+              'ms-Dropdown-item', styles.item, {
+                ['is-selected ' + styles.itemIsSelected]: isItemSelected,
+                ['is-disabled ' + styles.itemIsDisabled]: isItemSelected
+              }
+            ) }
+            role='option'
+            aria-selected={ isItemSelected ? 'true' : 'false' }
+            checked={ isItemSelected }
+          >{ onRenderOption(item, this._onRenderOption) }
+          </Checkbox>
+        )
     );
   }
 
