@@ -68,6 +68,9 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
             { this._getDosAndDonts() }
             { this._getVariants() }
             { this._getPropertiesTable() }
+            { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
+              return this._getSection(componentPageSection);
+            }) }
           </div>
         </div >
       </div >
@@ -113,10 +116,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         { this.props.propertiesTables && <div className='ComponentPage-navLink'>
           <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
         </div> }
-        { this.props.otherSections && this.props.otherSections.map((title: IComponentPageSection) => {
-          <Link { ...{ href: this._baseUrl + '#' + title }}> { title }</Link>;
+        { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
+          return <div key={ index + 'class' } className='ComponentPage-navLink'>
+            <Link
+              key={ index + componentPageSection.title }
+              { ...{ href: this._baseUrl + '#' + componentPageSection.title } }
+            >
+              { componentPageSection.title }
+            </Link>
+          </div>;
         }) }
-      </div>
+      </div >
     );
   }
 
@@ -196,6 +206,26 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       return (
         <div className='ComponentPage-componentStatusSection'>
           { this.props.componentStatus }
+        </div>
+      );
+    }
+
+    return undefined;
+  }
+
+  private _getSection(componentPageSection: IComponentPageSection): JSX.Element | undefined {
+    if (this.props.otherSections) {
+      return (
+        <div>
+          <div className='ComponentPage-variantsSection'>
+            <h2
+              className='ComponentPage-subHeading ComponentPage-variantsTitle'
+              id={ componentPageSection.title }
+            >
+              { componentPageSection.title }
+            </h2>
+            { componentPageSection.section }
+          </div>
         </div>
       );
     }
