@@ -76,7 +76,8 @@ function expandQuads(
   name: string,
   value: string
 ): void {
-  const parts = value.split(' ');
+  const parts = (typeof value === 'string') ? value.split(' ') : [value];
+
   currentRules[name + 'Top'] = parts[0];
   currentRules[name + 'Right'] = parts[1] || parts[0];
   currentRules[name + 'Bottom'] = parts[2] || parts[0];

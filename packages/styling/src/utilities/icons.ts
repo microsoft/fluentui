@@ -52,7 +52,7 @@ export function registerIcons(iconSubset: IIconSubset): void {
   for (const iconName in icons) {
     if (icons.hasOwnProperty(iconName)) {
       const code = icons[iconName];
-      console.log(`Regstering: ${iconName}`);
+
       _icons[iconName.toLowerCase()] = {
         code,
         subset
