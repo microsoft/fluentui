@@ -8,8 +8,7 @@ import {
   buttonProperties,
   getId,
   getNativeProps,
-  KeyCodes,
-  css,
+  KeyCodes
 } from '../../Utilities';
 import { mergeStyles, hideText } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
