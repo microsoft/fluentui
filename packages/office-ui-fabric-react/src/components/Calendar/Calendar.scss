@@ -521,12 +521,24 @@ $Calendar-dayPicker-margin: 10px;
     .table{
       margin-right: 12px
     }
+
+     .dayPicker {
+      width: auto;
+    }
+
     .monthPicker{
       margin-left: 13px;
     }
 
     .goToday {
       @include ms-right(13px);
+    }
+  }
+
+  //when month picker is only visible
+  .monthPickerOnly{
+    .wrap{
+      padding: 10px 7px;
     }
   }
 }
