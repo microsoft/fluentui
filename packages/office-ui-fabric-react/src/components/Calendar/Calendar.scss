@@ -217,6 +217,10 @@ $Calendar-dayPicker-margin: 10px;
   margin-left: 3px;
 }
 
+.yearComponents{
+  margin-left: 1px;
+}
+
 .prevMonth,
 .nextMonth,
 .prevYear,
@@ -358,7 +362,7 @@ $Calendar-dayPicker-margin: 10px;
   $Calendar-month: 40px;
 
   .wrap {
-    padding: 4px 7px;
+    padding: 4px 8px;
   }
   // Update the spacing and text for the day and month pickers
 
@@ -419,6 +423,10 @@ $Calendar-dayPicker-margin: 10px;
 
   // Show month picker, if enabled
   .monthPickerVisible {
+    .wrap {
+      padding: 4px 10px;
+    }
+
     // Swap margin for padding so that the border extends the full height.
     .dayPicker {
       margin: -$Calendar-dayPicker-margin 0;
@@ -479,7 +487,7 @@ $Calendar-dayPicker-margin: 10px;
       height: $Calendar-day;
       line-height: $Calendar-day;
       padding: 0 10px;
-      @include ms-right(10px);
+      @include ms-right(8px);
       @include text-align(right);
       top: 199px;
     }
@@ -538,7 +546,7 @@ $Calendar-dayPicker-margin: 10px;
   //when month picker is only visible
   .monthPickerOnly{
     .wrap{
-      padding: 10px 7px;
+      padding: 10px;
     }
   }
 }
