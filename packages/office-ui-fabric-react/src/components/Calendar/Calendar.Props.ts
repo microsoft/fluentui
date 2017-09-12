@@ -160,6 +160,7 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
 }
 
 export interface ICalendarIconStrings {
