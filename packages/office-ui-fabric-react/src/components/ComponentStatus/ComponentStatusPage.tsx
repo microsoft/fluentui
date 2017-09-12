@@ -6,7 +6,7 @@ import './ComponentStatusPage.scss';
 
 export class ComponentStatusPage extends React.Component<{}, {}> {
   public render() {
-    let sections: [IComponentPageSection] = [{ title: 'Types of Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
+    let sections: [IComponentPageSection] = [{ title: 'Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
 
     return (
       <ComponentPage
@@ -21,7 +21,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
 
   private _renderOverView(): JSX.Element {
     return <div>
-      Component Status overview.
+      Badges are used to track a component's status regarding different criteria. They reflect if a component is localizable, accessible and reliable.
     </div>;
   }
 
@@ -50,7 +50,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     return <div>
       <table className='componentTable'>
         <tr>
-          <th className='componentCells'>Badge</th>
+          <th className='componentCells'>Name</th>
           <th className='componentCells'>Description</th>
           <th className='componentCells'>Success</th>
         </tr>
@@ -65,7 +65,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     return <tr key={ statusInfo.name + '-key' }>
       <td className='componentCells'> { statusInfo.name } </td>
       <td className='componentCells'> { statusInfo.description } </td>
-      <td className='componentCells'> { statusInfo.steps } </td>
+      <td className='componentCells'> { statusInfo.success } </td>
     </tr>;
   }
 }

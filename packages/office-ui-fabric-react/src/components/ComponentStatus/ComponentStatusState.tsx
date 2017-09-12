@@ -292,28 +292,28 @@ export const ComponentStatusState: IComponentStatusState = {
 export interface IComponentStatusInfoState {
   name: string;
   description: string;
-  steps: string;
+  success: string;
 }
 
 export const ComponentStatusInfoState: [IComponentStatusInfoState] = [
   {
     name: 'Keyboard Accessibility Support',
-    description: 'For accessibility, components should be able to be used using the keyboad only.',
-    steps: 'For this badge to pass, all of the functionalities of a component should be accessible via the keyboard.'
+    description: 'For accessibility, components should be able to be used using the keyboard only.',
+    success: 'For this badge to pass, all of the functionalities of a component should be accessible via the keyboard.'
   },
   {
     name: 'High Contrast Support',
     description: 'For accessibility, components should display correctly in high contrast mode.',
-    steps: 'For this badge to pass, set your operating system to use high contrast, and ensure that the components renders correctly.'
+    success: 'For this badge to pass, set your operating system to use high contrast, and ensure that the components renders correctly.'
   },
   {
     name: 'RTL Support',
     description: 'Some languages are read from right to left (as oppposed to left to right). For localization, components should display corretly in right to left.',
-    steps: 'For this badge to pass, activate right to left on the top right corner of the sample website, and ensure that components are rendered properly.'
+    success: 'For this badge to pass, activate right to left on the top right corner of the sample website, and ensure that components are rendered properly.'
   },
   {
     name: 'Test Coverage',
     description: 'To make sure components behave as expected, and to avoid breaking them as new features are being added, they should be covered by unit tests.',
-    steps: 'Write unit tests that cover all edge cases and scenarios for this badge to display as "good".'
+    success: 'Write unit tests that cover all edge cases and scenarios for this badge to display as "good".'
   },
 ];
