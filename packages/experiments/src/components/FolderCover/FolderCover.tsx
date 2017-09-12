@@ -4,9 +4,12 @@ import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCov
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ISize } from '@uifabric/utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
+import * as SignalStylesModule from '../signals/Signals.scss';
 
 // tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
+// tslint:disable-next-line:no-any
+const SignalStyles = SignalStylesModule as any;
 
 export interface IFolderCoverState {
   // TODO Add animation support for drag/drop events.
@@ -100,6 +103,15 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           className={ css('ms-FolderCover-front', FolderCoverStyles.front) }
           src={ assets.front }
         />
+        {
+          this.props.signal ?
+            (
+              <span className={ css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark) }>
+                { this.props.signal }
+              </span>
+            ) :
+            null
+        }
         {
           this.props.metadata ?
             (

@@ -61,7 +61,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onSelectPrevYearKeyDown }
-              aria-label={ strings.prevYearAriaLabel }
+              aria-label={ strings.prevYearAriaLabel ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1)) : undefined }
               role='button'
               tabIndex={ 0 }
             >
@@ -71,7 +71,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onSelectNextYearKeyDown }
-              aria-label={ strings.nextYearAriaLabel }
+              aria-label={ strings.nextYearAriaLabel ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1)) : undefined }
               role='button'
               tabIndex={ 0 }
             >
@@ -80,26 +80,31 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
           </div>
         </div>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>{ dateTimeFormatter.formatYear(navigatedDate) }</div>
-          {
-            this.props.onHeaderSelect ?
-              <div
-                className={ css('ms-DatePicker-headerToggleView js-showYearPicker', styles.headerToggleView) }
-                onClick={ this._onHeaderSelect }
-                onKeyDown={ this._onHeaderKeyDown }
-                aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
-                role='button'
-                tabIndex={ 0 }
-              />
-              :
-              null
+          { this.props.onHeaderSelect ?
+            <div
+              className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView) }
+              onClick={ this._onHeaderSelect }
+              onKeyDown={ this._onHeaderKeyDown }
+              aria-label={ dateTimeFormatter.formatYear(navigatedDate) }
+              role='button'
+              tabIndex={ 0 }
+            >
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
+            :
+            <div className={ css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear) }>
+              { dateTimeFormatter.formatYear(navigatedDate) }
+            </div>
           }
         </div>
         <FocusZone>
-          <div className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }>
+          <div
+            className={ css('ms-DatePicker-optionGrid', styles.optionGrid) }
+            role='grid'
+          >
             { strings.shortMonths.map((month, index) =>
               <span
-                role='button'
+                role='gridcell'
                 className={
                   css('ms-DatePicker-monthOption',
                     styles.monthOption,
@@ -110,7 +115,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                 }
                 key={ index }
                 onClick={ this._selectMonthCallbacks[index] }
-                aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+                aria-label={ dateTimeFormatter.formatMonthYear(setMonth(navigatedDate, index), strings) }
+                aria-selected={ this._isCurrentMonth(index, navigatedDate.getFullYear(), today!) || (navigatedDate.getMonth() === index) }
                 data-is-focusable={ true }
                 ref={ navigatedDate.getMonth() === index ? 'navigatedMonth' : undefined }
               >

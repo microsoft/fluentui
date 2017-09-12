@@ -27,8 +27,7 @@ export class Spinner extends BaseComponent<ISpinnerProps, any> {
               ['ms-Spinner--large ' + styles.circleIsTypeLarge]: type === SpinnerType.large // TODO remove deprecated value at >= 2.0.0
             })
           }
-        >
-        </div>
+        />
         {
           label && <div className={ css('ms-Spinner-label', styles.label) }>{ label }</div>
         }
