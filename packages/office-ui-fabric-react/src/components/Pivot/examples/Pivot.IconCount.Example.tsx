@@ -33,9 +33,11 @@ export class PivotIconCountExample extends React.Component<any, any> {
   }
 
   private _customRenderer(link: IPivotItemProps, defaultRenderer: (link: IPivotItemProps) => JSX.Element): JSX.Element {
-    return <span>
-      { defaultRenderer(link) }
-      <Icon iconName='Airplane' style={ { 'color': 'red' } } />
-    </span>;
+    return (
+      <span>
+        { defaultRenderer(link) }
+        <Icon iconName='Airplane' style={ { 'color': 'red' } } />
+      </span>
+    );
   }
 }

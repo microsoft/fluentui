@@ -29,8 +29,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
               ]
             }
             }
-          >
-          </DefaultButton>
+          />
         </div>
       </div>
     );

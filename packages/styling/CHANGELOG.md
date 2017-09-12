@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+
+## 0.23.1
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Patches
+
+- Fixing circular dependency issue.
+
+## 0.23.0
+Mon, 11 Sep 2017 10:08:07 GMT
+
+### Minor changes
+
+- Adding the `getIconClassName` function, which will provide a way for partners to generate a given icon class name. This replaces the implicit `ms-Icon--*` pattern being used now, as well as using IconClassNames, which will go away in Fabric 5.
 
 ## 0.22.1
 Mon, 04 Sep 2017 10:16:56 GMT
