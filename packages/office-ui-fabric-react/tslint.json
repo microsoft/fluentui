@@ -6,8 +6,6 @@
     "jsx-no-string-ref": false,
     "jsx-key": false,
     "jsx-boolean-value": false,
-    "jsx-no-multiline-js": false,
-    "jsx-wrap-multiline": false,
     "jsx-no-lambda": false,
     "jsx-ban-props": false,
     "max-line-length": [
