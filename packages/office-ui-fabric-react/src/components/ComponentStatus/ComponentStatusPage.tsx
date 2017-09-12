@@ -6,17 +6,23 @@ import './ComponentStatusPage.scss';
 
 export class ComponentStatusPage extends React.Component<{}, {}> {
   public render() {
-    let sections: [IComponentPageSection] = [{ title: 'Status', section: this._renderComponents() }];
+    let sections: [IComponentPageSection] = [{ title: 'Types of Badges', section: this._renderStatusesInfo() }, { title: 'Status', section: this._renderComponents() }];
 
     return (
       <ComponentPage
         title='Component Checklist'
         componentName='Component Checklist'
-        overview={ this._renderStatusesInfo() }
+        overview={ this._renderOverView() }
         otherSections={ sections }
       >
       </ComponentPage >
     );
+  }
+
+  private _renderOverView(): JSX.Element {
+    return <div>
+      Component Status overview.
+    </div>;
   }
 
   private _renderComponents(): JSX.Element {
@@ -42,19 +48,24 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
 
   private _renderStatusesInfo() {
     return <div>
-      <ul>
+      <table className='componentTable'>
+        <tr>
+          <th className='componentCells'>Badge</th>
+          <th className='componentCells'>Description</th>
+          <th className='componentCells'>Success</th>
+        </tr>
         { ComponentStatusInfoState.map((name) => {
           return this._renderStatusInfo(name);
         }) }
-      </ul>
+      </table>
     </div>;
   }
 
   private _renderStatusInfo(statusInfo: IComponentStatusInfoState) {
-    return <li key={ statusInfo.name + '-key' } >
-      <h2> { statusInfo.name } </h2>
-      <h3> { statusInfo.description } </h3>
-      <h3> { statusInfo.steps } </h3>
-    </li>;
+    return <tr key={ statusInfo.name + '-key' }>
+      <td className='componentCells'> { statusInfo.name } </td>
+      <td className='componentCells'> { statusInfo.description } </td>
+      <td className='componentCells'> { statusInfo.steps } </td>
+    </tr>;
   }
 }

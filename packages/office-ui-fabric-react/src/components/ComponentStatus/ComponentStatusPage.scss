@@ -9,4 +9,15 @@
   .componentListItem {
     border-bottom: 1px solid black;
   }
+
+  .componentTable {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .componentCells{
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
 }
