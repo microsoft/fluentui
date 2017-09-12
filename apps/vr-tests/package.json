@@ -1,0 +1,49 @@
+{
+  "name": "vr-tests",
+  "description": "Visual Regression Tests for Office UI Fabric React",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "_webpack": "node ../../scripts/build.js webpack",
+    "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
+    "_test": "npm run _webpack && npm run _mocha",
+    "build": "",
+    "clean": "",
+    "screener": "screener-storybook --conf screener.config.js",
+    "storybook": "start-storybook --port 5555"
+  },
+  "devDependencies": {
+    "@storybook/addon-options": "=3.2.3",
+    "@storybook/react": "^3.2.3",
+    "@types/chai": "3.4.35",
+    "@types/enzyme": "2.8.0",
+    "@types/es6-promise": "^0.0.32",
+    "@types/mocha": "2.2.39",
+    "@types/react": "15.0.38",
+    "@types/react-addons-test-utils": "0.14.18",
+    "@types/react-dom": "15.5.1",
+    "@types/storybook__react": "=3.0.5",
+    "@types/webpack-env": "1.13.0",
+    "css-loader": "=0.27.3",
+    "file-loader": "=0.11.1",
+    "postcss-loader": "=1.3.3",
+    "raw-loader": "=0.5.1",
+    "style-loader": "=0.16.1",
+    "ts-loader": "=2.0.3",
+    "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
+    "react-addons-test-utils": "^15.4.2",
+    "screener-storybook": "^0.8.8",
+    "screener-runner": "^0.6.19",
+    "storybook-readme": "=3.0.6"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "^1.5.1",
+    "es6-promise": "^4.1.0",
+    "immutability-helper": "^2.0.0",
+    "office-ui-fabric-react": ">=4.45.0 <5.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "typescript": "2.4.2",
+    "tslib": "^1.7.1"
+  }
+}
