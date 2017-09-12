@@ -23,7 +23,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     const testCoverageSubject = 'Test Coverage';
 
     return (
-      <div>
+      <div className='ComponentStatus-div'>
         <a
           href='https://www.google.com'
           className='ComponentStatus-badge'
