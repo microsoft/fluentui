@@ -34,6 +34,7 @@
   var dogfood = getParameterByName('isDogfood');
   var production = getParameterByName('isProduction');
 
+  // @TODO: change this to only check for production
   switch (true) {
     case location.hostname === 'dev.office.com' || production:
       isProduction = true;
@@ -44,8 +45,6 @@
     case location.hostname === 'officedevcentersite-release.azurewebsites.net':
       isProduction = true;
       break;
-    case location.hostname === 'localhost':
-      isLocal = true;
   }
 
   function loadScript(n) {
@@ -76,8 +75,6 @@
 
   if (devUrl) {
     scripts.push(devUrl);
-  } else if (isLocal) {
-    scripts.push(entryPointFilename + '.js');
   } else if (isDogfood) {
     if (noCompress) {
       scripts.push(baseDogfoodUrl + entryPointFilename + '.min.js?date=' + Date.now());
