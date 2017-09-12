@@ -461,25 +461,25 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       !this.props.multiSelect ?
         (
           <CommandButton
-          id={ id + '-list' + item.index }
-          ref={ Dropdown.Option + item.index }
-          key={ item.key }
-          data-index={ item.index }
-          data-is-focusable={ true }
-          className={ css(
-            'ms-Dropdown-item', styles.item, {
-              ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
-              ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
-            }
-          ) }
-          onClick={ this._onItemClick(item.index!) }
-          role='option'
-          aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-          ariaLabel={ item.ariaLabel || item.text }
-          title={ item.text }
-        >
-          { onRenderOption(item, this._onRenderOption) }
-        </CommandButton>
+            id={ id + '-list' + item.index }
+            ref={ Dropdown.Option + item.index }
+            key={ item.key }
+            data-index={ item.index }
+            data-is-focusable={ true }
+            className={ css(
+              'ms-Dropdown-item', styles.item, {
+                ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
+                ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+              }
+            ) }
+            onClick={ this._onItemClick(item.index!) }
+            role='option'
+            aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
+            ariaLabel={ item.ariaLabel || item.text }
+            title={ item.text }
+          >
+            { onRenderOption(item, this._onRenderOption) }
+          </CommandButton>
         ) : (
           <Checkbox
             id={ id + '-list' + item.index }
