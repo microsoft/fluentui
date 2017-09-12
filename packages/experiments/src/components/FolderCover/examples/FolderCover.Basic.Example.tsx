@@ -3,6 +3,8 @@ import * as React from 'react';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../FolderCover';
 import { IFolderCoverProps } from '../FolderCover.Props';
 import { ISize, fitContentToBounds } from '@uifabric/utilities';
+import { SharedSignal } from '../../signals/Signals';
+import { lorem } from '@uifabric/example-app-base';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
@@ -51,6 +53,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           }
           folderCoverSize='large'
           metadata={ 20 }
+          signal={ <SharedSignal /> }
         />
         <h3>Small Default Cover</h3>
         <FolderCoverWithImage
@@ -73,7 +76,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           }
           folderCoverSize='large'
           folderCoverType='media'
-          metadata={ 20 }
+          metadata={ lorem(5) }
         />
         <h3>Small Media Cover</h3>
         <FolderCoverWithImage
@@ -86,6 +89,19 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           folderCoverSize='small'
           folderCoverType='media'
           metadata={ 15 }
+        />
+        <h3>Shared Cover</h3>
+        <FolderCoverWithImage
+          originalImageSize={
+            {
+              width: 200,
+              height: 150
+            }
+          }
+          folderCoverSize='small'
+          folderCoverType='media'
+          metadata={ 15 }
+          signal={ <SharedSignal /> }
         />
       </div>
     );
