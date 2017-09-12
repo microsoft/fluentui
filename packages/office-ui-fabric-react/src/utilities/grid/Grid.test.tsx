@@ -22,11 +22,13 @@ const DEFAULT_ITEMS: any[] = [
 describe('Grid', () => {
 
   it('Can render a grid with width of four', () => {
-    let wrapper = shallow(<Grid
-      items={ DEFAULT_ITEMS }
-      columnCount={ 4 }
-      onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
-    />);
+    let wrapper = shallow(
+      <Grid
+        items={ DEFAULT_ITEMS }
+        columnCount={ 4 }
+        onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
+      />
+    );
     expect(wrapper.find('table[role="grid"]').length).to.equal(1, 'expect to have one table with role="grid"');
     expect(wrapper.find('tr[role="row"]').length).to.equal(2, 'expect to have 2 rows with role="row"');
     expect(wrapper.find('td [role="gridcell"]').length).to.equal(8, 'expect to have 8 cells with role="gridcell"');
@@ -34,11 +36,13 @@ describe('Grid', () => {
     expect(wrapper.find('[aria-setsize]').length).to.equal(0, 'expect to not have aria-setsize set');
   });
   it('Can render a grid with width of 2', () => {
-    let wrapper = shallow(<Grid
-      items={ DEFAULT_ITEMS }
-      columnCount={ 2 }
-      onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
-    />);
+    let wrapper = shallow(
+      <Grid
+        items={ DEFAULT_ITEMS }
+        columnCount={ 2 }
+        onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
+      />
+    );
     expect(wrapper.find('table[role="grid"]').length).to.equal(1, 'expect to have one table with role="grid"');
     expect(wrapper.find('tr[role="row"]').length).to.equal(4, 'expect to have 2 rows with role="row"');
     expect(wrapper.find('td [role="gridcell"]').length).to.equal(8, 'expect to have 8 cells with role="gridcell"');
@@ -46,13 +50,15 @@ describe('Grid', () => {
     expect(wrapper.find('[aria-setsize]').length).to.equal(0, 'expect to not have aria-setsize set');
   });
   it('Can render a grid with posInSet and setSize', () => {
-    let wrapper = shallow(<Grid
-      items={ DEFAULT_ITEMS }
-      columnCount={ 2 }
-      onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
-      positionInSet={ 1 }
-      setSize={ 2 }
-    />);
+    let wrapper = shallow(
+      <Grid
+        items={ DEFAULT_ITEMS }
+        columnCount={ 2 }
+        onRenderItem={ (item: any, index: number) => { return <DefaultButton role='gridcell'>item.text</DefaultButton>; } }
+        positionInSet={ 1 }
+        setSize={ 2 }
+      />
+    );
     expect(wrapper.find('table[role="grid"]').length).to.equal(1, 'expect to have one table with role="grid"');
     expect(wrapper.find('tr[role="row"]').length).to.equal(4, 'expect to have 2 rows with role="row"');
     expect(wrapper.find('td [role="gridcell"]').length).to.equal(8, 'expect to have 8 cells with role="gridcell"');

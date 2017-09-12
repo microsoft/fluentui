@@ -116,16 +116,18 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     } = this.state;
 
     const nativeProps = getNativeProps(this.props, inputProperties);
-    return <input
-      { ...nativeProps}
-      ref={ this._resolveRef('_inputElement') }
-      value={ displayValue }
-      autoCapitalize={ 'off' }
-      autoComplete={ 'off' }
-      onChange={ this._onChange }
-      onKeyDown={ this._onKeyDown }
-      onClick={ this.props.onClick ? this.props.onClick : this._onClick }
-    />;
+    return (
+      <input
+        { ...nativeProps}
+        ref={ this._resolveRef('_inputElement') }
+        value={ displayValue }
+        autoCapitalize={ 'off' }
+        autoComplete={ 'off' }
+        onChange={ this._onChange }
+        onKeyDown={ this._onKeyDown }
+        onClick={ this.props.onClick ? this.props.onClick : this._onClick }
+      />
+    );
   }
 
   public focus() {

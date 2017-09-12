@@ -120,6 +120,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { firstDayOfWeek, dateRangeType, strings, showMonthPickerAsOverlay, autoNavigateOnSelection, showGoToToday, highlightCurrentMonth, navigationIcons } = this.props;
     let { selectedDate, navigatedDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     let onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
+    let monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root' role='application'>
@@ -131,6 +132,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
             styles.pickerIsFocused,
             isMonthPickerVisible && ('ms-DatePicker-monthPickerVisible ' + styles.monthPickerVisible),
             isMonthPickerVisible && isDayPickerVisible && ('ms-DatePicker-calendarsInline ' + styles.calendarsInline),
+            monthPickerOnly && ('ms-DatePicker-monthPickerOnly ' + styles.monthPickerOnly)
           ) }
         >
           <div className={ css('ms-DatePicker-holder ms-slideDownIn10', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
@@ -201,13 +203,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-    if (this.props.isDayPickerVisible) {
-      this._navigateDay(date);
-      this._focusOnUpdate = focusOnNavigatedDay;
-    } else {
-      // if only the month picker is shown, select the chosen month
-      this._onSelectDate(date);
-    }
+    this._navigateDay(date);
+    this._focusOnUpdate = focusOnNavigatedDay;
   }
 
   @autobind

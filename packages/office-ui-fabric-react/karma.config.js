@@ -106,7 +106,15 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: true,
+
+    // on disconnect, makes karma to launch another phantonJs window to restart the testcases
+    browserDisconnectTolerance: 5,
+
+    // these settings help reduce the timeouts to begin with.
+    browserNoActivityTimeout: 60000,
+    browserDisconnectTimeout: 30000,
+    captureTimeout: 60000,
   };
 
   config.set(karmaConfig);
