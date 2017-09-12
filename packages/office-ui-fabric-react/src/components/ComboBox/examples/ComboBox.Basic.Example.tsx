@@ -58,8 +58,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
 
         <ComboBox
@@ -71,8 +71,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
 
         <ComboBox
@@ -84,8 +84,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='on'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
 
         <ComboBox
@@ -97,8 +97,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           autoComplete='off'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
 
         <ComboBox
@@ -108,8 +108,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
           errorMessage='Error! Here is some text!'
           options={ this._testOptions }
           onRenderOption={ this._onRenderFontOption }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
 
         <ComboBox
@@ -127,8 +127,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             ]
           }
           disabled={ true }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
+          onFocus={ this._log('onFocus called') }
+          onBlur={ this._log('onBlur called') }
         />
 
         { value ?
@@ -143,8 +143,8 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onResolveOptions={ this._getOptions }
             value={ value && value }
             onRenderOption={ this._onRenderFontOption }
-            onFocus={ () => console.log('onFocus called') }
-            onBlur={ () => console.log('onBlur called') }
+            onFocus={ this._log('onFocus called') }
+            onBlur={ this._log('onBlur called') }
           />
           :
           <ComboBox
@@ -158,13 +158,19 @@ export class ComboBoxBasicExample extends React.Component<any, any> {
             onChanged={ this._onChanged }
             onResolveOptions={ this._getOptions }
             onRenderOption={ this._onRenderFontOption }
-            onFocus={ () => console.log('onFocus called') }
-            onBlur={ () => console.log('onBlur called') }
+            onFocus={ this._log('onFocus called') }
+            onBlur={ this._log('onBlur called') }
           />
         }
       </div>
 
     );
+  }
+
+  private _log(str: string): () => void {
+    return (): void => {
+      console.log(str);
+    };
   }
 
   // Render content of item

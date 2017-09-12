@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ContextualMenu, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
@@ -173,10 +173,10 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
         { showCallout && (
           <Callout
             setInitialFocus={ true }
-            onDismiss={ () => this.setState({ showCallout: false }) }
+            onDismiss={ this._setShowCalloutFalse }
           >
             <DefaultButton
-              onClick={ () => this.setState({ showCallout: false }) }
+              onClick={ this._setShowCalloutFalse }
               text='Hello world'
             />
           </Callout>
@@ -191,5 +191,10 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
 
   private _onDismiss(event: any) {
     this.setState({ isContextMenuVisible: false });
+  }
+
+  @autobind
+  private _setShowCalloutFalse(): void {
+    this.setState({ showCallout: false });
   }
 }
