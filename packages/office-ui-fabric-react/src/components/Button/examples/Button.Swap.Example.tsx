@@ -45,22 +45,25 @@ export class ButtonSwapExample extends React.Component<IButtonProps, IButtonSwap
 
     // determine which button to render
     let button = isPrimary
-      ? <PrimaryButton
-        ref={ this._setButtonRef }
-        disabled={ disabled }
-        checked={ checked }
-        onClick={ this._onClick }
-      >
-        { text }
-      </PrimaryButton>
-      : <DefaultButton
-        ref={ this._setButtonRef }
-        disabled={ disabled }
-        checked={ checked }
-        onClick={ this._onClick }
-      >
-        { text }
-      </DefaultButton>;
+      ? (
+        <PrimaryButton
+          ref={ this._setButtonRef }
+          disabled={ disabled }
+          checked={ checked }
+          onClick={ this._onClick }
+        >
+          { text }
+        </PrimaryButton>
+      ) : (
+        <DefaultButton
+          ref={ this._setButtonRef }
+          disabled={ disabled }
+          checked={ checked }
+          onClick={ this._onClick }
+        >
+          { text }
+        </DefaultButton>
+      );
 
     return (
       <div className='ms-BasicButtonsExample'>

@@ -65,7 +65,17 @@ export interface ICalendarButtonExampleState {
   selectedDate: Date | null;
 }
 
-export class CalendarButtonExample extends React.Component<any, ICalendarButtonExampleState> {
+export interface ICalendarButtonExampleProps {
+  isDayPickerVisible?: boolean;
+  buttonString?: string;
+}
+
+export class CalendarButtonExample extends React.Component<ICalendarButtonExampleProps, ICalendarButtonExampleState> {
+  public static defaultProps: ICalendarButtonExampleProps = {
+    isDayPickerVisible: true,
+    buttonString: 'Click for Calendar'
+  };
+
   private _calendarButtonElement: HTMLElement;
 
   public constructor() {
@@ -87,7 +97,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
         <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn! }>
           <DefaultButton
             onClick={ this._onClick }
-            text={ !this.state.selectedDate ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
+            text={ !this.state.selectedDate ? this.props.buttonString : this.state.selectedDate.toLocaleDateString() }
           />
         </div>
         { this.state.showCalendar && (
@@ -108,6 +118,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
               value={ this.state.selectedDate! }
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
+              isDayPickerVisible={ this.props.isDayPickerVisible }
             >
             </Calendar>
           </Callout>

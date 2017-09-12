@@ -11,6 +11,7 @@ import {
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -124,25 +125,27 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
     }
 
     let divProps = getNativeProps(this.props, divProperties);
-    let personaDetails = <div className={ css('ms-Persona-details', styles.details) }>
-      { this._renderElement(
-        this.props.primaryText,
-        css('ms-Persona-primaryText', styles.primaryText),
-        onRenderPrimaryText) }
-      { this._renderElement(
-        this.props.secondaryText,
-        css('ms-Persona-secondaryText', styles.secondaryText),
-        onRenderSecondaryText) }
-      { this._renderElement(
-        this.props.tertiaryText,
-        css('ms-Persona-tertiaryText', styles.tertiaryText),
-        onRenderTertiaryText) }
-      { this._renderElement(
-        this.props.optionalText,
-        css('ms-Persona-optionalText', styles.optionalText),
-        onRenderOptionalText) }
-      { this.props.children }
-    </div>;
+    let personaDetails = (
+      <div className={ css('ms-Persona-details', styles.details) }>
+        { this._renderElement(
+          this.props.primaryText,
+          css('ms-Persona-primaryText', styles.primaryText),
+          onRenderPrimaryText) }
+        { this._renderElement(
+          this.props.secondaryText,
+          css('ms-Persona-secondaryText', styles.secondaryText),
+          onRenderSecondaryText) }
+        { this._renderElement(
+          this.props.tertiaryText,
+          css('ms-Persona-tertiaryText', styles.tertiaryText),
+          onRenderTertiaryText) }
+        { this._renderElement(
+          this.props.optionalText,
+          css('ms-Persona-optionalText', styles.optionalText),
+          onRenderOptionalText) }
+        { this.props.children }
+      </div>
+    );
 
     return (
       <div
@@ -189,7 +192,10 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
     return (
       <div className={ className }>
-        { render ? render(this.props) : text }
+        { render
+          ? render(this.props)
+          : <TooltipHost content={ text } overflowMode={ TooltipOverflowMode.Parent }>{ text }</TooltipHost>
+        }
       </div>
     );
   }

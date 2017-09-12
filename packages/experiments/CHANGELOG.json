@@ -2,6 +2,66 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.5.1",
+      "tag": "@uifabric/experiments_v0.5.1",
+      "date": "Fri, 08 Sep 2017 10:16:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "ebde5bae7f28a13f3a838db51c63d66b1d2d1328",
+            "comment": "Fix alignment of Tile foreground and background using flexbox"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "20cf30afccaf99a2d1a92a642bfb0b9a1359c365",
+            "comment": "Add breakpoint size support to Tile"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.42.0 <5.0.0` to `>=4.43.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.5.0",
+      "tag": "@uifabric/experiments_v0.5.0",
+      "date": "Thu, 07 Sep 2017 10:09:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "4df2e769a72b290ac2fda4f0dc54f928d4f67663",
+            "comment": "Removed global fabric export"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "410d0e751e045102354d4da01b514a31ff0a2b8d",
+            "comment": "Add presentation hooks for Tile and FolderCover"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "59db16443e9a9eb067736f2ce480be2bc23a0def",
+            "comment": "Support auto-focus for TilesList"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "19c7d3ad379a5f9c10f16e9a2a4e2726db21bd45",
+            "comment": "Fix minor alignment issues with SignalField"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.41.0 <5.0.0` to `>=4.42.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@uifabric/experiments_v0.4.0",
       "date": "Mon, 04 Sep 2017 10:16:56 GMT",
