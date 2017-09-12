@@ -59,8 +59,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
             </ul>
           </div>
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

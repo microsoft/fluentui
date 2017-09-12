@@ -109,7 +109,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -140,8 +140,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 

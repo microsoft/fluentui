@@ -45,7 +45,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -57,11 +57,10 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         donts={
-          <div></div>
+          <div />
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

@@ -50,8 +50,7 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }
