@@ -101,6 +101,12 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
   menuIconProps?: IIconProps;
 
   /**
+   * If set to true, there will be no separate menu icon added to this control.
+   * This should only be set when the icon for the button is able to communicate that it invokes a menu.
+   */
+  hideMenuIcon?: boolean;
+
+  /**
    * Custom render function for the icon
    */
   onRenderIcon?: IRenderFunction<IButtonProps>;
