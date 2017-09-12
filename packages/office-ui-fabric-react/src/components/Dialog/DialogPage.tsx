@@ -53,7 +53,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -83,8 +83,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
           <a href='https://dev.office.com/fabric-js/Components/Dialog/Dialog.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

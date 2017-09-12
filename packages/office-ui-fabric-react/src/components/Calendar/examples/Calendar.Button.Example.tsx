@@ -119,8 +119,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
               isDayPickerVisible={ this.props.isDayPickerVisible }
-            >
-            </Calendar>
+            />
           </Callout>
         )
         }
