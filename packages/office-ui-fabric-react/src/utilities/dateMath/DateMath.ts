@@ -207,6 +207,28 @@ function getDatePartHashValue(date: Date) {
 export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
   let selectedYear = navigatedDate.getFullYear();
   let selectedMonth = navigatedDate.getMonth();
+  let previousWeekNumber = 0;
+
+  //If first day of week is not Sunday, use alternative calculations
+  if (firstDayOfWeek === 0) {
+    let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
+    let getDayofYear = getDayOfYear(addDays(firstDayOfMonth, firstDayOfWeek + 1));
+    previousWeekNumber = Math.ceil(getDayofYear / DAYS_IN_WEEK) - 1;
+  } else {
+    previousWeekNumber = getPreviousWeekNumbers(firstDayOfWeek, navigatedDate)
+  }
+
+  let weeksArray = [];
+  for (let i = 1; i < weeks.length + 1; i++) {
+    weeksArray.push(previousWeekNumber + i);
+  }
+
+  return weeksArray;
+}
+
+function getPreviousWeekNumbers(firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
+  let selectedYear = navigatedDate.getFullYear();
+  let selectedMonth = navigatedDate.getMonth();
   let weekNumbersTotal = 0;
 
   //Get week numbers up to navigated month
@@ -232,12 +254,7 @@ export function getWeekNumbers(weeks: any[], firstDayOfWeek: DayOfWeek, navigate
     weekNumbersTotal = firstOfMonth.getDay() !== firstDayOfWeek ? weekNumbersTotal - 1 : weekNumbersTotal;
   }
 
-  let weeksArray = [];
-  for (let i = 1; i < weeks.length + 1; i++) {
-    weeksArray.push(weekNumbersTotal + i);
-  }
-
-  return weeksArray;
+  return weekNumbersTotal;
 }
 
 /**
