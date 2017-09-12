@@ -103,7 +103,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               ref='list'
               items={ groups }
               onRenderCell={ this._renderGroup }
-              getItemCountForPage={ () => 1 }
+              getItemCountForPage={ this._returnOne }
               usePageCache={ usePageCache }
               onShouldVirtualize={ onShouldVirtualize }
             />
@@ -194,6 +194,10 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         viewport={ viewport }
       />
     );
+  }
+
+  private _returnOne(): number {
+    return 1;
   }
 
   private _getGroupKey(group: IGroup, index: number): string {
