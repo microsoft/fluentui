@@ -69,30 +69,34 @@ export function registerIcons(iconSubset: IIconSubset): void {
  * @param name - Name of icon.
  */
 export function getIcon(name?: string): IIconRecord | undefined {
+  let icon: IIconRecord | undefined = undefined;
+
   name = name ? name.toLowerCase() : '';
 
-  let icon: IIconRecord = _icons[name!];
+  if (name) {
+    icon = _icons[name!];
 
-  if (icon) {
-    let { subset } = icon;
+    if (icon) {
+      let { subset } = icon;
 
-    if (!subset.isRegistered) {
-      // Register font face for given icons.
-      fontFace(subset.fontFace);
+      if (!subset.isRegistered) {
+        // Register font face for given icons.
+        fontFace(subset.fontFace);
 
-      // Generate a base class name for the given font.
-      subset.className = mergeStyles(
-        subset.style,
-        {
-          fontFamily: subset.fontFace.fontFamily,
-          fontWeight: subset.fontFace.fontWeight || 'normal',
-          fontStyle: subset.fontFace.fontStyle || 'normal'
-        }).toString();
+        // Generate a base class name for the given font.
+        subset.className = mergeStyles(
+          subset.style,
+          {
+            fontFamily: subset.fontFace.fontFamily,
+            fontWeight: subset.fontFace.fontWeight || 'normal',
+            fontStyle: subset.fontFace.fontStyle || 'normal'
+          }).toString();
 
-      subset.isRegistered = true;
+        subset.isRegistered = true;
+      }
+    } else {
+      warn(`The icon "${name}" was referenced but not registered.`);
     }
-  } else {
-    warn(`The icon "${name}" was referenced but not registered.`);
   }
 
   return icon;
