@@ -335,9 +335,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onIconClick(ev: React.MouseEvent<HTMLElement>) {
-    console.log("Click click click!!")
     ev.stopPropagation();
-    this._onTextFieldClick(ev)
+    this._onTextFieldClick(ev);
   }
 
   private _showDatePickerPopup() {
