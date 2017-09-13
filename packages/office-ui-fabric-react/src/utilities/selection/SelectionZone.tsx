@@ -47,7 +47,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selectionPreservedOnEmptyClick?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
-  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
+  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
@@ -227,8 +227,14 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
       if (itemRoot) {
         const index = this._getItemIndex(itemRoot);
-        onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
-        ev.preventDefault();
+        const shouldPreventDefault = onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
+
+        // In order to keep back compat, if the value here is undefined, then we should still
+        // call preventDefault(). Only in the case where false is explicitly returned should
+        // the call be skipped.
+        if (shouldPreventDefault !== false) {
+          ev.preventDefault();
+        }
       }
     }
   }

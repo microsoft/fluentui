@@ -448,7 +448,10 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   }
 
   @autobind
-  private _onItemContextMenu(item: any, index: number) {
+  private _onItemContextMenu(item: any, index: number, ev: MouseEvent) {
+    if ((ev.target as HTMLElement).nodeName === 'A') {
+      return false;
+    }
     console.log('Item context menu invoked', item, index);
   }
 
