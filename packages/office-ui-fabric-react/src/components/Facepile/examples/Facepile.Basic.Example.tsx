@@ -3,11 +3,13 @@ import {
   Checkbox,
   Dropdown,
   Facepile,
+  IDropdownOption,
   IFacepilePersona,
   IFacepileProps,
   PersonaSize,
   Slider
 } from 'office-ui-fabric-react/lib/index';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
@@ -67,22 +69,14 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             step={ 1 }
             showValue={ true }
             value={ numberOfFaces }
-            onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-              prevState.numberOfFaces = value;
-              return prevState;
-            }) }
+            onChange={ this._onChangePersonaNumber }
           />
         </div>
         <Checkbox
           className={ exampleStyles.exampleCheckbox }
           label='Fade In'
           checked={ this.state.imagesFadeIn }
-          onChange={ (ev, checked) => {
-            this.setState((prevState: IFacepileBasicExampleState) => {
-              prevState.imagesFadeIn = checked!;
-              return prevState;
-            });
-          } }
+          onChange={ this._onChangeFadeIn }
         />
         <Dropdown
           label='Persona Size:'
@@ -93,10 +87,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] }
             ]
           }
-          onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-            prevState.personaSize = value.key as PersonaSize;
-            return prevState;
-          }) }
+          onChanged={ this._onChangePersonaSize }
         />
         <Dropdown
           label='Additional Data:'
@@ -107,12 +98,41 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] }
             ]
           }
-          onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-            prevState.extraDataType = value.key as ExtraDataType;
-            return prevState;
-          }) }
+          onChanged={ this._onChangeAddtlData }
         />
       </div>
     );
+  }
+
+  @autobind
+  private _onChangeAddtlData(value: IDropdownOption): void {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.extraDataType = value.key as ExtraDataType;
+      return prevState;
+    });
+  }
+
+  @autobind
+  private _onChangeFadeIn(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.imagesFadeIn = checked!;
+      return prevState;
+    });
+  }
+
+  @autobind
+  private _onChangePersonaNumber(value: number): void {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.numberOfFaces = value;
+      return prevState;
+    });
+  }
+
+  @autobind
+  private _onChangePersonaSize(value: IDropdownOption): void {
+    this.setState((prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
+      prevState.personaSize = value.key as PersonaSize;
+      return prevState;
+    });
   }
 }
