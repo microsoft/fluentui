@@ -26,6 +26,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     return (
       <div className='ComponentStatus-div'>
         <a
+          role='link'
+          aria-label={ 'Keyboard accessibility support. ' + this._badgeStatusString(this.props.keyboardAccessibilitySupport) }
           href='https://www.google.com'
           className='ComponentStatus-badge'
         >
@@ -38,6 +40,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
+          role='link'
+          aria-label={ 'Markup support. ' + this._badgeStatusString(this.props.markupSupport) }
           href='https://www.google.com'
           className='ComponentStatus-badge'
         >
@@ -50,6 +54,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
+          role='link'
+          aria-label={ 'High contrast support. ' + this._badgeStatusString(this.props.highContrastSupport) }
           href='https://www.google.com'
           className='ComponentStatus-badge'
         >
@@ -62,6 +68,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
+          role='link'
+          aria-label={ 'Right to left support. ' + this._badgeStatusString(this.props.rtlSupport) }
           href='https://www.google.com'
           className='ComponentStatus-badge'
         >
@@ -74,6 +82,8 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
+          role='link'
+          aria-label={ 'Test coverage. ' + this.props.testCoverage }
           href='https://www.google.com'
           className='ComponentStatus-badge'
         >
@@ -85,7 +95,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
             }
           />
         </a>
-      </div>
+      </div >
     );
   }
 
