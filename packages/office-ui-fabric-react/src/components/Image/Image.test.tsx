@@ -20,10 +20,12 @@ const brokenImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgFcSJAAAAC0lEQVQ
 describe('Image', () => {
 
   it('renders an image', (done) => {
+    const returnDone = (): void => done();
+
     ReactTestUtils.renderIntoDocument(
       <Image
         src={ testImage1x1 }
-        onLoad={ done }
+        onLoad={ returnDone }
       />
     );
   });
@@ -127,10 +129,11 @@ describe('Image', () => {
   });
 
   it('allows onError events to be attached', (done) => {
+    const returnDone = (): void => done();
     ReactTestUtils.renderIntoDocument(
       <Image
         src={ brokenImage }
-        onError={ done }
+        onError={ returnDone }
       />
     );
   });
