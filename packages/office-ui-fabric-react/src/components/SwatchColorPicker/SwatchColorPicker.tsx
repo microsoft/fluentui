@@ -67,17 +67,21 @@ export class SwatchColorPicker extends BaseComponent<ISwatchColorPickerProps, IS
   public render() {
     let {
       colorCells,
+      columnCount,
       positionInSet,
       setSize,
       shouldFocusCircularNavigate,
       className
     } = this.props;
 
+    if (colorCells.length < 1 || columnCount < 1) {
+      return null;
+    }
+
     return (
       <Grid
-        key={ this._id + colorCells[0].id + '-grid' }
         items={ colorCells.map((item, index) => { return { ...item, index }; }) }
-        columnCount={ this.props.columnCount }
+        columnCount={ columnCount }
         onRenderItem={ this._renderOption }
         positionInSet={ positionInSet && positionInSet }
         setSize={ setSize && setSize }

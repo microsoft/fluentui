@@ -67,6 +67,7 @@ export interface ICalendarButtonExampleState {
 
 export interface ICalendarButtonExampleProps {
   isDayPickerVisible?: boolean;
+  highlightCurrentMonth?: boolean;
   buttonString?: string;
 }
 
@@ -119,6 +120,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
               isDayPickerVisible={ this.props.isDayPickerVisible }
+              highlightCurrentMonth={ this.props.highlightCurrentMonth }
             />
           </Callout>
         )
