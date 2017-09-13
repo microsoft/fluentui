@@ -87,7 +87,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -121,8 +121,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           <a href='https://dev.office.com/fabric-js/Components/SearchBox/SearchBox.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 

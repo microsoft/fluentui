@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Button: Add support for dividers in split buttons",
+      "comment": "DetailsList: Update DetailsRow Check target size to be larger",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "v-edwliu@microsoft.com"
 }

@@ -5,20 +5,22 @@ import * as React from 'react';
 export default class DetailsListVPage extends React.Component<any, any> {
 
   public render() {
-    return <div style={ { width: '600px' } }>
-      <DetailsList
-        className='DetailsList'
-        items={ [{
-          key: 'score',
-          name: 'Score',
-          fieldName: 'score'
-        },
-        {
-          key: 'name',
-          name: 'Name',
-          fieldName: 'Name'
-        }] }
-      />
-    </div>;
+    return (
+      <div style={ { width: '600px' } }>
+        <DetailsList
+          className='DetailsList'
+          items={ [{
+            key: 'score',
+            name: 'Score',
+            fieldName: 'score'
+          },
+          {
+            key: 'name',
+            name: 'Name',
+            fieldName: 'Name'
+          }] }
+        />
+      </div>
+    );
   }
 }

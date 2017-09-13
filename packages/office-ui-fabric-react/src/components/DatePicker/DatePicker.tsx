@@ -230,8 +230,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
               ref={ this._resolveRef('_calendar') }
-            >
-            </Calendar>
+            />
           </Callout>
         ) }
       </div>

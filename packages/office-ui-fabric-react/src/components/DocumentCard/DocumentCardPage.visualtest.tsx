@@ -15,23 +15,24 @@ export default class DocumentCardVPage extends React.Component<any, any> {
         }
       ],
     };
-    return <div >
-      <DocumentCard className='DocumentCard'>
-        <DocumentCardPreview { ...previewProps } />
-        <DocumentCardTitle
-          title='Document Card'
-          shouldTruncate={ true }
-        />
-        <DocumentCardActivity
-          activity='Created a few minutes ago'
-          people={
-            [
-              { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' }
-            ]
-          }
-        />
-      </DocumentCard>
-
-    </div>;
+    return (
+      <div >
+        <DocumentCard className='DocumentCard'>
+          <DocumentCardPreview { ...previewProps } />
+          <DocumentCardTitle
+            title='Document Card'
+            shouldTruncate={ true }
+          />
+          <DocumentCardActivity
+            activity='Created a few minutes ago'
+            people={
+              [
+                { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' }
+              ]
+            }
+          />
+        </DocumentCard>
+      </div>
+    );
   }
 }

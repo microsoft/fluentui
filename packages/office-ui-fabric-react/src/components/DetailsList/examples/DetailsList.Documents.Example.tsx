@@ -207,14 +207,14 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         <Toggle
           label='Enable Compact Mode'
           checked={ isCompactMode }
-          onChanged={ checked => this.setState({ isCompactMode: checked }) }
+          onChanged={ this._onChangeToggle }
           onText='Compact'
           offText='Normal'
         />
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+          onChanged={ this._onChangeText }
         />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
@@ -226,11 +226,25 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             isHeaderVisible={ true }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onItemInvoked={ this._onItemInvoked }
           />
         </MarqueeSelection>
       </div>
     );
+  }
+
+  @autobind
+  private _onChangeToggle(checked: boolean): void {
+    this.setState({ isCompactMode: checked });
+  }
+
+  @autobind
+  private _onChangeText(text: any): void {
+    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
   }
 
   private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string; } {

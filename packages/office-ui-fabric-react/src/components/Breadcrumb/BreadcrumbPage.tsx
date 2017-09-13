@@ -55,7 +55,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -72,8 +72,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }
