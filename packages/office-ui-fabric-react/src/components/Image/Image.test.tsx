@@ -23,9 +23,7 @@ describe('Image', () => {
     ReactTestUtils.renderIntoDocument(
       <Image
         src={ testImage1x1 }
-        onLoad={ () => {
-          done();
-        } }
+        onLoad={ done }
       />
     );
   });
@@ -132,9 +130,7 @@ describe('Image', () => {
     ReactTestUtils.renderIntoDocument(
       <Image
         src={ brokenImage }
-        onError={ () => {
-          done();
-        } }
+        onError={ done }
       />
     );
   });
