@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
 
@@ -33,13 +33,13 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
                 <div className='DetailsListExample-customHeaderLinkSet'>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={ () => props!.onToggleSelectGroup!(props!.group!) }
+                    onClick={ this._onClick(props!) }
                   >
                     { props!.isSelected ? 'Remove selection' : 'Select group' }
                   </Link>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={ () => props!.onToggleCollapse!(props!.group!) }
+                    onClick={ this._onClick(props!) }
                   >
                     { props!.group!.isCollapsed ? 'Expand group' : 'Collapse group' }
                   </Link>
@@ -55,6 +55,12 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
         />
       </div>
     );
+  }
+
+  private _onClick(props: IGroupDividerProps) {
+    return () => {
+      props.onToggleSelectGroup!(props.group!);
+    };
   }
 
 }

@@ -75,6 +75,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             <ExampleCard title='Month picker launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample
                 isDayPickerVisible={ false }
+                highlightCurrentMonth={ true }
                 buttonString={ 'Click for Month Picker' }
               />
             </ExampleCard>

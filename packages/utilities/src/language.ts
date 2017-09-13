@@ -1,4 +1,5 @@
-import { getDocument, getWindow } from './dom';
+import { getDocument } from './dom';
+import { getItem, setItem } from './localStorage';
 
 // Default to undefined so that we initialize on first read.
 let _language: string | null;
@@ -11,15 +12,10 @@ let _language: string | null;
 export function getLanguage(): string | null {
   if (_language === undefined) {
     let doc = getDocument();
-    let win = getWindow();
+    const savedLanguage = getItem('language');
 
-    // tslint:disable-next-line:no-string-literal
-    if (win && win['localStorage']) {
-      let savedLanguage = localStorage.getItem('language');
-
-      if (savedLanguage !== null) {
-        _language = savedLanguage;
-      }
+    if (savedLanguage !== null) {
+      _language = savedLanguage;
     }
 
     if (_language === undefined && doc) {
@@ -27,7 +23,7 @@ export function getLanguage(): string | null {
     }
 
     if (_language === undefined) {
-      setLanguage('en', false);
+      _language = 'en';
     }
   }
 
@@ -46,10 +42,8 @@ export function setLanguage(language: string, avoidPersisting: boolean = false):
     doc.documentElement.setAttribute('lang', language);
   }
 
-  let win = getWindow();
-  // tslint:disable-next-line:no-string-literal
-  if (win && win['localStorage'] && !avoidPersisting) {
-    localStorage.setItem('language', language);
+  if (!avoidPersisting) {
+    setItem('language', language);
   }
 
   _language = language;
