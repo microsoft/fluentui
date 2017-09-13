@@ -16,7 +16,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import { IButtonClassNames, getClassNames } from './BaseButton.classNames';
-import { getClassNames as getSplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import { getClassNames as getSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -45,6 +45,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _buttonElement: HTMLElement;
+  private _splitButtonContainer: HTMLElement;
   private _labelId: string;
   private _descriptionId: string;
   private _ariaDescriptionId: string;
@@ -307,14 +308,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
        } = this.props;
 
     return (
-      menuIconProps ?
+      menuIconProps ? (
         <Icon
-          iconName='ChevronDown'
           { ...menuIconProps }
           className={ this._classNames.menuIcon }
         />
-        :
-        null
+      ) : null
     );
   }
 
@@ -326,7 +325,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         directionalHint={ DirectionalHint.bottomLeftEdge }
         {...menuProps}
         className={ 'ms-BaseButton-menuhost ' + menuProps.className }
-        target={ this._buttonElement }
+        target={ this._isSplitButton ? this._splitButtonContainer : this._buttonElement }
         labelElementId={ this._labelId }
         onDismiss={ this._onToggleMenu }
       />
@@ -342,9 +341,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     const {
+      styles = {},
       disabled,
-      styles = {}
+      checked
     } = this.props;
+
+    const classNames = styles && getSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
 
     return (
       <div
@@ -358,6 +360,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         className={ mergeStyles(disabled ? styles.splitButtonContainerDisabled : styles.splitButtonContainer) }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
+        ref={ this._resolveRef('_splitButtonContainer') }
       >
         <span
           aria-hidden={ true }
@@ -365,21 +368,24 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           style={ { 'display': 'flex' } }
         >
           { this._onRenderContent(tag, buttonProps) }
-          { this._onRenderSplitButtonMenuButton() }
+          { this._onRenderSplitButtonDivider(classNames) }
+          { this._onRenderSplitButtonMenuButton(classNames) }
         </span>
-      </div >
+      </div>
     );
   }
 
-  private _onRenderSplitButtonMenuButton(): JSX.Element {
-    let {
-      menuIconProps,
-      styles,
-      disabled,
-      checked
-    } = this.props;
+  private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
+    if (classNames && classNames.divider) {
+      return <span className={ classNames.divider } />;
+    }
+    return null;
+  }
 
-    const classNames = styles ? getSplitButtonClassNames(styles!, disabled || false, !!this.state.menuProps, checked || false) : undefined;
+  private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined): JSX.Element {
+    let {
+      menuIconProps
+    } = this.props;
 
     return (
       <BaseButton

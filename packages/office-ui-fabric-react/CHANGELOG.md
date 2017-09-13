@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 11 Sep 2017 10:08:07 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+
+## 4.45.1
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Patches
+
+- DetailsList: Fixed collapsing logic to look at all items including first 2
+- Fixing circular dependency issue in PrimaryButton.
+
+## 4.45.0
+Tue, 12 Sep 2017 10:10:21 GMT
+
+### Minor changes
+
+- Add sections to contextual menus
+- Calendar: Arrows (when month picker only) do not navigate correctly.  Fixed this and fixed position.
+
+### Patches
+
+- MessageBar: Added word-break to fix long words in message bar
+- Pickers: Fixed a bug where suggestionsHeaderText would not display, also fixed backspace event propagating even when it was handled.
+- Mix native props to Nav items.
+- Button: Add support for dividers in split buttons
+- SplitButton: Update the menu launcher target for a split button to be the entire control instead of just the menu launching portion
+- DetailsList: Update activeRows management to use item keys
 
 ## 4.44.0
 Mon, 11 Sep 2017 10:08:07 GMT
@@ -264,7 +289,7 @@ Fri, 11 Aug 2017 19:38:35 GMT
 - FocusZone: adjusting initialization logic to remove a potential memory leak in server rendered scenarios.
 - ComboBox: Update example to work correctly now that StrictNullChecks have been put in place
 - Nav: update isGroupCollapsed for new groups
-- Change dropdown's role from "combobox" to "menu" 
+- Change dropdown's role from "combobox" to "menu"
 - Changed DatePicker role to be more accurate for screen readers
 - Selection: Fix broken selection state in example.
 
@@ -282,7 +307,7 @@ Tue, 08 Aug 2017 15:28:32 GMT
 
 - BaseButton: Added screenReaderText styles to base button
 - BaseButton: Remove the IconButton dependency that was introduced with SplitButton.
-- Added role alert to "no results" view 
+- Added role alert to "no results" view
 
 ## 4.30.1
 Mon, 07 Aug 2017 10:22:46 GMT
@@ -434,7 +459,7 @@ Fri, 21 Jul 2017 10:21:45 GMT
 
 ### Patches
 
-- Do not redundantly set aria-label on command bar items. 
+- Do not redundantly set aria-label on command bar items.
 - More strict null check fixes in office-ui-fabric-react
 - Textfield: Fixed regression in disabled styles
 - ResizeGroup: Use scrollWidth instead of clientWidth for measuring hidden div
@@ -601,7 +626,7 @@ Fri, 30 Jun 2017 19:44:26 GMT
 ### Patches
 
 - Breadcrumb: Use flexbox for layout to better support multiple font sizes
-- MessageBar: Fixed padding regressions with multiline and no actions 
+- MessageBar: Fixed padding regressions with multiline and no actions
 
 ## 4.13.1
 Fri, 30 Jun 2017 10:23:15 GMT
@@ -655,7 +680,7 @@ Tue, 27 Jun 2017 01:26:31 GMT
 
 ### Minor changes
 
-- Commandbar: fix synchronous reflow 
+- Commandbar: fix synchronous reflow
 - Enhancing the calendar component to allow for turning off the day picker and highlighting the "today" month in the month picker. This will match the behavior of the Timestrip component in today's JSMVVM OWA Calendar.
 
 ### Patches
@@ -901,7 +926,7 @@ Tue, 30 May 2017 03:27:20 GMT
 
 ### Patches
 
-- DetailsList: initialFocusedIndex is considered on already mounted rows 
+- DetailsList: initialFocusedIndex is considered on already mounted rows
 - SelectionZone: Update behavior to fix using up/down arrows to navigate between groups in a GroupedList.
 - Introduce prop-types instead of React.PropTypes
 - List: improved measure logic and fix nested list scroll problem
@@ -1220,7 +1245,7 @@ Wed, 19 Apr 2017 03:17:40 GMT
 ### Patches
 
 - DatePicker: Improve screen-reader accessibility.
-- Regression Test: Contextual Menu 
+- Regression Test: Contextual Menu
 - fix nit for Suggestion.tsx
 
 ## 2.19.0
@@ -1384,7 +1409,7 @@ Wed, 29 Mar 2017 18:15:29 GMT
 
 - FocusZone: Adding support for default browser behavior when pressing alt + a key.
 - Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
-- PeoplePicker: Adding changes for multiple selection onChange 
+- PeoplePicker: Adding changes for multiple selection onChange
 
 ## 2.10.1
 Wed, 29 Mar 2017 15:10:15 GMT
@@ -1497,7 +1522,7 @@ Thu, 16 Mar 2017 03:05:54 GMT
 ### Minor changes
 
 - DocumentCard: Add aria role and keyboard handling
-- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion.
 
 ### Patches
 
@@ -1573,7 +1598,7 @@ Thu, 09 Mar 2017 06:11:07 GMT
 
 ### Breaking changes
 
-- IMPORTANT: 
+- IMPORTANT:
 
 This pull request converts ALL components over to use module css. What does this mean?
 
@@ -1591,7 +1616,7 @@ Problems that still exist:
 4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
 5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
 
-We are planning to address these and evaluating library options. Issue being tracked here: #983 
+We are planning to address these and evaluating library options. Issue being tracked here: #983
 
 
 ### Minor changes
@@ -2006,7 +2031,7 @@ Thu, 12 Jan 2017 04:06:30 GMT
 - DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated.
 - Dialog: Removing deprecated rootProps usage for the close button.
 - Persona: Set an explicit height for the image area and image.
-- Persona now has a default way of generating initials and colors 
+- Persona now has a default way of generating initials and colors
 - Pivot: Fix a11y - duplicate tabIds, aria-controls linking
 - TextField: aria-describedby is only set when a description is available.
 
@@ -2271,7 +2296,7 @@ Mon, 05 Dec 2016 04:02:30 GMT
 
 ### Minor changes
 
-- Nav: adding support for `selectedKey`. 
+- Nav: adding support for `selectedKey`.
 
 ### Patches
 

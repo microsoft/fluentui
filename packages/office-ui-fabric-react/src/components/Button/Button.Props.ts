@@ -351,6 +351,12 @@ export interface IButtonStyles {
   splitButtonContainerDisabled?: IStyle;
 
   /**
+   * Style override for the divider element that appears between the button and menu button
+   * for a split button.
+   */
+  splitButtonDivider?: IStyle;
+
+  /**
    * Style override for the SplitButton menu button
    */
   splitButtonMenuButton?: IStyle;
