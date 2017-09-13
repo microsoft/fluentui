@@ -187,6 +187,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             aria-atomic={ true }
             role='textbox'
             aria-readonly='true'
+            aria-label={ selectedOption && selectedOption.ariaLabel }
           >
             { // If option is selected render title, otherwise render the placeholder text
               selectedOption ? (
@@ -475,8 +476,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             onClick={ () => this._onItemClick(item.index!) }
             role='option'
             aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
-            ariaLabel={ item.ariaLabel || item.text }
-            title={ item.text }
+            ariaLabel={ item.ariaLabel }
           >
             { onRenderOption(item, this._onRenderOption) }
           </CommandButton>
