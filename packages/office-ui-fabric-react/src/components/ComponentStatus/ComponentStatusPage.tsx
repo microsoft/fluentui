@@ -27,25 +27,25 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
 
   private _renderComponents(): JSX.Element {
     return <div>
-      <ul className='componentList'>
-        { Object.keys(ComponentStatusState).map((componentName, index) => {
-          return this._renderComponent(componentName);
-        }) }
-      </ul>
+      <table className='componentTable'>
+        <tbody>
+          { Object.keys(ComponentStatusState).map((componentName, index) => {
+            return this._renderComponent(componentName);
+          }) }
+        </tbody>
+      </table>
     </div >;
   }
 
   private _renderComponent(componentName: string): JSX.Element {
     let component = ComponentStatusState[componentName];
-    return <li className='componentListItem' key={ componentName + '-key' }>
-      <div>
-        <h3 className='componentStateHeading'>{ componentName } </h3>
-        <ComponentStatus
-          {...component}
-        >
-        </ComponentStatus>
-      </div>
-    </li>;
+    return <tr key={ componentName + '-key' }>
+      <td className='componentCells'><h3>{ componentName } </h3> </td>
+      <td className='componentBadgeCell'><ComponentStatus
+        {...component}
+      >
+      </ComponentStatus></td>
+    </tr>;
   }
 
   private _renderStatusesInfo() {

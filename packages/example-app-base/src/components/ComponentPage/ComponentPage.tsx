@@ -216,7 +216,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   private _getSection(componentPageSection: IComponentPageSection): JSX.Element | undefined {
     if (this.props.otherSections) {
       return (
-        <div>
+        <div key={ componentPageSection.title + '-key' }>
           <div className='ComponentPage-variantsSection'>
             <h2
               className='ComponentPage-subHeading ComponentPage-variantsTitle'

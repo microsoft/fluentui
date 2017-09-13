@@ -359,7 +359,7 @@ export const ComponentStatusInfoState: [IComponentStatusInfoState] = [
     success: 'For this badge to pass, set your operating system to use high contrast, and ensure that the components renders correctly.'
   },
   {
-    name: 'RTL Support',
+    name: 'Right To Left Support',
     description: 'Some languages are read from right to left (as oppposed to left to right). For localization, components should display corretly in right to left.',
     success: 'For this badge to pass, activate right to left on the top right corner of the sample website, and ensure that components are rendered properly.'
   },

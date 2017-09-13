@@ -15,14 +15,15 @@
     width: 100%;
   }
 
+  .componentBadgeCell {
+    padding: 8px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+  }
+
   .componentCells {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-  }
-
-  .componentStateHeading {
-    display: inline-block;
-    padding-right: 20px;
   }
 }

@@ -92,9 +92,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
   private _badgeURL(color: string, subject: String, status: String): string {
     const badgeBaseURL = 'https://img.shields.io/badge/';
     const badgeStyle = 'flat';
-    // const badgeValidColor = 'brightgreen';
-    // const badgeInvalidColor = 'red';
-
     return badgeBaseURL + subject + '-' + status + '-' + color + '.svg' + '?style=' + badgeStyle;
   }
 
