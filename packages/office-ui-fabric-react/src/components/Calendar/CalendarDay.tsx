@@ -20,8 +20,8 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekNumbers,
-  getDayOfYear
+  getWeekNumbersInMonth,
+  getWeekNumber
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
@@ -97,8 +97,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
-    let weekNumbers = showWeekNumbers ? getWeekNumbers(weeks!, firstDayOfWeek, navigatedDate) : null;
-    let selectedDateDayNumber = showWeekNumbers ? getDayOfYear(selectedDate) : undefined;
+    let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!, firstDayOfWeek, navigatedDate) : null;
+    let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -174,7 +174,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             'ms-DatePicker-day',
                             styles.day,
                             {
-                              ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: (selectedDateDayNumber! > (weekNumber - 1) * DAYS_IN_WEEK) && (selectedDateDayNumber! < weekNumber * DAYS_IN_WEEK)
+                              ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumber
                             }
                           ) }
                         >
