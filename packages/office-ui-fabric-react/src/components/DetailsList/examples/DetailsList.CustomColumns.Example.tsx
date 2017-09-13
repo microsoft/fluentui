@@ -41,8 +41,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         columns={ columns }
         onRenderItemColumn={ _renderItemColumn }
         onColumnHeaderClick={ this._onColumnClick }
-        onItemInvoked={ (item, index) => alert(`Item ${item.name} at index ${index} has been invoked.`) }
-        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column!.key} contextmenu opened.`) }
+        onItemInvoked={ this._onItemInvoked }
+        onColumnHeaderContextMenu={ this._onColumnHeaderContextMenu }
       />
     );
   }
@@ -82,6 +82,14 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         return col;
       })
     });
+  }
+
+  private _onColumnHeaderContextMenu(column: IColumn | undefined, ev: React.MouseEvent<HTMLElement> | undefined): void {
+    console.log(`column ${column!.key} contextmenu opened.`);
+  }
+
+  private _onItemInvoked(item: any, index: number | undefined): void {
+    alert(`Item ${item.name} at index ${index} has been invoked.`);
   }
 }
 
