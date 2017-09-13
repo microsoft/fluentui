@@ -10,8 +10,8 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
 
     return (
       <ComponentPage
-        title='Component Checklist'
-        componentName='Component Checklist'
+        title='Components Checklist'
+        componentName='Components Checklist'
         overview={ this._renderOverView() }
         otherSections={ sections }
       >

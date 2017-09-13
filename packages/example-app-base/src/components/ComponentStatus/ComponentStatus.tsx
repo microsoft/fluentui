@@ -12,10 +12,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     testCoverage: TestCoverageStatus.none
   };
 
-  constructor(props: IComponentStatusProps) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const keyboardAccessibilitySubject = 'Keyboard Accessibility';
     const markupSubject = 'Markup';
