@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "in dropdown component: remove redundant title; optionally apply aria-label; add missing aria-label to selected option",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "henrysun918@gmail.com"
+}
