@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 
@@ -15,17 +16,24 @@ export class PanelLightDismissExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           text='Open panel'
-          onClick={ () => this.setState({ showPanel: true }) }
+          onClick={ this._setShowPanel(true) }
         />
         <Panel
           isOpen={ this.state.showPanel }
           isLightDismiss={ true }
           headerText='Light Dismiss Panel'
-          onDismiss={ () => this.setState({ showPanel: false }) }
+          onDismiss={ this._setShowPanel(false) }
         >
           <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
         </Panel>
       </div>
     );
+  }
+
+  @autobind
+  private _setShowPanel(showPanel: boolean): () => void {
+    return (): void => {
+      this.setState({ showPanel });
+    };
   }
 }

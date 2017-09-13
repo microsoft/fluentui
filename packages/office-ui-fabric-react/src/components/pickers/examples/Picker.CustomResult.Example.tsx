@@ -299,10 +299,12 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
       }
     });
   }
+  const log = (text: string): () => void =>
+    (): void => console.log(text);
 
   return (
     <DocumentCard
-      onClick={ () => { console.log('You clicked the card.'); } }
+      onClick={ log('You clicked the card.') }
     >
       <DocumentCardPreview { ...(documentPreviewProps as IDocumentCardPreviewProps) } />
       <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
@@ -332,7 +334,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
           onRenderSuggestionsItem={ SuggestedBigItem as any }
           onResolveSuggestions={ this._onFilterChanged }
           onRenderItem={ SelectedDocumentItem }
-          getTextFromItem={ (props: any) => props.documentTitleProps.title }
+          getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={
             {
               suggestionsHeaderText: 'Suggested Documents',
@@ -348,6 +350,10 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
         />
       </div>
     );
+  }
+
+  private _getTextFromItem(props: any): any {
+    return props.documentTitleProps.title;
   }
 
   @autobind

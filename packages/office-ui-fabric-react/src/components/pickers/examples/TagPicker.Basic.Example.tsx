@@ -37,7 +37,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
         <TagPicker
           ref='tagPicker'
           onResolveSuggestions={ this._onFilterChanged }
-          getTextFromItem={ (item: any) => { return item.name; } }
+          getTextFromItem={ this._getTextFromItem }
           pickerSuggestionsProps={
             {
               suggestionsHeaderText: 'Suggested Tags',
@@ -54,6 +54,10 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
         />
       </div>
     );
+  }
+
+  private _getTextFromItem(item: any): any {
+    return item.name;
   }
 
   @autobind
