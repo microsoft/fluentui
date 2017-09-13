@@ -71,9 +71,7 @@ export class ThemerPage extends React.Component<any, any> {
     let basicSlots =
       [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
       this._semanticSlotWidget(SemanticColorSlots.bodyText),
-      this._semanticSlotWidget(SemanticColorSlots.bodyTextAlt),
-      this._semanticSlotWidget(SemanticColorSlots.bodyTextDisabled),
-      this._semanticSlotWidget(SemanticColorSlots.bodyTextPrimary)]; // todo
+      this._semanticSlotWidget(SemanticColorSlots.bodyTextDisabled)]; // todo
 
     let fabricSlots =
       [this._fabricSlotWidget(FabricSlots.black),
@@ -101,6 +99,35 @@ export class ThemerPage extends React.Component<any, any> {
       this._fabricSlotWidget(FabricSlots.neutralLighter),
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt)];
 
+    let fabricThemeSlots =
+      [this._fabricSlotWidget(FabricSlots.themeDarker),
+      this._fabricSlotWidget(FabricSlots.themeDark),
+      this._fabricSlotWidget(FabricSlots.themeDarkAlt),
+      this._fabricSlotWidget(FabricSlots.themePrimary),
+      this._fabricSlotWidget(FabricSlots.themeSecondary),
+      this._fabricSlotWidget(FabricSlots.themeTertiary),
+      this._fabricSlotWidget(FabricSlots.themeLight),
+      this._fabricSlotWidget(FabricSlots.themeLighter),
+      this._fabricSlotWidget(FabricSlots.themeLighterAlt)];
+    let fabricNeutralBackgroundSlots =
+      [this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralQuaternary),
+      this._fabricSlotWidget(FabricSlots.neutralQuaternaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralLight),
+      this._fabricSlotWidget(FabricSlots.neutralLighter),
+      this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
+      this._fabricSlotWidget(FabricSlots.white)];
+    let fabricNeutralForegroundSlots =
+      [this._fabricSlotWidget(FabricSlots.black),
+      this._fabricSlotWidget(FabricSlots.neutralDark),
+      this._fabricSlotWidget(FabricSlots.neutralPrimary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralTertiary),
+      //this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt)
+      ];
+
+/*
     let controlSlots =
       [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
       this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
@@ -115,7 +142,7 @@ export class ThemerPage extends React.Component<any, any> {
       this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
       this._semanticSlotWidget(SemanticColorSlots.controlFilled),
       this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
-
+*/
     return (
       <div className='ms-themer'>
 
@@ -150,9 +177,13 @@ export class ThemerPage extends React.Component<any, any> {
         {/* this._exampleSection('Basic Slots',
           'Basic theme slots for page background and default text colors.',
           basicSlots) */}
-        { this._exampleSection('Fabric Palette',
-          'The original Fabric palette variables.',
-          fabricSlots) }
+        <h3>Fabric Palette</h3>
+        <p>The original Fabric palette variables.</p>
+        <table><tr>
+          <td>{ fabricThemeSlots }</td>
+          <td>{ fabricNeutralForegroundSlots }</td>
+          <td>{ fabricNeutralBackgroundSlots }</td>
+        </tr></table>
         {/* this._exampleSection('Input controls',
           These slots TODO TODO',
           controlSlots,
@@ -210,8 +241,7 @@ export class ThemerPage extends React.Component<any, any> {
           />, <ProgressIndicatorBasicExample />]) */}
 
         <h3>todo</h3>
-        { [this._semanticSlotWidget(SemanticColorSlots.errorText),
-        this._semanticSlotWidget(SemanticColorSlots.bodyTextStrong)] }
+        { [this._semanticSlotWidget(SemanticColorSlots.errorText)] }
 
         { <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'><TextFieldBasicExample /></div>
@@ -223,9 +253,7 @@ export class ThemerPage extends React.Component<any, any> {
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
         <table className='ms-themer-accessibilityTable'>
           { [this._accessibilityRow(SemanticColorSlots.bodyTextDisabled, SemanticColorSlots.bodyBackground),
-          this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground),
-          this._accessibilityRow(SemanticColorSlots.controlText, SemanticColorSlots.bodyBackground),
-          this._accessibilityRow(SemanticColorSlots.controlText, SemanticColorSlots.controlBackground)] }
+          this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground)] }
         </table>
 
         { this._outputSection() }

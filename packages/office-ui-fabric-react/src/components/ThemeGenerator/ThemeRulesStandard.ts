@@ -302,20 +302,20 @@ export function ThemeRulesStandardCreator() {
   controlUnfilledDefault,
   controlFilled, // needs review: we might merge controlFilled* states into controlForeground* states
   controlFilledActive,
-  */
 
+*/
   // Basics simple content slots
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, BaseSlots.foregroundColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextAlt, BaseSlots.foregroundColor, Shade.Shade1);
+  //_makeSemanticSlotRule(SemanticColorSlots.bodyTextAlt, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.bodyTextDisabled, BaseSlots.foregroundColor, Shade.Shade1);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextHover, BaseSlots.foregroundColor, Shade.Shade1);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimary, BaseSlots.primaryColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimaryAlt, BaseSlots.primaryColor, Shade.Shade1);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextStrong, BaseSlots.foregroundColor, Shade.Shade1);
+  //_makeSemanticSlotRule(SemanticColorSlots.bodyTextHover, BaseSlots.foregroundColor, Shade.Shade1);
+  //_makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimary, BaseSlots.primaryColor, Shade.Unshaded);
+  //_makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimaryAlt, BaseSlots.primaryColor, Shade.Shade1);
+  //_makeSemanticSlotRule(SemanticColorSlots.bodyTextStrong, BaseSlots.foregroundColor, Shade.Shade1);
   //_makeSemanticSlotRule(SemanticColorSlots.bodyLink, BaseSlots.backgroundColor, Shade.Unshaded);
   //_makeSemanticSlotRule(SemanticColorSlots.bodyLinkHover, BaseSlots.backgroundColor, Shade.Unshaded);
-
+/*
   _makeSemanticSlotRule(SemanticColorSlots.focusBorder, BaseSlots.foregroundColor, Shade.Shade1);
 
   _makeSemanticSlotRule(SemanticColorSlots.controlText, BaseSlots.foregroundColor, Shade.Unshaded);
@@ -338,6 +338,6 @@ export function ThemeRulesStandardCreator() {
   _makeSemanticSlotRule(SemanticColorSlots.commandBarHover, BaseSlots.backgroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.commandBarIcon, BaseSlots.primaryColor, Shade.Shade6);
   _makeSemanticSlotRule(SemanticColorSlots.commandBarIconSelected, BaseSlots.primaryColor, Shade.Shade8);
-
+*/
   return slotRules;
 }
