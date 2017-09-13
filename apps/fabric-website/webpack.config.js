@@ -6,11 +6,14 @@ const isDogfood = process.argv.indexOf('--dogfood') > -1;
 const version = require('./package.json').version;
 let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
+let minFileNamePart = isDogfood ? '.df' : '';
+
 if (isDogfood) {
   publicPath = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
 } else if (!isProduction) {
   publicPath = "/dist/";
 }
+
 const PACKAGE_NAME = 'fabric-sitev5';
 
 module.exports = resources.createConfig(
@@ -23,7 +26,7 @@ module.exports = resources.createConfig(
 
     output: {
       publicPath: publicPath,
-      chunkFilename: `${PACKAGE_NAME}-${version}-[name].min.js`
+      chunkFilename: `${PACKAGE_NAME}-${version}-[name]${minFileNamePart}.min.js`
     },
 
     externals: [
