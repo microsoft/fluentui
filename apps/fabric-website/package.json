@@ -13,6 +13,7 @@
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
     "production": "node --max_old_space_size=8192 ../../scripts/build.js --production",
+    "dogfood": "node --max_old_space_size=8192 ../../scripts/build.js --production --dogfood",
     "startuhf": "node ../../scripts/start.js --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
