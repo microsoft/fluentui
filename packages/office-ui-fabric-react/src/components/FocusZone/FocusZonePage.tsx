@@ -47,8 +47,7 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 
