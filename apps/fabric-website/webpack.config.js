@@ -6,12 +6,19 @@ const isDogfood = process.argv.indexOf('--dogfood') > -1;
 const version = require('./package.json').version;
 let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
+let minFileNamePart = isDogfood ? '.df' : '';
+
 if (isDogfood) {
   publicPath = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
 } else if (!isProduction) {
   publicPath = "/dist/";
 }
+<<<<<<< HEAD
 const PACKAGE_NAME = 'fabric-site';
+=======
+
+const PACKAGE_NAME = 'fabric-sitev5';
+>>>>>>> eaff99f2... Made changes to webpack config to allow for dogfood task
 
 module.exports = resources.createConfig(
   PACKAGE_NAME,
@@ -23,7 +30,7 @@ module.exports = resources.createConfig(
 
     output: {
       publicPath: publicPath,
-      chunkFilename: `${PACKAGE_NAME}-${version}-[name].min.js`
+      chunkFilename: `${PACKAGE_NAME}-${version}-[name]${minFileNamePart}.min.js`
     },
 
     externals: [
