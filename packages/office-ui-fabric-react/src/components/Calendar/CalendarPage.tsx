@@ -84,6 +84,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             <ExampleCard title='Month picker launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample
                 isDayPickerVisible={ false }
+                highlightCurrentMonth={ true }
                 buttonString={ 'Click for Month Picker' }
               />
             </ExampleCard>
@@ -104,7 +105,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -128,8 +129,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 

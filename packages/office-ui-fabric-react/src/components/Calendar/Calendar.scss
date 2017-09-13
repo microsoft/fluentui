@@ -63,6 +63,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // The header containing the month and year.
 .header {
+  position: relative;
   display: inline-flex;
   height: $Calendar-day;
   line-height: 44px;
@@ -77,19 +78,15 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-neutralPrimary;
   margin-top: -1px;
   font-weight: $ms-font-weight-semilight;
-
-  &:hover {
-    color: $ms-color-themeDark;
-    cursor: pointer;
-  }
+  padding: 0 5px;
 }
 
 .monthAndYear {
-  @include margin-left(10px);
+  @include margin-left(5px);
 }
 
 .year {
-  @include margin-left(10px);
+  @include margin-left(5px);
 }
 
 
@@ -241,7 +238,7 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .yearComponents{
-  margin-left: 1px;
+  margin-left: 3px;
 }
 
 .prevMonth,
@@ -270,27 +267,21 @@ $Calendar-dayPicker-margin: 10px;
 
 // Without modifying the Pickadate JS, this transparent
 // button is necessary to toggle the month view.
-.headerToggleView {
-  height: $Calendar-day;
-  position: absolute;
-  top: 9px;
-  width: 130px;
+.headerToggleView:hover {
+  color: $ms-color-neutralSecondary;
   cursor: pointer;
-}
-
-.wrap div.headerToggleView:focus {
-  position: absolute;
 }
 
 // Text showing the currently-selected year.
 .currentYear,
 .currentDecade {
   display: block;
+  padding: 0 5px;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
   height: $Calendar-day;
   line-height: $Calendar-day;
-  @include margin-left(10px);
+  @include margin-left(5px);
   font-weight: $ms-font-weight-semilight;
 }
 
@@ -430,18 +421,10 @@ $Calendar-dayPicker-margin: 10px;
   .year {
     font-size: 17px;
     color: $ms-color-neutralPrimary;
-
-    &:hover {
-      color: $ms-color-neutralPrimary;
-      cursor: default;
-    }
   }
 
-  // Without modifying the Pickadate JS, this transparent
-  // button is necessary to toggle the month view.
-  .headerToggleView {
-    height: $Calendar-day;
-    @include ms-left(70px);
+  .yearComponents{
+    margin-left: 1px;
   }
 
   .showWeekNumbers{
@@ -586,7 +569,7 @@ $Calendar-dayPicker-margin: 10px;
   //when month picker is only visible
   .monthPickerOnly{
     .wrap{
-      padding: 10px 7px;
+      padding: 10px;
     }
   }
 }
@@ -605,10 +588,6 @@ $Calendar-dayPicker-margin: 10px;
     .yearPicker {
       display: none;
     }
-  }
-
-  .headerToggleView{
-    left: 100px;
   }
 
   // position year components so they do not move when switching between calendars (overlayed calendars)
@@ -635,6 +614,10 @@ $Calendar-dayPicker-margin: 10px;
 .nextYear,
 .prevYear {
   display: inline-block;
+
+  &:hover{
+    background-color: $ms-color-neutralTertiaryAlt;
+  }
 }
 
 .nextMonth,

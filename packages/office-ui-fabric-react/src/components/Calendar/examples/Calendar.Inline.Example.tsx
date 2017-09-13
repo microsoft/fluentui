@@ -132,8 +132,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           isDayPickerVisible={ this.props.isDayPickerVisible }
           showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
           showWeekNumbers={ this.props.showWeekNumbers }
-        >
-        </Calendar>
+        />
         { this.props.showNavigateButtons &&
           <div>
             <DefaultButton style={ buttonStyle } onClick={ this._goPrevious } text='Previous' />

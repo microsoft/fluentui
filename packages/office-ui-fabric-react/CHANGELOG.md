@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Sep 2017 10:10:21 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+
+## 4.45.1
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Patches
+
+- DetailsList: Fixed collapsing logic to look at all items including first 2
+- Fixing circular dependency issue in PrimaryButton.
 
 ## 4.45.0
 Tue, 12 Sep 2017 10:10:21 GMT

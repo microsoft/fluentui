@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Added LayoutGroup, FolderCover, Tile and TilesList to exports",
+      "comment": "Add support for folder cover signals",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "mgodbolt@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }
