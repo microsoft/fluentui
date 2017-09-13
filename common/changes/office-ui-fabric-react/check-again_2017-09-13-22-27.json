@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add sections to contextual menus",
-      "type": "minor"
+      "comment": "Check: better alignment of the check mark.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "boemor@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

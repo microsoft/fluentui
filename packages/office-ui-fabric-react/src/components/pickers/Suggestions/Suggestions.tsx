@@ -88,9 +88,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
     let noResults = () => {
       return noResultsFoundText ?
-        <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
-          { noResultsFoundText }
-        </div> : null;
+        (
+          <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
+            { noResultsFoundText }
+          </div>
+        ) : null;
     };
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;

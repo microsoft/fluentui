@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './DetailsListExample.scss';
 
 export interface IDetailsListNavigatingFocusExampleState {
@@ -18,12 +19,14 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     {
       name: 'File path',
       onRender: item =>
-        <Link
-          key={ item }
-          onClick={ () => this._navigate(item) }
-        >
-          { item }
-        </Link>,
+        (
+          <Link
+            key={ item }
+            onClick={ this._navigate(item) }
+          >
+            { item }
+          </Link>
+        ),
     } as IColumn,
     {
       name: 'Size',
@@ -41,11 +44,14 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     );
   }
 
-  private _navigate(name: string) {
-    this.setState({
-      items: generateItems(name + '/'),
-      initialFocusedIndex: 0,
-    });
+  @autobind
+  private _navigate(name: string): () => void {
+    return (): void => {
+      this.setState({
+        items: generateItems(name + '/'),
+        initialFocusedIndex: 0,
+      });
+    };
   }
 }
 

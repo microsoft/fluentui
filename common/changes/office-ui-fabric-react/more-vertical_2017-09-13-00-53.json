@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Mix native props to Nav items.",
-      "type": "patch"
+      "comment": "Adding `MoreVertical` icon.",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "s@warmsea.net"
+  "email": "dzearing@microsoft.com"
 }

@@ -15,7 +15,7 @@
   box-sizing: border-box;
   display: flex;
   position: relative;
-
+  word-break: break-word;
   .icon {
     @include padding-right(8px);
     color: $ms-color-info;
