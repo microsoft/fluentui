@@ -115,7 +115,7 @@ describe('Dropdown', () => {
     expect(titleElement.getAttribute('aria-label')).equals('five');
   });
 
-  it('Render a selected item without aria label if the label is not specified', () => {
+  it('Renders a selected item without aria label if the label is not specified', () => {
     let container = document.createElement('div');
 
     ReactDOM.render(
