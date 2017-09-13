@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
+import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import {
   KeyCodes,
@@ -305,7 +305,7 @@ describe('ContextualMenu', () => {
 
   });
 
-  it('correctly focuses the first element', () => {
+  it('correctly focuses the first element', (done) => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -324,11 +324,21 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1')!.firstChild;
-    expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
+    new Promise<any>(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey1')!.firstChild;
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
+      done();
+      resolve();
+    }).catch(done());
   });
 
-  it('will not focus the first element when shouldFocusOnMount is false', () => {
+  it('will not focus the first element when shouldFocusOnMount is false', (done) => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -344,12 +354,22 @@ describe('ContextualMenu', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
-        shouldFocusOnMount={ false }
+        shouldFocusOnMount={ true }
       />
     );
+    new Promise(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey1')!.firstChild;
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
+      done();
+      resolve();
+    }).catch(done);
 
-    let focusedItem = document.querySelector('.testkey1')!.firstChild;
-    expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
   });
 
   it('ContextualMenu menuOpened callback is called only when menu is available', () => {
