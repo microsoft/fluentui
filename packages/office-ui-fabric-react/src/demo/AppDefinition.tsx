@@ -337,7 +337,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
-        }
+        },
+        {
+          component: require<any>('../components/ComponentStatus/ComponentStatusPage').ComponentStatusPage,
+          key: 'Components Status',
+          name: 'Components Checklist',
+          url: '#/components-status'
+        },
       ],
       name: 'Utilities'
     }
