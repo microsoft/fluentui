@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check: better alignment in Safari.",
+      "comment": "Check: better alignment of the check mark.",
       "type": "patch"
     }
   ],
