@@ -39,7 +39,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 highlightCurrentMonth={ true }
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
-                showGoToToday={ true }
+                showGoToToday={ false }
               />
             </ExampleCard>
             <ExampleCard
