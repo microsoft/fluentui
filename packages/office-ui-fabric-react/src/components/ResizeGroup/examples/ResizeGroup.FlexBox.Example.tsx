@@ -41,11 +41,13 @@ const BoxWithLabel: React.StatelessComponent<IBoxWithLabelProps> =
 function renderBoxWithLabels(count: number, backgroundColor: string): JSX.Element[] {
   let result: JSX.Element[] = [];
   for (let i = 1; i <= count; i += 1) {
-    result.push(<BoxWithLabel
-      label={ `${i}` }
-      backgroundColor={ backgroundColor }
-      key={ `${backgroundColor}-${i}` }
-    />);
+    result.push(
+      <BoxWithLabel
+        label={ `${i}` }
+        backgroundColor={ backgroundColor }
+        key={ `${backgroundColor}-${i}` }
+      />
+    );
   }
   return result;
 }

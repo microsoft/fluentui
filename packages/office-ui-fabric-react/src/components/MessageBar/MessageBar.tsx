@@ -51,13 +51,15 @@ export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState
 
   private _getActionsDiv(): JSX.Element | null {
     if (this.props.actions) {
-      return <div
-        className={ this.props.isMultiline ?
-          ('ms-MessageBar-actions ' + styles.actions) :
-          ('ms-MessageBar-actionsOneline ' + styles.actionsOneline) }
-      >
-        { this.props.actions }
-      </div>;
+      return (
+        <div
+          className={ this.props.isMultiline ?
+            ('ms-MessageBar-actions ' + styles.actions) :
+            ('ms-MessageBar-actionsOneline ' + styles.actionsOneline) }
+        >
+          { this.props.actions }
+        </div>
+      );
     }
     return null;
   }

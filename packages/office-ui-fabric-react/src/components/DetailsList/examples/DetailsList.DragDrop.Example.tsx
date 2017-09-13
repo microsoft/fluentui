@@ -42,7 +42,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
             items={ items }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => { alert(`Item invoked: ${item.name}`); } }
+            onItemInvoked={ this._onItemInvoked }
             onRenderItemColumn={ this._onRenderItemColumn }
             dragDropEvents={ this._getDragDropEvents() }
           />
@@ -71,6 +71,10 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
         _draggedIndex = -1;
       },
     };
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
   }
 
   private _onRenderItemColumn(item: any, index: number, column: IColumn) {

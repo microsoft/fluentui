@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add sections to contextual menus",
+      "comment": "Adding `MoreVertical` icon.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "boemor@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

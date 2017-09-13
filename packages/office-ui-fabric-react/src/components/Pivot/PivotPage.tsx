@@ -94,7 +94,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -117,8 +117,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
           <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

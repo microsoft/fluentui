@@ -140,10 +140,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           ariaLabelForSelectionColumn='Toggle selection'
-          onRenderMissingItem={ (index) => {
-            this._onDataMiss(index as number);
-            return null;
-          } }
+          onRenderMissingItem={ this._onRenderMissingItem }
         />
 
         { contextualMenuProps && (
@@ -171,6 +168,12 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         });
       }, PAGING_DELAY);
     }
+  }
+
+  @autobind
+  private _onRenderMissingItem(index: number): null {
+    this._onDataMiss(index as number);
+    return null;
   }
 
   @autobind
