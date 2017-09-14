@@ -1,22 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-10';
-  src: url('fabric-icons-10.woff') format('woff');
+  font-family: 'FabricMDL2Icons-10';
+  src: url('../font/fabric-icons-10-626ecea9.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-10';
+  font-family: 'FabricMDL2Icons-10';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--RibbonSolid:before { content: "\F345"; }
-.ms-Icon--FinancialSolid:before { content: "\F346"; }
-.ms-Icon--FinancialMirroredSolid:before { content: "\F347"; }
-.ms-Icon--HeadsetSolid:before { content: "\F348"; }
 .ms-Icon--PermissionsSolid:before { content: "\F349"; }
 .ms-Icon--ParkingSolid:before { content: "\F34A"; }
 .ms-Icon--ParkingMirroredSolid:before { content: "\F34B"; }
@@ -113,3 +109,7 @@
 .ms-Icon--SkypeForBusinessLogo16:before { content: "\F40F"; }
 .ms-Icon--SkypeForBusinessLogoFill16:before { content: "\F410"; }
 .ms-Icon--FilterSolid:before { content: "\F412"; }
+.ms-Icon--MailUndelivered:before { content: "\F415"; }
+.ms-Icon--MailTentative:before { content: "\F416"; }
+.ms-Icon--MailTentativeMirrored:before { content: "\F417"; }
+.ms-Icon--MailReminder:before { content: "\F418"; }

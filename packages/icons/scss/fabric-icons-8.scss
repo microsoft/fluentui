@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-8';
-  src: url('fabric-icons-8.woff') format('woff');
+  font-family: 'FabricMDL2Icons-8';
+  src: url('../font/fabric-icons-8-0a757502.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-8';
+  font-family: 'FabricMDL2Icons-8';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--GridViewMedium { content: "\F233"; }
-@mixin ms-Icon--GridViewLarge { content: "\F234"; }
-@mixin ms-Icon--Step { content: "\F241"; }
 @mixin ms-Icon--StepInsert { content: "\F242"; }
 @mixin ms-Icon--StepShared { content: "\F243"; }
 @mixin ms-Icon--StepSharedAdd { content: "\F244"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--AssessmentGroupTemplate { content: "\F2B1"; }
 @mixin ms-Icon--NewTeamProject { content: "\F2B2"; }
 @mixin ms-Icon--CommentAdd { content: "\F2B3"; }
+@mixin ms-Icon--CommentNext { content: "\F2B4"; }
+@mixin ms-Icon--CommentPrevious { content: "\F2B5"; }
+@mixin ms-Icon--ShopServer { content: "\F2B6"; }
 
 
 // Classes
-.ms-Icon--GridViewMedium:before { @include ms-Icon--GridViewMedium }
-.ms-Icon--GridViewLarge:before { @include ms-Icon--GridViewLarge }
-.ms-Icon--Step:before { @include ms-Icon--Step }
 .ms-Icon--StepInsert:before { @include ms-Icon--StepInsert }
 .ms-Icon--StepShared:before { @include ms-Icon--StepShared }
 .ms-Icon--StepSharedAdd:before { @include ms-Icon--StepSharedAdd }
@@ -217,4 +214,7 @@
 .ms-Icon--AssessmentGroupTemplate:before { @include ms-Icon--AssessmentGroupTemplate }
 .ms-Icon--NewTeamProject:before { @include ms-Icon--NewTeamProject }
 .ms-Icon--CommentAdd:before { @include ms-Icon--CommentAdd }
+.ms-Icon--CommentNext:before { @include ms-Icon--CommentNext }
+.ms-Icon--CommentPrevious:before { @include ms-Icon--CommentPrevious }
+.ms-Icon--ShopServer:before { @include ms-Icon--ShopServer }
 

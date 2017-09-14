@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-5';
-  src: url('fabric-icons-5.woff') format('woff');
+  font-family: 'FabricMDL2Icons-5';
+  src: url('../font/fabric-icons-5-d80e1f52.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-5';
+  font-family: 'FabricMDL2Icons-5';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--BoxLogo:before { content: "\ED75"; }
-.ms-Icon--DelveLogoInverse:before { content: "\ED76"; }
-.ms-Icon--DropboxLogo:before { content: "\ED77"; }
 .ms-Icon--ExchangeLogoInverse:before { content: "\ED78"; }
 .ms-Icon--LyncLogo:before { content: "\ED79"; }
 .ms-Icon--OfficeVideoLogoInverse:before { content: "\ED7A"; }
@@ -113,3 +110,6 @@
 .ms-Icon--AwayStatus:before { content: "\EE6A"; }
 .ms-Icon--MyMoviesTV:before { content: "\EE6C"; }
 .ms-Icon--SyncToPC:before { content: "\EE6E"; }
+.ms-Icon--AustralianRules:before { content: "\EE70"; }
+.ms-Icon--WifiEthernet:before { content: "\EE77"; }
+.ms-Icon--DateTimeMirrored:before { content: "\EE93"; }

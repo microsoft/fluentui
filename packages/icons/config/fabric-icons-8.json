@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-8",
-	"fontFamilyName": "FabricMDL2IconSet-8",
+	"fontFamilyName": "FabricMDL2Icons-8",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "GridViewMedium",
-			"unicode": "F233"
-		},
-		{
-			"name": "GridViewLarge",
-			"unicode": "F234"
-		},
-		{
-			"name": "Step",
-			"unicode": "F241"
-		},
 		{
 			"name": "StepInsert",
 			"unicode": "F242"
@@ -406,6 +394,18 @@
 		{
 			"name": "CommentAdd",
 			"unicode": "F2B3"
+		},
+		{
+			"name": "CommentNext",
+			"unicode": "F2B4"
+		},
+		{
+			"name": "CommentPrevious",
+			"unicode": "F2B5"
+		},
+		{
+			"name": "ShopServer",
+			"unicode": "F2B6"
 		}
 	]
 }

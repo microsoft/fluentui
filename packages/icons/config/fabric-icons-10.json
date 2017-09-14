@@ -1,28 +1,12 @@
 {
 	"fontName": "fabric-icons-10",
-	"fontFamilyName": "FabricMDL2IconSet-10",
+	"fontFamilyName": "FabricMDL2Icons-10",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "RibbonSolid",
-			"unicode": "F345"
-		},
-		{
-			"name": "FinancialSolid",
-			"unicode": "F346"
-		},
-		{
-			"name": "FinancialMirroredSolid",
-			"unicode": "F347"
-		},
-		{
-			"name": "HeadsetSolid",
-			"unicode": "F348"
-		},
 		{
 			"name": "PermissionsSolid",
 			"unicode": "F349"
@@ -406,6 +390,22 @@
 		{
 			"name": "FilterSolid",
 			"unicode": "F412"
+		},
+		{
+			"name": "MailUndelivered",
+			"unicode": "F415"
+		},
+		{
+			"name": "MailTentative",
+			"unicode": "F416"
+		},
+		{
+			"name": "MailTentativeMirrored",
+			"unicode": "F417"
+		},
+		{
+			"name": "MailReminder",
+			"unicode": "F418"
 		}
 	]
 }

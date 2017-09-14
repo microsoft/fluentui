@@ -15,7 +15,7 @@ import { initializeIcons as i11 } from './fabric-icons-11';
 const DEFAULT_BASE_URL = '';
 
 export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL): void {
-  [i, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11].forEach(
+  [i,i0,i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11].forEach(
     (initialize: (url: string) => void) => initialize(baseUrl)
   );
 }

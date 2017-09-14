@@ -1,13 +1,13 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-0';
-  src: url('fabric-icons-0.woff') format('woff');
+  font-family: 'FabricMDL2Icons-0';
+  src: url('../font/fabric-icons-0-049cd5bd.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-0';
+  font-family: 'FabricMDL2Icons-0';
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -56,7 +56,6 @@
 @mixin ms-Icon--Print { content: "\E749"; }
 @mixin ms-Icon--Up { content: "\E74A"; }
 @mixin ms-Icon--Down { content: "\E74B"; }
-@mixin ms-Icon--Delete { content: "\E74D"; }
 @mixin ms-Icon--Save { content: "\E74E"; }
 @mixin ms-Icon--Cloud { content: "\E753"; }
 @mixin ms-Icon--CommandPrompt { content: "\E756"; }
@@ -94,7 +93,6 @@
 @mixin ms-Icon--AspectRatio { content: "\E799"; }
 @mixin ms-Icon--Contrast { content: "\E7A1"; }
 @mixin ms-Icon--Redo { content: "\E7A6"; }
-@mixin ms-Icon--Undo { content: "\E7A7"; }
 @mixin ms-Icon--PhotoCollection { content: "\E7AA"; }
 @mixin ms-Icon--Album { content: "\E7AB"; }
 @mixin ms-Icon--Rotate { content: "\E7AD"; }
@@ -107,13 +105,15 @@
 @mixin ms-Icon--Education { content: "\E7BE"; }
 @mixin ms-Icon--ShoppingCart { content: "\E7BF"; }
 @mixin ms-Icon--Train { content: "\E7C0"; }
-@mixin ms-Icon--Flag { content: "\E7C1"; }
 @mixin ms-Icon--Move { content: "\E7C2"; }
 @mixin ms-Icon--Page { content: "\E7C3"; }
 @mixin ms-Icon--TouchPointer { content: "\E7C9"; }
 @mixin ms-Icon--Merge { content: "\E7D5"; }
 @mixin ms-Icon--TurnRight { content: "\E7DB"; }
 @mixin ms-Icon--Ferry { content: "\E7E3"; }
+@mixin ms-Icon--Highlight { content: "\E7E6"; }
+@mixin ms-Icon--Tab { content: "\E7E9"; }
+@mixin ms-Icon--Admin { content: "\E7EF"; }
 
 
 // Classes
@@ -159,7 +159,6 @@
 .ms-Icon--Print:before { @include ms-Icon--Print }
 .ms-Icon--Up:before { @include ms-Icon--Up }
 .ms-Icon--Down:before { @include ms-Icon--Down }
-.ms-Icon--Delete:before { @include ms-Icon--Delete }
 .ms-Icon--Save:before { @include ms-Icon--Save }
 .ms-Icon--Cloud:before { @include ms-Icon--Cloud }
 .ms-Icon--CommandPrompt:before { @include ms-Icon--CommandPrompt }
@@ -197,7 +196,6 @@
 .ms-Icon--AspectRatio:before { @include ms-Icon--AspectRatio }
 .ms-Icon--Contrast:before { @include ms-Icon--Contrast }
 .ms-Icon--Redo:before { @include ms-Icon--Redo }
-.ms-Icon--Undo:before { @include ms-Icon--Undo }
 .ms-Icon--PhotoCollection:before { @include ms-Icon--PhotoCollection }
 .ms-Icon--Album:before { @include ms-Icon--Album }
 .ms-Icon--Rotate:before { @include ms-Icon--Rotate }
@@ -210,11 +208,13 @@
 .ms-Icon--Education:before { @include ms-Icon--Education }
 .ms-Icon--ShoppingCart:before { @include ms-Icon--ShoppingCart }
 .ms-Icon--Train:before { @include ms-Icon--Train }
-.ms-Icon--Flag:before { @include ms-Icon--Flag }
 .ms-Icon--Move:before { @include ms-Icon--Move }
 .ms-Icon--Page:before { @include ms-Icon--Page }
 .ms-Icon--TouchPointer:before { @include ms-Icon--TouchPointer }
 .ms-Icon--Merge:before { @include ms-Icon--Merge }
 .ms-Icon--TurnRight:before { @include ms-Icon--TurnRight }
 .ms-Icon--Ferry:before { @include ms-Icon--Ferry }
+.ms-Icon--Highlight:before { @include ms-Icon--Highlight }
+.ms-Icon--Tab:before { @include ms-Icon--Tab }
+.ms-Icon--Admin:before { @include ms-Icon--Admin }
 

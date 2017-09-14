@@ -1,6 +1,6 @@
 {
 	"fontName": "fabric-icons-0",
-	"fontFamilyName": "FabricMDL2IconSet-0",
+	"fontFamilyName": "FabricMDL2Icons-0",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
@@ -176,10 +176,6 @@
 			"unicode": "E74B"
 		},
 		{
-			"name": "Delete",
-			"unicode": "E74D"
-		},
-		{
 			"name": "Save",
 			"unicode": "E74E"
 		},
@@ -328,10 +324,6 @@
 			"unicode": "E7A6"
 		},
 		{
-			"name": "Undo",
-			"unicode": "E7A7"
-		},
-		{
 			"name": "PhotoCollection",
 			"unicode": "E7AA"
 		},
@@ -380,10 +372,6 @@
 			"unicode": "E7C0"
 		},
 		{
-			"name": "Flag",
-			"unicode": "E7C1"
-		},
-		{
 			"name": "Move",
 			"unicode": "E7C2"
 		},
@@ -406,6 +394,18 @@
 		{
 			"name": "Ferry",
 			"unicode": "E7E3"
+		},
+		{
+			"name": "Highlight",
+			"unicode": "E7E6"
+		},
+		{
+			"name": "Tab",
+			"unicode": "E7E9"
+		},
+		{
+			"name": "Admin",
+			"unicode": "E7EF"
 		}
 	]
 }

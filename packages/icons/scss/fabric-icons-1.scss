@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-1';
-  src: url('fabric-icons-1.woff') format('woff');
+  font-family: 'FabricMDL2Icons-1';
+  src: url('../font/fabric-icons-1-79bec4ec.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-1';
+  font-family: 'FabricMDL2Icons-1';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--Highlight { content: "\E7E6"; }
-@mixin ms-Icon--Tab { content: "\E7E9"; }
-@mixin ms-Icon--Admin { content: "\E7EF"; }
 @mixin ms-Icon--TVMonitor { content: "\E7F4"; }
 @mixin ms-Icon--Speakers { content: "\E7F5"; }
 @mixin ms-Icon--Nav2DMapView { content: "\E800"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--AlarmClock { content: "\E919"; }
 @mixin ms-Icon--Hospital { content: "\E91D"; }
 @mixin ms-Icon--Timer { content: "\E91E"; }
+@mixin ms-Icon--FullCircleMask { content: "\E91F"; }
+@mixin ms-Icon--LocationFill { content: "\E920"; }
+@mixin ms-Icon--ChromeMinimize { content: "\E921"; }
 
 
 // Classes
-.ms-Icon--Highlight:before { @include ms-Icon--Highlight }
-.ms-Icon--Tab:before { @include ms-Icon--Tab }
-.ms-Icon--Admin:before { @include ms-Icon--Admin }
 .ms-Icon--TVMonitor:before { @include ms-Icon--TVMonitor }
 .ms-Icon--Speakers:before { @include ms-Icon--Speakers }
 .ms-Icon--Nav2DMapView:before { @include ms-Icon--Nav2DMapView }
@@ -217,4 +214,7 @@
 .ms-Icon--AlarmClock:before { @include ms-Icon--AlarmClock }
 .ms-Icon--Hospital:before { @include ms-Icon--Hospital }
 .ms-Icon--Timer:before { @include ms-Icon--Timer }
+.ms-Icon--FullCircleMask:before { @include ms-Icon--FullCircleMask }
+.ms-Icon--LocationFill:before { @include ms-Icon--LocationFill }
+.ms-Icon--ChromeMinimize:before { @include ms-Icon--ChromeMinimize }
 

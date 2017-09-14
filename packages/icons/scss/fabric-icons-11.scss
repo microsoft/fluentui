@@ -1,23 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-11';
-  src: url('fabric-icons-11.woff') format('woff');
+  font-family: 'FabricMDL2Icons-11';
+  src: url('../font/fabric-icons-11-c268b370.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-11';
+  font-family: 'FabricMDL2Icons-11';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--MailUndelivered { content: "\F415"; }
-@mixin ms-Icon--MailTentative { content: "\F416"; }
-@mixin ms-Icon--MailTentativeMirrored { content: "\F417"; }
-@mixin ms-Icon--MailReminder { content: "\F418"; }
 @mixin ms-Icon--ReceiptUndelivered { content: "\F419"; }
 @mixin ms-Icon--ReceiptTentative { content: "\F41A"; }
 @mixin ms-Icon--ReceiptTentativeMirrored { content: "\F41B"; }
@@ -94,10 +90,6 @@
 
 
 // Classes
-.ms-Icon--MailUndelivered:before { @include ms-Icon--MailUndelivered }
-.ms-Icon--MailTentative:before { @include ms-Icon--MailTentative }
-.ms-Icon--MailTentativeMirrored:before { @include ms-Icon--MailTentativeMirrored }
-.ms-Icon--MailReminder:before { @include ms-Icon--MailReminder }
 .ms-Icon--ReceiptUndelivered:before { @include ms-Icon--ReceiptUndelivered }
 .ms-Icon--ReceiptTentative:before { @include ms-Icon--ReceiptTentative }
 .ms-Icon--ReceiptTentativeMirrored:before { @include ms-Icon--ReceiptTentativeMirrored }

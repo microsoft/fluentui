@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-8';
-  src: url('fabric-icons-8.woff') format('woff');
+  font-family: 'FabricMDL2Icons-8';
+  src: url('../font/fabric-icons-8-0a757502.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-8';
+  font-family: 'FabricMDL2Icons-8';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--GridViewMedium:before { content: "\F233"; }
-.ms-Icon--GridViewLarge:before { content: "\F234"; }
-.ms-Icon--Step:before { content: "\F241"; }
 .ms-Icon--StepInsert:before { content: "\F242"; }
 .ms-Icon--StepShared:before { content: "\F243"; }
 .ms-Icon--StepSharedAdd:before { content: "\F244"; }
@@ -113,3 +110,6 @@
 .ms-Icon--AssessmentGroupTemplate:before { content: "\F2B1"; }
 .ms-Icon--NewTeamProject:before { content: "\F2B2"; }
 .ms-Icon--CommentAdd:before { content: "\F2B3"; }
+.ms-Icon--CommentNext:before { content: "\F2B4"; }
+.ms-Icon--CommentPrevious:before { content: "\F2B5"; }
+.ms-Icon--ShopServer:before { content: "\F2B6"; }

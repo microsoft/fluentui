@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-5",
-	"fontFamilyName": "FabricMDL2IconSet-5",
+	"fontFamilyName": "FabricMDL2Icons-5",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "BoxLogo",
-			"unicode": "ED75"
-		},
-		{
-			"name": "DelveLogoInverse",
-			"unicode": "ED76"
-		},
-		{
-			"name": "DropboxLogo",
-			"unicode": "ED77"
-		},
 		{
 			"name": "ExchangeLogoInverse",
 			"unicode": "ED78"
@@ -406,6 +394,18 @@
 		{
 			"name": "SyncToPC",
 			"unicode": "EE6E"
+		},
+		{
+			"name": "AustralianRules",
+			"unicode": "EE70"
+		},
+		{
+			"name": "WifiEthernet",
+			"unicode": "EE77"
+		},
+		{
+			"name": "DateTimeMirrored",
+			"unicode": "EE93"
 		}
 	]
 }

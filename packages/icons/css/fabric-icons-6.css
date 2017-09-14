@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-6';
-  src: url('fabric-icons-6.woff') format('woff');
+  font-family: 'FabricMDL2Icons-6';
+  src: url('../font/fabric-icons-6-319e10f3.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-6';
+  font-family: 'FabricMDL2Icons-6';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--AustralianRules:before { content: "\EE70"; }
-.ms-Icon--WifiEthernet:before { content: "\EE77"; }
-.ms-Icon--DateTimeMirrored:before { content: "\EE93"; }
 .ms-Icon--StopSolid:before { content: "\EE95"; }
 .ms-Icon--DoubleChevronUp12:before { content: "\EE96"; }
 .ms-Icon--DoubleChevronDown12:before { content: "\EE97"; }
@@ -113,3 +110,6 @@
 .ms-Icon--EmptyRecycleBin:before { content: "\EF88"; }
 .ms-Icon--Hide2:before { content: "\EF89"; }
 .ms-Icon--iOSAppStoreLogo:before { content: "\EF8A"; }
+.ms-Icon--AndroidLogo:before { content: "\EF8B"; }
+.ms-Icon--Breadcrumb:before { content: "\EF8C"; }
+.ms-Icon--ClearFilter:before { content: "\EF8F"; }

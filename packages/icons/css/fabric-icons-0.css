@@ -1,13 +1,13 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-0';
-  src: url('fabric-icons-0.woff') format('woff');
+  font-family: 'FabricMDL2Icons-0';
+  src: url('../font/fabric-icons-0-049cd5bd.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-0';
+  font-family: 'FabricMDL2Icons-0';
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -55,7 +55,6 @@
 .ms-Icon--Print:before { content: "\E749"; }
 .ms-Icon--Up:before { content: "\E74A"; }
 .ms-Icon--Down:before { content: "\E74B"; }
-.ms-Icon--Delete:before { content: "\E74D"; }
 .ms-Icon--Save:before { content: "\E74E"; }
 .ms-Icon--Cloud:before { content: "\E753"; }
 .ms-Icon--CommandPrompt:before { content: "\E756"; }
@@ -93,7 +92,6 @@
 .ms-Icon--AspectRatio:before { content: "\E799"; }
 .ms-Icon--Contrast:before { content: "\E7A1"; }
 .ms-Icon--Redo:before { content: "\E7A6"; }
-.ms-Icon--Undo:before { content: "\E7A7"; }
 .ms-Icon--PhotoCollection:before { content: "\E7AA"; }
 .ms-Icon--Album:before { content: "\E7AB"; }
 .ms-Icon--Rotate:before { content: "\E7AD"; }
@@ -106,10 +104,12 @@
 .ms-Icon--Education:before { content: "\E7BE"; }
 .ms-Icon--ShoppingCart:before { content: "\E7BF"; }
 .ms-Icon--Train:before { content: "\E7C0"; }
-.ms-Icon--Flag:before { content: "\E7C1"; }
 .ms-Icon--Move:before { content: "\E7C2"; }
 .ms-Icon--Page:before { content: "\E7C3"; }
 .ms-Icon--TouchPointer:before { content: "\E7C9"; }
 .ms-Icon--Merge:before { content: "\E7D5"; }
 .ms-Icon--TurnRight:before { content: "\E7DB"; }
 .ms-Icon--Ferry:before { content: "\E7E3"; }
+.ms-Icon--Highlight:before { content: "\E7E6"; }
+.ms-Icon--Tab:before { content: "\E7E9"; }
+.ms-Icon--Admin:before { content: "\E7EF"; }

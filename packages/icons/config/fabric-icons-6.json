@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-6",
-	"fontFamilyName": "FabricMDL2IconSet-6",
+	"fontFamilyName": "FabricMDL2Icons-6",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "AustralianRules",
-			"unicode": "EE70"
-		},
-		{
-			"name": "WifiEthernet",
-			"unicode": "EE77"
-		},
-		{
-			"name": "DateTimeMirrored",
-			"unicode": "EE93"
-		},
 		{
 			"name": "StopSolid",
 			"unicode": "EE95"
@@ -406,6 +394,18 @@
 		{
 			"name": "iOSAppStoreLogo",
 			"unicode": "EF8A"
+		},
+		{
+			"name": "AndroidLogo",
+			"unicode": "EF8B"
+		},
+		{
+			"name": "Breadcrumb",
+			"unicode": "EF8C"
+		},
+		{
+			"name": "ClearFilter",
+			"unicode": "EF8F"
 		}
 	]
 }

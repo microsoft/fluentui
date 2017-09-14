@@ -1,27 +1,23 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-9';
-  src: url('fabric-icons-9.woff') format('woff');
+  font-family: 'FabricMDL2Icons-9';
+  src: url('../font/fabric-icons-9-4b660f03.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-9';
+  font-family: 'FabricMDL2Icons-9';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--CommentNext:before { content: "\F2B4"; }
-.ms-Icon--CommentPrevious:before { content: "\F2B5"; }
-.ms-Icon--ShopServer:before { content: "\F2B6"; }
 .ms-Icon--LocaleLanguage:before { content: "\F2B7"; }
 .ms-Icon--QueryList:before { content: "\F2B8"; }
 .ms-Icon--UserSync:before { content: "\F2B9"; }
 .ms-Icon--UserPause:before { content: "\F2BA"; }
 .ms-Icon--StreamingOff:before { content: "\F2BB"; }
-.ms-Icon--MoreVertical:before { content: "\F2BC"; }
 .ms-Icon--ArrowTallUpLeft:before { content: "\F2BD"; }
 .ms-Icon--ArrowTallUpRight:before { content: "\F2BE"; }
 .ms-Icon--ArrowTallDownLeft:before { content: "\F2BF"; }
@@ -113,3 +109,7 @@
 .ms-Icon--ShoppingCartSolid:before { content: "\F342"; }
 .ms-Icon--MailSolid:before { content: "\F343"; }
 .ms-Icon--ChatSolid:before { content: "\F344"; }
+.ms-Icon--RibbonSolid:before { content: "\F345"; }
+.ms-Icon--FinancialSolid:before { content: "\F346"; }
+.ms-Icon--FinancialMirroredSolid:before { content: "\F347"; }
+.ms-Icon--HeadsetSolid:before { content: "\F348"; }

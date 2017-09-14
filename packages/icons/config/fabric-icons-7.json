@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-7",
-	"fontFamilyName": "FabricMDL2IconSet-7",
+	"fontFamilyName": "FabricMDL2Icons-7",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "AndroidLogo",
-			"unicode": "EF8B"
-		},
-		{
-			"name": "Breadcrumb",
-			"unicode": "EF8C"
-		},
-		{
-			"name": "ClearFilter",
-			"unicode": "EF8F"
-		},
 		{
 			"name": "Flow",
 			"unicode": "EF90"
@@ -406,6 +394,18 @@
 		{
 			"name": "GridViewSmall",
 			"unicode": "F232"
+		},
+		{
+			"name": "GridViewMedium",
+			"unicode": "F233"
+		},
+		{
+			"name": "GridViewLarge",
+			"unicode": "F234"
+		},
+		{
+			"name": "Step",
+			"unicode": "F241"
 		}
 	]
 }

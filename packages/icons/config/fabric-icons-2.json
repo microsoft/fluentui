@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-2",
-	"fontFamilyName": "FabricMDL2IconSet-2",
+	"fontFamilyName": "FabricMDL2Icons-2",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "FullCircleMask",
-			"unicode": "E91F"
-		},
-		{
-			"name": "LocationFill",
-			"unicode": "E920"
-		},
-		{
-			"name": "ChromeMinimize",
-			"unicode": "E921"
-		},
 		{
 			"name": "Annotation",
 			"unicode": "E924"
@@ -406,6 +394,18 @@
 		{
 			"name": "SnowShowerNight",
 			"unicode": "EA11"
+		},
+		{
+			"name": "HailNight",
+			"unicode": "EA13"
+		},
+		{
+			"name": "Info2",
+			"unicode": "EA1F"
+		},
+		{
+			"name": "StoreLogo",
+			"unicode": "EA96"
 		}
 	]
 }

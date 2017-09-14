@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-3';
-  src: url('fabric-icons-3.woff') format('woff');
+  font-family: 'FabricMDL2Icons-3';
+  src: url('../font/fabric-icons-3-51462027.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-3';
+  font-family: 'FabricMDL2Icons-3';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--HailNight:before { content: "\EA13"; }
-.ms-Icon--Info2:before { content: "\EA1F"; }
-.ms-Icon--StoreLogo:before { content: "\EA96"; }
 .ms-Icon--MultiSelectMirrored:before { content: "\EA98"; }
 .ms-Icon--Broom:before { content: "\EA99"; }
 .ms-Icon--MusicInCollectionFill:before { content: "\EA36"; }
@@ -113,3 +110,6 @@
 .ms-Icon--Certificate:before { content: "\EB95"; }
 .ms-Icon--FastForward:before { content: "\EB9D"; }
 .ms-Icon--Rewind:before { content: "\EB9E"; }
+.ms-Icon--Photo2:before { content: "\EB9F"; }
+.ms-Icon--OpenSource:before { content: "\EBC2"; }
+.ms-Icon--CloudDownload:before { content: "\EBD3"; }

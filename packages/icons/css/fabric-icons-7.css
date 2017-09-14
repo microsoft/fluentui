@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-7';
-  src: url('fabric-icons-7.woff') format('woff');
+  font-family: 'FabricMDL2Icons-7';
+  src: url('../font/fabric-icons-7-d1428b0b.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-7';
+  font-family: 'FabricMDL2Icons-7';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--AndroidLogo:before { content: "\EF8B"; }
-.ms-Icon--Breadcrumb:before { content: "\EF8C"; }
-.ms-Icon--ClearFilter:before { content: "\EF8F"; }
 .ms-Icon--Flow:before { content: "\EF90"; }
 .ms-Icon--PageEdit:before { content: "\EFB6"; }
 .ms-Icon--Database:before { content: "\EFC7"; }
@@ -113,3 +110,6 @@
 .ms-Icon--SidePanelMirrored:before { content: "\F221"; }
 .ms-Icon--ProtectRestrict:before { content: "\F22A"; }
 .ms-Icon--GridViewSmall:before { content: "\F232"; }
+.ms-Icon--GridViewMedium:before { content: "\F233"; }
+.ms-Icon--GridViewLarge:before { content: "\F234"; }
+.ms-Icon--Step:before { content: "\F241"; }

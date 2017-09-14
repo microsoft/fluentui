@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-6';
-  src: url('fabric-icons-6.woff') format('woff');
+  font-family: 'FabricMDL2Icons-6';
+  src: url('../font/fabric-icons-6-319e10f3.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-6';
+  font-family: 'FabricMDL2Icons-6';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--AustralianRules { content: "\EE70"; }
-@mixin ms-Icon--WifiEthernet { content: "\EE77"; }
-@mixin ms-Icon--DateTimeMirrored { content: "\EE93"; }
 @mixin ms-Icon--StopSolid { content: "\EE95"; }
 @mixin ms-Icon--DoubleChevronUp12 { content: "\EE96"; }
 @mixin ms-Icon--DoubleChevronDown12 { content: "\EE97"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--EmptyRecycleBin { content: "\EF88"; }
 @mixin ms-Icon--Hide2 { content: "\EF89"; }
 @mixin ms-Icon--iOSAppStoreLogo { content: "\EF8A"; }
+@mixin ms-Icon--AndroidLogo { content: "\EF8B"; }
+@mixin ms-Icon--Breadcrumb { content: "\EF8C"; }
+@mixin ms-Icon--ClearFilter { content: "\EF8F"; }
 
 
 // Classes
-.ms-Icon--AustralianRules:before { @include ms-Icon--AustralianRules }
-.ms-Icon--WifiEthernet:before { @include ms-Icon--WifiEthernet }
-.ms-Icon--DateTimeMirrored:before { @include ms-Icon--DateTimeMirrored }
 .ms-Icon--StopSolid:before { @include ms-Icon--StopSolid }
 .ms-Icon--DoubleChevronUp12:before { @include ms-Icon--DoubleChevronUp12 }
 .ms-Icon--DoubleChevronDown12:before { @include ms-Icon--DoubleChevronDown12 }
@@ -217,4 +214,7 @@
 .ms-Icon--EmptyRecycleBin:before { @include ms-Icon--EmptyRecycleBin }
 .ms-Icon--Hide2:before { @include ms-Icon--Hide2 }
 .ms-Icon--iOSAppStoreLogo:before { @include ms-Icon--iOSAppStoreLogo }
+.ms-Icon--AndroidLogo:before { @include ms-Icon--AndroidLogo }
+.ms-Icon--Breadcrumb:before { @include ms-Icon--Breadcrumb }
+.ms-Icon--ClearFilter:before { @include ms-Icon--ClearFilter }
 

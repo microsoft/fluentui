@@ -1,23 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-10';
-  src: url('fabric-icons-10.woff') format('woff');
+  font-family: 'FabricMDL2Icons-10';
+  src: url('../font/fabric-icons-10-626ecea9.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-10';
+  font-family: 'FabricMDL2Icons-10';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--RibbonSolid { content: "\F345"; }
-@mixin ms-Icon--FinancialSolid { content: "\F346"; }
-@mixin ms-Icon--FinancialMirroredSolid { content: "\F347"; }
-@mixin ms-Icon--HeadsetSolid { content: "\F348"; }
 @mixin ms-Icon--PermissionsSolid { content: "\F349"; }
 @mixin ms-Icon--ParkingSolid { content: "\F34A"; }
 @mixin ms-Icon--ParkingMirroredSolid { content: "\F34B"; }
@@ -114,13 +110,13 @@
 @mixin ms-Icon--SkypeForBusinessLogo16 { content: "\F40F"; }
 @mixin ms-Icon--SkypeForBusinessLogoFill16 { content: "\F410"; }
 @mixin ms-Icon--FilterSolid { content: "\F412"; }
+@mixin ms-Icon--MailUndelivered { content: "\F415"; }
+@mixin ms-Icon--MailTentative { content: "\F416"; }
+@mixin ms-Icon--MailTentativeMirrored { content: "\F417"; }
+@mixin ms-Icon--MailReminder { content: "\F418"; }
 
 
 // Classes
-.ms-Icon--RibbonSolid:before { @include ms-Icon--RibbonSolid }
-.ms-Icon--FinancialSolid:before { @include ms-Icon--FinancialSolid }
-.ms-Icon--FinancialMirroredSolid:before { @include ms-Icon--FinancialMirroredSolid }
-.ms-Icon--HeadsetSolid:before { @include ms-Icon--HeadsetSolid }
 .ms-Icon--PermissionsSolid:before { @include ms-Icon--PermissionsSolid }
 .ms-Icon--ParkingSolid:before { @include ms-Icon--ParkingSolid }
 .ms-Icon--ParkingMirroredSolid:before { @include ms-Icon--ParkingMirroredSolid }
@@ -217,4 +213,8 @@
 .ms-Icon--SkypeForBusinessLogo16:before { @include ms-Icon--SkypeForBusinessLogo16 }
 .ms-Icon--SkypeForBusinessLogoFill16:before { @include ms-Icon--SkypeForBusinessLogoFill16 }
 .ms-Icon--FilterSolid:before { @include ms-Icon--FilterSolid }
+.ms-Icon--MailUndelivered:before { @include ms-Icon--MailUndelivered }
+.ms-Icon--MailTentative:before { @include ms-Icon--MailTentative }
+.ms-Icon--MailTentativeMirrored:before { @include ms-Icon--MailTentativeMirrored }
+.ms-Icon--MailReminder:before { @include ms-Icon--MailReminder }
 

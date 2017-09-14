@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-7';
-  src: url('fabric-icons-7.woff') format('woff');
+  font-family: 'FabricMDL2Icons-7';
+  src: url('../font/fabric-icons-7-d1428b0b.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-7';
+  font-family: 'FabricMDL2Icons-7';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--AndroidLogo { content: "\EF8B"; }
-@mixin ms-Icon--Breadcrumb { content: "\EF8C"; }
-@mixin ms-Icon--ClearFilter { content: "\EF8F"; }
 @mixin ms-Icon--Flow { content: "\EF90"; }
 @mixin ms-Icon--PageEdit { content: "\EFB6"; }
 @mixin ms-Icon--Database { content: "\EFC7"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--SidePanelMirrored { content: "\F221"; }
 @mixin ms-Icon--ProtectRestrict { content: "\F22A"; }
 @mixin ms-Icon--GridViewSmall { content: "\F232"; }
+@mixin ms-Icon--GridViewMedium { content: "\F233"; }
+@mixin ms-Icon--GridViewLarge { content: "\F234"; }
+@mixin ms-Icon--Step { content: "\F241"; }
 
 
 // Classes
-.ms-Icon--AndroidLogo:before { @include ms-Icon--AndroidLogo }
-.ms-Icon--Breadcrumb:before { @include ms-Icon--Breadcrumb }
-.ms-Icon--ClearFilter:before { @include ms-Icon--ClearFilter }
 .ms-Icon--Flow:before { @include ms-Icon--Flow }
 .ms-Icon--PageEdit:before { @include ms-Icon--PageEdit }
 .ms-Icon--Database:before { @include ms-Icon--Database }
@@ -217,4 +214,7 @@
 .ms-Icon--SidePanelMirrored:before { @include ms-Icon--SidePanelMirrored }
 .ms-Icon--ProtectRestrict:before { @include ms-Icon--ProtectRestrict }
 .ms-Icon--GridViewSmall:before { @include ms-Icon--GridViewSmall }
+.ms-Icon--GridViewMedium:before { @include ms-Icon--GridViewMedium }
+.ms-Icon--GridViewLarge:before { @include ms-Icon--GridViewLarge }
+.ms-Icon--Step:before { @include ms-Icon--Step }
 

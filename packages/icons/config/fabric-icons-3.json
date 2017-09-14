@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-3",
-	"fontFamilyName": "FabricMDL2IconSet-3",
+	"fontFamilyName": "FabricMDL2Icons-3",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "HailNight",
-			"unicode": "EA13"
-		},
-		{
-			"name": "Info2",
-			"unicode": "EA1F"
-		},
-		{
-			"name": "StoreLogo",
-			"unicode": "EA96"
-		},
 		{
 			"name": "MultiSelectMirrored",
 			"unicode": "EA98"
@@ -406,6 +394,18 @@
 		{
 			"name": "Rewind",
 			"unicode": "EB9E"
+		},
+		{
+			"name": "Photo2",
+			"unicode": "EB9F"
+		},
+		{
+			"name": "OpenSource",
+			"unicode": "EBC2"
+		},
+		{
+			"name": "CloudDownload",
+			"unicode": "EBD3"
 		}
 	]
 }

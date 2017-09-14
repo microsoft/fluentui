@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-4';
-  src: url('fabric-icons-4.woff') format('woff');
+  font-family: 'FabricMDL2Icons-4';
+  src: url('../font/fabric-icons-4-b1eecb0d.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-4';
+  font-family: 'FabricMDL2Icons-4';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--Photo2:before { content: "\EB9F"; }
-.ms-Icon--OpenSource:before { content: "\EBC2"; }
-.ms-Icon--CloudDownload:before { content: "\EBD3"; }
 .ms-Icon--WindDirection:before { content: "\EBE6"; }
 .ms-Icon--Family:before { content: "\EBDA"; }
 .ms-Icon--CSS:before { content: "\EBEF"; }
@@ -113,3 +110,6 @@
 .ms-Icon--AdminPLogo:before { content: "\ED71"; }
 .ms-Icon--AdminSLogo:before { content: "\ED72"; }
 .ms-Icon--AdminYLogo:before { content: "\ED73"; }
+.ms-Icon--BoxLogo:before { content: "\ED75"; }
+.ms-Icon--DelveLogoInverse:before { content: "\ED76"; }
+.ms-Icon--DropboxLogo:before { content: "\ED77"; }

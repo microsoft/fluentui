@@ -1,6 +1,6 @@
 {
 	"fontName": "fabric-icons",
-	"fontFamilyName": "FabricMDL2IconSet",
+	"fontFamilyName": "FabricMDL2Icons",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
@@ -8,16 +8,68 @@
 	},
 	"glyphs": [
 		{
-			"name": "StatusCircleCheckmark",
-			"unicode": "F13E"
+			"name": "GlobalNavButton",
+			"unicode": "E700"
+		},
+		{
+			"name": "ChevronDown",
+			"unicode": "E70D"
+		},
+		{
+			"name": "ChevronUp",
+			"unicode": "E70E"
+		},
+		{
+			"name": "Edit",
+			"unicode": "E70F"
+		},
+		{
+			"name": "Add",
+			"unicode": "E710"
 		},
 		{
 			"name": "Cancel",
 			"unicode": "E711"
 		},
 		{
-			"name": "ChevronDown",
-			"unicode": "E70D"
+			"name": "More",
+			"unicode": "E712"
+		},
+		{
+			"name": "Settings",
+			"unicode": "E713"
+		},
+		{
+			"name": "Mail",
+			"unicode": "E715"
+		},
+		{
+			"name": "Filter",
+			"unicode": "E71C"
+		},
+		{
+			"name": "Search",
+			"unicode": "E721"
+		},
+		{
+			"name": "Share",
+			"unicode": "E72D"
+		},
+		{
+			"name": "FavoriteStar",
+			"unicode": "E734"
+		},
+		{
+			"name": "FavoriteStarFill",
+			"unicode": "E735"
+		},
+		{
+			"name": "CheckMark",
+			"unicode": "E73E"
+		},
+		{
+			"name": "Delete",
+			"unicode": "E74D"
 		},
 		{
 			"name": "ChevronLeft",
@@ -28,8 +80,88 @@
 			"unicode": "E76C"
 		},
 		{
-			"name": "ChevronUp",
-			"unicode": "E70E"
+			"name": "Calendar",
+			"unicode": "E787"
+		},
+		{
+			"name": "Undo",
+			"unicode": "E7A7"
+		},
+		{
+			"name": "Flag",
+			"unicode": "E7C1"
+		},
+		{
+			"name": "View",
+			"unicode": "E890"
+		},
+		{
+			"name": "Clear",
+			"unicode": "E894"
+		},
+		{
+			"name": "Download",
+			"unicode": "E896"
+		},
+		{
+			"name": "Upload",
+			"unicode": "E898"
+		},
+		{
+			"name": "Sort",
+			"unicode": "E8CB"
+		},
+		{
+			"name": "Tag",
+			"unicode": "E8EC"
+		},
+		{
+			"name": "AddFriend",
+			"unicode": "E8FA"
+		},
+		{
+			"name": "Info",
+			"unicode": "E946"
+		},
+		{
+			"name": "SortLines",
+			"unicode": "E9D0"
+		},
+		{
+			"name": "List",
+			"unicode": "EA37"
+		},
+		{
+			"name": "CircleRing",
+			"unicode": "EA3A"
+		},
+		{
+			"name": "Tiles",
+			"unicode": "ECA5"
+		},
+		{
+			"name": "Embed",
+			"unicode": "ECCE"
+		},
+		{
+			"name": "Ascending",
+			"unicode": "EDC0"
+		},
+		{
+			"name": "Descending",
+			"unicode": "EDC1"
+		},
+		{
+			"name": "SortUp",
+			"unicode": "EE68"
+		},
+		{
+			"name": "SortDown",
+			"unicode": "EE69"
+		},
+		{
+			"name": "LargeGrid",
+			"unicode": "EECB"
 		},
 		{
 			"name": "SkypeCheck",
@@ -44,128 +176,12 @@
 			"unicode": "EF82"
 		},
 		{
-			"name": "Clear",
-			"unicode": "E894"
+			"name": "StatusCircleCheckmark",
+			"unicode": "F13E"
 		},
 		{
-			"name": "Search",
-			"unicode": "E721"
-		},
-		{
-			"name": "FavoriteStar",
-			"unicode": "E734"
-		},
-		{
-			"name": "FavoriteStarFill",
-			"unicode": "E735"
-		},
-		{
-			"name": "AddFriend",
-			"unicode": "E8FA"
-		},
-		{
-			"name": "Tag",
-			"unicode": "E8EC"
-		},
-		{
-			"name": "More",
-			"unicode": "E712"
-		},
-		{
-			"name": "Ascending",
-			"unicode": "EDC0"
-		},
-		{
-			"name": "Descending",
-			"unicode": "EDC1"
-		},
-		{
-			"name": "Filter",
-			"unicode": "E71C"
-		},
-		{
-			"name": "Sort",
-			"unicode": "E8CB"
-		},
-		{
-			"name": "SortDown",
-			"unicode": "EE69"
-		},
-		{
-			"name": "SortLines",
-			"unicode": "E9D0"
-		},
-		{
-			"name": "SortUp",
-			"unicode": "EE68"
-		},
-		{
-			"name": "LargeGrid",
-			"unicode": "EECB"
-		},
-		{
-			"name": "List",
-			"unicode": "EA37"
-		},
-		{
-			"name": "View",
-			"unicode": "E890"
-		},
-		{
-			"name": "Add",
-			"unicode": "E710"
-		},
-		{
-			"name": "Download",
-			"unicode": "E896"
-		},
-		{
-			"name": "Calendar",
-			"unicode": "E787"
-		},
-		{
-			"name": "Edit",
-			"unicode": "E70F"
-		},
-		{
-			"name": "Embed",
-			"unicode": "ECCE"
-		},
-		{
-			"name": "GlobalNavButton",
-			"unicode": "E700"
-		},
-		{
-			"name": "Info",
-			"unicode": "E946"
-		},
-		{
-			"name": "Mail",
-			"unicode": "E715"
-		},
-		{
-			"name": "Settings",
-			"unicode": "E713"
-		},
-		{
-			"name": "Share",
-			"unicode": "E72D"
-		},
-		{
-			"name": "Tiles",
-			"unicode": "ECA5"
-		},
-		{
-			"name": "Upload",
-			"unicode": "E898"
-		},
-		{
-			"name": "CircleRing",
-			"unicode": "EA3A"
-		},
-		{
-			"name": "CheckMark",
-			"unicode": "E73E"
+			"name": "MoreVertical",
+			"unicode": "F2BC"
 		}
 	]
 }

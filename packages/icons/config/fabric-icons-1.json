@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-1",
-	"fontFamilyName": "FabricMDL2IconSet-1",
+	"fontFamilyName": "FabricMDL2Icons-1",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "Highlight",
-			"unicode": "E7E6"
-		},
-		{
-			"name": "Tab",
-			"unicode": "E7E9"
-		},
-		{
-			"name": "Admin",
-			"unicode": "E7EF"
-		},
 		{
 			"name": "TVMonitor",
 			"unicode": "E7F4"
@@ -406,6 +394,18 @@
 		{
 			"name": "Timer",
 			"unicode": "E91E"
+		},
+		{
+			"name": "FullCircleMask",
+			"unicode": "E91F"
+		},
+		{
+			"name": "LocationFill",
+			"unicode": "E920"
+		},
+		{
+			"name": "ChromeMinimize",
+			"unicode": "E921"
 		}
 	]
 }

@@ -1,21 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-1';
-  src: url('fabric-icons-1.woff') format('woff');
+  font-family: 'FabricMDL2Icons-1';
+  src: url('../font/fabric-icons-1-79bec4ec.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-1';
+  font-family: 'FabricMDL2Icons-1';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--Highlight:before { content: "\E7E6"; }
-.ms-Icon--Tab:before { content: "\E7E9"; }
-.ms-Icon--Admin:before { content: "\E7EF"; }
 .ms-Icon--TVMonitor:before { content: "\E7F4"; }
 .ms-Icon--Speakers:before { content: "\E7F5"; }
 .ms-Icon--Nav2DMapView:before { content: "\E800"; }
@@ -113,3 +110,6 @@
 .ms-Icon--AlarmClock:before { content: "\E919"; }
 .ms-Icon--Hospital:before { content: "\E91D"; }
 .ms-Icon--Timer:before { content: "\E91E"; }
+.ms-Icon--FullCircleMask:before { content: "\E91F"; }
+.ms-Icon--LocationFill:before { content: "\E920"; }
+.ms-Icon--ChromeMinimize:before { content: "\E921"; }

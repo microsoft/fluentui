@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-3';
-  src: url('fabric-icons-3.woff') format('woff');
+  font-family: 'FabricMDL2Icons-3';
+  src: url('../font/fabric-icons-3-51462027.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-3';
+  font-family: 'FabricMDL2Icons-3';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--HailNight { content: "\EA13"; }
-@mixin ms-Icon--Info2 { content: "\EA1F"; }
-@mixin ms-Icon--StoreLogo { content: "\EA96"; }
 @mixin ms-Icon--MultiSelectMirrored { content: "\EA98"; }
 @mixin ms-Icon--Broom { content: "\EA99"; }
 @mixin ms-Icon--MusicInCollectionFill { content: "\EA36"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--Certificate { content: "\EB95"; }
 @mixin ms-Icon--FastForward { content: "\EB9D"; }
 @mixin ms-Icon--Rewind { content: "\EB9E"; }
+@mixin ms-Icon--Photo2 { content: "\EB9F"; }
+@mixin ms-Icon--OpenSource { content: "\EBC2"; }
+@mixin ms-Icon--CloudDownload { content: "\EBD3"; }
 
 
 // Classes
-.ms-Icon--HailNight:before { @include ms-Icon--HailNight }
-.ms-Icon--Info2:before { @include ms-Icon--Info2 }
-.ms-Icon--StoreLogo:before { @include ms-Icon--StoreLogo }
 .ms-Icon--MultiSelectMirrored:before { @include ms-Icon--MultiSelectMirrored }
 .ms-Icon--Broom:before { @include ms-Icon--Broom }
 .ms-Icon--MusicInCollectionFill:before { @include ms-Icon--MusicInCollectionFill }
@@ -217,4 +214,7 @@
 .ms-Icon--Certificate:before { @include ms-Icon--Certificate }
 .ms-Icon--FastForward:before { @include ms-Icon--FastForward }
 .ms-Icon--Rewind:before { @include ms-Icon--Rewind }
+.ms-Icon--Photo2:before { @include ms-Icon--Photo2 }
+.ms-Icon--OpenSource:before { @include ms-Icon--OpenSource }
+.ms-Icon--CloudDownload:before { @include ms-Icon--CloudDownload }
 

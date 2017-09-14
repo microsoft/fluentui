@@ -1,24 +1,12 @@
 {
 	"fontName": "fabric-icons-4",
-	"fontFamilyName": "FabricMDL2IconSet-4",
+	"fontFamilyName": "FabricMDL2Icons-4",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "Photo2",
-			"unicode": "EB9F"
-		},
-		{
-			"name": "OpenSource",
-			"unicode": "EBC2"
-		},
-		{
-			"name": "CloudDownload",
-			"unicode": "EBD3"
-		},
 		{
 			"name": "WindDirection",
 			"unicode": "EBE6"
@@ -406,6 +394,18 @@
 		{
 			"name": "AdminYLogo",
 			"unicode": "ED73"
+		},
+		{
+			"name": "BoxLogo",
+			"unicode": "ED75"
+		},
+		{
+			"name": "DelveLogoInverse",
+			"unicode": "ED76"
+		},
+		{
+			"name": "DropboxLogo",
+			"unicode": "ED77"
 		}
 	]
 }

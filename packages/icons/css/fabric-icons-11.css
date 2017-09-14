@@ -1,22 +1,18 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-11';
-  src: url('fabric-icons-11.woff') format('woff');
+  font-family: 'FabricMDL2Icons-11';
+  src: url('../font/fabric-icons-11-c268b370.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-11';
+  font-family: 'FabricMDL2Icons-11';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
-.ms-Icon--MailUndelivered:before { content: "\F415"; }
-.ms-Icon--MailTentative:before { content: "\F416"; }
-.ms-Icon--MailTentativeMirrored:before { content: "\F417"; }
-.ms-Icon--MailReminder:before { content: "\F418"; }
 .ms-Icon--ReceiptUndelivered:before { content: "\F419"; }
 .ms-Icon--ReceiptTentative:before { content: "\F41A"; }
 .ms-Icon--ReceiptTentativeMirrored:before { content: "\F41B"; }

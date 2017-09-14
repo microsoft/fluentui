@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-5';
-  src: url('fabric-icons-5.woff') format('woff');
+  font-family: 'FabricMDL2Icons-5';
+  src: url('../font/fabric-icons-5-d80e1f52.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-5';
+  font-family: 'FabricMDL2Icons-5';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--BoxLogo { content: "\ED75"; }
-@mixin ms-Icon--DelveLogoInverse { content: "\ED76"; }
-@mixin ms-Icon--DropboxLogo { content: "\ED77"; }
 @mixin ms-Icon--ExchangeLogoInverse { content: "\ED78"; }
 @mixin ms-Icon--LyncLogo { content: "\ED79"; }
 @mixin ms-Icon--OfficeVideoLogoInverse { content: "\ED7A"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--AwayStatus { content: "\EE6A"; }
 @mixin ms-Icon--MyMoviesTV { content: "\EE6C"; }
 @mixin ms-Icon--SyncToPC { content: "\EE6E"; }
+@mixin ms-Icon--AustralianRules { content: "\EE70"; }
+@mixin ms-Icon--WifiEthernet { content: "\EE77"; }
+@mixin ms-Icon--DateTimeMirrored { content: "\EE93"; }
 
 
 // Classes
-.ms-Icon--BoxLogo:before { @include ms-Icon--BoxLogo }
-.ms-Icon--DelveLogoInverse:before { @include ms-Icon--DelveLogoInverse }
-.ms-Icon--DropboxLogo:before { @include ms-Icon--DropboxLogo }
 .ms-Icon--ExchangeLogoInverse:before { @include ms-Icon--ExchangeLogoInverse }
 .ms-Icon--LyncLogo:before { @include ms-Icon--LyncLogo }
 .ms-Icon--OfficeVideoLogoInverse:before { @include ms-Icon--OfficeVideoLogoInverse }
@@ -217,4 +214,7 @@
 .ms-Icon--AwayStatus:before { @include ms-Icon--AwayStatus }
 .ms-Icon--MyMoviesTV:before { @include ms-Icon--MyMoviesTV }
 .ms-Icon--SyncToPC:before { @include ms-Icon--SyncToPC }
+.ms-Icon--AustralianRules:before { @include ms-Icon--AustralianRules }
+.ms-Icon--WifiEthernet:before { @include ms-Icon--WifiEthernet }
+.ms-Icon--DateTimeMirrored:before { @include ms-Icon--DateTimeMirrored }
 

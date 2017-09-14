@@ -1,22 +1,19 @@
 @font-face {
-  font-family: 'FabricMDL2IconSet-4';
-  src: url('fabric-icons-4.woff') format('woff');
+  font-family: 'FabricMDL2Icons-4';
+  src: url('../font/fabric-icons-4-b1eecb0d.woff') format('woff');
 }
 
 .ms-Icon {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  font-family: 'FabricMDL2IconSet-4';
+  font-family: 'FabricMDL2Icons-4';
   font-style: normal;
   font-weight: normal;
   speak: none;
 }
 
 // Mixins
-@mixin ms-Icon--Photo2 { content: "\EB9F"; }
-@mixin ms-Icon--OpenSource { content: "\EBC2"; }
-@mixin ms-Icon--CloudDownload { content: "\EBD3"; }
 @mixin ms-Icon--WindDirection { content: "\EBE6"; }
 @mixin ms-Icon--Family { content: "\EBDA"; }
 @mixin ms-Icon--CSS { content: "\EBEF"; }
@@ -114,12 +111,12 @@
 @mixin ms-Icon--AdminPLogo { content: "\ED71"; }
 @mixin ms-Icon--AdminSLogo { content: "\ED72"; }
 @mixin ms-Icon--AdminYLogo { content: "\ED73"; }
+@mixin ms-Icon--BoxLogo { content: "\ED75"; }
+@mixin ms-Icon--DelveLogoInverse { content: "\ED76"; }
+@mixin ms-Icon--DropboxLogo { content: "\ED77"; }
 
 
 // Classes
-.ms-Icon--Photo2:before { @include ms-Icon--Photo2 }
-.ms-Icon--OpenSource:before { @include ms-Icon--OpenSource }
-.ms-Icon--CloudDownload:before { @include ms-Icon--CloudDownload }
 .ms-Icon--WindDirection:before { @include ms-Icon--WindDirection }
 .ms-Icon--Family:before { @include ms-Icon--Family }
 .ms-Icon--CSS:before { @include ms-Icon--CSS }
@@ -217,4 +214,7 @@
 .ms-Icon--AdminPLogo:before { @include ms-Icon--AdminPLogo }
 .ms-Icon--AdminSLogo:before { @include ms-Icon--AdminSLogo }
 .ms-Icon--AdminYLogo:before { @include ms-Icon--AdminYLogo }
+.ms-Icon--BoxLogo:before { @include ms-Icon--BoxLogo }
+.ms-Icon--DelveLogoInverse:before { @include ms-Icon--DelveLogoInverse }
+.ms-Icon--DropboxLogo:before { @include ms-Icon--DropboxLogo }
 
