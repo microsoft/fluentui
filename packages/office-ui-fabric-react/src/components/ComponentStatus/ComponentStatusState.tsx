@@ -10,70 +10,70 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   Button: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Calendar: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Callout: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   Checkbox: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.poor
   },
   ChoiceGroup: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   ColorPicker: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   ComboBox: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   CommandBar: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   ContextualMenu: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   DatePicker: {
     keyboardAccessibilitySupport: false,
@@ -87,35 +87,35 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.poor
   },
   Dialog: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   DocumentCard: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.poor
   },
   Dropdown: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Facepile: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   GroupedList: {
     keyboardAccessibilitySupport: false,
@@ -143,21 +143,21 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Label: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Layer: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Link: {
     keyboardAccessibilitySupport: false,
@@ -178,7 +178,7 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   Modal: {
     keyboardAccessibilitySupport: false,
@@ -206,28 +206,28 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.poor
   },
   Panel: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   Persona: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Pickers: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   PeoplePicker: {
     keyboardAccessibilitySupport: false,
@@ -255,14 +255,14 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   ResizeGroup: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   ScrollablePane: {
     keyboardAccessibilitySupport: false,
@@ -283,7 +283,7 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   Spinner: {
     keyboardAccessibilitySupport: false,
@@ -297,42 +297,42 @@ export const ComponentStatusState: IComponentStatusState = {
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   SwatchColorPicker: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   TeachingBubble: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.fair
   },
   TextField: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Toggle: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.good
   },
   Tooltip: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
     rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    testCoverage: TestCoverageStatus.poor
   }
 };
 
