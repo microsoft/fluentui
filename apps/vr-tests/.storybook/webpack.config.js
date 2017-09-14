@@ -10,7 +10,7 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'ts-loader'],
+        loaders: ['babel-loader', 'awesome-typescript-loader'],
       },
       {
         test: /\.(gif|jpg|jpeg|png|svg)$/,

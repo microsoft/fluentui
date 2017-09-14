@@ -8,7 +8,7 @@ import { Fabric } from 'office-ui-fabric-react';
 const FabricDecorator = (story) => (
   <Fabric>
     <p>
-      {story()}
+      { story() }
     </p>
   </Fabric>
 );
@@ -18,3 +18,4 @@ addDecorator(FabricDecorator);
 // Import component stories
 
 import './Button.stories';
+import './Breadcrumb.stories';
