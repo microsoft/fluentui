@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com"
+}
