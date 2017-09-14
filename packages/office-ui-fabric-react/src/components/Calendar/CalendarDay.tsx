@@ -20,7 +20,6 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekNumbersInMonth,
   getWeekNumber
 } from '../../utilities/dateMath/DateMath';
 
@@ -97,7 +96,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
-    let weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!, firstDayOfWeek, navigatedDate) : null;
+    let weekNumbers = showWeekNumbers ? this._getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, navigatedDate) : null;
     let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
@@ -488,4 +487,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return weeks;
   }
 
+  // Returns the week numbers for each week in a month.  Week numbers are 1 - 52 (53) in a year
+  private _getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
+    let selectedYear = navigatedDate.getFullYear();
+    let selectedMonth = navigatedDate.getMonth();
+    let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
+
+    let firstWeekNumber = getWeekNumber(firstDayOfMonth, firstDayOfWeek);
+
+    let weeksArray = [];
+    for (let i = 0; i < weeksInMonth; i++) {
+      weeksArray.push(firstWeekNumber + i);
+    }
+
+    return weeksArray;
+  }
 }

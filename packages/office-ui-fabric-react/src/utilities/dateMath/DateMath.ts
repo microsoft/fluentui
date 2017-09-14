@@ -201,27 +201,11 @@ function getDatePartHashValue(date: Date) {
 }
 
 /**
- * Returns the week numbers for each week in a month.
- * Week numbers are 1 - 52 (53) in a year
- */
-export function getWeekNumbersInMonth(weeks: any[], firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
-  let selectedYear = navigatedDate.getFullYear();
-  let selectedMonth = navigatedDate.getMonth();
-  let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
-
-  let firstWeekNumber = getWeekNumber(firstDayOfMonth, firstDayOfWeek);
-
-  let weeksArray = [];
-  for (let i = 0; i < weeks.length; i++) {
-    weeksArray.push(firstWeekNumber + i);
-  }
-
-  return weeksArray;
-}
-
-/**
  * Returns the week number for a date.
  * Week numbers are 1 - 52 (53) in a year
+ * @param {Date} date - A date to find the week number for.
+ * @param {DayOfWeek} firstDayOfWeek - The first day of the week (0-6, Sunday = 0)
+ * @return {Number} The week's number in the year.
  */
 export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek) {
   let num = getDayOfYear(date) - 1;
@@ -234,7 +218,7 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek) {
  * Returns the day number for a date in a year
  * The number of days since January 1st in the particular year.
  */
-export function getDayOfYear(date: Date) {
+function getDayOfYear(date: Date) {
   let month = date.getMonth();
   let year = date.getFullYear();
   let daysUntilDate = 0;
@@ -253,18 +237,4 @@ export function getDayOfYear(date: Date) {
  */
 function daysInMonth(month: number, year: number) {
   return new Date(year, month + 1, 0).getDate();
-}
-
-/**
- * Returns the number of weeks in the month
- */
-export function weeksInMonth(year: number, month: number, startDayOfWeek: number) {
-  let firstOfMonth = new Date(year, month - 1, 1);
-  let lastOfMonth = new Date(year, month, 0);
-  let numberOfDaysInMonth = lastOfMonth.getDate();
-  let firstWeekDay = (firstOfMonth.getDay() - startDayOfWeek + 7) % 7;
-
-  let totalDays = firstWeekDay + numberOfDaysInMonth;
-
-  return Math.ceil(totalDays / 7);
 }
