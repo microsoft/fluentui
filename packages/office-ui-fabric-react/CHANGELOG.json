@@ -2,6 +2,74 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.46.1",
+      "tag": "office-ui-fabric-react_v4.46.1",
+      "date": "Thu, 14 Sep 2017 10:17:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e438cfa78495bab7de5653ae661b1d50555d5861",
+            "comment": "Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "bd33f70885615750558e10dfb9aca8eabe12ca1b",
+            "comment": "Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports"
+          }
+        ]
+      }
+    },
+    {
+      "version": "4.46.0",
+      "tag": "office-ui-fabric-react_v4.46.0",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cf7593444b8d873daa760caddb21f1665342b716",
+            "comment": "Check: better alignment of the check mark."
+          },
+          {
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c5904b5a36fd58694f4d59d634610068b98a87b9",
+            "comment": "[SwatchColorPicker] Fix uncaught exception when colorCells is empty"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "561e832554ebdbbfc44e219370b56f019571bf38",
+            "comment": "Calendar: Month-picker-only selection bug fixed"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a9c9fe6749234556ffd31598c7547bdf4560423d",
+            "comment": "DetailsList: Update DetailsRow Check target size to be larger"
+          }
+        ],
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "f49723ef1425284a918fc79cf8e6db8f9ed3964e",
+            "comment": "Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b691aa97525304884029629d2f40f14dc663f0bb",
+            "comment": "Adding `MoreVertical` icon."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.13.0 <5.0.0` to `>=4.13.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.23.1 <1.0.0` to `>=0.24.0 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.45.1",
       "tag": "office-ui-fabric-react_v4.45.1",
       "date": "Tue, 12 Sep 2017 17:41:25 GMT",
