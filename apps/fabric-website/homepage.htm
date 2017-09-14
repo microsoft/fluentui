@@ -38,8 +38,9 @@
 
   if (location.hostname == 'developer.microsoft.com' || productionParam) {
     isProduction = true;
-  } else if (location.hostname.search('devx') > -1 || dogfoodParam) {
+  } else if (location.hostname.indexOf('devx') > -1 || dogfoodParam) {
     isDogfood = true;
+    entryPointFilename = 'fabric-websitev5-df';
   }
 
   var scripts = [];
