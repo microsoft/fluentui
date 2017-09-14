@@ -1,8 +1,6 @@
 {
   "name": "@uifabric/experiments",
-<<<<<<< HEAD"version": "5.0.0",
-======="version": "0.7.0",
->>>>>>> e438cfa78495bab7de5653ae661b1d50555d5861"description": "Experimental React components for building experiences for Office 365.",
+  "version": "5.0.0",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
