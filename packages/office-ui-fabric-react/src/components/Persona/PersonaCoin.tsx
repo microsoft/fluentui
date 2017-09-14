@@ -2,17 +2,24 @@ import * as React from 'react';
 import {
   autobind,
   css,
+  divProperties,
   getInitials,
+  getNativeProps,
   getRTL
 } from '../../Utilities';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
 import { PersonaPresence } from './PersonaPresence';
 import {
   IPersonaProps,
+  PersonaPresence as PersonaPresenceEnum,
   PersonaInitialsColor,
   PersonaSize
 } from './Persona.Props';
-import { PERSONA_INITIALS_COLOR } from './PersonaConsts';
+import {
+  PERSONA_INITIALS_COLOR,
+  PERSONA_PRESENCE,
+  PERSONA_SIZE
+} from './PersonaConsts';
 import * as stylesImport from './Persona.scss';
 const styles: any = stylesImport;
 
@@ -52,6 +59,13 @@ export interface IPersonaState {
 }
 
 export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
+  public static defaultProps: IPersonaProps = {
+    primaryText: '',
+    size: PersonaSize.regular,
+    presence: PersonaPresenceEnum.none,
+    imageAlt: ''
+  };
+
   constructor(props: IPersonaProps) {
     super(props);
 
@@ -62,9 +76,11 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
 
   public render(): JSX.Element | null {
     let {
+      className,
       imageUrl,
       imageAlt,
       initialsColor,
+      presence,
       primaryText,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
@@ -72,10 +88,15 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
      } = this.props;
 
     let size = this.props.size as PersonaSize;
+    let divProps = getNativeProps(this.props, divProperties);
+
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
     return (
-      <div>
+      <div
+        { ...divProps }
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence as PersonaPresenceEnum], this.props.showSecondaryText ? styles.showSecondaryText : '') }
+      >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
             {
@@ -107,6 +128,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
           </div>
         ) }
         <PersonaPresence { ...this.props } />
+        { this.props.children }
       </div>
     );
   }
