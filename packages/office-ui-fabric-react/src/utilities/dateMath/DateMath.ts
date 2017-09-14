@@ -217,6 +217,8 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek) {
 /**
  * Returns the day number for a date in a year
  * The number of days since January 1st in the particular year.
+ * @param {Date} date - A date to find the day number for.
+ * @return {Number} The day's number in the year.
  */
 function getDayOfYear(date: Date) {
   let month = date.getMonth();
@@ -224,7 +226,7 @@ function getDayOfYear(date: Date) {
   let daysUntilDate = 0;
 
   for (let i = 0; i < month; i++) {
-    daysUntilDate += daysInMonth(i, year);
+    daysUntilDate += daysInMonth((i + 1), year);
   }
 
   daysUntilDate += date.getDate();
@@ -234,7 +236,10 @@ function getDayOfYear(date: Date) {
 
 /**
  * Returns the number of days in the month
+ * @param {number} month - The month number to target (months 1-12).
+ * @param {number} year - The year to target.
+ * @return {Number} The number of days in the month.
  */
 function daysInMonth(month: number, year: number) {
-  return new Date(year, month + 1, 0).getDate();
+  return new Date(year, month, 0).getDate();
 }
