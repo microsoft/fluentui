@@ -1,5 +1,4 @@
 const chalk = require('chalk');
-const yargs = require('yargs').argv;
 const fs = require('fs');
 const path = require('path');
 const { logStartTask, logEndTask, logEndBuild } = require('./logging');
@@ -52,7 +51,7 @@ function runTask(task) {
   return Promise.resolve()
     .then(() => !hasFailures && Promise.resolve()
       .then(() => logStartTask(packageName, task))
-      .then(() => require('./tasks/' + task)({ isProduction, argv: yargs }))
+      .then(() => require('./tasks/' + task)({ isProduction, argv: process.argv }))
       .then(() => logEndTask(packageName, task, taskStartTime))
       .catch((e) => {
         hasFailures = true;
