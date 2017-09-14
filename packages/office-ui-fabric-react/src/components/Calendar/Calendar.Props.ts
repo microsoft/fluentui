@@ -106,6 +106,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   navigationIcons?: ICalendarIconStrings;
 
   /**
+  * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+  * @defaultvalue false
+  */
+  showWeekNumbers?: boolean;
+
+  /**
   * Apply additional formating to dates, for example localized date formatting.
   */
   dateTimeFormatter?: ICalendarFormatDateCallbacks;
@@ -160,6 +166,7 @@ export interface ICalendarStrings {
    * Aria-label for the "next year" button.
    */
   nextYearAriaLabel?: string;
+
 }
 
 export interface ICalendarIconStrings {

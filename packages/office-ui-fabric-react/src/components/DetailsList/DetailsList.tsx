@@ -49,7 +49,7 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 36;
+const CHECKBOX_WIDTH = 40;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;
@@ -619,7 +619,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let lastIndex = adjustedColumns.length - 1;
 
     // Remove collapsable columns.
-    while (lastIndex > 1 && totalWidth > availableWidth) {
+    while (lastIndex > -1 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
       if (column.isCollapsable) {

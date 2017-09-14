@@ -2,6 +2,39 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "0.24.0",
+      "tag": "@uifabric/styling_v0.24.0",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "b691aa97525304884029629d2f40f14dc663f0bb",
+            "comment": "Adding `MoreVertical` icon."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.13.0 <5.0.0` to `>=4.13.1 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.23.1",
+      "tag": "@uifabric/styling_v0.23.1",
+      "date": "Tue, 12 Sep 2017 17:41:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Serkan Inci <serkan.inci@hotmail.com>",
+            "commit": "d07499a8a812bc8467f152ea1aee325e02e6ab6c",
+            "comment": "Fixing circular dependency issue."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.23.0",
       "tag": "@uifabric/styling_v0.23.0",
       "date": "Mon, 11 Sep 2017 10:08:07 GMT",

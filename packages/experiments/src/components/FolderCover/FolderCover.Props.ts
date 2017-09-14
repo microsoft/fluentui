@@ -35,6 +35,13 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<Fold
    */
   hideContent?: boolean;
   /**
+   * A signal to display on the folder cover.
+   *
+   * @type {(React.ReactNode[] | React.ReactNode)}
+   * @memberof IFolderCoverProps
+   */
+  signal?: React.ReactNode[] | React.ReactNode;
+  /**
    * A metadata value to display on the folder cover.
    *
    * @type {(React.ReactNode[] | React.ReactNode)}

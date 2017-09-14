@@ -188,6 +188,10 @@ $detailsList-item-focus-meta-text-color: $ms-color-neutralDark;
   overflow: hidden;
   text-overflow: ellipsis;
 
+  &.checkCell {
+    padding: 0;
+  }
+
   & > button {
     max-width: 100%;
   }

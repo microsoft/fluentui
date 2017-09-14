@@ -57,6 +57,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     strings: null,
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
+    showWeekNumbers: false,
     dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
@@ -150,6 +151,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
+                  showWeekNumbers={ this.props.showWeekNumbers }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='dayPicker'
                 />
@@ -201,8 +203,14 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-    this._navigateDay(date);
-    this._focusOnUpdate = focusOnNavigatedDay;
+
+    if (this.props.isDayPickerVisible || (!this.props.isDayPickerVisible && !focusOnNavigatedDay)) {
+      this._navigateDay(date);
+      this._focusOnUpdate = focusOnNavigatedDay;
+    } else {
+      // if only the month picker is shown, select the chosen month
+      this._onSelectDate(date);
+    }
   }
 
   @autobind

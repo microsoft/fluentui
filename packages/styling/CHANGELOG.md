@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 11 Sep 2017 10:08:07 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+
+## 0.24.0
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Minor changes
+
+- Adding `MoreVertical` icon.
+
+## 0.23.1
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Patches
+
+- Fixing circular dependency issue.
 
 ## 0.23.0
 Mon, 11 Sep 2017 10:08:07 GMT
