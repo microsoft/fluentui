@@ -21,72 +21,42 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
     return (
       <div className='ComponentStatus-div'>
-        <a
-          aria-label={ 'Keyboard accessibility support. ' + this._badgeStatusString(this.props.keyboardAccessibilitySupport) }
-          href='#/components-status'
-          className='ComponentStatus-badge'
-        >
-          <img
-            src={ this._badgeURL(
-              this._colorForDualStatusBadge(this.props.keyboardAccessibilitySupport),
-              keyboardAccessibilitySubject,
-              this._badgeStatusString(this.props.keyboardAccessibilitySupport))
-            }
-          />
-        </a>
-        <a
-          aria-label={ 'Markup support. ' + this._badgeStatusString(this.props.markupSupport) }
-          href='#/components-status'
-          className='ComponentStatus-badge'
-        >
-          <img
-            src={ this._badgeURL(
-              this._colorForDualStatusBadge(this.props.markupSupport),
-              markupSubject,
-              this._badgeStatusString(this.props.markupSupport))
-            }
-          />
-        </a>
-        <a
-          aria-label={ 'High contrast support. ' + this._badgeStatusString(this.props.highContrastSupport) }
-          href='#/components-status'
-          className='ComponentStatus-badge'
-        >
-          <img
-            src={ this._badgeURL(
-              this._colorForDualStatusBadge(this.props.highContrastSupport),
-              highContrastSupportSubject,
-              this._badgeStatusString(this.props.highContrastSupport))
-            }
-          />
-        </a>
-        <a
-          aria-label={ 'Right to left support. ' + this._badgeStatusString(this.props.rtlSupport) }
-          href='#/components-status'
-          className='ComponentStatus-badge'
-        >
-          <img
-            src={ this._badgeURL(
-              this._colorForDualStatusBadge(this.props.rtlSupport),
-              rtlSubject,
-              this._badgeStatusString(this.props.rtlSupport))
-            }
-          />
-        </a>
-        <a
-          aria-label={ 'Test coverage. ' + this.props.testCoverage }
-          href='#/components-status'
-          className='ComponentStatus-badge'
-        >
-          <img
-            src={ this._badgeURL(
-              this._colorForTestCoverageStatus(this.props.testCoverage),
-              testCoverageSubject,
-              this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none)
-            }
-          />
-        </a>
+        { this._badgeAnchor('Keyboard accessibility support. ' +
+          this._badgeStatusString(this.props.keyboardAccessibilitySupport), this._badgeURL(
+            this._colorForDualStatusBadge(this.props.keyboardAccessibilitySupport),
+            keyboardAccessibilitySubject,
+            this._badgeStatusString(this.props.keyboardAccessibilitySupport))) }
+        { this._badgeAnchor('Markup support. ' + this._badgeStatusString(this.props.markupSupport), this._badgeURL(
+          this._colorForDualStatusBadge(this.props.markupSupport),
+          markupSubject,
+          this._badgeStatusString(this.props.markupSupport))) }
+        { this._badgeAnchor('High contrast support. ' + this._badgeStatusString(this.props.highContrastSupport), this._badgeURL(
+          this._colorForDualStatusBadge(this.props.highContrastSupport),
+          highContrastSupportSubject,
+          this._badgeStatusString(this.props.highContrastSupport))) }
+        { this._badgeAnchor('Right to left support. ' + this._badgeStatusString(this.props.rtlSupport), this._badgeURL(
+          this._colorForDualStatusBadge(this.props.rtlSupport),
+          rtlSubject,
+          this._badgeStatusString(this.props.rtlSupport))) }
+        { this._badgeAnchor('Test coverage. ' + this.props.testCoverage, this._badgeURL(
+          this._colorForTestCoverageStatus(this.props.testCoverage),
+          testCoverageSubject,
+          this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none)) }
       </div >
+    );
+  }
+
+  private _badgeAnchor(ariaLabel: string, imgSrc: string): JSX.Element {
+    return (
+      <a
+        aria-label={ ariaLabel }
+        href='#/components-status'
+        className='ComponentStatus-badge'
+      >
+        <img
+          src={ imgSrc }
+        />
+      </a>
     );
   }
 
