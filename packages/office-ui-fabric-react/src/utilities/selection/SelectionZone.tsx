@@ -232,7 +232,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         // In order to keep back compat, if the value here is undefined, then we should still
         // call preventDefault(). Only in the case where true is explicitly returned should
         // the call be skipped.
-        if (skipPreventDefault) {
+        if (!skipPreventDefault) {
           ev.preventDefault();
         }
       }
