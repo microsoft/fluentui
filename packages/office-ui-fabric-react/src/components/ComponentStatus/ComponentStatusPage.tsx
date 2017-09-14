@@ -44,7 +44,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
     let component = ComponentStatusState[componentName];
     return (
       <tr key={ componentName + '-key' }>
-        <td className='componentCells'><h3>{ componentName } </h3> </td>
+        <th className='componentCells'><h3>{ componentName } </h3> </th>
         <td className='componentBadgeCell'><ComponentStatus
           {...component}
         /></td>
@@ -74,7 +74,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
   private _renderStatusInfo(statusInfo: IComponentStatusInfoState) {
     return (
       <tr key={ statusInfo.name + '-key' }>
-        <td className='componentCells'> { statusInfo.name } </td>
+        <th className='componentCells'> { statusInfo.name } </th>
         <td className='componentCells'> { statusInfo.description } </td>
         <td className='componentCells'> { statusInfo.success } </td>
       </tr>
