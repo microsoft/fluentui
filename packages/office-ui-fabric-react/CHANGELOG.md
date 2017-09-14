@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 12 Sep 2017 17:41:25 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+
+## 4.46.0
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Minor changes
+
+- Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker.
+- Adding `MoreVertical` icon.
+
+### Patches
+
+- Check: better alignment of the check mark.
+- [SwatchColorPicker] Fix uncaught exception when colorCells is empty
+- Calendar: Month-picker-only selection bug fixed
+- DetailsList: Update DetailsRow Check target size to be larger
 
 ## 4.45.1
 Tue, 12 Sep 2017 17:41:25 GMT
