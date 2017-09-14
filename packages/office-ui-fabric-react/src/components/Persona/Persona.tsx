@@ -39,6 +39,30 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
     } = this.props;
     let size = this.props.size as PersonaSize;
 
+    // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
+    let {
+      className,
+      imageUrl,
+      imageAlt,
+      initialsColor,
+      presence,
+      primaryText,
+      imageShouldFadeIn,
+      imageShouldStartVisible
+     } = this.props;
+
+    let personaCoinProps = {
+      className,
+      imageUrl,
+      imageAlt,
+      initialsColor,
+      presence,
+      primaryText,
+      imageShouldFadeIn,
+      imageShouldStartVisible,
+      size
+    };
+
     let divProps = getNativeProps(this.props, divProperties);
     let personaDetails = (
       <div className={ css('ms-Persona-details', styles.details) }>
@@ -64,7 +88,7 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
 
     return (
       <div { ...divProps }>
-        <PersonaCoin { ...this.props }>
+        <PersonaCoin { ...personaCoinProps }>
           { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
         </PersonaCoin>
       </div>
