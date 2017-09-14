@@ -9,63 +9,63 @@ export const ComponentStatusState: IComponentStatusState = {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Button: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Calendar: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Callout: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Checkbox: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ChoiceGroup: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ColorPicker: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ComboBox: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   CommandBar: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ContextualMenu: {
@@ -79,91 +79,91 @@ export const ComponentStatusState: IComponentStatusState = {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   DetailsList: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Dialog: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   DocumentCard: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Dropdown: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Facepile: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   GroupedList: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   HoverCard: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Icon: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Image: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Label: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Layer: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Link: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   List: {
@@ -177,7 +177,7 @@ export const ComponentStatusState: IComponentStatusState = {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Modal: {
@@ -191,35 +191,35 @@ export const ComponentStatusState: IComponentStatusState = {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Overlay: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Overflow: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Panel: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Persona: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Pickers: {
@@ -240,63 +240,63 @@ export const ComponentStatusState: IComponentStatusState = {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ProgressIndicator: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Rating: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ResizeGroup: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   ScrollablePane: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   SearchBox: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Slider: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Spinner: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   SpinButton: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   SwatchColorPicker: {
@@ -310,28 +310,28 @@ export const ComponentStatusState: IComponentStatusState = {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   TextField: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Toggle: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   },
   Tooltip: {
     keyboardAccessibilitySupport: false,
     markupSupport: false,
     highContrastSupport: false,
-    rtlSupport: false,
+    rtlSupport: true,
     testCoverage: TestCoverageStatus.none
   }
 };
