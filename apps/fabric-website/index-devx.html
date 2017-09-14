@@ -41,13 +41,13 @@
     isProduction = true;
   } else if (location.hostname.indexOf('devx') > -1 || dogfoodParam) {
     isDogfood = true;
-    entryPointFilename = 'fabric-websitev5-df';
+    entryPointFilename = 'fabric-sitev5-df';
   }
 
   var scripts = [];
 
-  if (devUrl) {
-    scripts.push(devUrl);
+  if (devUrlParam) {
+    scripts.push(devUrlParam);
   } else if (isDogfood) {
     scripts.push(baseDogfoodUrl + entryPointFilename + '.js?date=' + now);
   } else {
