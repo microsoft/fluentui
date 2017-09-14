@@ -86,14 +86,18 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
             </SignalField>
           }
           foreground={
-            renderFolderCoverWithLayout(folderCover, {
-              children: (
-                <img
-                  src={ `//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}` }
-                  className={ css(TileExampleStyles.tileImage) }
-                />
-              )
-            })
+            <span className={ css(TileExampleStylesModule.tileFolder) }>
+              {
+                renderFolderCoverWithLayout(folderCover, {
+                  children: (
+                    <img
+                      src={ `//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}` }
+                      className={ css(TileExampleStyles.tileImage) }
+                    />
+                  )
+                })
+              }
+            </span>
           }
         />
       </div>
