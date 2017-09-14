@@ -50,6 +50,18 @@ export interface IPivotProps extends React.Props<Pivot> {
    */
   linkFormat?: PivotLinkFormat;
 
+  /**
+   * Specify whether to skip rendering the tabpanel with the content of the selected tab.
+   * Use this prop if you plan to separately render the tab content
+   * and don't want to leave an empty tabpanel in the page that may confuse Screen Readers.
+   */
+  headersOnly?: boolean;
+
+  /**
+   * Optional. Specify how IDs are generated for each tab header.
+   * Useful if you're rendering content outside and need to connect aria-labelledby.
+   */
+  getTabId?: (itemKey: string, index: number) => string;
 }
 
 export enum PivotLinkFormat {

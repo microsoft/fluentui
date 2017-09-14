@@ -1,16 +1,38 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
-  Selection
+  DetailsListLayoutMode,
+  Selection,
+  IColumn
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { createListItems } from '@uifabric/example-app-base';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-let _items: any[];
+let _items: any[] = [];
+
+let _columns: IColumn[] = [
+  {
+    key: 'column1',
+    name: 'Name',
+    fieldName: 'name',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for name'
+  },
+  {
+    key: 'column2',
+    name: 'Value',
+    fieldName: 'value',
+    minWidth: 100,
+    maxWidth: 200,
+    isResizable: true,
+    ariaLabel: 'Operations for value'
+  },
+];
 
 export class DetailsListBasicExample extends React.Component<any, any> {
   private _selection: Selection;
@@ -18,9 +40,17 @@ export class DetailsListBasicExample extends React.Component<any, any> {
   constructor() {
     super();
 
-    _items = _items || createListItems(500);
+    // Populate with items for demos.
+    if (_items.length === 0) {
+      for (let i = 0; i < 200; i++) {
+        _items.push({
+          key: i,
+          name: 'Item ' + i,
+          value: i
+        });
+      }
+    }
 
-    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
     this._selection = new Selection({
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
@@ -39,28 +69,23 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <div>{ selectionDetails }</div>
         <TextField
           label='Filter by name:'
-          onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
+          onChanged={ this._onChanged }
         />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
+            columns={ _columns }
             setKey='set'
+            layoutMode={ DetailsListLayoutMode.fixedColumns }
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
-            onRenderItemColumn={ this._onRenderItemColumn }
+            ariaLabelForSelectionColumn='Toggle selection'
+            ariaLabelForSelectAllCheckbox='Toggle selection for all items'
+            onItemInvoked={ this._onItemInvoked }
           />
         </MarqueeSelection>
       </div>
     );
-  }
-
-  private _onRenderItemColumn(item, index, column) {
-    if (column.key === 'name') {
-      return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
-    }
-
-    return item[column.key];
   }
 
   private _getSelectionDetails(): string {
@@ -75,4 +100,14 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         return `${selectionCount} items selected`;
     }
   }
+
+  @autobind
+  private _onChanged(text: any): void {
+    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+  }
+
+  private _onItemInvoked(item: any): void {
+    alert(`Item invoked: ${item.name}`);
+  }
+
 }

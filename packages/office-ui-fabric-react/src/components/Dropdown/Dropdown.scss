@@ -10,7 +10,7 @@
 $Dropdown-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
 $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 $DropDown-height: 32px;
-$DropDown-item-height: 36px;
+$DropDown-item-height: 32px;
 
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
@@ -29,10 +29,12 @@ $DropDown-item-height: 36px;
     border-color: $ms-color-contrastWhiteSelected;
     color: $ms-color-white;
   }
+
+  @include highContrastAdjust();
 }
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -55,6 +57,9 @@ $DropDown-item-height: 36px;
       @media screen and (-ms-high-contrast: black-on-white) {
         color: $ms-color-contrastWhiteSelected;
       }
+    }
+    .titleIsPlaceHolder {
+      color: $ms-color-neutralSecondary;
     }
   }
 
@@ -110,6 +115,9 @@ $DropDown-item-height: 36px;
       border-color: $ms-color-contrastWhiteDisabled;
       color: $ms-color-contrastWhiteDisabled;
     }
+    &.titleIsError {
+        border-color: $ms-color-error;
+    }
   }
 
   .caretDown {
@@ -129,17 +137,18 @@ $DropDown-item-height: 36px;
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
   position: absolute;
-  top: 0px;
-  @include right(12px);
+  top: 1px; // border
+  @include ms-right(12px);
   pointer-events: none;
-  line-height: $DropDown-height;
+  height: $DropDown-height;
+  line-height: $DropDown-height - 2px; // height minus the border
 }
 
 // Style the new, replacement component
 .title {
-  @include ms-u-normalize;
+  @include ms-normalize;
   background: $ms-color-white;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
+  border: 1px solid $ms-color-neutralTertiary;
   cursor: pointer;
   display: block;
   height: $DropDown-height;
@@ -149,12 +158,18 @@ $DropDown-item-height: 36px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  &.titleIsError {
+        border-color: $ms-color-error;
+    }
+  &.titleIsPlaceHolder {
+    color: $ms-color-neutralSecondary;
+  }
 }
 
 .panel {
     // Force drop shadow even under medium breakpoint
     :global(.ms-Panel-main) {
-      @include drop-shadow(-30px, 0px, 30px, -30px, .2);
+      @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
     }
     // Remove padding as items have their own padding and bg
     :global(.ms-Panel-contentInner) {
@@ -163,8 +178,15 @@ $DropDown-item-height: 36px;
   }
 
 .callout {
-  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid $ms-color-neutralLight;
+}
+
+.errorMessage{
+    color: $ms-color-error;
+  &::before {
+    content: '* ';
+  }
 }
 
 .items {
@@ -181,10 +203,11 @@ $DropDown-item-height: 36px;
   height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 5px 16px;
+  padding: 4px 16px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: left;
 
   @media screen and (-ms-high-contrast: active) {
@@ -235,4 +258,34 @@ $DropDown-item-height: 36px;
   @include focus-border();
 
   @include highContrastListItemState;
+}
+
+.header {
+  @include ms-font-m;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-themePrimary;
+  background: none;
+  border: none;
+  height: $DropDown-item-height;
+  line-height: $DropDown-item-height;
+  cursor: default;
+  padding: 0px 16px;
+  user-select: none;
+  @include text-align(left);
+}
+
+.divider {
+  height: 1px;
+  background-color: $dividerColor;
+}
+
+.optionText {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0px;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  margin: 1px;
 }

@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { Button, ButtonType, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export interface ITeachingBubbleBasicExampleState {
@@ -25,7 +25,6 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
   public render() {
     let { isTeachingBubbleVisible } = this.state;
     let examplePrimaryButton: IButtonProps = {
-      buttonType: ButtonType.primary,
       children: 'Try it out'
     };
     let exampleSecondaryButtonProps: IButtonProps = {
@@ -35,8 +34,11 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
 
     return (
       <div className='ms-TeachingBubbleExample'>
-        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onDismiss } >{ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }</Button>
+        <span className='ms-TeachingBubbleBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+          <DefaultButton
+            onClick={ this._onDismiss }
+            text={ isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble' }
+          />
         </span>
         { isTeachingBubbleVisible ? (
           <div>

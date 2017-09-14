@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Calendar } from './Calendar';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 
-export { DayOfWeek, DateRangeType }
+export { DayOfWeek, DateRangeType };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
@@ -33,6 +33,23 @@ export interface ICalendarProps extends React.Props<Calendar> {
    * @defaultvalue true
    */
   isMonthPickerVisible?: boolean;
+
+  /**
+  * Whether the day picker is shown beside the month picker or hidden.
+  * @defaultvalue true
+  */
+  isDayPickerVisible?: boolean;
+
+  /**
+  * Show month picker on top of date picker when visible.
+  * @defaultvalue false
+  */
+  showMonthPickerAsOverlay?: boolean;
+
+  /**
+    * Value of today. If null, current time in client machine will be used.
+    */
+  today?: Date;
 
   /**
    * Default value of the Calendar, if any
@@ -67,16 +84,31 @@ export interface ICalendarProps extends React.Props<Calendar> {
   showGoToToday?: boolean;
 
   /**
-   * @deprecated
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
-   *
+   * @deprecated
    */
   shouldFocusOnMount?: boolean;
 
   /**
    * Localized strings to use in the Calendar
    */
-  strings: ICalendarStrings;
+  strings: ICalendarStrings | null;
+
+  /**
+  * Whether the month picker should highlight the current month
+  * @defaultvalue false
+  */
+  highlightCurrentMonth?: boolean;
+
+  /**
+  * Customize navigation icons using ICalendarIconStrings
+  */
+  navigationIcons?: ICalendarIconStrings;
+
+  /**
+  * Apply additional formating to dates, for example localized date formatting.
+  */
+  dateTimeFormatter?: ICalendarFormatDateCallbacks;
 }
 
 export interface ICalendarStrings {
@@ -108,4 +140,63 @@ export interface ICalendarStrings {
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
+
+  /**
+   * Aria-label for the "previous month" button.
+   */
+  prevMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next month" button.
+   */
+  nextMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "previous year" button.
+   */
+  prevYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year" button.
+   */
+  nextYearAriaLabel?: string;
+
+}
+
+export interface ICalendarIconStrings {
+  /**
+  * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
+  * @defaultvalue  'Up'
+  */
+  leftNavigation?: string;
+
+  /**
+  * FabricMDL2Icons name for the right navigation icon.  Previous default: ChevronRight.
+  * @defaultvalue  'Down'
+  */
+  rightNavigation?: string;
+
+}
+
+export interface ICalendarFormatDateCallbacks {
+  /**
+ * Callback to apply formatting to mmmm d, yyyy formated dates
+ */
+  formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+
+  /**
+  * Callback to apply formatting to the month and year in the Day Picker header
+  */
+  formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+
+  /**
+  * Callback to apply formatting to the days in the Day Picker calendar
+  */
+  formatDay: (date: Date) => string;
+
+  /**
+  * Callback to apply formatting to the year in the Month Picker header
+  */
+  formatYear: (date: Date) => string;
+
 }

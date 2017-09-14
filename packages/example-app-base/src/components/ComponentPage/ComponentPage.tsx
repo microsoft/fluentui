@@ -23,7 +23,7 @@ export interface IComponentPageProps {
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
-  public static defaultProps = {
+  public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true
   };
 
@@ -36,7 +36,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     this._baseUrl = doc ? document.location.href : '';
   }
 
-  public render() {
+  public render(): JSX.Element {
     let {
       componentName,
       exampleCards,
@@ -70,7 +70,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     );
   }
 
-  private _pageHeader(): JSX.Element {
+  private _pageHeader(): JSX.Element | undefined {
     if (this.props.isHeaderVisible) {
       return (
         <div className='ComponentPage-header'>
@@ -92,7 +92,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink' key='nav-link'>
-          <Link href={ this._baseUrl + '#Best Practices' }>Best Practices</Link>
+          <Link { ...{ href: this._baseUrl + '#Best Practices' } }>Best Practices</Link>
         </div>
       );
     }
@@ -100,20 +100,20 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className='ComponentPage-navigation'>
         <div className='ComponentPage-navLink'>
-          <Link href={ this._baseUrl + '#Overview' }>Overview</Link>
+          <Link { ...{ href: this._baseUrl + '#Overview' } }>Overview</Link>
         </div>
         { links }
         <div className='ComponentPage-navLink'>
-          <Link href={ this._baseUrl + '#Variants' }>Variants</Link>
+          <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
         </div>
         <div className='ComponentPage-navLink'>
-          <Link href={ this._baseUrl + '#Implementation' }>Implementation</Link>
+          <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
         </div>
       </div>
     );
   }
 
-  private _getRelatedComponents(): JSX.Element {
+  private _getRelatedComponents(): JSX.Element | undefined {
     if (this.props.related) {
       return (
         <div className='ComponentPage-related'>
@@ -124,7 +124,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
-  private _getPropertiesTable(): JSX.Element {
+  private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
       return (
         <div className='ComponentPage-implementationSection'>
@@ -135,7 +135,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
   }
 
-  private _getDosAndDonts(): JSX.Element {
+  private _getDosAndDonts(): JSX.Element | undefined {
     let dosAndDonts: Array<JSX.Element> = [];
 
     if (this.props.bestPractices) {

@@ -1,17 +1,27 @@
+import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import styles = require('./DefaultButton.scss');
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { ThemeSettingName } from '../../../Styling';
+import { IButtonProps } from '../Button.Props';
+import { getStyles } from './DefaultButton.styles';
 
-export class DefaultButton extends BaseButton {
-  protected classNames = {
-    base: 'ms-Button',
-    variant: 'ms-Button--default',
-    icon: styles.icon,
-    menuIcon: styles.icon,
-    isDisabled: styles.isDisabled,
-    isEnabled: styles.isEnabled,
-    label: styles.label,
-    root: styles.root
-  };
+@customizable([ThemeSettingName])
+export class DefaultButton extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Tell BaseComponent to bypass resolution of componentRef.
+   */
+  protected _shouldUpdateComponentRef = false;
 
-  protected onRenderDescription() { return null; }
+  public render() {
+    const { primary = false, styles, theme } = this.props;
+
+    return (
+      <BaseButton
+        { ...this.props }
+        variantClassName={ primary ? 'ms-Button--primary' : 'ms-Button--default' }
+        styles={ getStyles(theme!, styles, primary) }
+        onRenderDescription={ nullRender }
+      />
+    );
+  }
 }

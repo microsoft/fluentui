@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {
   DatePicker,
-  DayOfWeek
+  DayOfWeek,
+  IDatePickerStrings
 } from 'office-ui-fabric-react/lib/DatePicker';
 
-const DayPickerStrings = {
+const DayPickerStrings: IDatePickerStrings = {
   months: [
     'January',
     'February',
@@ -56,6 +57,10 @@ const DayPickerStrings = {
   ],
 
   goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
 
   isRequiredErrorMessage: 'Field is required.',
 

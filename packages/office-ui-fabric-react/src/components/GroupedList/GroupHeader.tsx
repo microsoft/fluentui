@@ -11,7 +11,8 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import styles = require('./GroupHeader.scss');
+import * as stylesImport from './GroupHeader.scss';
+const styles: any = stylesImport;
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
@@ -23,12 +24,12 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     super(props);
 
     this.state = {
-      isCollapsed: this.props.group && this.props.group.isCollapsed,
+      isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
       isLoadingVisible: false
     };
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: any) {
     if (newProps.group) {
       let newCollapsed = newProps.group.isCollapsed;
       let isGroupLoading = newProps.headerProps && newProps.headerProps.isGroupLoading;
@@ -41,7 +42,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     }
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     let {
       group,
       groupLevel,
@@ -60,7 +61,11 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     let canSelectGroup = selectionMode === SelectionMode.multiple;
     let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     let currentlySelected = isSelected || selected;
-    return group && (
+
+    if (!group) {
+      return null;
+    }
+    return (
       <div
         className={ css('ms-GroupHeader', styles.root, {
           ['is-selected ' + styles.rootIsSelected]: currentlySelected
@@ -68,22 +73,24 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
         aria-label={ group.ariaLabel || group.name }
-        data-is-focusable={ true } >
+        data-is-focusable={ true }
+      >
 
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
+        <FocusZone className={ styles.groupHeaderContainer } direction={ FocusZoneDirection.horizontal }>
 
           { isSelectionCheckVisible ? (
             <button
               type='button'
               className={ css('ms-GroupHeader-check', styles.check) }
               data-selection-toggle={ true }
-              onClick={ this._onToggleSelectGroupClick } >
+              onClick={ this._onToggleSelectGroupClick }
+            >
               <Check checked={ currentlySelected } />
             </button>
           ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
           }
 
-          { GroupSpacer({ count: groupLevel }) }
+          { GroupSpacer({ count: groupLevel as number }) }
 
           <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
             <Icon iconName='Tag' />
@@ -91,7 +98,8 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
           <button
             type='button'
             className={ css('ms-GroupHeader-expand', styles.expand) }
-            onClick={ this._onToggleCollapse }>
+            onClick={ this._onToggleCollapse }
+          >
             <Icon
               className={ css(
                 isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
@@ -100,15 +108,15 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
             />
           </button>
 
-          <div className={ css('ms-GroupHeader-title ms-font-xl', styles.title) }>
+          <div className={ css('ms-GroupHeader-title', styles.title) }>
             <span>{ group.name }</span>
             {
-              // hasMoreData flag is set when grouping is throttle by SPO server which in turn resorts to regular
+              // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular
               // sorting to simulate grouping behaviors, in which case group count is the number of items returned
-              // so far. That's the reasons we need to use "+" to show we might have more items than count
+              // so far. That's the reason we need to use "+" to show we might have more items than count
               // indicates.
             }
-            <span>({ group.count }{ group.hasMoreData && '+' })</span>
+            <span className={ styles.headerCount }>({ group.count }{ group.hasMoreData && '+' })</span>
           </div>
 
           <div
@@ -132,14 +140,14 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     let { isCollapsed } = this.state;
 
     let newCollapsed = !isCollapsed;
-    let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group);
+    let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group!);
 
     this.setState({
       isCollapsed: newCollapsed,
-      isLoadingVisible: newLoadingVisible
+      isLoadingVisible: newLoadingVisible as boolean
     });
     if (onToggleCollapse) {
-      onToggleCollapse(group);
+      onToggleCollapse(group!);
     }
 
     ev.stopPropagation();
@@ -151,7 +159,7 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     let { onToggleSelectGroup, group } = this.props;
 
     if (onToggleSelectGroup) {
-      onToggleSelectGroup(group);
+      onToggleSelectGroup(group!);
     }
 
     ev.preventDefault();
@@ -163,9 +171,9 @@ export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderS
     let { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
 
     if (onGroupHeaderClick) {
-      onGroupHeaderClick(group);
+      onGroupHeaderClick(group!);
     } else if (onToggleSelectGroup) {
-      onToggleSelectGroup(group);
+      onToggleSelectGroup(group!);
     }
   }
 }

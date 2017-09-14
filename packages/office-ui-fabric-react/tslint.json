@@ -1,5 +1,13 @@
 {
+  "extends": [
+    "office-ui-fabric-react-tslint"
+  ],
   "rules": {
+    "jsx-no-string-ref": false,
+    "jsx-key": false,
+    "jsx-boolean-value": false,
+    "jsx-no-lambda": false,
+    "jsx-ban-props": false,
     "max-line-length": [
       false,
       140
@@ -9,6 +17,9 @@
     "no-internal-module": false,
     "prefer-const": false,
     "typedef": [
+      false
+    ],
+    "no-inferrable-types": [
       false
     ]
   }

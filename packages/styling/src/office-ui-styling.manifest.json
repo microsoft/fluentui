@@ -1,0 +1,8 @@
+{
+  "$schema": "../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+  "id": "999a39fc-2e41-878c-eeb6-f8d33c5e46cf",
+  "alias": "OfficeUIStyling",
+  "componentType": "Library",
+  "version": "*",
+  "manifestVersion": 2
+}

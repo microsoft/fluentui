@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, css, divProperties, getNativeProps } from '../../Utilities';
 import { ILabelProps } from './Label.Props';
-import styles = require('./Label.scss');
+import * as stylesImport from './Label.scss';
+const styles: any = stylesImport;
 
 export class Label extends BaseComponent<ILabelProps, any> {
   public render() {
@@ -10,12 +11,14 @@ export class Label extends BaseComponent<ILabelProps, any> {
     return (
       <label
         { ...getNativeProps(this.props, divProperties) }
-        className={ css(styles.root, 'ms-Label', className, {
-          'is-disabled': disabled,
-          'is-required': required,
-          [styles.isDisabled]: disabled,
-          [styles.isRequired]: required
-        }) }>
+        className={ css(
+          styles.root,
+          'ms-Label',
+          className,
+          disabled && ('is-disabled ' + styles.isDisabled),
+          required && ('is-required ' + styles.isRequired)
+        ) }
+      >
         { children }
       </label>
     );

@@ -8,14 +8,8 @@ import {
   getNativeProps
 } from '../../Utilities';
 import { ILink, ILinkProps } from './Link.Props';
-import styles = require('./Link.scss');
-
-interface IMyScreen extends Screen {
-  left: number;
-  top: number;
-}
-
-declare var screen: IMyScreen;
+import * as stylesImport from './Link.scss';
+const styles: any = stylesImport;
 
 export class Link extends BaseComponent<ILinkProps, any> implements ILink {
   private _link: HTMLElement;
@@ -27,11 +21,13 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
       href ? (
         <a
           { ...getNativeProps(this.props, anchorProperties) }
-          className={ css('ms-Link', styles.root, className, {
-            'is-disabled': disabled,
-            [styles.isDisabled]: disabled,
-            [styles.isEnabled]: !disabled
-          }) }
+          className={ css(
+            'ms-Link',
+            styles.root,
+            className,
+            disabled && ('is-disabled ' + styles.isDisabled),
+            !disabled && styles.isEnabled
+          ) }
           onClick={ this._onClick }
           ref={ this._resolveRef('_link') }
           target={ this.props.target }
@@ -41,10 +37,12 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
       ) : (
           <button
             { ...getNativeProps(this.props, buttonProperties) }
-            className={ css('ms-Link', styles.root, className, {
-              'is-disabled': disabled,
-              [styles.isDisabled]: disabled
-            }) }
+            className={ css(
+              'ms-Link',
+              styles.root,
+              className,
+              disabled && ('is-disabled ' + styles.isDisabled)
+            ) }
             onClick={ this._onClick }
             ref={ this._resolveRef('_link') }
           >

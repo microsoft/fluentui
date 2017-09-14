@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
+import { IIconProps } from '../../Icon';
 
 export interface ITextField {
   /** Gets the current value of the input. */
-  value: string;
+  value: string | undefined;
 
   /** Sets focus to the input. */
   focus: () => void;
@@ -10,17 +12,30 @@ export interface ITextField {
   /** Select the value of the text field. */
   select: () => void;
 
-  /** Sets the selection start of the text field to a specified value */
+  /** Sets the selection start of the text field to a specified value. */
   setSelectionStart: (value: number) => void;
 
-  /** Sets the selection end of the text field to a specified value */
+  /** Sets the selection end of the text field to a specified value. */
   setSelectionEnd: (value: number) => void;
+
+  /**
+   * Sets the start and end positions of a selection in a text field.
+   * @param start Index of the start of the selection.
+   * @param end Index of the end of the selection.
+   */
+  setSelectionRange: (start: number, end: number) => void;
+
+  /** Gets the selection start of the text field. Returns -1 if there is no selection. */
+  selectionStart: number;
+
+  /** Gets the selection end of the text field. Returns -1 if there is no selection. */
+  selectionEnd: number;
 }
 
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTMLTextAreaElement> {
+export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
    * Optional callback to access the ITextField interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -52,6 +67,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   underlined?: boolean;
 
   /**
+   * Whether or not the textfield is borderless.
+   * @default false
+   */
+  borderless?: boolean;
+
+  /**
    * Label for the textfield.
    */
   label?: string;
@@ -62,9 +83,19 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   description?: string;
 
   /**
-   * CSS class for the icon.
+  * String for addon.
+  */
+  addonString?: string;
+
+  /**
+  * Custom render function for addon
+  */
+  onRenderAddon?: IRenderFunction<ITextFieldProps>;
+
+  /**
+   * Optional icon props for an icon.
    */
-  iconClass?: string;
+  iconProps?: IIconProps;
 
   /**
    * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
@@ -102,7 +133,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   /**
    * Callback for the onNotifyValidationResult event.
    */
-  onNotifyValidationResult?: (errorMessage: string, value: string) => void;
+  onNotifyValidationResult?: (errorMessage: string, value: string | undefined) => void;
 
   /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
@@ -117,7 +148,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: string) => string | PromiseLike<string>;
+  onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
@@ -126,7 +157,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   deferredValidationTime?: number;
 
   /**
-   * Optional class anme that is added to the container of the component.
+   * Optional class name that is added to the container of the component.
    */
   className?: string;
 
@@ -157,4 +188,11 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * @default true
    */
   validateOnLoad?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated; use iconProps instead.
+   */
+  iconClass?: string;
+
 }

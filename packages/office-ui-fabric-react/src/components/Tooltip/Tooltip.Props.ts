@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
 import { ICalloutProps } from '../../Callout';
+import { IRenderFunction } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface ITooltip {
@@ -10,7 +11,7 @@ export interface ITooltip {
 /**
  * Tooltip component props.
  */
-export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip> {
+export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Tooltip> {
   /**
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -28,10 +29,21 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
   content?: string;
 
   /**
+   *  Render function to populate content area
+   */
+  onRenderContent?: IRenderFunction<ITooltipProps>;
+
+  /**
    * Length of delay. Can be set to zero if you do not want a delay.
    * @default medium
    */
   delay?: TooltipDelay;
+
+  /**
+   * Max width of tooltip
+   * @default 364px
+   */
+  maxWidth?: string | null;
 
   /**
    * Element to anchor the Tooltip to.
@@ -43,6 +55,12 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
 }
 
 export enum TooltipDelay {

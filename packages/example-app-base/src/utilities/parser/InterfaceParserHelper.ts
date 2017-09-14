@@ -27,12 +27,12 @@ export class InterfaceParserHelper extends BaseParser {
     super(str);
   }
 
-  public parse(): Array<IInterfaceProperty> {
-    let bank: Array<string> = [];
+  public parse(): IInterfaceProperty[] {
+    let bank: (string | undefined)[] = [];
     let comment = '';
     let identifierName = '';
     let type = '';
-    let returnResult = [];
+    let returnResult: IInterfaceProperty[] = [];
     let defaultValue = '';
     let isDeprecated = false;
     let deprecatedMessage = '';
@@ -125,7 +125,12 @@ export class InterfaceParserHelper extends BaseParser {
             this.eat(';'); // actually eat the semicolon
 
             let isOptional = identifierName[identifierName.length - 1] === '?';
-            let propType = isDeprecated ? InterfacePropertyType.deprecated : (isOptional ? InterfacePropertyType.optional : InterfacePropertyType.required);
+            let propType = isDeprecated ? InterfacePropertyType.deprecated :
+              (isOptional ? InterfacePropertyType.optional : InterfacePropertyType.required);
+
+            if (isOptional) {
+              identifierName = identifierName.substr(0, identifierName.length - 1);
+            }
 
             this._state = ParseState.default;
             returnResult.push(<IInterfaceProperty>{

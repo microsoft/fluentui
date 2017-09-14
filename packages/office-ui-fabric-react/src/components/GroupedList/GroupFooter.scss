@@ -2,11 +2,9 @@
 
 .root {
   position: relative;
-  padding: 10px 84px;
-  cursor: pointer;
+  padding: 5px 38px;
 
   :global(.ms-Link) {
-    @include ms-baseFont;
     font-size: $ms-font-size-s;
   }
 }

@@ -4,12 +4,14 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import styles = require('./ColorPicker.scss');
+import * as stylesImport from './ColorPicker.scss';
+const styles: any = stylesImport;
 
 export interface IColorSliderProps {
+  componentRef?: () => void;
   minValue?: number;
   maxValue?: number;
-  initialValue?: number;
+  value?: number;
   thumbColor?: string;
   overlayStyle?: any;
   onChanged?: (newValue: number) => void;
@@ -29,7 +31,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     minValue: 0,
     maxValue: 100,
     thumbColor: 'inherit',
-    initialValue: 0
+    value: 0
   };
 
   public refs: {
@@ -40,28 +42,38 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
   constructor(props: IColorSliderProps) {
     super(props);
 
-    let { initialValue } = this.props;
+    let { value } = this.props;
 
     this.state = {
       isAdjusting: false,
-      origin: null,
-      currentValue: initialValue
+      origin: undefined,
+      currentValue: value
     };
+  }
+
+  public componentWillReceiveProps(newProps: IColorSliderProps) {
+    if (newProps && newProps.value) {
+      this.setState({ currentValue: newProps.value });
+    }
   }
 
   public render() {
     let { className, minValue, maxValue, overlayStyle } = this.props;
     let { currentValue, isAdjusting } = this.state;
 
-    let currentPercentage = 100 * (currentValue - minValue) / (maxValue - minValue);
+    let currentPercentage = 100 * (currentValue! - minValue!) / (maxValue! - minValue!);
 
     return (
       <div
         ref='root'
-        className={ css('ms-ColorPicker-slider', styles.slider, className, {
-          'is-adjusting': isAdjusting
-        }) }
-        onMouseDown={ this._onMouseDown }>
+        className={ css(
+          'ms-ColorPicker-slider',
+          styles.slider,
+          className,
+          isAdjusting && 'is-adjusting'
+        ) }
+        onMouseDown={ this._onMouseDown }
+      >
         <div className={ css('ms-ColorPicker-sliderOverlay', styles.sliderOverlay) } style={ overlayStyle } />
         <div className={ css('ms-ColorPicker-thumb is-slider', styles.thumb, styles.thumbIsSlider) } style={ { left: currentPercentage + '%' } } />
       </div>
@@ -82,7 +94,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
     let rectSize = this.refs.root.getBoundingClientRect();
 
     let currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    let newValue = Math.min(maxValue, Math.max(minValue, currentPercentage * maxValue));
+    let newValue = Math.min(maxValue!, Math.max(minValue!, currentPercentage * maxValue!));
 
     this.setState({
       isAdjusting: true,
@@ -103,7 +115,7 @@ export class ColorSlider extends BaseComponent<IColorSliderProps, IColorSliderSt
 
     this.setState({
       isAdjusting: false,
-      origin: null
+      origin: undefined
     });
   }
 

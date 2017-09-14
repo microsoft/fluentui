@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  autobind,
-  css
-} from 'office-ui-fabric-react/lib/Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   IPersonaProps,
   Persona,
@@ -11,9 +8,10 @@ import {
 } from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './PersonaExample.scss';
+import { TestImages } from '../../../common/TestImages';
 
 const examplePersona = {
-  imageUrl: './images/persona-female.png',
+  imageUrl: TestImages.personaFemale,
   imageInitials: 'AL',
   primaryText: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',

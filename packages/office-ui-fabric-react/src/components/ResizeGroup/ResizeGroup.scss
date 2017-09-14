@@ -1,0 +1,11 @@
+@import '../../common/common';
+
+.root {
+  display: block;
+  position: relative;
+}
+
+.measured {
+  position: fixed;
+  visibility: hidden;
+}

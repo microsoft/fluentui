@@ -1,5 +1,5 @@
 export interface IObjectWithKey {
-  key?: string;
+  key?: string | number;
 }
 
 export const SELECTION_CHANGE = 'change';
@@ -12,14 +12,16 @@ export enum SelectionMode {
 
 export interface ISelection {
   count: number;
-  canSelectItem?: (item: IObjectWithKey) => boolean;
+  mode: SelectionMode;
+
+  canSelectItem: (item: IObjectWithKey) => boolean;
 
   // Obesrvable methods.
-  setChangeEvents(isEnabled: boolean, suppressChange?: boolean);
+  setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
 
   // Initialization methods.
 
-  setItems(items: IObjectWithKey[], shouldClear: boolean);
+  setItems(items: IObjectWithKey[], shouldClear: boolean): void;
   getItems(): IObjectWithKey[];
 
   // Read selection methods.
@@ -34,21 +36,21 @@ export interface ISelection {
 
   // Write selection methods.
 
-  setAllSelected(isAllSelected: boolean);
-  setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean);
-  setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean);
+  setAllSelected(isAllSelected: boolean): void;
+  setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
+  setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
 
   // Write range selection methods.
 
-  selectToKey(key: string, clearSelection?: boolean);
-  selectToIndex(index: number, clearSelection?: boolean);
+  selectToKey(key: string, clearSelection?: boolean): void;
+  selectToIndex(index: number, clearSelection?: boolean): void;
 
   // Toggle helpers.
 
-  toggleAllSelected();
-  toggleKeySelected(key: string);
-  toggleIndexSelected(index: number);
-  toggleRangeSelected(fromIndex: number, count: number);
+  toggleAllSelected(): void;
+  toggleKeySelected(key: string): void;
+  toggleIndexSelected(index: number): void;
+  toggleRangeSelected(fromIndex: number, count: number): void;
 }
 
 export interface ISelectionLayout {

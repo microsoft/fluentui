@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react/lib/Spinner';
-import DataProvider from '../DataProvider';
-import { ITodoProps, ITodoState, ITodoItem, ITodoItemProps } from '../types/index';
+import { ITodoProps, ITodoState } from '../types/index';
 
 import TodoForm from './TodoForm';
 import TodoTabs from './TodoTabs';
 
-import styles = require('./Todo.module.scss');
+import * as stylesImport from './Todo.scss';
+const styles: any = stylesImport;
 import strings from '../strings';
 
 /**
@@ -53,20 +53,20 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
     );
   }
 
-  private _renderWorkingOnItSpinner(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
-    return this.props.dataProvider.isLoading && this.state.items.length > 0
-      ? <div className={ styles.workingOnItSpinner }>
+  private _renderWorkingOnItSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+    return (this.props.dataProvider.isLoading && this.state.items.length > 0) && (
+      <div className={ styles.workingOnItSpinner }>
         <Spinner type={ SpinnerType.normal } />
       </div>
-      : undefined;
+    );
   }
 
-  private _renderFetchingTasksSpinner(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
-    return this.props.dataProvider.isLoading && this.state.items.length === 0
-      ? <div className={ styles.fetchingTasksSpinner }>
+  private _renderFetchingTasksSpinner(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+    return (this.props.dataProvider.isLoading && this.state.items.length === 0) && (
+      <div className={ styles.fetchingTasksSpinner }>
         <Spinner type={ SpinnerType.large } label={ strings.fetchingTasksLabel } />
       </div>
-      : undefined;
+    );
   }
 
   private _onProviderChange(): void {

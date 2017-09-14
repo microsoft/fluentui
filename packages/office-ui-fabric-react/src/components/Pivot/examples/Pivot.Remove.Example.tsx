@@ -6,7 +6,7 @@ import {
   PivotLinkSize,
   IPivotItemProps
 } from 'office-ui-fabric-react/lib/Pivot';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export interface IPivotOnChangeExampleState {
@@ -14,7 +14,7 @@ export interface IPivotOnChangeExampleState {
 }
 
 export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExampleState> {
-  private _shouldShowFirstPivotItem;
+  private _shouldShowFirstPivotItem: boolean;
 
   constructor(props: any) {
     super(props);
@@ -63,9 +63,10 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
           { pivotArray }
         </Pivot>
         <div>
-          <Button onClick={ this._handleClick }>
-            { `${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item` }
-          </Button>
+          <DefaultButton
+            onClick={ this._handleClick }
+            text={ `${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item` }
+          />
         </div>
       </div>
     );

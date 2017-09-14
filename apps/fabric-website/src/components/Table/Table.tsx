@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { AnimationCell } from './AnimationCell/AnimationCell';
-import styles = require('./Table.module.scss');
+import * as stylesImport from './Table.module.scss';
+const styles: any = stylesImport;
 
 export interface ITableProps {
   content: any;
@@ -40,7 +41,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
     return (
       (cell.value.length) ?
         <td className={ cell.className } key={ index }>{ cell.value }</td> :
-        <td className={ cell.className } key={ index } dangerouslySetInnerHTML={ { __html: cell.html } }></td>
+        <td className={ cell.className } key={ index } dangerouslySetInnerHTML={ { __html: cell.html } } />
     );
   }
 
@@ -65,7 +66,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
                   this._renderCell(cell, cellIndex)
                 ))
               }
-              { this.props.isAnimation && <td className={ styles.animCell }><AnimationCell data={ row }/></td> }
+              { this.props.isAnimation && <td className={ styles.animCell }><AnimationCell data={ row } /></td> }
             </tr>
           )) }
         </tbody>
@@ -79,8 +80,8 @@ export class Table extends React.Component<ITableProps, ITableState> {
     return (
       <div>
         { content.data.map((row, rowIndex) => (
-          <table className={ `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}
-                 key={ rowIndex }>
+          <table className={ `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '') }
+            key={ rowIndex }>
             <tbody>
               {
                 row.map((cell, cellIndex) => (
@@ -93,7 +94,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
               { this.props.isAnimation &&
                 <tr>
                   <td>Animation</td>
-                  <td><AnimationCell data={ row }/></td>
+                  <td><AnimationCell data={ row } /></td>
                 </tr>
               }
             </tbody>
@@ -104,8 +105,8 @@ export class Table extends React.Component<ITableProps, ITableState> {
   }
 
   // Capitalize the first letter of a string
-  private _capitalizeFirstLetter(string: string): string {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  private _capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   // Check current window size and set state if current size is different from state

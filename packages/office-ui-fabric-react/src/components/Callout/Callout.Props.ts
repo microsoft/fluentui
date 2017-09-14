@@ -4,7 +4,7 @@ import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   IPoint,
-  IRectangle
+  IRectangle,
 } from '../../Utilities';
 
 export interface ICallout {
@@ -32,8 +32,14 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   directionalHint?: DirectionalHint;
 
   /**
+   * How the element should be positioned in RTL layouts.
+   * If not specified, a mirror of `directionalHint` will be used instead
+   */
+  directionalHintForRTL?: DirectionalHint;
+
+  /**
    * The gap between the Callout and the target
-   * @default 16
+   * @default 0
    */
   gapSpace?: number;
 
@@ -44,9 +50,27 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   beakWidth?: number;
 
   /**
+   * Custom width for callout including borders. If value is 0, no width is applied.
+   * @default 0
+   */
+  calloutWidth?: number;
+
+  /**
+   * The background color of the Callout in hex format ie. #ffffff.
+   * @default $ms-color-white
+   */
+  backgroundColor?: string;
+
+  /**
    * The bounding rectangle for which  the contextual menu can appear in.
    */
   bounds?: IRectangle;
+
+  /**
+   * The minimum distance the callout will be away from the edge of the screen.
+   *  @default 8
+   */
+  minPagePadding?: number;
 
   /**
    * If true use a point rather than rectangle to position the Callout.
@@ -61,7 +85,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default false
+   * @default true
    */
   isBeakVisible?: boolean;
 
@@ -77,6 +101,26 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default false
    */
   coverTarget?: boolean;
+
+  /**
+   * Aria role assigned to the callout (Eg. dialog, alertdialog).
+   */
+  role?: string;
+
+  /**
+   * Accessible label text for callout.
+   */
+  ariaLabel?: string;
+
+  /**
+   *  Defines the element id referencing the element containing label text for callout.
+   */
+  ariaLabelledBy?: string;
+
+  /**
+   * Defines the element id referencing the element containing the description for the callout.
+   */
+  ariaDescribedBy?: string;
 
   /**
    * CSS class to apply to the callout.
@@ -112,6 +156,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   directionalHintFixed?: boolean;
 
   /**
+   * Specify the final height of the content.
+   * To be used when expanding the content dynamically so that callout can adjust its position.
+   */
+  finalHeight?: number;
+
+  /**
    * If true then the callout will attempt to focus the first focusable element that it contains.
    * If it doesn't find an element, no focus will be set and the method will return false.
    * This means that it's the contents responsibility to either set focus or have
@@ -121,14 +171,14 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   setInitialFocus?: boolean;
 
   /**
-    * @deprecated
     * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    * @deprecated
     */
   beakStyle?: string;
 
   /**
-   * @deprecated
    * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
+   * @deprecated
    */
   targetElement?: HTMLElement;
 }

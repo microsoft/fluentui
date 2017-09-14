@@ -5,12 +5,12 @@ import {
   autobind,
   css,
   getId,
-  elementContains,
-  getDocument,
   KeyCodes
 } from '../../Utilities';
-import './SearchBox.scss';
-import styles = require('./SearchBox.scss');
+
+import { Icon } from '../../Icon';
+import * as stylesImport from './SearchBox.scss';
+const styles: any = stylesImport;
 
 export interface ISearchBoxState {
   value?: string;
@@ -25,6 +25,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   private _rootElement: HTMLElement;
   private _inputElement: HTMLInputElement;
+  private _latestValue: string;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -38,6 +39,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   public componentWillReceiveProps(newProps: ISearchBoxProps) {
     if (newProps.value !== undefined) {
+      this._latestValue = newProps.value;
       this.setState({
         value: newProps.value
       });
@@ -45,32 +47,40 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   public render() {
-    let { labelText, className } = this.props;
+    let { labelText, className, disabled } = this.props;
     let { value, hasFocus, id } = this.state;
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
         className={ css('ms-SearchBox', className, styles.root, {
           ['is-active ' + styles.rootIsActive]: hasFocus,
-          ['can-clear ' + styles.rootCanClear]: value.length > 0,
+          ['is-disabled ' + styles.rootIsDisabled]: disabled,
+          ['can-clear ' + styles.rootCanClear]: value!.length > 0,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >
-        <i className={ css('ms-SearchBox-icon', 'ms-Icon', 'ms-Icon--Search', styles.icon) }></i>
+        <div
+          className={ css('ms-SearchBox-iconContainer', styles.iconContainer) }
+        >
+          <Icon className={ css('ms-SearchBox-icon', styles.icon) } iconName='Search' />
+        </div>
         <input
           id={ id }
           className={ css('ms-SearchBox-field', styles.field) }
           placeholder={ labelText }
           onChange={ this._onInputChange }
+          onInput={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
+          disabled={ this.props.disabled }
+          aria-label={ this.props.ariaLabel ? this.props.ariaLabel : this.props.labelText }
           ref={ this._resolveRef('_inputElement') }
         />
         <div
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
           onClick={ this._onClearClick }
         >
-          <i className={ css('ms-Icon', 'ms-Icon--Clear') } />
+          <Icon iconName='Clear' />
         </div>
       </div>
     );
@@ -87,6 +97,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   @autobind
   private _onClearClick(ev?: any) {
+    this._latestValue = '';
     this.setState({
       value: ''
     });
@@ -103,7 +114,11 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
       hasFocus: true
     });
 
-    this._events.on(getDocument().body, 'focus', this._handleDocumentFocus, true);
+    this._events.on(this._rootElement, 'blur', this._onBlur, true);
+
+    if (this.props.onFocus) {
+      this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+    }
   }
 
   @autobind
@@ -115,7 +130,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         break;
 
       case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value.length > 0) {
+        if (this.props.onSearch && this.state.value!.length > 0) {
           this.props.onSearch(this.state.value);
         }
         break;
@@ -130,20 +145,27 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement>) {
+    this._events.off(this._rootElement, 'blur');
     this.setState({
-      value: this._inputElement.value
+      hasFocus: false
     });
-    this._callOnChange(this._inputElement.value);
+
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
   }
 
-  private _handleDocumentFocus(ev: FocusEvent) {
-    if (!elementContains(this._rootElement, ev.target as HTMLElement)) {
-      this._events.off(getDocument().body, 'focus');
-      this.setState({
-        hasFocus: false
-      });
+  @autobind
+  private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
+    const value = this._inputElement.value;
+    if (value === this._latestValue) {
+      return;
     }
+    this._latestValue = value;
+
+    this.setState({ value });
+    this._callOnChange(value);
   }
 
   private _callOnChange(newValue: string): void {

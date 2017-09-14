@@ -1,38 +1,69 @@
 @import '../../../common/common';
 
 .root {
-  min-width: 180px;
+  min-width: 260px;
 }
 
 .suggestionsItem {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
   width: 100%;
-  height: auto;
-  
-  @include text-align(left);
-  padding: 4px 20px 6px;
-
-  display: block;
-  border: none;
-  background: $ms-color-white;
+  position: relative;
 
   &:hover {
-    background: $ms-color-neutralLight;
+    background: $ms-color-neutralLighter;
+
+    .closeButton {
+      display: block;
+    }
   }
 
   &.suggestionsItemIsSuggested {
-    background: $ms-color-neutralQuaternary;
+    background: $ms-color-neutralLight;
+
     &:hover {
-      background: $ms-color-neutralQuaternaryAlt;
+      background: $ms-color-neutralTertiaryAlt;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      border: 1px solid $ms-color-white;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border: 1px solid $ms-color-black;
+    }
+
+    .closeButton {
+      &:hover {
+        background: $ms-color-neutralTertiary;
+        color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+
+  .closeButton {
+    display: none;
+    color: $ms-color-neutralSecondary;
+
+    &:hover {
+      background: $ms-color-neutralLight;
     }
   }
 }
 
 .searchMoreButton {
-  @include button-reset();
-  height: auto;
-  text-align: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
   margin: 0;
+  @include ms-padding-left(8px);
+  position: relative;
+  border-top: 1px solid $ms-color-neutralLight;
+  height: 40px;
+  @include ms-text-align(left);
   width: 100%;
+  font-size: 12px;
   &:hover {
       background-color: $ms-color-neutralLight;
       cursor: pointer;
@@ -42,13 +73,21 @@
   &:active {
       background-color: $ms-color-themeLight;
   }
+
+  :global(.ms-Button-icon) {
+    font-size: 16px;
+    width: 25px;
+  }
+
+  :global(.ms-Button-label) {
+    @include margin(0, 4px, 0, 9px);
+  }
 }
 
 .suggestionsTitle {
+  padding: 0 12px;
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  text-align: center;
-  text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
 }
@@ -68,10 +107,12 @@
 }
 
 .suggestionsSpinner {
-  margin: 5px;
-  text-align: center;
+  margin: 5px 0;
+  @include padding-left(14px);
+  @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
+  font-size: 12px;
 
   :global(.ms-Spinner-circle) {
     display: inline-block;
@@ -79,7 +120,35 @@
   }
   :global(.ms-Spinner-label) {
     display: inline-block;
-    margin: 0px 10px;
+    @include margin(0px, 10px, 0, 16px);
     vertical-align: middle;
   }
+}
+
+.itemButton {
+  height: 100%;
+  width: 100%;
+  padding: 7px 12px;
+}
+
+.closeButton {
+  padding: 0 4px;
+  height: auto;
+  width: 32px;
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+  }
+}
+
+.suggestionsAvailable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }

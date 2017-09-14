@@ -4,7 +4,15 @@ import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 
 export interface IPanel {
+  /**
+   * Forces the panel to open.
+   */
+  open: () => void;
 
+  /**
+   * Forces the panel to dismiss.
+   */
+  dismiss: () => void;
 }
 export interface IPanelProps extends React.Props<Panel> {
   /**
@@ -36,6 +44,12 @@ export interface IPanelProps extends React.Props<Panel> {
   * @default true
   */
   isBlocking?: boolean;
+
+  /**
+   * Determines if content should stretch to fill available space putting footer at the bottom of the page
+   * @default false
+   */
+  isFooterAtBottom?: boolean;
 
   /**
   * Header text for the Panel.
@@ -131,6 +145,11 @@ export interface IPanelProps extends React.Props<Panel> {
    * Custom renderer for content in the sticky footer
    */
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Internal ID passed to render functions.
+   */
+  componentId?: string;
 }
 
 export enum PanelType {

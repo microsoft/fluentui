@@ -286,3 +286,10 @@
         }
     }
 }
+
+// Disables high contrast color adjusts for Edge/IE11
+@mixin highContrastAdjust {
+  @media screen and (-ms-high-contrast: active),  screen and (-ms-high-contrast: black-on-white) {
+    -ms-high-contrast-adjust: none;
+  }
+}

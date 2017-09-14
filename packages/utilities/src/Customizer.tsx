@@ -1,15 +1,32 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import { BaseComponent } from './BaseComponent';
-import { assign } from './object';
 
+/**
+ * Settings interface.
+ *
+ * @internal
+ */
 export interface ISettings {
   [key: string]: any;
 }
 
+/**
+ * Customizer component props.
+ *
+ * @public
+ */
 export interface ICustomizerProps {
+  componentRef?: () => void;
+
   settings: ISettings;
 }
 
+/**
+ * Customizer component state.
+ *
+ * @internal
+ */
 export interface ICustomizerState {
   injectedProps?: ISettings;
 }
@@ -21,21 +38,23 @@ export interface ICustomizerState {
  * 1. render svg icons instead of the icon font within all buttons
  * 2. inject a custom theme object into a component
  *
- * Props are provided via the settings prop, which should be a json map where the key is
- * the name of the customizable component, and the value is are the props to pass in.
+ * Props are provided via the settings prop, which should be a json map which contains 1 or more
+ * name/value pairs representing injectable props.
  *
- * @export
- * @class Customizer
- * @extends {BaseComponent<ICustomizerProps, ICustomizerState>}
+ * @public
  */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
-  public static contextTypes = {
-    injectedProps: React.PropTypes.object
+  public static contextTypes: {
+    injectedProps: PropTypes.Requireable<any>;
+  } = {
+    injectedProps: PropTypes.object
   };
 
-  public static childContextTypes = Customizer.contextTypes;
+  public static childContextTypes: {
+    injectedProps: PropTypes.Requireable<any>;
+  } = Customizer.contextTypes;
 
-  constructor(props, context) {
+  constructor(props: any, context: any) {
     super(props);
 
     this.state = this._getInjectedProps(props, context);
@@ -45,21 +64,27 @@ export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState
     return this.state;
   }
 
-  public componentWillReceiveProps(newProps, newContext) {
-
+  public componentWillReceiveProps(newProps: any, newContext: any): void {
     this.setState(this._getInjectedProps(newProps, newContext));
   }
 
-  public render() {
+  public render(): React.ReactElement<any> {
     return React.Children.only(this.props.children);
   }
 
-  private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState) {
+  private _getInjectedProps(props: ICustomizerProps, context: ICustomizerState): {
+    injectedProps: {
+      [x: string]: any;
+    };
+  } {
     let { settings: injectedPropsFromSettings = {} as ISettings } = props;
     let { injectedProps: injectedPropsFromContext = {} as ISettings } = context;
 
     return {
-      injectedProps: assign({}, injectedPropsFromContext, injectedPropsFromSettings)
+      injectedProps: {
+        ...injectedPropsFromContext,
+        ...injectedPropsFromSettings
+      }
     };
   }
 }

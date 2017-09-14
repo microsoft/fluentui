@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuDirectionalExampleState {
   isContextualMenuVisible?: boolean;
   directionalHint?: DirectionalHint;
+  directionalHintForRTL?: DirectionalHint;
+  useDirectionalHintForRtl?: boolean;
   isBeakVisible?: boolean;
   gapSpace?: number;
   beakWidth?: number;
@@ -48,6 +50,8 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
       isContextualMenuVisible: false,
       isBeakVisible: false,
       directionalHint: DirectionalHint.bottomLeftEdge,
+      directionalHintForRTL: DirectionalHint.bottomLeftEdge,
+      useDirectionalHintForRtl: false,
       gapSpace: 0,
       beakWidth: 10,
       edgeFixed: false
@@ -55,7 +59,16 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   }
 
   public render() {
-    let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace, beakWidth, edgeFixed } = this.state;
+    let {
+      beakWidth,
+      directionalHint,
+      directionalHintForRTL,
+      edgeFixed,
+      gapSpace,
+      isBeakVisible,
+      isContextualMenuVisible,
+      useDirectionalHintForRtl
+    } = this.state;
 
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
@@ -67,28 +80,47 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             label='Gap Space'
             min={ 0 }
             defaultValue={ 0 }
-            onChange={ this._onGapSlider } />
+            onChange={ this._onGapSlider }
+          />
           { isBeakVisible &&
             (<Slider
               max={ 50 }
               label='Beak Width'
               min={ 10 }
               defaultValue={ 10 }
-              onChange={ this._onBeakWidthSlider } />) }
+              onChange={ this._onBeakWidthSlider }
+            />) }
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint] }
+            selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged } />
+            onChanged={ this._onDirectionalChanged }
+          />
+          { getRTL() &&
+            <Checkbox label='Use RTL directional hint' checked={ useDirectionalHintForRtl } onChange={ this._onUseRtlHintChange } />
+          }
+          { getRTL() &&
+            <Dropdown
+              label='Directional hint for RTL'
+              selectedKey={ DirectionalHint[directionalHintForRTL!] }
+              options={ DIRECTION_OPTIONS }
+              onChanged={ this._onDirectionalRtlChanged }
+              disabled={ !useDirectionalHintForRtl }
+            />
+          }
         </div>
         <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
-          <Button onClick={ this._onShowMenuClicked }>{ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu' }</Button>
+          <DefaultButton
+            onClick={ this._onShowMenuClicked }
+            text={ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu' }
+          />
         </div>
         { isContextualMenuVisible ? (
           <ContextualMenu
             target={ this.refs.menuButton }
             isBeakVisible={ isBeakVisible }
             directionalHint={ directionalHint }
+            directionalHintForRTL={ useDirectionalHintForRtl ? directionalHintForRTL : undefined }
             gapSpace={ gapSpace }
             beakWidth={ beakWidth }
             directionalHintFixed={ edgeFixed }
@@ -122,7 +154,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
                 },
                 {
                   key: '-',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'share',
@@ -181,6 +213,13 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   }
 
   @autobind
+  private _onUseRtlHintChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
+    this.setState({
+      useDirectionalHintForRtl: isVisible
+    });
+  }
+
+  @autobind
   private _onShowMenuClicked() {
     this.setState({
       isContextualMenuVisible: !this.state.isContextualMenuVisible
@@ -190,7 +229,14 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: DirectionalHint[option.key]
+      directionalHint: (DirectionalHint as any)[option.key]
+    });
+  }
+
+  @autobind
+  private _onDirectionalRtlChanged(option: IDropdownOption) {
+    this.setState({
+      directionalHintForRTL: (DirectionalHint as any)[option.key]
     });
   }
 

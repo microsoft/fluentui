@@ -17,24 +17,22 @@ responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
 let React = require('react');
 let ReactDOMServer = require('react-dom/server');
-let AppDefinition = require('fabric-examples/lib/AppDefinition').AppDefinition;
+let AppDefinition = require('office-ui-fabric-react/lib/demo/AppDefinition').AppDefinition;
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {
     let links = AppDefinition.examplePages[i].links;
-
     for (let j = 0; j < links.length; j++) {
-      let componentName = links[j].key;
+      let { key, component } = links[j];
 
-      testRender(componentName);
+      testRender(key, component);
     }
   }
 });
 
-function testRender(componentName) {
+
+function testRender(componentName, component) {
   it(`${componentName} can render in a server environment`, (done) => {
-    let componentPath = `fabric-examples/lib/pages/${componentName}Page/${componentName}Page`;
-    let component = require(componentPath)[componentName + 'Page'];
     let elem = React.createElement(component);
 
     try {

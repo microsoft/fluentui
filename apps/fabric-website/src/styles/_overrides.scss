@@ -1,3 +1,6 @@
+@import '~office-ui-fabric-react/dist/sass/References';
+@import './variables';
+
 //== Fabric overrides and additions
 
 // Override the default Grid component so that the content is pulled out to the edge
@@ -8,7 +11,7 @@
 
   // Modifier to increase the Grid's gutters depending on screen size
   .ms-Grid--wide {
-    @media screen and (min-width: $ms-screen-lg-min) {
+    @media screen and (min-width: $ms-screen-min-lg) {
       margin: 0 (-$contentPadding-lg / 2);
       padding: 0 ($contentPadding-lg / 2);
 
@@ -21,7 +24,7 @@
       }
     }
 
-    @media screen and (min-width: $ms-screen-xl-min) {
+    @media screen and (min-width: $ms-screen-min-xl) {
       margin: 0 (-$contentPadding-xl / 2);
       padding: 0 ($contentPadding-xl / 2);
 

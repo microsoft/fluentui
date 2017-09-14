@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { css, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./PageHeader.module.scss');
+import { css, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import * as stylesImport from './PageHeader.module.scss';
+const styles: any = stylesImport;
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 
 const FULL_HEADER_HEIGHT = 236;
 const ATTACHED_HEADER_HEIGHT = 128;
 
-export interface IPageHeaderProps {
+export interface IPageHeaderProps extends IBaseProps {
+
   /**
    * The title of the current page.
    * @default 'Page title'

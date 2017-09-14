@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { IIconProps } from '../../Icon';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IChoiceGroup {
 
 }
 
-export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -39,13 +40,13 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInp
   label?: string;
 
   /**
-   * @deprecated
    * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
+   * @deprecated
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 }
 
-export interface IChoiceGroupOption {
+export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
    */
@@ -55,6 +56,16 @@ export interface IChoiceGroupOption {
    * The text string for the option.
    */
   text: string;
+
+  /**
+   * Optional override of option render
+   */
+  onRenderField?: IRenderFunction<IChoiceGroupOption>;
+
+  /**
+   * Optional override of option render
+   */
+  onRenderLabel?: (option: IChoiceGroupOption) => JSX.Element;
 
   /**
    * The Icon component props for choice field
@@ -77,28 +88,22 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * @deprecated
-   * Deprectated at 2.9.0 and will be removed after August 2017. Use 'selectedKey' or
-   * 'defaultSelectedKey' on the ChoiceGroup instead.
-   * @defaultvalue false
-   */
-  checked?: boolean;
-
-  /**
-   * @deprecated
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
-   */
-  isChecked?: boolean;
-
-  /**
    * Whether or not the option is disabled.
    */
   disabled?: boolean;
 
-  // @todo: Update version numbers for depriate and removal
   /**
-   * @deprecated
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
+   * This value is maintained by the component and is accessible during onRenderField
    */
-  isDisabled?: boolean;
+  checked?: boolean;
+
+  /**
+   * This value is maintained by the component and is accessible during onRenderField
+   */
+  id?: string;
+
+  /**
+   * This value is maintained by the component and is accessible during onRenderField
+   */
+  labelId?: string;
 }

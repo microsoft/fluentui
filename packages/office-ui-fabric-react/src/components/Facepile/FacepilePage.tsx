@@ -8,6 +8,7 @@ import {
 import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
+import { FontClassNames } from '../../Styling';
 
 const FacepileAddFaceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
 const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Basic.Example.tsx') as string;
@@ -45,28 +46,28 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
               The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person. Many times this component is used when sharing who has access to a specific view or file or when assigning a user to a task within a workflow.
             </p>
 
-            <h2 className='ms-font-xl'>Adding people</h2>
+            <h2 className={ FontClassNames.xLarge }>Adding people</h2>
             <p>
               The component can include an add button which can be used for quickly adding a person to the list.
             </p>
 
-            <h2 className='ms-font-xl'>Empty state</h2>
+            <h2 className={ FontClassNames.xLarge }>Empty state</h2>
             <p>
               The empty state of the Facepile should include only an add button. Another variant is to use an input field with placeholder text instructing the user to add a person. See the PeoplePicker component for the menu used to add people to the Facepile list.
             </p>
 
-            <h2 className='ms-font-xl'>One person</h2>
+            <h2 className={ FontClassNames.xLarge }>One person</h2>
             <p>
               When there is only one person in the Facepile, consider using their name next to the face or initials.
             </p>
 
-            <h2 className='ms-font-xl'>Expanding the list when there is no overflow</h2>
+            <h2 className={ FontClassNames.xLarge }>Expanding the list when there is no overflow</h2>
 
             <p>
               When there is a need to show the Facepile expanded into a vertical list, include a downward chevron button. Clicking or tapping on the chevron would open a standard list view of personas.
             </p>
 
-            <h2 className='ms-font-xl'>Overflow</h2>
+            <h2 className={ FontClassNames.xLarge }>Overflow</h2>
 
             <p>
               When the Facepile exceeds a max number of 5 people, show a button at the end of the list indicating how many are not being shown. Clicking or tapping on the overflow would open a standard list view of personas.
@@ -75,7 +76,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -98,8 +99,8 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/FacePile/FacePile.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

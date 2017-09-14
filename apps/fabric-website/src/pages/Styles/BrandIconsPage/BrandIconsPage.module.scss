@@ -48,7 +48,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .iconList {
     li {
       width: 50%;
@@ -56,7 +56,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   .iconList {
     li {
       width: 33%;

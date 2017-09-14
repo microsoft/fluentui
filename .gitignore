@@ -42,6 +42,7 @@ node_modules
 temp
 lib
 lib-amd
+lib-es6
 coverage
 dist
 npm-debug.log
@@ -104,11 +105,12 @@ package-deps.json
 **/office-ui-fabric-react/visualtests/results/*.png
 **/office-ui-fabric-react/failures/*.png
 
-common/npm-local
-common/npmx-link.json
-common/last-install.*
-common/npmx-recycler
+common/temp
 
-common/rush-link.json
-common/last-install.*
-common/rush-recycler
+# Gulp cache
+gulp-cache
+
+# NPM debug logs
+npm-debug.log.*
+
+package-lock.json

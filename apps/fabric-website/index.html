@@ -8,7 +8,6 @@
   <title>Office UI Fabric</title>
   <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon" type="image/x-icon"
   />
-  <link rel="stylesheet" href="/dist/fabric.min.css"></link>
   <script src="https://cdn.optimizely.com/js/5703250400.js"></script>
   <style>
     body,
@@ -16,7 +15,7 @@
       margin: 0;
       padding: 0;
     }
-    
+
     .loading {
       align-items: center;
       background-color: #212121;
@@ -95,14 +94,14 @@
 
     if (isLocal) {
       scripts.push.apply(scripts, reactDevelopment);
-      scripts.push('/dist/fabric-site.js');
+      scripts.push('fabric-website.js');
     } else if (isDogfood) {
       if (noCompress) {
         scripts.push.apply(scripts, reactDevelopment);
-        scripts.push(baseDogfoodUrl + 'fabric-site.min.js?date=' + date);
+        scripts.push(baseDogfoodUrl + 'fabric-site.min.js?date=' + Date.now());
       } else {
         scripts.push.apply(scripts, reactProduction);
-        scripts.push(baseDogfoodUrl + 'fabric-site.js?date=' + date);
+        scripts.push(baseDogfoodUrl + 'fabric-site.js?date=' + Date.now());
       }
     } else {
       if (noCompress) {

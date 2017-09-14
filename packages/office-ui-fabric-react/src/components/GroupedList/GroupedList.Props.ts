@@ -3,6 +3,7 @@ import {
   GroupedList
 } from './GroupedList';
 import {
+  IList,
   IListProps
 } from '../../List';
 import { IRenderFunction } from '../../Utilities';
@@ -17,7 +18,12 @@ import {
 } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
-export interface IGroupedList {
+export enum CollapseAllVisibility {
+  hidden = 0,
+  visible = 1
+}
+
+export interface IGroupedList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
    * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
@@ -36,7 +42,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IGroupedList) => void;
+  componentRef?: (component?: IGroupedList) => void;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -80,6 +86,20 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
 
   /** Optional callback when the group expand state changes between all collapsed and at least one group is expanded. */
   onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
+
+  /**
+   * boolean to control if pages containing unchanged items should be cached, this is a perf optimization
+   * The same property in List.Props
+   */
+  usePageCache?: boolean;
+
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when this callback is not provided.
+   */
+  onShouldVirtualize?: (props: IListProps) => boolean;
 }
 
 export interface IGroup {
@@ -114,8 +134,8 @@ export interface IGroup {
   level?: number;
 
   /**
+   * Deprecated at 1.0.0, selection state will be controled by the selection store only.
    * @deprecated
-   * This is no longer supported. Selection state will be controled by the selection store only. Will be removed in 1.0.0.
    */
   isSelected?: boolean;
 
@@ -153,6 +173,7 @@ export interface IGroup {
 }
 
 export interface IGroupRenderProps {
+
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -165,6 +186,9 @@ export interface IGroupRenderProps {
   /** Information to pass in to the group header. */
   headerProps?: IGroupDividerProps;
 
+  /** Information to pass in to the group Show all footer. */
+  showAllProps?: IGroupDividerProps;
+
   /** Information to pass in to the group footer. */
   footerProps?: IGroupDividerProps;
 
@@ -174,12 +198,32 @@ export interface IGroupRenderProps {
   onRenderHeader?: IRenderFunction<IGroupDividerProps>;
 
   /**
-   * Override which allows the caller to provider a customer footer.
+   * Override which allows the caller to provide a custom Show All link.
+   */
+  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Override which allows the caller to provide a custom footer.
    */
   onRenderFooter?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Flag to indicate whether to ignore the collapsing icon on header.
+   * @default CheckboxVisibility.visible
+   */
+  collapseAllVisibility?: CollapseAllVisibility;
+
+  /**
+   * Boolean indicating if empty groups are shown
+   * @defaultvalue false
+   */
+  showEmptyGroups?: boolean;
 }
 
 export interface IGroupDividerProps {
+
+  componentRef?: () => void;
+
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
 
@@ -199,8 +243,8 @@ export interface IGroupDividerProps {
   selected?: boolean;
 
   /**
-   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   * @deprecated
    */
   isSelected?: boolean;
 
@@ -210,10 +254,13 @@ export interface IGroupDividerProps {
   /** The selection mode of the list the group lives within. */
   selectionMode?: SelectionMode;
 
-  /** Text to display for the group footer show all link. */
+  /** Text to display for the group footer. */
+  footerText?: string;
+
+  /** Text to display for the group "Show All" link. */
   showAllLinkText?: string;
 
-  /** Callback for when the "Show All" link in group footer is clicked */
+  /** Callback for when the group "Show All" link is clicked */
   onToggleSummarize?: (group: IGroup) => void;
 
   /** Callback for when the group header is clicked. */

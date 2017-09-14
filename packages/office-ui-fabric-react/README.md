@@ -4,16 +4,14 @@
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
-[![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
-
-**This project is in a pre-v1 state**, so we encourage you to check out the [Roadmap](#roadmap) to see what we're working towards and what this means for your usage of the control library.
 
 ## Contents
 
 - [View the docs](#view-the-docs)
 - [Get started](#get-started)
+- [Testing](#testing)
 - [Advanced usage](#advanced-usage)
 - [Roadmap](#roadmap)
 - [Trello board](#trello-board)
@@ -34,12 +32,6 @@ Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp
 This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build all packages in the repo, you can use `npm run build`.
-
-To run other Gulp commands such as clean or deploy, just prepend the command with `npm run gulp` and this will run the command from within the project context.
-
-`npm run gulp clean`
-`npm run gulp deploy`
-...
 
 ## Get started
 
@@ -69,32 +61,49 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
 
+## Rendering Fabric components on the server (SSR)
+
+If you need to render Fabric components on the server side in a node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
+
+```ts
+import { configureLoadStyles } from '@microsoft/load-themed-styles';
+ 
+// Store registered styles in a variable used later for injection.
+let _allStyles = '';
+
+// Push styles into variables for injecting later.
+configureLoadStyles((styles: string) => {
+  _allStyles += styles;
+});
+ 
+import * as React from 'react';
+import * as ReactDOMServer from 'react-dom/server';
+import { Button } from 'office-ui-fabric-react/lib/Button'; 
+ 
+let body = ReactDOMServer.renderToString(<Button>hello</Button>);
+ 
+console.log(
+  `
+  <html>
+  <head>
+    <style>${ _allStyles}</style>
+  </head>
+  <body>
+    ${ body}
+  </body>
+  </html>
+  `);
+```
+
+Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
+
+## Testing
+
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
+
 ## Advanced usage
 
 For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
-
-
-## Roadmap
-
-The Fabric React project is currently in a **pre-v1 state** which means that we're working hard on achieving our v1 - a set of powerful and easy to use components built to the Office Design Language that are used *in production*. We will be actively working on this set as teams across Office and Office 365 contribute, evolve, and use these components in their own products.
-
-Given the early state of the project, all things are subject to change and some components may be more stable/usable than others. Use at your own risk!
-
-Our goal is to build out the components to be:
-- Well documented
-- Have clear contracts
-- Keyboard accessible
-- Screen reader friendly
-- RTL friendly
-- Support high contrast mode
-- Generally bug-free
-
-We hope to develop more concrete goals for the project's components in the future with a primary focus on explaining which components are used in production. Stay tuned to learn more.
-
-## Trello board
-
-Fabric React contains a variety of components that are a part of the Office / Office 365 design language. If you're not seeing a component here that you'd like, first check out the [Fabric React Requests Trello board](https://trello.com/b/hBP8XdvR/office-ui-fabric-react-requests) and upvote it there (if it exists), or file an [issue on Fabric React's issue tracker](https://github.com/OfficeDev/office-ui-fabric-react/issues) to kick off a new request.
-
 
 ## Browser support
 

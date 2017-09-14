@@ -1,0 +1,51 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Modal styles
+
+:export { duration: $ms-animation-duration-2 }
+
+.root {
+  background-color: transparent;
+  position: fixed;
+  height: 100%;
+  width:  100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $ms-animation-duration-2;
+
+  :global(.ms-Button.ms-Button--compound) {
+    display: block;
+    @include ms-margin-left(0);
+  }
+
+  :global(.ms-Overlay) {
+    @media screen and (-ms-high-contrast: active) {
+      opacity: 0;
+    }
+  }
+}
+
+.rootIsVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+// The actual dialog element
+.main {
+  @include ms-drop-shadow();
+  background-color: $ms-color-white;
+  box-sizing: border-box;
+  position: relative;
+  @include ms-text-align(left);
+  outline: 3px solid transparent;
+  max-height: 100%;
+  overflow-y: auto;
+}

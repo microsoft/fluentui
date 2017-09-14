@@ -4,11 +4,9 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let build = require('@microsoft/web-library-build');
-let buildConfig = build.getConfig();
-let configResources = build.karma.resources;
-let bindPolyfillPath = configResources.bindPolyfillPath;
+let resources = require('../../scripts/tasks/karma-resources');
 let debugRun = (process.argv.indexOf('--debug') > -1);
+let webpack = require('../../scripts/tasks/webpack-resources').webpack;
 
 module.exports = function (config) {
   let karmaConfig = {
@@ -22,7 +20,7 @@ module.exports = function (config) {
 
 
     // list of files / patterns to load in the browser
-    files: [bindPolyfillPath].concat([path.join(buildConfig.libFolder, 'common/tests.js')]),
+    files: resources.files.concat([path.join('lib', 'common/tests.js')]),
 
     // list of files to exclude
     exclude: [],
@@ -34,14 +32,13 @@ module.exports = function (config) {
       module: {
         loaders: [
           {
-            test: /sinon\.js$/,
-            loader: 'imports?define=>false',
-            enforce: 'pre'
+            test: /sinon\/pkg\/sinon/,
+            loader: "imports?define=>false,require=>false"
           },
           debugRun ? {} : {
             test: /\.js/,
             exclude: /(test|node_modules|bower_components)/,
-            loader: configResources.istanbulInstrumenterLoaderPath,
+            loader: resources.istanbulInstrumenterLoaderPath,
             enforce: 'post'
           }
         ],
@@ -54,10 +51,16 @@ module.exports = function (config) {
       },
       resolve: {
         modules: [
-          buildConfig.libFolder,
+          path.resolve(__dirname, 'lib'),
+          path.resolve('../../scripts/node_modules'),
           'node_modules'
         ]
-      }
+      },
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify('production')
+        })
+      ]
     },
 
     webpackMiddleware: {
@@ -67,10 +70,10 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      [path.join(buildConfig.libFolder, '/**/*.js')]: ['webpack']
+      [path.join('lib', '/**/*.js')]: ['webpack']
     },
 
-    plugins: configResources.plugins.concat([
+    plugins: resources.plugins.concat([
     ]),
 
     // test results reporter to use
@@ -103,7 +106,15 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun: true,
+
+    // on disconnect, makes karma to launch another phantonJs window to restart the testcases
+    browserDisconnectTolerance: 5,
+
+    // these settings help reduce the timeouts to begin with.
+    browserNoActivityTimeout: 60000,
+    browserDisconnectTimeout: 30000,
+    captureTimeout: 60000,
   };
 
   config.set(karmaConfig);

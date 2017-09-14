@@ -1,4 +1,10 @@
 import { filteredAssign } from './object';
+
+/**
+ * An array of events that are allowed on every html element type.
+ *
+ * @public
+ */
 export const baseElementEvents = [
   'onCopy',
   'onCut',
@@ -71,6 +77,11 @@ export const baseElementEvents = [
   'onWheel'
 ];
 
+/**
+ * An array of element attributes which are allowed on every html element type.
+ *
+ * @public
+ */
 export const baseElementProperties = [
   'defaultChecked',
   'defaultValue',
@@ -132,7 +143,6 @@ export const baseElementProperties = [
   'keyParams',
   'keyType',
   'kind',
-  'label',
   'lang',
   'list',
   'loop',
@@ -193,23 +203,58 @@ export const baseElementProperties = [
   'wrap'
 ];
 
+/**
+ * An array of HTML element properties and events.
+ *
+ * @public
+ */
 export const htmlElementProperties = baseElementProperties.concat(baseElementEvents);
 
+/**
+ * An array of A tag properties and events.
+ *
+ * @public
+ */
 export const anchorProperties = htmlElementProperties.concat([
   'href',
   'target'
 ]);
 
+/**
+ * An array of BUTTON tag properties and events.
+ *
+ * @public
+ */
 export const buttonProperties = htmlElementProperties.concat([
   'disabled'
 ]);
 
+/**
+ * An array of DIV tag properties and events.
+ *
+ * @public
+ */
 export const divProperties = htmlElementProperties.concat(['align', 'noWrap']);
 
+/**
+ * An array of INPUT tag properties and events.
+ *
+ * @public
+ */
 export const inputProperties = buttonProperties;
 
+/**
+ * An array of TEXTAREA tag properties and events.
+ *
+ * @public
+ */
 export const textAreaProperties = buttonProperties;
 
+/**
+ * An array of IMAGE tag properties and events.
+ *
+ * @public
+ */
 export const imageProperties = divProperties;
 
 /**
@@ -220,12 +265,14 @@ export const imageProperties = divProperties;
  * non-native props should be applied second. This will prevent getNativeProps from overriding your custom props.
  * For example, if props passed to getNativeProps has an onClick function and getNativeProps is added to
  * the component after an onClick function is added, then the getNativeProps onClick will override it.
- * @param props The unfiltered input props
- * @param allowedPropsNames The array of allowed propnames.
+ *
+ * @public
+ * @param props - The unfiltered input props
+ * @param allowedPropsNames-  The array of allowed propnames.
  * @returns The filtered props
  */
 export function getNativeProps<T>(props: any, allowedPropNames: string[], excludedPropNames?: string[]): T {
-  return filteredAssign((propName) => {
+  return filteredAssign((propName: string) => {
     return (
       (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) && (
         (propName.indexOf('data-') === 0) ||

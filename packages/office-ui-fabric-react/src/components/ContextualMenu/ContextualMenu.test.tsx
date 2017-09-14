@@ -239,9 +239,58 @@ describe('ContextualMenu', () => {
     let headerTwo = menuItems[3];
 
     expect(headerOne.className).to.not.contain('divider', 'The first item is a divider and it should be a header');
-    expect(headerOne.firstElementChild.className).to.contain('header', 'The first item was not a header');
+    expect(headerOne.firstElementChild!.className).to.contain('header', 'The first item was not a header');
     expect(dividerOne.className).to.contain('divider', 'The third item in the contextualmenu was not a divider');
-    expect(headerTwo.firstElementChild.className).to.contain('header', 'The final item was not a header');
+    expect(headerTwo.firstElementChild!.className).to.contain('header', 'The final item was not a header');
+  });
+
+  it('renders sections properly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          topDivider: true,
+          bottomDivider: true,
+          items: [
+            {
+              name: 'TestText 2',
+              key: 'TestKey3'
+            },
+            {
+              name: 'TestText 3',
+              key: 'TestKey3',
+            }
+          ]
+        }
+      }, {
+        name: 'TestText 4',
+        key: 'TestKey4',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          items: [
+            {
+              name: 'TestText 5',
+              key: 'TestKey5'
+            },
+            {
+              name: 'TestText 6',
+              key: 'TestKey6',
+            }
+          ]
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    let menuItems = document.querySelectorAll('li');
+    expect(menuItems.length).to.be.eq(8, 'This menu has an incorrect number of items');
   });
 
   it('does not return a value if no items are given', () => {
@@ -275,7 +324,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1').firstChild;
+    let focusedItem = document.querySelector('.testkey1')!.firstChild;
     expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
   });
 
@@ -299,7 +348,7 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1').firstChild;
+    let focusedItem = document.querySelector('.testkey1')!.firstChild;
     expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
   });
 
@@ -345,8 +394,7 @@ describe('ContextualMenu', () => {
             }
             menuMounted = true;
           } }
-        >
-        </ContextualMenu>
+        />
       </div>
     );
     expect(menuMounted).to.be.equal(true, 'Menu opened callback was not properly called');

@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { DetailsList, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsRow, IDetailsRowProps, IDetailsRowCheckProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
@@ -26,22 +26,27 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _onRenderRow(props) {
-    return <DetailsRow { ...props } onRenderCheck={ this._onRenderCheck } />;
+  private _onRenderRow(props: IDetailsRowProps) {
+    return (
+      <DetailsRow
+        { ...props}
+        onRenderCheck={ this._onRenderCheck }
+        aria-busy={ false }
+      />
+    );
   }
 
   @autobind
-  private _onRenderCheck(props) {
+  private _onRenderCheck(props: IDetailsRowCheckProps) {
     return (
       <div
         className={ css(
-          'ms-DetailsRow-check DetailsListExample-customCheck', {
-            'is-any-selected': props.anySelected
-          }) }
+          'ms-DetailsRow-check DetailsListExample-customCheck',
+          props.anySelected && 'is-any-selected'
+        ) }
         role='button'
         aria-pressed={ props.isSelected }
         data-selection-toggle={ true }
-        aria-label={ props.ariaLabel }
       >
         <input
           type='checkbox'

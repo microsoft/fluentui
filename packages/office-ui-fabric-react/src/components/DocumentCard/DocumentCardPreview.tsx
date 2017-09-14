@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
 import { Image } from '../../Image';
+import { Icon } from '../../Icon';
 import {
   BaseComponent,
   autobind,
   css
 } from '../../Utilities';
-import styles = require('./DocumentCard.scss');
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 const LIST_ITEM_COUNT = 3;
 
@@ -33,14 +35,25 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
     }
 
     return (
-      <div className={ css('ms-DocumentCardPreview', styles.preview, isFileList && ('is-fileList ' + styles.previewIsFileList)) } style={ style }>
+      <div
+        className={ css('ms-DocumentCardPreview', styles.preview, isFileList && ('is-fileList ' + styles.previewIsFileList)) }
+        style={ style }
+      >
         { preview }
       </div>
     );
   }
 
-  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
-    let { width, height, imageFit } = previewImage;
+  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+    let { width, height, imageFit, previewIconProps } = previewImage;
+
+    if (previewIconProps) {
+      return (
+        <div className={ css('ms-DocumentCardPreview-iconContainer', styles.previewIconContainer) } style={ { width: width, height: height } } >
+          <Icon { ...previewIconProps } />
+        </div>
+      );
+    }
 
     let image = (
       <Image
@@ -48,7 +61,9 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
         height={ height }
         imageFit={ imageFit }
         src={ previewImage.previewImageSrc }
-        role='presentation' alt='' />
+        role='presentation'
+        alt=''
+      />
     );
 
     let icon;
@@ -65,7 +80,7 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
   }
 
   @autobind
-  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     let { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing
@@ -86,7 +101,8 @@ export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps
           role='presentation'
           alt=''
           width='16px'
-          height='16px' />
+          height='16px'
+        />
         <a href={ file.url }>{ file.name }</a>
       </li>
     ));

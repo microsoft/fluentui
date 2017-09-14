@@ -9,7 +9,9 @@ import {
   getRTL,
   IRenderFunction
 } from '../../Utilities';
+import { Icon } from '../../Icon';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
+import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -21,7 +23,19 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import styles = require('./Persona.scss');
+import * as stylesImport from './Persona.scss';
+const styles: any = stylesImport;
+
+const SIZE_TO_PIXELS = {
+  [PersonaSize.extraExtraSmall]: 24,
+  [PersonaSize.size28]: 28,
+  [PersonaSize.tiny]: 30,
+  [PersonaSize.extraSmall]: 32,
+  [PersonaSize.small]: 40,
+  [PersonaSize.regular]: 48,
+  [PersonaSize.large]: 72,
+  [PersonaSize.extraLarge]: 100
+};
 
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
@@ -52,7 +66,8 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,
-    presence: PersonaPresence.none
+    presence: PersonaPresence.none,
+    imageAlt: ''
   };
 
   constructor(props: IPersonaProps) {
@@ -66,14 +81,11 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public render() {
     let {
       className,
-      size,
       imageUrl,
+      imageAlt,
       initialsColor,
       presence,
       primaryText,
-      secondaryText,
-      tertiaryText,
-      optionalText,
       hidePersonaDetails,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
@@ -83,12 +95,13 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
       onRenderOptionalText,
       imageShouldStartVisible
     } = this.props;
+    let size = this.props.size as PersonaSize;
 
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
     let presenceElement = null;
     if (presence !== PersonaPresence.none) {
-      let userPresence = PersonaPresence[presence],
+      let userPresence = PersonaPresence[presence as PersonaPresence],
         statusIcon = null;
       switch (userPresence) {
         case 'online':
@@ -104,37 +117,40 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
           userPresence = '';
       }
       if (userPresence) {
-        let iconClass = css(`ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`, styles.presenceIcon);
-        statusIcon = <i className={ iconClass }></i>;
+        statusIcon = (
+          <Icon className={ css('ms-Persona-presenceIcon', styles.presenceIcon) } iconName={ userPresence } />
+        );
       }
       presenceElement = <div className={ css('ms-Persona-presence', styles.presence) }>{ statusIcon }</div>;
     }
 
     let divProps = getNativeProps(this.props, divProperties);
-    let personaDetails = <div className={ css('ms-Persona-details', styles.details) }>
-      { this._renderElement(
-        this.props.primaryText,
-        css('ms-Persona-primaryText', styles.primaryText),
-        onRenderPrimaryText) }
-      { this._renderElement(
-        this.props.secondaryText,
-        css('ms-Persona-secondaryText', styles.secondaryText),
-        onRenderSecondaryText) }
-      { this._renderElement(
-        this.props.tertiaryText,
-        css('ms-Persona-tertiaryText', styles.tertiaryText),
-        onRenderTertiaryText) }
-      { this._renderElement(
-        this.props.optionalText,
-        css('ms-Persona-optionalText', styles.optionalText),
-        onRenderOptionalText) }
-      { this.props.children }
-    </div>;
+    let personaDetails = (
+      <div className={ css('ms-Persona-details', styles.details) }>
+        { this._renderElement(
+          this.props.primaryText,
+          css('ms-Persona-primaryText', styles.primaryText),
+          onRenderPrimaryText) }
+        { this._renderElement(
+          this.props.secondaryText,
+          css('ms-Persona-secondaryText', styles.secondaryText),
+          onRenderSecondaryText) }
+        { this._renderElement(
+          this.props.tertiaryText,
+          css('ms-Persona-tertiaryText', styles.tertiaryText),
+          onRenderTertiaryText) }
+        { this._renderElement(
+          this.props.optionalText,
+          css('ms-Persona-optionalText', styles.optionalText),
+          onRenderOptionalText) }
+        { this.props.children }
+      </div>
+    );
 
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence as PersonaPresence], this.props.showSecondaryText ? styles.showSecondaryText : '') }
       >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
@@ -157,9 +173,13 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
               className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
               src={ imageUrl }
+              width={ SIZE_TO_PIXELS[size] }
+              height={ SIZE_TO_PIXELS[size] }
+              alt={ imageAlt }
               shouldFadeIn={ imageShouldFadeIn }
               shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange } />
+              onLoadingStateChange={ this._onPhotoLoadingStateChange }
+            />
           </div>
         ) }
         { presenceElement }
@@ -169,10 +189,13 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   }
 
   @autobind
-  private _renderElement(text: string, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
+  private _renderElement(text: string | undefined, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
     return (
       <div className={ className }>
-        { render ? render(this.props) : text }
+        { render
+          ? render(this.props)
+          : <TooltipHost content={ text } overflowMode={ TooltipOverflowMode.Parent }>{ text }</TooltipHost>
+        }
       </div>
     );
   }
@@ -193,7 +216,7 @@ export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
     );
   }
 
-  private _getColorFromName(displayName: string): PersonaInitialsColor {
+  private _getColorFromName(displayName: string | undefined): PersonaInitialsColor {
     let color = PersonaInitialsColor.blue;
     if (!displayName) {
       return color;

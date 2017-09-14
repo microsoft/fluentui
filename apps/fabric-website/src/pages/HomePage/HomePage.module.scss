@@ -73,7 +73,7 @@
   margin-top: 16px;
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .hero {
     padding-bottom: 120px;
   }
@@ -83,7 +83,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   .hero {
     padding-top: 140px;
   }
@@ -108,11 +108,6 @@
   flex-direction: column;
   margin-bottom: 60px;
 
-  // Place the second flavor at the top
-  &:nth-of-type(2) {
-    order: -1;
-  }
-
   img {
     margin-bottom: 12px;
   }
@@ -120,7 +115,7 @@
   a {
     color: $color-home-lighter;
     font-size: $ms-font-size-m;
-    transition: color $ms-duration2 $ms-ease1;
+    transition: color $ms-animation-duration-2 $ms-animation-ease-1;
 
     &:hover {
       color: $ms-color-white;
@@ -151,7 +146,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .flavors {
     flex-direction: row;
     padding-bottom: 72px;
@@ -162,11 +157,16 @@
     margin-bottom: 0;
     width: 30%; // Ensure that the 4th one wraps
 
-    // Lift out the second flavor
-    &:nth-of-type(2) {
-      order: 0; // Restore default order
+    // Lift out the first flavor
+    &:nth-of-type(1) {
       position: relative;
       top: -96px;
+      margin: 0 30%; // Pushes other items into their own row
+    }
+
+    // Move the Angular flavor to the last column
+    &:nth-of-type(3) {
+      order: 4;
     }
   }
 }
@@ -211,7 +211,7 @@
 
   a, a:visited {
     color: $color-home-medium;
-    transition: color $ms-duration2 $ms-ease1;
+    transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
 
   a:hover, a:active {
@@ -227,7 +227,7 @@
   background-color: $ms-color-neutralLight;
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .product {
     flex-direction: row;
     padding-bottom: 60px;
@@ -250,7 +250,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   .productImage {
     width: 50%;
   }
@@ -303,7 +303,7 @@
       color: $ms-color-neutralLight;
       display: block;
       font-size: $ms-font-size-l;
-      transition: color $ms-duration2 $ms-ease1;
+      transition: color $ms-animation-duration-2 $ms-animation-ease-1;
     }
 
     &:hover {
@@ -326,7 +326,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-min-lg) {
   .featureList {
     flex-direction: row;
     flex-wrap: wrap;
@@ -337,7 +337,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-xl-min) {
+@media screen and (min-width: $ms-screen-min-xl) {
   .featureList li {
     width: 23%; // @todo: Same here, better to use pixels that snap to grid
   }

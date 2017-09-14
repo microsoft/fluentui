@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import './CalloutExample.scss';
@@ -27,25 +27,31 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
 
     return (
       <div className='ms-CalloutExample'>
-        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+          <DefaultButton
+            onClick={ this._onShowMenuClicked }
+            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
+          />
         </div>
         { isCalloutVisible && (
           <Callout
             className='ms-CalloutExample-callout'
+            ariaLabelledBy={ 'callout-label-1' }
+            ariaDescribedBy={ 'callout-description-1' }
+            role={ 'alertdialog' }
             gapSpace={ 0 }
             targetElement={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
           >
             <div className='ms-CalloutExample-header'>
-              <p className='ms-CalloutExample-title'>
+              <p className='ms-CalloutExample-title' id={ 'callout-label-1' }>
                 All of your favorite people
               </p>
             </div>
             <div className='ms-CalloutExample-inner'>
               <div className='ms-CalloutExample-content'>
-                <p className='ms-CalloutExample-subText'>
+                <p className='ms-CalloutExample-subText' id={ 'callout-description-1' }>
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>

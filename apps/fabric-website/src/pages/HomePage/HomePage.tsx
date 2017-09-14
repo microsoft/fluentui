@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./HomePage.module.scss');
+import * as stylesImport from './HomePage.module.scss';
+const styles: any = stylesImport;
 
-const packageData = require('json!../../../package.json');
+const packageData = require('../../../package.json');
 
 export class HomePage extends React.Component<any, any> {
   public render() {
@@ -17,19 +18,17 @@ export class HomePage extends React.Component<any, any> {
 
         <div className={ styles.flavors }>
           <div className={ styles.flavor }>
-            <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-js-white.svg' } width='48' height='48' alt='Javascript logo' />
-            <span className={ styles.flavorTitle }>Fabric JS</span>
-            <span className={ styles.flavorDescription }>Lightweight and simple components in vanilla JavaScript</span>
-            <a href='#/fabric-js'>Learn more</a>
-          </div>
-          <div className={ styles.flavor }>
             <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-react.svg' } width='72' height='64' alt='React logo' />
             <span className={ styles.flavorTitle }>Built with React</span>
             <span className={ styles.flavorDescription }>Fabric&rsquo;s robust, up-to-date components are built with React</span>
             <a href='#/components' className={ styles.button }>See components</a>
           </div>
           <div className={ styles.flavor }>
-            <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-angular-white.svg' } width='48' height='48' alt='Angular JS Logo' />
+            <span className={ styles.flavorTitle }>Fabric JS</span>
+            <span className={ styles.flavorDescription }>Lightweight and simple components in vanilla JavaScript</span>
+            <a href='#/fabric-js'>Learn more</a>
+          </div>
+          <div className={ styles.flavor }>
             <span className={ styles.flavorTitle }>AngularJS</span>
             <span className={ styles.flavorDescription }>Community-driven project for Angular apps</span>
             <a href='#/angular-js'>Learn more</a>

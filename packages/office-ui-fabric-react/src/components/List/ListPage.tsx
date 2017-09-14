@@ -6,17 +6,15 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ListBasicExample } from './examples/List.Basic.Example';
-import { ListMailExample } from './examples/List.Mail.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { createListItems } from '@uifabric/example-app-base';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
-const ListMailExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Mail.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 
-let _cachedItems;
+let _cachedItems: any;
 
 export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
   constructor() {
@@ -37,9 +35,6 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='List of 5000 variable height items' isOptIn={ true } code={ ListBasicExampleCode }>
               <ListBasicExample items={ _cachedItems } />
-            </ExampleCard>
-            <ExampleCard title='Fixed list of 5000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
-              <ListMailExample items={ _cachedItems } />
             </ExampleCard>
             <ExampleCard title='Scrolling items into view' isOptIn={ true } code={ ListScrollingExampleCode }>
               <ListScrollingExample items={ _cachedItems } />
@@ -69,8 +64,8 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/List/List.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

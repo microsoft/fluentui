@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { autobind } from '../../../Utilities';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelCustomExample extends React.Component<any, any> {
@@ -14,23 +15,30 @@ export class PanelCustomExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <DefaultButton
+          text='Open Panel'
+          description='Opens the Sample Panel'
+          onClick={ this._showPanel }
+        />
         <Panel
           isOpen={ this.state.showPanel }
-          onDismiss={ this._closePanel.bind(this) }
+          onDismiss={ this._closePanel }
           type={ PanelType.custom }
           customWidth='888px'
           headerText='Custom Panel with custom 888px width'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );
   }
 
+  @autobind
   private _showPanel() {
     this.setState({ showPanel: true });
   }
+
+  @autobind
   private _closePanel() {
     this.setState({ showPanel: false });
   }

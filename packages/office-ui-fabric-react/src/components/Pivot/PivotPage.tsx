@@ -14,6 +14,7 @@ import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
 import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
+import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
@@ -24,6 +25,7 @@ const PivotFabricExampleCode = require('!raw-loader!office-ui-fabric-react/src/c
 const PivotOnChangeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.OnChange.Example.tsx') as string;
 const PivotIconCountExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
 const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Override.Example.tsx') as string;
+const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -60,6 +62,9 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Override selected item' code={ PivotOverrideExampleCode }>
               <PivotOverrideExample />
             </ExampleCard>
+            <ExampleCard title='Render content separately' code={ PivotSeparateExampleCode }>
+              <PivotSeparateExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -89,7 +94,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -111,8 +116,8 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

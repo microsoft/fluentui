@@ -1,6 +1,6 @@
 @import './semanticColorVariables';
 
-@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1px, $onFocus: true) {
+@mixin focus-clear() {
   &::-moz-focus-inner {
     // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
     border: 0;
@@ -9,18 +9,30 @@
   & {
     // Clear browser specific focus styles and use transparent as placeholder for focus style
     outline: transparent;
-
-    // It is MUST because the pseudo-element is absolute position.
-    position: relative;
   }
+}
 
+@mixin focus($onFocus: true) {
   @if $onFocus {
-    :global(.ms-Fabric.is-focusVisible) &:focus:after {
-      @include after-outline($padding, $color, $thickness);
+    :global(.ms-Fabric.is-focusVisible) &:focus {
+      @content;
     }
   }
   @else {
-    &::after {
+    @content;
+  }
+}
+
+@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1px, $onFocus: true, $position: relative) {
+  @include focus-clear();
+
+  & {
+    // It is MUST because the pseudo-element is absolute position.
+    position: $position;
+  }
+
+  @include focus($onFocus) {
+    &:after {
       @include after-outline($padding, $color, $thickness);
     }
   }

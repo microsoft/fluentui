@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
-
-import { items } from '../../CommandBar/examples/data';
 
 export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;
@@ -28,12 +26,17 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
 
     return (
       <div className='ms-CalloutExample'>
-        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onDismiss } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+          <DefaultButton
+            onClick={ this._onDismiss }
+            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
+          />
         </div>
         { isCalloutVisible ? (
           <div>
             <Callout
+              role={ 'alertdialog' }
+              ariaLabelledBy={ 'callout-label-2' }
               className='ms-CalloutExample-callout'
               gapSpace={ 0 }
               targetElement={ this._menuButtonElement }
@@ -41,7 +44,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               setInitialFocus={ true }
             >
               <div className='ms-CalloutExample-header'>
-                <p className='ms-CalloutExample-title'>
+                <p className='ms-CalloutExample-title' id={ 'callout-label-2' }>
                   Callout title here
                 </p>
               </div>

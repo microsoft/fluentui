@@ -5,19 +5,22 @@ export interface ISuggestionModel<T> {
 
 export class SuggestionsController<T> {
   public currentIndex: number;
-  public currentSuggestion: ISuggestionModel<T>;
-  private suggestions: ISuggestionModel<T>[];
+  public currentSuggestion: ISuggestionModel<T> | undefined;
+  public suggestions: ISuggestionModel<T>[];
+
   constructor() {
     this.suggestions = [];
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[]) {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number) {
     if (newSuggestions && newSuggestions.length > 0) {
-      this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
+      this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
-      this.suggestions[0].selected = true;
-      this.currentSuggestion = this.suggestions[0];
+      if (selectedIndex !== undefined) {
+        this.suggestions[selectedIndex].selected = true;
+        this.currentSuggestion = this.suggestions[selectedIndex];
+      }
     } else {
       this.suggestions = [];
       this.currentIndex = -1;
@@ -31,10 +34,10 @@ export class SuggestionsController<T> {
   public nextSuggestion(): boolean {
     if (this.suggestions && this.suggestions.length) {
       if (this.currentIndex < (this.suggestions.length - 1)) {
-        this._setSelectedSuggestion(this.currentIndex + 1);
+        this.setSelectedSuggestion(this.currentIndex + 1);
         return true;
       } else if (this.currentIndex === (this.suggestions.length - 1)) {
-        this._setSelectedSuggestion(0);
+        this.setSelectedSuggestion(0);
         return true;
       }
     }
@@ -48,10 +51,10 @@ export class SuggestionsController<T> {
   public previousSuggestion(): boolean {
     if (this.suggestions && this.suggestions.length) {
       if (this.currentIndex > 0) {
-        this._setSelectedSuggestion(this.currentIndex - 1);
+        this.setSelectedSuggestion(this.currentIndex - 1);
         return true;
       } else if (this.currentIndex === 0) {
-        this._setSelectedSuggestion(this.suggestions.length - 1);
+        this.setSelectedSuggestion(this.suggestions.length - 1);
         return true;
       }
     }
@@ -64,7 +67,7 @@ export class SuggestionsController<T> {
   }
 
   public getCurrentItem(): ISuggestionModel<T> {
-    return this.currentSuggestion;
+    return this.currentSuggestion!;
   }
 
   public getSuggestionAtIndex(index: number): ISuggestionModel<T> {
@@ -75,16 +78,30 @@ export class SuggestionsController<T> {
     return this.currentSuggestion ? true : false;
   }
 
-  private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
+  public removeSuggestion(index: number) {
+    this.suggestions.splice(index, 1);
+  }
+
+  public createGenericSuggestion(itemToConvert: ISuggestionModel<T>) {
+    let itemToAdd = this.convertSuggestionsToSuggestionItems([itemToConvert])[0];
+    this.currentSuggestion = itemToAdd;
+  }
+
+  public convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
     suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));
     return converted;
   }
 
-  private _setSelectedSuggestion(index: number): void {
+  public deselectAllSuggestions(): void {
+    this.currentIndex = -1;
+    this.suggestions[this.currentIndex].selected = false;
+  }
+
+  public setSelectedSuggestion(index: number): void {
     if (index > this.suggestions.length - 1 || index < 0) {
       this.currentIndex = 0;
-      this.currentSuggestion.selected = false;
+      this.currentSuggestion!.selected = false;
       this.currentSuggestion = this.suggestions[0];
       this.currentSuggestion.selected = true;
     } else {

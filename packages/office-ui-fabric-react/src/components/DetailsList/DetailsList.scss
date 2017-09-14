@@ -1,14 +1,19 @@
 @import '../../common/common';
 
+$detailsList-background-color: $listBackgroundColor;
+$detailsList-text-color: $listTextColor;
+
 .root {
   position: relative;
   font-size: $ms-font-size-s;
+  background: $detailsList-background-color;
+  color: $detailsList-text-color;
 }
 
 .focusZone {
   display: inline-block;
   vertical-align: top;
-  min-width: 1px;
+  min-width: 100%;
   min-height: 1px;
 }
 
@@ -23,4 +28,10 @@
 .root :global(.ms-List-cell) {
   min-height: 38px;
   word-break: break-word;
+}
+
+.rootCompact {
+  :global(.ms-List-cell) {
+    min-height: 32px;
+  }
 }

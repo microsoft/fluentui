@@ -1,18 +1,23 @@
-import { BaseButton } from '../BaseButton';
-import styles = require('./PrimaryButton.scss');
+import * as React from 'react';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { ThemeSettingName } from '../../../Styling';
+import { DefaultButton } from '../DefaultButton/DefaultButton';
+import { IButtonProps } from '../Button.Props';
 
-export class PrimaryButton extends BaseButton {
-  protected classNames = {
-    base: 'ms-Button',
-    variant: 'ms-Button--primary',
-    icon: styles.icon,
-    menuIcon: styles.icon,
-    isDisabled: styles.isDisabled,
-    isEnabled: styles.isEnabled,
-    label: styles.label,
-    root: styles.root
-  };
+@customizable([ThemeSettingName])
+export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
+   */
+  protected _shouldUpdateComponentRef = false;
 
-  protected onRenderDescription() { return null; }
-
+  public render() {
+    return (
+      <DefaultButton
+        { ...this.props }
+        primary={ true }
+        onRenderDescription={ nullRender }
+      />
+    );
+  }
 }

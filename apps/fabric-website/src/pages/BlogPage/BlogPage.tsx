@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { BlogItem } from './BlogItem';
-import styles = require('./BlogPage.module.scss');
+import * as stylesImport from './BlogPage.module.scss';
+const styles: any = stylesImport;
 
-const blogData = require('json!../../data/blog-posts.json');
+const blogData = require('../../data/blog-posts.json');
 
 export class BlogPage extends React.Component<any, any> {
   public render() {
     return (
       <div>
         <PageHeader pageTitle='Blog' backgroundColor='#73aa24' />
-        <div className={ styles.angle }></div>
+        <div className={ styles.angle } />
         { this._getBlogItems() }
       </div>
     );

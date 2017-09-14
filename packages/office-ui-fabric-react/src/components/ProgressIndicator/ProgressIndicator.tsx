@@ -7,7 +7,8 @@ import {
   css
 } from '../../Utilities';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
-import styles = require('./ProgressIndicator.scss');
+import * as stylesImport from './ProgressIndicator.scss';
+const styles: any = stylesImport;
 
 // if the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios
@@ -25,7 +26,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
     super(props);
 
     this._warnDeprecations({
-      'title': 'label'
+      title: 'label'
     });
 
   }
@@ -38,23 +39,26 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
       label = title;
     }
 
-    percentComplete = Math.min(100, Math.max(0, percentComplete * 100));
+    percentComplete = Math.min(100, Math.max(0, percentComplete! * 100));
 
     return (
       <div className={ css('ms-ProgressIndicator', styles.root, className) }>
         <div className={ css('ms-ProgressIndicator-itemName', styles.itemName) }>{ label }</div>
         <div className={ css('ms-ProgressIndicator-itemProgress', styles.itemProgress) }>
-          <div className={ css('ms-ProgressIndicator-progressTrack', styles.progressTrack) }></div>
-          <div className={ css('ms-ProgressIndicator-progressBar', styles.progressBar, {
-            'smoothTransition': percentComplete > ZERO_THRESHOLD
-          }) }
+          <div className={ css('ms-ProgressIndicator-progressTrack', styles.progressTrack) } />
+          <div
+            className={ css(
+              'ms-ProgressIndicator-progressBar',
+              styles.progressBar,
+              percentComplete > ZERO_THRESHOLD && 'smoothTransition'
+            ) }
             style={ { width: percentComplete + '%' } }
             role='progressbar'
             aria-valuemin='0'
             aria-valuemax='100'
             aria-valuenow={ percentComplete.toFixed().toString() }
-            aria-valuetext={ ariaValueText }>
-          </div>
+            aria-valuetext={ ariaValueText }
+          />
         </div>
         <div className={ css('ms-ProgressIndicator-itemDescription', styles.itemDescription) }>{ description }</div>
       </div>

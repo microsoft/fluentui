@@ -1,8 +1,10 @@
+@import '~office-ui-fabric-react/dist/sass/References';
+@import './variables';
+
 // Standard text size and spacing
 :global {
   body {
     color: $ms-color-neutralPrimary;
-    font-family: $ms-font-family-base;
     font-size: $ms-font-size-m;
     line-height: 1.5;
   }

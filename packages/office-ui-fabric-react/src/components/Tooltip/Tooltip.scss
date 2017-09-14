@@ -1,4 +1,5 @@
 @import '../../common/common';
+
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 //
 // Office UI Fabric
@@ -6,7 +7,6 @@
 // Tooltip styles
 
 .root {
-  max-width: 364px;
   background: $ms-color-white;
   padding: 8px;
   pointer-events: none;
@@ -16,14 +16,13 @@
   }
 }
 
-.subText {
-  margin: 0;
+.content {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralPrimary;
-  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-.host {
-  display: inline;
+.subText {
+  margin: 0;
 }
-

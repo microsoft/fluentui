@@ -16,16 +16,16 @@ const c_LuminanceLow = 0.2;
 const c_LuminanceHigh = 0.8;
 
 // Various constants used for generating shades of a color
-//const WhiteShadeTable = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
-//const BlackTintTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // black
+// const WhiteShadeTable = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
+// const BlackTintTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // black
 
 // trying some new values for BG with design
 const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
 const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black (same one as FG for now?)
 const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white
 const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black
-//const LumTintTable = [.10, .20, .30, .43, .57, .70, .80, .90]; // light shade (strongen all)
-//const LumShadeTable = [.90, .80, .70, .57, .43, .30, .20, .10]; // dark shade (soften all)
+// const LumTintTable = [.10, .20, .30, .43, .57, .70, .80, .90]; // light shade (strongen all)
+// const LumShadeTable = [.90, .80, .70, .57, .43, .30, .20, .10]; // dark shade (soften all)
 const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light shade (strongen all)
 const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark shade (soften all)
 const ColorTintTable = [.050, .100, .200, .42, .90]; // default soften
@@ -142,7 +142,7 @@ export function getShade(color: IColor, shade: Shade) {
   let _soften = _lighten;
   let _strongen = _darken;
   if (isDarkTheme) {
-    //tableIndex = LumTintTable.length - 1 - tableIndex;
+    // tableIndex = LumTintTable.length - 1 - tableIndex;
     _soften = _darken;
     _strongen = _lighten;
   }
@@ -187,10 +187,10 @@ export function getBackgroundShade(color: IColor, shade: Shade) {
   } else if (hsl.l / 100 < c_LuminanceLow) { // really dark
     hsl = _lighten(hsl, BlackTintTable[BlackTintTable.length - 1 - tableIndex]);
   } else*/ if (hsl.l / 100 >= .5) { // lightish
-    //hsl = _darken(hsl, LumShadeTable[tableIndex]);
+    // hsl = _darken(hsl, LumShadeTable[tableIndex]);
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish
-    //hsl = _lighten(hsl, LumTintTable[LumTintTable.length - 1 - tableIndex]);
+    // hsl = _lighten(hsl, LumTintTable[LumTintTable.length - 1 - tableIndex]);
     hsl = _lighten(hsl, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
   }
 

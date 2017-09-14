@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
 import './Overlay.Example.scss';
@@ -20,7 +20,7 @@ export class OverlayLightExample extends React.Component<any, any> {
 
     return (
       <div>
-        <Button onClick={ this._onClick }>Show the overlay</Button>
+        <DefaultButton onClick={ this._onClick }>Show the overlay</DefaultButton>
         { isOverlayVisible && (
           <Overlay onClick={ this._onClick }>
             <div className='OverlayExample-content'>
@@ -32,7 +32,7 @@ export class OverlayLightExample extends React.Component<any, any> {
     );
   }
 
-  public _onClick() {
+  private _onClick() {
     this.setState({
       isOverlayVisible: !this.state.isOverlayVisible
     });

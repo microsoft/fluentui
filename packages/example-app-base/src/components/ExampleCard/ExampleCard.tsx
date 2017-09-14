@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import './ExampleCard.scss';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Highlight } from '../Highlight/Highlight';
 
 export interface IExampleCardProps {
   title: string;
   isOptIn?: boolean;
   code?: string;
-  children?: any;
+  children?: React.ReactNode;
   isRightAligned?: boolean;
   dos?: JSX.Element;
   donts?: JSX.Element;
@@ -30,7 +30,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
   }
 
-  public render() {
+  public render(): JSX.Element {
     const { title, code, children, isRightAligned } = this.props;
     const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
@@ -41,10 +41,16 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <div className='ExampleCard-toggleButtons ms-font-l'>
             { code ? (
-              <Button buttonType={ ButtonType.icon } icon='Embed'
-                onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
+              <CommandButton
+                iconProps={ { iconName: 'Embed' } }
+                onClick={ this._onToggleCodeClick }
+                className={ css(
+                  'ExampleCard-codeButton',
+                  isCodeVisible && 'is-active'
+                ) }
+              >
                 { isCodeVisible ? 'Hide code' : 'Show code' }
-              </Button>
+              </CommandButton>
             ) : (null) }
           </div>
         </div>
@@ -57,7 +63,13 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           ) }
         </div>
 
-        <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>
+        <div
+          className={ css(
+            'ExampleCard-example',
+            isRightAligned && ' is-right-aligned'
+          ) }
+          data-is-scrollable='true'
+        >
           { children }
         </div>
 
@@ -66,7 +78,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     );
   }
 
-  private _getDosAndDonts() {
+  private _getDosAndDonts(): JSX.Element | void {
     if (this.props.dos && this.props.donts) {
       return (
         <div className='ExampleCard-dosAndDonts'>
@@ -83,7 +95,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     }
   }
 
-  private _onToggleCodeClick() {
+  private _onToggleCodeClick(): void {
     this.setState({
       isCodeVisible: !this.state.isCodeVisible
     });

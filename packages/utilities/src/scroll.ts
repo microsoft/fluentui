@@ -1,34 +1,55 @@
 import { getDocument } from './dom';
-import styles from './scroll.scss';
+import * as styles from './scroll.scss';
 
 let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
 
+/**
+ * Placing this attribute on scrollable divs optimizes detection to know
+ * if the div is scrollable or not (given we can avoid expensive operations
+ * like getComputedStyle.)
+ *
+ * @public
+ */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
-export function disableBodyScroll() {
+/**
+ * Disables the body scrolling.
+ *
+ * @public
+ */
+export function disableBodyScroll(): void {
   let doc = getDocument();
 
   if (doc && doc.body && !_bodyScrollDisabledCount) {
-    doc.body.classList.add(styles.msFabricScrollDisabled);
+    doc.body.classList.add(styles.scrollDisabled);
   }
 
   _bodyScrollDisabledCount++;
 }
 
-export function enableBodyScroll() {
+/**
+ * Enables the body scrolling.
+ *
+ * @public
+ */
+export function enableBodyScroll(): void {
   if (_bodyScrollDisabledCount > 0) {
     let doc = getDocument();
 
     if (doc && doc.body && _bodyScrollDisabledCount === 1) {
-      doc.body.classList.remove(styles.msFabricScrollDisabled);
+      doc.body.classList.remove(styles.scrollDisabled);
     }
 
     _bodyScrollDisabledCount--;
   }
 }
 
-/** Calculates the width of a scrollbar for the browser/os. */
+/**
+ * Calculates the width of a scrollbar for the browser/os.
+ *
+ * @public
+ */
 export function getScrollbarWidth(): number {
   if (_scrollbarWidth === undefined) {
     let scrollDiv: HTMLElement = document.createElement('div');
@@ -51,9 +72,11 @@ export function getScrollbarWidth(): number {
 /**
  * Traverses up the DOM for the element with the data-is-scrollable=true attribute, or returns
  * document.body.
+ *
+ * @public
  */
-export function findScrollableParent(startingElement: HTMLElement): HTMLElement {
-  let el = startingElement;
+export function findScrollableParent(startingElement: HTMLElement): HTMLElement | null {
+  let el: HTMLElement | null = startingElement;
 
   // First do a quick scan for the scrollable attribute.
   while (el && el !== document.body) {
@@ -68,8 +91,8 @@ export function findScrollableParent(startingElement: HTMLElement): HTMLElement 
 
   while (el && el !== document.body) {
     if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
-      const styles = getComputedStyle(el);
-      let overflowY = styles ? styles.getPropertyValue('overflow-y') : '';
+      const computedStyles = getComputedStyle(el);
+      let overflowY = computedStyles ? computedStyles.getPropertyValue('overflow-y') : '';
 
       if (overflowY && (overflowY === 'scroll' || overflowY === 'auto')) {
         return el;

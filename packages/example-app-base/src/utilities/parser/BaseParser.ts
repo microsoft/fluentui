@@ -3,7 +3,9 @@
  * Base for a parser - does not actually do any parsing.
  */
 export class BaseParser {
-  private _currLocation = 0;
+  // Disabled bc of tslint conflict https://github.com/palantir/tslint/issues/711
+  // tslint:disable:no-inferrable-types
+  private _currLocation: number = 0;
   private _str: string;
   private _strLength: number;
 
@@ -12,7 +14,7 @@ export class BaseParser {
     this._strLength = _str.length;
   }
 
-  protected eat(match: string): string {
+  protected eat(match: string): string | undefined {
     if (this._str.charAt(this._currLocation) === match) {
       return this._str.charAt(this._currLocation++);
     }
@@ -52,7 +54,7 @@ export class BaseParser {
     return this._str.substr(this._currLocation - i, i);
   }
 
-  protected eatWord(word: string): string {
+  protected eatWord(word: string): string | undefined {
     let len = word.length;
 
     if (this.peekAhead(len) === word) {
@@ -95,7 +97,7 @@ export class BaseParser {
    * @protected
    * @returns {string} The token that was advanced over, or undefined if it wasn't possible to advance.
    */
-  protected next(): string {
+  protected next(): string | undefined {
     if (this.hasNext()) {
       return this._str.charAt(this._currLocation++);
     }

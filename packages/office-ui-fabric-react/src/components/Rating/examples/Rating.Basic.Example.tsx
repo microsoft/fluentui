@@ -24,6 +24,8 @@ export class RatingBasicExample extends React.Component<any, any> {
           max={ 5 }
           rating={ this.state.rating }
           onChanged={ this._onChanged }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
 
         <Rating
@@ -32,6 +34,8 @@ export class RatingBasicExample extends React.Component<any, any> {
           size={ RatingSize.Large }
           rating={ this.state.rating }
           onChanged={ this._onChanged }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
 
         <Rating
@@ -40,6 +44,8 @@ export class RatingBasicExample extends React.Component<any, any> {
           size={ RatingSize.Large }
           rating={ this.state.rating }
           onChanged={ this._onChanged }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
 
         Disabled:
@@ -49,6 +55,8 @@ export class RatingBasicExample extends React.Component<any, any> {
           rating={ this.state.rating }
           onChanged={ this._onChanged }
           disabled={ true }
+          onFocus={ () => console.log('onFocus called') }
+          onBlur={ () => console.log('onBlur called') }
         />
       </div>
     );

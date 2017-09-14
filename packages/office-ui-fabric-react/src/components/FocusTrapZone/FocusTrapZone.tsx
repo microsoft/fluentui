@@ -39,10 +39,9 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   public componentDidMount() {
-    let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
+    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true, elementToFocusOnDismiss } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-
     if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
       this.focus();
     }
@@ -53,6 +52,13 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
     if (!isClickableOutsideFocusTrap) {
       this._events.on(window, 'click', this._forceClickInTrap, true);
+    }
+  }
+
+  public componentWillReceiveProps(nextProps: IFocusTrapZoneProps) {
+    let { elementToFocusOnDismiss } = nextProps;
+    if (elementToFocusOnDismiss && this._previouslyFocusedElement !== elementToFocusOnDismiss) {
+      this._previouslyFocusedElement = elementToFocusOnDismiss;
     }
   }
 
@@ -72,7 +78,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       }
     }
 
-    if (!ignoreExternalFocusing && this._previouslyFocusedElement) {
+    if (!ignoreExternalFocusing && this._previouslyFocusedElement && typeof this._previouslyFocusedElement.focus === 'function') {
       this._previouslyFocusedElement.focus();
     }
   }
@@ -87,7 +93,8 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
         className={ className }
         ref='root'
         aria-labelledby={ ariaLabelledBy }
-        onKeyDown={ this._onKeyboardHandler }>
+        onKeyDown={ this._onKeyboardHandler }
+      >
         { this.props.children }
       </div>
     );
@@ -107,7 +114,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
       _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
-      _firstFocusableChild.focus();
+      (_firstFocusableChild as any).focus();
     }
   }
 
@@ -123,11 +130,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
-      _lastFocusableChild.focus();
+      _lastFocusableChild!.focus();
       ev.preventDefault();
       ev.stopPropagation();
     } else if (!ev.shiftKey && _lastFocusableChild === ev.target) {
-      _firstFocusableChild.focus();
+      _firstFocusableChild!.focus();
       ev.preventDefault();
       ev.stopPropagation();
     }

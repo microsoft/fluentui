@@ -35,7 +35,8 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
     <SelectionZone
       selection={ _selection }
       selectionMode={ selectionMode }
-      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }>
+      onItemInvoked={ (item) => { _onItemInvokeCalled++; _lastItemInvoked = item; } }
+    >
 
       <button id='toggleAll' data-selection-all-toggle={ true }>Toggle all selected</button>
 
@@ -53,22 +54,22 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
         <button id='toggle2' data-selection-toggle={ true }>Toggle</button>
       </div>
 
-      <div id='surface3' data-selection-index='3'></div>
+      <div id='surface3' data-selection-index='3' />
 
     </SelectionZone>
   );
 
   _componentElement = ReactDOM.findDOMNode(_selectionZone);
-  _toggleAll = _componentElement.querySelector('#toggleAll');
-  _surface0 = _componentElement.querySelector('#surface0');
-  _invoke0 = _componentElement.querySelector('#invoke0');
-  _toggle0 = _componentElement.querySelector('#toggle0');
-  _surface1 = _componentElement.querySelector('#surface1');
-  _invoke1 = _componentElement.querySelector('#invoke1');
-  _toggle1 = _componentElement.querySelector('#toggle1');
-  _invoke2 = _componentElement.querySelector('#invoke2');
-  _toggle2 = _componentElement.querySelector('#toggle2');
-  _surface3 = _componentElement.querySelector('#surface3');
+  _toggleAll = _componentElement.querySelector('#toggleAll')!;
+  _surface0 = _componentElement.querySelector('#surface0')!;
+  _invoke0 = _componentElement.querySelector('#invoke0')!;
+  _toggle0 = _componentElement.querySelector('#toggle0')!;
+  _surface1 = _componentElement.querySelector('#surface1')!;
+  _invoke1 = _componentElement.querySelector('#invoke1')!;
+  _toggle1 = _componentElement.querySelector('#toggle1')!;
+  _invoke2 = _componentElement.querySelector('#invoke2')!;
+  _toggle2 = _componentElement.querySelector('#toggle2')!;
+  _surface3 = _componentElement.querySelector('#surface3')!;
 
   _onItemInvokeCalled = 0;
   _lastItemInvoked = undefined;
@@ -228,7 +229,7 @@ describe('SelectionZone', () => {
   });
 });
 
-function _simulateClick(el, eventData?: ReactTestUtils.SyntheticEventData) {
+function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData) {
   ReactTestUtils.Simulate.mouseDown(el, eventData);
   ReactTestUtils.Simulate.focus(el, eventData);
   ReactTestUtils.Simulate.click(el, eventData);

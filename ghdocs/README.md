@@ -47,7 +47,7 @@ npm start
 ![create-react-app preview in browser](./images/create-react-app-preview.png)
 
 ## Step 2: Install office-ui-fabric-react package
-To use Fabric React in your project, you will need to first install the `ofifce-ui-fabric-react` npm package. Type the following in the console to install the package:
+To use Fabric React in your project, you will need to first install the `office-ui-fabric-react` npm package. Type the following in the console to install the package:
 
 ```
 npm install office-ui-fabric-react --save

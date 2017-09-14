@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import {
   Calendar,
   DayOfWeek
@@ -60,15 +62,19 @@ const DayPickerStrings = {
 };
 
 export interface ICalendarInlineExampleState {
-  selectedDate: Date;
-  selectedDateRange: Date[];
+  selectedDate: Date | null;
+  selectedDateRange: Date[] | null;
 }
 
 export interface ICalendarInlineExampleProps {
-  isMonthPickerVisible: boolean;
+  isMonthPickerVisible?: boolean;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
   showGoToToday: boolean;
+  showNavigateButtons?: boolean;
+  highlightCurrentMonth?: boolean;
+  isDayPickerVisible?: boolean;
+  showMonthPickerAsOverlay?: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -82,16 +88,21 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
     this._onDismiss = this._onDismiss.bind(this);
     this._onSelectDate = this._onSelectDate.bind(this);
+    this._goNext = this._goNext.bind(this);
+    this._goPrevious = this._goPrevious.bind(this);
   }
 
   public render() {
     let divStyle: React.CSSProperties = {
-      height: '300px',
-      width: '400px'
+      height: '340px'
     };
 
-    let dateRangeString: string = null;
-    if (this.state.selectedDateRange != null) {
+    let buttonStyle: React.CSSProperties = {
+      margin: '17px 10px 0 0'
+    };
+
+    let dateRangeString: string | null = null;
+    if (this.state.selectedDateRange) {
       let rangeStart = this.state.selectedDateRange[0];
       let rangeEnd = this.state.selectedDateRange[this.state.selectedDateRange.length - 1];
       dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
@@ -100,11 +111,11 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     return (
       <div style={ divStyle }>
         { <div>
-          Selected date(s): <span>{ this.state.selectedDate == null ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
+          Selected date(s): <span>{ !this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
         </div> }
         <div>
           Selected dates:
-          <span> { dateRangeString == null ? 'Not set' : dateRangeString }</span>
+          <span> { !dateRangeString ? 'Not set' : dateRangeString }</span>
         </div>
         <Calendar
           onSelectDate={ this._onSelectDate }
@@ -113,11 +124,19 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           dateRangeType={ this.props.dateRangeType }
           autoNavigateOnSelection={ this.props.autoNavigateOnSelection }
           showGoToToday={ this.props.showGoToToday }
-          value={ this.state.selectedDate }
+          value={ this.state.selectedDate! }
           firstDayOfWeek={ DayOfWeek.Sunday }
           strings={ DayPickerStrings }
-        >
-        </Calendar>
+          highlightCurrentMonth={ this.props.highlightCurrentMonth }
+          isDayPickerVisible={ this.props.isDayPickerVisible }
+          showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
+        />
+        { this.props.showNavigateButtons &&
+          <div>
+            <DefaultButton style={ buttonStyle } onClick={ this._goPrevious } text='Previous' />
+            <DefaultButton style={ buttonStyle } onClick={ this._goNext } text='Next' />
+          </div>
+        }
       </div>
     );
   }
@@ -125,6 +144,33 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
   private _onDismiss() {
     this.setState((prevState: ICalendarInlineExampleState) => {
       return prevState;
+    });
+  }
+
+  private _goPrevious() {
+    this.setState((prevState: ICalendarInlineExampleState) => {
+      let selectedDate = prevState.selectedDate || new Date();
+      let dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
+
+      let subtractFrom = dateRangeArray[0];
+      let daysToSubtract = dateRangeArray.length;
+
+      if (this.props.dateRangeType === DateRangeType.Month) {
+        subtractFrom = new Date(subtractFrom.getFullYear(), subtractFrom.getMonth(), 1);
+        daysToSubtract = 1;
+      }
+
+      let newSelectedDate = addDays(subtractFrom, -daysToSubtract);
+      return prevState.selectedDate = newSelectedDate;
+    });
+  }
+
+  private _goNext() {
+    this.setState((prevState: ICalendarInlineExampleState) => {
+      let selectedDate = prevState.selectedDate || new Date();
+      let dateRangeArray = getDateRangeArray(selectedDate, this.props.dateRangeType, DayOfWeek.Sunday);
+      let newSelectedDate = addDays(dateRangeArray.pop()!, 1);
+      return prevState.selectedDate = newSelectedDate;
     });
   }
 

@@ -1,0 +1,21 @@
+
+.tile {
+  display: inline-block;
+  position: relative;
+  margin: 4px;
+}
+
+.smallTile {
+  width: 138px;
+  height: 135px;
+}
+
+.largeTile {
+  width: 176px;
+  height: 171px;
+}
+
+
+.tileImage {
+  display: block;
+}

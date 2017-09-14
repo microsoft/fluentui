@@ -8,15 +8,15 @@
 
 @mixin ms-DatePicker-event() {
   color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-l;
-  line-height: 20px;
+  font-size: $ms-icon-size-m;
+  line-height: 18px;
   pointer-events: none;
   position: absolute;
-  @include right(9px);
+  @include ms-right(9px);
 }
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   margin-bottom: 17px;
 }
 

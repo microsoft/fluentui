@@ -1,24 +1,44 @@
 /* tslint:disable:no-string-literal */
 
+/**
+ * EventRecord interface.
+ *
+ * @internal
+ */
 export interface IEventRecord {
   target: any;
   eventName: string;
   parent: any;
   callback: (args?: any) => void;
-  elementCallback: (...args: any[]) => void;
-  objectCallback: (args?: any) => void;
+  elementCallback?: (...args: any[]) => void;
+  objectCallback?: (args?: any) => void;
   useCapture: boolean;
 }
 
+/**
+ * EventRecordsByName interface.
+ *
+ * @internal
+ */
 export interface IEventRecordsByName {
   [eventName: string]: IEventRecordList;
 }
 
+/**
+ * EventRecordList interface.
+ *
+ * @internal
+ */
 export interface IEventRecordList {
   [id: string]: IEventRecord[] | number;
   count: number;
 }
 
+/**
+ * DeclaredEventsByName interface.
+ *
+ * @internal
+ */
 export interface IDeclaredEventsByName {
   [eventName: string]: boolean;
 }
@@ -30,36 +50,40 @@ export interface IDeclaredEventsByName {
  *  HTMLElement, the event gets raised and is handled by the browser. Otherwise, it gets
  *  handled here in EventGroup, and the handler is called in the context of the parent
  *  (which is passed in in the constructor).
+ *
+ * @public
  */
 export class EventGroup {
-  private static _uniqueId = 0;
-  private _parent;
+  // tslint:disable-next-line:no-inferrable-types
+  private static _uniqueId: number = 0;
+  private _parent: any;
   private _eventRecords: IEventRecord[];
-  private _id = EventGroup._uniqueId++;
+  private _id: number = EventGroup._uniqueId++;
   private _isDisposed: boolean;
 
   /** For IE8, bubbleEvent is ignored here and must be dealt with by the handler.
    *  Events raised here by default have bubbling set to false and cancelable set to true.
    *  This applies also to built-in events being raised manually here on HTMLElements,
    *  which may lead to unexpected behavior if it differs from the defaults.
+   *
    */
   public static raise(
     target: any,
     eventName: string,
     eventArgs?: any,
     bubbleEvent?: boolean
-  ) {
+  ): boolean | undefined {
     let retVal;
 
     if (EventGroup._isElement(target)) {
       if (document.createEvent) {
         let ev = document.createEvent('HTMLEvents');
 
-        ev.initEvent(eventName, bubbleEvent, true);
-        ev['args'] = eventArgs;
+        ev.initEvent(eventName, bubbleEvent || false, true);
+        (ev as any)['args'] = eventArgs;
         retVal = target.dispatchEvent(ev);
-      } else if (document['createEventObject']) { // IE8
-        let evObj = document['createEventObject'](eventArgs);
+      } else if ((document as any)['createEventObject']) { // IE8
+        let evObj = (document as any)['createEventObject'](eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }
@@ -68,15 +92,17 @@ export class EventGroup {
         let events = <IEventRecordsByName>target.__events__;
         let eventRecords = events ? events[eventName] : null;
 
-        for (let id in eventRecords) {
-          if (eventRecords.hasOwnProperty(id)) {
-            let eventRecordList = <IEventRecord[]>eventRecords[id];
+        if (eventRecords) {
+          for (let id in eventRecords) {
+            if (eventRecords.hasOwnProperty(id)) {
+              let eventRecordList = <IEventRecord[]>eventRecords[id];
 
-            for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
-              let record = eventRecordList[listIndex];
+              for (let listIndex = 0; retVal !== false && listIndex < eventRecordList.length; listIndex++) {
+                let record = eventRecordList[listIndex];
 
-              if (record.objectCallback) {
-                retVal = record.objectCallback.call(record.parent, eventArgs);
+                if (record.objectCallback) {
+                  retVal = record.objectCallback.call(record.parent, eventArgs);
+                }
               }
             }
           }
@@ -103,7 +129,7 @@ export class EventGroup {
     return !!declaredEvents && !!declaredEvents[eventName];
   }
 
-  public static stopPropagation(event: any) {
+  public static stopPropagation(event: any): void {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else { // IE8
@@ -111,8 +137,8 @@ export class EventGroup {
     }
   }
 
-  private static _isElement(target: HTMLElement) {
-    return !!target && (target.addEventListener || target instanceof HTMLElement);
+  private static _isElement(target: HTMLElement): boolean {
+    return !!target && (!!target.addEventListener || target instanceof HTMLElement);
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
@@ -121,7 +147,7 @@ export class EventGroup {
     this._eventRecords = [];
   }
 
-  public dispose() {
+  public dispose(): void {
     if (!this._isDisposed) {
       this._isDisposed = true;
 
@@ -131,7 +157,7 @@ export class EventGroup {
   }
 
   /** On the target, attach a set of events, where the events object is a name to function mapping. */
-  public onAll(target: any, events: { [key: string]: (args?: any) => void; }, useCapture?: boolean) {
+  public onAll(target: any, events: { [key: string]: (args?: any) => void; }, useCapture?: boolean): void {
     for (let eventName in events) {
       if (events.hasOwnProperty(eventName)) {
         this.on(target, eventName, events[eventName], useCapture);
@@ -142,7 +168,7 @@ export class EventGroup {
   /** On the target, attach an event whose handler will be called in the context of the parent
    * of this instance of EventGroup.
    */
-  public on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean) {
+  public on(target: any, eventName: string, callback: (args?: any) => void, useCapture?: boolean): void {
     if (eventName.indexOf(',') > -1) {
       let events = eventName.split(/[ ,]+/);
 
@@ -156,9 +182,7 @@ export class EventGroup {
         eventName: eventName,
         parent: parent,
         callback: callback,
-        objectCallback: null,
-        elementCallback: null,
-        useCapture: useCapture
+        useCapture: useCapture || false
       };
 
       // Initialize and wire up the record on the target, so that it can call the callback if the event fires.
@@ -225,7 +249,7 @@ export class EventGroup {
     }
   }
 
-  public off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean) {
+  public off(target?: any, eventName?: string, callback?: (args?: any) => void, useCapture?: boolean): void {
     for (let i = 0; i < this._eventRecords.length; i++) {
       let eventRecord = this._eventRecords[i];
       if ((!target || target === eventRecord.target) &&
@@ -270,7 +294,7 @@ export class EventGroup {
   }
 
   /** Declare an event as being supported by this instance of EventGroup. */
-  public declare(event: any) {
+  public declare(event: any): void {
     let declaredEvents = this._parent.__declaredEvents = this._parent.__declaredEvents || {};
 
     if (typeof event === 'string') {

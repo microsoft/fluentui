@@ -44,9 +44,9 @@
   }
 
   .docs_animationsTable_body { // override for demo purposes
-    .ms-u-slideRightOut40, .ms-u-slideLeftOut40, .ms-u-slideUpOut20, .ms-u-slideUpOut10,
-    .ms-u-slideDownOut20, .ms-u-slideDownOut10, .ms-u-scaleUpOut103, .ms-u-scaleDownOut98,
-    .ms-u-fadeOut100, .ms-u-fadeOut200, .ms-u-fadeOut400, .ms-u-fadeOut500 {
+    .ms-slideRightOut40, .ms-slideLeftOut40, .ms-slideUpOut20, .ms-slideUpOut10,
+    .ms-slideDownOut20, .ms-slideDownOut10, .ms-scaleUpOut103, .ms-scaleDownOut98,
+    .ms-fadeOut100, .ms-fadeOut200, .ms-fadeOut400, .ms-fadeOut500 {
       -webkit-animation-play-state: paused;
       animation-play-state: paused;
 
@@ -57,24 +57,24 @@
       }
     }
 
-    .ms-u-slideRightOut40, .ms-u-slideLeftOut40, .ms-u-slideLeftIn10, .ms-u-slideLeftIn20, .ms-u-slideLeftIn40 {
+    .ms-slideRightOut40, .ms-slideLeftOut40, .ms-slideLeftIn10, .ms-slideLeftIn20, .ms-slideLeftIn40 {
         .animationExample_panel {
             right: 0;
         }
     }
-    .ms-u-slideLeftOut40 {
+    .ms-slideLeftOut40 {
         .animationExample_panel {
             left: 0;
         }
     }
-    .ms-u-slideUpOut20, .ms-u-slideUpOut10, .ms-u-slideDownOut20, .ms-u-slideDownOut10 {
+    .ms-slideUpOut20, .ms-slideUpOut10, .ms-slideDownOut20, .ms-slideDownOut10 {
         .animationExample_panel {
             width: 100%;
             height: 30px;
             top: 0;
         }
     }
-    .ms-u-slideUpOut10, .ms-u-slideDownOut10 {
+    .ms-slideUpOut10, .ms-slideDownOut10 {
         .animationExample_panel {
             width: 60px;
             top: 10px;
@@ -82,15 +82,15 @@
             height: 20px;
         }
     }
-    .ms-u-slideDownOut10, .ms-u-slideDownOut20 {
+    .ms-slideDownOut10, .ms-slideDownOut20 {
         .animationExample_panel {
             top: 60px;
         }
     }
-    .ms-u-scaleUpIn100,
-    .ms-u-scaleDownIn100,
-    .ms-u-scaleUpOut103,
-    .ms-u-scaleDownOut98 {
+    .ms-scaleUpIn100,
+    .ms-scaleDownIn100,
+    .ms-scaleUpOut103,
+    .ms-scaleDownOut98 {
         overflow: visible;
         .animationExample_panel {
             height: 100%;
@@ -174,7 +174,7 @@
         }
     }
 
-    .ms-u-fadeIn100, .ms-u-fadeIn200, .ms-u-fadeIn400, .ms-u-fadeIn500 {
+    .ms-fadeIn100, .ms-fadeIn200, .ms-fadeIn400, .ms-fadeIn500 {
         .animationExample_panel {
             height: 100%;
             width: 100%;
@@ -182,7 +182,7 @@
         }
     }
 
-    .ms-u-fadeOut100, .ms-u-fadeOut200, .ms-u-fadeOut400, .ms-u-fadeOut500 {
+    .ms-fadeOut100, .ms-fadeOut200, .ms-fadeOut400, .ms-fadeOut500 {
         .animationExample_panel {
             height: 100%;
             width: 100%;

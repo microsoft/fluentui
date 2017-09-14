@@ -1,36 +1,31 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelLightDismissExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = {
-      showPanel: false
-    };
+
+    this.state = { showPanel: false };
   }
 
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <DefaultButton
+          text='Open panel'
+          onClick={ () => this.setState({ showPanel: true }) }
+        />
         <Panel
           isOpen={ this.state.showPanel }
           isLightDismiss={ true }
-          onDismiss={ this._closePanel.bind(this) }
           headerText='Light Dismiss Panel'
+          onDismiss={ () => this.setState({ showPanel: false }) }
         >
-          <span className='ms-font-m'>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
+          <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
         </Panel>
       </div>
     );
-  }
-
-  private _showPanel() {
-    this.setState({ showPanel: true });
-  }
-  private _closePanel() {
-    this.setState({ showPanel: false });
   }
 }

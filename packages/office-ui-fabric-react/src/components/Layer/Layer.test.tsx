@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as PropTypes from 'prop-types';
 /* tslint:enable:no-unused-variable */
 
 import { Layer } from './Layer';
@@ -14,7 +15,7 @@ describe('Layer', () => {
 
     class Child extends React.Component<{}, {}> {
       public static contextTypes = {
-        foo: React.PropTypes.string.isRequired
+        foo: PropTypes.string.isRequired
       };
 
       public context: any;
@@ -28,7 +29,7 @@ describe('Layer', () => {
 
     class Parent extends React.Component<{}, {}> {
       public static childContextTypes = {
-        foo: React.PropTypes.string
+        foo: PropTypes.string
       };
 
       public getChildContext() {
@@ -69,9 +70,9 @@ describe('Layer', () => {
       let parentElement = appElement.querySelector('#parent');
 
       expect(parentElement).is.not.empty;
-      expect(parentElement.ownerDocument).is.not.empty;
+      expect(parentElement!.ownerDocument).is.not.empty;
 
-      let childElement = appElement.querySelector('#child');
+      let childElement = appElement.querySelector('#child') as Element;
 
       expect(childElement.textContent).equals('foo');
     } finally {

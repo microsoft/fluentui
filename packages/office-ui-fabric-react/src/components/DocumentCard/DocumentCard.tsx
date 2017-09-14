@@ -6,12 +6,21 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import styles = require('./DocumentCard.scss');
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
   };
+
+  constructor(props: IDocumentCardProps) {
+    super(props);
+
+    this._warnDeprecations({
+      accentColor: undefined
+    });
+  }
 
   public render() {
     let { onClick, onClickHref, children, className, type, accentColor } = this.props;
@@ -26,8 +35,8 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? 'button' : 'link') : null;
-    let tabIndex = actionable ? 0 : null;
+    let role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    let tabIndex = actionable ? 0 : undefined;
 
     return (
       <div
@@ -44,9 +53,10 @@ export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
             className
           )
         }
-        onKeyDown={ actionable ? this._onKeyDown : null }
-        onClick={ actionable ? this._onClick : null }
-        style={ style }>
+        onKeyDown={ actionable ? this._onKeyDown : undefined }
+        onClick={ actionable ? this._onClick : undefined }
+        style={ style }
+      >
         { children }
       </div>
     );

@@ -1,27 +1,29 @@
-import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { Casper } from '../../visualtest/PhantomCssInterface';
 import { baseUrl } from '../../common/VisualTest';
-declare var phantomcss: IPhantomCSS;
+import { defaultScreenshot, mouseMoveScreenshot, mouseDownScreenshot, mouseClickScreenshot, testRunner } from '../../visualtest/RunVisualTest';
+import { IRunVisualTest } from '../../visualtest/IRunVisualTest';
+
 declare var casper: Casper;
-/* tslint:disable:no-function-expression */
+
+let componentIds: IRunVisualTest[] = [];
+
+componentIds.push({
+  selector: '.' + 'ms-Checkbox-input',
+  fileName: 'checkbox',
+  imageSelector: '.' + 'Checkbox',
+  commands: [defaultScreenshot, mouseClickScreenshot, mouseMoveScreenshot, mouseDownScreenshot]
+});
+
+componentIds.push({
+  selector: '.' + 'CheckboxDisabled',
+  fileName: 'checkboxDisabled',
+  commands: [defaultScreenshot]
+});
+
 casper.
   start(baseUrl + 'checkbox').
-  then(function () {
-    phantomcss.screenshot('.Checkbox', 'Checkbox_not_pressed');
-  }).then(function () {
-    this.mouse.move('.Checkbox');
-    phantomcss.screenshot('.Checkbox', 'Checkbox_hovered');
-  }).then(function () {
-    this.mouse.down('.Checkbox');
-    phantomcss.screenshot('.Checkbox', 'Checkbox_pressed');
-  }).
-  then(function () {
-    phantomcss.screenshot('.CheckboxDisabled', 'CheckboxDisabled_not_pressed');
-  }).then(function () {
-    this.mouse.move('.CheckboxDisabled');
-    phantomcss.screenshot('.CheckboxDisabled', 'CheckboxDisabled_hovered');
-  }).then(function () {
-    this.mouse.down('.CheckboxDisabled');
-    phantomcss.screenshot('.CheckboxDisabled', 'CheckboxDisabled_pressed');
+  then(() => {
+    testRunner(componentIds);
   });
-casper.run(function () { casper.test.done(); });
-/* tslint:enable:no-function-expression */
+
+casper.run(() => { casper.test.done(); });

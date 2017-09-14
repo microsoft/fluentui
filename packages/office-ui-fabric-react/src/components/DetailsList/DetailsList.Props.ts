@@ -15,9 +15,13 @@ import {
   IGroupRenderProps
 } from '../GroupedList/index';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow';
-import { IViewport } from '../../utilities/decorators/withViewport';
+import { IDetailsHeaderProps } from './DetailsHeader';
+import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
+import { IList, IListProps } from '../List/index';
 
-export interface IDetailsList {
+export { IDetailsHeaderProps };
+
+export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
    * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
@@ -26,7 +30,7 @@ export interface IDetailsList {
   forceUpdate: () => void;
 }
 
-export interface IDetailsListProps extends React.Props<DetailsList> {
+export interface IDetailsListProps extends React.Props<DetailsList>, IWithViewportProps {
   /**
    * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -38,6 +42,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** The items to render. */
   items: any[];
+
+  /** Optional properties to pass through to the list components being rendered. */
+  listProps?: IListProps;
 
   /**
    * Optional default focused index to set focus to once the items have rendered and the index exists.
@@ -103,7 +110,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
 
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
-  onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
+  onColumnHeaderContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /** Callback fired on column resize */
   onColumnResize?: (column?: IColumn, newWidth?: number) => void;
@@ -131,6 +138,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Callback for what to render when the item is missing. */
   onRenderMissingItem?: (index?: number) => React.ReactNode;
 
+  /**
+   * An override to render the details header.
+   */
+  onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
+
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
 
@@ -142,6 +154,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** The aria-label attribute to stamp out on select all checkbox for the list */
   ariaLabelForSelectAllCheckbox?: string;
+
+  /**
+   * An ARIA label for the name of the selection column, for localization.
+   */
+  ariaLabelForSelectionColumn?: string;
 
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
@@ -160,6 +177,30 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
   shouldApplyApplicationRole?: boolean;
+
+  /**
+   * The minimum mouse move distance to interpret the action as drag event.
+   * @defaultValue 5
+   */
+  minimumPixelsForDrag?: number;
+
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
+
+  /**
+  * Boolean value to enable render page caching. This is an experimental performance optimization
+  * that is off by default.
+  * @defaultValue false
+  */
+  usePageCache?: boolean;
+
+  /**
+   * Optional callback to determine whether the list should be rendered in full, or virtualized.
+   * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * The default implementation will virtualize when this callback is not provided.
+   */
+  onShouldVirtualize?: (props: IListProps) => boolean;
 }
 
 export interface IColumn {
@@ -216,6 +257,12 @@ export interface IColumn {
    * Optional iconName to use for the column header.
    */
   iconName?: IconName;
+
+  /**
+   * Whether or not only the icon is used in the column header.
+   * Set this to true so the column name and dropdown chevron are not displayed.
+   */
+  isIconOnly?: boolean;
 
   /**
    * Class name to add to the Icon component.
@@ -286,6 +333,11 @@ export interface IColumn {
    * An optional class name to stick on the column cell within each header.
    */
   headerClassName?: string;
+
+  /**
+  * If set, will add additional LTR padding-right to column and cells.
+  */
+  isPadded?: boolean;
 }
 
 /**

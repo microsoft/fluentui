@@ -2,7 +2,8 @@ import * as React from 'react';
 import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
 import { Persona, PersonaSize } from '../../Persona';
-import styles = require('./DocumentCard.scss');
+import * as stylesImport from './DocumentCard.scss';
+const styles: any = stylesImport;
 
 export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
   public render() {
@@ -10,15 +11,19 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
 
     return (
       people && people.length > 0 &&
-      <div className={ css('ms-DocumentCardActivity', styles.activity, {
-        ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
-      }) }>
-        { this._renderAvatars(people) }
-        <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
-          <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
-          <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
+      (
+        <div
+          className={ css('ms-DocumentCardActivity', styles.activity, {
+            ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
+          }) }
+        >
+          { this._renderAvatars(people) }
+          <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
+            <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
+            <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
+          </div>
         </div>
-      </div>
+      )
     );
   }
 
@@ -42,7 +47,7 @@ export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityPro
           imageUrl={ person.profileImageSrc }
           initialsColor={ person.initialsColor }
           role='persentation'
-          size={ PersonaSize.extraExtraSmall }
+          size={ PersonaSize.extraSmall }
         />
 
       </div>

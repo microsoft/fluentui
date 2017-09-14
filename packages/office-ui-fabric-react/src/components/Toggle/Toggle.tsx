@@ -2,26 +2,26 @@ import * as React from 'react';
 import {
   BaseComponent,
   autobind,
-  css,
   getId,
-  buttonProperties,
+  inputProperties,
   getNativeProps
 } from '../../Utilities';
-import { IToggleProps } from './Toggle.Props';
+import {
+  IToggleProps,
+  IToggle
+} from './Toggle.Props';
 import { Label } from '../../Label';
-import styles = require('./Toggle.scss');
+import {
+  customizable
+} from '../../Utilities';
+import { getClassNames } from './Toggle.classNames';
 
 export interface IToggleState {
   isChecked: boolean;
 }
 
-export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
-
-  public static initialProps = {
-    label: '',
-    onText: 'On',
-    offText: 'Off'
-  };
+@customizable(['theme'])
+export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   private _id: string;
   private _toggleButton: HTMLButtonElement;
@@ -30,7 +30,7 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
     super();
 
     this._warnMutuallyExclusive({
-      'checked': 'defaultChecked'
+      checked: 'defaultChecked'
     });
 
     this.state = {
@@ -49,54 +49,70 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
   public componentWillReceiveProps(newProps: IToggleProps) {
     if (newProps.checked !== undefined) {
       this.setState({
-        isChecked: newProps.checked
+        isChecked: !!newProps.checked // convert null to false
       });
     }
   }
 
   public render() {
-    let { label, onText, offText, className, disabled } = this.props;
+    // This control is using an input element for more universal accessibility support.
+    // Previously a button and the aria-pressed attribute were used. This technique works well with Narrator + Edge and NVDA + FireFox.
+    // However, JAWS and VoiceOver did not announce anything when the toggle was checked or unchecked.
+    // In the future when more screenreaders support aria-pressed it would be a good idea to change this control back to using it as it is
+    // more semantically correct.
+
+    let {
+      className,
+      theme,
+      styles: customStyles,
+      disabled,
+      label,
+      offAriaLabel,
+      offText,
+      onAriaLabel,
+      onText
+      } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
-    const toggleNativeProps = getNativeProps(this.props, buttonProperties);
-    return (
-      <div className={
-        css(styles.root, 'ms-Toggle', className, {
-          'is-checked': isChecked,
-          'is-enabled': !disabled,
-          'is-disabled': disabled,
-          [styles.isChecked]: isChecked,
-          [styles.isEnabled]: !disabled,
-          [styles.isDisabled]: disabled,
+    const ariaLabel = isChecked ? onAriaLabel : offAriaLabel;
+    const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
+    const classNames = getClassNames(
+      theme!,
+      customStyles!,
+      className!,
+      disabled!,
+      isChecked
+    );
 
-        })
-      }>
-        <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
-          { label && (
-            <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
+    return (
+      <div className={ classNames.root }>
+
+        { label && (
+          <Label htmlFor={ this._id } className={ classNames.label }>{ label }</Label>
+        ) }
+
+        <div className={ classNames.container } >
+          <button
+            { ...toggleNativeProps }
+            className={ classNames.pill }
+            disabled={ disabled }
+            id={ this._id }
+            type='button'
+            ref={ this._resolveRef('_toggleButton') }
+            aria-disabled={ disabled }
+            aria-pressed={ isChecked }
+            aria-label={ ariaLabel }
+            data-is-focusable={ true }
+            onChange={ () => { /* no-op */ } }
+            onClick={ this._onClick }
+          >
+            <div className={ classNames.thumb } />
+          </button>
+          { stateText && (
+            <Label htmlFor={ this._id } className={ classNames.text }>{ stateText }</Label>
           ) }
-          <div className={ css(styles.slider, 'ms-Toggle-slider') }>
-            <button
-              ref={ (c): HTMLButtonElement => this._toggleButton = c }
-              type='button'
-              id={ this._id }
-              { ...toggleNativeProps }
-              name={ this._id }
-              className={ css(styles.button, 'ms-Toggle-button') }
-              disabled={ disabled }
-              aria-pressed={ isChecked }
-              onClick={ this._onClick }
-            />
-            <div className={ css(styles.background, 'ms-Toggle-background') }>
-              <div className={ css(styles.focus, 'ms-Toggle-focus') } />
-              <div className={ css(styles.thumb, 'ms-Toggle-thumb') } />
-            </div>
-            { stateText && (
-              <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
-            ) }
-          </div>
         </div>
-      </div>
+      </div >
     );
   }
 
@@ -107,19 +123,26 @@ export class Toggle extends BaseComponent<IToggleProps, IToggleState> {
   }
 
   @autobind
-  private _onClick() {
-    let { checked, onChanged } = this.props;
+  private _onClick(ev: React.MouseEvent<HTMLElement>) {
+    let { disabled, checked, onChanged, onClick } = this.props;
     let { isChecked } = this.state;
 
-    // Only update the state if the user hasn't provided it.
-    if (checked === undefined) {
-      this.setState({
-        isChecked: !isChecked
-      });
-    }
+    if (!disabled) {
+      // Only update the state if the user hasn't provided it.
+      if (checked === undefined) {
+        this.setState({
+          isChecked: !isChecked
+        });
+      }
 
-    if (onChanged) {
-      onChanged(!isChecked);
+      if (onChanged) {
+        onChanged(!isChecked);
+      }
+
+      if (onClick) {
+        onClick(ev);
+      }
     }
   }
+
 }

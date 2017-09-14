@@ -1,25 +1,80 @@
 @import '../../../../common/common';
 
 .personaContainer {
-  @include focus-border();
+  @include focus-border(-2px);
+  border-radius: 15px;
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
-  margin: 2px;
+  margin: 4px;
   cursor: default;
   user-select: none;
-  max-width: 100%;
+  max-width: 300px;
+  vertical-align: middle;
 
   &:hover {
     background: $ms-color-neutralLight;
+
+    .removeButton {
+      color: $ms-color-neutralPrimary;
+    }
   }
 
   &.personaContainerIsSelected {
-    background: $ms-color-neutralQuaternary;
+    background: $ms-color-blue;
 
-    &:hover {
-      background: $ms-color-neutralQuaternaryAlt;
+    // Setting global values here to override persona's normal behavior specifically in this selected variation
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-white;
     }
+
+    .removeButton {
+      :global(.ms-Button-icon) {
+        color: $ms-color-white;
+      }
+
+      &:hover {
+        color: $ms-color-white;
+        background: $ms-color-themeDark;
+      }
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      border: 1px solid $ms-color-themePrimary;
+    }
+  }
+
+  &.validationError {
+    // Setting global values here to override persona's normal behavior in the error version
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-redDark;
+      border-bottom: 2px dotted $ms-color-redDark;
+    }
+
+    :global(.ms-Persona-initials) {
+      font-size: 20px;
+    }
+
+    &.personaContainerIsSelected {
+      background: $ms-color-redDark;
+
+      :global(.ms-Persona-primaryText) {
+        color: $ms-color-white;
+        border-bottom: 2px dotted $ms-color-white;
+      }
+
+      .removeButton:hover {
+        background: $ms-color-red;
+      }
+    }
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
   }
 
   .itemContent {
@@ -32,9 +87,16 @@
   }
 
   .removeButton {
+    border-radius: 15px;
     flex: 0 0 auto;
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+
+    &:hover {
+      background: $ms-color-neutralTertiaryAlt;
+      color: $ms-color-neutralDark;
+    }
   }
 
   .personaDetails {
@@ -44,4 +106,5 @@
 
 .itemContainer {
   display: inline-block;
+  vertical-align: top;
 }

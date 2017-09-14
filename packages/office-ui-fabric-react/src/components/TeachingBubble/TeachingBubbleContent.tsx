@@ -8,9 +8,10 @@ import {
 } from '../../Utilities';
 import { ITeachingBubbleProps } from './TeachingBubble.Props';
 import { ITeachingBubbleState } from './TeachingBubble';
-import { Button, ButtonType } from '../../Button';
+import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Image, ImageFit } from '../../Image';
-import styles = require('./TeachingBubble.scss');
+import * as stylesImport from './TeachingBubble.scss';
+const styles: any = stylesImport;
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
 
@@ -55,12 +56,14 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (headline) {
       headerContent = (
-        <div className={ css(
-          'ms-TeachingBubble-header',
-          hasCondensedHeadline ?
-            'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
-            'ms-TeachingBubble-header--large ' + styles.headerIsLarge
-        ) }>
+        <div
+          className={ css(
+            'ms-TeachingBubble-header',
+            hasCondensedHeadline ?
+              'ms-TeachingBubble-header--small ' + styles.headerIsSmall :
+              'ms-TeachingBubble-header--large ' + styles.headerIsLarge
+          ) }
+        >
           <p className={ css('ms-TeachingBubble-headline', styles.headline) } >
             { headline }
           </p>
@@ -82,13 +85,13 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       footerContent = (
         <div className={ css('ms-TeachingBubble-footer', styles.footer) }>
           { primaryButtonProps && (
-            <Button
+            <PrimaryButton
               { ...primaryButtonProps }
               className={ css('ms-TeachingBubble-primaryButton', styles.primaryButton, primaryButtonProps.className) }
             />
           ) }
           { secondaryButtonProps && (
-            <Button
+            <DefaultButton
               { ...secondaryButtonProps }
               className={ css('ms-TeachingBubble-secondaryButton', styles.secondaryButton, secondaryButtonProps.className) }
             />
@@ -99,10 +102,9 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (hasCloseIcon) {
       closeButton = (
-        <Button
+        <IconButton
           className={ css('ms-TeachingBubble-closebutton', styles.closeButton) }
-          buttonType={ ButtonType.icon }
-          icon='Cancel'
+          iconProps={ { iconName: 'Cancel' } }
           title={ closeButtonAriaLabel }
           ariaLabel={ closeButtonAriaLabel }
           onClick={ onDismiss }

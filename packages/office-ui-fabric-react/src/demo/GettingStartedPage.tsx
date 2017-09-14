@@ -1,3 +1,5 @@
+/* tslint:disable:jsx-no-multiline-js */
+
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import './GettingStartedPage.scss';
@@ -40,16 +42,17 @@ export class GettingStartedPage extends React.Component<any, any> {
         }</p>
 
         <p>{
-          `The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method:`
+          `The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.`
         }</p>
 
         <div className='ms-GettingStartedPage-code'>
           <Highlight className='typescript'>{
             `import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<div><Button>I am a button.</Button></div>);
+const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fabric>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);`
           }</Highlight>

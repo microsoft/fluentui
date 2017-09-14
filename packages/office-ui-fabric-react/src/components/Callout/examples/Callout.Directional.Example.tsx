@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
@@ -55,23 +55,29 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             max={ 30 }
             label='Gap Space'
             min={ 0 }
-            defaultValue={ 16 }
-            onChange={ this._onGapSlider } />
+            defaultValue={ 0 }
+            onChange={ this._onGapSlider }
+          />
           { isBeakVisible &&
             (<Slider
               max={ 50 }
               label='Beak Width'
               min={ 10 }
               defaultValue={ 16 }
-              onChange={ this._onBeakWidthSlider } />) }
+              onChange={ this._onBeakWidthSlider }
+            />) }
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint] }
+            selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged } />
+            onChanged={ this._onDirectionalChanged }
+          />
         </div>
-        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+          <DefaultButton
+            onClick={ this._onShowMenuClicked }
+            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
+          />
         </div>
         { isCalloutVisible ? (
           <Callout
@@ -126,7 +132,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: DirectionalHint[option.key]
+      directionalHint: (DirectionalHint as any)[option.key]
     });
   }
 

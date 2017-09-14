@@ -35,7 +35,6 @@
 
 // Modifier: Compact layout
 .rootIsCompact {
-  border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   display: flex;
   max-width: 480px;
   height: 109px;
@@ -45,9 +44,9 @@
     flex: 1;
     justify-content: space-between;
   }
-  // Remove the usual accent color from the preview
+
   .preview {
-    border-bottom: none;
+    border-bottom: none;   // Remove the usual border from the preview
     max-height: 106px;
     max-width: 144px;
 
@@ -63,9 +62,13 @@
     @include border-right(1px, solid, $ms-color-neutralLight);
   }
 
+  .previewIconContainer {
+    height: 100%;
+  }
+
   .title {
       padding: 12px 16px 8px 16px;
-      @include ms-font-m;
+      @include ms-font-m-plus;
       line-height: 16px;
   }
 
@@ -88,7 +91,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
 .action {
   @include float(left);
-  @include margin-right(4px);
+  @include ms-margin-right(4px);
   color: $ms-color-neutralSecondary;
   cursor: pointer;
 
@@ -111,7 +114,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
   line-height: $ms-DocumentCardActions-actionSize;
 
   :global(.ms-Icon) {
-    @include margin-right(4px);
+    @include ms-margin-right(4px);
     font-size: $ms-icon-size-m;
     vertical-align: top;
   }
@@ -120,7 +123,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
 /** Activity **/
 $ms-DocumentCardActivity-horizontalPadding: 16px;
-$ms-DocumentCardActivity-imageSize: 24px;
+$ms-DocumentCardActivity-imageSize: 32px;
 $ms-DocumentCardActivity-verticalPadding: 8px;
 $ms-DocumentCardActivity-personaTextGutter: 8px;
 
@@ -135,7 +138,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   }
 
   .activityDetails {
-    @include left($ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) + $ms-DocumentCardActivity-personaTextGutter);
+    @include ms-left($ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) + $ms-DocumentCardActivity-personaTextGutter);
   }
 }
 
@@ -165,7 +168,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 }
 
 .activityDetails {
-  @include left($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter);
+  @include ms-left($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter);
   height: $ms-DocumentCardActivity-imageSize;
   position: absolute;
   top: $ms-DocumentCardActivity-verticalPadding;
@@ -210,7 +213,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 /** Preview **/
 .preview {
-  border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
+  border-bottom: 1px solid $ms-color-neutralLight;
   position: relative;
   background-color: $ms-color-neutralLighterAlt;
   overflow: hidden;
@@ -220,8 +223,14 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   }
 }
 
+.previewIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
 .icon {
-  @include left(10px);
+  @include ms-left(10px);
   bottom: 10px;
   position: absolute;
 }
@@ -236,7 +245,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
     line-height: 16px; // Vertically center the text
     margin-bottom: 8px;
     overflow: hidden;
-    @include padding-left(24px); // Make room for icon
+    @include ms-padding-left(24px); // Make room for icon
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -254,7 +263,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 }
 
 .fileListIcon {
-  @include left(0);
+  @include ms-left(0);
   position: absolute;
   top: 0;
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { ContextualMenu, DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
@@ -24,7 +24,11 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   public render() {
     return (
       <div>
-        <Button onClick={ this._onClick } className='ContextualMenuButton3'> Click for ContextualMenu </Button>
+        <DefaultButton
+          onClick={ this._onClick }
+          className='ContextualMenuButton3'
+          text='Click for ContextualMenu'
+        />
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
             target='.ContextualMenuButton3'
@@ -58,7 +62,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 },
                 {
                   key: 'divider_1',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'charm',
@@ -196,7 +200,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                       },
                       {
                         key: 'divider_1',
-                        name: '-',
+                        itemType: ContextualMenuItemType.Divider
                       },
                       {
                         key: 'clear',
@@ -217,24 +221,27 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   }
 
   private _renderCharmMenuItem(item: any) {
-    return <Button
-      buttonType={ ButtonType.icon }
-      icon={ item.name }
-      className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
-      data-is-focusable={ true } />;
+    return (
+      <IconButton
+        iconProps={ { iconName: item.name } }
+        className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
+        data-is-focusable={ true }
+      />
+    );
   }
 
   private _renderCategoriesList(item: any) {
     return (
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>
-          { item.categoryList.map(category =>
+          { item.categoryList.map((category: any) =>
             <button className='ms-ContextualMenu-link' role='menuitem'>
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
-                  style={ { backgroundColor: category.color } } />
-                <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>
+                  style={ { backgroundColor: category.color } }
+                />
+                <span className='ms-ContextualMenu-itemText'>
                   { category.name }
                 </span>
               </div>

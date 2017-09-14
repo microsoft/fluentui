@@ -19,7 +19,8 @@ import {
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-import styles = require('./GroupedList.scss');
+import * as stylesImport from './GroupedList.scss';
+const styles: any = stylesImport;
 
 export interface IGroupedListState {
   lastWidth?: number;
@@ -53,7 +54,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     };
   }
 
-  public componentWillReceiveProps(newProps) {
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+    this.refs.list && this.refs.list.scrollToIndex(index, measureItem);
+  }
+
+  public componentWillReceiveProps(newProps: IGroupedListProps) {
     let {
       groups,
       selectionMode
@@ -76,7 +81,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   public render() {
     let {
-      className
+      className,
+      usePageCache,
+      onShouldVirtualize
     } = this.props;
     let {
       groups
@@ -88,7 +95,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         className={ css('ms-GroupedList', styles.root, className) }
         data-automationid='GroupedList'
         data-is-scrollable='false'
-        role='grid'
+        role='presentation'
       >
         { !groups ?
           this._renderGroup(null, 0) : (
@@ -97,6 +104,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ () => 1 }
+              usePageCache={ usePageCache }
+              onShouldVirtualize={ onShouldVirtualize }
             />
           )
         }
@@ -130,7 +139,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   @autobind
-  private _renderGroup(group, groupIndex) {
+  private _renderGroup(group: any, groupIndex: number) {
     let {
       dragDropEvents,
       dragDropHelper,
@@ -151,11 +160,16 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       onToggleSummarize: this._onToggleSummarize
     };
 
-    let headerProps = assign({}, groupProps.headerProps, dividerProps);
-    let footerProps = assign({}, groupProps.footerProps, dividerProps);
+    let headerProps = assign({}, groupProps!.headerProps, dividerProps);
+    let showAllProps = assign({}, groupProps!.showAllProps, dividerProps);
+    let footerProps = assign({}, groupProps!.footerProps, dividerProps);
     let groupNestingDepth = this._getGroupNestingDepth();
 
-    return (!group || group.count > 0) ? (
+    if (!groupProps!.showEmptyGroups && group && group.count === 0) {
+      return null;
+    }
+
+    return (
       <GroupedListSection
         ref={ 'group_' + groupIndex }
         key={ this._getGroupKey(group, groupIndex) }
@@ -171,13 +185,15 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         listProps={ listProps }
         items={ items }
         onRenderCell={ onRenderCell }
-        onRenderGroupHeader={ groupProps.onRenderHeader }
-        onRenderGroupFooter={ groupProps.onRenderFooter }
+        onRenderGroupHeader={ groupProps!.onRenderHeader }
+        onRenderGroupShowAll={ groupProps!.onRenderShowAll }
+        onRenderGroupFooter={ groupProps!.onRenderFooter }
         selectionMode={ selectionMode }
         selection={ selection }
+        showAllProps={ showAllProps }
         viewport={ viewport }
       />
-    ) : null;
+    );
   }
 
   private _getGroupKey(group: IGroup, index: number): string {
@@ -216,7 +232,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   @autobind
   private _onToggleSelectGroup(group: IGroup) {
     if (group) {
-      this.props.selection.toggleRangeSelected(group.startIndex, group.count);
+      this.props.selection!.toggleRangeSelected(group.startIndex, group.count);
     }
   }
 
@@ -245,7 +261,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   @autobind
   private _onToggleSummarize(group: IGroup) {
     let { groupProps } = this.props;
-    let onToggleSummarize = groupProps && groupProps.footerProps && groupProps.footerProps.onToggleSummarize;
+    let onToggleSummarize = groupProps && groupProps.showAllProps && groupProps.showAllProps.onToggleSummarize;
 
     if (onToggleSummarize) {
       onToggleSummarize(group);
@@ -258,8 +274,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     }
   }
 
-  private _computeIsSomeGroupExpanded(groups: IGroup[]) {
-    return groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed);
+  private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
+    return !!(groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed));
   }
 
   private _updateIsSomeGroupExpanded() {

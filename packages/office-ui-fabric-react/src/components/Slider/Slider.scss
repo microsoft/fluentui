@@ -7,42 +7,36 @@
 
 .titleLabel {
   padding: 0;
-}
+ }
 
 .line {
+  display: flex;
   position: relative;
-  width: 100%;
 }
 
-.line span {
-  height: 4px;
-  @include float(left);
+.line .lineContainer {
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.activeSection {
-  background: $ms-color-neutralSecondary;
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
-.inactiveSection {
-  background: $ms-color-neutralTertiaryAlt;
+.valueLabel {
+  flex-shrink: 1;
+  width: 30px;
+  line-height: 1;
 }
 
-.showTransitions {
-  .thumb {
-    transition: left $ms-duration3 $ms-ease1;
-  }
-
-  .activeSection,
-  .inactiveSection {
-    transition: width $ms-duration3 $ms-ease1;
-  }
-}
 .slideBox {
+  @include focus-border();
   background: transparent;
   border: none;
-  padding: 0;
-  margin: 0;
+  flex-grow: 1;
+  line-height: 28px;
 }
 
 .slideBox .thumb {
@@ -53,31 +47,105 @@
   width: 16px;
   height: 16px;
   position: absolute;
-  top: -6px;
   border-radius: 10px;
-  @include transform-translateX(-50%);
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
+.rootIsHorizontal {
+  .line {
+    width: 100%;
+  }
+
+  .line .lineContainer {
+    height: 4px;
+  }
+
+  .slideBox {
+    height: 28px;
+    padding: 0 8px; // Make room for thumb at ends of line
+  }
+
+  .slideBox .thumb {
+    top: -6px;
+    @include transform-translateX(-50%);
+  }
+
+  .valueLabel {
+    margin: 0 8px;
+  }
 }
 
+.rootIsVertical {
+  margin-right: 8px;
 
-.slideBox {
-  @include focus-border();
-  flex-grow: 1;
-  height: 28px;
-  line-height: 28px;
-  padding: 0 8px; // Make room for thumb at ends of line
+  .line {
+    height: 100%;
+    width: 4px;
+    margin: 0 auto;
+    flex-direction: column-reverse;
+  }
+
+  .line .lineContainer {
+    width: 4px;
+    height: 100%;
+  }
+
+  .slideBox {
+    height: 100%;
+    width: 28px;
+    padding: 8px 0; // Make room for thumb at bottom of line
+  }
+
+  .slideBox .thumb {
+    left: -6px;
+    margin: 0 auto;
+    transform: translateY(8px);
+  }
+
+  .container {
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  .valueLabel {
+    margin: 0 auto;
+  }
 }
 
-.valueLabel {
-  flex-shrink: 1;
-  width: 30px;
-  margin: 0 8px;
-  line-height: 1;
+.activeSection {
+  background: $ms-color-neutralSecondary;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $ms-color-black;
+  }
+}
+
+.inactiveSection {
+  background: $ms-color-neutralTertiaryAlt;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
+  }
+}
+
+.showTransitions {
+  .thumb {
+    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
+  }
+
+  .activeSection,
+  .inactiveSection {
+    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
+  }
 }
 
 .rootIsEnabled {
@@ -87,15 +155,39 @@
 
     .thumb {
       border: 2px solid $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
     }
+
     .activeSection {
       background-color: $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
     }
 
     .inactiveSection {
       background-color: $ms-color-themeLight;
-    }
 
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+    }
   }
 
   .slideBox:active {
@@ -111,7 +203,29 @@
 .rootIsDisabled {
   .thumb {
     border-color: $ms-color-neutralTertiaryAlt;
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteDisabled;
+    }
   }
+
+  .activeSection,
+  .inactiveSection {
+    @media screen and (-ms-high-contrast: active) {
+      background-color: $ms-color-contrastBlackDisabled;
+      border-color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-contrastWhiteDisabled;
+      border-color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+
   .activeSection {
     background: $ms-color-neutralTertiaryAlt;
   }

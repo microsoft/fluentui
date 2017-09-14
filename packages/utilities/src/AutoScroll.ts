@@ -14,11 +14,13 @@ const MAX_SCROLL_VELOCITY = 15;
  * up/down depending on how close the mouse is to the top/bottom of the container.
  *
  * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
+ *
+ * @public
  */
 export class AutoScroll {
   private _events: EventGroup;
-  private _scrollableParent: HTMLElement;
-  private _scrollRect: IRectangle;
+  private _scrollableParent: HTMLElement | null;
+  private _scrollRect: IRectangle | undefined;
   private _scrollVelocity: number;
   private _timeoutId: number;
 
@@ -39,22 +41,26 @@ export class AutoScroll {
     }
   }
 
-  public dispose() {
+  public dispose(): void {
     this._events.dispose();
     this._stopScroll();
   }
 
-  private _onMouseMove(ev: MouseEvent) {
+  private _onMouseMove(ev: MouseEvent): void {
     this._computeScrollVelocity(ev.clientY);
   }
 
-  private _onTouchMove(ev: TouchEvent) {
+  private _onTouchMove(ev: TouchEvent): void {
     if (ev.touches.length > 0) {
       this._computeScrollVelocity(ev.touches[0].clientY);
     }
   }
 
-  private _computeScrollVelocity(clientY: number) {
+  private _computeScrollVelocity(clientY: number): void {
+    if (!this._scrollRect) {
+      return;
+    }
+
     let scrollRectTop = this._scrollRect.top;
     let scrollClientBottom = scrollRectTop + this._scrollRect.height - SCROLL_GUTTER_HEIGHT;
 
@@ -79,18 +85,21 @@ export class AutoScroll {
     }
   }
 
-  private _startScroll() {
+  private _startScroll(): void {
     if (!this._timeoutId) {
       this._incrementScroll();
     }
   }
 
-  private _incrementScroll() {
-    this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
+  private _incrementScroll(): void {
+    if (this._scrollableParent) {
+      this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
+    }
+
     this._timeoutId = setTimeout(this._incrementScroll, SCROLL_ITERATION_DELAY);
   }
 
-  private _stopScroll() {
+  private _stopScroll(): void {
     if (this._timeoutId) {
       clearTimeout(this._timeoutId);
       delete this._timeoutId;

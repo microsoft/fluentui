@@ -1,24 +1,38 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {
   BaseComponent,
   autobind,
   css,
-  getRTL
+  getRTL,
+  getId,
+  KeyCodes,
+  IRenderFunction
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Check } from '../../Check';
 import { Icon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
+import { CollapseAllVisibility } from '../../GroupedList';
+import { DetailsRowCheck } from './DetailsRowCheck';
+import { ITooltipHostProps } from '../../Tooltip';
+import * as checkStyles from './DetailsRowCheck.scss';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import styles = require('./DetailsHeader.scss');
+import * as stylesImport from './DetailsHeader.scss';
+const styles: any = stylesImport;
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
+const ISPADDED_WIDTH = 24;
+
+export interface IDetailsHeader {
+  focus(): boolean;
+}
 
 export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
+  componentRef?: (component: IDetailsHeader) => void;
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -27,14 +41,17 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
   onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
-  onColumnContextMenu?: (column: IColumn, ev: Event) => void;
+  onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
+  onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
   groupNestingDepth?: number;
+  collapseAllVisibility?: CollapseAllVisibility;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
   ariaLabel?: string;
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;
+  ariaLabelForSelectionColumn?: string;
   selectAllVisibility?: SelectAllVisibility;
 }
 
@@ -54,32 +71,35 @@ export interface IDetailsHeaderState {
 
 export interface IColumnResizeDetails {
   columnIndex: number;
-  originX: number;
+  originX?: number;
   columnMinWidth: number;
 }
 
-export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
+export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
-    isSelectAllVisible: SelectAllVisibility.visible
+    selectAllVisibility: SelectAllVisibility.visible,
+    collapseAllVisibility: CollapseAllVisibility.visible
   };
 
   public refs: {
     [key: string]: React.ReactInstance;
-    root: HTMLElement;
-    focusZone: FocusZone;
+    root: FocusZone;
   };
+
+  private _id: string;
 
   constructor(props: IDetailsHeaderProps) {
     super(props);
 
     this.state = {
-      columnResizeDetails: null,
+      columnResizeDetails: undefined,
       groupNestingDepth: this.props.groupNestingDepth,
       isAllCollapsed: this.props.isAllCollapsed
     };
 
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
     this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
+    this._id = getId('header');
   }
 
   public componentDidMount() {
@@ -87,11 +107,15 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
+    const rootElement = ReactDOM.findDOMNode(this.refs.root);
+
     // We need to use native on this to avoid MarqueeSelection from handling the event before us.
-    this._events.on(this.refs.root, 'mousedown', this._onRootMouseDown);
+    this._events.on(rootElement, 'mousedown', this._onRootMouseDown);
+
+    this._events.on(rootElement, 'keydown', this._onRootKeyDown);
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsHeaderProps) {
     let { groupNestingDepth } = this.state;
 
     if (newProps.groupNestingDepth !== groupNestingDepth) {
@@ -100,40 +124,86 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render() {
-    let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility } = this.props;
+    let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility, ariaLabelForSelectionColumn } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
+    const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
+
+    const {
+      onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip
+    } = this.props;
+
     return (
-      <div
+      <FocusZone
         role='row'
         aria-label={ ariaLabel }
-        className={ css('ms-DetailsHeader', styles.root, {
-          ['is-allSelected ' + styles.rootIsAllSelected]: isAllSelected,
-          ['is-selectAllHidden ' + styles.rootIsSelectAllHidden]: selectAllVisibility === SelectAllVisibility.hidden,
-          'is-resizingColumn': !!columnResizeDetails && isSizing,
-        }) }
+        className={ css(
+          'ms-DetailsHeader',
+          styles.root,
+          isAllSelected && ('is-allSelected ' + styles.rootIsAllSelected),
+          (selectAllVisibility === SelectAllVisibility.hidden) && ('is-selectAllHidden ' + styles.rootIsSelectAllHidden),
+          (!!columnResizeDetails && isSizing) && 'is-resizingColumn'
+        ) }
         ref='root'
         onMouseMove={ this._onRootMouseMove }
-        data-automationid='DetailsHeader'>
-        <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          { (selectAllVisibility !== SelectAllVisibility.none) ? (
-            <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
-              <button
-                type='button'
-                className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.cellIsCheck) }
-                onClick={ this._onSelectAllClicked }
-                aria-label={ ariaLabelForSelectAllCheckbox }
-                aria-pressed={ isAllSelected }
+        data-automationid='DetailsHeader'
+        direction={ FocusZoneDirection.horizontal }
+      >
+        { showCheckbox ? (
+          [
+            <div
+              key='__checkbox'
+              className={ css(
+                'ms-DetailsHeader-cell',
+                'ms-DetailsHeader-cellIsCheck',
+                styles.cell,
+                styles.cellIsCheck,
+                checkStyles.owner,
+                isAllSelected && checkStyles.isSelected
+              ) }
+              aria-labelledby={ `${this._id}-check` }
+              onClick={ this._onSelectAllClicked }
+              aria-colindex={ 0 }
+              role='columnheader'
+            >
+              {
+                onRenderColumnHeaderTooltip({
+                  hostClassName: css(styles.checkTooltip),
+                  id: `${this._id}-checkTooltip`,
+                  setAriaDescribedBy: false,
+                  content: ariaLabelForSelectAllCheckbox,
+                  children: (
+                    <DetailsRowCheck
+                      id={ `${this._id}-check` }
+                      aria-label={ ariaLabelForSelectionColumn }
+                      aria-describedby={ `${this._id}-checkTooltip` }
+                      selected={ isAllSelected }
+                      anySelected={ false }
+                      canSelect={ true }
+                    />
+                  )
+                }, this._onRenderColumnHeaderTooltip)
+              }
+            </div>,
+            ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? (
+              <label
+                key='__checkboxLabel'
+                id={ `${this._id}-checkTooltip` }
+                className={ styles.accessibleLabel }
               >
-                <Check checked={ isAllSelected } />
-              </button>
-            </div>
-          ) : null }
-          { groupNestingDepth > 0 ? (
-            <button
-              type='button'
+                { ariaLabelForSelectAllCheckbox }
+              </label>
+            ) : null
+          ]
+        ) : null
+        }
+        {
+          groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
+            <div
               className={ css('ms-DetailsHeader-cell', styles.cell) }
-              onClick={ this._onToggleCollapseAll }>
+              onClick={ this._onToggleCollapseAll }
+              data-is-focusable={ true }
+            >
               <Icon
                 className={ css(
                   'ms-DetailsHeader-collapseButton',
@@ -142,94 +212,156 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 ) }
                 iconName='ChevronDown'
               />
-            </button>
-          ) : (null) }
-          { GroupSpacer({ count: groupNestingDepth - 1 }) }
-          { columns.map((column, columnIndex) => (
-            <div
-              key={ column.key }
-              className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) }
-              role='columnheader'
-              aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
-            >
-              <button
-                type='button'
-                key={ column.fieldName }
-                disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-                className={ css(
-                  'ms-DetailsHeader-cell',
-                  styles.cell,
-                  column.headerClassName, {
-                    ['is-actionable ' + styles.cellIsActionable]: column.columnActionsMode !== ColumnActionsMode.disabled,
-                    ['is-empty ' + styles.cellIsEmpty]: !column.name,
-                    'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
-                  }) }
-                style={ { width: column.calculatedWidth + INNER_PADDING } }
-                onClick={ this._onColumnClick.bind(this, column) }
-                onContextMenu={ this._onColumnContextMenu.bind(this, column) }
-                aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
-                aria-label={ column.ariaLabel || column.name }
-                data-automationid='ColumnsHeaderColumn'
-                data-item-key={ column.key }
-              >
-
-                { column.isFiltered && (
-                  <Icon className={ styles.nearIcon } iconName='Filter' />
-                ) }
-
-                { column.isSorted && (
-                  <Icon className={ styles.nearIcon } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
-                ) }
-
-                { column.isGrouped && (
-                  <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
-                ) }
-
-                { column.iconClassName && (
-                  <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
-                ) }
-
-                { column.name }
-
-                { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
-                  <Icon
-                    className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
-                    iconName='ChevronDown'
-                  />
-                ) }
-              </button>
-              { (column.isResizable) && (
-                <div
-                  data-sizer-index={ columnIndex }
-                  className={ css(
-                    'ms-DetailsHeader-cell is-sizer',
-                    styles.cell,
-                    styles.cellIsSizer,
-                    {
-                      ['is-resizing ' + styles.cellIsResizing]: isSizing && columnResizeDetails.columnIndex === columnIndex
-                    }) }
-                  onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
-                />
-              ) }
             </div>
-          )) }
-        </FocusZone>
-        { isSizing && (
-          <Layer>
-            <div
-              className={ css(isSizing && styles.sizingOverlay) }
-              onMouseMove={ this._onSizerMouseMove }
-              onMouseUp={ this._onSizerMouseUp }
-            />
-          </Layer>
-        ) }
-      </div>
+          ) : (null)
+        }
+        { GroupSpacer({ count: groupNestingDepth! - 1 }) }
+        {
+          columns.map((column: IColumn, columnIndex: number) => {
+            return (
+              [
+                <div
+                  key={ column.key }
+                  role='columnheader'
+                  aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
+                  aria-disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
+                  aria-colindex={ (showCheckbox ? 1 : 0) + columnIndex }
+                  className={ css(
+                    'ms-DetailsHeader-cell',
+                    styles.cell,
+                    column.headerClassName,
+                    (column.columnActionsMode !== ColumnActionsMode.disabled) && ('is-actionable ' + styles.cellIsActionable),
+                    !column.name && ('is-empty ' + styles.cellIsEmpty),
+                    (column.isSorted || column.isGrouped || column.isFiltered) && 'is-icon-visible',
+                    column.isPadded && styles.cellWrapperPadded
+                  ) }
+                  style={ { width: column.calculatedWidth! + INNER_PADDING + (column.isPadded ? ISPADDED_WIDTH : 0) } }
+                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
+                  data-automationid='ColumnsHeaderColumn'
+                  data-item-key={ column.key }
+                >
+                  {
+                    onRenderColumnHeaderTooltip({
+                      hostClassName: css(styles.cellTooltip),
+                      id: `${this._id}-${column.key}-tooltip`,
+                      setAriaDescribedBy: false,
+                      content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
+                      children: (
+                        <span
+                          id={ `${this._id}-${column.key}` }
+                          aria-label={ column.isIconOnly ? column.name : undefined }
+                          aria-labelledby={ column.isIconOnly ? undefined : `${this._id}-${column.key}-name ` }
+                          className={ css('ms-DetailsHeader-cellTitle', styles.cellTitle) }
+                          data-is-focusable={ column.columnActionsMode !== ColumnActionsMode.disabled }
+                          role={ column.columnActionsMode !== ColumnActionsMode.disabled ? 'button' : undefined }
+                          aria-describedby={ `${this._id}-${column.key}-tooltip` }
+                          onContextMenu={ this._onColumnContextMenu.bind(this, column) }
+                          onClick={ this._onColumnClick.bind(this, column) }
+                        >
+                          <span
+                            id={ `${this._id}-${column.key}-name` }
+                            className={ css('ms-DetailsHeader-cellName',
+                              styles.cellName, {
+                                [styles.iconOnlyHeader]: column.isIconOnly
+                              }) }
+                          >
+                            { (column.iconName || column.iconClassName) && (
+                              <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
+                            ) }
+
+                            { !column.isIconOnly ? column.name : undefined }
+                          </span>
+
+                          { column.isFiltered && (
+                            <Icon className={ styles.nearIcon } iconName='Filter' />
+                          ) }
+
+                          { column.isSorted && (
+                            <Icon className={ css(styles.nearIcon, styles.sortIcon) } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
+                          ) }
+
+                          { column.isGrouped && (
+                            <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
+                          ) }
+
+                          { column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
+                            <Icon
+                              className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
+                              iconName='ChevronDown'
+                            />
+                          ) }
+                        </span>
+                      )
+                    }, this._onRenderColumnHeaderTooltip)
+                  }
+                </div>,
+                column.ariaLabel && !this.props.onRenderColumnHeaderTooltip ? (
+                  <label
+                    key={ `${column.key}_label` }
+                    id={ `${this._id}-${column.key}-tooltip` }
+                    className={ styles.accessibleLabel }
+                  >
+                    { column.ariaLabel }
+                  </label>
+                ) : null,
+                (column.isResizable) && this._renderColumnSizer(columnIndex)
+              ]
+            );
+          })
+        }
+        {
+          isSizing && (
+            <Layer>
+              <div
+                className={ css(isSizing && styles.sizingOverlay) }
+                onMouseMove={ this._onSizerMouseMove }
+                onMouseUp={ this._onSizerMouseUp }
+              />
+            </Layer>
+          )
+        }
+      </FocusZone>
     );
   }
 
   /** Set focus to the active thing in the focus area. */
   public focus(): boolean {
-    return this.refs.focusZone.focus();
+    return this.refs.root.focus();
+  }
+
+  private _renderColumnSizer(columnIndex: number) {
+    const { columns } = this.props;
+    const column = this.props.columns[columnIndex];
+    const { columnResizeDetails } = this.state;
+
+    return (
+      <div
+        key={ `${column.key}_sizer` }
+        aria-hidden={ true }
+        role='button'
+        data-is-focusable={ false }
+        onClick={ stopPropagation }
+        data-sizer-index={ columnIndex }
+        onBlur={ this._onSizerBlur }
+        className={ css(
+          'ms-DetailsHeader-cellSizer',
+          styles.cellSizer,
+          columnIndex < columns.length - 1 ? styles.cellSizerStart : styles.cellSizerEnd,
+          {
+            ['is-resizing ' + styles.cellIsResizing]: columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
+          }) }
+        onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
+      />
+    );
+  }
+
+  @autobind
+  private _onRenderColumnHeaderTooltip(tooltipHostProps: ITooltipHostProps, defaultRender?: IRenderFunction<ITooltipHostProps>) {
+    return (
+      <span className={ tooltipHostProps.hostClassName }>
+        { tooltipHostProps.children }
+      </span >
+    );
   }
 
   /**
@@ -272,7 +404,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     this.setState({
       columnResizeDetails: {
         columnIndex: columnIndex,
-        columnMinWidth: columns[columnIndex].calculatedWidth,
+        columnMinWidth: columns[columnIndex].calculatedWidth!,
         originX: ev.clientX
       }
     });
@@ -290,6 +422,69 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
+  @autobind
+  private _onRootKeyDown(ev: KeyboardEvent) {
+    const { columnResizeDetails, isSizing } = this.state;
+    const { columns, onColumnResized } = this.props;
+
+    const columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
+
+    if (!columnIndexAttr || isSizing) {
+      return;
+    }
+
+    const columnIndex = Number(columnIndexAttr);
+
+    if (!columnResizeDetails) {
+      if (ev.which === KeyCodes.enter) {
+        this.setState({
+          columnResizeDetails: {
+            columnIndex: columnIndex,
+            columnMinWidth: columns[columnIndex].calculatedWidth!
+          }
+        });
+
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    } else {
+      let increment: number | undefined;
+
+      if (ev.which === KeyCodes.enter) {
+        this.setState({
+          columnResizeDetails: undefined
+        });
+
+        ev.preventDefault();
+        ev.stopPropagation();
+      } else if (ev.which === KeyCodes.left) {
+        increment = getRTL() ? 1 : -1;
+      } else if (ev.which === KeyCodes.right) {
+        increment = getRTL() ? -1 : 1;
+      }
+
+      if (increment) {
+        if (!ev.shiftKey) {
+          increment *= 10;
+        }
+
+        this.setState({
+          columnResizeDetails: {
+            ...columnResizeDetails,
+            columnMinWidth: columnResizeDetails.columnMinWidth + increment
+          }
+        });
+
+        if (onColumnResized) {
+          onColumnResized(columns[columnIndex], columnResizeDetails.columnMinWidth + increment);
+        }
+
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    }
+  }
+
   /**
    * mouse move event handler in the header
    * it will set isSizing state to true when user clicked on the sizer and move the mouse.
@@ -303,7 +498,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
       buttons
-    } = ev;
+  } = ev;
     let { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
     let { columnResizeDetails } = this.state;
 
@@ -313,25 +508,37 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       return;
     }
 
-    if (ev.clientX !== columnResizeDetails.originX) {
+    if (ev.clientX !== columnResizeDetails!.originX) {
       if (onColumnIsSizingChanged) {
-        onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], true);
+        onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], true);
       }
     }
 
     if (onColumnResized) {
-      let movement = ev.clientX - columnResizeDetails.originX;
+      let movement = ev.clientX - columnResizeDetails!.originX!;
 
       if (getRTL()) {
         movement = -movement;
       }
 
       onColumnResized(
-        columns[columnResizeDetails.columnIndex],
-        columnResizeDetails.columnMinWidth + movement
+        columns[columnResizeDetails!.columnIndex],
+        columnResizeDetails!.columnMinWidth + movement
       );
     }
 
+  }
+
+  @autobind
+  private _onSizerBlur(ev: React.FocusEvent<HTMLElement>) {
+    const { columnResizeDetails } = this.state;
+
+    if (columnResizeDetails) {
+      this.setState({
+        columnResizeDetails: undefined,
+        isSizing: false
+      });
+    }
   }
 
   /**
@@ -348,12 +555,12 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { columnResizeDetails } = this.state;
 
     this.setState({
-      columnResizeDetails: null,
+      columnResizeDetails: undefined,
       isSizing: false
     });
 
     if (onColumnIsSizingChanged) {
-      onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
+      onColumnIsSizingChanged(columns[columnResizeDetails!.columnIndex], false);
     }
   }
 
@@ -367,7 +574,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnClick(column, ev) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     let { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
@@ -379,15 +586,19 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onColumnContextMenu(column, ev) {
+  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     let { onColumnContextMenu } = this.props;
 
-    if (column.onContextMenu) {
+    if (column.onColumnContextMenu) {
       column.onColumnContextMenu(column, ev);
+
+      ev.preventDefault();
     }
 
     if (onColumnContextMenu) {
       onColumnContextMenu(column, ev);
+
+      ev.preventDefault();
     }
   }
 
@@ -401,5 +612,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       onToggleCollapseAll(newCollapsed);
     }
   }
+}
 
+function stopPropagation(ev: React.MouseEvent<HTMLElement>) {
+  ev.stopPropagation();
 }

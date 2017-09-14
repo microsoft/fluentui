@@ -3,10 +3,11 @@ import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 const pageStyles: any = require('../../PageStyles.module.scss');
-import styles = require('./LocalizationPage.module.scss');
+import * as stylesImport from './LocalizationPage.module.scss';
+const styles: any = stylesImport;
 
-const directionalIconsData = require('json!../../../data/directional-icons.json');
-const localizedFontsData = require('json!../../../data/localized-fonts.json');
+const directionalIconsData = require('../../../data/directional-icons.json');
+const localizedFontsData = require('../../../data/localized-fonts.json');
 
 export class LocalizationPage extends React.Component<any, any> {
   public render() {
@@ -54,11 +55,11 @@ export class LocalizationPage extends React.Component<any, any> {
           { directionalIconsData.map((pair, pairIndex) => (
             <li className={ styles.directionalIconPair } key={ pairIndex }>
               <div className={ styles.directionalIcon }>
-                <i className={ 'ms-Icon ms-Icon--' + pair[0] }></i>
+                <i className={ 'ms-Icon ms-Icon--' + pair[0] } />
                 { pair[0] }
               </div>
               <div className={ styles.directionalIcon }>
-                <i className={ 'ms-Icon ms-Icon--' + pair[1] }></i>
+                <i className={ 'ms-Icon ms-Icon--' + pair[1] } />
                 { pair[1] }
               </div>
             </li>

@@ -6,6 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
+import { FontClassNames } from '../../Styling';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 
@@ -33,7 +34,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
               Toggles represent a physical switch that allows users to turn things on or off. Use Toggles to present users with two mutually exclusive options (like on/off), where choosing an option results in an immediate action. Use a Toggle for binary operations that take effect right after the user flips the Toggle. For example, use a Toggle to turn services or hardware components on or off. In other words, if a physical switch would work for the action, a Toggle is probably the best control to use.
             </p>
 
-            <h2 className='ms-font-xl'>Choosing between Toggle and Checkbox</h2>
+            <h2 className={ FontClassNames.xLarge }>Choosing between Toggle and Checkbox</h2>
 
             <p>
               For some actions, either a Toggle or a Checkbox might work. To decide which control would work better, follow these tips:
@@ -47,7 +48,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -68,8 +69,8 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Toggle/Toggle.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 }

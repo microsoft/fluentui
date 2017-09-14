@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
-import styles = require('./ResourcesPage.module.scss');
+import * as stylesImport from './ResourcesPage.module.scss';
+const styles: any = stylesImport;
 
 export class ResourcesPage extends React.Component<any, any> {
   public render() {
@@ -24,14 +25,14 @@ export class ResourcesPage extends React.Component<any, any> {
           backgroundColor='#ff8c00'
         />
 
-        <div className={ styles.angle }></div>
+        <div className={ styles.angle } />
 
         <h2 className={ styles.pageTitle }>We want to hear from you</h2>
 
         <div id='reach-out' className={ styles.reachOut }>
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
-              <div className={ css('ms-Grid-col ms-u-sm-12 ms-u-lg6', styles.channel) }>
+              <div className={ css('ms-Grid-col ms-sm-12 ms-lg6', styles.channel) }>
                 <div className={ styles.imageWrapper }>
                   <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-github.svg' } width='128' height='128' alt='Github logo' />
                 </div>
@@ -39,7 +40,7 @@ export class ResourcesPage extends React.Component<any, any> {
                 <span className={ styles.description }>We&rsquo;re on GitHub, so you can file issues and contribute to the projects.</span>
                 <a href='https://github.com/OfficeDev?query=office-ui-fabric'>See projects</a>
               </div>
-              <div className={ css('ms-Grid-col ms-u-sm-12 ms-u-lg6', styles.channel) }>
+              <div className={ css('ms-Grid-col ms-sm-12 ms-lg6', styles.channel) }>
                 <div className={ styles.imageWrapper }>
                   <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-twitter.svg' } width='128' height='128' alt='Twitter logo' />
                 </div>
@@ -54,10 +55,10 @@ export class ResourcesPage extends React.Component<any, any> {
         <div id='learn-more' className={ styles.related }>
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
-              <div className='ms-Grid-col ms-u-sm12 ms-u-lg4'>
+              <div className='ms-Grid-col ms-sm12 ms-lg4'>
                 <h2>Learn more with tutorials and resources</h2>
               </div>
-              <div className='ms-Grid-col ms-u-sm12 ms-u-lg8'>
+              <div className='ms-Grid-col ms-sm12 ms-lg8'>
                 <p>Use the tutorials and additional resources on this page to learn how to get Fabric running in your projects.</p>
 
                 <h3>Tutorials</h3>

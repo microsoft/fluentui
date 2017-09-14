@@ -1,0 +1,12 @@
+@import '../../common/common';
+
+.root {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.item {
+  flex-shrink: 0;
+  display: inherit;
+}

@@ -16,7 +16,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
    * Callback issued when a date is selected
    */
-  onSelectDate?: (date: Date) => void;
+  onSelectDate?: (date: Date | null | undefined) => void;
 
   /**
    * Label for the DatePicker
@@ -30,9 +30,21 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   isRequired?: boolean;
 
   /**
+   * Disabled state of the DatePicker.
+   * @default false
+   */
+  disabled?: boolean;
+
+  /**
    * Aria Label for TextField of the DatePicker for screen reader users.
    */
   ariaLabel?: string;
+
+  /**
+   * Aria label for date picker popup for screen reader users.
+   * @defaultvalue Calendar
+   */
+  pickerAriaLabel?: string;
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
@@ -45,6 +57,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * @defaultvalue false
    */
   allowTextInput?: boolean;
+
+  /**
+   * Whether the DatePicker should open automatically when the control is focused
+   * @defaultvalue false
+   */
+  disableAutoFocus?: boolean;
 
   /**
    * Placeholder text for the DatePicker
@@ -66,7 +84,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
    * @defaultvalue new Date(Date.parse(dateStr))
    */
-  parseDateFromString?: (dateStr: string) => Date;
+  parseDateFromString?: (dateStr: string) => Date | null;
 
   /**
    * The first day of the week for your locale.
@@ -78,6 +96,17 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Localized strings to use in the DatePicker
    */
   strings?: IDatePickerStrings;
+
+  /**
+   * Determines if DatePicker has a border.
+   * @defaultvalue false
+   */
+  borderless?: boolean;
+
+  /**
+   * Optional Classname for datepicker root element .
+   */
+  className?: string;
 }
 
 export interface IDatePickerStrings {
@@ -119,4 +148,24 @@ export interface IDatePickerStrings {
    * Error message to render for TextField if input date string parsing fails.
    */
   invalidInputErrorMessage?: string;
+
+  /**
+   * Aria-label for the "previous month" button.
+   */
+  prevMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next month" button.
+   */
+  nextMonthAriaLabel?: string;
+
+  /**
+   * Aria-label for the "previous year" button.
+   */
+  prevYearAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year" button.
+   */
+  nextYearAriaLabel?: string;
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { autobind } from '../../../Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
-import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 export class DialogBlockingExample extends React.Component<any, any> {
@@ -8,21 +9,30 @@ export class DialogBlockingExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      showDialog: false
+      hideDialog: true
     };
   }
 
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Dialog' onClick={ this._showDialog.bind(this) }>Open Dialog</Button>
+        <DefaultButton
+          description='Opens the Sample Dialog'
+          onClick={ this._showDialog }
+          text='Open Dialog'
+        />
         <Dialog
-          isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
-          onDismiss={ this._closeDialog.bind(this) }
-          title='All emails together'
-          subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ true }
+          hidden={ this.state.hideDialog }
+          onDismiss={ this._closeDialog }
+          dialogContentProps={ {
+            type: DialogType.normal,
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          } }
+          modalProps={ {
+            isBlocking: true,
+            containerClassName: 'ms-dialogMainOverride'
+          } }
         >
           <ChoiceGroup
             options={ [
@@ -41,23 +51,25 @@ export class DialogBlockingExample extends React.Component<any, any> {
                 disabled: true
               }
             ] }
-            onChanged={ this._onChoiceChanged }
+            onChange={ this._onChoiceChanged }
           />
           <DialogFooter>
-            <Button buttonType={ ButtonType.primary } onClick={ this._closeDialog.bind(this) }>Save</Button>
-            <Button onClick={ this._closeDialog.bind(this) }>Cancel</Button>
+            <PrimaryButton onClick={ this._closeDialog } text='Save' />
+            <DefaultButton onClick={ this._closeDialog } text='Cancel' />
           </DialogFooter>
         </Dialog>
       </div>
     );
   }
 
+  @autobind
   private _showDialog() {
-    this.setState({ showDialog: true });
+    this.setState({ hideDialog: false });
   }
 
+  @autobind
   private _closeDialog() {
-    this.setState({ showDialog: false });
+    this.setState({ hideDialog: true });
   }
 
   private _onChoiceChanged() {

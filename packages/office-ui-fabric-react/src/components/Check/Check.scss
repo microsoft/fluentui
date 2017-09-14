@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 24px;
+$checkBoxHeight: 18px;
 
 .root {
   line-height: 1;
@@ -15,67 +15,60 @@ $checkBoxHeight: 24px;
   height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
-  @include user-select(none);
 
-  &.rootIsChecked {
-    .background {
-      &:before {
-        color: $ms-color-themePrimary;
-      }
+  @include ms-user-select(none);
 
-      &:after {
-        color: $ms-color-white;
-      }
-    }
-
-    .check {
-      opacity: 1;
-      color: $ms-color-white;
-      font-weight: 900;
-      font-size: $ms-font-size-s;
-    }
+  &.rootIsChecked:before {
+    background: $ms-color-themePrimary;
+    content: '';
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    bottom: 1px;
+    top: 1px;
+    border-radius: 50%;
   }
+}
 
-  &:hover {
-    .check {
-      opacity: 1;
-    }
+.root:hover,
+.root:focus,
+.rootIsChecked {
+  opacity: 1;
+}
+
+.circle,
+.check {
+  font-size: $checkBoxHeight;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
+}
+
+.circle {
+  color: $ms-color-neutralTertiaryAlt;
+
+  @media screen and (-ms-high-contrast: active) {
+    display: none;
   }
+}
+
+.rootIsChecked .circle {
+  color: $ms-color-white;
 }
 
 .check {
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
   color: $ms-color-neutralTertiaryAlt;
-  opacity: 0;
+  font-size: 16px;
 }
 
-.background {
-  position: relative;
-  height: $checkBoxHeight;
-  width: $checkBoxHeight;
+.rootIsChecked .check {
+  color: $ms-color-white;
+  font-weight: 900;
 
-  &:before {
-    content: '\E91F';
-    color: $ms-color-white;
-  }
-
-  &:after {
-    content: '\EA3A';
-    color: $ms-color-neutralTertiaryAlt;
-  }
-
-  &:before,
-  &:after {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: $checkBoxHeight;
-    height: $checkBoxHeight;
-    width: $checkBoxHeight;
-    position: absolute;
+  @media screen and (-ms-high-contrast: active) {
+    border-radius: 9px;
+    border: 1px solid WindowText;
   }
 }
-

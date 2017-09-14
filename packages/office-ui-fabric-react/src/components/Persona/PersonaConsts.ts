@@ -3,7 +3,8 @@ import {
   PersonaPresence,
   PersonaSize
 } from './Persona.Props';
-import styles = require('./Persona.scss');
+import * as stylesImport from './Persona.scss';
+const styles: any = stylesImport;
 
 export const PERSONA_SIZE = {
   [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,
@@ -13,7 +14,8 @@ export const PERSONA_SIZE = {
   [PersonaSize.regular]: '',
   [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
   [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
-  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28
+  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28,
+  [PersonaSize.size16]: 'ms-Persona--16 ' + styles.rootIs16
 };
 
 export const PERSONA_PRESENCE = {
@@ -38,7 +40,7 @@ export const PERSONA_INITIALS_COLOR = {
   [PersonaInitialsColor.magenta]: 'ms-Persona-initials--magenta ' + styles.initialsIsMagenta,
   [PersonaInitialsColor.purple]: 'ms-Persona-initials--purple ' + styles.initialsIsPurple,
   [PersonaInitialsColor.black]: 'ms-Persona-initials--black ' + styles.initialsIsBlack,
-  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsGreen,
+  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsOrange,
   [PersonaInitialsColor.red]: 'ms-Persona-initials--red ' + styles.initialsIsRed,
   [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed ' + styles.initialsIsDarkRed
 };

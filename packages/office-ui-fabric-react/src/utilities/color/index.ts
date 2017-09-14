@@ -1,2 +1,2 @@
-export * from './Colors';
-export * from './Shades';
+export * from './colors';
+export * from './shades';

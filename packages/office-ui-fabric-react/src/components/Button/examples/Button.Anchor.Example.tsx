@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {
+  IButtonProps,
   PrimaryButton
 } from 'office-ui-fabric-react/lib/Button';
 import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
-
-import { IButtonProps } from './IButtonProps';
 
 export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
   public constructor() {
@@ -14,7 +13,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { disabled } = this.props;
+    let { disabled, checked } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
@@ -22,9 +21,11 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
+          checked={ checked }
           href='http://bing.com'
           target='_blank'
-          title='Let us bing!'>
+          title='Let us bing!'
+        >
           Bing
         </PrimaryButton>
       </div >

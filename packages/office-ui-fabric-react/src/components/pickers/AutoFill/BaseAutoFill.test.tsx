@@ -17,8 +17,9 @@ describe('BaseAutoFill', () => {
 
     let component = ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
-        suggestedDisplayValue='hello' />,
+        ref={ (c) => autoFill = c! }
+        suggestedDisplayValue='hello'
+      />,
       baseNode
     );
     autoFillInput = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLInputElement;
@@ -27,7 +28,7 @@ describe('BaseAutoFill', () => {
   it('correctly autofills', (done) => {
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
             assert(text === 'hel', 'text was ' + text);
@@ -35,14 +36,15 @@ describe('BaseAutoFill', () => {
             done();
           }
         }
-        suggestedDisplayValue='hello' />,
+        suggestedDisplayValue='hello'
+      />,
       baseNode
     );
     autoFillInput.value = 'hel';
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
             assert(text === 'hel', 'text was ' + text);
@@ -50,7 +52,8 @@ describe('BaseAutoFill', () => {
             done();
           }
         }
-        suggestedDisplayValue='hello' />, baseNode);
+        suggestedDisplayValue='hello'
+      />, baseNode);
     assert(autoFill.inputElement.value === 'hello');
 
   });
@@ -60,7 +63,7 @@ describe('BaseAutoFill', () => {
     ReactTestUtils.Simulate.change(autoFillInput);
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
+        ref={ (c) => autoFill = c! }
         onInputValueChange={
           (text) => {
             assert(autoFill.value === 'hep', 'text was ' + autoFill.value);
@@ -69,7 +72,8 @@ describe('BaseAutoFill', () => {
             done();
           }
         }
-        suggestedDisplayValue='hello' />,
+        suggestedDisplayValue='hello'
+      />,
       baseNode
     );
     ReactTestUtils.Simulate.change(autoFillInput);
@@ -81,8 +85,9 @@ describe('BaseAutoFill', () => {
 
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
-        suggestedDisplayValue='hello' />,
+        ref={ (c) => autoFill = c! }
+        suggestedDisplayValue='hello'
+      />,
       baseNode
     );
 
@@ -104,8 +109,9 @@ describe('BaseAutoFill', () => {
 
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
-        suggestedDisplayValue='hello' />,
+        ref={ (c) => autoFill = c! }
+        suggestedDisplayValue='hello'
+      />,
       baseNode
     );
 
@@ -122,8 +128,9 @@ describe('BaseAutoFill', () => {
 
     ReactDOM.render(
       <BaseAutoFill
-        ref={ (c) => autoFill = c }
-        suggestedDisplayValue='hello' />,
+        ref={ (c) => autoFill = c! }
+        suggestedDisplayValue='hello'
+      />,
       baseNode
     );
 

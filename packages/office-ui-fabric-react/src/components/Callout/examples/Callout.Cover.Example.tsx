@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './CalloutExample.scss';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
@@ -50,12 +50,16 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
         <div className='ms-CalloutExample-configArea'>
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint] }
+            selectedKey={ DirectionalHint[directionalHint!] }
             options={ DIRECTION_OPTIONS }
-            onChanged={ this._onDirectionalChanged } />
+            onChanged={ this._onDirectionalChanged }
+          />
         </div>
-        <div className='ms-CalloutCoverExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+        <div className='ms-CalloutCoverExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton! }>
+          <DefaultButton
+            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
+            onClick={ this._onShowMenuClicked }
+          />
         </div>
         { isCalloutVisible ? (
           <Callout
@@ -74,7 +78,10 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
             </div>
             <div className='ms-CalloutExample-inner'>
               <div className='ms-CalloutExample-content'>
-                <Button onClick={ this._onShowMenuClicked }> Click to dismiss </Button>
+                <DefaultButton
+                  onClick={ this._onShowMenuClicked }
+                  text='Click to dismiss'
+                />
               </div>
             </div>
           </Callout>
@@ -95,7 +102,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
 
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      directionalHint: DirectionalHint[option.key]
+      directionalHint: (DirectionalHint as any)[option.key]
     });
   }
 }

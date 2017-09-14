@@ -32,6 +32,7 @@ export interface INavPage {
    * The component to render for this page's content.
    */
   component?: any;
+
   /**
    *  Loads the component using require.ensure;
    */

@@ -1,16 +1,21 @@
 export interface IColorPickerProps {
-  /**
-   * The CSS-compatible string to describe the initial color
-   */
-  color: string;
+    /**
+     * Gets the component ref.
+     */
+    componentRef?: () => void;
 
-  /**
-   * Callback issued when the user changes the color
-   */
-  onColorChanged?: (color: string) => void;
+    /**
+     * The CSS-compatible string to describe the initial color
+     */
+    color: string;
 
-  /**
-   * The setting of whether hide alpha control slider.
-   */
-  alphaSliderHidden?: boolean;
+    /**
+     * Callback issued when the user changes the color
+     */
+    onColorChanged?: (color: string) => void;
+
+    /**
+     * The setting of whether hide alpha control slider.
+     */
+    alphaSliderHidden?: boolean;
 }

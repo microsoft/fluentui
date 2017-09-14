@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ISlider {
-  value: number;
+  value: number | undefined;
 
   focus: () => void;
 }
@@ -43,14 +43,14 @@ export interface ISliderProps {
   max?: number;
 
   /**
-   * The diffrrence between the two adjacent values of the Slider
+   * The difference between the two adjacent values of the Slider
    * @default 1
    */
   step?: number;
 
   /**
    * Whether to show the value on the right of the Slider.
-   * If you want to show the value by yourself, you may want to set this value to false.
+   * @default true
    */
   showValue?: boolean;
 
@@ -65,17 +65,22 @@ export interface ISliderProps {
   ariaLabel?: string;
 
   /**
-   * Whether or not the Slider is disabled.
+   * Optional flag to render the slider vertically. Defaults to rendering horizontal.
+   */
+  vertical?: boolean;
+
+  /**
+   * Optional flag to render the Slider as disabled.
    */
   disabled?: boolean;
 
   /**
-  * Optional className for slider.
+  * Optional className to attach to the slider root element.
   */
   className?: string;
 
   /**
    * Optional mixin for additional props on the thumb button within the slider.
    */
-  buttonProps?: React.HTMLProps<HTMLButtonElement>;
+  buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }

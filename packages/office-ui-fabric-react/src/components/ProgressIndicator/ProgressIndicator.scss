@@ -7,23 +7,17 @@
 // --------------------------------------------------
 // ProgressIndicator Styles
 
-// Component Slots
-$progressIndicator-description-color: $bodyTextAltColor;
-$progressIndicator-title-color: $bodyTextStrongColor;
-$progressIndicator-background-color: $controlUnfilledColor; // empty track color
-$progressIndicator-foreground-color: $controlFilledColor; // filled progress track
 
 $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
 
 .root {
-  @include ms-baseFont;
   font-weight: $ms-font-weight-regular;
 }
 
 .itemName {
-  color: $progressIndicator-title-color;
+  color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -33,7 +27,7 @@ $ProgressIndicatorTextHeight: 18px;
 }
 
 .itemDescription {
-  color: $progressIndicator-description-color;
+  color: $ms-color-neutralSecondaryAlt;
   font-size: $ms-font-size-xs;
   line-height: $ProgressIndicatorTextHeight;
 }
@@ -48,12 +42,12 @@ $ProgressIndicatorTextHeight: 18px;
   position: absolute;
   width: 100%;
   height: 2px;
-  background-color: $progressIndicator-background-color;
+  background-color: $ms-color-neutralLight;
   outline: 1px solid transparent;
 }
 
 .progressBar {
-  background-color: $progressIndicator-foreground-color;
+  background-color: $ms-color-themePrimary;
   height: 2px;
   position: absolute;
   transition: width .3s ease;

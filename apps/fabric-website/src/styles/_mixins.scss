@@ -2,11 +2,11 @@
 @mixin contentPadding($paddingTop:0px, $paddingBottom:$contentPaddingBottom) {
   padding: $paddingTop $contentPadding-sm $paddingBottom $contentPadding-sm;
 
-  @media screen and (min-width: $ms-screen-lg-min) {
+  @media screen and (min-width: $ms-screen-min-lg) {
     padding: $paddingTop $contentPadding-lg $paddingBottom $contentPadding-lg;
   }
 
-  @media screen and (min-width: $ms-screen-xl-min) {
+  @media screen and (min-width: $ms-screen-min-xl) {
     padding: $paddingTop $contentPadding-xl $paddingBottom $contentPadding-xl;
   }
 }
@@ -16,12 +16,12 @@
   margin-left: -$contentPadding-sm;
   margin-right: -$contentPadding-sm;
 
-  @media screen and (min-width: $ms-screen-lg-min) {
+  @media screen and (min-width: $ms-screen-min-lg) {
     margin-left: -$contentPadding-lg;
     margin-right: -$contentPadding-lg;
   }
 
-  @media screen and (min-width: $ms-screen-xl-min) {
+  @media screen and (min-width: $ms-screen-min-xl) {
     margin-left: -$contentPadding-xl;
     margin-right: -$contentPadding-xl;
   }
@@ -47,7 +47,7 @@
     right: -10px;
 
     // Use http://pressbin.com/tools/urlencode_urldecode/ and encodeURIComponent() to base64-encode the SVGs
-    
+
     // SVG: <svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 395 42"><polygon fill="#COLOR" points="400 50 400 0 0 42 0 50"/></svg>
     $colorBelowValue: str-slice('#{$colorBelow}', 2);
     $bottomAngle: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%225%200%20395%2042%22%3E%3Cpolygon%20fill%3D%22%23#{$colorBelowValue}%22%20points%3D%22400%2050%20400%200%200%2042%200%2050%22%2F%3E%3C%2Fsvg%3E");
@@ -67,7 +67,7 @@
       background-position: center bottom;
     }
 
-    @media screen and (min-width: $ms-screen-lg-min) {
+    @media screen and (min-width: $ms-screen-min-lg) {
       height: 140px; // Make room for wider angle
     }
   }
@@ -100,7 +100,7 @@
   color: $foregroundColor;
   letter-spacing: 0.03em;
   padding: 8px 20px 10px 20px;
-  transition: all $ms-duration2 $ms-ease1;
+  transition: all $ms-animation-duration-2 $ms-animation-ease-1;
 
   &:hover {
     background-color: $foregroundColor;

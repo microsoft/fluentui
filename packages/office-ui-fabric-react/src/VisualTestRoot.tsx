@@ -4,13 +4,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { VisualTestState } from './VisualTestState';
 import { Route, Router } from './utilities/router/index';
-import { setBaseUrl } from '@uifabric/utilities/lib/resources';
+import { setBaseUrl } from './Utilities';
 
 setBaseUrl('./dist/');
 
-let rootElement;
-let currentBreakpoint;
-let scrollDistance;
+let rootElement: HTMLElement;
+let scrollDistance: number;
 let requireContext = require.context('./components', true, /Page.visualtest$/);
 
 // This is mostly taken from the react-website project.
@@ -19,7 +18,7 @@ function _routerDidMount() {
   if (_hasAnchorLink(window.location.hash)) {
     let hash = _extractAnchorLink(window.location.hash);
     let el = document.getElementById(hash);
-    let elRect = el.getBoundingClientRect();
+    let elRect = el!.getBoundingClientRect();
     let bodySTop = document.body.scrollTop;
     let currentScrollPosition;
     currentScrollPosition = bodySTop + elRect.top;
@@ -27,11 +26,11 @@ function _routerDidMount() {
   }
 }
 
-function _hasAnchorLink(path) {
+function _hasAnchorLink(path: string) {
   return (path.match(/#/g) || []).length > 1;
 }
 
-function _extractAnchorLink(path) {
+function _extractAnchorLink(path: string) {
   let split = path.split('#');
   let cleanedSplit = split.filter((value) => {
     if (value === '') {
@@ -57,8 +56,8 @@ function _onLoad() {
     rootElement);
 }
 
-function _getAppRoutes() {
-  let routes = [];
+function _getAppRoutes(): JSX.Element[] {
+  let routes: JSX.Element[] = [];
 
   // Create a route for each top level page, and all of its sub pages
   VisualTestState.componentPath.forEach((path, pathIndex) => {
@@ -69,13 +68,14 @@ function _getAppRoutes() {
       <Route
         key={ pathIndex }
         path={ '#/' + url }
-        getComponent={ getPath(path) } />);
+        getComponent={ getPath(path) }
+      />);
   });
   return routes;
 }
 
-function getPath(path) {
-  return (cb => require.ensure([], () => cb((requireContext(path) as any).default)));
+function getPath(path: string) {
+  return ((cb: any) => require.ensure([], () => cb((requireContext(path) as any).default)));
 }
 
 function _onUnload() {

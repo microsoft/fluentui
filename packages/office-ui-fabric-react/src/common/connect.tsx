@@ -4,8 +4,8 @@ import { IStoreKey } from './storeKey';
 
 export function connect<ORIGINAL_PROPS, NEW_PROPS>(
   component: React.ComponentClass<ORIGINAL_PROPS> | React.StatelessComponent<ORIGINAL_PROPS>,
-  storesToSubscribe: IStoreKey<any>[],
-  getProps: (props: ORIGINAL_PROPS, ...stores) => NEW_PROPS
+  storesToSubscribe: IStoreKey[],
+  getProps: (props: ORIGINAL_PROPS, ...stores: any[]) => NEW_PROPS
 ): React.StatelessComponent<NEW_PROPS> {
 
   return (props: NEW_PROPS) => (
@@ -14,6 +14,6 @@ export function connect<ORIGINAL_PROPS, NEW_PROPS>(
       componentProps={ props }
       getProps={ getProps }
       storesToSubscribe={ storesToSubscribe }
-      />
+    />
   );
 }

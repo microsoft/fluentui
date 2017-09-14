@@ -20,32 +20,53 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
 
   public render() {
     return (
-      <ChoiceGroup
-        defaultSelectedKey='B'
-        options={ [
-          {
-            key: 'A',
-            text: 'Option A'
-          },
-          {
-            key: 'B',
-            text: 'Option B',
-          },
-          {
-            key: 'C',
-            text: 'Option C',
-            disabled: true
-          },
-          {
-            key: 'D',
-            text: 'Option D',
-            disabled: true
-          }
-        ] }
-        onChange={ this._onChange }
-        label='Pick one'
-        required={ true }
-      />
+      <div>
+        <ChoiceGroup
+          defaultSelectedKey='B'
+          options={ [
+            {
+              key: 'A',
+              text: 'Option A',
+              'data-automation-id': 'auto1'
+            } as IChoiceGroupOption,
+            {
+              key: 'B',
+              text: 'Option B',
+            },
+            {
+              key: 'C',
+              text: 'Option C',
+              disabled: true
+            },
+            {
+              key: 'D',
+              text: 'Option D',
+              disabled: true
+            }
+          ] }
+          onChange={ this._onChange }
+          label='Pick one'
+          required={ true }
+        />
+        <ChoiceGroup
+          defaultSelectedKey='A'
+          options={ [
+            {
+              key: 'A',
+              text: 'Option A',
+              disabled: true
+            },
+            {
+              key: 'B',
+              text: 'Option B',
+              disabled: true
+            }
+          ] }
+          onChange={ this._onChange }
+          label='Pick one'
+          required={ true }
+        />
+      </div>
     );
   }
 

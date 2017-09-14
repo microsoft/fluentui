@@ -1,13 +1,28 @@
 @import '../../common/common';
 
-$ContextualMenu-background: $ms-color-white;
-$ContextualMenu-itemHover: $ms-color-neutralLighter;
-$ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
-$ContextualMenu-itemHeight: 36px;
+
+
+$ContextualMenu-itemHeight: 32px;
 $ContextualMenu-iconWidth: 14px;
 
+// component slots
+$ContextualMenu-background-color: $menuBackgroundColor;
+$ContextualMenu-background-hover-color: $menuBackgroundHoverColor;
+$ContextualMenu-background-selected-color: $menuBackgroundSelectedColor;
+
+$ContextualMenu-text-color: $menuTextColor;
+$ContextualMenu-text-selected-color: $menuTextSelectedColor;
+
+$ContextualMenu-icon-color: $menuIconColor;
+
+$ContextualMenu-header-color: $menuHeaderColor;
+
+$ContextualMenu-divider-color: $menuDividerColor;
+
+$ContextualMenu-text-disabled: $menuTextDisabledColor;
+
 .root {
-  background-color: $ContextualMenu-background;
+  background-color: $ContextualMenu-background-color;
   min-width: 180px;
 }
 
@@ -20,8 +35,7 @@ $ContextualMenu-iconWidth: 14px;
 
 .item {
   @include ms-font-m;
-  color: $ms-color-neutralPrimary;
-  height: $ContextualMenu-itemHeight;
+  color: $ContextualMenu-text-color;
   position: relative;
   box-sizing: border-box;
 }
@@ -42,26 +56,26 @@ $ContextualMenu-iconWidth: 14px;
   @include text-align(left);
 
   &:hover:not([disabled]) {
-    background: $ContextualMenu-itemHover;
+    background: $ContextualMenu-background-hover-color;
   }
   &.isDisabled,
   &[disabled] {
-    color: $ms-color-neutralTertiaryAlt;
+    color: $ContextualMenu-text-disabled;
     cursor: default;
     pointer-events: none;
     .icon {
-      color: $ms-color-neutralTertiaryAlt;
+      color: $ContextualMenu-text-disabled;
     }
   }
 
   :global(.is-focusVisible) &:focus {
-    background: $ContextualMenu-itemHover;
+    background: $ContextualMenu-background-hover-color;
   }
 
   &.isExpanded,
   &.isExpanded:hover {
-    background: $ContextualMenu-expandedItemBackground;
-    color: $ms-color-black;
+    background: $ContextualMenu-background-selected-color;
+    color: $ContextualMenu-text-selected-color;
     font-weight: $ms-font-weight-semibold;
   }
 }
@@ -70,7 +84,7 @@ $ContextualMenu-iconWidth: 14px;
   @include focus-border();
   @include ms-font-s;
   font-weight: $ms-font-weight-semibold;
-  color: $ms-color-themePrimary;
+  color: $ContextualMenu-header-color;
   background: none;
   border: none;
   height: $ContextualMenu-itemHeight;
@@ -105,7 +119,7 @@ a.link {
 .divider {
   display: block;
   height: 1px;
-  background-color: $dividerColor;
+  background-color: $ContextualMenu-divider-color;
   position: relative;
 }
 
@@ -120,7 +134,7 @@ a.link {
 }
 
 .iconColor {
-  color: $ms-color-themePrimary;
+  color: $ContextualMenu-icon-color;
 }
 
 .itemText {

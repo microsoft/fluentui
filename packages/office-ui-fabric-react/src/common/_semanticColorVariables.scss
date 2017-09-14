@@ -29,68 +29,66 @@ $selectedActiveForegroundColor: $ms-color-neutralPrimary;
 
 $dividerColor: $ms-color-neutralLight;
 
-/*[theme:primaryBackgroundColor, default: #FFAAFA]*/
-$foregroundColor: "[theme:Foreground, default: #333]"; // font
-$backgroundColor: "[theme:Background, default: #fff]"; // body
+// *** New semantic slots
+// todo: convert to theme tokens
 
-$inputEmphasizedBackground: "[theme:InputEmphasizedBackground, default: #0078d7]"; // $ms-color-themePrimary;
-$inputEmphasizedBackgroundHover: "[theme:InputEmphasizedBackgroundHover, default: #2b88d8]"; // $ms-color-themeSecondary;
-$inputEmphasizedForeground: "[theme:InputEmphasizedForeground, default: #fff]"; // $ms-color-white;
-$inputEmphasizedForegroundHover: "[theme:InputEmphasizedForegroundHover, default: #ddd]";
+/*** BASIC ***/
+$bodyBackgroundColor: $ms-color-white;
+$bodyTextColor: $ms-color-neutralPrimary;
+$bodySubtextColor: $ms-color-neutralSecondary;
 
-$inputBackground: "[theme:InputBackground, default: #f4f4f4]";
-$inputBackgroundHover: "[theme:InputBackgroundHover, default: #eaeaea]";
-$inputForeground: "[theme:InputForeground, default: #333]";
-$inputForegroundHover: "[theme:InputForegroundHover, default: #333]";
+$disabledBackgroundColor: $ms-color-neutralLighter;
+$disabledTextColor: $ms-color-neutralTertiaryAlt;
+$disabledSubtextColor: $ms-color-neutralQuaternary;
 
-$disabledBackgroundColor: "[theme:DisabledBackground, default: #c8c8c8]"; // $ms-color-neutralTertiaryAlt
-$disabledForegroundColor: "[theme:DisabledForeground, default: #a6a6a6]"; // $ms-color-neutralLight
+$focusBorderColor: $ms-color-black;
 
-$neutralBackgroundColor: "[theme:NeutralBackground, default: #767676]"; // $ms-color-neutralTertiaryAlt
-$neutralForegroundColor: "[theme:NeutralForeground, default: #a6a6a6]"; // $ms-color-neutralTertiary
-// just use normal foreground: $neutralForegroundHoverColor: "[theme:, default: #333]"; // $ms-color-black;
+// $errorBackgroundColor: todo
+$errorTextColor: $ms-color-redDark;
 
-// new semantic slots
+/*** Text fields ***/
+$fieldBackgroundColor: $ms-color-white;
+$fieldTextColor: $ms-color-neutralPrimary;
 
-$primaryColorColor:	"[theme: primaryColor,	default: #0078d7]";
-$primaryColorLightestColor:	"[theme: primaryColorLightest,	default: #c4e4ff]";
-$primaryColorLighterColor:	"[theme: primaryColorLighter,	default: #89caff]";
-$primaryColorMediumColor:	"[theme: primaryColorMedium,	default: #4eafff]";
-$primaryColorDarkerColor:	"[theme: primaryColorDarker,	default: #0058a1]";
-$primaryColorDarkestColor:	"[theme: primaryColorDarkest,	default: #003b6b]";
-$backgroundColorColor:	"[theme: backgroundColor,	default: #eeeeee]";
-$backgroundColorLightestColor:	"[theme: backgroundColorLightest,	default: #d5d5d5]";
-$backgroundColorLighterColor:	"[theme: backgroundColorLighter,	default: #b2b2b2]";
-$backgroundColorMediumColor:	"[theme: backgroundColorMedium,	default: #777777]";
-$backgroundColorDarkerColor:	"[theme: backgroundColorDarker,	default: #3b3b3b]";
-$backgroundColorDarkestColor:	"[theme: backgroundColorDarkest,	default: #181818]";
-$foregroundColorColor:	"[theme: foregroundColor,	default: #333333]";
-$foregroundColorLightestColor:	"[theme: foregroundColorLightest,	default: #d6d6d6]";
-$foregroundColorLighterColor:	"[theme: foregroundColorLighter,	default: #adadad]";
-$foregroundColorMediumColor:	"[theme: foregroundColorMedium,	default: #858585]";
-$foregroundColorDarkerColor:	"[theme: foregroundColorDarker,	default: #262626]";
-$foregroundColorDarkestColor:	"[theme: foregroundColorDarkest,	default: #1a1a1a]";
-$errorTextColor:	"[theme: errorText,	default: #ff0000]";
-$bodyBackgroundColor:	"[theme: bodyBackground,	default: #ffffff]";
-$bodyTextColor:	"[theme: bodyText,	default: #333333]";
-$bodyTextAltColor:	"[theme: bodyTextAlt,	default: #858585]";
-$bodyTextDisabledColor:	"[theme: bodyTextDisabled,	default: #adadad]";
-$bodyTextHoverColor:	"[theme: bodyTextHover,	default: #1a1a1a]";
-$bodyTextPrimaryColor:	"[theme: bodyTextPrimary,	default: #0078d7]";
-$bodyTextPrimaryAltColor:	"[theme: bodyTextPrimaryAlt,	default: #4eafff]";
-$bodyTextStrongColor:	"[theme: bodyTextStrong,	default: #1a1a1a]";
-$focusBorderColor:	"[theme: focusBorder,	default: #1a1a1a]";
-$controlTextColor:	"[theme: controlText,	default: #333333]";
-$controlBackgroundColor:	"[theme: controlBackground,	default: #ffffff]";
-$controlBackgroundDisabledColor:	"[theme: controlBackgroundDisabled,	default: #d5d5d5]";
-$controlBackgroundHoverColor:	"[theme: controlBackgroundHover,	default: #ffffff]";
-$controlBackgroundSelectedColor:	"[theme: controlBackgroundSelected,	default: #ffffff]";
-$controlBackgroundSelectedHoverColor:	"[theme: controlBackgroundSelectedHover,	default: #ffffff]";
-$controlForegroundSelectedColor:	"[theme: controlForegroundSelected,	default: #0078d7]";
-$controlForegroundDisabledColor:	"[theme: controlForegroundDisabled,	default: #adadad]";
-$controlBorderColor:	"[theme: controlBorder,	default: #858585]";
-$controlBorderDisabledColor:	"[theme: controlBorderDisabled,	default: #d6d6d6]";
-$controlBorderHoverColor:	"[theme: controlBorderHover,	default: #1a1a1a]";
-$controlUnfilledColor:	"[theme: controlUnfilled,	default: #c4e4ff]";
-$controlFilledColor:	"[theme: controlFilled,	default: #0078d7]";
-$controlFilledHoverColor:	"[theme: controlFilledHover,	default: #0058a1]";
+$fieldBorderColor: $ms-color-neutralTertiary;
+$fieldBorderHoverColor: $ms-color-neutralDark;
+$fieldBorderFocusColor: $ms-color-themePrimary;
+
+$fieldPlaceholderColor: $ms-color-neutralTertiary;
+
+/*** State controls ***/
+$controlBackgroundColor: $ms-color-white;
+$controlBackgroundSelectedColor: $ms-color-themePrimary;
+$controlBackgroundSelectedHoverColor: $ms-color-themeDarkAlt;
+
+$controlForegroundColor: $ms-color-neutralPrimary;
+$controlForegroundHoverColor: $ms-color-black;
+$controlForegroundSelectedColor: $ms-color-white;
+
+$controlBorderUnselectedColor: $ms-color-neutralTertiary;
+$controlBorderUnselectedHoverColor: $ms-color-neutralPrimary;
+// $controlBorderSelectedColor: unused
+$controlBorderSelectedHoverColor: $ms-color-themePrimary;
+
+/*** Menus ***/
+$menuBackgroundColor: $ms-color-white;
+$menuBackgroundHoverColor: $ms-color-neutralLighter;
+$menuBackgroundSelectedColor: $ms-color-neutralQuaternaryAlt;
+
+$menuTextColor: $ms-color-neutralPrimary;
+$menuTextSelectedColor: $ms-color-black;
+$menuTextDisabledColor: $ms-color-neutralTertiaryAlt;
+
+$menuIconColor: $ms-color-themePrimary;
+
+$menuHeaderColor: $ms-color-themePrimary;
+
+$menuDividerColor: $ms-color-neutralLight;
+
+/*** Lists ***/
+$listBackgroundColor: transparent;
+$listTextColor: $ms-color-neutralPrimary;
+
+$listItemHoverColor: $ms-color-neutralLighter;
+$listItemSelectedColor: $ms-color-neutralQuaternary;
+$listItemSelectedHoverColor: $ms-color-neutralQuaternaryAlt;

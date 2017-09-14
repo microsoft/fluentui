@@ -1,36 +1,31 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelSmallLeftExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = {
-      showPanel: false
-    };
+    this.state = { showPanel: false };
   }
 
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <DefaultButton
+          description='Opens the Sample Panel'
+          onClick={ () => this.setState({ showPanel: true }) }
+          text='Open Panel'
+        />
         <Panel
           isOpen={ this.state.showPanel }
           type={ PanelType.smallFixedNear }
-          onDismiss={ this._closePanel.bind(this) }
+          onDismiss={ () => this.setState({ showPanel: false }) }
           headerText='Panel - Small, left-aligned, fixed'
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );
-  }
-
-  private _showPanel() {
-    this.setState({ showPanel: true });
-  }
-  private _closePanel() {
-    this.setState({ showPanel: false });
   }
 }

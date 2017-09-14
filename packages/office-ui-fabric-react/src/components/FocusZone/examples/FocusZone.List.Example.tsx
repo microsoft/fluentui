@@ -4,16 +4,16 @@ import {
   createArray,
   getRTLSafeKeyCode
 } from 'office-ui-fabric-react/lib/Utilities';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
 import './FocusZone.List.Example.scss';
 
 const ITEMS = createArray(10, (index) => ({
-  key: index,
+  key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (200 + index)
+  url: 'http://placehold.it/100x' + (200 + index!)
 }));
 
 const COLUMNS: IColumn[] = [
@@ -35,7 +35,7 @@ const COLUMNS: IColumn[] = [
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
-    onRender: item => <Button>{ item.url }</Button>
+    onRender: item => <DefaultButton>{ item.url }</DefaultButton>
   }
 ];
 
@@ -55,7 +55,8 @@ export class FocusZoneListExample extends React.Component<any, any> {
         className='ms-FocusZoneListExample'
         direction={ FocusZoneDirection.vertical }
         isCircularNavigation={ true }
-        isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }>
+        isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+      >
         { ITEMS.map((item, index) => (
           <DetailsRow
             key={ index }
@@ -63,7 +64,8 @@ export class FocusZoneListExample extends React.Component<any, any> {
             itemIndex={ index }
             columns={ COLUMNS }
             selectionMode={ SelectionMode.single }
-            selection={ this._selection } />
+            selection={ this._selection }
+          />
         )) }
       </FocusZone>
     );

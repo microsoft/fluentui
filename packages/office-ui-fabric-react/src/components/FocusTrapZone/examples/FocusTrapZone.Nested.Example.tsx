@@ -4,11 +4,8 @@ import * as React from 'react';
 
 /* tslint:disable:no-string-literal */
 
-import * as ReactDOM from 'react-dom';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './FocusTrapZone.Box.Example.scss';
@@ -24,26 +21,20 @@ interface IFocusTrapComponentState {
 
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    toggle: HTMLElement;
-  };
-
   public render() {
     let contents = (
       <div className='ms-FocusTrapComponent'>
-        <Button onClick={ this._onStringButtonClicked } >
-          {
-            this.props.name
-          }
-        </Button>
+        <DefaultButton
+          onClick={ this._onStringButtonClicked }
+          text={ this.props.name }
+        />
         <Toggle
-          ref='toggle'
-          checked={ this.props.isActive }
+          defaultChecked={ this.props.isActive }
           onChanged={ this._onFocusTrapZoneToggleChanged }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'
+        />
         {
           this.props.children
         }
@@ -82,7 +73,7 @@ export interface IFocusTrapZoneNestedExampleState {
 
 const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
 
-export default class FocusTrapZoneNestedExample extends React.Component<React.HTMLProps<HTMLDivElement>, IFocusTrapZoneNestedExampleState> {
+export default class FocusTrapZoneNestedExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IFocusTrapZoneNestedExampleState> {
 
   constructor() {
     super();
@@ -104,7 +95,7 @@ export default class FocusTrapZoneNestedExample extends React.Component<React.HT
           </FocusTrapComponent>
           <FocusTrapComponent name={ 'Five' } isActive={ !!stateMap['Five'] } setIsActive={ this._setIsActive } />
         </FocusTrapComponent>
-        <Button onClick={ this._randomize }>Randomize</Button>
+        <DefaultButton onClick={ this._randomize }>Randomize</DefaultButton>
       </div>
     );
   }

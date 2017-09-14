@@ -8,36 +8,128 @@
 // Single line (input) and multiline (textarea) form field styles
 @import '../Label/LabelMixins.scss';
 
+// component slots
+$field-background-color: $fieldBackgroundColor;
+$field-background-disabled-color: $disabledBackgroundColor;
+
+$field-border-color: $fieldBorderColor;
+$field-border-disabled-color: $disabledBackgroundColor;
+$field-border-hover-color: $fieldBorderHoverColor;
+$field-border-focus-color: $fieldBorderFocusColor;
+$field-border-error-color: $errorTextColor;
+
+$field-text-color: $fieldTextColor;
+$field-text-disabled-color: $disabledTextColor;
+
+$field-placeholder-color: $fieldPlaceholderColor;
+$field-placeholder-disabled-color: $disabledSubtextColor;
+
+$field-description-color: $bodySubtextColor;
+$field-error-color: $errorTextColor;
+
+// the box containing the label and input field
 .root {
-  @include ms-baseFont;
-  @include ms-u-normalize;
-  color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
+  @include ms-normalize;
   margin-bottom: 8px;
   position: relative; /* Needed to position icon */
-
-  :global(.ms-Label) {
-    font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
-  }
 }
 
 .screenReaderOnly {
-  @include ms-u-screenReaderOnly;
+  @include ms-screenReaderOnly;
+}
+
+//= State: default
+.fieldGroup {
+  @include ms-normalize;
+  border: 1px solid $field-border-color;
+  background: $field-background-color;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  position: relative;
+
+  &:hover {
+    border-color: $field-border-hover-color;
+  }
+
+  &.fieldGroupIsFocused {
+    border-color: $field-border-focus-color;
+  }
+
+  .rootIsDisabled & {
+    background-color: $field-background-disabled-color;
+    border-color: $field-border-disabled-color;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &:hover,
+  &.fieldGroupIsFocused {
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackSelected;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteSelected;
+    }
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
 }
 
 //= State: A disabled textfield
 .root.rootIsDisabled {
   :global(.field) {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    background-color: $field-background-disabled-color;
+    border-color: $field-border-disabled-color;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.fieldAddon {
+  background: $ms-color-neutralLighter;
+  color: $ms-color-neutralSecondary;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  line-height: 1;
+}
+
+.field {
+  @include ms-normalize;
+  font-size: $ms-font-size-m;
+  border-radius: 0;
+  border: none;
+  background: none;
+  color: $field-text-color;
+  @include ms-padding(0, 12px, 0, 12px);
+  width: 100%;
+  text-overflow: ellipsis;
+  outline: 0;
+  &:active,
+  &:focus,
+  &:hover {
+      outline: 0;
+    }
+  &.hasIcon {
+    @include ms-padding-right(24px);
+  }
+
+  &[disabled] {
+    background-color: transparent;
+    border-color: transparent;
     pointer-events: none;
     cursor: default;
   }
 
-  @include input-placeholder {
-    color: $ms-color-neutralTertiary;
+  .field {
+    &::placeholder {
+      color: $field-placeholder-disabled-color;
+    }
   }
 }
 
@@ -46,98 +138,42 @@
   :global(.ms-Label) {
     @include ms-Label-is-required
   }
-
-  @include input-placeholder {
-    @include ms-Label-is-required
-  }
 }
 
 //= State: An active textfield
 .root.rootIsActive {
-  border-color: $ms-color-themePrimary;
+  border-color: $field-border-focus-color;
 }
 
 .errorIcon {
-  vertical-align: middle;
   font-size: $ms-font-size-m;
   @include margin-right(5px);
 }
 
 .icon {
+  pointer-events: none;
   position: absolute;
   bottom: 8px;
   @include right(8px);
   top: auto;
 }
 
-.field {
-  @include ms-u-normalize;
-  @include ms-baseFont;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
-  border-radius: 0;
-  font-weight: $ms-font-weight-regular;
-  font-size: $ms-font-size-m;
-  color: $ms-color-neutralPrimary;
-  height: 32px;
-  @include padding(0, 12px, 0, 12px);
-  width: 100%;
-  outline: 0;
-  text-overflow: ellipsis;
-
-  &.hasIcon {
-    @include padding-right(24px);
-  }
-
-  &:hover {
-    border-color: $ms-color-neutralSecondaryAlt;
-  }
-
-  &:focus {
-    border-color: $ms-color-themePrimary;
-  }
-
-  &:hover,
-  &:focus {
-    @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackSelected;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteSelected;
-    }
-  }
-
-  &[disabled] {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
-    pointer-events: none;
-    cursor: default;
-  }
-
-  @include input-placeholder {
-    color: $ms-color-neutralSecondary;
-  }
-
-  &::-ms-clear {
-    display: none;
-  }
-}
-
 .description {
-  color: $ms-color-neutralSecondaryAlt;
+  color: $field-description-color;
   font-size: $ms-font-size-xs;
 }
 
+.rootIsBorderless .fieldGroup {
+  border-color: transparent;
+  border-width: 0;
+}
 
 //== Modifier: Single line (default), underlined
-//
 .root.rootIsUnderlined {
-  border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
-  display: table;
-  width: 100%;
+  border-width: 0px;
 
-  &:hover {
-    border-color: $ms-color-neutralSecondaryAlt;
+  &:hover:not(.rootIsDisabled) {
+    border-color: $field-border-hover-color;
 
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
@@ -148,40 +184,29 @@
     }
   }
 
-  &:active,
-  &:focus {
-    border-color: $ms-color-themePrimary;
+  .wrapper {
+    display: flex;
+    border-bottom: 1px solid $field-border-color;
+    width: 100%;
   }
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
-    @include margin-right(8px);
-    display: table-cell;
-    vertical-align: top;
-    @include padding-left(12px);
-    padding-top: 9px;
+    @include ms-margin-right(8px);
+    @include ms-padding-left(12px);
+    line-height: 22px; // 32px minus 5px padding top/bottom
     height: 32px;
-    width: 1%;
-    white-space: nowrap;
   }
 
-  .field {
-    border: 0;
-    @include float(left);
-    display: table-cell;
-    @include text-align(left);
-    padding-top: 8px;
-    padding-bottom: 3px;
+  .fieldGroup {
+    flex: 1 1 0px;
+    border-width: 0;
 
-    &:active,
-    &:focus,
-    &:hover {
-      outline: 0;
-    }
+    @include ms-text-align(left);
   }
 
   &.rootIsDisabled {
-    border-bottom-color: $ms-color-neutralLight;
+    border-bottom-color: $field-border-disabled-color;
 
     :global(.ms-Label) {
       @include ms-Label-is-disabled;
@@ -189,12 +214,12 @@
 
     .field {
       background-color: transparent;
-      color: $ms-color-neutralTertiary;
+      color: $field-text-disabled-color;
     }
   }
 
   &.rootIsActive {
-    border-color: $ms-color-themePrimary;
+    border-color: $field-border-focus-color;
 
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
@@ -209,42 +234,47 @@
 
 //== Modifier: Multiline textfield
 //
-.root.rootIsMultiline .field {
-  @include ms-baseFont;
-  color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
-  line-height: 17px;
-  min-height: 60px;
-  height: auto;
-  padding-top: 6px;
-  overflow: auto;
+.root.rootIsMultiline {
+  .fieldGroup {
+    min-height: 60px;
+    height: auto;
+    display: flex;
+  }
 
-  &.hasIcon {
-    @include padding-right(40px);
+  .field {
+    line-height: 17px;
+    flex-grow: 1;
+    padding-top: 6px;
+    overflow: auto;
+    width: 100%;
+
+    &.hasIcon {
+      @include ms-padding-right(40px);
+    }
   }
 }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
 .errorMessage {
   @include ms-font-s;
-  @include ms-fontColor-redDark;
-  @include resetMargins;
+  color: $field-error-color;
+  margin: 0;
   padding-top: 5px;
+  display: flex;
+  align-items: center;
 }
 
 .invalid,
 .invalid:focus,
 .invalid:hover {
-  @include ms-borderColor-redDark;
+  border-color: $field-border-error-color;
 }
 
 .root.rootIsUnderlined {
 
   :global(.ms-Label) {
-    @include padding-left(12px);
-    @include padding-right(0);
+    @include ms-padding-left(12px);
+    @include ms-padding-right(0);
   }
 
   .field {
@@ -255,7 +285,9 @@
 .root.rootIsMultiline {
 
   .icon {
-    @include right(24px);
+    @include ms-padding-right(24px);
+    padding-bottom: 8px;
+    align-items: flex-end;
   }
 
   .field.fieldIsUnresizable {

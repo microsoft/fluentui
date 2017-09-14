@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import {
   Calendar,
@@ -62,10 +62,21 @@ const DayPickerStrings = {
 
 export interface ICalendarButtonExampleState {
   showCalendar: boolean;
-  selectedDate: Date;
+  selectedDate: Date | null;
 }
 
-export class CalendarButtonExample extends React.Component<any, ICalendarButtonExampleState> {
+export interface ICalendarButtonExampleProps {
+  isDayPickerVisible?: boolean;
+  highlightCurrentMonth?: boolean;
+  buttonString?: string;
+}
+
+export class CalendarButtonExample extends React.Component<ICalendarButtonExampleProps, ICalendarButtonExampleState> {
+  public static defaultProps: ICalendarButtonExampleProps = {
+    isDayPickerVisible: true,
+    buttonString: 'Click for Calendar'
+  };
+
   private _calendarButtonElement: HTMLElement;
 
   public constructor() {
@@ -84,10 +95,11 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
   public render() {
     return (
       <div>
-        <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn }>
-          <Button onClick={ this._onClick } >
-            { this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
-          </Button>
+        <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn! }>
+          <DefaultButton
+            onClick={ this._onClick }
+            text={ !this.state.selectedDate ? this.props.buttonString : this.state.selectedDate.toLocaleDateString() }
+          />
         </div>
         { this.state.showCalendar && (
           <Callout
@@ -104,11 +116,12 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._onDismiss }
               isMonthPickerVisible={ true }
-              value={ this.state.selectedDate }
+              value={ this.state.selectedDate! }
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
-            >
-            </Calendar>
+              isDayPickerVisible={ this.props.isDayPickerVisible }
+              highlightCurrentMonth={ this.props.highlightCurrentMonth }
+            />
           </Callout>
         )
         }

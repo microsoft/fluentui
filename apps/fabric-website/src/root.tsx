@@ -6,7 +6,7 @@ import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { setBaseUrl } from '@uifabric/utilities/lib/resources';
+import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
@@ -23,7 +23,7 @@ let rootElement;
 let currentBreakpoint;
 let scrollDistance;
 
-function _routerDidMount() {
+function _routerDidMount(): void {
   if (_hasAnchorLink(window.location.hash)) {
     let hash = _extractAnchorLink(window.location.hash);
     let el = document.getElementById(hash);
@@ -35,12 +35,12 @@ function _routerDidMount() {
   }
 }
 
-function _getBreakpoint() {
+function _getBreakpoint(): void {
   currentBreakpoint = WindowWidthUtility.currentFabricBreakpoint();
   scrollDistance = _setScrollDistance();
 }
 
-function _setScrollDistance() {
+function _setScrollDistance(): number {
   switch (currentBreakpoint) {
     case ('LG'):
       return 240;
@@ -49,7 +49,7 @@ function _setScrollDistance() {
   }
 }
 
-function _hasAnchorLink(path) {
+function _hasAnchorLink(path: string): boolean {
   return (path.match(/#/g) || []).length > 1;
 }
 
@@ -65,7 +65,7 @@ function _extractAnchorLink(path) {
   return cleanedSplit[cleanedSplit.length - 1];
 }
 
-function _onLoad() {
+function _onLoad(): void {
 
   // Load the app into this element.
   rootElement = rootElement || document.getElementById('main');
@@ -82,34 +82,29 @@ function _onLoad() {
     rootElement);
 }
 
-function _getAppRoutes() {
+function _createRoutes(pages: {}[]): {}[] {
   let routes = [];
 
-  // Create a route for each top level page, and all of its sub pages
-  AppState.pages.forEach((page, pageIndex) => {
-    routes.push(<Route key={ pageIndex } path={ page.url } getComponent={ page.getComponent } />);
-
+  // tslint:disable-next-line:no-any
+  pages.forEach((page: any, pageIndex: number) => {
+    routes.push(
+      <Route
+        key={ pageIndex }
+        path={ page.url }
+        component={ page.component }
+        getComponent={ page.getComponent }
+      />
+    );
     if (page.pages) {
-      page.pages.forEach((childPage, childPageIndex) => {
-        routes.push(
-          <Route
-            key={ childPageIndex }
-            path={ childPage.url }
-            component={ childPage.component }
-            getComponent={ childPage.getComponent }
-          />);
-
-        // Third level of nav
-        // @todo: This is the same logic as above, and could be placed in function
-        //        to allow for unlimited levels of nav.
-        if (childPage.pages) {
-          childPage.pages.forEach((grandchildPage, grandchildPageIndex) => {
-            routes.push(<Route key={ grandchildPageIndex } path={ grandchildPage.url } getComponent={ grandchildPage.getComponent } />);
-          });
-        }
-      });
+      routes = routes.concat(_createRoutes(page.pages));
     }
   });
+  return routes;
+}
+
+function _getAppRoutes() {
+  let routes = [];
+  routes = _createRoutes(AppState.pages);
 
   // Add the default route
   routes.push(
@@ -134,3 +129,15 @@ if (isReady) {
 }
 
 window.onunload = _onUnload;
+
+function addCSSToHeader(fileName: string) {
+  let headEl = document.head;
+  let linkEl = document.createElement('link');
+
+  linkEl.type = 'text/css';
+  linkEl.rel = 'stylesheet';
+  linkEl.href = fileName;
+  headEl.appendChild(linkEl);
+}
+
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.1.0/css/fabric.min.css');

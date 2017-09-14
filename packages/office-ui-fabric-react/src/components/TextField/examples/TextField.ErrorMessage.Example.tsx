@@ -1,4 +1,4 @@
-import 'es6-promise';
+import { Promise } from 'es6-promise';
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { NumberTextField } from './NumberTextField';
@@ -63,6 +63,8 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
           onGetErrorMessage={ this._getErrorMessage }
           validateOnFocusOut
         />
+        <TextField label='Underlined TextField' underlined onGetErrorMessage={ this._getErrorMessage } />
+
         <TextField
           label='TextField that uses the errorMessage property to set an error state.'
           placeholder='This field always has an error.'

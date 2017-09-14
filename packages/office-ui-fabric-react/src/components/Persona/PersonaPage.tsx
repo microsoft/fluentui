@@ -7,10 +7,12 @@ import {
 } from '@uifabric/example-app-base';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
+import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
+const PersonaAlternateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Alternate.Example.tsx') as string;
 const PersonaCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomRender.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -23,6 +25,9 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
           <div>
             <ExampleCard title='Persona in various sizes' code={ PersonaBasicExampleCode }>
               <PersonaBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Alternative small personas' code={ PersonaAlternateExampleCode }>
+              <PersonaAlternateExample />
             </ExampleCard>
             <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
               <PersonaInitialsExample />
@@ -47,7 +52,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -69,8 +74,8 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Persona/Persona.html'>Fabric JS</a>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }>
-      </ComponentPage>
+        isHeaderVisible={ this.props.isHeaderVisible }
+      />
     );
   }
 

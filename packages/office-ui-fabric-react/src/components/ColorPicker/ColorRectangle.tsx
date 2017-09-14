@@ -12,9 +12,18 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import styles = require('./ColorPicker.scss');
+import {
+  IColor,
+  MAX_COLOR_SATURATION,
+  MAX_COLOR_VALUE,
+  getFullColorString,
+  hsv2hex
+} from '../../utilities/color/colors';
+import * as stylesImport from './ColorPicker.scss';
+const styles: any = stylesImport;
 
 export interface IColorRectangleProps {
+  componentRef?: () => void;
   color: IColor;
   minSize?: number;
 
@@ -45,7 +54,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
 
     this.state = {
       isAdjusting: false,
-      origin: null,
+      origin: undefined,
       color: color,
       fullColorString: getFullColorString(color)
     };
@@ -72,7 +81,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
       <div ref='root' className={ css('ms-ColorPicker-colorRect', styles.colorRect) } style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
         <div className={ css('ms-ColorPicker-light', styles.light) } />
         <div className={ css('ms-ColorPicker-dark', styles.dark) } />
-        <div className={ css('ms-ColorPicker-thumb', styles.thumb) } style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } } />
+        <div className={ css('ms-ColorPicker-thumb', styles.thumb) } style={ { left: color!.s + '%', top: (MAX_COLOR_VALUE - color!.v) + '%', backgroundColor: color!.str } } />
       </div>
     );
   }
@@ -119,7 +128,7 @@ export class ColorRectangle extends BaseComponent<IColorRectangleProps, IColorPi
 
     this.setState({
       isAdjusting: false,
-      origin: null
+      origin: undefined
     });
   }
 

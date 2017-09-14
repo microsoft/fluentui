@@ -8,7 +8,7 @@ export interface ILink {
   focus(): void;
 }
 
-export interface ILinkProps extends React.HTMLProps<HTMLAnchorElement | HTMLButtonElement | HTMLElement | Link> {
+export interface ILinkProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | Link> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -19,4 +19,5 @@ export interface ILinkProps extends React.HTMLProps<HTMLAnchorElement | HTMLButt
    * Whether the link is disabled
    */
   disabled?: boolean;
+
 }

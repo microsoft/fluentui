@@ -26,7 +26,7 @@ $borderSize: 1.5px;
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    border: 1.5px solid $ms-color-themeLight;
+    border: $borderSize solid $ms-color-themeLight;
     border-top-color: $ms-color-themePrimary;
     animation: spinAnimation $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
     &.circleIsXSmall {
@@ -48,10 +48,14 @@ $borderSize: 1.5px;
       height: 28px;
     }
   }
-  > .label {
+  .label {
       color: $ms-color-themePrimary;
       margin-top: 10px;
       text-align: center;
+  }
+
+  .screenReaderOnly {
+    @include ms-screenReaderOnly;
   }
 }
 

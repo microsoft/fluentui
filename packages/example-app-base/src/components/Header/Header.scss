@@ -11,9 +11,10 @@ $Header-fabricWebsiteHeaderColor: #272630;
     overflow: hidden;
     white-space: no-wrap;
     user-select: none;
+    color: white;
   }
 
-  @media (max-width: $ms-screen-lg-max) {
+  @media (max-width: $ms-screen-max-lg) {
     .Header {
       padding: 0;
     }
@@ -24,6 +25,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
   .Header-button {
     display: inline-block;
     vertical-align: top;
+    color: white;
   }
 
   .Header-title {
@@ -44,7 +46,6 @@ $Header-fabricWebsiteHeaderColor: #272630;
     position: relative;
     text-decoration: none;
     background: none;
-    color: white;
     border: none;
     padding: 0;
     padding: 0px 10px;
@@ -66,7 +67,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
     }
   }
 
-  @media (max-width: $ms-screen-lg-max) {
+  @media (max-width: $ms-screen-max-lg) {
     .Header-button {
       margin: 0;
 

@@ -6,7 +6,7 @@ export interface IPersona {
 
 }
 
-export interface IPersonaProps extends React.HTMLProps<Persona> {
+export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   /**
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -45,6 +45,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
    */
   imageUrl?: string;
+
+  /**
+   * Alt text for the image to use. Defaults to an empty string.
+   */
+  imageAlt?: string;
 
   /**
    * The user's initials to display in the image area when there is no image.
@@ -108,6 +113,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * Additional CSS class(es) to apply to the Persona
    */
   className?: string;
+
+  /*
+   * If true, show the secondary text line regardless of the size of the persona
+   */
+  showSecondaryText?: boolean;
 }
 
 export enum PersonaSize {
@@ -118,7 +128,8 @@ export enum PersonaSize {
   regular = 4,
   large = 5,
   extraLarge = 6,
-  size28 = 7
+  size28 = 7,
+  size16 = 8
 }
 
 export enum PersonaPresence {

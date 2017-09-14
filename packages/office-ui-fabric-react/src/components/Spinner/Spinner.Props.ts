@@ -13,8 +13,8 @@ export interface ISpinnerProps extends React.Props<Spinner> {
   componentRef?: (component: ISpinner) => void;
 
   /**
-   * @deprecated
    * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
+   * @deprecated
    */
   type?: SpinnerType;
 
@@ -25,14 +25,26 @@ export interface ISpinnerProps extends React.Props<Spinner> {
   size?: SpinnerSize;
 
   /**
-  * The label to show next to the Spinner.
-  */
+   * The label to show next to the Spinner. Label updates will be announced to the screen readers.
+   * Use ariaLive to control politeness level.
+   */
   label?: string;
 
   /**
    * Additional CSS class(es) to apply to the Spinner.
    */
   className?: string;
+
+  /**
+   * Politeness setting for label update announcement.
+   * @default polite
+   */
+  ariaLive?: 'assertive' | 'polite' | 'off';
+
+  /**
+   * Alternative status label for screen reader
+   */
+  ariaLabel?: string;
 }
 
 export enum SpinnerSize {
@@ -58,8 +70,8 @@ export enum SpinnerSize {
 }
 
 /**
+ * Deprecated at v2.0.0, use 'SpinnerSize' instead.
  * @deprecated
- * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
  */
 export enum SpinnerType {
   /**

@@ -8,12 +8,19 @@ import {
   IEnumProperty,
   InterfacePropertyType
 } from '../../utilities/parser/index';
+import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPropertiesTableProps {
   title?: string;
   properties: IInterfaceProperty[] | IEnumProperty[];
   renderAsEnum?: boolean;
   key?: string;
+}
+
+export interface IProptertiesTableState {
+  properties: IInterfaceProperty[] | IEnumProperty[];
+  isEnum: boolean;
+  groups: IGroup[] | undefined;
 }
 
 const DEFAULT_COLUMNS: IColumn[] = [
@@ -78,20 +85,25 @@ const ENUM_COLUMNS: IColumn[] = [
   }
 ];
 
-export class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
-  public static defaultProps = {
+export class PropertiesTable extends React.Component<IPropertiesTableProps, IProptertiesTableState> {
+  public static defaultProps: Partial<IPropertiesTableProps> = {
     title: 'Properties'
   };
 
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    let properties = (props.properties as any[])
-      .map((prop, index) => assign({ key: index }, prop))
-      .sort((a, b) => (a.name > b.name) ? -1 : 1)
-      .sort((a, b) => (a.interfacePropertyType < b.interfacePropertyType) ? -1 : 1);
+    let properties = (props.properties as IInterfaceProperty[])
+      .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
+        a.interfacePropertyType < b.interfacePropertyType ? -1 :
+          a.interfacePropertyType > b.interfacePropertyType ? 1 :
+            a.name < b.name ? -1 :
+              a.name > b.name ? 1 :
+                0
+      ))
+      .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
 
-    let groups = null;
+    let groups: IGroup[] | undefined = undefined;
 
     if (!props.renderAsEnum) {
       groups = this._getGroups(properties);
@@ -104,29 +116,29 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     };
   }
 
-  public render() {
+  public render(): JSX.Element | null {
     let { title } = this.props;
     let { properties, isEnum, groups } = this.state;
 
+    if (properties.length === 0) {
+      return null;
+    }
+
     return (
       <div className='PropertiesTable'>
-        <h2 className='ms-font-xl'>{ title }</h2>
-        { (properties && properties.length) ? (
-          <DetailsList
-            selectionMode={ SelectionMode.none }
-            layoutMode={ DetailsListLayoutMode.justified }
-            items={ properties }
-            groups={ groups }
-            columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
-          />
-        ) : (
-            <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
-          ) }
+        <h2 className={ FontClassNames.xLarge }>{ title }</h2>
+        <DetailsList
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.justified }
+          items={ properties }
+          groups={ groups }
+          columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
+        />
       </div>
     );
   }
 
-  private _getGroups(props: IInterfaceProperty[]) {
+  private _getGroups(props: IInterfaceProperty[]): IGroup[] {
     let groups: IGroup[] = [];
     let index = 0;
 
@@ -137,8 +149,13 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     return groups;
   }
 
-  private _tryAddGroup(props, typeToCompare: InterfacePropertyType, name: string, index: number, allGroups): number {
-    let group: IGroup;
+  private _tryAddGroup(
+    props: IInterfaceProperty[],
+    typeToCompare: InterfacePropertyType,
+    name: string, index: number,
+    allGroups: IGroup[]
+  ): number {
+    let group: IGroup | undefined = undefined;
 
     while (index < props.length) {
       let prop = props[index];

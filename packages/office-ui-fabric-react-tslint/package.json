@@ -1,0 +1,13 @@
+{
+  "name": "office-ui-fabric-react-tslint",
+  "version": "1.0.0",
+  "description": "Shared tslint rules",
+  "main": "tslint.json",
+  "scripts": {
+    "clean": "",
+    "build": "node -v"
+  },
+  "devDependencies": {
+    "tslint-react": "^3.2.0"
+  }
+}

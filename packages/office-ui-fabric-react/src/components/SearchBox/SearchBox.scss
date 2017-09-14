@@ -7,120 +7,119 @@
 // --------------------------------------------------
 // Search box styles
 
-
-$SearchBox-field-padding-left: 10px;
-$SearchBox-height: 36px;
-
 .root {
   @include ms-font-m;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
   margin-bottom: 10px;
-  border: 1px solid $ms-color-themeTertiary;
-}
-
-.root:hover {
-  .field {
-    border-color: $ms-color-themeDarker;
+  @include padding(0, 0, 0, 8px);
+  border: 1px solid $ms-color-neutralTertiary;
+  height: 32px;
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
   }
-
-  .label {
-    color: $ms-color-black;
-
-    .icon {
-      color:$ms-color-themeDarker;
-    }
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
   }
 }
 
-// State: Active searchbox
-.rootIsActive {
-  border-color: $ms-color-themeDarker;
-
-  .field {
-    @include padding-left(8px);
-  }
-
-  .icon {
-    display: none;
-  }
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: $ms-color-neutralSecondaryAlt;
+  font-size: 16px;
+  width: 32px;
+  text-align: center;
+  transition: width $ms-animation-duration-1;
+  color: $ms-color-themeDarkAlt;
 }
 
- // State: Disabled searchbox
-.rootIsDisabled {
-  border-color: $ms-color-neutralLighter;
-
-  .icon {
-    color: $ms-color-neutralTertiaryAlt;
-  }
-
-  .field {
-    background-color: $ms-color-neutralLighter;
-    pointer-events: none;
-    cursor: default;
-  }
+.icon {
+  opacity: 1;
+  transition: opacity $ms-animation-duration-1 0s;
 }
 
-.rootCanClear .clearButton {
-  display: block;
-}
-
+// Input Field
 .field {
-  position: relative;
-  @include ms-u-normalize;
+  @include ms-normalize;
   border: none;
-  outline: transparent 1px solid;
+  outline: none;
   font-weight: inherit;
   font-family: inherit;
   font-size: inherit;
-  color: $ms-color-black;
-  height: $SearchBox-height - 2;
-  @include padding(6px, 38px, 7px, 31px);
-  width: 100%;
+  color: $ms-color-neutralPrimary;
   background-color: transparent;
-  transition: padding-left $ms-duration1;
-
-  &:focus {
-    @include padding-right(32px);
-  }
-
+  flex: 1 1 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // This padding forces the text placement to round up.
+  padding-bottom: .5px;
+  // This removes the IE specific clear button in the input since we implimented our own
   &::-ms-clear {
     display: none;
   }
 }
 
 .clearButton {
+  flex-direction: column;
+  justify-content: center;
   display: none;
-  border: none;
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  @include right(0);
-
-  width: 40px;
-  height: $SearchBox-height;
-  line-height: $SearchBox-height;
-
-  vertical-align: top;
-
-  color: $ms-color-themePrimary;
-
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
+  flex-basis: 32px;
+  flex-shrink: 0;
+  color: $ms-color-themePrimary;
 }
 
-.icon {
-  font-size: $ms-font-size-l;
-  color: $ms-color-neutralSecondaryAlt;
-  position: absolute;
-  @include left(8px);
-  top: 0;
-  height: $SearchBox-height;
-  line-height: $SearchBox-height;
-  vertical-align: top;
-  font-size: 16px;
-  width: 16px;
-  color: #0078d7;
-  @include margin-right(6px);
+// State: Active searchbox
+.root.rootIsActive {
+  border-color: $ms-color-themePrimary;
+  &:hover {
+    border-color: $ms-color-themePrimary;
+  }
+  .iconContainer {
+    width: 4px;
+    transition: width $ms-animation-duration-1;
+  }
+  .icon {
+    opacity: 0;
+    opacity: 0 0s $ms-animation-duration-1;
+   }
+}
+
+ // State: Disabled searchbox
+.rootIsDisabled {
+  border-color: $ms-color-neutralLighter;
+  background-color: $ms-color-neutralLighter;
+  pointer-events: none;
+  cursor: default;
+  .iconContainer {
+    color: $ms-color-neutralTertiaryAlt;
+  }
+  .field {
+    color: $ms-color-neutralTertiaryAlt;
+  }
+}
+
+.rootCanClear .clearButton {
+  display: flex;
+}
+
+
+.root:hover {
+  border-color: $ms-color-neutralDark;
+  .label {
+    color: $ms-color-black;
+
+    .iconContainer {
+      color:$ms-color-themeDark;
+    }
+  }
 }

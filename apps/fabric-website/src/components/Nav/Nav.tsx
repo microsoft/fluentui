@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import styles = require('./Nav.module.scss');
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import * as stylesImport from './Nav.module.scss';
+const styles: any = stylesImport;
 import {
   INavProps,
   INavPage
@@ -23,9 +25,11 @@ export class Nav extends React.Component<INavProps, INavState> {
       : null;
 
     return (
-      <nav className={ styles.nav } role='navigation'>
-        { links }
-      </nav>
+      <FocusZone direction={ FocusZoneDirection.vertical } >
+        <nav className={ styles.nav } role='navigation'>
+          { links }
+        </nav>
+      </FocusZone>
     );
   }
 

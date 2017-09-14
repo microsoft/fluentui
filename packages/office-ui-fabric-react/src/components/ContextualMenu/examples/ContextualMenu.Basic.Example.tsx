@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenu, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
@@ -22,9 +22,10 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
 
     return (
       <div>
-        <Button onClick={ this._onClick } id='ContextualMenuButton1'> Click for ContextualMenu </Button>
+        <DefaultButton onClick={ this._onClick } id='ContextualMenuButton1' text='Click for ContextualMenu' />
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
+            title='My Menu'
             shouldFocusOnMount={ true }
             target={ this.state.target }
             onDismiss={ this._onDismiss }
@@ -68,7 +69,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_1',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'rename',
@@ -85,7 +86,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_2',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider
                 },
                 {
                   key: 'share',
@@ -157,11 +158,12 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'divider_3',
-                  name: '-',
+                  itemType: ContextualMenuItemType.Divider,
                 },
                 {
                   key: 'Bing',
                   name: 'Go to Bing',
+                  target: '_blank',
                   href: 'http://www.bing.com'
                 },
               ]
@@ -173,7 +175,10 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
             setInitialFocus={ true }
             onDismiss={ () => this.setState({ showCallout: false }) }
           >
-            <Button onClick={ () => this.setState({ showCallout: false }) }>Hello world</Button>
+            <DefaultButton
+              onClick={ () => this.setState({ showCallout: false }) }
+              text='Hello world'
+            />
           </Callout>
         ) }
       </div>
@@ -181,7 +186,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
   }
 
   private _onClick(event: React.MouseEvent<any>) {
-    this.setState({ target: event.target, isContextMenuVisible: true });
+    this.setState({ target: event.currentTarget, isContextMenuVisible: true });
   }
 
   private _onDismiss(event: any) {
