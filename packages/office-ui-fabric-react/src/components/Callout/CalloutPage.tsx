@@ -6,7 +6,7 @@ import {
   PropertiesTableSet,
   ComponentStatus
 } from '@uifabric/example-app-base';
-import { textOnlyItems } from '../CommandBar/examples/data';
+import { items } from '../CommandBar/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';
@@ -21,7 +21,7 @@ const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/
 
 export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
-    let cmdBarParamsTextAndIcons: any = { items: textOnlyItems, farItems: null };
+    let cmdBarParamsTextAndIcons: any = { items: items, farItems: null };
 
     return (
       <ComponentPage

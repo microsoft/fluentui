@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Check: better alignment of the check mark.",
-      "type": "patch"
+      "comment": "Calendar:  Adding week numbers to calendar",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "kegorr@microsoft.com"
 }
