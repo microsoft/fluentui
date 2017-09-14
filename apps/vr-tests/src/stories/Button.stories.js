@@ -7,12 +7,18 @@ import { DefaultButton } from 'office-ui-fabric-react';
 // const readme = require('../components/Button/README');
 
 storiesOf('Button', module)
-  .add('default', () => (
+  .addDecorator(story => (
     <Screener steps={new Steps()
-      .click('.ms-Button--primary')
-      .snapshot('name')
+      .hover('button')
+      .snapshot('hover')
+      .click('button')
+      .snapshot('active')
       .end()
     }>
-      <DefaultButton>Hello!</DefaultButton>
+      {story()}
     </Screener>
-  ));
+  ))
+  .add('default', () => (<DefaultButton>Butjon</DefaultButton>))
+  .add('default disabled', () => (<DefaultButton disabled>Butjon</DefaultButton>))
+  .add('primary', () => (<DefaultButton primary>Butjon</DefaultButton>))
+  .add('primary disabled', () => (<DefaultButton primary disabled>Butjon</DefaultButton>))
