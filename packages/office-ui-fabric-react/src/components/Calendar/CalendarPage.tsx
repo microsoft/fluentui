@@ -49,6 +49,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
+                highlightCurrentMonth={ true }
                 showGoToToday={ true }
               />
             </ExampleCard>
@@ -99,6 +100,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             >
               <CalendarButtonExample
                 isDayPickerVisible={ false }
+                highlightCurrentMonth={ true }
                 buttonString={ 'Click for Month Picker' }
               />
             </ExampleCard>
