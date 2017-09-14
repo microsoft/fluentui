@@ -37,7 +37,7 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -57,11 +57,9 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Rating}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

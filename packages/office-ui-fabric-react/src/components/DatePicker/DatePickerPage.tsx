@@ -49,7 +49,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -79,11 +79,9 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.DatePicker}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

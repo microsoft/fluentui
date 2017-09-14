@@ -66,7 +66,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           <a href='https://dev.office.com/fabric-js/Components/Callout/Callout.html'>Fabric JS</a>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -98,11 +98,9 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Callout}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

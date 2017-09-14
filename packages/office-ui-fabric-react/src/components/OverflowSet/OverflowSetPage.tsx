@@ -47,8 +47,7 @@ export class OverflowSetPage extends React.Component<any, any> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Overflow}
-          >
-          </ComponentStatus>
+          />
         }
       />
     );

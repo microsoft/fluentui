@@ -109,7 +109,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           <a href='https://dev.office.com/fabric-js/Components/Button/Button.html'>Fabric JS</a>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -143,11 +143,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Button}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

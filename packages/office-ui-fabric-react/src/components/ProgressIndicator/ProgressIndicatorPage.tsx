@@ -58,7 +58,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -87,11 +87,9 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.ProgressIndicator}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

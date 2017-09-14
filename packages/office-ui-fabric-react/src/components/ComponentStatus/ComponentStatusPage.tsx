@@ -14,62 +14,70 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
         componentName='Components Checklist'
         overview={ this._renderOverView() }
         otherSections={ sections }
-      >
-      </ComponentPage >
+      />
     );
   }
 
   private _renderOverView(): JSX.Element {
-    return <div>
-      Badges are used to track a component's status regarding different criteria. They reflect if a component is localizable, accessible and reliable.
-    </div>;
+    return (
+      <div>
+        Badges are used to track a component's status regarding different criteria. They reflect if a component is localizable, accessible and reliable.
+    </div>
+    );
   }
 
   private _renderComponents(): JSX.Element {
-    return <div>
-      <table className='componentTable'>
-        <tbody>
-          { Object.keys(ComponentStatusState).map((componentName, index) => {
-            return this._renderComponent(componentName);
-          }) }
-        </tbody>
-      </table>
-    </div >;
+    return (
+      <div>
+        <table className='componentTable'>
+          <tbody>
+            { Object.keys(ComponentStatusState).map((componentName, index) => {
+              return this._renderComponent(componentName);
+            }) }
+          </tbody>
+        </table>
+      </div >
+    );
   }
 
   private _renderComponent(componentName: string): JSX.Element {
     let component = ComponentStatusState[componentName];
-    return <tr key={ componentName + '-key' }>
-      <td className='componentCells'><h3>{ componentName } </h3> </td>
-      <td className='componentBadgeCell'><ComponentStatus
-        {...component}
-      >
-      </ComponentStatus></td>
-    </tr>;
+    return (
+      <tr key={ componentName + '-key' }>
+        <td className='componentCells'><h3>{ componentName } </h3> </td>
+        <td className='componentBadgeCell'><ComponentStatus
+          {...component}
+        /></td>
+      </tr >
+    );
   }
 
   private _renderStatusesInfo() {
-    return <div>
-      <table className='componentTable'>
-        <tbody>
-          <tr>
-            <th className='componentCells'>Name</th>
-            <th className='componentCells'>Description</th>
-            <th className='componentCells'>Success</th>
-          </tr>
-          { ComponentStatusInfoState.map((name) => {
-            return this._renderStatusInfo(name);
-          }) }
-        </tbody>
-      </table>
-    </div>;
+    return (
+      <div>
+        <table className='componentTable'>
+          <tbody>
+            <tr>
+              <th className='componentCells'>Name</th>
+              <th className='componentCells'>Description</th>
+              <th className='componentCells'>Success</th>
+            </tr>
+            { ComponentStatusInfoState.map((name) => {
+              return this._renderStatusInfo(name);
+            }) }
+          </tbody>
+        </table>
+      </div>
+    );
   }
 
   private _renderStatusInfo(statusInfo: IComponentStatusInfoState) {
-    return <tr key={ statusInfo.name + '-key' }>
-      <td className='componentCells'> { statusInfo.name } </td>
-      <td className='componentCells'> { statusInfo.description } </td>
-      <td className='componentCells'> { statusInfo.success } </td>
-    </tr>;
+    return (
+      <tr key={ statusInfo.name + '-key' }>
+        <td className='componentCells'> { statusInfo.name } </td>
+        <td className='componentCells'> { statusInfo.description } </td>
+        <td className='componentCells'> { statusInfo.success } </td>
+      </tr>
+    );
   }
 }

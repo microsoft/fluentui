@@ -55,7 +55,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -88,11 +88,9 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Dialog}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

@@ -119,7 +119,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -146,11 +146,9 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Calendar}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

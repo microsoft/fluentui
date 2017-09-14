@@ -49,8 +49,7 @@ export class HoverCardPage extends React.Component<any, any> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.HoverCard}
-          >
-          </ComponentStatus>
+          />
         }
       />
     );

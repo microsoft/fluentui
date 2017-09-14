@@ -70,11 +70,9 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.List}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

@@ -54,7 +54,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -80,11 +80,9 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Persona}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

@@ -37,7 +37,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -63,11 +63,9 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Label}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

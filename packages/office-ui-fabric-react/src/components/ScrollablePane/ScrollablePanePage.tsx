@@ -45,7 +45,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -67,11 +67,9 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.ScrollablePane}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

@@ -58,11 +58,9 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.SwatchColorPicker}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

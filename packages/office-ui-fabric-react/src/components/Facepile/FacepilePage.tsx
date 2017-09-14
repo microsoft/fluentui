@@ -78,7 +78,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -105,11 +105,9 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Facepile}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

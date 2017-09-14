@@ -53,7 +53,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -78,11 +78,9 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Checkbox}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

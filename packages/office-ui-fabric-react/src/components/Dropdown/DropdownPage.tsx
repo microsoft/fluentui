@@ -47,7 +47,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -59,7 +59,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         donts={
-          <div></div>
+          <div />
         }
         related={
           <a href='https://dev.office.com/fabric-js/Components/Dropdown/Dropdown.html'>Fabric JS</a>
@@ -68,11 +68,9 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Dropdown}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

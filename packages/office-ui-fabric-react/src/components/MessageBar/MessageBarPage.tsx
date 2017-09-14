@@ -40,7 +40,7 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -68,11 +68,9 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.MessageBar}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

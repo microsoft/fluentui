@@ -82,7 +82,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -109,11 +109,9 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.SpinButton}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

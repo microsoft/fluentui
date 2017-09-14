@@ -77,11 +77,9 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.Breadcrumb}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

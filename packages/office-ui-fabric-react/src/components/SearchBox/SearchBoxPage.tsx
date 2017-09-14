@@ -89,7 +89,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -126,11 +126,9 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.SearchBox}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 

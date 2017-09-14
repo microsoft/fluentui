@@ -96,8 +96,7 @@ export class ResizeGroupPage extends React.Component<any, any> {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.ResizeGroup}
-          >
-          </ComponentStatus>
+          />
         }
       />
     );

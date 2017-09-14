@@ -62,7 +62,7 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -92,11 +92,9 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.ChoiceGroup}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

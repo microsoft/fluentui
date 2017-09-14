@@ -67,11 +67,9 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
         componentStatus={
           <ComponentStatus
             {...ComponentStatusState.PeoplePicker}
-          >
-          </ComponentStatus>
+          />
         }
-      >
-      </ComponentPage>
+      />
     );
   }
 
