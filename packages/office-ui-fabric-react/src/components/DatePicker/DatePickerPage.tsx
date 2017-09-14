@@ -47,7 +47,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -74,8 +74,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
           <a href='https://dev.office.com/fabric-js/Components/DatePicker/DatePicker.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 

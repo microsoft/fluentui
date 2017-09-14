@@ -14,37 +14,37 @@ export default class ButtonVPage extends React.Component<any, any> {
         </div>
         <div>
           <label> Default Button Disabled:   </label>&nbsp;
-        <DefaultButton id='DefaultButtonDisabled' disabled={ true } icon='Add' text='Default Button' />
+        <DefaultButton id='DefaultButtonDisabled' disabled={true} icon='Add' text='Default Button' />
         </div>&nbsp;
       <div>
           <label> Default Button Checked:   </label>
-          <DefaultButton id='DefaultButtonChecked' icon='Add' checked={ true } text='Default Button' />
+          <DefaultButton id='DefaultButtonChecked' icon='Add' checked={true} text='Default Button' />
         </div>&nbsp;
-      <div style={ { backgroundColor: 'white' } }>
-          <IconButton id={ 'IconButton' } iconProps={ { iconName } } />
+      <div style={{ backgroundColor: 'white' }}>
+          <IconButton id={'IconButton'} iconProps={{ iconName }} />
         </div>&nbsp;
-      <div style={ { backgroundColor: 'white' } }>
-          <IconButton id={ 'IconButtonChecked' } checked={ true } iconProps={ { iconName } } />
+      <div style={{ backgroundColor: 'white' }}>
+          <IconButton id={'IconButtonChecked'} checked={true} iconProps={{ iconName }} />
         </div>&nbsp;
-      <div style={ { backgroundColor: 'white' } }>
+      <div style={{ backgroundColor: 'white' }}>
           <CommandButton
             id='CommandButton'
             icon='AddFriend'
             text='Command Button'
           />
         </div>&nbsp;
-      <div style={ { backgroundColor: 'white' } }>
+      <div style={{ backgroundColor: 'white' }}>
           <CommandButton
             id='CommandButtonDisabled'
             icon='AddFriend'
-            disabled={ true }
+            disabled={true}
             text='Command Button'
           />
         </div >&nbsp;
-      <div style={ { backgroundColor: 'white' } }>
+      <div style={{ backgroundColor: 'white' }}>
           <CommandButton
             id='CommandButtonChecked'
-            checked={ true }
+            checked={true}
             icon='AddFriend'
             text='Command Button'
           />
@@ -59,7 +59,7 @@ export default class ButtonVPage extends React.Component<any, any> {
       <div>
           <CompoundButton
             id='CompoundButtonDisabled'
-            disabled={ true }
+            disabled={true}
             description='You can create a new account here.'
             text='Compound Button'
           />
@@ -67,7 +67,7 @@ export default class ButtonVPage extends React.Component<any, any> {
       <div>
           <CompoundButton
             id='CompoundButtonChecked'
-            checked={ true }
+            checked={true}
             description='You can create a new account here.'
             text='Compound Button'
           />
@@ -76,19 +76,19 @@ export default class ButtonVPage extends React.Component<any, any> {
           <PrimaryButton id='PrimaryButton' icon='Add' text='Primary Button' />
         </div >&nbsp;
       <div>
-          <PrimaryButton id='PrimaryButtonDisabled' disabled={ true } icon='Add' text='Primary Button' />
+          <PrimaryButton id='PrimaryButtonDisabled' disabled={true} icon='Add' text='Primary Button' />
         </div >&nbsp;
       <div>
-          <PrimaryButton id='PrimaryButtonToggled' checked={ true } icon='Add' text='Primary Button' />
+          <PrimaryButton id='PrimaryButtonToggled' checked={true} icon='Add' text='Primary Button' />
         </div >&nbsp;
 
       <div>
           <DefaultButton
             id='ContextualButton'
-            disabled={ false }
+            disabled={false}
             icon='Add'
             text='New'
-            menuProps={ {
+            menuProps={{
               className: 'ContextualButtonMenu',
               id: 'ContextualButtonMenu',
               items: [
@@ -105,14 +105,13 @@ export default class ButtonVPage extends React.Component<any, any> {
               ]
             }
             }
-          >
-          </DefaultButton>
+          />
           <DefaultButton
             id='ContextualButtonToggled'
-            checked={ true }
+            checked={true}
             icon='Add'
             text='New'
-            menuProps={ {
+            menuProps={{
               className: 'ContextualButtonMenu',
               id: 'ContextualButtonMenu',
               items: [
@@ -129,8 +128,7 @@ export default class ButtonVPage extends React.Component<any, any> {
               ]
             }
             }
-          >
-          </DefaultButton>
+          />
         </div >
       </div>
     );

@@ -54,7 +54,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
         <button id='toggle2' data-selection-toggle={ true }>Toggle</button>
       </div>
 
-      <div id='surface3' data-selection-index='3'></div>
+      <div id='surface3' data-selection-index='3' />
 
     </SelectionZone>
   );
