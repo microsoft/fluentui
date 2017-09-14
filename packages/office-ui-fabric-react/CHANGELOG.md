@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2017 10:17:39 GMT and should not be manually modified.
+
+## 4.46.1
+Thu, 14 Sep 2017 10:17:39 GMT
+
+### Patches
+
+- Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak.
+- Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports
 
 ## 4.46.0
 Thu, 14 Sep 2017 00:34:57 GMT

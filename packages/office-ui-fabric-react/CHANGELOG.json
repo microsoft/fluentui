@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.46.1",
+      "tag": "office-ui-fabric-react_v4.46.1",
+      "date": "Thu, 14 Sep 2017 10:17:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "e438cfa78495bab7de5653ae661b1d50555d5861",
+            "comment": "Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak."
+          },
+          {
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "bd33f70885615750558e10dfb9aca8eabe12ca1b",
+            "comment": "Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.46.0",
       "tag": "office-ui-fabric-react_v4.46.0",
       "date": "Thu, 14 Sep 2017 00:34:57 GMT",
