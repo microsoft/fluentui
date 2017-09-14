@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentStatusProps } from "../../../../../packages/example-app-base/lib/index";
+import { IComponentStatusProps } from '../../../../../packages/example-app-base/lib/index';
 
 export interface INavProps {
   /**
