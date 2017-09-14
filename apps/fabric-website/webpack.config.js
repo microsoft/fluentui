@@ -14,7 +14,7 @@ module.exports = function (argv) {
   // Dogfood overrides
   if (isDogfoodArg) {
     publicPath = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
-    entryPointName = 'fabric-websitev5-df';
+    entryPointName = 'fabric-sitev5-df';
   } else if (!isProductionArg) {
     publicPath = "/dist/";
   } else {
