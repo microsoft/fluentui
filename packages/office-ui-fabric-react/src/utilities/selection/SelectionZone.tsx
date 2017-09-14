@@ -227,12 +227,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
       if (itemRoot) {
         const index = this._getItemIndex(itemRoot);
-        const shouldPreventDefault = onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
+        const skipPreventDefault = onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
 
         // In order to keep back compat, if the value here is undefined, then we should still
-        // call preventDefault(). Only in the case where false is explicitly returned should
+        // call preventDefault(). Only in the case where true is explicitly returned should
         // the call be skipped.
-        if (shouldPreventDefault !== false) {
+        if (skipPreventDefault) {
           ev.preventDefault();
         }
       }
