@@ -22,7 +22,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     return (
       <div className='ComponentStatus-div'>
         <a
-          role='link'
           aria-label={ 'Keyboard accessibility support. ' + this._badgeStatusString(this.props.keyboardAccessibilitySupport) }
           href='#/components-status'
           className='ComponentStatus-badge'
@@ -36,7 +35,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
-          role='link'
           aria-label={ 'Markup support. ' + this._badgeStatusString(this.props.markupSupport) }
           href='#/components-status'
           className='ComponentStatus-badge'
@@ -50,7 +48,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
-          role='link'
           aria-label={ 'High contrast support. ' + this._badgeStatusString(this.props.highContrastSupport) }
           href='#/components-status'
           className='ComponentStatus-badge'
@@ -64,7 +61,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
-          role='link'
           aria-label={ 'Right to left support. ' + this._badgeStatusString(this.props.rtlSupport) }
           href='#/components-status'
           className='ComponentStatus-badge'
@@ -78,7 +74,6 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
           />
         </a>
         <a
-          role='link'
           aria-label={ 'Test coverage. ' + this.props.testCoverage }
           href='#/components-status'
           className='ComponentStatus-badge'
