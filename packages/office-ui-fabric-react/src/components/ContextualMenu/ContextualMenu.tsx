@@ -592,7 +592,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         shouldFocusOnMount: true,
         directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
         className: this.props.className,
-        gapSpace: 0
+        gapSpace: 0,
+        isBeakVisible: false
       };
 
       if (item.subMenuProps) {

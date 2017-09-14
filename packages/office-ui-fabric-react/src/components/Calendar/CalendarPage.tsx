@@ -75,10 +75,16 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showNavigateButtons={ true }
               />
             </ExampleCard>
-            <ExampleCard
-              title='Inline Calendar with month picker and no day picker'
-              code={ CalendarInlineExampleCode }
-            >
+            <ExampleCard title='Inline Calendar with week numbers' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample
+                isMonthPickerVisible={ false }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ false }
+                showGoToToday={ false }
+                showWeekNumbers={ true }
+              />
+            </ExampleCard>
+            <ExampleCard title='Inline Calendar with month picker and no day picker' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Month }
                 autoNavigateOnSelection={ false }
