@@ -23,9 +23,9 @@ import {
   Icon
 } from '../../Icon';
 import {
-  Persona,
+  PersonaCoin,
   PersonaSize
-} from '../../Persona';
+} from '../../PersonaCoin';
 import * as stylesImport from './Facepile.scss';
 const styles: any = stylesImport;
 
@@ -103,13 +103,12 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     let { getPersonaProps, personaSize } = this.props;
     return (
-      <Persona
+      <PersonaCoin
         imageInitials={ persona.imageInitials }
         imageUrl={ persona.imageUrl }
         initialsColor={ persona.initialsColor }
         primaryText={ persona.personaName }
         size={ personaSize }
-        hidePersonaDetails={ true }
         {...(getPersonaProps ? getPersonaProps(persona) : null) }
       />
     );
@@ -177,10 +176,9 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         ariaDescription={ personaNames }
         className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       >
-        <Persona
+        <PersonaCoin
           title={ personaNames }
           size={ personaSize }
-          hidePersonaDetails={ true }
           onRenderInitials={ () => {
             return (
               <span>{ '+' + numPersonasNotPictured }</span>
@@ -199,9 +197,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         {...overflowButtonProps}
         className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
       >
-        <Persona
+        <PersonaCoin
           size={ personaSize }
-          hidePersonaDetails={ true }
           onRenderInitials={ () => (
             <Icon iconName={ icon } />
           ) }
@@ -217,9 +214,8 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
         {...addButtonProps}
         className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
       >
-        <Persona
+        <PersonaCoin
           size={ personaSize }
-          hidePersonaDetails={ true }
           onRenderInitials={ () => (
             <Icon iconName='AddFriend' />
           ) }
