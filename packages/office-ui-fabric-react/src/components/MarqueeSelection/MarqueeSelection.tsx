@@ -50,6 +50,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
+  private _isTouch: boolean;
 
   constructor(props: IMarqueeSelectionProps) {
     super(props);
@@ -64,10 +65,22 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._scrollableSurface = this._scrollableParent === window as any ? document.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
 
+    const hitTarget = this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableSurface;
+
     this._events.on(
-      this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableSurface,
+      hitTarget,
       'mousedown',
       this._onMouseDown);
+    this._events.on(
+      hitTarget,
+      'touchstart',
+      this._onTouchStart,
+      true);
+    this._events.on(
+      hitTarget,
+      'pointerdown',
+      this._onPointerDown,
+      true);
   }
 
   public componentWillUnmount() {
@@ -149,7 +162,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       return;
     }
 
-    if (isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
+    if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0) {
         this._selectedIndicies = {};
         this._events.on(window, 'mousemove', this._onAsyncMouseMove);
@@ -162,6 +175,26 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
         this._onMouseMove(ev);
       }
+    }
+  }
+
+  @autobind
+  private _onTouchStart(ev: TouchEvent) {
+    this._isTouch = true;
+
+    this._async.setTimeout(() => {
+      this._isTouch = false;
+    }, 0);
+  }
+
+  @autobind
+  private _onPointerDown(ev: PointerEvent) {
+    if (ev.pointerType === 'touch') {
+      this._isTouch = true;
+
+      this._async.setTimeout(() => {
+        this._isTouch = false;
+      }, 0);
     }
   }
 
