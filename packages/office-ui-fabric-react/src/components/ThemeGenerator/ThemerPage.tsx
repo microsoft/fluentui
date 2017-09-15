@@ -74,41 +74,6 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   public render() {
     let { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
-    /*let slotsList = mapEnumByName(SemanticSlot, (x, slot) => {
-      return this._semanticSlotWidget(slot);
-    });*/
-
-    let basicSlots =
-      [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
-      this._semanticSlotWidget(SemanticColorSlots.bodyText),
-      this._semanticSlotWidget(SemanticColorSlots.bodyTextDisabled)]; // todo
-
-    let fabricSlots =
-      [this._fabricSlotWidget(FabricSlots.black),
-      this._fabricSlotWidget(FabricSlots.white),
-
-      this._fabricSlotWidget(FabricSlots.themeDarker),
-      this._fabricSlotWidget(FabricSlots.themeDark),
-      this._fabricSlotWidget(FabricSlots.themeDarkAlt),
-      this._fabricSlotWidget(FabricSlots.themePrimary),
-      this._fabricSlotWidget(FabricSlots.themeSecondary),
-      this._fabricSlotWidget(FabricSlots.themeTertiary),
-      this._fabricSlotWidget(FabricSlots.themeLight),
-      this._fabricSlotWidget(FabricSlots.themeLighter),
-      this._fabricSlotWidget(FabricSlots.themeLighterAlt),
-
-      this._fabricSlotWidget(FabricSlots.neutralDark),
-      this._fabricSlotWidget(FabricSlots.neutralPrimary),
-      this._fabricSlotWidget(FabricSlots.neutralSecondary),
-      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
-      this._fabricSlotWidget(FabricSlots.neutralTertiary),
-      this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
-      this._fabricSlotWidget(FabricSlots.neutralQuaternary),
-      this._fabricSlotWidget(FabricSlots.neutralQuaternaryAlt),
-      this._fabricSlotWidget(FabricSlots.neutralLight),
-      this._fabricSlotWidget(FabricSlots.neutralLighter),
-      this._fabricSlotWidget(FabricSlots.neutralLighterAlt)];
-
     let fabricThemeSlots =
       [this._fabricSlotWidget(FabricSlots.themeDarker),
       this._fabricSlotWidget(FabricSlots.themeDark),
@@ -119,6 +84,14 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       this._fabricSlotWidget(FabricSlots.themeLight),
       this._fabricSlotWidget(FabricSlots.themeLighter),
       this._fabricSlotWidget(FabricSlots.themeLighterAlt)];
+    let fabricNeutralForegroundSlots =
+      [this._fabricSlotWidget(FabricSlots.black),
+      this._fabricSlotWidget(FabricSlots.neutralDark),
+      this._fabricSlotWidget(FabricSlots.neutralPrimary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralTertiary)
+      ];
     let fabricNeutralBackgroundSlots =
       [this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralQuaternary),
@@ -127,20 +100,13 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       this._fabricSlotWidget(FabricSlots.neutralLighter),
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
       this._fabricSlotWidget(FabricSlots.white)];
-    let fabricNeutralForegroundSlots =
-      [this._fabricSlotWidget(FabricSlots.black),
-      this._fabricSlotWidget(FabricSlots.neutralDark),
-      this._fabricSlotWidget(FabricSlots.neutralPrimary),
-      this._fabricSlotWidget(FabricSlots.neutralSecondary),
-      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
-      this._fabricSlotWidget(FabricSlots.neutralTertiary)
-        // this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt)
-      ];
 
     return (
       <div className='ms-themer'>
 
         {/* todo phkuo document
+        APIkey _makeThemeFromImg()
+        API: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
           <input type='text' id='imageUrl' />
@@ -168,7 +134,9 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
 
         {/* the three base slots, prominently displayed at the top of the page */ }
         <div style={ { display: 'flex' } }>
-          { [this._baseColorSlotPicker(BaseSlots.primaryColor), this._baseColorSlotPicker(BaseSlots.backgroundColor), this._baseColorSlotPicker(BaseSlots.foregroundColor)] }
+          { [this._baseColorSlotPicker(BaseSlots.primaryColor),
+          this._baseColorSlotPicker(BaseSlots.foregroundColor),
+          this._baseColorSlotPicker(BaseSlots.backgroundColor)] }
         </div>
         <br />
 
@@ -259,8 +227,10 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     );
   }
 
-  // todo: cleanup
+  @autobind
+  /* tslint:disable:no-unused-variable */
   private _makeThemeFromImg() {
+    /* tslint:enable:no-unused-variable */
     this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
     (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
 
@@ -273,7 +243,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     xhr.send('{ "url": "' + this._imgUrl + '" }');
   }
 
-  // todo: cleanup
+  @autobind
   private _cognitiveVisionCallback(e: any) {
     const xhr = e.target;
     if (xhr.status === 200) {
