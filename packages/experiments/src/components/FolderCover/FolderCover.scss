@@ -20,6 +20,14 @@
   }
 }
 
+.shadow {
+  display: block;
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: -4px;
+}
+
 .front {
   display: block;
   position: absolute;
@@ -41,11 +49,11 @@
   left: 4px;
   right: 4px;
   bottom: 4px;
+  top: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
-  box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+  justify-content: center;
   opacity: 1;
 
   transition: opacity 0.2s linear;
@@ -53,15 +61,15 @@
   .hideContent & {
     opacity: 0;
   }
+}
 
-  &,
-  .isSmall & {
-    max-height: 52px - 8px;
-  }
-
-  .isLarge & {
-    max-height: 80px - 8px;
-  }
+.frame {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 1px 3px 2px rgba(1, 1, 0, 0.2);
 }
 
 .metadata {
