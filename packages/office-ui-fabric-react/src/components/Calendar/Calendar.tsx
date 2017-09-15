@@ -57,6 +57,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     strings: null,
     highlightCurrentMonth: false,
     navigationIcons: iconStrings,
+    showWeekNumbers: false,
     dateTimeFormatter: dateTimeFormatterCallbacks
   };
 
@@ -150,6 +151,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings! }
                   onHeaderSelect={ onHeaderSelect }
                   navigationIcons={ navigationIcons! }
+                  showWeekNumbers={ this.props.showWeekNumbers }
                   dateTimeFormatter={ this.props.dateTimeFormatter! }
                   ref='dayPicker'
                 />
