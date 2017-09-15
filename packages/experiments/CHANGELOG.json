@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.7.1",
+      "tag": "@uifabric/experiments_v0.7.1",
+      "date": "Fri, 15 Sep 2017 10:19:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "632ffffa9863e0ab4f0546681d63fda1e4bfdaf0",
+            "comment": "Add folder cover shadows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.46.1 <5.0.0` to `>=4.47.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.0",
       "tag": "@uifabric/experiments_v0.7.0",
       "date": "Thu, 14 Sep 2017 00:34:57 GMT",
