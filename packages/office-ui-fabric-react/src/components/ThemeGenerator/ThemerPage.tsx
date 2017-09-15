@@ -104,9 +104,13 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     return (
       <div className='ms-themer'>
 
-        {/* todo phkuo document
-        APIkey _makeThemeFromImg()
-        API: https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
+        {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
+          * Cognitive Vision API, documented here:
+          * https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/quickstarts/javascript
+          * We use that API to identify the most prominent background and foreground colors, and the accent color,
+          * and generate a theme based off of those.
+          * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
+          * key in _makeThemeFromImg() below. Then, just uncomment this section. *//*
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
           <input type='text' id='imageUrl' />
@@ -238,8 +242,8 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
     xhr.open('POST', 'https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    alert('You forgot to set the api key!');
-    xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '[ADD API KEY HERE]');
+    alert('You forgot to set the subscription key!');
+    xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '[YOUR SUBSCRIPTION KEY HERE]');
     xhr.send('{ "url": "' + this._imgUrl + '" }');
   }
 
