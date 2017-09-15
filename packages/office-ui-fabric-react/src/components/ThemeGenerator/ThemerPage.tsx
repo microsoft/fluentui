@@ -1,7 +1,8 @@
 import * as React from 'react';
 import './ThemerPage.scss';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-import { loadTheme } from '@microsoft/load-themed-styles';
+import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import {
   IColor,
   getContrastRatio,
@@ -14,7 +15,8 @@ import {
   BaseSlots,
   FabricSlots,
   SemanticColorSlots,
-  IThemeSlotRule
+  IThemeSlotRule,
+  IThemeRules
 } from 'office-ui-fabric-react/lib/ThemeGenerator';
 
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -28,9 +30,15 @@ import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/exam
 import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
 // import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
-const ProgressIndicatorBasicExampleCode = require('../ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx');
 
-export class ThemerPage extends React.Component<any, any> {
+export interface IThemeGeneratorPageState {
+  themeRules: IThemeRules;
+  colorPickerSlotRule: IThemeSlotRule | null;
+  colorPickerElement: HTMLElement | null;
+  colorPickerVisible: boolean;
+}
+
+export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   private _imgUrl: string;
 
   constructor() {
@@ -56,8 +64,8 @@ export class ThemerPage extends React.Component<any, any> {
       let newOutput = JSON.parse(jsonOutput);
       newOutput.backgroundImageUri = 'url("' + this._imgUrl + '")';
 
-      let tr = this.state.themeRules as IThemeSlotRule[];
-      newOutput.backgroundOverlay = updateA((tr[BaseSlots[BaseSlots.backgroundColor]] as IThemeSlotRule).value, 50).str;
+      let tr = this.state.themeRules as IThemeRules;
+      newOutput.backgroundOverlay = updateA((tr[BaseSlots[BaseSlots.backgroundColor]] as IThemeSlotRule).value!, 50).str;
 
       outputElem.value = JSON.stringify(newOutput);
     }
@@ -129,25 +137,10 @@ export class ThemerPage extends React.Component<any, any> {
         // this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt)
       ];
 
-    /*
-        let controlSlots =
-          [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
-          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
-          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundHover),
-          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelected),
-          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelectedHover),
-          this._semanticSlotWidget(SemanticColorSlots.controlForegroundSelected),
-          this._semanticSlotWidget(SemanticColorSlots.controlForegroundDisabled),
-          this._semanticSlotWidget(SemanticColorSlots.controlBorder),
-          this._semanticSlotWidget(SemanticColorSlots.controlBorderDisabled),
-          this._semanticSlotWidget(SemanticColorSlots.controlBorderHover),
-          this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
-          this._semanticSlotWidget(SemanticColorSlots.controlFilled),
-          this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
-    */
     return (
       <div className='ms-themer'>
 
+        {/* todo phkuo document
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
           <input type='text' id='imageUrl' />
@@ -155,18 +148,19 @@ export class ThemerPage extends React.Component<any, any> {
         </div>
         <div id='imageDescription' />
         <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
+      */}
 
-        {/* the shared popup color picker for semantic slots */ }
+        {/* the shared popup color picker for slots */ }
         { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
           <Callout
             key={ colorPickerSlotRule.name }
             gapSpace={ 10 }
             targetElement={ colorPickerElement }
             setInitialFocus={ true }
-            onDismiss={ this._colorPickerOnDismiss.bind(this) }
+            onDismiss={ this._colorPickerOnDismiss }
           >
             <ColorPicker
-              color={ colorPickerSlotRule.value.str }
+              color={ colorPickerSlotRule.value!.str }
               onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) }
             />
           </Callout>
@@ -350,10 +344,12 @@ export class ThemerPage extends React.Component<any, any> {
       );
     } */
 
-  private _colorPickerOnDismiss(ev: React.MouseEvent<HTMLElement>) {
+  @autobind
+  private _colorPickerOnDismiss() {
     this.setState({ colorPickerVisible: false });
   }
 
+  @autobind
   private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
     let { themeRules } = this.state;
 
@@ -361,6 +357,7 @@ export class ThemerPage extends React.Component<any, any> {
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
   }
 
+  @autobind
   private _onSwatchClick(slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>) {
     let { colorPickerSlotRule, colorPickerElement } = this.state;
 
@@ -371,6 +368,7 @@ export class ThemerPage extends React.Component<any, any> {
     }
   }
 
+  @autobind
   private _semanticSlotWidget(semanticSlot: SemanticColorSlots) {
     let themeRules = this.state.themeRules;
     let thisSlotRule = themeRules[SemanticColorSlots[semanticSlot]];
@@ -381,7 +379,7 @@ export class ThemerPage extends React.Component<any, any> {
         <div>
           <div>{ SemanticColorSlots[semanticSlot] }</div>
           { !thisSlotRule.isCustomized ?
-            <div>Inherits from: { thisSlotRule.inherits.name }</div>
+            <div>Inherits from: { thisSlotRule.inherits!.name }</div>
             : <div>Custom value</div> }
         </div>
       </div>
@@ -398,7 +396,7 @@ export class ThemerPage extends React.Component<any, any> {
         <div>
           <div>{ FabricSlots[fabricSlot] }</div>
           { !thisSlotRule.isCustomized ?
-            <div>Inherits from: { thisSlotRule.inherits.name }</div>
+            <div>Inherits from: { thisSlotRule.inherits!.name }</div>
             : <div>Custom value</div> }
         </div>
       </div>
@@ -410,12 +408,13 @@ export class ThemerPage extends React.Component<any, any> {
       <div
         key={ slotRule.name }
         className='ms-themer-swatch'
-        style={ { backgroundColor: slotRule.value.str } }
+        style={ { backgroundColor: slotRule.value!.str } }
         onClick={ this._onSwatchClick.bind(this, slotRule) }
       />
     );
   }
 
+  @autobind
   private _accessibilityRow(foreground: SemanticColorSlots, background: SemanticColorSlots) {
     let themeRules = this.state.themeRules;
     let bgc: IColor = themeRules[SemanticColorSlots[background]].value;
@@ -437,6 +436,7 @@ export class ThemerPage extends React.Component<any, any> {
     );
   }
 
+  @autobind
   private _outputSection() {
     return (
       <div>
@@ -458,14 +458,16 @@ export class ThemerPage extends React.Component<any, any> {
     );
   }
 
+  @autobind
   private _makeNewTheme() {
-    let themeAsJson = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+    let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
     document.body.style.backgroundColor = themeAsJson.backgroundColor; // todo
     document.body.style.color = themeAsJson.bodyText; // todo
-    loadTheme(themeAsJson);
+    loadTheme({ palette: themeAsJson });
   }
 
+  @autobind
   private _baseColorSlotPicker(baseSlot: BaseSlots) {
     function _onColorChanged(newColor: string) {
       let themeRules = this.state.themeRules;
@@ -478,11 +480,13 @@ export class ThemerPage extends React.Component<any, any> {
         <h3>{ BaseSlots[baseSlot] }</h3>
         <ColorPicker
           key={ 'baseslotcolorpicker' + baseSlot }
-          color={ this.state.themeRules[BaseSlots[baseSlot]].value.str }
+          color={ this.state.themeRules[BaseSlots[baseSlot]].value!.str }
+          /* tslint:disable:jsx-no-bind */
           onColorChanged={ _onColorChanged.bind(this) }
+        /* tslint:enable:jsx-no-bind */
         />
-        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } } />
+        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value!.str } }>
+          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value!.str } } />
           { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
           this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
           this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),
