@@ -21,32 +21,33 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
     return (
       <div className='ComponentStatus-div'>
-        { this._badgeAnchor('Keyboard accessibility support. ' +
-          this._badgeStatusString(this.props.keyboardAccessibilitySupport), this._badgeURL(
-            this._colorForDualStatusBadge(this.props.keyboardAccessibilitySupport),
-            keyboardAccessibilitySubject,
-            this._badgeStatusString(this.props.keyboardAccessibilitySupport))) }
-        { this._badgeAnchor('Markup support. ' + this._badgeStatusString(this.props.markupSupport), this._badgeURL(
-          this._colorForDualStatusBadge(this.props.markupSupport),
-          markupSubject,
-          this._badgeStatusString(this.props.markupSupport))) }
-        { this._badgeAnchor('High contrast support. ' + this._badgeStatusString(this.props.highContrastSupport), this._badgeURL(
-          this._colorForDualStatusBadge(this.props.highContrastSupport),
-          highContrastSupportSubject,
-          this._badgeStatusString(this.props.highContrastSupport))) }
-        { this._badgeAnchor('Right to left support. ' + this._badgeStatusString(this.props.rtlSupport), this._badgeURL(
-          this._colorForDualStatusBadge(this.props.rtlSupport),
-          rtlSubject,
-          this._badgeStatusString(this.props.rtlSupport))) }
-        { this._badgeAnchor('Test coverage. ' + this.props.testCoverage, this._badgeURL(
-          this._colorForTestCoverageStatus(this.props.testCoverage),
-          testCoverageSubject,
-          this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none)) }
+        { this._badgeAnchorForDual(keyboardAccessibilitySubject, !!this.props.keyboardAccessibilitySupport) }
+        { this._badgeAnchorForDual(markupSubject, !!this.props.markupSupport) }
+        { this._badgeAnchorForDual(highContrastSupportSubject, !!this.props.highContrastSupport) }
+        { this._badgeAnchorForDual(rtlSubject, !!this.props.rtlSupport) }
+        { this._badgeAnchorForTestCoverage(testCoverageSubject) }
       </div >
     );
   }
 
-  private _badgeAnchor(ariaLabel: string, imgSrc: string): JSX.Element {
+  private _badgeAnchorForDual(subject: string, isSupported: boolean): JSX.Element {
+    isSupported = isSupported ? isSupported : false;
+    const ariaLabel = subject + '. ' + this._badgeStatusString(isSupported);
+    const color = this._colorForDualStatusBadge(isSupported);
+    const status = this._badgeStatusString(isSupported);
+
+    return this._badgeAnchor(ariaLabel, color, subject, status);
+  }
+
+  private _badgeAnchorForTestCoverage(subject: string): JSX.Element {
+    const ariaLabel = subject + '. ' + this.props.testCoverage;
+    const color = this._colorForTestCoverageStatus(this.props.testCoverage);
+    const coverageStatus = this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none;
+
+    return this._badgeAnchor(ariaLabel, color, subject, coverageStatus);
+  }
+
+  private _badgeAnchor(ariaLabel: string, color: string, subject: string, status: string): JSX.Element {
     return (
       <a
         aria-label={ ariaLabel }
@@ -54,7 +55,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
         className='ComponentStatus-badge'
       >
         <img
-          src={ imgSrc }
+          src={ this._badgeURL(color, subject, status) }
         />
       </a>
     );
@@ -73,7 +74,7 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
   // Colors
   private _colorForDualStatusBadge(isSupported: boolean | undefined): string {
-    return isSupported ? 'green' : 'red';
+    return isSupported ? 'brightgreen' : 'red';
   }
 
   private _colorForTestCoverageStatus(testCoverageStatus: TestCoverageStatus | undefined): string {
@@ -81,11 +82,11 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
       case TestCoverageStatus.none:
         return 'red';
       case TestCoverageStatus.poor:
-        return 'orange';
+        return 'yellow';
       case TestCoverageStatus.fair:
         return 'yellowgreen';
       case TestCoverageStatus.good:
-        return 'green';
+        return 'brightgreen';
     }
 
     return 'red';
