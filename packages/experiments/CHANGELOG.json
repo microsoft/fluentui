@@ -2,6 +2,50 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "0.7.1",
+      "tag": "@uifabric/experiments_v0.7.1",
+      "date": "Fri, 15 Sep 2017 10:19:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "632ffffa9863e0ab4f0546681d63fda1e4bfdaf0",
+            "comment": "Add folder cover shadows"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.46.1 <5.0.0` to `>=4.47.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.0",
+      "tag": "@uifabric/experiments_v0.7.0",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "8a8343d979e0ff55ce24a1e1e649793ce9020f08",
+            "comment": "Add support for folder cover signals"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=0.23.1 <1.0.0` to `>=0.24.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=4.13.0 <5.0.0` to `>=4.13.1 <5.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.45.1 <5.0.0` to `>=4.46.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.6.0",
       "tag": "@uifabric/experiments_v0.6.0",
       "date": "Tue, 12 Sep 2017 17:41:25 GMT",

@@ -41,6 +41,7 @@ const SIZES: {
 const ASSETS: {
   [P in FolderCoverSize]: {
     [T in FolderCoverType]: {
+      shadow: string;
       back: string;
       front: string;
     };
@@ -48,20 +49,24 @@ const ASSETS: {
 } = {
     small: {
       default: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultfront.png`
       },
       media: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotoback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotosfront.png`
       }
     },
     large: {
       default: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultfront.png`
       },
       media: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotoback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotofront.png`
       }
@@ -89,13 +94,19 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
         }) }
       >
         <img
+          className={ css('ms-FolderCover-shadow', FolderCoverStyles.shadow) }
+          src={ assets.shadow }
+        />
+        <img
           className={ css('ms-FolderCover-back', FolderCoverStyles.back) }
           src={ assets.back }
         />
         {
           this.props.children ? (
             <span className={ css('ms-FolderCover-content', FolderCoverStyles.content) }>
-              { this.props.children }
+              <span className={ css('ms-FolderCover-frame', FolderCoverStyles.frame) }>
+                { this.props.children }
+              </span>
             </span>
           ) : null
         }
