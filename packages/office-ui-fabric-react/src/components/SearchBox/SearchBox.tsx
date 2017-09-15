@@ -96,7 +96,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onClear(ev?: any) {
+  private _onClear(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     this.props.onClear && this.props.onClear(ev);
     if (!ev.defaultPrevented) {
       this._latestValue = '';
