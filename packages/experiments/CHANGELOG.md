@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Sep 2017 10:19:50 GMT and should not be manually modified.
+
+## 0.7.1
+Fri, 15 Sep 2017 10:19:50 GMT
+
+### Patches
+
+- Add folder cover shadows
 
 ## 0.7.0
 Thu, 14 Sep 2017 00:34:57 GMT
