@@ -10,7 +10,7 @@ import {
 
 import {
   ThemeGenerator,
-  ThemeRulesStandardCreator,
+  themeRulesStandardCreator,
   BaseSlots,
   FabricSlots,
   SemanticColorSlots,
@@ -20,21 +20,23 @@ import {
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
-//import { Button } from '../../../components/Button/Button';
-//import { ButtonType } from '../../../components/Button/Button.Props';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+// import { Button } from '../../../components/Button/Button';
+// import { ButtonType } from '../../../components/Button/Button.Props';
+// import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+// import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+// import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
 const ProgressIndicatorBasicExampleCode = require('../ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx');
 
 export class ThemerPage extends React.Component<any, any> {
+  private _imgUrl: string;
+
   constructor() {
     super();
 
-    let themeRules = ThemeRulesStandardCreator();
+    let themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules);
 
     this.state = {
@@ -48,14 +50,14 @@ export class ThemerPage extends React.Component<any, any> {
   public componentDidUpdate() {
 
     // todo: cleanup
-    if (window['__imgUrl']) {
+    if (this._imgUrl) {
       const outputElem = (document.getElementById('jsonOutput') as HTMLTextAreaElement);
       let jsonOutput = outputElem.value;
       let newOutput = JSON.parse(jsonOutput);
-      newOutput.backgroundImageUri = 'url("' + window['__imgUrl'] + '")';
+      newOutput.backgroundImageUri = 'url("' + this._imgUrl + '")';
 
       let tr = this.state.themeRules as IThemeSlotRule[];
-      newOutput.backgroundOverlay = updateA((tr['backgroundColor'] as IThemeSlotRule).value, 50).str;
+      newOutput.backgroundOverlay = updateA((tr[BaseSlots[BaseSlots.backgroundColor]] as IThemeSlotRule).value, 50).str;
 
       outputElem.value = JSON.stringify(newOutput);
     }
@@ -123,26 +125,26 @@ export class ThemerPage extends React.Component<any, any> {
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
       this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
-      this._fabricSlotWidget(FabricSlots.neutralTertiary),
-      //this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt)
+      this._fabricSlotWidget(FabricSlots.neutralTertiary)
+        // this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt)
       ];
 
-/*
-    let controlSlots =
-      [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
-      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
-      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundHover),
-      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelected),
-      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelectedHover),
-      this._semanticSlotWidget(SemanticColorSlots.controlForegroundSelected),
-      this._semanticSlotWidget(SemanticColorSlots.controlForegroundDisabled),
-      this._semanticSlotWidget(SemanticColorSlots.controlBorder),
-      this._semanticSlotWidget(SemanticColorSlots.controlBorderDisabled),
-      this._semanticSlotWidget(SemanticColorSlots.controlBorderHover),
-      this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
-      this._semanticSlotWidget(SemanticColorSlots.controlFilled),
-      this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
-*/
+    /*
+        let controlSlots =
+          [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
+          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
+          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundHover),
+          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelected),
+          this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelectedHover),
+          this._semanticSlotWidget(SemanticColorSlots.controlForegroundSelected),
+          this._semanticSlotWidget(SemanticColorSlots.controlForegroundDisabled),
+          this._semanticSlotWidget(SemanticColorSlots.controlBorder),
+          this._semanticSlotWidget(SemanticColorSlots.controlBorderDisabled),
+          this._semanticSlotWidget(SemanticColorSlots.controlBorderHover),
+          this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
+          this._semanticSlotWidget(SemanticColorSlots.controlFilled),
+          this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
+    */
     return (
       <div className='ms-themer'>
 
@@ -151,7 +153,7 @@ export class ThemerPage extends React.Component<any, any> {
           <input type='text' id='imageUrl' />
           <button onClick={ this._makeThemeFromImg.bind(this) }>Create theme from image</button>
         </div>
-        <div id='imageDescription'></div>
+        <div id='imageDescription' />
         <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
 
         {/* the shared popup color picker for semantic slots */ }
@@ -161,10 +163,12 @@ export class ThemerPage extends React.Component<any, any> {
             gapSpace={ 10 }
             targetElement={ colorPickerElement }
             setInitialFocus={ true }
-            onDismiss={ this._colorPickerOnDismiss.bind(this) }>
+            onDismiss={ this._colorPickerOnDismiss.bind(this) }
+          >
             <ColorPicker
               color={ colorPickerSlotRule.value.str }
-              onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) } />
+              onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) }
+            />
           </Callout>
         }
 
@@ -263,32 +267,34 @@ export class ThemerPage extends React.Component<any, any> {
 
   // todo: cleanup
   private _makeThemeFromImg() {
-    const imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
-    window['__imgUrl'] = imgUrl;
-    (document.getElementById('imagePreview') as HTMLImageElement).src = imgUrl;
+    this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
+    (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
 
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
     xhr.open('POST', 'https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
     xhr.setRequestHeader('Content-Type', 'application/json');
-    alert('add subscription key');
-    xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '');
-    xhr.send('{ "url": "' + imgUrl + '" }');
+    alert('You forgot to set the api key!');
+    xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '[ADD API KEY HERE]');
+    xhr.send('{ "url": "' + this._imgUrl + '" }');
   }
 
   // todo: cleanup
   private _cognitiveVisionCallback(e: any) {
     const xhr = e.target;
-    if (xhr.status == 200) {
+    if (xhr.status === 200) {
       const response = JSON.parse(xhr.response);
 
-      document.getElementById('imageDescription').innerHTML = response.description.captions[0].text;
+      document.getElementById('imageDescription')!.innerHTML = response.description.captions[0].text;
 
-      // response.color.accentColor
-      // response.color.dominantColorBackground
-      // response.color.dominantColorForeground
+      /* API returns:
+       response.color.accentColor
+       response.color.dominantColorBackground
+       response.color.dominantColorForeground */
 
+      // converts a returned color from a word into a hex value conforming to our palette
       const getHexFromColor = (color: string, isBg: boolean) => {
+        // todo: could use more logic based on isInverted
         switch (color.toLowerCase()) {
           case 'black': return '#1f1f1f';
           case 'blue': return '#0078d7';
@@ -304,45 +310,45 @@ export class ThemerPage extends React.Component<any, any> {
           case 'white': return '#fff';
           case 'yellow': return '#fff100';
         }
-        alert("Unknown color passed to getHexFromColor(): " + color);
+        alert('Error: Unexpected color passed to getHexFromColor(): ' + color);
         return '#fff';
-      }
+      };
 
       let { themeRules } = this.state;
       console.log(themeRules);
-      ThemeGenerator.setSlot(themeRules['backgroundColor'], getHexFromColor(response.color.dominantColorBackground, true), themeRules, true);
-      ThemeGenerator.setSlot(themeRules['primaryColor'], '#' + response.color.accentColor, themeRules, true);
-      ThemeGenerator.setSlot(themeRules['foregroundColor'], getHexFromColor(response.color.dominantColorForeground, false), themeRules, true);
+      ThemeGenerator.setSlot(themeRules[BaseSlots.backgroundColor], getHexFromColor(response.color.dominantColorBackground, true), themeRules, true);
+      ThemeGenerator.setSlot(themeRules[BaseSlots.primaryColor], '#' + response.color.accentColor, themeRules, true);
+      ThemeGenerator.setSlot(themeRules[BaseSlots.foregroundColor], getHexFromColor(response.color.dominantColorForeground, false), themeRules, true);
 
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
 
     } else {
-      alert('' + xhr.status + ' ' + xhr.statusText);
+      alert('Error ' + xhr.status + ': ' + xhr.statusText);
     }
   }
 
-  private _exampleSection(
-    sectionName: string,
-    description: string,
-    slots: Array<JSX.Element>,
-    examples?: Array<JSX.Element>
-  ) {
-    return (
-      <div className='ms-themer-exampleSection'>
-        <h3>{ sectionName }</h3>
-        <p>{ description }</p>
-        <div className='ms-themer-exampleTable'>
-          <div className='ms-themer-slotsList'>
-            { slots }
+  /*  private _exampleSection(
+      sectionName: string,
+      description: string,
+      slots: Array<JSX.Element>,
+      examples?: Array<JSX.Element>
+    ) {
+      return (
+        <div className='ms-themer-exampleSection'>
+          <h3>{ sectionName }</h3>
+          <p>{ description }</p>
+          <div className='ms-themer-exampleTable'>
+            <div className='ms-themer-slotsList'>
+              { slots }
+            </div>
+            <div className='ms-themer-exampleList'>
+              { examples }
+            </div>
           </div>
-          <div className='ms-themer-exampleList'>
-            { examples }
-          </div>
+          <br />
         </div>
-        <br />
-      </div>
-    );
-  }
+      );
+    } */
 
   private _colorPickerOnDismiss(ev: React.MouseEvent<HTMLElement>) {
     this.setState({ colorPickerVisible: false });
@@ -405,8 +411,8 @@ export class ThemerPage extends React.Component<any, any> {
         key={ slotRule.name }
         className='ms-themer-swatch'
         style={ { backgroundColor: slotRule.value.str } }
-        onClick={ this._onSwatchClick.bind(this, slotRule) }>
-      </div>
+        onClick={ this._onSwatchClick.bind(this, slotRule) }
+      />
     );
   }
 
@@ -435,19 +441,26 @@ export class ThemerPage extends React.Component<any, any> {
     return (
       <div>
         <h2>Output</h2>
-        <textarea id='jsonOutput' readOnly={ true } style={ { height: '300px', width: '300px' } } spellCheck={ false }
-          value={ JSON.stringify(ThemeGenerator.getThemeAsJson(this.state.themeRules), void 0, 2) }>
-        </textarea>
-        <textarea readOnly={ true } style={ { height: '300px', width: '800px', display: 'none' } } spellCheck={ false }
-          value={ ThemeGenerator.getThemeAsSass(this.state.themeRules) }>
-        </textarea>
+        <textarea
+          id='jsonOutput'
+          readOnly={ true }
+          style={ { height: '300px', width: '300px' } }
+          spellCheck={ false }
+          value={ JSON.stringify(ThemeGenerator.getThemeAsJson(this.state.themeRules), void 0, 2) }
+        />
+        <textarea
+          readOnly={ true }
+          style={ { height: '300px', width: '800px', display: 'none' } }
+          spellCheck={ false }
+          value={ ThemeGenerator.getThemeAsSass(this.state.themeRules) }
+        />
       </div>
     );
   }
 
   private _makeNewTheme() {
     let themeAsJson = ThemeGenerator.getThemeAsJson(this.state.themeRules);
-    //console.log('New theme', themeAsJson);
+    console.log('New theme...', themeAsJson);
     document.body.style.backgroundColor = themeAsJson.backgroundColor; // todo
     document.body.style.color = themeAsJson.bodyText; // todo
     loadTheme(themeAsJson);
@@ -466,9 +479,10 @@ export class ThemerPage extends React.Component<any, any> {
         <ColorPicker
           key={ 'baseslotcolorpicker' + baseSlot }
           color={ this.state.themeRules[BaseSlots[baseSlot]].value.str }
-          onColorChanged={ _onColorChanged.bind(this) } />
+          onColorChanged={ _onColorChanged.bind(this) }
+        />
         <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }></div>
+          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } } />
           { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
           this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
           this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),

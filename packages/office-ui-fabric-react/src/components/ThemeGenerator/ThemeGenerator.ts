@@ -10,6 +10,7 @@ import {
 import { format } from '../../Utilities';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
+import { IThemeRules } from './IThemeRules';
 
 export class ThemeGenerator {
 
@@ -19,7 +20,7 @@ export class ThemeGenerator {
   public static setSlot(
     rule: IThemeSlotRule,
     value: string | IColor,
-    slotRules: Array<IThemeSlotRule>,
+    slotRules: IThemeRules,
     isCustomized = false,
     overwriteCustomValue = true
   ) {
@@ -52,7 +53,7 @@ export class ThemeGenerator {
    * If this completes without error, then the theme is ready to use.
    * setSlot() can be called before this.
    */
-  public static insureSlots(slotRules: Array<IThemeSlotRule>) {
+  public static insureSlots(slotRules: IThemeRules) {
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
     for (let ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
@@ -71,12 +72,12 @@ export class ThemeGenerator {
    * { [theme slot name as string] : [value as string],
    *   ... }
    */
-  public static getThemeAsJson(slotRules: Array<IThemeSlotRule>): any {
+  public static getThemeAsJson(slotRules: IThemeRules): any {
     let theme: any = {};
     for (let ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
         let rule: IThemeSlotRule = slotRules[ruleName];
-        theme[rule.name] = rule.value.str;
+        theme[rule.name] = rule.value ? rule.value.str : '';
       }
     }
     return theme;
@@ -87,7 +88,7 @@ export class ThemeGenerator {
    * $tokenName2: "[theme:tokenName2, default:#ba2ba2]";
    * ...
    */
-  public static getThemeAsSass(slotRules: Array<IThemeSlotRule>): any {
+  public static getThemeAsSass(slotRules: IThemeRules): any {
     let sassVarTemplate = '${0}Color:\t"[theme: {1},\tdefault: {2}]";\n';
     let output = '';
 
@@ -109,7 +110,7 @@ export class ThemeGenerator {
   private static _setSlot(
     rule: IThemeSlotRule,
     value: IColor,
-    slotRules: Array<IThemeSlotRule>,
+    slotRules: IThemeRules,
     isCustomized: boolean, // this property isn't changed on the rule if overwriteCustomValue is false
     overwriteCustomValue = true
   ) {
