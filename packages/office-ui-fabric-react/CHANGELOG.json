@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.47.0",
+      "tag": "office-ui-fabric-react_v4.47.0",
+      "date": "Fri, 15 Sep 2017 10:19:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "acdbb9021ae55b63c7a72189892e62347b410090",
+            "comment": "Calendar:  Adding week numbers to calendar"
+          },
+          {
+            "author": "kellygorr <kegorr@microsoft.com>",
+            "commit": "14202292db345d3c736f805186de469a016b7675",
+            "comment": "DatePicker: Hovering over calendar icon in text input does not change cursor to pointer."
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "72545f3da76a593c6787e7cb1d55a99008005991",
+            "comment": "SplitButton: Fixed primary theme, updated documentation"
+          },
+          {
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "7f6604ebb63d8b420c6d92de4f70c60872a62c5f",
+            "comment": "Prevent touch events from triggering marquee selection"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.46.1",
       "tag": "office-ui-fabric-react_v4.46.1",
       "date": "Thu, 14 Sep 2017 10:17:39 GMT",
