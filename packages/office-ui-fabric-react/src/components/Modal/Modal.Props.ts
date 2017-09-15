@@ -4,7 +4,10 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
 export interface IModal {
-
+  /**
+   * Sets focus on the first focusable, or configured, child in focus trap zone
+   */
+  focus: () => void;
 }
 
 export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeState, IAccessiblePopupProps {
@@ -66,4 +69,9 @@ export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeStat
    * ARIA id for the subtitle of the Modal, if any
    */
   subtitleAriaId?: string;
+
+  /**
+  * Callback to dynamically set the selector for the first focusable within the modal
+  */
+  getFirstFocusableSelector?: () => string;
 }

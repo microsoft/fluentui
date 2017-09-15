@@ -4,8 +4,8 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { FocusTrapZone } from '../FocusTrapZone/index';
-import { IModalProps } from './Modal.Props';
+import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
+import { IModalProps, IModal } from './Modal.Props';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
@@ -23,7 +23,7 @@ export interface IDialogState {
 }
 
 @withResponsiveMode
-export class Modal extends BaseComponent<IModalProps, IDialogState> {
+export class Modal extends BaseComponent<IModalProps, IDialogState> implements IModal {
 
   public static defaultProps: IModalProps = {
     isOpen: false,
@@ -34,6 +34,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
   };
 
   private _onModalCloseTimer: number;
+  private focusTrapZone: IFocusTrapZone | undefined;
 
   constructor(props: IModalProps) {
     super(props);
@@ -83,6 +84,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
     let {
       elementToFocusOnDismiss,
       firstFocusableSelector,
+      getFirstFocusableSelector,
       forceFocusInsideTrap,
       ignoreExternalFocusing,
       isBlocking,
@@ -121,12 +123,14 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
             <div className={ modalClassName }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? undefined : (onDismiss as any) } />
               <FocusTrapZone
+                componentRef={ ref => this.focusTrapZone = ref }
                 className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
                 isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
                 ignoreExternalFocusing={ ignoreExternalFocusing }
                 forceFocusInsideTrap={ forceFocusInsideTrap }
                 firstFocusableSelector={ firstFocusableSelector }
+                getFirstFocusableSelector={ getFirstFocusableSelector }
               >
                 { this.props.children }
               </FocusTrapZone>
@@ -136,6 +140,10 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> {
       );
     }
     return null;
+  }
+
+  public focus() {
+    this.focusTrapZone && this.focusTrapZone.focus();
   }
 
   // Watch for completed animations and set the state
