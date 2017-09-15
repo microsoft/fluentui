@@ -420,7 +420,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.backspace:
-        this.onBackspace(ev);
+        if (!this.props.disabled) {
+            this.onBackspace(ev);
+        }
         ev.stopPropagation();
         break;
 
@@ -431,7 +433,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           }
           this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
           this.forceUpdate();
-        } else {
+        } else if(!this.props.disabled) {
           this.onBackspace(ev);
         }
         ev.stopPropagation();
