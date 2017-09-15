@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Sep 2017 10:17:39 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Sep 2017 10:19:50 GMT and should not be manually modified.
+
+## 4.47.0
+Fri, 15 Sep 2017 10:19:50 GMT
+
+### Minor changes
+
+- Calendar:  Adding week numbers to calendar
+- DatePicker: Hovering over calendar icon in text input does not change cursor to pointer.
+
+### Patches
+
+- SplitButton: Fixed primary theme, updated documentation
+- Prevent touch events from triggering marquee selection
 
 ## 4.46.1
 Thu, 14 Sep 2017 10:17:39 GMT
