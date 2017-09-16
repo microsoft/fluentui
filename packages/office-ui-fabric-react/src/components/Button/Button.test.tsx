@@ -12,9 +12,7 @@ import { KeyCodes } from '../../Utilities';
 
 let { expect } = chai;
 
-const alertClicked = (): void => {
-  alert('Clicked');
-};
+const alertClicked = (): void => {};
 
 describe('DefaultButton', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
