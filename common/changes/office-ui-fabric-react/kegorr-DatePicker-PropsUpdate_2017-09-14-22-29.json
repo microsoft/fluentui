@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Calendar:  Adding week numbers to calendar",
+      "comment": "DatePicker-Adding new props from Calendar component",
       "type": "minor"
     }
   ],
