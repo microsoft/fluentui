@@ -1,5 +1,5 @@
-import { IColor } from '../../utilities/color/Colors';
-import { Shade } from '../../utilities/color/Shades';
+import { IColor } from '../../utilities/color/colors';
+import { Shade } from '../../utilities/color/shades';
 
 export interface IThemeSlotRule {
   /* The name of this theme slot. */

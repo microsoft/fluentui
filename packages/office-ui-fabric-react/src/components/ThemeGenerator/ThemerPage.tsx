@@ -6,7 +6,9 @@ import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import {
   IColor,
   getContrastRatio,
-  updateA
+  updateA,
+  isDark,
+  getColorFromString
 } from 'office-ui-fabric-react/lib/utilities/color/index';
 
 import {
@@ -45,7 +47,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     super();
 
     let themeRules = themeRulesStandardCreator();
-    ThemeGenerator.insureSlots(themeRules);
+    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!));
 
     this.state = {
       themeRules: themeRules,
@@ -89,7 +91,6 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       this._fabricSlotWidget(FabricSlots.neutralDark),
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
-      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralTertiary)
       ];
     let fabricNeutralBackgroundSlots =
@@ -149,11 +150,11 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
           basicSlots) */}
         <h3>Fabric Palette</h3>
         <p>The original Fabric palette variables.</p>
-        <table><tr>
-          <td>{ fabricThemeSlots }</td>
-          <td>{ fabricNeutralForegroundSlots }</td>
-          <td>{ fabricNeutralBackgroundSlots }</td>
-        </tr></table>
+        <div style={ { display: 'flex' } }>
+          <div>{ fabricThemeSlots }</div>
+          <div>{ fabricNeutralForegroundSlots }</div>
+          <div>{ fabricNeutralBackgroundSlots }</div>
+        </div>
         {/* this._exampleSection('Input controls',
           These slots TODO TODO',
           controlSlots,
@@ -222,7 +223,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
         <h3>Accessibility</h3>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
         <table className='ms-themer-accessibilityTable'>
-          { [this._accessibilityRow(SemanticColorSlots.bodyTextDisabled, SemanticColorSlots.bodyBackground),
+          { [this._accessibilityRow(SemanticColorSlots.disabledText, SemanticColorSlots.bodyBackground),
           this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground)] }
         </table>
 
@@ -283,10 +284,29 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       };
 
       let { themeRules } = this.state;
-      console.log(themeRules);
-      ThemeGenerator.setSlot(themeRules[BaseSlots.backgroundColor], getHexFromColor(response.color.dominantColorBackground, true), themeRules, true);
-      ThemeGenerator.setSlot(themeRules[BaseSlots.primaryColor], '#' + response.color.accentColor, themeRules, true);
-      ThemeGenerator.setSlot(themeRules[BaseSlots.foregroundColor], getHexFromColor(response.color.dominantColorForeground, false), themeRules, true);
+      const bgColor = getHexFromColor(response.color.dominantColorBackground, true);
+      const bgColorIsDark = isDark(getColorFromString(bgColor));
+      ThemeGenerator.setSlot(
+        themeRules[BaseSlots.backgroundColor], // todo THIS IS WRONG
+        bgColor,
+        themeRules,
+        bgColorIsDark,
+        true,
+        true);
+      ThemeGenerator.setSlot(
+        themeRules[BaseSlots.primaryColor],
+        '#' + response.color.accentColor,
+        themeRules,
+        bgColorIsDark,
+        true,
+        true);
+      ThemeGenerator.setSlot(
+        themeRules[BaseSlots.foregroundColor],
+        getHexFromColor(response.color.dominantColorForeground, false),
+        themeRules,
+        bgColorIsDark,
+        true,
+        true);
 
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
 
@@ -327,7 +347,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
     let { themeRules } = this.state;
 
-    ThemeGenerator.setSlot(slotRule, color, themeRules, true, true);
+    ThemeGenerator.setSlot(slotRule, color, themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!), true, true);
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
   }
 
@@ -338,43 +358,33 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     if (colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && !!colorPickerElement && colorPickerSlotRule === slotRule && colorPickerElement === ev.target) { // same one, close it
       this.setState({ colorPickerVisible: false, colorPickerSlotRule: null, colorPickerElement: null });
     } else { // new one, open it
-      this.setState({ colorPickerVisible: true, colorPickerSlotRule: slotRule, colorPickerElement: ev.target });
+      this.setState({ colorPickerVisible: true, colorPickerSlotRule: slotRule, colorPickerElement: ev.target as HTMLElement });
     }
   }
 
   @autobind
-  private _semanticSlotWidget(semanticSlot: SemanticColorSlots) {
-    let themeRules = this.state.themeRules;
-    let thisSlotRule = themeRules[SemanticColorSlots[semanticSlot]];
-
+  private _slotWidget(slotRule: IThemeSlotRule) {
     return (
-      <div key={ semanticSlot } className='ms-themer-slot'>
-        { this._colorSquareSwatchWidget(thisSlotRule) }
+      <div key={ slotRule.name } className='ms-themer-slot'>
+        { this._colorSquareSwatchWidget(slotRule) }
         <div>
-          <div>{ SemanticColorSlots[semanticSlot] }</div>
-          { !thisSlotRule.isCustomized ?
-            <div>Inherits from: { thisSlotRule.inherits!.name }</div>
-            : <div>Custom value</div> }
+          <div>{ slotRule.name }</div>
+          { !slotRule.isCustomized ?
+            <div>Inherits from: { slotRule.inherits!.name }</div>
+            : <div>Customized</div> }
         </div>
       </div>
     );
   }
-  // todo: combine with above
-  private _fabricSlotWidget(fabricSlot: FabricSlots) {
-    let themeRules = this.state.themeRules;
-    let thisSlotRule = themeRules[FabricSlots[fabricSlot]];
 
-    return (
-      <div key={ fabricSlot } className='ms-themer-slot'>
-        { this._colorSquareSwatchWidget(thisSlotRule) }
-        <div>
-          <div>{ FabricSlots[fabricSlot] }</div>
-          { !thisSlotRule.isCustomized ?
-            <div>Inherits from: { thisSlotRule.inherits!.name }</div>
-            : <div>Custom value</div> }
-        </div>
-      </div>
-    );
+  @autobind
+  private _semanticSlotWidget(semanticSlot: SemanticColorSlots) {
+    return this._slotWidget(this.state.themeRules[SemanticColorSlots[semanticSlot]]);
+  }
+
+  @autobind
+  private _fabricSlotWidget(fabricSlot: FabricSlots) {
+    return this._slotWidget(this.state.themeRules[FabricSlots[fabricSlot]]);
   }
 
   private _colorSquareSwatchWidget(slotRule: IThemeSlotRule) {
@@ -391,8 +401,8 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   @autobind
   private _accessibilityRow(foreground: SemanticColorSlots, background: SemanticColorSlots) {
     let themeRules = this.state.themeRules;
-    let bgc: IColor = themeRules[SemanticColorSlots[background]].value;
-    let fgc: IColor = themeRules[SemanticColorSlots[foreground]].value;
+    let bgc: IColor = themeRules[SemanticColorSlots[background]].value!;
+    let fgc: IColor = themeRules[SemanticColorSlots[foreground]].value!;
 
     let contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
@@ -445,7 +455,18 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   private _baseColorSlotPicker(baseSlot: BaseSlots) {
     function _onColorChanged(newColor: string) {
       let themeRules = this.state.themeRules;
-      ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, themeRules, true);
+      const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!);
+      ThemeGenerator.setSlot(
+        themeRules[BaseSlots[baseSlot]],
+        newColor,
+        themeRules,
+        currentIsDark,
+        true,
+        true);
+      if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!)) {
+        // isInverted got swapped, so need to refresh slots with new shading rules
+        ThemeGenerator.insureSlots(themeRules, !currentIsDark);
+      }
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }
 

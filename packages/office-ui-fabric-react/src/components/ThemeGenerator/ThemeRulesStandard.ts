@@ -1,10 +1,15 @@
-import { Shade } from '../../utilities/color/Shades';
-import { getColorFromString } from '../../utilities/color/Colors';
+import { Shade } from '../../utilities/color/shades';
+import { getColorFromString } from '../../utilities/color/colors';
 import { mapEnumByName } from '../../Utilities';
 
 import { IThemeRules } from './IThemeRules';
 
-/* This is the set of rules for our default theme. */
+/* This is the set of rules for our default theme.
+   We start with three base slots, defining the background, foreground (text), and
+   primary color (sometimes called theme color). Each Fabric slot is generated from
+   shades (or tints) of one of those three, creating the Fabric palette.
+   Then, we have semantic slots, the new thing intended to eventually replace the
+   Fabric palette. The semantic slots inherit from the Fabric palette. */
 
 /* The most minimal set of slots we start with. All other ones can be generated based on rules.
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety.
@@ -34,7 +39,7 @@ export enum FabricSlots {
   neutralQuaternary, // BaseSlots.backgroundColor, Shade[Shade.Shade5]);
   neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
   neutralTertiary, // BaseSlots.foregroundColor, Shade[Shade.Shade3]);
-  neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+  // deprecated: neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
   neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
   neutralPrimaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
   neutralPrimary, // BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
@@ -49,80 +54,9 @@ export enum FabricSlots {
 export enum SemanticColorSlots {
   bodyBackground,
   bodyText,
-  bodyTextAlt,
-  bodyTextDisabled,
-  bodyTextHover,
-  bodyTextPrimary,
-  bodyTextPrimaryAlt,
-  bodyTextStrong,
+  disabledText,
 
-  errorText,
-  focusBorder,
-
-  bodyLink,
-  bodyLinkHover,
-
-  // todo: drop shadows
-
-  // todo: button slots
-
-  calloutBackground,
-  calloutBorder,
-  calloutText,
-  calloutTextDisabled,
-  calloutTextHover,
-
-  commandBarBackground,
-  commandBarHover,
-  commandBarIcon,
-  commandBarIconSelected,
-
-  controlText,
-  controlBackground,
-  controlBackgroundDisabled,
-  controlBackgroundHover,
-  controlBackgroundSelected,
-  controlBackgroundSelectedHover,
-  controlForegroundDisabled,
-  controlForegroundSelected,
-  controlBorder,
-  controlBorderDisabled,
-  controlBorderHover,
-  controlUnfilled,
-  controlUnfilledDefault,
-  controlFilled, // needs review: we might merge controlFilled* states into controlForeground* states
-  controlFilledHover,
-  controlFilledActive,
-
-  inputBackgroundDisabled,
-  inputBorder,
-  inputBorderDisabled,
-  inputBorderFocus,
-  inputBorderHover,
-
-  menuBackgroundHover,
-  menuDivider,
-  menuIcon,
-  menuSelectedBackgroundHover,
-  menuTextDisabled
-  // todo: item styles
-}
-
-/* Returns a list of all the slots */
-export function getThemeSlotsStandard() {
-  let slots: string[] = [];
-  mapEnumByName(BaseSlots, (paletteSlot) => {
-    slots.push(paletteSlot);
-
-    mapEnumByName(Shade, (shadeName) => {
-      slots.push(paletteSlot + shadeName);
-      return void 0;
-    });
-
-    return void 0;
-  });
-
-  return slots;
+  errorText
 }
 
 export function themeRulesStandardCreator() {
@@ -130,7 +64,7 @@ export function themeRulesStandardCreator() {
 
   /*** BASE COLORS and their SHADES */
   // iterate through each base slot and make the SlotRules for those
-  mapEnumByName(BaseSlots, (baseSlot) => {
+  mapEnumByName(BaseSlots, (baseSlot: string) => {
     // first make the SlotRule for the unshaded base Color
     slotRules[baseSlot] = {
       name: baseSlot,
@@ -138,7 +72,7 @@ export function themeRulesStandardCreator() {
     };
 
     // then make a rule for each shade of this base color, but skip unshaded
-    mapEnumByName(Shade, (shadeName, shadeValue) => {
+    mapEnumByName(Shade, (shadeName: string, shadeValue) => {
       if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }
@@ -196,44 +130,39 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].isCustomized = true;
 
-  /*** CONVERTER C->B */
-  // converts modern-style slots to the ms-color-* Fabric palette
   // undefined error trying to reference Shade in this function for some reason, so need to make inheritedShade a string for now
-  function _makeBtoCConverterSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: string) {
-    if (inheritedShade === Shade[Shade.Unshaded]) {
-      inheritedShade = '';
-    }
+  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade) {
     slotRules[slotName] = {
       name: slotName,
-      inherits: slotRules[BaseSlots[inheritedBase] + inheritedShade],
+      inherits: slotRules[BaseSlots[inheritedBase]],
+      asShade: inheritedShade,
       isCustomized: false
     };
   }
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themePrimary], BaseSlots.primaryColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLighterAlt], BaseSlots.primaryColor, Shade[Shade.Shade1]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLighter], BaseSlots.primaryColor, Shade[Shade.Shade2]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLight], BaseSlots.primaryColor, Shade[Shade.Shade3]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeTertiary], BaseSlots.primaryColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeSecondary], BaseSlots.primaryColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarkAlt], BaseSlots.primaryColor, Shade[Shade.Shade6]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDark], BaseSlots.primaryColor, Shade[Shade.Shade7]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarker], BaseSlots.primaryColor, Shade[Shade.Shade8]);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themePrimary], BaseSlots.primaryColor, Shade.Unshaded);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeLighterAlt], BaseSlots.primaryColor, Shade.Shade1);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeLighter], BaseSlots.primaryColor, Shade.Shade2);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeLight], BaseSlots.primaryColor, Shade.Shade3);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeTertiary], BaseSlots.primaryColor, Shade.Shade4);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeSecondary], BaseSlots.primaryColor, Shade.Shade5);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeDarkAlt], BaseSlots.primaryColor, Shade.Shade6);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeDark], BaseSlots.primaryColor, Shade.Shade7);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.themeDarker], BaseSlots.primaryColor, Shade.Shade8);
 
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade[Shade.Shade1]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade[Shade.Shade2]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade[Shade.Shade3]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade[Shade.Shade3]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade6]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade[Shade.Shade7]);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade.Shade1);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade.Shade2);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade.Shade3);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade.Shade4);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade.Shade5);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade.Shade6); // bg6 or fg2
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade.Shade3);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade.Shade5);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade.Shade6);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade.Unshaded);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade.Shade7);
 
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade[Shade.Shade8]);
-  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade.Shade8);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade.Unshaded);
 
   // todo: can remove this once we remove these outdated slots from the product
   let primaryBackground = 'primaryBackground';
@@ -252,10 +181,10 @@ export function themeRulesStandardCreator() {
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot, it will automatically find the right shade SlotRule to point at,
   //   and not actually inherit the given slot as a shade
-  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedBase: BaseSlots, shade: Shade) {
+  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots) {
     slotRules[SemanticColorSlots[semanticSlot]] = {
       name: SemanticColorSlots[semanticSlot],
-      inherits: slotRules[BaseSlots[inheritedBase] + (shade !== Shade.Unshaded ? Shade[shade] : '')],
+      inherits: slotRules[FabricSlots[inheritedFabricSlot]],
       isCustomized: false
     };
   }
@@ -267,80 +196,10 @@ export function themeRulesStandardCreator() {
     isCustomized: true
   };
 
-  /*
-  bodyBackground,
-  bodyText,
-  bodyTextAlt,
-  bodyTextDisabled,
-  bodyTextHover,
-  bodyTextPrimary,
-  bodyTextPrimaryAlt,
-  bodyTextStrong,
-
-  errorText,
-  focusBorder,
-
-  bodyLink,
-  bodyLinkHover,
-
-  commandBarBackground,
-  commandBarHover,
-  commandBarIcon,
-  commandBarIconSelected,
-  commandBarSelected,
-  commandBarSelectedHover,
-
-  controlText,
-  controlBackground,
-  controlBackgroundDisabled,
-  controlBackgroundHover,
-  controlBackgroundSelected,
-  controlBackgroundSelectedHover,
-  controlForegroundDisabled,
-  controlForegroundSelected,
-  controlBorder,
-  controlBorderDisabled,
-  controlBorderHover,
-  controlUnfilled,
-  controlUnfilledDefault,
-  controlFilled, // needs review: we might merge controlFilled* states into controlForeground* states
-  controlFilledActive,
-
-*/
   // Basics simple content slots
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, BaseSlots.backgroundColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, BaseSlots.foregroundColor, Shade.Unshaded);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyTextAlt, BaseSlots.foregroundColor, Shade.Shade1);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextDisabled, BaseSlots.foregroundColor, Shade.Shade1);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyTextHover, BaseSlots.foregroundColor, Shade.Shade1);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimary, BaseSlots.primaryColor, Shade.Unshaded);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimaryAlt, BaseSlots.primaryColor, Shade.Shade1);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyTextStrong, BaseSlots.foregroundColor, Shade.Shade1);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyLink, BaseSlots.backgroundColor, Shade.Unshaded);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyLinkHover, BaseSlots.backgroundColor, Shade.Unshaded);
-  /*
-    _makeSemanticSlotRule(SemanticColorSlots.focusBorder, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  _makeSemanticSlotRule(SemanticColorSlots.disabledText, FabricSlots.neutralTertiaryAlt);
 
-    _makeSemanticSlotRule(SemanticColorSlots.controlText, BaseSlots.foregroundColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBackground, BaseSlots.backgroundColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundDisabled, BaseSlots.foregroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundHover, BaseSlots.backgroundColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundSelected, BaseSlots.backgroundColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundSelectedHover, BaseSlots.backgroundColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlForegroundSelected, BaseSlots.primaryColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlForegroundDisabled, BaseSlots.foregroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBorder, BaseSlots.foregroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBorderDisabled, BaseSlots.foregroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlBorderHover, BaseSlots.foregroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlUnfilled, BaseSlots.primaryColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlUnfilledDefault, BaseSlots.backgroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.controlFilled, BaseSlots.primaryColor, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.controlFilledHover, BaseSlots.primaryColor, Shade.Shade1);
-
-    _makeSemanticSlotRule(SemanticColorSlots.commandBarBackground, BaseSlots.backgroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.commandBarHover, BaseSlots.backgroundColor, Shade.Shade1);
-    _makeSemanticSlotRule(SemanticColorSlots.commandBarIcon, BaseSlots.primaryColor, Shade.Shade6);
-    _makeSemanticSlotRule(SemanticColorSlots.commandBarIconSelected, BaseSlots.primaryColor, Shade.Shade8);
-  */
   return slotRules;
 }

@@ -1,8 +1,8 @@
 import {
   IColor,
   MAX_COLOR_RGBA
-} from './Colors';
-import * as Colors from './Colors';
+} from './colors';
+import * as Colors from './colors';
 import { assign } from '../../Utilities';
 
 /* original constants for generating shades
@@ -49,7 +49,7 @@ export enum Shade {
  * Returns true if the argument is a valid Shade value
  * @param {Shade} shade The Shade value to validate.
  */
-export function isValidShade(shade: Shade): boolean {
+export function isValidShade(shade?: Shade): boolean {
   'use strict';
   return (typeof shade === 'number') && (shade >= Shade.Unshaded) && (shade <= Shade.Shade8);
 }
@@ -62,7 +62,7 @@ function _isWhite(color: IColor): boolean {
   return color.r === MAX_COLOR_RGBA && color.g === MAX_COLOR_RGBA && color.b === MAX_COLOR_RGBA;
 }
 
-function _darken(hsl: { h: number, s: number, l: number }, factor) {
+function _darken(hsl: { h: number, s: number, l: number }, factor: number) {
   return {
     h: hsl.h,
     s: hsl.s,
@@ -70,7 +70,7 @@ function _darken(hsl: { h: number, s: number, l: number }, factor) {
   };
 }
 
-function _lighten(hsl: { h: number, s: number, l: number }, factor) {
+function _lighten(hsl: { h: number, s: number, l: number }, factor: number) {
   return {
     h: hsl.h,
     s: hsl.s,
@@ -78,14 +78,8 @@ function _lighten(hsl: { h: number, s: number, l: number }, factor) {
   };
 }
 
-function _initializeIsDark() {
-  const bgColor: IColor = window['__backgroundColor'];
-  if (bgColor) {
-    window['__isDarkTheme'] = Colors.hsv2hsl(bgColor.h, bgColor.s, bgColor.v).l < 50;
-    window['__backgroundColor'] = void 0;
-    console.log('isDarkTheme: ' + Colors.hsv2hsl(bgColor.h, bgColor.s, bgColor.v).l);
-  }
-  return window['__isDarkTheme'] || false;
+export function isDark(color: IColor) {
+  return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
 }
 
 /* Original getShade() logic:
@@ -125,7 +119,7 @@ function _initializeIsDark() {
  * @param {RgbaColor} color The base color whose Shade are to be computed
  * @param {Shade} shade The shade of the base color to compute.
  */
-export function getShade(color: IColor, shade: Shade) {
+export function getShade(color: IColor, shade: Shade, isInverted = false) {
   'use strict';
   if (!color) {
     return null;
@@ -135,13 +129,11 @@ export function getShade(color: IColor, shade: Shade) {
     return color;
   }
 
-  const isDarkTheme = _initializeIsDark();
-
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
   let _soften = _lighten;
   let _strongen = _darken;
-  if (isDarkTheme) {
+  if (isInverted) {
     // tableIndex = LumTintTable.length - 1 - tableIndex;
     _soften = _darken;
     _strongen = _lighten;
@@ -168,7 +160,7 @@ export function getShade(color: IColor, shade: Shade) {
 // Background shades/tints are generated differently. The provided color will be guaranteed
 //   to be the darkest or lightest one. If it is <50% luminance, it will always be the darkest,
 //   otherwise it will always be the lightest.
-export function getBackgroundShade(color: IColor, shade: Shade) {
+export function getBackgroundShade(color: IColor, shade: Shade, isInverted = false) {
   'use strict';
   if (!color) {
     return null;
@@ -178,15 +170,13 @@ export function getBackgroundShade(color: IColor, shade: Shade) {
     return color;
   }
 
-  _initializeIsDark();
-
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
   /*if (hsl.l / 100 > c_LuminanceHigh) { // really light
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
   } else if (hsl.l / 100 < c_LuminanceLow) { // really dark
     hsl = _lighten(hsl, BlackTintTable[BlackTintTable.length - 1 - tableIndex]);
-  } else*/ if (hsl.l / 100 >= .5) { // lightish
+  } else*/ if (!isInverted) { // lightish
     // hsl = _darken(hsl, LumShadeTable[tableIndex]);
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish

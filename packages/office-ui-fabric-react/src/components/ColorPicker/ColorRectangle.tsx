@@ -1,12 +1,5 @@
 import * as React from 'react';
 import {
-  IColor,
-  getFullColorString,
-  MAX_COLOR_VALUE,
-  MAX_COLOR_SATURATION,
-  hsv2hex
-} from '../../utilities/color/Colors';
-import {
   BaseComponent,
   assign,
   autobind,
