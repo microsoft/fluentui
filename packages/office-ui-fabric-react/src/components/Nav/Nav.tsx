@@ -208,10 +208,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
-    const paddingBefore = _indentationSize * nestingLevel +
-      (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
-    const paddingBeforeString = paddingBefore + 'px';
-    const paddingAfterString = _farSidePadding + 'px';
+    const marginBeforeString = `${_indentationSize * nestingLevel + 1}px`;
 
     return (
       <div
@@ -233,12 +230,10 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
               styles.chevronButton,
               styles.chevronButtonLink,
               isRtl && {
-                paddingRight: paddingBeforeString,
-                paddingLeft: paddingAfterString
+                right: marginBeforeString,
               },
               !isRtl && {
-                paddingLeft: paddingBeforeString,
-                paddingRight: paddingAfterString
+                left: marginBeforeString,
               }) as string
             }
             onClick={ this._onLinkExpandClicked.bind(this, link) }

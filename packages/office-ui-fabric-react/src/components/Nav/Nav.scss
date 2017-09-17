@@ -113,7 +113,6 @@ $linkRightPadding: 20px;
     height: $navnode-height - 2;
     position: absolute;
     top: 1px;
-    @include ms-left(1px);
     z-index: 1;
     padding: 0;
     margin: 0;
