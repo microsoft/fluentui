@@ -20,7 +20,7 @@ export interface IAccessiblePopupProps {
   /**
   * Indicates the selector for first focusable item
   */
-  firstFocusableSelector?: string;
+  firstFocusableSelector?: string | (() => string);
 
   /**
   * Aria label on close button

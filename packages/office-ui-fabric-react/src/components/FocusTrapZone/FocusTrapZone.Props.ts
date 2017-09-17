@@ -46,10 +46,5 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   /**
   * Indicates the selector for first focusable item
   */
-  firstFocusableSelector?: string;
-
-  /**
-  * Callback to dynamically set the selector for the first focusable item
-  */
-  getFirstFocusableSelector?: () => string;
+  firstFocusableSelector?: string | (() => string);
 }

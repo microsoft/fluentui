@@ -84,7 +84,6 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
     let {
       elementToFocusOnDismiss,
       firstFocusableSelector,
-      getFirstFocusableSelector,
       forceFocusInsideTrap,
       ignoreExternalFocusing,
       isBlocking,
@@ -130,7 +129,6 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
                 ignoreExternalFocusing={ ignoreExternalFocusing }
                 forceFocusInsideTrap={ forceFocusInsideTrap }
                 firstFocusableSelector={ firstFocusableSelector }
-                getFirstFocusableSelector={ getFirstFocusableSelector }
               >
                 { this.props.children }
               </FocusTrapZone>

@@ -104,15 +104,16 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
    * Need to expose this method in case of popups since focus needs to be set when popup is opened
    */
   public focus() {
-    let { firstFocusableSelector, getFirstFocusableSelector } = this.props;
-    if (!firstFocusableSelector && getFirstFocusableSelector) {
-      firstFocusableSelector = getFirstFocusableSelector();
-    }
+    const { firstFocusableSelector } = this.props;
+    const focusSelector = typeof firstFocusableSelector === 'string'
+      ? firstFocusableSelector
+      : firstFocusableSelector && firstFocusableSelector();
+
     let _firstFocusableChild;
     let root = this.refs.root;
 
-    if (firstFocusableSelector) {
-      _firstFocusableChild = root.querySelector('.' + firstFocusableSelector);
+    if (focusSelector) {
+      _firstFocusableChild = root.querySelector('.' + focusSelector);
     } else {
       _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
     }

@@ -69,9 +69,4 @@ export interface IModalProps extends React.Props<Modal>, IWithResponsiveModeStat
    * ARIA id for the subtitle of the Modal, if any
    */
   subtitleAriaId?: string;
-
-  /**
-  * Callback to dynamically set the selector for the first focusable within the modal
-  */
-  getFirstFocusableSelector?: () => string;
 }
