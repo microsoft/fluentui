@@ -77,8 +77,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
             { ...getNativeProps(this.props, divProperties) }
             { ...tooltipProps }
-          >
-          </Tooltip>
+          />
         ) }
       </div>
     );

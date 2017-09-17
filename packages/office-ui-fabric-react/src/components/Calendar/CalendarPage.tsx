@@ -60,6 +60,15 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showNavigateButtons={ true }
               />
             </ExampleCard>
+            <ExampleCard title='Inline Calendar with week numbers' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample
+                isMonthPickerVisible={ false }
+                dateRangeType={ DateRangeType.Day }
+                autoNavigateOnSelection={ false }
+                showGoToToday={ false }
+                showWeekNumbers={ true }
+              />
+            </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker and no day picker' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Month }
@@ -71,6 +80,13 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample />
+            </ExampleCard>
+            <ExampleCard title='Month picker launched from a button' code={ CalendarButtonExampleCode }>
+              <CalendarButtonExample
+                isDayPickerVisible={ false }
+                highlightCurrentMonth={ true }
+                buttonString={ 'Click for Month Picker' }
+              />
             </ExampleCard>
           </div>
         }
@@ -89,7 +105,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         bestPractices={
-          <div></div>
+          <div />
         }
         dos={
           <div>
@@ -113,8 +129,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 

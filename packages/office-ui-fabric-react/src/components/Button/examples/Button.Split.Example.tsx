@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { DefaultButton, IconButton, IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
 export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
   public constructor() {
@@ -11,30 +12,58 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
     let { disabled, checked } = this.props;
 
     return (
-      <div>
-        <Label>Split button</Label>
-        <DefaultButton
-          data-automation-id='test'
-          disabled={ disabled }
-          checked={ checked }
-          text='Create account'
-          onClick={ () => alert('Clicked') }
-          split={ true }
-          menuProps={ {
-            items: [
-              {
-                key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
-              },
-              {
-                key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
-              }
-            ]
-          } }
-        />
+      <div className='ms-BasicButtonsTwoUp'>
+        <div>
+          <Label>Standard</Label>
+          <DefaultButton
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            text='Create account'
+            onClick={ () => alert('Clicked') }
+            split={ true }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
+        <div>
+          <Label>Primary</Label>
+          <DefaultButton
+            primary
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            text='Create account'
+            onClick={ () => alert('Clicked') }
+            split={ true }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
       </div>
     );
   }
@@ -47,7 +76,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
 
   public render() {
     let { disabled, checked } = this.props;
-    const style: IButtonStyles = { splitButtonMenuButton: { backgroundColor: 'white', width: '10px' }, splitButtonMenuIcon: { fontSize: '7px' } };
+    const customSplitButtonStyles = getCustomSplitButtonStyles();
 
     return (
       <div>
@@ -60,7 +89,7 @@ export class ButtonSplitCustomExample extends React.Component<IButtonProps, {}> 
           text='Create account'
           onClick={ () => alert('Clicked') }
           split={ true }
-          styles={ style }
+          styles={ customSplitButtonStyles }
           menuProps={ {
             items: [
               {

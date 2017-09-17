@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
+import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import {
   KeyCodes,
@@ -244,6 +244,55 @@ describe('ContextualMenu', () => {
     expect(headerTwo.firstElementChild!.className).to.contain('header', 'The final item was not a header');
   });
 
+  it('renders sections properly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          topDivider: true,
+          bottomDivider: true,
+          items: [
+            {
+              name: 'TestText 2',
+              key: 'TestKey3'
+            },
+            {
+              name: 'TestText 3',
+              key: 'TestKey3',
+            }
+          ]
+        }
+      }, {
+        name: 'TestText 4',
+        key: 'TestKey4',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          items: [
+            {
+              name: 'TestText 5',
+              key: 'TestKey5'
+            },
+            {
+              name: 'TestText 6',
+              key: 'TestKey6',
+            }
+          ]
+        }
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+      />
+    );
+
+    let menuItems = document.querySelectorAll('li');
+    expect(menuItems.length).to.be.eq(8, 'This menu has an incorrect number of items');
+  });
+
   it('does not return a value if no items are given', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
@@ -256,7 +305,7 @@ describe('ContextualMenu', () => {
 
   });
 
-  it('correctly focuses the first element', () => {
+  it('correctly focuses the first element', (done) => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -275,11 +324,21 @@ describe('ContextualMenu', () => {
       />
     );
 
-    let focusedItem = document.querySelector('.testkey1')!.firstChild;
-    expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
+    new Promise<any>(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey1')!.firstChild;
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).to.be.eq(focusedItem, 'The first element was not focused');
+      done();
+      resolve();
+    }).catch(done());
   });
 
-  it('will not focus the first element when shouldFocusOnMount is false', () => {
+  it('will not focus the first element when shouldFocusOnMount is false', (done) => {
     const items: IContextualMenuItem[] = [
       {
         name: 'TestText 1',
@@ -295,12 +354,22 @@ describe('ContextualMenu', () => {
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
-        shouldFocusOnMount={ false }
+        shouldFocusOnMount={ true }
       />
     );
+    new Promise(resolve => {
+      let focusedItem;
+      for (let i = 0; i < 20; i++) {
+        focusedItem = document.querySelector('.testkey1')!.firstChild;
+        if (focusedItem === document.activeElement) {
+          break;
+        }
+      }
+      expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
+      done();
+      resolve();
+    }).catch(done);
 
-    let focusedItem = document.querySelector('.testkey1')!.firstChild;
-    expect(document.activeElement).to.be.not.eq(focusedItem, 'The first element was not focused');
   });
 
   it('ContextualMenu menuOpened callback is called only when menu is available', () => {
@@ -345,8 +414,7 @@ describe('ContextualMenu', () => {
             }
             menuMounted = true;
           } }
-        >
-        </ContextualMenu>
+        />
       </div>
     );
     expect(menuMounted).to.be.equal(true, 'Menu opened callback was not properly called');

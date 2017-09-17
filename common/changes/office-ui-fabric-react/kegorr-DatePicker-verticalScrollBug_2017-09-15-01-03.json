@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Mix native props to Nav items.",
+      "comment": "DatePicker-fixing vertical scrollbar bug",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "s@warmsea.net"
+  "email": "kegorr@microsoft.com"
 }

@@ -1,6 +1,67 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 11 Sep 2017 10:08:07 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Sep 2017 10:19:50 GMT and should not be manually modified.
+
+## 4.47.0
+Fri, 15 Sep 2017 10:19:50 GMT
+
+### Minor changes
+
+- Calendar:  Adding week numbers to calendar
+- DatePicker: Hovering over calendar icon in text input does not change cursor to pointer.
+
+### Patches
+
+- SplitButton: Fixed primary theme, updated documentation
+- Prevent touch events from triggering marquee selection
+
+## 4.46.1
+Thu, 14 Sep 2017 10:17:39 GMT
+
+### Patches
+
+- Callout: Made updatePosition async. Contextualmenu: Fixed a bug where sometimes a submenu would have a beak.
+- Refactor `Persona` to extract `PersonaCoin` and `PersonaPresence` so image/status can be rendered alone without Tooltip. Added `PersonaCoin` to top level exports
+
+## 4.46.0
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Minor changes
+
+- Calendar:  Updating accessibility, fixing headers aria box, fixing selected/unselected state in day and month picker, updating aria-label for next/previous buttons, fixing arial label for months in month picker.
+- Adding `MoreVertical` icon.
+
+### Patches
+
+- Check: better alignment of the check mark.
+- [SwatchColorPicker] Fix uncaught exception when colorCells is empty
+- Calendar: Month-picker-only selection bug fixed
+- DetailsList: Update DetailsRow Check target size to be larger
+
+## 4.45.1
+Tue, 12 Sep 2017 17:41:25 GMT
+
+### Patches
+
+- DetailsList: Fixed collapsing logic to look at all items including first 2
+- Fixing circular dependency issue in PrimaryButton.
+
+## 4.45.0
+Tue, 12 Sep 2017 10:10:21 GMT
+
+### Minor changes
+
+- Add sections to contextual menus
+- Calendar: Arrows (when month picker only) do not navigate correctly.  Fixed this and fixed position.
+
+### Patches
+
+- MessageBar: Added word-break to fix long words in message bar
+- Pickers: Fixed a bug where suggestionsHeaderText would not display, also fixed backspace event propagating even when it was handled.
+- Mix native props to Nav items.
+- Button: Add support for dividers in split buttons
+- SplitButton: Update the menu launcher target for a split button to be the entire control instead of just the menu launching portion
+- DetailsList: Update activeRows management to use item keys
 
 ## 4.44.0
 Mon, 11 Sep 2017 10:08:07 GMT

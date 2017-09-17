@@ -49,7 +49,7 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 36;
+const CHECKBOX_WIDTH = 40;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;
@@ -133,9 +133,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   public componentDidUpdate(prevProps: any, prevState: any) {
     if (this._initialFocusedIndex !== undefined) {
-      const row = this._activeRows[this._initialFocusedIndex];
-      if (row) {
-        this._setFocusToRowIfPending(row);
+      const item = this.props.items[this._initialFocusedIndex];
+      if (item) {
+        const itemKey = this._getItemKey(item, this._initialFocusedIndex);
+        const row = this._activeRows[itemKey];
+        if (row) {
+          this._setFocusToRowIfPending(row);
+        }
       }
     }
 
@@ -463,21 +467,21 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _onRowDidMount(row: DetailsRow) {
-    let { onRowDidMount } = this.props;
-    let index = row.props.itemIndex;
-
-    this._activeRows[index] = row; // this is used for column auto resize
+    const { item, itemIndex } = row.props;
+    const itemKey = this._getItemKey(item, itemIndex);
+    this._activeRows[itemKey] = row; // this is used for column auto resize
 
     this._setFocusToRowIfPending(row);
 
+    const { onRowDidMount } = this.props;
     if (onRowDidMount) {
-      onRowDidMount(row.props.item, index);
+      onRowDidMount(item, itemIndex);
     }
   }
 
   private _setFocusToRowIfPending(row: DetailsRow) {
-    let index = row.props.itemIndex;
-    if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
+    const { itemIndex } = row.props;
+    if (this._initialFocusedIndex !== undefined && itemIndex === this._initialFocusedIndex) {
       if (this._selectionZone) {
         this._selectionZone.ignoreNextFocus();
       }
@@ -491,12 +495,13 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
 
   private _onRowWillUnmount(row: DetailsRow) {
     let { onRowWillUnmount } = this.props;
-    let index = row.props.itemIndex;
 
-    delete this._activeRows[index];
-    this._events.off(row.refs.root);
+    const { item, itemIndex } = row.props;
+    const itemKey = this._getItemKey(item, itemIndex);
+    delete this._activeRows[itemKey];
+
     if (onRowWillUnmount) {
-      onRowWillUnmount(row.props.item, index);
+      onRowWillUnmount(item, itemIndex);
     }
   }
 
@@ -614,7 +619,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let lastIndex = adjustedColumns.length - 1;
 
     // Remove collapsable columns.
-    while (lastIndex > 1 && totalWidth > availableWidth) {
+    while (lastIndex > -1 && totalWidth > availableWidth) {
       let column = adjustedColumns[lastIndex];
 
       if (column.isCollapsable) {
@@ -718,6 +723,25 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     if (index >= 0) {
       onActiveItemChanged(items[index], index, ev);
     }
+  }
+
+  private _getItemKey(item: any, itemIndex: number): string | number {
+    const { getKey } = this.props;
+
+    let itemKey: string | number | undefined = undefined;
+    if (item) {
+      itemKey = item.key;
+    }
+
+    if (getKey) {
+      itemKey = getKey(item, itemIndex);
+    }
+
+    if (!itemKey) {
+      itemKey = itemIndex;
+    }
+
+    return itemKey;
   }
 }
 
