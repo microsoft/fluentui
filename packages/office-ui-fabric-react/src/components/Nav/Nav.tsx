@@ -208,7 +208,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const isLinkSelected: boolean = this._isLinkSelected(link);
     const isRtl: boolean = getRTL();
-    const marginBeforeString = `${_indentationSize * nestingLevel + 1}px`;
+    const absolutePositionString = `${_indentationSize * nestingLevel + 1}px`;
 
     return (
       <div
@@ -230,10 +230,10 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
               styles.chevronButton,
               styles.chevronButtonLink,
               isRtl && {
-                right: marginBeforeString,
+                right: absolutePositionString,
               },
               !isRtl && {
-                left: marginBeforeString,
+                left: absolutePositionString,
               }) as string
             }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
@@ -241,11 +241,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
           >
             <Icon
-              className={ mergeStyles(
-                'ms-Nav-chevron',
-                styles.chevronIcon,
-                link.isExpanded,
-              ) as string }
+              className={ css('ms-Nav-chevron', styles.chevronIcon, link.isExpanded) }
               iconName='ChevronDown'
             />
           </button> : null
