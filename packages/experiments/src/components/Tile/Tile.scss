@@ -76,6 +76,14 @@
   }
 }
 
+.label {
+  @include ms-screenReaderOnly;
+}
+
+.description {
+  @include ms-screenReaderOnly;
+}
+
 .link {
   @include focus-clear();
 

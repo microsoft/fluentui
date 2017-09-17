@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Hovering over calendar icon in text input does not change cursor to pointer.",
-      "type": "minor"
+      "comment": "DatePicker-fixing vertical scrollbar bug",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

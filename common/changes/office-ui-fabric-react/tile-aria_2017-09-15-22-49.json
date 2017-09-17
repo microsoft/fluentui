@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Prevent touch events from triggering marquee selection",
+      "comment": "Force Check to use the page background color",
       "type": "patch"
     }
   ],

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SplitButton: Fixed primary theme, updated documentation",
+      "comment": "Allow onItemContextMenu a way to cancel preventDefault() call.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "demarcey@microsoft.com"
 }
