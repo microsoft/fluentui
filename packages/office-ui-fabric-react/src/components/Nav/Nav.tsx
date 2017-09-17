@@ -7,9 +7,9 @@ import {
   getNativeProps,
   getRTL
 } from '../../Utilities';
-import { mergeStyles } from "@uifabric/styling"
+import { mergeStyles } from '@uifabric/styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandButton } from '../../Button';
+import { CommandButton, IButtonStyles } from '../../Button';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Nav.scss';
 const styles: any = stylesImport;
@@ -180,28 +180,24 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
     const isRtl: boolean = getRTL();
     const paddingBefore = _indentationSize * nestingLevel +
       (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
-    const paddingBeforeString = paddingBefore + 'px !important';
-    const paddingAfterString = _farSidePadding + 'px !important';
+    const buttonStyles: IButtonStyles = {
+      root: {
+        [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
+        [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding
+      }
+    }
 
-
-      return (
+    return (
       <CommandButton
         className={ mergeStyles(
           'ms-Nav-link ms-Nav-linkButton',
           styles.link,
           this._hasExpandButton && 'isOnExpanded',
-          !link.icon && styles.commandButtonNoIcon,
-          isRtl && {
-            'paddingRight': paddingBeforeString,
-            'paddingLeft': paddingAfterString
-          },
-          !isRtl && {
-            'paddingLeft': paddingBeforeString,
-            'paddingRight': paddingAfterString
-          }) as string
+          !link.icon && styles.commandButtonNoIcon) as string
         }
+        styles={ buttonStyles }
         href={ link.url }
-        iconProps={ link.icon  ? { iconName: link.icon } : undefined }
+        iconProps={ link.icon ? { iconName: link.icon } : undefined }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }
       >
@@ -216,7 +212,6 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
       (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton);
     const paddingBeforeString = paddingBefore + 'px';
     const paddingAfterString = _farSidePadding + 'px';
-
 
     return (
       <div
