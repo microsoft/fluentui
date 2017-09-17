@@ -34,7 +34,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
   };
 
   private _onModalCloseTimer: number;
-  private focusTrapZone: IFocusTrapZone | undefined;
+  private _focusTrapZone: IFocusTrapZone | undefined;
 
   constructor(props: IModalProps) {
     super(props);
@@ -122,7 +122,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
             <div className={ modalClassName }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? undefined : (onDismiss as any) } />
               <FocusTrapZone
-                componentRef={ ref => this.focusTrapZone = ref }
+                componentRef={ ref => this._focusTrapZone = ref }
                 className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
                 isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
@@ -141,7 +141,7 @@ export class Modal extends BaseComponent<IModalProps, IDialogState> implements I
   }
 
   public focus() {
-    this.focusTrapZone && this.focusTrapZone.focus();
+    this._focusTrapZone && this._focusTrapZone.focus();
   }
 
   // Watch for completed animations and set the state
