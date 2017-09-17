@@ -150,12 +150,12 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
           'ms-Nav-link',
           styles.link,
           isRtl && {
-            'paddingRight': paddingBeforeString,
-            'paddingLeft': paddingAfterString
+            paddingRight: paddingBeforeString,
+            paddingLeft: paddingAfterString
           },
           !isRtl && {
-            'paddingLeft': paddingBeforeString,
-            'paddingRight': paddingAfterString
+            paddingLeft: paddingBeforeString,
+            paddingRight: paddingAfterString
           }) as string
         }
         href={ link.url || 'javascript:' }
@@ -233,12 +233,12 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
               styles.chevronButton,
               styles.chevronButtonLink,
               isRtl && {
-                'paddingRight': paddingBeforeString,
-                'paddingLeft': paddingAfterString
+                paddingRight: paddingBeforeString,
+                paddingLeft: paddingAfterString
               },
               !isRtl && {
-                'paddingLeft': paddingBeforeString,
-                'paddingRight': paddingAfterString
+                paddingLeft: paddingBeforeString,
+                paddingRight: paddingAfterString
               }) as string
             }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
@@ -246,7 +246,11 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
           >
             <Icon
-              className={ css('ms-Nav-chevron', styles.chevronIcon, link.isExpanded) }
+              className={ mergeStyles(
+                'ms-Nav-chevron',
+                styles.chevronIcon,
+                link.isExpanded,
+              ) as string }
               iconName='ChevronDown'
             />
           </button> : null
