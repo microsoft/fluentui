@@ -120,7 +120,7 @@ export const ComponentStatusState: IComponentStatusState = {
   GroupedList: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.fail,
+    highContrastSupport: ChecklistStatus.pass,
     rtlSupport: ChecklistStatus.pass,
     testCoverage: ChecklistStatus.none
   },
@@ -169,7 +169,7 @@ export const ComponentStatusState: IComponentStatusState = {
   List: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.pass,
+    highContrastSupport: ChecklistStatus.fail,
     rtlSupport: ChecklistStatus.fail,
     testCoverage: ChecklistStatus.none
   },
@@ -190,7 +190,7 @@ export const ComponentStatusState: IComponentStatusState = {
   Nav: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.fail,
+    highContrastSupport: ChecklistStatus.pass,
     rtlSupport: ChecklistStatus.pass,
     testCoverage: ChecklistStatus.none
   },
@@ -218,21 +218,21 @@ export const ComponentStatusState: IComponentStatusState = {
   Persona: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.fail,
+    highContrastSupport: ChecklistStatus.pass,
     rtlSupport: ChecklistStatus.pass,
     testCoverage: ChecklistStatus.good
   },
   Pickers: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.pass,
+    highContrastSupport: ChecklistStatus.fail,
     rtlSupport: ChecklistStatus.fail,
     testCoverage: ChecklistStatus.good
   },
   PeoplePicker: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.pass,
+    highContrastSupport: ChecklistStatus.fail,
     rtlSupport: ChecklistStatus.fail,
     testCoverage: ChecklistStatus.none
   },
@@ -246,7 +246,7 @@ export const ComponentStatusState: IComponentStatusState = {
   ProgressIndicator: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.fail,
+    highContrastSupport: ChecklistStatus.pass,
     rtlSupport: ChecklistStatus.pass,
     testCoverage: ChecklistStatus.none
   },
@@ -323,7 +323,7 @@ export const ComponentStatusState: IComponentStatusState = {
   Toggle: {
     keyboardAccessibilitySupport: ChecklistStatus.unknown,
     markupSupport: ChecklistStatus.unknown,
-    highContrastSupport: ChecklistStatus.fail,
+    highContrastSupport: ChecklistStatus.pass,
     rtlSupport: ChecklistStatus.pass,
     testCoverage: ChecklistStatus.good
   },
