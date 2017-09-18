@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 15 Sep 2017 10:19:50 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Sep 2017 10:18:23 GMT and should not be manually modified.
+
+## 4.48.0
+Mon, 18 Sep 2017 10:18:23 GMT
+
+### Minor changes
+
+- DatePicker-Adding new props from Calendar component
+
+### Patches
+
+- DatePicker-fixing vertical scrollbar bug
+- Force Check to use the page background color
+- Allow onItemContextMenu a way to cancel preventDefault() call.
+- ActivityItem: Descreasing icon font size.
 
 ## 4.47.0
 Fri, 15 Sep 2017 10:19:50 GMT
