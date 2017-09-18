@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
@@ -88,7 +86,8 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
                 href: 'http://www.bing.com'
               },
             ]
-          } } />
+          } }
+      />
     );
   }
 }

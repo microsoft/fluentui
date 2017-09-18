@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuSectionExample extends React.Component<any, any> {
@@ -160,8 +159,8 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
               }
             ]
           }
-
-          } />
+          }
+        />
         { showCallout && (
           <Callout
             setInitialFocus={ true }
