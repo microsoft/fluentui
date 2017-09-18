@@ -3,8 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet,
-  ComponentStatus
+  PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
 import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
@@ -12,6 +11,7 @@ import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Exampl
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;

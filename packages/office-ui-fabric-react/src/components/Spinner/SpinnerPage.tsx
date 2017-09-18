@@ -3,10 +3,10 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet,
-  ComponentStatus
+  PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const SpinnerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Spinner/examples/Spinner.Basic.Example.tsx') as string;

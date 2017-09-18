@@ -3,12 +3,12 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet,
-  ComponentStatus
+  PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;

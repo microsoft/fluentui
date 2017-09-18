@@ -1,6 +1,4 @@
 export * from './components/App/App';
-export * from './components/ComponentStatus/ComponentStatus';
-export * from './components/ComponentStatus/ComponentStatus.Props';
 export * from './components/ComponentPage/ComponentPage';
 export * from './components/ComponentPage/ComponentPage';
 export * from './components/ComponentPage/IComponentDemoPageProps';
