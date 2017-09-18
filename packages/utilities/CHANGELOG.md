@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 04 Sep 2017 10:16:56 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2017 00:34:57 GMT and should not be manually modified.
+
+## 4.13.1
+Thu, 14 Sep 2017 00:34:57 GMT
+
+### Patches
+
+- getLanguage: Use localStorage wrapper helpers to avoid exceptions thrown by the browser when accessing localStorage.
 
 ## 4.13.0
 Mon, 04 Sep 2017 10:16:56 GMT
