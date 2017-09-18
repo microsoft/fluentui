@@ -18,8 +18,7 @@ $checkBoxHeight: 18px;
 
   @include ms-user-select(none);
 
-  &.rootIsChecked:before {
-    background: $ms-color-themePrimary;
+  &:before {
     content: '';
     position: absolute;
     left: 1px;
@@ -27,13 +26,14 @@ $checkBoxHeight: 18px;
     bottom: 1px;
     top: 1px;
     border-radius: 50%;
+    opacity: 1;
+    background: $bodyBackgroundColor;
   }
-}
 
-.root:hover,
-.root:focus,
-.rootIsChecked {
-  opacity: 1;
+  &.rootIsChecked:before {
+    background: $ms-color-themePrimary;
+    opacity: 1;
+  }
 }
 
 .circle,
