@@ -24,7 +24,6 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '6', text: '6' },
 ];
 
-
 describe('Dropdown', () => {
 
   it('Can flip between enabled and disabled.', () => {
