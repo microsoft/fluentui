@@ -24,6 +24,7 @@ export interface IComponentPageProps {
   overview: JSX.Element;
   related?: JSX.Element;
   isHeaderVisible?: boolean;
+  areBadgesVisible?: boolean;
   className?: string;
   componentStatus?: JSX.Element;
   otherSections?: [IComponentPageSection];
@@ -31,7 +32,8 @@ export interface IComponentPageProps {
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   public static defaultProps: Partial<IComponentPageProps> = {
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    areBadgesVisible: false
   };
 
   private _baseUrl: string;
@@ -202,7 +204,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _getComponentStatusBadges(): JSX.Element | undefined {
-    if (this.props.componentStatus) {
+    if (this.props.componentStatus && this.props.areBadgesVisible) {
       return (
         <div className='ComponentPage-componentStatusSection'>
           { this.props.componentStatus }
