@@ -54,9 +54,8 @@ export enum FabricSlots {
 export enum SemanticColorSlots {
   bodyBackground,
   bodyText,
-  disabledText,
-
-  errorText
+  disabledBackground,
+  disabledText
 }
 
 export function themeRulesStandardCreator() {
@@ -130,13 +129,13 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].isCustomized = true;
 
-  // undefined error trying to reference Shade in this function for some reason, so need to make inheritedShade a string for now
-  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade) {
+  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false) {
     slotRules[slotName] = {
       name: slotName,
       inherits: slotRules[BaseSlots[inheritedBase]],
       asShade: inheritedShade,
-      isCustomized: false
+      isCustomized: false,
+      isBackgroundShade: isBackgroundShade
     };
   }
   _makeFabricSlotRule(FabricSlots[FabricSlots.themePrimary], BaseSlots.primaryColor, Shade.Unshaded);
@@ -149,12 +148,12 @@ export function themeRulesStandardCreator() {
   _makeFabricSlotRule(FabricSlots[FabricSlots.themeDark], BaseSlots.primaryColor, Shade.Shade7);
   _makeFabricSlotRule(FabricSlots[FabricSlots.themeDarker], BaseSlots.primaryColor, Shade.Shade8);
 
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade.Shade1);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade.Shade2);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade.Shade3);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade.Shade4);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade.Shade5);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade.Shade6); // bg6 or fg2
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade.Shade1, true);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade.Shade2, true);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade.Shade3, true);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade.Shade4, true);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade.Shade5, true);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade.Shade6, true); // bg6 or fg2
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade.Shade3);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade.Shade5);
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralPrimaryAlt], BaseSlots.foregroundColor, Shade.Shade6);
@@ -162,7 +161,25 @@ export function themeRulesStandardCreator() {
   _makeFabricSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade.Shade7);
 
   _makeFabricSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade.Shade8);
-  _makeFabricSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade.Unshaded);
+  _makeFabricSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade.Unshaded, true);
+
+  // manually set initial values for the primary-based Fabric slots to match the default theme
+  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].value = getColorFromString('#eff6fc');
+  slotRules[FabricSlots[FabricSlots.themeLighter]].value = getColorFromString('#deecf9');
+  slotRules[FabricSlots[FabricSlots.themeLight]].value = getColorFromString('#c7e0f4');
+  slotRules[FabricSlots[FabricSlots.themeTertiary]].value = getColorFromString('#71afe5');
+  slotRules[FabricSlots[FabricSlots.themeSecondary]].value = getColorFromString('#2b88d8');
+  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].value = getColorFromString('#106ebe');
+  slotRules[FabricSlots[FabricSlots.themeDark]].value = getColorFromString('#005a9e');
+  slotRules[FabricSlots[FabricSlots.themeDarker]].value = getColorFromString('#004578');
+  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeLighter]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeLight]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeTertiary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeSecondary]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
+  slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
 
   // todo: can remove this once we remove these outdated slots from the product
   let primaryBackground = 'primaryBackground';
@@ -179,8 +196,7 @@ export function themeRulesStandardCreator() {
   };
 
   /*** SEMANTIC SLOTS */
-  // create the SlotRule for a semantic slot, it will automatically find the right shade SlotRule to point at,
-  //   and not actually inherit the given slot as a shade
+  // create the SlotRule for a semantic slot
   function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots) {
     slotRules[SemanticColorSlots[semanticSlot]] = {
       name: SemanticColorSlots[semanticSlot],
@@ -189,16 +205,10 @@ export function themeRulesStandardCreator() {
     };
   }
 
-  // One-offs that don't inherit
-  slotRules[SemanticColorSlots[SemanticColorSlots.errorText]] = {
-    name: SemanticColorSlots[SemanticColorSlots.errorText],
-    value: getColorFromString('#f00'),
-    isCustomized: true
-  };
-
   // Basics simple content slots
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  _makeSemanticSlotRule(SemanticColorSlots.disabledBackground, FabricSlots.neutralLighter);
   _makeSemanticSlotRule(SemanticColorSlots.disabledText, FabricSlots.neutralTertiaryAlt);
 
   return slotRules;

@@ -31,6 +31,13 @@
   max-width: 40%;
 }
 
+.ms-themer-fabricPalette-root {
+  display: flex;
+  > div {
+    padding-left: 20px;
+  }
+}
+
 .ms-themer-accessibilityTable td {
   padding: 4px;
   text-align: right;
@@ -41,10 +48,9 @@
   align-items: center;
   overflow: auto;
 }
-.ms-themer-exampleTable {
-  display: flex;
-  > div {
-    padding: 8px;
-  }
+
+.ms-themer textarea {
+  background-color: white;
+  color: #333;
 }
 }

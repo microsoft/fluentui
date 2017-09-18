@@ -24,14 +24,11 @@ import {
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
-// import { Button } from '../../../components/Button/Button';
-// import { ButtonType } from '../../../components/Button/Button.Props';
-// import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-// import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
-// import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
@@ -58,9 +55,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   }
 
   public componentDidUpdate() {
-
-    // todo: cleanup
-    if (this._imgUrl) {
+    if (this._imgUrl) { // if doing theme-from-img...
       const outputElem = (document.getElementById('jsonOutput') as HTMLTextAreaElement);
       let jsonOutput = outputElem.value;
       let newOutput = JSON.parse(jsonOutput);
@@ -101,6 +96,12 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       this._fabricSlotWidget(FabricSlots.neutralLighter),
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
       this._fabricSlotWidget(FabricSlots.white)];
+
+    let semanticSlots =
+      [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
+      this._semanticSlotWidget(SemanticColorSlots.bodyText),
+      this._semanticSlotWidget(SemanticColorSlots.disabledBackground),
+      this._semanticSlotWidget(SemanticColorSlots.disabledText)];
 
     return (
       <div className='ms-themer'>
@@ -145,89 +146,81 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
         </div>
         <br />
 
-        {/* this._exampleSection('Basic Slots',
-          'Basic theme slots for page background and default text colors.',
-          basicSlots) */}
+        { this._outputSection() }
+        <br />
+
         <h3>Fabric Palette</h3>
-        <p>The original Fabric palette variables.</p>
-        <div style={ { display: 'flex' } }>
+        <p>The original Fabric palette variables. These are raw colors with no prescriptive uses.</p>
+        <div className={ 'ms-themer-fabricPalette-root' }>
           <div>{ fabricThemeSlots }</div>
-          <div>{ fabricNeutralForegroundSlots }</div>
-          <div>{ fabricNeutralBackgroundSlots }</div>
+          <div>
+            <p>generally used for text and foregrounds</p>
+            { fabricNeutralForegroundSlots }
+          </div>
+          <div>
+            <p>generally used for backgrounds</p>
+            { fabricNeutralBackgroundSlots }
+          </div>
         </div>
-        {/* this._exampleSection('Input controls',
-          These slots TODO TODO',
-          controlSlots,
-          [<div>
-            <Toggle
-              defaultChecked={ true }
-              label=''
-              onText='On'
-              offText='Off' />
-            <Toggle
-              defaultChecked={ false }
-              label=''
-              onText='On'
-              offText='Off' />
-            <Toggle
-              defaultChecked={ true }
-              disabled={ true }
-              label=''
-              onText='Diabled on' />
-            <Toggle
-              defaultChecked={ false }
-              disabled={ true }
-              label=''
-              offText='Disabled off' />
-          </div>,
-          <ChoiceGroup
-            options={ [
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              }] }
-            label='Pick one'
-            required={ true }
-          />,
-          <ChoiceGroup
-            options={ [
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              },
-              {
-                key: 'D',
-                text: 'Option D',
-                checked: true,
-                disabled: true
-              }] }
-            label='Pick one'
-            required={ true }
-          />, <ProgressIndicatorBasicExample />]) */}
+        <br />
 
-        <h3>todo</h3>
-        { [this._semanticSlotWidget(SemanticColorSlots.errorText)] }
+        <h3>Semantic Slots</h3>
+        <p>These inherit by default from the Fabric palette, and have an intended use as defined by their name.</p>
+        <div>{ semanticSlots }</div>
+        <br />
 
+        <h3>Samples</h3>
         { <div style={ { display: 'flex', flexDirection: 'row' } }>
-          <div className='ms-themer-example'><TextFieldBasicExample /></div>
-          <div className='ms-themer-example'><ToggleBasicExample /></div>
-          <div className='ms-themer-example'><TeachingBubbleBasicExample /></div>
+          <div className='ms-themer-example'>
+            <TextFieldBasicExample />
+          </div>
+          <div className='ms-themer-example'>
+            <ToggleBasicExample />
+            <ChoiceGroup
+              options={ [
+                {
+                  key: 'A',
+                  text: 'Option A'
+                },
+                {
+                  key: 'B',
+                  text: 'Option B',
+                  checked: true
+                }] }
+              label='Pick one'
+              required={ true }
+            />,
+          <ChoiceGroup
+              options={ [
+                {
+                  key: 'C',
+                  text: 'Option C',
+                  disabled: true
+                },
+                {
+                  key: 'D',
+                  text: 'Option D',
+                  checked: true,
+                  disabled: true
+                }] }
+              label='Pick one'
+              required={ true }
+            />
+          </div>
+          <div className='ms-themer-example'>
+            <TeachingBubbleBasicExample />
+            <br />
+            <ProgressIndicatorBasicExample />
+          </div>
         </div> }
 
         <h3>Accessibility</h3>
-        <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
-        <table className='ms-themer-accessibilityTable'>
-          { [this._accessibilityRow(SemanticColorSlots.disabledText, SemanticColorSlots.bodyBackground),
-          this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground)] }
-        </table>
-
-        { this._outputSection() }
+        <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5.</p>
+        <table className='ms-themer-accessibilityTable'><tbody>
+          { [this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground),
+          this._accessibilityRow(SemanticColorSlots.disabledText, SemanticColorSlots.bodyBackground),
+          this._accessibilityRow(SemanticColorSlots.disabledText, SemanticColorSlots.disabledBackground)] }
+        </tbody></table>
       </div>
     );
   }
@@ -314,29 +307,6 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       alert('Error ' + xhr.status + ': ' + xhr.statusText);
     }
   }
-
-  /*  private _exampleSection(
-      sectionName: string,
-      description: string,
-      slots: Array<JSX.Element>,
-      examples?: Array<JSX.Element>
-    ) {
-      return (
-        <div className='ms-themer-exampleSection'>
-          <h3>{ sectionName }</h3>
-          <p>{ description }</p>
-          <div className='ms-themer-exampleTable'>
-            <div className='ms-themer-slotsList'>
-              { slots }
-            </div>
-            <div className='ms-themer-exampleList'>
-              { examples }
-            </div>
-          </div>
-          <br />
-        </div>
-      );
-    } */
 
   @autobind
   private _colorPickerOnDismiss() {
@@ -434,7 +404,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
         />
         <textarea
           readOnly={ true }
-          style={ { height: '300px', width: '800px', display: 'none' } }
+          style={ { height: '300px', width: '300px', display: 'none' } }
           spellCheck={ false }
           value={ ThemeGenerator.getThemeAsSass(this.state.themeRules) }
         />
