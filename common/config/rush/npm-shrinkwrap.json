@@ -28,7 +28,7 @@
     },
     "@rush-temp/experiments": {
       "version": "file:projects\\experiments.tgz",
-      "integrity": "sha1-iDJtKif3wgEKWlb2qrWi5tyPqCg=",
+      "integrity": "sha1-LJ8XHdkStgyDHNg+kMJsw3AWr0Y=",
       "dependencies": {
         "sinon": {
           "version": "2.4.1",
@@ -39,7 +39,7 @@
     },
     "@rush-temp/fabric-website": {
       "version": "file:projects\\fabric-website.tgz",
-      "integrity": "sha1-Aldf34hMTQWCsRIzNaBIWpEaDW8=",
+      "integrity": "sha1-5VWMuHe3lwEIyMvdnu3lPaOzf4Q=",
       "dependencies": {
         "@types/react-addons-test-utils": {
           "version": "0.14.19",
@@ -69,7 +69,7 @@
     },
     "@rush-temp/ssr-tests": {
       "version": "file:projects\\ssr-tests.tgz",
-      "integrity": "sha1-pQcTLC+8dZBNyS2STetsgRBtlDU="
+      "integrity": "sha1-UwBipVg7te3T+5Q9nkf7pK30S54="
     },
     "@rush-temp/styling": {
       "version": "file:projects\\styling.tgz",
@@ -77,11 +77,11 @@
     },
     "@rush-temp/test-bundle-button": {
       "version": "file:projects\\test-bundle-button.tgz",
-      "integrity": "sha1-Prwm6jWSgEP98vly0mljg/f8oF4="
+      "integrity": "sha1-Wr0LhAaAwnDWoV32e9ZI9SxHBek="
     },
     "@rush-temp/todo-app": {
       "version": "file:projects\\todo-app.tgz",
-      "integrity": "sha1-AjMudsmaV0LsJ4RgWOWtfFUdAzo="
+      "integrity": "sha1-KWvueNbh/HTXSj/xBjzwv+4dEak="
     },
     "@rush-temp/utilities": {
       "version": "file:projects\\utilities.tgz",
@@ -96,7 +96,7 @@
     },
     "@rush-temp/vr-tests": {
       "version": "file:projects\\vr-tests.tgz",
-      "integrity": "sha1-SXrfbfhrEzZuh8VaMHXgAvGh/GI=",
+      "integrity": "sha1-j20hSFiZCNv3z6vZCltxhHrd5Mw=",
       "dependencies": {
         "ansi-styles": {
           "version": "2.2.1",
@@ -1614,14 +1614,14 @@
       }
     },
     "caniuse-db": {
-      "version": "1.0.30000727",
-      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000727.tgz",
-      "integrity": "sha1-TiJZMImw81wbKtz8KCNEk6IaSy4="
+      "version": "1.0.30000730",
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000730.tgz",
+      "integrity": "sha1-yeGRmp9YbIXXkmXnqEJhuEIfkr0="
     },
     "caniuse-lite": {
-      "version": "1.0.30000727",
-      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30000727.tgz",
-      "integrity": "sha1-IMiVdoOY3tX5ikvqtKdsKF3vQdI="
+      "version": "1.0.30000730",
+      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30000730.tgz",
+      "integrity": "sha1-JqFP8bO/wfHLTadcLHNFGz8a3ho="
     },
     "cardinal": {
       "version": "1.0.0",
@@ -2983,9 +2983,9 @@
       "integrity": "sha1-87IWfZBoxGmKjVH092CjmlTYGOs="
     },
     "forwarded": {
-      "version": "0.1.1",
-      "resolved": "https://registry.npmjs.org/forwarded/-/forwarded-0.1.1.tgz",
-      "integrity": "sha1-ik4wxkCwU5U5mjVJxzAldygEiWE="
+      "version": "0.1.2",
+      "resolved": "https://registry.npmjs.org/forwarded/-/forwarded-0.1.2.tgz",
+      "integrity": "sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ="
     },
     "fragment-cache": {
       "version": "0.2.1",
@@ -5444,9 +5444,9 @@
       "integrity": "sha1-JKwXdDPkou6REP5DWAutBZ+gBQk="
     },
     "office-ui-fabric-react": {
-      "version": "4.46.1",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.46.1.tgz",
-      "integrity": "sha512-Wxw10vB9qBODAhuw6cT0hbLf1HSvKEnDAaDO49srTqytPINCmkiL6n0yBbTVajx0lAD9r6ES2KBXqxZ9srkg+g=="
+      "version": "4.47.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-4.47.0.tgz",
+      "integrity": "sha512-3cFxy3JBnAGHnb6+7BPR9mnK0oyIBsreIkB9A3XvFV84XUdAAYYs+YjBtT2HHVhCF8dKR2ZCR5uEhhwj0dhrJQ=="
     },
     "on-finished": {
       "version": "2.3.0",
@@ -7496,9 +7496,9 @@
       }
     },
     "screener-storybook": {
-      "version": "0.8.10",
-      "resolved": "https://registry.npmjs.org/screener-storybook/-/screener-storybook-0.8.10.tgz",
-      "integrity": "sha1-uvUgCNOrUIzsvPoJuPkdpRhpJaQ=",
+      "version": "0.8.11",
+      "resolved": "https://registry.npmjs.org/screener-storybook/-/screener-storybook-0.8.11.tgz",
+      "integrity": "sha1-3S+hML13vsapTorpmDQfGNIbqVc=",
       "dependencies": {
         "acorn": {
           "version": "2.7.0",
@@ -8783,9 +8783,9 @@
       "integrity": "sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg=="
     },
     "webpack": {
-      "version": "3.5.6",
-      "resolved": "https://registry.npmjs.org/webpack/-/webpack-3.5.6.tgz",
-      "integrity": "sha512-sXnxfx6KoZVrFAGLjdhCCwDtDwkYMfwm8mJjkQv3thr5pjTlbxopVlr/kJwc9Bz317gL+gNjvz++ir9TgG1MDg==",
+      "version": "3.6.0",
+      "resolved": "https://registry.npmjs.org/webpack/-/webpack-3.6.0.tgz",
+      "integrity": "sha512-OsHT3D0W0KmPPh60tC7asNnOmST6bKTiR90UyEdT9QYoaJ4OYN4Gg7WK1k3VxHK07ZoiYWPsKvlS/gAjwL/vRA==",
       "dependencies": {
         "acorn": {
           "version": "5.1.2",

@@ -31,7 +31,7 @@
     "awesome-typescript-loader": "^3.2.3",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
     "react-addons-test-utils": "^15.4.2",
-    "screener-storybook": "^0.8.10",
+    "screener-storybook": "^0.8.11",
     "screener-runner": "^0.6.19",
     "storybook-readme": "=3.0.6"
   },
