@@ -51,7 +51,7 @@
         box-shadow: 0 10px 30px -10px rgba(0,0,0,.2);
         max-width: $App-maximumWidth - $Nav-width;
         position: fixed;
-        top: $Header-height;
+        top: 0;
         width: 100%;
         z-index: $ms-zIndex-1;
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
@@ -129,7 +129,7 @@
   // The mobile nav is no longer present, so the attached page header is higher up
   .pageHeader.isAttached {
     .content {
-      top: $Header-height;
+      top: 0;
     }
   }
 }

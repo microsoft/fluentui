@@ -112,7 +112,8 @@
     margin-bottom: 12px;
   }
 
-  a {
+  a,
+  a:link {
     color: $color-home-lighter;
     font-size: $ms-font-size-m;
     transition: color $ms-animation-duration-2 $ms-animation-ease-1;
@@ -209,7 +210,7 @@
 .productDescription {
   font-size: $ms-font-size-l;
 
-  a, a:visited {
+  a, a:link, a:visited {
     color: $color-home-medium;
     transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
@@ -321,7 +322,8 @@
   margin-top: 32px;
 
   a,
-  a:visited {
+  a:visited,
+  a:link {
     color: $color-home-lighter;
   }
 }
