@@ -1,12 +1,15 @@
 export interface IComponentStatusProps {
-  keyboardAccessibilitySupport: boolean | undefined;
-  markupSupport: boolean | undefined;
-  highContrastSupport: boolean | undefined;
-  rtlSupport: boolean | undefined;
-  testCoverage: TestCoverageStatus | undefined;
+  keyboardAccessibilitySupport: ChecklistStatus;
+  markupSupport: ChecklistStatus;
+  highContrastSupport: ChecklistStatus;
+  rtlSupport: ChecklistStatus;
+  testCoverage: ChecklistStatus;
 }
 
-export enum TestCoverageStatus {
+export enum ChecklistStatus {
+  unknown = 'Unknown',
+  pass = 'Pass',
+  fail = 'Fail',
   none = 'No Tests',
   poor = 'Poor',
   fair = 'Fair',

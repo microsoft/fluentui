@@ -1,4 +1,4 @@
-import { IComponentStatusProps, TestCoverageStatus } from './ComponentStatus.Props';
+import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.Props';
 
 export interface IComponentStatusState {
   [key: string]: IComponentStatusProps;
@@ -6,333 +6,333 @@ export interface IComponentStatusState {
 
 export const ComponentStatusState: IComponentStatusState = {
   Breadcrumb: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   Button: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Calendar: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Callout: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   Checkbox: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.poor
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.poor
   },
   ChoiceGroup: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   ColorPicker: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   ComboBox: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   CommandBar: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   ContextualMenu: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.good
   },
   DatePicker: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   DetailsList: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.poor
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.poor
   },
   Dialog: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   DocumentCard: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.poor
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.poor
   },
   Dropdown: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Facepile: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   GroupedList: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   HoverCard: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   Icon: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   Image: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Label: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Layer: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Link: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   List: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.none
   },
   MessageBar: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   Modal: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.none
   },
   Nav: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   Overlay: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   Overflow: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.poor
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.poor
   },
   Panel: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   Persona: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Pickers: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.good
   },
   PeoplePicker: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.none
   },
   Pivot: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   ProgressIndicator: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   Rating: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   ResizeGroup: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   ScrollablePane: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   SearchBox: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   Slider: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   Spinner: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.none
   },
   SpinButton: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   SwatchColorPicker: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.fair
   },
   TeachingBubble: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.fair
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.fair
   },
   TextField: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Toggle: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.good
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.good
   },
   Tooltip: {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: true,
-    rtlSupport: true,
-    testCoverage: TestCoverageStatus.poor
+    keyboardAccessibilitySupport: ChecklistStatus.unknown,
+    markupSupport: ChecklistStatus.unknown,
+    highContrastSupport: ChecklistStatus.pass,
+    rtlSupport: ChecklistStatus.pass,
+    testCoverage: ChecklistStatus.poor
   }
 };
 

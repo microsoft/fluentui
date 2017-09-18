@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { IComponentStatusProps, TestCoverageStatus } from './ComponentStatus.Props';
+import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.Props';
 import './ComponentStatus.scss';
 
 export class ComponentStatus extends React.Component<IComponentStatusProps, {}> {
 
   public static defaultProps: IComponentStatusProps = {
-    keyboardAccessibilitySupport: false,
-    markupSupport: false,
-    highContrastSupport: false,
-    rtlSupport: false,
-    testCoverage: TestCoverageStatus.none
+    keyboardAccessibilitySupport: ChecklistStatus.fail,
+    markupSupport: ChecklistStatus.fail,
+    highContrastSupport: ChecklistStatus.fail,
+    rtlSupport: ChecklistStatus.fail,
+    testCoverage: ChecklistStatus.none
   };
 
   public render(): JSX.Element {
@@ -21,30 +21,19 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
 
     return (
       <div className='ComponentStatus-div'>
-        { this._badgeAnchorForDual(keyboardAccessibilitySubject, !!this.props.keyboardAccessibilitySupport) }
-        { this._badgeAnchorForDual(markupSubject, !!this.props.markupSupport) }
-        { this._badgeAnchorForDual(highContrastSupportSubject, !!this.props.highContrastSupport) }
-        { this._badgeAnchorForDual(rtlSubject, !!this.props.rtlSupport) }
-        { this._badgeAnchorForTestCoverage(testCoverageSubject) }
+        { this._definebadgeAnchor(keyboardAccessibilitySubject, this.props.keyboardAccessibilitySupport) }
+        { this._definebadgeAnchor(markupSubject, this.props.markupSupport) }
+        { this._definebadgeAnchor(highContrastSupportSubject, this.props.highContrastSupport) }
+        { this._definebadgeAnchor(rtlSubject, this.props.rtlSupport) }
+        { this._definebadgeAnchor(testCoverageSubject, this.props.testCoverage) }
       </div >
     );
   }
 
-  private _badgeAnchorForDual(subject: string, isSupported: boolean): JSX.Element {
-    isSupported = isSupported ? isSupported : false;
-    const ariaLabel = subject + '. ' + this._badgeStatusString(isSupported);
-    const color = this._colorForDualStatusBadge(isSupported);
-    const status = this._badgeStatusString(isSupported);
-
-    return this._badgeAnchor(ariaLabel, color, subject, status);
-  }
-
-  private _badgeAnchorForTestCoverage(subject: string): JSX.Element {
-    const ariaLabel = subject + '. ' + this.props.testCoverage;
-    const color = this._colorForTestCoverageStatus(this.props.testCoverage);
-    const coverageStatus = this.props.testCoverage ? this.props.testCoverage : TestCoverageStatus.none;
-
-    return this._badgeAnchor(ariaLabel, color, subject, coverageStatus);
+  private _definebadgeAnchor(subject: string, state: ChecklistStatus): JSX.Element {
+    const ariaLabel = subject + '. ' + state;
+    const color = this._colorForComponentStateStatus(state);
+    return this._badgeAnchor(ariaLabel, color, subject, state);
   }
 
   private _badgeAnchor(ariaLabel: string, color: string, subject: string, status: string): JSX.Element {
@@ -67,25 +56,19 @@ export class ComponentStatus extends React.Component<IComponentStatusProps, {}> 
     return badgeBaseURL + subject + '-' + status + '-' + color + '.svg' + '?style=' + badgeStyle;
   }
 
-  // Status
-  private _badgeStatusString(isSupported: boolean | undefined): string {
-    return isSupported ? 'Pass' : 'Fail';
-  }
-
-  // Colors
-  private _colorForDualStatusBadge(isSupported: boolean | undefined): string {
-    return isSupported ? 'brightgreen' : 'red';
-  }
-
-  private _colorForTestCoverageStatus(testCoverageStatus: TestCoverageStatus | undefined): string {
+  private _colorForComponentStateStatus(testCoverageStatus: ChecklistStatus | undefined): string {
     switch (testCoverageStatus) {
-      case TestCoverageStatus.none:
+      case ChecklistStatus.unknown:
+        return 'lightgrey';
+      case ChecklistStatus.fail:
+      case ChecklistStatus.none:
         return 'red';
-      case TestCoverageStatus.poor:
+      case ChecklistStatus.poor:
         return 'yellow';
-      case TestCoverageStatus.fair:
+      case ChecklistStatus.fair:
         return 'yellowgreen';
-      case TestCoverageStatus.good:
+      case ChecklistStatus.pass:
+      case ChecklistStatus.good:
         return 'brightgreen';
     }
 
