@@ -5,6 +5,8 @@
   .App {
     background-color: $ms-color-neutralDark;
     justify-content: center;
+    padding-left: 5%; // % matches UHF breakpoint sizes
+    padding-right: 5%; // % matches UHF breakpoint sizes
   }
 
   // Element that wraps everything except for the header
@@ -13,39 +15,6 @@
     flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
-    padding-top: $Header-height; // Keep content from being covered by the header
-  }
-
-  .App-mobileNavBar {
-    @include contentPadding(0, 0);
-    background: $ms-color-neutralDark;
-    color: $ms-color-white;
-    display: flex;
-    height: $App-mobileNavBarHeight;
-    left: 0;
-    position: fixed;
-    right: 0;
-    z-index: 600;
-
-    .menuButton {
-      color: $ms-color-white;
-      font-size: $font-size-big;
-      font-weight: $ms-font-weight-regular;
-      height: $App-mobileNavBarHeight;
-      line-height: $App-mobileNavBarHeight;
-      @include ms-margin-right(12px);
-      padding: 0;
-
-      &:focus {
-        outline: 0;
-      }
-    }
-
-    .siteTitle {
-      font-size: $font-size-big;
-      font-weight: $ms-font-weight-light;
-      line-height: $App-mobileNavBarHeight - 2;
-    }
   }
 
   // Nav is hidden off screen by default
@@ -55,7 +24,7 @@
     @include ms-left(-$Nav-width);
     overflow-y: auto;
     position: fixed;
-    top: $Header-height + $App-mobileNavBarHeight;
+    top: $Header-height;
     transition: $ms-animation-duration-2 $ms-animation-ease-1;
     @include ms-transition-property(left);
     width: $Nav-width;
@@ -66,7 +35,6 @@
     background-color: $ms-color-neutralLighter;
     flex-grow: 1;
     left: 0;
-    margin-top: $App-mobileNavBarHeight; // Move it down below the mobile nav bar
     overflow: hidden;
     position: relative;
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
@@ -85,35 +53,19 @@
 
   }
 
-  // Overlay to dim content and dismiss the mobile nav (hidden by default)
-  .App-mobileNavOverlay {
-    display: none;
-  }
-
   // When the nav is open (smaller screens only) push the content over and prevent app from scrolling
-  @media screen and (max-width: $ms-screen-max-lg) {
+  @media screen and (max-width: $uhf-screen-min-mobile) {
+    .App {
+      padding: 0;
+    }
+
     .App.is-navOpen {
       bottom: 0;
       left: 0;
       overflow: hidden;
-      position: absolute;
+      position: fixed;
       right: 0;
       top: 0;
-
-      .App-mobileNavBar {
-        @include ms-padding-left(36px); // Align to menu items
-      }
-
-      .App-mobileNavOverlay {
-        background: transparent;
-        bottom: 0;
-        display: block;
-        position: absolute;
-        @include ms-left($Nav-width);
-        @include ms-right(0);
-        top: 0;
-        z-index: 1;
-      }
 
       .App-nav {
         @include ms-left(0);
@@ -127,13 +79,9 @@
   }
 
   // Show the nav at all times, to the left of the content
-  @media screen and (min-width: $ms-screen-min-xl) {
+  @media screen and (min-width: $uhf-screen-min-mobile) {
     .App-wrapper {
       flex-direction: row;
-    }
-
-    .App-mobileNavBar {
-      display: none;
     }
 
     .App-nav {
@@ -144,7 +92,7 @@
     }
 
     .App-content {
-      margin-top: 0; // Mobile nav bar is no longer there
+      margin-top: 0;
       flex-grow: unset;
       width: calc(100% - #{$Nav-width});
     }
@@ -161,4 +109,20 @@
     }
   }
 
+  @media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+    .App {
+      @include ms-padding-right(24px);
+      @include ms-padding-left(6px);
+    }
+
+    .App-nav {
+      @include ms-margin-left(18px);
+    }
+  }
+}
+
+@media only screen and (max-width: $uhf-screen-min-mobile) {
+  .App {
+    padding: 0;
+  }
 }

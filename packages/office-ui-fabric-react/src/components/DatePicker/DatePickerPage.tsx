@@ -21,7 +21,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         componentName='DatePickerExample'
         exampleCards={
           <div>
-            <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
+            <ExampleCard title='Default DatePicker' code={ DatePickerBasicExampleCode }>
               <DatePickerBasicExample />
             </ExampleCard>
             <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
@@ -69,9 +69,6 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
               <li>The flyout selector is a light dismiss control. Don't modify this behavior in any way.</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/DatePicker/DatePicker.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />

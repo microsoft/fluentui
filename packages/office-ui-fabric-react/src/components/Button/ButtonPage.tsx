@@ -5,7 +5,6 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
@@ -16,8 +15,9 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
-import './examples/Button.Basic.Example.scss';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Link } from '../../Link';
+import './examples/Button.Basic.Example.scss';
 
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
@@ -107,9 +107,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <p>While buttons can technically be used to navigate a user to another part of the experience, this is not recommended unless that navigation is part of an action or their flow.</p>
             <p>Note that both iconProps and menuIconProps take <Link href='#/examples/icon'>IIconProps</Link> to specify name and type.</p>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Button/Button.html'>Fabric JS</a>
         }
         bestPractices={
           <div />

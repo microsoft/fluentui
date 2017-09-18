@@ -20,10 +20,10 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
         componentName='SearchBoxExample'
         exampleCards={
           <div>
-            <ExampleCard title='SearchBox' code={ SearchBoxSmallExampleCode }>
+            <ExampleCard title='Default SearchBox' code={ SearchBoxSmallExampleCode }>
               <SearchBoxSmallExample />
             </ExampleCard>
-            <ExampleCard title='SearchBox - No Parent Container' code={ SearchBoxFullSizeExampleCode }>
+            <ExampleCard title='SearchBox with no parent container' code={ SearchBoxFullSizeExampleCode }>
               <SearchBoxFullSizeExample />
             </ExampleCard>
           </div>
@@ -116,9 +116,6 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
               <li>Don't use SearchBox if you cannot reliably provide accurate results.</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/SearchBox/SearchBox.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />

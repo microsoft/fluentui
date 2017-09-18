@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import {
@@ -25,11 +24,9 @@ export class Nav extends React.Component<INavProps, INavState> {
       : null;
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical } >
-        <nav className={ styles.nav } role='navigation'>
-          { links }
-        </nav>
-      </FocusZone>
+      <nav className={ styles.nav } role='navigation'>
+        { links }
+      </nav>
     );
   }
 
@@ -48,14 +45,17 @@ export class Nav extends React.Component<INavProps, INavState> {
         page.isHomePage ? styles.isHomePage : '',
         page.className ? styles[page.className] : ''
       ) } key={ linkIndex }>
-        <a
-          href={ page.url }
-          onClick={ this.props.onLinkClick }
-          title={ title }
-          aria-label={ ariaLabel }
-        >
-          { page.title }
-        </a>
+
+        { page.isUhfLink ?
+          '' : <a
+            href={ page.url }
+            onClick={ this.props.onLinkClick }
+            title={ title }
+            aria-label={ ariaLabel }
+          >
+            { page.title }
+          </a> }
+
         { childLinks }
       </li>
     );
