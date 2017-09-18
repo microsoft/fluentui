@@ -82,6 +82,8 @@ export class HomePage extends React.Component<any, any> {
             </li>
           </ul>
           <span className={ styles.trademark }>All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement</a>.</span>
+          <span className={ styles.featuredTitle }>Design Toolkit</span>
+          <span className={ styles.featuredDescription } id={ styles.toolkitDescription }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences. <a href='#/resources'>Learn more</a></span>
         </div>
       </div>
     );

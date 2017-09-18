@@ -259,6 +259,11 @@
   @include fullHeight();
   @include fullWidth();
   background-color: $ms-color-neutralPrimary;
+
+  a,
+  a:visited {
+    color: $color-home-lighter;
+  }
 }
 
 .featuredTitle,
@@ -278,7 +283,11 @@
   font-size: $ms-font-size-l;
   line-height: 1.5;
   margin-bottom: 28px;
-  max-width: 26em;
+  width: 35%;
+
+  &#toolkitDescription {
+    width: 70%;
+  }
 }
 
 .featureList {
@@ -314,11 +323,7 @@
   display: block;
   font-size: $ms-font-size-s;
   margin-top: 32px;
-
-  a,
-  a:visited {
-    color: $color-home-lighter;
-  }
+  margin-bottom: 80px;
 }
 
 @media screen and (min-width: $uhf-screen-min-mobile) {
