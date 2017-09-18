@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
