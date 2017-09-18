@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps } from '../../Utilities';
 import { FolderCover } from './FolderCover';
 
 export type FolderCoverSize =
@@ -11,7 +11,7 @@ export type FolderCoverType =
   'default' |
   'media';
 
-export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<FolderCover> {
+export interface IFolderCoverProps extends IBaseProps, React.Props<FolderCover>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The breakpoint size of the folder cover.
    *

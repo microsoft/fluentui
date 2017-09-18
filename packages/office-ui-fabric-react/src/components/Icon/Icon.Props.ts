@@ -64,4 +64,9 @@ export interface IIconProps extends React.HTMLAttributes<HTMLElement> {
    * @memberOf IIconProps
    */
   imageProps?: IImageProps;
+
+  /**
+   * Callback for the onClick event.
+   */
+  onClicked?: (ev: React.MouseEvent<HTMLElement>) => void;
 }

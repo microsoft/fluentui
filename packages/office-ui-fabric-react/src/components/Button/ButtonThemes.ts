@@ -27,6 +27,53 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.neutralTertiaryAlt,
       color: theme.palette.neutralDark
     },
+
+    // Split button styles
+    splitButtonContainer: {
+      selectors: {
+        ':hover': {
+          borderColor: theme.palette.neutralLight
+        },
+        ':focus': {
+          borderColor: theme.palette.neutralDark
+        }
+      }
+    },
+
+    splitButtonMenuButton: {
+      color: theme.palette.white,
+      backgroundColor: theme.palette.neutralLighter,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLight
+        }
+      },
+    },
+
+    splitButtonMenuButtonDisabled: {
+      backgroundColor: theme.palette.neutralLighter,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLighter,
+        }
+      }
+    },
+
+    splitButtonMenuButtonChecked: {
+      backgroundColor: theme.palette.themePrimary,
+    },
+
+    splitButtonMenuButtonExpanded: {
+      backgroundColor: theme.palette.neutralLight,
+    },
+
+    splitButtonMenuIcon: {
+      color: theme.palette.neutralPrimary
+    },
+
+    splitButtonMenuIconDisabled: {
+      color: theme.palette.neutralTertiary
+    },
   };
 }
 
@@ -48,7 +95,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootExpanded: {
-      backgroundColor: theme.palette.themePrimary,
+      backgroundColor: theme.palette.themeDark,
       color: theme.palette.white
     },
 
@@ -60,6 +107,54 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     rootCheckedHovered: {
       backgroundColor: theme.palette.neutralLight,
       color: theme.palette.black
-    }
+    },
+
+    // Split button styles
+    splitButtonContainer: {
+      selectors: {
+        ':hover': {
+          borderColor: theme.palette.neutralLight
+        },
+        ':focus': {
+          borderColor: theme.palette.neutralDark
+        }
+      }
+    },
+
+    splitButtonMenuButton: {
+      backgroundColor: theme.palette.themePrimary,
+      color: theme.palette.white,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.themeDark
+        }
+      },
+    },
+
+    splitButtonMenuButtonDisabled: {
+      backgroundColor: theme.palette.neutralLighter,
+      selectors: {
+        ':hover': {
+          backgroundColor: theme.palette.neutralLighter,
+        }
+      }
+    },
+
+    splitButtonMenuButtonChecked: {
+      backgroundColor: theme.palette.themeDark,
+    },
+
+    splitButtonMenuButtonExpanded: {
+      backgroundColor: theme.palette.themeDark,
+    },
+
+    splitButtonMenuIcon: {
+      color: theme.palette.white
+    },
+
+    splitButtonMenuIconDisabled: {
+      color: theme.palette.neutralTertiary
+    },
+
   };
 }

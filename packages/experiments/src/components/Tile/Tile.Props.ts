@@ -97,6 +97,20 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   hideForeground?: boolean;
   /**
+   * The accessible label representing the tile and its content.
+   *
+   * @type {string}
+   * @memberof ITileProps
+   */
+  ariaLabel?: string;
+  /**
+   * The accessible label providing description or instructions for the tile.
+   *
+   * @type {string}
+   * @memberof ITileProps
+   */
+  descriptionAriaLabel?: string;
+  /**
    * The accessible label for the selection checkbox.
    *
    * @type {boolean}

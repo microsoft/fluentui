@@ -10,7 +10,7 @@ import { IActivityItemStyles } from './ActivityItem.Props';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
-const DEFAULT_ICON_SIZE = '24px';
+const DEFAULT_ICON_SIZE = '16px';
 const COMPACT_ICON_SIZE = '13px';
 
 export const getStyles = memoizeFunction((
