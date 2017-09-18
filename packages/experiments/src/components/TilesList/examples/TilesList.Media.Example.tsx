@@ -66,6 +66,7 @@ export class TilesListMediaExample extends React.Component<{}, {}> {
             onItemInvoked={ this._onItemInvoked }
           >
             <TilesListType
+              role='list'
               items={ items }
             />
           </SelectionZone>
@@ -86,6 +87,9 @@ export class TilesListMediaExample extends React.Component<{}, {}> {
   private _onRenderMediaCell(item: IExampleItem, finalSize: ITileSize): JSX.Element {
     const tile = (
       <Tile
+        role='listitem'
+        aria-setsize={ ITEMS.length }
+        aria-posinset={ item.index }
         contentSize={ finalSize }
         className={ AnimationClassNames.fadeIn400 }
         selection={ this._selection }
@@ -118,7 +122,7 @@ export class TilesListMediaExample extends React.Component<{}, {}> {
   @autobind
   private _onRenderHeader(item: IExampleItem): JSX.Element {
     return (
-      <div>
+      <div role='presentation'>
         <h3>{ item.name }</h3>
       </div>
     );

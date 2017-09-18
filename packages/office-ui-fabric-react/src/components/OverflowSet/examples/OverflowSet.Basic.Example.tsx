@@ -5,6 +5,7 @@ import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
+  IOverflowSetItemProps,
   OverflowSet
 } from 'office-ui-fabric-react/lib/OverflowSet';
 
@@ -47,25 +48,29 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
           }
         ]
         }
-        onRenderOverflowButton={ (overflowItems) => {
-          return (
-            <IconButton
-              className={ css(styles.overflowButton) }
-              iconProps={ { iconName: 'More' } }
-              menuIconProps={ undefined }
-              menuProps={ { items: overflowItems! } }
-            />
-          );
-        } }
-        onRenderItem={ (item) => {
-          return (
-            <Link
-              className={ css(styles.overflowLinks) }
-              onClick={ item.onClick }
-            >{ item.name }
-            </Link>
-          );
-        } }
+        onRenderOverflowButton={ this._onRenderOverflowButton }
+        onRenderItem={ this._onRenderItem }
+      />
+    );
+  }
+
+  private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
+    return (
+      <Link
+        className={ css(styles.overflowLinks) }
+        onClick={ item.onClick }
+      >{ item.name }
+      </Link>
+    );
+  }
+
+  private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+    return (
+      <IconButton
+        className={ css(styles.overflowButton) }
+        iconProps={ { iconName: 'More' } }
+        menuIconProps={ undefined }
+        menuProps={ { items: overflowItems! } }
       />
     );
   }

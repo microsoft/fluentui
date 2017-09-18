@@ -7,7 +7,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
     let { disabled, checked } = this.props;
 
     return (
-      <div className='ms-BasicButtonsExample ms-BasicButtonsTwoUp'>
+      <div className='ms-BasicButtonsTwoUp'>
         <div>
           <Label>Standard</Label>
           <DefaultButton

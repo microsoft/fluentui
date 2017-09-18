@@ -16,30 +16,58 @@ export class ButtonSplitExample extends React.Component<IButtonProps, {}> {
     let { disabled, checked } = this.props;
 
     return (
-      <div>
-        <Label>Split button</Label>
-        <DefaultButton
-          data-automation-id='test'
-          disabled={ disabled }
-          checked={ checked }
-          text='Create account'
-          onClick={ alertClicked }
-          split={ true }
-          menuProps={ {
-            items: [
-              {
-                key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail'
-              },
-              {
-                key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
-              }
-            ]
-          } }
-        />
+      <div className='ms-BasicButtonsTwoUp'>
+        <div>
+          <Label>Standard</Label>
+          <DefaultButton
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            text='Create account'
+            onClick={ alertClicked }
+            split={ true }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
+        <div>
+          <Label>Primary</Label>
+          <DefaultButton
+            primary
+            data-automation-id='test'
+            disabled={ disabled }
+            checked={ checked }
+            text='Create account'
+            onClick={ alertClicked }
+            split={ true }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            } }
+          />
+        </div>
       </div>
     );
   }

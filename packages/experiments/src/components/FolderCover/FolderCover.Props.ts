@@ -11,7 +11,7 @@ export type FolderCoverType =
   'default' |
   'media';
 
-export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<FolderCover> {
+export interface IFolderCoverProps extends IBaseProps, React.Props<FolderCover>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The breakpoint size of the folder cover.
    *
@@ -34,6 +34,13 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<Fold
    * @memberof IFolderCoverProps
    */
   hideContent?: boolean;
+  /**
+   * A signal to display on the folder cover.
+   *
+   * @type {(React.ReactNode[] | React.ReactNode)}
+   * @memberof IFolderCoverProps
+   */
+  signal?: React.ReactNode[] | React.ReactNode;
   /**
    * A metadata value to display on the folder cover.
    *

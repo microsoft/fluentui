@@ -55,7 +55,7 @@ export class FocusZoneListExample extends React.Component<any, any> {
         className='ms-FocusZoneListExample'
         direction={ FocusZoneDirection.vertical }
         isCircularNavigation={ true }
-        isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+        isInnerZoneKeystroke={ this._isInnerZoneKeystroke }
       >
         { ITEMS.map((item, index) => (
           <DetailsRow
@@ -69,6 +69,10 @@ export class FocusZoneListExample extends React.Component<any, any> {
         )) }
       </FocusZone>
     );
+  }
+
+  private _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    return ev.which === getRTLSafeKeyCode(KeyCodes.right);
   }
 
 }
