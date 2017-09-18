@@ -512,6 +512,7 @@ export type IconName =
   'Money' |
   'More' |
   'MoreSports' |
+  'MoreVertical' |
   'Move' |
   'MoveToFolder' |
   'MSNLogo' |

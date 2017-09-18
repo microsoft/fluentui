@@ -4,9 +4,12 @@ import { IFolderCoverProps, FolderCoverSize, FolderCoverType } from './FolderCov
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ISize } from '@uifabric/utilities';
 import * as FolderCoverStylesModule from './FolderCover.scss';
+import * as SignalStylesModule from '../signals/Signals.scss';
 
 // tslint:disable-next-line:no-any
 const FolderCoverStyles = FolderCoverStylesModule as any;
+// tslint:disable-next-line:no-any
+const SignalStyles = SignalStylesModule as any;
 
 export interface IFolderCoverState {
   // TODO Add animation support for drag/drop events.
@@ -38,6 +41,7 @@ const SIZES: {
 const ASSETS: {
   [P in FolderCoverSize]: {
     [T in FolderCoverType]: {
+      shadow: string;
       back: string;
       front: string;
     };
@@ -45,20 +49,24 @@ const ASSETS: {
 } = {
     small: {
       default: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/s-ldefaultfront.png`
       },
       media: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/72x52_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotoback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/s-lphotosfront.png`
       }
     },
     large: {
       default: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xldefaultfront.png`
       },
       media: {
+        shadow: `${ASSET_CDN_BASE_URL}/foldericons/112x80_shadow_empty.png`,
         back: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotoback.png`,
         front: `${ASSET_CDN_BASE_URL}/foldericons/xxxxl-xlphotofront.png`
       }
@@ -70,13 +78,16 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     const {
       folderCoverSize: size = 'large',
       folderCoverType: type = 'default',
-      hideContent = false
+      hideContent = false,
+      ref,
+      ...divProps
     } = this.props;
 
     const assets = ASSETS[size][type];
 
     return (
       <div
+        { ...divProps }
         className={ css(FolderCoverStyles.root, {
           [`ms-FolderCover--isSmall ${FolderCoverStyles.isSmall}`]: size === 'small',
           [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
@@ -86,20 +97,38 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
         }) }
       >
         <img
+          aria-hidden={ true }
+          className={ css('ms-FolderCover-shadow', FolderCoverStyles.shadow) }
+          src={ assets.shadow }
+        />
+        <img
+          aria-hidden={ true }
           className={ css('ms-FolderCover-back', FolderCoverStyles.back) }
           src={ assets.back }
         />
         {
           this.props.children ? (
             <span className={ css('ms-FolderCover-content', FolderCoverStyles.content) }>
-              { this.props.children }
+              <span className={ css('ms-FolderCover-frame', FolderCoverStyles.frame) }>
+                { this.props.children }
+              </span>
             </span>
           ) : null
         }
         <img
+          aria-hidden={ true }
           className={ css('ms-FolderCover-front', FolderCoverStyles.front) }
           src={ assets.front }
         />
+        {
+          this.props.signal ?
+            (
+              <span className={ css('ms-FolderCover-signal', FolderCoverStyles.signal, SignalStyles.dark) }>
+                { this.props.signal }
+              </span>
+            ) :
+            null
+        }
         {
           this.props.metadata ?
             (

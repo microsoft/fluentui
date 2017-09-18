@@ -109,7 +109,6 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-
 // The days on the calendar.
 .day, .weekday {
   width: $Calendar-day;
@@ -205,6 +204,30 @@ $Calendar-dayPicker-margin: 10px;
     &:last-child{
       // border-radius: 0px 2px 2px 0px;
     }
+}
+
+.showWeekNumbers{
+  .weekNumbers{
+    position: absolute;
+    margin-top: $Calendar-day;
+    border-right: 1px solid $ms-color-neutralLight;
+    box-sizing: border-box;
+    width: 30px;
+    .day{
+      color: $ms-color-neutralSecondary;
+      &.weekIsHighlighted{
+        color: $ms-color-black;
+      }
+    }
+  }
+  .table{
+    &:not(.weekNumbers){
+      margin-left: 30px;
+    }
+    .day, .weekday{
+      width: 30px;
+    }
+  }
 }
 
 // Month and year previous/next components.
@@ -353,7 +376,7 @@ $Calendar-dayPicker-margin: 10px;
   $Calendar-month: 40px;
 
   .wrap {
-    padding: 4px 8px;
+    padding: 9px 8px;
   }
   // Update the spacing and text for the day and month pickers
 
@@ -391,7 +414,7 @@ $Calendar-dayPicker-margin: 10px;
 
   .holder {
     width: 212px;
-    height: 240px;
+    height: auto;
   }
 
   .monthAndYear,
@@ -404,11 +427,31 @@ $Calendar-dayPicker-margin: 10px;
     margin-left: 1px;
   }
 
+  .goToday {
+    padding: 0 3px;
+  }
+
+  .showWeekNumbers{
+    .weekNumbers{
+      margin-top: $Calendar-day;
+      width: 26px;
+      margin-left: -7px
+    }
+    .table{
+      &:not(.weekNumbers){
+        margin-left: 19px;
+      }
+      .day, .weekday{
+        width: 26px;
+      }
+    }
+  }
+
   // Show month picker, if enabled
   .monthPickerVisible {
 
     .wrap {
-      padding: 4px 10px;
+      padding: 10px;
     }
 
     // Swap margin for padding so that the border extends the full height.
@@ -524,13 +567,24 @@ $Calendar-dayPicker-margin: 10px;
 
     .goToday {
       @include ms-right(13px);
+      padding: 0 10px;
     }
   }
 
   //when month picker is only visible
   .monthPickerOnly{
     .wrap{
-      padding: 10px 7px;
+      padding: 10px;
+    }
+  }
+
+  .monthPickerAsOverlay{
+    .wrap {
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
+    .holder{
+      height: 240px;
     }
   }
 }

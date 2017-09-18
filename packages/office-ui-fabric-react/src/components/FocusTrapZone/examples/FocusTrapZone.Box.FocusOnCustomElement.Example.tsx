@@ -62,7 +62,7 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <div className='shouldFocus input'>
           <Toggle
-            componentRef={ t => this._toggle = t }
+            componentRef={ this._setRef }
             checked={ isChecked }
             onChanged={ this._onFocusTrapZoneToggleChanged }
             label='Focus Trap Zone'
@@ -104,5 +104,10 @@ export default class BoxExample extends React.Component<React.HTMLAttributes<HTM
     this.setState({
       isChecked: isChecked
     }, () => this._toggle.focus());
+  }
+
+  @autobind
+  private _setRef(toggle: IToggle): void {
+    this._toggle = toggle;
   }
 }
