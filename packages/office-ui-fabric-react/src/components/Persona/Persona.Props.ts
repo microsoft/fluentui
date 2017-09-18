@@ -118,6 +118,11 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
    * If true, show the secondary text line regardless of the size of the persona
    */
   showSecondaryText?: boolean;
+
+  /**
+   * Optional custom renderer for image area.
+   */
+  onRenderPersonaImage?: IRenderFunction<IPersonaProps>;
 }
 
 export enum PersonaSize {

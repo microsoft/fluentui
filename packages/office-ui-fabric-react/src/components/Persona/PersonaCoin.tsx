@@ -84,6 +84,7 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       primaryText,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
+      onRenderPersonaImage,
       imageShouldStartVisible
      } = this.props;
 
@@ -114,17 +115,23 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                 </div>
               )
             }
-            <Image
-              className={ css('ms-Persona-image', styles.image) }
-              imageFit={ ImageFit.cover }
-              src={ imageUrl }
-              width={ SIZE_TO_PIXELS[size] }
-              height={ SIZE_TO_PIXELS[size] }
-              alt={ imageAlt }
-              shouldFadeIn={ imageShouldFadeIn }
-              shouldStartVisible={ imageShouldStartVisible }
-              onLoadingStateChange={ this._onPhotoLoadingStateChange }
-            />
+            {
+              onRenderPersonaImage
+                ? onRenderPersonaImage(this.props)
+                : (
+                  <Image
+                    className={ css('ms-Persona-image', styles.image) }
+                    imageFit={ ImageFit.cover }
+                    src={ imageUrl }
+                    width={ SIZE_TO_PIXELS[size] }
+                    height={ SIZE_TO_PIXELS[size] }
+                    alt={ imageAlt }
+                    shouldFadeIn={ imageShouldFadeIn }
+                    shouldStartVisible={ imageShouldStartVisible }
+                    onLoadingStateChange={ this._onPhotoLoadingStateChange }
+                  />
+                )
+            }
           </div>
         ) }
         <PersonaPresence { ...this.props } />
