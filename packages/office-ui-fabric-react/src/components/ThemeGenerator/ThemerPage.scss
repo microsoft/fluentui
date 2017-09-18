@@ -10,6 +10,7 @@
 
 .ms-themer-paletteSlot {
   text-align: center;
+  flex-basis: 410px;
 }
 
 .ms-themer-swatch {
@@ -49,7 +50,7 @@
   overflow: auto;
 }
 
-.ms-themer textarea {
+.ms-themer-output-root textarea {
   background-color: white;
   color: #333;
 }

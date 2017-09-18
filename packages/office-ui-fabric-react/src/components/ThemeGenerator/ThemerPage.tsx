@@ -393,7 +393,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   @autobind
   private _outputSection() {
     return (
-      <div>
+      <div className={ 'ms-themer-output-root' }>
         <h2>Output</h2>
         <textarea
           id='jsonOutput'
@@ -443,13 +443,15 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
     return (
       <div className='ms-themer-paletteSlot' key={ baseSlot }>
         <h3>{ BaseSlots[baseSlot] }</h3>
-        <ColorPicker
-          key={ 'baseslotcolorpicker' + baseSlot }
-          color={ this.state.themeRules[BaseSlots[baseSlot]].value!.str }
-          /* tslint:disable:jsx-no-bind */
-          onColorChanged={ _onColorChanged.bind(this) }
-        /* tslint:enable:jsx-no-bind */
-        />
+        <div style={ { display: 'inline-block' } }>
+          <ColorPicker
+            key={ 'baseslotcolorpicker' + baseSlot }
+            color={ this.state.themeRules[BaseSlots[baseSlot]].value!.str }
+            /* tslint:disable:jsx-no-bind */
+            onColorChanged={ _onColorChanged.bind(this) }
+          /* tslint:enable:jsx-no-bind */
+          />
+        </div>
         <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value!.str } }>
           <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value!.str } } />
           { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
