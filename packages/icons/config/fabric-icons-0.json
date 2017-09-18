@@ -3,6 +3,7 @@
 	"fontFamilyName": "FabricMDL2Icons-0",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
@@ -232,6 +233,10 @@
 			"unicode": "E76E"
 		},
 		{
+			"name": "GripperBarHorizontal",
+			"unicode": "E76F"
+		},
+		{
 			"name": "System",
 			"unicode": "E770"
 		},
@@ -374,10 +379,6 @@
 		{
 			"name": "Move",
 			"unicode": "E7C2"
-		},
-		{
-			"name": "Page",
-			"unicode": "E7C3"
 		},
 		{
 			"name": "TouchPointer",

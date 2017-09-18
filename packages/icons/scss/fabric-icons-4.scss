@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-4';
-  src: url('../font/fabric-icons-4-b1eecb0d.woff') format('woff');
+  src: url('../fonts/fabric-icons-4-03329fef.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,12 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--WindDirection { content: "\EBE6"; }
-@mixin ms-Icon--Family { content: "\EBDA"; }
-@mixin ms-Icon--CSS { content: "\EBEF"; }
-@mixin ms-Icon--JS { content: "\EBF0"; }
-@mixin ms-Icon--DeliveryTruck { content: "\EBF4"; }
-@mixin ms-Icon--ReminderPerson { content: "\EBF7"; }
 @mixin ms-Icon--ReminderGroup { content: "\EBF8"; }
 @mixin ms-Icon--Umbrella { content: "\EC04"; }
 @mixin ms-Icon--NetworkTower { content: "\EC05"; }
@@ -41,6 +35,7 @@
 @mixin ms-Icon--SpeedHigh { content: "\EC4A"; }
 @mixin ms-Icon--ThisPC { content: "\EC4E"; }
 @mixin ms-Icon--MusicNote { content: "\EC4F"; }
+@mixin ms-Icon--MicOff { content: "\EC54"; }
 @mixin ms-Icon--EdgeLogo { content: "\EC60"; }
 @mixin ms-Icon--CompletedSolid { content: "\EC61"; }
 @mixin ms-Icon--AlbumRemove { content: "\EC62"; }
@@ -87,6 +82,7 @@
 @mixin ms-Icon--FangBody { content: "\ECEB"; }
 @mixin ms-Icon--Glimmer { content: "\ECF4"; }
 @mixin ms-Icon--ChatInviteFriend { content: "\ECFE"; }
+@mixin ms-Icon--Crown { content: "\ED01"; }
 @mixin ms-Icon--Feedback { content: "\ED15"; }
 @mixin ms-Icon--SharepointLogoInverse { content: "\ED18"; }
 @mixin ms-Icon--YammerLogo { content: "\ED19"; }
@@ -101,28 +97,26 @@
 @mixin ms-Icon--ReopenPages { content: "\ED50"; }
 @mixin ms-Icon--AADLogo { content: "\ED68"; }
 @mixin ms-Icon--AccessLogo { content: "\ED69"; }
-@mixin ms-Icon--AdminALogo { content: "\ED6A"; }
-@mixin ms-Icon--AdminCLogo { content: "\ED6B"; }
-@mixin ms-Icon--AdminDLogo { content: "\ED6C"; }
-@mixin ms-Icon--AdminELogo { content: "\ED6D"; }
-@mixin ms-Icon--AdminLLogo { content: "\ED6E"; }
-@mixin ms-Icon--AdminMLogo { content: "\ED6F"; }
-@mixin ms-Icon--AdminOLogo { content: "\ED70"; }
-@mixin ms-Icon--AdminPLogo { content: "\ED71"; }
-@mixin ms-Icon--AdminSLogo { content: "\ED72"; }
-@mixin ms-Icon--AdminYLogo { content: "\ED73"; }
+@mixin ms-Icon--AdminALogoInverse32 { content: "\ED6A"; }
+@mixin ms-Icon--AdminCLogoInverse32 { content: "\ED6B"; }
+@mixin ms-Icon--AdminDLogoInverse32 { content: "\ED6C"; }
+@mixin ms-Icon--AdminELogoInverse32 { content: "\ED6D"; }
+@mixin ms-Icon--AdminLLogoInverse32 { content: "\ED6E"; }
+@mixin ms-Icon--AdminMLogoInverse32 { content: "\ED6F"; }
+@mixin ms-Icon--AdminOLogoInverse32 { content: "\ED70"; }
+@mixin ms-Icon--AdminPLogoInverse32 { content: "\ED71"; }
+@mixin ms-Icon--AdminSLogoInverse32 { content: "\ED72"; }
+@mixin ms-Icon--AdminYLogoInverse32 { content: "\ED73"; }
 @mixin ms-Icon--BoxLogo { content: "\ED75"; }
 @mixin ms-Icon--DelveLogoInverse { content: "\ED76"; }
 @mixin ms-Icon--DropboxLogo { content: "\ED77"; }
+@mixin ms-Icon--ExchangeLogoInverse { content: "\ED78"; }
+@mixin ms-Icon--LyncLogo { content: "\ED79"; }
+@mixin ms-Icon--OfficeVideoLogoInverse { content: "\ED7A"; }
+@mixin ms-Icon--ParatureLogo { content: "\ED7B"; }
 
 
 // Classes
-.ms-Icon--WindDirection:before { @include ms-Icon--WindDirection }
-.ms-Icon--Family:before { @include ms-Icon--Family }
-.ms-Icon--CSS:before { @include ms-Icon--CSS }
-.ms-Icon--JS:before { @include ms-Icon--JS }
-.ms-Icon--DeliveryTruck:before { @include ms-Icon--DeliveryTruck }
-.ms-Icon--ReminderPerson:before { @include ms-Icon--ReminderPerson }
 .ms-Icon--ReminderGroup:before { @include ms-Icon--ReminderGroup }
 .ms-Icon--Umbrella:before { @include ms-Icon--Umbrella }
 .ms-Icon--NetworkTower:before { @include ms-Icon--NetworkTower }
@@ -144,6 +138,7 @@
 .ms-Icon--SpeedHigh:before { @include ms-Icon--SpeedHigh }
 .ms-Icon--ThisPC:before { @include ms-Icon--ThisPC }
 .ms-Icon--MusicNote:before { @include ms-Icon--MusicNote }
+.ms-Icon--MicOff:before { @include ms-Icon--MicOff }
 .ms-Icon--EdgeLogo:before { @include ms-Icon--EdgeLogo }
 .ms-Icon--CompletedSolid:before { @include ms-Icon--CompletedSolid }
 .ms-Icon--AlbumRemove:before { @include ms-Icon--AlbumRemove }
@@ -190,6 +185,7 @@
 .ms-Icon--FangBody:before { @include ms-Icon--FangBody }
 .ms-Icon--Glimmer:before { @include ms-Icon--Glimmer }
 .ms-Icon--ChatInviteFriend:before { @include ms-Icon--ChatInviteFriend }
+.ms-Icon--Crown:before { @include ms-Icon--Crown }
 .ms-Icon--Feedback:before { @include ms-Icon--Feedback }
 .ms-Icon--SharepointLogoInverse:before { @include ms-Icon--SharepointLogoInverse }
 .ms-Icon--YammerLogo:before { @include ms-Icon--YammerLogo }
@@ -204,17 +200,21 @@
 .ms-Icon--ReopenPages:before { @include ms-Icon--ReopenPages }
 .ms-Icon--AADLogo:before { @include ms-Icon--AADLogo }
 .ms-Icon--AccessLogo:before { @include ms-Icon--AccessLogo }
-.ms-Icon--AdminALogo:before { @include ms-Icon--AdminALogo }
-.ms-Icon--AdminCLogo:before { @include ms-Icon--AdminCLogo }
-.ms-Icon--AdminDLogo:before { @include ms-Icon--AdminDLogo }
-.ms-Icon--AdminELogo:before { @include ms-Icon--AdminELogo }
-.ms-Icon--AdminLLogo:before { @include ms-Icon--AdminLLogo }
-.ms-Icon--AdminMLogo:before { @include ms-Icon--AdminMLogo }
-.ms-Icon--AdminOLogo:before { @include ms-Icon--AdminOLogo }
-.ms-Icon--AdminPLogo:before { @include ms-Icon--AdminPLogo }
-.ms-Icon--AdminSLogo:before { @include ms-Icon--AdminSLogo }
-.ms-Icon--AdminYLogo:before { @include ms-Icon--AdminYLogo }
+.ms-Icon--AdminALogoInverse32:before { @include ms-Icon--AdminALogoInverse32 }
+.ms-Icon--AdminCLogoInverse32:before { @include ms-Icon--AdminCLogoInverse32 }
+.ms-Icon--AdminDLogoInverse32:before { @include ms-Icon--AdminDLogoInverse32 }
+.ms-Icon--AdminELogoInverse32:before { @include ms-Icon--AdminELogoInverse32 }
+.ms-Icon--AdminLLogoInverse32:before { @include ms-Icon--AdminLLogoInverse32 }
+.ms-Icon--AdminMLogoInverse32:before { @include ms-Icon--AdminMLogoInverse32 }
+.ms-Icon--AdminOLogoInverse32:before { @include ms-Icon--AdminOLogoInverse32 }
+.ms-Icon--AdminPLogoInverse32:before { @include ms-Icon--AdminPLogoInverse32 }
+.ms-Icon--AdminSLogoInverse32:before { @include ms-Icon--AdminSLogoInverse32 }
+.ms-Icon--AdminYLogoInverse32:before { @include ms-Icon--AdminYLogoInverse32 }
 .ms-Icon--BoxLogo:before { @include ms-Icon--BoxLogo }
 .ms-Icon--DelveLogoInverse:before { @include ms-Icon--DelveLogoInverse }
 .ms-Icon--DropboxLogo:before { @include ms-Icon--DropboxLogo }
+.ms-Icon--ExchangeLogoInverse:before { @include ms-Icon--ExchangeLogoInverse }
+.ms-Icon--LyncLogo:before { @include ms-Icon--LyncLogo }
+.ms-Icon--OfficeVideoLogoInverse:before { @include ms-Icon--OfficeVideoLogoInverse }
+.ms-Icon--ParatureLogo:before { @include ms-Icon--ParatureLogo }
 

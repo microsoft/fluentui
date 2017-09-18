@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-5';
-  src: url('../font/fabric-icons-5-d80e1f52.woff') format('woff');
+  src: url('../fonts/fabric-icons-5-82c8b87c.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,10 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--ExchangeLogoInverse { content: "\ED78"; }
-@mixin ms-Icon--LyncLogo { content: "\ED79"; }
-@mixin ms-Icon--OfficeVideoLogoInverse { content: "\ED7A"; }
-@mixin ms-Icon--ParatureLogo { content: "\ED7B"; }
 @mixin ms-Icon--SocialListeningLogo { content: "\ED7C"; }
 @mixin ms-Icon--VisioLogoInverse { content: "\ED7D"; }
 @mixin ms-Icon--Balloons { content: "\ED7E"; }
@@ -110,17 +106,17 @@
 @mixin ms-Icon--GroupedAscending { content: "\EE67"; }
 @mixin ms-Icon--AwayStatus { content: "\EE6A"; }
 @mixin ms-Icon--MyMoviesTV { content: "\EE6C"; }
-@mixin ms-Icon--SyncToPC { content: "\EE6E"; }
 @mixin ms-Icon--AustralianRules { content: "\EE70"; }
 @mixin ms-Icon--WifiEthernet { content: "\EE77"; }
 @mixin ms-Icon--DateTimeMirrored { content: "\EE93"; }
+@mixin ms-Icon--StopSolid { content: "\EE95"; }
+@mixin ms-Icon--DoubleChevronUp12 { content: "\EE96"; }
+@mixin ms-Icon--DoubleChevronDown12 { content: "\EE97"; }
+@mixin ms-Icon--DoubleChevronLeft12 { content: "\EE98"; }
+@mixin ms-Icon--DoubleChevronRight12 { content: "\EE99"; }
 
 
 // Classes
-.ms-Icon--ExchangeLogoInverse:before { @include ms-Icon--ExchangeLogoInverse }
-.ms-Icon--LyncLogo:before { @include ms-Icon--LyncLogo }
-.ms-Icon--OfficeVideoLogoInverse:before { @include ms-Icon--OfficeVideoLogoInverse }
-.ms-Icon--ParatureLogo:before { @include ms-Icon--ParatureLogo }
 .ms-Icon--SocialListeningLogo:before { @include ms-Icon--SocialListeningLogo }
 .ms-Icon--VisioLogoInverse:before { @include ms-Icon--VisioLogoInverse }
 .ms-Icon--Balloons:before { @include ms-Icon--Balloons }
@@ -213,8 +209,12 @@
 .ms-Icon--GroupedAscending:before { @include ms-Icon--GroupedAscending }
 .ms-Icon--AwayStatus:before { @include ms-Icon--AwayStatus }
 .ms-Icon--MyMoviesTV:before { @include ms-Icon--MyMoviesTV }
-.ms-Icon--SyncToPC:before { @include ms-Icon--SyncToPC }
 .ms-Icon--AustralianRules:before { @include ms-Icon--AustralianRules }
 .ms-Icon--WifiEthernet:before { @include ms-Icon--WifiEthernet }
 .ms-Icon--DateTimeMirrored:before { @include ms-Icon--DateTimeMirrored }
+.ms-Icon--StopSolid:before { @include ms-Icon--StopSolid }
+.ms-Icon--DoubleChevronUp12:before { @include ms-Icon--DoubleChevronUp12 }
+.ms-Icon--DoubleChevronDown12:before { @include ms-Icon--DoubleChevronDown12 }
+.ms-Icon--DoubleChevronLeft12:before { @include ms-Icon--DoubleChevronLeft12 }
+.ms-Icon--DoubleChevronRight12:before { @include ms-Icon--DoubleChevronRight12 }
 

@@ -3,34 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-10",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "PermissionsSolid",
-			"unicode": "F349"
-		},
-		{
-			"name": "ParkingSolid",
-			"unicode": "F34A"
-		},
-		{
-			"name": "ParkingMirroredSolid",
-			"unicode": "F34B"
-		},
-		{
-			"name": "DiamondSolid",
-			"unicode": "F34C"
-		},
-		{
-			"name": "AsteriskSolid",
-			"unicode": "F34D"
-		},
-		{
-			"name": "OfflineStorageSolid",
-			"unicode": "F34E"
-		},
 		{
 			"name": "BankSolid",
 			"unicode": "F34F"
@@ -372,6 +349,10 @@
 			"unicode": "F3C0"
 		},
 		{
+			"name": "DeclineCall",
+			"unicode": "F405"
+		},
+		{
 			"name": "Spacer",
 			"unicode": "F40D"
 		},
@@ -406,6 +387,26 @@
 		{
 			"name": "MailReminder",
 			"unicode": "F418"
+		},
+		{
+			"name": "ReceiptUndelivered",
+			"unicode": "F419"
+		},
+		{
+			"name": "ReceiptTentative",
+			"unicode": "F41A"
+		},
+		{
+			"name": "ReceiptTentativeMirrored",
+			"unicode": "F41B"
+		},
+		{
+			"name": "Inbox",
+			"unicode": "F41C"
+		},
+		{
+			"name": "IRMReply",
+			"unicode": "F41D"
 		}
 	]
 }

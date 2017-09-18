@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-0';
-  src: url('../font/fabric-icons-0-049cd5bd.woff') format('woff');
+  src: url('../fonts/fabric-icons-0-8a1666a2.woff') format('woff');
 }
 
 .ms-Icon {
@@ -70,6 +70,7 @@
 @mixin ms-Icon--Play { content: "\E768"; }
 @mixin ms-Icon--Pause { content: "\E769"; }
 @mixin ms-Icon--Emoji2 { content: "\E76E"; }
+@mixin ms-Icon--GripperBarHorizontal { content: "\E76F"; }
 @mixin ms-Icon--System { content: "\E770"; }
 @mixin ms-Icon--Personalize { content: "\E771"; }
 @mixin ms-Icon--SearchAndApps { content: "\E773"; }
@@ -106,7 +107,6 @@
 @mixin ms-Icon--ShoppingCart { content: "\E7BF"; }
 @mixin ms-Icon--Train { content: "\E7C0"; }
 @mixin ms-Icon--Move { content: "\E7C2"; }
-@mixin ms-Icon--Page { content: "\E7C3"; }
 @mixin ms-Icon--TouchPointer { content: "\E7C9"; }
 @mixin ms-Icon--Merge { content: "\E7D5"; }
 @mixin ms-Icon--TurnRight { content: "\E7DB"; }
@@ -173,6 +173,7 @@
 .ms-Icon--Play:before { @include ms-Icon--Play }
 .ms-Icon--Pause:before { @include ms-Icon--Pause }
 .ms-Icon--Emoji2:before { @include ms-Icon--Emoji2 }
+.ms-Icon--GripperBarHorizontal:before { @include ms-Icon--GripperBarHorizontal }
 .ms-Icon--System:before { @include ms-Icon--System }
 .ms-Icon--Personalize:before { @include ms-Icon--Personalize }
 .ms-Icon--SearchAndApps:before { @include ms-Icon--SearchAndApps }
@@ -209,7 +210,6 @@
 .ms-Icon--ShoppingCart:before { @include ms-Icon--ShoppingCart }
 .ms-Icon--Train:before { @include ms-Icon--Train }
 .ms-Icon--Move:before { @include ms-Icon--Move }
-.ms-Icon--Page:before { @include ms-Icon--Page }
 .ms-Icon--TouchPointer:before { @include ms-Icon--TouchPointer }
 .ms-Icon--Merge:before { @include ms-Icon--Merge }
 .ms-Icon--TurnRight:before { @include ms-Icon--TurnRight }

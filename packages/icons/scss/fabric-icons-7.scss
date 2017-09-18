@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-7';
-  src: url('../font/fabric-icons-7-d1428b0b.woff') format('woff');
+  src: url('../fonts/fabric-icons-7-1bae3315.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,13 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--Flow { content: "\EF90"; }
-@mixin ms-Icon--PageEdit { content: "\EFB6"; }
-@mixin ms-Icon--Database { content: "\EFC7"; }
-@mixin ms-Icon--DocumentManagement { content: "\EFFC"; }
-@mixin ms-Icon--CRMReport { content: "\EFFE"; }
-@mixin ms-Icon--ZipFolder { content: "\F012"; }
-@mixin ms-Icon--TextDocument { content: "\F029"; }
 @mixin ms-Icon--PageCheckedOut { content: "\F02C"; }
 @mixin ms-Icon--SaveAndClose { content: "\F038"; }
 @mixin ms-Icon--Script { content: "\F03A"; }
@@ -114,16 +107,16 @@
 @mixin ms-Icon--GridViewMedium { content: "\F233"; }
 @mixin ms-Icon--GridViewLarge { content: "\F234"; }
 @mixin ms-Icon--Step { content: "\F241"; }
+@mixin ms-Icon--StepInsert { content: "\F242"; }
+@mixin ms-Icon--StepShared { content: "\F243"; }
+@mixin ms-Icon--StepSharedAdd { content: "\F244"; }
+@mixin ms-Icon--StepSharedInsert { content: "\F245"; }
+@mixin ms-Icon--ViewDashboard { content: "\F246"; }
+@mixin ms-Icon--ViewList { content: "\F247"; }
+@mixin ms-Icon--ViewListGroup { content: "\F248"; }
 
 
 // Classes
-.ms-Icon--Flow:before { @include ms-Icon--Flow }
-.ms-Icon--PageEdit:before { @include ms-Icon--PageEdit }
-.ms-Icon--Database:before { @include ms-Icon--Database }
-.ms-Icon--DocumentManagement:before { @include ms-Icon--DocumentManagement }
-.ms-Icon--CRMReport:before { @include ms-Icon--CRMReport }
-.ms-Icon--ZipFolder:before { @include ms-Icon--ZipFolder }
-.ms-Icon--TextDocument:before { @include ms-Icon--TextDocument }
 .ms-Icon--PageCheckedOut:before { @include ms-Icon--PageCheckedOut }
 .ms-Icon--SaveAndClose:before { @include ms-Icon--SaveAndClose }
 .ms-Icon--Script:before { @include ms-Icon--Script }
@@ -217,4 +210,11 @@
 .ms-Icon--GridViewMedium:before { @include ms-Icon--GridViewMedium }
 .ms-Icon--GridViewLarge:before { @include ms-Icon--GridViewLarge }
 .ms-Icon--Step:before { @include ms-Icon--Step }
+.ms-Icon--StepInsert:before { @include ms-Icon--StepInsert }
+.ms-Icon--StepShared:before { @include ms-Icon--StepShared }
+.ms-Icon--StepSharedAdd:before { @include ms-Icon--StepSharedAdd }
+.ms-Icon--StepSharedInsert:before { @include ms-Icon--StepSharedInsert }
+.ms-Icon--ViewDashboard:before { @include ms-Icon--ViewDashboard }
+.ms-Icon--ViewList:before { @include ms-Icon--ViewList }
+.ms-Icon--ViewListGroup:before { @include ms-Icon--ViewListGroup }
 

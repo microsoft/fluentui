@@ -3,34 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-4",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "WindDirection",
-			"unicode": "EBE6"
-		},
-		{
-			"name": "Family",
-			"unicode": "EBDA"
-		},
-		{
-			"name": "CSS",
-			"unicode": "EBEF"
-		},
-		{
-			"name": "JS",
-			"unicode": "EBF0"
-		},
-		{
-			"name": "DeliveryTruck",
-			"unicode": "EBF4"
-		},
-		{
-			"name": "ReminderPerson",
-			"unicode": "EBF7"
-		},
 		{
 			"name": "ReminderGroup",
 			"unicode": "EBF8"
@@ -114,6 +91,10 @@
 		{
 			"name": "MusicNote",
 			"unicode": "EC4F"
+		},
+		{
+			"name": "MicOff",
+			"unicode": "EC54"
 		},
 		{
 			"name": "EdgeLogo",
@@ -300,6 +281,10 @@
 			"unicode": "ECFE"
 		},
 		{
+			"name": "Crown",
+			"unicode": "ED01"
+		},
+		{
 			"name": "Feedback",
 			"unicode": "ED15"
 		},
@@ -356,43 +341,43 @@
 			"unicode": "ED69"
 		},
 		{
-			"name": "AdminALogo",
+			"name": "AdminALogoInverse32",
 			"unicode": "ED6A"
 		},
 		{
-			"name": "AdminCLogo",
+			"name": "AdminCLogoInverse32",
 			"unicode": "ED6B"
 		},
 		{
-			"name": "AdminDLogo",
+			"name": "AdminDLogoInverse32",
 			"unicode": "ED6C"
 		},
 		{
-			"name": "AdminELogo",
+			"name": "AdminELogoInverse32",
 			"unicode": "ED6D"
 		},
 		{
-			"name": "AdminLLogo",
+			"name": "AdminLLogoInverse32",
 			"unicode": "ED6E"
 		},
 		{
-			"name": "AdminMLogo",
+			"name": "AdminMLogoInverse32",
 			"unicode": "ED6F"
 		},
 		{
-			"name": "AdminOLogo",
+			"name": "AdminOLogoInverse32",
 			"unicode": "ED70"
 		},
 		{
-			"name": "AdminPLogo",
+			"name": "AdminPLogoInverse32",
 			"unicode": "ED71"
 		},
 		{
-			"name": "AdminSLogo",
+			"name": "AdminSLogoInverse32",
 			"unicode": "ED72"
 		},
 		{
-			"name": "AdminYLogo",
+			"name": "AdminYLogoInverse32",
 			"unicode": "ED73"
 		},
 		{
@@ -406,6 +391,22 @@
 		{
 			"name": "DropboxLogo",
 			"unicode": "ED77"
+		},
+		{
+			"name": "ExchangeLogoInverse",
+			"unicode": "ED78"
+		},
+		{
+			"name": "LyncLogo",
+			"unicode": "ED79"
+		},
+		{
+			"name": "OfficeVideoLogoInverse",
+			"unicode": "ED7A"
+		},
+		{
+			"name": "ParatureLogo",
+			"unicode": "ED7B"
 		}
 	]
 }

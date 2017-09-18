@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-10';
-  src: url('../font/fabric-icons-10-626ecea9.woff') format('woff');
+  src: url('../fonts/fabric-icons-10-795d6e25.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,12 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--PermissionsSolid:before { content: "\F349"; }
-.ms-Icon--ParkingSolid:before { content: "\F34A"; }
-.ms-Icon--ParkingMirroredSolid:before { content: "\F34B"; }
-.ms-Icon--DiamondSolid:before { content: "\F34C"; }
-.ms-Icon--AsteriskSolid:before { content: "\F34D"; }
-.ms-Icon--OfflineStorageSolid:before { content: "\F34E"; }
 .ms-Icon--BankSolid:before { content: "\F34F"; }
 .ms-Icon--DecisionSolid:before { content: "\F350"; }
 .ms-Icon--Parachute:before { content: "\F351"; }
@@ -104,6 +98,7 @@
 .ms-Icon--AzureKeyVault:before { content: "\F3B4"; }
 .ms-Icon--LikeSolid:before { content: "\F3BF"; }
 .ms-Icon--DislikeSolid:before { content: "\F3C0"; }
+.ms-Icon--DeclineCall:before { content: "\F405"; }
 .ms-Icon--Spacer:before { content: "\F40D"; }
 .ms-Icon--SkypeLogo16:before { content: "\F40E"; }
 .ms-Icon--SkypeForBusinessLogo16:before { content: "\F40F"; }
@@ -113,3 +108,8 @@
 .ms-Icon--MailTentative:before { content: "\F416"; }
 .ms-Icon--MailTentativeMirrored:before { content: "\F417"; }
 .ms-Icon--MailReminder:before { content: "\F418"; }
+.ms-Icon--ReceiptUndelivered:before { content: "\F419"; }
+.ms-Icon--ReceiptTentative:before { content: "\F41A"; }
+.ms-Icon--ReceiptTentativeMirrored:before { content: "\F41B"; }
+.ms-Icon--Inbox:before { content: "\F41C"; }
+.ms-Icon--IRMReply:before { content: "\F41D"; }

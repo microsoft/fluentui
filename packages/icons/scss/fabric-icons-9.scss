@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-9';
-  src: url('../font/fabric-icons-9-4b660f03.woff') format('woff');
+  src: url('../fonts/fabric-icons-9-a362212c.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,12 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--LocaleLanguage { content: "\F2B7"; }
-@mixin ms-Icon--QueryList { content: "\F2B8"; }
-@mixin ms-Icon--UserSync { content: "\F2B9"; }
-@mixin ms-Icon--UserPause { content: "\F2BA"; }
-@mixin ms-Icon--StreamingOff { content: "\F2BB"; }
-@mixin ms-Icon--ArrowTallUpLeft { content: "\F2BD"; }
 @mixin ms-Icon--ArrowTallUpRight { content: "\F2BE"; }
 @mixin ms-Icon--ArrowTallDownLeft { content: "\F2BF"; }
 @mixin ms-Icon--ArrowTallDownRight { content: "\F2C0"; }
@@ -114,15 +108,15 @@
 @mixin ms-Icon--FinancialSolid { content: "\F346"; }
 @mixin ms-Icon--FinancialMirroredSolid { content: "\F347"; }
 @mixin ms-Icon--HeadsetSolid { content: "\F348"; }
+@mixin ms-Icon--PermissionsSolid { content: "\F349"; }
+@mixin ms-Icon--ParkingSolid { content: "\F34A"; }
+@mixin ms-Icon--ParkingMirroredSolid { content: "\F34B"; }
+@mixin ms-Icon--DiamondSolid { content: "\F34C"; }
+@mixin ms-Icon--AsteriskSolid { content: "\F34D"; }
+@mixin ms-Icon--OfflineStorageSolid { content: "\F34E"; }
 
 
 // Classes
-.ms-Icon--LocaleLanguage:before { @include ms-Icon--LocaleLanguage }
-.ms-Icon--QueryList:before { @include ms-Icon--QueryList }
-.ms-Icon--UserSync:before { @include ms-Icon--UserSync }
-.ms-Icon--UserPause:before { @include ms-Icon--UserPause }
-.ms-Icon--StreamingOff:before { @include ms-Icon--StreamingOff }
-.ms-Icon--ArrowTallUpLeft:before { @include ms-Icon--ArrowTallUpLeft }
 .ms-Icon--ArrowTallUpRight:before { @include ms-Icon--ArrowTallUpRight }
 .ms-Icon--ArrowTallDownLeft:before { @include ms-Icon--ArrowTallDownLeft }
 .ms-Icon--ArrowTallDownRight:before { @include ms-Icon--ArrowTallDownRight }
@@ -217,4 +211,10 @@
 .ms-Icon--FinancialSolid:before { @include ms-Icon--FinancialSolid }
 .ms-Icon--FinancialMirroredSolid:before { @include ms-Icon--FinancialMirroredSolid }
 .ms-Icon--HeadsetSolid:before { @include ms-Icon--HeadsetSolid }
+.ms-Icon--PermissionsSolid:before { @include ms-Icon--PermissionsSolid }
+.ms-Icon--ParkingSolid:before { @include ms-Icon--ParkingSolid }
+.ms-Icon--ParkingMirroredSolid:before { @include ms-Icon--ParkingMirroredSolid }
+.ms-Icon--DiamondSolid:before { @include ms-Icon--DiamondSolid }
+.ms-Icon--AsteriskSolid:before { @include ms-Icon--AsteriskSolid }
+.ms-Icon--OfflineStorageSolid:before { @include ms-Icon--OfflineStorageSolid }
 

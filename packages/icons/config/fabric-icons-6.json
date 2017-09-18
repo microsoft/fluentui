@@ -3,30 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-6",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "StopSolid",
-			"unicode": "EE95"
-		},
-		{
-			"name": "DoubleChevronUp12",
-			"unicode": "EE96"
-		},
-		{
-			"name": "DoubleChevronDown12",
-			"unicode": "EE97"
-		},
-		{
-			"name": "DoubleChevronLeft12",
-			"unicode": "EE98"
-		},
-		{
-			"name": "DoubleChevronRight12",
-			"unicode": "EE99"
-		},
 		{
 			"name": "CalendarAgenda",
 			"unicode": "EE9A"
@@ -404,8 +385,28 @@
 			"unicode": "EF8C"
 		},
 		{
-			"name": "ClearFilter",
-			"unicode": "EF8F"
+			"name": "PageEdit",
+			"unicode": "EFB6"
+		},
+		{
+			"name": "Database",
+			"unicode": "EFC7"
+		},
+		{
+			"name": "DocumentManagement",
+			"unicode": "EFFC"
+		},
+		{
+			"name": "CRMReport",
+			"unicode": "EFFE"
+		},
+		{
+			"name": "ZipFolder",
+			"unicode": "F012"
+		},
+		{
+			"name": "TextDocument",
+			"unicode": "F029"
 		}
 	]
 }

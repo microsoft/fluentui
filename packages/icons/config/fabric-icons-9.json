@@ -3,34 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-9",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "LocaleLanguage",
-			"unicode": "F2B7"
-		},
-		{
-			"name": "QueryList",
-			"unicode": "F2B8"
-		},
-		{
-			"name": "UserSync",
-			"unicode": "F2B9"
-		},
-		{
-			"name": "UserPause",
-			"unicode": "F2BA"
-		},
-		{
-			"name": "StreamingOff",
-			"unicode": "F2BB"
-		},
-		{
-			"name": "ArrowTallUpLeft",
-			"unicode": "F2BD"
-		},
 		{
 			"name": "ArrowTallUpRight",
 			"unicode": "F2BE"
@@ -406,6 +383,30 @@
 		{
 			"name": "HeadsetSolid",
 			"unicode": "F348"
+		},
+		{
+			"name": "PermissionsSolid",
+			"unicode": "F349"
+		},
+		{
+			"name": "ParkingSolid",
+			"unicode": "F34A"
+		},
+		{
+			"name": "ParkingMirroredSolid",
+			"unicode": "F34B"
+		},
+		{
+			"name": "DiamondSolid",
+			"unicode": "F34C"
+		},
+		{
+			"name": "AsteriskSolid",
+			"unicode": "F34D"
+		},
+		{
+			"name": "OfflineStorageSolid",
+			"unicode": "F34E"
 		}
 	]
 }

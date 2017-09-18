@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-9';
-  src: url('../font/fabric-icons-9-4b660f03.woff') format('woff');
+  src: url('../fonts/fabric-icons-9-a362212c.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,12 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--LocaleLanguage:before { content: "\F2B7"; }
-.ms-Icon--QueryList:before { content: "\F2B8"; }
-.ms-Icon--UserSync:before { content: "\F2B9"; }
-.ms-Icon--UserPause:before { content: "\F2BA"; }
-.ms-Icon--StreamingOff:before { content: "\F2BB"; }
-.ms-Icon--ArrowTallUpLeft:before { content: "\F2BD"; }
 .ms-Icon--ArrowTallUpRight:before { content: "\F2BE"; }
 .ms-Icon--ArrowTallDownLeft:before { content: "\F2BF"; }
 .ms-Icon--ArrowTallDownRight:before { content: "\F2C0"; }
@@ -113,3 +107,9 @@
 .ms-Icon--FinancialSolid:before { content: "\F346"; }
 .ms-Icon--FinancialMirroredSolid:before { content: "\F347"; }
 .ms-Icon--HeadsetSolid:before { content: "\F348"; }
+.ms-Icon--PermissionsSolid:before { content: "\F349"; }
+.ms-Icon--ParkingSolid:before { content: "\F34A"; }
+.ms-Icon--ParkingMirroredSolid:before { content: "\F34B"; }
+.ms-Icon--DiamondSolid:before { content: "\F34C"; }
+.ms-Icon--AsteriskSolid:before { content: "\F34D"; }
+.ms-Icon--OfflineStorageSolid:before { content: "\F34E"; }

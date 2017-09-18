@@ -3,6 +3,7 @@
 	"fontFamilyName": "FabricMDL2Icons",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
@@ -92,6 +93,10 @@
 			"unicode": "E7C1"
 		},
 		{
+			"name": "Page",
+			"unicode": "E7C3"
+		},
+		{
 			"name": "View",
 			"unicode": "E890"
 		},
@@ -108,8 +113,20 @@
 			"unicode": "E898"
 		},
 		{
+			"name": "Folder",
+			"unicode": "E8B7"
+		},
+		{
 			"name": "Sort",
 			"unicode": "E8CB"
+		},
+		{
+			"name": "AlignRight",
+			"unicode": "E8E2"
+		},
+		{
+			"name": "AlignLeft",
+			"unicode": "E8E4"
 		},
 		{
 			"name": "Tag",
@@ -124,6 +141,10 @@
 			"unicode": "E946"
 		},
 		{
+			"name": "Pinned",
+			"unicode": "E840"
+		},
+		{
 			"name": "SortLines",
 			"unicode": "E9D0"
 		},
@@ -134,6 +155,14 @@
 		{
 			"name": "CircleRing",
 			"unicode": "EA3A"
+		},
+		{
+			"name": "Heart",
+			"unicode": "EB51"
+		},
+		{
+			"name": "HeartFill",
+			"unicode": "EB52"
 		},
 		{
 			"name": "Tiles",
@@ -160,6 +189,10 @@
 			"unicode": "EE69"
 		},
 		{
+			"name": "SyncToPC",
+			"unicode": "EE6E"
+		},
+		{
 			"name": "LargeGrid",
 			"unicode": "EECB"
 		},
@@ -174,6 +207,14 @@
 		{
 			"name": "SkypeMinus",
 			"unicode": "EF82"
+		},
+		{
+			"name": "ClearFilter",
+			"unicode": "EF8F"
+		},
+		{
+			"name": "Flow",
+			"unicode": "EF90"
 		},
 		{
 			"name": "StatusCircleCheckmark",

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-1';
-  src: url('../font/fabric-icons-1-79bec4ec.woff') format('woff');
+  src: url('../fonts/fabric-icons-1-a961c249.woff') format('woff');
 }
 
 .ms-Icon {
@@ -55,7 +55,6 @@
 @mixin ms-Icon--Switch { content: "\E8AB"; }
 @mixin ms-Icon--Rename { content: "\E8AC"; }
 @mixin ms-Icon--Import { content: "\E8B5"; }
-@mixin ms-Icon--Folder { content: "\E8B7"; }
 @mixin ms-Icon--Picture { content: "\E8B9"; }
 @mixin ms-Icon--ShowResults { content: "\E8BC"; }
 @mixin ms-Icon--Message { content: "\E8BD"; }
@@ -81,9 +80,7 @@
 @mixin ms-Icon--MoveToFolder { content: "\E8DE"; }
 @mixin ms-Icon--Dislike { content: "\E8E0"; }
 @mixin ms-Icon--Like { content: "\E8E1"; }
-@mixin ms-Icon--AlignRight { content: "\E8E2"; }
 @mixin ms-Icon--AlignCenter { content: "\E8E3"; }
-@mixin ms-Icon--AlignLeft { content: "\E8E4"; }
 @mixin ms-Icon--OpenFile { content: "\E8E5"; }
 @mixin ms-Icon--FontDecrease { content: "\E8E7"; }
 @mixin ms-Icon--FontIncrease { content: "\E8E8"; }
@@ -114,6 +111,9 @@
 @mixin ms-Icon--FullCircleMask { content: "\E91F"; }
 @mixin ms-Icon--LocationFill { content: "\E920"; }
 @mixin ms-Icon--ChromeMinimize { content: "\E921"; }
+@mixin ms-Icon--Annotation { content: "\E924"; }
+@mixin ms-Icon--ChromeClose { content: "\E8BB"; }
+@mixin ms-Icon--Accept { content: "\E8FB"; }
 
 
 // Classes
@@ -158,7 +158,6 @@
 .ms-Icon--Switch:before { @include ms-Icon--Switch }
 .ms-Icon--Rename:before { @include ms-Icon--Rename }
 .ms-Icon--Import:before { @include ms-Icon--Import }
-.ms-Icon--Folder:before { @include ms-Icon--Folder }
 .ms-Icon--Picture:before { @include ms-Icon--Picture }
 .ms-Icon--ShowResults:before { @include ms-Icon--ShowResults }
 .ms-Icon--Message:before { @include ms-Icon--Message }
@@ -184,9 +183,7 @@
 .ms-Icon--MoveToFolder:before { @include ms-Icon--MoveToFolder }
 .ms-Icon--Dislike:before { @include ms-Icon--Dislike }
 .ms-Icon--Like:before { @include ms-Icon--Like }
-.ms-Icon--AlignRight:before { @include ms-Icon--AlignRight }
 .ms-Icon--AlignCenter:before { @include ms-Icon--AlignCenter }
-.ms-Icon--AlignLeft:before { @include ms-Icon--AlignLeft }
 .ms-Icon--OpenFile:before { @include ms-Icon--OpenFile }
 .ms-Icon--FontDecrease:before { @include ms-Icon--FontDecrease }
 .ms-Icon--FontIncrease:before { @include ms-Icon--FontIncrease }
@@ -217,4 +214,7 @@
 .ms-Icon--FullCircleMask:before { @include ms-Icon--FullCircleMask }
 .ms-Icon--LocationFill:before { @include ms-Icon--LocationFill }
 .ms-Icon--ChromeMinimize:before { @include ms-Icon--ChromeMinimize }
+.ms-Icon--Annotation:before { @include ms-Icon--Annotation }
+.ms-Icon--ChromeClose:before { @include ms-Icon--ChromeClose }
+.ms-Icon--Accept:before { @include ms-Icon--Accept }
 

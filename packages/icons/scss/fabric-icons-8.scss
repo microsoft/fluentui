@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-8';
-  src: url('../font/fabric-icons-8-0a757502.woff') format('woff');
+  src: url('../fonts/fabric-icons-8-bf5c8e0c.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,13 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--StepInsert { content: "\F242"; }
-@mixin ms-Icon--StepShared { content: "\F243"; }
-@mixin ms-Icon--StepSharedAdd { content: "\F244"; }
-@mixin ms-Icon--StepSharedInsert { content: "\F245"; }
-@mixin ms-Icon--ViewDashboard { content: "\F246"; }
-@mixin ms-Icon--ViewList { content: "\F247"; }
-@mixin ms-Icon--ViewListGroup { content: "\F248"; }
 @mixin ms-Icon--ViewListTree { content: "\F249"; }
 @mixin ms-Icon--TriggerAuto { content: "\F24A"; }
 @mixin ms-Icon--TriggerUser { content: "\F24B"; }
@@ -45,6 +38,7 @@
 @mixin ms-Icon--OfficeVideoLogoFill { content: "\F283"; }
 @mixin ms-Icon--ExchangeLogo { content: "\F284"; }
 @mixin ms-Icon--ExchangeLogoFill { content: "\F285"; }
+@mixin ms-Icon--DocumentApproval { content: "\F28B"; }
 @mixin ms-Icon--CloneToDesktop { content: "\F28C"; }
 @mixin ms-Icon--InstallToDrive { content: "\F28D"; }
 @mixin ms-Icon--Blur { content: "\F28E"; }
@@ -114,16 +108,15 @@
 @mixin ms-Icon--CommentNext { content: "\F2B4"; }
 @mixin ms-Icon--CommentPrevious { content: "\F2B5"; }
 @mixin ms-Icon--ShopServer { content: "\F2B6"; }
+@mixin ms-Icon--LocaleLanguage { content: "\F2B7"; }
+@mixin ms-Icon--QueryList { content: "\F2B8"; }
+@mixin ms-Icon--UserSync { content: "\F2B9"; }
+@mixin ms-Icon--UserPause { content: "\F2BA"; }
+@mixin ms-Icon--StreamingOff { content: "\F2BB"; }
+@mixin ms-Icon--ArrowTallUpLeft { content: "\F2BD"; }
 
 
 // Classes
-.ms-Icon--StepInsert:before { @include ms-Icon--StepInsert }
-.ms-Icon--StepShared:before { @include ms-Icon--StepShared }
-.ms-Icon--StepSharedAdd:before { @include ms-Icon--StepSharedAdd }
-.ms-Icon--StepSharedInsert:before { @include ms-Icon--StepSharedInsert }
-.ms-Icon--ViewDashboard:before { @include ms-Icon--ViewDashboard }
-.ms-Icon--ViewList:before { @include ms-Icon--ViewList }
-.ms-Icon--ViewListGroup:before { @include ms-Icon--ViewListGroup }
 .ms-Icon--ViewListTree:before { @include ms-Icon--ViewListTree }
 .ms-Icon--TriggerAuto:before { @include ms-Icon--TriggerAuto }
 .ms-Icon--TriggerUser:before { @include ms-Icon--TriggerUser }
@@ -148,6 +141,7 @@
 .ms-Icon--OfficeVideoLogoFill:before { @include ms-Icon--OfficeVideoLogoFill }
 .ms-Icon--ExchangeLogo:before { @include ms-Icon--ExchangeLogo }
 .ms-Icon--ExchangeLogoFill:before { @include ms-Icon--ExchangeLogoFill }
+.ms-Icon--DocumentApproval:before { @include ms-Icon--DocumentApproval }
 .ms-Icon--CloneToDesktop:before { @include ms-Icon--CloneToDesktop }
 .ms-Icon--InstallToDrive:before { @include ms-Icon--InstallToDrive }
 .ms-Icon--Blur:before { @include ms-Icon--Blur }
@@ -217,4 +211,10 @@
 .ms-Icon--CommentNext:before { @include ms-Icon--CommentNext }
 .ms-Icon--CommentPrevious:before { @include ms-Icon--CommentPrevious }
 .ms-Icon--ShopServer:before { @include ms-Icon--ShopServer }
+.ms-Icon--LocaleLanguage:before { @include ms-Icon--LocaleLanguage }
+.ms-Icon--QueryList:before { @include ms-Icon--QueryList }
+.ms-Icon--UserSync:before { @include ms-Icon--UserSync }
+.ms-Icon--UserPause:before { @include ms-Icon--UserPause }
+.ms-Icon--StreamingOff:before { @include ms-Icon--StreamingOff }
+.ms-Icon--ArrowTallUpLeft:before { @include ms-Icon--ArrowTallUpLeft }
 

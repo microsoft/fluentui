@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-8';
-  src: url('../font/fabric-icons-8-0a757502.woff') format('woff');
+  src: url('../fonts/fabric-icons-8-bf5c8e0c.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,13 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--StepInsert:before { content: "\F242"; }
-.ms-Icon--StepShared:before { content: "\F243"; }
-.ms-Icon--StepSharedAdd:before { content: "\F244"; }
-.ms-Icon--StepSharedInsert:before { content: "\F245"; }
-.ms-Icon--ViewDashboard:before { content: "\F246"; }
-.ms-Icon--ViewList:before { content: "\F247"; }
-.ms-Icon--ViewListGroup:before { content: "\F248"; }
 .ms-Icon--ViewListTree:before { content: "\F249"; }
 .ms-Icon--TriggerAuto:before { content: "\F24A"; }
 .ms-Icon--TriggerUser:before { content: "\F24B"; }
@@ -44,6 +37,7 @@
 .ms-Icon--OfficeVideoLogoFill:before { content: "\F283"; }
 .ms-Icon--ExchangeLogo:before { content: "\F284"; }
 .ms-Icon--ExchangeLogoFill:before { content: "\F285"; }
+.ms-Icon--DocumentApproval:before { content: "\F28B"; }
 .ms-Icon--CloneToDesktop:before { content: "\F28C"; }
 .ms-Icon--InstallToDrive:before { content: "\F28D"; }
 .ms-Icon--Blur:before { content: "\F28E"; }
@@ -113,3 +107,9 @@
 .ms-Icon--CommentNext:before { content: "\F2B4"; }
 .ms-Icon--CommentPrevious:before { content: "\F2B5"; }
 .ms-Icon--ShopServer:before { content: "\F2B6"; }
+.ms-Icon--LocaleLanguage:before { content: "\F2B7"; }
+.ms-Icon--QueryList:before { content: "\F2B8"; }
+.ms-Icon--UserSync:before { content: "\F2B9"; }
+.ms-Icon--UserPause:before { content: "\F2BA"; }
+.ms-Icon--StreamingOff:before { content: "\F2BB"; }
+.ms-Icon--ArrowTallUpLeft:before { content: "\F2BD"; }

@@ -3,22 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-2",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "Annotation",
-			"unicode": "E924"
-		},
-		{
-			"name": "ChromeClose",
-			"unicode": "E8BB"
-		},
-		{
-			"name": "Accept",
-			"unicode": "E8FB"
-		},
 		{
 			"name": "Fingerprint",
 			"unicode": "E928"
@@ -206,10 +195,6 @@
 		{
 			"name": "FolderOpen",
 			"unicode": "E838"
-		},
-		{
-			"name": "Pinned",
-			"unicode": "E840"
 		},
 		{
 			"name": "PinnedFill",
@@ -406,6 +391,22 @@
 		{
 			"name": "StoreLogo",
 			"unicode": "EA96"
+		},
+		{
+			"name": "MultiSelectMirrored",
+			"unicode": "EA98"
+		},
+		{
+			"name": "Broom",
+			"unicode": "EA99"
+		},
+		{
+			"name": "MusicInCollectionFill",
+			"unicode": "EA36"
+		},
+		{
+			"name": "Asterisk",
+			"unicode": "EA38"
 		}
 	]
 }

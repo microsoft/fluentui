@@ -3,38 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-7",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "Flow",
-			"unicode": "EF90"
-		},
-		{
-			"name": "PageEdit",
-			"unicode": "EFB6"
-		},
-		{
-			"name": "Database",
-			"unicode": "EFC7"
-		},
-		{
-			"name": "DocumentManagement",
-			"unicode": "EFFC"
-		},
-		{
-			"name": "CRMReport",
-			"unicode": "EFFE"
-		},
-		{
-			"name": "ZipFolder",
-			"unicode": "F012"
-		},
-		{
-			"name": "TextDocument",
-			"unicode": "F029"
-		},
 		{
 			"name": "PageCheckedOut",
 			"unicode": "F02C"
@@ -406,6 +379,34 @@
 		{
 			"name": "Step",
 			"unicode": "F241"
+		},
+		{
+			"name": "StepInsert",
+			"unicode": "F242"
+		},
+		{
+			"name": "StepShared",
+			"unicode": "F243"
+		},
+		{
+			"name": "StepSharedAdd",
+			"unicode": "F244"
+		},
+		{
+			"name": "StepSharedInsert",
+			"unicode": "F245"
+		},
+		{
+			"name": "ViewDashboard",
+			"unicode": "F246"
+		},
+		{
+			"name": "ViewList",
+			"unicode": "F247"
+		},
+		{
+			"name": "ViewListGroup",
+			"unicode": "F248"
 		}
 	]
 }

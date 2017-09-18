@@ -3,30 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-11",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "ReceiptUndelivered",
-			"unicode": "F419"
-		},
-		{
-			"name": "ReceiptTentative",
-			"unicode": "F41A"
-		},
-		{
-			"name": "ReceiptTentativeMirrored",
-			"unicode": "F41B"
-		},
-		{
-			"name": "Inbox",
-			"unicode": "F41C"
-		},
-		{
-			"name": "IRMReply",
-			"unicode": "F41D"
-		},
 		{
 			"name": "IRMReplyMirrored",
 			"unicode": "F41E"
@@ -298,6 +279,70 @@
 		{
 			"name": "UnsyncOccurence",
 			"unicode": "F4A4"
+		},
+		{
+			"name": "PrimaryCalendar",
+			"unicode": "F4AE"
+		},
+		{
+			"name": "SearchCalendar",
+			"unicode": "F4AF"
+		},
+		{
+			"name": "VideoOff",
+			"unicode": "F4B0"
+		},
+		{
+			"name": "MicrosoftFlowLogo",
+			"unicode": "F4B1"
+		},
+		{
+			"name": "BusinessCenterLogo",
+			"unicode": "F4B2"
+		},
+		{
+			"name": "ToDoLogoBottom",
+			"unicode": "F4B3"
+		},
+		{
+			"name": "ToDoLogoTop",
+			"unicode": "F4B4"
+		},
+		{
+			"name": "EditSolid12",
+			"unicode": "F4B5"
+		},
+		{
+			"name": "EditSolidMirrored12",
+			"unicode": "F4B6"
+		},
+		{
+			"name": "UneditableSolid12",
+			"unicode": "F4B7"
+		},
+		{
+			"name": "UneditableSolidMirrored12",
+			"unicode": "F4B8"
+		},
+		{
+			"name": "UneditableMirrored",
+			"unicode": "F4B9"
+		},
+		{
+			"name": "AdminALogo32",
+			"unicode": "F4BA"
+		},
+		{
+			"name": "AdminALogoFill32",
+			"unicode": "F4BB"
+		},
+		{
+			"name": "ToDoLogoInverse",
+			"unicode": "F4BC"
+		},
+		{
+			"name": "Snooze",
+			"unicode": "F4BD"
 		}
 	]
 }

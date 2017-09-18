@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-2';
-  src: url('../font/fabric-icons-2-891ff8af.woff') format('woff');
+  src: url('../fonts/fabric-icons-2-2be8dca9.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,9 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--Annotation:before { content: "\E924"; }
-.ms-Icon--ChromeClose:before { content: "\E8BB"; }
-.ms-Icon--Accept:before { content: "\E8FB"; }
 .ms-Icon--Fingerprint:before { content: "\E928"; }
 .ms-Icon--Handwriting:before { content: "\E929"; }
 .ms-Icon--StackIndicator:before { content: "\E7FF"; }
@@ -63,7 +60,6 @@
 .ms-Icon--CaretHollow:before { content: "\E817"; }
 .ms-Icon--CaretSolid:before { content: "\E818"; }
 .ms-Icon--FolderOpen:before { content: "\E838"; }
-.ms-Icon--Pinned:before { content: "\E840"; }
 .ms-Icon--PinnedFill:before { content: "\E842"; }
 .ms-Icon--Chart:before { content: "\E999"; }
 .ms-Icon--Robot:before { content: "\E99A"; }
@@ -113,3 +109,7 @@
 .ms-Icon--HailNight:before { content: "\EA13"; }
 .ms-Icon--Info2:before { content: "\EA1F"; }
 .ms-Icon--StoreLogo:before { content: "\EA96"; }
+.ms-Icon--MultiSelectMirrored:before { content: "\EA98"; }
+.ms-Icon--Broom:before { content: "\EA99"; }
+.ms-Icon--MusicInCollectionFill:before { content: "\EA36"; }
+.ms-Icon--Asterisk:before { content: "\EA38"; }

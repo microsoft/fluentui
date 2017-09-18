@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-11';
-  src: url('../font/fabric-icons-11-c268b370.woff') format('woff');
+  src: url('../fonts/fabric-icons-11-c0dbf638.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,11 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--ReceiptUndelivered { content: "\F419"; }
-@mixin ms-Icon--ReceiptTentative { content: "\F41A"; }
-@mixin ms-Icon--ReceiptTentativeMirrored { content: "\F41B"; }
-@mixin ms-Icon--Inbox { content: "\F41C"; }
-@mixin ms-Icon--IRMReply { content: "\F41D"; }
 @mixin ms-Icon--IRMReplyMirrored { content: "\F41E"; }
 @mixin ms-Icon--IRMForward { content: "\F41F"; }
 @mixin ms-Icon--IRMForwardMirrored { content: "\F420"; }
@@ -87,14 +82,25 @@
 @mixin ms-Icon--Chopsticks { content: "\F4A2"; }
 @mixin ms-Icon--SyncOccurence { content: "\F4A3"; }
 @mixin ms-Icon--UnsyncOccurence { content: "\F4A4"; }
+@mixin ms-Icon--PrimaryCalendar { content: "\F4AE"; }
+@mixin ms-Icon--SearchCalendar { content: "\F4AF"; }
+@mixin ms-Icon--VideoOff { content: "\F4B0"; }
+@mixin ms-Icon--MicrosoftFlowLogo { content: "\F4B1"; }
+@mixin ms-Icon--BusinessCenterLogo { content: "\F4B2"; }
+@mixin ms-Icon--ToDoLogoBottom { content: "\F4B3"; }
+@mixin ms-Icon--ToDoLogoTop { content: "\F4B4"; }
+@mixin ms-Icon--EditSolid12 { content: "\F4B5"; }
+@mixin ms-Icon--EditSolidMirrored12 { content: "\F4B6"; }
+@mixin ms-Icon--UneditableSolid12 { content: "\F4B7"; }
+@mixin ms-Icon--UneditableSolidMirrored12 { content: "\F4B8"; }
+@mixin ms-Icon--UneditableMirrored { content: "\F4B9"; }
+@mixin ms-Icon--AdminALogo32 { content: "\F4BA"; }
+@mixin ms-Icon--AdminALogoFill32 { content: "\F4BB"; }
+@mixin ms-Icon--ToDoLogoInverse { content: "\F4BC"; }
+@mixin ms-Icon--Snooze { content: "\F4BD"; }
 
 
 // Classes
-.ms-Icon--ReceiptUndelivered:before { @include ms-Icon--ReceiptUndelivered }
-.ms-Icon--ReceiptTentative:before { @include ms-Icon--ReceiptTentative }
-.ms-Icon--ReceiptTentativeMirrored:before { @include ms-Icon--ReceiptTentativeMirrored }
-.ms-Icon--Inbox:before { @include ms-Icon--Inbox }
-.ms-Icon--IRMReply:before { @include ms-Icon--IRMReply }
 .ms-Icon--IRMReplyMirrored:before { @include ms-Icon--IRMReplyMirrored }
 .ms-Icon--IRMForward:before { @include ms-Icon--IRMForward }
 .ms-Icon--IRMForwardMirrored:before { @include ms-Icon--IRMForwardMirrored }
@@ -163,4 +169,20 @@
 .ms-Icon--Chopsticks:before { @include ms-Icon--Chopsticks }
 .ms-Icon--SyncOccurence:before { @include ms-Icon--SyncOccurence }
 .ms-Icon--UnsyncOccurence:before { @include ms-Icon--UnsyncOccurence }
+.ms-Icon--PrimaryCalendar:before { @include ms-Icon--PrimaryCalendar }
+.ms-Icon--SearchCalendar:before { @include ms-Icon--SearchCalendar }
+.ms-Icon--VideoOff:before { @include ms-Icon--VideoOff }
+.ms-Icon--MicrosoftFlowLogo:before { @include ms-Icon--MicrosoftFlowLogo }
+.ms-Icon--BusinessCenterLogo:before { @include ms-Icon--BusinessCenterLogo }
+.ms-Icon--ToDoLogoBottom:before { @include ms-Icon--ToDoLogoBottom }
+.ms-Icon--ToDoLogoTop:before { @include ms-Icon--ToDoLogoTop }
+.ms-Icon--EditSolid12:before { @include ms-Icon--EditSolid12 }
+.ms-Icon--EditSolidMirrored12:before { @include ms-Icon--EditSolidMirrored12 }
+.ms-Icon--UneditableSolid12:before { @include ms-Icon--UneditableSolid12 }
+.ms-Icon--UneditableSolidMirrored12:before { @include ms-Icon--UneditableSolidMirrored12 }
+.ms-Icon--UneditableMirrored:before { @include ms-Icon--UneditableMirrored }
+.ms-Icon--AdminALogo32:before { @include ms-Icon--AdminALogo32 }
+.ms-Icon--AdminALogoFill32:before { @include ms-Icon--AdminALogoFill32 }
+.ms-Icon--ToDoLogoInverse:before { @include ms-Icon--ToDoLogoInverse }
+.ms-Icon--Snooze:before { @include ms-Icon--Snooze }
 

@@ -3,38 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-8",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "StepInsert",
-			"unicode": "F242"
-		},
-		{
-			"name": "StepShared",
-			"unicode": "F243"
-		},
-		{
-			"name": "StepSharedAdd",
-			"unicode": "F244"
-		},
-		{
-			"name": "StepSharedInsert",
-			"unicode": "F245"
-		},
-		{
-			"name": "ViewDashboard",
-			"unicode": "F246"
-		},
-		{
-			"name": "ViewList",
-			"unicode": "F247"
-		},
-		{
-			"name": "ViewListGroup",
-			"unicode": "F248"
-		},
 		{
 			"name": "ViewListTree",
 			"unicode": "F249"
@@ -130,6 +103,10 @@
 		{
 			"name": "ExchangeLogoFill",
 			"unicode": "F285"
+		},
+		{
+			"name": "DocumentApproval",
+			"unicode": "F28B"
 		},
 		{
 			"name": "CloneToDesktop",
@@ -406,6 +383,30 @@
 		{
 			"name": "ShopServer",
 			"unicode": "F2B6"
+		},
+		{
+			"name": "LocaleLanguage",
+			"unicode": "F2B7"
+		},
+		{
+			"name": "QueryList",
+			"unicode": "F2B8"
+		},
+		{
+			"name": "UserSync",
+			"unicode": "F2B9"
+		},
+		{
+			"name": "UserPause",
+			"unicode": "F2BA"
+		},
+		{
+			"name": "StreamingOff",
+			"unicode": "F2BB"
+		},
+		{
+			"name": "ArrowTallUpLeft",
+			"unicode": "F2BD"
 		}
 	]
 }

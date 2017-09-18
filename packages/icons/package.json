@@ -16,6 +16,7 @@
   "disabledTasks": [
     "sass",
     "karma",
+    "tslint",
     "jest"
   ],
   "devDependencies": {

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-3';
-  src: url('../font/fabric-icons-3-51462027.woff') format('woff');
+  src: url('../fonts/fabric-icons-3-80b6008d.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,10 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--MultiSelectMirrored { content: "\EA98"; }
-@mixin ms-Icon--Broom { content: "\EA99"; }
-@mixin ms-Icon--MusicInCollectionFill { content: "\EA36"; }
-@mixin ms-Icon--Asterisk { content: "\EA38"; }
 @mixin ms-Icon--ErrorBadge { content: "\EA39"; }
 @mixin ms-Icon--CircleFill { content: "\EA3B"; }
 @mixin ms-Icon--Record2 { content: "\EA3F"; }
@@ -93,8 +89,6 @@
 @mixin ms-Icon--FerrySolid { content: "\EB48"; }
 @mixin ms-Icon--AirplaneSolid { content: "\EB4C"; }
 @mixin ms-Icon--TrainSolid { content: "\EB4D"; }
-@mixin ms-Icon--Heart { content: "\EB51"; }
-@mixin ms-Icon--HeartFill { content: "\EB52"; }
 @mixin ms-Icon--Ticket { content: "\EB54"; }
 @mixin ms-Icon--Devices4 { content: "\EB66"; }
 @mixin ms-Icon--AzureLogo { content: "\EB6A"; }
@@ -114,13 +108,15 @@
 @mixin ms-Icon--Photo2 { content: "\EB9F"; }
 @mixin ms-Icon--OpenSource { content: "\EBC2"; }
 @mixin ms-Icon--CloudDownload { content: "\EBD3"; }
+@mixin ms-Icon--WindDirection { content: "\EBE6"; }
+@mixin ms-Icon--Family { content: "\EBDA"; }
+@mixin ms-Icon--CSS { content: "\EBEF"; }
+@mixin ms-Icon--JS { content: "\EBF0"; }
+@mixin ms-Icon--DeliveryTruck { content: "\EBF4"; }
+@mixin ms-Icon--ReminderPerson { content: "\EBF7"; }
 
 
 // Classes
-.ms-Icon--MultiSelectMirrored:before { @include ms-Icon--MultiSelectMirrored }
-.ms-Icon--Broom:before { @include ms-Icon--Broom }
-.ms-Icon--MusicInCollectionFill:before { @include ms-Icon--MusicInCollectionFill }
-.ms-Icon--Asterisk:before { @include ms-Icon--Asterisk }
 .ms-Icon--ErrorBadge:before { @include ms-Icon--ErrorBadge }
 .ms-Icon--CircleFill:before { @include ms-Icon--CircleFill }
 .ms-Icon--Record2:before { @include ms-Icon--Record2 }
@@ -196,8 +192,6 @@
 .ms-Icon--FerrySolid:before { @include ms-Icon--FerrySolid }
 .ms-Icon--AirplaneSolid:before { @include ms-Icon--AirplaneSolid }
 .ms-Icon--TrainSolid:before { @include ms-Icon--TrainSolid }
-.ms-Icon--Heart:before { @include ms-Icon--Heart }
-.ms-Icon--HeartFill:before { @include ms-Icon--HeartFill }
 .ms-Icon--Ticket:before { @include ms-Icon--Ticket }
 .ms-Icon--Devices4:before { @include ms-Icon--Devices4 }
 .ms-Icon--AzureLogo:before { @include ms-Icon--AzureLogo }
@@ -217,4 +211,10 @@
 .ms-Icon--Photo2:before { @include ms-Icon--Photo2 }
 .ms-Icon--OpenSource:before { @include ms-Icon--OpenSource }
 .ms-Icon--CloudDownload:before { @include ms-Icon--CloudDownload }
+.ms-Icon--WindDirection:before { @include ms-Icon--WindDirection }
+.ms-Icon--Family:before { @include ms-Icon--Family }
+.ms-Icon--CSS:before { @include ms-Icon--CSS }
+.ms-Icon--JS:before { @include ms-Icon--JS }
+.ms-Icon--DeliveryTruck:before { @include ms-Icon--DeliveryTruck }
+.ms-Icon--ReminderPerson:before { @include ms-Icon--ReminderPerson }
 

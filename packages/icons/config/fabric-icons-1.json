@@ -3,6 +3,7 @@
 	"fontFamilyName": "FabricMDL2Icons-1",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
@@ -172,10 +173,6 @@
 			"unicode": "E8B5"
 		},
 		{
-			"name": "Folder",
-			"unicode": "E8B7"
-		},
-		{
 			"name": "Picture",
 			"unicode": "E8B9"
 		},
@@ -276,16 +273,8 @@
 			"unicode": "E8E1"
 		},
 		{
-			"name": "AlignRight",
-			"unicode": "E8E2"
-		},
-		{
 			"name": "AlignCenter",
 			"unicode": "E8E3"
-		},
-		{
-			"name": "AlignLeft",
-			"unicode": "E8E4"
 		},
 		{
 			"name": "OpenFile",
@@ -406,6 +395,18 @@
 		{
 			"name": "ChromeMinimize",
 			"unicode": "E921"
+		},
+		{
+			"name": "Annotation",
+			"unicode": "E924"
+		},
+		{
+			"name": "ChromeClose",
+			"unicode": "E8BB"
+		},
+		{
+			"name": "Accept",
+			"unicode": "E8FB"
 		}
 	]
 }

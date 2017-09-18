@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-7';
-  src: url('../font/fabric-icons-7-d1428b0b.woff') format('woff');
+  src: url('../fonts/fabric-icons-7-1bae3315.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,13 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--Flow:before { content: "\EF90"; }
-.ms-Icon--PageEdit:before { content: "\EFB6"; }
-.ms-Icon--Database:before { content: "\EFC7"; }
-.ms-Icon--DocumentManagement:before { content: "\EFFC"; }
-.ms-Icon--CRMReport:before { content: "\EFFE"; }
-.ms-Icon--ZipFolder:before { content: "\F012"; }
-.ms-Icon--TextDocument:before { content: "\F029"; }
 .ms-Icon--PageCheckedOut:before { content: "\F02C"; }
 .ms-Icon--SaveAndClose:before { content: "\F038"; }
 .ms-Icon--Script:before { content: "\F03A"; }
@@ -113,3 +106,10 @@
 .ms-Icon--GridViewMedium:before { content: "\F233"; }
 .ms-Icon--GridViewLarge:before { content: "\F234"; }
 .ms-Icon--Step:before { content: "\F241"; }
+.ms-Icon--StepInsert:before { content: "\F242"; }
+.ms-Icon--StepShared:before { content: "\F243"; }
+.ms-Icon--StepSharedAdd:before { content: "\F244"; }
+.ms-Icon--StepSharedInsert:before { content: "\F245"; }
+.ms-Icon--ViewDashboard:before { content: "\F246"; }
+.ms-Icon--ViewList:before { content: "\F247"; }
+.ms-Icon--ViewListGroup:before { content: "\F248"; }

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-10';
-  src: url('../font/fabric-icons-10-626ecea9.woff') format('woff');
+  src: url('../fonts/fabric-icons-10-795d6e25.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,12 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--PermissionsSolid { content: "\F349"; }
-@mixin ms-Icon--ParkingSolid { content: "\F34A"; }
-@mixin ms-Icon--ParkingMirroredSolid { content: "\F34B"; }
-@mixin ms-Icon--DiamondSolid { content: "\F34C"; }
-@mixin ms-Icon--AsteriskSolid { content: "\F34D"; }
-@mixin ms-Icon--OfflineStorageSolid { content: "\F34E"; }
 @mixin ms-Icon--BankSolid { content: "\F34F"; }
 @mixin ms-Icon--DecisionSolid { content: "\F350"; }
 @mixin ms-Icon--Parachute { content: "\F351"; }
@@ -105,6 +99,7 @@
 @mixin ms-Icon--AzureKeyVault { content: "\F3B4"; }
 @mixin ms-Icon--LikeSolid { content: "\F3BF"; }
 @mixin ms-Icon--DislikeSolid { content: "\F3C0"; }
+@mixin ms-Icon--DeclineCall { content: "\F405"; }
 @mixin ms-Icon--Spacer { content: "\F40D"; }
 @mixin ms-Icon--SkypeLogo16 { content: "\F40E"; }
 @mixin ms-Icon--SkypeForBusinessLogo16 { content: "\F40F"; }
@@ -114,15 +109,14 @@
 @mixin ms-Icon--MailTentative { content: "\F416"; }
 @mixin ms-Icon--MailTentativeMirrored { content: "\F417"; }
 @mixin ms-Icon--MailReminder { content: "\F418"; }
+@mixin ms-Icon--ReceiptUndelivered { content: "\F419"; }
+@mixin ms-Icon--ReceiptTentative { content: "\F41A"; }
+@mixin ms-Icon--ReceiptTentativeMirrored { content: "\F41B"; }
+@mixin ms-Icon--Inbox { content: "\F41C"; }
+@mixin ms-Icon--IRMReply { content: "\F41D"; }
 
 
 // Classes
-.ms-Icon--PermissionsSolid:before { @include ms-Icon--PermissionsSolid }
-.ms-Icon--ParkingSolid:before { @include ms-Icon--ParkingSolid }
-.ms-Icon--ParkingMirroredSolid:before { @include ms-Icon--ParkingMirroredSolid }
-.ms-Icon--DiamondSolid:before { @include ms-Icon--DiamondSolid }
-.ms-Icon--AsteriskSolid:before { @include ms-Icon--AsteriskSolid }
-.ms-Icon--OfflineStorageSolid:before { @include ms-Icon--OfflineStorageSolid }
 .ms-Icon--BankSolid:before { @include ms-Icon--BankSolid }
 .ms-Icon--DecisionSolid:before { @include ms-Icon--DecisionSolid }
 .ms-Icon--Parachute:before { @include ms-Icon--Parachute }
@@ -208,6 +202,7 @@
 .ms-Icon--AzureKeyVault:before { @include ms-Icon--AzureKeyVault }
 .ms-Icon--LikeSolid:before { @include ms-Icon--LikeSolid }
 .ms-Icon--DislikeSolid:before { @include ms-Icon--DislikeSolid }
+.ms-Icon--DeclineCall:before { @include ms-Icon--DeclineCall }
 .ms-Icon--Spacer:before { @include ms-Icon--Spacer }
 .ms-Icon--SkypeLogo16:before { @include ms-Icon--SkypeLogo16 }
 .ms-Icon--SkypeForBusinessLogo16:before { @include ms-Icon--SkypeForBusinessLogo16 }
@@ -217,4 +212,9 @@
 .ms-Icon--MailTentative:before { @include ms-Icon--MailTentative }
 .ms-Icon--MailTentativeMirrored:before { @include ms-Icon--MailTentativeMirrored }
 .ms-Icon--MailReminder:before { @include ms-Icon--MailReminder }
+.ms-Icon--ReceiptUndelivered:before { @include ms-Icon--ReceiptUndelivered }
+.ms-Icon--ReceiptTentative:before { @include ms-Icon--ReceiptTentative }
+.ms-Icon--ReceiptTentativeMirrored:before { @include ms-Icon--ReceiptTentativeMirrored }
+.ms-Icon--Inbox:before { @include ms-Icon--Inbox }
+.ms-Icon--IRMReply:before { @include ms-Icon--IRMReply }
 

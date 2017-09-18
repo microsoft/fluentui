@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-0';
-  src: url('../font/fabric-icons-0-049cd5bd.woff') format('woff');
+  src: url('../fonts/fabric-icons-0-8a1666a2.woff') format('woff');
 }
 
 .ms-Icon {
@@ -69,6 +69,7 @@
 .ms-Icon--Play:before { content: "\E768"; }
 .ms-Icon--Pause:before { content: "\E769"; }
 .ms-Icon--Emoji2:before { content: "\E76E"; }
+.ms-Icon--GripperBarHorizontal:before { content: "\E76F"; }
 .ms-Icon--System:before { content: "\E770"; }
 .ms-Icon--Personalize:before { content: "\E771"; }
 .ms-Icon--SearchAndApps:before { content: "\E773"; }
@@ -105,7 +106,6 @@
 .ms-Icon--ShoppingCart:before { content: "\E7BF"; }
 .ms-Icon--Train:before { content: "\E7C0"; }
 .ms-Icon--Move:before { content: "\E7C2"; }
-.ms-Icon--Page:before { content: "\E7C3"; }
 .ms-Icon--TouchPointer:before { content: "\E7C9"; }
 .ms-Icon--Merge:before { content: "\E7D5"; }
 .ms-Icon--TurnRight:before { content: "\E7DB"; }

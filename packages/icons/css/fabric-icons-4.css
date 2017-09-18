@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-4';
-  src: url('../font/fabric-icons-4-b1eecb0d.woff') format('woff');
+  src: url('../fonts/fabric-icons-4-03329fef.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,12 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--WindDirection:before { content: "\EBE6"; }
-.ms-Icon--Family:before { content: "\EBDA"; }
-.ms-Icon--CSS:before { content: "\EBEF"; }
-.ms-Icon--JS:before { content: "\EBF0"; }
-.ms-Icon--DeliveryTruck:before { content: "\EBF4"; }
-.ms-Icon--ReminderPerson:before { content: "\EBF7"; }
 .ms-Icon--ReminderGroup:before { content: "\EBF8"; }
 .ms-Icon--Umbrella:before { content: "\EC04"; }
 .ms-Icon--NetworkTower:before { content: "\EC05"; }
@@ -40,6 +34,7 @@
 .ms-Icon--SpeedHigh:before { content: "\EC4A"; }
 .ms-Icon--ThisPC:before { content: "\EC4E"; }
 .ms-Icon--MusicNote:before { content: "\EC4F"; }
+.ms-Icon--MicOff:before { content: "\EC54"; }
 .ms-Icon--EdgeLogo:before { content: "\EC60"; }
 .ms-Icon--CompletedSolid:before { content: "\EC61"; }
 .ms-Icon--AlbumRemove:before { content: "\EC62"; }
@@ -86,6 +81,7 @@
 .ms-Icon--FangBody:before { content: "\ECEB"; }
 .ms-Icon--Glimmer:before { content: "\ECF4"; }
 .ms-Icon--ChatInviteFriend:before { content: "\ECFE"; }
+.ms-Icon--Crown:before { content: "\ED01"; }
 .ms-Icon--Feedback:before { content: "\ED15"; }
 .ms-Icon--SharepointLogoInverse:before { content: "\ED18"; }
 .ms-Icon--YammerLogo:before { content: "\ED19"; }
@@ -100,16 +96,20 @@
 .ms-Icon--ReopenPages:before { content: "\ED50"; }
 .ms-Icon--AADLogo:before { content: "\ED68"; }
 .ms-Icon--AccessLogo:before { content: "\ED69"; }
-.ms-Icon--AdminALogo:before { content: "\ED6A"; }
-.ms-Icon--AdminCLogo:before { content: "\ED6B"; }
-.ms-Icon--AdminDLogo:before { content: "\ED6C"; }
-.ms-Icon--AdminELogo:before { content: "\ED6D"; }
-.ms-Icon--AdminLLogo:before { content: "\ED6E"; }
-.ms-Icon--AdminMLogo:before { content: "\ED6F"; }
-.ms-Icon--AdminOLogo:before { content: "\ED70"; }
-.ms-Icon--AdminPLogo:before { content: "\ED71"; }
-.ms-Icon--AdminSLogo:before { content: "\ED72"; }
-.ms-Icon--AdminYLogo:before { content: "\ED73"; }
+.ms-Icon--AdminALogoInverse32:before { content: "\ED6A"; }
+.ms-Icon--AdminCLogoInverse32:before { content: "\ED6B"; }
+.ms-Icon--AdminDLogoInverse32:before { content: "\ED6C"; }
+.ms-Icon--AdminELogoInverse32:before { content: "\ED6D"; }
+.ms-Icon--AdminLLogoInverse32:before { content: "\ED6E"; }
+.ms-Icon--AdminMLogoInverse32:before { content: "\ED6F"; }
+.ms-Icon--AdminOLogoInverse32:before { content: "\ED70"; }
+.ms-Icon--AdminPLogoInverse32:before { content: "\ED71"; }
+.ms-Icon--AdminSLogoInverse32:before { content: "\ED72"; }
+.ms-Icon--AdminYLogoInverse32:before { content: "\ED73"; }
 .ms-Icon--BoxLogo:before { content: "\ED75"; }
 .ms-Icon--DelveLogoInverse:before { content: "\ED76"; }
 .ms-Icon--DropboxLogo:before { content: "\ED77"; }
+.ms-Icon--ExchangeLogoInverse:before { content: "\ED78"; }
+.ms-Icon--LyncLogo:before { content: "\ED79"; }
+.ms-Icon--OfficeVideoLogoInverse:before { content: "\ED7A"; }
+.ms-Icon--ParatureLogo:before { content: "\ED7B"; }

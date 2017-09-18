@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-1';
-  src: url('../font/fabric-icons-1-79bec4ec.woff') format('woff');
+  src: url('../fonts/fabric-icons-1-a961c249.woff') format('woff');
 }
 
 .ms-Icon {
@@ -54,7 +54,6 @@
 .ms-Icon--Switch:before { content: "\E8AB"; }
 .ms-Icon--Rename:before { content: "\E8AC"; }
 .ms-Icon--Import:before { content: "\E8B5"; }
-.ms-Icon--Folder:before { content: "\E8B7"; }
 .ms-Icon--Picture:before { content: "\E8B9"; }
 .ms-Icon--ShowResults:before { content: "\E8BC"; }
 .ms-Icon--Message:before { content: "\E8BD"; }
@@ -80,9 +79,7 @@
 .ms-Icon--MoveToFolder:before { content: "\E8DE"; }
 .ms-Icon--Dislike:before { content: "\E8E0"; }
 .ms-Icon--Like:before { content: "\E8E1"; }
-.ms-Icon--AlignRight:before { content: "\E8E2"; }
 .ms-Icon--AlignCenter:before { content: "\E8E3"; }
-.ms-Icon--AlignLeft:before { content: "\E8E4"; }
 .ms-Icon--OpenFile:before { content: "\E8E5"; }
 .ms-Icon--FontDecrease:before { content: "\E8E7"; }
 .ms-Icon--FontIncrease:before { content: "\E8E8"; }
@@ -113,3 +110,6 @@
 .ms-Icon--FullCircleMask:before { content: "\E91F"; }
 .ms-Icon--LocationFill:before { content: "\E920"; }
 .ms-Icon--ChromeMinimize:before { content: "\E921"; }
+.ms-Icon--Annotation:before { content: "\E924"; }
+.ms-Icon--ChromeClose:before { content: "\E8BB"; }
+.ms-Icon--Accept:before { content: "\E8FB"; }

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-6';
-  src: url('../font/fabric-icons-6-319e10f3.woff') format('woff');
+  src: url('../fonts/fabric-icons-6-2ab76fc9.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,11 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--StopSolid:before { content: "\EE95"; }
-.ms-Icon--DoubleChevronUp12:before { content: "\EE96"; }
-.ms-Icon--DoubleChevronDown12:before { content: "\EE97"; }
-.ms-Icon--DoubleChevronLeft12:before { content: "\EE98"; }
-.ms-Icon--DoubleChevronRight12:before { content: "\EE99"; }
 .ms-Icon--CalendarAgenda:before { content: "\EE9A"; }
 .ms-Icon--AddEvent:before { content: "\EEB5"; }
 .ms-Icon--AssetLibrary:before { content: "\EEB6"; }
@@ -112,4 +107,9 @@
 .ms-Icon--iOSAppStoreLogo:before { content: "\EF8A"; }
 .ms-Icon--AndroidLogo:before { content: "\EF8B"; }
 .ms-Icon--Breadcrumb:before { content: "\EF8C"; }
-.ms-Icon--ClearFilter:before { content: "\EF8F"; }
+.ms-Icon--PageEdit:before { content: "\EFB6"; }
+.ms-Icon--Database:before { content: "\EFC7"; }
+.ms-Icon--DocumentManagement:before { content: "\EFFC"; }
+.ms-Icon--CRMReport:before { content: "\EFFE"; }
+.ms-Icon--ZipFolder:before { content: "\F012"; }
+.ms-Icon--TextDocument:before { content: "\F029"; }

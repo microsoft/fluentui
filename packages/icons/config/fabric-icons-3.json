@@ -3,26 +3,11 @@
 	"fontFamilyName": "FabricMDL2Icons-3",
 	"excludeGlyphs": false,
 	"chunkSubsets": true,
+	"hashFontFileName": true,
 	"subsetChunkSettings": {
 		"maxSubsetSize": 100
 	},
 	"glyphs": [
-		{
-			"name": "MultiSelectMirrored",
-			"unicode": "EA98"
-		},
-		{
-			"name": "Broom",
-			"unicode": "EA99"
-		},
-		{
-			"name": "MusicInCollectionFill",
-			"unicode": "EA36"
-		},
-		{
-			"name": "Asterisk",
-			"unicode": "EA38"
-		},
 		{
 			"name": "ErrorBadge",
 			"unicode": "EA39"
@@ -324,14 +309,6 @@
 			"unicode": "EB4D"
 		},
 		{
-			"name": "Heart",
-			"unicode": "EB51"
-		},
-		{
-			"name": "HeartFill",
-			"unicode": "EB52"
-		},
-		{
 			"name": "Ticket",
 			"unicode": "EB54"
 		},
@@ -406,6 +383,30 @@
 		{
 			"name": "CloudDownload",
 			"unicode": "EBD3"
+		},
+		{
+			"name": "WindDirection",
+			"unicode": "EBE6"
+		},
+		{
+			"name": "Family",
+			"unicode": "EBDA"
+		},
+		{
+			"name": "CSS",
+			"unicode": "EBEF"
+		},
+		{
+			"name": "JS",
+			"unicode": "EBF0"
+		},
+		{
+			"name": "DeliveryTruck",
+			"unicode": "EBF4"
+		},
+		{
+			"name": "ReminderPerson",
+			"unicode": "EBF7"
 		}
 	]
 }

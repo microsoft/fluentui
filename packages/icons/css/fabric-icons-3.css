@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-3';
-  src: url('../font/fabric-icons-3-51462027.woff') format('woff');
+  src: url('../fonts/fabric-icons-3-80b6008d.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,10 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--MultiSelectMirrored:before { content: "\EA98"; }
-.ms-Icon--Broom:before { content: "\EA99"; }
-.ms-Icon--MusicInCollectionFill:before { content: "\EA36"; }
-.ms-Icon--Asterisk:before { content: "\EA38"; }
 .ms-Icon--ErrorBadge:before { content: "\EA39"; }
 .ms-Icon--CircleFill:before { content: "\EA3B"; }
 .ms-Icon--Record2:before { content: "\EA3F"; }
@@ -92,8 +88,6 @@
 .ms-Icon--FerrySolid:before { content: "\EB48"; }
 .ms-Icon--AirplaneSolid:before { content: "\EB4C"; }
 .ms-Icon--TrainSolid:before { content: "\EB4D"; }
-.ms-Icon--Heart:before { content: "\EB51"; }
-.ms-Icon--HeartFill:before { content: "\EB52"; }
 .ms-Icon--Ticket:before { content: "\EB54"; }
 .ms-Icon--Devices4:before { content: "\EB66"; }
 .ms-Icon--AzureLogo:before { content: "\EB6A"; }
@@ -113,3 +107,9 @@
 .ms-Icon--Photo2:before { content: "\EB9F"; }
 .ms-Icon--OpenSource:before { content: "\EBC2"; }
 .ms-Icon--CloudDownload:before { content: "\EBD3"; }
+.ms-Icon--WindDirection:before { content: "\EBE6"; }
+.ms-Icon--Family:before { content: "\EBDA"; }
+.ms-Icon--CSS:before { content: "\EBEF"; }
+.ms-Icon--JS:before { content: "\EBF0"; }
+.ms-Icon--DeliveryTruck:before { content: "\EBF4"; }
+.ms-Icon--ReminderPerson:before { content: "\EBF7"; }

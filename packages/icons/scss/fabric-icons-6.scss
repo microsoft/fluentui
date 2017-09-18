@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-6';
-  src: url('../font/fabric-icons-6-319e10f3.woff') format('woff');
+  src: url('../fonts/fabric-icons-6-2ab76fc9.woff') format('woff');
 }
 
 .ms-Icon {
@@ -14,11 +14,6 @@
 }
 
 // Mixins
-@mixin ms-Icon--StopSolid { content: "\EE95"; }
-@mixin ms-Icon--DoubleChevronUp12 { content: "\EE96"; }
-@mixin ms-Icon--DoubleChevronDown12 { content: "\EE97"; }
-@mixin ms-Icon--DoubleChevronLeft12 { content: "\EE98"; }
-@mixin ms-Icon--DoubleChevronRight12 { content: "\EE99"; }
 @mixin ms-Icon--CalendarAgenda { content: "\EE9A"; }
 @mixin ms-Icon--AddEvent { content: "\EEB5"; }
 @mixin ms-Icon--AssetLibrary { content: "\EEB6"; }
@@ -113,15 +108,15 @@
 @mixin ms-Icon--iOSAppStoreLogo { content: "\EF8A"; }
 @mixin ms-Icon--AndroidLogo { content: "\EF8B"; }
 @mixin ms-Icon--Breadcrumb { content: "\EF8C"; }
-@mixin ms-Icon--ClearFilter { content: "\EF8F"; }
+@mixin ms-Icon--PageEdit { content: "\EFB6"; }
+@mixin ms-Icon--Database { content: "\EFC7"; }
+@mixin ms-Icon--DocumentManagement { content: "\EFFC"; }
+@mixin ms-Icon--CRMReport { content: "\EFFE"; }
+@mixin ms-Icon--ZipFolder { content: "\F012"; }
+@mixin ms-Icon--TextDocument { content: "\F029"; }
 
 
 // Classes
-.ms-Icon--StopSolid:before { @include ms-Icon--StopSolid }
-.ms-Icon--DoubleChevronUp12:before { @include ms-Icon--DoubleChevronUp12 }
-.ms-Icon--DoubleChevronDown12:before { @include ms-Icon--DoubleChevronDown12 }
-.ms-Icon--DoubleChevronLeft12:before { @include ms-Icon--DoubleChevronLeft12 }
-.ms-Icon--DoubleChevronRight12:before { @include ms-Icon--DoubleChevronRight12 }
 .ms-Icon--CalendarAgenda:before { @include ms-Icon--CalendarAgenda }
 .ms-Icon--AddEvent:before { @include ms-Icon--AddEvent }
 .ms-Icon--AssetLibrary:before { @include ms-Icon--AssetLibrary }
@@ -216,5 +211,10 @@
 .ms-Icon--iOSAppStoreLogo:before { @include ms-Icon--iOSAppStoreLogo }
 .ms-Icon--AndroidLogo:before { @include ms-Icon--AndroidLogo }
 .ms-Icon--Breadcrumb:before { @include ms-Icon--Breadcrumb }
-.ms-Icon--ClearFilter:before { @include ms-Icon--ClearFilter }
+.ms-Icon--PageEdit:before { @include ms-Icon--PageEdit }
+.ms-Icon--Database:before { @include ms-Icon--Database }
+.ms-Icon--DocumentManagement:before { @include ms-Icon--DocumentManagement }
+.ms-Icon--CRMReport:before { @include ms-Icon--CRMReport }
+.ms-Icon--ZipFolder:before { @include ms-Icon--ZipFolder }
+.ms-Icon--TextDocument:before { @include ms-Icon--TextDocument }
 

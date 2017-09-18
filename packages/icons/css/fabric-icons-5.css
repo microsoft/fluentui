@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-5';
-  src: url('../font/fabric-icons-5-d80e1f52.woff') format('woff');
+  src: url('../fonts/fabric-icons-5-82c8b87c.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,10 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--ExchangeLogoInverse:before { content: "\ED78"; }
-.ms-Icon--LyncLogo:before { content: "\ED79"; }
-.ms-Icon--OfficeVideoLogoInverse:before { content: "\ED7A"; }
-.ms-Icon--ParatureLogo:before { content: "\ED7B"; }
 .ms-Icon--SocialListeningLogo:before { content: "\ED7C"; }
 .ms-Icon--VisioLogoInverse:before { content: "\ED7D"; }
 .ms-Icon--Balloons:before { content: "\ED7E"; }
@@ -109,7 +105,11 @@
 .ms-Icon--GroupedAscending:before { content: "\EE67"; }
 .ms-Icon--AwayStatus:before { content: "\EE6A"; }
 .ms-Icon--MyMoviesTV:before { content: "\EE6C"; }
-.ms-Icon--SyncToPC:before { content: "\EE6E"; }
 .ms-Icon--AustralianRules:before { content: "\EE70"; }
 .ms-Icon--WifiEthernet:before { content: "\EE77"; }
 .ms-Icon--DateTimeMirrored:before { content: "\EE93"; }
+.ms-Icon--StopSolid:before { content: "\EE95"; }
+.ms-Icon--DoubleChevronUp12:before { content: "\EE96"; }
+.ms-Icon--DoubleChevronDown12:before { content: "\EE97"; }
+.ms-Icon--DoubleChevronLeft12:before { content: "\EE98"; }
+.ms-Icon--DoubleChevronRight12:before { content: "\EE99"; }

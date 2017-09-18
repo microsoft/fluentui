@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'FabricMDL2Icons-11';
-  src: url('../font/fabric-icons-11-c268b370.woff') format('woff');
+  src: url('../fonts/fabric-icons-11-c0dbf638.woff') format('woff');
 }
 
 .ms-Icon {
@@ -13,11 +13,6 @@
   speak: none;
 }
 
-.ms-Icon--ReceiptUndelivered:before { content: "\F419"; }
-.ms-Icon--ReceiptTentative:before { content: "\F41A"; }
-.ms-Icon--ReceiptTentativeMirrored:before { content: "\F41B"; }
-.ms-Icon--Inbox:before { content: "\F41C"; }
-.ms-Icon--IRMReply:before { content: "\F41D"; }
 .ms-Icon--IRMReplyMirrored:before { content: "\F41E"; }
 .ms-Icon--IRMForward:before { content: "\F41F"; }
 .ms-Icon--IRMForwardMirrored:before { content: "\F420"; }
@@ -86,3 +81,19 @@
 .ms-Icon--Chopsticks:before { content: "\F4A2"; }
 .ms-Icon--SyncOccurence:before { content: "\F4A3"; }
 .ms-Icon--UnsyncOccurence:before { content: "\F4A4"; }
+.ms-Icon--PrimaryCalendar:before { content: "\F4AE"; }
+.ms-Icon--SearchCalendar:before { content: "\F4AF"; }
+.ms-Icon--VideoOff:before { content: "\F4B0"; }
+.ms-Icon--MicrosoftFlowLogo:before { content: "\F4B1"; }
+.ms-Icon--BusinessCenterLogo:before { content: "\F4B2"; }
+.ms-Icon--ToDoLogoBottom:before { content: "\F4B3"; }
+.ms-Icon--ToDoLogoTop:before { content: "\F4B4"; }
+.ms-Icon--EditSolid12:before { content: "\F4B5"; }
+.ms-Icon--EditSolidMirrored12:before { content: "\F4B6"; }
+.ms-Icon--UneditableSolid12:before { content: "\F4B7"; }
+.ms-Icon--UneditableSolidMirrored12:before { content: "\F4B8"; }
+.ms-Icon--UneditableMirrored:before { content: "\F4B9"; }
+.ms-Icon--AdminALogo32:before { content: "\F4BA"; }
+.ms-Icon--AdminALogoFill32:before { content: "\F4BB"; }
+.ms-Icon--ToDoLogoInverse:before { content: "\F4BC"; }
+.ms-Icon--Snooze:before { content: "\F4BD"; }
