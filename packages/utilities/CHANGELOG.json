@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "4.13.1",
+      "tag": "@uifabric/utilities_v4.13.1",
+      "date": "Thu, 14 Sep 2017 00:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "71304a1b3d4b1d36a02ea5ebc74e78b52765b8bb",
+            "comment": "getLanguage: Use localStorage wrapper helpers to avoid exceptions thrown by the browser when accessing localStorage."
+          }
+        ]
+      }
+    },
+    {
       "version": "4.13.0",
       "tag": "@uifabric/utilities_v4.13.0",
       "date": "Mon, 04 Sep 2017 10:16:56 GMT",

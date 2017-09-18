@@ -43,7 +43,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         bestPractices={
-          <div></div>
+          <div/>
         }
         dos={
           <div>
@@ -62,8 +62,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 

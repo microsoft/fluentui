@@ -1690,6 +1690,10 @@ export const IconCodes = {
    */
   moreSports: '\uEB22',
   /**
+   * Icon code with the value '\uF2BC'.
+   */
+  moreVertical: '\uF2BC',
+  /**
    * Icon code with the value '\uE7C2'.
    */
   move: '\uE7C2',

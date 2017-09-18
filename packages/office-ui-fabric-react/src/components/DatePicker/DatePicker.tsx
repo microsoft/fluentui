@@ -108,9 +108,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
     isMonthPickerVisible: true,
+    showMonthPickerAsOverlay: false,
     strings: DEFAULT_STRINGS,
+    highlightCurrentMonth: false,
     borderless: false,
     pickerAriaLabel: 'Calender',
+    showWeekNumbers: false,
+    showGoToToday: true,
+    dateTimeFormatter: undefined
   };
 
   public refs: {
@@ -198,6 +203,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             borderless={ borderless }
             iconProps={ {
               iconName: 'Calendar',
+              onClicked: this._onIconClick,
               className: css(
                 label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
                 label ? styles.eventWithLabel : styles.eventWithoutLabel
@@ -226,12 +232,16 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
+              showMonthPickerAsOverlay={ this.props.showMonthPickerAsOverlay }
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings! }
+              highlightCurrentMonth={ this.props.highlightCurrentMonth }
+              showWeekNumbers={ this.props.showWeekNumbers }
+              showGoToToday={ this.props.showGoToToday }
+              dateTimeFormatter={ this.props.dateTimeFormatter }
               ref={ this._resolveRef('_calendar') }
-            >
-            </Calendar>
+            />
           </Callout>
         ) }
       </div>
@@ -331,6 +341,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         });
       }
     }
+  }
+
+  @autobind
+  private _onIconClick(ev: React.MouseEvent<HTMLElement>) {
+    ev.stopPropagation();
+    this._onTextFieldClick(ev);
   }
 
   private _showDatePickerPopup() {

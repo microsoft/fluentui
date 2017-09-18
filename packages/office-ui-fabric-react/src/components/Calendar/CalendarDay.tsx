@@ -19,7 +19,8 @@ import {
   compareDates,
   compareDatePart,
   getDateRangeArray,
-  isInDateRangeArray
+  isInDateRangeArray,
+  getWeekNumber
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
@@ -51,6 +52,7 @@ export interface ICalendarDayProps extends React.Props<CalendarDay> {
   navigationIcons: ICalendarIconStrings;
   today?: Date;
   onHeaderSelect?: (focus: boolean) => void;
+  showWeekNumbers?: boolean;
   dateTimeFormatter: ICalendarFormatDateCallbacks;
 }
 
@@ -89,11 +91,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
   public render() {
     let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings, navigatedDate, navigationIcons, dateRangeType, selectedDate, dateTimeFormatter } = this.props;
+    let { firstDayOfWeek, strings, navigatedDate, selectedDate, dateRangeType, navigationIcons, showWeekNumbers, dateTimeFormatter } = this.props;
     let dayPickerId = getId('DatePickerDay-dayPicker');
     let monthAndYearId = getId('DatePickerDay-monthAndYear');
     let leftNavigationIcon = navigationIcons.leftNavigation;
     let rightNavigationIcon = navigationIcons.rightNavigation;
+    let weekNumbers = showWeekNumbers ? this._getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, navigatedDate) : null;
+    let selectedDateWeekNumber = showWeekNumbers ? getWeekNumber(selectedDate, firstDayOfWeek) : undefined;
 
     // When the month is highlighted get the corner dates so that styles can be added to them
     let weekCorners: IWeekCorners = {};
@@ -103,7 +107,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return (
-      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) } id={ dayPickerId }>
+      <div
+        className={ css('ms-DatePicker-dayPicker',
+          styles.dayPicker,
+          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && styles.showWeekNumbers
+        ) }
+        id={ dayPickerId }
+      >
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
@@ -111,7 +121,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onPrevMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.prevMonthAriaLabel }
+              aria-label={ strings.prevMonthAriaLabel ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()] : undefined }
               role='button'
               tabIndex={ 0 }
             >
@@ -122,7 +132,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onNextMonthKeyDown }
               aria-controls={ dayPickerId }
-              aria-label={ strings.nextMonthAriaLabel }
+              aria-label={ strings.nextMonthAriaLabel ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()] : undefined }
               role='button'
               tabIndex={ 0 }
             >
@@ -132,23 +142,52 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         </div >
         <div className={ css('ms-DatePicker-header', styles.header) } >
           <div aria-live='polite' aria-relevant='text' aria-atomic='true' id={ monthAndYearId }>
-            <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>{ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }</div>
-          </div>
-          {
-            this.props.onHeaderSelect ?
+            { this.props.onHeaderSelect ?
               <div
-                className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) }
+                className={ css('ms-DatePicker-monthAndYear js-showMonthPicker', styles.monthAndYear, styles.headerToggleView) }
                 onClick={ this._onHeaderSelect }
                 onKeyDown={ this._onHeaderKeyDown }
                 aria-label={ dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
                 role='button'
                 tabIndex={ 0 }
-              />
+              >
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
               :
-              null
-          }
+              <div className={ css('ms-DatePicker-monthAndYear', styles.monthAndYear) }>
+                { dateTimeFormatter.formatMonthYear(navigatedDate, strings) }
+              </div>
+            }
+          </div>
         </div>
         <FocusZone>
+          {
+            showWeekNumbers ?
+              <table
+                className={ css('ms-DatePicker-weekNumbers', styles.weekNumbers, 'ms-DatePicker-table', styles.table) }
+              >
+                <tbody>
+                  { weekNumbers!.map((weekNumber, index) =>
+                    <tr key={ index }>
+                      <td>
+                        <div
+                          className={ css(
+                            'ms-DatePicker-day',
+                            styles.day,
+                            {
+                              ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumber
+                            }
+                          ) }
+                        >
+                          <span>{ weekNumber }</span>
+                        </div>
+                      </td>
+                    </tr>
+                  ) }
+                </tbody>
+              </table>
+              : null
+          }
           <table
             className={ css('ms-DatePicker-table', styles.table) }
             aria-readonly='true'
@@ -161,6 +200,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 { strings.shortDays.map((val, index) =>
                   <th
                     className={ css('ms-DatePicker-weekday', styles.weekday) }
+                    role='grid'
                     scope='col'
                     key={ index }
                     title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
@@ -172,7 +212,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </thead>
             <tbody>
               { weeks!.map((week, weekIndex) =>
-                <tr key={ weekIndex } >
+                <tr key={ weekIndex } role='row'>
                   { week.map((day, dayIndex) =>
                     <td
                       key={ day.key }
@@ -193,13 +233,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected && dateRangeType === DateRangeType.Day
                           }) }
-                        role='button'
+                        role='gridcell'
                         onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
-                        aria-selected={ day.isSelected }
                         aria-label={ dateTimeFormatter.formatMonthDayYear(day.originalDate, strings) }
                         id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : undefined }
+                        aria-selected={ day.isSelected }
                         data-is-focusable={ true }
                         ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
                         key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : undefined }
@@ -445,5 +485,21 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return weeks;
+  }
+
+  // Returns the week numbers for each week in a month.  Week numbers are 1 - 52 (53) in a year
+  private _getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, navigatedDate: Date) {
+    let selectedYear = navigatedDate.getFullYear();
+    let selectedMonth = navigatedDate.getMonth();
+    let firstDayOfMonth = new Date(selectedYear, selectedMonth, 1);
+
+    let firstWeekNumber = getWeekNumber(firstDayOfMonth, firstDayOfWeek);
+
+    let weeksArray = [];
+    for (let i = 0; i < weeksInMonth; i++) {
+      weeksArray.push(firstWeekNumber + i);
+    }
+
+    return weeksArray;
   }
 }

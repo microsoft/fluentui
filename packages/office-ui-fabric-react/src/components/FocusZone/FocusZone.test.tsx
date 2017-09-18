@@ -600,7 +600,7 @@ describe('FocusZone', () => {
     let buttonB: any;
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
-        <textarea className='t'></textarea>
+        <textarea className='t' />
         <FocusZone ref={ (focus) => { focusZone = focus; } }>
           <button className='a' ref={ (button) => { buttonA = button; } }>a</button>
           <button className='b' ref={ (button) => { buttonB = button; } }>b</button>
