@@ -185,7 +185,7 @@ export class Nav extends BaseComponent<INavProps, INavState> implements INav {
         [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore,
         [isRtl ? 'paddingLeft' : 'paddingRight']: _farSidePadding
       }
-    }
+    };
 
     return (
       <CommandButton
