@@ -9,7 +9,7 @@ import {
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;

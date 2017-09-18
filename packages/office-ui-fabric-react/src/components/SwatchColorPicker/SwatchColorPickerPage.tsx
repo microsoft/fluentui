@@ -7,7 +7,7 @@ import {
   ComponentStatus
 } from '@uifabric/example-app-base';
 import { SwatchColorPickerBasicExample } from './examples/SwatchColorPicker.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const SwatchColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SwatchColorPicker/examples/SwatchColorPicker.Basic.Example.tsx') as string;
 

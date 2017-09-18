@@ -10,7 +10,7 @@ import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;

@@ -12,7 +12,7 @@ import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Check
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;

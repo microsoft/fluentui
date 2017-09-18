@@ -9,7 +9,7 @@ import {
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
 const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;

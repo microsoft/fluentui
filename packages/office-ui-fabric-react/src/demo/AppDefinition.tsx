@@ -339,7 +339,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/themes'
         },
         {
-          component: require<any>('../components/ComponentStatus/ComponentStatusPage').ComponentStatusPage,
+          component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,
           key: 'Components Status',
           name: 'Components Checklist',
           url: '#/components-status'

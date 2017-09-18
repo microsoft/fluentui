@@ -10,7 +10,7 @@ import {
 import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 import './TooltipPage.scss';
 

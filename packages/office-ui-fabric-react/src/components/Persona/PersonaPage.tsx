@@ -10,7 +10,7 @@ import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaAlternateExample } from './examples/Persona.Alternate.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;

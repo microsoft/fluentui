@@ -7,7 +7,7 @@ import {
   PropertiesTableSet,
   ComponentStatus
 } from '@uifabric/example-app-base';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;

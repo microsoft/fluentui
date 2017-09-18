@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 

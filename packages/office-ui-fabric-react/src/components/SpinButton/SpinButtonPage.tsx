@@ -12,7 +12,7 @@ import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Exampl
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;

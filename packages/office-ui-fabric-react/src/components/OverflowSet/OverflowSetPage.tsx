@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
 const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;

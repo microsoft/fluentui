@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 

@@ -9,7 +9,7 @@ import {
 } from '@uifabric/example-app-base';
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 import './HoverCardPage.scss';
 

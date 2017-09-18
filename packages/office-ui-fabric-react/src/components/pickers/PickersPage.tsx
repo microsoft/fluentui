@@ -9,7 +9,7 @@ import {
 } from '@uifabric/example-app-base';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const TagPickerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/TagPicker.Basic.Example.tsx') as string;
 const PickerCustomResultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/Picker.CustomResult.Example.tsx') as string;

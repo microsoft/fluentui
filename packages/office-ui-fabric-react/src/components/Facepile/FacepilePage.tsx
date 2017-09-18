@@ -10,7 +10,7 @@ import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { FontClassNames } from '../../Styling';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const FacepileAddFaceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
 const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Basic.Example.tsx') as string;

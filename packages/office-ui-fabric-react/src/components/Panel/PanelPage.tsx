@@ -18,7 +18,7 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { PanelFooterExample } from './examples/Panel.Footer.Example';
 import { FontClassNames } from '../../Styling';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;

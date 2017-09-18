@@ -10,7 +10,7 @@ import { items, overflowItems, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
-import { ComponentStatusState } from '../ComponentStatus/ComponentStatusState';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.NonFocusable.Example.tsx') as string;
