@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DatePicker } from './DatePicker';
 import { DayOfWeek } from '../../Calendar';
+import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.Props';
 
 export interface IDatePicker {
 
@@ -53,6 +54,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   isMonthPickerVisible?: boolean;
 
   /**
+  * Show month picker on top of date picker when visible.
+  * @defaultvalue false
+  */
+  showMonthPickerAsOverlay?: boolean;
+
+  /**
    * Whether the DatePicker allows input a date string directly or not
    * @defaultvalue false
    */
@@ -98,6 +105,23 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   strings?: IDatePickerStrings;
 
   /**
+  * Whether the month picker should highlight the current month
+  * @defaultvalue false
+  */
+  highlightCurrentMonth?: boolean;
+
+  /**
+  * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+  * @defaultvalue false
+  */
+  showWeekNumbers?: boolean;
+
+  /**
+   * Whether the "Go to today" link should be shown or not
+   */
+  showGoToToday?: boolean;
+
+  /**
    * Determines if DatePicker has a border.
    * @defaultvalue false
    */
@@ -107,6 +131,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Optional Classname for datepicker root element .
    */
   className?: string;
+
+  /**
+  * Apply additional formating to dates, for example localized date formatting.
+  */
+  dateTimeFormatter?: ICalendarFormatDateCallbacks;
 }
 
 export interface IDatePickerStrings {

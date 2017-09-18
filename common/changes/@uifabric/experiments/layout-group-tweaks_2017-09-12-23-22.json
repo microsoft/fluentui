@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Add support for folder cover signals",
+      "comment": "LayoutGroup: Changed gap to layoutGap and updated docs",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }
