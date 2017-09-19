@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "_webpack": "node ../../scripts/build.js webpack",
-    "_mocha": "node ./node_modules/mocha/bin/_mocha dist/ssr-tests.js",
-    "_test": "npm run _webpack && npm run _mocha",
     "build": "",
     "clean": "",
     "screener": "screener-storybook --conf screener.config.js --debug",
@@ -15,12 +12,7 @@
   "devDependencies": {
     "@storybook/addon-options": "=3.2.3",
     "@storybook/react": "^3.2.3",
-    "@types/chai": "3.4.35",
-    "@types/enzyme": "2.8.0",
-    "@types/es6-promise": "^0.0.32",
-    "@types/mocha": "2.2.39",
     "@types/react": "15.0.38",
-    "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "15.5.1",
     "@types/storybook__react": "=3.0.5",
     "css-loader": "=0.27.3",
@@ -30,7 +22,6 @@
     "style-loader": "=0.16.1",
     "awesome-typescript-loader": "^3.2.3",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
-    "react-addons-test-utils": "^15.4.2",
     "screener-storybook": "^0.8.11",
     "screener-runner": "^0.6.19",
     "storybook-readme": "=3.0.6"

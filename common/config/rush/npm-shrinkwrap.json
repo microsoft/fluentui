@@ -96,7 +96,7 @@
     },
     "@rush-temp/vr-tests": {
       "version": "file:projects\\vr-tests.tgz",
-      "integrity": "sha1-j20hSFiZCNv3z6vZCltxhHrd5Mw=",
+      "integrity": "sha1-1zVPx6b1NTV7hl7T8/gUeYfOpYk=",
       "dependencies": {
         "ansi-styles": {
           "version": "2.2.1",
@@ -5486,9 +5486,9 @@
       "integrity": "sha1-EEEktsYCxnlogaBCVB0220OlJk4="
     },
     "office-ui-fabric-core": {
-      "version": "7.2.0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-7.2.0.tgz",
-      "integrity": "sha1-JKwXdDPkou6REP5DWAutBZ+gBQk="
+      "version": "7.3.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-7.3.0.tgz",
+      "integrity": "sha1-43rwTiOwkfZTYNsknbi7DzEpH2A="
     },
     "office-ui-fabric-react": {
       "version": "4.48.1",
