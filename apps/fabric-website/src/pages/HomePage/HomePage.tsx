@@ -24,11 +24,6 @@ export class HomePage extends React.Component<any, any> {
             <a href='#/components' className={ styles.button }>See components</a>
           </div>
           <div className={ styles.flavor }>
-            <span className={ styles.flavorTitle }>Fabric JS</span>
-            <span className={ styles.flavorDescription }>Lightweight and simple components in vanilla JavaScript</span>
-            <a href='#/fabric-js'>Learn more</a>
-          </div>
-          <div className={ styles.flavor }>
             <span className={ styles.flavorTitle }>AngularJS</span>
             <span className={ styles.flavorDescription }>Community-driven project for Angular apps</span>
             <a href='#/angular-js'>Learn more</a>

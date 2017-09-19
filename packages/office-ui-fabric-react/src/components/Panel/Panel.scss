@@ -108,7 +108,7 @@ $CommandBarHeight: 44px;
 .root.rootIsXLarge,
 .root.rootIsCustom {
   .main {
-    @media (min-width: $ms-screen-min-lg) {
+    @media (min-width: $uhf-screen-min-mobile) {
       @include ms-left($Panel-margin-md);
       width: auto;
     }
@@ -228,7 +228,7 @@ $CommandBarHeight: 44px;
   padding-left: 16px;
   padding-right: 16px;
 
-  @media (min-width: $ms-screen-min-lg) {
+  @media (min-width: $uhf-screen-min-mobile) {
     padding-left: 32px;
     padding-right: 32px;
   }

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 15 Sep 2017 10:19:50 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Sep 2017 10:08:55 GMT and should not be manually modified.
+
+## 0.9.0
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Minor changes
+
+- LayoutGroup: Changed gap to layoutGap and updated docs
+
+## 0.8.0
+Mon, 18 Sep 2017 10:18:23 GMT
+
+### Minor changes
+
+- Add accessibility hooks for Tile, TilesList, and FolderCover
 
 ## 0.7.1
 Fri, 15 Sep 2017 10:19:50 GMT
