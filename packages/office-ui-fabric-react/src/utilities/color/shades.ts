@@ -1,3 +1,7 @@
+// Technically this should be shades and tints, but for simplicity we'll call everything a shade.
+/* This utility module is used with theming. Given a color to shade, whether the theme is inverted (i.e. is a dark color),
+ * and the desired shade enum, this will return an appropriate shade of that color.
+ */
 import {
   IColor,
   MAX_COLOR_RGBA
@@ -5,33 +9,24 @@ import {
 import * as Colors from './colors';
 import { assign } from '../../Utilities';
 
-/* original constants for generating shades
-const WhiteShadeTable = [0.95, 0.85, 0.75, 0.65, 0.50]; // white
-const BlackTintTable = [0.50, 0.65, 0.75, 0.85, 0.95]; // black
-const LumTintTable = [0.10, 0.25, 0.50, 0.75, 0.90]; // light shade (strongen all)
-const LumShadeTable = [0.90, 0.75, 0.50, 0.25, 0.10]; // dark shade (soften all)
-const ColorTintTable = [0.20, 0.40, 0.60]; // default soften
-const ColorShadeTable = [0.75, 0.50]; // default strongen*/
-const c_LuminanceLow = 0.2;
-const c_LuminanceHigh = 0.8;
+// Soften: to get closer to the background color's luminance (softening with a white background would be lightening, with black it'd be darkening)
+// Strongen: opposite of soften
 
-// Various constants used for generating shades of a color
-// const WhiteShadeTable = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
-// const BlackTintTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // black
-
-// trying some new values for BG with design
-const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
-const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black (same one as FG for now?)
-const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white
-const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black
-// const LumTintTable = [.10, .20, .30, .43, .57, .70, .80, .90]; // light shade (strongen all)
-// const LumShadeTable = [.90, .80, .70, .57, .43, .30, .20, .10]; // dark shade (soften all)
-const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light shade (strongen all)
-const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark shade (soften all)
+// Luminance multiplier constants for generating shades of a given color
+const WhiteShadeTableBG = [.973, .957, .918, .855, .816, .784, .651, .463]; // white bg
+const BlackTintTableBG = [.463, .55, .651, .784, .816, .855, .918, .957]; // black bg
+const WhiteShadeTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // white fg
+const BlackTintTable = [.463, .55, .651, .784, .816, .855, .918, .957]; // black fg
+const LumTintTable = [.12, .23, .34, .45, .56, .67, .78, .89]; // light (strongen all)
+const LumShadeTable = [.89, .78, .67, .56, .45, .34, .23, .12]; // dark (soften all)
 const ColorTintTable = [.050, .100, .200, .42, .90]; // default soften
 const ColorShadeTable = [.90, .70, .550]; // default strongen
 
-/** Shades of a given color, from Lightest to Darkest. */
+// If the given shade's luminance is below/above these values, we'll swap to using the White/Black tables above
+const c_LuminanceLow = 0.2;
+const c_LuminanceHigh = 0.8;
+
+/** Shades of a given color, from softest to strongest. */
 export enum Shade {
   Unshaded = 0,
   Shade1 = 1,
@@ -82,42 +77,22 @@ export function isDark(color: IColor) {
   return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
 }
 
-/* Original getShade() logic:
-  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
-  let tableIndex = shade - 1;
-  if (_isWhite(color)) { // white
-    hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
-  } else if (_isBlack(color)) { // black
-    hsl = _lighten(hsl, BlackTintTable[tableIndex]);
-  } else if (hsl.l / 100 > c_LuminanceHigh) { // light
-    hsl = _darken(hsl, LumShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < c_LuminanceLow) { // dark
-    hsl = _lighten(hsl, LumTintTable[tableIndex]);
-  } else { // default
-    if (tableIndex < ColorTintTable.length) {
-      hsl = _lighten(hsl, ColorTintTable[tableIndex]);
-    } else {
-      hsl = _darken(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
-    }
-  }
-*/
-
 /** todo: update
  * Given a color and a shade specification, generates the requested shade of the color.
  * Logic: (todo formatting)
  * if white
- *  darken: [0.95, 0.85, 0.75, 0.65, 0.50]
+ *  darken via tables defined above
  * if black
- *  lighten:[0.50, 0.65, 0.75, 0.85, 0.95]
+ *  lighten
+ * if light
+ *  strongen
  * if dark
- *  lighten:[0.10, 0.25, 0.50, 0.75, 0.90]
- * if bright
- *  darken: [0.90, 0.75, 0.50, 0.25, 0.10]
- * default
- *  lghtst lghtr med   drkr  drkst
- *  [0.20, 0.40, 0.60][0.75, 0.50]
- * @param {RgbaColor} color The base color whose Shade are to be computed
- * @param {Shade} shade The shade of the base color to compute.
+ *  soften
+ * else default
+ *  soften or strongen depending on shade#
+ * @param {IColor} color The base color whose shade is to be computed
+ * @param {Shade} shade The shade of the base color to compute
+ * @param {Boolean} isInverted Default false. Whether the given theme is inverted (reverse strongen/soften logic)
  */
 export function getShade(color: IColor, shade: Shade, isInverted = false) {
   'use strict';
@@ -172,15 +147,9 @@ export function getBackgroundShade(color: IColor, shade: Shade, isInverted = fal
 
   let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
-  /*if (hsl.l / 100 > c_LuminanceHigh) { // really light
-    hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
-  } else if (hsl.l / 100 < c_LuminanceLow) { // really dark
-    hsl = _lighten(hsl, BlackTintTable[BlackTintTable.length - 1 - tableIndex]);
-  } else*/ if (!isInverted) { // lightish
-    // hsl = _darken(hsl, LumShadeTable[tableIndex]);
+  if (!isInverted) { // lightish
     hsl = _darken(hsl, WhiteShadeTableBG[tableIndex]);
   } else { // default: if (hsl.l / 100 < .5) { // darkish
-    // hsl = _lighten(hsl, LumTintTable[LumTintTable.length - 1 - tableIndex]);
     hsl = _lighten(hsl, BlackTintTableBG[BlackTintTable.length - 1 - tableIndex]);
   }
 
