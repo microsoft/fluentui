@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
+  autobind,
   css,
   createArray
 } from 'office-ui-fabric-react/lib/Utilities';
@@ -65,7 +66,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
           className='exampleCheckbox'
           label='Is marquee enabled'
           defaultChecked={ true }
-          onChange={ (ev, isMarqueeEnabled) => this.setState({ isMarqueeEnabled: isMarqueeEnabled! }) }
+          onChange={ this._onChange }
         />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className='ms-MarqueeSelectionBasicExample-photoList'>
@@ -78,7 +79,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
               ) }
               data-is-focusable={ true }
               data-selection-index={ index }
-              onClick={ () => console.log('clicked') }
+              onClick={ this._log('clicked') }
               style={ { width: photo.width, height: photo.height } }
             >
               { index }
@@ -89,4 +90,14 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     );
   }
 
+  private _log(text: string): () => void {
+    return (): void => {
+      console.log(text);
+    };
+  }
+
+  @autobind
+  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void {
+    this.setState({ isMarqueeEnabled: isMarqueeEnabled! });
+  }
 }

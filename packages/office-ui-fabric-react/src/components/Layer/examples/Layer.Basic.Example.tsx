@@ -5,6 +5,7 @@ import '../../../common/_exampleStyles.scss';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { AnimationClassNames } from '../../../Styling';
 
 export class LayerContentExample extends BaseComponent<any, any> {
@@ -66,7 +67,7 @@ export class LayerBasicExample extends BaseComponent<any, any> {
           className='exampleCheckbox'
           label='Wrap the content box belowed in a Layer'
           checked={ showLayer }
-          onChange={ (ev, checked) => this.setState({ showLayer: checked }) }
+          onChange={ this._onChange }
         />
 
         { showLayer ? (
@@ -79,5 +80,10 @@ export class LayerBasicExample extends BaseComponent<any, any> {
 
       </div>
     );
+  }
+
+  @autobind
+  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+    this.setState({ showLayer: checked });
   }
 }
