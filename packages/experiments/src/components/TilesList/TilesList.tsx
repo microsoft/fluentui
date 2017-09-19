@@ -101,12 +101,14 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       items,
       cellsPerPage,
       ref,
+      role,
       focusZoneComponentRef,
       ...divProps
     } = this.props;
 
     return (
       <FocusZone
+        role={ role }
         { ...divProps }
         ref={ ref as ((element: FocusZone | null) => void) }
         componentRef={ focusZoneComponentRef }
@@ -116,6 +118,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       >
         <List
           items={ cells }
+          role={ role ? 'presentation' : undefined }
           getPageSpecification={ this._getPageSpecification }
           onRenderPage={ this._onRenderPage }
         />

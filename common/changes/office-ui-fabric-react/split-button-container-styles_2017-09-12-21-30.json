@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[SwatchColorPicker] Fix uncaught exception when colorCells is empty",
+      "comment": "SplitButton: Properly cascade container styles to the disabled state",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "christianjordangonzalez@gmail.com"
 }

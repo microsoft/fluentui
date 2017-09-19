@@ -61,6 +61,7 @@ export class TilesListDocumentExample extends React.Component<{}, {}> {
             onItemInvoked={ this._onItemInvoked }
           >
             <TilesListType
+              role='list'
               items={ items }
             />
           </SelectionZone>
@@ -81,9 +82,12 @@ export class TilesListDocumentExample extends React.Component<{}, {}> {
   private _onRenderDocumentCell(item: IExampleItem): JSX.Element {
     return (
       <Tile
+        role='listitem'
+        aria-setsize={ ITEMS.length }
+        aria-posinset={ item.index }
         className={ AnimationClassNames.fadeIn400 }
         selection={ this._selection }
-        selectionIndex={ ITEMS.indexOf(item) }
+        selectionIndex={ item.index }
         foreground={
           <img
             src={
@@ -109,7 +113,7 @@ export class TilesListDocumentExample extends React.Component<{}, {}> {
   @autobind
   private _onRenderHeader(item: IExampleItem): JSX.Element {
     return (
-      <div>
+      <div role='presentation'>
         <h3>{ item.name }</h3>
       </div>
     );
