@@ -7,6 +7,7 @@ import {
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TestImages } from '../../../common/TestImages';
+import '../../../common/_exampleStyles.scss';
 
 const examplePersona = {
   imageUrl: TestImages.personaFemale,
@@ -47,6 +48,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
         />
 
         <Label className='example-label'>Extra Extra Small Persona (24px)</Label>
+
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraExtraSmall }
@@ -100,7 +102,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           presence={ PersonaPresence.blocked }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-      </div>
+      </div >
     );
   }
 }
