@@ -101,8 +101,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }
