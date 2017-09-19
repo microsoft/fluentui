@@ -13,12 +13,8 @@ if (isDogfood) {
 } else if (!isProduction) {
   publicPath = "/dist/";
 }
-<<<<<<< HEAD
-const PACKAGE_NAME = 'fabric-site';
-=======
 
 const PACKAGE_NAME = 'fabric-sitev5';
->>>>>>> eaff99f2... Made changes to webpack config to allow for dogfood task
 
 module.exports = resources.createConfig(
   PACKAGE_NAME,
