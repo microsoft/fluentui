@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IComponentStatusProps } from '../../../../../packages/example-app-base/lib/index';
 
 export interface INavProps {
   /**
@@ -54,9 +53,4 @@ export interface INavPage {
    * @default false
    */
   isHomePage?: boolean;
-
-  /**
-   * The status of the component.
-   */
-  IComponentStatus?: IComponentStatusProps;
 }
