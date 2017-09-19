@@ -1,8 +1,6 @@
 let path = require('path');
 let resources = require('../../scripts/tasks/webpack-resources');
 
-const PACKAGE_NAME = require('./package.json').name;
-
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
 

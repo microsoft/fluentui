@@ -49,25 +49,18 @@ $DropDown-item-height: 32px;
     .title,
     .caretDown {
       color: $ms-color-black;
-
-      @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteSelected;
-      }
     }
+
     .titleIsPlaceHolder {
       color: $ms-color-neutralSecondary;
     }
   }
 
   &:hover,
-  &:active {
-    .title {
-      border-color: $ms-color-themePrimary;
-
+  &:active,
+  &:focus {
+    .title,
+    .caretDown {
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackSelected;
       }
@@ -78,17 +71,21 @@ $DropDown-item-height: 32px;
     }
   }
 
+  &:hover {
+    .title {
+      border-color: $ms-color-neutralDark;
+    }
+  }
+
+  &:active {
+    .title {
+      border-color: $ms-color-themeDark;
+    }
+  }
+
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
-
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
-      }
     }
   }
 
@@ -102,7 +99,7 @@ $DropDown-item-height: 32px;
 .root.rootIsDisabled {
   .title {
     background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    border: none;
     color: $ms-color-neutralTertiary;
     cursor: default;
 

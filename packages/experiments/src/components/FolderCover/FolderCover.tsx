@@ -78,13 +78,16 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
     const {
       folderCoverSize: size = 'large',
       folderCoverType: type = 'default',
-      hideContent = false
+      hideContent = false,
+      ref,
+      ...divProps
     } = this.props;
 
     const assets = ASSETS[size][type];
 
     return (
       <div
+        { ...divProps }
         className={ css(FolderCoverStyles.root, {
           [`ms-FolderCover--isSmall ${FolderCoverStyles.isSmall}`]: size === 'small',
           [`ms-FolderCover--isLarge ${FolderCoverStyles.isLarge}`]: size === 'large',
@@ -94,10 +97,12 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
         }) }
       >
         <img
+          aria-hidden={ true }
           className={ css('ms-FolderCover-shadow', FolderCoverStyles.shadow) }
           src={ assets.shadow }
         />
         <img
+          aria-hidden={ true }
           className={ css('ms-FolderCover-back', FolderCoverStyles.back) }
           src={ assets.back }
         />
@@ -111,6 +116,7 @@ export class FolderCover extends React.Component<IFolderCoverProps, IFolderCover
           ) : null
         }
         <img
+          aria-hidden={ true }
           className={ css('ms-FolderCover-front', FolderCoverStyles.front) }
           src={ assets.front }
         />
