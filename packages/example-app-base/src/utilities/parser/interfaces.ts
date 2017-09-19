@@ -3,6 +3,7 @@ export interface IProperty {
   propertyName: string;
   propertyType: PropertyType;
   property: IInterfaceProperty[] | IEnumProperty[];
+  extends: string[];
 }
 
 export interface IInterfaceProperty {
