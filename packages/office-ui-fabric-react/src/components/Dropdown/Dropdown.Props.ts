@@ -31,6 +31,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<HTMLDivEle
   onRenderTitle?: IRenderFunction<IDropdownOption | IDropdownOption[]>;
 
   /**
+   * Optional custom renderer for chevron icon
+   */
+  onRenderChevronDownIcon?: IRenderFunction<IDropdownProps>;
+
+  /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
    * @default 0
    */

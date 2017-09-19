@@ -132,7 +132,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderPlaceHolder = this._onRenderPlaceHolder
+      onRenderPlaceHolder = this._onRenderPlaceHolder,
+      onRenderChevronDownIcon = this._onRenderChevronDownIcon
     } = this.props;
     let { isOpen, selectedIndex, selectedIndexes } = this.state;
     let selectedOption = this.props.multiSelect ? selectedIndexes && this._getAllSelectedOptions(options, selectedIndexes)
@@ -195,7 +196,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
                 onRenderPlaceHolder(this.props, this._onRenderPlaceHolder)
             }
           </span>
-          <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
+          { onRenderChevronDownIcon(this.props, this._onRenderChevronDownIcon) }
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -377,6 +378,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             { onRenderList(props, this._onRenderList) }
           </Callout>
         )
+    );
+  }
+
+  // Render Chevron Down Icon
+  @autobind
+  private _onRenderChevronDownIcon(props: IDropdownProps): JSX.Element {
+    return (
+      <Icon className={ css('ms-Dropdown-caretDown', styles.caretDown) } iconName='ChevronDown' />
     );
   }
 
