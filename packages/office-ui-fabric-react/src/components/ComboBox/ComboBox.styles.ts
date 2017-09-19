@@ -266,7 +266,7 @@ export const getStyles = memoizeFunction((
     input: {
       boxSizing: 'border-box',
       width: '100%',
-      lineHeight: '28px',
+      height: '30px',
       borderStyle: 'none',
       outline: 'none',
       font: 'inherit',
