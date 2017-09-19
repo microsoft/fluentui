@@ -11,7 +11,7 @@ if (isDogfood) {
 } else if (!isProduction) {
   publicPath = "/dist/";
 }
-const PACKAGE_NAME = 'fabric-site';
+const PACKAGE_NAME = 'fabric-sitev5';
 
 module.exports = resources.createConfig(
   PACKAGE_NAME,
