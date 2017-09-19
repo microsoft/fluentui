@@ -76,6 +76,14 @@
   }
 }
 
+.label {
+  @include ms-screenReaderOnly;
+}
+
+.description {
+  @include ms-screenReaderOnly;
+}
+
 .link {
   @include focus-clear();
 
@@ -95,6 +103,7 @@
 }
 
 .foreground {
+  display: inline-block;
   position: relative;
   overflow: hidden;
   max-width: 100%;
