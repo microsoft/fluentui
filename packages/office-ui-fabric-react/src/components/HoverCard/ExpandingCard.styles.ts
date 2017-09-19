@@ -6,6 +6,8 @@ import {
   ITheme
 } from '../../Styling';
 
+const MS_HIGHCONTRAST_ACTIVE = '@media screen and (-ms-high-contrast: active)';
+
 export const getStyles = memoizeFunction((
   theme: ITheme,
   customStyles?: IExpandingCardStyles
@@ -17,7 +19,10 @@ export const getStyles = memoizeFunction((
       'pointer-events': 'none',
       '.ms-Callout': {
         'box-shadow': '0 0 20px rgba(0, 0, 0, .2)',
-        border: 'none'
+        border: 'none',
+        [MS_HIGHCONTRAST_ACTIVE]: {
+          border: '1px solid WindowText',
+        }
       }
     },
     compactCard: {

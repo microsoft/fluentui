@@ -59,7 +59,7 @@ $borderSize: 1.5px;
   }
 }
 
-@media screen and (-ms-high-contrast: active) {
+@include high-contrast {
   .root {
     > .circle {
         border-top-style: none;
