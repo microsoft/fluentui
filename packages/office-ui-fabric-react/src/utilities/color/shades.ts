@@ -77,9 +77,9 @@ export function isDark(color: IColor) {
   return Colors.hsv2hsl(color.h, color.s, color.v).l < 50;
 }
 
-/** todo: update
+/**
  * Given a color and a shade specification, generates the requested shade of the color.
- * Logic: (todo formatting)
+ * Logic:
  * if white
  *  darken via tables defined above
  * if black
