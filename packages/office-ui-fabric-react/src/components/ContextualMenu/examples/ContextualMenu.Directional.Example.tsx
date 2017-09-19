@@ -79,13 +79,13 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             label='Show beak'
             checked={ isBeakVisible }
             onChange={ this._onShowBeakChange }
-         />
+          />
           <Checkbox
             className='exampleCheckbox'
             label='Fix Edge'
             checked={ edgeFixed }
             onChange={ this._onFixEdgeChange }
-         />
+          />
           <Slider
             max={ 20 }
             label='Gap Space'
