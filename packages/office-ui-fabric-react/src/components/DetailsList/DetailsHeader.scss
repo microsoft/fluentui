@@ -181,6 +181,11 @@ $isPaddedMargin: 24px;
   bottom: 0;
   cursor: ew-resize;
   background: rgba(255, 255, 255, 0);
+
+  @include high-contrast {
+    background: transparent;
+    -ms-high-contrast-adjust: none;
+  }
 }
 
 .cell .collapseButton {
