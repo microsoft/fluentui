@@ -60,6 +60,19 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
             Images render an image. The borders have been added to these examples in order to help visualize empty space in the image frame.
           </div>
         }
+        bestPractices={
+          <div/>
+        }
+        dos={
+          <div>
+            <ul>
+              <li>Provide descriptive values for the alt text attribute for all images.</li>
+            </ul>
+          </div>
+        }
+        donts={
+          <div/>
+        }
         isHeaderVisible={ this.props.isHeaderVisible }
       />
     );
