@@ -60,9 +60,6 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
             <p>Real-world examples of this implementation can be seen in administrative interfaces where a particularly difficult-to-understand concept is paired with the iconClassNames.info "i" icon. In this example, Callout - with its tip text - is opened when the user clicks on or hovers over the icon.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Callout/Callout.html'>Fabric JS</a>
-        }
         bestPractices={
           <div />
         }
