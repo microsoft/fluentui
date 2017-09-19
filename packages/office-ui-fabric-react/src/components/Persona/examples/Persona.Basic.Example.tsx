@@ -39,7 +39,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           />
         </div>
 
-        <Label className='exampleLabel'>Tiny Persona (12px)</Label>
+        <Label className='example-label'>Tiny Persona (12px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.tiny }
@@ -47,7 +47,8 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Extra Extra Small Persona (24px)</Label>
+        <Label className='example-label'>Extra Extra Small Persona (24px)</Label>
+
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraExtraSmall }
@@ -55,7 +56,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Size 28 Persona (28px)</Label>
+        <Label className='example-label'>Size 28 Persona (28px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.size28 }
@@ -63,7 +64,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Extra Small Persona (32px)</Label>
+        <Label className='example-label'>Extra Small Persona (32px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraSmall }
@@ -71,7 +72,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Small Persona (40px)</Label>
+        <Label className='example-label'>Small Persona (40px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.small }
@@ -79,14 +80,14 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Medium Persona (48px)</Label>
+        <Label className='example-label'>Medium Persona (48px)</Label>
         <Persona
           { ...examplePersona }
           hidePersonaDetails={ !renderPersonaDetails }
           presence={ PersonaPresence.busy }
         />
 
-        <Label className='exampleLabel'>Large Persona (72px)</Label>
+        <Label className='example-label'>Large Persona (72px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.large }
@@ -94,14 +95,14 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           hidePersonaDetails={ !renderPersonaDetails }
         />
 
-        <Label className='exampleLabel'>Extra Large Persona (100px)</Label>
+        <Label className='example-label'>Extra Large Persona (100px)</Label>
         <Persona
           { ...examplePersona }
           size={ PersonaSize.extraLarge }
           presence={ PersonaPresence.blocked }
           hidePersonaDetails={ !renderPersonaDetails }
         />
-      </div>
+      </div >
     );
   }
 }
