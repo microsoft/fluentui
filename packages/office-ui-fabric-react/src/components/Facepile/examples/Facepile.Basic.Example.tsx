@@ -12,7 +12,8 @@ import {
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
-import '../../../common/_exampleStyles.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export enum ExtraDataType {
   none = 0,
@@ -72,7 +73,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
           />
         </div>
         <Checkbox
-          className='exampleCheckbox'
+          className={ exampleStyles.exampleCheckbox }
           label='Fade In'
           checked={ this.state.imagesFadeIn }
           onChange={ this._onChangeFadeIn }

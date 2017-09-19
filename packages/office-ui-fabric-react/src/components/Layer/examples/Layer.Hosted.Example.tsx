@@ -3,9 +3,10 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import './Layer.Example.scss';
-import '../../../common/_exampleStyles.scss';
 import { AnimationClassNames } from '../../../Styling';
+import './Layer.Example.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export class LayerHostedExample extends React.Component<any, any> {
   constructor() {
@@ -41,7 +42,7 @@ export class LayerHostedExample extends React.Component<any, any> {
         </p>
 
         <Checkbox
-          className='exampleCheckbox'
+          className={ exampleStyles.exampleCheckbox }
           label='Render the box below in a Layer and target it at hostId=layerhost1'
           checked={ showLayer }
           onChange={ this._onChangeCheckbox }
