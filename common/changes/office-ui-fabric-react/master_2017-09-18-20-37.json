@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[SwatchColorPicker] Fix uncaught exception when colorCells is empty",
+      "comment": "Dropdown: Fixed logic to support selected options in single select scenario",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jspurlin@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }

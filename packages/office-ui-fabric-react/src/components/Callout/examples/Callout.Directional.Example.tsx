@@ -6,6 +6,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
+
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 

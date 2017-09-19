@@ -22,6 +22,7 @@ import {
   IPickerItemProps,
   ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
+
 import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import './Picker.CustomResult.Example.scss';
@@ -353,7 +354,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
             onBlur: () => console.log('onBlur called')
           } }
         />
-      </div>
+      </div >
     );
   }
 

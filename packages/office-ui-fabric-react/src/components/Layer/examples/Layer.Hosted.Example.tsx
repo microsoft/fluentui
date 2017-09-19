@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
@@ -29,7 +30,7 @@ export class LayerHostedExample extends React.Component<any, any> {
         <Toggle
           label='Show host'
           checked={ showHost }
-          onChanged={ checked => this.setState({ showHost: checked }) }
+          onChanged={ this._onChangeToggle }
         />
 
         { showHost && (
@@ -44,14 +45,14 @@ export class LayerHostedExample extends React.Component<any, any> {
           className={ exampleStyles.exampleCheckbox }
           label='Render the box below in a Layer and target it at hostId=layerhost1'
           checked={ showLayer }
-          onChange={ (ev, checked) => this.setState({ showLayer: checked }) }
+          onChange={ this._onChangeCheckbox }
         />
 
         { showLayer ? (
           <Layer
             hostId='layerhost1'
-            onLayerDidMount={ () => console.log('didmount') }
-            onLayerWillUnmount={ () => console.log('willunmount') }
+            onLayerDidMount={ this._log('didmount') }
+            onLayerWillUnmount={ this._log('willunmount') }
           >
             { content }
           </Layer>
@@ -61,5 +62,21 @@ export class LayerHostedExample extends React.Component<any, any> {
 
       </div>
     );
+  }
+
+  private _log(text: string): () => void {
+    return (): void => {
+      console.log(text);
+    };
+  }
+
+  @autobind
+  private _onChangeCheckbox(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+    this.setState({ showLayer: checked });
+  }
+
+  @autobind
+  private _onChangeToggle(checked: boolean): void {
+    this.setState({ showHost: checked });
   }
 }
