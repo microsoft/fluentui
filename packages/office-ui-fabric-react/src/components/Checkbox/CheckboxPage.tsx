@@ -3,7 +3,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSetNew
 } from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
@@ -21,9 +21,9 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet
+          <PropertiesTableSetNew
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.Props.ts')
+              'ICheckbox', 'ICheckboxProps', 'ICheckboxStyles'
             ] }
           />
         }
