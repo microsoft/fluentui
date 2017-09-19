@@ -368,7 +368,7 @@ export interface IContextualMenuSection extends React.Props<ContextualMenu> {
   /**
    * The optional section title.
    */
-  title?: IContextualMenuItem;
+  title?: string;
 
   /**
    * If set to true, the section will display a divider at the top of the section.
