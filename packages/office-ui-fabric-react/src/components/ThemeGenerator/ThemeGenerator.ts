@@ -59,8 +59,10 @@ export class ThemeGenerator {
     }
   }
 
-  /* Gets the JSON-format blob that describes the theme, in this format:
+  /* Gets the JSON-formatted blob that describes the theme, usable with the REST request endpoints
    * { [theme slot name as string] : [value as string],
+   *  "tokenName": "#f00f00",
+   *  "tokenName2": "#ba2ba2",
    *   ... }
    */
   public static getThemeAsJson(slotRules: IThemeRules): any {
@@ -74,7 +76,7 @@ export class ThemeGenerator {
     return theme;
   }
 
-  /* Gets the theme as a list of SASS variables that can be used in code in this format:
+  /* Gets the theme as a list of SASS variables that can be used in code
    * $tokenName: "[theme:tokenName, default:#f00f00]";
    * $tokenName2: "[theme:tokenName2, default:#ba2ba2]";
    * ...
@@ -94,6 +96,33 @@ export class ThemeGenerator {
       }
     }
     return output;
+  }
+
+  /* Gets the theme formatted for the PowerShell endpoint
+   * @{
+   * "tokenName" = "#f00f00";
+   * "tokenName2" = "#ba2ba2";
+   * ...
+   * }
+)
+Add-SPOTheme -Name "TestOrange" -Palette $themeOrange -IsInverted $false
+
+   */
+  public static getThemeForPowerShell(slotRules: IThemeRules): any {
+    let psVarTemplate = '"{0}" = "{2}";\n';
+    let output = '';
+
+    for (let ruleName in slotRules) {
+      if (slotRules.hasOwnProperty(ruleName)) {
+        let rule: IThemeSlotRule = slotRules[ruleName];
+        let camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        output += format(psVarTemplate,
+          camelCasedName,
+          camelCasedName,
+          rule.value ? rule.value.str : '');
+      }
+    }
+    return '@{\n' + output + '}';
   }
 
   /* Sets the given slot's value to the appropriate value, shading it if necessary.

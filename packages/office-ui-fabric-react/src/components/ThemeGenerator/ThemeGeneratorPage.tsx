@@ -407,21 +407,28 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     }
 
     return (
-      <div className={ 'ms-themer-output-root' }>
+      <div>
         <h2>Output</h2>
-        <textarea
-          id='jsonOutput'
-          readOnly={ true }
-          style={ { height: '300px', width: '300px' } }
-          spellCheck={ false }
-          value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
-        />
-        <textarea
-          readOnly={ true }
-          style={ { height: '300px', width: '300px', display: 'none' } }
-          spellCheck={ false }
-          value={ ThemeGenerator.getThemeAsSass(abridgedTheme) }
-        />
+        <div className={ 'ms-themer-output-root' }>
+          <div>
+            <h3>JSON</h3>
+            <textarea
+              id='jsonOutput'
+              readOnly={ true }
+              spellCheck={ false }
+              value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
+            />
+          </div>
+          <div>
+            <h3>PowerShell</h3>
+            <textarea
+              id='powershellOutput'
+              readOnly={ true }
+              spellCheck={ false }
+              value={ ThemeGenerator.getThemeForPowerShell(abridgedTheme) }
+            />
+          </div>
+        </div>
       </div>
     );
   }
