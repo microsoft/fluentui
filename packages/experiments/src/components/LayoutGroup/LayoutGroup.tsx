@@ -2,12 +2,16 @@
 import * as React from 'react';
 import { ILayoutGroupProps } from './LayoutGroup.props';
 import { mergeStyles } from '@uifabric/styling';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  autobind,
+  getNativeProps,
+  divProperties
+} from 'office-ui-fabric-react/lib/Utilities';
 
 export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
 
   public static defaultProps: ILayoutGroupProps = {
-    gap: 8,
+    layoutGap: 8,
     direction: 'vertical',
     justify: 'start'
   };
@@ -16,25 +20,28 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
     const {
       children,
       direction,
-      gap,
-      justify
+      layoutGap,
+      justify,
     } = this.props;
+
+    let divProps = getNativeProps(this.props, divProperties);
 
     const numberOfChildren = React.Children.count(children);
 
     const group = React.Children.map(children, (child: React.ReactChild, i: number) => {
       const isLastChild = i === numberOfChildren - 1;
 
+      // Render individual item
       return (
         <div
           className={
             mergeStyles(
               'ms-LayoutGroup-item',
               direction === 'horizontal' && !isLastChild && {
-                marginRight: gap + 'px'
+                marginRight: layoutGap + 'px'
               },
               direction === 'vertical' && !isLastChild && {
-                marginBottom: gap + 'px'
+                marginBottom: layoutGap + 'px'
               },
               justify === 'fill' && {
                 flexBasis: 0,
@@ -49,8 +56,10 @@ export class LayoutGroup extends React.Component<ILayoutGroupProps, {}> {
       );
     });
 
+    // Render all items
     return (
       <div
+        { ...divProps }
         className={
           mergeStyles(
             'ms-LayoutGroup',

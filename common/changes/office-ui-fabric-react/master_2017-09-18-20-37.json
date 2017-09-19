@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Calendar: Month-picker-only selection bug fixed",
+      "comment": "Dropdown: Fixed logic to support selected options in single select scenario",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }

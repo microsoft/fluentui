@@ -6,7 +6,8 @@ import { autobind, BaseComponent, memoize } from '../../Utilities';
 import { IActivityItemProps, IActivityItemStyles } from './ActivityItem.Props';
 import { mergeStyles } from '../../Styling';
 import { getStyles } from './ActivityItem.styles';
-import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaSize } from 'office-ui-fabric-react/lib/Persona';
+import { PersonaCoin } from 'office-ui-fabric-react/lib/PersonaCoin';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export interface IActivityItemClassNames {
@@ -120,13 +121,12 @@ export class ActivityItem extends BaseComponent<IActivityItemProps, {}> {
       }
       activityPersonas.filter((person, index) => index < personaLimit).forEach((person, index) => {
         personaList.push(
-          <Persona
+          <PersonaCoin
             {...person}
             // tslint:disable-next-line:no-string-literal
             key={ person['key'] ? person['key'] : index }
             className={ this._classNames.activityPersona }
             size={ showSize16Personas ? PersonaSize.size16 : PersonaSize.extraSmall }
-            hidePersonaDetails={ true }
             style={ style }
           />
         );
