@@ -60,8 +60,7 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 
