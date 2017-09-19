@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
+import { assign, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import './PropertiesTable.scss';
@@ -93,15 +93,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    let properties = (props.properties as IInterfaceProperty[])
-      .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
-        a.interfacePropertyType < b.interfacePropertyType ? -1 :
-          a.interfacePropertyType > b.interfacePropertyType ? 1 :
-            a.name < b.name ? -1 :
-              a.name > b.name ? 1 :
-                0
-      ))
-      .map((prop: IInterfaceProperty, index: number) => assign({}, prop, { key: index }));
+    let properties = this._sortProps(props.properties as IInterfaceProperty[]);
 
     let groups: IGroup[] | undefined = undefined;
 
@@ -114,6 +106,14 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
       groups,
       isEnum: !!props.renderAsEnum
     };
+  }
+
+  @autobind
+  public componentWillReceiveProps(nextProps: IPropertiesTableProps): void {
+    this.setState(() => ({
+      properties: this._sortProps(nextProps.properties as IInterfaceProperty[])
+    }));
+
   }
 
   public render(): JSX.Element | null {
@@ -147,6 +147,19 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, IPro
     index = this._tryAddGroup(props, InterfacePropertyType.deprecated, 'Deprecated members', index, groups);
 
     return groups;
+  }
+
+  @autobind
+  private _sortProps(props: IInterfaceProperty[]): IInterfaceProperty[] {
+    return (props as IInterfaceProperty[])
+      .sort((a: IInterfaceProperty, b: IInterfaceProperty) => (
+        a.interfacePropertyType < b.interfacePropertyType ? -1 :
+          a.interfacePropertyType > b.interfacePropertyType ? 1 :
+            a.name < b.name ? -1 :
+              a.name > b.name ? 1 :
+                0
+      ))
+      .map((prop: IInterfaceProperty, index: number) => (assign({}, prop, { key: index }) as IInterfaceProperty));
   }
 
   private _tryAddGroup(
