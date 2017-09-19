@@ -11,6 +11,11 @@ export interface IButton {
    * Sets focus to the button.
    */
   focus: () => void;
+
+  /**
+   * If there is a menu associated with this button and it is visible, this will dismiss the menu
+   */
+  dismissMenu: () => void;
 }
 
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | BaseButton | Button> {

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ContextualMenu, ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
@@ -10,11 +9,8 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      isContextMenuVisible: false,
       showCallout: false
     };
-    this._onClick = this._onClick.bind(this);
-    this._onDismiss = this._onDismiss.bind(this);
   }
 
   public render() {
@@ -22,154 +18,151 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
 
     return (
       <div>
-        <DefaultButton onClick={ this._onClick } id='ContextualMenuButton1' text='Click for ContextualMenu' />
-        { this.state.isContextMenuVisible ? (
-          <ContextualMenu
-            title='My Menu'
-            shouldFocusOnMount={ true }
-            target={ this.state.target }
-            onDismiss={ this._onDismiss }
-            directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
-            items={
-              [
-                {
-                  key: 'newItem',
-                  iconProps: {
-                    iconName: 'Add'
-                  },
-                  subMenuProps: {
-                    items: [
-                      {
-                        key: 'emailMessage',
-                        name: 'Email message',
-                        title: 'Create an email'
-                      },
-                      {
-                        key: 'calendarEvent',
-                        name: 'Calendar event',
-                        title: 'Create a calendar event',
-                      }
-                    ],
-                  },
-                  name: 'New'
+        <DefaultButton
+          id='ContextualMenuButton1'
+          text='Click for ContextualMenu'
+          menuProps={ {
+            title: 'My Menu',
+            shouldFocusOnMount: true,
+            items: [
+              {
+                key: 'newItem',
+                iconProps: {
+                  iconName: 'Add'
                 },
-                {
-                  key: 'upload',
-                  onClick: () => {
-                    this.setState({ showCallout: true });
-                  },
-                  iconProps: {
-                    iconName: 'Upload',
-                    style: {
-                      color: 'salmon'
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'emailMessage',
+                      name: 'Email message',
+                      title: 'Create an email'
+                    },
+                    {
+                      key: 'calendarEvent',
+                      name: 'Calendar event',
+                      title: 'Create a calendar event',
                     }
-                  },
-                  name: 'Upload (Custom Color)',
-                  title: 'Upload a file'
+                  ],
                 },
-                {
-                  key: 'divider_1',
-                  itemType: ContextualMenuItemType.Divider
+                name: 'New'
+              },
+              {
+                key: 'upload',
+                onClick: () => {
+                  this.setState({ showCallout: true });
                 },
-                {
-                  key: 'rename',
-                  name: 'Rename'
+                iconProps: {
+                  iconName: 'Upload',
+                  style: {
+                    color: 'salmon'
+                  }
                 },
-                {
-                  key: 'properties',
-                  name: 'Properties'
+                name: 'Upload (Custom Color)',
+                title: 'Upload a file'
+              },
+              {
+                key: 'divider_1',
+                itemType: ContextualMenuItemType.Divider
+              },
+              {
+                key: 'rename',
+                name: 'Rename'
+              },
+              {
+                key: 'properties',
+                name: 'Properties'
+              },
+              {
+                key: 'disabled',
+                name: 'Disabled item',
+                disabled: true,
+              },
+              {
+                key: 'divider_2',
+                itemType: ContextualMenuItemType.Divider
+              },
+              {
+                key: 'share',
+                iconProps: {
+                  iconName: 'Share'
                 },
-                {
-                  key: 'disabled',
-                  name: 'Disabled item',
-                  disabled: true,
-                },
-                {
-                  key: 'divider_2',
-                  itemType: ContextualMenuItemType.Divider
-                },
-                {
-                  key: 'share',
-                  iconProps: {
-                    iconName: 'Share'
-                  },
-                  subMenuProps: {
-                    items: [
-                      {
-                        key: 'sharetoemail',
-                        name: 'Share to Email',
-                        iconProps: {
-                          iconName: 'Mail'
-                        },
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'sharetoemail',
+                      name: 'Share to Email',
+                      iconProps: {
+                        iconName: 'Mail'
                       },
-                      {
-                        key: 'sharetofacebook',
-                        name: 'Share to Facebook',
+                    },
+                    {
+                      key: 'sharetofacebook',
+                      name: 'Share to Facebook',
+                    },
+                    {
+                      key: 'sharetotwitter',
+                      name: 'Share to Twitter',
+                      iconProps: {
+                        iconName: 'Share'
                       },
-                      {
-                        key: 'sharetotwitter',
-                        name: 'Share to Twitter',
-                        iconProps: {
-                          iconName: 'Share'
-                        },
-                        subMenuProps: {
-                          items: [
-                            {
-                              key: 'sharetoemail_1',
-                              name: 'Share to Email',
-                              title: 'Share to Email',
-                              iconProps: {
-                                iconName: 'Mail'
-                              },
+                      subMenuProps: {
+                        items: [
+                          {
+                            key: 'sharetoemail_1',
+                            name: 'Share to Email',
+                            title: 'Share to Email',
+                            iconProps: {
+                              iconName: 'Mail'
                             },
-                            {
-                              key: 'sharetofacebook_1',
-                              name: 'Share to Facebook',
-                              title: 'Share to Facebook',
-                            },
-                            {
-                              key: 'sharetotwitter_1',
-                              name: 'Share to Twitter',
-                              title: 'Share to Twitter',
-                              iconProps: {
-                                iconName: 'Share'
-                              }
-                            },
-                          ],
-                        },
+                          },
+                          {
+                            key: 'sharetofacebook_1',
+                            name: 'Share to Facebook',
+                            title: 'Share to Facebook',
+                          },
+                          {
+                            key: 'sharetotwitter_1',
+                            name: 'Share to Twitter',
+                            title: 'Share to Twitter',
+                            iconProps: {
+                              iconName: 'Share'
+                            }
+                          },
+                        ],
                       },
-                    ],
-                  },
-                  name: 'Share'
+                    },
+                  ],
                 },
-                {
-                  key: 'print',
-                  iconProps: {
-                    iconName: 'Print'
-                  },
-                  name: 'Print'
+                name: 'Share'
+              },
+              {
+                key: 'print',
+                iconProps: {
+                  iconName: 'Print'
                 },
-                {
-                  key: 'music',
-                  iconProps: {
-                    iconName: 'MusicInCollectionFill'
-                  },
-                  name: 'Music',
+                name: 'Print'
+              },
+              {
+                key: 'music',
+                iconProps: {
+                  iconName: 'MusicInCollectionFill'
                 },
-                {
-                  key: 'divider_3',
-                  itemType: ContextualMenuItemType.Divider,
-                },
-                {
-                  key: 'Bing',
-                  name: 'Go to Bing',
-                  target: '_blank',
-                  href: 'http://www.bing.com'
-                },
-              ]
-            }
-          />) : (null) }
-
+                name: 'Music',
+              },
+              {
+                key: 'divider_3',
+                itemType: ContextualMenuItemType.Divider,
+              },
+              {
+                key: 'Bing',
+                name: 'Go to Bing',
+                target: '_blank',
+                href: 'http://www.bing.com'
+              },
+            ]
+          }
+          }
+        />
         { showCallout && (
           <Callout
             setInitialFocus={ true }
@@ -183,13 +176,5 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
         ) }
       </div>
     );
-  }
-
-  private _onClick(event: React.MouseEvent<any>) {
-    this.setState({ target: event.currentTarget, isContextMenuVisible: true });
-  }
-
-  private _onDismiss(event: any) {
-    this.setState({ isContextMenuVisible: false });
   }
 }

@@ -184,6 +184,10 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
+  public dismissMenu(): void {
+    this.setState({ menuProps: null });
+  }
+
   private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     let props = this.props;
     let {
