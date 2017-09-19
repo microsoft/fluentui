@@ -2,7 +2,6 @@ import * as React from 'react';
 import { autobind } from '../../../Utilities';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
 export class DialogBlockingExample extends React.Component<any, any> {
 
@@ -34,25 +33,6 @@ export class DialogBlockingExample extends React.Component<any, any> {
             containerClassName: 'ms-dialogMainOverride'
           } }
         >
-          <ChoiceGroup
-            options={ [
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              },
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              }
-            ] }
-            onChange={ this._onChoiceChanged }
-          />
           <DialogFooter>
             <PrimaryButton onClick={ this._closeDialog } text='Save' />
             <DefaultButton onClick={ this._closeDialog } text='Cancel' />
@@ -70,9 +50,5 @@ export class DialogBlockingExample extends React.Component<any, any> {
   @autobind
   private _closeDialog() {
     this.setState({ hideDialog: true });
-  }
-
-  private _onChoiceChanged() {
-    console.log('Choice option change');
   }
 }

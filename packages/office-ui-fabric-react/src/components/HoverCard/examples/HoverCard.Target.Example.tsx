@@ -49,12 +49,18 @@ class HoverCardField extends BaseComponent<IHoverCardFieldProps, IHoverCardField
             expandingCardProps={ this.props.expandingCardProps }
             target={ this.state.contentRendered }
             cardDismissDelay={ 300 }
-            onCardVisible={ () => console.log('onCardVisible') }
-            onCardHide={ () => console.log('onCardHide') }
+            onCardVisible={ this._log('onCardVisible') }
+            onCardHide={ this._log('onCardHide') }
           />
         }
       </div>
     );
+  }
+
+  private _log(text: string): () => void {
+    return (): void => {
+      console.log(text);
+    };
   }
 }
 

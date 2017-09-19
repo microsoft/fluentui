@@ -8,8 +8,7 @@ import {
   buttonProperties,
   getId,
   getNativeProps,
-  KeyCodes,
-  css,
+  KeyCodes
 } from '../../Utilities';
 import { mergeStyles, hideText } from '../../Styling';
 import { Icon, IIconProps } from '../../Icon';
@@ -401,7 +400,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         aria-expanded={ this._isExpanded }
         aria-pressed={ this.props.checked }
         aria-describedby={ buttonProps.ariaDescription }
-        className={ css(disabled ? styles!.splitButtonContainerDisabled : styles!.splitButtonContainer) }
+        className={ classNames && classNames.splitButtonContainer }
         tabIndex={ 0 }
         onKeyDown={ this.props.disabled ? undefined : this._onSplitButtonKeyDown }
         ref={ this._resolveRef('_splitButtonContainer') }

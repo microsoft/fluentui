@@ -29,9 +29,9 @@
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: contain;
-    bottom: -10px;
+    bottom: $svg-hero-bottom-alignment;
     content: '';
-    height: 70px;
+    height: 89px;
     left: -10px;
     position: absolute;
     right: -10px;
@@ -73,7 +73,7 @@
   margin-top: 16px;
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .hero {
     padding-bottom: 120px;
   }
@@ -146,7 +146,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .flavors {
     flex-direction: row;
     padding-bottom: 72px;
@@ -227,7 +227,7 @@
   background-color: $ms-color-neutralLight;
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .product {
     flex-direction: row;
     padding-bottom: 60px;
@@ -326,7 +326,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .featureList {
     flex-direction: row;
     flex-wrap: wrap;
