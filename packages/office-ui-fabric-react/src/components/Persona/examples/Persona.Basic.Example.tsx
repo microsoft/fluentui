@@ -38,7 +38,6 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           />
         </div>
 
-
         <Label className='exampleLabel'>Tiny Persona (12px)</Label>
         <Persona
           { ...examplePersona }
