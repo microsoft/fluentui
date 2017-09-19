@@ -1,6 +1,48 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 14 Sep 2017 10:17:39 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Sep 2017 10:08:55 GMT and should not be manually modified.
+
+## 4.48.1
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Patches
+
+- Added label to Persona example components.
+- Added an optional alt text prop for the Image component and example on the website.
+- Revised alt text best practices for Image Component in website, removed alt prop.
+- Updated dropdown state styles to match the XD specs.
+- Cleaned up Default Dialogue to more cleanly represent the default state. Reformated exampleStyles imports to work towards more modularity. Typo and language fixes.
+- Dropdown: Fixed logic to support selected options in single select scenario
+- Added shared styling to accommodate shared spacing between common elements in example components on the website. Also began to add consistency in the language.
+- SplitButton: Properly cascade container styles to the disabled state
+- Visual bug fixes for UHF adoption for website
+
+## 4.48.0
+Mon, 18 Sep 2017 10:18:23 GMT
+
+### Minor changes
+
+- DatePicker-Adding new props from Calendar component
+
+### Patches
+
+- DatePicker-fixing vertical scrollbar bug
+- Force Check to use the page background color
+- Allow onItemContextMenu a way to cancel preventDefault() call.
+- ActivityItem: Descreasing icon font size.
+
+## 4.47.0
+Fri, 15 Sep 2017 10:19:50 GMT
+
+### Minor changes
+
+- Calendar:  Adding week numbers to calendar
+- DatePicker: Hovering over calendar icon in text input does not change cursor to pointer.
+
+### Patches
+
+- SplitButton: Fixed primary theme, updated documentation
+- Prevent touch events from triggering marquee selection
 
 ## 4.46.1
 Thu, 14 Sep 2017 10:17:39 GMT

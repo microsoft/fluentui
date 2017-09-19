@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Calendar:  Adding week numbers to calendar",
-      "type": "minor"
+      "comment": "Changing high-contrast colors to system colors",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "v-krbrow@microsoft.com"
 }

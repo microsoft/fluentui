@@ -17,7 +17,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         title='Toggle'
         componentName='ToggleExample'
         exampleCards={
-          <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
+          <ExampleCard title='Default Toggles' code={ ToggleBasicExampleCode }>
             <ToggleBasicExample />
           </ExampleCard>
         }
@@ -65,9 +65,6 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
               Don’t use a Toggle if the user will have to do something else or go somewhere else in order to experience its effect. If any extra step is required for changes to be effective, you should use a checkbox and corresponding "Apply" button instead of a Toggle.
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Toggle/Toggle.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />

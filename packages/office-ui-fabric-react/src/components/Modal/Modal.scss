@@ -27,7 +27,7 @@
   }
 
   :global(.ms-Overlay) {
-    @media screen and (-ms-high-contrast: active) {
+    @include high-contrast {
       opacity: 0;
     }
   }

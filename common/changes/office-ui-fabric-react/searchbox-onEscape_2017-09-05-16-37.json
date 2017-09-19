@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Hovering over calendar icon in text input does not change cursor to pointer.",
+      "comment": "SearchBox: Added onEscape prop",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kegorr@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
