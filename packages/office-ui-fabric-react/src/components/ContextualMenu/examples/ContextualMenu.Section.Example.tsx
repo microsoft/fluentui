@@ -31,11 +31,7 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 sectionProps: {
                   topDivider: true,
                   bottomDivider: true,
-                  title: {
-                    key: 'Actions',
-                    itemType: ContextualMenuItemType.Header,
-                    name: 'Actions'
-                  },
+                  title: 'Actions',
                   items: [
                     {
                       key: 'newItem',
@@ -79,11 +75,7 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 key: 'section',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
-                  title: {
-                    key: 'Navigation',
-                    itemType: ContextualMenuItemType.Header,
-                    name: 'Social'
-                  },
+                  title: 'Social',
                   items: [
                     {
                       key: 'share',
