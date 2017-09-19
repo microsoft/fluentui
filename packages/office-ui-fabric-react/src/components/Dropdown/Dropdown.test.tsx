@@ -20,7 +20,7 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
   { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '4', text: '4' },
-  { key: '5', text: '5' },
+  { key: '5', text: '5', ariaLabel: 'five' },
   { key: '6', text: '6' },
 ];
 
@@ -112,6 +112,60 @@ describe('Dropdown', () => {
     let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
 
     expect(titleElement.textContent).equals('1');
+  });
+
+  it('Renders a selected item with aria label if the label is specified', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        selectedKey='5'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+    expect(titleElement.getAttribute('aria-label')).equals('five');
+  });
+
+  it('Renders a selected item without aria label if the label is not specified', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        selectedKey='4'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+    expect(titleElement.getAttribute('aria-label')).to.be.null;
+  });
+
+  it('Renders an option with aria label only if the label is specified', () => {
+    let container = document.createElement('div');
+    let dropdownRoot: HTMLElement | undefined;
+
+    document.body.appendChild(container);
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        defaultSelectedKey='1'
+        options={ DEFAULT_OPTIONS }
+      />,
+      container);
+    dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+
+    ReactTestUtils.Simulate.click(dropdownRoot);
+
+    let ariaLabeledItemElement = document.querySelectorAll('.ms-Dropdown-item[aria-label]') as NodeListOf<HTMLElement>;
+    expect(ariaLabeledItemElement.length).equals(1);
+    expect(ariaLabeledItemElement[0].getAttribute('aria-label')).equals('five');
   });
 
   it('Can change items in uncontrolled case', () => {

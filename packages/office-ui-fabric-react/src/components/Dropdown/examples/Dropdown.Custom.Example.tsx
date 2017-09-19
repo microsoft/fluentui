@@ -30,7 +30,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
               { key: 'A', text: 'Option a', data: { icon: 'Memo' } },
               { key: 'B', text: 'Option b', data: { icon: 'Print' } },
               { key: 'C', text: 'Option c', data: { icon: 'ShoppingCart' } },
-              { key: 'D', text: 'Option d', data: { icon: 'Train' } },
+              { key: 'D', text: 'Option d', ariaLabel: 'test', data: { icon: 'Train' } },
               { key: 'E', text: 'Option e', data: { icon: 'Repair' } },
               { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
               { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
