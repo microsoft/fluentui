@@ -7,7 +7,6 @@ import {
 import {
   autobind
 } from '../../../Utilities';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import '../../../common/_exampleStyles.scss';
 
@@ -30,7 +29,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
             { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked, isCurrentItem: true }
           ] }
           maxDisplayedItems={ 6 }
-          ariaLabel={ 'Website breadcrumb' } 
+          ariaLabel={ 'Website breadcrumb' }
         />
 
         <Label className='exampleLabel'>With maxDisplayedItems set to three</Label>
