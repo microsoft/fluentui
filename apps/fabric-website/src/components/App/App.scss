@@ -41,17 +41,10 @@
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
 
     @include high-contrast {
-      border-right: 1px solid $ms-color-white;
-      border-left: 1px solid $ms-color-white;
-      border-bottom: 1px solid $ms-color-white;
+      border-right: 1px solid WindowText;
+      border-left: 1px solid WindowText;
+      border-bottom: 1px solid WindowText;
     }
-
-    @include high-contrast-black-on-white  {
-      border-right: 1px solid $ms-color-black;
-      border-left: 1px solid $ms-color-black;
-      border-bottom: 1px solid $ms-color-black;
-    }
-
   }
 
   // When the nav is open (smaller screens only) push the content over and prevent app from scrolling

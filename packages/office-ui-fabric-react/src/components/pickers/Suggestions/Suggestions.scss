@@ -26,12 +26,8 @@
       background: $ms-color-neutralTertiaryAlt;
     }
 
-    @media screen and (-ms-high-contrast: active) {
-      border: 1px solid $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border: 1px solid $ms-color-black;
+    @include high-contrast {
+      border: 1px solid WindowText;
     }
 
     .closeButton {
