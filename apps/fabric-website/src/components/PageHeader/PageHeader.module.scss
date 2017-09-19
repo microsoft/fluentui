@@ -51,8 +51,8 @@
         box-shadow: 0 10px 30px -10px rgba(0,0,0,.2);
         max-width: $App-maximumWidth - $Nav-width;
         position: fixed;
-        top: $Header-height;
-        width: 100%;
+        top: 0;
+        width: calc(100% - #{$Nav-width} - #{$App-padding-left-lg} - #{$App-padding-right-lg});
         z-index: $ms-zIndex-1;
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
 
@@ -129,7 +129,17 @@
   // The mobile nav is no longer present, so the attached page header is higher up
   .pageHeader.isAttached {
     .content {
-      top: $Header-height;
+      top: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .pageHeader {
+    &.isAttached {
+      .content {
+        width: calc(100% - #{$Nav-width} - #{$App-padding-right-sm} - #{$App-padding-left-sm} - 13px);
+      }
     }
   }
 }
