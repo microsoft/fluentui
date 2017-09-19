@@ -64,7 +64,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       let tr = this.state.themeRules as IThemeRules;
       newOutput.backgroundOverlay = updateA((tr[BaseSlots[BaseSlots.backgroundColor]] as IThemeSlotRule).value!, 50).str;
 
-      outputElem.value = JSON.stringify(newOutput);
+      outputElem.value = JSON.stringify(newOutput, void 0, 2);
     }
   }
 
@@ -190,7 +190,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
               label='Pick one'
               required={ true }
             />,
-          <ChoiceGroup
+            <ChoiceGroup
               options={ [
                 {
                   key: 'C',
@@ -392,6 +392,18 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
 
   @autobind
   private _outputSection() {
+    const themeRules = this.state.themeRules;
+
+    // strip out the unnecessary shades from the final output theme
+    let abridgedTheme: IThemeRules = {};
+    for (let ruleName in themeRules) {
+      if (themeRules.hasOwnProperty(ruleName)) {
+        if (ruleName.indexOf('ColorShade') === -1 && ruleName !== 'primaryColor' && ruleName !== 'backgroundColor' && ruleName !== 'foregroundColor') {
+          abridgedTheme[ruleName] = themeRules[ruleName];
+        }
+      }
+    }
+
     return (
       <div className={ 'ms-themer-output-root' }>
         <h2>Output</h2>
@@ -400,13 +412,13 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
           readOnly={ true }
           style={ { height: '300px', width: '300px' } }
           spellCheck={ false }
-          value={ JSON.stringify(ThemeGenerator.getThemeAsJson(this.state.themeRules), void 0, 2) }
+          value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
         />
         <textarea
           readOnly={ true }
           style={ { height: '300px', width: '300px', display: 'none' } }
           spellCheck={ false }
-          value={ ThemeGenerator.getThemeAsSass(this.state.themeRules) }
+          value={ ThemeGenerator.getThemeAsSass(abridgedTheme) }
         />
       </div>
     );
