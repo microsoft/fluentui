@@ -2,20 +2,12 @@
 @import '../../styles/mixins';
 
 :global {
-  .App {
-    background-color: $ms-color-neutralDark;
-    justify-content: center;
-    padding-left: $App-padding-left-lg;
-    padding-right: $App-padding-right-lg;
-  }
-
   // Element that wraps everything except for the header
   .App-wrapper {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
-    padding-top: $Header-height; // Keep content from being covered by the header
   }
 
   // Nav is hidden off screen by default
@@ -41,10 +33,17 @@
     transition: all $ms-animation-duration-2 $ms-animation-ease-1;
 
     @include high-contrast {
-      border-right: 1px solid WindowText;
-      border-left: 1px solid WindowText;
-      border-bottom: 1px solid WindowText;
+      border-right: 1px solid $ms-color-white;
+      border-left: 1px solid $ms-color-white;
+      border-bottom: 1px solid $ms-color-white;
     }
+
+    @include high-contrast-black-on-white  {
+      border-right: 1px solid $ms-color-black;
+      border-left: 1px solid $ms-color-black;
+      border-bottom: 1px solid $ms-color-black;
+    }
+
   }
 
   // When the nav is open (smaller screens only) push the content over and prevent app from scrolling
@@ -74,6 +73,13 @@
 
   // Show the nav at all times, to the left of the content
   @media screen and (min-width: $uhf-screen-min-mobile) {
+    .App {
+      background-color: $ms-color-neutralDark;
+      justify-content: center;
+      @include ms-padding-right($App-padding-right-lg);
+      @include ms-padding-left($App-padding-left-lg);
+    }
+
     .App-wrapper {
       flex-direction: row;
     }
