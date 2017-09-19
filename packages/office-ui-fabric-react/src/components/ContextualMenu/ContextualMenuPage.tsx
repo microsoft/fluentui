@@ -27,22 +27,22 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         componentName='ContextualMenuExample'
         exampleCards={
           <div>
-            <ExampleCard title='ContextualMenu' code={ ContextualMenuBasicExampleCode }>
+            <ExampleCard title='Default ContextualMenu' code={ ContextualMenuBasicExampleCode }>
               <ContextualMenuBasicExample />
             </ExampleCard>
             <ExampleCard title='ContextualMenu section example' code={ ContextualMenuSectionExampleCode }>
               <ContextualMenuSectionExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu checked menus example' code={ ContextualMenuCheckmarksExampleCode }>
+            <ExampleCard title='ContextualMenu with checked menus' code={ ContextualMenuCheckmarksExampleCode }>
               <ContextualMenuCheckmarksExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
+            <ExampleCard title='ContextualMenu with beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
               <ContextualMenuDirectionalExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
+            <ExampleCard title='ContextualMenu wtih customization' code={ ContextualMenuCustomizationExampleCode }>
               <ContextualMenuCustomizationExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu header example' code={ ContextualMenuHeaderExampleCode }>
+            <ExampleCard title='ContextualMenu with header' code={ ContextualMenuHeaderExampleCode }>
               <ContextualMenuHeaderExample />
             </ExampleCard>
           </div>
@@ -90,9 +90,6 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
               <li>Create submenus of submenus.</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ContextualMenu/ContextualMenu.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />
