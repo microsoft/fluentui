@@ -45,12 +45,12 @@ export const getStyles = memoizeFunction((
     },
 
     icon: {
-      float: 'left',
       fontSize: '2em',
       lineHeight: '1em',
-      width: '1em',
       height: '1em',
-      margin: '0px 8px 0px 0px'
+      margin: '0px 8px 0px 0px',
+      flexBasis: '1em',
+      flexShrink: '0'
     },
 
     label: {

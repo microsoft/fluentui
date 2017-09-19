@@ -66,7 +66,7 @@ export const getStyles = memoizeFunction((
     },
 
     textContainer: {
-      width: '100%'
+      flexGrow: '1'
     },
 
     icon: iconStyle,
