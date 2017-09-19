@@ -339,10 +339,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/themes'
         },
         {
-          getComponent: cb => cb(require<any>('../components/ThemeGenerator/ThemerPage').ThemerPage),
-          key: 'Themer',
-          name: 'Theming',
-          url: '#examples/themer'
+          component: require<any>('../components/ThemeGenerator/ThemeGeneratorPage').ThemeGeneratorPage,
+          key: 'Theme Generator',
+          name: 'Beta Theme Generator',
+          url: '#examples/themeGenerator'
         }
       ],
       name: 'Utilities'

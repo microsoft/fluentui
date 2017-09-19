@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './ThemerPage.scss';
+import './ThemeGeneratorPage.scss';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
@@ -37,7 +37,7 @@ export interface IThemeGeneratorPageState {
   colorPickerVisible: boolean;
 }
 
-export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
+export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPageState> {
   private _imgUrl: string;
 
   constructor() {
@@ -112,15 +112,16 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
           * We use that API to identify the most prominent background and foreground colors, and the accent color,
           * and generate a theme based off of those.
           * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
-          * key in _makeThemeFromImg() below. Then, just uncomment this section. *//*
+          * key in _makeThemeFromImg() below. Then, just uncomment this section. */}
+        {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
           <input type='text' id='imageUrl' />
-          <button onClick={ this._makeThemeFromImg.bind(this) }>Create theme from image</button>
+          <button onClick={ this._makeThemeFromImg }>Create theme from image</button>
         </div>
         <div id='imageDescription' />
         <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
-      */}
+        {*/}
 
         {/* the shared popup color picker for slots */ }
         { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
@@ -234,7 +235,8 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
 
     let xhr = new XMLHttpRequest();
     xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
-    xhr.open('POST', 'https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
+    // you may need to change the URL here
+    xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
     xhr.setRequestHeader('Content-Type', 'application/json');
     alert('You forgot to set the subscription key!');
     xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '[YOUR SUBSCRIPTION KEY HERE]');
@@ -256,7 +258,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
 
       // converts a returned color from a word into a hex value conforming to our palette
       const getHexFromColor = (color: string, isBg: boolean) => {
-        // todo: could use more logic based on isInverted
+        // todo: could use more logic based on isInverted and isBg
         switch (color.toLowerCase()) {
           case 'black': return '#1f1f1f';
           case 'blue': return '#0078d7';
@@ -280,21 +282,21 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
       const bgColor = getHexFromColor(response.color.dominantColorBackground, true);
       const bgColorIsDark = isDark(getColorFromString(bgColor));
       ThemeGenerator.setSlot(
-        themeRules[BaseSlots.backgroundColor], // todo THIS IS WRONG
+        themeRules[BaseSlots[BaseSlots.backgroundColor]],
         bgColor,
         themeRules,
         bgColorIsDark,
         true,
         true);
       ThemeGenerator.setSlot(
-        themeRules[BaseSlots.primaryColor],
+        themeRules[BaseSlots[BaseSlots.primaryColor]],
         '#' + response.color.accentColor,
         themeRules,
         bgColorIsDark,
         true,
         true);
       ThemeGenerator.setSlot(
-        themeRules[BaseSlots.foregroundColor],
+        themeRules[BaseSlots[BaseSlots.foregroundColor]],
         getHexFromColor(response.color.dominantColorForeground, false),
         themeRules,
         bgColorIsDark,
@@ -394,7 +396,7 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   private _outputSection() {
     const themeRules = this.state.themeRules;
 
-    // strip out the unnecessary shades from the final output theme
+    // strip out the unnecessary shade slots from the final output theme
     let abridgedTheme: IThemeRules = {};
     for (let ruleName in themeRules) {
       if (themeRules.hasOwnProperty(ruleName)) {
@@ -428,8 +430,8 @@ export class ThemerPage extends React.Component<any, IThemeGeneratorPageState> {
   private _makeNewTheme() {
     let themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
     console.log('New theme...', themeAsJson);
-    document.body.style.backgroundColor = themeAsJson.backgroundColor; // todo
-    document.body.style.color = themeAsJson.bodyText; // todo
+    document.body.style.backgroundColor = themeAsJson.backgroundColor;
+    document.body.style.color = themeAsJson.bodyText;
     loadTheme({ palette: themeAsJson });
   }
 
