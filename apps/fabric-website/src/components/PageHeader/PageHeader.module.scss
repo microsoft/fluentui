@@ -48,7 +48,7 @@
         max-width: $App-maximumWidth - $Nav-width;
         position: fixed;
         top: 0;
-        width: 100%;
+        width: calc(100% - #{$Nav-width} - #{$App-padding-left-lg} - #{$App-padding-right-lg});
         z-index: $ms-zIndex-1;
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
 
@@ -122,6 +122,16 @@
   .pageHeader.isAttached {
     .content {
       top: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .pageHeader {
+    &.isAttached {
+      .content {
+        width: calc(100% - #{$Nav-width} - #{$App-padding-right-sm} - #{$App-padding-left-sm} - 13px);
+      }
     }
   }
 }
