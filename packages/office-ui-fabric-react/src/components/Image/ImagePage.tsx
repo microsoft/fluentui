@@ -12,6 +12,8 @@ import { ImageContainExample } from './examples/Image.Contain.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Default.Example.tsx') as string;
 const ImageCenterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Center.Example.tsx') as string;
@@ -61,6 +63,11 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Image}
+          />
+        }
       />
     );
   }

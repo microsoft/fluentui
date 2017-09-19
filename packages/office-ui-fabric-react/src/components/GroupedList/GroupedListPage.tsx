@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
 const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
@@ -38,6 +40,11 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.GroupedList}
+          />
+        }
       />
     );
   }

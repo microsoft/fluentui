@@ -6,6 +6,8 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const SliderBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Slider/examples/Slider.Basic.Example.tsx') as string;
 
@@ -62,6 +64,11 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ComponentStatusState.Slider}
+          />
+        }
       />
     );
   }
