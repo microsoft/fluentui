@@ -22,7 +22,7 @@
     "style-loader": "=0.16.1",
     "awesome-typescript-loader": "^3.2.3",
     "office-ui-fabric-react-tslint": ">=1.0.0 <2.0.0",
-    "screener-storybook": "^0.8.11",
+    "screener-storybook": "^0.9.0",
     "screener-runner": "^0.6.19",
     "storybook-readme": "=3.0.6"
   },
