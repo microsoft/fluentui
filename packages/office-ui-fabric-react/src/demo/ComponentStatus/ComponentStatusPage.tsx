@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ComponentPage, IComponentPageSection } from '@uifabric/example-app-base';
-import { ComponentStatusState, ComponentStatusInfoState, IComponentStatusInfoState } from './ComponentStatusState';
+import { Link } from '../../Link';
+import { ComponentStatusState, ComponentStatusInfoState, IComponentStatusInfoState, InformationLink } from './ComponentStatusState';
 import { ComponentStatus } from './ComponentStatus';
 import './ComponentStatusPage.scss';
 
@@ -76,8 +77,19 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
       <tr key={ statusInfo.name + '-key' }>
         <th className='componentCells'> { statusInfo.name } </th>
         <td className='componentCells'> { statusInfo.description } </td>
-        <td className='componentCells'> { statusInfo.success } </td>
+        <td className='componentCells'> { statusInfo.success }
+          { statusInfo.link && this._createLink(statusInfo.link) }
+        </td>
       </tr>
+    );
+  }
+
+  private _createLink(information: InformationLink): JSX.Element {
+    return (
+      <Link
+        href={ information.link }>
+        { ' ' + information.renderedText }
+      </Link>
     );
   }
 }
