@@ -49,7 +49,7 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 36;
+const CHECKBOX_WIDTH = 40;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 const ISPADDED_WIDTH = 24;

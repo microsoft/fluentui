@@ -153,6 +153,11 @@ $dontColor: #A61E22;
     li {
       list-style: disc;
       margin-bottom: 20px;
+
+      ul li {
+        list-style: circle;
+        margin-bottom: 0;
+      }
     }
 
     &:first-child {

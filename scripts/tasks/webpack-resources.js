@@ -73,7 +73,7 @@ module.exports = {
       {
         devServer: {
           inline: true,
-          port: 4321,
+          port: 4322,
         },
 
         resolveLoader: {

@@ -16,9 +16,11 @@ export const Icon = (props: IIconProps): JSX.Element => {
   let {
     ariaLabel,
     className,
+    onClicked,
     styles: customStyles,
     iconName
    } = props;
+
   let styles = getStyles(undefined, customStyles);
 
   if (props.iconType === IconType.image || props.iconType === IconType.Image) {
@@ -59,6 +61,7 @@ export const Icon = (props: IIconProps): JSX.Element => {
             styles.root,
             props.className
           ) }
+        onClick={ onClicked }
       >
         { (IconCodes as any)[iconMemberName] }
       </i>

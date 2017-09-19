@@ -3,12 +3,14 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
+  autobind,
   css,
   createArray
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
+import '../../../common/_exampleStyles.scss';
 
 interface IPhoto extends IObjectWithKey {
   url: string;
@@ -61,9 +63,10 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     return (
       <MarqueeSelection selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
         <Checkbox
+          className='exampleCheckbox'
           label='Is marquee enabled'
           defaultChecked={ true }
-          onChange={ (ev, isMarqueeEnabled) => this.setState({ isMarqueeEnabled: isMarqueeEnabled! }) }
+          onChange={ this._onChange }
         />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className='ms-MarqueeSelectionBasicExample-photoList'>
@@ -76,7 +79,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
               ) }
               data-is-focusable={ true }
               data-selection-index={ index }
-              onClick={ () => console.log('clicked') }
+              onClick={ this._log('clicked') }
               style={ { width: photo.width, height: photo.height } }
             >
               { index }
@@ -87,4 +90,14 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     );
   }
 
+  private _log(text: string): () => void {
+    return (): void => {
+      console.log(text);
+    };
+  }
+
+  @autobind
+  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void {
+    this.setState({ isMarqueeEnabled: isMarqueeEnabled! });
+  }
 }

@@ -62,6 +62,8 @@ const SIZES: {
 export class Tile extends BaseComponent<ITileProps, ITileState> {
   private _nameId: string;
   private _activityId: string;
+  private _labelId: string;
+  private _descriptionId: string;
 
   // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
@@ -69,6 +71,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     this._nameId = getId('Tile-name');
     this._activityId = getId('Tile-activity');
+    this._labelId = getId('Tile-label');
+    this._descriptionId = getId('Tile-description');
 
     const {
       selectionIndex = -1,
@@ -149,7 +153,11 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       className,
       tileSize = 'large',
       contentSize,
-      ...aProps
+      ariaLabel,
+      descriptionAriaLabel,
+      href,
+      onClick,
+      ...divProps
     } = this.props;
 
     const isSelectable = !!selection && selectionIndex > -1;
@@ -158,12 +166,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected = false
     } = this.state;
 
-    const Tag = aProps.href ? 'a' : 'span';
-
     return (
       <div
-        aria-labelledby={ this._nameId }
-        aria-describedby={ this._activityId }
+        aria-selected={ isSelected }
+        { ...divProps }
+        aria-labelledby={ ariaLabel ? this._labelId : this._nameId }
+        aria-describedby={ descriptionAriaLabel ? this._descriptionId : this._activityId }
         className={ css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',
@@ -180,11 +188,22 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         data-disable-click-on-enter={ true }
         data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }
       >
-        <Tag
-          { ...aProps }
+        <a
+          href={ href }
+          onClick={ onClick }
           data-selection-invoke={ (selectionIndex > -1) ? true : undefined }
           className={ css('ms-Tile-link', TileStyles.link) }
         >
+          {
+            ariaLabel ? (
+              <span
+                id={ this._labelId }
+                className={ css('ms-Tile-label', TileStylesModule.label) }
+              >
+                { ariaLabel }
+              </span>
+            ) : null
+          }
           {
             background ? this._onRenderBackground({
               background: background,
@@ -203,7 +222,17 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
               activity: itemActivity
             }) : null
           }
-        </Tag>
+        </a>
+        {
+          descriptionAriaLabel ? (
+            <span
+              id={ this._descriptionId }
+              className={ css('ms-Tile-description', TileStylesModule.description) }
+            >
+              { descriptionAriaLabel }
+            </span>
+          ) : null
+        }
         {
           isSelectable ? this._onRenderCheck({
             isSelected: isSelected
@@ -306,6 +335,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         className={ css('ms-Tile-check', TileStyles.check) }
         data-selection-toggle={ true }
         role='checkbox'
+        aria-checked={ isSelected }
       >
         <Check
           checked={ isSelected }

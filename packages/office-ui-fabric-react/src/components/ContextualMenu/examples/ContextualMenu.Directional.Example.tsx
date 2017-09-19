@@ -7,6 +7,7 @@ import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { autobind, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
+import '../../../common/_exampleStyles.scss';
 
 export interface IContextualMenuDirectionalExampleState {
   isContextualMenuVisible?: boolean;
@@ -73,8 +74,18 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
         <div className='ms-ContextualMenuDirectionalExample-configArea'>
-          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
-          <Checkbox label='Fix Edge' checked={ edgeFixed } onChange={ this._onFixEdgeChange } />
+          <Checkbox
+            className='exampleCheckbox'
+            label='Show beak'
+            checked={ isBeakVisible }
+            onChange={ this._onShowBeakChange }
+          />
+          <Checkbox
+            className='exampleCheckbox'
+            label='Fix Edge'
+            checked={ edgeFixed }
+            onChange={ this._onFixEdgeChange }
+          />
           <Slider
             max={ 20 }
             label='Gap Space'
