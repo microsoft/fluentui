@@ -36,13 +36,13 @@
   display: none;
 }
 
-@media screen and (max-width: $ms-screen-max-md) {
+@media screen and (max-width: $uhf-screen-max-mobile) {
   .pageHeader {
     margin-bottom: -2px;
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .pageHeader {
     height: $PageHeader-fullHeight;
 
@@ -51,7 +51,7 @@
         box-shadow: 0 10px 30px -10px rgba(0,0,0,.2);
         max-width: $App-maximumWidth - $Nav-width;
         position: fixed;
-        top: $Header-height + $App-mobileNavBarHeight;
+        top: $Header-height;
         width: 100%;
         z-index: $ms-zIndex-1;
         height: $PageHeader-attachedTitleHeight + $PageHeader-navHeight;
