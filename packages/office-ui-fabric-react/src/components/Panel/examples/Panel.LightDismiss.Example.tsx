@@ -16,13 +16,13 @@ export class PanelLightDismissExample extends React.Component<any, any> {
       <div>
         <DefaultButton
           text='Open panel'
-          onClick={ this._setShowPanel(true) }
+          onClick={ this._showPanel }
         />
         <Panel
           isOpen={ this.state.showPanel }
           isLightDismiss={ true }
           headerText='Light Dismiss Panel'
-          onDismiss={ this._setShowPanel(false) }
+          onDismiss={ this._hidePanel }
         >
           <span>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
         </Panel>
@@ -31,9 +31,12 @@ export class PanelLightDismissExample extends React.Component<any, any> {
   }
 
   @autobind
-  private _setShowPanel(showPanel: boolean): () => void {
-    return (): void => {
-      this.setState({ showPanel });
-    };
+  private _showPanel(): void {
+    this.setState({ showPanel: true });
+  }
+
+  @autobind
+  private _hidePanel(): void {
+    this.setState({ showPanel: false });
   }
 }

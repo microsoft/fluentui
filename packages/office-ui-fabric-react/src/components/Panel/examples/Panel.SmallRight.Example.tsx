@@ -56,7 +56,7 @@ export class PanelSmallRightExample extends React.Component<any, any> {
             required={ true }
           />
         </Panel>
-      </div >
+      </div>
     );
   }
 
