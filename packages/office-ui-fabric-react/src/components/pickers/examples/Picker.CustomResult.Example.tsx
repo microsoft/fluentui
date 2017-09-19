@@ -331,7 +331,9 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
 
         <Checkbox
           className='exampleCheckbox'
-          label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick.bind(this) } 
+          label='Disable Document Picker'
+          checked={ this.state.isPickerDisabled }
+          onChange={ this._onDisabledButtonClick.bind(this) }
         />
         <DocumentPicker
           onRenderSuggestionsItem={ SuggestedBigItem as any }
