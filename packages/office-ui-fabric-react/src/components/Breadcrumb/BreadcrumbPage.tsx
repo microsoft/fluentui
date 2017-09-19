@@ -28,13 +28,13 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         exampleCards={
           <div>
             <ExampleCard
-              title='Simple breadcrumb'
+              title='Default Breadcrumb'
               code={ BreadcrumbBasicExampleCode }
             >
               <BreadcrumbBasicExample />
             </ExampleCard>
             <ExampleCard
-              title='Static width'
+              title='Breadcrumb with static width '
               code={ BreadcrumbStaticExampleCode }
             >
               <BreadcrumbStaticExample />
@@ -53,9 +53,6 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             <p>Breadcrumbs should be used as a navigational aid in your app or site. They indicate the current page’s location within a hierarchy and help the user understand where they are in relation to the rest of that hierarchy. They also afford one-click access to higher levels of that hierarchy.</p>
             <p>Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</p>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
         }
         bestPractices={
           <div />

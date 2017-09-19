@@ -75,9 +75,6 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> 
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/TextField/TextField.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus

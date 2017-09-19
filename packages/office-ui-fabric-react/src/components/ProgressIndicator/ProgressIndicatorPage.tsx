@@ -18,7 +18,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         title='ProgressIndicator'
         componentName='ProgressIndicatorExample'
         exampleCards={
-          <ExampleCard title='ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
+          <ExampleCard title='Default ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
             <ProgressIndicatorBasicExample />
           </ExampleCard>
         }
@@ -79,9 +79,6 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
               <li>Cause progress to “rewind” to show new steps</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

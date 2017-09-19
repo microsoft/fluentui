@@ -19,7 +19,7 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
         componentName='ColorPickerExample'
         exampleCards={
           <ExampleCard
-            title='ColorPicker'
+            title='Default ColorPicker'
             code={ ColorPickerBasicExampleCode }
           >
             <ColorPickerBasicExample />

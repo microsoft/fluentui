@@ -26,11 +26,11 @@ export class TooltipPage extends React.Component<any, any> {
         componentName='TooltipExample'
         exampleCards={
           <LayerHost>
-            <ExampleCard title='Tooltip' code={ TooltipBasicExampleCode }>
+            <ExampleCard title='Default Tooltip' code={ TooltipBasicExampleCode }>
               <TooltipBasicExample />
             </ExampleCard>
 
-            <ExampleCard title='Custom Tooltip' code={ TooltipCustomExampleCode }>
+            <ExampleCard title='Tooltip with list' code={ TooltipCustomExampleCode }>
               <TooltipCustomExample />
             </ExampleCard>
 
