@@ -84,8 +84,7 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
 }

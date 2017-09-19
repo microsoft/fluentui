@@ -118,9 +118,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
-      >
-      </ComponentPage>
+      />
     );
   }
-
 }
