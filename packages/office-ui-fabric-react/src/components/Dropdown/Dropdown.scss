@@ -45,29 +45,27 @@ $DropDown-item-height: 32px;
         color: Highlight;
       }
     }
+
     .titleIsPlaceHolder {
       color: $ms-color-neutralSecondary;
     }
   }
 
-  &:hover,
+  &:hover {
+    .title {
+      border-color: $ms-color-neutralDark;
+    }
+  }
+
   &:active {
     .title {
-      border-color: $ms-color-themePrimary;
-
-      @include high-contrast {
-        border-color: Highlight;
-      }
+      border-color: $ms-color-themeDark;
     }
   }
 
   &:focus {
     .title {
       border-color: $ms-color-themePrimary;
-
-      @include high-contrast {
-        border-color: Highlight;
-      }
     }
   }
 
@@ -81,7 +79,7 @@ $DropDown-item-height: 32px;
 .root.rootIsDisabled {
   .title {
     background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    border: none;
     color: $ms-color-neutralTertiary;
     cursor: default;
 
