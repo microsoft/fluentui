@@ -67,6 +67,21 @@ describe('Dropdown', () => {
     expect(titleElement.textContent).equals('');
   });
 
+  it('Renders a selected item if option specifies selected', () => {
+    let container = document.createElement('div');
+
+    ReactDOM.render(
+      <Dropdown
+        label='testgroup'
+        options={ [{ key: '1', text: '1', selected: true }, { key: '2', text: '2' },] }
+      />,
+      container);
+    let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+    let titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+    expect(titleElement.textContent).equals('1');
+  });
+
   it('Renders a selected item in uncontrolled case', () => {
     let container = document.createElement('div');
 
