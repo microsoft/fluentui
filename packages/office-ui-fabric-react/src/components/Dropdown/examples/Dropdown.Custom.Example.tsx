@@ -24,7 +24,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
           onRenderPlaceHolder={ this._onRenderPlaceHolder }
           onRenderTitle={ this._onRenderOption }
           onRenderOption={ this._onRenderOption }
-          onRenderChevronDownIcon={ this._onRenderChevronDownIcon }
+          onRenderCaretDown={ this._onRenderCaretDown }
           options={
             [
               { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
@@ -78,7 +78,7 @@ export class DropdownCustomExample extends React.Component<any, any> {
     );
   }
 
-  private _onRenderChevronDownIcon = (props: IDropdownProps): JSX.Element => {
+  private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
     return (
       <Icon className='dropdownExample-chevronDownIcon' iconName='CirclePlus' />
     );
