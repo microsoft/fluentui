@@ -312,7 +312,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let headerItem;
     if (section.title) {
       const headerContextualMenuItem: IContextualMenuItem = {
-        key: `header-${section.title}`,
+        key: `section-${section.title}-title`,
         itemType: ContextualMenuItemType.Header,
         name: section.title
       };
