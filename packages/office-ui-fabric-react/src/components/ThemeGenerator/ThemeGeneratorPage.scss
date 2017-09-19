@@ -25,6 +25,11 @@
   padding: 4px;
   display: inline-block;
   font-size: 0;
+  .ms-themer-swatch {
+    height: 28px;
+    width: 28px;
+    margin: 2px;
+  }
 }
 
 .ms-themer-example {

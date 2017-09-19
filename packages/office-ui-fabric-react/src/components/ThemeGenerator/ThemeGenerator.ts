@@ -109,7 +109,8 @@ export class ThemeGenerator {
     overwriteCustomValue = true
   ) {
     if (overwriteCustomValue || !rule.value || !rule.isCustomized || !rule.inherits) { // set the rule's value under these conditions
-      if ((overwriteCustomValue || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) { // it's inheriting by shade
+      if ((overwriteCustomValue || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) {
+        // it's inheriting by shade
         if (rule.isBackgroundShade) {
           rule.value = getBackgroundShade(value, rule.asShade!, isInverted)!;
         } else {
