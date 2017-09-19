@@ -87,7 +87,8 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
   private _createLink(information: InformationLink): JSX.Element {
     return (
       <Link
-        href={ information.link }>
+        href={ information.link }
+      >
         { ' ' + information.renderedText }
       </Link>
     );

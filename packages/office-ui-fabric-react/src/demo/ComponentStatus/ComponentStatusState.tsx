@@ -344,8 +344,8 @@ export interface IComponentStatusInfoState {
 }
 
 export interface InformationLink {
-  link: string,
-  renderedText: string,
+  link: string;
+  renderedText: string;
 }
 
 export const ComponentStatusInfoState: [IComponentStatusInfoState] = [
