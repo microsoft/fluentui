@@ -15,7 +15,7 @@ import { IThemeRules } from './IThemeRules';
 export class ThemeGenerator {
 
   /* isInverted: whether it's a dark theme or not, which affects the algorithm used to generate shades
-   * isCustomized should be true only if it's a user action, and indicates overwriting the slot's inheritance (if any)
+   * isCustomization should be true only if it's a user action, and indicates overwriting the slot's inheritance (if any)
    * overwriteCustomValue: a slot could have a generated value based on its inheritance rules (isCustomized is false), or a custom value
                             based on user input (isCustomized is true), this bool tells us whether to override existing customized values */
   public static setSlot(
@@ -23,7 +23,7 @@ export class ThemeGenerator {
     value: string | IColor,
     slotRules: IThemeRules,
     isInverted = false,
-    isCustomized = false,
+    isCustomization = false,
     overwriteCustomValue = true
   ) {
     if (overwriteCustomValue) {
@@ -33,15 +33,16 @@ export class ThemeGenerator {
       } else {
         valueAsIColor = value;
       }
-      ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, isInverted, true, overwriteCustomValue);
+      ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, isInverted, isCustomization, overwriteCustomValue);
     } else if (rule.value) {
-      ThemeGenerator._setSlot(rule, rule.value, slotRules, isInverted, true, overwriteCustomValue);
+      ThemeGenerator._setSlot(rule, rule.value, slotRules, isInverted, isCustomization, overwriteCustomValue);
     }
   }
 
   /* Sets the color of each slot based on its rule. Slots that don't inherit must have a value already.
    * If this completes without error, then the theme is ready to use. (All slots will have a value.)
    * setSlot() can be called before this, but this must be called before getThemeAs*().
+   * Does not override values of rules where isCustomized is true (i.e. doesn't override existing customizations).
    */
   public static insureSlots(slotRules: IThemeRules, isInverted: boolean) {
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
@@ -96,7 +97,9 @@ export class ThemeGenerator {
   }
 
   /* Sets the given slot's value to the appropriate value, shading it if necessary.
-     Then, iterates through all other rules (that are this rule's dependents) to update them accordingly. */
+     Then, iterates through all other rules (that are this rule's dependents) to update them accordingly.
+     isCustomization=true means it's a user provided color, set it to that raw color
+     isCustomization=false means the rule it's inheriting from changed, so updated using asShade */
   private static _setSlot(
     rule: IThemeSlotRule,
     value: IColor,
@@ -105,19 +108,18 @@ export class ThemeGenerator {
     isCustomization: boolean,
     overwriteCustomValue = true
   ) {
-    rule.isCustomized = !rule.inherits || isCustomization; // a rule is always customized if it doesn't inherit
-
     if (overwriteCustomValue || !rule.value || !rule.isCustomized || !rule.inherits) { // set the rule's value under these conditions
-      if (!isCustomization && rule.inherits && isValidShade(rule.asShade)) { // it's inheriting by shade
+      if ((overwriteCustomValue || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) { // it's inheriting by shade
         if (rule.isBackgroundShade) {
           rule.value = getBackgroundShade(value, rule.asShade!, isInverted)!;
         } else {
           rule.value = getShade(value, rule.asShade!, isInverted)!;
         }
+        rule.isCustomized = false;
       } else {
         rule.value = value;
+        rule.isCustomized = true;
       }
-      rule.isCustomized = overwriteCustomValue ? isCustomization : rule.isCustomized;
 
       // then run through the rest of the rules and update dependent values
       for (let ruleName in slotRules) {

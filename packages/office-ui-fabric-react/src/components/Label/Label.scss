@@ -9,17 +9,6 @@
 
 @import './LabelMixins';
 
-// temp code to overwrite global colors
-:global {
-  .ms-Fabric.ms-Fabric {
-    color: $bodyForegroundColor;
-  }
-  input[type=text], textarea {
-    background-color: inherit;
-    color: inherit;
-  }
-}
-
 .root {
   @include ms-font-m;
   @include ms-normalize;
