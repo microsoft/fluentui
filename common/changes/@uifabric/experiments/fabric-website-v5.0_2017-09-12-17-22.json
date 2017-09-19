@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/experiments",
-      "comment": "Add support for folder cover signals",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "tmichon@microsoft.com"
+  "email": "rubixws@gmail.com"
 }

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Adding `MoreVertical` icon.",
-      "type": "minor"
+      "comment": "Visual bug fixes for UHF adoption for website",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

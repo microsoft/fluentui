@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/styling",
-      "comment": "Adding `MoreVertical` icon.",
-      "type": "minor"
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "dzearing@microsoft.com"
+  "email": "rubixws@gmail.com"
 }

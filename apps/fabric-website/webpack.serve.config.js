@@ -9,6 +9,7 @@ const devServerConfig = {
 const outputConfig = {
   filename: 'fabric-site.js'
 }
+
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
 

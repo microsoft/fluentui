@@ -51,9 +51,6 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             <p>Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
-        }
         bestPractices={
           <div />
         }

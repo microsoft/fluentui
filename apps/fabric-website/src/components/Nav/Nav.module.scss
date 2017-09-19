@@ -60,8 +60,6 @@ $nav-group-header-height: 40px;
 
 // Second-level links
 .isSubMenu {
-  @include ms-margin-left(8px);
-
   .link {
     a {
       color: $ms-color-neutralTertiary;
