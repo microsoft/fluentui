@@ -34,10 +34,23 @@ export const getStyles = memoizeFunction((
     },
 
     flexContainer: {
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'flex-start',
       minWidth: '100%',
       margin: ''
+    },
+
+    textContainer: {
+      textAlign: 'left'
+    },
+
+    icon: {
+      fontSize: '2em',
+      lineHeight: '1em',
+      height: '1em',
+      margin: '0px 8px 0px 0px',
+      flexBasis: '1em',
+      flexShrink: '0'
     },
 
     label: {
