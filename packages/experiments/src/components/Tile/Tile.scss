@@ -103,11 +103,14 @@
 }
 
 .foreground {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
   transition: opacity 0.2s linear;
 
@@ -118,6 +121,8 @@
   .hasForegroundFrame & {
     background-color: $ms-color-white;
     box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
+    min-width: 32px;
+    min-height: 32px;
 
     &:after {
       content: '';

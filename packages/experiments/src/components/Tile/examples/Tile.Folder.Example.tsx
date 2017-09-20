@@ -6,7 +6,8 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import {
   SignalField,
   NewSignal,
-  CommentsSignal
+  CommentsSignal,
+  SharedSignal
 } from '../../signals/Signals';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout } from '../../FolderCover/FolderCover';
 import { FolderCoverType } from '../../FolderCover/FolderCover.Props';
@@ -17,24 +18,37 @@ import * as TileExampleStylesModule from './Tile.Example.scss';
 // tslint:disable-next-line:no-any
 const TileExampleStyles = TileExampleStylesModule as any;
 
-const ITEMS: { name: string; activity: string; }[] = [
+const ITEMS: { name: string; activity: string; isShared?: boolean; childCount?: number; }[] = [
   {
     name: lorem(2),
     activity: lorem(6),
+    childCount: 4
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6)
   },
   {
     name: lorem(2),
     activity: lorem(6),
+    isShared: true,
+    childCount: 4
   },
   {
     name: lorem(2),
     activity: lorem(6),
+    childCount: 4
+  },
+  {
+    name: lorem(2),
+    activity: lorem(6),
+    childCount: 4
   }
 ];
 
 interface IFolderTileWithThumbnailProps {
   folderCoverType?: FolderCoverType;
-  originalImageSize: ISize;
+  originalImageSize?: ISize;
   size: 'small' | 'large';
   item: typeof ITEMS[0];
 }
@@ -45,6 +59,8 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
       <FolderCover
         folderCoverSize={ props.size }
         folderCoverType={ props.folderCoverType }
+        metadata={ props.item.childCount }
+        signal={ props.item.isShared ? <SharedSignal /> : null }
       />
     );
 
@@ -52,11 +68,11 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
       contentSize
     } = getFolderCoverLayout(folderCover);
 
-    const imageSize = fitContentToBounds({
+    const imageSize = props.originalImageSize ? fitContentToBounds({
       contentSize: props.originalImageSize,
       boundsSize: contentSize,
       mode: 'contain'
-    });
+    }) : undefined;
 
     return (
       <div
@@ -89,12 +105,12 @@ const FolderTileWithThumbnail: React.StatelessComponent<IFolderTileWithThumbnail
             <span className={ css(TileExampleStylesModule.tileFolder) }>
               {
                 renderFolderCoverWithLayout(folderCover, {
-                  children: (
+                  children: imageSize ? (
                     <img
                       src={ `//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}` }
                       className={ css(TileExampleStyles.tileImage) }
                     />
-                  )
+                  ) : null
                 })
               }
             </span>
@@ -141,13 +157,18 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
           size={ size }
         />
         <FolderTileWithThumbnail
+          item={ ITEMS[1] }
+          folderCoverType='media'
+          size={ size }
+        />
+        <FolderTileWithThumbnail
           originalImageSize={
             {
               width: 300,
               height: 400
             }
           }
-          item={ ITEMS[1] }
+          item={ ITEMS[2] }
           folderCoverType='media'
           size={ size }
         />
@@ -158,7 +179,18 @@ export class TileFolderExample extends React.Component<{}, ITileFolderExampleSta
               height: 40
             }
           }
-          item={ ITEMS[2] }
+          item={ ITEMS[3] }
+          folderCoverType='media'
+          size={ size }
+        />
+        <FolderTileWithThumbnail
+          originalImageSize={
+            {
+              width: 16,
+              height: 16
+            }
+          }
+          item={ ITEMS[4] }
           folderCoverType='media'
           size={ size }
         />

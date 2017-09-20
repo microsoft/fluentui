@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
 import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 
@@ -23,7 +23,7 @@ export interface ITilesGridItem<TItem> {
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
-  onRender: (content: TItem, finalSize?: ITileSize) => (React.ReactNode | React.ReactNode[]);
+  onRender: (content: TItem, finalSize?: ISize) => (React.ReactNode | React.ReactNode[]);
 }
 
 export const enum TilesGridMode {
@@ -76,12 +76,17 @@ export interface ITilesGridSegment<TItem> {
    * The bottom margin for the grid.
    */
   marginBottom?: number;
+  /**
+   * The minimum aspect ratio for an item in the grid.
+   */
+  minAspectRatio?: number;
+  /**
+   * The maximum aspect ratio for an item in the grid.
+   */
+  maxAspectRatio?: number;
 }
 
-export interface ITileSize {
-  width: number;
-  height: number;
-}
+export { ISize as ITileSize };
 
 export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
