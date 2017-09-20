@@ -12,7 +12,9 @@
     "build": "node ../../scripts/build.js",
     "clean": "node ../../scripts/clean.js",
     "start": "node ../../scripts/start.js",
-    "production": "node --max_old_space_size=8192 ../../scripts/build.js --production"
+    "production": "node --max_old_space_size=8192 ../../scripts/build.js --production",
+    "dogfood": "node --max_old_space_size=8192 ../../scripts/build.js --dogfood",
+    "startuhf": "node ../../scripts/start.js --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
   "devDependencies": {
@@ -37,7 +39,8 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-highlight": "0.9.0"
+    "react-highlight": "0.9.0",
+    "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.2",

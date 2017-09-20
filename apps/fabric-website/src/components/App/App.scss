@@ -15,7 +15,6 @@
     flex-direction: column;
     margin: 0 auto;
     max-width: $App-maximumWidth;
-    padding-top: $Header-height; // Keep content from being covered by the header
   }
 
   // Nav is hidden off screen by default
