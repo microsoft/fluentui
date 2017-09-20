@@ -95,6 +95,12 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
     return (
       <div className='ms-themer'>
+        <p>
+          This is the Theme Generator tool, which helps you easily create all the shades and slots for a custom theme.
+          The theme can be used by Fabric React's styling package, see the <a href='https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling'>documentation</a>.
+          <br />
+          As you modify one of the three base colors, the theme will update automatically based on predefined rules. You can modify each individual slot below as well.
+        </p>
 
         {/* Hello! You've found hidden functionality for generating a theme from an image. This uses Microsoft's
           * Cognitive Vision API, documented here:
@@ -131,17 +137,17 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
         {/* the three base slots, prominently displayed at the top of the page */ }
         <div style={ { display: 'flex' } }>
-          { [this._baseColorSlotPicker(BaseSlots.primaryColor, "Primary theme color"),
-          this._baseColorSlotPicker(BaseSlots.foregroundColor, "Body text color"),
-          this._baseColorSlotPicker(BaseSlots.backgroundColor, "Body background color")] }
+          { [this._baseColorSlotPicker(BaseSlots.primaryColor, 'Primary theme color'),
+          this._baseColorSlotPicker(BaseSlots.foregroundColor, 'Body text color'),
+          this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body background color')] }
         </div>
         <br />
 
         { this._outputSection() }
         <br />
 
-        <h3>Fabric Palette</h3>
-        <p>The original Fabric palette variables. These are raw colors with no prescriptive uses.</p>
+        <h2>Fabric Palette</h2>
+        <p>The original Fabric palette slots. These are raw colors with no prescriptive uses. Each one is a shade or tint of a base color.</p>
         <div className={ 'ms-themer-fabricPalette-root' }>
           <div>{ fabricThemeSlots }</div>
           <div>
@@ -155,8 +161,8 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         </div>
         <br />
 
-        <h3>Semantic Slots</h3>
-        <p>These inherit by default from the Fabric palette, and have an intended use as defined by their name.</p>
+        <h2>Semantic Slots</h2>
+        <p>These slots inherit by default from the Fabric palette, and have an intended use as defined by their name. They exist so classes of controls can be easily customized at once. See the <a href='https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/interfaces/ISemanticColors.ts'>documentation</a> for more details.</p>
         <div>{ semanticSlots }</div>
         <br />
 
@@ -424,16 +430,22 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           <div>
             <h3>JSON</h3>
             <textarea
-              id='jsonOutput'
               readOnly={ true }
               spellCheck={ false }
               value={ JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2) }
             />
           </div>
           <div>
+            <h3>SASS</h3>
+            <textarea
+              readOnly={ true }
+              spellCheck={ false }
+              value={ ThemeGenerator.getThemeAsSass(abridgedTheme) }
+            />
+          </div>
+          <div>
             <h3>PowerShell</h3>
             <textarea
-              id='powershellOutput'
               readOnly={ true }
               spellCheck={ false }
               value={ ThemeGenerator.getThemeForPowerShell(abridgedTheme) }

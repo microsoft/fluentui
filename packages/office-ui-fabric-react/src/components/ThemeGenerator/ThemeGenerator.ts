@@ -89,7 +89,7 @@ export class ThemeGenerator {
    * ...
    */
   public static getThemeAsSass(slotRules: IThemeRules): any {
-    let sassVarTemplate = '${0}Color:\t"[theme: {1},\tdefault: {2}]";\n';
+    let sassVarTemplate = '${0}Color: "[theme: {1},\tdefault: {2}]";\n';
     let output = '';
 
     for (let ruleName in slotRules) {
