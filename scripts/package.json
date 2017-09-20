@@ -13,6 +13,7 @@
     "awesome-typescript-loader": "^3.2.3",
     "chalk": "^2.1.0",
     "chai": "^4.1.1",
+    "command-line-args": "^4.0.7",
     "cpx": "^1.5.0",
     "css-loader": "^0.28.5",
     "github": "^7.0.0",

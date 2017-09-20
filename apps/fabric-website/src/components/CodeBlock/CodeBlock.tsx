@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './CodeBlock.module.scss';
-const styles: any = stylesImport;
+import * as  Highlight from 'react-highlight';
 
-const Highlight = require('react-highlight');
+const styles: any = stylesImport;
 
 export interface ICodeBlockProps extends React.HTMLAttributes<HTMLElement> {
   /**

@@ -27,7 +27,7 @@
   {
     "name": "neutralTertiary",
     "value": "#a6a6a6",
-    "labelColorClass": "ms-fontColor-white"
+    "labelColorClass": "ms-fontColor-black"
   },
   {
     "name": "neutralTertiaryAlt",

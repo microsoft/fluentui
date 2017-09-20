@@ -74,5 +74,4 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
       />
     );
   }
-
 }
