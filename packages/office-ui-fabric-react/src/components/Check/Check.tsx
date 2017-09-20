@@ -34,7 +34,7 @@ export class Check extends BaseComponent<ICheckProps, {}> {
   }
 
   public render() {
-    let { isChecked, checked, alwaysShowCheck = true } = this.props;
+    let { isChecked, checked } = this.props;
 
     isChecked = isChecked || checked;
 
@@ -44,8 +44,7 @@ export class Check extends BaseComponent<ICheckProps, {}> {
           'ms-Check',
           styles.root,
           {
-            [`is-checked ${styles.rootIsChecked}`]: isChecked,
-            [`always-has-check ${styles.alwaysHasCheck}`]: alwaysShowCheck
+            [`is-checked ${styles.rootIsChecked}`]: isChecked
           }
         ) }
       >

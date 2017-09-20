@@ -266,7 +266,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         role='checkbox'
       >
         <Check
-          alwaysShowCheck={ false }
           checked={ isSelected }
         />
       </button>

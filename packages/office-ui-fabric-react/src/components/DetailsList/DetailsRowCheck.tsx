@@ -48,7 +48,6 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
       data-automationid='DetailsRowCheck'
     >
       <Check
-        alwaysShowCheck={ false }
         checked={ isPressed }
       />
     </button>
