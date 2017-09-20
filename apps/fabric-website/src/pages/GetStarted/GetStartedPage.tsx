@@ -20,6 +20,10 @@ export class GetStartedPage extends React.Component<any, any> {
                 'location': 'design'
               },
               {
+                'text': 'Design Toolkit',
+                'location': 'toolkit'
+              },
+              {
                 'text': 'Structure',
                 'location': 'structure'
               },
@@ -41,9 +45,9 @@ export class GetStartedPage extends React.Component<any, any> {
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
-                <div className={ styles.title }>Styles</div>
-                <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
+                <img className={ styles.contentInGrid } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
+                <div className={ css(styles.title, styles.contentInGrid) }>Styles</div>
+                <div className={ css(styles.description, styles.contentInGrid) }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-lg4', styles.feature) }>
                 <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
@@ -56,6 +60,11 @@ export class GetStartedPage extends React.Component<any, any> {
                 <div className={ styles.description }>Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands, containers, and content.</div>
               </div>
             </div>
+          </div>
+          <div id='toolkit'>
+            <span className={ styles.title }>Design Toolkit</span>
+            <span className={ styles.descriptionLarge }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <a href='#/resources'>Learn more</a>
           </div>
         </div>
 
@@ -182,7 +191,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
           <p>First, check the <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
         </div>
 
-        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement</a>.</p>
+        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_sept092017.pdf'>assets license agreement</a>.</p>
 
       </div>
     );
