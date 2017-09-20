@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SplitButton: Properly cascade container styles to the disabled state",
+      "comment": "Brand icons page clean up.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "lynam.emily@gmail.com"
 }

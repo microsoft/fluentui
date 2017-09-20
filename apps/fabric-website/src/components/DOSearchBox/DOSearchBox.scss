@@ -20,11 +20,7 @@
     }
 
     @include high-contrast {
-      border: 1px solid $ms-color-white;
-    }
-
-    @include high-contrast-black-on-white  {
-      border: 1px solid $ms-color-black;
+      border: 1px solid WindowText;
     }
   }
 

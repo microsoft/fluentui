@@ -153,6 +153,11 @@ $dontColor: #A61E22;
     li {
       list-style: disc;
       margin-bottom: 20px;
+
+      ul li {
+        list-style: circle;
+        margin-bottom: 0;
+      }
     }
 
     &:first-child {
@@ -164,7 +169,7 @@ $dontColor: #A61E22;
     background-color: #e74856;
   }
 
-  @media screen and (min-width: $ms-screen-min-lg) {
+  @media screen and (min-width: $uhf-screen-min-mobile) {
     .ComponentPage-doSection {
       margin-bottom: -10px; // Trim last list item
       width: calc(50% - 60px);
