@@ -46,7 +46,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         page.className ? styles[page.className] : ''
       ) } key={ linkIndex }>
 
-        { page.isUhfLink ?
+        { page.isUhfLink && location.hostname !== 'localhost' ?
           '' : <a
             href={ page.url }
             onClick={ this.props.onLinkClick }
@@ -54,7 +54,8 @@ export class Nav extends React.Component<INavProps, INavState> {
             aria-label={ ariaLabel }
           >
             { page.title }
-          </a> }
+          </a>
+        }
 
         { childLinks }
       </li>
