@@ -169,7 +169,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>Add the following line to the &lt;head&gt; of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.2.0/css/fabric.min.css">`
+                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.3.0/css/fabric.min.css">`
                 }
               </CodeBlock>
             </li>
