@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { BaseComponent, customizable } from '../../../Utilities';
 import { ThemeSettingName } from '../../../Styling';
 import { IButtonProps } from '../Button.Props';
 import { getStyles } from './CompoundButton.styles';
@@ -19,7 +19,6 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
         { ...this.props }
         variantClassName={ primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound' }
         styles={ getStyles(theme!, styles, primary) }
-        onRenderIcon={ nullRender }
       />
     );
   }
