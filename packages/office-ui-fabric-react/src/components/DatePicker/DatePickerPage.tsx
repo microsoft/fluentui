@@ -9,6 +9,7 @@ import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DatePickerStatus } from './DatePicker.checklist';
 import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
@@ -19,11 +20,11 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
   public render() {
     return (
       <ComponentPage
-        title='DatePicker'
+        title={ 'DatePicker' }
         componentName='DatePickerExample'
         exampleCards={
           <div>
-            <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
+            <ExampleCard title={ 'DatePicker' } code={ DatePickerBasicExampleCode }>
               <DatePickerBasicExample />
             </ExampleCard>
             <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
@@ -78,7 +79,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.DatePicker}
+            {...DatePickerStatus}
           />
         }
       />

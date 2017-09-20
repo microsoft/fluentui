@@ -8,7 +8,7 @@ import {
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { DropdownStatus } from './Dropdown.checklist';
 
 const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
@@ -67,7 +67,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Dropdown}
+            {...DropdownStatus}
           />
         }
       />

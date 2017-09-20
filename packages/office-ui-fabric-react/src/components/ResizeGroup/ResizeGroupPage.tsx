@@ -8,7 +8,7 @@ import {
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { ResizeGroupStatus } from './ResizeGroup.checklist';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
@@ -95,7 +95,7 @@ export class ResizeGroupPage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ResizeGroup}
+            {...ResizeGroupStatus}
           />
         }
       />

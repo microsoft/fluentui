@@ -9,7 +9,7 @@ import {
 import { HoverCardBasicExample } from './examples/HoverCard.Basic.Example';
 import { HoverCardTargetExample } from './examples/HoverCard.Target.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { HoverCardStatus } from './HoverCard.checklist';
 
 import './HoverCardPage.scss';
 
@@ -48,7 +48,7 @@ export class HoverCardPage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.HoverCard}
+            {...HoverCardStatus}
           />
         }
       />

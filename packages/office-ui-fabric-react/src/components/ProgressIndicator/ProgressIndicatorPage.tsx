@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { ProgressIndicatorStatus } from './ProgressIndicator.checklist';
 
 const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
 
@@ -86,7 +86,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ProgressIndicator}
+            {...ProgressIndicatorStatus}
           />
         }
       />

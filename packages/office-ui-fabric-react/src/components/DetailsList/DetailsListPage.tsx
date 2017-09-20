@@ -7,7 +7,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { DetailsListStatus } from './DetailsList.checklist';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
@@ -124,7 +124,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.DetailsList}
+            {...DetailsListStatus}
           />
         }
       />

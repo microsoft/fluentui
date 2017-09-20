@@ -9,7 +9,7 @@ import {
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { LayerStatus } from './Layer.checklist';
 
 const LayerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Basic.Example.tsx') as string;
 const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Hosted.Example.tsx') as string;
@@ -73,7 +73,7 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Layer}
+            {...LayerStatus}
           />
         }
       />

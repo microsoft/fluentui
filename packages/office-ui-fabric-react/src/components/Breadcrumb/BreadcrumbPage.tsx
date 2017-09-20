@@ -7,8 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
-
+import { BreadcrumbState } from './Breadcrumb.checklist';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 
@@ -77,7 +76,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Breadcrumb}
+            {...BreadcrumbState}
           />
         }
       />

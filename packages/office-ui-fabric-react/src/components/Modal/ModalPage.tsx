@@ -8,7 +8,7 @@ import {
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { ModalStatus } from './Modal.checklist';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 
@@ -63,7 +63,7 @@ export class ModalPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Modal}
+            {...ModalStatus}
           />
         }
       />

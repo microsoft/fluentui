@@ -12,7 +12,7 @@ import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithI
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { SpinButtonStatus } from './SpinButton.checklist';
 
 const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
 const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
@@ -108,7 +108,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.SpinButton}
+            {...SpinButtonStatus}
           />
         }
       />

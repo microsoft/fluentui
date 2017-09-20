@@ -8,7 +8,7 @@ import {
 import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.Example';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { ScrollablePaneStatus } from './ScrollablePane.checklist';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
 
@@ -66,7 +66,7 @@ export class ScrollablePanePage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ScrollablePane}
+            {...ScrollablePaneStatus}
           />
         }
       />

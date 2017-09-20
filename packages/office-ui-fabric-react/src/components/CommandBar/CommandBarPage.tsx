@@ -10,7 +10,7 @@ import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { CommandBarCustomizationExample } from './examples/CommandBar.Customization.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { CommandBarStatus } from './CommandBar.checklist';
 
 const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.NonFocusable.Example.tsx') as string;
@@ -22,7 +22,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
 
     return (
       <ComponentPage
-        title='CommandBar'
+        title={ 'CommandBar' }
         componentName='CommandBarExample'
         exampleCards={
           <div>
@@ -87,7 +87,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}>
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.CommandBar}
+            {...CommandBarStatus}
           />
         }
       />

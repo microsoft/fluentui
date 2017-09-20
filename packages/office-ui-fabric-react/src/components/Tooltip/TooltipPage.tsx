@@ -10,7 +10,7 @@ import { TooltipCustomExample } from './examples/Tooltip.Custom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { TooltipStatus } from './Tooltip.checklist';
 
 import './TooltipPage.scss';
 
@@ -54,7 +54,7 @@ export class TooltipPage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Tooltip}
+            {...TooltipStatus}
           />
         }
       />

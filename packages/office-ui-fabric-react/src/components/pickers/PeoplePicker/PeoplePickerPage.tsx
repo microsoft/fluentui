@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { ComponentStatus } from '../../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../../demo/ComponentStatus/ComponentStatusState';
+import { PeoplePickerStatus } from './PeoplePicker.checklist';
 
 const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
@@ -66,7 +66,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.PeoplePicker}
+            {...PeoplePickerStatus}
           />
         }
       />

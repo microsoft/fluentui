@@ -12,7 +12,7 @@ import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Dire
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuSectionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Section.Example.tsx') as string;
@@ -25,11 +25,11 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
   public render() {
     return (
       <ComponentPage
-        title='ContextualMenu'
+        title={ 'ContextualMenu' }
         componentName='ContextualMenuExample'
         exampleCards={
           <div>
-            <ExampleCard title='ContextualMenu' code={ ContextualMenuBasicExampleCode }>
+            <ExampleCard title={ 'ContextualMenu' } code={ ContextualMenuBasicExampleCode }>
               <ContextualMenuBasicExample />
             </ExampleCard>
             <ExampleCard title='ContextualMenu section example' code={ ContextualMenuSectionExampleCode }>
@@ -99,7 +99,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ContextualMenu}
+            {...ContextualMenuStatus}
           />
         }
       />

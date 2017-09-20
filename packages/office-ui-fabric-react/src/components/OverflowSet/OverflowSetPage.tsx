@@ -8,7 +8,7 @@ import {
 import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { OverflowSetStatus } from './OverflowSet.checklist';
 
 const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
 const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
@@ -46,7 +46,7 @@ export class OverflowSetPage extends React.Component<any, any> {
         }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Overflow}
+            {...OverflowSetStatus}
           />
         }
       />

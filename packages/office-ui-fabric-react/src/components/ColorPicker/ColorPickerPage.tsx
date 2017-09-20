@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { ColorPickerStatus } from './ColorPicker.checklist';
 
 const ColorPickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/examples/ColorPicker.Basic.Example.tsx') as string;
 
@@ -15,11 +15,11 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
   public render() {
     return (
       <ComponentPage
-        title='ColorPicker'
+        title={ 'ColorPicker' }
         componentName='ColorPickerExample'
         exampleCards={
           <ExampleCard
-            title='ColorPicker'
+            title={ 'ColorPicker' }
             code={ ColorPickerBasicExampleCode }
           >
             <ColorPickerBasicExample />
@@ -38,7 +38,7 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.ColorPicker}
+            {...ColorPickerStatus}
           />
         }
       />

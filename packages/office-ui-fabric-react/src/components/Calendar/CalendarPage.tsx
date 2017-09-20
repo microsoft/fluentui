@@ -9,7 +9,7 @@ import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
+import { CalendarStatus } from './Calendar.checklist';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
@@ -18,7 +18,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
   public render() {
     return (
       <ComponentPage
-        title='Calendar'
+        title={ 'Calendar' }
         componentName='CalendarExample'
         exampleCards={
           <div>
@@ -153,7 +153,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ComponentStatusState.Calendar}
+            {...CalendarStatus}
           />
         }
       />
