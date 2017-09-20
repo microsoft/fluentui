@@ -103,7 +103,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           * and generate a theme based off of those.
           * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
           * key in _makeThemeFromImg() below. Then, just uncomment this section. */}
-        { }
+        {/*}
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
           <input type='text' id='imageUrl' />
@@ -111,7 +111,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         </div>
         <div id='imageDescription' />
         <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
-        { }
+        {*/}
 
         {/* the shared popup color picker for slots */ }
         { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
@@ -131,9 +131,9 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
         {/* the three base slots, prominently displayed at the top of the page */ }
         <div style={ { display: 'flex' } }>
-          { [this._baseColorSlotPicker(BaseSlots.primaryColor),
-          this._baseColorSlotPicker(BaseSlots.foregroundColor),
-          this._baseColorSlotPicker(BaseSlots.backgroundColor)] }
+          { [this._baseColorSlotPicker(BaseSlots.primaryColor, "Primary theme color"),
+          this._baseColorSlotPicker(BaseSlots.foregroundColor, "Body text color"),
+          this._baseColorSlotPicker(BaseSlots.backgroundColor, "Body background color")] }
         </div>
         <br />
 
@@ -230,7 +230,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
       xhr.setRequestHeader('Content-Type', 'application/json');
       alert('You forgot to set the subscription key!');
-      xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '55a4471f77fb4f1da36fad9fd16ed307'); // put your subscription key here
+      xhr.setRequestHeader('Ocp-Apim-Subscription-Key', 'YourSubscriptionKeyHere'); // put your subscription key here
       xhr.send('{ "url": "' + this._imgUrl + '" }');
     } else {
       // remove related properties from theme
@@ -454,7 +454,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   }
 
   @autobind
-  private _baseColorSlotPicker(baseSlot: BaseSlots) {
+  private _baseColorSlotPicker(baseSlot: BaseSlots, title: string) {
     function _onColorChanged(newColor: string) {
       let themeRules = this.state.themeRules;
       const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
@@ -474,7 +474,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
 
     return (
       <div className='ms-themer-paletteSlot' key={ baseSlot }>
-        <h3>{ BaseSlots[baseSlot] }</h3>
+        <h3>{ title }</h3>
         <div style={ { display: 'inline-block' } }>
           <ColorPicker
             key={ 'baseslotcolorpicker' + baseSlot }
