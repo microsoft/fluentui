@@ -8,6 +8,8 @@ import {
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { DatePickerStatus } from './DatePicker.checklist';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
@@ -71,8 +73,12 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...DatePickerStatus}
+          />
+        }
       />
     );
   }
-
 }

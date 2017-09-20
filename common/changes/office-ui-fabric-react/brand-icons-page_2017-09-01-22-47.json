@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SearchBox: Added onEscape prop",
-      "type": "minor"
+      "comment": "Brand icons page clean up.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "micahgodbolt@gmail.com"
+  "email": "lynam.emily@gmail.com"
 }

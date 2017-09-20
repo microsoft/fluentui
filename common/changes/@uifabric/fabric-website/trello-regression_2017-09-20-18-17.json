@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Changing high-contrast colors to system colors",
+      "comment": "Removed trello reference from the Get Stated page.",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "v-krbrow@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

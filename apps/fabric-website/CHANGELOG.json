@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.0.1",
+      "tag": "@uifabric/fabric-website_v5.0.1",
+      "date": "Wed, 20 Sep 2017 10:19:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "7fadf0b0aa27ce0a245280e7867881cef1add967",
+            "comment": "Changing high-contrast colors to system colors"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=4.48.1 <5.0.0` to `>=4.49.0 <5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.0",
       "tag": "@uifabric/fabric-website_v5.0.0",
       "date": "Tue, 19 Sep 2017 10:08:55 GMT",
