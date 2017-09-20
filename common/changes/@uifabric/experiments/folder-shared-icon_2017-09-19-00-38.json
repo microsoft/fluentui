@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "LayoutGroup: Changed gap to layoutGap and updated docs",
+      "comment": "Adjust Tile and FolderCover alignments and behaviors",
       "type": "minor"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "mgodbolt@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }

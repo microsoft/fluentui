@@ -1,6 +1,26 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 01 Sep 2017 16:51:57 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2017 10:19:01 GMT and should not be manually modified.
+
+## 5.0.1
+Wed, 20 Sep 2017 10:19:01 GMT
+
+### Patches
+
+- Changing high-contrast colors to system colors
+
+## 5.0.0
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Breaking changes
+
+- Major site revisions, component updates, removal of dev office header and footer, infrastructure updates and improvements, webpack config updates.
+
+### Patches
+
+- Revised alt text best practes for ImageComponent.
+- Removed references to FabricJS from the website.
+- Visual bug fixes for UHF adoption for website
 
 ## 4.7.6
 Fri, 01 Sep 2017 16:51:57 GMT

@@ -343,6 +343,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme Generator',
           name: 'Beta Theme Generator',
           url: '#examples/themeGenerator'
+        },
+        {
+          component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,
+          key: 'Components Status',
+          name: 'Components Checklist',
+          url: '#/components-status'
         }
       ],
       name: 'Utilities'
@@ -353,6 +359,10 @@ export const AppDefinition: IAppDefinition = {
     {
       name: 'Getting started',
       url: '#/'
+    },
+    {
+      name: 'Components Checklist',
+      url: '#/components-status'
     },
     {
       name: 'Fabric',

@@ -40,6 +40,7 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IStyle 
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
+      '-ms-high-contrast-adjust': 'none'
     },
   };
 });
@@ -164,6 +165,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
         backgroundColor: 'ButtonFace',
         borderColor: 'ButtonText',
         color: 'ButtonText',
+        '-ms-high-contrast-adjust': 'none'
       }
     },
     rootHovered: {
@@ -210,11 +212,11 @@ export const getStyles = memoizeFunction((
         marginBottom: '10px',
         marginLeft: '0',
 
-        // padding: '0',
+        // padding: '0 32px 0 12px',
         paddingTop: '0',
         paddingRight: ComboxBoxCaretDownWidth,
         paddingBottom: '0',
-        paddingLeft: '0',
+        paddingLeft: '12px',
 
         color: ComboBoxRootTextColor,
         position: 'relative',
@@ -242,14 +244,16 @@ export const getStyles = memoizeFunction((
       borderColor: ComboBoxRootBorderColorHovered,
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
-        borderColor: 'Highlight'
+        borderColor: 'Highlight',
+        '-ms-high-contrast-adjust': 'none'
       },
     },
     rootFocused: {
       borderColor: ComboBoxRootBorderColorHovered,
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
-        borderColor: 'Highlight'
+        borderColor: 'Highlight',
+        '-ms-high-contrast-adjust': 'none'
       },
     },
     rootDisabled: getDisabledStyles(theme),
@@ -262,12 +266,23 @@ export const getStyles = memoizeFunction((
     input: {
       boxSizing: 'border-box',
       width: '100%',
-      height: '100%',
+      height: '30px',
       borderStyle: 'none',
       outline: 'none',
       font: 'inherit',
       textOverflow: 'ellipsis',
-      paddingLeft: '12px'
+
+      // padding: '0',
+      paddingTop: '0',
+      paddingRight: '0',
+      paddingBottom: '0',
+      paddingLeft: '0',
+
+      // margin: '1px 0px',
+      marginTop: '1px',
+      marginRight: '0px',
+      marginBottom: '1px',
+      marginLeft: '0px',
     },
     inputDisabled: getDisabledStyles(theme),
     errorMessage: {

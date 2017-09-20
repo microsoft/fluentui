@@ -6,7 +6,18 @@ module.exports = function (options) {
 
   if (fs.existsSync(webpackConfigPath)) {
     const webpack = require('webpack');
-    const config = flatten(require(webpackConfigPath));
+
+    const configLoader = require(webpackConfigPath);
+    let config;
+
+    // If the loaded webpack config is a function
+    // call it with the original process.argv arguments from build.js.
+    if (typeof configLoader == 'function') {
+      config = configLoader(options.argv);
+    } else {
+      config = configLoader;
+    }
+    config = flatten(config);
 
     return new Promise((resolve, reject) => {
       webpack(config, (err, stats) => {
