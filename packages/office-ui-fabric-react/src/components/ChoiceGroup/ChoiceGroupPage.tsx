@@ -10,7 +10,6 @@ import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example'
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
-import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
 import { ChoiceGroupStatus } from './ChoiceGroup.checklist';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;

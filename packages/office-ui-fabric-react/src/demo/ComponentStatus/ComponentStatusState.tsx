@@ -1,13 +1,3 @@
-import { IComponentStatusProps, ChecklistStatus } from './ComponentStatus.Props';
-
-export interface IComponentStatusState {
-  [key: string]: IComponentStatusProps;
-}
-
-export let ComponentStatusState: IComponentStatusState = {
-
-};
-
 export interface IComponentStatusInfoState {
   name: string;
   description: string;

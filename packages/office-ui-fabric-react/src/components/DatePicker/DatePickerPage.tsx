@@ -10,7 +10,6 @@ import { DatePickerRequiredExample } from './examples/DatePicker.Required.Exampl
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { DatePickerStatus } from './DatePicker.checklist';
-import { ComponentStatusState } from '../../demo/ComponentStatus/ComponentStatusState';
 
 const DatePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
