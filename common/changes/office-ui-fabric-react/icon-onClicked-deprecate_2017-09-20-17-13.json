@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Icon: Deprecate onClicked as onClick is already supported. Updated DatePicker to use onClick",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com"
+}
