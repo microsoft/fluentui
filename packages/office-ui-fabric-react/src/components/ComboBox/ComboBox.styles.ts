@@ -40,7 +40,7 @@ const getListOptionHighContrastStyles = memoizeFunction((theme: ITheme): IStyle 
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
-      '-ms-high-contrast-adjust': 'none'
+      msHighContrastAdjust: 'none'
     },
   };
 });
@@ -165,7 +165,7 @@ export const getCaretDownButtonStyles = memoizeFunction((
         backgroundColor: 'ButtonFace',
         borderColor: 'ButtonText',
         color: 'ButtonText',
-        '-ms-high-contrast-adjust': 'none'
+        msHighContrastAdjust: 'none'
       }
     },
     rootHovered: {
@@ -245,7 +245,7 @@ export const getStyles = memoizeFunction((
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
         borderColor: 'Highlight',
-        '-ms-high-contrast-adjust': 'none'
+        msHighContrastAdjust: 'none'
       },
     },
     rootFocused: {
@@ -253,7 +253,7 @@ export const getStyles = memoizeFunction((
       [MS_HIGHCONTRAST_ACTIVE]: {
         color: 'HighlightText',
         borderColor: 'Highlight',
-        '-ms-high-contrast-adjust': 'none'
+        msHighContrastAdjust: 'none'
       },
     },
     rootDisabled: getDisabledStyles(theme),
