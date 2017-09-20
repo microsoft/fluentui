@@ -3,7 +3,8 @@ import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './HomePage.module.scss';
 const styles: any = stylesImport;
 
-const packageData = require('../../../package.json');
+const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
+const reactPackageData = require('../../../node_modules/office-ui-fabric-react/package.json');
 
 export class HomePage extends React.Component<any, any> {
   public render() {
@@ -13,7 +14,7 @@ export class HomePage extends React.Component<any, any> {
           <h1 className={ styles.title }>Office UI Fabric</h1>
           <span className={ styles.tagline }>The official front-end framework for building experiences that fit seamlessly into Office and Office 365.</span>
           <a href='#/get-started' className={ css(styles.button, styles.primaryButton) }>Get started</a>
-          <span className={ styles.version }>Fabric Core { packageData.dependencies['office-ui-fabric-core'] } and Fabric React { packageData.dependencies['office-ui-fabric-react'] }</span>
+          <span className={ styles.version }>Fabric Core { corePackageData.version } and Fabric React { reactPackageData.version }</span>
         </div>
 
         <div className={ styles.flavors }>
