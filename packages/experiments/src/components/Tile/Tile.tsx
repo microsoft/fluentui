@@ -340,7 +340,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         aria-checked={ isSelected }
       >
         <Check
-          alwaysShowCheck={ false }
           checked={ isSelected }
         />
       </button>
