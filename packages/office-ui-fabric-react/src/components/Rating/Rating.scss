@@ -8,76 +8,58 @@ $Rating-disabledColor: $ms-color-neutralTertiaryAlt;
 $Rating-smallIconSize: 16px;
 $Rating-largeIconSize: 20px;
 
-// Hide input field
-.input {
-  position: absolute;
-  opacity: 0;
-  top: 0px;
+.ratingStar {
+  display: inline-block;
+  position: relative;
 }
 
-.container {
-  position: relative;
-  display: inline-block;
+.ratingStarBack {
+  color: $Rating-defaultColor;
+  width: 100%;
 
-  &:hover {
-    .star:not(.starIsDisabled) {
-      color: $Rating-selectedColor;
-
-      &.star:hover {
-        color: $Rating-hoverColor;
-
-        & ~ .star {
-          // Set default color for any star after hovered one
-          color: $Rating-defaultColor;
-        }
-      }
-    }
-  }
-
-  .star {
-    display: inline-block;
-
-    text-align: center;
-
-    color: $Rating-defaultColor;
-
-    &.starIsSelected {
-      color: $Rating-selectedColor;
-    }
-
-    &.starIsDisabled {
+  &.ratingStarDisabled {
+    color: $Rating-disabledColor;
+     @media screen and (-ms-high-contrast: active) {
       color: $Rating-disabledColor;
-
-      .label {
-        cursor: default;
-      }
-    }
-
-    .label {
-      display: inline-block;
-      cursor: pointer;
-
-      font-size: $Rating-smallIconSize;
-      padding: 12px 0px;
-
-      // Reserve space for focus styling
-      border: 1px solid transparent;
     }
   }
+}
 
-  .rootIsLarge & {
-    .label {
-      font-size: $Rating-largeIconSize;
-      padding: 6px 2px 9px 2px;
-    }
+.ratingStarFront {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  color: $Rating-selectedColor;
+   @media screen and (-ms-high-contrast: active) {
+      color: rgb(255, 255, 0);
+   }
+}
+
+.ratingButton {
+  background: none;
+  margin: 0;
+  padding: 3px 3px 0px 0px;
+  border: none;
+}
+
+.rootIsSmall  {
+    font-size: $Rating-smallIconSize;
+    line-height: $Rating-smallIconSize;
   }
+
+.rootIsLarge  {
+    font-size: $Rating-largeIconSize;
+    line-height: $Rating-largeIconSize;
 }
 
 .labelText {
   @include ms-screenReaderOnly();
 }
 
-// Highlight focused star
-:global(.ms-Fabric.is-focusVisible) .starIsInFocus .label {
-  border: 1px solid $focusedBorderColor;
+.ratingFocusZone {
+  display: inline-block
 }

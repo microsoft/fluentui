@@ -19,24 +19,6 @@ export class RatingBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-RatingBasicExample'>
-        <Rating
-          min={ 1 }
-          max={ 5 }
-          rating={ this.state.rating }
-          onChanged={ this._onChanged }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-        />
-
-        <Rating
-          min={ 1 }
-          max={ 5 }
-          size={ RatingSize.Large }
-          rating={ this.state.rating }
-          onChanged={ this._onChanged }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-        />
 
         <Rating
           min={ 1 }
@@ -47,7 +29,6 @@ export class RatingBasicExample extends React.Component<any, any> {
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
         />
-
         Disabled:
         <Rating
           min={ 1 }
@@ -57,6 +38,14 @@ export class RatingBasicExample extends React.Component<any, any> {
           disabled={ true }
           onFocus={ () => console.log('onFocus called') }
           onBlur={ () => console.log('onBlur called') }
+        />
+        Half star in readOnly mode:
+        <Rating
+          min={ 1 }
+          max={ 5 }
+          rating={ 2.5 }
+          enableHalfStar={ true }
+          readOnly={ true }
         />
       </div>
     );

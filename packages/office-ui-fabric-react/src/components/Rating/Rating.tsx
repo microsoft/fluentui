@@ -7,19 +7,44 @@ import {
 import { Icon } from '../../Icon';
 import { IRatingProps, RatingSize } from './Rating.Props';
 import * as stylesImport from './Rating.scss';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 const styles: any = stylesImport;
+
+interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
+  fillPercentage: number;
+  disabled: boolean;
+}
 
 export interface IRatingState {
   rating: number | null | undefined;
-  focusedRating: number | null;
 }
+
+const RatingStar = (props: any) => (
+  <div
+    className={ css('ms-RatingStar-container', styles.ratingStar) }
+    key={ props.id }
+  >
+    <Icon
+      className={ css('ms-RatingStar-back', styles.ratingStarBack, {
+        ['is-disabled ' + styles.ratingStarDisabled]: props.disabled
+      }) }
+      iconName='FavoriteStarFill'
+    />
+    { !props.disabled &&
+      <Icon
+        className={ css('ms-RatingStar-front', styles.ratingStarFront) }
+        iconName='FavoriteStarFill'
+        style={ { width: props.fillPercentage + '%' } }
+      />
+    }
+  </div>
+);
 
 export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,
     max: 5
   };
-
   private _id: string;
   private _labelId: string;
 
@@ -27,8 +52,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     super(props);
 
     this.state = {
-      rating: this._getInitialValue(props),
-      focusedRating: null
+      rating: this._getInitialValue(props)
     };
 
     this._id = getId('Rating');
@@ -44,86 +68,57 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   public render() {
-    let stars: JSX.Element[] = [];
-    for (let i = this.props.min as number; i <= (this.props.max as number); ++i) {
-      stars.push(this._renderStar(i));
+
+    let stars = [];
+
+    for (let i = this.props.min as number; i <= (this.props.max as number); i++) {
+      let ratingStarProps: IRatingStarProps = {
+        fillPercentage: this._getFillingPercentage(i),
+        disabled: this.props.disabled ? true : false
+      };
+
+      stars.push(
+        <button
+          className={ css('ms-Rating-button', styles.ratingButton, {
+            ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large,
+            ['ms-Rating--small ' + styles.rootIsSmall]: this.props.size !== RatingSize.Small
+          }) }
+          key={ i }
+          { ...((i === Math.ceil(this.state.rating as number)) ? { 'data-is-current': true } : {}) }
+          onFocus={ this._onFocus.bind(this, i) }
+          disabled={ this.props.disabled || this.props.readOnly ? true : false }
+          role='presentation'
+        >
+          { this._getLabel(i) }
+          < RatingStar key={ i + 'rating' }  {...ratingStarProps} />
+        </button >
+      );
     }
 
     return (
       <div
-        className={ css('ms-Rating', this.props.className, {
-          ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large
-        }) }
-        role='application'
+        className={ css('ms-Rating-star') }
+        aria-label={ this.props.disabled ? '' : this._getRatingComponentAriaLabel() }
       >
-        <div className={ css('ms-Rating-container', styles.container) } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
+        <FocusZone
+          direction={ FocusZoneDirection.horizontal }
+          tabIndex={ this.props.readOnly ? 0 : -1 }
+          className={ css('ms-Rating-focuszone', styles.ratingFocusZone) }
+        >
           { stars }
-        </div>
-      </div>
-    );
-  }
-
-  private _renderStar(rating: number): JSX.Element {
-    const inputId = `${this._id}-${rating}`;
-
-    return (
-      <div
-        className={ css('ms-Rating-star', styles.star, {
-          ['is-selected ' + styles.starIsSelected]: rating <= (this.state.rating as number),
-          ['is-inFocus ' + styles.starIsInFocus]: rating === this.state.focusedRating,
-          ['is-disabled ' + styles.starIsDisabled]: this.props.disabled
-        }) }
-        key={ rating }
-      >
-        <input
-          className={ css('ms-Rating-input', styles.input) }
-          type='radio'
-          name={ this._id }
-          id={ inputId }
-          value={ rating }
-          aria-labelledby={ `${this._labelId}-${rating}` }
-          disabled={ this.props.disabled }
-          checked={ rating === this.state.rating }
-          onChange={ this._onChange.bind(this, rating) }
-          onFocus={ this._onFocus.bind(this, rating) }
-          onBlur={ this._onBlur.bind(this, rating) }
-        />
-        <label className={ css('ms-Rating-label', styles.label) } htmlFor={ inputId }>
-          { this._getLabel(rating) }
-          { this._getIcon() }
-        </label>
+        </FocusZone>
       </div>
     );
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
     this.setState({
-      focusedRating: value
-    } as IRatingState);
-
-    if (this.props.onFocus) {
-      this.props.onFocus(ev);
-    }
-  }
-
-  private _onBlur(option: number, ev: React.FocusEvent<HTMLElement>): void {
-    this.setState({
-      focusedRating: null
-    } as IRatingState);
-
-    if (this.props.onBlur) {
-      this.props.onBlur(ev);
-    }
-  }
-
-  private _onChange(rating: number, evt: React.FormEvent<HTMLInputElement>) {
-    this.setState({
-      rating: rating
+      rating: value
     } as IRatingState);
 
     const { onChanged } = this.props;
     if (onChanged) {
-      onChanged(rating);
+      onChanged(value);
     }
   }
 
@@ -135,13 +130,9 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         id={ `${this._labelId}-${rating}` }
         className={ css('ms-Rating-labelText', styles.labelText) }
       >
-        { `${rating} ${text}` }
+        { `${rating} of ${this.props.max} ${text} selected` }
       </span>
     );
-  }
-
-  private _getIcon(): JSX.Element {
-    return <Icon iconName={ this.props.icon || 'favoriteStarFill' } />;
   }
 
   private _getInitialValue(props: IRatingProps) {
@@ -157,8 +148,31 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
-    rating = Math.floor(rating);
+    if (!this.props.enableHalfStar) {
+      rating = Math.floor(rating);
+    }
 
     return Math.min(Math.max(rating, this.props.min as number), this.props.max as number);
+  }
+  private _getRatingComponentAriaLabel() {
+
+    let rating: number = this.state.rating ? this.state.rating : 0;
+
+    return 'Rating value is ' + rating + ' of ' + this.props.max;
+
+  }
+
+  private _getFillingPercentage(starPosition: number) {
+    let ceilValue = Math.ceil((this.state.rating as number));
+    let fillPercentage = 100;
+
+    if (starPosition === this.state.rating) {
+      fillPercentage = 100;
+    } else if (starPosition === ceilValue) {
+      fillPercentage = 100 * (this.state.rating as number % 1);
+    } else if (starPosition > ceilValue) {
+      fillPercentage = 0;
+    }
+    return fillPercentage;
   }
 }
