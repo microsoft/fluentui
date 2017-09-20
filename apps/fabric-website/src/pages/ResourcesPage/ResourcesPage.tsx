@@ -43,13 +43,13 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h3>Design Toolkit</h3>
                 <p>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</p>
                 <ul>
-                  <li><a href='https://static2.sharepointonline.com/files/fabric/fabric-website/OfficeUIFabric.xd'>Adobe XD Toolkit</a></li>
+                  <li><a href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/OfficeUIFabric.xd'>Adobe XD Toolkit</a></li>
                   <li><a href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97'>Adobe XD Toolkit (Microsoft employees)</a></li>
                 </ul>
 
                 <h3>Fonts</h3>
                 <ul>
-                  <li><a href='https://static2.sharepointonline.com/files/fabric/fabric-website/SegoeUI_FabricMDL2_icon_fonts.zip'>Segoe UI and Fabric MDL2 icon font</a></li>
+                  <li><a href='https://static2.sharepointonline.com/files/fabric/fabric-website/files/SegoeUI_FabricMDL2_icon_fonts.zip'>Segoe UI and Fabric MDL2 icon font</a></li>
                   <li><a href='https://microsoft.sharepoint.com/teams/OfficeUIFabric97/SitePages/Fabric%20MDL2%20Icons.aspx'>Segoe UI and Fabric MDL2 icon font (Microsoft employees)</a></li>
                 </ul>
               </div>
