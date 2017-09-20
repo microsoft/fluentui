@@ -15,11 +15,11 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
   public render() {
     return (
       <ComponentPage
-        title={ 'ColorPicker' }
+        title='ColorPicker'
         componentName='ColorPickerExample'
         exampleCards={
           <ExampleCard
-            title={ 'ColorPicker' }
+            title='Default ColorPicker'
             code={ ColorPickerBasicExampleCode }
           >
             <ColorPickerBasicExample />

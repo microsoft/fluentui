@@ -37,7 +37,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName='PivotExample'
         exampleCards={
           <div>
-            <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
+            <ExampleCard title='Default Pivot' code={ PivotBasicExampleCode }>
               <PivotBasicExample />
             </ExampleCard>
             <ExampleCard title='Count and Icon' code={ PivotIconCountExampleCode }>
@@ -114,9 +114,6 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
               <li>Don’t use the Pivot to link to hidden content.</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={

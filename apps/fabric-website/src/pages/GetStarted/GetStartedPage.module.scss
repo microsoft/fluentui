@@ -23,7 +23,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .designSection,
   .structureSection,
   .instructionsSection {
@@ -76,13 +76,13 @@
   }
 }
 
-@media screen and (max-width: $ms-screen-max-md) {
+@media screen and (max-width: $uhf-screen-max-mobile) {
   .designSection .feature {
     float: none;
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   img {
     margin-bottom: 20px;
   }
@@ -150,7 +150,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .steps {
     li {
       @include ms-padding-left(56px);

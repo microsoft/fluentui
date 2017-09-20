@@ -92,7 +92,7 @@
   }
 }
 
-@media screen and (min-width: $ms-screen-min-lg) {
+@media screen and (min-width: $uhf-screen-min-mobile) {
   .angle {
     margin-top: 0; // Move back down to ensure room for in-page nav
     min-height: 120px;
@@ -104,11 +104,5 @@
 
   .reachOut {
     margin-bottom: 60px;
-  }
-}
-
-@media screen and (min-width: $ms-screen-min-lg) {
-  .reachOut {
-    margin-bottom: 80px;
   }
 }

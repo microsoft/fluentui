@@ -51,9 +51,6 @@ export class SwatchColorPickerPage extends React.Component<IComponentDemoPagePro
             </ul>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/SwatchColorPicker/SwatchColorPicker.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus

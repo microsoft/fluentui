@@ -25,16 +25,16 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         componentName='ChoiceGroupExample'
         exampleCards={
           <div>
-            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
+            <ExampleCard title='Default ChoiceGroup' code={ ChoiceGroupBasicExampleCode }>
               <ChoiceGroupBasicExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupCustomExampleCode }>
+            <ExampleCard title='ChoiceGroup with dropdown' code={ ChoiceGroupCustomExampleCode }>
               <ChoiceGroupCustomExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups using Images' code={ ChoiceGroupImageExampleCode }>
+            <ExampleCard title='ChoiceGroups with images' code={ ChoiceGroupImageExampleCode }>
               <ChoiceGroupImageExample />
             </ExampleCard>
-            <ExampleCard title='ChoiceGroups using Icons' code={ ChoiceGroupIconExampleCode }>
+            <ExampleCard title='ChoiceGroup with icons' code={ ChoiceGroupIconExampleCode }>
               <ChoiceGroupIconExample />
             </ExampleCard>
           </div>
@@ -84,9 +84,6 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
               <li>Nest with other ChoiceGroup or CheckBoxes. If possible, keep all the options at the same level.</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/ChoiceFieldGroup/ChoiceFieldGroup.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
