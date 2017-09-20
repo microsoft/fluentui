@@ -191,7 +191,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
           <p>Check the <a href='https://trello.com/b/sPTXiMzG/office-ui-fabric-core-requests'>Fabric Core Trello board</a> and vote up the request so we can track it. If you don&rsquo;t see an existing card, please <a href='https://github.com/OfficeDev/office-ui-fabric-core/issues'>file an issue in the repository</a> and we&rsquo;ll add the card for you.</p>
         </div>
 
-        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement</a>.</p>
+        <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/Microsoft_Fabric_Assets_License_Agreement_Sept092017.pdf'>assets license agreement</a>.</p>
 
       </div>
     );
