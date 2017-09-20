@@ -7,7 +7,7 @@ const devServerConfig = {
 };
 
 const outputConfig = {
-  filename: 'fabric-site.js'
+  filename: 'fabric-sitev5.js'
 }
 
 module.exports = resources.createServeConfig({
