@@ -96,11 +96,12 @@ controlling the disabled state of the input element.)
 ### Event callbacks
 
 Event callbacks should be prefixed with `on`. If it is necessary to target a subject, the subject should be in between `on` and the event
-name.
+name. Always use present tense verbs instead of past tense.
 
 |BAD|GOOD|Notes|
 |---|----|-----|
 |mouseClick|onClick|
+|onClicked|onClick|
 |inputClick, onClickInput|onInputClick|
 
 
