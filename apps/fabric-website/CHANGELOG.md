@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 19 Sep 2017 10:08:55 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2017 10:19:01 GMT and should not be manually modified.
+
+## 5.0.1
+Wed, 20 Sep 2017 10:19:01 GMT
+
+### Patches
+
+- Changing high-contrast colors to system colors
 
 ## 5.0.0
 Tue, 19 Sep 2017 10:08:55 GMT
