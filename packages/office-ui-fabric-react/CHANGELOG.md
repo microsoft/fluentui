@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 18 Sep 2017 10:18:23 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2017 10:19:01 GMT and should not be manually modified.
+
+## 4.49.0
+Wed, 20 Sep 2017 10:19:01 GMT
+
+### Minor changes
+
+- allow 'chevron down' icon on Dropdown to be customized
+- ContextualMenu: Update the type of the title property on a menu section to be of type string
+- SearchBox: Added onEscape prop
+
+### Patches
+
+- Button: Add the ability to dismiss any open menus from the button interface
+- Modal: Updated padding in example to fix RTL support
+- Changing high-contrast colors to system colors
+
+## 4.48.1
+Tue, 19 Sep 2017 10:08:55 GMT
+
+### Patches
+
+- Added label to Persona example components.
+- Added an optional alt text prop for the Image component and example on the website.
+- Revised alt text best practices for Image Component in website, removed alt prop.
+- Updated dropdown state styles to match the XD specs.
+- Cleaned up Default Dialogue to more cleanly represent the default state. Reformated exampleStyles imports to work towards more modularity. Typo and language fixes.
+- Dropdown: Fixed logic to support selected options in single select scenario
+- Added shared styling to accommodate shared spacing between common elements in example components on the website. Also began to add consistency in the language.
+- SplitButton: Properly cascade container styles to the disabled state
+- Visual bug fixes for UHF adoption for website
 
 ## 4.48.0
 Mon, 18 Sep 2017 10:18:23 GMT

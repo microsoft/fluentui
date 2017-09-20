@@ -22,9 +22,12 @@ import {
   IPickerItemProps,
   ISuggestionItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
-import './Picker.CustomResult.Example.scss';
+
 import { TestImages } from '../../../common/TestImages';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import './Picker.CustomResult.Example.scss';
+import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -340,7 +343,12 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   public render() {
     return (
       <div>
-        <Checkbox label='Disable Document Picker' checked={ this.state.isPickerDisabled } onChange={ this._onDisabledButtonClick } />
+        <Checkbox
+          className={ exampleStyles.exampleCheckbox }
+          label='Disable Document Picker'
+          checked={ this.state.isPickerDisabled }
+          onChange={ this._onDisabledButtonClick }
+        />
         <DocumentPicker
           onRenderSuggestionsItem={ SuggestedBigItem as any }
           onResolveSuggestions={ this._onFilterChanged }
@@ -359,7 +367,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
             onBlur: () => console.log('onBlur called')
           } }
         />
-      </div>
+      </div >
     );
   }
 

@@ -56,7 +56,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
 
   /**
-   * Specified the cover style to be used for this image. If not
+   * Specifies the cover style to be used for this image. If not
    * specified, this will be dynamically calculated based on the
    * aspect ratio for the image.
    */

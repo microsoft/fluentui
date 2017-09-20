@@ -58,6 +58,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "vr-tests",
+      "projectFolder": "apps/vr-tests",
+      "shouldPublish": false
+    },
+    {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
       "shouldPublish": false

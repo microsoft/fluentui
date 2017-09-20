@@ -126,7 +126,7 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   background-color: $ms-color-themeLight;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid WindowText;
   }
 }
@@ -161,7 +161,7 @@ $Calendar-dayPicker-margin: 10px;
 .pickerIsFocused .dayIsHighlighted {
   cursor: pointer;
 
-  @media screen and (-ms-high-contrast: active) {
+  @include high-contrast {
     border: 1px solid Highlight;
   }
 }

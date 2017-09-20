@@ -159,6 +159,11 @@ export interface IFontFace extends IRawFontStyle {
  */
 export interface IRawStyleBase extends IRawFontStyle {
   /**
+   * (Ms specific) constrast adjust rule.
+   */
+  MsHighConstrastAdjust?: ICSSRule | string;
+
+  /**
    * (Moz specific) font smoothing directive.
    */
   MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
@@ -762,13 +767,13 @@ export interface IRawStyleBase extends IRawFontStyle {
    * Specifies the flex grow factor of a flex item.
    * See CSS flex-grow property https://drafts.csswg.org/css-flexbox-1/#flex-grow-property
    */
-  flexGrow?: ICSSRule | number;
+  flexGrow?: ICSSRule | number | string;
 
   /**
    * Specifies the flex shrink factor of a flex item.
    * See CSS flex-shrink property https://drafts.csswg.org/css-flexbox-1/#flex-shrink-property
    */
-  flexShrink?: ICSSRule | number;
+  flexShrink?: ICSSRule | number | string;
 
   /**
    * Specifies whether flex items are forced into a single line or can be wrapped onto

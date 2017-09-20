@@ -5,7 +5,7 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
@@ -17,8 +17,12 @@ import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSwapExample } from './examples/Button.Swap.Example';
 import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
-import './examples/Button.Basic.Example.scss';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Link } from '../../Link';
+import './examples/Button.Basic.Example.scss';
+import * as exampleStylesImport from '../../common/_exampleStyles.scss';
+const exampleStyles: any = exampleStylesImport;
 
 const ButtonDefaultExampleCode = require(
   '!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx'
@@ -68,15 +72,23 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
   public render() {
     return (
       <ComponentPage
-        title='Button'
+        title={ 'Button' }
         componentName='ButtonExample'
         exampleCards={
           <div>
-            <div style={ { marginBottom: '20px' } }>
-              <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
-              <Checkbox label='Mark as checked' checked={ this.state.areButtonsChecked } onChange={ this._onToggledChanged.bind(this) } />
-            </div>
-            <ExampleCard title='Button' code={ ButtonDefaultExampleCode }>
+            <Checkbox
+              className={ exampleStyles.exampleCheckbox }
+              label='Disable buttons'
+              checked={ this.state.areButtonsDisabled }
+              onChange={ this._onDisabledChanged.bind(this) }
+            />
+            <Checkbox
+              className={ exampleStyles.exampleCheckbox }
+              label='Mark as checked'
+              checked={ this.state.areButtonsChecked }
+              onChange={ this._onToggledChanged.bind(this) }
+            />
+            <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
               <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } checked={ this.state.areButtonsChecked } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
@@ -129,9 +141,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             <p>Note that both iconProps and menuIconProps take <Link href='#/examples/icon'>IIconProps</Link> to specify name and type.</p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/Button/Button.html'>Fabric JS</a>
-        }
         bestPractices={
           <div />
         }
@@ -164,6 +173,11 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ButtonStatus}
+          />
+        }
       />
     );
   }
