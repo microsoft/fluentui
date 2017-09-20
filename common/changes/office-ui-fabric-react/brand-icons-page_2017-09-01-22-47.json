@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Modal: Updated padding in example to fix RTL support",
+      "comment": "Brand icons page clean up.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

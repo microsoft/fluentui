@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Button: Add the ability to dismiss any open menus from the button interface",
+      "comment": "fix comments and example code for onRenderCaretDown prop of Dropdown component",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "christianjordangonzalez@gmail.com"
+  "email": "chrismo@microsoft.com"
 }

@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "4.49.0",
+      "tag": "office-ui-fabric-react_v4.49.0",
+      "date": "Wed, 20 Sep 2017 10:19:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "d9d7806fc211a326161c407b28f908e1bc7ee3df",
+            "comment": "Button: Add the ability to dismiss any open menus from the button interface"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d760d81856ba4acf60b52eadc299dfa8210bc1f2",
+            "comment": "Modal: Updated padding in example to fix RTL support"
+          },
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "7fadf0b0aa27ce0a245280e7867881cef1add967",
+            "comment": "Changing high-contrast colors to system colors"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Chris Mohr <chrismohr@users.noreply.github.com>",
+            "commit": "5177563534e111a3c09c22ce8421ec1619a6ec2c",
+            "comment": "allow 'chevron down' icon on Dropdown to be customized"
+          },
+          {
+            "author": "Christian Gonzalez <christianjordangonzalez@gmail.com>",
+            "commit": "bc44b9542dcf9df07dfcc2c3dadee0cae6c16a1a",
+            "comment": "ContextualMenu: Update the type of the title property on a menu section to be of type string"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2ff3cc2d838c9c21ffe47808121bf0062e62c762",
+            "comment": "SearchBox: Added onEscape prop"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.48.1",
       "tag": "office-ui-fabric-react_v4.48.1",
       "date": "Tue, 19 Sep 2017 10:08:55 GMT",
