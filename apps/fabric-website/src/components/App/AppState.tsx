@@ -83,7 +83,6 @@ export const AppState: IAppState = {
           url: '#/styles/utilities',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
-
       ]
     },
     {
