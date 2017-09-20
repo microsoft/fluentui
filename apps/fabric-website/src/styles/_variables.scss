@@ -86,6 +86,10 @@ $contentPadding-sm: 16px;
 $contentPadding-lg: 32px;
 $contentPadding-xl: 40px;
 $contentPaddingBottom: 100px;
+$contentInGrid: 12px; // Content in a grid wrapped div needs extra padding to align with other page content
+
+$contentMargin-vertical: 16px; // Consistent spacing across pages for titles and descriptions
+$titleMargin-vertical: 32px; // Consistent spacing across pages for titles and descriptions
 
 // Screen sizes that align with UHF breakpoints
 $uhf-screen-min-mobile: 768px;
