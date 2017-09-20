@@ -8,7 +8,7 @@ import {
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
-import { CheckboxState } from './Checkbox.checklist';
+import { CheckboxStatus } from './Checkbox.checklist';
 
 const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 
@@ -78,7 +78,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...CheckboxState}
+            {...CheckboxStatus}
           />
         }
       />

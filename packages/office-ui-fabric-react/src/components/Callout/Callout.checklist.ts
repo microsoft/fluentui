@@ -1,6 +1,6 @@
 import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
 
-export const CalloutState = {
+export const CalloutStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.unknown,
   markupSupport: ChecklistStatus.unknown,
   highContrastSupport: ChecklistStatus.pass,

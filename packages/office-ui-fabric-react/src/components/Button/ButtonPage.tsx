@@ -6,7 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ButtonState } from './Button.checklist';
+import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
@@ -147,7 +147,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ButtonState}
+            {...ButtonStatus}
           />
         }
       />

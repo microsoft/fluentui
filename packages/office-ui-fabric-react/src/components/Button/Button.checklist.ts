@@ -1,5 +1,5 @@
 import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
-export const ButtonState = {
+export const ButtonStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.unknown,
   markupSupport: ChecklistStatus.unknown,
   highContrastSupport: ChecklistStatus.fail,

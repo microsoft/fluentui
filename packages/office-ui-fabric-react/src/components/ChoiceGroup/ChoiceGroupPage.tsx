@@ -11,7 +11,7 @@ import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
 import { ChecklistStatus } from '../../demo/ComponentStatus/ComponentStatus.Props';
-import { ChoiceGroupState } from './ChoiceGroup.checklist';
+import { ChoiceGroupStatus } from './ChoiceGroup.checklist';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
 const ChoiceGroupCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Custom.Example.tsx') as string;
@@ -92,7 +92,7 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }
         componentStatus={
           <ComponentStatus
-            {...ChoiceGroupState}
+            {...ChoiceGroupStatus}
           />
         }
       />
