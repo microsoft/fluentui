@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ComponentPage, IComponentPageSection } from '@uifabric/example-app-base';
 import { Link } from '../../Link';
-import { ComponentStatusState, ComponentStatusInfoState, IComponentStatusInfoState, InformationLink } from './ComponentStatusState';
+import { AllComponentsStatus } from './AllComponents.checklist';
+import { ComponentStatusInfoState, IComponentStatusInfoState, InformationLink } from './ComponentStatusState';
 import { ComponentStatus } from './ComponentStatus';
 import './ComponentStatusPage.scss';
 
@@ -32,7 +33,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
       <div>
         <table className='componentTable'>
           <tbody>
-            { Object.keys(ComponentStatusState).map((componentName, index) => {
+            { Object.keys(AllComponentsStatus).map((componentName, index) => {
               return this._renderComponent(componentName);
             }) }
           </tbody>
@@ -42,7 +43,7 @@ export class ComponentStatusPage extends React.Component<{}, {}> {
   }
 
   private _renderComponent(componentName: string): JSX.Element {
-    let component = ComponentStatusState[componentName];
+    let component = AllComponentsStatus[componentName];
     return (
       <tr key={ componentName + '-key' }>
         <th className='componentCells'><h3>{ componentName } </h3> </th>
