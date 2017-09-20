@@ -1,17 +1,21 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { GlobalSettings, IChangeDescription } from './GlobalSettings';
+import { Customizations } from './Customizations';
 
-export function customizable(fields: string[]): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
+export function customizable(
+  scope: string,
+  fields: string[]
+): <P, S>(ComposedComponent: new (props: P, ...args: any[]) => React.Component<P, S>) => any {
+
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P, S>(
     ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)
   ): any {
     return class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static contextTypes: {
-        injectedProps: PropTypes.Requireable<any>;
+        customizations: PropTypes.Requireable<any>;
       } = {
-        injectedProps: PropTypes.object
+        customizations: PropTypes.object
       };
 
       constructor(props: P, context: any) {
@@ -21,31 +25,23 @@ export function customizable(fields: string[]): <P, S>(ComposedComponent: new (p
       }
 
       public componentDidMount(): void {
-        GlobalSettings.addChangeListener(this._onSettingChanged);
+        Customizations.observe(this._onSettingChanged);
       }
 
       public componentWillUnmount(): void {
-        GlobalSettings.removeChangeListener(this._onSettingChanged);
+        Customizations.unobserve(this._onSettingChanged);
       }
 
       public render(): JSX.Element {
-        let defaultProps = {};
-
-        for (let propName of fields) {
-          (defaultProps as any)[propName] = (this.context.injectedProps) ?
-            this.context.injectedProps[propName] :
-            GlobalSettings.getValue(propName);
-        }
+        let defaultProps = Customizations.getSettings(fields, scope, this.context.customizations);
 
         return (
           <ComposedComponent { ...defaultProps } { ...this.props as any } />
         );
       }
 
-      private _onSettingChanged(change: IChangeDescription): void {
-        if (fields.indexOf(change.key) >= 0) {
-          this.forceUpdate();
-        }
+      private _onSettingChanged(): void {
+        this.forceUpdate();
       }
 
     };
