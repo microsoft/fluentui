@@ -7,23 +7,32 @@ import { IStyle, IRawStyle } from './IStyle';
 
 const DISPLAY_NAME = 'displayName';
 
-function getDisplayName(rules?: Map<string, IStyle>): string | undefined {
-  const rootStyle: IStyle = rules && rules.get('&');
+// tslint:disable-next-line:no-any
+type IDictionary = { [key: string]: any };
+
+interface IRuleSet {
+  __order: string[];
+  [key: string]: IDictionary;
+}
+
+function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefined {
+  const rootStyle: IStyle = rules && rules['&'];
 
   return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
 function extractRules(
   args: IStyle[],
-  rules: Map<string, {}> = new Map<string, {}>(),
+  rules: IRuleSet = { __order: [] },
   currentSelector: string = '&'
-): Map<string, {}> {
+): IRuleSet {
   const stylesheet = Stylesheet.getInstance();
-  let currentRules: {} | undefined = rules.get(currentSelector);
+  let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
   if (!currentRules) {
     currentRules = {};
-    rules.set(currentSelector, currentRules);
+    rules[currentSelector] = currentRules;
+    rules.__order.push(currentSelector);
   }
 
   for (const arg of args) {
@@ -72,7 +81,7 @@ function extractRules(
 }
 
 function expandQuads(
-  currentRules: { [key: string]: string },
+  currentRules: IDictionary,
   name: string,
   value: string
 ): void {
@@ -84,20 +93,21 @@ function expandQuads(
   currentRules[name + 'Left'] = parts[3] || parts[1] || parts[0];
 }
 
-function getKeyForRules(rules: Map<string, IStyle>): string | undefined {
+function getKeyForRules(rules: IRuleSet): string | undefined {
   const serialized: string[] = [];
   let hasProps = false;
 
-  rules.forEach((ruleEntries: { [key: string]: string }, selector: string): void => {
+  for (const selector of rules.__order) {
     serialized.push(selector);
+    const rulesForSelector = rules[selector];
 
-    for (const propName in ruleEntries) {
-      if (ruleEntries.hasOwnProperty(propName)) {
+    for (const propName in rulesForSelector) {
+      if (rulesForSelector.hasOwnProperty(propName)) {
         hasProps = true;
-        serialized.push(propName, ruleEntries[propName]);
+        serialized.push(propName, rulesForSelector[propName]);
       }
     }
-  });
+  }
 
   return hasProps ? serialized.join('') : undefined;
 }
@@ -132,7 +142,7 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
 }
 
 export function styleToClassName(...args: IStyle[]): string {
-  const rules: Map<string, IStyle> = extractRules(args);
+  const rules: IRuleSet = extractRules(args);
   const key = getKeyForRules(rules);
   let className = '';
 
@@ -145,17 +155,13 @@ export function styleToClassName(...args: IStyle[]): string {
       className = stylesheet.getClassName(getDisplayName(rules));
       stylesheet.cacheClassName(className, key, args);
 
-      const ruleSelectors = rules.keys();
-      let selector = ruleSelectors.next().value;
-
-      while (selector) {
-        const rulesToInsert: string = serializeRuleEntries(rules.get(selector) as {});
+      for (let selector of rules.__order) {
+        const rulesToInsert: string = serializeRuleEntries(rules[selector]);
 
         if (rulesToInsert) {
           selector = selector.replace(/\&/g, `.${className}`);
           stylesheet.insertRule(`${selector}{${rulesToInsert}}`);
         }
-        selector = ruleSelectors.next().value;
       }
     }
   }
