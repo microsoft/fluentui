@@ -80,7 +80,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div/>
+          <div />
         }
         dos={
           <div>
