@@ -26,4 +26,8 @@
 
 .isDisabled {
   @include ms-Label-is-disabled;
+
+  @include high-contrast {
+    color: GrayText;
+  }
 }

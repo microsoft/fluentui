@@ -421,11 +421,14 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
+    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+      e.which === KeyCodes.enter;
+
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
-          isInnerZoneKeystroke={ (e: React.KeyboardEvent<HTMLElement>) => e.which === KeyCodes.enter }
+          isInnerZoneKeystroke={ isInnerZoneKeystroke }
         >
           <button className='a'>a</button>
           <div
@@ -508,11 +511,14 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
+    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+    e.which === KeyCodes.enter;
+
     const component = ReactTestUtils.renderIntoDocument(
       <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone
           direction={ FocusZoneDirection.horizontal }
-          isInnerZoneKeystroke={ (e: React.KeyboardEvent<HTMLElement>) => e.which === KeyCodes.enter }
+          isInnerZoneKeystroke={ isInnerZoneKeystroke }
         >
           <button className='a'>a</button>
           <FocusZone

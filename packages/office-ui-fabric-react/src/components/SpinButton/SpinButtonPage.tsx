@@ -80,7 +80,7 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
           </div>
         }
         bestPractices={
-          <div/>
+          <div />
         }
         dos={
           <div>
@@ -99,9 +99,6 @@ export class SpinButtonPage extends React.Component<IComponentDemoPageProps, {}>
               <li>Don't use a SpinButton for a range of three values or less.</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/SpinButton/SpinButton.html'>Fabric JS</a>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
       />
