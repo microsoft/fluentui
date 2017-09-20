@@ -1,5 +1,6 @@
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 
-export interface IPropertiesTableSetProps {
+export interface IPropertiesTableSetProps extends IBaseProps {
   /**
    * Component name, assumes component resides in /components/[name]/ folder
    * and properties are at /components/[name]/[name].Props.ts.

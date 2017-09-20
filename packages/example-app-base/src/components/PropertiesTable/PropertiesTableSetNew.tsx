@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { autobind, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { IEnumProperty, IInterfaceProperty } from '../../utilities/parser/interfaces';
 import { IProperty, PropertyType } from '../../utilities/parser/index';
 import { PropertiesTable } from './PropertiesTable';
@@ -10,10 +10,11 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 // tslint:disable-next-line:no-unused-variable
 const DOCS = require('../../../docs.json') as JSON;
+const DEBOUNCE_DELAY = 200;
 
 export interface IPropertiesTableSetStateNew {
   properties: Array<IProperty>;
-  propsFormat: string;
+  propsFormat: PropsFormat;
   propsFilter: string | null;
 }
 
@@ -22,12 +23,14 @@ export enum PropsFormat {
   Grouped = '2'
 }
 
-export class PropertiesTableSetNew extends React.Component<IPropertiesTableSetProps, IPropertiesTableSetStateNew> {
+export class PropertiesTableSetNew extends BaseComponent<IPropertiesTableSetProps, IPropertiesTableSetStateNew> {
   constructor(props: IPropertiesTableSetProps) {
     super(props);
     let {
       sources
     } = props;
+
+    this._onChangeFilter = this._async.debounce(this._onChangeFilter, DEBOUNCE_DELAY);
 
     let properties: IProperty[] = [];
 
@@ -58,77 +61,37 @@ export class PropertiesTableSetNew extends React.Component<IPropertiesTableSetPr
     };
   }
 
-  public renderEach(): JSX.Element | JSX.Element[] {
-    let { propsFormat, propsFilter } = this.state;
-
-    if (propsFormat === PropsFormat.Alphabetical) {
-      let combinedProps: (IInterfaceProperty | IEnumProperty)[] = [];
-
-      // Flatten into single array (not grouped by interface)
-      this.state.properties.forEach((item: IProperty) => {
-        combinedProps = combinedProps.concat(item.property);
-      });
-
-      let filteredProps: (IInterfaceProperty | IEnumProperty)[] = combinedProps;
-
-      // Filter by search text
-      if (propsFilter) {
-        filteredProps = combinedProps.filter((prop: IInterfaceProperty | IEnumProperty) => {
-          return this._containsFilterText(prop);
-        });
-      }
-
-      return (
-        <PropertiesTable
-          key={ filteredProps.length.toString() }
-          title={ this.props.componentName }
-          properties={ filteredProps }
-          renderAsEnum={ false } // TODO: Handle Enum
-        />
-      );
-    }
-    return this.state.properties.map((item: IProperty) => {
-      let filteredProps = (item.property as (IInterfaceProperty | IEnumProperty)[]).filter((prop: (IInterfaceProperty | IEnumProperty)) => {
-        return this._containsFilterText(prop);
-      });
-      return {
-        ...item,
-        property: filteredProps
-      };
-    }).map((item: IProperty) => (
-      <PropertiesTable
-        key={ item.propertyName + item.property.length }
-        title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
-        properties={ item.property }
-        renderAsEnum={ item.propertyType === PropertyType.enum }
-      />
-    ));
-  }
-
+  @autobind
   public render(): JSX.Element {
     return (
       <div>
         <TextField
+          iconProps={ { iconName: 'Search' } }
           label='Filter props by name or description'
           onChanged={ this._onChangeFilter }
+          placeholder='Search'
         />
         <ChoiceGroup
-          defaultSelectedKey='2'
+          defaultSelectedKey={ PropsFormat.Grouped }
           selectedKey={ this.state.propsFormat }
           options={ [
             {
-              key: '2',
+              key: PropsFormat.Grouped,
               text: 'Group props by interface'
             },
             {
-              key: '1',
+              key: PropsFormat.Alphabetical,
               text: 'Combine props alphabetically',
             }
           ] }
           onChange={ this._onChangePropsFormat }
           required={ false }
         />
-        { this.renderEach() }
+        {
+          this.state.propsFormat === PropsFormat.Alphabetical ?
+            this._renderAlphabetical() :
+            this._renderGrouped()
+        }
       </div>
     );
   }
@@ -150,5 +113,61 @@ export class PropertiesTableSetNew extends React.Component<IPropertiesTableSetPr
   @autobind
   private _onChangeFilter(propsFilter: string): void {
     this.setState(() => ({ propsFilter }));
+  }
+
+  @autobind
+  private _renderAlphabetical(): JSX.Element {
+    let { propsFilter } = this.state;
+    let combinedProps: (IInterfaceProperty | IEnumProperty)[] = [];
+
+    // Flatten into single array (not grouped by interface)
+    this.state.properties.forEach((item: IProperty) => {
+      combinedProps = combinedProps.concat(item.property);
+    });
+
+    let filteredProps: (IInterfaceProperty | IEnumProperty)[] = combinedProps;
+
+    // Filter by search text
+    if (propsFilter) {
+      filteredProps = combinedProps.filter((prop: IInterfaceProperty | IEnumProperty) => {
+        return this._containsFilterText(prop);
+      });
+    }
+
+    return (
+      <PropertiesTable
+        // key={ Math.random().toString() } // Why does this need a unique key to re-render?
+        title={ this.props.componentName }
+        properties={ filteredProps }
+        renderAsEnum={ false } // TODO: Handle Enum
+      />
+    );
+  }
+
+  @autobind
+  private _renderGrouped(): JSX.Element[] {
+    let { propsFilter } = this.state;
+    let filteredProps: IProperty[] = this.state.properties;
+
+    if (propsFilter) {
+      filteredProps = this.state.properties.map((item: IProperty): IProperty => {
+        let property = (item.property as (IInterfaceProperty | IEnumProperty)[]).filter((prop: (IInterfaceProperty | IEnumProperty)) => {
+          return this._containsFilterText(prop);
+        });
+        return {
+          ...item,
+          property
+        } as IProperty;
+      });
+    }
+
+    return filteredProps.map((item: IProperty): JSX.Element => (
+      <PropertiesTable
+        key={ Math.random().toString() } // Why does this need a unique key to re-render?
+        title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
+        properties={ item.property }
+        renderAsEnum={ item.propertyType === PropertyType.enum }
+      />
+    ));
   }
 }
