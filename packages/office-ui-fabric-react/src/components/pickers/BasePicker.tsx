@@ -427,14 +427,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.del:
-        if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
-          if (this.props.onRemoveSuggestion) {
-            (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
-          }
-          this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
-          this.forceUpdate();
-        } else if(!this.props.disabled) {
-          this.onBackspace(ev);
+        if (!this.props.disabled) {
+            if (this.input && ev.target === this.input.inputElement && this.state.suggestionsVisible && this.suggestionStore.currentIndex !== -1) {
+                if (this.props.onRemoveSuggestion) {
+                    (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
+                }
+                this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
+                this.forceUpdate();
+            } else {
+                this.onBackspace(ev);
+            }
         }
         ev.stopPropagation();
         break;
