@@ -89,19 +89,19 @@ export function themeRulesStandardCreator() {
   });
 
   // set default colors for the base colors
-  slotRules[BaseSlots[BaseSlots.primaryColor]].value = getColorFromString('#0078d7');
-  slotRules[BaseSlots[BaseSlots.backgroundColor]].value = getColorFromString('#fff');
-  slotRules[BaseSlots[BaseSlots.foregroundColor]].value = getColorFromString('#333');
+  slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d7');
+  slotRules[BaseSlots[BaseSlots.backgroundColor]].color = getColorFromString('#fff');
+  slotRules[BaseSlots[BaseSlots.foregroundColor]].color = getColorFromString('#333');
 
   // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].value = getColorFromString('#eff6fc');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].value = getColorFromString('#deecf9');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].value = getColorFromString('#c7e0f4');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade4]].value = getColorFromString('#71afe5');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade5]].value = getColorFromString('#2b88d8');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].value = getColorFromString('#106ebe');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].value = getColorFromString('#005a9e');
-  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].value = getColorFromString('#004578');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].color = getColorFromString('#eff6fc');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].color = getColorFromString('#deecf9');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].color = getColorFromString('#c7e0f4');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade4]].color = getColorFromString('#71afe5');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade5]].color = getColorFromString('#2b88d8');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].color = getColorFromString('#106ebe');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].color = getColorFromString('#005a9e');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].color = getColorFromString('#004578');
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].isCustomized = true;
@@ -112,14 +112,14 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].isCustomized = true;
 
   // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].value = getColorFromString('#eaeaea');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].value = getColorFromString('#c8c8c8');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].value = getColorFromString('#a6a6a6');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].value = getColorFromString('#767676');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].value = getColorFromString('#666666');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].value = getColorFromString('#3c3c3c');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].value = getColorFromString('#212121');
-  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].value = getColorFromString('#000000');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].color = getColorFromString('#eaeaea');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].color = getColorFromString('#c8c8c8');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].color = getColorFromString('#a6a6a6');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].color = getColorFromString('#767676');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].color = getColorFromString('#666666');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].color = getColorFromString('#3c3c3c');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].isCustomized = true;
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].isCustomized = true;
@@ -163,15 +163,15 @@ export function themeRulesStandardCreator() {
   _makeFabricSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade.Shade8);
   _makeFabricSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade.Unshaded, true);
 
-  // manually set initial values for the primary-based Fabric slots to match the default theme
-  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].value = getColorFromString('#eff6fc');
-  slotRules[FabricSlots[FabricSlots.themeLighter]].value = getColorFromString('#deecf9');
-  slotRules[FabricSlots[FabricSlots.themeLight]].value = getColorFromString('#c7e0f4');
-  slotRules[FabricSlots[FabricSlots.themeTertiary]].value = getColorFromString('#71afe5');
-  slotRules[FabricSlots[FabricSlots.themeSecondary]].value = getColorFromString('#2b88d8');
-  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].value = getColorFromString('#106ebe');
-  slotRules[FabricSlots[FabricSlots.themeDark]].value = getColorFromString('#005a9e');
-  slotRules[FabricSlots[FabricSlots.themeDarker]].value = getColorFromString('#004578');
+  // manually set initial colors for the primary-based Fabric slots to match the default theme
+  slotRules[FabricSlots[FabricSlots.themeLighterAlt]].color = getColorFromString('#eff6fc');
+  slotRules[FabricSlots[FabricSlots.themeLighter]].color = getColorFromString('#deecf9');
+  slotRules[FabricSlots[FabricSlots.themeLight]].color = getColorFromString('#c7e0f4');
+  slotRules[FabricSlots[FabricSlots.themeTertiary]].color = getColorFromString('#71afe5');
+  slotRules[FabricSlots[FabricSlots.themeSecondary]].color = getColorFromString('#2b88d8');
+  slotRules[FabricSlots[FabricSlots.themeDarkAlt]].color = getColorFromString('#106ebe');
+  slotRules[FabricSlots[FabricSlots.themeDark]].color = getColorFromString('#005a9e');
+  slotRules[FabricSlots[FabricSlots.themeDarker]].color = getColorFromString('#004578');
   slotRules[FabricSlots[FabricSlots.themeLighterAlt]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeLighter]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeLight]].isCustomized = true;

@@ -37,14 +37,18 @@ export interface IThemeGeneratorPageState {
   colorPickerVisible: boolean;
 }
 
+const BackgroundImageUriKey = 'backgroundImageUri';
+const BackgroundOverlayKey = 'backgroundOverlay';
+
 export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPageState> {
+
   private _imgUrl: string;
 
   constructor() {
     super();
 
     let themeRules = themeRulesStandardCreator();
-    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!));
+    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
     this.state = {
       themeRules: themeRules,
@@ -52,20 +56,6 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       colorPickerElement: null,
       colorPickerVisible: false
     };
-  }
-
-  public componentDidUpdate() {
-    if (this._imgUrl) { // if doing theme-from-img...
-      const outputElem = (document.getElementById('jsonOutput') as HTMLTextAreaElement);
-      let jsonOutput = outputElem.value;
-      let newOutput = JSON.parse(jsonOutput);
-      newOutput.backgroundImageUri = 'url("' + this._imgUrl + '")';
-
-      let tr = this.state.themeRules as IThemeRules;
-      newOutput.backgroundOverlay = updateA((tr[BaseSlots[BaseSlots.backgroundColor]] as IThemeSlotRule).value!, 50).str;
-
-      outputElem.value = JSON.stringify(newOutput, void 0, 2);
-    }
   }
 
   public render() {
@@ -113,7 +103,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
           * and generate a theme based off of those.
           * Since this API requires a personal subscription key, you'll have to enlist and insert your subscription
           * key in _makeThemeFromImg() below. Then, just uncomment this section. */}
-        {/*}
+        { }
         <div style={ { display: 'flex' } }>
           <div>URL to image:&nbsp;</div>
           <input type='text' id='imageUrl' />
@@ -121,7 +111,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         </div>
         <div id='imageDescription' />
         <div><img id='imagePreview' style={ { maxHeight: '500px', maxWidth: '800px' } } /></div>
-        {*/}
+        { }
 
         {/* the shared popup color picker for slots */ }
         { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
@@ -133,7 +123,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
             onDismiss={ this._colorPickerOnDismiss }
           >
             <ColorPicker
-              color={ colorPickerSlotRule.value!.str }
+              color={ colorPickerSlotRule.color!.str }
               onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) }
             />
           </Callout>
@@ -233,14 +223,26 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
     this._imgUrl = (document.getElementById('imageUrl') as HTMLInputElement).value;
     (document.getElementById('imagePreview') as HTMLImageElement).src = this._imgUrl;
 
-    let xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
-    // you may need to change the URL here
-    xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    alert('You forgot to set the subscription key!');
-    xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '[YOUR SUBSCRIPTION KEY HERE]');
-    xhr.send('{ "url": "' + this._imgUrl + '" }');
+    if (this._imgUrl) {
+      let xhr = new XMLHttpRequest();
+      xhr.addEventListener('load', this._cognitiveVisionCallback.bind(this));
+      // you may need to change the URL here
+      xhr.open('POST', 'https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description%2CColor&details=&language=en');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      alert('You forgot to set the subscription key!');
+      xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '55a4471f77fb4f1da36fad9fd16ed307'); // put your subscription key here
+      xhr.send('{ "url": "' + this._imgUrl + '" }');
+    } else {
+      // remove related properties from theme
+      let { themeRules } = this.state;
+      if (themeRules.hasOwnProperty(BackgroundImageUriKey)) {
+        delete themeRules[BackgroundImageUriKey];
+      }
+      if (themeRules.hasOwnProperty(BackgroundOverlayKey)) {
+        delete themeRules[BackgroundOverlayKey];
+      }
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+    }
   }
 
   @autobind
@@ -303,6 +305,15 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         true,
         true);
 
+      themeRules[BackgroundImageUriKey] = {
+        name: BackgroundImageUriKey,
+        value: 'url(\'' + this._imgUrl + '\')'
+      };
+      themeRules[BackgroundOverlayKey] = {
+        name: BackgroundOverlayKey,
+        color: updateA((themeRules[BaseSlots[BaseSlots.backgroundColor]]).color!, 50)
+      };
+
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
 
     } else {
@@ -319,7 +330,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
     let { themeRules } = this.state;
 
-    ThemeGenerator.setSlot(slotRule, color, themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!), true, true);
+    ThemeGenerator.setSlot(slotRule, color, themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!), true, true);
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
   }
 
@@ -364,7 +375,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
       <div
         key={ slotRule.name }
         className='ms-themer-swatch'
-        style={ { backgroundColor: slotRule.value!.str } }
+        style={ { backgroundColor: slotRule.color!.str } }
         onClick={ this._onSwatchClick.bind(this, slotRule) }
       />
     );
@@ -373,8 +384,8 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   @autobind
   private _accessibilityRow(foreground: SemanticColorSlots, background: SemanticColorSlots) {
     let themeRules = this.state.themeRules;
-    let bgc: IColor = themeRules[SemanticColorSlots[background]].value!;
-    let fgc: IColor = themeRules[SemanticColorSlots[foreground]].value!;
+    let bgc: IColor = themeRules[SemanticColorSlots[background]].color!;
+    let fgc: IColor = themeRules[SemanticColorSlots[foreground]].color!;
 
     let contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
@@ -446,7 +457,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
   private _baseColorSlotPicker(baseSlot: BaseSlots) {
     function _onColorChanged(newColor: string) {
       let themeRules = this.state.themeRules;
-      const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!);
+      const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
       ThemeGenerator.setSlot(
         themeRules[BaseSlots[baseSlot]],
         newColor,
@@ -454,7 +465,7 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         currentIsDark,
         true,
         true);
-      if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].value!)) {
+      if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
         // isInverted got swapped, so need to refresh slots with new shading rules
         ThemeGenerator.insureSlots(themeRules, !currentIsDark);
       }
@@ -467,14 +478,14 @@ export class ThemeGeneratorPage extends React.Component<any, IThemeGeneratorPage
         <div style={ { display: 'inline-block' } }>
           <ColorPicker
             key={ 'baseslotcolorpicker' + baseSlot }
-            color={ this.state.themeRules[BaseSlots[baseSlot]].value!.str }
+            color={ this.state.themeRules[BaseSlots[baseSlot]].color!.str }
             /* tslint:disable:jsx-no-bind */
             onColorChanged={ _onColorChanged.bind(this) }
           /* tslint:enable:jsx-no-bind */
           />
         </div>
-        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value!.str } }>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value!.str } } />
+        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str } }>
+          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].color!.str } } />
           { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
           this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
           this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),
