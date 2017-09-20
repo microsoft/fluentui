@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 
@@ -67,6 +69,11 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ToggleStatus}
+          />
+        }
       />
     );
   }

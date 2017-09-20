@@ -8,6 +8,9 @@ import {
 import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { CalendarStatus } from './Calendar.checklist';
+
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
@@ -15,7 +18,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
   public render() {
     return (
       <ComponentPage
-        title='Calendar'
+        title={ 'Calendar' }
         componentName='CalendarExample'
         exampleCards={
           <div>
@@ -27,7 +30,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showGoToToday={ false }
               />
             </ExampleCard>
-            <ExampleCard title='Inline Calendar with overlayed month picker when header is clicked' code={ CalendarInlineExampleCode }>
+            <ExampleCard
+              title='Inline Calendar with overlayed month picker when header is clicked'
+              code={ CalendarInlineExampleCode }
+            >
               <CalendarInlineExample
                 showMonthPickerAsOverlay={ true }
                 highlightCurrentMonth={ true }
@@ -36,7 +42,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showGoToToday={ false }
               />
             </ExampleCard>
-            <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
+            <ExampleCard
+              title='Inline Calendar with month picker'
+              code={ CalendarInlineExampleCode }
+            >
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Day }
                 autoNavigateOnSelection={ false }
@@ -44,7 +53,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showGoToToday={ true }
               />
             </ExampleCard>
-            <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>
+            <ExampleCard
+              title='Inline Calendar with week selection'
+              code={ CalendarInlineExampleCode }
+            >
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Week }
                 autoNavigateOnSelection={ true }
@@ -52,7 +64,10 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 showNavigateButtons={ true }
               />
             </ExampleCard>
-            <ExampleCard title='Inline Calendar with month selection' code={ CalendarInlineExampleCode }>
+            <ExampleCard
+              title='Inline Calendar with month selection'
+              code={ CalendarInlineExampleCode }
+            >
               <CalendarInlineExample
                 dateRangeType={ DateRangeType.Month }
                 autoNavigateOnSelection={ true }
@@ -78,10 +93,17 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
                 isDayPickerVisible={ false }
               />
             </ExampleCard>
-            <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
-              <CalendarButtonExample />
+            <ExampleCard
+              title='Calendar launched from a button'
+              code={ CalendarButtonExampleCode }
+            >
+              <CalendarButtonExample
+              />
             </ExampleCard>
-            <ExampleCard title='Month picker launched from a button' code={ CalendarButtonExampleCode }>
+            <ExampleCard
+              title='Month picker launched from a button'
+              code={ CalendarButtonExampleCode }
+            >
               <CalendarButtonExample
                 isDayPickerVisible={ false }
                 highlightCurrentMonth={ true }
@@ -129,6 +151,11 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...CalendarStatus}
+          />
+        }
       />
     );
   }

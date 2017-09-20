@@ -8,6 +8,8 @@ import {
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { FontClassNames } from '../../Styling';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { SearchBoxStatus } from './SearchBox.checklist';
 
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
@@ -118,6 +120,11 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
           </div>
         }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...SearchBoxStatus}
+          />
+        }
       />
     );
   }
