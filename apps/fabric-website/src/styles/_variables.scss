@@ -41,6 +41,12 @@ $color-blog-lighter: #d1ec3c;
 // Component variables
 $App-maximumWidth: 1600px;
 
+//Padding matches padding at the same UHF breakpoints
+$App-padding-left-lg: 5%;
+$App-padding-right-lg: 5%;
+$App-padding-left-sm: 6px;
+$App-padding-right-sm: 24px;
+
 //SVG
 // With the increase in App-maximumWidth for UHF adoption,
 // this makes sure the "V" in the hero stays visable at different breakpoints
