@@ -8,14 +8,16 @@
   .loading {
     align-items: center;
     background-color: #212121;
+    border-top: 50px solid #000;
     display: flex;
     height: 100vh;
     justify-content: center;
   }
 </style>
+
 <div id="main">
   <div class="loading">
-    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif" alt="Loading"
+    <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading"
       width="32" height="32" />
   </div>
 </div>
@@ -23,29 +25,36 @@
 <script type="text/javascript">
   var isProduction = false;
   var isDogfood = false;
-  var isLocal = false;
+  var now = Date.now();
   var today = new Date();
-  var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  var todaysDate = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   var entryPointFilename = 'fabric-sitev5';
+  var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
 
   // Query params
-  var noCompress = getParameterByName('noCompress') === 'true';
-  var devUrl = getParameterByName('devUrl');
-  var dogfood = getParameterByName('isDogfood');
-  var production = getParameterByName('isProduction');
+  var devUrlParam = getParameterByName('devUrl');
+  var dogfoodParam = getParameterByName('isDogfood');
+  var productionParam = getParameterByName('isProduction');
 
-  // @TODO: change this to only check for production
-  switch (true) {
-    case location.hostname === 'dev.office.com' || production:
-      isProduction = true;
-      break;
-    case location.hostname === 'officedevcentersite-devx.azurewebsites.net' || location.hostname === 'devx.microsoft-tst.com' || dogfood:
-      isDogfood = true;
-      break;
-    case location.hostname === 'officedevcentersite-release.azurewebsites.net':
-      isProduction = true;
-      break;
+  if (location.hostname == 'developer.microsoft.com' || productionParam) {
+    isProduction = true;
+  } else if (location.hostname.indexOf('devx') > -1 || dogfoodParam) {
+    isDogfood = true;
+    entryPointFilename = 'fabric-sitev5-df';
   }
+
+  var scripts = [];
+
+  if (devUrlParam) {
+    scripts.push(devUrlParam);
+  } else if (isDogfood) {
+    scripts.push(baseDogfoodUrl + entryPointFilename + '.js?date=' + now);
+  } else {
+    scripts.push(baseProductionUrl + entryPointFilename + '.min.js?date=' + todaysDate);
+  }
+
+  loadScript(scripts);
 
   function loadScript(n) {
     for (var i = 0; i < n.length; i++) {
@@ -67,28 +76,5 @@
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
-
-  var baseProductionUrl = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
-  var baseDogfoodUrl = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
-
-  var scripts = [];
-
-  if (devUrl) {
-    scripts.push(devUrl);
-  } else if (isDogfood) {
-    if (noCompress) {
-      scripts.push(baseDogfoodUrl + entryPointFilename + '.min.js?date=' + Date.now());
-    } else {
-      scripts.push(baseDogfoodUrl + entryPointFilename + '.js?date=' + Date.now());
-    }
-  } else {
-    if (noCompress) {
-      scripts.push(baseProductionUrl + entryPointFilename + '.js?date=' + date);
-    } else {
-      scripts.push(baseProductionUrl + entryPointFilename + '.min.js?date=' + date);
-    }
-  }
-
-  loadScript(scripts);
 
 </script>
