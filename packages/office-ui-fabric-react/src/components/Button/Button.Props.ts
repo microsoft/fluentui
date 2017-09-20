@@ -264,6 +264,11 @@ export interface IButtonStyles {
   flexContainer?: IStyle;
 
   /**
+   * Style for the text container within the flexbox container element (and contains the text and description).
+   */
+  textContainer?: IStyle;
+
+  /**
    * Style for the icon on the near side of the label.
    */
   icon?: IStyle;
