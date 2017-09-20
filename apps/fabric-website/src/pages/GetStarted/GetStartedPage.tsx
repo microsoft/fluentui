@@ -72,7 +72,7 @@ export class GetStartedPage extends React.Component<any, any> {
             </div>
             <div className={ diagramStyles.or }>or</div>
             <ul className={ diagramStyles.components }>
-              <li className={ css(diagramStyles.component, diagramStyles.featuredComponent) }>
+              <li className={ diagramStyles.component }>
                 <div className={ diagramStyles.graphics }>
                   <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg' } width='175' height='90' alt='Illustrated Diagram of many components' />
                   <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
@@ -81,17 +81,6 @@ export class GetStartedPage extends React.Component<any, any> {
                   <span className={ diagramStyles.headline }>Fabric React</span>
                   <span className={ diagramStyles.description }>Robust, up-to-date components built with the React framework</span>
                   <a href='#/components'>See components</a>
-                </div>
-              </li>
-              <li className={ diagramStyles.component }>
-                <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' } width='175' height='90' alt='Illustrated Diagram of few components' />
-                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
-                </div>
-                <div className={ diagramStyles.content }>
-                  <span className={ diagramStyles.headline }>Fabric JS</span>
-                  <span className={ diagramStyles.description }>Simple, visuals-focused components that you can extend, rework, and use</span>
-                  <a href='#/fabric-js'>Learn more</a>
                 </div>
               </li>
               <li className={ diagramStyles.component }>
@@ -171,7 +160,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>Add the following line to the &lt;head&gt; of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.2.0/css/fabric.min.css">`
+                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/7.3.0/css/fabric.min.css">`
                 }
               </CodeBlock>
             </li>
@@ -182,7 +171,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
                   `<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
                 }
               </CodeBlock>
-              <p>To reference all the assets available in Fabric Core, see the <a href='#/styles'>styles page</a>. To use components, see <a href='#/get-started#react'>Fabric React</a>, <a href='#/fabric-js'>Fabric JS</a>, or <a href='#/angular-js'>ngOfficeUIFabric</a>.</p>
+              <p>To reference all the assets available in Fabric Core, see the <a href='#/styles'>styles page</a>. To use components, see <a href='#/get-started#react'>Fabric React</a> or <a href='#/angular-js'>ngOfficeUIFabric</a>.</p>
             </li>
           </ol>
 
@@ -190,7 +179,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
           <p>You can <a href='https://github.com/OfficeDev/office-ui-fabric-core/releases'>download a copy of Fabric for your project</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/PACKAGES.md'>add it through a package manager</a>. You can also <a href='https://github.com/OfficeDev/office-ui-fabric-core/blob/master/ghdocs/BUILDING.md'>build your own copy from the source code</a>.</p>
 
           <h3>Need an icon or feature Fabric Core doesn&rsquo;t have?</h3>
-          <p>Check the <a href='https://trello.com/b/sPTXiMzG/office-ui-fabric-core-requests'>Fabric Core Trello board</a> and vote up the request so we can track it. If you don&rsquo;t see an existing card, please <a href='https://github.com/OfficeDev/office-ui-fabric-core/issues'>file an issue in the repository</a> and we&rsquo;ll add the card for you.</p>
+          <p>First, check the <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>Fabric React issue queue</a> or <a href='https://github.com/OfficeDev/office-ui-fabric-react/projects'>projects</a> to see if your component has already been requested or is being worked on. If you don't see an existing issue or project for the component you're looking for, please <a href='https://github.com/OfficeDev/office-ui-fabric-react/issues'>file an issue in the repo</a>, and we'll respond if it's being built or on our radar.</p>
         </div>
 
         <p>Usage of Fabric assets, such as fonts and icons, is subject to the <a href='https://static2.sharepointonline.com/files/fabric/assets/license.txt'>assets license agreement</a>.</p>

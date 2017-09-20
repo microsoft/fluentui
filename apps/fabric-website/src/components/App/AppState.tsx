@@ -25,19 +25,22 @@ export const AppState: IAppState = {
       title: 'Fabric',
       url: '#/',
       className: 'fabricPage',
+      isHomePage: true,
+      isUhfLink: true,
       component: require<any>('../../pages/HomePage/HomePage').HomePage,
-      isHomePage: true
     },
     {
       title: 'Get started',
       url: '#/get-started',
       className: 'getStartedPage',
+      isUhfLink: true,
       component: require<any>('../../pages/GetStarted/GetStartedPage').GetStartedPage,
     },
     {
       title: 'Styles',
       url: '#/styles',
       className: 'stylesPage',
+      isUhfLink: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
       pages: [
         {
@@ -85,13 +88,13 @@ export const AppState: IAppState = {
           url: '#/styles/utilities',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
-
       ]
     },
     {
       title: 'Components',
       url: '#/components',
       className: 'componentsPage',
+      isUhfLink: true,
       component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
       pages: [
         {
@@ -393,12 +396,14 @@ export const AppState: IAppState = {
       title: 'Resources',
       url: '#/resources',
       className: 'resourcesPage',
+      isUhfLink: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesPage))
     },
     {
       title: 'Blog',
       url: '#/blog',
       className: 'blogPage',
+      isUhfLink: true,
       getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
     },
     {

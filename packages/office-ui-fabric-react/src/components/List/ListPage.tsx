@@ -9,6 +9,8 @@ import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { createListItems } from '@uifabric/example-app-base';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ListStatus } from './List.checklist';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
@@ -61,10 +63,12 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
             </p>
           </div>
         }
-        related={
-          <a href='https://dev.office.com/fabric-js/Components/List/List.html'>Fabric JS</a>
-        }
         isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ListStatus}
+          />
+        }
       />
     );
   }
