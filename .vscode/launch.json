@@ -2,6 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Jest",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}scripts/node_modules/jest/bin/jest",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false,
+      "args": [
+        "-i"
+      ],
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
       "name": "Debug test",
       "type": "node",
       "request": "launch",
