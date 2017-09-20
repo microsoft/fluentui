@@ -174,7 +174,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       onRenderSuggestion,
       suggestionsItemClassName,
       resultsMaximumNumber,
-      showRemoveButtons } = this.props;
+      showRemoveButtons,
+      suggestionsContainerAriaLabel } = this.props;
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     if (resultsMaximumNumber) {
@@ -186,6 +187,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
         id='suggestion-list'
         role='menu'
+        aria-label={ suggestionsContainerAriaLabel }
       >
         { suggestions.map((suggestion, index) =>
           <div
