@@ -128,5 +128,4 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> 
       />
     );
   }
-
 }

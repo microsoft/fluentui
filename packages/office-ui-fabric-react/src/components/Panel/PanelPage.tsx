@@ -127,5 +127,4 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
       />
     );
   }
-
 }

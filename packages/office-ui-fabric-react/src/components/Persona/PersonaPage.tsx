@@ -82,5 +82,4 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
       />
     );
   }
-
 }
