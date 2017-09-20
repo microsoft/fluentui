@@ -381,7 +381,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     );
   }
 
-  // Render Chevron Down Icon
+  // Render Caret Down Icon
   @autobind
   private _onRenderCaretDown(props: IDropdownProps): JSX.Element {
     return (
