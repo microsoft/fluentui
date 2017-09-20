@@ -195,8 +195,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuIconProps,
       menuProps,
       onRenderIcon = this._onRenderIcon,
-      onRenderText = this._onRenderText,
-      onRenderDescription = this._onRenderDescription,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
@@ -250,12 +248,15 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderDescription = this._onRenderDescription
     } = this.props;
 
-    if (this.props.text || typeof (children) === 'string' || this.props.description) {
-      return React.createElement(
-        'div' as any,
-        { className: this._classNames.textContainer },
-        onRenderText(this.props, this._onRenderText),
-        onRenderDescription(this.props, this._onRenderDescription));
+    if (text || typeof (children) === 'string' || description) {
+      return (
+        <div
+          className={ this._classNames.textContainer }
+        >
+          { onRenderText(this.props, this._onRenderText) }
+          { onRenderDescription(this.props, this._onRenderDescription) }
+        </div>
+      );
     }
     return ([
       onRenderText(this.props, this._onRenderText),
@@ -314,7 +315,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return description ? (
       <div
         key={ this._descriptionId }
-        className={ this._classNames.description } id={ this._descriptionId }>
+        className={ this._classNames.description }
+        id={ this._descriptionId }
+      >
         { description }
       </div>
     ) : (
