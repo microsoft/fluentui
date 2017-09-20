@@ -120,9 +120,14 @@ export interface IPersonaProps extends React.HTMLAttributes<Persona> {
   showSecondaryText?: boolean;
 
   /**
-   * Optional custom renderer for image area.
+   * Optional custom persona coin size in pixel.
    */
-  onRenderPersonaImage?: IRenderFunction<IPersonaProps>;
+  coinSize?: number;
+
+  /**
+   * Optional HTML element props for Persona coin.
+   */
+  coinProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 export enum PersonaSize {

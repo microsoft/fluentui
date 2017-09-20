@@ -42,11 +42,12 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
     // These properties are to be explicitly passed into PersonaCoin because they are the only props directly used
     let {
       className,
+      coinProps,
+      coinSize,
       imageUrl,
       imageAlt,
       imageInitials,
       initialsColor,
-      onRenderPersonaImage,
       presence,
       primaryText,
       imageShouldFadeIn,
@@ -55,11 +56,12 @@ export class Persona extends BaseComponent<IPersonaProps, {}> {
 
     let personaCoinProps = {
       className,
+      coinProps,
+      coinSize,
       imageUrl,
       imageAlt,
       imageInitials,
       initialsColor,
-      onRenderPersonaImage,
       presence,
       primaryText,
       imageShouldFadeIn,

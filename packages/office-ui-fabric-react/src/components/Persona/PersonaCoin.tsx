@@ -77,6 +77,8 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
   public render(): JSX.Element | null {
     let {
       className,
+      coinProps,
+      coinSize,
       imageUrl,
       imageAlt,
       initialsColor,
@@ -84,12 +86,12 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
       primaryText,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
-      onRenderPersonaImage,
       imageShouldStartVisible
      } = this.props;
 
     let size = this.props.size as PersonaSize;
     let divProps = getNativeProps(this.props, divProperties);
+    let coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
 
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
@@ -99,7 +101,11 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
         className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence as PersonaPresenceEnum], this.props.showSecondaryText ? styles.showSecondaryText : '') }
       >
         { size !== PersonaSize.tiny && (
-          <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
+          <div
+            { ...coinProps }
+            className={ css('ms-Persona-imageArea', styles.imageArea) }
+            style={ coinSizeStyle }
+          >
             {
               !this.state.isImageLoaded &&
               (
@@ -109,29 +115,24 @@ export class PersonaCoin extends React.Component<IPersonaProps, IPersonaState> {
                     styles.initials,
                     PERSONA_INITIALS_COLOR[initialsColor]
                   ) }
+                  style={ coinSizeStyle }
                   aria-hidden='true'
                 >
                   { onRenderInitials(this.props, this._onRenderInitials) }
                 </div>
               )
             }
-            {
-              onRenderPersonaImage
-                ? onRenderPersonaImage(this.props)
-                : (
-                  <Image
-                    className={ css('ms-Persona-image', styles.image) }
-                    imageFit={ ImageFit.cover }
-                    src={ imageUrl }
-                    width={ SIZE_TO_PIXELS[size] }
-                    height={ SIZE_TO_PIXELS[size] }
-                    alt={ imageAlt }
-                    shouldFadeIn={ imageShouldFadeIn }
-                    shouldStartVisible={ imageShouldStartVisible }
-                    onLoadingStateChange={ this._onPhotoLoadingStateChange }
-                  />
-                )
-            }
+            <Image
+              className={ css('ms-Persona-image', styles.image) }
+              imageFit={ ImageFit.cover }
+              src={ imageUrl }
+              width={ coinSize || SIZE_TO_PIXELS[size] }
+              height={ coinSize || SIZE_TO_PIXELS[size] }
+              alt={ imageAlt }
+              shouldFadeIn={ imageShouldFadeIn }
+              shouldStartVisible={ imageShouldStartVisible }
+              onLoadingStateChange={ this._onPhotoLoadingStateChange }
+            />
           </div>
         ) }
         <PersonaPresence { ...this.props } />
