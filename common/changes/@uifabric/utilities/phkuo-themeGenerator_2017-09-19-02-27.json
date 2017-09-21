@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Create Theme Generator Page",
+      "comment": "Adding `mapEnumByName` helper.",
       "type": "minor"
     }
   ],
