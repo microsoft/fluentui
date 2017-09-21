@@ -117,6 +117,7 @@ $Calendar-dayPicker-margin: 10px;
   line-height: $Calendar-day;
   @include ms-font-m-plus;
   color: $ms-color-neutralPrimary;
+  box-sizing: border-box;
   // border-radius: 2px;
 }
 
@@ -162,7 +163,7 @@ $Calendar-dayPicker-margin: 10px;
   cursor: pointer;
 
   @include high-contrast {
-    border: 1px solid Highlight;
+    border: 2px solid Highlight;
   }
 }
 
