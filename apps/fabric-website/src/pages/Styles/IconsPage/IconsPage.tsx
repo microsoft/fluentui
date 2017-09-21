@@ -9,7 +9,7 @@ const iconData = require('../../../../node_modules/office-ui-fabric-core/src/dat
 export class IconsPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.pageTypography }>
         <PageHeader
           pageTitle='Icons'
           links={

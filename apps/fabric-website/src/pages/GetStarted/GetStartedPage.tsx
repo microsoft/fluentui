@@ -6,11 +6,12 @@ import { PageHeader } from '../../components/PageHeader/PageHeader';
 const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
 import * as stylesImport from './GetStartedPage.module.scss';
 const styles: any = stylesImport;
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {
     return (
-      <div id='design'>
+      <div id='design' className={ pageStyles.pageTypography }>
         <PageHeader
           pageTitle='Get started'
           links={

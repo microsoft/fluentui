@@ -9,7 +9,7 @@ const animationsData = require('../../../data/animations.json');
 export class AnimationsPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.pageTypography }>
         <PageHeader
           pageTitle='Animations'
           links={

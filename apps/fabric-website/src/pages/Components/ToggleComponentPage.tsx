@@ -2,11 +2,12 @@ import * as React from 'react';
 import { TogglePage } from 'office-ui-fabric-react/lib/components/Toggle/TogglePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class ToggleComponentPage extends React.Component<any, any> {
   public render() {
     return (
-      <div ref='pageElement'>
+      <div ref='pageElement' className={ pageStyles.pageTypography }>
         <ComponentPage>
           <PageHeader pageTitle='Toggle' backgroundColor='#038387'
             links={

@@ -12,7 +12,7 @@ const breakpointsData = require('../../../data/responsive-breakpoints.json');
 export class LayoutPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.pageTypography }>
         <PageHeader
           pageTitle='Responsive Layout'
           links={

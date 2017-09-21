@@ -1,3 +1,23 @@
+@import '../styles/variables';
+
+.pageTypography {
+  h2 {
+    margin: $uhf-h2-margin;
+  }
+
+  h3 {
+    margin: $uhf-h3-margin;
+  }
+
+  h4 {
+    margin: $uhf-h4-margin;
+  }
+
+  p {
+    margin-bottom: $uhf-p-margin-bottom;
+  }
+}
+
 :global {
   .u_maxTextWidth {
     max-width: 50em;

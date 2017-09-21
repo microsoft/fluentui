@@ -12,7 +12,7 @@ const localizedFontsData = require('../../../data/localized-fonts.json');
 export class LocalizationPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.pageTypography }>
         <PageHeader
           pageTitle='Localization'
           links={
