@@ -6,11 +6,12 @@ import { PageHeader } from '../../components/PageHeader/PageHeader';
 const diagramStyles: any = require('./GetStartedPage.diagram.module.scss');
 import * as stylesImport from './GetStartedPage.module.scss';
 const styles: any = stylesImport;
+const pageStyles: any = require('../PageStyles.module.scss');
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {
     return (
-      <div id='design'>
+      <div id='design' className={ pageStyles.basePage }>
         <PageHeader
           pageTitle='Get started'
           links={
@@ -63,7 +64,7 @@ export class GetStartedPage extends React.Component<any, any> {
           </div>
           <div id='toolkit'>
             <span className={ styles.title }>Design Toolkit</span>
-            <span className={ styles.descriptionLarge }>The toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
+            <span className={ styles.descriptionLarge }>The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless, beautiful Offices experiences.</span>
             <a className={ styles.getStartedLink } href='#/resources'>Learn more</a>
           </div>
         </div>

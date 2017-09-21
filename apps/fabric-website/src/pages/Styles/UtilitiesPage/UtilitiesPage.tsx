@@ -8,7 +8,7 @@ const utilitiesData = require('../../../data/utilities.json');
 export class UtilitiesPage extends React.Component<any, any> {
   public render() {
     return (
-      <div>
+      <div className={ pageStyles.basePage }>
         <PageHeader pageTitle='Utilities' backgroundColor='#006f94' />
         <div className={ pageStyles.u_maxTextWidth }>
           <h2>Helper utilities</h2>

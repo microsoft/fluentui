@@ -1,11 +1,9 @@
 @import './variables';
 
-:global {
-  .exampleCheckbox {
-    margin: $exampleCheckbox-margin;
-  }
+.exampleCheckbox {
+  margin: $exampleCheckbox-margin;
+}
 
-  .exampleLabel {
-    margin: $exampleLabel-margin;
-  }
+.exampleLabel {
+  margin: $exampleLabel-margin;
 }

@@ -126,6 +126,7 @@
   }
 }
 
+// UHF specific breakpoint
 @media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
   .pageHeader {
     &.isAttached {
@@ -133,5 +134,10 @@
         width: calc(100% - #{$Nav-width} - #{$App-padding-right-sm} - #{$App-padding-left-sm} - 13px);
       }
     }
+  }
+
+  .pageNav ul li a {
+    @include ms-margin-right(20px);
+    font-size: 14px;
   }
 }

@@ -25,17 +25,12 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
 
   public render() {
     return (
-      <a ref={(a) => {this._els.link = a; }} href={ this.props.href } data-title={ this.props.text }>{ this.props.text }</a>
+      <a ref={ (a) => { this._els.link = a; } } href={ this.props.href } data-title={ this.props.text }>{ this.props.text }</a>
     );
   }
 
   private _setScrollDistance(): number {
-    switch (this.currentBreakpoint) {
-      case ('LG'):
-        return 240;
-      default:
-        return 200;
-    }
+    return 160; // UHF header change the requirement
   }
 
   private _getBreakpoint() {
@@ -65,8 +60,8 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     }
 
     let scrollTarget = (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) ?
-          document.querySelector('html') :
-          document.querySelector('body');
+      document.querySelector('html') :
+      document.querySelector('body');
 
     Animate.scrollTo(scrollTarget as HTMLElement, {
       duration: 0.3,

@@ -24,13 +24,13 @@
     line-height: 1.25;
     max-width: 500px;
   }
-}
 
-.button {
-  @include ghostButton($color-home-lighter, $color-home-dark);
-  font-size: $ms-font-size-l;
-  margin-top: 32px;
-  display: inline-block;
+  .button {
+    @include ghostButton($color-home-lighter, $color-home-dark);
+    font-size: $ms-font-size-l;
+    margin-top: 32px;
+    display: inline-block;
+  }
 }
 
 .overview {
@@ -39,6 +39,10 @@
   .overviewText {
     color: $ms-color-neutralPrimary;
     font-size: $ms-font-size-xl;
+  }
+
+  .overviewLink {
+    color: $ms-color-themePrimary;
   }
 }
 
