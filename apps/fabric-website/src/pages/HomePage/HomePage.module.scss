@@ -89,6 +89,12 @@
   }
 }
 
+// UHF specific breakpoint
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .title, .button {
+    text-align: center;
+  }
+}
 
 //== Flavors
 
@@ -169,6 +175,13 @@
     &:nth-of-type(3) {
       order: 4;
     }
+  }
+}
+
+// UHF specific breakpoint
+@media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
+  .flavorTitle {
+    text-align: center;
   }
 }
 
