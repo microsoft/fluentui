@@ -5,6 +5,7 @@ import { IButtonStyles } from '../Button.Props';
 export interface ISplitButtonClassNames {
   root?: string;
   icon?: string;
+  splitButtonContainer?: string;
   flexContainer?: string;
   divider?: string;
 }
@@ -28,6 +29,7 @@ export const getClassNames = memoizeFunction((
         styles.splitButtonMenuButtonChecked
       ]
     ) as string,
+    splitButtonContainer: mergeStyles(styles.splitButtonContainer, disabled && [styles.splitButtonContainerDisabled]) as string,
     icon: (disabled ? mergeStyles(styles.splitButtonMenuIcon, styles.splitButtonMenuIconDisabled) : styles.splitButtonMenuIcon) as string,
     flexContainer: styles.splitButtonFlexContainer as string,
     divider: styles.splitButtonDivider as string

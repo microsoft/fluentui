@@ -7,6 +7,8 @@ import {
 } from '@uifabric/example-app-base';
 import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSet.Example';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
+import { ComponentStatus } from '../../demo/ComponentStatus/ComponentStatus';
+import { ResizeGroupStatus } from './ResizeGroup.checklist';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
 
@@ -91,7 +93,11 @@ export class ResizeGroupPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        componentStatus={
+          <ComponentStatus
+            {...ResizeGroupStatus}
+          />
+        }
       />
     );
   }

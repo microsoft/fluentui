@@ -43,7 +43,9 @@ export class Check extends BaseComponent<ICheckProps, {}> {
         className={ css(
           'ms-Check',
           styles.root,
-          isChecked && ('is-checked ' + styles.rootIsChecked)
+          {
+            [`is-checked ${styles.rootIsChecked}`]: isChecked
+          }
         ) }
       >
         { Icon({

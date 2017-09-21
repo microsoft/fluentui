@@ -22,12 +22,12 @@
   {
     "name": "themeSecondary",
     "value": "#2b88d8",
-    "labelColorClass": "ms-fontColor-white"
+    "labelColorClass": "ms-fontColor-black"
   },
   {
     "name": "themeTertiary",
     "value": "#71afe5",
-    "labelColorClass": "ms-fontColor-white"
+    "labelColorClass": "ms-fontColor-black"
   },
   {
     "name": "themeLight",
